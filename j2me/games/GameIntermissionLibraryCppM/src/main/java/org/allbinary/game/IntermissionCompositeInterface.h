@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INTERMISSIONCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_INTERMISSIONCOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/IntermissionInterface.h"
+        class IntermissionInterface;
 
-class IntermissionCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class IntermissionCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual IntermissionInterface* getStartIntermissionInterface() = 0;
 
@@ -59,3 +70,13 @@ class IntermissionCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_INTERMISSIONCOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INTERMISSIONCOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INTERMISSIONCOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/IntermissionInterface.h")
+#include "org/allbinary/game/IntermissionInterface.h"
+#endif
+
+        #endif
+    

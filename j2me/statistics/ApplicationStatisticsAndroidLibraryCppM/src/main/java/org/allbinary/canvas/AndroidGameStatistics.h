@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_H
         #define ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Long.h"
         
-#include <android/view/View.h>
-
-      
-#include <org/allbinary/android/view/BaseViewWrapper.h>
-
-      
-#include <org/allbinary/android/view/ViewWrapper.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class View;
+class BaseViewWrapper;
+class ViewWrapper;
+class StringMaker;
+class StringUtil;
 
 
 
@@ -66,13 +61,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/BaseGameStatistics.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidGameStatistics: public BaseGameStatistics {
 
-    private: BaseViewWrapper* view = BaseViewWrapper::NULL_VIEW_WRAPPER;
+    private: BaseViewWrapper* view;
 
     private: int64_t totalOnDraws= 0;
 
-    private: const std::vector<std::string> ANDROID_STRING_ARRAY = std::vector<std::string>(14);
+    private: std::vector<std::string> ANDROID_STRING_ARRAY;
 
 public: AndroidGameStatistics();
 
@@ -96,3 +95,28 @@ public: AndroidGameStatistics();
 
 
         #endif //ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_H_COMPLETE)
+        #define ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_H_COMPLETE
+        #if __has_include(<android/view/View.h>)
+#include <android/view/View.h>
+#endif
+#if __has_include(<org/allbinary/android/view/BaseViewWrapper.h>)
+#include <org/allbinary/android/view/BaseViewWrapper.h>
+#endif
+#if __has_include(<org/allbinary/android/view/ViewWrapper.h>)
+#include <org/allbinary/android/view/ViewWrapper.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/canvas/BaseGameStatistics.h")
+#include "org/allbinary/canvas/BaseGameStatistics.h"
+#endif
+
+        #endif
+    

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_APPNAMELICENSINGADCONFIGURATION_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_APPNAMELICENSINGADCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/AppNameLicensingAdConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -35,9 +45,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/AdConfiguration.h"
 
-class AppNameLicensingAdConfiguration: public AdConfiguration {
 
-public: AppNameLicensingAdConfiguration() : AdConfiguration(
+AppNameLicensingAdConfiguration::AppNameLicensingAdConfiguration() : AdConfiguration(
                                                 {
                                                     StringUtil::getInstance()->EMPTY_STRING,StringUtil::getInstance()->EMPTY_STRING,StringUtil::getInstance()->EMPTY_STRING
                                                 }){
@@ -50,7 +59,6 @@ public: AppNameLicensingAdConfiguration() : AdConfiguration(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_APPNAMELICENSINGADCONFIGURATION_CPP

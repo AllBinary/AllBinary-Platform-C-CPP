@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_DBWORKFLOWFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_DBWORKFLOWFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/DbWorkFlowFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,31 +84,26 @@
         #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
 #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
-class DbWorkFlowFactory
-            : public Object
-         {
+auto DbWorkFlowFactory::instance_owner() -> DbWorkFlowFactory* { static std::unique_ptr<DbWorkFlowFactory> value(new DbWorkFlowFactory()); return value.get(); }
+DbWorkFlowFactory* DbWorkFlowFactory::instance = DbWorkFlowFactory::instance_owner();
 
-    private: static DbWorkFlowFactory* instance() { static std::unique_ptr<DbWorkFlowFactory> value(new DbWorkFlowFactory()); return value.get(); }
-
-    public: static DbWorkFlowFactory* getInstance(){
+    auto DbWorkFlowFactory::getInstance() -> DbWorkFlowFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DbWorkFlowFactory::instance();
+                        return DbWorkFlowFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: DbWorkFlowFactory(){
+DbWorkFlowFactory::DbWorkFlowFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap){
+    auto DbWorkFlowFactory::getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap) -> WorkFlowInterface*{
 
         try {
             
@@ -128,7 +133,7 @@ params[0]= hashMap;
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -150,7 +155,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -171,7 +176,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_DBWORKFLOWFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/ItemFactoryUnused.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/item/Item.h"
 
-class ItemFactoryUnused
-            : public Object
-         {
+
+ItemFactoryUnused::ItemFactoryUnused(){
+}
+
 
                 //@Throws(MoneyException.constructor)
             
-    public: static TableMappingInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto ItemFactoryUnused::getInstance(HashMap<Object*, Object*>* hashMap) -> TableMappingInterface*{
 
 
 
@@ -81,7 +92,7 @@ class ItemFactoryUnused
 
                 //@Throws(Exception.constructor, MoneyException.constructor)
             
-    public: static TableMappingInterface* getInstance(HttpServletRequest* request){
+    auto ItemFactoryUnused::getInstance(HttpServletRequest* request) -> TableMappingInterface*{
 
 
 
@@ -91,11 +102,6 @@ class ItemFactoryUnused
 }
 
 
-private: ItemFactoryUnused(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_CPP

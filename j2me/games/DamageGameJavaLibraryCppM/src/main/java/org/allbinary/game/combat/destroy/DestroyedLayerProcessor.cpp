@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,17 +87,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DestroyedLayerProcessor: public BasicLayerProcessor {
+BasicLayerProcessor* DestroyedLayerProcessor::DESTROYED_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR;
 
-    private: static inline BasicLayerProcessor* DESTROYED_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR;
+DestroyedLayerProcessor::DestroyedLayerProcessor(){
+}
 
-    public: static void init(){
+
+    auto DestroyedLayerProcessor::init() -> void{
 DestroyedLayerProcessor::DESTROYED_LAYER_PROCESSOR= new DestroyedLayerProcessor();
     
 }
 
 
-    public: static BasicLayerProcessor* getInstance(){
+    auto DestroyedLayerProcessor::getInstance() -> BasicLayerProcessor*{
 
 
 
@@ -97,13 +109,9 @@ DestroyedLayerProcessor::DESTROYED_LAYER_PROCESSOR= new DestroyedLayerProcessor(
 }
 
 
-private: DestroyedLayerProcessor(){
-}
-
-
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
+    auto DestroyedLayerProcessor::process(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     BasicArrayList* list = this->getList();;
     
@@ -163,7 +171,6 @@ list->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_CPP

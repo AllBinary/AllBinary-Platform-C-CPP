@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,20 +41,10 @@
             #include "java/lang/Long.h"
         
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/DataOutputStream.h>
-
-      
-#include <org/allbinary/game/GameInfo.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class GameInfo;
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -69,8 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HighScore
-            : public Object
+            : public virtual Object
          {
 
     private: int32_t id;
@@ -109,3 +108,25 @@ public: HighScore(int32_t id, std::string name, GameInfo* gameInfo, int64_t scor
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/DataOutputStream.h>)
+#include <java/io/DataOutputStream.h>
+#endif
+#if __has_include(<org/allbinary/game/GameInfo.h>)
+#include <org/allbinary/game/GameInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

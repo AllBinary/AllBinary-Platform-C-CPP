@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,18 +56,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //extends ValidationComponentInterface, ValidationInterface, ComponentInterface, DomNodeInterface, DataMappingInterface
-class WorkFlowInterface {
+        
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string getName() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual int32_t process() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_CPP

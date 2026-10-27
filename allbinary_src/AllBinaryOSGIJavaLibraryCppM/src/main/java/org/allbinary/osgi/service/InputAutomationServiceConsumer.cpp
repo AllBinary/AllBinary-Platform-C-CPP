@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_CPP
+        #define ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/osgi/service/InputAutomationServiceConsumer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,23 +84,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/osgi/service/OSGIServiceUtil.h"
 
-class InputAutomationServiceConsumer
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: OSGIServiceUtil* osgiServiceUtil = OSGIServiceUtil::getInstance();
-
-    private: std::string registryName;
-
-    private: BundleContext* bundleContext;
-
-    private: OSGIServiceVisitorInterface* osgiServiceVisitorInterface;
-
-public: InputAutomationServiceConsumer(std::string registryName, BundleContext* bundleContext, OSGIServiceVisitorInterface* osgiServiceVisitorInterface){
+InputAutomationServiceConsumer::InputAutomationServiceConsumer(std::string registryName, BundleContext* bundleContext, OSGIServiceVisitorInterface* osgiServiceVisitorInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), osgiServiceUtil(OSGIServiceUtil::getInstance()){
 this->setRegistryName(registryName);
     
 this->setBundleContext(bundleContext);
@@ -102,13 +97,13 @@ this->setOsgiServiceVisitorInterface(osgiServiceVisitorInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto InputAutomationServiceConsumer::process() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);
     
 
     BasicArrayList* vector = this->osgiServiceUtil->getServicesObjectVector(this->getBundleContext(), this->getServiceReferences());;
     
-this->logUtil->putF("Processing " +vector->size() +" Services", this, this->commonStrings->PROCESS);
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Processing ") +JavaString::valueOf(vector->size())) +JavaString::valueOf(" Services"), this, this->commonStrings->PROCESS);
     
 
     int32_t size = vector->size();;
@@ -132,7 +127,7 @@ osgiServiceInterface= dynamic_cast<OSGIServiceInterface*>(vector->get(index));
                                     
 
 
-                            throw new Exception("Unable to process service: " +osgiServiceInterface);
+                            throw Exception(JavaString::valueOf("Unable to process service: ") +JavaString::valueOf(osgiServiceInterface));
                     
 
                                     }
@@ -144,7 +139,7 @@ osgiServiceInterface= dynamic_cast<OSGIServiceInterface*>(vector->get(index));
 
                 //@Throws(Exception.constructor)
             
-    private: std::vector<ServiceReference*> getServiceReferences(){
+    auto InputAutomationServiceConsumer::getServiceReferences() -> std::vector<ServiceReference*>{
 
 
 
@@ -155,7 +150,7 @@ osgiServiceInterface= dynamic_cast<OSGIServiceInterface*>(vector->get(index));
 }
 
 
-    public: BundleContext* getBundleContext(){
+    auto InputAutomationServiceConsumer::getBundleContext() -> BundleContext*{
 
 
 
@@ -165,13 +160,13 @@ osgiServiceInterface= dynamic_cast<OSGIServiceInterface*>(vector->get(index));
 }
 
 
-    public: void setBundleContext(BundleContext* aBundleContext){
+    auto InputAutomationServiceConsumer::setBundleContext(BundleContext* aBundleContext) -> void{
 this->bundleContext= aBundleContext;
     
 }
 
 
-    public: std::string getRegistryName(){
+    auto InputAutomationServiceConsumer::getRegistryName() -> std::string{
 
 
 
@@ -181,13 +176,13 @@ this->bundleContext= aBundleContext;
 }
 
 
-    public: void setRegistryName(std::string registryName){
+    auto InputAutomationServiceConsumer::setRegistryName(std::string registryName) -> void{
 this->registryName= registryName;
     
 }
 
 
-    public: OSGIServiceVisitorInterface* getOsgiServiceVisitorInterface(){
+    auto InputAutomationServiceConsumer::getOsgiServiceVisitorInterface() -> OSGIServiceVisitorInterface*{
 
 
 
@@ -197,13 +192,12 @@ this->registryName= registryName;
 }
 
 
-    public: void setOsgiServiceVisitorInterface(OSGIServiceVisitorInterface* osgiServiceVisitorInterface){
+    auto InputAutomationServiceConsumer::setOsgiServiceVisitorInterface(OSGIServiceVisitorInterface* osgiServiceVisitorInterface) -> void{
 this->osgiServiceVisitorInterface= osgiServiceVisitorInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_CPP

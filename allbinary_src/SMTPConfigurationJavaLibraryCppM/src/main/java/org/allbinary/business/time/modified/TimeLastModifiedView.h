@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H
         #define ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
-
-      
+class EntryData;
+class DomNodeHelper;
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
-#include <org/allbinary/data/tree/dom/ModDomHelper.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class ModDomHelper;
+class Document;
+class Node;
 
 
 
@@ -67,10 +60,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/time/modified/TimeLastModified.h"
+        class TimeLastModified;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TimeLastModifiedView
-            : public Object
+            : public virtual Object
         , public DomNodeInterface {
 
     private: TimeLastModified* timeLastModified;
@@ -93,3 +90,31 @@ public: TimeLastModifiedView(Node* node);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeHelper.h>)
+#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/ModDomHelper.h>)
+#include <org/allbinary/data/tree/dom/ModDomHelper.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/time/modified/TimeLastModified.h")
+#include "org/allbinary/business/time/modified/TimeLastModified.h"
+#endif
+
+        #endif
+    

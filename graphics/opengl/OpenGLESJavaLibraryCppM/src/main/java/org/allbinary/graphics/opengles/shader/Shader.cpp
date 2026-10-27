@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/Shader.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,19 +64,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Shader
-            : public Object
-         {
 
-    public: std::string shaderName = StringUtil::getInstance()->EMPTY_STRING;
+Shader::Shader() : shaderName(StringUtil::getInstance()->EMPTY_STRING), shaderStringList(BasicArrayListUtil::getInstance()->getImmutableInstance()), shaderAsString(StringUtil::getInstance()->EMPTY_STRING) {
+        }
+        
 
-    public: BasicArrayList* shaderStringList = BasicArrayListUtil::getInstance()->getImmutableInstance();
 
-    public: std::string shaderAsString = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: int32_t shaderHandle= 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EmailQueueInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool offer(EmailInterface* emailInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual EmailInterface* remove() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_CPP

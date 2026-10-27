@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>
-
-      
+class BasicAnimationInterfaceFactoryInterface;
 
 
 
@@ -51,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ResourceAnimationInterfaceFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ResourceAnimationInterfaceFactoryInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -63,3 +72,13 @@ class ResourceAnimationInterfaceFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONREVERSERESOURCE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONREVERSERESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonReverseResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
-class TouchButtonReverseResource: public TouchButtonResource {
+TouchButtonResource* TouchButtonReverseResource::instance = new TouchButtonReverseResource();
 
-    private: static inline TouchButtonResource* instance = new TouchButtonReverseResource();
-
-    public: static TouchButtonResource* getInstance(){
+    auto TouchButtonReverseResource::getInstance() -> TouchButtonResource*{
 
 
 
@@ -58,7 +66,7 @@ class TouchButtonReverseResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonReverseResource() : TouchButtonResource("/touch_button_reverse_64_by_64.png", "/touch_button_reverse_hint_64_by_64.png"){
+TouchButtonReverseResource::TouchButtonReverseResource() : TouchButtonResource("/touch_button_reverse_64_by_64.png", "/touch_button_reverse_hint_64_by_64.png"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +76,6 @@ private: TouchButtonReverseResource() : TouchButtonResource("/touch_button_rever
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONREVERSERESOURCE_CPP

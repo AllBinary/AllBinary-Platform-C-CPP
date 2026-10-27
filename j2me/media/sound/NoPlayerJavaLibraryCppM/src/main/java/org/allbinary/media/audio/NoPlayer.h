@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,12 +34,8 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/media/Control.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class Control;
+class StringUtil;
 
 
 
@@ -54,11 +55,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/BasicPlayer.h"
-#include "org/allbinary/media/audio/NullControl.h"
+class NullControl;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoPlayer: public BasicPlayer {
 
-    public: static NoPlayer* NO_PLAYER() { static std::unique_ptr<NoPlayer> value(new NoPlayer()); return value.get(); }
+    private: static NoPlayer* NO_PLAYER_owner();
+    public: static NoPlayer* NO_PLAYER;
 
 public: NoPlayer();
 
@@ -76,3 +82,22 @@ public: NoPlayer();
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/media/Control.h>)
+#include <javax/microedition/media/Control.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/media/audio/BasicPlayer.h")
+#include "org/allbinary/media/audio/BasicPlayer.h"
+#endif
+#if __has_include("org/allbinary/media/audio/NullControl.h")
+#include "org/allbinary/media/audio/NullControl.h"
+#endif
+
+        #endif
+    

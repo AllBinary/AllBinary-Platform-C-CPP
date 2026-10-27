@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollidableHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,11 +66,11 @@
         #include "org/allbinary/game/collision/SourceCollisionHelper.h"
 #include "org/allbinary/game/collision/CollisionHelper.h"
 
-class CollidableHelperFactory
-            : public Object
-         {
 
-    public: static CollisionHelper* getInstance(){
+CollidableHelperFactory::CollidableHelperFactory() {
+        }
+        
+    auto CollidableHelperFactory::getInstance() -> CollisionHelper*{
 
                         if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->COLLISIONS_WITH_SOURCE))
                         
@@ -87,7 +97,6 @@ class CollidableHelperFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_CPP

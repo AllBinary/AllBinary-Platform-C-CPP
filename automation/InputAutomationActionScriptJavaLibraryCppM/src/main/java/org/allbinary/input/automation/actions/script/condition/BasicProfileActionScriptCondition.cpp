@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_BASICPROFILEACTIONSCRIPTCONDITION_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_BASICPROFILEACTIONSCRIPTCONDITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/BasicProfileActionScriptCondition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -118,15 +128,8 @@
 #include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptCondition.h"
 #include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptCondition.h"
 
-class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public ProfileActionScriptConditionInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* profileActionProcessorInterfaceVector;
-
-    private: BasicArrayList* profileActionConditionInterfaceVector;
-
-public: BasicProfileActionScriptCondition(std::string label, Node* node) : ProfileActionScriptItem(label, node){
+BasicProfileActionScriptCondition::BasicProfileActionScriptCondition(std::string label, Node* node) : ProfileActionScriptItem(label, node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -189,7 +192,7 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    public: void addProcessorNodes(Node* node){
+    auto BasicProfileActionScriptCondition::addProcessorNodes(Node* node) -> void{
 
     NodeList* nodeList = node->getChildNodes();;
     
@@ -226,7 +229,7 @@ this->init();
 }
 
 
-public: BasicProfileActionScriptCondition(std::string label) : ProfileActionScriptItem(label){
+BasicProfileActionScriptCondition::BasicProfileActionScriptCondition(std::string label) : ProfileActionScriptItem(label), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -238,7 +241,7 @@ this->init();
 }
 
 
-    private: void init(){
+    auto BasicProfileActionScriptCondition::init() -> void{
 this->setProfileActionProcessorInterfaceVector(new BasicArrayListD());
     
 this->setProfileActionConditionInterfaceVector(new BasicArrayListD());
@@ -252,7 +255,7 @@ this->getJPopupMenu()->add(this->getOutputJPopupMenu());
 }
 
 
-    private: JMenu* getConditionJPopupMenu(){
+    auto BasicProfileActionScriptCondition::getConditionJPopupMenu() -> JMenu*{
 
     JMenu* jMenu = new JMenu(NEW_CONDITION);;
     
@@ -286,7 +289,7 @@ jMenu->add(jMenuItemTimeInterval);
 }
 
 
-    private: JMenu* getInputJPopupMenu(){
+    auto BasicProfileActionScriptCondition::getInputJPopupMenu() -> JMenu*{
 
     JMenu* jMenu = new JMenu(NEW_INPUT);;
     
@@ -320,7 +323,7 @@ jMenu->add(jMenuItemJoystick);
 }
 
 
-    private: JMenu* getOutputJPopupMenu(){
+    auto BasicProfileActionScriptCondition::getOutputJPopupMenu() -> JMenu*{
 
     JMenu* jMenu = new JMenu(NEW_OUTPUT);;
     
@@ -340,8 +343,8 @@ jMenu->add(jMenuItemImage);
 }
 
 
-    public: void addProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface){
-this->logUtil->putF(this->commonStrings.START, this, "addInput");
+    auto BasicProfileActionScriptCondition::addProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface) -> void{
+this->logUtil->putF(this->commonStrings->START, this, "addInput");
     
 this->getProfileActionProcessorInterfaceVector()->add(profileActionProcessorInterface);
     
@@ -350,8 +353,8 @@ this->add(profileActionProcessorInterface);
 }
 
 
-    public: void removeProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface){
-this->logUtil->putF(this->commonStrings.START, this, "removeInput");
+    auto BasicProfileActionScriptCondition::removeProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface) -> void{
+this->logUtil->putF(this->commonStrings->START, this, "removeInput");
     
 this->getProfileActionProcessorInterfaceVector()->remove(profileActionProcessorInterface);
     
@@ -360,8 +363,8 @@ this->remove(profileActionProcessorInterface);
 }
 
 
-    public: void removeCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface){
-this->logUtil->putF(this->commonStrings.START, this, "removeCondition");
+    auto BasicProfileActionScriptCondition::removeCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface) -> void{
+this->logUtil->putF(this->commonStrings->START, this, "removeCondition");
     
 this->getProfileActionConditionInterfaceVector()->remove(profileActionScriptNodeInterface);
     
@@ -370,8 +373,8 @@ this->remove(profileActionScriptNodeInterface);
 }
 
 
-    public: void addCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface){
-this->logUtil->putF(this->commonStrings.START, this, "addCondition");
+    auto BasicProfileActionScriptCondition::addCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface) -> void{
+this->logUtil->putF(this->commonStrings->START, this, "addCondition");
     
 this->getProfileActionConditionInterfaceVector()->add(profileActionScriptNodeInterface);
     
@@ -382,7 +385,7 @@ this->add(profileActionScriptNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto BasicProfileActionScriptCondition::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(GenericProfileActionScriptConditionData::NAME);;
     
@@ -435,7 +438,7 @@ node->appendChild(profileActionProcessorInterface->toXmlNode(document));
 }
 
 
-    public: BasicArrayList* getProfileActionConditionInterfaceVector(){
+    auto BasicProfileActionScriptCondition::getProfileActionConditionInterfaceVector() -> BasicArrayList*{
 
 
 
@@ -445,16 +448,16 @@ node->appendChild(profileActionProcessorInterface->toXmlNode(document));
 }
 
 
-    public: void setProfileActionConditionInterfaceVector(BasicArrayList* profileActionConditionInterfaceVector){
+    auto BasicProfileActionScriptCondition::setProfileActionConditionInterfaceVector(BasicArrayList* profileActionConditionInterfaceVector) -> void{
 this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
     
 }
 
 
-    public: void actionPerformed(ActionEvent* actionEvent){
+    auto BasicProfileActionScriptCondition::actionPerformed(ActionEvent* actionEvent) -> void{
 
         try {
-            super.actionPerformed(actionEvent);
+            ProfileActionScriptItem::actionPerformed(actionEvent);
     
 
                         if(actionEvent->getActionCommand()->compareTo(DELETE) == 0)
@@ -556,7 +559,7 @@ this->logUtil->put("Error", this, "actionPerformed", &e);
 }
 
 
-    public: BasicArrayList* getProfileActionProcessorInterfaceVector(){
+    auto BasicProfileActionScriptCondition::getProfileActionProcessorInterfaceVector() -> BasicArrayList*{
 
 
 
@@ -566,13 +569,13 @@ this->logUtil->put("Error", this, "actionPerformed", &e);
 }
 
 
-    public: void setProfileActionProcessorInterfaceVector(BasicArrayList* profileActionProcessorInterfaceVector){
+    auto BasicProfileActionScriptCondition::setProfileActionProcessorInterfaceVector(BasicArrayList* profileActionProcessorInterfaceVector) -> void{
 this->profileActionProcessorInterfaceVector= profileActionProcessorInterfaceVector;
     
 }
 
 
-    private: void updateTree(){
+    auto BasicProfileActionScriptCondition::updateTree() -> void{
 JTreeInterfaceFactory::getInstance()->getJTreeInterface()->updateJTree();
     
 
@@ -585,7 +588,7 @@ JTreeInterfaceFactory::getInstance()->getJTreeInterface()->getActionScriptJTree(
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(int64_t frame){
+    auto BasicProfileActionScriptCondition::shouldProcess(int64_t frame) -> bool{
 
     BasicArrayList* profileActionConditionInterfaceVector = this->getProfileActionConditionInterfaceVector();;
     
@@ -628,8 +631,8 @@ JTreeInterfaceFactory::getInstance()->getJTreeInterface()->getActionScriptJTree(
 
                 //@Throws(Exception.constructor)
             
-    public: void process(int64_t frame){
-this->logUtil->putF((new StringMaker())->append("Start - Processing ")->appendint(this->getProfileActionProcessorInterfaceVector()->size())->append(" inputs")->toString(), this, this->commonStrings.PROCESS);
+    auto BasicProfileActionScriptCondition::process(int64_t frame) -> void{
+this->logUtil->putF((new StringMaker())->append("Start - Processing ")->appendint(this->getProfileActionProcessorInterfaceVector()->size())->append(" inputs")->toString(), this, this->commonStrings->PROCESS);
     
 
     BasicArrayList* profileActionProcessorInterfaceVector = this->getProfileActionProcessorInterfaceVector();;
@@ -654,7 +657,6 @@ profileActionScriptProcessorInterface->process(frame);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_BASICPROFILEACTIONSCRIPTCONDITION_CPP

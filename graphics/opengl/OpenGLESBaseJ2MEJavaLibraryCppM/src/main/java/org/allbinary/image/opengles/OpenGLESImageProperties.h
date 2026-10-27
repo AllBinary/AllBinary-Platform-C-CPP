@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,10 +53,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLESImageProperties
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: OpenGLESImageProperties();
+        
     public: int32_t textureID =  -1;
 
     public: float scaleX = 1.0;
@@ -78,3 +91,10 @@ class OpenGLESImageProperties
 
 
         #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_H_COMPLETE
+        
+        #endif
+    

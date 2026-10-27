@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERCOMPOSITE_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/PlayerComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,19 +96,8 @@
         #include "org/allbinary/media/audio/TimeBaseInterface.h"
 #include "org/allbinary/media/audio/Controllable2.h"
 //BasicPlayerMIDP2
-class PlayerComposite
-            : public Object
-        , public Controllable, public Player {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Player* player;
-
-    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(0);
-
-public: PlayerComposite(Player* player, int32_t repeatTime){
+PlayerComposite::PlayerComposite(Player* player, int32_t repeatTime) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), timeElapsedHelper(new TimeDelayHelper(0)), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()){
 this->player= player;
     
 this->timeElapsedHelper->delay= repeatTime;
@@ -107,31 +106,31 @@ this->timeElapsedHelper->delay= repeatTime;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener* playerListener){
+    auto PlayerComposite::addPlayerListener(PlayerListener* playerListener) -> void{
 this->player->addPlayerListener(playerListener);
     
 }
 
 
-    public: void removePlayerListener(PlayerListener* playerListener){
+    auto PlayerComposite::removePlayerListener(PlayerListener* playerListener) -> void{
 this->player->removePlayerListener(playerListener);
     
 }
 
 
-    public: void close(){
+    auto PlayerComposite::close() -> void{
 this->player->close();
     
 }
 
 
-    public: void deallocate(){
+    auto PlayerComposite::deallocate() -> void{
 this->player->deallocate();
     
 }
 
 
-    public: std::string getContentType(){
+    auto PlayerComposite::getContentType() -> std::string{
 
 
 
@@ -141,7 +140,7 @@ this->player->deallocate();
 }
 
 
-    public: int64_t getDuration(){
+    auto PlayerComposite::getDuration() -> int64_t{
 
 
 
@@ -151,7 +150,7 @@ this->player->deallocate();
 }
 
 
-    public: int64_t getMediaTime(){
+    auto PlayerComposite::getMediaTime() -> int64_t{
 
 
 
@@ -161,7 +160,7 @@ this->player->deallocate();
 }
 
 
-    public: TimeBase* getTimeBase(){
+    auto PlayerComposite::getTimeBase() -> TimeBase*{
 
 
 
@@ -174,7 +173,7 @@ this->player->deallocate();
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setTimeBase(TimeBase* timeBase){
+    auto PlayerComposite::setTimeBase(TimeBase* timeBase) -> void{
 player = dynamic_cast<TimeBaseInterface*>(this->playerplayer)
 player.
                     setTimeBase(timeBase);
@@ -182,7 +181,7 @@ player.
 }
 
 
-    public: void prefetch(){
+    auto PlayerComposite::prefetch() -> void{
 
         try {
             this->player->prefetch();
@@ -198,7 +197,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "prefetch", &e);
 }
 
 
-    public: void realize(){
+    auto PlayerComposite::realize() -> void{
 
         try {
             this->player->realize();
@@ -214,7 +213,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "realize", &e);
 }
 
 
-    public: int32_t getState(){
+    auto PlayerComposite::getState() -> int32_t{
 
 
 
@@ -224,13 +223,13 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "realize", &e);
 }
 
 
-    public: void setLoopCount(int32_t count){
+    auto PlayerComposite::setLoopCount(int32_t count) -> void{
 this->player->setLoopCount(count);
     
 }
 
 
-    public: int64_t setMediaTime(int64_t now){
+    auto PlayerComposite::setMediaTime(int64_t now) -> int64_t{
 
         try {
             
@@ -256,9 +255,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "setMediaTime", &e);
 }
 
 
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-    public: void start(){
+    auto PlayerComposite::start() -> void{
 
         try {
             
@@ -281,7 +278,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->ST
 }
 
 
-    public: void stop(){
+    auto PlayerComposite::stop() -> void{
 
         try {
             this->player->stop();
@@ -297,7 +294,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "stop", &e);
 }
 
 
-    public: Control* getControl(std::string controlType){
+    auto PlayerComposite::getControl(std::string controlType) -> Control*{
 
 
 
@@ -307,16 +304,16 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "stop", &e);
 }
 
 
-    public: std::vector<Control*> getControls(){
+    auto PlayerComposite::getControls() -> std::vector<Control*>{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setVolume(int32_t leftVolume, int32_t rightVolume){
+    auto PlayerComposite::setVolume(int32_t leftVolume, int32_t rightVolume) -> void{
 
     Controllable2* controllable2 = (dynamic_cast<Controllable2*>(this->player as unknown));;
     
@@ -325,7 +322,7 @@ controllable2->setVolume(leftVolume, rightVolume);
 }
 
 
-    public: Player* getPlayerP(){
+    auto PlayerComposite::getPlayerP() -> Player*{
 
 
 
@@ -335,7 +332,6 @@ controllable2->setVolume(leftVolume, rightVolume);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_PLAYERCOMPOSITE_CPP

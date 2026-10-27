@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_FILEEXTENSIONDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_FILEEXTENSIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/FileExtensionData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FileExtensionData
-            : public Object
-         {
+auto FileExtensionData::instance_owner() -> FileExtensionData* { static std::unique_ptr<FileExtensionData> value(new FileExtensionData()); return value.get(); }
+FileExtensionData* FileExtensionData::instance = FileExtensionData::instance_owner();
 
-    private: static FileExtensionData* instance() { static std::unique_ptr<FileExtensionData> value(new FileExtensionData()); return value.get(); }
-
-    public: static FileExtensionData* getInstance(){
+    auto FileExtensionData::getInstance() -> FileExtensionData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileExtensionData::instance();
+                        return FileExtensionData::instance;
     
 }
 
 
-private: FileExtensionData(){
+FileExtensionData::FileExtensionData(){
 }
 
 
-    public: const std::string DOT_JAVA_SOURCE = ".java";
 
-    public: const std::string JAVA_SOURCE = "java";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_FILEEXTENSIONDATA_CPP

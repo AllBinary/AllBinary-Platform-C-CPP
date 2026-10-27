@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/generator/IdGeneratorEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,12 @@
         #include "org/allbinary/data/tables/generator/IdGeneratorEntity.h"
 #include "org/allbinary/data/tables/generator/IdGeneratorEntityInterface.h"
 
-class IdGeneratorEntityFactory
-            : public Object
-         {
 
-    public: static IdGeneratorEntityInterface* getInstance(){
+IdGeneratorEntityFactory::IdGeneratorEntityFactory(){
+}
+
+
+    auto IdGeneratorEntityFactory::getInstance() -> IdGeneratorEntityInterface*{
 
         try {
             
@@ -91,11 +102,6 @@ logUtil->put(commonStrings->EXCEPTION, "ServerLicenseRequestEntityFactory", comm
 }
 
 
-private: IdGeneratorEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYFACTORY_CPP

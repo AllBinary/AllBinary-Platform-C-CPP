@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABHASHMAP_CPP
+        #define ORG_ALLBINARY_UTIL_ABHASHMAP_CPP
+
+        #include "org/allbinary/util/ABHashMap.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,146 +63,161 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+
 template<typename K, typename V>
-class ABHashMap: public HashMap<K, V> {
-
-    public: int32_t size(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.size();;
-    
-}
-
-
-    public: bool isEmpty(){
+ABHashMap<K, V>::ABHashMap() {
+        }
+        
+    template<typename K, typename V>
+auto ABHashMap<K, V>::size() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isEmpty();;
+                        return HashMap<K, V>::size();;
     
 }
 
 
-    public: V get(Object* key){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::isEmpty() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.get(key);;
+                        return HashMap<K, V>::isEmpty();;
     
 }
 
 
-    public: bool containsKey(Object* key){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::get(Object* key) -> V{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.containsKey(key);;
+                        return HashMap<K, V>::get(key);;
     
 }
 
 
-    public: V put(K key, V value){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::containsKey(Object* key) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.put(key, value);;
+                        return HashMap<K, V>::containsKey(key);;
     
 }
 
 
-    public: void putAll(Map<
+    template<typename K, typename V>
+auto ABHashMap<K, V>::put(K key, V value) -> V{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return HashMap<K, V>::put(key, value);;
+    
+}
+
+
+    template<typename K, typename V>
+auto ABHashMap<K, V>::putAll(Map<
                 //Otherwise - typeArguments - type - WildcardType
 
                 //Otherwise - typeArguments - type - WildcardType
->* map){
-super.putAll(map);
+>* map) -> void{
+HashMap<K, V>::putAll(map);
     
 }
 
 
-    public: V remove(Object* key){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::remove(Object* key) -> V{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.remove(key);;
+                        return HashMap<K, V>::remove(key);;
     
 }
 
 
-    public: void clear(){
-super.clear();
+    template<typename K, typename V>
+auto ABHashMap<K, V>::clear() -> void{
+HashMap<K, V>::clear();
     
 }
 
 
-    public: bool containsValue(Object* value){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::containsValue(Object* value) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.containsValue(value);;
+                        return HashMap<K, V>::containsValue(value);;
     
 }
 
 
-    public: Set<K>* keySet(){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::keySet() -> Set<K>*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.keySet();;
+                        return HashMap<K, V>::keySet();;
     
 }
 
 
-    public: Set<Entry<K, V>*>* entrySet(){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::entrySet() -> Set<Entry<K, V>*>*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.entrySet();;
+                        return HashMap<K, V>::entrySet();;
     
 }
 
 
-    public: V getOrDefault(Object* key, V defaultValue){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::getOrDefault(Object* key, V defaultValue) -> V{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getOrDefault(key, defaultValue);;
+                        return HashMap<K, V>::getOrDefault(key, defaultValue);;
     
 }
 
 
-    public: V putIfAbsent(K key, V value){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::putIfAbsent(K key, V value) -> V{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.putIfAbsent(key, value);;
+                        return HashMap<K, V>::putIfAbsent(key, value);;
     
 }
 
 
-    public: Object* clone(){
+    template<typename K, typename V>
+auto ABHashMap<K, V>::clone() -> Object*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.clone();;
+                        return HashMap<K, V>::clone();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_ABHASHMAP_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCREENINFO_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_SCREENINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/ScreenInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,31 +41,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScreenInfo
-            : public Object
-         {
 
-    private: static ScreenInfo* instance() { static std::unique_ptr<ScreenInfo> value(new ScreenInfo()); return value.get(); }
+ScreenInfo::ScreenInfo() {
+        }
+        auto ScreenInfo::instance_owner() -> ScreenInfo* { static std::unique_ptr<ScreenInfo> value(new ScreenInfo()); return value.get(); }
+ScreenInfo* ScreenInfo::instance = ScreenInfo::instance_owner();
 
-    public: static ScreenInfo* getInstance(){
+    auto ScreenInfo::getInstance() -> ScreenInfo*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenInfo::instance();
+                        return ScreenInfo::instance;
     
 }
 
 
-    public: const int32_t SMALL_WIDTH = 320;
 
-    public: const int32_t SMALL_HEIGHT = 240;
 
-    public: const int32_t MEDIUM_WIDTH = 800;
-
-    public: const int32_t MEDIUM_HEIGHT = 600;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_SCREENINFO_CPP

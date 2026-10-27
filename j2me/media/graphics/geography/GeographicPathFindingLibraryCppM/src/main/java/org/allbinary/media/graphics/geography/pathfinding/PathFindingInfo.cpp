@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGINFO_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,21 +65,10 @@
 #include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
 
-class PathFindingInfo
-            : public Object
-        , public PathFindingInfoInterface {
+auto PathFindingInfo::NULL_PATH_FINDING_INFO_owner() -> PathFindingInfo* { static std::unique_ptr<PathFindingInfo> value(new PathFindingInfo(PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, BasicArrayListUtil::getInstance()->getImmutableInstance(), BasicArrayListUtil::getInstance()->getImmutableInstance())); return value.get(); }
+PathFindingInfo* PathFindingInfo::NULL_PATH_FINDING_INFO = PathFindingInfo::NULL_PATH_FINDING_INFO_owner();
 
-    public: static PathFindingInfo* NULL_PATH_FINDING_INFO() { static std::unique_ptr<PathFindingInfo> value(new PathFindingInfo(PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, BasicArrayListUtil::getInstance()->getImmutableInstance(), BasicArrayListUtil::getInstance()->getImmutableInstance())); return value.get(); }
-
-    private: GeographicPathFinderBase* pathFinder = GeographicPathFinderBase::NULL_GEOGRAPHIC_PATH_FINDER_BASE;
-
-    private: BasicArrayList* startPathFindingNodeList;
-
-    private: BasicArrayList* endPathFindingNodeList;
-
-    private: PathFindingNodeCostInfoFactoryBase* pathFindingNodeCostInfoFactoryInterface;
-
-public: PathFindingInfo(PathFindingNodeCostInfoFactoryBase* pathFindingNodeCostInfoFactoryInterface, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
+PathFindingInfo::PathFindingInfo(PathFindingNodeCostInfoFactoryBase* pathFindingNodeCostInfoFactoryInterface, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) : pathFinder(GeographicPathFinderBase::NULL_GEOGRAPHIC_PATH_FINDER_BASE){
 this->pathFindingNodeCostInfoFactoryInterface= pathFindingNodeCostInfoFactoryInterface;
     
 this->startPathFindingNodeList= startPathFindingNodeList;
@@ -79,7 +78,7 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 }
 
 
-    public: BasicArrayList* getStartPathFindingNodeList(){
+    auto PathFindingInfo::getStartPathFindingNodeList() -> BasicArrayList*{
 
 
 
@@ -89,7 +88,7 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 }
 
 
-    public: BasicArrayList* getEndPathFindingNodeList(){
+    auto PathFindingInfo::getEndPathFindingNodeList() -> BasicArrayList*{
 
 
 
@@ -99,7 +98,7 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 }
 
 
-    public: GeographicPathFinderBase* getPathFinder(){
+    auto PathFindingInfo::getPathFinder() -> GeographicPathFinderBase*{
 
 
 
@@ -109,25 +108,25 @@ this->endPathFindingNodeList= endPathFindingNodeList;
 }
 
 
-    public: void addStartPathFindingNode(PathFindingNode* startPathFindingNode){
+    auto PathFindingInfo::addStartPathFindingNode(PathFindingNode* startPathFindingNode) -> void{
 this->startPathFindingNodeList->add(startPathFindingNode);
     
 }
 
 
-    public: void addEndPathFindingNode(PathFindingNode* endPathFindingNode){
+    auto PathFindingInfo::addEndPathFindingNode(PathFindingNode* endPathFindingNode) -> void{
 this->endPathFindingNodeList->add(endPathFindingNode);
     
 }
 
 
-    public: void setPathFinder(GeographicPathFinderBase* pathFinder){
+    auto PathFindingInfo::setPathFinder(GeographicPathFinderBase* pathFinder) -> void{
 this->pathFinder= pathFinder;
     
 }
 
 
-    public: PathFindingNodeCostInfoFactoryBase* getPathFindingNodeCostInfoFactoryInterface(){
+    auto PathFindingInfo::getPathFindingNodeCostInfoFactoryInterface() -> PathFindingNodeCostInfoFactoryBase*{
 
 
 
@@ -137,7 +136,6 @@ this->pathFinder= pathFinder;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGINFO_CPP

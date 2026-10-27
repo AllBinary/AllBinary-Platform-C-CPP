@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATION_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/configuration/UserConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,17 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
 
-class UserConfiguration
-            : public Object
-        , public UserConfigurationInterface {
 
-    private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
-
-    private: TimeCreated* timeCreated;
-
-    private: TimeLastModified* timeLastModified;
-
-public: UserConfiguration(){
+UserConfiguration::UserConfiguration(){
 this->userEmailConfigurationInterface= dynamic_cast<UserEmailConfigurationInterface*>(new UserEmailConfiguration());
     
 this->timeCreated= new TimeCreated(0);
@@ -84,7 +85,7 @@ this->timeLastModified= new TimeLastModified(0);
 }
 
 
-public: UserConfiguration(HashMap<Object*, Object*>* hashMap){
+UserConfiguration::UserConfiguration(HashMap<Object*, Object*>* hashMap){
 this->userEmailConfigurationInterface= dynamic_cast<UserEmailConfigurationInterface*>(new UserEmailConfiguration(hashMap));
     
 this->timeCreated= new TimeCreated(hashMap->get(EntryData::getInstance()->TIMECREATED));
@@ -94,7 +95,7 @@ this->timeLastModified= new TimeLastModified(hashMap->get(EntryData::getInstance
 }
 
 
-    public: UserEmailConfigurationInterface* getUserEmailConfigurationInterface(){
+    auto UserConfiguration::getUserEmailConfigurationInterface() -> UserEmailConfigurationInterface*{
 
 
 
@@ -104,13 +105,13 @@ this->timeLastModified= new TimeLastModified(hashMap->get(EntryData::getInstance
 }
 
 
-    public: void setUserEmailConfigurationInterface(UserEmailConfigurationInterface* userEmailConfigurationInterface){
+    auto UserConfiguration::setUserEmailConfigurationInterface(UserEmailConfigurationInterface* userEmailConfigurationInterface) -> void{
 this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     
 }
 
 
-    public: TimeCreated* getTimeCreated(){
+    auto UserConfiguration::getTimeCreated() -> TimeCreated*{
 
 
 
@@ -120,7 +121,7 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 }
 
 
-    public: TimeLastModified* getTimeLastModified(){
+    auto UserConfiguration::getTimeLastModified() -> TimeLastModified*{
 
 
 
@@ -130,19 +131,18 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 }
 
 
-    public: void setTimeCreated(TimeCreated* timeCreated){
+    auto UserConfiguration::setTimeCreated(TimeCreated* timeCreated) -> void{
 this->timeCreated= timeCreated;
     
 }
 
 
-    public: void setTimeLastModified(TimeLastModified* timeLastModified){
+    auto UserConfiguration::setTimeLastModified(TimeLastModified* timeLastModified) -> void{
 this->timeLastModified= timeLastModified;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATION_CPP

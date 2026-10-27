@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_CPP
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/inventory/InventorySearchLoopInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,25 +58,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventorySearchLoopInfo
-            : public Object
-         {
 
-    public: int32_t lastPage =  -1;
-
-    public: int32_t currentPage =  -1;
-
-    public: int32_t numberOfResultsOnCurrentPage = 0;
-
-    public: int32_t numberOfResults = 0;
-
-    private: const std::string CURRENT = "current: ";
-
-    private: const std::string NUM = " num: ";
-
-    private: const std::string LAST = " last: ";
-
-    public: std::string toString(){
+InventorySearchLoopInfo::InventorySearchLoopInfo() {
+        }
+        
+    auto InventorySearchLoopInfo::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -91,7 +87,6 @@ stringBuffer->appendint(this->lastPage);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_CPP

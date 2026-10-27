@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_TESTCLIENTINFORMATION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_TESTCLIENTINFORMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/TestClientInformation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,9 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
 
-class TestClientInformation: public AbeClientInformation {
 
-public: TestClientInformation() : AbeClientInformation("Test App Name", "0.0.1", "Test App Name 0.0.1", "TA"){
+TestClientInformation::TestClientInformation() : AbeClientInformation("Test App Name", "0.0.1", "Test App Name 0.0.1", "TA"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,7 +65,6 @@ public: TestClientInformation() : AbeClientInformation("Test App Name", "0.0.1",
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_TESTCLIENTINFORMATION_CPP

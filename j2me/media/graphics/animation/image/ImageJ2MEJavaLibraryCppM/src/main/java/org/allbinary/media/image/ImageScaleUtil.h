@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
+class Image;
+class ImageCache;
 
 
 
@@ -56,11 +57,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageScaleUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+    private: static ImageScaleUtil* instance_owner();
+    private: static ImageScaleUtil* instance;
 
     public: static ImageScaleUtil* getInstance();
 
@@ -80,3 +86,16 @@ private: ImageScaleUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+
+        #endif
+    

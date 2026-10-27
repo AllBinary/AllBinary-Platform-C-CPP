@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_H
         #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,18 +36,10 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/image/opengles/OpenGLESImage.h>
-
-      
+class GL10;
+class Image;
+class BasicColor;
+class OpenGLESImage;
 
 
 
@@ -63,13 +60,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 
-    private: static TrueTypeFontUtil* instance() { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
+    private: static TrueTypeFontUtil* instance_owner();
+    private: static TrueTypeFontUtil* instance;
 
     public: static TrueTypeFontUtil* getInstance();
 
-    public: OpenGLESImage* fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
+    public: OpenGLESImage* fontImage;
 
 private: TrueTypeFontUtil();
 
@@ -91,3 +93,25 @@ private: TrueTypeFontUtil();
 
 
         #endif //ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/image/opengles/OpenGLESImage.h>)
+#include <org/allbinary/image/opengles/OpenGLESImage.h>
+#endif
+#if __has_include("org/allbinary/emulator/device/TrueTypeFontUtilBase.h")
+#include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_ANGLEINCREMENTINFO_CPP
+        #define ORG_ALLBINARY_MATH_ANGLEINCREMENTINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/AngleIncrementInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,23 +77,8 @@
         #include "org/allbinary/math/AngleFactory.h"
 #include "org/allbinary/math/FrameUtil.h"
 
-class AngleIncrementInfo
-            : public Object
-         {
 
-    private: static inline const std::string INCREMENT = "Inc: ";
-
-    private: int16_t angleIncrement;
-
-    public: int32_t DOWN_FRAME;
-
-    public: int32_t UP_FRAME;
-
-    public: int32_t LEFT_FRAME;
-
-    public: int32_t RIGHT_FRAME;
-
-public: AngleIncrementInfo(int16_t angleIncrement){
+AngleIncrementInfo::AngleIncrementInfo(int16_t angleIncrement) : frameUtil(FrameUtil::getInstance()){
 this->angleIncrement= angleIncrement;
     
 
@@ -92,20 +87,18 @@ this->angleIncrement= angleIncrement;
 
     SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
-this->DOWN_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->DOWN.getValue() /this->angleIncrement);
+this->DOWN_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->DOWN->getValue() /this->angleIncrement);
     
-this->UP_FRAME= smallIntegerSingletonFactory->getAt(static_cast<int32_t>(angleFactory->UP.getValue()));
+this->UP_FRAME= smallIntegerSingletonFactory->getAt(static_cast<int32_t>(angleFactory->UP->getValue()));
     
-this->LEFT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->LEFT.getValue() /this->angleIncrement);
+this->LEFT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->LEFT->getValue() /this->angleIncrement);
     
-this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT.getValue() /this->angleIncrement);
+this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT->getValue() /this->angleIncrement);
     
 }
 
 
-    private: FrameUtil* frameUtil = FrameUtil::getInstance();
-
-    public: int32_t getFrameAngle(int32_t frame){
+    auto AngleIncrementInfo::getFrameAngle(int32_t frame) -> int32_t{
 
 
 
@@ -115,7 +108,7 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT.getVa
 }
 
 
-    public: int16_t getAngleIncrement(){
+    auto AngleIncrementInfo::getAngleIncrement() -> int16_t{
 
 
 
@@ -125,7 +118,7 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT.getVa
 }
 
 
-    public: std::string toString(){
+    auto AngleIncrementInfo::toString() -> std::string{
 
 
 
@@ -135,7 +128,7 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT.getVa
 }
 
 
-    public: int32_t getClosestGeneralDirection(int16_t angle){
+    auto AngleIncrementInfo::getClosestGeneralDirection(int16_t angle) -> int32_t{
 
     int32_t closestDirection = SmallIntegerSingletonFactory::getInstance()->getAt(360);;
     
@@ -184,7 +177,6 @@ this->RIGHT_FRAME= smallIntegerSingletonFactory->getAt(angleFactory->RIGHT.getVa
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_ANGLEINCREMENTINFO_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/health/HealthResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealthResources
-            : public Object
-         {
+auto HealthResources::SINGLETON_owner() -> HealthResources* { static std::unique_ptr<HealthResources> value(new HealthResources()); return value.get(); }
+HealthResources* HealthResources::SINGLETON = HealthResources::SINGLETON_owner();
 
-    private: static HealthResources* SINGLETON() { static std::unique_ptr<HealthResources> value(new HealthResources()); return value.get(); }
+HealthResources::HealthResources(){
+}
 
-    public: static HealthResources* getInstance(){
+
+    auto HealthResources::getInstance() -> HealthResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HealthResources::SINGLETON();
+                        return HealthResources::SINGLETON;
     
 }
 
 
-    public: std::string RESOURCE = "health_drop_20_by_20.png";
-
-private: HealthResources(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_CPP

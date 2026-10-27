@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
 
 
 
@@ -50,12 +53,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/BasicColorFactory.h"
-#include "org/allbinary/graphics/color/BasicColor.h"
+        class BasicColorFactory;
+class BasicColor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorChangeEvent: public AllBinaryEventObject {
 
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
+    private: BasicColor* basicColor;
 
 public: ColorChangeEvent(Object* anyType);
 
@@ -69,3 +76,19 @@ public: ColorChangeEvent(Object* anyType);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+
+        #endif
+    

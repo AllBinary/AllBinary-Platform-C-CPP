@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/TestInputForMotionRectanglesResultsWorker.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -96,27 +106,14 @@
 #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
 #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
-class TestInputForMotionRectanglesResultsWorker
-            : public Object
-        , public MotionRectanglesResultsListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: int64_t index= 0;
-
-    private: bool running= false;
-
-    private: BasicArrayList* motionRectanglesVector;
-
-public: TestInputForMotionRectanglesResultsWorker(){
+TestInputForMotionRectanglesResultsWorker::TestInputForMotionRectanglesResultsWorker() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->motionRectanglesVector= new BasicArrayListD();
     
 }
 
 
-    public: BasicArrayList* getMotionRectanglesVector(){
+    auto TestInputForMotionRectanglesResultsWorker::getMotionRectanglesVector() -> BasicArrayList*{
 
 
 
@@ -126,7 +123,7 @@ this->motionRectanglesVector= new BasicArrayListD();
 }
 
 
-    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesImageComparisonResultsEvent){
+    auto TestInputForMotionRectanglesResultsWorker::onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesImageComparisonResultsEvent) -> void{
 this->getMotionRectanglesVector()->add(motionRectanglesImageComparisonResultsEvent->getMotionRectangles());
     
 this->run();
@@ -134,14 +131,14 @@ this->run();
 }
 
 
-    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+    auto TestInputForMotionRectanglesResultsWorker::onEvent(AllBinaryEventObject* allBinaryEventObject) -> void{
 this->onMotionRectanglesImageComparisonResultsEvent(dynamic_cast<MotionRectanglesResultsEvent*>(allBinaryEventObject));
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto TestInputForMotionRectanglesResultsWorker::isRunning() -> bool{
 
 
 
@@ -152,13 +149,13 @@ this->onMotionRectanglesImageComparisonResultsEvent(dynamic_cast<MotionRectangle
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto TestInputForMotionRectanglesResultsWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 
-    public: void run(){
+    auto TestInputForMotionRectanglesResultsWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -286,7 +283,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_CPP

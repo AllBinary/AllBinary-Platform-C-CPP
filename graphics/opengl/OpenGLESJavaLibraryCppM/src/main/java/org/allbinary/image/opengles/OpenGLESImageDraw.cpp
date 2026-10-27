@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEDRAW_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEDRAW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESImageDraw.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,31 +58,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLESImageDraw
-            : public Object
-         {
 
-    private: static OpenGLESImageDraw* instance() { static std::unique_ptr<OpenGLESImageDraw> value(new OpenGLESImageDraw()); return value.get(); }
+OpenGLESImageDraw::OpenGLESImageDraw() {
+        }
+        auto OpenGLESImageDraw::instance_owner() -> OpenGLESImageDraw* { static std::unique_ptr<OpenGLESImageDraw> value(new OpenGLESImageDraw()); return value.get(); }
+OpenGLESImageDraw* OpenGLESImageDraw::instance = OpenGLESImageDraw::instance_owner();
 
-    public: static OpenGLESImageDraw* getInstance(){
+    auto OpenGLESImageDraw::getInstance() -> OpenGLESImageDraw*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageDraw::instance();
+                        return OpenGLESImageDraw::instance;
     
 }
 
 
-    public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESImageDraw::drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z) -> void{
 }
 
 
-    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESImageDraw::draw(GL10* gl, int32_t x, int32_t y, int32_t z) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEDRAW_CPP

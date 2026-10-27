@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class NullUtil;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -60,16 +59,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
-#include "org/allbinary/logic/math/MathUtil.h"
+        class PrimitiveLongSingleton;
+class MathUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PrimitiveLongUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static PrimitiveLongUtil* createPowerOfTen(int32_t powerOfTen);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: int32_t powerOfTen;
 
@@ -81,7 +84,7 @@ class PrimitiveLongUtil
 
     private: int32_t currentTotalDigits= 0;
 
-    private: PrimitiveLongSingleton* primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
+    private: PrimitiveLongSingleton* primitiveLongSingleton;
 
 public: PrimitiveLongUtil(int32_t powerOfTen, Object* unused);
 
@@ -99,3 +102,25 @@ public: PrimitiveLongUtil(int32_t powerOfTen, Object* unused);
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/math/PrimitiveLongSingleton.h")
+#include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
+#endif
+#if __has_include("org/allbinary/logic/math/MathUtil.h")
+#include "org/allbinary/logic/math/MathUtil.h"
+#endif
+
+        #endif
+    

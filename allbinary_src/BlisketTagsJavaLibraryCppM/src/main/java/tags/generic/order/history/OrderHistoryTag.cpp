@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_GENERIC_ORDER_HISTORY_ORDERHISTORYTAG_CPP
+        #define TAGS_GENERIC_ORDER_HISTORY_ORDERHISTORYTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/generic/order/history/OrderHistoryTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,17 +83,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderHistoryTag: public StoreValidationTransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string status;
-
-public: OrderHistoryTag(){
+OrderHistoryTag::OrderHistoryTag() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setStatus(std::string value){
+    auto OrderHistoryTag::setStatus(std::string value) -> void{
 this->status= value;
     
 }
@@ -91,7 +96,7 @@ this->status= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string setOrderStatus(){
+    auto OrderHistoryTag::setOrderStatus() -> std::string{
 
         try {
             
@@ -132,10 +137,10 @@ this->status= value;
     std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus()", &e);
     
 
                                     }
@@ -153,7 +158,7 @@ this->status= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto OrderHistoryTag::doStartTag() -> int32_t{
 
         try {
             this->setName("Basic Order History View");
@@ -178,7 +183,7 @@ pageContext.getOut()->print(this->setOrderStatus());
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     
@@ -188,7 +193,7 @@ pageContext.getOut()->print(this->setOrderStatus());
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -197,7 +202,7 @@ pageContext.getOut()->print(this->setOrderStatus());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -205,7 +210,7 @@ pageContext.getOut()->print(this->setOrderStatus());
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -237,7 +242,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_GENERIC_ORDER_HISTORY_ORDERHISTORYTAG_CPP

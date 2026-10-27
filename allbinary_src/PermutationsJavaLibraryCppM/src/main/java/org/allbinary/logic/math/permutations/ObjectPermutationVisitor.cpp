@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_OBJECTPERMUTATIONVISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_OBJECTPERMUTATIONVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/permutations/ObjectPermutationVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,20 +60,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ObjectPermutationVisitor: public Visitor {
 
-    protected: std::vector<Object*> data;
-
-public: ObjectPermutationVisitor(std::vector<Object*> data){
+ObjectPermutationVisitor::ObjectPermutationVisitor(std::vector<Object*> data) : stringBuilder(new StringMaker()){
 this->data= data;
     
 }
 
 
-    private: StringMaker* stringBuilder = new StringMaker();
-
-    public: Object* visit(Object* anyType){
-this->stringBuilder->delete(0, stringBuilder->length());
+    auto ObjectPermutationVisitor::visit(Object* anyType) -> Object*{
+this->stringBuilder->delete_(0, stringBuilder->length());
     
 this->print(this->data, stringBuilder);
     
@@ -76,7 +81,7 @@ this->print(this->data, stringBuilder);
 }
 
 
-    public: void print(std::vector<Object*> data){
+    auto ObjectPermutationVisitor::print(std::vector<Object*> data) -> void{
 
     StringMaker* stringBuilder = new StringMaker();;
     
@@ -85,7 +90,7 @@ this->print(data, stringBuilder);
 }
 
 
-    public: void print(std::vector<Object*> data, StringMaker* stringBuilder){
+    auto ObjectPermutationVisitor::print(std::vector<Object*> data, StringMaker* stringBuilder) -> void{
 
     TsUtil* tsUtil = TsUtil::getInstance();;
     
@@ -110,7 +115,6 @@ System.out.println(stringBuilder->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_OBJECTPERMUTATIONVISITOR_CPP

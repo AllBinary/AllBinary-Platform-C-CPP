@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_ANDROIDINFOFACTORY_H
         #define ORG_ALLBINARY_ANDROID_ANDROIDINFOFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -50,14 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidInfoFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AndroidInfoFactory* instance() { static std::unique_ptr<AndroidInfoFactory> value(new AndroidInfoFactory()); return value.get(); }
+    private: static AndroidInfoFactory* instance_owner();
+    private: static AndroidInfoFactory* instance;
 
     public: static AndroidInfoFactory* getInstance();
 
+
+            
+    public: AndroidInfoFactory();
+        
     private: const int32_t version = 8;
 
     public: int32_t getVersion();
@@ -68,3 +82,10 @@ class AndroidInfoFactory
 
 
         #endif //ORG_ALLBINARY_ANDROID_ANDROIDINFOFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_ANDROIDINFOFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_ANDROIDINFOFACTORY_H_COMPLETE
+        
+        #endif
+    

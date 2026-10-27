@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/vector/AxisMathVectorUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,25 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AxisMathVectorUtil
-            : public Object
-         {
 
-    private: static AxisMathVectorUtil* instance() { static std::unique_ptr<AxisMathVectorUtil> value(new AxisMathVectorUtil()); return value.get(); }
+AxisMathVectorUtil::AxisMathVectorUtil() : noDecimalTrigTable(NoDecimalTrigTable::getInstance()) {
+        }
+        auto AxisMathVectorUtil::instance_owner() -> AxisMathVectorUtil* { static std::unique_ptr<AxisMathVectorUtil> value(new AxisMathVectorUtil()); return value.get(); }
+AxisMathVectorUtil* AxisMathVectorUtil::instance = AxisMathVectorUtil::instance_owner();
 
-    public: static AxisMathVectorUtil* getInstance(){
+    auto AxisMathVectorUtil::getInstance() -> AxisMathVectorUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AxisMathVectorUtil::instance();
+                        return AxisMathVectorUtil::instance;
     
 }
 
 
-    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
-
-    public: int64_t calculateX(int64_t magnitude, int32_t angle){
+    auto AxisMathVectorUtil::calculateX(int64_t magnitude, int32_t angle) -> int64_t{
 
 
 
@@ -76,7 +84,7 @@ class AxisMathVectorUtil
 }
 
 
-    public: int64_t calculateY(int64_t magnitude, int32_t angle){
+    auto AxisMathVectorUtil::calculateY(int64_t magnitude, int32_t angle) -> int64_t{
 
 
 
@@ -86,7 +94,7 @@ class AxisMathVectorUtil
 }
 
 
-    public: int64_t calculateZ(int64_t magnitude, int32_t otherAngle){
+    auto AxisMathVectorUtil::calculateZ(int64_t magnitude, int32_t otherAngle) -> int64_t{
 
 
 
@@ -96,7 +104,6 @@ class AxisMathVectorUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_CPP

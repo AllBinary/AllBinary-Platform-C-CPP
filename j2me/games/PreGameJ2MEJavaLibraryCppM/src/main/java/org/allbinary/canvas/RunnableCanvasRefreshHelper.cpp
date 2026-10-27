@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_RUNNABLECANVASREFRESHHELPER_CPP
+        #define ORG_ALLBINARY_CANVAS_RUNNABLECANVASREFRESHHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/RunnableCanvasRefreshHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +57,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/Processor.h"
 
-class RunnableCanvasRefreshHelper: public Processor {
 
-    private: MyCanvas* runnableCanvas;
-
-public: RunnableCanvasRefreshHelper(MyCanvas* runnableCanvas){
+RunnableCanvasRefreshHelper::RunnableCanvasRefreshHelper(MyCanvas* runnableCanvas){
 this->runnableCanvas= runnableCanvas;
     
 }
 
 
-    public: void process(){
+    auto RunnableCanvasRefreshHelper::process() -> void{
 this->runnableCanvas->repaint();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_RUNNABLECANVASREFRESHHELPER_CPP

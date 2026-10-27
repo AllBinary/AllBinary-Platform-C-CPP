@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,107 +67,106 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Waypoint2LogHelper
-            : public Object
-         {
 
-    private: static Waypoint2LogHelper* instance() { static std::unique_ptr<Waypoint2LogHelper> value(new Waypoint2LogHelper()); return value.get(); }
+Waypoint2LogHelper::Waypoint2LogHelper() {
+        }
+        auto Waypoint2LogHelper::instance_owner() -> Waypoint2LogHelper* { static std::unique_ptr<Waypoint2LogHelper> value(new Waypoint2LogHelper()); return value.get(); }
+Waypoint2LogHelper* Waypoint2LogHelper::instance = Waypoint2LogHelper::instance_owner();
 
-    public: static Waypoint2LogHelper* getInstance(){
+    auto Waypoint2LogHelper::getInstance() -> Waypoint2LogHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Waypoint2LogHelper::instance();
+                        return Waypoint2LogHelper::instance;
     
 }
 
 
-    public: void initRange(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t closeRange, int32_t sensorRange){
+    auto Waypoint2LogHelper::initRange(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t closeRange, int32_t sensorRange) -> void{
 }
 
 
-    public: void processPossibleTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance, bool isShorterThanCurrentTargetDistance, bool isCurrentTargetDestroyed){
+    auto Waypoint2LogHelper::processPossibleTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance, bool isShorterThanCurrentTargetDistance, bool isCurrentTargetDestroyed) -> void{
 }
 
 
-    public: void processSetTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance){
+    auto Waypoint2LogHelper::processSetTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance) -> void{
 }
 
 
-    public: void processPossibleTargetCloser(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance){
+    auto Waypoint2LogHelper::processPossibleTargetCloser(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance) -> void{
 }
 
 
-    public: void setTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance){
+    auto Waypoint2LogHelper::setTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance) -> void{
 }
 
 
-    public: void setTargetPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2LogHelper::setTargetPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void setTargetPathIgnoreNewPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2){
+    auto Waypoint2LogHelper::setTargetPathIgnoreNewPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2) -> void{
 }
 
 
-    public: void processWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* targetLayer, int32_t size){
+    auto Waypoint2LogHelper::processWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* targetLayer, int32_t size) -> void{
 }
 
 
-    public: void processWaypointTracked(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2){
+    auto Waypoint2LogHelper::processWaypointTracked(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2) -> void{
 }
 
 
-    public: void processWaypointTrackedVisit(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* geographicMapCellPosition){
+    auto Waypoint2LogHelper::processWaypointTrackedVisit(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* geographicMapCellPosition) -> void{
 }
 
 
-    public: void processWaypointTrackedWithoutProgress(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, std::string reason){
+    auto Waypoint2LogHelper::processWaypointTrackedWithoutProgress(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, std::string reason) -> void{
 }
 
 
-    public: void wander(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2LogHelper::wander(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void targetDestroyed(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2LogHelper::targetDestroyed(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void processTargeting(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy){
+    auto Waypoint2LogHelper::processTargeting(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy) -> void{
 }
 
 
-    public: void processTargetingNonWayPoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy){
+    auto Waypoint2LogHelper::processTargetingNonWayPoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy) -> void{
 }
 
 
-    public: void removeWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* waypointLayer, std::string reason){
+    auto Waypoint2LogHelper::removeWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* waypointLayer, std::string reason) -> void{
 }
 
 
-    public: void removeWaypointList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, BasicArrayList* list){
+    auto Waypoint2LogHelper::removeWaypointList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, BasicArrayList* list) -> void{
 }
 
 
-    public: void removeWaypointClear(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2LogHelper::removeWaypointClear(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void clearTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2LogHelper::clearTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void addWaypointFromUser(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer){
+    auto Waypoint2LogHelper::addWaypointFromUser(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer) -> void{
 }
 
 
-    public: void targetMovedSoRetarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2LogHelper::targetMovedSoRetarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_CPP

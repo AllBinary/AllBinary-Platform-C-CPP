@@ -18,6 +18,16 @@
 
 
 
+        #ifndef DYNAMIC_NATIVELIBRARYHELPER_CPP
+        #define DYNAMIC_NATIVELIBRARYHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "dynamic/NativeLibraryHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,25 +57,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NativeLibraryHelper
-            : public Object
-         {
 
-    private: std::string library;
-
-public: NativeLibraryHelper(std::string library){
+NativeLibraryHelper::NativeLibraryHelper(std::string library){
 this->library= library;
     
 }
 
 
-    public: void load(){
+    auto NativeLibraryHelper::load() -> void{
 System.loadLibrary(this->library);
     
 }
 
 
-};
 
-            
 
+        #endif //DYNAMIC_NATIVELIBRARYHELPER_CPP

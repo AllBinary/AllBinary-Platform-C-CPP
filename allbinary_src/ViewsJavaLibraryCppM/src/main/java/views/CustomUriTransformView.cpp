@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_CUSTOMURITRANSFORMVIEW_CPP
+        #define VIEWS_CUSTOMURITRANSFORMVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/CustomUriTransformView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,26 +93,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomUriTransformView
-            : public Object
-        , public TransformInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+CustomUriTransformView::CustomUriTransformView(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: TransformInfoInterface* transformInfoInterface;
-
-    private: TransformDocumentInterface* transformDocumentInterface;
-
-public: CustomUriTransformView(TransformInfoInterface* transformInfoInterface){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -114,9 +111,7 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 }
 
 
-    public: int32_t NO_TYPE = 0;
-
-    public: int32_t getTypeId(){
+    auto CustomUriTransformView::getTypeId() -> int32_t{
 
 
 
@@ -126,7 +121,7 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 }
 
 
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto CustomUriTransformView::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -136,13 +131,13 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 }
 
 
-    public: void setTransformInfoInterface(TransformInfoInterface* transformInfoInterface){
+    auto CustomUriTransformView::setTransformInfoInterface(TransformInfoInterface* transformInfoInterface) -> void{
 this->transformInfoInterface= transformInfoInterface;
     
 }
 
 
-    public: TransformDocumentInterface* getTransformDocumentInterface(){
+    auto CustomUriTransformView::getTransformDocumentInterface() -> TransformDocumentInterface*{
 
 
 
@@ -152,13 +147,13 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface){
+    auto CustomUriTransformView::setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface) -> void{
 this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public: Document* toXmlDoc(){
+    auto CustomUriTransformView::toXmlDoc() -> Document*{
 
 
 
@@ -170,7 +165,7 @@ this->transformDocumentInterface= transformDocumentInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document* getDoc(){
+    auto CustomUriTransformView::getDoc() -> Document*{
 
     Document* document = this->getTransformInfoInterface()->getDataDocument();;
     
@@ -199,7 +194,7 @@ this->transformDocumentInterface= transformDocumentInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto CustomUriTransformView::view() -> std::string{
 
         try {
             
@@ -219,7 +214,7 @@ this->transformDocumentInterface= transformDocumentInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
@@ -237,7 +232,6 @@ this->transformDocumentInterface= transformDocumentInterface;
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_CUSTOMURITRANSFORMVIEW_CPP

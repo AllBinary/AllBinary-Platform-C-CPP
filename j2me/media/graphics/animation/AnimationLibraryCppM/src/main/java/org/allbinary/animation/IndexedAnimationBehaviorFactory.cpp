@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIORFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/IndexedAnimationBehaviorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
 #include "org/allbinary/animation/IndexedAnimationBehavior.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class IndexedAnimationBehaviorFactory: public AnimationBehaviorFactory {
 
-    public: int64_t frameDelayTime;
-
-    public: int32_t loopTotal;
-
-public: IndexedAnimationBehaviorFactory(int32_t loopTotal, int64_t frameDelayTime){
+IndexedAnimationBehaviorFactory::IndexedAnimationBehaviorFactory(int32_t loopTotal, int64_t frameDelayTime){
 this->loopTotal= loopTotal;
     
 this->frameDelayTime= frameDelayTime;
@@ -60,7 +65,7 @@ this->frameDelayTime= frameDelayTime;
 }
 
 
-    public: AnimationBehavior* getOrCreateInstance(){
+    auto IndexedAnimationBehaviorFactory::getOrCreateInstance() -> AnimationBehavior*{
 
 
 
@@ -70,7 +75,6 @@ this->frameDelayTime= frameDelayTime;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIORFACTORY_CPP

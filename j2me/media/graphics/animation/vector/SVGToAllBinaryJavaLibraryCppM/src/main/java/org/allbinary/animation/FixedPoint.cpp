@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_FIXEDPOINT_CPP
+        #define ORG_ALLBINARY_ANIMATION_FIXEDPOINT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/FixedPoint.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,25 +41,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FixedPoint
-            : public Object
-         {
 
-    private: static FixedPoint* instance() { static std::unique_ptr<FixedPoint> value(new FixedPoint()); return value.get(); }
+FixedPoint::FixedPoint() : ONE(1<<16) {
+        }
+        auto FixedPoint::instance_owner() -> FixedPoint* { static std::unique_ptr<FixedPoint> value(new FixedPoint()); return value.get(); }
+FixedPoint* FixedPoint::instance = FixedPoint::instance_owner();
 
-    public: static FixedPoint* getInstance(){
+    auto FixedPoint::getInstance() -> FixedPoint*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FixedPoint::instance();
+                        return FixedPoint::instance;
     
 }
 
 
-    public: const int32_t ONE = 1<<16;
-
-    public: int32_t toFixed(double val){
+    auto FixedPoint::toFixed(double val) -> int32_t{
 
 
 
@@ -59,7 +67,7 @@ class FixedPoint
 }
 
 
-    public: int32_t toFixed(float val){
+    auto FixedPoint::toFixed(float val) -> int32_t{
 
 
 
@@ -69,7 +77,7 @@ class FixedPoint
 }
 
 
-    public: int32_t mul(int32_t a, int32_t b){
+    auto FixedPoint::mul(int32_t a, int32_t b) -> int32_t{
 
 
 
@@ -79,7 +87,7 @@ class FixedPoint
 }
 
 
-    public: int32_t div(int32_t a, int32_t b){
+    auto FixedPoint::div(int32_t a, int32_t b) -> int32_t{
 
 
 
@@ -89,7 +97,7 @@ class FixedPoint
 }
 
 
-    public: int32_t toInt(int32_t fixed){
+    auto FixedPoint::toInt(int32_t fixed) -> int32_t{
 
 
 
@@ -99,7 +107,6 @@ class FixedPoint
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_FIXEDPOINT_CPP

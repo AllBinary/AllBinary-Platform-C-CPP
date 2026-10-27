@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocumentFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,14 @@
         #include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h"
 #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
-class TransformHttpRequestDocumentFactory
-            : public Object
-         {
+
+TransformHttpRequestDocumentFactory::TransformHttpRequestDocumentFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface* getInstance(PageContext* pageContext, WeblisketSession* weblisketSession){
+    auto TransformHttpRequestDocumentFactory::getInstance(PageContext* pageContext, WeblisketSession* weblisketSession) -> TransformDocumentInterface*{
 
 
 
@@ -71,11 +82,6 @@ class TransformHttpRequestDocumentFactory
 }
 
 
-private: TransformHttpRequestDocumentFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_SERVLETSTRINGS_H
         #define ORG_ALLBINARY_LOGIC_STRING_SERVLETSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ServletStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static ServletStrings* instance() { static std::unique_ptr<ServletStrings> value(new ServletStrings()); return value.get(); }
+    private: static ServletStrings* instance_owner();
+    private: static ServletStrings* instance;
 
     public: static ServletStrings* getInstance();
 
+
+            
+    public: ServletStrings();
+        
     public: const std::string DOPOST = "doPost";
 
     public: const std::string DOGET = "doGet";
@@ -68,3 +82,10 @@ class ServletStrings
 
 
         #endif //ORG_ALLBINARY_LOGIC_STRING_SERVLETSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_STRING_SERVLETSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_STRING_SERVLETSTRINGS_H_COMPLETE
+        
+        #endif
+    

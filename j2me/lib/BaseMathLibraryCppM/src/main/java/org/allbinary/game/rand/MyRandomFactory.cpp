@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/rand/MyRandomFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,23 +84,173 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Do not use in client code for money related things.
-class MyRandomFactory
-            : public Object
-         {
+auto MyRandomFactory::instance_owner() -> MyRandomFactory* { static std::unique_ptr<MyRandomFactory> value(new MyRandomFactory()); return value.get(); }
+MyRandomFactory* MyRandomFactory::instance = MyRandomFactory::instance_owner();
 
-    private: static MyRandomFactory* instance() { static std::unique_ptr<MyRandomFactory> value(new MyRandomFactory()); return value.get(); }
-
-    public: static MyRandomFactory* getInstance(){
+    auto MyRandomFactory::getInstance() -> MyRandomFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyRandomFactory::instance();
+                        return MyRandomFactory::instance;
     
 }
 
 
-    public: static void main(std::vector<std::string> args){
+MyRandomFactory::MyRandomFactory() : mathUtil(MathUtil::getInstance()){
+this->rand= new Random(System.currentTimeMillis());
+    
+}
+
+
+    auto MyRandomFactory::setSeed(int64_t seed) -> void{
+this->rand= new Random(seed);
+    
+}
+
+
+    auto MyRandomFactory::getNextInt(int32_t range) -> int32_t{
+
+    int32_t div = (Integer.MAX_VALUE /range) +1;;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return static_cast<int32_t>((this->rand->nextInt() /div));
+    
+}
+
+
+    auto MyRandomFactory::getAbsoluteNextInt(int32_t range) -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->mathUtil->abs(this->getNextInt(range));;
+    
+}
+
+
+    auto MyRandomFactory::getAbsoluteNextIntAllowZero(int32_t range) -> int32_t{
+
+                        if(range == 0)
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->mathUtil->abs(this->getNextInt(range));;
+    
+
+                        }
+                            
+}
+
+
+    auto MyRandomFactory::shuffle(std::vector<int32_t> intArray) -> void{
+this->shuffleTotal(intArray, intArray.size() *7);
+    
+}
+
+
+    auto MyRandomFactory::shuffleTotal(std::vector<int32_t> intArray, int32_t shuffleTotal) -> void{
+
+    int32_t size = intArray.size();;
+    
+
+    int32_t randomIndex= 0;;
+    
+
+    int32_t randomIndex2= 0;;
+    
+
+    int32_t value= 0;;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < shuffleTotal; index++)
+        {
+randomIndex= this->getAbsoluteNextIntAllowZero(size);
+    
+randomIndex2= this->getAbsoluteNextIntAllowZero(size);
+    
+value= intArray[randomIndex];
+    
+intArray[randomIndex]= intArray[randomIndex2];
+    
+intArray[randomIndex2]= value;
+    
+}
+
+}
+
+
+    auto MyRandomFactory::shuffle2(std::vector<int32_t> intArray, std::vector<int32_t> intArray2) -> void{
+this->shuffle2Total(intArray, intArray2, intArray.size() *7);
+    
+}
+
+
+    auto MyRandomFactory::shuffle2Total(std::vector<int32_t> intArray, std::vector<int32_t> intArray2, int32_t shuffleTotal) -> void{
+
+    int32_t size = intArray.size();;
+    
+
+    int32_t randomIndex= 0;;
+    
+
+    int32_t randomIndex2= 0;;
+    
+
+    int32_t value= 0;;
+    
+
+    int32_t value2= 0;;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < shuffleTotal; index++)
+        {
+randomIndex= this->getAbsoluteNextIntAllowZero(size);
+    
+randomIndex2= this->getAbsoluteNextIntAllowZero(size);
+    
+value= intArray[randomIndex];
+    
+value2= intArray2[randomIndex];
+    
+intArray[randomIndex]= intArray[randomIndex2];
+    
+intArray[randomIndex2]= value;
+    
+intArray2[randomIndex]= intArray2[randomIndex2];
+    
+intArray2[randomIndex2]= value2;
+    
+}
+
+}
+
+
+    auto MyRandomFactory::main(std::vector<std::string> args) -> void{
 
     MyRandomFactory* randomFactory = MyRandomFactory::getInstance();;
     
@@ -116,7 +276,7 @@ stringBuilder->appendint(randomFactory->getAbsoluteNextInt(3))->append(commonSep
 
 System.out.println(stringBuilder->toString());
     
-stringBuilder->delete(0, stringBuilder->length());
+stringBuilder->delete_(0, stringBuilder->length());
     
 
     std::vector<int32_t> intArray = std::vector<int32_t>(52);;
@@ -155,7 +315,7 @@ stringBuilder->appendint(intArray[index])->append(commonSeps->COMMA);
 
 System.out.println(stringBuilder->toString());
     
-stringBuilder->delete(0, stringBuilder->length());
+stringBuilder->delete_(0, stringBuilder->length());
     
 
 
@@ -203,171 +363,13 @@ found= false;
 
                         if(!found)
                         
-                                    throw new RuntimeException();
+                                    throw RuntimeException();
                                 
 }
 
 }
 
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
-
-    private: Random* rand;
-
-private: MyRandomFactory(){
-this->rand= new Random(System.currentTimeMillis());
-    
-}
 
 
-    public: void setSeed(int64_t seed){
-this->rand= new Random(seed);
-    
-}
-
-
-    public: int32_t getNextInt(int32_t range){
-
-    int32_t div = (Integer.MAX_VALUE /range) +1;;
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>((this->rand->nextInt() /div));
-    
-}
-
-
-    public: int32_t getAbsoluteNextInt(int32_t range){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->mathUtil->abs(this->getNextInt(range));;
-    
-}
-
-
-    public: int32_t getAbsoluteNextIntAllowZero(int32_t range){
-
-                        if(range == 0)
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0;
-    
-
-                                    }
-                                
-                        else {
-                            
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->mathUtil->abs(this->getNextInt(range));;
-    
-
-                        }
-                            
-}
-
-
-    public: void shuffle(std::vector<int32_t> intArray){
-this->shuffleTotal(intArray, intArray.size() *7);
-    
-}
-
-
-    public: void shuffleTotal(std::vector<int32_t> intArray, int32_t shuffleTotal){
-
-    int32_t size = intArray.size();;
-    
-
-    int32_t randomIndex= 0;;
-    
-
-    int32_t randomIndex2= 0;;
-    
-
-    int32_t value= 0;;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < shuffleTotal; index++)
-        {
-randomIndex= this->getAbsoluteNextIntAllowZero(size);
-    
-randomIndex2= this->getAbsoluteNextIntAllowZero(size);
-    
-value= intArray[randomIndex];
-    
-intArray[randomIndex]= intArray[randomIndex2];
-    
-intArray[randomIndex2]= value;
-    
-}
-
-}
-
-
-    public: void shuffle2(std::vector<int32_t> intArray, std::vector<int32_t> intArray2){
-this->shuffle2Total(intArray, intArray2, intArray.size() *7);
-    
-}
-
-
-    public: void shuffle2Total(std::vector<int32_t> intArray, std::vector<int32_t> intArray2, int32_t shuffleTotal){
-
-    int32_t size = intArray.size();;
-    
-
-    int32_t randomIndex= 0;;
-    
-
-    int32_t randomIndex2= 0;;
-    
-
-    int32_t value= 0;;
-    
-
-    int32_t value2= 0;;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < shuffleTotal; index++)
-        {
-randomIndex= this->getAbsoluteNextIntAllowZero(size);
-    
-randomIndex2= this->getAbsoluteNextIntAllowZero(size);
-    
-value= intArray[randomIndex];
-    
-value2= intArray2[randomIndex];
-    
-intArray[randomIndex]= intArray[randomIndex2];
-    
-intArray[randomIndex2]= value;
-    
-intArray2[randomIndex]= intArray2[randomIndex2];
-    
-intArray2[randomIndex2]= value2;
-    
-}
-
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_CPP

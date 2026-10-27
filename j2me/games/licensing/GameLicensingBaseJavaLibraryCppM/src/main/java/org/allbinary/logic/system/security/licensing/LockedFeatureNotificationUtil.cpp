@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDFEATURENOTIFICATIONUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDFEATURENOTIFICATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LockedFeatureNotificationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,27 +82,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/LicenseStrings.h"
 
-class LockedFeatureNotificationUtil
-            : public Object
-         {
 
-    private: static LockedFeatureNotificationUtil* instance() { static std::unique_ptr<LockedFeatureNotificationUtil> value(new LockedFeatureNotificationUtil()); return value.get(); }
+LockedFeatureNotificationUtil::LockedFeatureNotificationUtil() : gameNotificationEvent(new GameNotificationEvent(this, LicenseStrings::getInstance()->LOCKED, SmallIntegerSingletonFactory::getInstance()->getAt(3), BasicColorFactory::getInstance()->RED, BooleanFactory::getInstance()->FALSE)) {
+        }
+        auto LockedFeatureNotificationUtil::instance_owner() -> LockedFeatureNotificationUtil* { static std::unique_ptr<LockedFeatureNotificationUtil> value(new LockedFeatureNotificationUtil()); return value.get(); }
+LockedFeatureNotificationUtil* LockedFeatureNotificationUtil::instance = LockedFeatureNotificationUtil::instance_owner();
 
-    public: static LockedFeatureNotificationUtil* getInstance(){
+    auto LockedFeatureNotificationUtil::getInstance() -> LockedFeatureNotificationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LockedFeatureNotificationUtil::instance();
+                        return LockedFeatureNotificationUtil::instance;
     
 }
 
 
-    private: GameNotificationEvent* gameNotificationEvent = new GameNotificationEvent(this, LicenseStrings::getInstance()->LOCKED, SmallIntegerSingletonFactory::getInstance()->getAt(3), BasicColorFactory::getInstance()->RED, BooleanFactory::getInstance()->FALSE);
-
                 //@Throws(Exception.constructor)
             
-    public: void fire(){
+    auto LockedFeatureNotificationUtil::fire() -> void{
 PrimaryPlayerQueueFactory::getInstance()->add(ErrorSound::getInstance());
     
 GameNotificationEventHandler::getInstance()->fireEvent(this->gameNotificationEvent);
@@ -102,7 +110,7 @@ GameNotificationEventHandler::getInstance()->fireEvent(this->gameNotificationEve
 
                 //@Throws(Exception.constructor)
             
-    public: void fireWithColor(BasicColor* basicColor){
+    auto LockedFeatureNotificationUtil::fireWithColor(BasicColor* basicColor) -> void{
 PrimaryPlayerQueueFactory::getInstance()->add(ErrorSound::getInstance());
     
 this->gameNotificationEvent->setBasicColorP(basicColor);
@@ -112,7 +120,6 @@ GameNotificationEventHandler::getInstance()->fireEvent(this->gameNotificationEve
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDFEATURENOTIFICATIONUTIL_CPP

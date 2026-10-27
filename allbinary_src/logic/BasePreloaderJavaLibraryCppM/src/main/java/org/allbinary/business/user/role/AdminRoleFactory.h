@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -53,37 +54,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
+        class BasicUserRoleFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdminRoleFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AdminRoleFactory* instance() { static std::unique_ptr<AdminRoleFactory> value(new AdminRoleFactory()); return value.get(); }
+    private: static AdminRoleFactory* instance_owner();
+    private: static AdminRoleFactory* instance;
 
     public: static AdminRoleFactory* getInstance();
 
-    private: BasicArrayList* adminRoles = new BasicArrayListD();
+    private: BasicArrayList* adminRoles;
 
-    private: BasicArrayList* storeAdminRoles = new BasicArrayListD();
+    private: BasicArrayList* storeAdminRoles;
 
-    private: BasicArrayList* storeManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* storeManagementRoles;
 
-    private: BasicArrayList* productManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* productManagementRoles;
 
-    private: BasicArrayList* reviewManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* reviewManagementRoles;
 
-    private: BasicArrayList* customerManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* customerManagementRoles;
 
-    private: BasicArrayList* workflowManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* workflowManagementRoles;
 
-    private: BasicArrayList* orderManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* orderManagementRoles;
 
-    private: BasicArrayList* adjusterManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* adjusterManagementRoles;
 
-    private: BasicArrayList* shippingManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* shippingManagementRoles;
 
-    private: BasicArrayList* webManagementRoles = new BasicArrayListD();
+    private: BasicArrayList* webManagementRoles;
 
 private: AdminRoleFactory();
 
@@ -115,3 +121,19 @@ private: AdminRoleFactory();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/business/user/role/BasicUserRoleFactory.h")
+#include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
+#endif
+
+        #endif
+    

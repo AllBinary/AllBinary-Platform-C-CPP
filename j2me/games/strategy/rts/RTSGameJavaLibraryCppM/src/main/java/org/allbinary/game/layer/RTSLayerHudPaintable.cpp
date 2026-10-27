@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERHUDPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERHUDPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSLayerHudPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,36 +78,25 @@
         #include "org/allbinary/game/layer/SelectionHudPaintable.h"
 #include "org/allbinary/game/layer/RTSLayer.h"
 
-class RTSLayerHudPaintable: public SelectionHudPaintable, public UpdateMyFontInterface {
+auto RTSLayerHudPaintable::instance_owner() -> RTSLayerHudPaintable* { static std::unique_ptr<RTSLayerHudPaintable> value(new RTSLayerHudPaintable()); return value.get(); }
+RTSLayerHudPaintable* RTSLayerHudPaintable::instance = RTSLayerHudPaintable::instance_owner();
 
-    private: static RTSLayerHudPaintable* instance() { static std::unique_ptr<RTSLayerHudPaintable> value(new RTSLayerHudPaintable()); return value.get(); }
-
-    public: static RTSLayerHudPaintable* getInstance(){
+    auto RTSLayerHudPaintable::getInstance() -> RTSLayerHudPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSLayerHudPaintable::instance();
+                        return RTSLayerHudPaintable::instance;
     
 }
 
 
-    private: std::vector<std::string> weaponProperties = StringUtil::getInstance()->getArrayInstance();
-
-    private: CollidableDestroyableDamageableLayer* rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
-
-    protected: int32_t costY= 0;
-
-    protected: int32_t costY1= 0;
-
-    private: int32_t fontHeight= 0;
-
-private: RTSLayerHudPaintable(){
+RTSLayerHudPaintable::RTSLayerHudPaintable() : weaponProperties(StringUtil::getInstance()->getArrayInstance()), rtsLayer(CollidableDestroyableDamageableLayer::getNullInstance()){
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
-super.updateMeasurement(graphics);
+    auto RTSLayerHudPaintable::updateMeasurement(Graphics* graphics) -> void{
+SelectionHudPaintable::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -124,7 +123,7 @@ this->costY1= (this->y +((this->weaponProperties.size() +1) *this->fontHeight));
 }
 
 
-    public: void updateSelectionInfo(){
+    auto RTSLayerHudPaintable::updateSelectionInfo() -> void{
 this->setName(this->getRtsLayer()->getName());
     
 
@@ -137,8 +136,8 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paint(graphics);
+    auto RTSLayerHudPaintable::paint(Graphics* graphics) -> void{
+SelectionHudPaintable::paint(graphics);
     
 
     int32_t size = this->weaponProperties.size();;
@@ -157,13 +156,13 @@ graphics->drawString(this->weaponProperties[index], this->textX, this->y +((inde
 }
 
 
-    public: void setRtsLayer(RTSLayer* rtsLayer){
+    auto RTSLayerHudPaintable::setRtsLayer(RTSLayer* rtsLayer) -> void{
 this->rtsLayer= rtsLayer;
     
 }
 
 
-    private: CollidableDestroyableDamageableLayer* getRtsLayer(){
+    auto RTSLayerHudPaintable::getRtsLayer() -> CollidableDestroyableDamageableLayer*{
 
 
 
@@ -173,7 +172,6 @@ this->rtsLayer= rtsLayer;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYERHUDPAINTABLE_CPP

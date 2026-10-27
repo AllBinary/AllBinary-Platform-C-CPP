@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class JsMethod;
+class JsConstructor;
+class JsProperty;
 
 
 
@@ -59,17 +56,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/GPoint.h"
+        class GPoint;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PointFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PointFactory* instance() { static std::unique_ptr<PointFactory> value(new PointFactory()); return value.get(); }
+    private: static PointFactory* instance_owner();
+    private: static PointFactory* instance;
 
     public: static PointFactory* getInstance();
 
-    public: GPoint* ZERO_ZERO = this->createXYZ(0, 0, 0);
+    public: GPoint* ZERO_ZERO;
 
     public: void init();
 
@@ -85,3 +87,25 @@ private: PointFactory();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+
+        #endif
+    

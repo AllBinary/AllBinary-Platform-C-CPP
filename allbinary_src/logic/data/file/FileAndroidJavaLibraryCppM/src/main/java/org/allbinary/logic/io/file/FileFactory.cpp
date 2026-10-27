@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,33 +67,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/AbFile.h"
 
-class FileFactory
-            : public Object
-         {
+auto FileFactory::SINGLETON_owner() -> FileFactory* { static std::unique_ptr<FileFactory> value(new FileFactory(ResourceUtil::getInstance()->getContext())); return value.get(); }
+FileFactory* FileFactory::SINGLETON = FileFactory::SINGLETON_owner();
 
-    private: static FileFactory* SINGLETON() { static std::unique_ptr<FileFactory> value(new FileFactory(ResourceUtil::getInstance()->getContext())); return value.get(); }
-
-    public: static FileFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileFactory::SINGLETON();
+FileFactory::FileFactory(Context* context){
+this->context= context;
     
 }
 
 
-    private: Context* context;
+    auto FileFactory::getInstance() -> FileFactory*{
 
-private: FileFactory(Context* context){
-this->context= context;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return FileFactory::SINGLETON;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isFile(std::string path){
+    auto FileFactory::isFile(std::string path) -> bool{
 
         try {
             this->context->openFileInput(path);
@@ -109,7 +114,7 @@ this->context= context;
 }
 
 
-    public: Context* getContext(){
+    auto FileFactory::getContext() -> Context*{
 
 
 
@@ -121,7 +126,7 @@ this->context= context;
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile* getFile(std::string filePath){
+    auto FileFactory::getFile(std::string filePath) -> AbFile*{
 
 
 
@@ -133,7 +138,7 @@ this->context= context;
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile* getInstance(AbFile* file, std::string childFilePath){
+    auto FileFactory::getInstance(AbFile* file, std::string childFilePath) -> AbFile*{
 
 
 
@@ -143,7 +148,6 @@ this->context= context;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_CPP

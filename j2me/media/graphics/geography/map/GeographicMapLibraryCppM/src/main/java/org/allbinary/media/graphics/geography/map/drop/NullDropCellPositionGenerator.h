@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_NULLDROPCELLPOSITIONGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_NULLDROPCELLPOSITIONGENERATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +52,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/drop/BaseDropCellPositionGenerator.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullDropCellPositionGenerator: public BaseDropCellPositionGenerator {
 
-    private: static NullDropCellPositionGenerator* instance() { static std::unique_ptr<NullDropCellPositionGenerator> value(new NullDropCellPositionGenerator()); return value.get(); }
+    private: static NullDropCellPositionGenerator* instance_owner();
+    private: static NullDropCellPositionGenerator* instance;
 
     public: static NullDropCellPositionGenerator* getInstance();
 
+
+            
+    public: NullDropCellPositionGenerator();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_NULLDROPCELLPOSITIONGENERATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_NULLDROPCELLPOSITIONGENERATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_NULLDROPCELLPOSITIONGENERATOR_H_COMPLETE
+        #if __has_include("org/allbinary/media/graphics/geography/map/drop/BaseDropCellPositionGenerator.h")
+#include "org/allbinary/media/graphics/geography/map/drop/BaseDropCellPositionGenerator.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPABLEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PickupableInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class PickupableInterface
+            : public virtual Object
+         {
 
 };
 
@@ -54,3 +65,10 @@ class PickupableInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPABLEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPABLEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPABLEINTERFACE_H_COMPLETE
+        
+        #endif
+    

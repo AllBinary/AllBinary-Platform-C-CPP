@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/user/address/StreetAddress.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/Money.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/Payment.h>
-
-      
+class StreetAddress;
+class Money;
+class Payment;
 
 
 
@@ -55,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderHistoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class OrderHistoryInterface
+            : public virtual Object
+         {
 
     public: virtual void setUserName(std::string value) = 0;
 
@@ -117,3 +122,19 @@ class OrderHistoryInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/address/StreetAddress.h>)
+#include <org/allbinary/business/user/address/StreetAddress.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/Money.h>)
+#include <org/allbinary/business/user/commerce/money/Money.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/Payment.h>)
+#include <org/allbinary/business/user/commerce/money/payment/Payment.h>
+#endif
+
+        #endif
+    

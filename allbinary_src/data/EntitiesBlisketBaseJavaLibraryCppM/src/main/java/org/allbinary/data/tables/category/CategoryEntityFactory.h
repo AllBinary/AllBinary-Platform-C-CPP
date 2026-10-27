@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -55,17 +56,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/data/tables/category/CategoryEntity.h"
+        class CategoryEntity;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoryEntityFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static CategoryEntityFactory* instance() { static std::unique_ptr<CategoryEntityFactory> value(new CategoryEntityFactory()); return value.get(); }
+    private: static CategoryEntityFactory* instance_owner();
+    private: static CategoryEntityFactory* instance;
 
     public: static CategoryEntityFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: CategoryEntityFactory();
 
@@ -77,3 +83,19 @@ private: CategoryEntityFactory();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/data/tables/category/CategoryEntity.h")
+#include "org/allbinary/data/tables/category/CategoryEntity.h"
+#endif
+
+        #endif
+    

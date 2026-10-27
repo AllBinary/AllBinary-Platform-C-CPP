@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_LEFTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_LEFTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/touch/action/LeftTouchInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* LeftTouchInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto LeftTouchInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(LeftTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class LeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInp
 }
 
 
-private: LeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Left Action", TouchMotionGestureFactory::getInstance()->LEFT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+LeftTouchInputToGameKeyEventAction::LeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Left Action", TouchMotionGestureFactory::getInstance()->LEFT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: LeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInpu
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_LEFTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP

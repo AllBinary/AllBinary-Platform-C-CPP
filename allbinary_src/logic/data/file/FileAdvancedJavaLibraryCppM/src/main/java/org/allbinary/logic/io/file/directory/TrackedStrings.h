@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_TRACKEDSTRINGS_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_TRACKEDSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TrackedStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static TrackedStrings* instance() { static std::unique_ptr<TrackedStrings> value(new TrackedStrings()); return value.get(); }
+    private: static TrackedStrings* instance_owner();
+    private: static TrackedStrings* instance;
 
     public: static TrackedStrings* getInstance();
 
+
+            
+    public: TrackedStrings();
+        
     public: const std::string TARGET_PATH_WINDOWS = "\\target\\";
 
     public: const std::string TARGET_PATH_UNIX = "/target/";
@@ -84,3 +98,10 @@ class TrackedStrings
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_TRACKEDSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_TRACKEDSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_TRACKEDSTRINGS_H_COMPLETE
+        
+        #endif
+    

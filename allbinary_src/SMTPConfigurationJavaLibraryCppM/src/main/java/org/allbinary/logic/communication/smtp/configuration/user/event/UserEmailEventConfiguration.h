@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,14 +35,8 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class LogUtil;
+class StringUtil;
 
 
 
@@ -57,13 +56,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
-#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
+class UserEmailEventConfigurationData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserEmailEventConfiguration
-            : public Object
+            : public virtual Object
         , public UserEmailEventConfigurationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string name;
 
@@ -89,3 +92,25 @@ public: UserEmailEventConfiguration(HashMap<Object*, Object*>* hashMap);
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h")
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h")
+#include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
+#endif
+
+        #endif
+    

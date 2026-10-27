@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_QUOTEREQUEST_QUOTEREQUESTDATA_H
         #define ORG_ALLBINARY_BUSINESS_QUOTEREQUEST_QUOTEREQUESTDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class QuoteRequestData
-            : public Object
+            : public virtual Object
          {
 
-    private: static QuoteRequestData* instance() { static std::unique_ptr<QuoteRequestData> value(new QuoteRequestData()); return value.get(); }
+    private: static QuoteRequestData* instance_owner();
+    private: static QuoteRequestData* instance;
 
     public: static QuoteRequestData* getInstance();
 
@@ -76,3 +86,10 @@ private: QuoteRequestData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_QUOTEREQUEST_QUOTEREQUESTDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_QUOTEREQUEST_QUOTEREQUESTDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_QUOTEREQUEST_QUOTEREQUESTDATA_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSINGEXCEPTION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSINGEXCEPTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LicensingException.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LicensingException: public Exception {
 
-    public: static inline const int64_t serialVersionUID = 1;
-
-public: LicensingException(){
+LicensingException::LicensingException(){
 }
 
 
-public: LicensingException(std::string msg) : Exception(msg){
+LicensingException::LicensingException(std::string msg) : Exception(msg){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +70,6 @@ public: LicensingException(std::string msg) : Exception(msg){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSINGEXCEPTION_CPP

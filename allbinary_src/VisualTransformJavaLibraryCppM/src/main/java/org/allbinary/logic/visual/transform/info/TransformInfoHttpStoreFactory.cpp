@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTOREFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTOREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStoreFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,29 +66,26 @@
 #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
-class TransformInfoHttpStoreFactory
-            : public Object
-        , public TransformInfoFactoryInterface {
+auto TransformInfoHttpStoreFactory::instance_owner() -> TransformInfoHttpStoreFactory* { static std::unique_ptr<TransformInfoHttpStoreFactory> value(new TransformInfoHttpStoreFactory()); return value.get(); }
+TransformInfoHttpStoreFactory* TransformInfoHttpStoreFactory::instance = TransformInfoHttpStoreFactory::instance_owner();
 
-    private: static TransformInfoHttpStoreFactory* instance() { static std::unique_ptr<TransformInfoHttpStoreFactory> value(new TransformInfoHttpStoreFactory()); return value.get(); }
-
-    public: static TransformInfoHttpStoreFactory* getInstance(){
+    auto TransformInfoHttpStoreFactory::getInstance() -> TransformInfoHttpStoreFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoHttpStoreFactory::instance();
+                        return TransformInfoHttpStoreFactory::instance;
     
 }
 
 
-private: TransformInfoHttpStoreFactory(){
+TransformInfoHttpStoreFactory::TransformInfoHttpStoreFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface* getInstance(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+    auto TransformInfoHttpStoreFactory::getInstance(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) -> TransformInfoInterface*{
 
 
 
@@ -88,7 +95,6 @@ private: TransformInfoHttpStoreFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTOREFACTORY_CPP

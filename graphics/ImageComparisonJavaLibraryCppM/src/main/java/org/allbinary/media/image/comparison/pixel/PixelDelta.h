@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,24 +34,12 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class GPoint;
+class TsUtil;
+class StringMaker;
 #include <org/allbinary/logic/util/cache/CacheableInterface.h>
-
-      
-#include <org/allbinary/media/image/comparison/color/ColorDelta.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class ColorDelta;
+class CommonSeps;
 
 
 
@@ -66,8 +59,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PixelDelta
-            : public Object
+            : public virtual Object
         , public CacheableInterface {
 
     public: static Object* getKey(GPoint* point, ColorDelta* colorDelta);
@@ -98,3 +95,28 @@ public: PixelDelta(GPoint* point, ColorDelta* colorDelta);
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterface.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/color/ColorDelta.h>)
+#include <org/allbinary/media/image/comparison/color/ColorDelta.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

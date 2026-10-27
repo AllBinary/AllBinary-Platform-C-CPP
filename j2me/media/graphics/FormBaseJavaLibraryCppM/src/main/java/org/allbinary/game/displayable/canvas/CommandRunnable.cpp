@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDRUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/CommandRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,19 +75,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
 
-class CommandRunnable
-            : public Object
-        , public Runnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CommandFormInputProcessor* commandFormInputProcessor;
-
-    private: Command* command;
-
-public: CommandRunnable(CommandFormInputProcessor* commandFormInputProcessor, Command* command){
+CommandRunnable::CommandRunnable(CommandFormInputProcessor* commandFormInputProcessor, Command* command) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->commandFormInputProcessor= commandFormInputProcessor;
     
 this->command= command;
@@ -85,7 +84,7 @@ this->command= command;
 }
 
 
-    public: void run(){
+    auto CommandRunnable::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
@@ -111,7 +110,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDRUNNABLE_CPP

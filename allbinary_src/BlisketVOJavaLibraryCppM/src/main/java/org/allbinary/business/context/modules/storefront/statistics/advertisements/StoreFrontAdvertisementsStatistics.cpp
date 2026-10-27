@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICS_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatistics.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,15 +73,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsInterface.h"
 
-class StoreFrontAdvertisementsStatistics
-            : public Object
-        , public StoreFrontAdvertisementsStatisticsInterface {
 
-public: StoreFrontAdvertisementsStatistics(StoreFrontInterface* storeFrontInterface){
+StoreFrontAdvertisementsStatistics::StoreFrontAdvertisementsStatistics(StoreFrontInterface* storeFrontInterface){
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto StoreFrontAdvertisementsStatistics::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -84,7 +91,7 @@ public: StoreFrontAdvertisementsStatistics(StoreFrontInterface* storeFrontInterf
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto StoreFrontAdvertisementsStatistics::toVector() -> BasicArrayList*{
 
 
 
@@ -94,7 +101,7 @@ public: StoreFrontAdvertisementsStatistics(StoreFrontInterface* storeFrontInterf
 }
 
 
-    public: Object* getKey(){
+    auto StoreFrontAdvertisementsStatistics::getKey() -> Object*{
 
 
 
@@ -104,7 +111,6 @@ public: StoreFrontAdvertisementsStatistics(StoreFrontInterface* storeFrontInterf
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICS_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,9 +78,8 @@
 #include "org/allbinary/animation/VectorAnimationInterface.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface {
 
-    public: static VectorAnimation* createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor* basicColor, AnimationBehavior* animationBehavior){
+    auto VectorAnimation::createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor* basicColor, AnimationBehavior* animationBehavior) -> VectorAnimation*{
 
     std::vector<std::vector<std::vector<int32_t>>> currentPoints = std::vector<std::vector<std::vector<int32_t>>>(1, std::vector<std::vector<int32_t>>(currentPoints2.length, std::vector<int32_t>(2)));;
     
@@ -99,11 +108,7 @@ currentPoints[0][index][1]= currentPoints2[index][1];
 }
 
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
-
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(0);
-
-public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+VectorAnimation::VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior), currentPoints(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY), circularIndexUtil(CircularIndexUtil::createInstance(0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -117,7 +122,7 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto VectorAnimation::setBasicColorP(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -132,7 +137,7 @@ this->setBasicColorP(basicColor);
 
                                     }
                                 
-super.setBasicColorP(basicColor);
+IndexedAnimation::setBasicColorP(basicColor);
     
 
                         if(changed)
@@ -146,7 +151,7 @@ super.setBasicColorP(basicColor);
 }
 
 
-    public: void changeBasicColor(BasicColor* basicColor){
+    auto VectorAnimation::changeBasicColor(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -161,7 +166,7 @@ super.setBasicColorP(basicColor);
 
                                     }
                                 
-super.changeBasicColor(basicColor);
+IndexedAnimation::changeBasicColor(basicColor);
     
 
                         if(changed)
@@ -175,7 +180,7 @@ super.changeBasicColor(basicColor);
 }
 
 
-    public: void setAlpha(int32_t alpha){
+    auto VectorAnimation::setAlpha(int32_t alpha) -> void{
 
     bool changed = false;;
     
@@ -188,7 +193,7 @@ super.changeBasicColor(basicColor);
 
                                     }
                                 
-super.setAlpha(alpha);
+IndexedAnimation::setAlpha(alpha);
     
 
                         if(changed)
@@ -202,21 +207,21 @@ super.setAlpha(alpha);
 }
 
 
-    public: void setScale(float scaleX, float scaleY){
+    auto VectorAnimation::setScale(float scaleX, float scaleY) -> void{
 }
 
 
-    public: void setMaxScale(float maxScaleX, float maxScaleY){
+    auto VectorAnimation::setMaxScale(float maxScaleX, float maxScaleY) -> void{
 }
 
 
-    private: void updateModifiers(){
+    auto VectorAnimation::updateModifiers() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto VectorAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -226,7 +231,7 @@ super.setAlpha(alpha);
 }
 
 
-    public: int32_t getSize(){
+    auto VectorAnimation::getSize() -> int32_t{
 
 
 
@@ -236,11 +241,11 @@ super.setAlpha(alpha);
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto VectorAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto VectorAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -250,19 +255,19 @@ super.setAlpha(alpha);
 }
 
 
-    public: void nextFrame(){
+    auto VectorAnimation::nextFrame() -> void{
 this->circularIndexUtil->next();
     
 }
 
 
-    public: void previousFrame(){
+    auto VectorAnimation::previousFrame() -> void{
 this->circularIndexUtil->previous();
     
 }
 
 
-    protected: void paintVectors(Graphics* graphics, int32_t x, int32_t y){
+    auto VectorAnimation::paintVectors(Graphics* graphics, int32_t x, int32_t y) -> void{
 
         try {
             
@@ -318,22 +323,22 @@ nextPointY= nextPoint[1];
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "paintVectors", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "paintVectors", &e);
     
 }
 
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP(graphics, this->basicColor);
+    auto VectorAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP(graphics, this->basicColor);
     
 this->paintVectors(graphics, x, y);
     
 }
 
 
-    public: int32_t getFrame(){
+    auto VectorAnimation::getFrame() -> int32_t{
 
 
 
@@ -343,13 +348,13 @@ this->paintVectors(graphics, x, y);
 }
 
 
-    public: void setFrame(int32_t index){
+    auto VectorAnimation::setFrame(int32_t index) -> void{
 this->circularIndexUtil->setIndex(index);
     
 }
 
 
-    public: std::vector<std::vector<int32_t>> getPoints(int32_t frame){
+    auto VectorAnimation::getPoints(int32_t frame) -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -359,7 +364,7 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints){
+    auto VectorAnimation::setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints) -> void{
 this->currentPoints= currentPoints;
     
 this->circularIndexUtil= CircularIndexUtil::createInstance(currentPoints.size());
@@ -367,7 +372,6 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(currentPoints.size())
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATION_CPP

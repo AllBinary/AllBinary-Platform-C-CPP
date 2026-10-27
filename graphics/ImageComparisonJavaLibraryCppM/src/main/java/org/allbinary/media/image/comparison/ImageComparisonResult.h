@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,32 +39,14 @@
             #include "java/lang/Long.h"
         
 #include <java/awt/image/BufferedImage.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/media/image/ImageUtil.h>
-
-      
-#include <org/allbinary/media/image/comparison/pixel/PixelDelta.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringMaker;
+class ImageUtil;
+class PixelDelta;
+class CommonStrings;
 
 
 
@@ -79,15 +66,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageComparisonResult
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: const std::vector<BufferedImage*> bufferedImages = std::vector<BufferedImage*>(2);
+    private: std::vector<BufferedImage*> bufferedImages;
 
     public: std::string name;
 
@@ -139,3 +130,35 @@ public: ImageComparisonResult(std::string name, BufferedImage* bufferedImage, Bu
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageUtil.h>)
+#include <org/allbinary/media/image/ImageUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/pixel/PixelDelta.h>)
+#include <org/allbinary/media/image/comparison/pixel/PixelDelta.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

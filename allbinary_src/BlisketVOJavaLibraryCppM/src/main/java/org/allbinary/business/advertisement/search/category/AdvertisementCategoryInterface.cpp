@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_CATEGORY_ADVERTISEMENTCATEGORYINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_CATEGORY_ADVERTISEMENTCATEGORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/search/category/AdvertisementCategoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,11 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementCategoryInterface {
+//Interface - declared in the header
 
-    public: virtual std::string toString() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_CATEGORY_ADVERTISEMENTCATEGORYINTERFACE_CPP

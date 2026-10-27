@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_SOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/Sound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,21 +70,14 @@
         #include "org/allbinary/media/audio/SoundInterface.h"
 #include "org/allbinary/media/audio/NoPlayer.h"
 
-class Sound
-            : public Object
-        , public SoundInterface, public Runnable {
 
-    private: std::string resource;
-
-    protected: Player* player = NoPlayer::NO_PLAYER;
-
-protected: Sound(std::string resource){
+Sound::Sound(std::string resource) : player(NoPlayer::NO_PLAYER){
 this->resource= resource;
     
 }
 
 
-    public: std::string getResource(){
+    auto Sound::getResource() -> std::string{
 
 
 
@@ -84,7 +87,7 @@ this->resource= resource;
 }
 
 
-    public: Player* getPlayerP(){
+    auto Sound::getPlayerP() -> Player*{
 
 
 
@@ -94,7 +97,7 @@ this->resource= resource;
 }
 
 
-    public: void setPlayerP(Player* player){
+    auto Sound::setPlayerP(Player* player) -> void{
 this->player= player;
     
 }
@@ -102,11 +105,11 @@ this->player= player;
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto Sound::init() -> void{
 }
 
 
-    public: int32_t getDuration(){
+    auto Sound::getDuration() -> int32_t{
 
 
 
@@ -116,7 +119,7 @@ this->player= player;
 }
 
 
-    public: void run(){
+    auto Sound::run() -> void{
 
         try {
             this->player->start();
@@ -135,7 +138,6 @@ PreLogUtil::put(commonStrings->EXCEPTION, this, commonStrings->RUN);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_SOUND_CPP

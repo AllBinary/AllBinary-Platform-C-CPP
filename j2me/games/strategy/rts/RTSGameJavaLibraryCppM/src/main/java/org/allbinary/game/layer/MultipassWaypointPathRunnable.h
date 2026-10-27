@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -35,33 +40,15 @@
         
             #include "java/lang/Runnable.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class NullUtil;
 #include <org/allbinary/thread/ARunnable.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/pathfinding/MultipassState.h>
-
-      
-#include <org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class LogUtil;
+class CommonStrings;
+class GeographicMapCellPosition;
+class MultipassState;
+class PathFindingInfo;
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -81,75 +68,77 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/WaypointPathRunnableBase.h"
-//#include "org/allbinary/game/layer/FirstRunnable.h"
-//#include "org/allbinary/game/layer/SecondRunnable.h"
-//#include "org/allbinary/game/layer/EndRunnable.h"
-#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+//class FirstRunnable;
+//class SecondRunnable;
+//class EndRunnable;
+class WaypointBehaviorBase;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MultipassWaypointPathRunnable: public WaypointPathRunnableBase {
+private: class FirstRunnable;
+private: class SecondRunnable;
+private: class EndRunnable;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil;
 
-    private: MultipassState* multipassState = new MultipassState();
+    private: MultipassState* multipassState;
 
     private: bool done = false;
 
-    private: BasicArrayList* list = this->basicArrayListUtil->getImmutableInstance();
+    private: BasicArrayList* list;
 
-    private: Object* pathFindingInfo = NullUtil::getInstance()->NULL_OBJECT;
+    private: Object* pathFindingInfo;
 
 //inner= member=true isStatic=
-class FirstRunnable: public ARunnable {
+private: class FirstRunnable: public ARunnable {
 
     private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: FirstRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
+public: FirstRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
 
     public: void run();
 
 };
 
             
-    private: Runnable* FIRST_RUNNABLE = new FirstRunnable(this);
+    private: Runnable* FIRST_RUNNABLE;
 //    private boolean first = true;
 //inner= member=true isStatic=
-class SecondRunnable: public ARunnable {
+private: class SecondRunnable: public ARunnable {
 
     private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: SecondRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
+public: SecondRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
 
     public: void run();
 
 };
 
             
-    private: Runnable* SECOND_RUNNABLE = new SecondRunnable(this);
+    private: Runnable* SECOND_RUNNABLE;
 
 //inner= member=true isStatic=
-class EndRunnable: public ARunnable {
+private: class EndRunnable: public ARunnable {
 
     private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
 
-: EndRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
+public: EndRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable);
 
     public: void run();
 
 };
 
             
-    private: Runnable* END_RUNNABLE = new EndRunnable(this);
+    private: Runnable* END_RUNNABLE;
 
-    private: Runnable* ALREADY_ENDED_RUNNABLE = class extends ARunnable
-                                {
-                                
-    public: void run();
-                                }
-                            ;
+    private: Runnable* ALREADY_ENDED_RUNNABLE;
 
-    private: Runnable* currentPassRunnable = this->FIRST_RUNNABLE;
+    private: Runnable* currentPassRunnable;
 
 public: MultipassWaypointPathRunnable();
 
@@ -177,3 +166,43 @@ public: MultipassWaypointPathRunnable();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/thread/ARunnable.h>)
+#include <org/allbinary/thread/ARunnable.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/pathfinding/MultipassState.h>)
+#include <org/allbinary/media/graphics/geography/pathfinding/MultipassState.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h>)
+#include <org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/game/layer/WaypointPathRunnableBase.h")
+#include "org/allbinary/game/layer/WaypointPathRunnableBase.h"
+#endif
+#if __has_include("org/allbinary/game/layer/WaypointBehaviorBase.h")
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+#endif
+
+        #endif
+    

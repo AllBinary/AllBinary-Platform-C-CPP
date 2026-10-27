@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTRUNNABLEPROCESSOR_CPP
+        #define ORG_ALLBINARY_EMULATOR_SWT_SWTRUNNABLEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/emulator/swt/SWTRunnableProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,25 +57,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/emulator/swt/SWTProcessor.h"
 
-class SWTRunnableProcessor: public SWTProcessor {
 
-    private: static SWTRunnableProcessor* instanceR() { static std::unique_ptr<SWTRunnableProcessor> value(new SWTRunnableProcessor()); return value.get(); }
+SWTRunnableProcessor::SWTRunnableProcessor() {
+        }
+        auto SWTRunnableProcessor::instanceR_owner() -> SWTRunnableProcessor* { static std::unique_ptr<SWTRunnableProcessor> value(new SWTRunnableProcessor()); return value.get(); }
+SWTRunnableProcessor* SWTRunnableProcessor::instanceR = SWTRunnableProcessor::instanceR_owner();
 
-    public: static SWTRunnableProcessor* getInstance(){
+    auto SWTRunnableProcessor::getInstance() -> SWTRunnableProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SWTRunnableProcessor::instanceR();
+                        return SWTRunnableProcessor::instanceR;
     
 }
 
 
-    public: void process(Display* display){
+    auto SWTRunnableProcessor::process(Display* display) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_EMULATOR_SWT_SWTRUNNABLEPROCESSOR_CPP

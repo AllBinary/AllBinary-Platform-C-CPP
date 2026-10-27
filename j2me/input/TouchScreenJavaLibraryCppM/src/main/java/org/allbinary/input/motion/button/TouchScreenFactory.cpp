@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchScreenFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,33 +71,10 @@
         #include "org/allbinary/input/motion/button/TouchScreenTypesFactory.h"
 #include "org/allbinary/input/motion/button/TouchScreenType.h"
 
-class TouchScreenFactory
-            : public Object
-         {
+auto TouchScreenFactory::SINGLETON_owner() -> TouchScreenFactory* { static std::unique_ptr<TouchScreenFactory> value(new TouchScreenFactory()); return value.get(); }
+TouchScreenFactory* TouchScreenFactory::SINGLETON = TouchScreenFactory::SINGLETON_owner();
 
-    private: static TouchScreenFactory* SINGLETON() { static std::unique_ptr<TouchScreenFactory> value(new TouchScreenFactory()); return value.get(); }
-
-    public: static TouchScreenFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenFactory::SINGLETON();
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool touch= false;
-
-    private: bool multiTouch= false;
-
-    private: bool multiTouchDistinct= false;
-
-    private: TouchScreenType* touchScreenType = TouchScreenTypesFactory::getInstance()->NOTOUCH;
-
-private: TouchScreenFactory(){
+TouchScreenFactory::TouchScreenFactory() : logUtil(LogUtil::getInstance()), touchScreenType(TouchScreenTypesFactory::getInstance()->NOTOUCH){
 
         try {
             this->setTouch(true);
@@ -101,20 +88,30 @@ this->setMultiTouch(false);
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->put(commonStrings->EXCEPTION, TouchScreenFactory::SINGLETON(), commonStrings->GET_INSTANCE, &e);
+this->logUtil->put(commonStrings->EXCEPTION, TouchScreenFactory::SINGLETON, commonStrings->GET_INSTANCE, &e);
     
 }
 
 }
 
 
-    public: void setMultiTouch(bool multiTouch){
+    auto TouchScreenFactory::getInstance() -> TouchScreenFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return TouchScreenFactory::SINGLETON;
+    
+}
+
+
+    auto TouchScreenFactory::setMultiTouch(bool multiTouch) -> void{
 this->multiTouch= multiTouch;
     
 }
 
 
-    public: bool isMultiTouch(){
+    auto TouchScreenFactory::isMultiTouch() -> bool{
 
 
 
@@ -124,13 +121,13 @@ this->multiTouch= multiTouch;
 }
 
 
-    public: void setTouch(bool touch){
+    auto TouchScreenFactory::setTouch(bool touch) -> void{
 this->touch= touch;
     
 }
 
 
-    public: bool isTouch(){
+    auto TouchScreenFactory::isTouch() -> bool{
 
 
 
@@ -140,13 +137,13 @@ this->touch= touch;
 }
 
 
-    public: void setMultiTouchDistinct(bool multiTouchDistinct){
+    auto TouchScreenFactory::setMultiTouchDistinct(bool multiTouchDistinct) -> void{
 this->multiTouchDistinct= multiTouchDistinct;
     
 }
 
 
-    public: bool isMultiTouchDistinct(){
+    auto TouchScreenFactory::isMultiTouchDistinct() -> bool{
 
 
 
@@ -156,13 +153,13 @@ this->multiTouchDistinct= multiTouchDistinct;
 }
 
 
-    public: void setTouchScreenType(TouchScreenType* touchScreenType){
+    auto TouchScreenFactory::setTouchScreenType(TouchScreenType* touchScreenType) -> void{
 this->touchScreenType= touchScreenType;
     
 }
 
 
-    public: TouchScreenType* getTouchScreenType(){
+    auto TouchScreenFactory::getTouchScreenType() -> TouchScreenType*{
 
 
 
@@ -172,7 +169,7 @@ this->touchScreenType= touchScreenType;
 }
 
 
-    public: std::string toString(){
+    auto TouchScreenFactory::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -201,7 +198,6 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getTouchScreenTyp
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_CPP

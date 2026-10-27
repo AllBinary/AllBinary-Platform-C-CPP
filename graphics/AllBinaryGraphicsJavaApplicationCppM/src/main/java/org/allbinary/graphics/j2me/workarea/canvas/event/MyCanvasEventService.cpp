@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventService.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,36 +65,23 @@
 #include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventListener.h"
 #include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h"
 
-class MyCanvasEventService
-            : public Object
-         {
+auto MyCanvasEventService::listenerList_owner() -> javax::swing::event::EventListenerList* { static std::unique_ptr<javax::swing::event::EventListenerList> value(new javax::swing::event::EventListenerList()); return value.get(); }
+javax::swing::event::EventListenerList* MyCanvasEventService::listenerList = MyCanvasEventService::listenerList_owner();
 
-    private: static javax::swing::event::EventListenerList* listenerList() { static std::unique_ptr<javax::swing::event::EventListenerList> value(new javax::swing::event::EventListenerList()); return value.get(); }
+MyCanvasEventService::MyCanvasEventService(){
+}
 
-    public: static inline std::string DELETE = "delete";
-
-    public: static inline std::string DUPLICATE = "duplicate";
-
-    public: static inline std::string SELECT = "select";
-
-    public: static inline std::string ROTATE = "rotate";
-
-    public: static inline std::string EXPLODE = "explode";
-
-    public: static inline std::string AUTOEXPLODE = "autoExplode";
-
-    public: static inline std::string CENTER = "center";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void addListener(MyCanvasEventListener* listener){
-MyCanvasEventService::listenerList()->add(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
+    auto MyCanvasEventService::addListener(MyCanvasEventListener* listener) -> void{
+MyCanvasEventService::listenerList->add(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void removeListener(MyCanvasEventListener* listener){
-MyCanvasEventService::listenerList()->remove(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
+    auto MyCanvasEventService::removeListener(MyCanvasEventListener* listener) -> void{
+MyCanvasEventService::listenerList->remove(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
     
 }
 
@@ -92,9 +89,9 @@ MyCanvasEventService::listenerList()->remove(listener->getClass(), dynamic_cast<
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void fire(MyCanvasEvent* evt){
+    auto MyCanvasEventService::fire(MyCanvasEvent* evt) -> void{
 
-    std::vector<Object*> listeners = listenerList()->getListenerList();;
+    std::vector<Object*> listeners = listenerList->getListenerList();;
     
 
 
@@ -104,7 +101,7 @@ MyCanvasEventService::listenerList()->remove(listener->getClass(), dynamic_cast<
     int32_t i = 0;i < listeners.size(); )
         {
 
-                        if(listeners[i] == listeners[i +1].getClass())
+                        if(listeners[i] == listeners[i +1]->getClass())
                         
                                     {
                                     
@@ -113,7 +110,7 @@ MyCanvasEventService::listenerList()->remove(listener->getClass(), dynamic_cast<
                                     {
                                      = dynamic_cast<MyCanvasEventListener*>(listeners[i +1])
 .
-                    delete(evt);
+                    delete_(evt);
     
 
                                     }
@@ -192,11 +189,6 @@ MyCanvasEventService::listenerList()->remove(listener->getClass(), dynamic_cast<
 }
 
 
-private: MyCanvasEventService(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_CPP

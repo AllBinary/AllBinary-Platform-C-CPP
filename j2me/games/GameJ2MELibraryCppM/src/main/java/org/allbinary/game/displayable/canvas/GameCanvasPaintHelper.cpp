@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAINTHELPER_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAINTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameCanvasPaintHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,27 +60,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class GameCanvasPaintHelper: public ProcessPaintable {
 
-    private: AllBinaryGameCanvas* gameCanvas;
-
-public: GameCanvasPaintHelper(AllBinaryGameCanvas* gameCanvas){
+GameCanvasPaintHelper::GameCanvasPaintHelper(AllBinaryGameCanvas* gameCanvas){
 this->gameCanvas= gameCanvas;
     
 }
 
 
-    public: void process(){
+    auto GameCanvasPaintHelper::process() -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto GameCanvasPaintHelper::paint(Graphics* graphics) -> void{
 this->gameCanvas->draw(graphics);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAINTHELPER_CPP

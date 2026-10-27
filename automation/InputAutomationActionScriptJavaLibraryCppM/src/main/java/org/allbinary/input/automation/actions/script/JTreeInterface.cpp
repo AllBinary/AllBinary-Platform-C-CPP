@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/JTreeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,13 +40,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/JTree.h"
 
-class JTreeInterface {
+//Interface - declared in the header
 
-    public: virtual void updateJTree() = 0;
 
-    public: virtual javax::swing::JTree* getActionScriptJTree() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACE_CPP

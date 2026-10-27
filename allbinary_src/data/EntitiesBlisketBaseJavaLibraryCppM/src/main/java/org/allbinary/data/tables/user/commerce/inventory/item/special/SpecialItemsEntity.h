@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,35 +35,15 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/init/db/InventoryDbInitInfo.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/special/SpecialItemData.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class EntryData;
+class InventoryDbInitInfo;
+class BasicItemData;
+class SpecialItemData;
+class LogUtil;
 #include <org/allbinary/logic/communication/sql/AbSqlBean.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -79,13 +64,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/item/special/SpecialItemsEntityInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SpecialItemsEntity: public AbSqlBean, public SpecialItemsEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
+    /*protected*/ public: BasicItemData* basicItemData;
 
-    protected: const std::string tableName = "specialitems";
+    /*protected*/ public: const std::string tableName = "specialitems";
 
 public: SpecialItemsEntity();
 
@@ -107,3 +96,41 @@ public: SpecialItemsEntity();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/InventoryDbInitInfo.h>)
+#include <org/allbinary/business/init/db/InventoryDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/item/special/SpecialItemData.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/special/SpecialItemData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/AbSqlBean.h>)
+#include <org/allbinary/logic/communication/sql/AbSqlBean.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/data/tables/user/commerce/inventory/item/special/SpecialItemsEntityInterface.h")
+#include "org/allbinary/data/tables/user/commerce/inventory/item/special/SpecialItemsEntityInterface.h"
+#endif
+
+        #endif
+    

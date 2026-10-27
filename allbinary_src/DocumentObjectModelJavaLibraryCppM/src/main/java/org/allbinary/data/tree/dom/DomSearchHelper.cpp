@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/DomSearchHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,11 +69,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DomSearchHelper
-            : public Object
-         {
 
-    public: static Node* getNodeNoThrow(std::string nodeName, NodeList* nodeList){
+DomSearchHelper::DomSearchHelper(){
+}
+
+
+    auto DomSearchHelper::getNodeNoThrow(std::string nodeName, NodeList* nodeList) -> Node*{
 
     int32_t numberOfNodes = nodeList->getLength();;
     
@@ -103,7 +114,7 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* getNode(std::string nodeName, NodeList* nodeList){
+    auto DomSearchHelper::getNode(std::string nodeName, NodeList* nodeList) -> Node*{
 
     Node* node = DomSearchHelper::getNodeNoThrow(nodeName, nodeList);;
     
@@ -126,7 +137,7 @@ class DomSearchHelper
                             
 
 
-                            throw new Exception(nodeName +" Node Not Found in search");
+                            throw Exception(JavaString::valueOf(nodeName) +JavaString::valueOf(" Node Not Found in search"));
                     
 
                         }
@@ -136,7 +147,7 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static NodeList* getChildNodeList(std::string nodeName, NodeList* nodeList){
+    auto DomSearchHelper::getChildNodeList(std::string nodeName, NodeList* nodeList) -> NodeList*{
 
     Node* node = DomSearchHelper::getNode(nodeName, nodeList);;
     
@@ -151,7 +162,7 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList* getAllNodes(std::string nodeName, NodeList* nodeList){
+    auto DomSearchHelper::getAllNodes(std::string nodeName, NodeList* nodeList) -> BasicArrayList*{
 
     BasicArrayList* vector = DomSearchHelper::getAllNodesNoThrow(nodeName, nodeList);;
     
@@ -164,7 +175,7 @@ class DomSearchHelper
                                     
 
 
-                            throw new Exception(nodeName +" Node Not Found in search");
+                            throw Exception(JavaString::valueOf(nodeName) +JavaString::valueOf(" Node Not Found in search"));
                     
 
                                     }
@@ -182,7 +193,7 @@ class DomSearchHelper
 }
 
 
-    public: static BasicArrayList* getAllNodesNoThrow(std::string nodeName, NodeList* nodeList){
+    auto DomSearchHelper::getAllNodesNoThrow(std::string nodeName, NodeList* nodeList) -> BasicArrayList*{
 
     BasicArrayList* nodeVector = new BasicArrayListD();;
     
@@ -219,11 +230,6 @@ class DomSearchHelper
 }
 
 
-private: DomSearchHelper(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_CPP

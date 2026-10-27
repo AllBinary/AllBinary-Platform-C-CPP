@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMECONFIGURATIONPERSISTANCESINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMECONFIGURATIONPERSISTANCESINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/GameConfigurationPersistanceSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,20 @@
         #include "org/allbinary/game/configuration/persistance/KeyValuePersistance.h"
 #include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
 
-class GameConfigurationPersistanceSingleton: public KeyValuePersistance {
+auto GameConfigurationPersistanceSingleton::GAME_PERSISTANCE_owner() -> GameConfigurationPersistanceSingleton* { static std::unique_ptr<GameConfigurationPersistanceSingleton> value(new GameConfigurationPersistanceSingleton()); return value.get(); }
+GameConfigurationPersistanceSingleton* GameConfigurationPersistanceSingleton::GAME_PERSISTANCE = GameConfigurationPersistanceSingleton::GAME_PERSISTANCE_owner();
 
-    private: static GameConfigurationPersistanceSingleton* GAME_PERSISTANCE() { static std::unique_ptr<GameConfigurationPersistanceSingleton> value(new GameConfigurationPersistanceSingleton()); return value.get(); }
-
-    public: static GameConfigurationPersistanceSingleton* getInstance(){
+    auto GameConfigurationPersistanceSingleton::getInstance() -> GameConfigurationPersistanceSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationPersistanceSingleton::GAME_PERSISTANCE();
+                        return GameConfigurationPersistanceSingleton::GAME_PERSISTANCE;
     
 }
 
 
-private: GameConfigurationPersistanceSingleton() : KeyValuePersistance(GamePersistanceStrings::getInstance()->SAVED_GAME_CONFIGURATION_RECORD_ID){
+GameConfigurationPersistanceSingleton::GameConfigurationPersistanceSingleton() : KeyValuePersistance(GamePersistanceStrings::getInstance()->SAVED_GAME_CONFIGURATION_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +78,6 @@ private: GameConfigurationPersistanceSingleton() : KeyValuePersistance(GamePersi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMECONFIGURATIONPERSISTANCESINGLETON_CPP

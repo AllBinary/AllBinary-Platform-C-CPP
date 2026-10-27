@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_BASICEMAILINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_BASICEMAILINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,21 +74,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicEmailInfo
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+BasicEmailInfo::BasicEmailInfo(std::string subject, std::string textBody) : logUtil(LogUtil::getInstance()){
 
-    private: std::string subject;
-
-    private: std::string textBody;
-
-    protected: EmailServerConfigurationInterface* emailServerConfigurationInterface;
-
-public: BasicEmailInfo(std::string subject, std::string textBody){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -96,7 +95,7 @@ this->textBody= textBody;
 }
 
 
-    public: std::string getSubject(){
+    auto BasicEmailInfo::getSubject() -> std::string{
 
 
 
@@ -106,7 +105,7 @@ this->textBody= textBody;
 }
 
 
-    public: std::string getTextBody(){
+    auto BasicEmailInfo::getTextBody() -> std::string{
 
 
 
@@ -116,7 +115,7 @@ this->textBody= textBody;
 }
 
 
-    public: EmailServerConfigurationInterface* getEmailServerConfigurationInterface(){
+    auto BasicEmailInfo::getEmailServerConfigurationInterface() -> EmailServerConfigurationInterface*{
 
 
 
@@ -126,13 +125,13 @@ this->textBody= textBody;
 }
 
 
-    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface){
+    auto BasicEmailInfo::setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface) -> void{
 this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-    public: std::string toString(){
+    auto BasicEmailInfo::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -159,16 +158,15 @@ stringBuffer->append(this->getTextBody());
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(){
+    auto BasicEmailInfo::init() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_BASICEMAILINFO_CPP

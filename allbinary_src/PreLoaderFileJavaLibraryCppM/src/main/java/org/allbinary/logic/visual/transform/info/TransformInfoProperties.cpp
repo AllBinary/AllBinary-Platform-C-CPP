@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIES_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +57,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoProperties
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: std::string label;
-
-    private: std::string description;
-
-    private: std::string objectFileName;
-
-    private: std::string objectConfigFileName;
-
-    private: std::string templateFileName;
-
-public: TransformInfoProperties(std::string name, std::string label, std::string description, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName){
+TransformInfoProperties::TransformInfoProperties(std::string name, std::string label, std::string description, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName){
 this->name= name;
     
 this->label= label;
@@ -79,37 +74,37 @@ this->objectConfigFileName= objectConfigFileName;
 }
 
 
-    public: void setName(std::string value){
+    auto TransformInfoProperties::setName(std::string value) -> void{
 this->name= value;
     
 }
 
 
-    public: void setDescription(std::string value){
+    auto TransformInfoProperties::setDescription(std::string value) -> void{
 this->description= value;
     
 }
 
 
-    public: void setViewFile(std::string value){
+    auto TransformInfoProperties::setViewFile(std::string value) -> void{
 this->objectFileName= value;
     
 }
 
 
-    public: void setTemplateFile(std::string value){
+    auto TransformInfoProperties::setTemplateFile(std::string value) -> void{
 this->templateFileName= value;
     
 }
 
 
-    public: void setObjectConfigFile(std::string value){
+    auto TransformInfoProperties::setObjectConfigFile(std::string value) -> void{
 this->objectConfigFileName= value;
     
 }
 
 
-    public: std::string getName(){
+    auto TransformInfoProperties::getName() -> std::string{
 
 
 
@@ -119,7 +114,7 @@ this->objectConfigFileName= value;
 }
 
 
-    public: std::string getLabel(){
+    auto TransformInfoProperties::getLabel() -> std::string{
 
 
 
@@ -129,7 +124,7 @@ this->objectConfigFileName= value;
 }
 
 
-    public: std::string getDescription(){
+    auto TransformInfoProperties::getDescription() -> std::string{
 
 
 
@@ -139,7 +134,7 @@ this->objectConfigFileName= value;
 }
 
 
-    public: std::string getViewFile(){
+    auto TransformInfoProperties::getViewFile() -> std::string{
 
 
 
@@ -149,7 +144,7 @@ this->objectConfigFileName= value;
 }
 
 
-    public: std::string getTemplateFile(){
+    auto TransformInfoProperties::getTemplateFile() -> std::string{
 
 
 
@@ -159,7 +154,7 @@ this->objectConfigFileName= value;
 }
 
 
-    public: std::string getObjectConfigFile(){
+    auto TransformInfoProperties::getObjectConfigFile() -> std::string{
 
 
 
@@ -169,7 +164,6 @@ this->objectConfigFileName= value;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIES_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFODATA_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFODATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,31 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PathFindingNodeCostInfoData
-            : public Object
-         {
+auto PathFindingNodeCostInfoData::instance_owner() -> PathFindingNodeCostInfoData* { static std::unique_ptr<PathFindingNodeCostInfoData> value(new PathFindingNodeCostInfoData()); return value.get(); }
+PathFindingNodeCostInfoData* PathFindingNodeCostInfoData::instance = PathFindingNodeCostInfoData::instance_owner();
 
-    private: static PathFindingNodeCostInfoData* instance() { static std::unique_ptr<PathFindingNodeCostInfoData> value(new PathFindingNodeCostInfoData()); return value.get(); }
-
-    public: static PathFindingNodeCostInfoData* getInstance(){
+    auto PathFindingNodeCostInfoData::getInstance() -> PathFindingNodeCostInfoData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathFindingNodeCostInfoData::instance();
+                        return PathFindingNodeCostInfoData::instance;
     
 }
 
 
-private: PathFindingNodeCostInfoData(){
+PathFindingNodeCostInfoData::PathFindingNodeCostInfoData() : MAX_TOTAL_COST(Integer.MAX_VALUE), MAX_NODE_COST(Integer.MAX_VALUE /10000){
 }
 
 
-    public: int32_t MAX_TOTAL_COST = Integer.MAX_VALUE;
 
-    public: int32_t MAX_NODE_COST = Integer.MAX_VALUE /10000;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFODATA_CPP

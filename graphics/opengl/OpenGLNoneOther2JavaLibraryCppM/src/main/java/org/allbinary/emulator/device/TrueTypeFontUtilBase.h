@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_H
         #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TrueTypeFontUtilBase
-            : public Object
+            : public virtual Object
          {
 
 public: TrueTypeFontUtilBase(int32_t scale);
@@ -64,3 +73,10 @@ public: TrueTypeFontUtilBase(int32_t scale);
 
 
         #endif //ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_HUDCAPITAL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_HUDCAPITAL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/capital/HudCapital.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,25 +57,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/capital/Capital.h"
 
-class HudCapital: public Capital {
 
-    private: NumberStringHud* capitalGraphic;
-
-public: HudCapital(NumberStringHud* moneyGraphic){
+HudCapital::HudCapital(NumberStringHud* moneyGraphic){
 this->capitalGraphic= moneyGraphic;
     
 }
 
 
-    public: void removeMoney(int32_t points){
-super.removeMoney(points);
+    auto HudCapital::removeMoney(int32_t points) -> void{
+Capital::removeMoney(points);
     
 this->capitalGraphic->reduce(points);
     
 }
 
 
-    public: int32_t getTotalMoney(){
+    auto HudCapital::getTotalMoney() -> int32_t{
 
 
 
@@ -75,15 +82,14 @@ this->capitalGraphic->reduce(points);
 }
 
 
-    public: void addMoney(int32_t points){
-super.addMoney(points);
+    auto HudCapital::addMoney(int32_t points) -> void{
+Capital::addMoney(points);
     
 this->capitalGraphic->add(points);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_CAPITAL_HUDCAPITAL_CPP

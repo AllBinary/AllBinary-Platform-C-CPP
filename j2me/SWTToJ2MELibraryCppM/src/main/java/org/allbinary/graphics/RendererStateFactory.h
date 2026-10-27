@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RENDERERSTATEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_RENDERERSTATEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RendererStateFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static RendererStateFactory* instance() { static std::unique_ptr<RendererStateFactory> value(new RendererStateFactory()); return value.get(); }
+    private: static RendererStateFactory* instance_owner();
+    private: static RendererStateFactory* instance;
 
     public: static RendererStateFactory* getInstance();
 
+
+            
+    public: RendererStateFactory();
+        
     private: bool loaded = false;
 
     private: bool surfaceChanged = false;
@@ -74,3 +88,10 @@ class RendererStateFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_RENDERERSTATEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_RENDERERSTATEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_RENDERERSTATEFACTORY_H_COMPLETE
+        
+        #endif
+    

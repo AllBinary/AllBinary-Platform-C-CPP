@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_WEBSITE_BASICADVERTISEMENTWEBSITE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_WEBSITE_BASICADVERTISEMENTWEBSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/search/website/BasicAdvertisementWebsite.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,19 +56,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/search/website/AdvertisementWebsiteInterface.h"
 
-class BasicAdvertisementWebsite
-            : public Object
-        , public AdvertisementWebsiteInterface {
 
-    private: std::string websiteId;
-
-public: BasicAdvertisementWebsite(std::string websiteId){
+BasicAdvertisementWebsite::BasicAdvertisementWebsite(std::string websiteId){
 this->websiteId= websiteId;
     
 }
 
 
-    public: std::string toString(){
+    auto BasicAdvertisementWebsite::toString() -> std::string{
 
 
 
@@ -68,7 +73,6 @@ this->websiteId= websiteId;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_WEBSITE_BASICADVERTISEMENTWEBSITE_CPP

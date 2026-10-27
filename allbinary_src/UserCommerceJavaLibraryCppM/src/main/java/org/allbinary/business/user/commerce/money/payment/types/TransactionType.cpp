@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/TransactionType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransactionType
-            : public Object
-         {
 
-    private: std::string name;
-
-public: TransactionType(std::string name){
+TransactionType::TransactionType(std::string name){
 this->name= name;
     
 }
 
 
-    public: bool isEqual(TransactionType* transactionType){
+    auto TransactionType::isEqual(TransactionType* transactionType) -> bool{
 
                         if(this->toString().compareTo(transactionType->toString()) == 0)
                         
@@ -72,7 +77,7 @@ this->name= name;
 }
 
 
-    public: std::string toString(){
+    auto TransactionType::toString() -> std::string{
 
 
 
@@ -82,7 +87,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPE_CPP

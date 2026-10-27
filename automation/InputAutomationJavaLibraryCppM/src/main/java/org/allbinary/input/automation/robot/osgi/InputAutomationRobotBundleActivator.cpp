@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTBUNDLEACTIVATOR_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTBUNDLEACTIVATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotBundleActivator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -83,19 +93,8 @@
         #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotUtil.h"
 #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h"
 
-class InputAutomationRobotBundleActivator
-            : public Object
-        , public BundleActivator {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::vector<InputRobotInterface*> inputRobotInterface;
-
-    private: ServiceFactory* serviceFactory;
-
-public: InputAutomationRobotBundleActivator(){
+InputAutomationRobotBundleActivator::InputAutomationRobotBundleActivator() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->init();
     
 }
@@ -103,28 +102,28 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto InputAutomationRobotBundleActivator::init() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void registerAsService(BundleContext* bundleContext){
-OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAutomationRobotServiceInterface.constructor.getName());
+    auto InputAutomationRobotBundleActivator::registerAsService(BundleContext* bundleContext) -> void{
+OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), Class::forType(typeid(InputAutomationRobotServiceInterface))->getName());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: InputAutomationRobotChangeListener* getInputAutomationRobotChangeListener(BundleContext* context){
+    auto InputAutomationRobotBundleActivator::getInputAutomationRobotChangeListener(BundleContext* context) -> InputAutomationRobotChangeListener*{
 
-    ServiceReference* serviceReference = context->getServiceReference(InputAutomationRobotChangeListener.constructor.getName());;
+    ServiceReference* serviceReference = context->getServiceReference(Class::forType(typeid(InputAutomationRobotChangeListener))->getName());;
     
 
                         if(serviceReference != 
@@ -140,7 +139,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
                                     nullptr
                                 )
                         
-                                    throw new Exception("No Service For ServiceReference");
+                                    throw Exception("No Service For ServiceReference");
                                 
 
 
@@ -152,7 +151,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
                                     }
                                 
                         else {
-                            this->logUtil->putF("No ServiceReference: " +InputAutomationRobotChangeListener.constructor.getName(), this, "getInputAutomationRobotChangeListener");
+                            this->logUtil->putF(JavaString::valueOf("No ServiceReference: ") +JavaString::valueOf(Class::forType(typeid(InputAutomationRobotChangeListener))->getName()), this, "getInputAutomationRobotChangeListener");
     
 
 
@@ -166,7 +165,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
 }
 
 
-    private: void addRobots(BundleContext* context){
+    auto InputAutomationRobotBundleActivator::addRobots(BundleContext* context) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "addRobots");
@@ -208,7 +207,7 @@ this->logUtil->putF(this->commonStrings->EXCEPTION, this, "addModules");
 }
 
 
-    private: void removeRobots(BundleContext* context){
+    auto InputAutomationRobotBundleActivator::removeRobots(BundleContext* context) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "removeRobots");
@@ -252,7 +251,7 @@ this->logUtil->putF(this->commonStrings->EXCEPTION, this, "removeRobots");
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext* context){
+    auto InputAutomationRobotBundleActivator::start(BundleContext* context) -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START);
     
 this->addRobots(context);
@@ -264,7 +263,7 @@ this->registerAsService(context);
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext* context){
+    auto InputAutomationRobotBundleActivator::stop(BundleContext* context) -> void{
 this->logUtil->putF("Stop", this, this->commonStrings->START);
     
 this->removeRobots(context);
@@ -272,7 +271,7 @@ this->removeRobots(context);
 }
 
 
-    protected: Object* getServiceFactory(){
+    auto InputAutomationRobotBundleActivator::getServiceFactory() -> Object*{
 
 
 
@@ -282,13 +281,13 @@ this->removeRobots(context);
 }
 
 
-    protected: void setServiceFactory(ServiceFactory* serviceObject){
+    auto InputAutomationRobotBundleActivator::setServiceFactory(ServiceFactory* serviceObject) -> void{
 this->serviceFactory= serviceObject;
     
 }
 
 
-    public: std::vector<InputRobotInterface*> getInputRobotInterface(){
+    auto InputAutomationRobotBundleActivator::getInputRobotInterface() -> std::vector<InputRobotInterface*>{
 
 
 
@@ -298,13 +297,12 @@ this->serviceFactory= serviceObject;
 }
 
 
-    public: void setInputRobotInterface(std::vector<InputRobotInterface*> inputRobotInterface){
+    auto InputAutomationRobotBundleActivator::setInputRobotInterface(std::vector<InputRobotInterface*> inputRobotInterface) -> void{
 this->inputRobotInterface= inputRobotInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTBUNDLEACTIVATOR_CPP

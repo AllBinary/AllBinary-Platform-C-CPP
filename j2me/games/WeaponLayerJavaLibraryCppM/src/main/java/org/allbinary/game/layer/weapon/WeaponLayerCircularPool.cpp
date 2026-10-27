@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/weapon/WeaponLayerCircularPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,17 +68,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
 
-class WeaponLayerCircularPool: public AllBinaryLayerCircularPool {
 
-public: WeaponLayerCircularPool(){
+WeaponLayerCircularPool::WeaponLayerCircularPool(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: WeaponLayer* getInstanceWeaponLayer(AllBinaryLayer* sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreable){
+    auto WeaponLayerCircularPool::getInstanceWeaponLayer(AllBinaryLayer* sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreable) -> WeaponLayer*{
 
-    WeaponLayer* weaponLayer = dynamic_cast<WeaponLayer*>(super.getNextInstance());;
+    WeaponLayer* weaponLayer = dynamic_cast<WeaponLayer*>(AllBinaryLayerCircularPool::getNextInstance());;
     
 weaponLayer->initXYZ(x, y, z);
     
@@ -83,7 +92,6 @@ weaponLayer->init(sourceLayerInterface, angle, otherAngle, weaponProperties, sco
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/path/AbPathUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,25 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/path/AbPath.h"
 
-class AbPathUtil
-            : public Object
-         {
 
-    private: static AbPathUtil* instance() { static std::unique_ptr<AbPathUtil> value(new AbPathUtil()); return value.get(); }
+AbPathUtil::AbPathUtil() : NO_ABPATH(AbPath::createAbPath()) {
+        }
+        auto AbPathUtil::instance_owner() -> AbPathUtil* { static std::unique_ptr<AbPathUtil> value(new AbPathUtil()); return value.get(); }
+AbPathUtil* AbPathUtil::instance = AbPathUtil::instance_owner();
 
-    public: static AbPathUtil* getInstance(){
+    auto AbPathUtil::getInstance() -> AbPathUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPathUtil::instance();
+                        return AbPathUtil::instance;
     
 }
 
 
-    public: AbPath* NO_ABPATH = AbPath::createAbPath();
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_CPP

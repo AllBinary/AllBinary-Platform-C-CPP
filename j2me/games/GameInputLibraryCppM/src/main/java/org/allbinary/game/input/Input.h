@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_INPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_INPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringMaker;
+class StringUtil;
 
 
 
@@ -54,13 +55,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Input
-            : public Object
+            : public virtual Object
          {
 
     private: int32_t id= 0;
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string name;
 
 public: Input(int32_t id, std::string name);
 
@@ -80,3 +85,16 @@ public: Input(int32_t id, std::string name);
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_INPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_INPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_INPUT_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

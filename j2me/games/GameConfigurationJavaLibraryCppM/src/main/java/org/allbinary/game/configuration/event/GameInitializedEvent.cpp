@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInitializedEvent: public AllBinaryEventObject {
 
-    private: ResourceLoadingLevel* resourceLoadingLevel = ResourceLoadingLevelFactory::getInstance()->LEVEL;
-
-    private: int32_t level= 0;
-
-public: GameInitializedEvent(Object* anyType) : AllBinaryEventObject(anyType){
+GameInitializedEvent::GameInitializedEvent(Object* anyType) : AllBinaryEventObject(anyType), resourceLoadingLevel(ResourceLoadingLevelFactory::getInstance()->LEVEL){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +75,7 @@ public: GameInitializedEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-    public: void setLevel(int32_t level){
+    auto GameInitializedEvent::setLevel(int32_t level) -> void{
 this->level= level;
     
 this->resourceLoadingLevel= ResourceLoadingLevelFactory::getInstance()->LEVEL;
@@ -78,7 +83,7 @@ this->resourceLoadingLevel= ResourceLoadingLevelFactory::getInstance()->LEVEL;
 }
 
 
-    public: int32_t getLevel(){
+    auto GameInitializedEvent::getLevel() -> int32_t{
 
 
 
@@ -88,7 +93,7 @@ this->resourceLoadingLevel= ResourceLoadingLevelFactory::getInstance()->LEVEL;
 }
 
 
-    public: void setResourceLoadingLevel(ResourceLoadingLevel* resourceLoadingLevel){
+    auto GameInitializedEvent::setResourceLoadingLevel(ResourceLoadingLevel* resourceLoadingLevel) -> void{
 this->resourceLoadingLevel= resourceLoadingLevel;
     
 this->level= this->resourceLoadingLevel->getLevel();
@@ -96,7 +101,7 @@ this->level= this->resourceLoadingLevel->getLevel();
 }
 
 
-    public: ResourceLoadingLevel* getResourceLoadingLevel(){
+    auto GameInitializedEvent::getResourceLoadingLevel() -> ResourceLoadingLevel*{
 
 
 
@@ -106,7 +111,6 @@ this->level= this->resourceLoadingLevel->getLevel();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_CPP

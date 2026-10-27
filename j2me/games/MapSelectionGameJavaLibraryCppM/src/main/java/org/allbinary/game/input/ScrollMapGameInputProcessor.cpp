@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SCROLLMAPGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/ScrollMapGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,13 @@
         #include "org/allbinary/game/input/GameInputProcessor.h"
 #include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
 
-class ScrollMapGameInputProcessor: public GameInputProcessor {
 
-    protected: ScrollMapPlayerGameInput* scrollMapPlayerGameInput;
-
-public: ScrollMapGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlayerGameInput){
+ScrollMapGameInputProcessor::ScrollMapGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlayerGameInput){
 this->scrollMapPlayerGameInput= scrollMapPlayerGameInput;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SCROLLMAPGAMEINPUTPROCESSOR_CPP

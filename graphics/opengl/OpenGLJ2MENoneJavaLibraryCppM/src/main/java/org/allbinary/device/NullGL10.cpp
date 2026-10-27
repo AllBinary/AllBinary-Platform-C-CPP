@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEVICE_NULLGL10_CPP
+        #define ORG_ALLBINARY_DEVICE_NULLGL10_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/device/NullGL10.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullGL10
-            : public Object
-        , public GL10 {
 
-    public: static NullGL10* NULL_GL10() { static std::unique_ptr<NullGL10> value(new NullGL10()); return value.get(); }
+NullGL10::NullGL10() {
+        }
+        auto NullGL10::NULL_GL10_owner() -> NullGL10* { static std::unique_ptr<NullGL10> value(new NullGL10()); return value.get(); }
+NullGL10* NullGL10::NULL_GL10 = NullGL10::NULL_GL10_owner();
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEVICE_NULLGL10_CPP

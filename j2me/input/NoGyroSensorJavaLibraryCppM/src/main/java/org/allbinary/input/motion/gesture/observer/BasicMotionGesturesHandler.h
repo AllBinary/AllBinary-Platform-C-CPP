@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class AllBinaryEventObject;
+class EventListenerInterface;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -56,20 +55,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
-#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
+        class BaseMotionGestureEventListener;
+class MotionGestureEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicMotionGesturesHandler: public BasicEventHandler {
 
-    private: static BasicMotionGesturesHandler* SINGLETON() { static std::unique_ptr<BasicMotionGesturesHandler> value(new BasicMotionGesturesHandler()); return value.get(); }
+    private: static BasicMotionGesturesHandler* SINGLETON_owner();
+    private: static BasicMotionGesturesHandler* SINGLETON;
 
     public: static BasicMotionGesturesHandler* getInstance();
 
-protected: BasicMotionGesturesHandler();
+/*protected*/ public: BasicMotionGesturesHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -77,3 +81,25 @@ protected: BasicMotionGesturesHandler();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h")
+#include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h")
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
+#endif
+
+        #endif
+    

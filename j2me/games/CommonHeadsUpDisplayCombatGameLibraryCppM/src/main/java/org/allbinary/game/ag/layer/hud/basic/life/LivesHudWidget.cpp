@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LIFE_LIVESHUDWIDGET_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LIFE_LIVESHUDWIDGET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/life/LivesHudWidget.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,15 +78,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LivesHudWidget: public BasicHud, public PaintableInterface {
 
-    private: Life* lifeInterface;
-
-    private: std::vector<int32_t> xArray;
-
-    private: Animation* animationInterface;
-
-public: LivesHudWidget(Animation* animationInterface, Life* lifeInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->WHITE){
+LivesHudWidget::LivesHudWidget(Animation* animationInterface, Life* lifeInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->WHITE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,8 +102,8 @@ this->updateMaxHeight= 16;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
-super.updateMeasurement(graphics);
+    auto LivesHudWidget::updateMeasurement(Graphics* graphics) -> void{
+BasicHud::updateMeasurement(graphics);
     
 
     int32_t maxLives = static_cast<int32_t>(this->getLifeInterface()->getMaxlives());;
@@ -119,24 +122,24 @@ this->xArray[index]= this->getX() +(index *16);
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
-super.onDisplayChangeEvent(displayChangeEvent);
+    auto LivesHudWidget::onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) -> void{
+BasicHud::onDisplayChangeEvent(displayChangeEvent);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public: void setX(int32_t x){
-super.setX(x);
+    auto LivesHudWidget::setX(int32_t x) -> void{
+BasicHud::setX(x);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public: void paint(Graphics* graphics){
-this->myFontProcessor.process(graphics);
+    auto LivesHudWidget::paint(Graphics* graphics) -> void{
+this->myFontProcessor->process(graphics);
     
 
 
@@ -152,11 +155,11 @@ this->animationInterface->paintXY(graphics, this->xArray[index], this->getY());
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto LivesHudWidget::paintThreed(Graphics* graphics) -> void{
 }
 
 
-    public: Life* getLifeInterface(){
+    auto LivesHudWidget::getLifeInterface() -> Life*{
 
 
 
@@ -166,7 +169,6 @@ this->animationInterface->paintXY(graphics, this->xArray[index], this->getY());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LIFE_LIVESHUDWIDGET_CPP

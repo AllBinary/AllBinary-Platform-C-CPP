@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/MagicGameObjectInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,9 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
 
-class MagicGameObjectInterface: public MeteredGameObjectInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECTINTERFACE_CPP

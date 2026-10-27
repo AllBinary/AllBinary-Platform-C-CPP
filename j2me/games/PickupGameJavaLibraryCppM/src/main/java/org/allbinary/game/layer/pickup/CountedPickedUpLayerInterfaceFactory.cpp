@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,13 +81,10 @@
 #include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h"
 #include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
 
-class CountedPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public CountedPickedUpLayerInterfaceFactoryInterface {
+auto CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY_owner() -> CountedPickedUpLayerInterfaceFactory* { static std::unique_ptr<CountedPickedUpLayerInterfaceFactory> value(new CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->NONE, IconLayer::NULL_ICON_LAYER, NullAnimationFactory::getFactoryInstance()->getInstance(0))); return value.get(); }
+CountedPickedUpLayerInterfaceFactory* CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY_owner();
 
-    public: static CountedPickedUpLayerInterfaceFactory* NULL_COUNTED_PICKUP_LAYER_FACTORY() { static std::unique_ptr<CountedPickedUpLayerInterfaceFactory> value(new CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->NONE, IconLayer::NULL_ICON_LAYER, NullAnimationFactory::getFactoryInstance()->getInstance(0))); return value.get(); }
-
-    private: int32_t id;
-
-public: CountedPickedUpLayerInterfaceFactory(PickedUpLayerType* pickeUpLayerType, IconLayer* iconLayer, Animation* animationInterface) : PickedUpLayerInterfaceFactory(pickeUpLayerType, iconLayer, animationInterface){
+CountedPickedUpLayerInterfaceFactory::CountedPickedUpLayerInterfaceFactory(PickedUpLayerType* pickeUpLayerType, IconLayer* iconLayer, Animation* animationInterface) : PickedUpLayerInterfaceFactory(pickeUpLayerType, iconLayer, animationInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,16 +103,16 @@ list->add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
+    auto CountedPickedUpLayerInterfaceFactory::getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z) -> AllBinaryLayer*{
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: int32_t getTotal(){
+    auto CountedPickedUpLayerInterfaceFactory::getTotal() -> int32_t{
 
 
 
@@ -115,7 +122,7 @@ list->add(this);
 }
 
 
-    public: int32_t getId(){
+    auto CountedPickedUpLayerInterfaceFactory::getId() -> int32_t{
 
 
 
@@ -125,7 +132,6 @@ list->add(this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORY_CPP

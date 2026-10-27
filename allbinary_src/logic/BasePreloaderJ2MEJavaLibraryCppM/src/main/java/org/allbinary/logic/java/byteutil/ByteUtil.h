@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,11 +55,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ByteUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ByteUtil* instance() { static std::unique_ptr<ByteUtil> value(new ByteUtil()); return value.get(); }
+    private: static ByteUtil* instance_owner();
+    private: static ByteUtil* instance;
 
     public: static ByteUtil* getInstance();
 
@@ -76,3 +86,10 @@ private: ByteUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_EXCEPTIONFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_EXCEPTIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/ExceptionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ExceptionFactory
-            : public Object
-         {
 
-    public: static Throwable* createThrowable(std::string message){
+ExceptionFactory::ExceptionFactory() {
+        }
+        
+    auto ExceptionFactory::createThrowable(std::string message) -> Throwable*{
 
 
 
@@ -64,7 +74,6 @@ class ExceptionFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_EXCEPTIONFACTORY_CPP

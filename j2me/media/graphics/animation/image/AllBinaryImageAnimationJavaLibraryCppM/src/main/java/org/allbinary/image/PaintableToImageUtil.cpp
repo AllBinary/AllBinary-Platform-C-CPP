@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_PAINTABLETOIMAGEUTIL_CPP
+        #define ORG_ALLBINARY_IMAGE_PAINTABLETOIMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/PaintableToImageUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/GameFeatureImageCacheFactory.h"
 
-class PaintableToImageUtil
-            : public Object
-         {
 
-    private: static PaintableToImageUtil* instance() { static std::unique_ptr<PaintableToImageUtil> value(new PaintableToImageUtil()); return value.get(); }
+PaintableToImageUtil::PaintableToImageUtil() {
+        }
+        auto PaintableToImageUtil::instance_owner() -> PaintableToImageUtil* { static std::unique_ptr<PaintableToImageUtil> value(new PaintableToImageUtil()); return value.get(); }
+PaintableToImageUtil* PaintableToImageUtil::instance = PaintableToImageUtil::instance_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: static Image* getImage(PaintableInterface* paintableInterface, int32_t width, int32_t height){
+    auto PaintableToImageUtil::getImage(PaintableInterface* paintableInterface, int32_t width, int32_t height) -> Image*{
 
-    Image* image = GameFeatureImageCacheFactory::getInstance()->get(PaintableToImageUtil::instance()->getClass()->getName(), width, height);;
+    Image* image = GameFeatureImageCacheFactory::getInstance()->get(PaintableToImageUtil::instance->getClass()->getName(), width, height);;
     
 
     Graphics* graphics = image->getGraphics();;
@@ -83,7 +93,6 @@ paintableInterface->paint(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_PAINTABLETOIMAGEUTIL_CPP

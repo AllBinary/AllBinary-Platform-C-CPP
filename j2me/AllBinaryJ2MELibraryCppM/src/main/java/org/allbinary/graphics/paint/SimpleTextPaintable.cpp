@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/SimpleTextPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,25 +78,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/Paintable.h"
 
-class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    private: std::string text;
-
-    private: BasicColor* basicColor;
-
-    private: int32_t topScoresWidth = 0;
-
-    private: int32_t fontHeight = 0;
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-public: SimpleTextPaintable(std::string text, BasicColor* basicColor){
+SimpleTextPaintable::SimpleTextPaintable(std::string text, BasicColor* basicColor) : displayInfoSingleton(DisplayInfoSingleton::getInstance()), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), anchor(Anchor::TOP_LEFT){
 this->text= text;
     
 this->basicColor= basicColor;
@@ -94,7 +87,7 @@ this->basicColor= basicColor;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto SimpleTextPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -107,7 +100,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto SimpleTextPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -120,13 +113,13 @@ graphics->drawString(this->text, (width>>1) -this->topScoresWidth, this->fontHei
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto SimpleTextPaintable::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-    private: BasicColor* getBasicColorP(){
+    auto SimpleTextPaintable::getBasicColorP() -> BasicColor*{
 
 
 
@@ -136,7 +129,7 @@ this->basicColor= basicColor;
 }
 
 
-    public: void setText(std::string text){
+    auto SimpleTextPaintable::setText(std::string text) -> void{
 this->text= text;
     
 this->myFontProcessor= this->updateMyFontProcessor;
@@ -144,7 +137,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: std::string getText(){
+    auto SimpleTextPaintable::getText() -> std::string{
 
 
 
@@ -154,7 +147,6 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_CPP

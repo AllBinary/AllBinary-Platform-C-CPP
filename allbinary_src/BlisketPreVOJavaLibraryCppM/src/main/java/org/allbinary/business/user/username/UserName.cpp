@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/username/UserName.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,60 +78,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserName
-            : public Object
-         {
+auto UserName::instance_owner() -> UserName* { static std::unique_ptr<UserName> value(new UserName()); return value.get(); }
+UserName* UserName::instance = UserName::instance_owner();
 
-    private: static UserName* instance() { static std::unique_ptr<UserName> value(new UserName()); return value.get(); }
-
-    public: static UserName* getInstance(){
+    auto UserName::getInstance() -> UserName*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserName::instance();
+                        return UserName::instance;
     
 }
 
 
-    public: static std::string getValidationInfo(std::string aUserName){
-
-                        if(!StringValidationUtil::getInstance()->isValidRequired(aUserName, 5, UserData::MAXLEN))
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Please enter a User Name with more than 5 characters.<br/>";
-    
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::getInstance()->EMPTY_STRING;
-    
+UserName::UserName() : logUtil(LogUtil::getInstance()){
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string userName;
-
-private: UserName(){
-}
-
-
-public: UserName(HashMap<Object*, Object*>* hashMap){
+UserName::UserName(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 this->userName= hashMap->get(UserData::USERNAME);
     
 }
 
 
-    public: bool isValid(){
+    auto UserName::isValid() -> bool{
 
         try {
             
@@ -135,7 +115,7 @@ this->userName= hashMap->get(UserData::USERNAME);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, "isUserNameValid()", &e);
@@ -154,7 +134,7 @@ this->userName= hashMap->get(UserData::USERNAME);
 }
 
 
-    public: std::string get(){
+    auto UserName::get() -> std::string{
 
 
 
@@ -164,7 +144,7 @@ this->userName= hashMap->get(UserData::USERNAME);
 }
 
 
-    public: bool isValid(std::string aUserName){
+    auto UserName::isValid(std::string aUserName) -> bool{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -177,10 +157,10 @@ this->userName= hashMap->get(UserData::USERNAME);
     bool valid = booleanFactory->TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
                         
                                     {
-                                    this->logUtil->putF("UserName: " +aUserName, this, commonStrings->IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("UserName: ") +JavaString::valueOf(aUserName), this, commonStrings->IS_VALID);
     
 
                                     }
@@ -190,7 +170,7 @@ this->userName= hashMap->get(UserData::USERNAME);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF("UserName is invalid", this, commonStrings->IS_VALID);
@@ -214,7 +194,7 @@ valid= booleanFactory->FALSE;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, commonStrings->IS_VALID, &e);
@@ -233,7 +213,29 @@ valid= booleanFactory->FALSE;
 }
 
 
-};
+    auto UserName::getValidationInfo(std::string aUserName) -> std::string{
 
-            
+                        if(!StringValidationUtil::getInstance()->isValidRequired(aUserName, 5, UserData::MAXLEN))
+                        
+                                    {
+                                    
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return "Please enter a User Name with more than 5 characters.<br/>";
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringUtil::getInstance()->EMPTY_STRING;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_CPP

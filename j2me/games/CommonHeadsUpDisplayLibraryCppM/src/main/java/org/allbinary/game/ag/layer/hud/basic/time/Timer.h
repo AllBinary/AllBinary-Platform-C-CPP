@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelper.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
-
-      
+class PrimitiveLongSingleton;
+class PrimitiveLongUtil;
+class GameTickTimeDelayHelper;
+class GameTickTimeDelayHelperFactory;
 
 
 
@@ -62,8 +59,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Timer
-            : public Object
+            : public virtual Object
          {
 
     private: int64_t startTime =  -1;
@@ -74,15 +75,15 @@ class Timer
 
     private: int64_t modifier= 0;
 
-    private: std::vector<char> hundrethsString = PrimitiveLongSingleton::getInstance()->ZERO;
+    private: std::vector<char> hundrethsString;
 
     private: int32_t totalDigits = 1;
 
     private: PrimitiveLongUtil* primitiveLongUtil;
 
-    private: const std::vector<char> MAX = ['L','O','L'];
+    private: std::vector<char> MAX;
 
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper;
 
 public: Timer(int32_t maxTime);
 
@@ -106,3 +107,22 @@ public: Timer(int32_t maxTime);
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/math/PrimitiveLongSingleton.h>)
+#include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveLongUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelper.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelperFactory.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
+#endif
+
+        #endif
+    

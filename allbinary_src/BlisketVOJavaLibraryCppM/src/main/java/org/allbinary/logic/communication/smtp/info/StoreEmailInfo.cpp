@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_STOREEMAILINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_STOREEMAILINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/info/StoreEmailInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,13 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
 
-class StoreEmailInfo: public BasicEmailInfo {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-public: StoreEmailInfo(StoreFrontInterface* storeFrontInterface, std::string subject, std::string textBody) : BasicEmailInfo(subject, textBody){
+StoreEmailInfo::StoreEmailInfo(StoreFrontInterface* storeFrontInterface, std::string subject, std::string textBody) : BasicEmailInfo(subject, textBody), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +80,7 @@ public: StoreEmailInfo(StoreFrontInterface* storeFrontInterface, std::string sub
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -95,7 +100,7 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(){
+    auto StoreEmailInfo::init() -> void{
 
     ContextConfigurationInterface* contextConfigurationInterface = this->storeFrontInterface->getContextConfigurationInterface();;
     
@@ -107,7 +112,6 @@ this->setEmailServerConfigurationInterface(emailServerConfigurationInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_STOREEMAILINFO_CPP

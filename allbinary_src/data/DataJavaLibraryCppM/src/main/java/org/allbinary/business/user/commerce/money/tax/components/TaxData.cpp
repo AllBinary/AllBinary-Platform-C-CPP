@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_COMPONENTS_TAXDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_COMPONENTS_TAXDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/tax/components/TaxData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TaxData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "TAX_NAME";
-
-    public: static inline const std::string RATE = "TAX_RATE";
-
-private: TaxData(){
+TaxData::TaxData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_COMPONENTS_TAXDATA_CPP

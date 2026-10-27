@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSSTYLEVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSSTYLEVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/style/css/template/retail/EditCssStyleValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,13 +80,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/template/customizer/includes/style/css/template/retail/CssStyleValidation.h"
 
-class EditCssStyleValidation: public CssStyleValidation, public ValidationInterface, public DomNodeInterface {
 
-public: EditCssStyleValidation(){
+EditCssStyleValidation::EditCssStyleValidation(){
 }
 
 
-public: EditCssStyleValidation(Document* document) : CssStyleValidation(document){
+EditCssStyleValidation::EditCssStyleValidation(Document* document) : CssStyleValidation(document){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +95,7 @@ public: EditCssStyleValidation(Document* document) : CssStyleValidation(document
 }
 
 
-public: EditCssStyleValidation(HashMap<Object*, Object*>* hashMap) : CssStyleValidation(hashMap){
+EditCssStyleValidation::EditCssStyleValidation(HashMap<Object*, Object*>* hashMap) : CssStyleValidation(hashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,27 +105,27 @@ public: EditCssStyleValidation(HashMap<Object*, Object*>* hashMap) : CssStyleVal
 }
 
 
-    public: bool isValid(){
+    auto EditCssStyleValidation::isValid() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isValid();;
+                        return CssStyleValidation::isValid();;
     
 }
 
 
-    public: std::string validationInfo(){
+    auto EditCssStyleValidation::validationInfo() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.validationInfo();;
+                        return CssStyleValidation::validationInfo();;
     
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditCssStyleValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -126,7 +135,7 @@ public: EditCssStyleValidation(HashMap<Object*, Object*>* hashMap) : CssStyleVal
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditCssStyleValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -138,7 +147,7 @@ public: EditCssStyleValidation(HashMap<Object*, Object*>* hashMap) : CssStyleVal
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto EditCssStyleValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(StylesData::getInstance()->NAME);;
     
@@ -150,7 +159,7 @@ node->appendChild(styleNode);
 styleNode->appendChild((new ColorsView())->toXmlNode(document));
     
 
-    int32_t size = this->cssStyleElementVector.size();;
+    int32_t size = this->cssStyleElementVector->size();;
     
 
 
@@ -175,7 +184,6 @@ styleNode->appendChild(styleDomNodeInterface->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSSTYLEVALIDATION_CPP

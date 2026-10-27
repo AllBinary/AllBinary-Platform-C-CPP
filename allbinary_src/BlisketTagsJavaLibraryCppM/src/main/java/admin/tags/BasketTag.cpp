@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_BASKETTAG_CPP
+        #define ADMIN_TAGS_BASKETTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/BasketTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,27 +93,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasketTag: public CustomTagSupport {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string command;
-
-    private: std::string storeName;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-public: BasketTag(){
+BasketTag::BasketTag() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setCommand(std::string command){
+    auto BasketTag::setCommand(std::string command) -> void{
 this->command= command;
     
 }
 
 
-    public: void setStoreName(std::string value){
+    auto BasketTag::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 }
@@ -111,7 +112,7 @@ this->storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool isBasketEmpty(){
+    auto BasketTag::isBasketEmpty() -> bool{
 
         try {
             
@@ -146,10 +147,10 @@ this->storeName= value;
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isBasketEmpty()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "isBasketEmpty()", &e);
     
 
                                     }
@@ -167,7 +168,7 @@ this->storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool addItemToBasket(){
+    auto BasketTag::addItemToBasket() -> bool{
 
         try {
             
@@ -205,10 +206,10 @@ this->storeName= value;
     std::string error = "Failed to add item from Basket";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "addItemToBasket()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "addItemToBasket()", &e);
     
 
                                     }
@@ -226,7 +227,7 @@ this->storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool removeItemFromBasket(){
+    auto BasketTag::removeItemFromBasket() -> bool{
 
         try {
             
@@ -264,10 +265,10 @@ this->storeName= value;
     std::string error = "Failed to remove item from Basket";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "removeItemFromBasket()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "removeItemFromBasket()", &e);
     
 
                                     }
@@ -285,7 +286,7 @@ this->storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool adjustBasket(){
+    auto BasketTag::adjustBasket() -> bool{
 
         try {
             
@@ -323,10 +324,10 @@ this->storeName= value;
     std::string error = "Failed to Adjust Basket";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "adjustBasket()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "adjustBasket()", &e);
     
 
                                     }
@@ -344,7 +345,7 @@ this->storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto BasketTag::doStartTag() -> int32_t{
 
         try {
             
@@ -363,7 +364,7 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
                         if(!this->addItemToBasket())
                         
                                     {
-                                    this->pageContext.getOut()->println("Item is not currently being sold.<p/>");
+                                    this->pageContext->getOut()->println("Item is not currently being sold.<p/>");
     
 
                                     }
@@ -446,7 +447,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_BASKETTAG_CPP

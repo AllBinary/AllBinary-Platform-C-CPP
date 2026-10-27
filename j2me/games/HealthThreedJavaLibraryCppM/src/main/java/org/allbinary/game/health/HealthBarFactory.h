@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
-
-      
-#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class OpenGLFeatureUtil;
+class FeaturedAnimationInterfaceFactoryInterfaceFactory;
+class AllBinaryLayer;
 
 
 
@@ -58,15 +57,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/health/HealthBar.h"
-#include "org/allbinary/game/health/HealthBarTwodAnimation.h"
-#include "org/allbinary/game/health/Health.h"
-#include "org/allbinary/game/health/HealthBarAnimationInterfaceFactory.h"
+        class HealthBar;
+class HealthBarTwodAnimation;
+class Health;
+class HealthBarAnimationInterfaceFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HealthBarFactory
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: HealthBarFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: HealthBar* getInstance(AllBinaryLayer* layerInterface, Health* healthInterface, int32_t location, int32_t direction);
@@ -77,3 +84,31 @@ class HealthBarFactory
 
 
         #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>)
+#include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
+#endif
+#if __has_include(<org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>)
+#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/health/HealthBar.h")
+#include "org/allbinary/game/health/HealthBar.h"
+#endif
+#if __has_include("org/allbinary/game/health/HealthBarTwodAnimation.h")
+#include "org/allbinary/game/health/HealthBarTwodAnimation.h"
+#endif
+#if __has_include("org/allbinary/game/health/Health.h")
+#include "org/allbinary/game/health/Health.h"
+#endif
+#if __has_include("org/allbinary/game/health/HealthBarAnimationInterfaceFactory.h")
+#include "org/allbinary/game/health/HealthBarAnimationInterfaceFactory.h"
+#endif
+
+        #endif
+    

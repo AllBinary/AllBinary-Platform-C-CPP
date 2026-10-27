@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADPOOL_H
         #define ORG_ALLBINARY_THREAD_THREADPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -35,18 +40,10 @@
         
             #include "java/lang/Runnable.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class LogUtil;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -65,30 +62,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/thread/NullRunnable.h"
-#include "org/allbinary/thread/ThreadPoolStrings.h"
-#include "org/allbinary/thread/ThreadObjectUtil.h"
-#include "org/allbinary/thread/PriorityRunnable.h"
+        class NullRunnable;
+class ThreadPoolStrings;
+class ThreadObjectUtil;
+class PriorityRunnable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThreadPool
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const int32_t NORMAL_PRIORITY = 5;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: NullRunnable* NULL_RUNNABLE = NullRunnable::getInstance();
+    /*protected*/ public: NullRunnable* NULL_RUNNABLE;
 
-    protected: ThreadPoolStrings* threadPoolStrings = ThreadPoolStrings::getInstance();
+    /*protected*/ public: ThreadPoolStrings* threadPoolStrings;
 
-    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
+    /*protected*/ public: ThreadObjectUtil* threadObjectUtil;
 
     private: bool isAlive= false;
 
-    private: BasicArrayList* taskQueue = new BasicArrayListD();
+    private: BasicArrayList* taskQueue;
 
     private: int32_t numThreads= 0;
 
@@ -96,7 +97,7 @@ class ThreadPool
 
 public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    private: PriorityRunnable* currentPriorityRunnable = this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
+    private: PriorityRunnable* currentPriorityRunnable;
 
                 //@Throws(Exception.constructor)
             
@@ -117,7 +118,7 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
                 //@Throws(InterruptedException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: Runnable* getTask();
+    /*protected*/ public: Runnable* getTask();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void clear();
@@ -129,13 +130,13 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
     public: bool isBusy();
 
-    protected: void threadStarted();
+    /*protected*/ public: void threadStarted();
 
-    protected: void threadStopped();
+    /*protected*/ public: void threadStopped();
 
-    protected: void startTask(Runnable* task);
+    /*protected*/ public: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable* task);
+    /*protected*/ public: void completedTask(Runnable* task);
 
 };
 
@@ -143,3 +144,34 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
 
         #endif //ORG_ALLBINARY_THREAD_THREADPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_THREADPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_THREADPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/thread/NullRunnable.h")
+#include "org/allbinary/thread/NullRunnable.h"
+#endif
+#if __has_include("org/allbinary/thread/ThreadPoolStrings.h")
+#include "org/allbinary/thread/ThreadPoolStrings.h"
+#endif
+#if __has_include("org/allbinary/thread/ThreadObjectUtil.h")
+#include "org/allbinary/thread/ThreadObjectUtil.h"
+#endif
+#if __has_include("org/allbinary/thread/PriorityRunnable.h")
+#include "org/allbinary/thread/PriorityRunnable.h"
+#endif
+
+        #endif
+    

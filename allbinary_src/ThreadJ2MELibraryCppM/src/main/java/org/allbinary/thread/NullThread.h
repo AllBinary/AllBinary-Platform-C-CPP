@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_NULLTHREAD_H
         #define ORG_ALLBINARY_THREAD_NULLTHREAD_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,15 +55,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullThread
-            : public Object
+            : public virtual Object
          {
 
-    public: static Thread* NULL_THREAD() { static std::unique_ptr<Thread> value(new Thread()); return value.get(); }
+    private: static Thread* NULL_THREAD_owner();
+    public: static Thread* NULL_THREAD;
 
+
+            
+    public: NullThread();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_THREAD_NULLTHREAD_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_NULLTHREAD_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_NULLTHREAD_H_COMPLETE
+        
+        #endif
+    

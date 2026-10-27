@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONVISITOR_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,12 +54,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
+        class TouchButtonInput;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonVisitor
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: TouchButtonVisitor();
+        
                 //@Throws(Exception.constructor)
             
     public: void process(TouchButtonInput* touchButtonInput, std::string string);
@@ -65,3 +78,13 @@ class TouchButtonVisitor
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONVISITOR_H_COMPLETE
+        #if __has_include("org/allbinary/input/motion/button/TouchButtonInput.h")
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#endif
+
+        #endif
+    

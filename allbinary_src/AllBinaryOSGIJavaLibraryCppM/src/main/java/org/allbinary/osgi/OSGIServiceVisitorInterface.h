@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_H
         #define ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/util/visitor/VisitorInterface.h>
-
-      
 
 
 
@@ -48,8 +51,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/osgi/OSGIServiceInterface.h"
+        class OSGIServiceInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OSGIServiceVisitorInterface: public VisitorInterface {
 
     public: virtual bool visit(OSGIServiceInterface* osgiServiceInterface) = 0;
@@ -60,3 +67,16 @@ class OSGIServiceVisitorInterface: public VisitorInterface {
 
 
         #endif //ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/visitor/VisitorInterface.h>)
+#include <org/allbinary/logic/util/visitor/VisitorInterface.h>
+#endif
+#if __has_include("org/allbinary/osgi/OSGIServiceInterface.h")
+#include "org/allbinary/osgi/OSGIServiceInterface.h"
+#endif
+
+        #endif
+    

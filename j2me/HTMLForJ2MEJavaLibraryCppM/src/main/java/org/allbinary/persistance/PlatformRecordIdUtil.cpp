@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PERSISTANCE_PLATFORMRECORDIDUTIL_CPP
+        #define ORG_ALLBINARY_PERSISTANCE_PLATFORMRECORDIDUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/persistance/PlatformRecordIdUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,25 +64,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PlatformRecordIdUtil
-            : public Object
-         {
 
-    private: static PlatformRecordIdUtil* instance() { static std::unique_ptr<PlatformRecordIdUtil> value(new PlatformRecordIdUtil()); return value.get(); }
+PlatformRecordIdUtil::PlatformRecordIdUtil() {
+        }
+        auto PlatformRecordIdUtil::instance_owner() -> PlatformRecordIdUtil* { static std::unique_ptr<PlatformRecordIdUtil> value(new PlatformRecordIdUtil()); return value.get(); }
+PlatformRecordIdUtil* PlatformRecordIdUtil::instance = PlatformRecordIdUtil::instance_owner();
 
-    public: static PlatformRecordIdUtil* getInstance(){
+    auto PlatformRecordIdUtil::getInstance() -> PlatformRecordIdUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformRecordIdUtil::instance();
+                        return PlatformRecordIdUtil::instance;
     
 }
 
 
-    private: const std::string PLATFORM_SHORT_NAME = "HTML";
-
-    public: std::string getRecordId(AbeClientInformationInterface* abeClientInformation, std::string baseRecordId){
+    auto PlatformRecordIdUtil::getRecordId(AbeClientInformationInterface* abeClientInformation, std::string baseRecordId) -> std::string{
 
 
 
@@ -82,7 +90,6 @@ class PlatformRecordIdUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PERSISTANCE_PLATFORMRECORDIDUTIL_CPP

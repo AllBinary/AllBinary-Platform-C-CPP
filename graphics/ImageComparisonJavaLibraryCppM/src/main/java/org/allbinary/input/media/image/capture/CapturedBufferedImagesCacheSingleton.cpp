@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDBUFFEREDIMAGESCACHESINGLETON_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDBUFFEREDIMAGESCACHESINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/CapturedBufferedImagesCacheSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,15 +78,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CapturedBufferedImagesCacheSingleton
-            : public Object
-         {
 
-    private: static inline AutomaticCacheInterface* cacheInterface = 
-                null
-            ;
+CapturedBufferedImagesCacheSingleton::CapturedBufferedImagesCacheSingleton() : logUtil(LogUtil::getInstance()){
+}
 
-    public: static CacheInterface* getInstance(){
+
+    auto CapturedBufferedImagesCacheSingleton::getInstance() -> CacheInterface*{
 
 
 
@@ -85,9 +92,8 @@ class CapturedBufferedImagesCacheSingleton
     
 }
 
-
-                    static int32_t initResult = CapturedBufferedImagesCacheSingleton::init();
-                static int32_t init() { 
+int32_t CapturedBufferedImagesCacheSingleton::initResult = CapturedBufferedImagesCacheSingleton::init();
+        auto CapturedBufferedImagesCacheSingleton::init() -> int32_t {
                     
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -120,15 +126,8 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 
 
                     return 0;
-                }
-            
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: CapturedBufferedImagesCacheSingleton(){
-}
+        }
+                
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDBUFFEREDIMAGESCACHESINGLETON_CPP

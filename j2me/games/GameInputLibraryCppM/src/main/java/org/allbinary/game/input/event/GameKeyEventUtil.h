@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTUTIL_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/event/GameKeyEvent.h"
+        class GameKeyEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyEventUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static int32_t getKey(Object* anyType);
+    public: static int32_t getKey(const std::string& anyType) { return getKey(JavaString::box(anyType)); }
 
 private: GameKeyEventUtil();
 
@@ -63,3 +73,13 @@ private: GameKeyEventUtil();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/game/input/event/GameKeyEvent.h")
+#include "org/allbinary/game/input/event/GameKeyEvent.h"
+#endif
+
+        #endif
+    

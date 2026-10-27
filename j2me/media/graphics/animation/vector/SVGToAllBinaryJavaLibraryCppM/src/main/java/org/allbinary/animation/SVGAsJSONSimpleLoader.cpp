@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_CPP
+        #define ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/SVGAsJSONSimpleLoader.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -93,108 +103,25 @@
 #include "org/allbinary/animation/ShapeType.h"
 #include "org/allbinary/animation/Number.h"
 
-class SVGAsJSONSimpleLoader
-            : public Object
-         {
 
-    private: static SVGAsJSONSimpleLoader* instance() { static std::unique_ptr<SVGAsJSONSimpleLoader> value(new SVGAsJSONSimpleLoader()); return value.get(); }
+SVGAsJSONSimpleLoader::SVGAsJSONSimpleLoader() : graphicsStrings(GraphicsStrings::getInstance()), shapeTypeFactory(ShapeTypeFactory::getInstance()), KEY_X(PositionStrings::getInstance()->X), KEY_Y(PositionStrings::getInstance()->Y), EMPTY_POINTS(PrimitiveIntUtil::getTwoDimensionalArrayInstance()), SHAPE_SEPARATOR({1000,1000}) {
+        }
+        auto SVGAsJSONSimpleLoader::instance_owner() -> SVGAsJSONSimpleLoader* { static std::unique_ptr<SVGAsJSONSimpleLoader> value(new SVGAsJSONSimpleLoader()); return value.get(); }
+SVGAsJSONSimpleLoader* SVGAsJSONSimpleLoader::instance = SVGAsJSONSimpleLoader::instance_owner();
 
-    public: static SVGAsJSONSimpleLoader* getInstance(){
+    auto SVGAsJSONSimpleLoader::getInstance() -> SVGAsJSONSimpleLoader*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SVGAsJSONSimpleLoader::instance();
+                        return SVGAsJSONSimpleLoader::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static void main(std::vector<std::string> args){
-
-    std::string svgAsJson = "{\"svg\": {\n" +"    \"rect\": {\n" +"        \"width\": 20,\n" +"        \"fill\": \"#008c00\",\n" +"        \"height\": 20\n" +"    },\n" +"    \"xmlns\": \"http://www.w3.org/2000/svg\",\n" +"    \"width\": 20,\n" +"    \"height\": 20\n" +"}}\n";;
-    
-
-    std::vector<std::vector<int32_t>> points = SVGAsJSONSimpleLoader::getInstance()->load(svgAsJson);;
-    
-
-    StringMaker* stringBuilder = new StringMaker();;
-    
-
-    int32_t size = points.size();;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < size; index++)
-        {
-
-    int32_t size2 = points[index].size();;
-    
-
-
-
-
-                        for (
-    int32_t index2 = 0;index2 < size2; index2++)
-        {
-stringBuilder->appendint(points[index][index2]);
-    
-stringBuilder->append(CommonSeps::getInstance()->COMMA);
-    
-}
-
-}
-
-System.out.println(stringBuilder->toString());
-    
-}
-
-
-    private: GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();
-
-    private: ShapeTypeFactory* shapeTypeFactory = ShapeTypeFactory::getInstance();
-
-    private: const std::string KEY_SVG = "svg";
-
-    private: const std::string KEY_X1 = "x1";
-
-    private: const std::string KEY_Y1 = "y1";
-
-    private: const std::string KEY_X2 = "x2";
-
-    private: const std::string KEY_Y2 = "y2";
-
-    private: const std::string KEY_CX = "cx";
-
-    private: const std::string KEY_CY = "cy";
-
-    private: const std::string KEY_R = "r";
-
-    private: const std::string KEY_X = PositionStrings::getInstance()->X;
-
-    private: const std::string KEY_Y = PositionStrings::getInstance()->Y;
-
-    private: const std::string ERROR_PARSE_SVG_JSON = "Unable to parse SVG JSON";
-
-    private: const std::string ERROR_MISSING_KEY_PREFIX = "Missing key: ";
-
-    private: const std::string ERROR_INVALID_NUMBER_PREFIX = "Invalid number for key: ";
-
-    private: const std::string ERROR_EXPECTED_OBJECT_PREFIX = "Expected object for: ";
-
-    private: const std::vector<std::vector<int32_t>> EMPTY_POINTS = PrimitiveIntUtil::getTwoDimensionalArrayInstance();
-
-    private: const std::vector<int32_t> SHAPE_SEPARATOR = {1000,1000};
-
-    private: const int32_t CIRCLE_SEGMENTS = 16;
-
-                //@Throws(Exception.constructor)
-            
-    public: std::vector<std::vector<int32_t>> load(std::string svgAsJson){
+    auto SVGAsJSONSimpleLoader::load(std::string svgAsJson) -> std::vector<std::vector<int32_t>>{
 
                         if(false)
                         
@@ -244,7 +171,7 @@ System.out.println(stringBuilder->toString());
     Object* value = svg->opt(key);;
     
 
-                        if(this->shapeTypeFactory->KEY_LINE. === key)
+                        if(this->shapeTypeFactory->KEY_LINE->->equals(key))
                         
                                     {
                                     this->addShapes(pointVector, value, this->shapeTypeFactory->LINE);
@@ -253,7 +180,7 @@ System.out.println(stringBuilder->toString());
                                     }
                                 
                              else 
-                        if(this->shapeTypeFactory-> === key)
+                        if(this->shapeTypeFactory->->equals(key))
                         
                                     {
                                     this->addShapes(pointVector, value, this->shapeTypeFactory->CIRCLE);
@@ -262,7 +189,7 @@ System.out.println(stringBuilder->toString());
                                     }
                                 
                              else 
-                        if(this->shapeTypeFactory->KEY_RECT. === key || this->shapeTypeFactory->KEY_RECTANGLE. === key)
+                        if(this->shapeTypeFactory->KEY_RECT->->equals(key) || this->shapeTypeFactory->KEY_RECTANGLE->->equals(key))
                         
                                     {
                                     this->addShapes(pointVector, value, this->shapeTypeFactory->RECTANGLE);
@@ -285,7 +212,7 @@ System.out.println(stringBuilder->toString());
 
 
 
-                            throw new IllegalArgumentException(ERROR_PARSE_SVG_JSON, &e);
+                            throw IllegalArgumentException(ERROR_PARSE_SVG_JSON, &e);
                     
 }
 
@@ -294,7 +221,7 @@ System.out.println(stringBuilder->toString());
 
                 //@Throws(Exception.constructor)
             
-    private: void addShapes(BasicArrayList* pointVector, Object* value, ShapeType* shapeType){
+    auto SVGAsJSONSimpleLoader::addShapes(BasicArrayList* pointVector, Object* value, ShapeType* shapeType) -> void{
 
                         if(
                                         (dynamic_cast<const JSONArray*>(value) != nullptr)
@@ -332,7 +259,7 @@ this->addShape(pointVector, array->opt(index), shapeType);
 
                 //@Throws(Exception.constructor)
             
-    private: void addShape(BasicArrayList* pointVector, Object* value, ShapeType* shapeType){
+    auto SVGAsJSONSimpleLoader::addShape(BasicArrayList* pointVector, Object* value, ShapeType* shapeType) -> void{
 
     JSONObject* shape = this->asObject(value, shapeType->getName());;
     
@@ -365,7 +292,7 @@ this->addShape(pointVector, array->opt(index), shapeType);
 
                 //@Throws(Exception.constructor)
             
-    private: void addLine(BasicArrayList* pointVector, JSONObject* line){
+    auto SVGAsJSONSimpleLoader::addLine(BasicArrayList* pointVector, JSONObject* line) -> void{
 this->addPoint(pointVector, this->readInt(line, KEY_X1), this->readInt(line, KEY_Y1));
     
 this->addPoint(pointVector, this->readInt(line, KEY_X2), this->readInt(line, KEY_Y2));
@@ -377,7 +304,7 @@ this->addSeparator(pointVector);
 
                 //@Throws(Exception.constructor)
             
-    private: void addCircle(BasicArrayList* pointVector, JSONObject* circle){
+    auto SVGAsJSONSimpleLoader::addCircle(BasicArrayList* pointVector, JSONObject* circle) -> void{
 
     int32_t cx = this->readInt(circle, KEY_CX);;
     
@@ -414,7 +341,7 @@ this->addSeparator(pointVector);
 
                 //@Throws(Exception.constructor)
             
-    private: void addRectangle(BasicArrayList* pointVector, JSONObject* rectangle){
+    auto SVGAsJSONSimpleLoader::addRectangle(BasicArrayList* pointVector, JSONObject* rectangle) -> void{
 
     int32_t x = this->readInt(rectangle, KEY_X, 0);;
     
@@ -442,13 +369,13 @@ this->addSeparator(pointVector);
 }
 
 
-    private: void addPoint(BasicArrayList* pointVector, int32_t x, int32_t y){
+    auto SVGAsJSONSimpleLoader::addPoint(BasicArrayList* pointVector, int32_t x, int32_t y) -> void{
 pointVector->add({x,y});
     
 }
 
 
-    private: void addSeparator(BasicArrayList* pointVector){
+    auto SVGAsJSONSimpleLoader::addSeparator(BasicArrayList* pointVector) -> void{
 pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
     
 }
@@ -456,7 +383,7 @@ pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t readInt(JSONObject* anyType, std::string key){
+    auto SVGAsJSONSimpleLoader::readInt(JSONObject* anyType, std::string key) -> int32_t{
 
     Object* value = anyType->get(key);;
     
@@ -469,7 +396,7 @@ pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
                                     
 
 
-                            throw new IllegalArgumentException(ERROR_MISSING_KEY_PREFIX +key);
+                            throw IllegalArgumentException(JavaString::valueOf(ERROR_MISSING_KEY_PREFIX) +JavaString::valueOf(key));
                     
 
                                     }
@@ -483,7 +410,7 @@ pointVector->add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
 }
 
 
-    private: int32_t readInt(JSONObject* anyType, std::string key, int32_t defaultValue){
+    auto SVGAsJSONSimpleLoader::readInt(JSONObject* anyType, std::string key, int32_t defaultValue) -> int32_t{
 
         try {
             
@@ -519,7 +446,7 @@ e.printStackTrace();
 }
 
 
-    private: int32_t toInt(Object* value, std::string key){
+    auto SVGAsJSONSimpleLoader::toInt(Object* value, std::string key) -> int32_t{
 
                         if(
                                         (dynamic_cast<const Number*>(value) != nullptr)
@@ -553,12 +480,12 @@ e.printStackTrace();
 
 
 
-                            throw new IllegalArgumentException(ERROR_INVALID_NUMBER_PREFIX +key);
+                            throw IllegalArgumentException(JavaString::valueOf(ERROR_INVALID_NUMBER_PREFIX) +JavaString::valueOf(key));
                     
 }
 
 
-    private: JSONObject* asObject(Object value, std::string name){
+    auto SVGAsJSONSimpleLoader::asObject(Object* value, std::string name) -> JSONObject*{
 
                         if(
                                         (dynamic_cast<const JSONObject*>(value) != nullptr)
@@ -577,12 +504,12 @@ e.printStackTrace();
 
 
 
-                            throw new IllegalArgumentException(ERROR_EXPECTED_OBJECT_PREFIX +name);
+                            throw IllegalArgumentException(JavaString::valueOf(ERROR_EXPECTED_OBJECT_PREFIX) +JavaString::valueOf(name));
                     
 }
 
 
-    private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList* pointVector){
+    auto SVGAsJSONSimpleLoader::toPoints(BasicArrayList* pointVector) -> std::vector<std::vector<int32_t>>{
 
                         if(pointVector->size() == 0)
                         
@@ -626,7 +553,51 @@ points[index]= point;
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto SVGAsJSONSimpleLoader::main(std::vector<std::string> args) -> void{
 
+    std::string svgAsJson = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("{\"svg\": {\n") +JavaString::valueOf("    \"rect\": {\n")) +JavaString::valueOf("        \"width\": 20,\n")) +JavaString::valueOf("        \"fill\": \"#008c00\",\n")) +JavaString::valueOf("        \"height\": 20\n")) +JavaString::valueOf("    },\n")) +JavaString::valueOf("    \"xmlns\": \"http://www.w3.org/2000/svg\",\n")) +JavaString::valueOf("    \"width\": 20,\n")) +JavaString::valueOf("    \"height\": 20\n")) +JavaString::valueOf("}}\n");;
+    
+
+    std::vector<std::vector<int32_t>> points = SVGAsJSONSimpleLoader::getInstance()->load(svgAsJson);;
+    
+
+    StringMaker* stringBuilder = new StringMaker();;
+    
+
+    int32_t size = points.size();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
+        {
+
+    int32_t size2 = points[index].size();;
+    
+
+
+
+
+                        for (
+    int32_t index2 = 0;index2 < size2; index2++)
+        {
+stringBuilder->appendint(points[index][index2]);
+    
+stringBuilder->append(CommonSeps::getInstance()->COMMA);
+    
+}
+
+}
+
+System.out.println(stringBuilder->toString());
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_CPP

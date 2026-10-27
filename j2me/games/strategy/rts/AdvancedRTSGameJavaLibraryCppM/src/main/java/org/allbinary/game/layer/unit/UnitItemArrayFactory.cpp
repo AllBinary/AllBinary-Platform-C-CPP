@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/unit/UnitItemArrayFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -100,19 +110,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UnitItemArrayFactory
-            : public Object
-        , public ItemArraySingletonFactoryInterface {
+std::vector<ABCustomItem*> UnitItemArrayFactory::ITEMS = CustomItemUtil::getInstance()->CUSTOM_ITEM_ARRAY;
 
-    private: static inline const std::vector<ABCustomItem*> ITEMS = CustomItemUtil::getInstance()->CUSTOM_ITEM_ARRAY;
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-    private: std::vector<BasicGameResources*> resources;
-
-protected: UnitItemArrayFactory(std::vector<BasicGameResources*> resources){
+UnitItemArrayFactory::UnitItemArrayFactory(std::vector<BasicGameResources*> resources) : commonSeps(CommonSeps::getInstance()), basicColor(BasicColorFactory::getInstance()->WHITE){
 this->resources= resources;
     
 }
@@ -120,7 +120,7 @@ this->resources= resources;
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem* createFlagItem(FlagGameResources* flagResources, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+    auto UnitItemArrayFactory::createFlagItem(FlagGameResources* flagResources, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface) -> ABCustomItem*{
 
     std::string name = flagResources->NAME;;
     
@@ -147,7 +147,7 @@ this->resources= resources;
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem* createNamedFlagItem(FlagGameResources* flagResources, std::string name, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+    auto UnitItemArrayFactory::createNamedFlagItem(FlagGameResources* flagResources, std::string name, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface) -> ABCustomItem*{
 
     ImageCache* IMAGE_CACHE = GameFeatureImageCacheFactory::getInstance();;
     
@@ -171,7 +171,7 @@ this->resources= resources;
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<ABCustomItem*> getItems(){
+    auto UnitItemArrayFactory::getItems() -> std::vector<ABCustomItem*>{
 
 
 
@@ -181,7 +181,7 @@ this->resources= resources;
 }
 
 
-    public: std::vector<BasicGameResources*> getResources(){
+    auto UnitItemArrayFactory::getResources() -> std::vector<BasicGameResources*>{
 
 
 
@@ -191,7 +191,7 @@ this->resources= resources;
 }
 
 
-    public: int32_t indexOf(BasicGameResources* basicGameResources){
+    auto UnitItemArrayFactory::indexOf(BasicGameResources* basicGameResources) -> int32_t{
 
 
 
@@ -223,7 +223,6 @@ this->resources= resources;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_CPP

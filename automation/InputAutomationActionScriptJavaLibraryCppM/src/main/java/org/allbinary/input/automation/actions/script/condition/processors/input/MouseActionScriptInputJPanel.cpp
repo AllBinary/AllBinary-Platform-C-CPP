@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTJPANEL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,15 +103,8 @@
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h"
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/Short.h"
 
-class MouseActionScriptInputJPanel: public javax::swing::JPanel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: MouseActionScriptInputInterface* mouseActionScriptInputInterface;
-
-public: MouseActionScriptInputJPanel(MouseActionScriptInputInterface* mouseActionScriptInputInterface){
+MouseActionScriptInputJPanel::MouseActionScriptInputJPanel(MouseActionScriptInputInterface* mouseActionScriptInputInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF(CommonLabels::getInstance()->START +mouseActionScriptInputInterface, this, this->commonStrings->CONSTRUCTOR);
     
 this->initComponents();
@@ -124,7 +127,7 @@ this->set();
 }
 
 
-    private: void set(){
+    auto MouseActionScriptInputJPanel::set() -> void{
 
     ComboBoxModel* inputTypeComboBoxModel = this->inputAutomationTypeJComboBox->getModel();;
     
@@ -173,7 +176,7 @@ this->mouseActionScriptInputInterface->log();
 
                 //@Throws(Exception.constructor)
             
-    private: void updateInputType(){
+    auto MouseActionScriptInputJPanel::updateInputType() -> void{
 
     ComboBoxModel* comboBoxModel = this->inputAutomationTypeJComboBox->getModel();;
     
@@ -194,12 +197,12 @@ this->mouseActionScriptInputInterface->log();
 
                 //@Throws(Exception.constructor)
             
-    private: void update(){
+    auto MouseActionScriptInputJPanel::update() -> void{
 this->updateInputType();
     
 this->mouseActionScriptInputInterface->setTime(getText.valueOf());
     
-this->logUtil->putF("Button State: " +this->mouseActionScriptInputInterface->getButtonClicks(), this, "update");
+this->logUtil->putF(JavaString::valueOf("Button State: ") +JavaString::valueOf(this->mouseActionScriptInputInterface->getButtonClicks()), this, "update");
     
 
                         if(this->button1JCheckBox->isSelected())
@@ -211,7 +214,7 @@ this->logUtil->putF("Button State: " +this->mouseActionScriptInputInterface->get
                                     {
                                     this->mouseActionScriptInputInterface->setButtonClicks(this->mouseActionScriptInputInterface->getButtonClicks() | InputEvent::BUTTON1_MASK);
     
-this->logUtil->putF("Button 1 Selected: " +this->mouseActionScriptInputInterface->getButtonClicks(), this, "update");
+this->logUtil->putF(JavaString::valueOf("Button 1 Selected: ") +JavaString::valueOf(this->mouseActionScriptInputInterface->getButtonClicks()), this, "update");
     
 
                                     }
@@ -226,7 +229,7 @@ this->logUtil->putF("Button 1 Selected: " +this->mouseActionScriptInputInterface
                                     {
                                     this->mouseActionScriptInputInterface->setButtonClicks(this->mouseActionScriptInputInterface->getButtonClicks() ^ InputEvent::BUTTON1_MASK);
     
-this->logUtil->putF("Button 1 Deselected: " +this->mouseActionScriptInputInterface->getButtonClicks(), this, "update");
+this->logUtil->putF(JavaString::valueOf("Button 1 Deselected: ") +JavaString::valueOf(this->mouseActionScriptInputInterface->getButtonClicks()), this, "update");
     
 
                                     }
@@ -244,7 +247,7 @@ this->logUtil->putF("Button 1 Deselected: " +this->mouseActionScriptInputInterfa
                                     {
                                     this->mouseActionScriptInputInterface->setButtonClicks(this->mouseActionScriptInputInterface->getButtonClicks() | InputEvent::BUTTON2_MASK);
     
-this->logUtil->putF("Button 2 Selected: " +this->mouseActionScriptInputInterface->getButtonClicks(), this, "update");
+this->logUtil->putF(JavaString::valueOf("Button 2 Selected: ") +JavaString::valueOf(this->mouseActionScriptInputInterface->getButtonClicks()), this, "update");
     
 
                                     }
@@ -259,7 +262,7 @@ this->logUtil->putF("Button 2 Selected: " +this->mouseActionScriptInputInterface
                                     {
                                     this->mouseActionScriptInputInterface->setButtonClicks(this->mouseActionScriptInputInterface->getButtonClicks() ^ InputEvent::BUTTON2_MASK);
     
-this->logUtil->putF("Button 2 Deselected: " +this->mouseActionScriptInputInterface->getButtonClicks(), this, "update");
+this->logUtil->putF(JavaString::valueOf("Button 2 Deselected: ") +JavaString::valueOf(this->mouseActionScriptInputInterface->getButtonClicks()), this, "update");
     
 
                                     }
@@ -296,7 +299,7 @@ this->mouseActionScriptInputInterface->log();
 }
 
 
-    public: javax::swing::JDialog* getMouseActionJDialog(){
+    auto MouseActionScriptInputJPanel::getMouseActionJDialog() -> javax::swing::JDialog*{
 
 
 
@@ -306,13 +309,13 @@ this->mouseActionScriptInputInterface->log();
 }
 
 
-    public: void setMouseActionJDialog(javax::swing::JDialog* mouseActionJDialog){
+    auto MouseActionScriptInputJPanel::setMouseActionJDialog(javax::swing::JDialog* mouseActionJDialog) -> void{
 this->mouseActionJDialog= mouseActionJDialog;
     
 }
 
 
-    private: void initComponents(){
+    auto MouseActionScriptInputJPanel::initComponents() -> void{
 this->mouseActionJDialog= new javax::swing::JDialog();
     
 this->titleJLabel= new javax::swing::JLabel();
@@ -370,13 +373,13 @@ this->jLabel3->setText("Move To:");
     
 this->button1JCheckBox->setText(CommonPhoneStrings::getInstance()->ONE);
     
-this->button1JCheckBox->setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+this->button1JCheckBox->setBorder(javax.swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
     
 this->button1JCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
 this->button2JCheckBox->setText(CommonPhoneStrings::getInstance()->TWO);
     
-this->button2JCheckBox->setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+this->button2JCheckBox->setBorder(javax.swing->BorderFactory->createEmptyBorder(0, 0, 0, 0));
     
 this->button2JCheckBox->setMargin(new java::awt::Insets(0, 0, 0, 0));
     
@@ -410,9 +413,9 @@ this->mouseDelayJTextField->setText("100");
     
 this->mouseActionJDialog->getContentPane()->setLayout(mouseActionJDialogLayout);
     
-mouseActionJDialogLayout->setHorizontalGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(inputTypeJLabel)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addComponent(jLabel2)->addGap(25, 25, 25))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(jLabel3)->addComponent(jLabel6))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(mouseDelayJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short::MAX_VALUE)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addGap(45, 45, 45))->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(inputAutomationTypeJComboBox, 0, 154, Short::MAX_VALUE))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(button1JCheckBox)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(button2JCheckBox))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(okJButton))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(jLabel4)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short::MAX_VALUE)->addComponent(mouseXJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel5)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(mouseYJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short::MAX_VALUE)))))->addContainerGap()));
+mouseActionJDialogLayout->setHorizontalGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addContainerGap()->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(inputTypeJLabel)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addComponent(jLabel2)->addGap(25, 25, 25))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel3)->addComponent(jLabel6))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)))->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(mouseDelayJTextField, javax.swing->GroupLayout->Alignment->TRAILING, javax.swing->GroupLayout->DEFAULT_SIZE, 154, Short::MAX_VALUE)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addGap(45, 45, 45))->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, mouseActionJDialogLayout->createSequentialGroup()->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(inputAutomationTypeJComboBox, 0, 154, Short::MAX_VALUE))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(button1JCheckBox)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(button2JCheckBox))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->TRAILING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(okJButton))->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(jLabel4)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 5, Short::MAX_VALUE)->addComponent(mouseXJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 59, javax.swing->GroupLayout->PREFERRED_SIZE)))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel5)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(mouseYJTextField, javax.swing->GroupLayout->DEFAULT_SIZE, 62, Short::MAX_VALUE)))))->addContainerGap()));
     
-mouseActionJDialogLayout->setVerticalGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(inputTypeJLabel)->addComponent(inputAutomationTypeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(button1JCheckBox)->addComponent(button2JCheckBox)))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel6)->addComponent(mouseDelayJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel3)->addComponent(jLabel4)->addComponent(jLabel5)->addComponent(mouseYJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(mouseXJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(okJButton)->addContainerGap()));
+mouseActionJDialogLayout->setVerticalGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(mouseActionJDialogLayout->createSequentialGroup()->addComponent(titleJLabel)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(inputTypeJLabel)->addComponent(inputAutomationTypeJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel2, javax.swing->GroupLayout->PREFERRED_SIZE, 15, javax.swing->GroupLayout->PREFERRED_SIZE)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(button1JCheckBox)->addComponent(button2JCheckBox)))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel6)->addComponent(mouseDelayJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(mouseActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel3)->addComponent(jLabel4)->addComponent(jLabel5)->addComponent(mouseYJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(mouseXJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(okJButton)->addContainerGap()));
     
 setMinimumSize(new java::awt::Dimension(100, 0));
     
@@ -436,18 +439,18 @@ this->jLabel1->setText("Mouse:");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short::MAX_VALUE)->addComponent(mouseActionJButton)));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 36, Short::MAX_VALUE)->addComponent(mouseActionJButton)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel1)->addComponent(mouseActionJButton)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(mouseActionJButton)));
     
 }
 
 
-    private: void button2JCheckBoxActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MouseActionScriptInputJPanel::button2JCheckBoxActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void okJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MouseActionScriptInputJPanel::okJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->update();
@@ -465,47 +468,12 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "okButtonActionPerforme
 }
 
 
-    private: void mouseActionJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MouseActionScriptInputJPanel::mouseActionJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->getMouseActionJDialog()->setVisible(true);
     
 }
 
 
-    private: javax::swing::JCheckBox* button1JCheckBox;
 
-    private: javax::swing::JCheckBox* button2JCheckBox;
 
-    private: javax::swing::JComboBox* inputAutomationTypeJComboBox;
-
-    private: javax::swing::JLabel* inputTypeJLabel;
-
-    private: javax::swing::JLabel* jLabel1;
-
-    private: javax::swing::JLabel* jLabel2;
-
-    private: javax::swing::JLabel* jLabel3;
-
-    private: javax::swing::JLabel* jLabel4;
-
-    private: javax::swing::JLabel* jLabel5;
-
-    private: javax::swing::JLabel* jLabel6;
-
-    private: javax::swing::JButton* mouseActionJButton;
-
-    private: javax::swing::JDialog* mouseActionJDialog;
-
-    private: javax::swing::JTextField* mouseDelayJTextField;
-
-    private: javax::swing::JTextField* mouseXJTextField;
-
-    private: javax::swing::JTextField* mouseYJTextField;
-
-    private: javax::swing::JButton* okJButton;
-
-    private: javax::swing::JLabel* titleJLabel;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTJPANEL_CPP

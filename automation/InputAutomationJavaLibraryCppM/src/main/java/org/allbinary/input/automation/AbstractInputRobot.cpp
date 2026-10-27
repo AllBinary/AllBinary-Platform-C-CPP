@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/AbstractInputRobot.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,21 +73,14 @@
 #include "org/allbinary/input/automation/PointHelper.h"
 #include "org/allbinary/input/automation/Rectangle.h"
 
-class AbstractInputRobot
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HelpSet* helpSet;
-
-public: AbstractInputRobot(HelpSet* helpSet){
+AbstractInputRobot::AbstractInputRobot(HelpSet* helpSet) : logUtil(LogUtil::getInstance()){
 this->setHelpSet(helpSet);
     
 }
 
 
-    public: HelpSet* getHelpSet(){
+    auto AbstractInputRobot::getHelpSet() -> HelpSet*{
 
 
 
@@ -87,51 +90,50 @@ this->setHelpSet(helpSet);
 }
 
 
-    public: void mouseMove(Point* point){
+    auto AbstractInputRobot::mouseMove(Point* point) -> void{
 this->mouseMove(point->x, point->y);
     
-this->logUtil->putF("Moved Mouse To: x: " +point->x +" y: " +point->y, this, "moveMouse");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Moved Mouse To: x: ") +JavaString::valueOf(point->x)) +JavaString::valueOf(" y: ")) +JavaString::valueOf(point->y), this, "moveMouse");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y){
+    auto AbstractInputRobot::mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y) -> void{
 
     Point* point = PointHelper::getCenterPoint(rectangle);;
     
 this->mouseMove(point->x +x, point->y +y);
     
-this->logUtil->putF("Moved Mouse To: x: " +point->x +" y: " +point->y +" in the middle of: " +rectangle, this, "moveMouseToTarget");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Moved Mouse To: x: ") +JavaString::valueOf(point->x)) +JavaString::valueOf(" y: ")) +JavaString::valueOf(point->y)) +JavaString::valueOf(" in the middle of: ")) +JavaString::valueOf(rectangle), this, "moveMouseToTarget");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void mouseMoveToTarget(Rectangle* rectangle){
+    auto AbstractInputRobot::mouseMoveToTarget(Rectangle* rectangle) -> void{
 this->mouseMoveToTarget(rectangle, 0, 0);
     
 }
 
 
-    public: void mouseMove(int32_t x, int32_t y){
+    auto AbstractInputRobot::mouseMove(int32_t x, int32_t y) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    private: void setHelpSet(HelpSet* helpSet){
+    auto AbstractInputRobot::setHelpSet(HelpSet* helpSet) -> void{
 this->helpSet= helpSet;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,35 +37,15 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/modules/gateway/PaymentGatewayDomNodeFactoryInterface.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/string/regex/replace/Replace.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class PaymentGatewayData;
+class PaymentGatewayInterfaceFactoryInterface;
+class PaymentGatewayDomNodeFactoryInterface;
+class StdUtil;
+class AbPathData;
+class Replace;
+class CommonSeps;
 
 
 
@@ -79,10 +64,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h"
+        class BasicPaymentTypeUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicPaymentType
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
@@ -93,9 +82,9 @@ class BasicPaymentType
 
     private: PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface;
 
-protected: BasicPaymentType(std::string paymentMethod);
+/*protected*/ public: BasicPaymentType(std::string paymentMethod);
 
-protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface);
+/*protected*/ public: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface);
 
     private: void init(std::string paymentMethod);
 
@@ -125,3 +114,43 @@ protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFa
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterfaceFactoryInterface.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/modules/gateway/PaymentGatewayDomNodeFactoryInterface.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/modules/gateway/PaymentGatewayDomNodeFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/regex/replace/Replace.h>)
+#include <org/allbinary/logic/string/regex/replace/Replace.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h")
+#include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h"
+#endif
+
+        #endif
+    

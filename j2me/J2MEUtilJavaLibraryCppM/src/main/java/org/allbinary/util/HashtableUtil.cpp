@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_HASHTABLEUTIL_CPP
+        #define ORG_ALLBINARY_UTIL_HASHTABLEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/HashtableUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -57,25 +67,23 @@
 #include "org/allbinary/util/BasicArrayListS.h"
 #include "org/allbinary/util/BasicArrayList.h"
 
-class HashtableUtil
-            : public Object
-         {
 
-    private: static HashtableUtil* instance() { static std::unique_ptr<HashtableUtil> value(new HashtableUtil()); return value.get(); }
+HashtableUtil::HashtableUtil() : enumerationUtil(EnumerationUtil::getInstance()) {
+        }
+        auto HashtableUtil::instance_owner() -> HashtableUtil* { static std::unique_ptr<HashtableUtil> value(new HashtableUtil()); return value.get(); }
+HashtableUtil* HashtableUtil::instance = HashtableUtil::instance_owner();
 
-    public: static HashtableUtil* getInstance(){
+    auto HashtableUtil::getInstance() -> HashtableUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HashtableUtil::instance();
+                        return HashtableUtil::instance;
     
 }
 
 
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
-
-    public: void putAll(ABHashtable<Object*, Object*>* fromHashtable, ABHashtable<Object*, Object*>* hashtable){
+    auto HashtableUtil::putAll(ABHashtable<Object*, Object*>* fromHashtable, ABHashtable<Object*, Object*>* hashtable) -> void{
 
     Enumeration<Object*>* enumeration = fromHashtable->keys();;
     
@@ -112,7 +120,7 @@ valueCanBeNull= hashtable->get(keyCanBeNull);
 }
 
 
-    public: std::vector<Object*> getKeysAsArray(ABHashtable<Object*, Object*>* hashtable){
+    auto HashtableUtil::getKeysAsArray(ABHashtable<Object*, Object*>* hashtable) -> std::vector<Object*>{
 
     std::vector<Object*> objectArray = std::vector<Object*>(hashtable->size());;
     
@@ -138,7 +146,7 @@ objectArray[index++]= this->enumerationUtil->nextElement(enumeration);
 }
 
 
-    public: BasicArrayList* getKeysAsList(ABHashtable<Object*, Object*>* hashtable){
+    auto HashtableUtil::getKeysAsList(ABHashtable<Object*, Object*>* hashtable) -> BasicArrayList*{
 
     BasicArrayList* list = new BasicArrayListS(hashtable->size());;
     
@@ -161,7 +169,6 @@ list->add(this->enumerationUtil->nextElement(enumeration));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_HASHTABLEUTIL_CPP

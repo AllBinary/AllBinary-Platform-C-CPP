@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class RTSInterface
+            : public virtual Object
+         {
 
     public: virtual bool isSelfUpgradeable() = 0;
 
@@ -78,3 +89,10 @@ class RTSInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_H_COMPLETE
+        
+        #endif
+    

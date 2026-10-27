@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H
         #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +52,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/emulator/swt/SWTProcessor.h"
+        class SWTProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SWTProcessorUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static SWTProcessorUtil* instance() { static std::unique_ptr<SWTProcessorUtil> value(new SWTProcessorUtil()); return value.get(); }
+    private: static SWTProcessorUtil* instance_owner();
+    private: static SWTProcessorUtil* instance;
 
     public: static SWTProcessorUtil* getInstance();
 
-    public: SWTProcessor* swtProcessor = SWTProcessor::getInstance();
+
+            
+    public: SWTProcessorUtil();
+        
+    public: SWTProcessor* swtProcessor;
 
 };
 
@@ -65,3 +79,13 @@ class SWTProcessorUtil
 
 
         #endif //ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/emulator/swt/SWTProcessor.h")
+#include "org/allbinary/emulator/swt/SWTProcessor.h"
+#endif
+
+        #endif
+    

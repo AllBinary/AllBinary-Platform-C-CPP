@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/SavedCaptureGenericProfileDataWorkerType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +57,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h"
 
-class SavedCaptureGenericProfileDataWorkerType: public GenericProfileDataWorkerType {
+auto SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE_owner() -> SavedCaptureGenericProfileDataWorkerType* { static std::unique_ptr<SavedCaptureGenericProfileDataWorkerType> value(new SavedCaptureGenericProfileDataWorkerType(JavaString::valueOf("Saved ") +JavaString::valueOf(InputImageType::CAPTURE->getName()), "c:\\share\\captures\\2\\", 100)); return value.get(); }
+SavedCaptureGenericProfileDataWorkerType* SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE_owner();
 
-    public: static SavedCaptureGenericProfileDataWorkerType* SAVED_CAPTURE() { static std::unique_ptr<SavedCaptureGenericProfileDataWorkerType> value(new SavedCaptureGenericProfileDataWorkerType("Saved " +InputImageType::CAPTURE.getName(), "c:\\share\\captures\\2\\", 100)); return value.get(); }
-
-    private: std::string path;
-
-    private: int32_t lastFrame= 0;
-
-public: SavedCaptureGenericProfileDataWorkerType(std::string name, std::string path, int32_t lastFrame) : GenericProfileDataWorkerType(name){
+SavedCaptureGenericProfileDataWorkerType::SavedCaptureGenericProfileDataWorkerType(std::string name, std::string path, int32_t lastFrame) : GenericProfileDataWorkerType(name){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +74,7 @@ this->setLastFrame(lastFrame);
 }
 
 
-    public: std::string getPath(){
+    auto SavedCaptureGenericProfileDataWorkerType::getPath() -> std::string{
 
 
 
@@ -79,13 +84,13 @@ this->setLastFrame(lastFrame);
 }
 
 
-    public: void setPath(std::string path){
+    auto SavedCaptureGenericProfileDataWorkerType::setPath(std::string path) -> void{
 this->path= path;
     
 }
 
 
-    public: int32_t getLastFrame(){
+    auto SavedCaptureGenericProfileDataWorkerType::getLastFrame() -> int32_t{
 
 
 
@@ -95,13 +100,12 @@ this->path= path;
 }
 
 
-    public: void setLastFrame(int32_t lastFrame){
+    auto SavedCaptureGenericProfileDataWorkerType::setLastFrame(int32_t lastFrame) -> void{
 this->lastFrame= lastFrame;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_CPP

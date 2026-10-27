@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/SelectionTool.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -100,41 +110,18 @@
 #include "org/allbinary/graphics/j2me/workarea/tools/MouseStrings.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
 
-class SelectionTool
-            : public Object
-        , public GraphicItemInterface {
 
-    private: static inline const std::string NAME = "Selection Tool";
-
-    public: static std::string getStaticName(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectionTool::NAME;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CanvasJPanel* canvasJPanel;
-
-    private: bool active = true;
-
-public: SelectionTool(CanvasJPanel* canvasJPanel){
+SelectionTool::SelectionTool(CanvasJPanel* canvasJPanel) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), rectColor(new Color(BasicColorFactory::getInstance()->RED->intValue())), startPoint(PointFactory::getInstance()->ZERO_ZERO), endPoint(this->startPoint){
 this->canvasJPanel= canvasJPanel;
     
 }
 
 
-    public: void setColor(Color* color){
+    auto SelectionTool::setColor(Color* color) -> void{
 }
 
 
-    public: MutableTreeNode* getTreeNode(){
+    auto SelectionTool::getTreeNode() -> MutableTreeNode*{
 
 
 
@@ -144,7 +131,7 @@ this->canvasJPanel= canvasJPanel;
 }
 
 
-    public: Points* getPointsInterface(){
+    auto SelectionTool::getPointsInterface() -> Points*{
 
 
 
@@ -154,11 +141,11 @@ this->canvasJPanel= canvasJPanel;
 }
 
 
-    public: void setPointsInterface(Points* points){
+    auto SelectionTool::setPointsInterface(Points* points) -> void{
 }
 
 
-    public: bool isValid(){
+    auto SelectionTool::isValid() -> bool{
 
 
 
@@ -168,7 +155,7 @@ this->canvasJPanel= canvasJPanel;
 }
 
 
-    public: bool isActive(){
+    auto SelectionTool::isActive() -> bool{
 
 
 
@@ -178,41 +165,41 @@ this->canvasJPanel= canvasJPanel;
 }
 
 
-    public: void deactivate(){
+    auto SelectionTool::deactivate() -> void{
 }
 
 
-    public: void activate(){
+    auto SelectionTool::activate() -> void{
 }
 
 
-    public: void setFulcrumPoint(GPoint* point){
+    auto SelectionTool::setFulcrumPoint(GPoint* point) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void translate(int32_t x, int32_t y){
+    auto SelectionTool::translate(int32_t x, int32_t y) -> void{
 }
 
 
-    public: void setRotate(double theta){
+    auto SelectionTool::setRotate(double theta) -> void{
 }
 
 
-    public: void addRotate(double theta){
+    auto SelectionTool::addRotate(double theta) -> void{
 }
 
 
-    public: void setAngle(double angle){
+    auto SelectionTool::setAngle(double angle) -> void{
 }
 
 
-    public: void addAngle(double angle){
+    auto SelectionTool::addAngle(double angle) -> void{
 }
 
 
-    public: double getAngle(){
+    auto SelectionTool::getAngle() -> double{
 
 
 
@@ -222,9 +209,7 @@ this->canvasJPanel= canvasJPanel;
 }
 
 
-    private: bool controlIdDown= false;
-
-    private: void makeSelection(){
+    auto SelectionTool::makeSelection() -> void{
 
     int32_t xRect = this->getXRect();;
     
@@ -290,9 +275,7 @@ item->deactivate();
 }
 
 
-    private: Color* rectColor = new Color(BasicColorFactory::getInstance()->RED.intValue());
-
-    public: int32_t getXRect(){
+    auto SelectionTool::getXRect() -> int32_t{
 
     int32_t xDiff = this->endPoint->getX() -this->startPoint->getX();;
     
@@ -317,7 +300,7 @@ item->deactivate();
 }
 
 
-    public: int32_t getYRect(){
+    auto SelectionTool::getYRect() -> int32_t{
 
     int32_t yDiff = this->endPoint->getY() -this->startPoint->getY();;
     
@@ -342,7 +325,7 @@ item->deactivate();
 }
 
 
-    public: void paint(Graphics* g, double canvasAngle, IntegerDimension* dimension, int32_t x, int32_t y){
+    auto SelectionTool::paint(Graphics* g, double canvasAngle, IntegerDimension* dimension, int32_t x, int32_t y) -> void{
 g->setColor(this->rectColor);
     
 
@@ -364,7 +347,7 @@ g->drawRect(xRect, yRect, width, height);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toDom(CanvasDom* canvasDom){
+    auto SelectionTool::toDom(CanvasDom* canvasDom) -> Node*{
 
 
 
@@ -374,7 +357,7 @@ g->drawRect(xRect, yRect, width, height);
 }
 
 
-    public: GPoint* removePoint(){
+    auto SelectionTool::removePoint() -> GPoint*{
 
 
 
@@ -384,11 +367,11 @@ g->drawRect(xRect, yRect, width, height);
 }
 
 
-    public: void addPoint(GPoint* point){
+    auto SelectionTool::addPoint(GPoint* point) -> void{
 }
 
 
-    public: std::string getName(){
+    auto SelectionTool::getName() -> std::string{
 
 
 
@@ -398,27 +381,33 @@ g->drawRect(xRect, yRect, width, height);
 }
 
 
-    private: GPoint* startPoint = PointFactory::getInstance()->ZERO_ZERO;
+    auto SelectionTool::getStaticName() -> std::string{
 
-    private: GPoint* endPoint = this->startPoint;
 
-    public: void mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return SelectionTool::NAME;
+    
 }
 
 
-    public: void mouseMoved(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    auto SelectionTool::mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) -> void{
 }
 
 
-    public: void mouseEntered(java::awt::event::MouseEvent* mouseEvent){
+    auto SelectionTool::mouseMoved(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) -> void{
 }
 
 
-    public: void mouseExited(java::awt::event::MouseEvent* mouseEvent){
+    auto SelectionTool::mouseEntered(java::awt::event::MouseEvent* mouseEvent) -> void{
 }
 
 
-    public: void mousePressed(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    auto SelectionTool::mouseExited(java::awt::event::MouseEvent* mouseEvent) -> void{
+}
+
+
+    auto SelectionTool::mousePressed(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) -> void{
 this->logUtil->putF(this->commonStrings->START, this, MouseStrings::getInstance()->MOUSE_PRESSED);
     
 this->startPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseEvent->getY());
@@ -428,7 +417,7 @@ this->endPoint= this->startPoint;
 }
 
 
-    public: void mouseReleased(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    auto SelectionTool::mouseReleased(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) -> void{
 this->logUtil->putF(this->commonStrings->START, this, MouseStrings::getInstance()->MOUSE_RELEASED);
     
 this->endPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseEvent->getY());
@@ -440,13 +429,13 @@ this->makeSelection();
 }
 
 
-    public: void mouseDragged(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    auto SelectionTool::mouseDragged(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) -> void{
 this->endPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseEvent->getY());
     
 }
 
 
-    public: void keyPressed(java::awt::event::KeyEvent* keyEvent){
+    auto SelectionTool::keyPressed(java::awt::event::KeyEvent* keyEvent) -> void{
 
                         if(keyEvent->getKeyCode() == keyEvent->VK_CONTROL)
                         
@@ -459,7 +448,7 @@ this->endPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseE
 }
 
 
-    public: void keyReleased(java::awt::event::KeyEvent* keyEvent){
+    auto SelectionTool::keyReleased(java::awt::event::KeyEvent* keyEvent) -> void{
 
                         if(keyEvent->getKeyCode() == keyEvent->VK_CONTROL)
                         
@@ -472,13 +461,13 @@ this->endPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseE
 }
 
 
-    public: void keyTyped(java::awt::event::KeyEvent* keyEvent){
+    auto SelectionTool::keyTyped(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GraphicItemInterface* duplicate(){
+    auto SelectionTool::duplicate() -> GraphicItemInterface*{
 
 
 
@@ -488,7 +477,6 @@ this->endPoint= PointFactory::getInstance()->createXY(mouseEvent->getX(), mouseE
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_CPP

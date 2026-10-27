@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTLISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h"
+        class MyGraphicItemEvent;
 
-class MyGraphicItemEventListener {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class MyGraphicItemEventListener
+            : public virtual Object
+         {
 
     public: virtual void delete_(MyGraphicItemEvent* evt) = 0;
 
@@ -69,3 +80,13 @@ class MyGraphicItemEventListener {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTLISTENER_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h"
+#endif
+
+        #endif
+    

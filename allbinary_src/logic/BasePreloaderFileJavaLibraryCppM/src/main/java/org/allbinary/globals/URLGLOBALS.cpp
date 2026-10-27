@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALS_CPP
+        #define ORG_ALLBINARY_GLOBALS_URLGLOBALS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/URLGLOBALS.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,19 +59,18 @@
         #include "org/allbinary/globals/AppUrlGlobals.h"
 #include "org/allbinary/globals/UrlGlobalsInterface.h"
 
-class URLGLOBALS
-            : public Object
-         {
 
-    private: static inline UrlGlobalsInterface* urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
+URLGLOBALS::URLGLOBALS() {
+        }
+        UrlGlobalsInterface* URLGLOBALS::urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
 
-    public: static void init(UrlGlobalsInterface* urlGlobalsInterface){
+    auto URLGLOBALS::init(UrlGlobalsInterface* urlGlobalsInterface) -> void{
 URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
     
 }
 
 
-    public: static bool isTestingMode(){
+    auto URLGLOBALS::isTestingMode() -> bool{
 
 
 
@@ -71,7 +80,7 @@ URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
 }
 
 
-    public: static std::string getWebappPath(){
+    auto URLGLOBALS::getWebappPath() -> std::string{
 
 
 
@@ -81,7 +90,7 @@ URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
 }
 
 
-    public: static std::string getTestHtmlPath(){
+    auto URLGLOBALS::getTestHtmlPath() -> std::string{
 
 
 
@@ -93,7 +102,7 @@ URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: static std::string getMainPath(){
+    auto URLGLOBALS::getMainPath() -> std::string{
 
 
 
@@ -103,7 +112,6 @@ URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_URLGLOBALS_CPP

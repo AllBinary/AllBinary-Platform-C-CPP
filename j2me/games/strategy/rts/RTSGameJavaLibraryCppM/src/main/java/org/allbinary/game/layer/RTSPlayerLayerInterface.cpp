@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSPLAYERLAYERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSPLAYERLAYERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,19 +79,8 @@
         #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 #include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
 
-class RTSPlayerLayerInterface: public GameNotificationHudCompositeInterface, public BuildMenuCompositeInterface, public PlayerGameInputCompositeInterface, public DestroyedEventListenerInterface, public TickableInterface, public PathFindingLayerInterface {
+//Interface - declared in the header
 
-    public: virtual Capital* getCapital() = 0;
 
-    public: virtual RTSFormInput* getRTSFormInput() = 0;
 
-    public: virtual void add(Sound* sound) = 0;
-
-    public: virtual PlayerOwnedRTSLayers* getPlayerOwnedRTSLayers() = 0;
-
-    public: virtual bool implmentsArtificialIntelligenceCompositeInterface() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSPLAYERLAYERINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/InitUpdatePaintableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/PaintableInterface.h"
 
-class InitUpdatePaintableInterface: public InitInterface, public UpdateInterface, public PaintableInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLEINTERFACE_CPP

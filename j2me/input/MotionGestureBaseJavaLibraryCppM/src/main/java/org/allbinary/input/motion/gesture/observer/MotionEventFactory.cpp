@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONEVENTFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONEVENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/MotionEventFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,27 +74,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
-class MotionEventFactory
-            : public Object
-        , public AllBinaryEventObjectFactoryInterface {
 
-    private: static inline int32_t index = 0;
-
-    private: Object* source;
-
-    private: int32_t id;
-
-public: MotionEventFactory(Object* source, int32_t id){
+MotionEventFactory::MotionEventFactory(Object* source, int32_t id){
 this->source= source;
     
 this->id= id;
     
-MotionEventFactory::index= TouchMotionGestureFactory::getInstance()->LAST_MOTION.getId();
+MotionEventFactory::index= TouchMotionGestureFactory::getInstance()->LAST_MOTION->getId();
     
 }
 
 
-    public: AllBinaryEventObject* getInstance(){
+    auto MotionEventFactory::getInstance() -> AllBinaryEventObject*{
 
     InputFactory* inputFactory = InputFactory::getInstance();;
     
@@ -117,7 +118,6 @@ MotionEventFactory::index= TouchMotionGestureFactory::getInstance()->LAST_MOTION
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONEVENTFACTORY_CPP

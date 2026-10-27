@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICS_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatistics.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,15 +90,8 @@
         #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsInterface.h"
 #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsData.h"
 
-class StoreFrontInventoryStatistics
-            : public Object
-        , public StoreFrontInventoryStatisticsInterface {
 
-    private: int64_t totalNumberOfItems= 0;
-
-    private: Money* totalInventorySaleValueMoney;
-
-public: StoreFrontInventoryStatistics(StoreFrontInterface* storeFrontInterface){
+StoreFrontInventoryStatistics::StoreFrontInventoryStatistics(StoreFrontInterface* storeFrontInterface){
 this->totalInventorySaleValueMoney= new Money();
     
 
@@ -127,7 +130,7 @@ this->totalInventorySaleValueMoney->add(itemPriceMoney->toString());
 }
 
 
-    public: int64_t getNumber(){
+    auto StoreFrontInventoryStatistics::getNumber() -> int64_t{
 
 
 
@@ -137,7 +140,7 @@ this->totalInventorySaleValueMoney->add(itemPriceMoney->toString());
 }
 
 
-    public: Money* getTotal(){
+    auto StoreFrontInventoryStatistics::getTotal() -> Money*{
 
 
 
@@ -147,7 +150,7 @@ this->totalInventorySaleValueMoney->add(itemPriceMoney->toString());
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto StoreFrontInventoryStatistics::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -164,7 +167,7 @@ hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, this-
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto StoreFrontInventoryStatistics::toVector() -> BasicArrayList*{
 
 
 
@@ -174,7 +177,7 @@ hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, this-
 }
 
 
-    public: Object* getKey(){
+    auto StoreFrontInventoryStatistics::getKey() -> Object*{
 
 
 
@@ -184,7 +187,6 @@ hashMap->put(StoreFrontInventoryStatisticsData::getInstance()->TOTALVALUE, this-
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICS_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICY_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/CachePolicy.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CachePolicy
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: int64_t maxTime= 0;
-
-    private: int64_t maxSize= 0;
-
-public: CachePolicy(std::string name, int64_t maxTime, int64_t maxSize){
+CachePolicy::CachePolicy(std::string name, int64_t maxTime, int64_t maxSize){
 this->name= name;
     
 this->setMaxTime(maxTime);
@@ -65,7 +66,7 @@ this->setMaxSize(maxSize);
 }
 
 
-    public: int64_t getMaxTime(){
+    auto CachePolicy::getMaxTime() -> int64_t{
 
 
 
@@ -75,13 +76,13 @@ this->setMaxSize(maxSize);
 }
 
 
-    public: void setMaxTime(int64_t maxTime){
+    auto CachePolicy::setMaxTime(int64_t maxTime) -> void{
 this->maxTime= maxTime;
     
 }
 
 
-    public: int64_t getMaxSize(){
+    auto CachePolicy::getMaxSize() -> int64_t{
 
 
 
@@ -91,13 +92,13 @@ this->maxTime= maxTime;
 }
 
 
-    public: void setMaxSize(int64_t maxSize){
+    auto CachePolicy::setMaxSize(int64_t maxSize) -> void{
 this->maxSize= maxSize;
     
 }
 
 
-    public: std::string getName(){
+    auto CachePolicy::getName() -> std::string{
 
 
 
@@ -107,7 +108,6 @@ this->maxSize= maxSize;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,15 +91,14 @@
 #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
 #include "org/allbinary/business/user/modules/configuration/UserConfiguration.h"
 
-class UserConfigurationInterfaceFactory
-            : public Object
-         {
 
-    private: static inline const std::string configurationName = "DefaultUserConfiguration";
+UserConfigurationInterfaceFactory::UserConfigurationInterfaceFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface* getInstance(Document* document){
+    auto UserConfigurationInterfaceFactory::getInstance(Document* document) -> UserConfigurationInterface*{
 
     Node* configurationNode = DomSearchHelper::getNode(UserConfigurationData::NAME, document->getChildNodes());;
     
@@ -104,7 +113,7 @@ class UserConfigurationInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface* getInstance(UserRole* userRole){
+    auto UserConfigurationInterfaceFactory::getInstance(UserRole* userRole) -> UserConfigurationInterface*{
 
     AbPath* abPath = new AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->USERCONFIGURATIONPATH, UserConfigurationInterfaceFactory::configurationName +userRole->toString() +AbPathData::getInstance()->EXTENSION_SEP +UserConfigurationData::UNCRYPTED_EXTENSION);;
     
@@ -125,7 +134,7 @@ class UserConfigurationInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserConfigurationInterface* getInstance(){
+    auto UserConfigurationInterfaceFactory::getInstance() -> UserConfigurationInterface*{
 
 
 
@@ -135,11 +144,6 @@ class UserConfigurationInterfaceFactory
 }
 
 
-private: UserConfigurationInterfaceFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACEFACTORY_CPP

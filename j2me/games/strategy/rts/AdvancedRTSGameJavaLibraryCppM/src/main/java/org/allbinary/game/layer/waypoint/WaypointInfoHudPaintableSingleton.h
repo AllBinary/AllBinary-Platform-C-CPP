@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
+        class WaypointInfoHudPaintable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointInfoHudPaintableSingleton
-            : public Object
+            : public virtual Object
          {
 
-    private: static WaypointInfoHudPaintable* instance() { static std::unique_ptr<WaypointInfoHudPaintable> value(new WaypointInfoHudPaintable()); return value.get(); }
+    private: static WaypointInfoHudPaintable* instance_owner();
+    private: static WaypointInfoHudPaintable* instance;
 
     public: static WaypointInfoHudPaintable* getInstance();
 
+
+            
+    public: WaypointInfoHudPaintableSingleton();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_H_COMPLETE
+        #if __has_include("org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h")
+#include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
+#endif
+
+        #endif
+    

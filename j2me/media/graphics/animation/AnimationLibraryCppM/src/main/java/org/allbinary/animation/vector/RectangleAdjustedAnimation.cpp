@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEADJUSTEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEADJUSTEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/RectangleAdjustedAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,17 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleAdjustedAnimation: public Animation, public ColorCompositeInterface {
 
-    private: int32_t width;
-
-    private: int32_t height;
-
-    private: int32_t offsetX;
-
-    private: int32_t offsetY;
-
-public: RectangleAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor){
+RectangleAdjustedAnimation::RectangleAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor){
 this->width= width;
     
 this->height= height;
@@ -79,43 +80,42 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void nextFrame(){
+    auto RectangleAdjustedAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    auto RectangleAdjustedAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 graphics->drawRect(x +this->offsetX, y +this->offsetY, this->width, this->height);
     
 }
 
 
-    public: void setWidth(int32_t width){
+    auto RectangleAdjustedAnimation::setWidth(int32_t width) -> void{
 this->width= width;
     
 }
 
 
-    public: void setHeight(int32_t height){
+    auto RectangleAdjustedAnimation::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-    public: void setOffsetX(int32_t offsetX){
+    auto RectangleAdjustedAnimation::setOffsetX(int32_t offsetX) -> void{
 this->offsetX= offsetX;
     
 }
 
 
-    public: void setOffsetY(int32_t offsetY){
+    auto RectangleAdjustedAnimation::setOffsetY(int32_t offsetY) -> void{
 this->offsetY= offsetY;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEADJUSTEDANIMATION_CPP

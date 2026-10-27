@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_SIMULATEDBUILDINGPROPERTIESFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_BUILDING_SIMULATEDBUILDINGPROPERTIESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/building/SimulatedBuildingPropertiesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,21 +80,23 @@
         #include "org/allbinary/game/layer/building/BuildingPropertiesFactory.h"
 #include "org/allbinary/game/layer/building/BuildingLayer.h"
 
-class SimulatedBuildingPropertiesFactory: public BuildingPropertiesFactory {
 
-    private: static SimulatedBuildingPropertiesFactory* instanceC() { static std::unique_ptr<SimulatedBuildingPropertiesFactory> value(new SimulatedBuildingPropertiesFactory()); return value.get(); }
+SimulatedBuildingPropertiesFactory::SimulatedBuildingPropertiesFactory() {
+        }
+        auto SimulatedBuildingPropertiesFactory::instanceC_owner() -> SimulatedBuildingPropertiesFactory* { static std::unique_ptr<SimulatedBuildingPropertiesFactory> value(new SimulatedBuildingPropertiesFactory()); return value.get(); }
+SimulatedBuildingPropertiesFactory* SimulatedBuildingPropertiesFactory::instanceC = SimulatedBuildingPropertiesFactory::instanceC_owner();
 
-    public: static SimulatedBuildingPropertiesFactory* getInstance(){
+    auto SimulatedBuildingPropertiesFactory::getInstance() -> SimulatedBuildingPropertiesFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimulatedBuildingPropertiesFactory::instanceC();
+                        return SimulatedBuildingPropertiesFactory::instanceC;
     
 }
 
 
-    public: int32_t getEfficiencyPerLevel(BuildingLayer* buildingLayer){
+    auto SimulatedBuildingPropertiesFactory::getEfficiencyPerLevel(BuildingLayer* buildingLayer) -> int32_t{
 
 
 
@@ -94,7 +106,7 @@ class SimulatedBuildingPropertiesFactory: public BuildingPropertiesFactory {
 }
 
 
-    public: DamageFloaters* getDamageFloaters(BuildingLayer* buildingLayer){
+    auto SimulatedBuildingPropertiesFactory::getDamageFloaters(BuildingLayer* buildingLayer) -> DamageFloaters*{
 
     DamageFloaters* damageFloaters = DamageFloaters::getInstance();;
     
@@ -111,7 +123,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
                 //@Throws(Exception.constructor)
             
-    public: Paintable* getHealthBar(BuildingLayer* buildingLayer){
+    auto SimulatedBuildingPropertiesFactory::getHealthBar(BuildingLayer* buildingLayer) -> Paintable*{
 
 
 
@@ -121,7 +133,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public: ABHashtable<Object*, Object*>* getHashtable(){
+    auto SimulatedBuildingPropertiesFactory::getHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -131,7 +143,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public: TrackingEvent* getTrackingEvent(BuildingLayer* buildingLayer){
+    auto SimulatedBuildingPropertiesFactory::getTrackingEvent(BuildingLayer* buildingLayer) -> TrackingEvent*{
 
 
 
@@ -141,7 +153,6 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_BUILDING_SIMULATEDBUILDINGPROPERTIESFACTORY_CPP

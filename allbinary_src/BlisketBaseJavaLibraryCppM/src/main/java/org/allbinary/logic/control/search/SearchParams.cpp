@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHPARAMS_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHPARAMS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/search/SearchParams.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,23 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/search/SearchData.h"
 
-class SearchParams
-            : public Object
-         {
 
-    private: HashMap<Object*, Object*>* columnsAndSearchValues;
-
-    private: std::string order;
-
-    private: std::string sortBy;
-
-    private: std::string listLength;
-
-    private: std::string startPage;
-
-    private: std::string endPage;
-
-public: SearchParams(HttpServletRequest* request){
+SearchParams::SearchParams(HttpServletRequest* request){
 this->columnsAndSearchValues= StdUtil::getInstance()->createHashMap();
     
 this->setLength(request->getParameter(SearchData::LENGTH));
@@ -112,10 +107,10 @@ this->setSortBy(request->getParameter(SearchData::SORTBY));
     int32_t index = 0;;
     
 
-    std::string columnName = request->getParameter(SearchData::COLUMNNAME +"[0]");;
+    std::string columnName = request->getParameter(JavaString::valueOf(SearchData::COLUMNNAME) +JavaString::valueOf("[0]"));;
     
 
-    std::string columnValue = request->getParameter(SearchData::COLUMNVALUE +"[0]");;
+    std::string columnValue = request->getParameter(JavaString::valueOf(SearchData::COLUMNVALUE) +JavaString::valueOf("[0]"));;
     
 
         while(true)
@@ -124,52 +119,52 @@ this->add(columnName, columnValue);
     
 index++;
     
-columnName= request->getParameter(SearchData::COLUMNNAME +"[" +index +"]");
+columnName= request->getParameter(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(SearchData::COLUMNNAME) +JavaString::valueOf("[")) +JavaString::valueOf(index)) +JavaString::valueOf("]"));
     
-columnValue= request->getParameter(SearchData::COLUMNVALUE +"[" +index +"]");
+columnValue= request->getParameter(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(SearchData::COLUMNVALUE) +JavaString::valueOf("[")) +JavaString::valueOf(index)) +JavaString::valueOf("]"));
     
 }
 
 }
 
 
-    public: void add(std::string column, std::string value){
+    auto SearchParams::add(std::string column, std::string value) -> void{
 this->columnsAndSearchValues->put(column, value);
     
 }
 
 
-    public: void setOrder(std::string value){
+    auto SearchParams::setOrder(std::string value) -> void{
 this->order= value;
     
 }
 
 
-    public: void setSortBy(std::string value){
+    auto SearchParams::setSortBy(std::string value) -> void{
 this->sortBy= value;
     
 }
 
 
-    public: void setLength(std::string value){
+    auto SearchParams::setLength(std::string value) -> void{
 this->listLength= value;
     
 }
 
 
-    public: void setStartPage(std::string value){
+    auto SearchParams::setStartPage(std::string value) -> void{
 this->startPage= value;
     
 }
 
 
-    public: void setEndPage(std::string value){
+    auto SearchParams::setEndPage(std::string value) -> void{
 this->endPage= value;
     
 }
 
 
-    public: HashMap<Object*, Object*>* get(){
+    auto SearchParams::get() -> HashMap<Object*, Object*>*{
 
 
 
@@ -179,7 +174,7 @@ this->endPage= value;
 }
 
 
-    public: std::string getOrder(){
+    auto SearchParams::getOrder() -> std::string{
 
 
 
@@ -189,7 +184,7 @@ this->endPage= value;
 }
 
 
-    public: std::string getSortBy(){
+    auto SearchParams::getSortBy() -> std::string{
 
 
 
@@ -199,7 +194,7 @@ this->endPage= value;
 }
 
 
-    public: std::string getLength(){
+    auto SearchParams::getLength() -> std::string{
 
 
 
@@ -209,7 +204,7 @@ this->endPage= value;
 }
 
 
-    public: int32_t getLengthInt(){
+    auto SearchParams::getLengthInt() -> int32_t{
 
                         if(true)
                         
@@ -229,7 +224,7 @@ this->endPage= value;
 }
 
 
-    public: std::string getStartPage(){
+    auto SearchParams::getStartPage() -> std::string{
 
 
 
@@ -239,7 +234,7 @@ this->endPage= value;
 }
 
 
-    public: std::string getEndPage(){
+    auto SearchParams::getEndPage() -> std::string{
 
 
 
@@ -249,7 +244,7 @@ this->endPage= value;
 }
 
 
-    public: int32_t getStartPageInt(){
+    auto SearchParams::getStartPageInt() -> int32_t{
 
                         if(true)
                         
@@ -269,7 +264,7 @@ this->endPage= value;
 }
 
 
-    public: int32_t getEndPageInt(){
+    auto SearchParams::getEndPageInt() -> int32_t{
 
                         if(true)
                         
@@ -291,7 +286,7 @@ this->endPage= value;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* getParamsNode(Document* document){
+    auto SearchParams::getParamsNode(Document* document) -> Node*{
 
     Node* paramsNode = ModDomHelper::createNameValueNodes(document, SearchData::PARAMS, SearchData::PARAMS);;
     
@@ -314,7 +309,7 @@ paramsNode->appendChild(this->getLengthNode(document));
 
                 //@Throws(Exception.constructor)
             
-    private: Node* getFieldsNode(Document* document){
+    auto SearchParams::getFieldsNode(Document* document) -> Node*{
 
     Node* fieldsNode = ModDomHelper::createNameValueNodes(document, SearchData::FIELDS, (int32_t(this->columnsAndSearchValues->size())).toString());;
     
@@ -355,7 +350,7 @@ fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData:
 
                 //@Throws(Exception.constructor)
             
-    private: Node* getOrderNode(Document* document){
+    auto SearchParams::getOrderNode(Document* document) -> Node*{
 
 
 
@@ -367,7 +362,7 @@ fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData:
 
                 //@Throws(Exception.constructor)
             
-    private: Node* getSortByNode(Document* document){
+    auto SearchParams::getSortByNode(Document* document) -> Node*{
 
 
 
@@ -379,7 +374,7 @@ fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData:
 
                 //@Throws(Exception.constructor)
             
-    private: Node* getLengthNode(Document* document){
+    auto SearchParams::getLengthNode(Document* document) -> Node*{
 
 
 
@@ -389,7 +384,6 @@ fieldsNode->appendChild(ModDomHelper::createNameValueNodes(document, SearchData:
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHPARAMS_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,36 +36,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/Input.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class Input;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class CommonLabels;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
+class StdUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -79,29 +64,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
+        class InputToGameKeyMapping;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputMapping
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable;
 
-    private: BasicArrayList* mappedList = new BasicArrayListD();
+    private: BasicArrayList* mappedList;
 
-protected: InputMapping();
+/*protected*/ public: InputMapping();
 
     public: int32_t getTotalMapped();
 
-    protected: bool isDefaultNew();
+    /*protected*/ public: bool isDefaultNew();
 
-    protected: InputToGameKeyMapping* getDefault();
+    /*protected*/ public: InputToGameKeyMapping* getDefault();
 
-    protected: void removeAll();
+    /*protected*/ public: void removeAll();
 
     public: void remove(Input* input, Input* mappedToInput);
 
@@ -123,3 +112,43 @@ protected: InputMapping();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/Input.h>)
+#include <org/allbinary/game/input/Input.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/game/input/mapping/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
+#endif
+
+        #endif
+    

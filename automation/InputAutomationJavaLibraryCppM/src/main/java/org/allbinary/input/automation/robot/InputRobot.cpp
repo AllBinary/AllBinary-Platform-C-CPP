@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/InputRobot.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,23 +87,14 @@
 #include "org/allbinary/input/automation/robot/Rectangle.h"
 #include "org/allbinary/input/automation/robot/Color.h"
 
-class InputRobot
-            : public Object
-        , public InputRobotInterface {
 
-    public: static inline const std::string NAME = "Java Robot";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Robot* robot;
-
-public: InputRobot(GraphicsDevice* graphicsDevice){
+InputRobot::InputRobot(GraphicsDevice* graphicsDevice) : logUtil(LogUtil::getInstance()){
 this->robot= new Robot(graphicsDevice);
     
 }
 
 
-    public: std::string getName(){
+    auto InputRobot::getName() -> std::string{
 
 
 
@@ -103,7 +104,7 @@ this->robot= new Robot(graphicsDevice);
 }
 
 
-    public: HelpSet* getHelpSet(){
+    auto InputRobot::getHelpSet() -> HelpSet*{
 
 
 
@@ -113,7 +114,7 @@ this->robot= new Robot(graphicsDevice);
 }
 
 
-    public: Point* getMousePoint(){
+    auto InputRobot::getMousePoint() -> Point*{
 
     Point* point = MouseInfo::getPointerInfo()->getLocation();;
     
@@ -128,7 +129,7 @@ this->robot= new Robot(graphicsDevice);
 
                 //@Throws(Exception.constructor)
             
-    public: void mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y){
+    auto InputRobot::mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y) -> void{
 
     Point* point = PointHelper::getCenterPoint(rectangle);;
     
@@ -142,13 +143,13 @@ this->logUtil->putF(message, this, "moveMouseToTarget");
 }
 
 
-    public: void mouseMove(Point* point){
+    auto InputRobot::mouseMove(Point* point) -> void{
 this->mouseMove(point->x, point->y);
     
 }
 
 
-    public: void mouseMove(int32_t x, int32_t y){
+    auto InputRobot::mouseMove(int32_t x, int32_t y) -> void{
 this->robot->mouseMove(x, y);
     
 
@@ -161,13 +162,13 @@ this->logUtil->putF(message, this, "moveMouse");
 
                 //@Throws(Exception.constructor)
             
-    public: void mouseMoveToTarget(Rectangle* rectangle){
+    auto InputRobot::mouseMoveToTarget(Rectangle* rectangle) -> void{
 this->mouseMoveToTarget(rectangle, 0, 0);
     
 }
 
 
-    public: BufferedImage* createScreenCapture(Rectangle* screenRect){
+    auto InputRobot::createScreenCapture(Rectangle* screenRect) -> BufferedImage*{
 
 
 
@@ -177,13 +178,13 @@ this->mouseMoveToTarget(rectangle, 0, 0);
 }
 
 
-    public: void delay(int32_t ms){
+    auto InputRobot::delay(int32_t ms) -> void{
 this->robot->delay(ms);
     
 }
 
 
-    public: int32_t getAutoDelay(){
+    auto InputRobot::getAutoDelay() -> int32_t{
 
 
 
@@ -193,7 +194,7 @@ this->robot->delay(ms);
 }
 
 
-    public: Color* getPixelColor(int32_t x, int32_t y){
+    auto InputRobot::getPixelColor(int32_t x, int32_t y) -> Color*{
 
 
 
@@ -203,7 +204,7 @@ this->robot->delay(ms);
 }
 
 
-    public: bool isAutoWaitForIdle(){
+    auto InputRobot::isAutoWaitForIdle() -> bool{
 
 
 
@@ -213,55 +214,55 @@ this->robot->delay(ms);
 }
 
 
-    public: void keyPress(int32_t keycode){
+    auto InputRobot::keyPress(int32_t keycode) -> void{
 this->robot->keyPress(keycode);
     
 }
 
 
-    public: void keyRelease(int32_t keycode){
+    auto InputRobot::keyRelease(int32_t keycode) -> void{
 this->robot->keyRelease(keycode);
     
 }
 
 
-    public: void mouseMove(int32_t x, int32_t y){
+    auto InputRobot::mouseMove(int32_t x, int32_t y) -> void{
 this->robot->mouseMove(x, y);
     
 }
 
 
-    public: void mousePress(int32_t buttons){
+    auto InputRobot::mousePress(int32_t buttons) -> void{
 this->robot->mousePress(buttons);
     
 }
 
 
-    public: void mouseRelease(int32_t buttons){
+    auto InputRobot::mouseRelease(int32_t buttons) -> void{
 this->robot->mouseRelease(buttons);
     
 }
 
 
-    public: void mouseWheel(int32_t wheelAmt){
+    auto InputRobot::mouseWheel(int32_t wheelAmt) -> void{
 this->robot->mouseWheel(wheelAmt);
     
 }
 
 
-    public: void setAutoDelay(int32_t ms){
+    auto InputRobot::setAutoDelay(int32_t ms) -> void{
 this->robot->setAutoDelay(ms);
     
 }
 
 
-    public: void setAutoWaitForIdle(bool isOn){
+    auto InputRobot::setAutoWaitForIdle(bool isOn) -> void{
 this->robot->setAutoWaitForIdle(isOn);
     
 }
 
 
-    public: std::string toString(){
+    auto InputRobot::toString() -> std::string{
 
 
 
@@ -271,21 +272,20 @@ this->robot->setAutoWaitForIdle(isOn);
 }
 
 
-    public: void waitForIdle(){
+    auto InputRobot::waitForIdle() -> void{
 this->robot->waitForIdle();
     
 }
 
 
-    public: void on(){
+    auto InputRobot::on() -> void{
 }
 
 
-    public: void off(){
+    auto InputRobot::off() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOT_CPP

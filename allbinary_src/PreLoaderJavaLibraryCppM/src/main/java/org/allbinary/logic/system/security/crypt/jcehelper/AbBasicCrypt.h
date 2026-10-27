@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,32 +39,14 @@
             #include "java/lang/Exception.h"
         
 #include <java/security/Provider.h>
-
-      
 #include <java/security/Security.h>
-
-      
 #include <java/security/spec/KeySpec.h>
-
-      
-#include <javax/crypto/Cipher.h>
-
-      
-#include <javax/crypto/SecretKey.h>
-
-      
-#include <javax/crypto/SecretKeyFactory.h>
-
-      
+class Cipher;
+class SecretKey;
+class SecretKeyFactory;
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class PreLogUtil;
+class CommonStrings;
 
 
 
@@ -78,11 +65,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/security/crypt/jcehelper/SunJCE.h"
-#include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
+        class SunJCE;
+class KeySpecFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbBasicCrypt
-            : public Object
+            : public virtual Object
         , public CryptInterface {
 
     private: Cipher* cipher;
@@ -107,3 +98,43 @@ public: AbBasicCrypt(std::string algorithm, std::string key);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_H_COMPLETE
+        #if __has_include(<java/security/Provider.h>)
+#include <java/security/Provider.h>
+#endif
+#if __has_include(<java/security/Security.h>)
+#include <java/security/Security.h>
+#endif
+#if __has_include(<java/security/spec/KeySpec.h>)
+#include <java/security/spec/KeySpec.h>
+#endif
+#if __has_include(<javax/crypto/Cipher.h>)
+#include <javax/crypto/Cipher.h>
+#endif
+#if __has_include(<javax/crypto/SecretKey.h>)
+#include <javax/crypto/SecretKey.h>
+#endif
+#if __has_include(<javax/crypto/SecretKeyFactory.h>)
+#include <javax/crypto/SecretKeyFactory.h>
+#endif
+#if __has_include(<org/allbinary/init/crypt/jcehelper/CryptInterface.h>)
+#include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/crypt/jcehelper/SunJCE.h")
+#include "org/allbinary/logic/system/security/crypt/jcehelper/SunJCE.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h")
+#include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
+#endif
+
+        #endif
+    

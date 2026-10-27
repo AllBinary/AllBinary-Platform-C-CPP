@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/TimedVectorAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,11 +66,8 @@
         #include "org/allbinary/animation/VectorAnimation.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class TimedVectorAnimation: public VectorAnimation {
 
-    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(200);
-
-public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : VectorAnimation(currentPoints, basicColor, animationBehavior){
+TimedVectorAnimation::TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : VectorAnimation(currentPoints, basicColor, animationBehavior), timeElapsedHelper(new TimeDelayHelper(200)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,12 +77,12 @@ public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> curr
 }
 
 
-    public: void nextFrame(){
+    auto TimedVectorAnimation::nextFrame() -> void{
 
                         if(this->timeElapsedHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
                                     {
-                                    super.nextFrame();
+                                    VectorAnimation::nextFrame();
     
 
                                     }
@@ -83,7 +90,6 @@ public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> curr
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_CPP

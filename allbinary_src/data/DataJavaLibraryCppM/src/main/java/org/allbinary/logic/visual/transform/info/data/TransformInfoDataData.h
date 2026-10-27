@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
-
-      
+class CommonDataFileStrings;
 
 
 
@@ -51,19 +54,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformInfoDataData
-            : public Object
+            : public virtual Object
          {
 
-    private: static TransformInfoDataData* instance() { static std::unique_ptr<TransformInfoDataData> value(new TransformInfoDataData()); return value.get(); }
+    private: static TransformInfoDataData* instance_owner();
+    private: static TransformInfoDataData* instance;
 
     public: static TransformInfoDataData* getInstance();
 
 private: TransformInfoDataData();
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION;
 
 };
 
@@ -71,3 +79,13 @@ private: TransformInfoDataData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/CommonDataFileStrings.h>)
+#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
+#endif
+
+        #endif
+    

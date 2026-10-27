@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,24 +55,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/ShaderUpdater.h"
-#include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
-#include "org/allbinary/graphics/opengles/shader/ShaderOpenGLProcessor.h"
+class ShaderComposite;
+class ShaderOpenGLProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AppRendererShaderUpdaterFactory: public ShaderUpdater {
 
-    private: static AppRendererShaderUpdaterFactory* instanceC() { static std::unique_ptr<AppRendererShaderUpdaterFactory> value(new AppRendererShaderUpdaterFactory()); return value.get(); }
+    private: static AppRendererShaderUpdaterFactory* instanceC_owner();
+    private: static AppRendererShaderUpdaterFactory* instanceC;
 
     public: static AppRendererShaderUpdaterFactory* getInstance();
 
-    private: const std::vector<ShaderComposite*> NULL_SHADER_COMPOSITE_ARRAY = {};
 
-    public: const std::vector<ShaderComposite*> shaderCompositeArray = this->NULL_SHADER_COMPOSITE_ARRAY;
+            
+    public: AppRendererShaderUpdaterFactory();
+        
+    private: std::vector<ShaderComposite*> NULL_SHADER_COMPOSITE_ARRAY;
 
-    private: const std::vector<ShaderOpenGLProcessor*> shaderOpenGLProcessorArray = {};
+    public: std::vector<ShaderComposite*> shaderCompositeArray;
+
+    private: std::vector<ShaderOpenGLProcessor*> shaderOpenGLProcessorArray;
 
     public: std::vector<ShaderOpenGLProcessor*> getTestShaders();
 
     public: void setShaderComposite(Object* object3d);
+    public: void setShaderComposite(const std::string& object3d) { return setShaderComposite(JavaString::box(object3d)); }
 
 };
 
@@ -75,3 +90,19 @@ class AppRendererShaderUpdaterFactory: public ShaderUpdater {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/opengles/shader/ShaderUpdater.h")
+#include "org/allbinary/graphics/opengles/shader/ShaderUpdater.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/ShaderComposite.h")
+#include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/ShaderOpenGLProcessor.h")
+#include "org/allbinary/graphics/opengles/shader/ShaderOpenGLProcessor.h"
+#endif
+
+        #endif
+    

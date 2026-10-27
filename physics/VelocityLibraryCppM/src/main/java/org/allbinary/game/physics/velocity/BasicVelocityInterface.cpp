@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/velocity/BasicVelocityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,33 +62,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicVelocityInterface {
+//Interface - declared in the header
 
-    public: virtual BasicDecimal* getVelocityXBasicDecimalP() = 0;
 
-    public: virtual BasicDecimal* getVelocityYBasicDecimalP() = 0;
 
-    public: virtual void zero() = 0;
-
-    public: virtual void setVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection) = 0;
-
-    public: virtual void addVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection) = 0;
-
-    public: virtual void setVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection) = 0;
-
-    public: virtual void addVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection) = 0;
-
-    public: virtual void setVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle) = 0;
-
-    public: virtual void addVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle) = 0;
-
-    public: virtual void setVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle) = 0;
-
-    public: virtual void addVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle) = 0;
-
-    public: virtual void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_CPP

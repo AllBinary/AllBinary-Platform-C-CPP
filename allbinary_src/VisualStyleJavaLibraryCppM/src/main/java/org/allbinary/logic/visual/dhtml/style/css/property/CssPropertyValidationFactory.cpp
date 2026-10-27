@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALIDATIONFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALIDATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValidationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,13 +66,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CssPropertyValidationFactory
-            : public Object
-         {
+
+CssPropertyValidationFactory::CssPropertyValidationFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static ValidationInterface* getInstance(Node* node){
+    auto CssPropertyValidationFactory::getInstance(Node* node) -> ValidationInterface*{
 
 
 
@@ -72,11 +83,6 @@ class CssPropertyValidationFactory
 }
 
 
-private: CssPropertyValidationFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALIDATIONFACTORY_CPP

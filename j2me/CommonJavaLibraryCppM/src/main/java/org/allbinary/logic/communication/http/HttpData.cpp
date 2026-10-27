@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/HttpData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,31 +58,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HttpData
-            : public Object
-         {
+auto HttpData::instance_owner() -> HttpData* { static std::unique_ptr<HttpData> value(new HttpData()); return value.get(); }
+HttpData* HttpData::instance = HttpData::instance_owner();
 
-    private: static HttpData* instance() { static std::unique_ptr<HttpData> value(new HttpData()); return value.get(); }
-
-    public: static HttpData* getInstance(){
+    auto HttpData::getInstance() -> HttpData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HttpData::instance();
+                        return HttpData::instance;
     
 }
 
 
-    public: std::string EQUALS;
-
-    public: std::string PARAM_SEP;
-
-    public: std::string URL_PARAM_SEP;
-
-    public: const std::string URL_LABEL = "Url: ";
-
-private: HttpData(){
+HttpData::HttpData(){
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -85,7 +84,6 @@ this->URL_PARAM_SEP= commonSeps->QUESTION;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_CPP

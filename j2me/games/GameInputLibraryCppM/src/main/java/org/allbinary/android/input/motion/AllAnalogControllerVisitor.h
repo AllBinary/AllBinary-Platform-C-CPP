@@ -21,24 +21,21 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ALLANALOGCONTROLLERVISITOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ALLANALOGCONTROLLERVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/input/analog/AnalogLocationInput.h>
-
-      
-#include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class AnalogLocationInput;
+class AnalogLocationInputFactory;
+class AllBinaryLayerManager;
+class BasicArrayList;
 
 
 
@@ -58,10 +55,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/AnalogControllerVisitor.h"
-#include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
+class AnalogLocationInputProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllAnalogControllerVisitor: public AnalogControllerVisitor {
 
+
+            
+    public: AllAnalogControllerVisitor();
+        
     public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInputProcessor* analogLocationInputProcessor);
 
 };
@@ -70,3 +75,28 @@ class AllAnalogControllerVisitor: public AnalogControllerVisitor {
 
 
         #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_ALLANALOGCONTROLLERVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_INPUT_MOTION_ALLANALOGCONTROLLERVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ALLANALOGCONTROLLERVISITOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/analog/AnalogLocationInput.h>)
+#include <org/allbinary/game/input/analog/AnalogLocationInput.h>
+#endif
+#if __has_include(<org/allbinary/game/input/analog/AnalogLocationInputFactory.h>)
+#include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/android/input/motion/AnalogControllerVisitor.h")
+#include "org/allbinary/android/input/motion/AnalogControllerVisitor.h"
+#endif
+#if __has_include("org/allbinary/android/input/motion/AnalogLocationInputProcessor.h")
+#include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
+#endif
+
+        #endif
+    

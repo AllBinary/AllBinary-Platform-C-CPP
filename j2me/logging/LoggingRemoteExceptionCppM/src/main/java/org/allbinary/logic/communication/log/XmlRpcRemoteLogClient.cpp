@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_XMLRPCREMOTELOGCLIENT_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_XMLRPCREMOTELOGCLIENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/XmlRpcRemoteLogClient.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,11 +92,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class XmlRpcRemoteLogClient: public XmlRpcAbeClient {
 
-    private: NoCrypt* noCrypt = new NoCrypt();
-
-public: XmlRpcRemoteLogClient(AbeClientInformationInterface* clientInfo) : XmlRpcAbeClient(clientInfo, "SSLLogServ.logUtil"){
+XmlRpcRemoteLogClient::XmlRpcRemoteLogClient(AbeClientInformationInterface* clientInfo) : XmlRpcAbeClient(clientInfo, "SSLLogServ.logUtil"), noCrypt(new NoCrypt()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,7 +105,7 @@ public: XmlRpcRemoteLogClient(AbeClientInformationInterface* clientInfo) : XmlRp
 
                 //@Throws(Exception.constructor)
             
-    public: Object* get(Object* anyType){
+    auto XmlRpcRemoteLogClient::get(Object* anyType) -> Object*{
 
         try {
             
@@ -110,7 +117,7 @@ public: XmlRpcRemoteLogClient(AbeClientInformationInterface* clientInfo) : XmlRp
 
     int32_t index = JavaString::lastIndexOf(serverUrl, "/");;
     
-serverUrl= JavaString::substring(serverUrl, 0, index +1) +"logservssl.php";
+serverUrl= JavaString::valueOf(JavaString::substring(serverUrl, 0, index +1)) +JavaString::valueOf("logservssl.php");
     
 
     XmlRpcClient* xmlRpcClient = new XmlRpcClient(serverUrl);;
@@ -160,7 +167,7 @@ System.out.println("IOException Trying Other Servers");
                             
 
 
-                            throw new Exception(HOST_NOT_RESOLVED_MSG);
+                            throw Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -192,7 +199,6 @@ System.out.println("IOException Trying Other Servers");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_XMLRPCREMOTELOGCLIENT_CPP

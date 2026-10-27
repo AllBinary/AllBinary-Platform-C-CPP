@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/FallingPickupLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,13 +67,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/pickup/FallingPickupLayer.h"
 
-class FallingPickupLayerFactory
-            : public Object
-        , public AllBinaryLayerFactoryInterface {
 
+FallingPickupLayerFactory::FallingPickupLayerFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getInstance(){
+    auto FallingPickupLayerFactory::getInstance() -> AllBinaryLayer*{
 
 
 
@@ -73,7 +83,6 @@ class FallingPickupLayerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYERFACTORY_CPP

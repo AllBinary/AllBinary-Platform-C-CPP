@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>
-
-      
-#include <org/allbinary/business/category/properties/CategoryPropertiesInterface.h>
-
-      
+class CategoryHierarchyInterface;
+class CategoryPropertiesInterface;
 #include <org/allbinary/data/tables/TableMappingInterface.h>
-
-      
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
+class AbPath;
 
 
 
@@ -68,6 +59,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class CategoryInterface: public TableMappingInterface, public ValidationInterface {
 
@@ -117,3 +112,29 @@ class CategoryInterface: public TableMappingInterface, public ValidationInterfac
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>)
+#include <org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/category/properties/CategoryPropertiesInterface.h>)
+#include <org/allbinary/business/category/properties/CategoryPropertiesInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/TableMappingInterface.h>)
+#include <org/allbinary/data/tables/TableMappingInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+
+        #endif
+    

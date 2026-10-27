@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_PCGAMEKEY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_PCGAMEKEY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/PCGameKey.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,40 @@
         #include "org/allbinary/game/input/Input.h"
 #include "org/allbinary/game/input/InputFactory.h"
 
-class PCGameKey: public Input {
 
-    public: static std::string getString(int32_t keyCode){
+PCGameKey::PCGameKey(int32_t keyCode, std::string name) : Input(keyCode, name){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+
+    int32_t id = this->getId();;
+    
+
+                        if(id >= 0)
+                        
+                                    {
+                                    InputFactory::getInstance()->add(id, this);
+    
+
+                                    }
+                                
+}
+
+
+    auto PCGameKey::toString() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return JavaString::valueOf("PCGameKey: ") +JavaString::valueOf(Input::toString());
+    
+}
+
+
+    auto PCGameKey::getString(int32_t keyCode) -> std::string{
 
     Input* input = InputFactory::getInstance()->getInstanceById(keyCode);;
     
@@ -82,39 +123,6 @@ class PCGameKey: public Input {
 }
 
 
-: PCGameKey(int32_t keyCode, std::string name) : Input(keyCode, name){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-
-    int32_t id = this->getId();;
-    
-
-                        if(id >= 0)
-                        
-                                    {
-                                    InputFactory::getInstance()->add(id, this);
-    
-
-                                    }
-                                
-}
 
 
-    public: std::string toString(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return "PCGameKey: " +super.toString();
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_PCGAMEKEY_CPP

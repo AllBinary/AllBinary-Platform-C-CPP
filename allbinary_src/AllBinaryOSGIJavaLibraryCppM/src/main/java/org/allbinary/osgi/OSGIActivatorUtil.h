@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H
         #define ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class StdUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/osgi/framework/BundleContext.h>
-
-      
-#include <org/osgi/framework/NullServiceReferenceFactory.h>
-
-      
-#include <org/osgi/framework/ServiceReference.h>
-
-      
-#include <org/osgi/framework/ServiceRegistration.h>
-
-      
+class BundleContext;
+class NullServiceReferenceFactory;
+class ServiceReference;
+class ServiceRegistration;
 
 
 
@@ -68,8 +61,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OSGIActivatorUtil
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -88,3 +85,28 @@ private: OSGIActivatorUtil();
 
 
         #endif //ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/osgi/framework/BundleContext.h>)
+#include <org/osgi/framework/BundleContext.h>
+#endif
+#if __has_include(<org/osgi/framework/NullServiceReferenceFactory.h>)
+#include <org/osgi/framework/NullServiceReferenceFactory.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceReference.h>)
+#include <org/osgi/framework/ServiceReference.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceRegistration.h>)
+#include <org/osgi/framework/ServiceRegistration.h>
+#endif
+
+        #endif
+    

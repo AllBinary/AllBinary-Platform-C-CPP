@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,25 +58,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MultiplayerBehavior
-            : public Object
-         {
+auto MultiplayerBehavior::NULL_MULTIPLAYER_BEHAVIOR_owner() -> MultiplayerBehavior* { static std::unique_ptr<MultiplayerBehavior> value(new MultiplayerBehavior(StringUtil::getInstance()->EMPTY_STRING)); return value.get(); }
+MultiplayerBehavior* MultiplayerBehavior::NULL_MULTIPLAYER_BEHAVIOR = MultiplayerBehavior::NULL_MULTIPLAYER_BEHAVIOR_owner();
 
-    public: static MultiplayerBehavior* NULL_MULTIPLAYER_BEHAVIOR() { static std::unique_ptr<MultiplayerBehavior> value(new MultiplayerBehavior(StringUtil::getInstance()->EMPTY_STRING)); return value.get(); }
-
-protected: MultiplayerBehavior(std::string username){
+MultiplayerBehavior::MultiplayerBehavior(std::string username){
 }
 
 
-    public: void startTick(){
+    auto MultiplayerBehavior::startTick() -> void{
 }
 
 
-    public: void endTick(){
+    auto MultiplayerBehavior::endTick() -> void{
 }
 
 
-    public: int64_t getApproximateElapsed(){
+    auto MultiplayerBehavior::getApproximateElapsed() -> int64_t{
 
 
 
@@ -76,7 +83,6 @@ protected: MultiplayerBehavior(std::string username){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERBEHAVIOR_CPP

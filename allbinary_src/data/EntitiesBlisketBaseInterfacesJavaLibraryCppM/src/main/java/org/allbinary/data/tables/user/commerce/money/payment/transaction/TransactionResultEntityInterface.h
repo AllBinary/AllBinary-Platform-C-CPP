@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h>
-
-      
+class TransactionResultInterface;
 #include <org/allbinary/data/tables/BasicDataTableInterface.h>
-
-      
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransactionResultEntityInterface: public BasicDataTableInterface {
 
     public: virtual TransactionResultInterface* getTransactionResultInterface(std::string orderNumber) = 0;
@@ -66,3 +71,16 @@ class TransactionResultEntityInterface: public BasicDataTableInterface {
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/BasicDataTableInterface.h>)
+#include <org/allbinary/data/tables/BasicDataTableInterface.h>
+#endif
+
+        #endif
+    

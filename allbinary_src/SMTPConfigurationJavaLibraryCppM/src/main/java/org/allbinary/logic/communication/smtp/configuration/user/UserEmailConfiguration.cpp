@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATION_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,19 +71,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
 
-class UserEmailConfiguration
-            : public Object
-        , public UserEmailConfigurationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+UserEmailConfiguration::UserEmailConfiguration() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface;
-
-public: UserEmailConfiguration(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
@@ -86,9 +87,9 @@ this->setUserEmailEventsConfigurationInterface(new UserEmailEventsConfiguration(
 }
 
 
-public: UserEmailConfiguration(HashMap<Object*, Object*>* hashMap){
+UserEmailConfiguration::UserEmailConfiguration(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
@@ -101,7 +102,7 @@ this->setUserEmailEventsConfigurationInterface(new UserEmailEventsConfiguration(
 }
 
 
-    public: UserEmailEventsConfigurationInterface* getUserEmailEventsConfigurationInterface(){
+    auto UserEmailConfiguration::getUserEmailEventsConfigurationInterface() -> UserEmailEventsConfigurationInterface*{
 
 
 
@@ -111,13 +112,12 @@ this->setUserEmailEventsConfigurationInterface(new UserEmailEventsConfiguration(
 }
 
 
-    public: void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface){
+    auto UserEmailConfiguration::setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface) -> void{
 this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATION_CPP

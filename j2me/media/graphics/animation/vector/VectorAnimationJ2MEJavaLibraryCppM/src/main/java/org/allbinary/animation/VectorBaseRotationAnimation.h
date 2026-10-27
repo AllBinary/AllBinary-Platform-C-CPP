@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class Graphics;
+class BasicColor;
+class NullUtil;
+class PrimitiveIntUtil;
+class AngleInfo;
+class CircularIndexUtil;
 
 
 
@@ -69,11 +62,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/RotationAnimation.h"
 #include "org/allbinary/animation/VectorAnimationInterface.h"
-#include "org/allbinary/animation/AnimationBehavior.h"
+class AnimationBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VectorBaseRotationAnimation: public RotationAnimation, public VectorAnimationInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints;
 
 public: VectorBaseRotationAnimation(AngleInfo* angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
@@ -107,3 +104,37 @@ public: VectorBaseRotationAnimation(AngleInfo* angleInfo, std::vector<std::vecto
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimationInterface.h")
+#include "org/allbinary/animation/VectorAnimationInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+
+        #endif
+    

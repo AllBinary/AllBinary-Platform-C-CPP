@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/LoggingInitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,20 +64,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/config/LogConfig.h"
 
-class LoggingInitInfo
-            : public Object
-         {
 
-    private: static inline BasicArrayList* logConfigInfoList = 
-                null
-            ;
+LoggingInitInfo::LoggingInitInfo(){
+}
 
-    private: static inline bool hasRead = false;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void write(){
+    auto LoggingInitInfo::write() -> void{
 
         try {
             LoggingInitInfo::hasRead= false;
@@ -89,7 +94,7 @@ class LoggingInitInfo
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: static void read(){
+    auto LoggingInitInfo::read() -> void{
 
         try {
             
@@ -107,7 +112,7 @@ class LoggingInitInfo
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void setHasRead(bool value){
+    auto LoggingInitInfo::setHasRead(bool value) -> void{
 LoggingInitInfo::hasRead= value;
     
 }
@@ -116,7 +121,7 @@ LoggingInitInfo::hasRead= value;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: static void updateIfNeeded(){
+    auto LoggingInitInfo::updateIfNeeded() -> void{
 
                         if(!LoggingInitInfo::hasRead)
                         
@@ -134,7 +139,7 @@ LoggingInitInfo::hasRead= true;
                                     
 
 
-                            throw new Exception("Read Failed");
+                            throw Exception("Read Failed");
                     
 
                                     }
@@ -144,9 +149,33 @@ LoggingInitInfo::hasRead= true;
                                 
 }
 
+
+    auto LoggingInitInfo::isValid() -> bool{
+
+        try {
+            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                //: 
+} catch(Exception& e) 
+            {
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void set(BasicArrayList* logConfigInfoList){
+    auto LoggingInitInfo::set(BasicArrayList* logConfigInfoList) -> void{
 LoggingInitInfo::logConfigInfoList= logConfigInfoList;
     
 }
@@ -154,7 +183,7 @@ LoggingInitInfo::logConfigInfoList= logConfigInfoList;
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList* get(){
+    auto LoggingInitInfo::get() -> BasicArrayList*{
 LoggingInitInfo::updateIfNeeded();
     
 
@@ -168,7 +197,7 @@ LoggingInitInfo::updateIfNeeded();
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList* getTypeList(){
+    auto LoggingInitInfo::getTypeList() -> BasicArrayList*{
 LoggingInitInfo::updateIfNeeded();
     
 
@@ -210,37 +239,9 @@ LoggingInitInfo::updateIfNeeded();
 }
 
 
-public: LoggingInitInfo(){
-}
-
-
-    public: bool isValid(){
-
-        try {
-            
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-}
-
-}
-
-
                 //@Throws(Exception.constructor)
             
-    public: int32_t getNumberOfLogConfigs(){
+    auto LoggingInitInfo::getNumberOfLogConfigs() -> int32_t{
 
 
 
@@ -250,7 +251,7 @@ public: LoggingInitInfo(){
 }
 
 
-    public: std::string toString(){
+    auto LoggingInitInfo::toString() -> std::string{
 
         try {
             
@@ -274,7 +275,6 @@ public: LoggingInitInfo(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_CPP

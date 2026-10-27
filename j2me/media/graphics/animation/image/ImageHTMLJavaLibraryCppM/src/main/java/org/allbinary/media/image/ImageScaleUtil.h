@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
+class Image;
 
-      
-#include <org/allbinary/graphics/Anchor.h>
+class ImageCache;
 
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/microemu/device/playn/PlaynImmutableImage.h>
-
-      
-#include <org/microemu/device/playn/PlaynMutableImage.h>
-
-      
-#include <playn/core/CanvasImage.h>
-
-      
-#include <playn/core/CanvasSurface.h>
-
-      
+class PlaynImmutableImage;
+class PlaynMutableImage;
+class CanvasImage;
+class CanvasSurface;
 
 
 
@@ -73,13 +62,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageCreationUtil.h"
+        class ImageCreationUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageScaleUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+    private: static ImageScaleUtil* instance_owner();
+    private: static ImageScaleUtil* instance;
 
     public: static ImageScaleUtil* getInstance();
 
@@ -107,3 +101,33 @@ private: ImageScaleUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+
+#if __has_include(<org/microemu/device/playn/PlaynImmutableImage.h>)
+#include <org/microemu/device/playn/PlaynImmutableImage.h>
+#endif
+#if __has_include(<org/microemu/device/playn/PlaynMutableImage.h>)
+#include <org/microemu/device/playn/PlaynMutableImage.h>
+#endif
+#if __has_include(<playn/core/CanvasImage.h>)
+#include <playn/core/CanvasImage.h>
+#endif
+#if __has_include(<playn/core/CanvasSurface.h>)
+#include <playn/core/CanvasSurface.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageCreationUtil.h")
+#include "org/allbinary/media/image/ImageCreationUtil.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_JNDIUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_JNDIUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/JNDIUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //import org.omg.CosNaming.NamingContext;
-class JNDIUtil
-            : public Object
-         {
 
-};
+JNDIUtil::JNDIUtil() {
+        }
+        
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_JNDIUTIL_CPP

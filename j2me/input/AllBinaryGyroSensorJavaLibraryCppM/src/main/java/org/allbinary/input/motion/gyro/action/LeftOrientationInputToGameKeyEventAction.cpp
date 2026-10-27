@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_LEFTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_LEFTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gyro/action/LeftOrientationInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LeftOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* LeftOrientationInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto LeftOrientationInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(LeftOrientationInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class LeftOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGest
 }
 
 
-private: LeftOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Left Action", OrientationMotionGestureFactory::getInstance()->LEFT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+LeftOrientationInputToGameKeyEventAction::LeftOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Left Action", OrientationMotionGestureFactory::getInstance()->LEFT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: LeftOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestu
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_LEFTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP

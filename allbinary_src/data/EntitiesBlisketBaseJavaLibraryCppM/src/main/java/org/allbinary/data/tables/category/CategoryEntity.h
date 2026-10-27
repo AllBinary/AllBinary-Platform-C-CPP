@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,38 +35,16 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
+class BasicArrayList;
+class BasicArrayListD;
+class Category;
+class CategoryData;
+class CategoryFactoryInterface;
+class InventoryDbInitInfo;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/category/Category.h>
-
-      
-#include <org/allbinary/business/category/CategoryData.h>
-
-      
-#include <org/allbinary/business/category/CategoryFactoryInterface.h>
-
-      
-#include <org/allbinary/business/init/db/InventoryDbInitInfo.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 #include <org/allbinary/logic/communication/sql/AbSqlBean.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -82,11 +65,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/category/CategoryEntityInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoryEntity: public AbSqlBean, public CategoryEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: const std::string tableName = "categories";
+    /*protected*/ public: const std::string tableName = "categories";
 
 public: CategoryEntity(CategoryFactoryInterface* categoryFactoryInterface);
 
@@ -110,3 +97,44 @@ public: CategoryEntity();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/category/Category.h>)
+#include <org/allbinary/business/category/Category.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryData.h>)
+#include <org/allbinary/business/category/CategoryData.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryFactoryInterface.h>)
+#include <org/allbinary/business/category/CategoryFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/InventoryDbInitInfo.h>)
+#include <org/allbinary/business/init/db/InventoryDbInitInfo.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/AbSqlBean.h>)
+#include <org/allbinary/logic/communication/sql/AbSqlBean.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/data/tables/category/CategoryEntityInterface.h")
+#include "org/allbinary/data/tables/category/CategoryEntityInterface.h"
+#endif
+
+        #endif
+    

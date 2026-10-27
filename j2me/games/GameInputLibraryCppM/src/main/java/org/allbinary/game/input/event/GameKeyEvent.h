@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class NullUtil;
+class StringMaker;
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
 
 
 
@@ -57,11 +56,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyEvent: public AllBinaryEventObject {
 
     public: static GameKeyEvent* createEvent(Object* anyType, int32_t sourceId, int32_t key);
+    public: static GameKeyEvent* createEvent(const std::string& anyType, int32_t sourceId, int32_t key) { return createEvent(JavaString::box(anyType), sourceId, key); }
 
-    public: static GameKeyEvent* NONE() { static std::unique_ptr<GameKeyEvent> value(new GameKeyEvent(NullUtil::getInstance()->NULL_OBJECT,  -1,  -1,  -1,  -1, false)); return value.get(); }
+    private: static GameKeyEvent* NONE_owner();
+    public: static GameKeyEvent* NONE;
 
     private: int32_t sourceId;
 
@@ -76,6 +81,7 @@ class GameKeyEvent: public AllBinaryEventObject {
 public: GameKeyEvent(Object* anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated);
 
     public: void init(Object* anyType);
+    public: void init(const std::string& anyType) { return init(JavaString::box(anyType)); }
 
     private: void setRepeatEvents(bool repeated);
 
@@ -101,3 +107,19 @@ public: GameKeyEvent(Object* anyType, int32_t sourceId, int32_t originalKey, int
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+
+        #endif
+    

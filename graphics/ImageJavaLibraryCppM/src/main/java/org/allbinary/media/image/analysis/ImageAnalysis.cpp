@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/analysis/ImageAnalysis.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -77,25 +87,57 @@
 #include "org/allbinary/media/image/analysis/ColorAverage.h"
 #include "org/allbinary/media/image/analysis/ImageColorResults.h"
 
-class ImageAnalysis
-            : public Object
-         {
+auto ImageAnalysis::instance_owner() -> ImageAnalysis* { static std::unique_ptr<ImageAnalysis> value(new ImageAnalysis()); return value.get(); }
+ImageAnalysis* ImageAnalysis::instance = ImageAnalysis::instance_owner();
 
-    private: static ImageAnalysis* instance() { static std::unique_ptr<ImageAnalysis> value(new ImageAnalysis()); return value.get(); }
-
-    public: static ImageAnalysis* getInstance(){
+    auto ImageAnalysis::getInstance() -> ImageAnalysis*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageAnalysis::instance();
+                        return ImageAnalysis::instance;
+    
+}
+
+
+ImageAnalysis::ImageAnalysis() : logUtil(LogUtil::getInstance()){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto ImageAnalysis::process(std::vector<BufferedImage*> bufferedImageArray, ColorRangeInterface* colorRangeInterface) -> std::vector<ImageAnalysisResults*>{
+
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
+    
+this->logUtil->putF(CommonLabels::getInstance()->START +colorRangeInterface->toString(), this, commonStrings->PROCESS);
+    
+
+    std::vector<ImageAnalysisResults*> imageAnalysisResultsArray = std::vector<ImageAnalysisResults*>(bufferedImageArray.length);;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < bufferedImageArray.size(); index++)
+        {
+imageAnalysisResultsArray[index]= ImageAnalysis::process(bufferedImageArray[index], colorRangeInterface);
+    
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return imageAnalysisResultsArray;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static ImageAnalysisResults* process(BufferedImage* bufferedImage, ColorRangeInterface* colorRangeInterface){
+    auto ImageAnalysis::process(BufferedImage* bufferedImage, ColorRangeInterface* colorRangeInterface) -> ImageAnalysisResults*{
 
     ImageAnalysisResults* imageAnalysisResults = new ImageAnalysisResults();;
     
@@ -166,7 +208,7 @@ colorAverage->setAvgBlue(blueTotal /totalPixels);
 }
 
 
-    private: static void processColorRangeResults(ImageAnalysisResults* imageAnalysisResults, ColorRangeInterface* colorRangeInterface, Color* color){
+    auto ImageAnalysis::processColorRangeResults(ImageAnalysisResults* imageAnalysisResults, ColorRangeInterface* colorRangeInterface, Color* color) -> void{
 
                         if(colorRangeInterface->isInRange(color))
                         
@@ -185,7 +227,7 @@ imageAnalysisResults->getImageColorRangeResults()->addTotalPixelsChecked();
 }
 
 
-    private: static void processImageColorResults(ImageColorResults* imageColorResults, ColorRangeInterface* colorRangeInterface, Color* color){
+    auto ImageAnalysis::processImageColorResults(ImageColorResults* imageColorResults, ColorRangeInterface* colorRangeInterface, Color* color) -> void{
 
                         if(color->getRed() < imageColorResults->getColorRange()->getMinRed())
                         
@@ -243,44 +285,6 @@ imageAnalysisResults->getImageColorRangeResults()->addTotalPixelsChecked();
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ImageAnalysis(){
-}
 
 
-                //@Throws(Exception.constructor)
-            
-    public: std::vector<ImageAnalysisResults*> process(std::vector<BufferedImage*> bufferedImageArray, ColorRangeInterface* colorRangeInterface){
-
-    CommonStrings* commonStrings = CommonStrings::getInstance();;
-    
-this->logUtil->putF(CommonLabels::getInstance()->START +colorRangeInterface->toString(), this, commonStrings->PROCESS);
-    
-
-    std::vector<ImageAnalysisResults*> imageAnalysisResultsArray = std::vector<ImageAnalysisResults*>(bufferedImageArray.length);;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < bufferedImageArray.size(); index++)
-        {
-imageAnalysisResultsArray[index]= ImageAnalysis::process(bufferedImageArray[index], colorRangeInterface);
-    
-}
-
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return imageAnalysisResultsArray;
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_CPP

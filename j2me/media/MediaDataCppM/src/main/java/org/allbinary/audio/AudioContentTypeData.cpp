@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATA_CPP
+        #define ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/audio/AudioContentTypeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AudioContentTypeData
-            : public Object
-         {
 
-    private: std::string name;
-
-: AudioContentTypeData(std::string name){
+AudioContentTypeData::AudioContentTypeData(std::string name){
 this->name= name;
     
 }
 
 
-    public: std::string getName(){
+    auto AudioContentTypeData::getName() -> std::string{
 
 
 
@@ -67,7 +72,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATA_CPP

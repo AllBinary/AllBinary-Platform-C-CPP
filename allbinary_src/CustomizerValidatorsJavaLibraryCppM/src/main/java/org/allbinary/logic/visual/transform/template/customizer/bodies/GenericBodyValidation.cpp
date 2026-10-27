@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_GENERICBODYVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_GENERICBODYVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/bodies/GenericBodyValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -91,19 +101,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/template/customizer/bodies/BodyData.h"
 
-class GenericBodyValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string body;
-
-public: GenericBodyValidation(){
+GenericBodyValidation::GenericBodyValidation() : logUtil(LogUtil::getInstance()){
 this->body= StringUtil::getInstance()->EMPTY_STRING;
     
 }
 
 
-public: GenericBodyValidation(Document* document){
+GenericBodyValidation::GenericBodyValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
     NodeList* nodeList = document->getElementsByTagName(BodyData::getInstance()->NAME);;
     
@@ -127,7 +132,7 @@ this->body= DomNodeHelper::getTextNodeValue(aBodyValueNode);
 }
 
 
-public: GenericBodyValidation(HashMap<Object*, Object*>* hashMap){
+GenericBodyValidation::GenericBodyValidation(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 this->getFormData(hashMap);
     
 }
@@ -135,23 +140,23 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto GenericBodyValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 this->body= hashMap->get(BodyData::getInstance()->NAME);
     
 }
 
 
-    public: bool isValid(){
+    auto GenericBodyValidation::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -166,10 +171,10 @@ this->body= hashMap->get(BodyData::getInstance()->NAME);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("BodyValidation: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("BodyValidation: ") +JavaString::valueOf(isValid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -185,10 +190,10 @@ this->body= hashMap->get(BodyData::getInstance()->NAME);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -204,7 +209,7 @@ this->body= hashMap->get(BodyData::getInstance()->NAME);
 }
 
 
-    public: std::string validationInfo(){
+    auto GenericBodyValidation::validationInfo() -> std::string{
 
         try {
             
@@ -235,7 +240,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -254,7 +259,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto GenericBodyValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -264,7 +269,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto GenericBodyValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -276,7 +281,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GenericBodyValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance()->NAME, this->body);;
     
@@ -289,7 +294,6 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_GENERICBODYVALIDATION_CPP

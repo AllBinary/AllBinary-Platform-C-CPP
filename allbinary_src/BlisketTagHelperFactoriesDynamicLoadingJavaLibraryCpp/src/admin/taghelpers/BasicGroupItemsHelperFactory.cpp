@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_BASICGROUPITEMSHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_BASICGROUPITEMSHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/BasicGroupItemsHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,21 +66,14 @@
         #include "admin/taghelpers/TagHelperFactoryInterface.h"
 #include "admin/taghelpers/HelperFactory.h"
 
-class BasicGroupItemsHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "admin.taghelpers.BasicGroupItemsHelper";
-
-    private: static inline const std::string FACTORYNAME = "BasicGroupItemsHelperFactory";
-
-public: BasicGroupItemsHelperFactory(){
+BasicGroupItemsHelperFactory::BasicGroupItemsHelperFactory(){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto BasicGroupItemsHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -80,7 +83,6 @@ public: BasicGroupItemsHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_BASICGROUPITEMSHELPERFACTORY_CPP

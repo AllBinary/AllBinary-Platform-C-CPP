@@ -21,30 +21,23 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
-
-      
+class ABTextFieldItem;
 #include <org/allbinary/logic/control/validate/ValidatorBase.h>
-
-      
-#include <org/allbinary/logic/java/bool/BooleanFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BooleanFactory;
+class StringMaker;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -63,6 +56,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class TextFieldItemValidator: public ValidatorBase {
 
@@ -86,3 +83,28 @@ public: TextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t min, int3
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/form/item/ABTextFieldItem.h>)
+#include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidatorBase.h>)
+#include <org/allbinary/logic/control/validate/ValidatorBase.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/bool/BooleanFactory.h>)
+#include <org/allbinary/logic/java/bool/BooleanFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

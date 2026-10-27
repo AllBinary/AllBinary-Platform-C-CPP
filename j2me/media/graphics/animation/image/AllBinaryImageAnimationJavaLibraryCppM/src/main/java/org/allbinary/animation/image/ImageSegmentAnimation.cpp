@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageSegmentAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,21 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageAnimation.h"
 
-class ImageSegmentAnimation: public ImageAnimation {
 
-    private: int32_t startX;
-
-    private: int32_t startY;
-
-    private: int32_t drawWidth;
-
-    private: int32_t drawHeight;
-
-    private: CircularIndexUtil* circularIndexUtil;
-
-    private: std::vector<int32_t> sequenceArray;
-
-protected: ImageSegmentAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior) : ImageAnimation(image, animationBehavior){
+ImageSegmentAnimation::ImageSegmentAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior) : ImageAnimation(image, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,25 +93,25 @@ this->sequenceArray= sequenceArray;
 }
 
 
-    public: void nextFrame(){
+    auto ImageSegmentAnimation::nextFrame() -> void{
 this->circularIndexUtil->next();
     
 }
 
 
-    public: void previousFrame(){
+    auto ImageSegmentAnimation::previousFrame() -> void{
 this->circularIndexUtil->previous();
     
 }
 
 
-    public: void setFrame(int32_t index){
+    auto ImageSegmentAnimation::setFrame(int32_t index) -> void{
 this->circularIndexUtil->setIndex(index);
     
 }
 
 
-    public: int32_t getFrame(){
+    auto ImageSegmentAnimation::getFrame() -> int32_t{
 
 
 
@@ -124,7 +121,7 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: int32_t getSize(){
+    auto ImageSegmentAnimation::getSize() -> int32_t{
 
 
 
@@ -134,13 +131,13 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequenceArray){
+    auto ImageSegmentAnimation::setSequence(std::vector<int32_t> sequenceArray) -> void{
 this->sequenceArray= sequenceArray;
     
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto ImageSegmentAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -150,11 +147,11 @@ this->sequenceArray= sequenceArray;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto ImageSegmentAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-    public: int32_t getStartX(){
+    auto ImageSegmentAnimation::getStartX() -> int32_t{
 
 
 
@@ -164,13 +161,13 @@ this->sequenceArray= sequenceArray;
 }
 
 
-    public: void setStartX(int32_t startX){
+    auto ImageSegmentAnimation::setStartX(int32_t startX) -> void{
 this->startX= startX;
     
 }
 
 
-    public: int32_t getStartY(){
+    auto ImageSegmentAnimation::getStartY() -> int32_t{
 
 
 
@@ -180,13 +177,13 @@ this->startX= startX;
 }
 
 
-    public: void setStartY(int32_t startY){
+    auto ImageSegmentAnimation::setStartY(int32_t startY) -> void{
 this->startY= startY;
     
 }
 
 
-    public: int32_t getDrawWidth(){
+    auto ImageSegmentAnimation::getDrawWidth() -> int32_t{
 
 
 
@@ -196,13 +193,13 @@ this->startY= startY;
 }
 
 
-    public: void setDrawWidth(int32_t drawWidth){
+    auto ImageSegmentAnimation::setDrawWidth(int32_t drawWidth) -> void{
 this->drawWidth= drawWidth;
     
 }
 
 
-    public: int32_t getDrawHeight(){
+    auto ImageSegmentAnimation::getDrawHeight() -> int32_t{
 
 
 
@@ -212,13 +209,12 @@ this->drawWidth= drawWidth;
 }
 
 
-    public: void setDrawHeight(int32_t drawHeight){
+    auto ImageSegmentAnimation::setDrawHeight(int32_t drawHeight) -> void{
 this->drawHeight= drawHeight;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_CPP

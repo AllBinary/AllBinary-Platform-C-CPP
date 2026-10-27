@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/media/MediaDataFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,63 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/media/MediaData.h"
 
-class MediaDataFactory
-            : public Object
-         {
 
-    private: static MediaDataFactory* instance() { static std::unique_ptr<MediaDataFactory> value(new MediaDataFactory()); return value.get(); }
+MediaDataFactory::MediaDataFactory() : AVI(new MediaData("avi")), BMP(new MediaData("bmp")), CEL(new MediaData("cel")), FITS(new MediaData("fits")), FLI(new MediaData("fli")), GBR(new MediaData("gbr")), GIF(new MediaData("gif")), GIH(new MediaData("gih")), JPG(new MediaData("jpg")), PIX(new MediaData("pix")), PNG(new MediaData("png")), PNM(new MediaData("pnm")), PSD(new MediaData("psd")), PSP(new MediaData("psp")), PS(new MediaData("ps")), SGI(new MediaData("SGI")), SWF(new MediaData("swf")), TGA(new MediaData("tga")), TIFF(new MediaData("tiff")), WMF(new MediaData("wmf")) {
+        }
+        auto MediaDataFactory::instance_owner() -> MediaDataFactory* { static std::unique_ptr<MediaDataFactory> value(new MediaDataFactory()); return value.get(); }
+MediaDataFactory* MediaDataFactory::instance = MediaDataFactory::instance_owner();
 
-    public: static MediaDataFactory* getInstance(){
+    auto MediaDataFactory::getInstance() -> MediaDataFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaDataFactory::instance();
+                        return MediaDataFactory::instance;
     
 }
 
 
-    public: MediaData* AVI = new MediaData("avi");
 
-    public: MediaData* BMP = new MediaData("bmp");
 
-    public: MediaData* CEL = new MediaData("cel");
-
-    public: MediaData* FITS = new MediaData("fits");
-
-    public: MediaData* FLI = new MediaData("fli");
-
-    public: MediaData* GBR = new MediaData("gbr");
-
-    public: MediaData* GIF = new MediaData("gif");
-
-    public: MediaData* GIH = new MediaData("gih");
-
-    public: MediaData* JPG = new MediaData("jpg");
-
-    public: MediaData* PIX = new MediaData("pix");
-
-    public: MediaData* PNG = new MediaData("png");
-
-    public: MediaData* PNM = new MediaData("pnm");
-
-    public: MediaData* PSD = new MediaData("psd");
-
-    public: MediaData* PSP = new MediaData("psp");
-
-    public: MediaData* PS = new MediaData("ps");
-
-    public: MediaData* SGI = new MediaData("SGI");
-
-    public: MediaData* SWF = new MediaData("swf");
-
-    public: MediaData* TGA = new MediaData("tga");
-
-    public: MediaData* TIFF = new MediaData("tiff");
-
-    public: MediaData* WMF = new MediaData("wmf");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_CPP

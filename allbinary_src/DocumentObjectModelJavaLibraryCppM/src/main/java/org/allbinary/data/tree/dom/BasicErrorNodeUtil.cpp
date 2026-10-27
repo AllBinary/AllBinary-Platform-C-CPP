@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_BASICERRORNODEUTIL_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_BASICERRORNODEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/BasicErrorNodeUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,13 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/dom/ModDomHelper.h"
 
-class BasicErrorNodeUtil
-            : public Object
-         {
+
+BasicErrorNodeUtil::BasicErrorNodeUtil(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* get(Document* document, std::string errorText){
+    auto BasicErrorNodeUtil::get(Document* document, std::string errorText) -> Node*{
 
         try {
             
@@ -84,18 +95,13 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, ErrorData::getIns
 
 
 
-                            throw new Exception("Error Node Creation Failure");
+                            throw Exception("Error Node Creation Failure");
                     
 }
 
 }
 
 
-private: BasicErrorNodeUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_BASICERRORNODEUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_CPP
+        #define ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/ProfilingRefreshHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,34 +64,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/AndroidGameStatistics.h"
 
-class ProfilingRefreshHelper: public AndroidGameStatistics {
+auto ProfilingRefreshHelper::instance_owner() -> ProfilingRefreshHelper* { static std::unique_ptr<ProfilingRefreshHelper> value(new ProfilingRefreshHelper()); return value.get(); }
+ProfilingRefreshHelper* ProfilingRefreshHelper::instance = ProfilingRefreshHelper::instance_owner();
 
-    private: static ProfilingRefreshHelper* instance() { static std::unique_ptr<ProfilingRefreshHelper> value(new ProfilingRefreshHelper()); return value.get(); }
-
-    public: static AndroidGameStatistics* getInstance(){
+    auto ProfilingRefreshHelper::getInstance() -> AndroidGameStatistics*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProfilingRefreshHelper::instance();
+                        return ProfilingRefreshHelper::instance;
     
 }
 
 
-    private: bool firstTime = true;
-
-    private: int32_t bestFrameProcessingTime= 0;
-
-    private: int32_t worstFrameProcessingTime= 0;
-
-    private: int64_t frameProcessingTimeElapsed= 0;
-
-private: ProfilingRefreshHelper(){
+ProfilingRefreshHelper::ProfilingRefreshHelper(){
 }
 
 
-    public: void initView(View* view){
-super.initView(view);
+    auto ProfilingRefreshHelper::initView(View* view) -> void{
+AndroidGameStatistics::initView(view);
     
 this->frameProcessingTimeElapsed= this->getTimeDelayHelper()->getStartTime();
     
@@ -92,7 +93,7 @@ this->worstFrameProcessingTime= 0;
 }
 
 
-    public: void nextFrame(){
+    auto ProfilingRefreshHelper::nextFrame() -> void{
 this->frameProcessingTimeElapsed= System.currentTimeMillis() -this->frameProcessingTimeElapsed;
     
 
@@ -116,22 +117,21 @@ this->frameProcessingTimeElapsed= System.currentTimeMillis() -this->frameProcess
 
                         }
                             
-super.nextFrame();
+AndroidGameStatistics::nextFrame();
     
 }
 
 
-    public: std::string toString(){
+    auto ProfilingRefreshHelper::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append(super.toString())->append(" Worst: ")->appendint(this->worstFrameProcessingTime)->append(" Best: ")->appendint(this->bestFrameProcessingTime)->toString();;
+                        return (new StringMaker())->append(AndroidGameStatistics::toString())->append(" Worst: ")->appendint(this->worstFrameProcessingTime)->append(" Best: ")->appendint(this->bestFrameProcessingTime)->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_CPP

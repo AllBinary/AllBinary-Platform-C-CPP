@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLVALUEINPUT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLVALUEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInput.h"
 
-class HtmlValueInput: public HtmlInput {
 
-    private: std::string value;
-
-    private: const std::string VALUE = "VALUE";
-
-public: HtmlValueInput(std::string before, std::string type, std::string name, std::string value, std::string after) : HtmlInput(before, type, name, after){
+HtmlValueInput::HtmlValueInput(std::string before, std::string type, std::string name, std::string value, std::string after) : HtmlInput(before, type, name, after){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +75,6 @@ addAttribute(this->VALUE, value);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLVALUEINPUT_CPP

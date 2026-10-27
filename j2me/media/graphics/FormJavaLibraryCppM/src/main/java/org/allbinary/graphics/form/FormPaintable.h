@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_FORMPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_FORMPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
 
 
 
@@ -51,8 +52,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/form/PaintableForm.h"
+        class PaintableForm;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FormPaintable: public Paintable {
 
     private: PaintableForm* form;
@@ -69,3 +74,19 @@ public: FormPaintable(PaintableForm* form);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_FORMPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_FORMPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_FORMPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/PaintableForm.h")
+#include "org/allbinary/graphics/form/PaintableForm.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/Feature.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,31 +64,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Feature
-            : public Object
-         {
+ABHashtable<Object*, Object*>* Feature::hashtable = StdUtil::getInstance()->createHashtable();
 
-    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    public: static Feature* getInstance(std::string name){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return dynamic_cast<Feature*>(Feature::hashtable->get(name));
-    
-}
-
-
-    private: static void add(std::string name, Feature* gameFeature){
-Feature::hashtable->put(name, gameFeature);
-    
-}
-
-
-    private: std::string name;
-
-public: Feature(std::string name){
+Feature::Feature(std::string name){
 this->name= name;
     
 Feature::add(name, this);
@@ -88,7 +76,23 @@ ChangedGameFeatureListener::getInstance()->add(this);
 }
 
 
-    public: std::string toString(){
+    auto Feature::getInstance(std::string name) -> Feature*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return dynamic_cast<Feature*>(Feature::hashtable->get(name));
+    
+}
+
+
+    auto Feature::add(std::string name, Feature* gameFeature) -> void{
+Feature::hashtable->put(name, gameFeature);
+    
+}
+
+
+    auto Feature::toString() -> std::string{
 
 
 
@@ -98,7 +102,7 @@ ChangedGameFeatureListener::getInstance()->add(this);
 }
 
 
-    public: std::string getName(){
+    auto Feature::getName() -> std::string{
 
 
 
@@ -108,7 +112,6 @@ ChangedGameFeatureListener::getInstance()->add(this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_CPP

@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/media/image/ImageModifierUtil.h>
-
-      
+class Image;
+class BasicColor;
+class ImageModifierUtil;
 
 
 
@@ -56,12 +55,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ChangeColorProcessor: public ModifierBaseProcessor {
 
-    private: static ChangeColorProcessor* instanceC() { static std::unique_ptr<ChangeColorProcessor> value(new ChangeColorProcessor()); return value.get(); }
+    private: static ChangeColorProcessor* instanceC_owner();
+    private: static ChangeColorProcessor* instanceC;
 
     public: static ChangeColorProcessor* getInstance();
 
+
+            
+    public: ChangeColorProcessor();
+        
     public: void updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor);
 
 };
@@ -70,3 +78,22 @@ class ChangeColorProcessor: public ModifierBaseProcessor {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageModifierUtil.h>)
+#include <org/allbinary/media/image/ImageModifierUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ModifierBaseProcessor.h")
+#include "org/allbinary/animation/image/ModifierBaseProcessor.h"
+#endif
+
+        #endif
+    

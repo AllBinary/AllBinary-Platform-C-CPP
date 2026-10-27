@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/displayable/screen/CommandForm.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommandListener;
+class BasicColor;
+class CommandForm;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -64,17 +59,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/GameOptionsForm.h"
+        class GameOptionsForm;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameOptionsFormFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameOptionsFormFactory* instance() { static std::unique_ptr<GameOptionsFormFactory> value(new GameOptionsFormFactory()); return value.get(); }
+    private: static GameOptionsFormFactory* instance_owner();
+    private: static GameOptionsFormFactory* instance;
 
     public: static GameOptionsFormFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: GameOptionsFormFactory();
 
@@ -86,3 +86,28 @@ private: GameOptionsFormFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/screen/CommandForm.h>)
+#include <org/allbinary/graphics/displayable/screen/CommandForm.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/configuration/GameOptionsForm.h")
+#include "org/allbinary/game/configuration/GameOptionsForm.h"
+#endif
+
+        #endif
+    

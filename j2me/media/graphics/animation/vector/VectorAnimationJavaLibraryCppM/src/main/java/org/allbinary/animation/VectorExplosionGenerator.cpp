@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorExplosionGenerator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -72,35 +82,26 @@
         #include "org/allbinary/animation/VectorExplosionType.h"
 #include "org/allbinary/animation/VectorAnimationUtil.h"
 
-class VectorExplosionGenerator
-            : public Object
-         {
+auto VectorExplosionGenerator::instance_owner() -> VectorExplosionGenerator* { static std::unique_ptr<VectorExplosionGenerator> value(new VectorExplosionGenerator()); return value.get(); }
+VectorExplosionGenerator* VectorExplosionGenerator::instance = VectorExplosionGenerator::instance_owner();
 
-    private: static VectorExplosionGenerator* instance() { static std::unique_ptr<VectorExplosionGenerator> value(new VectorExplosionGenerator()); return value.get(); }
-
-    public: static VectorExplosionGenerator* getInstance(){
+    auto VectorExplosionGenerator::getInstance() -> VectorExplosionGenerator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorExplosionGenerator::instance();
+                        return VectorExplosionGenerator::instance;
     
 }
 
 
-    public: VectorExplosionType* RANDOM = new VectorExplosionType();
-
-    public: VectorExplosionType* ROTATION = new VectorExplosionType();
-
-    private: VectorAnimationUtil* vectorAnimationUtil = VectorAnimationUtil::getInstance();
-
-private: VectorExplosionGenerator(){
+VectorExplosionGenerator::VectorExplosionGenerator() : RANDOM(new VectorExplosionType()), ROTATION(new VectorExplosionType()), vectorAnimationUtil(VectorAnimationUtil::getInstance()), randomRotationFactory(RandomRotationFactory::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* createList(BasicArrayList* list, int32_t howMuch, VectorExplosionType* type){
+    auto VectorExplosionGenerator::createList(BasicArrayList* list, int32_t howMuch, VectorExplosionType* type) -> BasicArrayList*{
 
     GPoint* point;;
     
@@ -136,7 +137,7 @@ points[index][1]= point->getY();
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type){
+    auto VectorExplosionGenerator::getInstance(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type) -> std::vector<std::vector<std::vector<int32_t>>>{
 
     BasicArrayList* pointsBasicArrayList = this->getInstanceStartFrame(points, howMuch, type, true);;
     
@@ -157,7 +158,7 @@ points[index][1]= point->getY();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type, bool startFrame){
+    auto VectorExplosionGenerator::getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type, bool startFrame) -> BasicArrayList*{
 
         try {
             
@@ -216,11 +217,9 @@ frameIndex++;
 }
 
 
-    private: RandomRotationFactory* randomRotationFactory = RandomRotationFactory::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* createListFromPoints(BasicArrayList* tempBasicArrayList, std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type){
+    auto VectorExplosionGenerator::createListFromPoints(BasicArrayList* tempBasicArrayList, std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type) -> BasicArrayList*{
 
     int32_t index = 0;;
     
@@ -313,7 +312,7 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* createPointsBasicArrayList(std::vector<std::vector<int32_t>> points){
+    auto VectorExplosionGenerator::createPointsBasicArrayList(std::vector<std::vector<int32_t>> points) -> BasicArrayList*{
 
                         if(points.size() == 0)
                         
@@ -321,7 +320,7 @@ index++;
                                     
 
 
-                            throw new Exception("Not Points Provided");
+                            throw Exception("Not Points Provided");
                     
 
                                     }
@@ -352,7 +351,6 @@ firstPointBasicArrayList->add(pointFactory->createXY(points[index][0], points[in
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,24 +34,12 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -65,18 +58,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/identification/Group.h"
-#include "org/allbinary/game/identification/GroupCommonFactory.h"
+        class Group;
+class GroupCommonFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompositeGroup
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: Group* groupInterface;
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
 public: CompositeGroup(Group* groupInterface);
 
@@ -94,3 +91,34 @@ public: CompositeGroup(Group* groupInterface);
 
 
         #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/identification/Group.h")
+#include "org/allbinary/game/identification/Group.h"
+#endif
+#if __has_include("org/allbinary/game/identification/GroupCommonFactory.h")
+#include "org/allbinary/game/identification/GroupCommonFactory.h"
+#endif
+
+        #endif
+    

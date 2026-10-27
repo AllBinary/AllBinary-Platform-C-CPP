@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -61,18 +60,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/PoolInterface.h"
-#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
-#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+class CacheableInterfaceFactoryInterface;
+class CacheableInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbstractArrayListPool
-            : public Object
+            : public virtual Object
         , public PoolInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: BasicArrayList* buffers = new BasicArrayListD();
+    /*protected*/ public: BasicArrayList* buffers;
 
-    protected: CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface;
+    /*protected*/ public: CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface;
 
 public: AbstractArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
 
@@ -83,6 +86,7 @@ public: AbstractArrayListPool(CacheableInterfaceFactoryInterface* cacheableInter
                 //@Throws(Exception.constructor)
             
     public: CacheableInterface* remove(Object* key);
+    public: CacheableInterface* remove(const std::string& key) { return remove(JavaString::box(key)); }
 
                 //@Throws(Exception.constructor)
             
@@ -98,3 +102,28 @@ public: AbstractArrayListPool(CacheableInterfaceFactoryInterface* cacheableInter
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/logic/util/cache/PoolInterface.h")
+#include "org/allbinary/logic/util/cache/PoolInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+#endif
+
+        #endif
+    

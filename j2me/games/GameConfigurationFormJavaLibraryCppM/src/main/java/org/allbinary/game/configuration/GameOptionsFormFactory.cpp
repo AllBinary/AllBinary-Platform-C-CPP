@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameOptionsFormFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,29 +73,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/GameOptionsForm.h"
 
-class GameOptionsFormFactory
-            : public Object
-         {
+auto GameOptionsFormFactory::instance_owner() -> GameOptionsFormFactory* { static std::unique_ptr<GameOptionsFormFactory> value(new GameOptionsFormFactory()); return value.get(); }
+GameOptionsFormFactory* GameOptionsFormFactory::instance = GameOptionsFormFactory::instance_owner();
 
-    private: static GameOptionsFormFactory* instance() { static std::unique_ptr<GameOptionsFormFactory> value(new GameOptionsFormFactory()); return value.get(); }
+GameOptionsFormFactory::GameOptionsFormFactory() : logUtil(LogUtil::getInstance()){
+}
 
-    public: static GameOptionsFormFactory* getInstance(){
+
+    auto GameOptionsFormFactory::getInstance() -> GameOptionsFormFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameOptionsFormFactory::instance();
+                        return GameOptionsFormFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: GameOptionsFormFactory(){
-}
-
-
-    public: CommandForm* init(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor){
+    auto GameOptionsFormFactory::init(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) -> CommandForm*{
 
         try {
             
@@ -114,7 +119,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORMFACTORY_CPP

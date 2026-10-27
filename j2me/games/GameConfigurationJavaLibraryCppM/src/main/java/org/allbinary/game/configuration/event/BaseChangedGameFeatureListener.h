@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,39 +34,17 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/configuration/feature/Feature.h>
-
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/GameFeatureUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class Feature;
+class Features;
+class GameFeatureUtil;
+class ForcedLogUtil;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class AllBinaryEventObject;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -81,17 +64,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
-#include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
+class GameFeatureEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseChangedGameFeatureListener
-            : public Object
+            : public virtual Object
         , public GameFeatureListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: GameFeatureUtil* gameFeatureUtil = GameFeatureUtil::getInstance();
+            
+    public: BaseChangedGameFeatureListener();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: BasicArrayList* list = new BasicArrayListD();
+    /*protected*/ public: GameFeatureUtil* gameFeatureUtil;
+
+    /*protected*/ public: BasicArrayList* list;
 
     private: bool changed = true;
 
@@ -115,3 +106,49 @@ class BaseChangedGameFeatureListener
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/feature/Feature.h>)
+#include <org/allbinary/game/configuration/feature/Feature.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/GameFeatureUtil.h>)
+#include <org/allbinary/game/configuration/feature/GameFeatureUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/configuration/event/GameFeatureListenerInterface.h")
+#include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/event/GameFeatureEvent.h")
+#include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
+#endif
+
+        #endif
+    

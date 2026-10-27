@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FONT_UPDATEMYFONTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FONT_UPDATEMYFONTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/font/UpdateMyFontProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,23 +58,19 @@
         #include "org/allbinary/graphics/font/MyFontProcessor.h"
 #include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
 
-class UpdateMyFontProcessor: public MyFontProcessor {
 
-    private: UpdateMyFontInterface* updateMeasurementProcessor;
-
-public: UpdateMyFontProcessor(UpdateMyFontInterface* keyValueDrawCharArray){
+UpdateMyFontProcessor::UpdateMyFontProcessor(UpdateMyFontInterface* keyValueDrawCharArray){
 this->updateMeasurementProcessor= keyValueDrawCharArray;
     
 }
 
 
-    public: void process(Graphics* graphics){
+    auto UpdateMyFontProcessor::process(Graphics* graphics) -> void{
 this->updateMeasurementProcessor->updateMeasurement(graphics);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FONT_UPDATEMYFONTPROCESSOR_CPP

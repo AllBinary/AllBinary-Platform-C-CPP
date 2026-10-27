@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYCOMPONENT_CPP
+        #define VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYCOMPONENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/payment/gateway/PaymentGatewayComponent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,13 +79,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentGatewayComponent: public HttpStoreComponentView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: PaymentGatewayInterface* paymentGatewayInterface;
-
-public: PaymentGatewayComponent(TransformInfoInterface* transformInfoInterface, PaymentGatewayInterface* paymentGatewayInterface) : HttpStoreComponentView(transformInfoInterface){
+PaymentGatewayComponent::PaymentGatewayComponent(TransformInfoInterface* transformInfoInterface, PaymentGatewayInterface* paymentGatewayInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -89,7 +94,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void addDomNodeInterfaces(){
+    auto PaymentGatewayComponent::addDomNodeInterfaces() -> void{
 
     BasicPaymentType* paymentType = BasicPaymentTypeUtil::getInstance()->get(this->paymentGatewayInterface->getName());;
     
@@ -104,7 +109,7 @@ this->addDomNodeInterface(domNodeInterface);
 }
 
 
-    public: std::string view(){
+    auto PaymentGatewayComponent::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -113,7 +118,7 @@ this->addDomNodeInterface(domNodeInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
@@ -123,10 +128,10 @@ this->addDomNodeInterface(domNodeInterface);
     std::string error = "Failed to view payment gateway";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -142,7 +147,6 @@ this->addDomNodeInterface(domNodeInterface);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYCOMPONENT_CPP

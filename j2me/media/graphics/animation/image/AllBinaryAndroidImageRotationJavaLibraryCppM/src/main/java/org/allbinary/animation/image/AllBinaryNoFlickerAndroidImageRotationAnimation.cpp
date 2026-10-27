@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryNoFlickerAndroidImageRotationAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,29 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
-class AllBinaryNoFlickerAndroidImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
-
-    private: AndroidImageUtil* androidImageUtil = AndroidImageUtil::getInstance();
-
-    private: Matrix* matrix = new Matrix();
-
-    private: int32_t halfWidth;
-
-    private: int32_t halfHeight;
-
-    private: int16_t increment;
-
-    private: Image* originalImage;
-
-    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
-
-    private: Image* imageToShow;
-
-    private: int32_t bufferedImageIndex= 0;
-
-protected: AllBinaryNoFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+AllBinaryNoFlickerAndroidImageRotationAnimation::AllBinaryNoFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior), imageModifierUtil(ImageModifierUtil::getInstanceOrCreate()), androidImageUtil(AndroidImageUtil::getInstance()), matrix(new Matrix()), twoImages(std::vector<Image*>(2)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,7 +99,7 @@ this->halfWidth= (image->getWidth()>>1);
     
 this->halfHeight= (image->getHeight()>>1);
     
-this->increment= (this->angleInfo.getAngleIncrementInfo()->getAngleIncrement());
+this->increment= (this->angleInfo->getAngleIncrementInfo()->getAngleIncrement());
     
 this->imageToShow= image;
     
@@ -121,7 +110,7 @@ this->twoImages[1]= ImageCopyUtil::getInstance()->createImage(image);
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::setBasicColorP(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -138,7 +127,7 @@ changed= true;
 
                                     }
                                 
-super.setBasicColorP(basicColor);
+ImageBaseRotationAnimation::setBasicColorP(basicColor);
     
 
                         if(changed)
@@ -154,13 +143,13 @@ this->updateImage();
 }
 
 
-    public: void changeBasicColor(BasicColor* basicColor){
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::changeBasicColor(BasicColor* basicColor) -> void{
 this->setBasicColorP(basicColor);
     
 }
 
 
-    public: void setAlpha(int32_t alpha){
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::setAlpha(int32_t alpha) -> void{
 
     bool changed = false;;
     
@@ -173,7 +162,7 @@ this->setBasicColorP(basicColor);
 
                                     }
                                 
-super.setAlpha(alpha);
+ImageBaseRotationAnimation::setAlpha(alpha);
     
 this->imageModifierUtil->setAlpha(this->originalImage, this->imageToShow, 0, this->alphaP);
     
@@ -191,8 +180,8 @@ this->updateImage();
 }
 
 
-    public: void nextRotation(){
-super.nextRotation();
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::nextRotation() -> void{
+ImageBaseRotationAnimation::nextRotation();
     
 this->matrix->setRotate(this->increment, this->halfWidth, this->halfHeight);
     
@@ -201,8 +190,8 @@ this->updateImage();
 }
 
 
-    public: void previousRotation(){
-super.previousRotation();
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::previousRotation() -> void{
+ImageBaseRotationAnimation::previousRotation();
     
 this->matrix->setRotate( -this->increment, this->halfWidth, this->halfHeight);
     
@@ -211,7 +200,7 @@ this->updateImage();
 }
 
 
-    private: void updateImage(){
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::updateImage() -> void{
 this->androidImageUtil->rotate(this->twoImages[this->bufferedImageIndex], originalImage, matrix, imageModifierUtil->paint);
     
 this->swap();
@@ -219,16 +208,16 @@ this->swap();
 }
 
 
-    public: void setFrame(int32_t index){
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::setFrame(int32_t index) -> void{
 
-    int32_t currentFrame = this->circularIndexUtil.getIndex();;
+    int32_t currentFrame = this->circularIndexUtil->getIndex();;
     
-this->circularIndexUtil.setIndex(index);
+this->circularIndexUtil->setIndex(index);
     
 
-    int32_t newFrame = this->circularIndexUtil.getIndex();;
+    int32_t newFrame = this->circularIndexUtil->getIndex();;
     
-this->angleInfo.adjustAngle(newFrame);
+this->angleInfo->adjustAngle(newFrame);
     
 this->matrix->setRotate((newFrame -currentFrame) *this->increment, this->halfWidth, this->halfHeight);
     
@@ -237,7 +226,7 @@ this->updateImage();
 }
 
 
-    public: void swap(){
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::swap() -> void{
 this->imageToShow= this->twoImages[this->bufferedImageIndex];
     
 
@@ -258,13 +247,12 @@ this->imageToShow= this->twoImages[this->bufferedImageIndex];
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto AllBinaryNoFlickerAndroidImageRotationAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawImage(this->imageToShow, x, y, this->anchor);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_CPP

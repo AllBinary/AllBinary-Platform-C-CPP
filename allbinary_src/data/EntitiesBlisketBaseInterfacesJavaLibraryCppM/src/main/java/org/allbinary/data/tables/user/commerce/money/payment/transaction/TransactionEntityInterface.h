@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h>
-
-      
+class PaymentTransactionInterface;
 #include <org/allbinary/data/tables/BasicDataTableInterface.h>
-
-      
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransactionEntityInterface: public BasicDataTableInterface {
 
     public: virtual void remove(std::string userName, std::string orderNumber) = 0;
@@ -64,3 +69,16 @@ class TransactionEntityInterface: public BasicDataTableInterface {
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/BasicDataTableInterface.h>)
+#include <org/allbinary/data/tables/BasicDataTableInterface.h>
+#endif
+
+        #endif
+    

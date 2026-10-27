@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSSCROLLSELECTIONFORMFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSSCROLLSELECTIONFORMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSScrollSelectionFormFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,13 +89,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSScrollSelectionFormFactory
-            : public Object
-         {
 
+RTSScrollSelectionFormFactory::RTSScrollSelectionFormFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static ScrollSelectionForm* getInstance(std::string formLabel, std::vector<ABCustomItem*> items){
+    auto RTSScrollSelectionFormFactory::getInstance(std::string formLabel, std::vector<ABCustomItem*> items) -> ScrollSelectionForm*{
 
     BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();;
     
@@ -113,7 +123,6 @@ class RTSScrollSelectionFormFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSSCROLLSELECTIONFORMFACTORY_CPP

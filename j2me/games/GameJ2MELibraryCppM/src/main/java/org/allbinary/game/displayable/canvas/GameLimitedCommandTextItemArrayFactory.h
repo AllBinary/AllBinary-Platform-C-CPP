@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMELIMITEDCOMMANDTEXTITEMARRAYFACTORY_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMELIMITEDCOMMANDTEXTITEMARRAYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>
-
-      
-#include <org/allbinary/graphics/form/item/LimitCommandsVisitor.h>
-
-      
+class CommandTextItemArrayFactory;
+class LimitCommandsVisitor;
 
 
 
@@ -54,15 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameLimitedCommandTextItemArrayFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameLimitedCommandTextItemArrayFactory* instance() { static std::unique_ptr<GameLimitedCommandTextItemArrayFactory> value(new GameLimitedCommandTextItemArrayFactory()); return value.get(); }
+    private: static GameLimitedCommandTextItemArrayFactory* instance_owner();
+    private: static GameLimitedCommandTextItemArrayFactory* instance;
 
     public: static GameLimitedCommandTextItemArrayFactory* getInstance();
 
-    private: CommandTextItemArrayFactory* commandTextItemArrayFactory = new CommandTextItemArrayFactory(new LimitCommandsVisitor());
+
+            
+    public: GameLimitedCommandTextItemArrayFactory();
+        
+    private: CommandTextItemArrayFactory* commandTextItemArrayFactory;
 
     public: CommandTextItemArrayFactory* getCommandTextItemArrayFactory();
 
@@ -72,3 +82,16 @@ class GameLimitedCommandTextItemArrayFactory
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMELIMITEDCOMMANDTEXTITEMARRAYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMELIMITEDCOMMANDTEXTITEMARRAYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMELIMITEDCOMMANDTEXTITEMARRAYFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>)
+#include <org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/LimitCommandsVisitor.h>)
+#include <org/allbinary/graphics/form/item/LimitCommandsVisitor.h>
+#endif
+
+        #endif
+    

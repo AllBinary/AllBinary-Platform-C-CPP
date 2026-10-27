@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_H
         #define ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/time/StupidTimer.h"
+        class StupidTimer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseStupidTimerFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static StupidTimer* instance() { static std::unique_ptr<StupidTimer> value(new StupidTimer()); return value.get(); }
+    private: static StupidTimer* instance_owner();
+    private: static StupidTimer* instance;
 
     public: static StupidTimer* getInstance();
 
+
+            
+    public: LicenseStupidTimerFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/time/StupidTimer.h")
+#include "org/allbinary/time/StupidTimer.h"
+#endif
+
+        #endif
+    

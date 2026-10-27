@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_H
         #define ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Object.h"
         
 #include <java/awt.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
+class GPoint;
 
 
 
@@ -53,10 +54,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/collision/Rectangle.h"
+        class Rectangle;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RectangleCollisionUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static bool isCollision(Rectangle* rectangle, GPoint* point);
@@ -73,3 +78,19 @@ private: RectangleCollisionUtil();
 
 
         #endif //ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include("org/allbinary/collision/Rectangle.h")
+#include "org/allbinary/collision/Rectangle.h"
+#endif
+
+        #endif
+    

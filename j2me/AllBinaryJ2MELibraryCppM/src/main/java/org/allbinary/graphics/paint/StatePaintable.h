@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/graphics/displayable/StateControlledInterface.h>
-
-      
 
 
 
@@ -50,6 +53,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/Paintable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StatePaintable: public Paintable, public StateControlledInterface {
 
 public: StatePaintable();
@@ -62,3 +69,16 @@ public: StatePaintable();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/displayable/StateControlledInterface.h>)
+#include <org/allbinary/graphics/displayable/StateControlledInterface.h>
+#endif
+#if __has_include("org/allbinary/graphics/paint/Paintable.h")
+#include "org/allbinary/graphics/paint/Paintable.h"
+#endif
+
+        #endif
+    

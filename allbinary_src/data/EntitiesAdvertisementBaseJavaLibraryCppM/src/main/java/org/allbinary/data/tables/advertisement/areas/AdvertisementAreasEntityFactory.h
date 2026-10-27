@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -55,11 +56,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntity.h"
-#include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntityInterface.h"
+        class AdvertisementAreasEntity;
+class AdvertisementAreasEntityInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvertisementAreasEntityFactory
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
@@ -74,3 +79,22 @@ private: AdvertisementAreasEntityFactory();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntity.h")
+#include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntity.h"
+#endif
+#if __has_include("org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntityInterface.h")
+#include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntityInterface.h"
+#endif
+
+        #endif
+    

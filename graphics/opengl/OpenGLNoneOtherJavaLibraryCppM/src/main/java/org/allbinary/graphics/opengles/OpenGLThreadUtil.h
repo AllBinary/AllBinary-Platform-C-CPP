@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLTHREADUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLTHREADUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,15 +39,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLThreadUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLThreadUtil* instance() { static std::unique_ptr<OpenGLThreadUtil> value(new OpenGLThreadUtil()); return value.get(); }
+    private: static OpenGLThreadUtil* instance_owner();
+    private: static OpenGLThreadUtil* instance;
 
     public: static OpenGLThreadUtil* getInstance();
 
+
+            
+    public: OpenGLThreadUtil();
+        
     public: void set(Object* glSurfaceView);
+    public: void set(const std::string& glSurfaceView) { return set(JavaString::box(glSurfaceView)); }
 
     public: void onPause();
 
@@ -54,3 +69,10 @@ class OpenGLThreadUtil
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLTHREADUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLTHREADUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLTHREADUTIL_H_COMPLETE
+        
+        #endif
+    

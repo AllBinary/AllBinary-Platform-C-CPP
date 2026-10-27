@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicArrayList;
 
 
 
@@ -50,9 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/score/HighScore.h"
+        class HighScore;
 
-class HighScoresInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class HighScoresInterface
+            : public virtual Object
+         {
 
     public: virtual BasicArrayList* getList() = 0;
 
@@ -70,3 +79,16 @@ class HighScoresInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/score/HighScore.h")
+#include "org/allbinary/game/score/HighScore.h"
+#endif
+
+        #endif
+    

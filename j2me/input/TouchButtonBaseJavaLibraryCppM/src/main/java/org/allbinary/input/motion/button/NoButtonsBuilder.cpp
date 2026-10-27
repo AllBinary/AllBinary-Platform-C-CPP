@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSBUILDER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/NoButtonsBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,14 +65,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
-class NoButtonsBuilder: public BaseTouchInput {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: BasicArrayList* getList(){
+NoButtonsBuilder::NoButtonsBuilder() : logUtil(LogUtil::getInstance()) {
+        }
+        
+    auto NoButtonsBuilder::getList() -> BasicArrayList*{
 
         try {
-            this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
     BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();;
@@ -77,7 +87,7 @@ class NoButtonsBuilder: public BaseTouchInput {
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_LIST, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_LIST, &e);
     
 
 
@@ -90,7 +100,6 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSBUILDER_CPP

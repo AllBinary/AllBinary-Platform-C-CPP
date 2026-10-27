@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATOR_CPP
+        #define BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/InputAutomationBundleActivator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,15 +96,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "bundle/input/automation/InputAutomationBundleActivatorListenerInterface.h"
 
-class InputAutomationBundleActivator
-            : public Object
-        , public BundleActivator, public InputAutomationBundleActivatorListenerInterface {
 
-    private: static inline Thread* moduleManagementThread;
-
-    private: static inline BundleContext* bundleContext;
-
-    public: static BundleContext* getBundleContext(){
+InputAutomationBundleActivator::InputAutomationBundleActivator() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        
+    auto InputAutomationBundleActivator::getBundleContext() -> BundleContext*{
 
 
 
@@ -104,13 +110,9 @@ class InputAutomationBundleActivator
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext* bundleContext){
+    auto InputAutomationBundleActivator::start(BundleContext* bundleContext) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START);
@@ -141,17 +143,17 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->ST
 
                 //@Throws(Exception.constructor)
             
-    public: void registerAsService(){
-OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationConfigurationModuleChangeListener.constructor.getName());
+    auto InputAutomationBundleActivator::registerAsService() -> void{
+OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), Class::forType(typeid(InputAutomationConfigurationModuleChangeListener))->getName());
     
-OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationRobotChangeListener.constructor.getName());
+OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), Class::forType(typeid(InputAutomationRobotChangeListener))->getName());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void useServices(){
+    auto InputAutomationBundleActivator::useServices() -> void{
 (new InputAutomationRobotServiceConsumer(this->getBundleContext()))->process();
     
 (new InputAutomationModuleServiceConsumer(this->getBundleContext()))->process();
@@ -161,7 +163,7 @@ OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationSe
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext* context){
+    auto InputAutomationBundleActivator::stop(BundleContext* context) -> void{
 this->logUtil->putF(this->commonStrings->START, this, "stop");
     
 
@@ -184,7 +186,6 @@ this->logUtil->putF(this->commonStrings->START, this, "stop");
 }
 
 
-};
 
-            
 
+        #endif //BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -104,74 +114,18 @@
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputData.h"
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardInputAutomationProcessor.h"
 
-class KeyboardActionScriptInput: public BasicProfileActionScriptInput, public KeyboardActionScriptInputInterface {
 
-    private: static inline const std::string NAME = "Keyboard";
-
-    private: static std::string getText(std::vector<int32_t> integerArray){
-
-    int32_t index = 0;;
-    
-
-    StringMaker* stringBuffer = new StringMaker();;
-    
-
-        while(index < integerArray.size())
-        {
-
-    int32_t nextInteger = integerArray[index];;
-    
-
-                        if(KeyUtil::isNormallyDisplayed(nextInteger))
-                        
-                                    {
-                                    stringBuffer->append(KeyEvent::getKeyText(nextInteger));
-    
-
-                                    }
-                                
-                        else {
-                            stringBuffer->append("&#" +nextInteger +";");
-    
-
-                        }
-                            
-index++;
-    
-}
-
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer->toString();;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::vector<int32_t> keyArray = 
+KeyboardActionScriptInput::KeyboardActionScriptInput(Node* node) : BasicProfileActionScriptInput(NAME, node), logUtil(LogUtil::getInstance()), keyArray(
                                                         {
                                                             KeySingletonFactory::getInstance(KeyEvent::VK_0)
-                                                        };
-
-    private: KeyboardActionScriptInputJPanel* keyboardActionScriptInputJPanel;
-
-    private: bool press= false;
-
-    private: bool release= false;
-
-    private: int32_t delayBetweenKeys= 0;
-
-public: KeyboardActionScriptInput(Node* node) : BasicProfileActionScriptInput(NAME, node){
+                                                        }){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
     Node* actionNode = DomSearchHelper::getNode(KeyboardActionScriptInputData::NAME, node->getChildNodes());;
@@ -250,7 +204,7 @@ this->setRelease(value.slice(, ).join(''));
                             
 
 
-                            throw new Exception("Action Script Input Unknown Node");
+                            throw Exception("Action Script Input Unknown Node");
                     
 
                         }
@@ -266,7 +220,7 @@ this->setKeyArray(vector->toArrayType(std::vector<int32_t>(vector->size())) as I
                             
 
 
-                            throw new Exception("Action Script Input Node Null");
+                            throw Exception("Action Script Input Node Null");
                     
 
                         }
@@ -287,7 +241,10 @@ this->keyboardActionScriptInputJPanel= new KeyboardActionScriptInputJPanel(this)
 }
 
 
-public: KeyboardActionScriptInput() : BasicProfileActionScriptInput(NAME){
+KeyboardActionScriptInput::KeyboardActionScriptInput() : BasicProfileActionScriptInput(NAME), logUtil(LogUtil::getInstance()), keyArray(
+                                                        {
+                                                            KeySingletonFactory::getInstance(KeyEvent::VK_0)
+                                                        }){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -312,7 +269,7 @@ this->keyboardActionScriptInputJPanel= new KeyboardActionScriptInputJPanel(this)
 }
 
 
-    public: int32_t getDelayBetweenKeys(){
+    auto KeyboardActionScriptInput::getDelayBetweenKeys() -> int32_t{
 
 
 
@@ -322,13 +279,13 @@ this->keyboardActionScriptInputJPanel= new KeyboardActionScriptInputJPanel(this)
 }
 
 
-    public: void setDelayBetweenKeys(int32_t delayBetweenKeys){
+    auto KeyboardActionScriptInput::setDelayBetweenKeys(int32_t delayBetweenKeys) -> void{
 this->delayBetweenKeys= delayBetweenKeys;
     
 }
 
 
-    public: bool isPress(){
+    auto KeyboardActionScriptInput::isPress() -> bool{
 
 
 
@@ -338,13 +295,13 @@ this->delayBetweenKeys= delayBetweenKeys;
 }
 
 
-    public: void setPress(bool press){
+    auto KeyboardActionScriptInput::setPress(bool press) -> void{
 this->press= press;
     
 }
 
 
-    public: bool isRelease(){
+    auto KeyboardActionScriptInput::isRelease() -> bool{
 
 
 
@@ -354,13 +311,13 @@ this->press= press;
 }
 
 
-    public: void setRelease(bool release){
+    auto KeyboardActionScriptInput::setRelease(bool release) -> void{
 this->release= release;
     
 }
 
 
-    public: bool isNormal(){
+    auto KeyboardActionScriptInput::isNormal() -> bool{
 
 
 
@@ -370,7 +327,7 @@ this->release= release;
 }
 
 
-    public: void setNormal(){
+    auto KeyboardActionScriptInput::setNormal() -> void{
 this->setPress(true);
     
 this->setRelease(true);
@@ -378,7 +335,7 @@ this->setRelease(true);
 }
 
 
-    public: std::vector<int32_t> getKeyArray(){
+    auto KeyboardActionScriptInput::getKeyArray() -> std::vector<int32_t>{
 
 
 
@@ -388,11 +345,9 @@ this->setRelease(true);
 }
 
 
-    public: void setKeyArray(std::vector<int32_t> keyArray){
+    auto KeyboardActionScriptInput::setKeyArray(std::vector<int32_t> keyArray) -> void{
 
-                        if(keyArray != 
-                                    nullptr
-                                )
+                        if(!keyArray.empty())
                         this->logUtil->putF(CommonLabels::getInstance()->START +keyArray.size(), this, "setKeyArray");
                                 
 this->keyArray= keyArray;
@@ -400,13 +355,13 @@ this->keyArray= keyArray;
 }
 
 
-    public: void showDialog(){
+    auto KeyboardActionScriptInput::showDialog() -> void{
 this->keyboardActionScriptInputJPanel->getKeyActionJDialog()->setVisible(true);
     
 }
 
 
-    public: std::string getText(){
+    auto KeyboardActionScriptInput::getText() -> std::string{
 
 
 
@@ -416,8 +371,8 @@ this->keyboardActionScriptInputJPanel->getKeyActionJDialog()->setVisible(true);
 }
 
 
-    public: void setText(std::string text){
-this->logUtil->putF(CommonLabels::getInstance()->START +text, this, "setText");
+    auto KeyboardActionScriptInput::setText(std::string text) -> void{
+this->logUtil->putF(JavaString::valueOf(CommonLabels::getInstance()->START) +JavaString::valueOf(text), this, "setText");
     
 
     std::vector<int32_t> integerArray = this->integerArrayValue(text);;
@@ -427,8 +382,49 @@ this->setKeyArray(integerArray);
 }
 
 
-    private: std::vector<int32_t> integerArrayValue(std::string text){
-this->logUtil->putF(CommonLabels::getInstance()->START +text, this, "integerArrayValue");
+    auto KeyboardActionScriptInput::getText(std::vector<int32_t> integerArray) -> std::string{
+
+    int32_t index = 0;;
+    
+
+    StringMaker* stringBuffer = new StringMaker();;
+    
+
+        while(index < integerArray.size())
+        {
+
+    int32_t nextInteger = integerArray[index];;
+    
+
+                        if(KeyUtil::isNormallyDisplayed(nextInteger))
+                        
+                                    {
+                                    stringBuffer->append(KeyEvent::getKeyText(nextInteger));
+    
+
+                                    }
+                                
+                        else {
+                            stringBuffer->append(JavaString::valueOf(JavaString::valueOf("&#") +JavaString::valueOf(nextInteger)) +JavaString::valueOf(";"));
+    
+
+                        }
+                            
+index++;
+    
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer->toString();;
+    
+}
+
+
+    auto KeyboardActionScriptInput::integerArrayValue(std::string text) -> std::vector<int32_t>{
+this->logUtil->putF(JavaString::valueOf(CommonLabels::getInstance()->START) +JavaString::valueOf(text), this, "integerArrayValue");
     
 
     BasicArrayList* vector = new BasicArrayListD();;
@@ -460,7 +456,7 @@ this->logUtil->putF(CommonLabels::getInstance()->START +text, this, "integerArra
                                     
     std::string nextCharString = JavaString::substring(text, index +2, endIndex);;
     
-this->logUtil->putF(CommonLabels::getInstance()->NEXT +" Char String: " +nextCharString, this, "integerArrayValue");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" Char String: ")) +JavaString::valueOf(nextCharString), this, "integerArrayValue");
     
 vector->add(substring.valueOf());
     
@@ -468,7 +464,7 @@ index= index +nextCharString.size() +3;
     
 
 
-                        continue
+                        continue;
                     
 
                                     }
@@ -497,7 +493,7 @@ index++;
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto KeyboardActionScriptInput::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -518,7 +514,7 @@ hashMap->put(KeyboardActionScriptInputData::PRESS, Boolean::toString(this->isPre
     
 hashMap->put(KeyboardActionScriptInputData::RELEASE, Boolean::toString(this->isRelease()));
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -531,9 +527,9 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto KeyboardActionScriptInput::toXmlNode(Document* document) -> Node*{
 
-    Node* node = super.toXmlNode(document);;
+    Node* node = BasicProfileActionScriptInput::toXmlNode(document);;
     
 node->appendChild(ModDomHelper::createNodeWithValueNodes(document, KeyboardActionScriptInputData::NAME, this->toHashMap()));
     
@@ -548,23 +544,23 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, KeyboardActio
 
                 //@Throws(Exception.constructor)
             
-    public: void process(int64_t frame){
+    auto KeyboardActionScriptInput::process(int64_t frame) -> void{
 KeyboardInputAutomationProcessor::process(this);
     
 }
 
 
-    public: void log(){
+    auto KeyboardActionScriptInput::log() -> void{
 this->logUtil->putF(this->toString(), this, "log");
     
 }
 
 
-    public: std::string toString(){
+    auto KeyboardActionScriptInput::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toString());
+stringBuffer->append(BasicProfileActionScriptInput::toString());
     
 stringBuffer->append(" Text: ");
     
@@ -591,7 +587,6 @@ stringBuffer->appendint(this->getDelayBetweenKeys());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_EDITTHEMEVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_EDITTHEMEVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/style/theme/EditThemeValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -94,11 +104,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/includes/style/theme/ThemeCustomizerView.h"
 
-class EditThemeValidationView: public ThemeCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: EditThemeValidationView(TransformInfoInterface* transformInfoInterface) : ThemeCustomizerView(transformInfoInterface){
+EditThemeValidationView::EditThemeValidationView(TransformInfoInterface* transformInfoInterface) : ThemeCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +115,7 @@ public: EditThemeValidationView(TransformInfoInterface* transformInfoInterface) 
 }
 
 
-    public: bool isValid(){
+    auto EditThemeValidationView::isValid() -> bool{
 
         try {
             
@@ -128,7 +135,7 @@ public: EditThemeValidationView(TransformInfoInterface* transformInfoInterface) 
     
 this->validationInterface= new StoreThemeCategoryPathValidationView(dynamic_cast<StoreThemeCategoryInterface*>(storeThemeCategoryInterface));
     
-isValid= this->validationInterface.isValid();
+isValid= this->validationInterface->isValid();
     
 
     DomNodeInterface* domNodeInterface = dynamic_cast<DomNodeInterface*>(this->validationInterface);;
@@ -142,10 +149,10 @@ document->appendChild(domNodeInterface->toXmlNode(document));
     std::string documentString = XmlDocumentHelper::toString(document);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->putF("Setting Data: " +documentString, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Setting Data: ") +JavaString::valueOf(documentString), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -163,10 +170,10 @@ this->getTransformInfoInterface()->setData(documentString);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -182,13 +189,13 @@ this->getTransformInfoInterface()->setData(documentString);
 }
 
 
-    public: std::string validationInfo(){
+    auto EditThemeValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->validationInterface.validationInfo());
+stringBuffer->append(this->validationInterface->validationInfo());
     
 
 
@@ -201,7 +208,7 @@ stringBuffer->append(this->validationInterface.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -220,7 +227,7 @@ stringBuffer->append(this->validationInterface.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditThemeValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -230,7 +237,7 @@ stringBuffer->append(this->validationInterface.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditThemeValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -240,7 +247,6 @@ stringBuffer->append(this->validationInterface.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_EDITTHEMEVALIDATIONVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_BASEGAMESTATISTICS_CPP
+        #define ORG_ALLBINARY_CANVAS_BASEGAMESTATISTICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/BaseGameStatistics.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,25 +85,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BaseGameStatistics
-            : public Object
-         {
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(Integer.MAX_VALUE);
-
-    private: TimeDelayHelper* updateDelayHelper = new TimeDelayHelper(2000);
-
-    private: int64_t totalRefreshes= 0;
-
-    private: int64_t totalFrames= 0;
-
-    protected: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-public: BaseGameStatistics(){
+BaseGameStatistics::BaseGameStatistics() : timeDelayHelper(new TimeDelayHelper(Integer.MAX_VALUE)), updateDelayHelper(new TimeDelayHelper(2000)), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), DEFAULT_SCALE_FACTOR(ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), STRING_ARRAY(
+                                                        {
+                                                            " Total Time: ",this->EMPTY_STRING," Total Frames: ",this->EMPTY_STRING," Frames/10 Sec: ",this->EMPTY_STRING," Total Paints: ",this->EMPTY_STRING," Paints/10 Sec: ",this->EMPTY_STRING
+                                                        }), CHAR_ARRAY(
+                                                        {
+                                                            {'F','r','a','m','e','s','/','1','0',' ','S','e','c',':'},{'X','X'},{'P','a','i','n','t','s','/','1','0',' ','S','e','c',':'},{'X','X'}
+                                                        }), primitiveLongSingleton(PrimitiveLongSingleton::getInstance()){
 }
 
 
-    public: void init(){
+    auto BaseGameStatistics::init() -> void{
 this->timeDelayHelper->setStartTimeTNT();
     
 this->totalRefreshes= 0;
@@ -103,29 +106,27 @@ this->totalFrames= 0;
 }
 
 
-    public: void add(std::string string){
+    auto BaseGameStatistics::add(std::string string) -> void{
 }
 
 
-    public: void process(){
+    auto BaseGameStatistics::process() -> void{
 }
 
 
-    public: void nextFrame(){
+    auto BaseGameStatistics::nextFrame() -> void{
 this->totalFrames++;
     
 }
 
 
-    public: void nextRefresh(){
+    auto BaseGameStatistics::nextRefresh() -> void{
 this->totalRefreshes++;
     
 }
 
 
-    private: const int32_t DEFAULT_SCALE_FACTOR = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR;
-
-    public: int16_t getRefreshRate(){
+    auto BaseGameStatistics::getRefreshRate() -> int16_t{
 
     int64_t elapsed = this->timeDelayHelper->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
@@ -158,7 +159,7 @@ this->totalRefreshes++;
 }
 
 
-    protected: TimeDelayHelper* getTimeDelayHelper(){
+    auto BaseGameStatistics::getTimeDelayHelper() -> TimeDelayHelper*{
 
 
 
@@ -168,29 +169,7 @@ this->totalRefreshes++;
 }
 
 
-    protected: const std::string NOT = "Not enough Time to Calculate";
-
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: const std::vector<std::string> STRING_ARRAY = 
-                                                        {
-                                                            " Total Time: ",this->EMPTY_STRING," Total Frames: ",this->EMPTY_STRING," Frames/10 Sec: ",this->EMPTY_STRING," Total Paints: ",this->EMPTY_STRING," Paints/10 Sec: ",this->EMPTY_STRING
-                                                        };
-
-    private: const char SPACE_CHAR = ' ';
-
-    private: const char PLUS_CHAR = '+';
-
-    private: const char X_CHAR = 'X';
-
-    private: const std::vector<std::vector<char>> CHAR_ARRAY = 
-                                                        {
-                                                            ['F','r','a','m','e','s','/','1','0',' ','S','e','c',':'],['X','X'],['P','a','i','n','t','s','/','1','0',' ','S','e','c',':'],['X','X']
-                                                        };
-
-    private: PrimitiveLongSingleton* primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
-
-    public: std::vector<std::vector<char>> to2DCharArray(){
+    auto BaseGameStatistics::to2DCharArray() -> std::vector<std::vector<char>>{
 
     int64_t totalTime = this->timeDelayHelper->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
@@ -290,7 +269,7 @@ this->CHAR_ARRAY[3][1]= this->PLUS_CHAR;
 }
 
 
-    public: std::vector<std::string> toStringArray(){
+    auto BaseGameStatistics::toStringArray() -> std::vector<std::string>{
 
     int64_t totalTime = this->timeDelayHelper->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
@@ -339,7 +318,7 @@ this->STRING_ARRAY[9]= string;
 }
 
 
-    public: std::string toStringAt(int64_t totalTime){
+    auto BaseGameStatistics::toStringAt(int64_t totalTime) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -381,7 +360,7 @@ stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: std::string toString(){
+    auto BaseGameStatistics::toString() -> std::string{
 
     int64_t totalTime = this->timeDelayHelper->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
@@ -413,7 +392,6 @@ totalTime= (totalTime /1000);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_BASEGAMESTATISTICS_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/NullRaceTrackGeographicMap.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -77,185 +87,184 @@
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
-class NullRaceTrackGeographicMap
-            : public Object
-        , public RaceTrackGeographicMapInterface {
 
-    public: static NullRaceTrackGeographicMap* NULL_RACE_TRACK_GEOGRAPHIC_MAP() { static std::unique_ptr<NullRaceTrackGeographicMap> value(new NullRaceTrackGeographicMap()); return value.get(); }
+NullRaceTrackGeographicMap::NullRaceTrackGeographicMap() {
+        }
+        auto NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP_owner() -> NullRaceTrackGeographicMap* { static std::unique_ptr<NullRaceTrackGeographicMap> value(new NullRaceTrackGeographicMap()); return value.get(); }
+NullRaceTrackGeographicMap* NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP = NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP_owner();
 
-    public: int32_t getId(){
+    auto NullRaceTrackGeographicMap::getId() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::string getName(){
+    auto NullRaceTrackGeographicMap::getName() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void reset(){
+    auto NullRaceTrackGeographicMap::reset() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: AllBinaryTiledLayer* getAllBinaryTiledLayer(){
+    auto NullRaceTrackGeographicMap::getAllBinaryTiledLayer() -> AllBinaryTiledLayer*{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: bool getCellPositionsAt(Layer* layer, std::vector<std::vector<GeographicMapCellPosition*>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition*>> cellPositionArray){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getCellPositionAtXY(int32_t x, int32_t y){
+    auto NullRaceTrackGeographicMap::getCellPositionsAt(Layer* layer, std::vector<std::vector<GeographicMapCellPosition*>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition*>> cellPositionArray) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getCellPositionAtXYNoThrow(int32_t x, int32_t y){
+    auto NullRaceTrackGeographicMap::getCellPositionAtXY(int32_t x, int32_t y) -> GeographicMapCellPosition*{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType* getCellTypeAtXY(int32_t x, int32_t y){
+    auto NullRaceTrackGeographicMap::getCellPositionAtXYNoThrow(int32_t x, int32_t y) -> GeographicMapCellPosition*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::getCellTypeFromMapCellTypeInt(int32_t cellTypeId) -> int32_t{
+
+
+
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType* getCellTypeAt(GeographicMapCellPosition* geographicMapCellPosition){
+    auto NullRaceTrackGeographicMap::getCellTypeAtXY(int32_t x, int32_t y) -> GeographicMapCellType*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BasicGeographicMapCellPositionFactory* getGeographicMapCellPositionFactory(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: GeographicMapCellPositionFactoryInterface* getGeographicMapCellPositionFactoryInterface(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: BasicColor* getForegroundBasicColor(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: BasicColor* getBackgroundBasicColor(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: RaceTrackInfo* getRaceTrackInfo(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: void setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: RaceTrackData* getRaceTrackData(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: void setRaceTrackData(RaceTrackData* raceTrackData){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-};
-
+                //@Throws(Exception.constructor)
             
+    auto NullRaceTrackGeographicMap::getCellTypeAt(GeographicMapCellPosition* geographicMapCellPosition) -> GeographicMapCellType*{
 
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::getGeographicMapCellPositionFactory() -> BasicGeographicMapCellPositionFactory*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::getGeographicMapCellPositionFactoryInterface() -> GeographicMapCellPositionFactoryInterface*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::getForegroundBasicColor() -> BasicColor*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::getBackgroundBasicColor() -> BasicColor*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::getRaceTrackInfo() -> RaceTrackInfo*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo) -> void{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::getRaceTrackData() -> RaceTrackData*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRaceTrackGeographicMap::setRaceTrackData(RaceTrackData* raceTrackData) -> void{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_CPP

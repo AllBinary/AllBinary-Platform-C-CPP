@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLImageFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,22 +66,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLImageFactory
-            : public Object
-         {
 
-    public: static OpenGLImageFactory* NULL_OPENGL_IMAGE_FACTORY() { static std::unique_ptr<OpenGLImageFactory> value(new OpenGLImageFactory()); return value.get(); }
+OpenGLImageFactory::OpenGLImageFactory() {
+        }
+        auto OpenGLImageFactory::NULL_OPENGL_IMAGE_FACTORY_owner() -> OpenGLImageFactory* { static std::unique_ptr<OpenGLImageFactory> value(new OpenGLImageFactory()); return value.get(); }
+OpenGLImageFactory* OpenGLImageFactory::NULL_OPENGL_IMAGE_FACTORY = OpenGLImageFactory::NULL_OPENGL_IMAGE_FACTORY_owner();
 
-    public: Image* getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory){
+    auto OpenGLImageFactory::getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) -> Image*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_CPP

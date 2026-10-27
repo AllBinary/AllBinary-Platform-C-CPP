@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_WORKFLOWTAG_CPP
+        #define ADMIN_TAGS_WORKFLOWTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/WorkFlowTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class WorkFlowTag: public TableTag {
 
-public: WorkFlowTag(){
+WorkFlowTag::WorkFlowTag(){
 this->setTagHelperFactory(new WorkFlowHelperFactory());
     
 this->setTagRequestHelperFactory(new WorkFlowHelperFactory());
@@ -57,7 +66,6 @@ this->setTagRequestHelperFactory(new WorkFlowHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_WORKFLOWTAG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_THREED_ALLBINARYTHREEDTILEDLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_THREED_ALLBINARYTHREEDTILEDLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/threed/AllBinaryThreedTiledLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,34 +66,33 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryThreedTiledLayerFactory
-            : public Object
-         {
 
-    private: static AllBinaryThreedTiledLayerFactory* instance() { static std::unique_ptr<AllBinaryThreedTiledLayerFactory> value(new AllBinaryThreedTiledLayerFactory()); return value.get(); }
+AllBinaryThreedTiledLayerFactory::AllBinaryThreedTiledLayerFactory() {
+        }
+        auto AllBinaryThreedTiledLayerFactory::instance_owner() -> AllBinaryThreedTiledLayerFactory* { static std::unique_ptr<AllBinaryThreedTiledLayerFactory> value(new AllBinaryThreedTiledLayerFactory()); return value.get(); }
+AllBinaryThreedTiledLayerFactory* AllBinaryThreedTiledLayerFactory::instance = AllBinaryThreedTiledLayerFactory::instance_owner();
 
-    public: static AllBinaryThreedTiledLayerFactory* getInstance(){
+    auto AllBinaryThreedTiledLayerFactory::getInstance() -> AllBinaryThreedTiledLayerFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryThreedTiledLayerFactory::instance();
+                        return AllBinaryThreedTiledLayerFactory::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer* getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData){
+    auto AllBinaryThreedTiledLayerFactory::getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData) -> AllBinaryTiledLayer*{
 
 
 
-                            throw new Exception("No Threed");
+                            throw Exception("No Threed");
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_THREED_ALLBINARYTHREEDTILEDLAYERFACTORY_CPP

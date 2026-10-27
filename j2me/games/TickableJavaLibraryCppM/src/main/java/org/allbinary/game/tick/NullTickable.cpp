@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TICK_NULLTICKABLE_CPP
+        #define ORG_ALLBINARY_GAME_TICK_NULLTICKABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tick/NullTickable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,31 +61,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/tick/TickableInterface.h"
 
-class NullTickable
-            : public Object
-        , public TickableInterface {
 
-    private: static NullTickable* SINGLETON() { static std::unique_ptr<NullTickable> value(new NullTickable()); return value.get(); }
+NullTickable::NullTickable() {
+        }
+        auto NullTickable::SINGLETON_owner() -> NullTickable* { static std::unique_ptr<NullTickable> value(new NullTickable()); return value.get(); }
+NullTickable* NullTickable::SINGLETON = NullTickable::SINGLETON_owner();
 
-    public: static NullTickable* getInstance(){
+    auto NullTickable::getInstance() -> NullTickable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullTickable::SINGLETON();
+                        return NullTickable::SINGLETON;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto NullTickable::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 }
 
 
-    private: const std::string NAME = "NulLTickable";
-
-    public: std::string getName(){
+    auto NullTickable::getName() -> std::string{
 
 
 
@@ -85,7 +93,6 @@ class NullTickable
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TICK_NULLTICKABLE_CPP

@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_ENCODER_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_ENCODER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,8 +41,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Encoder
-            : public Object
+            : public virtual Object
          {
 
     public: static std::string encode(std::vector<int8_t> value);
@@ -52,3 +61,10 @@ private: Encoder();
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_ENCODER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_ENCODER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_ENCODER_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_WORKFLOW_NEWVIEW_CPP
+        #define VIEWS_ADMIN_WORKFLOW_NEWVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/workflow/NewView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,13 +89,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/workflow/WorkFlowView.h"
 
-class NewView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-public: NewView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface){
+NewView::NewView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface), logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -100,7 +105,7 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 }
 
 
-    public: bool isValid(){
+    auto NewView::isValid() -> bool{
 
         try {
             
@@ -114,10 +119,10 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -133,7 +138,7 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 }
 
 
-    public: std::string validationInfo(){
+    auto NewView::validationInfo() -> std::string{
 
         try {
             
@@ -152,7 +157,7 @@ stringBuffer->append("Please Contact Administrator");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -171,7 +176,7 @@ stringBuffer->append("Please Contact Administrator");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto NewView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -181,7 +186,7 @@ stringBuffer->append("Please Contact Administrator");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto NewView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -191,7 +196,6 @@ stringBuffer->append("Please Contact Administrator");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_WORKFLOW_NEWVIEW_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,14 +55,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CheckType
-            : public Object
+            : public virtual Object
          {
 
-    private: const std::vector<std::string> types = 
-                                                        {
-                                                            "Check","Money Order","Cashiers Check"
-                                                        };
+    private: std::vector<std::string> types;
 
 public: CheckType();
 
@@ -67,3 +73,10 @@ public: CheckType();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_H_COMPLETE
+        
+        #endif
+    

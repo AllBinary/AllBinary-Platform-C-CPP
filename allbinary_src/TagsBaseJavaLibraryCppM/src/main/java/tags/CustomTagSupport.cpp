@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_CUSTOMTAGSUPPORT_CPP
+        #define TAGS_CUSTOMTAGSUPPORT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/CustomTagSupport.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,13 +60,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/TagStrings.h"
 
-class CustomTagSupport: public TagSupport {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+CustomTagSupport::CustomTagSupport() : commonStrings(CommonStrings::getInstance()), tagStrings(TagStrings::getInstance()) {
+        }
+        
 
-    protected: TagStrings* tagStrings = TagStrings::getInstance();
 
-};
-
-            
-
+        #endif //TAGS_CUSTOMTAGSUPPORT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/TenderTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,29 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/types/TenderType.h"
 
-class TenderTypeFactory
-            : public Object
-         {
 
-    private: static TenderTypeFactory* instance() { static std::unique_ptr<TenderTypeFactory> value(new TenderTypeFactory()); return value.get(); }
+TenderTypeFactory::TenderTypeFactory() : CREDITCARD(new TenderType("Credit Card")), CHECK(new TenderType("Check")), ACH(new TenderType("Ach")) {
+        }
+        auto TenderTypeFactory::instance_owner() -> TenderTypeFactory* { static std::unique_ptr<TenderTypeFactory> value(new TenderTypeFactory()); return value.get(); }
+TenderTypeFactory* TenderTypeFactory::instance = TenderTypeFactory::instance_owner();
 
-    public: static TenderTypeFactory* getInstance(){
+    auto TenderTypeFactory::getInstance() -> TenderTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TenderTypeFactory::instance();
+                        return TenderTypeFactory::instance;
     
 }
 
 
-    public: TenderType* CREDITCARD = new TenderType("Credit Card");
 
-    public: TenderType* CHECK = new TenderType("Check");
 
-    public: TenderType* ACH = new TenderType("Ach");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPEFACTORY_CPP

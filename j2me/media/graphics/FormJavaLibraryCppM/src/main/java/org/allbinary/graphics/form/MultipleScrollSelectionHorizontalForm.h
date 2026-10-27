@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -17,48 +22,20 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/J2MEUtil.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Font;
+class Graphics;
+class J2MEUtil;
+class Rectangle;
+class BasicColor;
+class BasicColorFactory;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
+class UpdateMyFontProcessor;
+class ABCustomItem;
+class NullPaintable;
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class PreLogUtil;
+class StringMaker;
 
 
 
@@ -78,27 +55,33 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/ScrollSelectionForm.h"
-#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
-#include "org/allbinary/graphics/form/FormType.h"
+class ItemPaintableFactory;
+class FormType;
 #include "org/allbinary/graphics/form/ItemIndexPaintable.h"
-#include "org/allbinary/graphics/form/FormTypeFactory.h"
-//#include "org/allbinary/graphics/form/MultipleScrollSelectionFormVerticalPaintable.h"
-//#include "org/allbinary/graphics/form/MultipleScrollSelectionFormHorizontalPaintable.h"
+class FormTypeFactory;
+//class MultipleScrollSelectionFormVerticalPaintable;
+//class MultipleScrollSelectionFormHorizontalPaintable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MultipleScrollSelectionHorizontalForm: public ScrollSelectionForm, public UpdateMyFontInterface {
+public: class MultipleScrollSelectionFormHorizontalPaintable;
+public: class MultipleScrollSelectionFormVerticalPaintable;
 
                 //@Throws(Exception.constructor)
             
     public: static ScrollSelectionForm* createForm(std::string title, std::vector<ABCustomItem*> items, Rectangle* rectangle, FormType* formType, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
 //inner= member=true isStatic=
-class MultipleScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
+public: class MultipleScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
     private: MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm;
 
-: MultipleScrollSelectionFormHorizontalPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm);
+public: MultipleScrollSelectionFormHorizontalPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -108,13 +91,13 @@ class MultipleScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable 
 
             
 //inner= member=true isStatic=
-class MultipleScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
+public: class MultipleScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
     private: MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm;
 
-: MultipleScrollSelectionFormVerticalPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm);
+public: MultipleScrollSelectionFormVerticalPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -123,13 +106,13 @@ class MultipleScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
 };
 
             
-    private: Paintable* rectPaintable = NullPaintable::getInstance();
+    private: Paintable* rectPaintable;
 
-    private: ItemIndexPaintable* multipleScrollSelectionHorizontalFormTypeItemIndexPaintable = ItemIndexPaintable::getInstance();
+    private: ItemIndexPaintable* multipleScrollSelectionHorizontalFormTypeItemIndexPaintable;
 
-    private: const int32_t backgroundColor = BasicColorFactory::getInstance()->TRANSPARENT_GREY.intValue();
+    private: const int32_t backgroundColor;
 
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor;
 
     private: bool logged = false;
 
@@ -163,3 +146,67 @@ public: MultipleScrollSelectionHorizontalForm(std::string title, std::vector<ABC
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/J2MEUtil.h>)
+#include <org/allbinary/J2MEUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/ScrollSelectionForm.h")
+#include "org/allbinary/graphics/form/ScrollSelectionForm.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemPaintableFactory.h")
+#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/FormType.h")
+#include "org/allbinary/graphics/form/FormType.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemIndexPaintable.h")
+#include "org/allbinary/graphics/form/ItemIndexPaintable.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/FormTypeFactory.h")
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
+#endif
+
+        #endif
+    

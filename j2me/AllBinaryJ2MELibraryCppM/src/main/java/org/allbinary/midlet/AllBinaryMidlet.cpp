@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_ALLBINARYMIDLET_CPP
+        #define ORG_ALLBINARY_MIDLET_ALLBINARYMIDLET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/AllBinaryMidlet.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -104,11 +114,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryMidlet: public MIDlet, public CommandListener {
+Object* AllBinaryMidlet::NULL_ALLBINARY_MIDLET = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static AllBinaryMidlet* getNullInstance(){
+    auto AllBinaryMidlet::getNullInstance() -> AllBinaryMidlet*{
 
                         if(AllBinaryMidlet::NULL_ALLBINARY_MIDLET == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -127,29 +135,13 @@ class AllBinaryMidlet: public MIDlet, public CommandListener {
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string SET_DISPLAY = "setDisplay";
-
-    private: const std::string SETTING_ = "Setting: ";
-
-    private: const std::string _DISPLAY_ = " Display: ";
-
-    private: const std::string SETTING_NO_TITLE = "Setting: No Title, Display: ";
-
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    private: bool midletDestroyed= false;
-
-public: AllBinaryMidlet(){
+AllBinaryMidlet::AllBinaryMidlet() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), hashtable(StdUtil::getInstance()->createHashtable()){
 this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "AllBinaryMidlet::AllBinaryMidlet");
     
 }
 
 
-    protected: void setDisplay(Displayable* newDisplay){
+    auto AllBinaryMidlet::setDisplay(Displayable* newDisplay) -> void{
 
     std::string title = StringUtil::getInstance()->EMPTY_STRING;;
     
@@ -185,7 +177,7 @@ display->setCurrent(newDisplay);
 }
 
 
-    public: Display* getDisplay(){
+    auto AllBinaryMidlet::getDisplay() -> Display*{
 
 
 
@@ -195,7 +187,7 @@ display->setCurrent(newDisplay);
 }
 
 
-    protected: Displayable* getCurrentDisplayable(){
+    auto AllBinaryMidlet::getCurrentDisplayable() -> Displayable*{
 
 
 
@@ -205,13 +197,13 @@ display->setCurrent(newDisplay);
 }
 
 
-    public: void setDestroyed(bool destroyed){
+    auto AllBinaryMidlet::setDestroyed(bool destroyed) -> void{
 this->midletDestroyed= destroyed;
     
 }
 
 
-    public: bool isDestroyed(){
+    auto AllBinaryMidlet::isDestroyed() -> bool{
 
 
 
@@ -223,23 +215,23 @@ this->midletDestroyed= destroyed;
 
                 //@Throws(MIDletStateChangeException.constructor)
             
-    protected: void startApp(){
+    auto AllBinaryMidlet::startApp() -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    protected: void pauseApp(){
+    auto AllBinaryMidlet::pauseApp() -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    protected: void destroyAppInRunnable(bool unconditional, bool isProgress){
+    auto AllBinaryMidlet::destroyAppInRunnable(bool unconditional, bool isProgress) -> void{
 }
 
 
-    protected: void destroyApp(bool unconditional){
+    auto AllBinaryMidlet::destroyApp(bool unconditional) -> void{
 
     std::string METHOD_NAME = "AllBinaryMidlet::destroyApp";;
     
@@ -264,7 +256,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, METHOD_NAME, &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void setStartStateHashtable(ABHashtable<Object*, Object*>* hashtable){
+    auto AllBinaryMidlet::setStartStateHashtable(ABHashtable<Object*, Object*>* hashtable) -> void{
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, "setStartStateHashtable");
     
 this->hashtable= hashtable;
@@ -274,7 +266,7 @@ this->hashtable= hashtable;
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*>* getStartStateHashtable(){
+    auto AllBinaryMidlet::getStartStateHashtable() -> ABHashtable<Object*, Object*>*{
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(this->hashtable))->toString(), this, "getStartStateHashtable");
     
 
@@ -288,7 +280,7 @@ this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->STA
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*>* getCurrentStateHashtable(){
+    auto AllBinaryMidlet::getCurrentStateHashtable() -> ABHashtable<Object*, Object*>*{
 this->logUtil->putF(this->commonStrings->START, this, "getStateHashtable");
     
 
@@ -300,11 +292,10 @@ this->logUtil->putF(this->commonStrings->START, this, "getStateHashtable");
 }
 
 
-    public: void commandAction(Command* command, Displayable* displayable){
+    auto AllBinaryMidlet::commandAction(Command* command, Displayable* displayable) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MIDLET_ALLBINARYMIDLET_CPP

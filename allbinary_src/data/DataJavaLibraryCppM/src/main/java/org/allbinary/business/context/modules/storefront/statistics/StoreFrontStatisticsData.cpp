@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontStatisticsData
-            : public Object
-         {
+auto StoreFrontStatisticsData::instance_owner() -> StoreFrontStatisticsData* { static std::unique_ptr<StoreFrontStatisticsData> value(new StoreFrontStatisticsData()); return value.get(); }
+StoreFrontStatisticsData* StoreFrontStatisticsData::instance = StoreFrontStatisticsData::instance_owner();
 
-    private: static StoreFrontStatisticsData* instance() { static std::unique_ptr<StoreFrontStatisticsData> value(new StoreFrontStatisticsData()); return value.get(); }
-
-    public: static StoreFrontStatisticsData* getInstance(){
+    auto StoreFrontStatisticsData::getInstance() -> StoreFrontStatisticsData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontStatisticsData::instance();
+                        return StoreFrontStatisticsData::instance;
     
 }
 
 
-private: StoreFrontStatisticsData(){
+StoreFrontStatisticsData::StoreFrontStatisticsData(){
 }
 
 
-    public: const std::string NAME = "STOREFRONT_STATISTICS_NAME";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSDATA_CPP

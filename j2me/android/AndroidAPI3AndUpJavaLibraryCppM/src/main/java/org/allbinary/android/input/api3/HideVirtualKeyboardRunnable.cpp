@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_API3_HIDEVIRTUALKEYBOARDRUNNABLE_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_API3_HIDEVIRTUALKEYBOARDRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/api3/HideVirtualKeyboardRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,21 +86,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HideVirtualKeyboardRunnable
-            : public Object
-        , public Runnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Activity* activity;
-
-public: HideVirtualKeyboardRunnable(Activity* activity){
+HideVirtualKeyboardRunnable::HideVirtualKeyboardRunnable(Activity* activity) : logUtil(LogUtil::getInstance()){
 this->activity= activity;
     
 }
 
 
-    public: void run(){
+    auto HideVirtualKeyboardRunnable::run() -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -149,7 +152,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_API3_HIDEVIRTUALKEYBOARDRUNNABLE_CPP

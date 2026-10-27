@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/AnimationBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnimationBehavior
-            : public Object
-         {
 
-    private: static AnimationBehavior* instance() { static std::unique_ptr<AnimationBehavior> value(new AnimationBehavior()); return value.get(); }
+AnimationBehavior::AnimationBehavior() {
+        }
+        auto AnimationBehavior::instance_owner() -> AnimationBehavior* { static std::unique_ptr<AnimationBehavior> value(new AnimationBehavior()); return value.get(); }
+AnimationBehavior* AnimationBehavior::instance = AnimationBehavior::instance_owner();
 
-    public: static AnimationBehavior* getInstance(){
+    auto AnimationBehavior::getInstance() -> AnimationBehavior*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationBehavior::instance();
+                        return AnimationBehavior::instance;
     
 }
 
 
-    public: void reset(){
+    auto AnimationBehavior::reset() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIOR_CPP

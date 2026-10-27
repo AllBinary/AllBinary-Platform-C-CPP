@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,24 +38,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/direction/Direction.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellTypeFactory.h>
-
-      
+class Direction;
+class AllBinaryLayer;
+class BasicGeographicMap;
+class GeographicMapCellPosition;
+class GeographicMapCellType;
+class BasicTopViewGeographicMapCellTypeFactory;
 
 
 
@@ -70,10 +63,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TopViewCharacterBehavior
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: TopViewCharacterBehavior();
+        
                 //@Throws(Exception.constructor)
             
     public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, GeographicMapCellPosition* geographicMapCellPosition);
@@ -88,3 +89,28 @@ class TopViewCharacterBehavior
 
 
         #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/direction/Direction.h>)
+#include <org/allbinary/direction/Direction.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellTypeFactory.h>)
+#include <org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellTypeFactory.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/TrackballGameInputMotionEventProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,31 +80,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
-class TrackballGameInputMotionEventProcessor: public MotionEventProcessor {
+auto TrackballGameInputMotionEventProcessor::PROCESSOR_owner() -> TrackballGameInputMotionEventProcessor* { static std::unique_ptr<TrackballGameInputMotionEventProcessor> value(new TrackballGameInputMotionEventProcessor()); return value.get(); }
+TrackballGameInputMotionEventProcessor* TrackballGameInputMotionEventProcessor::PROCESSOR = TrackballGameInputMotionEventProcessor::PROCESSOR_owner();
 
-    private: static TrackballGameInputMotionEventProcessor* PROCESSOR() { static std::unique_ptr<TrackballGameInputMotionEventProcessor> value(new TrackballGameInputMotionEventProcessor()); return value.get(); }
-
-    public: static TrackballGameInputMotionEventProcessor* getInstance(){
+    auto TrackballGameInputMotionEventProcessor::getInstance() -> TrackballGameInputMotionEventProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackballGameInputMotionEventProcessor::PROCESSOR();
+                        return TrackballGameInputMotionEventProcessor::PROCESSOR;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: SingleKeyPressGameKeyFromMotionGestureEventListener* listener = new SingleKeyPressGameKeyFromMotionGestureEventListener();
-
-private: TrackballGameInputMotionEventProcessor(){
+TrackballGameInputMotionEventProcessor::TrackballGameInputMotionEventProcessor() : logUtil(LogUtil::getInstance()), listener(new SingleKeyPressGameKeyFromMotionGestureEventListener()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: void process(MotionEvent* motionEvent){
+    auto TrackballGameInputMotionEventProcessor::process(MotionEvent* motionEvent) -> void{
 
         try {
             
@@ -150,7 +153,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PR
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_CPP

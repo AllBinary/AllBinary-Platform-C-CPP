@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <java/io/DataInputStream.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbDataInputStream: public DataInputStream {
 
 public: AbDataInputStream(InputStream* out);
@@ -62,3 +67,16 @@ public: AbDataInputStream(InputStream* out);
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_H_COMPLETE
+        #if __has_include(<java/io/DataInputStream.h>)
+#include <java/io/DataInputStream.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+
+        #endif
+    

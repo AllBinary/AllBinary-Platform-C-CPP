@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/event/EmailEvent.h>
-
-      
+class LogUtil;
+class EmailEvent;
 #include <org/allbinary/logic/communication/smtp/event/UserEmailEventListenerInterface.h>
-
-      
 
 
 
@@ -59,11 +58,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogUserEmailEventListenerModule
-            : public Object
+            : public virtual Object
         , public UserEmailEventListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: LogUserEmailEventListenerModule();
 
@@ -77,3 +80,19 @@ public: LogUserEmailEventListenerModule();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/event/EmailEvent.h>)
+#include <org/allbinary/logic/communication/smtp/event/EmailEvent.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/event/UserEmailEventListenerInterface.h>)
+#include <org/allbinary/logic/communication/smtp/event/UserEmailEventListenerInterface.h>
+#endif
+
+        #endif
+    

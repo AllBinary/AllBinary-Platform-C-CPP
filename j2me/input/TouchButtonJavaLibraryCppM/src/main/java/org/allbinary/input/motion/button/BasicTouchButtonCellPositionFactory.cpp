@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONCELLPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONCELLPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,57 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
 
-class BasicTouchButtonCellPositionFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: CellPosition* TOP_RIGHT;
-
-    public: CellPosition* TOP_LEFT;
-
-    public: CellPosition* SECOND_FROM_TOP_LEFT;
-
-    public: CellPosition* SECOND_FROM_TOP_RIGHT;
-
-    public: CellPosition* TOP_SECOND_FROM_LEFT;
-
-    public: CellPosition* TOP_SECOND_FROM_RIGHT;
-
-    public: CellPosition* BOTTOM_RIGHT;
-
-    public: CellPosition* BOTTOM_SECOND_FROM_RIGHT;
-
-    public: CellPosition* SECOND_FROM_BOTTOM_RIGHT;
-
-    public: CellPosition* THIRD_FROM_BOTTOM_RIGHT;
-
-    public: CellPosition* FOURTH_FROM_BOTTOM_RIGHT;
-
-    public: CellPosition* SECOND_FROM_BOTTOM_SECOND_FROM_RIGHT;
-
-    public: CellPosition* SECOND_FROM_BOTTOM_THIRD_FROM_RIGHT;
-
-    public: CellPosition* SECOND_FROM_BOTTOM_FOURTH_FROM_RIGHT;
-
-    public: CellPosition* BOTTOM_THIRD_FROM_RIGHT;
-
-    public: CellPosition* BOTTOM_FOURTH_FROM_RIGHT;
-
-    public: CellPosition* BOTTOM_SECOND_FROM_LEFT;
-
-    public: CellPosition* SECOND_FROM_BOTTOM_LEFT;
-
-    public: CellPosition* THIRD_FROM_BOTTOM_LEFT;
-
-    public: CellPosition* BOTTOM_LEFT;
-
-    public: CellPosition* SECOND_FROM_BOTTOM_SECOND_FROM_LEFT;
-
-public: BasicTouchButtonCellPositionFactory(){
+BasicTouchButtonCellPositionFactory::BasicTouchButtonCellPositionFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
@@ -219,7 +180,6 @@ this->TOP_SECOND_FROM_RIGHT= cellPositionFactory->NONE;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONCELLPOSITIONFACTORY_CPP

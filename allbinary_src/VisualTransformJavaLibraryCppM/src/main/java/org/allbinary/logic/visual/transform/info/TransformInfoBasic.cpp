@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOBASIC_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOBASIC_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoBasic.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,11 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
 //Hack class should not exist
-class TransformInfoBasic: public AbContext, public TransformInfoHttpInterface {
 
-    private: StoreFrontInterface* storeFrontInterface;
-
-public: TransformInfoBasic(StoreFrontInterface* storeFrontInterface, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : AbContext(propertiesHashMap, pageContext){
+TransformInfoBasic::TransformInfoBasic(StoreFrontInterface* storeFrontInterface, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : AbContext(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,7 +98,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: std::string getStoreName(){
+    auto TransformInfoBasic::getStoreName() -> std::string{
 
 
 
@@ -101,7 +108,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: std::string log(){
+    auto TransformInfoBasic::log() -> std::string{
 
 
 
@@ -111,11 +118,11 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: void override(HashMap<Object*, Object*>* hashMap){
+    auto TransformInfoBasic::override(HashMap<Object*, Object*>* hashMap) -> void{
 }
 
 
-    public: std::string getName(){
+    auto TransformInfoBasic::getName() -> std::string{
 
 
 
@@ -125,7 +132,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: std::string getObjectFile(){
+    auto TransformInfoBasic::getObjectFile() -> std::string{
 
 
 
@@ -135,7 +142,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: Object* getObject(){
+    auto TransformInfoBasic::getObject() -> Object*{
 
 
 
@@ -145,7 +152,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: TransformInfoObjectConfigInterface* getObjectConfigInterface(){
+    auto TransformInfoBasic::getObjectConfigInterface() -> TransformInfoObjectConfigInterface*{
 
 
 
@@ -155,11 +162,11 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: void setObjectConfigInterface(Object* transformInfoObjectConfigInterface){
+    auto TransformInfoBasic::setObjectConfigInterface(TransformInfoObjectConfigInterface* transformInfoObjectConfigInterface) -> void{
 }
 
 
-    public: AbPath* getTemplateFilePath(){
+    auto TransformInfoBasic::getTemplateFilePath() -> AbPath*{
 
 
 
@@ -169,7 +176,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: std::string getTemplateFile(){
+    auto TransformInfoBasic::getTemplateFile() -> std::string{
 
 
 
@@ -179,7 +186,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: std::string getTemplate(){
+    auto TransformInfoBasic::getTemplate() -> std::string{
 
 
 
@@ -189,7 +196,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: AbPath* getDataFilePath(){
+    auto TransformInfoBasic::getDataFilePath() -> AbPath*{
 
 
 
@@ -199,7 +206,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: std::string getDataFile(){
+    auto TransformInfoBasic::getDataFile() -> std::string{
 
 
 
@@ -211,56 +218,56 @@ this->storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document* getDataDocument(){
+    auto TransformInfoBasic::getDataDocument() -> Document*{
 
 
 
-                            throw new Exception(commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void setName(std::string value){
+    auto TransformInfoBasic::setName(std::string value) -> void{
 }
 
 
-    public: void setStoreName(std::string value){
+    auto TransformInfoBasic::setStoreName(std::string value) -> void{
 }
 
 
-    public: void setObjectFile(std::string value){
+    auto TransformInfoBasic::setObjectFile(std::string value) -> void{
 }
 
 
-    public: void setObject(Object anyType){
+    auto TransformInfoBasic::setObject(Object* anyType) -> void{
 }
 
 
-    public: void setObjectConfigFile(std::string value){
+    auto TransformInfoBasic::setObjectConfigFile(std::string value) -> void{
 }
 
 
-    public: void setTemplateFile(std::string value){
+    auto TransformInfoBasic::setTemplateFile(std::string value) -> void{
 }
 
 
-    public: void setTemplate(std::string value){
+    auto TransformInfoBasic::setTemplate(std::string value) -> void{
 }
 
 
-    public: void setDataFile(std::string value){
+    auto TransformInfoBasic::setDataFile(std::string value) -> void{
 }
 
 
-    public: void setData(std::string value){
+    auto TransformInfoBasic::setData(std::string value) -> void{
 }
 
 
-    public: void setChild(){
+    auto TransformInfoBasic::setChild() -> void{
 }
 
 
-    public: bool isChild(){
+    auto TransformInfoBasic::isChild() -> bool{
 
 
 
@@ -270,7 +277,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: std::string getImportUriPath(){
+    auto TransformInfoBasic::getImportUriPath() -> std::string{
 
 
 
@@ -280,25 +287,13 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: void setImportUriPath(std::string importUriPath){
+    auto TransformInfoBasic::setImportUriPath(std::string importUriPath) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: BasicArrayList* toVector(){
+    auto TransformInfoBasic::getKey() -> Object*{
 
 
 
@@ -310,7 +305,7 @@ this->storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto TransformInfoBasic::toVector() -> BasicArrayList*{
 
 
 
@@ -320,7 +315,18 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto TransformInfoBasic::toHashMap() -> HashMap<Object*, Object*>*{
 
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOBASIC_CPP

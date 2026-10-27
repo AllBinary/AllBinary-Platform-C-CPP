@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 
 
 
@@ -52,14 +55,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/LocationPaintableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LocationPaintable
-            : public Object
+            : public virtual Object
         , public LocationPaintableInterface {
 
-    private: static LocationPaintable* instance() { static std::unique_ptr<LocationPaintable> value(new LocationPaintable()); return value.get(); }
+    private: static LocationPaintable* instance_owner();
+    private: static LocationPaintable* instance;
 
     public: static LocationPaintable* getInstance();
 
+
+            
+    public: LocationPaintable();
+        
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
@@ -68,3 +80,16 @@ class LocationPaintable
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include("org/allbinary/graphics/paint/LocationPaintableInterface.h")
+#include "org/allbinary/graphics/paint/LocationPaintableInterface.h"
+#endif
+
+        #endif
+    

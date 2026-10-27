@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <org/allbinary/animation/AnimationInterface.h>
-
-      
-#include <org/allbinary/animation/IndexedAnimation.h>
-
-      
+class IndexedAnimation;
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompoundAnimationInterface: public AnimationInterface {
 
     public: virtual void nextAnimation() = 0;
@@ -68,3 +73,16 @@ class CompoundAnimationInterface: public AnimationInterface {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/AnimationInterface.h>)
+#include <org/allbinary/animation/AnimationInterface.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+
+        #endif
+    

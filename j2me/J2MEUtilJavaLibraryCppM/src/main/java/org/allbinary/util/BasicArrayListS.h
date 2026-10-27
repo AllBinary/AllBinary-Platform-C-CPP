@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H
         #define ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/IllegalArgumentException.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
+class JsType;
+class NullUtil;
+class StringMaker;
+class JsConstructor;
 
 
 
@@ -63,6 +60,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/util/BasicArrayList.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicArrayListS: public BasicArrayList {
 
 public: BasicArrayListS(int32_t size);
@@ -73,3 +74,25 @@ public: BasicArrayListS(int32_t size);
 
 
         #endif //ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H_COMPLETE)
+        #define ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +52,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/TouchScreenType.h"
+        class TouchScreenType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchScreenTypesFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static TouchScreenTypesFactory* instance() { static std::unique_ptr<TouchScreenTypesFactory> value(new TouchScreenTypesFactory()); return value.get(); }
+    private: static TouchScreenTypesFactory* instance_owner();
+    private: static TouchScreenTypesFactory* instance;
 
     public: static TouchScreenTypesFactory* getInstance();
 
-    public: TouchScreenType* FINGER = new TouchScreenType("Finger");
 
-    public: TouchScreenType* NOTOUCH = new TouchScreenType("No Touch");
+            
+    public: TouchScreenTypesFactory();
+        
+    public: TouchScreenType* FINGER;
 
-    public: TouchScreenType* STYLUS = new TouchScreenType("Stylus");
+    public: TouchScreenType* NOTOUCH;
 
-    public: TouchScreenType* UNDEFINED = new TouchScreenType("Undefined");
+    public: TouchScreenType* STYLUS;
+
+    public: TouchScreenType* UNDEFINED;
 
 };
 
@@ -71,3 +85,13 @@ class TouchScreenTypesFactory
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/input/motion/button/TouchScreenType.h")
+#include "org/allbinary/input/motion/button/TouchScreenType.h"
+#endif
+
+        #endif
+    

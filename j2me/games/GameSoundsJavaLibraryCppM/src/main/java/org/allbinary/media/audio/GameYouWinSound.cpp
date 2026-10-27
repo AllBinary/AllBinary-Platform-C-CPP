@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_GAMEYOUWINSOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_GAMEYOUWINSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/GameYouWinSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,9 @@
         #include "org/allbinary/media/audio/CompositeSound.h"
 #include "org/allbinary/media/audio/Sound.h"
 //Use 8hz16bitmono for most J2ME
-class GameYouWinSound: public CompositeSound {
+Sound* GameYouWinSound::soundInterface = new GameYouWinSound();
 
-    private: static inline Sound* soundInterface = new GameYouWinSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameYouWinSound::soundInterface;
-    
-}
-
-
-private: GameYouWinSound() : CompositeSound("resource:/wav/youwin.wav"){
+GameYouWinSound::GameYouWinSound() : CompositeSound("resource:/wav/youwin.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +67,16 @@ private: GameYouWinSound() : CompositeSound("resource:/wav/youwin.wav"){
 }
 
 
-};
+    auto GameYouWinSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameYouWinSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_GAMEYOUWINSOUND_CPP

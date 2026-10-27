@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_UPDATEORDERTAG_CPP
+        #define ADMIN_TAGS_UPDATEORDERTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/UpdateOrderTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class UpdateOrderTag: public TableTag {
 
-public: UpdateOrderTag(){
+UpdateOrderTag::UpdateOrderTag(){
 this->setTagHelperFactory(new UpdateOrderHelperFactory());
     
 this->setTagRequestHelperFactory(new UpdateOrderHelperFactory());
@@ -57,7 +66,6 @@ this->setTagRequestHelperFactory(new UpdateOrderHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_UPDATEORDERTAG_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_H
         #define ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,18 +52,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/ScreenEmptyListener.h"
-#include "org/allbinary/graphics/ScreenListenerInterface.h"
+        class ScreenEmptyListener;
+class ScreenListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScreenListenerHandler
-            : public Object
+            : public virtual Object
          {
 
-    private: static ScreenListenerHandler* instance() { static std::unique_ptr<ScreenListenerHandler> value(new ScreenListenerHandler()); return value.get(); }
+    private: static ScreenListenerHandler* instance_owner();
+    private: static ScreenListenerHandler* instance;
 
     public: static ScreenListenerHandler* getInstance();
 
-    private: ScreenListenerInterface* screenListenerInterface = new ScreenEmptyListener();
+
+            
+    public: ScreenListenerHandler();
+        
+    private: ScreenListenerInterface* screenListenerInterface;
 
     public: void setListener(ScreenListenerInterface* screenListenerInterface);
 
@@ -72,3 +86,16 @@ class ScreenListenerHandler
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/ScreenEmptyListener.h")
+#include "org/allbinary/graphics/ScreenEmptyListener.h"
+#endif
+#if __has_include("org/allbinary/graphics/ScreenListenerInterface.h")
+#include "org/allbinary/graphics/ScreenListenerInterface.h"
+#endif
+
+        #endif
+    

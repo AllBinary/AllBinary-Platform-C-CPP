@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,33 +71,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTrackData
-            : public Object
-         {
 
-    private: Image* tileSetImage = NullImage::NULL_IMAGE;
-
-    private: Image* miniTileSetImage = NullImage::NULL_IMAGE;
-
-    private: int32_t cellWidth = 0;
-
-    private: int32_t cellHeight = 0;
-
-    private: int32_t miniCellWidth = 0;
-
-    private: int32_t miniCellHeight = 0;
-
-    private: std::vector<std::vector<int32_t>> mapArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
-
-    private: std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray = NullUtil::getInstance()->NULL_INT_ARRAY;
-
-    private: std::vector<CellPosition*> NO_OVER_PASSES_ARRAY = {};
-
-    private: std::vector<CellPosition*> overPassGeographicMapCellPositionArray = this->NO_OVER_PASSES_ARRAY;
-
-    private: int32_t id;
-
-public: RaceTrackData(int32_t id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray){
+RaceTrackData::RaceTrackData(int32_t id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray) : tileSetImage(NullImage::NULL_IMAGE), miniTileSetImage(NullImage::NULL_IMAGE), mapArray(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY), cellTypeIdToGeographicMapCellTypeArray(NullUtil::getInstance()->NULL_INT_ARRAY), NO_OVER_PASSES_ARRAY({}), overPassGeographicMapCellPositionArray(this->NO_OVER_PASSES_ARRAY){
 this->id= id;
     
 this->cellWidth= cellWidth;
@@ -105,13 +90,13 @@ this->cellTypeIdToGeographicMapCellTypeArray= cellTypeIdToGeographicMapCellTypeA
 }
 
 
-    protected: void setMapArray(std::vector<std::vector<int32_t>> mapArray){
+    auto RaceTrackData::setMapArray(std::vector<std::vector<int32_t>> mapArray) -> void{
 this->mapArray= mapArray;
     
 }
 
 
-    public: std::vector<std::vector<int32_t>> getMapArray(){
+    auto RaceTrackData::getMapArray() -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -121,13 +106,13 @@ this->mapArray= mapArray;
 }
 
 
-    protected: void setCellTypeIdToGeographicMapCellTypeArray(std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray){
+    auto RaceTrackData::setCellTypeIdToGeographicMapCellTypeArray(std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray) -> void{
 this->cellTypeIdToGeographicMapCellTypeArray= cellTypeIdToGeographicMapCellTypeArray;
     
 }
 
 
-    public: std::vector<int32_t> getCellTypeIdToGeographicMapCellTypeArray(){
+    auto RaceTrackData::getCellTypeIdToGeographicMapCellTypeArray() -> std::vector<int32_t>{
 
 
 
@@ -137,13 +122,13 @@ this->cellTypeIdToGeographicMapCellTypeArray= cellTypeIdToGeographicMapCellTypeA
 }
 
 
-    private: void setCellWidth(int32_t cellWidth){
+    auto RaceTrackData::setCellWidth(int32_t cellWidth) -> void{
 this->cellWidth= cellWidth;
     
 }
 
 
-    public: int32_t getCellWidth(){
+    auto RaceTrackData::getCellWidth() -> int32_t{
 
 
 
@@ -153,13 +138,13 @@ this->cellWidth= cellWidth;
 }
 
 
-    private: void setCellHeight(int32_t cellHeight){
+    auto RaceTrackData::setCellHeight(int32_t cellHeight) -> void{
 this->cellHeight= cellHeight;
     
 }
 
 
-    public: int32_t getCellHeight(){
+    auto RaceTrackData::getCellHeight() -> int32_t{
 
 
 
@@ -169,7 +154,7 @@ this->cellHeight= cellHeight;
 }
 
 
-    public: std::vector<CellPosition*> getOverPassGeographicMapCellPositionArray(){
+    auto RaceTrackData::getOverPassGeographicMapCellPositionArray() -> std::vector<CellPosition*>{
 
 
 
@@ -179,13 +164,13 @@ this->cellHeight= cellHeight;
 }
 
 
-    public: void setOverPassGeographicMapCellPositionArray(std::vector<CellPosition*> overPassGeographicMapCellPositionArray){
+    auto RaceTrackData::setOverPassGeographicMapCellPositionArray(std::vector<CellPosition*> overPassGeographicMapCellPositionArray) -> void{
 this->overPassGeographicMapCellPositionArray= overPassGeographicMapCellPositionArray;
     
 }
 
 
-    public: Image* getTileSetImage(){
+    auto RaceTrackData::getTileSetImage() -> Image*{
 
 
 
@@ -195,13 +180,13 @@ this->overPassGeographicMapCellPositionArray= overPassGeographicMapCellPositionA
 }
 
 
-    public: void setTileSetImage(Image* tileSetImage){
+    auto RaceTrackData::setTileSetImage(Image* tileSetImage) -> void{
 this->tileSetImage= tileSetImage;
     
 }
 
 
-    public: Image* getMiniTileSetImage(){
+    auto RaceTrackData::getMiniTileSetImage() -> Image*{
 
 
 
@@ -211,13 +196,13 @@ this->tileSetImage= tileSetImage;
 }
 
 
-    public: void setMiniTileSetImage(Image* miniTileSetImage){
+    auto RaceTrackData::setMiniTileSetImage(Image* miniTileSetImage) -> void{
 this->miniTileSetImage= miniTileSetImage;
     
 }
 
 
-    public: int32_t getMiniCellWidth(){
+    auto RaceTrackData::getMiniCellWidth() -> int32_t{
 
 
 
@@ -227,13 +212,13 @@ this->miniTileSetImage= miniTileSetImage;
 }
 
 
-    public: void setMiniCellWidth(int32_t miniCellWidth){
+    auto RaceTrackData::setMiniCellWidth(int32_t miniCellWidth) -> void{
 this->miniCellWidth= miniCellWidth;
     
 }
 
 
-    public: int32_t getMiniCellHeight(){
+    auto RaceTrackData::getMiniCellHeight() -> int32_t{
 
 
 
@@ -243,19 +228,19 @@ this->miniCellWidth= miniCellWidth;
 }
 
 
-    public: void setMiniCellHeight(int32_t miniCellHeight){
+    auto RaceTrackData::setMiniCellHeight(int32_t miniCellHeight) -> void{
 this->miniCellHeight= miniCellHeight;
     
 }
 
 
-    public: void setId(int32_t id){
+    auto RaceTrackData::setId(int32_t id) -> void{
 this->id= id;
     
 }
 
 
-    public: int32_t getId(){
+    auto RaceTrackData::getId() -> int32_t{
 
 
 
@@ -265,7 +250,6 @@ this->id= id;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_CPP

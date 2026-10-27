@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/DemoGameMidletEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,26 @@
         #include "org/allbinary/game/midlet/DemoGameMidletEventListener.h"
 #include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
 
-class DemoGameMidletEventHandler: public BasicEventHandler {
+auto DemoGameMidletEventHandler::gameKeyEventHandler_owner() -> DemoGameMidletEventHandler* { static std::unique_ptr<DemoGameMidletEventHandler> value(new DemoGameMidletEventHandler()); return value.get(); }
+DemoGameMidletEventHandler* DemoGameMidletEventHandler::gameKeyEventHandler = DemoGameMidletEventHandler::gameKeyEventHandler_owner();
 
-    private: static DemoGameMidletEventHandler* gameKeyEventHandler() { static std::unique_ptr<DemoGameMidletEventHandler> value(new DemoGameMidletEventHandler()); return value.get(); }
+DemoGameMidletEventHandler::DemoGameMidletEventHandler(){
+}
 
-    public: static DemoGameMidletEventHandler* getInstance(){
+
+    auto DemoGameMidletEventHandler::getInstance() -> DemoGameMidletEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameMidletEventHandler::gameKeyEventHandler();
+                        return DemoGameMidletEventHandler::gameKeyEventHandler;
     
-}
-
-
-private: DemoGameMidletEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto DemoGameMidletEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     DemoGameMidletEventListener* demoGameMidletEventListener = dynamic_cast<DemoGameMidletEventListener*>(eventListenerInterface);;
     
@@ -85,7 +94,6 @@ demoGameMidletEventListener->onDemoGameMidletEvent(dynamic_cast<DemoGameMidletEv
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_CPP

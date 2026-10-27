@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEW_CPP
+        #define ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/UrlGlobalsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,21 +76,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/globals/UrlGlobalsData.h"
 
-class UrlGlobalsView
-            : public Object
-        , public DomNodeInterface {
 
-public: UrlGlobalsView(){
+UrlGlobalsView::UrlGlobalsView(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto UrlGlobalsView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(UrlGlobalsData::WEBAPPPATH, org.allbinary.globals.URLGLOBALS.getWebappPath());
+hashMap->put(UrlGlobalsData::WEBAPPPATH, org.allbinary->globals->URLGLOBALS->getWebappPath());
     
 
     Node* node = ModDomHelper::createNameValueNodes(document, UrlGlobalsData::NAME, hashMap);;
@@ -94,7 +101,6 @@ hashMap->put(UrlGlobalsData::WEBAPPPATH, org.allbinary.globals.URLGLOBALS.getWeb
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEW_CPP

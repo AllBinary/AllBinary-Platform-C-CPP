@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_H
         #define ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/thread/ABRunnable.h>
-
-      
-#include <org/allbinary/thread/NullABRunnable.h>
-
-      
+class ABRunnable;
+class NullABRunnable;
 
 
 
@@ -53,12 +54,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/midlet/SpecialDemoGameMidlet.h"
+        class SpecialDemoGameMidlet;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseCheckRunnableFactory
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: LicenseCheckRunnableFactory();
+        
     public: ABRunnable* getInstance(SpecialDemoGameMidlet* specialDemoGameMidlet);
 
 };
@@ -67,3 +76,19 @@ class LicenseCheckRunnableFactory
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/thread/ABRunnable.h>)
+#include <org/allbinary/thread/ABRunnable.h>
+#endif
+#if __has_include(<org/allbinary/thread/NullABRunnable.h>)
+#include <org/allbinary/thread/NullABRunnable.h>
+#endif
+#if __has_include("org/allbinary/game/midlet/SpecialDemoGameMidlet.h")
+#include "org/allbinary/game/midlet/SpecialDemoGameMidlet.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/resource/ResourceRelativeRelationshipFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,19 +76,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h"
 
-class ResourceRelativeRelationshipFactory
-            : public Object
-        , public ResourceRelativeRelationshipFactoryInterface {
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    private: bool initialized= false;
-
+ResourceRelativeRelationshipFactory::ResourceRelativeRelationshipFactory() : basicArrayListUtil(BasicArrayListUtil::getInstance()), hashtable(StdUtil::getInstance()->createHashtable()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t level){
+    auto ResourceRelativeRelationshipFactory::init(int32_t level) -> void{
 this->setInitialized(true);
     
 }
@@ -86,7 +90,7 @@ this->setInitialized(true);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getResourceRelativeRelationshipList(std::string resource){
+    auto ResourceRelativeRelationshipFactory::getResourceRelativeRelationshipList(std::string resource) -> BasicArrayList*{
 
     Object* listCanBeNull = this->hashtable->get(resource);;
     
@@ -116,7 +120,7 @@ this->setInitialized(true);
 
                 //@Throws(Exception.constructor)
             
-    public: void addResourceRelativeRelationship(std::string resource, RelativeRelationship* hardPoint){
+    auto ResourceRelativeRelationshipFactory::addResourceRelativeRelationship(std::string resource, RelativeRelationship* hardPoint) -> void{
 
     BasicArrayList* list = this->getResourceRelativeRelationshipList(resource);;
     
@@ -136,7 +140,7 @@ this->hashtable->put(resource, list);
 }
 
 
-    public: bool isLoadingLevel(int32_t level){
+    auto ResourceRelativeRelationshipFactory::isLoadingLevel(int32_t level) -> bool{
 
 
 
@@ -146,7 +150,7 @@ this->hashtable->put(resource, list);
 }
 
 
-    public: bool isFeature(){
+    auto ResourceRelativeRelationshipFactory::isFeature() -> bool{
 
 
 
@@ -156,13 +160,13 @@ this->hashtable->put(resource, list);
 }
 
 
-    public: void setInitialized(bool initialized){
+    auto ResourceRelativeRelationshipFactory::setInitialized(bool initialized) -> void{
 this->initialized= initialized;
     
 }
 
 
-    public: bool isInitialized(){
+    auto ResourceRelativeRelationshipFactory::isInitialized() -> bool{
 
 
 
@@ -172,7 +176,6 @@ this->initialized= initialized;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_CPP

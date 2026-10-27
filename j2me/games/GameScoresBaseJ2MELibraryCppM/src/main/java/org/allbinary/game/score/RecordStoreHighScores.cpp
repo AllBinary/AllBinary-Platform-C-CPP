@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_RECORDSTOREHIGHSCORES_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_RECORDSTOREHIGHSCORES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/RecordStoreHighScores.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -127,12 +137,28 @@
 #include "org/allbinary/game/score/HighScore.h"
 #include "org/allbinary/game/score/ScoreComparator.h"
 
-class RecordStoreHighScores: public HighScores {
+ABHashtable<Object*, Object*>* RecordStoreHighScores::hashTable = StdUtil::getInstance()->createHashtable();
 
-    private: static inline ABHashtable<Object*, Object*>* hashTable = StdUtil::getInstance()->createHashtable();
+RecordStoreHighScores::RecordStoreHighScores(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, std::string name, std::string heading, std::string columnTwoHeading, RecordComparator* recordComparatorInterface) : HighScores(name, heading, columnTwoHeading), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), platformRecordIdUtil(PlatformRecordIdUtil::getInstance()), tsUtil(TsUtil::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this->abeClientInformation= abeClientInformation;
+    
+this->gameInfo= gameInfo;
+    
+this->recordComparatorInterface= recordComparatorInterface;
+    
+this->load();
+    
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static HighScores* getInstance(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, std::string highScoreName, std::string heading, std::string columnTwoHeading, RecordComparator* recordComparatorInterface){
+    auto RecordStoreHighScores::getInstance(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, std::string highScoreName, std::string heading, std::string columnTwoHeading, RecordComparator* recordComparatorInterface) -> HighScores*{
 
     Object* highScoresCanBeNull = RecordStoreHighScores::hashTable->get(highScoreName);;
     
@@ -165,43 +191,7 @@ RecordStoreHighScores::hashTable->put(highScores->getName(), highScores);
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: PlatformRecordIdUtil* platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: const std::string RECORD_ID = "_HS";
-
-    private: const int32_t MAXHIGHSCORES = 100;
-
-    private: GameInfo* gameInfo;
-
-    private: AbeClientInformationInterface* abeClientInformation;
-
-    private: RecordComparator* recordComparatorInterface;
-
-private: RecordStoreHighScores(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, std::string name, std::string heading, std::string columnTwoHeading, RecordComparator* recordComparatorInterface) : HighScores(name, heading, columnTwoHeading){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this->abeClientInformation= abeClientInformation;
-    
-this->gameInfo= gameInfo;
-    
-this->recordComparatorInterface= recordComparatorInterface;
-    
-this->load();
-    
-}
-
-
-    private: std::string getRecordId(AbeClientInformationInterface* abeClientInformation){
+    auto RecordStoreHighScores::getRecordId(AbeClientInformationInterface* abeClientInformation) -> std::string{
 
 
 
@@ -212,7 +202,7 @@ this->load();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addHighScore(HighScore* newHighScore){
+    auto RecordStoreHighScores::addHighScore(HighScore* newHighScore) -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -293,7 +283,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
 }
 
 
-    private: void removeLowestHighScore(){
+    auto RecordStoreHighScores::removeLowestHighScore() -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -328,9 +318,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
 recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
 
-                        if(recordAsBytes != 
-                                    nullptr
-                                )
+                        if(!recordAsBytes.empty())
                         
                                     {
                                     byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
@@ -416,7 +404,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "removeLowestHighScore"
 }
 
 
-    private: void load(){
+    auto RecordStoreHighScores::load() -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -447,9 +435,7 @@ this->setList(new BasicArrayListD());
 recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
 
-                        if(recordAsBytes != 
-                                    nullptr
-                                )
+                        if(!recordAsBytes.empty())
                         
                                     {
                                     byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
@@ -579,7 +565,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->LO
 }
 
 
-    private: bool isTooManyHighScores(){
+    auto RecordStoreHighScores::isTooManyHighScores() -> bool{
 
                         if(this->getList() != 
                                     nullptr
@@ -613,7 +599,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->LO
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isBestScore(HighScore* newHighScore){
+    auto RecordStoreHighScores::isBestScore(HighScore* newHighScore) -> bool{
 
         try {
             
@@ -692,11 +678,11 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
 }
 
 
-    public: std::string toString(){
+    auto RecordStoreHighScores::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toString());
+stringBuffer->append(HighScores::toString());
     
 
     BasicArrayList* list = this->getList();;
@@ -729,7 +715,6 @@ stringBuffer->append(CommonSeps::getInstance()->COMMA_SEP);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_RECORDSTOREHIGHSCORES_CPP

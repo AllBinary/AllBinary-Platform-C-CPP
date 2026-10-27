@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_THREED_GLHOLDER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_THREED_GLHOLDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/threed/GLHolder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GLHolder
-            : public Object
-         {
 
-    public: bool isCreated = true;
-
-public: GLHolder(){
+GLHolder::GLHolder(){
 }
 
 
-    public: void runOnSurfaceCreated(Object* renderer){
+    auto GLHolder::runOnSurfaceCreated(Object* renderer) -> void{
 }
 
 
-    public: void runOnSurfaceChanged(Object* renderer, int32_t width, int32_t height){
+    auto GLHolder::runOnSurfaceChanged(Object* renderer, int32_t width, int32_t height) -> void{
 }
 
 
-    public: void run(Object* renderer){
+    auto GLHolder::run(Object* renderer) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_THREED_GLHOLDER_CPP

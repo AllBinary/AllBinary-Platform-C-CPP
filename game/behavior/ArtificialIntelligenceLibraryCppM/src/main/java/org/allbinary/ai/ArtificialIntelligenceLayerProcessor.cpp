@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCELAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCELAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ai/ArtificialIntelligenceLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,9 +66,8 @@
         #include "org/allbinary/ai/ArtificialIntelligenceLayerManager.h"
 #include "org/allbinary/ai/ArtificialIntelligenceCompositeInterface.h"
 
-class ArtificialIntelligenceLayerProcessor: public LayerProcessor {
 
-public: ArtificialIntelligenceLayerProcessor() : LayerProcessor(new ArtificialIntelligenceLayerManager()){
+ArtificialIntelligenceLayerProcessor::ArtificialIntelligenceLayerProcessor() : LayerProcessor(new ArtificialIntelligenceLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +79,7 @@ public: ArtificialIntelligenceLayerProcessor() : LayerProcessor(new ArtificialIn
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
+    auto ArtificialIntelligenceLayerProcessor::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) -> void{
 
     ArtificialIntelligenceCompositeInterface* artificialIntelligenceCompositeInterface = dynamic_cast<ArtificialIntelligenceCompositeInterface*>(layerInterface);;
     
@@ -81,7 +90,7 @@ artificialIntelligenceCompositeInterface->getArtificialIntelligenceInterface()->
 
                 //@Throws(Exception.constructor)
             
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto ArtificialIntelligenceLayerProcessor::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
                         if(layerInterface->implmentsArtificialIntelligenceCompositeInterface())
                         
@@ -108,7 +117,6 @@ artificialIntelligenceCompositeInterface->getArtificialIntelligenceInterface()->
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCELAYERPROCESSOR_CPP

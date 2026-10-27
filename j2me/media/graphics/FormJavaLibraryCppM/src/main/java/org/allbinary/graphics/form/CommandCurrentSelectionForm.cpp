@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/CommandCurrentSelectionForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -85,13 +95,8 @@
         #include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
 #include "org/allbinary/graphics/form/ItemPaintableFactory.h"
 
-class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm, public UpdateMyFontInterface {
 
-    protected: const std::vector<Animation*> selectedAnimationArray = std::vector<Animation*>(16);
-
-    protected: const std::vector<Animation*> unSelectedAnimationArray = std::vector<Animation*>(16);
-
-public: CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem*> items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollCurrentSelectionForm(title, items, ItemPaintableFactory::getInstance(), border,  -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor){
+CommandCurrentSelectionForm::CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem*> items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollCurrentSelectionForm(title, items, ItemPaintableFactory::getInstance(), border,  -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor), selectedAnimationArray(std::vector<Animation*>(16)), unSelectedAnimationArray(std::vector<Animation*>(16)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -105,15 +110,15 @@ this->addAll(items);
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto CommandCurrentSelectionForm::updateMeasurement(Graphics* graphics) -> void{
 this->updateAll(graphics, this->getAllitems());
     
-super.updateMeasurement(graphics);
+ScrollCurrentSelectionForm::updateMeasurement(graphics);
     
 }
 
 
-    private: void initAnimations(){
+    auto CommandCurrentSelectionForm::initAnimations() -> void{
 
     Animation* nullAnimation = NullAnimationFactory::getFactoryInstance()->getInstance(0);;
     
@@ -142,7 +147,7 @@ this->unSelectedAnimationArray[index]= nullAnimation;
 }
 
 
-    private: void addAll(std::vector<ABCustomItem*> items){
+    auto CommandCurrentSelectionForm::addAll(std::vector<ABCustomItem*> items) -> void{
 
 
 
@@ -157,7 +162,7 @@ this->addAt(index, items[index]);
 }
 
 
-    private: void addAt(int32_t index, ABCustomItem* item){
+    auto CommandCurrentSelectionForm::addAt(int32_t index, ABCustomItem* item) -> void{
 
     BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();;
     
@@ -220,7 +225,7 @@ adjustedBorder= 4;
 }
 
 
-    private: void updateAll(Graphics* graphics, std::vector<ABCustomItem*> items){
+    auto CommandCurrentSelectionForm::updateAll(Graphics* graphics, std::vector<ABCustomItem*> items) -> void{
 
 
 
@@ -228,7 +233,7 @@ adjustedBorder= 4;
                         for (
     int32_t index = items.size();--index >= 0; )
         {
-items[index].preMeasurement(graphics);
+items[index]->preMeasurement(graphics);
     
 this->updateAt(index, items[index]);
     
@@ -237,7 +242,7 @@ this->updateAt(index, items[index]);
 }
 
 
-    private: void updateAt(int32_t index, ABCustomItem* item){
+    auto CommandCurrentSelectionForm::updateAt(int32_t index, ABCustomItem* item) -> void{
 
     BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();;
     
@@ -344,9 +349,9 @@ rectangleAdjustedAnimation->setBasicColorP(buttonColor);
 }
 
 
-    public: Command* getSelectedCommand(){
+    auto CommandCurrentSelectionForm::getSelectedCommand() -> Command*{
 
-    int32_t index = super.getSelectedIndex();;
+    int32_t index = ScrollCurrentSelectionForm::getSelectedIndex();;
     
 
     CommandTextItem* commandTextItem = dynamic_cast<CommandTextItem*>(this->get(index) as unknown);;
@@ -360,9 +365,9 @@ rectangleAdjustedAnimation->setBasicColorP(buttonColor);
 }
 
 
-    public: int32_t append(ABCustomItem* item){
+    auto CommandCurrentSelectionForm::append(ABCustomItem* item) -> int32_t{
 
-    int32_t result = super.append(item);;
+    int32_t result = ScrollCurrentSelectionForm::append(item);;
     
 this->addAt(result, item);
     
@@ -375,69 +380,68 @@ this->addAt(result, item);
 }
 
 
-    public: void delete_(int32_t itemNum){
-super.delete(itemNum);
+    auto CommandCurrentSelectionForm::delete_(int32_t itemNum) -> void{
+ScrollCurrentSelectionForm::delete_(itemNum);
     
 }
 
 
-    public: void deleteAll(){
+    auto CommandCurrentSelectionForm::deleteAll() -> void{
 this->initAnimations();
     
-super.deleteAll();
+ScrollCurrentSelectionForm::deleteAll();
     
 }
 
 
-    public: void insert(int32_t itemNum, ABCustomItem* item){
-super.insert(itemNum, item);
+    auto CommandCurrentSelectionForm::insert(int32_t itemNum, ABCustomItem* item) -> void{
+ScrollCurrentSelectionForm::insert(itemNum, item);
     
 }
 
 
-    public: void set(int32_t itemNum, ABCustomItem* item){
-super.set(itemNum, item);
+    auto CommandCurrentSelectionForm::set(int32_t itemNum, ABCustomItem* item) -> void{
+ScrollCurrentSelectionForm::set(itemNum, item);
     
 }
 
 
-    public: void paint(Graphics* graphics){
-this->myFontProcessor.process(graphics);
+    auto CommandCurrentSelectionForm::paint(Graphics* graphics) -> void{
+this->myFontProcessor->process(graphics);
     
-super.paint(graphics);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: int32_t paintItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y){
-this->selectedAnimationArray[index].paintXY(graphics, x, y);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.paintItem(graphics, index, item, x, y);;
+ScrollCurrentSelectionForm::paint(graphics);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paintUnselectedItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y){
-this->unSelectedAnimationArray[index].paintXY(graphics, x, y);
+    auto CommandCurrentSelectionForm::paintItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) -> int32_t{
+this->selectedAnimationArray[index]->paintXY(graphics, x, y);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.paintUnselectedItem(graphics, index, item, x, y);;
+                        return ScrollCurrentSelectionForm::paintItem(graphics, index, item, x, y);;
     
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto CommandCurrentSelectionForm::paintUnselectedItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) -> int32_t{
+this->unSelectedAnimationArray[index]->paintXY(graphics, x, y);
+    
 
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ScrollCurrentSelectionForm::paintUnselectedItem(graphics, index, item, x, y);;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_CPP

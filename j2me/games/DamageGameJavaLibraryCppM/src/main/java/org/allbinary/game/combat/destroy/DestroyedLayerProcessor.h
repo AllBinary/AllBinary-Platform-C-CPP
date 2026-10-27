@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,36 +36,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/combat/destroy/event/DestroyEventCircularStaticPool.h>
-
-      
-#include <org/allbinary/game/combat/destroy/event/DestroyedEvent.h>
-
-      
-#include <org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class DestroyEventCircularStaticPool;
+class DestroyedEvent;
+class DestroyedEventHandler;
+class AllBinaryLayer;
+class AllBinaryLayerManager;
 #include <org/allbinary/layer/BasicLayerProcessor.h>
 
-      
-#include <org/allbinary/logic/string/StringMaker.h>
 
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class CommonStrings;
+class BasicArrayList;
 
 
 
@@ -80,9 +65,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DestroyedLayerProcessor: public BasicLayerProcessor {
 
-    private: static inline BasicLayerProcessor* DESTROYED_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR;
+    private: static BasicLayerProcessor* DESTROYED_LAYER_PROCESSOR;
 
     public: static void init();
 
@@ -100,3 +89,36 @@ private: DestroyedLayerProcessor();
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYEDLAYERPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/combat/destroy/event/DestroyEventCircularStaticPool.h>)
+#include <org/allbinary/game/combat/destroy/event/DestroyEventCircularStaticPool.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/destroy/event/DestroyedEvent.h>)
+#include <org/allbinary/game/combat/destroy/event/DestroyedEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h>)
+#include <org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/layer/BasicLayerProcessor.h>)
+#include <org/allbinary/layer/BasicLayerProcessor.h>
+#endif
+
+
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/NullRotationAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -71,30 +81,10 @@
 //#include "org/allbinary/animation/NullRotationAnimation2.h"
 #include "org/allbinary/animation/Animation.h"
 
-class NullRotationAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+auto NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY_owner() -> NullRotationAnimationFactory* { static std::unique_ptr<NullRotationAnimationFactory> value(new NullRotationAnimationFactory()); return value.get(); }
+NullRotationAnimationFactory* NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY = NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY_owner();
 
-    private: static NullRotationAnimationFactory* NULL_ROTATION_ANIMATION_FACTORY() { static std::unique_ptr<NullRotationAnimationFactory> value(new NullRotationAnimationFactory()); return value.get(); }
-
-    public: static NullRotationAnimationFactory* getFactoryInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY();
-    
-}
-
-
-    public: const std::vector<RotationAnimation*> NULL_ROTATION_ANIMATION_ARRAY = {};
-
-//inner= member=true isStatic=
-class NullRotationAnimation2: public NullRotationAnimation {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-: NullRotationAnimation2(){
+NullRotationAnimationFactory::NullRotationAnimation2::NullRotationAnimation2(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -104,20 +94,25 @@ class NullRotationAnimation2: public NullRotationAnimation {
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto NullRotationAnimationFactory::NullRotationAnimation2::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-};
-
-            
-    private: Animation* NULL_ANIMATION = new NullRotationAnimation2();
-
-private: NullRotationAnimationFactory(){
+NullRotationAnimationFactory::NullRotationAnimationFactory() : NULL_ROTATION_ANIMATION_ARRAY({}), NULL_ANIMATION(new NullRotationAnimation2()){
 }
 
 
-    public: Animation* getInstance(int32_t instanceId){
+    auto NullRotationAnimationFactory::getFactoryInstance() -> NullRotationAnimationFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY;
+    
+}
+
+
+    auto NullRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -129,7 +124,7 @@ private: NullRotationAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto NullRotationAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -139,11 +134,10 @@ private: NullRotationAnimationFactory(){
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto NullRotationAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATIONFACTORY_CPP

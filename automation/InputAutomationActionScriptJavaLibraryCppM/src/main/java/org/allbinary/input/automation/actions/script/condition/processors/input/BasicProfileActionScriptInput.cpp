@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_BASICPROFILEACTIONSCRIPTINPUT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_BASICPROFILEACTIONSCRIPTINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/BasicProfileActionScriptInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -99,22 +109,15 @@
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/GenericProfileActionScriptInputData.h"
 
-class BasicProfileActionScriptInput: public BasicProfileActionScriptProcessor, public ProfileActionScriptInputInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: InputRobotInterface* inputRobotInterface;
-
-    private: int32_t time= 0;
-
-public: BasicProfileActionScriptInput(std::string label, Node* node) : BasicProfileActionScriptProcessor(label, node){
+BasicProfileActionScriptInput::BasicProfileActionScriptInput(std::string label, Node* node) : BasicProfileActionScriptProcessor(label, node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF(this->commonStrings.START +label, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf(this->commonStrings->START) +JavaString::valueOf(label), this, this->commonStrings->CONSTRUCTOR);
     
 
     Node* actionNode = DomSearchHelper::getNode(GenericProfileActionScriptInputData::TYPE, node->getChildNodes());;
@@ -150,14 +153,14 @@ this->setInputRobotInterface(InputRobotFactory::getInstance()->get(inputTypeStri
 }
 
 
-public: BasicProfileActionScriptInput(std::string label) : BasicProfileActionScriptProcessor(label){
+BasicProfileActionScriptInput::BasicProfileActionScriptInput(std::string label) : BasicProfileActionScriptProcessor(label), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF(this->commonStrings.START +label, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf(this->commonStrings->START) +JavaString::valueOf(label), this, this->commonStrings->CONSTRUCTOR);
     
 
     InputRobotFactory* inputRobotFactory = InputRobotFactory::getInstance();;
@@ -178,7 +181,7 @@ this->setTime(0);
 }
 
 
-    public: int32_t getTime(){
+    auto BasicProfileActionScriptInput::getTime() -> int32_t{
 
 
 
@@ -188,13 +191,13 @@ this->setTime(0);
 }
 
 
-    public: void setTime(int32_t time){
+    auto BasicProfileActionScriptInput::setTime(int32_t time) -> void{
 this->time= time;
     
 }
 
 
-    public: HashMap<Object*, Object*>* BasicProfileActionScriptInput_toHashMap(){
+    auto BasicProfileActionScriptInput::BasicProfileActionScriptInput_toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -202,7 +205,7 @@ hashMap->put(GenericProfileActionScriptInputData::TYPE, this->getInputRobotInter
     
 hashMap->put(GenericProfileActionScriptInputData::DELAY, std::to_string(getTime));
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -215,7 +218,7 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto BasicProfileActionScriptInput::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createNodeWithValueNodes(document, GenericProfileActionScriptInputData::NAME, this->BasicProfileActionScriptInput_toHashMap());;
     
@@ -228,13 +231,13 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 }
 
 
-    public: void setInputRobotInterface(InputRobotInterface* inputRobotInterface){
+    auto BasicProfileActionScriptInput::setInputRobotInterface(InputRobotInterface* inputRobotInterface) -> void{
 this->inputRobotInterface= inputRobotInterface;
     
 }
 
 
-    public: InputRobotInterface* getInputRobotInterface(){
+    auto BasicProfileActionScriptInput::getInputRobotInterface() -> InputRobotInterface*{
 
 
 
@@ -244,11 +247,11 @@ this->inputRobotInterface= inputRobotInterface;
 }
 
 
-    public: std::string toString(){
+    auto BasicProfileActionScriptInput::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toString());
+stringBuffer->append(BasicProfileActionScriptProcessor::toString());
     
 stringBuffer->append(" Input Type: ");
     
@@ -282,7 +285,6 @@ stringBuffer->appendlong(this->getTime());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_BASICPROFILEACTIONSCRIPTINPUT_CPP

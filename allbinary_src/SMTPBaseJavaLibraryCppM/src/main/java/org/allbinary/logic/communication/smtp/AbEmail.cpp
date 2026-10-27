@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_ABEMAIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_ABEMAIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/AbEmail.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,15 +71,10 @@
         #include "org/allbinary/logic/communication/smtp/EmailInterface.h"
 #include "org/allbinary/logic/communication/smtp/Email.h"
 
-class AbEmail
-            : public Object
-        , public EmailInterface {
 
-    private: Email* email;
+AbEmail::AbEmail(std::string server, std::string from, std::string to, std::string subject, std::string textBody, std::string htmlAttachment, std::string contentBase){
 
-public: AbEmail(std::string server, std::string from, std::string to, std::string subject, std::string textBody, std::string htmlAttachment, std::string contentBase){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->email= new Email(from, to, subject, server, textBody, htmlAttachment, contentBase, true);
@@ -86,7 +91,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 }
 
 
-    public: MimeMessage* getMimeMessage(){
+    auto AbEmail::getMimeMessage() -> MimeMessage*{
 
 
 
@@ -96,7 +101,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 }
 
 
-    public: std::string getDebugInfo(){
+    auto AbEmail::getDebugInfo() -> std::string{
 
 
 
@@ -108,7 +113,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
                 //@Throws(Exception.constructor)
             
-    public: std::string log(){
+    auto AbEmail::log() -> std::string{
 
 
 
@@ -120,7 +125,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto AbEmail::toHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -132,7 +137,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto AbEmail::toXmlNode(Document* document) -> Node*{
 
 
 
@@ -142,7 +147,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 }
 
 
-    public: Email* getEmail(){
+    auto AbEmail::getEmail() -> Email*{
 
 
 
@@ -154,7 +159,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto AbEmail::toXmlDoc() -> Document*{
 
 
 
@@ -164,7 +169,6 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_ABEMAIL_CPP

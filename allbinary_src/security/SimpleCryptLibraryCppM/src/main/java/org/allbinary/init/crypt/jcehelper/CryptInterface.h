@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_CRYPTINTERFACE_H
         #define ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_CRYPTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CryptInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class CryptInterface
+            : public virtual Object
+         {
 
     public: virtual std::vector<int8_t> encrypt(std::vector<int8_t> array) = 0;
 
@@ -60,3 +71,10 @@ class CryptInterface {
 
 
         #endif //ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_CRYPTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_CRYPTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_CRYPTINTERFACE_H_COMPLETE
+        
+        #endif
+    

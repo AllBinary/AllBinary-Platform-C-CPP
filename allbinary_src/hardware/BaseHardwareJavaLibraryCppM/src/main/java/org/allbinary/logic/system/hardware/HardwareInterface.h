@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
-
-      
+class HardwareComponentInterface;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -54,7 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HardwareInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class HardwareInterface
+            : public virtual Object
+         {
 
     public: virtual HardwareComponentInterface* getComponent(int32_t index) = 0;
 
@@ -70,3 +77,16 @@ class HardwareInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

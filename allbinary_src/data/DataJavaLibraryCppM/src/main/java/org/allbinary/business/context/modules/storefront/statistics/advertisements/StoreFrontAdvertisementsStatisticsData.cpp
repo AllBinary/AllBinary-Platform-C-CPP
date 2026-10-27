@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontAdvertisementsStatisticsData
-            : public Object
-         {
+auto StoreFrontAdvertisementsStatisticsData::instance_owner() -> StoreFrontAdvertisementsStatisticsData* { static std::unique_ptr<StoreFrontAdvertisementsStatisticsData> value(new StoreFrontAdvertisementsStatisticsData()); return value.get(); }
+StoreFrontAdvertisementsStatisticsData* StoreFrontAdvertisementsStatisticsData::instance = StoreFrontAdvertisementsStatisticsData::instance_owner();
 
-    private: static StoreFrontAdvertisementsStatisticsData* instance() { static std::unique_ptr<StoreFrontAdvertisementsStatisticsData> value(new StoreFrontAdvertisementsStatisticsData()); return value.get(); }
-
-    public: static StoreFrontAdvertisementsStatisticsData* getInstance(){
+    auto StoreFrontAdvertisementsStatisticsData::getInstance() -> StoreFrontAdvertisementsStatisticsData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontAdvertisementsStatisticsData::instance();
+                        return StoreFrontAdvertisementsStatisticsData::instance;
     
 }
 
 
-private: StoreFrontAdvertisementsStatisticsData(){
+StoreFrontAdvertisementsStatisticsData::StoreFrontAdvertisementsStatisticsData(){
 }
 
 
-    public: const std::string NAME = "STOREFRONT_ADVERTISEMENTS_STATISTICS_NAME";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICSDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP
+        #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/emulator/device/TrueTypeFontUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -105,29 +115,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 //TTF
-class TrueTypeFontUtil: public TrueTypeFontUtilBase {
+auto TrueTypeFontUtil::instance_owner() -> TrueTypeFontUtil* { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
+TrueTypeFontUtil* TrueTypeFontUtil::instance = TrueTypeFontUtil::instance_owner();
 
-    private: static TrueTypeFontUtil* instance() { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
-
-    public: static TrueTypeFontUtil* getInstance(){
+    auto TrueTypeFontUtil::getInstance() -> TrueTypeFontUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrueTypeFontUtil::instance();
+                        return TrueTypeFontUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
-
-    private: const int32_t realFontSize = 18;
-
-    public: OpenGLESImage* fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
-
-private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
+TrueTypeFontUtil::TrueTypeFontUtil() : TrueTypeFontUtilBase(1), logUtil(LogUtil::getInstance()), preResourceImageUtil(PreResourceImageUtil::getInstance()), fontImage(OpenGLESImage::NULL_OPENGL_IMAGE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -137,7 +138,7 @@ private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 }
 
 
-    public: void saveFontAtlasAsFile(){
+    auto TrueTypeFontUtil::saveFontAtlasAsFile() -> void{
 
         try {
             
@@ -157,7 +158,7 @@ this->logUtil->putF(path, this, commonStrings->CONSTRUCTOR);
 
     Bitmap* bitmap = (getImage)).getBitmap();;
     
-bitmap->compress(Bitmap::CompressFormat.PNG, 100, fos);
+bitmap->compress(Bitmap::CompressFormat->PNG, 100, fos);
     
 
                 //: 
@@ -173,7 +174,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->EXCEPTION, &e);
 }
 
 
-    public: Image* getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor){
+    auto TrueTypeFontUtil::getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor) -> Image*{
 
                         if(this->fontImage == OpenGLESImage::NULL_OPENGL_IMAGE)
                         
@@ -203,7 +204,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->EXCEPTION, &e);
     int32_t textureSize = this->getAsTextureSize(this->CELLS_PER_ROW *cellSize);;
     
 
-    Bitmap* bitmap = Bitmap::createBitmap(textureSize, textureSize, Bitmap::Config.ARGB_8888);;
+    Bitmap* bitmap = Bitmap::createBitmap(textureSize, textureSize, Bitmap::Config->ARGB_8888);;
     
 
     Canvas* canvas = new Canvas(bitmap);;
@@ -361,7 +362,7 @@ this->fontImage= dynamic_cast<OpenGLESImage*>(this->preResourceImageUtil->encaps
 }
 
 
-    public: std::vector<int32_t> getFontWidths(std::string filename, int32_t fontSize){
+    auto TrueTypeFontUtil::getFontWidths(std::string filename, int32_t fontSize) -> std::vector<int32_t>{
 
     Typeface* typeface = Typeface::DEFAULT;;
     
@@ -550,7 +551,6 @@ this->_characterWidth[0]= (fontSize>>1) -2;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP

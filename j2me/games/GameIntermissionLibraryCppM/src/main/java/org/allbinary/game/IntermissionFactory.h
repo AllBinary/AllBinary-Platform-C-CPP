@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_H
         #define ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/state/GameState.h>
-
-      
-#include <org/allbinary/game/state/GameStateFactory.h>
-
-      
+class GameState;
+class GameStateFactory;
 
 
 
@@ -54,21 +55,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class IntermissionFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static IntermissionFactory* instance() { static std::unique_ptr<IntermissionFactory> value(new IntermissionFactory()); return value.get(); }
+    private: static IntermissionFactory* instance_owner();
+    private: static IntermissionFactory* instance;
 
     public: static IntermissionFactory* getInstance();
 
-    public: GameState* START_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("START_LEVEL_INTERMISSION_GAME_STATE");
 
-    public: GameState* WAIT_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("WAIT_LEVEL_INTERMISSION_GAME_STATE");
+            
+    public: IntermissionFactory();
+        
+    public: GameState* START_LEVEL_INTERMISSION_GAME_STATE;
 
-    public: GameState* SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE");
+    public: GameState* WAIT_LEVEL_INTERMISSION_GAME_STATE;
 
-    public: GameState* SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE");
+    public: GameState* SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE;
+
+    public: GameState* SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE;
 
 };
 
@@ -76,3 +86,16 @@ class IntermissionFactory
 
 
         #endif //ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/state/GameState.h>)
+#include <org/allbinary/game/state/GameState.h>
+#endif
+#if __has_include(<org/allbinary/game/state/GameStateFactory.h>)
+#include <org/allbinary/game/state/GameStateFactory.h>
+#endif
+
+        #endif
+    

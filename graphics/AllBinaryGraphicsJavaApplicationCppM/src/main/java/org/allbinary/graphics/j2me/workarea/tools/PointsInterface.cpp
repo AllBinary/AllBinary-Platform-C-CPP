@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/PointsInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PointsInterface {
+//Interface - declared in the header
 
-    public: virtual BasicArrayList* getPoints() = 0;
 
-    public: virtual void addPoints(BasicArrayList* vector) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSINTERFACE_CPP

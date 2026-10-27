@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREWORKERINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREWORKERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/CaptureWorkerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CaptureWorkerInterface: public RunnableInterface, public BasicEventHandlerInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREWORKERINTERFACE_CPP

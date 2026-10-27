@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_SALES_AFFILIATESALESENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_SALES_AFFILIATESALESENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,12 @@
         #include "org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntity.h"
 #include "org/allbinary/data/tables/advertisement/sales/AffiliateSalesEntityInterface.h"
 
-class AffiliateSalesEntityFactory
-            : public Object
-         {
 
-    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AffiliatesSalesEntity";
+AffiliateSalesEntityFactory::AffiliateSalesEntityFactory(){
+}
 
-    public: static AffiliateSalesEntityInterface* getInstance(){
+
+    auto AffiliateSalesEntityFactory::getInstance() -> AffiliateSalesEntityInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -78,7 +87,7 @@ class AffiliateSalesEntityFactory
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
@@ -100,11 +109,6 @@ logUtil->put(commonStrings->EXCEPTION, "AffiliateEntityFactory", commonStrings->
 }
 
 
-private: AffiliateSalesEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_SALES_AFFILIATESALESENTITYFACTORY_CPP

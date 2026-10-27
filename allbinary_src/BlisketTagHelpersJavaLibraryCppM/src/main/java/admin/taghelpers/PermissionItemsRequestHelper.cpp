@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_PERMISSIONITEMSREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_PERMISSIONITEMSREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/PermissionItemsRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -90,39 +100,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/ModifyTable.h"
 
-class PermissionItemsRequestHelper: public ModifyTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    private: HttpServletRequest* request;
-
-    private: std::string id;
-
-    private: std::string enabled;
-
-    private: std::string number;
-
-    private: std::string who;
-
-    private: std::string what;
-
-    private: std::string type;
-
-    private: std::string remoteAddr;
-
-    private: std::string startTime;
-
-    private: std::string endTime;
-
-    private: std::string price;
-
-    private: std::string timeEntered;
-
-    private: std::string lastModified;
-
-public: PermissionItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+PermissionItemsRequestHelper::PermissionItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->getFormData();
@@ -130,7 +109,7 @@ this->getFormData();
 }
 
 
-    public: void getFormData(){
+    auto PermissionItemsRequestHelper::getFormData() -> void{
 this->id= this->request->getParameter(basicItemData->ID);
     
 this->number= this->request->getParameter(basicItemData->NUMBER);
@@ -158,7 +137,7 @@ this->lastModified= this->request->getParameter(EntryData::getInstance()->LASTMO
 }
 
 
-    private: HashMap<Object*, Object*>* getHashMap(){
+    auto PermissionItemsRequestHelper::getHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
@@ -199,7 +178,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string insert(){
+    auto PermissionItemsRequestHelper::insert() -> std::string{
 
         try {
             
@@ -238,10 +217,10 @@ values->add(time);
 PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()->insert(values);
     
 
-    std::string success = "Successfully inserted " +this->id +" into items table";;
+    std::string success = JavaString::valueOf(JavaString::valueOf("Successfully inserted ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" into items table");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert()");
@@ -260,13 +239,13 @@ PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()-
 } catch(Exception& e) 
             {
 
-    std::string error = "Failed to insert " +this->id +" into items table";;
+    std::string error = JavaString::valueOf(JavaString::valueOf("Failed to insert ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" into items table");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "inserts()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "inserts()", &e);
     
 
                                     }
@@ -282,16 +261,16 @@ PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()-
 }
 
 
-    public: std::string delete_(){
+    auto PermissionItemsRequestHelper::delete_() -> std::string{
 
         try {
-            PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()->delete(this->id);
+            PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()->delete_(this->id);
     
 
     std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -313,10 +292,10 @@ PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()-
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -332,7 +311,7 @@ PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()-
 }
 
 
-    public: std::string update(){
+    auto PermissionItemsRequestHelper::update() -> std::string{
 
         try {
             
@@ -344,7 +323,7 @@ PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()-
 PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()->update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append(this->id)->append(CommonSeps::getInstance()->SPACE)->append(success)->toString(), this, "update()");
@@ -363,13 +342,13 @@ PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()-
 } catch(Exception& e) 
             {
 
-    std::string error = "Failed to update: " +this->id;;
+    std::string error = JavaString::valueOf("Failed to update: ") +JavaString::valueOf(this->id);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -385,7 +364,6 @@ PermissionItemsEntityFactory::getInstance()->getPermissionItemsEntityInstance()-
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_PERMISSIONITEMSREQUESTHELPER_CPP

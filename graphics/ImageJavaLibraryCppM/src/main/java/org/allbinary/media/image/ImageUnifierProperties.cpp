@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageUnifierProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +58,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageUnifierCell.h"
 
-class ImageUnifierProperties
-            : public Object
-         {
 
-    private: int32_t rows;
-
-    private: int32_t columns;
-
-    private: ImageUnifierCell* imageUnifierCell;
-
-public: ImageUnifierProperties(){
+ImageUnifierProperties::ImageUnifierProperties(){
 }
 
 
-    public: int32_t getWidth(){
+    auto ImageUnifierProperties::getWidth() -> int32_t{
 
 
 
@@ -72,7 +73,7 @@ public: ImageUnifierProperties(){
 }
 
 
-    public: int32_t getHeight(){
+    auto ImageUnifierProperties::getHeight() -> int32_t{
 
 
 
@@ -82,7 +83,7 @@ public: ImageUnifierProperties(){
 }
 
 
-    public: int32_t getRows(){
+    auto ImageUnifierProperties::getRows() -> int32_t{
 
 
 
@@ -92,13 +93,13 @@ public: ImageUnifierProperties(){
 }
 
 
-    public: void setRows(int32_t rows){
+    auto ImageUnifierProperties::setRows(int32_t rows) -> void{
 this->rows= rows;
     
 }
 
 
-    public: int32_t getColumns(){
+    auto ImageUnifierProperties::getColumns() -> int32_t{
 
 
 
@@ -108,13 +109,13 @@ this->rows= rows;
 }
 
 
-    public: void setColumns(int32_t columns){
+    auto ImageUnifierProperties::setColumns(int32_t columns) -> void{
 this->columns= columns;
     
 }
 
 
-    public: ImageUnifierCell* getImageUnifierCell(){
+    auto ImageUnifierProperties::getImageUnifierCell() -> ImageUnifierCell*{
 
 
 
@@ -124,13 +125,12 @@ this->columns= columns;
 }
 
 
-    public: void setImageUnifierCell(ImageUnifierCell* imageUnifierCell){
+    auto ImageUnifierProperties::setImageUnifierCell(ImageUnifierCell* imageUnifierCell) -> void{
 this->imageUnifierCell= imageUnifierCell;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_CPP

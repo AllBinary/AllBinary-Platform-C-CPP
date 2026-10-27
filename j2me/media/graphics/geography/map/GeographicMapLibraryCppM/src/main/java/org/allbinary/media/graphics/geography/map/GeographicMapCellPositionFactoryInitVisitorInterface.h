@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITORINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
+class AllBinaryTiledLayer;
 
 
 
@@ -50,9 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+        class GeographicMapCellPosition;
 
-class GeographicMapCellPositionFactoryInitVisitorInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GeographicMapCellPositionFactoryInitVisitorInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -64,3 +73,16 @@ class GeographicMapCellPositionFactoryInitVisitorInterface {
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITORINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#endif
+
+        #endif
+    

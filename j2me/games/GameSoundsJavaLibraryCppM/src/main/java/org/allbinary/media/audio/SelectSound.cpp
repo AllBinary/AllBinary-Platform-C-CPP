@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SELECTSOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_SELECTSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/SelectSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,9 @@
         #include "org/allbinary/media/audio/CompositeSound.h"
 #include "org/allbinary/media/audio/Sound.h"
 //Use 8hz16bitmono for most J2ME
-class SelectSound: public CompositeSound {
+Sound* SelectSound::soundInterface = new SelectSound();
 
-    private: static inline Sound* soundInterface = new SelectSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectSound::soundInterface;
-    
-}
-
-
-private: SelectSound() : CompositeSound("resource:/wav/select.wav"){
+SelectSound::SelectSound() : CompositeSound("resource:/wav/select.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +67,16 @@ private: SelectSound() : CompositeSound("resource:/wav/select.wav"){
 }
 
 
-};
+    auto SelectSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return SelectSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_SELECTSOUND_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/TweenedImageAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,19 +83,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TweenedImageAnimation: public IndexedAnimation {
 
-    private: Image* image;
-
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-    private: int32_t totalFrames;
-
-    protected: CircularIndexUtil* circularIndexUtil;
-
-public: TweenedImageAnimation(Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+TweenedImageAnimation::TweenedImageAnimation(Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -107,7 +106,7 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto TweenedImageAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -117,25 +116,25 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
 }
 
 
-    public: void nextFrame(){
+    auto TweenedImageAnimation::nextFrame() -> void{
 this->circularIndexUtil->next();
     
 }
 
 
-    public: void previousFrame(){
+    auto TweenedImageAnimation::previousFrame() -> void{
 this->circularIndexUtil->previous();
     
 }
 
 
-    public: void setFrame(int32_t index){
+    auto TweenedImageAnimation::setFrame(int32_t index) -> void{
 this->circularIndexUtil->setIndex(index);
     
 }
 
 
-    public: int32_t getFrame(){
+    auto TweenedImageAnimation::getFrame() -> int32_t{
 
 
 
@@ -145,7 +144,7 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: int32_t getSize(){
+    auto TweenedImageAnimation::getSize() -> int32_t{
 
 
 
@@ -155,11 +154,11 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto TweenedImageAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto TweenedImageAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -169,9 +168,7 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto TweenedImageAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 
     int32_t frame = this->getFrame();;
     
@@ -186,7 +183,7 @@ graphics->drawImage(this->image, x +currentX, y +currentY, this->anchor);
 }
 
 
-    public: void close(){
+    auto TweenedImageAnimation::close() -> void{
 DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
@@ -194,13 +191,12 @@ DisposalUtil::getInstance()->disposeImage(this->image);
 
                 //@Throws(Throwable.constructor)
             
-    protected: void finalize(){
+    auto TweenedImageAnimation::finalize() -> void{
 DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTBASE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,25 +98,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WaypointBase
-            : public Object
-        , public EventListenerInterface {
+auto WaypointBase::NULL_WAYPOINT_BASE_owner() -> WaypointBase* { static std::unique_ptr<WaypointBase> value(new WaypointBase(NoSound::getInstance())); return value.get(); }
+WaypointBase* WaypointBase::NULL_WAYPOINT_BASE = WaypointBase::NULL_WAYPOINT_BASE_owner();
 
-    public: static WaypointBase* NULL_WAYPOINT_BASE() { static std::unique_ptr<WaypointBase> value(new WaypointBase(NoSound::getInstance())); return value.get(); }
-
-    private: BasicArrayList* connectedWaypointList = new BasicArrayListD();
-
-    private: Sound* sound;
-
-    protected: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
-
-public: WaypointBase(Sound* sound){
+WaypointBase::WaypointBase(Sound* sound) : connectedWaypointList(new BasicArrayListD()), allBinaryGameLayerManagerP(AllBinaryGameLayerManager::getNullInstance()){
 this->sound= sound;
     
 }
 
 
-    public: Sound* getSound(){
+    auto WaypointBase::getSound() -> Sound*{
 
 
 
@@ -118,13 +119,13 @@ this->sound= sound;
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
+    auto WaypointBase::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
 this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
     
 }
 
 
-    public: BasicArrayList* getConnectedWaypointList(){
+    auto WaypointBase::getConnectedWaypointList() -> BasicArrayList*{
 
 
 
@@ -134,7 +135,7 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto WaypointBase::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -142,59 +143,59 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo* getPathFindingInfo(GeographicMapCellPosition* geographicMapCellPosition){
+    auto WaypointBase::getPathFindingInfo(GeographicMapCellPosition* geographicMapCellPosition) -> PathFindingInfo*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getPathsList(GeographicMapCellPosition* geographicMapCellPosition, PathFindingInfo* pathFindingInfo, MultipassState* multipassState){
+    auto WaypointBase::getPathsList(GeographicMapCellPosition* geographicMapCellPosition, PathFindingInfo* pathFindingInfo, MultipassState* multipassState) -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition){
+    auto WaypointBase::getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition) -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition){
+    auto WaypointBase::getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition) -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(PathFindingLayerInterface* unitLayer){
+    auto WaypointBase::visit(PathFindingLayerInterface* unitLayer) -> void{
 }
 
 
-    public: void reset(){
+    auto WaypointBase::reset() -> void{
 }
 
 
-    public: int32_t getType(){
+    auto WaypointBase::getType() -> int32_t{
 
 
 
@@ -204,7 +205,6 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTBASE_CPP

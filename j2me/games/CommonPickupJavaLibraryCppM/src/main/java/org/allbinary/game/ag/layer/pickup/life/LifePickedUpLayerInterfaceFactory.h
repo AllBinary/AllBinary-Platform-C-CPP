@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,30 +34,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
-
-      
-#include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>
-
-      
-#include <org/allbinary/game/layer/pickup/IconLayerFactory.h>
-
-      
+class FeaturedAnimationInterfaceFactoryInterfaceFactory;
+class CountedPickedUpLayerInterfaceFactory;
+class IconLayerFactory;
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactory.h>
-
-      
-#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/game/layer/pickup/PickedUpLayerTypeFactory.h>
-
-      
+class PickedUpLayerInterfaceFactoryInterface;
+class PickedUpLayerTypeFactory;
 #include <org/allbinary/game/layer/pickup/PickupProcessorInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 
 
 
@@ -71,13 +60,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/layer/pickup/life/LifeLayerCircularStaticPool.h"
-#include "org/allbinary/game/ag/layer/pickup/life/LifeLayerFactory.h"
-#include "org/allbinary/game/ag/layer/pickup/life/LifeResources.h"
+        class LifeLayerCircularStaticPool;
+class LifeLayerFactory;
+class LifeResources;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
@@ -85,7 +78,7 @@ class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, p
 
     public: static PickedUpLayerInterfaceFactoryInterface* getInstance();
 
-    private: LifeLayerCircularStaticPool* pool = new LifeLayerCircularStaticPool(new LifeLayerFactory(), 1);
+    private: LifeLayerCircularStaticPool* pool;
 
 private: LifePickedUpLayerInterfaceFactory();
 
@@ -101,3 +94,43 @@ private: LifePickedUpLayerInterfaceFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>)
+#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>)
+#include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/IconLayerFactory.h>)
+#include <org/allbinary/game/layer/pickup/IconLayerFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactory.h>)
+#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>)
+#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickedUpLayerTypeFactory.h>)
+#include <org/allbinary/game/layer/pickup/PickedUpLayerTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickupProcessorInterface.h>)
+#include <org/allbinary/game/layer/pickup/PickupProcessorInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/ag/layer/pickup/life/LifeLayerCircularStaticPool.h")
+#include "org/allbinary/game/ag/layer/pickup/life/LifeLayerCircularStaticPool.h"
+#endif
+#if __has_include("org/allbinary/game/ag/layer/pickup/life/LifeLayerFactory.h")
+#include "org/allbinary/game/ag/layer/pickup/life/LifeLayerFactory.h"
+#endif
+#if __has_include("org/allbinary/game/ag/layer/pickup/life/LifeResources.h")
+#include "org/allbinary/game/ag/layer/pickup/life/LifeResources.h"
+#endif
+
+        #endif
+    

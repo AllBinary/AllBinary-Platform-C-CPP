@@ -21,6 +21,11 @@
         #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_DELETEVALIDATIONVIEW_H
         #define VIEWS_GENERIC_ADDRESS_SHIPPING_DELETEVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/business/user/address/StreetAddressData.h>
-
-      
-#include <org/allbinary/data/tables/user/address/shipping/ShippingAddressesEntity.h>
-
-      
+class StreetAddressData;
+class ShippingAddressesEntity;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class TransformInfoHttpInterface;
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -72,6 +63,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/shipping/ShippingAddressView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DeleteValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
     private: std::string value;
@@ -92,3 +87,34 @@ public: DeleteValidationView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_DELETEVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_GENERIC_ADDRESS_SHIPPING_DELETEVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_GENERIC_ADDRESS_SHIPPING_DELETEVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/address/StreetAddressData.h>)
+#include <org/allbinary/business/user/address/StreetAddressData.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/address/shipping/ShippingAddressesEntity.h>)
+#include <org/allbinary/data/tables/user/address/shipping/ShippingAddressesEntity.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/generic/address/shipping/ShippingAddressView.h")
+#include "views/generic/address/shipping/ShippingAddressView.h"
+#endif
+
+        #endif
+    

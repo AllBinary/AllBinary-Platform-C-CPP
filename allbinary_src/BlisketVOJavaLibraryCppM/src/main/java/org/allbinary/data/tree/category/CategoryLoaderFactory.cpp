@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/category/CategoryLoaderFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,12 @@
         #include "org/allbinary/data/tree/category/CategoryLoader.h"
 #include "org/allbinary/data/tree/category/CategoryLoaderInterface.h"
 
-class CategoryLoaderFactory
-            : public Object
-         {
 
-    public: static CategoryLoaderInterface* getInstance(CategoryFactoryInterface* categoryFactoryInterface){
+CategoryLoaderFactory::CategoryLoaderFactory(){
+}
+
+
+    auto CategoryLoaderFactory::getInstance(CategoryFactoryInterface* categoryFactoryInterface) -> CategoryLoaderInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -82,7 +93,7 @@ class CategoryLoaderFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "CategoryNodeFactory", commonStrings->GET_INSTANCE, &e);
@@ -101,11 +112,6 @@ class CategoryLoaderFactory
 }
 
 
-private: CategoryLoaderFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONLOCATIONHELPER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONLOCATIONHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,23 +64,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/CommonButtons.h"
 
-class TouchButtonLocationHelper
-            : public Object
-         {
 
-    private: int32_t totalColumns;
-
-    private: int32_t totalRows;
-
-    private: int32_t columnsRemainder;
-
-    private: int32_t rowsRemainder;
-
-    private: int32_t columnsRemainderHalf;
-
-    private: int32_t rowsRemainderHalf;
-
-public: TouchButtonLocationHelper(){
+TouchButtonLocationHelper::TouchButtonLocationHelper(){
 
     int32_t buttonSize = CommonButtons::getInstance()->STANDARD_BUTTON_SIZE;;
     
@@ -92,7 +87,7 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 }
 
 
-    public: int32_t getTotalColumns(){
+    auto TouchButtonLocationHelper::getTotalColumns() -> int32_t{
 
 
 
@@ -102,7 +97,7 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 }
 
 
-    public: int32_t getTotalRows(){
+    auto TouchButtonLocationHelper::getTotalRows() -> int32_t{
 
 
 
@@ -112,7 +107,7 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 }
 
 
-    public: int32_t getColumnsRemainder(){
+    auto TouchButtonLocationHelper::getColumnsRemainder() -> int32_t{
 
 
 
@@ -122,7 +117,7 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 }
 
 
-    public: int32_t getRowsRemainder(){
+    auto TouchButtonLocationHelper::getRowsRemainder() -> int32_t{
 
 
 
@@ -132,7 +127,7 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 }
 
 
-    public: int32_t getColumnsRemainderHalf(){
+    auto TouchButtonLocationHelper::getColumnsRemainderHalf() -> int32_t{
 
 
 
@@ -142,7 +137,7 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 }
 
 
-    public: int32_t getRowsRemainderHalf(){
+    auto TouchButtonLocationHelper::getRowsRemainderHalf() -> int32_t{
 
 
 
@@ -152,7 +147,7 @@ this->rowsRemainderHalf= (this->rowsRemainder>>1);
 }
 
 
-    public: std::string toString(){
+    auto TouchButtonLocationHelper::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -189,7 +184,6 @@ stringBuffer->appendint(this->rowsRemainderHalf);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONLOCATIONHELPER_CPP

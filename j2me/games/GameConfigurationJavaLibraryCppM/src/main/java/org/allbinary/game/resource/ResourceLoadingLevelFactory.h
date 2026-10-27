@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVELFACTORY_H
         #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVELFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,32 +56,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/resource/ResourceLoadingLevel.h"
+        class ResourceLoadingLevel;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ResourceLoadingLevelFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ResourceLoadingLevelFactory* instance() { static std::unique_ptr<ResourceLoadingLevelFactory> value(new ResourceLoadingLevelFactory()); return value.get(); }
+    private: static ResourceLoadingLevelFactory* instance_owner();
+    private: static ResourceLoadingLevelFactory* instance;
 
     public: static ResourceLoadingLevelFactory* getInstance();
 
-    public: ResourceLoadingLevel* LOAD_EARLY = new ResourceLoadingLevel("Load Early", Integer.MAX_VALUE);
 
-    public: ResourceLoadingLevel* LOAD_TOUCH = new ResourceLoadingLevel("Load Touch", Integer.MAX_VALUE -1);
+            
+    public: ResourceLoadingLevelFactory();
+        
+    public: ResourceLoadingLevel* LOAD_EARLY;
 
-    public: ResourceLoadingLevel* LOAD_GAME = new ResourceLoadingLevel("Load Game", Integer.MAX_VALUE -2);
+    public: ResourceLoadingLevel* LOAD_TOUCH;
 
-    public: ResourceLoadingLevel* LEVEL = new ResourceLoadingLevel("Level", Integer.MAX_VALUE -99);
+    public: ResourceLoadingLevel* LOAD_GAME;
 
-    public: ResourceLoadingLevel* MAX_LEVEL = new ResourceLoadingLevel("Max Level", Integer.MAX_VALUE -100);
+    public: ResourceLoadingLevel* LEVEL;
 
-    public: ResourceLoadingLevel* LOAD_ALL = new ResourceLoadingLevel("Load All",  -1);
+    public: ResourceLoadingLevel* MAX_LEVEL;
 
-    private: const std::vector<ResourceLoadingLevel*> RESOURCE_LOADING_LEVEL_ARRAY = 
-                                                        {
-                                                            this->LOAD_ALL,this->MAX_LEVEL,this->LEVEL,this->LOAD_GAME,this->LOAD_TOUCH,this->LOAD_EARLY
-                                                        };
+    public: ResourceLoadingLevel* LOAD_ALL;
+
+    private: std::vector<ResourceLoadingLevel*> RESOURCE_LOADING_LEVEL_ARRAY;
 
     public: std::string getLevelString(int32_t level);
 
@@ -86,3 +97,13 @@ class ResourceLoadingLevelFactory
 
 
         #endif //ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVELFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVELFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVELFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/resource/ResourceLoadingLevel.h")
+#include "org/allbinary/game/resource/ResourceLoadingLevel.h"
+#endif
+
+        #endif
+    

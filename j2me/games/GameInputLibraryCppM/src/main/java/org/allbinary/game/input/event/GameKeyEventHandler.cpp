@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/GameKeyEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,34 +67,24 @@
 #include "org/allbinary/game/input/event/UpGameKeyEventHandler.h"
 #include "org/allbinary/game/input/event/DownGameKeyEventHandler.h"
 
-class GameKeyEventHandler
-            : public Object
-         {
 
-    private: static GameKeyEventHandler* instance() { static std::unique_ptr<GameKeyEventHandler> value(new GameKeyEventHandler()); return value.get(); }
+GameKeyEventHandler::GameKeyEventHandler() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), pressGameKeyEventHandler(PressGameKeyEventHandler::getInstance()), upGameKeyEventHandler(UpGameKeyEventHandler::getInstance()), downGameKeyEventHandler(DownGameKeyEventHandler::getInstance()) {
+        }
+        auto GameKeyEventHandler::instance_owner() -> GameKeyEventHandler* { static std::unique_ptr<GameKeyEventHandler> value(new GameKeyEventHandler()); return value.get(); }
+GameKeyEventHandler* GameKeyEventHandler::instance = GameKeyEventHandler::instance_owner();
 
-    public: static GameKeyEventHandler* getInstance(){
+    auto GameKeyEventHandler::getInstance() -> GameKeyEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyEventHandler::instance();
+                        return GameKeyEventHandler::instance;
     
 }
 
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: PressGameKeyEventHandler* pressGameKeyEventHandler = PressGameKeyEventHandler::getInstance();
-
-    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
-
-    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeAllListeners(){
+    auto GameKeyEventHandler::removeAllListeners() -> void{
 this->pressGameKeyEventHandler->removeAllListeners();
     
 this->upGameKeyEventHandler->removeAllListeners();
@@ -94,7 +94,7 @@ this->downGameKeyEventHandler->removeAllListeners();
 }
 
 
-    public: void addListenerForPlayer(EventListenerInterface* eventListenerInterface, int32_t playerInputId){
+    auto GameKeyEventHandler::addListenerForPlayer(EventListenerInterface* eventListenerInterface, int32_t playerInputId) -> void{
 this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->ADD_LISTENER);
     
 this->pressGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface);
@@ -106,7 +106,7 @@ this->downGameKeyEventHandler->getInstanceForPlayer(playerInputId)->addListenerS
 }
 
 
-    public: void addListener(EventListenerInterface* eventListenerInterface){
+    auto GameKeyEventHandler::addListener(EventListenerInterface* eventListenerInterface) -> void{
 this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->ADD_LISTENER);
     
 this->pressGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface);
@@ -118,7 +118,7 @@ this->downGameKeyEventHandler->addListenerSingleThreaded(eventListenerInterface)
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto GameKeyEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->logUtil->putF(eventListenerInterface->toString(), this, this->commonStrings->REMOVE_LISTENER);
     
 this->pressGameKeyEventHandler->removeListenerSingleThreaded(eventListenerInterface);
@@ -130,7 +130,6 @@ this->downGameKeyEventHandler->removeListenerSingleThreaded(eventListenerInterfa
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SELECTIONHUDPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SELECTIONHUDPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/SelectionHudPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,37 +98,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    protected: const int32_t y = CommonButtons::getInstance()->STANDARD_BUTTON_SIZE +17;
-
-    private: PrimitiveLongUtil* primitiveLongUtil;
-
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    protected: MyFontProcessor* myFontProcessor = updateMyFontProcessor;
-
-    private: int32_t x= 0;
-
-    protected: int32_t textX= 0;
-
-    protected: int32_t imageX= 0;
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
-
-    private: int32_t color= 0;
-
-    private: int32_t width= 0;
-
-    private: int32_t height= 0;
-
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
-
-    private: const int32_t backgroundColor = BasicColorFactory::getInstance()->GREY.intValue();
-
-protected: SelectionHudPaintable(){
+SelectionHudPaintable::SelectionHudPaintable() : y(CommonButtons::getInstance()->STANDARD_BUTTON_SIZE +17), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(updateMyFontProcessor), basicColor(BasicColorFactory::getInstance()->BLACK), name(StringUtil::getInstance()->EMPTY_STRING), animationInterface(NullAnimationFactory::getFactoryInstance()->getInstance(0)), backgroundColor(BasicColorFactory::getInstance()->GREY->intValue()){
 this->update();
     
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(10000);
@@ -126,7 +107,7 @@ this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(10000);
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto SelectionHudPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     CommonButtons* commonButtons = CommonButtons::getInstance();;
     
@@ -140,7 +121,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void update(){
+    auto SelectionHudPaintable::update() -> void{
 
     CommonButtons* commonButtons = CommonButtons::getInstance();;
     
@@ -163,15 +144,15 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void updateSelectionInfo(){
+    auto SelectionHudPaintable::updateSelectionInfo() -> void{
 }
 
 
-    public: void updateInfo(){
+    auto SelectionHudPaintable::updateInfo() -> void{
 }
 
 
-    protected: PrimitiveLongUtil* getPrimitiveLongUtil(){
+    auto SelectionHudPaintable::getPrimitiveLongUtil() -> PrimitiveLongUtil*{
 
 
 
@@ -181,13 +162,13 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    protected: void setAnimationInterface(Animation* animationInterface){
+    auto SelectionHudPaintable::setAnimationInterface(Animation* animationInterface) -> void{
 this->animationInterface= animationInterface;
     
 }
 
 
-    protected: Animation* getAnimationInterface(){
+    auto SelectionHudPaintable::getAnimationInterface() -> Animation*{
 
 
 
@@ -197,13 +178,13 @@ this->animationInterface= animationInterface;
 }
 
 
-    protected: void setName(std::string name){
+    auto SelectionHudPaintable::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    protected: std::string getName(){
+    auto SelectionHudPaintable::getName() -> std::string{
 
 
 
@@ -213,7 +194,7 @@ this->name= name;
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto SelectionHudPaintable::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 this->setColor(basicColor->intValue());
@@ -221,7 +202,7 @@ this->setColor(basicColor->intValue());
 }
 
 
-    protected: BasicColor* getBasicColorP(){
+    auto SelectionHudPaintable::getBasicColorP() -> BasicColor*{
 
 
 
@@ -231,13 +212,13 @@ this->setColor(basicColor->intValue());
 }
 
 
-    public: void setColor(int32_t color){
+    auto SelectionHudPaintable::setColor(int32_t color) -> void{
 this->color= color;
     
 }
 
 
-    public: int32_t getColor(){
+    auto SelectionHudPaintable::getColor() -> int32_t{
 
 
 
@@ -247,7 +228,7 @@ this->color= color;
 }
 
 
-    protected: int32_t getWidth(){
+    auto SelectionHudPaintable::getWidth() -> int32_t{
 
 
 
@@ -257,13 +238,13 @@ this->color= color;
 }
 
 
-    protected: void setHeight(int32_t height){
+    auto SelectionHudPaintable::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-    protected: int32_t getHeight(){
+    auto SelectionHudPaintable::getHeight() -> int32_t{
 
 
 
@@ -273,7 +254,7 @@ this->height= height;
 }
 
 
-    protected: int32_t getX(){
+    auto SelectionHudPaintable::getX() -> int32_t{
 
 
 
@@ -283,7 +264,7 @@ this->height= height;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto SelectionHudPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 graphics->setColor(this->backgroundColor);
@@ -297,7 +278,6 @@ graphics->drawString(this->getName(), this->textX, this->y, 0);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SELECTIONHUDPAINTABLE_CPP

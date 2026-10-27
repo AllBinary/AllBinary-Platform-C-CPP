@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/GameInfo.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
+class GameInfo;
+class AbeClientInformationInterface;
 
 
 
@@ -53,9 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/score/remote/RemoteHighScores.h"
+        class RemoteHighScores;
 
-class RemoteHighScoresProcessorInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class RemoteHighScoresProcessorInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -67,3 +74,19 @@ class RemoteHighScoresProcessorInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/GameInfo.h>)
+#include <org/allbinary/game/GameInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include("org/allbinary/game/score/remote/RemoteHighScores.h")
+#include "org/allbinary/game/score/remote/RemoteHighScores.h"
+#endif
+
+        #endif
+    

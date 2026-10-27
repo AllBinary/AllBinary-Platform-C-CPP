@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,71 +39,27 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/PrintStream.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Properties.h>
-
-      
-#include <javax/mail/Address.h>
-
-      
-#include <javax/mail/Authenticator.h>
-
-      
-#include <javax/mail/Message.h>
-
-      
-#include <javax/mail/MessagingException.h>
-
-      
-#include <javax/mail/Session.h>
-
-      
-#include <javax/mail/internet/InternetAddress.h>
-
-      
-#include <javax/mail/internet/InternetHeaders.h>
-
-      
-#include <javax/mail/internet/MimeBodyPart.h>
-
-      
-#include <javax/mail/internet/MimeMessage.h>
-
-      
-#include <javax/mail/internet/MimeMultipart.h>
-
-      
-#include <org/allbinary/data/tree/dom/ModDomHelper.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class Address;
+class Authenticator;
+class Message;
+class MessagingException;
+class Session;
+class InternetAddress;
+class InternetHeaders;
+class MimeBodyPart;
+class MimeMessage;
+class MimeMultipart;
+class ModDomHelper;
+class StdUtil;
+class LogUtil;
+class StringUtil;
+class StringValidationUtil;
+class CommonStrings;
+class Document;
+class Node;
 
 
 
@@ -118,10 +79,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/EmailInterface.h"
-#include "org/allbinary/logic/communication/smtp/EmailData.h"
+class EmailData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Email
-            : public Object
+            : public virtual Object
         , public EmailInterface {
 
     private: static inline const std::string DEBUG = "mail.debug";
@@ -136,9 +101,9 @@ class Email
 
     private: static inline const std::string SMTP_LOCAL_HOST = "mail.smtp.localhost";
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     private: MimeMessage* msg;
 
@@ -186,3 +151,82 @@ public: Email(std::string from, std::string to, std::string subject, std::string
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/PrintStream.h>)
+#include <java/io/PrintStream.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Properties.h>)
+#include <java/util/Properties.h>
+#endif
+#if __has_include(<javax/mail/Address.h>)
+#include <javax/mail/Address.h>
+#endif
+#if __has_include(<javax/mail/Authenticator.h>)
+#include <javax/mail/Authenticator.h>
+#endif
+#if __has_include(<javax/mail/Message.h>)
+#include <javax/mail/Message.h>
+#endif
+#if __has_include(<javax/mail/MessagingException.h>)
+#include <javax/mail/MessagingException.h>
+#endif
+#if __has_include(<javax/mail/Session.h>)
+#include <javax/mail/Session.h>
+#endif
+#if __has_include(<javax/mail/internet/InternetAddress.h>)
+#include <javax/mail/internet/InternetAddress.h>
+#endif
+#if __has_include(<javax/mail/internet/InternetHeaders.h>)
+#include <javax/mail/internet/InternetHeaders.h>
+#endif
+#if __has_include(<javax/mail/internet/MimeBodyPart.h>)
+#include <javax/mail/internet/MimeBodyPart.h>
+#endif
+#if __has_include(<javax/mail/internet/MimeMessage.h>)
+#include <javax/mail/internet/MimeMessage.h>
+#endif
+#if __has_include(<javax/mail/internet/MimeMultipart.h>)
+#include <javax/mail/internet/MimeMultipart.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/ModDomHelper.h>)
+#include <org/allbinary/data/tree/dom/ModDomHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/EmailInterface.h")
+#include "org/allbinary/logic/communication/smtp/EmailInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/EmailData.h")
+#include "org/allbinary/logic/communication/smtp/EmailData.h"
+#endif
+
+        #endif
+    

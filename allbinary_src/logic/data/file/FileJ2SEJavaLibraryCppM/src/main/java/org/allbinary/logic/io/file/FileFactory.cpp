@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,25 +58,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/AbFile.h"
 
-class FileFactory
-            : public Object
-         {
 
-    private: static FileFactory* instance() { static std::unique_ptr<FileFactory> value(new FileFactory()); return value.get(); }
+FileFactory::FileFactory() {
+        }
+        auto FileFactory::instance_owner() -> FileFactory* { static std::unique_ptr<FileFactory> value(new FileFactory()); return value.get(); }
+FileFactory* FileFactory::instance = FileFactory::instance_owner();
 
-    public: static FileFactory* getInstance(){
+    auto FileFactory::getInstance() -> FileFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileFactory::instance();
+                        return FileFactory::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile* getInstance(std::string filePath){
+    auto FileFactory::getInstance(std::string filePath) -> AbFile*{
 
 
 
@@ -78,7 +88,7 @@ class FileFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AbFile* getInstance(AbFile* file, std::string childFilePath){
+    auto FileFactory::getInstance(AbFile* file, std::string childFilePath) -> AbFile*{
 
 
 
@@ -90,7 +100,7 @@ class FileFactory
 
                 //@Throws(Exception.constructor)
             
-    public: bool isFile(std::string path){
+    auto FileFactory::isFile(std::string path) -> bool{
 
     AbFile* file = AbFile::createAbFile(path);;
     
@@ -120,7 +130,6 @@ class FileFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_CPP

@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
+class AnimationBehavior;
 #include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/animation/IndexedAnimationBehavior.h>
-
-      
+class IndexedAnimationBehavior;
 
 
 
@@ -56,9 +55,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/special/SpecialAnimationInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SpecialAnimation: public IndexedAnimation, public SpecialAnimationInterface {
 
-    private: static SpecialAnimation* NULL_SPECIAL_ANIMATION() { static std::unique_ptr<SpecialAnimation> value(new SpecialAnimation(new IndexedAnimationBehavior(1, 250))); return value.get(); }
+    private: static SpecialAnimation* NULL_SPECIAL_ANIMATION_owner();
+    private: static SpecialAnimation* NULL_SPECIAL_ANIMATION;
 
     public: static SpecialAnimation* getInstance();
 
@@ -82,3 +86,22 @@ public: SpecialAnimation(AnimationBehavior* animationBehavior);
 
 
         #endif //ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimationBehavior.h>)
+#include <org/allbinary/animation/IndexedAnimationBehavior.h>
+#endif
+#if __has_include("org/allbinary/animation/special/SpecialAnimationInterface.h")
+#include "org/allbinary/animation/special/SpecialAnimationInterface.h"
+#endif
+
+        #endif
+    

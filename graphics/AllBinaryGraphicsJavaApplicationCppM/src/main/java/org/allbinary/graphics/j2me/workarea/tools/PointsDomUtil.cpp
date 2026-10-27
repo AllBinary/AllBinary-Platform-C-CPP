@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSDOMUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSDOMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,37 +84,25 @@
         #include "org/allbinary/graphics/j2me/workarea/tools/PointsUtil.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/Document.h"
 
-class PointsDomUtil
-            : public Object
-         {
 
-    private: static PointsDomUtil* instance() { static std::unique_ptr<PointsDomUtil> value(new PointsDomUtil()); return value.get(); }
+PointsDomUtil::PointsDomUtil() {
+        }
+        auto PointsDomUtil::instance_owner() -> PointsDomUtil* { static std::unique_ptr<PointsDomUtil> value(new PointsDomUtil()); return value.get(); }
+PointsDomUtil* PointsDomUtil::instance = PointsDomUtil::instance_owner();
 
-    public: static PointsDomUtil* getInstance(){
+    auto PointsDomUtil::getInstance() -> PointsDomUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointsDomUtil::instance();
+                        return PointsDomUtil::instance;
     
 }
 
 
-    public: const std::string LINES = "lines";
-
-    public: const std::string POINTONE = "pointOne";
-
-    public: const std::string POINTTWO = "pointTwo";
-
-    private: const std::string ROTATEDPOINTONE = "rotatedPointOne";
-
-    private: const std::string ROTATEDPOINTTWO = "rotatedPointTwo";
-
-    private: const std::string LINE = "line";
-
                 //@Throws(Exception.constructor)
             
-    public: Node* toDom(CanvasDom* canvasDom, BasicArrayList* pointVector){
+    auto PointsDomUtil::toDom(CanvasDom* canvasDom, BasicArrayList* pointVector) -> Node*{
 
     BasicArrayList* tempPointVector = PointsUtil::getInstance()->doTransforms(pointVector, double(canvasDom->getAngle()), PointFactory::getInstance()->createXY(canvasDom->getDimension()->getWidth(), canvasDom->getDimension()->getHeight()));;
     
@@ -197,7 +195,7 @@ index++;
 }
 
 
-    private: Node* getPointNode(GPoint* point, std::string pointName){
+    auto PointsDomUtil::getPointNode(GPoint* point, std::string pointName) -> Node*{
 
     org::w3c::dom::Document* document = WorkAreaJPanel::getDocument();;
     
@@ -233,7 +231,6 @@ pointNode->appendChild(yNode);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSDOMUTIL_CPP

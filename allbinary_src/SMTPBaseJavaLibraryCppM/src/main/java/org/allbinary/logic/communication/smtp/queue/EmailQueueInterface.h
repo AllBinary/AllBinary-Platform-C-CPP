@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/smtp/EmailInterface.h>
-
-      
+class EmailInterface;
 
 
 
@@ -51,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EmailQueueInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class EmailQueueInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -67,3 +76,13 @@ class EmailQueueInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/smtp/EmailInterface.h>)
+#include <org/allbinary/logic/communication/smtp/EmailInterface.h>
+#endif
+
+        #endif
+    

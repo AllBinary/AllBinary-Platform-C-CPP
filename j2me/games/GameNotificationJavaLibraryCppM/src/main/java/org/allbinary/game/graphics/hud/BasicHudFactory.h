@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUDFACTORY_H
         #define ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUDFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicHudFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicHudFactory* instance() { static std::unique_ptr<BasicHudFactory> value(new BasicHudFactory()); return value.get(); }
+    private: static BasicHudFactory* instance_owner();
+    private: static BasicHudFactory* instance;
 
     public: static BasicHudFactory* getInstance();
 
@@ -84,3 +94,10 @@ private: BasicHudFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUDFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUDFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUDFACTORY_H_COMPLETE
+        
+        #endif
+    

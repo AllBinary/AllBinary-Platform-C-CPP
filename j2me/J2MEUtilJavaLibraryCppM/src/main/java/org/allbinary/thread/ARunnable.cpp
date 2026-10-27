@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_ARUNNABLE_CPP
+        #define ORG_ALLBINARY_THREAD_ARUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ARunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,15 +63,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ARunnable
-            : public Object
-        , public Runnable {
 
-    public: void run(){
+ARunnable::ARunnable() {
+        }
+        
+    auto ARunnable::run() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_ARUNNABLE_CPP

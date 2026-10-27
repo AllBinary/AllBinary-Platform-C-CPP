@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_INVENTORYHELPERFACTORY_CPP
+        #define TAGHELPERS_INVENTORYHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/InventoryHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,19 +73,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "taghelpers/InventoryHelper.h"
 
-class InventoryHelperFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InventoryHelperFactory(){
+InventoryHelperFactory::InventoryHelperFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto InventoryHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
         try {
             
@@ -89,7 +94,7 @@ public: InventoryHelperFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -111,7 +116,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_INVENTORYHELPERFACTORY_CPP

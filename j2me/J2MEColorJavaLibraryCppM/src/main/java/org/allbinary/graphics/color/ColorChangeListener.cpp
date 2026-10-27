@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorChangeListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorChangeListener: public EventListenerInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_CPP

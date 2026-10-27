@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_SCALEFACTORFACTORY_H
         #define ORG_ALLBINARY_LOGIC_MATH_SCALEFACTORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScaleFactorFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ScaleFactorFactory* instance() { static std::unique_ptr<ScaleFactorFactory> value(new ScaleFactorFactory()); return value.get(); }
+    private: static ScaleFactorFactory* instance_owner();
+    private: static ScaleFactorFactory* instance;
 
     public: static ScaleFactorFactory* getInstance();
 
+
+            
+    public: ScaleFactorFactory();
+        
     public: int32_t DEFAULT_SCALE_FACTOR = 10;
 
     public: int32_t DEFAULT_SCALE_VALUE = 1024;
@@ -66,3 +80,10 @@ class ScaleFactorFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_SCALEFACTORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_SCALEFACTORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_SCALEFACTORFACTORY_H_COMPLETE
+        
+        #endif
+    

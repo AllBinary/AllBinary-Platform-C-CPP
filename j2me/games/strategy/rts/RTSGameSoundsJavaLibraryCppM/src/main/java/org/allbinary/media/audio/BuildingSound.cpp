@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_BUILDINGSOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_BUILDINGSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/BuildingSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +58,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BuildingSound: public CompositeSound {
+Sound* BuildingSound::soundInterface = new BuildingSound();
 
-    private: static inline Sound* soundInterface = new BuildingSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BuildingSound::soundInterface;
-    
-}
-
-
-private: BuildingSound() : CompositeSound("resource:/wav/building.wav"){
+BuildingSound::BuildingSound() : CompositeSound("resource:/wav/building.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +70,16 @@ private: BuildingSound() : CompositeSound("resource:/wav/building.wav"){
 }
 
 
-};
+    auto BuildingSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return BuildingSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_BUILDINGSOUND_CPP

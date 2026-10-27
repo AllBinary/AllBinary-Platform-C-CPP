@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchScreenTypesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,31 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchScreenType.h"
 
-class TouchScreenTypesFactory
-            : public Object
-         {
 
-    private: static TouchScreenTypesFactory* instance() { static std::unique_ptr<TouchScreenTypesFactory> value(new TouchScreenTypesFactory()); return value.get(); }
+TouchScreenTypesFactory::TouchScreenTypesFactory() : FINGER(new TouchScreenType("Finger")), NOTOUCH(new TouchScreenType("No Touch")), STYLUS(new TouchScreenType("Stylus")), UNDEFINED(new TouchScreenType("Undefined")) {
+        }
+        auto TouchScreenTypesFactory::instance_owner() -> TouchScreenTypesFactory* { static std::unique_ptr<TouchScreenTypesFactory> value(new TouchScreenTypesFactory()); return value.get(); }
+TouchScreenTypesFactory* TouchScreenTypesFactory::instance = TouchScreenTypesFactory::instance_owner();
 
-    public: static TouchScreenTypesFactory* getInstance(){
+    auto TouchScreenTypesFactory::getInstance() -> TouchScreenTypesFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenTypesFactory::instance();
+                        return TouchScreenTypesFactory::instance;
     
 }
 
 
-    public: TouchScreenType* FINGER = new TouchScreenType("Finger");
 
-    public: TouchScreenType* NOTOUCH = new TouchScreenType("No Touch");
 
-    public: TouchScreenType* STYLUS = new TouchScreenType("Stylus");
-
-    public: TouchScreenType* UNDEFINED = new TouchScreenType("Undefined");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPESFACTORY_CPP

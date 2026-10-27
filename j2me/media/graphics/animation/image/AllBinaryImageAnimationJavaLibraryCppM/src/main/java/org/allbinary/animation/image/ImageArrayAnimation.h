@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
+class Graphics;
+class Image;
+class NullImage;
+class AnimationBehavior;
 #include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class Anchor;
+class PrimitiveIntUtil;
+class CircularIndexUtil;
 
 
 
@@ -74,13 +63,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageArrayAnimation: public IndexedAnimation {
 
-    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
+    private: std::vector<Image*> imageArray;
 
     private: int32_t totalFrames= 0;
 
-    protected: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
+    /*protected*/ public: CircularIndexUtil* circularIndexUtil;
 
 public: ImageArrayAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior);
 
@@ -106,9 +99,9 @@ public: ImageArrayAnimation(std::vector<Image*> imageArray, AnimationBehavior* a
 
     public: std::vector<Image*> getImageArray();
 
-    protected: void setImageArray(std::vector<Image*> imageArray);
+    /*protected*/ public: void setImageArray(std::vector<Image*> imageArray);
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
@@ -118,3 +111,34 @@ public: ImageArrayAnimation(std::vector<Image*> imageArray, AnimationBehavior* a
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+
+        #endif
+    

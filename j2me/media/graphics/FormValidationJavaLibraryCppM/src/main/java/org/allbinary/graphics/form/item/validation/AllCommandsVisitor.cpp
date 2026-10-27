@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_ALLCOMMANDSVISITOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_ALLCOMMANDSVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/validation/AllCommandsVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllCommandsVisitor: public Visitor {
 
-public: AllCommandsVisitor(){
+AllCommandsVisitor::AllCommandsVisitor(){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto AllCommandsVisitor::visit(Object* anyType) -> Object*{
 
 
 
@@ -67,7 +76,6 @@ public: AllCommandsVisitor(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_ALLCOMMANDSVISITOR_CPP

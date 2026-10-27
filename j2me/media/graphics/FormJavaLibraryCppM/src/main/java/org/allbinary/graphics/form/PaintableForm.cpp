@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_PAINTABLEFORM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_PAINTABLEFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/PaintableForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,11 +75,9 @@
 #include "org/allbinary/graphics/form/FormTypeFactory.h"
 #include "org/allbinary/graphics/form/FormType.h"
 
-class PaintableForm: public ABCustomForm {
+Object* PaintableForm::NULL_PAINTABLE_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* NULL_PAINTABLE_FORM = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static PaintableForm* getNullPaintableForm(){
+    auto PaintableForm::getNullPaintableForm() -> PaintableForm*{
 
                         if(PaintableForm::NULL_PAINTABLE_FORM == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -88,17 +96,7 @@ class PaintableForm: public ABCustomForm {
 }
 
 
-    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
-
-    protected: Rectangle* rectangle = RectangleFactory::SINGLETON;
-
-    protected: int32_t x= 0;
-
-    protected: int32_t y= 0;
-
-    protected: FormType* formType = FormTypeFactory::getInstance()->NULL_FORM_TYPE;
-
-public: PaintableForm(std::string title, std::vector<ABCustomItem*> items, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABCustomForm(title, items, backgroundBasicColor, foregroundBasicColor){
+PaintableForm::PaintableForm(std::string title, std::vector<ABCustomItem*> items, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABCustomForm(title, items, backgroundBasicColor, foregroundBasicColor), canvasStrings(CanvasStrings::getInstance()), rectangle(RectangleFactory::SINGLETON), formType(FormTypeFactory::getInstance()->NULL_FORM_TYPE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -112,7 +110,7 @@ this->setSelectedIndex(0);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle* rectangle, FormType* formType){
+    auto PaintableForm::init(Rectangle* rectangle, FormType* formType) -> void{
 this->rectangle= rectangle;
     
 
@@ -127,7 +125,7 @@ this->formType= formType;
 }
 
 
-    public: int32_t getWidth(){
+    auto PaintableForm::getWidth() -> int32_t{
 
 
 
@@ -137,7 +135,6 @@ this->formType= formType;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_PAINTABLEFORM_CPP

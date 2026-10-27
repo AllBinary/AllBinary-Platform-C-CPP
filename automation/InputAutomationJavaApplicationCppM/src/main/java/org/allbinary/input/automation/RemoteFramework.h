@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_REMOTEFRAMEWORK_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_REMOTEFRAMEWORK_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <java/util/Map.h>
-
-      
-#include <org/osgi/framework/BundleContext.h>
-
-      
+class BundleContext;
 
 
 
@@ -52,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RemoteFramework {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class RemoteFramework
+            : public virtual Object
+         {
 
     public: virtual BundleContext* connect(std::string host) = 0;
 
@@ -66,3 +73,16 @@ class RemoteFramework {
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_REMOTEFRAMEWORK_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_REMOTEFRAMEWORK_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_REMOTEFRAMEWORK_H_COMPLETE
+        #if __has_include(<java/util/Map.h>)
+#include <java/util/Map.h>
+#endif
+#if __has_include(<org/osgi/framework/BundleContext.h>)
+#include <org/osgi/framework/BundleContext.h>
+#endif
+
+        #endif
+    

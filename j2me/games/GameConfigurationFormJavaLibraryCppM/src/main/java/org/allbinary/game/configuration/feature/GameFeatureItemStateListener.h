@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMSTATELISTENER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMSTATELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,42 +36,18 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/ChoiceGroup.h>
-
-      
-#include <javax/microedition/lcdui/Item.h>
-
-      
+class ChoiceGroup;
+class Item;
 #include <javax/microedition/lcdui/ItemStateListener.h>
-
-      
-#include <org/allbinary/game/configuration/GameConfigurationGauge.h>
-
-      
-#include <org/allbinary/game/configuration/GameConfigurationUtil.h>
-
-      
-#include <org/allbinary/game/configuration/GameOptionsForm.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class GameConfigurationGauge;
+class GameConfigurationUtil;
+class GameOptionsForm;
+class LogUtil;
+class StringMaker;
+class CommonLabels;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -85,19 +66,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
-#include "org/allbinary/game/configuration/feature/GameFeature.h"
-#include "org/allbinary/game/configuration/feature/GameFeatureUtil.h"
+        class GameFeatureFactory;
+class GameFeature;
+class GameFeatureUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameFeatureItemStateListener
-            : public Object
+            : public virtual Object
         , public ItemStateListener {
 
-    private: static inline BasicArrayList* toggleList = new BasicArrayListD();
+    private: static BasicArrayList* toggleList;
 
     public: static void add(GameFeature* gameFeature);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: GameOptionsForm* gameOptionsForm;
 
@@ -111,3 +96,55 @@ public: GameFeatureItemStateListener(GameOptionsForm* gameOptionsForm);
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMSTATELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMSTATELISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMSTATELISTENER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/ChoiceGroup.h>)
+#include <javax/microedition/lcdui/ChoiceGroup.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Item.h>)
+#include <javax/microedition/lcdui/Item.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/ItemStateListener.h>)
+#include <javax/microedition/lcdui/ItemStateListener.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/GameConfigurationGauge.h>)
+#include <org/allbinary/game/configuration/GameConfigurationGauge.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/GameConfigurationUtil.h>)
+#include <org/allbinary/game/configuration/GameConfigurationUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/GameOptionsForm.h>)
+#include <org/allbinary/game/configuration/GameOptionsForm.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/GameFeatureFactory.h")
+#include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/GameFeature.h")
+#include "org/allbinary/game/configuration/feature/GameFeature.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/GameFeatureUtil.h")
+#include "org/allbinary/game/configuration/feature/GameFeatureUtil.h"
+#endif
+
+        #endif
+    

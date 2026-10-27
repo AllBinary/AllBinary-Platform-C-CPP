@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTMAPINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTMAPINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <java/util/HashMap.h>
-
-      
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RequestMapInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class RequestMapInterface
+            : public virtual Object
+         {
 
     public: virtual HashMap<Object*, Object*>* getRequestHashMap() = 0;
 
@@ -59,3 +68,13 @@ class RequestMapInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTMAPINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTMAPINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTMAPINTERFACE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+
+        #endif
+    

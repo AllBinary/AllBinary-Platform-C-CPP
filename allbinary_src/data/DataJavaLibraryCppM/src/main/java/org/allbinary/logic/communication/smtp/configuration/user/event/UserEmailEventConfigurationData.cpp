@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserEmailEventConfigurationData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "EMAIL_EVENT_CONFIGURATION_NAME";
-
-    public: static inline const std::string LISTENER_CLASSPATH = "EMAIL_EVENT_CONFIGURATION_LISTENER_CLASSPATH";
-
-private: UserEmailEventConfigurationData(){
+UserEmailEventConfigurationData::UserEmailEventConfigurationData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONDATA_CPP

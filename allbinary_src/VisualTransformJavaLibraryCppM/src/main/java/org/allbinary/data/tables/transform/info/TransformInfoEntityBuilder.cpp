@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITYBUILDER_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITYBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,11 +66,11 @@
         #include "org/allbinary/data/tables/transform/info/TransformInfoEntityFactory.h"
 #include "org/allbinary/data/tables/transform/info/TransformInfoEntity.h"
 
-class TransformInfoEntityBuilder
-            : public Object
-         {
 
-    public: static TransformInfoEntity* getInstance(){
+TransformInfoEntityBuilder::TransformInfoEntityBuilder() {
+        }
+        
+    auto TransformInfoEntityBuilder::getInstance() -> TransformInfoEntity*{
 
 
 
@@ -70,7 +80,6 @@ class TransformInfoEntityBuilder
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITYBUILDER_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUTFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/analog/AnalogLocationInputFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -38,29 +48,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/analog/AnalogLocationInput.h"
 
-class AnalogLocationInputFactory
-            : public Object
-         {
+auto AnalogLocationInputFactory::instance_owner() -> AnalogLocationInputFactory* { static std::unique_ptr<AnalogLocationInputFactory> value(new AnalogLocationInputFactory()); return value.get(); }
+AnalogLocationInputFactory* AnalogLocationInputFactory::instance = AnalogLocationInputFactory::instance_owner();
 
-    private: static AnalogLocationInputFactory* instance() { static std::unique_ptr<AnalogLocationInputFactory> value(new AnalogLocationInputFactory()); return value.get(); }
-
-    public: static AnalogLocationInputFactory* getInstance(){
+    auto AnalogLocationInputFactory::getInstance() -> AnalogLocationInputFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnalogLocationInputFactory::instance();
+                        return AnalogLocationInputFactory::instance;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: AnalogLocationInputFactory(){
+AnalogLocationInputFactory::AnalogLocationInputFactory() : list(new BasicArrayListD()){
 }
 
 
-    public: void addPlayer(int32_t playerInputId){
+    auto AnalogLocationInputFactory::addPlayer(int32_t playerInputId) -> void{
 
     AnalogLocationInput* analogLocationInput = AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT;;
     
@@ -87,7 +92,7 @@ this->list->add(analogLocationInput);
 }
 
 
-    public: AnalogLocationInput* getInstanceForPlayer(int32_t playerInputId){
+    auto AnalogLocationInputFactory::getInstanceForPlayer(int32_t playerInputId) -> AnalogLocationInput*{
 
 
 
@@ -97,7 +102,7 @@ this->list->add(analogLocationInput);
 }
 
 
-    public: BasicArrayList* getList(){
+    auto AnalogLocationInputFactory::getList() -> BasicArrayList*{
 
 
 
@@ -107,7 +112,6 @@ this->list->add(analogLocationInput);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUTFACTORY_CPP

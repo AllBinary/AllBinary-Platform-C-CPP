@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_EXITRUNNABLE_CPP
+        #define ORG_ALLBINARY_MIDLET_EXITRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/ExitRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,21 +72,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/midlet/AllBinaryMidlet.h"
 
-class ExitRunnable
-            : public Object
-        , public Runnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AllBinaryMidlet* midlet;
-
-    private: Processor* processor;
-
-    private: bool isProgress;
-
-public: ExitRunnable(AllBinaryMidlet* midlet, Processor* processor, bool isProgress){
+ExitRunnable::ExitRunnable(AllBinaryMidlet* midlet, Processor* processor, bool isProgress) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->midlet= midlet;
     
 this->isProgress= isProgress;
@@ -86,7 +83,7 @@ this->processor= processor;
 }
 
 
-    public: void run(){
+    auto ExitRunnable::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
@@ -124,7 +121,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MIDLET_EXITRUNNABLE_CPP

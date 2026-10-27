@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/EmailData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EmailData
-            : public Object
-         {
 
-    public: static inline const std::string SERVER = "EMAIL_SERVER";
-
-    public: static inline const std::string NAME = "EMAIL_NAME";
-
-    public: static inline const std::string FROM = "EMAIL_FROM";
-
-    public: static inline const std::string TO = "EMAIL_TO";
-
-    public: static inline const std::string CC = "EMAIL_CC";
-
-    public: static inline const std::string BCC = "EMAIL_BCC";
-
-    public: static inline const std::string SUBJECT = "EMAIL_SUBJECT";
-
-    public: static inline const std::string CONTENT = "EMAIL_CONTENT";
-
-private: EmailData(){
+EmailData::EmailData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILDATA_CPP

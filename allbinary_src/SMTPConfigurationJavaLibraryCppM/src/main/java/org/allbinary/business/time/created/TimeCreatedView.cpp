@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATEDVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATEDVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/time/created/TimeCreatedView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,19 +76,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/time/created/TimeCreated.h"
 
-class TimeCreatedView
-            : public Object
-        , public DomNodeInterface {
 
-    private: TimeCreated* timeCreated;
-
-public: TimeCreatedView(TimeCreated* timeCreated){
+TimeCreatedView::TimeCreatedView(TimeCreated* timeCreated){
 this->setTimeCreated(timeCreated);
     
 }
 
 
-public: TimeCreatedView(Node* node){
+TimeCreatedView::TimeCreatedView(Node* node){
 this->setTimeCreated(new TimeCreated(DomNodeHelper::getTextNodeValue(node)));
     
 }
@@ -86,7 +91,7 @@ this->setTimeCreated(new TimeCreated(DomNodeHelper::getTextNodeValue(node)));
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TimeCreatedView::toXmlNode(Document* document) -> Node*{
 
 
 
@@ -96,7 +101,7 @@ this->setTimeCreated(new TimeCreated(DomNodeHelper::getTextNodeValue(node)));
 }
 
 
-    public: TimeCreated* getTimeCreated(){
+    auto TimeCreatedView::getTimeCreated() -> TimeCreated*{
 
 
 
@@ -106,13 +111,12 @@ this->setTimeCreated(new TimeCreated(DomNodeHelper::getTextNodeValue(node)));
 }
 
 
-    public: void setTimeCreated(TimeCreated* timeCreated){
+    auto TimeCreatedView::setTimeCreated(TimeCreated* timeCreated) -> void{
 this->timeCreated= timeCreated;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATEDVIEW_CPP

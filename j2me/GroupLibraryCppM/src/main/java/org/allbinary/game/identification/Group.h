@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringMaker;
+class StringUtil;
 
 
 
@@ -54,17 +55,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/identification/GroupInterface.h"
-#include "org/allbinary/game/identification/GroupCommonFactory.h"
+class GroupCommonFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Group
-            : public Object
+            : public virtual Object
         , public GroupInterface {
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string name;
 
     private: int16_t teamId;
 
-    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string string;
 
 public: Group(std::string teamName, int16_t teamId);
 
@@ -82,3 +87,22 @@ public: Group(std::string teamName, int16_t teamId);
 
 
         #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/game/identification/GroupInterface.h")
+#include "org/allbinary/game/identification/GroupInterface.h"
+#endif
+#if __has_include("org/allbinary/game/identification/GroupCommonFactory.h")
+#include "org/allbinary/game/identification/GroupCommonFactory.h"
+#endif
+
+        #endif
+    

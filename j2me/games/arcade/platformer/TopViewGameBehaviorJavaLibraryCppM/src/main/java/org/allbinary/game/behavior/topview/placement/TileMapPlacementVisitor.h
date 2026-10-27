@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/mapeditor/core/TiledMap.h>
-
-      
+class TiledMap;
 
 
 
@@ -53,10 +56,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TileMapPlacementVisitor
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: TileMapPlacementVisitor();
+        
     public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData);
 
 };
@@ -65,3 +76,13 @@ class TileMapPlacementVisitor
 
 
         #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_H_COMPLETE
+        #if __has_include(<org/mapeditor/core/TiledMap.h>)
+#include <org/mapeditor/core/TiledMap.h>
+#endif
+
+        #endif
+    

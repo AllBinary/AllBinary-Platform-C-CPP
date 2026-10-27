@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,38 +35,16 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/page/PageData.h>
-
-      
+class PageData;
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class DomSearchHelper;
+class LogUtil;
 #include <org/allbinary/logic/control/validate/Validation.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleValidation.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class StringMaker;
+class TitleData;
+class TitleValidation;
+class Document;
+class Node;
 
 
 
@@ -81,9 +64,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PageValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: TitleValidation* title;
 
@@ -113,3 +100,43 @@ public: PageValidation(HashMap<Object*, Object*>* hashMap);
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/page/PageData.h>)
+#include <org/allbinary/business/page/PageData.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomSearchHelper.h>)
+#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/Validation.h>)
+#include <org/allbinary/logic/control/validate/Validation.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h>)
+#include <org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleValidation.h>)
+#include <org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleValidation.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+
+        #endif
+    

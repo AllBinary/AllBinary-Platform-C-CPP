@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ONEROWSPRITEINDEXEDANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ONEROWSPRITEINDEXEDANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/game/Sprite.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
+class Image;
+class Sprite;
+class Animation;
+class AnimationBehaviorFactory;
 #include <org/allbinary/animation/image/BaseImageAnimationFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorUtil.h>
-
-      
-#include <org/allbinary/image/sprite/AnimationFactorySpriteScaleUtil.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
+class BasicColorUtil;
+class AnimationFactorySpriteScaleUtil;
+class PrimitiveIntUtil;
 
 
 
@@ -73,9 +62,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
-#include "org/allbinary/animation/image/sprite/AdjustedSpriteIndexedAnimation.h"
+        class SpriteIndexedAnimation;
+class AdjustedSpriteIndexedAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OneRowSpriteIndexedAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
@@ -94,7 +87,7 @@ class OneRowSpriteIndexedAnimationFactory: public BaseImageAnimationFactory {
             
     public: static OneRowSpriteIndexedAnimationFactory* createFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
+    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil;
 
 public: OneRowSpriteIndexedAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
@@ -112,3 +105,40 @@ public: OneRowSpriteIndexedAnimationFactory(Image* image, std::vector<int32_t> s
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ONEROWSPRITEINDEXEDANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ONEROWSPRITEINDEXEDANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ONEROWSPRITEINDEXEDANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/game/Sprite.h>)
+#include <javax/microedition/lcdui/game/Sprite.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/image/BaseImageAnimationFactory.h>)
+#include <org/allbinary/animation/image/BaseImageAnimationFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorUtil.h>)
+#include <org/allbinary/graphics/color/BasicColorUtil.h>
+#endif
+#if __has_include(<org/allbinary/image/sprite/AnimationFactorySpriteScaleUtil.h>)
+#include <org/allbinary/image/sprite/AnimationFactorySpriteScaleUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h")
+#include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/image/sprite/AdjustedSpriteIndexedAnimation.h")
+#include "org/allbinary/animation/image/sprite/AdjustedSpriteIndexedAnimation.h"
+#endif
+
+        #endif
+    

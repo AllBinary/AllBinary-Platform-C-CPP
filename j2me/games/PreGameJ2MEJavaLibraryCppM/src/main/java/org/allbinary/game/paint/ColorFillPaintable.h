@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
+class Graphics;
+class BasicColor;
+class DisplayInfoSingleton;
 
 
 
@@ -56,9 +55,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/paint/ColorFillBasePaintable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorFillPaintable: public ColorFillBasePaintable {
 
-    protected: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    /*protected*/ public: DisplayInfoSingleton* displayInfoSingleton;
 
 public: ColorFillPaintable(BasicColor* basicColor);
 
@@ -70,3 +73,22 @@ public: ColorFillPaintable(BasicColor* basicColor);
 
 
         #endif //ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include("org/allbinary/game/paint/ColorFillBasePaintable.h")
+#include "org/allbinary/game/paint/ColorFillBasePaintable.h"
+#endif
+
+        #endif
+    

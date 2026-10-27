@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_CPP
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/inventory/InventoryColumnUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,28 +76,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryColumnUtil
-            : public Object
-         {
 
-    private: static InventoryColumnUtil* instance() { static std::unique_ptr<InventoryColumnUtil> value(new InventoryColumnUtil()); return value.get(); }
+InventoryColumnUtil::InventoryColumnUtil() : logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()) {
+        }
+        auto InventoryColumnUtil::instance_owner() -> InventoryColumnUtil* { static std::unique_ptr<InventoryColumnUtil> value(new InventoryColumnUtil()); return value.get(); }
+InventoryColumnUtil* InventoryColumnUtil::instance = InventoryColumnUtil::instance_owner();
 
-    public: static InventoryColumnUtil* getInstance(){
+    auto InventoryColumnUtil::getInstance() -> InventoryColumnUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventoryColumnUtil::instance();
+                        return InventoryColumnUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    public: BasicArrayList* getColumnWhereLike(InventoryEntity* inventoryEntity, std::string category, std::string column){
-this->logUtil->putF("Start Category: " +category, this, "getKeywords");
+    auto InventoryColumnUtil::getColumnWhereLike(InventoryEntity* inventoryEntity, std::string category, std::string column) -> BasicArrayList*{
+this->logUtil->putF(JavaString::valueOf("Start Category: ") +JavaString::valueOf(category), this, "getKeywords");
     
 
     BasicArrayList* keywords = new BasicArrayListD();;
@@ -131,7 +137,6 @@ this->logUtil->putF("Start Category: " +category, this, "getKeywords");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_CPP

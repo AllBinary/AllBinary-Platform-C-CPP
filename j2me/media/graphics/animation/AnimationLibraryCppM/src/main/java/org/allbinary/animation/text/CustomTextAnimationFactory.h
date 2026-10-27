@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
+class Font;
+class Animation;
+class AnimationBehaviorFactory;
 #include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class BasicColor;
+class BasicColorFactory;
+class LogUtil;
+class ScaleProperties;
 
 
 
@@ -73,30 +62,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/text/CustomTextAnimation.h"
-#include "org/allbinary/animation/text/AdjustCustomTextAnimation.h"
+        class CustomTextAnimation;
+class AdjustCustomTextAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomTextAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface {
 
     public: static CustomTextAnimationFactory* createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: AnimationBehaviorFactory* animationBehaviorFactory;
 
-    public: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
+    public: BasicColor* basicColor;
 
     private: std::string text;
 
     private: int32_t initScaleHeight;
 
-    protected: int32_t dx = 0;
+    /*protected*/ public: int32_t dx = 0;
 
-    protected: int32_t dy = 0;
+    /*protected*/ public: int32_t dy = 0;
 
-    protected: Font* font;
+    /*protected*/ public: Font* font;
 
     public: ScaleProperties* scaleProperties;
 
@@ -118,3 +111,40 @@ public: CustomTextAnimationFactory(std::string text, int32_t fontSize, Animation
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/text/CustomTextAnimation.h")
+#include "org/allbinary/animation/text/CustomTextAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/text/AdjustCustomTextAnimation.h")
+#include "org/allbinary/animation/text/AdjustCustomTextAnimation.h"
+#endif
+
+        #endif
+    

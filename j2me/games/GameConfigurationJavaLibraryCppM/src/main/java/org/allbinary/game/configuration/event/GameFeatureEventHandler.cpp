@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/event/GameFeatureEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,26 @@
         #include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
 #include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
 
-class GameFeatureEventHandler: public BasicEventHandler {
+auto GameFeatureEventHandler::gameKeyEventHandler_owner() -> GameFeatureEventHandler* { static std::unique_ptr<GameFeatureEventHandler> value(new GameFeatureEventHandler()); return value.get(); }
+GameFeatureEventHandler* GameFeatureEventHandler::gameKeyEventHandler = GameFeatureEventHandler::gameKeyEventHandler_owner();
 
-    private: static GameFeatureEventHandler* gameKeyEventHandler() { static std::unique_ptr<GameFeatureEventHandler> value(new GameFeatureEventHandler()); return value.get(); }
+GameFeatureEventHandler::GameFeatureEventHandler(){
+}
 
-    public: static GameFeatureEventHandler* getInstance(){
+
+    auto GameFeatureEventHandler::getInstance() -> GameFeatureEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureEventHandler::gameKeyEventHandler();
+                        return GameFeatureEventHandler::gameKeyEventHandler;
     
-}
-
-
-private: GameFeatureEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto GameFeatureEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     GameFeatureListenerInterface* gameFeatureListenerInterface = (dynamic_cast<GameFeatureListenerInterface*>(eventListenerInterface));;
     
@@ -85,7 +94,6 @@ gameFeatureListenerInterface->onGameFeatureChange(dynamic_cast<GameFeatureEvent*
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_CPP

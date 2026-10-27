@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ADDRESS_SHIPPINGADDRESSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_SHIPPINGADDRESSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/address/ShippingAddressData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,45 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingAddressData
-            : public Object
-         {
 
-    public: static inline const std::string SETTOBILLINGADDRESS = "Set To Billing Address";
-
-    public: static inline const std::string SELECT = "Select Shipping Address";
-
-    public: static inline const std::string SELECTNAME = "SELECTSHIPPINGADDRESS";
-
-    public: static inline const std::string MULTIPLE = "SHIPPINGADDRESSES";
-
-    public: static inline const std::string SHIPPINGADDRESSES = "SHIPPINGADDRESSES";
-
-    public: static inline const std::string SHIPPINGADDRESS = "SHIPPINGADDRESS";
-
-    public: static inline const std::string ID = "SHIPPINGADDRESS_ID";
-
-    public: static inline const std::string ADDRESS = "SHIPPINGADDRESS_ADDRESS";
-
-    public: static inline const std::string NAME = "SHIPPINGADDRESS_NAME";
-
-    public: static inline const std::string STREET = "SHIPPINGADDRESS_STREET";
-
-    public: static inline const std::string CITY = "SHIPPINGADDRESS_CITY";
-
-    public: static inline const std::string STATE = "SHIPPINGADDRESS_STATE";
-
-    public: static inline const std::string CODE = "SHIPPINGADDRESS_CODE";
-
-    public: static inline const std::string COUNTRY = "SHIPPINGADDRESS_COUNTRY";
-
-    public: static inline const std::string TAX = "SHIPPINGADDRESS_TAX";
-
-private: ShippingAddressData(){
+ShippingAddressData::ShippingAddressData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ADDRESS_SHIPPINGADDRESSDATA_CPP

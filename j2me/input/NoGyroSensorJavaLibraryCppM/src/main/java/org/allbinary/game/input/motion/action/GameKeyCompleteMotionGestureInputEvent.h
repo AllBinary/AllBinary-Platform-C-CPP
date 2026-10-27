@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENT_H
         #define ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,23 +33,11 @@
 
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
-
-      
-#include <org/allbinary/game/input/GameKey.h>
-
-      
+class GameKey;
 #include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
-
-      
-#include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
-
-      
+class GameKeyEvent;
+class InputToGameKeyMapping;
+class MotionGestureInput;
 
 
 
@@ -64,11 +57,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public GameKeyEventSourceInterface {
 
-    private: GameKey* gameKey = GameKey::NULL_GAME_KEY;
+    private: GameKey* gameKey;
 
-    private: GameKeyEvent* gameKeyEvent = GameKeyEvent::NONE;
+    private: GameKeyEvent* gameKeyEvent;
 
 public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput* motionGestureInput, InputToGameKeyMapping* inputToGameKeyMapping);
 
@@ -76,11 +73,11 @@ public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureIn
 
     public: void update();
 
-    protected: void setGameKeyEvent(GameKeyEvent* gameKeyEvent);
+    /*protected*/ public: void setGameKeyEvent(GameKeyEvent* gameKeyEvent);
 
     public: GameKeyEvent* getGameKeyEvent();
 
-    protected: void setGameKey(GameKey* gameKey);
+    /*protected*/ public: void setGameKey(GameKey* gameKey);
 
     public: GameKey* getGameKey();
 
@@ -90,3 +87,28 @@ public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureIn
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/CompleteMotionGestureInputEvent.h>)
+#include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKey.h>)
+#include <org/allbinary/game/input/GameKey.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKeyEventSourceInterface.h>)
+#include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/InputToGameKeyMapping.h>)
+#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/MotionGestureInput.h>)
+#include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
+#endif
+
+        #endif
+    

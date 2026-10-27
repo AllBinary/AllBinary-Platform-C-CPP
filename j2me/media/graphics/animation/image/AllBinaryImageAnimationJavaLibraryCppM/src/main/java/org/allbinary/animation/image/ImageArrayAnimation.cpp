@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageArrayAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -71,15 +81,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageArrayAnimation: public IndexedAnimation {
 
-    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
-
-    private: int32_t totalFrames= 0;
-
-    protected: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
-
-public: ImageArrayAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+ImageArrayAnimation::ImageArrayAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior), imageArray(NullImage::NULL_IMAGE_ARRAY), circularIndexUtil(CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,7 +96,7 @@ this->setImageArray(imageArray);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto ImageArrayAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -103,25 +106,25 @@ this->setImageArray(imageArray);
 }
 
 
-    public: void nextFrame(){
+    auto ImageArrayAnimation::nextFrame() -> void{
 this->circularIndexUtil->next();
     
 }
 
 
-    public: void previousFrame(){
+    auto ImageArrayAnimation::previousFrame() -> void{
 this->circularIndexUtil->previous();
     
 }
 
 
-    public: void setFrame(int32_t index){
+    auto ImageArrayAnimation::setFrame(int32_t index) -> void{
 this->circularIndexUtil->setIndex(index);
     
 }
 
 
-    public: int32_t getFrame(){
+    auto ImageArrayAnimation::getFrame() -> int32_t{
 
 
 
@@ -131,7 +134,7 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: int32_t getSize(){
+    auto ImageArrayAnimation::getSize() -> int32_t{
 
 
 
@@ -141,11 +144,11 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto ImageArrayAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto ImageArrayAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -155,7 +158,7 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: Image* getImage(int32_t index){
+    auto ImageArrayAnimation::getImage(int32_t index) -> Image*{
 
 
 
@@ -165,7 +168,7 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    public: std::vector<Image*> getImageArray(){
+    auto ImageArrayAnimation::getImageArray() -> std::vector<Image*>{
 
 
 
@@ -175,7 +178,7 @@ this->circularIndexUtil->setIndex(index);
 }
 
 
-    protected: void setImageArray(std::vector<Image*> imageArray){
+    auto ImageArrayAnimation::setImageArray(std::vector<Image*> imageArray) -> void{
 this->imageArray= imageArray;
     
 this->totalFrames= imageArray.size();
@@ -185,15 +188,12 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto ImageArrayAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawImage(this->imageArray[this->circularIndexUtil->getIndex()], x, y, this->anchor);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATION_CPP

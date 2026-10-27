@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/PacePatrolAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -101,15 +111,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 
-class PacePatrolAI: public BasePatrolAI, public TrackingEventListenerInterface {
 
-    private: BasicArrayList* trackingList;
-
-    private: int32_t firingDistance= 0;
-
-    protected: bool isFollowLimitedByTerrain = false;
-
-public: PacePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasePatrolAI(hashtable, ownerLayerInterface, gameInput){
+PacePatrolAI::PacePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasePatrolAI(hashtable, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -125,7 +128,7 @@ this->trackingList= new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto PacePatrolAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 this->update();
     
 
@@ -142,7 +145,7 @@ this->update();
                         if(this->lastKeyDirection != keyDirection || !this->isFollowLimitedByTerrain)
                         
                                     {
-                                    super.processKeyAI(Canvas::LEFT);
+                                    BasePatrolAI::processKeyAI(Canvas::LEFT);
     
 
                                     }
@@ -153,7 +156,7 @@ this->lastKeyDirection= keyDirection;
     
 xTotalDistance= 0;
     
-super.processKeyAI(Canvas::KEY_NUM1);
+BasePatrolAI::processKeyAI(Canvas::KEY_NUM1);
     
 
                                     }
@@ -166,7 +169,7 @@ super.processKeyAI(Canvas::KEY_NUM1);
                         if(this->lastKeyDirection != keyDirection || !this->isFollowLimitedByTerrain)
                         
                                     {
-                                    super.processKeyAI(Canvas::RIGHT);
+                                    BasePatrolAI::processKeyAI(Canvas::RIGHT);
     
 
                                     }
@@ -177,13 +180,13 @@ this->lastKeyDirection= keyDirection;
     
 xTotalDistance= 0;
     
-super.processKeyAI(Canvas::KEY_NUM1);
+BasePatrolAI::processKeyAI(Canvas::KEY_NUM1);
     
 
                                     }
                                 
                         else {
-                            super.processKeyAI(this->keyDirection);
+                            BasePatrolAI::processKeyAI(this->keyDirection);
     
 
                         }
@@ -191,7 +194,7 @@ super.processKeyAI(Canvas::KEY_NUM1);
 }
 
 
-    private: Direction* setFiringDirectionForTargetIfInRange(){
+    auto PacePatrolAI::setFiringDirectionForTargetIfInRange() -> Direction*{
 
     DirectionFactory* directionFactory = DirectionFactory::getInstance();;
     
@@ -287,17 +290,17 @@ lastTrackingLayerInterface= lastTrackingEvent->getLayerInterface();
 }
 
 
-    public: void disable(){
+    auto PacePatrolAI::disable() -> void{
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto PacePatrolAI::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onMovement(TrackingEvent* trackingEvent){
+    auto PacePatrolAI::onMovement(TrackingEvent* trackingEvent) -> void{
 this->trackingList->clear();
     
 this->trackingList->add(trackingEvent);
@@ -305,7 +308,7 @@ this->trackingList->add(trackingEvent);
 }
 
 
-    public: int32_t getFiringDistance(){
+    auto PacePatrolAI::getFiringDistance() -> int32_t{
 
 
 
@@ -315,13 +318,12 @@ this->trackingList->add(trackingEvent);
 }
 
 
-    public: void setFiringDistance(int32_t firingDistance){
+    auto PacePatrolAI::setFiringDistance(int32_t firingDistance) -> void{
 this->firingDistance= firingDistance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAI_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CONSTRUCTORUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CONSTRUCTORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/anyType/ConstructorUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -58,11 +68,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ConstructorUtil
-            : public Object
-         {
 
-    public: static std::string viewAll(Class* myClass, std::string lineBreak){
+ConstructorUtil::ConstructorUtil(){
+}
+
+
+    auto ConstructorUtil::viewAll(Class* myClass, std::string lineBreak) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -93,11 +104,9 @@ stringBuffer->append(ConstructorUtil::view(constructor[index], lineBreak));
 }
 
 
-    public: static std::string view(Constructor* constructor, std::string lineBreak){
+    auto ConstructorUtil::view(Constructor* constructor, std::string lineBreak) -> std::string{
 
-                        if(constructor != 
-                                    nullptr
-                                )
+                        if(!constructor.empty())
                         
                                     {
                                     
@@ -120,7 +129,7 @@ stringBuffer->append(constructor->getName());
         {
 stringBuffer->append(commonSeps->SPACE);
     
-stringBuffer->append(classes[index].getName());
+stringBuffer->append(classes[index]->getName());
     
 stringBuffer->append(commonSeps->COLON);
     
@@ -145,11 +154,6 @@ stringBuffer->append(lineBreak);
 }
 
 
-private: ConstructorUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CONSTRUCTORUTIL_CPP

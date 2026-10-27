@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_LOADGAMEFORM_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_LOADGAMEFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/LoadGameForm.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -91,20 +101,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LoadGameForm: public CommandForm {
 
-    private: MEUtil* meUtil = MEUtil::getInstance();
-
-    private: bool areChoices= false;
-
-public: LoadGameForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+LoadGameForm::LoadGameForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor), meUtil(MEUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->update();
     
@@ -113,7 +118,7 @@ this->initCommands(commandListener);
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto LoadGameForm::initCommands(CommandListener* cmdListener) -> void{
 
     GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
@@ -132,7 +137,7 @@ this->setCommandListener(cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(){
+    auto LoadGameForm::update() -> void{
 
     BasicArrayList* list = GamePersistanceSingleton::getInstance()->getIds();;
     
@@ -157,12 +162,12 @@ this->areChoices= false;
 
                         }
                             
-super.update();
+CommandForm::update();
     
 }
 
 
-    private: void add(BasicArrayList* list, std::string name, int32_t option){
+    auto LoadGameForm::add(BasicArrayList* list, std::string name, int32_t option) -> void{
 
     ChoiceGroup* choiceGroup = this->getChoiceGroup(list, name, option);;
     
@@ -180,7 +185,7 @@ this->meUtil->appendItem(this, choiceGroup);
 }
 
 
-    private: ChoiceGroup* getChoiceGroup(BasicArrayList* list, std::string name, int32_t option){
+    auto LoadGameForm::getChoiceGroup(BasicArrayList* list, std::string name, int32_t option) -> ChoiceGroup*{
 
     std::string METHOD_NAME = "getChoiceGroup";;
     
@@ -203,7 +208,7 @@ this->meUtil->appendItem(this, choiceGroup);
 
     Object* anyType = list->objectArray[index];;
     
-this->logUtil.putF((new StringMaker())->append(ADDING_CHOICE)->append(anyType->toString())->toString(), this, METHOD_NAME);
+this->logUtil->putF((new StringMaker())->append(ADDING_CHOICE)->append(anyType->toString())->toString(), this, METHOD_NAME);
     
 choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
     
@@ -218,7 +223,7 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 }
 
 
-    public: int32_t getSelectedId(){
+    auto LoadGameForm::getSelectedId() -> int32_t{
 
                         if(this->areChoices)
                         
@@ -248,7 +253,7 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 }
 
 
-    public: int32_t getSelectedText(){
+    auto LoadGameForm::getSelectedText() -> int32_t{
 
                         if(this->areChoices)
                         
@@ -281,7 +286,6 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_LOADGAMEFORM_CPP

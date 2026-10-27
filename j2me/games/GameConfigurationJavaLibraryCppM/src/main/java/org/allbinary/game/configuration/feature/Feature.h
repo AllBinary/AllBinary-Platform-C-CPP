@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/configuration/event/ChangedGameFeatureListener.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class ChangedGameFeatureListener;
+class StdUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -57,11 +56,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Feature
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+    private: static ABHashtable<Object*, Object*>* hashtable;
 
     public: static Feature* getInstance(std::string name);
 
@@ -81,3 +84,19 @@ public: Feature(std::string name);
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/event/ChangedGameFeatureListener.h>)
+#include <org/allbinary/game/configuration/event/ChangedGameFeatureListener.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

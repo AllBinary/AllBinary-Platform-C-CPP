@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserEmailConfigurationData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "USER_EMAIL_CONFIGURATION_NAME";
-
-private: UserEmailConfigurationData(){
+UserEmailConfigurationData::UserEmailConfigurationData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONDATA_CPP

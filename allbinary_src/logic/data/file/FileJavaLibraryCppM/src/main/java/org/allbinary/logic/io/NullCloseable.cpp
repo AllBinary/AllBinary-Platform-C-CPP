@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_NULLCLOSEABLE_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_NULLCLOSEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/NullCloseable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullCloseable
-            : public Object
-        , public Closeable {
 
-    public: static NullCloseable* NULL_CLOSEABLE() { static std::unique_ptr<NullCloseable> value(new NullCloseable()); return value.get(); }
+NullCloseable::NullCloseable() {
+        }
+        auto NullCloseable::NULL_CLOSEABLE_owner() -> NullCloseable* { static std::unique_ptr<NullCloseable> value(new NullCloseable()); return value.get(); }
+NullCloseable* NullCloseable::NULL_CLOSEABLE = NullCloseable::NULL_CLOSEABLE_owner();
 
-    public: void close(){
+    auto NullCloseable::close() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_NULLCLOSEABLE_CPP

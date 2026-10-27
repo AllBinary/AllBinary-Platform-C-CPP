@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTPROCESSORINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTPROCESSORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/AdvertisementProcessorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,23 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementProcessorInterface
-            : public Object
-         {
 
-    public: void process(){
+AdvertisementProcessorInterface::AdvertisementProcessorInterface() {
+        }
+        
+    auto AdvertisementProcessorInterface::process() -> void{
 }
 
 
-    public: void start(){
+    auto AdvertisementProcessorInterface::start() -> void{
 }
 
 
-    public: void stop(){
+    auto AdvertisementProcessorInterface::stop() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTPROCESSORINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/data/TransformStoreDocument.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,11 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h"
 
-class TransformStoreDocument: public TransformHttpRequestDocument {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TransformStoreDocument(PageContext* pageContext, WeblisketSession* weblisketSession) : TransformHttpRequestDocument(pageContext, weblisketSession){
+TransformStoreDocument::TransformStoreDocument(PageContext* pageContext, WeblisketSession* weblisketSession) : TransformHttpRequestDocument(pageContext, weblisketSession), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,10 +91,10 @@ public: TransformStoreDocument(PageContext* pageContext, WeblisketSession* webli
     std::string storeName = weblisketSession->getStoreName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Using Session StoreName: " +storeName, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Using Session StoreName: ") +JavaString::valueOf(storeName), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -101,10 +108,10 @@ this->getBaseNode()->appendChild((new RequestParams(dynamic_cast<HttpServletRequ
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -119,7 +126,7 @@ this->getBaseNode()->appendChild((new RequestParams(dynamic_cast<HttpServletRequ
 }
 
 
-public: TransformStoreDocument(SearchRequest* searchRequest) : TransformHttpRequestDocument(searchRequest){
+TransformStoreDocument::TransformStoreDocument(SearchRequest* searchRequest) : TransformHttpRequestDocument(searchRequest), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -137,10 +144,10 @@ this->getBaseNode()->appendChild(searchRequest->getParams()->getParamsNode(this-
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -155,7 +162,6 @@ this->getBaseNode()->appendChild(searchRequest->getParams()->getParamsNode(this-
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENT_CPP

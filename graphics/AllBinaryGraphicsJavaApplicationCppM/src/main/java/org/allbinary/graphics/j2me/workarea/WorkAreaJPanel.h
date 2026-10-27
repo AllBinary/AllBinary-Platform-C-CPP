@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,68 +41,26 @@
             #include "java/lang/Runnable.h"
         
 #include <java/awt.h>
-
-      
 #include <java/util/EventListener.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/LinkedList.h>
-
-      
 #include <javax/swing.h>
-
-      
-#include <javax/swing/tree/MutableTreeNode.h>
-
-      
-#include <org/allbinary/dom/DomHelper.h>
-
-      
-#include <org/allbinary/graphics/j2me/StatusFactory.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h>
-
-      
+class MutableTreeNode;
+class DomHelper;
+class StatusFactory;
+class CanvasDom;
+class CanvasJPanel;
+class MyCanvasEvent;
 #include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventListener.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventService.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/properties/PropertiesJPanel.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/tools/ToolJPanel.h>
-
-      
-#include <org/allbinary/log/LOGGING.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class MyCanvasEventService;
+class PropertiesJPanel;
+class ToolJPanel;
+class LOGGING;
+class StdUtil;
+class LogUtil;
+class BasicArrayList;
+class Document;
+class Node;
 
 
 
@@ -118,23 +81,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/workarea/JPanel.h"
 #include "org/allbinary/graphics/j2me/workarea/WorkAreaJPanelInterface.h"
-#include "org/allbinary/graphics/j2me/workarea/WorkAreaJTreeJPanel.h"
-#include "org/allbinary/graphics/j2me/workarea/Component.h"
-#include "org/allbinary/graphics/j2me/workarea/Dimension.h"
-#include "org/allbinary/graphics/j2me/workarea/WorkAreaDom.h"
-#include "org/allbinary/graphics/j2me/workarea/GridLayout.h"
-#include "org/allbinary/graphics/j2me/workarea/GridBagLayout.h"
-#include "org/allbinary/graphics/j2me/workarea/GridBagConstraints.h"
-#include "org/allbinary/graphics/j2me/workarea/KeyAdapter.h"
-#include "org/allbinary/graphics/j2me/workarea/KeyEvent.h"
+class WorkAreaJTreeJPanel;
+class Component;
+class Dimension;
+class WorkAreaDom;
+class GridLayout;
+class GridBagLayout;
+class GridBagConstraints;
+class KeyAdapter;
+class KeyEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WorkAreaJPanel: public JPanel, public WorkAreaJPanelInterface, public MyCanvasEventListener, public EventListener, public Runnable {
 
     private: static inline org::w3c::dom::Document* document;
 
     public: static Document* getDocument();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: LinkedList* canvasJPanelList;
 
@@ -148,7 +115,7 @@ class WorkAreaJPanel: public JPanel, public WorkAreaJPanelInterface, public MyCa
 
     private: WorkAreaJTreeJPanel* workAreaJTreeJPanel;
 
-    private: bool isPlaying = false;
+    private: bool isPlaying_ = false;
 
 public: WorkAreaJPanel(std::string name, Dimension* dimension, int32_t x, int32_t y);
 
@@ -260,3 +227,106 @@ public: WorkAreaJPanel(WorkAreaDom* workAreaDom, Dimension* dimension);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<java/util/EventListener.h>)
+#include <java/util/EventListener.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/LinkedList.h>)
+#include <java/util/LinkedList.h>
+#endif
+#if __has_include(<javax/swing.h>)
+#include <javax/swing.h>
+#endif
+#if __has_include(<javax/swing/tree/MutableTreeNode.h>)
+#include <javax/swing/tree/MutableTreeNode.h>
+#endif
+#if __has_include(<org/allbinary/dom/DomHelper.h>)
+#include <org/allbinary/dom/DomHelper.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/StatusFactory.h>)
+#include <org/allbinary/graphics/j2me/StatusFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventListener.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventListener.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventService.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventService.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/properties/PropertiesJPanel.h>)
+#include <org/allbinary/graphics/j2me/workarea/properties/PropertiesJPanel.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/tools/ToolJPanel.h>)
+#include <org/allbinary/graphics/j2me/workarea/tools/ToolJPanel.h>
+#endif
+#if __has_include(<org/allbinary/log/LOGGING.h>)
+#include <org/allbinary/log/LOGGING.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/JPanel.h")
+#include "org/allbinary/graphics/j2me/workarea/JPanel.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/WorkAreaJPanelInterface.h")
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaJPanelInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/WorkAreaJTreeJPanel.h")
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaJTreeJPanel.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/Component.h")
+#include "org/allbinary/graphics/j2me/workarea/Component.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/Dimension.h")
+#include "org/allbinary/graphics/j2me/workarea/Dimension.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/WorkAreaDom.h")
+#include "org/allbinary/graphics/j2me/workarea/WorkAreaDom.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/GridLayout.h")
+#include "org/allbinary/graphics/j2me/workarea/GridLayout.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/GridBagLayout.h")
+#include "org/allbinary/graphics/j2me/workarea/GridBagLayout.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/GridBagConstraints.h")
+#include "org/allbinary/graphics/j2me/workarea/GridBagConstraints.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/KeyAdapter.h")
+#include "org/allbinary/graphics/j2me/workarea/KeyAdapter.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/KeyEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/KeyEvent.h"
+#endif
+
+        #endif
+    

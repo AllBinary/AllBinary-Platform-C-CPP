@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORESCANVAS_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORESCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/displayable/HighScoresCanvas.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -137,33 +147,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScoresCanvas: public GameCommandCanvas, public HighScoresResultsListener {
 
-    public: static inline const std::string NAME = "HighScoresCanvas";
-
-    private: Paintable* paintable = NullPaintable::getInstance();
-
-    private: HighScoreCommandsFactory* highScoreCommandsFactory = HighScoreCommandsFactory::getInstance();
-
-    private: SimpleTextPaintable* waitPaintable = new SimpleTextPaintable(this->commonStrings->PLEASE_WAIT_FOR_SERVER, BasicColorFactory::getInstance()->WHITE);
-
-    private: HighScoresPaintable* highScoresPaintable;
-
-    private: HighScoresFactoryInterface* highScoresFactoryInterface;
-
-    protected: ColorFillBasePaintable* colorFillPaintable;
-
-    private: HighScoresHelperBase* highScoresHelper = new HighScoresHelperBase();
-
-    private: GameInfo* gameInfo;
-
-    private: HighScoresCanvasInputProcessor* highScoresCanvasInputProcessor;
-
-    private: Command* currentCommand = this->highScoreCommandsFactory->HIGH_SCORE_COMMANDS[0];
-
-    private: bool hasPainted = false;
-
-public: HighScoresCanvas(CommandListener* commandListener, AllBinaryGameLayerManager* allBinaryGameLayerManager, GameInfo* gameInfo, HighScoresPaintable* paintable, HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface* highScoresCanvasInputProcessorFactoryInterface) : GameCommandCanvas(commandListener, HighScoresCanvas::NAME, allBinaryGameLayerManager->getBackgroundBasicColor(), allBinaryGameLayerManager->getForegroundBasicColor()){
+HighScoresCanvas::HighScoresCanvas(CommandListener* commandListener, AllBinaryGameLayerManager* allBinaryGameLayerManager, GameInfo* gameInfo, HighScoresPaintable* paintable, HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface* highScoresCanvasInputProcessorFactoryInterface) : GameCommandCanvas(commandListener, HighScoresCanvas::NAME, allBinaryGameLayerManager->getBackgroundBasicColor(), allBinaryGameLayerManager->getForegroundBasicColor()), paintable(NullPaintable::getInstance()), highScoreCommandsFactory(HighScoreCommandsFactory::getInstance()), waitPaintable(new SimpleTextPaintable(this->commonStrings->PLEASE_WAIT_FOR_SERVER, BasicColorFactory::getInstance()->WHITE)), highScoresHelper(new HighScoresHelperBase()), currentCommand(this->highScoreCommandsFactory->HIGH_SCORE_COMMANDS[0]){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -257,7 +242,7 @@ highScoresCanvas->hasPainted= false;
     
 logUtil->putF(stringMaker->append("HighScoresCanvas - Request repaint to be sure: ")->appendlong(currentTimeMillis)->toString(), this, commonStrings->RUN);
     
-highScoresCanvas->repaintBehavior.onChangeRepaint(highScoresCanvas);
+highScoresCanvas->repaintBehavior->onChangeRepaint(highScoresCanvas);
     
 
                         if(!isHTML)
@@ -271,7 +256,7 @@ highScoresCanvas->repaintBehavior.onChangeRepaint(highScoresCanvas);
 
                                     }
                                 
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 logUtil->putF(stringMaker->append("HighScoresCanvas - Now that the canvas has completed repaint go ahead and fetch the scores: ")->appendlong(currentTimeMillis)->toString(), this, commonStrings->RUN);
     
@@ -299,7 +284,7 @@ SecondaryThreadPool::getInstance()->runTask(new HighScoreRunnable(this));
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto HighScoresCanvas::initCommands(CommandListener* cmdListener) -> void{
 this->removeAllCommands();
     
 this->addCommand(GameCommandsFactory::getInstance()->CLOSE_AND_SHOW_GAME_CANVAS);
@@ -309,23 +294,23 @@ this->setCommandListener(cmdListener);
 }
 
 
-    public: void open(){
-super.open();
+    auto HighScoresCanvas::open() -> void{
+GameCommandCanvas::open();
     
 this->highScoresCanvasInputProcessor->open();
     
 }
 
 
-    public: void close(){
-super.close();
+    auto HighScoresCanvas::close() -> void{
+GameCommandCanvas::close();
     
 this->highScoresCanvasInputProcessor->close();
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto HighScoresCanvas::paint(Graphics* graphics) -> void{
 this->colorFillPaintable->paint(graphics);
     
 this->paintable->paint(graphics);
@@ -339,14 +324,14 @@ this->paintable->paint(graphics);
 
                                     }
                                 
-super.paint(graphics);
+GameCommandCanvas::paint(graphics);
     
 this->hasPainted= true;
     
 }
 
 
-    public: void executeUpdate(){
+    auto HighScoresCanvas::executeUpdate() -> void{
 
         try {
             this->highScoresFactoryInterface->fetchHighScores(this->getGameInfo(), this);
@@ -362,7 +347,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UP
 }
 
 
-    private: HighScoresPaintable* getHighScoresPaintable(){
+    auto HighScoresCanvas::getHighScoresPaintable() -> HighScoresPaintable*{
 
 
 
@@ -372,13 +357,11 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UP
 }
 
 
-    public: void setHighScoresArray(std::vector<HighScores*> highScoresArray){
+    auto HighScoresCanvas::setHighScoresArray(std::vector<HighScores*> highScoresArray) -> void{
 
         try {
             
-                        if(highScoresArray != 
-                                    nullptr
-                                )
+                        if(!highScoresArray.empty())
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->appendint(highScoresArray.size())->toString(), this, "setHighScoresArray");
@@ -411,8 +394,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UP
 
                 //@Throws(Exception.constructor)
             
-    public: void updateCommand(Command* command){
-this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(this->stringUtil.toString(command))->toString(), this, this->commonStrings->UPDATE);
+    auto HighScoresCanvas::updateCommand(Command* command) -> void{
+this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(this->stringUtil->toString(command))->toString(), this, this->commonStrings->UPDATE);
     
 
     GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
@@ -474,16 +457,16 @@ this->currentCommand= command;
     
 this->close();
     
-super.initMenu();
+GameCommandCanvas::initMenu();
     
 this->open();
     
-this->repaintBehavior.onChangeRepaint(this);
+this->repaintBehavior->onChangeRepaint(this);
     
 }
 
 
-    public: GameInfo* getGameInfo(){
+    auto HighScoresCanvas::getGameInfo() -> GameInfo*{
 
 
 
@@ -493,15 +476,14 @@ this->repaintBehavior.onChangeRepaint(this);
 }
 
 
-    private: void setPaintable(Paintable* paintable){
+    auto HighScoresCanvas::setPaintable(Paintable* paintable) -> void{
 this->paintable= paintable;
     
-this->repaintBehavior.onChangeRepaint(this);
+this->repaintBehavior->onChangeRepaint(this);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORESCANVAS_CPP

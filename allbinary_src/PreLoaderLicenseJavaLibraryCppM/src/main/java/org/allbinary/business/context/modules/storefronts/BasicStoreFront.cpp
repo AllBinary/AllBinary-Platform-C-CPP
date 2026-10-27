@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONT_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFront.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,71 +82,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
-class BasicStoreFront
-            : public Object
-        , public BasicStoreFrontInterface {
 
-    private: std::string name;
-
-    private: std::string userName;
-
-    private: std::string basketName;
-
-    private: std::string homeHostName;
-
-    private: std::string homeHostNamePath;
-
-    private: std::string hostName;
-
-    private: std::string hostNamePath;
-
-    private: std::string testHomeHostName;
-
-    private: std::string testHomeHostNamePath;
-
-    private: std::string testHostName;
-
-    private: std::string testHostNamePath;
-
-    private: std::string imagePath;
-
-    private: std::string staticPath;
-
-    private: std::string categoryPath;
-
-    private: std::string inventoryControl;
-
-    private: std::string subStores;
-
-    private: std::string tagLocation;
-
-    private: std::string packageLocation;
-
-    private: std::string ftp;
-
-    private: std::string ftpPath;
-
-    private: std::string ftpUserName;
-
-    private: std::string ftpPassword;
-
-    private: std::string testFtp;
-
-    private: std::string testFtpPath;
-
-    private: std::string testFtpUserName;
-
-    private: std::string testFtpPassword;
-
-    private: std::string timeCreated;
-
-    private: std::string lastModified;
-
-public: BasicStoreFront(){
+BasicStoreFront::BasicStoreFront(){
 }
 
 
-public: BasicStoreFront(HashMap<Object*, Object*>* storeHashMap){
+BasicStoreFront::BasicStoreFront(HashMap<Object*, Object*>* storeHashMap){
 
     StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
@@ -199,24 +150,24 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestHtmlPath(){
+    auto BasicStoreFront::getTestHtmlPath() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org.allbinary.globals.URLGLOBALS.getTestHtmlPath() +this->getCurrentHostNamePath();
+                        return org.allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
 
 
-    public: std::string getCurrentHostName(){
+    auto BasicStoreFront::getCurrentHostName() -> std::string{
 
     std::string location = 
                 null
             ;;
     
 
-                        if(org.allbinary.globals.URLGLOBALS.isTestingMode())
+                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHostName();
@@ -239,14 +190,14 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getCurrentHostNamePath(){
+    auto BasicStoreFront::getCurrentHostNamePath() -> std::string{
 
     std::string location = 
                 null
             ;;
     
 
-                        if(org.allbinary.globals.URLGLOBALS.isTestingMode())
+                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHostNamePath();
@@ -269,14 +220,14 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getCurrentHomeHostName(){
+    auto BasicStoreFront::getCurrentHomeHostName() -> std::string{
 
     std::string location = 
                 null
             ;;
     
 
-                        if(org.allbinary.globals.URLGLOBALS.isTestingMode())
+                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostName();
@@ -299,14 +250,14 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getCurrentHomeHostNamePath(){
+    auto BasicStoreFront::getCurrentHomeHostNamePath() -> std::string{
 
     std::string location = 
                 null
             ;;
     
 
-                        if(org.allbinary.globals.URLGLOBALS.isTestingMode())
+                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostNamePath();
@@ -329,7 +280,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getName(){
+    auto BasicStoreFront::getName() -> std::string{
 
 
 
@@ -339,7 +290,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getUserName(){
+    auto BasicStoreFront::getUserName() -> std::string{
 
 
 
@@ -349,7 +300,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getBasketName(){
+    auto BasicStoreFront::getBasketName() -> std::string{
 
 
 
@@ -359,7 +310,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getHomeHostName(){
+    auto BasicStoreFront::getHomeHostName() -> std::string{
 
 
 
@@ -369,7 +320,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getHomeHostNamePath(){
+    auto BasicStoreFront::getHomeHostNamePath() -> std::string{
 
 
 
@@ -379,7 +330,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getHostName(){
+    auto BasicStoreFront::getHostName() -> std::string{
 
 
 
@@ -389,7 +340,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getHostNamePath(){
+    auto BasicStoreFront::getHostNamePath() -> std::string{
 
 
 
@@ -399,7 +350,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestHomeHostName(){
+    auto BasicStoreFront::getTestHomeHostName() -> std::string{
 
 
 
@@ -409,7 +360,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestHomeHostNamePath(){
+    auto BasicStoreFront::getTestHomeHostNamePath() -> std::string{
 
 
 
@@ -419,7 +370,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestHostName(){
+    auto BasicStoreFront::getTestHostName() -> std::string{
 
 
 
@@ -429,7 +380,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestHostNamePath(){
+    auto BasicStoreFront::getTestHostNamePath() -> std::string{
 
 
 
@@ -439,7 +390,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getStaticPath(){
+    auto BasicStoreFront::getStaticPath() -> std::string{
 
 
 
@@ -449,7 +400,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getCategoryPath(){
+    auto BasicStoreFront::getCategoryPath() -> std::string{
 
 
 
@@ -459,7 +410,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getInventoryControl(){
+    auto BasicStoreFront::getInventoryControl() -> std::string{
 
 
 
@@ -471,7 +422,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getSubStores(){
+    auto BasicStoreFront::getSubStores() -> BasicArrayList*{
 
         try {
             
@@ -500,7 +451,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTagLocation(){
+    auto BasicStoreFront::getTagLocation() -> std::string{
 
 
 
@@ -510,7 +461,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getPackageLocation(){
+    auto BasicStoreFront::getPackageLocation() -> std::string{
 
 
 
@@ -520,7 +471,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getFtp(){
+    auto BasicStoreFront::getFtp() -> std::string{
 
 
 
@@ -530,7 +481,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getFtpUserName(){
+    auto BasicStoreFront::getFtpUserName() -> std::string{
 
 
 
@@ -540,7 +491,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getFtpPassword(){
+    auto BasicStoreFront::getFtpPassword() -> std::string{
 
 
 
@@ -550,7 +501,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestFtp(){
+    auto BasicStoreFront::getTestFtp() -> std::string{
 
 
 
@@ -560,7 +511,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestFtpUserName(){
+    auto BasicStoreFront::getTestFtpUserName() -> std::string{
 
 
 
@@ -570,7 +521,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestFtpPassword(){
+    auto BasicStoreFront::getTestFtpPassword() -> std::string{
 
 
 
@@ -580,7 +531,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getFtpPath(){
+    auto BasicStoreFront::getFtpPath() -> std::string{
 
 
 
@@ -590,7 +541,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTestFtpPath(){
+    auto BasicStoreFront::getTestFtpPath() -> std::string{
 
 
 
@@ -600,7 +551,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getTimeCreated(){
+    auto BasicStoreFront::getTimeCreated() -> std::string{
 
 
 
@@ -610,7 +561,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: std::string getLastModified(){
+    auto BasicStoreFront::getLastModified() -> std::string{
 
 
 
@@ -620,7 +571,6 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONT_CPP

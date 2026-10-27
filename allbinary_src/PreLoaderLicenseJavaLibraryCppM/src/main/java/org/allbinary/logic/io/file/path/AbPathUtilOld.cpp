@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/path/AbPathUtilOld.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,37 +78,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Used to correct user input for paths
-class AbPathUtilOld
-            : public Object
-         {
+auto AbPathUtilOld::instance_owner() -> AbPathUtilOld* { static std::unique_ptr<AbPathUtilOld> value(new AbPathUtilOld()); return value.get(); }
+AbPathUtilOld* AbPathUtilOld::instance = AbPathUtilOld::instance_owner();
 
-    private: static AbPathUtilOld* instance() { static std::unique_ptr<AbPathUtilOld> value(new AbPathUtilOld()); return value.get(); }
-
-    public: static AbPathUtilOld* getInstance(){
+    auto AbPathUtilOld::getInstance() -> AbPathUtilOld*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPathUtilOld::instance();
+                        return AbPathUtilOld::instance;
     
 }
 
 
-    private: static inline const int32_t MIN = 4;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbPathData* abPathData = AbPathData::getInstance();
-
-    private: FilePathData* filePathData = FilePathData::getInstance();
-
-private: AbPathUtilOld(){
+AbPathUtilOld::AbPathUtilOld() : logUtil(LogUtil::getInstance()), abPathData(AbPathData::getInstance()), filePathData(FilePathData::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getExtension(AbFilePath* abFilePath){
+    auto AbPathUtilOld::getExtension(AbFilePath* abFilePath) -> std::string{
 
 
 
@@ -110,7 +109,7 @@ private: AbPathUtilOld(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getExtension(AbPath* abPath){
+    auto AbPathUtilOld::getExtension(AbPath* abPath) -> std::string{
 
 
 
@@ -122,7 +121,7 @@ private: AbPathUtilOld(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getExtension(std::string filePath){
+    auto AbPathUtilOld::getExtension(std::string filePath) -> std::string{
 
                         if(filePath.size() < AbPathUtilOld::MIN)
                         
@@ -130,7 +129,7 @@ private: AbPathUtilOld(){
                                     
 
 
-                            throw new Exception("Could not be a file path since its less that 4 characters");
+                            throw Exception("Could not be a file path since its less that 4 characters");
                     
 
                                     }
@@ -142,10 +141,10 @@ private: AbPathUtilOld(){
     std::string extension = JavaString::substring(filePath, beginIndex +1);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("FileExtension: " +extension, this, "getExtension()");
+                                    this->logUtil->putF(JavaString::valueOf("FileExtension: ") +JavaString::valueOf(extension), this, "getExtension()");
     
 
                                     }
@@ -161,7 +160,7 @@ private: AbPathUtilOld(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtension(AbFilePath* abFilePath){
+    auto AbPathUtilOld::getWithoutExtension(AbFilePath* abFilePath) -> std::string{
 
 
 
@@ -173,7 +172,7 @@ private: AbPathUtilOld(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtension(AbPath* abPath){
+    auto AbPathUtilOld::getWithoutExtension(AbPath* abPath) -> std::string{
 
 
 
@@ -185,7 +184,7 @@ private: AbPathUtilOld(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtension(std::string filePath){
+    auto AbPathUtilOld::getWithoutExtension(std::string filePath) -> std::string{
 
                         if(filePath.size() < AbPathUtilOld::MIN)
                         
@@ -193,7 +192,7 @@ private: AbPathUtilOld(){
                                     
 
 
-                            throw new Exception("Could not be a file path since its less that 4 characters");
+                            throw Exception("Could not be a file path since its less that 4 characters");
                     
 
                                     }
@@ -205,10 +204,10 @@ private: AbPathUtilOld(){
     std::string pathWithoutExtension = JavaString::substring(filePath, 0, endIndex);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("FileWithoutExtension: " +pathWithoutExtension, this, "getWithoutExtension()");
+                                    this->logUtil->putF(JavaString::valueOf("FileWithoutExtension: ") +JavaString::valueOf(pathWithoutExtension), this, "getWithoutExtension()");
     
 
                                     }
@@ -222,7 +221,7 @@ private: AbPathUtilOld(){
 }
 
 
-    public: bool isValid(std::string path){
+    auto AbPathUtilOld::isValid(std::string path) -> bool{
 
                         if(this->isValidStart(path))
                         
@@ -252,7 +251,7 @@ private: AbPathUtilOld(){
 }
 
 
-    private: bool isValidStart(std::string path){
+    auto AbPathUtilOld::isValidStart(std::string path) -> bool{
 
                         if(path[0] == this->abPathData->SEPARATORCHAR)
                         
@@ -279,7 +278,7 @@ private: AbPathUtilOld(){
 }
 
 
-    private: bool isValidEnd(std::string path){
+    auto AbPathUtilOld::isValidEnd(std::string path) -> bool{
 
                         if(StringValidationUtil::getInstance()->isEmpty(path))
                         
@@ -319,12 +318,12 @@ private: AbPathUtilOld(){
 }
 
 
-    public: std::string adjustStart(std::string path){
+    auto AbPathUtilOld::adjustStart(std::string path) -> std::string{
 
                         if(!this->isValidStart(path))
                         
                                     {
-                                    path= this->abPathData->SEPARATOR +path;
+                                    path= JavaString::valueOf(this->abPathData->SEPARATOR) +JavaString::valueOf(path);
     
 
                                     }
@@ -338,12 +337,12 @@ private: AbPathUtilOld(){
 }
 
 
-    public: std::string adjustEnd(std::string path){
+    auto AbPathUtilOld::adjustEnd(std::string path) -> std::string{
 
                         if(!this->isValidEnd(path))
                         
                                     {
-                                    path= path +this->abPathData->SEPARATOR;
+                                    path= JavaString::valueOf(path) +JavaString::valueOf(this->abPathData->SEPARATOR);
     
 
                                     }
@@ -357,7 +356,7 @@ private: AbPathUtilOld(){
 }
 
 
-    public: std::string adjust(std::string path){
+    auto AbPathUtilOld::adjust(std::string path) -> std::string{
 
                         if(StringValidationUtil::getInstance()->isEmpty(path))
                         
@@ -390,7 +389,7 @@ private: AbPathUtilOld(){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string getNameFromPath(std::string categoryPath){
+    auto AbPathUtilOld::getNameFromPath(std::string categoryPath) -> std::string{
 
     int32_t endIndex = JavaString::lastIndexOf(categoryPath, this->abPathData->SEPARATOR);;
     
@@ -446,7 +445,7 @@ private: AbPathUtilOld(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: AbPath* removeNameFromPath(std::string categoryPath){
+    auto AbPathUtilOld::removeNameFromPath(std::string categoryPath) -> AbPath*{
 
     int32_t endIndex = JavaString::lastIndexOf(categoryPath, this->abPathData->SEPARATOR);;
     
@@ -501,7 +500,6 @@ private: AbPathUtilOld(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_CPP

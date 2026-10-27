@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_PROPERTIESTAG_CPP
+        #define TAGS_PROPERTIESTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/PropertiesTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,18 +63,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/CommandTag.h"
 
-class PropertiesTag: public CommandTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+PropertiesTag::PropertiesTag() : logUtil(LogUtil::getInstance()){
 
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-public: PropertiesTag(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -74,7 +79,7 @@ this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
 }
 
 
-    protected: HashMap<Object*, Object*>* getPropertiesHashMap(){
+    auto PropertiesTag::getPropertiesHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -84,9 +89,9 @@ this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
 }
 
 
-    public: int32_t doEndTag(){
+    auto PropertiesTag::doEndTag() -> int32_t{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Tag Ended", this, "doEndTag");
@@ -105,7 +110,6 @@ this->propertiesHashMap= StdUtil::getInstance()->createHashMap();
 }
 
 
-};
 
-            
 
+        #endif //TAGS_PROPERTIESTAG_CPP

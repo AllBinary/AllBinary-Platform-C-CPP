@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/table/HtmlTableData.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,50 +60,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlTableData
-            : public Object
-         {
 
-    private: static HtmlTableData* instance() { static std::unique_ptr<HtmlTableData> value(new HtmlTableData()); return value.get(); }
+HtmlTableData::HtmlTableData() : LEFT(CommonStrings::getInstance()->LEFT), RIGHT(CommonStrings::getInstance()->RIGHT), FRAMES(
+                                                        {
+                                                            this->NONE,this->TOP,this->BOTTOM,this->TOPBOT,this->SIDES,this->ALL,this->BORDERED
+                                                        }) {
+        }
+        auto HtmlTableData::instance_owner() -> HtmlTableData* { static std::unique_ptr<HtmlTableData> value(new HtmlTableData()); return value.get(); }
+HtmlTableData* HtmlTableData::instance = HtmlTableData::instance_owner();
 
-    public: static HtmlTableData* getInstance(){
+    auto HtmlTableData::getInstance() -> HtmlTableData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlTableData::instance();
+                        return HtmlTableData::instance;
     
 }
 
 
-    public: const std::string LEFT = CommonStrings::getInstance()->LEFT;
 
-    public: const std::string RIGHT = CommonStrings::getInstance()->RIGHT;
 
-    public: const std::string NONE = "none";
-
-    public: const std::string TOP = "top";
-
-    public: const std::string BOTTOM = "bottom";
-
-    public: const std::string TOPBOT = "topbot";
-
-    public: const std::string SIDES = "sides";
-
-    public: const std::string ALL = "all";
-
-    public: const std::string BORDERED = "border";
-
-    public: const std::string BASIC = "basic";
-
-    public: const std::string ROWS = "rows";
-
-    public: const std::vector<std::string> FRAMES = 
-                                                        {
-                                                            this->NONE,this->TOP,this->BOTTOM,this->TOPBOT,this->SIDES,this->ALL,this->BORDERED
-                                                        };
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLEDATA_CPP

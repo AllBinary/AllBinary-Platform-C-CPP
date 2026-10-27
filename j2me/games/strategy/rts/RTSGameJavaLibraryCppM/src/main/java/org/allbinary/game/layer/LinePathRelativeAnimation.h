@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_H
         #define ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/layer/Layer.h>
-
-      
+class Graphics;
+class GPoint;
+class Layer;
 
 
 
@@ -56,12 +55,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/LinePathAnimation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LinePathRelativeAnimation: public LinePathAnimation {
 
-    private: static LinePathRelativeAnimation* instanceC() { static std::unique_ptr<LinePathRelativeAnimation> value(new LinePathRelativeAnimation()); return value.get(); }
+    private: static LinePathRelativeAnimation* instanceC_owner();
+    private: static LinePathRelativeAnimation* instanceC;
 
     public: static LinePathAnimation* getInstance();
 
+
+            
+    public: LinePathRelativeAnimation();
+        
     public: void paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer);
 
 };
@@ -70,3 +78,22 @@ class LinePathRelativeAnimation: public LinePathAnimation {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/layer/Layer.h>)
+#include <org/allbinary/layer/Layer.h>
+#endif
+#if __has_include("org/allbinary/game/layer/LinePathAnimation.h")
+#include "org/allbinary/game/layer/LinePathAnimation.h"
+#endif
+
+        #endif
+    

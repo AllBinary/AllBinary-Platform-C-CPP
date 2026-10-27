@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONACTIONINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONACTIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,9 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationActionInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONACTIONINTERFACE_CPP

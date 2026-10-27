@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_MATHDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_MATHDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/MathData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,35 +61,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MathData
-            : public Object
-         {
+auto MathData::instance_owner() -> MathData* { static std::unique_ptr<MathData> value(new MathData()); return value.get(); }
+MathData* MathData::instance = MathData::instance_owner();
 
-    private: static MathData* instance() { static std::unique_ptr<MathData> value(new MathData()); return value.get(); }
-
-    public: static MathData* getInstance(){
+    auto MathData::getInstance() -> MathData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MathData::instance();
+                        return MathData::instance;
     
 }
 
 
-    public: std::string EQUALS;
-
-    public: const std::string PLUS = "+";
-
-    public: const std::string GREATER_THAN = ">";
-
-    public: std::string MINUS;
-
-    public: std::string DIVIDE;
-
-    public: std::string MULTIPLY;
-
-private: MathData(){
+MathData::MathData(){
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -94,7 +89,6 @@ this->MULTIPLY= CommonPhoneStrings::getInstance()->STAR;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_MATHDATA_CPP

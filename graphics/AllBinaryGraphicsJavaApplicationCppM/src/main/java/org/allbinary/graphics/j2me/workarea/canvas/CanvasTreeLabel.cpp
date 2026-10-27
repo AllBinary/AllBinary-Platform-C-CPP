@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASTREELABEL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASTREELABEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/canvas/CanvasTreeLabel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CanvasTreeLabel
-            : public Object
-         {
 
-    private: std::string label;
-
-public: CanvasTreeLabel(std::string str){
+CanvasTreeLabel::CanvasTreeLabel(std::string str){
 this->label= str;
     
 }
 
 
-    public: std::string toString(){
+    auto CanvasTreeLabel::toString() -> std::string{
 
 
 
@@ -67,7 +72,6 @@ this->label= str;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASTREELABEL_CPP

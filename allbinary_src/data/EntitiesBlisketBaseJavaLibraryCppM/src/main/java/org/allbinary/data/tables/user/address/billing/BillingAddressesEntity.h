@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/data/tables/user/address/StreetAddressesEntity.h>
-
-      
 
 
 
@@ -49,6 +52,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BillingAddressesEntity: public StreetAddressesEntity {
 
     private: const std::string TABLENAME = "billing";
@@ -61,3 +68,13 @@ public: BillingAddressesEntity(std::string userName);
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITY_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tables/user/address/StreetAddressesEntity.h>)
+#include <org/allbinary/data/tables/user/address/StreetAddressesEntity.h>
+#endif
+
+        #endif
+    

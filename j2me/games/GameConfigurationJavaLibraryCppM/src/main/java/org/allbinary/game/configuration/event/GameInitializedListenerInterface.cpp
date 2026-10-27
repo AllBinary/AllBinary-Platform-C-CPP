@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/event/GameInitializedListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
 
-class GameInitializedListenerInterface: public EventListenerInterface {
+//Interface - declared in the header
 
-    public: virtual void onGameInitialized(GameInitializedEvent* gameInitializedEvent) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDLISTENERINTERFACE_CPP

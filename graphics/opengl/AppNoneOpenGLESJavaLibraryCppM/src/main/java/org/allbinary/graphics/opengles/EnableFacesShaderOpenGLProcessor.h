@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_ENABLEFACESSHADEROPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_ENABLEFACESSHADEROPENGLPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -15,12 +20,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
+class GL10;
 #include <org/allbinary/graphics/threed/min3d/renderer/processor/ObjectThreedOpenGLProcessor.h>
-
-      
 
 
 
@@ -40,15 +41,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EnableFacesShaderOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static EnableFacesShaderOpenGLProcessor* instance() { static std::unique_ptr<EnableFacesShaderOpenGLProcessor> value(new EnableFacesShaderOpenGLProcessor()); return value.get(); }
+    private: static EnableFacesShaderOpenGLProcessor* instance_owner();
+    private: static EnableFacesShaderOpenGLProcessor* instance;
 
     public: static EnableFacesShaderOpenGLProcessor* getInstance();
 
 public: EnableFacesShaderOpenGLProcessor();
 
     public: void process(GL10* gl, Object* anyType);
+    public: void process(GL10* gl, const std::string& anyType) { return process(gl, JavaString::box(anyType)); }
 
 };
 
@@ -56,3 +63,16 @@ public: EnableFacesShaderOpenGLProcessor();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_ENABLEFACESSHADEROPENGLPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_ENABLEFACESSHADEROPENGLPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_ENABLEFACESSHADEROPENGLPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<org/allbinary/graphics/threed/min3d/renderer/processor/ObjectThreedOpenGLProcessor.h>)
+#include <org/allbinary/graphics/threed/min3d/renderer/processor/ObjectThreedOpenGLProcessor.h>
+#endif
+
+        #endif
+    

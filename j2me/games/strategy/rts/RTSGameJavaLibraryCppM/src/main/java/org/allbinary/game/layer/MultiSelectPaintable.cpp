@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_MULTISELECTPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_MULTISELECTPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/MultiSelectPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,28 +84,13 @@
         #include "org/allbinary/game/layer/SelectionHudPaintable.h"
 #include "org/allbinary/game/layer/RTSLayer.h"
 
-class MultiSelectPaintable: public SelectionHudPaintable {
 
-    private: BasicArrayList* rootNameList = new BasicArrayListD();
-
-    private: std::vector<char> totalCharArray = NullUtil::getInstance()->NULL_CHAR_ARRAY;
-
-    private: std::string rootNamesString = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: const std::string TOTAL = "Total Selected: ";
-
-    private: const int32_t backgroundColor = BasicColorFactory::getInstance()->GREY.intValue();
-
-    private: int32_t totalWidth= 0;
-
-    private: int32_t textLine2Y= 0;
-
-public: MultiSelectPaintable(){
+MultiSelectPaintable::MultiSelectPaintable() : rootNameList(new BasicArrayListD()), totalCharArray(NullUtil::getInstance()->NULL_CHAR_ARRAY), rootNamesString(StringUtil::getInstance()->EMPTY_STRING), backgroundColor(BasicColorFactory::getInstance()->GREY->intValue()){
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
-super.updateMeasurement(graphics);
+    auto MultiSelectPaintable::updateMeasurement(Graphics* graphics) -> void{
+SelectionHudPaintable::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -107,7 +102,7 @@ this->textLine2Y= (this->y +font->getHeight());
 }
 
 
-    public: void update(BasicArrayList* list){
+    auto MultiSelectPaintable::update(BasicArrayList* list) -> void{
 this->clear();
     
 
@@ -170,13 +165,13 @@ this->rootNamesString= stringBuffer->toString();
 }
 
 
-    private: void clear(){
+    auto MultiSelectPaintable::clear() -> void{
 this->rootNameList->clear();
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto MultiSelectPaintable::paint(Graphics* graphics) -> void{
 graphics->setColor(this->backgroundColor);
     
 graphics->drawRect(this->getX(), this->y, this->getWidth(), this->getHeight());
@@ -192,7 +187,6 @@ graphics->drawString(this->rootNamesString, this->textX, this->textLine2Y, 0);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_MULTISELECTPAINTABLE_CPP

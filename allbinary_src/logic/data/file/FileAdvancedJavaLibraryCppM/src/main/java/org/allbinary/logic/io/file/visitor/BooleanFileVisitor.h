@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
+class PreLogUtil;
+class AbFile;
 #include <org/allbinary/logic/util/visitor/VisitorInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class CommonStrings;
+class BasicArrayList;
 
 
 
@@ -63,11 +58,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BooleanFileVisitor
-            : public Object
+            : public virtual Object
         , public VisitorInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: BasicArrayList* filterStringBasicArrayList;
 
@@ -89,3 +88,25 @@ public: BooleanFileVisitor(BasicArrayList* filterStringBasicArrayList);
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/visitor/VisitorInterface.h>)
+#include <org/allbinary/logic/util/visitor/VisitorInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

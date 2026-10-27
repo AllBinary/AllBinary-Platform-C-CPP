@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_INPUTAUTOMATIONSERVICEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_INPUTAUTOMATIONSERVICEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,24 +34,12 @@
         
             #include "java/lang/Object.h"
         
-#include <org/osgi/framework/Bundle.h>
-
-      
+class Bundle;
 #include <org/osgi/framework/ServiceFactory.h>
-
-      
-#include <org/osgi/framework/ServiceRegistration.h>
-
-      
-#include <org/allbinary/input/automation/InputAutomationJFrame.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ServiceRegistration;
+class InputAutomationJFrame;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -66,23 +59,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationServiceFactory
-            : public Object
+            : public virtual Object
         , public ServiceFactory {
 
-    private: static InputAutomationServiceFactory* inputAutomationServiceFactory() { static std::unique_ptr<InputAutomationServiceFactory> value(new InputAutomationServiceFactory()); return value.get(); }
+    private: static InputAutomationServiceFactory* inputAutomationServiceFactory_owner();
+    private: static InputAutomationServiceFactory* inputAutomationServiceFactory;
 
     public: static InputAutomationServiceFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
 private: InputAutomationServiceFactory();
 
     public: Object* getService(Bundle* bundle, ServiceRegistration* registration);
 
     public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service);
+    public: void ungetService(Bundle* bundle, ServiceRegistration* registration, const std::string& service) { return ungetService(bundle, registration, JavaString::box(service)); }
 
 };
 
@@ -90,3 +89,28 @@ private: InputAutomationServiceFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_INPUTAUTOMATIONSERVICEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_INPUTAUTOMATIONSERVICEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_INPUTAUTOMATIONSERVICEFACTORY_H_COMPLETE
+        #if __has_include(<org/osgi/framework/Bundle.h>)
+#include <org/osgi/framework/Bundle.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceFactory.h>)
+#include <org/osgi/framework/ServiceFactory.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceRegistration.h>)
+#include <org/osgi/framework/ServiceRegistration.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/InputAutomationJFrame.h>)
+#include <org/allbinary/input/automation/InputAutomationJFrame.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

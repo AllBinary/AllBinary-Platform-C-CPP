@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTSINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTSINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>
-
-      
-#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
-
-      
+class DisplayInBrowserContraintsInterface;
+class TwoDimensionalConstraintInterface;
 
 
 
@@ -52,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementAreaConstraintsInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class AdvertisementAreaConstraintsInterface
+            : public virtual Object
+         {
 
     public: virtual DisplayInBrowserContraintsInterface* getDisplayInBrowserContraints() = 0;
 
@@ -64,3 +71,16 @@ class AdvertisementAreaConstraintsInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTSINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTSINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTSINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>)
+#include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>)
+#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
+#endif
+
+        #endif
+    

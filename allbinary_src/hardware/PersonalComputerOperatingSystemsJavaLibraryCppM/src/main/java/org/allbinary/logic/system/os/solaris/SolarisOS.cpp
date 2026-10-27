@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOS_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/solaris/SolarisOS.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SolarisOS: public GenericOperatingSystem {
 
-public: SolarisOS(){
+SolarisOS::SolarisOS(){
 this->scalable= true;
     
 }
 
 
-    public: bool isAutoHide(){
+    auto SolarisOS::isAutoHide() -> bool{
 
 
 
@@ -66,7 +75,6 @@ this->scalable= true;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOS_CPP

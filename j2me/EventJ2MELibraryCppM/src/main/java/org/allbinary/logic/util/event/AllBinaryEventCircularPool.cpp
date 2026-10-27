@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTCIRCULARPOOL_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTCIRCULARPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/AllBinaryEventCircularPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,9 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/event/AllBinaryEventObjectFactoryInterface.h"
 
-class AllBinaryEventCircularPool: public BaseCircularPool {
 
-public: AllBinaryEventCircularPool(int32_t max){
+AllBinaryEventCircularPool::AllBinaryEventCircularPool(int32_t max){
 this->OBJECT_ARRAY= std::vector<Object*>(max);
     
 this->circularIndexUtil= CircularIndexUtil::createInstance(max);
@@ -62,11 +71,11 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(max);
 }
 
 
-    public: void initAllBinaryEventCircularPool(AllBinaryEventObjectFactoryInterface* allBinaryEventObjectFactoryInterface){
-this->circularIndexUtil.setIndex(0);
+    auto AllBinaryEventCircularPool::initAllBinaryEventCircularPool(AllBinaryEventObjectFactoryInterface* allBinaryEventObjectFactoryInterface) -> void{
+this->circularIndexUtil->setIndex(0);
     
 
-    int32_t size = this->circularIndexUtil.getSize();;
+    int32_t size = this->circularIndexUtil->getSize();;
     
 
 
@@ -82,7 +91,6 @@ this->OBJECT_ARRAY[index]= allBinaryEventObjectFactoryInterface->getInstance();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTCIRCULARPOOL_CPP

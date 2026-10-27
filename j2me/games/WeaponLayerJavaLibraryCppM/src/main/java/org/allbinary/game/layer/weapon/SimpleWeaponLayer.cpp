@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/weapon/SimpleWeaponLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,11 +81,10 @@
         #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
 #include "org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h"
 
-class SimpleWeaponLayer: public WeaponLayer {
 
                 //@Throws(Exception.constructor)
             
-    public: static Animation* createDestroyed(){
+    auto SimpleWeaponLayer::createDestroyed() -> Animation*{
 
 
 
@@ -85,7 +94,7 @@ class SimpleWeaponLayer: public WeaponLayer {
 }
 
 
-public: SimpleWeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition) : WeaponLayer(name, remoteInfo, multiPlayerType, movement, animationInterface, destroyedAnimationInterface, rectangle, viewPosition){
+SimpleWeaponLayer::SimpleWeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition) : WeaponLayer(name, remoteInfo, multiPlayerType, movement, animationInterface, destroyedAnimationInterface, rectangle, viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,7 +106,6 @@ this->setCollidableInferface(new CollidableWeaponBehavior(true));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_CPP

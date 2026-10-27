@@ -21,6 +21,11 @@
         #ifndef TAGS_PROPERTIESTAG_H
         #define TAGS_PROPERTIESTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,14 +33,8 @@
 
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class StdUtil;
+class LogUtil;
 
 
 
@@ -56,15 +55,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/CommandTag.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PropertiesTag: public CommandTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: PropertiesTag();
 
-    protected: HashMap<Object*, Object*>* getPropertiesHashMap();
+    /*protected*/ public: HashMap<Object*, Object*>* getPropertiesHashMap();
 
     public: int32_t doEndTag();
 
@@ -74,3 +77,22 @@ public: PropertiesTag();
 
 
         #endif //TAGS_PROPERTIESTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGS_PROPERTIESTAG_H_COMPLETE)
+        #define TAGS_PROPERTIESTAG_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("tags/CommandTag.h")
+#include "tags/CommandTag.h"
+#endif
+
+        #endif
+    

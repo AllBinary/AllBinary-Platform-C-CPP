@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATION_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/admin/configuration/AdminConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,17 +95,8 @@
         #include "org/allbinary/business/user/modules/admin/configuration/AdminConfigurationInterface.h"
 #include "org/allbinary/business/user/modules/admin/configuration/AdminConfigurationData.h"
 
-class AdminConfiguration
-            : public Object
-        , public AdminConfigurationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ContextConfigurationInterface* contextConfigurationInterface;
-
-public: AdminConfiguration(){
+AdminConfiguration::AdminConfiguration() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->contextConfigurationInterface= ContextConfigurationInterfaceFactory::getInstance()->getInstance(AdminConfigurationData::CONTEXTNAME);
@@ -103,7 +104,7 @@ this->contextConfigurationInterface= ContextConfigurationInterfaceFactory::getIn
 }
 
 
-public: AdminConfiguration(HttpServletRequest* request){
+AdminConfiguration::AdminConfiguration(HttpServletRequest* request) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->getFormData((new RequestParams(request))->toHashMap());
@@ -111,7 +112,7 @@ this->getFormData((new RequestParams(request))->toHashMap());
 }
 
 
-public: AdminConfiguration(HashMap<Object*, Object*>* storeHashMap){
+AdminConfiguration::AdminConfiguration(HashMap<Object*, Object*>* storeHashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->getFormData(storeHashMap);
@@ -121,7 +122,7 @@ this->getFormData(storeHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<Object*, Object*>* storeHashMap){
+    auto AdminConfiguration::getFormData(HashMap<Object*, Object*>* storeHashMap) -> void{
 this->logUtil->putF(this->commonStrings->START, this, "getFormData");
     
 this->setContextConfigurationInterface(dynamic_cast<ContextConfigurationInterface*>(new ContextConfiguration(storeHashMap)));
@@ -132,7 +133,7 @@ this->setContextConfigurationInterface(dynamic_cast<ContextConfigurationInterfac
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void write(){
+    auto AdminConfiguration::write() -> void{
 
     ContextConfigurationDomDocumentMapping* contextConfigurationDomDocumentMapping = new ContextConfigurationDomDocumentMapping(this->getContextConfigurationInterface());;
     
@@ -144,7 +145,7 @@ cryptFileWriter->write(ContextConfigurationPathUtil::getAbPath(AdminConfiguratio
 }
 
 
-    public: ContextConfigurationInterface* getContextConfigurationInterface(){
+    auto AdminConfiguration::getContextConfigurationInterface() -> ContextConfigurationInterface*{
 
 
 
@@ -154,13 +155,12 @@ cryptFileWriter->write(ContextConfigurationPathUtil::getAbPath(AdminConfiguratio
 }
 
 
-    public: void setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface){
+    auto AdminConfiguration::setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface) -> void{
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATION_CPP

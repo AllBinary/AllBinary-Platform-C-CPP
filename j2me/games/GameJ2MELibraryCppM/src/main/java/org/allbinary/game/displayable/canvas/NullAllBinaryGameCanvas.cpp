@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/NullAllBinaryGameCanvas.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,67 +67,66 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvasInterface.h"
 
-class NullAllBinaryGameCanvas
-            : public Object
-        , public AllBinaryGameCanvasInterface {
 
-    public: static NullAllBinaryGameCanvas* NULL_ALLBINARY_GAME_CANVAS() { static std::unique_ptr<NullAllBinaryGameCanvas> value(new NullAllBinaryGameCanvas()); return value.get(); }
+NullAllBinaryGameCanvas::NullAllBinaryGameCanvas() {
+        }
+        auto NullAllBinaryGameCanvas::NULL_ALLBINARY_GAME_CANVAS_owner() -> NullAllBinaryGameCanvas* { static std::unique_ptr<NullAllBinaryGameCanvas> value(new NullAllBinaryGameCanvas()); return value.get(); }
+NullAllBinaryGameCanvas* NullAllBinaryGameCanvas::NULL_ALLBINARY_GAME_CANVAS = NullAllBinaryGameCanvas::NULL_ALLBINARY_GAME_CANVAS_owner();
 
-    public: AllBinaryGameLayerManager* getLayerManager(){
+    auto NullAllBinaryGameCanvas::getLayerManager() -> AllBinaryGameLayerManager*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void addCommand(Command* cmd){
+    auto NullAllBinaryGameCanvas::addCommand(Command* cmd) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getHeight(){
+    auto NullAllBinaryGameCanvas::getHeight() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getWidth(){
+    auto NullAllBinaryGameCanvas::getWidth() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void removeCommand(Command* cmd){
+    auto NullAllBinaryGameCanvas::removeCommand(Command* cmd) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setCommandListener(CommandListener* l){
+    auto NullAllBinaryGameCanvas::setCommandListener(CommandListener* l) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_CPP

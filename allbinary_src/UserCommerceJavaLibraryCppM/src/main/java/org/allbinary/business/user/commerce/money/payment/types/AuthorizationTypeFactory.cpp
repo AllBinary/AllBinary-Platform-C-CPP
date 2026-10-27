@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_AUTHORIZATIONTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_AUTHORIZATIONTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/AuthorizationTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,37 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/types/AuthorizationType.h"
 
-class AuthorizationTypeFactory
-            : public Object
-         {
 
-    private: static AuthorizationTypeFactory* instance() { static std::unique_ptr<AuthorizationTypeFactory> value(new AuthorizationTypeFactory()); return value.get(); }
+AuthorizationTypeFactory::AuthorizationTypeFactory() : NONE(new AuthorizationType("None")), VOICE(new AuthorizationType("Voice")), RETINAL(new AuthorizationType("Retinal")), IMAGE(new AuthorizationType("Image")), DNA(new AuthorizationType("DNA")), PRINT(new AuthorizationType("Print")), CHIP(new AuthorizationType("Chip")) {
+        }
+        auto AuthorizationTypeFactory::instance_owner() -> AuthorizationTypeFactory* { static std::unique_ptr<AuthorizationTypeFactory> value(new AuthorizationTypeFactory()); return value.get(); }
+AuthorizationTypeFactory* AuthorizationTypeFactory::instance = AuthorizationTypeFactory::instance_owner();
 
-    public: static AuthorizationTypeFactory* getInstance(){
+    auto AuthorizationTypeFactory::getInstance() -> AuthorizationTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AuthorizationTypeFactory::instance();
+                        return AuthorizationTypeFactory::instance;
     
 }
 
 
-    public: AuthorizationType* NONE = new AuthorizationType("None");
 
-    public: AuthorizationType* VOICE = new AuthorizationType("Voice");
 
-    public: AuthorizationType* RETINAL = new AuthorizationType("Retinal");
-
-    public: AuthorizationType* IMAGE = new AuthorizationType("Image");
-
-    public: AuthorizationType* DNA = new AuthorizationType("DNA");
-
-    public: AuthorizationType* PRINT = new AuthorizationType("Print");
-
-    public: AuthorizationType* CHIP = new AuthorizationType("Chip");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_AUTHORIZATIONTYPEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONALINTERFACE_CPP
+        #define ORG_ALLBINARY_DIRECTION_DIRECTIONALINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/direction/DirectionalInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/direction/Direction.h"
 
-class DirectionalInterface {
+//Interface - declared in the header
 
-    public: virtual void setFrameByDirection(Direction* direction) = 0;
 
-    public: virtual void setFrameToAngle(Angle* angle) = 0;
 
-    public: virtual void adjustFrameToAngle(Angle* newAngle) = 0;
-
-    public: virtual void adjustFrame(int16_t angle) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DIRECTION_DIRECTIONALINTERFACE_CPP

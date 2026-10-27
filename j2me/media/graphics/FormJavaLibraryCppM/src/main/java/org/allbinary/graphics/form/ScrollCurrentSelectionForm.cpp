@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -82,16 +92,8 @@
 //#include "org/allbinary/graphics/form/TempHorizontalItemIndexDx.h"
 #include "org/allbinary/graphics/form/FormType.h"
 
-class ScrollCurrentSelectionForm: public ScrollSelectionForm, public UpdateMyFontInterface {
 
-    private: bool moveForSmallScreen;
-
-//inner= member=true isStatic=
-class TempHorizontalFormProcessor: public Processor {
-
-    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-
-: TempHorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
+ScrollCurrentSelectionForm::TempHorizontalFormProcessor::TempHorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -99,7 +101,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto ScrollCurrentSelectionForm::TempHorizontalFormProcessor::process() -> void{
 this->scrollCurrentSelectionForm->processTempHorizontalForm();
     
 this->scrollCurrentSelectionForm->processor= Processor::getInstance();
@@ -107,15 +109,7 @@ this->scrollCurrentSelectionForm->processor= Processor::getInstance();
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class HorizontalFormProcessor: public Processor {
-
-    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-
-: HorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
+ScrollCurrentSelectionForm::HorizontalFormProcessor::HorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -123,7 +117,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto ScrollCurrentSelectionForm::HorizontalFormProcessor::process() -> void{
 this->scrollCurrentSelectionForm->processHorizontalForm();
     
 this->scrollCurrentSelectionForm->processor= Processor::getInstance();
@@ -131,15 +125,7 @@ this->scrollCurrentSelectionForm->processor= Processor::getInstance();
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class VerticalFormProcessor: public Processor {
-
-    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-
-: VerticalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
+ScrollCurrentSelectionForm::VerticalFormProcessor::VerticalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -147,7 +133,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto ScrollCurrentSelectionForm::VerticalFormProcessor::process() -> void{
 this->scrollCurrentSelectionForm->processVerticalForm();
     
 this->scrollCurrentSelectionForm->processor= Processor::getInstance();
@@ -155,15 +141,7 @@ this->scrollCurrentSelectionForm->processor= Processor::getInstance();
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class TempHorizontalItemIndexDx: public ItemIndexDx {
-
-    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-
-: TempHorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
+ScrollCurrentSelectionForm::TempHorizontalItemIndexDx::TempHorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -171,7 +149,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollCurrentSelectionForm::TempHorizontalItemIndexDx::getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -181,15 +159,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class HorizontalItemIndexDx: public ItemIndexDx {
-
-    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-
-: HorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
+ScrollCurrentSelectionForm::HorizontalItemIndexDx::HorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -197,7 +167,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollCurrentSelectionForm::HorizontalItemIndexDx::getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -207,15 +177,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class VerticalItemIndexDx: public ItemIndexDx {
-
-    private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
-
-: VerticalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
+ScrollCurrentSelectionForm::VerticalItemIndexDx::VerticalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm){
 this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
     
 }
@@ -223,7 +185,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollCurrentSelectionForm::VerticalItemIndexDx::getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -233,24 +195,7 @@ this->scrollCurrentSelectionForm= scrollCurrentSelectionForm;
 }
 
 
-};
-
-            
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    private: Processor* processor = Processor::getInstance();
-
-    private: ItemIndexDx* preItemIndexDx = ItemIndexDx::getInstance();
-
-    private: int32_t dx= 0;
-
-    private: int32_t dy= 0;
-
-    private: int32_t maxWidth = 0;
-
-public: ScrollCurrentSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollSelectionForm(title, items, formPaintableFactory, border, adjustedExtraBorder, backgroundBasicColor, foregroundBasicColor){
+ScrollCurrentSelectionForm::ScrollCurrentSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollSelectionForm(title, items, formPaintableFactory, border, adjustedExtraBorder, backgroundBasicColor, foregroundBasicColor), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), processor(Processor::getInstance()), preItemIndexDx(ItemIndexDx::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -264,8 +209,8 @@ this->moveForSmallScreen= moveForSmallScreen;
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle* rectangle, FormType* formType){
-super.init(rectangle, formType);
+    auto ScrollCurrentSelectionForm::init(Rectangle* rectangle, FormType* formType) -> void{
+ScrollSelectionForm::init(rectangle, formType);
     
 
     FormTypeFactory* formTypeFactory = FormTypeFactory::getInstance();;
@@ -311,7 +256,7 @@ this->preItemIndexDx= new VerticalItemIndexDx(this);
                                     }
                                 
                         else {
-                            this->logUtil.putF(formTypeFactory->UNK, this, this->commonStrings.INIT);
+                            this->logUtil->putF(formTypeFactory->UNK, this, this->commonStrings->INIT);
     
 
                         }
@@ -321,21 +266,21 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto ScrollCurrentSelectionForm::updateMeasurement(Graphics* graphics) -> void{
 this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    private: void processTempHorizontalForm(){
-this->dx= this->x -30 +(this->rectangle.getWidth()>>1);
+    auto ScrollCurrentSelectionForm::processTempHorizontalForm() -> void{
+this->dx= this->x -30 +(this->rectangle->getWidth()>>1);
     
 this->dy= this->y;
     
 }
 
 
-    private: void processHorizontalForm(){
+    auto ScrollCurrentSelectionForm::processHorizontalForm() -> void{
 
     int32_t size = this->size();;
     
@@ -358,9 +303,9 @@ totalWidth += item->getMinimumWidth() +this->border;
     
 }
 
-this->dx= this->x +(this->rectangle.getWidth()>>1) -(totalWidth>>1);
+this->dx= this->x +(this->rectangle->getWidth()>>1) -(totalWidth>>1);
     
-this->dy= this->y +(this->rectangle.getHeight()>>1);
+this->dy= this->y +(this->rectangle->getHeight()>>1);
     
 
                         if(this->moveForSmallScreen)
@@ -384,7 +329,7 @@ this->dy= this->y +(this->rectangle.getHeight()>>1);
 }
 
 
-    private: void processVerticalForm(){
+    auto ScrollCurrentSelectionForm::processVerticalForm() -> void{
 
     int32_t totalHeight = 0;;
     
@@ -416,13 +361,13 @@ totalHeight += item2->getMinimumHeight() +this->border;
     
 }
 
-this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
+this->dx= ((this->rectangle->getWidth() -this->maxWidth) /2);
     
 
                         if(this->size() > 0)
                         
                                     {
-                                    this->dy= this->y +((this->rectangle.getHeight() -totalHeight) /2);
+                                    this->dy= this->y +((this->rectangle->getHeight() -totalHeight) /2);
     
 
                         if(this->moveForSmallScreen)
@@ -455,7 +400,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    private: int32_t getXTempHorizontalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollCurrentSelectionForm::getXTempHorizontalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -465,7 +410,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    private: int32_t getXHorizontalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollCurrentSelectionForm::getXHorizontalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -475,7 +420,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    private: int32_t getXVerticalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollCurrentSelectionForm::getXVerticalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -485,7 +430,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    protected: int32_t getDiffX(ABCustomItem* item){
+    auto ScrollCurrentSelectionForm::getDiffX(ABCustomItem* item) -> int32_t{
 
 
 
@@ -495,7 +440,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    public: int32_t getDx(){
+    auto ScrollCurrentSelectionForm::getDx() -> int32_t{
 
 
 
@@ -505,7 +450,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    public: int32_t getDy(){
+    auto ScrollCurrentSelectionForm::getDy() -> int32_t{
 
 
 
@@ -515,7 +460,7 @@ this->dx= ((this->rectangle.getWidth() -this->maxWidth) /2);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto ScrollCurrentSelectionForm::paint(Graphics* graphics) -> void{
 
         try {
             this->processor->process();
@@ -556,7 +501,7 @@ item= this->get(index);
                                     {
                                     delta= this->paintItem(graphics, index, item, deltaX +diffX, deltaY);
     
-this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
+this->paintable->paint(graphics, index, deltaX +diffX, deltaY);
     
 
                                     }
@@ -564,7 +509,7 @@ this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
                         else {
                             delta= this->paintUnselectedItem(graphics, index, item, deltaX +diffX, deltaY);
     
-this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
+this->paintable->paint(graphics, index, deltaX +diffX, deltaY);
     
 
                         }
@@ -598,7 +543,7 @@ this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
                             
 
 
-                            throw new Exception(formTypeFactory->UNK);
+                            throw Exception(formTypeFactory->UNK);
                     
 
                         }
@@ -609,14 +554,13 @@ this->paintable.paint(graphics, index, deltaX +diffX, deltaY);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.PAINT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->canvasStrings->PAINT, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_CPP

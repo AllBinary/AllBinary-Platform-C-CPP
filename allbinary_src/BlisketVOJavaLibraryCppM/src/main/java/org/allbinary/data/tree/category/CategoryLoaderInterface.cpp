@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/category/CategoryLoaderInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,15 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/category/CategoryModifierTreeInterface.h"
 
-class CategoryLoaderInterface: public CategoryModifierTreeInterface {
+//Interface - declared in the header
 
-    public: virtual Document* getDoc(CategoryInterface* categoryInterface) = 0;
 
-    public: virtual CategoryInterface* get(CategoryInterface* categoryInterface) = 0;
 
-    public: virtual CategoryInterface* getAll(CategoryInterface* categoryInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADERINTERFACE_CPP

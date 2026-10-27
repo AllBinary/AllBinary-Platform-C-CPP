@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tables/user/address/StreetAddressesEntity.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class StreetAddressesEntity;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -58,17 +57,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h"
+        class BillingAddressesEntity;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BillingAddressesEntityFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BillingAddressesEntityFactory* instance() { static std::unique_ptr<BillingAddressesEntityFactory> value(new BillingAddressesEntityFactory()); return value.get(); }
+    private: static BillingAddressesEntityFactory* instance_owner();
+    private: static BillingAddressesEntityFactory* instance;
 
     public: static BillingAddressesEntityFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: BillingAddressesEntityFactory();
 
@@ -80,3 +84,22 @@ private: BillingAddressesEntityFactory();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tables/user/address/StreetAddressesEntity.h>)
+#include <org/allbinary/data/tables/user/address/StreetAddressesEntity.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h")
+#include "org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h"
+#endif
+
+        #endif
+    

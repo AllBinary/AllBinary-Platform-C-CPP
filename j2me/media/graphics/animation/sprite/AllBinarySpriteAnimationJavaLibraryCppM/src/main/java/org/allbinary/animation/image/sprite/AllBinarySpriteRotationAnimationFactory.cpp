@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/AllBinarySpriteRotationAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,11 +86,10 @@
         #include "org/allbinary/animation/image/sprite/AllBinarySpriteRotationAnimation.h"
 #include "org/allbinary/animation/image/sprite/AllBinaryAdjustedSpriteRotationAnimation.h"
 
-class AllBinarySpriteRotationAnimationFactory: public BaseImageAnimationFactory, public ProceduralAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinarySpriteRotationAnimationFactory* createWHDY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinarySpriteRotationAnimationFactory::createWHDY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinarySpriteRotationAnimationFactory*{
 
     AllBinarySpriteRotationAnimationFactory* spriteRotationAnimationFactory = new AllBinarySpriteRotationAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), (image->getHeight()>>2), (image->getHeight()>>2), 0, 0, animationBehaviorFactory);;
     
@@ -97,7 +106,7 @@ spriteRotationAnimationFactory->initWH(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinarySpriteRotationAnimationFactory* createWH(Image* image, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinarySpriteRotationAnimationFactory::createWH(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinarySpriteRotationAnimationFactory*{
 
 
 
@@ -109,7 +118,7 @@ spriteRotationAnimationFactory->initWH(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinarySpriteRotationAnimationFactory* createDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinarySpriteRotationAnimationFactory::createDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinarySpriteRotationAnimationFactory*{
 
     AllBinarySpriteRotationAnimationFactory* spriteRotationAnimationFactory = new AllBinarySpriteRotationAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getHeight(), image->getHeight(), 0, 0, animationBehaviorFactory);;
     
@@ -126,7 +135,7 @@ spriteRotationAnimationFactory->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinarySpriteRotationAnimationFactory* createDXYQ(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinarySpriteRotationAnimationFactory::createDXYQ(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinarySpriteRotationAnimationFactory*{
 
     AllBinarySpriteRotationAnimationFactory* spriteRotationAnimationFactory = new AllBinarySpriteRotationAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), (image->getHeight()>>2), (image->getHeight()>>2), 0, 0, animationBehaviorFactory);;
     
@@ -143,7 +152,7 @@ spriteRotationAnimationFactory->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinarySpriteRotationAnimationFactory* createQ(Image* image, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinarySpriteRotationAnimationFactory::createQ(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinarySpriteRotationAnimationFactory*{
 
 
 
@@ -155,7 +164,7 @@ spriteRotationAnimationFactory->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinarySpriteRotationAnimationFactory* createWHF(Image* image, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinarySpriteRotationAnimationFactory::createWHF(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinarySpriteRotationAnimationFactory*{
 
 
 
@@ -165,9 +174,7 @@ spriteRotationAnimationFactory->init(dx, dy);
 }
 
 
-    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
-
-public: AllBinarySpriteRotationAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, width, height, dx, dy, animationBehaviorFactory){
+AllBinarySpriteRotationAnimationFactory::AllBinarySpriteRotationAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, width, height, dx, dy, animationBehaviorFactory), animationFactorySpriteScaleUtil(AnimationFactorySpriteScaleUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -186,39 +193,39 @@ public: AllBinarySpriteRotationAnimationFactory(Image* image, std::vector<int32_
 }
 
 
-    public: void init(int32_t dx, int32_t dy){
-this->animationFactoryInitializationVisitor.dx= dx;
+    auto AllBinarySpriteRotationAnimationFactory::init(int32_t dx, int32_t dy) -> void{
+this->animationFactoryInitializationVisitor->dx= dx;
     
-this->animationFactoryInitializationVisitor.dy= dy;
+this->animationFactoryInitializationVisitor->dy= dy;
     
 }
 
 
-    private: void initWH(int32_t dx, int32_t dy){
+    auto AllBinarySpriteRotationAnimationFactory::initWH(int32_t dx, int32_t dy) -> void{
 this->init(dx, dy);
     
-this->animationFactoryInitializationVisitor.dx +=  -this->animationFactoryInitializationVisitor.width /5;
+this->animationFactoryInitializationVisitor->dx +=  -this->animationFactoryInitializationVisitor->width /5;
     
-this->animationFactoryInitializationVisitor.dy +=  -this->animationFactoryInitializationVisitor.height /5;
+this->animationFactoryInitializationVisitor->dy +=  -this->animationFactoryInitializationVisitor->height /5;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto AllBinarySpriteRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
-    Sprite* sprite = this->animationFactorySpriteScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Sprite* sprite = this->animationFactorySpriteScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor->width, this->animationFactoryInitializationVisitor->height, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
-                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
+                        if(this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryAdjustedSpriteRotationAnimation(sprite, this->getImage(), this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AllBinaryAdjustedSpriteRotationAnimation(sprite, this->getImage(), this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                                     }
@@ -228,7 +235,7 @@ this->animationFactoryInitializationVisitor.dy +=  -this->animationFactoryInitia
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinarySpriteRotationAnimation(sprite, this->getImage(), this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AllBinarySpriteRotationAnimation(sprite, this->getImage(), this->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
@@ -238,7 +245,7 @@ this->animationFactoryInitializationVisitor.dy +=  -this->animationFactoryInitia
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto AllBinarySpriteRotationAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -248,7 +255,6 @@ this->animationFactoryInitializationVisitor.dy +=  -this->animationFactoryInitia
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATIONFACTORY_CPP

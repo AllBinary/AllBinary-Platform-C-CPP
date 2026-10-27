@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INIT_DEFAULTGAMEINITIALIZATIONLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_INIT_DEFAULTGAMEINITIALIZATIONLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/init/DefaultGameInitializationListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,15 +89,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DefaultGameInitializationListener
-            : public Object
-        , public GameInitializedListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: SWTJOGLProcessor* swtJOGLProcessor = SWTJOGLProcessor::getInstance();
-
-public: DefaultGameInitializationListener(){
+DefaultGameInitializationListener::DefaultGameInitializationListener() : logUtil(LogUtil::getInstance()), swtJOGLProcessor(SWTJOGLProcessor::getInstance()){
 
     GameInitializedEventHandler* gameInitializedEventHandler = GameInitializedEventHandler::getInstance();;
     
@@ -98,15 +101,13 @@ gameInitializedEventHandler->addListenerInterface(dynamic_cast<GameInitializedLi
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto DefaultGameInitializationListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    bool firstTime = true;
-
-    public: void onGameInitialized(GameInitializedEvent* gameInitializedEvent){
+    auto DefaultGameInitializationListener::onGameInitialized(GameInitializedEvent* gameInitializedEvent) -> void{
 
     std::string ON_GAME_INITIALIZED = "onGameInitialized";;
     
@@ -154,7 +155,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, ON_GAME_INITIALIZED, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INIT_DEFAULTGAMEINITIALIZATIONLISTENER_CPP

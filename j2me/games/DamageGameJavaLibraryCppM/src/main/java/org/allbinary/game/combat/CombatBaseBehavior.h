@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_COMBATBASEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COMBAT_COMBATBASEBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/combat/damage/DamageableBaseBehavior.h>
-
-      
-#include <org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h>
-
-      
+class DamageableBaseBehavior;
+class DestroyableBaseBehavior;
 
 
 
@@ -54,11 +55,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CombatBaseBehavior
-            : public Object
+            : public virtual Object
          {
 
-    public: static CombatBaseBehavior* NULL_COMBAT_BEHAVIOR() { static std::unique_ptr<CombatBaseBehavior> value(new CombatBaseBehavior(DamageableBaseBehavior::getInstance(), DestroyableBaseBehavior::getInstance())); return value.get(); }
+    private: static CombatBaseBehavior* NULL_COMBAT_BEHAVIOR_owner();
+    public: static CombatBaseBehavior* NULL_COMBAT_BEHAVIOR;
 
     private: DamageableBaseBehavior* damageableBaseBehavior;
 
@@ -82,3 +88,16 @@ public: CombatBaseBehavior(DamageableBaseBehavior* damageableBaseBehavior, Destr
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_COMBATBASEBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_COMBATBASEBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_COMBATBASEBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/combat/damage/DamageableBaseBehavior.h>)
+#include <org/allbinary/game/combat/damage/DamageableBaseBehavior.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h>)
+#include <org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h>
+#endif
+
+        #endif
+    

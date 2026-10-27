@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
         #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsInterface.h"
 #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsData.h"
 
-class StoreFrontOrdersHistoryStatisticsView
-            : public Object
-        , public DomNodeInterface {
 
-    private: StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrdersHistoryStatisticsInterface;
-
-public: StoreFrontOrdersHistoryStatisticsView(StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrdersHistoryStatisticsInterface){
+StoreFrontOrdersHistoryStatisticsView::StoreFrontOrdersHistoryStatisticsView(StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrdersHistoryStatisticsInterface){
 this->storeFrontOrdersHistoryStatisticsInterface= storeFrontOrdersHistoryStatisticsInterface;
     
 }
@@ -78,7 +83,7 @@ this->storeFrontOrdersHistoryStatisticsInterface= storeFrontOrdersHistoryStatist
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StoreFrontOrdersHistoryStatisticsView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->storeFrontOrdersHistoryStatisticsInterface->toHashMap();;
     
@@ -94,7 +99,6 @@ this->storeFrontOrdersHistoryStatisticsInterface= storeFrontOrdersHistoryStatist
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSVIEW_CPP

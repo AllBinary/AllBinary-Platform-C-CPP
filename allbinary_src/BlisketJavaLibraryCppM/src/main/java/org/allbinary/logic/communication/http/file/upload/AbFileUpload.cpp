@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOAD_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOAD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/file/upload/AbFileUpload.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,9 +74,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileUpload: public FileUpload {
 
-public: AbFileUpload(FileItemFactory* fileItemFactory) : FileUpload(fileItemFactory){
+AbFileUpload::AbFileUpload(FileItemFactory* fileItemFactory) : FileUpload(fileItemFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,17 +87,16 @@ public: AbFileUpload(FileItemFactory* fileItemFactory) : FileUpload(fileItemFact
 
                 //@Throws(FileUploadException.constructor, IOException.constructor)
             
-    public: FileItemIterator* getItemIterator(HttpServletRequest* request){
+    auto AbFileUpload::getItemIterator(HttpServletRequest* request) -> FileItemIterator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getItemIterator(new ServletRequestContext(request));;
+                        return FileUpload::getItemIterator(new ServletRequestContext(request));;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOAD_CPP

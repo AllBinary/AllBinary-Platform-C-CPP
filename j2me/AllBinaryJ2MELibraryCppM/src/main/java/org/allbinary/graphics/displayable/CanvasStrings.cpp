@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/CanvasStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,59 +61,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CanvasStrings
-            : public Object
-         {
 
-    private: static CanvasStrings* instance() { static std::unique_ptr<CanvasStrings> value(new CanvasStrings()); return value.get(); }
+CanvasStrings::CanvasStrings() : EMPTY_CHILD_NAME_LIST(BasicArrayListUtil::getInstance()->getImmutableInstance()) {
+        }
+        auto CanvasStrings::instance_owner() -> CanvasStrings* { static std::unique_ptr<CanvasStrings> value(new CanvasStrings()); return value.get(); }
+CanvasStrings* CanvasStrings::instance = CanvasStrings::instance_owner();
 
-    public: static CanvasStrings* getInstance(){
+    auto CanvasStrings::getInstance() -> CanvasStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CanvasStrings::instance();
+                        return CanvasStrings::instance;
     
 }
 
 
-    public: const std::string CONSTRUCTOR = "MyCanvas::MyCanvas";
 
-    public: const std::string PAUSE = "MyCanvas::pause";
 
-    public: const std::string UN_PAUSE = "MyCanvas::unPause";
-
-    public: const std::string SET_FULL_SCREEN_MODE = "setFullScreenMode";
-
-    public: const std::string SIZE_CHANGED = "sizeChanged";
-
-    public: const std::string SCALED_IMAGES = "scaledImages";
-
-    public: const std::string PAINT = "paint";
-
-    public: const std::string ON_DISPLAY_CHANGE_EVENT = "onDisplayChangeEvent";
-
-    public: const std::string UPDATE_MEASUREMENT = "updateMeasurement";
-
-    public: const std::string FD_WIDTH = " font/display width: ";
-
-    public: const std::string FD_HEIGHT = " font/display height: ";
-
-    public: BasicArrayList* EMPTY_CHILD_NAME_LIST = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
-    public: const std::string ABOUT = "About";
-
-    public: const std::string OPTIONS = "Options";
-
-    public: const std::string FONT_ATLAS = "/font.png";
-
-    public: const std::string OBJ_MODEL = "_obj";
-
-    public: const std::string MD2_MODEL = "_md2";
-
-    public: const std::string _PNG = ".png";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_CPP

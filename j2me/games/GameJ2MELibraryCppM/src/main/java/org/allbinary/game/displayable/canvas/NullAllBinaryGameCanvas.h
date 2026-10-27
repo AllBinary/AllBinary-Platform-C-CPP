@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
+class Command;
+class CommandListener;
+class AllBinaryGameLayerManager;
 
 
 
@@ -60,12 +59,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvasInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullAllBinaryGameCanvas
-            : public Object
+            : public virtual Object
         , public AllBinaryGameCanvasInterface {
 
-    public: static NullAllBinaryGameCanvas* NULL_ALLBINARY_GAME_CANVAS() { static std::unique_ptr<NullAllBinaryGameCanvas> value(new NullAllBinaryGameCanvas()); return value.get(); }
+    private: static NullAllBinaryGameCanvas* NULL_ALLBINARY_GAME_CANVAS_owner();
+    public: static NullAllBinaryGameCanvas* NULL_ALLBINARY_GAME_CANVAS;
 
+
+            
+    public: NullAllBinaryGameCanvas();
+        
     public: AllBinaryGameLayerManager* getLayerManager();
 
     public: void addCommand(Command* cmd);
@@ -84,3 +92,22 @@ class NullAllBinaryGameCanvas
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLALLBINARYGAMECANVAS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/AllBinaryGameCanvasInterface.h")
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvasInterface.h"
+#endif
+
+        #endif
+    

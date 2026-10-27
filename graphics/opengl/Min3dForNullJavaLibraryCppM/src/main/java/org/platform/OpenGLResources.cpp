@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_PLATFORM_OPENGLRESOURCES_CPP
+        #define ORG_PLATFORM_OPENGLRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/platform/OpenGLResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -38,87 +48,86 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLResources
-            : public Object
-         {
 
-    private: static OpenGLResources* instance() { static std::unique_ptr<OpenGLResources> value(new OpenGLResources()); return value.get(); }
+OpenGLResources::OpenGLResources() {
+        }
+        auto OpenGLResources::instance_owner() -> OpenGLResources* { static std::unique_ptr<OpenGLResources> value(new OpenGLResources()); return value.get(); }
+OpenGLResources* OpenGLResources::instance = OpenGLResources::instance_owner();
 
-    public: static OpenGLResources* getInstance(){
+    auto OpenGLResources::getInstance() -> OpenGLResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLResources::instance();
+                        return OpenGLResources::instance;
     
 }
 
 
-    public: void init(){
+    auto OpenGLResources::init() -> void{
 }
 
 
-    public: bool isExcluded(std::string name){
+    auto OpenGLResources::isExcluded(std::string name) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getIdentifier(std::string name, std::string defType, std::string defPackage){
+    auto OpenGLResources::getIdentifier(std::string name, std::string defType, std::string defPackage) -> int32_t{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: InputStream* openRawResource(int32_t id){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* openRawResourceFromName(std::string resourceName){
+    auto OpenGLResources::openRawResource(int32_t id) -> InputStream*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getResourceAsStream(std::string resourceName){
+    auto OpenGLResources::openRawResourceFromName(std::string resourceName) -> InputStream*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::string getPackageName(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-};
-
+                //@Throws(Exception.constructor)
             
+    auto OpenGLResources::getResourceAsStream(std::string resourceName) -> InputStream*{
 
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto OpenGLResources::getPackageName() -> std::string{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+
+
+        #endif //ORG_PLATFORM_OPENGLRESOURCES_CPP

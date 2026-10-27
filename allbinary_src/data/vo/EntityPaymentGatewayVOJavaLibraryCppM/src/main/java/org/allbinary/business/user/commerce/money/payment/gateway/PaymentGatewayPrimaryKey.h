@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPRIMARYKEY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPRIMARYKEY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/business/context/modules/storefront/StoreFront.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StoreFront;
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -57,10 +56,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/gateway/Serializable.h"
-#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGateway.h"
+class PaymentGateway;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentGatewayPrimaryKey
-            : public Object
+            : public virtual Object
         , public java::io::Serializable {
 
     private: std::string storeName;
@@ -85,3 +88,25 @@ public: PaymentGatewayPrimaryKey(std::string storeName, std::string gatewayName)
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPRIMARYKEY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPRIMARYKEY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPRIMARYKEY_H_COMPLETE
+        #if __has_include(<org/allbinary/business/context/modules/storefront/StoreFront.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFront.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/gateway/Serializable.h")
+#include "org/allbinary/business/user/commerce/money/payment/gateway/Serializable.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/gateway/PaymentGateway.h")
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGateway.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORYINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,9 +34,7 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class BasicColor;
 
 
 
@@ -50,9 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/VectorAnimation.h"
+        class VectorAnimation;
 
-class VectorAnimationFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class VectorAnimationFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual VectorAnimation* getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor* basicColor) = 0;
 
@@ -62,3 +71,16 @@ class VectorAnimationFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimation.h")
+#include "org/allbinary/animation/VectorAnimation.h"
+#endif
+
+        #endif
+    

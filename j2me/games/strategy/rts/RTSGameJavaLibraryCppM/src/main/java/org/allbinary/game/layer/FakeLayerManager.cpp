@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_FAKELAYERMANAGER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_FAKELAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/FakeLayerManager.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,13 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
 
-class FakeLayerManager: public AllBinaryGameLayerManager, public GeographicMapCompositeInterface {
 
-    private: std::vector<BasicGeographicMap*> geographicMapInterfaceArray = BasicGeographicMap::NULL_BASIC_GEOGRAPHIC_MAP_ARRAY;
-
-    private: std::vector<GeographicMapCellType*> geographicMapCellTypeArray = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY;
-
-public: FakeLayerManager(GameInfo* gameInfo) : AllBinaryGameLayerManager(BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE, gameInfo){
+FakeLayerManager::FakeLayerManager(GameInfo* gameInfo) : AllBinaryGameLayerManager(BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE, gameInfo), geographicMapInterfaceArray(BasicGeographicMap::NULL_BASIC_GEOGRAPHIC_MAP_ARRAY), geographicMapCellTypeArray_(GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,7 +81,7 @@ public: FakeLayerManager(GameInfo* gameInfo) : AllBinaryGameLayerManager(BasicCo
 }
 
 
-    public: std::vector<BasicGeographicMap*> getGeographicMapInterface(){
+    auto FakeLayerManager::getGeographicMapInterface() -> std::vector<BasicGeographicMap*>{
 
 
 
@@ -86,25 +91,24 @@ public: FakeLayerManager(GameInfo* gameInfo) : AllBinaryGameLayerManager(BasicCo
 }
 
 
-    public: void setGeographicMapInterface(std::vector<BasicGeographicMap*> geographicMapInterfaceArray){
+    auto FakeLayerManager::setGeographicMapInterface(std::vector<BasicGeographicMap*> geographicMapInterfaceArray) -> void{
 this->geographicMapInterfaceArray= geographicMapInterfaceArray;
     
-this->geographicMapCellTypeArray= std::vector<GeographicMapCellType*>(this->geographicMapInterfaceArray.length);
+this->geographicMapCellTypeArray_= std::vector<GeographicMapCellType*>(this->geographicMapInterfaceArray.length);
     
 }
 
 
-    public: std::vector<GeographicMapCellType*> geographicMapCellTypeArray(){
+    auto FakeLayerManager::geographicMapCellTypeArray() -> std::vector<GeographicMapCellType*>{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->geographicMapCellTypeArray;
+                        return this->geographicMapCellTypeArray_;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_FAKELAYERMANAGER_CPP

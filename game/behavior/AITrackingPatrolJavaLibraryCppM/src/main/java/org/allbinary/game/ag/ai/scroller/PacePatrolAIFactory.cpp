@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/PacePatrolAIFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,13 +77,13 @@
         #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 #include "org/allbinary/game/ag/ai/scroller/PacePatrolAI.h"
 
-class PacePatrolAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+PacePatrolAIFactory::PacePatrolAIFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto PacePatrolAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 hashtable->put(BasePatrolAI::MAX_DISTANCE, SmallIntegerSingletonFactory::getInstance()->getAt(220));
     
 
@@ -85,7 +95,6 @@ hashtable->put(BasePatrolAI::MAX_DISTANCE, SmallIntegerSingletonFactory::getInst
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAIFACTORY_CPP

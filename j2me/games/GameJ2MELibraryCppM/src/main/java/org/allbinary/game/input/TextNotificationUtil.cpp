@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_TEXTNOTIFICATIONUTIL_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_TEXTNOTIFICATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/TextNotificationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,25 +83,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TextNotificationUtil
-            : public Object
-         {
 
-    private: static TextNotificationUtil* instance() { static std::unique_ptr<TextNotificationUtil> value(new TextNotificationUtil()); return value.get(); }
+TextNotificationUtil::TextNotificationUtil() : TWO(SmallIntegerSingletonFactory::getInstance()->getAt(2)), FALSE(BooleanFactory::getInstance()->FALSE), gameNotificationEventHandler(GameNotificationEventHandler::getInstance()) {
+        }
+        auto TextNotificationUtil::instance_owner() -> TextNotificationUtil* { static std::unique_ptr<TextNotificationUtil> value(new TextNotificationUtil()); return value.get(); }
+TextNotificationUtil* TextNotificationUtil::instance = TextNotificationUtil::instance_owner();
 
-    public: static TextNotificationUtil* getInstance(){
+    auto TextNotificationUtil::getInstance() -> TextNotificationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TextNotificationUtil::instance();
+                        return TextNotificationUtil::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireError(std::string message){
+    auto TextNotificationUtil::fireError(std::string message) -> void{
 PrimaryPlayerQueueFactory::getInstance()->add(ErrorSound::getInstance());
     
 this->fire(message);
@@ -101,7 +111,7 @@ this->fire(message);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireNew(std::string message){
+    auto TextNotificationUtil::fireNew(std::string message) -> void{
 PrimaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 this->fire(message);
@@ -111,7 +121,7 @@ this->fire(message);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireSuccess(std::string message){
+    auto TextNotificationUtil::fireSuccess(std::string message) -> void{
 PrimaryPlayerQueueFactory::getInstance()->add(SelectSound::getInstance());
     
 this->fire(message);
@@ -119,15 +129,9 @@ this->fire(message);
 }
 
 
-    private: int32_t TWO = SmallIntegerSingletonFactory::getInstance()->getAt(2);
-
-    private: bool FALSE = BooleanFactory::getInstance()->FALSE;
-
-    private: GameNotificationEventHandler* gameNotificationEventHandler = GameNotificationEventHandler::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void fire(std::string message){
+    auto TextNotificationUtil::fire(std::string message) -> void{
 
     GameNotificationEvent* gameNotificationEvent = new GameNotificationEvent(this, message, this->TWO, BasicColorFactory::getInstance()->RED, this->FALSE);;
     
@@ -136,7 +140,6 @@ this->gameNotificationEventHandler->fireEvent(gameNotificationEvent);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_TEXTNOTIFICATIONUTIL_CPP

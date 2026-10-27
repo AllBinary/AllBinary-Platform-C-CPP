@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Long.h"
         
-#include <org/allbinary/business/user/commerce/money/Money.h>
-
-      
+class Money;
 #include <org/allbinary/data/tables/TableMappingInterface.h>
-
-      
 
 
 
@@ -54,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreFrontInventoryStatisticsInterface: public TableMappingInterface {
 
     public: virtual int64_t getNumber() = 0;
@@ -66,3 +71,16 @@ class StoreFrontInventoryStatisticsInterface: public TableMappingInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/money/Money.h>)
+#include <org/allbinary/business/user/commerce/money/Money.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/TableMappingInterface.h>)
+#include <org/allbinary/data/tables/TableMappingInterface.h>
+#endif
+
+        #endif
+    

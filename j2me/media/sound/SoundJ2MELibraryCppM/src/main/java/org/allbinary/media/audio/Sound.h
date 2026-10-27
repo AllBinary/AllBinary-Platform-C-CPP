@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUND_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_SOUND_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Runnable.h"
         
-#include <javax/microedition/media/Player.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Player;
+class PreLogUtil;
+class CommonStrings;
 
 
 
@@ -61,17 +60,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/SoundInterface.h"
-#include "org/allbinary/media/audio/NoPlayer.h"
+class NoPlayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Sound
-            : public Object
+            : public virtual Object
         , public SoundInterface, public Runnable {
 
     private: std::string resource;
 
-    protected: Player* player = NoPlayer::NO_PLAYER;
+    /*protected*/ public: Player* player;
 
-protected: Sound(std::string resource);
+/*protected*/ public: Sound(std::string resource);
 
     public: std::string getResource();
 
@@ -93,3 +96,25 @@ protected: Sound(std::string resource);
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_SOUND_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_SOUND_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_SOUND_H_COMPLETE
+        #if __has_include(<javax/microedition/media/Player.h>)
+#include <javax/microedition/media/Player.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/audio/SoundInterface.h")
+#include "org/allbinary/media/audio/SoundInterface.h"
+#endif
+#if __has_include("org/allbinary/media/audio/NoPlayer.h")
+#include "org/allbinary/media/audio/NoPlayer.h"
+#endif
+
+        #endif
+    

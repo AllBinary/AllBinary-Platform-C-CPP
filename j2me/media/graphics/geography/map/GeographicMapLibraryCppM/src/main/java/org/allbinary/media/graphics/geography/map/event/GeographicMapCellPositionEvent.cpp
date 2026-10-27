@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENT_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GeographicMapCellPositionEvent: public AllBinaryEventObject {
 
-    private: CellPosition* geographicMapCellPosition = CellPositionFactory::getInstance()->NONE;
-
-public: GeographicMapCellPositionEvent(Object* anyType, CellPosition* geographicMapCellPosition) : AllBinaryEventObject(anyType){
+GeographicMapCellPositionEvent::GeographicMapCellPositionEvent(Object* anyType, CellPosition* geographicMapCellPosition) : AllBinaryEventObject(anyType), geographicMapCellPosition(CellPositionFactory::getInstance()->NONE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,19 +86,19 @@ this->geographicMapCellPosition= geographicMapCellPosition;
 }
 
 
-    public: void init(Object* anyType){
+    auto GeographicMapCellPositionEvent::init(Object* anyType) -> void{
 this->setSource(anyType);
     
 }
 
 
-    public: void setGeographicMapCellPosition(GeographicMapCellPosition* geographicMapCellPosition){
+    auto GeographicMapCellPositionEvent::setGeographicMapCellPosition(GeographicMapCellPosition* geographicMapCellPosition) -> void{
 this->geographicMapCellPosition= geographicMapCellPosition;
     
 }
 
 
-    public: GeographicMapCellPosition* getGeographicMapCellPosition(){
+    auto GeographicMapCellPositionEvent::getGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -101,7 +108,7 @@ this->geographicMapCellPosition= geographicMapCellPosition;
 }
 
 
-    public: std::string toString(){
+    auto GeographicMapCellPositionEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -120,7 +127,6 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getGeographicMapC
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENT_CPP

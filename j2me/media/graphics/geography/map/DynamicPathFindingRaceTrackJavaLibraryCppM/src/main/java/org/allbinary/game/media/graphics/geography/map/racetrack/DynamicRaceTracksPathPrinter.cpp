@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DYNAMICRACETRACKSPATHPRINTER_CPP
+        #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DYNAMICRACETRACKSPATHPRINTER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/DynamicRaceTracksPathPrinter.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,11 +87,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DynamicRaceTracksPathPrinter: public RaceTracksPathPrinter {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: void printAllPaths(RaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PathFindingInfo* pathFindingInfo, int32_t size){
+DynamicRaceTracksPathPrinter::DynamicRaceTracksPathPrinter() : logUtil(LogUtil::getInstance()) {
+        }
+        
+    auto DynamicRaceTracksPathPrinter::printAllPaths(RaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PathFindingInfo* pathFindingInfo, int32_t size) -> void{
 
         try {
             
@@ -97,7 +107,7 @@ class DynamicRaceTracksPathPrinter: public RaceTracksPathPrinter {
 
     BasicArrayList* list = PathGenerator::getInstance()->createList(geographicMapInterface, RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance(), pathFindingInfo, 10);;
     
-System.out.println("Track " +index);
+System.out.println(JavaString::valueOf("Track ") +JavaString::valueOf(index));
     
 this->printPaths(list);
     
@@ -117,7 +127,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->PROCESS, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DYNAMICRACETRACKSPATHPRINTER_CPP

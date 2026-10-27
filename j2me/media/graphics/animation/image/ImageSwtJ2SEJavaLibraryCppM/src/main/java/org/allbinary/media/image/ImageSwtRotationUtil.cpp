@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTROTATIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTROTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageSwtRotationUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,39 +80,24 @@
         #include "org/allbinary/media/image/ImageUtil.h"
 #include "org/allbinary/media/image/Image.h"
 
-class ImageSwtRotationUtil
-            : public Object
-         {
+auto ImageSwtRotationUtil::instance_owner() -> ImageSwtRotationUtil* { static std::unique_ptr<ImageSwtRotationUtil> value(new ImageSwtRotationUtil()); return value.get(); }
+ImageSwtRotationUtil* ImageSwtRotationUtil::instance = ImageSwtRotationUtil::instance_owner();
 
-    private: static ImageSwtRotationUtil* instance() { static std::unique_ptr<ImageSwtRotationUtil> value(new ImageSwtRotationUtil()); return value.get(); }
-
-    public: static ImageSwtRotationUtil* getInstance(){
+    auto ImageSwtRotationUtil::getInstance() -> ImageSwtRotationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageSwtRotationUtil::instance();
+                        return ImageSwtRotationUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
-
-    private: Features* features = Features::getInstance();
-
-    private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
-
-private: ImageSwtRotationUtil(){
+ImageSwtRotationUtil::ImageSwtRotationUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), imageUtil(ImageUtil::getInstance()), gameFeatureFactory(GameFeatureFactory::getInstance()), features(Features::getInstance()){
 }
 
 
-    public: org::eclipse::swt::graphics::Image* getRotatedImage(org::eclipse::swt::graphics::Image* bufferedImage, int32_t totalAngle){
+    auto ImageSwtRotationUtil::getRotatedImage(org::eclipse::swt::graphics::Image* bufferedImage, int32_t totalAngle) -> org::eclipse::swt::graphics::Image*{
 
                         if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
@@ -127,7 +122,7 @@ private: ImageSwtRotationUtil(){
 }
 
 
-    private: org::eclipse::swt::graphics::Image* getRotatedImage2(org::eclipse::swt::graphics::Image* bufferedImage, org::eclipse::swt::graphics::Image* newBufferedImage, GC* gc, float angle){
+    auto ImageSwtRotationUtil::getRotatedImage2(org::eclipse::swt::graphics::Image* bufferedImage, org::eclipse::swt::graphics::Image* newBufferedImage, GC* gc, float angle) -> org::eclipse::swt::graphics::Image*{
 
                         if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
@@ -152,7 +147,7 @@ private: ImageSwtRotationUtil(){
 }
 
 
-    public: org::eclipse::swt::graphics::Image* rotateImage(org::eclipse::swt::graphics::Image* originalSwtImage, org::eclipse::swt::graphics::Image* newSwtImage, GC* gc, int32_t totalAngle){
+    auto ImageSwtRotationUtil::rotateImage(org::eclipse::swt::graphics::Image* originalSwtImage, org::eclipse::swt::graphics::Image* newSwtImage, GC* gc, int32_t totalAngle) -> org::eclipse::swt::graphics::Image*{
 
 
 
@@ -162,7 +157,7 @@ private: ImageSwtRotationUtil(){
 }
 
 
-    public: org::eclipse::swt::graphics::Image* getRotatedImageSWT(org::eclipse::swt::graphics::Image* bufferedImage, org::eclipse::swt::graphics::Image* newSwtImage, GC* gc, int32_t totalAngle){
+    auto ImageSwtRotationUtil::getRotatedImageSWT(org::eclipse::swt::graphics::Image* bufferedImage, org::eclipse::swt::graphics::Image* newSwtImage, GC* gc, int32_t totalAngle) -> org::eclipse::swt::graphics::Image*{
 
 
 
@@ -172,7 +167,7 @@ private: ImageSwtRotationUtil(){
 }
 
 
-    public: std::vector<org::eclipse::swt::graphics::Image*> getRotatedImages(org::eclipse::swt::graphics::Image* bufferedImage, int32_t numberOfFrames, int32_t totalAngle){
+    auto ImageSwtRotationUtil::getRotatedImages(org::eclipse::swt::graphics::Image* bufferedImage, int32_t numberOfFrames, int32_t totalAngle) -> std::vector<org::eclipse::swt::graphics::Image*>{
 
     std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray = std::vector<org::eclipse::swt::graphics::Image*>(numberOfFrames);;
     
@@ -204,7 +199,7 @@ bufferedImageArray[index]= this->getRotatedImage(bufferedImage, angle);
 }
 
 
-    public: org::eclipse::swt::graphics::Image* createSpriteImage(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray){
+    auto ImageSwtRotationUtil::createSpriteImage(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray) -> org::eclipse::swt::graphics::Image*{
 
     int32_t columns = 9;;
     
@@ -298,7 +293,6 @@ gc->dispose();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTROTATIONUTIL_CPP

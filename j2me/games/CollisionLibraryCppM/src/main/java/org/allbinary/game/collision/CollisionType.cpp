@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPE_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollisionType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CollisionType
-            : public Object
-         {
 
-    private: std::string name;
-
-: CollisionType(std::string name){
+CollisionType::CollisionType(std::string name){
 this->name= name;
     
 }
 
 
-    public: std::string toString(){
+    auto CollisionType::toString() -> std::string{
 
 
 
@@ -67,7 +72,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPE_CPP

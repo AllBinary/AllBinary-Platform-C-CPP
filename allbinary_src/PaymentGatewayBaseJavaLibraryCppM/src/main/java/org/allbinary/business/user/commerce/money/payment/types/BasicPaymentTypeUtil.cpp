@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,37 +67,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h"
 
-class BasicPaymentTypeUtil
-            : public Object
-         {
-
-    private: static BasicPaymentTypeUtil* instance() { static std::unique_ptr<BasicPaymentTypeUtil> value(new BasicPaymentTypeUtil()); return value.get(); }
-
-                    static int32_t initResult = BasicPaymentTypeUtil::init();
-                static int32_t init() { 
+auto BasicPaymentTypeUtil::instance_owner() -> BasicPaymentTypeUtil* { static std::unique_ptr<BasicPaymentTypeUtil> value(new BasicPaymentTypeUtil()); return value.get(); }
+BasicPaymentTypeUtil* BasicPaymentTypeUtil::instance = BasicPaymentTypeUtil::instance_owner();
+int32_t BasicPaymentTypeUtil::initResult = BasicPaymentTypeUtil::init();
+        auto BasicPaymentTypeUtil::init() -> int32_t {
                     
 
 
                     return 0;
-                }
-            
-    public: static BasicPaymentTypeUtil* getInstance(){
+        }
+                
+    auto BasicPaymentTypeUtil::getInstance() -> BasicPaymentTypeUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicPaymentTypeUtil::instance();
+                        return BasicPaymentTypeUtil::instance;
     
 }
 
 
-private: BasicPaymentTypeUtil(){
+BasicPaymentTypeUtil::BasicPaymentTypeUtil() : paymentTypeVector(new BasicArrayListD()){
 }
 
 
-    private: BasicArrayList* paymentTypeVector = new BasicArrayListD();
-
-    public: void add(BasicPaymentType* paymentType){
+    auto BasicPaymentTypeUtil::add(BasicPaymentType* paymentType) -> void{
 this->paymentTypeVector->add(paymentType);
     
 }
@@ -95,7 +99,7 @@ this->paymentTypeVector->add(paymentType);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicPaymentType* get(std::string paymentTypeString){
+    auto BasicPaymentTypeUtil::get(std::string paymentTypeString) -> BasicPaymentType*{
 
     int32_t size = this->paymentTypeVector->size();;
     
@@ -127,12 +131,12 @@ this->paymentTypeVector->add(paymentType);
 
 
 
-                            throw new Exception("Unknown PaymentType: " +paymentTypeString);
+                            throw Exception(JavaString::valueOf("Unknown PaymentType: ") +JavaString::valueOf(paymentTypeString));
                     
 }
 
 
-    public: bool isContain(BasicPaymentType* paymentType){
+    auto BasicPaymentTypeUtil::isContain(BasicPaymentType* paymentType) -> bool{
 
 
 
@@ -142,7 +146,7 @@ this->paymentTypeVector->add(paymentType);
 }
 
 
-    public: BasicArrayList* difference(BasicArrayList* a_PaymentTypeVector){
+    auto BasicPaymentTypeUtil::difference(BasicArrayList* a_PaymentTypeVector) -> BasicArrayList*{
 
     BasicArrayList* diff = new BasicArrayListD();;
     
@@ -174,7 +178,6 @@ this->paymentTypeVector->add(paymentType);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_CPP

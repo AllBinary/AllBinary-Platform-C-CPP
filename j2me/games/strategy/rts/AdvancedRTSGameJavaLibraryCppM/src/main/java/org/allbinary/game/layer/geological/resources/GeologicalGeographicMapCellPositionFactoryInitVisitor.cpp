@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPositionFactoryInitVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,13 +67,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
 
-class GeologicalGeographicMapCellPositionFactoryInitVisitor
-            : public Object
-        , public GeographicMapCellPositionFactoryInitVisitorInterface {
 
+GeologicalGeographicMapCellPositionFactoryInitVisitor::GeologicalGeographicMapCellPositionFactoryInitVisitor() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition){
+    auto GeologicalGeographicMapCellPositionFactoryInitVisitor::visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition) -> void{
 
     GeologicalGeographicMapCellPosition* geologicalGeographicMapCellPosition = (dynamic_cast<GeologicalGeographicMapCellPosition*>(cellPosition));;
     
@@ -72,7 +82,6 @@ geologicalGeographicMapCellPosition->getGeologicalResource()->init();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_CPP

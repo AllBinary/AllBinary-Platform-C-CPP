@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TICK_TICKABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_TICK_TICKABLEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class AllBinaryLayerManager;
 #include <org/allbinary/layer/NamedInterface.h>
-
-      
 
 
 
@@ -54,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TickableInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
@@ -66,3 +71,16 @@ class TickableInterface: public NamedInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_TICK_TICKABLEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TICK_TICKABLEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TICK_TICKABLEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/layer/NamedInterface.h>)
+#include <org/allbinary/layer/NamedInterface.h>
+#endif
+
+        #endif
+    

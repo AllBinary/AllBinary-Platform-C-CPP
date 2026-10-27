@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/FormInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,34 +107,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class FormInputProcessor: public InputProcessor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
-
-    private: DownKeyEventHandler* downKeyEventHandler = DownKeyEventHandler::getInstance();
-
-    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
-
-    private: InputFactory* inputFactory = InputFactory::getInstance();
-
-    private: PlatformKeyFactory* platformKeyFactory = PlatformKeyFactory::getInstance();
-
-    private: AllBinaryGameCanvas* allBinaryGameCanvas;
-
-public: FormInputProcessor(AllBinaryGameCanvas* allBinaryGameCanvas){
+FormInputProcessor::FormInputProcessor(AllBinaryGameCanvas* allBinaryGameCanvas) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), gameKeyEventFactory(GameKeyEventFactory::getInstance()), downKeyEventHandler(DownKeyEventHandler::getInstance()), upGameKeyEventHandler(UpGameKeyEventHandler::getInstance()), inputFactory(InputFactory::getInstance()), platformKeyFactory(PlatformKeyFactory::getInstance()){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+    auto FormInputProcessor::keyPressedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 
         try {
-            PreLogUtil::put((new StringMaker())->append(this->inputFactory->KEY_CODE_LABEL)->appendint(keyCode)->append(CommonSeps::getInstance()->SPACE)->append(this->inputFactory->DEVICE_ID_LABEL)->appendint(deviceId)->toString(), this, this->gameInputStrings.KEY_PRESSED);
+            PreLogUtil::put((new StringMaker())->append(this->inputFactory->KEY_CODE_LABEL)->appendint(keyCode)->append(CommonSeps::getInstance()->SPACE)->append(this->inputFactory->DEVICE_ID_LABEL)->appendint(deviceId)->toString(), this, this->gameInputStrings->KEY_PRESSED);
     
 
     Input* input = this->inputFactory->getInstanceById(keyCode);;
@@ -138,14 +131,14 @@ this->downKeyEventHandler->fireEventForGameKeyEvent(gameKeyEvent);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings.ADD_KEY_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->ADD_KEY_EVENT, &e);
     
 }
 
 }
 
 
-    public: void keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId){
+    auto FormInputProcessor::keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId) -> void{
 
         try {
             
@@ -155,7 +148,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings.
                         if(this->platformKeyFactory->isEnter(input))
                         
                                     {
-                                    PreLogUtil::put((new StringMaker())->append(this->inputFactory->KEY_CODE_LABEL)->appendint(keyCode)->append(CommonSeps::getInstance()->SPACE)->append(this->inputFactory->DEVICE_ID_LABEL)->appendint(deviceId)->toString(), this, this->gameInputStrings.KEY_RELEASED);
+                                    PreLogUtil::put((new StringMaker())->append(this->inputFactory->KEY_CODE_LABEL)->appendint(keyCode)->append(CommonSeps::getInstance()->SPACE)->append(this->inputFactory->DEVICE_ID_LABEL)->appendint(deviceId)->toString(), this, this->gameInputStrings->KEY_RELEASED);
     
 
     GameKey* gameKey = GameKeyFactory::getInstance()->KEY_NUM0;;
@@ -177,14 +170,13 @@ this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEv
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings.ADD_KEY_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->ADD_KEY_EVENT, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMINPUTPROCESSOR_CPP

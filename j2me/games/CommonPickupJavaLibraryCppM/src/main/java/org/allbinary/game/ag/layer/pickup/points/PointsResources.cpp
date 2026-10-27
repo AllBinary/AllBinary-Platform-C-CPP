@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/points/PointsResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PointsResources
-            : public Object
-         {
+auto PointsResources::SINGLETON_owner() -> PointsResources* { static std::unique_ptr<PointsResources> value(new PointsResources()); return value.get(); }
+PointsResources* PointsResources::SINGLETON = PointsResources::SINGLETON_owner();
 
-    private: static PointsResources* SINGLETON() { static std::unique_ptr<PointsResources> value(new PointsResources()); return value.get(); }
+PointsResources::PointsResources(){
+}
 
-    public: static PointsResources* getInstance(){
+
+    auto PointsResources::getInstance() -> PointsResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointsResources::SINGLETON();
+                        return PointsResources::SINGLETON;
     
 }
 
 
-    public: std::string RESOURCE = "points_drop_20_by_20.png";
-
-    public: std::string RESOURCE_2 = "points_2_drop_20_by_20.png";
-
-    public: std::string RESOURCE_3 = "points_3_drop_20_by_20.png";
-
-    public: std::string RESOURCE_4 = "points_4_drop_20_by_20.png";
-
-private: PointsResources(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSRESOURCES_CPP

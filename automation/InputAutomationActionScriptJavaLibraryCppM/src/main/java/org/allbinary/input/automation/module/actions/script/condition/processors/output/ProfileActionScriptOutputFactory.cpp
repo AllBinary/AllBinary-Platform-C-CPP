@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_PROFILEACTIONSCRIPTOUTPUTFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_PROFILEACTIONSCRIPTOUTPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ProfileActionScriptOutputFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,13 +66,14 @@
 #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
 #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutput.h"
 
-class ProfileActionScriptOutputFactory
-            : public Object
-         {
+
+ProfileActionScriptOutputFactory::ProfileActionScriptOutputFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static ProfileActionScriptOutputInterface* getInstance(Node* node){
+    auto ProfileActionScriptOutputFactory::getInstance(Node* node) -> ProfileActionScriptOutputInterface*{
 
     ProfileActionScriptOutputInterface* profileActionScriptOutputInterface = 
                 null
@@ -83,7 +94,7 @@ class ProfileActionScriptOutputFactory
                             
 
 
-                            throw new Exception("No Such ActionScript Output");
+                            throw Exception("No Such ActionScript Output");
                     
 
                         }
@@ -97,11 +108,6 @@ class ProfileActionScriptOutputFactory
 }
 
 
-private: ProfileActionScriptOutputFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_PROFILEACTIONSCRIPTOUTPUTFACTORY_CPP

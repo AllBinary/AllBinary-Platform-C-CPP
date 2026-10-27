@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,17 +54,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/form/item/ABCustomItem.h"
+        class ABCustomItem;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomItemUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static CustomItemUtil* instance() { static std::unique_ptr<CustomItemUtil> value(new CustomItemUtil()); return value.get(); }
+    private: static CustomItemUtil* instance_owner();
+    private: static CustomItemUtil* instance;
 
     public: static CustomItemUtil* getInstance();
 
-    public: const std::vector<ABCustomItem*> CUSTOM_ITEM_ARRAY = {};
+
+            
+    public: CustomItemUtil();
+        
+    public: std::vector<ABCustomItem*> CUSTOM_ITEM_ARRAY;
 
 };
 
@@ -67,3 +81,13 @@ class CustomItemUtil
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/form/item/ABCustomItem.h")
+#include "org/allbinary/graphics/form/item/ABCustomItem.h"
+#endif
+
+        #endif
+    

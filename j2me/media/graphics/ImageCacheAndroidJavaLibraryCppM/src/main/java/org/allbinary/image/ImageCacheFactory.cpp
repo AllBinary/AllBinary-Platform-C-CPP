@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHEFACTORY_CPP
+        #define ORG_ALLBINARY_IMAGE_IMAGECACHEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/ImageCacheFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,27 +56,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/ImageCache.h"
 
-class ImageCacheFactory
-            : public Object
-         {
 
-    private: static ImageCache* IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
+ImageCacheFactory::ImageCacheFactory() {
+        }
+        auto ImageCacheFactory::IMAGE_CACHE_owner() -> ImageCache* { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
+ImageCache* ImageCacheFactory::IMAGE_CACHE = ImageCacheFactory::IMAGE_CACHE_owner();
 
-    public: static ImageCache* getInstance(){
+    auto ImageCacheFactory::getInstance() -> ImageCache*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCacheFactory::IMAGE_CACHE();
+                        return ImageCacheFactory::IMAGE_CACHE;
     
 }
 
 
-    public: static void init(){
+    auto ImageCacheFactory::init() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_IMAGECACHEFACTORY_CPP

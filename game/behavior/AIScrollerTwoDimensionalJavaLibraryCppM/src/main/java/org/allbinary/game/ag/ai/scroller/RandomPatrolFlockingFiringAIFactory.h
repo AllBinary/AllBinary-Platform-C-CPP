@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLFLOCKINGFIRINGAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLFLOCKINGFIRINGAIFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,24 +38,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
-
-      
-#include <org/allbinary/game/ag/ai/ArrayAI.h>
-
-      
+class ArtificialIntelligenceInterface;
+class ArrayAI;
 #include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class GameInput;
+class AllBinaryLayer;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -69,13 +62,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/ai/scroller/RandomPatrolAI.h"
-#include "org/allbinary/game/ag/ai/scroller/TimedFireAI.h"
+        class RandomPatrolAI;
+class TimedFireAI;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RandomPatrolFlockingFiringAIFactory
-            : public Object
+            : public virtual Object
         , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+
+            
+    public: RandomPatrolFlockingFiringAIFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
@@ -86,3 +87,34 @@ class RandomPatrolFlockingFiringAIFactory
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLFLOCKINGFIRINGAIFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLFLOCKINGFIRINGAIFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLFLOCKINGFIRINGAIFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/ai/ArtificialIntelligenceInterface.h>)
+#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/ag/ai/ArrayAI.h>)
+#include <org/allbinary/game/ag/ai/ArrayAI.h>
+#endif
+#if __has_include(<org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>)
+#include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/game/ag/ai/scroller/RandomPatrolAI.h")
+#include "org/allbinary/game/ag/ai/scroller/RandomPatrolAI.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/scroller/TimedFireAI.h")
+#include "org/allbinary/game/ag/ai/scroller/TimedFireAI.h"
+#endif
+
+        #endif
+    

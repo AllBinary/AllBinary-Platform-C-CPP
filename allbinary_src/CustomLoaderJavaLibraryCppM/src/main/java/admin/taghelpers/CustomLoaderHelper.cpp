@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_CUSTOMLOADERHELPER_CPP
+        #define ADMIN_TAGHELPERS_CUSTOMLOADERHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/CustomLoaderHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,32 +75,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomLoaderHelper
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: CustomLoaderHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+CustomLoaderHelper::CustomLoaderHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-public: CustomLoaderHelper(){
+CustomLoaderHelper::CustomLoaderHelper() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWebappPath(){
+    auto CustomLoaderHelper::getWebappPath() -> std::string{
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org.allbinary.globals.URLGLOBALS.getWebappPath();;
+                        return org.allbinary->globals->URLGLOBALS->getWebappPath();;
     
 
                 //: 
@@ -109,7 +112,7 @@ public: CustomLoaderHelper(){
 
                 //@Throws(Exception.constructor)
             
-    public: void setWebappPath(std::string path){
+    auto CustomLoaderHelper::setWebappPath(std::string path) -> void{
 
         try {
             
@@ -124,7 +127,7 @@ URLGLOBALS::init(urlGlobals);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setWebappPath()", &e);
@@ -137,7 +140,6 @@ URLGLOBALS::init(urlGlobals);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_CUSTOMLOADERHELPER_CPP

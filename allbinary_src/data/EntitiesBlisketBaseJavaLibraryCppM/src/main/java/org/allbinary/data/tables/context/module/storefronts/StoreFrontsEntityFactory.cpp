@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntity.h"
 
-class StoreFrontsEntityFactory
-            : public Object
-         {
+auto StoreFrontsEntityFactory::instance_owner() -> StoreFrontsEntityFactory* { static std::unique_ptr<StoreFrontsEntityFactory> value(new StoreFrontsEntityFactory()); return value.get(); }
+StoreFrontsEntityFactory* StoreFrontsEntityFactory::instance = StoreFrontsEntityFactory::instance_owner();
 
-    private: static StoreFrontsEntityFactory* instance() { static std::unique_ptr<StoreFrontsEntityFactory> value(new StoreFrontsEntityFactory()); return value.get(); }
-
-    public: static StoreFrontsEntityFactory* getInstance(){
+    auto StoreFrontsEntityFactory::getInstance() -> StoreFrontsEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontsEntityFactory::instance();
+                        return StoreFrontsEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: StoreFrontsEntityFactory(){
+StoreFrontsEntityFactory::StoreFrontsEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: StoreFrontsEntity* getStoreFrontsEntityInstance(){
+    auto StoreFrontsEntityFactory::getStoreFrontsEntityInstance() -> StoreFrontsEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: StoreFrontsEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: StoreFrontsEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITYFACTORY_CPP

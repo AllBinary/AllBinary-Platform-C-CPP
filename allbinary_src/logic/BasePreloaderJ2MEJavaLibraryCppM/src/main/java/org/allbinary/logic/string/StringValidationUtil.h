@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/TsUtil.h>
-
-      
+class TsUtil;
 
 
 
@@ -50,19 +53,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/string/StringUtil.h"
+        class StringUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StringValidationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static StringValidationUtil* instance() { static std::unique_ptr<StringValidationUtil> value(new StringValidationUtil()); return value.get(); }
+    private: static StringValidationUtil* instance_owner();
+    private: static StringValidationUtil* instance;
 
     public: static StringValidationUtil* getInstance();
 
-    private: StringUtil* stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil;
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
 private: StringValidationUtil();
 
@@ -88,3 +96,16 @@ private: StringValidationUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+
+        #endif
+    

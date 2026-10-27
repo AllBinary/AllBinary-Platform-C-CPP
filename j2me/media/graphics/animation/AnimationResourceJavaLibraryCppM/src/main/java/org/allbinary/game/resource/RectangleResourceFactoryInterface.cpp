@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/resource/RectangleResourceFactoryInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,17 +60,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleResourceFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual Rectangle* getRectangle(std::string resource) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::vector<std::vector<Rectangle*>> getRectangleArrayOfArrays(std::string resource) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_CPP

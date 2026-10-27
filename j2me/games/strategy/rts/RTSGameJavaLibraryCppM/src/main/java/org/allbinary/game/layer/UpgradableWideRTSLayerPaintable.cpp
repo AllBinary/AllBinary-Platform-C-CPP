@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UPGRADABLEWIDERTSLAYERPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UPGRADABLEWIDERTSLAYERPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/UpgradableWideRTSLayerPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,8 @@
 #include "org/allbinary/game/layer/UpgradableRTSLayerHudPaintable.h"
 #include "org/allbinary/game/layer/RTSLayer.h"
 
-class UpgradableWideRTSLayerPaintable: public RTSLayerCompositePaintable {
 
-    private: std::string cost = StringUtil::getInstance()->EMPTY_STRING;
-
-public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable) : RTSLayerCompositePaintable(upgradableRTSLayerHudPaintable){
+UpgradableWideRTSLayerPaintable::UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable) : RTSLayerCompositePaintable(upgradableRTSLayerHudPaintable), cost(StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,27 +79,27 @@ public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable* upgradab
 }
 
 
-    public: void update(RTSLayer* rtsLayer){
-super.update(rtsLayer);
+    auto UpgradableWideRTSLayerPaintable::update(RTSLayer* rtsLayer) -> void{
+RTSLayerCompositePaintable::update(rtsLayer);
     
 this->setCost((new StringMaker())->append(this->getUpgradeCost())->append(CommonSeps::getInstance()->SPACE)->append(this->getDownGradeCost())->toString());
     
 }
 
 
-    public: void paint(Graphics* graphics){
-graphics->drawString(this->getCost(), this->upgradableRTSLayerHudPaintable.textX, this->upgradableRTSLayerHudPaintable.costY, 0);
+    auto UpgradableWideRTSLayerPaintable::paint(Graphics* graphics) -> void{
+graphics->drawString(this->getCost(), this->upgradableRTSLayerHudPaintable->textX, this->upgradableRTSLayerHudPaintable->costY, 0);
     
 }
 
 
-    protected: void setCost(std::string cost){
+    auto UpgradableWideRTSLayerPaintable::setCost(std::string cost) -> void{
 this->cost= cost;
     
 }
 
 
-    protected: std::string getCost(){
+    auto UpgradableWideRTSLayerPaintable::getCost() -> std::string{
 
 
 
@@ -102,7 +109,6 @@ this->cost= cost;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_UPGRADABLEWIDERTSLAYERPAINTABLE_CPP

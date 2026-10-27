@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/table/HtmlRow.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,23 +73,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/html/table/HtmlCell.h"
 
-class HtmlRow: public HtmlTag {
 
-    private: const std::string END = ">";
-
-    private: const std::string START = "<tr ";
-
-    private: const std::string ENDTAG = "</tr>";
-
-    private: int32_t numberOfColumns = 0;
-
-    private: std::string before;
-
-    private: std::string after;
-
-    private: BasicArrayList* htmlCellsVector;
-
-public: HtmlRow(std::string before, std::string after){
+HtmlRow::HtmlRow(std::string before, std::string after){
 this->before= std::string(before);
     
 this->after= std::string(after);
@@ -89,7 +84,7 @@ this->htmlCellsVector= new BasicArrayListD();
 }
 
 
-    public: void addCell(HtmlCell* htmlCell){
+    auto HtmlRow::addCell(HtmlCell* htmlCell) -> void{
 this->htmlCellsVector->add(htmlCell);
     
 this->numberOfColumns++;
@@ -97,7 +92,7 @@ this->numberOfColumns++;
 }
 
 
-    public: int32_t getNumberOfColumns(){
+    auto HtmlRow::getNumberOfColumns() -> int32_t{
 
 
 
@@ -107,7 +102,7 @@ this->numberOfColumns++;
 }
 
 
-    public: std::string toString(){
+    auto HtmlRow::toString() -> std::string{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -115,7 +110,7 @@ this->numberOfColumns++;
     std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes.keySet()->();;
+    std::vector<Object*> attributeKeys = this->otherAttributes->keySet()->();;
     
 
     int32_t attributeSize = attributeKeys.size();;
@@ -187,7 +182,6 @@ result += this->after;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_COMPONENTFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_COMPONENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/ComponentFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,49 +61,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/hardware/components/Component.h"
 
-class ComponentFactory
-            : public Object
-         {
 
-    private: static ComponentFactory* instance() { static std::unique_ptr<ComponentFactory> value(new ComponentFactory()); return value.get(); }
+ComponentFactory::ComponentFactory() : VGA(new Component("VGA")), IDE(new Component("IDE")), SCSI(new Component("SCSI")), BRIDGE(new Component("bridge")), ETHERNET(new Component("Ethernet")), USB(new Component("USB")), MULTIMEDIA(new Component("Multimedia")), PCI(new Component("PCI")), RAID(new Component("RAID")), SMBUS(new Component("SMBus")), PIC(new Component("PIC")), Class(new Component("Class")), UNKNOWN(new Component(CommonStrings::getInstance()->UNKNOWN)) {
+        }
+        auto ComponentFactory::instance_owner() -> ComponentFactory* { static std::unique_ptr<ComponentFactory> value(new ComponentFactory()); return value.get(); }
+ComponentFactory* ComponentFactory::instance = ComponentFactory::instance_owner();
 
-    public: static ComponentFactory* getInstance(){
+    auto ComponentFactory::getInstance() -> ComponentFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ComponentFactory::instance();
+                        return ComponentFactory::instance;
     
 }
 
 
-    public: Component* VGA = new Component("VGA");
 
-    public: Component* IDE = new Component("IDE");
 
-    public: Component* SCSI = new Component("SCSI");
-
-    public: Component* BRIDGE = new Component("bridge");
-
-    public: Component* ETHERNET = new Component("Ethernet");
-
-    public: Component* USB = new Component("USB");
-
-    public: Component* MULTIMEDIA = new Component("Multimedia");
-
-    public: Component* PCI = new Component("PCI");
-
-    public: Component* RAID = new Component("RAID");
-
-    public: Component* SMBUS = new Component("SMBus");
-
-    public: Component* PIC = new Component("PIC");
-
-    public: Component* Class = new Component("Class");
-
-    public: Component* UNKNOWN = new Component(CommonStrings::getInstance()->UNKNOWN);
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_COMPONENTFACTORY_CPP

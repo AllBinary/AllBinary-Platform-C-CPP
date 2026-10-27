@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORM_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/InGameOptionsForm.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,22 +82,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InGameOptionsForm: public CommandForm {
+auto InGameOptionsForm::DISPLAY_owner() -> Command* { static std::unique_ptr<Command> value(new Command("Options In Game", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
+Command* InGameOptionsForm::DISPLAY = InGameOptionsForm::DISPLAY_owner();
+auto InGameOptionsForm::SAVE_owner() -> Command* { static std::unique_ptr<Command> value(new Command("Save", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
+Command* InGameOptionsForm::SAVE = InGameOptionsForm::SAVE_owner();
+auto InGameOptionsForm::DEFAULT_owner() -> Command* { static std::unique_ptr<Command> value(new Command("Default", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
+Command* InGameOptionsForm::DEFAULT = InGameOptionsForm::DEFAULT_owner();
 
-    public: static Command* DISPLAY() { static std::unique_ptr<Command> value(new Command("Options In Game", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
-
-    public: static Command* SAVE() { static std::unique_ptr<Command> value(new Command("Save", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
-
-    public: static Command* DEFAULT() { static std::unique_ptr<Command> value(new Command("Default", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
-
-: InGameOptionsForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+InGameOptionsForm::InGameOptionsForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
     GameFeatureFormUtil* gameFeatureFormUtil = GameFeatureFormUtil::getInstance();;
@@ -101,19 +110,18 @@ this->initCommands(commandListener);
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto InGameOptionsForm::initCommands(CommandListener* cmdListener) -> void{
 this->removeAllCommands();
     
 this->addCommand(GameCommandsFactory::getInstance()->CLOSE_AND_SHOW_GAME_CANVAS);
     
-this->addCommand(InGameOptionsForm::DEFAULT());
+this->addCommand(InGameOptionsForm::DEFAULT);
     
 this->setCommandListener(cmdListener);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORM_CPP

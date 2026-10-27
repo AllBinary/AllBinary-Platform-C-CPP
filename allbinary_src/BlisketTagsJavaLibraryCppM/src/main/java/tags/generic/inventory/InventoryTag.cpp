@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_GENERIC_INVENTORY_INVENTORYTAG_CPP
+        #define TAGS_GENERIC_INVENTORY_INVENTORYTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/generic/inventory/InventoryTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryTag: public StoreValidationTransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InventoryTag() : StoreValidationTransformTag(){
+InventoryTag::InventoryTag() : StoreValidationTransformTag(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +93,7 @@ public: InventoryTag() : StoreValidationTransformTag(){
 
                 //@Throws(LicensingException.constructor)
             
-    private: void search(){
+    auto InventoryTag::search() -> void{
 
         try {
             
@@ -123,26 +130,26 @@ pageContext.getOut()->print(result);
     std::string error = "Failed to search Inventory by keyword";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "search()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "search()", &e);
     
 
                                     }
                                 
 
         try {
-            pageContext.getOut()->print(error +"<br>");
+            pageContext.getOut()->print(JavaString::valueOf(error) +JavaString::valueOf("<br>"));
     
-pageContext.getOut()->print("Exception: " +e +"<br>");
+pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: ") +JavaString::valueOf(e)) +JavaString::valueOf("<br>"));
     
 
                 //: 
 } catch(Exception& e2) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->LICENSINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LICENSINGERROR))
                         
                                     {
                                     this->logUtil->put("Exception in Exception Handling", this, "search()", e);
@@ -159,7 +166,7 @@ pageContext.getOut()->print("Exception: " +e +"<br>");
 
                 //@Throws(LicensingException.constructor)
             
-    private: void viewSummary(){
+    auto InventoryTag::viewSummary() -> void{
 
         try {
             
@@ -196,26 +203,26 @@ pageContext.getOut()->print(result);
     std::string error = "Failed to View Summary";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewSummary()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewSummary()", &e);
     
 
                                     }
                                 
 
         try {
-            pageContext.getOut()->print(error +"<br>");
+            pageContext.getOut()->print(JavaString::valueOf(error) +JavaString::valueOf("<br>"));
     
-pageContext.getOut()->print("Exception: " +e +"<br>");
+pageContext.getOut()->print(JavaString::valueOf(JavaString::valueOf("Exception: ") +JavaString::valueOf(e)) +JavaString::valueOf("<br>"));
     
 
                 //: 
 } catch(Exception& e2) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->LICENSINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LICENSINGERROR))
                         
                                     {
                                     this->logUtil->put("Exception in Exception Handling", this, "viewSummary())", e);
@@ -232,7 +239,7 @@ pageContext.getOut()->print("Exception: " +e +"<br>");
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto InventoryTag::doStartTag() -> int32_t{
 
         try {
             
@@ -242,7 +249,7 @@ pageContext.getOut()->print("Exception: " +e +"<br>");
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.SEARCH) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->SEARCH) == 0)
                         
                                     {
                                     this->setName("Basic Search Inventory View");
@@ -261,7 +268,7 @@ this->search();
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEWSUMMARY) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEWSUMMARY) == 0)
                         
                                     {
                                     this->setName("Basic Inventory View");
@@ -280,7 +287,7 @@ this->viewSummary();
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     this->setName("Basic Inventory View");
@@ -291,7 +298,7 @@ this->setObjectFile("views.generic.inventory.AutoValidationInventoryView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -300,7 +307,7 @@ this->setObjectFile("views.generic.inventory.AutoValidationInventoryView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -311,7 +318,7 @@ this->setObjectFile("views.generic.inventory.AutoValidationInventoryView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -343,7 +350,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_GENERIC_INVENTORY_INVENTORYTAG_CPP

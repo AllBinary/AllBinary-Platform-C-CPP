@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/workflow/DeleteValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,13 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/workflow/WorkFlowView.h"
 
-class DeleteValidationView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string workFlowName;
-
-public: DeleteValidationView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface){
+DeleteValidationView::DeleteValidationView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,10 +91,10 @@ public: DeleteValidationView(TransformInfoInterface* transformInfoInterface) : W
 this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowData::getInstance()->NAME);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Name: " +this->workFlowName, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Name: ") +JavaString::valueOf(this->workFlowName), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -97,7 +102,7 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
 }
 
 
-    public: bool isValid(){
+    auto DeleteValidationView::isValid() -> bool{
 
         try {
             
@@ -120,10 +125,10 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("WorkFlow does not exist.", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("WorkFlow does not exist.", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -148,10 +153,10 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -167,7 +172,7 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
 }
 
 
-    public: std::string validationInfo(){
+    auto DeleteValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -189,7 +194,7 @@ this->workFlowName= this->getPageContext()->getRequest()->getParameter(WorkFlowD
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("WorkFlow does not exist.", this, "validationInfo()");
@@ -213,7 +218,7 @@ stringBuffer->append("WorkFlow does not exist<br />");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -232,7 +237,7 @@ stringBuffer->append("WorkFlow does not exist<br />");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto DeleteValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -242,7 +247,7 @@ stringBuffer->append("WorkFlow does not exist<br />");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto DeleteValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -252,7 +257,6 @@ stringBuffer->append("WorkFlow does not exist<br />");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_CPP

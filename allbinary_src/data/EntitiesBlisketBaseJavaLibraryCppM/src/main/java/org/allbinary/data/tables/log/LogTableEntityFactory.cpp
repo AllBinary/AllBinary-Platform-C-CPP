@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/log/LogTableEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/log/LogTableEntity.h"
 
-class LogTableEntityFactory
-            : public Object
-         {
+auto LogTableEntityFactory::instance_owner() -> LogTableEntityFactory* { static std::unique_ptr<LogTableEntityFactory> value(new LogTableEntityFactory()); return value.get(); }
+LogTableEntityFactory* LogTableEntityFactory::instance = LogTableEntityFactory::instance_owner();
 
-    private: static LogTableEntityFactory* instance() { static std::unique_ptr<LogTableEntityFactory> value(new LogTableEntityFactory()); return value.get(); }
-
-    public: static LogTableEntityFactory* getInstance(){
+    auto LogTableEntityFactory::getInstance() -> LogTableEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogTableEntityFactory::instance();
+                        return LogTableEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: LogTableEntityFactory(){
+LogTableEntityFactory::LogTableEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: LogTableEntity* getLogTableEntityInstance(){
+    auto LogTableEntityFactory::getLogTableEntityInstance() -> LogTableEntity*{
 
         try {
             
@@ -90,7 +95,7 @@ private: LogTableEntityFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
@@ -112,7 +117,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYFACTORY_CPP

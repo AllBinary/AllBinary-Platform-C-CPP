@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/gd/resource/GDLazyResources.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,32 +57,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GDLazyResources
-            : public Object
-         {
 
-    private: static GDLazyResources* instance() { static std::unique_ptr<GDLazyResources> value(new GDLazyResources()); return value.get(); }
+GDLazyResources::GDLazyResources() : imageResourceWidthArray({}), imageResourceHeightArray({}), requiredResourcesBeforeLoadingArray(
+                                                        {
+                                                            
+                                                        }) {
+        }
+        auto GDLazyResources::instance_owner() -> GDLazyResources* { static std::unique_ptr<GDLazyResources> value(new GDLazyResources()); return value.get(); }
+GDLazyResources* GDLazyResources::instance = GDLazyResources::instance_owner();
 
-    public: static GDLazyResources* getInstance(){
+    auto GDLazyResources::getInstance() -> GDLazyResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GDLazyResources::instance();
+                        return GDLazyResources::instance;
     
 }
 
 
-    public: const std::vector<int32_t> imageResourceWidthArray = {};
 
-    public: const std::vector<int32_t> imageResourceHeightArray = {};
 
-    public: const std::vector<std::string> requiredResourcesBeforeLoadingArray = 
-                                                        {
-                                                            
-                                                        };
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_CPP

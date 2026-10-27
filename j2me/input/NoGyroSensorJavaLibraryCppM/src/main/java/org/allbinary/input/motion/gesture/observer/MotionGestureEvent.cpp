@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENT_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,21 +82,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionGestureEvent: public AllBinaryEventObject {
 
-    private: static inline const std::string PREVIOUS = " Previous: ";
-
-    private: static inline const std::string HASHCODE = " hashcode: ";
-
-    private: MotionGestureInput* motionGesture = TouchMotionGestureFactory::getInstance()->NO_MOTION;
-
-    private: int32_t id;
-
-    private: GPoint* previousPoint = PointFactory::getInstance()->ZERO_ZERO;
-
-    private: GPoint* currentPoint = PointFactory::getInstance()->ZERO_ZERO;
-
-public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput* motionGesture) : AllBinaryEventObject(source){
+MotionGestureEvent::MotionGestureEvent(Object* source, int32_t id, MotionGestureInput* motionGesture) : AllBinaryEventObject(source), motionGesture(TouchMotionGestureFactory::getInstance()->NO_MOTION), previousPoint(PointFactory::getInstance()->ZERO_ZERO), currentPoint(PointFactory::getInstance()->ZERO_ZERO), commonLabels(CommonLabels::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -100,7 +97,7 @@ this->setMotionGesture(motionGesture);
 }
 
 
-    public: MotionGestureInput* getMotionGesture(){
+    auto MotionGestureEvent::getMotionGesture() -> MotionGestureInput*{
 
 
 
@@ -110,13 +107,13 @@ this->setMotionGesture(motionGesture);
 }
 
 
-    public: void setMotionGesture(MotionGestureInput* motionGesture){
+    auto MotionGestureEvent::setMotionGesture(MotionGestureInput* motionGesture) -> void{
 this->motionGesture= motionGesture;
     
 }
 
 
-    public: GPoint* getPreviousPoint(){
+    auto MotionGestureEvent::getPreviousPoint() -> GPoint*{
 
 
 
@@ -126,13 +123,13 @@ this->motionGesture= motionGesture;
 }
 
 
-    public: void setPreviousPoint(GPoint* previousPoint){
+    auto MotionGestureEvent::setPreviousPoint(GPoint* previousPoint) -> void{
 this->previousPoint= previousPoint;
     
 }
 
 
-    public: GPoint* getCurrentPoint(){
+    auto MotionGestureEvent::getCurrentPoint() -> GPoint*{
 
 
 
@@ -142,15 +139,13 @@ this->previousPoint= previousPoint;
 }
 
 
-    public: void setCurrentPoint(GPoint* currentPoint){
+    auto MotionGestureEvent::setCurrentPoint(GPoint* currentPoint) -> void{
 this->currentPoint= currentPoint;
     
 }
 
 
-    private: CommonLabels* commonLabels = CommonLabels::getInstance();
-
-    public: std::string toString(){
+    auto MotionGestureEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -180,7 +175,7 @@ stringBuffer->appendint(TsUtil::getInstance()->hashCode(this));
 }
 
 
-    public: int32_t getId(){
+    auto MotionGestureEvent::getId() -> int32_t{
 
 
 
@@ -190,7 +185,6 @@ stringBuffer->appendint(TsUtil::getInstance()->hashCode(this));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENT_CPP

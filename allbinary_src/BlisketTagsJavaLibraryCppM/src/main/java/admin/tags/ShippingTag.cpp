@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_SHIPPINGTAG_CPP
+        #define ADMIN_TAGS_SHIPPINGTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/ShippingTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,27 +89,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingTag: public CustomTagSupport {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string command;
-
-    private: std::string storeName;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-public: ShippingTag(){
+ShippingTag::ShippingTag() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setCommand(std::string command){
+    auto ShippingTag::setCommand(std::string command) -> void{
 this->command= command;
     
 }
 
 
-    public: void setStoreName(std::string value){
+    auto ShippingTag::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 }
@@ -107,7 +108,7 @@ this->storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string setShippingType(){
+    auto ShippingTag::setShippingType() -> std::string{
 
         try {
             
@@ -148,10 +149,10 @@ this->storeName= value;
     std::string error = "Failed to view Shipping Type";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setShippingType()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setShippingType()", &e);
     
 
                                     }
@@ -169,7 +170,7 @@ this->storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto ShippingTag::doStartTag() -> int32_t{
 
         try {
             
@@ -181,7 +182,7 @@ this->storeName= value;
 this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.SETSHIPPINGTYPE) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->SETSHIPPINGTYPE) == 0)
                         
                                     {
                                     this->setShippingType();
@@ -228,7 +229,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_SHIPPINGTAG_CPP

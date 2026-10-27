@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONGAUGE_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONGAUGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameConfigurationGauge.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/GameConfiguration.h"
 
-class GameConfigurationGauge: public Gauge {
 
-public: GameConfigurationGauge(GameConfiguration* gameConfiguration) : Gauge(gameConfiguration->getName(), gameConfiguration->isModifiable().valueOf(), gameConfiguration->getMaxValue()->intValue() -gameConfiguration->getMinValue()->intValue(), gameConfiguration->getValue()->intValue() -gameConfiguration->getMinValue()->intValue()){
+GameConfigurationGauge::GameConfigurationGauge(GameConfiguration* gameConfiguration) : Gauge(gameConfiguration->getName(), gameConfiguration->isModifiable().valueOf(), gameConfiguration->getMaxValue()->intValue() -gameConfiguration->getMinValue()->intValue(), gameConfiguration->getValue()->intValue() -gameConfiguration->getMinValue()->intValue()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -59,7 +68,6 @@ public: GameConfigurationGauge(GameConfiguration* gameConfiguration) : Gauge(gam
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONGAUGE_CPP

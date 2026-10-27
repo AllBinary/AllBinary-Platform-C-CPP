@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_ALLBINARYMAGNETICFIELDSENSOR_CPP
+        #define ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_ALLBINARYMAGNETICFIELDSENSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/magnetic/field/AllBinaryMagneticFieldSensor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryMagneticFieldSensor: public AllBinarySensor {
 
-protected: AllBinaryMagneticFieldSensor(){
+AllBinaryMagneticFieldSensor::AllBinaryMagneticFieldSensor(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_ALLBINARYMAGNETICFIELDSENSOR_CPP

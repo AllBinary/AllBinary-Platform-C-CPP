@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/payment/gateway/GatewayValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/payment/gateway/GatewayView.h"
 
-class GatewayValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+GatewayValidationView::GatewayValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +82,7 @@ public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : 
 }
 
 
-    public: bool isValid(){
+    auto GatewayValidationView::isValid() -> bool{
 
 
 
@@ -83,7 +92,7 @@ public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : 
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto GatewayValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -93,7 +102,7 @@ public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : 
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto GatewayValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -105,16 +114,16 @@ public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto GatewayValidationView::validationInfo() -> std::string{
 
 
 
-                            throw new Exception("validationInfo");
+                            throw Exception("validationInfo");
                     
 }
 
 
-    public: Document* toXmlDoc(){
+    auto GatewayValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -124,7 +133,7 @@ public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : 
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto GatewayValidationView::toXmlNode(Document* document) -> Node*{
 
 
 
@@ -136,7 +145,7 @@ public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto GatewayValidationView::view() -> std::string{
 
 
 
@@ -146,7 +155,6 @@ public: GatewayValidationView(TransformInfoInterface* transformInfoInterface) : 
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVALIDATIONVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_USPSSHIPPINGMODULE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_USPSSHIPPINGMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/modules/UspsShippingModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,19 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
-class UspsShippingModule
-            : public Object
-        , public ShippingInterface {
 
-    private: const std::string name = "USPS";
-
-    private: const std::string description = "Snail Mail";
-
-public: UspsShippingModule(){
+UspsShippingModule::UspsShippingModule(){
 }
 
 
-    public: Money* getCost(OrderInterface* order){
+    auto UspsShippingModule::getCost(OrderInterface* order) -> Money*{
 
 
 
@@ -74,7 +77,7 @@ public: UspsShippingModule(){
 }
 
 
-    public: std::string getDescription(){
+    auto UspsShippingModule::getDescription() -> std::string{
 
 
 
@@ -84,7 +87,7 @@ public: UspsShippingModule(){
 }
 
 
-    public: std::string getName(){
+    auto UspsShippingModule::getName() -> std::string{
 
 
 
@@ -94,7 +97,6 @@ public: UspsShippingModule(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_USPSSHIPPINGMODULE_CPP

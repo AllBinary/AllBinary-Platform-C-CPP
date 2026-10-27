@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_COMPOUND_OBJECTCONFIG_COMPOUNDCONTEXTTRANSFORMINFOOBJECTCONFIG_CPP
+        #define VIEWS_COMPOUND_OBJECTCONFIG_COMPOUNDCONTEXTTRANSFORMINFOOBJECTCONFIG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/compound/objectConfig/CompoundContextTransformInfoObjectConfig.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -107,11 +117,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CompoundContextTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: CompoundContextTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface){
+CompoundContextTransformInfoObjectConfig::CompoundContextTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -121,7 +128,7 @@ public: CompoundContextTransformInfoObjectConfig(Object* abeClientInformation, O
 }
 
 
-public: CompoundContextTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, Object* document) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document){
+CompoundContextTransformInfoObjectConfig::CompoundContextTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, Document* document) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -133,7 +140,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: CompoundContextTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string name, std::string type) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, name, type){
+CompoundContextTransformInfoObjectConfig::CompoundContextTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, std::string name, std::string type) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, name, type), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -147,7 +154,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string get(){
+    auto CompoundContextTransformInfoObjectConfig::get() -> std::string{
 
     std::string storeName = this->getTransformInfoInterface()->getStoreName();;
     
@@ -175,10 +182,10 @@ stringBuffer->append(RootTransformInfoData::NAME);
     BasicArrayList* viewVector = this->getTransformDomNodes();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Root View Called with: " +viewVector->size(), this, "get(transformInfoInterface)");
+                                    this->logUtil->putF(JavaString::valueOf("Root View Called with: ") +JavaString::valueOf(viewVector->size()), this, "get(transformInfoInterface)");
     
 
                                     }
@@ -216,7 +223,7 @@ stringBuffer->append(RootTransformInfoData::NAME);
     
 replacementViewString= DocumentToNode::convertDocumentToNodeString(replacementViewString);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(startXMLHeader);
     
@@ -228,10 +235,10 @@ stringBuffer->append(endXMLHeader);
     std::string templateValue = stringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Replacing: ");
     
@@ -254,10 +261,10 @@ rootView= replace->all(rootView);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("End: Result of a compound view: " +rootView, this, "get()");
+                                    this->logUtil->putF(JavaString::valueOf("End: Result of a compound view: ") +JavaString::valueOf(rootView), this, "get()");
     
 
                                     }
@@ -273,7 +280,7 @@ rootView= replace->all(rootView);
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* createInputStream(){
+    auto CompoundContextTransformInfoObjectConfig::createInputStream() -> InputStream*{
 
     std::vector<int8_t> completeTemplateViewBytes = this->get().getBytes();;
     
@@ -281,10 +288,10 @@ rootView= replace->all(rootView);
     ByteArrayInputStream* bais = new ByteArrayInputStream(completeTemplateViewBytes);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Template: " +(String.fromCharCode(...completeTemplateViewBytes)).toString(), this, "createInputStream()");
+                                    this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf((JavaString::fromChars(completeTemplateViewBytes)).toString()), this, "createInputStream()");
     
 
                                     }
@@ -298,7 +305,6 @@ rootView= replace->all(rootView);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_COMPOUND_OBJECTCONFIG_COMPOUNDCONTEXTTRANSFORMINFOOBJECTCONFIG_CPP

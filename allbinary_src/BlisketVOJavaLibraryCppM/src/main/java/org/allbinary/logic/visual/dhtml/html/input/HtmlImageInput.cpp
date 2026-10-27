@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLIMAGEINPUT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLIMAGEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlImageInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlImageInput
-            : public Object
-         {
 
-public: HtmlImageInput(){
+HtmlImageInput::HtmlImageInput(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLIMAGEINPUT_CPP

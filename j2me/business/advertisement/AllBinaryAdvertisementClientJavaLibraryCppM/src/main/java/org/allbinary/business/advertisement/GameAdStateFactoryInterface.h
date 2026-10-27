@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/system/SoftwareInformation.h>
-
-      
+class SoftwareInformation;
 
 
 
@@ -50,9 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/advertisement/GameAdStateBase.h"
+        class GameAdStateBase;
 
-class GameAdStateFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GameAdStateFactoryInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -64,3 +73,16 @@ class GameAdStateFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/system/SoftwareInformation.h>)
+#include <org/allbinary/logic/system/SoftwareInformation.h>
+#endif
+#if __has_include("org/allbinary/business/advertisement/GameAdStateBase.h")
+#include "org/allbinary/business/advertisement/GameAdStateBase.h"
+#endif
+
+        #endif
+    

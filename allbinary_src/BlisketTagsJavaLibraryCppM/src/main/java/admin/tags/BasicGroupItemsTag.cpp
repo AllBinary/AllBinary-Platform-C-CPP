@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_BASICGROUPITEMSTAG_CPP
+        #define ADMIN_TAGS_BASICGROUPITEMSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/BasicGroupItemsTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,11 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class BasicGroupItemsTag: public TableTag {
 
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-public: BasicGroupItemsTag(){
+BasicGroupItemsTag::BasicGroupItemsTag(){
 this->setTagHelperFactory(new BasicGroupItemsHelperFactory());
     
 this->setTagRequestHelperFactory(new BasicGroupItemsRequestHelperFactory());
@@ -65,7 +72,6 @@ this->setTagRequestHelperFactory(new BasicGroupItemsRequestHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_BASICGROUPITEMSTAG_CPP

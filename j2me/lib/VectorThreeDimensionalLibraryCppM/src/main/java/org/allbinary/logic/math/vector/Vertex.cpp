@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_VERTEX_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_VERTEX_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/vector/Vertex.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,21 +67,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Vertex
-            : public Object
-         {
 
-    public: BasicDecimal* x = new BasicDecimal(0);
-
-    public: BasicDecimal* y = new BasicDecimal(0);
-
-    public: BasicDecimal* z = new BasicDecimal(0);
-
-public: Vertex(){
+Vertex::Vertex() : x(new BasicDecimal(0)), y(new BasicDecimal(0)), z(new BasicDecimal(0)){
 }
 
 
-    public: std::string toString(){
+    auto Vertex::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -103,7 +104,6 @@ stringBuffer->append(this->z->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_VECTOR_VERTEX_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,10 +54,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageUnifierCell.h"
+        class ImageUnifierCell;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageUnifierProperties
-            : public Object
+            : public virtual Object
          {
 
     private: int32_t rows;
@@ -85,3 +94,13 @@ public: ImageUnifierProperties();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERPROPERTIES_H_COMPLETE
+        #if __has_include("org/allbinary/media/image/ImageUnifierCell.h")
+#include "org/allbinary/media/image/ImageUnifierCell.h"
+#endif
+
+        #endif
+    

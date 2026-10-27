@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMIMAGEITEM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMIMAGEITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/ABCustomImageItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -41,11 +51,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
-class ABCustomImageItem: public ABCustomItem {
 
-    protected: int32_t yOffset = 0;
-
-public: ABCustomImageItem(std::string label, Image* image, int32_t layout, std::string altText, BasicColor* basicColor, int32_t yOffset) : ABCustomItem(label, basicColor, basicColor){
+ABCustomImageItem::ABCustomImageItem(std::string label, Image* image, int32_t layout, std::string altText, BasicColor* basicColor, int32_t yOffset) : ABCustomItem(label, basicColor, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -55,7 +62,7 @@ public: ABCustomImageItem(std::string label, Image* image, int32_t layout, std::
 }
 
 
-    public: Image* getImage(){
+    auto ABCustomImageItem::getImage() -> Image*{
 
 
 
@@ -65,7 +72,6 @@ public: ABCustomImageItem(std::string label, Image* image, int32_t layout, std::
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMIMAGEITEM_CPP

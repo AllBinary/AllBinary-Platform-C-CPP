@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,50 +41,20 @@
             #include "java/lang/RuntimeException.h"
         
 #include <java/util/HashSet.h>
-
-      
 #include <java/util/PriorityQueue.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/math/MathUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class AllBinaryTiledLayer;
+class NullUtil;
+class LogUtil;
+class MathUtil;
+class CommonStrings;
+class BasicGeographicMap;
+class BasicGeographicMapCellPositionFactory;
+class GeographicMapCellPosition;
+class GeographicMapCellType;
+class RaceTrackGeographicMapCellType;
+class BasicArrayList;
+class BasicArrayListD;
+class BasicArrayListUtil;
 
 
 
@@ -99,26 +74,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCost.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
+class PathFindingNodeCost;
+class PathFindingNodeCostInfo;
+class PathFindingNode;
+class MultipassState;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PathFinder: public GeographicPathFinderBase {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
+            
+    public: PathFinder();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil;
 
-    private: PriorityQueue<PathFindingNodeCost*>* openPriorityQueue = new PriorityQueue<PathFindingNodeCost*>();
+    private: MathUtil* mathUtil;
 
-    private: HashSet<PathFindingNodeCost*>* closedSet = new HashSet<PathFindingNodeCost*>();
+    private: PriorityQueue<PathFindingNodeCost*>* openPriorityQueue;
 
-    private: Object* geographicMapInterface = NullUtil::getInstance()->NULL_OBJECT;
+    private: HashSet<PathFindingNodeCost*>* closedSet;
 
-    private: std::vector<std::vector<PathFindingNodeCost*>> costArray = PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
+    private: Object* geographicMapInterface;
+
+    private: std::vector<std::vector<PathFindingNodeCost*>> costArray;
 
                 //@Throws(Exception.constructor)
             
@@ -162,3 +145,70 @@ class PathFinder: public GeographicPathFinderBase {
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H_COMPLETE
+        #if __has_include(<java/util/HashSet.h>)
+#include <java/util/HashSet.h>
+#endif
+#if __has_include(<java/util/PriorityQueue.h>)
+#include <java/util/PriorityQueue.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/MathUtil.h>)
+#include <org/allbinary/logic/math/MathUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCost.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCost.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/MultipassState.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
+#endif
+
+        #endif
+    

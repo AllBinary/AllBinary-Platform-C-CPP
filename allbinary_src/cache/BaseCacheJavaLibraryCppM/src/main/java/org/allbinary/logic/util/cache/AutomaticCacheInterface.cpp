@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/AutomaticCacheInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,8 @@
         #include "org/allbinary/logic/util/cache/CacheInterface.h"
 #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
-class AutomaticCacheInterface: public CacheInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual CacheableInterface* get(Object* key) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_CPP

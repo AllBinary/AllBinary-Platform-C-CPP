@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/XslHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,29 +93,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //import org.allbinary.data.tree.dom.document.DomDocumentHelper;
-class XslHelper
-            : public Object
-         {
+auto XslHelper::instance_owner() -> XslHelper* { static std::unique_ptr<XslHelper> value(new XslHelper()); return value.get(); }
+XslHelper* XslHelper::instance = XslHelper::instance_owner();
 
-    private: static XslHelper* instance() { static std::unique_ptr<XslHelper> value(new XslHelper()); return value.get(); }
-
-    public: static XslHelper* getInstance(){
+    auto XslHelper::getInstance() -> XslHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XslHelper::instance();
+                        return XslHelper::instance;
     
 }
 
 
-private: XslHelper(){
+XslHelper::XslHelper(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: OutputStream* translate(StreamSource* xsltStreamSource, StreamSource* xmlStreamSource, StreamResult* streamResult){
+    auto XslHelper::translate(StreamSource* xsltStreamSource, StreamSource* xmlStreamSource, StreamResult* streamResult) -> OutputStream*{
 
         try {
             
@@ -138,7 +145,7 @@ transformer->transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: OutputStream* translate(URIResolver* resolver, StreamSource* xsltStreamSource, StreamSource* xmlStreamSource, StreamResult* streamResult){
+    auto XslHelper::translate(URIResolver* resolver, StreamSource* xsltStreamSource, StreamSource* xmlStreamSource, StreamResult* streamResult) -> OutputStream*{
 
         try {
             
@@ -173,7 +180,7 @@ transformer->transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translateTemplate(Templates* templates, StreamSource* xmlStreamSource){
+    auto XslHelper::translateTemplate(Templates* templates, StreamSource* xmlStreamSource) -> std::string{
 
         try {
             
@@ -206,7 +213,7 @@ templates->newTransformer()->transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(StreamSource* xsltStreamSource, Document* xmlDocument){
+    auto XslHelper::translate(StreamSource* xsltStreamSource, Document* xmlDocument) -> std::string{
 
         try {
             
@@ -234,7 +241,7 @@ templates->newTransformer()->transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(StreamSource* xsltStreamSource, StreamSource* xmlStreamSource){
+    auto XslHelper::translate(StreamSource* xsltStreamSource, StreamSource* xmlStreamSource) -> std::string{
 
         try {
             
@@ -262,7 +269,7 @@ templates->newTransformer()->transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(URIResolver* resolver, StreamSource* xsltStreamSource, StreamSource* xmlStreamSource){
+    auto XslHelper::translate(URIResolver* resolver, StreamSource* xsltStreamSource, StreamSource* xmlStreamSource) -> std::string{
 
         try {
             
@@ -290,7 +297,7 @@ templates->newTransformer()->transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: void export_(File* outputFile, std::string xsltFilePath, Document* xmlDocument){
+    auto XslHelper::export_(File* outputFile, std::string xsltFilePath, Document* xmlDocument) -> void{
 
         try {
             outputFile->createNewFile();
@@ -311,7 +318,6 @@ this->translate(new StreamSource(xsltFilePath), new StreamSource(new StringBuffe
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_CPP

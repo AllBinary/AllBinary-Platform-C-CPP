@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
-
-      
+class CommonStrings;
+class StringMaker;
+class GeographicMapCellType;
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>
-
-      
+class RaceTrackGeographicMapCellType;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/HashtableUtil.h>
-
-      
+class BasicArrayList;
+class HashtableUtil;
 
 
 
@@ -73,9 +62,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellType.h"
-#include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapStrings.h"
+        class BasicTopViewGeographicMapCellType;
+class BasicTopViewGeographicMapStrings;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicTopViewGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
 
     public: BasicTopViewGeographicMapCellType* BLOCK_CELL_TYPE;
@@ -112,3 +105,40 @@ public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*>* 
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/HashtableUtil.h>)
+#include <org/allbinary/util/HashtableUtil.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellType.h")
+#include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellType.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapStrings.h")
+#include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapStrings.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarPortionSetProgressRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,8 @@
 #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 #include "org/allbinary/graphics/canvas/transition/progress/AndroidBasicTitleProgressBar.h"
 
-class TitleProgressBarPortionSetProgressRunnable: public ProgressRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TitleProgressBarPortionSetProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
+TitleProgressBarPortionSetProgressRunnable::TitleProgressBarPortionSetProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,13 +78,13 @@ public: TitleProgressBarPortionSetProgressRunnable(Activity* midletActivity, Pro
 }
 
 
-    public: void run(){
+    auto TitleProgressBarPortionSetProgressRunnable::run() -> void{
 
         try {
             
     AndroidBasicTitleProgressBar* progressCanvas = dynamic_cast<AndroidBasicTitleProgressBar*>(this->progressCanvas);;
     
-this->midletActivity.onSetProgress(static_cast<int32_t>((this->progressCanvas->getValue() +this->progressCanvas->getMaxValue() /progressCanvas->getPortion())), this->progressCanvas->getText());
+this->midletActivity->onSetProgress(static_cast<int32_t>((this->progressCanvas->getValue() +this->progressCanvas->getMaxValue() /progressCanvas->getPortion())), this->progressCanvas->getText());
     
 
                 //: 
@@ -93,7 +100,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_CPP

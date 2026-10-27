@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMIZERTRANSFORMINFODATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMIZERTRANSFORMINFODATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/CustomizerTransformInfoData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomizerTransformInfoData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "CUSTOMIZER_TRANSFORM_INFO_NAME";
-
-private: CustomizerTransformInfoData(){
+CustomizerTransformInfoData::CustomizerTransformInfoData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMIZERTRANSFORMINFODATA_CPP

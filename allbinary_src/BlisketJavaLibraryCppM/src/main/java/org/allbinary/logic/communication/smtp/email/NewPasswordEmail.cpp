@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_NEWPASSWORDEMAIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_NEWPASSWORDEMAIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/email/NewPasswordEmail.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,21 +90,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NewPasswordEmail
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation;
-
-    private: UserInterface* userInterface;
-
-    private: std::string newPassword;
-
-public: NewPasswordEmail(AbeClientInformationInterface* abeClientInformation, UserInterface* userInterface, std::string newPassword){
+NewPasswordEmail::NewPasswordEmail(AbeClientInformationInterface* abeClientInformation, UserInterface* userInterface, std::string newPassword) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->abeClientInformation= abeClientInformation;
     
 this->userInterface= userInterface;
@@ -106,7 +103,7 @@ this->newPassword= newPassword;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto NewPasswordEmail::process() -> void{
 this->notifyStoreAdmin();
     
 this->notifyUser();
@@ -116,11 +113,11 @@ this->notifyUser();
 
                 //@Throws(Exception.constructor)
             
-    private: void notifyStoreAdmin(){
+    auto NewPasswordEmail::notifyStoreAdmin() -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("notifyStoreAdmin", this, "notifyStoreAdmin");
@@ -129,10 +126,10 @@ this->notifyUser();
                                     }
                                 
 
-    std::string emailSubject = "New Password For User: " +this->userInterface->getUserName();;
+    std::string emailSubject = JavaString::valueOf("New Password For User: ") +JavaString::valueOf(this->userInterface->getUserName());;
     
 
-    std::string emailBody = "New Password: " +this->newPassword;;
+    std::string emailBody = JavaString::valueOf("New Password: ") +JavaString::valueOf(this->newPassword);;
     
 
     BasicEmailInfo* basicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(emailSubject, emailBody));;
@@ -150,7 +147,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "emailAdmin", &e);
@@ -165,11 +162,11 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD
 
                 //@Throws(Exception.constructor)
             
-    private: void notifyUser(){
+    auto NewPasswordEmail::notifyUser() -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Email User", this, "notifyUser()");
@@ -181,7 +178,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD
     std::string subject = "New Password";;
     
 
-    std::string body = "New Password: " +this->newPassword;;
+    std::string body = JavaString::valueOf("New Password: ") +JavaString::valueOf(this->newPassword);;
     
 
     BasicEmailInfo* basicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(subject, body));;
@@ -199,7 +196,7 @@ userEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD, ema
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "notifyUser", &e);
@@ -217,7 +214,6 @@ userEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD, ema
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_NEWPASSWORDEMAIL_CPP

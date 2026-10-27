@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,51 +38,21 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/math/RectangleCollisionUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Canvas;
+class Graphics;
+class GPoint;
+class Rectangle;
+class BasicColor;
+class BasicColorFactory;
+class ABCustomItem;
+class NullUtil;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class RectangleCollisionUtil;
+class CommonLabels;
+class CommonSeps;
+class CommonStrings;
 
 
 
@@ -97,28 +72,38 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/PaintableForm.h"
-#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+class ItemPaintableFactory;
 #include "org/allbinary/graphics/form/ItemIndexPaintable.h"
 #include "org/allbinary/graphics/form/ItemIndexDx.h"
-#include "org/allbinary/graphics/form/ItemPaintable.h"
-#include "org/allbinary/graphics/form/FormTypeFactory.h"
-//#include "org/allbinary/graphics/form/ScrollSelectionFormTempHorizontalPaintable.h"
-//#include "org/allbinary/graphics/form/ScrollSelectionFormTempHorizontalDx.h"
-//#include "org/allbinary/graphics/form/ScrollSelectionFormVerticalPaintable.h"
-//#include "org/allbinary/graphics/form/ScrollSelectionFormVericalDx.h"
-//#include "org/allbinary/graphics/form/ScrollSelectionFormHorizontalPaintable.h"
-//#include "org/allbinary/graphics/form/ScrollSelectionFormHorizontalDx.h"
-#include "org/allbinary/graphics/form/FormType.h"
+class ItemPaintable;
+class FormTypeFactory;
+//class ScrollSelectionFormTempHorizontalPaintable;
+//class ScrollSelectionFormTempHorizontalDx;
+//class ScrollSelectionFormVerticalPaintable;
+//class ScrollSelectionFormVericalDx;
+//class ScrollSelectionFormHorizontalPaintable;
+//class ScrollSelectionFormHorizontalDx;
+class FormType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScrollSelectionForm: public PaintableForm {
+public: class ScrollSelectionFormHorizontalPaintable;
+public: class ScrollSelectionFormVerticalPaintable;
+public: class ScrollSelectionFormTempHorizontalPaintable;
+public: class ScrollSelectionFormHorizontalDx;
+public: class ScrollSelectionFormVericalDx;
+public: class ScrollSelectionFormTempHorizontalDx;
 
     private: static PaintableForm* createForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
-    private: static inline Object* NULL_SCROLL_SELECTION_FORM = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* NULL_SCROLL_SELECTION_FORM;
 
     public: static ScrollSelectionForm* getNullScrollSelectionForm();
 
-    private: static inline Object* NULL_SCROLL_SELECTION_HORIZONTAL_FORM = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* NULL_SCROLL_SELECTION_HORIZONTAL_FORM;
 
     public: static ScrollSelectionForm* getNullScrollSelectionFormHorizontal();
 
@@ -129,13 +114,13 @@ class ScrollSelectionForm: public PaintableForm {
     private: static inline const std::string GET_SELECTED_INDEX = "getSelectedIndexForPoint";
 
 //inner= member=true isStatic=
-class ScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
+public: class ScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
     private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm);
+public: ScrollSelectionFormHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -145,13 +130,13 @@ class ScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
 
             
 //inner= member=true isStatic=
-class ScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
+public: class ScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
     private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormVerticalPaintable(ScrollSelectionForm* scrollSelectionForm);
+public: ScrollSelectionFormVerticalPaintable(ScrollSelectionForm* scrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -161,13 +146,13 @@ class ScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
 
             
 //inner= member=true isStatic=
-class ScrollSelectionFormTempHorizontalPaintable: public ItemIndexPaintable {
+public: class ScrollSelectionFormTempHorizontalPaintable: public ItemIndexPaintable {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
     private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormTempHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm);
+public: ScrollSelectionFormTempHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -177,13 +162,13 @@ class ScrollSelectionFormTempHorizontalPaintable: public ItemIndexPaintable {
 
             
 //inner= member=true isStatic=
-class ScrollSelectionFormHorizontalDx: public ItemIndexDx {
+public: class ScrollSelectionFormHorizontalDx: public ItemIndexDx {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
     private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm);
+public: ScrollSelectionFormHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -193,13 +178,13 @@ class ScrollSelectionFormHorizontalDx: public ItemIndexDx {
 
             
 //inner= member=true isStatic=
-class ScrollSelectionFormVericalDx: public ItemIndexDx {
+public: class ScrollSelectionFormVericalDx: public ItemIndexDx {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
     private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormVericalDx(ScrollSelectionForm* multipleScrollSelectionForm);
+public: ScrollSelectionFormVericalDx(ScrollSelectionForm* multipleScrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -209,13 +194,13 @@ class ScrollSelectionFormVericalDx: public ItemIndexDx {
 
             
 //inner= member=true isStatic=
-class ScrollSelectionFormTempHorizontalDx: public ItemIndexDx {
+public: class ScrollSelectionFormTempHorizontalDx: public ItemIndexDx {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
     private: ScrollSelectionForm* scrollSelectionForm;
 
-: ScrollSelectionFormTempHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm);
+public: ScrollSelectionFormTempHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -224,19 +209,19 @@ class ScrollSelectionFormTempHorizontalDx: public ItemIndexDx {
 };
 
             
-    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
+    private: RectangleCollisionUtil* rectangleCollisionUtil;
 
-    protected: int32_t border;
+    /*protected*/ public: int32_t border;
 
-    protected: int32_t halfBorder;
+    /*protected*/ public: int32_t halfBorder;
 
     private: BasicColor* buttonBasicColor;
 
-    protected: ItemIndexPaintable* scrollSelectionFormFormTypeItemIndexPaintable = ItemIndexPaintable::getInstance();
+    /*protected*/ public: ItemIndexPaintable* scrollSelectionFormFormTypeItemIndexPaintable;
 
-    private: ItemIndexDx* formTypeItemIndexDx = ItemIndexDx::getInstance();
+    private: ItemIndexDx* formTypeItemIndexDx;
 
-    protected: ItemPaintable* paintable = ItemPaintableFactory::getInstance();
+    /*protected*/ public: ItemPaintable* paintable;
 
     private: int32_t adjustedExtraBorder;
 
@@ -288,7 +273,7 @@ public: ScrollSelectionForm(std::string title, std::vector<ABCustomItem*> items,
             
     public: int32_t paintUnselectedItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y);
 
-    protected: int32_t getDiffX(ABCustomItem* item);
+    /*protected*/ public: int32_t getDiffX(ABCustomItem* item);
 
     public: int32_t getDx();
 
@@ -304,3 +289,76 @@ public: ScrollSelectionForm(std::string title, std::vector<ABCustomItem*> items,
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORM_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/RectangleCollisionUtil.h>)
+#include <org/allbinary/math/RectangleCollisionUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/PaintableForm.h")
+#include "org/allbinary/graphics/form/PaintableForm.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemPaintableFactory.h")
+#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemIndexPaintable.h")
+#include "org/allbinary/graphics/form/ItemIndexPaintable.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemIndexDx.h")
+#include "org/allbinary/graphics/form/ItemIndexDx.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemPaintable.h")
+#include "org/allbinary/graphics/form/ItemPaintable.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/FormTypeFactory.h")
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/FormType.h")
+#include "org/allbinary/graphics/form/FormType.h"
+#endif
+
+        #endif
+    

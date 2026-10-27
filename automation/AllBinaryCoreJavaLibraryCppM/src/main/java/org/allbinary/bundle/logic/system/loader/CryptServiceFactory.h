@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICEFACTORY_H
         #define ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/osgi/framework/Bundle.h>
-
-      
+class Bundle;
 #include <org/osgi/framework/ServiceFactory.h>
-
-      
-#include <org/osgi/framework/ServiceRegistration.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ServiceRegistration;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -62,23 +57,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/bundle/logic/system/loader/CryptService.h"
+        class CryptService;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CryptServiceFactory
-            : public Object
+            : public virtual Object
         , public ServiceFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: CryptService* cryptService = new CryptService();
+    private: CryptService* cryptService;
 
 public: CryptServiceFactory();
 
     public: Object* getService(Bundle* bundle, ServiceRegistration* registration);
 
     public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service);
+    public: void ungetService(Bundle* bundle, ServiceRegistration* registration, const std::string& service) { return ungetService(bundle, registration, JavaString::box(service)); }
 
 };
 
@@ -86,3 +86,28 @@ public: CryptServiceFactory();
 
 
         #endif //ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICEFACTORY_H_COMPLETE
+        #if __has_include(<org/osgi/framework/Bundle.h>)
+#include <org/osgi/framework/Bundle.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceFactory.h>)
+#include <org/osgi/framework/ServiceFactory.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceRegistration.h>)
+#include <org/osgi/framework/ServiceRegistration.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/bundle/logic/system/loader/CryptService.h")
+#include "org/allbinary/bundle/logic/system/loader/CryptService.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CELLPOSITION_H
         #define ORG_ALLBINARY_GRAPHICS_CELLPOSITION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,14 +33,8 @@
 
         
 #include <org/allbinary/graph/V.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -54,6 +53,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class CellPosition: public V {
 
@@ -83,3 +86,19 @@ public: CellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows)
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CELLPOSITION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CELLPOSITION_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CELLPOSITION_H_COMPLETE
+        #if __has_include(<org/allbinary/graph/V.h>)
+#include <org/allbinary/graph/V.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

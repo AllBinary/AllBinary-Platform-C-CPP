@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
+class Rectangle;
 
 
 
@@ -53,7 +56,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleResourceFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class RectangleResourceFactoryInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -69,3 +78,13 @@ class RectangleResourceFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+
+        #endif
+    

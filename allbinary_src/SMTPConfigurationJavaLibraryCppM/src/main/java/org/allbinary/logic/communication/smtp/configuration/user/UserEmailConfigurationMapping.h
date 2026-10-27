@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONMAPPING_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONMAPPING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 #include <org/allbinary/data/tables/TableMappingInterface.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class StdUtil;
 
 
 
@@ -64,11 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
-#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h"
+        class UserEmailConfigurationInterface;
+class UserEmailConfigurationData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserEmailConfigurationMapping
-            : public Object
+            : public virtual Object
         , public TableMappingInterface {
 
     private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
@@ -91,3 +90,31 @@ public: UserEmailConfigurationMapping(UserEmailConfigurationInterface* userEmail
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONMAPPING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONMAPPING_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONMAPPING_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/TableMappingInterface.h>)
+#include <org/allbinary/data/tables/TableMappingInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h")
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h")
+#include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h"
+#endif
+
+        #endif
+    

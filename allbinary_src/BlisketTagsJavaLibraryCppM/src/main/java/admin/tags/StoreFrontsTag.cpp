@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_STOREFRONTSTAG_CPP
+        #define ADMIN_TAGS_STOREFRONTSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/StoreFrontsTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,11 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class StoreFrontsTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: StoreFrontsTag(){
+StoreFrontsTag::StoreFrontsTag() : logUtil(LogUtil::getInstance()){
 this->setTagHelperFactory(new StoreFrontsHelperFactory());
     
 this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
@@ -89,7 +96,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string generateSelect(){
+    auto StoreFrontsTag::generateSelect() -> std::string{
 
         try {
             
@@ -127,10 +134,10 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
     std::string error = "Failed to generate storefronts select";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "generateSelect()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateSelect()", &e);
     
 
                                     }
@@ -148,7 +155,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string install(){
+    auto StoreFrontsTag::install() -> std::string{
 
         try {
             
@@ -186,10 +193,10 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
     std::string error = "Failed to generate storefronts select";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "generateSelect()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateSelect()", &e);
     
 
                                     }
@@ -207,7 +214,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string sendStoreCreatedEmails(){
+    auto StoreFrontsTag::sendStoreCreatedEmails() -> std::string{
 
         try {
             
@@ -245,10 +252,10 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
     std::string error = "Failed to send email";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "sendStoreCreatedEmails()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "sendStoreCreatedEmails()", &e);
     
 
                                     }
@@ -266,7 +273,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto StoreFrontsTag::doStartTag() -> int32_t{
 
         try {
             
@@ -286,7 +293,7 @@ this->setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
                         if(this->getCommand()->compareTo(storeFrontData->SELECT) == 0)
                         
                                     {
-                                    this->pageContext.getOut()->print(this->generateSelect());
+                                    this->pageContext->getOut()->print(this->generateSelect());
     
 
                                     }
@@ -331,7 +338,7 @@ this->install();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                         }
@@ -378,7 +385,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_STOREFRONTSTAG_CPP

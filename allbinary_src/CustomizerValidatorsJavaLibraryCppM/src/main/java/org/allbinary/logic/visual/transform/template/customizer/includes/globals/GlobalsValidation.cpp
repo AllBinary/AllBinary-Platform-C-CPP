@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_GLOBALS_GLOBALSVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_GLOBALS_GLOBALSVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/globals/GlobalsValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,28 +86,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/template/customizer/includes/globals/GlobalsData.h"
 
-class GlobalsValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-public: GlobalsValidation(std::string storeName){
+GlobalsValidation::GlobalsValidation(std::string storeName) : logUtil(LogUtil::getInstance()){
 this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 }
 
 
-public: GlobalsValidation(Document* document){
+GlobalsValidation::GlobalsValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: bool isValid(){
+    auto GlobalsValidation::isValid() -> bool{
 
         try {
             
@@ -114,10 +119,10 @@ public: GlobalsValidation(Document* document){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -133,7 +138,7 @@ public: GlobalsValidation(Document* document){
 }
 
 
-    public: std::string validationInfo(){
+    auto GlobalsValidation::validationInfo() -> std::string{
 
         try {
             
@@ -150,7 +155,7 @@ public: GlobalsValidation(Document* document){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -169,7 +174,7 @@ public: GlobalsValidation(Document* document){
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto GlobalsValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -179,7 +184,7 @@ public: GlobalsValidation(Document* document){
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto GlobalsValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -191,7 +196,7 @@ public: GlobalsValidation(Document* document){
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GlobalsValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(GlobalsData::NAME);;
     
@@ -206,7 +211,6 @@ node->appendChild((new StoreFrontView(this->storeFrontInterface))->toXmlNode(doc
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_GLOBALS_GLOBALSVALIDATION_CPP

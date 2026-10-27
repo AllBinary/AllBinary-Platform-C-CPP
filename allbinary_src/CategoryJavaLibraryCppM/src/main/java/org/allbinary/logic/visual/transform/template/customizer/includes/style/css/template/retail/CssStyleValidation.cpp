@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_CSSSTYLEVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_CSSSTYLEVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/style/css/template/retail/CssStyleValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,41 +97,36 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CssStyleValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicArrayList* cssStyleElementVector;
-
-public: CssStyleValidation(){
+CssStyleValidation::CssStyleValidation() : logUtil(LogUtil::getInstance()){
 this->cssStyleElementVector= new BasicArrayListD();
     
 }
 
 
-public: CssStyleValidation(Document* document){
+CssStyleValidation::CssStyleValidation(Document* document) : logUtil(LogUtil::getInstance()){
 this->cssStyleElementVector= StylesValidationFactory::getInstance()->getInstance(document);
     
 }
 
 
-public: CssStyleValidation(HashMap<Object*, Object*>* hashMap){
+CssStyleValidation::CssStyleValidation(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
     
 }
 
 
-    public: bool isValid(){
+    auto CssStyleValidation::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -151,10 +156,10 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("End: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("End: ") +JavaString::valueOf(isValid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -170,10 +175,10 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -189,7 +194,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto CssStyleValidation::validationInfo() -> std::string{
 
         try {
             
@@ -206,7 +211,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -225,7 +230,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto CssStyleValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -235,7 +240,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto CssStyleValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -247,7 +252,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto CssStyleValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(StylesData::getInstance()->NAME);;
     
@@ -282,7 +287,6 @@ styleNode->appendChild(styleDomNodeInterface->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_CSSSTYLEVALIDATION_CPP

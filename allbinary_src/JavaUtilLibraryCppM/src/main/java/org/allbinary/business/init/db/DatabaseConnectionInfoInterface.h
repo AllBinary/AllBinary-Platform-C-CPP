@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_DATABASECONNECTIONINFOINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_DATABASECONNECTIONINFOINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DatabaseConnectionInfoInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class DatabaseConnectionInfoInterface
+            : public virtual Object
+         {
 
     public: virtual std::string getUrl() = 0;
 
@@ -90,3 +101,10 @@ class DatabaseConnectionInfoInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_DATABASECONNECTIONINFOINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_DB_DATABASECONNECTIONINFOINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_DATABASECONNECTIONINFOINTERFACE_H_COMPLETE
+        
+        #endif
+    

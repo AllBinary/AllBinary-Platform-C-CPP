@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Long.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 #include <org/allbinary/logic/util/cache/CacheableInterface.h>
-
-      
 
 
 
@@ -55,10 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+        class MotionRectangles;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MotionRectanglesResultsFrameCacheable
-            : public Object
+            : public virtual Object
         , public CacheableInterface {
 
     private: MotionRectangles* motionRectangles;
@@ -81,3 +86,19 @@ public: MotionRectanglesResultsFrameCacheable(MotionRectangles* motionRectangles
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterface.h>
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/MotionRectangles.h")
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#endif
+
+        #endif
+    

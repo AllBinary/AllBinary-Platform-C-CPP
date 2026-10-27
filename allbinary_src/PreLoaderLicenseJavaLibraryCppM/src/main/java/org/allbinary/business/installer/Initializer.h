@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,44 +41,18 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Map.h>
-
-      
 #include <java/util/Set.h>
-
-      
-#include <org/allbinary/business/init/db/HistoryDbInitInfo.h>
-
-      
-#include <org/allbinary/business/init/db/InventoryDbInitInfo.h>
-
-      
-#include <org/allbinary/business/init/db/LogDbInitInfo.h>
-
-      
-#include <org/allbinary/business/init/db/StaticPagesDbInitInfo.h>
-
-      
-#include <org/allbinary/business/init/db/UserDbInitInfo.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class HistoryDbInitInfo;
+class InventoryDbInitInfo;
+class LogDbInitInfo;
+class StaticPagesDbInitInfo;
+class UserDbInitInfo;
+class StdUtil;
+class LogUtil;
+class StringMaker;
+class StringValidationUtil;
+class CommonStrings;
 
 
 
@@ -92,10 +71,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/installer/InitializerData.h"
+        class InitializerData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Initializer
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const int32_t MAXDB = 30;
@@ -106,7 +89,7 @@ class Initializer
 
     private: static inline const int32_t MINPASSWORD = 0;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string userJdbcDriver;
 
@@ -204,3 +187,52 @@ public: Initializer(HashMap<Object*, Object*>* initHashMap);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Map.h>)
+#include <java/util/Map.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/HistoryDbInitInfo.h>)
+#include <org/allbinary/business/init/db/HistoryDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/InventoryDbInitInfo.h>)
+#include <org/allbinary/business/init/db/InventoryDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/LogDbInitInfo.h>)
+#include <org/allbinary/business/init/db/LogDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/StaticPagesDbInitInfo.h>)
+#include <org/allbinary/business/init/db/StaticPagesDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/UserDbInitInfo.h>)
+#include <org/allbinary/business/init/db/UserDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/business/installer/InitializerData.h")
+#include "org/allbinary/business/installer/InitializerData.h"
+#endif
+
+        #endif
+    

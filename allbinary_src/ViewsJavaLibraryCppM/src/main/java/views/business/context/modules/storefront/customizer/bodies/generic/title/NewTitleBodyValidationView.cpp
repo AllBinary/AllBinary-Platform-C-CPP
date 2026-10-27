@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_NEWTITLEBODYVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_NEWTITLEBODYVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/bodies/generic/title/NewTitleBodyValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,11 +83,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/bodies/generic/title/TitleBodyCustomizerView.h"
 
-class NewTitleBodyValidationView: public TitleBodyCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NewTitleBodyValidationView(TransformInfoInterface* transformInfoInterface) : TitleBodyCustomizerView(transformInfoInterface){
+NewTitleBodyValidationView::NewTitleBodyValidationView(TransformInfoInterface* transformInfoInterface) : TitleBodyCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,10 +92,10 @@ public: NewTitleBodyValidationView(TransformInfoInterface* transformInfoInterfac
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "NewTitleBodyValidationView()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "NewTitleBodyValidationView()");
     
 
                                     }
@@ -100,7 +107,7 @@ this->titleBody= new TitleBodyValidation();
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto NewTitleBodyValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -110,14 +117,14 @@ this->titleBody= new TitleBodyValidation();
 }
 
 
-    public: bool isValid(){
+    auto NewTitleBodyValidationView::isValid() -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +this->getTransformInfoInterface()->getName(), this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(this->getTransformInfoInterface()->getName()), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -141,10 +148,10 @@ this->titleBody= new TitleBodyValidation();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -160,13 +167,13 @@ this->titleBody= new TitleBodyValidation();
 }
 
 
-    public: std::string validationInfo(){
+    auto NewTitleBodyValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->titleBody.validationInfo());
+stringBuffer->append(this->titleBody->validationInfo());
     
 
 
@@ -179,7 +186,7 @@ stringBuffer->append(this->titleBody.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -198,7 +205,7 @@ stringBuffer->append(this->titleBody.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto NewTitleBodyValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -208,7 +215,7 @@ stringBuffer->append(this->titleBody.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto NewTitleBodyValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -220,17 +227,16 @@ stringBuffer->append(this->titleBody.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto NewTitleBodyValidationView::view() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
+                        return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_NEWTITLEBODYVALIDATIONVIEW_CPP

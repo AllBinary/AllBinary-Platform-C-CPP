@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/order/OrderProcessorUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,27 +67,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/order/Order.h"
 
-class OrderProcessorUtil
-            : public Object
-         {
 
-    private: static OrderProcessorUtil* instance() { static std::unique_ptr<OrderProcessorUtil> value(new OrderProcessorUtil()); return value.get(); }
+OrderProcessorUtil::OrderProcessorUtil() {
+        }
+        auto OrderProcessorUtil::instance_owner() -> OrderProcessorUtil* { static std::unique_ptr<OrderProcessorUtil> value(new OrderProcessorUtil()); return value.get(); }
+OrderProcessorUtil* OrderProcessorUtil::instance = OrderProcessorUtil::instance_owner();
 
-    public: static OrderProcessorUtil* getInstance(){
+    auto OrderProcessorUtil::getInstance() -> OrderProcessorUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrderProcessorUtil::instance();
+                        return OrderProcessorUtil::instance;
     
 }
 
 
-    private: const std::string ORDER_PROCESSED = "Order Processed";
-
                 //@Throws(Exception.constructor)
             
-    public: std::string process(std::string userName, Order* order){
+    auto OrderProcessorUtil::process(std::string userName, Order* order) -> std::string{
 
     OrderItemsEntity* orderItems = new OrderItemsEntity();;
     
@@ -99,7 +107,6 @@ orderHistory->insert(userName, order);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_CPP

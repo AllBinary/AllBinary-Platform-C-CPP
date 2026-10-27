@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLFeatureUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLFeatureUtil* instance() { static std::unique_ptr<OpenGLFeatureUtil> value(new OpenGLFeatureUtil()); return value.get(); }
+    private: static OpenGLFeatureUtil* instance_owner();
+    private: static OpenGLFeatureUtil* instance;
 
     public: static OpenGLFeatureUtil* getInstance();
 
@@ -66,3 +76,10 @@ public: OpenGLFeatureUtil();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_H_COMPLETE
+        
+        #endif
+    

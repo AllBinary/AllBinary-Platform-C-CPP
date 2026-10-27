@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOADFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOADFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/file/upload/AbFileUploadFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,31 +87,26 @@
 #include "org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h"
 #include "org/allbinary/logic/communication/http/file/upload/AbFileItem.h"
 
-class AbFileUploadFactory
-            : public Object
-         {
+auto AbFileUploadFactory::instance_owner() -> AbFileUploadFactory* { static std::unique_ptr<AbFileUploadFactory> value(new AbFileUploadFactory()); return value.get(); }
+AbFileUploadFactory* AbFileUploadFactory::instance = AbFileUploadFactory::instance_owner();
 
-    private: static AbFileUploadFactory* instance() { static std::unique_ptr<AbFileUploadFactory> value(new AbFileUploadFactory()); return value.get(); }
-
-    public: static AbFileUploadFactory* getInstance(){
+    auto AbFileUploadFactory::getInstance() -> AbFileUploadFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileUploadFactory::instance();
+                        return AbFileUploadFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: AbFileUploadFactory(){
+AbFileUploadFactory::AbFileUploadFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: List* getFileItemStreamList(HttpServletRequest* httpServletRequest){
+    auto AbFileUploadFactory::getFileItemStreamList(HttpServletRequest* httpServletRequest) -> List*{
 
         try {
             
@@ -139,7 +144,7 @@ items->add(fileItem);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPERROR))
                         
                                     {
                                     
@@ -162,7 +167,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "get()", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: List* getFileItemList(HttpServletRequest* httpServletRequest){
+    auto AbFileUploadFactory::getFileItemList(HttpServletRequest* httpServletRequest) -> List*{
 
         try {
             
@@ -182,7 +187,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "get()", &e);
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "get()", &e);
@@ -200,7 +205,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "get()", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEUPLOADFACTORY_CPP

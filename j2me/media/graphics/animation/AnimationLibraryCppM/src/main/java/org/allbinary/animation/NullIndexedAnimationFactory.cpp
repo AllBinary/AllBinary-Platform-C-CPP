@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/NullIndexedAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,30 +72,11 @@
 //#include "org/allbinary/animation/NullIndexedAnimationInner.h"
 #include "org/allbinary/animation/Animation.h"
 
-class NullIndexedAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+std::vector<IndexedAnimation*> NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_ARRAY = {};
+auto NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY_owner() -> NullIndexedAnimationFactory* { static std::unique_ptr<NullIndexedAnimationFactory> value(new NullIndexedAnimationFactory()); return value.get(); }
+NullIndexedAnimationFactory* NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY = NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY_owner();
 
-    public: static inline const std::vector<IndexedAnimation*> NULL_INDEXED_ANIMATION_ARRAY = {};
-
-    private: static NullIndexedAnimationFactory* NULL_INDEXED_ANIMATION_FACTORY() { static std::unique_ptr<NullIndexedAnimationFactory> value(new NullIndexedAnimationFactory()); return value.get(); }
-
-    public: static NullIndexedAnimationFactory* getFactoryInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY();
-    
-}
-
-
-//inner= member=true isStatic=
-class NullIndexedAnimationInner: public NullIndexedAnimation {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-: NullIndexedAnimationInner(){
+NullIndexedAnimationFactory::NullIndexedAnimationInner::NullIndexedAnimationInner(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -95,22 +86,27 @@ class NullIndexedAnimationInner: public NullIndexedAnimation {
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto NullIndexedAnimationFactory::NullIndexedAnimationInner::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-};
+NullIndexedAnimationFactory::NullIndexedAnimationFactory() : NULL_ANIMATION(new NullIndexedAnimationInner()){
+}
 
-            
-    private: Animation* NULL_ANIMATION = new NullIndexedAnimationInner();
 
-private: NullIndexedAnimationFactory(){
+    auto NullIndexedAnimationFactory::getFactoryInstance() -> NullIndexedAnimationFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY;
+    
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto NullIndexedAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -122,7 +118,7 @@ private: NullIndexedAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto NullIndexedAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -132,11 +128,10 @@ private: NullIndexedAnimationFactory(){
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto NullIndexedAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_CPP

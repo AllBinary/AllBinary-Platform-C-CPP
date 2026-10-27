@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,10 @@
 #include "org/allbinary/animation/image/ImageAnimation.h"
 #include "org/allbinary/animation/image/AdjustedImageAnimation.h"
 
-class ImageAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: static ImageAnimationFactory* createFactory(Image* image){
+    auto ImageAnimationFactory::createFactory(Image* image) -> ImageAnimationFactory*{
 
 
 
@@ -77,7 +86,7 @@ class ImageAnimationFactory: public BaseImageAnimationFactory {
 }
 
 
-public: ImageAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, dx, dy, animationBehaviorFactory){
+ImageAnimationFactory::ImageAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, dx, dy, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -89,9 +98,9 @@ public: ImageAnimationFactory(Image* image, int32_t width, int32_t height, int32
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto ImageAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
-    Image* scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Image* scaledImage = this->animationFactoryImageScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor->width, this->animationFactoryInitializationVisitor->height, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
     OpenGLUtil* openGLUtil = OpenGLUtil::getInstance();;
@@ -99,16 +108,16 @@ public: ImageAnimationFactory(Image* image, int32_t width, int32_t height, int32
 scaledImage= openGLUtil->addImage(scaledImage);
     
 
-                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
+                        if(this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0)
                         
                                     {
-                                    this->animationFactoryImageScaleUtil.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil->processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdjustedImageAnimation(scaledImage, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AdjustedImageAnimation(scaledImage, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                                     }
@@ -118,7 +127,7 @@ scaledImage= openGLUtil->addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ImageAnimation(scaledImage, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new ImageAnimation(scaledImage, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
@@ -126,7 +135,6 @@ scaledImage= openGLUtil->addImage(scaledImage);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEANIMATIONFACTORY_CPP

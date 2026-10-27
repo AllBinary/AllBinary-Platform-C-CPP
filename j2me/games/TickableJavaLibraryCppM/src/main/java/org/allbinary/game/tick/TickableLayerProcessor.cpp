@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tick/TickableLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,9 +66,8 @@
         #include "org/allbinary/game/tick/TickableLayerManager.h"
 #include "org/allbinary/game/tick/TickableInterface.h"
 
-class TickableLayerProcessor: public LayerProcessor {
 
-public: TickableLayerProcessor() : LayerProcessor(new TickableLayerManager()){
+TickableLayerProcessor::TickableLayerProcessor() : LayerProcessor(new TickableLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +79,7 @@ public: TickableLayerProcessor() : LayerProcessor(new TickableLayerManager()){
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
+    auto TickableLayerProcessor::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) -> void{
 
     TickableInterface* tickableInterface = dynamic_cast<TickableInterface*>(layerInterface);;
     
@@ -79,7 +88,7 @@ tickableInterface->processTick(allBinaryLayerManager);
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto TickableLayerProcessor::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
                         if(layerInterface->implmentsTickableInterface())
                         
@@ -106,7 +115,6 @@ tickableInterface->processTick(allBinaryLayerManager);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_CPP

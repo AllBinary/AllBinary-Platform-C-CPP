@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
         #define ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseLevelUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static LicenseLevelUtil* instance() { static std::unique_ptr<LicenseLevelUtil> value(new LicenseLevelUtil()); return value.get(); }
+    private: static LicenseLevelUtil* instance_owner();
+    private: static LicenseLevelUtil* instance;
 
     public: static LicenseLevelUtil* getInstance();
 
+
+            
+    public: LicenseLevelUtil();
+        
     public: int32_t getMaxLevel(int32_t maxLevel, int32_t demoLevel);
 
 };
@@ -64,3 +78,10 @@ class LicenseLevelUtil
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H_COMPLETE
+        
+        #endif
+    

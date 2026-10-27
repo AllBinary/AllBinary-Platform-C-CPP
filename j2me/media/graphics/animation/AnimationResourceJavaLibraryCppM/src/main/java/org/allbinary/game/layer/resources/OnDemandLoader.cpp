@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDLOADER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDLOADER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/resources/OnDemandLoader.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -81,17 +91,8 @@
         #include "org/allbinary/game/layer/resources/OnDemandResourcesFactory.h"
 #include "org/allbinary/game/layer/resources/OnDemandResources.h"
 
-class OnDemandLoader
-            : public Object
-         {
 
-    private: OnDemandResourcesFactory* onDemandResourcesFactory;
-
-    private: GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory* gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
-
-    private: BaseResourceAnimationInterfaceFactoryInterfaceFactory* resourceAnimationInterfaceFactoryInterfaceFactory;
-
-public: OnDemandLoader(OnDemandResourcesFactory* onDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory* gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, BaseResourceAnimationInterfaceFactoryInterfaceFactory* resourceAnimationInterfaceFactoryInterfaceFactory){
+OnDemandLoader::OnDemandLoader(OnDemandResourcesFactory* onDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory* gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, BaseResourceAnimationInterfaceFactoryInterfaceFactory* resourceAnimationInterfaceFactoryInterfaceFactory){
 this->onDemandResourcesFactory= onDemandResourcesFactory;
     
 this->gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory= gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
@@ -103,7 +104,7 @@ this->resourceAnimationInterfaceFactoryInterfaceFactory= resourceAnimationInterf
 
                 //@Throws(Exception.constructor)
             
-    public: void init(ImageCache* imageCache, int32_t level, std::string loadingString){
+    auto OnDemandLoader::init(ImageCache* imageCache, int32_t level, std::string loadingString) -> void{
 
     ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
@@ -130,7 +131,7 @@ this->initAll(imageCache, loadingString);
                                     }
                                 
                              else 
-                        if(level != resourceLoadingLevelFactory->LOAD_ALL.getLevel())
+                        if(level != resourceLoadingLevelFactory->LOAD_ALL->getLevel())
                         
                                     {
                                     
@@ -146,7 +147,7 @@ this->initLevel(layerPlacementInterfaceBasicArrayListFactoryInterface, imageCach
 
                 //@Throws(Exception.constructor)
             
-    private: void initAll(ImageCache* imageCache, std::string loadingString){
+    auto OnDemandLoader::initAll(ImageCache* imageCache, std::string loadingString) -> void{
 
     int32_t index = 0;;
     
@@ -181,7 +182,7 @@ onDemandResources= this->onDemandResourcesFactory->remove(onDemandIndex);
 
                 //@Throws(Exception.constructor)
             
-    private: void initLevel(LayerPlacementInterfaceBasicArrayListFactoryInterface* layerPlacementInterfaceBasicArrayListFactoryInterface, ImageCache* imageCache, int32_t level, std::string loadingString){
+    auto OnDemandLoader::initLevel(LayerPlacementInterfaceBasicArrayListFactoryInterface* layerPlacementInterfaceBasicArrayListFactoryInterface, ImageCache* imageCache, int32_t level, std::string loadingString) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -222,7 +223,6 @@ onDemandResources= this->onDemandResourcesFactory->remove(onDemandArray[onDemand
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDLOADER_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformInfoData
-            : public Object
+            : public virtual Object
          {
 
-    private: static TransformInfoData* instance() { static std::unique_ptr<TransformInfoData> value(new TransformInfoData()); return value.get(); }
+    private: static TransformInfoData* instance_owner();
+    private: static TransformInfoData* instance;
 
     public: static TransformInfoData* getInstance();
 
@@ -86,9 +96,9 @@ private: TransformInfoData();
 
     public: const std::string LABEL = "TRANSFORM_INFO_LABEL";
 
-    public: const std::string OWNER = "OWNER_" +this->NAME;
+    public: const std::string OWNER;
 
-    public: const std::string PARTIAL = "PARTIAL_" +this->NAME;
+    public: const std::string PARTIAL;
 
 };
 
@@ -96,3 +106,10 @@ private: TransformInfoData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODATA_H_COMPLETE
+        
+        #endif
+    

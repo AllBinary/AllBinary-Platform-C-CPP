@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMTEXTUREOPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMTEXTUREOPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/UniformTextureOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,17 +60,15 @@
         #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
 #include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
 
-class UniformTextureOpenGLProcessor: public OpenGLObject3dProcessor {
 
-public: UniformTextureOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex){
+UniformTextureOpenGLProcessor::UniformTextureOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex){
 }
 
 
-    public: void process(GL10* gl, Object* unused, int32_t index){
+    auto UniformTextureOpenGLProcessor::process(GL10* gl, Object* unused, int32_t index) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMTEXTUREOPENGLPROCESSOR_CPP

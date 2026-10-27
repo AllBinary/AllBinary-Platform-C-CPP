@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/address/billing/BillingAddressesEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,29 +67,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h"
 
-class BillingAddressesEntityFactory
-            : public Object
-         {
+auto BillingAddressesEntityFactory::instance_owner() -> BillingAddressesEntityFactory* { static std::unique_ptr<BillingAddressesEntityFactory> value(new BillingAddressesEntityFactory()); return value.get(); }
+BillingAddressesEntityFactory* BillingAddressesEntityFactory::instance = BillingAddressesEntityFactory::instance_owner();
 
-    private: static BillingAddressesEntityFactory* instance() { static std::unique_ptr<BillingAddressesEntityFactory> value(new BillingAddressesEntityFactory()); return value.get(); }
-
-    public: static BillingAddressesEntityFactory* getInstance(){
+    auto BillingAddressesEntityFactory::getInstance() -> BillingAddressesEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BillingAddressesEntityFactory::instance();
+                        return BillingAddressesEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: BillingAddressesEntityFactory(){
+BillingAddressesEntityFactory::BillingAddressesEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: StreetAddressesEntity* getInstance(std::string userName){
+    auto BillingAddressesEntityFactory::getInstance(std::string userName) -> StreetAddressesEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: BillingAddressesEntityFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
@@ -115,7 +120,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_BILLING_BILLINGADDRESSESENTITYFACTORY_CPP

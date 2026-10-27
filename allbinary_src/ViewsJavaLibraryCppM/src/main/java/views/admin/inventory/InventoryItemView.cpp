@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_INVENTORYITEMVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_INVENTORYITEMVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/InventoryItemView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -128,27 +138,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/InventoryUploadMediaUtil.h"
 
-class InventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public: static inline int32_t TYPE_ID = 10;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    protected: HttpServletRequest* request;
-
-    private: std::string imageFileName;
-
-    private: MediaData* mediaData;
-
-    protected: ItemInterface* itemInterface;
-
-    protected: BasicArrayList* downloadableItemVector;
-
-    private: HashMap<Object*, Object*>* requestHashMap;
-
-public: InventoryItemView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+InventoryItemView::InventoryItemView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -162,7 +153,7 @@ this->getFormData();
 }
 
 
-public: InventoryItemView(TransformInfoInterface* transformInfoInterface, std::string empty) : HttpStoreComponentView(transformInfoInterface){
+InventoryItemView::InventoryItemView(TransformInfoInterface* transformInfoInterface, std::string empty) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -174,7 +165,7 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
 }
 
 
-    public: int32_t getTypeId(){
+    auto InventoryItemView::getTypeId() -> int32_t{
 
 
 
@@ -186,7 +177,7 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(){
+    auto InventoryItemView::getFormData() -> void{
 this->setRequestHashMap((new MultipartRequestParams(this->request))->toHashMap());
     
 
@@ -218,7 +209,7 @@ this->mediaData= MediaData::get(pathData->getExtension(this->imageFileName));
 this->imageFileName= pathUtil->getWithoutExtension(this->imageFileName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     
@@ -248,7 +239,7 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem(this->getRequest
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto InventoryItemView::addDomNodeInterfaces() -> void{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -276,7 +267,7 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 }
 
 
-    public: ItemInterface* getItemInterface(){
+    auto InventoryItemView::getItemInterface() -> ItemInterface*{
 
 
 
@@ -288,7 +279,7 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto InventoryItemView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -297,17 +288,17 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -324,7 +315,7 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 
                 //@Throws(Exception.constructor)
             
-    protected: void processImageFiles(){
+    auto InventoryItemView::processImageFiles() -> void{
 
     Set* set = this->getRequestHashMap()->keys();;
     
@@ -367,13 +358,13 @@ this->itemInterface= inventoryUploadMediaUtil->saveFiles(fileItem->get(), this->
 }
 
 
-    private: void setRequestHashMap(HashMap<Object*, Object*>* requestHashMap){
+    auto InventoryItemView::setRequestHashMap(HashMap<Object*, Object*>* requestHashMap) -> void{
 this->requestHashMap= requestHashMap;
     
 }
 
 
-    public: HashMap<Object*, Object*>* getRequestHashMap(){
+    auto InventoryItemView::getRequestHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -383,7 +374,6 @@ this->requestHashMap= requestHashMap;
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_INVENTORYITEMVIEW_CPP

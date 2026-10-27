@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_ARUNNABLE_H
         #define ORG_ALLBINARY_THREAD_ARUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
+class JsType;
+class JsMethod;
 
 
 
@@ -56,10 +57,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ARunnable
-            : public Object
+            : public virtual Object
         , public Runnable {
 
+
+            
+    public: ARunnable();
+        
     public: void run();
 
 };
@@ -68,3 +77,16 @@ class ARunnable
 
 
         #endif //ORG_ALLBINARY_THREAD_ARUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_ARUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_ARUNNABLE_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+
+        #endif
+    

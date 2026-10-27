@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_EVENT_SCROLLMAPEVENT_CPP
+        #define ORG_ALLBINARY_LAYER_EVENT_SCROLLMAPEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/event/ScrollMapEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScrollMapEvent: public AllBinaryEventObject {
 
-    private: int32_t dx= 0;
-
-    private: int32_t dy= 0;
-
-public: ScrollMapEvent(Object* anyType) : AllBinaryEventObject(anyType){
+ScrollMapEvent::ScrollMapEvent(Object* anyType) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,13 +69,13 @@ public: ScrollMapEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-    public: void setDx(int32_t dx){
+    auto ScrollMapEvent::setDx(int32_t dx) -> void{
 this->dx= dx;
     
 }
 
 
-    public: int32_t getDx(){
+    auto ScrollMapEvent::getDx() -> int32_t{
 
 
 
@@ -80,13 +85,13 @@ this->dx= dx;
 }
 
 
-    public: void setDy(int32_t dy){
+    auto ScrollMapEvent::setDy(int32_t dy) -> void{
 this->dy= dy;
     
 }
 
 
-    public: int32_t getDy(){
+    auto ScrollMapEvent::getDy() -> int32_t{
 
 
 
@@ -96,7 +101,7 @@ this->dy= dy;
 }
 
 
-    public: void setDxDy(int32_t dx, int32_t dy){
+    auto ScrollMapEvent::setDxDy(int32_t dx, int32_t dy) -> void{
 this->dx= dx;
     
 this->dy= dy;
@@ -104,7 +109,6 @@ this->dy= dy;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_EVENT_SCROLLMAPEVENT_CPP

@@ -21,6 +21,11 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_H
         #define BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,12 +34,8 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
-
-      
+class InputAutomationModuleFactoryInterface;
 #include <org/allbinary/osgi/OSGIServiceInterface.h>
-
-      
 
 
 
@@ -54,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationModuleServiceInterface: public OSGIServiceInterface {
 
     public: virtual std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray() = 0;
@@ -64,3 +69,16 @@ class InputAutomationModuleServiceInterface: public OSGIServiceInterface {
 
 
         #endif //BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_H_COMPLETE)
+        #define BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>)
+#include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/osgi/OSGIServiceInterface.h>)
+#include <org/allbinary/osgi/OSGIServiceInterface.h>
+#endif
+
+        #endif
+    

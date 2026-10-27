@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMS_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/NameSpaceRequestParams.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -109,11 +119,8 @@
 #include "org/allbinary/logic/communication/http/request/NameSpaceRequestParamData.h"
 #include "org/allbinary/logic/communication/http/request/NameSpaceRequestParam.h"
 //containing string values and other hashmaps of the like
-class NameSpaceRequestParams: public RequestParams {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NameSpaceRequestParams() : RequestParams(){
+NameSpaceRequestParams::NameSpaceRequestParams() : RequestParams(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -121,10 +128,10 @@ public: NameSpaceRequestParams() : RequestParams(){
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("Constructing empty", this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Constructing empty", this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -132,7 +139,7 @@ public: NameSpaceRequestParams() : RequestParams(){
 }
 
 
-public: NameSpaceRequestParams(HttpServletRequest* httpServletRequest) : RequestParams(httpServletRequest){
+NameSpaceRequestParams::NameSpaceRequestParams(HttpServletRequest* httpServletRequest) : RequestParams(httpServletRequest), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -140,10 +147,10 @@ public: NameSpaceRequestParams(HttpServletRequest* httpServletRequest) : Request
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("Constructing from HttpServletRequest", this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Constructing from HttpServletRequest", this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -151,7 +158,7 @@ public: NameSpaceRequestParams(HttpServletRequest* httpServletRequest) : Request
 }
 
 
-public: NameSpaceRequestParams(PageContext* pageContext) : RequestParams(pageContext){
+NameSpaceRequestParams::NameSpaceRequestParams(PageContext* pageContext) : RequestParams(pageContext), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -159,10 +166,10 @@ public: NameSpaceRequestParams(PageContext* pageContext) : RequestParams(pageCon
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("Constructing from PageContext", this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("Constructing from PageContext", this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -172,7 +179,7 @@ public: NameSpaceRequestParams(PageContext* pageContext) : RequestParams(pageCon
 
                 //@Throws(Exception.constructor)
             
-    private: Node* createPackageNode(Document* document, std::string packageName, HashMap<Object*, Object*>* packagePropertiesHashMap){
+    auto NameSpaceRequestParams::createPackageNode(Document* document, std::string packageName, HashMap<Object*, Object*>* packagePropertiesHashMap) -> Node*{
 
     Node* node = document->createElement(packageName);;
     
@@ -216,7 +223,7 @@ node->appendChild(propertyNode);
 
                 //@Throws(Exception.constructor)
             
-    private: Node* createPackageMultiNode(Document* document, NameSpaceRequestParam* nameSpaceRequestParam, std::string packageName, HashMap<Object*, Object*>* packagePropertiesHashMap){
+    auto NameSpaceRequestParams::createPackageMultiNode(Document* document, NameSpaceRequestParam* nameSpaceRequestParam, std::string packageName, HashMap<Object*, Object*>* packagePropertiesHashMap) -> Node*{
 
     int32_t beginIndex = JavaString::indexOf(packageName, '[');;
     
@@ -242,10 +249,10 @@ node->appendChild(propertyNode);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nAppending Multinode Element: " +multiElementPackage +"[" +indexValue +"] " +selectedValue, this, "createPackageMultiNode");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nAppending Multinode Element: ") +JavaString::valueOf(multiElementPackage)) +JavaString::valueOf("[")) +JavaString::valueOf(indexValue)) +JavaString::valueOf("] ")) +JavaString::valueOf(selectedValue), this, "createPackageMultiNode");
     
 
                                     }
@@ -269,7 +276,7 @@ nextNode->appendChild(indexNode);
 
                 //@Throws(Exception.constructor)
             
-    private: Node* getRootNode(std::string rootElementPackage, HashMap<Object*, Object*>* packagePropertiesHashMap, Document* document){
+    auto NameSpaceRequestParams::getRootNode(std::string rootElementPackage, HashMap<Object*, Object*>* packagePropertiesHashMap, Document* document) -> Node*{
 
     Node* rootNode = DomSearchHelper::getNodeNoThrow(rootElementPackage, document->getChildNodes());;
     
@@ -280,10 +287,10 @@ nextNode->appendChild(indexNode);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nAppending Document Root: " +"\nElementName: " +rootElementPackage +"\nProperties: " +packagePropertiesHashMap->toString(), this, "getRootNode");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nAppending Document Root: ") +JavaString::valueOf("\nElementName: ")) +JavaString::valueOf(rootElementPackage)) +JavaString::valueOf("\nProperties: ")) +JavaString::valueOf(packagePropertiesHashMap->toString()), this, "getRootNode");
     
 
                                     }
@@ -294,10 +301,10 @@ nextNode->appendChild(indexNode);
 document->appendChild(node);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nAppended Document Created: " +XmlDocumentHelper::toString(document), this, "getRootNode");
+                                    this->logUtil->putF(JavaString::valueOf("\nAppended Document Created: ") +JavaString::valueOf(XmlDocumentHelper::toString(document)), this, "getRootNode");
     
 
                                     }
@@ -313,7 +320,7 @@ document->appendChild(node);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF("\nUsing Existing Root Node", this, "getRootNode");
@@ -335,9 +342,9 @@ document->appendChild(node);
 
                 //@Throws(Exception.constructor)
             
-    private: Node* addNewProperties(Document* document, Node* node, HashMap<Object*, Object*>* nextPackagePropertiesHashMap){
+    auto NameSpaceRequestParams::addNewProperties(Document* document, Node* node, HashMap<Object*, Object*>* nextPackagePropertiesHashMap) -> Node*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append("\nAdding Any New Properties: ")->append(nextPackagePropertiesHashMap->toString())->append("\nto node: ")->append(node->getNodeName())->toString(), this, "addNewProperties");
@@ -380,10 +387,10 @@ document->appendChild(node);
     std::string existingElementNodeTextNodeValue = DomNodeHelper::getTextNodeValue(valueNode);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nIf property: \"" +nextPropertyName +" is the same as:\n" +"Node: " +node->getNodeName() +" then: " +propertyValue +"==" +existingElementNodeTextNodeValue, this, "addNewProperties");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nIf property: \"") +JavaString::valueOf(nextPropertyName)) +JavaString::valueOf(" is the same as:\n")) +JavaString::valueOf("Node: ")) +JavaString::valueOf(node->getNodeName())) +JavaString::valueOf(" then: ")) +JavaString::valueOf(propertyValue)) +JavaString::valueOf("==")) +JavaString::valueOf(existingElementNodeTextNodeValue), this, "addNewProperties");
     
 
                                     }
@@ -393,7 +400,7 @@ document->appendChild(node);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF("At least one Property from NameSpaceRequest Package was different from Node", this, "addNewProperties");
@@ -404,7 +411,7 @@ document->appendChild(node);
 
 
 
-                            throw new Exception("Property Modifications Should Not Occur");
+                            throw Exception("Property Modifications Should Not Occur");
                     
 
                                     }
@@ -414,10 +421,10 @@ document->appendChild(node);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("Adding a new Property: " +nextPropertyName +"=" +propertyValue, this, "addNewProperties");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Adding a new Property: ") +JavaString::valueOf(nextPropertyName)) +JavaString::valueOf("=")) +JavaString::valueOf(propertyValue), this, "addNewProperties");
     
 
                                     }
@@ -443,12 +450,12 @@ node->appendChild(newPropertyNode);
 
                 //@Throws(Exception.constructor)
             
-    private: bool isElementValueTextNodeEqual(HashMap<Object*, Object*>* nextPackagePropertiesHashMap, Node* node){
+    auto NameSpaceRequestParams::isElementValueTextNodeEqual(HashMap<Object*, Object*>* nextPackagePropertiesHashMap, Node* node) -> bool{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nComparing the value property in: " +nextPackagePropertiesHashMap->toString() +"\nto node child leaves of node: " +node->getNodeName(), this, "isElementValueTextNodeEqual");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nComparing the value property in: ") +JavaString::valueOf(nextPackagePropertiesHashMap->toString())) +JavaString::valueOf("\nto node child leaves of node: ")) +JavaString::valueOf(node->getNodeName()), this, "isElementValueTextNodeEqual");
     
 
                                     }
@@ -473,7 +480,7 @@ node->appendChild(newPropertyNode);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF("Value Node is the same", this, "isElementValueTextNodeEqual");
@@ -514,12 +521,12 @@ node->appendChild(newPropertyNode);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t isElementValueTextNodeUnique(HashMap<Object*, Object*>* nextPackagePropertiesHashMap, BasicArrayList* elementNodeVector){
+    auto NameSpaceRequestParams::isElementValueTextNodeUnique(HashMap<Object*, Object*>* nextPackagePropertiesHashMap, BasicArrayList* elementNodeVector) -> int32_t{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nComparing Properties of: " +elementNodeVector->size() +" Nodes", this, "isElementValueTextNodeUnique");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("\nComparing Properties of: ") +JavaString::valueOf(elementNodeVector->size())) +JavaString::valueOf(" Nodes"), this, "isElementValueTextNodeUnique");
     
 
                                     }
@@ -563,7 +570,7 @@ node->appendChild(newPropertyNode);
 
                 //@Throws(Exception.constructor)
             
-    private: Document* addChildren(Document* document, Node* rootNode, NameSpaceRequestParam* nameSpaceRequestParam){
+    auto NameSpaceRequestParams::addChildren(Document* document, Node* rootNode, NameSpaceRequestParam* nameSpaceRequestParam) -> Document*{
 
     Node* node = rootNode;;
     
@@ -584,7 +591,7 @@ node->appendChild(newPropertyNode);
     std::string nextPackageName = packageVector->get(index);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append("\nTrying to Add Child to Node: ")->append(node->getNodeName())->append("\nwith new PackageName: ")->append(nextPackageName)->toString(), this, "addChildren");
@@ -599,10 +606,10 @@ node->appendChild(newPropertyNode);
     BasicArrayList* elementNodeVector = DomSearchHelper::getAllNodesNoThrow(nextPackageName, node->getChildNodes());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nDocument Contains " +elementNodeVector->size() +" Node(s) With Same Name", this, "addChildren");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("\nDocument Contains ") +JavaString::valueOf(elementNodeVector->size())) +JavaString::valueOf(" Node(s) With Same Name"), this, "addChildren");
     
 
                                     }
@@ -622,12 +629,12 @@ node->appendChild(nextNode);
 node= nextNode;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nAppended Package: " +node->getNodeName(), this, "addChildren");
+                                    this->logUtil->putF(JavaString::valueOf("\nAppended Package: ") +JavaString::valueOf(node->getNodeName()), this, "addChildren");
     
-this->logUtil->putF("\nAppended Document Created: " +XmlDocumentHelper::toString(document), this, "addChildren");
+this->logUtil->putF(JavaString::valueOf("\nAppended Document Created: ") +JavaString::valueOf(XmlDocumentHelper::toString(document)), this, "addChildren");
     
 
                                     }
@@ -640,7 +647,7 @@ this->logUtil->putF("\nAppended Document Created: " +XmlDocumentHelper::toString
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF("Package is MultiNode: just append", this, "addChildren");
@@ -656,10 +663,10 @@ node->appendChild(nextNode);
 node= nextNode;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("\nAppended Multinode Element: " +XmlDocumentHelper::toString(document), this, "addChildren");
+                                    this->logUtil->putF(JavaString::valueOf("\nAppended Multinode Element: ") +JavaString::valueOf(XmlDocumentHelper::toString(document)), this, "addChildren");
     
 
                                     }
@@ -669,7 +676,7 @@ node= nextNode;
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF("Value Node already exists: Now compare (properties to leaf nodes)", this, "addChildren");
@@ -683,7 +690,7 @@ node= nextNode;
 node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropertiesHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF("\nDuplicate Node Found: Moving to next child ^", this, "addChildre");
@@ -707,9 +714,9 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
 
                 //@Throws(Exception.constructor)
             
-    private: Document* addNameSpace(std::string key, std::string value, Document* document){
+    auto NameSpaceRequestParams::addNameSpace(std::string key, std::string value, Document* document) -> Document*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append("NameSpace key: ")->append(key)->append(" Value: ")->append(value)->toString(), this, "addNameSpace");
@@ -768,7 +775,7 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto NameSpaceRequestParams::toHashMap() -> HashMap<Object*, Object*>*{
 
     Document* document = DomDocumentHelper::create();;
     
@@ -785,10 +792,10 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     int32_t keySize = keyArray.size();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("NameSpace Request Size: " +keys->size(), this, "toHashMap");
+                                    this->logUtil->putF(JavaString::valueOf("NameSpace Request Size: ") +JavaString::valueOf(keys->size()), this, "toHashMap");
     
 
                                     }
@@ -810,10 +817,10 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     std::string className = anyType->getClass()->getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("Request Param Class: " +className, this, "toHashMap");
+                                    this->logUtil->putF(JavaString::valueOf("Request Param Class: ") +JavaString::valueOf(className), this, "toHashMap");
     
 
                                     }
@@ -832,10 +839,10 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("Not NameSpace key: " +key +" Value: " +value, this, "toHashMap()");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Not NameSpace key: ") +JavaString::valueOf(key)) +JavaString::valueOf(" Value: ")) +JavaString::valueOf(value), this, "toHashMap()");
     
 
                                     }
@@ -868,10 +875,10 @@ hashMap->put(std::string(key), std::string(value));
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("Not NameSpace key: " +key +" Value: " +values[0], this, "toHashMap()");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Not NameSpace key: ") +JavaString::valueOf(key)) +JavaString::valueOf(" Value: ")) +JavaString::valueOf(values[0]), this, "toHashMap()");
     
 
                                     }
@@ -893,10 +900,10 @@ hashMap->put(std::string(key), .toCharArray());
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("NameSpaceRequestParams: " +this->getMap()->toString() +"\ntoHashMap(): " +hashMap->toString() +"\nDocument Created: " +XmlDocumentHelper::toString(document), this, "toHashMap()");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("NameSpaceRequestParams: ") +JavaString::valueOf(this->getMap()->toString())) +JavaString::valueOf("\ntoHashMap(): ")) +JavaString::valueOf(hashMap->toString())) +JavaString::valueOf("\nDocument Created: ")) +JavaString::valueOf(XmlDocumentHelper::toString(document)), this, "toHashMap()");
     
 
                                     }
@@ -912,7 +919,6 @@ hashMap->put(NameSpaceRequestParamData::DOCUMENT, document);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMS_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/visitor/Visitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,25 +59,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/visitor/VisitorInterface.h"
 
-class Visitor
-            : public Object
-        , public VisitorInterface {
 
-    private: static Visitor* instance() { static std::unique_ptr<Visitor> value(new Visitor()); return value.get(); }
+Visitor::Visitor() : nullUtil(NullUtil::getInstance()) {
+        }
+        auto Visitor::instance_owner() -> Visitor* { static std::unique_ptr<Visitor> value(new Visitor()); return value.get(); }
+Visitor* Visitor::instance = Visitor::instance_owner();
 
-    public: static Visitor* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Visitor::instance();
-    
-}
-
-
-    protected: NullUtil* nullUtil = NullUtil::getInstance();
-
-    public: Object* visit(Object* anyType){
+    auto Visitor::visit(Object* anyType) -> Object*{
 
 
 
@@ -77,7 +75,16 @@ class Visitor
 }
 
 
-};
+    auto Visitor::getInstance() -> Visitor*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Visitor::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITOR_CPP

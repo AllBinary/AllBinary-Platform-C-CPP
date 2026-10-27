@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_REMOVEACTIONSCRIPTITEMJPANEL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_REMOVEACTIONSCRIPTITEMJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/RemoveActionScriptItemJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,15 +70,8 @@
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/ActionListener.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/ActionEvent.h"
 
-class RemoveActionScriptItemJPanel: public java::awt::Panel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GenericProfileActionJPanel* genericProfileActionJPanel;
-
-    private: ProfileActionScriptConditionInterface* profileActionScriptConditionInterface;
-
-public: RemoveActionScriptItemJPanel(GenericProfileActionJPanel* genericProfileActionJPanel, ProfileActionScriptConditionInterface* profileActionScriptConditionInterface){
+RemoveActionScriptItemJPanel::RemoveActionScriptItemJPanel(GenericProfileActionJPanel* genericProfileActionJPanel, ProfileActionScriptConditionInterface* profileActionScriptConditionInterface) : logUtil(LogUtil::getInstance()){
 this->initComponents();
     
 this->genericProfileActionJPanel= genericProfileActionJPanel;
@@ -78,7 +81,7 @@ this->profileActionScriptConditionInterface= profileActionScriptConditionInterfa
 }
 
 
-    private: void initComponents(){
+    auto RemoveActionScriptItemJPanel::initComponents() -> void{
 this->removeJButton= new javax::swing::JButton();
     
 setLayout(new java::awt::GridLayout());
@@ -101,7 +104,7 @@ add(this->removeJButton);
 }
 
 
-    private: void removeJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto RemoveActionScriptItemJPanel::removeJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
     GenericProfileAction* genericProfileAction = this->genericProfileActionJPanel->getGenericProfileAction();;
     
@@ -129,9 +132,6 @@ this->genericProfileActionJPanel->updateProfileActionUI();
 }
 
 
-    private: javax::swing::JButton* removeJButton;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_REMOVEACTIONSCRIPTITEMJPANEL_CPP

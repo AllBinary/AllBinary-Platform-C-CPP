@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/role/StoreRoleFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,29 +62,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
 
-class StoreRoleFactory
-            : public Object
-         {
+auto StoreRoleFactory::instance_owner() -> StoreRoleFactory* { static std::unique_ptr<StoreRoleFactory> value(new StoreRoleFactory()); return value.get(); }
+StoreRoleFactory* StoreRoleFactory::instance = StoreRoleFactory::instance_owner();
 
-    private: static StoreRoleFactory* instance() { static std::unique_ptr<StoreRoleFactory> value(new StoreRoleFactory()); return value.get(); }
-
-    public: static StoreRoleFactory* getInstance(){
+    auto StoreRoleFactory::getInstance() -> StoreRoleFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreRoleFactory::instance();
+                        return StoreRoleFactory::instance;
     
 }
 
 
-    private: BasicArrayList* roles = new BasicArrayListD();
-
-    private: BasicArrayList* subscriberRoles = new BasicArrayListD();
-
-    private: BasicArrayList* wholesaleRoles = new BasicArrayListD();
-
-private: StoreRoleFactory(){
+StoreRoleFactory::StoreRoleFactory() : roles(new BasicArrayListD()), subscriberRoles(new BasicArrayListD()), wholesaleRoles(new BasicArrayListD()){
 
     BasicUserRoleFactory* basicUserRoleFactory = BasicUserRoleFactory::getInstance();;
     
@@ -91,7 +92,7 @@ this->wholesaleRoles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
 }
 
 
-    public: BasicArrayList* getRoles(){
+    auto StoreRoleFactory::getRoles() -> BasicArrayList*{
 
 
 
@@ -101,7 +102,7 @@ this->wholesaleRoles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
 }
 
 
-    public: BasicArrayList* getSubscriberRoles(){
+    auto StoreRoleFactory::getSubscriberRoles() -> BasicArrayList*{
 
 
 
@@ -111,7 +112,7 @@ this->wholesaleRoles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
 }
 
 
-    public: BasicArrayList* getWholesaleRoles(){
+    auto StoreRoleFactory::getWholesaleRoles() -> BasicArrayList*{
 
 
 
@@ -121,7 +122,6 @@ this->wholesaleRoles->add(basicUserRoleFactory->WHOLESALECUSTOMER);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_CPP

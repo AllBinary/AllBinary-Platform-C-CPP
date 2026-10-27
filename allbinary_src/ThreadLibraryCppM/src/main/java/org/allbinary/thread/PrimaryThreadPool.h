@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Runnable.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringMaker;
+class StringUtil;
 
 
 
@@ -57,9 +58,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ThreadPool.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PrimaryThreadPool: public ThreadPool {
 
-    private: static ThreadPool* THREAD_POOL() { static std::unique_ptr<ThreadPool> value(new ThreadPool("Primary", 1, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
+    private: static ThreadPool* THREAD_POOL_owner();
+    private: static ThreadPool* THREAD_POOL;
 
     public: static ThreadPool* getInstance();
 
@@ -67,9 +73,9 @@ public: PrimaryThreadPool(std::string poolName, int32_t numThreads, int32_t prio
 
     public: void runTask(Runnable* task);
 
-    protected: void startTask(Runnable* task);
+    /*protected*/ public: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable* task);
+    /*protected*/ public: void completedTask(Runnable* task);
 
 };
 
@@ -77,3 +83,19 @@ public: PrimaryThreadPool(std::string poolName, int32_t numThreads, int32_t prio
 
 
         #endif //ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/thread/ThreadPool.h")
+#include "org/allbinary/thread/ThreadPool.h"
+#endif
+
+        #endif
+    

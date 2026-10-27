@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -50,19 +53,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/score/HighScores.h"
+        class HighScores;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullHighScoresSingletonFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static HighScores* SINGLETON() { static std::unique_ptr<HighScores> value(new HighScores(CommonStrings::getInstance()->LOADING, "High Scores Not Loaded", CommonStrings::getInstance()->PERIODS)); return value.get(); }
+    private: static HighScores* SINGLETON_owner();
+    private: static HighScores* SINGLETON;
 
     public: static HighScores* getInstance();
 
+
+            
+    public: NullHighScoresSingletonFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/score/HighScores.h")
+#include "org/allbinary/game/score/HighScores.h"
+#endif
+
+        #endif
+    

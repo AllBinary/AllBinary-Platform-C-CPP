@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGEJPANEL_CPP
+        #define ORG_ALLBINARY_IMAGE_GUI_IMAGEJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/gui/ImageJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,19 +72,8 @@
 #include "org/allbinary/image/gui/GroupLayout.h"
 #include "org/allbinary/image/gui/Short.h"
 
-class ImageJPanel: public javax::swing::JPanel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
-
-    private: bool isDrawn = false;
-
-    private: BufferedImage* bufferedImage;
-
-public: ImageJPanel(BufferedImage* bufferedImage){
+ImageJPanel::ImageJPanel(BufferedImage* bufferedImage) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), canvasStrings(CanvasStrings::getInstance()){
 this->initComponents();
     
 this->bufferedImage= bufferedImage;
@@ -86,7 +85,7 @@ this->setSize(this->bufferedImage->getWidth(
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto ImageJPanel::paint(Graphics* graphics) -> void{
 
                         if(!this->isDrawn)
                         
@@ -106,20 +105,19 @@ this->isDrawn= true;
 }
 
 
-    private: void initComponents(){
+    auto ImageJPanel::initComponents() -> void{
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 400, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 400, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 300, Short::MAX_VALUE));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 300, Short::MAX_VALUE));
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_GUI_IMAGEJPANEL_CPP

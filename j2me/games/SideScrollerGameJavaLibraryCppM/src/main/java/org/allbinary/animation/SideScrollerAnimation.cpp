@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SIDESCROLLERANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_SIDESCROLLERANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/SideScrollerAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SideScrollerAnimation
-            : public Object
-         {
 
-public: SideScrollerAnimation(){
+SideScrollerAnimation::SideScrollerAnimation(){
 }
 
 
-    public: void jump(){
+    auto SideScrollerAnimation::jump() -> void{
 }
 
 
-    public: void walk(){
+    auto SideScrollerAnimation::walk() -> void{
 }
 
 
-    public: void run(){
+    auto SideScrollerAnimation::run() -> void{
 }
 
 
-    public: void crouch(){
+    auto SideScrollerAnimation::crouch() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_SIDESCROLLERANIMATION_CPP

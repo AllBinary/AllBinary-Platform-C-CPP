@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_H
         #define ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/math/Angle.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
+class Angle;
+class AngleFactory;
 
 
 
@@ -55,20 +56,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/direction/DirectionFactory.h"
-#include "org/allbinary/direction/Direction.h"
+        class DirectionFactory;
+class Direction;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DirectionUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static DirectionUtil* instance() { static std::unique_ptr<DirectionUtil> value(new DirectionUtil()); return value.get(); }
+    private: static DirectionUtil* instance_owner();
+    private: static DirectionUtil* instance;
 
     public: static DirectionUtil* getInstance();
 
-    private: std::vector<Angle*> directionArray = std::vector<Angle*>(10);
+    private: std::vector<Angle*> directionArray;
 
-    private: std::vector<Angle*> directionArray2 = std::vector<Angle*>(10);
+    private: std::vector<Angle*> directionArray2;
 
 private: DirectionUtil();
 
@@ -82,3 +88,22 @@ private: DirectionUtil();
 
 
         #endif //ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/math/Angle.h>)
+#include <org/allbinary/math/Angle.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include("org/allbinary/direction/DirectionFactory.h")
+#include "org/allbinary/direction/DirectionFactory.h"
+#endif
+#if __has_include("org/allbinary/direction/Direction.h")
+#include "org/allbinary/direction/Direction.h"
+#endif
+
+        #endif
+    

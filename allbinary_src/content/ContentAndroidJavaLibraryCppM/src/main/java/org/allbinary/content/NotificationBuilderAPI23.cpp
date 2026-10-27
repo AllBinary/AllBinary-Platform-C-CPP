@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDERAPI23_CPP
+        #define ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDERAPI23_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/content/NotificationBuilderAPI23.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,9 +76,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/content/NotificationBuilder.h"
 
-class NotificationBuilderAPI23: public NotificationBuilder {
 
-    public: Parcelable* build(Context* context, Command* command, std::string message, int32_t integer, PendingIntent* pendingIntent){
+NotificationBuilderAPI23::NotificationBuilderAPI23() {
+        }
+        
+    auto NotificationBuilderAPI23::build(Context* context, Command* command, std::string message, int32_t integer, PendingIntent* pendingIntent) -> Parcelable*{
 
     Notification* notification = (new Builder(context))->setSmallIcon(integer.intValue())->setTicker(message)->setWhen(System.currentTimeMillis())->setContentTitle(command->getLabel())->setContentText(message)->setContentIntent(pendingIntent)->build();;
     
@@ -81,7 +93,6 @@ class NotificationBuilderAPI23: public NotificationBuilder {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDERAPI23_CPP

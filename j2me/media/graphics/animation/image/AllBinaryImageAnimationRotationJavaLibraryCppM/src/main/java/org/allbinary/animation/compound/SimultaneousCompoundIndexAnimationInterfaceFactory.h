@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXANIMATIONINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,24 +38,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
+class Animation;
+class AnimationBehaviorFactory;
 #include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+class IndexedAnimation;
 
-      
-#include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class ScaleProperties;
 
 
 
@@ -69,10 +62,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/compound/SimultaneousCompoundIndexAnimation.h"
+        class SimultaneousCompoundIndexAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SimultaneousCompoundIndexAnimationInterfaceFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface {
 
     private: std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray;
@@ -85,7 +82,7 @@ public: SimultaneousCompoundIndexAnimationInterfaceFactory(std::vector<Animation
             
     public: Animation* getInstance(int32_t instanceId);
 
-    protected: Animation* getOrCreate(std::vector<IndexedAnimation*> animationInterfaceArray);
+    /*protected*/ public: Animation* getOrCreate(std::vector<IndexedAnimation*> animationInterfaceArray);
 
     public: std::vector<AnimationInterfaceFactoryInterface*> getBasicAnimationInterfaceFactoryInterfaceArray();
 
@@ -97,3 +94,29 @@ public: SimultaneousCompoundIndexAnimationInterfaceFactory(std::vector<Animation
 
 
         #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXANIMATIONINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXANIMATIONINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXANIMATIONINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/compound/SimultaneousCompoundIndexAnimation.h")
+#include "org/allbinary/animation/compound/SimultaneousCompoundIndexAnimation.h"
+#endif
+
+        #endif
+    

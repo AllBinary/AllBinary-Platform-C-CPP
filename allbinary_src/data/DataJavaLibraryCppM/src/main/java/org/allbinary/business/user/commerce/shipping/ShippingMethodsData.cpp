@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingMethodsData
-            : public Object
-         {
 
-    public: static inline const std::string SHIPPINGMETHODSORDERSUMMARIES = "SHIPPINGMETHODS_ORDERSUMMARIES";
+ShippingMethodsData::ShippingMethodsData() {
+        }
+        
 
-    public: static inline const std::string SHIPPINGMETHODORDERSUMMARY = "SHIPPINGMETHOD_ORDERSUMMARY";
 
-    public: static inline const std::string SHIPPINGMETHODS = "SHIPPINGMETHODS";
-
-    public: static inline const std::string NAME = "SHIPPINGMETHODS_NAME";
-
-    public: static inline const std::string SHIPPINGCOST = "SHIPPINGMETHOD_SHIPPINGCOST";
-
-    public: static inline const std::string TAXRATE = "SHIPPINGMETHOD_TAXRATE";
-
-    public: static inline const std::string SUBTOTAL = "SHIPPINGMETHOD_SUBTOTAL";
-
-    public: static inline const std::string TAX = "SHIPPINGMETHOD_TAX";
-
-    public: static inline const std::string TOTAL = "SHIPPINGMETHOD_TOTAL";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODSDATA_CPP

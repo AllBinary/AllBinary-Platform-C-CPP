@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_PGUTIL_CPP
+        #define ORG_ALLBINARY_ANIMATION_PGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/PGUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,23 +44,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/FixedPoint.h"
 
-class PGUtil
-            : public Object
-         {
 
-    private: static PGUtil* instance() { static std::unique_ptr<PGUtil> value(new PGUtil()); return value.get(); }
+PGUtil::PGUtil() {
+        }
+        auto PGUtil::instance_owner() -> PGUtil* { static std::unique_ptr<PGUtil> value(new PGUtil()); return value.get(); }
+PGUtil* PGUtil::instance = PGUtil::instance_owner();
 
-    public: static PGUtil* getInstance(){
+    auto PGUtil::getInstance() -> PGUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PGUtil::instance();
+                        return PGUtil::instance;
     
 }
 
 
-    public: void flattenCubicBezier(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x3, int32_t y3, std::vector<int32_t> outX, std::vector<int32_t> outY, std::vector<int32_t> count, int32_t maxPoints){
+    auto PGUtil::flattenCubicBezier(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x3, int32_t y3, std::vector<int32_t> outX, std::vector<int32_t> outY, std::vector<int32_t> count, int32_t maxPoints) -> void{
 
     FixedPoint* fixedPoint = FixedPoint::getInstance();;
     
@@ -106,7 +116,6 @@ count[0]++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_PGUTIL_CPP

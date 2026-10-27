@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGS_FILEAUTHENTICATIONTAG_H
         #define ADMIN_TAGS_FILEAUTHENTICATIONTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,62 +37,24 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/Calendar.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <javax/servlet/jsp/tagext/TagSupport.h>
-
-      
-#include <org/allbinary/business/init/InstallerInfo.h>
-
-      
-#include <org/allbinary/business/user/role/BasicUserRole.h>
-
-      
-#include <org/allbinary/business/user/role/BasicUserRoleFactory.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/BasicWeblisketSession.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/java/bool/BooleanFactory.h>
-
-      
-#include <org/allbinary/logic/java/bool/BooleanUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class HttpServletRequest;
+class JspTagException;
+class TagSupport;
+class InstallerInfo;
+class BasicUserRole;
+class BasicUserRoleFactory;
+class AbResponseHandler;
+class BasicWeblisketSession;
+class WeblisketSessionData;
+class LogUtil;
+class BooleanFactory;
+class BooleanUtil;
+class StringMaker;
+class StringUtil;
+class LicensingException;
 #include <tags/CustomTagSupport.h>
-
-      
 
 
 
@@ -107,9 +74,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileAuthenticationTag: public CustomTagSupport {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: int32_t attemptsInteger;
 
@@ -199,3 +170,65 @@ public: FileAuthenticationTag();
 
 
         #endif //ADMIN_TAGS_FILEAUTHENTICATIONTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGS_FILEAUTHENTICATIONTAG_H_COMPLETE)
+        #define ADMIN_TAGS_FILEAUTHENTICATIONTAG_H_COMPLETE
+        #if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<javax/servlet/jsp/tagext/TagSupport.h>)
+#include <javax/servlet/jsp/tagext/TagSupport.h>
+#endif
+#if __has_include(<org/allbinary/business/init/InstallerInfo.h>)
+#include <org/allbinary/business/init/InstallerInfo.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/BasicUserRole.h>)
+#include <org/allbinary/business/user/role/BasicUserRole.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/BasicUserRoleFactory.h>)
+#include <org/allbinary/business/user/role/BasicUserRoleFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/BasicWeblisketSession.h>)
+#include <org/allbinary/logic/communication/http/request/session/BasicWeblisketSession.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/bool/BooleanFactory.h>)
+#include <org/allbinary/logic/java/bool/BooleanFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/bool/BooleanUtil.h>)
+#include <org/allbinary/logic/java/bool/BooleanUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<tags/CustomTagSupport.h>)
+#include <tags/CustomTagSupport.h>
+#endif
+
+        #endif
+    

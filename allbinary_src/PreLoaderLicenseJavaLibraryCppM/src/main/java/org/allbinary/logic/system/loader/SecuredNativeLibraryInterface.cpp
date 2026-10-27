@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,23 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SecuredNativeLibraryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void load() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void unload() = 0;
 
-    public: virtual bool unlock(std::string key) = 0;
-
-    public: virtual std::string getLibraryName() = 0;
-
-    public: virtual std::string getName() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYINTERFACE_CPP

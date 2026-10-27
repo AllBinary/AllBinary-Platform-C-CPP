@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_TOUCHFEATUREFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_TOUCHFEATUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/TouchFeatureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,35 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/feature/TouchFeature.h"
 
-class TouchFeatureFactory
-            : public Object
-         {
+auto TouchFeatureFactory::instance_owner() -> TouchFeatureFactory* { static std::unique_ptr<TouchFeatureFactory> value(new TouchFeatureFactory()); return value.get(); }
+TouchFeatureFactory* TouchFeatureFactory::instance = TouchFeatureFactory::instance_owner();
 
-    private: static TouchFeatureFactory* instance() { static std::unique_ptr<TouchFeatureFactory> value(new TouchFeatureFactory()); return value.get(); }
-
-    public: static TouchFeatureFactory* getInstance(){
+    auto TouchFeatureFactory::getInstance() -> TouchFeatureFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchFeatureFactory::instance();
+                        return TouchFeatureFactory::instance;
     
 }
 
 
-private: TouchFeatureFactory(){
+TouchFeatureFactory::TouchFeatureFactory() : TOUCH_ENABLED(new TouchFeature("Touch Enabled")), SHOW_SCREEN_BUTTONS(new TouchFeature("Show")), AUTO_HIDE_SHOW_SCREEN_BUTTONS(new TouchFeature("Auto Hide (One Level)")), HIDE_SCREEN_BUTTONS(new TouchFeature("Hide")){
 }
 
 
-    public: TouchFeature* TOUCH_ENABLED = new TouchFeature("Touch Enabled");
 
-    public: TouchFeature* SHOW_SCREEN_BUTTONS = new TouchFeature("Show");
 
-    public: TouchFeature* AUTO_HIDE_SHOW_SCREEN_BUTTONS = new TouchFeature("Auto Hide (One Level)");
-
-    public: TouchFeature* HIDE_SCREEN_BUTTONS = new TouchFeature("Hide");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_TOUCHFEATUREFACTORY_CPP

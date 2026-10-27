@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/data/TransformDocument.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,19 +79,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
-class TransformDocument
-            : public Object
-        , public TransformDocumentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Node* baseNode;
-
-    private: Document* document;
-
-public: TransformDocument(){
+TransformDocument::TransformDocument() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
         try {
             this->document= DomDocumentHelper::create();
@@ -94,7 +93,7 @@ this->baseNode= allbinaryNode;
 this->document->appendChild(this->baseNode);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->putF(this->log(), this, this->commonStrings->CONSTRUCTOR);
@@ -107,7 +106,7 @@ this->document->appendChild(this->baseNode);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
@@ -125,7 +124,7 @@ this->document->appendChild(this->baseNode);
 }
 
 
-    public: Node* getBaseNode(){
+    auto TransformDocument::getBaseNode() -> Node*{
 
 
 
@@ -135,7 +134,7 @@ this->document->appendChild(this->baseNode);
 }
 
 
-    public: Document* getDoc(){
+    auto TransformDocument::getDoc() -> Document*{
 
 
 
@@ -147,7 +146,7 @@ this->document->appendChild(this->baseNode);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string log(){
+    auto TransformDocument::log() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -183,7 +182,6 @@ stringBuffer->append(XmlDocumentHelper::toString(this->document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENT_CPP

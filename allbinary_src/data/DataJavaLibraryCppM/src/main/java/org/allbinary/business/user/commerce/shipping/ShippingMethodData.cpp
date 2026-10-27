@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/ShippingMethodData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingMethodData
-            : public Object
-         {
 
-    public: static inline const std::string DESCRIPTION = "SHIPPINGMETHOD_DESCRIPTION";
-
-    public: static inline const std::string DEFAULT = "SHIPPINGMETHOD_DEFAULT";
-
-    public: static inline const std::string NAME = "SHIPPINGMETHOD_NAME";
-
-    public: static inline const std::string GROUP = "SHIPPINGMETHOD_GROUP";
-
-    public: static inline const std::string COST = "SHIPPINGMETHOD_COST";
-
-public: ShippingMethodData(){
+ShippingMethodData::ShippingMethodData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODDATA_CPP

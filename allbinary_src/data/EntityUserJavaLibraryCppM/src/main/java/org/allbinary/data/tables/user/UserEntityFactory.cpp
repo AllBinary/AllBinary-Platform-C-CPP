@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/UserEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,11 +64,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/UserEntity.h"
 
-class UserEntityFactory
-            : public Object
-         {
 
-    public: static UserEntity* getInstance(){
+UserEntityFactory::UserEntityFactory(){
+}
+
+
+    auto UserEntityFactory::getInstance() -> UserEntity*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -78,7 +89,7 @@ class UserEntityFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "UserEntityFactory", commonStrings->GET_INSTANCE, &e);
@@ -97,11 +108,6 @@ class UserEntityFactory
 }
 
 
-private: UserEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYFACTORY_CPP

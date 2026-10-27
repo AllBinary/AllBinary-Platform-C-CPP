@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_CPP
+        #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/category/CategoryPrivateTree.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,17 +84,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CategoryPrivateTree
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+CategoryPrivateTree::CategoryPrivateTree(CategoryFactoryInterface* categoryFactoryInterface) : logUtil(LogUtil::getInstance()){
 
-    protected: CategoryFactoryInterface* categoryFactoryInterface;
-
-public: CategoryPrivateTree(CategoryFactoryInterface* categoryFactoryInterface){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     
@@ -103,12 +106,12 @@ this->categoryFactoryInterface= categoryFactoryInterface;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void save(CategoryInterface* categoryInterface){
+    auto CategoryPrivateTree::save(CategoryInterface* categoryInterface) -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Saving Category File: " +categoryInterface->getFilePath(), this, "save()");
+                                    this->logUtil->putF(JavaString::valueOf("Saving Category File: ") +JavaString::valueOf(categoryInterface->getFilePath()), this, "save()");
     
 
                                     }
@@ -122,7 +125,7 @@ this->categoryFactoryInterface= categoryFactoryInterface;
 cryptFileWriter->write(categoryInterface->getFilePath(), document);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF("end", this, "save()");
@@ -136,7 +139,7 @@ cryptFileWriter->write(categoryInterface->getFilePath(), document);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void delete_(CategoryInterface* categoryInterface){
+    auto CategoryPrivateTree::delete_(CategoryInterface* categoryInterface) -> void{
 
                         if(categoryInterface->isLeaf())
                         
@@ -149,10 +152,10 @@ cryptFileWriter->write(categoryInterface->getFilePath(), document);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Removed: " +categoryInterface->getFilePath(), this, "delete(CategoryInterface)");
+                                    this->logUtil->putF(JavaString::valueOf("Removed: ") +JavaString::valueOf(categoryInterface->getFilePath()), this, "delete(CategoryInterface)");
     
 
                                     }
@@ -165,7 +168,7 @@ cryptFileWriter->write(categoryInterface->getFilePath(), document);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF("Not a leaf unable to remove", this, "delete(CategoryInterface)");
@@ -179,7 +182,6 @@ cryptFileWriter->write(categoryInterface->getFilePath(), document);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_CPP

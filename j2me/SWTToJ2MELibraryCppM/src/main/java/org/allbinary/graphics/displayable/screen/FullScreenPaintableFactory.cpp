@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_FULLSCREENPAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_FULLSCREENPAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/FullScreenPaintableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,25 +61,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FullScreenPaintableFactory
-            : public Object
-         {
 
-    private: static FullScreenPaintableFactory* instance() { static std::unique_ptr<FullScreenPaintableFactory> value(new FullScreenPaintableFactory()); return value.get(); }
+FullScreenPaintableFactory::FullScreenPaintableFactory() : paintable(FullScreenPaintable::getInstance()) {
+        }
+        auto FullScreenPaintableFactory::instance_owner() -> FullScreenPaintableFactory* { static std::unique_ptr<FullScreenPaintableFactory> value(new FullScreenPaintableFactory()); return value.get(); }
+FullScreenPaintableFactory* FullScreenPaintableFactory::instance = FullScreenPaintableFactory::instance_owner();
 
-    public: static FullScreenPaintableFactory* getInstance(){
+    auto FullScreenPaintableFactory::getInstance() -> FullScreenPaintableFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FullScreenPaintableFactory::instance();
+                        return FullScreenPaintableFactory::instance;
     
 }
 
 
-    public: Paintable* paintable = FullScreenPaintable::getInstance();
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_FULLSCREENPAINTABLEFACTORY_CPP

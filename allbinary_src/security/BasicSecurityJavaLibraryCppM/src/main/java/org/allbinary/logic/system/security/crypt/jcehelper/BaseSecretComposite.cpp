@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASESECRETCOMPOSITE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASESECRETCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,15 +62,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BaseSecretComposite
-            : public Object
-         {
 
-    public: static BaseSecretComposite* NULL_SECRET_COMPOSITE() { static std::unique_ptr<BaseSecretComposite> value(new BaseSecretComposite()); return value.get(); }
+BaseSecretComposite::BaseSecretComposite() {
+        }
+        auto BaseSecretComposite::NULL_SECRET_COMPOSITE_owner() -> BaseSecretComposite* { static std::unique_ptr<BaseSecretComposite> value(new BaseSecretComposite()); return value.get(); }
+BaseSecretComposite* BaseSecretComposite::NULL_SECRET_COMPOSITE = BaseSecretComposite::NULL_SECRET_COMPOSITE_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    auto BaseSecretComposite::encrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
 
 
@@ -72,7 +82,7 @@ class BaseSecretComposite
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    auto BaseSecretComposite::decrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
 
 
@@ -82,7 +92,6 @@ class BaseSecretComposite
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASESECRETCOMPOSITE_CPP

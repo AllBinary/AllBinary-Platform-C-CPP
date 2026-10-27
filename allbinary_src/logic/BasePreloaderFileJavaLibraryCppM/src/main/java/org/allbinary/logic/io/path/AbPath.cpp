@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/path/AbPath.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,11 +79,8 @@
         #include "org/allbinary/logic/io/path/AbPathData.h"
 #include "org/allbinary/logic/io/path/PathUtil.h"
 
-class AbPath
-            : public Object
-         {
 
-    public: static AbPath* createAbPath(){
+    auto AbPath::createAbPath() -> AbPath*{
 
         try {
             
@@ -92,34 +99,14 @@ class AbPath
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    private: static inline const std::string NETWORK_SEP = ":/";
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: AbPathData* abPathData = AbPathData::getInstance();
-
-    private: PathUtil* abPathUtil = PathUtil::getInstance();
-
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
-
-    protected: std::string schema = this->EMPTY_STRING;
-
-    private: std::string path = this->EMPTY_STRING;
-
-    protected: std::string nameP = this->EMPTY_STRING;
-
-    private: bool hasSchemaP = false;
-
-    private: int32_t numberOfSeps = 0;
-
-public: AbPath(std::string aPath, std::string name){
+AbPath::AbPath(std::string aPath, std::string name) : commonSeps(CommonSeps::getInstance()), abPathData(AbPathData::getInstance()), abPathUtil(PathUtil::getInstance()), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), schema(this->EMPTY_STRING), path(this->EMPTY_STRING), nameP(this->EMPTY_STRING){
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
@@ -154,7 +141,7 @@ this->path= this->abPathUtil->adjustEnd(this->abPathUtil->adjust(this->getPathFr
 }
 
 
-    private: void init(){
+    auto AbPath::init() -> void{
 this->schema= this->EMPTY_STRING;
     
 this->setPath(this->abPathData->SEPARATOR);
@@ -164,7 +151,7 @@ this->nameP= this->EMPTY_STRING;
 }
 
 
-    protected: std::string getSchema(std::string aPath){
+    auto AbPath::getSchema(std::string aPath) -> std::string{
 
     int32_t beginIndex = JavaString::indexOf(aPath, this->commonSeps->COLON);;
     
@@ -194,7 +181,7 @@ this->hasSchemaP= false;
 }
 
 
-    public: bool hasSchema(){
+    auto AbPath::hasSchema() -> bool{
 
 
 
@@ -206,7 +193,7 @@ this->hasSchemaP= false;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getPathFromPath(std::string aPath){
+    auto AbPath::getPathFromPath(std::string aPath) -> std::string{
 
     FilePathData* filePathData = FilePathData::getInstance();;
     
@@ -246,7 +233,7 @@ this->numberOfSeps++;
                                     
 
 
-                            throw new Exception("Should Not Have More Than Two Seps");
+                            throw Exception("Should Not Have More Than Two Seps");
                     
 
                                     }
@@ -270,13 +257,13 @@ tempPath= JavaString::substring(tempPath, beginIndex, tempPath.size());
 }
 
 
-    public: void setName(std::string name){
+    auto AbPath::setName(std::string name) -> void{
 this->nameP= name;
     
 }
 
 
-    public: std::string getName(){
+    auto AbPath::getName() -> std::string{
 
 
 
@@ -286,7 +273,7 @@ this->nameP= name;
 }
 
 
-    public: std::string toString(){
+    auto AbPath::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -314,7 +301,7 @@ stringBuffer->append(this->nameP);
 }
 
 
-    public: std::string toFileSystemString(){
+    auto AbPath::toFileSystemString() -> std::string{
 
                         if(this->hasSchema())
                         
@@ -357,7 +344,7 @@ stringBuffer->append(this->nameP);
 }
 
 
-    public: std::string getPath(){
+    auto AbPath::getPath() -> std::string{
 
 
 
@@ -367,13 +354,12 @@ stringBuffer->append(this->nameP);
 }
 
 
-    protected: void setPath(std::string path){
+    auto AbPath::setPath(std::string path) -> void{
 this->path= path;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_CPP

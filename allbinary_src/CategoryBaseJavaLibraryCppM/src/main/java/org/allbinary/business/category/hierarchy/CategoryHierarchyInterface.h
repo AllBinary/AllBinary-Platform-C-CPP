@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/category/CategoryInterface.h>
-
-      
+class CategoryInterface;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CategoryHierarchyInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class CategoryHierarchyInterface
+            : public virtual Object
+         {
 
     public: virtual int32_t getLevel() = 0;
 
@@ -71,3 +80,13 @@ class CategoryHierarchyInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/category/CategoryInterface.h>)
+#include <org/allbinary/business/category/CategoryInterface.h>
+#endif
+
+        #endif
+    

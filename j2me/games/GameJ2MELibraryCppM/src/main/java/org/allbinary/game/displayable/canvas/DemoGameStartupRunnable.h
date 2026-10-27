@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 #include <org/allbinary/thread/ABRunnable.h>
-
-      
 
 
 
@@ -56,13 +55,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
+        class DemoCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DemoGameStartupRunnable: public ABRunnable {
 
     public: static inline const int32_t TYPE = 4;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: DemoCanvas* demoCanvas;
 
@@ -78,3 +81,22 @@ public: DemoGameStartupRunnable(DemoCanvas* demoCanvas);
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/thread/ABRunnable.h>)
+#include <org/allbinary/thread/ABRunnable.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/DemoCanvas.h")
+#include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
+#endif
+
+        #endif
+    

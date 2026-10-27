@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_H
         #define ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/math/Angle.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
+class Angle;
+class AngleFactory;
 
 
 
@@ -54,11 +55,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicTerrainInfo
-            : public Object
+            : public virtual Object
          {
 
-    public: static BasicTerrainInfo* NULL_BASIC_TERRAIN_INFO() { static std::unique_ptr<BasicTerrainInfo> value(new BasicTerrainInfo(AngleFactory::getInstance()->NOT_ANGLE)); return value.get(); }
+    private: static BasicTerrainInfo* NULL_BASIC_TERRAIN_INFO_owner();
+    public: static BasicTerrainInfo* NULL_BASIC_TERRAIN_INFO;
 
     private: Angle* angle;
 
@@ -74,3 +80,16 @@ public: BasicTerrainInfo(Angle* angle);
 
 
         #endif //ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_H_COMPLETE
+        #if __has_include(<org/allbinary/math/Angle.h>)
+#include <org/allbinary/math/Angle.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+
+        #endif
+    

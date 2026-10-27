@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEINFO_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/EndGameInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,23 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EndGameInfo
-            : public Object
-         {
 
-    private: const std::string NORMAL_GAME_OVER = "Game Over";
-
-    protected: const std::string NORMAL_GAME_OVER_WIN = "You Won";
-
-    private: std::string gameOverStr = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: std::string winStr = this->gameOverStr;
-
-public: EndGameInfo(){
+EndGameInfo::EndGameInfo() : gameOverStr(StringUtil::getInstance()->EMPTY_STRING), winStr(this->gameOverStr){
 }
 
 
-    public: void update(GameInfo* gameInfo, MyCanvas* myCanvas){
+    auto EndGameInfo::update(GameInfo* gameInfo, MyCanvas* myCanvas) -> void{
 this->setGameOverStr(this->NORMAL_GAME_OVER);
     
 this->setWinStr(this->NORMAL_GAME_OVER_WIN);
@@ -78,7 +77,7 @@ this->setWinStr(this->NORMAL_GAME_OVER_WIN);
 }
 
 
-    public: std::string getGameOverStr(){
+    auto EndGameInfo::getGameOverStr() -> std::string{
 
 
 
@@ -88,13 +87,13 @@ this->setWinStr(this->NORMAL_GAME_OVER_WIN);
 }
 
 
-    public: void setGameOverStr(std::string gameOverStr){
+    auto EndGameInfo::setGameOverStr(std::string gameOverStr) -> void{
 this->gameOverStr= gameOverStr;
     
 }
 
 
-    public: std::string getWinStr(){
+    auto EndGameInfo::getWinStr() -> std::string{
 
 
 
@@ -104,13 +103,12 @@ this->gameOverStr= gameOverStr;
 }
 
 
-    public: void setWinStr(std::string winStr){
+    auto EndGameInfo::setWinStr(std::string winStr) -> void{
 this->winStr= winStr;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEINFO_CPP

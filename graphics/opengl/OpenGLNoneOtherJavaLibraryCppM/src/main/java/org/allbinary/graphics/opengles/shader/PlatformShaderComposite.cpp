@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_PLATFORMSHADERCOMPOSITE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_PLATFORMSHADERCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/PlatformShaderComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,9 +66,8 @@
 #include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
 #include "org/allbinary/graphics/opengles/shader/ModelViewProjection.h"
 
-class PlatformShaderComposite: public ShaderComposite {
 
-public: PlatformShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader*> shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor) : ShaderComposite(requiresOpenGLVersion, shaderArray, compositeShaderUpdater, shaderInitializer, modelViewProjection, colorOpenGLProcessor, vertexOpenGLProcessor, NullOpenGLProcessorFactory::getInstance()){
+PlatformShaderComposite::PlatformShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader*> shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor) : ShaderComposite(requiresOpenGLVersion, shaderArray, compositeShaderUpdater, shaderInitializer, modelViewProjection, colorOpenGLProcessor, vertexOpenGLProcessor, NullOpenGLProcessorFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +77,6 @@ public: PlatformShaderComposite(std::string requiresOpenGLVersion, std::vector<S
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_PLATFORMSHADERCOMPOSITE_CPP

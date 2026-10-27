@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLEVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLEVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,25 +94,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h"
 
-class TitleView
-            : public Object
-        , public DomNodeInterface {
 
-    private: static inline const std::string NAME = "None";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string title;
-
-public: TitleView(){
+TitleView::TitleView() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->title= TitleView::NAME;
     
 }
 
 
-public: TitleView(Node* node){
+TitleView::TitleView(Node* node) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
     Node* titleTextNode = DomSearchHelper::getNode(TitleData::getInstance()->TEXT, node->getChildNodes());;
     
@@ -121,10 +120,10 @@ this->title= DomNodeHelper::getTextNodeValue(valueNode);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Title: " +this->getTitle(), this, "Consructor()");
+                                    this->logUtil->putF(JavaString::valueOf("Title: ") +JavaString::valueOf(this->getTitle()), this, "Consructor()");
     
 
                                     }
@@ -132,12 +131,12 @@ this->title= DomNodeHelper::getTextNodeValue(valueNode);
 }
 
 
-public: TitleView(HashMap<Object*, Object*>* hashMap){
+TitleView::TitleView(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("HashMap: " +hashMap->toString(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -147,7 +146,7 @@ this->getFormData(hashMap);
 }
 
 
-    public: std::string getTitle(){
+    auto TitleView::getTitle() -> std::string{
 
 
 
@@ -157,7 +156,7 @@ this->getFormData(hashMap);
 }
 
 
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto TitleView::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 this->title= hashMap->get(TitleData::getInstance()->TEXT);
     
 
@@ -172,7 +171,7 @@ this->title= hashMap->get(TitleData::getInstance()->TEXT);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto TitleView::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -189,15 +188,15 @@ hashMap->put(TitleData::getInstance()->TEXT, this->getTitle());
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TitleView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TitleView HashMap: " +hashMap->toString(), this, "toXmlNode()");
+                                    this->logUtil->putF(JavaString::valueOf("TitleView HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode()");
     
 
                                     }
@@ -211,7 +210,6 @@ hashMap->put(TitleData::getInstance()->TEXT, this->getTitle());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLEVIEW_CPP

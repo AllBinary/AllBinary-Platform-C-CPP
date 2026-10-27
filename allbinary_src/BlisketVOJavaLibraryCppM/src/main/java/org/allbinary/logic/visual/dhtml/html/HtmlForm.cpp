@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLFORM_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/HtmlForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,36 +75,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlForm
-            : public Object
-         {
 
-    private: const std::string FORMBEGIN = "<form ";
-
-    private: const std::string END = ">";
-
-    private: const std::string FORMEND = "</form>";
-
-    private: const std::string ACTION = "ACTION=\"";
-
-    private: const std::string GET = "GET\"";
-
-    private: const std::string POST = "POST\"";
-
-    private: const std::vector<std::string> METHODS = 
+HtmlForm::HtmlForm(std::string action) : METHODS(
                                                         {
                                                             this->GET,this->POST
-                                                        };
-
-    private: const std::string METHOD = "METHOD=\"";
-
-    private: std::string method;
-
-    private: std::string action;
-
-    BasicArrayList* inputs;
-
-public: HtmlForm(std::string action){
+                                                        }){
 this->action= action;
     
 this->inputs= new BasicArrayListD();
@@ -102,31 +87,31 @@ this->inputs= new BasicArrayListD();
 }
 
 
-    public: void setPost(){
+    auto HtmlForm::setPost() -> void{
 this->method= this->POST;
     
 }
 
 
-    public: void setGet(){
+    auto HtmlForm::setGet() -> void{
 this->method= this->GET;
     
 }
 
 
-    public: void addInput(HtmlInput* htmlInput){
+    auto HtmlForm::addInput(HtmlInput* htmlInput) -> void{
 this->inputs->add(htmlInput);
     
 }
 
 
-    public: void addTable(HtmlTable* htmlTable){
+    auto HtmlForm::addTable(HtmlTable* htmlTable) -> void{
 this->inputs->add(htmlTable);
     
 }
 
 
-    public: std::string toString(){
+    auto HtmlForm::toString() -> std::string{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -162,7 +147,7 @@ result += this->END;
                         for (
     int32_t i = 0;i < inputSize; i++)
         {
-result += inputArray[i].toString();
+result += inputArray[i]->toString();
     
 result += " ";
     
@@ -179,7 +164,6 @@ result += this->FORMEND;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLFORM_CPP

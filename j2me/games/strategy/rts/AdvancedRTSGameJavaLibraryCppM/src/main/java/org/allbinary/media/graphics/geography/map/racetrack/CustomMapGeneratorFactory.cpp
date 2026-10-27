@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,13 @@
 #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBase.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
-class CustomMapGeneratorFactory: public CustomMapGeneratorBaseFactory {
 
+CustomMapGeneratorFactory::CustomMapGeneratorFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: CustomMapGeneratorBase* create(RaceTrackGeographicMap* raceTrackGeographicMap){
+    auto CustomMapGeneratorFactory::create(RaceTrackGeographicMap* raceTrackGeographicMap) -> CustomMapGeneratorBase*{
 
 
 
@@ -63,7 +75,6 @@ class CustomMapGeneratorFactory: public CustomMapGeneratorBaseFactory {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORFACTORY_CPP

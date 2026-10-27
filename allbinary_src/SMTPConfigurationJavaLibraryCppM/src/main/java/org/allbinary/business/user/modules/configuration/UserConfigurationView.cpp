@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,13 +93,8 @@
 #include "org/allbinary/business/user/modules/configuration/UserConfiguration.h"
 #include "org/allbinary/business/user/modules/configuration/UserConfigurationData.h"
 
-class UserConfigurationView
-            : public Object
-        , public DomNodeInterface {
 
-    private: UserConfigurationInterface* userConfigurationInterface;
-
-public: UserConfigurationView(Node* node){
+UserConfigurationView::UserConfigurationView(Node* node){
 this->userConfigurationInterface= dynamic_cast<UserConfigurationInterface*>(new UserConfiguration());
     
 
@@ -125,13 +130,13 @@ this->userConfigurationInterface->setTimeLastModified(timeLastModifiedView->getT
 }
 
 
-public: UserConfigurationView(UserConfigurationInterface* userConfigurationInterface){
+UserConfigurationView::UserConfigurationView(UserConfigurationInterface* userConfigurationInterface){
 this->userConfigurationInterface= userConfigurationInterface;
     
 }
 
 
-    public: UserConfigurationInterface* getUserConfigurationInterface(){
+    auto UserConfigurationView::getUserConfigurationInterface() -> UserConfigurationInterface*{
 
 
 
@@ -143,7 +148,7 @@ this->userConfigurationInterface= userConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto UserConfigurationView::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(UserConfigurationData::NAME);;
     
@@ -171,7 +176,6 @@ node->appendChild(timeLastModifiedView->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONVIEW_CPP

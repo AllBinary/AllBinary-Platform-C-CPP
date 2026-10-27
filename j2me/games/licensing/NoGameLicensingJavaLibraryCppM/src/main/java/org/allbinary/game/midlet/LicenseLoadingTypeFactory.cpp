@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/LicenseLoadingTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,31 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/midlet/LicenseLoadingType.h"
 
-class LicenseLoadingTypeFactory
-            : public Object
-         {
 
-    private: static LicenseLoadingTypeFactory* instance() { static std::unique_ptr<LicenseLoadingTypeFactory> value(new LicenseLoadingTypeFactory()); return value.get(); }
+LicenseLoadingTypeFactory::LicenseLoadingTypeFactory() : INITIAL_LOADING(new LicenseLoadingType("Initial Loading")), GAME_START(new LicenseLoadingType("Game Start")), LOGIN(new LicenseLoadingType("Login")), OTHER(new LicenseLoadingType("Other/Usually The First Non Demo Level")) {
+        }
+        auto LicenseLoadingTypeFactory::instance_owner() -> LicenseLoadingTypeFactory* { static std::unique_ptr<LicenseLoadingTypeFactory> value(new LicenseLoadingTypeFactory()); return value.get(); }
+LicenseLoadingTypeFactory* LicenseLoadingTypeFactory::instance = LicenseLoadingTypeFactory::instance_owner();
 
-    public: static LicenseLoadingTypeFactory* getIntance(){
+    auto LicenseLoadingTypeFactory::getIntance() -> LicenseLoadingTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseLoadingTypeFactory::instance();
+                        return LicenseLoadingTypeFactory::instance;
     
 }
 
 
-    public: LicenseLoadingType* INITIAL_LOADING = new LicenseLoadingType("Initial Loading");
 
-    public: LicenseLoadingType* GAME_START = new LicenseLoadingType("Game Start");
 
-    public: LicenseLoadingType* LOGIN = new LicenseLoadingType("Login");
-
-    public: LicenseLoadingType* OTHER = new LicenseLoadingType("Other/Usually The First Non Demo Level");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPEFACTORY_CPP

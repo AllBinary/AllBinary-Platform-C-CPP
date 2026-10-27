@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/data/TransformDocumentFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,14 @@
         #include "org/allbinary/logic/visual/transform/data/TransformDocument.h"
 #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
-class TransformDocumentFactory
-            : public Object
-         {
+
+TransformDocumentFactory::TransformDocumentFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface* getInstance(){
+    auto TransformDocumentFactory::getInstance() -> TransformDocumentInterface*{
 
 
 
@@ -65,11 +76,6 @@ class TransformDocumentFactory
 }
 
 
-private: TransformDocumentFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_CPP

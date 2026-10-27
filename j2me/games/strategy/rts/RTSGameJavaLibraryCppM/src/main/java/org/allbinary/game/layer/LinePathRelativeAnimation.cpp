@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LinePathRelativeAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,27 +63,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/LinePathAnimation.h"
 
-class LinePathRelativeAnimation: public LinePathAnimation {
 
-    private: static LinePathRelativeAnimation* instanceC() { static std::unique_ptr<LinePathRelativeAnimation> value(new LinePathRelativeAnimation()); return value.get(); }
+LinePathRelativeAnimation::LinePathRelativeAnimation() {
+        }
+        auto LinePathRelativeAnimation::instanceC_owner() -> LinePathRelativeAnimation* { static std::unique_ptr<LinePathRelativeAnimation> value(new LinePathRelativeAnimation()); return value.get(); }
+LinePathRelativeAnimation* LinePathRelativeAnimation::instanceC = LinePathRelativeAnimation::instanceC_owner();
 
-    public: static LinePathAnimation* getInstance(){
+    auto LinePathRelativeAnimation::getInstance() -> LinePathAnimation*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinePathRelativeAnimation::instanceC();
+                        return LinePathRelativeAnimation::instanceC;
     
 }
 
 
-    public: void paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer){
+    auto LinePathRelativeAnimation::paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer) -> void{
 graphics->drawLine(nextPoint->getX() -tiledLayer->getXP(), nextPoint->getY() -tiledLayer->getYP(), point->getX() -tiledLayer->getXP(), point->getY() -tiledLayer->getYP());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_LINEPATHRELATIVEANIMATION_CPP

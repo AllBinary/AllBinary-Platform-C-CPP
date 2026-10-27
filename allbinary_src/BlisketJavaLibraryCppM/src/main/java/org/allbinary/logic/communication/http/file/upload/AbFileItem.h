@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,47 +41,19 @@
             #include "java/lang/RuntimeException.h"
         
 #include <java/io/File.h>
-
-      
 #include <java/io/IOException.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
 #include <java/io/OutputStream.h>
-
-      
 #include <java/io/UnsupportedEncodingException.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ForcedLogUtil;
+class LogUtil;
+class AbFile;
+class StringUtil;
+class StringValidationUtil;
+class CommonStrings;
 #include <org/apache/commons/fileupload/FileItem.h>
-
-      
-#include <org/apache/commons/fileupload/FileItemHeaders.h>
-
-      
-#include <org/apache/commons/fileupload/FileItemUtil.h>
-
-      
+class FileItemHeaders;
+class FileItemUtil;
 
 
 
@@ -96,13 +73,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbFileItem
-            : public Object
+            : public virtual Object
         , public FileItem {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     private: std::string name;
 
@@ -164,3 +145,52 @@ public: AbFileItem(std::string name, std::string fieldName, std::vector<int8_t> 
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_H_COMPLETE
+        #if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<java/io/OutputStream.h>)
+#include <java/io/OutputStream.h>
+#endif
+#if __has_include(<java/io/UnsupportedEncodingException.h>)
+#include <java/io/UnsupportedEncodingException.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/apache/commons/fileupload/FileItem.h>)
+#include <org/apache/commons/fileupload/FileItem.h>
+#endif
+#if __has_include(<org/apache/commons/fileupload/FileItemHeaders.h>)
+#include <org/apache/commons/fileupload/FileItemHeaders.h>
+#endif
+#if __has_include(<org/apache/commons/fileupload/FileItemUtil.h>)
+#include <org/apache/commons/fileupload/FileItemUtil.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/ItemView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,15 +89,8 @@
 #include "org/allbinary/business/user/commerce/inventory/item/ItemData.h"
 #include "org/allbinary/business/user/commerce/inventory/item/BasicItemView.h"
 
-class ItemView
-            : public Object
-         {
 
-    private: OrderItemInterface* itemInterface;
-
-    private: BasicArrayList* vector;
-
-public: ItemView(OrderItemInterface* itemInterface, BasicArrayList* vector){
+ItemView::ItemView(OrderItemInterface* itemInterface, BasicArrayList* vector){
 this->itemInterface= itemInterface;
     
 this->vector= vector;
@@ -97,7 +100,7 @@ this->vector= vector;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ItemView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->itemInterface->toHashMap();;
     
@@ -154,7 +157,6 @@ shippingAddressNode->appendChild(this->itemInterface->getShippingAddress()->toXm
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMVIEW_CPP

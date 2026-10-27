@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/ViewPositionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +58,11 @@
 #include "org/allbinary/view/ViewPosition.h"
 #include "org/allbinary/view/ViewPositionBase.h"
 
-class ViewPositionFactory
-            : public Object
-        , public ViewPositionFactoryInterface {
 
-    public: ViewPositionBase* getInstance(){
+ViewPositionFactory::ViewPositionFactory() {
+        }
+        
+    auto ViewPositionFactory::getInstance() -> ViewPositionBase*{
 
 
 
@@ -62,7 +72,6 @@ class ViewPositionFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_CPP

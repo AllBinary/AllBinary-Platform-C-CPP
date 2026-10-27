@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGS_CATEGORYTAG_H
         #define ADMIN_TAGS_CATEGORYTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,32 +39,14 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <admin/taghelpers/CategoryHelperFactory.h>
-
-      
-#include <admin/taghelpers/CategoryRequestHelperFactory.h>
-
-      
-#include <org/allbinary/business/category/CategoryData.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
-
-      
+class JspTagException;
+class CategoryHelperFactory;
+class CategoryRequestHelperFactory;
+class CategoryData;
+class AbResponseHandler;
+class LogUtil;
+class LicensingException;
+class TransformInfoData;
 
 
 
@@ -80,9 +67,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoryTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string xsl;
 
@@ -108,3 +99,40 @@ public: CategoryTag();
 
 
         #endif //ADMIN_TAGS_CATEGORYTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGS_CATEGORYTAG_H_COMPLETE)
+        #define ADMIN_TAGS_CATEGORYTAG_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<admin/taghelpers/CategoryHelperFactory.h>)
+#include <admin/taghelpers/CategoryHelperFactory.h>
+#endif
+#if __has_include(<admin/taghelpers/CategoryRequestHelperFactory.h>)
+#include <admin/taghelpers/CategoryRequestHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryData.h>)
+#include <org/allbinary/business/category/CategoryData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoData.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
+#endif
+#if __has_include("admin/tags/TableTag.h")
+#include "admin/tags/TableTag.h"
+#endif
+
+        #endif
+    

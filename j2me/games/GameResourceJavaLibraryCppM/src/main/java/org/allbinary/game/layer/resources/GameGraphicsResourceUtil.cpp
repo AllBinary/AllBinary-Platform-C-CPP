@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_GAMEGRAPHICSRESOURCEUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_GAMEGRAPHICSRESOURCEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/resources/GameGraphicsResourceUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,13 +87,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameGraphicsResourceUtil
-            : public Object
-         {
+Object* GameGraphicsResourceUtil::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameGraphicsResourceUtil* getInstance(){
+    auto GameGraphicsResourceUtil::getInstance() -> GameGraphicsResourceUtil*{
 
                         if(GameGraphicsResourceUtil::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -102,15 +108,7 @@ class GameGraphicsResourceUtil
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const std::string SPRITE = "_sprite";
-
-    public: const std::string QUARTER = "_quarter";
-
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-public: GameGraphicsResourceUtil(){
+GameGraphicsResourceUtil::GameGraphicsResourceUtil() : logUtil(LogUtil::getInstance()), name(StringUtil::getInstance()->EMPTY_STRING){
 
         try {
             this->name= this->getString();
@@ -131,7 +129,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 
                 //@Throws(Exception.constructor)
             
-    private: std::string getString(){
+    auto GameGraphicsResourceUtil::getString() -> std::string{
 
     GraphicsFeatureFactory* graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
     
@@ -188,14 +186,14 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getStringForFeature(GraphicsFeature* graphicsFeature){
+    auto GameGraphicsResourceUtil::getStringForFeature(GraphicsFeature* graphicsFeature) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
 
     GraphicsFeatureFactory* graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 
     Features* features = Features::getInstance();;
@@ -242,7 +240,7 @@ stringBuffer->append(this->SPRITE);
                             
 
 
-                            throw new Exception("None/Unknown Sub Image Resource Type Specified");
+                            throw Exception("None/Unknown Sub Image Resource Type Specified");
                     
 
                         }
@@ -263,7 +261,7 @@ stringBuffer->append(this->SPRITE);
                             
 
 
-                            throw new Exception("None/Unknown Main Image Resource Type Specified");
+                            throw Exception("None/Unknown Main Image Resource Type Specified");
                     
 
                         }
@@ -277,7 +275,7 @@ stringBuffer->append(this->SPRITE);
 }
 
 
-    public: std::string getName(){
+    auto GameGraphicsResourceUtil::getName() -> std::string{
 
 
 
@@ -287,7 +285,6 @@ stringBuffer->append(this->SPRITE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RESOURCES_GAMEGRAPHICSRESOURCEUTIL_CPP

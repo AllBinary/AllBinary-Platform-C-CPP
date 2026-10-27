@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageCreationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,29 +63,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageCreationUtil
-            : public Object
-         {
+auto ImageCreationUtil::instance_owner() -> ImageCreationUtil* { static std::unique_ptr<ImageCreationUtil> value(new ImageCreationUtil()); return value.get(); }
+ImageCreationUtil* ImageCreationUtil::instance = ImageCreationUtil::instance_owner();
 
-    private: static ImageCreationUtil* instance() { static std::unique_ptr<ImageCreationUtil> value(new ImageCreationUtil()); return value.get(); }
-
-    public: static ImageCreationUtil* getInstance(){
+    auto ImageCreationUtil::getInstance() -> ImageCreationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCreationUtil::instance();
+                        return ImageCreationUtil::instance;
     
 }
 
 
-private: ImageCreationUtil(){
+ImageCreationUtil::ImageCreationUtil(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageWH(int32_t width, int32_t height){
+    auto ImageCreationUtil::createImageWH(int32_t width, int32_t height) -> Image*{
 
     Image* image = GameFeatureImageCacheFactory::getInstance()->get(this->getClass()->getName(), width, height);;
     
@@ -90,7 +97,7 @@ private: ImageCreationUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY){
+    auto ImageCreationUtil::createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY) -> Image*{
 
     Image* image = GameFeatureImageCacheFactory::getInstance()->get(this->getClass()->getName(), static_cast<int32_t>((width *maxScaleX)) +1, static_cast<int32_t>((height *maxScaleY)) +1);;
     
@@ -103,7 +110,6 @@ private: ImageCreationUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_CPP

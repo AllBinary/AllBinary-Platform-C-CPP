@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_FEDEXSHIPPINGMODULE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_FEDEXSHIPPINGMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/modules/FedExShippingModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,19 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
-class FedExShippingModule
-            : public Object
-        , public ShippingInterface {
 
-    private: const std::string name = "FedEx";
-
-    private: const std::string description = "Fast Mail";
-
-public: FedExShippingModule(){
+FedExShippingModule::FedExShippingModule(){
 }
 
 
-    public: Money* getCost(OrderInterface* order){
+    auto FedExShippingModule::getCost(OrderInterface* order) -> Money*{
 
 
 
@@ -74,7 +77,7 @@ public: FedExShippingModule(){
 }
 
 
-    public: std::string getDescription(){
+    auto FedExShippingModule::getDescription() -> std::string{
 
 
 
@@ -84,7 +87,7 @@ public: FedExShippingModule(){
 }
 
 
-    public: std::string getName(){
+    auto FedExShippingModule::getName() -> std::string{
 
 
 
@@ -94,7 +97,6 @@ public: FedExShippingModule(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_FEDEXSHIPPINGMODULE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/address/StreetAddressesEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -95,13 +105,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/address/StreetAddressesEntityInterface.h"
 
-class StreetAddressesEntity: public AbSqlBean, public StreetAddressesEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string userName;
-
-public: StreetAddressesEntity() : AbSqlBean(new UserDbInitInfo()){
+StreetAddressesEntity::StreetAddressesEntity() : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -111,7 +116,7 @@ public: StreetAddressesEntity() : AbSqlBean(new UserDbInitInfo()){
 }
 
 
-public: StreetAddressesEntity(std::string userName) : AbSqlBean(new UserDbInitInfo()){
+StreetAddressesEntity::StreetAddressesEntity(std::string userName) : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -123,7 +128,7 @@ this->userName= userName;
 }
 
 
-    public: void remove(int32_t index){
+    auto StreetAddressesEntity::remove(int32_t index) -> void{
 
         try {
             
@@ -133,13 +138,13 @@ whereHashMap->put(UserData::USERNAME, this->userName);
     
 whereHashMap->put(StreetAddressData::ID, std::to_string(index));
     
-super.deleteWhere(whereHashMap);
+AbSqlBean::deleteWhere(whereHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "remove");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "remove");
     
 
                                     }
@@ -149,10 +154,10 @@ super.deleteWhere(whereHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "remove", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "remove", &e);
     
 
                                     }
@@ -162,13 +167,13 @@ super.deleteWhere(whereHashMap);
 }
 
 
-    public: void add(StreetAddress* address){
+    auto StreetAddressesEntity::add(StreetAddress* address) -> void{
 this->add(address, TableDataFactory::getInstance()->INTEGER_MAX_VALUE_STRING);
     
 }
 
 
-    private: void add(StreetAddress* address, std::string index){
+    auto StreetAddressesEntity::add(StreetAddress* address, std::string index) -> void{
 
         try {
             
@@ -200,15 +205,15 @@ values->add(address->getCountry());
     
 values->add(time);
     
-super.insert(values);
+AbSqlBean::insert(values);
     
 this->setDefault(getLastId());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "add");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "add");
     
 
                                     }
@@ -218,10 +223,10 @@ this->setDefault(getLastId());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "add", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "add", &e);
     
 
                                     }
@@ -231,7 +236,7 @@ this->setDefault(getLastId());
 }
 
 
-    public: void update(StreetAddress* address){
+    auto StreetAddressesEntity::update(StreetAddress* address) -> void{
 
         try {
             
@@ -244,15 +249,15 @@ whereKeyValuePairs->put(StreetAddressData::ID, address->getId());
     
 whereKeyValuePairs->put(UserData::USERNAME, this->userName);
     
-super.updateWhere(whereKeyValuePairs, addressHashMap);
+AbSqlBean::updateWhere(whereKeyValuePairs, addressHashMap);
     
 this->setDefault(address->getId());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "update");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "update");
     
 
                                     }
@@ -262,10 +267,10 @@ this->setDefault(address->getId());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "add", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "add", &e);
     
 
                                     }
@@ -275,17 +280,17 @@ this->setDefault(address->getId());
 }
 
 
-    public: std::string getLastId(){
+    auto StreetAddressesEntity::getLastId() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getLargestIntegerInColumnWhere(StreetAddressData::ID, UserData::USERNAME, userName);;
+                        return AbSqlBean::getLargestIntegerInColumnWhere(StreetAddressData::ID, UserData::USERNAME, userName);;
     
 }
 
 
-    public: BasicArrayList* get(){
+    auto StreetAddressesEntity::get() -> BasicArrayList*{
 
         try {
             
@@ -297,7 +302,7 @@ this->setDefault(address->getId());
 keyAndValue->put(UserData::USERNAME, this->userName);
     
 
-    BasicArrayList* addressList = super.getRows(keyAndValue);;
+    BasicArrayList* addressList = AbSqlBean::getRows(keyAndValue);;
     
 
     int32_t size = addressList->size();;
@@ -339,10 +344,10 @@ keyAndValue->put(UserData::USERNAME, this->userName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -358,7 +363,7 @@ keyAndValue->put(UserData::USERNAME, this->userName);
 }
 
 
-    public: StreetAddress* get(int32_t index){
+    auto StreetAddressesEntity::get(int32_t index) -> StreetAddress*{
 
         try {
             
@@ -369,7 +374,7 @@ keyAndValue->put(UserData::USERNAME, this->userName);
 keyAndValue->put(StreetAddressData::ID, std::to_string(index));
     
 
-    HashMap<Object*, Object*>* addressHashMap = super.getRow(keyAndValue);;
+    HashMap<Object*, Object*>* addressHashMap = AbSqlBean::getRow(keyAndValue);;
     
 
                         if(addressHashMap != 
@@ -401,10 +406,10 @@ keyAndValue->put(StreetAddressData::ID, std::to_string(index));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -420,7 +425,7 @@ keyAndValue->put(StreetAddressData::ID, std::to_string(index));
 }
 
 
-    public: StreetAddress* getDefault(){
+    auto StreetAddressesEntity::getDefault() -> StreetAddress*{
 
         try {
             
@@ -433,7 +438,7 @@ updateKeyAndValue->put(StreetAddressData::DEFAULT, StreetAddressData::DEFAULT);
     
 updateKeyAndValue->put(UserData::USERNAME, this->userName);
     
-addressHashMap= super.getRow(updateKeyAndValue);
+addressHashMap= AbSqlBean::getRow(updateKeyAndValue);
     
 
                         if(addressHashMap != 
@@ -445,10 +450,10 @@ addressHashMap= super.getRow(updateKeyAndValue);
     StreetAddress* streetAddress = new StreetAddress(addressHashMap);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "getDefault");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "getDefault");
     
 
                                     }
@@ -464,7 +469,7 @@ addressHashMap= super.getRow(updateKeyAndValue);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->putF("No Default Address Found", this, "getDefault");
@@ -486,10 +491,10 @@ addressHashMap= super.getRow(updateKeyAndValue);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "getDefault", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "getDefault", &e);
     
 
                                     }
@@ -505,7 +510,7 @@ addressHashMap= super.getRow(updateKeyAndValue);
 }
 
 
-    public: void setDefault(std::string value){
+    auto StreetAddressesEntity::setDefault(std::string value) -> void{
 
         try {
             
@@ -529,7 +534,7 @@ whereKeyAndValue->put(UserData::USERNAME, this->userName);
     
 whereKeyAndValue->put(StreetAddressData::ID, streetAddress->getId());
     
-super.updateWhere(whereKeyAndValue, updateKeyAndValue);
+AbSqlBean::updateWhere(whereKeyAndValue, updateKeyAndValue);
     
 
                                     }
@@ -538,13 +543,13 @@ whereKeyAndValue->put(StreetAddressData::ID, value);
     
 updateKeyAndValue->put(StreetAddressData::DEFAULT, StreetAddressData::DEFAULT);
     
-super.updateWhere(whereKeyAndValue, updateKeyAndValue);
+AbSqlBean::updateWhere(whereKeyAndValue, updateKeyAndValue);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "setDefault");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "setDefault");
     
 
                                     }
@@ -554,10 +559,10 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "setShippingAddress", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "setShippingAddress", &e);
     
 
                                     }
@@ -567,7 +572,7 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
 }
 
 
-    protected: std::string getUserName(){
+    auto StreetAddressesEntity::getUserName() -> std::string{
 
 
 
@@ -577,11 +582,11 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
 }
 
 
-    public: std::string createTableStatement(){
+    auto StreetAddressesEntity::createTableStatement() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(this->getTableName())->append(this->sqlStrings.START)->append(StreetAddressData::ID)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL)->append(UserData::USERNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(StreetAddressData::DEFAULT)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(StreetAddressData::NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(StreetAddressData::STREET)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(StreetAddressData::CITY)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(StreetAddressData::STATE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(StreetAddressData::CODE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(StreetAddressData::COUNTRY)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(StreetAddressData::ID)->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(this->getTableName())->append(this->sqlStrings->START)->append(StreetAddressData::ID)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL)->append(UserData::USERNAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(StreetAddressData::DEFAULT)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(StreetAddressData::NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(StreetAddressData::STREET)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(StreetAddressData::CITY)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(StreetAddressData::STATE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(StreetAddressData::CODE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(StreetAddressData::COUNTRY)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(StreetAddressData::ID)->append(this->sqlStrings->END);
     
 
 
@@ -592,27 +597,26 @@ stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(this->getTableName()
 }
 
 
-    public: std::string createTable(){
+    auto StreetAddressesEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-    public: std::string drop(){
+    auto StreetAddressesEntity::drop() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITY_CPP

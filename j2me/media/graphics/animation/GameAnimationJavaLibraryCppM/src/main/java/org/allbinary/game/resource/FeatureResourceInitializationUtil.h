@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_FEATURERESOURCEINITIALIZATIONUTIL_H
         #define ORG_ALLBINARY_GAME_RESOURCE_FEATURERESOURCEINITIALIZATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class FeaturedAnimationInterfaceFactoryInterfaceFactory;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -58,18 +57,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/resource/FeaturedResourceFactory.h"
-#include "org/allbinary/game/resource/FeaturedResourceRelativeRelationshipFactory.h"
+        class FeaturedResourceFactory;
+class FeaturedResourceRelativeRelationshipFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FeatureResourceInitializationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static FeatureResourceInitializationUtil* instance() { static std::unique_ptr<FeatureResourceInitializationUtil> value(new FeatureResourceInitializationUtil()); return value.get(); }
+    private: static FeatureResourceInitializationUtil* instance_owner();
+    private: static FeatureResourceInitializationUtil* instance;
 
     public: static FeatureResourceInitializationUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: FeatureResourceInitializationUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -81,3 +89,25 @@ class FeatureResourceInitializationUtil
 
 
         #endif //ORG_ALLBINARY_GAME_RESOURCE_FEATURERESOURCEINITIALIZATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RESOURCE_FEATURERESOURCEINITIALIZATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RESOURCE_FEATURERESOURCEINITIALIZATIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>)
+#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/resource/FeaturedResourceFactory.h")
+#include "org/allbinary/game/resource/FeaturedResourceFactory.h"
+#endif
+#if __has_include("org/allbinary/game/resource/FeaturedResourceRelativeRelationshipFactory.h")
+#include "org/allbinary/game/resource/FeaturedResourceRelativeRelationshipFactory.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_TESTREMOTEHIGHSCORESNOTFINISHED_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_TESTREMOTEHIGHSCORESNOTFINISHED_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,8 +57,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TestRemoteHighScoresNotFinished
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
@@ -70,3 +79,10 @@ public: TestRemoteHighScoresNotFinished();
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_TESTREMOTEHIGHSCORESNOTFINISHED_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_REMOTE_TESTREMOTEHIGHSCORESNOTFINISHED_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_TESTREMOTEHIGHSCORESNOTFINISHED_H_COMPLETE
+        
+        #endif
+    

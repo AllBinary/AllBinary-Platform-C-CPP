@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/CanvasUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CanvasUtil
-            : public Object
-         {
 
-    public: static std::string getKeyName(int32_t key){
+CanvasUtil::CanvasUtil(){
+}
+
+
+    auto CanvasUtil::getKeyName(int32_t key) -> std::string{
 
     CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
@@ -133,11 +144,6 @@ class CanvasUtil
 }
 
 
-private: CanvasUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_CPP

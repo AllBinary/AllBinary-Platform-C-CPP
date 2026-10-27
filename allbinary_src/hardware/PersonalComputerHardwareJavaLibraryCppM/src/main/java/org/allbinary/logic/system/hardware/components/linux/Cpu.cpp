@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPU_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPU_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/linux/Cpu.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -99,25 +109,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/hardware/components/linux/CpuInfo.h"
 
-class Cpu
-            : public Object
-        , public CpuInterface, public HardwareComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string CPUFILE = "/proc/cpuinfo";
-
-    private: HashMap<Object*, Object*>* cpuHashMap;
-
-public: Cpu(std::string filePath){
+Cpu::Cpu(std::string filePath) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->init(filePath);
     
 }
 
 
-public: Cpu(){
+Cpu::Cpu() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->init(this->CPUFILE);
     
 }
@@ -125,7 +124,7 @@ this->init(this->CPUFILE);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(std::string filePath){
+    auto Cpu::init(std::string filePath) -> void{
 
     LineNumberReader* lineNumberReader = 
                 null
@@ -140,7 +139,7 @@ this->init(this->CPUFILE);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
                                     this->logUtil->put((new StringMaker())->append("Cpu Data: ")->append(this->toString())->toString(), this, this->commonStrings->CONSTRUCTOR, &e);
@@ -160,7 +159,7 @@ this->init(this->CPUFILE);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(LineNumberReader* lineNumberReader, std::string filePath){
+    auto Cpu::init(LineNumberReader* lineNumberReader, std::string filePath) -> void{
 
         try {
             
@@ -180,7 +179,7 @@ this->cpuHashMap= StdUtil::getInstance()->createHashMap();
     BasicArrayList* fileVector = SubDirectory::getInstance()->search(filePath, AbFile::createAbFile(FilePathData::getInstance()->PATH_START));;
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append("Cpu File BasicArrayList Size: ")->appendint(fileVector->size())->toString(), this, this->commonStrings->CONSTRUCTOR);
@@ -234,35 +233,35 @@ lineNumberReader= new LineNumberReader(new FileReader(file->getPath()));
     std::string value = JavaString::substring(nextLine, valueIndex, nextLine.size());;
     
 
-                        if(JavaString::indexOf(key, CpuInfo::PROCESSOR.toString()) >= 0)
+                        if(JavaString::indexOf(key, CpuInfo::PROCESSOR->toString()) >= 0)
                         this->cpuHashMap->put(CpuInfo::PROCESSOR, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::VENDORID.toString()) >= 0)
+                        if(JavaString::indexOf(key, CpuInfo::VENDORID->toString()) >= 0)
                         this->cpuHashMap->put(CpuInfo::VENDORID, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::CPUFAMILY.toString()) >= 0)
+                        if(JavaString::indexOf(key, CpuInfo::CPUFAMILY->toString()) >= 0)
                         this->cpuHashMap->put(CpuInfo::CPUFAMILY, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::MODEL.toString()) >= 0)
+                        if(JavaString::indexOf(key, CpuInfo::MODEL->toString()) >= 0)
                         this->cpuHashMap->put(CpuInfo::MODEL, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::MODELNAME.toString()) >= 0)
+                        if(JavaString::indexOf(key, CpuInfo::MODELNAME->toString()) >= 0)
                         this->cpuHashMap->put(CpuInfo::MODELNAME, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::STEPPING.toString()) >= 0)
+                        if(JavaString::indexOf(key, CpuInfo::STEPPING->toString()) >= 0)
                         this->cpuHashMap->put(CpuInfo::STEPPING, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::CPUMHZ.toString()) >= 0)
+                        if(JavaString::indexOf(key, CpuInfo::CPUMHZ->toString()) >= 0)
                         this->cpuHashMap->put(CpuInfo::CPUMHZ, value);
                                 
 
-                        if(JavaString::indexOf(key, CpuInfo::CACHESIZE.toString()) >= 0)
+                        if(JavaString::indexOf(key, CpuInfo::CACHESIZE->toString()) >= 0)
                         this->cpuHashMap->put(CpuInfo::CACHESIZE, value);
                                 
 
@@ -289,7 +288,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string getProcessor(){
+    auto Cpu::getProcessor() -> std::string{
 
 
 
@@ -299,7 +298,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string getVendorId(){
+    auto Cpu::getVendorId() -> std::string{
 
 
 
@@ -309,7 +308,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string getCpuFamily(){
+    auto Cpu::getCpuFamily() -> std::string{
 
 
 
@@ -319,7 +318,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string getModel(){
+    auto Cpu::getModel() -> std::string{
 
 
 
@@ -329,7 +328,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string getModelName(){
+    auto Cpu::getModelName() -> std::string{
 
 
 
@@ -339,7 +338,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string getStepping(){
+    auto Cpu::getStepping() -> std::string{
 
 
 
@@ -349,7 +348,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string getCpuSpeed(){
+    auto Cpu::getCpuSpeed() -> std::string{
 
 
 
@@ -359,7 +358,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string getCacheSize(){
+    auto Cpu::getCacheSize() -> std::string{
 
 
 
@@ -369,7 +368,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: bool compareTo(CpuInterface* cpuInterface){
+    auto Cpu::compareTo(CpuInterface* cpuInterface) -> bool{
 
 
 
@@ -379,7 +378,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: bool compareTo(HardwareComponentInterface* componentInterface){
+    auto Cpu::compareTo(HardwareComponentInterface* componentInterface) -> bool{
 
 
 
@@ -389,7 +388,7 @@ nextLine= lineNumberReader->readLine();
 }
 
 
-    public: std::string toString(){
+    auto Cpu::toString() -> std::string{
 
     CommonLabels* commonLabels = CommonLabels::getInstance();;
     
@@ -399,35 +398,35 @@ nextLine= lineNumberReader->readLine();
 
     StringMaker* stringMaker = new StringMaker();;
     
-stringMaker->append(CpuInfo::PROCESSOR.toString())->append(commonLabels->COLON_SEP)->append(this->getProcessor());
+stringMaker->append(CpuInfo::PROCESSOR->toString())->append(commonLabels->COLON_SEP)->append(this->getProcessor());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::VENDORID.toString())->append(commonLabels->COLON_SEP)->append(this->getVendorId());
+stringMaker->append(CpuInfo::VENDORID->toString())->append(commonLabels->COLON_SEP)->append(this->getVendorId());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::CPUFAMILY.toString())->append(commonLabels->COLON_SEP)->append(this->getCpuFamily());
+stringMaker->append(CpuInfo::CPUFAMILY->toString())->append(commonLabels->COLON_SEP)->append(this->getCpuFamily());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::MODEL.toString())->append(commonLabels->COLON_SEP)->append(this->getModel());
+stringMaker->append(CpuInfo::MODEL->toString())->append(commonLabels->COLON_SEP)->append(this->getModel());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::MODELNAME.toString())->append(commonLabels->COLON_SEP)->append(this->getModelName());
+stringMaker->append(CpuInfo::MODELNAME->toString())->append(commonLabels->COLON_SEP)->append(this->getModelName());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::STEPPING.toString())->append(commonLabels->COLON_SEP)->append(this->getStepping());
+stringMaker->append(CpuInfo::STEPPING->toString())->append(commonLabels->COLON_SEP)->append(this->getStepping());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::CPUMHZ.toString())->append(commonLabels->COLON_SEP)->append(this->getCpuSpeed());
+stringMaker->append(CpuInfo::CPUMHZ->toString())->append(commonLabels->COLON_SEP)->append(this->getCpuSpeed());
     
 stringMaker->append(commonSeps->NEW_LINE);
     
-stringMaker->append(CpuInfo::CACHESIZE.toString())->append(commonLabels->COLON_SEP)->append(this->getCacheSize());
+stringMaker->append(CpuInfo::CACHESIZE->toString())->append(commonLabels->COLON_SEP)->append(this->getCacheSize());
     
 
 
@@ -438,7 +437,6 @@ stringMaker->append(CpuInfo::CACHESIZE.toString())->append(commonLabels->COLON_S
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPU_CPP

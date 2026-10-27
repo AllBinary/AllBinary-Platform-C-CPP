@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,110 +41,40 @@
             #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <org/allbinary/business/context/configuration/ContextConfiguration.h>
-
-      
-#include <org/allbinary/business/context/configuration/ContextConfigurationDomDocumentMapping.h>
-
-      
-#include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
-
-      
-#include <org/allbinary/business/context/configuration/ContextConfigurationInterfaceFactory.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/user/UserData.h>
-
-      
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
-
-      
-#include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
-
-      
-#include <org/allbinary/globals/URLGLOBALS.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/RequestParams.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/FileUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/directory/Directory.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathUtil.h>
-
-      
-#include <org/allbinary/logic/string/SpecialCharacterUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/logic/string/regex/replace/Replace.h>
-
-      
-#include <org/allbinary/logic/string/tokens/Tokenizer.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/apache/commons/lang3/StringEscapeUtils.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class HttpServletRequest;
+class ContextConfiguration;
+class ContextConfigurationDomDocumentMapping;
+class ContextConfigurationInterface;
+class ContextConfigurationInterfaceFactory;
+class EntryData;
+class UserData;
+class DomDocumentHelper;
+class FREEBLISKET_PATH_GLOBALS;
+class URLGLOBALS;
+class StdUtil;
+class RequestParams;
+class LogUtil;
+class AbFile;
+class FileUtil;
+class Directory;
+class AbPath;
+class AbPathData;
+class AbPathUtil;
+class SpecialCharacterUtil;
+class StringMaker;
+class StringUtil;
+class StringValidationUtil;
+class Replace;
+class Tokenizer;
+class CommonSeps;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
+class StringEscapeUtils;
+class Document;
 
 
 
@@ -159,79 +94,83 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/context/modules/storefront/StoreFrontInterface.h"
-#include "org/allbinary/business/context/modules/storefront/StoreFrontData.h"
+class StoreFrontData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreFront
-            : public Object
+            : public virtual Object
         , public StoreFrontInterface {
 
-    private: static inline const std::string RESOURCES = " Resources" +AbPathData::getInstance()->SEPARATOR;
+    private: static const std::string RESOURCES;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: Directory* directory = Directory::getInstance();
+    private: Directory* directory;
 
-    private: StringUtil* stringUtil = StringUtil::getInstance();
+    private: StringUtil* stringUtil;
 
-    private: AbPathUtil* abPathUtil = AbPathUtil::getInstance();
+    private: AbPathUtil* abPathUtil;
 
-    private: std::string name = this->stringUtil->EMPTY_STRING;
+    private: std::string name;
 
-    private: std::string basketName = this->stringUtil->EMPTY_STRING;
+    private: std::string basketName;
 
-    private: std::string homeHostName = this->stringUtil->EMPTY_STRING;
+    private: std::string homeHostName;
 
-    private: AbPath* homeHostNamePath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* homeHostNamePath;
 
-    private: std::string hostName = this->stringUtil->EMPTY_STRING;
+    private: std::string hostName;
 
-    private: AbPath* hostNamePath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* hostNamePath;
 
-    private: std::string testHomeHostName = this->stringUtil->EMPTY_STRING;
+    private: std::string testHomeHostName;
 
-    private: AbPath* testHomeHostNamePath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* testHomeHostNamePath;
 
-    private: std::string testHostName = this->stringUtil->EMPTY_STRING;
+    private: std::string testHostName;
 
-    private: AbPath* testHostNamePath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* testHostNamePath;
 
-    private: AbPath* imagePath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* imagePath;
 
-    private: AbPath* staticPath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* staticPath;
 
-    private: AbPath* categoryPath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* categoryPath;
 
-    private: std::string inventoryControl = this->stringUtil->EMPTY_STRING;
+    private: std::string inventoryControl;
 
     private: ContextConfigurationInterface* contextConfigurationInterface;
 
-    private: std::string subStores = this->stringUtil->EMPTY_STRING;
+    private: std::string subStores;
 
-    private: std::string tagLocation = this->stringUtil->EMPTY_STRING;
+    private: std::string tagLocation;
 
-    private: std::string packageLocation = this->stringUtil->EMPTY_STRING;
+    private: std::string packageLocation;
 
-    private: std::string ftp = this->stringUtil->EMPTY_STRING;
+    private: std::string ftp;
 
-    private: AbPath* ftpPath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* ftpPath;
 
-    private: std::string ftpUserName = this->stringUtil->EMPTY_STRING;
+    private: std::string ftpUserName;
 
-    private: std::string ftpPassword = this->stringUtil->EMPTY_STRING;
+    private: std::string ftpPassword;
 
-    private: std::string testFtp = this->stringUtil->EMPTY_STRING;
+    private: std::string testFtp;
 
-    private: AbPath* testFtpPath = this->abPathUtil->NO_ABPATH;
+    private: AbPath* testFtpPath;
 
-    private: std::string testFtpUserName = this->stringUtil->EMPTY_STRING;
+    private: std::string testFtpUserName;
 
-    private: std::string testFtpPassword = this->stringUtil->EMPTY_STRING;
+    private: std::string testFtpPassword;
 
-    private: std::string timeCreated = this->stringUtil->EMPTY_STRING;
+    private: std::string timeCreated;
 
-    private: std::string lastModified = this->stringUtil->EMPTY_STRING;
+    private: std::string lastModified;
 
     private: const int32_t MINCHAR = 0;
 
@@ -239,9 +178,9 @@ class StoreFront
 
     private: const int32_t MAXCHAR = 255;
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
+    private: const std::string EMPTY_STRING;
 
-    private: const std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;
+    private: std::vector<std::string> ONE_EMPTY_STRING_ARRAY;
 
 public: StoreFront();
 
@@ -453,3 +392,121 @@ public: StoreFront(HashMap<Object*, Object*>* hashMap);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_H_COMPLETE
+        #if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<org/allbinary/business/context/configuration/ContextConfiguration.h>)
+#include <org/allbinary/business/context/configuration/ContextConfiguration.h>
+#endif
+#if __has_include(<org/allbinary/business/context/configuration/ContextConfigurationDomDocumentMapping.h>)
+#include <org/allbinary/business/context/configuration/ContextConfigurationDomDocumentMapping.h>
+#endif
+#if __has_include(<org/allbinary/business/context/configuration/ContextConfigurationInterface.h>)
+#include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/context/configuration/ContextConfigurationInterfaceFactory.h>)
+#include <org/allbinary/business/context/configuration/ContextConfigurationInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserData.h>)
+#include <org/allbinary/business/user/UserData.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/DomDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#endif
+#if __has_include(<org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>)
+#include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/globals/URLGLOBALS.h>)
+#include <org/allbinary/globals/URLGLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/RequestParams.h>)
+#include <org/allbinary/logic/communication/http/request/RequestParams.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileUtil.h>)
+#include <org/allbinary/logic/io/file/FileUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/directory/Directory.h>)
+#include <org/allbinary/logic/io/file/directory/Directory.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathUtil.h>)
+#include <org/allbinary/logic/io/path/AbPathUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/SpecialCharacterUtil.h>)
+#include <org/allbinary/logic/string/SpecialCharacterUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/regex/replace/Replace.h>)
+#include <org/allbinary/logic/string/regex/replace/Replace.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/tokens/Tokenizer.h>)
+#include <org/allbinary/logic/string/tokens/Tokenizer.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/apache/commons/lang3/StringEscapeUtils.h>)
+#include <org/apache/commons/lang3/StringEscapeUtils.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include("org/allbinary/business/context/modules/storefront/StoreFrontInterface.h")
+#include "org/allbinary/business/context/modules/storefront/StoreFrontInterface.h"
+#endif
+#if __has_include("org/allbinary/business/context/modules/storefront/StoreFrontData.h")
+#include "org/allbinary/business/context/modules/storefront/StoreFrontData.h"
+#endif
+
+        #endif
+    

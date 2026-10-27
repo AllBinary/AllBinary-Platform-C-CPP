@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_GUI_CREATEICONIMAGESJPANEL_CPP
+        #define ORG_ALLBINARY_IMAGE_GUI_CREATEICONIMAGESJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/gui/CreateIconImagesJPanel.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -101,15 +111,8 @@
 #include "org/allbinary/image/gui/GroupLayout.h"
 #include "org/allbinary/image/gui/Short.h"
 
-class CreateIconImagesJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ImageProcessorInput* imageProcessorInput;
-
-public: CreateIconImagesJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(){
+CreateIconImagesJPanel::CreateIconImagesJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -159,7 +162,7 @@ numberStringArray[index]= std::to_string(index);
 }
 
 
-    public: void process(){
+    auto CreateIconImagesJPanel::process() -> void{
 (class extends Thread
                                 {
                                 
@@ -231,7 +234,7 @@ height= (get).intValue();
     int32_t index = 0;index < generatedBufferedImageArray.size(); index++)
         {
 
-    std::string filePath = files[index].getAbsolutePath();;
+    std::string filePath = files[index]->getAbsolutePath();;
     
 
     int32_t endIndex = JavaString::lastIndexOf(filePath, '\\');;
@@ -239,7 +242,7 @@ height= (get).intValue();
 
     std::string path = JavaString::substring(filePath, 0, endIndex +1);;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 stringMaker->append(path)->append(ANDROID)->appendint(width)->append(CanvasStrings::getInstance()->_PNG);
     
@@ -248,7 +251,7 @@ stringMaker->append(path)->append(ANDROID)->appendint(width)->append(CanvasStrin
     
 imagePersistanceUtil->saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]);
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 stringMaker->append(path)->append(IOS)->appendint(width)->append(CanvasStrings::getInstance()->_PNG);
     
@@ -278,7 +281,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    public: ImageProcessorInput* getImageProcessorInput(){
+    auto CreateIconImagesJPanel::getImageProcessorInput() -> ImageProcessorInput*{
 
 
 
@@ -288,13 +291,13 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput){
+    auto CreateIconImagesJPanel::setImageProcessorInput(ImageProcessorInput* imageProcessorInput) -> void{
 this->imageProcessorInput= imageProcessorInput;
     
 }
 
 
-    private: void initComponents(){
+    auto CreateIconImagesJPanel::initComponents() -> void{
 this->aboveJButton= new javax::swing::JButton();
     
 this->aboveJButton->setText("Process");
@@ -315,22 +318,19 @@ aboveJButtonActionPerformed(evt);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(aboveJButton)->addGap(0, 335, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(aboveJButton)->addGap(0, 335, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(aboveJButton)->addContainerGap(286, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(aboveJButton)->addContainerGap(286, Short::MAX_VALUE)));
     
 }
 
 
-    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto CreateIconImagesJPanel::aboveJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->process();
     
 }
 
 
-    private: javax::swing::JButton* aboveJButton;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_IMAGE_GUI_CREATEICONIMAGESJPANEL_CPP

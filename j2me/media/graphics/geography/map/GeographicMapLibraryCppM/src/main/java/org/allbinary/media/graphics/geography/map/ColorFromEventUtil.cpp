@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_COLORFROMEVENTUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_COLORFROMEVENTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/ColorFromEventUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,23 @@
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h"
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
-class ColorFromEventUtil
-            : public Object
-         {
 
-    private: static ColorFromEventUtil* instance() { static std::unique_ptr<ColorFromEventUtil> value(new ColorFromEventUtil()); return value.get(); }
+ColorFromEventUtil::ColorFromEventUtil() : YELLOW(BasicColorFactory::getInstance()->YELLOW), COLOR_INT(this->YELLOW->intValue()) {
+        }
+        auto ColorFromEventUtil::instance_owner() -> ColorFromEventUtil* { static std::unique_ptr<ColorFromEventUtil> value(new ColorFromEventUtil()); return value.get(); }
+ColorFromEventUtil* ColorFromEventUtil::instance = ColorFromEventUtil::instance_owner();
 
-    public: static ColorFromEventUtil* getInstance(){
+    auto ColorFromEventUtil::getInstance() -> ColorFromEventUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorFromEventUtil::instance();
+                        return ColorFromEventUtil::instance;
     
 }
 
 
-    private: BasicColor* YELLOW = BasicColorFactory::getInstance()->YELLOW;
-
-    public: const int32_t COLOR_INT = this->YELLOW->intValue();
-
-    public: BasicColor* getForegroundColor(AllBinaryGameCanvas* gameCanvasInterface){
+    auto ColorFromEventUtil::getForegroundColor(AllBinaryGameCanvas* gameCanvasInterface) -> BasicColor*{
 
     BasicColor* color = this->YELLOW;;
     
@@ -109,7 +115,6 @@ color= foregroundBasicColor;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_COLORFROMEVENTUTIL_CPP

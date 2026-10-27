@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,33 +57,34 @@
         #include "org/allbinary/graphics/form/ItemPaintable.h"
 #include "org/allbinary/graphics/form/PaintableForm.h"
 
-class ItemPaintableFactory: public ItemPaintable {
 
-    private: static ItemPaintableFactory* instance() { static std::unique_ptr<ItemPaintableFactory> value(new ItemPaintableFactory()); return value.get(); }
+ItemPaintableFactory::ItemPaintableFactory() {
+        }
+        auto ItemPaintableFactory::instance_owner() -> ItemPaintableFactory* { static std::unique_ptr<ItemPaintableFactory> value(new ItemPaintableFactory()); return value.get(); }
+ItemPaintableFactory* ItemPaintableFactory::instance = ItemPaintableFactory::instance_owner();
 
-    public: static ItemPaintableFactory* getInstance(){
+    auto ItemPaintableFactory::getInstance() -> ItemPaintableFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ItemPaintableFactory::instance();
+                        return ItemPaintableFactory::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ItemPaintable* getInstanceItemPaintable(PaintableForm* paintableForm){
+    auto ItemPaintableFactory::getInstanceItemPaintable(PaintableForm* paintableForm) -> ItemPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ItemPaintableFactory::instance();
+                        return ItemPaintableFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_CPP

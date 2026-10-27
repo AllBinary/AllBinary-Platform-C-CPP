@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_AUTHENTICATIONHELPER_CPP
+        #define ADMIN_TAGHELPERS_AUTHENTICATIONHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/AuthenticationHelper.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -112,23 +122,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class AuthenticationHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: std::string authenticated;
-
-    private: std::string sessionUserName;
-
-    private: UserRole* role;
-
-    private: std::string timeout;
-
-    private: int32_t attemptsInteger;
-
-public: AuthenticationHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : AuthenticationHelper(hashMap, dynamic_cast<HttpServletRequest*>(pageContext->getRequest())){
+AuthenticationHelper::AuthenticationHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : AuthenticationHelper(hashMap, dynamic_cast<HttpServletRequest*>(pageContext->getRequest())){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -138,16 +133,16 @@ public: AuthenticationHelper(HashMap<Object*, Object*>* hashMap, PageContext* pa
 }
 
 
-public: AuthenticationHelper(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest){
+AuthenticationHelper::AuthenticationHelper(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest) : logUtil(LogUtil::getInstance()){
 this->weblisketSession= new WeblisketSession(hashMap, httpServletRequest);
     
 this->getFormData();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
-                                    this->logUtil->putF(this->outputSessionInfo(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->outputSessionInfo(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -157,7 +152,7 @@ this->getFormData();
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(){
+    auto AuthenticationHelper::getFormData() -> void{
 this->authenticated= this->weblisketSession->getAuthentication();
     
 this->sessionUserName= this->weblisketSession->getUserName();
@@ -173,7 +168,7 @@ this->timeout= this->weblisketSession->getTimeout();
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t invalidateSession(){
+    auto AuthenticationHelper::invalidateSession() -> int32_t{
 
         try {
             this->weblisketSession->clear();
@@ -189,10 +184,10 @@ this->timeout= this->weblisketSession->getTimeout();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "invalidateSession()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidateSession()", &e);
     
 
                                     }
@@ -208,7 +203,7 @@ this->timeout= this->weblisketSession->getTimeout();
 }
 
 
-    public: bool isSessionOld(){
+    auto AuthenticationHelper::isSessionOld() -> bool{
 
                         if(this->role != 
                                     nullptr
@@ -232,7 +227,7 @@ this->timeout= this->weblisketSession->getTimeout();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     
@@ -269,7 +264,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isSessionOld()");
@@ -289,7 +284,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 }
 
 
-    private: bool isRarelyUsedSession(){
+    auto AuthenticationHelper::isRarelyUsedSession() -> bool{
 
                         if(this->role != 
                                     nullptr
@@ -312,7 +307,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
     int64_t timeFirst = calendar->getTimeInMillis() -lastAccess;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     
@@ -340,7 +335,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isRarelyUsedSession()");
@@ -360,7 +355,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 }
 
 
-    public: std::string validRole(){
+    auto AuthenticationHelper::validRole() -> std::string{
 
         try {
             
@@ -382,10 +377,10 @@ stringBuffer->append("Trying New login<p/>");
     std::string error = "Failed to set valid role";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "validRole()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "validRole()", &e);
     
 
                                     }
@@ -401,7 +396,7 @@ stringBuffer->append("Trying New login<p/>");
 }
 
 
-    public: std::string invalidRole(){
+    auto AuthenticationHelper::invalidRole() -> std::string{
 
         try {
             this->weblisketSession->setAuthenticated(false);
@@ -427,10 +422,10 @@ stringBuffer->append("Trying New login<p/>");
     std::string error = "Failed to set role invalid";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "invalidRole()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidRole()", &e);
     
 
                                     }
@@ -448,7 +443,7 @@ stringBuffer->append("Trying New login<p/>");
 
                 //@Throws(Exception.constructor)
             
-    public: bool isAuthenticated(){
+    auto AuthenticationHelper::isAuthenticated() -> bool{
 
                         if(BooleanUtil::getInstance()->getFromString(this->authenticated))
                         
@@ -475,7 +470,7 @@ stringBuffer->append("Trying New login<p/>");
 }
 
 
-    public: bool isAuthenticationSessionValid(BasicArrayList* roles){
+    auto AuthenticationHelper::isAuthenticationSessionValid(BasicArrayList* roles) -> bool{
 
         try {
             
@@ -512,11 +507,11 @@ stringBuffer->append("Trying New login<p/>");
     BasicUserRole* mustBeOfRole = dynamic_cast<BasicUserRole*>(basicUserRoleArray[index]);;
     
 
-                        if(basicUserRole === mustBeOfRole)
+                        if(basicUserRole->equals(mustBeOfRole))
                         
                                     {
                                     
-                        if(basicUserRole === UserRoleFactory::getInstance()->CUSTOMER)
+                        if(basicUserRole->equals(UserRoleFactory::getInstance()->CUSTOMER))
                         
                                     {
                                     
@@ -569,7 +564,7 @@ stringBuffer->append("Trying New login<p/>");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isAuthenticationSessionValid()");
@@ -591,10 +586,10 @@ stringBuffer->append("Trying New login<p/>");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isAuthenticatedSessionValid()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "isAuthenticatedSessionValid()", &e);
     
 
                                     }
@@ -610,7 +605,7 @@ stringBuffer->append("Trying New login<p/>");
 }
 
 
-    public: void nextAttempt(){
+    auto AuthenticationHelper::nextAttempt() -> void{
 
                         if(this->attemptsInteger != 
                                     nullptr
@@ -631,14 +626,14 @@ stringBuffer->append("Trying New login<p/>");
 }
 
 
-    public: bool processIfNewLogin(std::string userName, std::string password){
+    auto AuthenticationHelper::processIfNewLogin(std::string userName, std::string password) -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
-                                    this->logUtil->putF("Starting: " +userName, this, "processIfNewLogin()");
+                                    this->logUtil->putF(JavaString::valueOf("Starting: ") +JavaString::valueOf(userName), this, "processIfNewLogin()");
     
 
                                     }
@@ -704,10 +699,10 @@ this->nextAttempt();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "processIfNewLogin()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "processIfNewLogin()", &e);
     
 
                                     }
@@ -723,7 +718,7 @@ this->nextAttempt();
 }
 
 
-    public: bool processInvalidation(){
+    auto AuthenticationHelper::processInvalidation() -> bool{
 
         try {
             
@@ -760,10 +755,10 @@ this->nextAttempt();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATIONERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "processInvalidation()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "processInvalidation()", &e);
     
 
                                     }
@@ -779,7 +774,7 @@ this->nextAttempt();
 }
 
 
-    public: std::string outputSessionInfo(){
+    auto AuthenticationHelper::outputSessionInfo() -> std::string{
 
         try {
             
@@ -794,7 +789,7 @@ this->nextAttempt();
 
     int64_t lastAccess = this->weblisketSession->getLastAccessedTime();;
     
-stringBuffer->append("Time Since Last Access: " +(calendar->getTimeInMillis() -lastAccess) +"<br/>\n");
+stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Time Since Last Access: ") +JavaString::valueOf((calendar->getTimeInMillis() -lastAccess))) +JavaString::valueOf("<br/>\n"));
     
 
                         if(this->role != 
@@ -864,7 +859,7 @@ stringBuffer->append("<br/>\n");
 }
 
 
-    public: UserRole* getRole(){
+    auto AuthenticationHelper::getRole() -> UserRole*{
 
 
 
@@ -874,7 +869,6 @@ stringBuffer->append("<br/>\n");
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_AUTHENTICATIONHELPER_CPP

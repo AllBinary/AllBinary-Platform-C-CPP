@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ORDER_HISTORY_VALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ORDER_HISTORY_VALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/order/history/ValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,9 +67,8 @@
 #include "views/generic/order/history/Document.h"
 #include "views/generic/order/history/Node.h"
 
-class ValidationView: public OrderHistoryView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderHistoryView(transformInfoInterface){
+ValidationView::ValidationView(TransformInfoInterface* transformInfoInterface) : OrderHistoryView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +78,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderHi
 }
 
 
-    public: bool isValid(){
+    auto ValidationView::isValid() -> bool{
 
 
 
@@ -79,7 +88,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderHi
 }
 
 
-    public: org::w3c::dom::Document* toValidationInfoDoc(){
+    auto ValidationView::toValidationInfoDoc() -> org::w3c::dom::Document*{
 
 
 
@@ -89,7 +98,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderHi
 }
 
 
-    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document){
+    auto ValidationView::toValidationInfoNode(org::w3c::dom::Document* document) -> org::w3c::dom::Node*{
 
 
 
@@ -99,7 +108,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderHi
 }
 
 
-    public: std::string validationInfo(){
+    auto ValidationView::validationInfo() -> std::string{
 
 
 
@@ -109,7 +118,6 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderHi
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ORDER_HISTORY_VALIDATIONVIEW_CPP

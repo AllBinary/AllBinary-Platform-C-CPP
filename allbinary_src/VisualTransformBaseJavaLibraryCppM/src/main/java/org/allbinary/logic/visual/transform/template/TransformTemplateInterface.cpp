@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/TransformTemplateInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformTemplateInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string getName() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEINTERFACE_CPP

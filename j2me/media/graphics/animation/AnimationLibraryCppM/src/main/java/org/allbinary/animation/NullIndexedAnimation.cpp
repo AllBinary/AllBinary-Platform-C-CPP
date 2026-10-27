@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/NullIndexedAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,9 +43,8 @@
         #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class NullIndexedAnimation: public IndexedAnimation {
 
-public: NullIndexedAnimation(AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+NullIndexedAnimation::NullIndexedAnimation(AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -47,7 +56,7 @@ public: NullIndexedAnimation(AnimationBehavior* animationBehavior) : IndexedAnim
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto NullIndexedAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -57,7 +66,6 @@ public: NullIndexedAnimation(AnimationBehavior* animationBehavior) : IndexedAnim
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATION_CPP

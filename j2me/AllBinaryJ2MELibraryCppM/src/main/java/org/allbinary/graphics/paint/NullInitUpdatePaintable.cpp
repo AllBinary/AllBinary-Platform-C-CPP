@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_NULLINITUPDATEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_NULLINITUPDATEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/NullInitUpdatePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,25 +54,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/InitUpdatePaintable.h"
 
-class NullInitUpdatePaintable: public InitUpdatePaintable {
+auto NullInitUpdatePaintable::SINGLETON_owner() -> NullInitUpdatePaintable* { static std::unique_ptr<NullInitUpdatePaintable> value(new NullInitUpdatePaintable()); return value.get(); }
+NullInitUpdatePaintable* NullInitUpdatePaintable::SINGLETON = NullInitUpdatePaintable::SINGLETON_owner();
 
-    private: static NullInitUpdatePaintable* SINGLETON() { static std::unique_ptr<NullInitUpdatePaintable> value(new NullInitUpdatePaintable()); return value.get(); }
+NullInitUpdatePaintable::NullInitUpdatePaintable(){
+}
 
-    public: static InitUpdatePaintable* getInstance(){
+
+    auto NullInitUpdatePaintable::getInstance() -> InitUpdatePaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullInitUpdatePaintable::SINGLETON();
+                        return NullInitUpdatePaintable::SINGLETON;
     
 }
 
 
-private: NullInitUpdatePaintable(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_NULLINITUPDATEPAINTABLE_CPP

@@ -10,6 +10,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/JTreeInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -38,31 +48,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/JTreeInterface.h"
 
-class JTreeInterfaceFactory
-            : public Object
-         {
 
-    private: static JTreeInterfaceFactory* instance() { static std::unique_ptr<JTreeInterfaceFactory> value(new JTreeInterfaceFactory()); return value.get(); }
+JTreeInterfaceFactory::JTreeInterfaceFactory() {
+        }
+        auto JTreeInterfaceFactory::instance_owner() -> JTreeInterfaceFactory* { static std::unique_ptr<JTreeInterfaceFactory> value(new JTreeInterfaceFactory()); return value.get(); }
+JTreeInterfaceFactory* JTreeInterfaceFactory::instance = JTreeInterfaceFactory::instance_owner();
 
-    public: static JTreeInterfaceFactory* getInstance(){
+    auto JTreeInterfaceFactory::getInstance() -> JTreeInterfaceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return JTreeInterfaceFactory::instance();
+                        return JTreeInterfaceFactory::instance;
     
 }
 
 
-    private: JTreeInterface* jTreeInterface;
-
-    public: void set(JTreeInterface* jTreeInterface){
+    auto JTreeInterfaceFactory::set(JTreeInterface* jTreeInterface) -> void{
 this->jTreeInterface= jTreeInterface;
     
 }
 
 
-    public: JTreeInterface* getJTreeInterface(){
+    auto JTreeInterfaceFactory::getJTreeInterface() -> JTreeInterface*{
 
 
 
@@ -72,7 +80,6 @@ this->jTreeInterface= jTreeInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACEFACTORY_CPP

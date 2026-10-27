@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTPROCESSORINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTPROCESSORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,10 +53,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvertisementProcessorInterface
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: AdvertisementProcessorInterface();
+        
     public: void process();
 
     public: void start();
@@ -64,3 +77,10 @@ class AdvertisementProcessorInterface
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTPROCESSORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTPROCESSORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTPROCESSORINTERFACE_H_COMPLETE
+        
+        #endif
+    

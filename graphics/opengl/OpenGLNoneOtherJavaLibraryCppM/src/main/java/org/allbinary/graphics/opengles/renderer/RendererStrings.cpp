@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_RENDERERSTRINGS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_RENDERERSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/renderer/RendererStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RendererStrings
-            : public Object
-         {
 
-    private: static RendererStrings* instance() { static std::unique_ptr<RendererStrings> value(new RendererStrings()); return value.get(); }
+RendererStrings::RendererStrings() {
+        }
+        auto RendererStrings::instance_owner() -> RendererStrings* { static std::unique_ptr<RendererStrings> value(new RendererStrings()); return value.get(); }
+RendererStrings* RendererStrings::instance = RendererStrings::instance_owner();
 
-    public: static RendererStrings* getInstance(){
+    auto RendererStrings::getInstance() -> RendererStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RendererStrings::instance();
+                        return RendererStrings::instance;
     
 }
 
 
-    public: const std::string ON_SURFACE_CREATED = "onSurfaceCreated";
 
-    public: const std::string ON_SURFACE_CHANGED = "onSurfaceChanged";
 
-    public: const std::string ON_DRAW_FRAME = "onDrawFrame";
-
-    public: const std::string ON_DRAW_FRAME_THREED = "onDrawFrameThreed";
-
-    public: const std::string ON_DRAW_FRAME_2D = "onDrawFrame2d";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_RENDERERSTRINGS_CPP

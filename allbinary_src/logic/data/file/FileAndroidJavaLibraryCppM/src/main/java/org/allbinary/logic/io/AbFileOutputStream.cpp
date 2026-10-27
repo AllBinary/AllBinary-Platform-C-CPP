@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/AbFileOutputStream.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,11 +76,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileOutputStream: public OutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream* createFromAbFile(AbFile* file){
+    auto AbFileOutputStream::createFromAbFile(AbFile* file) -> AbFileOutputStream*{
 
 
 
@@ -82,7 +91,7 @@ class AbFileOutputStream: public OutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream* createFromAbFileAppend(AbFile* file, bool append){
+    auto AbFileOutputStream::createFromAbFileAppend(AbFile* file, bool append) -> AbFileOutputStream*{
 
 
 
@@ -94,7 +103,7 @@ class AbFileOutputStream: public OutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream* createFromFilePath(std::string name){
+    auto AbFileOutputStream::createFromFilePath(std::string name) -> AbFileOutputStream*{
 
 
 
@@ -106,7 +115,7 @@ class AbFileOutputStream: public OutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream* createFromFilePathAppend(std::string name, bool append){
+    auto AbFileOutputStream::createFromFilePathAppend(std::string name, bool append) -> AbFileOutputStream*{
 
 
 
@@ -116,21 +125,19 @@ class AbFileOutputStream: public OutputStream {
 }
 
 
-    private: FileOutputStream* fileOutputStream;
-
-public: AbFileOutputStream(FileOutputStream* fileOutputStream){
+AbFileOutputStream::AbFileOutputStream(FileOutputStream* fileOutputStream){
 this->fileOutputStream= fileOutputStream;
     
 }
 
 
-    public: void close(){
+    auto AbFileOutputStream::close() -> void{
 this->fileOutputStream->close();
     
 }
 
 
-    public: FileChannel* getChannel(){
+    auto AbFileOutputStream::getChannel() -> FileChannel*{
 
 
 
@@ -142,7 +149,7 @@ this->fileOutputStream->close();
 
                 //@Throws(IOException.constructor)
             
-    public: void write(std::vector<int8_t> buffer){
+    auto AbFileOutputStream::write(std::vector<int8_t> buffer) -> void{
 this->fileOutputStream->write(buffer);
     
 }
@@ -150,7 +157,7 @@ this->fileOutputStream->write(buffer);
 
                 //@Throws(IOException.constructor)
             
-    public: void write(std::vector<int8_t> buffer, int32_t offset, int32_t count){
+    auto AbFileOutputStream::write(std::vector<int8_t> buffer, int32_t offset, int32_t count) -> void{
 this->fileOutputStream->write(buffer, offset, count);
     
 }
@@ -158,13 +165,12 @@ this->fileOutputStream->write(buffer, offset, count);
 
                 //@Throws(IOException.constructor)
             
-    public: void write(int32_t b){
+    auto AbFileOutputStream::write(int32_t b) -> void{
 this->fileOutputStream->write(b);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_CPP

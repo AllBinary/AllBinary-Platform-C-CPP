@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICEFACTORY_CPP
+        #define ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bundle/logic/system/loader/CryptServiceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,21 +71,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/bundle/logic/system/loader/CryptService.h"
 
-class CryptServiceFactory
-            : public Object
-        , public ServiceFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CryptService* cryptService = new CryptService();
-
-public: CryptServiceFactory(){
+CryptServiceFactory::CryptServiceFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), cryptService(new CryptService()){
 }
 
 
-    public: Object* getService(Bundle* bundle, ServiceRegistration* registration){
+    auto CryptServiceFactory::getService(Bundle* bundle, ServiceRegistration* registration) -> Object*{
 this->logUtil->putF(this->commonStrings->START, this, "getService");
     
 
@@ -87,11 +88,10 @@ this->logUtil->putF(this->commonStrings->START, this, "getService");
 }
 
 
-    public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service){
+    auto CryptServiceFactory::ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICEFACTORY_CPP

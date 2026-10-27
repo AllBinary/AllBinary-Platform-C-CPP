@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_HTTPCONTEXTVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_HTTPCONTEXTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/HttpContextView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,13 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HttpContextView: public HttpComponentView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: HttpContextView(TransformInfoInterface* transformInfoInterface) : HttpComponentView(transformInfoInterface){
+HttpContextView::HttpContextView(TransformInfoInterface* transformInfoInterface) : HttpComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,10 +85,10 @@ public: HttpContextView(TransformInfoInterface* transformInfoInterface) : HttpCo
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -95,7 +100,7 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto HttpContextView::view() -> std::string{
 
         try {
             this->toXmlDoc();
@@ -117,7 +122,7 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view", &e);
@@ -135,7 +140,6 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_HTTPCONTEXTVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_VERTEXATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_VERTEXATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/vbo/VertexAttributePointerVBOOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,34 +63,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VertexAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
+auto VertexAttributePointerVBOOpenGLProcessor::instance_owner() -> VertexAttributePointerVBOOpenGLProcessor* { static std::unique_ptr<VertexAttributePointerVBOOpenGLProcessor> value(new VertexAttributePointerVBOOpenGLProcessor()); return value.get(); }
+VertexAttributePointerVBOOpenGLProcessor* VertexAttributePointerVBOOpenGLProcessor::instance = VertexAttributePointerVBOOpenGLProcessor::instance_owner();
 
-    private: static VertexAttributePointerVBOOpenGLProcessor* instance() { static std::unique_ptr<VertexAttributePointerVBOOpenGLProcessor> value(new VertexAttributePointerVBOOpenGLProcessor()); return value.get(); }
-
-    public: static VertexAttributePointerVBOOpenGLProcessor* getInstance(){
+    auto VertexAttributePointerVBOOpenGLProcessor::getInstance() -> VertexAttributePointerVBOOpenGLProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VertexAttributePointerVBOOpenGLProcessor::instance();
+                        return VertexAttributePointerVBOOpenGLProcessor::instance;
     
 }
 
 
-public: VertexAttributePointerVBOOpenGLProcessor(){
+VertexAttributePointerVBOOpenGLProcessor::VertexAttributePointerVBOOpenGLProcessor(){
 }
 
 
-    public: void process(GL10* gl, Object* anyType){
+    auto VertexAttributePointerVBOOpenGLProcessor::process(GL10* gl, Object* anyType) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_VERTEXATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP

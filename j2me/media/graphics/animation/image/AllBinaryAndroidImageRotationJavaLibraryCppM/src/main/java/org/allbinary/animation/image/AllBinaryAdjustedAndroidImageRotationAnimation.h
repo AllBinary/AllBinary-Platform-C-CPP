@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDANDROIDIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDANDROIDIMAGEROTATIONANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
+class Graphics;
+class Image;
+class AnimationBehavior;
+class AngleInfo;
 
 
 
@@ -61,6 +58,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryAdjustedAndroidImageRotationAnimation: public AllBinaryFlickerAndroidImageRotationAnimation {
 
     private: int32_t dx= 0;
@@ -89,3 +90,25 @@ public: AllBinaryAdjustedAndroidImageRotationAnimation(Image* originalImage, Ima
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDANDROIDIMAGEROTATIONANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDANDROIDIMAGEROTATIONANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDANDROIDIMAGEROTATIONANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include("org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h")
+#include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
+#endif
+
+        #endif
+    

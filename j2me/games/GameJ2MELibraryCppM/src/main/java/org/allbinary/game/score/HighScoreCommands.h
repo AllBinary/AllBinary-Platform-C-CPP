@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDS_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class Command;
+class StringUtil;
 
 
 
@@ -54,19 +55,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HighScoreCommands
-            : public Object
+            : public virtual Object
          {
 
-    private: static HighScoreCommands* instance() { static std::unique_ptr<HighScoreCommands> value(new HighScoreCommands()); return value.get(); }
+    private: static HighScoreCommands* instance_owner();
+    private: static HighScoreCommands* instance;
 
     public: static HighScoreCommands* getInstance();
 
-    public: Command* DISPLAY = new Command("Scores", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: Command* PERSONAL = new Command("Personal", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
+            
+    public: HighScoreCommands();
+        
+    public: Command* DISPLAY;
 
-    public: Command* WORLD = new Command("World", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
+    public: Command* PERSONAL;
+
+    public: Command* WORLD;
 
 };
 
@@ -74,3 +84,16 @@ class HighScoreCommands
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

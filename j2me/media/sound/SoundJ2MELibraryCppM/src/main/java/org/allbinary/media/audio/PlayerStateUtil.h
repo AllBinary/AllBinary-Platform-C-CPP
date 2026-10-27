@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/media/Player.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Player;
+class CommonStrings;
 
 
 
@@ -54,15 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PlayerStateUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static PlayerStateUtil* instance() { static std::unique_ptr<PlayerStateUtil> value(new PlayerStateUtil()); return value.get(); }
+    private: static PlayerStateUtil* instance_owner();
+    private: static PlayerStateUtil* instance;
 
     public: static PlayerStateUtil* getInstance();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+
+            
+    public: PlayerStateUtil();
+        
+    private: CommonStrings* commonStrings;
 
     public: const std::string UNREALIZED = "UNREALIZED";
 
@@ -82,3 +92,16 @@ class PlayerStateUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/media/Player.h>)
+#include <javax/microedition/media/Player.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

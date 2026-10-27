@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
 
-      
-#include <javax/microedition/lcdui/Displayable.h>
-
-      
+class Displayable;
 
 
 
@@ -54,15 +55,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScreenRepaintUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static void repaint(Displayable* displayable);
 
+
+            
+    public: ScreenRepaintUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTUTIL_H_COMPLETE
+        
+#if __has_include(<javax/microedition/lcdui/Displayable.h>)
+#include <javax/microedition/lcdui/Displayable.h>
+#endif
+
+        #endif
+    

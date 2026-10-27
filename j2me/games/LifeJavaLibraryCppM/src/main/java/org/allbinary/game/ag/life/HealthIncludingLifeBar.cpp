@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_CPP
+        #define ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/life/HealthIncludingLifeBar.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/life/Life.h"
 
-class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static HealthIncludingLifeBar* createHealthIncludingLifeBar(AllBinaryLayer* layerInterface, Life* life, Health* healthInterface, int32_t location, int32_t direction){
+    auto HealthIncludingLifeBar::createHealthIncludingLifeBar(AllBinaryLayer* layerInterface, Life* life, Health* healthInterface, int32_t location, int32_t direction) -> HealthIncludingLifeBar*{
 
 
 
@@ -84,15 +93,7 @@ class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
 }
 
 
-    private: HealthBarAnimation* animationInterface;
-
-    private: Life* life;
-
-    private: HealthInterface* healthInterface;
-
-    protected: AllBinaryLayer* allbinaryLayer;
-
-public: HealthIncludingLifeBar(AllBinaryLayer* layerInterface, Life* life, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction){
+HealthIncludingLifeBar::HealthIncludingLifeBar(AllBinaryLayer* layerInterface, Life* life, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction){
 this->allbinaryLayer= layerInterface;
     
 this->animationInterface= animationInterface;
@@ -108,25 +109,24 @@ this->onHealthChange();
 }
 
 
-    public: void onHealthChange(){
+    auto HealthIncludingLifeBar::onHealthChange() -> void{
 this->animationInterface->onHealthChange(((this->healthInterface->getHealth() +(this->healthInterface->getMaxHealth() *this->life->get())) *this->allbinaryLayer->getWidth()) /(this->healthInterface->getMaxHealth() +(this->healthInterface->getMaxHealth() *this->life->getStartLives())));
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto HealthIncludingLifeBar::paint(Graphics* graphics) -> void{
 this->animationInterface->paintXY(graphics, 0, 0);
     
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto HealthIncludingLifeBar::paintThreed(Graphics* graphics) -> void{
 this->animationInterface->paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_CPP

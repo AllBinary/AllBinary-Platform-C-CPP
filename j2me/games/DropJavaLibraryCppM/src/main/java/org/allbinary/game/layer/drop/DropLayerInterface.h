@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/pickup/PickedUpLayerInterface.h>
-
-      
+class PickedUpLayerInterface;
 #include <org/allbinary/layer/LayerInterface.h>
-
-      
 
 
 
@@ -54,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DropLayerInterface: public LayerInterface {
 
                 //@Throws(Exception.constructor)
@@ -66,3 +71,16 @@ class DropLayerInterface: public LayerInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/pickup/PickedUpLayerInterface.h>)
+#include <org/allbinary/game/layer/pickup/PickedUpLayerInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerInterface.h>)
+#include <org/allbinary/layer/LayerInterface.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_GPOINTCIRCULARPOOL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_GPOINTCIRCULARPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/GPointCircularPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,9 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/CustomGPoint.h"
 
-class GPointCircularPool: public BaseCircularPool {
 
-public: GPointCircularPool(int32_t size){
+GPointCircularPool::GPointCircularPool(int32_t size){
 this->circularIndexUtil= CircularIndexUtil::createInstance(size);
     
 this->OBJECT_ARRAY= std::vector<Object*>(size);
@@ -73,7 +82,6 @@ this->OBJECT_ARRAY[index]= CustomGPoint::getInstance3(0, 0);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_GPOINTCIRCULARPOOL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_H
         #define ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/Scoreable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoScoreable: public Scoreable {
 
-    private: static NoScoreable* SINGLETON() { static std::unique_ptr<NoScoreable> value(new NoScoreable()); return value.get(); }
+    private: static NoScoreable* SINGLETON_owner();
+    private: static NoScoreable* SINGLETON;
 
     public: static NoScoreable* getInstance();
 
@@ -65,3 +75,13 @@ private: NoScoreable();
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_H_COMPLETE
+        #if __has_include("org/allbinary/game/score/Scoreable.h")
+#include "org/allbinary/game/score/Scoreable.h"
+#endif
+
+        #endif
+    

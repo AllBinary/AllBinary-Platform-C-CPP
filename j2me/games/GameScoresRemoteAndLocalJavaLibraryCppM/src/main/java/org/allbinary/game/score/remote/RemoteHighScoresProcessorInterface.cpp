@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/remote/RemoteHighScoresProcessorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/remote/RemoteHighScores.h"
 
-class RemoteHighScoresProcessorInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void process(RemoteHighScores* remoteHighScores, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORINTERFACE_CPP

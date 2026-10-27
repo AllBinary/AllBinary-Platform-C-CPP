@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORBASE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBase.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,17 +62,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomMapGeneratorBase
-            : public Object
-         {
 
+CustomMapGeneratorBase::CustomMapGeneratorBase() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void copyMapIntoCustomMap(){
+    auto CustomMapGeneratorBase::copyMapIntoCustomMap() -> void{
 }
 
 
-    public: std::vector<std::vector<int32_t>> getCustomMapArray(){
+    auto CustomMapGeneratorBase::getCustomMapArray() -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -74,7 +84,7 @@ class CustomMapGeneratorBase
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getCustomType(int32_t column, int32_t row, int32_t currentType){
+    auto CustomMapGeneratorBase::getCustomType(int32_t column, int32_t row, int32_t currentType) -> int32_t{
 
 
 
@@ -84,7 +94,6 @@ class CustomMapGeneratorBase
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORBASE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -37,27 +42,13 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/layer/Layer.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
-
-      
+class AllBinaryTiledLayer;
+class BasicColor;
+class Layer;
+class BasicGeographicMapCellPositionFactory;
+class GeographicMapCellPosition;
+class GeographicMapCellPositionFactoryInterface;
+class GeographicMapCellType;
 
 
 
@@ -77,15 +68,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h"
-#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
-#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
+class RaceTrackInfo;
+class RaceTrackData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullRaceTrackGeographicMap
-            : public Object
+            : public virtual Object
         , public RaceTrackGeographicMapInterface {
 
-    public: static NullRaceTrackGeographicMap* NULL_RACE_TRACK_GEOGRAPHIC_MAP() { static std::unique_ptr<NullRaceTrackGeographicMap> value(new NullRaceTrackGeographicMap()); return value.get(); }
+    private: static NullRaceTrackGeographicMap* NULL_RACE_TRACK_GEOGRAPHIC_MAP_owner();
+    public: static NullRaceTrackGeographicMap* NULL_RACE_TRACK_GEOGRAPHIC_MAP;
 
+
+            
+    public: NullRaceTrackGeographicMap();
+        
     public: int32_t getId();
 
     public: std::string getName();
@@ -138,3 +138,40 @@ class NullRaceTrackGeographicMap
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/layer/Layer.h>)
+#include <org/allbinary/layer/Layer.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
+#endif
+
+        #endif
+    

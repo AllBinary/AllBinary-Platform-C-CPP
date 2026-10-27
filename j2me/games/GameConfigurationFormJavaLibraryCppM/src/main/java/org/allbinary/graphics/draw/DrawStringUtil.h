@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_DRAWSTRINGUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_DRAW_DRAWSTRINGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,36 +38,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Font.h>
 
-      
-#include <javax/microedition/lcdui/Graphics.h>
+class Graphics;
 
-      
-#include <org/allbinary/AndroidUtil.h>
 
-      
-#include <org/allbinary/J2MEUtil.h>
+class Anchor;
 
-      
-#include <org/allbinary/graphics/Anchor.h>
 
-      
-#include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class PreLogUtil;
+class StringMaker;
+class StringUtil;
 
 
 
@@ -82,17 +67,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DrawStringUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static DrawStringUtil* instance() { static std::unique_ptr<DrawStringUtil> value(new DrawStringUtil()); return value.get(); }
+    private: static DrawStringUtil* instance_owner();
+    private: static DrawStringUtil* instance;
 
     public: static DrawStringUtil* getInstance();
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+            
+    public: DrawStringUtil();
+        
+    private: const std::string EMPTY_STRING;
+
+    private: int32_t anchor;
 
     public: void drawCenterString(Graphics* graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y);
 
@@ -104,3 +98,30 @@ class DrawStringUtil
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DRAW_DRAWSTRINGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DRAW_DRAWSTRINGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DRAW_DRAWSTRINGUTIL_H_COMPLETE
+        
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+
+
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+
+
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

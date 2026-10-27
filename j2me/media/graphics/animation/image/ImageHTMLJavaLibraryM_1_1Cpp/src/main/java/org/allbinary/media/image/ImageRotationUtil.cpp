@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageRotationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,27 +75,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCreationUtil.h"
 
-class ImageRotationUtil
-            : public Object
-         {
+auto ImageRotationUtil::instance_owner() -> ImageRotationUtil* { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
+ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_owner();
 
-    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
-
-    public: static ImageRotationUtil* getInstance(){
+    auto ImageRotationUtil::getInstance() -> ImageRotationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil::instance();
+                        return ImageRotationUtil::instance;
     
 }
 
 
-private: ImageRotationUtil(){
+ImageRotationUtil::ImageRotationUtil(){
 }
 
 
-    public: Image* rotateImage(Image* originalImage, Image* image, int32_t totalAngle){
+    auto ImageRotationUtil::rotateImage(Image* originalImage, Image* image, int32_t totalAngle) -> Image*{
 
                         if(image->isMutable())
                         
@@ -128,7 +135,7 @@ this->drawImage(originalImage, image, canvasSurface);
 }
 
 
-    public: Image* rotateImageCanvasSurfaceClear(Image* originalImage, Image* image, CanvasSurface* canvasSurface, int32_t totalAngle){
+    auto ImageRotationUtil::rotateImageCanvasSurfaceClear(Image* originalImage, Image* image, CanvasSurface* canvasSurface, int32_t totalAngle) -> Image*{
 
                         if(image->isMutable())
                         
@@ -161,7 +168,7 @@ canvasSurface->translate(originalImage->getWidth() /2, originalImage->getHeight(
 }
 
 
-    public: Image* rotateImageCanvasSurface(Image* originalImage, Image* image, CanvasSurface* canvasSurface, int32_t totalAngle){
+    auto ImageRotationUtil::rotateImageCanvasSurface(Image* originalImage, Image* image, CanvasSurface* canvasSurface, int32_t totalAngle) -> Image*{
 
                         if(image->isMutable())
                         
@@ -190,7 +197,7 @@ canvasSurface->translate(originalImage->getWidth() /2, originalImage->getHeight(
 }
 
 
-    public: void drawImage(Image* originalImage, Image* image, CanvasSurface* canvasSurface){
+    auto ImageRotationUtil::drawImage(Image* originalImage, Image* image, CanvasSurface* canvasSurface) -> void{
 
     playn::core::Image* originalPlayNImage = 
                 null
@@ -224,7 +231,7 @@ canvasSurface->drawImage(originalPlayNImage,  -originalImage->getWidth() /2,  -o
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
+    auto ImageRotationUtil::createRotatedImage(Image* originalImage, int32_t rotationInDegrees) -> Image*{
 
     Image* image = ImageCreationUtil::getInstance()->createImageWH(originalImage->getWidth(), originalImage->getHeight());;
     
@@ -240,7 +247,7 @@ canvasSurface->drawImage(originalPlayNImage,  -originalImage->getWidth() /2,  -o
                                     
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                                     }
@@ -254,7 +261,6 @@ canvasSurface->drawImage(originalPlayNImage,  -originalImage->getWidth() /2,  -o
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP

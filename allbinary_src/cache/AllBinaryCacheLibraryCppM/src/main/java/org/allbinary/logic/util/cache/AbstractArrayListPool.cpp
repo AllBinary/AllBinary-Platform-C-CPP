@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,17 +71,8 @@
 #include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
 #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
-class AbstractArrayListPool
-            : public Object
-        , public PoolInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: BasicArrayList* buffers = new BasicArrayListD();
-
-    protected: CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface;
-
-public: AbstractArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface){
+AbstractArrayListPool::AbstractArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : commonStrings(CommonStrings::getInstance()), buffers(new BasicArrayListD()){
 this->cacheableInterfaceFactoryInterface= cacheableInterfaceFactoryInterface;
     
 }
@@ -79,29 +80,29 @@ this->cacheableInterfaceFactoryInterface= cacheableInterfaceFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void clear(){
+    auto AbstractArrayListPool::clear() -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface* remove(Object* key){
+    auto AbstractArrayListPool::remove(Object* key) -> CacheableInterface*{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void add(CacheableInterface* cacheableInterface){
+    auto AbstractArrayListPool::add(CacheableInterface* cacheableInterface) -> void{
 this->buffers->add(cacheableInterface);
     
 }
@@ -109,7 +110,7 @@ this->buffers->add(cacheableInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void addArray(std::vector<CacheableInterface*> cacheableInterfaces){
+    auto AbstractArrayListPool::addArray(std::vector<CacheableInterface*> cacheableInterfaces) -> void{
 
 
 
@@ -124,7 +125,6 @@ this->buffers->add(cacheableInterfaces[index]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_CPP

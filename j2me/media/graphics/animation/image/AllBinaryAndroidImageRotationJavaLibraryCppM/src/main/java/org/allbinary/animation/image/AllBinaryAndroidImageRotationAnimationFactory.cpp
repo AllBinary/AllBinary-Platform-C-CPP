@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYANDROIDIMAGEROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYANDROIDIMAGEROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryAndroidImageRotationAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,11 +88,10 @@
 #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
 #include "org/allbinary/animation/image/AllBinaryAdjustedAndroidImageRotationAnimation.h"
 
-class AllBinaryAndroidImageRotationAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactory(Image* image, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinaryAndroidImageRotationAnimationFactory::createFactory(Image* image, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinaryAndroidImageRotationAnimationFactory*{
 
 
 
@@ -94,7 +103,7 @@ class AllBinaryAndroidImageRotationAnimationFactory: public BaseImageAnimationFa
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactoryA(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinaryAndroidImageRotationAnimationFactory::createFactoryA(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinaryAndroidImageRotationAnimationFactory*{
 
 
 
@@ -106,7 +115,7 @@ class AllBinaryAndroidImageRotationAnimationFactory: public BaseImageAnimationFa
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactoryU(Image* image, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinaryAndroidImageRotationAnimationFactory::createFactoryU(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinaryAndroidImageRotationAnimationFactory*{
 
     AllBinaryAndroidImageRotationAnimationFactory* androidImageRotationAnimationFactory = new AllBinaryAndroidImageRotationAnimationFactory(image, image->getWidth(), image->getHeight(), (AngleFactory::getInstance()->TOTAL_ANGLE /GameConfigurationCentral::getInstance()->getGameControlFidelity()), animationBehaviorFactory, false);;
     
@@ -123,7 +132,7 @@ androidImageRotationAnimationFactory->init( -(image->getWidth()>>2),  -(image->g
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactoryDXYU(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto AllBinaryAndroidImageRotationAnimationFactory::createFactoryDXYU(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) -> AllBinaryAndroidImageRotationAnimationFactory*{
 
     AllBinaryAndroidImageRotationAnimationFactory* androidImageRotationAnimationFactory = new AllBinaryAndroidImageRotationAnimationFactory(image, image->getWidth(), image->getHeight(), (AngleFactory::getInstance()->TOTAL_ANGLE /GameConfigurationCentral::getInstance()->getGameControlFidelity()), animationBehaviorFactory, false);;
     
@@ -140,7 +149,7 @@ androidImageRotationAnimationFactory->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryAndroidImageRotationAnimationFactory* createFactoryADXY(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation){
+    auto AllBinaryAndroidImageRotationAnimationFactory::createFactoryADXY(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation) -> AllBinaryAndroidImageRotationAnimationFactory*{
 
     AllBinaryAndroidImageRotationAnimationFactory* androidImageRotationAnimationFactory = new AllBinaryAndroidImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation);;
     
@@ -155,23 +164,19 @@ androidImageRotationAnimationFactory->init(dx, dy);
 }
 
 
-    public: void init(int32_t dx, int32_t dy){
-this->animationFactoryInitializationVisitor.dx= dx;
+    auto AllBinaryAndroidImageRotationAnimationFactory::init(int32_t dx, int32_t dy) -> void{
+this->animationFactoryInitializationVisitor->dx= dx;
     
-this->animationFactoryInitializationVisitor.dy= dy;
+this->animationFactoryInitializationVisitor->dy= dy;
     
-this->animationFactoryInitializationVisitor.originalDx= dx;
+this->animationFactoryInitializationVisitor->originalDx= dx;
     
-this->animationFactoryInitializationVisitor.originalDy= dy;
+this->animationFactoryInitializationVisitor->originalDy= dy;
     
 }
 
 
-    private: int16_t angleIncrement;
-
-    private: bool resizeCanvasForRotation;
-
-public: AllBinaryAndroidImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
+AllBinaryAndroidImageRotationAnimationFactory::AllBinaryAndroidImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -187,7 +192,7 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
                 //@Throws(Exception.constructor)
             
-    private: Image* getCanvasImage(){
+    auto AllBinaryAndroidImageRotationAnimationFactory::getCanvasImage() -> Image*{
 
     Features* features = Features::getInstance();;
     
@@ -219,27 +224,27 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto AllBinaryAndroidImageRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
     Image* canvasImage = this->getCanvasImage();;
     
 
-    Image* scaledImage = this->animationFactoryImageScaleUtil.createImage(canvasImage, this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Image* scaledImage = this->animationFactoryImageScaleUtil->createImage(canvasImage, this->animationFactoryInitializationVisitor->width, this->animationFactoryInitializationVisitor->height, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
     Image* copyOfScaledImage = ImageCopyUtil::getInstance()->createImage(scaledImage);;
     
 
-                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
+                        if(this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0)
                         
                                     {
-                                    this->animationFactoryImageScaleUtil.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil->processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryAdjustedAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, animationBehaviorFactory->getOrCreateInstance());
+                        return new AllBinaryAdjustedAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, animationBehaviorFactory->getOrCreateInstance());
     
 
                                     }
@@ -249,7 +254,7 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryFlickerAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AllBinaryFlickerAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
@@ -257,7 +262,6 @@ this->resizeCanvasForRotation= resizeCanvasForRotation;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYANDROIDIMAGEROTATIONANIMATIONFACTORY_CPP

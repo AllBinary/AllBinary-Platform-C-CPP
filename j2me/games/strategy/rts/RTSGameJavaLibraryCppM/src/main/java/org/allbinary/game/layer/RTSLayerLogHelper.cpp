@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERLOGHELPER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERLOGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSLayerLogHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,87 +71,86 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
-class RTSLayerLogHelper
-            : public Object
-         {
 
-    private: static RTSLayerLogHelper* instance() { static std::unique_ptr<RTSLayerLogHelper> value(new RTSLayerLogHelper()); return value.get(); }
+RTSLayerLogHelper::RTSLayerLogHelper() {
+        }
+        auto RTSLayerLogHelper::instance_owner() -> RTSLayerLogHelper* { static std::unique_ptr<RTSLayerLogHelper> value(new RTSLayerLogHelper()); return value.get(); }
+RTSLayerLogHelper* RTSLayerLogHelper::instance = RTSLayerLogHelper::instance_owner();
 
-    public: static RTSLayerLogHelper* getInstance(){
+    auto RTSLayerLogHelper::getInstance() -> RTSLayerLogHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSLayerLogHelper::instance();
+                        return RTSLayerLogHelper::instance;
     
 }
 
 
-    public: void setClosestGeographicMapCellHistory(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, BasicArrayList* pathsList){
+    auto RTSLayerLogHelper::setClosestGeographicMapCellHistory(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, BasicArrayList* pathsList) -> void{
 }
 
 
-    public: void trackTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition, int32_t dx, int32_t dy, std::string reason){
+    auto RTSLayerLogHelper::trackTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition, int32_t dx, int32_t dy, std::string reason) -> void{
 }
 
 
-    public: void turnTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy, AngleInfo* angleInfo, int32_t angle, NamedAngle* movementAngle, bool evading, int32_t targetAngle){
+    auto RTSLayerLogHelper::turnTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy, AngleInfo* angleInfo, int32_t angle, NamedAngle* movementAngle, bool evading, int32_t targetAngle) -> void{
 }
 
 
-    public: void doneMoving(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::doneMoving(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void closeEnough(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::closeEnough(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void movingLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::movingLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void movingRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::movingRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void movingUp(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::movingUp(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void movingDown(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::movingDown(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void currentMoveEnded(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::currentMoveEnded(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void evade(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::evade(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void rotateLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::rotateLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void rotateRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::rotateRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void handle(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, NamedAngle* movementAngle){
+    auto RTSLayerLogHelper::handle(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, NamedAngle* movementAngle) -> void{
 }
 
 
-    public: void noRotation(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerLogHelper::noRotation(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 }
 
 
-    public: void notOnPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellHistory* geographicMapCellHistory, GeographicMapCellPosition* currentGeographicMapCellPosition, BasicArrayList* pathList){
+    auto RTSLayerLogHelper::notOnPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellHistory* geographicMapCellHistory, GeographicMapCellPosition* currentGeographicMapCellPosition, BasicArrayList* pathList) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYERLOGHELPER_CPP

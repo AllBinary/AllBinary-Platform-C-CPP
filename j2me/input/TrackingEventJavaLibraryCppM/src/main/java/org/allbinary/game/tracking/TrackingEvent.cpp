@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_CPP
+        #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tracking/TrackingEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/tracking/TrackingEventHandler.h"
 
-class TrackingEvent: public AllBinaryEventObject {
 
-    private: AllBinaryLayer* layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-public: TrackingEvent(Object* allBinaryLayerInterface) : AllBinaryEventObject(allBinaryLayerInterface){
+TrackingEvent::TrackingEvent(Object* allBinaryLayerInterface) : AllBinaryEventObject(allBinaryLayerInterface), layerInterface(AllBinaryLayer::NULL_ALLBINARY_LAYER){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,13 +85,13 @@ public: TrackingEvent(Object* allBinaryLayerInterface) : AllBinaryEventObject(al
 }
 
 
-    public: void init(Object* anyType){
+    auto TrackingEvent::init(Object* anyType) -> void{
 this->setSource(anyType);
     
 }
 
 
-    public: AllBinaryLayer* getLayerInterface(){
+    auto TrackingEvent::getLayerInterface() -> AllBinaryLayer*{
 
 
 
@@ -94,19 +101,19 @@ this->setSource(anyType);
 }
 
 
-    private: void setLayerInterface(AllBinaryLayer* layerInterface){
+    auto TrackingEvent::setLayerInterface(AllBinaryLayer* layerInterface) -> void{
 this->layerInterface= layerInterface;
     
 }
 
 
-    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer* layerInterface){
+    auto TrackingEvent::setLayerInterfaceForCircularStaticPool(AllBinaryLayer* layerInterface) -> void{
 this->layerInterface= layerInterface;
     
 }
 
 
-    public: std::string toString(){
+    auto TrackingEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -125,7 +132,6 @@ stringBuffer->append(this->layerInterface->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_CPP

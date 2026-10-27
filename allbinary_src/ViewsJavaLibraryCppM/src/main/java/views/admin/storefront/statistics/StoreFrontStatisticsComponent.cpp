@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSCOMPONENT_CPP
+        #define VIEWS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSCOMPONENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/storefront/statistics/StoreFrontStatisticsComponent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,15 +79,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontStatisticsComponent: public HttpStoreComponentView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: StoreFrontInterface* newStoreFrontInterface;
-
-    private: DomNodeInterface* domNodeInterface;
-
-public: StoreFrontStatisticsComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+StoreFrontStatisticsComponent::StoreFrontStatisticsComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,7 +94,7 @@ this->domNodeInterface= new RealTimeStoreFrontStatisticsView(new RealTimeStoreFr
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto StoreFrontStatisticsComponent::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->domNodeInterface));
     
 }
@@ -99,7 +102,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->domNodeInterface
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto StoreFrontStatisticsComponent::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -108,17 +111,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->domNodeInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -133,7 +136,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->domNodeInterface
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSCOMPONENT_CPP

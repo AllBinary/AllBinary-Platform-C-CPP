@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/AllBinaryMediaManager.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,13 +83,12 @@
 #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
 #include "org/allbinary/media/audio/NoPlayer.h"
 //NotDeviceSpecificNoMediaMIDP1Library
-class AllBinaryMediaManager
-            : public Object
-         {
 
-    private: static inline const std::string THIS = "AllBinaryMediaManagerNoMediaMIDP1";
+AllBinaryMediaManager::AllBinaryMediaManager(){
+}
 
-    public: static bool isMuted(){
+
+    auto AllBinaryMediaManager::isMuted() -> bool{
 
 
 
@@ -89,11 +98,11 @@ class AllBinaryMediaManager
 }
 
 
-    public: static void setMuted(bool aMuted){
+    auto AllBinaryMediaManager::setMuted(bool aMuted) -> void{
 }
 
 
-    public: static bool update(){
+    auto AllBinaryMediaManager::update() -> bool{
 
 
 
@@ -105,7 +114,7 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface* soundsFactoryInterface){
+    auto AllBinaryMediaManager::init(SoundsFactoryInterface* soundsFactoryInterface) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -123,7 +132,7 @@ ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Media Manager");
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
+    auto AllBinaryMediaManager::shutdown(SoundsFactoryInterface* soundsFactoryInterface) -> void{
 (new Sounds(soundsFactoryInterface))->stopAll();
     
 (new Sounds(soundsFactoryInterface))->closeAll();
@@ -133,7 +142,7 @@ TsUtil::getInstance()->gc();
 }
 
 
-    public: static Player* createPlayerFromInputStream(InputStream* stream, std::string type){
+    auto AllBinaryMediaManager::createPlayerFromInputStream(InputStream* stream, std::string type) -> Player*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -151,7 +160,7 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(Inp
 }
 
 
-    public: static Player* createPlayer(std::string locator){
+    auto AllBinaryMediaManager::createPlayer(std::string locator) -> Player*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -170,11 +179,11 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(loc
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void playTone(int32_t frequency, int32_t time, int32_t volume){
+    auto AllBinaryMediaManager::playTone(int32_t frequency, int32_t time, int32_t volume) -> void{
 }
 
 
-    public: static std::vector<std::string> getSupportedContentTypes(std::string protocol){
+    auto AllBinaryMediaManager::getSupportedContentTypes(std::string protocol) -> std::vector<std::string>{
 
 
 
@@ -184,7 +193,7 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(loc
 }
 
 
-    public: static std::vector<std::string> getSupportedProtocols(std::string content_type){
+    auto AllBinaryMediaManager::getSupportedProtocols(std::string content_type) -> std::vector<std::string>{
 
 
 
@@ -194,11 +203,6 @@ logUtil->putF(commonString->START, AllBinaryMediaManager::THIS, "creatPlayer(loc
 }
 
 
-private: AllBinaryMediaManager(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP

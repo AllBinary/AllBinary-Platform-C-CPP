@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbIOSystem
-            : public Object
+            : public virtual Object
          {
 
-    private: static AbIOSystem* instance() { static std::unique_ptr<AbIOSystem> value(new AbIOSystem()); return value.get(); }
+    private: static AbIOSystem* instance_owner();
+    private: static AbIOSystem* instance;
 
     public: static AbIOSystem* getInstance();
 
+
+            
+    public: AbIOSystem();
+        
     private: const std::string type = "java.io";
 
     public: std::string getType();
@@ -68,3 +82,10 @@ class AbIOSystem
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_H_COMPLETE
+        
+        #endif
+    

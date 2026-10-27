@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H
         #define ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/direction/Direction.h>
-
-      
-#include <org/allbinary/direction/DirectionFactory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapDirectionUtil.h>
-
-      
-#include <org/allbinary/media/graphics/geography/pathfinding/GeographicMapCellPathHistoryInfo.h>
-
-      
+class BasicArrayList;
+class Direction;
+class DirectionFactory;
+class AllBinaryLayerManager;
+class AngleInfo;
+class GeographicMapCellHistory;
+class GeographicMapCellPosition;
+class GeographicMapDirectionUtil;
+class GeographicMapCellPathHistoryInfo;
 
 
 
@@ -76,10 +63,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ai/path/BasicDirectionAIHelper.h"
+        class BasicDirectionAIHelper;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicAIProcessor
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
@@ -98,7 +89,7 @@ public: BasicAIProcessor(std::string name, GeographicMapCellHistory* geographicM
 
     public: void init();
 
-    private: GeographicMapDirectionUtil* geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
+    private: GeographicMapDirectionUtil* geographicMapDirectionUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -128,3 +119,40 @@ public: BasicAIProcessor(std::string name, GeographicMapCellHistory* geographicM
 
 
         #endif //ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/direction/Direction.h>)
+#include <org/allbinary/direction/Direction.h>
+#endif
+#if __has_include(<org/allbinary/direction/DirectionFactory.h>)
+#include <org/allbinary/direction/DirectionFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapDirectionUtil.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapDirectionUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/pathfinding/GeographicMapCellPathHistoryInfo.h>)
+#include <org/allbinary/media/graphics/geography/pathfinding/GeographicMapCellPathHistoryInfo.h>
+#endif
+#if __has_include("org/allbinary/game/ai/path/BasicDirectionAIHelper.h")
+#include "org/allbinary/game/ai/path/BasicDirectionAIHelper.h"
+#endif
+
+        #endif
+    

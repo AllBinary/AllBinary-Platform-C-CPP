@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_H
         #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
+class AllBinaryEventObject;
 
 
 
@@ -53,12 +56,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/event/LayerManagerEventListenerInterface.h"
-#include "org/allbinary/layer/event/LayerManagerEvent.h"
+class LayerManagerEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerManagerEventListener
-            : public Object
+            : public virtual Object
         , public LayerManagerEventListenerInterface {
 
+
+            
+    public: LayerManagerEventListener();
+        
     public: void onEvent(AllBinaryEventObject* eventObject);
 
                 //@Throws(Exception.constructor)
@@ -75,3 +86,19 @@ class LayerManagerEventListener
 
 
         #endif //ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include("org/allbinary/layer/event/LayerManagerEventListenerInterface.h")
+#include "org/allbinary/layer/event/LayerManagerEventListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/event/LayerManagerEvent.h")
+#include "org/allbinary/layer/event/LayerManagerEvent.h"
+#endif
+
+        #endif
+    

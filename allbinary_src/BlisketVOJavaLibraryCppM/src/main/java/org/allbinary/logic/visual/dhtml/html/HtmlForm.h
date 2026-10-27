@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLFORM_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLFORM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/visual/dhtml/html/input/HtmlInput.h>
-
-      
-#include <org/allbinary/logic/visual/dhtml/html/table/HtmlTable.h>
-
-      
+class StringUtil;
+class HtmlInput;
+class HtmlTable;
 
 
 
@@ -68,8 +61,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlForm
-            : public Object
+            : public virtual Object
          {
 
     private: const std::string FORMBEGIN = "<form ";
@@ -84,10 +81,7 @@ class HtmlForm
 
     private: const std::string POST = "POST\"";
 
-    private: const std::vector<std::string> METHODS = 
-                                                        {
-                                                            this->GET,this->POST
-                                                        };
+    private: std::vector<std::string> METHODS;
 
     private: const std::string METHOD = "METHOD=\"";
 
@@ -95,7 +89,7 @@ class HtmlForm
 
     private: std::string action;
 
-    BasicArrayList* inputs;
+    public: BasicArrayList* inputs;
 
 public: HtmlForm(std::string action);
 
@@ -115,3 +109,26 @@ public: HtmlForm(std::string action);
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLFORM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLFORM_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLFORM_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/dhtml/html/input/HtmlInput.h>)
+#include <org/allbinary/logic/visual/dhtml/html/input/HtmlInput.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/dhtml/html/table/HtmlTable.h>)
+#include <org/allbinary/logic/visual/dhtml/html/table/HtmlTable.h>
+#endif
+
+        #endif
+    

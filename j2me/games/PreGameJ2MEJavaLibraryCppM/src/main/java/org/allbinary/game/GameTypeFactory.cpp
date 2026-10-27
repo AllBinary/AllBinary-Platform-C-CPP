@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GAMETYPEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_GAMETYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/GameTypeFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,33 +61,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/GameType.h"
 
-class GameTypeFactory
-            : public Object
-         {
 
-    private: static GameTypeFactory* instance() { static std::unique_ptr<GameTypeFactory> value(new GameTypeFactory()); return value.get(); }
+GameTypeFactory::GameTypeFactory() : NULL_GAME_TYPE_ARRAY({}), NONE(new GameType(StringUtil::getInstance()->NULL_STRING)), SINGLE_PLAYER(new GameType("Single Player")), MULTI_PLAYER(new GameType("Multi Player")), BOT(new GameType("Artificial Player")) {
+        }
+        auto GameTypeFactory::instance_owner() -> GameTypeFactory* { static std::unique_ptr<GameTypeFactory> value(new GameTypeFactory()); return value.get(); }
+GameTypeFactory* GameTypeFactory::instance = GameTypeFactory::instance_owner();
 
-    public: static GameTypeFactory* getInstance(){
+    auto GameTypeFactory::getInstance() -> GameTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameTypeFactory::instance();
+                        return GameTypeFactory::instance;
     
 }
 
 
-    public: std::vector<GameType*> NULL_GAME_TYPE_ARRAY = {};
 
-    public: GameType* NONE = new GameType(StringUtil::getInstance()->NULL_STRING);
 
-    public: GameType* SINGLE_PLAYER = new GameType("Single Player");
-
-    public: GameType* MULTI_PLAYER = new GameType("Multi Player");
-
-    public: GameType* BOT = new GameType("Artificial Player");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_GAMETYPEFACTORY_CPP

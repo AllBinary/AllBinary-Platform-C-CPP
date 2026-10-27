@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,21 +70,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryEventObject
-            : public Object
-         {
+auto AllBinaryEventObject::NULL_EVENT_owner() -> AllBinaryEventObject* { static std::unique_ptr<AllBinaryEventObject> value(new AllBinaryEventObject(NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
+AllBinaryEventObject* AllBinaryEventObject::NULL_EVENT = AllBinaryEventObject::NULL_EVENT_owner();
 
-    public: static AllBinaryEventObject* NULL_EVENT() { static std::unique_ptr<AllBinaryEventObject> value(new AllBinaryEventObject(NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
-
-    private: Object* source;
-
-public: AllBinaryEventObject(Object* anyType){
+AllBinaryEventObject::AllBinaryEventObject(Object* anyType){
 this->source= anyType;
     
 }
 
 
-    public: Object* getSource(){
+    auto AllBinaryEventObject::getSource() -> Object*{
 
 
 
@@ -84,13 +89,12 @@ this->source= anyType;
 }
 
 
-    protected: void setSource(Object* source){
+    auto AllBinaryEventObject::setSource(Object* source) -> void{
 this->source= source;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_CPP

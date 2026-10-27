@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PARTNERIDENTIFIERFILEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PARTNERIDENTIFIERFILEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/PartnerIdentifierFileUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,27 +77,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PartnerIdentifierFileUtil
-            : public Object
-         {
 
-    private: static PartnerIdentifierFileUtil* instance() { static std::unique_ptr<PartnerIdentifierFileUtil> value(new PartnerIdentifierFileUtil()); return value.get(); }
+PartnerIdentifierFileUtil::PartnerIdentifierFileUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto PartnerIdentifierFileUtil::instance_owner() -> PartnerIdentifierFileUtil* { static std::unique_ptr<PartnerIdentifierFileUtil> value(new PartnerIdentifierFileUtil()); return value.get(); }
+PartnerIdentifierFileUtil* PartnerIdentifierFileUtil::instance = PartnerIdentifierFileUtil::instance_owner();
 
-    public: static PartnerIdentifierFileUtil* getInstance(){
+    auto PartnerIdentifierFileUtil::getInstance() -> PartnerIdentifierFileUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PartnerIdentifierFileUtil::instance();
+                        return PartnerIdentifierFileUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const std::string FILE_NAME = "partner.txt";
-
-    public: std::string get(){
+    auto PartnerIdentifierFileUtil::get() -> std::string{
 
         try {
             
@@ -112,7 +118,7 @@ class PartnerIdentifierFileUtil
                         if(size > 0)
                         
                                     {
-                                    partnerString= chars.slice(0, size).join('');
+                                    partnerString= JavaString::fromChars(chars, 0, size);
     
 
                                     }
@@ -145,7 +151,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PARTNERIDENTIFIERFILEUTIL_CPP

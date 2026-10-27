@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/AnimationInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnimationInterface: public LocationPaintableInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void nextFrame() = 0;
 
-    public: virtual void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACE_CPP

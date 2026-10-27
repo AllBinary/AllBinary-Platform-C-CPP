@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STORETAGWORKFLOWFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STORETAGWORKFLOWFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/StoreTagWorkFlowFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,38 +89,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/workflow/StoreWorkFlowInterface.h"
 
-class StoreTagWorkFlowFactory
-            : public Object
-         {
+auto StoreTagWorkFlowFactory::instance_owner() -> StoreTagWorkFlowFactory* { static std::unique_ptr<StoreTagWorkFlowFactory> value(new StoreTagWorkFlowFactory()); return value.get(); }
+StoreTagWorkFlowFactory* StoreTagWorkFlowFactory::instance = StoreTagWorkFlowFactory::instance_owner();
 
-    private: static StoreTagWorkFlowFactory* instance() { static std::unique_ptr<StoreTagWorkFlowFactory> value(new StoreTagWorkFlowFactory()); return value.get(); }
-
-    public: static StoreTagWorkFlowFactory* getInstance(){
+    auto StoreTagWorkFlowFactory::getInstance() -> StoreTagWorkFlowFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreTagWorkFlowFactory::instance();
+                        return StoreTagWorkFlowFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: StoreTagWorkFlowFactory(){
+StoreTagWorkFlowFactory::StoreTagWorkFlowFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: StoreWorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+    auto StoreTagWorkFlowFactory::getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) -> StoreWorkFlowInterface*{
 
         try {
             
     std::string workFlowClassName = propertiesHashMap->get(DynamicObjectData::NAME);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     
@@ -122,7 +127,7 @@ stringBuffer->append(workFlowClassName);
     
 stringBuffer->append("->");
     
-stringBuffer->append(StoreTagWorkFlowFactory::instance()->getClass()->getName());
+stringBuffer->append(StoreTagWorkFlowFactory::instance->getClass()->getName());
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
@@ -157,7 +162,7 @@ params[1]= pageContext;
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -172,7 +177,7 @@ stringBuffer->append(workFlowClassName);
     
 stringBuffer->append("->");
     
-stringBuffer->append(StoreTagWorkFlowFactory::instance()->getClass()->getName());
+stringBuffer->append(StoreTagWorkFlowFactory::instance->getClass()->getName());
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
@@ -193,7 +198,7 @@ this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, 
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -208,7 +213,7 @@ stringBuffer->append(workFlowClassName);
     
 stringBuffer->append("->");
     
-stringBuffer->append(StoreTagWorkFlowFactory::instance()->getClass()->getName());
+stringBuffer->append(StoreTagWorkFlowFactory::instance->getClass()->getName());
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
@@ -228,7 +233,6 @@ this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STORETAGWORKFLOWFACTORY_CPP

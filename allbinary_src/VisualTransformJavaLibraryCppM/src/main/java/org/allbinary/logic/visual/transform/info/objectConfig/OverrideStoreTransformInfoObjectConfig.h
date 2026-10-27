@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
+class AbeClientInformationInterface;
+class TransformInfoInterface;
+class Document;
 
 
 
@@ -58,17 +57,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/objectConfig/GenericStoreTransformInfoObjectConfig.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OverrideStoreTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
 
-public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface);
+public: OverrideStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface);
 
-public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, Object* document);
+public: OverrideStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, Document* document);
 
-public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string name, std::string type);
+public: OverrideStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    protected: Document* generate(Document* objectConfigDocument);
+    /*protected*/ public: Document* generate(Document* objectConfigDocument);
 
 };
 
@@ -76,3 +79,22 @@ public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Obj
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/info/objectConfig/GenericStoreTransformInfoObjectConfig.h")
+#include "org/allbinary/logic/visual/transform/info/objectConfig/GenericStoreTransformInfoObjectConfig.h"
+#endif
+
+        #endif
+    

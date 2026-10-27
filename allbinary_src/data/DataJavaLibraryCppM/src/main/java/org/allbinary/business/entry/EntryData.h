@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_H
         #define ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EntryData
-            : public Object
+            : public virtual Object
          {
 
-    private: static EntryData* instance() { static std::unique_ptr<EntryData> value(new EntryData()); return value.get(); }
+    private: static EntryData* instance_owner();
+    private: static EntryData* instance;
 
     public: static EntryData* getInstance();
 
@@ -82,3 +92,10 @@ private: EntryData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_H_COMPLETE
+        
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CANVAS_PROCESSOR_H
         #define ORG_ALLBINARY_CANVAS_PROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,14 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Processor
-            : public Object
+            : public virtual Object
          {
 
-    private: static Processor* SINGLETON() { static std::unique_ptr<Processor> value(new Processor()); return value.get(); }
+    private: static Processor* SINGLETON_owner();
+    private: static Processor* SINGLETON;
 
     public: static Processor* getInstance();
 
+
+            
+    public: Processor();
+        
                 //@Throws(Exception.constructor)
             
     public: void process();
@@ -72,3 +86,10 @@ class Processor
 
 
         #endif //ORG_ALLBINARY_CANVAS_PROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CANVAS_PROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_CANVAS_PROCESSOR_H_COMPLETE
+        
+        #endif
+    

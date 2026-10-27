@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_OSGI_FRAMEWORK_SERVICEREFERENCE_CPP
+        #define ORG_OSGI_FRAMEWORK_SERVICEREFERENCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/osgi/framework/ServiceReference.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,13 +44,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/osgi/framework/Comparable.h"
 
-class ServiceReference: public Comparable {
+//Interface - declared in the header
 
-    public: virtual Object* getProperty(std::string key) = 0;
 
-    public: virtual std::vector<std::string> getPropertyKeys() = 0;
 
-};
-
-            
-
+        #endif //ORG_OSGI_FRAMEWORK_SERVICEREFERENCE_CPP

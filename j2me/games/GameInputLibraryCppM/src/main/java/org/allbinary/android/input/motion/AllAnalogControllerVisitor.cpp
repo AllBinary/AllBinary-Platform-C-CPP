@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ALLANALOGCONTROLLERVISITOR_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ALLANALOGCONTROLLERVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/AllAnalogControllerVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,9 +67,11 @@
         #include "org/allbinary/android/input/motion/AnalogControllerVisitor.h"
 #include "org/allbinary/android/input/motion/AnalogLocationInputProcessor.h"
 
-class AllAnalogControllerVisitor: public AnalogControllerVisitor {
 
-    public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInputProcessor* analogLocationInputProcessor){
+AllAnalogControllerVisitor::AllAnalogControllerVisitor() {
+        }
+        
+    auto AllAnalogControllerVisitor::process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInputProcessor* analogLocationInputProcessor) -> void{
 
     BasicArrayList* analogLocationInputList = AnalogLocationInputFactory::getInstance()->getList();;
     
@@ -82,7 +94,6 @@ analogLocationInputProcessor->process(allbinaryLayerManager, analogLocationInput
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_ALLANALOGCONTROLLERVISITOR_CPP

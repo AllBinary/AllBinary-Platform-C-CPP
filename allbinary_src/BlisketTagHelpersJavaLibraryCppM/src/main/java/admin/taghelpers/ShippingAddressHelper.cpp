@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_SHIPPINGADDRESSHELPER_CPP
+        #define ADMIN_TAGHELPERS_SHIPPINGADDRESSHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/ShippingAddressHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -90,23 +100,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/BasicTable.h"
 
-class ShippingAddressHelper: public BasicTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: HttpServletRequest* request;
-
-    private: std::string userName;
-
-    private: StreetAddress* streetAddress;
-
-    private: Portion* portion;
-
-public: ShippingAddressHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+ShippingAddressHelper::ShippingAddressHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), stringUtil(StringUtil::getInstance()){
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->weblisketSession= new WeblisketSession(hashMap, pageContext);
@@ -118,7 +113,7 @@ this->getAddressForm();
 }
 
 
-    private: void getAddressForm(){
+    auto ShippingAddressHelper::getAddressForm() -> void{
 this->userName= this->request->getParameter(UserData::USERNAME);
     
 
@@ -135,17 +130,17 @@ this->streetAddress= new StreetAddress(this->request);
 }
 
 
-    public: std::string drop(){
+    auto ShippingAddressHelper::drop() -> std::string{
 
         try {
             
     std::string success = (new ShippingAddressesEntity(this->stringUtil->EMPTY_STRING))->drop();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF(success, this, this->commonStrings.DROP);
+                                    this->logUtil->putF(success, this, this->commonStrings->DROP);
     
 
                                     }
@@ -164,10 +159,10 @@ this->streetAddress= new StreetAddress(this->request);
     std::string error = "Failed to drop Admin table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
     
 
                                     }
@@ -183,14 +178,14 @@ this->streetAddress= new StreetAddress(this->request);
 }
 
 
-    public: std::string create(){
+    auto ShippingAddressHelper::create() -> std::string{
 
         try {
             
     std::string success = (new ShippingAddressesEntity(this->stringUtil->EMPTY_STRING))->createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -212,10 +207,10 @@ this->streetAddress= new StreetAddress(this->request);
     std::string error = "Failed to create user table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -231,7 +226,7 @@ this->streetAddress= new StreetAddress(this->request);
 }
 
 
-    public: std::string restore(){
+    auto ShippingAddressHelper::restore() -> std::string{
 
         try {
             
@@ -241,7 +236,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(new ShippingAddressesEntity(StringUtil::getInstance()->EMPTY_STRING), portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -263,10 +258,10 @@ this->streetAddress= new StreetAddress(this->request);
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -282,7 +277,7 @@ this->streetAddress= new StreetAddress(this->request);
 }
 
 
-    public: std::string backup(){
+    auto ShippingAddressHelper::backup() -> std::string{
 
         try {
             
@@ -292,7 +287,7 @@ this->streetAddress= new StreetAddress(this->request);
     std::string result = AbSqlTableUtil::getInstance()->backupTable(new ShippingAddressesEntity(StringUtil::getInstance()->EMPTY_STRING));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -314,10 +309,10 @@ this->streetAddress= new StreetAddress(this->request);
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -333,7 +328,7 @@ this->streetAddress= new StreetAddress(this->request);
 }
 
 
-    public: std::string insert(){
+    auto ShippingAddressHelper::insert() -> std::string{
 
         try {
             
@@ -342,7 +337,7 @@ this->streetAddress= new StreetAddress(this->request);
 ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->add(this->streetAddress);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert");
@@ -364,10 +359,10 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed to add Shipping streetAddress";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert", &e);
     
 
                                     }
@@ -383,7 +378,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 }
 
 
-    public: std::string update(){
+    auto ShippingAddressHelper::update() -> std::string{
 
         try {
             
@@ -392,7 +387,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->update(this->streetAddress);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successfull update of a Users Shipping Address table", this, "update()");
@@ -414,10 +409,10 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed update of a Users Shipping Address Table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update", &e);
     
 
                                     }
@@ -433,7 +428,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 }
 
 
-    private: std::string setToBillingAddress(){
+    auto ShippingAddressHelper::setToBillingAddress() -> std::string{
 
         try {
             
@@ -474,10 +469,10 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed Setting Shipping address to Billing Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setToBillingAddress()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setToBillingAddress()", &e);
     
 
                                     }
@@ -493,7 +488,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 }
 
 
-    public: std::string delete_(){
+    auto ShippingAddressHelper::delete_() -> std::string{
 
         try {
             
@@ -502,7 +497,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->remove(int32_t(this->streetAddress->getId()));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "remove()");
@@ -524,10 +519,10 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed to remove Shipping Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "remove()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "remove()", &e);
     
 
                                     }
@@ -543,7 +538,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 }
 
 
-    public: std::string set(){
+    auto ShippingAddressHelper::set() -> std::string{
 
         try {
             
@@ -552,7 +547,7 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSession->getUserName())->setDefault(this->streetAddress->getId());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "set()");
@@ -574,10 +569,10 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
     std::string error = "Failed to set Shipping Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "set()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "set()", &e);
     
 
                                     }
@@ -593,7 +588,6 @@ ShippingAddressesEntityFactory::getInstance()->getInstance(this->weblisketSessio
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_SHIPPINGADDRESSHELPER_CPP

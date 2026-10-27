@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_ANYRANDOMDROPCELLPOSITIONGENERATOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_ANYRANDOMDROPCELLPOSITIONGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/drop/AnyRandomDropCellPositionGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,15 +88,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/drop/BaseDropCellPositionGenerator.h"
 
-class AnyRandomDropCellPositionGenerator: public BaseDropCellPositionGenerator {
 
-    protected: BasicArrayList* list = new BasicArrayListD();
-
-    protected: Object* geographicMapInterface = NullUtil::getInstance()->NULL_OBJECT;
-
+AnyRandomDropCellPositionGenerator::AnyRandomDropCellPositionGenerator() : list(new BasicArrayListD()), geographicMapInterface(NullUtil::getInstance()->NULL_OBJECT) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface){
+    auto AnyRandomDropCellPositionGenerator::update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface) -> void{
 this->geographicMapInterface= geographicMapInterface;
     
 
@@ -139,11 +147,10 @@ geographicMapCellPosition= basicGeographicMapCellPositionFactory->getAt(randomCo
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto AnyRandomDropCellPositionGenerator::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_ANYRANDOMDROPCELLPOSITIONGENERATOR_CPP

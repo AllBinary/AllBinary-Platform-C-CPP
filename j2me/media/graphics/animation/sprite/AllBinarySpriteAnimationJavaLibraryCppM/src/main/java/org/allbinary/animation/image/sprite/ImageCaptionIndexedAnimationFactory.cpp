@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_IMAGECAPTIONINDEXEDANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_IMAGECAPTIONINDEXEDANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/ImageCaptionIndexedAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,39 +103,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
 
-class ImageCaptionIndexedAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    protected: AnimationFactoryImageScaleUtil* animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
-
-    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
-
-    private: Image* captionImage;
-
-    private: Image* spriteMovieImage;
-
-    private: int32_t frameWidth;
-
-    private: int32_t frameHeight;
-
-    private: int32_t captionDx;
-
-    private: int32_t captionDy;
-
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-    private: int32_t time;
-
-    private: Sound* soundInterface;
-
-    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
-
-    private: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: ImageCaptionIndexedAnimationFactory(Image* captionImage, Image* spriteMovieImage, Sound* soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory* animationBehaviorFactory){
+ImageCaptionIndexedAnimationFactory::ImageCaptionIndexedAnimationFactory(Image* captionImage, Image* spriteMovieImage, Sound* soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory* animationBehaviorFactory) : animationFactoryImageScaleUtil(AnimationFactoryImageScaleUtil::getInstance()), animationFactorySpriteScaleUtil(AnimationFactorySpriteScaleUtil::getInstance()), scaleProperties(ScaleProperties::instance){
 
                         if(animationBehaviorFactory == AnimationBehaviorFactory::getInstance())
                         
@@ -162,7 +141,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto ImageCaptionIndexedAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
     Image* scaledImage = this->animationFactoryImageScaleUtil->createImage(this->captionImage, this->captionImage->getWidth(), this->captionImage->getHeight(), this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
@@ -187,7 +166,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
                                     
 
 
-                            throw new Exception("Sound Was not Initialized");
+                            throw Exception("Sound Was not Initialized");
                     
 
                                     }
@@ -201,13 +180,12 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto ImageCaptionIndexedAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 this->scaleProperties= scaleProperties;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_IMAGECAPTIONINDEXEDANIMATIONFACTORY_CPP

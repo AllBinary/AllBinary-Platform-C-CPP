@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLELOGHELPER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLELOGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,31 +58,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WaypointRunnableLogHelper
-            : public Object
-         {
 
-    private: static WaypointRunnableLogHelper* instance() { static std::unique_ptr<WaypointRunnableLogHelper> value(new WaypointRunnableLogHelper()); return value.get(); }
+WaypointRunnableLogHelper::WaypointRunnableLogHelper() {
+        }
+        auto WaypointRunnableLogHelper::instance_owner() -> WaypointRunnableLogHelper* { static std::unique_ptr<WaypointRunnableLogHelper> value(new WaypointRunnableLogHelper()); return value.get(); }
+WaypointRunnableLogHelper* WaypointRunnableLogHelper::instance = WaypointRunnableLogHelper::instance_owner();
 
-    public: static WaypointRunnableLogHelper* getInstance(){
+    auto WaypointRunnableLogHelper::getInstance() -> WaypointRunnableLogHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointRunnableLogHelper::instance();
+                        return WaypointRunnableLogHelper::instance;
     
 }
 
 
-    public: void start(PathFindingLayerInterface* pathFindingLayerInterface){
+    auto WaypointRunnableLogHelper::start(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
 }
 
 
-    public: void end(PathFindingLayerInterface* pathFindingLayerInterface){
+    auto WaypointRunnableLogHelper::end(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLELOGHELPER_CPP

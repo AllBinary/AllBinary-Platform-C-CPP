@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
+class Canvas;
+class NullUtil;
+class CommonPhoneStrings;
 
 
 
@@ -56,64 +55,72 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/GameKey.h"
-#include "org/allbinary/game/input/InputFactory.h"
+        class GameKey;
+class InputFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static GameKeyFactory* getInstance();
 
-    public: GameKey* NONE = new GameKey(InputFactory::getInstance()->MAX -1, "None");
 
-    public: GameKey* UP = new GameKey(Canvas::UP, CommonPhoneStrings::getInstance()->UP);
+            
+    public: GameKeyFactory();
+        
+    public: GameKey* NONE;
 
-    public: GameKey* DOWN = new GameKey(Canvas::DOWN, CommonPhoneStrings::getInstance()->DOWN);
+    public: GameKey* UP;
 
-    public: GameKey* LEFT = new GameKey(Canvas::LEFT, CommonPhoneStrings::getInstance()->LEFT);
+    public: GameKey* DOWN;
 
-    public: GameKey* RIGHT = new GameKey(Canvas::RIGHT, CommonPhoneStrings::getInstance()->RIGHT);
+    public: GameKey* LEFT;
 
-    public: GameKey* KEY_POUND = new GameKey(Canvas::KEY_POUND, "POUND");
+    public: GameKey* RIGHT;
 
-    public: GameKey* KEY_STAR = new GameKey(Canvas::KEY_STAR, "STAR");
+    public: GameKey* KEY_POUND;
 
-    public: GameKey* KEY_NUM0 = new GameKey(Canvas::KEY_NUM0, CommonPhoneStrings::getInstance()->ZERO);
+    public: GameKey* KEY_STAR;
 
-    public: GameKey* KEY_NUM1 = new GameKey(Canvas::KEY_NUM1, CommonPhoneStrings::getInstance()->ONE);
+    public: GameKey* KEY_NUM0;
 
-    public: GameKey* KEY_NUM2 = new GameKey(Canvas::KEY_NUM2, CommonPhoneStrings::getInstance()->TWO);
+    public: GameKey* KEY_NUM1;
 
-    public: GameKey* KEY_NUM3 = new GameKey(Canvas::KEY_NUM3, CommonPhoneStrings::getInstance()->THREE);
+    public: GameKey* KEY_NUM2;
 
-    public: GameKey* KEY_NUM4 = new GameKey(Canvas::KEY_NUM4, CommonPhoneStrings::getInstance()->FOUR);
+    public: GameKey* KEY_NUM3;
 
-    public: GameKey* KEY_NUM5 = new GameKey(Canvas::KEY_NUM5, CommonPhoneStrings::getInstance()->FIVE);
+    public: GameKey* KEY_NUM4;
 
-    public: GameKey* KEY_NUM6 = new GameKey(Canvas::KEY_NUM6, CommonPhoneStrings::getInstance()->SIX);
+    public: GameKey* KEY_NUM5;
 
-    public: GameKey* KEY_NUM7 = new GameKey(Canvas::KEY_NUM7, CommonPhoneStrings::getInstance()->SEVEN);
+    public: GameKey* KEY_NUM6;
 
-    public: GameKey* KEY_NUM8 = new GameKey(Canvas::KEY_NUM8, CommonPhoneStrings::getInstance()->EIGHT);
+    public: GameKey* KEY_NUM7;
 
-    public: GameKey* KEY_NUM9 = new GameKey(Canvas::KEY_NUM9, CommonPhoneStrings::getInstance()->NINE);
+    public: GameKey* KEY_NUM8;
 
-    public: GameKey* GAME_A = new GameKey(Canvas::GAME_A, "Game A");
+    public: GameKey* KEY_NUM9;
 
-    public: GameKey* GAME_B = new GameKey(Canvas::GAME_B, "Game B");
+    public: GameKey* GAME_A;
 
-    public: GameKey* GAME_C = new GameKey(Canvas::GAME_C, "Game C");
+    public: GameKey* GAME_B;
 
-    public: GameKey* GAME_D = new GameKey(Canvas::GAME_D, "Game D");
+    public: GameKey* GAME_C;
 
-    public: GameKey* FIRE = new GameKey(Canvas::FIRE, CommonPhoneStrings::getInstance()->FIRE);
+    public: GameKey* GAME_D;
 
-    public: GameKey* LEVEL_DOWN = new GameKey(Canvas::KEY_NUM9 +1, "Cheat Level Up");
+    public: GameKey* FIRE;
 
-    public: GameKey* LEVEL_UP = new GameKey(Canvas::KEY_NUM9 +2, "Cheat Level Down");
+    public: GameKey* LEVEL_DOWN;
+
+    public: GameKey* LEVEL_UP;
 
 };
 
@@ -121,3 +128,25 @@ class GameKeyFactory
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_GAMEKEYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_GAMEKEYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include("org/allbinary/game/input/GameKey.h")
+#include "org/allbinary/game/input/GameKey.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+
+        #endif
+    

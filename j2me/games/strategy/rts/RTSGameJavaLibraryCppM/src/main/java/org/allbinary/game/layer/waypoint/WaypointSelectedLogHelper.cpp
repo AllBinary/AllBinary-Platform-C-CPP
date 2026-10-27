@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTSELECTEDLOGHELPER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTSELECTEDLOGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointSelectedLogHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,27 +84,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/WaypointLogHelper.h"
 
-class WaypointSelectedLogHelper: public WaypointLogHelper {
 
-    private: static WaypointSelectedLogHelper* instanceC() { static std::unique_ptr<WaypointSelectedLogHelper> value(new WaypointSelectedLogHelper()); return value.get(); }
+WaypointSelectedLogHelper::WaypointSelectedLogHelper() : logUtil(LogUtil::getInstance()), commonSeps(CommonSeps::getInstance()), stringUtil(StringUtil::getInstance()) {
+        }
+        auto WaypointSelectedLogHelper::instanceC_owner() -> WaypointSelectedLogHelper* { static std::unique_ptr<WaypointSelectedLogHelper> value(new WaypointSelectedLogHelper()); return value.get(); }
+WaypointSelectedLogHelper* WaypointSelectedLogHelper::instanceC = WaypointSelectedLogHelper::instanceC_owner();
 
-    public: static WaypointSelectedLogHelper* getInstance(){
+    auto WaypointSelectedLogHelper::getInstance() -> WaypointSelectedLogHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointSelectedLogHelper::instanceC();
+                        return WaypointSelectedLogHelper::instanceC;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    public: void onWaypointEvent(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer){
+    auto WaypointSelectedLogHelper::onWaypointEvent(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -122,7 +128,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "onWaypointEvent");
 }
 
 
-    public: void addWaypointFromBuilding(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer){
+    auto WaypointSelectedLogHelper::addWaypointFromBuilding(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -150,7 +156,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: onWaypointEvent")
 }
 
 
-    public: void addWaypointFromBuildingList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer, BasicArrayList* list){
+    auto WaypointSelectedLogHelper::addWaypointFromBuildingList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer, BasicArrayList* list) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -165,7 +171,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: onWaypointEvent")
 }
 
 
-    public: void insertWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer* rtsLayer, std::string waypointName){
+    auto WaypointSelectedLogHelper::insertWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer* rtsLayer, std::string waypointName) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -186,7 +192,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: insertWaypoint");
 }
 
 
-    public: void insertWaypointList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer* rtsLayer, std::string waypointName, BasicArrayList* list){
+    auto WaypointSelectedLogHelper::insertWaypointList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer* rtsLayer, std::string waypointName, BasicArrayList* list) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -209,7 +215,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: insertWaypoint");
 }
 
 
-    public: void setRandomGeographicMapCellHistoryList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, BasicArrayList* pathsList){
+    auto WaypointSelectedLogHelper::setRandomGeographicMapCellHistoryList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, BasicArrayList* pathsList) -> void{
 
     int32_t size = pathsList->size();;
     
@@ -233,25 +239,25 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: setRandomGeograph
 }
 
 
-    public: void moveAwayFromBuilding(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto WaypointSelectedLogHelper::moveAwayFromBuilding(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Trying to move away from building")->toString(), this, "selected: moveAwayFromBuilding");
     
 }
 
 
-    public: void needToMove(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior){
+    auto WaypointSelectedLogHelper::needToMove(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(unitWaypointBehavior->getMovementLogicAsString())->toString(), this, "needToMove");
     
 }
 
 
-    public: void setRandomGeographicMapCellHistory(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto WaypointSelectedLogHelper::setRandomGeographicMapCellHistory(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" pathsList is null")->toString(), this, "setRandomGeographicMapCellHistory");
     
 }
 
 
-    public: void setCurrentPathGeographicMapCellPosition(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* existingCurrentPathGeographicMapCellPosition, GeographicMapCellPosition* currentPathGeographicMapCellPosition){
+    auto WaypointSelectedLogHelper::setCurrentPathGeographicMapCellPosition(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* existingCurrentPathGeographicMapCellPosition, GeographicMapCellPosition* currentPathGeographicMapCellPosition) -> void{
 
                         if(existingCurrentPathGeographicMapCellPosition == 
                                     nullptr
@@ -261,7 +267,7 @@ this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->
 }
 
 
-    public: void setNextUnvisitedPathGeographicMapCellPosition(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* existingNextUnvisitedPathGeographicMapCellPosition, GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition){
+    auto WaypointSelectedLogHelper::setNextUnvisitedPathGeographicMapCellPosition(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* existingNextUnvisitedPathGeographicMapCellPosition, GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition) -> void{
 
                         if(existingNextUnvisitedPathGeographicMapCellPosition != nextUnvisitedPathGeographicMapCellPosition)
                         this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" nextUnvisitedPathGeographicMapCellPosition: ")->append(this->stringUtil->toString(nextUnvisitedPathGeographicMapCellPosition))->toString(), this, "setNextUnvisitedPathGeographicMapCellPosition");
@@ -269,7 +275,6 @@ this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTSELECTEDLOGHELPER_CPP

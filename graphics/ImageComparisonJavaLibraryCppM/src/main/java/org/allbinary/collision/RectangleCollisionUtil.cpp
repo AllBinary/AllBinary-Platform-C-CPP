@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_CPP
+        #define ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/collision/RectangleCollisionUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/collision/Rectangle.h"
 
-class RectangleCollisionUtil
-            : public Object
-         {
 
-    public: static bool isCollision(Rectangle* rectangle, GPoint* point){
+RectangleCollisionUtil::RectangleCollisionUtil(){
+}
+
+
+    auto RectangleCollisionUtil::isCollision(Rectangle* rectangle, GPoint* point) -> bool{
 
                         if(point->getX() > (static_cast<int32_t>(rectangle->x) +rectangle->getWidth()) || point->getY() > (static_cast<int32_t>(rectangle->y) +rectangle->getHeight()) || point->getX() < rectangle->x || point->getY() < rectangle->y)
                         
@@ -83,7 +94,7 @@ class RectangleCollisionUtil
 }
 
 
-    public: static bool isCollision(Rectangle* rectangle1, Rectangle* rectangle2){
+    auto RectangleCollisionUtil::isCollision(Rectangle* rectangle1, Rectangle* rectangle2) -> bool{
 
 
 
@@ -93,7 +104,7 @@ class RectangleCollisionUtil
 }
 
 
-    private: static bool isCollision(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2){
+    auto RectangleCollisionUtil::isCollision(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2) -> bool{
 
                         if(rect2X1 >= rectX2 || rect2Y1 >= rectY2 || rect2X2 <= rectX1 || rect2Y2 <= rectY1)
                         
@@ -120,11 +131,6 @@ class RectangleCollisionUtil
 }
 
 
-private: RectangleCollisionUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_COLLISION_RECTANGLECOLLISIONUTIL_CPP

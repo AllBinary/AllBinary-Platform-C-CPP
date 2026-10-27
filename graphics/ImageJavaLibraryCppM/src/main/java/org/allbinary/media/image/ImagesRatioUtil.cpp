@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESRATIOUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESRATIOUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImagesRatioUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,31 +74,24 @@
 #include "org/allbinary/media/image/Point.h"
 #include "org/allbinary/media/image/Graphics2D.h"
 
-class ImagesRatioUtil
-            : public Object
-         {
+auto ImagesRatioUtil::instance_owner() -> ImagesRatioUtil* { static std::unique_ptr<ImagesRatioUtil> value(new ImagesRatioUtil()); return value.get(); }
+ImagesRatioUtil* ImagesRatioUtil::instance = ImagesRatioUtil::instance_owner();
 
-    private: static ImagesRatioUtil* instance() { static std::unique_ptr<ImagesRatioUtil> value(new ImagesRatioUtil()); return value.get(); }
-
-    public: static ImagesRatioUtil* getInstance(){
+    auto ImagesRatioUtil::getInstance() -> ImagesRatioUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImagesRatioUtil::instance();
+                        return ImagesRatioUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ImagesRatioUtil(){
+ImagesRatioUtil::ImagesRatioUtil() : logUtil(LogUtil::getInstance()), imageUtil(ImageUtil::getInstance()){
 }
 
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-    public: bool isEqual(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages){
+    auto ImagesRatioUtil::isEqual(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages) -> bool{
 
     int32_t end = totalImages;;
     
@@ -97,7 +100,7 @@ private: ImagesRatioUtil(){
                         end= bufferedImageArray.size();
                                 
 
-    double ratio = (bufferedImageArray[0].getWidth() /bufferedImageArray[0].getHeight());;
+    double ratio = (bufferedImageArray[0]->getWidth() /bufferedImageArray[0]->getHeight());;
     
 
 
@@ -107,7 +110,7 @@ private: ImagesRatioUtil(){
     int32_t index = 1;index < end; index++)
         {
 
-                        if(ratio != (bufferedImageArray[index].getWidth() /bufferedImageArray[index].getHeight()))
+                        if(ratio != (bufferedImageArray[index]->getWidth() /bufferedImageArray[index]->getHeight()))
                         
                                     {
                                     
@@ -130,7 +133,7 @@ private: ImagesRatioUtil(){
 }
 
 
-    public: double getAverage(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages){
+    auto ImagesRatioUtil::getAverage(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages) -> double{
 
     double ratio = 0;;
     
@@ -148,7 +151,7 @@ private: ImagesRatioUtil(){
                         for (
     int32_t index = 0;index < end; index++)
         {
-ratio += (bufferedImageArray[index].getWidth() /bufferedImageArray[index].getHeight());
+ratio += (bufferedImageArray[index]->getWidth() /bufferedImageArray[index]->getHeight());
     
 }
 
@@ -163,7 +166,7 @@ ratio += (bufferedImageArray[index].getWidth() /bufferedImageArray[index].getHei
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage* fudge(BufferedImage* bufferedImage, double ratio){
+    auto ImagesRatioUtil::fudge(BufferedImage* bufferedImage, double ratio) -> BufferedImage*{
 
     double imageRatio = (bufferedImage->getWidth() /bufferedImage->getHeight());;
     
@@ -198,7 +201,7 @@ point->y= (newHeight -bufferedImage->getHeight()) /2;
 
     CommonLabels* commonLabels = CommonLabels::getInstance();;
     
-this->logUtil->putF(commonLabels->WIDTH_LABEL +bufferedImage->getWidth() +" newWidth: " +newWidth +commonLabels->HEIGHT_LABEL +bufferedImage->getHeight() +" newHeight: " +newHeight +" needed ratio: " +(newWidth /newHeight), this, "fudge");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(commonLabels->WIDTH_LABEL +bufferedImage->getWidth()) +JavaString::valueOf(" newWidth: ")) +JavaString::valueOf(newWidth)) +JavaString::valueOf(commonLabels->HEIGHT_LABEL)) +JavaString::valueOf(bufferedImage->getHeight())) +JavaString::valueOf(" newHeight: ")) +JavaString::valueOf(newHeight)) +JavaString::valueOf(" needed ratio: ")) +JavaString::valueOf((newWidth /newHeight)), this, "fudge");
     
 
     BufferedImage* newBufferedImage = this->imageUtil->create(newWidth, newHeight);;
@@ -280,7 +283,7 @@ g->drawImage(bufferedImage, point->x, point->y, bufferedImage->getWidth(), buffe
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage*> fudge(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages, double ratio){
+    auto ImagesRatioUtil::fudge(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages, double ratio) -> std::vector<BufferedImage*>{
 
     int32_t end = totalImages;;
     
@@ -311,7 +314,6 @@ fudgedBufferedImageArray[index]= fudge(bufferedImageArray[index], ratio);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESRATIOUTIL_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_FILLANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_FILLANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/FillAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -39,15 +49,8 @@
         #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class FillAnimation: public IndexedAnimation {
 
-    private: std::vector<int32_t> pixelBuffer;
-
-    private: int32_t width;
-
-    private: int32_t height;
-
-public: FillAnimation(std::vector<int32_t> pixelBuffer, int32_t width, int32_t height, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+FillAnimation::FillAnimation(std::vector<int32_t> pixelBuffer, int32_t width, int32_t height, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +66,7 @@ this->pixelBuffer= pixelBuffer;
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto FillAnimation::setBasicColorP(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -78,7 +81,7 @@ this->pixelBuffer= pixelBuffer;
 
                                     }
                                 
-super.setBasicColorP(basicColor);
+IndexedAnimation::setBasicColorP(basicColor);
     
 
                         if(changed)
@@ -92,7 +95,7 @@ super.setBasicColorP(basicColor);
 }
 
 
-    public: void changeBasicColor(BasicColor* basicColor){
+    auto FillAnimation::changeBasicColor(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -107,7 +110,7 @@ super.setBasicColorP(basicColor);
 
                                     }
                                 
-super.changeBasicColor(basicColor);
+IndexedAnimation::changeBasicColor(basicColor);
     
 
                         if(changed)
@@ -121,7 +124,7 @@ super.changeBasicColor(basicColor);
 }
 
 
-    public: void setAlpha(int32_t alpha){
+    auto FillAnimation::setAlpha(int32_t alpha) -> void{
 
     bool changed = false;;
     
@@ -134,7 +137,7 @@ super.changeBasicColor(basicColor);
 
                                     }
                                 
-super.setAlpha(alpha);
+IndexedAnimation::setAlpha(alpha);
     
 
                         if(changed)
@@ -148,25 +151,24 @@ super.setAlpha(alpha);
 }
 
 
-    public: void setScale(float scaleX, float scaleY){
+    auto FillAnimation::setScale(float scaleX, float scaleY) -> void{
 }
 
 
-    public: void setMaxScale(float maxScaleX, float maxScaleY){
+    auto FillAnimation::setMaxScale(float maxScaleX, float maxScaleY) -> void{
 }
 
 
-    private: void updateModifiers(){
+    auto FillAnimation::updateModifiers() -> void{
 }
 
 
-    protected: void paint(Graphics* g){
+    auto FillAnimation::paint(Graphics* g) -> void{
 g->drawRGB(pixelBuffer, 0, width, 0, 0, width, height, true);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_FILLANIMATION_CPP

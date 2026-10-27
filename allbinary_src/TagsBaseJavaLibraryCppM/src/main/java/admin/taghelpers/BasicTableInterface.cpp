@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_BASICTABLEINTERFACE_CPP
+        #define ADMIN_TAGHELPERS_BASICTABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/BasicTableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicTableInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string drop() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string create() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string restore() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string backup() = 0;
-
-};
-
-            
-
+        #endif //ADMIN_TAGHELPERS_BASICTABLEINTERFACE_CPP

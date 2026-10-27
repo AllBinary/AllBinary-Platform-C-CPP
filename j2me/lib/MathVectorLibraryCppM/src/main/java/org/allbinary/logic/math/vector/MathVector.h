@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTOR_H
         #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
+class BasicDecimal;
 
 
 
@@ -52,15 +55,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/math/vector/MathVectorInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MathVector
-            : public Object
+            : public virtual Object
         , public MathVectorInterface {
 
     private: BasicDecimal* magnitudeBasicDecimal;
 
     private: int32_t direction;
 
-    protected: BasicDecimal* resultBasicDecimal;
+    /*protected*/ public: BasicDecimal* resultBasicDecimal;
 
 public: MathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction);
 
@@ -76,3 +83,16 @@ public: MathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction);
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTOR_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTOR_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/math/BasicDecimal.h>)
+#include <org/allbinary/logic/math/BasicDecimal.h>
+#endif
+#if __has_include("org/allbinary/logic/math/vector/MathVectorInterface.h")
+#include "org/allbinary/logic/math/vector/MathVectorInterface.h"
+#endif
+
+        #endif
+    

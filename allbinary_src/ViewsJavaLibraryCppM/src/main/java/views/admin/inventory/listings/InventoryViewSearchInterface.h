@@ -21,6 +21,11 @@
         #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_H
         #define VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,7 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryViewSearchInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class InventoryViewSearchInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -74,3 +85,10 @@ class InventoryViewSearchInterface {
 
 
         #endif //VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_H_COMPLETE)
+        #define VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERGAMEINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERGAMEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -136,31 +146,8 @@
 #include "org/allbinary/game/input/SelectedRTSLayersPlayerDowngradeGameInputProcessor.h"
 #include "org/allbinary/game/input/GameInputProcessorUtil.h"
 
-class SelectedRTSLayersPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
-
-    private: BasicArrayList* list;
-
-    protected: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
-
-    private: BasicArrayList* selectedRTSLayersList = new BasicArrayListD();
-
-    private: BasicArrayList* preSelectedRTSLayersList = new BasicArrayListD();
-
-    private: BasicArrayList* paintSelectedRTSLayersList = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
-    private: RTSPlayerLayerInterface* rtsPlayerLayerInterface;
-
-    private: Visitor* selectRTSLayerVisitorInterface;
-
-    private: GameNotificationEvent* upgradeGameNotificationEvent;
-
-    private: GameNotificationEvent* noMoneyGameNotificationEvent;
-
-    private: GameNotificationEvent* downgradeGameNotificationEvent;
-
-public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, BasicArrayList* list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface) : PlayerGameInput(list, new BasicArrayListD(), playerInputId){
+SelectedRTSLayersPlayerGameInput::SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, BasicArrayList* list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface) : PlayerGameInput(list, new BasicArrayListD(), playerInputId), inputProcessorArray(std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX)), isSingleKeyProcessing(Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS)), selectedRTSLayersList(new BasicArrayListD()), preSelectedRTSLayersList(new BasicArrayListD()), paintSelectedRTSLayersList(BasicArrayListUtil::getInstance()->getImmutableInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -192,7 +179,7 @@ this->downgradeGameNotificationEvent= new GameNotificationEvent(this, RTSGameStr
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
+    auto SelectedRTSLayersPlayerGameInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
     
@@ -208,7 +195,7 @@ this->downgradeGameNotificationEvent->setBasicColorP(geographicMapInterface->get
 }
 
 
-    public: bool isSelected(RTSLayer* rtsLayer){
+    auto SelectedRTSLayersPlayerGameInput::isSelected(RTSLayer* rtsLayer) -> bool{
 
                         if(this->selectedRTSLayersList->contains(rtsLayer))
                         
@@ -237,7 +224,7 @@ this->downgradeGameNotificationEvent->setBasicColorP(geographicMapInterface->get
 
                 //@Throws(Exception.constructor)
             
-    protected: void upgrade(){
+    auto SelectedRTSLayersPlayerGameInput::upgrade() -> void{
 
     bool anyChanged = false;;
     
@@ -322,7 +309,7 @@ rtsPlayerGameInput->updatePaintable();
 
                 //@Throws(Exception.constructor)
             
-    protected: void downgrade(){
+    auto SelectedRTSLayersPlayerGameInput::downgrade() -> void{
 
     bool anyChanged = false;;
     
@@ -383,7 +370,7 @@ rtsPlayerGameInput->updatePaintable();
 }
 
 
-    public: void initInputProcessors(){
+    auto SelectedRTSLayersPlayerGameInput::initInputProcessors() -> void{
 this->inputProcessorArray[Canvas::KEY_NUM1]= new SelectedRTSLayersPlayerUpgradeGameInputProcessor(this);
     
 this->inputProcessorArray[Canvas::KEY_NUM3]= new SelectedRTSLayersPlayerDowngradeGameInputProcessor(this);
@@ -395,14 +382,14 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void processInputKey(int32_t key){
+    auto SelectedRTSLayersPlayerGameInput::processInputKey(int32_t key) -> void{
 
                         if(this->selectedRTSLayersList != 
                                     nullptr
                                 )
                         
                                     {
-                                    this->inputProcessorArray[key].processEvent(AllBinaryGameLayerManager::getNullInstance(), GameKeyEvent::NONE);
+                                    this->inputProcessorArray[key]->processEvent(AllBinaryGameLayerManager::getNullInstance(), GameKeyEvent::NONE);
     
 
                                     }
@@ -412,7 +399,7 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager* layerManager){
+    auto SelectedRTSLayersPlayerGameInput::processInput(AllBinaryLayerManager* layerManager) -> void{
 
         try {
             
@@ -456,14 +443,14 @@ this->processInputKey(key);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->PROCESS_INPUT, &e);
     
 }
 
 }
 
 
-    public: BasicArrayList* getSelectedBasicArrayList(){
+    auto SelectedRTSLayersPlayerGameInput::getSelectedBasicArrayList() -> BasicArrayList*{
 
 
 
@@ -473,7 +460,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 }
 
 
-    public: void addSelectedRTSLayer(RTSLayer* selectedLayer){
+    auto SelectedRTSLayersPlayerGameInput::addSelectedRTSLayer(RTSLayer* selectedLayer) -> void{
 this->paintSelectedRTSLayersList= BasicArrayListUtil::getInstance()->getImmutableInstance();
     
 
@@ -505,7 +492,7 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 }
 
 
-    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer* selectedLayer){
+    auto SelectedRTSLayersPlayerGameInput::setSelectedRTSLayer(CollidableDestroyableDamageableLayer* selectedLayer) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -522,7 +509,7 @@ stringBuffer->append("Selected Layer: ");
 
                                     }
                                 
-this->logUtil.putF(stringBuffer->toString(), this, "setSelectedRTSLayer");
+this->logUtil->putF(stringBuffer->toString(), this, "setSelectedRTSLayer");
     
 this->paintSelectedRTSLayersList= BasicArrayListUtil::getInstance()->getImmutableInstance();
     
@@ -543,7 +530,7 @@ this->preSelectedRTSLayersList= this->selectedRTSLayersList;
     
 this->selectedRTSLayersList= tempList;
     
-this->logUtil.putF((new StringMaker())->append("Preselected: ")->append(this->preSelectedRTSLayersList->toString())->toString(), this, "setSelectedRTSLayer");
+this->logUtil->putF((new StringMaker())->append("Preselected: ")->append(this->preSelectedRTSLayersList->toString())->toString(), this, "setSelectedRTSLayer");
     
 
                                     }
@@ -562,7 +549,7 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 }
 
 
-    public: CollidableDestroyableDamageableLayer* getLastSelectedRtsLayer(){
+    auto SelectedRTSLayersPlayerGameInput::getLastSelectedRtsLayer() -> CollidableDestroyableDamageableLayer*{
 
                         if(this->isAnyRTSLayerSelected())
                         
@@ -589,7 +576,7 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 }
 
 
-    public: void selectAllPreselected(){
+    auto SelectedRTSLayersPlayerGameInput::selectAllPreselected() -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -597,7 +584,7 @@ stringBuffer->append("Select all Preselected: ");
     
 stringBuffer->append(this->preSelectedRTSLayersList->toString());
     
-this->logUtil.putF(stringBuffer->toString(), this, "selectAllPreselected");
+this->logUtil->putF(stringBuffer->toString(), this, "selectAllPreselected");
     
 
 
@@ -616,7 +603,7 @@ rtsLayer->select();
 }
 
 
-    public: void deselectAllPreselected(){
+    auto SelectedRTSLayersPlayerGameInput::deselectAllPreselected() -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -624,7 +611,7 @@ stringBuffer->append("Deselect all Preselected: ");
     
 stringBuffer->append(this->preSelectedRTSLayersList->toString());
     
-this->logUtil.putF(stringBuffer->toString(), this, "deselectAllPreselected");
+this->logUtil->putF(stringBuffer->toString(), this, "deselectAllPreselected");
     
 
 
@@ -645,7 +632,7 @@ this->preSelectedRTSLayersList->clear();
 }
 
 
-    public: void deselectAll(){
+    auto SelectedRTSLayersPlayerGameInput::deselectAll() -> void{
 
 
 
@@ -663,7 +650,7 @@ rtsLayer->deselect();
 }
 
 
-    public: bool isAnyRTSLayerSelected(){
+    auto SelectedRTSLayersPlayerGameInput::isAnyRTSLayerSelected() -> bool{
 
                         if(this->selectedRTSLayersList->size() == 0)
                         
@@ -686,7 +673,7 @@ rtsLayer->deselect();
 }
 
 
-    public: BasicArrayList* getPaintSelectedRTSLayersList(){
+    auto SelectedRTSLayersPlayerGameInput::getPaintSelectedRTSLayersList() -> BasicArrayList*{
 
 
 
@@ -696,7 +683,7 @@ rtsLayer->deselect();
 }
 
 
-    public: BasicArrayList* getPreSelectedRTSLayersList(){
+    auto SelectedRTSLayersPlayerGameInput::getPreSelectedRTSLayersList() -> BasicArrayList*{
 
 
 
@@ -706,7 +693,6 @@ rtsLayer->deselect();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERGAMEINPUT_CPP

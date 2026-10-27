@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/AllBinaryGameLayer.h>
-
-      
-#include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
+class AllBinaryGameLayer;
+class BasicDecimal;
 
 
 
@@ -54,7 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MovementInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class MovementInterface
+            : public virtual Object
+         {
 
     public: virtual void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) = 0;
 
@@ -70,3 +77,16 @@ class MovementInterface {
 
 
         #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/AllBinaryGameLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/BasicDecimal.h>)
+#include <org/allbinary/logic/math/BasicDecimal.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP
+        #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/resource/ResourceUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -77,33 +87,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2SE - PC
-class ResourceUtil
-            : public Object
-         {
+auto ResourceUtil::instance_owner() -> ResourceUtil* { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
+ResourceUtil* ResourceUtil::instance = ResourceUtil::instance_owner();
 
-    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
-
-    public: static ResourceUtil* getInstance(){
+    auto ResourceUtil::getInstance() -> ResourceUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil::instance();
+                        return ResourceUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string path = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: std::string ext = StringUtil::getInstance()->EMPTY_STRING;
-
-private: ResourceUtil(){
+ResourceUtil::ResourceUtil() : logUtil(LogUtil::getInstance()), path(StringUtil::getInstance()->EMPTY_STRING), ext(StringUtil::getInstance()->EMPTY_STRING){
 }
 
 
-    public: void setLoadingPaths(std::string path, std::string ext){
+    auto ResourceUtil::setLoadingPaths(std::string path, std::string ext) -> void{
 this->path= path;
     
 this->ext= ext;
@@ -111,13 +112,13 @@ this->ext= ext;
 }
 
 
-    public: void setClassLoader(ClassLoader* classLoader){
+    auto ResourceUtil::setClassLoader(ClassLoader* classLoader) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getResourceAsStream(std::string resource){
+    auto ResourceUtil::getResourceAsStream(std::string resource) -> InputStream*{
 
     InputStream* inputStream = this->getResourceAsStreamAtStart(resource, 2);;
     
@@ -138,7 +139,7 @@ this->ext= ext;
                                     
 
 
-                            throw new Exception((new StringMaker())->append("Unable to obtain: ")->append(resource)->toString());
+                            throw Exception((new StringMaker())->append("Unable to obtain: ")->append(resource)->toString());
                     
 
                                     }
@@ -157,7 +158,7 @@ this->ext= ext;
 
                 //@Throws(Exception.constructor)
             
-    private: InputStream* getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
+    auto ResourceUtil::getResourceAsStreamAtStart(std::string resource, int32_t startIndex) -> InputStream*{
 
     InputStream* inputStream = new FileInputStream((new StringMaker())->append(this->path)->append(resource)->append(this->ext)->toString());;
     
@@ -190,11 +191,10 @@ StreamUtil::getInstance()->getByteArray(inputStream, new ByteArrayOutputStream()
 }
 
 
-    public: void addResource(std::string resource, int32_t value){
+    auto ResourceUtil::addResource(std::string resource, int32_t value) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESBASE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/game/GameInfo.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class GameInfo;
+class CommonStrings;
 
 
 
@@ -56,16 +57,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/HighScoresFactoryInterface.h"
-#include "org/allbinary/game/score/HighScoresResultsListener.h"
-#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
+class HighScoresResultsListener;
+class HighScoresHelperBaseInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HighScoresBase
-            : public Object
+            : public virtual Object
         , public HighScoresFactoryInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-protected: HighScoresBase();
+/*protected*/ public: HighScoresBase();
 
     public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener);
 
@@ -79,3 +84,25 @@ protected: HighScoresBase();
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORESBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESBASE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/GameInfo.h>)
+#include <org/allbinary/game/GameInfo.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresFactoryInterface.h")
+#include "org/allbinary/game/score/HighScoresFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresResultsListener.h")
+#include "org/allbinary/game/score/HighScoresResultsListener.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresHelperBaseInterface.h")
+#include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
+#endif
+
+        #endif
+    

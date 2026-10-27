@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGNOMANIPULATIONFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGNOMANIPULATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigNoManipulationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,31 +78,26 @@
 #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
 #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h"
 
-class TransformInfoObjectConfigNoManipulationFactory
-            : public Object
-         {
+auto TransformInfoObjectConfigNoManipulationFactory::instance_owner() -> TransformInfoObjectConfigNoManipulationFactory* { static std::unique_ptr<TransformInfoObjectConfigNoManipulationFactory> value(new TransformInfoObjectConfigNoManipulationFactory()); return value.get(); }
+TransformInfoObjectConfigNoManipulationFactory* TransformInfoObjectConfigNoManipulationFactory::instance = TransformInfoObjectConfigNoManipulationFactory::instance_owner();
 
-    private: static TransformInfoObjectConfigNoManipulationFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigNoManipulationFactory> value(new TransformInfoObjectConfigNoManipulationFactory()); return value.get(); }
-
-    public: static TransformInfoObjectConfigNoManipulationFactory* getInstance(){
+    auto TransformInfoObjectConfigNoManipulationFactory::getInstance() -> TransformInfoObjectConfigNoManipulationFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfigNoManipulationFactory::instance();
+                        return TransformInfoObjectConfigNoManipulationFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransformInfoObjectConfigNoManipulationFactory(){
+TransformInfoObjectConfigNoManipulationFactory::TransformInfoObjectConfigNoManipulationFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface* getInstance(TransformInfoInterface* transformInfoInterface, AbPath* objectConfigFileAbPath){
+    auto TransformInfoObjectConfigNoManipulationFactory::getInstance(TransformInfoInterface* transformInfoInterface, AbPath* objectConfigFileAbPath) -> TransformInfoObjectConfigInterface*{
 
         try {
             
@@ -115,7 +120,7 @@ private: TransformInfoObjectConfigNoManipulationFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Could Not Load Object Config", this, commonStrings->GET_INSTANCE, &e);
@@ -133,7 +138,6 @@ private: TransformInfoObjectConfigNoManipulationFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGNOMANIPULATIONFACTORY_CPP

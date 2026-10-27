@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/AllBinaryMediaManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,13 +87,12 @@
 #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
 #include "org/allbinary/media/audio/NoPlayer.h"
 //MediaMIDP2ForHTMLJavaLibrary
-class AllBinaryMediaManager
-            : public Object
-         {
 
-    private: static inline const std::string THIS = "AllBinaryMediaManagerHTML5";
+AllBinaryMediaManager::AllBinaryMediaManager(){
+}
 
-    public: static bool isMuted(){
+
+    auto AllBinaryMediaManager::isMuted() -> bool{
 
 
 
@@ -93,11 +102,11 @@ class AllBinaryMediaManager
 }
 
 
-    public: static void setMuted(bool aMuted){
+    auto AllBinaryMediaManager::setMuted(bool aMuted) -> void{
 }
 
 
-    public: static bool update(){
+    auto AllBinaryMediaManager::update() -> bool{
 
 
 
@@ -109,7 +118,7 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface* soundsFactoryInterface){
+    auto AllBinaryMediaManager::init(SoundsFactoryInterface* soundsFactoryInterface) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -127,7 +136,7 @@ ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Media Manager");
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
+    auto AllBinaryMediaManager::shutdown(SoundsFactoryInterface* soundsFactoryInterface) -> void{
 (new Sounds(soundsFactoryInterface))->stopAll();
     
 (new Sounds(soundsFactoryInterface))->closeAll();
@@ -139,7 +148,7 @@ TsUtil::getInstance()->gc();
 
                 //@Throws(Exception.constructor)
             
-    public: static Player* createPlayer(std::string resource){
+    auto AllBinaryMediaManager::createPlayer(std::string resource) -> Player*{
 
                         if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->SOUND))
                         
@@ -186,7 +195,7 @@ TsUtil::getInstance()->gc();
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void playTone(int32_t frequency, int32_t time, int32_t volume){
+    auto AllBinaryMediaManager::playTone(int32_t frequency, int32_t time, int32_t volume) -> void{
 
                         if(Features::getInstance()->isFeature(GameFeatureFactory::getInstance()->SOUND))
                         
@@ -199,11 +208,6 @@ TsUtil::getInstance()->gc();
 }
 
 
-private: AllBinaryMediaManager(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP

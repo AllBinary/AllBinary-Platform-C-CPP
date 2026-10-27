@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_BASICPROFILEACTIONSCRIPTPROCESSORNODE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_BASICPROFILEACTIONSCRIPTPROCESSORNODE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/BasicProfileActionScriptProcessorNode.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,24 +67,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/processors/GenericProfileActionScriptProcessorData.h"
 
-class BasicProfileActionScriptProcessorNode
-            : public Object
-         {
 
-public: BasicProfileActionScriptProcessorNode(Node* node){
+BasicProfileActionScriptProcessorNode::BasicProfileActionScriptProcessorNode(Node* node){
 
     Node* actionNode = DomSearchHelper::getNode(GenericProfileActionScriptProcessorData::NAME, node->getChildNodes());;
     
 }
 
 
-public: BasicProfileActionScriptProcessorNode(){
+BasicProfileActionScriptProcessorNode::BasicProfileActionScriptProcessorNode(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto BasicProfileActionScriptProcessorNode::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(GenericProfileActionScriptProcessorData::NAME);;
     
@@ -87,7 +94,6 @@ public: BasicProfileActionScriptProcessorNode(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_BASICPROFILEACTIONSCRIPTPROCESSORNODE_CPP

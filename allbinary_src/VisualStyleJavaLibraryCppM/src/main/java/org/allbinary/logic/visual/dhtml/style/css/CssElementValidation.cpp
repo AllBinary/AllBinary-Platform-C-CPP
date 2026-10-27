@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,11 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/style/css/CssElementView.h"
 
-class CssElementValidation: public CssElementView, public ValidationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: CssElementValidation() : CssElementView(){
+CssElementValidation::CssElementValidation() : CssElementView(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +82,7 @@ public: CssElementValidation() : CssElementView(){
 }
 
 
-public: CssElementValidation(Node* node) : CssElementView(node){
+CssElementValidation::CssElementValidation(Node* node) : CssElementView(node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,26 +92,26 @@ public: CssElementValidation(Node* node) : CssElementView(node){
 }
 
 
-    public: bool isValid(){
+    auto CssElementValidation::isValid() -> bool{
 
         try {
             
     bool valid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("CssElementValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("CssElementValidation", this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("CssElementValidation: " +valid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("CssElementValidation: ") +JavaString::valueOf(valid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -120,10 +127,10 @@ public: CssElementValidation(Node* node) : CssElementView(node){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate data", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate data", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -139,7 +146,7 @@ public: CssElementValidation(Node* node) : CssElementView(node){
 }
 
 
-    public: std::string validationInfo(){
+    auto CssElementValidation::validationInfo() -> std::string{
 
         try {
             
@@ -160,7 +167,7 @@ stringBuffer->append(" Css Style is not valid.");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation info error", this, "validationInfo()", &e);
@@ -179,7 +186,7 @@ stringBuffer->append(" Css Style is not valid.");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto CssElementValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -189,7 +196,7 @@ stringBuffer->append(" Css Style is not valid.");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto CssElementValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -199,7 +206,6 @@ stringBuffer->append(" Css Style is not valid.");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATION_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,14 +37,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
+class LogUtil;
+class AbFile;
 
 
 
@@ -58,18 +57,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/AbFileInputStream.h"
-#include "org/allbinary/logic/io/AbFileLocalInputStream.h"
+        class AbFileInputStream;
+class AbFileLocalInputStream;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CloudStreamUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static CloudStreamUtil* instance() { static std::unique_ptr<CloudStreamUtil> value(new CloudStreamUtil()); return value.get(); }
+    private: static CloudStreamUtil* instance_owner();
+    private: static CloudStreamUtil* instance;
 
     public: static CloudStreamUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: CloudStreamUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -89,3 +97,25 @@ class CloudStreamUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include("org/allbinary/logic/io/AbFileInputStream.h")
+#include "org/allbinary/logic/io/AbFileInputStream.h"
+#endif
+#if __has_include("org/allbinary/logic/io/AbFileLocalInputStream.h")
+#include "org/allbinary/logic/io/AbFileLocalInputStream.h"
+#endif
+
+        #endif
+    

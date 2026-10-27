@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserRoleData
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string NAME = "ROLE";
@@ -62,3 +71,10 @@ private: UserRoleData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEDATA_H_COMPLETE
+        
+        #endif
+    

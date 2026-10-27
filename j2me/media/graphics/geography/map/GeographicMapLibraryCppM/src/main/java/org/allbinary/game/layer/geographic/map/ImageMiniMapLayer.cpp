@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geographic/map/ImageMiniMapLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,11 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/geographic/map/MiniMapLayer.h"
 
-class ImageMiniMapLayer: public MiniMapLayer {
 
-    private: Image* image = NullImage::NULL_IMAGE;
-
-public: ImageMiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositionBase* viewPosition) : MiniMapLayer(geographicMapInterface, viewPosition){
+ImageMiniMapLayer::ImageMiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositionBase* viewPosition) : MiniMapLayer(geographicMapInterface, viewPosition), image(NullImage::NULL_IMAGE), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,21 +90,19 @@ public: ImageMiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositi
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(){
+    auto ImageMiniMapLayer::init() -> void{
 
-    int32_t aWidth = this->allBinaryTiledLayer.getWidth();;
+    int32_t aWidth = this->allBinaryTiledLayer->getWidth();;
     
 
-    int32_t aHeight = this->allBinaryTiledLayer.getHeight();;
+    int32_t aHeight = this->allBinaryTiledLayer->getHeight();;
     
 this->image= PaintableToImageUtil::getImage(this->allBinaryTiledLayer, aWidth, aHeight);
     
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paint(Graphics* graphics){
+    auto ImageMiniMapLayer::paint(Graphics* graphics) -> void{
 graphics->drawImage(this->image, this->x, this->y, this->anchor);
     
 this->paintDots(graphics);
@@ -105,7 +110,6 @@ this->paintDots(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_CPP

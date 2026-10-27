@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TSUTIL_H
         #define ORG_ALLBINARY_TSUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,24 +58,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //TempBase
 class TsUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static TsUtil* instance() { static std::unique_ptr<TsUtil> value(new TsUtil()); return value.get(); }
+    private: static TsUtil* instance_owner();
+    private: static TsUtil* instance;
 
     public: static TsUtil* getInstance();
 
+
+            
+    public: TsUtil();
+        
     public: double longBitsToDouble(int64_t bits);
 
     public: float intBitsToFloat(int32_t bits);
 
     public: int32_t hashCode(Object* anyType);
+    public: int32_t hashCode(const std::string& anyType) { return hashCode(JavaString::box(anyType)); }
 
                 //@Throws(InterruptedException.constructor)
             
     public: void waitFor(Object* any, int64_t timeoutMillis);
+    public: void waitFor(const std::string& any, int64_t timeoutMillis) { return waitFor(JavaString::box(any), timeoutMillis); }
 
     public: int32_t compareTo(std::string a, std::string b);
 
@@ -80,3 +96,10 @@ class TsUtil
 
 
         #endif //ORG_ALLBINARY_TSUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TSUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_TSUTIL_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/exception/ExceptionUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,22 +60,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //NoPlatform
-// class ExceptionUtil
-            : public Object
-         {
-
-    private: static ExceptionUtil* instance() { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
-
-    public: static ExceptionUtil* getInstance()
+        
+//NoPlatform - declared in the header, implemented by the platform project
 
 
 
-    public: Exception* PRETEND_EXCEPTION
-
-    public: std::string getStackTrace(Throwable* e)
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP

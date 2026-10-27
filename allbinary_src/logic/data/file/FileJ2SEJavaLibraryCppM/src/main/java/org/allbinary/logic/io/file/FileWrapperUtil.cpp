@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEWRAPPERUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEWRAPPERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileWrapperUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,11 +66,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/AbFile.h"
 
-class FileWrapperUtil
-            : public Object
-         {
 
-    public: static std::vector<AbFile*> wrapFiles(std::vector<Object*> files){
+FileWrapperUtil::FileWrapperUtil() {
+        }
+        
+    auto FileWrapperUtil::wrapFiles(std::vector<Object*> files) -> std::vector<AbFile*>{
 
         try {
             
@@ -100,7 +110,7 @@ PreLogUtil::putSE("Exception Wrapping Files", "FileWrapperUtil", "wrapFiles", &e
 }
 
 
-    public: static AbFile* wrapFile(File* file){
+    auto FileWrapperUtil::wrapFile(File* file) -> AbFile*{
 
         try {
             
@@ -126,7 +136,6 @@ PreLogUtil::putSE("Exception Wrapping File", "FileWrapperUtil", "wrapFile", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEWRAPPERUTIL_CPP

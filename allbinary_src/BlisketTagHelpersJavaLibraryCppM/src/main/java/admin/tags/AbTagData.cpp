@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_ABTAGDATA_CPP
+        #define ADMIN_TAGS_ABTAGDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/AbTagData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbTagData
-            : public Object
-         {
 
-    public: static inline const std::string PARENT = "TAG_PARENT";
-
-private: AbTagData(){
+AbTagData::AbTagData(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_ABTAGDATA_CPP

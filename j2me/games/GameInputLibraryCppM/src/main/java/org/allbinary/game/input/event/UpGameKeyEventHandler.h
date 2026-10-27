@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,12 +34,8 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class LocalPlayerInputIdFactory;
+class EventListenerInterface;
 
 
 
@@ -55,18 +56,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UpGameKeyEventHandler: public UpGameKeyEventHandlerBase {
 
-    private: static UpGameKeyEventHandler* instance() { static std::unique_ptr<UpGameKeyEventHandler> value(new UpGameKeyEventHandler()); return value.get(); }
+    private: static UpGameKeyEventHandler* instance_owner();
+    private: static UpGameKeyEventHandler* instance;
 
-    private: static inline const std::vector<UpGameKeyEventHandlerBase*> instanceArray = 
-                                                        {
-                                                            new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase()
-                                                        };
+    private: static std::vector<UpGameKeyEventHandlerBase*> instanceArray;
 
     public: static UpGameKeyEventHandler* getInstance();
 
-    private: LocalPlayerInputIdFactory* playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
+    private: LocalPlayerInputIdFactory* playerInputIdFactory;
 
     public: UpGameKeyEventHandlerBase* getInstanceForDevice(int32_t deviceId);
 
@@ -86,3 +89,19 @@ private: UpGameKeyEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/LocalPlayerInputIdFactory.h>)
+#include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventHandlerBase.h"
+#endif
+
+        #endif
+    

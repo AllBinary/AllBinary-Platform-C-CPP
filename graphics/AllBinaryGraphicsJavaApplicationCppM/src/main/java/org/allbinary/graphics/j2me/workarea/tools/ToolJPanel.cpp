@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLJPANEL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/ToolJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,15 +62,14 @@
 #include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/ToolFactory.h"
 
-class ToolJPanel: public javax::swing::JPanel {
 
-public: ToolJPanel(){
+ToolJPanel::ToolJPanel(){
 this->initComponents();
     
 }
 
 
-    private: void initComponents(){
+    auto ToolJPanel::initComponents() -> void{
 lineJButton= new javax::swing::JButton();
     
 this->rectJButton= new javax::swing::JButton();
@@ -380,139 +389,102 @@ add(this->colorJPanel);
 }
 
 
-    private: void dottedFillRountRectJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::dottedFillRountRectJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->dottedFillRountRectJButton->getText());
     
 }
 
 
-    private: void dottedFillArcJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::dottedFillArcJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->dottedFillArcJButton->getText());
     
 }
 
 
-    private: void dottedFillRectJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::dottedFillRectJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->dottedFillRectJButton->getText());
     
 }
 
 
-    private: void dottedArcJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::dottedArcJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->dottedArcJButton->getText());
     
 }
 
 
-    private: void dottedRectButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::dottedRectButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->dottedRectButton->getText());
     
 }
 
 
-    private: void dottedLineJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::dottedLineJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->dottedLineJButton->getText());
     
 }
 
 
-    private: void fillRoundRectJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::fillRoundRectJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->fillRoundRectJButton->getText());
     
 }
 
 
-    private: void fillRectJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::fillRectJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->fillRectJButton->getText());
     
 }
 
 
-    private: void fillArcJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::fillArcJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->fillArcJButton->getText());
     
 }
 
 
-    private: void imageJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::imageJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->imageJButton->getText());
     
 }
 
 
-    private: void roundRectJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::roundRectJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->roundRectJButton->getText());
     
 }
 
 
-    private: void charJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::charJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->charJButton->getText());
     
 }
 
 
-    private: void stringJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::stringJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->stringJButton->getText());
     
 }
 
 
-    private: void arcJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::arcJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->arcJButton->getText());
     
 }
 
 
-    private: void rectJButtonMouseClicked(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::rectJButtonMouseClicked(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->rectJButton->getText());
     
 }
 
 
-    private: void lineJButtonMouseClicked(java::awt::event::MouseEvent* evt){
+    auto ToolJPanel::lineJButtonMouseClicked(java::awt::event::MouseEvent* evt) -> void{
 ToolFactory::getInstance()->setSelectedTool(this->lineJButton->getText());
     
 }
 
 
-    private: javax::swing::JButton* arcJButton;
 
-    private: javax::swing::JButton* charJButton;
 
-    private: javax::swing::JList* colorJList;
-
-    private: javax::swing::JPanel* colorJPanel;
-
-    private: javax::swing::JButton* dottedArcJButton;
-
-    private: javax::swing::JButton* dottedFillArcJButton;
-
-    private: javax::swing::JButton* dottedFillRectJButton;
-
-    private: javax::swing::JButton* dottedFillRountRectJButton;
-
-    private: javax::swing::JButton* dottedLineJButton;
-
-    private: javax::swing::JButton* dottedRectButton;
-
-    private: javax::swing::JButton* fillArcJButton;
-
-    private: javax::swing::JButton* fillRectJButton;
-
-    private: javax::swing::JButton* fillRoundRectJButton;
-
-    private: javax::swing::JButton* imageJButton;
-
-    private: javax::swing::JButton* lineJButton;
-
-    private: javax::swing::JButton* rectJButton;
-
-    private: javax::swing::JButton* roundRectJButton;
-
-    private: javax::swing::JButton* stringJButton;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLJPANEL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,11 +37,7 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt.h>
-
-      
 #include <org/allbinary/logic/util/cache/CacheableInterface.h>
-
-      
 
 
 
@@ -55,10 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/Color.h"
+        class Color;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorCacheable
-            : public Object
+            : public virtual Object
         , public CacheableInterface {
 
     private: Object* key;
@@ -79,3 +84,19 @@ public: ColorCacheable(Object* key);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterface.h>
+#endif
+#if __has_include("org/allbinary/graphics/color/Color.h")
+#include "org/allbinary/graphics/color/Color.h"
+#endif
+
+        #endif
+    

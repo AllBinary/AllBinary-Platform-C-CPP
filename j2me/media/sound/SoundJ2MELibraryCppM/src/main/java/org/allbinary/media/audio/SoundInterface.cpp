@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUNDINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/SoundInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SoundInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getResource() = 0;
 
-    public: virtual Player* getPlayerP() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void init() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_SOUNDINTERFACE_CPP

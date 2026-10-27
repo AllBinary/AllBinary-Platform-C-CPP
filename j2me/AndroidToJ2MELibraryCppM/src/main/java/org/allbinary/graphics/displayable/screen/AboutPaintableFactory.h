@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
-#include <org/allbinary/graphics/paint/Paintable.h>
-
-      
+class NullPaintable;
+class Paintable;
 
 
 
@@ -56,18 +57,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AboutPaintableFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AboutPaintableFactory* instance() { static std::unique_ptr<AboutPaintableFactory> value(new AboutPaintableFactory()); return value.get(); }
+    private: static AboutPaintableFactory* instance_owner();
+    private: static AboutPaintableFactory* instance;
 
     public: static AboutPaintableFactory* getInstance();
 
-    public: std::vector<Paintable*> paintableArray = 
-                                                {
-                                                    NullPaintable::getInstance()
-                                                };
+
+            
+    public: AboutPaintableFactory();
+        
+    public: std::vector<Paintable*> paintableArray;
 
 };
 
@@ -75,3 +82,16 @@ class AboutPaintableFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_CREATEGAMERUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_CREATEGAMERUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/CreateGameRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,21 +81,8 @@
 #include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
 #include "org/allbinary/game/midlet/DemoGameMidletEventHandler.h"
 
-class CreateGameRunnable
-            : public Object
-        , public Runnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: DemoGameMidlet* demoGameMidlet;
-
-    private: ABHashtable<Object*, Object*>* hashtable;
-
-    private: DemoGameMidletEvent* startGameMidletEvent;
-
-public: CreateGameRunnable(DemoGameMidlet* demoGameMidlet, ABHashtable<Object*, Object*>* hashtable){
+CreateGameRunnable::CreateGameRunnable(DemoGameMidlet* demoGameMidlet, ABHashtable<Object*, Object*>* hashtable) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->demoGameMidlet= demoGameMidlet;
     
 this->hashtable= hashtable;
@@ -95,7 +92,7 @@ this->startGameMidletEvent= new DemoGameMidletEvent(this, DemoGameMidletStateFac
 }
 
 
-    public: void run(){
+    auto CreateGameRunnable::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
@@ -128,7 +125,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_CREATEGAMERUNNABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/capital/event/CapitalEventHandlerFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,14 +61,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/capital/event/CapitalEventHandler.h"
 
-class CapitalEventHandlerFactory
-            : public Object
-         {
 
-    private: static inline const std::vector<CapitalEventHandler*> capitalEventHandlerArray;
-
-                    static int32_t initResult = CapitalEventHandlerFactory::init();
-                static int32_t init() { 
+CapitalEventHandlerFactory::CapitalEventHandlerFactory() {
+        }
+        int32_t CapitalEventHandlerFactory::initResult = CapitalEventHandlerFactory::init();
+        auto CapitalEventHandlerFactory::init() -> int32_t {
                     
 capitalEventHandlerArray= std::vector<CapitalEventHandler*>(10);
     
@@ -76,9 +83,9 @@ CapitalEventHandlerFactory::capitalEventHandlerArray[index]= new CapitalEventHan
 
 
                     return 0;
-                }
-            
-    public: static CapitalEventHandler* getInstance(Group* groupInterface){
+        }
+                
+    auto CapitalEventHandlerFactory::getInstance(Group* groupInterface) -> CapitalEventHandler*{
 
 
 
@@ -88,7 +95,7 @@ CapitalEventHandlerFactory::capitalEventHandlerArray[index]= new CapitalEventHan
 }
 
 
-    public: static void removeAll(){
+    auto CapitalEventHandlerFactory::removeAll() -> void{
 
 
 
@@ -96,14 +103,13 @@ CapitalEventHandlerFactory::capitalEventHandlerArray[index]= new CapitalEventHan
                         for (
     int32_t index = CapitalEventHandlerFactory::capitalEventHandlerArray.size() -1;index >= 0; index--)
         {
-CapitalEventHandlerFactory::capitalEventHandlerArray[index].removeAllListeners();
+CapitalEventHandlerFactory::capitalEventHandlerArray[index]->removeAllListeners();
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_CPP

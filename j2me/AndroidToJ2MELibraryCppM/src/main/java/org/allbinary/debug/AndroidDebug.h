@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_H
         #define ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,9 +38,7 @@
         
             #include "java/lang/Long.h"
         
-#include <android/os/Debug.h>
-
-      
+class Debug;
 
 
 
@@ -56,15 +59,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/debug/DebugInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidDebug
-            : public Object
+            : public virtual Object
         , public DebugInterface {
 
-    private: int64_t startTime = Long.MAX_VALUE;
+
+            
+    public: AndroidDebug();
+        
+    private: int64_t startTime;
 
     private: bool running = false;
 
-    private: int32_t bufferSize = 32 *1024 *1024;
+    private: int32_t bufferSize;
 
     public: void start();
 
@@ -86,3 +97,16 @@ class AndroidDebug
 
 
         #endif //ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_H_COMPLETE)
+        #define ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_H_COMPLETE
+        #if __has_include(<android/os/Debug.h>)
+#include <android/os/Debug.h>
+#endif
+#if __has_include("org/allbinary/debug/DebugInterface.h")
+#include "org/allbinary/debug/DebugInterface.h"
+#endif
+
+        #endif
+    

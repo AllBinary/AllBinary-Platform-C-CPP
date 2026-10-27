@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderItemsEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,19 +68,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderItemsEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-    public: virtual void setStatus(std::string orderId, std::string groupId, std::string status) = 0;
 
-    public: virtual bool isEverythingShipped(std::string orderId) = 0;
 
-    public: virtual BasketReview* getBasketReview(std::string orderId) = 0;
-
-    public: virtual void insert(std::string userName, OrderInterface* order) = 0;
-
-    public: virtual void insert(BasicArrayList* values) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITYINTERFACE_CPP

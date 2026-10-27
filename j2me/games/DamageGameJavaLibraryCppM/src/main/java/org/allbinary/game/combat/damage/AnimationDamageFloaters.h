@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
+class Graphics;
+class IndexedAnimation;
+class CanvasStrings;
+class AllBinaryLayer;
+class LogUtil;
+class CommonStrings;
+class CircularIndexUtil;
 
-      
-#include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/graphics/displayable/CanvasStrings.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <org/allbinary/view/ViewPosition.h>
-
-      
-#include <org/allbinary/view/ViewPositionBase.h>
-
-      
+class ViewPositionBase;
 
 
 
@@ -78,9 +65,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/damage/DamageFloaters.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AnimationDamageFloaters: public DamageFloaters {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: AllBinaryLayer* layerInterface;
 
@@ -104,3 +95,38 @@ public: AnimationDamageFloaters(AllBinaryLayer* layerInterface, std::vector<Inde
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/CanvasStrings.h>)
+#include <org/allbinary/graphics/displayable/CanvasStrings.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+
+#if __has_include(<org/allbinary/view/ViewPositionBase.h>)
+#include <org/allbinary/view/ViewPositionBase.h>
+#endif
+#if __has_include("org/allbinary/game/combat/damage/DamageFloaters.h")
+#include "org/allbinary/game/combat/damage/DamageFloaters.h"
+#endif
+
+        #endif
+    

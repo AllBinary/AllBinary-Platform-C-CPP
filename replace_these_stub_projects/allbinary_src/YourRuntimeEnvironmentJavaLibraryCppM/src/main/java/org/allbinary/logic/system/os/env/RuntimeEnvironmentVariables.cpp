@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/env/RuntimeEnvironmentVariables.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,19 +72,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/os/env/Process.h"
 
-class RuntimeEnvironmentVariables
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: RuntimeEnvironmentVariables(){
+RuntimeEnvironmentVariables::RuntimeEnvironmentVariables() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: std::string getTest1(){
+    auto RuntimeEnvironmentVariables::getTest1() -> std::string{
 
 
 
@@ -84,7 +87,7 @@ public: RuntimeEnvironmentVariables(){
 }
 
 
-    public: std::string getVariable(std::string var){
+    auto RuntimeEnvironmentVariables::getVariable(std::string var) -> std::string{
 
     Properties* environmentVariables = this->get();;
     
@@ -97,7 +100,7 @@ public: RuntimeEnvironmentVariables(){
 }
 
 
-    public: Properties* get(){
+    auto RuntimeEnvironmentVariables::get() -> Properties*{
 
         try {
             
@@ -155,7 +158,7 @@ public: RuntimeEnvironmentVariables(){
                             
 
 
-                            throw new Exception();
+                            throw Exception();
                     
 
                         }
@@ -198,7 +201,7 @@ environmentVariables->put(key, value);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "get()", &e);
@@ -217,7 +220,7 @@ environmentVariables->put(key, value);
 }
 
 
-    public: std::string getTempDir(){
+    auto RuntimeEnvironmentVariables::getTempDir() -> std::string{
 
         try {
             
@@ -231,7 +234,7 @@ environmentVariables->put(key, value);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getTempDir()", &e);
@@ -250,7 +253,7 @@ environmentVariables->put(key, value);
 }
 
 
-    public: std::string getLibraryPath(){
+    auto RuntimeEnvironmentVariables::getLibraryPath() -> std::string{
 
         try {
             
@@ -264,7 +267,7 @@ environmentVariables->put(key, value);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getLibraryPath()", &e);
@@ -283,7 +286,7 @@ environmentVariables->put(key, value);
 }
 
 
-    public: std::string getClassPath(){
+    auto RuntimeEnvironmentVariables::getClassPath() -> std::string{
 
         try {
             
@@ -297,7 +300,7 @@ environmentVariables->put(key, value);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getClassPath()", &e);
@@ -316,20 +319,20 @@ environmentVariables->put(key, value);
 }
 
 
-    public: void updateLibraryPath(std::string libPath){
+    auto RuntimeEnvironmentVariables::updateLibraryPath(std::string libPath) -> void{
 
         try {
             
     std::string existingPath = this->getLibraryPath();;
     
-System.setProperty("java.library.path", libPath +":" +existingPath);
+System.setProperty("java.library.path", JavaString::valueOf(JavaString::valueOf(libPath) +JavaString::valueOf(":")) +JavaString::valueOf(existingPath));
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateLibraryPath()", &e);
@@ -342,7 +345,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 }
 
 
-    public: std::string getUserHome(){
+    auto RuntimeEnvironmentVariables::getUserHome() -> std::string{
 
         try {
             
@@ -356,7 +359,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getUserHome()", &e);
@@ -375,7 +378,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 }
 
 
-    public: std::string getUserDir(){
+    auto RuntimeEnvironmentVariables::getUserDir() -> std::string{
 
         try {
             
@@ -389,7 +392,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getUserDir()", &e);
@@ -408,7 +411,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 }
 
 
-    public: void set(){
+    auto RuntimeEnvironmentVariables::set() -> void{
 
         try {
             
@@ -416,7 +419,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "get()", &e);
@@ -429,7 +432,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 }
 
 
-    public: void setVariable(std::string var, std::string val){
+    auto RuntimeEnvironmentVariables::setVariable(std::string var, std::string val) -> void{
 
         try {
             
@@ -445,7 +448,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
     std::string osName = operatingSystemInterface->getName();;
     
 
-    std::string windowsCommand = "cmd.exe /c set" +var +"=" +val;;
+    std::string windowsCommand = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("cmd.exe /c set") +JavaString::valueOf(var)) +JavaString::valueOf("=")) +JavaString::valueOf(val);;
     
 
                         if(osName.compare(operatingSystems->LINUX) == 0)
@@ -454,7 +457,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
                                     
 
 
-                            throw new Exception();
+                            throw Exception();
                     
 
                                     }
@@ -475,7 +478,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
                                     
 
 
-                            throw new Exception();
+                            throw Exception();
                     
 
                                     }
@@ -484,7 +487,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
                             
 
 
-                            throw new Exception();
+                            throw Exception();
                     
 
                         }
@@ -494,7 +497,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->OSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->OSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "setVariable()", &e);
@@ -507,7 +510,6 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_CPP

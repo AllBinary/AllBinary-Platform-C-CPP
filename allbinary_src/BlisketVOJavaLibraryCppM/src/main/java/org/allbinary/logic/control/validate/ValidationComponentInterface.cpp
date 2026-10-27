@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATIONCOMPONENTINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATIONCOMPONENTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/validate/ValidationComponentInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/validate/ValidationInterface.h"
 
-class ValidationComponentInterface: public TransformInterface, public ValidationInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATIONCOMPONENTINTERFACE_CPP

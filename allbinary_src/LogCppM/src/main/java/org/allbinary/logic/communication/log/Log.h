@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Class.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogFormatUtil.h>
-
-      
+class CommonStrings;
+class LogFormatUtil;
 
 
 
@@ -56,11 +57,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Log
-            : public Object
+            : public virtual Object
          {
 
-    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil;
 
     private: std::string specialMessage;
 
@@ -88,3 +93,16 @@ public: Log(std::string specialMessage, Object* anyType, std::string functionNam
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogFormatUtil.h>)
+#include <org/allbinary/logic/communication/log/LogFormatUtil.h>
+#endif
+
+        #endif
+    

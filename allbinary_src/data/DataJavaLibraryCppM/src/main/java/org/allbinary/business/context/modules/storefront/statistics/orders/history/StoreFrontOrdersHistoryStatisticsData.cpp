@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,39 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontOrdersHistoryStatisticsData
-            : public Object
-         {
+auto StoreFrontOrdersHistoryStatisticsData::instance_owner() -> StoreFrontOrdersHistoryStatisticsData* { static std::unique_ptr<StoreFrontOrdersHistoryStatisticsData> value(new StoreFrontOrdersHistoryStatisticsData()); return value.get(); }
+StoreFrontOrdersHistoryStatisticsData* StoreFrontOrdersHistoryStatisticsData::instance = StoreFrontOrdersHistoryStatisticsData::instance_owner();
 
-    private: static StoreFrontOrdersHistoryStatisticsData* instance() { static std::unique_ptr<StoreFrontOrdersHistoryStatisticsData> value(new StoreFrontOrdersHistoryStatisticsData()); return value.get(); }
-
-    public: static StoreFrontOrdersHistoryStatisticsData* getInstance(){
+    auto StoreFrontOrdersHistoryStatisticsData::getInstance() -> StoreFrontOrdersHistoryStatisticsData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontOrdersHistoryStatisticsData::instance();
+                        return StoreFrontOrdersHistoryStatisticsData::instance;
     
 }
 
 
-private: StoreFrontOrdersHistoryStatisticsData(){
+StoreFrontOrdersHistoryStatisticsData::StoreFrontOrdersHistoryStatisticsData(){
 }
 
 
-    public: const std::string NAME = "STOREFRONT_ORDERS_HISTORY_STATISTICS_NAME";
 
-    public: const std::string NUMBEROFORDERS = "STOREFRONT_ORDERS_HISTORY_STATISTICS_NUMBER_OF_ORDERS";
 
-    public: const std::string SUBTOTAL = "STOREFRONT_ORDERS_HISTORY_STATISTICS_SUBTOTAL";
-
-    public: const std::string SHIPPINGCOST = "STOREFRONT_ORDERS_HISTORY_STATISTICS_SHIPPINGCOST";
-
-    public: const std::string TAXES = "STOREFRONT_ORDERS_HISTORY_STATISTICS_TAXES";
-
-    public: const std::string TOTAL = "STOREFRONT_ORDERS_HISTORY_STATISTICS_TOTAL";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSDATA_CPP

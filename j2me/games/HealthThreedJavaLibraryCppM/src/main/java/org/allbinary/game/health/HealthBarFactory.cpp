@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/HealthBarFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,13 +70,13 @@
 #include "org/allbinary/game/health/Health.h"
 #include "org/allbinary/game/health/HealthBarAnimationInterfaceFactory.h"
 
-class HealthBarFactory
-            : public Object
-         {
 
+HealthBarFactory::HealthBarFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: HealthBar* getInstance(AllBinaryLayer* layerInterface, Health* healthInterface, int32_t location, int32_t direction){
+    auto HealthBarFactory::getInstance(AllBinaryLayer* layerInterface, Health* healthInterface, int32_t location, int32_t direction) -> HealthBar*{
 
                         if(OpenGLFeatureUtil::getInstance()->isAnyThreed())
                         
@@ -99,7 +109,6 @@ class HealthBarFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_CPP

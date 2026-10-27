@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGINFOHUDPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGINFOHUDPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/building/BuildingInfoHudPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,37 +95,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/building/BuildingLayer.h"
 
-class BuildingInfoHudPaintable: public SelectionHudPaintable {
+auto BuildingInfoHudPaintable::instance_owner() -> BuildingInfoHudPaintable* { static std::unique_ptr<BuildingInfoHudPaintable> value(new BuildingInfoHudPaintable()); return value.get(); }
+BuildingInfoHudPaintable* BuildingInfoHudPaintable::instance = BuildingInfoHudPaintable::instance_owner();
 
-    private: static BuildingInfoHudPaintable* instance() { static std::unique_ptr<BuildingInfoHudPaintable> value(new BuildingInfoHudPaintable()); return value.get(); }
-
-    public: static BuildingInfoHudPaintable* getInstance(){
+    auto BuildingInfoHudPaintable::getInstance() -> BuildingInfoHudPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BuildingInfoHudPaintable::instance();
+                        return BuildingInfoHudPaintable::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string HEALTH = "Health:";
-
-    private: NumberStringHud* productivityHud;
-
-    private: NumberStringHud* efficiencyHud;
-
-    private: NumberStringHud* healthHud;
-
-    private: NumberStringHud* maxHealthHud;
-
-    private: PathFindingLayerInterface* rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-
-    private: int32_t currentHealth = 0;
-
-private: BuildingInfoHudPaintable(){
+BuildingInfoHudPaintable::BuildingInfoHudPaintable() : logUtil(LogUtil::getInstance()), rtsLayer(NullPathFindingLayer::NULL_PATH_FINDING_LAYER){
 
     NumberStringHudFactory* numberStringHudFactory = NumberStringHudFactory::getInstance();;
     
@@ -173,7 +166,7 @@ this->updateMaxWidth= textX;
     
 this->updateMaxHeight= y +((firstIndex +1) *font->getHeight());
     
-super.updateMeasurement(graphics);
+SelectionHudPaintable::updateMeasurement(graphics);
     
 }
 
@@ -206,7 +199,7 @@ class EfficiencyNumberStringHud: public NumberStringHud {
 
 
     public: void updateMeasurement(Graphics* graphics){
-super.updateMeasurement(graphics);
+SelectionHudPaintable::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -256,7 +249,7 @@ this->updateMaxWidth= textX;
     
 this->updateMaxHeight= y +((thirdIndex +1) *font->getHeight());
     
-super.updateMeasurement(graphics);
+SelectionHudPaintable::updateMeasurement(graphics);
     
 }
 
@@ -290,7 +283,7 @@ class MaxHealthNumberStringHud: public NumberStringHud {
 
 
     public: void updateMeasurement(Graphics* graphics){
-super.updateMeasurement(graphics);
+SelectionHudPaintable::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -332,7 +325,7 @@ this->maxHealthHud= maxHealthHud;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto BuildingInfoHudPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -346,8 +339,8 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
-super.setBasicColorP(basicColor);
+    auto BuildingInfoHudPaintable::setBasicColorP(BasicColor* basicColor) -> void{
+SelectionHudPaintable::setBasicColorP(basicColor);
     
 this->productivityHud->setBasicColorP(basicColor);
     
@@ -360,10 +353,10 @@ this->maxHealthHud->setBasicColorP(basicColor);
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paint(graphics);
+    auto BuildingInfoHudPaintable::paint(Graphics* graphics) -> void{
+SelectionHudPaintable::paint(graphics);
     
-this->myFontProcessor.process(graphics);
+this->myFontProcessor->process(graphics);
     
 this->productivityHud->paint(graphics);
     
@@ -378,7 +371,7 @@ this->getAnimationInterface()->paintXY(graphics, this->imageX, this->y);
 }
 
 
-    public: void updateSelectionInfo(){
+    auto BuildingInfoHudPaintable::updateSelectionInfo() -> void{
 
     BuildingLayer* buildingLayer = dynamic_cast<BuildingLayer*>(this->rtsLayer);;
     
@@ -401,13 +394,12 @@ this->maxHealthHud->set(buildingLayer->getHealthInterface()->getMaxHealth());
 }
 
 
-    public: void setRtsLayer(PathFindingLayerInterface* rtsLayer){
+    auto BuildingInfoHudPaintable::setRtsLayer(PathFindingLayerInterface* rtsLayer) -> void{
 this->rtsLayer= rtsLayer;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGINFOHUDPAINTABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
+class StdUtil;
+class AllBinaryEventObject;
+class EventListenerInterface;
+class EventStrings;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -73,19 +62,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/terrain/TerrainEventListener.h"
-#include "org/allbinary/game/terrain/TerrainEvent.h"
-#include "org/allbinary/game/terrain/TerrainEventListenerInterface.h"
+        class TerrainEventListener;
+class TerrainEvent;
+class TerrainEventListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TerrainEventHandler: public BasicEventHandler {
 
-    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->NULL_TABLE;
+    private: static ABHashtable<Object*, Object*>* hashtable;
 
     public: static void init();
 
     public: static TerrainEventHandler* getInstance(Object* anyType);
+    public: static TerrainEventHandler* getInstance(const std::string& anyType) { return getInstance(JavaString::box(anyType)); }
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
 private: TerrainEventHandler();
 
@@ -101,7 +95,7 @@ private: TerrainEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -109,3 +103,43 @@ private: TerrainEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/terrain/TerrainEventListener.h")
+#include "org/allbinary/game/terrain/TerrainEventListener.h"
+#endif
+#if __has_include("org/allbinary/game/terrain/TerrainEvent.h")
+#include "org/allbinary/game/terrain/TerrainEvent.h"
+#endif
+#if __has_include("org/allbinary/game/terrain/TerrainEventListenerInterface.h")
+#include "org/allbinary/game/terrain/TerrainEventListenerInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSMAPPING_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,9 +74,8 @@
         #include "org/allbinary/logic/communication/java/vm/stats/JvmStatistics.h"
 #include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsData.h"
 
-class JvmStatisticsMapping: public JvmStatistics, public TableMappingInterface {
 
-public: JvmStatisticsMapping() : JvmStatistics(){
+JvmStatisticsMapping::JvmStatisticsMapping() : JvmStatistics(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,7 +85,7 @@ public: JvmStatisticsMapping() : JvmStatistics(){
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto JvmStatisticsMapping::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -111,7 +120,7 @@ hashMap->put(JvmStatisticsData::TOTAL_MEMORY_MEGABYTES, this->getTotalMemoryMega
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto JvmStatisticsMapping::getKey() -> Object*{
 
 
 
@@ -123,7 +132,7 @@ hashMap->put(JvmStatisticsData::TOTAL_MEMORY_MEGABYTES, this->getTotalMemoryMega
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto JvmStatisticsMapping::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -156,7 +165,6 @@ vector->add(this->getTotalMemoryMegabytesString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSMAPPING_CPP

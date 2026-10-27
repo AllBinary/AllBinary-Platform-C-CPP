@@ -21,6 +21,11 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_META_EDITMETAVALIDATIONVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_META_EDITMETAVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,24 +34,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class StringMaker;
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -67,9 +60,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/includes/meta/MetaView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EditMetaValidationView: public MetaView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: EditMetaValidationView(TransformInfoInterface* transformInfoInterface);
 
@@ -87,3 +84,31 @@ public: EditMetaValidationView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_META_EDITMETAVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_META_EDITMETAVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_META_EDITMETAVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/business/context/modules/storefront/customizer/includes/meta/MetaView.h")
+#include "views/business/context/modules/storefront/customizer/includes/meta/MetaView.h"
+#endif
+
+        #endif
+    

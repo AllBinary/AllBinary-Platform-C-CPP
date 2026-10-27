@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_VIEWOBJECT_TRANSFORMINFOOBJECTDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_VIEWOBJECT_TRANSFORMINFOOBJECTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/viewObject/TransformInfoObjectData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoObjectData
-            : public Object
-         {
+auto TransformInfoObjectData::instance_owner() -> TransformInfoObjectData* { static std::unique_ptr<TransformInfoObjectData> value(new TransformInfoObjectData()); return value.get(); }
+TransformInfoObjectData* TransformInfoObjectData::instance = TransformInfoObjectData::instance_owner();
 
-    private: static TransformInfoObjectData* instance() { static std::unique_ptr<TransformInfoObjectData> value(new TransformInfoObjectData()); return value.get(); }
-
-    public: static TransformInfoObjectData* getInstance(){
+    auto TransformInfoObjectData::getInstance() -> TransformInfoObjectData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectData::instance();
+                        return TransformInfoObjectData::instance;
     
 }
 
 
-private: TransformInfoObjectData(){
+TransformInfoObjectData::TransformInfoObjectData(){
 }
 
 
-    public: const std::string UNCRYPTED_EXTENSION = "class";
 
-    public: const std::string ENCRYPTED_EXTENSION = "abw";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_VIEWOBJECT_TRANSFORMINFOOBJECTDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GUI_DIALOG_HASHMAPJDIALOGLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_GUI_DIALOG_HASHMAPJDIALOGLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/gui/dialog/HashMapJDialogListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HashMapJDialogListenerInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onHashMap(HashMap<Object*, Object*>* hashMap) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GUI_DIALOG_HASHMAPJDIALOGLISTENERINTERFACE_CPP

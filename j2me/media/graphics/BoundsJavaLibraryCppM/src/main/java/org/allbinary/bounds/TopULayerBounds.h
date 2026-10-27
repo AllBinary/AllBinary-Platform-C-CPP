@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_BOUNDS_TOPULAYERBOUNDS_H
         #define ORG_ALLBINARY_BOUNDS_TOPULAYERBOUNDS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
+class Rectangle;
 
 
 
@@ -49,8 +52,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/bounds/LayerBounds.h"
-#include "org/allbinary/bounds/BoundsVisitorInterface.h"
+class BoundsVisitorInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TopULayerBounds: public LayerBounds {
 
 public: TopULayerBounds(Rectangle* rectangle);
@@ -63,3 +70,19 @@ public: TopULayerBounds(Rectangle* rectangle);
 
 
         #endif //ORG_ALLBINARY_BOUNDS_TOPULAYERBOUNDS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BOUNDS_TOPULAYERBOUNDS_H_COMPLETE)
+        #define ORG_ALLBINARY_BOUNDS_TOPULAYERBOUNDS_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include("org/allbinary/bounds/LayerBounds.h")
+#include "org/allbinary/bounds/LayerBounds.h"
+#endif
+#if __has_include("org/allbinary/bounds/BoundsVisitorInterface.h")
+#include "org/allbinary/bounds/BoundsVisitorInterface.h"
+#endif
+
+        #endif
+    

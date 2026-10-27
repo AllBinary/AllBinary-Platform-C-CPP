@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_CPP
+        #define ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/PathFindingThreadPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,9 @@
         #include "org/allbinary/thread/ThreadPool.h"
 #include "org/allbinary/thread/PriorityRunnable.h"
 //This is mainly for network communications.
-class PathFindingThreadPool: public ThreadPool {
+ThreadPool* PathFindingThreadPool::instance = new PathFindingThreadPool("PathFinding", 1, 1);
 
-    private: static inline ThreadPool* instance = new PathFindingThreadPool("PathFinding", 1, 1);
-
-    public: static ThreadPool* getInstance(){
+    auto PathFindingThreadPool::getInstance() -> ThreadPool*{
 
 
 
@@ -61,7 +69,7 @@ class PathFindingThreadPool: public ThreadPool {
 }
 
 
-public: PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, ThreadPool::NORMAL_PRIORITY){
+PathFindingThreadPool::PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, ThreadPool::NORMAL_PRIORITY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,27 +79,26 @@ public: PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t 
 }
 
 
-    public: void runTaskWithPriority(PriorityRunnable* task){
-super.runTaskWithPriority(task);
+    auto PathFindingThreadPool::runTaskWithPriority(PriorityRunnable* task) -> void{
+ThreadPool::runTaskWithPriority(task);
     
 }
 
 
-    public: void runTask(Runnable* task){
-super.runTask(task);
+    auto PathFindingThreadPool::runTask(Runnable* task) -> void{
+ThreadPool::runTask(task);
     
 }
 
 
-    protected: void startTask(Runnable* task){
+    auto PathFindingThreadPool::startTask(Runnable* task) -> void{
 }
 
 
-    protected: void completedTask(Runnable* task){
+    auto PathFindingThreadPool::completedTask(Runnable* task) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_CPP

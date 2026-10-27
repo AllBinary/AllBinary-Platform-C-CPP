@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/db/DbInitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbConnectionInfo.h"
 //import org.allbinary.logic.communication.log.config.type.LogConfigTypes;
-class DbInitInfo: public DbConnectionInfo {
 
-public: DbInitInfo(std::string initFileName, bool read) : DbConnectionInfo(){
+DbInitInfo::DbInitInfo(std::string initFileName, bool read) : DbConnectionInfo(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,11 +70,11 @@ public: DbInitInfo(std::string initFileName, bool read) : DbConnectionInfo(){
 }
 
 
-    public: std::string getUrl(){
+    auto DbInitInfo::getUrl() -> std::string{
 
-    std::string url = super.getUrl();;
+    std::string url = DbConnectionInfo::getUrl();;
     
-PreLogUtil::put("Url: " +url, this, "getUrl");
+PreLogUtil::put(JavaString::valueOf("Url: ") +JavaString::valueOf(url), this, "getUrl");
     
 
 
@@ -79,23 +88,22 @@ PreLogUtil::put("Url: " +url, this, "getUrl");
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void write(){
+    auto DbInitInfo::write() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void load(){
+    auto DbInitInfo::load() -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setHasRead(bool value){
+    auto DbInitInfo::setHasRead(bool value) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/compound/CompoundIndexedAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -69,13 +79,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/compound/CompoundAnimationInterface.h"
 
-class CompoundIndexedAnimation: public IndexedAnimation, public CompoundAnimationInterface {
 
-    private: CircularIndexUtil* circularIndexUtil;
-
-    private: std::vector<Animation*> animationInterfaceArray;
-
-public: CompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+CompoundIndexedAnimation::CompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -89,7 +94,7 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->animationInterf
 }
 
 
-    public: void setFrame(int32_t index){
+    auto CompoundIndexedAnimation::setFrame(int32_t index) -> void{
 
     IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);;
     
@@ -98,7 +103,7 @@ indexedAnimation->setFrame(index);
 }
 
 
-    public: int32_t getFrame(){
+    auto CompoundIndexedAnimation::getFrame() -> int32_t{
 
     IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);;
     
@@ -111,7 +116,7 @@ indexedAnimation->setFrame(index);
 }
 
 
-    public: int32_t getSize(){
+    auto CompoundIndexedAnimation::getSize() -> int32_t{
 
     IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);;
     
@@ -124,7 +129,7 @@ indexedAnimation->setFrame(index);
 }
 
 
-    public: void previousFrame(){
+    auto CompoundIndexedAnimation::previousFrame() -> void{
 
     IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[this->circularIndexUtil->getIndex()]);;
     
@@ -133,11 +138,11 @@ indexedAnimation->previousFrame();
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto CompoundIndexedAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto CompoundIndexedAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -149,25 +154,25 @@ indexedAnimation->previousFrame();
 
                 //@Throws(Exception.constructor)
             
-    public: void nextFrame(){
-this->animationInterfaceArray[this->circularIndexUtil->getIndex()].nextFrame();
+    auto CompoundIndexedAnimation::nextFrame() -> void{
+this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->nextFrame();
     
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->animationInterfaceArray[this->circularIndexUtil->getIndex()].paintXY(graphics, x, y);
+    auto CompoundIndexedAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->paintXY(graphics, x, y);
     
 }
 
 
-    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
-this->animationInterfaceArray[this->circularIndexUtil->getIndex()].paintThreedXYZ(graphics, x, y, z);
+    auto CompoundIndexedAnimation::paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) -> void{
+this->animationInterfaceArray[this->circularIndexUtil->getIndex()]->paintThreedXYZ(graphics, x, y, z);
     
 }
 
 
-    public: IndexedAnimation* getCurrentAnimation(){
+    auto CompoundIndexedAnimation::getCurrentAnimation() -> IndexedAnimation*{
 
 
 
@@ -177,7 +182,7 @@ this->animationInterfaceArray[this->circularIndexUtil->getIndex()].paintThreedXY
 }
 
 
-    public: void nextAnimation(){
+    auto CompoundIndexedAnimation::nextAnimation() -> void{
 
     int32_t frame = this->getFrame();;
     
@@ -188,7 +193,7 @@ this->setFrame(frame);
 }
 
 
-    public: void previousAnimation(){
+    auto CompoundIndexedAnimation::previousAnimation() -> void{
 
     int32_t frame = this->getFrame();;
     
@@ -199,7 +204,7 @@ this->setFrame(frame);
 }
 
 
-    public: void setAnimation(int32_t index){
+    auto CompoundIndexedAnimation::setAnimation(int32_t index) -> void{
 
     int32_t frame = this->getFrame();;
     
@@ -210,7 +215,7 @@ this->setFrame(frame);
 }
 
 
-    public: std::vector<Animation*> getAnimationInterfaceArray(){
+    auto CompoundIndexedAnimation::getAnimationInterfaceArray() -> std::vector<Animation*>{
 
 
 
@@ -220,7 +225,7 @@ this->setFrame(frame);
 }
 
 
-    public: void setAnimationInterfaceArray(std::vector<Animation*> animationInterfaceArray){
+    auto CompoundIndexedAnimation::setAnimationInterfaceArray(std::vector<Animation*> animationInterfaceArray) -> void{
 this->animationInterfaceArray= animationInterfaceArray;
     
 }
@@ -228,7 +233,7 @@ this->animationInterfaceArray= animationInterfaceArray;
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL* gl){
+    auto CompoundIndexedAnimation::set(GL* gl) -> void{
 
 
 
@@ -236,14 +241,13 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index].set(gl);
+this->animationInterfaceArray[index]->set(gl);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_CPP

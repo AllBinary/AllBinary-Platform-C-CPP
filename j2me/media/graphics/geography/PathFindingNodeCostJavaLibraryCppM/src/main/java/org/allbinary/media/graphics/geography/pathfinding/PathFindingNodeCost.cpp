@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOST_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCost.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,15 +74,9 @@
 #include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
 
-class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost*> {
+std::vector<std::vector<PathFindingNodeCost*>> PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost*>>(0, std::vector<PathFindingNodeCost*>(0));
 
-    public: static inline const std::vector<std::vector<PathFindingNodeCost*>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost*>>(0, std::vector<PathFindingNodeCost*>(0));
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    public: PathFindingNodeCostInfo* pathFindingNodeCostInfoP;
-
-public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition* geographicMapCellPosition, PathFindingNodeCostInfo* pathFindingNodeCostInfo) : PathFindingNode(parent, geographicMapCellPosition){
+PathFindingNodeCost::PathFindingNodeCost(Object* parent, GeographicMapCellPosition* geographicMapCellPosition, PathFindingNodeCostInfo* pathFindingNodeCostInfo) : PathFindingNode(parent, geographicMapCellPosition), commonSeps(CommonSeps::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +94,7 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
                                     
 
 
-                            throw new Exception("No GeographicMapCellPosition");
+                            throw Exception("No GeographicMapCellPosition");
                     
 
                                     }
@@ -104,7 +108,7 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
                                     
 
 
-                            throw new Exception("No PathFindingNodeCostInfo");
+                            throw Exception("No PathFindingNodeCostInfo");
                     
 
                                     }
@@ -112,7 +116,7 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
 }
 
 
-    public: PathFindingNodeCostInfo* getPathFindingNodeCostInfo(){
+    auto PathFindingNodeCost::getPathFindingNodeCostInfo() -> PathFindingNodeCostInfo*{
 
 
 
@@ -122,13 +126,13 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
 }
 
 
-    public: void setPathFindingNodeCostInfo(PathFindingNodeCostInfo* pathFindingNodeCostInfo){
+    auto PathFindingNodeCost::setPathFindingNodeCostInfo(PathFindingNodeCostInfo* pathFindingNodeCostInfo) -> void{
 this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
     
 }
 
 
-    public: int32_t compareTo(PathFindingNodeCost* pathFindingNodeCost){
+    auto PathFindingNodeCost::compareTo(PathFindingNodeCost* pathFindingNodeCost) -> int32_t{
 
 
 
@@ -138,7 +142,7 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
 }
 
 
-    public: std::string toString(){
+    auto PathFindingNodeCost::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -150,7 +154,7 @@ stringBuffer->append(this->getPathFindingNodeCostInfo()->toString());
     
 stringBuffer->append(" Path: ");
     
-stringBuffer->append(this->geographicMapCellPosition.toString());
+stringBuffer->append(this->geographicMapCellPosition->toString());
     
 
     PathFindingNode* pathFindingNode = dynamic_cast<PathFindingNode*>(this->parent);;
@@ -160,7 +164,7 @@ stringBuffer->append(this->geographicMapCellPosition.toString());
                                     nullptr
                                 )
         {
-stringBuffer->append(pathFindingNode->geographicMapCellPosition.toString());
+stringBuffer->append(pathFindingNode->geographicMapCellPosition->toString());
     
 stringBuffer->append(this->commonSeps->SPACE);
     
@@ -177,7 +181,6 @@ pathFindingNode= dynamic_cast<PathFindingNode*>(pathFindingNode->parent);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOST_CPP

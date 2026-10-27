@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_DRAWVERTICALSTRINGUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DRAW_DRAWVERTICALSTRINGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/draw/DrawVerticalStringUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,33 +89,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DrawVerticalStringUtil
-            : public Object
-         {
 
-    private: static DrawVerticalStringUtil* instance() { static std::unique_ptr<DrawVerticalStringUtil> value(new DrawVerticalStringUtil()); return value.get(); }
+DrawVerticalStringUtil::DrawVerticalStringUtil() : EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), anchor(Anchor::TOP_LEFT), offsetXArray(NullUtil::getInstance()->NULL_INT_ARRAY) {
+        }
+        auto DrawVerticalStringUtil::instance_owner() -> DrawVerticalStringUtil* { static std::unique_ptr<DrawVerticalStringUtil> value(new DrawVerticalStringUtil()); return value.get(); }
+DrawVerticalStringUtil* DrawVerticalStringUtil::instance = DrawVerticalStringUtil::instance_owner();
 
-    public: static DrawVerticalStringUtil* getInstance(){
+    auto DrawVerticalStringUtil::getInstance() -> DrawVerticalStringUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DrawVerticalStringUtil::instance();
+                        return DrawVerticalStringUtil::instance;
     
 }
 
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: int32_t charHeight= 0;
-
-    private: int32_t offsetY= 0;
-
-    private: std::vector<int32_t> offsetXArray = NullUtil::getInstance()->NULL_INT_ARRAY;
-
-    public: void updateMeasurement(Graphics* graphics, std::string string){
+    auto DrawVerticalStringUtil::updateMeasurement(Graphics* graphics, std::string string) -> void{
 
     OpenGLFeatureUtil* openGLFeatureUtil = OpenGLFeatureUtil::getInstance();;
     
@@ -181,7 +181,7 @@ this->offsetXArray= offsetXArray;
 }
 
 
-    public: void paintVerticle(Graphics* graphics, std::string string, int32_t x, int32_t y, int32_t anchor){
+    auto DrawVerticalStringUtil::paintVerticle(Graphics* graphics, std::string string, int32_t x, int32_t y, int32_t anchor) -> void{
 
     int32_t size = string.size();;
     
@@ -204,7 +204,7 @@ graphics->drawChar(aChar, x +this->offsetXArray[index], y +(this->charHeight *in
 }
 
 
-    public: void drawCenterString(Graphics* graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y){
+    auto DrawVerticalStringUtil::drawCenterString(Graphics* graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y) -> void{
 
     int32_t width = (graphics->getFont()->substringWidth(string, offset, length)>>1);;
     
@@ -223,7 +223,7 @@ PreLogUtil::put((new StringMaker())->append("Exception: stringLength: ")->append
 }
 
 
-    public: void drawCenterStrings(Graphics* graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t x, int32_t y){
+    auto DrawVerticalStringUtil::drawCenterStrings(Graphics* graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t x, int32_t y) -> void{
 
     int32_t extraLines = 0;;
     
@@ -321,7 +321,6 @@ extraLines--;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DRAW_DRAWVERTICALSTRINGUTIL_CPP

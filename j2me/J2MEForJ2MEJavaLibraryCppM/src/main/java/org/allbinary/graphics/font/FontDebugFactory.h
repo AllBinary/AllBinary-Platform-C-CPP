@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Font;
+class Graphics;
 
 
 
@@ -54,14 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FontDebugFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static FontDebugFactory* instance() { static std::unique_ptr<FontDebugFactory> value(new FontDebugFactory()); return value.get(); }
+    private: static FontDebugFactory* instance_owner();
+    private: static FontDebugFactory* instance;
 
     public: static FontDebugFactory* getInstance();
 
+
+            
+    public: FontDebugFactory();
+        
     public: void setFont(Font* font, Graphics* graphics);
 
 };
@@ -70,3 +80,16 @@ class FontDebugFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+
+        #endif
+    

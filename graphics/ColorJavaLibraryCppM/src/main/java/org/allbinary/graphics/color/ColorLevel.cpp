@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORLEVEL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORLEVEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorLevel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorLevel
-            : public Object
-         {
 
-    public: static inline const int32_t COLOR_MASK = 0x00FFFFFF;
-
-    public: static inline const int32_t MIN = 0x44;
-
-    public: static inline const int32_t AVG = 0x77;
-
-    public: static inline const int32_t LIGHT = 0xAA;
-
-    public: static inline const int32_t HIGH = 0xEE;
-
-private: ColorLevel(){
+ColorLevel::ColorLevel(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORLEVEL_CPP

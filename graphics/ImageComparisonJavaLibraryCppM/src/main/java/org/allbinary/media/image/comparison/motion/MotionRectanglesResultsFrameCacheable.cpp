@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsFrameCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,15 +64,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
-class MotionRectanglesResultsFrameCacheable
-            : public Object
-        , public CacheableInterface {
 
-    private: MotionRectangles* motionRectangles;
-
-    private: int64_t frame;
-
-public: MotionRectanglesResultsFrameCacheable(MotionRectangles* motionRectangles, int64_t frame){
+MotionRectanglesResultsFrameCacheable::MotionRectanglesResultsFrameCacheable(MotionRectangles* motionRectangles, int64_t frame){
 this->frame= frame;
     
 this->setMotionRectangles(motionRectangles);
@@ -70,7 +73,7 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: Object* getKey(){
+    auto MotionRectanglesResultsFrameCacheable::getKey() -> Object*{
 
 
 
@@ -80,7 +83,7 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: MotionRectangles* getMotionRectangles(){
+    auto MotionRectanglesResultsFrameCacheable::getMotionRectangles() -> MotionRectangles*{
 
 
 
@@ -90,13 +93,13 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: void setMotionRectangles(MotionRectangles* motionRectangles){
+    auto MotionRectanglesResultsFrameCacheable::setMotionRectangles(MotionRectangles* motionRectangles) -> void{
 this->motionRectangles= motionRectangles;
     
 }
 
 
-    public: std::string toString(){
+    auto MotionRectanglesResultsFrameCacheable::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -115,7 +118,6 @@ stringBuffer->append(this->getKey()->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSFRAMECACHEABLE_CPP

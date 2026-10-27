@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTA_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringMaker;
+class StringUtil;
 #include <org/allbinary/logic/util/cache/CacheableInterface.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class CommonSeps;
 
 
 
@@ -62,8 +59,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorDelta
-            : public Object
+            : public virtual Object
         , public CacheableInterface {
 
     public: static Object* getKey(int32_t rgb1, int32_t rgb2);
@@ -80,11 +81,11 @@ public: ColorDelta(int32_t rgb1, int32_t rgb2);
 
     public: int32_t getRgb1();
 
-    protected: void setRgb1(int32_t rgb1);
+    /*protected*/ public: void setRgb1(int32_t rgb1);
 
     public: int32_t getRgb2();
 
-    protected: void setRgb2(int32_t rgb2);
+    /*protected*/ public: void setRgb2(int32_t rgb2);
 
     public: std::string toString();
 
@@ -94,3 +95,22 @@ public: ColorDelta(int32_t rgb1, int32_t rgb2);
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTA_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTA_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEINTERFACESINGLETON_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEINTERFACESINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,22 +52,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/security/licensing/AbeNoLicense.h"
-#include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
+        class AbeNoLicense;
+class AbeLicenseInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseInterfaceSingleton
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline AbeLicenseInterface* licenseInterface = AbeNoLicense::getInstance();
+    private: static AbeLicenseInterface* licenseInterface;
 
     public: static AbeLicenseInterface* getInstance();
 
     public: static void init(AbeLicenseInterface* licenseInterface);
 
+
+            
+    public: LicenseInterfaceSingleton();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEINTERFACESINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEINTERFACESINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEINTERFACESINGLETON_H_COMPLETE
+        #if __has_include("org/allbinary/logic/system/security/licensing/AbeNoLicense.h")
+#include "org/allbinary/logic/system/security/licensing/AbeNoLicense.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h")
+#include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
+#endif
+
+        #endif
+    

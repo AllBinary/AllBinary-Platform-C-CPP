@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_ANDROID_ANDROIDHARDWARE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_ANDROID_ANDROIDHARDWARE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/android/AndroidHardware.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -94,23 +104,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AndroidHardware
-            : public Object
-        , public HardwareInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* componentInterfaceVector = new BasicArrayListD();
-
-    private: const std::string PROC_BUS_INPUT_DIRECTORY = "/proc/bus/input/";
-
-    private: const std::string DEVICES = this->PROC_BUS_INPUT_DIRECTORY +"devices/";
-
-    private: const int32_t MINHARDWARE = 3;
-
-public: AndroidHardware(){
+AndroidHardware::AndroidHardware() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), componentInterfaceVector(new BasicArrayListD()), DEVICES(JavaString::valueOf(this->PROC_BUS_INPUT_DIRECTORY) +JavaString::valueOf("devices/")){
 this->init(this->DEVICES);
     
 
@@ -123,7 +118,7 @@ this->init(this->DEVICES);
                                     
 
 
-                            throw new Exception("Not Enough Data For A Valid License On Linux");
+                            throw Exception("Not Enough Data For A Valid License On Linux");
                     
 
                                     }
@@ -133,7 +128,7 @@ this->init(this->DEVICES);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(std::string filePath){
+    auto AndroidHardware::init(std::string filePath) -> void{
 
     Closeable* lineNumberReader = NullCloseable::NULL_CLOSEABLE;;
     
@@ -145,7 +140,7 @@ this->init(this->DEVICES);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put("Hardware Data: " +this->toString(), this, this->commonStrings->INIT, &e);
+this->logUtil->put(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(this->toString()), this, this->commonStrings->INIT, &e);
     
 
 
@@ -174,7 +169,7 @@ this->logUtil->put("Hardware Data: " +this->toString(), this, this->commonString
 
                 //@Throws(Exception.constructor)
             
-    private: LineNumberReader* get(std::string filePath){
+    auto AndroidHardware::get(std::string filePath) -> LineNumberReader*{
 this->componentInterfaceVector= new BasicArrayListD();
     
 
@@ -206,7 +201,7 @@ this->componentInterfaceVector->add(new UnknownHardware(nextLine));
 }
 
 
-    public: HardwareComponentInterface* getComponent(int32_t index){
+    auto AndroidHardware::getComponent(int32_t index) -> HardwareComponentInterface*{
 
 
 
@@ -216,7 +211,7 @@ this->componentInterfaceVector->add(new UnknownHardware(nextLine));
 }
 
 
-    public: std::string toString(){
+    auto AndroidHardware::toString() -> std::string{
 
     StringMaker* stringBuilder = new StringMaker();;
     
@@ -248,7 +243,7 @@ stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: bool compareTo(HardwareInterface* hardwareInterface){
+    auto AndroidHardware::compareTo(HardwareInterface* hardwareInterface) -> bool{
 
 
 
@@ -258,7 +253,7 @@ stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
+    auto AndroidHardware::difference(HardwareInterface* hardwareInterface) -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -268,7 +263,6 @@ stringBuilder->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_ANDROID_ANDROIDHARDWARE_CPP

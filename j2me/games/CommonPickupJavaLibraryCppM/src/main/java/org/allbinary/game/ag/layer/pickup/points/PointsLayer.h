@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/score/ScoreableInterface.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
+class Graphics;
+class ScoreableInterface;
+class PointFactory;
+class Rectangle;
 #include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/view/ViewPosition.h>
-
-      
+class StringUtil;
+class ViewPosition;
 
 
 
@@ -69,6 +60,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PointsLayer: public AllBinaryLayer {
 
     private: int32_t points;
@@ -85,3 +80,31 @@ public: PointsLayer(int32_t points);
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/score/ScoreableInterface.h>)
+#include <org/allbinary/game/score/ScoreableInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPosition.h>)
+#include <org/allbinary/view/ViewPosition.h>
+#endif
+
+        #endif
+    

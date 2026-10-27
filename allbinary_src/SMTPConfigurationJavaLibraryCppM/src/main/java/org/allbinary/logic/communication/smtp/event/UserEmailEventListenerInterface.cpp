@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/event/UserEmailEventListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/event/EmailEvent.h"
 
-class UserEmailEventListenerInterface: public EventListener {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onEmailSendRequest(EmailEvent* userEmailInfoEvent) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTLISTENERINTERFACE_CPP

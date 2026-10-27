@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEEVENTHANDLERUTIL_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEEVENTHANDLERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameEventHandlerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameEventHandlerUtil
-            : public Object
-         {
 
-    public: static void removeAllListeners(){
+GameEventHandlerUtil::GameEventHandlerUtil() {
+        }
+        
+    auto GameEventHandlerUtil::removeAllListeners() -> void{
 UpGameKeyEventHandler::getInstance()->removeAllListeners();
     
 DownGameKeyEventHandler::getInstance()->removeAllListeners();
@@ -63,7 +73,6 @@ DownGameKeyEventHandler::getInstance()->removeAllListeners();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEEVENTHANDLERUTIL_CPP

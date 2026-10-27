@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATURE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATURE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLFeature.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,9 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLFeature: public Feature {
 
-: OpenGLFeature(std::string name) : Feature(name){
+OpenGLFeature::OpenGLFeature(std::string name) : Feature(name){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +67,6 @@ class OpenGLFeature: public Feature {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATURE_CPP

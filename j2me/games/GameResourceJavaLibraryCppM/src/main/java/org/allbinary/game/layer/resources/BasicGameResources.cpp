@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/resources/BasicGameResources.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,27 +75,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/resources/GameGraphicsResourceUtil.h"
 
-class BasicGameResources
-            : public Object
-         {
+auto BasicGameResources::stringBuffer_owner() -> StringMaker* { static std::unique_ptr<StringMaker> value(new StringMaker()); return value.get(); }
+StringMaker* BasicGameResources::stringBuffer = BasicGameResources::stringBuffer_owner();
 
-    protected: static StringMaker* stringBuffer() { static std::unique_ptr<StringMaker> value(new StringMaker()); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: std::string RESOURCE = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: std::string RESOURCE_DESTROY = StringUtil::getInstance()->EMPTY_STRING;
-
-protected: BasicGameResources(){
+BasicGameResources::BasicGameResources() : logUtil(LogUtil::getInstance()), RESOURCE(StringUtil::getInstance()->EMPTY_STRING), RESOURCE_DESTROY(StringUtil::getInstance()->EMPTY_STRING){
 }
 
 
-    public: void init(std::string ROOT, std::vector<std::string> SIZE){
+    auto BasicGameResources::init(std::string ROOT, std::vector<std::string> SIZE) -> void{
 
         try {
             
-    int32_t scale = GameConfigurationCentral::getInstance()->SCALE.getValue()->intValue();;
+    int32_t scale = GameConfigurationCentral::getInstance()->SCALE->getValue()->intValue();;
     
 
                         if(scale > 1 && scale -1 < SIZE::size())
@@ -100,7 +101,7 @@ protected: BasicGameResources(){
                             
 
 
-                            throw new Exception((new StringMaker())->append("Invalid Value: ").appendint(scale)->toString());
+                            throw Exception((new StringMaker())->append("Invalid Value: ").appendint(scale)->toString());
                     
 
                         }
@@ -121,41 +122,41 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 
                 //@Throws(Exception.constructor)
             
-    protected: void append(std::string ROOT, std::string sizeString){
+    auto BasicGameResources::append(std::string ROOT, std::string sizeString) -> void{
 
     std::string DESTROY = "_destroy";;
     
 
     std::string string = this->getString();;
     
-BasicGameResources::stringBuffer()->delete(0, BasicGameResources::stringBuffer()->length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer()->append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-BasicGameResources::stringBuffer()->append(string);
+BasicGameResources::stringBuffer->append(string);
     
-BasicGameResources::stringBuffer()->append(sizeString);
+BasicGameResources::stringBuffer->append(sizeString);
     
-this->RESOURCE= BasicGameResources::stringBuffer()->toString();
+this->RESOURCE= BasicGameResources::stringBuffer->toString();
     
-BasicGameResources::stringBuffer()->delete(0, BasicGameResources::stringBuffer()->length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer()->append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-BasicGameResources::stringBuffer()->append(DESTROY);
+BasicGameResources::stringBuffer->append(DESTROY);
     
-BasicGameResources::stringBuffer()->append(string);
+BasicGameResources::stringBuffer->append(string);
     
-BasicGameResources::stringBuffer()->append(sizeString);
+BasicGameResources::stringBuffer->append(sizeString);
     
-this->RESOURCE_DESTROY= BasicGameResources::stringBuffer()->toString();
+this->RESOURCE_DESTROY= BasicGameResources::stringBuffer->toString();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: std::string getString(){
+    auto BasicGameResources::getString() -> std::string{
 
 
 
@@ -165,7 +166,6 @@ this->RESOURCE_DESTROY= BasicGameResources::stringBuffer()->toString();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_CPP

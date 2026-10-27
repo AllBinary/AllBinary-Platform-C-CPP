@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/InputOutputTypeData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class InputOutputTypeData;
+class TransformInfoInterface;
+class CommonStrings;
 
 
 
@@ -62,19 +59,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactoryInterface.h"
-#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/StoreFileGenerator.h"
-#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/BasicGenerator.h"
-#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h"
+class StoreFileGenerator;
+class BasicGenerator;
+class TransformInfoObjectConfigGenerator;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformInfoObjectConfigGeneratorFactory
-            : public Object
+            : public virtual Object
         , public TransformInfoObjectConfigGeneratorFactoryInterface {
 
-    private: static TransformInfoObjectConfigGeneratorFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigGeneratorFactory> value(new TransformInfoObjectConfigGeneratorFactory()); return value.get(); }
+    private: static TransformInfoObjectConfigGeneratorFactory* instance_owner();
+    private: static TransformInfoObjectConfigGeneratorFactory* instance;
 
     public: static TransformInfoObjectConfigGeneratorFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: TransformInfoObjectConfigGeneratorFactory();
 
@@ -88,3 +90,34 @@ private: TransformInfoObjectConfigGeneratorFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/InputOutputTypeData.h>)
+#include <org/allbinary/logic/io/InputOutputTypeData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactoryInterface.h")
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/info/objectConfig/generator/StoreFileGenerator.h")
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/StoreFileGenerator.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/info/objectConfig/generator/BasicGenerator.h")
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/BasicGenerator.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h")
+#include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h"
+#endif
+
+        #endif
+    

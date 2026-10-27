@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_GAMESTRINGS_H
         #define ORG_ALLBINARY_GAME_GAMESTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameStrings* instance() { static std::unique_ptr<GameStrings> value(new GameStrings()); return value.get(); }
+    private: static GameStrings* instance_owner();
+    private: static GameStrings* instance;
 
     public: static GameStrings* getInstance();
 
+
+            
+    public: GameStrings();
+        
     public: const std::string PROCESS_TICK = "processTick";
 
     public: const std::string ON_GAME_INITIALIZED = "onGameInitialized";
@@ -82,3 +96,10 @@ class GameStrings
 
 
         #endif //ORG_ALLBINARY_GAME_GAMESTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_GAMESTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_GAMESTRINGS_H_COMPLETE
+        
+        #endif
+    

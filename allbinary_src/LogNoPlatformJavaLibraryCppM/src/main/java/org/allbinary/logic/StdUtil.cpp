@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STDUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_STDUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/StdUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,30 +66,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //NoPlatform
-// class StdUtil
-            : public Object
-         {
+        
+//NoPlatform - declared in the header, implemented by the platform project
 
-    private: static StdUtil* instance() { static std::unique_ptr<StdUtil> value(new StdUtil()); return value.get(); }
 
-    /*actual*/ public: static StdUtil* getInstance()
 
-    /*actual*/ public: ABVector<Object*>* EMPTY_VECTOR
-
-    /*actual*/ public: ABHashtable<Object*, Object*>* NULL_TABLE
-
-    /*actual*/ public: ABHashMap<Object*, Object*>* NULL_MAP
-
-    public: ABStack<Object*>* createStack()
-
-    public: ABVector<Object*>* createVector()
-
-    public: ABHashtable<Object*, Object*>* createHashtable()
-
-    public: ABHashMap<Object*, Object*>* createHashMap()
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_STDUTIL_CPP

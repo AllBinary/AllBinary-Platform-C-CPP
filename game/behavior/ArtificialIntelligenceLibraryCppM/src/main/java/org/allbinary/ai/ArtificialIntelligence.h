@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class AllBinaryLayerManager;
 
 
 
@@ -54,13 +57,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ArtificialIntelligence
-            : public Object
+            : public virtual Object
         , public ArtificialIntelligenceInterface {
 
     public: static inline const int32_t AI_ID = 2;
 
-    private: static ArtificialIntelligence* instance() { static std::unique_ptr<ArtificialIntelligence> value(new ArtificialIntelligence()); return value.get(); }
+    private: static ArtificialIntelligence* instance_owner();
+    private: static ArtificialIntelligence* instance;
 
     public: static ArtificialIntelligence* getInstance();
 
@@ -78,3 +86,16 @@ public: ArtificialIntelligence();
 
 
         #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCE_H_COMPLETE)
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCE_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include("org/allbinary/ai/ArtificialIntelligenceInterface.h")
+#include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
+#endif
+
+        #endif
+    

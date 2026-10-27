@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,12 +52,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/resources/OnDemandResources.h"
+        class OnDemandResources;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OnDemandResourcesFactory
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: OnDemandResourcesFactory();
+        
     public: int32_t size();
 
     public: OnDemandResources* remove(int32_t layerId);
@@ -63,3 +76,13 @@ class OnDemandResourcesFactory
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/layer/resources/OnDemandResources.h")
+#include "org/allbinary/game/layer/resources/OnDemandResources.h"
+#endif
+
+        #endif
+    

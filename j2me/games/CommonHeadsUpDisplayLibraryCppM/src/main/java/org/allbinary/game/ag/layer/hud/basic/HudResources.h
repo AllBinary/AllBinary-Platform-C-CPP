@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HudResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static HudResources* instance() { static std::unique_ptr<HudResources> value(new HudResources()); return value.get(); }
+    private: static HudResources* instance_owner();
+    private: static HudResources* instance;
 
     public: static HudResources* getInstance();
 
@@ -68,3 +78,10 @@ private: HudResources();
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_H_COMPLETE
+        
+        #endif
+    

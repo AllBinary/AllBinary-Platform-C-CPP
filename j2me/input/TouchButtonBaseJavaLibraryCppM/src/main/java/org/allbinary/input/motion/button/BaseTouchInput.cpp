@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,19 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BaseTouchInput
-            : public Object
-         {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-public: BaseTouchInput(){
+BaseTouchInput::BaseTouchInput() : commonStrings(CommonStrings::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()){
 }
 
 
-    public: BasicArrayList* getList(){
+    auto BaseTouchInput::getList() -> BasicArrayList*{
 
 
 
@@ -76,7 +79,7 @@ public: BaseTouchInput(){
 }
 
 
-    public: std::string toString(){
+    auto BaseTouchInput::toString() -> std::string{
 
 
 
@@ -86,7 +89,6 @@ public: BaseTouchInput(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_CPP

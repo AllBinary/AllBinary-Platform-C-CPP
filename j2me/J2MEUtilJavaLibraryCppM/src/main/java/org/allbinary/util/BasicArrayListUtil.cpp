@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLISTUTIL_CPP
+        #define ORG_ALLBINARY_UTIL_BASICARRAYLISTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/BasicArrayListUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,61 +83,23 @@
 #include "org/allbinary/util/BasicArrayList.h"
 #include "org/allbinary/util/BasicArrayListD.h"
 
-class BasicArrayListUtil
-            : public Object
-         {
 
-    private: static BasicArrayListUtil* instance() { static std::unique_ptr<BasicArrayListUtil> value(new BasicArrayListUtil()); return value.get(); }
+BasicArrayListUtil::BasicArrayListUtil() : NULL_ARRAY_OF_ARRAY(std::vector<std::vector<BasicArrayList*>>(0, std::vector<BasicArrayList*>(0))), myRandomFactory(MyRandomFactory::getInstance()), immutableInstance(new ImmutableBasicArrayList("Immutable", 0)) {
+        }
+        auto BasicArrayListUtil::instance_owner() -> BasicArrayListUtil* { static std::unique_ptr<BasicArrayListUtil> value(new BasicArrayListUtil()); return value.get(); }
+BasicArrayListUtil* BasicArrayListUtil::instance = BasicArrayListUtil::instance_owner();
 
-    public: static BasicArrayListUtil* getInstance(){
+    auto BasicArrayListUtil::getInstance() -> BasicArrayListUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil::instance();
+                        return BasicArrayListUtil::instance;
     
 }
 
 
-    public: static void main(std::vector<std::string> args){
-
-    CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
-    
-
-    BasicArrayList* list = new BasicArrayListD();;
-    
-list->add(commonPhoneStrings->ONE);
-    
-list->add(commonPhoneStrings->TWO);
-    
-list->add(commonPhoneStrings->THREE);
-    
-list->add(commonPhoneStrings->FOUR);
-    
-list->add(commonPhoneStrings->FIVE);
-    
-list->add(commonPhoneStrings->SIX);
-    
-list->add(commonPhoneStrings->SEVEN);
-    
-list->add(commonPhoneStrings->EIGHT);
-    
-list->add(commonPhoneStrings->NINE);
-    
-BasicArrayListUtil::getInstance()->reverse(list);
-    
-System.out.println(list->toString());
-    
-}
-
-
-    public: const std::vector<std::vector<BasicArrayList*>> NULL_ARRAY_OF_ARRAY = std::vector<std::vector<BasicArrayList*>>(0, std::vector<BasicArrayList*>(0));
-
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
-
-    private: BasicArrayList* immutableInstance = new ImmutableBasicArrayList("Immutable", 0);
-
-    public: Object* getRandom(BasicArrayList* list){
+    auto BasicArrayListUtil::getRandom(BasicArrayList* list) -> Object*{
 
     int32_t i_random = this->getRandomIndex(list);;
     
@@ -140,7 +112,7 @@ System.out.println(list->toString());
 }
 
 
-    public: int32_t getRandomIndex(BasicArrayList* list){
+    auto BasicArrayListUtil::getRandomIndex(BasicArrayList* list) -> int32_t{
 
 
 
@@ -150,7 +122,7 @@ System.out.println(list->toString());
 }
 
 
-    public: void reverse(BasicArrayList* list){
+    auto BasicArrayListUtil::reverse(BasicArrayList* list) -> void{
 
     int32_t lastMinusOneIndex = list->size() -2;;
     
@@ -183,7 +155,7 @@ list->addAt(secondSwapIndex +1, temp);
 }
 
 
-    public: std::string log(BasicArrayList* list){
+    auto BasicArrayListUtil::log(BasicArrayList* list) -> std::string{
 
     std::string S_LABEL = " s: ";;
     
@@ -222,7 +194,7 @@ stringBuffer->appendint(usedList->size());
 }
 
 
-    public: BasicArrayList* getImmutableInstance(){
+    auto BasicArrayListUtil::getImmutableInstance() -> BasicArrayList*{
 
 
 
@@ -232,7 +204,38 @@ stringBuffer->appendint(usedList->size());
 }
 
 
-};
+    auto BasicArrayListUtil::main(std::vector<std::string> args) -> void{
 
-            
+    CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
+    
 
+    BasicArrayList* list = new BasicArrayListD();;
+    
+list->add(commonPhoneStrings->ONE);
+    
+list->add(commonPhoneStrings->TWO);
+    
+list->add(commonPhoneStrings->THREE);
+    
+list->add(commonPhoneStrings->FOUR);
+    
+list->add(commonPhoneStrings->FIVE);
+    
+list->add(commonPhoneStrings->SIX);
+    
+list->add(commonPhoneStrings->SEVEN);
+    
+list->add(commonPhoneStrings->EIGHT);
+    
+list->add(commonPhoneStrings->NINE);
+    
+BasicArrayListUtil::getInstance()->reverse(list);
+    
+System.out.println(list->toString());
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_UTIL_BASICARRAYLISTUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_CPP
+        #define ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ai/path/BasicDirectionAIHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,15 +74,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicDirectionAIHelper
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: AngleInfo* angleInfo;
-
-public: BasicDirectionAIHelper(std::string name, AngleInfo* angleInfo){
+BasicDirectionAIHelper::BasicDirectionAIHelper(std::string name, AngleInfo* angleInfo){
 this->name= name;
     
 this->angleInfo= angleInfo;
@@ -80,7 +83,7 @@ this->angleInfo= angleInfo;
 }
 
 
-    private: int32_t turnAI(int32_t frame){
+    auto BasicDirectionAIHelper::turnAI(int32_t frame) -> int32_t{
 
     int32_t keyDirection =  -1;;
     
@@ -149,7 +152,7 @@ this->angleInfo= angleInfo;
 }
 
 
-    private: int32_t getAIKeyPressed(int32_t frame){
+    auto BasicDirectionAIHelper::getAIKeyPressed(int32_t frame) -> int32_t{
 
     int16_t angle = this->angleInfo->getAngleIncrementInfo()->getFrameAngle(frame.intValue());;
     
@@ -179,7 +182,7 @@ this->angleInfo= angleInfo;
 }
 
 
-    public: int32_t getAIKeyPressedFromDirection(Direction* geographicMapDirectionData){
+    auto BasicDirectionAIHelper::getAIKeyPressedFromDirection(Direction* geographicMapDirectionData) -> int32_t{
 
     int32_t keyDirection =  -1;;
     
@@ -234,7 +237,7 @@ this->angleInfo= angleInfo;
 }
 
 
-    protected: AngleInfo* getAngleInfoP(){
+    auto BasicDirectionAIHelper::getAngleInfoP() -> AngleInfo*{
 
 
 
@@ -244,7 +247,7 @@ this->angleInfo= angleInfo;
 }
 
 
-    public: std::string getName(){
+    auto BasicDirectionAIHelper::getName() -> std::string{
 
 
 
@@ -254,7 +257,6 @@ this->angleInfo= angleInfo;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_CPP

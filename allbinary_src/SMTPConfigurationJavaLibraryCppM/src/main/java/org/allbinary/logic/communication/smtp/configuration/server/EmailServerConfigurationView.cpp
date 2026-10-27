@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,13 +82,8 @@
 #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfiguration.h"
 #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationMapping.h"
 
-class EmailServerConfigurationView
-            : public Object
-        , public DomNodeInterface {
 
-    private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
-
-public: EmailServerConfigurationView(Node* node){
+EmailServerConfigurationView::EmailServerConfigurationView(Node* node){
 
     NodeList* childNodeList = node->getChildNodes();;
     
@@ -96,13 +101,13 @@ this->emailServerConfigurationInterface= dynamic_cast<EmailServerConfigurationIn
 }
 
 
-public: EmailServerConfigurationView(EmailServerConfigurationInterface* emailServerConfigurationInterface){
+EmailServerConfigurationView::EmailServerConfigurationView(EmailServerConfigurationInterface* emailServerConfigurationInterface){
 this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-    public: EmailServerConfigurationInterface* getEmailConfigurationInterface(){
+    auto EmailServerConfigurationView::getEmailConfigurationInterface() -> EmailServerConfigurationInterface*{
 
 
 
@@ -114,7 +119,7 @@ this->emailServerConfigurationInterface= emailServerConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto EmailServerConfigurationView::toXmlNode(Document* document) -> Node*{
 
     EmailServerConfigurationMapping* emailConfigurationMapping = new EmailServerConfigurationMapping(this->emailServerConfigurationInterface);;
     
@@ -133,7 +138,6 @@ this->emailServerConfigurationInterface= emailServerConfigurationInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONVIEW_CPP

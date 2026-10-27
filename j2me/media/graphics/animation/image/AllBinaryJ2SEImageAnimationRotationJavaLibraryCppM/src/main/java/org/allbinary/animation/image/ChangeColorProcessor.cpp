@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ChangeColorProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,27 +63,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
 
-class ChangeColorProcessor: public ModifierBaseProcessor {
 
-    private: static ChangeColorProcessor* instanceC() { static std::unique_ptr<ChangeColorProcessor> value(new ChangeColorProcessor()); return value.get(); }
+ChangeColorProcessor::ChangeColorProcessor() {
+        }
+        auto ChangeColorProcessor::instanceC_owner() -> ChangeColorProcessor* { static std::unique_ptr<ChangeColorProcessor> value(new ChangeColorProcessor()); return value.get(); }
+ChangeColorProcessor* ChangeColorProcessor::instanceC = ChangeColorProcessor::instanceC_owner();
 
-    public: static ChangeColorProcessor* getInstance(){
+    auto ChangeColorProcessor::getInstance() -> ChangeColorProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ChangeColorProcessor::instanceC();
+                        return ChangeColorProcessor::instanceC;
     
 }
 
 
-    public: void updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor){
+    auto ChangeColorProcessor::updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor) -> void{
 imageModifierUtil->changeColor(originalImage, imageToShow, index, basicColor);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_CHANGECOLORPROCESSOR_CPP

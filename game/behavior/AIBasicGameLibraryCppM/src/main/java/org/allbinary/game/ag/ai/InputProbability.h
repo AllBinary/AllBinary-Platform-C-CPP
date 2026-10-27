@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_H
         #define ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class StdUtil;
+class SmallIntegerSingletonFactory;
+class TimeDelayHelper;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -64,11 +61,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputProbability
-            : public Object
+            : public virtual Object
          {
 
-    public: static inline int32_t INPUT_PROBABILITY = SmallIntegerSingletonFactory::getInstance()->getAt(0);
+    public: static int32_t INPUT_PROBABILITY;
 
     private: std::vector<std::vector<int32_t>> likelyhoodIntegerArray;
 
@@ -96,3 +97,22 @@ public: InputProbability(std::vector<std::vector<int32_t>> likelyhoodIntegerArra
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

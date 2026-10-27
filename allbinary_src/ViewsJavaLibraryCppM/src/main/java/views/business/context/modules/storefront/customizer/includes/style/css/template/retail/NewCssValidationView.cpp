@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_NEWCSSVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_NEWCSSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/style/css/template/retail/NewCssValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,11 +85,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NewCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NewCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface){
+NewCssValidationView::NewCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,7 +100,7 @@ this->styleValidationInterface= new CssStyleValidation();
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto NewCssValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -103,7 +110,7 @@ this->styleValidationInterface= new CssStyleValidation();
 }
 
 
-    public: bool isValid(){
+    auto NewCssValidationView::isValid() -> bool{
 
         try {
             
@@ -125,10 +132,10 @@ this->styleValidationInterface= new CssStyleValidation();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -144,13 +151,13 @@ this->styleValidationInterface= new CssStyleValidation();
 }
 
 
-    public: std::string validationInfo(){
+    auto NewCssValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->styleValidationInterface.validationInfo());
+stringBuffer->append(this->styleValidationInterface->validationInfo());
     
 
 
@@ -163,7 +170,7 @@ stringBuffer->append(this->styleValidationInterface.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -182,7 +189,7 @@ stringBuffer->append(this->styleValidationInterface.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto NewCssValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -192,7 +199,7 @@ stringBuffer->append(this->styleValidationInterface.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto NewCssValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -204,17 +211,16 @@ stringBuffer->append(this->styleValidationInterface.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto NewCssValidationView::view() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
+                        return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_NEWCSSVALIDATIONVIEW_CPP

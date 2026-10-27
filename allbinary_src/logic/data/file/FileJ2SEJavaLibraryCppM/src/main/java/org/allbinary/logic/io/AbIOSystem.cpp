@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/AbIOSystem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbIOSystem
-            : public Object
-         {
 
-    private: static AbIOSystem* instance() { static std::unique_ptr<AbIOSystem> value(new AbIOSystem()); return value.get(); }
+AbIOSystem::AbIOSystem() {
+        }
+        auto AbIOSystem::instance_owner() -> AbIOSystem* { static std::unique_ptr<AbIOSystem> value(new AbIOSystem()); return value.get(); }
+AbIOSystem* AbIOSystem::instance = AbIOSystem::instance_owner();
 
-    public: static AbIOSystem* getInstance(){
+    auto AbIOSystem::getInstance() -> AbIOSystem*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbIOSystem::instance();
+                        return AbIOSystem::instance;
     
 }
 
 
-    private: const std::string type = "java.io";
-
-    public: std::string getType(){
+    auto AbIOSystem::getType() -> std::string{
 
 
 
@@ -73,7 +81,7 @@ class AbIOSystem
 }
 
 
-    public: bool isType(std::string type){
+    auto AbIOSystem::isType(std::string type) -> bool{
 
                         if(this->type.compare(type) == 0)
                         
@@ -100,7 +108,6 @@ class AbIOSystem
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_ABIOSYSTEM_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEBUG_DEBUGFACTORY_CPP
+        #define ORG_ALLBINARY_DEBUG_DEBUGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/debug/DebugFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,11 @@
         #include "org/allbinary/debug/NoDebug.h"
 #include "org/allbinary/debug/DebugInterface.h"
 
-class DebugFactory
-            : public Object
-         {
 
-    public: static DebugInterface* getInstance(){
+DebugFactory::DebugFactory() {
+        }
+        
+    auto DebugFactory::getInstance() -> DebugInterface*{
 
 
 
@@ -61,7 +71,6 @@ class DebugFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEBUG_DEBUGFACTORY_CPP

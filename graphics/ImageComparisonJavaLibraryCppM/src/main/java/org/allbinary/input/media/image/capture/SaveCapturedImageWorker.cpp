@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SAVECAPTUREDIMAGEWORKER_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SAVECAPTUREDIMAGEWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/SaveCapturedImageWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,22 +88,13 @@
 #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
 #include "org/allbinary/input/media/image/capture/CapturedImageInputOutput.h"
 
-class SaveCapturedImageWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: bool running= false;
-
-    private: BasicArrayList* capturedImageWorkerResultsEventVector = new BasicArrayListD();
-
-public: SaveCapturedImageWorker(){
+SaveCapturedImageWorker::SaveCapturedImageWorker() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), capturedImageWorkerResultsEventVector(new BasicArrayListD()){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto SaveCapturedImageWorker::isRunning() -> bool{
 
 
 
@@ -104,13 +105,13 @@ public: SaveCapturedImageWorker(){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto SaveCapturedImageWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 
-    public: void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedImageEvent){
+    auto SaveCapturedImageWorker::onCaptureEvent(CapturedImageWorkerResultsEvent* capturedImageEvent) -> void{
 this->capturedImageWorkerResultsEventVector->add(capturedImageEvent);
     
 this->run();
@@ -118,13 +119,13 @@ this->run();
 }
 
 
-    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+    auto SaveCapturedImageWorker::onEvent(AllBinaryEventObject* allBinaryEventObject) -> void{
 this->onCaptureEvent(dynamic_cast<CapturedImageWorkerResultsEvent*>(allBinaryEventObject));
     
 }
 
 
-    public: void run(){
+    auto SaveCapturedImageWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -163,7 +164,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SAVECAPTUREDIMAGEWORKER_CPP

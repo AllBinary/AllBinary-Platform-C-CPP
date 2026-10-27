@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANDROIDIMAGEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANDROIDIMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/AndroidImageUtil.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -68,23 +78,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AndroidImageUtil
-            : public Object
-         {
 
-    private: static AndroidImageUtil* instance() { static std::unique_ptr<AndroidImageUtil> value(new AndroidImageUtil()); return value.get(); }
+AndroidImageUtil::AndroidImageUtil() {
+        }
+        auto AndroidImageUtil::instance_owner() -> AndroidImageUtil* { static std::unique_ptr<AndroidImageUtil> value(new AndroidImageUtil()); return value.get(); }
+AndroidImageUtil* AndroidImageUtil::instance = AndroidImageUtil::instance_owner();
 
-    public: static AndroidImageUtil* getInstance(){
+    auto AndroidImageUtil::getInstance() -> AndroidImageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidImageUtil::instance();
+                        return AndroidImageUtil::instance;
     
 }
 
 
-    public: void paintBitmap(Bitmap* bitmap, Bitmap* originalBitmap, Paint* paint){
+    auto AndroidImageUtil::paintBitmap(Bitmap* bitmap, Bitmap* originalBitmap, Paint* paint) -> void{
 bitmap->eraseColor(Color::TRANSPARENT);
     
 
@@ -97,7 +107,7 @@ canvas->drawBitmap(originalBitmap, 0.0, 0.0, paint);
 }
 
 
-    public: void paint(Image* image, Image* originalImage, Paint* paint){
+    auto AndroidImageUtil::paint(Image* image, Image* originalImage, Paint* paint) -> void{
 
     AndroidImageInterface* androidImage = dynamic_cast<AndroidImageInterface*>(image);;
     
@@ -114,7 +124,7 @@ canvas->drawBitmap(originalAndroidImage->getBitmap(), 0.0, 0.0, paint);
 }
 
 
-    public: void rotate(Image* image, Image* originalImage, Matrix* matrix, Paint* paint){
+    auto AndroidImageUtil::rotate(Image* image, Image* originalImage, Matrix* matrix, Paint* paint) -> void{
 
     AndroidImageInterface* androidImage = dynamic_cast<AndroidImageInterface*>(image);;
     
@@ -133,7 +143,6 @@ canvas->drawBitmap(originalAndroidImage->getBitmap(), 0.0, 0.0, paint);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANDROIDIMAGEUTIL_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,23 +46,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLUtil
-            : public Object
-         {
 
-    private: static OpenGLUtil* instance() { static std::unique_ptr<OpenGLUtil> value(new OpenGLUtil()); return value.get(); }
+OpenGLUtil::OpenGLUtil() {
+        }
+        auto OpenGLUtil::instance_owner() -> OpenGLUtil* { static std::unique_ptr<OpenGLUtil> value(new OpenGLUtil()); return value.get(); }
+OpenGLUtil* OpenGLUtil::instance = OpenGLUtil::instance_owner();
 
-    public: static OpenGLUtil* getInstance(){
+    auto OpenGLUtil::getInstance() -> OpenGLUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLUtil::instance();
+                        return OpenGLUtil::instance;
     
 }
 
 
-    public: Image* addImage(Image* image){
+    auto OpenGLUtil::addImage(Image* image) -> Image*{
 
 
 
@@ -62,15 +72,14 @@ class OpenGLUtil
 }
 
 
-    public: void clear(){
+    auto OpenGLUtil::clear() -> void{
 }
 
 
-    public: void addRunnable(Runnable* runnable){
+    auto OpenGLUtil::addRunnable(Runnable* runnable) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_CPP

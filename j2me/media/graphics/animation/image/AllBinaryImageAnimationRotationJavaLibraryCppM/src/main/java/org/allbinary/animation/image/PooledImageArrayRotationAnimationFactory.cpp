@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/PooledImageArrayRotationAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -78,13 +88,10 @@
         #include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 #include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
 //TWB - Adjustments should be done in the resource creation and not at the animation level
-class PooledImageArrayRotationAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static PooledImageArrayRotationAnimationFactory* createFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto PooledImageArrayRotationAnimationFactory::createFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) -> PooledImageArrayRotationAnimationFactory*{
 
     int32_t totalAngle = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);;
     
@@ -102,7 +109,7 @@ class PooledImageArrayRotationAnimationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static PooledImageArrayRotationAnimationFactory* createDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto PooledImageArrayRotationAnimationFactory::createDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) -> PooledImageArrayRotationAnimationFactory*{
 
     int32_t totalAngle = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);;
     
@@ -118,11 +125,7 @@ class PooledImageArrayRotationAnimationFactory
 }
 
 
-    private: Object* allBinaryImageRotationAnimationInfo = NullUtil::getInstance()->NULL_OBJECT;
-
-    private: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: PooledImageArrayRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int32_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory){
+PooledImageArrayRotationAnimationFactory::PooledImageArrayRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int32_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) : allBinaryImageRotationAnimationInfo(NullUtil::getInstance()->NULL_OBJECT){
 this->animationBehaviorFactory= animationBehaviorFactory;
     
 
@@ -138,7 +141,7 @@ this->allBinaryImageRotationAnimationInfo= new ImageArrayRotationAnimationInfo(i
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto PooledImageArrayRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -148,11 +151,10 @@ this->allBinaryImageRotationAnimationInfo= new ImageArrayRotationAnimationInfo(i
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto PooledImageArrayRotationAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_CPP

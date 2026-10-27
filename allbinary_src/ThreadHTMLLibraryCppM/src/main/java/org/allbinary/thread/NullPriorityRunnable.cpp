@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_NULLPRIORITYRUNNABLE_CPP
+        #define ORG_ALLBINARY_THREAD_NULLPRIORITYRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/NullPriorityRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/PriorityRunnable.h"
 
-class NullPriorityRunnable
-            : public Object
-        , public PriorityRunnable {
 
-    public: int32_t getPriority(){
+NullPriorityRunnable::NullPriorityRunnable() {
+        }
+        
+    auto NullPriorityRunnable::getPriority() -> int32_t{
 
 
 
@@ -60,7 +70,7 @@ class NullPriorityRunnable
 }
 
 
-    public: bool isDone(){
+    auto NullPriorityRunnable::isDone() -> bool{
 
 
 
@@ -70,15 +80,14 @@ class NullPriorityRunnable
 }
 
 
-    public: void reset(){
+    auto NullPriorityRunnable::reset() -> void{
 }
 
 
-    public: void run(){
+    auto NullPriorityRunnable::run() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_NULLPRIORITYRUNNABLE_CPP

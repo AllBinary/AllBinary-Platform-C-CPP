@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKINFO_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,27 +61,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackFrictionProperties.h"
 
-class RaceTrackInfo
-            : public Object
-         {
 
-    private: int32_t id;
-
-    private: std::string name;
-
-    private: RaceTrackFrictionProperties* raceTrackFrictionProperties;
-
-    private: BasicColor* foregroundBasicColor;
-
-    private: BasicColor* backgroundBasicColor;
-
-    private: int32_t qualifyTime;
-
-    private: int32_t worstContinuePosition;
-
-    private: int32_t totalLaps;
-
-public: RaceTrackInfo(int32_t id, std::string name, RaceTrackFrictionProperties* raceTrackFrictionProperties, BasicColor* foregroundBasicColor, BasicColor* backgroundBasicColor, int32_t qualifyTime, int32_t worstContinuePosition, int32_t totalLaps){
+RaceTrackInfo::RaceTrackInfo(int32_t id, std::string name, RaceTrackFrictionProperties* raceTrackFrictionProperties, BasicColor* foregroundBasicColor, BasicColor* backgroundBasicColor, int32_t qualifyTime, int32_t worstContinuePosition, int32_t totalLaps){
 this->id= id;
     
 this->name= name;
@@ -91,7 +82,7 @@ this->totalLaps= totalLaps;
 }
 
 
-    public: int32_t getId(){
+    auto RaceTrackInfo::getId() -> int32_t{
 
 
 
@@ -101,13 +92,13 @@ this->totalLaps= totalLaps;
 }
 
 
-    private: void setId(int32_t id){
+    auto RaceTrackInfo::setId(int32_t id) -> void{
 this->id= id;
     
 }
 
 
-    public: std::string getName(){
+    auto RaceTrackInfo::getName() -> std::string{
 
 
 
@@ -117,13 +108,13 @@ this->id= id;
 }
 
 
-    public: void setName(std::string name){
+    auto RaceTrackInfo::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: int32_t getQualifyTime(){
+    auto RaceTrackInfo::getQualifyTime() -> int32_t{
 
 
 
@@ -133,13 +124,13 @@ this->name= name;
 }
 
 
-    public: void setQualifyTime(int32_t qualifyTime){
+    auto RaceTrackInfo::setQualifyTime(int32_t qualifyTime) -> void{
 this->qualifyTime= qualifyTime;
     
 }
 
 
-    public: int32_t getWorstContinuePosition(){
+    auto RaceTrackInfo::getWorstContinuePosition() -> int32_t{
 
 
 
@@ -149,13 +140,13 @@ this->qualifyTime= qualifyTime;
 }
 
 
-    public: void setWorstContinuePosition(int32_t worstContinuePosition){
+    auto RaceTrackInfo::setWorstContinuePosition(int32_t worstContinuePosition) -> void{
 this->worstContinuePosition= worstContinuePosition;
     
 }
 
 
-    public: int32_t getTotalLaps(){
+    auto RaceTrackInfo::getTotalLaps() -> int32_t{
 
 
 
@@ -165,13 +156,13 @@ this->worstContinuePosition= worstContinuePosition;
 }
 
 
-    public: void setTotalLaps(int32_t totalLaps){
+    auto RaceTrackInfo::setTotalLaps(int32_t totalLaps) -> void{
 this->totalLaps= totalLaps;
     
 }
 
 
-    public: BasicColor* getForegroundBasicColor(){
+    auto RaceTrackInfo::getForegroundBasicColor() -> BasicColor*{
 
 
 
@@ -181,13 +172,13 @@ this->totalLaps= totalLaps;
 }
 
 
-    public: void setForegroundBasicColor(BasicColor* foregroundBasicColor){
+    auto RaceTrackInfo::setForegroundBasicColor(BasicColor* foregroundBasicColor) -> void{
 this->foregroundBasicColor= foregroundBasicColor;
     
 }
 
 
-    public: BasicColor* getBackgroundBasicColor(){
+    auto RaceTrackInfo::getBackgroundBasicColor() -> BasicColor*{
 
 
 
@@ -197,13 +188,13 @@ this->foregroundBasicColor= foregroundBasicColor;
 }
 
 
-    public: void setBackgroundBasicColor(BasicColor* backgroundBasicColor){
+    auto RaceTrackInfo::setBackgroundBasicColor(BasicColor* backgroundBasicColor) -> void{
 this->backgroundBasicColor= backgroundBasicColor;
     
 }
 
 
-    public: RaceTrackFrictionProperties* getRaceTrackFrictionProperties(){
+    auto RaceTrackInfo::getRaceTrackFrictionProperties() -> RaceTrackFrictionProperties*{
 
 
 
@@ -213,13 +204,12 @@ this->backgroundBasicColor= backgroundBasicColor;
 }
 
 
-    public: void setRaceTrackFrictionProperties(RaceTrackFrictionProperties* raceTrackFrictionProperties){
+    auto RaceTrackInfo::setRaceTrackFrictionProperties(RaceTrackFrictionProperties* raceTrackFrictionProperties) -> void{
 this->raceTrackFrictionProperties= raceTrackFrictionProperties;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKINFO_CPP

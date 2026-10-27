@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_TESTREMOTELOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_TESTREMOTELOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/TestRemoteLogUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,21 +66,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/LogUtil.h"
 
-class TestRemoteLogUtil
-            : public Object
-         {
 
-    public: static inline const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
-
-                //@Throws(Exception.constructor)
-            
-    public: static void main(std::vector<std::string> args){
-new TestRemoteLogUtil();
-    
-}
-
-
-public: TestRemoteLogUtil(){
+TestRemoteLogUtil::TestRemoteLogUtil(){
 Globals::getInstance()->init(this->getClass()getClassLoader(), TestRemoteLogUtil::PATH);
     
 
@@ -84,7 +81,14 @@ logUtil->put(commonStrings->EXCEPTION, "Test", "TestClass", new Exception("Prete
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto TestRemoteLogUtil::main(std::vector<std::string> args) -> void{
+new TestRemoteLogUtil();
+    
+}
 
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_TESTREMOTELOGUTIL_CPP

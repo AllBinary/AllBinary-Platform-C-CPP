@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDSTORE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDSTORE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <javax/microedition/rms/RecordStore.h>
-
-      
 
 
 
@@ -49,13 +52,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullRecordStore: public RecordStore {
 
-    public: static NullRecordStore* NULL_RECORD_STORE() { static std::unique_ptr<NullRecordStore> value(new NullRecordStore()); return value.get(); }
+    private: static NullRecordStore* NULL_RECORD_STORE_owner();
+    public: static NullRecordStore* NULL_RECORD_STORE;
 
+
+            
+    public: NullRecordStore();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDSTORE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDSTORE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDSTORE_H_COMPLETE
+        #if __has_include(<javax/microedition/rms/RecordStore.h>)
+#include <javax/microedition/rms/RecordStore.h>
+#endif
+
+        #endif
+    

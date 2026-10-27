@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHWORKER_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/search/ImageComparisonSearchWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,21 +95,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/search/ImageComparisonSearchConstraintsInterface.h"
 
-class ImageComparisonSearchWorker: public BasicEventHandler, public ImageComparisonResultsListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* imageComparisonInfoVector;
-
-    private: int64_t index= 0;
-
-    private: bool running= false;
-
-    private: ImageComparisonSearchConstraintsInterface* imageSearchConstraintsInterface;
-
-public: ImageComparisonSearchWorker(ImageComparisonSearchConstraintsInterface* imageSearchConstraintsInterface){
+ImageComparisonSearchWorker::ImageComparisonSearchWorker(ImageComparisonSearchConstraintsInterface* imageSearchConstraintsInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->imageComparisonInfoVector= new BasicArrayListD();
     
 this->imageSearchConstraintsInterface= imageSearchConstraintsInterface;
@@ -107,7 +104,7 @@ this->imageSearchConstraintsInterface= imageSearchConstraintsInterface;
 }
 
 
-    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent){
+    auto ImageComparisonSearchWorker::onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent) -> void{
 this->imageComparisonInfoVector->add(imageComparisonResultsEvent->getImageComparisonResult());
     
 this->run();
@@ -115,14 +112,14 @@ this->run();
 }
 
 
-    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+    auto ImageComparisonSearchWorker::onEvent(AllBinaryEventObject* allBinaryEventObject) -> void{
 this->onImageComparisonResultsEvent(dynamic_cast<ImageComparisonResultsEvent*>(allBinaryEventObject));
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto ImageComparisonSearchWorker::isRunning() -> bool{
 
 
 
@@ -133,13 +130,13 @@ this->onImageComparisonResultsEvent(dynamic_cast<ImageComparisonResultsEvent*>(a
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto ImageComparisonSearchWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 
-    public: void run(){
+    auto ImageComparisonSearchWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -180,7 +177,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHWORKER_CPP

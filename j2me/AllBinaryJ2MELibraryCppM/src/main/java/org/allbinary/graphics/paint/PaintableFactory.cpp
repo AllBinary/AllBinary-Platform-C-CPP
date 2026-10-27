@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/PaintableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,11 @@
         #include "org/allbinary/graphics/paint/NullPaintable.h"
 #include "org/allbinary/graphics/paint/Paintable.h"
 
-class PaintableFactory
-            : public Object
-         {
 
-    public: Paintable* getInstance(){
+PaintableFactory::PaintableFactory() {
+        }
+        
+    auto PaintableFactory::getInstance() -> Paintable*{
 
 
 
@@ -61,7 +71,6 @@ class PaintableFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEFACTORY_CPP

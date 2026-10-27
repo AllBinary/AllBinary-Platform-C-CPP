@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERCOSTANIMATION_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERCOSTANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/item/RTSLayerCostAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -95,29 +105,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSLayerCostAnimation: public Animation, public TechEventListenerInterface, public UpdateMyFontInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: PrimitiveLongUtil* primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
-
-    private: const std::string DOLLAR = "$";
-
-    private: Image* image;
-
-    private: CostLayerInterfaceFactoryInterface* layerInterfaceFactoryInterface;
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: std::vector<char> costString = NullUtil::getInstance()->NULL_CHAR_ARRAY;
-
-    private: int32_t len= 0;
-
-    private: int32_t adjustedCostX= 0;
-
-    private: int32_t fontHeight = 0;
-
-public: RTSLayerCostAnimation(Image* image, CostLayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+RTSLayerCostAnimation::RTSLayerCostAnimation(Image* image, CostLayerInterfaceFactoryInterface* layerInterfaceFactoryInterface) : logUtil(LogUtil::getInstance()), primitiveLongUtil(PrimitiveLongUtil::createPowerOfTen(10000)), myFontProcessor(new UpdateMyFontProcessor(this)), costString(NullUtil::getInstance()->NULL_CHAR_ARRAY){
 this->image= image;
     
 this->layerInterfaceFactoryInterface= layerInterfaceFactoryInterface;
@@ -127,7 +116,7 @@ this->update();
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto RTSLayerCostAnimation::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -140,13 +129,13 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void onEvent(AllBinaryEventObject* event){
+    auto RTSLayerCostAnimation::onEvent(AllBinaryEventObject* event) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onTechEvent(AllBinaryEventObject* event){
+    auto RTSLayerCostAnimation::onTechEvent(AllBinaryEventObject* event) -> void{
 
         try {
             this->update();
@@ -167,7 +156,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "onTechEvent", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(){
+    auto RTSLayerCostAnimation::update() -> void{
 this->len= 0;
     
 this->costString= this->primitiveLongUtil->getCharArray(this->layerInterfaceFactoryInterface->getCost());
@@ -177,10 +166,10 @@ this->len= this->primitiveLongUtil->getCurrentTotalDigits();
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto RTSLayerCostAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->myFontProcessor->process(graphics);
     
-super.paintXY(graphics, x, y);
+Animation::paintXY(graphics, x, y);
     
 
     int32_t adjustedCostY = this->image->getHeight() -this->fontHeight;;
@@ -195,7 +184,6 @@ graphics->drawChars(this->costString, 0, this->len, x +this->adjustedCostX, y +a
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERCOSTANIMATION_CPP

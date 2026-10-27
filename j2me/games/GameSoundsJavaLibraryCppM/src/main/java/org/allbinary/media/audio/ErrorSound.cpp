@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ERRORSOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ERRORSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/ErrorSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,9 @@
         #include "org/allbinary/media/audio/CompositeSound.h"
 #include "org/allbinary/media/audio/Sound.h"
 
-class ErrorSound: public CompositeSound {
+Sound* ErrorSound::soundInterface = new ErrorSound();
 
-    private: static inline Sound* soundInterface = new ErrorSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ErrorSound::soundInterface;
-    
-}
-
-
-private: ErrorSound() : CompositeSound("resource:/wav/error.wav"){
+ErrorSound::ErrorSound() : CompositeSound("resource:/wav/error.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +67,16 @@ private: ErrorSound() : CompositeSound("resource:/wav/error.wav"){
 }
 
 
-};
+    auto ErrorSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ErrorSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_ERRORSOUND_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/StartIntermissionProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,17 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class StartIntermissionProcessor: public Processor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AllBinaryGameCanvas* gameCanvas;
-
-    private: const int64_t WAIT = 5000;
-
-public: StartIntermissionProcessor(AllBinaryGameCanvas* gameCanvas){
+StartIntermissionProcessor::StartIntermissionProcessor(AllBinaryGameCanvas* gameCanvas) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->gameCanvas= gameCanvas;
     
 }
@@ -73,7 +74,7 @@ this->gameCanvas= gameCanvas;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto StartIntermissionProcessor::process() -> void{
 
                         if(this->gameCanvas->getStartIntermissionInterface()->getTimeDelayHelper()->isElapsedTNT(this->WAIT))
                         
@@ -88,7 +89,6 @@ this->gameCanvas->getStartIntermissionInterface()->setEnabled(false);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPROCESSOR_CPP

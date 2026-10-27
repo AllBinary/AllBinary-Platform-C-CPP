@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMS_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/MultipartRequestParams.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,13 +90,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/request/RequestParams.h"
 
-class MultipartRequestParams: public RequestParams {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool special = false;
-
-public: MultipartRequestParams(HttpServletRequest* request) : RequestParams(){
+MultipartRequestParams::MultipartRequestParams(HttpServletRequest* request) : RequestParams(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,7 +103,7 @@ this->processMultipartRequest(request);
 }
 
 
-public: MultipartRequestParams(PageContext* pageContext) : RequestParams(){
+MultipartRequestParams::MultipartRequestParams(PageContext* pageContext) : RequestParams(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,13 +115,13 @@ this->processMultipartRequest(dynamic_cast<HttpServletRequest*>(pageContext->get
 }
 
 
-    protected: void setSpecial(){
+    auto MultipartRequestParams::setSpecial() -> void{
 this->special= true;
     
 }
 
 
-    private: void processMultipartRequest(HttpServletRequest* request){
+    auto MultipartRequestParams::processMultipartRequest(HttpServletRequest* request) -> void{
 
         try {
             
@@ -132,10 +137,10 @@ this->special= true;
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("FileItem List Size: " +multipartRequestList->size, this, "processMultipartRequest()");
+                                    this->logUtil->putF(JavaString::valueOf("FileItem List Size: ") +JavaString::valueOf(multipartRequestList->size), this, "processMultipartRequest()");
     
 
                                     }
@@ -177,10 +182,10 @@ this->special= true;
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
-                                    this->logUtil->putF("Special Request Data: " +specialRequest->toString(), this, "processMultipartRequest()");
+                                    this->logUtil->putF(JavaString::valueOf("Special Request Data: ") +JavaString::valueOf(specialRequest->toString()), this, "processMultipartRequest()");
     
 
                                     }
@@ -197,7 +202,7 @@ this->setMap(specialRequest);
 } catch(InvalidContentTypeException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     this->logUtil->putF("Using Normal RequestParams", this, "processMultipartRequest()");
@@ -205,7 +210,7 @@ this->setMap(specialRequest);
 
                                     }
                                 
-super.setMap(request->getParameterMap());
+RequestParams::setMap(request->getParameterMap());
     
 }
 
@@ -213,7 +218,7 @@ super.setMap(request->getParameterMap());
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUESTERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUESTERROR))
                         
                                     {
                                     this->logUtil->putF("Should Not Occur", this, "processMultipartRequest()");
@@ -221,7 +226,7 @@ super.setMap(request->getParameterMap());
 
                                     }
                                 
-super.setMap(request->getParameterMap());
+RequestParams::setMap(request->getParameterMap());
     
 }
 
@@ -230,7 +235,7 @@ super.setMap(request->getParameterMap());
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto MultipartRequestParams::toHashMap() -> HashMap<Object*, Object*>*{
 
                         if(this->special)
                         
@@ -249,7 +254,7 @@ super.setMap(request->getParameterMap());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.toHashMap();;
+                        return RequestParams::toHashMap();;
     
 
                         }
@@ -257,7 +262,6 @@ super.setMap(request->getParameterMap());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMS_CPP

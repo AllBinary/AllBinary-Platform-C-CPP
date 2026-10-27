@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_BASICHIGHSCORESFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_BASICHIGHSCORESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/BasicHighScoresFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,9 +62,50 @@
 #include "org/allbinary/game/score/HighScoresHelper2.h"
 #include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
-class BasicHighScoresFactory: public HighScoresBase {
 
-    public: static bool loaded(int32_t index2){
+BasicHighScoresFactory::BasicHighScoresFactory(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation) : logUtil(LogUtil::getInstance()), highScoresArray(std::vector<HighScores*>(1)){
+this->abeClientInformation= abeClientInformation;
+    
+}
+
+
+    auto BasicHighScoresFactory::fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener) -> void{
+this->logUtil->putF("Getting Local HighScores", this, this->FETCH);
+    
+this->fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
+    
+}
+
+
+    auto BasicHighScoresFactory::fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload) -> void{
+
+        try {
+            this->highScoresArray[0]= RecordStoreHighScores::getInstance(this->abeClientInformation, gameInfo, this->TOP, this->PERSONAL_HIGH_SCORES, this->SCORES, new ScoreComparator(true));
+    
+highScoresResultsListener->setHighScoresArray(this->highScoresArray);
+    
+
+                //: 
+} catch(Exception& e) 
+            {
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->FETCH, &e);
+    
+}
+
+}
+
+
+    auto BasicHighScoresFactory::createHighScoresHelper() -> HighScoresHelperBaseInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return new HighScoresHelper2();
+    
+}
+
+
+    auto BasicHighScoresFactory::loaded(int32_t index2) -> bool{
 
                         if(index2 >= 0)
                         
@@ -77,63 +128,6 @@ class BasicHighScoresFactory: public HighScoresBase {
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation;
-
-public: BasicHighScoresFactory(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation){
-this->abeClientInformation= abeClientInformation;
-    
-}
 
 
-    private: const std::vector<HighScores*> highScoresArray = std::vector<HighScores*>(1);
-
-    private: const std::string TOP = "Top";
-
-    private: const std::string SCORES = "Scores";
-
-    private: const std::string PERSONAL_HIGH_SCORES = "Personal Top Scores";
-
-    private: const std::string FETCH = "fetchHighScores";
-
-    public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener){
-this->logUtil->putF("Getting Local HighScores", this, this->FETCH);
-    
-this->fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
-    
-}
-
-
-    public: void fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload){
-
-        try {
-            this->highScoresArray[0]= RecordStoreHighScores::getInstance(this->abeClientInformation, gameInfo, this->TOP, this->PERSONAL_HIGH_SCORES, this->SCORES, new ScoreComparator(true));
-    
-highScoresResultsListener->setHighScoresArray(this->highScoresArray);
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->FETCH, &e);
-    
-}
-
-}
-
-
-    public: HighScoresHelperBaseInterface* createHighScoresHelper(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HighScoresHelper2();
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_BASICHIGHSCORESFACTORY_CPP

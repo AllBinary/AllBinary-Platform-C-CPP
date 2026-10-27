@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSPECIALANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSPECIALANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageArraySpecialAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -69,11 +79,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageArrayAnimation.h"
 
-class ImageArraySpecialAnimation: public ImageArrayAnimation, public SpecialAnimationInterface {
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(270);
-
-public: ImageArraySpecialAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior) : ImageArrayAnimation(imageArray, animationBehavior){
+ImageArraySpecialAnimation::ImageArraySpecialAnimation(std::vector<Image*> imageArray, AnimationBehavior* animationBehavior) : ImageArrayAnimation(imageArray, animationBehavior), timeDelayHelper(new TimeDelayHelper(270)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,9 +92,7 @@ this->reset();
 }
 
 
-    private: int32_t loopCount = 0;
-
-    public: int32_t getLoopCount(){
+    auto ImageArraySpecialAnimation::getLoopCount() -> int32_t{
 
 
 
@@ -97,13 +102,13 @@ this->reset();
 }
 
 
-    public: void setLastFrame(){
-this->circularIndexUtil.setIndex(this->circularIndexUtil.getSize() -1);
+    auto ImageArraySpecialAnimation::setLastFrame() -> void{
+this->circularIndexUtil->setIndex(this->circularIndexUtil->getSize() -1);
     
 }
 
 
-    public: void reset(){
+    auto ImageArraySpecialAnimation::reset() -> void{
 this->setFrame(this->getSize() -1);
     
 this->loopCount= 0;
@@ -111,7 +116,7 @@ this->loopCount= 0;
 }
 
 
-    public: void nextFrame(){
+    auto ImageArraySpecialAnimation::nextFrame() -> void{
 
                         if(this->getFrame() > 0)
                         
@@ -140,9 +145,7 @@ this->loopCount= 0;
 }
 
 
-    private: const int32_t loopCountTotal = 1;
-
-    public: bool isComplete(){
+    auto ImageArraySpecialAnimation::isComplete() -> bool{
 
                         if(this->loopCount < this->loopCountTotal || this->getFrame() != 0)
                         
@@ -169,17 +172,16 @@ this->loopCount= 0;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-x= DisplayInfoSingleton::getInstance()->getLastHalfWidth() -(this->getImage(this->circularIndexUtil.getIndex())->getWidth()>>1);
+    auto ImageArraySpecialAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+x= DisplayInfoSingleton::getInstance()->getLastHalfWidth() -(this->getImage(this->circularIndexUtil->getIndex())->getWidth()>>1);
     
 y= 5;
     
-super.paintXY(graphics, x, y);
+ImageArrayAnimation::paintXY(graphics, x, y);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSPECIALANIMATION_CPP

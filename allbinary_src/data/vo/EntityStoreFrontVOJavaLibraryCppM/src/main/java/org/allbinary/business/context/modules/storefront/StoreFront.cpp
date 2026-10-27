@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/StoreFront.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -158,99 +168,19 @@
         #include "org/allbinary/business/context/modules/storefront/StoreFrontInterface.h"
 #include "org/allbinary/business/context/modules/storefront/StoreFrontData.h"
 
-class StoreFront
-            : public Object
-        , public StoreFrontInterface {
+const std::string StoreFront::RESOURCES = JavaString::valueOf(" Resources") +JavaString::valueOf(AbPathData::getInstance()->SEPARATOR);
 
-    private: static inline const std::string RESOURCES = " Resources" +AbPathData::getInstance()->SEPARATOR;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Directory* directory = Directory::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    private: AbPathUtil* abPathUtil = AbPathUtil::getInstance();
-
-    private: std::string name = this->stringUtil->EMPTY_STRING;
-
-    private: std::string basketName = this->stringUtil->EMPTY_STRING;
-
-    private: std::string homeHostName = this->stringUtil->EMPTY_STRING;
-
-    private: AbPath* homeHostNamePath = this->abPathUtil->NO_ABPATH;
-
-    private: std::string hostName = this->stringUtil->EMPTY_STRING;
-
-    private: AbPath* hostNamePath = this->abPathUtil->NO_ABPATH;
-
-    private: std::string testHomeHostName = this->stringUtil->EMPTY_STRING;
-
-    private: AbPath* testHomeHostNamePath = this->abPathUtil->NO_ABPATH;
-
-    private: std::string testHostName = this->stringUtil->EMPTY_STRING;
-
-    private: AbPath* testHostNamePath = this->abPathUtil->NO_ABPATH;
-
-    private: AbPath* imagePath = this->abPathUtil->NO_ABPATH;
-
-    private: AbPath* staticPath = this->abPathUtil->NO_ABPATH;
-
-    private: AbPath* categoryPath = this->abPathUtil->NO_ABPATH;
-
-    private: std::string inventoryControl = this->stringUtil->EMPTY_STRING;
-
-    private: ContextConfigurationInterface* contextConfigurationInterface;
-
-    private: std::string subStores = this->stringUtil->EMPTY_STRING;
-
-    private: std::string tagLocation = this->stringUtil->EMPTY_STRING;
-
-    private: std::string packageLocation = this->stringUtil->EMPTY_STRING;
-
-    private: std::string ftp = this->stringUtil->EMPTY_STRING;
-
-    private: AbPath* ftpPath = this->abPathUtil->NO_ABPATH;
-
-    private: std::string ftpUserName = this->stringUtil->EMPTY_STRING;
-
-    private: std::string ftpPassword = this->stringUtil->EMPTY_STRING;
-
-    private: std::string testFtp = this->stringUtil->EMPTY_STRING;
-
-    private: AbPath* testFtpPath = this->abPathUtil->NO_ABPATH;
-
-    private: std::string testFtpUserName = this->stringUtil->EMPTY_STRING;
-
-    private: std::string testFtpPassword = this->stringUtil->EMPTY_STRING;
-
-    private: std::string timeCreated = this->stringUtil->EMPTY_STRING;
-
-    private: std::string lastModified = this->stringUtil->EMPTY_STRING;
-
-    private: const int32_t MINCHAR = 0;
-
-    private: const int32_t MINSTORENAMELENGTH = 1;
-
-    private: const int32_t MAXCHAR = 255;
-
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: const std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;
-
-public: StoreFront(){
+StoreFront::StoreFront() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), directory(Directory::getInstance()), stringUtil(StringUtil::getInstance()), abPathUtil(AbPathUtil::getInstance()), name(this->stringUtil->EMPTY_STRING), basketName(this->stringUtil->EMPTY_STRING), homeHostName(this->stringUtil->EMPTY_STRING), homeHostNamePath(this->abPathUtil->NO_ABPATH), hostName(this->stringUtil->EMPTY_STRING), hostNamePath(this->abPathUtil->NO_ABPATH), testHomeHostName(this->stringUtil->EMPTY_STRING), testHomeHostNamePath(this->abPathUtil->NO_ABPATH), testHostName(this->stringUtil->EMPTY_STRING), testHostNamePath(this->abPathUtil->NO_ABPATH), imagePath(this->abPathUtil->NO_ABPATH), staticPath(this->abPathUtil->NO_ABPATH), categoryPath(this->abPathUtil->NO_ABPATH), inventoryControl(this->stringUtil->EMPTY_STRING), subStores(this->stringUtil->EMPTY_STRING), tagLocation(this->stringUtil->EMPTY_STRING), packageLocation(this->stringUtil->EMPTY_STRING), ftp(this->stringUtil->EMPTY_STRING), ftpPath(this->abPathUtil->NO_ABPATH), ftpUserName(this->stringUtil->EMPTY_STRING), ftpPassword(this->stringUtil->EMPTY_STRING), testFtp(this->stringUtil->EMPTY_STRING), testFtpPath(this->abPathUtil->NO_ABPATH), testFtpUserName(this->stringUtil->EMPTY_STRING), testFtpPassword(this->stringUtil->EMPTY_STRING), timeCreated(this->stringUtil->EMPTY_STRING), lastModified(this->stringUtil->EMPTY_STRING), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), ONE_EMPTY_STRING_ARRAY(StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY){
 this->contextConfigurationInterface= new ContextConfiguration();
     
 }
 
 
-public: StoreFront(HttpServletRequest* request){
+StoreFront::StoreFront(HttpServletRequest* request) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), directory(Directory::getInstance()), stringUtil(StringUtil::getInstance()), abPathUtil(AbPathUtil::getInstance()), name(this->stringUtil->EMPTY_STRING), basketName(this->stringUtil->EMPTY_STRING), homeHostName(this->stringUtil->EMPTY_STRING), homeHostNamePath(this->abPathUtil->NO_ABPATH), hostName(this->stringUtil->EMPTY_STRING), hostNamePath(this->abPathUtil->NO_ABPATH), testHomeHostName(this->stringUtil->EMPTY_STRING), testHomeHostNamePath(this->abPathUtil->NO_ABPATH), testHostName(this->stringUtil->EMPTY_STRING), testHostNamePath(this->abPathUtil->NO_ABPATH), imagePath(this->abPathUtil->NO_ABPATH), staticPath(this->abPathUtil->NO_ABPATH), categoryPath(this->abPathUtil->NO_ABPATH), inventoryControl(this->stringUtil->EMPTY_STRING), subStores(this->stringUtil->EMPTY_STRING), tagLocation(this->stringUtil->EMPTY_STRING), packageLocation(this->stringUtil->EMPTY_STRING), ftp(this->stringUtil->EMPTY_STRING), ftpPath(this->abPathUtil->NO_ABPATH), ftpUserName(this->stringUtil->EMPTY_STRING), ftpPassword(this->stringUtil->EMPTY_STRING), testFtp(this->stringUtil->EMPTY_STRING), testFtpPath(this->abPathUtil->NO_ABPATH), testFtpUserName(this->stringUtil->EMPTY_STRING), testFtpPassword(this->stringUtil->EMPTY_STRING), timeCreated(this->stringUtil->EMPTY_STRING), lastModified(this->stringUtil->EMPTY_STRING), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), ONE_EMPTY_STRING_ARRAY(StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY){
 this->getFormData((new RequestParams(request))->toHashMap());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("TWB- needs update for adding and updating context configuration - currently defaults to admin context config", this, "StoreFront");
@@ -263,7 +193,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 }
 
 
-public: StoreFront(HashMap<Object*, Object*>* hashMap){
+StoreFront::StoreFront(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), directory(Directory::getInstance()), stringUtil(StringUtil::getInstance()), abPathUtil(AbPathUtil::getInstance()), name(this->stringUtil->EMPTY_STRING), basketName(this->stringUtil->EMPTY_STRING), homeHostName(this->stringUtil->EMPTY_STRING), homeHostNamePath(this->abPathUtil->NO_ABPATH), hostName(this->stringUtil->EMPTY_STRING), hostNamePath(this->abPathUtil->NO_ABPATH), testHomeHostName(this->stringUtil->EMPTY_STRING), testHomeHostNamePath(this->abPathUtil->NO_ABPATH), testHostName(this->stringUtil->EMPTY_STRING), testHostNamePath(this->abPathUtil->NO_ABPATH), imagePath(this->abPathUtil->NO_ABPATH), staticPath(this->abPathUtil->NO_ABPATH), categoryPath(this->abPathUtil->NO_ABPATH), inventoryControl(this->stringUtil->EMPTY_STRING), subStores(this->stringUtil->EMPTY_STRING), tagLocation(this->stringUtil->EMPTY_STRING), packageLocation(this->stringUtil->EMPTY_STRING), ftp(this->stringUtil->EMPTY_STRING), ftpPath(this->abPathUtil->NO_ABPATH), ftpUserName(this->stringUtil->EMPTY_STRING), ftpPassword(this->stringUtil->EMPTY_STRING), testFtp(this->stringUtil->EMPTY_STRING), testFtpPath(this->abPathUtil->NO_ABPATH), testFtpUserName(this->stringUtil->EMPTY_STRING), testFtpPassword(this->stringUtil->EMPTY_STRING), timeCreated(this->stringUtil->EMPTY_STRING), lastModified(this->stringUtil->EMPTY_STRING), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), ONE_EMPTY_STRING_ARRAY(StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY){
 this->getFormData(hashMap);
     
 
@@ -284,7 +214,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 }
 
 
-    private: bool isColumn(std::string columnName){
+    auto StoreFront::isColumn(std::string columnName) -> bool{
 
                         if(columnName.compare(StoreFrontData::getInstance()->NAME) == 0 || columnName.compare(UserData::MAINEMAIL) == 0)
                         
@@ -313,7 +243,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath* createPath(std::string key, HashMap<Object*, Object*>* hashMap){
+    auto StoreFront::createPath(std::string key, HashMap<Object*, Object*>* hashMap) -> AbPath*{
 
 
 
@@ -325,7 +255,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath* createPath(std::string append, std::string key, HashMap<Object*, Object*>* hashMap){
+    auto StoreFront::createPath(std::string append, std::string key, HashMap<Object*, Object*>* hashMap) -> AbPath*{
 
 
 
@@ -335,7 +265,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 }
 
 
-    private: std::string get(std::string key, HashMap<Object*, Object*>* hashMap){
+    auto StoreFront::get(std::string key, HashMap<Object*, Object*>* hashMap) -> std::string{
 
 
 
@@ -345,7 +275,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 }
 
 
-    private: std::string create(std::string append, std::string key, HashMap<Object*, Object*>* hashMap){
+    auto StoreFront::create(std::string append, std::string key, HashMap<Object*, Object*>* hashMap) -> std::string{
 
     std::string path = hashMap->get(key);;
     
@@ -371,7 +301,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return hashMap->get(path) +append;
+                        return JavaString::valueOf(hashMap->get(path)) +JavaString::valueOf(append);
     
 
                                     }
@@ -394,7 +324,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<Object*, Object*>* storeHashMap){
+    auto StoreFront::getFormData(HashMap<Object*, Object*>* storeHashMap) -> void{
 
     StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
@@ -420,7 +350,7 @@ this->testHostNamePath= this->createPath(storeFrontData->TESTHOSTNAMEPATH, store
     
 this->imagePath= this->createPath(StoreFront::RESOURCES, storeFrontData->IMAGEPATH, storeHashMap);
     
-this->staticPath= this->createPath(" Products" +AbPathData::getInstance()->SEPARATOR, storeFrontData->STATICPATH, storeHashMap);
+this->staticPath= this->createPath(JavaString::valueOf(" Products") +JavaString::valueOf(AbPathData::getInstance()->SEPARATOR), storeFrontData->STATICPATH, storeHashMap);
     
 this->categoryPath= this->createPath(StoreFront::RESOURCES, storeFrontData->CATEGORYPATH, storeHashMap);
     
@@ -455,7 +385,7 @@ this->lastModified= storeHashMap->get(EntryData::getInstance()->LASTMODIFIED);
 }
 
 
-    public: bool isNameValid(){
+    auto StoreFront::isNameValid() -> bool{
 
                         if(!StringValidationUtil::getInstance()->isValidRequired(this->name, this->MINSTORENAMELENGTH, this->MAXCHAR))
                         
@@ -529,7 +459,7 @@ this->name= (new Replace(hashMap))->all(this->name);
 }
 
 
-    public: bool isValid(){
+    auto StoreFront::isValid() -> bool{
 
     bool valid = Boolean::TRUE;;
     
@@ -780,7 +710,7 @@ valid= this->isNameValid();
 }
 
 
-    public: std::string nameValidationInfo(){
+    auto StoreFront::nameValidationInfo() -> std::string{
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
@@ -815,7 +745,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string validationInfo(){
+    auto StoreFront::validationInfo() -> std::string{
 
         try {
             
@@ -895,7 +825,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->testHomeHostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Test home host name is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test home host name is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -904,7 +834,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->testHomeHostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Test home host name path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test home host name path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -913,7 +843,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->testHostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Test host name is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test host name is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -922,7 +852,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->testHostNamePath->toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Test host name path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test host name path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -931,7 +861,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidRequired(this->imagePath->toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Image path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Image path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -940,7 +870,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidRequired(this->staticPath->toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Static path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Static path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -949,7 +879,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidRequired(this->categoryPath->toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Category path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Category path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -958,7 +888,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidRequired(this->inventoryControl, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Inventory control is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Inventory control is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -967,7 +897,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->subStores, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Sub stores is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Sub stores is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -976,7 +906,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->tagLocation, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Tag location is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Tag location is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -985,7 +915,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidRequired(this->packageLocation, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Package location is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Package location is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -994,7 +924,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->ftp, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Ftp is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Ftp is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -1003,7 +933,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->ftpPath->toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Ftp path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Ftp path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -1012,7 +942,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->ftpUserName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Ftp username is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Ftp username is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -1021,7 +951,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->ftpPassword, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Ftp password is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Ftp password is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -1030,7 +960,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->testFtp, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Test ftp is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test ftp is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -1039,7 +969,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->testFtpPath->toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Test ftp Path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test ftp Path is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -1048,7 +978,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->testFtpUserName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Test ftp username is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test ftp username is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -1057,7 +987,7 @@ stringBuffer->append(" and > 0 characters.<br>");
                         if(!stringValidationUtil->isValidNotRequired(this->testFtpPassword, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer->append("Test ftp password is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Test ftp password is invalid. Must be < ") +JavaString::valueOf(this->MAXCHAR)) +JavaString::valueOf(" and > 0 characters.<br>"));
     
 
                                     }
@@ -1073,7 +1003,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -1092,22 +1022,22 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestHtmlPath(){
+    auto StoreFront::getTestHtmlPath() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org.allbinary.globals.URLGLOBALS.getTestHtmlPath() +this->getCurrentHostNamePath();
+                        return org.allbinary->globals->URLGLOBALS->getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
 
 
-    public: std::string getCurrentHostName(){
+    auto StoreFront::getCurrentHostName() -> std::string{
 
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(org.allbinary.globals.URLGLOBALS.isTestingMode())
+                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHostName();
@@ -1130,12 +1060,12 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getCurrentHostNamePath(){
+    auto StoreFront::getCurrentHostNamePath() -> std::string{
 
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(org.allbinary.globals.URLGLOBALS.isTestingMode())
+                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHostNamePath();
@@ -1158,12 +1088,12 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getCurrentHomeHostName(){
+    auto StoreFront::getCurrentHomeHostName() -> std::string{
 
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(org.allbinary.globals.URLGLOBALS.isTestingMode())
+                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostName();
@@ -1186,12 +1116,12 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getCurrentHomeHostNamePath(){
+    auto StoreFront::getCurrentHomeHostNamePath() -> std::string{
 
     std::string location = this->EMPTY_STRING;;
     
 
-                        if(org.allbinary.globals.URLGLOBALS.isTestingMode())
+                        if(org.allbinary->globals->URLGLOBALS->isTestingMode())
                         
                                     {
                                     location= this->getTestHomeHostNamePath();
@@ -1214,7 +1144,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getName(){
+    auto StoreFront::getName() -> std::string{
 
 
 
@@ -1224,7 +1154,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getBasketName(){
+    auto StoreFront::getBasketName() -> std::string{
 
 
 
@@ -1234,7 +1164,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getHomeHostName(){
+    auto StoreFront::getHomeHostName() -> std::string{
 
 
 
@@ -1244,7 +1174,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getHomeHostNamePath(){
+    auto StoreFront::getHomeHostNamePath() -> std::string{
 
 
 
@@ -1254,7 +1184,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getHostName(){
+    auto StoreFront::getHostName() -> std::string{
 
 
 
@@ -1264,7 +1194,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getHostNamePath(){
+    auto StoreFront::getHostNamePath() -> std::string{
 
 
 
@@ -1274,7 +1204,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestHomeHostName(){
+    auto StoreFront::getTestHomeHostName() -> std::string{
 
 
 
@@ -1284,7 +1214,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestHomeHostNamePath(){
+    auto StoreFront::getTestHomeHostNamePath() -> std::string{
 
 
 
@@ -1294,7 +1224,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestHostName(){
+    auto StoreFront::getTestHostName() -> std::string{
 
 
 
@@ -1304,7 +1234,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestHostNamePath(){
+    auto StoreFront::getTestHostNamePath() -> std::string{
 
 
 
@@ -1314,7 +1244,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getStaticPath(){
+    auto StoreFront::getStaticPath() -> std::string{
 
 
 
@@ -1324,7 +1254,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getCategoryPath(){
+    auto StoreFront::getCategoryPath() -> std::string{
 
 
 
@@ -1334,7 +1264,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getInventoryControl(){
+    auto StoreFront::getInventoryControl() -> std::string{
 
 
 
@@ -1346,7 +1276,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getSubStores(){
+    auto StoreFront::getSubStores() -> BasicArrayList*{
 
         try {
             
@@ -1375,7 +1305,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTagLocation(){
+    auto StoreFront::getTagLocation() -> std::string{
 
 
 
@@ -1385,7 +1315,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getPackageLocation(){
+    auto StoreFront::getPackageLocation() -> std::string{
 
 
 
@@ -1395,7 +1325,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getFtp(){
+    auto StoreFront::getFtp() -> std::string{
 
 
 
@@ -1405,7 +1335,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getFtpUserName(){
+    auto StoreFront::getFtpUserName() -> std::string{
 
 
 
@@ -1415,7 +1345,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getFtpPassword(){
+    auto StoreFront::getFtpPassword() -> std::string{
 
 
 
@@ -1425,7 +1355,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestFtp(){
+    auto StoreFront::getTestFtp() -> std::string{
 
 
 
@@ -1435,7 +1365,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestFtpUserName(){
+    auto StoreFront::getTestFtpUserName() -> std::string{
 
 
 
@@ -1445,7 +1375,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestFtpPassword(){
+    auto StoreFront::getTestFtpPassword() -> std::string{
 
 
 
@@ -1455,7 +1385,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getFtpPath(){
+    auto StoreFront::getFtpPath() -> std::string{
 
 
 
@@ -1465,7 +1395,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTestFtpPath(){
+    auto StoreFront::getTestFtpPath() -> std::string{
 
 
 
@@ -1475,7 +1405,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getTimeCreated(){
+    auto StoreFront::getTimeCreated() -> std::string{
 
 
 
@@ -1485,7 +1415,7 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: std::string getLastModified(){
+    auto StoreFront::getLastModified() -> std::string{
 
 
 
@@ -1495,19 +1425,19 @@ stringBuffer->append(" and > 0 characters.<br>");
 }
 
 
-    public: void setName(std::string value){
+    auto StoreFront::setName(std::string value) -> void{
 this->name= value;
     
 }
 
 
-    public: void setBasketName(std::string value){
+    auto StoreFront::setBasketName(std::string value) -> void{
 this->basketName= value;
     
 }
 
 
-    public: void setHomeHostName(std::string value){
+    auto StoreFront::setHomeHostName(std::string value) -> void{
 this->homeHostName= value;
     
 }
@@ -1515,13 +1445,13 @@ this->homeHostName= value;
 
                 //@Throws(Exception.constructor)
             
-    public: void setHomeHostNamePath(std::string value){
+    auto StoreFront::setHomeHostNamePath(std::string value) -> void{
 this->homeHostNamePath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
 
 
-    public: void setHostName(std::string value){
+    auto StoreFront::setHostName(std::string value) -> void{
 this->hostName= value;
     
 }
@@ -1529,13 +1459,13 @@ this->hostName= value;
 
                 //@Throws(Exception.constructor)
             
-    public: void setHostNamePath(std::string value){
+    auto StoreFront::setHostNamePath(std::string value) -> void{
 this->hostNamePath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
 
 
-    public: void setTestHomeHostName(std::string value){
+    auto StoreFront::setTestHomeHostName(std::string value) -> void{
 this->testHomeHostName= value;
     
 }
@@ -1543,13 +1473,13 @@ this->testHomeHostName= value;
 
                 //@Throws(Exception.constructor)
             
-    public: void setTestHomeHostNamePath(std::string value){
+    auto StoreFront::setTestHomeHostNamePath(std::string value) -> void{
 this->testHomeHostNamePath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
 
 
-    public: void setTestHostName(std::string value){
+    auto StoreFront::setTestHostName(std::string value) -> void{
 this->testHostName= value;
     
 }
@@ -1557,7 +1487,7 @@ this->testHostName= value;
 
                 //@Throws(Exception.constructor)
             
-    public: void setTestHostNamePath(std::string value){
+    auto StoreFront::setTestHostNamePath(std::string value) -> void{
 this->testHostNamePath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -1565,7 +1495,7 @@ this->testHostNamePath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRIN
 
                 //@Throws(Exception.constructor)
             
-    public: void setImagePath(std::string value){
+    auto StoreFront::setImagePath(std::string value) -> void{
 this->imagePath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -1573,7 +1503,7 @@ this->imagePath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: void setStaticPath(std::string value){
+    auto StoreFront::setStaticPath(std::string value) -> void{
 this->staticPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -1581,85 +1511,85 @@ this->staticPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: void setCategoryPath(std::string value){
+    auto StoreFront::setCategoryPath(std::string value) -> void{
 this->categoryPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
 
 
-    public: void setSubStores(std::string value){
+    auto StoreFront::setSubStores(std::string value) -> void{
 this->subStores= value;
     
 }
 
 
-    public: void setTagLocation(std::string value){
+    auto StoreFront::setTagLocation(std::string value) -> void{
 this->tagLocation= value;
     
 }
 
 
-    public: void setPackageLocation(std::string value){
+    auto StoreFront::setPackageLocation(std::string value) -> void{
 this->packageLocation= value;
     
 }
 
 
-    public: void setInventoryControl(std::string value){
+    auto StoreFront::setInventoryControl(std::string value) -> void{
 this->inventoryControl= value;
     
 }
 
 
-    public: void getPackageLocation(std::string value){
+    auto StoreFront::getPackageLocation(std::string value) -> void{
 this->packageLocation= value;
     
 }
 
 
-    public: void setFtp(std::string value){
+    auto StoreFront::setFtp(std::string value) -> void{
 this->ftp= value;
     
 }
 
 
-    public: void setFtpUserName(std::string value){
+    auto StoreFront::setFtpUserName(std::string value) -> void{
 this->ftpUserName= value;
     
 }
 
 
-    public: void setFtpPassword(std::string value){
+    auto StoreFront::setFtpPassword(std::string value) -> void{
 this->ftpPassword= value;
     
 }
 
 
-    public: void setTestFtp(std::string value){
+    auto StoreFront::setTestFtp(std::string value) -> void{
 this->testFtp= value;
     
 }
 
 
-    public: void setTestFtpUserName(std::string value){
+    auto StoreFront::setTestFtpUserName(std::string value) -> void{
 this->testFtpUserName= value;
     
 }
 
 
-    public: void setTestFtpPassword(std::string value){
+    auto StoreFront::setTestFtpPassword(std::string value) -> void{
 this->testFtpPassword= value;
     
 }
 
 
-    public: void setTimeCreated(std::string value){
+    auto StoreFront::setTimeCreated(std::string value) -> void{
 this->timeCreated= value;
     
 }
 
 
-    public: void setLastModified(std::string value){
+    auto StoreFront::setLastModified(std::string value) -> void{
 this->lastModified= value;
     
 }
@@ -1667,7 +1597,7 @@ this->lastModified= value;
 
                 //@Throws(Exception.constructor)
             
-    public: void setFtpPath(std::string value){
+    auto StoreFront::setFtpPath(std::string value) -> void{
 this->ftpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -1675,7 +1605,7 @@ this->ftpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: void setTestFtpPath(std::string value){
+    auto StoreFront::setTestFtpPath(std::string value) -> void{
 this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
     
 }
@@ -1683,7 +1613,7 @@ this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    private: bool createDirectories(){
+    auto StoreFront::createDirectories() -> bool{
 
     AbPath* storeAbPath = new AbPath(URLGLOBALS::getWebappPath() +this->getCurrentHomeHostNamePath(), StringUtil::getInstance()->EMPTY_STRING);;
     
@@ -1737,7 +1667,7 @@ this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: void install(int32_t current, int32_t total){
+    auto StoreFront::install(int32_t current, int32_t total) -> void{
 
         try {
             
@@ -1747,7 +1677,7 @@ this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
                                     
 
 
-                            throw new Exception("Unable to create store directories");
+                            throw Exception("Unable to create store directories");
                     
 
                                     }
@@ -1755,7 +1685,7 @@ this->testFtpPath= new AbPath(value, StringUtil::getInstance()->EMPTY_STRING);
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(URLGLOBALS::getMainPath());
     
@@ -1764,7 +1694,7 @@ stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH);
 
     std::string viewPath = stringBuffer->toString();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(viewPath);
     
@@ -1773,7 +1703,7 @@ stringBuffer->append(FREEBLISKET_PATH_GLOBALS::getInstance()->INSTALLPATH);
 
     AbPath* fromDirectoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(viewPath);
     
@@ -1784,7 +1714,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
     AbPath* fromSpecialDirectoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(viewPath);
     
@@ -1806,7 +1736,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                     
 
 
-                            throw new Exception("Unable to create store view directory: " +toDirectoryAbPath->toString());
+                            throw Exception(JavaString::valueOf("Unable to create store view directory: ") +JavaString::valueOf(toDirectoryAbPath->toString()));
                     
 
                                     }
@@ -1884,7 +1814,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "install()", &e);
@@ -1904,7 +1834,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    private: void installViews(AbPath* fromDirectoryAbPath, AbPath* toDirectoryAbPath, int32_t current, int32_t total){
+    auto StoreFront::installViews(AbPath* fromDirectoryAbPath, AbPath* toDirectoryAbPath, int32_t current, int32_t total) -> void{
 FileUtil::getInstance()->copyDirectoryPortion(fromDirectoryAbPath, toDirectoryAbPath, true, false, current, total);
     
 }
@@ -1912,7 +1842,7 @@ FileUtil::getInstance()->copyDirectoryPortion(fromDirectoryAbPath, toDirectoryAb
 
                 //@Throws(Exception.constructor)
             
-    private: void installResources(AbPath* fromDirectoryAbPath, int32_t current, int32_t total){
+    auto StoreFront::installResources(AbPath* fromDirectoryAbPath, int32_t current, int32_t total) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -1927,7 +1857,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
     AbPath* installCategoryAbPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(URLGLOBALS::getMainPath());
     
@@ -1947,7 +1877,7 @@ FileUtil::getInstance()->copyDirectoryPortion(installCategoryAbPath, categoryAbP
 
                 //@Throws(Exception.constructor)
             
-    private: void installMedia(AbPath* fromDirectoryAbPath, int32_t current, int32_t total){
+    auto StoreFront::installMedia(AbPath* fromDirectoryAbPath, int32_t current, int32_t total) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -1974,7 +1904,7 @@ FileUtil::getInstance()->copyDirectoryPortion(viewStoreImagesDirectoryAbPath, st
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto StoreFront::toVector() -> BasicArrayList*{
 
     BasicArrayList* dataVector = new BasicArrayListD();;
     
@@ -2052,7 +1982,7 @@ dataVector->add(time);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto StoreFront::toHashMap() -> HashMap<Object*, Object*>*{
 
     StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
@@ -2129,7 +2059,7 @@ dataHashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: Object* getKey(){
+    auto StoreFront::getKey() -> Object*{
 
 
 
@@ -2139,7 +2069,7 @@ dataHashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: ContextConfigurationInterface* getContextConfigurationInterface(){
+    auto StoreFront::getContextConfigurationInterface() -> ContextConfigurationInterface*{
 
 
 
@@ -2149,13 +2079,12 @@ dataHashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: void setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface){
+    auto StoreFront::setContextConfigurationInterface(ContextConfigurationInterface* contextConfigurationInterface) -> void{
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_GAMEADSTATE_H
         #define ORG_ALLBINARY_GAME_GAMEADSTATE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,20 +35,10 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/advertisement/GameAdStateBase.h>
-
-      
-#include <org/allbinary/business/advertisement/AdConfiguration.h>
-
-      
-#include <org/allbinary/input/event/VirtualKeyboardEvent.h>
-
-      
-#include <org/allbinary/input/event/VirtualKeyboardEventHandler.h>
-
-      
+class AdConfiguration;
+class VirtualKeyboardEvent;
+class VirtualKeyboardEventHandler;
 #include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
-
-      
 
 
 
@@ -63,6 +58,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameAdState: public GameAdStateBase, public VirtualKeyboardEventListenerInterface {
 
 public: GameAdState(AdConfiguration* adConfiguration);
@@ -77,3 +76,25 @@ public: GameAdState(AdConfiguration* adConfiguration);
 
 
         #endif //ORG_ALLBINARY_GAME_GAMEADSTATE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_GAMEADSTATE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_GAMEADSTATE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/advertisement/GameAdStateBase.h>)
+#include <org/allbinary/business/advertisement/GameAdStateBase.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/AdConfiguration.h>)
+#include <org/allbinary/business/advertisement/AdConfiguration.h>
+#endif
+#if __has_include(<org/allbinary/input/event/VirtualKeyboardEvent.h>)
+#include <org/allbinary/input/event/VirtualKeyboardEvent.h>
+#endif
+#if __has_include(<org/allbinary/input/event/VirtualKeyboardEventHandler.h>)
+#include <org/allbinary/input/event/VirtualKeyboardEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>)
+#include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_ADMIN_USERSTAG_CPP
+        #define TAGS_ADMIN_USERSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/admin/UsersTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UsersTag: public StoreValidationTransformTag {
 
-    private: std::string role;
-
-public: UsersTag(){
+UsersTag::UsersTag(){
 }
 
 
-    public: void setRole(std::string value){
+    auto UsersTag::setRole(std::string value) -> void{
 this->role= value;
     
 }
@@ -73,7 +80,7 @@ this->role= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto UsersTag::doStartTag() -> int32_t{
 
         try {
             this->setName("Admin Users View");
@@ -89,7 +96,7 @@ this->setObjectFile("views.admin.user.UsersValidationView");
                                     this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
     
 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     
@@ -99,7 +106,7 @@ this->setObjectFile("views.admin.user.UsersValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -108,7 +115,7 @@ this->setObjectFile("views.admin.user.UsersValidationView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -116,7 +123,7 @@ this->setObjectFile("views.admin.user.UsersValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -135,7 +142,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_ADMIN_USERSTAG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WORKFLOW_EDITOR_WORKFLOWEDITORWEBSTOREADMINUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WORKFLOW_EDITOR_WORKFLOWEDITORWEBSTOREADMINUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/admin/store/web/workflow/editor/WorkflowEditorWebStoreAdminUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/admin/store/web/workflow/editor/WorkflowEditorWebStoreAdminUser.h"
 
-class WorkflowEditorWebStoreAdminUserFactory
-            : public Object
-        , public UserFactoryInterface {
 
-public: WorkflowEditorWebStoreAdminUserFactory(){
+WorkflowEditorWebStoreAdminUserFactory::WorkflowEditorWebStoreAdminUserFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(){
+    auto WorkflowEditorWebStoreAdminUserFactory::getInstance() -> UserInterface*{
 
 
 
@@ -79,7 +86,7 @@ public: WorkflowEditorWebStoreAdminUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto WorkflowEditorWebStoreAdminUserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
 
 
@@ -89,7 +96,6 @@ public: WorkflowEditorWebStoreAdminUserFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WORKFLOW_EDITOR_WORKFLOWEDITORWEBSTOREADMINUSERFACTORY_CPP

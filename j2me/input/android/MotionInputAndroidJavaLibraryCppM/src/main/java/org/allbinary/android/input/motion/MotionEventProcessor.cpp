@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_MOTIONEVENTPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_MOTIONEVENTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,21 +60,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionEventProcessor
-            : public Object
-         {
 
-: MotionEventProcessor(){
+MotionEventProcessor::MotionEventProcessor(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(MotionEvent* motionEvent){
+    auto MotionEventProcessor::process(MotionEvent* motionEvent) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_MOTIONEVENTPROCESSOR_CPP

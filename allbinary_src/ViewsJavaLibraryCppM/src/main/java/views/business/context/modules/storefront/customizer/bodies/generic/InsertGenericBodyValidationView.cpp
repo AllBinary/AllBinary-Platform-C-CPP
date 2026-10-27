@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_INSERTGENERICBODYVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_INSERTGENERICBODYVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/bodies/generic/InsertGenericBodyValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,11 +92,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/bodies/generic/GenericBodyCustomizerView.h"
 
-class InsertGenericBodyValidationView: public GenericBodyCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InsertGenericBodyValidationView(TransformInfoInterface* transformInfoInterface) : GenericBodyCustomizerView(transformInfoInterface){
+InsertGenericBodyValidationView::InsertGenericBodyValidationView(TransformInfoInterface* transformInfoInterface) : GenericBodyCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -103,7 +110,7 @@ this->body= new GenericBodyValidation(requestHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto InsertGenericBodyValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -113,20 +120,20 @@ this->body= new GenericBodyValidation(requestHashMap);
 }
 
 
-    public: bool isValid(){
+    auto InsertGenericBodyValidationView::isValid() -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started Validation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started Validation", this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-    bool isValid = this->body.isValid();;
+    bool isValid = this->body->isValid();;
     
 
                         if(isValid == Boolean::TRUE)
@@ -148,10 +155,10 @@ this->body= new GenericBodyValidation(requestHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -167,13 +174,13 @@ this->body= new GenericBodyValidation(requestHashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto InsertGenericBodyValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->body.validationInfo());
+stringBuffer->append(this->body->validationInfo());
     
 
 
@@ -186,7 +193,7 @@ stringBuffer->append(this->body.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -205,7 +212,7 @@ stringBuffer->append(this->body.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto InsertGenericBodyValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -215,7 +222,7 @@ stringBuffer->append(this->body.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto InsertGenericBodyValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -227,7 +234,7 @@ stringBuffer->append(this->body.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto InsertGenericBodyValidationView::view() -> std::string{
 
         try {
             
@@ -241,10 +248,10 @@ stringBuffer->append(this->body.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -259,7 +266,6 @@ stringBuffer->append(this->body.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_INSERTGENERICBODYVALIDATIONVIEW_CPP

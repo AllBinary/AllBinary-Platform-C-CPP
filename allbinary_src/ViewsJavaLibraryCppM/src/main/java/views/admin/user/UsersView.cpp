@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_USER_USERSVIEW_CPP
+        #define VIEWS_ADMIN_USER_USERSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/user/UsersView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,13 +88,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UsersView: public HttpContextView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicArrayList* userVector;
-
-public: UsersView(TransformInfoInterface* transformInfoInterface) : HttpContextView(transformInfoInterface){
+UsersView::UsersView(TransformInfoInterface* transformInfoInterface) : HttpContextView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,7 +99,7 @@ public: UsersView(TransformInfoInterface* transformInfoInterface) : HttpContextV
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto UsersView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -146,10 +151,10 @@ usersNode->appendChild(node);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -165,7 +170,7 @@ usersNode->appendChild(node);
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto UsersView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
@@ -173,7 +178,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto UsersView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -182,17 +187,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpContextView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -207,7 +212,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_USER_USERSVIEW_CPP

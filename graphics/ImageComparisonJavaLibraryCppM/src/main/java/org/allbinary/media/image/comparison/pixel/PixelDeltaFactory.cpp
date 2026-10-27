@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTAFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTAFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/pixel/PixelDeltaFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,16 +88,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/comparison/pixel/PixelDelta.h"
 
-class PixelDeltaFactory
-            : public Object
-         {
-
-    private: static inline AutomaticCacheInterface* cacheInterface = 
-                null
-            ;
-
-                    static int32_t initResult = PixelDeltaFactory::init();
-                static int32_t init() { 
+int32_t PixelDeltaFactory::initResult = PixelDeltaFactory::init();
+        auto PixelDeltaFactory::init() -> int32_t {
                     
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -120,11 +122,15 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 
 
                     return 0;
-                }
-            
+        }
+                
+PixelDeltaFactory::PixelDeltaFactory() : logUtil(LogUtil::getInstance()){
+}
+
+
                 //@Throws(Exception.constructor)
             
-    public: static PixelDelta* getInstance(int32_t x, int32_t y, int32_t rgb1, int32_t rgb2){
+    auto PixelDeltaFactory::getInstance(int32_t x, int32_t y, int32_t rgb1, int32_t rgb2) -> PixelDelta*{
 
     GPoint* point = PointFactory::getInstance()->createXY(x, y);;
     
@@ -154,13 +160,6 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: PixelDeltaFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTAFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,11 +87,8 @@
         #include "org/allbinary/game/layer/pickup/PickupLayer.h"
 #include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
 
-class RaceTrackPickupLayer: public PickupLayer {
 
-    private: static inline const std::string NAME = "RaceTrackPickupLayer";
-
-public: RaceTrackPickupLayer() : PickupLayer(NAME, RemoteInfo::REMOTE_INFO, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance()->getInstance(0), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), new TileLayerPositionIntoViewPosition()){
+RaceTrackPickupLayer::RaceTrackPickupLayer() : PickupLayer(NAME, RemoteInfo::REMOTE_INFO, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance()->getInstance(0), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), new TileLayerPositionIntoViewPosition()), viewPositionEventHandler(ViewPositionEventHandler::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,9 +98,7 @@ public: RaceTrackPickupLayer() : PickupLayer(NAME, RemoteInfo::REMOTE_INFO, 0, C
 }
 
 
-    private: ViewPositionEventHandler* viewPositionEventHandler = ViewPositionEventHandler::getInstance();
-
-    public: void setTiledLayer(AllBinaryTiledLayer* tiledLayer){
+    auto RaceTrackPickupLayer::setTiledLayer(AllBinaryTiledLayer* tiledLayer) -> void{
 
     TileLayerPositionIntoViewPosition* viewPosition = dynamic_cast<TileLayerPositionIntoViewPosition*>(this->getViewPosition());;
     
@@ -104,8 +109,8 @@ this->viewPositionEventHandler->addListener(dynamic_cast<AllBinaryLayer*>(this))
 }
 
 
-    public: void setDestroyed(bool destroyed){
-super.setDestroyed(destroyed);
+    auto RaceTrackPickupLayer::setDestroyed(bool destroyed) -> void{
+PickupLayer::setDestroyed(destroyed);
     
 
                         if(this->isDestroyed())
@@ -119,7 +124,6 @@ super.setDestroyed(destroyed);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_CPP

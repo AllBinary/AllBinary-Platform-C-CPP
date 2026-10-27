@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLESELECTEDLOGHELPER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLESELECTEDLOGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointRunnableSelectedLogHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,37 +66,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h"
 
-class WaypointRunnableSelectedLogHelper: public WaypointRunnableLogHelper {
 
-    private: static WaypointRunnableSelectedLogHelper* instanceC() { static std::unique_ptr<WaypointRunnableSelectedLogHelper> value(new WaypointRunnableSelectedLogHelper()); return value.get(); }
+WaypointRunnableSelectedLogHelper::WaypointRunnableSelectedLogHelper() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        auto WaypointRunnableSelectedLogHelper::instanceC_owner() -> WaypointRunnableSelectedLogHelper* { static std::unique_ptr<WaypointRunnableSelectedLogHelper> value(new WaypointRunnableSelectedLogHelper()); return value.get(); }
+WaypointRunnableSelectedLogHelper* WaypointRunnableSelectedLogHelper::instanceC = WaypointRunnableSelectedLogHelper::instanceC_owner();
 
-    public: static WaypointRunnableSelectedLogHelper* getInstance(){
+    auto WaypointRunnableSelectedLogHelper::getInstance() -> WaypointRunnableSelectedLogHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointRunnableSelectedLogHelper::instanceC();
+                        return WaypointRunnableSelectedLogHelper::instanceC;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: void start(PathFindingLayerInterface* pathFindingLayerInterface){
+    auto WaypointRunnableSelectedLogHelper::start(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
 this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(this->commonStrings->START_RUNNABLE)->toString(), this, this->commonStrings->RUN);
     
 }
 
 
-    public: void end(PathFindingLayerInterface* pathFindingLayerInterface){
+    auto WaypointRunnableSelectedLogHelper::end(PathFindingLayerInterface* pathFindingLayerInterface) -> void{
 this->logUtil->putF((new StringMaker())->append(pathFindingLayerInterface->getName())->append(this->commonStrings->END_RUNNABLE)->toString(), this, this->commonStrings->RUN);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLESELECTEDLOGHELPER_CPP

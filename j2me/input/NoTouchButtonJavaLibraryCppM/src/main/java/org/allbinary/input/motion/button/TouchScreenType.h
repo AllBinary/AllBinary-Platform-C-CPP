@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPE_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +53,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchScreenType
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
 
-: TouchScreenType(std::string name);
+public: TouchScreenType(std::string name);
 
     public: std::string getName();
 
@@ -66,3 +75,10 @@ class TouchScreenType
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPE_H_COMPLETE
+        
+        #endif
+    

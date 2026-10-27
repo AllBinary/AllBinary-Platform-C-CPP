@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTVIEWFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTVIEWFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/StoreFrontViewFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/context/modules/storefront/StoreFrontView.h"
 
-class StoreFrontViewFactory
-            : public Object
-         {
 
-    public: static DomNodeInterface* getInstance(std::string storeName){
+StoreFrontViewFactory::StoreFrontViewFactory() : logUtil(LogUtil::getInstance()){
+}
+
+
+    auto StoreFrontViewFactory::getInstance(std::string storeName) -> DomNodeInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -90,7 +101,7 @@ class StoreFrontViewFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "StoreFrontFactory", commonStrings->GET_INSTANCE, &e);
@@ -109,13 +120,6 @@ class StoreFrontViewFactory
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: StoreFrontViewFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTVIEWFACTORY_CPP

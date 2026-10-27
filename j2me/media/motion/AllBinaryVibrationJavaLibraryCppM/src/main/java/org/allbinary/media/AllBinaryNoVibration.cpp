@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYNOVIBRATION_CPP
+        #define ORG_ALLBINARY_MEDIA_ALLBINARYNOVIBRATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/AllBinaryNoVibration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,15 +54,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/AllBinaryVibrationME.h"
 
-class AllBinaryNoVibration: public AllBinaryVibrationME {
 
-    public: static inline AllBinaryVibrationME* NO_VIBRATION = new AllBinaryNoVibration();
+AllBinaryNoVibration::AllBinaryNoVibration() {
+        }
+        AllBinaryVibrationME* AllBinaryNoVibration::NO_VIBRATION = new AllBinaryNoVibration();
 
-    public: void vibrate(int32_t duration, int32_t type, int32_t volume){
+    auto AllBinaryNoVibration::vibrate(int32_t duration, int32_t type, int32_t volume) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_ALLBINARYNOVIBRATION_CPP

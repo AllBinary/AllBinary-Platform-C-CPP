@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VECTOR_VECTORINFO_CPP
+        #define ORG_ALLBINARY_VECTOR_VECTORINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/vector/VectorInfo.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,19 +57,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VectorInfo
-            : public Object
-         {
 
-    private: int32_t width;
-
-    private: int32_t height;
-
-    private: std::vector<std::vector<int32_t>> points;
-
-    private: int32_t totalFrames;
-
-public: VectorInfo(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t totalFrames){
+VectorInfo::VectorInfo(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t totalFrames){
 this->width= width;
     
 this->height= height;
@@ -71,7 +70,7 @@ this->totalFrames= totalFrames;
 }
 
 
-    public: int32_t getWidth(){
+    auto VectorInfo::getWidth() -> int32_t{
 
 
 
@@ -81,13 +80,13 @@ this->totalFrames= totalFrames;
 }
 
 
-    private: void setWidth(int32_t width){
+    auto VectorInfo::setWidth(int32_t width) -> void{
 this->width= width;
     
 }
 
 
-    public: int32_t getHeight(){
+    auto VectorInfo::getHeight() -> int32_t{
 
 
 
@@ -97,13 +96,13 @@ this->width= width;
 }
 
 
-    private: void setHeight(int32_t height){
+    auto VectorInfo::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-    public: std::vector<std::vector<int32_t>> getPoints(){
+    auto VectorInfo::getPoints() -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -113,13 +112,13 @@ this->height= height;
 }
 
 
-    private: void setPoints(std::vector<std::vector<int32_t>> points){
+    auto VectorInfo::setPoints(std::vector<std::vector<int32_t>> points) -> void{
 this->points= points;
     
 }
 
 
-    public: int32_t getTotalFrames(){
+    auto VectorInfo::getTotalFrames() -> int32_t{
 
 
 
@@ -129,13 +128,12 @@ this->points= points;
 }
 
 
-    private: void setTotalFrames(int32_t totalFrames){
+    auto VectorInfo::setTotalFrames(int32_t totalFrames) -> void{
 this->totalFrames= totalFrames;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VECTOR_VECTORINFO_CPP

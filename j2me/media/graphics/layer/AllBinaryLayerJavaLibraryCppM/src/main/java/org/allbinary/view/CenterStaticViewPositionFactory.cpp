@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_CENTERSTATICVIEWPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_VIEW_CENTERSTATICVIEWPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/CenterStaticViewPositionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,15 +60,12 @@
         #include "org/allbinary/view/StaticViewPosition.h"
 #include "org/allbinary/view/ViewPositionBase.h"
 
-class CenterStaticViewPositionFactory
-            : public Object
-         {
 
-public: CenterStaticViewPositionFactory(){
+CenterStaticViewPositionFactory::CenterStaticViewPositionFactory(){
 }
 
 
-    public: ViewPositionBase* getInstance(int32_t z){
+    auto CenterStaticViewPositionFactory::getInstance(int32_t z) -> ViewPositionBase*{
 
     DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
@@ -71,7 +78,6 @@ public: CenterStaticViewPositionFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VIEW_CENTERSTATICVIEWPOSITIONFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/health/HealthHudWidget.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,21 +90,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealthHudWidget: public BasicHud, public PaintableInterface, public HealthListenerInterface {
 
-    private: int32_t healthScale;
-
-    protected: Animation* animationInterface;
-
-    protected: Health* healthInterface;
-
-    int32_t max= 0;
-
-    private: std::vector<int32_t> xArray;
-
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-public: HealthHudWidget(Animation* animationInterface, Health* healthInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->WHITE){
+HealthHudWidget::HealthHudWidget(Animation* animationInterface, Health* healthInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->WHITE), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), timeDelayHelper(NoTimeDelayHelper::SINGLETON), slowBeatTimeDelayHelper(new TimeDelayHelper(1280)), mediumBeatTimeDelayHelper(new TimeDelayHelper(640)), fastBeatTimeDelayHelper(new TimeDelayHelper(320)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -122,11 +119,9 @@ this->update();
 }
 
 
-    private: void update(){
+    auto HealthHudWidget::update() -> void{
 
-                        if(this->xArray != 
-                                    nullptr
-                                )
+                        if(!this->xArray.empty())
                         
                                     {
                                     
@@ -146,23 +141,15 @@ this->xArray[index]= this->getX() +(index *16);
 }
 
 
-    public: void setX(int32_t x){
-super.setX(x);
+    auto HealthHudWidget::setX(int32_t x) -> void{
+BasicHud::setX(x);
     
 this->update();
     
 }
 
 
-    private: TimeDelayHelper* timeDelayHelper = NoTimeDelayHelper::SINGLETON;
-
-    private: TimeDelayHelper* slowBeatTimeDelayHelper = new TimeDelayHelper(1280);
-
-    private: TimeDelayHelper* mediumBeatTimeDelayHelper = new TimeDelayHelper(640);
-
-    private: TimeDelayHelper* fastBeatTimeDelayHelper = new TimeDelayHelper(320);
-
-    public: void onHealthChange(){
+    auto HealthHudWidget::onHealthChange() -> void{
 this->max= (this->healthInterface->getHealth() /this->healthScale);
     
 this->timeDelayHelper= NoTimeDelayHelper::SINGLETON;
@@ -203,8 +190,8 @@ this->timeDelayHelper= NoTimeDelayHelper::SINGLETON;
 }
 
 
-    public: void paint(Graphics* graphics){
-this->myFontProcessor.process(graphics);
+    auto HealthHudWidget::paint(Graphics* graphics) -> void{
+this->myFontProcessor->process(graphics);
     
 
 
@@ -227,11 +214,10 @@ this->myFontProcessor.process(graphics);
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto HealthHudWidget::paintThreed(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_CPP

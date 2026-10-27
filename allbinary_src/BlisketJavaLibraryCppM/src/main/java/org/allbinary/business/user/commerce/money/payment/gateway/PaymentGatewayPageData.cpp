@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayPageData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,41 +61,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentGatewayPageData
-            : public Object
-         {
+const std::string PaymentGatewayPageData::NAME = StringUtil::getInstance()->EMPTY_STRING;
+const std::string PaymentGatewayPageData::PAYMENTOPTIONS = JavaString::valueOf("PaymentOptions") +JavaString::valueOf(PaymentGatewayPageData::EXTENSION);
+const std::string PaymentGatewayPageData::STARTCHECKOUT = JavaString::valueOf("StartCheckout") +JavaString::valueOf(PaymentGatewayPageData::EXTENSION);
 
-    private: static inline const std::string EXTENSION = ".jsp";
+PaymentGatewayPageData::PaymentGatewayPageData(std::string location, std::string paymentMethod){
 
-    private: static inline const std::string NAME = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: static inline const std::string FORWARDMAKEPAYMENT = "MakePayment.jsp";
-
-    public: static inline const std::string PAYMENTOPTIONS = "PaymentOptions" +PaymentGatewayPageData::EXTENSION;
-
-    public: static inline const std::string STARTCHECKOUT = "StartCheckout" +PaymentGatewayPageData::EXTENSION;
-
-    public: std::string MAKEPAYMENT;
-
-    public: std::string CHECKOUT;
-
-    public: std::string SHIPPING;
-
-    public: std::string SHIPPINGADDRESS;
-
-    public: std::string SHIPPINGADDRESSACTION;
-
-    public: std::string BILLINGADDRESS;
-
-    public: std::string PAYMENT;
-
-    public: std::string AUTHORIZE;
-
-    public: std::string FINISH;
-
-public: PaymentGatewayPageData(std::string location, std::string paymentMethod){
-
-    std::string paymentMethodString = PaymentGatewayPageData::NAME +paymentMethod;;
+    std::string paymentMethodString = JavaString::valueOf(PaymentGatewayPageData::NAME) +JavaString::valueOf(paymentMethod);;
     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -98,7 +80,7 @@ stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
 MAKEPAYMENT= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(paymentMethodString);
     
@@ -108,7 +90,7 @@ stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
 CHECKOUT= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(paymentMethodString);
     
@@ -118,7 +100,7 @@ stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
 SHIPPING= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(paymentMethodString);
     
@@ -128,7 +110,7 @@ stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
 SHIPPINGADDRESS= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(paymentMethodString);
     
@@ -138,7 +120,7 @@ stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
 SHIPPINGADDRESSACTION= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(paymentMethodString);
     
@@ -148,7 +130,7 @@ stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
 BILLINGADDRESS= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(paymentMethodString);
     
@@ -158,7 +140,7 @@ stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
 PAYMENT= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(paymentMethodString);
     
@@ -168,7 +150,7 @@ stringBuffer->append(PaymentGatewayPageData::EXTENSION);
     
 AUTHORIZE= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(paymentMethodString);
     
@@ -181,7 +163,6 @@ FINISH= stringBuffer->toString();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_CPP

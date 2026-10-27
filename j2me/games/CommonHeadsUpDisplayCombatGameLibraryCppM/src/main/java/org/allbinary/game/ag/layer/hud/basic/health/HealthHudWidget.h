@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,39 +36,17 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
+class Graphics;
+class Animation;
 #include <org/allbinary/game/graphics/hud/BasicHud.h>
-
-      
-#include <org/allbinary/game/health/Health.h>
-
-      
+class Health;
 #include <org/allbinary/game/health/HealthListenerInterface.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
+class BasicColorFactory;
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelper.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
-
-      
-#include <org/allbinary/time/NoTimeDelayHelper.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class GameTickTimeDelayHelper;
+class GameTickTimeDelayHelperFactory;
+class NoTimeDelayHelper;
+class TimeDelayHelper;
 
 
 
@@ -83,19 +66,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HealthHudWidget: public BasicHud, public PaintableInterface, public HealthListenerInterface {
 
     private: int32_t healthScale;
 
-    protected: Animation* animationInterface;
+    /*protected*/ public: Animation* animationInterface;
 
-    protected: Health* healthInterface;
+    /*protected*/ public: Health* healthInterface;
 
-    int32_t max= 0;
+    public: int32_t max= 0;
 
     private: std::vector<int32_t> xArray;
 
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper;
 
 public: HealthHudWidget(Animation* animationInterface, Health* healthInterface, int32_t location, int32_t direction);
 
@@ -103,13 +90,13 @@ public: HealthHudWidget(Animation* animationInterface, Health* healthInterface, 
 
     public: void setX(int32_t x);
 
-    private: TimeDelayHelper* timeDelayHelper = NoTimeDelayHelper::SINGLETON;
+    private: TimeDelayHelper* timeDelayHelper;
 
-    private: TimeDelayHelper* slowBeatTimeDelayHelper = new TimeDelayHelper(1280);
+    private: TimeDelayHelper* slowBeatTimeDelayHelper;
 
-    private: TimeDelayHelper* mediumBeatTimeDelayHelper = new TimeDelayHelper(640);
+    private: TimeDelayHelper* mediumBeatTimeDelayHelper;
 
-    private: TimeDelayHelper* fastBeatTimeDelayHelper = new TimeDelayHelper(320);
+    private: TimeDelayHelper* fastBeatTimeDelayHelper;
 
     public: void onHealthChange();
 
@@ -123,3 +110,43 @@ public: HealthHudWidget(Animation* animationInterface, Health* healthInterface, 
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/game/graphics/hud/BasicHud.h>)
+#include <org/allbinary/game/graphics/hud/BasicHud.h>
+#endif
+#if __has_include(<org/allbinary/game/health/Health.h>)
+#include <org/allbinary/game/health/Health.h>
+#endif
+#if __has_include(<org/allbinary/game/health/HealthListenerInterface.h>)
+#include <org/allbinary/game/health/HealthListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelper.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelperFactory.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/time/NoTimeDelayHelper.h>)
+#include <org/allbinary/time/NoTimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+
+        #endif
+    

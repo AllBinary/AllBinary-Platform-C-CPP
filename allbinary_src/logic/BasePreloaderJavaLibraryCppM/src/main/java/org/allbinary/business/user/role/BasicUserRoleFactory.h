@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,16 +52,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/role/BasicUserRole.h"
+        class BasicUserRole;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicUserRoleFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicUserRoleFactory* instance() { static std::unique_ptr<BasicUserRoleFactory> value(new BasicUserRoleFactory()); return value.get(); }
+    private: static BasicUserRoleFactory* instance_owner();
+    private: static BasicUserRoleFactory* instance;
 
     public: static BasicUserRoleFactory* getInstance();
 
+
+            
+    public: BasicUserRoleFactory();
+        
     private: const int64_t INACTIVITYTIMEOUT = 360000000;
 
     private: const int64_t CUSTOMERTIMEOUT = 360000000;
@@ -65,39 +79,39 @@ class BasicUserRoleFactory
 
     private: const int64_t MAXSESSIONTIME = 360000000;
 
-    public: BasicUserRole* INSTALLER = new BasicUserRole("Installer", 16, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* INSTALLER;
 
-    public: BasicUserRole* ADMINISTRATOR = new BasicUserRole("Administrator", 0, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* ADMINISTRATOR;
 
-    public: BasicUserRole* CUSTOMER = new BasicUserRole("CustomerUser", "Customer User", 1, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
+    public: BasicUserRole* CUSTOMER;
 
-    public: BasicUserRole* SUBSCRIBERCUSTOMER = new BasicUserRole("SubscriberUser", "Subscriber User", 2, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
+    public: BasicUserRole* SUBSCRIBERCUSTOMER;
 
-    public: BasicUserRole* WHOLESALECUSTOMER = new BasicUserRole("WholesaleUser", "Wholesale User", 3, this->CUSTOMERTIMEOUT, this->CUSTOMERMAXSESSIONTIME);
+    public: BasicUserRole* WHOLESALECUSTOMER;
 
-    public: BasicUserRole* STOREMANAGER = new BasicUserRole("StoreManager", "Store Manager", 4, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* STOREMANAGER;
 
-    public: BasicUserRole* PRODUCTMANAGER = new BasicUserRole("ProductManager", "Product Manager", 5, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* PRODUCTMANAGER;
 
-    public: BasicUserRole* CUSTOMERMANAGER = new BasicUserRole("UserManager", "User Manager", 6, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* CUSTOMERMANAGER;
 
-    public: BasicUserRole* PAYMENTMANAGER = new BasicUserRole("PaymentManager", "Payment Manager", 7, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* PAYMENTMANAGER;
 
-    public: BasicUserRole* ORDERMANAGER = new BasicUserRole("OrderManager", "Order Manager", 8, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* ORDERMANAGER;
 
-    public: BasicUserRole* WEBMANAGER = new BasicUserRole("WebManager", "Web Manager", 9, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* WEBMANAGER;
 
-    public: BasicUserRole* REVIEWER = new BasicUserRole("Reviewer", 10, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* REVIEWER;
 
-    public: BasicUserRole* SHIPPING = new BasicUserRole("Shipping", 11, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* SHIPPING;
 
-    public: BasicUserRole* ADJUSTER = new BasicUserRole("Adjuster", 12, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* ADJUSTER;
 
-    public: BasicUserRole* WORKFLOWEDITOR = new BasicUserRole("WorkFlowEditor", "WorkFlow Editor", 13, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* WORKFLOWEDITOR;
 
-    public: BasicUserRole* WIZARD = new BasicUserRole("WizardUser", "Wizard User", 14, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* WIZARD;
 
-    public: BasicUserRole* VIEWEDITOR = new BasicUserRole("ViewEditor", "View Editor", 15, this->MAXSESSIONTIME, this->INACTIVITYTIMEOUT);
+    public: BasicUserRole* VIEWEDITOR;
 
 };
 
@@ -105,3 +119,13 @@ class BasicUserRoleFactory
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/business/user/role/BasicUserRole.h")
+#include "org/allbinary/business/user/role/BasicUserRole.h"
+#endif
+
+        #endif
+    

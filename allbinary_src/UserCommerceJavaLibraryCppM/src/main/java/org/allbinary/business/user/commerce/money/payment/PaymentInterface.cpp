@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/PaymentInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,33 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentInterface {
+//Interface - declared in the header
 
-    public: virtual void setName(std::string value) = 0;
 
-    public: virtual void setType(std::string value) = 0;
 
-    public: virtual void setExpiration(std::string value) = 0;
-
-    public: virtual void setNumber(std::string value) = 0;
-
-    public: virtual std::string getId() = 0;
-
-    public: virtual std::string getName() = 0;
-
-    public: virtual std::string getType() = 0;
-
-    public: virtual std::string getExpiration() = 0;
-
-    public: virtual std::string getEncryption() = 0;
-
-    public: virtual std::string getNumber() = 0;
-
-    public: virtual std::string getLastFour() = 0;
-
-    public: virtual bool isDefault() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTINTERFACE_CPP

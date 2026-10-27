@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/hud/LapInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LapInfo
-            : public Object
-         {
+auto LapInfo::NULL_LAP_INFO_owner() -> LapInfo* { static std::unique_ptr<LapInfo> value(new LapInfo( -1)); return value.get(); }
+LapInfo* LapInfo::NULL_LAP_INFO = LapInfo::NULL_LAP_INFO_owner();
 
-    public: static LapInfo* NULL_LAP_INFO() { static std::unique_ptr<LapInfo> value(new LapInfo( -1)); return value.get(); }
-
-    private: int32_t numberOfLaps;
-
-    private: int32_t totalLaps;
-
-public: LapInfo(int32_t totalLaps){
+LapInfo::LapInfo(int32_t totalLaps){
 this->totalLaps= totalLaps;
     
 this->numberOfLaps= 1;
@@ -66,13 +69,13 @@ this->numberOfLaps= 1;
 }
 
 
-    public: void add(){
+    auto LapInfo::add() -> void{
 this->numberOfLaps++;
     
 }
 
 
-    public: int32_t getCurrentLap(){
+    auto LapInfo::getCurrentLap() -> int32_t{
 
 
 
@@ -82,7 +85,7 @@ this->numberOfLaps++;
 }
 
 
-    public: int32_t getTotalLaps(){
+    auto LapInfo::getTotalLaps() -> int32_t{
 
 
 
@@ -92,7 +95,7 @@ this->numberOfLaps++;
 }
 
 
-    public: bool isDone(){
+    auto LapInfo::isDone() -> bool{
 
                         if(this->numberOfLaps >= this->totalLaps)
                         
@@ -115,7 +118,7 @@ this->numberOfLaps++;
 }
 
 
-    public: std::string toString(){
+    auto LapInfo::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -140,7 +143,6 @@ stringBuffer->appendint(this->getTotalLaps());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_CPP

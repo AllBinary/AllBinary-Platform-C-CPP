@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MinMaxDoubleConstraintInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class MinMaxDoubleConstraintInterface
+            : public virtual Object
+         {
 
     public: virtual double getMax() = 0;
 
@@ -62,3 +73,10 @@ class MinMaxDoubleConstraintInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_H_COMPLETE
+        
+        #endif
+    

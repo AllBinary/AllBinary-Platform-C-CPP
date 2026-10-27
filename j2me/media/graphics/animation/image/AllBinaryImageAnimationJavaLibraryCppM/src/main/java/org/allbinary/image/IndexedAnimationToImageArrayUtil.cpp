@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_CPP
+        #define ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/IndexedAnimationToImageArrayUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,13 +66,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/AnimationFrameToImageUtil.h"
 
-class IndexedAnimationToImageArrayUtil
-            : public Object
-         {
 
+IndexedAnimationToImageArrayUtil::IndexedAnimationToImageArrayUtil() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static std::vector<Image*> getInstance(int32_t width, int32_t height, IndexedAnimation* sequentialAnimationInterface){
+    auto IndexedAnimationToImageArrayUtil::getInstance(int32_t width, int32_t height, IndexedAnimation* sequentialAnimationInterface) -> std::vector<Image*>{
 
     int32_t size = sequentialAnimationInterface->getAnimationSize();;
     
@@ -91,7 +101,6 @@ imageArray[index]= AnimationFrameToImageUtil::getInstance().getInstanceWH(width,
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_CPP

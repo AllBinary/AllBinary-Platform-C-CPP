@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/RotationAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,17 +77,8 @@
 #include "org/allbinary/animation/RotationAnimationInterface.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class RotationAnimation: public IndexedAnimation, public RotationAnimationInterface {
 
-    protected: FrameUtil* frameUtil = FrameUtil::getInstance();
-
-    protected: DirectionUtil* directionUtil = DirectionUtil::getInstance();
-
-    protected: AngleInfo* angleInfo;
-
-    protected: CircularIndexUtil* circularIndexUtil;
-
-protected: RotationAnimation(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+RotationAnimation::RotationAnimation(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior), frameUtil(FrameUtil::getInstance()), directionUtil(DirectionUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,35 +92,35 @@ this->circularIndexUtil= circularIndexUtil;
 }
 
 
-    public: void nextRotationX(){
+    auto RotationAnimation::nextRotationX() -> void{
 }
 
 
-    public: void previousRotationX(){
+    auto RotationAnimation::previousRotationX() -> void{
 }
 
 
-    public: void nextRotation(){
+    auto RotationAnimation::nextRotation() -> void{
 this->angleInfo->adjustAngle(this->circularIndexUtil->next());
     
 }
 
 
-    public: void previousRotation(){
+    auto RotationAnimation::previousRotation() -> void{
 this->angleInfo->adjustAngle(this->circularIndexUtil->previous());
     
 }
 
 
-    public: void nextRotationZ(){
+    auto RotationAnimation::nextRotationZ() -> void{
 }
 
 
-    public: void previousRotationZ(){
+    auto RotationAnimation::previousRotationZ() -> void{
 }
 
 
-    public: void setFrame(int32_t index){
+    auto RotationAnimation::setFrame(int32_t index) -> void{
 this->circularIndexUtil->setIndex(index);
     
 
@@ -130,7 +131,7 @@ this->angleInfo->adjustAngle(newFrame);
 }
 
 
-    public: void setFrameByDirection(Direction* direction){
+    auto RotationAnimation::setFrameByDirection(Direction* direction) -> void{
 
     Angle* angle = this->directionUtil->getFrameAngle(direction);;
     
@@ -139,25 +140,25 @@ this->adjustFrameToAngle(angle);
 }
 
 
-    public: void setFrameToAngle(Angle* angle){
+    auto RotationAnimation::setFrameToAngle(Angle* angle) -> void{
 this->adjustFrameToAngle(angle);
     
 }
 
 
-    public: void adjustFrameToAngle(Angle* angle){
+    auto RotationAnimation::adjustFrameToAngle(Angle* angle) -> void{
 this->adjustFrame(angle->getValue());
     
 }
 
 
-    public: void adjustFrame(int16_t angle){
+    auto RotationAnimation::adjustFrame(int16_t angle) -> void{
 this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(this->angleInfo->getAngleIncrementInfo()->getAngleIncrement())));
     
 }
 
 
-    public: int32_t getFrame(){
+    auto RotationAnimation::getFrame() -> int32_t{
 
 
 
@@ -167,7 +168,7 @@ this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(thi
 }
 
 
-    public: int32_t getSize(){
+    auto RotationAnimation::getSize() -> int32_t{
 
 
 
@@ -177,7 +178,7 @@ this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(thi
 }
 
 
-    public: AngleInfo* getAngleInfoP(){
+    auto RotationAnimation::getAngleInfoP() -> AngleInfo*{
 
 
 
@@ -187,17 +188,16 @@ this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(thi
 }
 
 
-    public: std::string toString(){
+    auto RotationAnimation::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append(super.toString())->append("circularIndexUtil: ")->append(this->circularIndexUtil->toString())->append("angleInfo: ")->append(this->angleInfo->toString())->toString();;
+                        return (new StringMaker())->append(IndexedAnimation::toString())->append("circularIndexUtil: ")->append(this->circularIndexUtil->toString())->append("angleInfo: ")->append(this->angleInfo->toString())->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_ROTATIONANIMATION_CPP

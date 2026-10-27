@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUNDS_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/Sounds.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -78,19 +88,8 @@
 #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
 #include "org/allbinary/media/audio/Sound.h"
 
-class Sounds
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: SoundStrings* soundStrings = SoundStrings::getInstance();
-
-    private: SoundsFactoryInterface* soundsFactoryInterface;
-
-public: Sounds(SoundsFactoryInterface* soundsFactoryInterface){
+Sounds::Sounds(SoundsFactoryInterface* soundsFactoryInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), soundStrings(SoundStrings::getInstance()){
 this->soundsFactoryInterface= soundsFactoryInterface;
     
 }
@@ -98,7 +97,7 @@ this->soundsFactoryInterface= soundsFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto Sounds::init() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->INIT);
     
 
@@ -144,7 +143,7 @@ this->soundsFactoryInterface->init();
     
 indexString= indexInteger.toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(commonLabels->INDEX_LABEL);
     
@@ -174,7 +173,7 @@ this->logUtil->putF(this->commonStrings->END, this, this->commonStrings->INIT);
 
                 //@Throws(Exception.constructor)
             
-    public: void stopAll(){
+    auto Sounds::stopAll() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->soundStrings->STOP_ALL);
     
 
@@ -199,7 +198,7 @@ this->logUtil->putF(this->commonStrings->START, this, this->soundStrings->STOP_A
                                 )
                         
                                     {
-                                    player= soundInterfaceArray[index].getPlayerP();
+                                    player= soundInterfaceArray[index]->getPlayerP();
     
 
                         if(player != 
@@ -224,7 +223,7 @@ progressCanvas->addPortion(100, this->soundStrings->STOPPING_SOUND, index);
 
                 //@Throws(Exception.constructor)
             
-    public: void closeAll(){
+    auto Sounds::closeAll() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->soundStrings->CLOSE_ALL);
     
 
@@ -249,7 +248,7 @@ this->logUtil->putF(this->commonStrings->START, this, this->soundStrings->CLOSE_
                                 )
                         
                                     {
-                                    player= soundInterfaceArray[index].getPlayerP();
+                                    player= soundInterfaceArray[index]->getPlayerP();
     
 
                         if(player != 
@@ -272,7 +271,6 @@ progressCanvas->addPortion(100, this->soundStrings->CLOSING_SOUND, index);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_SOUNDS_CPP

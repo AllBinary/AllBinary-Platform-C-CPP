@@ -4,6 +4,16 @@
 
 
 
+        #ifndef JAVA_LANG_ANNOTATION_ANNOTATION_CPP
+        #define JAVA_LANG_ANNOTATION_ANNOTATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "java/lang/annotation/Annotation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,11 +41,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Annotation {
+//Interface - declared in the header
 
-    public: virtual Class* annotationType() = 0;
 
-};
 
-            
-
+        #endif //JAVA_LANG_ANNOTATION_ANNOTATION_CPP

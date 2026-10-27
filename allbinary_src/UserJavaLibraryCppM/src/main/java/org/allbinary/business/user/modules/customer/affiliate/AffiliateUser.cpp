@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/customer/affiliate/AffiliateUser.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AffiliateUser: public User {
 
-    private: AffiliateSales* affiliateSales;
-
-public: AffiliateUser() : User(){
+AffiliateUser::AffiliateUser() : User(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +80,7 @@ this->affiliateSales= new AffiliateSales();
 }
 
 
-public: AffiliateUser(HashMap<Object*, Object*>* userHashMap) : User(userHashMap){
+AffiliateUser::AffiliateUser(HashMap<Object*, Object*>* userHashMap) : User(userHashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,21 +92,21 @@ this->affiliateSales= new AffiliateSales();
 }
 
 
-    public: void validateSession(WeblisketSessionInterface* weblisketSession){
-super.validateSession(weblisketSession);
+    auto AffiliateUser::validateSession(WeblisketSessionInterface* weblisketSession) -> void{
+User::validateSession(weblisketSession);
     
 this->updateSession(weblisketSession);
     
 }
 
 
-    public: void updateSession(WeblisketSessionInterface* weblisketSession){
+    auto AffiliateUser::updateSession(WeblisketSessionInterface* weblisketSession) -> void{
 weblisketSession->setStoreName(this->getPermissions());
     
 }
 
 
-    public: bool isSessionValid(){
+    auto AffiliateUser::isSessionValid() -> bool{
 
 
 
@@ -109,7 +116,6 @@ weblisketSession->setStoreName(this->getPermissions());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_CPP

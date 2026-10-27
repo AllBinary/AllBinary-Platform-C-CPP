@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_INVENTORYHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_INVENTORYHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/InventoryHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,17 +71,14 @@
         #include "admin/taghelpers/TagHelperFactory.h"
 #include "admin/taghelpers/InventoryHelper.h"
 
-class InventoryHelperFactory: public TagHelperFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InventoryHelperFactory(){
+InventoryHelperFactory::InventoryHelperFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto InventoryHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
         try {
             
@@ -85,10 +92,10 @@ public: InventoryHelperFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -104,7 +111,6 @@ public: InventoryHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_INVENTORYHELPERFACTORY_CPP

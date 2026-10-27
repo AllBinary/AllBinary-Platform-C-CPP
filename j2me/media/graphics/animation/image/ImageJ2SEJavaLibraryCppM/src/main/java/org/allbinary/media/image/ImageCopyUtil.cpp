@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageCopyUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,37 +74,26 @@
         #include "org/allbinary/media/image/ImageUtil.h"
 #include "org/allbinary/media/image/ImageCreationUtil.h"
 
-class ImageCopyUtil
-            : public Object
-         {
+auto ImageCopyUtil::instance_owner() -> ImageCopyUtil* { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
+ImageCopyUtil* ImageCopyUtil::instance = ImageCopyUtil::instance_owner();
 
-    private: static ImageCopyUtil* instance() { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
-
-    public: static ImageCopyUtil* getInstance(){
+    auto ImageCopyUtil::getInstance() -> ImageCopyUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCopyUtil::instance();
+                        return ImageCopyUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-    private: ImageCreationUtil* imageCreationUtil = ImageCreationUtil::getInstance();
-
-private: ImageCopyUtil(){
+ImageCopyUtil::ImageCopyUtil() : logUtil(LogUtil::getInstance()), imageUtil(ImageUtil::getInstance()), imageCreationUtil(ImageCreationUtil::getInstance()), anchor(Anchor::TOP_LEFT){
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageForRotation(Image* originalImage){
+    auto ImageCopyUtil::createImageForRotation(Image* originalImage) -> Image*{
 
 
 
@@ -106,7 +105,7 @@ private: ImageCopyUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage(Image* originalImage){
+    auto ImageCopyUtil::createImage(Image* originalImage) -> Image*{
 
     Image* image = this->imageCreationUtil->createImageWH(originalImage->getWidth(), originalImage->getHeight());;
     
@@ -129,7 +128,7 @@ private: ImageCopyUtil(){
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -139,7 +138,7 @@ private: ImageCopyUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageScale(Image* originalImage, float canvasScale, bool resize){
+    auto ImageCopyUtil::createImageScale(Image* originalImage, float canvasScale, bool resize) -> Image*{
 
     int32_t newWidth = static_cast<int32_t>((originalImage->getWidth() *canvasScale));;
     
@@ -189,7 +188,6 @@ private: ImageCopyUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP

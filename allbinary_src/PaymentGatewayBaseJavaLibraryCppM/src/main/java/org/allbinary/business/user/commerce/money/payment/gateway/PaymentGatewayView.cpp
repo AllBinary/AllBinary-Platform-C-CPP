@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,23 +84,14 @@
 #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayMapping.h"
 #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
 
-class PaymentGatewayView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: PaymentGatewayInterface* paymentGatewayInterface;
-
-public: PaymentGatewayView(PaymentGatewayInterface* paymentGatewayInterface){
+PaymentGatewayView::PaymentGatewayView(PaymentGatewayInterface* paymentGatewayInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->paymentGatewayInterface= paymentGatewayInterface;
     
 }
 
 
-    public: PaymentGatewayInterface* getPaymentGatewayInterface(){
+    auto PaymentGatewayView::getPaymentGatewayInterface() -> PaymentGatewayInterface*{
 
 
 
@@ -102,7 +103,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto PaymentGatewayView::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -117,11 +118,11 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto PaymentGatewayView::toXmlNode(Document* document) -> Node*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");
@@ -135,7 +136,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 hashMap->putAll(this->toHashMap());
     
 
-    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME.toString(), hashMap);;
+    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME->toString(), hashMap);;
     
 
 
@@ -148,7 +149,7 @@ hashMap->putAll(this->toHashMap());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode", &e);
@@ -166,7 +167,6 @@ hashMap->putAll(this->toHashMap());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYVIEW_CPP

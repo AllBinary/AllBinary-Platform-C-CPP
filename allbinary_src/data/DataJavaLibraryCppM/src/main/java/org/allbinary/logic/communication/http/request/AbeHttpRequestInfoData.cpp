@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFODATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFODATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,39 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbeHttpRequestInfoData
-            : public Object
-         {
+auto AbeHttpRequestInfoData::instance_owner() -> AbeHttpRequestInfoData* { static std::unique_ptr<AbeHttpRequestInfoData> value(new AbeHttpRequestInfoData()); return value.get(); }
+AbeHttpRequestInfoData* AbeHttpRequestInfoData::instance = AbeHttpRequestInfoData::instance_owner();
 
-    private: static AbeHttpRequestInfoData* instance() { static std::unique_ptr<AbeHttpRequestInfoData> value(new AbeHttpRequestInfoData()); return value.get(); }
-
-    public: static AbeHttpRequestInfoData* getInstance(){
+    auto AbeHttpRequestInfoData::getInstance() -> AbeHttpRequestInfoData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeHttpRequestInfoData::instance();
+                        return AbeHttpRequestInfoData::instance;
     
 }
 
 
-private: AbeHttpRequestInfoData(){
+AbeHttpRequestInfoData::AbeHttpRequestInfoData(){
 }
 
 
-    public: const std::string HTTP_USER_AGENT = "HTTP_USER_AGENT";
 
-    public: const std::string REMOTE_ADDRESS = "REMOTE_ADDRESS";
 
-    public: const std::string REMOTE_HOST = "REMOTE_HOST";
-
-    public: const std::string REMOTE_HOST_BY_ADDRESS = "REMOTE_HOST_BY_ADDRESS";
-
-    public: const std::string REMOTE_PORT = "REMOTE_PORT";
-
-    public: const std::string REQUEST_FILE_PATH = "REQUEST_FILE_PATH";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFODATA_CPP

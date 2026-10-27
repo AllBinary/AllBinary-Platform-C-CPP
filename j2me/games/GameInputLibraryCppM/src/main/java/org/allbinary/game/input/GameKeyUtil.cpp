@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameKeyUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,23 +58,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameKeyUtil
-            : public Object
-         {
 
-    private: static GameKeyUtil* instance() { static std::unique_ptr<GameKeyUtil> value(new GameKeyUtil()); return value.get(); }
+GameKeyUtil::GameKeyUtil() {
+        }
+        auto GameKeyUtil::instance_owner() -> GameKeyUtil* { static std::unique_ptr<GameKeyUtil> value(new GameKeyUtil()); return value.get(); }
+GameKeyUtil* GameKeyUtil::instance = GameKeyUtil::instance_owner();
 
-    public: static GameKeyUtil* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyUtil::instance();
-    
-}
-
-
-    public: bool isDirectionKey(int32_t key){
+    auto GameKeyUtil::isDirectionKey(int32_t key) -> bool{
 
                         if(key == Canvas::UP || key == Canvas::DOWN || key == Canvas::LEFT || key == Canvas::RIGHT)
                         
@@ -91,7 +91,16 @@ class GameKeyUtil
 }
 
 
-};
+    auto GameKeyUtil::getInstance() -> GameKeyUtil*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameKeyUtil::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENCRYPTEDMAPPING_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENCRYPTEDMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayEncryptedMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,13 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
 
-class PaymentGatewayEncryptedMapping
-            : public Object
-        , public TableMappingInterface {
 
-    private: PaymentGatewayInterface* paymentGatewayInterface;
-
-public: PaymentGatewayEncryptedMapping(PaymentGatewayInterface* paymentGatewayInterface){
+PaymentGatewayEncryptedMapping::PaymentGatewayEncryptedMapping(PaymentGatewayInterface* paymentGatewayInterface){
 this->paymentGatewayInterface= paymentGatewayInterface;
     
 }
@@ -74,7 +79,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto PaymentGatewayEncryptedMapping::toHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -84,7 +89,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto PaymentGatewayEncryptedMapping::toVector() -> BasicArrayList*{
 
 
 
@@ -96,7 +101,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto PaymentGatewayEncryptedMapping::getKey() -> Object*{
 
 
 
@@ -106,7 +111,6 @@ this->paymentGatewayInterface= paymentGatewayInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENCRYPTEDMAPPING_CPP

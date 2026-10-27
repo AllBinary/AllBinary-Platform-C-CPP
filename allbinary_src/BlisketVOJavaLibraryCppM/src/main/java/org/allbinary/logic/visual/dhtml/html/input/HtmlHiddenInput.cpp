@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLHIDDENINPUT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLHIDDENINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlHiddenInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlHiddenInput
-            : public Object
-         {
 
-public: HtmlHiddenInput(){
+HtmlHiddenInput::HtmlHiddenInput(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLHIDDENINPUT_CPP

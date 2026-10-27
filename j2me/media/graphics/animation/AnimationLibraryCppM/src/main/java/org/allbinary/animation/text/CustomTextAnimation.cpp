@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/text/CustomTextAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,19 +72,8 @@
         #include "org/allbinary/animation/text/TextAnimation.h"
 #include "org/allbinary/animation/text/TextInterface.h"
 
-class CustomTextAnimation: public TextAnimation, public TextInterface {
 
-    protected: FontDebugFactory* fontDebugFactory = FontDebugFactory::getInstance();
-
-    protected: int32_t fontSize;
-
-    protected: Font* font;
-
-    private: std::string lastText = StringUtil::getInstance()->INIT_STRING;
-
-    protected: bool hasChanged = true;
-
-public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior* animationBehavior) : TextAnimation(text, animationBehavior){
+CustomTextAnimation::CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior* animationBehavior) : TextAnimation(text, animationBehavior), fontDebugFactory(FontDebugFactory::getInstance()), lastText(StringUtil::getInstance()->INIT_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,22 +87,22 @@ this->font= Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, fontSize);
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->myFontProcessor.process(graphics);
+    auto CustomTextAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->myFontProcessor->process(graphics);
     
 
     Font* existingFont = graphics->getFont();;
     
 this->fontDebugFactory->setFont(this->font, graphics);
     
-super.paintXYNoUpdate(graphics, x, y);
+TextAnimation::paintXYNoUpdate(graphics, x, y);
     
 this->fontDebugFactory->setFont(existingFont, graphics);
     
 }
 
 
-    public: void setScale(float scaleX, float scaleY){
+    auto CustomTextAnimation::setScale(float scaleX, float scaleY) -> void{
 
                         if(scaleX != scaleY)
                         
@@ -111,7 +110,7 @@ this->fontDebugFactory->setFont(existingFont, graphics);
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -123,7 +122,7 @@ this->font= Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, static_cast<int3
 }
 
 
-    public: void setText(std::string text){
+    auto CustomTextAnimation::setText(std::string text) -> void{
 
                         if(this->lastText != text)
                         
@@ -132,7 +131,7 @@ this->font= Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, static_cast<int3
     
 this->lastText= text;
     
-super.setText(text);
+TextAnimation::setText(text);
     
 
                                     }
@@ -140,7 +139,7 @@ super.setText(text);
 }
 
 
-    public: std::string getText(){
+    auto CustomTextAnimation::getText() -> std::string{
 
 
 
@@ -150,9 +149,7 @@ super.setText(text);
 }
 
 
-    private: int32_t textWidth= 0;
-
-    public: int32_t getWidth(){
+    auto CustomTextAnimation::getWidth() -> int32_t{
 
                         if(this->hasChanged)
                         
@@ -173,7 +170,7 @@ this->hasChanged= false;
 }
 
 
-    public: int32_t getFontHeight(){
+    auto CustomTextAnimation::getFontHeight() -> int32_t{
 
 
 
@@ -183,7 +180,6 @@ this->hasChanged= false;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_CPP

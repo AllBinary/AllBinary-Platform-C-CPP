@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,20 +41,10 @@
             #include "java/lang/System.h"
         
 #include <java/io/IOException.h>
-
-      
 #include <java/net/URL.h>
-
-      
 #include <java/net/URLConnection.h>
-
-      
 #include <java/util/jar/JarEntry.h>
-
-      
 #include <java/util/jar/JarInputStream.h>
-
-      
 
 
 
@@ -69,8 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class JarUtil
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -89,3 +88,25 @@ public: JarUtil(URL* jarURL);
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_H_COMPLETE
+        #if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/net/URL.h>)
+#include <java/net/URL.h>
+#endif
+#if __has_include(<java/net/URLConnection.h>)
+#include <java/net/URLConnection.h>
+#endif
+#if __has_include(<java/util/jar/JarEntry.h>)
+#include <java/util/jar/JarEntry.h>
+#endif
+#if __has_include(<java/util/jar/JarInputStream.h>)
+#include <java/util/jar/JarInputStream.h>
+#endif
+
+        #endif
+    

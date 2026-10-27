@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/customizers/CustomizersValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,11 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/customizers/CustomizersView.h"
 
-class CustomizersValidationView: public CustomizersView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: CustomizersValidationView(TransformInfoInterface* transformInfoInterface) : CustomizersView(transformInfoInterface){
+CustomizersValidationView::CustomizersValidationView(TransformInfoInterface* transformInfoInterface) : CustomizersView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,11 +82,11 @@ public: CustomizersValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-    public: bool isValid(){
+    auto CustomizersValidationView::isValid() -> bool{
 
         try {
             
-                        if(this->customizersVector.size() > 0)
+                        if(this->customizersVector->size() > 0)
                         
                                     {
                                     
@@ -99,10 +106,10 @@ public: CustomizersValidationView(TransformInfoInterface* transformInfoInterface
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -118,7 +125,7 @@ public: CustomizersValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-    public: std::string validationInfo(){
+    auto CustomizersValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -132,7 +139,7 @@ public: CustomizersValidationView(TransformInfoInterface* transformInfoInterface
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -151,7 +158,7 @@ public: CustomizersValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto CustomizersValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -161,7 +168,7 @@ public: CustomizersValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto CustomizersValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -171,7 +178,6 @@ public: CustomizersValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVALIDATIONVIEW_CPP

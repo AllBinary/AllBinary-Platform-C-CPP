@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_UPGRADEDOWNGRADETOUCHBUTTONSBUILDER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_UPGRADEDOWNGRADETOUCHBUTTONSBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/UpgradeDowngradeTouchButtonsBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,14 +82,14 @@
 #include "org/allbinary/input/motion/button/TouchButton.h"
 #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 
-class UpgradeDowngradeTouchButtonsBuilder: public BaseTouchInput {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: BasicArrayList* getList(){
+UpgradeDowngradeTouchButtonsBuilder::UpgradeDowngradeTouchButtonsBuilder() : logUtil(LogUtil::getInstance()) {
+        }
+        
+    auto UpgradeDowngradeTouchButtonsBuilder::getList() -> BasicArrayList*{
 
         try {
-            this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
     BasicArrayList* list = new BasicArrayListD();;
@@ -123,7 +133,7 @@ list->add(DOWN);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 
 
@@ -136,7 +146,6 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONS
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_UPGRADEDOWNGRADETOUCHBUTTONSBUILDER_CPP

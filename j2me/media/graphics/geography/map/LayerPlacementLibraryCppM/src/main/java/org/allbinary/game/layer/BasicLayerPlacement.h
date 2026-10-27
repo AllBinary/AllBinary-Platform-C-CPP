@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BASICLAYERPLACEMENT_H
         #define ORG_ALLBINARY_GAME_LAYER_BASICLAYERPLACEMENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,10 +52,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/LayerPlacementType.h"
+        class LayerPlacementType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicLayerPlacement
-            : public Object
+            : public virtual Object
          {
 
     private: LayerPlacementType* layerType;
@@ -67,7 +76,7 @@ public: BasicLayerPlacement(LayerPlacementType* layerType, int32_t width, int32_
 
     public: LayerPlacementType* getLayerType();
 
-    protected: void setLayerType(LayerPlacementType* layerType);
+    /*protected*/ public: void setLayerType(LayerPlacementType* layerType);
 
 };
 
@@ -75,3 +84,13 @@ public: BasicLayerPlacement(LayerPlacementType* layerType, int32_t width, int32_
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_BASICLAYERPLACEMENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_BASICLAYERPLACEMENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_BASICLAYERPLACEMENT_H_COMPLETE
+        #if __has_include("org/allbinary/game/layer/LayerPlacementType.h")
+#include "org/allbinary/game/layer/LayerPlacementType.h"
+#endif
+
+        #endif
+    

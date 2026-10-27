@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICSVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/RealTimeStoreFrontStatisticsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,15 +98,8 @@
         #include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsInterface.h"
 #include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsData.h"
 
-class RealTimeStoreFrontStatisticsView
-            : public Object
-        , public DomNodeInterface {
 
-    private: StoreFrontStatisticsInterface* storeFrontStatisticsInterface;
-
-    private: UserRole* userRole;
-
-public: RealTimeStoreFrontStatisticsView(StoreFrontStatisticsInterface* storeFrontStatisticsInterface, UserRole* userRole){
+RealTimeStoreFrontStatisticsView::RealTimeStoreFrontStatisticsView(StoreFrontStatisticsInterface* storeFrontStatisticsInterface, UserRole* userRole){
 this->storeFrontStatisticsInterface= storeFrontStatisticsInterface;
     
 this->userRole= userRole;
@@ -106,7 +109,7 @@ this->userRole= userRole;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto RealTimeStoreFrontStatisticsView::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(StoreFrontStatisticsData::getInstance()->NAME);;
     
@@ -158,7 +161,6 @@ node->appendChild(storeFrontUsersStatisticsDomNodeInterface->toXmlNode(document)
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICSVIEW_CPP

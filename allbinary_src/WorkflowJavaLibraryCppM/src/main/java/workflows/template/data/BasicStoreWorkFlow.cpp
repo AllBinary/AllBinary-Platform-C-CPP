@@ -18,6 +18,16 @@
 
 
 
+        #ifndef WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_CPP
+        #define WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "workflows/template/data/BasicStoreWorkFlow.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "workflows/template/data/BasicWorkFlow.h"
 
-class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
 
-public: BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : BasicWorkFlow(propertiesHashMap, pageContext){
+BasicStoreWorkFlow::BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : BasicWorkFlow(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +81,7 @@ public: BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageCon
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getStoreName(){
+    auto BasicStoreWorkFlow::getStoreName() -> std::string{
 
 
 
@@ -82,7 +91,6 @@ public: BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageCon
 }
 
 
-};
 
-            
 
+        #endif //WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_CPP

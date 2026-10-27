@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
+class AllBinaryGameLayerManager;
 #include <org/allbinary/graphics/displayable/DisplayableInterface.h>
-
-      
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryGameCanvasInterface: public DisplayableInterface {
 
     public: virtual AllBinaryGameLayerManager* getLayerManager() = 0;
@@ -62,3 +67,16 @@ class AllBinaryGameCanvasInterface: public DisplayableInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayableInterface.h>)
+#include <org/allbinary/graphics/displayable/DisplayableInterface.h>
+#endif
+
+        #endif
+    

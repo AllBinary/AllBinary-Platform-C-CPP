@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_AGGRESSION_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_AGGRESSION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/Aggression.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,17 +60,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Aggression
-            : public Object
-         {
 
-    private: int32_t ram = SmallIntegerSingletonFactory::getInstance()->getAt(0);
-
-    private: int32_t projectile = SmallIntegerSingletonFactory::getInstance()->getAt(0);
-
-    private: int32_t drops = SmallIntegerSingletonFactory::getInstance()->getAt(0);
-
-public: Aggression(int32_t ram, int32_t projectile, int32_t drops){
+Aggression::Aggression(int32_t ram, int32_t projectile, int32_t drops) : ram(SmallIntegerSingletonFactory::getInstance()->getAt(0)), projectile(SmallIntegerSingletonFactory::getInstance()->getAt(0)), drops(SmallIntegerSingletonFactory::getInstance()->getAt(0)){
 this->setRam(ram);
     
 this->setProjectile(projectile);
@@ -70,7 +71,7 @@ this->setDrops(drops);
 }
 
 
-    public: int32_t getRam(){
+    auto Aggression::getRam() -> int32_t{
 
 
 
@@ -80,13 +81,13 @@ this->setDrops(drops);
 }
 
 
-    public: void setRam(int32_t ram){
+    auto Aggression::setRam(int32_t ram) -> void{
 this->ram= ram;
     
 }
 
 
-    public: int32_t getProjectile(){
+    auto Aggression::getProjectile() -> int32_t{
 
 
 
@@ -96,13 +97,13 @@ this->ram= ram;
 }
 
 
-    public: void setProjectile(int32_t projectile){
+    auto Aggression::setProjectile(int32_t projectile) -> void{
 this->projectile= projectile;
     
 }
 
 
-    public: int32_t getDrops(){
+    auto Aggression::getDrops() -> int32_t{
 
 
 
@@ -112,13 +113,12 @@ this->projectile= projectile;
 }
 
 
-    public: void setDrops(int32_t drops){
+    auto Aggression::setDrops(int32_t drops) -> void{
 this->drops= drops;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_AGGRESSION_CPP

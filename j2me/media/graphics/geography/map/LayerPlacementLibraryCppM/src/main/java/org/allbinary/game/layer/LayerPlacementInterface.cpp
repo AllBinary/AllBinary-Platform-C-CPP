@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LayerPlacementInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/LayerPlacementType.h"
 
-class LayerPlacementInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getWidth() = 0;
 
-    public: virtual int32_t getHeight() = 0;
 
-    public: virtual LayerPlacementType* getLayerType() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual ABHashtable<Object*, Object*>* getInstance() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACE_CPP

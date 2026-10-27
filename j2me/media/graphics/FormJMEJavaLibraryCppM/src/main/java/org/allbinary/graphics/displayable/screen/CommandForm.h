@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,51 +36,21 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
+class Command;
+class CommandListener;
 #include <javax/microedition/lcdui/Form.h>
-
-      
-#include <javax/microedition/lcdui/NullCommandListener.h>
-
-      
-#include <org/allbinary/canvas/Processor.h>
-
-      
+class NullCommandListener;
+class Processor;
 #include <org/allbinary/game/displayable/canvas/MenuListener.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
+class BasicColor;
+class BasicColorFactory;
 #include <org/allbinary/graphics/displayable/command/MyCommandInterface.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class NullUtil;
+class LogUtil;
+class StringUtil;
+class CommonStrings;
+class StdUtil;
 #include <org/allbinary/util/ABStack.h>
-
-      
 
 
 
@@ -94,19 +69,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h"
+        class ScreenRepaintProcessorFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
-    private: static inline Object* NULL_COMMAND_FORM = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* NULL_COMMAND_FORM;
 
     public: static CommandForm* getNullCommandForm();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: Processor* repaintProcessor = ScreenRepaintProcessorFactory::getInstance()->create(this);
+    private: Processor* repaintProcessor;
 
     private: ABStack<Object*>* commandStack;
 
@@ -134,3 +113,58 @@ public: CommandForm(CommandListener* commandListener, std::string formTitle, Bas
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Form.h>)
+#include <javax/microedition/lcdui/Form.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullCommandListener.h>)
+#include <javax/microedition/lcdui/NullCommandListener.h>
+#endif
+#if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+#if __has_include(<org/allbinary/game/displayable/canvas/MenuListener.h>)
+#include <org/allbinary/game/displayable/canvas/MenuListener.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/command/MyCommandInterface.h>)
+#include <org/allbinary/graphics/displayable/command/MyCommandInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABStack.h>)
+#include <org/allbinary/util/ABStack.h>
+#endif
+#if __has_include("org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h")
+#include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h"
+#endif
+
+        #endif
+    

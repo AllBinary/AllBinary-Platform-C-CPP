@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/DiveAndDirectionalTrackingAIFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,13 +85,13 @@
 #include "org/allbinary/game/ag/ai/LastKeyAIVisitorFactory.h"
 #include "org/allbinary/game/ag/ai/DiveAndDirectionalTrackingAI.h"
 
-class DiveAndDirectionalTrackingAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+DiveAndDirectionalTrackingAIFactory::DiveAndDirectionalTrackingAIFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto DiveAndDirectionalTrackingAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
     Object* visitorCanBeNull = hashtable->get(BasicAI::AI_VISITOR);;
     
@@ -113,7 +123,6 @@ hashtable2->put(BasicAI::AI_VISITOR, LastKeyAIVisitorFactory::getInstance());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAIFACTORY_CPP

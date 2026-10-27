@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_INTPERMUTATIONVISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_INTPERMUTATIONVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/permutations/IntPermutationVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,20 +57,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IntPermutationVisitor: public Visitor {
 
-    protected: std::vector<int32_t> data;
-
-public: IntPermutationVisitor(std::vector<int32_t> data){
+IntPermutationVisitor::IntPermutationVisitor(std::vector<int32_t> data) : stringBuilder(new StringMaker()){
 this->data= data;
     
 }
 
 
-    private: StringMaker* stringBuilder = new StringMaker();
-
-    public: Object* visit(Object* anyType){
-this->stringBuilder->delete(0, stringBuilder->length());
+    auto IntPermutationVisitor::visit(Object* anyType) -> Object*{
+this->stringBuilder->delete_(0, stringBuilder->length());
     
 this->print(this->data, stringBuilder);
     
@@ -73,7 +78,7 @@ this->print(this->data, stringBuilder);
 }
 
 
-    public: void print(std::vector<int32_t> data){
+    auto IntPermutationVisitor::print(std::vector<int32_t> data) -> void{
 
     StringMaker* stringBuilder = new StringMaker();;
     
@@ -82,7 +87,7 @@ this->print(data, stringBuilder);
 }
 
 
-    public: void print(std::vector<int32_t> data, StringMaker* stringBuilder){
+    auto IntPermutationVisitor::print(std::vector<int32_t> data, StringMaker* stringBuilder) -> void{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -107,7 +112,6 @@ System.out.println(stringBuilder->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_INTPERMUTATIONVISITOR_CPP

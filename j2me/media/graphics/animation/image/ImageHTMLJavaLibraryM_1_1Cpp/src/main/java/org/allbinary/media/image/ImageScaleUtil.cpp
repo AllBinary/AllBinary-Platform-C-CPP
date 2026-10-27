@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageScaleUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,29 +76,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCreationUtil.h"
 
-class ImageScaleUtil
-            : public Object
-         {
+auto ImageScaleUtil::instance_owner() -> ImageScaleUtil* { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+ImageScaleUtil* ImageScaleUtil::instance = ImageScaleUtil::instance_owner();
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
-
-    public: static ImageScaleUtil* getInstance(){
+    auto ImageScaleUtil::getInstance() -> ImageScaleUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil::instance();
+                        return ImageScaleUtil::instance;
     
 }
 
 
-private: ImageScaleUtil(){
+ImageScaleUtil::ImageScaleUtil(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
+    auto ImageScaleUtil::createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached) -> Image*{
 
 
 
@@ -100,7 +107,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_){
+    auto ImageScaleUtil::createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_) -> Image*{
 
     float scaleX = scaleNominatorX /scaleDenominatorX;;
     
@@ -118,7 +125,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, bool cached){
+    auto ImageScaleUtil::createImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, bool cached) -> Image*{
 
 
 
@@ -130,7 +137,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageInternal(Image* originalImage, float scaleX, float scaleY){
+    auto ImageScaleUtil::createImageInternal(Image* originalImage, float scaleX, float scaleY) -> Image*{
 
     Image* image = ImageCreationUtil::getInstance()->createImageWH(static_cast<int32_t>((originalImage->getWidth() *scaleX)), static_cast<int32_t>((originalImage->getHeight() *scaleY)));;
     
@@ -188,7 +195,7 @@ canvasSurface->drawImage(originalPlayNImage, 0, 0, image->getWidth(), image->get
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -196,7 +203,6 @@ canvasSurface->drawImage(originalPlayNImage, 0, 0, image->getWidth(), image->get
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP

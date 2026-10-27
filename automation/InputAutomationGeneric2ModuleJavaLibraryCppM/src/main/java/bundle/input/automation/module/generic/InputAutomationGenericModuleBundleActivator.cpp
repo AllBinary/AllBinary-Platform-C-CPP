@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULEBUNDLEACTIVATOR_CPP
+        #define BUNDLE_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULEBUNDLEACTIVATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/module/generic/InputAutomationGenericModuleBundleActivator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationGenericModuleBundleActivator: public InputAutomationModuleBundleActivator {
 
-public: InputAutomationGenericModuleBundleActivator(){
+InputAutomationGenericModuleBundleActivator::InputAutomationGenericModuleBundleActivator(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto InputAutomationGenericModuleBundleActivator::init() -> void{
 
     InputAutomationGenericModuleServiceFactory* inputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory::getInstance();;
     
@@ -70,7 +79,6 @@ this->setServiceFactory(inputAutomationGenericModuleServiceFactory);
 }
 
 
-};
 
-            
 
+        #endif //BUNDLE_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULEBUNDLEACTIVATOR_CPP

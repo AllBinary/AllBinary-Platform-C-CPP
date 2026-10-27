@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_PATH_GLOBALS_CPP
+        #define ORG_ALLBINARY_GLOBALS_PATH_GLOBALS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/PATH_GLOBALS.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,23 +64,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PATH_GLOBALS
-            : public Object
-         {
+auto PATH_GLOBALS::instance_owner() -> PATH_GLOBALS* { static std::unique_ptr<PATH_GLOBALS> value(new PATH_GLOBALS()); return value.get(); }
+PATH_GLOBALS* PATH_GLOBALS::instance = PATH_GLOBALS::instance_owner();
 
-    private: static PATH_GLOBALS* instance() { static std::unique_ptr<PATH_GLOBALS> value(new PATH_GLOBALS()); return value.get(); }
-
-    public: static PATH_GLOBALS* getInstance(){
+    auto PATH_GLOBALS::getInstance() -> PATH_GLOBALS*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PATH_GLOBALS::instance();
+                        return PATH_GLOBALS::instance;
     
 }
 
 
-private: PATH_GLOBALS(){
+PATH_GLOBALS::PATH_GLOBALS(){
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -83,7 +90,7 @@ stringBuffer->append(abPathData->SEPARATOR);
     
 this->DATA_PATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->DATA_PATH);
     
@@ -93,7 +100,7 @@ stringBuffer->append(abPathData->SEPARATOR);
     
 this->INIT_PATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->DATA_PATH);
     
@@ -103,7 +110,7 @@ stringBuffer->append(abPathData->SEPARATOR);
     
 this->LOG_PATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->DATA_PATH);
     
@@ -113,7 +120,7 @@ stringBuffer->append(abPathData->SEPARATOR);
     
 this->BACKUP_PATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->INIT_PATH);
     
@@ -126,17 +133,6 @@ this->VIEWS_PATH= stringBuffer->toString();
 }
 
 
-    public: std::string DATA_PATH;
 
-    public: std::string INIT_PATH;
 
-    public: std::string VIEWS_PATH;
-
-    public: std::string LOG_PATH;
-
-    public: std::string BACKUP_PATH;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GLOBALS_PATH_GLOBALS_CPP

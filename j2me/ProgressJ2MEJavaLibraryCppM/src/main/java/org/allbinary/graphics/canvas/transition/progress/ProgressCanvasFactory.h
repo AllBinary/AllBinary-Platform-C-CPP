@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
-#include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class BasicColorFactory;
+class NullPaintable;
+class PaintableInterface;
+class NullUtil;
+class StringUtil;
 
 
 
@@ -62,21 +57,54 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+        class ProgressCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ProgressCanvasFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* PROGRESS_FORM_SCREEN = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* PROGRESS_FORM_SCREEN;
 
     public: static ProgressCanvas* getInstance();
 
     public: static PaintableInterface* getLazyInstance();
 
+
+            
+    public: ProgressCanvasFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+#endif
+
+        #endif
+    

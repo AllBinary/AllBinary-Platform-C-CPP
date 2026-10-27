@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/modules/gateway/PaymentGatewayDomNodeFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentGatewayDomNodeFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual DomNodeInterface* getInstance(PaymentGatewayInterface* paymentGatewayInterface) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_CPP

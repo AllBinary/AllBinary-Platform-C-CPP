@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_THREADFACTORYUTIL_CPP
+        #define ORG_ALLBINARY_THREAD_THREADFACTORYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ThreadFactoryUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,25 +95,23 @@
 #include "org/allbinary/thread/PrimaryThreadPool.h"
 #include "org/allbinary/thread/ThreadPool.h"
 
-class ThreadFactoryUtil
-            : public Object
-         {
 
-    private: static ThreadFactoryUtil* instance() { static std::unique_ptr<ThreadFactoryUtil> value(new ThreadFactoryUtil()); return value.get(); }
+ThreadFactoryUtil::ThreadFactoryUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto ThreadFactoryUtil::instance_owner() -> ThreadFactoryUtil* { static std::unique_ptr<ThreadFactoryUtil> value(new ThreadFactoryUtil()); return value.get(); }
+ThreadFactoryUtil* ThreadFactoryUtil::instance = ThreadFactoryUtil::instance_owner();
 
-    public: static ThreadFactoryUtil* getInstance(){
+    auto ThreadFactoryUtil::getInstance() -> ThreadFactoryUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadFactoryUtil::instance();
+                        return ThreadFactoryUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: Thread* getInstanceGameCanvasRunnable(GameCanvasRunnableInterface* runnable){
+    auto ThreadFactoryUtil::getInstanceGameCanvasRunnable(GameCanvasRunnableInterface* runnable) -> Thread*{
 
 
 
@@ -113,7 +121,7 @@ class ThreadFactoryUtil
 }
 
 
-    public: Thread* getInstanceForRunnable(ABRunnable* runnable){
+    auto ThreadFactoryUtil::getInstanceForRunnable(ABRunnable* runnable) -> Thread*{
 
 
 
@@ -123,7 +131,7 @@ class ThreadFactoryUtil
 }
 
 
-    private: Thread* getInstanceType(Runnable* runnable, int32_t type){
+    auto ThreadFactoryUtil::getInstanceType(Runnable* runnable, int32_t type) -> Thread*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -176,13 +184,12 @@ this->logUtil->putF(thread->toString(), this, commonStrings->CONSTRUCTOR);
 }
 
 
-    public: void start(Thread* thread){
+    auto ThreadFactoryUtil::start(Thread* thread) -> void{
 thread->start();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_THREADFACTORYUTIL_CPP

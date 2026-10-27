@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
-
-      
+class PageContext;
+class WeblisketSession;
 
 
 
@@ -55,11 +56,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h"
-#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
+        class TransformHttpRequestDocument;
+class TransformDocumentInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformHttpRequestDocumentFactory
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -74,3 +79,22 @@ private: TransformHttpRequestDocumentFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENTFACTORY_H_COMPLETE
+        #if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSession.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h")
+#include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h")
+#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
+#endif
+
+        #endif
+    

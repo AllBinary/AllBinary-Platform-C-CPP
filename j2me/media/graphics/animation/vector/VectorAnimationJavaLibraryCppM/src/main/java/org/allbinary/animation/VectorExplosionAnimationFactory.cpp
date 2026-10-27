@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorExplosionAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,17 +71,8 @@
 #include "org/allbinary/animation/VectorRotationAnimation.h"
 #include "org/allbinary/animation/Animation.h"
 
-class VectorExplosionAnimationFactory
-            : public Object
-        , public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: VectorExplosionGenerator* vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-    protected: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: VectorExplosionAnimationFactory(BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory){
+VectorExplosionAnimationFactory::VectorExplosionAnimationFactory(BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) : vectorExplosionGenerator(VectorExplosionGenerator::getInstance()), basicColor(BasicColorFactory::getInstance()->WHITE){
 this->animationBehaviorFactory= animationBehaviorFactory;
     
 this->setBasicColorP(basicColor);
@@ -81,7 +82,7 @@ this->setBasicColorP(basicColor);
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto VectorExplosionAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
     VectorAnimationInterface* vectorRotationAnimationInterface = dynamic_cast<VectorAnimationInterface*>(animationInterface as unknown);;
     
@@ -103,13 +104,13 @@ this->setBasicColorP(basicColor);
 }
 
 
-    private: void setBasicColorP(BasicColor* basicColor){
+    auto VectorExplosionAnimationFactory::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-    private: BasicColor* getBasicColorP(){
+    auto VectorExplosionAnimationFactory::getBasicColorP() -> BasicColor*{
 
 
 
@@ -119,7 +120,6 @@ this->basicColor= basicColor;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONANIMATIONFACTORY_CPP

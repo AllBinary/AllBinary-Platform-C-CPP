@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_MULTIGEOGRAPHICMAPBEHAVIOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_MULTIGEOGRAPHICMAPBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,13 +62,13 @@
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
-class MultiGeographicMapBehavior
-            : public Object
-         {
 
+MultiGeographicMapBehavior::MultiGeographicMapBehavior() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: std::vector<GeographicMapCellType*> getCellTypeAt(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition){
+    auto MultiGeographicMapBehavior::getCellTypeAt(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition) -> std::vector<GeographicMapCellType*>{
 
     int32_t size = geographicMapInterfaceArray.size();;
     
@@ -72,7 +82,7 @@ class MultiGeographicMapBehavior
                         for (
     int32_t index = size;--index >= 0; )
         {
-cellType= geographicMapInterfaceArray[index].getCellTypeAt(geographicMapCellPosition);
+cellType= geographicMapInterfaceArray[index]->getCellTypeAt(geographicMapCellPosition);
     
 geographicMapCellTypeArray[index]= cellType;
     
@@ -87,7 +97,6 @@ geographicMapCellTypeArray[index]= cellType;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_MULTIGEOGRAPHICMAPBEHAVIOR_CPP

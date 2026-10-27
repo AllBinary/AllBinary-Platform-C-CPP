@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDFILTER_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDFILTER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/NullRecordFilter.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,13 +60,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullRecordFilter
-            : public Object
-        , public RecordFilter {
 
-    public: static NullRecordFilter* NULL_RECORD_FILTER() { static std::unique_ptr<NullRecordFilter> value(new NullRecordFilter()); return value.get(); }
+NullRecordFilter::NullRecordFilter() {
+        }
+        auto NullRecordFilter::NULL_RECORD_FILTER_owner() -> NullRecordFilter* { static std::unique_ptr<NullRecordFilter> value(new NullRecordFilter()); return value.get(); }
+NullRecordFilter* NullRecordFilter::NULL_RECORD_FILTER = NullRecordFilter::NULL_RECORD_FILTER_owner();
 
-    public: bool matches(std::vector<int8_t> candidate){
+    auto NullRecordFilter::matches(std::vector<int8_t> candidate) -> bool{
 
 
 
@@ -66,7 +76,6 @@ class NullRecordFilter
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDFILTER_CPP

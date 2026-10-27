@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/StoreFrontsRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -112,25 +122,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/ModifyTable.h"
 
-class StoreFrontsRequestHelper: public ModifyTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: PageContext* pageContext;
-
-    private: HttpServletRequest* request;
-
-    private: WeblisketSession* weblisketSession;
-
-    private: std::string storeName;
-
-    private: StoreFrontInterface* modifyingStoreFrontInterface;
-
-    private: Portion* portion;
-
-public: StoreFrontsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+StoreFrontsRequestHelper::StoreFrontsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 this->pageContext= pageContext;
     
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
@@ -146,7 +139,7 @@ this->getFormData();
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(){
+    auto StoreFrontsRequestHelper::getFormData() -> void{
 this->storeName= this->weblisketSession->getStoreName();
     
 this->modifyingStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(this->request));
@@ -154,7 +147,7 @@ this->modifyingStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new Store
 }
 
 
-    public: std::string update(){
+    auto StoreFrontsRequestHelper::update() -> std::string{
 
         try {
             
@@ -166,7 +159,7 @@ this->modifyingStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new Store
 StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->update(hashMapData);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -188,10 +181,10 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->update(
     std::string error = "Failed to update storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -209,12 +202,12 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->update(
 
                 //@Throws(Exception.constructor)
             
-    public: void sendStoreCreatedEmails(){
+    auto StoreFrontsRequestHelper::sendStoreCreatedEmails() -> void{
 
-    std::string storeManagerEmailSubject = "Store Manager Nofification For Store: " +this->modifyingStoreFrontInterface->getName();;
+    std::string storeManagerEmailSubject = JavaString::valueOf("Store Manager Nofification For Store: ") +JavaString::valueOf(this->modifyingStoreFrontInterface->getName());;
     
 
-    std::string adminEmailSubject = "Admin Notification For Store: " +this->modifyingStoreFrontInterface->getName();;
+    std::string adminEmailSubject = JavaString::valueOf("Admin Notification For Store: ") +JavaString::valueOf(this->modifyingStoreFrontInterface->getName());;
     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -274,7 +267,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STORECREATE
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string install(){
+    auto StoreFrontsRequestHelper::install() -> std::string{
 
         try {
             
@@ -294,7 +287,7 @@ stringBuffer->appendint(this->portion->getTotal()->intValue());
 this->modifyingStoreFrontInterface->install(this->portion->getCurrent()->intValue(), this->portion->getTotal()->intValue());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "install()");
@@ -316,10 +309,10 @@ this->modifyingStoreFrontInterface->install(this->portion->getCurrent()->intValu
     std::string error = "Failed to Install storefront";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "install()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "install()", &e);
     
 
                                     }
@@ -336,7 +329,7 @@ this->modifyingStoreFrontInterface->install(this->portion->getCurrent()->intValu
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string insert(){
+    auto StoreFrontsRequestHelper::insert() -> std::string{
 
         try {
             
@@ -348,7 +341,7 @@ this->modifyingStoreFrontInterface->install(this->portion->getCurrent()->intValu
 StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert()");
@@ -370,10 +363,10 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->insert(
     std::string error = "Failed to add storefront";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -389,16 +382,16 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->insert(
 }
 
 
-    public: std::string delete_(){
+    auto StoreFrontsRequestHelper::delete_() -> std::string{
 
         try {
             
     std::string success = "Delete Successfully";;
     
-StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->delete(this->storeName);
+StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->delete_(this->storeName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -420,10 +413,10 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->delete(
     std::string error = "Failed to delete storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -439,7 +432,6 @@ StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->delete(
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_CPP

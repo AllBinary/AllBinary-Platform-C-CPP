@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTLISTENER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RawKeyEventListener {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class RawKeyEventListener
+            : public virtual Object
+         {
 
     public: virtual void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated) = 0;
 
@@ -56,3 +67,10 @@ class RawKeyEventListener {
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTLISTENER_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMUSERIDENTIFIERVISITOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMUSERIDENTIFIERVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/validation/TextItemUserIdentifierVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,15 +75,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TextItemUserIdentifierVisitor: public Visitor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TextItemUserIdentifierVisitor(){
+TextItemUserIdentifierVisitor::TextItemUserIdentifierVisitor() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto TextItemUserIdentifierVisitor::visit(Object* anyType) -> Object*{
 
     std::string value = anyType;;
     
@@ -154,7 +161,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
 }
 
 
-    public: bool isLetter(char charValue){
+    auto TextItemUserIdentifierVisitor::isLetter(char charValue) -> bool{
 
     int32_t value = static_cast<int32_t>(charValue);;
     
@@ -167,7 +174,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMUSERIDENTIFIERVISITOR_CPP

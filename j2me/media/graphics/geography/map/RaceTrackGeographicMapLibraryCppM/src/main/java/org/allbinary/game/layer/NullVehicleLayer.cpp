@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/NullVehicleLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,329 +84,328 @@
         #include "org/allbinary/game/layer/VehicleLayerInterface.h"
 #include "org/allbinary/game/layer/VehicleProperties.h"
 
-class NullVehicleLayer
-            : public Object
-        , public VehicleLayerInterface {
 
-    public: static NullVehicleLayer* NULL_VEHICLE_LAYER() { static std::unique_ptr<NullVehicleLayer> value(new NullVehicleLayer()); return value.get(); }
+NullVehicleLayer::NullVehicleLayer() {
+        }
+        auto NullVehicleLayer::NULL_VEHICLE_LAYER_owner() -> NullVehicleLayer* { static std::unique_ptr<NullVehicleLayer> value(new NullVehicleLayer()); return value.get(); }
+NullVehicleLayer* NullVehicleLayer::NULL_VEHICLE_LAYER = NullVehicleLayer::NULL_VEHICLE_LAYER_owner();
 
-    public: std::string getName(){
+    auto NullVehicleLayer::getName() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::vector<Group*> getGroupInterface(){
+    auto NullVehicleLayer::getGroupInterface() -> std::vector<Group*>{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setPosition(int32_t x, int32_t y, int32_t z){
+    auto NullVehicleLayer::setPosition(int32_t x, int32_t y, int32_t z) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getHeight(){
+    auto NullVehicleLayer::getHeight() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getWidth(){
+    auto NullVehicleLayer::getWidth() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getHalfHeight(){
+    auto NullVehicleLayer::getHalfHeight() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getHalfWidth(){
+    auto NullVehicleLayer::getHalfWidth() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getXP(){
+    auto NullVehicleLayer::getXP() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getYP(){
+    auto NullVehicleLayer::getYP() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getZP(){
+    auto NullVehicleLayer::getZP() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getX2(){
+    auto NullVehicleLayer::getX2() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getY2(){
+    auto NullVehicleLayer::getY2() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getZ2(){
+    auto NullVehicleLayer::getZ2() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isVisible(){
+    auto NullVehicleLayer::isVisible() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void moveDXYZ(int32_t dx, int32_t dy, int32_t dz){
+    auto NullVehicleLayer::moveDXYZ(int32_t dx, int32_t dy, int32_t dz) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setVisible(bool visible){
+    auto NullVehicleLayer::setVisible(bool visible) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool implmentsTickableInterface(){
+    auto NullVehicleLayer::implmentsTickableInterface() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool implmentsCollidableInterface(){
+    auto NullVehicleLayer::implmentsCollidableInterface() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool implmentsGameInputInterface(){
+    auto NullVehicleLayer::implmentsGameInputInterface() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool implmentsArtificialIntelligenceCompositeInterface(){
+    auto NullVehicleLayer::implmentsArtificialIntelligenceCompositeInterface() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getType(){
+    auto NullVehicleLayer::getType() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: VehicleProperties* getVehicleProperties(){
+    auto NullVehicleLayer::getVehicleProperties() -> VehicleProperties*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BasicArrayList* getGameKeyEventList(){
+    auto NullVehicleLayer::getGameKeyEventList() -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BasicDecimal* getSpeedBasicDecimal(){
+    auto NullVehicleLayer::getSpeedBasicDecimal() -> BasicDecimal*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isReadyForExplosion(){
+    auto NullVehicleLayer::isReadyForExplosion() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: RotationAnimation* getRotationAnimationInterface(){
+    auto NullVehicleLayer::getRotationAnimationInterface() -> RotationAnimation*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setRotationAnimationInterface(RotationAnimation* animationInterface){
+    auto NullVehicleLayer::setRotationAnimationInterface(RotationAnimation* animationInterface) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isDestroyed(){
+    auto NullVehicleLayer::isDestroyed() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isFinish(){
+    auto NullVehicleLayer::isFinish() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getFinalPosition(){
+    auto NullVehicleLayer::getFinalPosition() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void handleFinish(){
+    auto NullVehicleLayer::handleFinish() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: GeographicMapCellPositionTracking* getGeographicMapCellPositionTracking(){
+    auto NullVehicleLayer::getGeographicMapCellPositionTracking() -> GeographicMapCellPositionTracking*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::vector<GeographicMapCellHistory*> getGeographicMapCellHistoryArray(){
+    auto NullVehicleLayer::getGeographicMapCellHistoryArray() -> std::vector<GeographicMapCellHistory*>{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory*> geographicMapCellHistory){
+    auto NullVehicleLayer::setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory*> geographicMapCellHistory) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto NullVehicleLayer::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto NullVehicleLayer::paintThreed(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_CPP

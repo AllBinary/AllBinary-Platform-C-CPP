@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALSTRAFELEFTGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALSTRAFELEFTGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/SpecialStrafeLeftGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
 #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
-class SpecialStrafeLeftGameInputProcessor: public SpecialGameInputProcessor {
 
-public: SpecialStrafeLeftGameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
+SpecialStrafeLeftGameInputProcessor::SpecialStrafeLeftGameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: SpecialStrafeLeftGameInputProcessor(CollidableDestroyableDamageableLayer
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->collidableDestroyableDamageableLayer.strafeLeft();
+    auto SpecialStrafeLeftGameInputProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->collidableDestroyableDamageableLayer->strafeLeft();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALSTRAFELEFTGAMEINPUTPROCESSOR_CPP

@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/direction/Direction.h>
-
-      
-#include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
-#include <org/allbinary/math/Angle.h>
-
-      
+class Direction;
+class BasicDecimal;
+class Angle;
 
 
 
@@ -55,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicVelocityInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class BasicVelocityInterface
+            : public virtual Object
+         {
 
     public: virtual BasicDecimal* getVelocityXBasicDecimalP() = 0;
 
@@ -87,3 +92,19 @@ class BasicVelocityInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/direction/Direction.h>)
+#include <org/allbinary/direction/Direction.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/BasicDecimal.h>)
+#include <org/allbinary/logic/math/BasicDecimal.h>
+#endif
+#if __has_include(<org/allbinary/math/Angle.h>)
+#include <org/allbinary/math/Angle.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/ClientInformation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,29 +93,8 @@
         #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
 // This is the information sent to the license server
-class ClientInformation
-            : public Object
-        , public AbeClientInformationInterface {
 
-    private: GenericOperatingSystem* operatingSystemInterface = NoOperatingSystem::NO_OPERATING_SYSTEM;
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: std::string name;
-
-    private: std::string shortName;
-
-    private: std::string version;
-
-    private: std::string specialName;
-
-    private: bool hardSale = true;
-
-    private: std::string licenseId = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: BasicArrayList* licenseServers = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
-public: ClientInformation(std::string name, std::string version, std::string specialName, std::string shortName){
+ClientInformation::ClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : operatingSystemInterface(NoOperatingSystem::NO_OPERATING_SYSTEM), tsUtil(TsUtil::getInstance()), licenseId(StringUtil::getInstance()->EMPTY_STRING), licenseServers(BasicArrayListUtil::getInstance()->getImmutableInstance()){
 this->name= name;
     
 this->version= version;
@@ -119,11 +108,11 @@ this->init();
 }
 
 
-    public: void init(){
+    auto ClientInformation::init() -> void{
 }
 
 
-    public: GenericOperatingSystem* getOperatingSystemInterface(){
+    auto ClientInformation::getOperatingSystemInterface() -> GenericOperatingSystem*{
 
 
 
@@ -133,7 +122,7 @@ this->init();
 }
 
 
-    public: std::string getName(){
+    auto ClientInformation::getName() -> std::string{
 
 
 
@@ -143,7 +132,7 @@ this->init();
 }
 
 
-    public: std::string getSpecialName(){
+    auto ClientInformation::getSpecialName() -> std::string{
 
 
 
@@ -153,7 +142,7 @@ this->init();
 }
 
 
-    public: std::string getVersion(){
+    auto ClientInformation::getVersion() -> std::string{
 
 
 
@@ -163,7 +152,7 @@ this->init();
 }
 
 
-    public: std::string getLicenseId(){
+    auto ClientInformation::getLicenseId() -> std::string{
 
 
 
@@ -173,7 +162,7 @@ this->init();
 }
 
 
-    public: BasicArrayList* getLicenseServers(){
+    auto ClientInformation::getLicenseServers() -> BasicArrayList*{
 
 
 
@@ -183,7 +172,7 @@ this->init();
 }
 
 
-    public: std::string getLicenseServer(int32_t index){
+    auto ClientInformation::getLicenseServer(int32_t index) -> std::string{
 
 
 
@@ -193,7 +182,7 @@ this->init();
 }
 
 
-    public: int32_t getNumberOfLicenseServers(){
+    auto ClientInformation::getNumberOfLicenseServers() -> int32_t{
 
 
 
@@ -203,7 +192,7 @@ this->init();
 }
 
 
-    public: ABHashtable<Object*, Object*>* toHashtable(){
+    auto ClientInformation::toHashtable() -> ABHashtable<Object*, Object*>*{
 
     AbeClientInformationData* abeClientInformationData = AbeClientInformationData::getInstance();;
     
@@ -246,7 +235,7 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 }
 
 
-    public: bool isSameId(std::string alicenseId){
+    auto ClientInformation::isSameId(std::string alicenseId) -> bool{
 
                         if(this->tsUtil->compareTo(this->getLicenseId(), alicenseId) == 0)
                         
@@ -273,7 +262,7 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 }
 
 
-    public: bool isLargerOrDifferentServerList(BasicArrayList* list){
+    auto ClientInformation::isLargerOrDifferentServerList(BasicArrayList* list) -> bool{
 
     int32_t size = list->size() -1;;
     
@@ -339,13 +328,13 @@ clientInfoHashtable->put(abeClientInformationData->HARDWARE, hardwareString);
 }
 
 
-    protected: void setHardSale(bool hardSale){
+    auto ClientInformation::setHardSale(bool hardSale) -> void{
 this->hardSale= hardSale;
     
 }
 
 
-    public: bool isHardSale(){
+    auto ClientInformation::isHardSale() -> bool{
 
 
 
@@ -355,25 +344,25 @@ this->hardSale= hardSale;
 }
 
 
-    protected: void setOperatingSystemInterface(GenericOperatingSystem* operatingSystemInterface){
+    auto ClientInformation::setOperatingSystemInterface(GenericOperatingSystem* operatingSystemInterface) -> void{
 this->operatingSystemInterface= operatingSystemInterface;
     
 }
 
 
-    protected: void setLicenseId(std::string licenseId){
+    auto ClientInformation::setLicenseId(std::string licenseId) -> void{
 this->licenseId= licenseId;
     
 }
 
 
-    protected: void setLicenseServers(BasicArrayList* licenseServers){
+    auto ClientInformation::setLicenseServers(BasicArrayList* licenseServers) -> void{
 this->licenseServers= licenseServers;
     
 }
 
 
-    public: std::string toShortString(){
+    auto ClientInformation::toShortString() -> std::string{
 
 
 
@@ -383,7 +372,6 @@ this->licenseServers= licenseServers;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_CPP

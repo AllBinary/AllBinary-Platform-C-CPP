@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/InputAutomationGenericModuleServiceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -57,23 +67,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/generic/GenericModuleFactory.h"
 
-class InputAutomationGenericModuleServiceFactory: public InputAutomationModuleServiceFactory {
+auto InputAutomationGenericModuleServiceFactory::inputAutomationGenericModuleServiceFactory_owner() -> InputAutomationGenericModuleServiceFactory* { static std::unique_ptr<InputAutomationGenericModuleServiceFactory> value(new InputAutomationGenericModuleServiceFactory()); return value.get(); }
+InputAutomationGenericModuleServiceFactory* InputAutomationGenericModuleServiceFactory::inputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory::inputAutomationGenericModuleServiceFactory_owner();
 
-    private: static InputAutomationGenericModuleServiceFactory* inputAutomationGenericModuleServiceFactory() { static std::unique_ptr<InputAutomationGenericModuleServiceFactory> value(new InputAutomationGenericModuleServiceFactory()); return value.get(); }
-
-    public: static InputAutomationGenericModuleServiceFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationGenericModuleServiceFactory::inputAutomationGenericModuleServiceFactory();
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InputAutomationGenericModuleServiceFactory(){
+InputAutomationGenericModuleServiceFactory::InputAutomationGenericModuleServiceFactory() : logUtil(LogUtil::getInstance()){
 
         try {
             
@@ -87,14 +84,23 @@ this->setInputAutomationModuleInterfaceArray(inputAutomationModuleInterfaceArray
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 }
 
 }
 
 
-};
+    auto InputAutomationGenericModuleServiceFactory::getInstance() -> InputAutomationGenericModuleServiceFactory*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return InputAutomationGenericModuleServiceFactory::inputAutomationGenericModuleServiceFactory;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_CPP

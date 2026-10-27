@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_VIEWSWAPPER_CPP
+        #define ORG_ALLBINARY_ANDROID_VIEWSWAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/ViewSwapper.h"
+        
+
             #include <hilog/log.h>
         
             #include <vector>
@@ -44,23 +54,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ViewSwapper
-            : public Object
-         {
+std::vector<View*> ViewSwapper::NULL_VIEW_ARRAY = {};
 
-    public: static inline const std::vector<View*> NULL_VIEW_ARRAY = {};
-
-    private: int32_t rootViewId;
-
-    private: Activity* activity;
-
-    private: int32_t currentMainViewId =  -1;
-
-    private: std::vector<View*> mainViewArray = ViewSwapper::NULL_VIEW_ARRAY;
-
-    private: std::vector<View*> topViewArray = ViewSwapper::NULL_VIEW_ARRAY;
-
-public: ViewSwapper(Activity* activity, int32_t rootViewId){
+ViewSwapper::ViewSwapper(Activity* activity, int32_t rootViewId) : mainViewArray(ViewSwapper::NULL_VIEW_ARRAY), topViewArray(ViewSwapper::NULL_VIEW_ARRAY){
 this->activity= activity;
     
 this->rootViewId= rootViewId;
@@ -68,19 +64,19 @@ this->rootViewId= rootViewId;
 }
 
 
-    public: void setMainViews(std::vector<View*> viewArray){
+    auto ViewSwapper::setMainViews(std::vector<View*> viewArray) -> void{
 this->mainViewArray= viewArray;
     
 }
 
 
-    public: void setTopViewArray(std::vector<View*> topViewArray){
+    auto ViewSwapper::setTopViewArray(std::vector<View*> topViewArray) -> void{
 this->topViewArray= topViewArray;
     
 }
 
 
-    public: void setMainView(int32_t id){
+    auto ViewSwapper::setMainView(int32_t id) -> void{
 
     ViewGroup* viewGroup = dynamic_cast<ViewGroup*>(this->activity->findViewById(this->rootViewId) as unknown);;
     
@@ -107,7 +103,7 @@ viewGroup->removeView(this->topViewArray[index]);
     int32_t index = 0;index < this->mainViewArray.size(); index++)
         {
 
-                        if(id != this->mainViewArray[index].getId())
+                        if(id != this->mainViewArray[index]->getId())
                         
                                     {
                                     viewGroup->removeView(this->mainViewArray[index]);
@@ -125,7 +121,7 @@ viewGroup->removeView(this->topViewArray[index]);
     int32_t index = 0;index < this->mainViewArray.size(); index++)
         {
 
-                        if(id == this->mainViewArray[index].getId())
+                        if(id == this->mainViewArray[index]->getId())
                         
                                     {
                                     viewGroup->addView(this->mainViewArray[index]);
@@ -154,7 +150,6 @@ viewGroup->addView(this->topViewArray[index]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_VIEWSWAPPER_CPP

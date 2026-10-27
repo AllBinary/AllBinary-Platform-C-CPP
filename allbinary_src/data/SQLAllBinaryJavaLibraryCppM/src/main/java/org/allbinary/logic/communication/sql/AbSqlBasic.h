@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBASIC_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBASIC_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -38,41 +43,17 @@
             #include "java/lang/Thread.h"
         
 #include <java/sql/Connection.h>
-
-      
 #include <java/sql/ResultSet.h>
-
-      
 #include <java/sql/SQLException.h>
-
-      
 #include <java/sql/Statement.h>
-
-      
-#include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
-
-      
-#include <org/allbinary/business/init/db/DbConnectionInfo.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/sql/connection/pool/SqlConnectionPool.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class DatabaseConnectionInfoInterface;
+class DbConnectionInfo;
+class StdUtil;
+class LogUtil;
+class SqlConnectionPool;
+class StringUtil;
+class CommonSeps;
+class CommonStrings;
 
 
 
@@ -91,42 +72,46 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/sql/SqlTypeStrings.h"
-#include "org/allbinary/logic/communication/sql/SqlStrings.h"
+        class SqlTypeStrings;
+class SqlStrings;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbSqlBasic
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: SqlConnectionPool* sqlConnectionPool = SqlConnectionPool::getInstance();
+    private: SqlConnectionPool* sqlConnectionPool;
 
     private: DbConnectionInfo* databaseConnectionInfoInterface;
 
     private: int32_t connectAttemptCounter;
 
-    protected: Connection* conn;
+    /*protected*/ public: Connection* conn;
 
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
+    /*protected*/ public: StringUtil* stringUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
+    /*protected*/ public: CommonSeps* commonSeps;
 
-    protected: StdUtil* stdUtil = StdUtil::getInstance();
+    /*protected*/ public: StdUtil* stdUtil;
 
-    protected: SqlTypeStrings* sqlTypeStrings = SqlTypeStrings::getInstance();
+    /*protected*/ public: SqlTypeStrings* sqlTypeStrings;
 
-    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
+    /*protected*/ public: SqlStrings* sqlStrings;
 
-    protected: const std::string INSERT = "insert";
+    /*protected*/ public: const std::string INSERT = "insert";
 
-    protected: const std::string UPDATE = "update";
+    /*protected*/ public: const std::string UPDATE = "update";
 
-    protected: const std::string FAILED_SQL_STATEMENT = "Failed\nSQL Statement: ";
+    /*protected*/ public: const std::string FAILED_SQL_STATEMENT = "Failed\nSQL Statement: ";
 
-    protected: const std::string SUCCESS_SQL_STATEMENT = "Success\nSQL Statement: ";
+    /*protected*/ public: const std::string SUCCESS_SQL_STATEMENT = "Success\nSQL Statement: ";
 
     private: const std::string METHOD_EXECUTED_SQL_STATEMENT = "executedSQLStatement";
 
@@ -170,3 +155,52 @@ public: AbSqlBasic(DbConnectionInfo* databaseConnectionInfoInterface);
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBASIC_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBASIC_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBASIC_H_COMPLETE
+        #if __has_include(<java/sql/Connection.h>)
+#include <java/sql/Connection.h>
+#endif
+#if __has_include(<java/sql/ResultSet.h>)
+#include <java/sql/ResultSet.h>
+#endif
+#if __has_include(<java/sql/SQLException.h>)
+#include <java/sql/SQLException.h>
+#endif
+#if __has_include(<java/sql/Statement.h>)
+#include <java/sql/Statement.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>)
+#include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/DbConnectionInfo.h>)
+#include <org/allbinary/business/init/db/DbConnectionInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/connection/pool/SqlConnectionPool.h>)
+#include <org/allbinary/logic/communication/sql/connection/pool/SqlConnectionPool.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/sql/SqlTypeStrings.h")
+#include "org/allbinary/logic/communication/sql/SqlTypeStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/sql/SqlStrings.h")
+#include "org/allbinary/logic/communication/sql/SqlStrings.h"
+#endif
+
+        #endif
+    

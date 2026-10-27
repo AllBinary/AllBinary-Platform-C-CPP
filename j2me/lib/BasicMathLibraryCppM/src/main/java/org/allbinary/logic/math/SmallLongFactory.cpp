@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/SmallLongFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,37 +59,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SmallLongFactory
-            : public Object
-         {
+auto SmallLongFactory::instance_owner() -> SmallLongFactory* { static std::unique_ptr<SmallLongFactory> value(new SmallLongFactory()); return value.get(); }
+SmallLongFactory* SmallLongFactory::instance = SmallLongFactory::instance_owner();
 
-    private: static SmallLongFactory* instance() { static std::unique_ptr<SmallLongFactory> value(new SmallLongFactory()); return value.get(); }
-
-    public: static SmallLongFactory* getInstance(){
+    auto SmallLongFactory::getInstance() -> SmallLongFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SmallLongFactory::instance();
+                        return SmallLongFactory::instance;
     
 }
 
 
-    public: const int32_t NEGATIVE_MAX = 500;
-
-    public: const int32_t POSITIVE_MAX = 0x2D1;
-
-    private: const std::vector<int64_t> INTEGER_ARRAY = std::vector<int64_t>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
-
-    private: const std::vector<std::string> STRING_ARRAY = std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
-
-    public: int32_t MIN = 0;
-
-    public: int32_t lastMin = 0;
-
-    public: int32_t lastNegativeMin = 0;
-
-    public: void initWithRange(int32_t value, int32_t negativeValue){
+    auto SmallLongFactory::initWithRange(int32_t value, int32_t negativeValue) -> void{
 
 
 
@@ -125,11 +118,9 @@ this->MIN= value;
 }
 
 
-    public: void init(){
+    auto SmallLongFactory::init() -> void{
 
-                        if(this->INTEGER_ARRAY[0] == 
-                                    nullptr
-                                )
+                        if(false)
                         
                                     {
                                     
@@ -171,11 +162,11 @@ this->lastNegativeMin= this->NEGATIVE_MAX;
 }
 
 
-private: SmallLongFactory(){
+SmallLongFactory::SmallLongFactory() : INTEGER_ARRAY(std::vector<int64_t>(this->NEGATIVE_MAX +this->POSITIVE_MAX)), STRING_ARRAY(std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX)){
 }
 
 
-    public: int64_t getInstanceNoThrow(int64_t index){
+    auto SmallLongFactory::getInstanceNoThrow(int64_t index) -> int64_t{
 
                         if(index +this->NEGATIVE_MAX > this->INTEGER_ARRAY.size() -1)
                         
@@ -198,17 +189,15 @@ private: SmallLongFactory(){
 }
 
 
-    public: std::string getString(int32_t index){
+    auto SmallLongFactory::getString(int32_t index) -> std::string{
 
     int32_t i = index +this->NEGATIVE_MAX;;
     
 
-                        if(this->STRING_ARRAY[i] == 
-                                    nullptr
-                                )
+                        if(this->STRING_ARRAY[i].empty())
                         
                                     {
-                                    this->STRING_ARRAY[i]= this->INTEGER_ARRAY[i].toString();
+                                    this->STRING_ARRAY[i]= std::to_string(this->INTEGER_ARRAY[i]);
     
 
                                     }
@@ -222,7 +211,6 @@ private: SmallLongFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_CPP

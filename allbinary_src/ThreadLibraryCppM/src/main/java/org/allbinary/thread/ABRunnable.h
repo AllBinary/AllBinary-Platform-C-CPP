@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_ABRUNNABLE_H
         #define ORG_ALLBINARY_THREAD_ABRUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,10 +56,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/RunnableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ABRunnable
-            : public Object
+            : public virtual Object
         , public RunnableInterface {
 
+
+            
+    public: ABRunnable();
+        
     private: bool running = false;
 
     public: void setThread(Thread* thread);
@@ -75,3 +88,13 @@ class ABRunnable
 
 
         #endif //ORG_ALLBINARY_THREAD_ABRUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_ABRUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_ABRUNNABLE_H_COMPLETE
+        #if __has_include("org/allbinary/thread/RunnableInterface.h")
+#include "org/allbinary/thread/RunnableInterface.h"
+#endif
+
+        #endif
+    

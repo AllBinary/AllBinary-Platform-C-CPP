@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_PLATFORM_GRAPHICS_OPENGLIMAGEUTIL_CPP
+        #define ORG_PLATFORM_GRAPHICS_OPENGLIMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/platform/graphics/OpenGLImageUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,21 +42,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLImageUtil: public OpenGLImageUtilBase {
 
-    private: static OpenGLImageUtil* instance() { static std::unique_ptr<OpenGLImageUtil> value(new OpenGLImageUtil()); return value.get(); }
+OpenGLImageUtil::OpenGLImageUtil() {
+        }
+        auto OpenGLImageUtil::instance_owner() -> OpenGLImageUtil* { static std::unique_ptr<OpenGLImageUtil> value(new OpenGLImageUtil()); return value.get(); }
+OpenGLImageUtil* OpenGLImageUtil::instance = OpenGLImageUtil::instance_owner();
 
-    public: static OpenGLImageUtil* getInstance(){
+    auto OpenGLImageUtil::getInstance() -> OpenGLImageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLImageUtil::instance();
+                        return OpenGLImageUtil::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_PLATFORM_GRAPHICS_OPENGLIMAGEUTIL_CPP

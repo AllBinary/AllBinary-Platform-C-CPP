@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/data/TransformHttpRequestDocument.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,23 +94,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
-class TransformHttpRequestDocument
-            : public Object
-        , public TransformDocumentInterface {
 
-    private: static inline const std::string language = "en";
-
-    private: static inline const std::string local = "US";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Node* baseNode;
-
-    private: Document* document;
-
-public: TransformHttpRequestDocument(PageContext* pageContext, WeblisketSession* weblisketSession){
+TransformHttpRequestDocument::TransformHttpRequestDocument(PageContext* pageContext, WeblisketSession* weblisketSession) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
         try {
             
@@ -126,7 +121,7 @@ contentTypeNode->appendChild(languageTypeNode);
 this->document->appendChild(contentTypeNode);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->putF(this->log(), this, this->commonStrings->CONSTRUCTOR);
@@ -139,7 +134,7 @@ this->document->appendChild(contentTypeNode);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
@@ -157,7 +152,7 @@ this->document->appendChild(contentTypeNode);
 }
 
 
-public: TransformHttpRequestDocument(SearchRequest* searchRequest){
+TransformHttpRequestDocument::TransformHttpRequestDocument(SearchRequest* searchRequest) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
         try {
             
@@ -187,7 +182,7 @@ this->document->appendChild(contentTypeNode);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
@@ -205,7 +200,7 @@ this->document->appendChild(contentTypeNode);
 }
 
 
-    public: Node* getBaseNode(){
+    auto TransformHttpRequestDocument::getBaseNode() -> Node*{
 
 
 
@@ -215,7 +210,7 @@ this->document->appendChild(contentTypeNode);
 }
 
 
-    public: Document* getDoc(){
+    auto TransformHttpRequestDocument::getDoc() -> Document*{
 
 
 
@@ -227,7 +222,7 @@ this->document->appendChild(contentTypeNode);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string log(){
+    auto TransformHttpRequestDocument::log() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -263,7 +258,6 @@ stringBuffer->append(XmlDocumentHelper::toString(this->document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMHTTPREQUESTDOCUMENT_CPP

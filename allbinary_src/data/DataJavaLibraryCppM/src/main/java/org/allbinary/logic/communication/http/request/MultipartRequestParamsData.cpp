@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMSDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/MultipartRequestParamsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MultipartRequestParamsData
-            : public Object
-         {
 
-    public: static inline const std::string HASHMAP = "MULTIPART_REQUEST_HASHMAP";
-
-public: MultipartRequestParamsData(){
+MultipartRequestParamsData::MultipartRequestParamsData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMSDATA_CPP

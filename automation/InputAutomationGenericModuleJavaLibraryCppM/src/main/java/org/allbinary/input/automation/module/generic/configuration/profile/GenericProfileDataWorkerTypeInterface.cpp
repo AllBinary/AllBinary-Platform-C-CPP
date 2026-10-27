@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPEINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerTypeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericProfileDataWorkerTypeInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual void setName(std::string name) = 0;
 
-    public: virtual std::string toString() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual Node* toXmlNode(Document* document) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPEINTERFACE_CPP

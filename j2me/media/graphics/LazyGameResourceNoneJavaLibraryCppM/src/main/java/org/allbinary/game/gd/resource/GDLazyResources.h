@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_H
         #define ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,22 +55,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GDLazyResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static GDLazyResources* instance() { static std::unique_ptr<GDLazyResources> value(new GDLazyResources()); return value.get(); }
+    private: static GDLazyResources* instance_owner();
+    private: static GDLazyResources* instance;
 
     public: static GDLazyResources* getInstance();
 
-    public: const std::vector<int32_t> imageResourceWidthArray = {};
 
-    public: const std::vector<int32_t> imageResourceHeightArray = {};
+            
+    public: GDLazyResources();
+        
+    public: std::vector<int32_t> imageResourceWidthArray;
 
-    public: const std::vector<std::string> requiredResourcesBeforeLoadingArray = 
-                                                        {
-                                                            
-                                                        };
+    public: std::vector<int32_t> imageResourceHeightArray;
+
+    public: std::vector<std::string> requiredResourcesBeforeLoadingArray;
 
 };
 
@@ -73,3 +84,10 @@ class GDLazyResources
 
 
         #endif //ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_H_COMPLETE
+        
+        #endif
+    

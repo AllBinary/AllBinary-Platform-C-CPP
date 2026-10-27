@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/NoPlayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,19 +63,18 @@
         #include "org/allbinary/media/audio/BasicPlayer.h"
 #include "org/allbinary/media/audio/NullControl.h"
 
-class NoPlayer: public BasicPlayer {
+auto NoPlayer::NO_PLAYER_owner() -> NoPlayer* { static std::unique_ptr<NoPlayer> value(new NoPlayer()); return value.get(); }
+NoPlayer* NoPlayer::NO_PLAYER = NoPlayer::NO_PLAYER_owner();
 
-    public: static NoPlayer* NO_PLAYER() { static std::unique_ptr<NoPlayer> value(new NoPlayer()); return value.get(); }
-
-public: NoPlayer(){
+NoPlayer::NoPlayer(){
 }
 
 
-    public: void close(){
+    auto NoPlayer::close() -> void{
 }
 
 
-    public: std::string getContentType(){
+    auto NoPlayer::getContentType() -> std::string{
 
 
 
@@ -75,7 +84,7 @@ public: NoPlayer(){
 }
 
 
-    public: Control* getControl(std::string controlType){
+    auto NoPlayer::getControl(std::string controlType) -> Control*{
 
 
 
@@ -85,7 +94,7 @@ public: NoPlayer(){
 }
 
 
-    public: std::vector<Control*> getControls(){
+    auto NoPlayer::getControls() -> std::vector<Control*>{
 
 
 
@@ -95,7 +104,6 @@ public: NoPlayer(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_CPP

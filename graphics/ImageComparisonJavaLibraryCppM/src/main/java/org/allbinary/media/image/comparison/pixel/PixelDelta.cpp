@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/pixel/PixelDelta.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,27 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PixelDelta
-            : public Object
-        , public CacheableInterface {
 
-    public: static Object* getKey(GPoint* point, ColorDelta* colorDelta){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->appendint(TsUtil::getInstance()->hashCode(point))->append(CommonSeps::getInstance()->UNDERSCORE)->append(colorDelta->getKey()->toString())->toString();;
-    
-}
-
-
-    private: GPoint* point;
-
-    private: ColorDelta* colorDelta;
-
-    private: Object* key;
-
-public: PixelDelta(GPoint* point, ColorDelta* colorDelta){
+PixelDelta::PixelDelta(GPoint* point, ColorDelta* colorDelta){
 this->setPoint(point);
     
 this->setColorDelta(colorDelta);
@@ -93,7 +84,7 @@ this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
 }
 
 
-    public: Object* getKey(){
+    auto PixelDelta::getKey() -> Object*{
 
 
 
@@ -103,7 +94,17 @@ this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
 }
 
 
-    public: GPoint* getPoint(){
+    auto PixelDelta::getKey(GPoint* point, ColorDelta* colorDelta) -> Object*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return (new StringMaker())->appendint(TsUtil::getInstance()->hashCode(point))->append(CommonSeps::getInstance()->UNDERSCORE)->append(colorDelta->getKey()->toString())->toString();;
+    
+}
+
+
+    auto PixelDelta::getPoint() -> GPoint*{
 
 
 
@@ -113,13 +114,13 @@ this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
 }
 
 
-    public: void setPoint(GPoint* point){
+    auto PixelDelta::setPoint(GPoint* point) -> void{
 this->point= point;
     
 }
 
 
-    public: ColorDelta* getColorDelta(){
+    auto PixelDelta::getColorDelta() -> ColorDelta*{
 
 
 
@@ -129,13 +130,13 @@ this->point= point;
 }
 
 
-    public: void setColorDelta(ColorDelta* colorDelta){
+    auto PixelDelta::setColorDelta(ColorDelta* colorDelta) -> void{
 this->colorDelta= colorDelta;
     
 }
 
 
-    public: std::string toString(){
+    auto PixelDelta::toString() -> std::string{
 
 
 
@@ -145,7 +146,6 @@ this->colorDelta= colorDelta;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_PIXEL_PIXELDELTA_CPP

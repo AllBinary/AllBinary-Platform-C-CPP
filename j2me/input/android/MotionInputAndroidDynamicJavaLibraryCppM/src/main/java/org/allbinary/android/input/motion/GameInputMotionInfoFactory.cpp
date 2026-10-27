@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/GameInputMotionInfoFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/GameInputMotionInfo.h"
 
-class GameInputMotionInfoFactory
-            : public Object
-         {
 
-    public: static GameInputMotionInfo* getInstance(){
+GameInputMotionInfoFactory::GameInputMotionInfoFactory() {
+        }
+        
+    auto GameInputMotionInfoFactory::getInstance() -> GameInputMotionInfo*{
 
     int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
@@ -89,7 +99,6 @@ class GameInputMotionInfoFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_CPP

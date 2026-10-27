@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,24 +38,12 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/logic/io/file/FilePathData.h>
-
-      
-#include <org/allbinary/logic/io/file/FilePathUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class FilePathData;
+class FilePathUtil;
+class StringMaker;
+class StringUtil;
+class StringValidationUtil;
+class CommonSeps;
 
 
 
@@ -69,30 +62,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/path/AbPathData.h"
-#include "org/allbinary/logic/io/path/PathUtil.h"
+        class AbPathData;
+class PathUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbPath
-            : public Object
+            : public virtual Object
          {
 
     public: static AbPath* createAbPath();
 
     private: static inline const std::string NETWORK_SEP = ":/";
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps;
 
-    private: AbPathData* abPathData = AbPathData::getInstance();
+    private: AbPathData* abPathData;
 
-    private: PathUtil* abPathUtil = PathUtil::getInstance();
+    private: PathUtil* abPathUtil;
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
+    private: const std::string EMPTY_STRING;
 
-    protected: std::string schema = this->EMPTY_STRING;
+    /*protected*/ public: std::string schema;
 
-    private: std::string path = this->EMPTY_STRING;
+    private: std::string path;
 
-    protected: std::string nameP = this->EMPTY_STRING;
+    /*protected*/ public: std::string nameP;
 
     private: bool hasSchemaP = false;
 
@@ -102,7 +99,7 @@ public: AbPath(std::string aPath, std::string name);
 
     private: void init();
 
-    protected: std::string getSchema(std::string aPath);
+    /*protected*/ public: std::string getSchema(std::string aPath);
 
     public: bool hasSchema();
 
@@ -120,7 +117,7 @@ public: AbPath(std::string aPath, std::string name);
 
     public: std::string getPath();
 
-    protected: void setPath(std::string path);
+    /*protected*/ public: void setPath(std::string path);
 
 };
 
@@ -128,3 +125,34 @@ public: AbPath(std::string aPath, std::string name);
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATH_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/FilePathData.h>)
+#include <org/allbinary/logic/io/file/FilePathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FilePathUtil.h>)
+#include <org/allbinary/logic/io/file/FilePathUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/logic/io/path/AbPathData.h")
+#include "org/allbinary/logic/io/path/AbPathData.h"
+#endif
+#if __has_include("org/allbinary/logic/io/path/PathUtil.h")
+#include "org/allbinary/logic/io/path/PathUtil.h"
+#endif
+
+        #endif
+    

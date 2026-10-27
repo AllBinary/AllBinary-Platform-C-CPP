@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_H
         #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,21 +38,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class GameConfigurationCentral;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class CommonStrings;
 
 
 
@@ -66,31 +61,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/resources/GameGraphicsResourceUtil.h"
+        class GameGraphicsResourceUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicGameResources
-            : public Object
+            : public virtual Object
          {
 
-    protected: static StringMaker* stringBuffer() { static std::unique_ptr<StringMaker> value(new StringMaker()); return value.get(); }
+    private: static StringMaker* stringBuffer_owner();
+    /*protected*/ public: static StringMaker* stringBuffer;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    public: std::string RESOURCE = StringUtil::getInstance()->EMPTY_STRING;
+    public: std::string RESOURCE;
 
-    public: std::string RESOURCE_DESTROY = StringUtil::getInstance()->EMPTY_STRING;
+    public: std::string RESOURCE_DESTROY;
 
-protected: BasicGameResources();
+/*protected*/ public: BasicGameResources();
 
     public: void init(std::string ROOT, std::vector<std::string> SIZE);
 
                 //@Throws(Exception.constructor)
             
-    protected: void append(std::string ROOT, std::string sizeString);
+    /*protected*/ public: void append(std::string ROOT, std::string sizeString);
 
                 //@Throws(Exception.constructor)
             
-    protected: std::string getString();
+    /*protected*/ public: std::string getString();
 
 };
 
@@ -98,3 +98,28 @@ protected: BasicGameResources();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/GameConfigurationCentral.h>)
+#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/layer/resources/GameGraphicsResourceUtil.h")
+#include "org/allbinary/game/layer/resources/GameGraphicsResourceUtil.h"
+#endif
+
+        #endif
+    

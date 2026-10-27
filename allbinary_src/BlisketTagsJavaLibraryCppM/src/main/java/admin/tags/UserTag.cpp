@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_USERTAG_CPP
+        #define ADMIN_TAGS_USERTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/UserTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,13 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class UserTag: public TableTag {
 
-    private: std::string role;
-
-    private: std::string enable;
-
-public: UserTag(){
+UserTag::UserTag(){
 this->setTagHelperFactory(new UserHelperFactory());
     
 this->setTagRequestHelperFactory(new UserHelperFactory());
@@ -75,7 +80,7 @@ this->setTagRequestHelperFactory(new UserHelperFactory());
 }
 
 
-    public: void setRole(std::string value){
+    auto UserTag::setRole(std::string value) -> void{
 this->role= value;
     
 this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
@@ -83,7 +88,7 @@ this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
 }
 
 
-    public: void setEnable(std::string value){
+    auto UserTag::setEnable(std::string value) -> void{
 this->enable= value;
     
 this->getPropertiesHashMap()->put(EntryData::getInstance()->ENABLE, this->enable);
@@ -93,7 +98,7 @@ this->getPropertiesHashMap()->put(EntryData::getInstance()->ENABLE, this->enable
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto UserTag::doStartTag() -> int32_t{
 
         try {
             
@@ -104,7 +109,7 @@ this->getPropertiesHashMap()->put(EntryData::getInstance()->ENABLE, this->enable
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                                     }
@@ -132,7 +137,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_USERTAG_CPP

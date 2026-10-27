@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class CommonStrings;
+class AllBinaryTiledLayer;
+class StdUtil;
+class LogUtil;
+class StringMaker;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -68,16 +61,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionBaseFactory.h"
-#include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
-#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+class BasicGeographicMapCellPositionFactory;
+class BasicGeographicMap;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
 
-    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+    private: static ABHashtable<Object*, Object*>* hashtable;
 
     public: static ABHashtable<Object*, Object*>* getHashtable();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: GeographicMapCellPositionFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -89,3 +90,37 @@ class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFact
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPositionBaseFactory.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionBaseFactory.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h")
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/BasicGeographicMap.h")
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+#endif
+
+        #endif
+    

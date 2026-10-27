@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,17 +35,9 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt.h>
-
-      
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
+class GPoint;
 #include <org/allbinary/input/automation/module/ImageComparatorConstraints.h>
-
-      
 
 
 
@@ -59,8 +56,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/generic/constraints/Color.h"
+        class Color;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoImageComparatorConstraints: public ImageComparatorConstraints {
 
 public: NoImageComparatorConstraints();
@@ -75,3 +76,25 @@ public: NoImageComparatorConstraints();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/ImageComparatorConstraints.h>)
+#include <org/allbinary/input/automation/module/ImageComparatorConstraints.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/constraints/Color.h")
+#include "org/allbinary/input/automation/module/generic/constraints/Color.h"
+#endif
+
+        #endif
+    

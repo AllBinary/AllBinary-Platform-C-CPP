@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_ARRAYAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_ARRAYAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/ArrayAI.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,11 +72,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ArrayAI: public BasicAI {
 
-    private: std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray;
-
-public: ArrayAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+ArrayAI::ArrayAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +87,7 @@ this->artificialIntelligenceInterfaceArray= artificialIntelligenceInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto ArrayAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     int32_t size = this->artificialIntelligenceInterfaceArray.size();;
     
@@ -91,14 +98,14 @@ this->artificialIntelligenceInterfaceArray= artificialIntelligenceInterface;
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->artificialIntelligenceInterfaceArray[index].processAI(allBinaryLayerManager);
+this->artificialIntelligenceInterfaceArray[index]->processAI(allBinaryLayerManager);
     
 }
 
 }
 
 
-    public: std::vector<ArtificialIntelligenceInterface*> getArtificialIntelligenceInterface(){
+    auto ArrayAI::getArtificialIntelligenceInterface() -> std::vector<ArtificialIntelligenceInterface*>{
 
 
 
@@ -108,7 +115,6 @@ this->artificialIntelligenceInterfaceArray[index].processAI(allBinaryLayerManage
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_ARRAYAI_CPP

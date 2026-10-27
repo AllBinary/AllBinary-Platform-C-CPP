@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INIT_NOLICENSE_CPP
+        #define ORG_ALLBINARY_INIT_NOLICENSE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/init/NoLicense.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,23 +62,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NoLicense
-            : public Object
-         {
+
+NoLicense::NoLicense(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(ClassLoader* classLoader, std::string pathString){
+    auto NoLicense::init(ClassLoader* classLoader, std::string pathString) -> void{
 Globals::init(classLoader, pathString);
     
 }
 
 
-private: NoLicense(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INIT_NOLICENSE_CPP

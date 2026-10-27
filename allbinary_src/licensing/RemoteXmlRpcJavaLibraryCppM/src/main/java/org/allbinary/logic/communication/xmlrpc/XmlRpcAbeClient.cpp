@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_XMLRPC_XMLRPCABECLIENT_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_XMLRPC_XMLRPCABECLIENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/xmlrpc/XmlRpcAbeClient.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,57 +93,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class XmlRpcAbeClient
-            : public Object
-         {
 
-    public: static inline bool isOnline = true;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string remoteMethod;
-
-    private: AbeClientInformationInterface* clientInfo;
-
-    private: XmlRpcHandler* client = NullXmlRpcHandler::NULL_XML_RPC_HANDLER;
-
-    private: int32_t server;
-
-    private: int32_t start= 0;
-
-    private: int32_t maxServers= 0;
-
-    private: bool isDone;
-
-    private: const std::string START_SERVER = "Start With Server #";
-
-    protected: const std::string TRYING = "Trying Server #";
-
-    protected: const std::string SEP = CommonLabels::getInstance()->COLON_SEP;
-
-    protected: const std::string CLIENT_INFO = "Client Info: \n";
-
-    protected: const std::string RESULT = CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance()->NEW_LINE;
-
-    protected: const std::string INVALID = "License data is Invalid Trying Other Servers";
-
-    protected: const std::string EXCEPTION_IN_CLIENT = "Exception in client";
-
-    protected: const std::string SERVER_REPORTED_ERROR = "Server reported error";
-
-    protected: const std::string UNKNOWN_ERROR = "Unknown License Retrieval Failure";
-
-    protected: const std::string TRYING_OTHER_SERVERS = "IOException Trying Other Servers";
-
-    protected: const std::string HOST_NOT_RESOLVED_MSG = "Not Trying Again Since Host Unresolved";
-
-    protected: const std::string HOST_NOT_RESOLVED = "Host is unresolved";
-
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
-
-public: XmlRpcAbeClient(AbeClientInformationInterface* clientInfo, std::string remoteMethod){
+XmlRpcAbeClient::XmlRpcAbeClient(AbeClientInformationInterface* clientInfo, std::string remoteMethod) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), client(NullXmlRpcHandler::NULL_XML_RPC_HANDLER), SEP(CommonLabels::getInstance()->COLON_SEP), RESULT(CommonLabels::getInstance()->RESULT_ +CommonSeps::getInstance()->NEW_LINE), myRandomFactory(MyRandomFactory::getInstance()){
 this->remoteMethod= remoteMethod;
     
 this->clientInfo= clientInfo;
@@ -182,7 +143,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 
                 //@Throws(Exception.constructor)
             
-    public: Object* get(Object* anyType){
+    auto XmlRpcAbeClient::get(Object* anyType) -> Object*{
 ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 
@@ -196,7 +157,7 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 
                 //@Throws(Exception.constructor)
             
-    protected: Object* tryAnother(Object* anyType){
+    auto XmlRpcAbeClient::tryAnother(Object* anyType) -> Object*{
 
                         if(getServer() < getMaxServers())
                         
@@ -234,12 +195,12 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 
 
 
-                            throw new Exception("Tried All Servers But Still Failed");
+                            throw Exception("Tried All Servers But Still Failed");
                     
 }
 
 
-    protected: AbeClientInformationInterface* getClientInfo(){
+    auto XmlRpcAbeClient::getClientInfo() -> AbeClientInformationInterface*{
 
 
 
@@ -249,7 +210,7 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 }
 
 
-    protected: XmlRpcHandler* getClient(){
+    auto XmlRpcAbeClient::getClient() -> XmlRpcHandler*{
 
 
 
@@ -259,13 +220,13 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
 }
 
 
-    protected: void setClient(XmlRpcClient* client){
+    auto XmlRpcAbeClient::setClient(XmlRpcClient* client) -> void{
 this->client= client;
     
 }
 
 
-    protected: int32_t getServer(){
+    auto XmlRpcAbeClient::getServer() -> int32_t{
 
 
 
@@ -275,13 +236,13 @@ this->client= client;
 }
 
 
-    protected: void setServer(int32_t server){
+    auto XmlRpcAbeClient::setServer(int32_t server) -> void{
 this->server= server;
     
 }
 
 
-    protected: int32_t getStart(){
+    auto XmlRpcAbeClient::getStart() -> int32_t{
 
 
 
@@ -291,13 +252,13 @@ this->server= server;
 }
 
 
-    protected: void setStart(int32_t start){
+    auto XmlRpcAbeClient::setStart(int32_t start) -> void{
 this->start= start;
     
 }
 
 
-    protected: int32_t getMaxServers(){
+    auto XmlRpcAbeClient::getMaxServers() -> int32_t{
 
 
 
@@ -307,13 +268,13 @@ this->start= start;
 }
 
 
-    protected: void setMaxServers(int32_t maxServers){
+    auto XmlRpcAbeClient::setMaxServers(int32_t maxServers) -> void{
 this->maxServers= maxServers;
     
 }
 
 
-    protected: bool isIsDone(){
+    auto XmlRpcAbeClient::isIsDone() -> bool{
 
 
 
@@ -323,13 +284,13 @@ this->maxServers= maxServers;
 }
 
 
-    protected: void setIsDone(bool isDone){
+    auto XmlRpcAbeClient::setIsDone(bool isDone) -> void{
 this->isDone= isDone;
     
 }
 
 
-    protected: std::string getRemoteMethod(){
+    auto XmlRpcAbeClient::getRemoteMethod() -> std::string{
 
 
 
@@ -339,7 +300,6 @@ this->isDone= isDone;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_XMLRPC_XMLRPCABECLIENT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/identification/Group.h>
-
-      
+class Group;
 
 
 
@@ -52,24 +55,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/waypoint/event/WaypointEventHandler.h"
+        class WaypointEventHandler;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointEventHandlerFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline const std::vector<WaypointEventHandler*> eventHandlerArray = 
-                                                        {
-                                                            new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler()
-                                                        };
+    private: static std::vector<WaypointEventHandler*> eventHandlerArray;
 
     public: static WaypointEventHandler* getInstance(Group* groupInterface);
 
     public: static void removeAll();
 
+
+            
+    public: WaypointEventHandlerFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include("org/allbinary/game/layer/waypoint/event/WaypointEventHandler.h")
+#include "org/allbinary/game/layer/waypoint/event/WaypointEventHandler.h"
+#endif
+
+        #endif
+    

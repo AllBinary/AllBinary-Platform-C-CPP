@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_QUOTEREQUEST_QUOTEREQUEST_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_QUOTEREQUEST_QUOTEREQUEST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/quoterequest/QuoteRequest.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -94,29 +104,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class QuoteRequest
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string id;
-
-    private: std::string userName;
-
-    private: std::string projectInfo;
-
-    private: std::string userComments;
-
-    private: std::string budget;
-
-    private: std::string timeFrame;
-
-    private: std::string comments;
-
-public: QuoteRequest(std::string userName, HttpServletRequest* request){
+QuoteRequest::QuoteRequest(std::string userName, HttpServletRequest* request) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
     QuoteRequestData* quoteRequestData = QuoteRequestData::getInstance();;
     
@@ -135,10 +124,10 @@ this->setTimeFrame(request->getParameter(quoteRequestData->TIMEFRAME));
 this->setComments(request->getParameter(quoteRequestData->COMMENTS));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF("Created with: " +this->toHashMap(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Created with: ") +JavaString::valueOf(this->toHashMap()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -146,7 +135,7 @@ this->setComments(request->getParameter(quoteRequestData->COMMENTS));
 }
 
 
-public: QuoteRequest(HashMap<Object*, Object*>* hashMap){
+QuoteRequest::QuoteRequest(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
     QuoteRequestData* quoteRequestData = QuoteRequestData::getInstance();;
     
@@ -165,10 +154,10 @@ this->setTimeFrame(hashMap->get(quoteRequestData->TIMEFRAME));
 this->setComments(hashMap->get(quoteRequestData->COMMENTS));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF("Created with: " +this->toHashMap(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Created with: ") +JavaString::valueOf(this->toHashMap()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -176,7 +165,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
 }
 
 
-    public: bool isValid(){
+    auto QuoteRequest::isValid() -> bool{
 
         try {
             
@@ -247,7 +236,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
@@ -266,7 +255,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
 }
 
 
-    public: std::string validationInfo(){
+    auto QuoteRequest::validationInfo() -> std::string{
 
         try {
             
@@ -285,7 +274,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                         if(false || projectInfo.size() < 0 || projectInfo.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer->append("Please enter Project Info with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter Project Info with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
     
 
                                     }
@@ -294,7 +283,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                         if(false || userComments.size() < 0 || userComments.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer->append("Please enter User Comments with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter User Comments with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
     
 
                                     }
@@ -303,7 +292,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                         if(false || budget.size() < 0 || budget.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer->append("Please enter Budget with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter Budget with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
     
 
                                     }
@@ -312,7 +301,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                         if(false || timeFrame.size() < 0 || timeFrame.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer->append("Please enter time frame with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter time frame with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
     
 
                                     }
@@ -321,7 +310,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
                         if(false || comments.size() < 0 || comments.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer->append("Please enter comments with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Please enter comments with less than ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" characters.<br>"));
     
 
                                     }
@@ -337,7 +326,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -356,7 +345,7 @@ this->setComments(hashMap->get(quoteRequestData->COMMENTS));
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto QuoteRequest::toVector() -> BasicArrayList*{
 
     BasicArrayList* values = new BasicArrayListD();;
     
@@ -393,7 +382,7 @@ values->add(time);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto QuoteRequest::toHashMap() -> HashMap<Object*, Object*>*{
 
     QuoteRequestData* quoteRequestData = QuoteRequestData::getInstance();;
     
@@ -429,37 +418,37 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: void setUserName(std::string value){
+    auto QuoteRequest::setUserName(std::string value) -> void{
 this->userName= value;
     
 }
 
 
-    public: void setProjectInfo(std::string value){
+    auto QuoteRequest::setProjectInfo(std::string value) -> void{
 this->projectInfo= value;
     
 }
 
 
-    public: void setUserComments(std::string value){
+    auto QuoteRequest::setUserComments(std::string value) -> void{
 this->userComments= value;
     
 }
 
 
-    public: void setBudget(std::string value){
+    auto QuoteRequest::setBudget(std::string value) -> void{
 this->budget= value;
     
 }
 
 
-    public: void setTimeFrame(std::string value){
+    auto QuoteRequest::setTimeFrame(std::string value) -> void{
 this->timeFrame= value;
     
 }
 
 
-    public: void setComments(std::string value){
+    auto QuoteRequest::setComments(std::string value) -> void{
 this->comments= value;
     
 
@@ -472,7 +461,7 @@ this->comments= value;
 }
 
 
-    public: std::string getUserName(){
+    auto QuoteRequest::getUserName() -> std::string{
 
 
 
@@ -482,7 +471,7 @@ this->comments= value;
 }
 
 
-    public: std::string getProjectInfo(){
+    auto QuoteRequest::getProjectInfo() -> std::string{
 
 
 
@@ -492,7 +481,7 @@ this->comments= value;
 }
 
 
-    public: std::string getUserComments(){
+    auto QuoteRequest::getUserComments() -> std::string{
 
 
 
@@ -502,7 +491,7 @@ this->comments= value;
 }
 
 
-    public: std::string getBudget(){
+    auto QuoteRequest::getBudget() -> std::string{
 
 
 
@@ -512,7 +501,7 @@ this->comments= value;
 }
 
 
-    public: std::string getTimeFrame(){
+    auto QuoteRequest::getTimeFrame() -> std::string{
 
 
 
@@ -522,7 +511,7 @@ this->comments= value;
 }
 
 
-    public: std::string getComments(){
+    auto QuoteRequest::getComments() -> std::string{
 
 
 
@@ -532,7 +521,6 @@ this->comments= value;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_QUOTEREQUEST_QUOTEREQUEST_CPP

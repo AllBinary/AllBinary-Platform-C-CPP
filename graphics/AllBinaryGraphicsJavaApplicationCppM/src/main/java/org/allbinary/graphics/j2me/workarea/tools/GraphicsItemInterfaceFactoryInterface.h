@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICSITEMINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICSITEMINTERFACEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
-
-      
+class CanvasJPanel;
 
 
 
@@ -48,9 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+        class GraphicItemInterface;
 
-class GraphicsItemInterfaceFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GraphicsItemInterfaceFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual GraphicItemInterface* getInstance(CanvasJPanel* canvasJPanel) = 0;
 
@@ -60,3 +69,16 @@ class GraphicsItemInterfaceFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICSITEMINTERFACEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICSITEMINTERFACEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICSITEMINTERFACEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+#endif
+
+        #endif
+    

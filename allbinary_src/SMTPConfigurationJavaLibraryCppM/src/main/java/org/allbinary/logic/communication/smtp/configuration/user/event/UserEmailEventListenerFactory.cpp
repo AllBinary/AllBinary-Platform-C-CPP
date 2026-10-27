@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTLISTENERFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTLISTENERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventListenerFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,13 +74,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
 
-class UserEmailEventListenerFactory
-            : public Object
-         {
+
+UserEmailEventListenerFactory::UserEmailEventListenerFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static UserEmailEventListenerInterface* getInstance(AbeClientInformationInterface* abeClientInformation, UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface, UserInterface* userInterface){
+    auto UserEmailEventListenerFactory::getInstance(AbeClientInformationInterface* abeClientInformation, UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface, UserInterface* userInterface) -> UserEmailEventListenerInterface*{
 
     std::vector<Object*> params = std::vector<Object*>(1);;
     
@@ -92,11 +103,6 @@ params[0]= userInterface;
 }
 
 
-private: UserEmailEventListenerFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTLISTENERFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPEONEDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPEONEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/modules/processor/echo/response/EchoResponseTypeOneData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EchoResponseTypeOneData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "ECHOTYPE1";
-
-private: EchoResponseTypeOneData(){
+EchoResponseTypeOneData::EchoResponseTypeOneData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPEONEDATA_CPP

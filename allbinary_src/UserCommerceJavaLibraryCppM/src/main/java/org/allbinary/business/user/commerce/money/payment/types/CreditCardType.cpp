@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/CreditCardType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CreditCardType
-            : public Object
-         {
 
-    public: static inline const int32_t MAXLEN = 19;
-
-    private: std::string name;
-
-public: CreditCardType(std::string cardType){
+CreditCardType::CreditCardType(std::string cardType){
 this->name= cardType;
     
 }
 
 
-    public: std::string toString(){
+    auto CreditCardType::toString() -> std::string{
 
 
 
@@ -69,7 +72,6 @@ this->name= cardType;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPE_CPP

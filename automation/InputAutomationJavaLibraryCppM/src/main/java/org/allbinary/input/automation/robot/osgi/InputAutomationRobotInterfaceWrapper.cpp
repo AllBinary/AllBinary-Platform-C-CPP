@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTINTERFACEWRAPPER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTINTERFACEWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotInterfaceWrapper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,19 +58,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationRobotInterfaceWrapper
-            : public Object
-         {
 
-    private: InputRobotInterface* inputRobotInterface;
-
-public: InputAutomationRobotInterfaceWrapper(InputRobotInterface* inputRobotInterface){
+InputAutomationRobotInterfaceWrapper::InputAutomationRobotInterfaceWrapper(InputRobotInterface* inputRobotInterface){
 this->setInputRobotInterface(inputRobotInterface);
     
 }
 
 
-    public: InputRobotInterface* getInputRobotInterface(){
+    auto InputAutomationRobotInterfaceWrapper::getInputRobotInterface() -> InputRobotInterface*{
 
 
 
@@ -70,13 +75,12 @@ this->setInputRobotInterface(inputRobotInterface);
 }
 
 
-    public: void setInputRobotInterface(InputRobotInterface* inputRobotInterface){
+    auto InputAutomationRobotInterfaceWrapper::setInputRobotInterface(InputRobotInterface* inputRobotInterface) -> void{
 this->inputRobotInterface= inputRobotInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTINTERFACEWRAPPER_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,24 +34,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
+class AllBinaryEventObject;
+class EventListenerInterface;
+class EventStrings;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -65,17 +58,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/CompleteMotionGestureInputEventListener.h"
-#include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
-#include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
+        class CompleteMotionGestureInputEventListener;
+class CompleteMotionGestureInputEvent;
+class CompleteMotionGestureInputEventListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompleteMotionGestureInputEventHandler: public BasicEventHandler {
 
-    private: static CompleteMotionGestureInputEventHandler* SINGLETON() { static std::unique_ptr<CompleteMotionGestureInputEventHandler> value(new CompleteMotionGestureInputEventHandler()); return value.get(); }
+    private: static CompleteMotionGestureInputEventHandler* SINGLETON_owner();
+    private: static CompleteMotionGestureInputEventHandler* SINGLETON;
 
     public: static CompleteMotionGestureInputEventHandler* getInstance();
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
 private: CompleteMotionGestureInputEventHandler();
 
@@ -91,7 +89,7 @@ private: CompleteMotionGestureInputEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -99,3 +97,37 @@ private: CompleteMotionGestureInputEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/input/CompleteMotionGestureInputEventListener.h")
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventListener.h"
+#endif
+#if __has_include("org/allbinary/game/input/CompleteMotionGestureInputEvent.h")
+#include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
+#endif
+#if __has_include("org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h")
+#include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
+#endif
+
+        #endif
+    

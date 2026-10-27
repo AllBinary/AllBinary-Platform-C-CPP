@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/NullLocationPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/LocationPaintable.h"
 
-class NullLocationPaintable: public LocationPaintable {
 
-    private: static NullLocationPaintable* instanceC() { static std::unique_ptr<NullLocationPaintable> value(new NullLocationPaintable()); return value.get(); }
+NullLocationPaintable::NullLocationPaintable() {
+        }
+        auto NullLocationPaintable::instanceC_owner() -> NullLocationPaintable* { static std::unique_ptr<NullLocationPaintable> value(new NullLocationPaintable()); return value.get(); }
+NullLocationPaintable* NullLocationPaintable::instanceC = NullLocationPaintable::instanceC_owner();
 
-    public: static NullLocationPaintable* getInstance(){
+    auto NullLocationPaintable::getInstance() -> NullLocationPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullLocationPaintable::instanceC();
+                        return NullLocationPaintable::instanceC;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_CPP

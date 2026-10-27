@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,32 +35,14 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/user/address/ShippingAddressData.h>
-
-      
-#include <org/allbinary/business/user/address/StreetAddress.h>
-
-      
-#include <org/allbinary/business/user/address/StreetAddressData.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/MoneyException.h>
-
-      
-#include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class EntryData;
+class ShippingAddressData;
+class StreetAddress;
+class StreetAddressData;
+class OrderHistoryData;
+class MoneyException;
+class ShippingMethodData;
+class StringUtil;
 
 
 
@@ -77,6 +64,10 @@
         #include "org/allbinary/business/user/commerce/inventory/item/BasicItem.h"
 #include "org/allbinary/business/user/commerce/inventory/item/OrderItemInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Item: public BasicItem, public OrderItemInterface {
 
     private: std::string group;
@@ -131,3 +122,43 @@ public: Item();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/address/ShippingAddressData.h>)
+#include <org/allbinary/business/user/address/ShippingAddressData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/address/StreetAddress.h>)
+#include <org/allbinary/business/user/address/StreetAddress.h>
+#endif
+#if __has_include(<org/allbinary/business/user/address/StreetAddressData.h>)
+#include <org/allbinary/business/user/address/StreetAddressData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/MoneyException.h>)
+#include <org/allbinary/business/user/commerce/money/MoneyException.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>)
+#include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/item/BasicItem.h")
+#include "org/allbinary/business/user/commerce/inventory/item/BasicItem.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/item/OrderItemInterface.h")
+#include "org/allbinary/business/user/commerce/inventory/item/OrderItemInterface.h"
+#endif
+
+        #endif
+    

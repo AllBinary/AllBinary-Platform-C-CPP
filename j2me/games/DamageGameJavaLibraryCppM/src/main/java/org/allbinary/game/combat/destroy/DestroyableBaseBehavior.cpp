@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,23 +61,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
 
-class DestroyableBaseBehavior
-            : public Object
-        , public DestroyableInterface {
 
-    private: static DestroyableBaseBehavior* instance() { static std::unique_ptr<DestroyableBaseBehavior> value(new DestroyableBaseBehavior()); return value.get(); }
+DestroyableBaseBehavior::DestroyableBaseBehavior() {
+        }
+        auto DestroyableBaseBehavior::instance_owner() -> DestroyableBaseBehavior* { static std::unique_ptr<DestroyableBaseBehavior> value(new DestroyableBaseBehavior()); return value.get(); }
+DestroyableBaseBehavior* DestroyableBaseBehavior::instance = DestroyableBaseBehavior::instance_owner();
 
-    public: static DestroyableBaseBehavior* getInstance(){
+    auto DestroyableBaseBehavior::getInstance() -> DestroyableBaseBehavior*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DestroyableBaseBehavior::instance();
+                        return DestroyableBaseBehavior::instance;
     
 }
 
 
-    public: std::string getName(){
+    auto DestroyableBaseBehavior::getName() -> std::string{
 
 
 
@@ -79,20 +89,19 @@ class DestroyableBaseBehavior
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDestroyed(){
+    auto DestroyableBaseBehavior::isDestroyed() -> bool{
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void setDestroyed(bool destroyed){
+    auto DestroyableBaseBehavior::setDestroyed(bool destroyed) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_CPP

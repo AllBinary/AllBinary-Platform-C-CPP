@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/ThrustAIVisitorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/ThrustAIVisitor.h"
 
-class ThrustAIVisitorFactory
-            : public Object
-         {
 
-    private: static ThrustAIVisitor* instance() { static std::unique_ptr<ThrustAIVisitor> value(new ThrustAIVisitor()); return value.get(); }
+ThrustAIVisitorFactory::ThrustAIVisitorFactory() {
+        }
+        auto ThrustAIVisitorFactory::instance_owner() -> ThrustAIVisitor* { static std::unique_ptr<ThrustAIVisitor> value(new ThrustAIVisitor()); return value.get(); }
+ThrustAIVisitor* ThrustAIVisitorFactory::instance = ThrustAIVisitorFactory::instance_owner();
 
-    public: static ThrustAIVisitor* getInstance(){
+    auto ThrustAIVisitorFactory::getInstance() -> ThrustAIVisitor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThrustAIVisitorFactory::instance();
+                        return ThrustAIVisitorFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_CPP

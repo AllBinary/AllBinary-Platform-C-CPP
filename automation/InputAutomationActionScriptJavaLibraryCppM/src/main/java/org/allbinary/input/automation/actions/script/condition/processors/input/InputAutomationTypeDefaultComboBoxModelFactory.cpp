@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/InputAutomationTypeDefaultComboBoxModelFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,13 +69,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
 
-class InputAutomationTypeDefaultComboBoxModelFactory
-            : public Object
-         {
+
+InputAutomationTypeDefaultComboBoxModelFactory::InputAutomationTypeDefaultComboBoxModelFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static DefaultComboBoxModel* getInstance(){
+    auto InputAutomationTypeDefaultComboBoxModelFactory::getInstance() -> DefaultComboBoxModel*{
 
     DefaultComboBoxModel* defaultComboBoxModel = new DefaultComboBoxModel();;
     
@@ -98,11 +109,6 @@ defaultComboBoxModel->addElement(nameArray[index]);
 }
 
 
-private: InputAutomationTypeDefaultComboBoxModelFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_CPP

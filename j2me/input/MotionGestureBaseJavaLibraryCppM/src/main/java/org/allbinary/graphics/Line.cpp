@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_LINE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_LINE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/Line.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +57,8 @@
         #include "org/allbinary/graphics/GPoint.h"
 #include "org/allbinary/graphics/PointFactory.h"
 
-class Line
-            : public Object
-         {
 
-    private: GPoint* p1;
-
-    private: GPoint* p2;
-
-    private: double deltaX= 0.0;
-
-    private: double deltaY= 0.0;
-
-public: Line(GPoint* p1, GPoint* p2){
+Line::Line(GPoint* p1, GPoint* p2){
 this->p1= PointFactory::getInstance()->ZERO_ZERO;
     
 this->p2= this->p1;
@@ -71,7 +70,7 @@ this->setP2(p2);
 }
 
 
-    public: double getGradient(){
+    auto Line::getGradient() -> double{
 
 
 
@@ -81,7 +80,7 @@ this->setP2(p2);
 }
 
 
-    private: void update(){
+    auto Line::update() -> void{
 this->deltaX= this->getP1()->getX() -this->getP2()->getX();
     
 this->deltaY= this->getP1()->getY() -this->getP2()->getY();
@@ -89,7 +88,7 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 }
 
 
-    public: double getDeltaX(){
+    auto Line::getDeltaX() -> double{
 
 
 
@@ -99,7 +98,7 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 }
 
 
-    public: double getDeltaY(){
+    auto Line::getDeltaY() -> double{
 
 
 
@@ -109,7 +108,7 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 }
 
 
-    public: GPoint* getP1(){
+    auto Line::getP1() -> GPoint*{
 
 
 
@@ -119,7 +118,7 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 }
 
 
-    public: GPoint* getP2(){
+    auto Line::getP2() -> GPoint*{
 
 
 
@@ -129,7 +128,7 @@ this->deltaY= this->getP1()->getY() -this->getP2()->getY();
 }
 
 
-    public: void setP1(GPoint* p1){
+    auto Line::setP1(GPoint* p1) -> void{
 this->p1= p1;
     
 this->update();
@@ -137,7 +136,7 @@ this->update();
 }
 
 
-    public: void setP2(GPoint* p2){
+    auto Line::setP2(GPoint* p2) -> void{
 this->p2= p2;
     
 this->update();
@@ -145,7 +144,6 @@ this->update();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_LINE_CPP

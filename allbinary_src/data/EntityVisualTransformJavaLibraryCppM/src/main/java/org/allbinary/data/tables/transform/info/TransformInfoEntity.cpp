@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/transform/info/TransformInfoEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -108,21 +118,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/transform/info/TransformInfoEntityInterface.h"
 
-class TransformInfoEntity: public AbSqlBean, public TransformInfoEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: const std::string tableName = "transforminfo";
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: TransformInfoFactoryInterface* transformInfoFactoryInterface;
-
-    private: TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface;
-
-    private: TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface;
-
-public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface* transformInfoFactoryInterface) : AbSqlBean(new UserDbInitInfo()){
+TransformInfoEntity::TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface* transformInfoFactoryInterface) : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -140,16 +137,16 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 }
 
 
-    public: void insert(BasicArrayList* values){
+    auto TransformInfoEntity::insert(BasicArrayList* values) -> void{
 
         try {
-            super.insert(values);
+            AbSqlBean::insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, INSERT);
     
 
                                     }
@@ -159,10 +156,10 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -172,16 +169,16 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 }
 
 
-    public: void delete_(std::string value){
+    auto TransformInfoEntity::delete_(std::string value) -> void{
 
         try {
-            super.deleteWhere(TransformInfoData::getInstance()->NAME, value);
+            AbSqlBean::deleteWhere(TransformInfoData::getInstance()->NAME, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, this->commonStrings->delete_);
     
 
                                     }
@@ -191,10 +188,10 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->delete_, &e);
     
 
                                     }
@@ -206,7 +203,7 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface* get(std::string name, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+    auto TransformInfoEntity::get(std::string name, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) -> TransformInfoInterface*{
 
     TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
@@ -216,7 +213,7 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 keysAndValues->put(transformInfoData->NAME, name);
     
 
-    HashMap<Object*, Object*>* hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* hashMap = AbSqlBean::getRow(keysAndValues);;
     
 
                         if(hashMap != 
@@ -282,7 +279,7 @@ hashMap->put(transformInfoData->DATA, decode.toCharArray());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getObjectConfigs(std::string storeName){
+    auto TransformInfoEntity::getObjectConfigs(std::string storeName) -> BasicArrayList*{
 
     BasicArrayList* objectConfigVector = new BasicArrayListD();;
     
@@ -319,7 +316,7 @@ objectConfigVector->add(this->transformInfoObjectConfigAndManipulatorFactoryInte
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getNames(std::string storeName){
+    auto TransformInfoEntity::getNames(std::string storeName) -> BasicArrayList*{
 
     BasicArrayList* viewNameVector = new BasicArrayListD();;
     
@@ -352,70 +349,70 @@ viewNameVector->add(viewNameString);
 }
 
 
-    public: std::string createTableStatement(){
+    auto TransformInfoEntity::createTableStatement() -> std::string{
 
     TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE);
     
 stringBuffer->append(this->tableName);
     
-stringBuffer->append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings->START);
     
 stringBuffer->append(transformInfoData->NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(StoreFrontData::getInstance()->NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(transformInfoData->OBJECTFILENAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(transformInfoData->OBJECT);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(transformInfoData->OBJECTCONFIGFILENAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(transformInfoData->OBJECTCONFIG);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(transformInfoData->TEMPLATEFILENAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(transformInfoData->TEMPLATE);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(transformInfoData->DATAFILENAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(transformInfoData->DATA);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(EntryData::getInstance()->LASTMODIFIED);
     
 stringBuffer->append(EntryData::getInstance()->TIMECREATED);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer->append(this->sqlStrings.PRIMARY_KEY);
+stringBuffer->append(this->sqlStrings->PRIMARY_KEY);
     
 stringBuffer->append(transformInfoData->NAME);
     
-stringBuffer->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->END);
     
 
 
@@ -426,33 +423,32 @@ stringBuffer->append(this->sqlStrings.END);
 }
 
 
-    public: std::string createTable(){
+    auto TransformInfoEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-    public: void update(HashMap<Object*, Object*>* updatedValues){
-super.updateWhere(TransformInfoData::getInstance()->NAME, updatedValues->get(TransformInfoData::getInstance()->NAME), updatedValues);
+    auto TransformInfoEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
+AbSqlBean::updateWhere(TransformInfoData::getInstance()->NAME, updatedValues->get(TransformInfoData::getInstance()->NAME), updatedValues);
     
 }
 
 
-    public: std::string dropTable(){
+    auto TransformInfoEntity::dropTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITY_CPP

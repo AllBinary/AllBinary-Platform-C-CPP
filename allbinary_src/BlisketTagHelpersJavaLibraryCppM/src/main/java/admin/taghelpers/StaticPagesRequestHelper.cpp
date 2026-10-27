@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_STATICPAGESREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_STATICPAGESREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/StaticPagesRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -130,21 +140,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelperInterface.h"
 
-class StaticPagesRequestHelper: public AbContext, public TagHelperInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: HttpServletRequest* request;
-
-    private: std::string storeName;
-
-    private: SearchParams* searchParams;
-
-    private: std::string xslFile;
-
-public: StaticPagesRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : AbContext(propertiesHashMap, pageContext){
+StaticPagesRequestHelper::StaticPagesRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : AbContext(propertiesHashMap, pageContext), logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -160,7 +157,7 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto StaticPagesRequestHelper::getFormData() -> void{
 this->storeName= this->request->getParameter(StoreFrontData::getInstance()->NAME);
     
 this->searchParams= new SearchParams(this->request);
@@ -170,11 +167,11 @@ this->searchParams= new SearchParams(this->request);
 
                 //@Throws(Exception.constructor)
             
-    private: void email(){
+    auto StaticPagesRequestHelper::email() -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Generated Static Pages Notification Email", this, "email");
@@ -189,7 +186,7 @@ this->searchParams= new SearchParams(this->request);
     std::string adminEmailSubject = "Generated Static Pages Email Notification";;
     
 
-    std::string adminEmailTextBody = "Generated static pages for store: " +this->storeName;;
+    std::string adminEmailTextBody = JavaString::valueOf("Generated static pages for store: ") +JavaString::valueOf(this->storeName);;
     
 
     BasicEmailInfo* adminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(adminEmailSubject, adminEmailTextBody));;
@@ -218,10 +215,10 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STOREGENERA
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "email", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "email", &e);
     
 
                                     }
@@ -231,7 +228,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STOREGENERA
 }
 
 
-    public: std::string generateStaticPages(){
+    auto StaticPagesRequestHelper::generateStaticPages() -> std::string{
 
         try {
             
@@ -247,7 +244,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::STOREGENERA
 this->email();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "generateStaticPages()");
@@ -269,10 +266,10 @@ this->email();
     std::string error = "Failed to generate staticpages table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "generateStaticPages()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateStaticPages()", &e);
     
 
                                     }
@@ -288,7 +285,7 @@ this->email();
 }
 
 
-    public: std::string makePublic(){
+    auto StaticPagesRequestHelper::makePublic() -> std::string{
 
         try {
             
@@ -306,7 +303,7 @@ FileUtil::getInstance()->copy(fromAbPath, toAbPath);
     std::string success = "Made Public";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "makePublic()");
@@ -328,10 +325,10 @@ FileUtil::getInstance()->copy(fromAbPath, toAbPath);
     std::string error = "Failed to makePublic";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "makePublic()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "makePublic()", &e);
     
 
                                     }
@@ -347,7 +344,6 @@ FileUtil::getInstance()->copy(fromAbPath, toAbPath);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_STATICPAGESREQUESTHELPER_CPP

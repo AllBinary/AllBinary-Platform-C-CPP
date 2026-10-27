@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/graphics/CellPosition.h>
-
-      
-#include <org/allbinary/graphics/CellPositionFactory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class CellPosition;
+class CellPositionFactory;
+class AllBinaryLayer;
 
 
 
@@ -63,19 +58,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DropCellPositionHistory
-            : public Object
+            : public virtual Object
          {
 
-    private: static DropCellPositionHistory* SINGLETON() { static std::unique_ptr<DropCellPositionHistory> value(new DropCellPositionHistory()); return value.get(); }
+    private: static DropCellPositionHistory* SINGLETON_owner();
+    private: static DropCellPositionHistory* SINGLETON;
 
     public: static DropCellPositionHistory* getInstance();
 
-    private: CellPositionFactory* cellPositionFactory = CellPositionFactory::getInstance();
 
-    private: BasicArrayList* positionList = new BasicArrayListD();
+            
+    public: DropCellPositionHistory();
+        
+    private: CellPositionFactory* cellPositionFactory;
 
-    private: BasicArrayList* layerList = new BasicArrayListD();
+    private: BasicArrayList* positionList;
+
+    private: BasicArrayList* layerList;
 
     public: void add(CellPosition* cellPosition, AllBinaryLayer* layerInterface);
 
@@ -101,3 +105,25 @@ class DropCellPositionHistory
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/graphics/CellPosition.h>)
+#include <org/allbinary/graphics/CellPosition.h>
+#endif
+#if __has_include(<org/allbinary/graphics/CellPositionFactory.h>)
+#include <org/allbinary/graphics/CellPositionFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_H
         #define ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,30 +34,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/health/Health.h>
-
-      
-#include <org/allbinary/game/health/HealthBarAnimation.h>
-
-      
-#include <org/allbinary/game/health/HealthBarTwodAnimation.h>
-
-      
-#include <org/allbinary/game/health/HealthInterface.h>
-
-      
+class Graphics;
+class Health;
+class HealthBarAnimation;
+class HealthBarTwodAnimation;
+class HealthInterface;
 #include <org/allbinary/game/health/HealthListenerInterface.h>
-
-      
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 
 
 
@@ -71,8 +60,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/life/Life.h"
+        class Life;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
 
                 //@Throws(Exception.constructor)
@@ -85,7 +78,7 @@ class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
 
     private: HealthInterface* healthInterface;
 
-    protected: AllBinaryLayer* allbinaryLayer;
+    /*protected*/ public: AllBinaryLayer* allbinaryLayer;
 
 public: HealthIncludingLifeBar(AllBinaryLayer* layerInterface, Life* life, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction);
 
@@ -101,3 +94,37 @@ public: HealthIncludingLifeBar(AllBinaryLayer* layerInterface, Life* life, Healt
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/health/Health.h>)
+#include <org/allbinary/game/health/Health.h>
+#endif
+#if __has_include(<org/allbinary/game/health/HealthBarAnimation.h>)
+#include <org/allbinary/game/health/HealthBarAnimation.h>
+#endif
+#if __has_include(<org/allbinary/game/health/HealthBarTwodAnimation.h>)
+#include <org/allbinary/game/health/HealthBarTwodAnimation.h>
+#endif
+#if __has_include(<org/allbinary/game/health/HealthInterface.h>)
+#include <org/allbinary/game/health/HealthInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/health/HealthListenerInterface.h>)
+#include <org/allbinary/game/health/HealthListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/ag/life/Life.h")
+#include "org/allbinary/game/ag/life/Life.h"
+#endif
+
+        #endif
+    

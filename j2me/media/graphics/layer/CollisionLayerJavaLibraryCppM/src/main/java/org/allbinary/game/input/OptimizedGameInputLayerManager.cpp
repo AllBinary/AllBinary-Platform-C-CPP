@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_OPTIMIZEDGAMEINPUTLAYERMANAGER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_OPTIMIZEDGAMEINPUTLAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/OptimizedGameInputLayerManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OptimizedGameInputLayerManager: public LayerManager {
 
-public: OptimizedGameInputLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+OptimizedGameInputLayerManager::OptimizedGameInputLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,6 @@ public: OptimizedGameInputLayerManager() : LayerManager(LayerManagerNoDebug::get
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_OPTIMIZEDGAMEINPUTLAYERMANAGER_CPP

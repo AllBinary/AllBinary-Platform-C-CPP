@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
         #define ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/input/accelerometer/AccelerometerSensorFactory.h>
-
-      
-#include <org/allbinary/input/gyro/GyroSensorFactory.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class AccelerometerSensorFactory;
+class GyroSensorFactory;
+class NullUtil;
+class LogUtil;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -71,17 +62,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinarySensorManager
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static AllBinarySensorManager* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     public: const std::string ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input";
 
@@ -91,7 +86,7 @@ private: AllBinarySensorManager();
 
     public: void init();
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
     public: BasicArrayList* getSensorNamesList();
 
@@ -103,3 +98,31 @@ private: AllBinarySensorManager();
 
 
         #endif //ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H_COMPLETE
+        #if __has_include(<org/allbinary/input/accelerometer/AccelerometerSensorFactory.h>)
+#include <org/allbinary/input/accelerometer/AccelerometerSensorFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/gyro/GyroSensorFactory.h>)
+#include <org/allbinary/input/gyro/GyroSensorFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

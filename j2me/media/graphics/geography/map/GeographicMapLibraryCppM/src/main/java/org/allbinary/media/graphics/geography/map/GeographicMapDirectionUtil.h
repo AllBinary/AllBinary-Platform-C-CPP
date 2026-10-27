@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/direction/Direction.h>
-
-      
-#include <org/allbinary/direction/DirectionFactory.h>
-
-      
-#include <org/allbinary/graphics/CellPosition.h>
-
-      
+class StringMaker;
+class Direction;
+class DirectionFactory;
+class CellPosition;
 
 
 
@@ -61,13 +58,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+        class GeographicMapCellPosition;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeographicMapDirectionUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static GeographicMapDirectionUtil* instance() { static std::unique_ptr<GeographicMapDirectionUtil> value(new GeographicMapDirectionUtil()); return value.get(); }
+    private: static GeographicMapDirectionUtil* instance_owner();
+    private: static GeographicMapDirectionUtil* instance;
 
     public: static GeographicMapDirectionUtil* getInstance();
 
@@ -101,3 +103,25 @@ private: GeographicMapDirectionUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/direction/Direction.h>)
+#include <org/allbinary/direction/Direction.h>
+#endif
+#if __has_include(<org/allbinary/direction/DirectionFactory.h>)
+#include <org/allbinary/direction/DirectionFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/CellPosition.h>)
+#include <org/allbinary/graphics/CellPosition.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#endif
+
+        #endif
+    

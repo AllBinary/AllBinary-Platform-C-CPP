@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/TerrainPatrolAIFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,13 +77,13 @@
         #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 #include "org/allbinary/game/ag/ai/scroller/TerrainPatrolAI.h"
 
-class TerrainPatrolAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+TerrainPatrolAIFactory::TerrainPatrolAIFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto TerrainPatrolAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 hashtable->put(BasePatrolAI::MAX_DISTANCE, SmallIntegerSingletonFactory::getInstance()->getAt(220));
     
 
@@ -85,7 +95,6 @@ hashtable->put(BasePatrolAI::MAX_DISTANCE, SmallIntegerSingletonFactory::getInst
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAIFACTORY_CPP

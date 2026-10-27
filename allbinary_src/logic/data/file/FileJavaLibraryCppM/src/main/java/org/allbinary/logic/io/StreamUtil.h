@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,23 +39,11 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/Closeable.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
 #include <java/io/OutputStream.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -70,15 +63,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StreamUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static StreamUtil* instance() { static std::unique_ptr<StreamUtil> value(new StreamUtil()); return value.get(); }
+    private: static StreamUtil* instance_owner();
+    private: static StreamUtil* instance;
 
     public: static StreamUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: StreamUtil();
 
@@ -98,3 +96,28 @@ private: StreamUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/Closeable.h>)
+#include <java/io/Closeable.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<java/io/OutputStream.h>)
+#include <java/io/OutputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

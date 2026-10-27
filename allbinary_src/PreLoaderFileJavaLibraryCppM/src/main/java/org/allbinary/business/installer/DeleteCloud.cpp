@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_DELETECLOUD_CPP
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_DELETECLOUD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/installer/DeleteCloud.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,17 +87,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DeleteCloud
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: DeleteCloud(){
+DeleteCloud::DeleteCloud() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: bool delete_(std::string prePath, int32_t current, int32_t total){
+    auto DeleteCloud::delete_(std::string prePath, int32_t current, int32_t total) -> bool{
 
         try {
             
@@ -113,7 +118,7 @@ stringBuffer->append(prePath);
 
     int32_t size = fileBasicArrayList->size();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Searched: ");
     
@@ -169,7 +174,7 @@ nextFile= dynamic_cast<AbFile*>(fileBasicArrayList->get(index));
                         if(nextFile->getPath()->indexOf(FileUploadData::getInstance()->FILE) < 0)
                         
                                     {
-                                    nextFile->delete();
+                                    nextFile->delete_();
     
 
                                     }
@@ -210,7 +215,6 @@ this->logUtil->put("Unable to copy installer files into cloud", this, "initializ
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_DELETECLOUD_CPP

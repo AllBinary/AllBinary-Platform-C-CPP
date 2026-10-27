@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/skill/GameSkillType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameSkillType
-            : public Object
-         {
+auto GameSkillType::MANA_owner() -> GameSkillType* { static std::unique_ptr<GameSkillType> value(new GameSkillType("Mana")); return value.get(); }
+GameSkillType* GameSkillType::MANA = GameSkillType::MANA_owner();
+auto GameSkillType::REPLENISH_owner() -> GameSkillType* { static std::unique_ptr<GameSkillType> value(new GameSkillType("Replenish")); return value.get(); }
+GameSkillType* GameSkillType::REPLENISH = GameSkillType::REPLENISH_owner();
+auto GameSkillType::TIMED_owner() -> GameSkillType* { static std::unique_ptr<GameSkillType> value(new GameSkillType("Timed")); return value.get(); }
+GameSkillType* GameSkillType::TIMED = GameSkillType::TIMED_owner();
+auto GameSkillType::ATTACK_owner() -> GameSkillType* { static std::unique_ptr<GameSkillType> value(new GameSkillType("Attack")); return value.get(); }
+GameSkillType* GameSkillType::ATTACK = GameSkillType::ATTACK_owner();
+auto GameSkillType::TRANSPORT_owner() -> GameSkillType* { static std::unique_ptr<GameSkillType> value(new GameSkillType("Transport")); return value.get(); }
+GameSkillType* GameSkillType::TRANSPORT = GameSkillType::TRANSPORT_owner();
 
-    public: static GameSkillType* MANA() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Mana")); return value.get(); }
-
-    public: static GameSkillType* REPLENISH() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Replenish")); return value.get(); }
-
-    public: static GameSkillType* TIMED() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Timed")); return value.get(); }
-
-    public: static GameSkillType* ATTACK() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Attack")); return value.get(); }
-
-    public: static GameSkillType* TRANSPORT() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Transport")); return value.get(); }
-
-    private: const std::string SPELL_GAME_SKILL_TYPE = "SpellGameSkillType: ";
-
-    private: std::string name;
-
-private: GameSkillType(std::string name){
+GameSkillType::GameSkillType(std::string name){
 this->setName(name);
     
 }
 
 
-    public: std::string getName(){
+    auto GameSkillType::getName() -> std::string{
 
 
 
@@ -79,13 +82,13 @@ this->setName(name);
 }
 
 
-    protected: void setName(std::string name){
+    auto GameSkillType::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string toString(){
+    auto GameSkillType::toString() -> std::string{
 
 
 
@@ -95,7 +98,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_CPP

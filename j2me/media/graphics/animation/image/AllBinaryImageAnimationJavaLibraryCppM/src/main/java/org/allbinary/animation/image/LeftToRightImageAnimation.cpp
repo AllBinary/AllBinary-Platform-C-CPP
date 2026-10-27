@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_LEFTTORIGHTIMAGEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_LEFTTORIGHTIMAGEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/LeftToRightImageAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,11 +73,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageSegmentAnimation.h"
 
-class LeftToRightImageAnimation: public ImageSegmentAnimation {
 
-    private: int32_t currentWidth;
-
-public: LeftToRightImageAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior) : ImageSegmentAnimation(image, sequenceArray, animationBehavior){
+LeftToRightImageAnimation::LeftToRightImageAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior) : ImageSegmentAnimation(image, sequenceArray, animationBehavior), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,18 +95,18 @@ this->currentWidth= 0;
 }
 
 
-    public: void nextFrame(){
+    auto LeftToRightImageAnimation::nextFrame() -> void{
 
                         if(this->getSequence()[0] ==  -1)
                         
                                     {
-                                    super.previousFrame();
+                                    ImageSegmentAnimation::previousFrame();
     
 
                                     }
                                 
                         else {
-                            super.nextFrame();
+                            ImageSegmentAnimation::nextFrame();
     
 
                         }
@@ -109,18 +116,18 @@ this->update();
 }
 
 
-    public: void previousFrame(){
+    auto LeftToRightImageAnimation::previousFrame() -> void{
 
                         if(this->getSequence()[0] ==  -1)
                         
                                     {
-                                    super.nextFrame();
+                                    ImageSegmentAnimation::nextFrame();
     
 
                                     }
                                 
                         else {
-                            super.previousFrame();
+                            ImageSegmentAnimation::previousFrame();
     
 
                         }
@@ -130,29 +137,26 @@ this->update();
 }
 
 
-    public: void setFrame(int32_t index){
-super.setFrame(index);
+    auto LeftToRightImageAnimation::setFrame(int32_t index) -> void{
+ImageSegmentAnimation::setFrame(index);
     
 this->update();
     
 }
 
 
-    private: void update(){
+    auto LeftToRightImageAnimation::update() -> void{
 this->currentWidth= this->getDrawWidth() *this->getFrame() /this->getSize();
     
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto LeftToRightImageAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawRegion(this->getImage(), this->getStartX(), this->getStartY(), this->currentWidth, this->getDrawHeight(), Sprite::TRANS_NONE, x, y, this->anchor);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_LEFTTORIGHTIMAGEANIMATION_CPP

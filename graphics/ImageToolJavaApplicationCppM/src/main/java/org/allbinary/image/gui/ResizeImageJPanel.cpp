@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_CPP
+        #define ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/gui/ResizeImageJPanel.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -96,15 +106,8 @@
 #include "org/allbinary/image/gui/GroupLayout.h"
 #include "org/allbinary/image/gui/Short.h"
 
-class ResizeImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ImageProcessorInput* imageProcessorInput;
-
-public: ResizeImageJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(){
+ResizeImageJPanel::ResizeImageJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -156,7 +159,7 @@ this->jComboBox1->setModel(new javax::swing::DefaultComboBoxModel(numberStringAr
 }
 
 
-    public: void process(){
+    auto ResizeImageJPanel::process() -> void{
 (class extends Thread
                                 {
                                 
@@ -217,7 +220,7 @@ generatedBufferedImageArray= imageUtil->createBufferedImage3(imageProcessorInput
                         }
                             
 
-    Raster* araster = generatedBufferedImageArray[0].getAlphaRaster();;
+    Raster* araster = generatedBufferedImageArray[0]->getAlphaRaster();;
     
 
                         if(araster == 
@@ -268,7 +271,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    public: void update(){
+    auto ResizeImageJPanel::update() -> void{
 (class extends Thread
                                 {
                                 
@@ -323,7 +326,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    public: void updateFor16Above(){
+    auto ResizeImageJPanel::updateFor16Above() -> void{
 (class extends Thread
                                 {
                                 
@@ -378,7 +381,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    public: void updateFor16Below(){
+    auto ResizeImageJPanel::updateFor16Below() -> void{
 (class extends Thread
                                 {
                                 
@@ -433,7 +436,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    public: ImageProcessorInput* getImageProcessorInput(){
+    auto ResizeImageJPanel::getImageProcessorInput() -> ImageProcessorInput*{
 
 
 
@@ -443,13 +446,13 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput){
+    auto ResizeImageJPanel::setImageProcessorInput(ImageProcessorInput* imageProcessorInput) -> void{
 this->imageProcessorInput= imageProcessorInput;
     
 }
 
 
-    private: void initComponents(){
+    auto ResizeImageJPanel::initComponents() -> void{
 this->jLabel1= new javax::swing::JLabel();
     
 this->jComboBox1= new javax::swing::JComboBox<>();
@@ -544,60 +547,37 @@ adjustFor16BelowJButtonActionPerformed(evt);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(jLabel1)->addComponent(jLabel2)->addComponent(jLabel3))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)->addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(jTextField1)->addComponent(jTextField2))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(floatPercentJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(adjustFor16AboveJButton)->addComponent(adjustFor16BelowJButton))->addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(layout->createSequentialGroup()->addComponent(updateJButton)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(aboveJButton)->addGap(0, 250, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel1)->addComponent(jLabel2)->addComponent(jLabel3))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING, false)->addComponent(jComboBox1, 0, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(jTextField1)->addComponent(jTextField2))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->UNRELATED)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(floatPercentJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(adjustFor16AboveJButton)->addComponent(adjustFor16BelowJButton))->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(layout->createSequentialGroup()->addComponent(updateJButton)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(aboveJButton)->addGap(0, 250, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel1)->addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(floatPercentJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(jLabel2)->addComponent(adjustFor16AboveJButton))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel3)->addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(adjustFor16BelowJButton))->addGap(18, 18, 18)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(aboveJButton)->addComponent(updateJButton))->addContainerGap(175, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(jComboBox1, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(floatPercentJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jTextField1, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel2)->addComponent(adjustFor16AboveJButton))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel3)->addComponent(jTextField2, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(adjustFor16BelowJButton))->addGap(18, 18, 18)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(aboveJButton)->addComponent(updateJButton))->addContainerGap(175, Short::MAX_VALUE)));
     
 }
 
 
-    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ResizeImageJPanel::aboveJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->process();
     
 }
 
 
-    private: void updateJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ResizeImageJPanel::updateJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->update();
     
 }
 
 
-    private: void adjustFor16AboveJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ResizeImageJPanel::adjustFor16AboveJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->updateFor16Above();
     
 }
 
 
-    private: void adjustFor16BelowJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ResizeImageJPanel::adjustFor16BelowJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->updateFor16Below();
     
 }
 
 
-    private: javax::swing::JButton* aboveJButton;
 
-    private: javax::swing::JButton* adjustFor16AboveJButton;
 
-    private: javax::swing::JButton* adjustFor16BelowJButton;
-
-    private: javax::swing::JTextField* floatPercentJTextField;
-
-    private: javax::swing::JComboBox<std::string>* jComboBox1;
-
-    private: javax::swing::JLabel* jLabel1;
-
-    private: javax::swing::JLabel* jLabel2;
-
-    private: javax::swing::JLabel* jLabel3;
-
-    private: javax::swing::JTextField* jTextField1;
-
-    private: javax::swing::JTextField* jTextField2;
-
-    private: javax::swing::JButton* updateJButton;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_CPP

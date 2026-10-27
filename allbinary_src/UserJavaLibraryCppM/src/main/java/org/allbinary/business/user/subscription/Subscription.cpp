@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_SUBSCRIPTION_SUBSCRIPTION_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_SUBSCRIPTION_SUBSCRIPTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/subscription/Subscription.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Subscription
-            : public Object
-         {
 
-public: Subscription(){
+Subscription::Subscription(){
 }
 
 
-    public: bool isSubscribed(){
+    auto Subscription::isSubscribed() -> bool{
 
 
 
@@ -63,7 +70,6 @@ public: Subscription(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_SUBSCRIPTION_SUBSCRIPTION_CPP

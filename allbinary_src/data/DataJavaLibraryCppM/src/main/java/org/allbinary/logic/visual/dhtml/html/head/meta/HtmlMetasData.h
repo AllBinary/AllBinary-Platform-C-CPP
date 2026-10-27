@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETASDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETASDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlMetasData
-            : public Object
+            : public virtual Object
          {
 
-    private: static HtmlMetasData* instance() { static std::unique_ptr<HtmlMetasData> value(new HtmlMetasData()); return value.get(); }
+    private: static HtmlMetasData* instance_owner();
+    private: static HtmlMetasData* instance;
 
     public: static HtmlMetasData* getInstance();
 
@@ -66,3 +76,10 @@ private: HtmlMetasData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETASDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETASDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETASDATA_H_COMPLETE
+        
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,39 +38,17 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/game/Sprite.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
+class Graphics;
+class Image;
+class Sprite;
+class AnimationBehavior;
 #include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
+class BasicColor;
+class BasicColorFactory;
 #include <org/allbinary/graphics/color/ColorCompositeInterface.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
+class PrimitiveIntUtil;
+class StringMaker;
+class CommonLabels;
 
 
 
@@ -85,11 +68,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SpriteIndexedAnimation: public IndexedAnimation, public ColorCompositeInterface {
 
-    protected: Sprite* sprite;
+    /*protected*/ public: Sprite* sprite;
 
-    protected: Image* image;
+    /*protected*/ public: Image* image;
 
     private: std::vector<BasicColor*> basicColorArray;
 
@@ -107,7 +94,7 @@ public: SpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicCo
 
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
-    protected: void paint(Graphics* graphics);
+    /*protected*/ public: void paint(Graphics* graphics);
 
     public: void nextFrame();
 
@@ -131,7 +118,7 @@ public: SpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicCo
 
                 //@Throws(Throwable.constructor)
             
-    protected: void finalize();
+    /*protected*/ public: void finalize();
 
 };
 
@@ -139,3 +126,43 @@ public: SpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicCo
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/game/Sprite.h>)
+#include <javax/microedition/lcdui/game/Sprite.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/ColorCompositeInterface.h>)
+#include <org/allbinary/graphics/color/ColorCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+
+        #endif
+    

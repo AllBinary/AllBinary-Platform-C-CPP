@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -35,18 +40,10 @@
         
             #include "java/lang/Thread.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/math/LayerDistanceUtil.h>
-
-      
+class AllBinaryLayer;
+class LayerDistanceUtil;
 #include <org/allbinary/thread/PriorityRunnable.h>
-
-      
 #include <org/allbinary/thread/RunnableInterface.h>
-
-      
 
 
 
@@ -65,22 +62,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
-#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+        class NullPathFindingLayer;
+class PathFindingLayerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointPathRunnableBase
-            : public Object
+            : public virtual Object
         , public RunnableInterface, public PriorityRunnable {
 
-    private: LayerDistanceUtil* layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    protected: PathFindingLayerInterface* pathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+            
+    public: WaypointPathRunnableBase();
+        
+    private: LayerDistanceUtil* layerDistanceUtil;
 
-    protected: PathFindingLayerInterface* targetPathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    /*protected*/ public: PathFindingLayerInterface* pathFindingLayer;
 
-    protected: int32_t priorityP = Integer.MAX_VALUE;
+    /*protected*/ public: PathFindingLayerInterface* targetPathFindingLayer;
 
-    protected: bool runningP= false;
+    /*protected*/ public: int32_t priorityP;
+
+    /*protected*/ public: bool runningP= false;
 
     public: bool isRunning();
 
@@ -112,3 +117,28 @@ class WaypointPathRunnableBase
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/math/LayerDistanceUtil.h>)
+#include <org/allbinary/math/LayerDistanceUtil.h>
+#endif
+#if __has_include(<org/allbinary/thread/PriorityRunnable.h>)
+#include <org/allbinary/thread/PriorityRunnable.h>
+#endif
+#if __has_include(<org/allbinary/thread/RunnableInterface.h>)
+#include <org/allbinary/thread/RunnableInterface.h>
+#endif
+#if __has_include("org/allbinary/game/layer/NullPathFindingLayer.h")
+#include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#endif
+#if __has_include("org/allbinary/game/layer/PathFindingLayerInterface.h")
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#endif
+
+        #endif
+    

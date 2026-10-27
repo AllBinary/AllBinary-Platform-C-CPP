@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_GENERIC_PAYMENT_PAYMENTTAG_CPP
+        #define TAGS_GENERIC_PAYMENT_PAYMENTTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/generic/payment/PaymentTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,15 +70,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentTag: public StoreValidationTransformTag {
 
-public: PaymentTag(){
+PaymentTag::PaymentTag(){
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto PaymentTag::doStartTag() -> int32_t{
 
         try {
             this->setName("Basic Payment View");
@@ -89,14 +98,14 @@ this->setObjectFile("views.generic.payment.ValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->INSERT) == 0)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->DELETE) == 0)
                         
                                     {
                                     
@@ -125,7 +134,7 @@ this->setObjectFile("views.generic.payment.ValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -134,7 +143,7 @@ this->setObjectFile("views.generic.payment.ValidationView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -142,7 +151,7 @@ this->setObjectFile("views.generic.payment.ValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -174,7 +183,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_GENERIC_PAYMENT_PAYMENTTAG_CPP

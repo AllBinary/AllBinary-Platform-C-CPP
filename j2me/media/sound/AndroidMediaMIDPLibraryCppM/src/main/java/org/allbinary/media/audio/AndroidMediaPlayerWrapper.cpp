@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/AndroidMediaPlayerWrapper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,9 +88,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/BasicPlayer.h"
 
-class AndroidMediaPlayerWrapper: public BasicPlayer {
 
-    public: static AndroidMediaPlayerWrapper* createPlayerWrapper(){
+    auto AndroidMediaPlayerWrapper::createPlayerWrapper() -> AndroidMediaPlayerWrapper*{
 
         try {
             
@@ -96,20 +105,15 @@ class AndroidMediaPlayerWrapper: public BasicPlayer {
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
+AndroidMediaPlayerWrapper* AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
 
-    public: static inline AndroidMediaPlayerWrapper* NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: MediaPlayer* mediaPlayer = NullAndroidCanvas::NULL_MEDIA_PLAYER;
-
-public: AndroidMediaPlayerWrapper(std::string resource){
+AndroidMediaPlayerWrapper::AndroidMediaPlayerWrapper(std::string resource) : logUtil(LogUtil::getInstance()), mediaPlayer(NullAndroidCanvas::NULL_MEDIA_PLAYER){
 
         try {
             
@@ -135,7 +139,7 @@ public: AndroidMediaPlayerWrapper(std::string resource){
                                     
 
 
-                            throw new Exception((new StringMaker())->append("Failed to create media player for: ")->append(resource)->append(" with id: ")->append(resourceUtil->getResourceId(resource)->toString())->toString());
+                            throw Exception((new StringMaker())->append("Failed to create media player for: ")->append(resource)->append(" with id: ")->append(resourceUtil->getResourceId(resource)->toString())->toString());
                     
 
                                     }
@@ -151,7 +155,7 @@ this->mediaPlayer->setLooping(false);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.CONSTRUCTOR, &e);
+this->logUtil->put(JavaString::valueOf(this->commonStrings->EXCEPTION_LABEL) +JavaString::valueOf(resource), this, this->commonStrings->CONSTRUCTOR, &e);
     
 
 
@@ -163,8 +167,8 @@ this->logUtil->put(this->commonStrings.EXCEPTION_LABEL +resource, this, this->co
 }
 
 
-    public: void setLoopCount(int32_t count){
-super.setLoopCount(count);
+    auto AndroidMediaPlayerWrapper::setLoopCount(int32_t count) -> void{
+BasicPlayer::setLoopCount(count);
     
 
                         if(this->mediaPlayer != NullAndroidCanvas::NULL_MEDIA_PLAYER && this->mediaPlayer != 
@@ -192,19 +196,19 @@ super.setLoopCount(count);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener* playerListener){
-super.addPlayerListener(playerListener);
+    auto AndroidMediaPlayerWrapper::addPlayerListener(PlayerListener* playerListener) -> void{
+BasicPlayer::addPlayerListener(playerListener);
     
 }
 
 
-    public: void removePlayerListener(PlayerListener* playerListener){
-super.removePlayerListener(playerListener);
+    auto AndroidMediaPlayerWrapper::removePlayerListener(PlayerListener* playerListener) -> void{
+BasicPlayer::removePlayerListener(playerListener);
     
 }
 
 
-    public: int32_t getState(){
+    auto AndroidMediaPlayerWrapper::getState() -> int32_t{
 
                         if(this->mediaPlayer->isPlaying())
                         
@@ -231,7 +235,7 @@ super.removePlayerListener(playerListener);
 }
 
 
-    public: void close(){
+    auto AndroidMediaPlayerWrapper::close() -> void{
 
         try {
             this->mediaPlayer->release();
@@ -242,7 +246,7 @@ this->mediaPlayer= NullAndroidCanvas::NULL_MEDIA_PLAYER;
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CLOSE, &e);
     
 }
 
@@ -252,7 +256,7 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOS
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void start(){
+    auto AndroidMediaPlayerWrapper::start() -> void{
 
         try {
             
@@ -268,13 +272,13 @@ this->mediaPlayer->seekTo(0);
                                 
 this->mediaPlayer->start();
     
-super.start();
+BasicPlayer::start();
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->START_METHOD_NAME, &e);
     
 }
 
@@ -284,31 +288,31 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.STAR
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void stop(){
+    auto AndroidMediaPlayerWrapper::stop() -> void{
 
         try {
             this->mediaPlayer->stop();
     
 this->mediaPlayer->prepare();
     
-super.stop();
+BasicPlayer::stop();
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, "stop", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "stop", &e);
     
 }
 
 }
 
 
-    public: void update(std::string event){
-this->logUtil->putF("LineEvent: " +event, this, this->commonStrings.UPDATE);
+    auto AndroidMediaPlayerWrapper::update(std::string event) -> void{
+this->logUtil->putF(JavaString::valueOf("LineEvent: ") +JavaString::valueOf(event), this, this->commonStrings->UPDATE);
     
 
-    int32_t size = this->listenersList.size();;
+    int32_t size = this->listenersList->size();;
     
 
 
@@ -318,7 +322,7 @@ this->logUtil->putF("LineEvent: " +event, this, this->commonStrings.UPDATE);
     int32_t index = 0;index < size; index++)
         {
 
-    PlayerListener* listener = dynamic_cast<PlayerListener*>(this->listenersList.objectArray[index]);;
+    PlayerListener* listener = dynamic_cast<PlayerListener*>(this->listenersList->objectArray[index]);;
     
 listener->playerUpdate(this, event, NullUtil::getInstance()->NULL_OBJECT);
     
@@ -327,13 +331,13 @@ listener->playerUpdate(this, event, NullUtil::getInstance()->NULL_OBJECT);
 }
 
 
-    public: void setVolume(int32_t leftVolume, int32_t rightVolume){
+    auto AndroidMediaPlayerWrapper::setVolume(int32_t leftVolume, int32_t rightVolume) -> void{
 this->mediaPlayer->setVolume((leftVolume) /100.0, (rightVolume) /100.0);
     
 }
 
 
-    public: int64_t getDuration(){
+    auto AndroidMediaPlayerWrapper::getDuration() -> int64_t{
 
 
 
@@ -343,13 +347,13 @@ this->mediaPlayer->setVolume((leftVolume) /100.0, (rightVolume) /100.0);
 }
 
 
-    public: void setMediaPlayer(MediaPlayer* mediaPlayer){
+    auto AndroidMediaPlayerWrapper::setMediaPlayer(MediaPlayer* mediaPlayer) -> void{
 this->mediaPlayer= mediaPlayer;
     
 }
 
 
-    public: MediaPlayer* getMediaPlayer(){
+    auto AndroidMediaPlayerWrapper::getMediaPlayer() -> MediaPlayer*{
 
 
 
@@ -359,7 +363,6 @@ this->mediaPlayer= mediaPlayer;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_CPP

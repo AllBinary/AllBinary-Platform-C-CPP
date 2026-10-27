@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFOFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/cache/BufferedImageInfoFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/cache/BufferedImageInfo.h"
 
-class BufferedImageInfoFactory
-            : public Object
-         {
+HashMap<Object*, Object*>* BufferedImageInfoFactory::hashMap = StdUtil::getInstance()->createHashMap();
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
+BufferedImageInfoFactory::BufferedImageInfoFactory(){
+}
 
-    public: static BufferedImageInfo* getInstance(int32_t width, int32_t height, int32_t type){
+
+    auto BufferedImageInfoFactory::getInstance(int32_t width, int32_t height, int32_t type) -> BufferedImageInfo*{
 
     StringMaker* stringbuffer = new StringMaker();;
     
@@ -99,11 +109,6 @@ BufferedImageInfoFactory::hashMap->put(key, bufferedImageInfo);
 }
 
 
-private: BufferedImageInfoFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFOFACTORY_CPP

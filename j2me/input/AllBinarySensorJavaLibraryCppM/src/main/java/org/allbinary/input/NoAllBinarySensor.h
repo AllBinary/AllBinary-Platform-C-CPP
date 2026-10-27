@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_NOALLBINARYSENSOR_H
         #define ORG_ALLBINARY_INPUT_NOALLBINARYSENSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/AllBinarySensor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoAllBinarySensor: public AllBinarySensor {
 
-    private: static NoAllBinarySensor* instance() { static std::unique_ptr<NoAllBinarySensor> value(new NoAllBinarySensor()); return value.get(); }
+    private: static NoAllBinarySensor* instance_owner();
+    private: static NoAllBinarySensor* instance;
 
     public: static NoAllBinarySensor* getInstance();
 
@@ -61,3 +71,13 @@ private: NoAllBinarySensor();
 
 
         #endif //ORG_ALLBINARY_INPUT_NOALLBINARYSENSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_NOALLBINARYSENSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_NOALLBINARYSENSOR_H_COMPLETE
+        #if __has_include("org/allbinary/input/AllBinarySensor.h")
+#include "org/allbinary/input/AllBinarySensor.h"
+#endif
+
+        #endif
+    

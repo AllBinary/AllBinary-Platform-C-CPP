@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_PROXY_INTERFACECASTPROXY_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_PROXY_INTERFACECASTPROXY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/proxy/InterfaceCastProxy.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,11 +66,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/java/proxy/InvocationHandler.h"
 
-class InterfaceCastProxy
-            : public Object
-        , public java::lang::reflect::InvocationHandler {
 
-    public: static Object* newInstance(Object* anyType){
+InterfaceCastProxy::InterfaceCastProxy(Object* anyType){
+this->anyType= anyType;
+    
+}
+
+
+    auto InterfaceCastProxy::newInstance(Object* anyType) -> Object*{
 
 
 
@@ -70,17 +83,9 @@ class InterfaceCastProxy
 }
 
 
-    private: Object* anyType;
-
-private: InterfaceCastProxy(Object* anyType){
-this->anyType= anyType;
-    
-}
-
-
                 //@Throws(Throwable.constructor)
             
-    public: Object* invoke(Object* proxyObject, Method* proxyMethod, std::vector<Object*> proxyArgs){
+    auto InterfaceCastProxy::invoke(Object* proxyObject, Method* proxyMethod, std::vector<Object*> proxyArgs) -> Object*{
 
     std::string methodName = proxyMethod->getName();;
     
@@ -100,7 +105,6 @@ this->anyType= anyType;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_PROXY_INTERFACECASTPROXY_CPP

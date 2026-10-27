@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASNOINPUTPROCESSORFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASNOINPUTPROCESSORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
-
-      
+class HighScoresCanvas;
 
 
 
@@ -51,12 +54,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/HighScoresCanvasInputProcessorFactoryInterface.h"
-#include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
+class HighScoresCanvasInputProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HighScoresCanvasNoInputProcessorFactory
-            : public Object
+            : public virtual Object
         , public HighScoresCanvasInputProcessorFactoryInterface {
 
+
+            
+    public: HighScoresCanvasNoInputProcessorFactory();
+        
     public: HighScoresCanvasInputProcessor* getInstance(HighScoresCanvas* highScoresCanvas);
 
 };
@@ -65,3 +76,19 @@ class HighScoresCanvasNoInputProcessorFactory
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASNOINPUTPROCESSORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASNOINPUTPROCESSORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASNOINPUTPROCESSORFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/score/displayable/HighScoresCanvas.h>)
+#include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresCanvasInputProcessorFactoryInterface.h")
+#include "org/allbinary/game/score/HighScoresCanvasInputProcessorFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresCanvasInputProcessor.h")
+#include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
+#endif
+
+        #endif
+    

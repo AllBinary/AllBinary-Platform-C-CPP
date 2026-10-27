@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,17 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
 
-class GeographicMapCellPositionEventListenerInterface: public EventListenerInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_CPP

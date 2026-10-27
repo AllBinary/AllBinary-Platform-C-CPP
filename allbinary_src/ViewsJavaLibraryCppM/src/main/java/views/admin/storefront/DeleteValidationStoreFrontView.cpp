@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_STOREFRONT_DELETEVALIDATIONSTOREFRONTVIEW_CPP
+        #define VIEWS_ADMIN_STOREFRONT_DELETEVALIDATIONSTOREFRONTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/storefront/DeleteValidationStoreFrontView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,11 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/storefront/StoreFrontComponent.h"
 
-class DeleteValidationStoreFrontView: public StoreFrontComponent, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: DeleteValidationStoreFrontView(TransformInfoInterface* transformInfoInterface) : StoreFrontComponent(transformInfoInterface){
+DeleteValidationStoreFrontView::DeleteValidationStoreFrontView(TransformInfoInterface* transformInfoInterface) : StoreFrontComponent(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,14 +88,14 @@ public: DeleteValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 }
 
 
-    public: bool isValid(){
+    auto DeleteValidationStoreFrontView::isValid() -> bool{
 
         try {
             
     bool valid = Boolean::TRUE;;
     
 
-                        if(this->newStoreFrontInterface.isNameValid() == Boolean::FALSE)
+                        if(this->newStoreFrontInterface->isNameValid() == Boolean::FALSE)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -97,7 +104,7 @@ public: DeleteValidationStoreFrontView(TransformInfoInterface* transformInfoInte
                                     }
                                 
 
-                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName()) == 
+                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface->getName()) == 
                                     nullptr
                                 )
                         
@@ -107,7 +114,7 @@ public: DeleteValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 
                                     }
                                 
-this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName());
+this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFrontInterface->getName());
     
 
 
@@ -120,10 +127,10 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -139,28 +146,28 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 }
 
 
-    public: std::string validationInfo(){
+    auto DeleteValidationStoreFrontView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(this->newStoreFrontInterface.isNameValid() == Boolean::FALSE)
+                        if(this->newStoreFrontInterface->isNameValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer->append(this->newStoreFrontInterface.nameValidationInfo());
+                                    stringBuffer->append(this->newStoreFrontInterface->nameValidationInfo());
     
 
                                     }
                                 
 
-                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName()) == 
+                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface->getName()) == 
                                     nullptr
                                 )
                         
                                     {
-                                    stringBuffer->append(this->newStoreFrontInterface +" does not exist.<br>");
+                                    stringBuffer->append(JavaString::valueOf(this->newStoreFrontInterface) +JavaString::valueOf(" does not exist.<br>"));
     
 
                                     }
@@ -176,7 +183,7 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -195,7 +202,7 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto DeleteValidationStoreFrontView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -205,7 +212,7 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto DeleteValidationStoreFrontView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -215,7 +222,6 @@ this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFront
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_STOREFRONT_DELETEVALIDATIONSTOREFRONTVIEW_CPP

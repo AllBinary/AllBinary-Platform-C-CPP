@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_ANDROIDAPI1KEYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_ANDROIDAPI1KEYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/AndroidAPI1KeyFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -35,11 +45,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/AndroidKeyFactory.h"
 
-class AndroidAPI1KeyFactory: public AndroidKeyFactory {
+Object* AndroidAPI1KeyFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static AndroidAPI1KeyFactory* getInstance(){
+    auto AndroidAPI1KeyFactory::getInstance() -> AndroidAPI1KeyFactory*{
 
                         if(AndroidAPI1KeyFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -58,11 +66,10 @@ class AndroidAPI1KeyFactory: public AndroidKeyFactory {
 }
 
 
-protected: AndroidAPI1KeyFactory(){
+AndroidAPI1KeyFactory::AndroidAPI1KeyFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_ANDROIDAPI1KEYFACTORY_CPP

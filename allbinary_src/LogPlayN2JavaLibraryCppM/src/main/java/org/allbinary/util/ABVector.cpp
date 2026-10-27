@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABVECTOR_CPP
+        #define ORG_ALLBINARY_UTIL_ABVECTOR_CPP
+
+        #include "org/allbinary/util/ABVector.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,254 +59,283 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+
 template<typename E>
-class ABVector: public Vector<E> {
-
-    public: void ensureCapacity(int32_t minCapacity){
-super.ensureCapacity(minCapacity);
+ABVector<E>::ABVector() {
+        }
+        
+    template<typename E>
+auto ABVector<E>::ensureCapacity(int32_t minCapacity) -> void{
+Vector<E>::ensureCapacity(minCapacity);
     
 }
 
 
-    public: int32_t capacity(){
+    template<typename E>
+auto ABVector<E>::capacity() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.capacity();;
+                        return Vector<E>::capacity();;
     
 }
 
 
-    public: int32_t size(){
+    template<typename E>
+auto ABVector<E>::size() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.size();;
+                        return Vector<E>::size();;
     
 }
 
 
-    public: bool isEmpty(){
+    template<typename E>
+auto ABVector<E>::isEmpty() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isEmpty();;
+                        return Vector<E>::isEmpty();;
     
 }
 
 
-    public: bool contains(Object* obj){
+    template<typename E>
+auto ABVector<E>::contains(Object* obj) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.contains(obj);;
+                        return Vector<E>::contains(obj);;
     
 }
 
 
-    public: int32_t indexOf(Object* obj){
+    template<typename E>
+auto ABVector<E>::indexOf(Object* obj) -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.indexOf(obj);;
+                        return Vector<E>::indexOf(obj);;
     
 }
 
 
-    public: int32_t lastIndexOf(Object* obj){
+    template<typename E>
+auto ABVector<E>::lastIndexOf(Object* obj) -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.lastIndexOf(obj);;
+                        return Vector<E>::lastIndexOf(obj);;
     
 }
 
 
-    public: E elementAt(int32_t index){
+    template<typename E>
+auto ABVector<E>::elementAt(int32_t index) -> E{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.elementAt(index);;
+                        return Vector<E>::elementAt(index);;
     
 }
 
 
-    public: E firstElement(){
+    template<typename E>
+auto ABVector<E>::firstElement() -> E{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.firstElement();;
+                        return Vector<E>::firstElement();;
     
 }
 
 
-    public: E lastElement(){
+    template<typename E>
+auto ABVector<E>::lastElement() -> E{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.lastElement();;
+                        return Vector<E>::lastElement();;
     
 }
 
 
-    public: void setElementAt(E obj, int32_t index){
-super.setElementAt(obj, index);
+    template<typename E>
+auto ABVector<E>::setElementAt(E obj, int32_t index) -> void{
+Vector<E>::setElementAt(obj, index);
     
 }
 
 
-    public: void removeElementAt(int32_t index){
-super.removeElementAt(index);
+    template<typename E>
+auto ABVector<E>::removeElementAt(int32_t index) -> void{
+Vector<E>::removeElementAt(index);
     
 }
 
 
-    public: void addElement(E obj){
-super.addElement(obj);
+    template<typename E>
+auto ABVector<E>::addElement(E obj) -> void{
+Vector<E>::addElement(obj);
     
 }
 
 
-    public: void insertElementAt(E obj, int32_t index){
-super.insertElementAt(obj, index);
+    template<typename E>
+auto ABVector<E>::insertElementAt(E obj, int32_t index) -> void{
+Vector<E>::insertElementAt(obj, index);
     
 }
 
 
-    public: bool removeElement(Object* obj){
+    template<typename E>
+auto ABVector<E>::removeElement(Object* obj) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.removeElement(obj);;
+                        return Vector<E>::removeElement(obj);;
     
 }
 
 
-    public: void removeAllElements(){
-super.removeAllElements();
+    template<typename E>
+auto ABVector<E>::removeAllElements() -> void{
+Vector<E>::removeAllElements();
     
 }
 
 
-    public: Object* clone(){
+    template<typename E>
+auto ABVector<E>::clone() -> Object*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.clone();;
+                        return Vector<E>::clone();;
     
 }
 
 
-    public: std::vector<Object*> toArray(){
+    template<typename E>
+auto ABVector<E>::toArray() -> std::vector<Object*>{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.toArray();;
+                        return Vector<E>::toArray();;
     
 }
 
 
-    public: E set(int32_t index, E element){
+    template<typename E>
+auto ABVector<E>::set(int32_t index, E element) -> E{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.set(index, element);;
+                        return Vector<E>::set(index, element);;
     
 }
 
 
-    public: bool add(E element){
+    template<typename E>
+auto ABVector<E>::add(E element) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.add(element);;
+                        return Vector<E>::add(element);;
     
 }
 
 
-    public: bool remove(Object* obj){
+    template<typename E>
+auto ABVector<E>::remove(Object* obj) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.remove(obj);;
+                        return Vector<E>::remove(obj);;
     
 }
 
 
-    public: void add(int32_t index, E element){
-super.add(index, element);
+    template<typename E>
+auto ABVector<E>::add(int32_t index, E element) -> void{
+Vector<E>::add(index, element);
     
 }
 
 
-    public: E remove(int32_t index){
+    template<typename E>
+auto ABVector<E>::remove(int32_t index) -> E{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.remove(index);;
+                        return Vector<E>::remove(index);;
     
 }
 
 
-    public: void clear(){
-super.clear();
+    template<typename E>
+auto ABVector<E>::clear() -> void{
+Vector<E>::clear();
     
 }
 
 
-    public: bool equals(Object* obj){
+    template<typename E>
+auto ABVector<E>::equals(Object* obj) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super. === obj;;
+                        return Vector<E>::->equals(obj);;
     
 }
 
 
-    public: int32_t hashCode(){
+    template<typename E>
+auto ABVector<E>::hashCode() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.hashCode();;
+                        return Vector<E>::hashCode();;
     
 }
 
 
-    public: std::string toString(){
+    template<typename E>
+auto ABVector<E>::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.toString();;
+                        return Vector<E>::toString();;
     
 }
 
 
-    protected: void removeRange(int32_t fromIndex, int32_t toIndex){
-super.removeRange(fromIndex, toIndex);
+    template<typename E>
+auto ABVector<E>::removeRange(int32_t fromIndex, int32_t toIndex) -> void{
+Vector<E>::removeRange(fromIndex, toIndex);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_ABVECTOR_CPP

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_LAYER_NULLLAYER_H
         #define ORG_ALLBINARY_LAYER_NULLLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 
 
 
@@ -50,9 +53,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/Layer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullLayer: public Layer {
 
-    private: static NullLayer* instance() { static std::unique_ptr<NullLayer> value(new NullLayer()); return value.get(); }
+    private: static NullLayer* instance_owner();
+    private: static NullLayer* instance;
 
     public: static NullLayer* getInstance();
 
@@ -66,3 +74,16 @@ private: NullLayer();
 
 
         #endif //ORG_ALLBINARY_LAYER_NULLLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_NULLLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_NULLLAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include("org/allbinary/layer/Layer.h")
+#include "org/allbinary/layer/Layer.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEDATA_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileData
-            : public Object
+            : public virtual Object
          {
 
-    private: static FileData* instance() { static std::unique_ptr<FileData> value(new FileData()); return value.get(); }
+    private: static FileData* instance_owner();
+    private: static FileData* instance;
 
     public: static FileData* getInstance();
 
@@ -86,7 +96,7 @@ private: FileData();
 
     public: const int32_t MINIMAGEFILESIZE = 32;
 
-    public: const int32_t MAXDOWNLOADABLEFILESIZE = 1048576 *20;
+    public: const int32_t MAXDOWNLOADABLEFILESIZE;
 
     public: const int32_t MINDOWNLOADABLEFILESIZE = 1;
 
@@ -96,3 +106,10 @@ private: FileData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_FILEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEDATA_H_COMPLETE
+        
+        #endif
+    

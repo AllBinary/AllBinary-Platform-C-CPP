@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <android/graphics/Matrix.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/media/image/AndroidImageUtil.h>
-
-      
-#include <org/allbinary/media/image/ImageCopyUtil.h>
-
-      
-#include <org/allbinary/media/image/ImageModifierUtil.h>
-
-      
+class Matrix;
+class Image;
+class Graphics;
+class AngleInfo;
+class AnimationBehavior;
+class BasicColor;
+class AndroidImageUtil;
+class ImageCopyUtil;
+class ImageModifierUtil;
 
 
 
@@ -78,13 +65,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryNoFlickerAndroidImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil;
 
-    private: AndroidImageUtil* androidImageUtil = AndroidImageUtil::getInstance();
+    private: AndroidImageUtil* androidImageUtil;
 
-    private: Matrix* matrix = new Matrix();
+    private: Matrix* matrix;
 
     private: int32_t halfWidth;
 
@@ -94,13 +85,13 @@ class AllBinaryNoFlickerAndroidImageRotationAnimation: public ImageBaseRotationA
 
     private: Image* originalImage;
 
-    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
+    private: std::vector<Image*> twoImages;
 
     private: Image* imageToShow;
 
     private: int32_t bufferedImageIndex= 0;
 
-protected: AllBinaryNoFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
+/*protected*/ public: AllBinaryNoFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
     public: void setBasicColorP(BasicColor* basicColor);
 
@@ -126,3 +117,40 @@ protected: AllBinaryNoFlickerAndroidImageRotationAnimation(Image* originalImage,
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_H_COMPLETE
+        #if __has_include(<android/graphics/Matrix.h>)
+#include <android/graphics/Matrix.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/media/image/AndroidImageUtil.h>)
+#include <org/allbinary/media/image/AndroidImageUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageCopyUtil.h>)
+#include <org/allbinary/media/image/ImageCopyUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageModifierUtil.h>)
+#include <org/allbinary/media/image/ImageModifierUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ImageBaseRotationAnimation.h")
+#include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#endif
+
+        #endif
+    

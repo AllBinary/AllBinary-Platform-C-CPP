@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTrackGeographicMapCellType: public GeographicMapCellType {
 
-    public: std::string name;
-
-    private: int32_t travelCost;
-
-public: RaceTrackGeographicMapCellType(std::string name, int32_t type, int32_t travelCost, int32_t reset) : GeographicMapCellType(type, reset){
+RaceTrackGeographicMapCellType::RaceTrackGeographicMapCellType(std::string name, int32_t type, int32_t travelCost, int32_t reset) : GeographicMapCellType(type, reset){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +74,7 @@ this->travelCost= travelCost;
 }
 
 
-    public: int32_t getTravelCost(){
+    auto RaceTrackGeographicMapCellType::getTravelCost() -> int32_t{
 
 
 
@@ -79,7 +84,6 @@ this->travelCost= travelCost;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPE_CPP

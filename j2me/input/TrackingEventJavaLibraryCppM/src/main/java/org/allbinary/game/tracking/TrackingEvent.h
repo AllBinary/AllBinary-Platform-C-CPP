@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H
         #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class AllBinaryLayer;
+class StringMaker;
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
 
 
 
@@ -56,15 +55,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/tracking/TrackingEventHandler.h"
+        class TrackingEventHandler;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TrackingEvent: public AllBinaryEventObject {
 
-    private: AllBinaryLayer* layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* layerInterface;
 
 public: TrackingEvent(Object* allBinaryLayerInterface);
 
     public: void init(Object* anyType);
+    public: void init(const std::string& anyType) { return init(JavaString::box(anyType)); }
 
     public: AllBinaryLayer* getLayerInterface();
 
@@ -80,3 +84,22 @@ public: TrackingEvent(Object* allBinaryLayerInterface);
 
 
         #endif //ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include("org/allbinary/game/tracking/TrackingEventHandler.h")
+#include "org/allbinary/game/tracking/TrackingEventHandler.h"
+#endif
+
+        #endif
+    

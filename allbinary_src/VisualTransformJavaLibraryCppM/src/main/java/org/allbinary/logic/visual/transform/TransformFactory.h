@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,44 +37,18 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/data/tables/transform/info/TransformInfoEntity.h>
-
-      
-#include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpFactory.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoObjectFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class PageContext;
+class TransformInfoEntity;
+class TransformInfoEntityBuilder;
+class LogUtil;
+class StringMaker;
+class AbeClientInformationInterface;
+class TransformInfoData;
+class TransformInfoHttpFactory;
+class TransformInfoHttpInterface;
+class TransformInfoInterface;
+class TransformInfoObjectFactory;
+class CommonStrings;
 
 
 
@@ -88,21 +67,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/transform/TransformInterface.h"
+        class TransformInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static TransformFactory* instance() { static std::unique_ptr<TransformFactory> value(new TransformFactory()); return value.get(); }
+    private: static TransformFactory* instance_owner();
+    private: static TransformFactory* instance;
 
     public: static TransformFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: TransformFactory();
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
                 //@Throws(Exception.constructor)
             
@@ -122,3 +106,52 @@ private: TransformFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/transform/info/TransformInfoEntity.h>)
+#include <org/allbinary/data/tables/transform/info/TransformInfoEntity.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>)
+#include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoData.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoHttpFactory.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoObjectFactory.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoObjectFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/TransformInterface.h")
+#include "org/allbinary/logic/visual/transform/TransformInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_CPP
+        #define BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/InputAutomationBundleActivatorListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationBundleActivatorListenerInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void registerAsService() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void useServices() = 0;
 
-};
-
-            
-
+        #endif //BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_CPP

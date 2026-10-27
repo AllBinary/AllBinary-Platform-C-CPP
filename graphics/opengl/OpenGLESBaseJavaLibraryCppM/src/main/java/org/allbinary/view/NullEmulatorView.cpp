@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_NULLEMULATORVIEW_CPP
+        #define ORG_ALLBINARY_VIEW_NULLEMULATORVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/NullEmulatorView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,25 +62,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/EmulatorViewInterface.h"
 
-class NullEmulatorView
-            : public Object
-        , public EmulatorViewInterface {
 
-    public: static NullEmulatorView* NULL_EMULATOR_VIEW() { static std::unique_ptr<NullEmulatorView> value(new NullEmulatorView()); return value.get(); }
+NullEmulatorView::NullEmulatorView() {
+        }
+        auto NullEmulatorView::NULL_EMULATOR_VIEW_owner() -> NullEmulatorView* { static std::unique_ptr<NullEmulatorView> value(new NullEmulatorView()); return value.get(); }
+NullEmulatorView* NullEmulatorView::NULL_EMULATOR_VIEW = NullEmulatorView::NULL_EMULATOR_VIEW_owner();
 
-    public: void setMidlet(MIDlet* midlet){
+    auto NullEmulatorView::setMidlet(MIDlet* midlet) -> void{
 }
 
 
-    public: void onEmulatorInitComplete(Object* midletActivity){
+    auto NullEmulatorView::onEmulatorInitComplete(Object* midletActivity) -> void{
 }
 
 
-    public: void onSetDisplayable(Displayable* displayable){
+    auto NullEmulatorView::onSetDisplayable(Displayable* displayable) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VIEW_NULLEMULATORVIEW_CPP

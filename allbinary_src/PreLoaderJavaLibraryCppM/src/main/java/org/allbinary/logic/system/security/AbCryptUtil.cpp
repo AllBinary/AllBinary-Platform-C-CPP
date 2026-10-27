@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABCRYPTUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABCRYPTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/AbCryptUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,31 +74,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbCryptUtil
-            : public Object
-         {
+auto AbCryptUtil::instance_owner() -> AbCryptUtil* { static std::unique_ptr<AbCryptUtil> value(new AbCryptUtil()); return value.get(); }
+AbCryptUtil* AbCryptUtil::instance = AbCryptUtil::instance_owner();
 
-    private: static AbCryptUtil* instance() { static std::unique_ptr<AbCryptUtil> value(new AbCryptUtil()); return value.get(); }
-
-    public: static AbCryptUtil* getInstance(){
+    auto AbCryptUtil::getInstance() -> AbCryptUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbCryptUtil::instance();
+                        return AbCryptUtil::instance;
     
 }
 
 
-    private: StreamUtil* streamUtil = StreamUtil::getInstance();
-
-private: AbCryptUtil(){
+AbCryptUtil::AbCryptUtil() : streamUtil(StreamUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> decrypt(InputStream* inputStream, std::string key){
+    auto AbCryptUtil::decrypt(InputStream* inputStream, std::string key) -> std::vector<int8_t>{
 
     ByteArrayOutputStream* outputStream = 
                 null
@@ -121,7 +126,6 @@ this->streamUtil->close(inputStream);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABCRYPTUTIL_CPP

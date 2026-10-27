@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/text/CustomTextBoxIndexedAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,17 +82,8 @@
         #include "org/allbinary/animation/text/TextInterface.h"
 #include "org/allbinary/animation/text/TextChangeListener.h"
 
-class CustomTextBoxIndexedAnimation: public IndexedAnimation, public RawKeyEventListener, public UpdateMyFontInterface, public TextInterface {
 
-    private: CustomTextBox* customTextBox;
-
-    private: std::string lastText = StringUtil::getInstance()->INIT_STRING;
-
-    protected: bool hasChanged = true;
-
-    private: TextChangeListener* textChangeListener = TextChangeListener::getInstance();
-
-public: CustomTextBoxIndexedAnimation(CustomTextBox* customTextBox) : IndexedAnimation(AnimationBehavior::getInstance()){
+CustomTextBoxIndexedAnimation::CustomTextBoxIndexedAnimation(CustomTextBox* customTextBox) : IndexedAnimation(AnimationBehavior::getInstance()), lastText(StringUtil::getInstance()->INIT_STRING), textChangeListener(TextChangeListener::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,19 +95,19 @@ this->customTextBox= customTextBox;
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto CustomTextBoxIndexedAnimation::setBasicColorP(BasicColor* basicColor) -> void{
 this->customTextBox->getTextFieldItem()->setForegroundBasicColorP(basicColor);
     
 }
 
 
-    public: void setBackgroundBasicColorP(BasicColor* basicColor){
+    auto CustomTextBoxIndexedAnimation::setBackgroundBasicColorP(BasicColor* basicColor) -> void{
 this->customTextBox->getTextFieldItem()->setBackgroundBasicColorP(basicColor);
     
 }
 
 
-    public: void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener){
+    auto CustomTextBoxIndexedAnimation::setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener) -> void{
 this->setText(text);
     
 this->textChangeListener= textChangeListener;
@@ -114,7 +115,7 @@ this->textChangeListener= textChangeListener;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto CustomTextBoxIndexedAnimation::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -125,7 +126,7 @@ this->textChangeListener= TextChangeListener::getInstance();
 }
 
 
-    public: void setText(std::string text){
+    auto CustomTextBoxIndexedAnimation::setText(std::string text) -> void{
 
                         if(this->lastText != text)
                         
@@ -142,7 +143,7 @@ this->customTextBox->getTextFieldItem()->setString(text);
 }
 
 
-    public: std::string getText(){
+    auto CustomTextBoxIndexedAnimation::getText() -> std::string{
 
 
 
@@ -152,13 +153,13 @@ this->customTextBox->getTextFieldItem()->setString(text);
 }
 
 
-    public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated){
+    auto CustomTextBoxIndexedAnimation::onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated) -> void{
 this->customTextBox->onEventRaw(keyCode, deviceId, repeated);
     
 }
 
 
-    public: int32_t getFontHeight(){
+    auto CustomTextBoxIndexedAnimation::getFontHeight() -> int32_t{
 
 
 
@@ -168,17 +169,16 @@ this->customTextBox->onEventRaw(keyCode, deviceId, repeated);
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto CustomTextBoxIndexedAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->customTextBox->paintXY(graphics, x, y);
     
 }
 
 
-    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+    auto CustomTextBoxIndexedAnimation::paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATION_CPP

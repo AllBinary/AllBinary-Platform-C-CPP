@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,27 +78,20 @@
 #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemBuilder.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
-class GraphicItemFactory
-            : public Object
-         {
+auto GraphicItemFactory::instance_owner() -> GraphicItemFactory* { static std::unique_ptr<GraphicItemFactory> value(new GraphicItemFactory()); return value.get(); }
+GraphicItemFactory* GraphicItemFactory::instance = GraphicItemFactory::instance_owner();
 
-    private: static GraphicItemFactory* instance() { static std::unique_ptr<GraphicItemFactory> value(new GraphicItemFactory()); return value.get(); }
-
-    public: static GraphicItemFactory* getInstance(){
+    auto GraphicItemFactory::getInstance() -> GraphicItemFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GraphicItemFactory::instance();
+                        return GraphicItemFactory::instance;
     
 }
 
 
-    private: HashMap<Object*, Object*>* graphicItems;
-
-    private: GraphicsItemInterfaceFactoryInterface* DEFAULT = new SelectionToolFactory();
-
-private: GraphicItemFactory(){
+GraphicItemFactory::GraphicItemFactory() : DEFAULT(new SelectionToolFactory()){
 this->graphicItems= StdUtil::getInstance()->createHashMap();
     
 this->graphicItems->put(LinesGraphicItem::getStaticName(), new LinesGraphicItemFactory());
@@ -96,7 +99,7 @@ this->graphicItems->put(LinesGraphicItem::getStaticName(), new LinesGraphicItemF
 }
 
 
-    public: GraphicsItemInterfaceFactoryInterface* getInstance(std::string itemName){
+    auto GraphicItemFactory::getInstance(std::string itemName) -> GraphicsItemInterfaceFactoryInterface*{
 
     GraphicsItemInterfaceFactoryInterface* graphicsItemInterfaceFactoryInterface = dynamic_cast<GraphicsItemInterfaceFactoryInterface*>(this->graphicItems->get(itemName));;
     
@@ -122,7 +125,7 @@ this->graphicItems->put(LinesGraphicItem::getStaticName(), new LinesGraphicItemF
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* getInstance(BasicArrayList* graphicItemNodeList){
+    auto GraphicItemFactory::getInstance(BasicArrayList* graphicItemNodeList) -> HashMap<Object*, Object*>*{
 
     int32_t numberOfItems = graphicItemNodeList->size();;
     
@@ -159,7 +162,6 @@ graphicItemHashMap->put(graphicItem->getTreeNode(), graphicItem);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_CPP

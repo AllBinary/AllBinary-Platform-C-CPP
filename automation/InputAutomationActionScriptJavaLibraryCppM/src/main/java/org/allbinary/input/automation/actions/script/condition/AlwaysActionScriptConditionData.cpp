@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AlwaysActionScriptConditionData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "ALWAYS_ACTION_CONDITION_NAME";
-
-    public: static inline std::string IS_ON = "ALWAYS_ACTION_CONDITION_IS_ON";
-
-private: AlwaysActionScriptConditionData(){
+AlwaysActionScriptConditionData::AlwaysActionScriptConditionData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_THEMECOMPARATOR_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_THEMECOMPARATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/store/theme/ThemeComparator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThemeComparator
-            : public Object
-        , public Comparator {
 
-public: ThemeComparator(){
+ThemeComparator::ThemeComparator(){
 }
 
 
-    public: int32_t compare(Object* anyType, Object* object2){
+    auto ThemeComparator::compare(Object* anyType, Object* object2) -> int32_t{
 
     std::string string = anyType;;
     
@@ -72,7 +79,6 @@ public: ThemeComparator(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_THEMECOMPARATOR_CPP

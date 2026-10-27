@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_PARTINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_PART_PARTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/PartInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PartInterface: public PaintableInterface, public AnimationInterfaceCompositeInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_PARTINTERFACE_CPP

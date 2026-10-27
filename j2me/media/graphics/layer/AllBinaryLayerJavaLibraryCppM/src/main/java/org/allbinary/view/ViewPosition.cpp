@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITION_CPP
+        #define ORG_ALLBINARY_VIEW_VIEWPOSITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/ViewPosition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/ViewPositionBase.h"
 
-class ViewPosition: public ViewPositionBase {
 
-    public: static ViewPosition* getInstanceD(){
+    auto ViewPosition::getInstanceD() -> ViewPosition*{
 
 
 
@@ -61,9 +70,7 @@ class ViewPosition: public ViewPositionBase {
 }
 
 
-    private: AllBinaryLayer* allbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y, z){
+ViewPosition::ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y, z), allbinaryLayer(AllBinaryLayer::NULL_ALLBINARY_LAYER){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +80,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 }
 
 
-    public: int32_t getX(){
+    auto ViewPosition::getX() -> int32_t{
 
 
 
@@ -83,7 +90,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 }
 
 
-    public: int32_t getY(){
+    auto ViewPosition::getY() -> int32_t{
 
 
 
@@ -93,7 +100,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 }
 
 
-    public: int32_t getZ(){
+    auto ViewPosition::getZ() -> int32_t{
 
 
 
@@ -103,7 +110,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 }
 
 
-    public: int32_t getX2(){
+    auto ViewPosition::getX2() -> int32_t{
 
 
 
@@ -113,7 +120,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 }
 
 
-    public: int32_t getY2(){
+    auto ViewPosition::getY2() -> int32_t{
 
 
 
@@ -123,7 +130,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 }
 
 
-    public: int32_t getZ2(){
+    auto ViewPosition::getZ2() -> int32_t{
 
 
 
@@ -133,13 +140,12 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y
 }
 
 
-    public: void setAllbinaryLayer(Object* allbinaryLayer){
+    auto ViewPosition::setAllbinaryLayer(Object* allbinaryLayer) -> void{
 this->allbinaryLayer= dynamic_cast<AllBinaryLayer*>(allbinaryLayer as unknown);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VIEW_VIEWPOSITION_CPP

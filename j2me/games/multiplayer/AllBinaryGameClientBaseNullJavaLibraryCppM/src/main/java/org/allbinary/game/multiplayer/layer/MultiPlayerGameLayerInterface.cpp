@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/multiplayer/layer/MultiPlayerGameLayerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h"
 
-class MultiPlayerGameLayerInterface {
+//Interface - declared in the header
 
-    public: virtual MultiplayerBehavior* getMultiplayerBehavior() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYERINTERFACE_CPP

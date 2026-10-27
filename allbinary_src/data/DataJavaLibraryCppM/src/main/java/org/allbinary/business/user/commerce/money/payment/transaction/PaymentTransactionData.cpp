@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_PAYMENTTRANSACTIONDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_PAYMENTTRANSACTIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/transaction/PaymentTransactionData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentTransactionData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "PAYMENTTRANSACTION_NAME";
-
-private: PaymentTransactionData(){
+PaymentTransactionData::PaymentTransactionData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_PAYMENTTRANSACTIONDATA_CPP

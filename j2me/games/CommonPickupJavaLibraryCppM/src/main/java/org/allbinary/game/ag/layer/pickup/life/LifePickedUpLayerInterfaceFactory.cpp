@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/life/LifePickedUpLayerInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,31 +82,17 @@
 #include "org/allbinary/game/ag/layer/pickup/life/LifeLayerFactory.h"
 #include "org/allbinary/game/ag/layer/pickup/life/LifeResources.h"
 
-class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
-
-    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+PickedUpLayerInterfaceFactoryInterface* LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(){
+    auto LifePickedUpLayerInterfaceFactory::init() -> void{
 LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= new LifePickedUpLayerInterfaceFactory();
     
 }
 
 
-    public: static PickedUpLayerInterfaceFactoryInterface* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
-    
-}
-
-
-    private: LifeLayerCircularStaticPool* pool = new LifeLayerCircularStaticPool(new LifeLayerFactory(), 1);
-
-private: LifePickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->LIFE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LifeResources::getInstance()->RESOURCE)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LifeResources::getInstance()->RESOURCE)->getInstance(0)){
+LifePickedUpLayerInterfaceFactory::LifePickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->LIFE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LifeResources::getInstance()->RESOURCE)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LifeResources::getInstance()->RESOURCE)->getInstance(0)), pool(new LifeLayerCircularStaticPool(new LifeLayerFactory(), 1)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,7 +102,7 @@ private: LifePickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(Pic
 }
 
 
-    public: int32_t getTotal(){
+    auto LifePickedUpLayerInterfaceFactory::getTotal() -> int32_t{
 
 
 
@@ -116,15 +112,24 @@ private: LifePickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(Pic
 }
 
 
+    auto LifePickedUpLayerInterfaceFactory::getInstance() -> PickedUpLayerInterfaceFactoryInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
+    
+}
+
+
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayer* sourceLayerInterface){
+    auto LifePickedUpLayerInterfaceFactory::process(AllBinaryLayer* sourceLayerInterface) -> void{
 this->pool->visit(sourceLayerInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFEPICKEDUPLAYERINTERFACEFACTORY_CPP

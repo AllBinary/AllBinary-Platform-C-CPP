@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_ADMINCONFIGURATIONHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_ADMINCONFIGURATIONHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/AdminConfigurationHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,21 +66,14 @@
         #include "admin/taghelpers/TagHelperFactoryInterface.h"
 #include "admin/taghelpers/HelperFactory.h"
 
-class AdminConfigurationHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "admin.taghelpers.AdminConfigurationHelper";
-
-    private: static inline const std::string FACTORYNAME = "AdminConfigurationHelperFactory";
-
-public: AdminConfigurationHelperFactory(){
+AdminConfigurationHelperFactory::AdminConfigurationHelperFactory(){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto AdminConfigurationHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -80,7 +83,6 @@ public: AdminConfigurationHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_ADMINCONFIGURATIONHELPERFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/android/AndroidInfoFactory.h>
-
-      
-#include <org/allbinary/android/input/motion/api1/GameInputMotionInfoAPI1.h>
-
-      
-#include <org/allbinary/android/input/motion/api5/GameInputMotionInfoAPI5.h>
-
-      
+class AndroidInfoFactory;
+class GameInputMotionInfoAPI1;
+class GameInputMotionInfoAPI5;
 
 
 
@@ -56,17 +55,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/android/input/motion/GameInputMotionInfo.h"
+        class GameInputMotionInfo;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputMotionInfoFactory
-            : public Object
+            : public virtual Object
          {
 
     public: static GameInputMotionInfo* getInstance();
 
+
+            
+    public: GameInputMotionInfoFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/android/AndroidInfoFactory.h>)
+#include <org/allbinary/android/AndroidInfoFactory.h>
+#endif
+#if __has_include(<org/allbinary/android/input/motion/api1/GameInputMotionInfoAPI1.h>)
+#include <org/allbinary/android/input/motion/api1/GameInputMotionInfoAPI1.h>
+#endif
+#if __has_include(<org/allbinary/android/input/motion/api5/GameInputMotionInfoAPI5.h>)
+#include <org/allbinary/android/input/motion/api5/GameInputMotionInfoAPI5.h>
+#endif
+#if __has_include("org/allbinary/android/input/motion/GameInputMotionInfo.h")
+#include "org/allbinary/android/input/motion/GameInputMotionInfo.h"
+#endif
+
+        #endif
+    

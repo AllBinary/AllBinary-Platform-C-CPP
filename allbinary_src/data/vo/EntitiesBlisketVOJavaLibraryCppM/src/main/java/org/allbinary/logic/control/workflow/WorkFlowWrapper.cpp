@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWWRAPPER_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,23 +71,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
-class WorkFlowWrapper
-            : public Object
-        , public WorkFlowInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Object* anyType;
-
-public: WorkFlowWrapper(Object* anyType){
+WorkFlowWrapper::WorkFlowWrapper(Object* anyType) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->anyType= anyType;
     
 }
 
 
-    protected: Object* getWorkFlowObject(){
+    auto WorkFlowWrapper::getWorkFlowObject() -> Object*{
 
 
 
@@ -89,7 +90,7 @@ this->anyType= anyType;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getName(){
+    auto WorkFlowWrapper::getName() -> std::string{
 
         try {
             
@@ -117,7 +118,7 @@ this->anyType= anyType;
     std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getName()", &e);
@@ -128,7 +129,7 @@ this->anyType= anyType;
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 
@@ -137,7 +138,7 @@ this->anyType= anyType;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getStoreName(){
+    auto WorkFlowWrapper::getStoreName() -> std::string{
 
         try {
             
@@ -165,7 +166,7 @@ this->anyType= anyType;
     std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getStoreName()", &e);
@@ -176,7 +177,7 @@ this->anyType= anyType;
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 
@@ -185,7 +186,7 @@ this->anyType= anyType;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t process(){
+    auto WorkFlowWrapper::process() -> int32_t{
 
         try {
             
@@ -213,7 +214,7 @@ this->anyType= anyType;
     std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
@@ -224,14 +225,13 @@ this->anyType= anyType;
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWWRAPPER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NOSOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NOSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/NoSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +58,20 @@
         #include "org/allbinary/media/audio/Sound.h"
 #include "org/allbinary/media/audio/NoPlayer.h"
 
-class NoSound: public Sound {
 
-    public: static NoSound* getInstance(){
+    auto NoSound::getInstance() -> NoSound*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoSound::instance();
+                        return NoSound::instance;
     
 }
 
+auto NoSound::instance_owner() -> NoSound* { static std::unique_ptr<NoSound> value(new NoSound()); return value.get(); }
+NoSound* NoSound::instance = NoSound::instance_owner();
 
-    private: static NoSound* instance() { static std::unique_ptr<NoSound> value(new NoSound()); return value.get(); }
-
-private: NoSound() : Sound(StringUtil::getInstance()->EMPTY_STRING){
+NoSound::NoSound() : Sound(StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +83,6 @@ this->setPlayerP(NoPlayer::NO_PLAYER);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_NOSOUND_CPP

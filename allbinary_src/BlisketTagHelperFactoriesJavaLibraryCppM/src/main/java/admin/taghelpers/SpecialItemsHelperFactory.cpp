@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_SPECIALITEMSHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_SPECIALITEMSHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/SpecialItemsHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,17 +71,14 @@
         #include "admin/taghelpers/TagHelperFactory.h"
 #include "admin/taghelpers/SpecialItemsHelper.h"
 
-class SpecialItemsHelperFactory: public TagHelperFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: SpecialItemsHelperFactory(){
+SpecialItemsHelperFactory::SpecialItemsHelperFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto SpecialItemsHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
         try {
             
@@ -85,10 +92,10 @@ public: SpecialItemsHelperFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -104,7 +111,6 @@ public: SpecialItemsHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_SPECIALITEMSHELPERFACTORY_CPP

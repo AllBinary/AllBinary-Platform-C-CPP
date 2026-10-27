@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,30 +38,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class Image;
+class GameFeatureImageCacheFactory;
+class LogUtil;
+class PreLogUtil;
+class TimeDelayHelper;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/HashtableUtil.h>
-
-      
-#include <org/microemu/device/playn/PlaynImage.h>
-
-      
+class HashtableUtil;
+class PlaynImage;
 
 
 
@@ -77,13 +66,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCompleteUtil.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageWaitCompleteUtil: public ImageCompleteUtil {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(18000);
+    private: TimeDelayHelper* timeDelayHelper;
 
-    private: TimeDelayHelper* allTimeDelayHelper = new TimeDelayHelper(120000);
+    private: TimeDelayHelper* allTimeDelayHelper;
 
 public: ImageWaitCompleteUtil();
 
@@ -109,3 +102,37 @@ public: ImageWaitCompleteUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/image/GameFeatureImageCacheFactory.h>)
+#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/HashtableUtil.h>)
+#include <org/allbinary/util/HashtableUtil.h>
+#endif
+#if __has_include(<org/microemu/device/playn/PlaynImage.h>)
+#include <org/microemu/device/playn/PlaynImage.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageCompleteUtil.h")
+#include "org/allbinary/media/image/ImageCompleteUtil.h"
+#endif
+
+        #endif
+    

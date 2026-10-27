@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/IconLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/pickup/IconLayer.h"
 
-class IconLayerFactory
-            : public Object
-         {
 
+IconLayerFactory::IconLayerFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static IconLayer* getInstance(Animation* animationInterface, int32_t width, int32_t height){
+    auto IconLayerFactory::getInstance(Animation* animationInterface, int32_t width, int32_t height) -> IconLayer*{
 
 
 
@@ -67,7 +77,6 @@ class IconLayerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYERFACTORY_CPP

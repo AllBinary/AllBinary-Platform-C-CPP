@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/permissions/PermissionItemsEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,23 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/item/permissions/PermissionItemsEntity.h"
 
-class PermissionItemsEntityFactory
-            : public Object
-         {
+auto PermissionItemsEntityFactory::instance_owner() -> PermissionItemsEntityFactory* { static std::unique_ptr<PermissionItemsEntityFactory> value(new PermissionItemsEntityFactory()); return value.get(); }
+PermissionItemsEntityFactory* PermissionItemsEntityFactory::instance = PermissionItemsEntityFactory::instance_owner();
 
-    private: static PermissionItemsEntityFactory* instance() { static std::unique_ptr<PermissionItemsEntityFactory> value(new PermissionItemsEntityFactory()); return value.get(); }
-
-    public: static PermissionItemsEntityFactory* getInstance(){
+    auto PermissionItemsEntityFactory::getInstance() -> PermissionItemsEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PermissionItemsEntityFactory::instance();
+                        return PermissionItemsEntityFactory::instance;
     
 }
 
 
-    public: static PermissionItemsEntity* getPermissionItemsEntityInstance(){
+PermissionItemsEntityFactory::PermissionItemsEntityFactory() : logUtil(LogUtil::getInstance()){
+}
+
+
+    auto PermissionItemsEntityFactory::getPermissionItemsEntityInstance() -> PermissionItemsEntity*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -90,7 +101,7 @@ class PermissionItemsEntityFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "PermissionItemsEntityFactory", commonStrings->GET_INSTANCE, &e);
@@ -109,13 +120,6 @@ class PermissionItemsEntityFactory
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: PermissionItemsEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_CPP

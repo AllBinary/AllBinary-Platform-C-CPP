@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_AUTHENTICATIONREQUESTHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_AUTHENTICATIONREQUESTHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/AuthenticationRequestHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,21 +69,14 @@
         #include "admin/taghelpers/TagHelperFactoryInterface.h"
 #include "admin/taghelpers/HelperFactory.h"
 
-class AuthenticationRequestHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "admin.taghelpers.AuthenticationRequestHelper";
-
-    private: static inline const std::string FACTORYNAME = "AuthenticationRequestHelperFactory";
-
-public: AuthenticationRequestHelperFactory(){
+AuthenticationRequestHelperFactory::AuthenticationRequestHelperFactory(){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto AuthenticationRequestHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -85,7 +88,7 @@ public: AuthenticationRequestHelperFactory(){
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest){
+    auto AuthenticationRequestHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest) -> Object*{
 
 
 
@@ -95,7 +98,6 @@ public: AuthenticationRequestHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_AUTHENTICATIONREQUESTHELPERFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEMVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEMVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadableItemView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -83,17 +93,8 @@
         #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadableItem.h"
 #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadItemData.h"
 
-class DownloadableItemView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: DownloadableItem* downloadableItem;
-
-public: DownloadableItemView(DownloadableItem* downloadableItem){
+DownloadableItemView::DownloadableItemView(DownloadableItem* downloadableItem) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->downloadableItem= downloadableItem;
     
 }
@@ -101,9 +102,9 @@ this->downloadableItem= downloadableItem;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto DownloadableItemView::toXmlNode(Document* document) -> Node*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");
@@ -213,7 +214,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: Document* toXmlDoc(){
+    auto DownloadableItemView::toXmlDoc() -> Document*{
 
 
 
@@ -223,7 +224,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: std::string view(){
+    auto DownloadableItemView::view() -> std::string{
 
 
 
@@ -233,7 +234,6 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEMVIEW_CPP

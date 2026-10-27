@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -51,8 +54,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ToDomHelper
-            : public Object
+            : public virtual Object
          {
 
     public: static std::string convertNull(std::string value);
@@ -65,3 +72,13 @@ private: ToDomHelper();
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

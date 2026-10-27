@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GAMELAYERUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GAMELAYERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/GameLayerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,11 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameLayerUtil
-            : public Object
-         {
 
-    public: static bool isOnScreen(AllBinaryLayer* layer){
+GameLayerUtil::GameLayerUtil(){
+}
+
+
+    auto GameLayerUtil::isOnScreen(AllBinaryLayer* layer) -> bool{
 
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
@@ -74,7 +85,7 @@ class GameLayerUtil
 }
 
 
-    public: static bool isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2){
+    auto GameLayerUtil::isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2) -> bool{
 
                         if(rectX1 > rect2X1 && rectX2 < rect2X2 && rectY1 > rect2Y1 && rectY2 < rect2Y2)
                         
@@ -101,11 +112,6 @@ class GameLayerUtil
 }
 
 
-private: GameLayerUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_GAMELAYERUTIL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +56,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/gyro/SensorGameUpdateProcessor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SingleSensorGameUpdateProcessor: public SensorGameUpdateProcessor {
 
+
+            
+    public: SingleSensorGameUpdateProcessor();
+        
                 //@Throws(Exception.constructor)
             
     public: void process(Object* anyType);
+    public: void process(const std::string& anyType) { return process(JavaString::box(anyType)); }
 
                 //@Throws(Exception.constructor)
             
     public: void sendNotifications(Object* anyType);
+    public: void sendNotifications(const std::string& anyType) { return sendNotifications(JavaString::box(anyType)); }
 
 };
 
@@ -67,3 +82,13 @@ class SingleSensorGameUpdateProcessor: public SensorGameUpdateProcessor {
 
 
         #endif //ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_H_COMPLETE
+        #if __has_include("org/allbinary/input/gyro/SensorGameUpdateProcessor.h")
+#include "org/allbinary/input/gyro/SensorGameUpdateProcessor.h"
+#endif
+
+        #endif
+    

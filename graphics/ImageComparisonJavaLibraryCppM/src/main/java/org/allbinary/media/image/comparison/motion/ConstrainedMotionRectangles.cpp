@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSTRAINEDMOTIONRECTANGLES_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSTRAINEDMOTIONRECTANGLES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectangles.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,15 +78,8 @@
 #include "org/allbinary/media/image/comparison/motion/MotionRectangleConstraintsInterface.h"
 #include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
 
-class ConstrainedMotionRectangles: public MotionRectangles {
 
-    private: static inline const std::string NAME = "constrainedMotionRectangles_";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface;
-
-public: ConstrainedMotionRectangles(MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface, MotionRectangles* motionRectangles) : MotionRectangles(NAME, motionRectangles->getImageComparisonResult()){
+ConstrainedMotionRectangles::ConstrainedMotionRectangles(MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface, MotionRectangles* motionRectangles) : MotionRectangles(NAME, motionRectangles->getImageComparisonResult()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,8 +93,8 @@ this->setMotionRectangleConstraintsInterface(motionRectangleConstraintsInterface
 
                 //@Throws(Exception.constructor)
             
-    public: void applyMotionRectangleConstraints(MotionRectangles* motionRectangles){
-this->logUtil->putF("Start - Size Before: " +motionRectangles->getVector()->size(), this, "applyMotionRectangleConstraints");
+    auto ConstrainedMotionRectangles::applyMotionRectangleConstraints(MotionRectangles* motionRectangles) -> void{
+this->logUtil->putF(JavaString::valueOf("Start - Size Before: ") +JavaString::valueOf(motionRectangles->getVector()->size()), this, "applyMotionRectangleConstraints");
     
 
     std::vector<BufferedImage*> bufferedImageArray = motionRectangles->getImageComparisonResult()->getBufferedImages();;
@@ -130,7 +133,7 @@ this->logUtil->putF("Start - Size Before: " +motionRectangles->getVector()->size
                                     {
                                     
 
-                        continue
+                        continue;
                     
 
                                     }
@@ -144,7 +147,7 @@ this->logUtil->putF("Start - Size Before: " +motionRectangles->getVector()->size
                                     {
                                     
 
-                        continue
+                        continue;
                     
 
                                     }
@@ -158,7 +161,7 @@ this->logUtil->putF("Start - Size Before: " +motionRectangles->getVector()->size
                                     {
                                     
 
-                        continue
+                        continue;
                     
 
                                     }
@@ -172,7 +175,7 @@ this->logUtil->putF("Start - Size Before: " +motionRectangles->getVector()->size
                                     {
                                     
 
-                        continue
+                        continue;
                     
 
                                     }
@@ -188,7 +191,7 @@ this->setVector(vector);
 }
 
 
-    public: MotionRectangleConstraintsInterface* getMotionRectangleConstraintsInterface(){
+    auto ConstrainedMotionRectangles::getMotionRectangleConstraintsInterface() -> MotionRectangleConstraintsInterface*{
 
 
 
@@ -198,13 +201,12 @@ this->setVector(vector);
 }
 
 
-    public: void setMotionRectangleConstraintsInterface(MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface){
+    auto ConstrainedMotionRectangles::setMotionRectangleConstraintsInterface(MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface) -> void{
 this->motionRectangleConstraintsInterface= motionRectangleConstraintsInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSTRAINEDMOTIONRECTANGLES_CPP

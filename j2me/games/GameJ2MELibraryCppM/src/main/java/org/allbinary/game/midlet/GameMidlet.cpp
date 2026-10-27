@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLET_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/GameMidlet.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -320,63 +330,8 @@
 #include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
 #include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
 
-class GameMidlet: public ProgressMidlet, public CommandListener {
 
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
-
-    protected: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
-
-    protected: Features* features = Features::getInstance();
-
-    protected: MidletStrings* midletStrings = MidletStrings::getInstance();
-
-    protected: MyCommandsFactory* myCommandsFactory = MyCommandsFactory::getInstance();
-
-    protected: GameStrings* gameStrings = GameStrings::getInstance();
-
-    protected: GameAdStateFactory* gameAdStateFactory = GameAdStateFactory::getInstance();
-
-    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
-
-    protected: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: const std::string DISPLAYABLE = " Displayable: ";
-
-    private: const std::string COMMAND_NAME = "command Name/Label: ";
-
-    private: const std::string NO_COMMAND = "No Command";
-
-    private: const std::string NO_DISPLAYABLE = "No Displayable";
-
-    private: const std::string COMMAND_ACTION = (new StringMaker())->append("GameMidlet::")->append(this->midletStrings->COMMAND_ACTION)->toString();
-
-    private: const std::string PAUSE_APP_BACKGROUND = "pauseAppBackground";
-
-    private: const std::string UN_PAUSE_APP_BACKGROUND = "unPauseAppBackground";
-
-    private: AboutCommandProcessor* aboutCommandProcessor = AboutCommandProcessor::getInstance();
-
-    private: WebCommandProcessor* webCommandProcessor = WebCommandProcessor::getInstance();
-
-    private: GameMidletStateFactory* gameMidletStateFactory = GameMidletStateFactory::getInstance();
-
-    protected: TimeDelayHelper* gameStartTimeHelper = new TimeDelayHelper(240);
-
-    private: FullScreenUtil* fullScreenUtil = FullScreenUtil::getInstance();
-
-    private: DebugInterface* debugInterface;
-
-    private: GameCanvasRunnableInterface* allbinaryGameCanvasRunnableInterface = NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE;
-
-    private: Thread* thread = NullThread::NULL_THREAD;
-
-    private: CommandForm* loadGameForm;
-
-    private: bool isFullScreen= false;
-
-    private: bool resized= false;
-
-public: GameMidlet(ClientInformationFactory* clientInformationFactory) : ProgressMidlet(clientInformationFactory){
+GameMidlet::GameMidlet(ClientInformationFactory* clientInformationFactory) : ProgressMidlet(clientInformationFactory), enumerationUtil(EnumerationUtil::getInstance()), basicColorFactory(BasicColorFactory::getInstance()), features(Features::getInstance()), midletStrings(MidletStrings::getInstance()), myCommandsFactory(MyCommandsFactory::getInstance()), gameStrings(GameStrings::getInstance()), gameAdStateFactory(GameAdStateFactory::getInstance()), gameStateFactory(GameStateFactory::getInstance()), tsUtil(TsUtil::getInstance()), COMMAND_ACTION((new StringMaker())->append("GameMidlet::")->append(this->midletStrings->COMMAND_ACTION)->toString()), aboutCommandProcessor(AboutCommandProcessor::getInstance()), webCommandProcessor(WebCommandProcessor::getInstance()), gameMidletStateFactory(GameMidletStateFactory::getInstance()), gameStartTimeHelper(new TimeDelayHelper(240)), fullScreenUtil(FullScreenUtil::getInstance()), allbinaryGameCanvasRunnableInterface(NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE), thread(NullThread::NULL_THREAD){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -403,48 +358,48 @@ this->init();
 }
 
 
-    protected: void init(){
+    auto GameMidlet::init() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void setDemo(){
+    auto GameMidlet::setDemo() -> void{
 
 
 
-                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void createGame(){
+    auto GameMidlet::createGame() -> void{
 
 
 
-                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void mediaShutdown(){
+    auto GameMidlet::mediaShutdown() -> void{
 
 
 
-                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void stopAll(){
+    auto GameMidlet::stopAll() -> void{
 }
 
 
-    protected: void pauseApp(){
+    auto GameMidlet::pauseApp() -> void{
 this->pauseAppBackground(true);
     
 
@@ -455,8 +410,8 @@ gameAdState->getAdvertisements()->stopAll();
 }
 
 
-    protected: void pauseAppBackground(bool background){
-this->logUtil.putF(this->commonStrings.START, this, this->PAUSE_APP_BACKGROUND);
+    auto GameMidlet::pauseAppBackground(bool background) -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->PAUSE_APP_BACKGROUND);
     
 
                         if(this->allbinaryGameCanvasRunnableInterface != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE)
@@ -468,7 +423,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->PAUSE_APP_BACKGROUND);
                                     }
                                 
                         else {
-                            this->logUtil.putF("<<<<<< Null", this, this->PAUSE_APP_BACKGROUND);
+                            this->logUtil->putF("<<<<<< Null", this, this->PAUSE_APP_BACKGROUND);
     
 
                         }
@@ -478,7 +433,7 @@ AllBinarySensorManager::getInstance()->shutdown();
 }
 
 
-    protected: void unPauseApp(){
+    auto GameMidlet::unPauseApp() -> void{
 this->unPauseAppBackground(true);
     
 
@@ -489,8 +444,8 @@ gameAdState->getAdvertisements()->startAll();
 }
 
 
-    protected: void unPauseAppBackground(bool background){
-this->logUtil.putF(this->commonStrings.START, this, this->UN_PAUSE_APP_BACKGROUND);
+    auto GameMidlet::unPauseAppBackground(bool background) -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->UN_PAUSE_APP_BACKGROUND);
     
 AllBinarySensorManager::getInstance()->init();
     
@@ -507,7 +462,7 @@ AllBinarySensorManager::getInstance()->init();
                                     }
                                 
                         else {
-                            this->logUtil.putF("<<<<<< Null", this, this->UN_PAUSE_APP_BACKGROUND);
+                            this->logUtil->putF("<<<<<< Null", this, this->UN_PAUSE_APP_BACKGROUND);
     
 
                         }
@@ -515,7 +470,7 @@ AllBinarySensorManager::getInstance()->init();
 }
 
 
-    protected: void destroyAppInRunnable(bool unconditional, bool isProgress){
+    auto GameMidlet::destroyAppInRunnable(bool unconditional, bool isProgress) -> void{
 
     ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
@@ -544,7 +499,7 @@ this->destroyApp(unconditional);
 }
 
 
-    protected: void destroyApp(bool unconditional){
+    auto GameMidlet::destroyApp(bool unconditional) -> void{
 
     std::string METHOD_NAME = "GameMidlet::destroyApp";;
     
@@ -571,31 +526,31 @@ this->mediaShutdown();
                                     }
                                 
                         else {
-                            this->logUtil.putF("Midlet Managment Error: Midlet Should Only Be Destroyed Once", this, METHOD_NAME);
+                            this->logUtil->putF("Midlet Managment Error: Midlet Should Only Be Destroyed Once", this, METHOD_NAME);
     
 
                         }
                             
-super.destroyApp(true);
+ProgressMidlet::destroyApp(true);
     
-PreLogUtil::put(this->commonStrings.END, this, METHOD_NAME);
+PreLogUtil::put(this->commonStrings->END, this, METHOD_NAME);
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, METHOD_NAME, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, METHOD_NAME, &e);
     
 }
 
-this->logUtil.putF(this->commonStrings.END, this, METHOD_NAME);
+this->logUtil->putF(this->commonStrings->END, this, METHOD_NAME);
     
 }
 
 
                 //@Throws(MIDletStateChangeException.constructor)
             
-    protected: void startApp(){
+    auto GameMidlet::startApp() -> void{
 
         try {
             
@@ -606,7 +561,7 @@ gameAdState->getAdvertisements()->startAll();
 
     std::string START_APP = "startApp";;
     
-this->logUtil.putF(this->commonStrings.START, this, START_APP);
+this->logUtil->putF(this->commonStrings->START, this, START_APP);
     
 
     Object* gameCanvasRunnableInterface = this->allbinaryGameCanvasRunnableInterface;;
@@ -623,7 +578,7 @@ this->setDemo();
                                     }
                                 
                         else {
-                            this->logUtil.putF("GameCanvasRunnableInterface is available", this, START_APP);
+                            this->logUtil->putF("GameCanvasRunnableInterface is available", this, START_APP);
     
 
                         if(gameCanvasRunnableInterface == this->getCurrentDisplayable())
@@ -635,7 +590,7 @@ this->setDemo();
                                     }
                                 
                         else {
-                            this->logUtil.putF("GameCanvasRunnableInterface is not current displayable", this, START_APP);
+                            this->logUtil->putF("GameCanvasRunnableInterface is not current displayable", this, START_APP);
     
 
                         }
@@ -647,7 +602,7 @@ this->setDemo();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "startApp", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "startApp", &e);
     
 this->destroyApp(false);
     
@@ -659,7 +614,7 @@ this->notifyDestroyed();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void commandAction(Command* command, Displayable* displayable){
+    auto GameMidlet::commandAction(Command* command, Displayable* displayable) -> void{
 
         try {
             
@@ -706,7 +661,7 @@ PreLogUtil::put((new StringMaker())->append(this->COMMAND_NAME)->append(label)->
                         
                                     {
                                     
-                        if(this->getDisplay()->getCurrent() != gameCanvasRunnableInterface && allbinaryGameCanvasRunnableInterface->getType() != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE.getType())
+                        if(this->getDisplay()->getCurrent() != gameCanvasRunnableInterface && allbinaryGameCanvasRunnableInterface->getType() != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE->getType())
                         
                                     {
                                     this->setDisplay(dynamic_cast<Displayable*>(gameCanvasRunnableInterface));
@@ -778,7 +733,7 @@ GameMidletEventHandler::getInstance()->fireEvent(new DemoGameMidletEvent(this, D
                         if(command == gameCommandsFactory->START_COMMAND && this->isDemoLoading())
                         
                                     {
-                                    this->logUtil.putF("Trying to Start Game Before Loading Complete", this, this->midletStrings->COMMAND_ACTION);
+                                    this->logUtil->putF("Trying to Start Game Before Loading Complete", this, this->midletStrings->COMMAND_ACTION);
     
 
                                     }
@@ -797,7 +752,7 @@ this->gameMidletStateFactory->setCurrentGameState(this->gameStateFactory->PLAYIN
                                     }
                                 
                         else {
-                            this->logUtil.putF("Starting Game Too Often", this, this->midletStrings->COMMAND_ACTION);
+                            this->logUtil->putF("Starting Game Too Often", this, this->midletStrings->COMMAND_ACTION);
     
 
                         }
@@ -806,7 +761,7 @@ this->gameMidletStateFactory->setCurrentGameState(this->gameStateFactory->PLAYIN
                                     }
                                 
                         else {
-                            this->logUtil.putF("Already in playing state", this, this->COMMAND_ACTION);
+                            this->logUtil->putF("Already in playing state", this, this->COMMAND_ACTION);
     
 
                         }
@@ -1285,7 +1240,7 @@ PreLogUtil::put(BasicMotionGesturesHandler::getInstance()->toString(), this, thi
                                     
     KeyValuePersistance* keyValuePersistance = GamePersistanceSingleton::getInstance();;
     
-keyValuePersistance->delete(this->abeClientInformation, index);
+keyValuePersistance->delete_(this->abeClientInformation, index);
     
 keyValuePersistance->clear();
     
@@ -1319,7 +1274,7 @@ this->unPauseAppBackground(false);
                         if(command == HighScoreUtil::SUBMIT_TEXTBOX_COMMAND)
                         
                                     {
-                                    this->logUtil.putF("Submitted Score", this, this->COMMAND_ACTION);
+                                    this->logUtil->putF("Submitted Score", this, this->COMMAND_ACTION);
     
 
                         if(
@@ -1373,7 +1328,7 @@ virtualKeyboardEventHandler->fireEvent(virtualKeyboardEventHandler->SHOW_EVENT);
                                     }
                                 
                              else 
-                        if(this->tsUtil->compareTo(command->getLabel(), gameCommandsFactory->TOGGLE_FULLSCREEN.getLabel()) == 0)
+                        if(this->tsUtil->compareTo(command->getLabel(), gameCommandsFactory->TOGGLE_FULLSCREEN->getLabel()) == 0)
                         
                                     {
                                     
@@ -1406,7 +1361,7 @@ this->updateFullScreen();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put((new StringMaker())->append(this->commonStrings.EXCEPTION_LABEL)->append(command->getLabel())->toString(), this, this->midletStrings->COMMAND_ACTION, &e);
+this->logUtil->put((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL)->append(command->getLabel())->toString(), this, this->midletStrings->COMMAND_ACTION, &e);
     
 
                         if(command != GameCommandsFactory::getInstance()->EXIT_COMMAND)
@@ -1422,7 +1377,7 @@ this->logUtil.put((new StringMaker())->append(this->commonStrings.EXCEPTION_LABE
 }
 
 
-    private: void updateFullScreen(){
+    auto GameMidlet::updateFullScreen() -> void{
 
     MainFeatureFactory* mainFeatureFactory = MainFeatureFactory::getInstance();;
     
@@ -1449,7 +1404,7 @@ canvas->setFullScreenMode(isFullScreen);
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto GameMidlet::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -1457,7 +1412,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    protected: MyCanvas* getInputMappingInstructionsCanvas(){
+    auto GameMidlet::getInputMappingInstructionsCanvas() -> MyCanvas*{
 
 
 
@@ -1469,7 +1424,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    protected: MyCanvas* getInputMappingCanvas(){
+    auto GameMidlet::getInputMappingCanvas() -> MyCanvas*{
 
 
 
@@ -1481,7 +1436,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    protected: MyCanvas* getAboutCanvas(){
+    auto GameMidlet::getAboutCanvas() -> MyCanvas*{
 
 
 
@@ -1493,35 +1448,35 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    protected: HelpPaintable* getHelpPaintable(){
+    auto GameMidlet::getHelpPaintable() -> HelpPaintable*{
 
 
 
-                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: HighScoresCanvas* createHighScoresCanvas(){
+    auto GameMidlet::createHighScoresCanvas() -> HighScoresCanvas*{
 
 
 
-                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void startGameCanvasRunnableInterface(){
+    auto GameMidlet::startGameCanvasRunnableInterface() -> void{
 
     ThreadFactoryUtil* threadFactoryUtil = ThreadFactoryUtil::getInstance();;
     
 this->thread= threadFactoryUtil->getInstanceGameCanvasRunnable(this->allbinaryGameCanvasRunnableInterface);
     
-this->logUtil.putF((new StringMaker())->append("Thread Priority: ")->appendint(this->thread->getPriority())->toString(), this, "startGameCanvasRunnableInterface");
+this->logUtil->putF((new StringMaker())->append("Thread Priority: ")->appendint(this->thread->getPriority())->toString(), this, "startGameCanvasRunnableInterface");
     
 this->allbinaryGameCanvasRunnableInterface->setThread(this->thread);
     
@@ -1532,8 +1487,8 @@ threadFactoryUtil->start(this->thread);
 
                 //@Throws(Exception.constructor)
             
-    protected: void stopGameCanvasRunnableInterface(){
-this->logUtil.putF(this->commonStrings.START, this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
+    auto GameMidlet::stopGameCanvasRunnableInterface() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
     
 GameNotificationEventHandler::getInstance()->removeAllListeners();
     
@@ -1548,7 +1503,7 @@ GameEventHandlerUtil::removeAllListeners();
                         if(gameCanvasRunnableInterface != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE)
                         
                                     {
-                                    this->logUtil.putF((new StringMaker())->append("Set Running False: ")->append(gameCanvasRunnableInterface->toString())->toString(), this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
+                                    this->logUtil->putF((new StringMaker())->append("Set Running False: ")->append(gameCanvasRunnableInterface->toString())->toString(), this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
     
 gameCanvasRunnableInterface->setRunning(false);
     
@@ -1556,7 +1511,7 @@ gameCanvasRunnableInterface->setRunning(false);
                                     }
                                 
                         else {
-                            this->logUtil.putF("StopGame - Could Not Stop", this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
+                            this->logUtil->putF("StopGame - Could Not Stop", this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
     
 
                         }
@@ -1581,12 +1536,12 @@ ThreadUtil::getInstance()->join(this->thread);
 
                         }
                             
-this->logUtil.putF(this->commonStrings.END, this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
+this->logUtil->putF(this->commonStrings->END, this, this->gameStrings->STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
     
 }
 
 
-    public: GameCanvasRunnableInterface* getGameCanvasRunnableInterface(){
+    auto GameMidlet::getGameCanvasRunnableInterface() -> GameCanvasRunnableInterface*{
 
 
 
@@ -1596,13 +1551,13 @@ this->logUtil.putF(this->commonStrings.END, this, this->gameStrings->STOP_GAME_C
 }
 
 
-    public: void setGameCanvasRunnableInterface(GameCanvasRunnableInterface* gameCanvasRunnableInterface){
+    auto GameMidlet::setGameCanvasRunnableInterface(GameCanvasRunnableInterface* gameCanvasRunnableInterface) -> void{
 this->allbinaryGameCanvasRunnableInterface= gameCanvasRunnableInterface;
     
 }
 
 
-    protected: AllBinaryGameLayerManager* createGameLayerManager(){
+    auto GameMidlet::createGameLayerManager() -> AllBinaryGameLayerManager*{
 
     GameInfo* gameInfo = new GameInfo(GameTypeFactory::getInstance()->SINGLE_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 1, 1);;
     
@@ -1615,7 +1570,7 @@ this->allbinaryGameCanvasRunnableInterface= gameCanvasRunnableInterface;
 }
 
 
-    protected: CommandForm* getGameOptionsForm(){
+    auto GameMidlet::getGameOptionsForm() -> CommandForm*{
 
     AllBinaryGameLayerManager* layerManager = this->createGameLayerManager();;
     
@@ -1630,8 +1585,8 @@ this->allbinaryGameCanvasRunnableInterface= gameCanvasRunnableInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void save(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.SAVE);
+    auto GameMidlet::save() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->SAVE);
     
 
     ABHashtable<Object*, Object*>* hashtable = this->getCurrentStateHashtable();;
@@ -1643,8 +1598,8 @@ GamePersistanceSingleton::getInstance()->save(this->abeClientInformation, hashta
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*>* getCurrentStateHashtable(){
-this->logUtil.putF(this->commonStrings.START, this, "getCurrentStateHashtable");
+    auto GameMidlet::getCurrentStateHashtable() -> ABHashtable<Object*, Object*>*{
+this->logUtil->putF(this->commonStrings->START, this, "getCurrentStateHashtable");
     
 
     ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
@@ -1683,13 +1638,13 @@ hashtable->put(key, currentHashtable->get(key));
 }
 
 
-    public: void setLoadGameForm(LoadGameForm* loadGameForm){
+    auto GameMidlet::setLoadGameForm(LoadGameForm* loadGameForm) -> void{
 this->loadGameForm= loadGameForm;
     
 }
 
 
-    public: CommandForm* getLoadGameForm(){
+    auto GameMidlet::getLoadGameForm() -> CommandForm*{
 
 
 
@@ -1699,13 +1654,13 @@ this->loadGameForm= loadGameForm;
 }
 
 
-    public: void setResized(bool resized){
+    auto GameMidlet::setResized(bool resized) -> void{
 this->resized= resized;
     
 }
 
 
-    public: bool isResized(){
+    auto GameMidlet::isResized() -> bool{
 
 
 
@@ -1715,9 +1670,7 @@ this->resized= resized;
 }
 
 
-    private: bool startedBefore = false;
-
-    public: bool isDemoLoading(){
+    auto GameMidlet::isDemoLoading() -> bool{
 
                         if(this->startedBefore)
                         
@@ -1768,7 +1721,6 @@ this->resized= resized;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLET_CPP

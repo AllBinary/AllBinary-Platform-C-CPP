@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOLIMITEDCOMMANDTEXTITEMARRAYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOLIMITEDCOMMANDTEXTITEMARRAYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/DemoLimitedCommandTextItemArrayFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,25 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DemoLimitedCommandTextItemArrayFactory
-            : public Object
-         {
 
-    private: static DemoLimitedCommandTextItemArrayFactory* instance() { static std::unique_ptr<DemoLimitedCommandTextItemArrayFactory> value(new DemoLimitedCommandTextItemArrayFactory()); return value.get(); }
+DemoLimitedCommandTextItemArrayFactory::DemoLimitedCommandTextItemArrayFactory() : commandTextItemArrayFactory(new CommandTextItemArrayFactory(new LimitCommandsVisitor())) {
+        }
+        auto DemoLimitedCommandTextItemArrayFactory::instance_owner() -> DemoLimitedCommandTextItemArrayFactory* { static std::unique_ptr<DemoLimitedCommandTextItemArrayFactory> value(new DemoLimitedCommandTextItemArrayFactory()); return value.get(); }
+DemoLimitedCommandTextItemArrayFactory* DemoLimitedCommandTextItemArrayFactory::instance = DemoLimitedCommandTextItemArrayFactory::instance_owner();
 
-    public: static DemoLimitedCommandTextItemArrayFactory* getInstance(){
+    auto DemoLimitedCommandTextItemArrayFactory::getInstance() -> DemoLimitedCommandTextItemArrayFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoLimitedCommandTextItemArrayFactory::instance();
+                        return DemoLimitedCommandTextItemArrayFactory::instance;
     
 }
 
 
-    private: CommandTextItemArrayFactory* commandTextItemArrayFactory = new CommandTextItemArrayFactory(new LimitCommandsVisitor());
-
-    public: CommandTextItemArrayFactory* getCommandTextItemArrayFactory(){
+    auto DemoLimitedCommandTextItemArrayFactory::getCommandTextItemArrayFactory() -> CommandTextItemArrayFactory*{
 
 
 
@@ -79,7 +87,6 @@ class DemoLimitedCommandTextItemArrayFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOLIMITEDCOMMANDTEXTITEMARRAYFACTORY_CPP

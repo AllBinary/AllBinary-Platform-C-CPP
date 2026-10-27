@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGINSTRUCTIONSCANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGINSTRUCTIONSCANVAS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
-#include <org/allbinary/game/paint/ColorFillBasePaintable.h>
-
-      
-#include <org/allbinary/game/paint/ColorFillPaintableFactory.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/graphics/draw/DrawStringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class Command;
+class CommandListener;
+class Graphics;
+class AllBinaryGameLayerManager;
+class ColorFillBasePaintable;
+class ColorFillPaintableFactory;
+class Anchor;
+class DrawStringUtil;
+class StringUtil;
 
 
 
@@ -78,26 +65,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputMappingInstructionsCanvas: public GameCommandCanvas {
 
-    public: static Command* DISPLAY() { static std::unique_ptr<Command> value(new Command("Help", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
+    private: static Command* DISPLAY_owner();
+    public: static Command* DISPLAY;
 
-    public: static Command* CLOSE() { static std::unique_ptr<Command> value(new Command("Close", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
+    private: static Command* CLOSE_owner();
+    public: static Command* CLOSE;
 
     public: static inline const std::string NAME = "GameInputMappingInstructionsCanvas";
 
-    private: DrawStringUtil* drawStringUtil = DrawStringUtil::getInstance();
+    private: DrawStringUtil* drawStringUtil;
 
-    protected: const std::string TITLE = "Input Instructions";
+    /*protected*/ public: const std::string TITLE = "Input Instructions";
 
-    private: const std::vector<std::string> instructions = 
-                                                        {
-                                                            "Add Input Mapping:","1. Select the desired action by generating a currently defined input for a given action.","(Example: Press the '1' key to select the Fire action)","2. Make the newly desired input for the selected action.","(Example: Press 'f' to add it to the selected action)","Note: If the input is already mapped to another action then it will not be added. You","will need to deleted from the other action before adding it to another.","Warning: Not all keys map for a given platform and show as Unknown.",StringUtil::getInstance()->EMPTY_STRING,"Remove Input Mapping:","1. Select the desired action by generating a currently defined input for a given action.","(Example: Press the key '1' to select the Fire action)","2. Select a mapped input for the selected action.","(Example: Press the key '1' to select the '1' key input for the selected Fire action)","3. Press the Delete Key."
-                                                        };
+    private: std::vector<std::string> instructions;
 
     private: ColorFillBasePaintable* colorFillPaintable;
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
 public: GameInputMappingInstructionsCanvas(CommandListener* commandListener, AllBinaryGameLayerManager* allBinaryGameLayerManager);
 
@@ -111,3 +101,40 @@ public: GameInputMappingInstructionsCanvas(CommandListener* commandListener, All
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGINSTRUCTIONSCANVAS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGINSTRUCTIONSCANVAS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGINSTRUCTIONSCANVAS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/game/paint/ColorFillBasePaintable.h>)
+#include <org/allbinary/game/paint/ColorFillBasePaintable.h>
+#endif
+#if __has_include(<org/allbinary/game/paint/ColorFillPaintableFactory.h>)
+#include <org/allbinary/game/paint/ColorFillPaintableFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/draw/DrawStringUtil.h>)
+#include <org/allbinary/graphics/draw/DrawStringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/GameCommandCanvas.h")
+#include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
+#endif
+
+        #endif
+    

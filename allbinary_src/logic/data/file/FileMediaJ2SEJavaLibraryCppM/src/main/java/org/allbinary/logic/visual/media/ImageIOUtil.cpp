@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_IMAGEIOUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_IMAGEIOUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/media/ImageIOUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageIOUtil
-            : public Object
-         {
 
+ImageIOUtil::ImageIOUtil() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static BufferedImage* read(AbFile* file){
+    auto ImageIOUtil::read(AbFile* file) -> BufferedImage*{
 
 
 
@@ -66,7 +76,7 @@ class ImageIOUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static bool write(RenderedImage* renderedImage, std::string name, AbFile* file){
+    auto ImageIOUtil::write(RenderedImage* renderedImage, std::string name, AbFile* file) -> bool{
 
 
 
@@ -76,7 +86,6 @@ class ImageIOUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_IMAGEIOUTIL_CPP

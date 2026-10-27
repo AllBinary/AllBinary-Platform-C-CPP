@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/ScoreableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,15 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScoreableInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getPoints() = 0;
 
-    public: virtual void addPoints(int32_t points) = 0;
 
-    public: virtual void removePoints(int32_t points) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACE_CPP

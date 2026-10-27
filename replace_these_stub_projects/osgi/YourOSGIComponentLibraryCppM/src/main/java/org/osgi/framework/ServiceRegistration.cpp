@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_OSGI_FRAMEWORK_SERVICEREGISTRATION_CPP
+        #define ORG_OSGI_FRAMEWORK_SERVICEREGISTRATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/osgi/framework/ServiceRegistration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +40,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/osgi/framework/ServiceReference.h"
 
-class ServiceRegistration {
+//Interface - declared in the header
 
-    public: virtual ServiceReference* getReference() = 0;
 
-};
 
-            
-
+        #endif //ORG_OSGI_FRAMEWORK_SERVICEREGISTRATION_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DISPOSALUTIL_H
         #define ORG_ALLBINARY_DISPOSALUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/System.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/eclipse/swt/graphics/Resource.h>
-
-      
-#include <org/microemu/device/swt/SwtMutableImage.h>
-
-      
+class Image;
+class CommonStrings;
+class Resource;
+class SwtMutableImage;
 
 
 
@@ -62,15 +59,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DisposalUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static DisposalUtil* instance() { static std::unique_ptr<DisposalUtil> value(new DisposalUtil()); return value.get(); }
+    private: static DisposalUtil* instance_owner();
+    private: static DisposalUtil* instance;
 
     public: static DisposalUtil* getInstance();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+
+            
+    public: DisposalUtil();
+        
+    private: CommonStrings* commonStrings;
 
     public: void disposeImage(Image* image);
 
@@ -82,3 +88,22 @@ class DisposalUtil
 
 
         #endif //ORG_ALLBINARY_DISPOSALUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DISPOSALUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_DISPOSALUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/eclipse/swt/graphics/Resource.h>)
+#include <org/eclipse/swt/graphics/Resource.h>
+#endif
+#if __has_include(<org/microemu/device/swt/SwtMutableImage.h>)
+#include <org/microemu/device/swt/SwtMutableImage.h>
+#endif
+
+        #endif
+    

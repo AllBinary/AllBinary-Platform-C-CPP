@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_BASICDATATABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_BASICDATATABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/BasicDataTableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,13 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicDataTableInterface {
+//Interface - declared in the header
 
-    public: virtual std::string createTable() = 0;
 
-    public: virtual std::string dropTable() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_BASICDATATABLEINTERFACE_CPP

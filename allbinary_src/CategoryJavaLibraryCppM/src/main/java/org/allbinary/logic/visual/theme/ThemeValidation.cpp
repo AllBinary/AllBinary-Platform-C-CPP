@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/theme/ThemeValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -145,29 +155,8 @@
         #include "org/allbinary/logic/visual/theme/ThemeInterface.h"
 #include "org/allbinary/logic/visual/theme/ThemeData.h"
 
-class ThemeValidation
-            : public Object
-        , public ThemeInterface, public ValidationInterface, public DomNodeInterface, public CompositeTransformInfoInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: TransformInfoInterface* transformInfoInterface;
-
-    private: ValidationInterface* styleValidationInterface;
-
-    private: std::string themeName;
-
-    private: std::string themePreviewImageName;
-
-    private: AbPath* webAppAbPath;
-
-    private: AbPath* categoryAbPath;
-
-    private: AbPath* fileAbPath;
-
-public: ThemeValidation(TransformInfoInterface* transformInfoInterface, CssStyleValidation* cssStyleValidation, std::string categoryThemePath){
+ThemeValidation::ThemeValidation(TransformInfoInterface* transformInfoInterface, CssStyleValidation* cssStyleValidation, std::string categoryThemePath) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->transformInfoInterface= transformInfoInterface;
     
 
@@ -187,7 +176,7 @@ this->init();
 }
 
 
-public: ThemeValidation(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* hashMap){
+ThemeValidation::ThemeValidation(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->transformInfoInterface= transformInfoInterface;
     
 
@@ -204,7 +193,7 @@ this->categoryAbPath= pathUtil->removeNameFromPath(categoryThemeAbPath->toString
 this->themeName= pathData->getNameFromPath(categoryThemeAbPath->toString());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -232,7 +221,7 @@ this->init();
 }
 
 
-public: ThemeValidation(StoreThemeCategoryInterface* storeThemeCategoryInterface, Node* node){
+ThemeValidation::ThemeValidation(StoreThemeCategoryInterface* storeThemeCategoryInterface, Node* node) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->transformInfoInterface= storeThemeCategoryInterface->getTransformInfoInterface();
     
 this->categoryAbPath= storeThemeCategoryInterface->getPath();
@@ -262,7 +251,7 @@ this->init(storeThemeCategoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(){
+    auto ThemeValidation::init() -> void{
 
     CategoryFactoryInterface* categoryFactoryInterface = new StoreThemeCategoryFactory(this->getTransformInfoInterface());;
     
@@ -279,7 +268,7 @@ this->init(rootStoreThemeCategoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(StoreThemeCategoryInterface* storeThemeCategoryInterface){
+    auto ThemeValidation::init(StoreThemeCategoryInterface* storeThemeCategoryInterface) -> void{
 this->fileAbPath= new AbPath(storeThemeCategoryInterface->getRootFilePath()->toString() +this->categoryAbPath->toString(), StringUtil::getInstance()->EMPTY_STRING);
     
 this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
@@ -289,7 +278,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto ThemeValidation::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -299,7 +288,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 }
 
 
-    public: std::string getName(){
+    auto ThemeValidation::getName() -> std::string{
 
 
 
@@ -309,7 +298,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 }
 
 
-    public: std::string getPreviewImageName(){
+    auto ThemeValidation::getPreviewImageName() -> std::string{
 
 
 
@@ -319,7 +308,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 }
 
 
-    public: std::string getPreviewImagePath(){
+    auto ThemeValidation::getPreviewImagePath() -> std::string{
 
 
 
@@ -329,7 +318,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 }
 
 
-    public: std::string getPath(){
+    auto ThemeValidation::getPath() -> std::string{
 
 
 
@@ -341,7 +330,7 @@ this->webAppAbPath= storeThemeCategoryInterface->getWebAppPath();
 
                 //@Throws(Exception.constructor)
             
-    public: CssStyleValidation* getCssStyleValidation(){
+    auto ThemeValidation::getCssStyleValidation() -> CssStyleValidation*{
 
                         if(this->styleValidationInterface == 
                                     nullptr
@@ -371,14 +360,14 @@ this->styleValidationInterface= new CssStyleValidation(document);
 }
 
 
-    public: bool isValid(){
+    auto ThemeValidation::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
@@ -414,10 +403,10 @@ this->styleValidationInterface= new CssStyleValidation(document);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("End: " +isValid, this, this->commonStrings->IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("End: ") +JavaString::valueOf(isValid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -433,7 +422,7 @@ this->styleValidationInterface= new CssStyleValidation(document);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
@@ -452,7 +441,7 @@ this->styleValidationInterface= new CssStyleValidation(document);
 }
 
 
-    public: std::string validationInfo(){
+    auto ThemeValidation::validationInfo() -> std::string{
 
         try {
             
@@ -471,7 +460,7 @@ stringBuffer->append("Theme Validation Error");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -490,7 +479,7 @@ stringBuffer->append("Theme Validation Error");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto ThemeValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -500,7 +489,7 @@ stringBuffer->append("Theme Validation Error");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto ThemeValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -510,7 +499,7 @@ stringBuffer->append("Theme Validation Error");
 }
 
 
-    public: Object* getKey(){
+    auto ThemeValidation::getKey() -> Object*{
 
 
 
@@ -520,7 +509,7 @@ stringBuffer->append("Theme Validation Error");
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto ThemeValidation::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -541,7 +530,7 @@ vector->add(this->getPreviewImagePath());
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto ThemeValidation::toHashMap() -> HashMap<Object*, Object*>*{
 
     ThemeData* themeData = ThemeData::getInstance();;
     
@@ -567,7 +556,7 @@ hashMap->put(themeData->PREVIEW_IMAGE_PATH, this->getPreviewImagePath());
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ThemeValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createNameValueNodes(document, ThemeData::getInstance()->NAME, this->toHashMap());;
     
@@ -585,7 +574,6 @@ node->appendChild(domNodeInterface->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEVALIDATION_CPP

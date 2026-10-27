@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/sequence/SequenceAI.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,13 +84,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SequenceAI: public ArrayAI {
 
-    private: static inline const std::string SEQUENCE_AI = "Sequence AI";
-
-    private: int32_t index= 0;
-
-public: SequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : ArrayAI(artificialIntelligenceInterfaceArray, ownerLayerInterface, gameInput){
+SequenceAI::SequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : ArrayAI(artificialIntelligenceInterfaceArray, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,13 +97,13 @@ public: SequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntel
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto SequenceAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 this->getArtificialIntelligenceInterface()[this->index].processAI(allBinaryLayerManager);
     
 }
 
 
-    public: void next(){
+    auto SequenceAI::next() -> void{
 this->index++;
     
 
@@ -119,7 +124,7 @@ artificialIntelligenceTransitionInterface->transition();
 }
 
 
-    public: int32_t getIndex(){
+    auto SequenceAI::getIndex() -> int32_t{
 
 
 
@@ -129,13 +134,13 @@ artificialIntelligenceTransitionInterface->transition();
 }
 
 
-    public: void setIndex(int32_t index){
+    auto SequenceAI::setIndex(int32_t index) -> void{
 this->index= index;
     
 }
 
 
-    public: ArtificialIntelligenceInterface* getSelectedArtificialIntelligenceInterface(){
+    auto SequenceAI::getSelectedArtificialIntelligenceInterface() -> ArtificialIntelligenceInterface*{
 
 
 
@@ -145,7 +150,7 @@ this->index= index;
 }
 
 
-    public: std::string getName(){
+    auto SequenceAI::getName() -> std::string{
 
 
 
@@ -155,11 +160,11 @@ this->index= index;
 }
 
 
-    public: std::string toString(){
+    auto SequenceAI::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toString());
+stringBuffer->append(ArrayAI::toString());
     
 stringBuffer->append(" Selected AI: ");
     
@@ -174,7 +179,6 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getSelectedArtifi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_CPP

@@ -21,6 +21,11 @@
         #ifndef VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/user/commerce/inventory/item/BasicItem.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>
-
-      
+class BasicItem;
+class ItemInterface;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class StringUtil;
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -70,6 +61,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/InventoryItemView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NewValidationView: public InventoryItemView, public ValidationComponentInterface {
 
 public: NewValidationView(TransformInfoInterface* transformInfoInterface);
@@ -88,3 +83,34 @@ public: NewValidationView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/inventory/item/BasicItem.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItem.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/admin/inventory/InventoryItemView.h")
+#include "views/admin/inventory/InventoryItemView.h"
+#endif
+
+        #endif
+    

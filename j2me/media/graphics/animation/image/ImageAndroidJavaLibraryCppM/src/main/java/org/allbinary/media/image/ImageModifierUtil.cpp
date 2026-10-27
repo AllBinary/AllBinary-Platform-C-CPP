@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageModifierUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,11 +72,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageModifierUtil
-            : public Object
-         {
 
-    public: static ImageModifierUtil* getInstanceOrCreate(){
+ImageModifierUtil::ImageModifierUtil() : paint(new Paint(Paint::ANTI_ALIAS_FLAG)) {
+        }
+        
+    auto ImageModifierUtil::getInstanceOrCreate() -> ImageModifierUtil*{
 
 
 
@@ -76,21 +86,19 @@ class ImageModifierUtil
 }
 
 
-    public: Paint* paint = new Paint(Paint::ANTI_ALIAS_FLAG);
-
-    public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
-this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), PorterDuff::Mode.SRC_IN));
+    auto ImageModifierUtil::setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
+this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), PorterDuff::Mode->SRC_IN));
     
 }
 
 
-    public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
-this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), PorterDuff::Mode.SRC_IN));
+    auto ImageModifierUtil::changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
+this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), PorterDuff::Mode->SRC_IN));
     
 }
 
 
-    public: void setAlpha(Image* originalImage, Image* image, int32_t imageIndex, int32_t alphaInt){
+    auto ImageModifierUtil::setAlpha(Image* originalImage, Image* image, int32_t imageIndex, int32_t alphaInt) -> void{
 
                         if(alphaInt != this->paint->getAlpha())
                         
@@ -103,7 +111,7 @@ this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), Po
 }
 
 
-    public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray){
+    auto ImageModifierUtil::getImageArray(std::vector<Image*> originalImageArray) -> std::vector<Image*>{
 
 
 
@@ -113,15 +121,14 @@ this->paint->setColorFilter(new PorterDuffColorFilter(basicColor->intValue(), Po
 }
 
 
-    public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image){
+    auto ImageModifierUtil::handleImage(std::vector<Image*> imageArray, int32_t index, Image* image) -> void{
 }
 
 
-    public: void reset(){
+    auto ImageModifierUtil::reset() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP

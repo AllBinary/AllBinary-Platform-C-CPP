@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/AllBinarySpriteRotationAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,72 +75,70 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/sprite/HackRotationSpriteIndexedAnimation.h"
 
-class AllBinarySpriteRotationAnimation: public HackRotationSpriteIndexedAnimation {
 
-public: AllBinarySpriteRotationAnimation(Sprite* sprite, Image* image, AnimationBehavior* animationBehavior) : HackRotationSpriteIndexedAnimation(sprite, image, AngleInfo::getInstance((AngleFactory::getInstance()->TOTAL_ANGLE /sprite->getRawFrameCount())), animationBehavior){
+AllBinarySpriteRotationAnimation::AllBinarySpriteRotationAnimation(Sprite* sprite, Image* image, AnimationBehavior* animationBehavior) : HackRotationSpriteIndexedAnimation(sprite, image, AngleInfo::getInstance((AngleFactory::getInstance()->TOTAL_ANGLE /sprite->getRawFrameCount())), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->angleInfo.adjustAngle(this->sprite.getFrame());
+this->angleInfo->adjustAngle(this->sprite->getFrame());
     
 }
 
 
-    public: void nextRotation(){
-this->sprite.nextFrame();
+    auto AllBinarySpriteRotationAnimation::nextRotation() -> void{
+this->sprite->nextFrame();
     
-this->angleInfo.adjustAngle(this->sprite.getFrame());
-    
-}
-
-
-    public: void previousRotation(){
-this->sprite.prevFrame();
-    
-this->angleInfo.adjustAngle(this->sprite.getFrame());
+this->angleInfo->adjustAngle(this->sprite->getFrame());
     
 }
 
 
-    public: void setFrameByDirection(Direction* direction){
+    auto AllBinarySpriteRotationAnimation::previousRotation() -> void{
+this->sprite->prevFrame();
+    
+this->angleInfo->adjustAngle(this->sprite->getFrame());
+    
+}
 
-    Angle* angle = this->directionUtil.getFrameAngle(direction);;
+
+    auto AllBinarySpriteRotationAnimation::setFrameByDirection(Direction* direction) -> void{
+
+    Angle* angle = this->directionUtil->getFrameAngle(direction);;
     
 this->adjustFrameToAngle(angle);
     
 }
 
 
-    public: void setFrameToAngle(Angle* angle){
+    auto AllBinarySpriteRotationAnimation::setFrameToAngle(Angle* angle) -> void{
 this->adjustFrameToAngle(angle);
     
 }
 
 
-    public: void setFrame(int32_t index){
-this->sprite.setFrame(index);
+    auto AllBinarySpriteRotationAnimation::setFrame(int32_t index) -> void{
+this->sprite->setFrame(index);
     
-this->angleInfo.adjustAngle(this->getFrame());
+this->angleInfo->adjustAngle(this->getFrame());
     
 }
 
 
-    public: void adjustFrameToAngle(Angle* angle){
+    auto AllBinarySpriteRotationAnimation::adjustFrameToAngle(Angle* angle) -> void{
 this->adjustFrame(angle->getValue());
     
 }
 
 
-    public: void adjustFrame(int16_t angle){
-this->setFrame(this->frameUtil.getFrameForAngle(angle, static_cast<int32_t>(this->angleInfo.getAngleIncrementInfo()->getAngleIncrement())));
+    auto AllBinarySpriteRotationAnimation::adjustFrame(int16_t angle) -> void{
+this->setFrame(this->frameUtil->getFrameForAngle(angle, static_cast<int32_t>(this->angleInfo->getAngleIncrementInfo()->getAngleIncrement())));
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATION_CPP

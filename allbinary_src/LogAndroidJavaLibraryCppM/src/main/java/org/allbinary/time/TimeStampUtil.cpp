@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_TIMESTAMPUTIL_CPP
+        #define ORG_ALLBINARY_TIME_TIMESTAMPUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/TimeStampUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,27 +61,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //ActualPlatform
-/*actual*/ class TimeStampUtil
-            : public Object
-         {
+auto TimeStampUtil::instance_owner() -> TimeStampUtil* { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
+TimeStampUtil* TimeStampUtil::instance = TimeStampUtil::instance_owner();
 
-    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
-
-    /*actual*/ public: static TimeStampUtil* getInstance(){
+    /*actual*/ auto TimeStampUtil::getInstance() -> TimeStampUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeStampUtil::instance();
+                        return TimeStampUtil::instance;
     
 }
 
 
-private: TimeStampUtil(){
+TimeStampUtil::TimeStampUtil(){
 }
 
 
-    /*actual*/ public: std::string getAsString(){
+    /*actual*/ auto TimeStampUtil::getAsString() -> std::string{
 
     Calendar* calendar = Calendar::getInstance();;
     
@@ -87,7 +94,6 @@ private: TimeStampUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_TIMESTAMPUTIL_CPP

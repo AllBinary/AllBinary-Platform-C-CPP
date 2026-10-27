@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageModifierUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,35 +63,35 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageModifierUtil
-            : public Object
-         {
 
-    private: static ImageModifierUtil* instance() { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
+ImageModifierUtil::ImageModifierUtil() {
+        }
+        auto ImageModifierUtil::instance_owner() -> ImageModifierUtil* { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
+ImageModifierUtil* ImageModifierUtil::instance = ImageModifierUtil::instance_owner();
 
-    public: static ImageModifierUtil* getInstanceOrCreate(){
+    auto ImageModifierUtil::getInstanceOrCreate() -> ImageModifierUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageModifierUtil::instance();
+                        return ImageModifierUtil::instance;
     
 }
 
 
-    public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+    auto ImageModifierUtil::setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
 }
 
 
-    public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+    auto ImageModifierUtil::changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
 }
 
 
-    public: void setAlpha(Image* originalImage, Image* image, int32_t imageIndex, int32_t alphaInt){
+    auto ImageModifierUtil::setAlpha(Image* originalImage, Image* image, int32_t imageIndex, int32_t alphaInt) -> void{
 }
 
 
-    public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray){
+    auto ImageModifierUtil::getImageArray(std::vector<Image*> originalImageArray) -> std::vector<Image*>{
 
 
 
@@ -91,15 +101,14 @@ class ImageModifierUtil
 }
 
 
-    public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image){
+    auto ImageModifierUtil::handleImage(std::vector<Image*> imageArray, int32_t index, Image* image) -> void{
 }
 
 
-    public: void reset(){
+    auto ImageModifierUtil::reset() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP

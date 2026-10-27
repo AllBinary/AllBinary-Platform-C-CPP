@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_MACHINEACCESSCONTROLADDRESS_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_MACHINEACCESSCONTROLADDRESS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/linux/MachineAccessControlAddress.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,15 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MachineAccessControlAddress
-            : public Object
-        , public HardwareComponentInterface, public MachineAccessControlAddressInterface {
 
-public: MachineAccessControlAddress(){
+MachineAccessControlAddress::MachineAccessControlAddress(){
 }
 
 
-    public: bool compareTo(HardwareComponentInterface* componentInterface){
+    auto MachineAccessControlAddress::compareTo(HardwareComponentInterface* componentInterface) -> bool{
 
 
 
@@ -72,7 +79,7 @@ public: MachineAccessControlAddress(){
 }
 
 
-    public: std::string toString(){
+    auto MachineAccessControlAddress::toString() -> std::string{
 
 
 
@@ -82,7 +89,6 @@ public: MachineAccessControlAddress(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_MACHINEACCESSCONTROLADDRESS_CPP

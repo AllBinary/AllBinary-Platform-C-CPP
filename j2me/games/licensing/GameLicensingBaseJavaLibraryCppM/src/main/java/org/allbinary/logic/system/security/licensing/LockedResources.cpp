@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDRESOURCES_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LockedResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LockedResources
-            : public Object
-         {
 
-    private: static LockedResources* instance() { static std::unique_ptr<LockedResources> value(new LockedResources()); return value.get(); }
+LockedResources::LockedResources() {
+        }
+        auto LockedResources::instance_owner() -> LockedResources* { static std::unique_ptr<LockedResources> value(new LockedResources()); return value.get(); }
+LockedResources* LockedResources::instance = LockedResources::instance_owner();
 
-    public: static LockedResources* getInstance(){
+    auto LockedResources::getInstance() -> LockedResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LockedResources::instance();
+                        return LockedResources::instance;
     
 }
 
 
-    public: const std::string LOCKED_DEMO_GAME_FEATURE_RESOURCE = "/locked_demo_game_feature_64_by_64.png";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDRESOURCES_CPP

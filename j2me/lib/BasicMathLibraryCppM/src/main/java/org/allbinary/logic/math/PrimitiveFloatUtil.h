@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PrimitiveFloatUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static std::vector<float> getArrayInstance();
@@ -64,3 +73,10 @@ private: PrimitiveFloatUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_H_COMPLETE
+        
+        #endif
+    

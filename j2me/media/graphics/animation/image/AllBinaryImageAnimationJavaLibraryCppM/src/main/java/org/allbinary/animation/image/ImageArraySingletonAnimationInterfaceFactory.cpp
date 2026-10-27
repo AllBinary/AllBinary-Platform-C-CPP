@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageArraySingletonAnimationInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,9 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageArrayAnimation.h"
 
-class ImageArraySingletonAnimationInterfaceFactory: public SingletonAnimationInterfaceFactory {
 
-public: ImageArraySingletonAnimationInterfaceFactory(std::vector<Image*> imageArray) : SingletonAnimationInterfaceFactory(new ImageArrayAnimation(imageArray, AnimationBehavior::getInstance())){
+ImageArraySingletonAnimationInterfaceFactory::ImageArraySingletonAnimationInterfaceFactory(std::vector<Image*> imageArray) : SingletonAnimationInterfaceFactory(new ImageArrayAnimation(imageArray, AnimationBehavior::getInstance())){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +87,6 @@ public: ImageArraySingletonAnimationInterfaceFactory(std::vector<Image*> imageAr
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_CPP

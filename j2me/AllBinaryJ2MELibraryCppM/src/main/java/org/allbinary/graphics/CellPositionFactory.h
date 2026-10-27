@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringMaker;
+class CommonStrings;
 
 
 
@@ -60,21 +59,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/CellPosition.h"
+        class CellPosition;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CellPositionFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static CellPositionFactory* SINGLETON() { static std::unique_ptr<CellPositionFactory> value(new CellPositionFactory()); return value.get(); }
+    private: static CellPositionFactory* SINGLETON_owner();
+    private: static CellPositionFactory* SINGLETON;
 
     public: static CellPositionFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    public: CellPosition* NONE = new CellPosition( -1,  -1,  -1,  -1);
+    public: CellPosition* NONE;
 
-    private: std::vector<std::vector<CellPosition*>> cellPositionArray = std::vector<std::vector<CellPosition*>>(0, std::vector<CellPosition*>(0));
+    private: std::vector<std::vector<CellPosition*>> cellPositionArray;
 
     private: int32_t columns= 0;
 
@@ -98,3 +102,22 @@ private: CellPositionFactory();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/graphics/CellPosition.h")
+#include "org/allbinary/graphics/CellPosition.h"
+#endif
+
+        #endif
+    

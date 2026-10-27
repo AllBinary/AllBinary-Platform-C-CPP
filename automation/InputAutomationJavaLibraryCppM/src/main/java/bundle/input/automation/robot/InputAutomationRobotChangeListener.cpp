@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_CPP
+        #define BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/robot/InputAutomationRobotChangeListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationRobotChangeListener {
+//Interface - declared in the header
 
-    public: virtual void onAdd(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent) = 0;
 
-    public: virtual void onRemove(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent) = 0;
 
-};
-
-            
-
+        #endif //BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_CPP

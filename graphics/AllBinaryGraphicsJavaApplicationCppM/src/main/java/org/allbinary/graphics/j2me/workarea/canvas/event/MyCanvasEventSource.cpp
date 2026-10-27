@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSOURCE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventSource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MyCanvasEventSource
-            : public Object
-         {
 
-    private: std::string command;
-
-    private: MutableTreeNode* treeNode;
-
-    private: double angle = 0;
-
-public: MyCanvasEventSource(std::string command, MutableTreeNode* treeNode){
+MyCanvasEventSource::MyCanvasEventSource(std::string command, MutableTreeNode* treeNode){
 this->command= command;
     
 this->treeNode= treeNode;
@@ -66,7 +67,7 @@ this->treeNode= treeNode;
 }
 
 
-public: MyCanvasEventSource(std::string command, double angle, MutableTreeNode* treeNode){
+MyCanvasEventSource::MyCanvasEventSource(std::string command, double angle, MutableTreeNode* treeNode){
 this->command= command;
     
 this->treeNode= treeNode;
@@ -76,7 +77,7 @@ this->setAngle(angle);
 }
 
 
-    public: std::string getCommand(){
+    auto MyCanvasEventSource::getCommand() -> std::string{
 
 
 
@@ -86,7 +87,7 @@ this->setAngle(angle);
 }
 
 
-    public: MutableTreeNode* getTreeNode(){
+    auto MyCanvasEventSource::getTreeNode() -> MutableTreeNode*{
 
 
 
@@ -96,7 +97,7 @@ this->setAngle(angle);
 }
 
 
-    public: double getAngle(){
+    auto MyCanvasEventSource::getAngle() -> double{
 
 
 
@@ -106,13 +107,12 @@ this->setAngle(angle);
 }
 
 
-    public: void setAngle(double angle){
+    auto MyCanvasEventSource::setAngle(double angle) -> void{
 this->angle= angle;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSOURCE_CPP

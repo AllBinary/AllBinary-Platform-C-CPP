@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_GAMEGLOBALSFACTORY_CPP
+        #define ORG_ALLBINARY_CANVAS_GAMEGLOBALSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/GameGlobalsFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,29 +63,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameGlobalsFactory
-            : public Object
-         {
 
-    private: static GameGlobalsFactory* instance() { static std::unique_ptr<GameGlobalsFactory> value(new GameGlobalsFactory()); return value.get(); }
+GameGlobalsFactory::GameGlobalsFactory() : newDisplaybleTime(Integer.MIN_VALUE), point(PointFactory::getInstance()->ZERO_ZERO) {
+        }
+        auto GameGlobalsFactory::instance_owner() -> GameGlobalsFactory* { static std::unique_ptr<GameGlobalsFactory> value(new GameGlobalsFactory()); return value.get(); }
+GameGlobalsFactory* GameGlobalsFactory::instance = GameGlobalsFactory::instance_owner();
 
-    public: static GameGlobalsFactory* getInstance(){
+    auto GameGlobalsFactory::getInstance() -> GameGlobalsFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameGlobalsFactory::instance();
+                        return GameGlobalsFactory::instance;
     
 }
 
 
-    public: bool newCanvas = true;
 
-    public: int64_t newDisplaybleTime = Integer.MIN_VALUE;
 
-    public: GPoint* point = PointFactory::getInstance()->ZERO_ZERO;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_CANVAS_GAMEGLOBALSFACTORY_CPP

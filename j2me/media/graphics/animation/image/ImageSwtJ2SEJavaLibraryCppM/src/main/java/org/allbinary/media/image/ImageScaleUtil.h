@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,24 +38,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Image;
+class Features;
+class GameFeatureFactory;
+class ImageCache;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -69,25 +62,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageCopyUtil.h"
+        class ImageCopyUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageScaleUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+    private: static ImageScaleUtil* instance_owner();
+    private: static ImageScaleUtil* instance;
 
     public: static ImageScaleUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: ImageCopyUtil* imageCopyUtil = ImageCopyUtil::getInstance();
+    private: ImageCopyUtil* imageCopyUtil;
 
-    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
+    private: GameFeatureFactory* gameFeatureFactory;
 
-    private: Features* features = Features::getInstance();
+    private: Features* features;
 
     private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
 
@@ -115,3 +113,31 @@ private: ImageScaleUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/GameFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageCopyUtil.h")
+#include "org/allbinary/media/image/ImageCopyUtil.h"
+#endif
+
+        #endif
+    

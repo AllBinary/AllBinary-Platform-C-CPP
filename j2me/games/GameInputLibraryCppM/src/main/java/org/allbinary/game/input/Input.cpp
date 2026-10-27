@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_INPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_INPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/Input.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Input
-            : public Object
-         {
 
-    private: int32_t id= 0;
-
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-public: Input(int32_t id, std::string name){
+Input::Input(int32_t id, std::string name) : name(StringUtil::getInstance()->EMPTY_STRING){
 this->setId(id);
     
 this->setName(name);
@@ -67,7 +70,7 @@ this->setName(name);
 }
 
 
-    public: int32_t getId(){
+    auto Input::getId() -> int32_t{
 
 
 
@@ -77,13 +80,13 @@ this->setName(name);
 }
 
 
-    private: void setId(int32_t key){
+    auto Input::setId(int32_t key) -> void{
 this->id= key;
     
 }
 
 
-    public: std::string getName(){
+    auto Input::getName() -> std::string{
 
 
 
@@ -93,13 +96,13 @@ this->id= key;
 }
 
 
-    private: void setName(std::string keyName){
+    auto Input::setName(std::string keyName) -> void{
 this->name= keyName;
     
 }
 
 
-    public: std::string toString(){
+    auto Input::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -120,7 +123,6 @@ stringBuffer->appendint(this->getId());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_INPUT_CPP

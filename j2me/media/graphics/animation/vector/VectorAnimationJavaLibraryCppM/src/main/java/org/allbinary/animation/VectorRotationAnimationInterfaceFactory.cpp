@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorRotationAnimationInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,17 +75,8 @@
 #include "org/allbinary/animation/VectorRotationAnimation.h"
 #include "org/allbinary/animation/Animation.h"
 
-class VectorRotationAnimationInterfaceFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-    protected: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: VectorRotationAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory){
+VectorRotationAnimationInterfaceFactory::VectorRotationAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) : currentPoints(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY), basicColor(BasicColorFactory::getInstance()->WHITE){
 this->currentPoints= currentPoints;
     
 this->setBasicColorP(basicColor);
@@ -87,7 +88,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto VectorRotationAnimationInterfaceFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -97,13 +98,13 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 }
 
 
-    protected: void setBasicColorP(BasicColor* basicColor){
+    auto VectorRotationAnimationInterfaceFactory::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-    protected: BasicColor* getBasicColorP(){
+    auto VectorRotationAnimationInterfaceFactory::getBasicColorP() -> BasicColor*{
 
 
 
@@ -113,11 +114,10 @@ this->basicColor= basicColor;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto VectorRotationAnimationInterfaceFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATIONINTERFACEFACTORY_CPP

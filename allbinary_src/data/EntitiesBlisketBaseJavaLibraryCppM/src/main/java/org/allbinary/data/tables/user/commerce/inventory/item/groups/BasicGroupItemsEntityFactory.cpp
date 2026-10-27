@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_GROUPS_BASICGROUPITEMSENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_GROUPS_BASICGROUPITEMSENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/groups/BasicGroupItemsEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/item/groups/BasicGroupItemsEntity.h"
 
-class BasicGroupItemsEntityFactory
-            : public Object
-         {
+auto BasicGroupItemsEntityFactory::instance_owner() -> BasicGroupItemsEntityFactory* { static std::unique_ptr<BasicGroupItemsEntityFactory> value(new BasicGroupItemsEntityFactory()); return value.get(); }
+BasicGroupItemsEntityFactory* BasicGroupItemsEntityFactory::instance = BasicGroupItemsEntityFactory::instance_owner();
 
-    private: static BasicGroupItemsEntityFactory* instance() { static std::unique_ptr<BasicGroupItemsEntityFactory> value(new BasicGroupItemsEntityFactory()); return value.get(); }
-
-    public: static BasicGroupItemsEntityFactory* getInstance(){
+    auto BasicGroupItemsEntityFactory::getInstance() -> BasicGroupItemsEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGroupItemsEntityFactory::instance();
+                        return BasicGroupItemsEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: BasicGroupItemsEntityFactory(){
+BasicGroupItemsEntityFactory::BasicGroupItemsEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: BasicGroupItemsEntity* getBasicGroupItemsEntityInstance(){
+    auto BasicGroupItemsEntityFactory::getBasicGroupItemsEntityInstance() -> BasicGroupItemsEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: BasicGroupItemsEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: BasicGroupItemsEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_GROUPS_BASICGROUPITEMSENTITYFACTORY_CPP

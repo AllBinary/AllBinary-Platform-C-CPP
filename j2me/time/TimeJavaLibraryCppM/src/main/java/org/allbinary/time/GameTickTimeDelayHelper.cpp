@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPER_CPP
+        #define ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/GameTickTimeDelayHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,17 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameTickTimeDelayHelper
-            : public Object
-         {
 
-    public: int64_t timeDelta= 0;
-
-    public: int64_t startTime;
-
-    public: int64_t lastStartTime;
-
-public: GameTickTimeDelayHelper(int64_t startTime){
+GameTickTimeDelayHelper::GameTickTimeDelayHelper(int64_t startTime){
 this->startTime= startTime;
     
 this->lastStartTime= 0;
@@ -67,7 +68,7 @@ this->lastStartTime= 0;
 }
 
 
-    public: int64_t setStartTime(){
+    auto GameTickTimeDelayHelper::setStartTime() -> int64_t{
 this->startTime= System.currentTimeMillis();
     
 
@@ -79,7 +80,7 @@ this->startTime= System.currentTimeMillis();
 }
 
 
-    public: void loop(){
+    auto GameTickTimeDelayHelper::loop() -> void{
 
                         if(this->lastStartTime == Long.MIN_VALUE)
                         
@@ -98,7 +99,7 @@ this->startTime= System.currentTimeMillis();
 }
 
 
-    public: int64_t getTimeFromStart(){
+    auto GameTickTimeDelayHelper::getTimeFromStart() -> int64_t{
 
 
 
@@ -108,7 +109,6 @@ this->startTime= System.currentTimeMillis();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPER_CPP

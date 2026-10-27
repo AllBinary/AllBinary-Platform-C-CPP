@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETWODATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETWODATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/modules/processor/echo/response/EchoResponseTypeTwoData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EchoResponseTypeTwoData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "ECHOTYPE2";
-
-private: EchoResponseTypeTwoData(){
+EchoResponseTypeTwoData::EchoResponseTypeTwoData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_PROCESSOR_ECHO_RESPONSE_ECHORESPONSETYPETWODATA_CPP

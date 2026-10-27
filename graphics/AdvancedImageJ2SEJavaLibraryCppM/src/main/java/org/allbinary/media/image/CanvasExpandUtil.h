@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,14 +39,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class LogUtil;
+class StringUtil;
 
 
 
@@ -60,21 +59,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageUtil.h"
-#include "org/allbinary/media/image/ImageProcessorInput.h"
-#include "org/allbinary/media/image/ImageProcessedVisitor.h"
+        class ImageUtil;
+class ImageProcessorInput;
+class ImageProcessedVisitor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CanvasExpandUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static CanvasExpandUtil* instance() { static std::unique_ptr<CanvasExpandUtil> value(new CanvasExpandUtil()); return value.get(); }
+    private: static CanvasExpandUtil* instance_owner();
+    private: static CanvasExpandUtil* instance;
 
     public: static CanvasExpandUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: StringUtil* stringUtil = StringUtil::getInstance();
+            
+    public: CanvasExpandUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: StringUtil* stringUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -86,3 +94,28 @@ class CanvasExpandUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageUtil.h")
+#include "org/allbinary/media/image/ImageUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageProcessorInput.h")
+#include "org/allbinary/media/image/ImageProcessorInput.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageProcessedVisitor.h")
+#include "org/allbinary/media/image/ImageProcessedVisitor.h"
+#endif
+
+        #endif
+    

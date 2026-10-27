@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/ThrustAIVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,17 +75,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThrustAIVisitor: public Visitor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool TRUE = BooleanFactory::getInstance()->TRUE;
-
-public: ThrustAIVisitor(){
+ThrustAIVisitor::ThrustAIVisitor() : logUtil(LogUtil::getInstance()), TRUE(BooleanFactory::getInstance()->TRUE){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto ThrustAIVisitor::visit(Object* anyType) -> Object*{
 
         try {
             
@@ -103,7 +108,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITOR_CPP

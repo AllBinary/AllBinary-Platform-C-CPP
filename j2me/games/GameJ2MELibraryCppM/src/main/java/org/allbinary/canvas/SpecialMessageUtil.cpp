@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_CPP
+        #define ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/SpecialMessageUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,23 +71,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/GameStatisticsFactory.h"
 
-class SpecialMessageUtil
-            : public Object
-         {
 
-    private: static SpecialMessageUtil* SINGLETON() { static std::unique_ptr<SpecialMessageUtil> value(new SpecialMessageUtil()); return value.get(); }
+SpecialMessageUtil::SpecialMessageUtil() {
+        }
+        auto SpecialMessageUtil::SINGLETON_owner() -> SpecialMessageUtil* { static std::unique_ptr<SpecialMessageUtil> value(new SpecialMessageUtil()); return value.get(); }
+SpecialMessageUtil* SpecialMessageUtil::SINGLETON = SpecialMessageUtil::SINGLETON_owner();
 
-    public: static SpecialMessageUtil* getInstance(){
+    auto SpecialMessageUtil::getInstance() -> SpecialMessageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpecialMessageUtil::SINGLETON();
+                        return SpecialMessageUtil::SINGLETON;
     
 }
 
 
-    public: std::string get(){
+    auto SpecialMessageUtil::get() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -95,13 +105,13 @@ stringBuffer->append(" Option: ");
                         if(Features::getInstance()->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT))
                         
                                     {
-                                    stringBuffer->append(OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT.getName());
+                                    stringBuffer->append(OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT->getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer->append(OpenGLFeatureFactory::getInstance()->OPENGL_MINIMUM.getName());
+                            stringBuffer->append(OpenGLFeatureFactory::getInstance()->OPENGL_MINIMUM->getName());
     
 
                         }
@@ -115,7 +125,6 @@ stringBuffer->append(" Option: ");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_CPP

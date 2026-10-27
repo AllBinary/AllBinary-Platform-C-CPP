@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLTHREADUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLTHREADUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLThreadUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,35 +41,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLThreadUtil
-            : public Object
-         {
 
-    private: static OpenGLThreadUtil* instance() { static std::unique_ptr<OpenGLThreadUtil> value(new OpenGLThreadUtil()); return value.get(); }
+OpenGLThreadUtil::OpenGLThreadUtil() {
+        }
+        auto OpenGLThreadUtil::instance_owner() -> OpenGLThreadUtil* { static std::unique_ptr<OpenGLThreadUtil> value(new OpenGLThreadUtil()); return value.get(); }
+OpenGLThreadUtil* OpenGLThreadUtil::instance = OpenGLThreadUtil::instance_owner();
 
-    public: static OpenGLThreadUtil* getInstance(){
+    auto OpenGLThreadUtil::getInstance() -> OpenGLThreadUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLThreadUtil::instance();
+                        return OpenGLThreadUtil::instance;
     
 }
 
 
-    public: void set(Object* glSurfaceView){
+    auto OpenGLThreadUtil::set(Object* glSurfaceView) -> void{
 }
 
 
-    public: void onPause(){
+    auto OpenGLThreadUtil::onPause() -> void{
 }
 
 
-    public: void onResume(){
+    auto OpenGLThreadUtil::onResume() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLTHREADUTIL_CPP

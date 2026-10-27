@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTLISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h"
+        class MyCanvasEvent;
 
-class MyCanvasEventListener {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class MyCanvasEventListener
+            : public virtual Object
+         {
 
     public: virtual void delete_(MyCanvasEvent* evt) = 0;
 
@@ -77,3 +88,13 @@ class MyCanvasEventListener {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTLISTENER_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPERBASE_CPP
+        #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPERBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/caption/CaptionAnimationHelperBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CaptionAnimationHelperBase: public Animation {
 
-    public: static CaptionAnimationHelperBase* INSTANCE() { static std::unique_ptr<CaptionAnimationHelperBase> value(new CaptionAnimationHelperBase()); return value.get(); }
+CaptionAnimationHelperBase::CaptionAnimationHelperBase() {
+        }
+        auto CaptionAnimationHelperBase::INSTANCE_owner() -> CaptionAnimationHelperBase* { static std::unique_ptr<CaptionAnimationHelperBase> value(new CaptionAnimationHelperBase()); return value.get(); }
+CaptionAnimationHelperBase* CaptionAnimationHelperBase::INSTANCE = CaptionAnimationHelperBase::INSTANCE_owner();
 
-    public: bool isShowing(){
+    auto CaptionAnimationHelperBase::isShowing() -> bool{
 
 
 
@@ -66,19 +78,18 @@ class CaptionAnimationHelperBase: public Animation {
 }
 
 
-    public: void tick(){
+    auto CaptionAnimationHelperBase::tick() -> void{
 }
 
 
-    public: void update(std::string message, BasicColor* basicColor){
+    auto CaptionAnimationHelperBase::update(std::string message, BasicColor* basicColor) -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto CaptionAnimationHelperBase::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPERBASE_CPP

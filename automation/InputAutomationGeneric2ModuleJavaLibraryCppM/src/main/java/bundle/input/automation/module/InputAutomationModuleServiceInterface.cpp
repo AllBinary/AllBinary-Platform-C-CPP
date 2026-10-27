@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_CPP
+        #define BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/module/InputAutomationModuleServiceInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,11 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationModuleServiceInterface: public OSGIServiceInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray() = 0;
 
-};
 
-            
-
+        #endif //BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_CPP

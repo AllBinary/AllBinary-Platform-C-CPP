@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/forward/ForwardData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ForwardData
-            : public Object
-         {
+auto ForwardData::instance_owner() -> ForwardData* { static std::unique_ptr<ForwardData> value(new ForwardData()); return value.get(); }
+ForwardData* ForwardData::instance = ForwardData::instance_owner();
 
-    private: static ForwardData* instance() { static std::unique_ptr<ForwardData> value(new ForwardData()); return value.get(); }
+ForwardData::ForwardData(){
+}
 
-    public: static ForwardData* getInstance(){
+
+    auto ForwardData::getInstance() -> ForwardData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ForwardData::instance();
+                        return ForwardData::instance;
     
 }
 
 
-private: ForwardData(){
-}
 
 
-    public: const std::string PAGE = "FORWARD_PAGE";
-
-    public: const std::string NAME = "FORWARD_NAME";
-
-    public: const std::string VALUE = "FORWARD_VALUE";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_CPP

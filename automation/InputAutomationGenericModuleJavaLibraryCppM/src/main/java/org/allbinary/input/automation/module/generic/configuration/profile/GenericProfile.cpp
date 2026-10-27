@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfile.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,19 +90,8 @@
 #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileData.h"
 
-class GenericProfile
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string name;
-
-    private: BasicArrayList* vector;
-
-    private: GenericProfileActions* genericProfileActions;
-
-public: GenericProfile(Node* node){
+GenericProfile::GenericProfile(Node* node) : logUtil(LogUtil::getInstance()){
 this->setName(DomNodeHelper::getTextNodeValue(node));
     
 this->vector= new BasicArrayListD();
@@ -100,7 +99,7 @@ this->vector= new BasicArrayListD();
 
     NodeList* nodeList = node->getChildNodes();;
     
-this->logUtil->putF("Name: " +this->getName() +" Child Nodes: " +nodeList->getLength(), this, "Contructor");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Name: ") +JavaString::valueOf(this->getName())) +JavaString::valueOf(" Child Nodes: ")) +JavaString::valueOf(nodeList->getLength()), this, "Contructor");
     
 
 
@@ -119,7 +118,7 @@ this->logUtil->putF("Name: " +this->getName() +" Child Nodes: " +nodeList->getLe
                                     
     GenericProfileDataWorkerType* genericProfileDataWorkerType = GenericProfileDataWorkerType::getInstance(profileNode);;
     
-this->logUtil->putF("Adding GenericProfileDataWorkerType: " +genericProfileDataWorkerType->toString(), this, "Contructor");
+this->logUtil->putF(JavaString::valueOf("Adding GenericProfileDataWorkerType: ") +JavaString::valueOf(genericProfileDataWorkerType->toString()), this, "Contructor");
     
 this->vector->add(genericProfileDataWorkerType);
     
@@ -131,7 +130,7 @@ this->vector->add(genericProfileDataWorkerType);
 }
 
 
-public: GenericProfile(std::string name){
+GenericProfile::GenericProfile(std::string name) : logUtil(LogUtil::getInstance()){
 this->setName(name);
     
 this->vector= new BasicArrayListD();
@@ -139,7 +138,7 @@ this->vector= new BasicArrayListD();
 }
 
 
-    public: BasicArrayList* getGenericProfileDataWorkerTypeVector(){
+    auto GenericProfile::getGenericProfileDataWorkerTypeVector() -> BasicArrayList*{
 
 
 
@@ -149,7 +148,7 @@ this->vector= new BasicArrayListD();
 }
 
 
-    public: void add(GenericProfileDataWorkerType* genericProfileDataWorkerType){
+    auto GenericProfile::add(GenericProfileDataWorkerType* genericProfileDataWorkerType) -> void{
 
                         if(!this->vector->contains(genericProfileDataWorkerType))
                         this->vector->add(genericProfileDataWorkerType);
@@ -157,7 +156,7 @@ this->vector= new BasicArrayListD();
 }
 
 
-    public: void remove(GenericProfileDataWorkerType* genericProfileDataWorkerType){
+    auto GenericProfile::remove(GenericProfileDataWorkerType* genericProfileDataWorkerType) -> void{
 this->vector->remove(genericProfileDataWorkerType);
     
 }
@@ -165,7 +164,7 @@ this->vector->remove(genericProfileDataWorkerType);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GenericProfile::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createTextNode(document, GenericProfileData::NAME, this->name);;
     
@@ -195,7 +194,7 @@ node->appendChild(genericProfileDataWorkerType->toXmlNode(document));
 }
 
 
-    public: std::string getName(){
+    auto GenericProfile::getName() -> std::string{
 
 
 
@@ -205,13 +204,13 @@ node->appendChild(genericProfileDataWorkerType->toXmlNode(document));
 }
 
 
-    public: void setName(std::string name){
+    auto GenericProfile::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: GenericProfileActions* getGenericProfileActions(){
+    auto GenericProfile::getGenericProfileActions() -> GenericProfileActions*{
 
 
 
@@ -221,13 +220,12 @@ this->name= name;
 }
 
 
-    public: void setGenericProfileActions(GenericProfileActions* genericProfileActions){
+    auto GenericProfile::setGenericProfileActions(GenericProfileActions* genericProfileActions) -> void{
 this->genericProfileActions= genericProfileActions;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILE_CPP

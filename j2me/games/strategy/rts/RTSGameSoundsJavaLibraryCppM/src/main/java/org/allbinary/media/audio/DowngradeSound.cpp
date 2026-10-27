@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_DOWNGRADESOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_DOWNGRADESOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/DowngradeSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +58,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DowngradeSound: public CompositeSound {
+Sound* DowngradeSound::soundInterface = new DowngradeSound();
 
-    private: static inline Sound* soundInterface = new DowngradeSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DowngradeSound::soundInterface;
-    
-}
-
-
-private: DowngradeSound() : CompositeSound("resource:/wav/downgrade.wav"){
+DowngradeSound::DowngradeSound() : CompositeSound("resource:/wav/downgrade.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +70,16 @@ private: DowngradeSound() : CompositeSound("resource:/wav/downgrade.wav"){
 }
 
 
-};
+    auto DowngradeSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return DowngradeSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_DOWNGRADESOUND_CPP

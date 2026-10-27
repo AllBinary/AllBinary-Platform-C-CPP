@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_SERVLET_FILE_UPLOADFILESERVLET_CPP
+        #define ORG_ALLBINARY_SERVLET_FILE_UPLOADFILESERVLET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/servlet/file/UploadFileServlet.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -119,19 +129,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UploadFileServlet: public HttpServlet {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: HashMap<Object*, Object*>* requestHashMap;
-
-    private: std::string fileName;
-
+UploadFileServlet::UploadFileServlet() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response){
+    auto UploadFileServlet::processRequest(HttpServletRequest* request, HttpServletResponse* response) -> void{
 
     bool isError = false;;
     
@@ -213,7 +217,7 @@ response->sendError(HttpServletResponse::SC_UNAUTHORIZED, "Please Login");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processRequest()", &e);
@@ -252,7 +256,7 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
 
                 //@Throws(Exception.constructor)
             
-    private: void saveFile(std::string filePath){
+    auto UploadFileServlet::saveFile(std::string filePath) -> void{
 
     AbFileOutputStream* fileOutputStream = 
                 null
@@ -275,16 +279,16 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
                         if(JavaString::endsWith(filePath, "/") || JavaString::endsWith(filePath, "\\"))
                         
                                     {
-                                    filePath= filePath +this->fileName;
+                                    filePath= JavaString::valueOf(filePath) +JavaString::valueOf(this->fileName);
     
 
                                     }
                                 
 
-    AbFile* file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +filePath);;
+    AbFile* file = AbFile::createAbFile(JavaString::valueOf(URLGLOBALS::getWebappPath()) +JavaString::valueOf(filePath));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     
@@ -312,7 +316,7 @@ HttpFileUploadUtil::log(fileItem);
                         if(file->isFile())
                         
                                     {
-                                    file->delete();
+                                    file->delete_();
     
 file->createNewFile();
     
@@ -347,7 +351,7 @@ fileOutputStream->write(byteArray);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response){
+    auto UploadFileServlet::doGet(HttpServletRequest* request, HttpServletResponse* response) -> void{
 this->processRequest(request, response);
     
 }
@@ -355,13 +359,13 @@ this->processRequest(request, response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response){
+    auto UploadFileServlet::doPost(HttpServletRequest* request, HttpServletResponse* response) -> void{
 this->processRequest(request, response);
     
 }
 
 
-    public: std::string getServletInfo(){
+    auto UploadFileServlet::getServletInfo() -> std::string{
 
 
 
@@ -371,7 +375,6 @@ this->processRequest(request, response);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_SERVLET_FILE_UPLOADFILESERVLET_CPP

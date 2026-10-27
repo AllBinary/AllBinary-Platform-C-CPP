@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollisionTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,31 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/collision/CollisionType.h"
 
-class CollisionTypeFactory
-            : public Object
-         {
 
-    private: static CollisionTypeFactory* SINGLETON() { static std::unique_ptr<CollisionTypeFactory> value(new CollisionTypeFactory()); return value.get(); }
+CollisionTypeFactory::CollisionTypeFactory() : NONE(new CollisionType("None")), DAMAGE(new CollisionType("Damage")), PICKUP(new CollisionType("Pickup")), COLLISION(new CollisionType("Collision")) {
+        }
+        auto CollisionTypeFactory::SINGLETON_owner() -> CollisionTypeFactory* { static std::unique_ptr<CollisionTypeFactory> value(new CollisionTypeFactory()); return value.get(); }
+CollisionTypeFactory* CollisionTypeFactory::SINGLETON = CollisionTypeFactory::SINGLETON_owner();
 
-    public: static CollisionTypeFactory* getInstance(){
+    auto CollisionTypeFactory::getInstance() -> CollisionTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollisionTypeFactory::SINGLETON();
+                        return CollisionTypeFactory::SINGLETON;
     
 }
 
 
-    public: CollisionType* NONE = new CollisionType("None");
 
-    public: CollisionType* DAMAGE = new CollisionType("Damage");
 
-    public: CollisionType* PICKUP = new CollisionType("Pickup");
-
-    public: CollisionType* COLLISION = new CollisionType("Collision");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_CPP

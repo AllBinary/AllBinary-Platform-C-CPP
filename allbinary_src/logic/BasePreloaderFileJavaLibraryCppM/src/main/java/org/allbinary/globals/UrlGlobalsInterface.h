@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALSINTERFACE_H
         #define ORG_ALLBINARY_GLOBALS_URLGLOBALSINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -53,19 +56,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UrlGlobalsInterface
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: UrlGlobalsInterface();
+        
                 //@Throws(Exception.constructor)
             
-    std::string getMainPath();
+    public: std::string getMainPath();
 
-    std::string getTestHtmlPath();
+    public: std::string getTestHtmlPath();
 
-    std::string getWebappPath();
+    public: std::string getWebappPath();
 
-    bool isTestingMode();
+    public: bool isTestingMode();
 
 };
 
@@ -73,3 +84,13 @@ class UrlGlobalsInterface
 
 
         #endif //ORG_ALLBINARY_GLOBALS_URLGLOBALSINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GLOBALS_URLGLOBALSINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GLOBALS_URLGLOBALSINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

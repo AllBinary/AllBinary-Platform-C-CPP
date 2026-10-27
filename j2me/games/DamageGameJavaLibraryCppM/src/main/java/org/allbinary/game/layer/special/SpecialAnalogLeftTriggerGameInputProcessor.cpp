@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALANALOGLEFTTRIGGERGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALANALOGLEFTTRIGGERGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/SpecialAnalogLeftTriggerGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
 #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
-class SpecialAnalogLeftTriggerGameInputProcessor: public SpecialGameInputProcessor {
 
-public: SpecialAnalogLeftTriggerGameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
+SpecialAnalogLeftTriggerGameInputProcessor::SpecialAnalogLeftTriggerGameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: SpecialAnalogLeftTriggerGameInputProcessor(CollidableDestroyableDamageab
 
                 //@Throws(Exception.constructor)
             
-    public: void processAnalog(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t yAnalogValue){
-this->collidableDestroyableDamageableLayer.leftTrigger(allbinaryLayerManager, gameKeyEvent, yAnalogValue);
+    auto SpecialAnalogLeftTriggerGameInputProcessor::processAnalog(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t yAnalogValue) -> void{
+this->collidableDestroyableDamageableLayer->leftTrigger(allbinaryLayerManager, gameKeyEvent, yAnalogValue);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALANALOGLEFTTRIGGERGAMEINPUTPROCESSOR_CPP

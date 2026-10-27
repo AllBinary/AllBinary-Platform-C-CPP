@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/terrain/TerrainEventFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,15 +65,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/terrain/TerrainEvent.h"
 
-class TerrainEventFactory
-            : public Object
-        , public AllBinaryEventObjectFactoryInterface {
 
-public: TerrainEventFactory(){
+TerrainEventFactory::TerrainEventFactory(){
 }
 
 
-    public: AllBinaryEventObject* getInstance(){
+    auto TerrainEventFactory::getInstance() -> AllBinaryEventObject*{
 
 
 
@@ -73,7 +80,6 @@ public: TerrainEventFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTFACTORY_CPP

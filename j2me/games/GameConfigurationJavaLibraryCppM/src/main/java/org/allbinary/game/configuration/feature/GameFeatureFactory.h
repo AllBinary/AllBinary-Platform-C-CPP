@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,50 +52,55 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/feature/GameFeature.h"
-#include "org/allbinary/game/configuration/feature/Feature.h"
+        class GameFeature;
+class Feature;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameFeatureFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameFeatureFactory* instance() { static std::unique_ptr<GameFeatureFactory> value(new GameFeatureFactory()); return value.get(); }
+    private: static GameFeatureFactory* instance_owner();
+    private: static GameFeatureFactory* instance;
 
     public: static GameFeatureFactory* getInstance();
 
 private: GameFeatureFactory();
 
-    public: GameFeature* SOUND = new GameFeature("Sound");
+    public: GameFeature* SOUND;
 
-    public: GameFeature* MUSIC = new GameFeature("Music");
+    public: GameFeature* MUSIC;
 
-    public: Feature* SCREEN_SHAKE = new Feature("Screen Shake");
+    public: Feature* SCREEN_SHAKE;
 
-    public: Feature* POST_IMAGE_LOADING_MODIFICATION = new Feature("Post Image Loading Modification (Scaling, Rotation, or Other)");
+    public: Feature* POST_IMAGE_LOADING_MODIFICATION;
 
-    public: GameFeature* HEALTH_BARS = new GameFeature("Health Bars");
+    public: GameFeature* HEALTH_BARS;
 
-    public: GameFeature* DAMAGE_FLOATERS = new GameFeature("Damage Floaters");
+    public: GameFeature* DAMAGE_FLOATERS;
 
-    public: GameFeature* GAME_INPUT_LAYER_PROCESSOR = new GameFeature("Game Input Layer Processor");
+    public: GameFeature* GAME_INPUT_LAYER_PROCESSOR;
 
-    public: GameFeature* ARTIFICIAL_INTELLEGENCE_PROCESSOR = new GameFeature("Artificial Intelligence Layer Processor");
+    public: GameFeature* ARTIFICIAL_INTELLEGENCE_PROCESSOR;
 
-    public: GameFeature* COLLIDABLE_INTERFACE_LAYER_PROCESSOR = new GameFeature("Collidable Interface Layer Processor");
+    public: GameFeature* COLLIDABLE_INTERFACE_LAYER_PROCESSOR;
 
-    public: GameFeature* TICKABLE_LAYER_PROCESSOR = new GameFeature("Tickable Layer Processor");
+    public: GameFeature* TICKABLE_LAYER_PROCESSOR;
 
-    public: GameFeature* CHEATING = new GameFeature("Cheating");
+    public: GameFeature* CHEATING;
 
-    public: GameFeature* DROPPED_ITEMS = new GameFeature("Drops");
+    public: GameFeature* DROPPED_ITEMS;
 
-    public: GameFeature* DROPPED_ITEMS_FROM_DEATH = new GameFeature("Drops from Dead");
+    public: GameFeature* DROPPED_ITEMS_FROM_DEATH;
 
-    public: GameFeature* TEST_DESTROYED_LAYER_PROCESSOR = new GameFeature("Destroyed Layer Processor");
+    public: GameFeature* TEST_DESTROYED_LAYER_PROCESSOR;
 
-    public: GameFeature* COLLISIONS_WITH_SOURCE = new GameFeature("Allow Collisions With Source");
+    public: GameFeature* COLLISIONS_WITH_SOURCE;
 
-    public: GameFeature* COLLISIONS_FORCED_TWO_DIMENSIONAL = new GameFeature("Collisions Forced Two Dimensional");
+    public: GameFeature* COLLISIONS_FORCED_TWO_DIMENSIONAL;
 
 };
 
@@ -98,3 +108,16 @@ private: GameFeatureFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/configuration/feature/GameFeature.h")
+#include "org/allbinary/game/configuration/feature/GameFeature.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/Feature.h")
+#include "org/allbinary/game/configuration/feature/Feature.h"
+#endif
+
+        #endif
+    

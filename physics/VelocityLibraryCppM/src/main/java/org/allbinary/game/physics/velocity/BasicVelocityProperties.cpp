@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,21 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/physics/velocity/BasicVelocityInterface.h"
 
-class BasicVelocityProperties
-            : public Object
-        , public BasicVelocityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicDecimal* velocityXBasicDecimal;
-
-    protected: BasicDecimal* velocityYBasicDecimal;
-
-    protected: BasicDecimal* velocityZBasicDecimal;
-
-    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
-
-public: BasicVelocityProperties(){
+BasicVelocityProperties::BasicVelocityProperties() : logUtil(LogUtil::getInstance()), axisMathVectorUtil(AxisMathVectorUtil::getInstance()), directionUtil(DirectionUtil::getInstance()){
 this->velocityXBasicDecimal= new BasicDecimal(0);
     
 this->velocityYBasicDecimal= new BasicDecimal(0);
@@ -100,7 +97,7 @@ this->velocityZBasicDecimal= new BasicDecimal(0);
 }
 
 
-    public: void zero(){
+    auto BasicVelocityProperties::zero() -> void{
 this->velocityXBasicDecimal->setint(0);
     
 this->velocityYBasicDecimal->setint(0);
@@ -110,7 +107,7 @@ this->velocityZBasicDecimal->setint(0);
 }
 
 
-    public: BasicDecimal* getVelocityXBasicDecimalP(){
+    auto BasicVelocityProperties::getVelocityXBasicDecimalP() -> BasicDecimal*{
 
 
 
@@ -120,7 +117,7 @@ this->velocityZBasicDecimal->setint(0);
 }
 
 
-    public: BasicDecimal* getVelocityYBasicDecimalP(){
+    auto BasicVelocityProperties::getVelocityYBasicDecimalP() -> BasicDecimal*{
 
 
 
@@ -130,7 +127,7 @@ this->velocityZBasicDecimal->setint(0);
 }
 
 
-    public: BasicDecimal* getVelocityZBasicDecimalP(){
+    auto BasicVelocityProperties::getVelocityZBasicDecimalP() -> BasicDecimal*{
 
 
 
@@ -140,9 +137,7 @@ this->velocityZBasicDecimal->setint(0);
 }
 
 
-    protected: DirectionUtil* directionUtil = DirectionUtil::getInstance();
-
-    public: void setVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection){
+    auto BasicVelocityProperties::setVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection) -> void{
 
     Angle* angle = this->directionUtil->getAngle(direction);;
     
@@ -154,7 +149,7 @@ this->setVelocityWithBigDecimal(magnitudeBasicDecimal, angle, otherAngle);
 }
 
 
-    public: void setVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection){
+    auto BasicVelocityProperties::setVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection) -> void{
 
     Angle* angle = this->directionUtil->getAngle(direction);;
     
@@ -166,7 +161,7 @@ this->setVelocity(magnitude, angle, otherAngle);
 }
 
 
-    public: void addVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection){
+    auto BasicVelocityProperties::addVelocityWithBigDecimalAndDirection(BasicDecimal* magnitudeBasicDecimal, Direction* direction, Direction* otherDirection) -> void{
 
     Angle* angle = this->directionUtil->getAngle(direction);;
     
@@ -178,7 +173,7 @@ this->addVelocityWithBigDecimal(magnitudeBasicDecimal, angle, otherAngle);
 }
 
 
-    public: void addVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection){
+    auto BasicVelocityProperties::addVelocityWithDirection(int64_t magnitude, Direction* direction, Direction* otherDirection) -> void{
 
     Angle* angle = this->directionUtil->getAngle(direction);;
     
@@ -190,7 +185,7 @@ this->addVelocity(magnitude, angle, otherAngle);
 }
 
 
-    public: void setVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle){
+    auto BasicVelocityProperties::setVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle) -> void{
 
     int64_t magnitude = magnitudeBasicDecimal->getUnscaled();;
     
@@ -199,7 +194,7 @@ this->setVelocity(magnitude, angle, otherAngle);
 }
 
 
-    public: void addVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle){
+    auto BasicVelocityProperties::addVelocityWithBigDecimal(BasicDecimal* magnitudeBasicDecimal, Angle* angle, Angle* otherAngle) -> void{
 
     int64_t magnitude = magnitudeBasicDecimal->getUnscaled();;
     
@@ -208,19 +203,19 @@ this->addVelocity(magnitude, angle, otherAngle);
 }
 
 
-    public: void setVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle){
+    auto BasicVelocityProperties::setVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle) -> void{
 this->setVelocityi(magnitude, static_cast<int32_t>(angle->getValue()), static_cast<int32_t>(otherAngle->getValue()));
     
 }
 
 
-    public: void addVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle){
+    auto BasicVelocityProperties::addVelocity(int64_t magnitude, Angle* angle, Angle* otherAngle) -> void{
 this->addVelocityi(magnitude, static_cast<int32_t>(angle->getValue()), static_cast<int32_t>(otherAngle->getValue()));
     
 }
 
 
-    public: void setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
+    auto BasicVelocityProperties::setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle) -> void{
 
     int64_t xVector = (this->axisMathVectorUtil->calculateX(magnitude, angle) /this->velocityXBasicDecimal->getScaledFactorValue());;
     
@@ -239,7 +234,7 @@ this->velocityZBasicDecimal->setlong(zVector);
 }
 
 
-    public: void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
+    auto BasicVelocityProperties::addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle) -> void{
 
     int64_t xVector = (this->axisMathVectorUtil->calculateX(magnitude, angle) /this->velocityXBasicDecimal->getScaledFactorValue());;
     
@@ -258,7 +253,7 @@ this->velocityZBasicDecimal->addlong(zVector);
 }
 
 
-    public: std::string toString(){
+    auto BasicVelocityProperties::toString() -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -298,7 +293,6 @@ stringBuffer->append(stringUtil->toString(this->velocityZBasicDecimal));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYPROPERTIES_CPP

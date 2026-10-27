@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/InputMappingInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputMappingInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void processInputMapping(GameKey* gameKey, Input* input) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_CPP

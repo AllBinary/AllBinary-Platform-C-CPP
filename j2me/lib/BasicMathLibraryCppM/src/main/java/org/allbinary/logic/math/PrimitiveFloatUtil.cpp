@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/PrimitiveFloatUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,11 +57,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PrimitiveFloatUtil
-            : public Object
-         {
 
-    public: static std::vector<float> getArrayInstance(){
+PrimitiveFloatUtil::PrimitiveFloatUtil(){
+}
+
+
+    auto PrimitiveFloatUtil::getArrayInstance() -> std::vector<float>{
 
 
 
@@ -61,11 +72,6 @@ class PrimitiveFloatUtil
 }
 
 
-private: PrimitiveFloatUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_CPP

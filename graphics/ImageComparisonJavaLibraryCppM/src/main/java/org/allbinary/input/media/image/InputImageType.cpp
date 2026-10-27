@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/InputImageType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,45 +67,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputImageType
-            : public Object
-         {
+HashMap<Object*, Object*>* InputImageType::hashMap = StdUtil::getInstance()->createHashMap();
+BasicArrayList* InputImageType::TYPE_VECTOR = new BasicArrayListD();
+auto InputImageType::CAPTURE_owner() -> InputImageType* { static std::unique_ptr<InputImageType> value(new InputImageType("Capture", 0)); return value.get(); }
+InputImageType* InputImageType::CAPTURE = InputImageType::CAPTURE_owner();
+auto InputImageType::COMPARISON_owner() -> InputImageType* { static std::unique_ptr<InputImageType> value(new InputImageType("Comparison", 1)); return value.get(); }
+InputImageType* InputImageType::COMPARISON = InputImageType::COMPARISON_owner();
+auto InputImageType::MOTION_owner() -> InputImageType* { static std::unique_ptr<InputImageType> value(new InputImageType("Motion", 2)); return value.get(); }
+InputImageType* InputImageType::MOTION = InputImageType::MOTION_owner();
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
-
-    private: static inline BasicArrayList* TYPE_VECTOR = new BasicArrayListD();
-
-    public: static InputImageType* CAPTURE() { static std::unique_ptr<InputImageType> value(new InputImageType("Capture", 0)); return value.get(); }
-
-    public: static InputImageType* COMPARISON() { static std::unique_ptr<InputImageType> value(new InputImageType("Comparison", 1)); return value.get(); }
-
-    public: static InputImageType* MOTION() { static std::unique_ptr<InputImageType> value(new InputImageType("Motion", 2)); return value.get(); }
-
-    public: static InputImageType* getInstance(std::string imageTypeString){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return dynamic_cast<InputImageType*>(InputImageType::hashMap->get(imageTypeString));
-    
-}
-
-
-    public: static BasicArrayList* getAllAsVector(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputImageType::TYPE_VECTOR;
-    
-}
-
-
-    private: std::string name;
-
-    private: int32_t index;
-
-private: InputImageType(std::string name, int32_t index){
+InputImageType::InputImageType(std::string name, int32_t index){
 this->name= name;
     
 this->index= index;
@@ -107,17 +88,17 @@ InputImageType::hashMap->put(this->getName(), this);
 }
 
 
-    public: std::string toString(){
+    auto InputImageType::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "ImageType: " +this->getName();
+                        return JavaString::valueOf("ImageType: ") +JavaString::valueOf(this->getName());
     
 }
 
 
-    public: std::string getName(){
+    auto InputImageType::getName() -> std::string{
 
 
 
@@ -127,7 +108,27 @@ InputImageType::hashMap->put(this->getName(), this);
 }
 
 
-    public: int32_t getIndex(){
+    auto InputImageType::getInstance(std::string imageTypeString) -> InputImageType*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return dynamic_cast<InputImageType*>(InputImageType::hashMap->get(imageTypeString));
+    
+}
+
+
+    auto InputImageType::getAllAsVector() -> BasicArrayList*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return InputImageType::TYPE_VECTOR;
+    
+}
+
+
+    auto InputImageType::getIndex() -> int32_t{
 
 
 
@@ -137,7 +138,6 @@ InputImageType::hashMap->put(this->getName(), this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_TEXTUREATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_TEXTUREATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/vbo/TextureAttributePointerVBOOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,34 +63,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TextureAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
+auto TextureAttributePointerVBOOpenGLProcessor::instance_owner() -> TextureAttributePointerVBOOpenGLProcessor* { static std::unique_ptr<TextureAttributePointerVBOOpenGLProcessor> value(new TextureAttributePointerVBOOpenGLProcessor()); return value.get(); }
+TextureAttributePointerVBOOpenGLProcessor* TextureAttributePointerVBOOpenGLProcessor::instance = TextureAttributePointerVBOOpenGLProcessor::instance_owner();
 
-    private: static TextureAttributePointerVBOOpenGLProcessor* instance() { static std::unique_ptr<TextureAttributePointerVBOOpenGLProcessor> value(new TextureAttributePointerVBOOpenGLProcessor()); return value.get(); }
-
-    public: static TextureAttributePointerVBOOpenGLProcessor* getInstance(){
+    auto TextureAttributePointerVBOOpenGLProcessor::getInstance() -> TextureAttributePointerVBOOpenGLProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TextureAttributePointerVBOOpenGLProcessor::instance();
+                        return TextureAttributePointerVBOOpenGLProcessor::instance;
     
 }
 
 
-public: TextureAttributePointerVBOOpenGLProcessor(){
+TextureAttributePointerVBOOpenGLProcessor::TextureAttributePointerVBOOpenGLProcessor(){
 }
 
 
-    public: void process(GL10* gl, Object* anyType){
+    auto TextureAttributePointerVBOOpenGLProcessor::process(GL10* gl, Object* anyType) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_TEXTUREATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP

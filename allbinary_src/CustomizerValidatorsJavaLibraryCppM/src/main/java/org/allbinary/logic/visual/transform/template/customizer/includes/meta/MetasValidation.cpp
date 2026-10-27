@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_META_METASVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_META_METASVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/meta/MetasValidation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -93,21 +103,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/template/customizer/includes/meta/MetaValidation.h"
 
-class MetasValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: BasicArrayList* metaValidationVector;
-
-public: MetasValidation(std::string storeName){
+MetasValidation::MetasValidation(std::string storeName) : logUtil(LogUtil::getInstance()){
 this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 this->metaValidationVector= new BasicArrayListD();
     
 
-    std::string contentValue = this->storeFrontInterface->getName() +" E-Commerce Site";;
+    std::string contentValue = JavaString::valueOf(this->storeFrontInterface->getName()) +JavaString::valueOf(" E-Commerce Site");;
     
 
     MetaValidation* keywordsMetaValidation = new MetaValidation(HtmlMetaAttributeDataFactory::getInstance()->NAME, "Keywords", HtmlMetaAttributeValuesData::getInstance()->KEYWORDS, contentValue);;
@@ -127,16 +130,16 @@ this->metaValidationVector->add(descriptionMetaValidation);
 }
 
 
-public: MetasValidation(Document* document){
+MetasValidation::MetasValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: bool isValid(){
+    auto MetasValidation::isValid() -> bool{
 
         try {
             
@@ -153,10 +156,10 @@ public: MetasValidation(Document* document){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -172,7 +175,7 @@ public: MetasValidation(Document* document){
 }
 
 
-    public: std::string validationInfo(){
+    auto MetasValidation::validationInfo() -> std::string{
 
         try {
             
@@ -189,7 +192,7 @@ public: MetasValidation(Document* document){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -208,7 +211,7 @@ public: MetasValidation(Document* document){
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto MetasValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -218,7 +221,7 @@ public: MetasValidation(Document* document){
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto MetasValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -230,7 +233,7 @@ public: MetasValidation(Document* document){
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto MetasValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(HtmlMetasData::getInstance()->NAME);;
     
@@ -263,7 +266,6 @@ node->appendChild(metaValidation->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_META_METASVALIDATION_CPP

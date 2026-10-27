@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -55,17 +56,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h"
+        class InventoryEntity;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InventoryEntityFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static InventoryEntityFactory* instance() { static std::unique_ptr<InventoryEntityFactory> value(new InventoryEntityFactory()); return value.get(); }
+    private: static InventoryEntityFactory* instance_owner();
+    private: static InventoryEntityFactory* instance;
 
     public: static InventoryEntityFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: InventoryEntityFactory();
 
@@ -77,3 +83,19 @@ private: InventoryEntityFactory();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h")
+#include "org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h"
+#endif
+
+        #endif
+    

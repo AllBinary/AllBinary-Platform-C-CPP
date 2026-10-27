@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/NoHardwareComponent.h>
-
-      
+class StdUtil;
+class HardwareComponentInterface;
+class NoHardwareComponent;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -61,14 +58,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoHardware
-            : public Object
+            : public virtual Object
         , public HardwareInterface {
 
-    private: static inline HardwareInterface* instance = new NoHardware();
+    private: static HardwareInterface* instance;
 
     public: static HardwareInterface* getInstance();
 
+
+            
+    public: NoHardware();
+        
     public: HardwareComponentInterface* getComponent(int32_t index);
 
     public: std::string toString();
@@ -83,3 +88,25 @@ class NoHardware
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/NoHardwareComponent.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/NoHardwareComponent.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/HardwareInterface.h")
+#include "org/allbinary/logic/system/hardware/HardwareInterface.h"
+#endif
+
+        #endif
+    

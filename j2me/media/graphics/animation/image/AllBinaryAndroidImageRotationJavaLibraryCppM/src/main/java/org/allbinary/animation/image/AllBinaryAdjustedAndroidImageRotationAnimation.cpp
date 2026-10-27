@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDANDROIDIMAGEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDANDROIDIMAGEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryAdjustedAndroidImageRotationAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
 
-class AllBinaryAdjustedAndroidImageRotationAnimation: public AllBinaryFlickerAndroidImageRotationAnimation {
 
-    private: int32_t dx= 0;
-
-    private: int32_t dy= 0;
-
-public: AllBinaryAdjustedAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : AllBinaryFlickerAndroidImageRotationAnimation(originalImage, image, angleInfo, totalAngle, animationBehavior){
+AllBinaryAdjustedAndroidImageRotationAnimation::AllBinaryAdjustedAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : AllBinaryFlickerAndroidImageRotationAnimation(originalImage, image, angleInfo, totalAngle, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +83,7 @@ this->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t dx, int32_t dy){
+    auto AllBinaryAdjustedAndroidImageRotationAnimation::init(int32_t dx, int32_t dy) -> void{
 this->dx= dx;
     
 this->dy= dy;
@@ -86,13 +91,13 @@ this->dy= dy;
 }
 
 
-    public: void setDx(int32_t dx){
+    auto AllBinaryAdjustedAndroidImageRotationAnimation::setDx(int32_t dx) -> void{
 this->dx= dx;
     
 }
 
 
-    public: int32_t getDx(){
+    auto AllBinaryAdjustedAndroidImageRotationAnimation::getDx() -> int32_t{
 
 
 
@@ -102,13 +107,13 @@ this->dx= dx;
 }
 
 
-    public: void setDy(int32_t dy){
+    auto AllBinaryAdjustedAndroidImageRotationAnimation::setDy(int32_t dy) -> void{
 this->dy= dy;
     
 }
 
 
-    public: int32_t getDy(){
+    auto AllBinaryAdjustedAndroidImageRotationAnimation::getDy() -> int32_t{
 
 
 
@@ -118,13 +123,12 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this->dx, y +this->dy);
+    auto AllBinaryAdjustedAndroidImageRotationAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+AllBinaryFlickerAndroidImageRotationAnimation::paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYADJUSTEDANDROIDIMAGEROTATIONANIMATION_CPP

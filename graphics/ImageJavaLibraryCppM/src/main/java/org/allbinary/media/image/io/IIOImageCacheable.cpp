@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/io/IIOImageCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,21 +67,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IIOImageCacheable
-            : public Object
-        , public CacheableInterface {
 
-    private: std::string key;
-
-    private: IIOImage* iioImage;
-
-public: IIOImageCacheable(std::string key){
+IIOImageCacheable::IIOImageCacheable(std::string key){
 this->key= key;
     
 }
 
 
-    public: Object* getKey(){
+    auto IIOImageCacheable::getKey() -> Object*{
 
 
 
@@ -81,7 +84,7 @@ this->key= key;
 }
 
 
-    public: void setBufferedImage(BufferedImage* bufferedImage){
+    auto IIOImageCacheable::setBufferedImage(BufferedImage* bufferedImage) -> void{
 this->setIioImage(new IIOImage(bufferedImage, 
                             nullptr, 
                             nullptr));
@@ -89,7 +92,7 @@ this->setIioImage(new IIOImage(bufferedImage,
 }
 
 
-    public: IIOImage* getIioImage(){
+    auto IIOImageCacheable::getIioImage() -> IIOImage*{
 
 
 
@@ -99,13 +102,13 @@ this->setIioImage(new IIOImage(bufferedImage,
 }
 
 
-    private: void setIioImage(IIOImage* iioImage){
+    auto IIOImageCacheable::setIioImage(IIOImage* iioImage) -> void{
 this->iioImage= iioImage;
     
 }
 
 
-    public: std::string toString(){
+    auto IIOImageCacheable::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -122,7 +125,6 @@ stringBuffer->append(" Reusable IIOImage");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BASICCOMPONENTVIEW_CPP
+        #define VIEWS_BASICCOMPONENTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/BasicComponentView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,26 +93,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicComponentView
-            : public Object
-        , public TransformInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+BasicComponentView::BasicComponentView(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: TransformDocumentInterface* transformDocumentInterface;
-
-    private: TransformInfoInterface* transformInfoInterface;
-
-public: BasicComponentView(TransformInfoInterface* transformInfoInterface){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -114,9 +111,7 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 }
 
 
-    public: int32_t NO_TYPE = 0;
-
-    public: int32_t getTypeId(){
+    auto BasicComponentView::getTypeId() -> int32_t{
 
 
 
@@ -126,7 +121,7 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 }
 
 
-    public: TransformDocumentInterface* getTransformDocumentInterface(){
+    auto BasicComponentView::getTransformDocumentInterface() -> TransformDocumentInterface*{
 
 
 
@@ -136,13 +131,13 @@ this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface){
+    auto BasicComponentView::setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface) -> void{
 this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto BasicComponentView::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -152,13 +147,13 @@ this->transformDocumentInterface= transformDocumentInterface;
 }
 
 
-    public: void setTransformInfoInterface(TransformInfoInterface* transformInfoInterface){
+    auto BasicComponentView::setTransformInfoInterface(TransformInfoInterface* transformInfoInterface) -> void{
 this->transformInfoInterface= transformInfoInterface;
     
 }
 
 
-    public: Document* toXmlDoc(){
+    auto BasicComponentView::toXmlDoc() -> Document*{
 
 
 
@@ -170,7 +165,7 @@ this->transformInfoInterface= transformInfoInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document* getDoc(){
+    auto BasicComponentView::getDoc() -> Document*{
 
     Document* document = this->getTransformInfoInterface()->getDataDocument();;
     
@@ -199,7 +194,7 @@ this->transformInfoInterface= transformInfoInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto BasicComponentView::view() -> std::string{
 
         try {
             
@@ -219,7 +214,7 @@ this->transformInfoInterface= transformInfoInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
@@ -237,7 +232,6 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BASICCOMPONENTVIEW_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,41 +37,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <javax/microedition/media/Manager.h>
-
-      
-#include <javax/microedition/media/MediaException.h>
-
-      
-#include <javax/microedition/media/Player.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/audio/AudioContentTypeDataFactory.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
-
-      
-#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Manager;
+class MediaException;
+class Player;
+class TsUtil;
+class AudioContentTypeDataFactory;
+class ResourceUtil;
+class Features;
+class GameFeatureFactory;
+class ProgressCanvasFactory;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -85,12 +66,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/Sounds.h"
-#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
-#include "org/allbinary/media/audio/NoPlayer.h"
-//NotDeviceSpecificMIDP2JavaLibrary
+        class Sounds;
+class SoundsFactoryInterface;
+class NoPlayer;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //NotDeviceSpecificMIDP2JavaLibrary
 class AllBinaryMediaManager
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string THIS = "AllBinaryMediaManagerNoMIPD2";
@@ -126,3 +111,55 @@ private: AllBinaryMediaManager();
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<javax/microedition/media/Manager.h>)
+#include <javax/microedition/media/Manager.h>
+#endif
+#if __has_include(<javax/microedition/media/MediaException.h>)
+#include <javax/microedition/media/MediaException.h>
+#endif
+#if __has_include(<javax/microedition/media/Player.h>)
+#include <javax/microedition/media/Player.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/audio/AudioContentTypeDataFactory.h>)
+#include <org/allbinary/audio/AudioContentTypeDataFactory.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/GameFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>)
+#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/audio/Sounds.h")
+#include "org/allbinary/media/audio/Sounds.h"
+#endif
+#if __has_include("org/allbinary/media/audio/SoundsFactoryInterface.h")
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/media/audio/NoPlayer.h")
+#include "org/allbinary/media/audio/NoPlayer.h"
+#endif
+
+        #endif
+    

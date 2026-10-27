@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/special/SpecialItemData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SpecialItemData
-            : public Object
-         {
 
-    public: static inline const std::string START_TIME = "SPECIALITEM_START_TIME";
+SpecialItemData::SpecialItemData() {
+        }
+        
 
-    public: static inline const std::string END_TIME = "SPECIALITEM_END_TIME";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMDATA_CPP

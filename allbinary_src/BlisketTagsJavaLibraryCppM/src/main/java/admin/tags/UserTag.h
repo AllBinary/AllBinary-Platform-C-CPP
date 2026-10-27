@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGS_USERTAG_H
         #define ADMIN_TAGS_USERTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <admin/taghelpers/UserHelperFactory.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/user/role/UserRoleData.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
+class JspTagException;
+class UserHelperFactory;
+class EntryData;
+class UserRoleData;
+class AbResponseHandler;
 
 
 
@@ -64,6 +59,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserTag: public TableTag {
 
     private: std::string role;
@@ -86,3 +85,28 @@ public: UserTag();
 
 
         #endif //ADMIN_TAGS_USERTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGS_USERTAG_H_COMPLETE)
+        #define ADMIN_TAGS_USERTAG_H_COMPLETE
+        #if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<admin/taghelpers/UserHelperFactory.h>)
+#include <admin/taghelpers/UserHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRoleData.h>)
+#include <org/allbinary/business/user/role/UserRoleData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include("admin/tags/TableTag.h")
+#include "admin/tags/TableTag.h"
+#endif
+
+        #endif
+    

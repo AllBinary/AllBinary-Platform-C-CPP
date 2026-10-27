@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONMAPPING_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,19 +74,14 @@
         #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h"
 #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h"
 
-class UserEmailConfigurationMapping
-            : public Object
-        , public TableMappingInterface {
 
-    private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
-
-public: UserEmailConfigurationMapping(UserEmailConfigurationInterface* userEmailConfigurationInterface){
+UserEmailConfigurationMapping::UserEmailConfigurationMapping(UserEmailConfigurationInterface* userEmailConfigurationInterface){
 this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto UserEmailConfigurationMapping::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -91,7 +96,7 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto UserEmailConfigurationMapping::getKey() -> Object*{
 
 
 
@@ -103,7 +108,7 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto UserEmailConfigurationMapping::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -116,7 +121,6 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONMAPPING_CPP

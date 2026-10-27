@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONINFOAPI1_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONINFOAPI1_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/api1/GameInputMotionInfoAPI1.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,21 +56,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInputMotionInfoAPI1: public GameInputMotionInfo {
+auto GameInputMotionInfoAPI1::instance_owner() -> GameInputMotionInfoAPI1* { static std::unique_ptr<GameInputMotionInfoAPI1> value(new GameInputMotionInfoAPI1()); return value.get(); }
+GameInputMotionInfoAPI1* GameInputMotionInfoAPI1::instance = GameInputMotionInfoAPI1::instance_owner();
 
-    private: static GameInputMotionInfoAPI1* instance() { static std::unique_ptr<GameInputMotionInfoAPI1> value(new GameInputMotionInfoAPI1()); return value.get(); }
-
-    public: static GameInputMotionInfoAPI1* getInstance(){
+    auto GameInputMotionInfoAPI1::getInstance() -> GameInputMotionInfoAPI1*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionInfoAPI1::instance();
+                        return GameInputMotionInfoAPI1::instance;
     
 }
 
 
-private: GameInputMotionInfoAPI1() : GameInputMotionInfo(4, 1){
+GameInputMotionInfoAPI1::GameInputMotionInfoAPI1() : GameInputMotionInfo(4, 1){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +79,6 @@ private: GameInputMotionInfoAPI1() : GameInputMotionInfo(4, 1){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONINFOAPI1_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,77 +80,8 @@
 #include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
 
-class GraphicItemInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual void setColor(Color* color) = 0;
 
-    public: virtual MutableTreeNode* getTreeNode() = 0;
-
-    public: virtual Points* getPointsInterface() = 0;
-
-    public: virtual void setPointsInterface(Points* points) = 0;
-
-    public: virtual bool isValid() = 0;
-
-    public: virtual bool isActive() = 0;
-
-    public: virtual void deactivate() = 0;
-
-    public: virtual void activate() = 0;
-
-    public: virtual void setFulcrumPoint(GPoint* point) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void translate(int32_t x, int32_t y) = 0;
-
-    public: virtual void setRotate(double theta) = 0;
-
-    public: virtual void addRotate(double theta) = 0;
-
-    public: virtual void setAngle(double angle) = 0;
-
-    public: virtual void addAngle(double angle) = 0;
-
-    public: virtual double getAngle() = 0;
-
-    public: virtual void paint(Graphics* g, double canvasAngle, IntegerDimension* dimension, int32_t x, int32_t y) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual Node* toDom(CanvasDom* canvasDom) = 0;
-
-    public: virtual GPoint* removePoint() = 0;
-
-    public: virtual void addPoint(GPoint* point) = 0;
-
-    public: virtual void mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) = 0;
-
-    public: virtual void mouseEntered(java::awt::event::MouseEvent* mouseEvent) = 0;
-
-    public: virtual void mouseExited(java::awt::event::MouseEvent* mouseEvent) = 0;
-
-    public: virtual void mousePressed(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) = 0;
-
-    public: virtual void mouseReleased(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) = 0;
-
-    public: virtual void mouseDragged(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) = 0;
-
-    public: virtual void mouseMoved(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) = 0;
-
-    public: virtual void keyPressed(java::awt::event::KeyEvent* keyEvent) = 0;
-
-    public: virtual void keyReleased(java::awt::event::KeyEvent* keyEvent) = 0;
-
-    public: virtual void keyTyped(java::awt::event::KeyEvent* keyEvent) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual GraphicItemInterface* duplicate() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMINTERFACE_CPP

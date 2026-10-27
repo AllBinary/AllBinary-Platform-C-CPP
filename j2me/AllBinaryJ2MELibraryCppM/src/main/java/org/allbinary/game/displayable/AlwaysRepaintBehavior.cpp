@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_ALWAYSREPAINTBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_ALWAYSREPAINTBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/AlwaysRepaintBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,23 +82,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/RepaintBehavior.h"
 
-class AlwaysRepaintBehavior: public RepaintBehavior {
 
-    private: static AlwaysRepaintBehavior* instanceC() { static std::unique_ptr<AlwaysRepaintBehavior> value(new AlwaysRepaintBehavior()); return value.get(); }
+AlwaysRepaintBehavior::AlwaysRepaintBehavior() {
+        }
+        auto AlwaysRepaintBehavior::instanceC_owner() -> AlwaysRepaintBehavior* { static std::unique_ptr<AlwaysRepaintBehavior> value(new AlwaysRepaintBehavior()); return value.get(); }
+AlwaysRepaintBehavior* AlwaysRepaintBehavior::instanceC = AlwaysRepaintBehavior::instanceC_owner();
 
-    public: static AlwaysRepaintBehavior* getInstance(){
+    auto AlwaysRepaintBehavior::getInstance() -> AlwaysRepaintBehavior*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AlwaysRepaintBehavior::instanceC();
+                        return AlwaysRepaintBehavior::instanceC;
     
 }
 
 
-    private: const std::string NAME = "AlwaysRepaintBehavior";
-
-    public: void repaint(Canvas* canvas){
+    auto AlwaysRepaintBehavior::repaint(Canvas* canvas) -> void{
 
     Features* features = Features::getInstance();;
     
@@ -143,11 +153,10 @@ thread->start();
 }
 
 
-    public: void onChangeRepaint(Canvas* canvas){
+    auto AlwaysRepaintBehavior::onChangeRepaint(Canvas* canvas) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_ALWAYSREPAINTBEHAVIOR_CPP

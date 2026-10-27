@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/CategoryAbstractFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,50 +83,43 @@
 #include "org/allbinary/business/category/CategoryInterface.h"
 #include "org/allbinary/business/category/Category.h"
 
-class CategoryAbstractFactory
-            : public Object
-        , public CategoryFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: CategoryAbstractFactory(){
+CategoryAbstractFactory::CategoryAbstractFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: CategoryInterface* getRootInstance(){
+    auto CategoryAbstractFactory::getRootInstance() -> CategoryInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: CategoryInterface* getRootInstance(AbPath* categoryAbPath){
+    auto CategoryAbstractFactory::getRootInstance(AbPath* categoryAbPath) -> CategoryInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: CategoryInterface* getRootInstanceFromNode(Node* node){
+    auto CategoryAbstractFactory::getRootInstanceFromNode(Node* node) -> CategoryInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: CategoryInterface* getInstance(std::string categoryName){
+    auto CategoryAbstractFactory::getInstance(std::string categoryName) -> CategoryInterface*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "getInstance(String)");
@@ -138,7 +141,7 @@ public: CategoryAbstractFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(String, int)", &e);
@@ -157,11 +160,11 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, std::string categoryName){
+    auto CategoryAbstractFactory::getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, std::string categoryName) -> CategoryInterface*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "getInstance(CategoryInterface, CategoryInterface, String)");
@@ -183,7 +186,7 @@ public: CategoryAbstractFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface , String, int)", &e);
@@ -202,11 +205,11 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface* getInstance(Node* node){
+    auto CategoryAbstractFactory::getInstance(Node* node) -> CategoryInterface*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "getInstance(Node)");
@@ -228,7 +231,7 @@ public: CategoryAbstractFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(Node, int)", &e);
@@ -247,11 +250,11 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, Node* node){
+    auto CategoryAbstractFactory::getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, Node* node) -> CategoryInterface*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "getInstance(CategoryInterface, CategoryInterface, Node)");
@@ -273,7 +276,7 @@ public: CategoryAbstractFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, Node, int)", &e);
@@ -292,11 +295,11 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
+    auto CategoryAbstractFactory::getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap) -> CategoryInterface*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "getInstance(CategoryInterface, CategoryInterface, HashMap)");
@@ -318,7 +321,7 @@ public: CategoryAbstractFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(CategoryInterface, CategoryInterface, HashMap)", &e);
@@ -337,7 +340,6 @@ public: CategoryAbstractFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_CPP

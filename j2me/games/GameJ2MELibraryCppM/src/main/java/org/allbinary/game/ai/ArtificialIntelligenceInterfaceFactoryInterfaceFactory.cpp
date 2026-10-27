@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,31 +71,29 @@
         #include "org/allbinary/game/ai/BasicAI.h"
 #include "org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h"
 
-class ArtificialIntelligenceInterfaceFactoryInterfaceFactory
-            : public Object
-         {
 
-    private: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory* SINGLETON() { static std::unique_ptr<ArtificialIntelligenceInterfaceFactoryInterfaceFactory> value(new ArtificialIntelligenceInterfaceFactoryInterfaceFactory()); return value.get(); }
+ArtificialIntelligenceInterfaceFactoryInterfaceFactory::ArtificialIntelligenceInterfaceFactoryInterfaceFactory() : list(BasicArrayListUtil::getInstance()->getImmutableInstance()) {
+        }
+        auto ArtificialIntelligenceInterfaceFactoryInterfaceFactory::SINGLETON_owner() -> ArtificialIntelligenceInterfaceFactoryInterfaceFactory* { static std::unique_ptr<ArtificialIntelligenceInterfaceFactoryInterfaceFactory> value(new ArtificialIntelligenceInterfaceFactoryInterfaceFactory()); return value.get(); }
+ArtificialIntelligenceInterfaceFactoryInterfaceFactory* ArtificialIntelligenceInterfaceFactoryInterfaceFactory::SINGLETON = ArtificialIntelligenceInterfaceFactoryInterfaceFactory::SINGLETON_owner();
 
-    public: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory::SINGLETON();
-    
-}
-
-
-    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
-    public: void clear(){
+    auto ArtificialIntelligenceInterfaceFactoryInterfaceFactory::clear() -> void{
 this->list= new BasicArrayListD();
     
 }
 
 
-    public: ArtificialIntelligenceInterfaceFactoryInterface* getInstanceFromCollection(ABHashtable<Object*, Object*>* hashtable){
+    auto ArtificialIntelligenceInterfaceFactoryInterfaceFactory::getInstance() -> ArtificialIntelligenceInterfaceFactoryInterfaceFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory::SINGLETON;
+    
+}
+
+
+    auto ArtificialIntelligenceInterfaceFactoryInterfaceFactory::getInstanceFromCollection(ABHashtable<Object*, Object*>* hashtable) -> ArtificialIntelligenceInterfaceFactoryInterface*{
 
     int32_t typeInteger = hashtable->get(BasicAI::ID);;
     
@@ -104,13 +112,12 @@ this->list= new BasicArrayListD();
 }
 
 
-    public: void add(ArtificialIntelligenceInterfaceFactoryInterface* artificialIntelligenceInterfaceFactoryInterface){
+    auto ArtificialIntelligenceInterfaceFactoryInterfaceFactory::add(ArtificialIntelligenceInterfaceFactoryInterface* artificialIntelligenceInterfaceFactoryInterface) -> void{
 this->list->add(artificialIntelligenceInterfaceFactoryInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACEFACTORY_CPP

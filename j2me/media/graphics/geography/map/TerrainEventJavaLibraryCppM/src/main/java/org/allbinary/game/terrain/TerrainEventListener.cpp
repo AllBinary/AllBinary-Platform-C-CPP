@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/terrain/TerrainEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,19 +58,17 @@
         #include "org/allbinary/game/terrain/TerrainEventListenerInterface.h"
 #include "org/allbinary/game/terrain/TerrainEvent.h"
 
-class TerrainEventListener
-            : public Object
-        , public TerrainEventListenerInterface {
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    public: void onEvent(AllBinaryEventObject* eventObject){
+TerrainEventListener::TerrainEventListener() : list(new BasicArrayListD()) {
+        }
+        
+    auto TerrainEventListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onTerrainEvent(TerrainEvent* terrainEvent){
+    auto TerrainEventListener::onTerrainEvent(TerrainEvent* terrainEvent) -> void{
 this->list->clear();
     
 this->list->add(terrainEvent);
@@ -68,7 +76,7 @@ this->list->add(terrainEvent);
 }
 
 
-    public: BasicArrayList* getList(){
+    auto TerrainEventListener::getList() -> BasicArrayList*{
 
 
 
@@ -78,7 +86,6 @@ this->list->add(terrainEvent);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTLISTENER_CPP

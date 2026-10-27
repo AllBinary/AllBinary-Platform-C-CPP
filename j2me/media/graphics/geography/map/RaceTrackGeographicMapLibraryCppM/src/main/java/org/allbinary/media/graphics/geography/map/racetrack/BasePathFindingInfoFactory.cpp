@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDINGINFOFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDINGINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/BasePathFindingInfoFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -85,19 +95,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackRoadsGeographicMapCellHistoryFactory.h"
 
-class BasePathFindingInfoFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
+BasePathFindingInfoFactory::BasePathFindingInfoFactory() : logUtil(LogUtil::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void init(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
+    auto BasePathFindingInfoFactory::init(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray) -> void{
 
 //inner=true member= isStatic=
 class RaceTrackGeographicMapCellPositionFactoryInitVisitor
-            : public Object
+            : public virtual Object
         , public GeographicMapCellPositionFactoryInitVisitorInterface {
 
     private: int32_t startLineId;
@@ -211,7 +219,7 @@ geographicMapInterface->getGeographicMapCellPositionFactory()->visit(new RaceTra
 
                 //@Throws(Exception.constructor)
             
-    private: void addStartPathFindingNode(PathFindingInfo* pathFindingInfo, GeographicMapCellPosition* startGeographicMapCellPosition){
+    auto BasePathFindingInfoFactory::addStartPathFindingNode(PathFindingInfo* pathFindingInfo, GeographicMapCellPosition* startGeographicMapCellPosition) -> void{
 pathFindingInfo->addStartPathFindingNode(new PathFindingNode(NullUtil::getInstance()->NULL_OBJECT, startGeographicMapCellPosition));
     
 }
@@ -219,7 +227,7 @@ pathFindingInfo->addStartPathFindingNode(new PathFindingNode(NullUtil::getInstan
 
                 //@Throws(Exception.constructor)
             
-    private: void addEndPathFindingNode(PathFindingInfo* pathFindingInfo, GeographicMapCellPosition* endGeographicMapCellPosition){
+    auto BasePathFindingInfoFactory::addEndPathFindingNode(PathFindingInfo* pathFindingInfo, GeographicMapCellPosition* endGeographicMapCellPosition) -> void{
 pathFindingInfo->addEndPathFindingNode(new PathFindingNode(NullUtil::getInstance()->NULL_OBJECT, endGeographicMapCellPosition));
     
 }
@@ -227,16 +235,15 @@ pathFindingInfo->addEndPathFindingNode(new PathFindingNode(NullUtil::getInstance
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo* getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
+    auto BasePathFindingInfoFactory::getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> graphArray) -> PathFindingInfo*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDINGINFOFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/SpriteSplitterUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -72,49 +82,31 @@
 #include "org/allbinary/media/image/ImageProcessorInput.h"
 #include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
-class SpriteSplitterUtil
-            : public Object
-         {
 
-    private: static SpriteSplitterUtil* instance() { static std::unique_ptr<SpriteSplitterUtil> value(new SpriteSplitterUtil()); return value.get(); }
+SpriteSplitterUtil::SpriteSplitterUtil() : logUtil(LogUtil::getInstance()), commonSeps(CommonSeps::getInstance()), commonStrings(CommonStrings::getInstance()), ANIMATIONS_LABELS(
+                                                        {
+                                                            "Row Total:","Column Total:","Column Total:","Row Total:","Column Total:","Row Total:"
+                                                        }), ROW_NAME(
+                                                        {
+                                                            "idle","walk","attack","defeat"
+                                                        }) {
+        }
+        auto SpriteSplitterUtil::instance_owner() -> SpriteSplitterUtil* { static std::unique_ptr<SpriteSplitterUtil> value(new SpriteSplitterUtil()); return value.get(); }
+SpriteSplitterUtil* SpriteSplitterUtil::instance = SpriteSplitterUtil::instance_owner();
 
-    public: static SpriteSplitterUtil* getInstance(){
+    auto SpriteSplitterUtil::getInstance() -> SpriteSplitterUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpriteSplitterUtil::instance();
+                        return SpriteSplitterUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: const std::vector<std::string> ANIMATIONS_LABELS = 
-                                                        {
-                                                            "Row Total:","Column Total:","Column Total:","Row Total:","Column Total:","Row Total:"
-                                                        };
-
-    public: const std::string DIRECTIONAL_ANIMATIONS = "Directional DLRU";
-
-    public: const std::string HORIZONTAL_ANIMATIONS = "Horizontal Animations";
-
-    public: const std::string HORIZONTAL_SPRITE = "Horizontal A=R=Y F=C=X";
-
-    private: const std::vector<std::string> ROW_NAME = 
-                                                        {
-                                                            "idle","walk","attack","defeat"
-                                                        };
-
-    private: const std::string _ROW = "_row";
-
                 //@Throws(Exception.constructor)
             
-    public: void process(ImageProcessorInput* imageProcessorInput, int32_t totalFrames, int32_t totalAnimations, int32_t widthReduction, int32_t heightReduction, int32_t increaseWidth, int32_t increaseHeight, std::string spriteType, ImageProcessedVisitor* visitor){
+    auto SpriteSplitterUtil::process(ImageProcessorInput* imageProcessorInput, int32_t totalFrames, int32_t totalAnimations, int32_t widthReduction, int32_t heightReduction, int32_t increaseWidth, int32_t increaseHeight, std::string spriteType, ImageProcessedVisitor* visitor) -> void{
 
     BufferedImage* bufferedImage;;
     
@@ -153,9 +145,9 @@ this->logUtil->putF(spriteType, this, this->commonStrings->RUN);
     
 generatedBufferedImageArray= std::vector<std::vector<BufferedImage*>>(rows, std::vector<BufferedImage*>(columns));
     
-this->logUtil->putF("Processing Individual Cells columns: " +columns +" rows: " +rows, this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Processing Individual Cells columns: ") +JavaString::valueOf(columns)) +JavaString::valueOf(" rows: ")) +JavaString::valueOf(rows), this, this->commonStrings->RUN);
     
-this->logUtil->putF("Processing Individual Cells cellHeight: " +cellHeight +" cellWidth: " +cellWidth, this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Processing Individual Cells cellHeight: ") +JavaString::valueOf(cellHeight)) +JavaString::valueOf(" cellWidth: ")) +JavaString::valueOf(cellWidth), this, this->commonStrings->RUN);
     
 
     ImageUtil* imageUtil = ImageUtil::getInstance();;
@@ -389,7 +381,6 @@ visitor->visit(generatedBufferedImage, nameEnding, index);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_CPP

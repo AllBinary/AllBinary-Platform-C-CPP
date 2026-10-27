@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_H
         #define ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,53 +39,21 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
 #include <java/io/File.h>
-
-      
 #include <java/util/Arrays.h>
-
-      
 #include <java/util/Comparator.h>
-
-      
-#include <javax/imageio/ImageIO.h>
-
-      
-#include <org/allbinary/gui/dialog/FileJDialog.h>
-
-      
+class ImageIO;
+class FileJDialog;
 #include <org/allbinary/gui/dialog/FileJDialogListenerInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/media/image/ImageProcessorInput.h>
-
-      
-#include <org/allbinary/media/image/ImageProcessorInputCompositeInterface.h>
-
-      
-#include <org/allbinary/media/image/analysis/ColorRange.h>
-
-      
-#include <org/allbinary/media/image/analysis/ColorRangeInterface.h>
-
-      
-#include <org/allbinary/media/image/analysis/ImageAnalysis.h>
-
-      
-#include <org/allbinary/media/image/analysis/ImageAnalysisResults.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class ImageProcessorInput;
+class ImageProcessorInputCompositeInterface;
+class ColorRange;
+class ColorRangeInterface;
+class ImageAnalysis;
+class ImageAnalysisResults;
+class CommonPhoneStrings;
+class CommonStrings;
 
 
 
@@ -100,38 +73,42 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/gui/JFrame.h"
-#include "org/allbinary/image/gui/JDialog.h"
-#include "org/allbinary/image/gui/JLabel.h"
-#include "org/allbinary/image/gui/JTextField.h"
-#include "org/allbinary/image/gui/JButton.h"
-#include "org/allbinary/image/gui/JPanel.h"
-#include "org/allbinary/image/gui/JMenuBar.h"
-#include "org/allbinary/image/gui/JMenu.h"
-#include "org/allbinary/image/gui/JMenuItem.h"
-#include "org/allbinary/image/gui/Dimension.h"
-#include "org/allbinary/image/gui/ActionListener.h"
-#include "org/allbinary/image/gui/ActionEvent.h"
-#include "org/allbinary/image/gui/GroupLayout.h"
-#include "org/allbinary/image/gui/Short.h"
-#include "org/allbinary/image/gui/GridLayout.h"
-#include "org/allbinary/image/gui/ImageUnifierJPanel.h"
-#include "org/allbinary/image/gui/ImageAnalysisResultsJPanel.h"
-#include "org/allbinary/image/gui/RotationSpriteImageJPanel.h"
-#include "org/allbinary/image/gui/SpriteSplitterImageJPanel.h"
-#include "org/allbinary/image/gui/RotationImageJPanel.h"
-#include "org/allbinary/image/gui/ResizeImageJPanel.h"
-#include "org/allbinary/image/gui/CreateIconImagesJPanel.h"
-#include "org/allbinary/image/gui/CanvasImageJPanel.h"
-#include "org/allbinary/image/gui/MirrorSpriteImageJPanel.h"
-#include "org/allbinary/image/gui/MirrorImageJPanel.h"
+class JDialog;
+class JLabel;
+class JTextField;
+class JButton;
+class JPanel;
+class JMenuBar;
+class JMenu;
+class JMenuItem;
+class Dimension;
+class ActionListener;
+class ActionEvent;
+class GroupLayout;
+class Short;
+class GridLayout;
+class ImageUnifierJPanel;
+class ImageAnalysisResultsJPanel;
+class RotationSpriteImageJPanel;
+class SpriteSplitterImageJPanel;
+class RotationImageJPanel;
+class ResizeImageJPanel;
+class CreateIconImagesJPanel;
+class CanvasImageJPanel;
+class MirrorSpriteImageJPanel;
+class MirrorImageJPanel;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageToolJFrame: public javax::swing::JFrame, public FileJDialogListenerInterface {
 
     private: static inline ImageProcessorInputCompositeInterface* imageProcessorInputCompositeInterface;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     private: FileJDialog* fileJDialog;
 
@@ -263,3 +240,133 @@ public: ImageToolJFrame();
 
 
         #endif //ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/util/Arrays.h>)
+#include <java/util/Arrays.h>
+#endif
+#if __has_include(<java/util/Comparator.h>)
+#include <java/util/Comparator.h>
+#endif
+#if __has_include(<javax/imageio/ImageIO.h>)
+#include <javax/imageio/ImageIO.h>
+#endif
+#if __has_include(<org/allbinary/gui/dialog/FileJDialog.h>)
+#include <org/allbinary/gui/dialog/FileJDialog.h>
+#endif
+#if __has_include(<org/allbinary/gui/dialog/FileJDialogListenerInterface.h>)
+#include <org/allbinary/gui/dialog/FileJDialogListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageProcessorInput.h>)
+#include <org/allbinary/media/image/ImageProcessorInput.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageProcessorInputCompositeInterface.h>)
+#include <org/allbinary/media/image/ImageProcessorInputCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/media/image/analysis/ColorRange.h>)
+#include <org/allbinary/media/image/analysis/ColorRange.h>
+#endif
+#if __has_include(<org/allbinary/media/image/analysis/ColorRangeInterface.h>)
+#include <org/allbinary/media/image/analysis/ColorRangeInterface.h>
+#endif
+#if __has_include(<org/allbinary/media/image/analysis/ImageAnalysis.h>)
+#include <org/allbinary/media/image/analysis/ImageAnalysis.h>
+#endif
+#if __has_include(<org/allbinary/media/image/analysis/ImageAnalysisResults.h>)
+#include <org/allbinary/media/image/analysis/ImageAnalysisResults.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/image/gui/JFrame.h")
+#include "org/allbinary/image/gui/JFrame.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JDialog.h")
+#include "org/allbinary/image/gui/JDialog.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JLabel.h")
+#include "org/allbinary/image/gui/JLabel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JTextField.h")
+#include "org/allbinary/image/gui/JTextField.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JButton.h")
+#include "org/allbinary/image/gui/JButton.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JPanel.h")
+#include "org/allbinary/image/gui/JPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JMenuBar.h")
+#include "org/allbinary/image/gui/JMenuBar.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JMenu.h")
+#include "org/allbinary/image/gui/JMenu.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JMenuItem.h")
+#include "org/allbinary/image/gui/JMenuItem.h"
+#endif
+#if __has_include("org/allbinary/image/gui/Dimension.h")
+#include "org/allbinary/image/gui/Dimension.h"
+#endif
+#if __has_include("org/allbinary/image/gui/ActionListener.h")
+#include "org/allbinary/image/gui/ActionListener.h"
+#endif
+#if __has_include("org/allbinary/image/gui/ActionEvent.h")
+#include "org/allbinary/image/gui/ActionEvent.h"
+#endif
+#if __has_include("org/allbinary/image/gui/GroupLayout.h")
+#include "org/allbinary/image/gui/GroupLayout.h"
+#endif
+#if __has_include("org/allbinary/image/gui/Short.h")
+#include "org/allbinary/image/gui/Short.h"
+#endif
+#if __has_include("org/allbinary/image/gui/GridLayout.h")
+#include "org/allbinary/image/gui/GridLayout.h"
+#endif
+#if __has_include("org/allbinary/image/gui/ImageUnifierJPanel.h")
+#include "org/allbinary/image/gui/ImageUnifierJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/ImageAnalysisResultsJPanel.h")
+#include "org/allbinary/image/gui/ImageAnalysisResultsJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/RotationSpriteImageJPanel.h")
+#include "org/allbinary/image/gui/RotationSpriteImageJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/SpriteSplitterImageJPanel.h")
+#include "org/allbinary/image/gui/SpriteSplitterImageJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/RotationImageJPanel.h")
+#include "org/allbinary/image/gui/RotationImageJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/ResizeImageJPanel.h")
+#include "org/allbinary/image/gui/ResizeImageJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/CreateIconImagesJPanel.h")
+#include "org/allbinary/image/gui/CreateIconImagesJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/CanvasImageJPanel.h")
+#include "org/allbinary/image/gui/CanvasImageJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/MirrorSpriteImageJPanel.h")
+#include "org/allbinary/image/gui/MirrorSpriteImageJPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/MirrorImageJPanel.h")
+#include "org/allbinary/image/gui/MirrorImageJPanel.h"
+#endif
+
+        #endif
+    

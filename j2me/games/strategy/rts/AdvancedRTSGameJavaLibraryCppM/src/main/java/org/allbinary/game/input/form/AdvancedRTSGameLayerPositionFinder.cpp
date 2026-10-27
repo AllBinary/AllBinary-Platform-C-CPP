@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/AdvancedRTSGameLayerPositionFinder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,27 +70,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvancedRTSGameLayerPositionFinder
-            : public Object
-        , public LayerPositionFinderInterface {
+auto AdvancedRTSGameLayerPositionFinder::instance_owner() -> AdvancedRTSGameLayerPositionFinder* { static std::unique_ptr<AdvancedRTSGameLayerPositionFinder> value(new AdvancedRTSGameLayerPositionFinder()); return value.get(); }
+AdvancedRTSGameLayerPositionFinder* AdvancedRTSGameLayerPositionFinder::instance = AdvancedRTSGameLayerPositionFinder::instance_owner();
 
-    private: static AdvancedRTSGameLayerPositionFinder* instance() { static std::unique_ptr<AdvancedRTSGameLayerPositionFinder> value(new AdvancedRTSGameLayerPositionFinder()); return value.get(); }
-
-    public: static AdvancedRTSGameLayerPositionFinder* getInstance(){
+    auto AdvancedRTSGameLayerPositionFinder::getInstance() -> AdvancedRTSGameLayerPositionFinder*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvancedRTSGameLayerPositionFinder::instance();
+                        return AdvancedRTSGameLayerPositionFinder::instance;
     
 }
 
 
-private: AdvancedRTSGameLayerPositionFinder(){
+AdvancedRTSGameLayerPositionFinder::AdvancedRTSGameLayerPositionFinder(){
 }
 
 
-    public: AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition){
+    auto AdvancedRTSGameLayerPositionFinder::getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition) -> AllBinaryLayer*{
 
     AllBinaryLayer* layerInterface = DropCellPositionHistory::getInstance()->getLayerInterface(geographicMapCellPosition);;
     
@@ -102,7 +109,6 @@ private: AdvancedRTSGameLayerPositionFinder(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_CPP

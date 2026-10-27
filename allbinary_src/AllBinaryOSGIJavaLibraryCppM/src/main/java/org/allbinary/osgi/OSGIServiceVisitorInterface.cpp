@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_CPP
+        #define ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/osgi/OSGIServiceVisitorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/osgi/OSGIServiceInterface.h"
 
-class OSGIServiceVisitorInterface: public VisitorInterface {
+//Interface - declared in the header
 
-    public: virtual bool visit(OSGIServiceInterface* osgiServiceInterface) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_OSGI_OSGISERVICEVISITORINTERFACE_CPP

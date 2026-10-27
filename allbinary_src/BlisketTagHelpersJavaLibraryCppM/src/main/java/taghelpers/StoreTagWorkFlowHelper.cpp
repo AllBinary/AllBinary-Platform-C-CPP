@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_STORETAGWORKFLOWHELPER_CPP
+        #define TAGHELPERS_STORETAGWORKFLOWHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/StoreTagWorkFlowHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,20 +81,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreTagWorkFlowHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+StoreTagWorkFlowHelper::StoreTagWorkFlowHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: StoreWorkFlowInterface* storeWorkFlowInterface;
-
-public: StoreTagWorkFlowHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF("Properties: " +hashMap->toString(), this, "StoreTagWorkFlowHelper()");
+                                    this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(hashMap->toString()), this, "StoreTagWorkFlowHelper()");
     
 
                                     }
@@ -96,14 +99,14 @@ this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance()->getInstanc
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t process(){
+    auto StoreTagWorkFlowHelper::process() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF("Process", this, this->commonStrings.PROCESS);
+                                    this->logUtil->putF("Process", this, this->commonStrings->PROCESS);
     
 
                                     }
@@ -122,10 +125,10 @@ this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance()->getInstanc
     std::string error = "Failed to process workflow: ";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -140,7 +143,6 @@ this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance()->getInstanc
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_STORETAGWORKFLOWHELPER_CPP

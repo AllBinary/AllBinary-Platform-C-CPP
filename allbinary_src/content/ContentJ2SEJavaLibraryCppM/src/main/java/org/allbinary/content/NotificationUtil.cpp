@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP
+        #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/content/NotificationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,25 +74,23 @@
 #include "org/allbinary/content/Notification.h"
 #include "org/allbinary/content/PendingIntent.h"
 
-class NotificationUtil
-            : public Object
-         {
 
-    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
+NotificationUtil::NotificationUtil() : notificationManager(dynamic_cast<NotificationManager*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::NOTIFICATION_SERVICE))) {
+        }
+        auto NotificationUtil::SINGLETON_owner() -> NotificationUtil* { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
+NotificationUtil* NotificationUtil::SINGLETON = NotificationUtil::SINGLETON_owner();
 
-    public: static NotificationUtil* getInstance(){
+    auto NotificationUtil::getInstance() -> NotificationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil::SINGLETON();
+                        return NotificationUtil::SINGLETON;
     
 }
 
 
-    private: NotificationManager* notificationManager = dynamic_cast<NotificationManager*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::NOTIFICATION_SERVICE));
-
-    public: void notify(Command* command, std::string resource, std::string message){
+    auto NotificationUtil::notify(Command* command, std::string resource, std::string message) -> void{
 
     Context* context = ResourceUtil::getInstance()->getContext();;
     
@@ -105,7 +113,6 @@ this->notificationManager->notify(TsUtil::getInstance()->hashCode(command), noti
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP

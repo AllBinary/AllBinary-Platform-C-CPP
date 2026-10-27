@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COMPARISONIMAGEINPUTOUTPUT_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COMPARISONIMAGEINPUTOUTPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/ComparisonImageInputOutput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -88,21 +98,14 @@
 #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 #include "org/allbinary/media/image/comparison/ChangedPixelsUtil.h"
 
-class ComparisonImageInputOutput
-            : public Object
-        , public ImageIOInterface {
 
-    private: static inline const std::string ROOT_NAME = "_Changed_";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ComparisonImageInputOutput(){
+ComparisonImageInputOutput::ComparisonImageInputOutput() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void save(int64_t frame){
+    auto ComparisonImageInputOutput::save(int64_t frame) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -128,7 +131,7 @@ this->save(imageComparisonResult, imageComparisonResultFrameCacheable->getFrame(
                                     }
                                 
                         else {
-                            this->logUtil->putF("Comparison Results Not Available for Output: " +frame, this, commonStrings->SAVE);
+                            this->logUtil->putF(JavaString::valueOf("Comparison Results Not Available for Output: ") +JavaString::valueOf(frame), this, commonStrings->SAVE);
     
 
                         }
@@ -137,7 +140,7 @@ this->save(imageComparisonResult, imageComparisonResultFrameCacheable->getFrame(
                                     }
                                 
                         else {
-                            this->logUtil->putF("No Comparison Results: for first frame: " +frame, this, commonStrings->SAVE);
+                            this->logUtil->putF(JavaString::valueOf("No Comparison Results: for first frame: ") +JavaString::valueOf(frame), this, commonStrings->SAVE);
     
 
                         }
@@ -147,7 +150,7 @@ this->save(imageComparisonResult, imageComparisonResultFrameCacheable->getFrame(
 
                 //@Throws(Exception.constructor)
             
-    public: void save(ImageComparisonResult* imageComparisonResult, int64_t frame){
+    auto ComparisonImageInputOutput::save(ImageComparisonResult* imageComparisonResult, int64_t frame) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -167,7 +170,7 @@ filePathStringBuffer1->append(filePathStringBuffer->toString());
     
 filePathStringBuffer1->append("_1");
     
-filePathStringBuffer1->append(MediaDataFactory::getInstance()->JPG.getExtension());
+filePathStringBuffer1->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
 
     std::string filePath1 = filePathStringBuffer1->toString();;
@@ -179,7 +182,7 @@ filePathStringBuffer2->append(filePathStringBuffer->toString());
     
 filePathStringBuffer2->append("_2");
     
-filePathStringBuffer2->append(MediaDataFactory::getInstance()->JPG.getExtension());
+filePathStringBuffer2->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
 
     std::string filePath2 = filePathStringBuffer2->toString();;
@@ -187,16 +190,16 @@ filePathStringBuffer2->append(MediaDataFactory::getInstance()->JPG.getExtension(
 
     std::vector<BufferedImageCacheable*> bufferedImageCacheables = ChangedPixelsUtil::generateBufferedImageChacheables(imageComparisonResult);;
     
-this->logUtil->putF("Comparison Image File Path 1: " +filePath1, this, commonStrings->SAVE);
+this->logUtil->putF(JavaString::valueOf("Comparison Image File Path 1: ") +JavaString::valueOf(filePath1), this, commonStrings->SAVE);
     
-this->logUtil->putF("Comparison Image File Path 2: " +filePath2, this, commonStrings->SAVE);
+this->logUtil->putF(JavaString::valueOf("Comparison Image File Path 2: ") +JavaString::valueOf(filePath2), this, commonStrings->SAVE);
     
 
     std::vector<BufferedImage*> bufferedImageArray = std::vector<BufferedImage*>(2);;
     
-bufferedImageArray[0]= bufferedImageCacheables[0].getBufferedImage();
+bufferedImageArray[0]= bufferedImageCacheables[0]->getBufferedImage();
     
-bufferedImageArray[1]= bufferedImageCacheables[1].getBufferedImage();
+bufferedImageArray[1]= bufferedImageCacheables[1]->getBufferedImage();
     
 
     ImagePersistanceUtil* imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
@@ -208,7 +211,6 @@ imagePersistanceUtil->saveWithImageIO(filePath2, bufferedImageArray[1]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COMPARISONIMAGEINPUTOUTPUT_CPP

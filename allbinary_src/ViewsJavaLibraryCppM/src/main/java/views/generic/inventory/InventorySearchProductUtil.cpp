@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHPRODUCTUTIL_CPP
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHPRODUCTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/inventory/InventorySearchProductUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -92,31 +102,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventorySearchProductUtil
-            : public Object
-         {
 
-    private: static InventorySearchProductUtil* instance() { static std::unique_ptr<InventorySearchProductUtil> value(new InventorySearchProductUtil()); return value.get(); }
+InventorySearchProductUtil::InventorySearchProductUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        auto InventorySearchProductUtil::instance_owner() -> InventorySearchProductUtil* { static std::unique_ptr<InventorySearchProductUtil> value(new InventorySearchProductUtil()); return value.get(); }
+InventorySearchProductUtil* InventorySearchProductUtil::instance = InventorySearchProductUtil::instance_owner();
 
-    public: static InventorySearchProductUtil* getInstance(){
+    auto InventorySearchProductUtil::getInstance() -> InventorySearchProductUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventorySearchProductUtil::instance();
+                        return InventorySearchProductUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string ITEM_NOT_FOUND = "Item Not Found.";
-
                 //@Throws(Exception.constructor)
             
-    public: std::string getProduct(AbeClientInformationInterface* abeClientInformation, SearchRequest* searchRequest, std::string product){
+    auto InventorySearchProductUtil::getProduct(AbeClientInformationInterface* abeClientInformation, SearchRequest* searchRequest, std::string product) -> std::string{
 
         try {
             
@@ -166,7 +170,7 @@ viewDocumentInterface->getBaseNode()->appendChild((new BasicItemView(itemInterfa
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "getProduct", &e);
@@ -177,14 +181,13 @@ viewDocumentInterface->getBaseNode()->appendChild((new BasicItemView(itemInterfa
 
 
 
-                            throw new Exception("Failed to getProduct");
+                            throw Exception("Failed to getProduct");
                     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHPRODUCTUTIL_CPP

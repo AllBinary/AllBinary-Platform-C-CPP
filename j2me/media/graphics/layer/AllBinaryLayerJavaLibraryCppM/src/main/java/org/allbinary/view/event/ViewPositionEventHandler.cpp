@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/event/ViewPositionEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,27 +78,24 @@
         #include "org/allbinary/view/event/ViewPositionEvent.h"
 #include "org/allbinary/view/event/ViewPositionEventListenerInterface.h"
 
-class ViewPositionEventHandler: public BasicEventHandler {
+auto ViewPositionEventHandler::SINGLETON_owner() -> ViewPositionEventHandler* { static std::unique_ptr<ViewPositionEventHandler> value(new ViewPositionEventHandler()); return value.get(); }
+ViewPositionEventHandler* ViewPositionEventHandler::SINGLETON = ViewPositionEventHandler::SINGLETON_owner();
 
-    private: static ViewPositionEventHandler* SINGLETON() { static std::unique_ptr<ViewPositionEventHandler> value(new ViewPositionEventHandler()); return value.get(); }
-
-    public: static ViewPositionEventHandler* getInstance(){
+    auto ViewPositionEventHandler::getInstance() -> ViewPositionEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ViewPositionEventHandler::SINGLETON();
+                        return ViewPositionEventHandler::SINGLETON;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: ViewPositionEventHandler(){
+ViewPositionEventHandler::ViewPositionEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(AllBinaryLayer* layerInterface){
+    auto ViewPositionEventHandler::addListener(AllBinaryLayer* layerInterface) -> void{
 
                         if(!this->list->contains(layerInterface))
                         
@@ -101,25 +108,25 @@ private: ViewPositionEventHandler(){
 }
 
 
-    public: void removeAllListeners(){
+    auto ViewPositionEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto ViewPositionEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto ViewPositionEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -138,20 +145,20 @@ layerInterface->onChangeEvent(dynamic_cast<ViewPositionEvent*>(eventObject));
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto ViewPositionEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     ViewPositionEventListenerInterface* viewPositionEventListenerInterface = (dynamic_cast<ViewPositionEventListenerInterface*>(eventListenerInterface));;
     
@@ -160,7 +167,6 @@ viewPositionEventListenerInterface->onChangeEvent(dynamic_cast<ViewPositionEvent
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTHANDLER_CPP

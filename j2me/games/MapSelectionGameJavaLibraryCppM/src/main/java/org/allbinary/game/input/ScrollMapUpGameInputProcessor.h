@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SCROLLMAPUPGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPUPGAMEINPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class GameKeyEvent;
+class AllBinaryLayerManager;
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/ScrollMapGameInputProcessor.h"
-#include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
+class ScrollMapPlayerGameInput;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScrollMapUpGameInputProcessor: public ScrollMapGameInputProcessor {
 
 public: ScrollMapUpGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlayerGameInput);
@@ -70,3 +75,22 @@ public: ScrollMapUpGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlayerG
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_SCROLLMAPUPGAMEINPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_SCROLLMAPUPGAMEINPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPUPGAMEINPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include("org/allbinary/game/input/ScrollMapGameInputProcessor.h")
+#include "org/allbinary/game/input/ScrollMapGameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/ScrollMapPlayerGameInput.h")
+#include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
+#endif
+
+        #endif
+    

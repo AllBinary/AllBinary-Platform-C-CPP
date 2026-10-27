@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINT_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/contraints/size/TwoDimensionalConstraint.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,19 +60,12 @@
         #include "org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h"
 #include "org/allbinary/logic/control/contraints/size/SizeConstraintInterface.h"
 
-class TwoDimensionalConstraint
-            : public Object
-        , public TwoDimensionalConstraintInterface {
 
-    private: SizeConstraintInterface* widthSizeConstraintInterface;
-
-    private: SizeConstraintInterface* heightSizeConstraintInterface;
-
-public: TwoDimensionalConstraint(Node* node){
+TwoDimensionalConstraint::TwoDimensionalConstraint(Node* node){
 }
 
 
-    public: SizeConstraintInterface* getHeight(){
+    auto TwoDimensionalConstraint::getHeight() -> SizeConstraintInterface*{
 
 
 
@@ -72,7 +75,7 @@ public: TwoDimensionalConstraint(Node* node){
 }
 
 
-    public: SizeConstraintInterface* getWidth(){
+    auto TwoDimensionalConstraint::getWidth() -> SizeConstraintInterface*{
 
 
 
@@ -82,19 +85,18 @@ public: TwoDimensionalConstraint(Node* node){
 }
 
 
-    public: void setHeight(SizeConstraintInterface* heightSizeConstraintInterface){
+    auto TwoDimensionalConstraint::setHeight(SizeConstraintInterface* heightSizeConstraintInterface) -> void{
 this->heightSizeConstraintInterface= heightSizeConstraintInterface;
     
 }
 
 
-    public: void setWidth(SizeConstraintInterface* widthSizeConstraintInterface){
+    auto TwoDimensionalConstraint::setWidth(SizeConstraintInterface* widthSizeConstraintInterface) -> void{
 this->widthSizeConstraintInterface= widthSizeConstraintInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINT_CPP

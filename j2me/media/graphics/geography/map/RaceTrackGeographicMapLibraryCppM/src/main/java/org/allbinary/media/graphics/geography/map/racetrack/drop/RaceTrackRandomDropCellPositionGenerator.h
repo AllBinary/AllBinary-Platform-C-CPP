@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,39 +36,17 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/game/layer/drop/DropLayerFactory.h>
-
-      
-#include <org/allbinary/game/layer/pickup/PickupLayerCircularStaticPool.h>
-
-      
-#include <org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h>
-
-      
-#include <org/allbinary/game/rand/MyRandomFactory.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
+class PickedUpLayerInterfaceFactoryInterface;
+class AllBinaryGameLayerManager;
+class AllBinaryTiledLayer;
+class DropLayerFactory;
+class PickupLayerCircularStaticPool;
+class RaceTrackPickupLayer;
+class MyRandomFactory;
+class GPoint;
+class AllBinaryLayerManager;
+class BasicGeographicMap;
+class GeographicMapCellPosition;
 
 
 
@@ -84,21 +67,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackDropCellPositionGenerator.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RaceTrackRandomDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
 
-    private: static RaceTrackRandomDropCellPositionGenerator* SINGLETON() { static std::unique_ptr<RaceTrackRandomDropCellPositionGenerator> value(new RaceTrackRandomDropCellPositionGenerator()); return value.get(); }
+    private: static RaceTrackRandomDropCellPositionGenerator* SINGLETON_owner();
+    private: static RaceTrackRandomDropCellPositionGenerator* SINGLETON;
 
     public: static RaceTrackRandomDropCellPositionGenerator* getInstance();
 
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory;
 
     private: const int32_t cellsPerRowOrColumn = 3;
 
-    private: const int32_t totalCells = this->cellsPerRowOrColumn *this->cellsPerRowOrColumn;
+    private: const int32_t totalCells;
 
-    private: const std::vector<int32_t> rowArray = {0,1,2,0,1,2,0,1,2};
+    private: std::vector<int32_t> rowArray;
 
-    private: const std::vector<int32_t> columnArray = {0,0,0,1,1,1,2,2,2};
+    private: std::vector<int32_t> columnArray;
 
     private: int32_t cellWidth= 0;
 
@@ -112,7 +100,7 @@ private: RaceTrackRandomDropCellPositionGenerator();
 
                 //@Throws(Exception.constructor)
             
-    protected: void drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index);
+    /*protected*/ public: void drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index);
 
 };
 
@@ -120,3 +108,46 @@ private: RaceTrackRandomDropCellPositionGenerator();
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>)
+#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/drop/DropLayerFactory.h>)
+#include <org/allbinary/game/layer/drop/DropLayerFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickupLayerCircularStaticPool.h>)
+#include <org/allbinary/game/layer/pickup/PickupLayerCircularStaticPool.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h>)
+#include <org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/rand/MyRandomFactory.h>)
+#include <org/allbinary/game/rand/MyRandomFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackDropCellPositionGenerator.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackDropCellPositionGenerator.h"
+#endif
+
+        #endif
+    

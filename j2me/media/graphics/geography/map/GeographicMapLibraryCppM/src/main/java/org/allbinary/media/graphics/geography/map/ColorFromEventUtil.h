@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_COLORFROMEVENTUTIL_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_COLORFROMEVENTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
+class AllBinaryGameCanvas;
+class BasicColor;
+class BasicColorFactory;
 
 
 
@@ -56,20 +55,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h"
-#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+        class GeographicMapCompositeInterface;
+class BasicGeographicMap;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorFromEventUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ColorFromEventUtil* instance() { static std::unique_ptr<ColorFromEventUtil> value(new ColorFromEventUtil()); return value.get(); }
+    private: static ColorFromEventUtil* instance_owner();
+    private: static ColorFromEventUtil* instance;
 
     public: static ColorFromEventUtil* getInstance();
 
-    private: BasicColor* YELLOW = BasicColorFactory::getInstance()->YELLOW;
 
-    public: const int32_t COLOR_INT = this->YELLOW->intValue();
+            
+    public: ColorFromEventUtil();
+        
+    private: BasicColor* YELLOW;
+
+    public: const int32_t COLOR_INT;
 
     public: BasicColor* getForegroundColor(AllBinaryGameCanvas* gameCanvasInterface);
 
@@ -79,3 +87,25 @@ class ColorFromEventUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_COLORFROMEVENTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_COLORFROMEVENTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_COLORFROMEVENTUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>)
+#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/BasicGeographicMap.h")
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+#endif
+
+        #endif
+    

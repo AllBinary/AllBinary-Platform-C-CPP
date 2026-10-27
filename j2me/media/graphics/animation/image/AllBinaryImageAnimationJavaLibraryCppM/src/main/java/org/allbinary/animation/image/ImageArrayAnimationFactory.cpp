@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageArrayAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -72,19 +82,8 @@
         #include "org/allbinary/animation/image/ImageArrayAnimation.h"
 #include "org/allbinary/animation/image/AdjustedImageArrayAnimation.h"
 
-class ImageArrayAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    private: int32_t dx = 0;
-
-    private: int32_t dy = 0;
-
-    private: std::vector<Image*> imageArray;
-
-    private: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: ImageArrayAnimationFactory(std::vector<Image*> imageArray, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+ImageArrayAnimationFactory::ImageArrayAnimationFactory(std::vector<Image*> imageArray, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
 this->imageArray= imageArray;
     
 this->animationBehaviorFactory= animationBehaviorFactory;
@@ -98,7 +97,7 @@ this->dy= dy;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto ImageArrayAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
                         if(this->dx != 0 || this->dy != 0)
                         
@@ -125,11 +124,10 @@ this->dy= dy;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto ImageArrayAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATIONFACTORY_CPP

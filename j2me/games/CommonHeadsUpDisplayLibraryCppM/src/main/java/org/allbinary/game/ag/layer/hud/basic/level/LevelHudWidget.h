@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Font;
+class Graphics;
 #include <org/allbinary/game/graphics/hud/BasicHud.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
+class BasicColorFactory;
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
-
-      
+class NullUtil;
+class PrimitiveLongUtil;
 
 
 
@@ -71,6 +62,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LevelHudWidget: public BasicHud, public PaintableInterface {
 
                 //@Throws(Exception.constructor)
@@ -83,7 +78,7 @@ class LevelHudWidget: public BasicHud, public PaintableInterface {
 
     private: std::vector<char> levelString;
 
-    private: std::vector<char> levelNumberCharArray = NullUtil::getInstance()->NULL_CHAR_ARRAY;
+    private: std::vector<char> levelNumberCharArray;
 
     private: int32_t levelNumberTotalDigits= 0;
 
@@ -115,3 +110,31 @@ public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction);
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/graphics/hud/BasicHud.h>)
+#include <org/allbinary/game/graphics/hud/BasicHud.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveLongUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
+#endif
+
+        #endif
+    

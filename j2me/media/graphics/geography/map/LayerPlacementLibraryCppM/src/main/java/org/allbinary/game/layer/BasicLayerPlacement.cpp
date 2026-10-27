@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_BASICLAYERPLACEMENT_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_BASICLAYERPLACEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/BasicLayerPlacement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,17 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/LayerPlacementType.h"
 
-class BasicLayerPlacement
-            : public Object
-         {
 
-    private: LayerPlacementType* layerType;
-
-    private: int32_t width;
-
-    private: int32_t height;
-
-public: BasicLayerPlacement(LayerPlacementType* layerType, int32_t width, int32_t height){
+BasicLayerPlacement::BasicLayerPlacement(LayerPlacementType* layerType, int32_t width, int32_t height){
 this->layerType= layerType;
     
 this->width= width;
@@ -66,7 +67,7 @@ this->height= height;
 }
 
 
-    public: int32_t getWidth(){
+    auto BasicLayerPlacement::getWidth() -> int32_t{
 
 
 
@@ -76,7 +77,7 @@ this->height= height;
 }
 
 
-    public: int32_t getHeight(){
+    auto BasicLayerPlacement::getHeight() -> int32_t{
 
 
 
@@ -86,7 +87,7 @@ this->height= height;
 }
 
 
-    public: LayerPlacementType* getLayerType(){
+    auto BasicLayerPlacement::getLayerType() -> LayerPlacementType*{
 
 
 
@@ -96,13 +97,12 @@ this->height= height;
 }
 
 
-    protected: void setLayerType(LayerPlacementType* layerType){
+    auto BasicLayerPlacement::setLayerType(LayerPlacementType* layerType) -> void{
 this->layerType= layerType;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_BASICLAYERPLACEMENT_CPP

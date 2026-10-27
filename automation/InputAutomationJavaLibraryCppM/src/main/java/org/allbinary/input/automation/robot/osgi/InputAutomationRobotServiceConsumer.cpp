@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTSERVICECONSUMER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTSERVICECONSUMER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotServiceConsumer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotOSGIServiceVisitor.h"
 
-class InputAutomationRobotServiceConsumer: public InputAutomationServiceConsumer {
 
-public: InputAutomationRobotServiceConsumer(BundleContext* bundleContext) : InputAutomationServiceConsumer(InputAutomationRobotServiceInterface.constructor.getName(), bundleContext, new InputAutomationRobotOSGIServiceVisitor()){
+InputAutomationRobotServiceConsumer::InputAutomationRobotServiceConsumer(BundleContext* bundleContext) : InputAutomationServiceConsumer(Class::forType(typeid(InputAutomationRobotServiceInterface))->getName(), bundleContext, new InputAutomationRobotOSGIServiceVisitor()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +74,6 @@ public: InputAutomationRobotServiceConsumer(BundleContext* bundleContext) : Inpu
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTSERVICECONSUMER_CPP

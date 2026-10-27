@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_STOREADMINUSEREMAILEVENTHANDLERSINGLETONS_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_STOREADMINUSEREMAILEVENTHANDLERSINGLETONS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/event/handler/factory/StoreAdminUserEmailEventHandlerSingletons.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,31 +93,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreAdminUserEmailEventHandlerSingletons
-            : public Object
-         {
+auto StoreAdminUserEmailEventHandlerSingletons::instance_owner() -> StoreAdminUserEmailEventHandlerSingletons* { static std::unique_ptr<StoreAdminUserEmailEventHandlerSingletons> value(new StoreAdminUserEmailEventHandlerSingletons()); return value.get(); }
+StoreAdminUserEmailEventHandlerSingletons* StoreAdminUserEmailEventHandlerSingletons::instance = StoreAdminUserEmailEventHandlerSingletons::instance_owner();
 
-    private: static StoreAdminUserEmailEventHandlerSingletons* instance() { static std::unique_ptr<StoreAdminUserEmailEventHandlerSingletons> value(new StoreAdminUserEmailEventHandlerSingletons()); return value.get(); }
-
-    public: static StoreAdminUserEmailEventHandlerSingletons* getInstance(){
+    auto StoreAdminUserEmailEventHandlerSingletons::getInstance() -> StoreAdminUserEmailEventHandlerSingletons*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreAdminUserEmailEventHandlerSingletons::instance();
+                        return StoreAdminUserEmailEventHandlerSingletons::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+StoreAdminUserEmailEventHandlerSingletons::StoreAdminUserEmailEventHandlerSingletons() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), userEmailEventHandlerHashMap(StdUtil::getInstance()->createHashMap()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: HashMap<Object*, Object*>* userEmailEventHandlerHashMap = StdUtil::getInstance()->createHashMap();
-
-private: StoreAdminUserEmailEventHandlerSingletons(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -120,9 +121,9 @@ private: StoreAdminUserEmailEventHandlerSingletons(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserEmailEventHandler* getInstance(UserEmailEventNameData* userEmailEventNameData, AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface){
+    auto StoreAdminUserEmailEventHandlerSingletons::getInstance(UserEmailEventNameData* userEmailEventNameData, AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface) -> UserEmailEventHandler*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->GET_INSTANCE);
@@ -140,7 +141,7 @@ private: StoreAdminUserEmailEventHandlerSingletons(){
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Creating New Named UserEmailEventHandler", this, this->commonStrings->GET_INSTANCE);
@@ -167,7 +168,7 @@ this->userEmailEventHandlerHashMap->put(userEmailEventNameData, newUserEmailEven
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Returning existing UserEmailEventHandler", this, this->commonStrings->GET_INSTANCE);
@@ -187,7 +188,6 @@ this->userEmailEventHandlerHashMap->put(userEmailEventNameData, newUserEmailEven
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_STOREADMINUSEREMAILEVENTHANDLERSINGLETONS_CPP

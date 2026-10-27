@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_CPP
+        #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TrueTypeFontUtilBase
-            : public Object
-         {
 
-public: TrueTypeFontUtilBase(int32_t scale){
+TrueTypeFontUtilBase::TrueTypeFontUtilBase(int32_t scale){
 }
 
 
-    public: int32_t getAsTextureSize(int32_t textureSize){
+    auto TrueTypeFontUtilBase::getAsTextureSize(int32_t textureSize) -> int32_t{
 
 
 
@@ -63,7 +70,7 @@ public: TrueTypeFontUtilBase(int32_t scale){
 }
 
 
-    public: int32_t getCellSize(int32_t cellSize){
+    auto TrueTypeFontUtilBase::getCellSize(int32_t cellSize) -> int32_t{
 
 
 
@@ -73,7 +80,6 @@ public: TrueTypeFontUtilBase(int32_t scale){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_CPP

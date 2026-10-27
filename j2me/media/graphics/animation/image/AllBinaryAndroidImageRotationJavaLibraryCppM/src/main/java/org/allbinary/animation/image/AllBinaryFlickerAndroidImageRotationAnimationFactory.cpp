@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,17 +88,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
 
-class AllBinaryFlickerAndroidImageRotationAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    private: Image* image = NullImage::NULL_IMAGE;
-
-    private: int16_t angleIncrement;
-
-    protected: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: AllBinaryFlickerAndroidImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory){
+AllBinaryFlickerAndroidImageRotationAnimationFactory::AllBinaryFlickerAndroidImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) : image(NullImage::NULL_IMAGE){
 this->setImage(image);
     
 this->angleIncrement= angleIncrement;
@@ -100,7 +101,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto AllBinaryFlickerAndroidImageRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
     Image* image = ImageCopyUtil::getInstance()->createImage(this->getImage());;
     
@@ -113,7 +114,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 }
 
 
-    protected: int16_t getAngleIncrement(){
+    auto AllBinaryFlickerAndroidImageRotationAnimationFactory::getAngleIncrement() -> int16_t{
 
 
 
@@ -123,13 +124,13 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 }
 
 
-    protected: void setImage(Image* image){
+    auto AllBinaryFlickerAndroidImageRotationAnimationFactory::setImage(Image* image) -> void{
 this->image= image;
     
 }
 
 
-    protected: Image* getImage(){
+    auto AllBinaryFlickerAndroidImageRotationAnimationFactory::getImage() -> Image*{
 
 
 
@@ -139,11 +140,10 @@ this->image= image;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto AllBinaryFlickerAndroidImageRotationAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATIONFACTORY_CPP

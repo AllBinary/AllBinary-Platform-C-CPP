@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/SystemProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,33 +57,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //ActualPlatform
-/*actual*/ class SystemProperties
-            : public Object
-         {
+auto SystemProperties::instance_owner() -> SystemProperties* { static std::unique_ptr<SystemProperties> value(new SystemProperties()); return value.get(); }
+SystemProperties* SystemProperties::instance = SystemProperties::instance_owner();
 
-    private: static SystemProperties* instance() { static std::unique_ptr<SystemProperties> value(new SystemProperties()); return value.get(); }
-
-    /*actual*/ public: static SystemProperties* getInstance(){
+    /*actual*/ auto SystemProperties::getInstance() -> SystemProperties*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SystemProperties::instance();
+                        return SystemProperties::instance;
     
 }
 
 
-    private: const std::string OS_NAME = "os.name";
-
-    private: const std::string OS_ARCH = "os.arch";
-
-    private: const std::string OS_VERSION = "os.version";
-
-private: SystemProperties(){
+SystemProperties::SystemProperties(){
 }
 
 
-    /*actual*/ public: std::string getName(){
+    /*actual*/ auto SystemProperties::getName() -> std::string{
 
 
 
@@ -83,7 +84,7 @@ private: SystemProperties(){
 }
 
 
-    /*actual*/ public: std::string getArch(){
+    /*actual*/ auto SystemProperties::getArch() -> std::string{
 
 
 
@@ -93,7 +94,7 @@ private: SystemProperties(){
 }
 
 
-    /*actual*/ public: std::string getVersion(){
+    /*actual*/ auto SystemProperties::getVersion() -> std::string{
 
 
 
@@ -103,16 +104,15 @@ private: SystemProperties(){
 }
 
 
-    public: std::string getUserHomePath(){
+    auto SystemProperties::getUserHomePath() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,17 +71,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TextFieldItemValidator: public ValidatorBase {
 
-    private: ABTextFieldItem* textFieldItem;
-
-    private: int32_t min;
-
-    private: int32_t max;
-
-    private: bool allowOnEmpty;
-
-public: TextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
+TextFieldItemValidator::TextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
 this->textFieldItem= textFieldItem;
     
 this->min= min;
@@ -83,7 +84,7 @@ this->allowOnEmpty= allowOnEmpty;
 }
 
 
-    public: bool isValid(){
+    auto TextFieldItemValidator::isValid() -> bool{
 
     BooleanFactory* booleanFactory = BooleanFactory::getInstance();;
     
@@ -134,7 +135,7 @@ this->allowOnEmpty= allowOnEmpty;
 }
 
 
-    public: BasicArrayList* toList(){
+    auto TextFieldItemValidator::toList() -> BasicArrayList*{
 
     BasicArrayList* list = new BasicArrayListD();;
     
@@ -188,7 +189,6 @@ this->allowOnEmpty= allowOnEmpty;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_CPP

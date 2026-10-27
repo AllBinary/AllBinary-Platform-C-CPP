@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_BASEIMAGELOADINGPROCESSOR_CPP
+        #define ORG_ALLBINARY_THREAD_BASEIMAGELOADINGPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/BaseImageLoadingProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BaseImageLoadingProcessor
-            : public Object
-         {
 
-    private: static BaseImageLoadingProcessor* instance() { static std::unique_ptr<BaseImageLoadingProcessor> value(new BaseImageLoadingProcessor()); return value.get(); }
+BaseImageLoadingProcessor::BaseImageLoadingProcessor() {
+        }
+        auto BaseImageLoadingProcessor::instance_owner() -> BaseImageLoadingProcessor* { static std::unique_ptr<BaseImageLoadingProcessor> value(new BaseImageLoadingProcessor()); return value.get(); }
+BaseImageLoadingProcessor* BaseImageLoadingProcessor::instance = BaseImageLoadingProcessor::instance_owner();
 
-    public: static BaseImageLoadingProcessor* getInstance(){
+    auto BaseImageLoadingProcessor::getInstance() -> BaseImageLoadingProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BaseImageLoadingProcessor::instance();
+                        return BaseImageLoadingProcessor::instance;
     
 }
 
 
-    public: void runTask(){
+    auto BaseImageLoadingProcessor::runTask() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_BASEIMAGELOADINGPROCESSOR_CPP

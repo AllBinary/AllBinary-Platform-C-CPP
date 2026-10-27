@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class JvmStatisticsData
-            : public Object
-         {
 
-    public: static inline const std::string JVM_STATISTICS = "JVM_STATISTICS_";
-
-    public: static inline const std::string NAME = JvmStatisticsData::JVM_STATISTICS +"NAME";
-
-    public: static inline const std::string TOTAL_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_BYTES";
-
-    public: static inline const std::string TOTAL_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_KILOBYTES";
-
-    public: static inline const std::string TOTAL_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_MEGABYTES";
-
-    public: static inline const std::string FREE_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_BYTES";
-
-    public: static inline const std::string FREE_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_KILOBYTES";
-
-    public: static inline const std::string FREE_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_MEGABYTES";
-
-    public: static inline const std::string MAX_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_BYTES";
-
-    public: static inline const std::string MAX_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_KILOBYTES";
-
-    public: static inline const std::string MAX_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_MEGABYTES";
-
-    public: static inline const std::string NUMBER_OF_THREADS = JvmStatisticsData::JVM_STATISTICS +"NUMBER_OF_THREADS";
-
-private: JvmStatisticsData(){
+JvmStatisticsData::JvmStatisticsData(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,8 +65,18 @@ private: JvmStatisticsData(){
                     
 }
 
+const std::string JvmStatisticsData::NAME = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("NAME");
+const std::string JvmStatisticsData::TOTAL_MEMORY_BYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("TOTAL_MEMORY_BYTES");
+const std::string JvmStatisticsData::TOTAL_MEMORY_KILOBYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("TOTAL_MEMORY_KILOBYTES");
+const std::string JvmStatisticsData::TOTAL_MEMORY_MEGABYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("TOTAL_MEMORY_MEGABYTES");
+const std::string JvmStatisticsData::FREE_MEMORY_BYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("FREE_MEMORY_BYTES");
+const std::string JvmStatisticsData::FREE_MEMORY_KILOBYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("FREE_MEMORY_KILOBYTES");
+const std::string JvmStatisticsData::FREE_MEMORY_MEGABYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("FREE_MEMORY_MEGABYTES");
+const std::string JvmStatisticsData::MAX_MEMORY_BYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("MAX_MEMORY_BYTES");
+const std::string JvmStatisticsData::MAX_MEMORY_KILOBYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("MAX_MEMORY_KILOBYTES");
+const std::string JvmStatisticsData::MAX_MEMORY_MEGABYTES = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("MAX_MEMORY_MEGABYTES");
+const std::string JvmStatisticsData::NUMBER_OF_THREADS = JavaString::valueOf(JvmStatisticsData::JVM_STATISTICS) +JavaString::valueOf("NUMBER_OF_THREADS");
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSDATA_CPP

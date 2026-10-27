@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/identification/GroupInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,13 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GroupInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getGroupName() = 0;
 
-    public: virtual int16_t getGroupId() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPINTERFACE_CPP

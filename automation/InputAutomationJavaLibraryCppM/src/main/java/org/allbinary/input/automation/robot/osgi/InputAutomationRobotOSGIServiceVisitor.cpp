@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTOSGISERVICEVISITOR_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTOSGISERVICEVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotOSGIServiceVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,19 +80,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationRobotOSGIServiceVisitor
-            : public Object
-        , public OSGIServiceVisitorInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: InputAutomationRobotOSGIServiceVisitor(){
+InputAutomationRobotOSGIServiceVisitor::InputAutomationRobotOSGIServiceVisitor() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto InputAutomationRobotOSGIServiceVisitor::visit(Object* anyType) -> Object*{
 
 
 
@@ -92,7 +95,7 @@ public: InputAutomationRobotOSGIServiceVisitor(){
 }
 
 
-    public: bool visit(OSGIServiceInterface* osgiServiceInterface){
+    auto InputAutomationRobotOSGIServiceVisitor::visit(OSGIServiceInterface* osgiServiceInterface) -> bool{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "visit");
@@ -110,7 +113,7 @@ public: InputAutomationRobotOSGIServiceVisitor(){
                         for (
     int32_t index = 0;index < inputRobotInterfaceArray.size(); index++)
         {
-this->logUtil->putF("Adding: " +inputRobotInterfaceArray[index].getName(), this, "visit");
+this->logUtil->putF(JavaString::valueOf("Adding: ") +JavaString::valueOf(inputRobotInterfaceArray[index]->getName()), this, "visit");
     
 InputRobotFactory::getInstance()->add(inputRobotInterfaceArray[index]);
     
@@ -139,7 +142,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "visit", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTOSGISERVICEVISITOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_CAPTIONRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_CAPTIONRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/CaptionResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CaptionResources
-            : public Object
-         {
+auto CaptionResources::instance_owner() -> CaptionResources* { static std::unique_ptr<CaptionResources> value(new CaptionResources()); return value.get(); }
+CaptionResources* CaptionResources::instance = CaptionResources::instance_owner();
 
-    private: static CaptionResources* instance() { static std::unique_ptr<CaptionResources> value(new CaptionResources()); return value.get(); }
-
-    public: static CaptionResources* getInstance(){
+    auto CaptionResources::getInstance() -> CaptionResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CaptionResources::instance();
+                        return CaptionResources::instance;
     
 }
 
 
-private: CaptionResources(){
+CaptionResources::CaptionResources(){
 }
 
 
-    public: const std::string RESOURCE = "/unit_message_bubbled_box.png";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_CAPTIONRESOURCES_CPP

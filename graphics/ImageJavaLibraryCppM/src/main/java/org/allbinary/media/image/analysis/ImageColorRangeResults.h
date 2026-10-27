@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
-#include "org/allbinary/media/image/analysis/ColorRange.h"
+        class ColorRangeInterface;
+class ColorRange;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageColorRangeResults
-            : public Object
+            : public virtual Object
          {
 
     private: ColorRangeInterface* colorRangeInterface;
@@ -86,3 +95,16 @@ public: ImageColorRangeResults();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_H_COMPLETE
+        #if __has_include("org/allbinary/media/image/analysis/ColorRangeInterface.h")
+#include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
+#endif
+#if __has_include("org/allbinary/media/image/analysis/ColorRange.h")
+#include "org/allbinary/media/image/analysis/ColorRange.h"
+#endif
+
+        #endif
+    

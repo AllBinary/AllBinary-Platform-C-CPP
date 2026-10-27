@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/IndexedBasicArrayListCache.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,11 +77,10 @@
 #include "org/allbinary/logic/util/cache/CacheInterface.h"
 #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
-class IndexedBasicArrayListCache: public BaseBasicArrayListCache, public CacheInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static IndexedBasicArrayListCache* createCache(int32_t size){
+    auto IndexedBasicArrayListCache::createCache(int32_t size) -> IndexedBasicArrayListCache*{
 
     IndexedBasicArrayListCache* indexedBasicArrayListCache = new IndexedBasicArrayListCache();;
     
@@ -86,24 +95,18 @@ indexedBasicArrayListCache->init(size);
 }
 
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: int32_t size = 0;
-
-    protected: int32_t index = 0;
-
-public: IndexedBasicArrayListCache(){
+IndexedBasicArrayListCache::IndexedBasicArrayListCache() : commonStrings(CommonStrings::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t size){
+    auto IndexedBasicArrayListCache::init(int32_t size) -> void{
 
                         if(this->size < size)
                         
                                     {
-                                    this->list.ensureCapacity(size);
+                                    this->list->ensureCapacity(size);
     
 
 
@@ -124,56 +127,55 @@ this->size= size;
 }
 
 
-    public: Object* getAt(int32_t index){
+    auto IndexedBasicArrayListCache::getAt(int32_t index) -> Object*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.objectArray[index];
+                        return this->list->objectArray[index];
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void addDefault(){
+    auto IndexedBasicArrayListCache::addDefault() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void addObject(Object anyType){
-this->list.add(anyType);
+    auto IndexedBasicArrayListCache::addObject(Object* anyType) -> void{
+this->list->add(anyType);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void add(CacheableInterface* cacheableInterface){
-this->list.add(cacheableInterface);
+    auto IndexedBasicArrayListCache::add(CacheableInterface* cacheableInterface) -> void{
+this->list->add(cacheableInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void addArray(std::vector<CacheableInterface*> cacheableInterfaces){
+    auto IndexedBasicArrayListCache::addArray(std::vector<CacheableInterface*> cacheableInterfaces) -> void{
 
 
 
-                            throw new Exception("No Imple");
+                            throw Exception("No Imple");
                     
 }
 
 
-    public: void clear(){
+    auto IndexedBasicArrayListCache::clear() -> void{
 this->index= 0;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_CPP

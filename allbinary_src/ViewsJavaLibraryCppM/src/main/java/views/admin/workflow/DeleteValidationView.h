@@ -21,6 +21,11 @@
         #ifndef VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_H
         #define VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,30 +34,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class WorkFlowEntityFactory;
+class LogUtil;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/control/workflow/WorkFlowData.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class WorkFlowData;
+class StringMaker;
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -73,9 +62,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/workflow/WorkFlowView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DeleteValidationView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string workFlowName;
 
@@ -95,3 +88,37 @@ public: DeleteValidationView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>)
+#include <org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/workflow/WorkFlowData.h>)
+#include <org/allbinary/logic/control/workflow/WorkFlowData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/admin/workflow/WorkFlowView.h")
+#include "views/admin/workflow/WorkFlowView.h"
+#endif
+
+        #endif
+    

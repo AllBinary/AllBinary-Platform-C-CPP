@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICMODULEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICMODULEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/GenericModuleFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,11 +81,9 @@
         #include "org/allbinary/input/automation/module/generic/GenericInputAutomationAction.h"
 #include "org/allbinary/input/automation/module/generic/GenericInputAutomationWorker.h"
 
-class GenericModuleFactory: public AbstractInputAutomationFactory {
+std::string GenericModuleFactory::NAME = JavaString::valueOf("Generic") +JavaString::valueOf(InputAutomationModuleData::MODULE_NAME_END);
 
-    private: static inline std::string NAME = "Generic" +InputAutomationModuleData::MODULE_NAME_END;
-
-public: GenericModuleFactory() : AbstractInputAutomationFactory(NAME, new GenericModuleConfigurationJPanel()){
+GenericModuleFactory::GenericModuleFactory() : AbstractInputAutomationFactory(NAME, new GenericModuleConfigurationJPanel()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +96,7 @@ public: GenericModuleFactory() : AbstractInputAutomationFactory(NAME, new Generi
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: RunnableInterface* getInstance(){
+    auto GenericModuleFactory::getInstance() -> RunnableInterface*{
 
     GenericProfile* genericProfile = (getConfigurationJPanel)).getSelectedGenericProfile();;
     
@@ -104,7 +112,6 @@ public: GenericModuleFactory() : AbstractInputAutomationFactory(NAME, new Generi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICMODULEFACTORY_CPP

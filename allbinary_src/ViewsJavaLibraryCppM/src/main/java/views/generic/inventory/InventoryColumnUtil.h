@@ -21,6 +21,11 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,26 +35,12 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class BasicItemData;
+class InventoryEntity;
+class LogUtil;
+class StringValidationUtil;
 
 
 
@@ -69,17 +60,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InventoryColumnUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static InventoryColumnUtil* instance() { static std::unique_ptr<InventoryColumnUtil> value(new InventoryColumnUtil()); return value.get(); }
+    private: static InventoryColumnUtil* instance_owner();
+    private: static InventoryColumnUtil* instance;
 
     public: static InventoryColumnUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
+            
+    public: InventoryColumnUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    /*protected*/ public: BasicItemData* basicItemData;
 
     public: BasicArrayList* getColumnWhereLike(InventoryEntity* inventoryEntity, std::string category, std::string column);
 
@@ -89,3 +89,31 @@ class InventoryColumnUtil
 
 
         #endif //VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H_COMPLETE)
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>)
+#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+
+        #endif
+    

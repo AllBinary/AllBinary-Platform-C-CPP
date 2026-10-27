@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/OperatingSystemInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,29 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OperatingSystemInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual std::string getVersion() = 0;
 
-    public: virtual std::string getArch() = 0;
-
-    public: virtual CharacterSet* getCharacterSet() = 0;
-
-    public: virtual bool isOverScan() = 0;
-
-    public: virtual int32_t getOverScanXPercent() = 0;
-
-    public: virtual int32_t getOverScanYPercent() = 0;
-
-    public: virtual bool isScalable() = 0;
-
-    public: virtual bool isAutoHide() = 0;
-
-    public: virtual std::string toString() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_CPP

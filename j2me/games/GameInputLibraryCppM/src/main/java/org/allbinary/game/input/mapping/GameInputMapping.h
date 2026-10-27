@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_GAMEINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_GAMEINPUTMAPPING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/input/GameKey.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class GameKey;
+class StringUtil;
 
 
 
@@ -54,13 +55,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputMapping
-            : public Object
+            : public virtual Object
          {
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string name;
 
-    private: GameKey* gameKey = GameKey::NULL_GAME_KEY;
+    private: GameKey* gameKey;
 
 public: GameInputMapping(std::string name, GameKey* gameKey);
 
@@ -78,3 +83,16 @@ public: GameInputMapping(std::string name, GameKey* gameKey);
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_GAMEINPUTMAPPING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_MAPPING_GAMEINPUTMAPPING_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_GAMEINPUTMAPPING_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/GameKey.h>)
+#include <org/allbinary/game/input/GameKey.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

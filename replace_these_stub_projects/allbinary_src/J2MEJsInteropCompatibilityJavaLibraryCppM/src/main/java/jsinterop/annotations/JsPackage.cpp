@@ -4,6 +4,16 @@
 
 
 
+        #ifndef JSINTEROP_ANNOTATIONS_JSPACKAGE_CPP
+        #define JSINTEROP_ANNOTATIONS_JSPACKAGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "jsinterop/annotations/JsPackage.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,7 +41,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class JsPackage {
+class JsPackage
+            : public virtual Object
+         {
 
     std::string GLOBAL = "<global>";
 
@@ -39,3 +51,5 @@ class JsPackage {
 
             
 
+
+        #endif //JSINTEROP_ANNOTATIONS_JSPACKAGE_CPP

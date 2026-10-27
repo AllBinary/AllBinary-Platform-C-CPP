@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/User.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -133,59 +143,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class User
-            : public Object
-        , public UserInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string userName;
-
-    private: std::string prefixName;
-
-    private: std::string firstName;
-
-    private: std::string lastName;
-
-    private: std::string middleName;
-
-    private: std::string suffixName;
-
-    private: std::string company;
-
-    private: std::string positionAtCompany;
-
-    private: std::string mainEmail;
-
-    private: std::string secondaryEmail;
-
-    private: std::string homePhone;
-
-    private: std::string cellPhone;
-
-    private: std::string workPhone;
-
-    private: std::string otherContact;
-
-    private: std::string electronicDevice;
-
-    private: std::string fax;
-
-    private: UserRole* role;
-
-    private: std::string encryption;
-
-    private: std::string secret;
-
-    private: Password* password;
-
-    private: std::string enable;
-
-    private: std::string permissions;
-
-    private: UserConfigurationInterface* userConfigurationInterface;
-
-public: User(){
+User::User() : logUtil(LogUtil::getInstance()){
 this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance();
     
 this->password= new Password(StringUtil::getInstance()->EMPTY_STRING);
@@ -193,7 +152,7 @@ this->password= new Password(StringUtil::getInstance()->EMPTY_STRING);
 }
 
 
-public: User(HttpServletRequest* request){
+User::User(HttpServletRequest* request) : logUtil(LogUtil::getInstance()){
 this->getFormData((new RequestParams(request))->toHashMap());
     
 this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance(this->getRole());
@@ -201,7 +160,7 @@ this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance
 }
 
 
-public: User(HashMap<Object*, Object*>* userHashMap){
+User::User(HashMap<Object*, Object*>* userHashMap) : logUtil(LogUtil::getInstance()){
 this->getFormData(userHashMap);
     
 this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance(this->getRole());
@@ -211,7 +170,7 @@ this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*>* userHashMap){
+    auto User::getFormData(HashMap<Object*, Object*>* userHashMap) -> void{
 this->userName= (new UserName(userHashMap))->get();
     
 
@@ -272,7 +231,7 @@ this->electronicDevice= stringUtil->getNonNull(userHashMap->get(UserData::ELECTR
     
 this->fax= stringUtil->getNonNull(userHashMap->get(UserData::FAX));
     
-this->role= UserRoleB::getRole(userHashMap->get(UserRoleData::NAME.toString()));
+this->role= UserRoleB::getRole(userHashMap->get(UserRoleData::NAME->toString()));
     
 this->permissions= stringUtil->getNonNull(userHashMap->get(UserData::PERMISSIONS));
     
@@ -289,12 +248,12 @@ this->permissions= stringUtil->getNonNull(userHashMap->get(UserData::PERMISSIONS
 
                                     }
                                 
-this->enable= stringUtil->getNonNull(userHashMap->get(EntryData::getInstance()->ENABLE));
+this->enable_= stringUtil->getNonNull(userHashMap->get(EntryData::getInstance()->ENABLE));
     
 }
 
 
-    public: bool isValid(){
+    auto User::isValid() -> bool{
 
         try {
             
@@ -359,7 +318,7 @@ this->enable= stringUtil->getNonNull(userHashMap->get(EntryData::getInstance()->
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATIONERROR))
                         
                                     {
                                     
@@ -381,7 +340,7 @@ this->logUtil->put("Failed to validate form", this, commonStrings->IS_VALID, &e)
 }
 
 
-    public: std::string validationInfo(){
+    auto User::validationInfo() -> std::string{
 
         try {
             
@@ -432,7 +391,7 @@ stringBuffer->append(this->password->getValidationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -451,151 +410,151 @@ stringBuffer->append(this->password->getValidationInfo());
 }
 
 
-    public: void setUserName(std::string value){
+    auto User::setUserName(std::string value) -> void{
 this->userName= value;
     
 }
 
 
-    public: void setPrefixName(std::string value){
+    auto User::setPrefixName(std::string value) -> void{
 this->prefixName= value;
     
 }
 
 
-    public: void setFirstName(std::string value){
+    auto User::setFirstName(std::string value) -> void{
 this->firstName= value;
     
 }
 
 
-    public: void setLastName(std::string value){
+    auto User::setLastName(std::string value) -> void{
 this->lastName= value;
     
 }
 
 
-    public: void setMiddleName(std::string value){
+    auto User::setMiddleName(std::string value) -> void{
 this->middleName= value;
     
 }
 
 
-    public: void setSuffixName(std::string value){
+    auto User::setSuffixName(std::string value) -> void{
 this->suffixName= value;
     
 }
 
 
-    public: void setCompany(std::string value){
+    auto User::setCompany(std::string value) -> void{
 this->company= value;
     
 }
 
 
-    public: void setPositionAtCompany(std::string value){
+    auto User::setPositionAtCompany(std::string value) -> void{
 this->positionAtCompany= value;
     
 }
 
 
-    public: void setMainEmail(std::string value){
+    auto User::setMainEmail(std::string value) -> void{
 this->mainEmail= value;
     
 }
 
 
-    public: void setSecondaryEmail(std::string value){
+    auto User::setSecondaryEmail(std::string value) -> void{
 this->secondaryEmail= value;
     
 }
 
 
-    public: void setHomePhone(std::string value){
+    auto User::setHomePhone(std::string value) -> void{
 this->homePhone= value;
     
 }
 
 
-    public: void setCellPhone(std::string value){
+    auto User::setCellPhone(std::string value) -> void{
 this->cellPhone= value;
     
 }
 
 
-    public: void setWorkPhone(std::string value){
+    auto User::setWorkPhone(std::string value) -> void{
 this->workPhone= value;
     
 }
 
 
-    public: void setOtherContact(std::string value){
+    auto User::setOtherContact(std::string value) -> void{
 this->otherContact= value;
     
 }
 
 
-    public: void setElectronicContact(std::string value){
+    auto User::setElectronicContact(std::string value) -> void{
 this->electronicDevice= value;
     
 }
 
 
-    public: void setFax(std::string value){
+    auto User::setFax(std::string value) -> void{
 this->fax= value;
     
 }
 
 
-    public: void setRole(UserRole* role){
+    auto User::setRole(UserRole* role) -> void{
 this->role= role;
     
 }
 
 
-    public: void setPermissions(std::string value){
+    auto User::setPermissions(std::string value) -> void{
 this->permissions= value;
     
 }
 
 
-    public: void setEncryption(std::string value){
+    auto User::setEncryption(std::string value) -> void{
 this->encryption= value;
     
 }
 
 
-    public: void setSecret(std::string value){
+    auto User::setSecret(std::string value) -> void{
 this->secret= value;
     
 }
 
 
-    public: void setPassword(std::string value){
+    auto User::setPassword(std::string value) -> void{
 this->password->set(value);
     
 }
 
 
-    public: void enable(){
+    auto User::enable() -> void{
 this->setEnable("Yes");
     
 }
 
 
-    public: void disable(){
+    auto User::disable() -> void{
 this->setEnable("No");
     
 }
 
 
-    public: void setEnable(std::string enable){
-this->enable= enable;
+    auto User::setEnable(std::string enable_) -> void{
+this->enable_= enable_;
     
 }
 
 
-    public: std::string getUserName(){
+    auto User::getUserName() -> std::string{
 
 
 
@@ -605,7 +564,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getPrefixName(){
+    auto User::getPrefixName() -> std::string{
 
 
 
@@ -615,7 +574,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getFirstName(){
+    auto User::getFirstName() -> std::string{
 
 
 
@@ -625,7 +584,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getLastName(){
+    auto User::getLastName() -> std::string{
 
 
 
@@ -635,7 +594,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getMiddleName(){
+    auto User::getMiddleName() -> std::string{
 
 
 
@@ -645,7 +604,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getSuffixName(){
+    auto User::getSuffixName() -> std::string{
 
 
 
@@ -655,7 +614,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getCompany(){
+    auto User::getCompany() -> std::string{
 
 
 
@@ -665,7 +624,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getPositionAtCompany(){
+    auto User::getPositionAtCompany() -> std::string{
 
 
 
@@ -675,7 +634,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getMainEmail(){
+    auto User::getMainEmail() -> std::string{
 
 
 
@@ -685,7 +644,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getSecondaryEmail(){
+    auto User::getSecondaryEmail() -> std::string{
 
 
 
@@ -695,7 +654,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getHomePhone(){
+    auto User::getHomePhone() -> std::string{
 
 
 
@@ -705,7 +664,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getCellPhone(){
+    auto User::getCellPhone() -> std::string{
 
 
 
@@ -715,7 +674,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getWorkPhone(){
+    auto User::getWorkPhone() -> std::string{
 
 
 
@@ -725,7 +684,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getOtherContact(){
+    auto User::getOtherContact() -> std::string{
 
 
 
@@ -735,7 +694,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getElectronicContact(){
+    auto User::getElectronicContact() -> std::string{
 
 
 
@@ -745,7 +704,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getFax(){
+    auto User::getFax() -> std::string{
 
 
 
@@ -755,7 +714,7 @@ this->enable= enable;
 }
 
 
-    public: UserRole* getRole(){
+    auto User::getRole() -> UserRole*{
 
 
 
@@ -765,7 +724,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getPermissions(){
+    auto User::getPermissions() -> std::string{
 
 
 
@@ -775,7 +734,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getEncryption(){
+    auto User::getEncryption() -> std::string{
 
 
 
@@ -785,7 +744,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getSecret(){
+    auto User::getSecret() -> std::string{
 
 
 
@@ -795,7 +754,7 @@ this->enable= enable;
 }
 
 
-    public: std::string getPassword(){
+    auto User::getPassword() -> std::string{
 
 
 
@@ -807,7 +766,7 @@ this->enable= enable;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto User::toVector() -> BasicArrayList*{
 
     BasicArrayList* values = new BasicArrayListD();;
     
@@ -854,7 +813,7 @@ values->add(this->permissions);
     
 values->addAllList(this->password->toVector(this->secret));
     
-values->add(this->enable);
+values->add(this->enable_);
     
 
     Calendar* calendar = Calendar::getInstance();;
@@ -877,7 +836,7 @@ values->add(time);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto User::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
@@ -919,7 +878,7 @@ values->put(UserData::FAX, fax);
                                 )
                         
                                     {
-                                    values->put(UserRoleData::NAME.toString(), this->getRole()->toString());
+                                    values->put(UserRoleData::NAME->toString(), this->getRole()->toString());
     
 
                                     }
@@ -933,7 +892,7 @@ values->put(UserData::PERMISSIONS, this->permissions);
     
 values->putAll(this->password->toHashMap(this->secret));
     
-values->put(EntryData::getInstance()->ENABLE, this->enable);
+values->put(EntryData::getInstance()->ENABLE, this->enable_);
     
 
     Calendar* calendar = Calendar::getInstance();;
@@ -952,7 +911,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: HashMap<Object*, Object*>* toPasswordHashMap(){
+    auto User::toPasswordHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -962,7 +921,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: void validateSession(WeblisketSessionInterface* weblisketSession){
+    auto User::validateSession(WeblisketSessionInterface* weblisketSession) -> void{
 weblisketSession->setAuthenticated();
     
 weblisketSession->setRole(this->getRole());
@@ -972,11 +931,11 @@ weblisketSession->setUserName(this->getUserName());
 }
 
 
-    public: void updateSession(WeblisketSessionInterface* weblisketSession){
+    auto User::updateSession(WeblisketSessionInterface* weblisketSession) -> void{
 }
 
 
-    public: bool isSessionValid(){
+    auto User::isSessionValid() -> bool{
 
 
 
@@ -988,7 +947,7 @@ weblisketSession->setUserName(this->getUserName());
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto User::getKey() -> Object*{
 
 
 
@@ -998,7 +957,7 @@ weblisketSession->setUserName(this->getUserName());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto User::toValidationInfoDoc() -> Document*{
 
 
 
@@ -1008,7 +967,7 @@ weblisketSession->setUserName(this->getUserName());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto User::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -1018,7 +977,7 @@ weblisketSession->setUserName(this->getUserName());
 }
 
 
-    public: UserConfigurationInterface* getUserConfigurationInterface(){
+    auto User::getUserConfigurationInterface() -> UserConfigurationInterface*{
 
 
 
@@ -1028,13 +987,12 @@ weblisketSession->setUserName(this->getUserName());
 }
 
 
-    public: void setUserConfigurationInterface(UserConfigurationInterface* userConfigurationInterface){
+    auto User::setUserConfigurationInterface(UserConfigurationInterface* userConfigurationInterface) -> void{
 this->userConfigurationInterface= userConfigurationInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_CPP

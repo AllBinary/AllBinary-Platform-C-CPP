@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/eclipse/swt/graphics/Color.h>
 
-      
-#include <org/eclipse/swt/graphics/RGB.h>
 
-      
-#include <org/microemu/app/BareMain.h>
 
-      
 
 
 
@@ -57,17 +56,36 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageSwtUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageSwtUtil* instance() { static std::unique_ptr<ImageSwtUtil> value(new ImageSwtUtil()); return value.get(); }
+    private: static ImageSwtUtil* instance_owner();
+    private: static ImageSwtUtil* instance;
 
     public: static ImageSwtUtil* getInstance();
 
+
+            
+    public: ImageSwtUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_H_COMPLETE
+        
+
+
+
+        #endif
+    

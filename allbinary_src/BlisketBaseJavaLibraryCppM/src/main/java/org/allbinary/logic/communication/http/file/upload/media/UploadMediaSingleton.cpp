@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/file/upload/media/UploadMediaSingleton.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,43 +84,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UploadMediaSingleton
-            : public Object
-         {
 
-    private: static inline UploadMediaSingleton* uploadMedia;
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public: static UploadMediaSingleton* getInstance(){
-
-                        if(UploadMediaSingleton::uploadMedia == 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    UploadMediaSingleton::uploadMedia= new UploadMediaSingleton();
-    
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return UploadMediaSingleton::uploadMedia;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: HashMap<Object*, Object*>* readerFileTypesHashMap;
-
-    private: HashMap<Object*, Object*>* writerFileTypesHashMap;
-
-private: UploadMediaSingleton(){
+UploadMediaSingleton::UploadMediaSingleton() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->readerFileTypesHashMap= StdUtil::getInstance()->createHashMap();
     
 this->writerFileTypesHashMap= StdUtil::getInstance()->createHashMap();
@@ -179,7 +154,7 @@ this->writerFileTypesHashMap->put(writerFileTypes[index], RESIZABLE_MEDIA);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     
@@ -200,8 +175,30 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
                                 
 }
 
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isReaderSupported(std::string mediaFileType){
+    auto UploadMediaSingleton::getInstance() -> UploadMediaSingleton*{
+
+                        if(UploadMediaSingleton::uploadMedia == 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    UploadMediaSingleton::uploadMedia= new UploadMediaSingleton();
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return UploadMediaSingleton::uploadMedia;
+    
+}
+
+
+    auto UploadMediaSingleton::isReaderSupported(std::string mediaFileType) -> bool{
 
 
 
@@ -211,7 +208,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 }
 
 
-    public: bool isWriterSupported(std::string mediaFileType){
+    auto UploadMediaSingleton::isWriterSupported(std::string mediaFileType) -> bool{
 
 
 
@@ -221,7 +218,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 }
 
 
-    public: bool isSupported(std::string mediaFileType){
+    auto UploadMediaSingleton::isSupported(std::string mediaFileType) -> bool{
 
 
 
@@ -231,7 +228,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 }
 
 
-    public: bool isMedia(std::string mediaFileType, std::string aMediaType){
+    auto UploadMediaSingleton::isMedia(std::string mediaFileType, std::string aMediaType) -> bool{
 
 
 
@@ -241,7 +238,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 }
 
 
-    public: bool isReaderMedia(std::string mediaFileType, std::string aMediaType){
+    auto UploadMediaSingleton::isReaderMedia(std::string mediaFileType, std::string aMediaType) -> bool{
 
 
 
@@ -251,7 +248,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 }
 
 
-    public: bool isWriterMedia(std::string mediaFileType, std::string aMediaType){
+    auto UploadMediaSingleton::isWriterMedia(std::string mediaFileType, std::string aMediaType) -> bool{
 
 
 
@@ -261,7 +258,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 }
 
 
-    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<Object*, Object*>* hashMap){
+    auto UploadMediaSingleton::isMedia(std::string mediaFileType, std::string aMediaType, HashMap<Object*, Object*>* hashMap) -> bool{
 
                         if(hashMap->containsKey(mediaFileType))
                         
@@ -308,7 +305,6 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_CPP

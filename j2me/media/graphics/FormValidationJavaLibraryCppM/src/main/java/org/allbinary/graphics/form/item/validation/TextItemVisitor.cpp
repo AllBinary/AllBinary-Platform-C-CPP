@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMVISITOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/validation/TextItemVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TextItemVisitor: public Visitor {
 
-public: TextItemVisitor(){
+TextItemVisitor::TextItemVisitor(){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto TextItemVisitor::visit(Object* anyType) -> Object*{
 
     std::string value = anyType;;
     
@@ -87,7 +96,6 @@ public: TextItemVisitor(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMVISITOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_CPP
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/transition/shake/ShakeEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShakeEvent
-            : public Object
-         {
 
-: ShakeEvent(){
+ShakeEvent::ShakeEvent(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_CPP

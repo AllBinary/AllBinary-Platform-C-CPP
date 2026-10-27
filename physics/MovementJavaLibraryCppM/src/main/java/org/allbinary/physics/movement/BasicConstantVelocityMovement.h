@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/AllBinaryGameLayer.h>
-
-      
-#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
-
-      
+class AllBinaryGameLayer;
+class BasicVelocityProperties;
 #include <org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
-#include <org/allbinary/logic/math/vector/AxisMathVectorUtil.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
+class AllBinaryLayer;
+class BasicDecimal;
+class AxisMathVectorUtil;
+class AngleFactory;
 
 
 
@@ -70,13 +61,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/Movement.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicConstantVelocityMovement: public Movement, public VelocityInterfaceCompositeInterface {
 
     private: BasicVelocityProperties* velocityProperties;
 
-    private: BasicDecimal* speedBasicDecimal = BasicDecimal::ZERO_BIGDECIMAL;
+    private: BasicDecimal* speedBasicDecimal;
 
-    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
+    private: AxisMathVectorUtil* axisMathVectorUtil;
 
 public: BasicConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties);
 
@@ -96,9 +91,9 @@ public: BasicConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityP
 
     public: void setVelocityProperties(BasicVelocityProperties* velocityProperties);
 
-    protected: void setSpeedBasicDecimal(BasicDecimal* speedBasicDecimal);
+    /*protected*/ public: void setSpeedBasicDecimal(BasicDecimal* speedBasicDecimal);
 
-    protected: BasicDecimal* getSpeedBasicDecimal();
+    /*protected*/ public: BasicDecimal* getSpeedBasicDecimal();
 
 };
 
@@ -106,3 +101,34 @@ public: BasicConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityP
 
 
         #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H_COMPLETE)
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/AllBinaryGameLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/BasicVelocityProperties.h>)
+#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/BasicDecimal.h>)
+#include <org/allbinary/logic/math/BasicDecimal.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/vector/AxisMathVectorUtil.h>)
+#include <org/allbinary/logic/math/vector/AxisMathVectorUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include("org/allbinary/physics/movement/Movement.h")
+#include "org/allbinary/physics/movement/Movement.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLESSTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLESSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,15 +40,9 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/khronos/opengles/GL10.h>
+class GL10;
 
-      
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 
 
 
@@ -63,10 +62,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLESStrings
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: OpenGLESStrings();
+        
                 //@Throws(Exception.constructor)
             
     public: void set(GL10* gl);
@@ -99,3 +106,17 @@ class OpenGLESStrings
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLESSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLESSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLESSTRINGS_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+
+        #endif
+    

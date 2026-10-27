@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/util/cache/AutomaticCacheInterface.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/util/cache/CachePolicyFactory.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheTypeFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class AutomaticCacheInterface;
+class CacheInterfaceFactory;
+class CachePolicyFactory;
+class CacheTypeFactory;
+class CommonStrings;
 
 
 
@@ -67,10 +60,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/comparison/color/ColorDelta.h"
+        class ColorDelta;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorDeltaFactory
-            : public Object
+            : public virtual Object
          {
 
     private: static inline AutomaticCacheInterface* cacheInterface = 
@@ -84,7 +81,7 @@ class ColorDeltaFactory
             
     public: static ColorDelta* getInstance(int32_t rgb1, int32_t rgb2);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: ColorDeltaFactory();
 
@@ -94,3 +91,31 @@ private: ColorDeltaFactory();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/AutomaticCacheInterface.h>)
+#include <org/allbinary/logic/util/cache/AutomaticCacheInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheInterfaceFactory.h>)
+#include <org/allbinary/logic/util/cache/CacheInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CachePolicyFactory.h>)
+#include <org/allbinary/logic/util/cache/CachePolicyFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheTypeFactory.h>)
+#include <org/allbinary/logic/util/cache/CacheTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/image/comparison/color/ColorDelta.h")
+#include "org/allbinary/media/image/comparison/color/ColorDelta.h"
+#endif
+
+        #endif
+    

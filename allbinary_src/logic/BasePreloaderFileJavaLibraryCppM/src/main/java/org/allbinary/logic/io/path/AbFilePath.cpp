@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABFILEPATH_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_PATH_ABFILEPATH_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/path/AbFilePath.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,9 +61,8 @@
 #include "org/allbinary/logic/io/path/AbPathData.h"
 #include "org/allbinary/logic/io/path/PathUtil.h"
 
-class AbFilePath: public AbPath {
 
-public: AbFilePath(std::string aPath) : AbPath(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING){
+AbFilePath::AbFilePath(std::string aPath) : AbPath(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +84,6 @@ this->setPath(abPathUtil->adjust(this->getPathFromPath(abPathUtil->removeNameFro
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_PATH_ABFILEPATH_CPP

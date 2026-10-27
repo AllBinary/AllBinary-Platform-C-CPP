@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERINFOPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERINFOPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSLayerInfoPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,33 +65,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/SelectionHudPaintable.h"
 
-class RTSLayerInfoPaintable: public InitUpdatePaintable {
 
-    private: InitUpdatePaintable* initUpdatePaintable = NullInitUpdatePaintable::getInstance();
-
-public: RTSLayerInfoPaintable(){
+RTSLayerInfoPaintable::RTSLayerInfoPaintable() : initUpdatePaintable(NullInitUpdatePaintable::getInstance()){
 }
 
 
-    public: void update(){
+    auto RTSLayerInfoPaintable::update() -> void{
 this->initUpdatePaintable->update();
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto RTSLayerInfoPaintable::paint(Graphics* graphics) -> void{
 this->initUpdatePaintable->paint(graphics);
     
 }
 
 
-    public: void updateRTSLayerInfoInit(InitUpdatePaintable* hudPaintable){
+    auto RTSLayerInfoPaintable::updateRTSLayerInfoInit(InitUpdatePaintable* hudPaintable) -> void{
 this->initUpdatePaintable= hudPaintable;
     
 }
 
 
-    public: void updateRTSLayerInfoSelection(SelectionHudPaintable* hudPaintable){
+    auto RTSLayerInfoPaintable::updateRTSLayerInfoSelection(SelectionHudPaintable* hudPaintable) -> void{
 hudPaintable->updateSelectionInfo();
     
 this->initUpdatePaintable= hudPaintable;
@@ -89,7 +96,6 @@ this->initUpdatePaintable= hudPaintable;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYERINFOPAINTABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H
         #define ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
-
-      
-#include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class Features;
+class GameFeatureFactory;
+class OpenGLFeatureUtil;
+class AllBinaryLayer;
 
 
 
@@ -59,15 +56,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/collision/CollisionProcessor.h"
-#include "org/allbinary/game/collision/Collision2DProcessor.h"
-#include "org/allbinary/game/collision/CollisionThreedProcessor.h"
+        class CollisionProcessor;
+class Collision2DProcessor;
+class CollisionThreedProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerCollisionUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static LayerCollisionUtil* instance() { static std::unique_ptr<LayerCollisionUtil> value(new LayerCollisionUtil()); return value.get(); }
+    private: static LayerCollisionUtil* instance_owner();
+    private: static LayerCollisionUtil* instance;
 
     public: static LayerCollisionUtil* getInstance();
 
@@ -83,3 +85,31 @@ private: LayerCollisionUtil();
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/GameFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>)
+#include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/collision/CollisionProcessor.h")
+#include "org/allbinary/game/collision/CollisionProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/collision/Collision2DProcessor.h")
+#include "org/allbinary/game/collision/Collision2DProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollisionThreedProcessor.h")
+#include "org/allbinary/game/collision/CollisionThreedProcessor.h"
+#endif
+
+        #endif
+    

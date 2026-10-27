@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_UPTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_UPTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/touch/action/UpTouchInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* UpTouchInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto UpTouchInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(UpTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class UpTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInput
 }
 
 
-private: UpTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", TouchMotionGestureFactory::getInstance()->UP, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+UpTouchInputToGameKeyEventAction::UpTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", TouchMotionGestureFactory::getInstance()->UP, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: UpTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputE
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_UPTOUCHINPUTTOGAMEKEYEVENTACTION_CPP

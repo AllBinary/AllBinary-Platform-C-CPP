@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
+class AllBinaryTiledLayer;
+class GeographicMapCellPosition;
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h>
-
-      
 
 
 
@@ -58,12 +57,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
+        class GeologicalGeographicMapCellPosition;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeologicalGeographicMapCellPositionFactoryInitVisitor
-            : public Object
+            : public virtual Object
         , public GeographicMapCellPositionFactoryInitVisitorInterface {
 
+
+            
+    public: GeologicalGeographicMapCellPositionFactoryInitVisitor();
+        
                 //@Throws(Exception.constructor)
             
     public: void visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition);
@@ -74,3 +81,22 @@ class GeologicalGeographicMapCellPositionFactoryInitVisitor
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h>
+#endif
+#if __has_include("org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h")
+#include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
+#endif
+
+        #endif
+    

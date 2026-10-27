@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,26 +39,12 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryView.h>
-
-      
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
-#include <org/allbinary/logic/visual/theme/ThemeInterface.h>
-
-      
-#include <org/allbinary/logic/visual/theme/ThemePropertiesView.h>
-
-      
-#include <org/allbinary/logic/visual/theme/ThemeValidation.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class ThemeInterface;
+class ThemePropertiesView;
+class ThemeValidation;
+class Document;
+class Node;
 
 
 
@@ -72,8 +63,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
+        class StoreThemeCategoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreThemeCategoryPathView: public CategoryView, public DomNodeInterface {
 
 public: StoreThemeCategoryPathView(StoreThemeCategoryInterface* categoryInterface);
@@ -88,3 +83,34 @@ public: StoreThemeCategoryPathView(StoreThemeCategoryInterface* categoryInterfac
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/business/category/CategoryView.h>)
+#include <org/allbinary/business/category/CategoryView.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/theme/ThemeInterface.h>)
+#include <org/allbinary/logic/visual/theme/ThemeInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/theme/ThemePropertiesView.h>)
+#include <org/allbinary/logic/visual/theme/ThemePropertiesView.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/theme/ThemeValidation.h>)
+#include <org/allbinary/logic/visual/theme/ThemeValidation.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h")
+#include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
+#endif
+
+        #endif
+    

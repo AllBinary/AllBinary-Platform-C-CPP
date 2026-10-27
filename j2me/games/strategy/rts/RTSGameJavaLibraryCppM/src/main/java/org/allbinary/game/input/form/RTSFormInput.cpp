@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/RTSFormInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -109,29 +119,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSFormInput
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
-
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    protected: const std::vector<CollidableDestroyableDamageableLayer*> newUnconstructedRTSLayerInterfaceArray = std::vector<CollidableDestroyableDamageableLayer*>(7);
-
-    protected: std::vector<Group*> groupInterfaceArray;
-
-    private: GeographicMapCellPosition* selectedGeographicCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    private: bool stickyItemSelected= false;
-
-    private: int32_t selectedStickyItemIndex= 0;
-
-    private: ABCustomItem* selectedStickyItem = ABCustomItem::getNullInstance();
-
-public: RTSFormInput(std::vector<Group*> groupInterfaceArray){
+RTSFormInput::RTSFormInput(std::vector<Group*> groupInterfaceArray) : logUtil(LogUtil::getInstance()), groupCommonFactory(GroupCommonFactory::getInstance()), hashtable(StdUtil::getInstance()->createHashtable()), newUnconstructedRTSLayerInterfaceArray(std::vector<CollidableDestroyableDamageableLayer*>(7)), selectedGeographicCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), selectedStickyItem(ABCustomItem::getNullInstance()){
 
     int32_t size = this->newUnconstructedRTSLayerInterfaceArray.size();;
     
@@ -151,9 +140,7 @@ this->groupInterfaceArray= groupInterfaceArray;
 this->hashtable->put(DirectionFactory::getInstance()->NAME, DirectionFactory::getInstance()->DOWN);
     
 
-                        if(groupInterfaceArray != 
-                                    nullptr
-                                )
+                        if(!groupInterfaceArray.empty())
                         
                                     {
                                     this->hashtable->put(this->groupCommonFactory->ID, groupInterfaceArray);
@@ -166,13 +153,13 @@ this->hashtable->put(DirectionFactory::getInstance()->NAME, DirectionFactory::ge
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
+    auto RTSFormInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
+    auto RTSFormInput::processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point) -> void{
 
     int32_t index = this->getIndexAt(rtsPlayerLayerInterface, point);;
     
@@ -217,7 +204,7 @@ this->processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerMana
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager* layerManager){
+    auto RTSFormInput::process(AllBinaryLayerManager* layerManager) -> void{
 this->setAllBinaryGameLayerManager(dynamic_cast<AllBinaryGameLayerManager*>(layerManager));
     
 }
@@ -225,13 +212,13 @@ this->setAllBinaryGameLayerManager(dynamic_cast<AllBinaryGameLayerManager*>(laye
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
+    auto RTSFormInput::processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool processSticky(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
+    auto RTSFormInput::processSticky(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point) -> bool{
 
     int32_t index = this->getIndexAt(rtsPlayerLayerInterface, point);;
     
@@ -282,13 +269,13 @@ this->processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, lay
 
                 //@Throws(Exception.constructor)
             
-    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
+    auto RTSFormInput::processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem* getItemAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point){
+    auto RTSFormInput::getItemAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point) -> ABCustomItem*{
 this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::getInstance()->toString(point))->toString(), this, "getItemAt");
     
 
@@ -305,7 +292,7 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 
                 //@Throws(Exception.constructor)
             
-    protected: int32_t getIndexAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point){
+    auto RTSFormInput::getIndexAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point) -> int32_t{
 this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::getInstance()->toString(point))->toString(), this, "getItemAt");
     
 
@@ -322,7 +309,7 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 
                 //@Throws(Exception.constructor)
             
-    protected: CollidableDestroyableDamageableLayer* getInstance(AllBinaryLayerManager* layerManager, ABCustomItem* aItem, GeographicMapCellPosition* geographicMapCellPosition){
+    auto RTSFormInput::getInstance(AllBinaryLayerManager* layerManager, ABCustomItem* aItem, GeographicMapCellPosition* geographicMapCellPosition) -> CollidableDestroyableDamageableLayer*{
 
     LayerInterfaceFactoryImageItem* item = dynamic_cast<LayerInterfaceFactoryImageItem*>(aItem);;
     
@@ -358,7 +345,7 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 }
 
 
-    public: GeographicMapCellPosition* getSelectedGeographicCellPosition(){
+    auto RTSFormInput::getSelectedGeographicCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -368,7 +355,7 @@ this->logUtil->putF((new StringMaker())->append("Point: ")->append(StringUtil::g
 }
 
 
-    public: void setSelectedGeographicCellPosition(GeographicMapCellPosition* selectedGeographicCellPosition){
+    auto RTSFormInput::setSelectedGeographicCellPosition(GeographicMapCellPosition* selectedGeographicCellPosition) -> void{
 this->logUtil->putF((new StringMaker())->append("Selected GeographicMapCellPosition: ")->append(selectedGeographicCellPosition->toString())->toString(), this, "setSelectedGeographicCellPosition");
     
 this->selectedGeographicCellPosition= selectedGeographicCellPosition;
@@ -376,7 +363,7 @@ this->selectedGeographicCellPosition= selectedGeographicCellPosition;
 }
 
 
-    public: bool isStickyItemSelected(){
+    auto RTSFormInput::isStickyItemSelected() -> bool{
 
 
 
@@ -386,13 +373,13 @@ this->selectedGeographicCellPosition= selectedGeographicCellPosition;
 }
 
 
-    public: void setStickyItemSelected(bool stickyItemSelected){
+    auto RTSFormInput::setStickyItemSelected(bool stickyItemSelected) -> void{
 this->stickyItemSelected= stickyItemSelected;
     
 }
 
 
-    public: ABCustomItem* getSelectedStickyItem(){
+    auto RTSFormInput::getSelectedStickyItem() -> ABCustomItem*{
 
 
 
@@ -402,13 +389,13 @@ this->stickyItemSelected= stickyItemSelected;
 }
 
 
-    public: void setSelectedStickyItem(ABCustomItem* selectedStickyItem){
+    auto RTSFormInput::setSelectedStickyItem(ABCustomItem* selectedStickyItem) -> void{
 this->selectedStickyItem= selectedStickyItem;
     
 }
 
 
-    public: int32_t getSelectedStickyItemIndex(){
+    auto RTSFormInput::getSelectedStickyItemIndex() -> int32_t{
 
 
 
@@ -418,13 +405,13 @@ this->selectedStickyItem= selectedStickyItem;
 }
 
 
-    public: void setSelectedStickyItemIndex(int32_t selectedStickyItemIndex){
+    auto RTSFormInput::setSelectedStickyItemIndex(int32_t selectedStickyItemIndex) -> void{
 this->selectedStickyItemIndex= selectedStickyItemIndex;
     
 }
 
 
-    public: ABHashtable<Object*, Object*>* getHashtable(){
+    auto RTSFormInput::getHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -434,7 +421,6 @@ this->selectedStickyItemIndex= selectedStickyItemIndex;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_CPP

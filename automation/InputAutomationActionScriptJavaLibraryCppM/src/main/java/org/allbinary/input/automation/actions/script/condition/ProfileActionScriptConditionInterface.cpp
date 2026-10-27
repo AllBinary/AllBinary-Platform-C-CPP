@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/ProfileActionScriptConditionInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/CustomTreeNodeInterface.h"
 
-class ProfileActionScriptConditionInterface: public ProfileActionScriptNodeInterface, public CustomTreeNodeInterface, public ProfileActionScriptItemInterface {
+//Interface - declared in the header
 
-    public: virtual void addProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface) = 0;
 
-    public: virtual void removeProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool shouldProcess(int64_t frame) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_CPP

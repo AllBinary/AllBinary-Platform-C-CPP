@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_STOPATEDGEAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_STOPATEDGEAI_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,26 +35,12 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
-
-      
-#include <org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class GameInput;
+class BasicVelocityProperties;
+class VelocityInterfaceCompositeInterface;
+class DisplayInfoSingleton;
+class AllBinaryLayer;
+class AllBinaryLayerManager;
 
 
 
@@ -69,6 +60,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StopAtEdgeAI: public BasicAI {
 
 public: StopAtEdgeAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
@@ -83,3 +78,31 @@ public: StopAtEdgeAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_STOPATEDGEAI_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_STOPATEDGEAI_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_STOPATEDGEAI_H_COMPLETE
+        #if __has_include(<org/allbinary/game/ai/BasicAI.h>)
+#include <org/allbinary/game/ai/BasicAI.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/BasicVelocityProperties.h>)
+#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+
+        #endif
+    

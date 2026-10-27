@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorAnimationUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,27 +63,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VectorAnimationUtil
-            : public Object
-         {
+auto VectorAnimationUtil::instance_owner() -> VectorAnimationUtil* { static std::unique_ptr<VectorAnimationUtil> value(new VectorAnimationUtil()); return value.get(); }
+VectorAnimationUtil* VectorAnimationUtil::instance = VectorAnimationUtil::instance_owner();
 
-    private: static VectorAnimationUtil* instance() { static std::unique_ptr<VectorAnimationUtil> value(new VectorAnimationUtil()); return value.get(); }
-
-    public: static VectorAnimationUtil* getInstance(){
+    auto VectorAnimationUtil::getInstance() -> VectorAnimationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorAnimationUtil::instance();
+                        return VectorAnimationUtil::instance;
     
 }
 
 
-private: VectorAnimationUtil(){
+VectorAnimationUtil::VectorAnimationUtil(){
 }
 
 
-    public: std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointListWithPointsPerFrame(BasicArrayList* vector, int32_t pointsPerFrame){
+    auto VectorAnimationUtil::toAnimationArrayFromListOfPointListWithPointsPerFrame(BasicArrayList* vector, int32_t pointsPerFrame) -> std::vector<std::vector<std::vector<int32_t>>>{
 
     int32_t size = vector->size();;
     
@@ -121,7 +128,7 @@ points[index][pointIndex][1]= framePoints[pointIndex][1];
 }
 
 
-    public: std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointList(BasicArrayList* vector){
+    auto VectorAnimationUtil::toAnimationArrayFromListOfPointList(BasicArrayList* vector) -> std::vector<std::vector<std::vector<int32_t>>>{
 
     int32_t size = vector->size();;
     
@@ -171,7 +178,7 @@ points[index][pointIndex][1]= framePoints[pointIndex][1];
 }
 
 
-    public: std::vector<std::vector<int32_t>> toFrameArrayFromPointBasicArrayList(BasicArrayList* list){
+    auto VectorAnimationUtil::toFrameArrayFromPointBasicArrayList(BasicArrayList* list) -> std::vector<std::vector<int32_t>>{
 
     std::vector<std::vector<int32_t>> points = std::vector<std::vector<int32_t>>(list->size(), std::vector<int32_t>(2));;
     
@@ -203,7 +210,6 @@ points[index][1]= nextPoint->getY();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_CPP

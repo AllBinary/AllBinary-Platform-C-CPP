@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/character/CharArrayFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,25 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CharArrayFactory
-            : public Object
-         {
 
-    private: static CharArrayFactory* instance() { static std::unique_ptr<CharArrayFactory> value(new CharArrayFactory()); return value.get(); }
+CharArrayFactory::CharArrayFactory() : zeroCharArray(std::vector<char>(0)) {
+        }
+        auto CharArrayFactory::instance_owner() -> CharArrayFactory* { static std::unique_ptr<CharArrayFactory> value(new CharArrayFactory()); return value.get(); }
+CharArrayFactory* CharArrayFactory::instance = CharArrayFactory::instance_owner();
 
-    public: static CharArrayFactory* getInstance(){
+    auto CharArrayFactory::getInstance() -> CharArrayFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CharArrayFactory::instance();
+                        return CharArrayFactory::instance;
     
 }
 
 
-    private: const std::vector<char> zeroCharArray = std::vector<char>(0);
-
-    public: std::vector<char> getZeroCharArray(){
+    auto CharArrayFactory::getZeroCharArray() -> std::vector<char>{
 
 
 
@@ -75,7 +83,6 @@ class CharArrayFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_CPP

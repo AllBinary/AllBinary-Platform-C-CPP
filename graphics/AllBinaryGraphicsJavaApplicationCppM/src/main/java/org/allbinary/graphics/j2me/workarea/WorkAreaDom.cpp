@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREADOM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREADOM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/WorkAreaDom.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,21 +72,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WorkAreaDom
-            : public Object
-         {
 
-    public: static inline const std::string WORKAREA = "workArea";
-
-    public: static inline const std::string NAME = "name";
-
-    public: static inline const std::string FRAMES = "frames";
-
-    private: std::string name;
-
-    private: BasicArrayList* canvasNodeList;
-
-public: WorkAreaDom(Document* document){
+WorkAreaDom::WorkAreaDom(Document* document){
 
     NodeList* workAreaNodeList = document->getElementsByTagName(this->WORKAREA);;
     
@@ -111,7 +108,7 @@ this->name= nameTextNode->getNodeValue();
                             
 
 
-                            throw new Exception("Wrong Number of WorkAreas: " +numberOfworkAreas);
+                            throw Exception(JavaString::valueOf("Wrong Number of WorkAreas: ") +JavaString::valueOf(numberOfworkAreas));
                     
 
                         }
@@ -125,7 +122,7 @@ this->canvasNodeList= DomHelper::getInstance()->getChildrenWithoutTextNodes(Work
                             
 
 
-                            throw new Exception("workArea Node Not Found");
+                            throw Exception("workArea Node Not Found");
                     
 
                         }
@@ -133,7 +130,7 @@ this->canvasNodeList= DomHelper::getInstance()->getChildrenWithoutTextNodes(Work
 }
 
 
-    public: std::string getName(){
+    auto WorkAreaDom::getName() -> std::string{
 
 
 
@@ -143,7 +140,7 @@ this->canvasNodeList= DomHelper::getInstance()->getChildrenWithoutTextNodes(Work
 }
 
 
-    public: BasicArrayList* getCanvasNodes(){
+    auto WorkAreaDom::getCanvasNodes() -> BasicArrayList*{
 
 
 
@@ -153,7 +150,6 @@ this->canvasNodeList= DomHelper::getInstance()->getChildrenWithoutTextNodes(Work
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREADOM_CPP

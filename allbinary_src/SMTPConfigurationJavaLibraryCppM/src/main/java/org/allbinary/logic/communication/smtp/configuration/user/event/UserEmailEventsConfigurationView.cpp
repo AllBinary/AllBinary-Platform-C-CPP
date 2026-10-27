@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -89,17 +99,8 @@
 #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventsConfigurationData.h"
 #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
 
-class UserEmailEventsConfigurationView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface;
-
-public: UserEmailEventsConfigurationView(Node* node){
+UserEmailEventsConfigurationView::UserEmailEventsConfigurationView(Node* node) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->userEmailEventsConfigurationInterface= dynamic_cast<UserEmailEventsConfigurationInterface*>(new UserEmailEventsConfiguration());
     
 
@@ -131,13 +132,13 @@ this->userEmailEventsConfigurationInterface->addUserEmailEventConfiguration(user
 }
 
 
-public: UserEmailEventsConfigurationView(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface){
+UserEmailEventsConfigurationView::UserEmailEventsConfigurationView(UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterface;
     
 }
 
 
-    public: UserEmailEventsConfigurationInterface* getUserEmailEventsConfigurationInterface(){
+    auto UserEmailEventsConfigurationView::getUserEmailEventsConfigurationInterface() -> UserEmailEventsConfigurationInterface*{
 
 
 
@@ -149,7 +150,7 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto UserEmailEventsConfigurationView::toXmlNode(Document* document) -> Node*{
 
     UserEmailEventsConfigurationMapping* userEmailConfigurationMapping = new UserEmailEventsConfigurationMapping(this->userEmailEventsConfigurationInterface);;
     
@@ -163,10 +164,10 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
     Set* set = emailEventHashMap->keys();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Number Of Email Events Specified in file: " +set->size(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Number Of Email Events Specified in file: ") +JavaString::valueOf(set->size()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -206,7 +207,6 @@ node->appendChild(userEmailEventConfigurationView->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONVIEW_CPP

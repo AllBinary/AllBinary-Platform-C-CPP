@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class Image;
+class BasicColor;
 
 
 
@@ -56,14 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageModifierUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageModifierUtil* instance() { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
+    private: static ImageModifierUtil* instance_owner();
+    private: static ImageModifierUtil* instance;
 
     public: static ImageModifierUtil* getInstanceOrCreate();
 
+
+            
+    public: ImageModifierUtil();
+        
     public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor);
 
     public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor);
@@ -82,3 +92,16 @@ class ImageModifierUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+
+        #endif
+    

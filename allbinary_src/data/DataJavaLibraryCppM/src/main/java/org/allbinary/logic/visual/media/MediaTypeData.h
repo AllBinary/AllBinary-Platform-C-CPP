@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MediaTypeData
-            : public Object
+            : public virtual Object
          {
 
-    private: static MediaTypeData* instance() { static std::unique_ptr<MediaTypeData> value(new MediaTypeData()); return value.get(); }
+    private: static MediaTypeData* instance_owner();
+    private: static MediaTypeData* instance;
 
     public: static MediaTypeData* getInstance();
 
@@ -68,3 +78,10 @@ private: MediaTypeData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_H_COMPLETE
+        
+        #endif
+    

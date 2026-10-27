@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_INVENTORYHELPERFACTORY_CPP
+        #define TAGHELPERS_INVENTORYHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/InventoryHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryHelperFactory
-            : public Object
-         {
 
-    private: static inline const std::string CLASSNAME = "taghelpers.InventoryHelper";
+InventoryHelperFactory::InventoryHelperFactory(){
+}
 
-    private: static inline const std::string FACTORYNAME = "taghelpers.InventoryHelperFactory";
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto InventoryHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -77,11 +84,6 @@ class InventoryHelperFactory
 }
 
 
-private: InventoryHelperFactory(){
-}
 
 
-};
-
-            
-
+        #endif //TAGHELPERS_INVENTORYHELPERFACTORY_CPP

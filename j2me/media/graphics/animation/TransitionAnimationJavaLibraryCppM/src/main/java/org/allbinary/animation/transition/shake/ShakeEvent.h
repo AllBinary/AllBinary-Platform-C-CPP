@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShakeEvent
-            : public Object
+            : public virtual Object
          {
 
-: ShakeEvent();
+public: ShakeEvent();
 
 };
 
@@ -60,3 +69,10 @@ class ShakeEvent
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_H_COMPLETE
+        
+        #endif
+    

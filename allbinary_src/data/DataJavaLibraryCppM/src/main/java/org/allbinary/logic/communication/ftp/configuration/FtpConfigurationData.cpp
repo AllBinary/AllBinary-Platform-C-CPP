@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FtpConfigurationData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "FTP_NAME";
-
-    public: static inline const std::string SERVER = "FTP_SERVER";
-
-    public: static inline const std::string PATH = "FTP_PATH";
-
-    public: static inline const std::string USERNAME = "FTP_USERNAME";
-
-    public: static inline const std::string PASSWORD = "FTP_PASSWORD";
-
-private: FtpConfigurationData(){
+FtpConfigurationData::FtpConfigurationData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONDATA_CPP

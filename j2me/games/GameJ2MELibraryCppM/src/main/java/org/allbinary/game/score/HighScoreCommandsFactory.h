@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
+class Command;
 
 
 
@@ -49,11 +52,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/HighScoreCommandsBaseFactory.h"
-#include "org/allbinary/game/score/HighScoreCommands.h"
+class HighScoreCommands;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HighScoreCommandsFactory: public HighScoreCommandsBaseFactory {
 
-    private: static HighScoreCommandsFactory* instance() { static std::unique_ptr<HighScoreCommandsFactory> value(new HighScoreCommandsFactory()); return value.get(); }
+    private: static HighScoreCommandsFactory* instance_owner();
+    private: static HighScoreCommandsFactory* instance;
 
     public: static HighScoreCommandsFactory* getInstance();
 
@@ -65,3 +73,19 @@ private: HighScoreCommandsFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include("org/allbinary/game/score/HighScoreCommandsBaseFactory.h")
+#include "org/allbinary/game/score/HighScoreCommandsBaseFactory.h"
+#endif
+#if __has_include("org/allbinary/game/score/HighScoreCommands.h")
+#include "org/allbinary/game/score/HighScoreCommands.h"
+#endif
+
+        #endif
+    

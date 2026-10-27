@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_NULLUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_NULLUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/NullUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -54,40 +64,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //NoPlatform
-// class NullUtil
-            : public Object
-         {
+        
+//NoPlatform - declared in the header, implemented by the platform project
 
-    private: static NullUtil* instance() { static std::unique_ptr<NullUtil> value(new NullUtil()); return value.get(); }
 
-    public: static NullUtil* getInstance()
 
-    public: Object* NULL_OBJECT
-
-    public: Class* NULL_CLASS
-
-    public: const std::vector<Object*> NULL_OBJECT_ARRAY
-
-    public: const std::vector<char> NULL_CHAR_ARRAY
-
-    public: const std::vector<int8_t> NULL_BYTE_ARRAY
-
-    public: const std::vector<std::vector<int16_t>> NULL_SHORT_ARRAY_ARRAY
-
-    public: const std::vector<int32_t> NULL_INT_ARRAY
-
-    public: const std::vector<std::vector<int32_t>> NULL_INT_ARRAY_ARRAY
-
-    public: const std::vector<std::vector<std::vector<int32_t>>> NULL_INT_ARRAY_ARRAY_ARRAY
-
-    public: const std::vector<float> NULL_FLOAT_ARRAY
-
-    public: Vector<Object*>* EMPTY_VECTOR
-
-    public: Hashtable<Object*, Object*>* NULL_TABLE
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_NULLUTIL_CPP

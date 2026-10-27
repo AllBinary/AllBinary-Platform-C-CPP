@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,32 +37,14 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/Enumeration.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class HttpServletRequest;
+class StdUtil;
+class StringMaker;
+class StringUtil;
+class CommonSeps;
 
 
 
@@ -76,17 +63,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h"
+        class AbeHttpRequestInfoData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbeHttpRequestInfo
-            : public Object
+            : public virtual Object
          {
 
     private: const std::string NAME = "AbeHttpRequestInfo";
 
-    private: AbeHttpRequestInfoData* abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();
+    private: AbeHttpRequestInfoData* abeHttpRequestInfoData;
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps;
 
     private: std::string httpUserAgent;
 
@@ -116,3 +107,40 @@ public: AbeHttpRequestInfo(HttpServletRequest* httpServletRequest);
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H_COMPLETE
+        #if __has_include(<java/util/Enumeration.h>)
+#include <java/util/Enumeration.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h")
+#include "org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h"
+#endif
+
+        #endif
+    

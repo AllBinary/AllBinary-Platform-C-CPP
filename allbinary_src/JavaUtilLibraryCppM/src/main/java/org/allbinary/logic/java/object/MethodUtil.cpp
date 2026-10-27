@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/anyType/MethodUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,11 +66,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/java/anyType/ParamsUtil.h"
 
-class MethodUtil
-            : public Object
-         {
 
-    public: static std::string viewAll(Class* myClass, std::string lineBreak){
+MethodUtil::MethodUtil(){
+}
+
+
+    auto MethodUtil::viewAll(Class* myClass, std::string lineBreak) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -78,15 +89,15 @@ stringBuffer->append(lineBreak);
                         for (
     int32_t index = 0;index < method.size(); index++)
         {
-stringBuffer->append(method[index].getReturnType()->getName());
+stringBuffer->append(method[index]->getReturnType()->getName());
     
 stringBuffer->append(" ");
     
-stringBuffer->append(method[index].getName());
+stringBuffer->append(method[index]->getName());
     
 stringBuffer->append("(");
     
-ParamsUtil::viewParams(method[index].getParameterTypes());
+ParamsUtil::viewParams(method[index]->getParameterTypes());
     
 stringBuffer->append(")");
     
@@ -103,11 +114,6 @@ stringBuffer->append(lineBreak);
 }
 
 
-private: MethodUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_CPP

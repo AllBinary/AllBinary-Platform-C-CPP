@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SEQUENTIALANIMATIONINTERFACECOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_SEQUENTIALANIMATIONINTERFACECOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/SequentialAnimationInterfaceCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,9 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/IndexedAnimationInterfaceCompositeInterface.h"
 
-class SequentialAnimationInterfaceCompositeInterface: public IndexedAnimationInterfaceCompositeInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_SEQUENTIALANIMATIONINTERFACECOMPOSITEINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADUTIL_H
         #define ORG_ALLBINARY_THREAD_THREADUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,9 +38,7 @@
         
             #include "java/lang/Thread.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 
 
 
@@ -55,15 +58,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThreadUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThreadUtil* instance() { static std::unique_ptr<ThreadUtil> value(new ThreadUtil()); return value.get(); }
+    private: static ThreadUtil* instance_owner();
+    private: static ThreadUtil* instance;
 
     public: static ThreadUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: ThreadUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: const std::string JOIN = "join";
 
@@ -79,3 +91,13 @@ class ThreadUtil
 
 
         #endif //ORG_ALLBINARY_THREAD_THREADUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_THREADUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_THREADUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+        #endif
+    

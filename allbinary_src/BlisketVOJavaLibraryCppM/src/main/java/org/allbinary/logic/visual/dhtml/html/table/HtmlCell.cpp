@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLCELL_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLCELL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/table/HtmlCell.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,29 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlCell: public HtmlTag {
 
-    private: const std::string END = ">";
-
-    private: const std::string START = "<td ";
-
-    private: const std::string ENDTAG = "</td>";
-
-    private: const std::string HEIGHT = "height";
-
-    private: const std::string WIDTH = "width";
-
-    private: std::string height;
-
-    private: std::string width;
-
-    private: std::string before;
-
-    private: std::string body;
-
-    private: std::string after;
-
-public: HtmlCell(std::string before, std::string width, std::string height, std::string after){
+HtmlCell::HtmlCell(std::string before, std::string width, std::string height, std::string after){
 this->before= std::string(before);
     
 this->after= std::string(after);
@@ -91,13 +80,13 @@ addAttribute(this->WIDTH, this->width);
 }
 
 
-    public: void addText(std::string body){
+    auto HtmlCell::addText(std::string body) -> void{
 this->body= body;
     
 }
 
 
-    public: std::string toString(){
+    auto HtmlCell::toString() -> std::string{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -105,7 +94,7 @@ this->body= body;
     std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes.keySet()->();;
+    std::vector<Object*> attributeKeys = this->otherAttributes->keySet()->();;
     
 
     int32_t attributeSize = attributeKeys.size();;
@@ -163,7 +152,6 @@ result += this->after;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLCELL_CPP

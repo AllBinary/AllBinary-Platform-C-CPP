@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLImageCacheFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLImageCache.h"
 //ImageCacheOpenGLESJavaLibrary
-class OpenGLImageCacheFactory
-            : public Object
-         {
 
-    private: static inline ImageCache* IMAGE_CACHE = new OpenGLImageCache();
+OpenGLImageCacheFactory::OpenGLImageCacheFactory() {
+        }
+        ImageCache* OpenGLImageCacheFactory::IMAGE_CACHE = new OpenGLImageCache();
 
-    public: static ImageCache* getInstance(){
+    auto OpenGLImageCacheFactory::getInstance() -> ImageCache*{
 
 
 
@@ -65,11 +74,10 @@ class OpenGLImageCacheFactory
 }
 
 
-    public: static void init(){
+    auto OpenGLImageCacheFactory::init() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_CPP

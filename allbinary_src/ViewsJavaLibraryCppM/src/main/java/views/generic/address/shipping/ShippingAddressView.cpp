@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/shipping/ShippingAddressView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,15 +88,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingAddressView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HttpServletRequest* request;
-
-    protected: StreetAddress* streetAddress;
-
-public: ShippingAddressView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+ShippingAddressView::ShippingAddressView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,7 +104,7 @@ this->request= dynamic_cast<HttpServletRequest*>(httpTransformInfoInterface->get
 }
 
 
-    protected: HttpServletRequest* getRequest(){
+    auto ShippingAddressView::getRequest() -> HttpServletRequest*{
 
 
 
@@ -113,7 +116,7 @@ this->request= dynamic_cast<HttpServletRequest*>(httpTransformInfoInterface->get
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ShippingAddressView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -132,10 +135,10 @@ formNode->appendChild(this->streetAddress->toXmlNode(document));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -150,7 +153,7 @@ formNode->appendChild(this->streetAddress->toXmlNode(document));
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto ShippingAddressView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(new StatesView()));
@@ -160,7 +163,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(new StatesView()));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto ShippingAddressView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -169,17 +172,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(new StatesView()));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -194,7 +197,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(new StatesView()));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSVIEW_CPP

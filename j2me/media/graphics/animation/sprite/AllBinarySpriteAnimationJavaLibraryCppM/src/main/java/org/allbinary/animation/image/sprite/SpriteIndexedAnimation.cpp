@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -82,15 +92,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SpriteIndexedAnimation: public IndexedAnimation, public ColorCompositeInterface {
 
-    protected: Sprite* sprite;
-
-    protected: Image* image;
-
-    private: std::vector<BasicColor*> basicColorArray;
-
-public: SpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicColor*> basicColorArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+SpriteIndexedAnimation::SpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicColor*> basicColorArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,7 +113,7 @@ this->basicColorArray= basicColorArray;
                                     
 
 
-                            throw new Exception((new StringMaker())->append(CommonLabels::getInstance()->TOTAL_LABEL)->appendint(this->getSize())->append("!=")->appendint(this->basicColorArray.size())->toString());
+                            throw Exception((new StringMaker())->append(CommonLabels::getInstance()->TOTAL_LABEL)->appendint(this->getSize())->append("!=")->appendint(this->basicColorArray.size())->toString());
                     
 
                                     }
@@ -120,7 +123,7 @@ this->basicColorArray= basicColorArray;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto SpriteIndexedAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -130,7 +133,7 @@ this->basicColorArray= basicColorArray;
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto SpriteIndexedAnimation::setBasicColorP(BasicColor* basicColor) -> void{
 
 
 
@@ -155,7 +158,7 @@ break;
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto SpriteIndexedAnimation::getBasicColorP() -> BasicColor*{
 
                         if(this->basicColorArray.size() < this->getFrame())
                         
@@ -182,7 +185,7 @@ break;
 }
 
 
-    public: void paintFrame(Graphics* graphics, int32_t frame, int32_t x, int32_t y){
+    auto SpriteIndexedAnimation::paintFrame(Graphics* graphics, int32_t frame, int32_t x, int32_t y) -> void{
 this->setFrame(frame);
     
 this->sprite->setPosition(x, y);
@@ -192,7 +195,7 @@ this->sprite->paint(graphics);
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto SpriteIndexedAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->sprite->setPosition(x, y);
     
 this->sprite->paint(graphics);
@@ -200,25 +203,25 @@ this->sprite->paint(graphics);
 }
 
 
-    protected: void paint(Graphics* graphics){
+    auto SpriteIndexedAnimation::paint(Graphics* graphics) -> void{
 this->sprite->paint(graphics);
     
 }
 
 
-    public: void nextFrame(){
+    auto SpriteIndexedAnimation::nextFrame() -> void{
 this->sprite->nextFrame();
     
 }
 
 
-    public: void previousFrame(){
+    auto SpriteIndexedAnimation::previousFrame() -> void{
 this->sprite->prevFrame();
     
 }
 
 
-    public: int32_t getSize(){
+    auto SpriteIndexedAnimation::getSize() -> int32_t{
 
 
 
@@ -228,13 +231,13 @@ this->sprite->prevFrame();
 }
 
 
-    public: void setFrame(int32_t frame){
+    auto SpriteIndexedAnimation::setFrame(int32_t frame) -> void{
 this->sprite->setFrame(frame);
     
 }
 
 
-    public: int32_t getFrame(){
+    auto SpriteIndexedAnimation::getFrame() -> int32_t{
 
 
 
@@ -244,7 +247,7 @@ this->sprite->setFrame(frame);
 }
 
 
-    public: bool isLastFrame(){
+    auto SpriteIndexedAnimation::isLastFrame() -> bool{
 
                         if(this->sprite->getFrame() == this->getSize() -1)
                         
@@ -271,7 +274,7 @@ this->sprite->setFrame(frame);
 }
 
 
-    public: int32_t getLastFrame(){
+    auto SpriteIndexedAnimation::getLastFrame() -> int32_t{
 
 
 
@@ -281,11 +284,11 @@ this->sprite->setFrame(frame);
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto SpriteIndexedAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto SpriteIndexedAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -295,17 +298,16 @@ this->sprite->setFrame(frame);
 }
 
 
-    public: void close(){
+    auto SpriteIndexedAnimation::close() -> void{
 }
 
 
                 //@Throws(Throwable.constructor)
             
-    protected: void finalize(){
+    auto SpriteIndexedAnimation::finalize() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_CPP

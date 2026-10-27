@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_TIME_TIMEDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_TIME_TIMEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/time/TimeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeData
-            : public Object
-         {
+auto TimeData::instance_owner() -> TimeData* { static std::unique_ptr<TimeData> value(new TimeData()); return value.get(); }
+TimeData* TimeData::instance = TimeData::instance_owner();
 
-    private: static TimeData* instance() { static std::unique_ptr<TimeData> value(new TimeData()); return value.get(); }
-
-    public: static TimeData* getInstance(){
+    auto TimeData::getInstance() -> TimeData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeData::instance();
+                        return TimeData::instance;
     
 }
 
 
-private: TimeData(){
+TimeData::TimeData(){
 }
 
 
-    public: const std::string NAME = "TIME_NAME";
 
-    public: const std::string START = "TIME_START";
 
-    public: const std::string END = "TIME_END";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_TIME_TIMEDATA_CPP

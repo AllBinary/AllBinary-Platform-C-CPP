@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_PROPERTIES_PROPERTIESJPANEL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_PROPERTIES_PROPERTIESJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <javax/swing.h>
-
-      
 
 
 
@@ -49,11 +52,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/workarea/properties/JPanel.h"
-#include "org/allbinary/graphics/j2me/workarea/properties/JButton.h"
-#include "org/allbinary/graphics/j2me/workarea/properties/JTextField.h"
-#include "org/allbinary/graphics/j2me/workarea/properties/GridLayout.h"
-#include "org/allbinary/graphics/j2me/workarea/properties/Font.h"
+class JButton;
+class JTextField;
+class GridLayout;
+class Font;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PropertiesJPanel: public javax::swing::JPanel {
 
 public: PropertiesJPanel();
@@ -94,3 +101,28 @@ public: PropertiesJPanel();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_PROPERTIES_PROPERTIESJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_PROPERTIES_PROPERTIESJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_PROPERTIES_PROPERTIESJPANEL_H_COMPLETE
+        #if __has_include(<javax/swing.h>)
+#include <javax/swing.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/properties/JPanel.h")
+#include "org/allbinary/graphics/j2me/workarea/properties/JPanel.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/properties/JButton.h")
+#include "org/allbinary/graphics/j2me/workarea/properties/JButton.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/properties/JTextField.h")
+#include "org/allbinary/graphics/j2me/workarea/properties/JTextField.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/properties/GridLayout.h")
+#include "org/allbinary/graphics/j2me/workarea/properties/GridLayout.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/properties/Font.h")
+#include "org/allbinary/graphics/j2me/workarea/properties/Font.h"
+#endif
+
+        #endif
+    

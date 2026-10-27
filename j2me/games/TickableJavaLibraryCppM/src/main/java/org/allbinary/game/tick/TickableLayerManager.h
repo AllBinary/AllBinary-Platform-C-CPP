@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_H
         #define ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <org/allbinary/layer/LayerManager.h>
-
-      
-#include <org/allbinary/layer/LayerManagerNoDebug.h>
-
-      
+class LayerManagerNoDebug;
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TickableLayerManager: public LayerManager {
 
 public: TickableLayerManager();
@@ -62,3 +67,16 @@ public: TickableLayerManager();
 
 
         #endif //ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/LayerManager.h>)
+#include <org/allbinary/layer/LayerManager.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerManagerNoDebug.h>)
+#include <org/allbinary/layer/LayerManagerNoDebug.h>
+#endif
+
+        #endif
+    

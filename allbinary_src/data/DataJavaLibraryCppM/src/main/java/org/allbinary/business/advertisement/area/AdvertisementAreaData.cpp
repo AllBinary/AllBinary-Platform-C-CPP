@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREADATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREADATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementAreaData
-            : public Object
-         {
+auto AdvertisementAreaData::instance_owner() -> AdvertisementAreaData* { static std::unique_ptr<AdvertisementAreaData> value(new AdvertisementAreaData()); return value.get(); }
+AdvertisementAreaData* AdvertisementAreaData::instance = AdvertisementAreaData::instance_owner();
 
-    private: static AdvertisementAreaData* instance() { static std::unique_ptr<AdvertisementAreaData> value(new AdvertisementAreaData()); return value.get(); }
-
-    public: static AdvertisementAreaData* getInstance(){
+    auto AdvertisementAreaData::getInstance() -> AdvertisementAreaData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementAreaData::instance();
+                        return AdvertisementAreaData::instance;
     
 }
 
 
-private: AdvertisementAreaData(){
+AdvertisementAreaData::AdvertisementAreaData(){
 }
 
 
-    public: const std::string NAME = "ADVERTISEMENT_NAME";
 
-    public: const std::string DESCRIPTION = "ADVERTISEMENT_DESCRIPTION";
 
-    public: const std::string CONSTRAINTS = "ADVERTISEMENT_CONSTRAINTS";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREADATA_CPP

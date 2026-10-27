@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LIFE_LIFE_CPP
+        #define ORG_ALLBINARY_GAME_AG_LIFE_LIFE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/life/Life.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/life/LifeInterface.h"
 
-class Life
-            : public Object
-        , public LifeInterface {
 
-    public: static Life* createLife(){
+    auto Life::createLife() -> Life*{
 
         try {
             
@@ -70,22 +77,15 @@ class Life
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
+Life* Life::NO_LIFE = Life::createLife();
 
-    public: static inline Life* NO_LIFE = Life::createLife();
-
-    private: int16_t lives;
-
-    private: int16_t startLives;
-
-    private: int16_t maxlives;
-
-public: Life(int16_t lives, int16_t maxlives){
+Life::Life(int16_t lives, int16_t maxlives){
 this->maxlives= maxlives;
     
 
@@ -95,7 +95,7 @@ this->maxlives= maxlives;
                                     
 
 
-                            throw new Exception("To Many Lives");
+                            throw Exception("To Many Lives");
                     
 
                                     }
@@ -107,7 +107,7 @@ this->startLives= lives;
 }
 
 
-    public: int16_t get(){
+    auto Life::get() -> int16_t{
 
 
 
@@ -117,19 +117,19 @@ this->startLives= lives;
 }
 
 
-    public: void set(int16_t lives){
+    auto Life::set(int16_t lives) -> void{
 this->lives= lives;
     
 }
 
 
-    public: void reset(){
+    auto Life::reset() -> void{
 this->lives= this->startLives;
     
 }
 
 
-    public: void add(int16_t lives){
+    auto Life::add(int16_t lives) -> void{
 
                         if(!this->reachedLimit())
                         
@@ -155,7 +155,7 @@ this->lives= this->startLives;
 }
 
 
-    public: bool isAlive(){
+    auto Life::isAlive() -> bool{
 
                         if(this->lives <= 0)
                         
@@ -182,7 +182,7 @@ this->lives= this->startLives;
 }
 
 
-    public: int16_t getMaxlives(){
+    auto Life::getMaxlives() -> int16_t{
 
 
 
@@ -192,7 +192,7 @@ this->lives= this->startLives;
 }
 
 
-    private: bool reachedLimit(){
+    auto Life::reachedLimit() -> bool{
 
                         if(this->lives > this->maxlives || this->lives < 0)
                         
@@ -219,7 +219,7 @@ this->lives= this->startLives;
 }
 
 
-    public: void deaths(int16_t lives){
+    auto Life::deaths(int16_t lives) -> void{
 
                         if(!this->reachedLimit())
                         
@@ -245,7 +245,7 @@ this->lives= this->startLives;
 }
 
 
-    public: int16_t getStartLives(){
+    auto Life::getStartLives() -> int16_t{
 
 
 
@@ -255,13 +255,12 @@ this->lives= this->startLives;
 }
 
 
-    public: void setStartLives(int16_t startLives){
+    auto Life::setStartLives(int16_t startLives) -> void{
 this->startLives= startLives;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LIFE_LIFE_CPP

@@ -7,6 +7,11 @@
         #ifndef JSINTEROP_ANNOTATIONS_JSASYNC_H
         #define JSINTEROP_ANNOTATIONS_JSASYNC_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,8 +38,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //J2SE to J2ME compatibility
-class JsAsync {
+class JsAsync
+            : public virtual Object
+         {
 
 };
 
@@ -42,3 +53,10 @@ class JsAsync {
 
 
         #endif //JSINTEROP_ANNOTATIONS_JSASYNC_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(JSINTEROP_ANNOTATIONS_JSASYNC_H_COMPLETE)
+        #define JSINTEROP_ANNOTATIONS_JSASYNC_H_COMPLETE
+        
+        #endif
+    

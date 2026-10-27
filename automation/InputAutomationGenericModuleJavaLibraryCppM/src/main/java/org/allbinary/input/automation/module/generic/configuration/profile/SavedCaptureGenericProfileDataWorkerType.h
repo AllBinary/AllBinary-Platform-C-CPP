@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/input/media/image/InputImageType.h>
-
-      
+class InputImageType;
 
 
 
@@ -50,9 +53,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SavedCaptureGenericProfileDataWorkerType: public GenericProfileDataWorkerType {
 
-    public: static SavedCaptureGenericProfileDataWorkerType* SAVED_CAPTURE() { static std::unique_ptr<SavedCaptureGenericProfileDataWorkerType> value(new SavedCaptureGenericProfileDataWorkerType("Saved " +InputImageType::CAPTURE.getName(), "c:\\share\\captures\\2\\", 100)); return value.get(); }
+    private: static SavedCaptureGenericProfileDataWorkerType* SAVED_CAPTURE_owner();
+    public: static SavedCaptureGenericProfileDataWorkerType* SAVED_CAPTURE;
 
     private: std::string path;
 
@@ -74,3 +82,16 @@ public: SavedCaptureGenericProfileDataWorkerType(std::string name, std::string p
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_SAVEDCAPTUREGENERICPROFILEDATAWORKERTYPE_H_COMPLETE
+        #if __has_include(<org/allbinary/input/media/image/InputImageType.h>)
+#include <org/allbinary/input/media/image/InputImageType.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h"
+#endif
+
+        #endif
+    

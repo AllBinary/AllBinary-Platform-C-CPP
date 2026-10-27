@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/NamedInterface.h>
-
-      
 
 
 
@@ -51,6 +54,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DestroyableInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
@@ -63,3 +70,13 @@ class DestroyableInterface: public NamedInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/NamedInterface.h>)
+#include <org/allbinary/layer/NamedInterface.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RECTANGLE_H
         #define ORG_ALLBINARY_GRAPHICS_RECTANGLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StringMaker;
+class CommonLabels;
+class CommonSeps;
 
 
 
@@ -56,10 +55,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/GPoint.h"
+        class GPoint;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Rectangle
-            : public Object
+            : public virtual Object
          {
 
     private: GPoint* point;
@@ -94,3 +97,22 @@ public: Rectangle(GPoint* point, int32_t width, int32_t height);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_RECTANGLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_RECTANGLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_RECTANGLE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+
+        #endif
+    

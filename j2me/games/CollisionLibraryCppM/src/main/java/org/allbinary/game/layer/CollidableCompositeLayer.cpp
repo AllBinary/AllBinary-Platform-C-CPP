@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/CollidableCompositeLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,11 +98,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
-class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInterfaceCompositeInterface {
+Object* CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static CollidableCompositeLayer* getNullInstance(){
+    auto CollidableCompositeLayer::getNullInstance() -> CollidableCompositeLayer*{
 
                         if(CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -111,9 +119,7 @@ class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInte
 }
 
 
-    private: CollidableBaseBehavior* collidableInferface = CollidableNeverCollideBehaviorFactory::getInstance()->createBehavior();
-
-public: CollidableCompositeLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory) : AllBinaryGameLayer(name, layerInfo, viewPosition){
+CollidableCompositeLayer::CollidableCompositeLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition, CollidableBaseBehaviorFactory* collidableBaseBehaviorFactory) : AllBinaryGameLayer(name, layerInfo, viewPosition), collidableInferface(CollidableNeverCollideBehaviorFactory::getInstance()->createBehavior()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -132,8 +138,8 @@ public: CollidableCompositeLayer(std::string name, Rectangle* layerInfo, ViewPos
 }
 
 
-    public: ArtificialIntelligenceInterface* getArtificialIntelligenceInterface(){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+    auto CollidableCompositeLayer::getArtificialIntelligenceInterface() -> ArtificialIntelligenceInterface*{
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 
 
@@ -144,7 +150,7 @@ ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
 }
 
 
-    public: CollidableBaseBehavior* getCollidableInferface(){
+    auto CollidableCompositeLayer::getCollidableInferface() -> CollidableBaseBehavior*{
 
 
 
@@ -154,13 +160,13 @@ ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
 }
 
 
-    public: void setCollidableInferface(CollidableBaseBehavior* collidableInferface){
+    auto CollidableCompositeLayer::setCollidableInferface(CollidableBaseBehavior* collidableInferface) -> void{
 this->collidableInferface= collidableInferface;
     
 }
 
 
-    public: bool implmentsCollidableInterface(){
+    auto CollidableCompositeLayer::implmentsCollidableInterface() -> bool{
 
 
 
@@ -170,11 +176,11 @@ this->collidableInferface= collidableInferface;
 }
 
 
-    public: void toStringAppend(StringMaker* stringBuffer){
+    auto CollidableCompositeLayer::toStringAppend(StringMaker* stringBuffer) -> void{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
-super.toStringAppend(stringBuffer);
+AllBinaryGameLayer::toStringAppend(stringBuffer);
     
 stringBuffer->append(commonSeps->NEW_LINE);
     
@@ -183,7 +189,7 @@ stringBuffer->append(this->getCollidableInferface()->toString());
 }
 
 
-    public: std::string toString(){
+    auto CollidableCompositeLayer::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -198,7 +204,6 @@ this->toStringAppend(stringBuffer);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_CPP

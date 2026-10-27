@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATA_H
         #define ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +53,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AudioContentTypeData
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
 
-: AudioContentTypeData(std::string name);
+public: AudioContentTypeData(std::string name);
 
     public: std::string getName();
 
@@ -64,3 +73,10 @@ class AudioContentTypeData
 
 
         #endif //ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATA_H_COMPLETE
+        
+        #endif
+    

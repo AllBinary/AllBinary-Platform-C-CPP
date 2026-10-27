@@ -20,6 +20,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,12 +33,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/RTSLayerEvent.h>
-
-      
+class RTSLayerEvent;
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
 
 
 
@@ -53,6 +54,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
@@ -65,3 +70,16 @@ class WaypointEventListenerInterface: public EventListenerInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTLISTENERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTLISTENERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/RTSLayerEvent.h>)
+#include <org/allbinary/game/layer/RTSLayerEvent.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+
+        #endif
+    

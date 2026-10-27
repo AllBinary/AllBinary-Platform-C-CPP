@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LinePathAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LinePathAnimation
-            : public Object
-         {
 
-    private: static LinePathAnimation* instance() { static std::unique_ptr<LinePathAnimation> value(new LinePathAnimation()); return value.get(); }
+LinePathAnimation::LinePathAnimation() {
+        }
+        auto LinePathAnimation::instance_owner() -> LinePathAnimation* { static std::unique_ptr<LinePathAnimation> value(new LinePathAnimation()); return value.get(); }
+LinePathAnimation* LinePathAnimation::instance = LinePathAnimation::instance_owner();
 
-    public: static LinePathAnimation* getInstance(){
+    auto LinePathAnimation::getInstance() -> LinePathAnimation*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinePathAnimation::instance();
+                        return LinePathAnimation::instance;
     
 }
 
 
-    public: void paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer){
+    auto LinePathAnimation::paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer) -> void{
 graphics->drawLine(nextPoint->getX(), nextPoint->getY(), point->getX(), point->getY());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_CPP

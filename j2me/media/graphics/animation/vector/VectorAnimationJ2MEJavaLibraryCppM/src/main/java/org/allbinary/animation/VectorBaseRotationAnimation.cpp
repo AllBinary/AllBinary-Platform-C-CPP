@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorBaseRotationAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,11 +78,8 @@
 #include "org/allbinary/animation/VectorAnimationInterface.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class VectorBaseRotationAnimation: public RotationAnimation, public VectorAnimationInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
-
-public: VectorBaseRotationAnimation(AngleInfo* angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior){
+VectorBaseRotationAnimation::VectorBaseRotationAnimation(AngleInfo* angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior), currentPoints(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +95,7 @@ this->setBasicColorP(basicColor);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto VectorBaseRotationAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -98,35 +105,35 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: int32_t getFrame(){
+    auto VectorBaseRotationAnimation::getFrame() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->circularIndexUtil.getIndex();;
+                        return this->circularIndexUtil->getIndex();;
     
 }
 
 
-    public: void setFrame(int32_t index){
-this->circularIndexUtil.setIndex(index);
+    auto VectorBaseRotationAnimation::setFrame(int32_t index) -> void{
+this->circularIndexUtil->setIndex(index);
     
 }
 
 
-    public: void nextFrame(){
-this->circularIndexUtil.next();
+    auto VectorBaseRotationAnimation::nextFrame() -> void{
+this->circularIndexUtil->next();
     
 }
 
 
-    public: void previousFrame(){
-this->circularIndexUtil.previous();
+    auto VectorBaseRotationAnimation::previousFrame() -> void{
+this->circularIndexUtil->previous();
     
 }
 
 
-    public: int32_t getSize(){
+    auto VectorBaseRotationAnimation::getSize() -> int32_t{
 
 
 
@@ -136,11 +143,11 @@ this->circularIndexUtil.previous();
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto VectorBaseRotationAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto VectorBaseRotationAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -150,8 +157,8 @@ this->circularIndexUtil.previous();
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP(graphics, this->basicColor);
+    auto VectorBaseRotationAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP(graphics, this->basicColor);
     
 
         try {
@@ -168,7 +175,7 @@ this->basicSetColorUtil.setBasicColorP(graphics, this->basicColor);
     std::vector<int32_t> point;;
     
 
-    std::vector<std::vector<int32_t>> currentPointsFrame = this->currentPoints[this->circularIndexUtil.getIndex()];;
+    std::vector<std::vector<int32_t>> currentPointsFrame = this->currentPoints[this->circularIndexUtil->getIndex()];;
     
 
     int32_t size = currentPointsFrame.size();;
@@ -208,14 +215,14 @@ nextPointY= nextPoint[1];
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "paintVectors", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "paintVectors", &e);
     
 }
 
 }
 
 
-    public: std::vector<std::vector<int32_t>> getPoints(int32_t frame){
+    auto VectorBaseRotationAnimation::getPoints(int32_t frame) -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -225,7 +232,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "paintVectors", &e);
 }
 
 
-    public: void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints){
+    auto VectorBaseRotationAnimation::setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints) -> void{
 this->currentPoints= currentPoints;
     
 this->circularIndexUtil= CircularIndexUtil::createInstance(this->currentPoints.size());
@@ -233,7 +240,6 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->currentPoints.s
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_CPP

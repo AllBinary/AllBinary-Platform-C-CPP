@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAUSERUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAUSERUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameCanvasPauseRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,25 +72,20 @@
         #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class GameCanvasPauseRunnable: public GameRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AllBinaryGameCanvas* allBinaryGameCanvas;
-
-public: GameCanvasPauseRunnable(AllBinaryGameCanvas* allBinaryGameCanvas){
+GameCanvasPauseRunnable::GameCanvasPauseRunnable(AllBinaryGameCanvas* allBinaryGameCanvas) : logUtil(LogUtil::getInstance()){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    public: void run(){
+    auto GameCanvasPauseRunnable::run() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processLoopSleep(){
+    auto GameCanvasPauseRunnable::processLoopSleep() -> void{
 
         try {
             
@@ -112,7 +117,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAUSERUNNABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLESHADERINITIALIZER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLESHADERINITIALIZER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +52,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SimpleShaderInitializer: public ShaderInitializer {
 
-    private: static SimpleShaderInitializer* instanceC() { static std::unique_ptr<SimpleShaderInitializer> value(new SimpleShaderInitializer()); return value.get(); }
+    private: static SimpleShaderInitializer* instanceC_owner();
+    private: static SimpleShaderInitializer* instanceC;
 
     public: static SimpleShaderInitializer* getInstance();
 
+
+            
+    public: SimpleShaderInitializer();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLESHADERINITIALIZER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLESHADERINITIALIZER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLESHADERINITIALIZER_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/opengles/shader/ShaderInitializer.h")
+#include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
+#endif
+
+        #endif
+    

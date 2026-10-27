@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geological/resources/GeologicalResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +57,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GeologicalResource
-            : public Object
-         {
 
-    private: int32_t total= 0;
-
-    private: int32_t initTotal;
-
-public: GeologicalResource(int32_t initTotal){
+GeologicalResource::GeologicalResource(int32_t initTotal){
 this->initTotal= initTotal;
     
 this->init();
@@ -63,13 +66,13 @@ this->init();
 }
 
 
-    public: void init(){
+    auto GeologicalResource::init() -> void{
 this->setTotal(this->initTotal);
     
 }
 
 
-    public: void add(int32_t value){
+    auto GeologicalResource::add(int32_t value) -> void{
 
     int32_t max = Integer.MAX_VALUE;;
     
@@ -91,7 +94,7 @@ this->setTotal(this->initTotal);
 }
 
 
-    public: void remove(int32_t value){
+    auto GeologicalResource::remove(int32_t value) -> void{
 
                         if(this->getTotal() -value < 0)
                         
@@ -110,7 +113,7 @@ this->setTotal(this->initTotal);
 }
 
 
-    public: int32_t getTotal(){
+    auto GeologicalResource::getTotal() -> int32_t{
 
 
 
@@ -120,13 +123,12 @@ this->setTotal(this->initTotal);
 }
 
 
-    protected: void setTotal(int32_t total){
+    auto GeologicalResource::setTotal(int32_t total) -> void{
 this->total= total;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCE_CPP

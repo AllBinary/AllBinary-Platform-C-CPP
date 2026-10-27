@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,27 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlInput: public HtmlTag {
 
-    private: const std::string END = ">";
-
-    private: const std::string STARTINPUT = "<INPUT ";
-
-    private: const std::string ENDINPUT = "</INPUT>";
-
-    private: const std::string TYPE = "TYPE=\"";
-
-    private: const std::string NAME = "NAME=\"";
-
-    private: std::string before;
-
-    private: std::string type;
-
-    private: std::string name;
-
-    private: std::string after;
-
-public: HtmlInput(std::string before, std::string type, std::string name, std::string after){
+HtmlInput::HtmlInput(std::string before, std::string type, std::string name, std::string after){
 this->before= before;
     
 this->type= type;
@@ -85,7 +76,7 @@ this->after= after;
 }
 
 
-    public: std::string toString(){
+    auto HtmlInput::toString() -> std::string{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -93,7 +84,7 @@ this->after= after;
     std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes.keySet()->();;
+    std::vector<Object*> attributeKeys = this->otherAttributes->keySet()->();;
     
 
     int32_t attributeSize = attributeKeys.size();;
@@ -159,7 +150,6 @@ result += this->after;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUT_CPP

@@ -21,6 +21,11 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,30 +34,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoDomNodeView.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfosData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
-#include <org/w3c/dom/NodeList.h>
-
-      
+class LogUtil;
+class TransformInfoDomNodeView;
+class TransformInfoInterface;
+class TransformInfosData;
+class TransformInfoObjectConfigData;
+class Document;
+class Node;
+class NodeList;
 
 
 
@@ -73,15 +62,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InsertTemplateCustomizerTransformInfoObjectConfig: public NoTemplateTransformInfoObjectConfig {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface);
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface, Object* document);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface, Document* document);
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
@@ -93,3 +86,37 @@ public: InsertTemplateCustomizerTransformInfoObjectConfig(Object* transformInfoI
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H_COMPLETE)
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoDomNodeView.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoDomNodeView.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfosData.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfosData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h>)
+#include <org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<org/w3c/dom/NodeList.h>)
+#include <org/w3c/dom/NodeList.h>
+#endif
+#if __has_include("views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h")
+#include "views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h"
+#endif
+
+        #endif
+    

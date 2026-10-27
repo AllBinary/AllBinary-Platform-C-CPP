@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_SIZECONSTRAINTINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_SIZECONSTRAINTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/control/contraints/MinMaxIntConstraintInterface.h>
-
-      
 
 
 
@@ -49,6 +52,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SizeConstraintInterface: public MinMaxIntConstraintInterface {
 
 };
@@ -57,3 +64,13 @@ class SizeConstraintInterface: public MinMaxIntConstraintInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_SIZECONSTRAINTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_SIZECONSTRAINTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_SIZECONSTRAINTINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/control/contraints/MinMaxIntConstraintInterface.h>)
+#include <org/allbinary/logic/control/contraints/MinMaxIntConstraintInterface.h>
+#endif
+
+        #endif
+    

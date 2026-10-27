@@ -21,6 +21,11 @@
         #ifndef TAGHELPERS_VALIDATIONVIEWHELPER_H
         #define TAGHELPERS_VALIDATIONVIEWHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,23 +35,11 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class PageContext;
+class LogUtil;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class Document;
+class Node;
 
 
 
@@ -67,9 +60,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "taghelpers/ViewHelper.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ValidationViewHelper: public ViewHelper, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: ValidationComponentInterface* viewInterface;
 
@@ -89,3 +86,31 @@ public: ValidationViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pa
 
 
         #endif //TAGHELPERS_VALIDATIONVIEWHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGHELPERS_VALIDATIONVIEWHELPER_H_COMPLETE)
+        #define TAGHELPERS_VALIDATIONVIEWHELPER_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("taghelpers/ViewHelper.h")
+#include "taghelpers/ViewHelper.h"
+#endif
+
+        #endif
+    

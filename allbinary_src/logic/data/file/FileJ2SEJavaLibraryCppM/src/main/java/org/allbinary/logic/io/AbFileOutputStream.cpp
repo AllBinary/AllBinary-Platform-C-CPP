@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/AbFileOutputStream.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileOutputStream: public FileOutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream* createFromAbFile(AbFile* file){
+    auto AbFileOutputStream::createFromAbFile(AbFile* file) -> AbFileOutputStream*{
 
 
 
@@ -71,7 +80,7 @@ class AbFileOutputStream: public FileOutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream* createFromAbFileAppend(AbFile* file, bool append){
+    auto AbFileOutputStream::createFromAbFileAppend(AbFile* file, bool append) -> AbFileOutputStream*{
 
 
 
@@ -83,7 +92,7 @@ class AbFileOutputStream: public FileOutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream* createFromFilePath(std::string name){
+    auto AbFileOutputStream::createFromFilePath(std::string name) -> AbFileOutputStream*{
 
 
 
@@ -95,7 +104,7 @@ class AbFileOutputStream: public FileOutputStream {
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public: static AbFileOutputStream* createFromFilePathAppend(std::string name, bool append){
+    auto AbFileOutputStream::createFromFilePathAppend(std::string name, bool append) -> AbFileOutputStream*{
 
 
 
@@ -105,7 +114,7 @@ class AbFileOutputStream: public FileOutputStream {
 }
 
 
-public: AbFileOutputStream(std::string name, bool append) : FileOutputStream(name, append){
+AbFileOutputStream::AbFileOutputStream(std::string name, bool append) : FileOutputStream(name, append){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -115,7 +124,6 @@ public: AbFileOutputStream(std::string name, bool append) : FileOutputStream(nam
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_CPP

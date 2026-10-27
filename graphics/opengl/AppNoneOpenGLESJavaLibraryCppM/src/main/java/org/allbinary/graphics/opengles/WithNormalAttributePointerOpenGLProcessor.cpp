@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_WITHNORMALATTRIBUTEPOINTEROPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_WITHNORMALATTRIBUTEPOINTEROPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/WithNormalAttributePointerOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,34 +63,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WithNormalAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
+auto WithNormalAttributePointerOpenGLProcessor::instance_owner() -> WithNormalAttributePointerOpenGLProcessor* { static std::unique_ptr<WithNormalAttributePointerOpenGLProcessor> value(new WithNormalAttributePointerOpenGLProcessor()); return value.get(); }
+WithNormalAttributePointerOpenGLProcessor* WithNormalAttributePointerOpenGLProcessor::instance = WithNormalAttributePointerOpenGLProcessor::instance_owner();
 
-    private: static WithNormalAttributePointerOpenGLProcessor* instance() { static std::unique_ptr<WithNormalAttributePointerOpenGLProcessor> value(new WithNormalAttributePointerOpenGLProcessor()); return value.get(); }
-
-    public: static WithNormalAttributePointerOpenGLProcessor* getInstance(){
+    auto WithNormalAttributePointerOpenGLProcessor::getInstance() -> WithNormalAttributePointerOpenGLProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WithNormalAttributePointerOpenGLProcessor::instance();
+                        return WithNormalAttributePointerOpenGLProcessor::instance;
     
 }
 
 
-public: WithNormalAttributePointerOpenGLProcessor(){
+WithNormalAttributePointerOpenGLProcessor::WithNormalAttributePointerOpenGLProcessor(){
 }
 
 
-    public: void process(GL10* gl, Object* aObject3d){
+    auto WithNormalAttributePointerOpenGLProcessor::process(GL10* gl, Object* aObject3d) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_WITHNORMALATTRIBUTEPOINTEROPENGLPROCESSOR_CPP

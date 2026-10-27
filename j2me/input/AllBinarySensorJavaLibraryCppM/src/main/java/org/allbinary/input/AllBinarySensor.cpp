@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_ALLBINARYSENSOR_CPP
+        #define ORG_ALLBINARY_INPUT_ALLBINARYSENSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/AllBinarySensor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,21 +67,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/AllBinarySensorListener.h"
 
-class AllBinarySensor
-            : public Object
-        , public AllBinarySensorListener {
+auto AllBinarySensor::NULL_ALLBINARY_SENSOR_owner() -> AllBinarySensor* { static std::unique_ptr<AllBinarySensor> value(new AllBinarySensor()); return value.get(); }
+AllBinarySensor* AllBinarySensor::NULL_ALLBINARY_SENSOR = AllBinarySensor::NULL_ALLBINARY_SENSOR_owner();
 
-    public: static AllBinarySensor* NULL_ALLBINARY_SENSOR() { static std::unique_ptr<AllBinarySensor> value(new AllBinarySensor()); return value.get(); }
+AllBinarySensor::AllBinarySensor() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
+}
 
-    private: static inline int32_t max = 100;
 
-    public: static void setMax(int32_t max){
+    auto AllBinarySensor::init() -> void{
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto AllBinarySensor::update() -> void{
+}
+
+
+    auto AllBinarySensor::setMax(int32_t max) -> void{
 AllBinarySensor::max= max;
     
 }
 
 
-    public: static int32_t getMax(){
+    auto AllBinarySensor::getMax() -> int32_t{
 
 
 
@@ -81,25 +100,7 @@ AllBinarySensor::max= max;
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-protected: AllBinarySensor(){
-}
-
-
-    public: void init(){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void update(){
-}
-
-
-    public: int32_t getId(){
+    auto AllBinarySensor::getId() -> int32_t{
 
 
 
@@ -109,19 +110,18 @@ protected: AllBinarySensor(){
 }
 
 
-    public: void shutdown(){
+    auto AllBinarySensor::shutdown() -> void{
 this->logUtil->putF(this->commonStrings->START, this, "shutdown");
     
 }
 
 
-    public: void onSensorChange(){
+    auto AllBinarySensor::onSensorChange() -> void{
 ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_ALLBINARYSENSOR_CPP

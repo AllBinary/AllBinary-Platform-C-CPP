@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageTypes.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,44 +90,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
 
-class ImageTypes
-            : public Object
-         {
 
-    public: static ImageTypes* valueOf(std::vector<Object*> anyType){
-
-    ImageTypes* imageTypes = new ImageTypes();;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < anyType.size(); index++)
-        {
-
-    InputImageType* imageType = InputImageType::getInstance(anyType[index]);;
-    
-imageTypes->getVector()->add(imageType);
-    
+ImageTypes::ImageTypes() : vector(new BasicArrayListD()){
 }
 
 
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return imageTypes;
-    
-}
-
-
-    private: BasicArrayList* vector = new BasicArrayListD();
-
-public: ImageTypes(){
-}
-
-
-public: ImageTypes(Node* node){
+ImageTypes::ImageTypes(Node* node) : vector(new BasicArrayListD()){
 
     NodeList* nodeList = node->getChildNodes();;
     
@@ -147,7 +125,7 @@ this->getVector()->add(InputImageType::getInstance(nextImageTypeString));
                             
 
 
-                            throw new Exception("ImageTypes Unknown Node");
+                            throw Exception("ImageTypes Unknown Node");
                     
 
                         }
@@ -157,7 +135,34 @@ this->getVector()->add(InputImageType::getInstance(nextImageTypeString));
 }
 
 
-    public: BasicArrayList* getVector(){
+    auto ImageTypes::valueOf(std::vector<Object*> anyType) -> ImageTypes*{
+
+    ImageTypes* imageTypes = new ImageTypes();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < anyType.size(); index++)
+        {
+
+    InputImageType* imageType = InputImageType::getInstance(anyType[index]);;
+    
+imageTypes->getVector()->add(imageType);
+    
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return imageTypes;
+    
+}
+
+
+    auto ImageTypes::getVector() -> BasicArrayList*{
 
 
 
@@ -169,7 +174,7 @@ this->getVector()->add(InputImageType::getInstance(nextImageTypeString));
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ImageTypes::toXmlNode(Document* document) -> Node*{
 
     Node* newNode = document->createElement(ImageActionScriptOutputData::TYPES);;
     
@@ -199,7 +204,7 @@ newNode->appendChild(ModDomHelper::createTextNode(document, ImageActionScriptOut
 }
 
 
-    public: std::string toString(){
+    auto ImageTypes::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -235,7 +240,6 @@ stringBuffer->append(imageType->getName());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_CPP

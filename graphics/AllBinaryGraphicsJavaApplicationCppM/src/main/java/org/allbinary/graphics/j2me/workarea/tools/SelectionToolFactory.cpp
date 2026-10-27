@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOLFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOLFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/SelectionToolFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,11 @@
 #include "org/allbinary/graphics/j2me/workarea/tools/SelectionTool.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
-class SelectionToolFactory
-            : public Object
-        , public GraphicsItemInterfaceFactoryInterface {
 
-    public: GraphicItemInterface* getInstance(CanvasJPanel* canvasJPanel){
+SelectionToolFactory::SelectionToolFactory() {
+        }
+        
+    auto SelectionToolFactory::getInstance(CanvasJPanel* canvasJPanel) -> GraphicItemInterface*{
 
 
 
@@ -65,7 +75,6 @@ class SelectionToolFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOLFACTORY_CPP

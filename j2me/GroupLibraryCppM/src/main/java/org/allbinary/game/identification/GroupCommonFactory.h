@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPCOMMONFACTORY_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPCOMMONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
+class NullUtil;
+class SmallIntegerSingletonFactory;
 
 
 
@@ -56,15 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GroupCommonFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static GroupCommonFactory* getInstance();
 
-    public: int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(10);
+
+            
+    public: GroupCommonFactory();
+        
+    public: int32_t ID;
 
     public: const std::string GROUP_NAME_LABEL = "Group Name: ";
 
@@ -80,3 +89,16 @@ class GroupCommonFactory
 
 
         #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPCOMMONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPCOMMONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPCOMMONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+
+        #endif
+    

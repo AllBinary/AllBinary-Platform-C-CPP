@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESDEVICEIMAGETRANSLATE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESDEVICEIMAGETRANSLATE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESDeviceImageTranslate.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,29 +58,22 @@
         #include "org/allbinary/image/opengles/OpenGLESImageTranslate.h"
 #include "org/allbinary/image/opengles/OpenGLESImage.h"
 
-class OpenGLESDeviceImageTranslate: public OpenGLESImageTranslate {
 
-    public: float translateX = 0.0;
-
-    public: float translateY = 0.0;
-
-    public: float translateX2 = 0.0;
-
-    public: float translateY2 = 0.0;
-
-    public: void translate(GL10* gl, OpenGLESImage* openGLESImage, float x, float y){
-openGLESImage->imageProcessor.translate(gl, translateX +(openGLESImage->openGLESImageProperties.scaleX *x), translateY +(openGLESImage->openGLESImageProperties.scaleY *y));
+OpenGLESDeviceImageTranslate::OpenGLESDeviceImageTranslate() {
+        }
+        
+    auto OpenGLESDeviceImageTranslate::translate(GL10* gl, OpenGLESImage* openGLESImage, float x, float y) -> void{
+openGLESImage->imageProcessor->translate(gl, translateX +(openGLESImage->openGLESImageProperties->scaleX *x), translateY +(openGLESImage->openGLESImageProperties->scaleY *y));
     
 }
 
 
-    public: void translate2(GL10* gl, OpenGLESImage* openGLESImage){
-openGLESImage->imageProcessor.translate(gl, translateX2, translateY2);
+    auto OpenGLESDeviceImageTranslate::translate2(GL10* gl, OpenGLESImage* openGLESImage) -> void{
+openGLESImage->imageProcessor->translate(gl, translateX2, translateY2);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESDEVICEIMAGETRANSLATE_CPP

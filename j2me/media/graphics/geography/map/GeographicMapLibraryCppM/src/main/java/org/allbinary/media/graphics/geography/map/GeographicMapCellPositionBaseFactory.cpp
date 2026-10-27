@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONBASEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONBASEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionBaseFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,13 @@
         #include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
-class GeographicMapCellPositionBaseFactory
-            : public Object
-         {
 
+GeographicMapCellPositionBaseFactory::GeographicMapCellPositionBaseFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: BasicGeographicMapCellPositionFactory* getInstance(BasicGeographicMap* geographicMapInterface){
+    auto GeographicMapCellPositionBaseFactory::getInstance(BasicGeographicMap* geographicMapInterface) -> BasicGeographicMapCellPositionFactory*{
 
 
 
@@ -65,7 +75,6 @@ class GeographicMapCellPositionBaseFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONBASEFACTORY_CPP

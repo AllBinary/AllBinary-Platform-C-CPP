@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONWORKER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/GenericInputAutomationWorker.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -104,26 +114,15 @@
         #include "org/allbinary/input/automation/module/generic/GenericProfileCaptureWorkerFactory.h"
 #include "org/allbinary/input/automation/module/generic/CaptureWorkerUtil.h"
 
-class GenericInputAutomationWorker: public AbstractInputAutomationWorker {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: const std::string PROCESS_DATA_WORKER_RESULTS = "processDataWorkerResults";
-
-    private: int64_t lastFrame = int64_t( -1);
-
-    private: int64_t frame;
-
-    private: GenericProfile* genericProfile;
-
-public: GenericInputAutomationWorker(InputAutomationActionInterface* inputAutomationActionInterface, GenericProfile* genericProfile, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+GenericInputAutomationWorker::GenericInputAutomationWorker(InputAutomationActionInterface* inputAutomationActionInterface, GenericProfile* genericProfile, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface), logUtil(LogUtil::getInstance()), lastFrame(int64_t( -1)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->setCaptureWorker(GenericProfileCaptureWorkerFactory::getInstance(genericProfile));
     
@@ -151,7 +150,7 @@ this->setGenericProfile(genericProfile);
 
     GenericProfileDataWorkerType* genericProfileDataWorkerType = dynamic_cast<GenericProfileDataWorkerType*>(vector->get(index));;
     
-this->logUtil->putF("Adding Listener: " +genericProfileDataWorkerType, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("Adding Listener: ") +JavaString::valueOf(genericProfileDataWorkerType), this, this->commonStrings->CONSTRUCTOR);
     
 
                         if(genericProfileDataWorkerType == GenericProfileDataWorkerType::COMPARISON)
@@ -178,8 +177,8 @@ this->logUtil->putF("Adding Listener: " +genericProfileDataWorkerType, this, thi
 
                 //@Throws(Exception.constructor)
             
-    public: void processDataWorkerResults(){
-this->logUtil->putF(this->commonStrings.START, this, this->PROCESS_DATA_WORKER_RESULTS);
+    auto GenericInputAutomationWorker::processDataWorkerResults() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 this->waitForDataWorkers();
     
@@ -201,7 +200,7 @@ this->setFrame(keyArray[keyArray.size() -1]);
                         if(getFrame() > this->lastFrame)
                         
                                     {
-                                    this->logUtil->putF("Processing new frame: " +getFrame(), this, this->PROCESS_DATA_WORKER_RESULTS);
+                                    this->logUtil->putF(JavaString::valueOf("Processing new frame: ") +JavaString::valueOf(getFrame()), this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
     HashMap<Object*, Object*>* hashMap = this->getGenericProfile()->getGenericProfileActions()->getHashMap();;
@@ -209,7 +208,7 @@ this->setFrame(keyArray[keyArray.size() -1]);
 
     Set* set = hashMap->keys();;
     
-this->logUtil->putF("Processing " +set->size() +"Actions", this, this->PROCESS_DATA_WORKER_RESULTS);
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Processing ") +JavaString::valueOf(set->size())) +JavaString::valueOf("Actions"), this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
     std::vector<Object*> actionNameArray = set->toArray();;
@@ -227,7 +226,7 @@ this->logUtil->putF("Processing " +set->size() +"Actions", this, this->PROCESS_D
 
     std::string actionNameString = actionNameArray[index];;
     
-this->logUtil->putF("Processing Action: " +actionNameString, this, this->PROCESS_DATA_WORKER_RESULTS);
+this->logUtil->putF(JavaString::valueOf("Processing Action: ") +JavaString::valueOf(actionNameString), this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
     GenericProfileAction* genericProfileAction = dynamic_cast<GenericProfileAction*>(hashMap->get(actionNameString));;
@@ -261,8 +260,8 @@ this->lastFrame= this->getFrame();
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
-this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+    auto GenericInputAutomationWorker::process() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);
     
 this->startDataWorkers();
     
@@ -271,7 +270,7 @@ this->processDataWorkerResults();
 }
 
 
-    public: GenericProfile* getGenericProfile(){
+    auto GenericInputAutomationWorker::getGenericProfile() -> GenericProfile*{
 
 
 
@@ -281,13 +280,13 @@ this->processDataWorkerResults();
 }
 
 
-    public: void setGenericProfile(GenericProfile* genericProfile){
+    auto GenericInputAutomationWorker::setGenericProfile(GenericProfile* genericProfile) -> void{
 this->genericProfile= genericProfile;
     
 }
 
 
-    protected: int64_t getFrame(){
+    auto GenericInputAutomationWorker::getFrame() -> int64_t{
 
 
 
@@ -297,13 +296,12 @@ this->genericProfile= genericProfile;
 }
 
 
-    protected: void setFrame(int64_t frame){
+    auto GenericInputAutomationWorker::setFrame(int64_t frame) -> void{
 this->frame= frame;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONWORKER_CPP

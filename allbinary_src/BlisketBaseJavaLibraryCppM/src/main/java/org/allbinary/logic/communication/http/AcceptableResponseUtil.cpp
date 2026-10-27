@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/AcceptableResponseUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,37 +68,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/AcceptableResponseFactory.h"
 
-class AcceptableResponseUtil
-            : public Object
-         {
 
-    private: static AcceptableResponseUtil* instance() { static std::unique_ptr<AcceptableResponseUtil> value(new AcceptableResponseUtil()); return value.get(); }
+AcceptableResponseUtil::AcceptableResponseUtil() : candidateVector(new BasicArrayListD()), tagNameVector(new BasicArrayListD()) {
+        }
+        auto AcceptableResponseUtil::instance_owner() -> AcceptableResponseUtil* { static std::unique_ptr<AcceptableResponseUtil> value(new AcceptableResponseUtil()); return value.get(); }
+AcceptableResponseUtil* AcceptableResponseUtil::instance = AcceptableResponseUtil::instance_owner();
 
-    public: static AcceptableResponseUtil* getInstance(){
+    auto AcceptableResponseUtil::getInstance() -> AcceptableResponseUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AcceptableResponseUtil::instance();
+                        return AcceptableResponseUtil::instance;
     
 }
 
-
-                    static int32_t initResult = AcceptableResponseUtil::init();
-                static int32_t init() { 
+int32_t AcceptableResponseUtil::initResult = AcceptableResponseUtil::init();
+        auto AcceptableResponseUtil::init() -> int32_t {
                     
 TsUtil::getInstance()->hashCode(AcceptableResponseFactory::getInstance()->HTML);
     
 
 
                     return 0;
-                }
-            
-    public: BasicArrayList* candidateVector = new BasicArrayListD();
-
-    public: BasicArrayList* tagNameVector = new BasicArrayListD();
-
-    public: std::string get(int32_t index){
+        }
+                
+    auto AcceptableResponseUtil::get(int32_t index) -> std::string{
 
 
 
@@ -98,7 +103,7 @@ TsUtil::getInstance()->hashCode(AcceptableResponseFactory::getInstance()->HTML);
 }
 
 
-    public: std::string getTagName(int32_t index){
+    auto AcceptableResponseUtil::getTagName(int32_t index) -> std::string{
 
 
 
@@ -108,7 +113,7 @@ TsUtil::getInstance()->hashCode(AcceptableResponseFactory::getInstance()->HTML);
 }
 
 
-    public: int32_t size(){
+    auto AcceptableResponseUtil::size() -> int32_t{
 
 
 
@@ -118,7 +123,6 @@ TsUtil::getInstance()->hashCode(AcceptableResponseFactory::getInstance()->HTML);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEUTIL_CPP

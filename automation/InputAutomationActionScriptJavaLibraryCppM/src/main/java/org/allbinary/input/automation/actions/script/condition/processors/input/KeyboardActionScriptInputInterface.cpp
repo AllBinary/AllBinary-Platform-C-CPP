@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,31 +58,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
 
-class KeyboardActionScriptInputInterface: public ProfileActionScriptInputInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getDelayBetweenKeys() = 0;
 
-    public: virtual std::vector<int32_t> getKeyArray() = 0;
 
-    public: virtual bool isPress() = 0;
-
-    public: virtual bool isRelease() = 0;
-
-    public: virtual bool isNormal() = 0;
-
-    public: virtual void setPress(bool press) = 0;
-
-    public: virtual void setRelease(bool release) = 0;
-
-    public: virtual void setNormal() = 0;
-
-    public: virtual std::string getText() = 0;
-
-    public: virtual void setText(std::string text) = 0;
-
-    public: virtual void log() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTINTERFACE_CPP

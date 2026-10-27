@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/UpKeyEventListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,13 +60,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpKeyEventListenerInterface: public EventListenerInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onUpKeyEvent(int32_t keyAsInteger) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTLISTENERINTERFACE_CPP

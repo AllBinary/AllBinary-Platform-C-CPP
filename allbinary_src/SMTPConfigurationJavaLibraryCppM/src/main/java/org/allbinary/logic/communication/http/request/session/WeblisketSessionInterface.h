@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
-
-      
-#include <org/allbinary/business/user/role/UserRole.h>
-
-      
+class OrderInterface;
+class UserRole;
 
 
 
@@ -56,7 +57,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WeblisketSessionInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class WeblisketSessionInterface
+            : public virtual Object
+         {
 
     public: virtual void clear() = 0;
 
@@ -116,3 +123,16 @@ class WeblisketSessionInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRole.h>)
+#include <org/allbinary/business/user/role/UserRole.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/KeyPressesAIFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,13 +77,13 @@
         #include "org/allbinary/game/ag/ai/MultiKeyPressesAI.h"
 #include "org/allbinary/game/ag/ai/KeyPressesAI.h"
 
-class KeyPressesAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+KeyPressesAIFactory::KeyPressesAIFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto KeyPressesAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
     bool isSingleKeyProcessing = InputFeatureFactory::getInstance()->isSingleKeyProcessing();;
     
@@ -103,7 +113,6 @@ class KeyPressesAIFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAIFACTORY_CPP

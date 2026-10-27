@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontUsersStatisticsData
-            : public Object
-         {
+auto StoreFrontUsersStatisticsData::instance_owner() -> StoreFrontUsersStatisticsData* { static std::unique_ptr<StoreFrontUsersStatisticsData> value(new StoreFrontUsersStatisticsData()); return value.get(); }
+StoreFrontUsersStatisticsData* StoreFrontUsersStatisticsData::instance = StoreFrontUsersStatisticsData::instance_owner();
 
-    private: static StoreFrontUsersStatisticsData* instance() { static std::unique_ptr<StoreFrontUsersStatisticsData> value(new StoreFrontUsersStatisticsData()); return value.get(); }
+StoreFrontUsersStatisticsData::StoreFrontUsersStatisticsData(){
+}
 
-    public: static StoreFrontUsersStatisticsData* getInstance(){
+
+    auto StoreFrontUsersStatisticsData::getInstance() -> StoreFrontUsersStatisticsData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontUsersStatisticsData::instance();
+                        return StoreFrontUsersStatisticsData::instance;
     
 }
 
 
-private: StoreFrontUsersStatisticsData(){
-}
 
 
-    public: const std::string NAME = "STOREFRONT_USERS_STATISTICS_NAME";
-
-    public: const std::string NUMBEROFUSERS = "STOREFRONT_USERS_STATISTICS_NUMBER_OF_USERS";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSDATA_CPP

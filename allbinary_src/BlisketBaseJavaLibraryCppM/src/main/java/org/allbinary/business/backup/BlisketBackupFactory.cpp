@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/backup/BlisketBackupFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -95,33 +105,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BlisketBackupFactory
-            : public Object
-         {
 
-    private: static BlisketBackupFactory* instance() { static std::unique_ptr<BlisketBackupFactory> value(new BlisketBackupFactory()); return value.get(); }
+BlisketBackupFactory::BlisketBackupFactory() : logUtil(LogUtil::getInstance()), stringUtil(StringUtil::getInstance()), commonStrings(CommonStrings::getInstance()), directory(Directory::getInstance()) {
+        }
+        auto BlisketBackupFactory::instance_owner() -> BlisketBackupFactory* { static std::unique_ptr<BlisketBackupFactory> value(new BlisketBackupFactory()); return value.get(); }
+BlisketBackupFactory* BlisketBackupFactory::instance = BlisketBackupFactory::instance_owner();
 
-    public: static BlisketBackupFactory* getInstance(){
+    auto BlisketBackupFactory::getInstance() -> BlisketBackupFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BlisketBackupFactory::instance();
+                        return BlisketBackupFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Directory* directory = Directory::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* getFileBasicArrayList(std::string pathString){
+    auto BlisketBackupFactory::getFileBasicArrayList(std::string pathString) -> BasicArrayList*{
 
     AbPath* path = new AbPath(pathString, this->stringUtil->EMPTY_STRING);;
     
@@ -137,7 +139,7 @@ class BlisketBackupFactory
 }
 
 
-    public: void backup(){
+    auto BlisketBackupFactory::backup() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "backup()");
@@ -158,7 +160,7 @@ stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
 
     BasicArrayList* fileBasicArrayList = this->getFileBasicArrayList(backupPath);;
     
-this->backup(fileBasicArrayList, path->toFileSystemString() +"backup.zip");
+this->backup(fileBasicArrayList, JavaString::valueOf(path->toFileSystemString()) +JavaString::valueOf("backup.zip"));
     
 
                 //: 
@@ -171,7 +173,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
 }
 
 
-    public: void backupViews(){
+    auto BlisketBackupFactory::backupViews() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "backupViews()");
@@ -216,7 +218,7 @@ stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
         {
 nextStore= storeFrontNamesBasicArrayList->get(index);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(URLGLOBALS::getWebappPath());
     
@@ -226,7 +228,7 @@ stringBuffer->append(nextStore);
     
 viewsPath= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Backup Store Views: ");
     
@@ -242,7 +244,7 @@ fileBasicArrayList->addAllList(this->getFileBasicArrayList(viewsPath));
     
 }
 
-this->backup(fileBasicArrayList, path->toFileSystemString() +"backupViews.zip");
+this->backup(fileBasicArrayList, JavaString::valueOf(path->toFileSystemString()) +JavaString::valueOf("backupViews.zip"));
     
 
                 //: 
@@ -255,7 +257,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "backupViews()", &e);
 }
 
 
-    public: void backupResources(){
+    auto BlisketBackupFactory::backupResources() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "backupResources()");
@@ -305,7 +307,7 @@ nextStore= storeFrontNamesBasicArrayList->get(index);
     
 storeFrontInterface= storeFrontsEntity->getStoreFrontInterface(nextStore);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(URLGLOBALS::getWebappPath());
     
@@ -315,7 +317,7 @@ stringBuffer->append(storeFrontInterface->getCategoryPath());
     
 resourcesPath= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Backup Store Resrouces: ");
     
@@ -331,7 +333,7 @@ fileBasicArrayList->addAllList(this->getFileBasicArrayList(resourcesPath));
     
 }
 
-this->backup(fileBasicArrayList, path->toFileSystemString() +"backupResources.zip");
+this->backup(fileBasicArrayList, JavaString::valueOf(path->toFileSystemString()) +JavaString::valueOf("backupResources.zip"));
     
 
                 //: 
@@ -344,7 +346,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "backupResources()", &e
 }
 
 
-    public: void backupJsps(){
+    auto BlisketBackupFactory::backupJsps() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "backupJsps()");
@@ -386,9 +388,9 @@ stringBuffer->append(PATH_GLOBALS::getInstance()->BACKUP_PATH);
         {
 nextStore= storeFrontNamesBasicArrayList->get(index);
     
-PreLogUtil::put("Backup Store Jsps: " +nextStore, this, "backupJsps()");
+PreLogUtil::put(JavaString::valueOf("Backup Store Jsps: ") +JavaString::valueOf(nextStore), this, "backupJsps()");
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(URLGLOBALS::getWebappPath());
     
@@ -398,7 +400,7 @@ fileBasicArrayList->addAllList(this->getFileBasicArrayList(stringBuffer->toStrin
     
 }
 
-this->backup(fileBasicArrayList, path->toFileSystemString() +"backupJsps.zip");
+this->backup(fileBasicArrayList, JavaString::valueOf(path->toFileSystemString()) +JavaString::valueOf("backupJsps.zip"));
     
 
                 //: 
@@ -411,13 +413,13 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "backupJsps()", &e);
 }
 
 
-    public: void backup(BasicArrayList* fileBasicArrayList, std::string zipFile){
+    auto BlisketBackupFactory::backup(BasicArrayList* fileBasicArrayList, std::string zipFile) -> void{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("ZipFile: ");
     
@@ -427,7 +429,7 @@ stringBuffer->append(" BasicArrayList: ");
     
 stringBuffer->appendint(fileBasicArrayList->size());
     
-PreLogUtil::put("Creating Backup Zip File: " +stringBuffer->toString(), this, "backup()");
+PreLogUtil::put(JavaString::valueOf("Creating Backup Zip File: ") +JavaString::valueOf(stringBuffer->toString()), this, "backup()");
     
 ZipFileUtil::getInstance()->create(zipFile, fileBasicArrayList);
     
@@ -444,7 +446,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_CPP

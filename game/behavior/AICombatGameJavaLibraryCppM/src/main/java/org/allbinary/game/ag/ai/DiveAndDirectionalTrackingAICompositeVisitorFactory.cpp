@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAICOMPOSITEVISITORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAICOMPOSITEVISITORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/DiveAndDirectionalTrackingAICompositeVisitorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/DiveAndDirectionalTrackingAI.h"
 
-class DiveAndDirectionalTrackingAICompositeVisitorFactory
-            : public Object
-         {
 
-    public: Visitor* getInstance(DiveAndDirectionalTrackingAI* diveBombAI){
+DiveAndDirectionalTrackingAICompositeVisitorFactory::DiveAndDirectionalTrackingAICompositeVisitorFactory() {
+        }
+        
+    auto DiveAndDirectionalTrackingAICompositeVisitorFactory::getInstance(DiveAndDirectionalTrackingAI* diveBombAI) -> Visitor*{
 
 
 
@@ -63,7 +73,6 @@ class DiveAndDirectionalTrackingAICompositeVisitorFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAICOMPOSITEVISITORFACTORY_CPP

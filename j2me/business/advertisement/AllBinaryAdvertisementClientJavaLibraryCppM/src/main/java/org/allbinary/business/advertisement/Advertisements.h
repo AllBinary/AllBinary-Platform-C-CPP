@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/rand/MyRandomFactory.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LockedUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class MyRandomFactory;
+class LockedUtil;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -59,21 +56,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/advertisement/AdvertisementProcessorInterface.h"
+        class AdvertisementProcessorInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Advertisements
-            : public Object
+            : public virtual Object
          {
 
-    private: BasicArrayList* bannerList = new BasicArrayListD();
 
-    private: BasicArrayList* pageList = new BasicArrayListD();
+            
+    public: Advertisements();
+        
+    private: BasicArrayList* bannerList;
+
+    private: BasicArrayList* pageList;
 
     public: void addPage(AdvertisementProcessorInterface* advertisementProcessorInterface);
 
     public: void startRandomPage();
 
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
+    private: MyRandomFactory* myRandomFactory;
 
     public: void processRandomPage();
 
@@ -95,3 +100,25 @@ class Advertisements
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H_COMPLETE
+        #if __has_include(<org/allbinary/game/rand/MyRandomFactory.h>)
+#include <org/allbinary/game/rand/MyRandomFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LockedUtil.h>)
+#include <org/allbinary/logic/system/security/licensing/LockedUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/business/advertisement/AdvertisementProcessorInterface.h")
+#include "org/allbinary/business/advertisement/AdvertisementProcessorInterface.h"
+#endif
+
+        #endif
+    

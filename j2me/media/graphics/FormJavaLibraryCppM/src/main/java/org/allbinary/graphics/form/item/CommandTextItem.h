@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class Command;
+class BasicColor;
 
 
 
@@ -53,6 +54,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/ABTextItem.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommandTextItem: public ABTextItem {
 
     private: Command* command;
@@ -69,3 +74,19 @@ public: CommandTextItem(Command* command, int32_t layout, std::string altText, B
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABTextItem.h")
+#include "org/allbinary/graphics/form/item/ABTextItem.h"
+#endif
+
+        #endif
+    

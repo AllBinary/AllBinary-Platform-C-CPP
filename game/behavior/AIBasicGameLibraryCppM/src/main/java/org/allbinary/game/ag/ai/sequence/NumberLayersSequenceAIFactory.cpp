@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_NUMBERLAYERSSEQUENCEAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_NUMBERLAYERSSEQUENCEAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/sequence/NumberLayersSequenceAIFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -57,11 +67,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/sequence/NumberLayersSequenceAI.h"
 
-class NumberLayersSequenceAIFactory
-            : public Object
-         {
 
-    public: ArtificialIntelligenceInterface* getInstance(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+NumberLayersSequenceAIFactory::NumberLayersSequenceAIFactory() {
+        }
+        
+    auto NumberLayersSequenceAIFactory::getInstance(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
 
 
@@ -71,7 +81,6 @@ class NumberLayersSequenceAIFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_NUMBERLAYERSSEQUENCEAIFACTORY_CPP

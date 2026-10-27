@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/compound/CompoundRotationAnimationInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,9 +72,8 @@
         #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
 #include "org/allbinary/animation/compound/CompoundRotationAnimation.h"
 
-class CompoundRotationAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
 
-public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
+CompoundRotationAnimationInterfaceFactory::CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,7 +92,7 @@ public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterface
 }
 
 
-    protected: std::vector<Animation*> createArray(int32_t size){
+    auto CompoundRotationAnimationInterfaceFactory::createArray(int32_t size) -> std::vector<Animation*>{
 
 
 
@@ -93,17 +102,16 @@ public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterface
 }
 
 
-    protected: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray){
+    auto CompoundRotationAnimationInterfaceFactory::createAnimation(std::vector<Animation*> animationInterfaceArray) -> Animation*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory.getOrCreateInstance());
+                        return new CompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATIONINTERFACEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RIGHTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RIGHTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/touch/action/RightTouchInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RightTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* RightTouchInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto RightTouchInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(RightTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class RightTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureIn
 }
 
 
-private: RightTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Right Action", TouchMotionGestureFactory::getInstance()->RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+RightTouchInputToGameKeyEventAction::RightTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Right Action", TouchMotionGestureFactory::getInstance()->RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: RightTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInp
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RIGHTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP

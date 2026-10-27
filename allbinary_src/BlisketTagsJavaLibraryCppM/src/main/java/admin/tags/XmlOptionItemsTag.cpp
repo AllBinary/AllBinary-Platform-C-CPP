@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_XMLOPTIONITEMSTAG_CPP
+        #define ADMIN_TAGS_XMLOPTIONITEMSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/XmlOptionItemsTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class XmlOptionItemsTag: public TableTag {
 
-public: XmlOptionItemsTag(){
+XmlOptionItemsTag::XmlOptionItemsTag(){
 this->setTagHelperFactory(new XmlOptionItemsHelperFactory());
     
 this->setTagRequestHelperFactory(new XmlOptionItemsRequestHelperFactory());
@@ -60,7 +69,6 @@ this->setTagRequestHelperFactory(new XmlOptionItemsRequestHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_XMLOPTIONITEMSTAG_CPP

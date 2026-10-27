@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,17 +35,9 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/Money.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/MoneyException.h>
-
-      
+class Money;
+class MoneyException;
 
 
 
@@ -60,7 +57,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasketInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class BasketInterface
+            : public virtual Object
+         {
 
     public: virtual void addItem(std::string id, std::string num) = 0;
 
@@ -88,3 +91,22 @@ class BasketInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/Money.h>)
+#include <org/allbinary/business/user/commerce/money/Money.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/MoneyException.h>)
+#include <org/allbinary/business/user/commerce/money/MoneyException.h>
+#endif
+
+        #endif
+    

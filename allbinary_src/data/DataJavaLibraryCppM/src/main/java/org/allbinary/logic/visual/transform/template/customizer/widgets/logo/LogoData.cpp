@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGODATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGODATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LogoData
-            : public Object
-         {
+auto LogoData::instance_owner() -> LogoData* { static std::unique_ptr<LogoData> value(new LogoData()); return value.get(); }
+LogoData* LogoData::instance = LogoData::instance_owner();
 
-    private: static LogoData* instance() { static std::unique_ptr<LogoData> value(new LogoData()); return value.get(); }
-
-    public: static LogoData* getInstance(){
+    auto LogoData::getInstance() -> LogoData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogoData::instance();
+                        return LogoData::instance;
     
 }
 
 
-private: LogoData(){
+LogoData::LogoData(){
 }
 
 
-    public: const std::string NAME = "LOGO_NAME";
 
-    public: const std::string IMAGEPATH = "LOGO_IMAGE_PATH";
 
-    public: const std::string IMAGEFILENAME = "LOGO_IMAGE_FILE_NAME";
-
-    public: const std::string IMAGE = "LOGO_IMAGE";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGODATA_CPP

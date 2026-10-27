@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,10 +52,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/pickup/PickupProcessorInterface.h"
-#include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
+        class PickupProcessorInterface;
+class PickedUpLayerInterface;
 
-class PickupBehaviorInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class PickupBehaviorInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -64,3 +75,16 @@ class PickupBehaviorInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/layer/pickup/PickupProcessorInterface.h")
+#include "org/allbinary/game/layer/pickup/PickupProcessorInterface.h"
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/PickedUpLayerInterface.h")
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
+#endif
+
+        #endif
+    

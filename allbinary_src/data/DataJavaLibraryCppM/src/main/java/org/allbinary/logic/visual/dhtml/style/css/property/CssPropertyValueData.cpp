@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValueData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CssPropertyValueData
-            : public Object
-         {
+auto CssPropertyValueData::instance_owner() -> CssPropertyValueData* { static std::unique_ptr<CssPropertyValueData> value(new CssPropertyValueData()); return value.get(); }
+CssPropertyValueData* CssPropertyValueData::instance = CssPropertyValueData::instance_owner();
 
-    private: static CssPropertyValueData* instance() { static std::unique_ptr<CssPropertyValueData> value(new CssPropertyValueData()); return value.get(); }
-
-    public: static CssPropertyValueData* getInstance(){
+    auto CssPropertyValueData::getInstance() -> CssPropertyValueData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CssPropertyValueData::instance();
+                        return CssPropertyValueData::instance;
     
 }
 
 
-private: CssPropertyValueData(){
+CssPropertyValueData::CssPropertyValueData(){
 }
 
 
-    public: const std::string NAME = "CSS_PROPERTY_VALUE";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUEDATA_CPP

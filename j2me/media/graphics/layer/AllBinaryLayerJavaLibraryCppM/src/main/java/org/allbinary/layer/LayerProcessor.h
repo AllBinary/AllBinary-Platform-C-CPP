@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERPROCESSOR_H
         #define ORG_ALLBINARY_LAYER_LAYERPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -53,15 +56,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/LayerProcessorInterface.h"
-#include "org/allbinary/layer/LayerManager.h"
-#include "org/allbinary/layer/AllBinaryLayerManager.h"
-#include "org/allbinary/layer/AllBinaryLayer.h"
+class LayerManager;
+class AllBinaryLayerManager;
+class AllBinaryLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerProcessor
-            : public Object
+            : public virtual Object
         , public LayerProcessorInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: LayerManager* layerManager;
 
@@ -87,3 +94,25 @@ public: LayerProcessor(LayerManager* layerManager);
 
 
         #endif //ORG_ALLBINARY_LAYER_LAYERPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_LAYERPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_LAYERPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/layer/LayerProcessorInterface.h")
+#include "org/allbinary/layer/LayerProcessorInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/LayerManager.h")
+#include "org/allbinary/layer/LayerManager.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayerManager.h")
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+
+        #endif
+    

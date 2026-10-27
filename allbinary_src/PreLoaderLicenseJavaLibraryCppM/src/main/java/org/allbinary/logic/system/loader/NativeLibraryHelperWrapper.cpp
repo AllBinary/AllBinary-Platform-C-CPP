@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/loader/NativeLibraryHelperWrapper.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,17 +75,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/loader/NativeLibraryClassLoader.h"
 
-class NativeLibraryHelperWrapper
-            : public Object
-         {
 
-    private: std::string libraryName;
-
-    private: ClassLoader* loader;
-
-    private: Object* anyType;
-
-public: NativeLibraryHelperWrapper(std::string libraryName){
+NativeLibraryHelperWrapper::NativeLibraryHelperWrapper(std::string libraryName){
 this->setLibraryName(libraryName);
     
 }
@@ -83,7 +84,7 @@ this->setLibraryName(libraryName);
 
                 //@Throws(Exception.constructor)
             
-    public: void load(){
+    auto NativeLibraryHelperWrapper::load() -> void{
 
     std::vector<Object*> params = std::vector<Object*>(1);;
     
@@ -117,7 +118,7 @@ method->invoke(this->anyType,
 }
 
 
-    public: void unload(){
+    auto NativeLibraryHelperWrapper::unload() -> void{
 this->anyType= 
                                         nullptr
                                     ;
@@ -133,17 +134,17 @@ System.gc();
 }
 
 
-    public: std::string toString(){
+    auto NativeLibraryHelperWrapper::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Library: " +this->getLibraryName();
+                        return JavaString::valueOf("Library: ") +JavaString::valueOf(this->getLibraryName());
     
 }
 
 
-    public: std::string getLibraryName(){
+    auto NativeLibraryHelperWrapper::getLibraryName() -> std::string{
 
 
 
@@ -153,13 +154,12 @@ System.gc();
 }
 
 
-    public: void setLibraryName(std::string libraryName){
+    auto NativeLibraryHelperWrapper::setLibraryName(std::string libraryName) -> void{
 this->libraryName= libraryName;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_CPP

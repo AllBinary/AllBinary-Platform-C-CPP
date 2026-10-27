@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,35 +39,15 @@
             #include "java/lang/RuntimeException.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/category/CategoryData.h>
-
-      
-#include <org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class CategoryData;
+class CategoryHierarchyInterface;
+class StdUtil;
+class AbPath;
+class AbPathData;
+class Document;
+class Node;
 
 
 
@@ -83,13 +68,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/properties/root/RootCategoryPropertiesInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RootCategoryPropertiesAbstract
-            : public Object
+            : public virtual Object
         , public RootCategoryPropertiesInterface {
 
-    private: const std::string category = CategoryData::getInstance()->ROOTCATEGORY;
+    private: const std::string category;
 
-    private: const std::string fileName = this->category +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION;
+    private: const std::string fileName;
 
 public: RootCategoryPropertiesAbstract();
 
@@ -153,3 +142,43 @@ public: RootCategoryPropertiesAbstract();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryData.h>)
+#include <org/allbinary/business/category/CategoryData.h>
+#endif
+#if __has_include(<org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>)
+#include <org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/category/properties/root/RootCategoryPropertiesInterface.h")
+#include "org/allbinary/business/category/properties/root/RootCategoryPropertiesInterface.h"
+#endif
+
+        #endif
+    

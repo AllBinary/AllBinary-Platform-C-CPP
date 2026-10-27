@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/MotionEventCircularPool.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>
-
-      
+class GPoint;
+class PointFactory;
+class MotionEventCircularPool;
+class MotionGestureEvent;
 
 
 
@@ -64,11 +61,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MirrorMotionGestureEventUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static MirrorMotionGestureEventUtil* instance() { static std::unique_ptr<MirrorMotionGestureEventUtil> value(new MirrorMotionGestureEventUtil()); return value.get(); }
+    private: static MirrorMotionGestureEventUtil* instance_owner();
+    private: static MirrorMotionGestureEventUtil* instance;
 
     public: static MirrorMotionGestureEventUtil* getInstance();
 
@@ -88,3 +90,22 @@ private: MirrorMotionGestureEventUtil();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/MotionEventCircularPool.h>)
+#include <org/allbinary/input/motion/gesture/observer/MotionEventCircularPool.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>)
+#include <org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>
+#endif
+
+        #endif
+    

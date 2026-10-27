@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_H
         #define ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <org/allbinary/media/audio/CompositeSound.h>
-
-      
-#include <org/allbinary/media/audio/Sound.h>
-
-      
+class Sound;
 
 
 
@@ -52,9 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DropWeaponSound: public CompositeSound {
 
-    private: static inline Sound* soundInterface = new DropWeaponSound();
+    private: static Sound* soundInterface;
 
     public: static Sound* getInstance();
 
@@ -66,3 +71,16 @@ private: DropWeaponSound();
 
 
         #endif //ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_H_COMPLETE)
+        #define ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_H_COMPLETE
+        #if __has_include(<org/allbinary/media/audio/CompositeSound.h>)
+#include <org/allbinary/media/audio/CompositeSound.h>
+#endif
+#if __has_include(<org/allbinary/media/audio/Sound.h>)
+#include <org/allbinary/media/audio/Sound.h>
+#endif
+
+        #endif
+    

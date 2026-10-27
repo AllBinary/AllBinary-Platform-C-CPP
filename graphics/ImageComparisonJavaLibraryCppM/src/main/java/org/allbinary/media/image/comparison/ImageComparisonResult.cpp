@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,41 +86,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageComparisonResult
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::vector<BufferedImage*> bufferedImages = std::vector<BufferedImage*>(2);
-
-    public: std::string name;
-
-    public: const bool isSameHeight= false;
-
-    public: const bool isSameWidth= false;
-
-    public: int32_t imageHeight;
-
-    public: int32_t imageWidth;
-
-    private: BasicArrayList* nonMatchingPixelVector;
-
-    private: int64_t frameOne;
-
-    private: int64_t frameTwo;
-
-    public: int32_t pixelsThatMatch= 0;
-
-    public: int32_t pixelsIgnored= 0;
-
-    private: int32_t tolerance= 0;
-
-    private: float matchingPercent =  -1;
-
-public: ImageComparisonResult(std::string name, BufferedImage* bufferedImage, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance){
+ImageComparisonResult::ImageComparisonResult(std::string name, BufferedImage* bufferedImage, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), bufferedImages(std::vector<BufferedImage*>(2)){
 this->name= name;
     
 this->nonMatchingPixelVector= new BasicArrayListD();
@@ -192,9 +169,9 @@ this->imageHeight= imageHeight;
     
 this->logUtil->putF("Images were not the same size? Most likely a resolution change.", this, this->commonStrings->CONSTRUCTOR);
     
-this->logUtil->putF("1: " +imageUtil->toString(bufferedImage), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("1: ") +JavaString::valueOf(imageUtil->toString(bufferedImage)), this, this->commonStrings->CONSTRUCTOR);
     
-this->logUtil->putF("2: " +imageUtil->toString(bufferedImage2), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("2: ") +JavaString::valueOf(imageUtil->toString(bufferedImage2)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -202,7 +179,7 @@ this->logUtil->putF("2: " +imageUtil->toString(bufferedImage2), this, this->comm
 }
 
 
-    public: float getMatchingPercent(){
+    auto ImageComparisonResult::getMatchingPercent() -> float{
 
                         if(this->matchingPercent ==  -1)
                         
@@ -221,13 +198,13 @@ this->logUtil->putF("2: " +imageUtil->toString(bufferedImage2), this, this->comm
 }
 
 
-    public: void add(PixelDelta* pixel){
+    auto ImageComparisonResult::add(PixelDelta* pixel) -> void{
 this->nonMatchingPixelVector->add(pixel);
     
 }
 
 
-    public: BasicArrayList* getNonMatchingPixelVector(){
+    auto ImageComparisonResult::getNonMatchingPixelVector() -> BasicArrayList*{
 
 
 
@@ -237,7 +214,7 @@ this->nonMatchingPixelVector->add(pixel);
 }
 
 
-    public: std::string toString(){
+    auto ImageComparisonResult::toString() -> std::string{
 
 
 
@@ -247,7 +224,7 @@ this->nonMatchingPixelVector->add(pixel);
 }
 
 
-    public: std::vector<BufferedImage*> getBufferedImages(){
+    auto ImageComparisonResult::getBufferedImages() -> std::vector<BufferedImage*>{
 
 
 
@@ -257,7 +234,7 @@ this->nonMatchingPixelVector->add(pixel);
 }
 
 
-    public: int32_t getTolerance(){
+    auto ImageComparisonResult::getTolerance() -> int32_t{
 
 
 
@@ -267,13 +244,13 @@ this->nonMatchingPixelVector->add(pixel);
 }
 
 
-    private: void setTolerance(int32_t tolerance){
+    auto ImageComparisonResult::setTolerance(int32_t tolerance) -> void{
 this->tolerance= tolerance;
     
 }
 
 
-    public: int64_t getFrameOne(){
+    auto ImageComparisonResult::getFrameOne() -> int64_t{
 
 
 
@@ -283,7 +260,7 @@ this->tolerance= tolerance;
 }
 
 
-    public: int64_t getFrameTwo(){
+    auto ImageComparisonResult::getFrameTwo() -> int64_t{
 
 
 
@@ -293,7 +270,6 @@ this->tolerance= tolerance;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_CPP

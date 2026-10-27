@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_ORDER_ADJUST_ADJUSTORDERSTOREADMINUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_ORDER_ADJUST_ADJUSTORDERSTOREADMINUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/admin/store/order/adjust/AdjustOrderStoreAdminUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/admin/store/order/adjust/AdjustOrderStoreAdminUser.h"
 
-class AdjustOrderStoreAdminUserFactory
-            : public Object
-        , public UserFactoryInterface {
 
-public: AdjustOrderStoreAdminUserFactory(){
+AdjustOrderStoreAdminUserFactory::AdjustOrderStoreAdminUserFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(){
+    auto AdjustOrderStoreAdminUserFactory::getInstance() -> UserInterface*{
 
 
 
@@ -79,7 +86,7 @@ public: AdjustOrderStoreAdminUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto AdjustOrderStoreAdminUserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
 
 
@@ -89,7 +96,6 @@ public: AdjustOrderStoreAdminUserFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_ORDER_ADJUST_ADJUSTORDERSTOREADMINUSERFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALPICKEDUPLAYERINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALPICKEDUPLAYERINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/health/HealPickedUpLayerInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,31 +82,17 @@
 #include "org/allbinary/game/ag/layer/pickup/health/HealLayerFactory.h"
 #include "org/allbinary/game/ag/layer/pickup/health/HealthResources.h"
 
-class HealPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
-
-    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+PickedUpLayerInterfaceFactoryInterface* HealPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(){
+    auto HealPickedUpLayerInterfaceFactory::init() -> void{
 HealPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= new HealPickedUpLayerInterfaceFactory();
     
 }
 
 
-    public: static PickedUpLayerInterfaceFactoryInterface* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return HealPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
-    
-}
-
-
-    private: HealLayerCircularStaticPool* pool = new HealLayerCircularStaticPool(new HealLayerFactory(), 1);
-
-private: HealPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->HEAL, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(HealthResources::getInstance()->RESOURCE)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(HealthResources::getInstance()->RESOURCE)->getInstance(0)){
+HealPickedUpLayerInterfaceFactory::HealPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->HEAL, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(HealthResources::getInstance()->RESOURCE)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(HealthResources::getInstance()->RESOURCE)->getInstance(0)), pool(new HealLayerCircularStaticPool(new HealLayerFactory(), 1)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,7 +102,7 @@ private: HealPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(Pic
 }
 
 
-    public: int32_t getTotal(){
+    auto HealPickedUpLayerInterfaceFactory::getTotal() -> int32_t{
 
 
 
@@ -116,15 +112,24 @@ private: HealPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(Pic
 }
 
 
+    auto HealPickedUpLayerInterfaceFactory::getInstance() -> PickedUpLayerInterfaceFactoryInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return HealPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
+    
+}
+
+
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayer* sourceLayerInterface){
+    auto HealPickedUpLayerInterfaceFactory::process(AllBinaryLayer* sourceLayerInterface) -> void{
 this->pool->visit(sourceLayerInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALPICKEDUPLAYERINTERFACEFACTORY_CPP

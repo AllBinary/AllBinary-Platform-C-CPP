@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/BasicGeographicMapUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -57,27 +67,25 @@
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
-class BasicGeographicMapUtil
-            : public Object
-         {
 
-    private: static BasicGeographicMapUtil* instance() { static std::unique_ptr<BasicGeographicMapUtil> value(new BasicGeographicMapUtil()); return value.get(); }
+BasicGeographicMapUtil::BasicGeographicMapUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto BasicGeographicMapUtil::instance_owner() -> BasicGeographicMapUtil* { static std::unique_ptr<BasicGeographicMapUtil> value(new BasicGeographicMapUtil()); return value.get(); }
+BasicGeographicMapUtil* BasicGeographicMapUtil::instance = BasicGeographicMapUtil::instance_owner();
 
-    public: static BasicGeographicMapUtil* getInstance(){
+    auto BasicGeographicMapUtil::getInstance() -> BasicGeographicMapUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGeographicMapUtil::instance();
+                        return BasicGeographicMapUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: int32_t getBorderingRow(int32_t direction, GeographicMapCellPosition* oldGeographicMapCellPosition){
+    auto BasicGeographicMapUtil::getBorderingRow(int32_t direction, GeographicMapCellPosition* oldGeographicMapCellPosition) -> int32_t{
 
     int32_t LOCATION_CHANGE = 1;;
     
@@ -116,7 +124,7 @@ case 3: {
 default: {
 
 
-                            throw new Exception("Only Four Directions");
+                            throw Exception("Only Four Directions");
                     
 }
 
@@ -128,7 +136,7 @@ default: {
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getBorderingColumn(int32_t direction, GeographicMapCellPosition* oldGeographicMapCellPosition){
+    auto BasicGeographicMapUtil::getBorderingColumn(int32_t direction, GeographicMapCellPosition* oldGeographicMapCellPosition) -> int32_t{
 
     int32_t LOCATION_CHANGE = 1;;
     
@@ -167,7 +175,7 @@ case 3: {
 default: {
 
 
-                            throw new Exception("Only Four Directions");
+                            throw Exception("Only Four Directions");
                     
 }
 
@@ -179,7 +187,7 @@ default: {
 
                 //@Throws(Exception.constructor)
             
-    public: bool isSameCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition){
+    auto BasicGeographicMapUtil::isSameCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition) -> bool{
 
     int32_t fromColumn = fromGeographicMapCellPosition->getColumn();;
     
@@ -218,7 +226,7 @@ default: {
 }
 
 
-    public: std::vector<Layer*> createAllBinaryTiledLayerArray(std::vector<BasicGeographicMap*> geographicMapInterfaceArray){
+    auto BasicGeographicMapUtil::createAllBinaryTiledLayerArray(std::vector<BasicGeographicMap*> geographicMapInterfaceArray) -> std::vector<Layer*>{
 
     std::vector<Layer*> tiledLayerArray = std::vector<Layer*>(geographicMapInterfaceArray.length);;
     
@@ -231,7 +239,7 @@ default: {
 }
 
 
-    public: std::vector<Layer*> getAllBinaryTiledLayerArray(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<Layer*> tiledLayerArray, int32_t startIndex){
+    auto BasicGeographicMapUtil::getAllBinaryTiledLayerArray(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<Layer*> tiledLayerArray, int32_t startIndex) -> std::vector<Layer*>{
 
     BasicGeographicMap* geographicMapInterface;;
     
@@ -263,7 +271,7 @@ tiledLayerArray[count++]= geographicMapInterface->getAllBinaryTiledLayer();
 }
 
 
-    public: void move(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t dx, int32_t dy){
+    auto BasicGeographicMapUtil::move(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t dx, int32_t dy) -> void{
 
     BasicGeographicMap* geographicMapInterface;;
     
@@ -286,7 +294,7 @@ geographicMapInterface->getAllBinaryTiledLayer()->moveDXY(dx, dy);
 }
 
 
-    public: void setPosition(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y){
+    auto BasicGeographicMapUtil::setPosition(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y) -> void{
 
     BasicGeographicMap* geographicMapInterface;;
     
@@ -309,7 +317,6 @@ geographicMapInterface->getAllBinaryTiledLayer()->setPosition(x, y, geographicMa
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPUTIL_CPP

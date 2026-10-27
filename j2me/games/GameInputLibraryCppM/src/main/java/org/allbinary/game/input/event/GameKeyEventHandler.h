@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class EventListenerInterface;
+class CommonStrings;
 
 
 
@@ -56,27 +55,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
-#include "org/allbinary/game/input/event/UpGameKeyEventHandler.h"
-#include "org/allbinary/game/input/event/DownGameKeyEventHandler.h"
+        class PressGameKeyEventHandler;
+class UpGameKeyEventHandler;
+class DownGameKeyEventHandler;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyEventHandler
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameKeyEventHandler* instance() { static std::unique_ptr<GameKeyEventHandler> value(new GameKeyEventHandler()); return value.get(); }
+    private: static GameKeyEventHandler* instance_owner();
+    private: static GameKeyEventHandler* instance;
 
     public: static GameKeyEventHandler* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+            
+    public: GameKeyEventHandler();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: PressGameKeyEventHandler* pressGameKeyEventHandler = PressGameKeyEventHandler::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: PressGameKeyEventHandler* pressGameKeyEventHandler;
 
-    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler;
+
+    private: DownGameKeyEventHandler* downGameKeyEventHandler;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void removeAllListeners();
@@ -93,3 +101,28 @@ class GameKeyEventHandler
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/input/event/PressGameKeyEventHandler.h")
+#include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventHandler.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventHandler.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/DownGameKeyEventHandler.h")
+#include "org/allbinary/game/input/event/DownGameKeyEventHandler.h"
+#endif
+
+        #endif
+    

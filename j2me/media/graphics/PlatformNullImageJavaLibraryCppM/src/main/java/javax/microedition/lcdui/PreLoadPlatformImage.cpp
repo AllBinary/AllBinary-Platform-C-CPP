@@ -18,6 +18,16 @@
 
 
 
+        #ifndef JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_CPP
+        #define JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "javax/microedition/lcdui/PreLoadPlatformImage.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "javax/microedition/lcdui/PlatformImage.h"
 //PlatformNullImageJavaLibrary
-class PreLoadPlatformImage: public PlatformImage {
 
-    private: static PreLoadPlatformImage* instance() { static std::unique_ptr<PreLoadPlatformImage> value(new PreLoadPlatformImage()); return value.get(); }
+PreLoadPlatformImage::PreLoadPlatformImage() {
+        }
+        auto PreLoadPlatformImage::instance_owner() -> PreLoadPlatformImage* { static std::unique_ptr<PreLoadPlatformImage> value(new PreLoadPlatformImage()); return value.get(); }
+PreLoadPlatformImage* PreLoadPlatformImage::instance = PreLoadPlatformImage::instance_owner();
 
-    public: static PreLoadPlatformImage* getInstance(){
+    auto PreLoadPlatformImage::getInstance() -> PreLoadPlatformImage*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PreLoadPlatformImage::instance();
+                        return PreLoadPlatformImage::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_CPP

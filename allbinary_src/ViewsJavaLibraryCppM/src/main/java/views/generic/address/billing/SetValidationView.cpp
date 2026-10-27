@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_BILLING_SETVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_BILLING_SETVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/billing/SetValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/billing/BillingAddressView.h"
 
-class SetValidationView: public BillingAddressView, public ValidationComponentInterface {
 
-public: SetValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
+SetValidationView::SetValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +82,7 @@ public: SetValidationView(TransformInfoInterface* transformInfoInterface) : Bill
 }
 
 
-    public: bool isValid(){
+    auto SetValidationView::isValid() -> bool{
 
 
 
@@ -83,7 +92,7 @@ public: SetValidationView(TransformInfoInterface* transformInfoInterface) : Bill
 }
 
 
-    public: std::string validationInfo(){
+    auto SetValidationView::validationInfo() -> std::string{
 
 
 
@@ -93,7 +102,7 @@ public: SetValidationView(TransformInfoInterface* transformInfoInterface) : Bill
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto SetValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -103,7 +112,7 @@ public: SetValidationView(TransformInfoInterface* transformInfoInterface) : Bill
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto SetValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -113,7 +122,6 @@ public: SetValidationView(TransformInfoInterface* transformInfoInterface) : Bill
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_BILLING_SETVALIDATIONVIEW_CPP

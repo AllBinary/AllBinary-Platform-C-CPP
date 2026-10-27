@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_CPP
+        #define ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/MidletExitProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MidletExitProcessor: public Processor {
 
-    private: MIDlet* midlet;
-
-public: MidletExitProcessor(MIDlet* midlet){
+MidletExitProcessor::MidletExitProcessor(MIDlet* midlet){
 this->midlet= midlet;
     
 }
@@ -63,11 +70,10 @@ this->midlet= midlet;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto MidletExitProcessor::process() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_CPP

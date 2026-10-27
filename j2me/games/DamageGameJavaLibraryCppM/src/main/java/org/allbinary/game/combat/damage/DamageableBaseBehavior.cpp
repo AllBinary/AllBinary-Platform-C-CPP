@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/damage/DamageableBaseBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,23 +58,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/damage/DamageableInterface.h"
 
-class DamageableBaseBehavior
-            : public Object
-        , public DamageableInterface {
 
-    private: static DamageableBaseBehavior* instance() { static std::unique_ptr<DamageableBaseBehavior> value(new DamageableBaseBehavior()); return value.get(); }
+DamageableBaseBehavior::DamageableBaseBehavior() {
+        }
+        auto DamageableBaseBehavior::instance_owner() -> DamageableBaseBehavior* { static std::unique_ptr<DamageableBaseBehavior> value(new DamageableBaseBehavior()); return value.get(); }
+DamageableBaseBehavior* DamageableBaseBehavior::instance = DamageableBaseBehavior::instance_owner();
 
-    public: static DamageableBaseBehavior* getInstance(){
+    auto DamageableBaseBehavior::getInstance() -> DamageableBaseBehavior*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageableBaseBehavior::instance();
+                        return DamageableBaseBehavior::instance;
     
 }
 
 
-    public: std::string getName(){
+    auto DamageableBaseBehavior::getName() -> std::string{
 
 
 
@@ -76,13 +86,13 @@ class DamageableBaseBehavior
 
                 //@Throws(Exception.constructor)
             
-    public: void damage(int32_t damage, int32_t damageType){
+    auto DamageableBaseBehavior::damage(int32_t damage, int32_t damageType) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDamage(int32_t damageType){
+    auto DamageableBaseBehavior::getDamage(int32_t damageType) -> int32_t{
 
 
 
@@ -92,7 +102,6 @@ class DamageableBaseBehavior
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_CPP

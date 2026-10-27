@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL5GAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL5GAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/Special5GameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
 #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
-class Special5GameInputProcessor: public SpecialGameInputProcessor {
 
-public: Special5GameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
+Special5GameInputProcessor::Special5GameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: Special5GameInputProcessor(CollidableDestroyableDamageableLayer* collida
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->collidableDestroyableDamageableLayer.special5(allbinaryLayerManager, gameKeyEvent);
+    auto Special5GameInputProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->collidableDestroyableDamageableLayer->special5(allbinaryLayerManager, gameKeyEvent);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL5GAMEINPUTPROCESSOR_CPP

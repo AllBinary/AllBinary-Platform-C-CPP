@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCONTEXT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCONTEXT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpContext.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,11 +83,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/TransformInfoHttp.h"
 
-class TransformInfoHttpContext: public TransformInfoHttp {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TransformInfoHttpContext(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(databaseHashMap, propertiesHashMap, pageContext){
+TransformInfoHttpContext::TransformInfoHttpContext(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(databaseHashMap, propertiesHashMap, pageContext), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,7 +92,7 @@ public: TransformInfoHttpContext(HashMap<Object*, Object*>* databaseHashMap, Has
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -99,7 +106,7 @@ stringBuffer->append("\nProperties HashMap: ");
     
 stringBuffer->append(propertiesHashMap->toString());
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -109,7 +116,7 @@ this->setStoreName(StringUtil::getInstance()->EMPTY_STRING);
 }
 
 
-public: TransformInfoHttpContext(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(propertiesHashMap, pageContext){
+TransformInfoHttpContext::TransformInfoHttpContext(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(propertiesHashMap, pageContext), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -117,10 +124,10 @@ public: TransformInfoHttpContext(HashMap<Object*, Object*>* propertiesHashMap, P
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -132,7 +139,7 @@ this->setStoreName(StringUtil::getInstance()->EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    private: std::string getPath(){
+    auto TransformInfoHttpContext::getPath() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -157,7 +164,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getTemplateFilePath(){
+    auto TransformInfoHttpContext::getTemplateFilePath() -> AbPath*{
 
 
 
@@ -169,7 +176,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getObjectConfigFilePath(){
+    auto TransformInfoHttpContext::getObjectConfigFilePath() -> AbPath*{
 
 
 
@@ -181,7 +188,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getDataFilePath(){
+    auto TransformInfoHttpContext::getDataFilePath() -> AbPath*{
 
 
 
@@ -191,7 +198,6 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCONTEXT_CPP

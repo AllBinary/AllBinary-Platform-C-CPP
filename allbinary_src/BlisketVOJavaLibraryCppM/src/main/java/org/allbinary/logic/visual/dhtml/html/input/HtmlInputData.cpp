@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,44 +57,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlInputData
-            : public Object
-         {
 
-    private: static HtmlInputData* instance() { static std::unique_ptr<HtmlInputData> value(new HtmlInputData()); return value.get(); }
+HtmlInputData::HtmlInputData() : TYPES(
+                                                        {
+                                                            this->TEXT,this->RADIO,this->CHECKBOX,this->HIDDEN,this->IMAGE,this->PASSWORD,this->RADIO,this->RESET,this->SUBMIT
+                                                        }) {
+        }
+        auto HtmlInputData::instance_owner() -> HtmlInputData* { static std::unique_ptr<HtmlInputData> value(new HtmlInputData()); return value.get(); }
+HtmlInputData* HtmlInputData::instance = HtmlInputData::instance_owner();
 
-    public: static HtmlInputData* getInstance(){
+    auto HtmlInputData::getInstance() -> HtmlInputData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlInputData::instance();
+                        return HtmlInputData::instance;
     
 }
 
 
-    public: const std::string TEXT = "text";
 
-    public: const std::string RADIO = "radio";
 
-    public: const std::string CHECKBOX = "checkbox";
-
-    public: const std::string HIDDEN = "hidden";
-
-    public: const std::string IMAGE = "image";
-
-    public: const std::string PASSWORD = "password";
-
-    public: const std::string RESET = "reset";
-
-    public: const std::string SUBMIT = "submit";
-
-    public: const std::vector<std::string> TYPES = 
-                                                        {
-                                                            this->TEXT,this->RADIO,this->CHECKBOX,this->HIDDEN,this->IMAGE,this->PASSWORD,this->RADIO,this->RESET,this->SUBMIT
-                                                        };
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_CPP

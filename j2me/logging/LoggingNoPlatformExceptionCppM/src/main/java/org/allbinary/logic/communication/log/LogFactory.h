@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class NullUtil;
+class StringUtil;
 
 
 
@@ -55,13 +56,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/Log.h"
-//NoPlatform
-// class LogFactory
-            : public Object
+        class Log;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //NoPlatform
+class LogFactory
+            : public virtual Object
          {
 
-    public: static Log* LOG() { static std::unique_ptr<Log> value(new Log(StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT, StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
+    public: static inline Log* LOG;
 
     public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
@@ -73,3 +78,19 @@
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/log/Log.h")
+#include "org/allbinary/logic/communication/log/Log.h"
+#endif
+
+        #endif
+    

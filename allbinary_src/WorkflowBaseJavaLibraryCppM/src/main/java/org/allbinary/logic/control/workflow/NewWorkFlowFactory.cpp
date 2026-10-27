@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_NEWWORKFLOWFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_NEWWORKFLOWFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/NewWorkFlowFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,31 +90,26 @@
         #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
 #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
-class NewWorkFlowFactory
-            : public Object
-         {
+auto NewWorkFlowFactory::instance_owner() -> NewWorkFlowFactory* { static std::unique_ptr<NewWorkFlowFactory> value(new NewWorkFlowFactory()); return value.get(); }
+NewWorkFlowFactory* NewWorkFlowFactory::instance = NewWorkFlowFactory::instance_owner();
 
-    private: static NewWorkFlowFactory* instance() { static std::unique_ptr<NewWorkFlowFactory> value(new NewWorkFlowFactory()); return value.get(); }
-
-    public: static NewWorkFlowFactory* getInstance(){
+    auto NewWorkFlowFactory::getInstance() -> NewWorkFlowFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NewWorkFlowFactory::instance();
+                        return NewWorkFlowFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: NewWorkFlowFactory(){
+NewWorkFlowFactory::NewWorkFlowFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto NewWorkFlowFactory::getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> WorkFlowInterface*{
 
         try {
             
@@ -138,7 +143,7 @@ params[1]= pageContext;
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -160,7 +165,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -183,7 +188,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, std::string className){
+    auto NewWorkFlowFactory::getInstance(AbeClientInformationInterface* abeClientInformation, std::string className) -> WorkFlowInterface*{
 
         try {
             
@@ -215,7 +220,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HashMap)", &e);
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -237,7 +242,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -258,7 +263,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_NEWWORKFLOWFACTORY_CPP

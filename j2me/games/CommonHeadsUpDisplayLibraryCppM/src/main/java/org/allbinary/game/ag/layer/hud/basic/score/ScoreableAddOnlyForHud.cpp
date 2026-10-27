@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREABLEADDONLYFORHUD_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREABLEADDONLYFORHUD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/score/ScoreableAddOnlyForHud.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/hud/basic/score/ScoreHudWidget.h"
 
-class ScoreableAddOnlyForHud: public Scoreable {
 
-    private: ScoreHudWidget* scoreHudWidget;
-
-public: ScoreableAddOnlyForHud(ScoreHudWidget* scoreVectorGraphic) : Scoreable(0){
+ScoreableAddOnlyForHud::ScoreableAddOnlyForHud(ScoreHudWidget* scoreVectorGraphic) : Scoreable(0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,19 +72,19 @@ this->getScoreHudWidget()->set(0);
 }
 
 
-    public: void removePoints(int32_t points){
+    auto ScoreableAddOnlyForHud::removePoints(int32_t points) -> void{
 }
 
 
-    public: void addPoints(int32_t points){
-super.addPoints(points);
+    auto ScoreableAddOnlyForHud::addPoints(int32_t points) -> void{
+Scoreable::addPoints(points);
     
 this->getScoreHudWidget()->add(points);
     
 }
 
 
-    public: ScoreHudWidget* getScoreHudWidget(){
+    auto ScoreableAddOnlyForHud::getScoreHudWidget() -> ScoreHudWidget*{
 
 
 
@@ -87,7 +94,6 @@ this->getScoreHudWidget()->add(points);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREABLEADDONLYFORHUD_CPP

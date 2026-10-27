@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -102,33 +112,9 @@
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
-class GeographicMapCellHistory
-            : public Object
-        , public UpdateMyFontInterface {
+std::vector<GeographicMapCellHistory*> GeographicMapCellHistory::NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = {};
 
-    public: static inline const std::vector<GeographicMapCellHistory*> NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = {};
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BooleanFactory* booleanFactory = BooleanFactory::getInstance();
-
-    private: BasicArrayList* list;
-
-    private: BasicArrayList* visitedList;
-
-    private: const std::string MISSED_INFO = "Missed";
-
-    private: Animation* animation = new TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance());
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: int32_t totalVisited= 0;
-
-    private: int32_t halfWidth = 0;
-
-    private: int32_t fontHeight = 0;
-
-public: GeographicMapCellHistory(){
+GeographicMapCellHistory::GeographicMapCellHistory() : logUtil(LogUtil::getInstance()), booleanFactory(BooleanFactory::getInstance()), animation(new TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance())), myFontProcessor(new UpdateMyFontProcessor(this)), RED(BasicColorFactory::getInstance()->RED.intValue()){
 this->list= new BasicArrayListD();
     
 this->visitedList= new BasicArrayListD();
@@ -138,7 +124,7 @@ this->init();
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto GeographicMapCellHistory::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -149,7 +135,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: int32_t getTotalVisited(){
+    auto GeographicMapCellHistory::getTotalVisited() -> int32_t{
 
 
 
@@ -159,7 +145,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: int32_t getTotalNotVisited(){
+    auto GeographicMapCellHistory::getTotalNotVisited() -> int32_t{
 
 
 
@@ -169,7 +155,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: int32_t getSize(){
+    auto GeographicMapCellHistory::getSize() -> int32_t{
 
 
 
@@ -179,7 +165,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void trackAll(BasicArrayList* list){
+    auto GeographicMapCellHistory::trackAll(BasicArrayList* list) -> void{
 
     int32_t size = list->size();;
     
@@ -206,7 +192,7 @@ this->track(geographicMapCellPosition);
 }
 
 
-    public: void track(GeographicMapCellPosition* geographicMapCellPosition){
+    auto GeographicMapCellHistory::track(GeographicMapCellPosition* geographicMapCellPosition) -> void{
 
                         if(!this->list->contains(geographicMapCellPosition))
                         
@@ -221,7 +207,7 @@ this->visitedList->add(this->booleanFactory->FALSE);
 }
 
 
-    public: BasicArrayList* getTracked(){
+    auto GeographicMapCellHistory::getTracked() -> BasicArrayList*{
 
 
 
@@ -231,7 +217,7 @@ this->visitedList->add(this->booleanFactory->FALSE);
 }
 
 
-    public: BasicArrayList* getVisited(){
+    auto GeographicMapCellHistory::getVisited() -> BasicArrayList*{
 
 
 
@@ -241,7 +227,7 @@ this->visitedList->add(this->booleanFactory->FALSE);
 }
 
 
-    public: GeographicMapCellPosition* getAfterIfNotLast(GeographicMapCellPosition* geographicMapCellPosition){
+    auto GeographicMapCellHistory::getAfterIfNotLast(GeographicMapCellPosition* geographicMapCellPosition) -> GeographicMapCellPosition*{
 
     BasicArrayList* localList = this->list;;
     
@@ -270,7 +256,7 @@ this->visitedList->add(this->booleanFactory->FALSE);
 }
 
 
-    public: GeographicMapCellPosition* getFirstUnvisited(){
+    auto GeographicMapCellHistory::getFirstUnvisited() -> GeographicMapCellPosition*{
 
     BasicArrayList* localList = this->list;;
     
@@ -316,7 +302,7 @@ value= this->visitedList->get(index);
 }
 
 
-    public: int32_t getFirstUnvisitedIndex(){
+    auto GeographicMapCellHistory::getFirstUnvisitedIndex() -> int32_t{
 
     BasicArrayList* localVisitedList = this->visitedList;;
     
@@ -359,7 +345,7 @@ value= this->visitedList->get(index);
 }
 
 
-    public: BasicArrayList* getInPathButNotTracked(BasicArrayList* pathList){
+    auto GeographicMapCellHistory::getInPathButNotTracked(BasicArrayList* pathList) -> BasicArrayList*{
 
     BasicArrayList* inPathButNotTrackedList = new BasicArrayListD();;
     
@@ -401,7 +387,7 @@ geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(pathList->ge
 }
 
 
-    public: bool isVisited(GeographicMapCellPosition* geographicMapCellPosition){
+    auto GeographicMapCellHistory::isVisited(GeographicMapCellPosition* geographicMapCellPosition) -> bool{
 
     int32_t index = this->list->indexOf(geographicMapCellPosition);;
     
@@ -441,7 +427,7 @@ geographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(pathList->ge
 }
 
 
-    public: bool visit(GeographicMapCellPosition* geographicMapCellPosition){
+    auto GeographicMapCellHistory::visit(GeographicMapCellPosition* geographicMapCellPosition) -> bool{
 
     int32_t index = this->list->indexOf(geographicMapCellPosition);;
     
@@ -492,7 +478,7 @@ this->totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isAllVisited(){
+    auto GeographicMapCellHistory::isAllVisited() -> bool{
 
                         if(this->totalVisited == this->getSize() -1)
                         
@@ -521,7 +507,7 @@ this->totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isAllVisited2(){
+    auto GeographicMapCellHistory::isAllVisited2() -> bool{
 
                         if(this->totalVisited == this->getSize())
                         
@@ -550,7 +536,7 @@ this->totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isPortionVisited(BasicDecimal* basicDecimal){
+    auto GeographicMapCellHistory::isPortionVisited(BasicDecimal* basicDecimal) -> bool{
 
     int32_t size = this->getSize();;
     
@@ -588,7 +574,7 @@ this->totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public: void reset(){
+    auto GeographicMapCellHistory::reset() -> void{
 
     BasicArrayList* localVisitedList = this->visitedList;;
     
@@ -614,7 +600,7 @@ this->totalVisited= 0;
 }
 
 
-    private: void paintNotVisitedRelativeToPoint(Graphics* graphics, AllBinaryTiledLayer* tiledLayer, GPoint* point){
+    auto GeographicMapCellHistory::paintNotVisitedRelativeToPoint(Graphics* graphics, AllBinaryTiledLayer* tiledLayer, GPoint* point) -> void{
 
     int32_t x = point->getX() -tiledLayer->getXP();;
     
@@ -638,9 +624,7 @@ this->animation->paintXY(graphics, x +this->halfWidth, y +(height));
 }
 
 
-    private: const int32_t RED = BasicColorFactory::getInstance()->RED.intValue();
-
-    public: void paintNotVisited(Graphics* graphics, BasicGeographicMap* geographicMapInterface){
+    auto GeographicMapCellHistory::paintNotVisited(Graphics* graphics, BasicGeographicMap* geographicMapInterface) -> void{
 
         try {
             this->myFontProcessor->process(graphics);
@@ -695,7 +679,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "paintNotVisited", &e);
 }
 
 
-    public: void init(){
+    auto GeographicMapCellHistory::init() -> void{
 this->list->clear();
     
 this->visitedList->clear();
@@ -705,7 +689,6 @@ this->totalVisited= 0;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORY_CPP

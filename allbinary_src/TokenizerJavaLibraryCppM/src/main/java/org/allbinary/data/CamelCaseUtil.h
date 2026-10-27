@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_CAMELCASEUTIL_H
         #define ORG_ALLBINARY_DATA_CAMELCASEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,27 +38,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/logic/string/tokens/Tokenizer.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class StringMaker;
+class StringUtil;
+class StringValidationUtil;
+class Tokenizer;
+class CommonSeps;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -73,15 +64,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CamelCaseUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static CamelCaseUtil* instance() { static std::unique_ptr<CamelCaseUtil> value(new CamelCaseUtil()); return value.get(); }
+    private: static CamelCaseUtil* instance_owner();
+    private: static CamelCaseUtil* instance;
 
     public: static CamelCaseUtil* getInstance();
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+
+            
+    public: CamelCaseUtil();
+        
+    private: CommonSeps* commonSeps;
 
                 //@Throws(Exception.constructor)
             
@@ -93,3 +93,31 @@ class CamelCaseUtil
 
 
         #endif //ORG_ALLBINARY_DATA_CAMELCASEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_CAMELCASEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_CAMELCASEUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/tokens/Tokenizer.h>)
+#include <org/allbinary/logic/string/tokens/Tokenizer.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

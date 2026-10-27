@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKDROPCELLPOSITIONGENERATOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKDROPCELLPOSITIONGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackDropCellPositionGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -102,25 +112,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTrackDropCellPositionGenerator: public BaseDropCellPositionGenerator {
 
-    protected: BasicArrayList* list = new BasicArrayListD();
-
-    private: TimeDelayHelper* timeDelayHelper;
-
-    private: const int32_t STRAIGHTAWAY = 4;
-
-    protected: RaceTrackGeographicMapInterface* raceTrackGeographicMap = NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP;
-
-    protected: GeographicMapCellTypeFactory* raceTrackGeographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
-
-protected: RaceTrackDropCellPositionGenerator(){
+RaceTrackDropCellPositionGenerator::RaceTrackDropCellPositionGenerator() : list(new BasicArrayListD()), raceTrackGeographicMap(NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP), raceTrackGeographicMapCellTypeFactory(GeographicMapCellTypeFactory::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()){
 this->timeDelayHelper= new TimeDelayHelper(10000);
     
 }
 
 
-    private: void init(){
+    auto RaceTrackDropCellPositionGenerator::init() -> void{
 this->list->clear();
     
 }
@@ -128,7 +127,7 @@ this->list->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDropAllowedAt(GeographicMapCellPosition* geographicMapCellPosition){
+    auto RaceTrackDropCellPositionGenerator::isDropAllowedAt(GeographicMapCellPosition* geographicMapCellPosition) -> bool{
 
     RaceTrackGeographicMapCellType* raceTrackGeographicMapCellType = dynamic_cast<RaceTrackGeographicMapCellType*>(this->raceTrackGeographicMap->getCellTypeAt(geographicMapCellPosition));;
     
@@ -159,7 +158,7 @@ this->list->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface){
+    auto RaceTrackDropCellPositionGenerator::update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface) -> void{
 this->init();
     
 
@@ -250,11 +249,9 @@ this->drop(allBinaryGameLayerManager, index);
 }
 
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto RaceTrackDropCellPositionGenerator::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->timeDelayHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
@@ -272,16 +269,15 @@ this->drop(allBinaryLayerManager, index);
 
                 //@Throws(Exception.constructor)
             
-    protected: void drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index){
+    auto RaceTrackDropCellPositionGenerator::drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index) -> void{
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKDROPCELLPOSITIONGENERATOR_CPP

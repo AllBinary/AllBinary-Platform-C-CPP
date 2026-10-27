@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROIDUTIL_CPP
+        #define ORG_ALLBINARY_ANDROIDUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/AndroidUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,15 +63,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AndroidUtil
-            : public Object
-         {
 
-    public: static Activity* NULL_ACTIVITY() { static std::unique_ptr<Activity> value(new Activity()); return value.get(); }
+AndroidUtil::AndroidUtil() {
+        }
+        auto AndroidUtil::NULL_ACTIVITY_owner() -> Activity* { static std::unique_ptr<Activity> value(new Activity()); return value.get(); }
+Activity* AndroidUtil::NULL_ACTIVITY = AndroidUtil::NULL_ACTIVITY_owner();
 
-    private: static inline const int32_t version = Integer.parseInt(Build::VERSION.SDK);
-
-    public: static bool isMemoryRestrictive(){
+    auto AndroidUtil::isMemoryRestrictive() -> bool{
 
                         if(AndroidUtil::version < 30)
                         
@@ -84,7 +92,7 @@ class AndroidUtil
 }
 
 
-    public: static bool isAndroid(){
+    auto AndroidUtil::isAndroid() -> bool{
 
 
 
@@ -94,7 +102,6 @@ class AndroidUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROIDUTIL_CPP

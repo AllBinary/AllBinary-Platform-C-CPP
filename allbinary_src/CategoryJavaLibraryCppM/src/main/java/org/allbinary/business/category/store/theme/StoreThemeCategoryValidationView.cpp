@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVALIDATIONVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,9 +66,8 @@
         #include "org/allbinary/business/category/store/theme/StoreThemeCategoryView.h"
 #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 
-class StoreThemeCategoryValidationView: public StoreThemeCategoryView, public ValidationInterface {
 
-public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryInterface) : StoreThemeCategoryView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
+StoreThemeCategoryValidationView::StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryInterface) : StoreThemeCategoryView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +79,7 @@ public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryIn
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto StoreThemeCategoryValidationView::isValid() -> bool{
 
 
 
@@ -82,7 +91,7 @@ public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryIn
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toValidationInfoDoc(){
+    auto StoreThemeCategoryValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -94,7 +103,7 @@ public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryIn
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toValidationInfoNode(Document* document){
+    auto StoreThemeCategoryValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -106,7 +115,7 @@ public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryIn
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto StoreThemeCategoryValidationView::validationInfo() -> std::string{
 
 
 
@@ -116,7 +125,6 @@ public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface* categoryIn
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVALIDATIONVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERIMMEDIATEAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERIMMEDIATEAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/ScrollOverImmediateAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,9 +70,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScrollOverImmediateAI: public BasicAI {
 
-public: ScrollOverImmediateAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+ScrollOverImmediateAI::ScrollOverImmediateAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +83,7 @@ public: ScrollOverImmediateAI(AllBinaryLayer* ownerLayerInterface, GameInput* ga
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto ScrollOverImmediateAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -138,7 +147,6 @@ public: ScrollOverImmediateAI(AllBinaryLayer* ownerLayerInterface, GameInput* ga
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERIMMEDIATEAI_CPP

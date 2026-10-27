@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,42 +36,18 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
-
-      
-#include <org/allbinary/bounds/TopULayerBounds.h>
-
-      
+class ArtificialIntelligenceInterface;
+class TopULayerBounds;
 #include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/game/physics/velocity/VelocityInterface.h>
-
-      
-#include <org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class GameInput;
+class VelocityInterface;
+class VelocityInterfaceCompositeInterface;
+class GPoint;
+class PointFactory;
+class Rectangle;
+class DisplayInfoSingleton;
+class AllBinaryLayer;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -85,13 +66,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/ai/BoundBounceAI.h"
-#include "org/allbinary/game/ag/ai/ReverseVelocityBoundsVisitor.h"
+        class BoundBounceAI;
+class ReverseVelocityBoundsVisitor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TopUBoundBounceAIFactory
-            : public Object
+            : public virtual Object
         , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+
+            
+    public: TopUBoundBounceAIFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
@@ -102,3 +91,52 @@ class TopUBoundBounceAIFactory
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/ai/ArtificialIntelligenceInterface.h>)
+#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
+#endif
+#if __has_include(<org/allbinary/bounds/TopULayerBounds.h>)
+#include <org/allbinary/bounds/TopULayerBounds.h>
+#endif
+#if __has_include(<org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>)
+#include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/VelocityInterface.h>)
+#include <org/allbinary/game/physics/velocity/VelocityInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/game/ag/ai/BoundBounceAI.h")
+#include "org/allbinary/game/ag/ai/BoundBounceAI.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/ReverseVelocityBoundsVisitor.h")
+#include "org/allbinary/game/ag/ai/ReverseVelocityBoundsVisitor.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameCanvasInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,23 +103,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class GameCanvasInputProcessor: public InputProcessor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AllBinaryGameCanvas* allBinaryGameCanvas;
-
-    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
-
-    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
-
-    private: DownKeyEventHandler* downKeyEventHandler = DownKeyEventHandler::getInstance();
-
-    private: SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
-
-    private: InputToGameKeyMapping* inputToGameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping();
-
-public: GameCanvasInputProcessor(AllBinaryGameCanvas* allBinaryGameCanvas){
+GameCanvasInputProcessor::GameCanvasInputProcessor(AllBinaryGameCanvas* allBinaryGameCanvas) : logUtil(LogUtil::getInstance()), downGameKeyEventHandler(DownGameKeyEventHandler::getInstance()), upGameKeyEventHandler(UpGameKeyEventHandler::getInstance()), downKeyEventHandler(DownKeyEventHandler::getInstance()), smallIntegerSingletonFactory(SmallIntegerSingletonFactory::getInstance()), inputToGameKeyMapping(PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()), NONE(GameKeyFactory::getInstance()->NONE), gameKeyEventFactory(GameKeyEventFactory::getInstance()){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 this->inputToGameKeyMapping->init(this->allBinaryGameCanvas);
@@ -117,11 +112,7 @@ this->inputToGameKeyMapping->init(this->allBinaryGameCanvas);
 }
 
 
-    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
-
-    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
-
-    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+    auto GameCanvasInputProcessor::keyPressedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 
         try {
             
@@ -142,7 +133,7 @@ this->downGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKey
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings.NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings.ADD_KEY_EVENT);
+                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
     
 
                         }
@@ -158,20 +149,20 @@ this->downKeyEventHandler->getInstanceForDevice(deviceId)->fireEventI(keyCodeAsI
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT, &e);
+this->logUtil->put("Key Event Error", this, this->gameInputStrings->ADD_KEY_EVENT, &e);
     
 }
 
 }
 
 
-    public: void keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId){
+    auto GameCanvasInputProcessor::keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId) -> void{
 this->removeGameKeyEvent(canvas, keyCode, deviceId, false);
     
 }
 
 
-    private: void removeGameKeyEvent(Canvas* canvas, int32_t keyCode, int32_t deviceId, bool repeated){
+    auto GameCanvasInputProcessor::removeGameKeyEvent(Canvas* canvas, int32_t keyCode, int32_t deviceId, bool repeated) -> void{
 
         try {
             
@@ -195,7 +186,7 @@ this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEv
                                     }
                                 
                         else {
-                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings.NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings.REMOVE_KEY_EVENT);
+                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->REMOVE_KEY_EVENT);
     
 
                         }
@@ -204,14 +195,13 @@ this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEv
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put("Key Event Error", this, this->gameInputStrings.REMOVE_KEY_EVENT, &e);
+this->logUtil->put("Key Event Error", this, this->gameInputStrings->REMOVE_KEY_EVENT, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASINPUTPROCESSOR_CPP

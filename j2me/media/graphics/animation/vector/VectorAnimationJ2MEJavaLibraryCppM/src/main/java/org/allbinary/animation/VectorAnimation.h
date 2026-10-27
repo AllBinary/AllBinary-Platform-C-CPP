@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
+class Graphics;
 
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class BasicColor;
+class NullUtil;
+class PrimitiveIntUtil;
+class CircularIndexUtil;
 
 
 
@@ -69,15 +62,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/VectorAnimationInterface.h"
-#include "org/allbinary/animation/AnimationBehavior.h"
+class AnimationBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface {
 
     public: static VectorAnimation* createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints;
 
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(0);
+    private: CircularIndexUtil* circularIndexUtil;
 
 public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
@@ -107,7 +104,7 @@ public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPo
 
     public: void previousFrame();
 
-    protected: void paintVectors(Graphics* graphics, int32_t x, int32_t y);
+    /*protected*/ public: void paintVectors(Graphics* graphics, int32_t x, int32_t y);
 
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
@@ -125,3 +122,35 @@ public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPo
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTORANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimationInterface.h")
+#include "org/allbinary/animation/VectorAnimationInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+
+        #endif
+    

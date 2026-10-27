@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -55,19 +56,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/data/tables/user/commerce/inventory/item/permissions/PermissionItemsEntity.h"
+        class PermissionItemsEntity;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PermissionItemsEntityFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PermissionItemsEntityFactory* instance() { static std::unique_ptr<PermissionItemsEntityFactory> value(new PermissionItemsEntityFactory()); return value.get(); }
+    private: static PermissionItemsEntityFactory* instance_owner();
+    private: static PermissionItemsEntityFactory* instance;
 
     public: static PermissionItemsEntityFactory* getInstance();
 
     public: static PermissionItemsEntity* getPermissionItemsEntityInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: PermissionItemsEntityFactory();
 
@@ -77,3 +83,19 @@ private: PermissionItemsEntityFactory();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITYFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/data/tables/user/commerce/inventory/item/permissions/PermissionItemsEntity.h")
+#include "org/allbinary/data/tables/user/commerce/inventory/item/permissions/PermissionItemsEntity.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGS_ORDERHISTORYTAG_H
         #define ADMIN_TAGS_ORDERHISTORYTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,32 +41,14 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <admin/taghelpers/OrderHistoryHelperFactory.h>
-
-      
-#include <admin/taghelpers/OrderHistoryRequestHelperFactory.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class HttpServletRequest;
+class JspTagException;
+class OrderHistoryHelperFactory;
+class OrderHistoryRequestHelperFactory;
+class OrderHistoryData;
+class AbResponseHandler;
+class LogUtil;
+class LicensingException;
 
 
 
@@ -82,9 +69,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OrderHistoryTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string status;
 
@@ -106,3 +97,40 @@ public: OrderHistoryTag();
 
 
         #endif //ADMIN_TAGS_ORDERHISTORYTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGS_ORDERHISTORYTAG_H_COMPLETE)
+        #define ADMIN_TAGS_ORDERHISTORYTAG_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<admin/taghelpers/OrderHistoryHelperFactory.h>)
+#include <admin/taghelpers/OrderHistoryHelperFactory.h>
+#endif
+#if __has_include(<admin/taghelpers/OrderHistoryRequestHelperFactory.h>)
+#include <admin/taghelpers/OrderHistoryRequestHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include("admin/tags/TableTag.h")
+#include "admin/tags/TableTag.h"
+#endif
+
+        #endif
+    

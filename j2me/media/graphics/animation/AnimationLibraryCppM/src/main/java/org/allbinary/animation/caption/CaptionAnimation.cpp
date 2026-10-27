@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/caption/CaptionAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,21 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CaptionAnimation: public Animation {
 
-    private: Animation* animationInterface;
-
-    private: Animation* overlayAnimationInterface;
-
-    private: int32_t captionDx;
-
-    private: int32_t captionDy;
-
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-public: CaptionAnimation(Animation* animationInterface, Animation* overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy){
+CaptionAnimation::CaptionAnimation(Animation* animationInterface, Animation* overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy){
 this->animationInterface= animationInterface;
     
 this->overlayAnimationInterface= overlayAnimationInterface;
@@ -83,11 +80,11 @@ this->dy= dy;
 
                 //@Throws(Exception.constructor)
             
-    public: void nextFrame(){
+    auto CaptionAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto CaptionAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->animationInterface->paintXY(graphics, x +this->captionDx, y +this->captionDy);
     
 this->overlayAnimationInterface->paintXY(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy);
@@ -95,7 +92,7 @@ this->overlayAnimationInterface->paintXY(graphics, x +this->captionDx +this->dx,
 }
 
 
-    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+    auto CaptionAnimation::paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) -> void{
 this->animationInterface->paintThreedXYZ(graphics, x +this->captionDx, y +this->captionDy, z);
     
 this->overlayAnimationInterface->paintThreedXYZ(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy, z);
@@ -103,7 +100,6 @@ this->overlayAnimationInterface->paintThreedXYZ(graphics, x +this->captionDx +th
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATION_CPP

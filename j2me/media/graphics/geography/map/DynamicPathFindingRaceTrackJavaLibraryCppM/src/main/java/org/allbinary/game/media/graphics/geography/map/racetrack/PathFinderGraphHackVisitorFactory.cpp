@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDERGRAPHHACKVISITORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDERGRAPHHACKVISITORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/PathFinderGraphHackVisitorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,15 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/media/graphics/geography/map/racetrack/PathFinderGraphHackVisitor.h"
 
-class PathFinderGraphHackVisitorFactory: public PathFinderGraphVisitorFactoryBase {
 
-    private: int32_t edgeMinimum;
-
-    private: int32_t minPathWeight;
-
-    private: int32_t maxPathWeight;
-
-public: PathFinderGraphHackVisitorFactory(int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
+PathFinderGraphHackVisitorFactory::PathFinderGraphHackVisitorFactory(int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
 this->edgeMinimum= edgeMinimum;
     
 this->minPathWeight= minPathWeight;
@@ -71,7 +74,7 @@ this->maxPathWeight= maxPathWeight;
 }
 
 
-    public: PathFinderGraphVisitorBase* getInstance(BasicGeographicMap* geographicMapInterface){
+    auto PathFinderGraphHackVisitorFactory::getInstance(BasicGeographicMap* geographicMapInterface) -> PathFinderGraphVisitorBase*{
 
 
 
@@ -81,7 +84,6 @@ this->maxPathWeight= maxPathWeight;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDERGRAPHHACKVISITORFACTORY_CPP

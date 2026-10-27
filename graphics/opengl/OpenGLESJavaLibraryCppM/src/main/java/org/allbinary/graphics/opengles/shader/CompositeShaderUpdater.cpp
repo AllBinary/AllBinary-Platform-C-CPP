@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/CompositeShaderUpdater.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,37 +72,20 @@
         #include "org/allbinary/graphics/opengles/shader/ShaderUpdater.h"
 #include "org/allbinary/graphics/opengles/shader/ShaderStrings.h"
 
-class CompositeShaderUpdater: public ShaderUpdater {
+auto CompositeShaderUpdater::instanceC_owner() -> CompositeShaderUpdater* { static std::unique_ptr<CompositeShaderUpdater> value(new CompositeShaderUpdater(StringUtil::getInstance()->getArrayInstance(), StringUtil::getInstance()->getArrayInstance(), StringUtil::getInstance()->getArrayInstance(), NullUtil::getInstance()->NULL_INT_ARRAY)); return value.get(); }
+CompositeShaderUpdater* CompositeShaderUpdater::instanceC = CompositeShaderUpdater::instanceC_owner();
 
-    private: static CompositeShaderUpdater* instanceC() { static std::unique_ptr<CompositeShaderUpdater> value(new CompositeShaderUpdater(StringUtil::getInstance()->getArrayInstance(), StringUtil::getInstance()->getArrayInstance(), StringUtil::getInstance()->getArrayInstance(), NullUtil::getInstance()->NULL_INT_ARRAY)); return value.get(); }
-
-    public: static CompositeShaderUpdater* getInstance(){
+    auto CompositeShaderUpdater::getInstance() -> CompositeShaderUpdater*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompositeShaderUpdater::instanceC();
+                        return CompositeShaderUpdater::instanceC;
     
 }
 
 
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    protected: ShaderStrings* shaderStrings = ShaderStrings::getInstance();
-
-    public: std::vector<int32_t> uniformBlockHandleArray;
-
-    public: std::vector<std::string> uniformBlockArray;
-
-    public: std::vector<int32_t> uniformHandleArray;
-
-    public: std::vector<std::string> uniformArray;
-
-    public: std::vector<int32_t> attributeHandleArray;
-
-    public: std::vector<std::string> attributeArray;
-
-public: CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray){
+CompositeShaderUpdater::CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray) : commonSeps(CommonSeps::getInstance()), shaderStrings(ShaderStrings::getInstance()){
 this->uniformBlockArray= uniformBlockArray;
     
 this->uniformBlockHandleArray= std::vector<int32_t>(this->uniformBlockArray.length);
@@ -108,15 +101,14 @@ this->attributeHandleArray= attributeHandleArray;
 }
 
 
-    public: void onSurfaceCreated(GL10* gl, EGLConfig* eglConfig, int32_t programHandle){
+    auto CompositeShaderUpdater::onSurfaceCreated(GL10* gl, EGLConfig* eglConfig, int32_t programHandle) -> void{
 }
 
 
-    public: void onSurfaceDestroyed(GL10* gl){
+    auto CompositeShaderUpdater::onSurfaceDestroyed(GL10* gl) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_CPP

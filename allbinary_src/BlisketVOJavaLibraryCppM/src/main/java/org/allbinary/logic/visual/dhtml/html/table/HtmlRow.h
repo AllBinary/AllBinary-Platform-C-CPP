@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 #include <org/allbinary/logic/visual/dhtml/html/HtmlTag.h>
-
-      
 
 
 
@@ -64,8 +59,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/dhtml/html/table/HtmlCell.h"
+        class HtmlCell;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlRow: public HtmlTag {
 
     private: const std::string END = ">";
@@ -96,3 +95,26 @@ public: HtmlRow(std::string before, std::string after);
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/dhtml/html/HtmlTag.h>)
+#include <org/allbinary/logic/visual/dhtml/html/HtmlTag.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/dhtml/html/table/HtmlCell.h")
+#include "org/allbinary/logic/visual/dhtml/html/table/HtmlCell.h"
+#endif
+
+        #endif
+    

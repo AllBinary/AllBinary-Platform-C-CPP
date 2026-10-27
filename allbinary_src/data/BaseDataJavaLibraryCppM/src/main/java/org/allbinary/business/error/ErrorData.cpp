@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ERROR_ERRORDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_ERROR_ERRORDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/error/ErrorData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ErrorData
-            : public Object
-         {
+auto ErrorData::instance_owner() -> ErrorData* { static std::unique_ptr<ErrorData> value(new ErrorData()); return value.get(); }
+ErrorData* ErrorData::instance = ErrorData::instance_owner();
 
-    private: static ErrorData* instance() { static std::unique_ptr<ErrorData> value(new ErrorData()); return value.get(); }
-
-    public: static ErrorData* getInstance(){
+    auto ErrorData::getInstance() -> ErrorData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ErrorData::instance();
+                        return ErrorData::instance;
     
 }
 
 
-private: ErrorData(){
+ErrorData::ErrorData(){
 }
 
 
-    public: const std::string NAME = "ERROR_NAME";
 
-    public: const std::string TEXT = "ERROR_TEXT";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ERROR_ERRORDATA_CPP

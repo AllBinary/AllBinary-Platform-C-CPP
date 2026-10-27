@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMSTATELISTENER_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMSTATELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/GameFeatureItemStateListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,30 +96,9 @@
 #include "org/allbinary/game/configuration/feature/GameFeature.h"
 #include "org/allbinary/game/configuration/feature/GameFeatureUtil.h"
 
-class GameFeatureItemStateListener
-            : public Object
-        , public ItemStateListener {
+BasicArrayList* GameFeatureItemStateListener::toggleList = new BasicArrayListD();
 
-    private: static inline BasicArrayList* toggleList = new BasicArrayListD();
-
-    public: static void add(GameFeature* gameFeature){
-
-                        if(!GameFeatureItemStateListener::toggleList->contains(gameFeature))
-                        
-                                    {
-                                    GameFeatureItemStateListener::toggleList->add(gameFeature);
-    
-
-                                    }
-                                
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameOptionsForm* gameOptionsForm;
-
-public: GameFeatureItemStateListener(GameOptionsForm* gameOptionsForm){
+GameFeatureItemStateListener::GameFeatureItemStateListener(GameOptionsForm* gameOptionsForm) : logUtil(LogUtil::getInstance()){
 this->gameOptionsForm= gameOptionsForm;
     
 
@@ -134,7 +123,20 @@ GameFeatureItemStateListener::add(gameFeatureFactory->TICKABLE_LAYER_PROCESSOR);
 }
 
 
-    public: void itemStateChanged(Item* item){
+    auto GameFeatureItemStateListener::add(GameFeature* gameFeature) -> void{
+
+                        if(!GameFeatureItemStateListener::toggleList->contains(gameFeature))
+                        
+                                    {
+                                    GameFeatureItemStateListener::toggleList->add(gameFeature);
+    
+
+                                    }
+                                
+}
+
+
+    auto GameFeatureItemStateListener::itemStateChanged(Item* item) -> void{
 
         try {
             
@@ -194,7 +196,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "itemStateChanged", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMSTATELISTENER_CPP

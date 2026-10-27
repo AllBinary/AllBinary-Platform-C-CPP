@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LockedUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,33 +57,23 @@
         #include "org/allbinary/logic/system/security/licensing/LockedUtilInterface.h"
 #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
-class LockedUtil
-            : public Object
-        , public LockedUtilInterface {
 
-    private: static LockedUtil* instance() { static std::unique_ptr<LockedUtil> value(new LockedUtil()); return value.get(); }
+LockedUtil::LockedUtil() {
+        }
+        auto LockedUtil::instance_owner() -> LockedUtil* { static std::unique_ptr<LockedUtil> value(new LockedUtil()); return value.get(); }
+LockedUtil* LockedUtil::instance = LockedUtil::instance_owner();
 
-    public: static LockedUtil* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LockedUtil::instance();
-    
-}
-
-
-    public: bool isLocked(){
+    auto LockedUtil::getInstance() -> LockedUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
+                        return LockedUtil::instance;
     
 }
 
 
-    public: bool isLockedFeature(LockableFeature* lockableFeatrue){
+    auto LockedUtil::isLocked() -> bool{
 
 
 
@@ -83,7 +83,16 @@ class LockedUtil
 }
 
 
-};
+    auto LockedUtil::isLockedFeature(LockableFeature* lockableFeatrue) -> bool{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTIL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_SUBDIRECTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_SUBDIRECTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,20 +35,10 @@
             #include "java/lang/Object.h"
         
 #include <java/io/FileFilter.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class AbFile;
+class StringMaker;
+class CommonSeps;
+class BasicArrayList;
 
 
 
@@ -62,19 +57,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/file/directory/Directory.h"
+        class Directory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SubDirectory
-            : public Object
+            : public virtual Object
          {
 
-    private: static SubDirectory* instance() { static std::unique_ptr<SubDirectory> value(new SubDirectory()); return value.get(); }
+    private: static SubDirectory* instance_owner();
+    private: static SubDirectory* instance;
 
     public: static SubDirectory* getInstance();
 
     public: static std::string toString(BasicArrayList* files);
 
-    private: Directory* directory = Directory::getInstance();
+    private: Directory* directory;
 
 private: SubDirectory();
 
@@ -92,3 +92,28 @@ private: SubDirectory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_SUBDIRECTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_SUBDIRECTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_SUBDIRECTORY_H_COMPLETE
+        #if __has_include(<java/io/FileFilter.h>)
+#include <java/io/FileFilter.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/logic/io/file/directory/Directory.h")
+#include "org/allbinary/logic/io/file/directory/Directory.h"
+#endif
+
+        #endif
+    

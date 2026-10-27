@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/life/LifeLayerCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,17 +71,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/pickup/life/LifeLayer.h"
 
-class LifeLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-public: LifeLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
-super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
+LifeLayerCircularStaticPool::LifeLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
+AllBinaryLayerCircularPool::initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryLayer* sourceLayerInterface){
+    auto LifeLayerCircularStaticPool::visit(AllBinaryLayer* sourceLayerInterface) -> void{
 
     LifeLayer* lifeLayer = dynamic_cast<LifeLayer*>(this->getNextInstance());;
     
@@ -86,7 +95,6 @@ lifeLayer->visit(lifeInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERCIRCULARSTATICPOOL_CPP

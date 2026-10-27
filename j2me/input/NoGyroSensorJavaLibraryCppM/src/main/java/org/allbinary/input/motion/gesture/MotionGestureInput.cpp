@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTUREINPUT_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTUREINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionGestureInput: public Input {
 
-public: MotionGestureInput(int32_t id, std::string name) : Input(id, name){
+MotionGestureInput::MotionGestureInput(int32_t id, std::string name) : Input(id, name){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,7 +75,6 @@ inputFactory->add(this->getId(), this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTUREINPUT_CPP

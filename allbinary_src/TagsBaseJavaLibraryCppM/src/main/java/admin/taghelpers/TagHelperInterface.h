@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_TAGHELPERINTERFACE_H
         #define ADMIN_TAGHELPERS_TAGHELPERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TagHelperInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class TagHelperInterface
+            : public virtual Object
+         {
 
 };
 
@@ -54,3 +65,10 @@ class TagHelperInterface {
 
 
         #endif //ADMIN_TAGHELPERS_TAGHELPERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_TAGHELPERINTERFACE_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_TAGHELPERINTERFACE_H_COMPLETE
+        
+        #endif
+    

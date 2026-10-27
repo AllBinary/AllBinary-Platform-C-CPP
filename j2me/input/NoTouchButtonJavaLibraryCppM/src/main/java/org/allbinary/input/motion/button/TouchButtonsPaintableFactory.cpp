@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonsPaintableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonsPaintableFactory
-            : public Object
-         {
 
-    public: static Paintable* getInstance(BasicColor* basicColor){
+TouchButtonsPaintableFactory::TouchButtonsPaintableFactory() {
+        }
+        
+    auto TouchButtonsPaintableFactory::getInstance(BasicColor* basicColor) -> Paintable*{
 
 
 
@@ -65,7 +75,6 @@ class TouchButtonsPaintableFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLEFACTORY_CPP

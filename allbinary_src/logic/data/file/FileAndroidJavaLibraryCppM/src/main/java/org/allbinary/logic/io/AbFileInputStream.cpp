@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,23 +70,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileInputStream: public InputStream {
 
-    private: FileInputStream* fileInputStream;
-
-public: AbFileInputStream(FileInputStream* fileInputStream){
+AbFileInputStream::AbFileInputStream(FileInputStream* fileInputStream){
 this->fileInputStream= fileInputStream;
     
 }
 
 
-    public: void mark(int32_t readlimit){
+    auto AbFileInputStream::mark(int32_t readlimit) -> void{
 this->fileInputStream->mark(readlimit);
     
 }
 
 
-    public: bool markSupported(){
+    auto AbFileInputStream::markSupported() -> bool{
 
 
 
@@ -89,7 +96,7 @@ this->fileInputStream->mark(readlimit);
                 //@Throws(IOException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void reset(){
+    auto AbFileInputStream::reset() -> void{
 this->fileInputStream->reset();
     
 }
@@ -97,7 +104,7 @@ this->fileInputStream->reset();
 
                 //@Throws(IOException.constructor)
             
-    public: int32_t available(){
+    auto AbFileInputStream::available() -> int32_t{
 
 
 
@@ -107,13 +114,13 @@ this->fileInputStream->reset();
 }
 
 
-    public: void close(){
+    auto AbFileInputStream::close() -> void{
 this->fileInputStream->close();
     
 }
 
 
-    public: FileChannel* getChannel(){
+    auto AbFileInputStream::getChannel() -> FileChannel*{
 
 
 
@@ -125,7 +132,7 @@ this->fileInputStream->close();
 
                 //@Throws(IOException.constructor)
             
-    public: int32_t read(){
+    auto AbFileInputStream::read() -> int32_t{
 
 
 
@@ -137,7 +144,7 @@ this->fileInputStream->close();
 
                 //@Throws(IOException.constructor)
             
-    public: int32_t read(std::vector<int8_t> b){
+    auto AbFileInputStream::read(std::vector<int8_t> b) -> int32_t{
 
 
 
@@ -149,7 +156,7 @@ this->fileInputStream->close();
 
                 //@Throws(IOException.constructor)
             
-    public: int32_t read(std::vector<int8_t> buffer, int32_t offset, int32_t count){
+    auto AbFileInputStream::read(std::vector<int8_t> buffer, int32_t offset, int32_t count) -> int32_t{
 
 
 
@@ -161,7 +168,7 @@ this->fileInputStream->close();
 
                 //@Throws(IOException.constructor)
             
-    public: int64_t skip(int64_t n){
+    auto AbFileInputStream::skip(int64_t n) -> int64_t{
 
 
 
@@ -171,7 +178,6 @@ this->fileInputStream->close();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_CPP

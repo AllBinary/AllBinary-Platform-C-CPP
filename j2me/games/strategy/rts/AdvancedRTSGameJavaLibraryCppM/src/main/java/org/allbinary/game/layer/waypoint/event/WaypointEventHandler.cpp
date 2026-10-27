@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/event/WaypointEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/event/WaypointEventListenerInterface.h"
 
-class WaypointEventHandler: public BasicEventHandler {
 
-public: WaypointEventHandler(){
+WaypointEventHandler::WaypointEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto WaypointEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     WaypointEventListenerInterface* waypointEventListenerInterface = (dynamic_cast<WaypointEventListenerInterface*>(eventListenerInterface));;
     
@@ -74,7 +83,6 @@ waypointEventListenerInterface->onWaypointEvent(dynamic_cast<RTSLayerEvent*>(eve
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_CPP

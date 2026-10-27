@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_NOPLAYERGAMEINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_NOPLAYERGAMEINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class GameKeyEvent;
+class BasicArrayListD;
 
 
 
@@ -53,9 +54,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/PlayerGameInput.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoPlayerGameInput: public PlayerGameInput {
 
-    private: static NoPlayerGameInput* SINGLETON() { static std::unique_ptr<NoPlayerGameInput> value(new NoPlayerGameInput()); return value.get(); }
+    private: static NoPlayerGameInput* SINGLETON_owner();
+    private: static NoPlayerGameInput* SINGLETON;
 
     public: static NoPlayerGameInput* getInstance();
 
@@ -73,3 +79,19 @@ private: NoPlayerGameInput();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_NOPLAYERGAMEINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_NOPLAYERGAMEINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_NOPLAYERGAMEINPUT_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/input/PlayerGameInput.h")
+#include "org/allbinary/game/input/PlayerGameInput.h"
+#endif
+
+        #endif
+    

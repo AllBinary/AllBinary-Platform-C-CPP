@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/template/InsertCustomizerValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -111,13 +121,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Sets Template Type
-class InsertCustomizerValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string viewName;
-
-public: InsertCustomizerValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+InsertCustomizerValidationView::InsertCustomizerValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -125,10 +130,10 @@ public: InsertCustomizerValidationView(TransformInfoInterface* transformInfoInte
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -141,14 +146,14 @@ this->viewName= requestHashMap->get(TransformInfoData::getInstance()->NAME);
 }
 
 
-    public: bool isValid(){
+    auto InsertCustomizerValidationView::isValid() -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started Validation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started Validation", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -176,7 +181,7 @@ this->viewName= requestHashMap->get(TransformInfoData::getInstance()->NAME);
     int32_t size = componentVector->size();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -188,7 +193,7 @@ stringBuffer->appendint(componentVector->size());
     
 stringBuffer->append(" Components");
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -207,10 +212,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
     std::string transformInfoName = transformInfo->getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Setting Template Component with ViewName: " +transformInfoName, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("Setting Template Component with ViewName: ") +JavaString::valueOf(transformInfoName), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -285,7 +290,7 @@ newViewNameStringBuffer->append(GeneratorTransformInfoData::NAME);
     std::string newViewName = newViewNameStringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -299,7 +304,7 @@ stringBuffer->append("\n Now Pointing To View Name: ");
     
 stringBuffer->append(newViewName);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -307,7 +312,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 templateViewObjectConfig->set(newViewName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -321,7 +326,7 @@ stringBuffer->append("\n with ObjectConfig: ");
     
 stringBuffer->append(templateViewObjectConfig->toString());
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -349,10 +354,10 @@ TransformInfoEntityBuilder::getInstance()->update(updatedTransformInfoHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -368,7 +373,7 @@ TransformInfoEntityBuilder::getInstance()->update(updatedTransformInfoHashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto InsertCustomizerValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -387,7 +392,7 @@ stringBuffer->append("Error: Template Name Is Empty.");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -406,7 +411,7 @@ stringBuffer->append("Error: Template Name Is Empty.");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto InsertCustomizerValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -416,7 +421,7 @@ stringBuffer->append("Error: Template Name Is Empty.");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto InsertCustomizerValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -428,17 +433,16 @@ stringBuffer->append("Error: Template Name Is Empty.");
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto InsertCustomizerValidationView::view() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
+                        return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_CPP

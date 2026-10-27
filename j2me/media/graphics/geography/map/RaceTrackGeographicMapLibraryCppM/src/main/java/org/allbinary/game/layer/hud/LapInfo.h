@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -51,11 +54,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LapInfo
-            : public Object
+            : public virtual Object
          {
 
-    public: static LapInfo* NULL_LAP_INFO() { static std::unique_ptr<LapInfo> value(new LapInfo( -1)); return value.get(); }
+    private: static LapInfo* NULL_LAP_INFO_owner();
+    public: static LapInfo* NULL_LAP_INFO;
 
     private: int32_t numberOfLaps;
 
@@ -79,3 +87,13 @@ public: LapInfo(int32_t totalLaps);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

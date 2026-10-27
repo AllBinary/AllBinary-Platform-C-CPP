@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,13 +98,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntityInterface.h"
 
-class AdvertisementAreasEntity: public AbSqlBean, public AdvertisementAreasEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: const std::string tableName = "advertisements";
-
-public: AdvertisementAreasEntity() : AbSqlBean(new UserDbInitInfo()){
+AdvertisementAreasEntity::AdvertisementAreasEntity() : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,16 +111,16 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void delete_(std::string value){
+    auto AdvertisementAreasEntity::delete_(std::string value) -> void{
 
         try {
-            super.deleteWhere(EntryData::getInstance()->ID, value);
+            AbSqlBean::deleteWhere(EntryData::getInstance()->ID, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, this->commonStrings->delete_);
     
 
                                     }
@@ -125,10 +130,10 @@ this->setTableName(this->tableName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->delete_, &e);
     
 
                                     }
@@ -140,14 +145,14 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* get(std::string storeName){
+    auto AdvertisementAreasEntity::get(std::string storeName) -> BasicArrayList*{
 
     HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
 keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
     
 
-    BasicArrayList* hashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList* hashMapVector = AbSqlBean::getRows(keysAndValues);;
     
 
     BasicArrayList* vector = new BasicArrayListD();;
@@ -189,7 +194,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 
                 //@Throws(Exception.constructor)
             
-    public: AdvertisementAreaInterface* get(std::string storeName, std::string advertisementAreaName){
+    auto AdvertisementAreasEntity::get(std::string storeName, std::string advertisementAreaName) -> AdvertisementAreaInterface*{
 
     HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
@@ -198,7 +203,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 keysAndValues->put(AdvertisementAreaData::getInstance()->NAME, advertisementAreaName);
     
 
-    HashMap<Object*, Object*>* hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* hashMap = AbSqlBean::getRow(keysAndValues);;
     
 
                         if(hashMap != 
@@ -228,20 +233,20 @@ keysAndValues->put(AdvertisementAreaData::getInstance()->NAME, advertisementArea
 }
 
 
-    public: std::string createTableStatement(){
+    auto AdvertisementAreasEntity::createTableStatement() -> std::string{
 
     AdvertisementAreaData* advertisementAreaData = AdvertisementAreaData::getInstance();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE);
     
 stringBuffer->append(this->getTableName());
     
-stringBuffer->append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings->START);
     
-stringBuffer->append(advertisementAreaData->NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(StoreFrontData::getInstance()->NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(advertisementAreaData->DESCRIPTION)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(advertisementAreaData->CONSTRAINTS)->append(this->sqlTypeStrings.BLOB_NOT_NULL)->append(AdvertisementCampaignData::getInstance()->NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->LASTMODIFIED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(advertisementAreaData->NAME)->append(this->sqlStrings.END);
+stringBuffer->append(advertisementAreaData->NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(StoreFrontData::getInstance()->NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(advertisementAreaData->DESCRIPTION)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(advertisementAreaData->CONSTRAINTS)->append(this->sqlTypeStrings->BLOB_NOT_NULL)->append(AdvertisementCampaignData::getInstance()->NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->LASTMODIFIED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(advertisementAreaData->NAME)->append(this->sqlStrings->END);
     
 
 
@@ -252,9 +257,9 @@ stringBuffer->append(advertisementAreaData->NAME)->append(this->sqlTypeStrings.M
 }
 
 
-    public: std::string createTable(){
+    auto AdvertisementAreasEntity::createTable() -> std::string{
 
-    std::string returnStr = super.createTable(this->createTableStatement());;
+    std::string returnStr = AbSqlBean::createTable(this->createTableStatement());;
     
 
 
@@ -265,23 +270,22 @@ stringBuffer->append(advertisementAreaData->NAME)->append(this->sqlTypeStrings.M
 }
 
 
-    public: void update(HashMap<Object*, Object*>* updatedValues){
-super.updateWhere(AdvertisementAreaData::getInstance()->NAME, updatedValues->get(AdvertisementAreaData::getInstance()->NAME), updatedValues);
+    auto AdvertisementAreasEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
+AbSqlBean::updateWhere(AdvertisementAreaData::getInstance()->NAME, updatedValues->get(AdvertisementAreaData::getInstance()->NAME), updatedValues);
     
 }
 
 
-    public: std::string dropTable(){
+    auto AdvertisementAreasEntity::dropTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITY_CPP

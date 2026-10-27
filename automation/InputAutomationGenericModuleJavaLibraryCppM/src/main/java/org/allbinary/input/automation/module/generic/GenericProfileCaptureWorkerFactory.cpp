@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICPROFILECAPTUREWORKERFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICPROFILECAPTUREWORKERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/GenericProfileCaptureWorkerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,13 +79,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/generic/SavedCaptureImagesWorker.h"
 
-class GenericProfileCaptureWorkerFactory
-            : public Object
-         {
+
+GenericProfileCaptureWorkerFactory::GenericProfileCaptureWorkerFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static CaptureWorkerInterface* getInstance(GenericProfile* genericProfile){
+    auto GenericProfileCaptureWorkerFactory::getInstance(GenericProfile* genericProfile) -> CaptureWorkerInterface*{
 
     BasicArrayList* vector = genericProfile->getGenericProfileDataWorkerTypeVector();;
     
@@ -123,16 +134,11 @@ class GenericProfileCaptureWorkerFactory
 
 
 
-                            throw new Exception("No CaptureWorkerInterface specified in GenericProfile");
+                            throw Exception("No CaptureWorkerInterface specified in GenericProfile");
                     
 }
 
 
-private: GenericProfileCaptureWorkerFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICPROFILECAPTUREWORKERFACTORY_CPP

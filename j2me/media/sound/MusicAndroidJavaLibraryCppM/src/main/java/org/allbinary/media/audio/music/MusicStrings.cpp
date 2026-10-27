@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSTRINGS_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/music/MusicStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MusicStrings
-            : public Object
-         {
 
-    private: static MusicStrings* instance() { static std::unique_ptr<MusicStrings> value(new MusicStrings()); return value.get(); }
+MusicStrings::MusicStrings() {
+        }
+        auto MusicStrings::instance_owner() -> MusicStrings* { static std::unique_ptr<MusicStrings> value(new MusicStrings()); return value.get(); }
+MusicStrings* MusicStrings::instance = MusicStrings::instance_owner();
 
-    public: static MusicStrings* getInstance(){
+    auto MusicStrings::getInstance() -> MusicStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MusicStrings::instance();
+                        return MusicStrings::instance;
     
 }
 
 
-    public: const std::string SONG_EXTRA = "SONG";
 
-    public: const std::string LEFT_VOLUME = "LEFT_VOLUME";
 
-    public: const std::string RIGHT_VOLUME = "RIGHT_VOLUME";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSTRINGS_CPP

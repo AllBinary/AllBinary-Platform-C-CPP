@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_NOMOVEMENTFACTORY_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_NOMOVEMENTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +52,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/physics/movement/Movement.h"
+        class Movement;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoMovementFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static NoMovementFactory* instance() { static std::unique_ptr<NoMovementFactory> value(new NoMovementFactory()); return value.get(); }
+    private: static NoMovementFactory* instance_owner();
+    private: static NoMovementFactory* instance;
 
     public: static NoMovementFactory* getInstance();
 
-    private: Movement* movement = new Movement();
+
+            
+    public: NoMovementFactory();
+        
+    private: Movement* movement;
 
     public: Movement* getMovmentInstance();
 
@@ -67,3 +81,13 @@ class NoMovementFactory
 
 
         #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_NOMOVEMENTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_PHYSICS_MOVEMENT_NOMOVEMENTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_NOMOVEMENTFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/physics/movement/Movement.h")
+#include "org/allbinary/physics/movement/Movement.h"
+#endif
+
+        #endif
+    

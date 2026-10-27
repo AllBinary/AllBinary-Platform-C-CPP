@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_KEYLESSBASICARRAYLISTCACHE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_KEYLESSBASICARRAYLISTCACHE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/KeylessBasicArrayListCache.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,17 +68,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/IndexedBasicArrayListCache.h"
 
-class KeylessBasicArrayListCache: public IndexedBasicArrayListCache {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-public: KeylessBasicArrayListCache(){
+KeylessBasicArrayListCache::KeylessBasicArrayListCache() : logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()){
 }
 
 
-    public: BasicArrayList* get(){
+    auto KeylessBasicArrayListCache::get() -> BasicArrayList*{
 
         try {
             
@@ -93,7 +98,7 @@ public: KeylessBasicArrayListCache(){
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET, &e);
     
 
 
@@ -106,8 +111,8 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET,
 }
 
 
-    public: void clear(){
-super.clear();
+    auto KeylessBasicArrayListCache::clear() -> void{
+IndexedBasicArrayListCache::clear();
     
 
     BasicArrayList* basicArrayList;;
@@ -128,7 +133,7 @@ basicArrayList->clear();
 }
 
 
-    public: std::string log(){
+    auto KeylessBasicArrayListCache::log() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -166,7 +171,6 @@ stringBuffer->appendint(basicArrayList->size());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_KEYLESSBASICARRAYLISTCACHE_CPP

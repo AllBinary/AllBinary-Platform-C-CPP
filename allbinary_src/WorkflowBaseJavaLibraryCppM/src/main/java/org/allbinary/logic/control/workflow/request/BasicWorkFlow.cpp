@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUEST_BASICWORKFLOW_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUEST_BASICWORKFLOW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/request/BasicWorkFlow.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -114,21 +124,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicWorkFlow
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Document* workFlowDoc;
-
-    private: std::string workFlowName;
-
-    private: std::string storeName;
-
-public: BasicWorkFlow(){
+BasicWorkFlow::BasicWorkFlow() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->workFlowName= StringUtil::getInstance()->EMPTY_STRING;
     
 this->workFlowDoc= DomDocumentHelper::create();
@@ -141,7 +138,7 @@ this->workFlowDoc->appendChild(workFlowNode);
 }
 
 
-public: BasicWorkFlow(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+BasicWorkFlow::BasicWorkFlow(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
     WeblisketSession* weblisketSession = new WeblisketSession(hashMap, pageContext);;
     
@@ -157,7 +154,7 @@ this->workFlowDoc= DomDocumentHelper::create(requestHashMap->get(WorkFlowData::g
 }
 
 
-public: BasicWorkFlow(HashMap<Object*, Object*>* hashMap){
+BasicWorkFlow::BasicWorkFlow(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->workFlowName= hashMap->get(WorkFlowData::getInstance()->NAME);
     
 this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME);
@@ -167,7 +164,7 @@ this->workFlowDoc= DomDocumentHelper::create(hashMap->get(WorkFlowData::getInsta
 }
 
 
-    public: std::string getName(){
+    auto BasicWorkFlow::getName() -> std::string{
 
 
 
@@ -177,7 +174,7 @@ this->workFlowDoc= DomDocumentHelper::create(hashMap->get(WorkFlowData::getInsta
 }
 
 
-    public: std::string getStoreName(){
+    auto BasicWorkFlow::getStoreName() -> std::string{
 
 
 
@@ -187,7 +184,7 @@ this->workFlowDoc= DomDocumentHelper::create(hashMap->get(WorkFlowData::getInsta
 }
 
 
-    public: Object* getKey(){
+    auto BasicWorkFlow::getKey() -> Object*{
 
 
 
@@ -199,7 +196,7 @@ this->workFlowDoc= DomDocumentHelper::create(hashMap->get(WorkFlowData::getInsta
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto BasicWorkFlow::toVector() -> BasicArrayList*{
 
     BasicArrayList* values = new BasicArrayListD();;
     
@@ -230,7 +227,7 @@ values->add(time);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto BasicWorkFlow::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -257,7 +254,7 @@ hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto BasicWorkFlow::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -303,7 +300,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode()", &e);
@@ -322,7 +319,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: Document* toXmlDoc(){
+    auto BasicWorkFlow::toXmlDoc() -> Document*{
 
         try {
             
@@ -336,7 +333,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlDoc()", &e);
@@ -355,7 +352,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: bool isValid(){
+    auto BasicWorkFlow::isValid() -> bool{
 
         try {
             
@@ -381,7 +378,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
@@ -400,7 +397,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: std::string validationInfo(){
+    auto BasicWorkFlow::validationInfo() -> std::string{
 
         try {
             
@@ -421,7 +418,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -440,7 +437,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto BasicWorkFlow::toValidationInfoDoc() -> Document*{
 
 
 
@@ -450,7 +447,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto BasicWorkFlow::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -460,7 +457,6 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUEST_BASICWORKFLOW_CPP

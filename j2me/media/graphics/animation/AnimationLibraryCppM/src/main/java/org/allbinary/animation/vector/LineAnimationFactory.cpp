@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/LineAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,13 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/vector/LineAnimation.h"
 
-class LineAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    private: BasicColor* basicColor;
-
-public: LineAnimationFactory(BasicColor* basicColor){
+LineAnimationFactory::LineAnimationFactory(BasicColor* basicColor){
 this->basicColor= basicColor;
     
 }
@@ -74,7 +79,7 @@ this->basicColor= basicColor;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto LineAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -84,11 +89,10 @@ this->basicColor= basicColor;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto LineAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATIONFACTORY_CPP

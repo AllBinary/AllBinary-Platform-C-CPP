@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorChangeEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,26 +56,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorChangeEventHandler: public BasicEventHandler {
+auto ColorChangeEventHandler::eventHandler_owner() -> ColorChangeEventHandler* { static std::unique_ptr<ColorChangeEventHandler> value(new ColorChangeEventHandler()); return value.get(); }
+ColorChangeEventHandler* ColorChangeEventHandler::eventHandler = ColorChangeEventHandler::eventHandler_owner();
 
-    private: static ColorChangeEventHandler* eventHandler() { static std::unique_ptr<ColorChangeEventHandler> value(new ColorChangeEventHandler()); return value.get(); }
+ColorChangeEventHandler::ColorChangeEventHandler(){
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static ColorChangeEventHandler* getInstance(){
+    auto ColorChangeEventHandler::getInstance() -> ColorChangeEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorChangeEventHandler::eventHandler();
+                        return ColorChangeEventHandler::eventHandler;
     
 }
 
 
-private: ColorChangeEventHandler(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENTHANDLER_CPP

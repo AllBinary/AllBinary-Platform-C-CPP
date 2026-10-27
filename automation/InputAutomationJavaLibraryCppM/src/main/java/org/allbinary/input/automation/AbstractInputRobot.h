@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,14 +41,8 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt.h>
-
-      
-#include <javax/help/HelpSet.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class HelpSet;
+class LogUtil;
 
 
 
@@ -62,15 +61,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/Point.h"
-#include "org/allbinary/input/automation/PointHelper.h"
-#include "org/allbinary/input/automation/Rectangle.h"
+        class Point;
+class PointHelper;
+class Rectangle;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbstractInputRobot
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: HelpSet* helpSet;
 
@@ -98,3 +101,28 @@ public: AbstractInputRobot(HelpSet* helpSet);
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<javax/help/HelpSet.h>)
+#include <javax/help/HelpSet.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/input/automation/Point.h")
+#include "org/allbinary/input/automation/Point.h"
+#endif
+#if __has_include("org/allbinary/input/automation/PointHelper.h")
+#include "org/allbinary/input/automation/PointHelper.h"
+#endif
+#if __has_include("org/allbinary/input/automation/Rectangle.h")
+#include "org/allbinary/input/automation/Rectangle.h"
+#endif
+
+        #endif
+    

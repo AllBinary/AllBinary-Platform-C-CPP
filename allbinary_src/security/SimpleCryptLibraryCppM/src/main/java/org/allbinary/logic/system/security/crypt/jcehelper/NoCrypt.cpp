@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/NoCrypt.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,21 +60,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NoCrypt
-            : public Object
-        , public CryptInterface {
 
-    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return array;
-    
-}
-
-
-    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
+NoCrypt::NoCrypt() {
+        }
+        
+    auto NoCrypt::encrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
 
 
@@ -74,7 +74,16 @@ class NoCrypt
 }
 
 
-};
+    auto NoCrypt::decrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return array;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_CPP

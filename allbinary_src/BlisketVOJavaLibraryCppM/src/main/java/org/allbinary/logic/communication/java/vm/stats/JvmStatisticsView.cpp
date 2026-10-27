@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,9 +72,8 @@
         #include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsMapping.h"
 #include "org/allbinary/logic/communication/java/vm/stats/JvmStatisticsData.h"
 
-class JvmStatisticsView: public JvmStatisticsMapping, public DomNodeInterface {
 
-public: JvmStatisticsView() : JvmStatisticsMapping(){
+JvmStatisticsView::JvmStatisticsView() : JvmStatisticsMapping(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,7 +85,7 @@ public: JvmStatisticsView() : JvmStatisticsMapping(){
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto JvmStatisticsView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
@@ -92,7 +101,6 @@ public: JvmStatisticsView() : JvmStatisticsMapping(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSVIEW_CPP

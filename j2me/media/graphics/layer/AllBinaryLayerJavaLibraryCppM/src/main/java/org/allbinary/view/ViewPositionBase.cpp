@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITIONBASE_CPP
+        #define ORG_ALLBINARY_VIEW_VIEWPOSITIONBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/ViewPositionBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +58,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ViewPositionBase: public GPoint {
+auto ViewPositionBase::NULL_VIEW_POSITION_owner() -> ViewPositionBase* { static std::unique_ptr<ViewPositionBase> value(new ViewPositionBase(0, 0, 0)); return value.get(); }
+ViewPositionBase* ViewPositionBase::NULL_VIEW_POSITION = ViewPositionBase::NULL_VIEW_POSITION_owner();
 
-    public: static ViewPositionBase* NULL_VIEW_POSITION() { static std::unique_ptr<ViewPositionBase> value(new ViewPositionBase(0, 0, 0)); return value.get(); }
-
-protected: ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
+ViewPositionBase::ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,7 +71,7 @@ protected: ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
 }
 
 
-    public: int32_t getX2(){
+    auto ViewPositionBase::getX2() -> int32_t{
 
 
 
@@ -72,7 +81,7 @@ protected: ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
 }
 
 
-    public: int32_t getY2(){
+    auto ViewPositionBase::getY2() -> int32_t{
 
 
 
@@ -82,7 +91,7 @@ protected: ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
 }
 
 
-    public: int32_t getZ2(){
+    auto ViewPositionBase::getZ2() -> int32_t{
 
 
 
@@ -92,11 +101,10 @@ protected: ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
 }
 
 
-    public: void setAllbinaryLayer(Object* allbinaryLayer){
+    auto ViewPositionBase::setAllbinaryLayer(Object* allbinaryLayer) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VIEW_VIEWPOSITIONBASE_CPP

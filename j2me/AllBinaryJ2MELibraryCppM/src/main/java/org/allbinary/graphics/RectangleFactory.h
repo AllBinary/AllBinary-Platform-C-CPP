@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RECTANGLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_RECTANGLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,20 +54,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/Rectangle.h"
-#include "org/allbinary/graphics/PointFactory.h"
+        class Rectangle;
+class PointFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RectangleFactory
-            : public Object
+            : public virtual Object
          {
 
-    public: static Rectangle* SINGLETON() { static std::unique_ptr<Rectangle> value(new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0)); return value.get(); }
+    private: static Rectangle* SINGLETON_owner();
+    public: static Rectangle* SINGLETON;
 
-    public: static inline const std::vector<std::vector<Rectangle*>> ARRAY_OF_ARRAYS = std::vector<std::vector<Rectangle*>>(0, std::vector<Rectangle*>(0));
+    public: static std::vector<std::vector<Rectangle*>> ARRAY_OF_ARRAYS;
 
+
+            
+    public: RectangleFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_RECTANGLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_RECTANGLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_RECTANGLEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/Rectangle.h")
+#include "org/allbinary/graphics/Rectangle.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+
+        #endif
+    

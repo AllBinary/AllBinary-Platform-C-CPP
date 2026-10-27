@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCETRANSITIONINTERFACE_CPP
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCETRANSITIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ai/ArtificialIntelligenceTransitionInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,11 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ArtificialIntelligenceTransitionInterface {
+//Interface - declared in the header
 
-    public: virtual void transition() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCETRANSITIONINTERFACE_CPP

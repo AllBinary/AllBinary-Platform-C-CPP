@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SETCOLORPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SETCOLORPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/SetColorProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,27 +63,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
 
-class SetColorProcessor: public ModifierBaseProcessor {
 
-    private: static SetColorProcessor* instanceC() { static std::unique_ptr<SetColorProcessor> value(new SetColorProcessor()); return value.get(); }
+SetColorProcessor::SetColorProcessor() {
+        }
+        auto SetColorProcessor::instanceC_owner() -> SetColorProcessor* { static std::unique_ptr<SetColorProcessor> value(new SetColorProcessor()); return value.get(); }
+SetColorProcessor* SetColorProcessor::instanceC = SetColorProcessor::instanceC_owner();
 
-    public: static SetColorProcessor* getInstance(){
+    auto SetColorProcessor::getInstance() -> SetColorProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SetColorProcessor::instanceC();
+                        return SetColorProcessor::instanceC;
     
 }
 
 
-    public: void updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor){
+    auto SetColorProcessor::updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor) -> void{
 imageModifierUtil->setColor(originalImage, imageToShow, index, basicColor);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SETCOLORPROCESSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_GUI_SPRITESPLITTERIMAGEJPANEL_CPP
+        #define ORG_ALLBINARY_IMAGE_GUI_SPRITESPLITTERIMAGEJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/gui/SpriteSplitterImageJPanel.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -111,21 +121,8 @@
 #include "org/allbinary/image/gui/GroupLayout.h"
 #include "org/allbinary/image/gui/Short.h"
 
-class SpriteSplitterImageJPanel: public javax::swing::JPanel, public ImageProcessedVisitor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: ImageStrings* imageStrings = ImageStrings::getInstance();
-
-    private: ImageProcessorInput* imageProcessorInput;
-
-    private: BufferedImage* result;
-
-public: SpriteSplitterImageJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(){
+SpriteSplitterImageJPanel::SpriteSplitterImageJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), imageStrings(ImageStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -139,7 +136,7 @@ this->imageProcessorInput= imageProcessorInput;
 }
 
 
-    public: void process(){
+    auto SpriteSplitterImageJPanel::process() -> void{
 (class extends Thread
                                 {
                                 
@@ -191,7 +188,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    private: void initComponents(){
+    auto SpriteSplitterImageJPanel::initComponents() -> void{
 this->writeOverOriginalJCheckBox= new javax::swing::JCheckBox();
     
 this->widthReductionTextField= new javax::swing::JTextField();
@@ -280,7 +277,7 @@ this->spriteTypeJComboBox= new javax::swing::JComboBox<>();
     
 this->spriteTypeJComboBox->setModel(new javax::swing::DefaultComboBoxModel(
                                                 {
-                                                    org.allbinary.media.image.SpriteSplitterUtil.getInstance()->DIRECTIONAL_ANIMATIONS,org.allbinary.media.image.SpriteSplitterUtil.getInstance()->HORIZONTAL_ANIMATIONS,org.allbinary.media.image.SpriteSplitterUtil.getInstance()->HORIZONTAL_SPRITE
+                                                    org.allbinary->media->image->SpriteSplitterUtil->getInstance()->DIRECTIONAL_ANIMATIONS,org.allbinary->media->image->SpriteSplitterUtil->getInstance()->HORIZONTAL_ANIMATIONS,org.allbinary->media->image->SpriteSplitterUtil->getInstance()->HORIZONTAL_SPRITE
                                                 }));
     
 jLabel7= new javax::swing::JLabel();
@@ -326,9 +323,9 @@ this->jLabel4->setText("Results:");
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(jLabel4)->addGap(0, 0, Short::MAX_VALUE)));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(jLabel4)->addGap(0, 0, Short::MAX_VALUE)));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(jLabel4)->addGap(0, 184, Short::MAX_VALUE)));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(jLabel4)->addGap(0, 184, Short::MAX_VALUE)));
     
 this->jLabel6->setText("Less Height:");
     
@@ -395,9 +392,9 @@ spriteTypeJComboBoxActionPerformed(evt);
     
 this->jPanel2->setLayout(jPanel2Layout);
     
-jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel1)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(totalFramesJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel2)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(totalAnimationsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel3)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(spriteTypeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)->addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, jPanel2Layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel1)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(totalFramesJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, 48, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel2)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(totalAnimationsJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, 39, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel3)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(spriteTypeJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, 172, javax.swing->GroupLayout->PREFERRED_SIZE)->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
-jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(jPanel2Layout->createSequentialGroup()->addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addGroup(jPanel2Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel1)->addComponent(totalFramesJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(jLabel2)->addComponent(totalAnimationsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(jLabel3)->addComponent(spriteTypeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))));
+jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel2Layout->createSequentialGroup()->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addGroup(jPanel2Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(totalFramesJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel2)->addComponent(totalAnimationsJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel3)->addComponent(spriteTypeJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))));
     
 this->jLabel7->setText("More Width:");
     
@@ -423,24 +420,24 @@ this->increaseHeightTextField->setText(CommonPhoneStrings::getInstance()->ZERO);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, Short::MAX_VALUE)->addGap(78, 78, 78))->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(writeOverOriginalJCheckBox)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(generateJButton))->addGroup(layout->createSequentialGroup()->addComponent(jLabel5)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(widthReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel6)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(heightReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel7)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(increaseWidthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel8)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(increaseHeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))->addGap(0, 0, Short::MAX_VALUE)))->addContainerGap()));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jPanel2, javax.swing->GroupLayout->PREFERRED_SIZE, 415, Short::MAX_VALUE)->addGap(78, 78, 78))->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(jPanel1, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(writeOverOriginalJCheckBox)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(generateJButton))->addGroup(layout->createSequentialGroup()->addComponent(jLabel5)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(widthReductionTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 41, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel6)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(heightReductionTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 46, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel7)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(increaseWidthTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 41, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel8)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(increaseHeightTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 46, javax.swing->GroupLayout->PREFERRED_SIZE)))->addGap(0, 0, Short::MAX_VALUE)))->addContainerGap()));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel7)->addComponent(increaseWidthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(jLabel8)->addComponent(increaseHeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel5)->addComponent(widthReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(jLabel6)->addComponent(heightReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(writeOverOriginalJCheckBox)->addComponent(generateJButton))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jPanel2, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel7)->addComponent(increaseWidthTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 22, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel8)->addComponent(increaseHeightTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel5)->addComponent(widthReductionTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 22, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel6)->addComponent(heightReductionTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(writeOverOriginalJCheckBox)->addComponent(generateJButton))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jPanel1, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
 }
 
 
-    private: void writeOverOriginalJCheckBoxActionPerformed(java::awt::event::ActionEvent* evt){
+    auto SpriteSplitterImageJPanel::writeOverOriginalJCheckBoxActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto SpriteSplitterImageJPanel::generateJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->process();
     
 }
 
 
-    private: void spriteTypeJComboBoxActionPerformed(java::awt::event::ActionEvent* evt){
+    auto SpriteSplitterImageJPanel::spriteTypeJComboBoxActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
     SpriteSplitterUtil* spriteSplitterUtil = SpriteSplitterUtil::getInstance();;
     
@@ -451,61 +448,23 @@ this->jLabel2->setText(spriteSplitterUtil->ANIMATIONS_LABELS[this->spriteTypeJCo
 }
 
 
-    private: void totalAnimationsJComboBoxActionPerformed(java::awt::event::ActionEvent* evt){
+    auto SpriteSplitterImageJPanel::totalAnimationsJComboBoxActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void totalFramesJComboBoxActionPerformed(java::awt::event::ActionEvent* evt){
+    auto SpriteSplitterImageJPanel::totalFramesJComboBoxActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void widthReductionTextFieldActionPerformed(java::awt::event::ActionEvent* evt){
+    auto SpriteSplitterImageJPanel::widthReductionTextFieldActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void increaseWidthTextFieldActionPerformed(java::awt::event::ActionEvent* evt){
+    auto SpriteSplitterImageJPanel::increaseWidthTextFieldActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: javax::swing::JButton* generateJButton;
-
-    private: javax::swing::JTextField* heightReductionTextField;
-
-    private: javax::swing::JTextField* increaseHeightTextField;
-
-    private: javax::swing::JTextField* increaseWidthTextField;
-
-    private: javax::swing::JLabel* jLabel1;
-
-    private: javax::swing::JLabel* jLabel2;
-
-    private: javax::swing::JLabel* jLabel3;
-
-    private: javax::swing::JLabel* jLabel4;
-
-    private: javax::swing::JLabel* jLabel5;
-
-    private: javax::swing::JLabel* jLabel6;
-
-    private: javax::swing::JLabel* jLabel7;
-
-    private: javax::swing::JLabel* jLabel8;
-
-    private: javax::swing::JPanel* jPanel1;
-
-    private: javax::swing::JPanel* jPanel2;
-
-    private: javax::swing::JComboBox<std::string>* spriteTypeJComboBox;
-
-    private: javax::swing::JComboBox<std::string>* totalAnimationsJComboBox;
-
-    private: javax::swing::JComboBox<std::string>* totalFramesJComboBox;
-
-    private: javax::swing::JTextField* widthReductionTextField;
-
-    private: javax::swing::JCheckBox* writeOverOriginalJCheckBox;
-
-    public: ImageProcessorInput* getImageProcessorInput(){
+    auto SpriteSplitterImageJPanel::getImageProcessorInput() -> ImageProcessorInput*{
 
 
 
@@ -515,7 +474,7 @@ this->jLabel2->setText(spriteSplitterUtil->ANIMATIONS_LABELS[this->spriteTypeJCo
 }
 
 
-    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput){
+    auto SpriteSplitterImageJPanel::setImageProcessorInput(ImageProcessorInput* imageProcessorInput) -> void{
 this->imageProcessorInput= imageProcessorInput;
     
 }
@@ -523,7 +482,7 @@ this->imageProcessorInput= imageProcessorInput;
 
                 //@Throws(IOException.constructor)
             
-    public: void visit(BufferedImage* generatedBufferedImage, std::string name, int32_t index){
+    auto SpriteSplitterImageJPanel::visit(BufferedImage* generatedBufferedImage, std::string name, int32_t index) -> void{
 this->logUtil->putF(this->commonStrings->VISIT, this, this->commonStrings->VISIT);
     
 this->result= generatedBufferedImage;
@@ -558,7 +517,6 @@ this->logUtil->putF((new StringMaker())->append("File: ")->append(StringUtil::ge
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_GUI_SPRITESPLITTERIMAGEJPANEL_CPP

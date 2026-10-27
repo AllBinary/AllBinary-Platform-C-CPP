@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYER_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,51 +38,21 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/identification/BasicGroupFactory.h>
-
-      
-#include <org/allbinary/game/identification/Group.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/RectangleFactory.h>
-
-      
-#include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/math/PositionStrings.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/view/ViewPositionBase.h>
-
-      
-#include <org/allbinary/view/event/ViewPositionEvent.h>
-
-      
+class Graphics;
+class BasicGroupFactory;
+class Group;
+class GPoint;
+class Rectangle;
+class RectangleFactory;
+class OpenGLFeatureUtil;
+class TsUtil;
+class StringMaker;
+class StringUtil;
+class PositionStrings;
+class CommonLabels;
+class CommonSeps;
+class ViewPositionBase;
+class ViewPositionEvent;
 
 
 
@@ -99,13 +74,18 @@
         #include "org/allbinary/layer/Layer.h"
 #include "org/allbinary/layer/LayerInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryLayer: public Layer, public LayerInterface {
 
-    public: static AllBinaryLayer* NULL_ALLBINARY_LAYER() { static std::unique_ptr<AllBinaryLayer> value(new AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION)); return value.get(); }
+    private: static AllBinaryLayer* NULL_ALLBINARY_LAYER_owner();
+    public: static AllBinaryLayer* NULL_ALLBINARY_LAYER;
 
     private: static inline const std::string TYPE = "Type: ";
 
-    protected: ViewPositionEvent* viewPositionEvent = new ViewPositionEvent(this);
+    /*protected*/ public: ViewPositionEvent* viewPositionEvent;
 
     private: int32_t halfWidth= 0;
 
@@ -113,7 +93,7 @@ class AllBinaryLayer: public Layer, public LayerInterface {
 
     private: std::string name;
 
-    private: ViewPositionBase* viewPosition = ViewPositionBase::NULL_VIEW_POSITION;
+    private: ViewPositionBase* viewPosition;
 
 public: AllBinaryLayer(std::string name, Rectangle* rectangle, ViewPositionBase* viewPosition);
 
@@ -131,11 +111,11 @@ public: AllBinaryLayer(std::string name, Rectangle* rectangle, ViewPositionBase*
 
     public: std::string getName();
 
-    protected: void setHalfWidth(int32_t halfWidth);
+    /*protected*/ public: void setHalfWidth(int32_t halfWidth);
 
     public: int32_t getHalfWidth();
 
-    protected: void setHalfHeight(int32_t halfHeight);
+    /*protected*/ public: void setHalfHeight(int32_t halfHeight);
 
     public: int32_t getHalfHeight();
 
@@ -171,3 +151,61 @@ public: AllBinaryLayer(std::string name, Rectangle* rectangle, ViewPositionBase*
 
 
         #endif //ORG_ALLBINARY_LAYER_ALLBINARYLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_ALLBINARYLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_ALLBINARYLAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/BasicGroupFactory.h>)
+#include <org/allbinary/game/identification/BasicGroupFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/RectangleFactory.h>)
+#include <org/allbinary/graphics/RectangleFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>)
+#include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/PositionStrings.h>)
+#include <org/allbinary/math/PositionStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPositionBase.h>)
+#include <org/allbinary/view/ViewPositionBase.h>
+#endif
+#if __has_include(<org/allbinary/view/event/ViewPositionEvent.h>)
+#include <org/allbinary/view/event/ViewPositionEvent.h>
+#endif
+#if __has_include("org/allbinary/layer/Layer.h")
+#include "org/allbinary/layer/Layer.h"
+#endif
+#if __has_include("org/allbinary/layer/LayerInterface.h")
+#include "org/allbinary/layer/LayerInterface.h"
+#endif
+
+        #endif
+    

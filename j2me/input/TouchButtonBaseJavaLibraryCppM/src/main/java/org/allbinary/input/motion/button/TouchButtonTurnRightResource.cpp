@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONTURNRIGHTRESOURCE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONTURNRIGHTRESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonTurnRightResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
-class TouchButtonTurnRightResource: public TouchButtonResource {
+TouchButtonResource* TouchButtonTurnRightResource::instance = new TouchButtonTurnRightResource();
 
-    private: static inline TouchButtonResource* instance = new TouchButtonTurnRightResource();
-
-    public: static TouchButtonResource* getInstance(){
+    auto TouchButtonTurnRightResource::getInstance() -> TouchButtonResource*{
 
 
 
@@ -58,7 +66,7 @@ class TouchButtonTurnRightResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonTurnRightResource() : TouchButtonResource("/touch_button_turn_right_arrow_64_by_64.png", "/touch_button_turn_right_arrow_hint_64_by_64.png"){
+TouchButtonTurnRightResource::TouchButtonTurnRightResource() : TouchButtonResource("/touch_button_turn_right_arrow_64_by_64.png", "/touch_button_turn_right_arrow_hint_64_by_64.png"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +76,6 @@ private: TouchButtonTurnRightResource() : TouchButtonResource("/touch_button_tur
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONTURNRIGHTRESOURCE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_H
         #define ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/math/MathUtil.h>
-
-      
+class GPoint;
+class AllBinaryLayer;
+class MathUtil;
 
 
 
@@ -57,15 +56,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerDistanceUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static LayerDistanceUtil* instance() { static std::unique_ptr<LayerDistanceUtil> value(new LayerDistanceUtil()); return value.get(); }
+    private: static LayerDistanceUtil* instance_owner();
+    private: static LayerDistanceUtil* instance;
 
     public: static LayerDistanceUtil* getInstance();
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
+
+            
+    public: LayerDistanceUtil();
+        
+    private: MathUtil* mathUtil;
 
     public: int32_t getDistance(AllBinaryLayer* layerInterface, AllBinaryLayer* layerInterface2);
 
@@ -79,3 +87,19 @@ class LayerDistanceUtil
 
 
         #endif //ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/MathUtil.h>)
+#include <org/allbinary/logic/math/MathUtil.h>
+#endif
+
+        #endif
+    

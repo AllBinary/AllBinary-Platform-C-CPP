@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_ADMIN_CUSTOMIZERS_VIEWCUSTOMIZERSTAG_CPP
+        #define TAGS_ADMIN_CUSTOMIZERS_VIEWCUSTOMIZERSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/admin/customizers/ViewCustomizersTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,15 +64,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ViewCustomizersTag: public StoreValidationTransformTag {
 
-public: ViewCustomizersTag(){
+ViewCustomizersTag::ViewCustomizersTag(){
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto ViewCustomizersTag::doStartTag() -> int32_t{
 
         try {
             this->setName("Add Validation Customizers View");
@@ -73,7 +82,7 @@ this->setObjectFile("views.admin.customizers.CustomizersValidationView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                 //: 
@@ -92,7 +101,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_ADMIN_CUSTOMIZERS_VIEWCUSTOMIZERSTAG_CPP

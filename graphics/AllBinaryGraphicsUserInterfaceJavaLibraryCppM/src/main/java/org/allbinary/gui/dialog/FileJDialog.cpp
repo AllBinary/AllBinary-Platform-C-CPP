@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GUI_DIALOG_FILEJDIALOG_CPP
+        #define ORG_ALLBINARY_GUI_DIALOG_FILEJDIALOG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/gui/dialog/FileJDialog.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,28 +74,8 @@
 #include "org/allbinary/gui/dialog/EventQueue.h"
 #include "org/allbinary/gui/dialog/JFrame.h"
 
-class FileJDialog: public javax::swing::JDialog {
 
-    public: static void main(std::vector<std::string> args){
-java.awt.EventQueue.invokeLater(class extends ARunnable
-                                {
-                                
-    public: void run(){
-(new FileJDialog(new javax::swing::JFrame(), true))->setVisible(true);
-    
-}
-
-                                }
-                            );
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: FileJDialogListenerInterface* finishedListenerInterface;
-
-public: FileJDialog() : javax::swing::JDialog(){
+FileJDialog::FileJDialog() : javax::swing::JDialog(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,7 +89,7 @@ this->getJFileChooser1()->setMultiSelectionEnabled(true);
 }
 
 
-public: FileJDialog(java::awt::Frame* parent, bool modal) : javax::swing::JDialog(parent, modal){
+FileJDialog::FileJDialog(java::awt::Frame* parent, bool modal) : javax::swing::JDialog(parent, modal), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -113,16 +103,16 @@ this->getJFileChooser1()->setMultiSelectionEnabled(true);
 }
 
 
-    public: void addFinishedListener(FileJDialogListenerInterface* finishedListenerInterface){
+    auto FileJDialog::addFinishedListener(FileJDialogListenerInterface* finishedListenerInterface) -> void{
 this->finishedListenerInterface= finishedListenerInterface;
     
 }
 
 
-    private: void initComponents(){
+    auto FileJDialog::initComponents() -> void{
 this->jFileChooser1= new javax::swing::JFileChooser();
     
-setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+setDefaultCloseOperation(javax.swing->WindowConstants->DISPOSE_ON_CLOSE);
     
 this->jFileChooser1->addActionListener(class extends java::awt::event::ActionListener
                                 {
@@ -140,17 +130,17 @@ jFileChooser1ActionPerformed(evt);
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(org.jdesktop.layout->GroupLayout.TRAILING, layout->createSequentialGroup()->addContainerGap(org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->add(jFileChooser1, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE)->addContainerGap()));
+layout->setHorizontalGroup(layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(org.jdesktop->layout->GroupLayout->TRAILING, layout->createSequentialGroup()->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(jFileChooser1, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addContainerGap()));
     
-layout->setVerticalGroup(layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(layout->createSequentialGroup()->addContainerGap()->add(jFileChooser1, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE, 357, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE)->addContainerGap(org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(layout->createSequentialGroup()->addContainerGap()->add(jFileChooser1, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, 357, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
 pack();
     
 }
 
 
-    private: void jFileChooser1ActionPerformed(java::awt::event::ActionEvent* evt){
-this->logUtil->putF("Starting Action Command: " +evt->getActionCommand(), this, "ActionPerformed");
+    auto FileJDialog::jFileChooser1ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
+this->logUtil->putF(JavaString::valueOf("Starting Action Command: ") +JavaString::valueOf(evt->getActionCommand()), this, "ActionPerformed");
     
 
     std::vector<File*> files = this->getJFileChooser1()->getSelectedFiles();;
@@ -169,9 +159,7 @@ this->logUtil->putF("Starting Action Command: " +evt->getActionCommand(), this, 
                         
                                     {
                                     
-                        if(files != 
-                                    nullptr
-                                 && files.size() > 0)
+                        if(!files.empty() && files.size() > 0)
                         
                                     {
                                     this->finishedListenerInterface->onFiles(files);
@@ -185,7 +173,22 @@ this->logUtil->putF("Starting Action Command: " +evt->getActionCommand(), this, 
 }
 
 
-    public: javax::swing::JFileChooser* getJFileChooser1(){
+    auto FileJDialog::main(std::vector<std::string> args) -> void{
+java.awt->EventQueue->invokeLater(class extends ARunnable
+                                {
+                                
+    public: void run(){
+(new FileJDialog(new javax::swing::JFrame(), true))->setVisible(true);
+    
+}
+
+                                }
+                            );
+    
+}
+
+
+    auto FileJDialog::getJFileChooser1() -> javax::swing::JFileChooser*{
 
 
 
@@ -195,15 +198,12 @@ this->logUtil->putF("Starting Action Command: " +evt->getActionCommand(), this, 
 }
 
 
-    public: void setJFileChooser1(javax::swing::JFileChooser* jFileChooser1){
+    auto FileJDialog::setJFileChooser1(javax::swing::JFileChooser* jFileChooser1) -> void{
 this->jFileChooser1= jFileChooser1;
     
 }
 
 
-    private: javax::swing::JFileChooser* jFileChooser1;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GUI_DIALOG_FILEJDIALOG_CPP

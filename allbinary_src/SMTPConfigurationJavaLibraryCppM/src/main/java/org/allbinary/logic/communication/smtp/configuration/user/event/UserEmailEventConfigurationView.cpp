@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,13 +85,8 @@
 #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfiguration.h"
 #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationMapping.h"
 
-class UserEmailEventConfigurationView
-            : public Object
-        , public DomNodeInterface {
 
-    private: UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface;
-
-public: UserEmailEventConfigurationView(Node* node){
+UserEmailEventConfigurationView::UserEmailEventConfigurationView(Node* node){
 
     NodeList* childNodeList = node->getChildNodes();;
     
@@ -103,7 +108,7 @@ this->setUserEmailEventConfigurationInterface(dynamic_cast<UserEmailEventConfigu
 }
 
 
-public: UserEmailEventConfigurationView(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
+UserEmailEventConfigurationView::UserEmailEventConfigurationView(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
 this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterface);
     
 }
@@ -111,7 +116,7 @@ this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterfa
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto UserEmailEventConfigurationView::toXmlNode(Document* document) -> Node*{
 
     UserEmailEventConfigurationMapping* userEmailEventConfigurationMapping = new UserEmailEventConfigurationMapping(this->getUserEmailEventConfigurationInterface());;
     
@@ -130,7 +135,7 @@ this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterfa
 }
 
 
-    public: UserEmailEventConfigurationInterface* getUserEmailEventConfigurationInterface(){
+    auto UserEmailEventConfigurationView::getUserEmailEventConfigurationInterface() -> UserEmailEventConfigurationInterface*{
 
 
 
@@ -140,13 +145,12 @@ this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterfa
 }
 
 
-    public: void setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
+    auto UserEmailEventConfigurationView::setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface) -> void{
 this->userEmailEventConfigurationInterface= userEmailEventConfigurationInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONVIEW_CPP

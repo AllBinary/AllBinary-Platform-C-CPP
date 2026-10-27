@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class Graphics;
+class Image;
+class AnimationBehavior;
+class CircularIndexUtil;
 
 
 
@@ -63,6 +60,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageAnimation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageSegmentAnimation: public ImageAnimation {
 
     private: int32_t startX;
@@ -77,7 +78,7 @@ class ImageSegmentAnimation: public ImageAnimation {
 
     private: std::vector<int32_t> sequenceArray;
 
-protected: ImageSegmentAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior);
+/*protected*/ public: ImageSegmentAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior);
 
     public: void nextFrame();
 
@@ -117,3 +118,25 @@ protected: ImageSegmentAnimation(Image* image, std::vector<int32_t> sequenceArra
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ImageAnimation.h")
+#include "org/allbinary/animation/image/ImageAnimation.h"
+#endif
+
+        #endif
+    

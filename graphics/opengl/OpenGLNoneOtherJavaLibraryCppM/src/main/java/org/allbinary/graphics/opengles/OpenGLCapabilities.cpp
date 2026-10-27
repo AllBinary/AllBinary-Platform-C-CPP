@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLCapabilities.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,51 +58,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLCapabilities
-            : public Object
-         {
+auto OpenGLCapabilities::instance_owner() -> OpenGLCapabilities* { static std::unique_ptr<OpenGLCapabilities> value(new OpenGLCapabilities()); return value.get(); }
+OpenGLCapabilities* OpenGLCapabilities::instance = OpenGLCapabilities::instance_owner();
 
-    private: static OpenGLCapabilities* instance() { static std::unique_ptr<OpenGLCapabilities> value(new OpenGLCapabilities()); return value.get(); }
-
-    public: static OpenGLCapabilities* getInstance(){
+    auto OpenGLCapabilities::getInstance() -> OpenGLCapabilities*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLCapabilities::instance();
+                        return OpenGLCapabilities::instance;
     
 }
 
 
-    public: const bool CUSTOM_GL_SURFACE_VIEW = true;
-
-    public: const std::string VERSION_1_0 = "1.0";
-
-    public: const std::string VERSION_1_1 = "1.1";
-
-    public: const std::string VERSION_2_0 = "2.0";
-
-    public: const std::string VERSION_3_0 = "3.0";
-
-    public: const std::string VERSION_3_1 = "3.1";
-
-    public: const std::string VERSION_3_2 = "3.2";
-
-    public: const std::string VERSION_HIGHER_THAN_EXISTS = "999.999";
-
-    private: std::string glVersion = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: int32_t shaderVersion = 0;
-
-    public: std::string glInstanceVersion = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: int32_t maxTextureSize = 64;
-
-private: OpenGLCapabilities(){
+OpenGLCapabilities::OpenGLCapabilities() : glVersion(StringUtil::getInstance()->EMPTY_STRING), glInstanceVersion(StringUtil::getInstance()->EMPTY_STRING){
 }
 
 
-    public: bool isInitialized(){
+    auto OpenGLCapabilities::isInitialized() -> bool{
 
 
 
@@ -102,11 +85,11 @@ private: OpenGLCapabilities(){
 }
 
 
-    public: void initCapabilities(Object* gl){
+    auto OpenGLCapabilities::initCapabilities(Object* gl) -> void{
 }
 
 
-    public: bool isGlExtensionDrawTexture(){
+    auto OpenGLCapabilities::isGlExtensionDrawTexture() -> bool{
 
 
 
@@ -116,7 +99,7 @@ private: OpenGLCapabilities(){
 }
 
 
-    public: std::string getGlVersion(){
+    auto OpenGLCapabilities::getGlVersion() -> std::string{
 
 
 
@@ -126,7 +109,7 @@ private: OpenGLCapabilities(){
 }
 
 
-    public: bool isVertexBufferObjectSupport(){
+    auto OpenGLCapabilities::isVertexBufferObjectSupport() -> bool{
 
 
 
@@ -136,7 +119,7 @@ private: OpenGLCapabilities(){
 }
 
 
-    public: bool isTextureSizeValid(int32_t widthAndHeight){
+    auto OpenGLCapabilities::isTextureSizeValid(int32_t widthAndHeight) -> bool{
 
 
 
@@ -146,7 +129,6 @@ private: OpenGLCapabilities(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_CPP

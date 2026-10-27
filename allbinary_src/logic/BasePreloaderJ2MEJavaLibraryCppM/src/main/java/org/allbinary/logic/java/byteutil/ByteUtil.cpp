@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/byteutil/ByteUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,27 +57,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ByteUtil
-            : public Object
-         {
+auto ByteUtil::instance_owner() -> ByteUtil* { static std::unique_ptr<ByteUtil> value(new ByteUtil()); return value.get(); }
+ByteUtil* ByteUtil::instance = ByteUtil::instance_owner();
 
-    private: static ByteUtil* instance() { static std::unique_ptr<ByteUtil> value(new ByteUtil()); return value.get(); }
-
-    public: static ByteUtil* getInstance(){
+    auto ByteUtil::getInstance() -> ByteUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ByteUtil::instance();
+                        return ByteUtil::instance;
     
 }
 
 
-private: ByteUtil(){
+ByteUtil::ByteUtil(){
 }
 
 
-    public: std::vector<int8_t> xor_(std::vector<int8_t> array, int8_t mask){
+    auto ByteUtil::xor_(std::vector<int8_t> array, int8_t mask) -> std::vector<int8_t>{
 
     std::vector<int8_t> bytes = std::vector<int8_t>(array.length);;
     
@@ -100,7 +107,7 @@ index++;
 }
 
 
-    public: std::vector<int8_t> not_(std::vector<int8_t> array){
+    auto ByteUtil::not_(std::vector<int8_t> array) -> std::vector<int8_t>{
 
     std::vector<int8_t> bytes = std::vector<int8_t>(array.length);;
     
@@ -128,7 +135,7 @@ index++;
 }
 
 
-    public: std::vector<int8_t> xorByte(std::vector<int8_t> array, int32_t index){
+    auto ByteUtil::xorByte(std::vector<int8_t> array, int32_t index) -> std::vector<int8_t>{
 
     int8_t mask = 0;;
     
@@ -173,7 +180,7 @@ index++;
 }
 
 
-    public: bool compare(std::vector<int8_t> newByteArray, std::vector<int8_t> oldByteArray){
+    auto ByteUtil::compare(std::vector<int8_t> newByteArray, std::vector<int8_t> oldByteArray) -> bool{
 
                         if(newByteArray.size() != oldByteArray.size())
                         
@@ -225,7 +232,7 @@ index++;
 }
 
 
-    public: bool compareWithStats(std::vector<int8_t> newByteArray, int32_t newSize, std::vector<int8_t> oldByteArray, std::vector<int32_t> stats){
+    auto ByteUtil::compareWithStats(std::vector<int8_t> newByteArray, int32_t newSize, std::vector<int8_t> oldByteArray, std::vector<int32_t> stats) -> bool{
 
                         if(newSize != oldByteArray.size())
                         
@@ -289,7 +296,6 @@ stats[1]++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_CPP

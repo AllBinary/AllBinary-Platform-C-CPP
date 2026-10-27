@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICSVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
         #include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsInterface.h"
 #include "org/allbinary/business/context/modules/storefront/statistics/advertisements/StoreFrontAdvertisementsStatisticsData.h"
 
-class StoreFrontAdvertisementsStatisticsView
-            : public Object
-        , public DomNodeInterface {
 
-    private: StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface;
-
-public: StoreFrontAdvertisementsStatisticsView(StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface){
+StoreFrontAdvertisementsStatisticsView::StoreFrontAdvertisementsStatisticsView(StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface){
 this->storeFrontAdvertisementsStatisticsInterface= storeFrontAdvertisementsStatisticsInterface;
     
 }
@@ -78,7 +83,7 @@ this->storeFrontAdvertisementsStatisticsInterface= storeFrontAdvertisementsStati
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StoreFrontAdvertisementsStatisticsView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->storeFrontAdvertisementsStatisticsInterface->toHashMap();;
     
@@ -94,7 +99,6 @@ this->storeFrontAdvertisementsStatisticsInterface= storeFrontAdvertisementsStati
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICSVIEW_CPP

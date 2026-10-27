@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIG_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -112,27 +122,14 @@
         #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h"
 #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
 
-class TransformInfoObjectConfig
-            : public Object
-        , public TransformInfoObjectConfigInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: TransformInfoInterface* ownerTransformInfoInterface;
-
-    private: Document* document;
-
-    private: std::string outputTypeName;
-
-public: TransformInfoObjectConfig(Object* transformInfoInterface){
+TransformInfoObjectConfig::TransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->ownerTransformInfoInterface= transformInfoInterface;
     
 this->createDocument();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -169,7 +166,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoIn
 }
 
 
-public: TransformInfoObjectConfig(Object* transformInfoInterface, Object* document){
+TransformInfoObjectConfig::TransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface, Document* document) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->ownerTransformInfoInterface= transformInfoInterface;
     
 this->document= document;
@@ -189,7 +186,7 @@ this->document= document;
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -226,7 +223,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoIn
 }
 
 
-public: TransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type){
+TransformInfoObjectConfig::TransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface, std::string name, std::string type) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->ownerTransformInfoInterface= transformInfoInterface;
     
 this->createDocument();
@@ -242,7 +239,7 @@ configNameAttr->setValue(name);
 objectConfigNode->appendChild(configNameAttr);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -279,7 +276,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "Constructor(TransformInfoIn
 }
 
 
-    private: void createDocument(){
+    auto TransformInfoObjectConfig::createDocument() -> void{
 this->document= DomDocumentHelper::create();
     
 
@@ -290,7 +287,7 @@ this->document->appendChild(objectConfigNode);
 }
 
 
-    protected: TransformInfoInterface* getTransformInfoInterface(){
+    auto TransformInfoObjectConfig::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -302,7 +299,7 @@ this->document->appendChild(objectConfigNode);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto TransformInfoObjectConfig::toXmlDoc() -> Document*{
 
 
 
@@ -312,13 +309,13 @@ this->document->appendChild(objectConfigNode);
 }
 
 
-    protected: void setDocument(Document* document){
+    auto TransformInfoObjectConfig::setDocument(Document* document) -> void{
 this->document= document;
     
 }
 
 
-    public: bool containsView(TransformInfoInterface* transformInfoInterface){
+    auto TransformInfoObjectConfig::containsView(TransformInfoInterface* transformInfoInterface) -> bool{
 
     Node* objectConfigNode = this->document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
     
@@ -370,7 +367,7 @@ this->document= document;
 
                 //@Throws(Exception.constructor)
             
-    private: NamedNodeMap* getTemplateAttributes(){
+    auto TransformInfoObjectConfig::getTemplateAttributes() -> NamedNodeMap*{
 
     Node* componentNode = this->document->getElementsByTagName(TransformInfoObjectConfigData::getInstance()->NAME)->item(0);;
     
@@ -385,7 +382,7 @@ this->document= document;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getName(){
+    auto TransformInfoObjectConfig::getName() -> std::string{
 
     Attr* attrNode = dynamic_cast<Attr*>(this->getTemplateAttributes()->getNamedItem(TransformInfoObjectConfigData::getInstance()->NAME));;
     
@@ -400,7 +397,7 @@ this->document= document;
 
                 //@Throws(Exception.constructor)
             
-    public: void setName(std::string name){
+    auto TransformInfoObjectConfig::setName(std::string name) -> void{
 
     Attr* attrNode = dynamic_cast<Attr*>(this->getTemplateAttributes()->getNamedItem(TransformInfoObjectConfigData::getInstance()->NAME));;
     
@@ -411,7 +408,7 @@ attrNode->setValue(name);
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* getNodeVector(std::string nodeName){
+    auto TransformInfoObjectConfig::getNodeVector(std::string nodeName) -> BasicArrayList*{
 
     NodeList* componentsNodeList = this->document->getElementsByTagName(nodeName);;
     
@@ -428,7 +425,7 @@ attrNode->setValue(name);
     int32_t numberOfViews = viewNodeVector->size();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -467,7 +464,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "getNodeVector(nodename)");
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* getTransformDomNodes(std::string nodeName){
+    auto TransformInfoObjectConfig::getTransformDomNodes(std::string nodeName) -> BasicArrayList*{
 
     BasicArrayList* viewVector = new BasicArrayListD();;
     
@@ -502,7 +499,7 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getTransforms(std::string nodeName){
+    auto TransformInfoObjectConfig::getTransforms(std::string nodeName) -> BasicArrayList*{
 
     BasicArrayList* viewVector = new BasicArrayListD();;
     
@@ -537,12 +534,12 @@ viewVector->add((new TransformInfoDomNode(viewNode))->getTransformInfoInterface(
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getTransformsGroup(std::string group){
+    auto TransformInfoObjectConfig::getTransformsGroup(std::string group) -> BasicArrayList*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started: " +group, this, "getTransformsGroup()");
+                                    this->logUtil->putF(JavaString::valueOf("Started: ") +JavaString::valueOf(group), this, "getTransformsGroup()");
     
 
                                     }
@@ -608,10 +605,10 @@ break;
     int32_t numberOfViews = viewNodeVector->size();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Number Of Nodes: " +numberOfViews, this, "getTransformsGroup()");
+                                    this->logUtil->putF(JavaString::valueOf("Number Of Nodes: ") +JavaString::valueOf(numberOfViews), this, "getTransformsGroup()");
     
 
                                     }
@@ -638,7 +635,7 @@ viewVector->add(new TransformInfoDomNode(viewNode));
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -675,7 +672,7 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getTransformDomNodes(){
+    auto TransformInfoObjectConfig::getTransformDomNodes() -> BasicArrayList*{
 
 
 
@@ -687,7 +684,7 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getTransforms(){
+    auto TransformInfoObjectConfig::getTransforms() -> BasicArrayList*{
 
 
 
@@ -699,7 +696,7 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getGroupTransforms(){
+    auto TransformInfoObjectConfig::getGroupTransforms() -> BasicArrayList*{
 
 
 
@@ -711,7 +708,7 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getParentTransforms(){
+    auto TransformInfoObjectConfig::getParentTransforms() -> BasicArrayList*{
 
 
 
@@ -721,7 +718,7 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 }
 
 
-    private: Node* getRootNode(){
+    auto TransformInfoObjectConfig::getRootNode() -> Node*{
 
 
 
@@ -731,7 +728,7 @@ viewVector->add(new TransformInfoDomNode(viewNode));
 }
 
 
-    public: void setOutputTypeName(std::string outputTypeName){
+    auto TransformInfoObjectConfig::setOutputTypeName(std::string outputTypeName) -> void{
 this->outputTypeName= outputTypeName;
     
 }
@@ -739,7 +736,7 @@ this->outputTypeName= outputTypeName;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getOutputTypeName(){
+    auto TransformInfoObjectConfig::getOutputTypeName() -> std::string{
 
 
 
@@ -751,7 +748,7 @@ this->outputTypeName= outputTypeName;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getInputOutputTypeName(){
+    auto TransformInfoObjectConfig::getInputOutputTypeName() -> std::string{
 
     Node* node = DomSearchHelper::getNode(InputOutputTypeData::getInstance()->NAME, this->getRootNode()->getChildNodes());;
     
@@ -766,7 +763,7 @@ this->outputTypeName= outputTypeName;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getInputOutputTypeFile(){
+    auto TransformInfoObjectConfig::getInputOutputTypeFile() -> std::string{
 
     Node* node = DomSearchHelper::getNode(InputOutputTypeData::getInstance()->FILE, this->getRootNode()->getChildNodes());;
     
@@ -781,7 +778,7 @@ this->outputTypeName= outputTypeName;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getImportUriPath(){
+    auto TransformInfoObjectConfig::getImportUriPath() -> std::string{
 
     Node* node = DomSearchHelper::getNode(XslData::getInstance()->ROOT_IMPORT_URI, this->getRootNode()->getChildNodes());;
     
@@ -794,7 +791,7 @@ this->outputTypeName= outputTypeName;
 }
 
 
-    public: std::string toString(){
+    auto TransformInfoObjectConfig::toString() -> std::string{
 
         try {
             
@@ -827,7 +824,7 @@ this->outputTypeName= outputTypeName;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF("DOM Document error", this, this->commonStrings->TOSTRING);
@@ -846,7 +843,6 @@ this->outputTypeName= outputTypeName;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIG_CPP

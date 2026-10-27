@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEPATHDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEPATHDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FilePathData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,27 +58,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FilePathData
-            : public Object
-         {
+auto FilePathData::instance_owner() -> FilePathData* { static std::unique_ptr<FilePathData> value(new FilePathData()); return value.get(); }
+FilePathData* FilePathData::instance = FilePathData::instance_owner();
 
-    private: static FilePathData* instance() { static std::unique_ptr<FilePathData> value(new FilePathData()); return value.get(); }
-
-    public: static FilePathData* getInstance(){
+    auto FilePathData::getInstance() -> FilePathData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FilePathData::instance();
+                        return FilePathData::instance;
     
 }
 
 
-    public: const char SEPARATORCHAR = File::separatorChar;
-
-    public: std::string PATH_START = File::separator;
-
-private: FilePathData(){
+FilePathData::FilePathData() : SEPARATORCHAR(File::separatorChar), PATH_START(File::separator){
 
                         if(File::separatorChar == '\\')
                         
@@ -81,7 +84,6 @@ private: FilePathData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEPATHDATA_CPP

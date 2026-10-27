@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class GameConfigurationCentral;
+class AngleFactory;
+class AngleInfo;
+class ScaleProperties;
 
 
 
@@ -63,12 +60,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
-#include "org/allbinary/animation/NullRotationAnimation.h"
-#include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/Animation.h"
+class NullRotationAnimation;
+class AnimationBehavior;
+class Animation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RotationAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
     public: static RotationAnimationFactory* createFactory();
@@ -95,3 +96,37 @@ public: RotationAnimationFactory(int16_t totalAngle, int16_t angleIncrement);
 
 
         #endif //ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/GameConfigurationCentral.h>)
+#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/NullRotationAnimation.h")
+#include "org/allbinary/animation/NullRotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+
+        #endif
+    

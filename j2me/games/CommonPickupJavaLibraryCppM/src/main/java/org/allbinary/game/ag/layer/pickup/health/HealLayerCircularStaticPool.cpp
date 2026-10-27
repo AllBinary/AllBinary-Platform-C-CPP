@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYERCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYERCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/health/HealLayerCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,17 +71,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/pickup/health/HealLayer.h"
 
-class HealLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-public: HealLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
-super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
+HealLayerCircularStaticPool::HealLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
+AllBinaryLayerCircularPool::initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryLayer* sourceLayerInterface){
+    auto HealLayerCircularStaticPool::visit(AllBinaryLayer* sourceLayerInterface) -> void{
 
     HealLayer* healLayer = dynamic_cast<HealLayer*>(this->getNextInstance());;
     
@@ -86,7 +95,6 @@ healLayer->visit(healthInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYERCIRCULARSTATICPOOL_CPP

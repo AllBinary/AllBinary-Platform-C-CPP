@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHREQUEST_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHREQUEST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/search/SearchRequest.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,19 +78,8 @@
         #include "org/allbinary/logic/control/search/SearchParams.h"
 #include "org/allbinary/logic/control/search/SearchData.h"
 
-class SearchRequest: public AbContext {
 
-    private: std::string xslFile;
-
-    private: std::string pageName;
-
-    private: std::string contentType;
-
-    private: SearchParams* searchParams;
-
-    private: StoreFrontInterface* storeFront;
-
-public: SearchRequest(StoreFrontInterface* storeFront, SearchParams* searchParams, std::string xslFile, std::string contentType, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : AbContext(propertiesHashMap, pageContext){
+SearchRequest::SearchRequest(StoreFrontInterface* storeFront, SearchParams* searchParams, std::string xslFile, std::string contentType, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : AbContext(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -100,37 +99,37 @@ this->contentType= contentType;
 }
 
 
-    public: void setStoreFront(StoreFrontInterface* storeFront){
+    auto SearchRequest::setStoreFront(StoreFrontInterface* storeFront) -> void{
 this->storeFront= storeFront;
     
 }
 
 
-    public: void setParams(SearchParams* searchParams){
+    auto SearchRequest::setParams(SearchParams* searchParams) -> void{
 this->searchParams= searchParams;
     
 }
 
 
-    public: void setXslFile(std::string value){
+    auto SearchRequest::setXslFile(std::string value) -> void{
 this->xslFile= value;
     
 }
 
 
-    public: void setFileBaseName(std::string value){
+    auto SearchRequest::setFileBaseName(std::string value) -> void{
 this->pageName= value;
     
 }
 
 
-    public: void setContentType(std::string value){
+    auto SearchRequest::setContentType(std::string value) -> void{
 this->contentType= value;
     
 }
 
 
-    public: StoreFrontInterface* getStoreFront(){
+    auto SearchRequest::getStoreFront() -> StoreFrontInterface*{
 
 
 
@@ -140,7 +139,7 @@ this->contentType= value;
 }
 
 
-    public: SearchParams* getParams(){
+    auto SearchRequest::getParams() -> SearchParams*{
 
 
 
@@ -150,7 +149,7 @@ this->contentType= value;
 }
 
 
-    public: std::string getXslFile(){
+    auto SearchRequest::getXslFile() -> std::string{
 
 
 
@@ -160,7 +159,7 @@ this->contentType= value;
 }
 
 
-    public: std::string getFileBaseName(){
+    auto SearchRequest::getFileBaseName() -> std::string{
 
 
 
@@ -170,7 +169,7 @@ this->contentType= value;
 }
 
 
-    public: std::string getContentType(){
+    auto SearchRequest::getContentType() -> std::string{
 
 
 
@@ -182,7 +181,7 @@ this->contentType= value;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* getFileBaseNameNode(Document* document){
+    auto SearchRequest::getFileBaseNameNode(Document* document) -> Node*{
 
 
 
@@ -192,7 +191,6 @@ this->contentType= value;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHREQUEST_CPP

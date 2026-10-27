@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/caption/CaptionAnimationHelperBase.h>
-
-      
-#include <org/allbinary/game/layer/WaypointBehaviorBase.h>
-
-      
-#include <org/allbinary/game/tracking/TrackingEvent.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class CaptionAnimationHelperBase;
+class WaypointBehaviorBase;
+class TrackingEvent;
+class AllBinaryLayer;
+class GeographicMapCellHistory;
+class GeographicMapCellPosition;
+class BasicArrayList;
 
 
 
@@ -68,11 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/waypoint/WaypointLogHelper.h"
-#include "org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h"
-#include "org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h"
+        class WaypointLogHelper;
+class Waypoint2LogHelper;
+class WaypointRunnableLogHelper;
 
-class WaypointLayerInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class WaypointLayerInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -142,3 +139,40 @@ class WaypointLayerInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/caption/CaptionAnimationHelperBase.h>)
+#include <org/allbinary/animation/caption/CaptionAnimationHelperBase.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/WaypointBehaviorBase.h>)
+#include <org/allbinary/game/layer/WaypointBehaviorBase.h>
+#endif
+#if __has_include(<org/allbinary/game/tracking/TrackingEvent.h>)
+#include <org/allbinary/game/tracking/TrackingEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/layer/waypoint/WaypointLogHelper.h")
+#include "org/allbinary/game/layer/waypoint/WaypointLogHelper.h"
+#endif
+#if __has_include("org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h")
+#include "org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h"
+#endif
+#if __has_include("org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h")
+#include "org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h"
+#endif
+
+        #endif
+    

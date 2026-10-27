@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERLOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERLOGHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/math/NamedAngle.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class AngleInfo;
+class NamedAngle;
+class GeographicMapCellHistory;
+class GeographicMapCellPosition;
+class BasicArrayList;
 
 
 
@@ -62,16 +57,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+        class PathFindingLayerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSLayerLogHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static RTSLayerLogHelper* instance() { static std::unique_ptr<RTSLayerLogHelper> value(new RTSLayerLogHelper()); return value.get(); }
+    private: static RTSLayerLogHelper* instance_owner();
+    private: static RTSLayerLogHelper* instance;
 
     public: static RTSLayerLogHelper* getInstance();
 
+
+            
+    public: RTSLayerLogHelper();
+        
     public: void setClosestGeographicMapCellHistory(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, BasicArrayList* pathsList);
 
     public: void trackTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition, int32_t dx, int32_t dy, std::string reason);
@@ -110,3 +114,28 @@ class RTSLayerLogHelper
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYERLOGHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RTSLAYERLOGHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERLOGHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/math/NamedAngle.h>)
+#include <org/allbinary/math/NamedAngle.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/layer/PathFindingLayerInterface.h")
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#endif
+
+        #endif
+    

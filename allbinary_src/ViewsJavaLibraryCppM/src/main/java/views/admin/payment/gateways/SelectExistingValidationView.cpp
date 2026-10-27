@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTEXISTINGVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTEXISTINGVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/payment/gateways/SelectExistingValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/payment/gateways/SelectExistingView.h"
 
-class SelectExistingValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+SelectExistingValidationView::SelectExistingValidationView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +82,7 @@ public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterf
 }
 
 
-    public: bool isValid(){
+    auto SelectExistingValidationView::isValid() -> bool{
 
 
 
@@ -83,7 +92,7 @@ public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterf
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto SelectExistingValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -93,7 +102,7 @@ public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterf
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto SelectExistingValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -105,16 +114,16 @@ public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterf
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto SelectExistingValidationView::validationInfo() -> std::string{
 
 
 
-                            throw new Exception("validationInfo");
+                            throw Exception("validationInfo");
                     
 }
 
 
-    public: Document* toXmlDoc(){
+    auto SelectExistingValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -124,7 +133,7 @@ public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterf
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto SelectExistingValidationView::toXmlNode(Document* document) -> Node*{
 
 
 
@@ -136,7 +145,7 @@ public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterf
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto SelectExistingValidationView::view() -> std::string{
 
 
 
@@ -146,7 +155,6 @@ public: SelectExistingValidationView(TransformInfoInterface* transformInfoInterf
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTEXISTINGVALIDATIONVIEW_CPP

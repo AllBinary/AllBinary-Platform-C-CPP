@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONJFRAME_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONJFRAME_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/InputAutomationJFrame.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -173,121 +183,14 @@
 #include "org/allbinary/input/automation/ActionEvent.h"
 #include "org/allbinary/input/automation/EventQueue.h"
 
-class InputAutomationJFrame: public javax::swing::JFrame, public InputAutomationConfigurationModuleChangeListener, public InputAutomationRobotChangeListener, public HelpSetListener {
 
-    private: static inline InputAutomationJFrame* INPUTAUTOMATION_JFRAME;
-
-    public: static InputAutomationJFrame* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationJFrame::INPUTAUTOMATION_JFRAME;
-    
-}
-
-
-    public: static void destroy(){
-InputAutomationJFrame::INPUTAUTOMATION_JFRAME->setVisible(false);
-    
-}
-
-
-    public: static void create(InputAutomationBundleActivatorListenerInterface* inputAutomationBundleActivatorListenerInterface){
-LogConfigTypeFactory::getInstance();
-    
-
-    AppUrlGlobals* appUrlGlobals = new AppUrlGlobals();;
-    
-appUrlGlobals->setWebappPath("G:/mnt/bc/mydev/work_automation/automation/run/");
-    
-URLGLOBALS::init(appUrlGlobals);
-    
-WebappClassLoaderInfo::setLoader(appUrlGlobals->getClass()getClassLoader());
-    
-java.awt.EventQueue.invokeLater(class extends ARunnable
-                                {
-                                
-    public: void run(){
-
-    LogUtil* logUtil = LogUtil::getInstance();;
-    
-
-    CommonStrings* commonStrings = CommonStrings::getInstance();;
-    
-
-        try {
-            logUtil->putF("Running", this, commonStrings->RUN);
-    
-INPUTAUTOMATION_JFRAME= new InputAutomationJFrame();
-    
-InputRobotFactory::getInstance()->addListener(InputAutomationJFrame::getInstance());
-    
-
-                        if(inputAutomationBundleActivatorListenerInterface != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    inputAutomationBundleActivatorListenerInterface->registerAsService();
-    
-inputAutomationBundleActivatorListenerInterface->useServices();
-    
-
-                                    }
-                                
-INPUTAUTOMATION_JFRAME->setVisible(true);
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
-    
-}
-
-}
-
-                                }
-                            );
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: static void main(std::vector<std::string> args){
-InputAutomationJFrame::create(
-                            nullptr);
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: InputAutomationModuleConfigurations* inputAutomationModuleConfigurations = new InputAutomationModuleConfigurations();
-
-    private: InputAutomationModuleFactoryFactory* inputAutomationModuleFactory;
-
-    private: InputAutomationModuleFactoryInterface* inputAutomationModuleInterface;
-
-    private: RunnableInterface* runnableInterface;
-
-    private: Thread* thread;
-
-    private: HelpSet* helpSet;
-
-    private: URI* uri = new URI("http://geocities.com/allbinary/");
-
-public: InputAutomationJFrame(){
+InputAutomationJFrame::InputAutomationJFrame() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), inputAutomationModuleConfigurations(new InputAutomationModuleConfigurations()), uri(new URI("http://geocities.com/allbinary/")){
 this->initComponents();
     
 
     URL* url = this->getClass()->getResource("/help/Help.hs");;
     
-this->logUtil->putF("URL: " +url, this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("URL: ") +JavaString::valueOf(url), this, this->commonStrings->CONSTRUCTOR);
     
 this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
     
@@ -303,13 +206,13 @@ this->init();
 }
 
 
-    public: void helpSetAdded(HelpSetEvent* helpSetEvent){
+    auto InputAutomationJFrame::helpSetAdded(HelpSetEvent* helpSetEvent) -> void{
 this->helpSet->add(helpSetEvent->getHelpSet());
     
 }
 
 
-    public: void helpSetRemoved(HelpSetEvent* helpSetEvent){
+    auto InputAutomationJFrame::helpSetRemoved(HelpSetEvent* helpSetEvent) -> void{
 this->helpSet->remove(helpSetEvent->getHelpSet());
     
 }
@@ -317,7 +220,7 @@ this->helpSet->remove(helpSetEvent->getHelpSet());
 
                 //@Throws(Exception.constructor)
             
-    private: void init(){
+    auto InputAutomationJFrame::init() -> void{
 
     InputAutomationConfigurationFactory* inputAutomationConfigurationFactory = InputAutomationConfigurationFactory::getInstance();;
     
@@ -354,7 +257,7 @@ this->gameRobotJTabbedPane->setSelectedIndex(0);
 }
 
 
-    private: void initComponents(){
+    auto InputAutomationJFrame::initComponents() -> void{
 this->noModuleSelectedJDialog= new javax::swing::JDialog();
     
 this->noModuleSelectedJLabel= new javax::swing::JLabel();
@@ -402,11 +305,11 @@ this->noModuleSelectedJLabel->setText("Please Select A Module");
     
 this->noModuleSelectedJDialog->getContentPane()->setLayout(noModuleSelectedJDialogLayout);
     
-noModuleSelectedJDialogLayout->setHorizontalGroup(noModuleSelectedJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(noModuleSelectedJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(noModuleSelectedJLabel)->addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+noModuleSelectedJDialogLayout->setHorizontalGroup(noModuleSelectedJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(noModuleSelectedJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(noModuleSelectedJLabel)->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
-noModuleSelectedJDialogLayout->setVerticalGroup(noModuleSelectedJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(noModuleSelectedJLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short::MAX_VALUE));
+noModuleSelectedJDialogLayout->setVerticalGroup(noModuleSelectedJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(noModuleSelectedJLabel, javax.swing->GroupLayout->Alignment->TRAILING, javax.swing->GroupLayout->DEFAULT_SIZE, 48, Short::MAX_VALUE));
     
-setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+setDefaultCloseOperation(javax.swing->WindowConstants->EXIT_ON_CLOSE);
     
 this->setMinimumSize(new java::awt::Dimension(325, 215));
     
@@ -466,9 +369,9 @@ this->jScrollPane1->setViewportView(this->inputAutomationModuleJList);
     
 this->inputAutomationModuleJPanel->setLayout(inputAutomationModuleJPanelLayout);
     
-inputAutomationModuleJPanelLayout->setHorizontalGroup(inputAutomationModuleJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)->addContainerGap(367, Short::MAX_VALUE)));
+inputAutomationModuleJPanelLayout->setHorizontalGroup(inputAutomationModuleJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent(jScrollPane1, javax.swing->GroupLayout->PREFERRED_SIZE, 199, javax.swing->GroupLayout->PREFERRED_SIZE)->addContainerGap(367, Short::MAX_VALUE)));
     
-inputAutomationModuleJPanelLayout->setVerticalGroup(inputAutomationModuleJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)->addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+inputAutomationModuleJPanelLayout->setVerticalGroup(inputAutomationModuleJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(inputAutomationModuleJPanelLayout->createSequentialGroup()->addComponent(jScrollPane1, javax.swing->GroupLayout->PREFERRED_SIZE, 330, javax.swing->GroupLayout->PREFERRED_SIZE)->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
 this->gameRobotJTabbedPane->addTab("Modules", inputAutomationModuleJPanel);
     
@@ -477,9 +380,9 @@ this->gameRobotJTabbedPane->addTab("Modules", inputAutomationModuleJPanel);
     
 this->automationModuleConfigurationJPanel->setLayout(automationModuleConfigurationJPanelLayout);
     
-automationModuleConfigurationJPanelLayout->setHorizontalGroup(automationModuleConfigurationJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 566, Short::MAX_VALUE));
+automationModuleConfigurationJPanelLayout->setHorizontalGroup(automationModuleConfigurationJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 566, Short::MAX_VALUE));
     
-automationModuleConfigurationJPanelLayout->setVerticalGroup(automationModuleConfigurationJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 334, Short::MAX_VALUE));
+automationModuleConfigurationJPanelLayout->setVerticalGroup(automationModuleConfigurationJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 334, Short::MAX_VALUE));
     
 this->gameRobotJTabbedPane->addTab("Configuration", automationModuleConfigurationJPanel);
     
@@ -639,16 +542,16 @@ setJMenuBar(this->mainJMenuBar);
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(gameRobotJTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(gameRobotJTabbedPane, javax.swing->GroupLayout->Alignment->TRAILING, javax.swing->GroupLayout->DEFAULT_SIZE, 571, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(gameRobotJTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short::MAX_VALUE));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(gameRobotJTabbedPane, javax.swing->GroupLayout->Alignment->TRAILING, javax.swing->GroupLayout->DEFAULT_SIZE, 359, Short::MAX_VALUE));
     
 pack();
     
 }
 
 
-    private: void subscriptionJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::subscriptionJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             Desktop::getDesktop()->browse(this->uri);
@@ -664,7 +567,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "subscriptionJMenuItemA
 }
 
 
-    private: void updatesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::updatesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             Desktop::getDesktop()->browse(this->uri);
@@ -680,7 +583,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updatesJMenuItemAction
 }
 
 
-    private: void aboutJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::aboutJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
     JDialog* textJDialog = new BasicTextJDialog("Copyright (c) 2002-2007 AllBinary");;
     
@@ -691,7 +594,7 @@ textJDialog->setLocationRelativeTo(this);
 }
 
 
-    private: void modulesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::modulesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             (new DesktopBundle())->start();
@@ -707,27 +610,27 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "modulesJMenuItemAction
 }
 
 
-    private: void helpJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::helpJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 JavaHelpUtil::getInstance()->show(this->helpSet);
     
 }
 
 
-    private: void stopOnFocusJCheckBoxMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::stopOnFocusJCheckBoxMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void optionsJMenuActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::optionsJMenuActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void formWindowLostFocus(java::awt::event::WindowEvent* evt){
+    auto InputAutomationJFrame::formWindowLostFocus(java::awt::event::WindowEvent* evt) -> void{
 this->logUtil->putF("Nothing", this, "focusLost");
     
 }
 
 
-    private: void formWindowGainedFocus(java::awt::event::WindowEvent* evt){
+    auto InputAutomationJFrame::formWindowGainedFocus(java::awt::event::WindowEvent* evt) -> void{
 
                         if(this->stopOnFocusJCheckBoxMenuItem->isSelected())
                         
@@ -751,15 +654,15 @@ this->logUtil->putF("Nothing", this, "focusLost");
 }
 
 
-    private: void formFocusLost(java::awt::event::FocusEvent* evt){
+    auto InputAutomationJFrame::formFocusLost(java::awt::event::FocusEvent* evt) -> void{
 }
 
 
-    private: void formFocusGained(java::awt::event::FocusEvent* evt){
+    auto InputAutomationJFrame::formFocusGained(java::awt::event::FocusEvent* evt) -> void{
 }
 
 
-    private: void inputAutomationModuleJListValueChanged(javax::swing::event::ListSelectionEvent* evt){
+    auto InputAutomationJFrame::inputAutomationModuleJListValueChanged(javax::swing::event::ListSelectionEvent* evt) -> void{
 
         try {
             
@@ -776,13 +679,13 @@ this->getAutomationModuleConfigurationJPanel()->removeAll();
 
     javax::swing::GroupLayout* layout = dynamic_cast<javax::swing::GroupLayout*>(this->getAutomationModuleConfigurationJPanel()->getLayout());;
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->inputAutomationModuleInterface->getConfigurationJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->inputAutomationModuleInterface->getConfigurationJPanel(), javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->inputAutomationModuleInterface->getConfigurationJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->inputAutomationModuleInterface->getConfigurationJPanel(), javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE));
     
 this->gameRobotJTabbedPane->setEnabledAt(1, true);
     
-this->logUtil->putF("Setting Module: " +gameAutomationRobotModuleNameString +" and Configuration JPanel", this, "gameAutomationRobotModuleJListValueChanged");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Setting Module: ") +JavaString::valueOf(gameAutomationRobotModuleNameString)) +JavaString::valueOf(" and Configuration JPanel"), this, "gameAutomationRobotModuleJListValueChanged");
     
 
                                     }
@@ -806,7 +709,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "gameAutomationRobotMod
 }
 
 
-    private: void stopJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::stopJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
                         if(this->runnableInterface != 
                                     nullptr
@@ -829,7 +732,7 @@ this->noModuleSelectedJDialog->setLocationRelativeTo(this);
 }
 
 
-    private: void startJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto InputAutomationJFrame::startJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "startJMenuItemActionPerformed");
@@ -891,7 +794,93 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "startJMenuItemActionPe
 }
 
 
-    public: javax::swing::JPanel* getAutomationModuleConfigurationJPanel(){
+    auto InputAutomationJFrame::getInstance() -> InputAutomationJFrame*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return InputAutomationJFrame::INPUTAUTOMATION_JFRAME;
+    
+}
+
+
+    auto InputAutomationJFrame::destroy() -> void{
+InputAutomationJFrame::INPUTAUTOMATION_JFRAME->setVisible(false);
+    
+}
+
+
+    auto InputAutomationJFrame::create(InputAutomationBundleActivatorListenerInterface* inputAutomationBundleActivatorListenerInterface) -> void{
+LogConfigTypeFactory::getInstance();
+    
+
+    AppUrlGlobals* appUrlGlobals = new AppUrlGlobals();;
+    
+appUrlGlobals->setWebappPath("G:/mnt/bc/mydev/work_automation/automation/run/");
+    
+URLGLOBALS::init(appUrlGlobals);
+    
+WebappClassLoaderInfo::setLoader(appUrlGlobals->getClass()getClassLoader());
+    
+java.awt->EventQueue->invokeLater(class extends ARunnable
+                                {
+                                
+    public: void run(){
+
+    LogUtil* logUtil = LogUtil::getInstance();;
+    
+
+    CommonStrings* commonStrings = CommonStrings::getInstance();;
+    
+
+        try {
+            logUtil->putF("Running", this, commonStrings->RUN);
+    
+INPUTAUTOMATION_JFRAME= new InputAutomationJFrame();
+    
+InputRobotFactory::getInstance()->addListener(InputAutomationJFrame::getInstance());
+    
+
+                        if(inputAutomationBundleActivatorListenerInterface != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    inputAutomationBundleActivatorListenerInterface->registerAsService();
+    
+inputAutomationBundleActivatorListenerInterface->useServices();
+    
+
+                                    }
+                                
+INPUTAUTOMATION_JFRAME->setVisible(true);
+    
+
+                //: 
+} catch(Exception& e) 
+            {
+logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
+    
+}
+
+}
+
+                                }
+                            );
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto InputAutomationJFrame::main(std::vector<std::string> args) -> void{
+InputAutomationJFrame::create(
+                            nullptr);
+    
+}
+
+
+    auto InputAutomationJFrame::getAutomationModuleConfigurationJPanel() -> javax::swing::JPanel*{
 
 
 
@@ -901,13 +890,13 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "startJMenuItemActionPe
 }
 
 
-    public: void setAutomationModuleConfigurationJPanel(javax::swing::JPanel* automationModuleConfigurationJPanel){
+    auto InputAutomationJFrame::setAutomationModuleConfigurationJPanel(javax::swing::JPanel* automationModuleConfigurationJPanel) -> void{
 this->automationModuleConfigurationJPanel= automationModuleConfigurationJPanel;
     
 }
 
 
-    public: void onAdd(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent){
+    auto InputAutomationJFrame::onAdd(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "onAdd");
@@ -925,7 +914,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "onAdd", &e);
 }
 
 
-    public: void onRemove(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent){
+    auto InputAutomationJFrame::onRemove(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "onRemove");
@@ -943,7 +932,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "onRemove", &e);
 }
 
 
-    public: void onAdd(InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationChangeEvent){
+    auto InputAutomationJFrame::onAdd(InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationChangeEvent) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "onAdd");
@@ -963,7 +952,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "onAdd", &e);
 }
 
 
-    public: void onRemove(InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationChangeEvent){
+    auto InputAutomationJFrame::onRemove(InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationChangeEvent) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "onRemove");
@@ -986,12 +975,12 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "onAdd", &e);
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil->putF("inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, this, commonStrings->INIT);
+logUtil->putF(JavaString::valueOf("inputAutomationModuleConfigurationList: ") +JavaString::valueOf(inputAutomationModuleConfigurationList), this, commonStrings->INIT);
     
 
 
 
-                            throw new Exception();
+                            throw Exception();
                     
 
                                     }
@@ -1014,45 +1003,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "onRemove", &e);
 }
 
 
-    private: javax::swing::JMenuItem* aboutJMenuItem;
 
-    private: javax::swing::JPanel* automationModuleConfigurationJPanel;
 
-    private: javax::swing::JTabbedPane* gameRobotJTabbedPane;
-
-    private: javax::swing::JMenuItem* helpJMenuItem;
-
-    private: javax::swing::JList* inputAutomationModuleJList;
-
-    private: javax::swing::JPanel* inputAutomationModuleJPanel;
-
-    private: javax::swing::JScrollPane* jScrollPane1;
-
-    private: javax::swing::JMenuBar* mainJMenuBar;
-
-    private: javax::swing::JMenuItem* modulesJMenuItem;
-
-    private: javax::swing::JDialog* noModuleSelectedJDialog;
-
-    private: javax::swing::JLabel* noModuleSelectedJLabel;
-
-    private: javax::swing::JMenu* optionsJMenu;
-
-    private: javax::swing::JMenu* processingJMenu;
-
-    private: javax::swing::JMenuItem* startJMenuItem;
-
-    private: javax::swing::JMenuItem* stopJMenuItem;
-
-    private: javax::swing::JCheckBoxMenuItem* stopOnFocusJCheckBoxMenuItem;
-
-    private: javax::swing::JMenuItem* subscriptionJMenuItem;
-
-    private: javax::swing::JMenu* toolsJMenu;
-
-    private: javax::swing::JMenuItem* updatesJMenuItem;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONJFRAME_CPP

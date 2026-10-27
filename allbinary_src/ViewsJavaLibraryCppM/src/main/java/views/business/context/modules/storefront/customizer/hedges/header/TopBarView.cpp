@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_TOPBARVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_TOPBARVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/hedges/header/TopBarView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,13 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TopBarView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: HeadingValidation* heading;
-
-public: TopBarView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+TopBarView::TopBarView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,7 +87,7 @@ public: TopBarView(TransformInfoInterface* transformInfoInterface) : HttpStoreCo
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto TopBarView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
@@ -90,7 +95,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TopBarView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -104,10 +109,10 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -124,7 +129,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto TopBarView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -133,17 +138,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -158,7 +163,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_TOPBARVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/life/LifeResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LifeResources
-            : public Object
-         {
+auto LifeResources::SINGLETON_owner() -> LifeResources* { static std::unique_ptr<LifeResources> value(new LifeResources()); return value.get(); }
+LifeResources* LifeResources::SINGLETON = LifeResources::SINGLETON_owner();
 
-    private: static LifeResources* SINGLETON() { static std::unique_ptr<LifeResources> value(new LifeResources()); return value.get(); }
+LifeResources::LifeResources(){
+}
 
-    public: static LifeResources* getInstance(){
+
+    auto LifeResources::getInstance() -> LifeResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LifeResources::SINGLETON();
+                        return LifeResources::SINGLETON;
     
 }
 
 
-    public: std::string RESOURCE = "life_drop_20_by_20.png";
-
-private: LifeResources(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_CPP

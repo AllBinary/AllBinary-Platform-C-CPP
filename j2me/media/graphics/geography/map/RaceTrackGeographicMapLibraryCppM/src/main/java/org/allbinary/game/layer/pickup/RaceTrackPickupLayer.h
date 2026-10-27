@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,36 +34,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/NullAnimationFactory.h>
+class NullAnimationFactory;
 
-      
-#include <org/allbinary/game/identification/BasicGroupFactory.h>
+class AllBinaryTiledLayer;
+class RemoteInfo;
+class TileLayerPositionIntoViewPosition;
+class PointFactory;
+class Rectangle;
+class AllBinaryLayer;
 
-      
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/game/multiplayer/layer/RemoteInfo.h>
-
-      
-#include <org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/view/ViewPosition.h>
-
-      
-#include <org/allbinary/view/event/ViewPositionEventHandler.h>
-
-      
+class ViewPositionEventHandler;
 
 
 
@@ -78,15 +63,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/pickup/PickupLayer.h"
-#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
+class CountedPickedUpLayerInterfaceFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RaceTrackPickupLayer: public PickupLayer {
 
     private: static inline const std::string NAME = "RaceTrackPickupLayer";
 
 public: RaceTrackPickupLayer();
 
-    private: ViewPositionEventHandler* viewPositionEventHandler = ViewPositionEventHandler::getInstance();
+    private: ViewPositionEventHandler* viewPositionEventHandler;
 
     public: void setTiledLayer(AllBinaryTiledLayer* tiledLayer);
 
@@ -98,3 +87,42 @@ public: RaceTrackPickupLayer();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYER_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/NullAnimationFactory.h>)
+#include <org/allbinary/animation/NullAnimationFactory.h>
+#endif
+
+#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/multiplayer/layer/RemoteInfo.h>)
+#include <org/allbinary/game/multiplayer/layer/RemoteInfo.h>
+#endif
+#if __has_include(<org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>)
+#include <org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+
+#if __has_include(<org/allbinary/view/event/ViewPositionEventHandler.h>)
+#include <org/allbinary/view/event/ViewPositionEventHandler.h>
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/PickupLayer.h")
+#include "org/allbinary/game/layer/pickup/PickupLayer.h"
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h")
+#include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AFFILIATE_SALES_AFFILIATESALES_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AFFILIATE_SALES_AFFILIATESALES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/affiliate/sales/AffiliateSales.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AffiliateSales
-            : public Object
-         {
 
-public: AffiliateSales(){
+AffiliateSales::AffiliateSales(){
 }
 
 
-    public: bool isValid(){
+    auto AffiliateSales::isValid() -> bool{
 
 
 
@@ -63,7 +70,6 @@ public: AffiliateSales(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AFFILIATE_SALES_AFFILIATESALES_CPP

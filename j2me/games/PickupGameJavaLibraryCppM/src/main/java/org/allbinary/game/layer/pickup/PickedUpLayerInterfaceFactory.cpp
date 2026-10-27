@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,15 +62,8 @@
 #include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
 #include "org/allbinary/game/layer/pickup/IconLayer.h"
 
-class PickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactoryBase {
 
-    private: PickedUpLayerType* pickedUpLayerType;
-
-    private: IconLayer* iconLayer;
-
-    private: Animation* animationInterface;
-
-protected: PickedUpLayerInterfaceFactory(PickedUpLayerType* pickeUpLayerType, IconLayer* iconLayer, Animation* animationInterface){
+PickedUpLayerInterfaceFactory::PickedUpLayerInterfaceFactory(PickedUpLayerType* pickeUpLayerType, IconLayer* iconLayer, Animation* animationInterface){
 this->pickedUpLayerType= pickeUpLayerType;
     
 this->animationInterface= animationInterface;
@@ -70,7 +73,7 @@ this->iconLayer= iconLayer;
 }
 
 
-    public: AllBinaryLayer* getIconLayer(){
+    auto PickedUpLayerInterfaceFactory::getIconLayer() -> AllBinaryLayer*{
 
 
 
@@ -80,7 +83,7 @@ this->iconLayer= iconLayer;
 }
 
 
-    public: Animation* getAnimationInterface(){
+    auto PickedUpLayerInterfaceFactory::getAnimationInterface() -> Animation*{
 
 
 
@@ -90,7 +93,7 @@ this->iconLayer= iconLayer;
 }
 
 
-    public: PickedUpLayerType* getPickedUpLayerType(){
+    auto PickedUpLayerInterfaceFactory::getPickedUpLayerType() -> PickedUpLayerType*{
 
 
 
@@ -100,7 +103,6 @@ this->iconLayer= iconLayer;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORY_CPP

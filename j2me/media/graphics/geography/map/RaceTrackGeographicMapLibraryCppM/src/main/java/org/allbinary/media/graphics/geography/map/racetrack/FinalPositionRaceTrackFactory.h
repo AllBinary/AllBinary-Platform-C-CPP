@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_FINALPOSITIONRACETRACKFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_FINALPOSITIONRACETRACKFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +53,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FinalPositionRaceTrackFactory
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const int32_t FIRST_POSITION = 1;
 
-    private: static inline int32_t index = FinalPositionRaceTrackFactory::FIRST_POSITION;
+    private: static int32_t index;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static int32_t getInstance();
@@ -70,3 +79,10 @@ private: FinalPositionRaceTrackFactory();
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_FINALPOSITIONRACETRACKFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_FINALPOSITIONRACETRACKFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_FINALPOSITIONRACETRACKFACTORY_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/LazyImageRotationAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -99,25 +109,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
 
-class LazyImageRotationAnimation: public RotationAnimation {
 
-    private: static inline const std::string SET_REAL_ANIMATION = "setRealAnimation";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: int32_t layoutIndex;
-
-    public: int32_t instanceId;
-
-    public: BaseImageAnimationFactory* animationInterfaceFactoryInterface;
-
-    private: IndexedAnimation* NULL_INDEX_ANIMATION;
-
-    private: IndexedAnimation* animation;
-
-    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
-
-public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties* scaleProperties, BaseImageAnimationFactory* animationInterfaceFactoryInterface, AnimationBehavior* animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
+LazyImageRotationAnimation::LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties* scaleProperties, BaseImageAnimationFactory* animationInterfaceFactoryInterface, AnimationBehavior* animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance()->QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior), logUtil(LogUtil::getInstance()), scaleProperties(ScaleProperties::instance){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -189,7 +182,7 @@ this->lazyImageRotationAnimation->animation= this->lazyImageRotationAnimation->N
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 }
 
@@ -210,7 +203,7 @@ this->lazyImageRotationAnimation->animation= this->lazyImageRotationAnimation->N
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 }
 
@@ -228,7 +221,7 @@ this->animation= new ActualRotationAnimation(this);
 }
 
 
-    public: void setRealAnimation(){
+    auto LazyImageRotationAnimation::setRealAnimation() -> void{
 
         try {
             
@@ -244,20 +237,20 @@ this->animation->setState(animation);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, LazyImageRotationAnimation::SET_REAL_ANIMATION, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, LazyImageRotationAnimation::SET_REAL_ANIMATION, &e);
     
 }
 
 }
 
 
-    public: void setScale(float scaleX, float scaleY){
+    auto LazyImageRotationAnimation::setScale(float scaleX, float scaleY) -> void{
 this->animation->setScale(scaleX, scaleY);
     
 }
 
 
-    public: AnimationBehavior* getAnimationBehavior(){
+    auto LazyImageRotationAnimation::getAnimationBehavior() -> AnimationBehavior*{
 
 
 
@@ -269,37 +262,37 @@ this->animation->setScale(scaleX, scaleY);
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL* gl){
+    auto LazyImageRotationAnimation::set(GL* gl) -> void{
 this->animation->set(gl);
     
 }
 
 
-    public: void setAlpha(int32_t alpha){
+    auto LazyImageRotationAnimation::setAlpha(int32_t alpha) -> void{
 this->animation->setAlpha(alpha);
     
 }
 
 
-    public: void setDx(int32_t dx){
+    auto LazyImageRotationAnimation::setDx(int32_t dx) -> void{
 this->animation->setDx(dx);
     
 }
 
 
-    public: void setDy(int32_t dy){
+    auto LazyImageRotationAnimation::setDy(int32_t dy) -> void{
 this->animation->setDy(dy);
     
 }
 
 
-    public: void setMaxScale(float maxScaleX, float maxScaleY){
+    auto LazyImageRotationAnimation::setMaxScale(float maxScaleX, float maxScaleY) -> void{
 this->animation->setMaxScale(maxScaleX, maxScaleY);
     
 }
 
 
-    public: void nextRotation(){
+    auto LazyImageRotationAnimation::nextRotation() -> void{
 
     RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
@@ -308,7 +301,7 @@ rotationAnimation->nextRotation();
 }
 
 
-    public: void previousRotation(){
+    auto LazyImageRotationAnimation::previousRotation() -> void{
 
     RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
@@ -317,7 +310,7 @@ rotationAnimation->previousRotation();
 }
 
 
-    public: void nextRotationX(){
+    auto LazyImageRotationAnimation::nextRotationX() -> void{
 
     RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
@@ -326,7 +319,7 @@ rotationAnimation->nextRotationX();
 }
 
 
-    public: void previousRotationX(){
+    auto LazyImageRotationAnimation::previousRotationX() -> void{
 
     RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
@@ -335,7 +328,7 @@ rotationAnimation->previousRotationX();
 }
 
 
-    public: void nextRotationZ(){
+    auto LazyImageRotationAnimation::nextRotationZ() -> void{
 
     RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
@@ -344,7 +337,7 @@ rotationAnimation->nextRotationZ();
 }
 
 
-    public: void previousRotationZ(){
+    auto LazyImageRotationAnimation::previousRotationZ() -> void{
 
     RotationAnimation* rotationAnimation = (dynamic_cast<RotationAnimation*>(this->animation));;
     
@@ -353,13 +346,13 @@ rotationAnimation->previousRotationZ();
 }
 
 
-    public: void changeBasicColor(BasicColor* basicColor){
+    auto LazyImageRotationAnimation::changeBasicColor(BasicColor* basicColor) -> void{
 this->animation->changeBasicColor(basicColor);
     
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto LazyImageRotationAnimation::getBasicColorP() -> BasicColor*{
 
 
 
@@ -369,7 +362,7 @@ this->animation->changeBasicColor(basicColor);
 }
 
 
-    public: BasicColor* getChangeBasicColor(){
+    auto LazyImageRotationAnimation::getChangeBasicColor() -> BasicColor*{
 
 
 
@@ -379,7 +372,7 @@ this->animation->changeBasicColor(basicColor);
 }
 
 
-    public: int32_t getChangeColor(){
+    auto LazyImageRotationAnimation::getChangeColor() -> int32_t{
 
 
 
@@ -389,7 +382,7 @@ this->animation->changeBasicColor(basicColor);
 }
 
 
-    public: int32_t getColor(){
+    auto LazyImageRotationAnimation::getColor() -> int32_t{
 
 
 
@@ -399,7 +392,7 @@ this->animation->changeBasicColor(basicColor);
 }
 
 
-    public: int32_t getDx(){
+    auto LazyImageRotationAnimation::getDx() -> int32_t{
 
 
 
@@ -409,7 +402,7 @@ this->animation->changeBasicColor(basicColor);
 }
 
 
-    public: int32_t getDy(){
+    auto LazyImageRotationAnimation::getDy() -> int32_t{
 
 
 
@@ -419,7 +412,7 @@ this->animation->changeBasicColor(basicColor);
 }
 
 
-    public: bool isThreed(){
+    auto LazyImageRotationAnimation::isThreed() -> bool{
 
 
 
@@ -431,25 +424,25 @@ this->animation->changeBasicColor(basicColor);
 
                 //@Throws(Exception.constructor)
             
-    public: void nextFrame(){
+    auto LazyImageRotationAnimation::nextFrame() -> void{
 this->animation->nextFrame();
     
 }
 
 
-    public: void reset(){
+    auto LazyImageRotationAnimation::reset() -> void{
 this->animation->reset();
     
 }
 
 
-    public: void setFrame(int32_t index){
+    auto LazyImageRotationAnimation::setFrame(int32_t index) -> void{
 this->animation->setFrame(index);
     
 }
 
 
-    public: int32_t getFrame(){
+    auto LazyImageRotationAnimation::getFrame() -> int32_t{
 
 
 
@@ -461,7 +454,7 @@ this->animation->setFrame(index);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto LazyImageRotationAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -471,7 +464,7 @@ this->animation->setFrame(index);
 }
 
 
-    public: int32_t getSize(){
+    auto LazyImageRotationAnimation::getSize() -> int32_t{
 
 
 
@@ -481,13 +474,13 @@ this->animation->setFrame(index);
 }
 
 
-    public: void previousFrame(){
+    auto LazyImageRotationAnimation::previousFrame() -> void{
 this->animation->previousFrame();
     
 }
 
 
-    public: bool isLastFrame(){
+    auto LazyImageRotationAnimation::isLastFrame() -> bool{
 
 
 
@@ -497,13 +490,13 @@ this->animation->previousFrame();
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto LazyImageRotationAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 this->animation->setSequence(sequence);
     
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto LazyImageRotationAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -513,7 +506,7 @@ this->animation->setSequence(sequence);
 }
 
 
-    public: int32_t getWidth(){
+    auto LazyImageRotationAnimation::getWidth() -> int32_t{
 
 
 
@@ -523,7 +516,7 @@ this->animation->setSequence(sequence);
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto LazyImageRotationAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 
         try {
             this->animation->paintXY(graphics, x, y);
@@ -532,14 +525,14 @@ this->animation->setSequence(sequence);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 }
 
 }
 
 
-    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+    auto LazyImageRotationAnimation::paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) -> void{
 
         try {
             this->animation->paintThreedXYZ(graphics, x, y, z);
@@ -548,14 +541,14 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROC
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 }
 
 }
 
 
-    public: std::string toString(){
+    auto LazyImageRotationAnimation::toString() -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -566,12 +559,11 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append(super.toString())->append(commonSeps->SPACE)->append(image->getName())->append(commonSeps->SPACE)->appendint(image->getWidth())->append(commonSeps->SPACE)->appendint(image->getHeight())->toString();;
+                        return (new StringMaker())->append(RotationAnimation::toString())->append(commonSeps->SPACE)->append(image->getName())->append(commonSeps->SPACE)->appendint(image->getWidth())->append(commonSeps->SPACE)->appendint(image->getHeight())->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_CPP

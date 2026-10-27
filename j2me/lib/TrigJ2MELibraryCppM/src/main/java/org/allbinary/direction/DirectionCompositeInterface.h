@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_DIRECTION_DIRECTIONCOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/direction/Direction.h"
+        class Direction;
 
-class DirectionCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class DirectionCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual Direction* getDirection() = 0;
 
@@ -57,3 +68,13 @@ class DirectionCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_DIRECTION_DIRECTIONCOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DIRECTION_DIRECTIONCOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DIRECTION_DIRECTIONCOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/direction/Direction.h")
+#include "org/allbinary/direction/Direction.h"
+#endif
+
+        #endif
+    

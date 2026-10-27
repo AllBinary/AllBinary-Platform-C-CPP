@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_FILETABLEMAPPING_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_FILETABLEMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/FileTableMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,13 +84,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FileTableMapping
-            : public Object
-        , public TableMappingInterface {
 
-    private: AbFile* file;
-
-public: FileTableMapping(AbFile* file){
+FileTableMapping::FileTableMapping(AbFile* file){
 this->file= file;
     
 }
@@ -88,7 +93,7 @@ this->file= file;
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto FileTableMapping::getKey() -> Object*{
 
 
 
@@ -100,7 +105,7 @@ this->file= file;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto FileTableMapping::toVector() -> BasicArrayList*{
 
     BasicArrayList* filePropertyVector = new BasicArrayListD();;
     
@@ -125,7 +130,7 @@ filePropertyVector->add(this->file->getPath());
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto FileTableMapping::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* filePropertyHashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -170,7 +175,6 @@ filePropertyHashMap->put(fileData->PATH, file->getPath());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_FILETABLEMAPPING_CPP

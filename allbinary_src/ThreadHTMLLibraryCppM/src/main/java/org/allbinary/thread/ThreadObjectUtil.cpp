@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_CPP
+        #define ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ThreadObjectUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -37,47 +47,44 @@
         #include "org/allbinary/thread/NullPriorityRunnable.h"
 #include "org/allbinary/thread/PriorityRunnable.h"
 
-class ThreadObjectUtil
-            : public Object
-         {
 
-    private: static ThreadObjectUtil* instance() { static std::unique_ptr<ThreadObjectUtil> value(new ThreadObjectUtil()); return value.get(); }
+ThreadObjectUtil::ThreadObjectUtil() : NULL_PRIORITY_RUNNABLE(new NullPriorityRunnable()) {
+        }
+        auto ThreadObjectUtil::instance_owner() -> ThreadObjectUtil* { static std::unique_ptr<ThreadObjectUtil> value(new ThreadObjectUtil()); return value.get(); }
+ThreadObjectUtil* ThreadObjectUtil::instance = ThreadObjectUtil::instance_owner();
 
-    public: static ThreadObjectUtil* getInstance(){
+    auto ThreadObjectUtil::getInstance() -> ThreadObjectUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadObjectUtil::instance();
+                        return ThreadObjectUtil::instance;
     
 }
 
 
-    public: PriorityRunnable* NULL_PRIORITY_RUNNABLE = new NullPriorityRunnable();
-
-    public: void notifyObject(Object anyType){
+    auto ThreadObjectUtil::notifyObject(Object* anyType) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void waitObject(Object anyType){
+    auto ThreadObjectUtil::waitObject(Object* anyType) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void waitObjectFor(Object anyType, int64_t delay){
+    auto ThreadObjectUtil::waitObjectFor(Object* anyType, int64_t delay) -> void{
 }
 
 
-    public: void processThread(Runnable* runnable){
+    auto ThreadObjectUtil::processThread(Runnable* runnable) -> void{
 runnable->run();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_GROUP_GROUPDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_GROUP_GROUPDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/group/GroupData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GroupData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "GROUP_NAME";
-
-public: GroupData(){
+GroupData::GroupData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_GROUP_GROUPDATA_CPP

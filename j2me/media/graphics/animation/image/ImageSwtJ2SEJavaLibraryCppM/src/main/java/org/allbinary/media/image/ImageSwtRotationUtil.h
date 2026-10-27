@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTROTATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/eclipse/swt/SWT.h>
-
-      
-#include <org/eclipse/swt/graphics/GC.h>
-
-      
-#include <org/eclipse/swt/graphics/ImageData.h>
-
-      
+class Features;
+class GameFeatureFactory;
+class LogUtil;
+class CommonStrings;
+class SWT;
+class GC;
+class ImageData;
 
 
 
@@ -70,26 +61,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageUtil.h"
-#include "org/allbinary/media/image/Image.h"
+        class ImageUtil;
+class Image;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageSwtRotationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageSwtRotationUtil* instance() { static std::unique_ptr<ImageSwtRotationUtil> value(new ImageSwtRotationUtil()); return value.get(); }
+    private: static ImageSwtRotationUtil* instance_owner();
+    private: static ImageSwtRotationUtil* instance;
 
     public: static ImageSwtRotationUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil;
 
-    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
+    private: GameFeatureFactory* gameFeatureFactory;
 
-    private: Features* features = Features::getInstance();
+    private: Features* features;
 
     private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
 
@@ -113,3 +109,37 @@ private: ImageSwtRotationUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTROTATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTROTATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTROTATIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/GameFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/eclipse/swt/SWT.h>)
+#include <org/eclipse/swt/SWT.h>
+#endif
+#if __has_include(<org/eclipse/swt/graphics/GC.h>)
+#include <org/eclipse/swt/graphics/GC.h>
+#endif
+#if __has_include(<org/eclipse/swt/graphics/ImageData.h>)
+#include <org/eclipse/swt/graphics/ImageData.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageUtil.h")
+#include "org/allbinary/media/image/ImageUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/Image.h")
+#include "org/allbinary/media/image/Image.h"
+#endif
+
+        #endif
+    

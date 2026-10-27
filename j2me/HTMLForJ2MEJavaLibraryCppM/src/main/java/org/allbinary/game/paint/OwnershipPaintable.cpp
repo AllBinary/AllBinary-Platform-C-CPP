@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_OWNERSHIPPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_OWNERSHIPPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/OwnershipPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,9 +86,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //HTMLForJ2ME
-class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static OwnershipPaintable* getInstance(){
+    auto OwnershipPaintable::getInstance() -> OwnershipPaintable*{
 
 
 
@@ -88,27 +97,11 @@ class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 }
 
 
-    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: const std::string COPYRIGHT = "AllBinary Copyright (c) 2011";
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-    private: int32_t color = this->basicColor->intValue();
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: int32_t COPYRIGHT_Y= 0;
-
-    private: int32_t beginWidth= 0;
-
-private: OwnershipPaintable(){
+OwnershipPaintable::OwnershipPaintable() : displayInfo(DisplayInfoSingleton::getInstance()), myFontProcessor(new UpdateMyFontProcessor(this)), basicColor(BasicColorFactory::getInstance()->WHITE), color(this->basicColor->intValue()), anchor(Anchor::TOP_LEFT){
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto OwnershipPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -121,7 +114,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto OwnershipPaintable::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 this->color= basicColor->intValue();
@@ -129,7 +122,7 @@ this->color= basicColor->intValue();
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto OwnershipPaintable::getBasicColorP() -> BasicColor*{
 
 
 
@@ -139,7 +132,7 @@ this->color= basicColor->intValue();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto OwnershipPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 graphics->setColor(this->color);
@@ -155,7 +148,6 @@ graphics->drawString(this->COPYRIGHT, halfWidth -this->beginWidth, height -this-
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_OWNERSHIPPAINTABLE_CPP

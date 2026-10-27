@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/PropertyInitUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PropertyInitUtil
-            : public Object
-         {
 
-    private: static PropertyInitUtil* instance() { static std::unique_ptr<PropertyInitUtil> value(new PropertyInitUtil()); return value.get(); }
+PropertyInitUtil::PropertyInitUtil() {
+        }
+        auto PropertyInitUtil::instance_owner() -> PropertyInitUtil* { static std::unique_ptr<PropertyInitUtil> value(new PropertyInitUtil()); return value.get(); }
+PropertyInitUtil* PropertyInitUtil::instance = PropertyInitUtil::instance_owner();
 
-    public: static PropertyInitUtil* getInstance(int32_t value){
+    auto PropertyInitUtil::getInstance(int32_t value) -> PropertyInitUtil*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -73,12 +83,11 @@ logUtil->putF((new StringMaker())->append("PropertyInitUtil: ")->appendint(value
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PropertyInitUtil::instance();
+                        return PropertyInitUtil::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_CPP

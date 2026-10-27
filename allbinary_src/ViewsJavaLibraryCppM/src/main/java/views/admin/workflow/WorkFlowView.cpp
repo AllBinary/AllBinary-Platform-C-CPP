@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_WORKFLOW_WORKFLOWVIEW_CPP
+        #define VIEWS_ADMIN_WORKFLOW_WORKFLOWVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/workflow/WorkFlowView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,13 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WorkFlowView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: WorkFlowInterface* workFlowInterface;
-
-public: WorkFlowView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+WorkFlowView::WorkFlowView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,7 +87,7 @@ public: WorkFlowView(TransformInfoInterface* transformInfoInterface) : HttpStore
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto WorkFlowView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -96,10 +101,10 @@ public: WorkFlowView(TransformInfoInterface* transformInfoInterface) : HttpStore
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlNode()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode()", &e);
     
 
                                     }
@@ -115,7 +120,7 @@ public: WorkFlowView(TransformInfoInterface* transformInfoInterface) : HttpStore
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto WorkFlowView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
@@ -123,7 +128,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto WorkFlowView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -132,17 +137,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -157,7 +162,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_WORKFLOW_WORKFLOWVIEW_CPP

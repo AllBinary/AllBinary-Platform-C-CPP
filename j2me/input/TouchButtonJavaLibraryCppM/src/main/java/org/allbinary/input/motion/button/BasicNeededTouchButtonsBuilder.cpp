@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICNEEDEDTOUCHBUTTONSBUILDER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICNEEDEDTOUCHBUTTONSBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/BasicNeededTouchButtonsBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,14 +79,14 @@
 #include "org/allbinary/input/motion/button/TouchButton.h"
 #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 
-class BasicNeededTouchButtonsBuilder: public BaseTouchInput {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: BasicArrayList* getList(){
+BasicNeededTouchButtonsBuilder::BasicNeededTouchButtonsBuilder() : logUtil(LogUtil::getInstance()) {
+        }
+        
+    auto BasicNeededTouchButtonsBuilder::getList() -> BasicArrayList*{
 
         try {
-            this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
     BasicArrayList* list = new BasicArrayListD();;
@@ -123,7 +133,7 @@ list->add(RIGHT);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_LIST, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_LIST, &e);
     
 
 
@@ -136,7 +146,6 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICNEEDEDTOUCHBUTTONSBUILDER_CPP

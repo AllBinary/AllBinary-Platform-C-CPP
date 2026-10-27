@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class NullUtil;
 
 
 
@@ -52,19 +55,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/InputFactory.h"
-#include "org/allbinary/game/input/GameKey.h"
-#include "org/allbinary/game/input/GameKeyFactory.h"
+        class InputFactory;
+class GameKey;
+class GameKeyFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyMappingFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static GameKeyMappingFactory* getInstance();
 
-    private: std::vector<GameKey*> intKeyToGameKey = std::vector<GameKey*>(InputFactory::getInstance()->MAX);
+    private: std::vector<GameKey*> intKeyToGameKey;
 
 private: GameKeyMappingFactory();
 
@@ -78,3 +85,22 @@ private: GameKeyMappingFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameKey.h")
+#include "org/allbinary/game/input/GameKey.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameKeyFactory.h")
+#include "org/allbinary/game/input/GameKeyFactory.h"
+#endif
+
+        #endif
+    

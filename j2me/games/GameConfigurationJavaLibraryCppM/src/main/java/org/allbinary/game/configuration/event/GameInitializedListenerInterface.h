@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
 
 
 
@@ -48,8 +51,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
+        class GameInitializedEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInitializedListenerInterface: public EventListenerInterface {
 
     public: virtual void onGameInitialized(GameInitializedEvent* gameInitializedEvent) = 0;
@@ -60,3 +67,16 @@ class GameInitializedListenerInterface: public EventListenerInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDLISTENERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDLISTENERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include("org/allbinary/game/configuration/event/GameInitializedEvent.h")
+#include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
+#endif
+
+        #endif
+    

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/init/db/DbConnectionInfo.h>
-
-      
+class DbConnectionInfo;
 
 
 
@@ -50,6 +53,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/sql/AbSqlBasic.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbSqlTablePresentation: public AbSqlBasic {
 
 public: AbSqlTablePresentation(DbConnectionInfo* databaseConnectionInfoInterface);
@@ -60,3 +67,16 @@ public: AbSqlTablePresentation(DbConnectionInfo* databaseConnectionInfoInterface
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_H_COMPLETE
+        #if __has_include(<org/allbinary/business/init/db/DbConnectionInfo.h>)
+#include <org/allbinary/business/init/db/DbConnectionInfo.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/sql/AbSqlBasic.h")
+#include "org/allbinary/logic/communication/sql/AbSqlBasic.h"
+#endif
+
+        #endif
+    

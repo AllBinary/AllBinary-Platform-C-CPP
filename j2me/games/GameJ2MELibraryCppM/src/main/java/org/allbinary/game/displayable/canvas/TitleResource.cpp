@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_TITLERESOURCE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_TITLERESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/TitleResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TitleResource
-            : public Object
-         {
 
-    public: static inline const std::string RESOURCE_TITLE = "/title_sprite_100_by_100.png";
+TitleResource::TitleResource() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_TITLERESOURCE_CPP

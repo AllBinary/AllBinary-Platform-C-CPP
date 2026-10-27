@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYCHARDEFAULTCOMBOBOXMODELFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYCHARDEFAULTCOMBOBOXMODELFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyCharDefaultComboBoxModelFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,11 +72,12 @@
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyStroke.h"
 
-class KeyCharDefaultComboBoxModelFactory
-            : public Object
-         {
 
-    public: static DefaultComboBoxModel* getInstance(){
+KeyCharDefaultComboBoxModelFactory::KeyCharDefaultComboBoxModelFactory(){
+}
+
+
+    auto KeyCharDefaultComboBoxModelFactory::getInstance() -> DefaultComboBoxModel*{
 
     DefaultComboBoxModel* defaultComboBoxModel = new DefaultComboBoxModel();;
     
@@ -102,11 +113,6 @@ defaultComboBoxModel->addElement(Character::toString(keyChar));
 }
 
 
-private: KeyCharDefaultComboBoxModelFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYCHARDEFAULTCOMBOBOXMODELFACTORY_CPP

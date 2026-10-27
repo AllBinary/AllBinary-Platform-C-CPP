@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_STORETRANSFORMER_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_STORETRANSFORMER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/xml/transform/URIResolver.h>
-
-      
-#include <org/allbinary/data/tree/dom/BasicUriResolver.h>
-
-      
-#include <org/allbinary/data/tree/dom/StoreUriResolver.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
+class URIResolver;
+class BasicUriResolver;
+class StoreUriResolver;
+class AbeClientInformationInterface;
+class TransformInfoInterface;
 
 
 
@@ -64,6 +59,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/BasicTransformer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreTransformer: public BasicTransformer {
 
 public: StoreTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface);
@@ -74,3 +73,28 @@ public: StoreTransformer(AbeClientInformationInterface* abeClientInformation, Tr
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_STORETRANSFORMER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_STORETRANSFORMER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_STORETRANSFORMER_H_COMPLETE
+        #if __has_include(<javax/xml/transform/URIResolver.h>)
+#include <javax/xml/transform/URIResolver.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/BasicUriResolver.h>)
+#include <org/allbinary/data/tree/dom/BasicUriResolver.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/StoreUriResolver.h>)
+#include <org/allbinary/data/tree/dom/StoreUriResolver.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/BasicTransformer.h")
+#include "org/allbinary/logic/visual/transform/BasicTransformer.h"
+#endif
+
+        #endif
+    

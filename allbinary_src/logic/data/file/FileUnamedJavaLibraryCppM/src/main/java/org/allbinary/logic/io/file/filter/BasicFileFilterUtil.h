@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,17 +35,9 @@
             #include "java/lang/Object.h"
         
 #include <java/io/FileFilter.h>
-
-      
-#include <org/allbinary/logic/io/file/visitor/IncludeFileExtensionsBooleanFileVisitor.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class IncludeFileExtensionsBooleanFileVisitor;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -59,10 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/file/filter/VisitorFileFilter.h"
+        class VisitorFileFilter;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicFileFilterUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static FileFilter* getInstance(std::string extension);
@@ -75,3 +76,25 @@ private: BasicFileFilterUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_H_COMPLETE
+        #if __has_include(<java/io/FileFilter.h>)
+#include <java/io/FileFilter.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/visitor/IncludeFileExtensionsBooleanFileVisitor.h>)
+#include <org/allbinary/logic/io/file/visitor/IncludeFileExtensionsBooleanFileVisitor.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/logic/io/file/filter/VisitorFileFilter.h")
+#include "org/allbinary/logic/io/file/filter/VisitorFileFilter.h"
+#endif
+
+        #endif
+    

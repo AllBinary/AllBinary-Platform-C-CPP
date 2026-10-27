@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_DOWNLOADABLEINVENTORYITEMVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_DOWNLOADABLEINVENTORYITEMVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -122,25 +132,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DownloadableInventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public: static inline int32_t TYPE_ID = 11;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    protected: HttpServletRequest* request;
-
-    protected: std::string id;
-
-    protected: ItemInterface* itemInterface;
-
-    protected: DownloadableItem* downloadableItem;
-
-    private: HashMap<Object*, Object*>* requestHashMap;
-
-public: DownloadableInventoryItemView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+DownloadableInventoryItemView::DownloadableInventoryItemView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -154,7 +147,7 @@ this->getFormData();
 }
 
 
-public: DownloadableInventoryItemView(TransformInfoInterface* transformInfoInterface, std::string empty) : HttpStoreComponentView(transformInfoInterface){
+DownloadableInventoryItemView::DownloadableInventoryItemView(TransformInfoInterface* transformInfoInterface, std::string empty) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -166,7 +159,7 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
 }
 
 
-    public: int32_t getTypeId(){
+    auto DownloadableInventoryItemView::getTypeId() -> int32_t{
 
 
 
@@ -178,7 +171,7 @@ this->request= dynamic_cast<HttpServletRequest*>(this->getPageContext()->getRequ
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(){
+    auto DownloadableInventoryItemView::getFormData() -> void{
 this->setRequestHashMap((new MultipartRequestParams(this->request))->toHashMap());
     
 this->id= this->getRequestHashMap()->get(basicItemData->ID);
@@ -186,7 +179,7 @@ this->id= this->getRequestHashMap()->get(basicItemData->ID);
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto DownloadableInventoryItemView::addDomNodeInterfaces() -> void{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -208,7 +201,7 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto DownloadableInventoryItemView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -217,17 +210,17 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -244,7 +237,7 @@ this->addDomNodeInterface(new BasicItemView(this->itemInterface, vector));
 
                 //@Throws(Exception.constructor)
             
-    protected: void processFile(FileItem* fileItem){
+    auto DownloadableInventoryItemView::processFile(FileItem* fileItem) -> void{
 
     std::string fileName = fileItem->getName();;
     
@@ -263,7 +256,7 @@ stringBuffer->append(fullPath);
     
 stringBuffer->append(fileName);
     
-this->logUtil->putF("FileName: " +fileName, this, "processFile()");
+this->logUtil->putF(JavaString::valueOf("FileName: ") +JavaString::valueOf(fileName), this, "processFile()");
     
 
     AbFile* file = AbFile::createAbFile(stringBuffer->toString());;
@@ -282,7 +275,7 @@ FileUtil::getInstance()->write(new ByteArrayInputStream(byteArray), file);
 
                 //@Throws(Exception.constructor)
             
-    protected: void unzip(FileItem* fileItem){
+    auto DownloadableInventoryItemView::unzip(FileItem* fileItem) -> void{
 
     std::string fileName = fileItem->getName();;
     
@@ -296,7 +289,7 @@ stringBuffer->append(fullPath);
     
 stringBuffer->append(fileName);
     
-this->logUtil->putF("FileName: " +fileName, this, "unzip()");
+this->logUtil->putF(JavaString::valueOf("FileName: ") +JavaString::valueOf(fileName), this, "unzip()");
     
 
     AbFile* file = AbFile::createAbFile(stringBuffer->toString());;
@@ -308,7 +301,7 @@ ZipFileUtil::getInstance()->unzip(fullPath, file, fileName);
 }
 
 
-    private: std::string getItemFilePath(){
+    auto DownloadableInventoryItemView::getItemFilePath() -> std::string{
 
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
@@ -343,13 +336,13 @@ stringBuffer->appendchar(filePathData->SEPARATORCHAR);
 }
 
 
-    private: void setRequestHashMap(HashMap<Object*, Object*>* requestHashMap){
+    auto DownloadableInventoryItemView::setRequestHashMap(HashMap<Object*, Object*>* requestHashMap) -> void{
 this->requestHashMap= requestHashMap;
     
 }
 
 
-    public: HashMap<Object*, Object*>* getRequestHashMap(){
+    auto DownloadableInventoryItemView::getRequestHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -359,7 +352,7 @@ this->requestHashMap= requestHashMap;
 }
 
 
-    public: DownloadableItem* getDownloadableItem(){
+    auto DownloadableInventoryItemView::getDownloadableItem() -> DownloadableItem*{
 
 
 
@@ -369,7 +362,6 @@ this->requestHashMap= requestHashMap;
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_DOWNLOAD_DOWNLOADABLEINVENTORYITEMVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/OverrideStoreTransformInfoObjectConfig.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,9 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/objectConfig/GenericStoreTransformInfoObjectConfig.h"
 
-class OverrideStoreTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
 
-public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface){
+OverrideStoreTransformInfoObjectConfig::OverrideStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +76,7 @@ public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Obj
 }
 
 
-public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, Object* document) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document){
+OverrideStoreTransformInfoObjectConfig::OverrideStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, Document* document) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,7 +88,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: OverrideStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string name, std::string type) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, name, type){
+OverrideStoreTransformInfoObjectConfig::OverrideStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, std::string name, std::string type) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, name, type){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,9 +102,9 @@ this->setDocument(this->generate(this->toXmlDoc()));
 
                 //@Throws(Exception.constructor)
             
-    protected: Document* generate(Document* objectConfigDocument){
+    auto OverrideStoreTransformInfoObjectConfig::generate(Document* objectConfigDocument) -> Document*{
 
-    Document* newObjectConfigDocument = super.generate(objectConfigDocument);;
+    Document* newObjectConfigDocument = GenericStoreTransformInfoObjectConfig::generate(objectConfigDocument);;
     
 
 
@@ -106,7 +115,6 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_OVERRIDESTORETRANSFORMINFOOBJECTCONFIG_CPP

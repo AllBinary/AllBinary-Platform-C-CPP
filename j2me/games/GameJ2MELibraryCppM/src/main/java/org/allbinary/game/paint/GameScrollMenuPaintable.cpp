@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_GAMESCROLLMENUPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_GAMESCROLLMENUPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/GameScrollMenuPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,9 +82,8 @@
         #include "org/allbinary/game/paint/BasicGameDemoPaintable.h"
 #include "org/allbinary/game/paint/MainGameDemoStatePaintable.h"
 
-class GameScrollMenuPaintable: public BasicGameDemoPaintable, public ColorChangeListener {
 
-public: GameScrollMenuPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface, BasicColor* basicColor) : BasicGameDemoPaintable(mainDemoStatePaintable, ownershipPaintable, helpPaintableInterface){
+GameScrollMenuPaintable::GameScrollMenuPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface, BasicColor* basicColor) : BasicGameDemoPaintable(mainDemoStatePaintable, ownershipPaintable, helpPaintableInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,17 +97,17 @@ ColorChangeEventHandler::getInstance()->addListenerInterface(this);
 }
 
 
-    public: void setState(int32_t state){
+    auto GameScrollMenuPaintable::setState(int32_t state) -> void{
 this->setCurrentStatePaintable(this->getMainDemoStatePaintable());
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto GameScrollMenuPaintable::onEvent(AllBinaryEventObject* eventObject) -> void{
 }
 
 
-    protected: void setColor(BasicColor* basicColor){
+    auto GameScrollMenuPaintable::setColor(BasicColor* basicColor) -> void{
 
     MainGameDemoStatePaintable* mainGameDemoStatePaintable = dynamic_cast<MainGameDemoStatePaintable*>(this->getMainDemoStatePaintable());;
     
@@ -145,7 +154,6 @@ stringComponent= item->getLabelStringComponent();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_GAMESCROLLMENUPAINTABLE_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ABCUSTOMFORM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ABCUSTOMFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/ABCustomForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,17 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/CustomScreen.h"
 
-class ABCustomForm: public CustomScreen {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
+ABCustomForm::ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: std::vector<ABCustomItem*> getAllitems(){
+    auto ABCustomForm::getAllitems() -> std::vector<ABCustomItem*>{
 
 
 
@@ -72,7 +77,7 @@ public: ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicC
 }
 
 
-    public: int32_t size(){
+    auto ABCustomForm::size() -> int32_t{
 
 
 
@@ -82,11 +87,11 @@ public: ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicC
 }
 
 
-    public: void setSelectedIndex(int32_t index){
+    auto ABCustomForm::setSelectedIndex(int32_t index) -> void{
 }
 
 
-    public: int32_t getSelectedIndex(){
+    auto ABCustomForm::getSelectedIndex() -> int32_t{
 
 
 
@@ -96,15 +101,15 @@ public: ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicC
 }
 
 
-    public: void deleteAll(){
+    auto ABCustomForm::deleteAll() -> void{
 }
 
 
-    public: void delete_(int32_t itemNum){
+    auto ABCustomForm::delete_(int32_t itemNum) -> void{
 }
 
 
-    public: int32_t append(ABCustomItem* item){
+    auto ABCustomForm::append(ABCustomItem* item) -> int32_t{
 
 
 
@@ -114,15 +119,15 @@ public: ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicC
 }
 
 
-    public: void insert(int32_t itemNum, ABCustomItem* item){
+    auto ABCustomForm::insert(int32_t itemNum, ABCustomItem* item) -> void{
 }
 
 
-    public: void set(int32_t itemNum, ABCustomItem* item){
+    auto ABCustomForm::set(int32_t itemNum, ABCustomItem* item) -> void{
 }
 
 
-    public: ABCustomItem* get(int32_t itemNum){
+    auto ABCustomForm::get(int32_t itemNum) -> ABCustomItem*{
 
 
 
@@ -132,20 +137,20 @@ public: ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicC
 }
 
 
-    public: int32_t getWidth(){
+    auto ABCustomForm::getWidth() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto ABCustomForm::paint(Graphics* graphics) -> void{
 }
 
 
-    public: std::string getTitle(){
+    auto ABCustomForm::getTitle() -> std::string{
 
 
 
@@ -155,7 +160,6 @@ public: ABCustomForm(std::string title, std::vector<ABCustomItem*> items, BasicC
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ABCUSTOMFORM_CPP

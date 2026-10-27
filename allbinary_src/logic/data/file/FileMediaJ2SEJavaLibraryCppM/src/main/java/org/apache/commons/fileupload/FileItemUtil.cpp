@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_CPP
+        #define ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/apache/commons/fileupload/FileItemUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -58,41 +68,37 @@
         #include "org/apache/commons/fileupload/FileItemStream.h"
 #include "org/apache/commons/fileupload/FileItem.h"
 
-class FileItemUtil
-            : public Object
-         {
 
-    private: static FileItemUtil* instance() { static std::unique_ptr<FileItemUtil> value(new FileItemUtil()); return value.get(); }
+FileItemUtil::FileItemUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto FileItemUtil::instance_owner() -> FileItemUtil* { static std::unique_ptr<FileItemUtil> value(new FileItemUtil()); return value.get(); }
+FileItemUtil* FileItemUtil::instance = FileItemUtil::instance_owner();
 
-    public: static FileItemUtil* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileItemUtil::instance();
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const std::string DEFAULT_CHARSET = "ISO-8859-1";
-
-                //@Throws(Exception.constructor)
-            
-    public: std::string getString(std::vector<int8_t> byteArray){
+    auto FileItemUtil::getInstance() -> FileItemUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArray;
+                        return FileItemUtil::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getString(FileItemStream* fileItem){
+    auto FileItemUtil::getString(std::vector<int8_t> byteArray) -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return JavaString::fromChars(byteArray, this->DEFAULT_CHARSET);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto FileItemUtil::getString(FileItemStream* fileItem) -> std::string{
 
 
 
@@ -104,7 +110,7 @@ class FileItemUtil
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> getBytes(FileItemStream* fileItem){
+    auto FileItemUtil::getBytes(FileItemStream* fileItem) -> std::vector<int8_t>{
 
     StreamUtil* streamUtil = StreamUtil::getInstance();;
     
@@ -128,7 +134,7 @@ outputStream= new ByteArrayOutputStream();
                         if(fileItem->isFormField())
                         
                                     {
-                                    this->logUtil->putF("FileItemStream FieldName: " +fileItem->getFieldName(), this, "write()");
+                                    this->logUtil->putF(JavaString::valueOf("FileItemStream FieldName: ") +JavaString::valueOf(fileItem->getFieldName()), this, "write()");
     
 
                                     }
@@ -172,13 +178,12 @@ streamUtil->close(inputStream);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(FileItem* fileItem, AbFile* file){
+    auto FileItemUtil::write(FileItem* fileItem, AbFile* file) -> void{
 fileItem->write(AbFileNativeUtil::get(file));
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_CPP

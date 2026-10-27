@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class Graphics;
+class GameKeyEvent;
+class AllBinaryLayerManager;
 
 
 
@@ -60,10 +59,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SpecialGameInput
-            : public Object
+            : public virtual Object
         , public SpecialGameInputInterface {
 
+
+            
+    public: SpecialGameInput();
+        
                 //@Throws(Exception.constructor)
             
     public: void up();
@@ -122,3 +129,22 @@ class SpecialGameInput
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include("org/allbinary/game/layer/special/SpecialGameInputInterface.h")
+#include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
+#endif
+
+        #endif
+    

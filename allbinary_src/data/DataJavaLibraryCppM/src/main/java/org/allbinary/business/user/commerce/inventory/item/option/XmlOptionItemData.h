@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_OPTION_XMLOPTIONITEMDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_OPTION_XMLOPTIONITEMDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +53,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class XmlOptionItemData
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string XML_FILE_STATUS = "XMLOPTIONITEM_XML_FILE_STATUS";
 
     public: static inline const std::string OPTION_XML_FILE = "XMLOPTIONITEM_OPTION_XML_FILE";
 
+
+            
+    public: XmlOptionItemData();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_OPTION_XMLOPTIONITEMDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_OPTION_XMLOPTIONITEMDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_OPTION_XMLOPTIONITEMDATA_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/screen/ScreenRepaintUtil.h"
 
-class ScreenRepaintProcessor: public Processor {
 
-    private: Displayable* displayable;
-
-public: ScreenRepaintProcessor(Displayable* displayable){
+ScreenRepaintProcessor::ScreenRepaintProcessor(Displayable* displayable){
 this->displayable= displayable;
     
 }
@@ -64,13 +71,12 @@ this->displayable= displayable;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto ScreenRepaintProcessor::process() -> void{
 ScreenRepaintUtil::repaint(this->displayable);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTPROCESSOR_CPP

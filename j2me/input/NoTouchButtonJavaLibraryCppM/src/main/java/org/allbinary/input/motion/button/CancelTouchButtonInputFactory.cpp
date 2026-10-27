@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/CancelTouchButtonInputFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,13 +65,9 @@
         #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 
-class CancelTouchButtonInputFactory
-            : public Object
-         {
+Object* CancelTouchButtonInputFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static CancelTouchButtonInputFactory* getInstance(){
+    auto CancelTouchButtonInputFactory::getInstance() -> CancelTouchButtonInputFactory*{
 
                         if(CancelTouchButtonInputFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,9 +86,7 @@ class CancelTouchButtonInputFactory
 }
 
 
-    private: const std::vector<TouchButtonInput*> cancelInputArray = std::vector<TouchButtonInput*>(InputFactory::getInstance()->MAX);
-
-private: CancelTouchButtonInputFactory(){
+CancelTouchButtonInputFactory::CancelTouchButtonInputFactory() : cancelInputArray(std::vector<TouchButtonInput*>(InputFactory::getInstance()->MAX)){
 
     BasicTouchInputFactory* basicTouchInputFactory = BasicTouchInputFactory::getInstance();;
     
@@ -97,18 +101,18 @@ this->cancelInputArray[index]= basicTouchInputFactory->NONE;
     
 }
 
-this->cancelInputArray[basicTouchInputFactory->UP.getId()]= basicTouchInputFactory->DOWN;
+this->cancelInputArray[basicTouchInputFactory->UP->getId()]= basicTouchInputFactory->DOWN;
     
-this->cancelInputArray[basicTouchInputFactory->DOWN.getId()]= basicTouchInputFactory->UP;
+this->cancelInputArray[basicTouchInputFactory->DOWN->getId()]= basicTouchInputFactory->UP;
     
-this->cancelInputArray[basicTouchInputFactory->LEFT.getId()]= basicTouchInputFactory->RIGHT;
+this->cancelInputArray[basicTouchInputFactory->LEFT->getId()]= basicTouchInputFactory->RIGHT;
     
-this->cancelInputArray[basicTouchInputFactory->RIGHT.getId()]= basicTouchInputFactory->LEFT;
+this->cancelInputArray[basicTouchInputFactory->RIGHT->getId()]= basicTouchInputFactory->LEFT;
     
 }
 
 
-    public: TouchButtonInput* getCancel(TouchButtonInput* touchButtonInput){
+    auto CancelTouchButtonInputFactory::getCancel(TouchButtonInput* touchButtonInput) -> TouchButtonInput*{
 
 
 
@@ -118,7 +122,6 @@ this->cancelInputArray[basicTouchInputFactory->RIGHT.getId()]= basicTouchInputFa
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_CPP

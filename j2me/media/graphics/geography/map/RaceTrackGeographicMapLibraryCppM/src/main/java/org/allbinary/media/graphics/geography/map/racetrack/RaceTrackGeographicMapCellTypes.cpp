@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPES_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypes.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,39 +56,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
 
-class RaceTrackGeographicMapCellTypes
-            : public Object
-         {
+auto RaceTrackGeographicMapCellTypes::instance_owner() -> RaceTrackGeographicMapCellTypes* { static std::unique_ptr<RaceTrackGeographicMapCellTypes> value(new RaceTrackGeographicMapCellTypes()); return value.get(); }
+RaceTrackGeographicMapCellTypes* RaceTrackGeographicMapCellTypes::instance = RaceTrackGeographicMapCellTypes::instance_owner();
 
-    private: static RaceTrackGeographicMapCellTypes* instance() { static std::unique_ptr<RaceTrackGeographicMapCellTypes> value(new RaceTrackGeographicMapCellTypes()); return value.get(); }
-
-    public: static RaceTrackGeographicMapCellTypes* getInstance(){
+    auto RaceTrackGeographicMapCellTypes::getInstance() -> RaceTrackGeographicMapCellTypes*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackGeographicMapCellTypes::instance();
+                        return RaceTrackGeographicMapCellTypes::instance;
     
 }
 
 
-    public: RaceTrackGeographicMapCellType* BOTTOM_LEFT_TURN_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* TOP_LEFT_TURN_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* TOP_RIGHT_TURN_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* VERTICAL_STRAIGHT_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* START_LINE_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
-
-public: RaceTrackGeographicMapCellTypes(){
+RaceTrackGeographicMapCellTypes::RaceTrackGeographicMapCellTypes(){
 this->BOTTOM_LEFT_TURN_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Bottom Left Turn", 1, 1, 0);
     
 this->BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Bottom Right Turn", 2, 1, 0);
@@ -98,7 +89,6 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= new RaceTrackGeographicMapCellType("Fi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPES_CPP

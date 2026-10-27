@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
-
-      
-#include <org/allbinary/game/score/ScoreableInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class WeaponProperties;
+class ScoreableInterface;
+class AllBinaryLayerManager;
 
 
 
@@ -57,7 +56,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SalvoInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class SalvoInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -73,3 +78,19 @@ class SalvoInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/combat/weapon/WeaponProperties.h>)
+#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/score/ScoreableInterface.h>)
+#include <org/allbinary/game/score/ScoreableInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+
+        #endif
+    

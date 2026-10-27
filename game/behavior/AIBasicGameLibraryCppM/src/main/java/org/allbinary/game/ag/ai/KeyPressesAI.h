@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,24 +40,12 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/util/HashtableUtil.h>
-
-      
+class GameInput;
+class AllBinaryLayer;
+class AllBinaryLayerManager;
+class HashtableUtil;
 #include <org/allbinary/game/ai/BasicAI.h>
-
-      
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -72,11 +65,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class KeyPressesAI: public BasicAI {
 
     private: bool on = true;
 
-    protected: std::vector<int32_t> keys;
+    /*protected*/ public: std::vector<int32_t> keys;
 
 public: KeyPressesAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
@@ -98,7 +95,7 @@ public: KeyPressesAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* o
 
     private: void setOn(bool on);
 
-    protected: bool isOn();
+    /*protected*/ public: bool isOn();
 
 };
 
@@ -106,3 +103,28 @@ public: KeyPressesAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* o
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/util/HashtableUtil.h>)
+#include <org/allbinary/util/HashtableUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/ai/BasicAI.h>)
+#include <org/allbinary/game/ai/BasicAI.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

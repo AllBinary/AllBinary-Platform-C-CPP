@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONUTIL_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameConfigurationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,29 +79,25 @@
 #include "org/allbinary/game/configuration/GameConfigurationGauge.h"
 #include "org/allbinary/game/configuration/GameConfigurationCentral.h"
 
-class GameConfigurationUtil
-            : public Object
-         {
 
-    private: static GameConfigurationUtil* instance() { static std::unique_ptr<GameConfigurationUtil> value(new GameConfigurationUtil()); return value.get(); }
+GameConfigurationUtil::GameConfigurationUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        auto GameConfigurationUtil::instance_owner() -> GameConfigurationUtil* { static std::unique_ptr<GameConfigurationUtil> value(new GameConfigurationUtil()); return value.get(); }
+GameConfigurationUtil* GameConfigurationUtil::instance = GameConfigurationUtil::instance_owner();
 
-    public: static GameConfigurationUtil* getInstance(){
+    auto GameConfigurationUtil::getInstance() -> GameConfigurationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationUtil::instance();
+                        return GameConfigurationUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void change(GameOptionsForm* gameOptionsForm, GameConfigurationGauge* gauge){
+    auto GameConfigurationUtil::change(GameOptionsForm* gameOptionsForm, GameConfigurationGauge* gauge) -> void{
 this->update(gauge);
     
 
@@ -105,15 +111,9 @@ this->updateChallange(gameOptionsForm, gameConfiguration);
 }
 
 
-    private: const std::string GAUGE_UPDATE = "Gauge Update: ";
-
-    private: const std::string FROM = " from: ";
-
-    private: const std::string TO = " to: ";
-
                 //@Throws(Exception.constructor)
             
-    public: void update(GameConfigurationGauge* gauge){
+    auto GameConfigurationUtil::update(GameConfigurationGauge* gauge) -> void{
 
     GameConfigurationSingleton* gameConfigurationSingleton = GameConfigurationSingleton::getInstance();;
     
@@ -150,7 +150,7 @@ gameConfiguration->setValue(value);
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(GameConfigurationGauge* gauge){
+    auto GameConfigurationUtil::setDefault(GameConfigurationGauge* gauge) -> void{
 
     GameConfigurationSingleton* gameConfigurationSingleton = GameConfigurationSingleton::getInstance();;
     
@@ -179,7 +179,7 @@ gameConfiguration->setValue(gameConfiguration->getDefaultValue());
 
                 //@Throws(Exception.constructor)
             
-    public: void updateChallange(GameOptionsForm* gameOptionsForm, GameConfiguration* gameConfiguration){
+    auto GameConfigurationUtil::updateChallange(GameOptionsForm* gameOptionsForm, GameConfiguration* gameConfiguration) -> void{
 
     GameConfigurationSingleton* gameConfigurationSingleton = GameConfigurationSingleton::getInstance();;
     
@@ -192,13 +192,13 @@ gameConfiguration->setValue(gameConfiguration->getDefaultValue());
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "updateChallange");
     
-gameConfigurationCentral->COLLIDE_DAMAGE.setValue(gameConfiguration->getValue());
+gameConfigurationCentral->COLLIDE_DAMAGE->setValue(gameConfiguration->getValue());
     
-gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL.setValue(gameConfiguration->getValue());
+gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL->setValue(gameConfiguration->getValue());
     
-gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL.setValue(gameConfiguration->getValue());
+gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL->setValue(gameConfiguration->getValue());
     
-gameConfigurationCentral->SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration->getValue());
+gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->setValue(gameConfiguration->getValue());
     
 
     int32_t size = gameOptionsForm->size();;
@@ -232,7 +232,7 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration->getV
                         if(nextGameConfiguration == gameConfigurationCentral->COLLIDE_DAMAGE)
                         
                                     {
-                                    gauge->setValue(gameConfigurationCentral->COLLIDE_DAMAGE.getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+                                    gauge->setValue(gameConfigurationCentral->COLLIDE_DAMAGE->getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
     
 
                                     }
@@ -241,7 +241,7 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration->getV
                         if(nextGameConfiguration == gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge->setValue(gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL.getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+                                    gauge->setValue(gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL->getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
     
 
                                     }
@@ -250,7 +250,7 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration->getV
                         if(nextGameConfiguration == gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge->setValue(gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL.getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+                                    gauge->setValue(gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL->getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
     
 
                                     }
@@ -259,7 +259,7 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration->getV
                         if(nextGameConfiguration == gameConfigurationCentral->SPEED_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge->setValue(gameConfigurationCentral->SPEED_CHALLENGE_LEVEL.getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
+                                    gauge->setValue(gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->getValue()->intValue() -gameConfiguration->getMinValue()->intValue());
     
 
                                     }
@@ -275,22 +275,20 @@ gameConfigurationCentral->SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration->getV
 }
 
 
-    private: int32_t COMPETITION_VALUE = 1;
-
-    public: void updateCompetitionValue(){
+    auto GameConfigurationUtil::updateCompetitionValue() -> void{
 this->logUtil->putF(this->commonStrings->START, this, "updateCompetitionValue");
     
 
     GameConfigurationCentral* gameConfigurationCentral = GameConfigurationCentral::getInstance();;
     
-this->COMPETITION_VALUE= gameConfigurationCentral->COLLIDE_DAMAGE.getValue()->intValue() +gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL.getValue()->intValue() +gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL.getValue()->intValue() +gameConfigurationCentral->SPEED_CHALLENGE_LEVEL.getValue()->intValue();
+this->COMPETITION_VALUE= gameConfigurationCentral->COLLIDE_DAMAGE->getValue()->intValue() +gameConfigurationCentral->ATTACK_CHALLENGE_LEVEL->getValue()->intValue() +gameConfigurationCentral->DURABILITY_CHALLENGE_LEVEL->getValue()->intValue() +gameConfigurationCentral->SPEED_CHALLENGE_LEVEL->getValue()->intValue();
     
 this->COMPETITION_VALUE= (this->COMPETITION_VALUE>>2);
     
 }
 
 
-    public: int32_t getCompetitionValue(){
+    auto GameConfigurationUtil::getCompetitionValue() -> int32_t{
 
 
 
@@ -300,7 +298,6 @@ this->COMPETITION_VALUE= (this->COMPETITION_VALUE>>2);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_NULLRTSFORMINPUTFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_NULLRTSFORMINPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/NullRTSFormInputFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,23 +59,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/form/RTSFormInput.h"
 
-class NullRTSFormInputFactory
-            : public Object
-         {
 
-    private: static RTSFormInput* SINGLETON() { static std::unique_ptr<RTSFormInput> value(new RTSFormInput(BasicGroupFactory::getInstance()->NONE_ARRAY)); return value.get(); }
+NullRTSFormInputFactory::NullRTSFormInputFactory() {
+        }
+        auto NullRTSFormInputFactory::SINGLETON_owner() -> RTSFormInput* { static std::unique_ptr<RTSFormInput> value(new RTSFormInput(BasicGroupFactory::getInstance()->NONE_ARRAY)); return value.get(); }
+RTSFormInput* NullRTSFormInputFactory::SINGLETON = NullRTSFormInputFactory::SINGLETON_owner();
 
-    public: static RTSFormInput* getInstance(){
+    auto NullRTSFormInputFactory::getInstance() -> RTSFormInput*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRTSFormInputFactory::SINGLETON();
+                        return NullRTSFormInputFactory::SINGLETON;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_NULLRTSFORMINPUTFACTORY_CPP

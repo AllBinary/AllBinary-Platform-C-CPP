@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LIFE_LIFEINTERFACECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_AG_LIFE_LIFEINTERFACECOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/life/Life.h"
+        class Life;
 
-class LifeInterfaceCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class LifeInterfaceCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual Life* getLifeInterface() = 0;
 
@@ -57,3 +68,13 @@ class LifeInterfaceCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LIFE_LIFEINTERFACECOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LIFE_LIFEINTERFACECOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LIFE_LIFEINTERFACECOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/ag/life/Life.h")
+#include "org/allbinary/game/ag/life/Life.h"
+#endif
+
+        #endif
+    

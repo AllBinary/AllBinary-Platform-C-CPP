@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class CommandListener;
+class Font;
+class BasicColor;
 #include <org/allbinary/graphics/form/item/CustomTextBox.h>
-
-      
 
 
 
@@ -60,6 +57,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomTextBox2: public CustomTextBox {
 
 public: CustomTextBox2(CommandListener* cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
@@ -70,3 +71,22 @@ public: CustomTextBox2(CommandListener* cmdListener, std::string label, std::str
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/CustomTextBox.h>)
+#include <org/allbinary/graphics/form/item/CustomTextBox.h>
+#endif
+
+        #endif
+    

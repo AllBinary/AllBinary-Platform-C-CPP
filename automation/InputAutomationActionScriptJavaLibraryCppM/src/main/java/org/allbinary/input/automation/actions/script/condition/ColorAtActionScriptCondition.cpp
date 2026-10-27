@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITION_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptCondition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -116,19 +126,8 @@
 #include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionJPanel.h"
 #include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionData.h"
 
-class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, public ColorAtActionScriptConditionInterface {
 
-    private: static inline const std::string NAME = "If Color At";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ColorAtActionScriptConditionJPanel* colorAtActionScriptConditionJPanel;
-
-    private: Point* point;
-
-    private: ColorRangeInterface* colorRangeInterface = dynamic_cast<ColorRangeInterface*>(new ColorRange());
-
-public: ColorAtActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(ColorAtActionScriptCondition::NAME, node){
+ColorAtActionScriptCondition::ColorAtActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(ColorAtActionScriptCondition::NAME, node), logUtil(LogUtil::getInstance()), colorRangeInterface(dynamic_cast<ColorRangeInterface*>(new ColorRange())){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -264,7 +263,7 @@ this->getColorRangeInterface()->setMaxBlue(string.valueOf());
                             
 
 
-                            throw new Exception("Color At Action Script Condition Node Null");
+                            throw Exception("Color At Action Script Condition Node Null");
                     
 
                         }
@@ -274,7 +273,7 @@ this->init();
 }
 
 
-public: ColorAtActionScriptCondition() : BasicProfileActionScriptCondition(ColorAtActionScriptCondition::NAME){
+ColorAtActionScriptCondition::ColorAtActionScriptCondition() : BasicProfileActionScriptCondition(ColorAtActionScriptCondition::NAME), logUtil(LogUtil::getInstance()), colorRangeInterface(dynamic_cast<ColorRangeInterface*>(new ColorRange())){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -288,13 +287,13 @@ this->init();
 }
 
 
-    private: void init(){
+    auto ColorAtActionScriptCondition::init() -> void{
 this->colorAtActionScriptConditionJPanel= new ColorAtActionScriptConditionJPanel(this);
     
 }
 
 
-    public: Point* getPoint(){
+    auto ColorAtActionScriptCondition::getPoint() -> Point*{
 
 
 
@@ -304,19 +303,19 @@ this->colorAtActionScriptConditionJPanel= new ColorAtActionScriptConditionJPanel
 }
 
 
-    public: void setPoint(Point* point){
+    auto ColorAtActionScriptCondition::setPoint(Point* point) -> void{
 this->point= point;
     
 }
 
 
-    public: void showDialog(){
+    auto ColorAtActionScriptCondition::showDialog() -> void{
 this->colorAtActionScriptConditionJPanel->getColorAtActionJDialog()->setVisible(true);
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto ColorAtActionScriptCondition::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -336,7 +335,7 @@ hashMap->put(ColorAtActionScriptConditionData::MIN_BLUE, std::to_string(getMinBl
     
 hashMap->put(ColorAtActionScriptConditionData::MAX_BLUE, std::to_string(getMaxBlue));
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -349,9 +348,9 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ColorAtActionScriptCondition::toXmlNode(Document* document) -> Node*{
 
-    Node* node = super.toXmlNode(document);;
+    Node* node = BasicProfileActionScriptCondition::toXmlNode(document);;
     
 node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtActionScriptConditionData::NAME, this->toHashMap()));
     
@@ -366,7 +365,7 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtAction
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(int64_t frame){
+    auto ColorAtActionScriptCondition::shouldProcess(int64_t frame) -> bool{
 
     BufferedImageFrameCacheable* capturedBufferedImageCacheable = dynamic_cast<BufferedImageFrameCacheable*>((getInstance)).get((frame).toLong()));;
     
@@ -393,7 +392,7 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtAction
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.shouldProcess(frame);;
+                        return BasicProfileActionScriptCondition::shouldProcess(frame);;
     
 
                                     }
@@ -407,7 +406,7 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtAction
 }
 
 
-    public: void log(){
+    auto ColorAtActionScriptCondition::log() -> void{
 
     std::string message = (new StringMaker())->append("getPoint(): ")->append(this->getPoint()->toString())->append(CommonSeps::getInstance()->NEW_LINE)->append(this->getColorRangeInterface()->toString())->toString();;
     
@@ -416,7 +415,7 @@ this->logUtil->putF(message, this, "log");
 }
 
 
-    public: ColorRangeInterface* getColorRangeInterface(){
+    auto ColorAtActionScriptCondition::getColorRangeInterface() -> ColorRangeInterface*{
 
 
 
@@ -426,13 +425,12 @@ this->logUtil->putF(message, this, "log");
 }
 
 
-    public: void setColorRangeInterface(ColorRangeInterface* colorRangeInterface){
+    auto ColorAtActionScriptCondition::setColorRangeInterface(ColorRangeInterface* colorRangeInterface) -> void{
 this->colorRangeInterface= colorRangeInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITION_CPP

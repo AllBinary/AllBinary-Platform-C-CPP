@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_GENERATOR_ORDERIDGENERATOR_CPP
+        #define ORG_ALLBINARY_DATA_GENERATOR_ORDERIDGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/generator/OrderIdGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/generator/UniqueIdGenerator.h"
 
-class OrderIdGenerator: public UniqueIdGenerator {
 
-    private: const std::string IDFILE = "orderId";
-
-public: OrderIdGenerator(){
+OrderIdGenerator::OrderIdGenerator(){
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -71,12 +78,11 @@ stringBuffer->append(this->IDFILE);
     
 stringBuffer->append(UniqueIdGenerator::EXT);
     
-super.setFile(stringBuffer->toString(), this->IDFILE);
+UniqueIdGenerator::setFile(stringBuffer->toString(), this->IDFILE);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_GENERATOR_ORDERIDGENERATOR_CPP

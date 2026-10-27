@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_TILEDLAYERUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_TILEDLAYERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/TiledLayerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
-class TiledLayerUtil
-            : public Object
-         {
 
-    private: static TiledLayerUtil* instance() { static std::unique_ptr<TiledLayerUtil> value(new TiledLayerUtil()); return value.get(); }
+TiledLayerUtil::TiledLayerUtil() {
+        }
+        auto TiledLayerUtil::instance_owner() -> TiledLayerUtil* { static std::unique_ptr<TiledLayerUtil> value(new TiledLayerUtil()); return value.get(); }
+TiledLayerUtil* TiledLayerUtil::instance = TiledLayerUtil::instance_owner();
 
-    public: static TiledLayerUtil* getInstance(){
+    auto TiledLayerUtil::getInstance() -> TiledLayerUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TiledLayerUtil::instance();
+                        return TiledLayerUtil::instance;
     
 }
 
 
-    public: int32_t keepOnBorderdMapX(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t width, int32_t mapBorderBufferWidth){
+    auto TiledLayerUtil::keepOnBorderdMapX(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t width, int32_t mapBorderBufferWidth) -> int32_t{
 
     int32_t newX = x;;
     
@@ -96,7 +106,7 @@ class TiledLayerUtil
 }
 
 
-    public: int32_t keepOnBorderdMapY(AllBinaryTiledLayer* terrainTiledLayer, int32_t y, int32_t height, int32_t mapBorderBufferHeight){
+    auto TiledLayerUtil::keepOnBorderdMapY(AllBinaryTiledLayer* terrainTiledLayer, int32_t y, int32_t height, int32_t mapBorderBufferHeight) -> int32_t{
 
     int32_t newY = y;;
     
@@ -130,7 +140,7 @@ class TiledLayerUtil
 }
 
 
-    public: int32_t keepOnMapX(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t width){
+    auto TiledLayerUtil::keepOnMapX(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t width) -> int32_t{
 
     int32_t newX = x;;
     
@@ -164,7 +174,7 @@ class TiledLayerUtil
 }
 
 
-    public: int32_t keepOnMapY(AllBinaryTiledLayer* terrainTiledLayer, int32_t y, int32_t height){
+    auto TiledLayerUtil::keepOnMapY(AllBinaryTiledLayer* terrainTiledLayer, int32_t y, int32_t height) -> int32_t{
 
     int32_t newY = y;;
     
@@ -198,7 +208,6 @@ class TiledLayerUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_TILEDLAYERUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_ADMIN_STOREFRONT_STOREFRONTTAG_CPP
+        #define TAGS_ADMIN_STOREFRONT_STOREFRONTTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/admin/storefront/StoreFrontTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontTag: public StoreValidationTransformTag {
 
-public: StoreFrontTag(){
+StoreFrontTag::StoreFrontTag(){
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto StoreFrontTag::doStartTag() -> int32_t{
 
         try {
             
@@ -75,7 +84,7 @@ public: StoreFrontTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->INSERT) == 0)
                         
                                     {
                                     this->setName("Add Validation StoreFront View");
@@ -86,19 +95,19 @@ this->setObjectFile("views.admin.storefront.AddValidationStoreFrontView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->EDIT) == 0)
                         
                                     {
                                     this->setName("Edit Validation StoreFront View");
@@ -109,7 +118,7 @@ this->setObjectFile("views.admin.storefront.EditValidationStoreFrontView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.UPDATE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->UPDATE) == 0)
                         
                                     {
                                     this->setName("Update Validation StoreFront View");
@@ -120,7 +129,7 @@ this->setObjectFile("views.admin.storefront.UpdateValidationStoreFrontView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->DELETE) == 0)
                         
                                     {
                                     this->setName("Delete Validation StoreFront View");
@@ -131,49 +140,49 @@ this->setObjectFile("views.admin.storefront.DeleteValidationStoreFrontView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.BACKUP) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->BACKUP) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.RESTORE) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->RESTORE) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.DROP) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->DROP) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.CREATE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->CREATE) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
@@ -182,7 +191,7 @@ this->setObjectFile("views.admin.storefront.DeleteValidationStoreFrontView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -191,7 +200,7 @@ this->setObjectFile("views.admin.storefront.DeleteValidationStoreFrontView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -199,7 +208,7 @@ this->setObjectFile("views.admin.storefront.DeleteValidationStoreFrontView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -231,7 +240,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_ADMIN_STOREFRONT_STOREFRONTTAG_CPP

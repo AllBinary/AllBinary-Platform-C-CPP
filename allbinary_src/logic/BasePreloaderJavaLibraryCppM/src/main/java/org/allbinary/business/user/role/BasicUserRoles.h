@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -55,17 +56,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/role/BasicUserRole.h"
+        class BasicUserRole;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicUserRoles
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicUserRoles* instance() { static std::unique_ptr<BasicUserRoles> value(new BasicUserRoles()); return value.get(); }
+    private: static BasicUserRoles* instance_owner();
+    private: static BasicUserRoles* instance;
 
     public: static BasicUserRoles* getInstance();
 
-    public: BasicArrayList* roleVector = new BasicArrayListD();
+
+            
+    public: BasicUserRoles();
+        
+    public: BasicArrayList* roleVector;
 
                 //@Throws(Exception.constructor)
             
@@ -79,3 +89,19 @@ class BasicUserRoles
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/business/user/role/BasicUserRole.h")
+#include "org/allbinary/business/user/role/BasicUserRole.h"
+#endif
+
+        #endif
+    

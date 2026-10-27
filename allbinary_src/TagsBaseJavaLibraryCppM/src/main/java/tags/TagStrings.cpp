@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_TAGSTRINGS_CPP
+        #define TAGS_TAGSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/TagStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TagStrings
-            : public Object
-         {
 
-    private: static TagStrings* instance() { static std::unique_ptr<TagStrings> value(new TagStrings()); return value.get(); }
+TagStrings::TagStrings() {
+        }
+        auto TagStrings::instance_owner() -> TagStrings* { static std::unique_ptr<TagStrings> value(new TagStrings()); return value.get(); }
+TagStrings* TagStrings::instance = TagStrings::instance_owner();
 
-    public: static TagStrings* getInstance(){
+    auto TagStrings::getInstance() -> TagStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagStrings::instance();
+                        return TagStrings::instance;
     
 }
 
 
-    public: const std::string DO_START_TAG = "doStartTag";
 
-};
 
-            
-
+        #endif //TAGS_TAGSTRINGS_CPP

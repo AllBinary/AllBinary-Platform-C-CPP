@@ -20,18 +20,19 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
 
 
 
@@ -50,12 +51,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
-#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+        class NullPathFindingLayer;
+class PathFindingLayerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSLayerEvent: public AllBinaryEventObject {
 
-    private: PathFindingLayerInterface* rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* rtsLayer;
 
 public: RTSLayerEvent(PathFindingLayerInterface* rtsLayer);
 
@@ -71,3 +76,22 @@ public: RTSLayerEvent(PathFindingLayerInterface* rtsLayer);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include("org/allbinary/game/layer/NullPathFindingLayer.h")
+#include "org/allbinary/game/layer/NullPathFindingLayer.h"
+#endif
+#if __has_include("org/allbinary/game/layer/PathFindingLayerInterface.h")
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#endif
+
+        #endif
+    

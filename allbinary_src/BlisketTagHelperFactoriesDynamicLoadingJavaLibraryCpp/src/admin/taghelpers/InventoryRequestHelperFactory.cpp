@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_INVENTORYREQUESTHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_INVENTORYREQUESTHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/InventoryRequestHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,21 +66,14 @@
         #include "admin/taghelpers/TagHelperFactoryInterface.h"
 #include "admin/taghelpers/HelperFactory.h"
 
-class InventoryRequestHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "admin.taghelpers.InventoryRequestHelper";
-
-    private: static inline const std::string FACTORYNAME = "InventoryRequestHelperFactory";
-
-public: InventoryRequestHelperFactory(){
+InventoryRequestHelperFactory::InventoryRequestHelperFactory(){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto InventoryRequestHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -80,7 +83,6 @@ public: InventoryRequestHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_INVENTORYREQUESTHELPERFACTORY_CPP

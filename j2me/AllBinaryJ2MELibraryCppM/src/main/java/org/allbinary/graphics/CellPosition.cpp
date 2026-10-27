@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CELLPOSITION_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CELLPOSITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/CellPosition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,9 +62,48 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CellPosition: public V {
 
-    public: static std::string toStringCellPosition(CellPosition* basicGeographicMapCellPosition){
+CellPosition::CellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows){
+this->column= column;
+    
+this->row= row;
+    
+this->id= (row *columns) +column;
+    
+}
+
+
+    auto CellPosition::getColumn() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->column;
+    
+}
+
+
+    auto CellPosition::getRow() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->row;
+    
+}
+
+
+    auto CellPosition::toString() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return CellPosition::toStringColRow(this->getColumn(), this->getRow());;
+    
+}
+
+
+    auto CellPosition::toStringCellPosition(CellPosition* basicGeographicMapCellPosition) -> std::string{
 
 
 
@@ -64,7 +113,7 @@ class CellPosition: public V {
 }
 
 
-    public: static std::string toStringColRow(int32_t i_column, int32_t i_row){
+    auto CellPosition::toStringColRow(int32_t i_column, int32_t i_row) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -90,53 +139,7 @@ stringBuffer->append(commonSeps->PARENTHESIS_CLOSE);
 }
 
 
-    private: int32_t id;
-
-    private: int32_t column;
-
-    private: int32_t row;
-
-public: CellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows){
-this->column= column;
-    
-this->row= row;
-    
-this->id= (row *columns) +column;
-    
-}
-
-
-    public: int32_t getColumn(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->column;
-    
-}
-
-
-    public: int32_t getRow(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->row;
-    
-}
-
-
-    public: std::string toString(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPosition::toStringColRow(this->getColumn(), this->getRow());;
-    
-}
-
-
-    public: int32_t getId(){
+    auto CellPosition::getId() -> int32_t{
 
 
 
@@ -146,7 +149,6 @@ this->id= (row *columns) +column;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CELLPOSITION_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>
-
-      
-#include <org/allbinary/platform/opengles/PlatformTextureBaseFactory.h>
-
-      
+class Image;
+class PlatformBitmapBaseFactory;
+class PlatformTextureBaseFactory;
 
 
 
@@ -59,12 +58,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLImageFactory
-            : public Object
+            : public virtual Object
          {
 
-    public: static OpenGLImageFactory* NULL_OPENGL_IMAGE_FACTORY() { static std::unique_ptr<OpenGLImageFactory> value(new OpenGLImageFactory()); return value.get(); }
+    private: static OpenGLImageFactory* NULL_OPENGL_IMAGE_FACTORY_owner();
+    public: static OpenGLImageFactory* NULL_OPENGL_IMAGE_FACTORY;
 
+
+            
+    public: OpenGLImageFactory();
+        
     public: Image* getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory);
 
 };
@@ -73,3 +81,19 @@ class OpenGLImageFactory
 
 
         #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>)
+#include <org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>
+#endif
+#if __has_include(<org/allbinary/platform/opengles/PlatformTextureBaseFactory.h>)
+#include <org/allbinary/platform/opengles/PlatformTextureBaseFactory.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFOUTIL_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFOUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/LicenseInitInfoUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -92,36 +102,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/LicenseInitInfo.h"
 
-class LicenseInitInfoUtil
-            : public Object
-         {
 
-    private: static LicenseInitInfoUtil* instance() { static std::unique_ptr<LicenseInitInfoUtil> value(new LicenseInitInfoUtil()); return value.get(); }
+LicenseInitInfoUtil::LicenseInitInfoUtil() : logUtil(LogUtil::getInstance()), stringUtil(StringUtil::getInstance()), filePath(this->stringUtil->EMPTY_STRING) {
+        }
+        auto LicenseInitInfoUtil::instance_owner() -> LicenseInitInfoUtil* { static std::unique_ptr<LicenseInitInfoUtil> value(new LicenseInitInfoUtil()); return value.get(); }
+LicenseInitInfoUtil* LicenseInitInfoUtil::instance = LicenseInitInfoUtil::instance_owner();
 
-    public: static LicenseInitInfoUtil* getInstance(){
+    auto LicenseInitInfoUtil::getInstance() -> LicenseInitInfoUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseInitInfoUtil::instance();
+                        return LicenseInitInfoUtil::instance;
     
 }
 
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    public: const std::string INITFILENAME = "licenseinitdata.dat";
-
-    public: const std::string ABOUT = "about";
-
-    public: const std::string PRIVACY_POLICY = "privacy_policy";
-
-    private: std::string filePath = this->stringUtil->EMPTY_STRING;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setFilePath(std::string filePath){
+    auto LicenseInitInfoUtil::setFilePath(std::string filePath) -> void{
 this->filePath= filePath;
     
 }
@@ -130,7 +128,7 @@ this->filePath= filePath;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void write(LicenseInitInfo* initData){
+    auto LicenseInitInfoUtil::write(LicenseInitInfo* initData) -> void{
 
                         if(this->filePath == this->stringUtil->EMPTY_STRING)
                         
@@ -178,9 +176,9 @@ dataOutputStream->writeUTF(DatabaseEncoder::encode(licenseServerCrypted));
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put("Command Failed: " +this->INITFILENAME, this, "write", &e);
+this->logUtil->put(JavaString::valueOf("Command Failed: ") +JavaString::valueOf(this->INITFILENAME), this, "write", &e);
     
-FileStreamFactory::getInstance()->delete(this->filePath, this->INITFILENAME);
+FileStreamFactory::getInstance()->delete_(this->filePath, this->INITFILENAME);
     
 
 
@@ -195,7 +193,7 @@ FileStreamFactory::getInstance()->delete(this->filePath, this->INITFILENAME);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo* read(){
+    auto LicenseInitInfoUtil::read() -> LicenseInitInfo*{
 
 
 
@@ -208,7 +206,7 @@ FileStreamFactory::getInstance()->delete(this->filePath, this->INITFILENAME);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo* readAgain(int32_t initializeCounter){
+    auto LicenseInitInfoUtil::readAgain(int32_t initializeCounter) -> LicenseInitInfo*{
 
     std::string METHOD_NAME = "readAgain";;
     
@@ -223,7 +221,7 @@ FileStreamFactory::getInstance()->delete(this->filePath, this->INITFILENAME);
                                 
 
         try {
-            this->logUtil->putF("LicenseInitInfo File: " +this->INITFILENAME, this, METHOD_NAME);
+            this->logUtil->putF(JavaString::valueOf("LicenseInitInfo File: ") +JavaString::valueOf(this->INITFILENAME), this, METHOD_NAME);
     
 
     FileStreamFactory* fileStreamFactory = FileStreamFactory::getInstance();;
@@ -247,7 +245,7 @@ FileStreamFactory::getInstance()->delete(this->filePath, this->INITFILENAME);
     std::vector<int8_t> decodedByteArray = DatabaseEncoder::decode(iData->readUTF());;
     
 
-    std::string licenseIdDecoded = String.fromCharCode(...decodedByteArray);;
+    std::string licenseIdDecoded = JavaString::fromChars(decodedByteArray);;
     
 initInfo->setLicenseId((new WeakCrypt(1))->decrypt(licenseIdDecoded));
     
@@ -269,11 +267,11 @@ initInfo->setLicenseId((new WeakCrypt(1))->decrypt(licenseIdDecoded));
         {
 decodedByteArray= DatabaseEncoder::decode(iData->readUTF());
     
-licenseServerDecoded= String.fromCharCode(...decodedByteArray);
+licenseServerDecoded= JavaString::fromChars(decodedByteArray);
     
 initInfo->setServer((new WeakCrypt(3))->decrypt(licenseServerDecoded), index);
     
-this->logUtil->putF(NEXT_FILE +initInfo->getServer(index), this, METHOD_NAME);
+this->logUtil->putF(JavaString::valueOf(NEXT_FILE) +JavaString::valueOf(initInfo->getServer(index)), this, METHOD_NAME);
     
 }
 
@@ -290,7 +288,7 @@ this->logUtil->putF(NEXT_FILE +initInfo->getServer(index), this, METHOD_NAME);
                             
 
 
-                            throw new Exception("Could Not Load License InitInfo: " +this->INITFILENAME);
+                            throw Exception(JavaString::valueOf("Could Not Load License InitInfo: ") +JavaString::valueOf(this->INITFILENAME));
                     
 
                         }
@@ -301,27 +299,27 @@ this->logUtil->putF(NEXT_FILE +initInfo->getServer(index), this, METHOD_NAME);
             {
 
         try {
-            this->logUtil->put("Command Failed: " +this->INITFILENAME, this, METHOD_NAME, &e);
+            this->logUtil->put(JavaString::valueOf("Command Failed: ") +JavaString::valueOf(this->INITFILENAME), this, METHOD_NAME, &e);
     
 
                 //: 
 } catch(Exception& e2) 
             {
-this->logUtil->put("LicenseInitInfo Read Retry: " +this->INITFILENAME, this, "readAgain()", &e2);
+this->logUtil->put(JavaString::valueOf("LicenseInitInfo Read Retry: ") +JavaString::valueOf(this->INITFILENAME), this, "readAgain()", &e2);
     
 }
 
 
 
 
-                            throw new Exception("LicenseInitInfo Read Error: " +this->INITFILENAME);
+                            throw Exception(JavaString::valueOf("LicenseInitInfo Read Error: ") +JavaString::valueOf(this->INITFILENAME));
                     
 }
 
 }
 
 
-    public: std::string getFilePath(){
+    auto LicenseInitInfoUtil::getFilePath() -> std::string{
 
 
 
@@ -331,7 +329,6 @@ this->logUtil->put("LicenseInitInfo Read Retry: " +this->INITFILENAME, this, "re
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFOUTIL_CPP

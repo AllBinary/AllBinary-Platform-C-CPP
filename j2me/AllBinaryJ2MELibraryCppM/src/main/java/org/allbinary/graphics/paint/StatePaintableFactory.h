@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/paint/StatePaintable.h"
+        class StatePaintable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StatePaintableFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static StatePaintable* instance() { static std::unique_ptr<StatePaintable> value(new StatePaintable()); return value.get(); }
+    private: static StatePaintable* instance_owner();
+    private: static StatePaintable* instance;
 
     public: static StatePaintable* getInstance();
 
+
+            
+    public: StatePaintableFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/paint/StatePaintable.h")
+#include "org/allbinary/graphics/paint/StatePaintable.h"
+#endif
+
+        #endif
+    

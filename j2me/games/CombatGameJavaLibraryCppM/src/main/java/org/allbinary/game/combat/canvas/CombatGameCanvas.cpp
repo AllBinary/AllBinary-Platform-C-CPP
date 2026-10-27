@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_CANVAS_COMBATGAMECANVAS_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_CANVAS_COMBATGAMECANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/canvas/CombatGameCanvas.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -92,11 +102,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CombatGameCanvas: public AllBinaryGameCanvas {
+std::vector<BasicLayerProcessor*> CombatGameCanvas::basicLayerProcessor = {};
 
-    protected: static inline std::vector<BasicLayerProcessor*> basicLayerProcessor = {};
-
-public: CombatGameCanvas(CommandListener* cmdListener, AllBinaryGameLayerManager* gameLayerManager, HighScoresFactoryInterface* highScoresFactoryInterface, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool buffered) : AllBinaryGameCanvas(cmdListener, gameLayerManager, highScoresFactoryInterface, gameInitializationInterfaceFactoryInterface, buffered){
+CombatGameCanvas::CombatGameCanvas(CommandListener* cmdListener, AllBinaryGameLayerManager* gameLayerManager, HighScoresFactoryInterface* highScoresFactoryInterface, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface, bool buffered) : AllBinaryGameCanvas(cmdListener, gameLayerManager, highScoresFactoryInterface, gameInitializationInterfaceFactoryInterface, buffered){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,7 +114,7 @@ public: CombatGameCanvas(CommandListener* cmdListener, AllBinaryGameLayerManager
 }
 
 
-    private: void CombatGameCanvas_init(){
+    auto CombatGameCanvas::CombatGameCanvas_init() -> void{
 DestroyEventCircularStaticPool::getInstance()->init(this);
     
 ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Destroy Events");
@@ -116,15 +124,15 @@ ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Destroy Events");
 
                 //@Throws(Exception.constructor)
             
-    protected: void initApp(AbeClientInformationInterface* abeClientInformation){
+    auto CombatGameCanvas::initApp(AbeClientInformationInterface* abeClientInformation) -> void{
 this->CombatGameCanvas_init();
     
-super.initApp(abeClientInformation);
+AllBinaryGameCanvas::initApp(abeClientInformation);
     
 }
 
 
-    protected: void initConfigurablePortion(int32_t portion){
+    auto CombatGameCanvas::initConfigurablePortion(int32_t portion) -> void{
 DestroyedLayerProcessor::init();
     
 ProgressCanvasFactory::getInstance()->addNormalPortion(portion, "Basic Processors");
@@ -161,8 +169,8 @@ CombatGameCanvas::basicLayerProcessor[0]= DestroyedLayerProcessor::getInstance()
 
                 //@Throws(Exception.constructor)
             
-    protected: void processPlayingGame(){
-super.processPlayingGame();
+    auto CombatGameCanvas::processPlayingGame() -> void{
+AllBinaryGameCanvas::processPlayingGame();
     
 
 
@@ -171,7 +179,7 @@ super.processPlayingGame();
                         for (
     int32_t index = CombatGameCanvas::basicLayerProcessor.size();--index >= 0; )
         {
-CombatGameCanvas::basicLayerProcessor[index].process(this->gameLayerManager);
+CombatGameCanvas::basicLayerProcessor[index]->process(this->gameLayerManager);
     
 }
 
@@ -180,8 +188,8 @@ CombatGameCanvas::basicLayerProcessor[index].process(this->gameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    protected: void cleanupGame(){
-super.cleanupGame();
+    auto CombatGameCanvas::cleanupGame() -> void{
+AllBinaryGameCanvas::cleanupGame();
     
 
 
@@ -190,7 +198,7 @@ super.cleanupGame();
                         for (
     int32_t index = CombatGameCanvas::basicLayerProcessor.size();--index >= 0; )
         {
-CombatGameCanvas::basicLayerProcessor[index].getList()->clear();
+CombatGameCanvas::basicLayerProcessor[index]->getList()->clear();
     
 }
 
@@ -207,13 +215,12 @@ this->cleanupManager();
 
                 //@Throws(Exception.constructor)
             
-    protected: void cleanupManager(){
-this->gameLayerManager.cleanup();
+    auto CombatGameCanvas::cleanupManager() -> void{
+this->gameLayerManager->cleanup();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_CANVAS_COMBATGAMECANVAS_CPP

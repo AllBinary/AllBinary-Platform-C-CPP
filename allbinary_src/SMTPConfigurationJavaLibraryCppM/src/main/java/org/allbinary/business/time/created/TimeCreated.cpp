@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATED_CPP
+        #define ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATED_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/time/created/TimeCreated.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,19 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeCreated: public Time {
 
-public: TimeCreated(std::string time) : Time(time){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-public: TimeCreated(int64_t time) : Time(time){
+TimeCreated::TimeCreated(std::string time) : Time(time){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +67,16 @@ public: TimeCreated(int64_t time) : Time(time){
 }
 
 
-};
+TimeCreated::TimeCreated(int64_t time) : Time(time){
 
-            
+                        //super/this constructor call is in the constructor initializer list.
+                    
 
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_BUSINESS_TIME_CREATED_TIMECREATED_CPP

@@ -21,6 +21,11 @@
         #ifndef TAGS_COMMANDTAG_H
         #define TAGS_COMMANDTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +51,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/CustomTagSupport.h"
-#include "tags/TagStrings.h"
+class TagStrings;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommandTag: public CustomTagSupport {
 
-    protected: TagStrings* tagStrings = TagStrings::getInstance();
+    /*protected*/ public: TagStrings* tagStrings;
 
     private: std::string command;
 
@@ -66,3 +75,16 @@ public: CommandTag();
 
 
         #endif //TAGS_COMMANDTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGS_COMMANDTAG_H_COMPLETE)
+        #define TAGS_COMMANDTAG_H_COMPLETE
+        #if __has_include("tags/CustomTagSupport.h")
+#include "tags/CustomTagSupport.h"
+#endif
+#if __has_include("tags/TagStrings.h")
+#include "tags/TagStrings.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMCOMMANDLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMCOMMANDLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/GameFeatureItemCommandListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,21 +90,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameFeatureItemCommandListener
-            : public Object
-        , public ItemCommandListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameOptionsForm* gameOptionsForm;
-
-public: GameFeatureItemCommandListener(GameOptionsForm* gameOptionsForm){
+GameFeatureItemCommandListener::GameFeatureItemCommandListener(GameOptionsForm* gameOptionsForm) : logUtil(LogUtil::getInstance()){
 this->gameOptionsForm= gameOptionsForm;
     
 }
 
 
-    public: void commandAction(Command* command, Item* item){
+    auto GameFeatureItemCommandListener::commandAction(Command* command, Item* item) -> void{
 
         try {
             
@@ -127,7 +130,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, MidletStrings::getInstance()-
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREITEMCOMMANDLISTENER_CPP

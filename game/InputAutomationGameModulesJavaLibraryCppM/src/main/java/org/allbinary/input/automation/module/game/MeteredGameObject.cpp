@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,31 +74,8 @@
         #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
 #include "org/allbinary/input/automation/module/game/GraphicsAnalysisUtil.h"
 
-class MeteredGameObject
-            : public Object
-        , public MeteredGameObjectInterface {
 
-    private: std::vector<double> ratios;
-
-    private: bool good = false;
-
-    private: bool dropping = false;
-
-    private: int32_t minX;
-
-    private: int32_t maxX;
-
-    private: int32_t y;
-
-    private: int32_t size;
-
-    private: const std::string RATIOS_LABEL = "Ratios: ";
-
-    private: const std::string IS_GOOD_LABEL = "isGood: ";
-
-    private: const std::string IS_DROPPPING_LABEL = "isDropping: ";
-
-public: MeteredGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y){
+MeteredGameObject::MeteredGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y){
 this->setRatios(std::vector<double>(bufferedImage.length));
     
 this->setMinX(minX);
@@ -146,7 +133,7 @@ this->getRatios()[index]= double(nominator /this->getSize());
 }
 
 
-    public: bool isGood(){
+    auto MeteredGameObject::isGood() -> bool{
 
 
 
@@ -156,13 +143,13 @@ this->getRatios()[index]= double(nominator /this->getSize());
 }
 
 
-    protected: void setGood(bool good){
+    auto MeteredGameObject::setGood(bool good) -> void{
 this->good= good;
     
 }
 
 
-    public: bool isDropping(){
+    auto MeteredGameObject::isDropping() -> bool{
 
 
 
@@ -172,13 +159,13 @@ this->good= good;
 }
 
 
-    protected: void setDropping(bool dropping){
+    auto MeteredGameObject::setDropping(bool dropping) -> void{
 this->dropping= dropping;
     
 }
 
 
-    public: std::vector<double> getRatios(){
+    auto MeteredGameObject::getRatios() -> std::vector<double>{
 
 
 
@@ -188,7 +175,7 @@ this->dropping= dropping;
 }
 
 
-    public: std::string toString(){
+    auto MeteredGameObject::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -240,13 +227,13 @@ stringBuffer->appendboolean(this->isDropping());
 }
 
 
-    public: void setRatios(std::vector<double> ratios){
+    auto MeteredGameObject::setRatios(std::vector<double> ratios) -> void{
 this->ratios= ratios;
     
 }
 
 
-    public: int32_t getMinX(){
+    auto MeteredGameObject::getMinX() -> int32_t{
 
 
 
@@ -256,13 +243,13 @@ this->ratios= ratios;
 }
 
 
-    public: void setMinX(int32_t minX){
+    auto MeteredGameObject::setMinX(int32_t minX) -> void{
 this->minX= minX;
     
 }
 
 
-    public: int32_t getMaxX(){
+    auto MeteredGameObject::getMaxX() -> int32_t{
 
 
 
@@ -272,13 +259,13 @@ this->minX= minX;
 }
 
 
-    public: void setMaxX(int32_t maxX){
+    auto MeteredGameObject::setMaxX(int32_t maxX) -> void{
 this->maxX= maxX;
     
 }
 
 
-    public: int32_t getY(){
+    auto MeteredGameObject::getY() -> int32_t{
 
 
 
@@ -288,13 +275,13 @@ this->maxX= maxX;
 }
 
 
-    public: void setY(int32_t y){
+    auto MeteredGameObject::setY(int32_t y) -> void{
 this->y= y;
     
 }
 
 
-    public: int32_t getSize(){
+    auto MeteredGameObject::getSize() -> int32_t{
 
 
 
@@ -304,13 +291,12 @@ this->y= y;
 }
 
 
-    public: void setSize(int32_t size){
+    auto MeteredGameObject::setSize(int32_t size) -> void{
 this->size= size;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_CPP

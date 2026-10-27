@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_CATEGORY_BASICADVERTISEMENTCATEGORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_CATEGORY_BASICADVERTISEMENTCATEGORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/search/category/BasicAdvertisementCategory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,19 +56,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/search/category/AdvertisementCategoryInterface.h"
 
-class BasicAdvertisementCategory
-            : public Object
-        , public AdvertisementCategoryInterface {
 
-    private: std::string categoryId;
-
-public: BasicAdvertisementCategory(std::string categoryId){
+BasicAdvertisementCategory::BasicAdvertisementCategory(std::string categoryId){
 this->categoryId= categoryId;
     
 }
 
 
-    public: std::string toString(){
+    auto BasicAdvertisementCategory::toString() -> std::string{
 
 
 
@@ -68,7 +73,6 @@ this->categoryId= categoryId;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_CATEGORY_BASICADVERTISEMENTCATEGORY_CPP

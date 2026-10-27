@@ -21,6 +21,11 @@
         #ifndef TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H
         #define TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,33 +34,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <admin/taghelpers/TagHelperFactoryInterface.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/OutputTypeData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
-
-      
-#include <taghelpers/transform/info/TransformInfoRequestHelperFactory.h>
-
-      
+class JspTagException;
+class TagHelperFactoryInterface;
+class StoreFrontData;
+class AbResponseHandler;
+class LogUtil;
+class OutputTypeData;
+class TransformInfoData;
+class TransformInfoRequestHelperFactory;
 #include <tags/ModifyTag.h>
-
-      
 
 
 
@@ -75,9 +62,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformInfoTag: public ModifyTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string name;
 
@@ -141,3 +132,37 @@ public: TransformInfoTag(TagHelperFactoryInterface* tagHelperFactoryInterface);
 
 
         #endif //TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H_COMPLETE)
+        #define TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H_COMPLETE
+        #if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<admin/taghelpers/TagHelperFactoryInterface.h>)
+#include <admin/taghelpers/TagHelperFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/OutputTypeData.h>)
+#include <org/allbinary/logic/io/OutputTypeData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoData.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
+#endif
+#if __has_include(<taghelpers/transform/info/TransformInfoRequestHelperFactory.h>)
+#include <taghelpers/transform/info/TransformInfoRequestHelperFactory.h>
+#endif
+#if __has_include(<tags/ModifyTag.h>)
+#include <tags/ModifyTag.h>
+#endif
+
+        #endif
+    

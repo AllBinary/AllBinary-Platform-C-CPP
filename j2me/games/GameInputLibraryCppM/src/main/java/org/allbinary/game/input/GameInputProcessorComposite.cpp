@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORCOMPOSITE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameInputProcessorComposite.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,13 +69,8 @@
         #include "org/allbinary/game/input/PlayerGameInput.h"
 #include "org/allbinary/game/input/GameInputProcessorInterface.h"
 
-class GameInputProcessorComposite: public PlayerGameInput {
 
-    private: std::string name;
-
-    private: GameInputProcessorInterface* gameInputProcessorInterface;
-
-public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface* gameInputProcessorInterface) : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
+GameInputProcessorComposite::GameInputProcessorComposite(std::string name, GameInputProcessorInterface* gameInputProcessorInterface) : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +85,7 @@ this->gameInputProcessorInterface= gameInputProcessorInterface;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void update(){
+    auto GameInputProcessorComposite::update() -> void{
 
         try {
             
@@ -92,26 +97,23 @@ this->gameInputProcessorInterface->onInput(list);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UPDATE, &e);
     
 }
 
 }
 
 
-    private: const std::string NAME_LABEL = " GameInputProcessorInterface: ";
-
-    public: std::string toString(){
+    auto GameInputProcessorComposite::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append(super.toString())->append(this->NAME_LABEL)->append(this->name)->toString();;
+                        return (new StringMaker())->append(PlayerGameInput::toString())->append(this->NAME_LABEL)->append(this->name)->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORCOMPOSITE_CPP

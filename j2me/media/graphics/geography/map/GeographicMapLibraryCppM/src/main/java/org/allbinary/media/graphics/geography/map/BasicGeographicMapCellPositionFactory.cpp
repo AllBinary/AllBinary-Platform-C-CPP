@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,25 +75,8 @@
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h"
 
-class BasicGeographicMapCellPositionFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: std::vector<std::vector<GeographicMapCellPosition*>> geographicMapCellPositionArray;
-
-    protected: BasicGeographicMap* geographicMapInterface;
-
-    protected: GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface;
-
-    private: int32_t columns;
-
-    private: int32_t rows;
-
-    private: AllBinaryTiledLayer* tiledLayer;
-
-public: BasicGeographicMapCellPositionFactory(BasicGeographicMap* geographicMapInterface){
+BasicGeographicMapCellPositionFactory::BasicGeographicMapCellPositionFactory(BasicGeographicMap* geographicMapInterface) : logUtil(LogUtil::getInstance()){
 this->geographicMapInterface= geographicMapInterface;
     
 this->geographicMapCellPositionFactoryInterface= this->geographicMapInterface->getGeographicMapCellPositionFactoryInterface();
@@ -103,7 +96,7 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    private: void init(){
+    auto BasicGeographicMapCellPositionFactory::init() -> void{
 
     AllBinaryTiledLayer* tiledLayer = this->tiledLayer;;
     
@@ -144,7 +137,7 @@ this->createInstance(column, row, width, height);
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(GeographicMapCellPositionFactoryInitVisitorInterface* geographicMapCelPositionFactoryInitVisitorInterface){
+    auto BasicGeographicMapCellPositionFactory::visit(GeographicMapCellPositionFactoryInitVisitorInterface* geographicMapCelPositionFactoryInitVisitorInterface) -> void{
 
     AllBinaryTiledLayer* tiledLayer = this->tiledLayer;;
     
@@ -202,7 +195,7 @@ this->logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->append
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getAt(int32_t i_column, int32_t i_row){
+    auto BasicGeographicMapCellPositionFactory::getAt(int32_t i_column, int32_t i_row) -> GeographicMapCellPosition*{
 
 
 
@@ -214,7 +207,7 @@ this->logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->append
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getInstance(GeographicMapCellPosition* anotherMapGeographicMapCellPosition){
+    auto BasicGeographicMapCellPositionFactory::getInstance(GeographicMapCellPosition* anotherMapGeographicMapCellPosition) -> GeographicMapCellPosition*{
 
 
 
@@ -226,7 +219,7 @@ this->logUtil->put((new StringMaker())->append(commonSeps->BRACKET_OPEN)->append
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height){
+    auto BasicGeographicMapCellPositionFactory::createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height) -> GeographicMapCellPosition*{
 
     Object* cellPositionCanBeNull = this->geographicMapCellPositionArray[i_row][i_column];;
     
@@ -252,7 +245,7 @@ this->geographicMapCellPositionArray[i_row][i_column]= dynamic_cast<GeographicMa
 }
 
 
-    public: int32_t getColumns(){
+    auto BasicGeographicMapCellPositionFactory::getColumns() -> int32_t{
 
 
 
@@ -262,7 +255,7 @@ this->geographicMapCellPositionArray[i_row][i_column]= dynamic_cast<GeographicMa
 }
 
 
-    public: int32_t getRows(){
+    auto BasicGeographicMapCellPositionFactory::getRows() -> int32_t{
 
 
 
@@ -272,7 +265,6 @@ this->geographicMapCellPositionArray[i_row][i_column]= dynamic_cast<GeographicMa
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP

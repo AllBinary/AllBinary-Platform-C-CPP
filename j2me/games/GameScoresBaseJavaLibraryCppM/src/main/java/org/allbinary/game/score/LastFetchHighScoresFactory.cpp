@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_LASTFETCHHIGHSCORESFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_LASTFETCHHIGHSCORESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/LastFetchHighScoresFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,13 +62,12 @@
         #include "org/allbinary/game/score/NoHighScoresFactory.h"
 #include "org/allbinary/game/score/HighScores.h"
 
-class LastFetchHighScoresFactory
-            : public Object
-         {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+LastFetchHighScoresFactory::LastFetchHighScoresFactory() : highScoresArray(NoHighScoresFactory::getInstance()->NO_HIGH_SCORES) {
+        }
+        Object* LastFetchHighScoresFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static LastFetchHighScoresFactory* getInstance(){
+    auto LastFetchHighScoresFactory::getInstance() -> LastFetchHighScoresFactory*{
 
                         if(LastFetchHighScoresFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -77,9 +86,6 @@ class LastFetchHighScoresFactory
 }
 
 
-    public: std::vector<HighScores*> highScoresArray = NoHighScoresFactory::getInstance()->NO_HIGH_SCORES;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_LASTFETCHHIGHSCORESFACTORY_CPP

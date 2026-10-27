@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTORE_CPP
+        #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTORE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,25 +58,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThirdPartyStore
-            : public Object
-         {
 
-    private: bool authorized= false;
-
-    private: std::string name;
-
-public: ThirdPartyStore(std::string name){
+ThirdPartyStore::ThirdPartyStore(std::string name){
 this->name= name;
     
 }
 
 
-    public: void authorize(AbeClientInformationInterface* clientInformationInterface){
+    auto ThirdPartyStore::authorize(AbeClientInformationInterface* clientInformationInterface) -> void{
 }
 
 
-    public: bool isAuthorized(){
+    auto ThirdPartyStore::isAuthorized() -> bool{
 
 
 
@@ -76,13 +79,13 @@ this->name= name;
 }
 
 
-    protected: void setAuthorized(bool authorized){
+    auto ThirdPartyStore::setAuthorized(bool authorized) -> void{
 this->authorized= authorized;
     
 }
 
 
-    public: std::string getName(){
+    auto ThirdPartyStore::getName() -> std::string{
 
 
 
@@ -92,7 +95,6 @@ this->authorized= authorized;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTORE_CPP

@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_UNITRTSFORMINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_UNITRTSFORMINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/UnitRTSFormInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -135,15 +145,9 @@
 #include "org/allbinary/game/input/form/AssignWaypointsUtil.h"
 #include "org/allbinary/game/input/form/PlayersSingletonFactory.h"
 
-class UnitRTSFormInput: public RTSFormInput {
+int32_t UnitRTSFormInput::DECAL_ID = SmallIntegerSingletonFactory::getInstance()->getAt(23);
 
-    public: static inline int32_t DECAL_ID = SmallIntegerSingletonFactory::getInstance()->getAt(23);
-
-    protected: GameNotificationEvent* noMoneyGameNotificationEvent;
-
-    protected: GameNotificationEvent* newUnitGameNotificationEvent;
-
-public: UnitRTSFormInput(std::vector<Group*> groupInterface) : RTSFormInput(groupInterface){
+UnitRTSFormInput::UnitRTSFormInput(std::vector<Group*> groupInterface) : RTSFormInput(groupInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -167,8 +171,8 @@ this->getHashtable()->put(WorkWaypoint::ID, smallIntegerSingletonFactory->getAt(
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto UnitRTSFormInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+RTSFormInput::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
@@ -185,8 +189,8 @@ this->newUnitGameNotificationEvent->setBasicColorP(geographicMapInterface->getFo
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex){
-super.process(layerManager);
+    auto UnitRTSFormInput::processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex) -> void{
+RTSFormInput::process(layerManager);
     
 
     RTSLayer* associatedRtsLayer2 = dynamic_cast<RTSLayer*>(associatedRtsLayer);;
@@ -225,7 +229,7 @@ rtsLayer->setPosition(cellPoint->getX(), cellPoint->getY(), rtsLayer->getZP());
 
     BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-rtsLayer->geographicMapCellPositionAreaBase.update(geographicMapInterface);
+rtsLayer->geographicMapCellPositionAreaBase->update(geographicMapInterface);
     
 
                         }
@@ -245,7 +249,7 @@ this->attemptBuild(associatedRtsLayer2, rtsPlayerLayerInterface, layerManager, d
 
                 //@Throws(Exception.constructor)
             
-    private: void attemptBuild(RTSLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex){
+    auto UnitRTSFormInput::attemptBuild(RTSLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex) -> void{
 
     int32_t cost = layerInterface->getCost();;
     
@@ -267,7 +271,7 @@ stringBuffer->append(" with ");
     
 stringBuffer->appendint(capital->getTotalMoney());
     
-this->logUtil.putF(stringBuffer->toString(), this, "attemptBuild");
+this->logUtil->putF(stringBuffer->toString(), this, "attemptBuild");
     
 
                         if(cost <= capital->getTotalMoney())
@@ -323,7 +327,6 @@ advancedPlayerOwnedRTSLayers->addUnit(layerInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_UNITRTSFORMINPUT_CPP

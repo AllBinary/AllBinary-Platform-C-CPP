@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/RotationAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,11 +74,8 @@
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/animation/Animation.h"
 
-class RotationAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    public: static RotationAnimationFactory* createFactory(){
+    auto RotationAnimationFactory::createFactory() -> RotationAnimationFactory*{
 
     int16_t totalAngle = AngleFactory::getInstance()->TOTAL_ANGLE;;
     
@@ -81,11 +88,7 @@ class RotationAnimationFactory
 }
 
 
-    private: int16_t totalAngle;
-
-    private: int16_t angleIncrement;
-
-public: RotationAnimationFactory(int16_t totalAngle, int16_t angleIncrement){
+RotationAnimationFactory::RotationAnimationFactory(int16_t totalAngle, int16_t angleIncrement){
 this->totalAngle= totalAngle;
     
 this->angleIncrement= angleIncrement;
@@ -95,7 +98,7 @@ this->angleIncrement= angleIncrement;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto RotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -107,7 +110,7 @@ this->angleIncrement= angleIncrement;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto RotationAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -117,11 +120,10 @@ this->angleIncrement= angleIncrement;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto RotationAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONFACTORY_CPP

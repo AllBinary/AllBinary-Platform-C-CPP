@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/event/BaseChangedGameFeatureListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,25 +90,17 @@
         #include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
 #include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
 
-class BaseChangedGameFeatureListener
-            : public Object
-        , public GameFeatureListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: GameFeatureUtil* gameFeatureUtil = GameFeatureUtil::getInstance();
-
-    protected: BasicArrayList* list = new BasicArrayListD();
-
-    private: bool changed = true;
-
-    public: void onEvent(AllBinaryEventObject* eventObject){
+BaseChangedGameFeatureListener::BaseChangedGameFeatureListener() : logUtil(LogUtil::getInstance()), gameFeatureUtil(GameFeatureUtil::getInstance()), list(new BasicArrayListD()) {
+        }
+        
+    auto BaseChangedGameFeatureListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(CommonStrings::getInstance()->NOT_IMPLEMENTED, this);
     
 }
 
 
-    public: void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent){
+    auto BaseChangedGameFeatureListener::onGameFeatureChange(GameFeatureEvent* gameFeatureEvent) -> void{
 this->logUtil->putF((new StringMaker())->append(this->gameFeatureUtil->GAME_FEATURE_CHANGED)->append(gameFeatureEvent->getWhatChanged())->toString(), this, this->gameFeatureUtil->ON_GAME_FEATURE_CHANGE);
     
 this->list->add(gameFeatureEvent->getGameOption());
@@ -108,19 +110,19 @@ this->setChanged(true);
 }
 
 
-    public: void add(Feature* gameFeature){
+    auto BaseChangedGameFeatureListener::add(Feature* gameFeature) -> void{
 this->list->add(gameFeature);
     
 }
 
 
-    public: void remove(Feature* gameFeature){
+    auto BaseChangedGameFeatureListener::remove(Feature* gameFeature) -> void{
 this->list->remove(gameFeature);
     
 }
 
 
-    public: void setChanged(bool initialized){
+    auto BaseChangedGameFeatureListener::setChanged(bool initialized) -> void{
 this->changed= initialized;
     
 
@@ -135,7 +137,7 @@ this->changed= initialized;
 }
 
 
-    public: bool isChangedFeature(Feature* gameFeature){
+    auto BaseChangedGameFeatureListener::isChangedFeature(Feature* gameFeature) -> bool{
 
     bool isChanged = this->list->contains(gameFeature);;
     
@@ -165,7 +167,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isChanged");
 }
 
 
-    public: bool isChanged(){
+    auto BaseChangedGameFeatureListener::isChanged() -> bool{
 
 
 
@@ -175,7 +177,6 @@ this->logUtil->putF(stringBuffer->toString(), this, "isChanged");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_BASECHANGEDGAMEFEATURELISTENER_CPP

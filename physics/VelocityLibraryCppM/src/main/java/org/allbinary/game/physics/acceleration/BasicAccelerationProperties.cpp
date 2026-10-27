@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_ACCELERATION_BASICACCELERATIONPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_ACCELERATION_BASICACCELERATIONPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/acceleration/BasicAccelerationProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicAccelerationProperties
-            : public Object
-         {
 
-    private: int32_t forward= 0;
-
-    private: int32_t reverse= 0;
-
-public: BasicAccelerationProperties(int32_t forward, int32_t reverse){
+BasicAccelerationProperties::BasicAccelerationProperties(int32_t forward, int32_t reverse){
 this->setForward(forward);
     
 this->setReverse(reverse);
@@ -61,13 +64,13 @@ this->setReverse(reverse);
 }
 
 
-    public: void setReverse(int32_t reverse){
+    auto BasicAccelerationProperties::setReverse(int32_t reverse) -> void{
 this->reverse= reverse;
     
 }
 
 
-    public: int32_t getReverse(){
+    auto BasicAccelerationProperties::getReverse() -> int32_t{
 
 
 
@@ -77,13 +80,13 @@ this->reverse= reverse;
 }
 
 
-    public: void setForward(int32_t forward){
+    auto BasicAccelerationProperties::setForward(int32_t forward) -> void{
 this->forward= forward;
     
 }
 
 
-    public: int32_t getForward(){
+    auto BasicAccelerationProperties::getForward() -> int32_t{
 
 
 
@@ -93,7 +96,6 @@ this->forward= forward;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_ACCELERATION_BASICACCELERATIONPROPERTIES_CPP

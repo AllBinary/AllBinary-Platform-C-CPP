@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,14 +39,8 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -63,6 +62,10 @@
         #include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
 #include "org/allbinary/input/automation/module/game/HitPointGameObjectInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HitPointGameObject: public MeteredGameObject, public HitPointGameObjectInterface {
 
     private: bool damaged = false;
@@ -81,7 +84,7 @@ public: HitPointGameObject(std::vector<BufferedImage*> bufferedImage, int32_t mi
 
     public: bool isCloseDeath();
 
-    protected: void setCloseDeath(bool closeDeath);
+    /*protected*/ public: void setCloseDeath(bool closeDeath);
 
     public: bool isDamaged();
 
@@ -95,3 +98,25 @@ public: HitPointGameObject(std::vector<BufferedImage*> bufferedImage, int32_t mi
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/MeteredGameObject.h")
+#include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/HitPointGameObjectInterface.h")
+#include "org/allbinary/input/automation/module/game/HitPointGameObjectInterface.h"
+#endif
+
+        #endif
+    

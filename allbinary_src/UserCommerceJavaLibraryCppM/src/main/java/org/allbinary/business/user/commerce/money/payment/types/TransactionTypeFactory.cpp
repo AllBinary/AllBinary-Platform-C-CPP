@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/TransactionTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,35 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/types/TransactionType.h"
 
-class TransactionTypeFactory
-            : public Object
-         {
 
-    private: static TransactionTypeFactory* instance() { static std::unique_ptr<TransactionTypeFactory> value(new TransactionTypeFactory()); return value.get(); }
+TransactionTypeFactory::TransactionTypeFactory() : SALE(new TransactionType("Sale")), CREDIT(new TransactionType("Credit")), AUTHORIZATION(new TransactionType("Authorization")), DELAYEDCAPTURE(new TransactionType("Delayed Capture")), VOID(new TransactionType("Void")), INQUIRY(new TransactionType("Inquiry")) {
+        }
+        auto TransactionTypeFactory::instance_owner() -> TransactionTypeFactory* { static std::unique_ptr<TransactionTypeFactory> value(new TransactionTypeFactory()); return value.get(); }
+TransactionTypeFactory* TransactionTypeFactory::instance = TransactionTypeFactory::instance_owner();
 
-    public: static TransactionTypeFactory* getInstance(){
+    auto TransactionTypeFactory::getInstance() -> TransactionTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransactionTypeFactory::instance();
+                        return TransactionTypeFactory::instance;
     
 }
 
 
-    public: TransactionType* SALE = new TransactionType("Sale");
 
-    public: TransactionType* CREDIT = new TransactionType("Credit");
 
-    public: TransactionType* AUTHORIZATION = new TransactionType("Authorization");
-
-    public: TransactionType* DELAYEDCAPTURE = new TransactionType("Delayed Capture");
-
-    public: TransactionType* VOID = new TransactionType("Void");
-
-    public: TransactionType* INQUIRY = new TransactionType("Inquiry");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_CPP

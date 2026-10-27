@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_H
         #define ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/math/Angle.h>
-
-      
-#include <org/allbinary/math/NoDecimalTrigTable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class GPoint;
+class PointFactory;
+class Angle;
+class NoDecimalTrigTable;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -68,11 +61,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicGraphicsPipeline
-            : public Object
+            : public virtual Object
          {
 
-    protected: BasicArrayList* pointBasicArrayList;
+    /*protected*/ public: BasicArrayList* pointBasicArrayList;
 
 public: BasicGraphicsPipeline(BasicArrayList* points);
 
@@ -88,7 +85,7 @@ public: BasicGraphicsPipeline(BasicArrayList* points);
             
     public: void rotateToAngle(Angle* angle);
 
-    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
+    private: NoDecimalTrigTable* noDecimalTrigTable;
 
                 //@Throws(Exception.constructor)
             
@@ -106,3 +103,28 @@ public: BasicGraphicsPipeline(BasicArrayList* points);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/Angle.h>)
+#include <org/allbinary/math/Angle.h>
+#endif
+#if __has_include(<org/allbinary/math/NoDecimalTrigTable.h>)
+#include <org/allbinary/math/NoDecimalTrigTable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

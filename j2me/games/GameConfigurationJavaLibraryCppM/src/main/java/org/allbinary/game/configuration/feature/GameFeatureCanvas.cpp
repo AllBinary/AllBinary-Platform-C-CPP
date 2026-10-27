@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/GameFeatureCanvas.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,17 +59,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameFeatureCanvas: public Canvas {
 
-public: GameFeatureCanvas(){
+GameFeatureCanvas::GameFeatureCanvas(){
 }
 
 
-    protected: void paint(Graphics* graphics){
+    auto GameFeatureCanvas::paint(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_CPP

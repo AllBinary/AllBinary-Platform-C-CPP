@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_ENCODER_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_ENCODER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/crypt/Encoder.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,11 +43,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Encoder
-            : public Object
-         {
 
-    public: static std::string encode(std::vector<int8_t> value){
+Encoder::Encoder(){
+}
+
+
+    auto Encoder::encode(std::vector<int8_t> value) -> std::string{
 
 
 
@@ -47,7 +58,7 @@ class Encoder
 }
 
 
-    public: static std::vector<int8_t> decode(std::string value){
+    auto Encoder::decode(std::string value) -> std::vector<int8_t>{
 
 
 
@@ -57,11 +68,6 @@ class Encoder
 }
 
 
-private: Encoder(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_ENCODER_CPP

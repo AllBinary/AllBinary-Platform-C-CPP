@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_SCROLLEDMOTIONGESTURESHANDLER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_SCROLLEDMOTIONGESTURESHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/ScrolledMotionGesturesHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,26 @@
         #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
 #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
-class ScrolledMotionGesturesHandler: public BasicEventHandler {
+auto ScrolledMotionGesturesHandler::SINGLETON_owner() -> ScrolledMotionGesturesHandler* { static std::unique_ptr<ScrolledMotionGesturesHandler> value(new ScrolledMotionGesturesHandler()); return value.get(); }
+ScrolledMotionGesturesHandler* ScrolledMotionGesturesHandler::SINGLETON = ScrolledMotionGesturesHandler::SINGLETON_owner();
 
-    private: static ScrolledMotionGesturesHandler* SINGLETON() { static std::unique_ptr<ScrolledMotionGesturesHandler> value(new ScrolledMotionGesturesHandler()); return value.get(); }
-
-    public: static ScrolledMotionGesturesHandler* getInstance(){
+    auto ScrolledMotionGesturesHandler::getInstance() -> ScrolledMotionGesturesHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrolledMotionGesturesHandler::SINGLETON();
+                        return ScrolledMotionGesturesHandler::SINGLETON;
     
 }
 
 
-protected: ScrolledMotionGesturesHandler(){
+ScrolledMotionGesturesHandler::ScrolledMotionGesturesHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto ScrolledMotionGesturesHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     BaseMotionGestureEventListener* baseMotionGestureEventListener = dynamic_cast<BaseMotionGestureEventListener*>(eventListenerInterface);;
     
@@ -85,7 +94,6 @@ baseMotionGestureEventListener->onScrolledMotionGestureEvent(dynamic_cast<Motion
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_SCROLLEDMOTIONGESTURESHANDLER_CPP

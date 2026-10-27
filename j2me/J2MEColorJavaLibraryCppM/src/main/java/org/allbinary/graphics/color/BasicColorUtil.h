@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,19 +54,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/BasicColor.h"
+        class BasicColor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicColorUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicColorUtil* instance() { static std::unique_ptr<BasicColorUtil> value(new BasicColorUtil()); return value.get(); }
+    private: static BasicColorUtil* instance_owner();
+    private: static BasicColorUtil* instance;
 
     public: static BasicColorUtil* getInstance();
 
-    public: const std::vector<BasicColor*> ZERO_ARRAY = {};
 
-    public: const int32_t ALPHA = static_cast<int32_t>(0xFF000000);
+            
+    public: BasicColorUtil();
+        
+    public: std::vector<BasicColor*> ZERO_ARRAY;
+
+    public: const int32_t ALPHA;
 
     public: const bool isAlpha = true;
 
@@ -81,3 +95,13 @@ class BasicColorUtil
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+
+        #endif
+    

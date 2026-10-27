@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/cache/BufferedImageCacheableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,15 +63,12 @@
         #include "org/allbinary/media/image/cache/BufferedImageCacheable.h"
 #include "org/allbinary/media/image/cache/BufferedImageInfo.h"
 
-class BufferedImageCacheableFactory
-            : public Object
-        , public CacheableInterfaceFactoryInterface {
 
-public: BufferedImageCacheableFactory(){
+BufferedImageCacheableFactory::BufferedImageCacheableFactory(){
 }
 
 
-    public: CacheableInterface* getInstance(Object* key){
+    auto BufferedImageCacheableFactory::getInstance(Object* key) -> CacheableInterface*{
 
 
 
@@ -71,7 +78,6 @@ public: BufferedImageCacheableFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLEFACTORY_CPP

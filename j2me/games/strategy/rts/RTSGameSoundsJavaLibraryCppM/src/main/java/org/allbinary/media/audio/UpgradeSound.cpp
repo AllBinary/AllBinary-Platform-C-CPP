@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_UPGRADESOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_UPGRADESOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/UpgradeSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +58,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpgradeSound: public CompositeSound {
+Sound* UpgradeSound::soundInterface = new UpgradeSound();
 
-    private: static inline Sound* soundInterface = new UpgradeSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpgradeSound::soundInterface;
-    
-}
-
-
-private: UpgradeSound() : CompositeSound("resource:/wav/upgrade.wav"){
+UpgradeSound::UpgradeSound() : CompositeSound("resource:/wav/upgrade.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +70,16 @@ private: UpgradeSound() : CompositeSound("resource:/wav/upgrade.wav"){
 }
 
 
-};
+    auto UpgradeSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return UpgradeSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_UPGRADESOUND_CPP

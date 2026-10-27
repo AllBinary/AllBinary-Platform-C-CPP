@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_H
         #define ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,50 +39,20 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
-#include <org/allbinary/globals/Globals.h>
-
-      
-#include <org/allbinary/globals/URLGLOBALS.h>
-
-      
-#include <org/allbinary/gui/dialog/BasicTextJDialog.h>
-
-      
-#include <org/allbinary/gui/dialog/ExitCloseListener.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/AbCryptUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/AbKeys.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeLicenseInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeNoLicense.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Globals;
+class URLGLOBALS;
+class BasicTextJDialog;
+class ExitCloseListener;
+class LogUtil;
+class AbCryptUtil;
+class AbKeys;
+class AbeClientInformationInterface;
+class AbeLicenseInterface;
+class AbeLicenseInterfaceFactory;
+class AbeNoLicense;
+class LicensingException;
+class CommonStrings;
 
 
 
@@ -97,15 +72,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CryptService
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: AbCryptUtil* abCryptUtil = AbCryptUtil::getInstance();
+    private: AbCryptUtil* abCryptUtil;
 
 public: CryptService();
 
@@ -119,3 +98,55 @@ public: CryptService();
 
 
         #endif //ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayInputStream.h>)
+#include <java/io/ByteArrayInputStream.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<org/allbinary/globals/Globals.h>)
+#include <org/allbinary/globals/Globals.h>
+#endif
+#if __has_include(<org/allbinary/globals/URLGLOBALS.h>)
+#include <org/allbinary/globals/URLGLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/gui/dialog/BasicTextJDialog.h>)
+#include <org/allbinary/gui/dialog/BasicTextJDialog.h>
+#endif
+#if __has_include(<org/allbinary/gui/dialog/ExitCloseListener.h>)
+#include <org/allbinary/gui/dialog/ExitCloseListener.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/AbCryptUtil.h>)
+#include <org/allbinary/logic/system/security/AbCryptUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/AbKeys.h>)
+#include <org/allbinary/logic/system/security/AbKeys.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeLicenseInterfaceFactory.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeLicenseInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeNoLicense.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeNoLicense.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

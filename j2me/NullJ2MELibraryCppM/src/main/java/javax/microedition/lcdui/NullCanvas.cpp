@@ -4,6 +4,16 @@
 
 
 
+        #ifndef JAVAX_MICROEDITION_LCDUI_NULLCANVAS_CPP
+        #define JAVAX_MICROEDITION_LCDUI_NULLCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "javax/microedition/lcdui/NullCanvas.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -42,122 +52,120 @@
 #include "javax/microedition/lcdui/CommandListener.h"
 #include "javax/microedition/lcdui/Graphics.h"
 
-class NullCanvas: public Canvas {
+auto NullCanvas::NULL_CANVAS_owner() -> NullCanvas* { static std::unique_ptr<NullCanvas> value(new NullCanvas()); return value.get(); }
+NullCanvas* NullCanvas::NULL_CANVAS = NullCanvas::NULL_CANVAS_owner();
 
-    public: static NullCanvas* NULL_CANVAS() { static std::unique_ptr<NullCanvas> value(new NullCanvas()); return value.get(); }
-
-public: NullCanvas(){
+NullCanvas::NullCanvas(){
 }
 
 
-    public: void setFullScreenMode(bool mode){
+    auto NullCanvas::setFullScreenMode(bool mode) -> void{
 }
 
 
-    protected: void sizeChanged(int32_t w, int32_t h){
+    auto NullCanvas::sizeChanged(int32_t w, int32_t h) -> void{
 }
 
 
-    public: Stack<Object*>* getCommandStack(){
+    auto NullCanvas::getCommandStack() -> Stack<Object*>*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isCommand(Command* command){
+    auto NullCanvas::isCommand(Command* command) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void addCommand(Command* command){
+    auto NullCanvas::addCommand(Command* command) -> void{
 }
 
 
-    public: void removeCommand(Command* command){
+    auto NullCanvas::removeCommand(Command* command) -> void{
 }
 
 
-    public: void removeAllCommands(){
+    auto NullCanvas::removeAllCommands() -> void{
 }
 
 
-    public: void setCommandListener(CommandListener* l){
+    auto NullCanvas::setCommandListener(CommandListener* l) -> void{
 }
 
 
-    public: CommandListener* getCustomCommandListener(){
+    auto NullCanvas::getCustomCommandListener() -> CommandListener*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isPaused(){
+    auto NullCanvas::isPaused() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void removePauseCommand(){
+    auto NullCanvas::removePauseCommand() -> void{
 }
 
 
-    public: void pause(){
+    auto NullCanvas::pause() -> void{
 }
 
 
-    public: void unPause(){
+    auto NullCanvas::unPause() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(){
+    auto NullCanvas::process() -> void{
 }
 
 
-    protected: void paint(Graphics* graphics){
+    auto NullCanvas::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void destroy(){
+    auto NullCanvas::destroy() -> void{
 }
 
 
-    protected: void setPaused(bool isPaused){
+    auto NullCanvas::setPaused(bool isPaused) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    protected: void pointerDragged(int32_t x, int32_t y){
+    auto NullCanvas::pointerDragged(int32_t x, int32_t y) -> void{
 }
 
 
-    protected: void pointerPressed(int32_t x, int32_t y){
+    auto NullCanvas::pointerPressed(int32_t x, int32_t y) -> void{
 }
 
 
-    protected: void pointerReleased(int32_t x, int32_t y){
+    auto NullCanvas::pointerReleased(int32_t x, int32_t y) -> void{
 }
 
 
-};
 
-            
 
+        #endif //JAVAX_MICROEDITION_LCDUI_NULLCANVAS_CPP

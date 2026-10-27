@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_OSGI_SERVICE_OSGISERVICEUTIL_CPP
+        #define ORG_ALLBINARY_OSGI_SERVICE_OSGISERVICEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/osgi/service/OSGIServiceUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,44 +80,37 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OSGIServiceUtil
-            : public Object
-         {
+auto OSGIServiceUtil::instance_owner() -> OSGIServiceUtil* { static std::unique_ptr<OSGIServiceUtil> value(new OSGIServiceUtil()); return value.get(); }
+OSGIServiceUtil* OSGIServiceUtil::instance = OSGIServiceUtil::instance_owner();
 
-    private: static OSGIServiceUtil* instance() { static std::unique_ptr<OSGIServiceUtil> value(new OSGIServiceUtil()); return value.get(); }
-
-    public: static OSGIServiceUtil* getInstance(){
+    auto OSGIServiceUtil::getInstance() -> OSGIServiceUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OSGIServiceUtil::instance();
+                        return OSGIServiceUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: OSGIServiceUtil(){
+OSGIServiceUtil::OSGIServiceUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getServicesObjectVector(Object* bundleContext, std::vector<ServiceReference*> serviceReferences){
+    auto OSGIServiceUtil::getServicesObjectVector(BundleContext* bundleContext, std::vector<ServiceReference*> serviceReferences) -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
 
-                        if(serviceReferences != 
-                                    nullptr
-                                )
+                        if(!serviceReferences.empty())
                         
                                     {
                                     
     int32_t size = serviceReferences.size();;
     
-this->logUtil->putF("Service References: " +size, this, "getServicesObjectVector");
+this->logUtil->putF(JavaString::valueOf("Service References: ") +JavaString::valueOf(size), this, "getServicesObjectVector");
     
 
 
@@ -137,7 +140,7 @@ this->logUtil->putF("Service References: " +size, this, "getServicesObjectVector
                                     
 
 
-                            throw new Exception("No Service For Reference");
+                            throw Exception("No Service For Reference");
                     
 
                                     }
@@ -161,7 +164,6 @@ vector->add(osgiServiceInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_OSGI_SERVICE_OSGISERVICEUTIL_CPP

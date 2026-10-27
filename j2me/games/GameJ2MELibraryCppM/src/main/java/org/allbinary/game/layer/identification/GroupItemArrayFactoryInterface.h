@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPITEMARRAYFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPITEMARRAYFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/identification/Group.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
+class Group;
+class ABCustomItem;
 
 
 
@@ -56,7 +57,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GroupItemArrayFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GroupItemArrayFactoryInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -68,3 +75,16 @@ class GroupItemArrayFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPITEMARRAYFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPITEMARRAYFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPITEMARRAYFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+
+        #endif
+    

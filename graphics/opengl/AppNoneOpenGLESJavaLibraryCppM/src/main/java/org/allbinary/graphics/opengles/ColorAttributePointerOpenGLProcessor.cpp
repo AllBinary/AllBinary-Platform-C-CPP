@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_COLORATTRIBUTEPOINTEROPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_COLORATTRIBUTEPOINTEROPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/ColorAttributePointerOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,34 +63,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
+auto ColorAttributePointerOpenGLProcessor::instance_owner() -> ColorAttributePointerOpenGLProcessor* { static std::unique_ptr<ColorAttributePointerOpenGLProcessor> value(new ColorAttributePointerOpenGLProcessor()); return value.get(); }
+ColorAttributePointerOpenGLProcessor* ColorAttributePointerOpenGLProcessor::instance = ColorAttributePointerOpenGLProcessor::instance_owner();
 
-    private: static ColorAttributePointerOpenGLProcessor* instance() { static std::unique_ptr<ColorAttributePointerOpenGLProcessor> value(new ColorAttributePointerOpenGLProcessor()); return value.get(); }
-
-    public: static ColorAttributePointerOpenGLProcessor* getInstance(){
+    auto ColorAttributePointerOpenGLProcessor::getInstance() -> ColorAttributePointerOpenGLProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorAttributePointerOpenGLProcessor::instance();
+                        return ColorAttributePointerOpenGLProcessor::instance;
     
 }
 
 
-public: ColorAttributePointerOpenGLProcessor(){
+ColorAttributePointerOpenGLProcessor::ColorAttributePointerOpenGLProcessor(){
 }
 
 
-    public: void process(GL10* gl, Object* anyType){
+    auto ColorAttributePointerOpenGLProcessor::process(GL10* gl, Object* anyType) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_COLORATTRIBUTEPOINTEROPENGLPROCESSOR_CPP

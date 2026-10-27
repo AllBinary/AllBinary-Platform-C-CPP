@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_TOASTUTIL_CPP
+        #define ORG_ALLBINARY_ANDROID_TOASTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/ToastUtil.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -52,29 +62,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ToastUtil
-            : public Object
-         {
 
-    private: static ToastUtil* instance() { static std::unique_ptr<ToastUtil> value(new ToastUtil()); return value.get(); }
+ToastUtil::ToastUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto ToastUtil::instance_owner() -> ToastUtil* { static std::unique_ptr<ToastUtil> value(new ToastUtil()); return value.get(); }
+ToastUtil* ToastUtil::instance = ToastUtil::instance_owner();
 
-    public: static ToastUtil* getInstance(){
+    auto ToastUtil::getInstance() -> ToastUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ToastUtil::instance();
+                        return ToastUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: void makeToast(View* view, Context* context, std::string message, int32_t time){
+    auto ToastUtil::makeToast(View* view, Context* context, std::string message, int32_t time) -> void{
 
 //inner=true member= isStatic=
 class MakeToast
-            : public Object
+            : public virtual Object
         , public Runnable {
 
     std::string string;
@@ -115,7 +123,6 @@ view->post(new MakeToast(message));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_TOASTUTIL_CPP

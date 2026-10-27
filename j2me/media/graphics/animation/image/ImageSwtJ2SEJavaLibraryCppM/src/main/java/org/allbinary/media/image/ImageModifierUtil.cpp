@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageModifierUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,33 +96,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCopyUtil.h"
 
-class ImageModifierUtil
-            : public Object
-         {
 
-    private: static ImageModifierUtil* instance() { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
+ImageModifierUtil::ImageModifierUtil() : logUtil(LogUtil::getInstance()), imageCopyUtil(ImageCopyUtil::getInstance()), features(Features::getInstance()) {
+        }
+        auto ImageModifierUtil::instance_owner() -> ImageModifierUtil* { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
+ImageModifierUtil* ImageModifierUtil::instance = ImageModifierUtil::instance_owner();
 
-    public: static ImageModifierUtil* getInstanceOrCreate(){
+    auto ImageModifierUtil::getInstanceOrCreate() -> ImageModifierUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageModifierUtil::instance();
+                        return ImageModifierUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ImageCopyUtil* imageCopyUtil = ImageCopyUtil::getInstance();
-
-    private: Features* features = Features::getInstance();
-
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto ImageModifierUtil::setBasicColorP(BasicColor* basicColor) -> void{
 }
 
 
-    public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+    auto ImageModifierUtil::setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
 
     org::eclipse::swt::graphics::Image* newBufferedImage;;
     
@@ -216,7 +220,7 @@ imageData->data[index3 +2]= b;
 }
 
 
-    public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+    auto ImageModifierUtil::changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
 
                         if(this->features->isFeature(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
@@ -230,11 +234,11 @@ imageData->data[index3 +2]= b;
     
 openGLESImage->imageProcessor= ModifierOpenGLESImageProcessor::getInstance();
     
-openGLESImage->openGLESImageProperties.redf= basicColor->getRedComponent();
+openGLESImage->openGLESImageProperties->redf= basicColor->getRedComponent();
     
-openGLESImage->openGLESImageProperties.greenf= basicColor->getGreenComponent();
+openGLESImage->openGLESImageProperties->greenf= basicColor->getGreenComponent();
     
-openGLESImage->openGLESImageProperties.bluef= basicColor->getBlueComponent();
+openGLESImage->openGLESImageProperties->bluef= basicColor->getBlueComponent();
     
 
 
@@ -301,7 +305,7 @@ newBufferedImage= dynamic_cast<org::eclipse::swt::graphics::Image*>(swtImage->ge
                         
                                     {
                                     
-    int32_t size = imageData->data.length;;
+    int32_t size = imageData->data->length;;
     
 
 
@@ -336,7 +340,7 @@ imageData->data[index +2]= bx;
 }
 
 
-    public: void setAlpha(Image* unusedOriginalImage, Image* image, int32_t imageIndex, int32_t alphaInt){
+    auto ImageModifierUtil::setAlpha(Image* unusedOriginalImage, Image* image, int32_t imageIndex, int32_t alphaInt) -> void{
 
                         if(this->features->isFeature(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
@@ -350,7 +354,7 @@ imageData->data[index +2]= bx;
     
 openGLESImage->imageProcessor= ModifierOpenGLESImageProcessor::getInstance();
     
-openGLESImage->openGLESImageProperties.alphaf= (alphaInt) /255;
+openGLESImage->openGLESImageProperties->alphaf= (alphaInt) /255;
     
 
 
@@ -369,7 +373,7 @@ this->setAlphaSWT(image, alphaInt);
 }
 
 
-    public: void setAlphaSWT(Image* image, int32_t alphaInt){
+    auto ImageModifierUtil::setAlphaSWT(Image* image, int32_t alphaInt) -> void{
 
     int8_t alpha = alphaInt;;
     
@@ -402,7 +406,7 @@ newBufferedImage->getImageData()->alpha= alpha;
 }
 
 
-    public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray){
+    auto ImageModifierUtil::getImageArray(std::vector<Image*> originalImageArray) -> std::vector<Image*>{
 
         try {
             
@@ -456,15 +460,14 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, "getImageArray", &e);
 }
 
 
-    public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image){
+    auto ImageModifierUtil::handleImage(std::vector<Image*> imageArray, int32_t index, Image* image) -> void{
 }
 
 
-    public: void reset(){
+    auto ImageModifierUtil::reset() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterfaceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
-class RaceTrackGeographicMapInterfaceFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual RaceTrackGeographicMap* getLevelInstance(int32_t id) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual RaceTrackGeographicMap* getTrackInstance(int32_t id) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_CPP

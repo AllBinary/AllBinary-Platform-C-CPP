@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -50,21 +53,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/security/licensing/LicenseType.h"
+        class LicenseType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static LicenseTypeFactory* instance() { static std::unique_ptr<LicenseTypeFactory> value(new LicenseTypeFactory()); return value.get(); }
+    private: static LicenseTypeFactory* instance_owner();
+    private: static LicenseTypeFactory* instance;
 
     public: static LicenseTypeFactory* getInstance();
 
-    public: LicenseType* UNKNOWN = new LicenseType(CommonStrings::getInstance()->UNKNOWN);
 
-    public: LicenseType* DEMO = new LicenseType("Demo");
+            
+    public: LicenseTypeFactory();
+        
+    public: LicenseType* UNKNOWN;
 
-    public: LicenseType* NORMAL = new LicenseType("Normal");
+    public: LicenseType* DEMO;
+
+    public: LicenseType* NORMAL;
 
     public: LicenseType* getInstance(std::string name);
 
@@ -74,3 +86,16 @@ class LicenseTypeFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/LicenseType.h")
+#include "org/allbinary/logic/system/security/licensing/LicenseType.h"
+#endif
+
+        #endif
+    

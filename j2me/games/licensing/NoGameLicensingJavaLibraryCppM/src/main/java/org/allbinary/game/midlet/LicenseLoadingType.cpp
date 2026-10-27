@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPE_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/LicenseLoadingType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LicenseLoadingType
-            : public Object
-         {
 
-: LicenseLoadingType(std::string name){
+LicenseLoadingType::LicenseLoadingType(std::string name){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPE_CPP

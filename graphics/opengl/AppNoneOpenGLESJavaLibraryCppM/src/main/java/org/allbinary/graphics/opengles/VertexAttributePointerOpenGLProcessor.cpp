@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_VERTEXATTRIBUTEPOINTEROPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VERTEXATTRIBUTEPOINTEROPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/VertexAttributePointerOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,34 +63,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VertexAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
+auto VertexAttributePointerOpenGLProcessor::instance_owner() -> VertexAttributePointerOpenGLProcessor* { static std::unique_ptr<VertexAttributePointerOpenGLProcessor> value(new VertexAttributePointerOpenGLProcessor()); return value.get(); }
+VertexAttributePointerOpenGLProcessor* VertexAttributePointerOpenGLProcessor::instance = VertexAttributePointerOpenGLProcessor::instance_owner();
 
-    private: static VertexAttributePointerOpenGLProcessor* instance() { static std::unique_ptr<VertexAttributePointerOpenGLProcessor> value(new VertexAttributePointerOpenGLProcessor()); return value.get(); }
-
-    public: static VertexAttributePointerOpenGLProcessor* getInstance(){
+    auto VertexAttributePointerOpenGLProcessor::getInstance() -> VertexAttributePointerOpenGLProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VertexAttributePointerOpenGLProcessor::instance();
+                        return VertexAttributePointerOpenGLProcessor::instance;
     
 }
 
 
-public: VertexAttributePointerOpenGLProcessor(){
+VertexAttributePointerOpenGLProcessor::VertexAttributePointerOpenGLProcessor(){
 }
 
 
-    public: void process(GL10* gl, Object* anyType){
+    auto VertexAttributePointerOpenGLProcessor::process(GL10* gl, Object* anyType) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_VERTEXATTRIBUTEPOINTEROPENGLPROCESSOR_CPP

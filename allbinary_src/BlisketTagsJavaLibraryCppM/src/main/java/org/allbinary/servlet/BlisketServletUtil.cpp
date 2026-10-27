@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_SERVLET_BLISKETSERVLETUTIL_CPP
+        #define ORG_ALLBINARY_SERVLET_BLISKETSERVLETUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/servlet/BlisketServletUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,23 +70,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BlisketServletUtil
-            : public Object
-         {
 
-    private: static BlisketServletUtil* instance() { static std::unique_ptr<BlisketServletUtil> value(new BlisketServletUtil()); return value.get(); }
+BlisketServletUtil::BlisketServletUtil() {
+        }
+        auto BlisketServletUtil::instance_owner() -> BlisketServletUtil* { static std::unique_ptr<BlisketServletUtil> value(new BlisketServletUtil()); return value.get(); }
+BlisketServletUtil* BlisketServletUtil::instance = BlisketServletUtil::instance_owner();
 
-    public: static BlisketServletUtil* getInstance(){
+    auto BlisketServletUtil::getInstance() -> BlisketServletUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BlisketServletUtil::instance();
+                        return BlisketServletUtil::instance;
     
 }
 
 
-    public: void init(HttpServletRequest* request){
+    auto BlisketServletUtil::init(HttpServletRequest* request) -> void{
 
     AppUrlGlobals* urlGlobals = new AppUrlGlobals();;
     
@@ -89,7 +99,6 @@ WebappClassLoaderInfo::setLoader(getClass()getClassLoader());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_SERVLET_BLISKETSERVLETUTIL_CPP

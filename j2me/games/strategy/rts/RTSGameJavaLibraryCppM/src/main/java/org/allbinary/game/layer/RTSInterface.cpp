@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,33 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSInterface {
+//Interface - declared in the header
 
-    public: virtual bool isSelfUpgradeable() = 0;
 
-    public: virtual bool isCompleted() = 0;
 
-    public: virtual int32_t getPercentComplete() = 0;
-
-    public: virtual int32_t getLevel() = 0;
-
-    public: virtual int32_t getMaxLevel() = 0;
-
-    public: virtual int32_t getCost() = 0;
-
-    public: virtual void downgrade() = 0;
-
-    public: virtual int32_t getDowngradeCost() = 0;
-
-    public: virtual bool isDowngradeable() = 0;
-
-    public: virtual int32_t getUpgradeCost() = 0;
-
-    public: virtual bool isUpgradeable() = 0;
-
-    public: virtual void upgrade() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSINTERFACE_CPP

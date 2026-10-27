@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYUTIL_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/CategoryUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,12 +83,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/CategoryData.h"
 
-class CategoryUtil
-            : public Object
-         {
+
+CategoryUtil::CategoryUtil(){
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static int32_t getPathLevel(AbPath* categoryPath){
+    auto CategoryUtil::getPathLevel(AbPath* categoryPath) -> int32_t{
 
     int32_t count = StringUtils::countMatches(categoryPath->toString(), AbPathData::getInstance()->SEPARATOR);;
     
@@ -92,7 +103,7 @@ class CategoryUtil
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string getNameFromNode(Node* node){
+    auto CategoryUtil::getNameFromNode(Node* node) -> std::string{
 
     NamedNodeMap* attributes = node->getAttributes();;
     
@@ -145,11 +156,6 @@ class CategoryUtil
 }
 
 
-private: CategoryUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYUTIL_CPP

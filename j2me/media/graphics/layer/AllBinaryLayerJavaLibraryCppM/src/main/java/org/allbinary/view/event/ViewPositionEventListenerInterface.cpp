@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/event/ViewPositionEventListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/event/ViewPositionEvent.h"
 
-class ViewPositionEventListenerInterface: public EventListenerInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onChangeEvent(ViewPositionEvent* layerManagerEvent) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTLISTENERINTERFACE_CPP

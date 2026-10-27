@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCOREUTIL_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCOREUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/displayable/HighScoreUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -94,31 +104,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScoreUtil
-            : public Object
-        , public HighScoresResultsListener {
+auto HighScoreUtil::SUBMIT_TEXTBOX_COMMAND_owner() -> Command* { static std::unique_ptr<Command> value(new Command("Submit", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
+Command* HighScoreUtil::SUBMIT_TEXTBOX_COMMAND = HighScoreUtil::SUBMIT_TEXTBOX_COMMAND_owner();
 
-    public: static Command* SUBMIT_TEXTBOX_COMMAND() { static std::unique_ptr<Command> value(new Command("Submit", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: HighScoresFactoryInterface* highScoresFactoryInterface;
-
-    private: std::vector<HighScores*> highScoresArray;
-
-    private: HighScore* highScore;
-
-    private: AbeClientInformationInterface* abeClientInformation;
-
-    private: GameInfo* gameInfo;
-
-    private: HighScoresHelperBaseInterface* highScoresHelper;
-
-    private: bool firstTime = true;
-
-public: HighScoreUtil(HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresHelperBaseInterface* highScoresHelper, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, CommandListener* cmdListener, std::string name, HighScore* highScore){
+HighScoreUtil::HighScoreUtil(HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresHelperBaseInterface* highScoresHelper, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, CommandListener* cmdListener, std::string name, HighScore* highScore) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->highScoresFactoryInterface= highScoresFactoryInterface;
     
 this->highScoresHelper= highScoresHelper;
@@ -134,7 +123,7 @@ this->gameInfo= gameInfo;
 }
 
 
-    public: void setHighScoresArray(std::vector<HighScores*> highScoresArray){
+    auto HighScoreUtil::setHighScoresArray(std::vector<HighScores*> highScoresArray) -> void{
 this->highScoresArray= highScoresArray;
     
 this->firstTime= false;
@@ -144,7 +133,7 @@ this->saveHighScore();
 }
 
 
-    public: void update(std::string name){
+    auto HighScoreUtil::update(std::string name) -> void{
 HighScoreNamePersistanceSingleton::getInstance()->save(this->abeClientInformation, this->gameInfo, name);
     
 this->highScore->setName(name);
@@ -152,7 +141,7 @@ this->highScore->setName(name);
 }
 
 
-    public: void saveHighScore(){
+    auto HighScoreUtil::saveHighScore() -> void{
 this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(StringUtil::getInstance()->toString(this->highScore))->toString(), this, "saveHighScore");
     
 
@@ -203,16 +192,15 @@ this->highScoresHelper->setHighScoresArray(this->highScoresArray);
 }
 
 
-    public: void submit(MyCanvas* myCanvas){
+    auto HighScoreUtil::submit(MyCanvas* myCanvas) -> void{
 
     CommandListener* commandListener = myCanvas->getCustomCommandListener();;
     
-commandListener->commandAction(HighScoreUtil::SUBMIT_TEXTBOX_COMMAND(), myCanvas);
+commandListener->commandAction(HighScoreUtil::SUBMIT_TEXTBOX_COMMAND, myCanvas);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCOREUTIL_CPP

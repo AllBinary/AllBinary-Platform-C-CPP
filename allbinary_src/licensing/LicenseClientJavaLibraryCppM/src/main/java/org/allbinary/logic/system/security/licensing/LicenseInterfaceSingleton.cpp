@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEINTERFACESINGLETON_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEINTERFACESINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LicenseInterfaceSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +57,12 @@
         #include "org/allbinary/logic/system/security/licensing/AbeNoLicense.h"
 #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
 
-class LicenseInterfaceSingleton
-            : public Object
-         {
 
-    private: static inline AbeLicenseInterface* licenseInterface = AbeNoLicense::getInstance();
+LicenseInterfaceSingleton::LicenseInterfaceSingleton() {
+        }
+        AbeLicenseInterface* LicenseInterfaceSingleton::licenseInterface = AbeNoLicense::getInstance();
 
-    public: static AbeLicenseInterface* getInstance(){
+    auto LicenseInterfaceSingleton::getInstance() -> AbeLicenseInterface*{
 
 
 
@@ -63,7 +72,7 @@ class LicenseInterfaceSingleton
 }
 
 
-    public: static void init(AbeLicenseInterface* licenseInterface){
+    auto LicenseInterfaceSingleton::init(AbeLicenseInterface* licenseInterface) -> void{
 
                         if(licenseInterface != 
                                     nullptr
@@ -78,7 +87,6 @@ class LicenseInterfaceSingleton
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEINTERFACESINGLETON_CPP

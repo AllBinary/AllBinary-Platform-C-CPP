@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_ORDERHELPER_CPP
+        #define ADMIN_TAGHELPERS_ORDERHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/OrderHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -106,21 +116,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class OrderHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-    private: PageContext* pageContext;
-
-    private: HttpServletRequest* request;
-
-public: OrderHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+OrderHelper::OrderHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
@@ -144,7 +141,7 @@ this->weblisketSession= new WeblisketSession(this->propertiesHashMap, this->page
 }
 
 
-    public: bool setPaymentGateway(){
+    auto OrderHelper::setPaymentGateway() -> bool{
 
         try {
             
@@ -154,7 +151,7 @@ this->weblisketSession= new WeblisketSession(this->propertiesHashMap, this->page
     OrderInterface* orderInterface = this->weblisketSession->getOrder();;
     
 
-    std::string requestPaymentGateway = this->request->getParameter(PaymentGatewayData::NAME.toString());;
+    std::string requestPaymentGateway = this->request->getParameter(PaymentGatewayData::NAME->toString());;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(requestPaymentGateway))
@@ -198,7 +195,7 @@ paymentGatewayBoolean= Boolean::TRUE;
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     
@@ -228,7 +225,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "setPaymentGateway()");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     
@@ -280,7 +277,7 @@ this->logUtil->put(stringBuffer->toString(), this, "setPaymentGateway()", &e);
 }
 
 
-    public: std::string process(){
+    auto OrderHelper::process() -> std::string{
 
         try {
             
@@ -292,10 +289,10 @@ order->setStoreName(this->storeFrontInterface->getName());
     std::string result = OrderProcessorUtil::getInstance()->process(this->weblisketSession->getUserName(), dynamic_cast<Order*>(order));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF("Successfully Processed Order: " +result, this, "processOrder()");
+                                    this->logUtil->putF(JavaString::valueOf("Successfully Processed Order: ") +JavaString::valueOf(result), this, "processOrder()");
     
 
                                     }
@@ -331,10 +328,10 @@ stringBuffer->append(" Exception Getting Id");
     std::string error = stringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 
                                     }
@@ -350,7 +347,6 @@ stringBuffer->append(" Exception Getting Id");
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_ORDERHELPER_CPP

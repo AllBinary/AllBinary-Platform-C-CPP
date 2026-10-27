@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORETEXTBOX_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORETEXTBOX_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/displayable/HighScoreTextBox.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -106,19 +116,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/displayable/HighScoreUtil.h"
 
-class HighScoreTextBox: public CustomTextBox {
 
-    private: VirtualKeyboardEventHandler* virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();
-
-    private: HighScoreUtil* highScoreUtil;
-
-    private: Paintable* pleaseWait = new SimpleTextPaintable(this->commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE);
-
-    private: Paintable* paintable = NullPaintable::getInstance();
-
-    public: bool submitted = false;
-
-public: HighScoreTextBox(HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresHelperBaseInterface* highScoresHelper, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, CommandListener* cmdListener, std::string name, HighScore* highScore, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CustomTextBox(cmdListener, "New High Score Enter Name:", name, 12, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor){
+HighScoreTextBox::HighScoreTextBox(HighScoresFactoryInterface* highScoresFactoryInterface, HighScoresHelperBaseInterface* highScoresHelper, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, CommandListener* cmdListener, std::string name, HighScore* highScore, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CustomTextBox(cmdListener, "New High Score Enter Name:", name, 12, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor), virtualKeyboardEventHandler(VirtualKeyboardEventHandler::getInstance()), pleaseWait(new SimpleTextPaintable(this->commonStrings->PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE)), paintable(NullPaintable::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -158,7 +157,7 @@ this->highScoreUtil= new HighScoreUtil(highScoresFactoryInterface, highScoresHel
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto HighScoreTextBox::initCommands(CommandListener* cmdListener) -> void{
 this->removeAllCommands();
     
 PostGameCommandFactory::getInstance()->addCommands(this);
@@ -170,24 +169,24 @@ this->setCommandListener(cmdListener);
 }
 
 
-    public: void open(){
+    auto HighScoreTextBox::open() -> void{
 this->virtualKeyboardEventHandler->open();
     
 this->paintable= NullPaintable::getInstance();
     
-super.open();
+CustomTextBox::open();
     
 }
 
 
-    public: void close(){
+    auto HighScoreTextBox::close() -> void{
 this->virtualKeyboardEventHandler->close();
     
 this->paintable= this->pleaseWait;
     
-this->repaintBehavior.onChangeRepaint(this);
+this->repaintBehavior->onChangeRepaint(this);
     
-super.close();
+CustomTextBox::close();
     
 this->removeCommand(HighScoreUtil::SUBMIT_TEXTBOX_COMMAND);
     
@@ -208,45 +207,44 @@ this->update();
                             
 this->paintable= NullPaintable::getInstance();
     
-this->repaintBehavior.onChangeRepaint(this);
+this->repaintBehavior->onChangeRepaint(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(){
+    auto HighScoreTextBox::update() -> void{
 
     std::string name = this->getTextFieldItem()->getString();;
     
 this->highScoreUtil->update(name);
     
-super.update();
+CustomTextBox::update();
     
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paint(graphics);
+    auto HighScoreTextBox::paint(Graphics* graphics) -> void{
+CustomTextBox::paint(graphics);
     
 this->paintable->paint(graphics);
     
 }
 
 
-    public: void saveHighScore(){
+    auto HighScoreTextBox::saveHighScore() -> void{
 this->highScoreUtil->saveHighScore();
     
 }
 
 
-    public: void submit(){
+    auto HighScoreTextBox::submit() -> void{
 this->highScoreUtil->submit(this);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORETEXTBOX_CPP

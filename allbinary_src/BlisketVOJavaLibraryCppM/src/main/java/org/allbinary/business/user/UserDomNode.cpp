@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_USERDOMNODE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_USERDOMNODE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/UserDomNode.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,13 +82,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/UserData.h"
 
-class UserDomNode
-            : public Object
-        , public DomNodeInterface {
 
-    private: TableMappingInterface* dataMappingInterface;
-
-public: UserDomNode(TableMappingInterface* dataMappingInterface){
+UserDomNode::UserDomNode(TableMappingInterface* dataMappingInterface){
 this->dataMappingInterface= dataMappingInterface;
     
 }
@@ -86,7 +91,7 @@ this->dataMappingInterface= dataMappingInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto UserDomNode::toXmlNode(Document* document) -> Node*{
 
     std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
@@ -110,7 +115,7 @@ hashMap->put(UserData::PASSWORD, EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto UserDomNode::toXmlDoc() -> Document*{
 
 
 
@@ -122,7 +127,7 @@ hashMap->put(UserData::PASSWORD, EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto UserDomNode::view() -> std::string{
 
 
 
@@ -132,7 +137,6 @@ hashMap->put(UserData::PASSWORD, EMPTY_STRING);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_USERDOMNODE_CPP

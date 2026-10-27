@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERUPDATER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERUPDATER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/ShaderUpdater.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,31 +67,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShaderUpdater
-            : public Object
-         {
 
-    private: static ShaderUpdater* instance() { static std::unique_ptr<ShaderUpdater> value(new ShaderUpdater()); return value.get(); }
+ShaderUpdater::ShaderUpdater() : commonStrings(CommonStrings::getInstance()), rendererStrings(RendererStrings::getInstance()) {
+        }
+        auto ShaderUpdater::instance_owner() -> ShaderUpdater* { static std::unique_ptr<ShaderUpdater> value(new ShaderUpdater()); return value.get(); }
+ShaderUpdater* ShaderUpdater::instance = ShaderUpdater::instance_owner();
 
-    public: static ShaderUpdater* getInstance(){
+    auto ShaderUpdater::getInstance() -> ShaderUpdater*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderUpdater::instance();
+                        return ShaderUpdater::instance;
     
 }
 
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: RendererStrings* rendererStrings = RendererStrings::getInstance();
-
-    public: void onSurfaceCreated(GL10* gl, EGLConfig* eglConfig){
+    auto ShaderUpdater::onSurfaceCreated(GL10* gl, EGLConfig* eglConfig) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERUPDATER_CPP

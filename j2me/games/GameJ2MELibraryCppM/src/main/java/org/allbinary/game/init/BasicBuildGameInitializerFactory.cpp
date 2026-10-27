@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INIT_BASICBUILDGAMEINITIALIZERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INIT_BASICBUILDGAMEINITIALIZERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/init/BasicBuildGameInitializerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,13 @@
 #include "org/allbinary/game/init/BaseGameInitialization.h"
 #include "org/allbinary/game/init/GameInitializationInterface.h"
 
-class BasicBuildGameInitializerFactory
-            : public Object
-        , public GameInitializationInterfaceFactoryInterface {
 
-    public: static BasicBuildGameInitializerFactory* NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY() { static std::unique_ptr<BasicBuildGameInitializerFactory> value(new BasicBuildGameInitializerFactory()); return value.get(); }
+BasicBuildGameInitializerFactory::BasicBuildGameInitializerFactory() {
+        }
+        auto BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY_owner() -> BasicBuildGameInitializerFactory* { static std::unique_ptr<BasicBuildGameInitializerFactory> value(new BasicBuildGameInitializerFactory()); return value.get(); }
+BasicBuildGameInitializerFactory* BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY = BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY_owner();
 
-    public: GameInitializationInterface* getInstance(){
+    auto BasicBuildGameInitializerFactory::getInstance() -> GameInitializationInterface*{
 
 
 
@@ -64,7 +74,6 @@ class BasicBuildGameInitializerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INIT_BASICBUILDGAMEINITIALIZERFACTORY_CPP

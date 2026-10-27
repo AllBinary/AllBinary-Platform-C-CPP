@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
         #define ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class NullUtil;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -57,11 +56,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinarySensorManager
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static AllBinarySensorManager* getInstance();
 
@@ -73,7 +76,7 @@ private: AllBinarySensorManager();
 
     public: void init();
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
     public: BasicArrayList* getSensorNamesList();
 
@@ -85,3 +88,19 @@ private: AllBinarySensorManager();
 
 
         #endif //ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

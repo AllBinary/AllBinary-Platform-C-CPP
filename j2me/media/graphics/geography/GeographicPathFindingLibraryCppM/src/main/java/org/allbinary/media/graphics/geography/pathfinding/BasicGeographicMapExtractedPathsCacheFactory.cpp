@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_BASICGEOGRAPHICMAPEXTRACTEDPATHSCACHEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_BASICGEOGRAPHICMAPEXTRACTEDPATHSCACHEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/BasicGeographicMapExtractedPathsCacheFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,29 +49,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/BasicGeographicMapExtractedPathCacheFactory.h"
 
-class BasicGeographicMapExtractedPathsCacheFactory: public BaseBasicArrayListCache {
+auto BasicGeographicMapExtractedPathsCacheFactory::instance_owner() -> BasicGeographicMapExtractedPathsCacheFactory* { static std::unique_ptr<BasicGeographicMapExtractedPathsCacheFactory> value(new BasicGeographicMapExtractedPathsCacheFactory()); return value.get(); }
+BasicGeographicMapExtractedPathsCacheFactory* BasicGeographicMapExtractedPathsCacheFactory::instance = BasicGeographicMapExtractedPathsCacheFactory::instance_owner();
 
-    private: static BasicGeographicMapExtractedPathsCacheFactory* instance() { static std::unique_ptr<BasicGeographicMapExtractedPathsCacheFactory> value(new BasicGeographicMapExtractedPathsCacheFactory()); return value.get(); }
-
-    public: static BasicGeographicMapExtractedPathsCacheFactory* getInstance(){
+    auto BasicGeographicMapExtractedPathsCacheFactory::getInstance() -> BasicGeographicMapExtractedPathsCacheFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGeographicMapExtractedPathsCacheFactory::instance();
+                        return BasicGeographicMapExtractedPathsCacheFactory::instance;
     
 }
 
 
-    private: int32_t maxConcurrentPaths= 0;
-
-    private: int32_t maxPaths= 0;
-
-private: BasicGeographicMapExtractedPathsCacheFactory(){
+BasicGeographicMapExtractedPathsCacheFactory::BasicGeographicMapExtractedPathsCacheFactory(){
 }
 
 
-    public: void init(int32_t maxConcurrentPaths, int32_t maxPaths){
+    auto BasicGeographicMapExtractedPathsCacheFactory::init(int32_t maxConcurrentPaths, int32_t maxPaths) -> void{
 
                         if(maxConcurrentPaths != this->maxConcurrentPaths)
                         
@@ -73,7 +78,7 @@ private: BasicGeographicMapExtractedPathsCacheFactory(){
                         for (
     int32_t index = maxConcurrentPaths;index >= this->maxConcurrentPaths; index--)
         {
-this->list.add(new BasicArrayListS(maxPaths));
+this->list->add(new BasicArrayListS(maxPaths));
     
 }
 
@@ -87,16 +92,16 @@ this->maxPaths= maxPaths;
 }
 
 
-    public: BasicArrayList* getPaths(){
+    auto BasicGeographicMapExtractedPathsCacheFactory::getPaths() -> BasicArrayList*{
 
-                        if(this->list.size() > 0)
+                        if(this->list->size() > 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return dynamic_cast<BasicArrayList*>(this->list.removeAt(0));
+                        return dynamic_cast<BasicArrayList*>(this->list->removeAt(0));
     
 
                                     }
@@ -114,7 +119,7 @@ this->maxPaths= maxPaths;
 }
 
 
-    public: void release(BasicArrayList* list){
+    auto BasicGeographicMapExtractedPathsCacheFactory::release(BasicArrayList* list) -> void{
 
 
 
@@ -128,12 +133,11 @@ BasicGeographicMapExtractedPathCacheFactory::getInstance()->release(dynamic_cast
 
 list->clear();
     
-this->list.add(list);
+this->list->add(list);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_BASICGEOGRAPHICMAPEXTRACTEDPATHSCACHEFACTORY_CPP

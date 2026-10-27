@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/SpriteFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,25 +74,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/SpriteFactoryInterface.h"
 
-class SpriteFactory
-            : public Object
-        , public SpriteFactoryInterface {
 
-    private: static SpriteFactory* instance() { static std::unique_ptr<SpriteFactory> value(new SpriteFactory()); return value.get(); }
+SpriteFactory::SpriteFactory() : logUtil(LogUtil::getInstance()) {
+        }
+        auto SpriteFactory::instance_owner() -> SpriteFactory* { static std::unique_ptr<SpriteFactory> value(new SpriteFactory()); return value.get(); }
+SpriteFactory* SpriteFactory::instance = SpriteFactory::instance_owner();
 
-    public: static SpriteFactory* getInstance(){
+    auto SpriteFactory::getInstance() -> SpriteFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpriteFactory::instance();
+                        return SpriteFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: Sprite* createSprite(Image* image, int32_t frameWidth, int32_t frameHeight){
+    auto SpriteFactory::createSprite(Image* image, int32_t frameWidth, int32_t frameHeight) -> Sprite*{
 
 
 
@@ -92,7 +100,6 @@ class SpriteFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_CPP

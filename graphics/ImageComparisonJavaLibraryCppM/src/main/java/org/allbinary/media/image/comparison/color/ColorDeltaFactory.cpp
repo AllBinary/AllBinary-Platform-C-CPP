@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/color/ColorDeltaFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,16 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/comparison/color/ColorDelta.h"
 
-class ColorDeltaFactory
-            : public Object
-         {
-
-    private: static inline AutomaticCacheInterface* cacheInterface = 
-                null
-            ;
-
-                    static int32_t initResult = ColorDeltaFactory::init();
-                static int32_t init() { 
+int32_t ColorDeltaFactory::initResult = ColorDeltaFactory::init();
+        auto ColorDeltaFactory::init() -> int32_t {
                     
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -108,11 +110,15 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 
 
                     return 0;
-                }
-            
+        }
+                
+ColorDeltaFactory::ColorDeltaFactory() : logUtil(LogUtil::getInstance()){
+}
+
+
                 //@Throws(Exception.constructor)
             
-    public: static ColorDelta* getInstance(int32_t rgb1, int32_t rgb2){
+    auto ColorDeltaFactory::getInstance(int32_t rgb1, int32_t rgb2) -> ColorDelta*{
 
     ColorDelta* colorDelta = dynamic_cast<ColorDelta*>(ColorDeltaFactory::cacheInterface->get(ColorDelta::getKey(rgb1, rgb2)));;
     
@@ -136,13 +142,6 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ColorDeltaFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTAFACTORY_CPP

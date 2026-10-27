@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/identification/GroupLayerManagerListener.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -92,31 +102,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GroupLayerManagerListener: public LayerManagerEventListener {
+auto GroupLayerManagerListener::SINGLETON_owner() -> GroupLayerManagerListener* { static std::unique_ptr<GroupLayerManagerListener> value(new GroupLayerManagerListener()); return value.get(); }
+GroupLayerManagerListener* GroupLayerManagerListener::SINGLETON = GroupLayerManagerListener::SINGLETON_owner();
 
-    private: static GroupLayerManagerListener* SINGLETON() { static std::unique_ptr<GroupLayerManagerListener> value(new GroupLayerManagerListener()); return value.get(); }
-
-    public: static GroupLayerManagerListener* getInstance(){
+    auto GroupLayerManagerListener::getInstance() -> GroupLayerManagerListener*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GroupLayerManagerListener::SINGLETON();
+                        return GroupLayerManagerListener::SINGLETON;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: GroupLayerManagerListener(){
+GroupLayerManagerListener::GroupLayerManagerListener() : logUtil(LogUtil::getInstance()), list(new BasicArrayListD()){
 LayerManagerEventHandler::getInstance()->addListener(this);
     
 }
 
 
-    public: void clear(){
+    auto GroupLayerManagerListener::clear() -> void{
 
     BasicArrayList* groupList;;
     
@@ -139,7 +144,7 @@ groupList->clear();
 }
 
 
-    public: int32_t getGroupSizeFromInterface(GroupInterfaceCompositeInterface* groupInterfaceCompositeInterface){
+    auto GroupLayerManagerListener::getGroupSizeFromInterface(GroupInterfaceCompositeInterface* groupInterfaceCompositeInterface) -> int32_t{
 
     std::vector<Group*> groupInterfaceArray = groupInterfaceCompositeInterface->getGroupInterface();;
     
@@ -152,7 +157,7 @@ groupList->clear();
 }
 
 
-    public: int32_t getGroupSize(Group* groupInterface){
+    auto GroupLayerManagerListener::getGroupSize(Group* groupInterface) -> int32_t{
 
     int32_t id = static_cast<int32_t>(groupInterface->getGroupId());;
     
@@ -165,7 +170,7 @@ groupList->clear();
 }
 
 
-    public: BasicArrayList* getList(Group* groupInterface){
+    auto GroupLayerManagerListener::getList(Group* groupInterface) -> BasicArrayList*{
 
     int32_t id = static_cast<int32_t>(groupInterface->getGroupId());;
     
@@ -178,7 +183,7 @@ groupList->clear();
 }
 
 
-    private: BasicArrayList* getListById(int32_t groupId){
+    auto GroupLayerManagerListener::getListById(int32_t groupId) -> BasicArrayList*{
 
     BasicArrayList* groupList = dynamic_cast<BasicArrayList*>(this->list->objectArray[groupId]);;
     
@@ -191,7 +196,7 @@ groupList->clear();
 }
 
 
-    private: int32_t getGroupSizeById(int32_t groupId){
+    auto GroupLayerManagerListener::getGroupSizeById(int32_t groupId) -> int32_t{
 
     BasicArrayList* groupList = dynamic_cast<BasicArrayList*>(this->list->objectArray[groupId]);;
     
@@ -207,7 +212,7 @@ groupList->clear();
 }
 
 
-    public: bool areAllOtherGroupsEmpty(Group* groupInterface){
+    auto GroupLayerManagerListener::areAllOtherGroupsEmpty(Group* groupInterface) -> bool{
 
     int32_t id = static_cast<int32_t>(groupInterface->getGroupId());;
     
@@ -257,7 +262,7 @@ groupList->clear();
 }
 
 
-    private: bool isIdInList(int32_t id, BasicArrayList* excludeGroupList){
+    auto GroupLayerManagerListener::isIdInList(int32_t id, BasicArrayList* excludeGroupList) -> bool{
 
     int32_t size = excludeGroupList->size();;
     
@@ -319,7 +324,7 @@ groupId= static_cast<int32_t>(groupInterface->getGroupId());
 }
 
 
-    public: bool areAllOtherGroupsLessThan(BasicArrayList* excludeGroupList, int32_t maxSize){
+    auto GroupLayerManagerListener::areAllOtherGroupsLessThan(BasicArrayList* excludeGroupList, int32_t maxSize) -> bool{
 
     int32_t size = this->list->size();;
     
@@ -364,7 +369,7 @@ groupId= static_cast<int32_t>(groupInterface->getGroupId());
 }
 
 
-    public: void init(int32_t total){
+    auto GroupLayerManagerListener::init(int32_t total) -> void{
 
         while(this->list->size() <= total +1)
         {
@@ -375,7 +380,7 @@ this->list->add(new BasicArrayListD());
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto GroupLayerManagerListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -383,7 +388,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    public: void onCreateLayerManagerEvent(LayerManagerEvent* layerManagerEvent){
+    auto GroupLayerManagerListener::onCreateLayerManagerEvent(LayerManagerEvent* layerManagerEvent) -> void{
 
     AllBinaryLayer* layerInterface = layerManagerEvent->getLayerInterface();;
     
@@ -406,7 +411,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
                         for (
     int32_t index = 0;index < size; index++)
         {
-id= static_cast<int32_t>(groupInterfaceArray[index].getGroupId());
+id= static_cast<int32_t>(groupInterfaceArray[index]->getGroupId());
     
 groupList= dynamic_cast<BasicArrayList*>(this->list->objectArray[id]);
     
@@ -441,7 +446,7 @@ groupList= dynamic_cast<BasicArrayList*>(this->list->objectArray[id]);
 
                 //@Throws(Exception.constructor)
             
-    public: void onDeleteLayerManagerEvent(LayerManagerEvent* layerManagerEvent){
+    auto GroupLayerManagerListener::onDeleteLayerManagerEvent(LayerManagerEvent* layerManagerEvent) -> void{
 
     AllBinaryLayer* layerInterface = layerManagerEvent->getLayerInterface();;
     
@@ -464,7 +469,7 @@ groupList= dynamic_cast<BasicArrayList*>(this->list->objectArray[id]);
                         for (
     int32_t index = 0;index < size; index++)
         {
-id= static_cast<int32_t>(groupInterfaceArray[index].getGroupId());
+id= static_cast<int32_t>(groupInterfaceArray[index]->getGroupId());
     
 groupList= dynamic_cast<BasicArrayList*>(this->list->objectArray[id]);
     
@@ -475,7 +480,7 @@ groupList->remove(layerInterface);
 }
 
 
-    public: void log(){
+    auto GroupLayerManagerListener::log() -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -520,7 +525,6 @@ this->logUtil->putF(stringBuffer->toString(), this, "log");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_CPP

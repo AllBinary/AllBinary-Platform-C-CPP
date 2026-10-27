@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,20 +35,10 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/LayerPositionFinderInterface.h>
-
-      
-#include <org/allbinary/game/layer/waypoint/WaypointCellPositionHistory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/drop/DropCellPositionHistory.h>
-
-      
+class WaypointCellPositionHistory;
+class AllBinaryLayer;
+class GeographicMapCellPosition;
+class DropCellPositionHistory;
 
 
 
@@ -63,11 +58,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvancedRTSGameLayerPositionFinder
-            : public Object
+            : public virtual Object
         , public LayerPositionFinderInterface {
 
-    private: static AdvancedRTSGameLayerPositionFinder* instance() { static std::unique_ptr<AdvancedRTSGameLayerPositionFinder> value(new AdvancedRTSGameLayerPositionFinder()); return value.get(); }
+    private: static AdvancedRTSGameLayerPositionFinder* instance_owner();
+    private: static AdvancedRTSGameLayerPositionFinder* instance;
 
     public: static AdvancedRTSGameLayerPositionFinder* getInstance();
 
@@ -81,3 +81,25 @@ private: AdvancedRTSGameLayerPositionFinder();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/LayerPositionFinderInterface.h>)
+#include <org/allbinary/game/input/LayerPositionFinderInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/waypoint/WaypointCellPositionHistory.h>)
+#include <org/allbinary/game/layer/waypoint/WaypointCellPositionHistory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/drop/DropCellPositionHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/drop/DropCellPositionHistory.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALANALOGUPGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALANALOGUPGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/SpecialAnalogUpGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/layer/special/SpecialGameInputProcessor.h"
 #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
-class SpecialAnalogUpGameInputProcessor: public SpecialGameInputProcessor {
 
-public: SpecialAnalogUpGameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
+SpecialAnalogUpGameInputProcessor::SpecialAnalogUpGameInputProcessor(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) : SpecialGameInputProcessor(collidableDestroyableDamageableLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: SpecialAnalogUpGameInputProcessor(CollidableDestroyableDamageableLayer* 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAnalog(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t yAnalogValue){
-this->collidableDestroyableDamageableLayer.upAnalog(yAnalogValue);
+    auto SpecialAnalogUpGameInputProcessor::processAnalog(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t yAnalogValue) -> void{
+this->collidableDestroyableDamageableLayer->upAnalog(yAnalogValue);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALANALOGUPGAMEINPUTPROCESSOR_CPP

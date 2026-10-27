@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDFILTER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDFILTER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,8 +37,6 @@
             #include "java/lang/Object.h"
         
 #include <javax/microedition/rms/RecordFilter.h>
-
-      
 
 
 
@@ -53,12 +56,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullRecordFilter
-            : public Object
+            : public virtual Object
         , public RecordFilter {
 
-    public: static NullRecordFilter* NULL_RECORD_FILTER() { static std::unique_ptr<NullRecordFilter> value(new NullRecordFilter()); return value.get(); }
+    private: static NullRecordFilter* NULL_RECORD_FILTER_owner();
+    public: static NullRecordFilter* NULL_RECORD_FILTER;
 
+
+            
+    public: NullRecordFilter();
+        
     public: bool matches(std::vector<int8_t> candidate);
 
 };
@@ -67,3 +79,13 @@ class NullRecordFilter
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDFILTER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDFILTER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDFILTER_H_COMPLETE
+        #if __has_include(<javax/microedition/rms/RecordFilter.h>)
+#include <javax/microedition/rms/RecordFilter.h>
+#endif
+
+        #endif
+    

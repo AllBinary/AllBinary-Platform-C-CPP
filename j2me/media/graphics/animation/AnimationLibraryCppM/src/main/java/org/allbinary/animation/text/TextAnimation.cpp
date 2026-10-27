@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/text/TextAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -87,23 +97,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/text/TextChangeListener.h"
 
-class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    protected: std::vector<std::string> textArrayP = StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: int32_t fontHeight = 0;
-
-    private: int32_t offsetY = 0;
-
-    private: TextChangeListener* textChangeListener = TextChangeListener::getInstance();
-
-public: TextAnimation(std::string text, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+TextAnimation::TextAnimation(std::string text, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), textArrayP(StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY), anchor(Anchor::TOP_LEFT), textChangeListener(TextChangeListener::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -115,7 +110,7 @@ this->setText(text);
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto TextAnimation::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -144,11 +139,11 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void nextFrame(){
+    auto TextAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto TextAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->myFontProcessor->process(graphics);
     
 this->paintXYNoUpdate(graphics, x, y);
@@ -156,8 +151,8 @@ this->paintXYNoUpdate(graphics, x, y);
 }
 
 
-    public: void paintXYNoUpdate(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    auto TextAnimation::paintXYNoUpdate(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
     int32_t size = this->textArrayP.size();;
@@ -176,7 +171,7 @@ graphics->drawString(this->textArrayP[index], x, y +this->offsetY +(index *this-
 }
 
 
-    public: void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener){
+    auto TextAnimation::setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener) -> void{
 this->setText(text);
     
 this->textChangeListener= textChangeListener;
@@ -184,7 +179,7 @@ this->textChangeListener= textChangeListener;
 }
 
 
-    public: void setText(std::string text){
+    auto TextAnimation::setText(std::string text) -> void{
 
     BasicArrayList* list = new BasicArrayListD();;
     
@@ -275,7 +270,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: std::vector<std::string> getTextArray(){
+    auto TextAnimation::getTextArray() -> std::vector<std::string>{
 
 
 
@@ -285,7 +280,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: int32_t getFontHeight(){
+    auto TextAnimation::getFontHeight() -> int32_t{
 
 
 
@@ -295,7 +290,6 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_CPP

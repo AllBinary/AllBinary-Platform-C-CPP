@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
-
-      
+class InputRobotInterface;
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ProfileActionScriptInputInterface: public ProfileActionScriptProcessorInterface {
 
     public: virtual void setInputRobotInterface(InputRobotInterface* inputRobotInterface) = 0;
@@ -68,3 +73,16 @@ class ProfileActionScriptInputInterface: public ProfileActionScriptProcessorInte
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h>)
+#include <org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobotInterface.h>)
+#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
+#endif
+
+        #endif
+    

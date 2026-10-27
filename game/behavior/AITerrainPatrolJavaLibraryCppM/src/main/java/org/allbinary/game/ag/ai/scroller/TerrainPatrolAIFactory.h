@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAIFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
-
-      
+class ArtificialIntelligenceInterface;
 #include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
+class GameInput;
+class AllBinaryLayer;
+class SmallIntegerSingletonFactory;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -67,13 +60,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
-#include "org/allbinary/game/ag/ai/scroller/TerrainPatrolAI.h"
+        class BasePatrolAI;
+class TerrainPatrolAI;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TerrainPatrolAIFactory
-            : public Object
+            : public virtual Object
         , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+
+            
+    public: TerrainPatrolAIFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
@@ -84,3 +85,34 @@ class TerrainPatrolAIFactory
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAIFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAIFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAIFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/ai/ArtificialIntelligenceInterface.h>)
+#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>)
+#include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/game/ag/ai/scroller/BasePatrolAI.h")
+#include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/scroller/TerrainPatrolAI.h")
+#include "org/allbinary/game/ag/ai/scroller/TerrainPatrolAI.h"
+#endif
+
+        #endif
+    

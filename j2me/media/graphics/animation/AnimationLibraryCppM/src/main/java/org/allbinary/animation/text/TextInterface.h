@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/text/TextChangeListener.h"
+        class TextChangeListener;
 
-class TextInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class TextInterface
+            : public virtual Object
+         {
 
     public: virtual void setTextWithOnMeasure(std::string text, TextChangeListener* textChangeListener) = 0;
 
@@ -65,3 +76,13 @@ class TextInterface {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TEXT_TEXTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TEXT_TEXTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/animation/text/TextChangeListener.h")
+#include "org/allbinary/animation/text/TextChangeListener.h"
+#endif
+
+        #endif
+    

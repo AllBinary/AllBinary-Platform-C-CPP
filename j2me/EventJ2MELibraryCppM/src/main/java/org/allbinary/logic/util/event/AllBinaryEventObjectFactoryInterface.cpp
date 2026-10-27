@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECTFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECTFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/AllBinaryEventObjectFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 
-class AllBinaryEventObjectFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual AllBinaryEventObject* getInstance() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECTFACTORYINTERFACE_CPP

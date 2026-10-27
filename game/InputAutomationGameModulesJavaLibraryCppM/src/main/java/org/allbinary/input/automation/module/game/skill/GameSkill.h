@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,23 +35,11 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class StdUtil;
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -65,14 +58,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/game/skill/GameSkillType.h"
-#include "org/allbinary/input/automation/module/game/skill/GameSkillPropertyInterface.h"
+        class GameSkillType;
+class GameSkillPropertyInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameSkill
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
+    private: static HashMap<Object*, Object*>* hashMap;
 
     public: static GameSkill* getInstance(GameSkillType* gameSkillType, std::string extra);
 
@@ -116,3 +113,34 @@ public: GameSkill(GameSkillType* gameSkillType, std::string extra, int32_t time)
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILL_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILL_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/skill/GameSkillType.h")
+#include "org/allbinary/input/automation/module/game/skill/GameSkillType.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/skill/GameSkillPropertyInterface.h")
+#include "org/allbinary/input/automation/module/game/skill/GameSkillPropertyInterface.h"
+#endif
+
+        #endif
+    

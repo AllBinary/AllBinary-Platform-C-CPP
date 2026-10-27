@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALLEFTGAMEINPUTINTERFACEPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALLEFTGAMEINPUTINTERFACEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/SpecialLeftGameInputInterfaceProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h"
 #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
-class SpecialLeftGameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
 
-public: SpecialLeftGameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer) : SpecialGameInputInterfaceProcessor(collidableDestroyableDamageableLayer){
+SpecialLeftGameInputInterfaceProcessor::SpecialLeftGameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer) : SpecialGameInputInterfaceProcessor(collidableDestroyableDamageableLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: SpecialLeftGameInputInterfaceProcessor(SpecialGameInputInterface* collid
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->specialGameInputInterface.left();
+    auto SpecialLeftGameInputInterfaceProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->specialGameInputInterface->left();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALLEFTGAMEINPUTINTERFACEPROCESSOR_CPP

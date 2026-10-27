@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLJPANEL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,15 +51,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/workarea/tools/JPanel.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/JButton.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/JList.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/GridLayout.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Font.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/MouseAdapter.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/ToolFactory.h"
+class JButton;
+class JList;
+class GridLayout;
+class Font;
+class LinesGraphicItem;
+class MouseAdapter;
+class MouseEvent;
+class ToolFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ToolJPanel: public javax::swing::JPanel {
 
 public: ToolJPanel();
@@ -135,3 +144,37 @@ public: ToolJPanel();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLJPANEL_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/j2me/workarea/tools/JPanel.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/JPanel.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/JButton.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/JButton.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/JList.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/JList.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GridLayout.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GridLayout.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Font.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Font.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/MouseAdapter.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseAdapter.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/ToolFactory.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/ToolFactory.h"
+#endif
+
+        #endif
+    

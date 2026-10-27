@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_IMAGETOOL_CPP
+        #define ORG_ALLBINARY_IMAGE_IMAGETOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/ImageTool.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,12 +72,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/EventQueue.h"
 
-class ImageTool
-            : public Object
-         {
 
-    public: static void main(std::vector<std::string> args){
-java.awt.EventQueue.invokeLater(class extends ARunnable
+ImageTool::ImageTool() : logUtil(LogUtil::getInstance()){
+}
+
+
+    auto ImageTool::main(std::vector<std::string> args) -> void{
+java.awt->EventQueue->invokeLater(class extends ARunnable
                                 {
                                 
     public: void run(){
@@ -99,13 +110,6 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ImageTool(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_IMAGE_IMAGETOOL_CPP

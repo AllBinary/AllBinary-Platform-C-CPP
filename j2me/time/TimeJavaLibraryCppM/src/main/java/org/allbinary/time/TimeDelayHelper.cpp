@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_TIMEDELAYHELPER_CPP
+        #define ORG_ALLBINARY_TIME_TIMEDELAYHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/TimeDelayHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,17 +68,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeDelayHelper
-            : public Object
-         {
 
-    private: int64_t startTime =  -1;
-
-    private: int64_t elapsedTimeAtPause = Long.MIN_VALUE;
-
-    public: int32_t delay;
-
-public: TimeDelayHelper(int32_t delay){
+TimeDelayHelper::TimeDelayHelper(int32_t delay) : elapsedTimeAtPause(Long.MIN_VALUE){
 this->delay= delay;
     
 this->setStartTimeTNT();
@@ -76,7 +77,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: bool isTimeTNT(){
+    auto TimeDelayHelper::isTimeTNT() -> bool{
 
     int64_t currentTime = System.currentTimeMillis();;
     
@@ -104,7 +105,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: bool isTimeSinceTNT(int32_t delay){
+    auto TimeDelayHelper::isTimeSinceTNT(int32_t delay) -> bool{
 
     int64_t currentTime = System.currentTimeMillis();;
     
@@ -132,7 +133,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: bool isTime(int64_t currentTime){
+    auto TimeDelayHelper::isTime(int64_t currentTime) -> bool{
 
                         if(currentTime -this->startTime > this->delay)
                         
@@ -157,7 +158,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: bool isTimeWithoutReset(int64_t currentTime){
+    auto TimeDelayHelper::isTimeWithoutReset(int64_t currentTime) -> bool{
 
                         if(currentTime -this->startTime > this->delay)
                         
@@ -180,7 +181,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: bool isTimeSince(int32_t delay, int64_t currentTime){
+    auto TimeDelayHelper::isTimeSince(int32_t delay, int64_t currentTime) -> bool{
 
                         if(currentTime -this->startTime > this->delay)
                         
@@ -205,7 +206,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: int64_t getElapsedTNT(){
+    auto TimeDelayHelper::getElapsedTNT() -> int64_t{
 
 
 
@@ -215,7 +216,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: int64_t getElapsed(int64_t currentTime){
+    auto TimeDelayHelper::getElapsed(int64_t currentTime) -> int64_t{
 
 
 
@@ -225,7 +226,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: bool isElapsed(int64_t currentTime, int64_t time){
+    auto TimeDelayHelper::isElapsed(int64_t currentTime, int64_t time) -> bool{
 
                         if(this->getElapsed(currentTime) > time)
                         
@@ -252,7 +253,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: bool isElapsedTNT(int64_t time){
+    auto TimeDelayHelper::isElapsedTNT(int64_t time) -> bool{
 
                         if(this->getElapsedTNT() > time)
                         
@@ -279,13 +280,13 @@ this->setStartTimeTNT();
 }
 
 
-    public: void setStartTime(int64_t startTime){
+    auto TimeDelayHelper::setStartTime(int64_t startTime) -> void{
 this->startTime= startTime;
     
 }
 
 
-    public: int64_t getStartTime(){
+    auto TimeDelayHelper::getStartTime() -> int64_t{
 
 
 
@@ -295,13 +296,13 @@ this->startTime= startTime;
 }
 
 
-    public: void setStartTimeTNT(){
+    auto TimeDelayHelper::setStartTimeTNT() -> void{
 this->startTime= System.currentTimeMillis();
     
 }
 
 
-    public: void pause(){
+    auto TimeDelayHelper::pause() -> void{
 this->elapsedTimeAtPause= this->getElapsedTNT();
     
 this->startTime= Long.MAX_VALUE;
@@ -309,7 +310,7 @@ this->startTime= Long.MAX_VALUE;
 }
 
 
-    public: bool resume(){
+    auto TimeDelayHelper::resume() -> bool{
 
                         if(this->elapsedTimeAtPause != Long.MIN_VALUE)
                         
@@ -338,7 +339,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: std::string toStringAt(int64_t currentTime){
+    auto TimeDelayHelper::toStringAt(int64_t currentTime) -> std::string{
 
     int64_t elapsed = this->getElapsed(currentTime);;
     
@@ -374,7 +375,7 @@ this->setStartTimeTNT();
 }
 
 
-    public: std::string toString(){
+    auto TimeDelayHelper::toString() -> std::string{
 
     int64_t currentTime = System.currentTimeMillis();;
     
@@ -413,7 +414,6 @@ this->setStartTimeTNT();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_TIMEDELAYHELPER_CPP

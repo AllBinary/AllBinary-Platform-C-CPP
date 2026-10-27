@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,35 +37,15 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/user/UserData.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/PaymentData.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/control/crypt/SuperCrypt.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class StoreFrontData;
+class EntryData;
+class UserData;
+class PaymentData;
+class StdUtil;
+class SuperCrypt;
+class StringUtil;
 
 
 
@@ -80,11 +65,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
-#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
-#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayPrimaryKey.h"
+class PaymentGatewayData;
+class PaymentGatewayPrimaryKey;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentGateway
-            : public Object
+            : public virtual Object
         , public PaymentGatewayInterface {
 
     private: std::string storeName;
@@ -317,3 +306,49 @@ public: PaymentGateway(HashMap<Object*, Object*>* hashMap);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserData.h>)
+#include <org/allbinary/business/user/UserData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/PaymentData.h>)
+#include <org/allbinary/business/user/commerce/money/payment/PaymentData.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/crypt/SuperCrypt.h>)
+#include <org/allbinary/logic/control/crypt/SuperCrypt.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h")
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h")
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayPrimaryKey.h")
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayPrimaryKey.h"
+#endif
+
+        #endif
+    

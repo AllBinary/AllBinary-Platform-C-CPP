@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/LicenseInitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,19 +70,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LicenseInitInfo
-            : public Object
-         {
 
-    private: std::string id = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: BasicArrayList* serverList = new BasicArrayListD();
-
-: LicenseInitInfo(){
+LicenseInitInfo::LicenseInitInfo() : id(StringUtil::getInstance()->EMPTY_STRING), serverList(new BasicArrayListD()){
 }
 
 
-    public: std::string getLicenseId(){
+    auto LicenseInitInfo::getLicenseId() -> std::string{
 
 
 
@@ -82,7 +85,7 @@ class LicenseInitInfo
 }
 
 
-    public: std::string getServer(int32_t index){
+    auto LicenseInitInfo::getServer(int32_t index) -> std::string{
 
 
 
@@ -92,7 +95,7 @@ class LicenseInitInfo
 }
 
 
-    public: int32_t getNumberOfServers(){
+    auto LicenseInitInfo::getNumberOfServers() -> int32_t{
 
 
 
@@ -102,31 +105,31 @@ class LicenseInitInfo
 }
 
 
-    public: void setLicenseId(std::string value){
+    auto LicenseInitInfo::setLicenseId(std::string value) -> void{
 this->id= value;
     
 }
 
 
-    public: void clearServers(){
+    auto LicenseInitInfo::clearServers() -> void{
 this->serverList->clear();
     
 }
 
 
-    public: void setServer(std::string value, int32_t index){
+    auto LicenseInitInfo::setServer(std::string value, int32_t index) -> void{
 this->serverList->addAt(index, value);
     
 }
 
 
-    public: void addServer(std::string value){
+    auto LicenseInitInfo::addServer(std::string value) -> void{
 this->serverList->add(value);
     
 }
 
 
-    public: BasicArrayList* getServerList(){
+    auto LicenseInitInfo::getServerList() -> BasicArrayList*{
 
 
 
@@ -136,7 +139,7 @@ this->serverList->add(value);
 }
 
 
-    public: void setServerList(BasicArrayList* servers){
+    auto LicenseInitInfo::setServerList(BasicArrayList* servers) -> void{
 
                         if(DebugFactory::getInstance() == NoDebug::getInstance())
                         
@@ -149,7 +152,6 @@ this->serverList->add(value);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_CPP

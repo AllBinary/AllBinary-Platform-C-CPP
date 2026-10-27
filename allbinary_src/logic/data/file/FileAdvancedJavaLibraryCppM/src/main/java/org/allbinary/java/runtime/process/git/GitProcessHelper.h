@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_JAVA_RUNTIME_PROCESS_GIT_GITPROCESSHELPER_H
         #define ORG_ALLBINARY_JAVA_RUNTIME_PROCESS_GIT_GITPROCESSHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,38 +43,16 @@
             #include "java/lang/InterruptedException.h"
         
 #include <java/io/File.h>
-
-      
 #include <java/io/IOException.h>
-
-      
 #include <java/nio/charset/StandardCharsets.h>
-
-      
 #include <java/util/ArrayList.h>
-
-      
 #include <java/util/List.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFileNativeUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/directory/TrackedStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class AbFile;
+class AbFileNativeUtil;
+class TrackedStrings;
+class StringMaker;
+class CommonStrings;
 
 
 
@@ -88,18 +71,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/java/runtime/process/git/ProcessBuilder.h"
-#include "org/allbinary/java/runtime/process/git/Process.h"
-//Do not use this instead just skip target, build, Application paths.
+        class ProcessBuilder;
+class Process;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //Do not use this instead just skip target, build, Application paths.
 class GitProcessHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static GitProcessHelper* instance() { static std::unique_ptr<GitProcessHelper> value(new GitProcessHelper()); return value.get(); }
+    private: static GitProcessHelper* instance_owner();
+    private: static GitProcessHelper* instance;
 
     public: static GitProcessHelper* getInstance();
 
-    private: TrackedStrings* trackedStrings = TrackedStrings::getInstance();
+    private: TrackedStrings* trackedStrings;
 
 private: GitProcessHelper();
 
@@ -119,3 +107,49 @@ private: GitProcessHelper();
 
 
         #endif //ORG_ALLBINARY_JAVA_RUNTIME_PROCESS_GIT_GITPROCESSHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_JAVA_RUNTIME_PROCESS_GIT_GITPROCESSHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_JAVA_RUNTIME_PROCESS_GIT_GITPROCESSHELPER_H_COMPLETE
+        #if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/nio/charset/StandardCharsets.h>)
+#include <java/nio/charset/StandardCharsets.h>
+#endif
+#if __has_include(<java/util/ArrayList.h>)
+#include <java/util/ArrayList.h>
+#endif
+#if __has_include(<java/util/List.h>)
+#include <java/util/List.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFileNativeUtil.h>)
+#include <org/allbinary/logic/io/file/AbFileNativeUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/directory/TrackedStrings.h>)
+#include <org/allbinary/logic/io/file/directory/TrackedStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/java/runtime/process/git/ProcessBuilder.h")
+#include "org/allbinary/java/runtime/process/git/ProcessBuilder.h"
+#endif
+#if __has_include("org/allbinary/java/runtime/process/git/Process.h")
+#include "org/allbinary/java/runtime/process/git/Process.h"
+#endif
+
+        #endif
+    

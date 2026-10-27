@@ -21,15 +21,18 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_H
         #define BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h>
-
-      
+class InputAutomationRobotChangeEvent;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationRobotChangeListener {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class InputAutomationRobotChangeListener
+            : public virtual Object
+         {
 
     public: virtual void onAdd(InputAutomationRobotChangeEvent* inputAutomationRobotChangeEvent) = 0;
 
@@ -61,3 +70,13 @@ class InputAutomationRobotChangeListener {
 
 
         #endif //BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_H_COMPLETE)
+        #define BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTCHANGELISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h>)
+#include <org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h>
+#endif
+
+        #endif
+    

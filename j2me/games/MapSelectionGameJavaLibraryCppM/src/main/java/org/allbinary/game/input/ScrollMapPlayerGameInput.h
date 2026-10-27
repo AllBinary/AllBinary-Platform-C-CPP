@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,48 +36,20 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/InputFeatureFactory.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/layer/event/ScrollMapEvent.h>
-
-      
-#include <org/allbinary/layer/event/ScrollMapEventHandler.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class Canvas;
+class Graphics;
+class BasicArrayList;
+class Features;
+class InputFeatureFactory;
+class GameKeyEvent;
+class AllBinaryGameLayerManager;
+class AllBinaryTiledLayer;
+class DisplayInfoSingleton;
+class AllBinaryLayerManager;
+class ScrollMapEvent;
+class ScrollMapEventHandler;
+class BasicGeographicMap;
+class BasicArrayListD;
 
 
 
@@ -92,23 +69,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/PlayerGameInput.h"
-#include "org/allbinary/game/input/InputFactory.h"
-#include "org/allbinary/game/input/GameInputProcessor.h"
-#include "org/allbinary/game/input/ScrollMapUpGameInputProcessor.h"
-#include "org/allbinary/game/input/ScrollMapDownGameInputProcessor.h"
-#include "org/allbinary/game/input/ScrollMapRightGameInputProcessor.h"
-#include "org/allbinary/game/input/ScrollMapLeftGameInputProcessor.h"
-#include "org/allbinary/game/input/GameInputProcessorUtil.h"
+class InputFactory;
+class GameInputProcessor;
+class ScrollMapUpGameInputProcessor;
+class ScrollMapDownGameInputProcessor;
+class ScrollMapRightGameInputProcessor;
+class ScrollMapLeftGameInputProcessor;
+class GameInputProcessorUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScrollMapPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
+    /*protected*/ public: std::vector<GameInputProcessor*> inputProcessorArray;
 
     private: const int32_t border = 150;
 
     private: BasicArrayList* inputList;
 
-    protected: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
+    /*protected*/ public: const bool isSingleKeyProcessing;
 
     private: BasicGeographicMap* geographicMapInterface;
 
@@ -118,7 +99,7 @@ class ScrollMapPlayerGameInput: public PlayerGameInput {
 
 public: ScrollMapPlayerGameInput(BasicGeographicMap* geographicMapInterface, BasicArrayList* list, int32_t playerInputId);
 
-    private: ScrollMapEvent* scrollMapEvent = new ScrollMapEvent(this);
+    private: ScrollMapEvent* scrollMapEvent;
 
                 //@Throws(Exception.constructor)
             
@@ -136,19 +117,19 @@ public: ScrollMapPlayerGameInput(BasicGeographicMap* geographicMapInterface, Bas
 
                 //@Throws(Exception.constructor)
             
-    protected: void up();
+    /*protected*/ public: void up();
 
                 //@Throws(Exception.constructor)
             
-    protected: void down();
+    /*protected*/ public: void down();
 
                 //@Throws(Exception.constructor)
             
-    protected: void right();
+    /*protected*/ public: void right();
 
                 //@Throws(Exception.constructor)
             
-    protected: void left();
+    /*protected*/ public: void left();
 
     public: void initInputProcessors();
 
@@ -178,3 +159,76 @@ public: ScrollMapPlayerGameInput(BasicGeographicMap* geographicMapInterface, Bas
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/InputFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/InputFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/layer/event/ScrollMapEvent.h>)
+#include <org/allbinary/layer/event/ScrollMapEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/event/ScrollMapEventHandler.h>)
+#include <org/allbinary/layer/event/ScrollMapEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/input/PlayerGameInput.h")
+#include "org/allbinary/game/input/PlayerGameInput.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/ScrollMapUpGameInputProcessor.h")
+#include "org/allbinary/game/input/ScrollMapUpGameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/ScrollMapDownGameInputProcessor.h")
+#include "org/allbinary/game/input/ScrollMapDownGameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/ScrollMapRightGameInputProcessor.h")
+#include "org/allbinary/game/input/ScrollMapRightGameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/ScrollMapLeftGameInputProcessor.h")
+#include "org/allbinary/game/input/ScrollMapLeftGameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessorUtil.h")
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
+#endif
+
+        #endif
+    

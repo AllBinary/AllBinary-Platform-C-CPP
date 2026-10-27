@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_USER_NEWUSERVIEW_CPP
+        #define VIEWS_ADMIN_USER_NEWUSERVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/user/NewUserView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,11 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/user/UserView.h"
 
-class NewUserView: public UserView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NewUserView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface){
+NewUserView::NewUserView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,7 +90,7 @@ this->user= NewUserFactory::getInstance();
 }
 
 
-    public: bool isValid(){
+    auto NewUserView::isValid() -> bool{
 
         try {
             
@@ -97,10 +104,10 @@ this->user= NewUserFactory::getInstance();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -116,7 +123,7 @@ this->user= NewUserFactory::getInstance();
 }
 
 
-    public: std::string validationInfo(){
+    auto NewUserView::validationInfo() -> std::string{
 
         try {
             
@@ -135,7 +142,7 @@ stringBuffer->append("Please Contact Administrator");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -154,7 +161,7 @@ stringBuffer->append("Please Contact Administrator");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto NewUserView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -164,7 +171,7 @@ stringBuffer->append("Please Contact Administrator");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto NewUserView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -174,7 +181,6 @@ stringBuffer->append("Please Contact Administrator");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_USER_NEWUSERVIEW_CPP

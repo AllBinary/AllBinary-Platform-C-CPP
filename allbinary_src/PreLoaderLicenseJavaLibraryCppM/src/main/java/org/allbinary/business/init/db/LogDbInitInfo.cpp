@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_LOGDBINITINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_LOGDBINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/db/LogDbInitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbInitInfo.h"
 
-class LogDbInitInfo: public DbInitInfo {
 
-    private: static inline const std::string INITFILE = "logdbinitdata.dat";
-
-public: LogDbInitInfo() : DbInitInfo(INITFILE, true){
+LogDbInitInfo::LogDbInitInfo() : DbInitInfo(INITFILE, true){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +65,7 @@ public: LogDbInitInfo() : DbInitInfo(INITFILE, true){
 }
 
 
-public: LogDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
+LogDbInitInfo::LogDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +75,6 @@ public: LogDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_LOGDBINITINFO_CPP

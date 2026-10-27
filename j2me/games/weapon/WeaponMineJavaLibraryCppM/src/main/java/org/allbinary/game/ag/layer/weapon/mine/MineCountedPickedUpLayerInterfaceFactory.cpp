@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINECOUNTEDPICKEDUPLAYERINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINECOUNTEDPICKEDUPLAYERINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineCountedPickedUpLayerInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,31 +94,17 @@
         #include "org/allbinary/game/ag/layer/weapon/mine/MineLayerCircularStaticPool.h"
 #include "org/allbinary/game/ag/layer/weapon/mine/MineWeaponResources.h"
 
-class MineCountedPickedUpLayerInterfaceFactory: public CountedPickedUpLayerInterfaceFactory {
-
-    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+PickedUpLayerInterfaceFactoryInterface* MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(){
+    auto MineCountedPickedUpLayerInterfaceFactory::init() -> void{
 MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= new MineCountedPickedUpLayerInterfaceFactory();
     
 }
 
 
-    public: static PickedUpLayerInterfaceFactoryInterface* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
-    
-}
-
-
-    private: WeaponLayerCircularPool* weaponLayerCircularStaticPool = MineLayerCircularStaticPool::getInstance();
-
-private: MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->MINE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->DROP_ICON_RESOURCE)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->DROP_RESOURCE)->getInstance(0)){
+MineCountedPickedUpLayerInterfaceFactory::MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->MINE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->DROP_ICON_RESOURCE)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->DROP_RESOURCE)->getInstance(0)), weaponLayerCircularStaticPool(MineLayerCircularStaticPool::getInstance()), weaponProperties(new WeaponProperties( -1,  -1, 0, 8000, 10)), smallIntegerSingletonFactory(SmallIntegerSingletonFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -118,7 +114,17 @@ private: MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterf
 }
 
 
-    public: int32_t getTotal(){
+    auto MineCountedPickedUpLayerInterfaceFactory::getInstance() -> PickedUpLayerInterfaceFactoryInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
+    
+}
+
+
+    auto MineCountedPickedUpLayerInterfaceFactory::getTotal() -> int32_t{
 
 
 
@@ -128,13 +134,9 @@ private: MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterf
 }
 
 
-    private: WeaponProperties* weaponProperties = new WeaponProperties( -1,  -1, 0, 8000, 10);
-
-    private: SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
+    auto MineCountedPickedUpLayerInterfaceFactory::getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z) -> AllBinaryLayer*{
 
     AllBinaryLayer* sourceLayerInterface = dynamic_cast<AllBinaryLayer*>(hashtable->get(this->smallIntegerSingletonFactory->getAt(0)));;
     
@@ -153,7 +155,6 @@ private: MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterf
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINECOUNTEDPICKEDUPLAYERINTERFACEFACTORY_CPP

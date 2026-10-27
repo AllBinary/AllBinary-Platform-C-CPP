@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
+class Image;
+class AnimationBehavior;
+class AngleInfo;
 
 
 
@@ -61,13 +60,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageArrayBaseRotationAnimation.h"
-#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+class ImageArrayRotationAnimationInfo;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageArrayRotationAnimation: public ImageArrayBaseRotationAnimation {
 
                 //@Throws(Exception.constructor)
             
-    protected: static ImageArrayRotationAnimation* createAnimation(Object* anyType, AnimationBehavior* animationBehavior);
+    /*protected*/ public: static ImageArrayRotationAnimation* createAnimation(Object* anyType, AnimationBehavior* animationBehavior);
+    /*protected*/ public: static ImageArrayRotationAnimation* createAnimation(const std::string& anyType, AnimationBehavior* animationBehavior) { return createAnimation(JavaString::box(anyType), animationBehavior); }
 
     private: int32_t expectedTotalFrames= 0;
 
@@ -85,3 +89,25 @@ public: ImageArrayRotationAnimation(std::vector<Image*> imageArray, AngleInfo* a
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ImageArrayBaseRotationAnimation.h")
+#include "org/allbinary/animation/image/ImageArrayBaseRotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h")
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RELEASECONTROLLEDMOTIONGESTURELISTENER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RELEASECONTROLLEDMOTIONGESTURELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/ReleaseControlledMotionGestureListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,23 +90,8 @@
 #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
-class ReleaseControlledMotionGestureListener
-            : public Object
-        , public MotionGestureEventListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: MotionGestureInput* currentMotionGesture = TouchMotionGestureFactory::getInstance()->NO_MOTION;
-
-    private: bool isMouseGestureOccurring = false;
-
-    private: BasicArrayList* motionGestureCollection = new BasicArrayListD();
-
-    private: CompleteMotionGestureListenerInterface* signed_;
-
-public: ReleaseControlledMotionGestureListener(CompleteMotionGestureListenerInterface* signed_){
+ReleaseControlledMotionGestureListener::ReleaseControlledMotionGestureListener(CompleteMotionGestureListenerInterface* signed_) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), currentMotionGesture(TouchMotionGestureFactory::getInstance()->NO_MOTION), motionGestureCollection(new BasicArrayListD()){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->signed_= signed_;
@@ -104,61 +99,61 @@ this->signed_= signed_;
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto ReleaseControlledMotionGestureListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 }
 
 
-    public: void onUpMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onUpMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDownMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onDownMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onLeftMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onLeftMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onRightMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onRightMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onDiagonalDownRightMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onDiagonalUpRightMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onPressedMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onPressedMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->isMouseGestureOccurring= true;
     
 this->currentMotionGesture= TouchMotionGestureFactory::getInstance()->NO_MOTION;
@@ -168,11 +163,11 @@ this->onMotionGestureEvent(ev);
 }
 
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+    auto ReleaseControlledMotionGestureListener::onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent) -> void{
 }
 
 
-    public: void released(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::released(MotionGestureEvent* ev) -> void{
 
         try {
             
@@ -200,7 +195,7 @@ this->logUtil->put((new StringMaker())->append(this->commonStrings->EXCEPTION_LA
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent* ev){
+    auto ReleaseControlledMotionGestureListener::onMotionGestureEvent(MotionGestureEvent* ev) -> void{
 
                         if(this->isMouseGestureOccurring == false)
                         
@@ -248,7 +243,6 @@ this->motionGestureCollection->add(ev->getMotionGesture());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RELEASECONTROLLEDMOTIONGESTURELISTENER_CPP

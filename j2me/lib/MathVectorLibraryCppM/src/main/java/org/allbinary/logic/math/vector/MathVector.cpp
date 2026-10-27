@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTOR_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/vector/MathVector.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,17 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/math/vector/MathVectorInterface.h"
 
-class MathVector
-            : public Object
-        , public MathVectorInterface {
 
-    private: BasicDecimal* magnitudeBasicDecimal;
-
-    private: int32_t direction;
-
-    protected: BasicDecimal* resultBasicDecimal;
-
-public: MathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction){
+MathVector::MathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction){
 this->magnitudeBasicDecimal= magnitudeBasicDecimal;
     
 this->direction= direction;
@@ -67,7 +68,7 @@ this->direction= direction;
 }
 
 
-    public: BasicDecimal* getMagnitude(){
+    auto MathVector::getMagnitude() -> BasicDecimal*{
 
 
 
@@ -77,7 +78,7 @@ this->direction= direction;
 }
 
 
-    public: int32_t getDirection(){
+    auto MathVector::getDirection() -> int32_t{
 
 
 
@@ -87,7 +88,7 @@ this->direction= direction;
 }
 
 
-    public: BasicDecimal* getResult(){
+    auto MathVector::getResult() -> BasicDecimal*{
 
 
 
@@ -97,7 +98,6 @@ this->direction= direction;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_VECTOR_MATHVECTOR_CPP

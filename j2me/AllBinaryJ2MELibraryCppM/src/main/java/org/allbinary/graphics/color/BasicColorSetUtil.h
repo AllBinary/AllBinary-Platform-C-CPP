@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORSETUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORSETUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 
 
 
@@ -50,17 +53,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/BasicColor.h"
+        class BasicColor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicColorSetUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicColorSetUtil* instance() { static std::unique_ptr<BasicColorSetUtil> value(new BasicColorSetUtil()); return value.get(); }
+    private: static BasicColorSetUtil* instance_owner();
+    private: static BasicColorSetUtil* instance;
 
     public: static BasicColorSetUtil* getInstance();
 
-protected: BasicColorSetUtil();
+/*protected*/ public: BasicColorSetUtil();
 
     public: void setBasicColorP(Graphics* graphics, BasicColor* basicColor);
 
@@ -72,3 +80,16 @@ protected: BasicColorSetUtil();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORSETUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORSETUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORSETUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+
+        #endif
+    

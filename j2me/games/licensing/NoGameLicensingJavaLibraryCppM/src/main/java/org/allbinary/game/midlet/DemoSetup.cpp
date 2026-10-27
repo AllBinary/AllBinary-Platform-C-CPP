@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/DemoSetup.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,15 +56,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/midlet/GameMidlet.h"
 
-class DemoSetup
-            : public Object
-         {
 
-    public: void init(GameMidlet* gameMidlet){
+DemoSetup::DemoSetup() {
+        }
+        
+    auto DemoSetup::init(GameMidlet* gameMidlet) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_BILLING_UPDATEVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_BILLING_UPDATEVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/billing/UpdateValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/billing/BillingAddressView.h"
 
-class UpdateValidationView: public BillingAddressView, public ValidationComponentInterface {
 
-public: UpdateValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
+UpdateValidationView::UpdateValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,11 +84,11 @@ public: UpdateValidationView(TransformInfoInterface* transformInfoInterface) : B
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto UpdateValidationView::isValid() -> bool{
 this->streetAddress= new StreetAddress(this->getRequest());
     
 
-                        if(this->streetAddress.isValid() == Boolean::FALSE)
+                        if(this->streetAddress->isValid() == Boolean::FALSE)
                         
                                     {
                                     
@@ -95,32 +104,22 @@ this->streetAddress= new StreetAddress(this->getRequest());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->streetAddress.isValid();;
+                        return this->streetAddress->isValid();;
     
 }
 
 
-    public: std::string validationInfo(){
+    auto UpdateValidationView::validationInfo() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->streetAddress.validationInfo();;
+                        return this->streetAddress->validationInfo();;
     
 }
 
 
-    public: Document* toValidationInfoDoc(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public: Node* toValidationInfoNode(Document* document){
+    auto UpdateValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -130,7 +129,16 @@ this->streetAddress= new StreetAddress(this->getRequest());
 }
 
 
-};
+    auto UpdateValidationView::toValidationInfoNode(Document* document) -> Node*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+
+
+        #endif //VIEWS_GENERIC_ADDRESS_BILLING_UPDATEVALIDATIONVIEW_CPP

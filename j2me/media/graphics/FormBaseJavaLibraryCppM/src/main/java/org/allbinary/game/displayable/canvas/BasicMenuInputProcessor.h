@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,30 +34,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <javax/microedition/lcdui/NullCanvas.h>
-
-      
+class Canvas;
+class NullCanvas;
 #include <org/allbinary/game/input/PlayerGameInput.h>
-
-      
-#include <org/allbinary/graphics/displayable/MyCanvas.h>
-
-      
+class MyCanvas;
 #include <org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class MotionGestureEvent;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -72,13 +61,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicMenuInputProcessor: public PlayerGameInput, public BaseMotionGestureEventListener {
 
-    public: BasicArrayList* motionGestureEventList = new BasicArrayListD();
+    public: BasicArrayList* motionGestureEventList;
 
-    private: Canvas* canvas = NullCanvas::NULL_CANVAS;
+    private: Canvas* canvas;
 
-protected: BasicMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, Canvas* gameCanvas);
+/*protected*/ public: BasicMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, Canvas* gameCanvas);
 
     public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent);
 
@@ -86,7 +79,7 @@ protected: BasicMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t pla
 
     private: void setCanvas(MyCanvas* canvas);
 
-    protected: MyCanvas* getCanvas();
+    /*protected*/ public: MyCanvas* getCanvas();
 
                 //@Throws(Exception.constructor)
             
@@ -98,3 +91,34 @@ protected: BasicMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t pla
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullCanvas.h>)
+#include <javax/microedition/lcdui/NullCanvas.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlayerGameInput.h>)
+#include <org/allbinary/game/input/PlayerGameInput.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/MyCanvas.h>)
+#include <org/allbinary/graphics/displayable/MyCanvas.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h>)
+#include <org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>)
+#include <org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +55,13 @@
         #include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/graphics/paint/InitUpdatePaintableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InitUpdatePaintable: public Paintable, public InitUpdatePaintableInterface {
 
-protected: InitUpdatePaintable();
+/*protected*/ public: InitUpdatePaintable();
 
                 //@Throws(Exception.constructor)
             
@@ -66,3 +75,16 @@ protected: InitUpdatePaintable();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/paint/Paintable.h")
+#include "org/allbinary/graphics/paint/Paintable.h"
+#endif
+#if __has_include("org/allbinary/graphics/paint/InitUpdatePaintableInterface.h")
+#include "org/allbinary/graphics/paint/InitUpdatePaintableInterface.h"
+#endif
+
+        #endif
+    

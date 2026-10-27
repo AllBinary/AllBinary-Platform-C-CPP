@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICS_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatistics.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,21 +88,8 @@
         #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsInterface.h"
 #include "org/allbinary/business/context/modules/storefront/statistics/orders/history/StoreFrontOrdersHistoryStatisticsData.h"
 
-class StoreFrontOrdersHistoryStatistics
-            : public Object
-        , public StoreFrontOrdersHistoryStatisticsInterface {
 
-    private: int64_t numberOfOrdersLong;
-
-    private: Money* subTotalMoney;
-
-    private: Money* shippingCostMoney;
-
-    private: Money* taxesMoney;
-
-    private: Money* totalMoney;
-
-public: StoreFrontOrdersHistoryStatistics(StoreFrontInterface* storeFrontInterface){
+StoreFrontOrdersHistoryStatistics::StoreFrontOrdersHistoryStatistics(StoreFrontInterface* storeFrontInterface){
 this->subTotalMoney= new Money();
     
 this->shippingCostMoney= new Money();
@@ -142,7 +139,7 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 }
 
 
-    public: int64_t getNumberOfOrders(){
+    auto StoreFrontOrdersHistoryStatistics::getNumberOfOrders() -> int64_t{
 
 
 
@@ -152,7 +149,7 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 }
 
 
-    public: Money* getSubTotal(){
+    auto StoreFrontOrdersHistoryStatistics::getSubTotal() -> Money*{
 
 
 
@@ -162,7 +159,7 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 }
 
 
-    public: Money* getShippingCost(){
+    auto StoreFrontOrdersHistoryStatistics::getShippingCost() -> Money*{
 
 
 
@@ -172,7 +169,7 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 }
 
 
-    public: Money* getTaxes(){
+    auto StoreFrontOrdersHistoryStatistics::getTaxes() -> Money*{
 
 
 
@@ -182,7 +179,7 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 }
 
 
-    public: Money* getTotal(){
+    auto StoreFrontOrdersHistoryStatistics::getTotal() -> Money*{
 
 
 
@@ -192,7 +189,7 @@ this->numberOfOrdersLong= int64_t(numberOfOrders);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto StoreFrontOrdersHistoryStatistics::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -218,7 +215,7 @@ hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, this->getTotal()->toS
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto StoreFrontOrdersHistoryStatistics::toVector() -> BasicArrayList*{
 
 
 
@@ -228,7 +225,7 @@ hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, this->getTotal()->toS
 }
 
 
-    public: Object* getKey(){
+    auto StoreFrontOrdersHistoryStatistics::getKey() -> Object*{
 
 
 
@@ -238,7 +235,6 @@ hashMap->put(storeFrontOrdersHistoryStatisticsData->TOTAL, this->getTotal()->toS
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICS_CPP

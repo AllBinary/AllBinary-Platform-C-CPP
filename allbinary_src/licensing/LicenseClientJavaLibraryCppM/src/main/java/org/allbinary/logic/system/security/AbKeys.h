@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABKEYS_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABKEYS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeLicenseInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class LogUtil;
+class AbeClientInformationInterface;
+class AbeLicenseInterfaceFactory;
+class LicensingException;
 
 
 
@@ -62,15 +59,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbKeys
-            : public Object
+            : public virtual Object
          {
 
-    private: static AbKeys* instance() { static std::unique_ptr<AbKeys> value(new AbKeys()); return value.get(); }
+    private: static AbKeys* instance_owner();
+    private: static AbKeys* instance;
 
     public: static AbKeys* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: AbKeys();
 
@@ -85,3 +87,22 @@ private: AbKeys();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABKEYS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABKEYS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABKEYS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeLicenseInterfaceFactory.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeLicenseInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+
+        #endif
+    

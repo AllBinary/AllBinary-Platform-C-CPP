@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/state/RaceGameStateFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,13 +60,12 @@
         #include "org/allbinary/game/state/GameStateFactory.h"
 #include "org/allbinary/game/state/GameState.h"
 
-class RaceGameStateFactory
-            : public Object
-         {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+RaceGameStateFactory::RaceGameStateFactory() : START_GAME_STATE(GameStateFactory::getInstance()->createGameState("START_GAME_STATE")), YELLOW_LIGHT_GAME_STATE(GameStateFactory::getInstance()->createGameState("YELLOW_LIGHT_GAME_STATE")), RED_LIGHT_GAME_STATE(GameStateFactory::getInstance()->createGameState("RED_LIGHT_GAME_STATE")) {
+        }
+        Object* RaceGameStateFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static RaceGameStateFactory* getInstance(){
+    auto RaceGameStateFactory::getInstance() -> RaceGameStateFactory*{
 
                         if(RaceGameStateFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -75,13 +84,6 @@ class RaceGameStateFactory
 }
 
 
-    public: GameState* START_GAME_STATE = GameStateFactory::getInstance()->createGameState("START_GAME_STATE");
 
-    public: GameState* YELLOW_LIGHT_GAME_STATE = GameStateFactory::getInstance()->createGameState("YELLOW_LIGHT_GAME_STATE");
 
-    public: GameState* RED_LIGHT_GAME_STATE = GameStateFactory::getInstance()->createGameState("RED_LIGHT_GAME_STATE");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_CPP

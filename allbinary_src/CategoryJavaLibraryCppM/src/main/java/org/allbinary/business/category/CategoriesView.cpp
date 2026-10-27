@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/CategoriesView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,13 +70,8 @@
         #include "org/allbinary/business/category/CategoryInterface.h"
 #include "org/allbinary/business/category/CategoryView.h"
 
-class CategoriesView
-            : public Object
-        , public DomNodeInterface {
 
-    private: CategoryInterface* categoryInterface;
-
-public: CategoriesView(CategoryInterface* categoryInterface){
+CategoriesView::CategoriesView(CategoryInterface* categoryInterface){
 this->categoryInterface= categoryInterface;
     
 }
@@ -74,7 +79,7 @@ this->categoryInterface= categoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto CategoriesView::toXmlNode(Document* document) -> Node*{
 
     Node* node = (new CategoryView(this->categoryInterface))->toXmlNode(document);;
     
@@ -110,7 +115,6 @@ node->appendChild(childCategoryNode);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_CPP

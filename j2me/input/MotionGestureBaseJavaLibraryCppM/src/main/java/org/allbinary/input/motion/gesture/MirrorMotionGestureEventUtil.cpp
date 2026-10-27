@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/MirrorMotionGestureEventUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,25 +71,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MirrorMotionGestureEventUtil
-            : public Object
-         {
+auto MirrorMotionGestureEventUtil::instance_owner() -> MirrorMotionGestureEventUtil* { static std::unique_ptr<MirrorMotionGestureEventUtil> value(new MirrorMotionGestureEventUtil()); return value.get(); }
+MirrorMotionGestureEventUtil* MirrorMotionGestureEventUtil::instance = MirrorMotionGestureEventUtil::instance_owner();
 
-    private: static MirrorMotionGestureEventUtil* instance() { static std::unique_ptr<MirrorMotionGestureEventUtil> value(new MirrorMotionGestureEventUtil()); return value.get(); }
-
-    public: static MirrorMotionGestureEventUtil* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MirrorMotionGestureEventUtil::instance();
-    
-}
-
-
-    private: MotionEventCircularPool* motionEventCircularPool;
-
-private: MirrorMotionGestureEventUtil(){
+MirrorMotionGestureEventUtil::MirrorMotionGestureEventUtil(){
 this->motionEventCircularPool= MotionEventCircularPool::createPool(Integer.MAX_VALUE);
     
 }
@@ -87,7 +82,7 @@ this->motionEventCircularPool= MotionEventCircularPool::createPool(Integer.MAX_V
 
                 //@Throws(Exception.constructor)
             
-    public: MotionGestureEvent* mirrorVerticle(MotionGestureEvent* motionGestureEvent, int32_t halfWidth){
+    auto MirrorMotionGestureEventUtil::mirrorVerticle(MotionGestureEvent* motionGestureEvent, int32_t halfWidth) -> MotionGestureEvent*{
 
     MotionGestureEvent* event = this->motionEventCircularPool->getInstance(motionGestureEvent->getMotionGesture());;
     
@@ -119,7 +114,7 @@ event->setCurrentPoint(mirroredCurrentPoint);
 }
 
 
-    public: int32_t getNewX(int32_t x, int32_t halfWidth){
+    auto MirrorMotionGestureEventUtil::getNewX(int32_t x, int32_t halfWidth) -> int32_t{
 
     int32_t newX= 0;;
     
@@ -147,7 +142,16 @@ event->setCurrentPoint(mirroredCurrentPoint);
 }
 
 
-};
+    auto MirrorMotionGestureEventUtil::getInstance() -> MirrorMotionGestureEventUtil*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return MirrorMotionGestureEventUtil::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_MIRRORMOTIONGESTUREEVENTUTIL_CPP

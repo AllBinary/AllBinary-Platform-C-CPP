@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_WORKFLOW_WORKFLOWENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_WORKFLOW_WORKFLOWENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/workflow/WorkFlowEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,19 +107,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/workflow/WorkFlowEntityInterface.h"
 
-class WorkFlowEntity: public AbSqlBean, public WorkFlowEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    protected: const std::string tableName = "workflows";
-
-    private: const std::string METHOD_GET = "get()";
-
-    private: const std::string METHOD_UPDATE = "update";
-
-public: WorkFlowEntity() : AbSqlBean(new UserDbInitInfo()){
+WorkFlowEntity::WorkFlowEntity() : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -121,16 +120,16 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(BasicArrayList* values){
+    auto WorkFlowEntity::insert(BasicArrayList* values) -> void{
 
         try {
-            super.insert(values);
+            AbSqlBean::insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, INSERT);
     
 
                                     }
@@ -140,10 +139,10 @@ this->setTableName(this->tableName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -153,7 +152,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void delete_(std::string name, std::string storeName){
+    auto WorkFlowEntity::delete_(std::string name, std::string storeName) -> void{
 
         try {
             
@@ -163,13 +162,13 @@ keysAndValues->put(WorkFlowData::getInstance()->NAME, name);
     
 keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
     
-super.deleteWhere(keysAndValues);
+AbSqlBean::deleteWhere(keysAndValues);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, this->commonStrings->delete_);
     
 
                                     }
@@ -179,10 +178,10 @@ super.deleteWhere(keysAndValues);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->delete_, &e);
     
 
                                     }
@@ -194,7 +193,7 @@ super.deleteWhere(keysAndValues);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface* get(std::string name, std::string storeName){
+    auto WorkFlowEntity::get(std::string name, std::string storeName) -> WorkFlowInterface*{
 
         try {
             
@@ -205,7 +204,7 @@ keysAndValues->put(WorkFlowData::getInstance()->NAME, name);
 keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
     
 
-    HashMap<Object*, Object*>* hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* hashMap = AbSqlBean::getRow(keysAndValues);;
     
 
 
@@ -218,10 +217,10 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, METHOD_GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, METHOD_GET, &e);
     
 
                                     }
@@ -237,10 +236,10 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, METHOD_GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, METHOD_GET, &e);
     
 
                                     }
@@ -255,7 +254,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 }
 
 
-    public: BasicArrayList* get(std::string storeName){
+    auto WorkFlowEntity::get(std::string storeName) -> BasicArrayList*{
 
         try {
             
@@ -267,7 +266,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
     
 
-    BasicArrayList* hashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList* hashMapVector = AbSqlBean::getRows(keysAndValues);;
     
 
     int32_t size = hashMapVector->size();;
@@ -306,10 +305,10 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->METHOD_GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->METHOD_GET, &e);
     
 
                                     }
@@ -325,7 +324,7 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeName);
 }
 
 
-    public: void update(HashMap<Object*, Object*>* updatedValues){
+    auto WorkFlowEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
 
         try {
             
@@ -335,17 +334,17 @@ wherekeysAndValues->put(WorkFlowData::getInstance()->NAME, updatedValues->get(Wo
     
 wherekeysAndValues->put(StoreFrontData::getInstance()->NAME, updatedValues->get(StoreFrontData::getInstance()->NAME));
     
-super.updateWhere(wherekeysAndValues, updatedValues);
+AbSqlBean::updateWhere(wherekeysAndValues, updatedValues);
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, METHOD_UPDATE, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, METHOD_UPDATE, &e);
     
 
                                     }
@@ -355,14 +354,14 @@ super.updateWhere(wherekeysAndValues, updatedValues);
 }
 
 
-    public: std::string createTableStatement(){
+    auto WorkFlowEntity::createTableStatement() -> std::string{
 
     WorkFlowData* workFlowData = WorkFlowData::getInstance();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(workFlowData->NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(StoreFrontData::getInstance()->NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(DynamicObjectData::NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(workFlowData->DATA)->append(this->sqlTypeStrings.BLOB_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->LASTMODIFIED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(workFlowData->NAME)->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(this->sqlStrings->START)->append(workFlowData->NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(StoreFrontData::getInstance()->NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(DynamicObjectData::NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(workFlowData->DATA)->append(this->sqlTypeStrings->BLOB_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->LASTMODIFIED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(workFlowData->NAME)->append(this->sqlStrings->END);
     
 
 
@@ -373,27 +372,26 @@ stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(t
 }
 
 
-    public: std::string createTable(){
+    auto WorkFlowEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-    public: std::string dropTable(){
+    auto WorkFlowEntity::dropTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_WORKFLOW_WORKFLOWENTITY_CPP

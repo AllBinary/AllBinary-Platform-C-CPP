@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_BASEIMAGEANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_BASEIMAGEANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -83,13 +93,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/AnimationFactoryInitializationVisitor.h"
 
-class BaseImageAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static BaseImageAnimationFactory* createFactoryBase(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto BaseImageAnimationFactory::createFactoryBase(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory) -> BaseImageAnimationFactory*{
 
 
 
@@ -99,19 +106,7 @@ class BaseImageAnimationFactory
 }
 
 
-    protected: AnimationFactoryImageScaleUtil* animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
-
-    private: Image* image;
-
-    public: AnimationBehaviorFactory* animationBehaviorFactory;
-
-    private: std::vector<int32_t> sequenceArray;
-
-    protected: AnimationFactoryInitializationVisitor* animationFactoryInitializationVisitor;
-
-    protected: ScaleProperties* scaleProperties = ScaleProperties::instance;
-
-public: BaseImageAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+BaseImageAnimationFactory::BaseImageAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : animationFactoryImageScaleUtil(AnimationFactoryImageScaleUtil::getInstance()), scaleProperties(ScaleProperties::instance){
 this->animationFactoryInitializationVisitor= new AnimationFactoryInitializationVisitor();
     
 this->image= image;
@@ -133,7 +128,7 @@ this->animationFactoryInitializationVisitor->dy= dy;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto BaseImageAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -143,7 +138,7 @@ this->animationFactoryInitializationVisitor->dy= dy;
 }
 
 
-    public: Image* getImage(){
+    auto BaseImageAnimationFactory::getImage() -> Image*{
 
 
 
@@ -153,7 +148,7 @@ this->animationFactoryInitializationVisitor->dy= dy;
 }
 
 
-    public: std::vector<int32_t> getSequenceArray(){
+    auto BaseImageAnimationFactory::getSequenceArray() -> std::vector<int32_t>{
 
 
 
@@ -163,7 +158,7 @@ this->animationFactoryInitializationVisitor->dy= dy;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto BaseImageAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 this->scaleProperties= scaleProperties;
     
 
@@ -184,7 +179,7 @@ this->scaleProperties->scaleHeight= static_cast<int32_t>((this->animationFactory
 }
 
 
-    public: AnimationFactoryInitializationVisitor* getAnimationFactoryInitializationVisitorP(){
+    auto BaseImageAnimationFactory::getAnimationFactoryInitializationVisitorP() -> AnimationFactoryInitializationVisitor*{
 
 
 
@@ -194,7 +189,7 @@ this->scaleProperties->scaleHeight= static_cast<int32_t>((this->animationFactory
 }
 
 
-    public: ScaleProperties* getScalePropertiesP(){
+    auto BaseImageAnimationFactory::getScalePropertiesP() -> ScaleProperties*{
 
 
 
@@ -204,7 +199,7 @@ this->scaleProperties->scaleHeight= static_cast<int32_t>((this->animationFactory
 }
 
 
-    public: std::string toString(){
+    auto BaseImageAnimationFactory::toString() -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -214,7 +209,7 @@ this->scaleProperties->scaleHeight= static_cast<int32_t>((this->animationFactory
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toString());
+stringBuffer->append(Object::toString());
     
 stringBuffer->append(commonLabels->HEIGHT_LABEL);
     
@@ -233,7 +228,6 @@ stringBuffer->append(this->animationFactoryInitializationVisitor->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_BASEIMAGEANIMATIONFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,24 +77,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //NoPlatform
-// class LogFormatUtil
-            : public Object
-         {
-
-    private: static LogFormatUtil* instance() { static std::unique_ptr<LogFormatUtil> value(new LogFormatUtil()); return value.get(); }
-
-    public: static LogFormatUtil* getInstance()
+        
+//NoPlatform - declared in the header, implemented by the platform project
 
 
 
-    public: std::string get(std::string className, std::string functionName, std::string specialMessage, Object* exception)
-
-    public: std::string getS(std::string className, std::string functionName, std::string specialMessage)
-
-    public: std::string getO(Object* exception)
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_CPP

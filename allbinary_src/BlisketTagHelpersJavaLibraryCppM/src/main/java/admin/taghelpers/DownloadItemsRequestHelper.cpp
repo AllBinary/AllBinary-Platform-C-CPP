@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_DOWNLOADITEMSREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_DOWNLOADITEMSREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/DownloadItemsRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,13 +90,8 @@
         #include "admin/taghelpers/ModifyTable.h"
 #include "admin/taghelpers/InventoryItemViewParentTagHelper.h"
 
-class DownloadItemsRequestHelper: public ModifyTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: DownloadableItem* downloadableItem;
-
-public: DownloadItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+DownloadItemsRequestHelper::DownloadItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 
     HelperTag* inventoryTag = dynamic_cast<HelperTag*>(hashMap->get(AbTagData::PARENT));;
     
@@ -101,7 +106,7 @@ this->downloadableItem= downloadableInventoryItemView->getDownloadableItem();
 }
 
 
-    public: std::string insert(){
+    auto DownloadItemsRequestHelper::insert() -> std::string{
 
         try {
             
@@ -110,10 +115,10 @@ this->downloadableItem= downloadableInventoryItemView->getDownloadableItem();
 DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->insert(vector);
     
 
-    std::string success = "Successfully inserted " +this->downloadableItem->getId() +" into downloaditems table";;
+    std::string success = JavaString::valueOf(JavaString::valueOf("Successfully inserted ") +JavaString::valueOf(this->downloadableItem->getId())) +JavaString::valueOf(" into downloaditems table");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert()");
@@ -132,13 +137,13 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 } catch(Exception& e) 
             {
 
-    std::string error = "Failed to insert " +this->downloadableItem->getId() +" into downloaditems table";;
+    std::string error = JavaString::valueOf(JavaString::valueOf("Failed to insert ") +JavaString::valueOf(this->downloadableItem->getId())) +JavaString::valueOf(" into downloaditems table");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "inserts()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "inserts()", &e);
     
 
                                     }
@@ -154,16 +159,16 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 }
 
 
-    public: std::string delete_(){
+    auto DownloadItemsRequestHelper::delete_() -> std::string{
 
         try {
-            DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->delete(this->downloadableItem->getId());
+            DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->delete_(this->downloadableItem->getId());
     
 
     std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -185,10 +190,10 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -204,7 +209,7 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 }
 
 
-    public: std::string update(){
+    auto DownloadItemsRequestHelper::update() -> std::string{
 
         try {
             
@@ -216,10 +221,10 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->ins
 DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF(this->downloadableItem->getId() +CommonSeps::getInstance()->SPACE +success, this, "update()");
+                                    this->logUtil->putF(JavaString::valueOf(this->downloadableItem->getId() +CommonSeps::getInstance()->SPACE) +JavaString::valueOf(success), this, "update()");
     
 
                                     }
@@ -235,13 +240,13 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->upd
 } catch(Exception& e) 
             {
 
-    std::string error = "Failed to update: " +this->downloadableItem->getId();;
+    std::string error = JavaString::valueOf("Failed to update: ") +JavaString::valueOf(this->downloadableItem->getId());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -257,7 +262,6 @@ DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance()->upd
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_DOWNLOADITEMSREQUESTHELPER_CPP

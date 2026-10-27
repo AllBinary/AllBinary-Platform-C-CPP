@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILSNOTUSED_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILSNOTUSED_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/EmailsNotUsed.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,17 +86,8 @@
         #include "org/allbinary/logic/communication/smtp/EmailData.h"
 #include "org/allbinary/logic/communication/smtp/Email.h"
 
-class EmailsNotUsed
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: BasicArrayList* emailInfoVector;
-
-public: EmailsNotUsed(){
+EmailsNotUsed::EmailsNotUsed() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->emailInfoVector= new BasicArrayListD();
     
 }
@@ -94,11 +95,11 @@ this->emailInfoVector= new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto EmailsNotUsed::toXmlNode(Document* document) -> Node*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");
@@ -139,7 +140,7 @@ this->emailInfoVector= new BasicArrayListD();
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->END, this, "toXmlNode()");
@@ -158,7 +159,7 @@ this->emailInfoVector= new BasicArrayListD();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode()", &e);
@@ -180,7 +181,6 @@ this->emailInfoVector= new BasicArrayListD();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILSNOTUSED_CPP

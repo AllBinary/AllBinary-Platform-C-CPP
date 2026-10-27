@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/khronos/opengles/GL.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
+class GL;
+class Graphics;
+class Animation;
+class AnimationBehavior;
 #include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class PrimitiveIntUtil;
+class CircularIndexUtil;
 
 
 
@@ -72,6 +63,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/compound/CompoundAnimationInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompoundIndexedAnimation: public IndexedAnimation, public CompoundAnimationInterface {
 
     private: CircularIndexUtil* circularIndexUtil;
@@ -122,3 +117,34 @@ public: CompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray
 
 
         #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL.h>)
+#include <javax/microedition/khronos/opengles/GL.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/compound/CompoundAnimationInterface.h")
+#include "org/allbinary/animation/compound/CompoundAnimationInterface.h"
+#endif
+
+        #endif
+    

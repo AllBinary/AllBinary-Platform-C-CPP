@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -51,11 +54,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLCapabilities
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLCapabilities* instance() { static std::unique_ptr<OpenGLCapabilities> value(new OpenGLCapabilities()); return value.get(); }
+    private: static OpenGLCapabilities* instance_owner();
+    private: static OpenGLCapabilities* instance;
 
     public: static OpenGLCapabilities* getInstance();
 
@@ -75,11 +83,11 @@ class OpenGLCapabilities
 
     public: const std::string VERSION_HIGHER_THAN_EXISTS = "999.999";
 
-    private: std::string glVersion = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string glVersion;
 
     public: int32_t shaderVersion = 0;
 
-    public: std::string glInstanceVersion = StringUtil::getInstance()->EMPTY_STRING;
+    public: std::string glInstanceVersion;
 
     public: int32_t maxTextureSize = 64;
 
@@ -88,6 +96,7 @@ private: OpenGLCapabilities();
     public: bool isInitialized();
 
     public: void initCapabilities(Object* gl);
+    public: void initCapabilities(const std::string& gl) { return initCapabilities(JavaString::box(gl)); }
 
     public: bool isGlExtensionDrawTexture();
 
@@ -103,3 +112,13 @@ private: OpenGLCapabilities();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

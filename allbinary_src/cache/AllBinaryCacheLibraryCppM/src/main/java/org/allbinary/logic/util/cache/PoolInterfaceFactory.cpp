@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/PoolInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,26 +61,22 @@
 #include "org/allbinary/logic/util/cache/PoolType.h"
 #include "org/allbinary/logic/util/cache/CachePolicy.h"
 
-class PoolInterfaceFactory
-            : public Object
-         {
+
+PoolInterfaceFactory::PoolInterfaceFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static PoolInterface* getInstance(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface, PoolType* poolType, CachePolicy* cachePolicy){
+    auto PoolInterfaceFactory::getInstance(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface, PoolType* poolType, CachePolicy* cachePolicy) -> PoolInterface*{
 
 
 
-                            throw new Exception("No Such PoolType: " +poolType->toString());
+                            throw Exception(JavaString::valueOf("No Such PoolType: ") +JavaString::valueOf(poolType->toString()));
                     
 }
 
 
-private: PoolInterfaceFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_CPP

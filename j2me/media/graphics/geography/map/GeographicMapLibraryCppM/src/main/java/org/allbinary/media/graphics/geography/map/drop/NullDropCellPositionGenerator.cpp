@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_NULLDROPCELLPOSITIONGENERATOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_NULLDROPCELLPOSITIONGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/drop/NullDropCellPositionGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/drop/BaseDropCellPositionGenerator.h"
 
-class NullDropCellPositionGenerator: public BaseDropCellPositionGenerator {
 
-    private: static NullDropCellPositionGenerator* instance() { static std::unique_ptr<NullDropCellPositionGenerator> value(new NullDropCellPositionGenerator()); return value.get(); }
+NullDropCellPositionGenerator::NullDropCellPositionGenerator() {
+        }
+        auto NullDropCellPositionGenerator::instance_owner() -> NullDropCellPositionGenerator* { static std::unique_ptr<NullDropCellPositionGenerator> value(new NullDropCellPositionGenerator()); return value.get(); }
+NullDropCellPositionGenerator* NullDropCellPositionGenerator::instance = NullDropCellPositionGenerator::instance_owner();
 
-    public: static NullDropCellPositionGenerator* getInstance(){
+    auto NullDropCellPositionGenerator::getInstance() -> NullDropCellPositionGenerator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullDropCellPositionGenerator::instance();
+                        return NullDropCellPositionGenerator::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_NULLDROPCELLPOSITIONGENERATOR_CPP

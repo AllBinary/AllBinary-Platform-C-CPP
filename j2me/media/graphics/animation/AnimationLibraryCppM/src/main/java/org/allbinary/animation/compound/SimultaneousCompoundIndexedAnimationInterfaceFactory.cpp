@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXEDANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXEDANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/compound/SimultaneousCompoundIndexedAnimationInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,9 +69,8 @@
         #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
 #include "org/allbinary/animation/compound/SimultaneousCompoundIndexedAnimation.h"
 
-class SimultaneousCompoundIndexedAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
 
-public: SimultaneousCompoundIndexedAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
+SimultaneousCompoundIndexedAnimationInterfaceFactory::SimultaneousCompoundIndexedAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,7 +80,7 @@ public: SimultaneousCompoundIndexedAnimationInterfaceFactory(std::vector<Animati
 }
 
 
-    protected: std::vector<Animation*> createArray(int32_t size){
+    auto SimultaneousCompoundIndexedAnimationInterfaceFactory::createArray(int32_t size) -> std::vector<Animation*>{
 
 
 
@@ -81,17 +90,16 @@ public: SimultaneousCompoundIndexedAnimationInterfaceFactory(std::vector<Animati
 }
 
 
-    protected: Animation* createAnimation(std::vector<Animation*> animationArray){
+    auto SimultaneousCompoundIndexedAnimationInterfaceFactory::createAnimation(std::vector<Animation*> animationArray) -> Animation*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SimultaneousCompoundIndexedAnimation(animationArray, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new SimultaneousCompoundIndexedAnimation(animationArray, this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXEDANIMATIONINTERFACEFACTORY_CPP

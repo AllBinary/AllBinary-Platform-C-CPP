@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H
         #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,26 +41,12 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/HashSet.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/string/regex/replace/Replace.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class AbPathData;
+class Replace;
+class CommonPhoneStrings;
+class CommonSeps;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -74,13 +65,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/string/tokens/Tokenizer.h"
+        class Tokenizer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UniqueTokens
-            : public Object
+            : public virtual Object
          {
 
-    private: BasicArrayList* specialCharacters = new BasicArrayListD();
+    private: BasicArrayList* specialCharacters;
 
 public: UniqueTokens();
 
@@ -98,3 +93,34 @@ public: UniqueTokens();
 
 
         #endif //ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H_COMPLETE
+        #if __has_include(<java/util/HashSet.h>)
+#include <java/util/HashSet.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/regex/replace/Replace.h>)
+#include <org/allbinary/logic/string/regex/replace/Replace.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/logic/string/tokens/Tokenizer.h")
+#include "org/allbinary/logic/string/tokens/Tokenizer.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_AUTHENTICATIONHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_AUTHENTICATIONHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/AuthenticationHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,17 +74,14 @@
         #include "admin/taghelpers/TagHelperFactory.h"
 #include "admin/taghelpers/AuthenticationHelper.h"
 
-class AuthenticationHelperFactory: public TagHelperFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: AuthenticationHelperFactory(){
+AuthenticationHelperFactory::AuthenticationHelperFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto AuthenticationHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
         try {
             
@@ -88,10 +95,10 @@ public: AuthenticationHelperFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -109,7 +116,7 @@ public: AuthenticationHelperFactory(){
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest){
+    auto AuthenticationHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest) -> Object*{
 
         try {
             
@@ -123,10 +130,10 @@ public: AuthenticationHelperFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -142,7 +149,6 @@ public: AuthenticationHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_AUTHENTICATIONHELPERFACTORY_CPP

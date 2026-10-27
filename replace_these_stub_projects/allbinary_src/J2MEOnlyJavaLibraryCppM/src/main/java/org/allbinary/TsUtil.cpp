@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TSUTIL_CPP
+        #define ORG_ALLBINARY_TSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/TsUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -72,23 +82,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2ME
-class TsUtil
-            : public Object
-         {
 
-    private: static TsUtil* instance() { static std::unique_ptr<TsUtil> value(new TsUtil()); return value.get(); }
+TsUtil::TsUtil() {
+        }
+        auto TsUtil::instance_owner() -> TsUtil* { static std::unique_ptr<TsUtil> value(new TsUtil()); return value.get(); }
+TsUtil* TsUtil::instance = TsUtil::instance_owner();
 
-    public: static TsUtil* getInstance(){
+    auto TsUtil::getInstance() -> TsUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TsUtil::instance();
+                        return TsUtil::instance;
     
 }
 
 
-    public: int32_t hashCode(Object* anyType){
+    auto TsUtil::hashCode(Object* anyType) -> int32_t{
 
 
 
@@ -100,18 +110,18 @@ class TsUtil
 
                 //@Throws(InterruptedException.constructor)
             
-    public: void waitFor(Object* any, int64_t timeoutMillis){
+    auto TsUtil::waitFor(Object* any, int64_t timeoutMillis) -> void{
 
     Object* anyType = any;;
     
-;
+anyType->wait(timeoutMillis);
     
 }
 
 
                 //@Throws(RecordStoreNotOpenException.constructor, InvalidRecordIDException.constructor, RecordStoreException.constructor)
             
-    public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId){
+    auto TsUtil::getRecord(Object* anyType, int32_t recordId) -> std::vector<int8_t>{
 
     RecordStore* recordStore = dynamic_cast<RecordStore*>(anyType);;
     
@@ -147,7 +157,7 @@ recordStore->getRecord(recordId, data, 0);
 }
 
 
-    public: int32_t compareTo(std::string a, std::string b){
+    auto TsUtil::compareTo(std::string a, std::string b) -> int32_t{
 
 
 
@@ -157,7 +167,7 @@ recordStore->getRecord(recordId, data, 0);
 }
 
 
-    public: bool equalIgnoreCase(std::string a, std::string b){
+    auto TsUtil::equalIgnoreCase(std::string a, std::string b) -> bool{
 
 
 
@@ -167,17 +177,17 @@ recordStore->getRecord(recordId, data, 0);
 }
 
 
-    public: bool equalsNotstring(Object* anyType, Object* object2){
+    auto TsUtil::equalsNotstring(Object* anyType, Object* object2) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType === object2;;
+                        return anyType->equals(object2);;
     
 }
 
 
-    public: int32_t toNumberFromChar(char value){
+    auto TsUtil::toNumberFromChar(char value) -> int32_t{
 
 
 
@@ -187,7 +197,7 @@ recordStore->getRecord(recordId, data, 0);
 }
 
 
-    public: int32_t toNumber(int32_t value){
+    auto TsUtil::toNumber(int32_t value) -> int32_t{
 
 
 
@@ -197,7 +207,7 @@ recordStore->getRecord(recordId, data, 0);
 }
 
 
-    public: std::vector<int8_t> getByteArray(std::string string){
+    auto TsUtil::getByteArray(std::string string) -> std::vector<int8_t>{
 
 
 
@@ -207,7 +217,7 @@ recordStore->getRecord(recordId, data, 0);
 }
 
 
-    public: bool isItemListener(Displayable* owner){
+    auto TsUtil::isItemListener(Displayable* owner) -> bool{
 
                         if(
                                         (dynamic_cast<const Form*>(owner) != nullptr)
@@ -236,17 +246,16 @@ recordStore->getRecord(recordId, data, 0);
 }
 
 
-    public: void printAvailableMethods(Object* anyType){
+    auto TsUtil::printAvailableMethods(Object* anyType) -> void{
 }
 
 
-    public: void gc(){
+    auto TsUtil::gc() -> void{
 System.gc();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TSUTIL_CPP

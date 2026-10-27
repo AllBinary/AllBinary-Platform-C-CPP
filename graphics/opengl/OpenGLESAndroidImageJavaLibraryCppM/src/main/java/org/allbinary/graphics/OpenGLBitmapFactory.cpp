@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/OpenGLBitmapFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,41 +65,29 @@
         //#include "org/allbinary/graphics/Config.h"
 #include "org/allbinary/graphics/OpenGLBitmap.h"
 
-class OpenGLBitmapFactory: public PlatformBitmapBaseFactory {
 
-    private: static OpenGLBitmapFactory* instance() { static std::unique_ptr<OpenGLBitmapFactory> value(new OpenGLBitmapFactory()); return value.get(); }
+OpenGLBitmapFactory::OpenGLBitmapFactory() : ARGB_8888(new Config(Bitmap::Config->ARGB_8888)) {
+        }
+        auto OpenGLBitmapFactory::instance_owner() -> OpenGLBitmapFactory* { static std::unique_ptr<OpenGLBitmapFactory> value(new OpenGLBitmapFactory()); return value.get(); }
+OpenGLBitmapFactory* OpenGLBitmapFactory::instance = OpenGLBitmapFactory::instance_owner();
 
-    public: static OpenGLBitmapFactory* getInstance(){
+    auto OpenGLBitmapFactory::getInstance() -> OpenGLBitmapFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmapFactory::instance();
+                        return OpenGLBitmapFactory::instance;
     
 }
 
 
-//inner= member=true isStatic=
-class Config
-            : public Object
-         {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    public: bitmapConfig;
-
-: Config(Bitmap::Config* bitmapConfig){
+OpenGLBitmapFactory::Config::Config(Bitmap::Config* bitmapConfig){
 this->bitmapConfig= bitmapConfig;
     
 }
 
 
-};
-
-            
-    public: ARGB_8888 = new Config(Bitmap::Config.ARGB_8888);
-
-    public: OpenGLBitmap* createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory::Config* config){
+    auto OpenGLBitmapFactory::createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory::Config* config) -> OpenGLBitmap*{
 
 
 
@@ -101,7 +99,7 @@ this->bitmapConfig= bitmapConfig;
 
                 //@Throws(IOException.constructor)
             
-    public: OpenGLBitmap* decodeStream(InputStream* inputStream){
+    auto OpenGLBitmapFactory::decodeStream(InputStream* inputStream) -> OpenGLBitmap*{
 
 
 
@@ -111,7 +109,7 @@ this->bitmapConfig= bitmapConfig;
 }
 
 
-    public: PlatformBitmapBase* createBitmap(Image* image){
+    auto OpenGLBitmapFactory::createBitmap(Image* image) -> PlatformBitmapBase*{
 
 
 
@@ -121,7 +119,6 @@ this->bitmapConfig= bitmapConfig;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_CPP

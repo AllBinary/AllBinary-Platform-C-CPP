@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_NULLINTERMISSIONENABLELISTENER_H
         #define ORG_ALLBINARY_GAME_NULLINTERMISSIONENABLELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +54,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/IntermissionEnableListenerInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullIntermissionEnableListener
-            : public Object
+            : public virtual Object
         , public IntermissionEnableListenerInterface {
 
-    private: static inline IntermissionEnableListenerInterface* SINGLETON = new NullIntermissionEnableListener();
+    private: static IntermissionEnableListenerInterface* SINGLETON;
 
     public: static IntermissionEnableListenerInterface* getInstance();
 
@@ -67,3 +76,13 @@ private: NullIntermissionEnableListener();
 
 
         #endif //ORG_ALLBINARY_GAME_NULLINTERMISSIONENABLELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_NULLINTERMISSIONENABLELISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_NULLINTERMISSIONENABLELISTENER_H_COMPLETE
+        #if __has_include("org/allbinary/game/IntermissionEnableListenerInterface.h")
+#include "org/allbinary/game/IntermissionEnableListenerInterface.h"
+#endif
+
+        #endif
+    

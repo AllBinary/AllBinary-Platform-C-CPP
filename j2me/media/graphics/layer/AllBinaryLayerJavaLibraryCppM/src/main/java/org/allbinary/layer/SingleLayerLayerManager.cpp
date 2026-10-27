@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_SINGLELAYERLAYERMANAGER_CPP
+        #define ORG_ALLBINARY_LAYER_SINGLELAYERLAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/SingleLayerLayerManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +55,8 @@
         #include "org/allbinary/layer/LayerManager.h"
 #include "org/allbinary/layer/LayerManagerNoDebug.h"
 
-class SingleLayerLayerManager: public LayerManager {
 
-public: SingleLayerLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+SingleLayerLayerManager::SingleLayerLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -57,7 +66,6 @@ public: SingleLayerLayerManager() : LayerManager(LayerManagerNoDebug::getInstanc
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_SINGLELAYERLAYERMANAGER_CPP

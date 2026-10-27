@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESTRINGS_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageStrings
-            : public Object
-         {
 
-    private: static ImageStrings* instance() { static std::unique_ptr<ImageStrings> value(new ImageStrings()); return value.get(); }
+ImageStrings::ImageStrings() {
+        }
+        auto ImageStrings::instance_owner() -> ImageStrings* { static std::unique_ptr<ImageStrings> value(new ImageStrings()); return value.get(); }
+ImageStrings* ImageStrings::instance = ImageStrings::instance_owner();
 
-    public: static ImageStrings* getInstance(){
+    auto ImageStrings::getInstance() -> ImageStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageStrings::instance();
+                        return ImageStrings::instance;
     
 }
 
 
-    public: const std::string PNG = "PNG";
 
-    public: const std::string PNG_EXTENSION = ".png";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESTRINGS_CPP

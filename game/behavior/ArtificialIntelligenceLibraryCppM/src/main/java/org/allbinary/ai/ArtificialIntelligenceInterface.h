@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/IdentifierInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class AllBinaryLayerManager;
 
 
 
@@ -54,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ArtificialIntelligenceInterface: public IdentifierInterface {
 
                 //@Throws(Exception.constructor)
@@ -66,3 +71,16 @@ class ArtificialIntelligenceInterface: public IdentifierInterface {
 
 
         #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/IdentifierInterface.h>)
+#include <org/allbinary/graphics/IdentifierInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+
+        #endif
+    

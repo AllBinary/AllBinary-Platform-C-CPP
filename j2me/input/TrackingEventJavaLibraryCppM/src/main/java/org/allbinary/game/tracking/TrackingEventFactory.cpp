@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tracking/TrackingEventFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,15 +63,12 @@
         #include "org/allbinary/game/tracking/TrackingEvent.h"
 #include "org/allbinary/game/tracking/TrackingEventHandler.h"
 
-class TrackingEventFactory
-            : public Object
-        , public AllBinaryEventObjectFactoryInterface {
 
-public: TrackingEventFactory(){
+TrackingEventFactory::TrackingEventFactory(){
 }
 
 
-    public: AllBinaryEventObject* getInstance(){
+    auto TrackingEventFactory::getInstance() -> AllBinaryEventObject*{
 
 
 
@@ -71,7 +78,6 @@ public: TrackingEventFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTFACTORY_CPP

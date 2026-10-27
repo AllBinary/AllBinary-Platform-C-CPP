@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/GameKeyEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,9 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameKeyEvent: public AllBinaryEventObject {
 
-    public: static GameKeyEvent* createEvent(Object* anyType, int32_t sourceId, int32_t key){
+    auto GameKeyEvent::createEvent(Object* anyType, int32_t sourceId, int32_t key) -> GameKeyEvent*{
 
 
 
@@ -65,20 +74,10 @@ class GameKeyEvent: public AllBinaryEventObject {
     
 }
 
+auto GameKeyEvent::NONE_owner() -> GameKeyEvent* { static std::unique_ptr<GameKeyEvent> value(new GameKeyEvent(NullUtil::getInstance()->NULL_OBJECT,  -1,  -1,  -1,  -1, false)); return value.get(); }
+GameKeyEvent* GameKeyEvent::NONE = GameKeyEvent::NONE_owner();
 
-    public: static GameKeyEvent* NONE() { static std::unique_ptr<GameKeyEvent> value(new GameKeyEvent(NullUtil::getInstance()->NULL_OBJECT,  -1,  -1,  -1,  -1, false)); return value.get(); }
-
-    private: int32_t sourceId;
-
-    private: bool repeated= false;
-
-    private: int32_t key;
-
-    private: int32_t gameActionKey= 0;
-
-    private: int32_t originalKey= 0;
-
-public: GameKeyEvent(Object* anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated) : AllBinaryEventObject(anyType){
+GameKeyEvent::GameKeyEvent(Object* anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,19 +97,19 @@ this->setRepeatEvents(repeated);
 }
 
 
-    public: void init(Object* anyType){
+    auto GameKeyEvent::init(Object* anyType) -> void{
 this->setSource(anyType);
     
 }
 
 
-    private: void setRepeatEvents(bool repeated){
+    auto GameKeyEvent::setRepeatEvents(bool repeated) -> void{
 this->repeated= repeated;
     
 }
 
 
-    public: bool hasRepeatEvents(){
+    auto GameKeyEvent::hasRepeatEvents() -> bool{
 
 
 
@@ -120,7 +119,7 @@ this->repeated= repeated;
 }
 
 
-    public: int32_t getKey(){
+    auto GameKeyEvent::getKey() -> int32_t{
 
 
 
@@ -130,7 +129,7 @@ this->repeated= repeated;
 }
 
 
-    public: std::string toString(){
+    auto GameKeyEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -147,7 +146,7 @@ stringBuffer->appendint(this->getKey());
 }
 
 
-    public: int32_t getOriginalKey(){
+    auto GameKeyEvent::getOriginalKey() -> int32_t{
 
 
 
@@ -157,13 +156,13 @@ stringBuffer->appendint(this->getKey());
 }
 
 
-    public: void setOriginalKey(int32_t originalKey){
+    auto GameKeyEvent::setOriginalKey(int32_t originalKey) -> void{
 this->originalKey= originalKey;
     
 }
 
 
-    public: int32_t getGameActionKey(){
+    auto GameKeyEvent::getGameActionKey() -> int32_t{
 
 
 
@@ -173,13 +172,13 @@ this->originalKey= originalKey;
 }
 
 
-    public: void setGameActionKey(int32_t gameActionKey){
+    auto GameKeyEvent::setGameActionKey(int32_t gameActionKey) -> void{
 this->gameActionKey= gameActionKey;
     
 }
 
 
-    public: int32_t getSourceId(){
+    auto GameKeyEvent::getSourceId() -> int32_t{
 
 
 
@@ -189,7 +188,6 @@ this->gameActionKey= gameActionKey;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DIAGONALUPRIGHTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DIAGONALUPRIGHTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/touch/action/DiagonalUpRightTouchInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DiagonalUpRightTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* DiagonalUpRightTouchInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto DiagonalUpRightTouchInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(DiagonalUpRightTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class DiagonalUpRightTouchInputToGameKeyEventAction: public GameKeyCompleteMotio
 }
 
 
-private: DiagonalUpRightTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Diagonal Up Right Action", TouchMotionGestureFactory::getInstance()->DIAGONAL_UP_RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+DiagonalUpRightTouchInputToGameKeyEventAction::DiagonalUpRightTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Diagonal Up Right Action", TouchMotionGestureFactory::getInstance()->DIAGONAL_UP_RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: DiagonalUpRightTouchInputToGameKeyEventAction() : GameKeyCompleteMotion
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DIAGONALUPRIGHTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP

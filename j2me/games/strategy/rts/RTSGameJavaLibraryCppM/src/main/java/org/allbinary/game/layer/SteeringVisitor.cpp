@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_STEERINGVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_STEERINGVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/SteeringVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SteeringVisitor: public Visitor {
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    public: BasicArrayList* getList(){
+SteeringVisitor::SteeringVisitor() : list(new BasicArrayListD()) {
+        }
+        
+    auto SteeringVisitor::getList() -> BasicArrayList*{
 
 
 
@@ -66,7 +76,6 @@ class SteeringVisitor: public Visitor {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_STEERINGVISITOR_CPP

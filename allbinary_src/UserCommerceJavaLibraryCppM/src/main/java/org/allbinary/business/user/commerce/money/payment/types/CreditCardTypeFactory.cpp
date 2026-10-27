@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/CreditCardTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,31 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/types/CreditCardType.h"
 
-class CreditCardTypeFactory
-            : public Object
-         {
 
-    private: static CreditCardTypeFactory* instance() { static std::unique_ptr<CreditCardTypeFactory> value(new CreditCardTypeFactory()); return value.get(); }
+CreditCardTypeFactory::CreditCardTypeFactory() : VISA(new CreditCardType("Visa")), MASTERCARD(new CreditCardType("MasterCard")), DISCOVER(new CreditCardType("Discover")), AMERICANEXPRESS(new CreditCardType("AMX")) {
+        }
+        auto CreditCardTypeFactory::instance_owner() -> CreditCardTypeFactory* { static std::unique_ptr<CreditCardTypeFactory> value(new CreditCardTypeFactory()); return value.get(); }
+CreditCardTypeFactory* CreditCardTypeFactory::instance = CreditCardTypeFactory::instance_owner();
 
-    public: static CreditCardTypeFactory* getInstance(){
+    auto CreditCardTypeFactory::getInstance() -> CreditCardTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CreditCardTypeFactory::instance();
+                        return CreditCardTypeFactory::instance;
     
 }
 
 
-    public: CreditCardType* VISA = new CreditCardType("Visa");
 
-    public: CreditCardType* MASTERCARD = new CreditCardType("MasterCard");
 
-    public: CreditCardType* DISCOVER = new CreditCardType("Discover");
-
-    public: CreditCardType* AMERICANEXPRESS = new CreditCardType("AMX");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPEFACTORY_CPP

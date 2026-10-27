@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/security/licensing/InputAutomationClientInformation.h"
+        class InputAutomationClientInformation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationClientInformationFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static InputAutomationClientInformation* instance() { static std::unique_ptr<InputAutomationClientInformation> value(new InputAutomationClientInformation()); return value.get(); }
+    private: static InputAutomationClientInformation* instance_owner();
+    private: static InputAutomationClientInformation* instance;
 
     public: static InputAutomationClientInformation* getInstance();
 
+
+            
+    public: InputAutomationClientInformationFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATIONFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/system/security/licensing/InputAutomationClientInformation.h")
+#include "org/allbinary/logic/system/security/licensing/InputAutomationClientInformation.h"
+#endif
+
+        #endif
+    

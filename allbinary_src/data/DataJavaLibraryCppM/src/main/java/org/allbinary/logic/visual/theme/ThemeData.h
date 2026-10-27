@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThemeData
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThemeData* instance() { static std::unique_ptr<ThemeData> value(new ThemeData()); return value.get(); }
+    private: static ThemeData* instance_owner();
+    private: static ThemeData* instance;
 
     public: static ThemeData* getInstance();
 
@@ -72,3 +82,10 @@ private: ThemeData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEDATA_H_COMPLETE
+        
+        #endif
+    

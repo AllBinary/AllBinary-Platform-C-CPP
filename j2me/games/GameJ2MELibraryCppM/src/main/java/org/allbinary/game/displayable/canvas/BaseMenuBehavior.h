@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEMENUBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEMENUBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
+class DisplayChangeEvent;
+class NullPaintable;
 
 
 
@@ -55,16 +56,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+        class AllBinaryGameCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseMenuBehavior
-            : public Object
+            : public virtual Object
          {
 
-    private: static BaseMenuBehavior* instance() { static std::unique_ptr<BaseMenuBehavior> value(new BaseMenuBehavior()); return value.get(); }
+    private: static BaseMenuBehavior* instance_owner();
+    private: static BaseMenuBehavior* instance;
 
     public: static BaseMenuBehavior* getInstance();
 
+
+            
+    public: BaseMenuBehavior();
+        
                 //@Throws(Exception.constructor)
             
     public: void onDisplayChangeEvent(AllBinaryGameCanvas* allBinaryGameCanvas, DisplayChangeEvent* displayChangeEvent);
@@ -91,3 +101,19 @@ class BaseMenuBehavior
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEMENUBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEMENUBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEMENUBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>)
+#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h")
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontInventoryStatisticsData
-            : public Object
-         {
+auto StoreFrontInventoryStatisticsData::instance_owner() -> StoreFrontInventoryStatisticsData* { static std::unique_ptr<StoreFrontInventoryStatisticsData> value(new StoreFrontInventoryStatisticsData()); return value.get(); }
+StoreFrontInventoryStatisticsData* StoreFrontInventoryStatisticsData::instance = StoreFrontInventoryStatisticsData::instance_owner();
 
-    private: static StoreFrontInventoryStatisticsData* instance() { static std::unique_ptr<StoreFrontInventoryStatisticsData> value(new StoreFrontInventoryStatisticsData()); return value.get(); }
-
-    public: static StoreFrontInventoryStatisticsData* getInstance(){
+    auto StoreFrontInventoryStatisticsData::getInstance() -> StoreFrontInventoryStatisticsData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontInventoryStatisticsData::instance();
+                        return StoreFrontInventoryStatisticsData::instance;
     
 }
 
 
-private: StoreFrontInventoryStatisticsData(){
+StoreFrontInventoryStatisticsData::StoreFrontInventoryStatisticsData(){
 }
 
 
-    public: const std::string NAME = "STOREFRONT_INVENTORY_STATISTICS_NAME";
 
-    public: const std::string NUMBEROFITEMS = "STOREFRONT_INVENTORY_STATISTICS_NUMBER_OF_ITEMS";
 
-    public: const std::string TOTALVALUE = "STOREFRONT_INVENTORY_STATISTICS_TOTAL_VALUE";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSDATA_CPP

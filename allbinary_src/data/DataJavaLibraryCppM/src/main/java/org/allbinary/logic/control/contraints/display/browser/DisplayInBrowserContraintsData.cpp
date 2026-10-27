@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DisplayInBrowserContraintsData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "DISPLAYBROWSERCONSTRAINTS_NAME";
-
-    public: static inline const std::string FRAMEABLE = "DISPLAYBROWSERCONSTRAINTS_FRAMEABLE";
-
-    public: static inline const std::string MOUNTABLE = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLE";
-
-    public: static inline const std::string QUICKFRAMEABLE = "DISPLAYBROWSERCONSTRAINTS_QUICKFRAMEABLE";
-
-    public: static inline const std::string MOUNTABLELINK = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLELINK";
-
-private: DisplayInBrowserContraintsData(){
+DisplayInBrowserContraintsData::DisplayInBrowserContraintsData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/drop/DropLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,35 +67,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DropLayerFactory
-            : public Object
-         {
+auto DropLayerFactory::DROP_LAYER_FACTORY_owner() -> DropLayerFactory* { static std::unique_ptr<DropLayerFactory> value(new DropLayerFactory()); return value.get(); }
+DropLayerFactory* DropLayerFactory::DROP_LAYER_FACTORY = DropLayerFactory::DROP_LAYER_FACTORY_owner();
 
-    private: static DropLayerFactory* DROP_LAYER_FACTORY() { static std::unique_ptr<DropLayerFactory> value(new DropLayerFactory()); return value.get(); }
-
-    public: static DropLayerFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropLayerFactory::DROP_LAYER_FACTORY();
-    
+DropLayerFactory::DropLayerFactory() : list(new BasicArrayListD()), basicArrayListUtil(BasicArrayListUtil::getInstance()){
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: DropLayerFactory(){
-}
-
-
-    public: void clear(){
+    auto DropLayerFactory::clear() -> void{
 this->list->clear();
     
 }
 
 
-    public: int32_t getSize(){
+    auto DropLayerFactory::getInstance() -> DropLayerFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return DropLayerFactory::DROP_LAYER_FACTORY;
+    
+}
+
+
+    auto DropLayerFactory::getSize() -> int32_t{
 
 
 
@@ -95,9 +100,7 @@ this->list->clear();
 }
 
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    public: PickedUpLayerInterfaceFactoryInterface* getRandomInstance(){
+    auto DropLayerFactory::getRandomInstance() -> PickedUpLayerInterfaceFactoryInterface*{
 
 
 
@@ -107,13 +110,13 @@ this->list->clear();
 }
 
 
-    public: void add(PickedUpLayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+    auto DropLayerFactory::add(PickedUpLayerInterfaceFactoryInterface* layerInterfaceFactoryInterface) -> void{
 this->list->add(layerInterfaceFactoryInterface);
     
 }
 
 
-    public: BasicArrayList* getList(){
+    auto DropLayerFactory::getList() -> BasicArrayList*{
 
 
 
@@ -123,7 +126,6 @@ this->list->add(layerInterfaceFactoryInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERFACTORY_CPP

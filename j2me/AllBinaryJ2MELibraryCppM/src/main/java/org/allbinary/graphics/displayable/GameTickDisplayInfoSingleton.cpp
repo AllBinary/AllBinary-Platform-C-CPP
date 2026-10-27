@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/GameTickDisplayInfoSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,33 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 
-class GameTickDisplayInfoSingleton
-            : public Object
-         {
 
-    private: static GameTickDisplayInfoSingleton* instance() { static std::unique_ptr<GameTickDisplayInfoSingleton> value(new GameTickDisplayInfoSingleton()); return value.get(); }
+GameTickDisplayInfoSingleton::GameTickDisplayInfoSingleton() : displayInfoSingleton(DisplayInfoSingleton::getInstance()), lastWidth(this->displayInfoSingleton->getLastWidth()), lastHeight(this->displayInfoSingleton->getLastHeight()), lastHalfWidth(this->displayInfoSingleton->getLastHalfWidth()), lastHalfHeight(this->displayInfoSingleton->getLastHalfHeight()) {
+        }
+        auto GameTickDisplayInfoSingleton::instance_owner() -> GameTickDisplayInfoSingleton* { static std::unique_ptr<GameTickDisplayInfoSingleton> value(new GameTickDisplayInfoSingleton()); return value.get(); }
+GameTickDisplayInfoSingleton* GameTickDisplayInfoSingleton::instance = GameTickDisplayInfoSingleton::instance_owner();
 
-    public: static GameTickDisplayInfoSingleton* getInstance(){
+    auto GameTickDisplayInfoSingleton::getInstance() -> GameTickDisplayInfoSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameTickDisplayInfoSingleton::instance();
+                        return GameTickDisplayInfoSingleton::instance;
     
 }
 
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: int32_t lastWidth = this->displayInfoSingleton->getLastWidth();
-
-    private: int32_t lastHeight = this->displayInfoSingleton->getLastHeight();
-
-    private: int32_t lastHalfWidth = this->displayInfoSingleton->getLastHalfWidth();
-
-    private: int32_t lastHalfHeight = this->displayInfoSingleton->getLastHalfHeight();
-
-    public: void update(){
+    auto GameTickDisplayInfoSingleton::update() -> void{
 this->lastWidth= this->displayInfoSingleton->getLastWidth();
     
 this->lastHeight= this->displayInfoSingleton->getLastHeight();
@@ -84,7 +84,7 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 }
 
 
-    public: int32_t getLastWidth(){
+    auto GameTickDisplayInfoSingleton::getLastWidth() -> int32_t{
 
 
 
@@ -94,7 +94,7 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 }
 
 
-    public: int32_t getLastHeight(){
+    auto GameTickDisplayInfoSingleton::getLastHeight() -> int32_t{
 
 
 
@@ -104,7 +104,7 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 }
 
 
-    public: int32_t getLastHalfWidth(){
+    auto GameTickDisplayInfoSingleton::getLastHalfWidth() -> int32_t{
 
 
 
@@ -114,7 +114,7 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 }
 
 
-    public: int32_t getLastHalfHeight(){
+    auto GameTickDisplayInfoSingleton::getLastHalfHeight() -> int32_t{
 
 
 
@@ -124,7 +124,6 @@ this->lastHalfHeight= this->displayInfoSingleton->getLastHalfHeight();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_CPP

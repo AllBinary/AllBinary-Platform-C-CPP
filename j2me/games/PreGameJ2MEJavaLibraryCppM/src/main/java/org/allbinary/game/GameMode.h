@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_GAMEMODE_H
         #define ORG_ALLBINARY_GAME_GAMEMODE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -51,17 +54,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameMode
-            : public Object
+            : public virtual Object
          {
 
-    public: static GameMode* NONE() { static std::unique_ptr<GameMode> value(new GameMode(StringUtil::getInstance()->NULL_STRING)); return value.get(); }
+    private: static GameMode* NONE_owner();
+    public: static GameMode* NONE;
 
-    public: static GameMode* SERVER() { static std::unique_ptr<GameMode> value(new GameMode("Server")); return value.get(); }
+    private: static GameMode* SERVER_owner();
+    public: static GameMode* SERVER;
 
-    public: static GameMode* CLIENT() { static std::unique_ptr<GameMode> value(new GameMode("Client")); return value.get(); }
+    private: static GameMode* CLIENT_owner();
+    public: static GameMode* CLIENT;
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string name;
 
 private: GameMode(std::string name);
 
@@ -77,3 +87,13 @@ private: GameMode(std::string name);
 
 
         #endif //ORG_ALLBINARY_GAME_GAMEMODE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_GAMEMODE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_GAMEMODE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

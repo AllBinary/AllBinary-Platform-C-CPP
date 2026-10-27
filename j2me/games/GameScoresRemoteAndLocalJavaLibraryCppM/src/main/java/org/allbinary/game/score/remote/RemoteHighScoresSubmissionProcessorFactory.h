@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESSUBMISSIONPROCESSORFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESSUBMISSIONPROCESSORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,20 +52,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/score/remote/RemoteHighScoresSubmissionProcessor.h"
-#include "org/allbinary/game/score/remote/RemoteHighScoresSubmissionProcessorInterface.h"
+        class RemoteHighScoresSubmissionProcessor;
+class RemoteHighScoresSubmissionProcessorInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RemoteHighScoresSubmissionProcessorFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline RemoteHighScoresSubmissionProcessorInterface* SINGLETON = new RemoteHighScoresSubmissionProcessor();
+    private: static RemoteHighScoresSubmissionProcessorInterface* SINGLETON;
 
     public: static RemoteHighScoresSubmissionProcessorInterface* getInstance();
 
+
+            
+    public: RemoteHighScoresSubmissionProcessorFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESSUBMISSIONPROCESSORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESSUBMISSIONPROCESSORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESSUBMISSIONPROCESSORFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/score/remote/RemoteHighScoresSubmissionProcessor.h")
+#include "org/allbinary/game/score/remote/RemoteHighScoresSubmissionProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/score/remote/RemoteHighScoresSubmissionProcessorInterface.h")
+#include "org/allbinary/game/score/remote/RemoteHighScoresSubmissionProcessorInterface.h"
+#endif
+
+        #endif
+    

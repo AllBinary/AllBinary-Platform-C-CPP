@@ -20,6 +20,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENT_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,12 +33,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
 
 
 
@@ -53,6 +54,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CapitalEvent: public AllBinaryEventObject {
 
     private: int32_t value= 0;
@@ -71,3 +76,16 @@ public: CapitalEvent(Object* anyType);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+
+        #endif
+    

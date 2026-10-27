@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_INVENTORYDBINITINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_INVENTORYDBINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/db/InventoryDbInitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbInitInfo.h"
 
-class InventoryDbInitInfo: public DbInitInfo {
 
-    private: static inline const std::string INITFILE = "inventorydbinitdata.dat";
-
-public: InventoryDbInitInfo() : DbInitInfo(INITFILE, true){
+InventoryDbInitInfo::InventoryDbInitInfo() : DbInitInfo(INITFILE, true){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +65,7 @@ public: InventoryDbInitInfo() : DbInitInfo(INITFILE, true){
 }
 
 
-public: InventoryDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
+InventoryDbInitInfo::InventoryDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +75,6 @@ public: InventoryDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_INVENTORYDBINITINFO_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_COMBATBASEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_COMBATBASEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/CombatBaseBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CombatBaseBehavior
-            : public Object
-         {
+auto CombatBaseBehavior::NULL_COMBAT_BEHAVIOR_owner() -> CombatBaseBehavior* { static std::unique_ptr<CombatBaseBehavior> value(new CombatBaseBehavior(DamageableBaseBehavior::getInstance(), DestroyableBaseBehavior::getInstance())); return value.get(); }
+CombatBaseBehavior* CombatBaseBehavior::NULL_COMBAT_BEHAVIOR = CombatBaseBehavior::NULL_COMBAT_BEHAVIOR_owner();
 
-    public: static CombatBaseBehavior* NULL_COMBAT_BEHAVIOR() { static std::unique_ptr<CombatBaseBehavior> value(new CombatBaseBehavior(DamageableBaseBehavior::getInstance(), DestroyableBaseBehavior::getInstance())); return value.get(); }
-
-    private: DamageableBaseBehavior* damageableBaseBehavior;
-
-    private: DestroyableBaseBehavior* destroyableBaseBehavior;
-
-    private: bool readyForExplosion= false;
-
-public: CombatBaseBehavior(DamageableBaseBehavior* damageableBaseBehavior, DestroyableBaseBehavior* destroyableBaseBehavior){
+CombatBaseBehavior::CombatBaseBehavior(DamageableBaseBehavior* damageableBaseBehavior, DestroyableBaseBehavior* destroyableBaseBehavior){
 this->damageableBaseBehavior= damageableBaseBehavior;
     
 this->destroyableBaseBehavior= destroyableBaseBehavior;
@@ -71,7 +72,7 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 }
 
 
-    public: DamageableBaseBehavior* getDamageableBaseBehavior(){
+    auto CombatBaseBehavior::getDamageableBaseBehavior() -> DamageableBaseBehavior*{
 
 
 
@@ -81,7 +82,7 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 }
 
 
-    public: DestroyableBaseBehavior* getDestroyableBaseBehavior(){
+    auto CombatBaseBehavior::getDestroyableBaseBehavior() -> DestroyableBaseBehavior*{
 
 
 
@@ -91,7 +92,7 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 }
 
 
-    public: bool isReadyForExplosion(){
+    auto CombatBaseBehavior::isReadyForExplosion() -> bool{
 
 
 
@@ -101,13 +102,12 @@ this->destroyableBaseBehavior= destroyableBaseBehavior;
 }
 
 
-    public: void setReadyForExplosion(bool readyForExplosion){
+    auto CombatBaseBehavior::setReadyForExplosion(bool readyForExplosion) -> void{
 this->readyForExplosion= readyForExplosion;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_COMBATBASEBEHAVIOR_CPP

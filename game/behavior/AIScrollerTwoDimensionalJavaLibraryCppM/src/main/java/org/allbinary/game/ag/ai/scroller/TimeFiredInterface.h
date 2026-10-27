@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeFiredInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class TimeFiredInterface
+            : public virtual Object
+         {
 
     public: virtual int64_t getLastFireTime() = 0;
 
@@ -56,3 +67,10 @@ class TimeFiredInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_H_COMPLETE
+        
+        #endif
+    

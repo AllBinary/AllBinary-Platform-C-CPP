@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_API3_SHOWVIRTUALKEYBOARDRUNNABLE_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_API3_SHOWVIRTUALKEYBOARDRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/api3/ShowVirtualKeyboardRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,21 +83,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShowVirtualKeyboardRunnable
-            : public Object
-        , public Runnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Activity* activity;
-
-public: ShowVirtualKeyboardRunnable(Activity* activity){
+ShowVirtualKeyboardRunnable::ShowVirtualKeyboardRunnable(Activity* activity) : logUtil(LogUtil::getInstance()){
 this->activity= activity;
     
 }
 
 
-    public: void run(){
+    auto ShowVirtualKeyboardRunnable::run() -> void{
 
         try {
             
@@ -126,7 +129,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_API3_SHOWVIRTUALKEYBOARDRUNNABLE_CPP

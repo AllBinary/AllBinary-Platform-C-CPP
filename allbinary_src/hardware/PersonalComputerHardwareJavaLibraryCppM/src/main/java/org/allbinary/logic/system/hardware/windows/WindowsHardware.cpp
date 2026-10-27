@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/windows/WindowsHardware.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -107,41 +117,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WindowsHardware
-            : public Object
-        , public HardwareInterface {
 
-    private: BasicArrayList* componentInterfaceVector;
-
-    private: BasicArrayList* videoInterfaceVector;
-
-    private: BasicArrayList* hardDriveControllerInterfaceVector;
-
-    private: BasicArrayList* cpuInterfaceVector;
-
-    private: BasicArrayList* usbInterfaceVector;
-
-    private: BasicArrayList* ethernetInterfaceVector;
-
-    private: BasicArrayList* multimediaInterfaceVector;
-
-    private: BasicArrayList* fireWireInterfaceVector;
-
-    private: BasicArrayList* bridgeInterfaceVector;
-
-    private: BasicArrayList* hardDriveInterfaceVector;
-
-    private: BasicArrayList* macInterfaceVector;
-
-    private: BasicArrayList* monitorInterfaceVector;
-
-    private: const std::string NAME = "Windows Hardware Profile";
-
-    private: const int32_t MINHARDWARE = 0;
-
-    private: ComponentFactory* componentFactory = ComponentFactory::getInstance();
-
-public: WindowsHardware(){
+WindowsHardware::WindowsHardware() : componentFactory(ComponentFactory::getInstance()){
 
         try {
             this->componentInterfaceVector= new BasicArrayListD();
@@ -171,7 +148,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 
                         if(this->componentInterfaceVector->size() < this->MINHARDWARE)
                         
-                                    throw new Exception("Not Enough Data For A Valid License On Windows");
+                                    throw Exception("Not Enough Data For A Valid License On Windows");
                                 
 
                 //: 
@@ -187,94 +164,94 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    private: std::string getComponentType(std::string component){
+    auto WindowsHardware::getComponentType(std::string component) -> std::string{
 
-                        if(JavaString::indexOf(component, this->componentFactory->ETHERNET.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->ETHERNET->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->ETHERNET.toString();;
+                        return this->componentFactory->ETHERNET->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->BRIDGE.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->BRIDGE->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->BRIDGE.toString();;
+                        return this->componentFactory->BRIDGE->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->IDE.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->IDE->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->IDE.toString();;
+                        return this->componentFactory->IDE->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->MULTIMEDIA.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->MULTIMEDIA->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->MULTIMEDIA.toString();;
+                        return this->componentFactory->MULTIMEDIA->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->SCSI.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->SCSI->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->SCSI.toString();;
+                        return this->componentFactory->SCSI->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->USB.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->USB->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->USB.toString();;
+                        return this->componentFactory->USB->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->VGA.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->VGA->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->VGA.toString();;
+                        return this->componentFactory->VGA->toString();;
     
 
                                     }
@@ -285,7 +262,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: MediaInterface* getMultimedia(int32_t index){
+    auto WindowsHardware::getMultimedia(int32_t index) -> MediaInterface*{
 
 
 
@@ -295,7 +272,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: BridgeInterface* getBridge(int32_t index){
+    auto WindowsHardware::getBridge(int32_t index) -> BridgeInterface*{
 
 
 
@@ -305,7 +282,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: CpuInterface* getCpu(int32_t index){
+    auto WindowsHardware::getCpu(int32_t index) -> CpuInterface*{
 
 
 
@@ -315,7 +292,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: EthernetInterface* getEthernet(int32_t index){
+    auto WindowsHardware::getEthernet(int32_t index) -> EthernetInterface*{
 
 
 
@@ -325,7 +302,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: FireWireInterface* getFireWire(int32_t index){
+    auto WindowsHardware::getFireWire(int32_t index) -> FireWireInterface*{
 
 
 
@@ -335,7 +312,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: HardDriveControllerInterface* getHardDriveController(int32_t index){
+    auto WindowsHardware::getHardDriveController(int32_t index) -> HardDriveControllerInterface*{
 
 
 
@@ -345,7 +322,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: HardDriveInterface* getHardDrive(int32_t index){
+    auto WindowsHardware::getHardDrive(int32_t index) -> HardDriveInterface*{
 
 
 
@@ -355,7 +332,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: MachineAccessControlAddressInterface* getMachineAccessControlAddress(int32_t index){
+    auto WindowsHardware::getMachineAccessControlAddress(int32_t index) -> MachineAccessControlAddressInterface*{
 
 
 
@@ -365,7 +342,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: MonitorInterface* getMonitor(int32_t index){
+    auto WindowsHardware::getMonitor(int32_t index) -> MonitorInterface*{
 
 
 
@@ -375,7 +352,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: UsbInterface* getUsb(int32_t index){
+    auto WindowsHardware::getUsb(int32_t index) -> UsbInterface*{
 
 
 
@@ -385,7 +362,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: VideoInterface* getVideo(int32_t index){
+    auto WindowsHardware::getVideo(int32_t index) -> VideoInterface*{
 
 
 
@@ -395,7 +372,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: HardwareComponentInterface* getComponent(int32_t index){
+    auto WindowsHardware::getComponent(int32_t index) -> HardwareComponentInterface*{
 
 
 
@@ -405,7 +382,7 @@ this->monitorInterfaceVector= new BasicArrayListD();
 }
 
 
-    public: std::string toString(){
+    auto WindowsHardware::toString() -> std::string{
 
     StringMaker* hardwareBuffer = new StringMaker();;
     
@@ -437,7 +414,7 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: bool compareTo(HardwareInterface* hardwareInterface){
+    auto WindowsHardware::compareTo(HardwareInterface* hardwareInterface) -> bool{
 
 
 
@@ -447,7 +424,7 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
+    auto WindowsHardware::difference(HardwareInterface* hardwareInterface) -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -457,7 +434,6 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_CPP

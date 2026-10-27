@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_SYSTEM_MEMORY_H
         #define ORG_ALLBINARY_SYSTEM_MEMORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Runtime.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -52,16 +55,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //ActualPlatform
 /*actual*/ class Memory
-            : public Object
+            : public virtual Object
          {
 
     /*actual*/ public: static std::string getInfo();
 
+
+            
+    public: Memory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_SYSTEM_MEMORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_SYSTEM_MEMORY_H_COMPLETE)
+        #define ORG_ALLBINARY_SYSTEM_MEMORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

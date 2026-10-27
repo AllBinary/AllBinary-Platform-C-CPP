@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
+class Canvas;
+class CommonPhoneStrings;
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CanvasUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static std::string getKeyName(int32_t key);
@@ -68,3 +73,16 @@ private: CanvasUtil();
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+
+        #endif
+    

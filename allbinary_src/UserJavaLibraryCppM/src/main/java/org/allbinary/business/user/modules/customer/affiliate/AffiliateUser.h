@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,17 +35,9 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/advertisement/affiliate/sales/AffiliateSales.h>
-
-      
+class AffiliateSales;
 #include <org/allbinary/business/user/modules/User.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>
-
-      
+class WeblisketSessionInterface;
 
 
 
@@ -59,6 +56,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class AffiliateUser: public User {
 
@@ -80,3 +81,22 @@ public: AffiliateUser(HashMap<Object*, Object*>* userHashMap);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/affiliate/sales/AffiliateSales.h>)
+#include <org/allbinary/business/advertisement/affiliate/sales/AffiliateSales.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/User.h>)
+#include <org/allbinary/business/user/modules/User.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>
+#endif
+
+        #endif
+    

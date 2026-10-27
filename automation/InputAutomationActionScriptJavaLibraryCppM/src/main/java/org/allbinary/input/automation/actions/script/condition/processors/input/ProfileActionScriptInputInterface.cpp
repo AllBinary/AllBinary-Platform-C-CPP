@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,17 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ProfileActionScriptInputInterface: public ProfileActionScriptProcessorInterface {
+//Interface - declared in the header
 
-    public: virtual void setInputRobotInterface(InputRobotInterface* inputRobotInterface) = 0;
 
-    public: virtual InputRobotInterface* getInputRobotInterface() = 0;
 
-    public: virtual int32_t getTime() = 0;
-
-    public: virtual void setTime(int32_t time) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTINTERFACE_CPP

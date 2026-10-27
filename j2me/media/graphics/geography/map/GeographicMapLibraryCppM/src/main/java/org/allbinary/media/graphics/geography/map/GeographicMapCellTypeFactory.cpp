@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,27 +63,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
 
-class GeographicMapCellTypeFactory
-            : public Object
-         {
 
-    private: static GeographicMapCellTypeFactory* instance() { static std::unique_ptr<GeographicMapCellTypeFactory> value(new GeographicMapCellTypeFactory()); return value.get(); }
+GeographicMapCellTypeFactory::GeographicMapCellTypeFactory() : logUtil(LogUtil::getInstance()), geographicMapCellTypeArray(std::vector<GeographicMapCellType*>(512)) {
+        }
+        auto GeographicMapCellTypeFactory::instance_owner() -> GeographicMapCellTypeFactory* { static std::unique_ptr<GeographicMapCellTypeFactory> value(new GeographicMapCellTypeFactory()); return value.get(); }
+GeographicMapCellTypeFactory* GeographicMapCellTypeFactory::instance = GeographicMapCellTypeFactory::instance_owner();
 
-    public: static GeographicMapCellTypeFactory* getInstance(){
+    auto GeographicMapCellTypeFactory::getInstance() -> GeographicMapCellTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapCellTypeFactory::instance();
+                        return GeographicMapCellTypeFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::vector<GeographicMapCellType*> geographicMapCellTypeArray = std::vector<GeographicMapCellType*>(512);
-
-    public: GeographicMapCellType* get(int32_t type){
+    auto GeographicMapCellTypeFactory::get(int32_t type) -> GeographicMapCellType*{
 
 
 
@@ -83,7 +89,7 @@ class GeographicMapCellTypeFactory
 }
 
 
-    public: std::vector<GeographicMapCellType*> getGeographicMapCellTypeArray(){
+    auto GeographicMapCellTypeFactory::getGeographicMapCellTypeArray() -> std::vector<GeographicMapCellType*>{
 
 
 
@@ -93,43 +99,42 @@ class GeographicMapCellTypeFactory
 }
 
 
-    public: int32_t getStartType(){
+    auto GeographicMapCellTypeFactory::getStartType() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getEndType(){
+    auto GeographicMapCellTypeFactory::getEndType() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getEmptyType(){
+    auto GeographicMapCellTypeFactory::getEmptyType() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isPath(GeographicMapCellType* cellType){
+    auto GeographicMapCellTypeFactory::isPath(GeographicMapCellType* cellType) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_CPP

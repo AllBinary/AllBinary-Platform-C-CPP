@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,50 +37,20 @@
             #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/init/db/UserDbInitInfo.h>
-
-      
-#include <org/allbinary/business/user/UserData.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/order/OrderData.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeysFactory.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResult.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class EntryData;
+class UserDbInitInfo;
+class UserData;
+class OrderData;
+class PaymentTransactionKeysFactory;
+class TransactionResult;
+class TransactionResultInterface;
+class StdUtil;
+class LogUtil;
 #include <org/allbinary/logic/communication/sql/AbSqlBean.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -96,9 +71,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntityInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransactionResultEntity: public AbSqlBean, public TransactionResultEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: const std::string tableName = "vresults";
 
@@ -122,3 +101,58 @@ public: TransactionResultEntity();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_H_COMPLETE
+        #if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/UserDbInitInfo.h>)
+#include <org/allbinary/business/init/db/UserDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserData.h>)
+#include <org/allbinary/business/user/UserData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderData.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeysFactory.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeysFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResult.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResult.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/AbSqlBean.h>)
+#include <org/allbinary/logic/communication/sql/AbSqlBean.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntityInterface.h")
+#include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntityInterface.h"
+#endif
+
+        #endif
+    

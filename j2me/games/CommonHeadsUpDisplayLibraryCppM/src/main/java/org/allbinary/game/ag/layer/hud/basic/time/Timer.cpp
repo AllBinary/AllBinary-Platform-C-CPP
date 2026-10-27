@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/time/Timer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,29 +69,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Timer
-            : public Object
-         {
 
-    private: int64_t startTime =  -1;
-
-    private: int64_t hundredthTime= 0;
-
-    private: int64_t maxTime;
-
-    private: int64_t modifier= 0;
-
-    private: std::vector<char> hundrethsString = PrimitiveLongSingleton::getInstance()->ZERO;
-
-    private: int32_t totalDigits = 1;
-
-    private: PrimitiveLongUtil* primitiveLongUtil;
-
-    private: const std::vector<char> MAX = ['L','O','L'];
-
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-public: Timer(int32_t maxTime){
+Timer::Timer(int32_t maxTime) : hundrethsString(PrimitiveLongSingleton::getInstance()->ZERO), MAX({'L','O','L'}), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()){
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(maxTime);
     
 this->maxTime= maxTime;
@@ -89,7 +78,7 @@ this->maxTime= maxTime;
 }
 
 
-    public: void start(){
+    auto Timer::start() -> void{
 this->hundredthTime= 0;
     
 this->startTime= this->gameTickTimeDelayHelper->startTime;
@@ -97,7 +86,7 @@ this->startTime= this->gameTickTimeDelayHelper->startTime;
 }
 
 
-    public: int64_t get(){
+    auto Timer::get() -> int64_t{
 
 
 
@@ -107,7 +96,7 @@ this->startTime= this->gameTickTimeDelayHelper->startTime;
 }
 
 
-    public: void update(){
+    auto Timer::update() -> void{
 
     int64_t lastLowerTime = this->hundredthTime;;
     
@@ -155,19 +144,19 @@ this->totalDigits= this->primitiveLongUtil->getCurrentTotalDigits();
 }
 
 
-    public: void reduce(int32_t value){
+    auto Timer::reduce(int32_t value) -> void{
 this->modifier -= value;
     
 }
 
 
-    public: void add(int32_t value){
+    auto Timer::add(int32_t value) -> void{
 this->modifier += value;
     
 }
 
 
-    public: std::vector<char> getTimeChars(){
+    auto Timer::getTimeChars() -> std::vector<char>{
 
 
 
@@ -177,7 +166,7 @@ this->modifier += value;
 }
 
 
-    public: int32_t getCurrentTotalDigits(){
+    auto Timer::getCurrentTotalDigits() -> int32_t{
 
 
 
@@ -187,7 +176,6 @@ this->modifier += value;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,13 +72,12 @@
         #include "org/allbinary/graphics/canvas/transition/progress/AndroidBasicTitleProgressBar.h"
 #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
-class ProgressCanvasFactory
-            : public Object
-         {
 
-    private: static inline Object* PROGRESS_FORM_SCREEN = NullUtil::getInstance()->NULL_OBJECT;
+ProgressCanvasFactory::ProgressCanvasFactory() {
+        }
+        Object* ProgressCanvasFactory::PROGRESS_FORM_SCREEN = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static ProgressCanvas* getInstance(){
+    auto ProgressCanvasFactory::getInstance() -> ProgressCanvas*{
 
                         if(ProgressCanvasFactory::PROGRESS_FORM_SCREEN == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -87,7 +96,7 @@ class ProgressCanvasFactory
 }
 
 
-    public: static PaintableInterface* getLazyInstance(){
+    auto ProgressCanvasFactory::getLazyInstance() -> PaintableInterface*{
 
 
 
@@ -97,7 +106,6 @@ class ProgressCanvasFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVASFACTORY_CPP

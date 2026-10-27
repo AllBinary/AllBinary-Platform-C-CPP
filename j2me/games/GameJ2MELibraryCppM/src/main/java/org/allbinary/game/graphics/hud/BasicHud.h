@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUD_H
         #define ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUD_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,63 +38,25 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/J2MEUtil.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorSetUtil.h>
-
-      
-#include <org/allbinary/graphics/displayable/CanvasStrings.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Graphics;
+class J2MEUtil;
+class Anchor;
+class GPoint;
+class PointFactory;
+class BasicColor;
+class BasicColorFactory;
+class BasicColorSetUtil;
+class CanvasStrings;
+class DisplayInfoSingleton;
+class DisplayChangeEvent;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class UpdateMyFontProcessor;
+class ForcedLogUtil;
+class LogUtil;
+class AllBinaryEventObject;
+class EventStrings;
+class CommonStrings;
 
 
 
@@ -108,26 +75,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/graphics/hud/HudGraphicsPosition.h"
-#include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
+        class HudGraphicsPosition;
+class BasicHudFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicHud
-            : public Object
+            : public virtual Object
         , public UpdateMyFontInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
+    /*protected*/ public: CanvasStrings* canvasStrings;
 
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
+    /*protected*/ public: BasicColorSetUtil* basicSetColorUtil;
 
-    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfo;
 
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    /*protected*/ public: MyFontProcessor* updateMyFontProcessor;
 
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    /*protected*/ public: MyFontProcessor* myFontProcessor;
 
     private: int32_t location= 0;
 
@@ -137,21 +108,21 @@ class BasicHud
 
     private: int32_t bufferZoneY= 0;
 
-    private: HudGraphicsPosition* hudGraphicsPosition = HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION;
+    private: HudGraphicsPosition* hudGraphicsPosition;
 
     private: int32_t x= 0;
 
     private: int32_t y= 0;
 
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
+    private: BasicColor* basicColor;
 
     private: int32_t color;
 
-    protected: int32_t updateMaxWidth= 0;
+    /*protected*/ public: int32_t updateMaxWidth= 0;
 
-    protected: int32_t updateMaxHeight= 0;
+    /*protected*/ public: int32_t updateMaxHeight= 0;
 
-    protected: int32_t offsetY= 0;
+    /*protected*/ public: int32_t offsetY= 0;
 
 public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor);
 
@@ -163,13 +134,13 @@ public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicC
 
                 //@Throws(Exception.constructor)
             
-    protected: HudGraphicsPosition* getHudGraphicsPositionWH(int32_t width, int32_t height, int32_t maxWidth, int32_t maxHeight);
+    /*protected*/ public: HudGraphicsPosition* getHudGraphicsPositionWH(int32_t width, int32_t height, int32_t maxWidth, int32_t maxHeight);
 
     public: void onEvent(AllBinaryEventObject* eventObject);
 
     public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent);
 
-    protected: GPoint* getPoint(int32_t x, int32_t y);
+    /*protected*/ public: GPoint* getPoint(int32_t x, int32_t y);
 
     public: int32_t getBufferZone();
 
@@ -179,7 +150,7 @@ public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicC
 
     public: void setDirection(int32_t direction);
 
-    protected: HudGraphicsPosition* getHudGraphicsPosition();
+    /*protected*/ public: HudGraphicsPosition* getHudGraphicsPosition();
 
     public: int32_t getColor();
 
@@ -191,9 +162,9 @@ public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicC
 
     public: BasicColor* getBasicColorP();
 
-    protected: void setY(int32_t y);
+    /*protected*/ public: void setY(int32_t y);
 
-    protected: int32_t getY();
+    /*protected*/ public: int32_t getY();
 
     public: void paintSSO(Graphics* graphics, std::string string, std::string string2, int32_t offset);
 
@@ -213,3 +184,73 @@ public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicC
 
 
         #endif //ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUD_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUD_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUD_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/J2MEUtil.h>)
+#include <org/allbinary/J2MEUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorSetUtil.h>)
+#include <org/allbinary/graphics/color/BasicColorSetUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/CanvasStrings.h>)
+#include <org/allbinary/graphics/displayable/CanvasStrings.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>)
+#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/graphics/hud/HudGraphicsPosition.h")
+#include "org/allbinary/game/graphics/hud/HudGraphicsPosition.h"
+#endif
+#if __has_include("org/allbinary/game/graphics/hud/BasicHudFactory.h")
+#include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
+#endif
+
+        #endif
+    

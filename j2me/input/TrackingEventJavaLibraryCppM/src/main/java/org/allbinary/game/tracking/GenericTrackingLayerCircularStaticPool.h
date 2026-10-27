@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_GENERICTRACKINGLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_TRACKING_GENERICTRACKINGLAYERCIRCULARSTATICPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
-
-      
 
 
 
@@ -49,9 +52,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GenericTrackingLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-    private: static GenericTrackingLayerCircularStaticPool* SINGLETON() { static std::unique_ptr<GenericTrackingLayerCircularStaticPool> value(new GenericTrackingLayerCircularStaticPool()); return value.get(); }
+    private: static GenericTrackingLayerCircularStaticPool* SINGLETON_owner();
+    private: static GenericTrackingLayerCircularStaticPool* SINGLETON;
 
     public: static GenericTrackingLayerCircularStaticPool* getInstance();
 
@@ -63,3 +71,13 @@ private: GenericTrackingLayerCircularStaticPool();
 
 
         #endif //ORG_ALLBINARY_GAME_TRACKING_GENERICTRACKINGLAYERCIRCULARSTATICPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TRACKING_GENERICTRACKINGLAYERCIRCULARSTATICPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TRACKING_GENERICTRACKINGLAYERCIRCULARSTATICPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayerCircularPool.h>)
+#include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
+#endif
+
+        #endif
+    

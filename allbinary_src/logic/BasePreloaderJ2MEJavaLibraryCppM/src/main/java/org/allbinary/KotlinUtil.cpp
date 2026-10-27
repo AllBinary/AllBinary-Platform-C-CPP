@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_KOTLINUTIL_CPP
+        #define ORG_ALLBINARY_KOTLINUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/KotlinUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,11 +44,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KotlinUtil
-            : public Object
-         {
 
-    public: static bool isKotlin(){
+KotlinUtil::KotlinUtil() {
+        }
+        
+    auto KotlinUtil::isKotlin() -> bool{
 
 
 
@@ -48,7 +58,7 @@ class KotlinUtil
 }
 
 
-    public: static std::string getShortName(){
+    auto KotlinUtil::getShortName() -> std::string{
 
 
 
@@ -58,7 +68,6 @@ class KotlinUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_KOTLINUTIL_CPP

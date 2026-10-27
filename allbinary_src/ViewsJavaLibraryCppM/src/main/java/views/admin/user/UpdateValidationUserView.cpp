@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_USER_UPDATEVALIDATIONUSERVIEW_CPP
+        #define VIEWS_ADMIN_USER_UPDATEVALIDATIONUSERVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/user/UpdateValidationUserView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,13 +85,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpdateValidationUserView: public HttpContextView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: UserInterface* user;
-
-public: UpdateValidationUserView(TransformInfoInterface* transformInfoInterface) : HttpContextView(transformInfoInterface){
+UpdateValidationUserView::UpdateValidationUserView(TransformInfoInterface* transformInfoInterface) : HttpContextView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,7 +98,7 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 }
 
 
-    public: bool isValid(){
+    auto UpdateValidationUserView::isValid() -> bool{
 
         try {
             
@@ -103,10 +108,10 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("User does not exist", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("User does not exist", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -144,10 +149,10 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -163,7 +168,7 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
 }
 
 
-    public: std::string validationInfo(){
+    auto UpdateValidationUserView::validationInfo() -> std::string{
 
         try {
             
@@ -176,7 +181,7 @@ this->user= NewUserFactory::getInstance(transformInfoInterface);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("User does not exist", this, "validationInfo()");
@@ -209,7 +214,7 @@ stringBuffer->append("Unable to update user that does not exist.<br />");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -228,7 +233,7 @@ stringBuffer->append("Unable to update user that does not exist.<br />");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto UpdateValidationUserView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -238,7 +243,7 @@ stringBuffer->append("Unable to update user that does not exist.<br />");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto UpdateValidationUserView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -250,17 +255,16 @@ stringBuffer->append("Unable to update user that does not exist.<br />");
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto UpdateValidationUserView::view() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
+                        return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_USER_UPDATEVALIDATIONUSERVIEW_CPP

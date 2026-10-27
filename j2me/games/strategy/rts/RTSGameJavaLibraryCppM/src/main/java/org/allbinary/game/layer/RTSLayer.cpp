@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -197,11 +207,10 @@
 #include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 #include "org/allbinary/game/layer/SelectionHudPaintable.h"
 
-class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public GameInputInterface, public GameKeyEventSourceInterface, public RTSInterface, public PathFindingLayerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static RTSLayer* createSimulatedInstance(RemoteInfo* remoteInfo){
+    auto RTSLayer::createSimulatedInstance(RemoteInfo* remoteInfo) -> RTSLayer*{
 
     AnimationInterfaceFactoryInterface* nullAnimationInterfaceFactoryInterface = NullAnimationFactory::getFactoryInstance();;
     
@@ -217,124 +226,7 @@ class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public Ga
 }
 
 
-    private: static inline const int32_t id = 0;
-
-    protected: static inline const int32_t MAIN_INDEX = 0;
-
-    protected: static inline const int32_t SECONDARY_INDEX = 1;
-
-    public: static int32_t getMinStaticType(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 1;
-    
-}
-
-
-    public: static int32_t getMaxStaticType(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 4;
-    
-}
-
-
-    public: static bool isRTSLayer(AllBinaryLayer* layerInterface){
-
-                        if(layerInterface->getType() >= RTSLayer::getMinStaticType() && layerInterface->getType() <= RTSLayer::getMaxStaticType())
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-}
-
-
-    protected: const bool debug = true;
-
-    public: const bool showMoreCaptionStates = this->debug;
-
-    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
-
-    public: RTSLayer2LogHelper* rtsLayer2LogHelper = RTSLayer2LogHelper::getInstance();
-
-    public: WaypointLogHelper* waypointLogHelperP = WaypointLogHelper::getInstance();
-
-    public: Waypoint2LogHelper* waypoint2LogHelperP = Waypoint2LogHelper::getInstance();
-
-    public: WaypointRunnableLogHelper* waypointRunnableLogHelperP = WaypointRunnableLogHelper::getInstance();
-
-    private: RTSFormInput* rtsFormInput;
-
-    private: IndexedAnimation* verticleBuildAnimationInterface;
-
-    protected: Animation* rangeAnimation;
-
-    protected: Animation* initRangeAnimation;
-
-    protected: Animation* sensorRangeAnimation;
-
-    protected: Animation* initSensorRangeAnimation;
-
-    protected: Animation* baseAnimationInterface;
-
-    private: TimeDelayHelper* buildFrameTimeHelper = new TimeDelayHelper(50);
-
-    private: Animation* buildAnimationInterface;
-
-    private: Animation* animationInterface;
-
-    protected: IndexedAnimation* initAnimationInterface;
-
-    protected: IndexedAnimation* indexedButShouldBeRotationAnimationInterface;
-
-    protected: IndexedAnimation* emptyAnimationInterface;
-
-    protected: IndexedAnimation* destroyAnimationInterface;
-
-    protected: TimeDelayHelper* fireTimeHelper = new TimeDelayHelper(700);
-
-    private: std::string rootName;
-
-    protected: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    private: const int32_t BUILD_VALUE = 63;
-
-    public: GeographicMapCellPositionAreaBase* geographicMapCellPositionAreaBase;
-
-    private: Health* healthInterface = Health::NULL_HEALTH;
-
-    private: int32_t level = 1;
-
-    private: int32_t maxLevel = 1;
-
-    private: int32_t hackVerticleBuild = this->BUILD_VALUE;
-
-    protected: int32_t slightAngle = 0;
-
-    protected: int32_t percentCompleteP= 0;
-
-    private: bool destroyed = false;
-
-    private: bool selected = false;
-
-protected: RTSLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y, ViewPositionBase* viewPosition) : MultiPlayerGameLayer(remoteInfo, groupInterface, name, rectangle, viewPosition){
+RTSLayer::RTSLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y, ViewPositionBase* viewPosition) : MultiPlayerGameLayer(remoteInfo, groupInterface, name, rectangle, viewPosition), showMoreCaptionStates(this->debug), inputProcessorArray(std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX)), rtsLayer2LogHelper(RTSLayer2LogHelper::getInstance()), waypointLogHelperP(WaypointLogHelper::getInstance()), waypoint2LogHelperP(Waypoint2LogHelper::getInstance()), waypointRunnableLogHelperP(WaypointRunnableLogHelper::getInstance()), buildFrameTimeHelper(new TimeDelayHelper(50)), fireTimeHelper(new TimeDelayHelper(700)), hashtable(StdUtil::getInstance()->createHashtable()), healthInterface(Health::NULL_HEALTH), hackVerticleBuild(this->BUILD_VALUE), rtsLayerUtil(RTSLayerUtil::getInstance()), layerDistanceUtil(LayerDistanceUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -385,8 +277,8 @@ this->geographicMapCellPositionAreaBase= new GeographicMapCellPositionArea(this)
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto RTSLayer::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+MultiPlayerGameLayer::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->allBinaryGameLayerManagerP);;
@@ -409,7 +301,7 @@ this->updateWaypointBehavior(geographicMapInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateWaypointBehavior(BasicGeographicMap* geographicMapInterface){
+    auto RTSLayer::updateWaypointBehavior(BasicGeographicMap* geographicMapInterface) -> void{
 this->geographicMapCellPositionAreaBase->update(geographicMapInterface);
     
 }
@@ -417,7 +309,7 @@ this->geographicMapCellPositionAreaBase->update(geographicMapInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
+    auto RTSLayer::construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface) -> void{
 ViewPositionEventHandler::getInstance()->addListener(dynamic_cast<AllBinaryLayer*>(this));
     
 this->animationInterface= this->buildAnimationInterface;
@@ -427,7 +319,7 @@ this->hackVerticleBuild= 0;
 }
 
 
-    public: void select(){
+    auto RTSLayer::select() -> void{
 this->rangeAnimation= this->initRangeAnimation;
     
 this->sensorRangeAnimation= this->initSensorRangeAnimation;
@@ -437,7 +329,7 @@ this->setSelected(true);
 }
 
 
-    public: void deselect(){
+    auto RTSLayer::deselect() -> void{
 
     Animation* animation = NullAnimationFactory::getFactoryInstance()->getInstance(0);;
     
@@ -450,13 +342,13 @@ this->setSelected(false);
 }
 
 
-    protected: void setSelected(bool selected){
+    auto RTSLayer::setSelected(bool selected) -> void{
 this->selected= selected;
     
 }
 
 
-    public: bool isSelected(){
+    auto RTSLayer::isSelected() -> bool{
 
 
 
@@ -466,7 +358,7 @@ this->selected= selected;
 }
 
 
-    public: int32_t getPercentComplete(){
+    auto RTSLayer::getPercentComplete() -> int32_t{
 
 
 
@@ -476,7 +368,7 @@ this->selected= selected;
 }
 
 
-    public: ScrollSelectionForm* getScrollSelectionForm(){
+    auto RTSLayer::getScrollSelectionForm() -> ScrollSelectionForm*{
 
 
 
@@ -486,7 +378,7 @@ this->selected= selected;
 }
 
 
-    public: void initInputProcessors(){
+    auto RTSLayer::initInputProcessors() -> void{
 GameInputProcessorUtil::init(this->inputProcessorArray);
     
 }
@@ -494,13 +386,13 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void processBuiltTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto RTSLayer::processBuiltTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 this->animationInterface= this->indexedButShouldBeRotationAnimationInterface;
     
 }
 
 
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto RTSLayer::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
         try {
             
@@ -522,7 +414,7 @@ this->animationInterface= this->indexedButShouldBeRotationAnimationInterface;
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "processTick", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "processTick", &e);
     
 }
 
@@ -531,26 +423,26 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "processTick", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager* layerManager){
+    auto RTSLayer::processInput(AllBinaryLayerManager* layerManager) -> void{
 }
 
 
-    protected: void reload(){
+    auto RTSLayer::reload() -> void{
 }
 
 
-    public: void onMovement(TrackingEvent* trackingEvent){
+    auto RTSLayer::onMovement(TrackingEvent* trackingEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onMovementFound(TrackingEvent* trackingEvent){
+    auto RTSLayer::onMovementFound(TrackingEvent* trackingEvent) -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paintFirst(graphics);
+    auto RTSLayer::paint(Graphics* graphics) -> void{
+MultiPlayerGameLayer::paintFirst(graphics);
     
 
     ViewPositionBase* viewPosition = this->getViewPosition();;
@@ -568,11 +460,11 @@ this->getAnimationInterface()->paintXY(graphics, viewX, viewY);
 
                 //@Throws(Exception.constructor)
             
-    public: void damage(int32_t damage, int32_t damageType){
+    auto RTSLayer::damage(int32_t damage, int32_t damageType) -> void{
 }
 
 
-    public: int32_t getSourceId(){
+    auto RTSLayer::getSourceId() -> int32_t{
 
 
 
@@ -582,21 +474,19 @@ this->getAnimationInterface()->paintXY(graphics, viewX, viewY);
 }
 
 
-    private: RTSLayerUtil* rtsLayerUtil = RTSLayerUtil::getInstance();
-
-    public: void downgrade(){
+    auto RTSLayer::downgrade() -> void{
 this->rtsLayerUtil->downgrade(this);
     
 }
 
 
-    public: void upgrade(){
+    auto RTSLayer::upgrade() -> void{
 this->rtsLayerUtil->upgrade(this);
     
 }
 
 
-    public: bool isCompleted(){
+    auto RTSLayer::isCompleted() -> bool{
 
                         if(this->hackVerticleBuild < this->BUILD_VALUE)
                         
@@ -625,7 +515,7 @@ this->rtsLayerUtil->upgrade(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void build(){
+    auto RTSLayer::build() -> void{
 
                         if(this->buildFrameTimeHelper->isTimeTNT())
                         
@@ -646,7 +536,7 @@ this->getHudPaintable()->updateInfo();
 }
 
 
-    public: bool isSelfUpgradeable(){
+    auto RTSLayer::isSelfUpgradeable() -> bool{
 
 
 
@@ -656,7 +546,7 @@ this->getHudPaintable()->updateInfo();
 }
 
 
-    public: int32_t getCost(){
+    auto RTSLayer::getCost() -> int32_t{
 
 
 
@@ -666,7 +556,7 @@ this->getHudPaintable()->updateInfo();
 }
 
 
-    public: int32_t getDowngradeCost(){
+    auto RTSLayer::getDowngradeCost() -> int32_t{
 
 
 
@@ -676,7 +566,7 @@ this->getHudPaintable()->updateInfo();
 }
 
 
-    public: int32_t getUpgradeCost(){
+    auto RTSLayer::getUpgradeCost() -> int32_t{
 
 
 
@@ -686,7 +576,7 @@ this->getHudPaintable()->updateInfo();
 }
 
 
-    public: bool isUpgradeable(){
+    auto RTSLayer::isUpgradeable() -> bool{
 
                         if(this->getLevel() < this->getMaxLevel())
                         
@@ -713,7 +603,7 @@ this->getHudPaintable()->updateInfo();
 }
 
 
-    public: bool isDowngradeable(){
+    auto RTSLayer::isDowngradeable() -> bool{
 
                         if(this->getLevel() > 1)
                         
@@ -740,7 +630,7 @@ this->getHudPaintable()->updateInfo();
 }
 
 
-    public: int32_t getLevel(){
+    auto RTSLayer::getLevel() -> int32_t{
 
 
 
@@ -750,13 +640,13 @@ this->getHudPaintable()->updateInfo();
 }
 
 
-    public: void setLevel(int32_t level){
+    auto RTSLayer::setLevel(int32_t level) -> void{
 this->level= level;
     
 }
 
 
-    public: Animation* getVerticleBuildAnimationInterface(){
+    auto RTSLayer::getVerticleBuildAnimationInterface() -> Animation*{
 
 
 
@@ -766,7 +656,7 @@ this->level= level;
 }
 
 
-    public: Animation* getAnimationInterface(){
+    auto RTSLayer::getAnimationInterface() -> Animation*{
 
 
 
@@ -776,17 +666,15 @@ this->level= level;
 }
 
 
-    public: void setAnimationInterface(Animation* animationInterface){
+    auto RTSLayer::setAnimationInterface(Animation* animationInterface) -> void{
 this->animationInterface= animationInterface;
     
 }
 
 
-    private: LayerDistanceUtil* layerDistanceUtil = LayerDistanceUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void setTarget(PathFindingLayerInterface* targetGameLayer){
+    auto RTSLayer::setTarget(PathFindingLayerInterface* targetGameLayer) -> void{
 
     int32_t anotherTargetDistance = this->layerDistanceUtil->getDistance(dynamic_cast<AllBinaryLayer*>(this), dynamic_cast<AllBinaryLayer*>(targetGameLayer));;
     
@@ -798,25 +686,25 @@ waypointBehaviorBase->setTargetWithDistance(dynamic_cast<PathFindingLayerInterfa
 }
 
 
-    public: SelectionHudPaintable* createHudPaintable(){
+    auto RTSLayer::createHudPaintable() -> SelectionHudPaintable*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: SelectionHudPaintable* getHudPaintable(){
+    auto RTSLayer::getHudPaintable() -> SelectionHudPaintable*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getMaxLevel(){
+    auto RTSLayer::getMaxLevel() -> int32_t{
 
 
 
@@ -826,13 +714,13 @@ waypointBehaviorBase->setTargetWithDistance(dynamic_cast<PathFindingLayerInterfa
 }
 
 
-    public: void setMaxLevel(int32_t maxLevel){
+    auto RTSLayer::setMaxLevel(int32_t maxLevel) -> void{
 this->maxLevel= maxLevel;
     
 }
 
 
-    public: Health* getHealthInterface(){
+    auto RTSLayer::getHealthInterface() -> Health*{
 
 
 
@@ -842,13 +730,13 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: void setHealthInterface(Health* healthInterface){
+    auto RTSLayer::setHealthInterface(Health* healthInterface) -> void{
 this->healthInterface= healthInterface;
     
 }
 
 
-    public: RTSFormInput* getRTSFormInput(){
+    auto RTSLayer::getRTSFormInput() -> RTSFormInput*{
 
 
 
@@ -860,7 +748,7 @@ this->healthInterface= healthInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDestroyed(){
+    auto RTSLayer::isDestroyed() -> bool{
 
 
 
@@ -872,7 +760,7 @@ this->healthInterface= healthInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void setDestroyed(bool destroyed){
+    auto RTSLayer::setDestroyed(bool destroyed) -> void{
 this->destroyed= destroyed;
     
 
@@ -889,7 +777,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: BasicArrayList* getEndGeographicMapCellPositionList(){
+    auto RTSLayer::getEndGeographicMapCellPositionList() -> BasicArrayList*{
 
 
 
@@ -899,7 +787,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: GeographicMapCellPositionAreaBase* getGeographicMapCellPositionArea(){
+    auto RTSLayer::getGeographicMapCellPositionArea() -> GeographicMapCellPositionAreaBase*{
 
 
 
@@ -909,7 +797,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: bool shouldHandleStartSameAsEnd(){
+    auto RTSLayer::shouldHandleStartSameAsEnd() -> bool{
 
 
 
@@ -921,29 +809,29 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void handleCost(PathFindingLayerInterface* ownerLayer){
+    auto RTSLayer::handleCost(PathFindingLayerInterface* ownerLayer) -> void{
 }
 
 
-    public: WaypointBehaviorBase* getWaypointBehavior(){
+    auto RTSLayer::getWaypointBehavior() -> WaypointBehaviorBase*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: PathFindingLayerInterface* getParentLayer(){
+    auto RTSLayer::getParentLayer() -> PathFindingLayerInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: RTSLayer2LogHelper* getRTSLayer2LogHelper(){
+    auto RTSLayer::getRTSLayer2LogHelper() -> RTSLayer2LogHelper*{
 
 
 
@@ -953,7 +841,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: WaypointLogHelper* getWaypointLogHelper(){
+    auto RTSLayer::getWaypointLogHelper() -> WaypointLogHelper*{
 
 
 
@@ -963,7 +851,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: Waypoint2LogHelper* getWaypoint2LogHelper(){
+    auto RTSLayer::getWaypoint2LogHelper() -> Waypoint2LogHelper*{
 
 
 
@@ -973,7 +861,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: WaypointRunnableLogHelper* getWaypointRunnableLogHelper(){
+    auto RTSLayer::getWaypointRunnableLogHelper() -> WaypointRunnableLogHelper*{
 
 
 
@@ -983,7 +871,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: bool shouldAddWaypointFromBuilding(){
+    auto RTSLayer::shouldAddWaypointFromBuilding() -> bool{
 
 
 
@@ -993,16 +881,16 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: CaptionAnimationHelperBase* getCaptionAnimationHelper(){
+    auto RTSLayer::getCaptionAnimationHelper() -> CaptionAnimationHelperBase*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isShowMoreCaptionStates(){
+    auto RTSLayer::isShowMoreCaptionStates() -> bool{
 
 
 
@@ -1014,81 +902,81 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList){
+    auto RTSLayer::init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getCurrentGeographicMapCellPosition(){
+    auto RTSLayer::getCurrentGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getTopLeftGeographicMapCellPosition(){
+    auto RTSLayer::getTopLeftGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BasicArrayList* getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition){
+    auto RTSLayer::getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition) -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void setClosestGeographicMapCellHistory(BasicArrayList* pathsList){
-}
-
-
-    public: void teleportTo(GeographicMapCellPosition* geographicMapCellPosition){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void setLoad(int32_t resource){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: BasicArrayList* getSurroundingGeographicMapCellPositionList(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void trackTo(std::string reason){
+    auto RTSLayer::setClosestGeographicMapCellHistory(BasicArrayList* pathsList) -> void{
+}
+
+
+    auto RTSLayer::teleportTo(GeographicMapCellPosition* geographicMapCellPosition) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void trackToDXY(int32_t dx, int32_t dy){
+    auto RTSLayer::setLoad(int32_t resource) -> void{
 }
 
 
-    public: bool isWaypointListEmptyOrOnlyTargets(){
+                //@Throws(Exception.constructor)
+            
+    auto RTSLayer::getSurroundingGeographicMapCellPositionList() -> BasicArrayList*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto RTSLayer::trackTo(std::string reason) -> void{
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto RTSLayer::trackToDXY(int32_t dx, int32_t dy) -> void{
+}
+
+
+    auto RTSLayer::isWaypointListEmptyOrOnlyTargets() -> bool{
 
 
 
@@ -1098,18 +986,18 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: TrackingEvent* getTrackingEvent(){
+    auto RTSLayer::getTrackingEvent() -> TrackingEvent*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition){
+    auto RTSLayer::buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition) -> bool{
 
 
 
@@ -1119,11 +1007,54 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: void allStop(){
+    auto RTSLayer::allStop() -> void{
 }
 
 
-    public: bool implmentsTickableInterface(){
+    auto RTSLayer::getMinStaticType() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 1;
+    
+}
+
+
+    auto RTSLayer::getMaxStaticType() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 4;
+    
+}
+
+
+    auto RTSLayer::isRTSLayer(AllBinaryLayer* layerInterface) -> bool{
+
+                        if(layerInterface->getType() >= RTSLayer::getMinStaticType() && layerInterface->getType() <= RTSLayer::getMaxStaticType())
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+    auto RTSLayer::implmentsTickableInterface() -> bool{
 
 
 
@@ -1133,7 +1064,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: bool implmentsGameInputInterface(){
+    auto RTSLayer::implmentsGameInputInterface() -> bool{
 
 
 
@@ -1143,7 +1074,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: std::string getRootName(){
+    auto RTSLayer::getRootName() -> std::string{
 
 
 
@@ -1153,7 +1084,7 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: RotationAnimation* getRotationAnimationInterface(){
+    auto RTSLayer::getRotationAnimationInterface() -> RotationAnimation*{
 
 
 
@@ -1163,19 +1094,18 @@ ViewPositionEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: void setFrame(int32_t index){
+    auto RTSLayer::setFrame(int32_t index) -> void{
 this->getRotationAnimationInterface()->setFrame(index);
     
 }
 
 
-    public: void setRotationAnimationInterface(RotationAnimation* rotationAnimationInterface){
+    auto RTSLayer::setRotationAnimationInterface(RotationAnimation* rotationAnimationInterface) -> void{
 this->indexedButShouldBeRotationAnimationInterface= rotationAnimationInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYER_CPP

@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGS_BASICGROUPITEMSTAG_H
         #define ADMIN_TAGS_BASICGROUPITEMSTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,14 +33,8 @@
 
         
 #include <java/util/HashMap.h>
-
-      
-#include <admin/taghelpers/BasicGroupItemsHelperFactory.h>
-
-      
-#include <admin/taghelpers/BasicGroupItemsRequestHelperFactory.h>
-
-      
+class BasicGroupItemsHelperFactory;
+class BasicGroupItemsRequestHelperFactory;
 
 
 
@@ -56,6 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicGroupItemsTag: public TableTag {
 
     private: HashMap<Object*, Object*>* propertiesHashMap;
@@ -68,3 +71,22 @@ public: BasicGroupItemsTag();
 
 
         #endif //ADMIN_TAGS_BASICGROUPITEMSTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGS_BASICGROUPITEMSTAG_H_COMPLETE)
+        #define ADMIN_TAGS_BASICGROUPITEMSTAG_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<admin/taghelpers/BasicGroupItemsHelperFactory.h>)
+#include <admin/taghelpers/BasicGroupItemsHelperFactory.h>
+#endif
+#if __has_include(<admin/taghelpers/BasicGroupItemsRequestHelperFactory.h>)
+#include <admin/taghelpers/BasicGroupItemsRequestHelperFactory.h>
+#endif
+#if __has_include("admin/tags/TableTag.h")
+#include "admin/tags/TableTag.h"
+#endif
+
+        #endif
+    

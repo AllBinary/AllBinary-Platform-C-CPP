@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLVUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/OpenGLVUtilBase.h"
 
-class OpenGLVUtil: public OpenGLVUtilBase {
 
-    private: static OpenGLVUtil* instance() { static std::unique_ptr<OpenGLVUtil> value(new OpenGLVUtil()); return value.get(); }
+OpenGLVUtil::OpenGLVUtil() {
+        }
+        auto OpenGLVUtil::instance_owner() -> OpenGLVUtil* { static std::unique_ptr<OpenGLVUtil> value(new OpenGLVUtil()); return value.get(); }
+OpenGLVUtil* OpenGLVUtil::instance = OpenGLVUtil::instance_owner();
 
-    public: static OpenGLVUtil* getInstance(){
+    auto OpenGLVUtil::getInstance() -> OpenGLVUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLVUtil::instance();
+                        return OpenGLVUtil::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_CPP

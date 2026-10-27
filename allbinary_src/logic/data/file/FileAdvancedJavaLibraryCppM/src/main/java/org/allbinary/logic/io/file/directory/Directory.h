@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,29 +39,13 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/FileFilter.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/FileFactory.h>
-
-      
-#include <org/allbinary/logic/io/file/FileWrapperUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class PreLogUtil;
+class AbFile;
+class FileFactory;
+class FileWrapperUtil;
+class AbPath;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -76,11 +65,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Directory
-            : public Object
+            : public virtual Object
          {
 
-    private: static Directory* instance() { static std::unique_ptr<Directory> value(new Directory()); return value.get(); }
+    private: static Directory* instance_owner();
+    private: static Directory* instance;
 
     public: static Directory* getInstance();
 
@@ -120,3 +114,34 @@ private: Directory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_H_COMPLETE
+        #if __has_include(<java/io/FileFilter.h>)
+#include <java/io/FileFilter.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileFactory.h>)
+#include <org/allbinary/logic/io/file/FileFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileWrapperUtil.h>)
+#include <org/allbinary/logic/io/file/FileWrapperUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

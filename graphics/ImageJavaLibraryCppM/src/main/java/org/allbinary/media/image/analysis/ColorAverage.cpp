@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORAVERAGE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORAVERAGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/analysis/ColorAverage.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorAverage
-            : public Object
-         {
 
-    private: float avgRed= 0.0;
-
-    private: float avgGreen= 0.0;
-
-    private: float avgBlue= 0.0;
-
-public: ColorAverage(){
+ColorAverage::ColorAverage(){
 this->setAvgRed(0);
     
 this->setAvgGreen(0);
@@ -71,7 +72,7 @@ this->setAvgBlue(0);
 }
 
 
-    public: std::string toString(){
+    auto ColorAverage::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -102,7 +103,7 @@ stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: float getAvgRed(){
+    auto ColorAverage::getAvgRed() -> float{
 
 
 
@@ -112,13 +113,13 @@ stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: void setAvgRed(float avgRed){
+    auto ColorAverage::setAvgRed(float avgRed) -> void{
 this->avgRed= avgRed;
     
 }
 
 
-    public: float getAvgGreen(){
+    auto ColorAverage::getAvgGreen() -> float{
 
 
 
@@ -128,13 +129,13 @@ this->avgRed= avgRed;
 }
 
 
-    public: void setAvgGreen(float avgGreen){
+    auto ColorAverage::setAvgGreen(float avgGreen) -> void{
 this->avgGreen= avgGreen;
     
 }
 
 
-    public: float getAvgBlue(){
+    auto ColorAverage::getAvgBlue() -> float{
 
 
 
@@ -144,13 +145,12 @@ this->avgGreen= avgGreen;
 }
 
 
-    public: void setAvgBlue(float avgBlue){
+    auto ColorAverage::setAvgBlue(float avgBlue) -> void{
 this->avgBlue= avgBlue;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORAVERAGE_CPP

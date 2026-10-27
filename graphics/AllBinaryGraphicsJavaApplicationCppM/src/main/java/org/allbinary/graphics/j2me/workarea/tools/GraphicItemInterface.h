@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,23 +37,11 @@
             #include "java/lang/Double.h"
         
 #include <java/awt.h>
-
-      
-#include <javax/swing/tree/MutableTreeNode.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class MutableTreeNode;
+class GPoint;
+class CanvasDom;
+class IntegerDimension;
+class Node;
 
 
 
@@ -67,13 +60,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
+        class Color;
+class Points;
+class Graphics;
+class MouseEvent;
+class KeyEvent;
 
-class GraphicItemInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GraphicItemInterface
+            : public virtual Object
+         {
 
     public: virtual std::string getName() = 0;
 
@@ -149,3 +148,43 @@ class GraphicItemInterface {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMINTERFACE_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<javax/swing/tree/MutableTreeNode.h>)
+#include <javax/swing/tree/MutableTreeNode.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Color.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Points.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Graphics.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
+#endif
+
+        #endif
+    

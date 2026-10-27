@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,13 +82,8 @@
 #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
 #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationMapping.h"
 
-class FtpConfigurationView
-            : public Object
-        , public DomNodeInterface {
 
-    private: FtpConfigurationInterface* ftpConfigurationInterface;
-
-public: FtpConfigurationView(Node* node){
+FtpConfigurationView::FtpConfigurationView(Node* node){
 this->setFtpConfigurationInterface(dynamic_cast<FtpConfigurationInterface*>(new FtpConfiguration()));
     
 
@@ -107,7 +112,7 @@ this->getFtpConfigurationInterface()->setPath(path);
 }
 
 
-public: FtpConfigurationView(FtpConfigurationInterface* ftpConfigurationInterface){
+FtpConfigurationView::FtpConfigurationView(FtpConfigurationInterface* ftpConfigurationInterface){
 this->setFtpConfigurationInterface(ftpConfigurationInterface);
     
 }
@@ -115,7 +120,7 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto FtpConfigurationView::toXmlNode(Document* document) -> Node*{
 
     FtpConfigurationMapping* ftpConfigurationMapping = new FtpConfigurationMapping(this->getFtpConfigurationInterface());;
     
@@ -134,7 +139,7 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
 }
 
 
-    public: FtpConfigurationInterface* getFtpConfigurationInterface(){
+    auto FtpConfigurationView::getFtpConfigurationInterface() -> FtpConfigurationInterface*{
 
 
 
@@ -144,13 +149,12 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
 }
 
 
-    public: void setFtpConfigurationInterface(FtpConfigurationInterface* ftpConfigurationInterface){
+    auto FtpConfigurationView::setFtpConfigurationInterface(FtpConfigurationInterface* ftpConfigurationInterface) -> void{
 this->ftpConfigurationInterface= ftpConfigurationInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONVIEW_CPP

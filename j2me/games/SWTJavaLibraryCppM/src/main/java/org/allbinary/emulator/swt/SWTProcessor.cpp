@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_CPP
+        #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/emulator/swt/SWTProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,35 +63,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SWTProcessor
-            : public Object
-         {
+auto SWTProcessor::instance_owner() -> SWTProcessor* { static std::unique_ptr<SWTProcessor> value(new SWTProcessor()); return value.get(); }
+SWTProcessor* SWTProcessor::instance = SWTProcessor::instance_owner();
 
-    private: static SWTProcessor* instance() { static std::unique_ptr<SWTProcessor> value(new SWTProcessor()); return value.get(); }
-
-    public: static SWTProcessor* getInstance(){
+    auto SWTProcessor::getInstance() -> SWTProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SWTProcessor::instance();
+                        return SWTProcessor::instance;
     
 }
 
 
-protected: SWTProcessor(){
+SWTProcessor::SWTProcessor() : runnable(NullRunnable::getInstance()){
 }
 
 
-    public: Runnable* runnable = NullRunnable::getInstance();
-
-    public: void process(Display* display){
+    auto SWTProcessor::process(Display* display) -> void{
 display->sleep();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_CPP

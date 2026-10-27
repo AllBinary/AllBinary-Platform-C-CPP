@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActions.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -110,25 +120,9 @@
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h"
 
-class GenericProfileActions
-            : public Object
-        , public DomNodeInterface, public DomDocumentMappingInterface {
+const std::string GenericProfileActions::DEFAULT_PROFILE_ACTIONS_PATH = JavaString::valueOf(GenericProfiles::DEFAULT_PROFILES_PATH) +JavaString::valueOf("actions/");
 
-    public: static inline const std::string DEFAULT_PROFILE_ACTIONS_PATH = GenericProfiles::DEFAULT_PROFILES_PATH +"actions/";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonDataFileStrings* commonFileStrings = CommonDataFileStrings::getInstance();
-
-    private: std::string name;
-
-    private: GenericProfileActionsJPanel* genericProfileActionsJPanel;
-
-    private: DefaultListModelHelper* actionsDefaultListModelHelper;
-
-    private: HashMap<Object*, Object*>* hashMap;
-
-public: GenericProfileActions(GenericProfileActionsJPanel* genericProfileActionsJPanel, std::string name){
+GenericProfileActions::GenericProfileActions(GenericProfileActionsJPanel* genericProfileActionsJPanel, std::string name) : logUtil(LogUtil::getInstance()), commonFileStrings(CommonDataFileStrings::getInstance()){
 this->setName(name);
     
 this->init(genericProfileActionsJPanel);
@@ -138,7 +132,7 @@ this->load();
 }
 
 
-public: GenericProfileActions(GenericProfileActionsJPanel* genericProfileActionsJPanel, AbPath* abPath, std::string name){
+GenericProfileActions::GenericProfileActions(GenericProfileActionsJPanel* genericProfileActionsJPanel, AbPath* abPath, std::string name) : logUtil(LogUtil::getInstance()), commonFileStrings(CommonDataFileStrings::getInstance()){
 this->setName(name);
     
 this->init(genericProfileActionsJPanel);
@@ -148,7 +142,7 @@ this->load();
 }
 
 
-public: GenericProfileActions(GenericProfileActionsJPanel* genericProfileActionsJPanel, FileInputStream* fileInputStream, std::string name){
+GenericProfileActions::GenericProfileActions(GenericProfileActionsJPanel* genericProfileActionsJPanel, FileInputStream* fileInputStream, std::string name) : logUtil(LogUtil::getInstance()), commonFileStrings(CommonDataFileStrings::getInstance()){
 this->setName(name);
     
 this->init(genericProfileActionsJPanel);
@@ -160,7 +154,7 @@ this->fileInit(fileInputStream);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(GenericProfileActionsJPanel* genericProfileActionsJPanel){
+    auto GenericProfileActions::init(GenericProfileActionsJPanel* genericProfileActionsJPanel) -> void{
 this->setGenericProfileActionsJPanel(genericProfileActionsJPanel);
     
 this->actionsDefaultListModelHelper= new DefaultListModelHelper();
@@ -172,7 +166,7 @@ this->setHashMap(new HashMap<Object*, Object*>());
 
                 //@Throws(Exception.constructor)
             
-    public: void save(){
+    auto GenericProfileActions::save() -> void{
 
     FileOutputStream* idFile = new FileOutputStream(GenericProfileActions::DEFAULT_PROFILE_ACTIONS_PATH +getName() +this->commonFileStrings->_XML);;
     
@@ -184,9 +178,9 @@ idOutData->writeBytes(XmlDocumentHelper::toString(this->toXmlDoc()));
 }
 
 
-    public: File* getFile(std::string name){
+    auto GenericProfileActions::getFile(std::string name) -> File*{
 
-    std::string fileName = DEFAULT_PROFILE_ACTIONS_PATH +name +this->commonFileStrings->_XML;;
+    std::string fileName = JavaString::valueOf(JavaString::valueOf(DEFAULT_PROFILE_ACTIONS_PATH) +JavaString::valueOf(name)) +JavaString::valueOf(this->commonFileStrings->_XML);;
     
 
 
@@ -199,7 +193,7 @@ idOutData->writeBytes(XmlDocumentHelper::toString(this->toXmlDoc()));
 
                 //@Throws(Exception.constructor)
             
-    private: void load(){
+    auto GenericProfileActions::load() -> void{
 
     File* file = this->getFile(getName());;
     
@@ -216,7 +210,7 @@ this->fileInit(idFile);
                                     }
                                 
                         else {
-                            this->logUtil->putF("No Profile: " +file->getAbsolutePath(), this, "Contructor");
+                            this->logUtil->putF(JavaString::valueOf("No Profile: ") +JavaString::valueOf(file->getAbsolutePath()), this, "Contructor");
     
 
                         }
@@ -226,7 +220,7 @@ this->fileInit(idFile);
 
                 //@Throws(Exception.constructor)
             
-    private: void fileInit(FileInputStream* fileInputStream){
+    auto GenericProfileActions::fileInit(FileInputStream* fileInputStream) -> void{
 
     std::vector<int8_t> bytes = std::vector<int8_t>(100000);;
     
@@ -234,7 +228,7 @@ this->fileInit(idFile);
     int32_t length = fileInputStream->read(bytes);;
     
 
-    std::string data = String.fromCharCode(...bytes);;
+    std::string data = JavaString::fromChars(bytes);;
     
 
     int32_t endIndex = JavaString::lastIndexOf(data, '>');;
@@ -245,7 +239,7 @@ this->fileInit(idFile);
 
     NodeList* nameNodeList = document->getElementsByTagName(GenericProfileActionsData::NAME);;
     
-this->logUtil->putF("Number Of Profiles Specified: " +nameNodeList->getLength(), this, "Contructor");
+this->logUtil->putF(JavaString::valueOf("Number Of Profiles Specified: ") +JavaString::valueOf(nameNodeList->getLength()), this, "Contructor");
     
 
 
@@ -275,14 +269,14 @@ this->logUtil->putF("Number Of Profiles Specified: " +nameNodeList->getLength(),
                             
 
 
-                            throw new Exception(GenericProfileActionData::NAME +" Name Node Node Children");
+                            throw Exception(JavaString::valueOf(GenericProfileActionData::NAME) +JavaString::valueOf(" Name Node Node Children"));
                     
 
                         }
                             
 }
 
-this->logUtil->putF("Loaded: " +this->getHashMap()->size() +" Configuration Profile Action(s)", this, "Contructor");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Loaded: ") +JavaString::valueOf(this->getHashMap()->size())) +JavaString::valueOf(" Configuration Profile Action(s)"), this, "Contructor");
     
 this->getDefaultListModelHelper()->initDefaultModelList();
     
@@ -291,7 +285,7 @@ this->getDefaultListModelHelper()->initDefaultModelList();
 
                 //@Throws(Exception.constructor)
             
-    private: void initActions(NodeList* nodeList){
+    auto GenericProfileActions::initActions(NodeList* nodeList) -> void{
 
 
 
@@ -322,7 +316,7 @@ this->getDefaultListModelHelper()->add(genericConfigurationProfileAction->getNam
                             
 
 
-                            throw new Exception(GenericProfileActionData::NAME +" Node Null");
+                            throw Exception(JavaString::valueOf(GenericProfileActionData::NAME) +JavaString::valueOf(" Node Null"));
                     
 
                         }
@@ -332,7 +326,7 @@ this->getDefaultListModelHelper()->add(genericConfigurationProfileAction->getNam
 }
 
 
-    public: DefaultListModelHelper* getDefaultListModelHelper(){
+    auto GenericProfileActions::getDefaultListModelHelper() -> DefaultListModelHelper*{
 
 
 
@@ -342,7 +336,7 @@ this->getDefaultListModelHelper()->add(genericConfigurationProfileAction->getNam
 }
 
 
-    public: GenericProfileAction* getAction(std::string string){
+    auto GenericProfileActions::getAction(std::string string) -> GenericProfileAction*{
 
 
 
@@ -354,7 +348,7 @@ this->getDefaultListModelHelper()->add(genericConfigurationProfileAction->getNam
 
                 //@Throws(Exception.constructor)
             
-    public: void add(std::string name){
+    auto GenericProfileActions::add(std::string name) -> void{
 
     GenericProfileAction* genericProfileAction = new GenericProfileAction(name);;
     
@@ -371,7 +365,7 @@ this->save();
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(std::string name){
+    auto GenericProfileActions::remove(std::string name) -> void{
 this->getHashMap()->remove(name);
     
 this->getDefaultListModelHelper()->remove(name);
@@ -383,11 +377,11 @@ this->save();
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto GenericProfileActions::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -400,7 +394,7 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GenericProfileActions::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(GenericProfileActionsData::NAME);;
     
@@ -441,7 +435,7 @@ node->appendChild(nextGenericProfileAction->toXmlNode(document));
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto GenericProfileActions::toXmlDoc() -> Document*{
 
     Document* document = DomDocumentHelper::create();;
     
@@ -459,7 +453,7 @@ document->appendChild(node);
 }
 
 
-    public: GenericProfileActionsJPanel* getGenericProfileActionsJPanel(){
+    auto GenericProfileActions::getGenericProfileActionsJPanel() -> GenericProfileActionsJPanel*{
 
 
 
@@ -469,13 +463,13 @@ document->appendChild(node);
 }
 
 
-    public: void setGenericProfileActionsJPanel(GenericProfileActionsJPanel* genericProfileActionsJPanel){
+    auto GenericProfileActions::setGenericProfileActionsJPanel(GenericProfileActionsJPanel* genericProfileActionsJPanel) -> void{
 this->genericProfileActionsJPanel= genericProfileActionsJPanel;
     
 }
 
 
-    public: HashMap<Object*, Object*>* getHashMap(){
+    auto GenericProfileActions::getHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -485,13 +479,13 @@ this->genericProfileActionsJPanel= genericProfileActionsJPanel;
 }
 
 
-    public: void setHashMap(HashMap<Object*, Object*>* hashMap){
+    auto GenericProfileActions::setHashMap(HashMap<Object*, Object*>* hashMap) -> void{
 this->hashMap= hashMap;
     
 }
 
 
-    public: std::string getName(){
+    auto GenericProfileActions::getName() -> std::string{
 
 
 
@@ -501,13 +495,12 @@ this->hashMap= hashMap;
 }
 
 
-    public: void setName(std::string name){
+    auto GenericProfileActions::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_CPP

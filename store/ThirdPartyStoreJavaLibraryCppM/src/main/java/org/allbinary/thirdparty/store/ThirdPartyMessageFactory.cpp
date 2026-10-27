@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_CPP
+        #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thirdparty/store/ThirdPartyMessageFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThirdPartyMessageFactory
-            : public Object
-         {
 
-    private: static ThirdPartyMessageFactory* instance() { static std::unique_ptr<ThirdPartyMessageFactory> value(new ThirdPartyMessageFactory()); return value.get(); }
+ThirdPartyMessageFactory::ThirdPartyMessageFactory() {
+        }
+        auto ThirdPartyMessageFactory::instance_owner() -> ThirdPartyMessageFactory* { static std::unique_ptr<ThirdPartyMessageFactory> value(new ThirdPartyMessageFactory()); return value.get(); }
+ThirdPartyMessageFactory* ThirdPartyMessageFactory::instance = ThirdPartyMessageFactory::instance_owner();
 
-    public: static ThirdPartyMessageFactory* getInstance(){
+    auto ThirdPartyMessageFactory::getInstance() -> ThirdPartyMessageFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThirdPartyMessageFactory::instance();
+                        return ThirdPartyMessageFactory::instance;
     
 }
 
 
-    public: const std::string AUTHORIZED = "Authorized";
 
-    public: const std::string NOT_AUTHORIZED = "Not Authorized";
 
-    public: const std::string LINKAGE_ERROR = "Linkage Error";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_CPP

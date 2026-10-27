@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
         #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
+class Command;
 
 
 
@@ -51,14 +54,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NotificationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
+    private: static NotificationUtil* SINGLETON_owner();
+    private: static NotificationUtil* SINGLETON;
 
     public: static NotificationUtil* getInstance();
 
+
+            
+    public: NotificationUtil();
+        
     public: void notify(Command* command, std::string resource, std::string message);
 
 };
@@ -67,3 +79,13 @@ class NotificationUtil
 
 
         #endif //ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+
+        #endif
+    

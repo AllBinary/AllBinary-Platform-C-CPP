@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
 
 
 
@@ -48,6 +51,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class TestInputInterface: public PaintableInterface {
 
@@ -69,3 +76,13 @@ class TestInputInterface: public PaintableInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+
+        #endif
+    

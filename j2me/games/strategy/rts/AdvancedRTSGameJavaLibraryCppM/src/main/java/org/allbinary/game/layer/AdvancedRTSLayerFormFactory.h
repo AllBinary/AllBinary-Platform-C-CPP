@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,23 +37,11 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/RTSLayerFormFactory.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
-
-      
-#include <org/allbinary/graphics/form/item/ItemArraySingletonFactoryInterface.h>
-
-      
+class ABCustomItem;
+class CommonStrings;
+class LogUtil;
+class ScrollSelectionForm;
+class ItemArraySingletonFactoryInterface;
 
 
 
@@ -67,16 +60,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/RTSScrollSelectionFormFactory.h"
-#include "org/allbinary/game/layer/RTSLayer.h"
+        class RTSScrollSelectionFormFactory;
+class RTSLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvancedRTSLayerFormFactory: public RTSLayerFormFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: ScrollSelectionForm* scrollSelectionForm;
 
-protected: AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFactoryInterface* itemArrayFactoryInterface);
+/*protected*/ public: AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFactoryInterface* itemArrayFactoryInterface);
 
     public: ScrollSelectionForm* getInstance(RTSLayer* rtsLayer);
 
@@ -86,3 +83,34 @@ protected: AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFact
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/RTSLayerFormFactory.h>)
+#include <org/allbinary/game/input/RTSLayerFormFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/ScrollSelectionForm.h>)
+#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ItemArraySingletonFactoryInterface.h>)
+#include <org/allbinary/graphics/form/item/ItemArraySingletonFactoryInterface.h>
+#endif
+#if __has_include("org/allbinary/game/layer/RTSScrollSelectionFormFactory.h")
+#include "org/allbinary/game/layer/RTSScrollSelectionFormFactory.h"
+#endif
+#if __has_include("org/allbinary/game/layer/RTSLayer.h")
+#include "org/allbinary/game/layer/RTSLayer.h"
+#endif
+
+        #endif
+    

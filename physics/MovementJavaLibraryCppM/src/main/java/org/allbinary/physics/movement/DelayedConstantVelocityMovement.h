@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/AllBinaryGameLayer.h>
-
-      
-#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
-
-      
-#include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class AllBinaryGameLayer;
+class BasicVelocityProperties;
+class BasicDecimal;
+class GameTickTimeDelayHelperFactory;
+class TimeDelayHelper;
 
 
 
@@ -64,9 +59,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DelayedConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(60);
+    private: TimeDelayHelper* timeDelayHelper;
 
 public: DelayedConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties);
 
@@ -82,3 +81,28 @@ public: DelayedConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocit
 
 
         #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_H_COMPLETE)
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/AllBinaryGameLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/BasicVelocityProperties.h>)
+#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/BasicDecimal.h>)
+#include <org/allbinary/logic/math/BasicDecimal.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelperFactory.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include("org/allbinary/physics/movement/BasicConstantVelocityMovement.h")
+#include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
+#endif
+
+        #endif
+    

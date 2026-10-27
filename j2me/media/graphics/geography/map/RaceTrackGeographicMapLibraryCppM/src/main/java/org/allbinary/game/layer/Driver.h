@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DRIVER_H
         #define ORG_ALLBINARY_GAME_LAYER_DRIVER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
+class SmallIntegerSingletonFactory;
 
 
 
@@ -52,17 +55,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/Aggression.h"
+        class Aggression;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Driver
-            : public Object
+            : public virtual Object
          {
 
-    public: static Driver* NULL_DRIVER() { static std::unique_ptr<Driver> value(new Driver(SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0), new Aggression(SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0)))); return value.get(); }
+    private: static Driver* NULL_DRIVER_owner();
+    public: static Driver* NULL_DRIVER;
 
-    private: int32_t turnSpeed = SmallIntegerSingletonFactory::getInstance()->getAt(0);
+    private: int32_t turnSpeed;
 
-    private: int32_t trackPathSelectionSkill = SmallIntegerSingletonFactory::getInstance()->getAt(0);
+    private: int32_t trackPathSelectionSkill;
 
     private: Aggression* aggression;
 
@@ -86,3 +94,16 @@ public: Driver(int32_t turnSpeed, int32_t trackPathSelectionSkill, Aggression* a
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_DRIVER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_DRIVER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_DRIVER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include("org/allbinary/game/layer/Aggression.h")
+#include "org/allbinary/game/layer/Aggression.h"
+#endif
+
+        #endif
+    

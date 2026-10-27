@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/resource/ResourceLoadingLevel.h>
-
-      
-#include <org/allbinary/game/resource/ResourceLoadingLevelFactory.h>
-
-      
+class ResourceLoadingLevel;
+class ResourceLoadingLevelFactory;
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
 
 
 
@@ -57,9 +56,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInitializedEvent: public AllBinaryEventObject {
 
-    private: ResourceLoadingLevel* resourceLoadingLevel = ResourceLoadingLevelFactory::getInstance()->LEVEL;
+    private: ResourceLoadingLevel* resourceLoadingLevel;
 
     private: int32_t level= 0;
 
@@ -79,3 +82,19 @@ public: GameInitializedEvent(Object* anyType);
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/game/resource/ResourceLoadingLevel.h>)
+#include <org/allbinary/game/resource/ResourceLoadingLevel.h>
+#endif
+#if __has_include(<org/allbinary/game/resource/ResourceLoadingLevelFactory.h>)
+#include <org/allbinary/game/resource/ResourceLoadingLevelFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+
+        #endif
+    

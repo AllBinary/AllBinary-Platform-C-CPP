@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,13 @@
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
-class SimpleGeographicMapCellPositionFactory
-            : public Object
-        , public GeographicMapCellPositionFactoryInterface {
 
-    public: static GeographicMapCellPosition* NULL_GEOGRAPHIC_MAP_CELL_POSITION() { static std::unique_ptr<GeographicMapCellPosition> value(new GeographicMapCellPosition( -1,  -1,  -1,  -1,  -1,  -1)); return value.get(); }
+SimpleGeographicMapCellPositionFactory::SimpleGeographicMapCellPositionFactory() {
+        }
+        auto SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION_owner() -> GeographicMapCellPosition* { static std::unique_ptr<GeographicMapCellPosition> value(new GeographicMapCellPosition( -1,  -1,  -1,  -1,  -1,  -1)); return value.get(); }
+GeographicMapCellPosition* SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION_owner();
 
-    public: GeographicMapCellPosition* getInstance(BasicGeographicMap* geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height){
+    auto SimpleGeographicMapCellPositionFactory::getInstance(BasicGeographicMap* geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height) -> GeographicMapCellPosition*{
 
 
 
@@ -64,7 +74,6 @@ class SimpleGeographicMapCellPositionFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/io/file/FilePathData.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
+class FilePathData;
+class StringUtil;
+class StringValidationUtil;
 
 
 
@@ -58,21 +57,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/path/AbPathData.h"
-#include "org/allbinary/logic/io/path/AbFilePath.h"
-#include "org/allbinary/logic/io/path/AbPath.h"
-//Used to correct user input for paths
+        class AbPathData;
+class AbFilePath;
+class AbPath;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //Used to correct user input for paths
 class PathUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static PathUtil* instance() { static std::unique_ptr<PathUtil> value(new PathUtil()); return value.get(); }
+    private: static PathUtil* instance_owner();
+    private: static PathUtil* instance;
 
     public: static PathUtil* getInstance();
 
-    private: AbPathData* abPathData = AbPathData::getInstance();
+    private: AbPathData* abPathData;
 
-    private: FilePathData* filePathData = FilePathData::getInstance();
+    private: FilePathData* filePathData;
 
 private: PathUtil();
 
@@ -114,3 +118,28 @@ private: PathUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/FilePathData.h>)
+#include <org/allbinary/logic/io/file/FilePathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/io/path/AbPathData.h")
+#include "org/allbinary/logic/io/path/AbPathData.h"
+#endif
+#if __has_include("org/allbinary/logic/io/path/AbFilePath.h")
+#include "org/allbinary/logic/io/path/AbFilePath.h"
+#endif
+#if __has_include("org/allbinary/logic/io/path/AbPath.h")
+#include "org/allbinary/logic/io/path/AbPath.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_CATEGORYTAG_CPP
+        #define ADMIN_TAGS_CATEGORYTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/CategoryTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,13 +87,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class CategoryTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string xsl;
-
-public: CategoryTag(){
+CategoryTag::CategoryTag() : logUtil(LogUtil::getInstance()){
 this->setTagHelperFactory(new CategoryHelperFactory());
     
 this->setTagRequestHelperFactory(new CategoryRequestHelperFactory());
@@ -91,7 +96,7 @@ this->setTagRequestHelperFactory(new CategoryRequestHelperFactory());
 }
 
 
-    public: void setXsl(std::string value){
+    auto CategoryTag::setXsl(std::string value) -> void{
 this->xsl= value;
     
 }
@@ -99,7 +104,7 @@ this->xsl= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string viewCategory(){
+    auto CategoryTag::viewCategory() -> std::string{
 
         try {
             
@@ -140,10 +145,10 @@ this->xsl= value;
     std::string error = "Failed to view a Category";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewCategory()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewCategory()", &e);
     
 
                                     }
@@ -161,7 +166,7 @@ this->xsl= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string viewCategories(){
+    auto CategoryTag::viewCategories() -> std::string{
 
         try {
             
@@ -202,10 +207,10 @@ this->xsl= value;
     std::string error = "Failed to view a Categories";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewCategories()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewCategories()", &e);
     
 
                                     }
@@ -223,7 +228,7 @@ this->xsl= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto CategoryTag::doStartTag() -> int32_t{
 
         try {
             
@@ -246,7 +251,7 @@ this->xsl= value;
     std::string output = this->viewCategory();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     pageContext.getOut()->print(output);
@@ -265,7 +270,7 @@ this->xsl= value;
     std::string output = this->viewCategories();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
                                     pageContext.getOut()->print(output);
@@ -281,7 +286,7 @@ this->xsl= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                         }
@@ -328,7 +333,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_CATEGORYTAG_CPP

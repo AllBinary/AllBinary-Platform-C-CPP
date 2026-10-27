@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_WORKSOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_WORKSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/WorkSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,9 @@
         #include "org/allbinary/media/audio/CompositeSound.h"
 #include "org/allbinary/media/audio/Sound.h"
 
-class WorkSound: public CompositeSound {
+Sound* WorkSound::soundInterface = new WorkSound();
 
-    private: static inline Sound* soundInterface = new WorkSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkSound::soundInterface;
-    
-}
-
-
-private: WorkSound() : CompositeSound("resource:/wav/work.wav"){
+WorkSound::WorkSound() : CompositeSound("resource:/wav/work.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +66,16 @@ private: WorkSound() : CompositeSound("resource:/wav/work.wav"){
 }
 
 
-};
+    auto WorkSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return WorkSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_WORKSOUND_CPP

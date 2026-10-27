@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/validate/Validation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,57 +69,54 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/validate/ValidationInterface.h"
 
-class Validation
-            : public Object
-        , public ValidationInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
+Validation::Validation() : commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto Validation::isValid() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toValidationInfoNode(Document* document){
+    auto Validation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toValidationInfoDoc(){
+    auto Validation::toValidationInfoDoc() -> Document*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto Validation::validationInfo() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATION_CPP

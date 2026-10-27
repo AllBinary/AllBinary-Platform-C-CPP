@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYPLATFORMIMAGEROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYPLATFORMIMAGEROTATIONANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
+class Image;
+class AnimationBehaviorFactory;
 
 
 
@@ -55,6 +56,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/AllBinaryJ2SEImageRotationAnimationFactory.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryPlatformImageRotationAnimationFactory: public AllBinaryJ2SEImageRotationAnimationFactory {
 
 public: AllBinaryPlatformImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory, bool resizeCanvasForRotation);
@@ -65,3 +70,19 @@ public: AllBinaryPlatformImageRotationAnimationFactory(Image* image, int32_t wid
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYPLATFORMIMAGEROTATIONANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYPLATFORMIMAGEROTATIONANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYPLATFORMIMAGEROTATIONANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include("org/allbinary/animation/image/AllBinaryJ2SEImageRotationAnimationFactory.h")
+#include "org/allbinary/animation/image/AllBinaryJ2SEImageRotationAnimationFactory.h"
+#endif
+
+        #endif
+    

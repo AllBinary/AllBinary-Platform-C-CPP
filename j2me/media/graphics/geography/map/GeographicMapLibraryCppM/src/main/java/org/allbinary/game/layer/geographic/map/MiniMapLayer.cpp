@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_MINIMAPLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_MINIMAPLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geographic/map/MiniMapLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -114,21 +124,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MiniMapLayer: public AllBinaryLayer, public GeographicMapCellPositionEventListenerInterface {
 
-    protected: AllBinaryTiledLayer* allBinaryTiledLayer;
-
-    private: BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory;
-
-    private: BasicArrayList* list;
-
-    private: BasicArrayList* basicColorList;
-
-    private: BasicArrayList* positionList;
-
-    private: CircleFilledAnimation* animationInterface;
-
-public: MiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositionBase* viewPosition) : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->createXY(0, viewPosition->getY()), geographicMapInterface->getAllBinaryTiledLayer()->getWidth(), geographicMapInterface->getAllBinaryTiledLayer()->getHeight()), viewPosition){
+MiniMapLayer::MiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositionBase* viewPosition) : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->createXY(0, viewPosition->getY()), geographicMapInterface->getAllBinaryTiledLayer()->getWidth(), geographicMapInterface->getAllBinaryTiledLayer()->getHeight()), viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -156,13 +153,13 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(){
+    auto MiniMapLayer::init() -> void{
 this->allBinaryTiledLayer->setPosition(this->x, this->y, this->z);
     
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto MiniMapLayer::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -171,7 +168,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent){
+    auto MiniMapLayer::onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent) -> void{
 
     ColorCompositeInterface* colorCompositeInterface = dynamic_cast<ColorCompositeInterface*>(geographicMapCellPositionEvent->getSource());;
     
@@ -197,7 +194,7 @@ this->positionList->removeAt(index);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent){
+    auto MiniMapLayer::onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent* geographicMapCellPositionEvent) -> void{
 
     ColorCompositeInterface* colorCompositeInterface = dynamic_cast<ColorCompositeInterface*>(geographicMapCellPositionEvent->getSource());;
     
@@ -266,7 +263,7 @@ layerIndex= this->basicColorList->size() -1;
 }
 
 
-    public: void paintDots(Graphics* graphics){
+    auto MiniMapLayer::paintDots(Graphics* graphics) -> void{
 
     BasicArrayList* localPositionList = this->positionList;;
     
@@ -304,7 +301,7 @@ this->animationInterface->paintXY(graphics, point->getX() +this->x, point->getY(
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto MiniMapLayer::paint(Graphics* graphics) -> void{
 this->allBinaryTiledLayer->paint(graphics);
     
 this->paintDots(graphics);
@@ -312,7 +309,6 @@ this->paintDots(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_MINIMAPLAYER_CPP

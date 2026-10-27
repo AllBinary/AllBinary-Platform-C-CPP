@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORES_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/remote/RemoteHighScores.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,12 +107,35 @@
 #include "org/allbinary/game/score/remote/RemoteHighScoresSubmissionProcessorFactory.h"
 #include "org/allbinary/game/score/remote/RemoteHighScoresData.h"
 
-class RemoteHighScores: public HighScores {
+ABHashtable<Object*, Object*>* RemoteHighScores::hashTable = StdUtil::getInstance()->createHashtable();
 
-    private: static inline ABHashtable<Object*, Object*>* hashTable = StdUtil::getInstance()->createHashtable();
+RemoteHighScores::RemoteHighScores(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation, GameInfo* gameInfo, std::string heading, std::string columnTwoHeading, bool ascending, bool preload) : HighScores(gameInfo->toString(), heading, columnTwoHeading), logUtil(LogUtil::getInstance()), enumerationUtil(EnumerationUtil::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this->abeClientInformation= abeClientInformation;
+    
+this->softwareInformation= softwareInformation;
+    
+this->setAscending(ascending);
+    
+
+                        if(preload)
+                        
+                                    {
+                                    RemoteHighScoresProcessorFactory::getInstance()->process(this, this->abeClientInformation, gameInfo);
+    
+
+                                    }
+                                
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static HighScores* getInstance(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation, GameInfo* gameInfo, std::string heading, std::string columnTwoHeading, bool isAscending){
+    auto RemoteHighScores::getInstance(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation, GameInfo* gameInfo, std::string heading, std::string columnTwoHeading, bool isAscending) -> HighScores*{
 
 
 
@@ -113,7 +146,7 @@ class RemoteHighScores: public HighScores {
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static HighScores* getInstancePreload(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation, GameInfo* gameInfo, std::string heading, std::string columnTwoHeading, bool isAscending, bool preload){
+    auto RemoteHighScores::getInstancePreload(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation, GameInfo* gameInfo, std::string heading, std::string columnTwoHeading, bool isAscending, bool preload) -> HighScores*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -161,50 +194,13 @@ logUtil->put(commonStrings->EXCEPTION, RemoteErrorHighScoresSingletonFactory::ge
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation;
-
-    private: SoftwareInformation* softwareInformation;
-
-    private: bool ascending;
-
-    public: const std::string ASCENDING = "ASCENDING";
-
-private: RemoteHighScores(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation, GameInfo* gameInfo, std::string heading, std::string columnTwoHeading, bool ascending, bool preload) : HighScores(gameInfo->toString(), heading, columnTwoHeading){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this->abeClientInformation= abeClientInformation;
-    
-this->softwareInformation= softwareInformation;
-    
-this->setAscending(ascending);
-    
-
-                        if(preload)
-                        
-                                    {
-                                    RemoteHighScoresProcessorFactory::getInstance()->process(this, this->abeClientInformation, gameInfo);
-    
-
-                                    }
-                                
-}
-
-
-    public: void addHighScore(HighScore* newHighScore){
+    auto RemoteHighScores::addHighScore(HighScore* newHighScore) -> void{
 RemoteHighScoresSubmissionProcessorFactory::getInstance()->process(this, this->abeClientInformation, newHighScore);
     
 }
 
 
-    public: void update(ABHashtable<Object*, Object*>* hashtable){
+    auto RemoteHighScores::update(ABHashtable<Object*, Object*>* hashtable) -> void{
 this->getList()->clear();
     
 
@@ -267,7 +263,7 @@ this->getList()->add(highScore);
         {
 nextElement= this->enumerationUtil->nextElement(enumeration);
     
-this->logUtil->putF(NEXT_ELEMENT +nextElement, this, commonStrings->PROCESS);
+this->logUtil->putF(JavaString::valueOf(NEXT_ELEMENT) +JavaString::valueOf(nextElement), this, commonStrings->PROCESS);
     
 }
 
@@ -277,13 +273,13 @@ this->logUtil->putF(NEXT_ELEMENT +nextElement, this, commonStrings->PROCESS);
 }
 
 
-    private: void setAscending(bool ascending){
+    auto RemoteHighScores::setAscending(bool ascending) -> void{
 this->ascending= ascending;
     
 }
 
 
-    public: bool getAscending(){
+    auto RemoteHighScores::getAscending() -> bool{
 
 
 
@@ -293,7 +289,7 @@ this->ascending= ascending;
 }
 
 
-    public: SoftwareInformation* getSoftwareInformation(){
+    auto RemoteHighScores::getSoftwareInformation() -> SoftwareInformation*{
 
 
 
@@ -303,7 +299,6 @@ this->ascending= ascending;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORES_CPP

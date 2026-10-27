@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_DRAGVELOCITYBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_DRAGVELOCITYBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
+class BasicDecimal;
 
 
 
@@ -49,12 +52,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
-#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+class BasicVelocityProperties;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DragVelocityBehavior: public VelocityBehaviorBase {
 
-    public: static DragVelocityBehavior* instance() { static std::unique_ptr<DragVelocityBehavior> value(new DragVelocityBehavior()); return value.get(); }
+    private: static DragVelocityBehavior* instance_owner();
+    public: static DragVelocityBehavior* instance;
 
+
+            
+    public: DragVelocityBehavior();
+        
     public: void reduce(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
 
     public: void reduceX(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
@@ -67,3 +79,19 @@ class DragVelocityBehavior: public VelocityBehaviorBase {
 
 
         #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_DRAGVELOCITYBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_DRAGVELOCITYBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_DRAGVELOCITYBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/math/BasicDecimal.h>)
+#include <org/allbinary/logic/math/BasicDecimal.h>
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/VelocityBehaviorBase.h")
+#include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/BasicVelocityProperties.h")
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#endif
+
+        #endif
+    

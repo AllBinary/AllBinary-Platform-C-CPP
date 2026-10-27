@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_GENERIC_USER_USERTAG_CPP
+        #define TAGS_GENERIC_USER_USERTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/generic/user/UserTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserTag: public StoreValidationTransformTag {
 
-    private: std::string role;
-
-public: UserTag(){
+UserTag::UserTag(){
 }
 
 
-    public: void setRole(std::string value){
+    auto UserTag::setRole(std::string value) -> void{
 this->role= value;
     
 this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
@@ -75,7 +82,7 @@ this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto UserTag::doStartTag() -> int32_t{
 
         try {
             
@@ -85,7 +92,7 @@ this->getPropertiesHashMap()->put(UserRoleData::NAME, this->role);
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.EDIT +org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->EDIT +org.allbinary->globals->GLOBALS2->EDIT) == 0)
                         
                                     {
                                     this->setName("Edit Session Validation User View - i.e. User Profile Edit");
@@ -96,7 +103,7 @@ this->setObjectFile("views.generic.user.EditValidationView");
                                     }
                                 
 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->NEW) == 0)
                         
                                     {
                                     this->setName("New User View");
@@ -107,7 +114,7 @@ this->setObjectFile("views.generic.user.NewUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->INSERT) == 0)
                         
                                     {
                                     this->setName("Add Validation User View");
@@ -118,7 +125,7 @@ this->setObjectFile("views.generic.user.AddValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     this->setName("Validation User View");
@@ -129,7 +136,7 @@ this->setObjectFile("views.generic.user.ViewValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->EDIT) == 0)
                         
                                     {
                                     this->setName("Validation User View");
@@ -140,7 +147,7 @@ this->setObjectFile("views.generic.user.EditValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.UPDATE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->UPDATE) == 0)
                         
                                     {
                                     this->setName("Update Validation User View");
@@ -151,7 +158,7 @@ this->setObjectFile("views.generic.user.UpdateValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->DELETE) == 0)
                         
                                     {
                                     this->setName("Delete Validation User View");
@@ -162,49 +169,49 @@ this->setObjectFile("views.generic.user.DeleteValidationUserView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.BACKUP) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->BACKUP) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.RESTORE) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->RESTORE) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.DROP) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->DROP) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.CREATE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->CREATE) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("View not implemented");
+                            throw Exception("View not implemented");
                     
 
                                     }
@@ -213,7 +220,7 @@ this->setObjectFile("views.generic.user.DeleteValidationUserView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -222,7 +229,7 @@ this->setObjectFile("views.generic.user.DeleteValidationUserView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -230,7 +237,7 @@ this->setObjectFile("views.generic.user.DeleteValidationUserView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -249,7 +256,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_GENERIC_USER_USERTAG_CPP

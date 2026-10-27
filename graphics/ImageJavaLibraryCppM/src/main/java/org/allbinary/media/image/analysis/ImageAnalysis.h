@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,26 +41,12 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt.h>
-
-      
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/graphics/color/ColorCacheFactory.h>
-
-      
-#include <org/allbinary/graphics/color/ColorCacheable.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ColorCacheFactory;
+class ColorCacheable;
+class LogUtil;
+class CommonLabels;
+class CommonStrings;
 
 
 
@@ -74,17 +65,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/analysis/ImageAnalysisResults.h"
-#include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
-#include "org/allbinary/media/image/analysis/Color.h"
-#include "org/allbinary/media/image/analysis/ColorAverage.h"
-#include "org/allbinary/media/image/analysis/ImageColorResults.h"
+        class ImageAnalysisResults;
+class ColorRangeInterface;
+class Color;
+class ColorAverage;
+class ImageColorResults;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageAnalysis
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageAnalysis* instance() { static std::unique_ptr<ImageAnalysis> value(new ImageAnalysis()); return value.get(); }
+    private: static ImageAnalysis* instance_owner();
+    private: static ImageAnalysis* instance;
 
     public: static ImageAnalysis* getInstance();
 
@@ -96,7 +92,7 @@ class ImageAnalysis
 
     private: static void processImageColorResults(ImageColorResults* imageColorResults, ColorRangeInterface* colorRangeInterface, Color* color);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: ImageAnalysis();
 
@@ -110,3 +106,46 @@ private: ImageAnalysis();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/ColorCacheFactory.h>)
+#include <org/allbinary/graphics/color/ColorCacheFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/ColorCacheable.h>)
+#include <org/allbinary/graphics/color/ColorCacheable.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/image/analysis/ImageAnalysisResults.h")
+#include "org/allbinary/media/image/analysis/ImageAnalysisResults.h"
+#endif
+#if __has_include("org/allbinary/media/image/analysis/ColorRangeInterface.h")
+#include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
+#endif
+#if __has_include("org/allbinary/media/image/analysis/Color.h")
+#include "org/allbinary/media/image/analysis/Color.h"
+#endif
+#if __has_include("org/allbinary/media/image/analysis/ColorAverage.h")
+#include "org/allbinary/media/image/analysis/ColorAverage.h"
+#endif
+#if __has_include("org/allbinary/media/image/analysis/ImageColorResults.h")
+#include "org/allbinary/media/image/analysis/ImageColorResults.h"
+#endif
+
+        #endif
+    

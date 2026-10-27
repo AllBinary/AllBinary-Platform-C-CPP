@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTSVALIDATIONFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTSVALIDATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementsValidationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,13 +76,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidationFactory.h"
 
-class CssElementsValidationFactory
-            : public Object
-         {
+
+CssElementsValidationFactory::CssElementsValidationFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList* getInstance(BasicArrayList* cssElementStyleNodeList){
+    auto CssElementsValidationFactory::getInstance(BasicArrayList* cssElementStyleNodeList) -> BasicArrayList*{
 
     BasicArrayList* styles = new BasicArrayListD();;
     
@@ -109,7 +120,7 @@ styles->add(cssValidationInterface);
 }
 
 
-    public: static BasicArrayList* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto CssElementsValidationFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> BasicArrayList*{
 
     BasicArrayList* styles = new BasicArrayListD();;
     
@@ -122,11 +133,6 @@ styles->add(cssValidationInterface);
 }
 
 
-private: CssElementsValidationFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTSVALIDATIONFACTORY_CPP

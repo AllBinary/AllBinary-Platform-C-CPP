@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREEINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/category/CategoryModifierTreeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CategoryModifierTreeInterface {
+//Interface - declared in the header
 
-    public: virtual void insert(CategoryInterface* parentCategoryInterface, CategoryInterface* newChildCategoryInterface) = 0;
 
-    public: virtual void delete_(CategoryInterface* parentCategoryInterface, CategoryInterface* newChildCategoryInterface) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREEINTERFACE_CPP

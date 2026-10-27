@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_TIMETYPETEST_CPP
+        #define ORG_ALLBINARY_TIME_TIMETYPETEST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/TimeTypeTest.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,11 @@
         #include "org/allbinary/time/TimeTypeUtil.h"
 //#include "org/allbinary/time/TestableTimeTypeUtil.h"
 
-class TimeTypeTest
-            : public Object
-         {
 
-    private: static int64_t millisForHourLocal(int32_t hour){
+TimeTypeTest::TimeTypeTest() {
+        }
+        
+    auto TimeTypeTest::millisForHourLocal(int32_t hour) -> int64_t{
 
     Calendar* cal = Calendar::getInstance();;
     
@@ -70,20 +80,13 @@ cal->set(Calendar::MILLISECOND, 0);
 }
 
 
-//inner= member=true isStatic=static
-class TestableTimeTypeUtil: public TimeTypeUtil {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: int32_t hour;
-
-: TestableTimeTypeUtil(int32_t hour){
+TimeTypeTest::TestableTimeTypeUtil::TestableTimeTypeUtil(int32_t hour){
 this->hour= hour;
     
 }
 
 
-    public: int32_t getHourOfDay(){
+    auto TimeTypeTest::TestableTimeTypeUtil::getHourOfDay() -> int32_t{
 
 
 
@@ -93,31 +96,28 @@ this->hour= hour;
 }
 
 
-};
-
-            
-    void isNight_returnsTrue_for_hours_less_than_6(){
+    auto TimeTypeTest::isNight_returnsTrue_for_hours_less_than_6() -> void{
 
                     //Otherwise - statement - ForEachStmt
 
 }
 
 
-    void isNight_returnsTrue_for_hours_greater_than_18(){
+    auto TimeTypeTest::isNight_returnsTrue_for_hours_greater_than_18() -> void{
 
                     //Otherwise - statement - ForEachStmt
 
 }
 
 
-    void isNight_returnsFalse_for_boundary_hours_6_and_18(){
+    auto TimeTypeTest::isNight_returnsFalse_for_boundary_hours_6_and_18() -> void{
 
                     //Otherwise - statement - ForEachStmt
 
 }
 
 
-    void getNightOrDay_returns_expected_label(){
+    auto TimeTypeTest::getNightOrDay_returns_expected_label() -> void{
 
     TimeTypeUtil* nightUtil = new TestableTimeTypeUtil(0);;
     
@@ -131,7 +131,7 @@ Assertions::assertEquals(dayUtil->DAY, dayUtil->getNightOrDay());
 }
 
 
-    void getHourOfDay_long_converts_epoch_to_local_hour(){
+    auto TimeTypeTest::getHourOfDay_long_converts_epoch_to_local_hour() -> void{
 
     TimeTypeUtil* util = new TimeTypeUtil();;
     
@@ -141,7 +141,7 @@ Assertions::assertEquals(dayUtil->DAY, dayUtil->getNightOrDay());
 }
 
 
-    void isNight_long_expected_ranges(){
+    auto TimeTypeTest::isNight_long_expected_ranges() -> void{
 
     TimeTypeUtil* util = new TimeTypeUtil();;
     
@@ -154,7 +154,7 @@ Assertions::assertEquals(dayUtil->DAY, dayUtil->getNightOrDay());
 }
 
 
-    void getNightOrDay_long_consistency(){
+    auto TimeTypeTest::getNightOrDay_long_consistency() -> void{
 
     TimeTypeUtil* util = new TimeTypeUtil();;
     
@@ -171,7 +171,7 @@ Assertions::assertEquals(util->DAY, util->getNightOrDay(dayMillis));
 }
 
 
-    void boundaries_day_for_long_based_api(){
+    auto TimeTypeTest::boundaries_day_for_long_based_api() -> void{
 
     TimeTypeUtil* util = new TimeTypeUtil();;
     
@@ -181,7 +181,7 @@ Assertions::assertEquals(util->DAY, util->getNightOrDay(dayMillis));
 }
 
 
-    void constants_accessible_and_stable(){
+    auto TimeTypeTest::constants_accessible_and_stable() -> void{
 
     TimeTypeUtil* util = new TimeTypeUtil();;
     
@@ -192,7 +192,7 @@ Assertions::assertEquals("Day", util->DAY);
 }
 
 
-    void getInstance_returns_same_singleton(){
+    auto TimeTypeTest::getInstance_returns_same_singleton() -> void{
 
     TimeTypeUtil* a = TimeTypeUtil::getInstance();;
     
@@ -204,7 +204,6 @@ Assertions::assertSame(a, b);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_TIMETYPETEST_CPP

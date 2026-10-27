@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
-class SelectRTSLayerVisitorFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual Visitor* create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORYINTERFACE_CPP

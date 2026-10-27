@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_H
         #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,9 +38,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -55,29 +58,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PrimitiveLongSingleton
-            : public Object
+            : public virtual Object
          {
 
-    private: static PrimitiveLongSingleton* instance() { static std::unique_ptr<PrimitiveLongSingleton> value(new PrimitiveLongSingleton()); return value.get(); }
+    private: static PrimitiveLongSingleton* instance_owner();
+    private: static PrimitiveLongSingleton* instance;
 
     public: static PrimitiveLongSingleton* getInstance();
 
-    public: const std::vector<char> UNK = ['U','n','k'];
 
-    public: const std::vector<int8_t> NUMBER_ARRAY = {0,1,2,3,4,5,6,7,8,9};
+            
+    public: PrimitiveLongSingleton();
+        
+    public: std::vector<char> UNK;
 
-    public: const std::vector<char> NUMBER_CHAR_ARRAY = ['0','1','2','3','4','5','6','7','8','9'];
+    public: std::vector<int8_t> NUMBER_ARRAY;
 
-    public: const std::vector<std::vector<char>> NUMBER_CHAR_ARRAYS = 
-                                                        {
-                                                            ['0'],['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8'],['9']
-                                                        };
+    public: std::vector<char> NUMBER_CHAR_ARRAY;
 
-    public: const std::vector<char> ZERO = 
-                                                        
-                                                        {this->NUMBER_CHAR_ARRAY[0]}
-                                                    ;
+    public: std::vector<std::vector<char>> NUMBER_CHAR_ARRAYS;
+
+    public: std::vector<char> ZERO;
 
                 //@Throws(Exception.constructor)
             
@@ -89,3 +95,13 @@ class PrimitiveLongSingleton
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

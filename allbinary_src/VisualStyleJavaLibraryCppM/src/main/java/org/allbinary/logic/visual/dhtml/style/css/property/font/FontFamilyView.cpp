@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/font/FontFamilyView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,19 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/style/css/property/font/FontFamilyData.h"
 
-class FontFamilyView: public CssPropertyView {
 
-public: FontFamilyView() : CssPropertyView(FontFamilyData::getInstance()->VALUE){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-public: FontFamilyView(Node* node) : CssPropertyView(node){
+FontFamilyView::FontFamilyView() : CssPropertyView(FontFamilyData::getInstance()->VALUE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +73,16 @@ public: FontFamilyView(Node* node) : CssPropertyView(node){
 }
 
 
-};
+FontFamilyView::FontFamilyView(Node* node) : CssPropertyView(node){
 
-            
+                        //super/this constructor call is in the constructor initializer list.
+                    
 
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVIEW_CPP

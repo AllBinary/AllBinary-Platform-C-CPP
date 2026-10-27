@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_VIEWHELPER_CPP
+        #define TAGHELPERS_VIEWHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/ViewHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,27 +90,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ViewHelper
-            : public Object
-        , public TransformInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: TransformInterface* componentInterface;
-
-public: ViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+ViewHelper::ViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 this->componentInterface= TransformFactory::getInstance()->getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }
 
 
-    public: int32_t NO_TYPE = 0;
-
-    public: int32_t getTypeId(){
+    auto ViewHelper::getTypeId() -> int32_t{
 
 
 
@@ -112,7 +109,7 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto ViewHelper::view() -> std::string{
 
         try {
             
@@ -138,7 +135,7 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
                         if()
                         
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
@@ -158,13 +155,13 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto ViewHelper::toXmlDoc() -> Document*{
 
         try {
             
 
 
-                            throw new Exception("Hmm: " +this->componentInterface->getTransformDocumentInterface()->getDoc());
+                            throw Exception(JavaString::valueOf("Hmm: ") +JavaString::valueOf(this->componentInterface->getTransformDocumentInterface()->getDoc()));
                     
 
                 //: 
@@ -183,7 +180,7 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
                         if()
                         
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
@@ -201,7 +198,7 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 }
 
 
-    public: TransformInterface* getViewObject(){
+    auto ViewHelper::getViewObject() -> TransformInterface*{
 
 
 
@@ -213,7 +210,7 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto ViewHelper::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -223,7 +220,7 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 }
 
 
-    public: TransformDocumentInterface* getTransformDocumentInterface(){
+    auto ViewHelper::getTransformDocumentInterface() -> TransformDocumentInterface*{
 
 
 
@@ -233,7 +230,7 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface){
+    auto ViewHelper::setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface) -> void{
 
 
 
@@ -243,7 +240,6 @@ this->componentInterface= TransformFactory::getInstance()->getInstance(this->abe
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_VIEWHELPER_CPP

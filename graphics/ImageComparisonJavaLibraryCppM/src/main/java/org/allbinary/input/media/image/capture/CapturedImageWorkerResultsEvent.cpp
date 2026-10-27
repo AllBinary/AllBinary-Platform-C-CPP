@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSEVENT_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,13 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CapturedImageWorkerResultsEvent: public AllBinaryEventObject {
 
-    private: int64_t frame;
-
-    private: BufferedImage* bufferedImage;
-
-public: CapturedImageWorkerResultsEvent(Object* anyType, int64_t frame, BufferedImage* bufferedImage) : AllBinaryEventObject(anyType){
+CapturedImageWorkerResultsEvent::CapturedImageWorkerResultsEvent(Object* anyType, int64_t frame, BufferedImage* bufferedImage) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +78,7 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    public: BufferedImage* getBufferedImage(){
+    auto CapturedImageWorkerResultsEvent::getBufferedImage() -> BufferedImage*{
 
 
 
@@ -83,13 +88,13 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    private: void setBufferedImage(BufferedImage* bufferedImage){
+    auto CapturedImageWorkerResultsEvent::setBufferedImage(BufferedImage* bufferedImage) -> void{
 this->bufferedImage= bufferedImage;
     
 }
 
 
-    public: int64_t getFrame(){
+    auto CapturedImageWorkerResultsEvent::getFrame() -> int64_t{
 
 
 
@@ -99,7 +104,6 @@ this->bufferedImage= bufferedImage;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSEVENT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/jar/JarUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,27 +76,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class JarUtil
-            : public Object
-         {
 
-                //@Throws(Exception.constructor)
-            
-    public: static void main(std::vector<std::string> args){
-(new JarUtil(new URL("file:///G:/mnt/bc/mydev/working/j2me/MiniSpaceWars/MiniSpaceWars/dist/MiniSpaceWars.jar")))->show();
-    
-}
-
-
-    private: URL* jarURL;
-
-public: JarUtil(URL* jarURL){
+JarUtil::JarUtil(URL* jarURL){
 this->jarURL= jarURL;
     
 }
 
 
-    public: void show(){
+    auto JarUtil::show() -> void{
 
     std::vector<int8_t> cache = std::vector<int8_t>(1024);;
     
@@ -176,7 +173,14 @@ ex.printStackTrace();
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto JarUtil::main(std::vector<std::string> args) -> void{
+(new JarUtil(new URL("file:///G:/mnt/bc/mydev/working/j2me/MiniSpaceWars/MiniSpaceWars/dist/MiniSpaceWars.jar")))->show();
+    
+}
 
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_CPP

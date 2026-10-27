@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AlphaProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,27 +60,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/AlphaBaseProcessor.h"
 
-class AlphaProcessor: public AlphaBaseProcessor {
 
-    private: static AlphaProcessor* instanceC() { static std::unique_ptr<AlphaProcessor> value(new AlphaProcessor()); return value.get(); }
+AlphaProcessor::AlphaProcessor() {
+        }
+        auto AlphaProcessor::instanceC_owner() -> AlphaProcessor* { static std::unique_ptr<AlphaProcessor> value(new AlphaProcessor()); return value.get(); }
+AlphaProcessor* AlphaProcessor::instanceC = AlphaProcessor::instanceC_owner();
 
-    public: static AlphaProcessor* getInstance(){
+    auto AlphaProcessor::getInstance() -> AlphaProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AlphaProcessor::instanceC();
+                        return AlphaProcessor::instanceC;
     
 }
 
 
-    public: void setAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t alpha){
+    auto AlphaProcessor::setAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t alpha) -> void{
 imageModifierUtil->setAlpha3(imageToShow, alpha);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_CPP

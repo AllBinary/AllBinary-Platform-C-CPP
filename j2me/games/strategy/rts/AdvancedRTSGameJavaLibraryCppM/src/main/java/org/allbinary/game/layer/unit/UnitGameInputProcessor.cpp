@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/unit/UnitGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +57,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/unit/UnitLayer.h"
 
-class UnitGameInputProcessor: public GameInputProcessor {
 
-    protected: UnitLayer* unitLayer;
-
-public: UnitGameInputProcessor(UnitLayer* unitLayer){
+UnitGameInputProcessor::UnitGameInputProcessor(UnitLayer* unitLayer){
 this->unitLayer= unitLayer;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_UNITGAMEINPUTPROCESSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/ShaderStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShaderStrings
-            : public Object
-         {
 
-    private: static ShaderStrings* instance() { static std::unique_ptr<ShaderStrings> value(new ShaderStrings()); return value.get(); }
+ShaderStrings::ShaderStrings() {
+        }
+        auto ShaderStrings::instance_owner() -> ShaderStrings* { static std::unique_ptr<ShaderStrings> value(new ShaderStrings()); return value.get(); }
+ShaderStrings* ShaderStrings::instance = ShaderStrings::instance_owner();
 
-    public: static ShaderStrings* getInstance(){
+    auto ShaderStrings::getInstance() -> ShaderStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderStrings::instance();
+                        return ShaderStrings::instance;
     
 }
 
 
-    public: const std::string NO_PROGRAM_HANDLE = "No program handle";
 
-    public: const std::string UNIFORM_BLOCK_HANDLE = "Uniform Block Handle: ";
 
-    public: const std::string UNIFORM_HANDLE = "Uniform Handle: ";
-
-    public: const std::string UNIFORM_ATTRIBUTE_HANDLE = "Uniform Attribute Handle: ";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_CPP

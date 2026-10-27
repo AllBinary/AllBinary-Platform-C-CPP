@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAIFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,33 +40,15 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ArtificialIntelligenceInterface;
+class GameInput;
+class AllBinaryLayer;
+class LogUtil;
+class StringMaker;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -80,14 +67,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/ai/NumberInSameGroupSequence.h"
-#include "org/allbinary/game/ag/ai/NumberOnOwnGroupSequenceAI.h"
+        class NumberInSameGroupSequence;
+class NumberOnOwnGroupSequenceAI;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NumberOnOwnGroupSequenceAIFactory
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: NumberOnOwnGroupSequenceAIFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -99,3 +94,43 @@ class NumberOnOwnGroupSequenceAIFactory
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAIFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAIFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAIFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/ai/ArtificialIntelligenceInterface.h>)
+#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/ag/ai/NumberInSameGroupSequence.h")
+#include "org/allbinary/game/ag/ai/NumberInSameGroupSequence.h"
+#endif
+#if __has_include("org/allbinary/game/ag/ai/NumberOnOwnGroupSequenceAI.h")
+#include "org/allbinary/game/ag/ai/NumberOnOwnGroupSequenceAI.h"
+#endif
+
+        #endif
+    

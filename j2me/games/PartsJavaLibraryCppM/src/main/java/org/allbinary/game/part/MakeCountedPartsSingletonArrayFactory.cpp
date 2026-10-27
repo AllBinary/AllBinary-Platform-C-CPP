@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/MakeCountedPartsSingletonArrayFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,29 +85,25 @@
         #include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
 #include "org/allbinary/game/part/PartInterface.h"
 
-class MakeCountedPartsSingletonArrayFactory
-            : public Object
-         {
 
-    private: static MakeCountedPartsSingletonArrayFactory* instance() { static std::unique_ptr<MakeCountedPartsSingletonArrayFactory> value(new MakeCountedPartsSingletonArrayFactory()); return value.get(); }
+MakeCountedPartsSingletonArrayFactory::MakeCountedPartsSingletonArrayFactory() : logUtil(LogUtil::getInstance()), list(BasicArrayListUtil::getInstance()->getImmutableInstance()) {
+        }
+        auto MakeCountedPartsSingletonArrayFactory::instance_owner() -> MakeCountedPartsSingletonArrayFactory* { static std::unique_ptr<MakeCountedPartsSingletonArrayFactory> value(new MakeCountedPartsSingletonArrayFactory()); return value.get(); }
+MakeCountedPartsSingletonArrayFactory* MakeCountedPartsSingletonArrayFactory::instance = MakeCountedPartsSingletonArrayFactory::instance_owner();
 
-    public: static MakeCountedPartsSingletonArrayFactory* getInstance(){
+    auto MakeCountedPartsSingletonArrayFactory::getInstance() -> MakeCountedPartsSingletonArrayFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MakeCountedPartsSingletonArrayFactory::instance();
+                        return MakeCountedPartsSingletonArrayFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: std::vector<PartInterface*> getUpdated(std::vector<PartInterface*> partInterfaceArray){
+    auto MakeCountedPartsSingletonArrayFactory::getUpdated(std::vector<PartInterface*> partInterfaceArray) -> std::vector<PartInterface*>{
 this->list= new BasicArrayListD();
     
 
@@ -175,7 +181,6 @@ newPartInterfaceArray[index]= dynamic_cast<PartInterface*>(this->list->get(index
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_CPP

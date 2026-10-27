@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSTRAFELEFTRESOURCE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSTRAFELEFTRESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonStrafeLeftResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
-class TouchButtonStrafeLeftResource: public TouchButtonResource {
+TouchButtonResource* TouchButtonStrafeLeftResource::instance = new TouchButtonStrafeLeftResource();
 
-    private: static inline TouchButtonResource* instance = new TouchButtonStrafeLeftResource();
-
-    public: static TouchButtonResource* getInstance(){
+    auto TouchButtonStrafeLeftResource::getInstance() -> TouchButtonResource*{
 
 
 
@@ -58,7 +66,7 @@ class TouchButtonStrafeLeftResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonStrafeLeftResource() : TouchButtonResource("/touch_button_strafe_left_arrow_64_by_64.png", "/touch_button_strafe_left_arrow_hint_64_by_64.png"){
+TouchButtonStrafeLeftResource::TouchButtonStrafeLeftResource() : TouchButtonResource("/touch_button_strafe_left_arrow_64_by_64.png", "/touch_button_strafe_left_arrow_hint_64_by_64.png"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +76,6 @@ private: TouchButtonStrafeLeftResource() : TouchButtonResource("/touch_button_st
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSTRAFELEFTRESOURCE_CPP

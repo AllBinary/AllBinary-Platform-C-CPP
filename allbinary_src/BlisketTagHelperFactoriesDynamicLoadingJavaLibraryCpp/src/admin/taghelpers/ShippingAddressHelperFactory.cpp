@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_SHIPPINGADDRESSHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_SHIPPINGADDRESSHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/ShippingAddressHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,21 +66,14 @@
         #include "admin/taghelpers/TagHelperFactoryInterface.h"
 #include "admin/taghelpers/HelperFactory.h"
 
-class ShippingAddressHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "admin.taghelpers.ShippingAddressHelper";
-
-    private: static inline const std::string FACTORYNAME = "ShippingAddressHelperFactory";
-
-public: ShippingAddressHelperFactory(){
+ShippingAddressHelperFactory::ShippingAddressHelperFactory(){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto ShippingAddressHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -80,7 +83,6 @@ public: ShippingAddressHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_SHIPPINGADDRESSHELPERFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGINFOINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGINFOINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingInfoInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
 
-class PathFindingInfoInterface {
+//Interface - declared in the header
 
-    public: virtual BasicArrayList* getStartPathFindingNodeList() = 0;
 
-    public: virtual BasicArrayList* getEndPathFindingNodeList() = 0;
 
-    public: virtual GeographicPathFinderBase* getPathFinder() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGINFOINTERFACE_CPP

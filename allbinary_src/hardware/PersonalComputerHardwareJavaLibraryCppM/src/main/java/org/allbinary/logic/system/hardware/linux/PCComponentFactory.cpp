@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_PCCOMPONENTFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_PCCOMPONENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/linux/PCComponentFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -89,31 +99,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PCComponentFactory
-            : public Object
-         {
+auto PCComponentFactory::instance_owner() -> PCComponentFactory* { static std::unique_ptr<PCComponentFactory> value(new PCComponentFactory()); return value.get(); }
+PCComponentFactory* PCComponentFactory::instance = PCComponentFactory::instance_owner();
 
-    private: static PCComponentFactory* instance() { static std::unique_ptr<PCComponentFactory> value(new PCComponentFactory()); return value.get(); }
-
-    public: static PCComponentFactory* getInstance(){
+    auto PCComponentFactory::getInstance() -> PCComponentFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PCComponentFactory::instance();
+                        return PCComponentFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ComponentFactory* componentFactory = ComponentFactory::getInstance();
-
-private: PCComponentFactory(){
+PCComponentFactory::PCComponentFactory() : logUtil(LogUtil::getInstance()), componentFactory(ComponentFactory::getInstance()){
 }
 
 
-    public: HardwareComponentInterface* getInstance(std::string component, std::string componentData){
+    auto PCComponentFactory::getInstance(std::string component, std::string componentData) -> HardwareComponentInterface*{
 
         try {
             
@@ -121,7 +124,7 @@ private: PCComponentFactory(){
                         
                                     {
                                     
-                        if(component.compare(this->componentFactory->ETHERNET.toString()) == 0)
+                        if(component.compare(this->componentFactory->ETHERNET->toString()) == 0)
                         
                                     {
                                     
@@ -134,7 +137,7 @@ private: PCComponentFactory(){
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->BRIDGE.toString()) == 0)
+                        if(component.compare(this->componentFactory->BRIDGE->toString()) == 0)
                         
                                     {
                                     
@@ -147,7 +150,7 @@ private: PCComponentFactory(){
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->IDE.toString()) == 0)
+                        if(component.compare(this->componentFactory->IDE->toString()) == 0)
                         
                                     {
                                     
@@ -160,7 +163,7 @@ private: PCComponentFactory(){
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->MULTIMEDIA.toString()) == 0)
+                        if(component.compare(this->componentFactory->MULTIMEDIA->toString()) == 0)
                         
                                     {
                                     
@@ -173,7 +176,7 @@ private: PCComponentFactory(){
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->SCSI.toString()) == 0)
+                        if(component.compare(this->componentFactory->SCSI->toString()) == 0)
                         
                                     {
                                     
@@ -186,7 +189,7 @@ private: PCComponentFactory(){
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->USB.toString()) == 0)
+                        if(component.compare(this->componentFactory->USB->toString()) == 0)
                         
                                     {
                                     
@@ -199,7 +202,7 @@ private: PCComponentFactory(){
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->VGA.toString()) == 0)
+                        if(component.compare(this->componentFactory->VGA->toString()) == 0)
                         
                                     {
                                     
@@ -212,7 +215,7 @@ private: PCComponentFactory(){
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->PCI.toString()) == 0)
+                        if(component.compare(this->componentFactory->PCI->toString()) == 0)
                         
                                     {
                                     
@@ -241,7 +244,7 @@ private: PCComponentFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -260,107 +263,107 @@ private: PCComponentFactory(){
 }
 
 
-    public: std::string getComponentType(std::string component){
+    auto PCComponentFactory::getComponentType(std::string component) -> std::string{
 
-                        if(JavaString::indexOf(component, this->componentFactory->ETHERNET.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->ETHERNET->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->ETHERNET.toString();;
+                        return this->componentFactory->ETHERNET->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->BRIDGE.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->BRIDGE->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->BRIDGE.toString();;
+                        return this->componentFactory->BRIDGE->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->IDE.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->IDE->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->IDE.toString();;
+                        return this->componentFactory->IDE->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->MULTIMEDIA.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->MULTIMEDIA->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->MULTIMEDIA.toString();;
+                        return this->componentFactory->MULTIMEDIA->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->SCSI.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->SCSI->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->SCSI.toString();;
+                        return this->componentFactory->SCSI->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->USB.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->USB->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->USB.toString();;
+                        return this->componentFactory->USB->toString();;
     
 
                                     }
                                 
                              else 
-                        if(JavaString::indexOf(component, this->componentFactory->VGA.toString()) >= 0)
+                        if(JavaString::indexOf(component, this->componentFactory->VGA->toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->VGA.toString();;
+                        return this->componentFactory->VGA->toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.compare(this->componentFactory->PCI.toString()) == 0)
+                        if(component.compare(this->componentFactory->PCI->toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->PCI.toString();;
+                        return this->componentFactory->PCI->toString();;
     
 
                                     }
@@ -369,12 +372,11 @@ private: PCComponentFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentFactory->UNKNOWN.toString();;
+                        return this->componentFactory->UNKNOWN->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_PCCOMPONENTFACTORY_CPP

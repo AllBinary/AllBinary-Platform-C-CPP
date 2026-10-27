@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_H
         #define ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
-
-      
-#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ProgressCanvas;
+class ProgressCanvasFactory;
+class ImageCache;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -64,15 +59,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/BaseImageLoadingProcessor.h"
 #include "org/allbinary/thread/ABRunnable.h"
-//#include "org/allbinary/thread/ImageCacheRunnable.h"
-#include "org/allbinary/thread/ImageThreadPool.h"
+//class ImageCacheRunnable;
+class ImageThreadPool;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ConcurrentImageLoadingProcessor: public BaseImageLoadingProcessor {
+public: class ImageCacheRunnable;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 //inner= member=true isStatic=
-class ImageCacheRunnable: public ABRunnable {
+public: class ImageCacheRunnable: public ABRunnable {
 
     private: ImageCache* imageCache;
 
@@ -95,3 +95,34 @@ public: ConcurrentImageLoadingProcessor(ImageCache* imageCache);
 
 
         #endif //ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>)
+#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
+#endif
+#if __has_include(<org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>)
+#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/thread/BaseImageLoadingProcessor.h")
+#include "org/allbinary/thread/BaseImageLoadingProcessor.h"
+#endif
+#if __has_include("org/allbinary/thread/ABRunnable.h")
+#include "org/allbinary/thread/ABRunnable.h"
+#endif
+#if __has_include("org/allbinary/thread/ImageThreadPool.h")
+#include "org/allbinary/thread/ImageThreadPool.h"
+#endif
+
+        #endif
+    

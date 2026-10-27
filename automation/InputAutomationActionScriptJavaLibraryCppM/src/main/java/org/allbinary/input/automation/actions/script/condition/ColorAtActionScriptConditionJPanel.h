@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/media/image/analysis/ColorRangeInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringValidationUtil;
+class ColorRangeInterface;
+class CommonStrings;
 
 
 
@@ -60,22 +57,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/JPanel.h"
-#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionInterface.h"
-#include "org/allbinary/input/automation/actions/script/condition/JTextField.h"
-#include "org/allbinary/input/automation/actions/script/condition/JLabel.h"
-#include "org/allbinary/input/automation/actions/script/condition/JDialog.h"
-#include "org/allbinary/input/automation/actions/script/condition/JButton.h"
-#include "org/allbinary/input/automation/actions/script/condition/Dimension.h"
-#include "org/allbinary/input/automation/actions/script/condition/ActionListener.h"
-#include "org/allbinary/input/automation/actions/script/condition/ActionEvent.h"
-#include "org/allbinary/input/automation/actions/script/condition/GroupLayout.h"
-#include "org/allbinary/input/automation/actions/script/condition/Short.h"
+class ColorAtActionScriptConditionInterface;
+class JTextField;
+class JLabel;
+class JDialog;
+class JButton;
+class Dimension;
+class ActionListener;
+class ActionEvent;
+class GroupLayout;
+class Short;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorAtActionScriptConditionJPanel: public javax::swing::JPanel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: ColorAtActionScriptConditionInterface* colorAtActionScriptConditionInterface;
 
@@ -181,3 +182,55 @@ public: ColorAtActionScriptConditionJPanel(ColorAtActionScriptConditionInterface
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONJPANEL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/analysis/ColorRangeInterface.h>)
+#include <org/allbinary/media/image/analysis/ColorRangeInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/JPanel.h")
+#include "org/allbinary/input/automation/actions/script/condition/JPanel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionInterface.h")
+#include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptConditionInterface.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/JTextField.h")
+#include "org/allbinary/input/automation/actions/script/condition/JTextField.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/JLabel.h")
+#include "org/allbinary/input/automation/actions/script/condition/JLabel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/JDialog.h")
+#include "org/allbinary/input/automation/actions/script/condition/JDialog.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/JButton.h")
+#include "org/allbinary/input/automation/actions/script/condition/JButton.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/Dimension.h")
+#include "org/allbinary/input/automation/actions/script/condition/Dimension.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/ActionListener.h")
+#include "org/allbinary/input/automation/actions/script/condition/ActionListener.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/ActionEvent.h")
+#include "org/allbinary/input/automation/actions/script/condition/ActionEvent.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/GroupLayout.h")
+#include "org/allbinary/input/automation/actions/script/condition/GroupLayout.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/Short.h")
+#include "org/allbinary/input/automation/actions/script/condition/Short.h"
+#endif
+
+        #endif
+    

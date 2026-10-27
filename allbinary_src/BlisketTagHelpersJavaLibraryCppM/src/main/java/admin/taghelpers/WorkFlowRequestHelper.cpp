@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_WORKFLOWREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_WORKFLOWREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/WorkFlowRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,15 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/ModifyTable.h"
 
-class WorkFlowRequestHelper: public ModifyTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: WorkFlowInterface* workFlowInterface;
-
-public: WorkFlowRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+WorkFlowRequestHelper::WorkFlowRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }
@@ -92,19 +95,19 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 
                 //@Throws(Exception.constructor)
             
-    public: std::string delete_(){
+    auto WorkFlowRequestHelper::delete_() -> std::string{
 
         try {
             
     StringUtil* stringUtil = StringUtil::getInstance();;
     
-WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface->getName(), stringUtil->EMPTY_STRING);
+WorkFlowEntityFactory::getInstance()->create2()->delete_(this->workFlowInterface->getName(), stringUtil->EMPTY_STRING);
     
 
-    std::string success = "Successfully Removed the workflow with " +WorkFlowData::getInstance()->NAME +"= " +this->workFlowInterface->getName() +" from ";;
+    std::string success = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Successfully Removed the workflow with ") +JavaString::valueOf(WorkFlowData::getInstance()->NAME)) +JavaString::valueOf("= ")) +JavaString::valueOf(this->workFlowInterface->getName())) +JavaString::valueOf(" from ");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -125,13 +128,13 @@ WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface-
 
         try {
             
-    std::string error = "Failed to remove workflow with " +WorkFlowData::getInstance()->NAME +"= " +this->workFlowInterface->getName() +" from ";;
+    std::string error = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Failed to remove workflow with ") +JavaString::valueOf(WorkFlowData::getInstance()->NAME)) +JavaString::valueOf("= ")) +JavaString::valueOf(this->workFlowInterface->getName())) +JavaString::valueOf(" from ");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -139,7 +142,7 @@ WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface-
 
 
 
-                            throw new Exception(&e);
+                            throw Exception(&e);
                     
 
                 //: 
@@ -149,10 +152,10 @@ WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface-
     std::string error = "Failed to get data from workflowinterface to set error string";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e2);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e2);
     
 
                                     }
@@ -170,14 +173,14 @@ WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface-
 }
 
 
-    public: std::string insert(){
+    auto WorkFlowRequestHelper::insert() -> std::string{
 
         try {
             
     std::string success = "New User Successfully added to the Users Table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "add()");
@@ -199,10 +202,10 @@ WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface-
     std::string error = "Failed to add User";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "add()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "add()", &e);
     
 
                                     }
@@ -218,14 +221,14 @@ WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface-
 }
 
 
-    public: std::string update(){
+    auto WorkFlowRequestHelper::update() -> std::string{
 
         try {
             
     std::string success = "Updated WorkFlow Successfully";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -247,10 +250,10 @@ WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface-
     std::string error = "Failed to update WorkFlow";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -266,7 +269,6 @@ WorkFlowEntityFactory::getInstance()->create2()->delete(this->workFlowInterface-
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_WORKFLOWREQUESTHELPER_CPP

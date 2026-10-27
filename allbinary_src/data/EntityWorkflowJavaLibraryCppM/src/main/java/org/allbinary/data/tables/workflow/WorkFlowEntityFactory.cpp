@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_WORKFLOW_WORKFLOWENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_WORKFLOW_WORKFLOWENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/workflow/WorkFlowEntity.h"
 
-class WorkFlowEntityFactory
-            : public Object
-         {
+auto WorkFlowEntityFactory::instance_owner() -> WorkFlowEntityFactory* { static std::unique_ptr<WorkFlowEntityFactory> value(new WorkFlowEntityFactory()); return value.get(); }
+WorkFlowEntityFactory* WorkFlowEntityFactory::instance = WorkFlowEntityFactory::instance_owner();
 
-    private: static WorkFlowEntityFactory* instance() { static std::unique_ptr<WorkFlowEntityFactory> value(new WorkFlowEntityFactory()); return value.get(); }
-
-    public: static WorkFlowEntityFactory* getInstance(){
+    auto WorkFlowEntityFactory::getInstance() -> WorkFlowEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowEntityFactory::instance();
+                        return WorkFlowEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: WorkFlowEntityFactory(){
+WorkFlowEntityFactory::WorkFlowEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: WorkFlowEntity* create2(){
+    auto WorkFlowEntityFactory::create2() -> WorkFlowEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: WorkFlowEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: WorkFlowEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_WORKFLOW_WORKFLOWENTITYFACTORY_CPP

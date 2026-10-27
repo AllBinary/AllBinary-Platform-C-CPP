@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASCHANGELEVELINPUTPROCESSORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASCHANGELEVELINPUTPROCESSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresCanvasChangeLevelInputProcessorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,11 @@
 #include "org/allbinary/game/score/HighScoresCanvasLevelChangeInputProcessor.h"
 #include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
 
-class HighScoresCanvasChangeLevelInputProcessorFactory
-            : public Object
-        , public HighScoresCanvasInputProcessorFactoryInterface {
 
-    public: HighScoresCanvasInputProcessor* getInstance(HighScoresCanvas* highScoresCanvas){
+HighScoresCanvasChangeLevelInputProcessorFactory::HighScoresCanvasChangeLevelInputProcessorFactory() {
+        }
+        
+    auto HighScoresCanvasChangeLevelInputProcessorFactory::getInstance(HighScoresCanvas* highScoresCanvas) -> HighScoresCanvasInputProcessor*{
 
 
 
@@ -65,7 +75,6 @@ class HighScoresCanvasChangeLevelInputProcessorFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASCHANGELEVELINPUTPROCESSORFACTORY_CPP

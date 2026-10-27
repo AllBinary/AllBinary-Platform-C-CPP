@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVASRUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVASRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/NullGameCanvasRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,15 +84,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h"
 
-class NullGameCanvasRunnable
-            : public Object
-        , public GameCanvasRunnableInterface {
 
-    public: static NullGameCanvasRunnable* NULL_GAME_CANVAS_RUNNABLE() { static std::unique_ptr<NullGameCanvasRunnable> value(new NullGameCanvasRunnable()); return value.get(); }
+NullGameCanvasRunnable::NullGameCanvasRunnable() : gameStateFactory(GameStateFactory::getInstance()) {
+        }
+        auto NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE_owner() -> NullGameCanvasRunnable* { static std::unique_ptr<NullGameCanvasRunnable> value(new NullGameCanvasRunnable()); return value.get(); }
+NullGameCanvasRunnable* NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE = NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE_owner();
 
-    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
-
-    public: std::string getTitle(){
+    auto NullGameCanvasRunnable::getTitle() -> std::string{
 
 
 
@@ -92,7 +100,7 @@ class NullGameCanvasRunnable
 }
 
 
-    public: bool isInitialized(){
+    auto NullGameCanvasRunnable::isInitialized() -> bool{
 
 
 
@@ -102,7 +110,7 @@ class NullGameCanvasRunnable
 }
 
 
-    public: bool isPaused(){
+    auto NullGameCanvasRunnable::isPaused() -> bool{
 
 
 
@@ -112,15 +120,15 @@ class NullGameCanvasRunnable
 }
 
 
-    public: void unPause(){
+    auto NullGameCanvasRunnable::unPause() -> void{
 }
 
 
-    public: void pause(){
+    auto NullGameCanvasRunnable::pause() -> void{
 }
 
 
-    public: bool isHighScoreSubmitted(){
+    auto NullGameCanvasRunnable::isHighScoreSubmitted() -> bool{
 
 
 
@@ -132,17 +140,17 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public: void setHighScoreSubmitted(bool highScoreSubmitted){
+    auto NullGameCanvasRunnable::setHighScoreSubmitted(bool highScoreSubmitted) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameOver(){
+    auto NullGameCanvasRunnable::processGameOver() -> void{
 }
 
 
-    public: bool isGameOver(){
+    auto NullGameCanvasRunnable::isGameOver() -> bool{
 
 
 
@@ -152,13 +160,13 @@ class NullGameCanvasRunnable
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto NullGameCanvasRunnable::initCommands(CommandListener* cmdListener) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*>* getCurrentStateHashtable(){
+    auto NullGameCanvasRunnable::getCurrentStateHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -170,7 +178,7 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public: ABHashtable<Object*, Object*>* getLoadStateHashtable(){
+    auto NullGameCanvasRunnable::getLoadStateHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -182,11 +190,11 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public: void setLoadStateHashtable(ABHashtable<Object*, Object*>* hashtable){
+    auto NullGameCanvasRunnable::setLoadStateHashtable(ABHashtable<Object*, Object*>* hashtable) -> void{
 }
 
 
-    public: int32_t getType(){
+    auto NullGameCanvasRunnable::getType() -> int32_t{
 
 
 
@@ -198,11 +206,11 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public: void setGameState(GameState* gameState){
+    auto NullGameCanvasRunnable::setGameState(GameState* gameState) -> void{
 }
 
 
-    public: GameState* getGameState(){
+    auto NullGameCanvasRunnable::getGameState() -> GameState*{
 
 
 
@@ -212,19 +220,19 @@ class NullGameCanvasRunnable
 }
 
 
-    public: void itemStateChanged(Item* item){
+    auto NullGameCanvasRunnable::itemStateChanged(Item* item) -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto NullGameCanvasRunnable::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto NullGameCanvasRunnable::paintThreed(Graphics* graphics) -> void{
 }
 
 
-    public: bool isRunning(){
+    auto NullGameCanvasRunnable::isRunning() -> bool{
 
 
 
@@ -234,21 +242,20 @@ class NullGameCanvasRunnable
 }
 
 
-    public: void setRunning(bool isRunning){
+    auto NullGameCanvasRunnable::setRunning(bool isRunning) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread* thread){
+    auto NullGameCanvasRunnable::setThread(Thread* thread) -> void{
 }
 
 
-    public: void run(){
+    auto NullGameCanvasRunnable::run() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVASRUNNABLE_CPP

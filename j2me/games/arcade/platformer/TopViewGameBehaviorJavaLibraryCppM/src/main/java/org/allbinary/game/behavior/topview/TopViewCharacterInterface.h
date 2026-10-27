@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERINTERFACE_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
-
-      
+class BasicGeographicMap;
+class GeographicMapCellPosition;
+class GeographicMapCellType;
 
 
 
@@ -59,7 +58,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TopViewCharacterInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class TopViewCharacterInterface
+            : public virtual Object
+         {
 
     public: virtual void terrainMove(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, int32_t x, int32_t y) = 0;
 
@@ -85,3 +90,19 @@ class TopViewCharacterInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+#endif
+
+        #endif
+    

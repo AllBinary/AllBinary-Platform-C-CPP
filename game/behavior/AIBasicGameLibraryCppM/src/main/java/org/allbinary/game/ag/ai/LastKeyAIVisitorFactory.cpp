@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/LastKeyAIVisitorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/LastKeyAIVisitor.h"
 
-class LastKeyAIVisitorFactory
-            : public Object
-         {
 
-    private: static LastKeyAIVisitor* instance() { static std::unique_ptr<LastKeyAIVisitor> value(new LastKeyAIVisitor()); return value.get(); }
+LastKeyAIVisitorFactory::LastKeyAIVisitorFactory() {
+        }
+        auto LastKeyAIVisitorFactory::instance_owner() -> LastKeyAIVisitor* { static std::unique_ptr<LastKeyAIVisitor> value(new LastKeyAIVisitor()); return value.get(); }
+LastKeyAIVisitor* LastKeyAIVisitorFactory::instance = LastKeyAIVisitorFactory::instance_owner();
 
-    public: static LastKeyAIVisitor* getInstance(){
+    auto LastKeyAIVisitorFactory::getInstance() -> LastKeyAIVisitor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LastKeyAIVisitorFactory::instance();
+                        return LastKeyAIVisitorFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITORFACTORY_CPP

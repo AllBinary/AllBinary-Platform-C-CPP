@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectAdvancedRTSLayerVisitorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,27 +61,24 @@
 #include "org/allbinary/game/input/SelectAdvancedRTSLayerVisitor.h"
 #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
-class SelectAdvancedRTSLayerVisitorFactory
-            : public Object
-        , public SelectRTSLayerVisitorFactoryInterface {
+auto SelectAdvancedRTSLayerVisitorFactory::instance_owner() -> SelectAdvancedRTSLayerVisitorFactory* { static std::unique_ptr<SelectAdvancedRTSLayerVisitorFactory> value(new SelectAdvancedRTSLayerVisitorFactory()); return value.get(); }
+SelectAdvancedRTSLayerVisitorFactory* SelectAdvancedRTSLayerVisitorFactory::instance = SelectAdvancedRTSLayerVisitorFactory::instance_owner();
 
-    private: static SelectAdvancedRTSLayerVisitorFactory* instance() { static std::unique_ptr<SelectAdvancedRTSLayerVisitorFactory> value(new SelectAdvancedRTSLayerVisitorFactory()); return value.get(); }
-
-    public: static SelectAdvancedRTSLayerVisitorFactory* getInstance(){
+    auto SelectAdvancedRTSLayerVisitorFactory::getInstance() -> SelectAdvancedRTSLayerVisitorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectAdvancedRTSLayerVisitorFactory::instance();
+                        return SelectAdvancedRTSLayerVisitorFactory::instance;
     
 }
 
 
-private: SelectAdvancedRTSLayerVisitorFactory(){
+SelectAdvancedRTSLayerVisitorFactory::SelectAdvancedRTSLayerVisitorFactory(){
 }
 
 
-    public: Visitor* create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
+    auto SelectAdvancedRTSLayerVisitorFactory::create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) -> Visitor*{
 
 
 
@@ -81,7 +88,6 @@ private: SelectAdvancedRTSLayerVisitorFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITORFACTORY_CPP

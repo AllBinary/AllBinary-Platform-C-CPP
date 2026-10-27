@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Object.h"
         
 #include <java/io/Serializable.h>
-
-      
 
 
 
@@ -50,10 +53,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/role/BasicUserRoles.h"
+        class BasicUserRoles;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicUserRole
-            : public Object
+            : public virtual Object
         , public Serializable {
 
     private: int32_t m_int_RoleId;
@@ -66,9 +73,9 @@ class BasicUserRole
 
     private: int64_t sessionInactivityTimeout;
 
-: BasicUserRole(std::string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout);
+public: BasicUserRole(std::string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout);
 
-: BasicUserRole(std::string aRole, std::string aDisplayValue, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout);
+public: BasicUserRole(std::string aRole, std::string aDisplayValue, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout);
 
     private: int32_t getRoleId();
 
@@ -88,3 +95,16 @@ class BasicUserRole
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H_COMPLETE
+        #if __has_include(<java/io/Serializable.h>)
+#include <java/io/Serializable.h>
+#endif
+#if __has_include("org/allbinary/business/user/role/BasicUserRoles.h")
+#include "org/allbinary/business/user/role/BasicUserRoles.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/log/LOGGING.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class LOGGING;
+class StdUtil;
+class BasicArrayList;
+class Node;
 
 
 
@@ -64,24 +59,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/tools/SelectionToolFactory.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItemFactory.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemBuilder.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+        class SelectionToolFactory;
+class GraphicsItemInterfaceFactoryInterface;
+class LinesGraphicItem;
+class LinesGraphicItemFactory;
+class GraphicItemBuilder;
+class GraphicItemInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GraphicItemFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static GraphicItemFactory* instance() { static std::unique_ptr<GraphicItemFactory> value(new GraphicItemFactory()); return value.get(); }
+    private: static GraphicItemFactory* instance_owner();
+    private: static GraphicItemFactory* instance;
 
     public: static GraphicItemFactory* getInstance();
 
     private: HashMap<Object*, Object*>* graphicItems;
 
-    private: GraphicsItemInterfaceFactoryInterface* DEFAULT = new SelectionToolFactory();
+    private: GraphicsItemInterfaceFactoryInterface* DEFAULT;
 
 private: GraphicItemFactory();
 
@@ -97,3 +97,43 @@ private: GraphicItemFactory();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/log/LOGGING.h>)
+#include <org/allbinary/log/LOGGING.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/SelectionToolFactory.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/SelectionToolFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItemFactory.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItemFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicItemBuilder.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemBuilder.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+#endif
+
+        #endif
+    

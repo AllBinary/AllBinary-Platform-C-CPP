@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -30,8 +35,6 @@
 
         
 #include <org/allbinary/thirdparty/store/LongArrayIdentifierInterface.h>
-
-      
 
 
 
@@ -52,6 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreAppClientInformation: public AbeClientInformation, public LongArrayIdentifierInterface {
 
     private: std::vector<int64_t> longArrayIdentifier;
@@ -66,3 +73,16 @@ public: StoreAppClientInformation(std::string name, std::string version, std::st
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_H_COMPLETE
+        #if __has_include(<org/allbinary/thirdparty/store/LongArrayIdentifierInterface.h>)
+#include <org/allbinary/thirdparty/store/LongArrayIdentifierInterface.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/AbeClientInformation.h")
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class StdUtil;
 
 
 
@@ -54,11 +55,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlTag
-            : public Object
+            : public virtual Object
          {
 
-    protected: HashMap<Object*, Object*>* otherAttributes;
+    /*protected*/ public: HashMap<Object*, Object*>* otherAttributes;
 
 public: HtmlTag();
 
@@ -70,3 +75,16 @@ public: HtmlTag();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+
+        #endif
+    

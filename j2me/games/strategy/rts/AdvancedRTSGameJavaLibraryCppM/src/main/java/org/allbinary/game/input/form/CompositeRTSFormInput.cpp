@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_COMPOSITERTSFORMINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_COMPOSITERTSFORMINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/CompositeRTSFormInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,15 +96,8 @@
 #include "org/allbinary/game/input/form/WaypointRTSFormInput.h"
 #include "org/allbinary/game/input/form/UnitRTSFormInput.h"
 
-class CompositeRTSFormInput: public RTSFormInput {
 
-    private: std::vector<RTSFormInput*> rtsFormInputArray;
-
-    private: std::vector<int32_t> itemIndex;
-
-    private: bool isPrimaryWaypointCreator;
-
-public: CompositeRTSFormInput(std::vector<Group*> groupInterface, bool isPrimaryWaypointCreator, std::vector<int32_t> itemIndex) : RTSFormInput(groupInterface){
+CompositeRTSFormInput::CompositeRTSFormInput(std::vector<Group*> groupInterface, bool isPrimaryWaypointCreator, std::vector<int32_t> itemIndex) : RTSFormInput(groupInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -116,8 +119,8 @@ this->rtsFormInputArray[1]= new UnitRTSFormInput(this->groupInterfaceArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto CompositeRTSFormInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+RTSFormInput::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
@@ -135,7 +138,7 @@ super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->rtsFormInputArray[index].setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+this->rtsFormInputArray[index]->setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 }
 
@@ -144,7 +147,7 @@ this->rtsFormInputArray[index].setAllBinaryGameLayerManager(allBinaryGameLayerMa
 
                 //@Throws(Exception.constructor)
             
-    public: void processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
+    auto CompositeRTSFormInput::processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point) -> void{
 
     ScrollSelectionForm* scrollSelectionForm = rtsPlayerLayerInterface->getCurrentScrollSelectionForm();;
     
@@ -159,7 +162,7 @@ this->rtsFormInputArray[index].setAllBinaryGameLayerManager(allBinaryGameLayerMa
                         if(this->getSelectedStickyItemIndex() <= this->itemIndex[0])
                         
                                     {
-                                    this->rtsFormInputArray[0].processAtPoint(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);
+                                    this->rtsFormInputArray[0]->processAtPoint(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);
     
 
                                     }
@@ -171,7 +174,7 @@ this->rtsFormInputArray[index].setAllBinaryGameLayerManager(allBinaryGameLayerMa
                         if(index > this->itemIndex[0])
                         
                                     {
-                                    this->rtsFormInputArray[1].processAtPoint(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);
+                                    this->rtsFormInputArray[1]->processAtPoint(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);
     
 
                                     }
@@ -181,11 +184,11 @@ this->rtsFormInputArray[index].setAllBinaryGameLayerManager(allBinaryGameLayerMa
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
+    auto CompositeRTSFormInput::processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(CommonLabels::getInstance()->INDEX_LABEL +index +" > " +this->itemIndex[0], this, commonStrings->PROCESS);
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(CommonLabels::getInstance()->INDEX_LABEL +index) +JavaString::valueOf(" > ")) +JavaString::valueOf(this->itemIndex[0]), this, commonStrings->PROCESS);
     
 
                         if(this->isStickyItemSelected() && associatedRtsLayer == CollidableDestroyableDamageableLayer::getNullInstance())
@@ -195,7 +198,7 @@ this->logUtil.putF(CommonLabels::getInstance()->INDEX_LABEL +index +" > " +this-
                         if(this->getSelectedStickyItemIndex() <= this->itemIndex[0])
                         
                                     {
-                                    this->rtsFormInputArray[0].processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
+                                    this->rtsFormInputArray[0]->processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 
                                     }
@@ -207,7 +210,7 @@ this->logUtil.putF(CommonLabels::getInstance()->INDEX_LABEL +index +" > " +this-
                         if(index > this->itemIndex[0])
                         
                                     {
-                                    this->rtsFormInputArray[1].processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
+                                    this->rtsFormInputArray[1]->processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 
                                     }
@@ -217,67 +220,66 @@ this->logUtil.putF(CommonLabels::getInstance()->INDEX_LABEL +index +" > " +this-
 
                 //@Throws(Exception.constructor)
             
-    public: bool processSticky(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
+    auto CompositeRTSFormInput::processSticky(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rtsFormInputArray[0].processSticky(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);;
+                        return this->rtsFormInputArray[0]->processSticky(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
-this->rtsFormInputArray[0].processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
+    auto CompositeRTSFormInput::processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index) -> void{
+this->rtsFormInputArray[0]->processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 }
 
 
-    public: int32_t getSelectedStickyItemIndex(){
+    auto CompositeRTSFormInput::getSelectedStickyItemIndex() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rtsFormInputArray[0].getSelectedStickyItemIndex();;
+                        return this->rtsFormInputArray[0]->getSelectedStickyItemIndex();;
     
 }
 
 
-    public: bool isStickyItemSelected(){
+    auto CompositeRTSFormInput::isStickyItemSelected() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rtsFormInputArray[0].isStickyItemSelected();;
+                        return this->rtsFormInputArray[0]->isStickyItemSelected();;
     
 }
 
 
-    public: void setStickyItemSelected(bool stickyItemSelected){
-this->rtsFormInputArray[0].setStickyItemSelected(stickyItemSelected);
+    auto CompositeRTSFormInput::setStickyItemSelected(bool stickyItemSelected) -> void{
+this->rtsFormInputArray[0]->setStickyItemSelected(stickyItemSelected);
     
 }
 
 
-    public: ABCustomItem* getSelectedStickyItem(){
+    auto CompositeRTSFormInput::getSelectedStickyItem() -> ABCustomItem*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rtsFormInputArray[0].getSelectedStickyItem();;
+                        return this->rtsFormInputArray[0]->getSelectedStickyItem();;
     
 }
 
 
-    public: void setSelectedStickyItem(ABCustomItem* selectedStickyItem){
-this->rtsFormInputArray[0].setSelectedStickyItem(selectedStickyItem);
+    auto CompositeRTSFormInput::setSelectedStickyItem(ABCustomItem* selectedStickyItem) -> void{
+this->rtsFormInputArray[0]->setSelectedStickyItem(selectedStickyItem);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_COMPOSITERTSFORMINPUT_CPP

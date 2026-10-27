@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/StatePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +57,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/Paintable.h"
 
-class StatePaintable: public Paintable, public StateControlledInterface {
 
-public: StatePaintable(){
+StatePaintable::StatePaintable(){
 }
 
 
-    public: void setState(int32_t state){
+    auto StatePaintable::setState(int32_t state) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_CPP

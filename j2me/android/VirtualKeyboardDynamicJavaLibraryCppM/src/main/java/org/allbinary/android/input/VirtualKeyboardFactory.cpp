@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARDFACTORY_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARDFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/VirtualKeyboardFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/VirtualKeyboard.h"
 
-class VirtualKeyboardFactory
-            : public Object
-         {
 
-    private: static inline VirtualKeyboard* virtualKeyboard = VirtualKeyboard::NULL_VIRTUAL_KEYBOARD;
+VirtualKeyboardFactory::VirtualKeyboardFactory() {
+        }
+        VirtualKeyboard* VirtualKeyboardFactory::virtualKeyboard = VirtualKeyboard::NULL_VIRTUAL_KEYBOARD;
 
-    public: static void init(Activity* activity){
+    auto VirtualKeyboardFactory::init(Activity* activity) -> void{
 
     int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
@@ -86,7 +95,7 @@ class VirtualKeyboardFactory
 }
 
 
-    public: static VirtualKeyboard* getInstance(){
+    auto VirtualKeyboardFactory::getInstance() -> VirtualKeyboard*{
 
 
 
@@ -96,7 +105,6 @@ class VirtualKeyboardFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARDFACTORY_CPP

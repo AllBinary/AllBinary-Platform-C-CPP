@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class StdUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -64,17 +61,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PathCacheFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PathCacheFactory* pathFactory() { static std::unique_ptr<PathCacheFactory> value(new PathCacheFactory()); return value.get(); }
+    private: static PathCacheFactory* pathFactory_owner();
+    private: static PathCacheFactory* pathFactory;
 
     public: static PathCacheFactory* getInstance();
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil;
 
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable;
 
 private: PathCacheFactory();
 
@@ -98,3 +100,22 @@ private: PathCacheFactory();
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+
+        #endif
+    

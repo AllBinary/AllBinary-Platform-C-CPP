@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_ANDROIDNUMBERKEYTOJ2MECANVASNUMBERKEY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_ANDROIDNUMBERKEYTOJ2MECANVASNUMBERKEY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/AndroidNumberKeyToJ2MECanvasNumberKey.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -39,13 +49,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AndroidNumberKeyToJ2MECanvasNumberKey
-            : public Object
-         {
+std::vector<int32_t> AndroidNumberKeyToJ2MECanvasNumberKey::androidtoJavaMicroEditionKeyMap = std::vector<int32_t>(17);
 
-    private: static inline const std::vector<int32_t> androidtoJavaMicroEditionKeyMap = std::vector<int32_t>(17);
-
-    public: static void init(){
+    auto AndroidNumberKeyToJ2MECanvasNumberKey::init() -> void{
 AndroidNumberKeyToJ2MECanvasNumberKey::androidtoJavaMicroEditionKeyMap[KeyEvent::KEYCODE_0]= Canvas::KEY_NUM0;
     
 AndroidNumberKeyToJ2MECanvasNumberKey::androidtoJavaMicroEditionKeyMap[KeyEvent::KEYCODE_1]= Canvas::KEY_NUM1;
@@ -69,7 +75,11 @@ AndroidNumberKeyToJ2MECanvasNumberKey::androidtoJavaMicroEditionKeyMap[KeyEvent:
 }
 
 
-    public: static int32_t getKey(int32_t key){
+AndroidNumberKeyToJ2MECanvasNumberKey::AndroidNumberKeyToJ2MECanvasNumberKey(){
+}
+
+
+    auto AndroidNumberKeyToJ2MECanvasNumberKey::getKey(int32_t key) -> int32_t{
 
                         if(key < AndroidNumberKeyToJ2MECanvasNumberKey::androidtoJavaMicroEditionKeyMap.size())
                         
@@ -102,11 +112,6 @@ AndroidNumberKeyToJ2MECanvasNumberKey::androidtoJavaMicroEditionKeyMap[KeyEvent:
 }
 
 
-private: AndroidNumberKeyToJ2MECanvasNumberKey(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_ANDROIDNUMBERKEYTOJ2MECANVASNUMBERKEY_CPP

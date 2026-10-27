@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_STUPIDTIMER_CPP
+        #define ORG_ALLBINARY_TIME_STUPIDTIMER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/StupidTimer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,19 +68,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/time/TimeDelayHelper.h"
 
-class StupidTimer
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: NullUtil* nullUtil = NullUtil::getInstance();
-
-    private: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
-
-    private: bool visitBool(Visitor* visitorInterface){
+StupidTimer::StupidTimer() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), nullUtil(NullUtil::getInstance()), threadObjectUtil(ThreadObjectUtil::getInstance()) {
+        }
+        
+    auto StupidTimer::visitBool(Visitor* visitorInterface) -> bool{
 
     bool result = visitorInterface->visit(this->nullUtil->NULL_OBJECT);;
     
@@ -88,7 +90,7 @@ class StupidTimer
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(Visitor* visitorInterface, TimeDelayHelper* timeDelayHelper){
+    auto StupidTimer::visit(Visitor* visitorInterface, TimeDelayHelper* timeDelayHelper) -> void{
 
     bool tookTooLong = false;;
     
@@ -159,7 +161,7 @@ break;
 
                 //@Throws(Exception.constructor)
             
-    public: void stopWaiting(){
+    auto StupidTimer::stopWaiting() -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -174,7 +176,6 @@ this->threadObjectUtil->notifyObject(this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_STUPIDTIMER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEPROPERTIESVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEPROPERTIESVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/theme/ThemePropertiesView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,13 +71,8 @@
         #include "org/allbinary/logic/visual/theme/ThemeInterface.h"
 #include "org/allbinary/logic/visual/theme/ThemeData.h"
 
-class ThemePropertiesView
-            : public Object
-        , public DomNodeInterface {
 
-    private: ThemeInterface* themeInterface;
-
-public: ThemePropertiesView(ThemeInterface* themeInterface){
+ThemePropertiesView::ThemePropertiesView(ThemeInterface* themeInterface){
 this->themeInterface= themeInterface;
     
 }
@@ -75,7 +80,7 @@ this->themeInterface= themeInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ThemePropertiesView::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createNameValueNodes(document, ThemeData::getInstance()->NAME, this->themeInterface->toHashMap());;
     
@@ -88,7 +93,6 @@ this->themeInterface= themeInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEPROPERTIESVIEW_CPP

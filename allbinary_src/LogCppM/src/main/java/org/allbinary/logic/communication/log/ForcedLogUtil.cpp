@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_FORCEDLOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_FORCEDLOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/ForcedLogUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,17 +63,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ForcedLogUtil
-            : public Object
-         {
 
-    public: static void log(std::string message, Object* anyType){
+ForcedLogUtil::ForcedLogUtil() {
+        }
+        
+    auto ForcedLogUtil::log(std::string message, Object* anyType) -> void{
 
         try {
             
 
 
-                            throw new Exception(message);
+                            throw Exception(message);
                     
 
                 //: 
@@ -76,7 +86,6 @@ PreLogUtil::putOE(CommonStrings::getInstance()->EXCEPTION, anyType, "log", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_FORCEDLOGUTIL_CPP

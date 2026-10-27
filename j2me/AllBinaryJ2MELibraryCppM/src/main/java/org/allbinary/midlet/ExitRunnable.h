@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H
         #define ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Runnable.h"
         
-#include <javax/microedition/lcdui/NullCanvas.h>
-
-      
-#include <org/allbinary/canvas/Processor.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class NullCanvas;
+class Processor;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -63,15 +60,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/midlet/AllBinaryMidlet.h"
+        class AllBinaryMidlet;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ExitRunnable
-            : public Object
+            : public virtual Object
         , public Runnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     private: AllBinaryMidlet* midlet;
 
@@ -89,3 +90,25 @@ public: ExitRunnable(AllBinaryMidlet* midlet, Processor* processor, bool isProgr
 
 
         #endif //ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/NullCanvas.h>)
+#include <javax/microedition/lcdui/NullCanvas.h>
+#endif
+#if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/midlet/AllBinaryMidlet.h")
+#include "org/allbinary/midlet/AllBinaryMidlet.h"
+#endif
+
+        #endif
+    

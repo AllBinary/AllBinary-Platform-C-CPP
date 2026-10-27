@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_API30_ACTIVITYFRACTUREUTILAPI30_CPP
+        #define ORG_ALLBINARY_ANDROID_API30_ACTIVITYFRACTUREUTILAPI30_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/api30/ActivityFractureUtilAPI30.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,35 +71,36 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ActivityFractureUtilAPI30: public ActivityFractureUtilAPI5 {
 
-    private: static ActivityFractureUtilAPI30* instance30() { static std::unique_ptr<ActivityFractureUtilAPI30> value(new ActivityFractureUtilAPI30()); return value.get(); }
+ActivityFractureUtilAPI30::ActivityFractureUtilAPI30() {
+        }
+        auto ActivityFractureUtilAPI30::instance30_owner() -> ActivityFractureUtilAPI30* { static std::unique_ptr<ActivityFractureUtilAPI30> value(new ActivityFractureUtilAPI30()); return value.get(); }
+ActivityFractureUtilAPI30* ActivityFractureUtilAPI30::instance30 = ActivityFractureUtilAPI30::instance30_owner();
 
-    public: static ActivityFractureUtilAPI30* getInstance(){
+    auto ActivityFractureUtilAPI30::getInstance() -> ActivityFractureUtilAPI30*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI30::instance30();
+                        return ActivityFractureUtilAPI30::instance30;
     
 }
 
 
-    public: void setFullScreen(Activity* activity){
+    auto ActivityFractureUtilAPI30::setFullScreen(Activity* activity) -> void{
 
     Window* window = activity->getWindow();;
     
 
     WindowInsetsControllerCompat* windowInsetsController = WindowCompat::getInsetsController(window, window->getDecorView());;
     
-windowInsetsController->hide(WindowInsetsCompat::Type.systemBars());
+windowInsetsController->hide(WindowInsetsCompat::Type->systemBars());
     
 windowInsetsController->setSystemBarsBehavior(WindowInsetsControllerCompat::BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_API30_ACTIVITYFRACTUREUTILAPI30_CPP

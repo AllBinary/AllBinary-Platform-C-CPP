@@ -10,6 +10,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/sql/AbDatabaseManagement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,49 +66,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/sql/AbSqlBean.h"
 
-class AbDatabaseManagement: public AbSqlBean {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: StringMaker* sqlCommandLog = new StringMaker();
-
-    private: const std::string GRANT_ALL = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON ";
-
-    private: const std::string DOT_STAR = ".*";
-
-    private: const std::string TO = " TO ";
-
-    private: const std::string AT_LOCALHOST = "@localhost";
-
-    private: const std::string IDENTIFIED_BY = " IDENTIFIED BY '";
-
-    private: const std::string WITH_GRANT_OPTION = "' WITH GRANT OPTION";
-
-    private: const std::string FAILED = "Failed";
-
-    private: const std::string GET_HOST_NAME = "getHostName()";
-
-    private: const std::string METHOD_ADD_USER = "addUser()";
-
-    protected: const std::string METHOD_ADD_USERS = "addUsers()";
-
-    private: const std::string METHOD_ADD_DB = "addDb()";
-
-    protected: const std::string METHOD_ADD_DATABASES = "addDatabases()";
-
-    protected: const std::string METHOD_ADD_TABLES = "addTables()";
-
-    protected: const std::string UNABLE_TO_CREATE_USER = "Unable to Create User: ";
-
-    protected: const std::string UNABLE_TO_CREATE_DATABASE = "Unable to Create Database: ";
-
-    protected: const std::string UNABLE_TO_CREATE_TABLES = "Unable to Create Tables";
-
-    protected: const std::string ADD_TABLES_RESULTS_LABEL = "Add Table Results: ";
-
-public: AbDatabaseManagement(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface) : AbSqlBean(dynamic_cast<DbConnectionInfo*>(databaseConnectionInfoInterface)){
+AbDatabaseManagement::AbDatabaseManagement(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface) : AbSqlBean(dynamic_cast<DbConnectionInfo*>(databaseConnectionInfoInterface)), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), sqlCommandLog(new StringMaker()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +77,7 @@ public: AbDatabaseManagement(DatabaseConnectionInfoInterface* databaseConnection
 }
 
 
-public: AbDatabaseManagement(DbConnectionInfo* connectionInfo) : AbSqlBean(connectionInfo){
+AbDatabaseManagement::AbDatabaseManagement(DbConnectionInfo* connectionInfo) : AbSqlBean(connectionInfo), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), sqlCommandLog(new StringMaker()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -118,7 +87,7 @@ public: AbDatabaseManagement(DbConnectionInfo* connectionInfo) : AbSqlBean(conne
 }
 
 
-    private: std::string getHostName(){
+    auto AbDatabaseManagement::getHostName() -> std::string{
 
         try {
             
@@ -149,7 +118,7 @@ this->logUtil->put(this->FAILED, this, GET_HOST_NAME, &e);
 
                 //@Throws(Exception.constructor)
             
-    protected: bool addDbUser(std::string hostName, std::string db, std::string userName, std::string password){
+    auto AbDatabaseManagement::addDbUser(std::string hostName, std::string db, std::string userName, std::string password) -> bool{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -176,9 +145,9 @@ stringBuffer->append(this->WITH_GRANT_OPTION);
     
 this->sqlCommandLog->append(sqlStatement);
     
-this->sqlCommandLog->append(this->commonSeps.NEW_LINE);
+this->sqlCommandLog->append(this->commonSeps->NEW_LINE);
     
-super.executeSQLStatement(sqlStatement);
+AbSqlBean::executeSQLStatement(sqlStatement);
     
 
 
@@ -189,7 +158,7 @@ super.executeSQLStatement(sqlStatement);
 }
 
 
-    protected: bool addDbUser(std::string db, std::string userName, std::string password){
+    auto AbDatabaseManagement::addDbUser(std::string db, std::string userName, std::string password) -> bool{
 
         try {
             this->addDbUser(this->AT_LOCALHOST, db, userName, password);
@@ -216,7 +185,7 @@ super.executeSQLStatement(sqlStatement);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->UNABLE_TO_CREATE_USER +userName, this, this->METHOD_ADD_USER, &e);
+this->logUtil->put(JavaString::valueOf(this->UNABLE_TO_CREATE_USER) +JavaString::valueOf(userName), this, this->METHOD_ADD_USER, &e);
     
 
 
@@ -229,17 +198,17 @@ this->logUtil->put(this->UNABLE_TO_CREATE_USER +userName, this, this->METHOD_ADD
 }
 
 
-    protected: bool addDb(std::string db){
+    auto AbDatabaseManagement::addDb(std::string db) -> bool{
 
         try {
             
-    std::string sqlStatement = this->sqlStrings.CREATE_DATABASE +db;;
+    std::string sqlStatement = JavaString::valueOf(this->sqlStrings->CREATE_DATABASE) +JavaString::valueOf(db);;
     
 this->sqlCommandLog->append(sqlStatement);
     
-this->sqlCommandLog->append(this->commonSeps.NEW_LINE);
+this->sqlCommandLog->append(this->commonSeps->NEW_LINE);
     
-super.executeSQLStatement(sqlStatement);
+AbSqlBean::executeSQLStatement(sqlStatement);
     
 
 
@@ -251,7 +220,7 @@ super.executeSQLStatement(sqlStatement);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->UNABLE_TO_CREATE_DATABASE +db, this, this->METHOD_ADD_DB, &e);
+this->logUtil->put(JavaString::valueOf(this->UNABLE_TO_CREATE_DATABASE) +JavaString::valueOf(db), this, this->METHOD_ADD_DB, &e);
     
 
 
@@ -264,7 +233,6 @@ this->logUtil->put(this->UNABLE_TO_CREATE_DATABASE +db, this, this->METHOD_ADD_D
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_CPP

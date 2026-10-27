@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_PROCESSOR_CPP
+        #define ORG_ALLBINARY_CANVAS_PROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/Processor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,35 +57,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Processor
-            : public Object
-         {
 
-    private: static Processor* SINGLETON() { static std::unique_ptr<Processor> value(new Processor()); return value.get(); }
+Processor::Processor() {
+        }
+        auto Processor::SINGLETON_owner() -> Processor* { static std::unique_ptr<Processor> value(new Processor()); return value.get(); }
+Processor* Processor::SINGLETON = Processor::SINGLETON_owner();
 
-    public: static Processor* getInstance(){
+    auto Processor::getInstance() -> Processor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Processor::SINGLETON();
+                        return Processor::SINGLETON;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto Processor::process() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processt(int64_t timeDelta){
+    auto Processor::processt(int64_t timeDelta) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_PROCESSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_EMAILEVENT_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_EMAILEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/event/EmailEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,15 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h"
 
-class EmailEvent: public EventObject {
 
-    private: EmailInfo* emailInfo;
-
-    private: UserEmailEventNameData* userEmailEventNameData;
-
-    private: int32_t attempts= 0;
-
-public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo, int32_t attempts) : EventObject(emailEventHandler){
+EmailEvent::EmailEvent(Object* emailEventHandler, UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo, int32_t attempts) : EventObject(emailEventHandler){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,7 +80,7 @@ this->emailInfo= emailInfo;
 }
 
 
-    public: EmailInfo* getEmailInfo(){
+    auto EmailEvent::getEmailInfo() -> EmailInfo*{
 
 
 
@@ -87,7 +90,7 @@ this->emailInfo= emailInfo;
 }
 
 
-    public: int32_t getAttempts(){
+    auto EmailEvent::getAttempts() -> int32_t{
 
 
 
@@ -97,13 +100,13 @@ this->emailInfo= emailInfo;
 }
 
 
-    public: void setAttempts(int32_t attempts){
+    auto EmailEvent::setAttempts(int32_t attempts) -> void{
 this->attempts= attempts;
     
 }
 
 
-    public: std::string toString(){
+    auto EmailEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -128,7 +131,6 @@ stringBuffer->appendint(this->getAttempts());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_EMAILEVENT_CPP

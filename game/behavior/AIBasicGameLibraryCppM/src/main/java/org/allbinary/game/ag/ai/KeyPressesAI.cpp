@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/KeyPressesAI.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -69,13 +79,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeyPressesAI: public BasicAI {
 
-    private: bool on = true;
-
-    protected: std::vector<int32_t> keys;
-
-public: KeyPressesAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+KeyPressesAI::KeyPressesAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,7 +111,7 @@ this->keys[index]= hashtable->get(objectArray[index]);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto KeyPressesAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->on)
                         
@@ -118,7 +123,7 @@ this->keys[index]= hashtable->get(objectArray[index]);
                         for (
     int32_t index = 0;index < this->keys.size(); index++)
         {
-super.processKeyAI(this->keys[index].intValue());
+BasicAI::processKeyAI(this->keys[index].intValue());
     
 }
 
@@ -130,7 +135,7 @@ super.processKeyAI(this->keys[index].intValue());
 
                 //@Throws(Exception.constructor)
             
-    public: void toggle(){
+    auto KeyPressesAI::toggle() -> void{
 
                         if(this->isOn())
                         
@@ -151,7 +156,7 @@ super.processKeyAI(this->keys[index].intValue());
 
                 //@Throws(Exception.constructor)
             
-    public: void disable(){
+    auto KeyPressesAI::disable() -> void{
 this->setOn(false);
     
 }
@@ -159,19 +164,19 @@ this->setOn(false);
 
                 //@Throws(Exception.constructor)
             
-    public: void enable(){
+    auto KeyPressesAI::enable() -> void{
 this->setOn(true);
     
 }
 
 
-    private: void setOn(bool on){
+    auto KeyPressesAI::setOn(bool on) -> void{
 this->on= on;
     
 }
 
 
-    protected: bool isOn(){
+    auto KeyPressesAI::isOn() -> bool{
 
 
 
@@ -181,7 +186,6 @@ this->on= on;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_CPP

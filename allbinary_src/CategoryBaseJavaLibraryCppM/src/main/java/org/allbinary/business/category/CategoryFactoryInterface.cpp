@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/CategoryFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,21 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/CategoryInterface.h"
 
-class CategoryFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual CategoryInterface* getRootInstance() = 0;
 
-    public: virtual CategoryInterface* getRootInstance(AbPath* categoryPath) = 0;
 
-    public: virtual CategoryInterface* getRootInstanceFromNode(Node* node) = 0;
-
-    public: virtual CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, std::string name) = 0;
-
-    public: virtual CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, Node* node) = 0;
-
-    public: virtual CategoryInterface* getInstance(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYFACTORYINTERFACE_CPP

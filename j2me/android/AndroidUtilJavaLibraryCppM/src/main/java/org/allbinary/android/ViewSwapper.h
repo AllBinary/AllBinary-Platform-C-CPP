@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_VIEWSWAPPER_H
         #define ORG_ALLBINARY_ANDROID_VIEWSWAPPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <vector>
@@ -19,15 +24,9 @@
         
             #include "java/lang/Object.h"
         
-#include <android/app/Activity.h>
-
-      
-#include <android/view/View.h>
-
-      
-#include <android/view/ViewGroup.h>
-
-      
+class Activity;
+class View;
+class ViewGroup;
 
 
 
@@ -47,11 +46,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ViewSwapper
-            : public Object
+            : public virtual Object
          {
 
-    public: static inline const std::vector<View*> NULL_VIEW_ARRAY = {};
+    public: static std::vector<View*> NULL_VIEW_ARRAY;
 
     private: int32_t rootViewId;
 
@@ -59,9 +62,9 @@ class ViewSwapper
 
     private: int32_t currentMainViewId =  -1;
 
-    private: std::vector<View*> mainViewArray = ViewSwapper::NULL_VIEW_ARRAY;
+    private: std::vector<View*> mainViewArray;
 
-    private: std::vector<View*> topViewArray = ViewSwapper::NULL_VIEW_ARRAY;
+    private: std::vector<View*> topViewArray;
 
 public: ViewSwapper(Activity* activity, int32_t rootViewId);
 
@@ -77,3 +80,19 @@ public: ViewSwapper(Activity* activity, int32_t rootViewId);
 
 
         #endif //ORG_ALLBINARY_ANDROID_VIEWSWAPPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_VIEWSWAPPER_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_VIEWSWAPPER_H_COMPLETE
+        #if __has_include(<android/app/Activity.h>)
+#include <android/app/Activity.h>
+#endif
+#if __has_include(<android/view/View.h>)
+#include <android/view/View.h>
+#endif
+#if __has_include(<android/view/ViewGroup.h>)
+#include <android/view/ViewGroup.h>
+#endif
+
+        #endif
+    

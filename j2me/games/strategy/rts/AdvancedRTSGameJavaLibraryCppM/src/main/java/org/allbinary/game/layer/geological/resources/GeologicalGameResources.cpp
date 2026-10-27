@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGAMERESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGAMERESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geological/resources/GeologicalGameResources.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,21 +69,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GeologicalGameResources: public BasicGameResources {
+auto GeologicalGameResources::instance_owner() -> GeologicalGameResources* { static std::unique_ptr<GeologicalGameResources> value(new GeologicalGameResources()); return value.get(); }
+GeologicalGameResources* GeologicalGameResources::instance = GeologicalGameResources::instance_owner();
 
-    private: static GeologicalGameResources* instance() { static std::unique_ptr<GeologicalGameResources> value(new GeologicalGameResources()); return value.get(); }
-
-    public: static BasicGameResources* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeologicalGameResources::instance();
-    
-}
-
-
-private: GeologicalGameResources(){
+GeologicalGameResources::GeologicalGameResources(){
 
     std::string ROOT = "/resource";;
     
@@ -98,22 +97,22 @@ private: GeologicalGameResources(){
                                                             SMALL,MEDIUM,SIZE_FOUR,SIZE_FIVE,SIZE_SIX
                                                         };;
     
-super.init(ROOT, SIZE);
+BasicGameResources::init(ROOT, SIZE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void append(std::string ROOT, std::string sizeString){
-super.append(ROOT, sizeString);
+    auto GeologicalGameResources::append(std::string ROOT, std::string sizeString) -> void{
+BasicGameResources::append(ROOT, sizeString);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: std::string getString(){
+    auto GeologicalGameResources::getString() -> std::string{
 
                         if(AndroidUtil::isAndroid())
                         
@@ -132,7 +131,7 @@ super.append(ROOT, sizeString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getString();;
+                        return BasicGameResources::getString();;
     
 
                         }
@@ -140,7 +139,16 @@ super.append(ROOT, sizeString);
 }
 
 
-};
+    auto GeologicalGameResources::getInstance() -> BasicGameResources*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GeologicalGameResources::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGAMERESOURCES_CPP

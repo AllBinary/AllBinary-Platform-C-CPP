@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <org/allbinary/data/tables/BasicDataTableInterface.h>
-
-      
 
 
 
@@ -55,6 +54,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogTableEntityInterface: public BasicDataTableInterface {
 
     public: virtual void deleteWhere(std::string key, std::string value) = 0;
@@ -67,3 +70,17 @@ class LogTableEntityInterface: public BasicDataTableInterface {
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/data/tables/BasicDataTableInterface.h>)
+#include <org/allbinary/data/tables/BasicDataTableInterface.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABVECTOR_CPP
+        #define ORG_ALLBINARY_UTIL_ABVECTOR_CPP
+
+        #include "org/allbinary/util/ABVector.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,10 +52,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+
 template<typename E>
-class ABVector: public Vector<E> {
+ABVector<E>::ABVector() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_UTIL_ABVECTOR_CPP

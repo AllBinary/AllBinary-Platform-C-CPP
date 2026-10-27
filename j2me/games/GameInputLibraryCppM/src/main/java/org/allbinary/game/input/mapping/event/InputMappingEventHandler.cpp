@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_INPUTMAPPINGEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_INPUTMAPPINGEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/event/InputMappingEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,26 @@
         #include "org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h"
 #include "org/allbinary/game/input/mapping/event/InputMappingEvent.h"
 
-class InputMappingEventHandler: public BasicEventHandler {
+auto InputMappingEventHandler::gameKeyEventHandler_owner() -> InputMappingEventHandler* { static std::unique_ptr<InputMappingEventHandler> value(new InputMappingEventHandler()); return value.get(); }
+InputMappingEventHandler* InputMappingEventHandler::gameKeyEventHandler = InputMappingEventHandler::gameKeyEventHandler_owner();
 
-    private: static InputMappingEventHandler* gameKeyEventHandler() { static std::unique_ptr<InputMappingEventHandler> value(new InputMappingEventHandler()); return value.get(); }
+InputMappingEventHandler::InputMappingEventHandler(){
+}
 
-    public: static InputMappingEventHandler* getInstance(){
+
+    auto InputMappingEventHandler::getInstance() -> InputMappingEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputMappingEventHandler::gameKeyEventHandler();
+                        return InputMappingEventHandler::gameKeyEventHandler;
     
-}
-
-
-private: InputMappingEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto InputMappingEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     InputMappingEventListenerInterface* inputMappingEventListenerInterface = dynamic_cast<InputMappingEventListenerInterface*>(eventListenerInterface);;
     
@@ -85,7 +94,6 @@ inputMappingEventListenerInterface->onInputMappingEvent(dynamic_cast<InputMappin
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_INPUTMAPPINGEVENTHANDLER_CPP

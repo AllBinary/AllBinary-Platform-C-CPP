@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_ENDLEVELNOBUILDINGSELECTEDTOUCHBUTTONSBUILDER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_ENDLEVELNOBUILDINGSELECTEDTOUCHBUTTONSBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/EndLevelNoBuildingSelectedTouchButtonsBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,14 +70,14 @@
 #include "org/allbinary/input/motion/button/BasicTouchButtonsBuilder.h"
 #include "org/allbinary/input/motion/button/BuildingScrollTouchButtonsBuilder.h"
 
-class EndLevelNoBuildingSelectedTouchButtonsBuilder: public TouchButtonsListBuilder {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: BasicArrayList* getList(){
+EndLevelNoBuildingSelectedTouchButtonsBuilder::EndLevelNoBuildingSelectedTouchButtonsBuilder() : logUtil(LogUtil::getInstance()) {
+        }
+        
+    auto EndLevelNoBuildingSelectedTouchButtonsBuilder::getList() -> BasicArrayList*{
 
         try {
-            this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
     BasicArrayList* list = new BasicArrayListD();;
@@ -88,7 +98,7 @@ this->addList(list);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 
 
@@ -101,7 +111,6 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONS
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_ENDLEVELNOBUILDINGSELECTEDTOUCHBUTTONSBUILDER_CPP

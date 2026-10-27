@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMDATA_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOMDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/DomData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DomData
-            : public Object
-         {
 
-    public: static inline const std::string ID = "id";
-
-    public: static inline const std::string CHILD = "child";
-
-    public: static inline const std::string NAME = "name";
-
-    public: static inline const std::string VALUE = "value";
-
-    public: static inline const std::string INDEX = "index";
-
-private: DomData(){
+DomData::DomData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOMDATA_CPP

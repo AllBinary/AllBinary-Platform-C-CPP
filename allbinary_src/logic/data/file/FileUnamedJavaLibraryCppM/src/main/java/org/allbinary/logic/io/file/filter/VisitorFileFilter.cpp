@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_VISITORFILEFILTER_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_VISITORFILEFILTER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/filter/VisitorFileFilter.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,19 +70,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VisitorFileFilter
-            : public Object
-        , public FileFilter {
 
-    private: VisitorInterface* booleanVisitorInterface;
-
-public: VisitorFileFilter(VisitorInterface* booleanVisitorInterface){
+VisitorFileFilter::VisitorFileFilter(VisitorInterface* booleanVisitorInterface){
 this->booleanVisitorInterface= booleanVisitorInterface;
     
 }
 
 
-    public: bool accept(File* file){
+    auto VisitorFileFilter::accept(File* file) -> bool{
 
     AbFile* abFile = FileWrapperUtil::wrapFile(file);;
     
@@ -90,7 +95,7 @@ visit.
 }
 
 
-    public: bool accept(AbFile* file){
+    auto VisitorFileFilter::accept(AbFile* file) -> bool{
 
     bool isFileAcceptable = visit = this->booleanVisitorInterface->visit(file)visit
 visit.
@@ -105,7 +110,6 @@ visit.
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_VISITORFILEFILTER_CPP

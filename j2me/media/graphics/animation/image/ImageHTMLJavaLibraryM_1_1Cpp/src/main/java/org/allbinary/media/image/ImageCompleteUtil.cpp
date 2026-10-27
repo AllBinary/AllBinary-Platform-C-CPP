@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageCompleteUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,35 +72,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageCompleteUtil
-            : public Object
-         {
 
-    private: static ImageCompleteUtil* instance() { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
+ImageCompleteUtil::ImageCompleteUtil() {
+        }
+        auto ImageCompleteUtil::instance_owner() -> ImageCompleteUtil* { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
+ImageCompleteUtil* ImageCompleteUtil::instance = ImageCompleteUtil::instance_owner();
 
-    public: static ImageCompleteUtil* getInstance(){
+    auto ImageCompleteUtil::getInstance() -> ImageCompleteUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCompleteUtil::instance();
+                        return ImageCompleteUtil::instance;
     
 }
 
 
-    protected: const std::string ISREADY = "isReady";
-
                 //@Throws(Exception.constructor)
             
-    public: void waitForImage(Image* image, std::string name){
+    auto ImageCompleteUtil::waitForImage(Image* image, std::string name) -> void{
 }
 
 
-    private: const std::string COMPLETE = "Image loading complete for: ";
-
                 //@Throws(Exception.constructor)
             
-    public: bool isReady(Image* image, std::string name, TimeDelayHelper* timeDelayHelper){
+    auto ImageCompleteUtil::isReady(Image* image, std::string name, TimeDelayHelper* timeDelayHelper) -> bool{
 
     PlaynImage* playnImage = dynamic_cast<PlaynImage*>(image);;
     
@@ -122,7 +128,7 @@ class ImageCompleteUtil
                         if(!image->isReady())
                         
                                     {
-                                    PreLogUtil::put("Waiting for Not Ready Image: " +image->getName(), this, this->ISREADY);
+                                    PreLogUtil::put(JavaString::valueOf("Waiting for Not Ready Image: ") +JavaString::valueOf(image->getName()), this, this->ISREADY);
     
 
                                     }
@@ -146,17 +152,16 @@ PreLogUtil::put(this->COMPLETE +image->getName(), this, commonStrings->SUCCESS);
 
                 //@Throws(Exception.constructor)
             
-    public: void handleTimeout(std::string name){
+    auto ImageCompleteUtil::handleTimeout(std::string name) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void waitForAll(){
+    auto ImageCompleteUtil::waitForAll() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_CPP

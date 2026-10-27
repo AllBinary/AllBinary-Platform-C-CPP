@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -30,20 +35,10 @@
 
         
 #include <java/io/FileInputStream.h>
-
-      
 #include <java/io/FileNotFoundException.h>
-
-      
 #include <java/io/IOException.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
 #include <java/nio/channels/FileChannel.h>
-
-      
 
 
 
@@ -62,6 +57,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class AbFileInputStream: public InputStream {
 
@@ -108,3 +107,25 @@ public: AbFileInputStream(FileInputStream* fileInputStream);
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H_COMPLETE
+        #if __has_include(<java/io/FileInputStream.h>)
+#include <java/io/FileInputStream.h>
+#endif
+#if __has_include(<java/io/FileNotFoundException.h>)
+#include <java/io/FileNotFoundException.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<java/nio/channels/FileChannel.h>)
+#include <java/nio/channels/FileChannel.h>
+#endif
+
+        #endif
+    

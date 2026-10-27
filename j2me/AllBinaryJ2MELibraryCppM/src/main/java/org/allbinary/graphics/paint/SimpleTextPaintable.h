@@ -21,36 +21,25 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Font;
+class Graphics;
+class Anchor;
+class BasicColor;
+class DisplayInfoSingleton;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
+class UpdateMyFontProcessor;
 
 
 
@@ -71,13 +60,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/Paintable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton;
 
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor;
 
-    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor;
 
     private: std::string text;
 
@@ -87,7 +80,7 @@ class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
 
     private: int32_t fontHeight = 0;
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
 public: SimpleTextPaintable(std::string text, BasicColor* basicColor);
 
@@ -109,3 +102,37 @@ public: SimpleTextPaintable(std::string text, BasicColor* basicColor);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_SIMPLETEXTPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include("org/allbinary/graphics/paint/Paintable.h")
+#include "org/allbinary/graphics/paint/Paintable.h"
+#endif
+
+        #endif
+    

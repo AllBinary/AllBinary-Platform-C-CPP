@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,21 +62,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserConfigurationInterface {
+//Interface - declared in the header
 
-    public: virtual UserEmailConfigurationInterface* getUserEmailConfigurationInterface() = 0;
 
-    public: virtual void setUserEmailConfigurationInterface(UserEmailConfigurationInterface* userEmailConfigurationInterface) = 0;
 
-    public: virtual TimeCreated* getTimeCreated() = 0;
-
-    public: virtual TimeLastModified* getTimeLastModified() = 0;
-
-    public: virtual void setTimeCreated(TimeCreated* timeCreated) = 0;
-
-    public: virtual void setTimeLastModified(TimeLastModified* timeLastModified) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACE_CPP

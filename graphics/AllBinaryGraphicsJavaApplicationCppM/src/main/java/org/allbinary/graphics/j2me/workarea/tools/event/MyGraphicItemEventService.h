@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,16 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/tools/event/EventListenerList.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/event/EventListener.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventListener.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h"
+        class EventListenerList;
+class EventListener;
+class MyGraphicItemEventListener;
+class MyGraphicItemEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MyGraphicItemEventService
-            : public Object
+            : public virtual Object
          {
 
-    private: static javax::swing::event::EventListenerList* listenerList() { static std::unique_ptr<javax::swing::event::EventListenerList> value(new javax::swing::event::EventListenerList()); return value.get(); }
+    private: static javax::swing::event::EventListenerList* listenerList_owner();
+    private: static javax::swing::event::EventListenerList* listenerList;
 
     public: static inline std::string DELETE = "delete";
 
@@ -93,3 +103,22 @@ private: MyGraphicItemEventService();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/j2me/workarea/tools/event/EventListenerList.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/event/EventListenerList.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/event/EventListener.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/event/EventListener.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventListener.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventListener.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h"
+#endif
+
+        #endif
+    

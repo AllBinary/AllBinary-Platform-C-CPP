@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTCOMMANDPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTCOMMANDPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/AboutCommandProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AboutCommandProcessor
-            : public Object
-         {
 
-    private: static AboutCommandProcessor* instance() { static std::unique_ptr<AboutCommandProcessor> value(new AboutCommandProcessor()); return value.get(); }
+AboutCommandProcessor::AboutCommandProcessor() {
+        }
+        auto AboutCommandProcessor::instance_owner() -> AboutCommandProcessor* { static std::unique_ptr<AboutCommandProcessor> value(new AboutCommandProcessor()); return value.get(); }
+AboutCommandProcessor* AboutCommandProcessor::instance = AboutCommandProcessor::instance_owner();
 
-    public: static AboutCommandProcessor* getInstance(){
+    auto AboutCommandProcessor::getInstance() -> AboutCommandProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AboutCommandProcessor::instance();
+                        return AboutCommandProcessor::instance;
     
 }
 
 
-    public: void process(CommandListener* midletCommandListener, Command* command, Canvas* canvas){
+    auto AboutCommandProcessor::process(CommandListener* midletCommandListener, Command* command, Canvas* canvas) -> void{
 midletCommandListener->commandAction(command, canvas);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTCOMMANDPROCESSOR_CPP

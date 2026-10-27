@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/AbDataInputStream.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbDataInputStream: public DataInputStream {
 
-public: AbDataInputStream(InputStream* out) : DataInputStream(out){
+AbDataInputStream::AbDataInputStream(InputStream* out) : DataInputStream(out){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,6 @@ public: AbDataInputStream(InputStream* out) : DataInputStream(out){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_ABDATAINPUTSTREAM_CPP

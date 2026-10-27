@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AG_GAME_VECTOR_HEALTHVECTORDATA_CPP
+        #define ORG_ALLBINARY_AG_GAME_VECTOR_HEALTHVECTORDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ag/game/vector/HealthVectorData.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,37 +57,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealthVectorData
-            : public Object
-         {
 
-    public: static inline std::vector<std::vector<std::vector<int32_t>>> points = 
+HealthVectorData::HealthVectorData() {
+        }
+        std::vector<std::vector<std::vector<int32_t>>> HealthVectorData::points = 
                                                         {
-                                                            [[2,1]
-,[3,2]
-,[3,2]
-,[4,1]
-,[4,1]
-,[5,1]
-,[5,1]
-,[6,2]
-,[6,2]
-,[6,3]
-,[6,3]
-,[3,6]
-,[3,6]
-,[0,3]
-,[0,3]
-,[0,2]
-,[0,2]
-,[1,1]
-,[1,1]
-,[2,1]
-,[1000,1000]
-]
+                                                            {{2,1},{3,2},{3,2},{4,1},{4,1},{5,1},{5,1},{6,2},{6,2},{6,3},{6,3},{3,6},{3,6},{0,3},{0,3},{0,2},{0,2},{1,1},{1,1},{2,1},{1000,1000}}
                                                         };
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AG_GAME_VECTOR_HEALTHVECTORDATA_CPP

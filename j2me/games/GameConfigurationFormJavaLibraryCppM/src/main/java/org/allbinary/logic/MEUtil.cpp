@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_MEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/MEUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,29 +61,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Handle the differences in the public platform vs the raw JS build
-class MEUtil
-            : public Object
-         {
 
-    public: static MEUtil* getInstance(){
+MEUtil::MEUtil() {
+        }
+        
+    auto MEUtil::getInstance() -> MEUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MEUtil::instance();
+                        return MEUtil::instance;
     
 }
 
+auto MEUtil::instance_owner() -> MEUtil* { static std::unique_ptr<MEUtil> value(new MEUtil()); return value.get(); }
+MEUtil* MEUtil::instance = MEUtil::instance_owner();
 
-    private: static MEUtil* instance() { static std::unique_ptr<MEUtil> value(new MEUtil()); return value.get(); }
-
-    public: void appendItem(CommandForm* form, Item* item){
+    auto MEUtil::appendItem(CommandForm* form, Item* item) -> void{
 form->append(item);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MEUTIL_CPP

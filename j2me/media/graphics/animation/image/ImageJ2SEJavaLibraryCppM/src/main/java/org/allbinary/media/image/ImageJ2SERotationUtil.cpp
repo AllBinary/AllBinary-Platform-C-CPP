@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageJ2SERotationUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,31 +70,24 @@
         #include "org/allbinary/media/image/ImageUtil.h"
 #include "org/allbinary/media/image/ImageJ2SEUtil.h"
 
-class ImageJ2SERotationUtil
-            : public Object
-         {
+auto ImageJ2SERotationUtil::instance_owner() -> ImageJ2SERotationUtil* { static std::unique_ptr<ImageJ2SERotationUtil> value(new ImageJ2SERotationUtil()); return value.get(); }
+ImageJ2SERotationUtil* ImageJ2SERotationUtil::instance = ImageJ2SERotationUtil::instance_owner();
 
-    private: static ImageJ2SERotationUtil* instance() { static std::unique_ptr<ImageJ2SERotationUtil> value(new ImageJ2SERotationUtil()); return value.get(); }
-
-    public: static ImageJ2SERotationUtil* getInstance(){
+    auto ImageJ2SERotationUtil::getInstance() -> ImageJ2SERotationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageJ2SERotationUtil::instance();
+                        return ImageJ2SERotationUtil::instance;
     
 }
 
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-    private: ImageJ2SEUtil* imageJ2SEUtil = ImageJ2SEUtil::getInstance();
-
-private: ImageJ2SERotationUtil(){
+ImageJ2SERotationUtil::ImageJ2SERotationUtil() : imageUtil(ImageUtil::getInstance()), imageJ2SEUtil(ImageJ2SEUtil::getInstance()), TWO_PIE(2 *Math::PI){
 }
 
 
-    public: BufferedImage* getRotatedImage(Image* bufferedImage, int32_t totalAngle){
+    auto ImageJ2SERotationUtil::getRotatedImage(Image* bufferedImage, int32_t totalAngle) -> BufferedImage*{
 
 
 
@@ -94,7 +97,7 @@ private: ImageJ2SERotationUtil(){
 }
 
 
-    public: BufferedImage* getRotatedImageRadians(Image* bufferedImage, double radians){
+    auto ImageJ2SERotationUtil::getRotatedImageRadians(Image* bufferedImage, double radians) -> BufferedImage*{
 
     BufferedImage* newBufferedImage = this->imageUtil->create(bufferedImage->getWidth(
                             nullptr), bufferedImage->getHeight(
@@ -109,7 +112,7 @@ private: ImageJ2SERotationUtil(){
 }
 
 
-    private: BufferedImage* drawRotatedImageRadians(Image* bufferedImage, BufferedImage* newBufferedImage, Graphics2D* g, double radians){
+    auto ImageJ2SERotationUtil::drawRotatedImageRadians(Image* bufferedImage, BufferedImage* newBufferedImage, Graphics2D* g, double radians) -> BufferedImage*{
 g->rotate(radians, newBufferedImage->getWidth(
                             nullptr) /2, newBufferedImage->getHeight(
                             nullptr) /2);
@@ -130,9 +133,7 @@ g->dispose();
 }
 
 
-    private: const double TWO_PIE = 2 *Math::PI;
-
-    public: BufferedImage* rotateImage(Image* bufferedImage, BufferedImage* newBufferedImage, int32_t totalAngle){
+    auto ImageJ2SERotationUtil::rotateImage(Image* bufferedImage, BufferedImage* newBufferedImage, int32_t totalAngle) -> BufferedImage*{
 
     Graphics2D* g = newBufferedImage->createGraphics();;
     
@@ -149,7 +150,7 @@ g->clearRect(0, 0, newBufferedImage->getWidth(), newBufferedImage->getHeight());
 }
 
 
-    public: BufferedImage* createRotatedImage(Image* bufferedImage, BufferedImage* newBufferedImage, int32_t totalAngle){
+    auto ImageJ2SERotationUtil::createRotatedImage(Image* bufferedImage, BufferedImage* newBufferedImage, int32_t totalAngle) -> BufferedImage*{
 
     Graphics2D* g = newBufferedImage->createGraphics();;
     
@@ -162,7 +163,7 @@ g->clearRect(0, 0, newBufferedImage->getWidth(), newBufferedImage->getHeight());
 }
 
 
-    public: std::vector<BufferedImage*> getRotatedImages(Image* bufferedImage, int32_t numberOfFrames, int32_t totalAngle){
+    auto ImageJ2SERotationUtil::getRotatedImages(Image* bufferedImage, int32_t numberOfFrames, int32_t totalAngle) -> std::vector<BufferedImage*>{
 
     std::vector<BufferedImage*> bufferedImageArray = std::vector<BufferedImage*>(numberOfFrames);;
     
@@ -195,7 +196,7 @@ bufferedImageArray[index]= this->getRotatedImageRadians(bufferedImage, radians);
 }
 
 
-    public: BufferedImage* createSpriteImage(std::vector<BufferedImage*> bufferedImageArray){
+    auto ImageJ2SERotationUtil::createSpriteImage(std::vector<BufferedImage*> bufferedImageArray) -> BufferedImage*{
 
     int32_t columns = 9;;
     
@@ -287,7 +288,6 @@ g->dispose();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_CPP

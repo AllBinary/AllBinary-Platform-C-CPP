@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITYFRACTUREUTIL_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITYFRACTUREUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -33,9 +38,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <android/app/Activity.h>
-
-      
+class Activity;
 
 
 
@@ -55,10 +58,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ActivityFractureUtil
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: ActivityFractureUtil();
+        
                 //@Throws(Exception.constructor)
             
     public: void process(Activity* activity);
@@ -71,3 +82,13 @@ class ActivityFractureUtil
 
 
         #endif //ORG_ALLBINARY_ANDROID_ACTIVITYFRACTUREUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_ACTIVITYFRACTUREUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_ACTIVITYFRACTUREUTIL_H_COMPLETE
+        #if __has_include(<android/app/Activity.h>)
+#include <android/app/Activity.h>
+#endif
+
+        #endif
+    

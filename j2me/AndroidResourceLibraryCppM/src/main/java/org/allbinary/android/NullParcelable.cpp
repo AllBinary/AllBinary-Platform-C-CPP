@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_NULLPARCELABLE_CPP
+        #define ORG_ALLBINARY_ANDROID_NULLPARCELABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/NullParcelable.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -55,26 +65,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullParcelable
-            : public Object
-        , public Parcelable {
 
-    public: static NullParcelable* NULL_PARCELABLE() { static std::unique_ptr<NullParcelable> value(new NullParcelable()); return value.get(); }
+NullParcelable::NullParcelable() {
+        }
+        auto NullParcelable::NULL_PARCELABLE_owner() -> NullParcelable* { static std::unique_ptr<NullParcelable> value(new NullParcelable()); return value.get(); }
+NullParcelable* NullParcelable::NULL_PARCELABLE = NullParcelable::NULL_PARCELABLE_owner();
 
-    public: int32_t describeContents(){
+    auto NullParcelable::describeContents() -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void writeToParcel(Parcel* dest, int32_t flags){
+    auto NullParcelable::writeToParcel(Parcel* dest, int32_t flags) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_NULLPARCELABLE_CPP

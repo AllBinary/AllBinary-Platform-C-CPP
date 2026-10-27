@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCONFIGURATION_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,13 +89,9 @@
         #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 #include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
-class OpenGLConfiguration
-            : public Object
-         {
+Object* OpenGLConfiguration::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static OpenGLConfiguration* getInstance(){
+    auto OpenGLConfiguration::getInstance() -> OpenGLConfiguration*{
 
                         if(OpenGLConfiguration::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -104,31 +110,17 @@ class OpenGLConfiguration
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: bool opengl = false;
-
-    private: OpenGLFeature* type = OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD;
-
-    private: OpenGLFeature* imageColor = OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444;
-
-    private: OpenGLFeature* color = OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444;
-
-    private: OpenGLFeature* versionSelector = OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT;
-
-private: OpenGLConfiguration(){
+OpenGLConfiguration::OpenGLConfiguration() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), type(OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD), imageColor(OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444), color(OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444), versionSelector(OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT){
 }
 
 
-    public: void write(){
+    auto OpenGLConfiguration::write() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto OpenGLConfiguration::init() -> void{
 
     Features* features = Features::getInstance();;
     
@@ -148,19 +140,19 @@ private: OpenGLConfiguration(){
     
 features->addDefault(OpenGLFeatureFactory::getInstance()->OPENGL);
     
-this->logUtil->putF("Using OpenGL Type Feature: " +this->getType(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Using OpenGL Type Feature: ") +JavaString::valueOf(this->getType()), this, this->commonStrings->INIT);
     
 features->addDefault(this->getType());
     
-this->logUtil->putF("Using OpenGL ImageColor Feature: " +this->getImageColor(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Using OpenGL ImageColor Feature: ") +JavaString::valueOf(this->getImageColor()), this, this->commonStrings->INIT);
     
 features->addDefault(this->getImageColor());
     
-this->logUtil->putF("Using OpenGL Color Feature: " +this->getColor(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Using OpenGL Color Feature: ") +JavaString::valueOf(this->getColor()), this, this->commonStrings->INIT);
     
 features->addDefault(this->getColor());
     
-this->logUtil->putF("Using OpenGL Version Selector Feature: " +this->getVersionSelector(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Using OpenGL Version Selector Feature: ") +JavaString::valueOf(this->getVersionSelector()), this, this->commonStrings->INIT);
     
 features->addDefault(this->getVersionSelector());
     
@@ -199,7 +191,7 @@ PreLogUtil::put(this->toString(), this, this->commonStrings->INIT);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Feature* gameFeature, bool colorLocked){
+    auto OpenGLConfiguration::update(Feature* gameFeature, bool colorLocked) -> void{
 
     Features* features = Features::getInstance();;
     
@@ -379,13 +371,13 @@ modified= true;
 }
 
 
-    public: void setOpenGL(bool opengl){
+    auto OpenGLConfiguration::setOpenGL(bool opengl) -> void{
 this->opengl= opengl;
     
 }
 
 
-    public: bool isOpenGL(){
+    auto OpenGLConfiguration::isOpenGL() -> bool{
 
 
 
@@ -395,13 +387,13 @@ this->opengl= opengl;
 }
 
 
-    public: void setImageColor(OpenGLFeature* imageColor){
+    auto OpenGLConfiguration::setImageColor(OpenGLFeature* imageColor) -> void{
 this->imageColor= imageColor;
     
 }
 
 
-    public: OpenGLFeature* getImageColor(){
+    auto OpenGLConfiguration::getImageColor() -> OpenGLFeature*{
 
 
 
@@ -411,13 +403,13 @@ this->imageColor= imageColor;
 }
 
 
-    public: void setColor(OpenGLFeature* color){
+    auto OpenGLConfiguration::setColor(OpenGLFeature* color) -> void{
 this->color= color;
     
 }
 
 
-    public: OpenGLFeature* getColor(){
+    auto OpenGLConfiguration::getColor() -> OpenGLFeature*{
 
 
 
@@ -427,13 +419,13 @@ this->color= color;
 }
 
 
-    public: void setVersionSelector(OpenGLFeature* versionSelector){
+    auto OpenGLConfiguration::setVersionSelector(OpenGLFeature* versionSelector) -> void{
 this->versionSelector= versionSelector;
     
 }
 
 
-    public: OpenGLFeature* getVersionSelector(){
+    auto OpenGLConfiguration::getVersionSelector() -> OpenGLFeature*{
 
 
 
@@ -443,13 +435,13 @@ this->versionSelector= versionSelector;
 }
 
 
-    public: void setType(OpenGLFeature* type){
+    auto OpenGLConfiguration::setType(OpenGLFeature* type) -> void{
 this->type= type;
     
 }
 
 
-    public: OpenGLFeature* getType(){
+    auto OpenGLConfiguration::getType() -> OpenGLFeature*{
 
 
 
@@ -459,7 +451,7 @@ this->type= type;
 }
 
 
-    public: std::string toString(){
+    auto OpenGLConfiguration::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -495,7 +487,6 @@ stringBuffer->append(stringUtil->toString(this->getColor()));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCONFIGURATION_CPP

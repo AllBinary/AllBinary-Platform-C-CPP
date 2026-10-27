@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/RootTransformInfoData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RootTransformInfoData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "ROOT_TRANSFORM_INFO_NAME";
-
-private: RootTransformInfoData(){
+RootTransformInfoData::RootTransformInfoData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_CPP

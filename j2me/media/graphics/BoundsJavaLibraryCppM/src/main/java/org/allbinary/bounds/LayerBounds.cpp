@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BOUNDS_LAYERBOUNDS_CPP
+        #define ORG_ALLBINARY_BOUNDS_LAYERBOUNDS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bounds/LayerBounds.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,21 +77,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/bounds/BoundsVisitorInterface.h"
 
-class LayerBounds
-            : public Object
-        , public BoundsChangeEventListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: Rectangle* rectangle;
-
-protected: LayerBounds(Rectangle* rectangle){
+LayerBounds::LayerBounds(Rectangle* rectangle) : logUtil(LogUtil::getInstance()){
 this->rectangle= rectangle;
     
 }
 
 
-    public: Rectangle* getRectangleP(){
+    auto LayerBounds::getRectangleP() -> Rectangle*{
 
 
 
@@ -91,23 +94,22 @@ this->rectangle= rectangle;
 }
 
 
-    public: void visit(BoundsVisitorInterface* boundsVisitorInterface){
+    auto LayerBounds::visit(BoundsVisitorInterface* boundsVisitorInterface) -> void{
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto LayerBounds::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onBoundsChangeEvent(BoundsChangeEvent* boundsChangeEvent){
+    auto LayerBounds::onBoundsChangeEvent(BoundsChangeEvent* boundsChangeEvent) -> void{
 this->rectangle= boundsChangeEvent->getRectangle();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BOUNDS_LAYERBOUNDS_CPP

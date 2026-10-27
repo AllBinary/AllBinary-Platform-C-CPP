@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_INPUTMAPPINGEVENT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_INPUTMAPPINGEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/event/InputMappingEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputMappingEvent: public AllBinaryEventObject {
 
-    private: InputToGameKeyMapping* inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
-
-public: InputMappingEvent(Object* anyType) : AllBinaryEventObject(anyType){
+InputMappingEvent::InputMappingEvent(Object* anyType) : AllBinaryEventObject(anyType), inputToGameKeyMapping(InputToGameKeyMapping::getNullInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,13 +72,13 @@ public: InputMappingEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-    public: void setInputToGameKeyMapping(InputToGameKeyMapping* inputToGameKeyMapping){
+    auto InputMappingEvent::setInputToGameKeyMapping(InputToGameKeyMapping* inputToGameKeyMapping) -> void{
 this->inputToGameKeyMapping= inputToGameKeyMapping;
     
 }
 
 
-    public: InputToGameKeyMapping* getInputToGameKeyMapping(){
+    auto InputMappingEvent::getInputToGameKeyMapping() -> InputToGameKeyMapping*{
 
 
 
@@ -81,7 +88,6 @@ this->inputToGameKeyMapping= inputToGameKeyMapping;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_INPUTMAPPINGEVENT_CPP

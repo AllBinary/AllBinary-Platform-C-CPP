@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
         #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsInterface.h"
 #include "org/allbinary/business/context/modules/storefront/statistics/inventory/StoreFrontInventoryStatisticsData.h"
 
-class StoreFrontInventoryStatisticsView
-            : public Object
-        , public DomNodeInterface {
 
-    private: StoreFrontInventoryStatisticsInterface* storeFrontInventoryStatisticsInterface;
-
-public: StoreFrontInventoryStatisticsView(StoreFrontInventoryStatisticsInterface* storeFrontInventoryStatisticsInterface){
+StoreFrontInventoryStatisticsView::StoreFrontInventoryStatisticsView(StoreFrontInventoryStatisticsInterface* storeFrontInventoryStatisticsInterface){
 this->storeFrontInventoryStatisticsInterface= storeFrontInventoryStatisticsInterface;
     
 }
@@ -78,7 +83,7 @@ this->storeFrontInventoryStatisticsInterface= storeFrontInventoryStatisticsInter
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StoreFrontInventoryStatisticsView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->storeFrontInventoryStatisticsInterface->toHashMap();;
     
@@ -94,7 +99,6 @@ this->storeFrontInventoryStatisticsInterface= storeFrontInventoryStatisticsInter
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_INVENTORY_STOREFRONTINVENTORYSTATISTICSVIEW_CPP

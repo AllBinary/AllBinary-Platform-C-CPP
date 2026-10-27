@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_VALIDATEDVIEWHELPERFACTORY_CPP
+        #define TAGHELPERS_VALIDATEDVIEWHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/ValidatedViewHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,17 +73,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "taghelpers/ValidationViewHelper.h"
 
-class ValidatedViewHelperFactory: public TagHelperFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ValidatedViewHelperFactory(){
+ValidatedViewHelperFactory::ValidatedViewHelperFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto ValidatedViewHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
         try {
             
@@ -87,10 +94,10 @@ public: ValidatedViewHelperFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -106,7 +113,6 @@ public: ValidatedViewHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_VALIDATEDVIEWHELPERFACTORY_CPP

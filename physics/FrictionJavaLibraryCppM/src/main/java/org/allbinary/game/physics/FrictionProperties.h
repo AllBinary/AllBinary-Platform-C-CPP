@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H
         #define ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/physics/friction/FrictionData.h>
-
-      
-#include <org/allbinary/game/physics/velocity/DragVelocityBehavior.h>
-
-      
-#include <org/allbinary/game/physics/velocity/VelocityProperties.h>
-
-      
+class FrictionData;
+class DragVelocityBehavior;
+class VelocityProperties;
 
 
 
@@ -57,8 +56,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FrictionProperties
-            : public Object
+            : public virtual Object
          {
 
 public: FrictionProperties();
@@ -71,3 +74,19 @@ public: FrictionProperties();
 
 
         #endif //ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H_COMPLETE
+        #if __has_include(<org/allbinary/game/physics/friction/FrictionData.h>)
+#include <org/allbinary/game/physics/friction/FrictionData.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/DragVelocityBehavior.h>)
+#include <org/allbinary/game/physics/velocity/DragVelocityBehavior.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/VelocityProperties.h>)
+#include <org/allbinary/game/physics/velocity/VelocityProperties.h>
+#endif
+
+        #endif
+    

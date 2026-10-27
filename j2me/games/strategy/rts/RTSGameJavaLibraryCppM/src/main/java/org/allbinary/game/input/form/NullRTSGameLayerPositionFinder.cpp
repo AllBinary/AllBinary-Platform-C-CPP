@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_NULLRTSGAMELAYERPOSITIONFINDER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_NULLRTSGAMELAYERPOSITIONFINDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/NullRTSGameLayerPositionFinder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,27 +67,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullRTSGameLayerPositionFinder
-            : public Object
-        , public LayerPositionFinderInterface {
+auto NullRTSGameLayerPositionFinder::instance_owner() -> NullRTSGameLayerPositionFinder* { static std::unique_ptr<NullRTSGameLayerPositionFinder> value(new NullRTSGameLayerPositionFinder()); return value.get(); }
+NullRTSGameLayerPositionFinder* NullRTSGameLayerPositionFinder::instance = NullRTSGameLayerPositionFinder::instance_owner();
 
-    private: static NullRTSGameLayerPositionFinder* instance() { static std::unique_ptr<NullRTSGameLayerPositionFinder> value(new NullRTSGameLayerPositionFinder()); return value.get(); }
-
-    public: static NullRTSGameLayerPositionFinder* getInstance(){
+    auto NullRTSGameLayerPositionFinder::getInstance() -> NullRTSGameLayerPositionFinder*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRTSGameLayerPositionFinder::instance();
+                        return NullRTSGameLayerPositionFinder::instance;
     
 }
 
 
-protected: NullRTSGameLayerPositionFinder(){
+NullRTSGameLayerPositionFinder::NullRTSGameLayerPositionFinder(){
 }
 
 
-    public: AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition){
+    auto NullRTSGameLayerPositionFinder::getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition) -> AllBinaryLayer*{
 
     AllBinaryLayer* layerInterface = DropCellPositionHistory::getInstance()->getLayerInterface(geographicMapCellPosition);;
     
@@ -90,7 +97,6 @@ protected: NullRTSGameLayerPositionFinder(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_NULLRTSGAMELAYERPOSITIONFINDER_CPP

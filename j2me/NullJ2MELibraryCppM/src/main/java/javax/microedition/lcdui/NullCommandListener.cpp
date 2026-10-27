@@ -4,6 +4,16 @@
 
 
 
+        #ifndef JAVAX_MICROEDITION_LCDUI_NULLCOMMANDLISTENER_CPP
+        #define JAVAX_MICROEDITION_LCDUI_NULLCOMMANDLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "javax/microedition/lcdui/NullCommandListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,17 +44,16 @@
 #include "javax/microedition/lcdui/Command.h"
 #include "javax/microedition/lcdui/Displayable.h"
 
-class NullCommandListener
-            : public Object
-        , public CommandListener {
 
-    public: static NullCommandListener* NULL_COMMAND_LISTENER() { static std::unique_ptr<NullCommandListener> value(new NullCommandListener()); return value.get(); }
+NullCommandListener::NullCommandListener() {
+        }
+        auto NullCommandListener::NULL_COMMAND_LISTENER_owner() -> NullCommandListener* { static std::unique_ptr<NullCommandListener> value(new NullCommandListener()); return value.get(); }
+NullCommandListener* NullCommandListener::NULL_COMMAND_LISTENER = NullCommandListener::NULL_COMMAND_LISTENER_owner();
 
-    public: void commandAction(Command* c, Displayable* d){
+    auto NullCommandListener::commandAction(Command* c, Displayable* d) -> void{
 }
 
 
-};
 
-            
 
+        #endif //JAVAX_MICROEDITION_LCDUI_NULLCOMMANDLISTENER_CPP

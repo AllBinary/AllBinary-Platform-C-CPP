@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,30 +38,14 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class BasicArrayListUtil;
 
 
 
@@ -75,21 +64,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/layer/Layer.h"
-#include "org/allbinary/layer/LayerInterfaceFactoryInterface.h"
-#include "org/allbinary/layer/AllBinaryLayer.h"
+        class Layer;
+class LayerInterfaceFactoryInterface;
+class AllBinaryLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerInterfaceFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static LayerInterfaceFactory* SINGLETON() { static std::unique_ptr<LayerInterfaceFactory> value(new LayerInterfaceFactory()); return value.get(); }
+    private: static LayerInterfaceFactory* SINGLETON_owner();
+    private: static LayerInterfaceFactory* SINGLETON;
 
     public: static LayerInterfaceFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
+            
+    public: LayerInterfaceFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: BasicArrayList* list;
 
     public: void init();
 
@@ -107,3 +105,43 @@ class LayerInterfaceFactory
 
 
         #endif //ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/layer/Layer.h")
+#include "org/allbinary/layer/Layer.h"
+#endif
+#if __has_include("org/allbinary/layer/LayerInterfaceFactoryInterface.h")
+#include "org/allbinary/layer/LayerInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+
+        #endif
+    

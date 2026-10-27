@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_INVENTORYTAG_CPP
+        #define ADMIN_TAGS_INVENTORYTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/InventoryTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,11 +76,8 @@
 #include "admin/tags/ParentInventoryTagHelper.h"
 #include "admin/tags/AbTagData.h"
 
-class InventoryTag: public TableTag {
 
-    private: std::string storeName;
-
-public: InventoryTag() : TableTag(){
+InventoryTag::InventoryTag() : TableTag(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,7 +91,7 @@ this->setTagRequestHelperFactory(new InventoryRequestHelperFactory());
 }
 
 
-    public: void setStoreName(std::string value){
+    auto InventoryTag::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 }
@@ -92,7 +99,7 @@ this->storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto InventoryTag::doStartTag() -> int32_t{
 
         try {
             
@@ -106,7 +113,7 @@ this->storeName= value;
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.BACKUP) != 0 && this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.RESTORE) != 0 && this->getCommand()->compareTo(this->commonStrings.CREATE) != 0 && this->getCommand()->compareTo(this->commonStrings.DROP) != 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->BACKUP) != 0 && this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->RESTORE) != 0 && this->getCommand()->compareTo(this->commonStrings->CREATE) != 0 && this->getCommand()->compareTo(this->commonStrings->DROP) != 0)
                         
                                     {
                                     
@@ -125,7 +132,7 @@ this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->sto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                                     }
@@ -156,7 +163,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_INVENTORYTAG_CPP

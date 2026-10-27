@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,10 +53,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseServerInitFileUtil
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: LicenseServerInitFileUtil();
+        
     public: void init();
 
     private: void write();
@@ -62,3 +75,10 @@ class LicenseServerInitFileUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_H_COMPLETE
+        
+        #endif
+    

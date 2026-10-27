@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_INTERFACEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_INTERFACEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/anyType/InterfaceUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,11 +65,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InterfaceUtil
-            : public Object
-         {
 
-    public: static std::string viewAll(Class* myClass, std::string lineBreak){
+InterfaceUtil::InterfaceUtil(){
+}
+
+
+    auto InterfaceUtil::viewAll(Class* myClass, std::string lineBreak) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -81,7 +92,7 @@ stringBuffer->append(lineBreak);
         {
 stringBuffer->append("Interface: ");
     
-stringBuffer->append(interfaces[index].getName());
+stringBuffer->append(interfaces[index]->getName());
     
 stringBuffer->append(lineBreak);
     
@@ -96,11 +107,9 @@ stringBuffer->append(lineBreak);
 }
 
 
-    public: static Class* getClass()(std::string interfaceName, std::vector<Class*> interfaces){
+    auto InterfaceUtil::getClass()(std::string interfaceName, std::vector<Class*> interfaces) -> Class*{
 
-                        if(true && interfaces != 
-                                    nullptr
-                                 && interfaces.size() > 0)
+                        if(true && !interfaces.empty() && interfaces.size() > 0)
                         
                                     {
                                     
@@ -111,7 +120,7 @@ stringBuffer->append(lineBreak);
     int32_t index = 0;index < interfaces.size(); index++)
         {
 
-                        if(interfaces[index].getName().indexOf(interfaceName) >= 0)
+                        if(interfaces[index]->getName().indexOf(interfaceName) >= 0)
                         
                                     {
                                     
@@ -137,7 +146,7 @@ stringBuffer->append(lineBreak);
 }
 
 
-    public: static bool isImplemented(Class* clazz, Object* anyType){
+    auto InterfaceUtil::isImplemented(Class* clazz, Object* anyType) -> bool{
 
     std::vector<Class*> classes = anyType->getClass()->getInterfaces();;
     
@@ -149,7 +158,7 @@ stringBuffer->append(lineBreak);
     int32_t index = 0;index < classes.size(); index++)
         {
 
-                        if(clazz->getName().compareTo(classes[index].getName()) == 0)
+                        if(clazz->getName().compareTo(classes[index]->getName()) == 0)
                         
 
 
@@ -167,7 +176,7 @@ stringBuffer->append(lineBreak);
 }
 
 
-    public: static bool isImplemented(std::string className, Object* anyType){
+    auto InterfaceUtil::isImplemented(std::string className, Object* anyType) -> bool{
 
     std::vector<Class*> classes = anyType->getClass()->getInterfaces();;
     
@@ -179,7 +188,7 @@ stringBuffer->append(lineBreak);
     int32_t index = 0;index < classes.size(); index++)
         {
 
-                        if(classes[index].getName().indexOf(className) == 0)
+                        if(classes[index]->getName().indexOf(className) == 0)
                         
                                     {
                                     
@@ -202,7 +211,7 @@ stringBuffer->append(lineBreak);
 }
 
 
-    public: static std::string isImplementedView(Class* clazz, Object* anyType){
+    auto InterfaceUtil::isImplementedView(Class* clazz, Object* anyType) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -222,9 +231,9 @@ stringBuffer->append(clazz->getName());
     
 stringBuffer->append(" should be = ");
     
-stringBuffer->append(classes[index].getName());
+stringBuffer->append(classes[index]->getName());
     
-stringBuffer->append(classes[index].getName());
+stringBuffer->append(classes[index]->getName());
     
 stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
@@ -239,11 +248,6 @@ stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-private: InterfaceUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_INTERFACEUTIL_CPP

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLESIMPLEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLESIMPLEBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
+class CollidableCompositeLayer;
 
 
 
@@ -49,11 +52,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h"
-#include "org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h"
+class DestroyedLayerProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DestroyableSimpleBehavior: public DestroyableBaseBehavior {
 
-    protected: CollidableCompositeLayer* ownerLayer;
+    /*protected*/ public: CollidableCompositeLayer* ownerLayer;
 
     private: bool destroyed = false;
 
@@ -69,3 +76,19 @@ public: DestroyableSimpleBehavior(CollidableCompositeLayer* ownerLayer);
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLESIMPLEBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLESIMPLEBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLESIMPLEBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/CollidableCompositeLayer.h>)
+#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
+#endif
+#if __has_include("org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h")
+#include "org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h"
+#endif
+#if __has_include("org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h")
+#include "org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h"
+#endif
+
+        #endif
+    

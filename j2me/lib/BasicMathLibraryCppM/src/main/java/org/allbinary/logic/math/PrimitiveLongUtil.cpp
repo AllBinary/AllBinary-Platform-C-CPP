@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/PrimitiveLongUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,11 +70,8 @@
         #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
 #include "org/allbinary/logic/math/MathUtil.h"
 
-class PrimitiveLongUtil
-            : public Object
-         {
 
-    public: static PrimitiveLongUtil* createPowerOfTen(int32_t powerOfTen){
+    auto PrimitiveLongUtil::createPowerOfTen(int32_t powerOfTen) -> PrimitiveLongUtil*{
 
     PrimitiveLongUtil* primitiveLongUtil = new PrimitiveLongUtil(powerOfTen, NullUtil::getInstance()->NULL_OBJECT);;
     
@@ -92,21 +99,7 @@ logUtil->put(commonStrings->EXCEPTION, primitiveLongUtil, commonStrings->CONSTRU
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: int32_t powerOfTen;
-
-    private: int32_t maxValue;
-
-    private: int32_t maxDigits;
-
-    private: std::vector<char> charArray;
-
-    private: int32_t currentTotalDigits= 0;
-
-    private: PrimitiveLongSingleton* primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
-
-public: PrimitiveLongUtil(int32_t powerOfTen, Object* unused){
+PrimitiveLongUtil::PrimitiveLongUtil(int32_t powerOfTen, Object* unused) : logUtil(LogUtil::getInstance()), primitiveLongSingleton(PrimitiveLongSingleton::getInstance()){
 this->maxDigits= MathUtil::getInstance()->getTotalDigits(powerOfTen);
     
 this->powerOfTen= powerOfTen;
@@ -118,7 +111,7 @@ this->charArray= std::vector<char>(this->maxDigits);
 }
 
 
-    public: std::vector<char> getCharArray(int32_t value){
+    auto PrimitiveLongUtil::getCharArray(int32_t value) -> std::vector<char>{
 
                         if(value < 10)
                         
@@ -201,13 +194,13 @@ this->setCurrentTotalDigits(index);
 }
 
 
-    private: void setCurrentTotalDigits(int32_t currentTotalDigits){
+    auto PrimitiveLongUtil::setCurrentTotalDigits(int32_t currentTotalDigits) -> void{
 this->currentTotalDigits= currentTotalDigits;
     
 }
 
 
-    public: int32_t getCurrentTotalDigits(){
+    auto PrimitiveLongUtil::getCurrentTotalDigits() -> int32_t{
 
 
 
@@ -217,7 +210,7 @@ this->currentTotalDigits= currentTotalDigits;
 }
 
 
-    public: int32_t getMaxDigits(){
+    auto PrimitiveLongUtil::getMaxDigits() -> int32_t{
 
 
 
@@ -227,7 +220,6 @@ this->currentTotalDigits= currentTotalDigits;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_CPP

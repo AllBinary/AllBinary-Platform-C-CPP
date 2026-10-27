@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROIDUTIL_H
         #define ORG_ALLBINARY_ANDROIDUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Integer.h"
         
-#include <android/app/Activity.h>
-
-      
+class Activity;
 #include <android/os/Build.h>
-
-      
 
 
 
@@ -56,11 +57,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidUtil
-            : public Object
+            : public virtual Object
          {
 
-    public: static Activity* NULL_ACTIVITY() { static std::unique_ptr<Activity> value(new Activity()); return value.get(); }
+    private: static Activity* NULL_ACTIVITY_owner();
+    public: static Activity* NULL_ACTIVITY;
 
     private: static inline const int32_t version = Integer.parseInt(Build::VERSION.SDK);
 
@@ -68,9 +74,26 @@ class AndroidUtil
 
     public: static bool isAndroid();
 
+
+            
+    public: AndroidUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_ANDROIDUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROIDUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROIDUTIL_H_COMPLETE
+        #if __has_include(<android/app/Activity.h>)
+#include <android/app/Activity.h>
+#endif
+#if __has_include(<android/os/Build.h>)
+#include <android/os/Build.h>
+#endif
+
+        #endif
+    

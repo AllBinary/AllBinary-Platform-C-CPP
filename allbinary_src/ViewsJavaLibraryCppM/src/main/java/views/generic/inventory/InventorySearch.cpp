@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCH_CPP
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCH_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/inventory/InventorySearch.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -108,19 +118,8 @@
         #include "views/generic/inventory/InventorySearchUtil.h"
 #include "views/generic/inventory/InventorySearchProductUtil.h"
 
-class InventorySearch
-            : public Object
-        , public InventoryViewSearchInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    private: SearchRequest* searchRequest;
-
-public: InventorySearch(SearchRequest* searchRequest){
+InventorySearch::InventorySearch(SearchRequest* searchRequest) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), basicItemData(BasicItemData::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -134,7 +133,7 @@ this->searchRequest= searchRequest;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string searchSingleStaticPage(){
+    auto InventorySearch::searchSingleStaticPage() -> std::string{
 
         try {
             
@@ -197,7 +196,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "searchSingleStaticPage", &e);
@@ -208,7 +207,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
 
 
-                            throw new Exception("Failed retrieve Single Product Page Static");
+                            throw Exception("Failed retrieve Single Product Page Static");
                     
 }
 
@@ -217,7 +216,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string searchSingleDynamicPage(){
+    auto InventorySearch::searchSingleDynamicPage() -> std::string{
 
         try {
             
@@ -234,7 +233,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "searchSingleDynamicPage", &e);
@@ -245,7 +244,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
 
 
-                            throw new Exception("Failed retrieve Single Product Page Dynamically");
+                            throw Exception("Failed retrieve Single Product Page Dynamically");
                     
 }
 
@@ -254,7 +253,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<std::string> search(){
+    auto InventorySearch::search() -> std::vector<std::string>{
 
     AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
     
@@ -275,7 +274,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getProduct(std::string product){
+    auto InventorySearch::getProduct(std::string product) -> std::string{
 
     AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
     
@@ -288,7 +287,6 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_INVENTORY_INVENTORYSEARCH_CPP

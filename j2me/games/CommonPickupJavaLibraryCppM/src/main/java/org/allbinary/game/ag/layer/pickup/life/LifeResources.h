@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LifeResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static LifeResources* SINGLETON() { static std::unique_ptr<LifeResources> value(new LifeResources()); return value.get(); }
+    private: static LifeResources* SINGLETON_owner();
+    private: static LifeResources* SINGLETON;
 
     public: static LifeResources* getInstance();
 
@@ -66,3 +76,10 @@ private: LifeResources();
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H_COMPLETE
+        
+        #endif
+    

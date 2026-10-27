@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/ItemIndexPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,25 +63,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ItemIndexPaintable
-            : public Object
-         {
 
-    private: static ItemIndexPaintable* instance() { static std::unique_ptr<ItemIndexPaintable> value(new ItemIndexPaintable()); return value.get(); }
+ItemIndexPaintable::ItemIndexPaintable() {
+        }
+        auto ItemIndexPaintable::instance_owner() -> ItemIndexPaintable* { static std::unique_ptr<ItemIndexPaintable> value(new ItemIndexPaintable()); return value.get(); }
+ItemIndexPaintable* ItemIndexPaintable::instance = ItemIndexPaintable::instance_owner();
 
-    public: static ItemIndexPaintable* getInstance(){
+    auto ItemIndexPaintable::getInstance() -> ItemIndexPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ItemIndexPaintable::instance();
+                        return ItemIndexPaintable::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ItemIndexPaintable::paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -81,7 +91,6 @@ class ItemIndexPaintable
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXPAINTABLE_CPP

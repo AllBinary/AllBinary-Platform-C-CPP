@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonsPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,17 +70,8 @@
         #include "org/allbinary/input/motion/button/TouchButtonFactory.h"
 #include "org/allbinary/input/motion/button/TouchButton.h"
 
-class TouchButtonsPaintable: public Paintable {
 
-    protected: BasicColor* foregroundBasicColor;
-
-    protected: int32_t foregroundColor;
-
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
-
-    private: TouchButtonFactory* touchButtonFactory = TouchButtonFactory::getInstance();
-
-public: TouchButtonsPaintable(BasicColor* basicColor){
+TouchButtonsPaintable::TouchButtonsPaintable(BasicColor* basicColor) : basicSetColorUtil(BasicColorSetUtil::getInstance()), touchButtonFactory(TouchButtonFactory::getInstance()){
 this->foregroundBasicColor= basicColor;
     
 this->foregroundColor= basicColor->intValue();
@@ -78,7 +79,7 @@ this->foregroundColor= basicColor->intValue();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto TouchButtonsPaintable::paint(Graphics* graphics) -> void{
 
     BasicArrayList* list = this->touchButtonFactory->getList();;
     
@@ -116,7 +117,6 @@ touchButton->paintHint(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLE_CPP

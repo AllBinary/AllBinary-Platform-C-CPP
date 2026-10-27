@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameInputProcessorUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,11 +59,11 @@
         #include "org/allbinary/game/input/GameInputProcessor.h"
 #include "org/allbinary/game/input/InputFactory.h"
 
-class GameInputProcessorUtil
-            : public Object
-         {
 
-    public: static void init(std::vector<GameInputProcessor*> inputProcessorArray){
+GameInputProcessorUtil::GameInputProcessorUtil() {
+        }
+        
+    auto GameInputProcessorUtil::init(std::vector<GameInputProcessor*> inputProcessorArray) -> void{
 
     GameInputProcessor* noInputProcessor = GameInputProcessor::getInstance();;
     
@@ -86,7 +96,6 @@ class GameInputProcessorUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_CPP

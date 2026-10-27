@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/DemoGameBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,47 +73,45 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class DemoGameBehavior
-            : public Object
-         {
 
-    private: static DemoGameBehavior* instance() { static std::unique_ptr<DemoGameBehavior> value(new DemoGameBehavior()); return value.get(); }
+DemoGameBehavior::DemoGameBehavior() : logUtil(LogUtil::getInstance()) {
+        }
+        auto DemoGameBehavior::instance_owner() -> DemoGameBehavior* { static std::unique_ptr<DemoGameBehavior> value(new DemoGameBehavior()); return value.get(); }
+DemoGameBehavior* DemoGameBehavior::instance = DemoGameBehavior::instance_owner();
 
-    public: static DemoGameBehavior* getInstance(){
+    auto DemoGameBehavior::getInstance() -> DemoGameBehavior*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameBehavior::instance();
+                        return DemoGameBehavior::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto DemoGameBehavior::init() -> void{
 }
 
 
-    public: void pause(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto DemoGameBehavior::pause(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
-    public: void unPause(AllBinaryGameCanvas* allBinaryGameCanvas){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void updateTouch(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto DemoGameBehavior::unPause(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void updateScreenButtonPaintable(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto DemoGameBehavior::updateTouch(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto DemoGameBehavior::updateScreenButtonPaintable(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->setTouchPaintableP(NullPaintable::getInstance());
     
 }
@@ -111,44 +119,43 @@ allBinaryGameCanvas->setTouchPaintableP(NullPaintable::getInstance());
 
                 //@Throws(Exception.constructor)
             
-    public: void setGameState(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto DemoGameBehavior::setGameState(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
-    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas* allBinaryGameCanvas){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void updateEndGameProcessor(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto DemoGameBehavior::removeAllGameKeyInputListeners(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void buildGame(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto DemoGameBehavior::updateEndGameProcessor(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void run(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto DemoGameBehavior::buildGame(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto DemoGameBehavior::run(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF(GameTypeFactory::getInstance()->BOT.toString(), this, commonStrings->RUN);
+this->logUtil->putF(GameTypeFactory::getInstance()->BOT->toString(), this, commonStrings->RUN);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setHighScore(AbeClientInformationInterface* abeClientInformation, AllBinaryGameCanvas* allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast){
+    auto DemoGameBehavior::setHighScore(AbeClientInformationInterface* abeClientInformation, AllBinaryGameCanvas* allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMEBEHAVIOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_CPP
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/installer/InitDb.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,39 +68,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Warning you must have sql root access
-class InitDb
-            : public Object
-         {
 
-    private: Object* anyType;
-
-    private: const std::string METHOD_CALL_GET_HOST_NAME = "getHostName";
-
-    private: const std::string METHOD_CALL_ADD_USERS = "addUsers";
-
-    private: const std::string METHOD_CALL_ADD_DATABASES = "addDatabases";
-
-    private: const std::string METHOD_CALL_ADD_TABLES = "addTables";
-
-    private: const std::string METHOD_CALL_TEMP_MAIN_PATH = "useTemporaryMainPath";
-
-    private: const std::string METHOD_CALL_MAIN_PATH = "useNormalMainPath";
-
-public: InitDb(){
+InitDb::InitDb(){
 }
 
 
-public: InitDb(DbConnectionInfo* dbConnectionInfo){
+InitDb::InitDb(DbConnectionInfo* dbConnectionInfo){
 }
 
 
-    protected: void setHelper(Object* anyType){
+    auto InitDb::setHelper(Object* anyType) -> void{
 this->anyType= anyType;
     
 }
 
 
-    protected: Object* getHelper(){
+    auto InitDb::getHelper() -> Object*{
 
 
 
@@ -100,7 +93,7 @@ this->anyType= anyType;
 }
 
 
-    private: std::string getHostName(){
+    auto InitDb::getHostName() -> std::string{
 
         try {
             
@@ -135,7 +128,7 @@ this->anyType= anyType;
 }
 
 
-    public: bool addUsers(){
+    auto InitDb::addUsers() -> bool{
 
         try {
             
@@ -170,7 +163,7 @@ this->anyType= anyType;
 }
 
 
-    public: bool addDatabases(){
+    auto InitDb::addDatabases() -> bool{
 
         try {
             
@@ -205,7 +198,7 @@ this->anyType= anyType;
 }
 
 
-    public: bool addTables(){
+    auto InitDb::addTables() -> bool{
 
         try {
             
@@ -240,7 +233,7 @@ this->anyType= anyType;
 }
 
 
-    public: bool useTemporaryMainPath(){
+    auto InitDb::useTemporaryMainPath() -> bool{
 
         try {
             
@@ -275,7 +268,7 @@ this->anyType= anyType;
 }
 
 
-    public: bool useNormalMainPath(){
+    auto InitDb::useNormalMainPath() -> bool{
 
         try {
             
@@ -310,7 +303,6 @@ this->anyType= anyType;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_CPP

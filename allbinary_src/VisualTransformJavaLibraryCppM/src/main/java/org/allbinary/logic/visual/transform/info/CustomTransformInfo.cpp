@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/CustomTransformInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +57,11 @@
         #include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
-class CustomTransformInfo: public TransformInfo, public TransformInfoInterface {
 
-public: CustomTransformInfo(std::string outputTypeName, std::string inputOutputTypeName, std::string inputOutputTypeFile, std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName){
+CustomTransformInfo::CustomTransformInfo(std::string outputTypeName, std::string inputOutputTypeName, std::string inputOutputTypeFile, std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_CPP

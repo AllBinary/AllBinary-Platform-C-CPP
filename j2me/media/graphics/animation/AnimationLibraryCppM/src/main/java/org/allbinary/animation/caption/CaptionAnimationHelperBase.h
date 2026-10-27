@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPERBASE_H
         #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPERBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 #include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class BasicColor;
 
 
 
@@ -55,10 +54,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CaptionAnimationHelperBase: public Animation {
 
-    public: static CaptionAnimationHelperBase* INSTANCE() { static std::unique_ptr<CaptionAnimationHelperBase> value(new CaptionAnimationHelperBase()); return value.get(); }
+    private: static CaptionAnimationHelperBase* INSTANCE_owner();
+    public: static CaptionAnimationHelperBase* INSTANCE;
 
+
+            
+    public: CaptionAnimationHelperBase();
+        
     public: bool isShowing();
 
     public: void tick();
@@ -73,3 +81,19 @@ class CaptionAnimationHelperBase: public Animation {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPERBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPERBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPERBASE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+
+        #endif
+    

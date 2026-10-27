@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H
         #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class TsUtil;
+class StdUtil;
+class StringUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -68,13 +61,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Tokenizer
-            : public Object
+            : public virtual Object
          {
 
     private: std::string sep;
 
-    private: std::string endSep = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string endSep;
 
 public: Tokenizer(std::string sep);
 
@@ -94,3 +91,28 @@ public: Tokenizer(std::string sep);
 
 
         #endif //ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H_COMPLETE
+        #if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,26 +57,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/Log.h"
-//NoPlatform
-// class LogUtil
-            : public Object
-         {
 
-    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
-
-    public: static LogUtil* getInstance()
+//NoPlatform - declared in the header, implemented by the platform project
 
 
 
-    public: void putL(Log* log)
-
-    public: void putF(std::string specialMessage, Object* anyType, std::string functionName)
-
-    public: void putF(std::string specialMessage, std::string className, std::string functionName)
-
-    public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception)
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP

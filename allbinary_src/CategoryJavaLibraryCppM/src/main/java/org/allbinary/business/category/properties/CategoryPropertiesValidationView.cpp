@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESVALIDATIONVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/properties/CategoryPropertiesValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,11 +72,8 @@
         #include "org/allbinary/business/category/properties/CategoryPropertiesView.h"
 #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
-class CategoryPropertiesValidationView: public CategoryPropertiesView, public ValidationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: CategoryPropertiesValidationView(CategoryPropertiesInterface* categoryPropertiesInterface) : CategoryPropertiesView(categoryPropertiesInterface){
+CategoryPropertiesValidationView::CategoryPropertiesValidationView(CategoryPropertiesInterface* categoryPropertiesInterface) : CategoryPropertiesView(categoryPropertiesInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,25 +85,25 @@ public: CategoryPropertiesValidationView(CategoryPropertiesInterface* categoryPr
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto CategoryPropertiesValidationView::isValid() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryPropertiesInterface.isValid();;
+                        return this->categoryPropertiesInterface->isValid();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto CategoryPropertiesValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->categoryPropertiesInterface.validationInfo());
+stringBuffer->append(this->categoryPropertiesInterface->validationInfo());
     
 
 
@@ -109,7 +116,7 @@ stringBuffer->append(this->categoryPropertiesInterface.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation info error", this, "validationInfo()", &e);
@@ -130,7 +137,7 @@ stringBuffer->append(this->categoryPropertiesInterface.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toValidationInfoDoc(){
+    auto CategoryPropertiesValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -142,7 +149,7 @@ stringBuffer->append(this->categoryPropertiesInterface.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toValidationInfoNode(Document* document){
+    auto CategoryPropertiesValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -152,7 +159,6 @@ stringBuffer->append(this->categoryPropertiesInterface.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESVALIDATIONVIEW_CPP

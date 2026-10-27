@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_SYSTEMHARDWAREFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_SYSTEMHARDWAREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/SystemHardwareFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,23 +75,55 @@
 #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 #include "org/allbinary/logic/system/hardware/HardwareFactory.h"
 
-class SystemHardwareFactory
-            : public Object
-         {
+auto SystemHardwareFactory::instance_owner() -> SystemHardwareFactory* { static std::unique_ptr<SystemHardwareFactory> value(new SystemHardwareFactory()); return value.get(); }
+SystemHardwareFactory* SystemHardwareFactory::instance = SystemHardwareFactory::instance_owner();
 
-    private: static SystemHardwareFactory* instance() { static std::unique_ptr<SystemHardwareFactory> value(new SystemHardwareFactory()); return value.get(); }
-
-    public: static SystemHardwareFactory* getInstance(){
+    auto SystemHardwareFactory::getInstance() -> SystemHardwareFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SystemHardwareFactory::instance();
+                        return SystemHardwareFactory::instance;
     
 }
 
 
-    public: static std::string static_toString(){
+SystemHardwareFactory::SystemHardwareFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), hardwareInterface(NoHardware::getInstance()){
+}
+
+
+    auto SystemHardwareFactory::getInstance(GenericOperatingSystem* operatingSystemInterface) -> HardwareInterface*{
+
+        try {
+            
+                        if(this->hardwareInterface == NoHardware::getInstance())
+                        
+                                    {
+                                    this->hardwareInterface= HardwareFactory::getInstance()->getInstance(operatingSystemInterface);
+    
+
+                                    }
+                                
+this->logUtil->putF("Found Hardware", this, this->commonStrings->CONSTRUCTOR);
+    
+
+                //: 
+} catch(Exception& e) 
+            {
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
+    
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->hardwareInterface;
+    
+}
+
+
+    auto SystemHardwareFactory::static_toString() -> std::string{
 
     SystemHardwareFactory* systemHardwareFactory = SystemHardwareFactory::getInstance();;
     
@@ -116,48 +158,6 @@ osBuffer->append("Hardware Info: \n");
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: HardwareInterface* hardwareInterface = NoHardware::getInstance();
-
-private: SystemHardwareFactory(){
-}
 
 
-    public: HardwareInterface* getInstance(GenericOperatingSystem* operatingSystemInterface){
-
-        try {
-            
-                        if(this->hardwareInterface == NoHardware::getInstance())
-                        
-                                    {
-                                    this->hardwareInterface= HardwareFactory::getInstance()->getInstance(operatingSystemInterface);
-    
-
-                                    }
-                                
-this->logUtil->putF("Found Hardware", this, this->commonStrings->CONSTRUCTOR);
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
-    
-}
-
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hardwareInterface;
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_SYSTEMHARDWAREFACTORY_CPP

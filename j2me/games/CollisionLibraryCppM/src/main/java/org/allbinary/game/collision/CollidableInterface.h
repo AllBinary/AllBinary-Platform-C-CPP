@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class CollidableCompositeLayer;
+class AllBinaryLayer;
 #include <org/allbinary/layer/NamedInterface.h>
-
-      
 
 
 
@@ -56,8 +55,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/collision/CollisionType.h"
+        class CollisionType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollidableInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
@@ -80,3 +83,22 @@ class CollidableInterface: public NamedInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/CollidableCompositeLayer.h>)
+#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/NamedInterface.h>)
+#include <org/allbinary/layer/NamedInterface.h>
+#endif
+#if __has_include("org/allbinary/game/collision/CollisionType.h")
+#include "org/allbinary/game/collision/CollisionType.h"
+#endif
+
+        #endif
+    

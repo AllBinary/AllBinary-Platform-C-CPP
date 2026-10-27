@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,57 +38,23 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/ImageItem.h>
-
-      
-#include <org/allbinary/game/layer/RTSGameStrings.h>
-
-      
-#include <org/allbinary/game/layer/item/LayerInterfaceFactoryImageItem.h>
-
-      
-#include <org/allbinary/game/layer/item/RTSLayerTextAnimation.h>
-
-      
-#include <org/allbinary/game/layer/resources/BasicGameResources.h>
-
-      
-#include <org/allbinary/game/layer/waypoint/FlagGameResources.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
-#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/form/item/CustomItemUtil.h>
-
-      
+class Image;
+class ImageItem;
+class RTSGameStrings;
+class LayerInterfaceFactoryImageItem;
+class RTSLayerTextAnimation;
+class BasicGameResources;
+class FlagGameResources;
+class ABCustomItem;
+class GameFeatureImageCacheFactory;
+class CommonSeps;
+class Animation;
+class BasicColor;
+class BasicColorFactory;
+class CustomItemUtil;
 #include <org/allbinary/graphics/form/item/ItemArraySingletonFactoryInterface.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
-#include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
-
-      
+class ImageCache;
+class LayerInterfaceFactoryInterface;
 
 
 
@@ -103,27 +74,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UnitItemArrayFactory
-            : public Object
+            : public virtual Object
         , public ItemArraySingletonFactoryInterface {
 
-    private: static inline const std::vector<ABCustomItem*> ITEMS = CustomItemUtil::getInstance()->CUSTOM_ITEM_ARRAY;
+    private: static std::vector<ABCustomItem*> ITEMS;
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps;
 
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
+    private: BasicColor* basicColor;
 
     private: std::vector<BasicGameResources*> resources;
 
-protected: UnitItemArrayFactory(std::vector<BasicGameResources*> resources);
+/*protected*/ public: UnitItemArrayFactory(std::vector<BasicGameResources*> resources);
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem* createFlagItem(FlagGameResources* flagResources, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
+    /*protected*/ public: ABCustomItem* createFlagItem(FlagGameResources* flagResources, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem* createNamedFlagItem(FlagGameResources* flagResources, std::string name, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
+    /*protected*/ public: ABCustomItem* createNamedFlagItem(FlagGameResources* flagResources, std::string name, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -139,3 +114,61 @@ protected: UnitItemArrayFactory(std::vector<BasicGameResources*> resources);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/ImageItem.h>)
+#include <javax/microedition/lcdui/ImageItem.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/RTSGameStrings.h>)
+#include <org/allbinary/game/layer/RTSGameStrings.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/item/LayerInterfaceFactoryImageItem.h>)
+#include <org/allbinary/game/layer/item/LayerInterfaceFactoryImageItem.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/item/RTSLayerTextAnimation.h>)
+#include <org/allbinary/game/layer/item/RTSLayerTextAnimation.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/resources/BasicGameResources.h>)
+#include <org/allbinary/game/layer/resources/BasicGameResources.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/waypoint/FlagGameResources.h>)
+#include <org/allbinary/game/layer/waypoint/FlagGameResources.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+#if __has_include(<org/allbinary/image/GameFeatureImageCacheFactory.h>)
+#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/CustomItemUtil.h>)
+#include <org/allbinary/graphics/form/item/CustomItemUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ItemArraySingletonFactoryInterface.h>)
+#include <org/allbinary/graphics/form/item/ItemArraySingletonFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerInterfaceFactoryInterface.h>)
+#include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
+#endif
+
+        #endif
+    

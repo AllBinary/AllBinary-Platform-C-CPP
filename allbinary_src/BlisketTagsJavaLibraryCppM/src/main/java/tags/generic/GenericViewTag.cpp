@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_GENERIC_GENERICVIEWTAG_CPP
+        #define TAGS_GENERIC_GENERICVIEWTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/generic/GenericViewTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,20 +62,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericViewTag: public TransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+GenericViewTag::GenericViewTag() : logUtil(LogUtil::getInstance()){
 
-    private: std::string output;
-
-    private: std::string file;
-
-public: GenericViewTag(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -73,7 +76,7 @@ public: GenericViewTag(){
 }
 
 
-    public: void setOutput(std::string value){
+    auto GenericViewTag::setOutput(std::string value) -> void{
 this->output= value;
     
 this->getPropertiesHashMap()->put(InputOutputTypeData::getInstance()->NAME, this->output);
@@ -81,7 +84,7 @@ this->getPropertiesHashMap()->put(InputOutputTypeData::getInstance()->NAME, this
 }
 
 
-    public: void setFile(std::string value){
+    auto GenericViewTag::setFile(std::string value) -> void{
 this->file= value;
     
 this->getPropertiesHashMap()->put(InputOutputTypeData::getInstance()->FILE, this->file);
@@ -89,7 +92,6 @@ this->getPropertiesHashMap()->put(InputOutputTypeData::getInstance()->FILE, this
 }
 
 
-};
 
-            
 
+        #endif //TAGS_GENERIC_GENERICVIEWTAG_CPP

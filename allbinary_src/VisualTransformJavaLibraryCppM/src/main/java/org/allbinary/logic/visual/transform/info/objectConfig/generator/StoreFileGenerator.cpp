@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_STOREFILEGENERATOR_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_STOREFILEGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/StoreFileGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -112,19 +122,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h"
 
-class StoreFileGenerator: public TransformInfoObjectConfigGenerator {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string output;
-
-    private: AbPath* fileAbPath;
-
-    private: AbFile* file;
-
-public: StoreFileGenerator(TransformInfoInterface* transformInfoInterface){
+StoreFileGenerator::StoreFileGenerator(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
     TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(transformInfoInterface);;
     
@@ -182,7 +181,7 @@ fileName= replace->all(fileName);
                                     
 
 
-                            throw new Exception("TransformInfoObjectConfigGenerator FileName Not Specified");
+                            throw Exception("TransformInfoObjectConfigGenerator FileName Not Specified");
                     
 
                                     }
@@ -208,7 +207,7 @@ this->output= tempOutput;
                                     
 
 
-                            throw new Exception("TransformInfoObjectConfigGenerator Output=extension Not Specified");
+                            throw Exception("TransformInfoObjectConfigGenerator Output=extension Not Specified");
                     
 
                                     }
@@ -228,10 +227,10 @@ this->fileAbPath= abPath;
 this->file= AbFile::createAbFileFromAbPath(this->fileAbPath);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("File: " +this->fileAbPath->toString(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("File: ") +JavaString::valueOf(this->fileAbPath->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -241,9 +240,9 @@ this->file= AbFile::createAbFileFromAbPath(this->fileAbPath);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string process(std::string input){
+    auto StoreFileGenerator::process(std::string input) -> std::string{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Processing", this, this->commonStrings->PROCESS);
@@ -276,13 +275,13 @@ FileUtil::getInstance()->write(inputStream, this->file);
                             
 
 
-                            throw new Exception("Could Not Create: " +this->fileAbPath->toString());
+                            throw Exception(JavaString::valueOf("Could Not Create: ") +JavaString::valueOf(this->fileAbPath->toString()));
                     
 
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Processed", this, this->commonStrings->PROCESS);
@@ -299,7 +298,6 @@ FileUtil::getInstance()->write(inputStream, this->file);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_STOREFILEGENERATOR_CPP

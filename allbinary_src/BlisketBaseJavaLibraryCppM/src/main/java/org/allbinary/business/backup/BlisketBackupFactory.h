@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,54 +36,22 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
-
-      
-#include <org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntity.h>
-
-      
-#include <org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntityFactory.h>
-
-      
-#include <org/allbinary/globals/PATH_GLOBALS.h>
-
-      
-#include <org/allbinary/globals/URLGLOBALS.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/directory/Directory.h>
-
-      
-#include <org/allbinary/logic/io/file/zip/ZipFileUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class StoreFrontInterface;
+class StoreFrontsEntity;
+class StoreFrontsEntityFactory;
+class PATH_GLOBALS;
+class URLGLOBALS;
+class LogUtil;
+class PreLogUtil;
+class AbFile;
+class Directory;
+class ZipFileUtil;
+class AbPath;
+class StringMaker;
+class StringUtil;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -98,21 +71,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BlisketBackupFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BlisketBackupFactory* instance() { static std::unique_ptr<BlisketBackupFactory> value(new BlisketBackupFactory()); return value.get(); }
+    private: static BlisketBackupFactory* instance_owner();
+    private: static BlisketBackupFactory* instance;
 
     public: static BlisketBackupFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: StringUtil* stringUtil = StringUtil::getInstance();
+            
+    public: BlisketBackupFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: StringUtil* stringUtil;
 
-    private: Directory* directory = Directory::getInstance();
+    private: CommonStrings* commonStrings;
+
+    private: Directory* directory;
 
                 //@Throws(Exception.constructor)
             
@@ -134,3 +116,58 @@ class BlisketBackupFactory
 
 
         #endif //ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_BACKUP_BLISKETBACKUPFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntity.h>)
+#include <org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntity.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntityFactory.h>)
+#include <org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/globals/PATH_GLOBALS.h>)
+#include <org/allbinary/globals/PATH_GLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/globals/URLGLOBALS.h>)
+#include <org/allbinary/globals/URLGLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/directory/Directory.h>)
+#include <org/allbinary/logic/io/file/directory/Directory.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/zip/ZipFileUtil.h>)
+#include <org/allbinary/logic/io/file/zip/ZipFileUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

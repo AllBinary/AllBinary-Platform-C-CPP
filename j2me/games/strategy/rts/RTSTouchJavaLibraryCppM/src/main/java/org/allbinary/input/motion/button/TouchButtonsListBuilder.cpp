@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSLISTBUILDER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSLISTBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonsListBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
-class TouchButtonsListBuilder: public BaseTouchInput {
 
-    private: BasicArrayList* baseTouchInputList = new BasicArrayListD();
-
-    protected: void addList(BasicArrayList* list){
+TouchButtonsListBuilder::TouchButtonsListBuilder() : baseTouchInputList(new BasicArrayListD()) {
+        }
+        
+    auto TouchButtonsListBuilder::addList(BasicArrayList* list) -> void{
 
     int32_t size = this->baseTouchInputList->size();;
     
@@ -77,13 +87,12 @@ list->addAllList(baseTouchInput->getList());
 }
 
 
-    public: void add(BaseTouchInput* baseTouchInput){
+    auto TouchButtonsListBuilder::add(BaseTouchInput* baseTouchInput) -> void{
 this->baseTouchInputList->add(baseTouchInput);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSLISTBUILDER_CPP

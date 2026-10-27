@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_H
         #define ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,26 +43,12 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/Random.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <org/allbinary/logic/math/MathUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class JsType;
+class JsMethod;
+class JsConstructor;
+class MathUtil;
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -76,18 +67,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //Do not use in client code for money related things.
 class MyRandomFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static MyRandomFactory* instance() { static std::unique_ptr<MyRandomFactory> value(new MyRandomFactory()); return value.get(); }
+    private: static MyRandomFactory* instance_owner();
+    private: static MyRandomFactory* instance;
 
     public: static MyRandomFactory* getInstance();
 
     public: static void main(std::vector<std::string> args);
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil;
 
     private: Random* rand;
 
@@ -115,3 +111,31 @@ private: MyRandomFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_H_COMPLETE
+        #if __has_include(<java/util/Random.h>)
+#include <java/util/Random.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/MathUtil.h>)
+#include <org/allbinary/logic/math/MathUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_TECHRTSFORMINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_TECHRTSFORMINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/TechRTSFormInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -117,13 +127,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/form/RTSFormInput.h"
 
-class TechRTSFormInput: public RTSFormInput {
 
-    private: AllBinaryEventObject* EVENT = new AllBinaryEventObject(this);
-
-    protected: GameNotificationEvent* noMoneyGameNotificationEvent;
-
-public: TechRTSFormInput(std::vector<Group*> groupInterface) : RTSFormInput(groupInterface){
+TechRTSFormInput::TechRTSFormInput(std::vector<Group*> groupInterface) : RTSFormInput(groupInterface), EVENT(new AllBinaryEventObject(this)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -140,8 +145,8 @@ this->noMoneyGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrin
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto TechRTSFormInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+RTSFormInput::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
@@ -156,8 +161,8 @@ this->noMoneyGameNotificationEvent->setBasicColorP(geographicMapInterface->getFo
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex){
-super.process(layerManager);
+    auto TechRTSFormInput::processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex) -> void{
+RTSFormInput::process(layerManager);
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
@@ -171,7 +176,7 @@ super.process(layerManager);
 
     RTSInterface* rtsInterface = technologyRTSInterfaceImageItem->getRtsInterface();;
     
-this->logUtil.putF(stringMaker->append("isUpgradeable: ")->appendboolean(rtsInterface->isUpgradeable())->toString(), this, commonStrings->PROCESS);
+this->logUtil->putF(stringMaker->append("isUpgradeable: ")->appendboolean(rtsInterface->isUpgradeable())->toString(), this, commonStrings->PROCESS);
     
 
                         if(rtsInterface->isUpgradeable())
@@ -183,9 +188,9 @@ this->logUtil.putF(stringMaker->append("isUpgradeable: ")->appendboolean(rtsInte
 
     Capital* capital = rtsPlayerLayerInterface->getCapital();;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil.putF(stringMaker->appendint(cost)->append("<=")->appendint(capital->getTotalMoney())->toString(), this, commonStrings->PROCESS);
+this->logUtil->putF(stringMaker->appendint(cost)->append("<=")->appendint(capital->getTotalMoney())->toString(), this, commonStrings->PROCESS);
     
 
                         if(cost <= capital->getTotalMoney())
@@ -225,7 +230,6 @@ TechEventHandler::getInstance()->fireEvent(this->EVENT);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_TECHRTSFORMINPUT_CPP

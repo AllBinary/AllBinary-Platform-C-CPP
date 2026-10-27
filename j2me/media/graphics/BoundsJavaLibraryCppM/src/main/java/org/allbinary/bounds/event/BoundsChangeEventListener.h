@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_H
         #define ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
 
 
 
@@ -48,8 +51,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/bounds/event/BoundsChangeEvent.h"
+        class BoundsChangeEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BoundsChangeEventListener: public EventListenerInterface {
 
     public: virtual void onBoundsChangeEvent(BoundsChangeEvent* boundsChangeEvent) = 0;
@@ -60,3 +67,16 @@ class BoundsChangeEventListener: public EventListenerInterface {
 
 
         #endif //ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include("org/allbinary/bounds/event/BoundsChangeEvent.h")
+#include "org/allbinary/bounds/event/BoundsChangeEvent.h"
+#endif
+
+        #endif
+    

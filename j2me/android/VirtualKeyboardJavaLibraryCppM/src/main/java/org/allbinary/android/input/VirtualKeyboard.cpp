@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARD_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/VirtualKeyboard.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,31 +67,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VirtualKeyboard
-            : public Object
-         {
 
-    public: static VirtualKeyboard* NULL_VIRTUAL_KEYBOARD() { static std::unique_ptr<VirtualKeyboard> value(new VirtualKeyboard()); return value.get(); }
+VirtualKeyboard::VirtualKeyboard() {
+        }
+        auto VirtualKeyboard::NULL_VIRTUAL_KEYBOARD_owner() -> VirtualKeyboard* { static std::unique_ptr<VirtualKeyboard> value(new VirtualKeyboard()); return value.get(); }
+VirtualKeyboard* VirtualKeyboard::NULL_VIRTUAL_KEYBOARD = VirtualKeyboard::NULL_VIRTUAL_KEYBOARD_owner();
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto VirtualKeyboard::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent){
+    auto VirtualKeyboard::onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent) -> void{
 }
 
 
-    public: void forceHide(){
+    auto VirtualKeyboard::forceHide() -> void{
 }
 
 
-    public: void hide(){
+    auto VirtualKeyboard::hide() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARD_CPP

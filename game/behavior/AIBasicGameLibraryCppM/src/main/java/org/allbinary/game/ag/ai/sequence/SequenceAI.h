@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/ai/ArtificialIntelligence.h>
-
-      
-#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
-
-      
-#include <org/allbinary/ai/ArtificialIntelligenceTransitionInterface.h>
-
-      
+class ArtificialIntelligence;
+class ArtificialIntelligenceInterface;
+class ArtificialIntelligenceTransitionInterface;
 #include <org/allbinary/game/ag/ai/ArrayAI.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class GameInput;
+class AllBinaryLayer;
+class AllBinaryLayerManager;
+class StringMaker;
+class StringUtil;
 
 
 
@@ -76,6 +63,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class SequenceAI: public ArrayAI {
 
@@ -107,3 +98,37 @@ public: SequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntel
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_H_COMPLETE
+        #if __has_include(<org/allbinary/ai/ArtificialIntelligence.h>)
+#include <org/allbinary/ai/ArtificialIntelligence.h>
+#endif
+#if __has_include(<org/allbinary/ai/ArtificialIntelligenceInterface.h>)
+#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
+#endif
+#if __has_include(<org/allbinary/ai/ArtificialIntelligenceTransitionInterface.h>)
+#include <org/allbinary/ai/ArtificialIntelligenceTransitionInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/ag/ai/ArrayAI.h>)
+#include <org/allbinary/game/ag/ai/ArrayAI.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

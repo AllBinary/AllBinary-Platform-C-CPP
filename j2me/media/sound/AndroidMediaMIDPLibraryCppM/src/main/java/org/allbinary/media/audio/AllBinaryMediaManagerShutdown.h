@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGERSHUTDOWN_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGERSHUTDOWN_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 
 
 
@@ -52,21 +55,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+        class SoundsFactoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryMediaManagerShutdown
-            : public Object
+            : public virtual Object
          {
 
-    private: static AllBinaryMediaManagerShutdown* instance() { static std::unique_ptr<AllBinaryMediaManagerShutdown> value(new AllBinaryMediaManagerShutdown()); return value.get(); }
+    private: static AllBinaryMediaManagerShutdown* instance_owner();
+    private: static AllBinaryMediaManagerShutdown* instance;
 
                 //@Throws(Exception.constructor)
             
     public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface);
 
+
+            
+    public: AllBinaryMediaManagerShutdown();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGERSHUTDOWN_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGERSHUTDOWN_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGERSHUTDOWN_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/media/audio/SoundsFactoryInterface.h")
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#endif
+
+        #endif
+    

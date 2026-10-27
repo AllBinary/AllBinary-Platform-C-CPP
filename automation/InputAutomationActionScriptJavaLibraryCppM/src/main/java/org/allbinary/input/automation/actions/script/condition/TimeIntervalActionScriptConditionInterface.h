@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class TimeDelayHelper;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeIntervalActionScriptConditionInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class TimeIntervalActionScriptConditionInterface
+            : public virtual Object
+         {
 
     public: virtual TimeDelayHelper* getTimeDelayHelper() = 0;
 
@@ -61,3 +70,13 @@ class TimeIntervalActionScriptConditionInterface {
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+
+        #endif
+    

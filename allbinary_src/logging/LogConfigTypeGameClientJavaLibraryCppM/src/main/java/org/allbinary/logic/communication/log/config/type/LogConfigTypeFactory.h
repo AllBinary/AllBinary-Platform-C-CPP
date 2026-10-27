@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,22 +52,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
-#include "org/allbinary/logic/communication/log/config/type/LogConfigTypes.h"
+        class LogConfigType;
+class LogConfigTypes;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogConfigTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static LogConfigTypeFactory* instance() { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
+    private: static LogConfigTypeFactory* instance_owner();
+    private: static LogConfigTypeFactory* instance;
 
     public: static LogConfigTypeFactory* getInstance();
 
     private: const std::string NO_DESCRIPTION = "No Description";
 
-    public: LogConfigType* OS = new LogConfigType("Operating System", this->NO_DESCRIPTION);
+    public: LogConfigType* OS;
 
-    public: LogConfigType* FACTORYERROR = new LogConfigType("Factory Error", this->NO_DESCRIPTION);
+    public: LogConfigType* FACTORYERROR;
 
 private: LogConfigTypeFactory();
 
@@ -72,3 +82,16 @@ private: LogConfigTypeFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigType.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigTypes.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypes.h"
+#endif
+
+        #endif
+    

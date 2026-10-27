@@ -21,6 +21,11 @@
         #ifndef JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_H
         #define JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,16 +51,35 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "javax/microedition/lcdui/PlatformImage.h"
-//PlatformNullImageJavaLibrary
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //PlatformNullImageJavaLibrary
 class PreLoadPlatformImage: public PlatformImage {
 
-    private: static PreLoadPlatformImage* instance() { static std::unique_ptr<PreLoadPlatformImage> value(new PreLoadPlatformImage()); return value.get(); }
+    private: static PreLoadPlatformImage* instance_owner();
+    private: static PreLoadPlatformImage* instance;
 
     public: static PreLoadPlatformImage* getInstance();
 
+
+            
+    public: PreLoadPlatformImage();
+        
 };
 
             
 
 
         #endif //JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_H_COMPLETE)
+        #define JAVAX_MICROEDITION_LCDUI_PRELOADPLATFORMIMAGE_H_COMPLETE
+        #if __has_include("javax/microedition/lcdui/PlatformImage.h")
+#include "javax/microedition/lcdui/PlatformImage.h"
+#endif
+
+        #endif
+    

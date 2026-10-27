@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,36 +38,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/DisposalUtil.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/media/image/ImageCopyUtil.h>
-
-      
-#include <org/allbinary/media/image/ImageModifierUtil.h>
-
-      
-#include <org/allbinary/media/image/ImageRotationUtil.h>
-
-      
+class Graphics;
+class Image;
+class NullImage;
+class DisposalUtil;
+class AnimationBehavior;
+class BasicColor;
+class AngleInfo;
+class ImageCopyUtil;
+class ImageModifierUtil;
+class ImageRotationUtil;
 
 
 
@@ -82,24 +67,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
-#include "org/allbinary/animation/image/ModifierBaseProcessor.h"
-#include "org/allbinary/animation/image/ScaleProcessor.h"
-#include "org/allbinary/animation/image/ScaleBaseProcessor.h"
-#include "org/allbinary/animation/image/SetColorProcessor.h"
-#include "org/allbinary/animation/image/ChangeColorProcessor.h"
-#include "org/allbinary/animation/image/AlphaProcessor.h"
+class ModifierBaseProcessor;
+class ScaleProcessor;
+class ScaleBaseProcessor;
+class SetColorProcessor;
+class ChangeColorProcessor;
+class AlphaProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: ImageRotationUtil* imageRotationUtil = ImageRotationUtil::getInstance();
+    private: ImageRotationUtil* imageRotationUtil;
 
-    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
+    private: ImageModifierUtil* imageModifierUtil;
 
     private: Image* realOriginalImage;
 
-    private: const std::vector<Image*> originalImageArray = std::vector<Image*>(1);
+    private: std::vector<Image*> originalImageArray;
 
-    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
+    private: std::vector<Image*> twoImages;
 
     private: Image* imageToShow;
 
@@ -117,13 +106,13 @@ class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: float maxScaleY= 0.0;
 
-    private: ModifierBaseProcessor* alphaProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* alphaProcessor;
 
-    private: ModifierBaseProcessor* setColorProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* setColorProcessor;
 
-    private: ModifierBaseProcessor* changeColorProcessor = ModifierBaseProcessor::getInstance();
+    private: ModifierBaseProcessor* changeColorProcessor;
 
-    private: ScaleBaseProcessor* scaleProcessor = ScaleProcessor::getInstance();
+    private: ScaleBaseProcessor* scaleProcessor;
 
 public: AllBinaryJ2SEImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior);
 
@@ -153,7 +142,7 @@ public: AllBinaryJ2SEImageRotationAnimation(Image* originalImage, Image* image, 
 
                 //@Throws(Throwable.constructor)
             
-    protected: void finalize();
+    /*protected*/ public: void finalize();
 
 };
 
@@ -161,3 +150,61 @@ public: AllBinaryJ2SEImageRotationAnimation(Image* originalImage, Image* image, 
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/DisposalUtil.h>)
+#include <org/allbinary/DisposalUtil.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageCopyUtil.h>)
+#include <org/allbinary/media/image/ImageCopyUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageModifierUtil.h>)
+#include <org/allbinary/media/image/ImageModifierUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageRotationUtil.h>)
+#include <org/allbinary/media/image/ImageRotationUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ImageBaseRotationAnimation.h")
+#include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ModifierBaseProcessor.h")
+#include "org/allbinary/animation/image/ModifierBaseProcessor.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ScaleProcessor.h")
+#include "org/allbinary/animation/image/ScaleProcessor.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ScaleBaseProcessor.h")
+#include "org/allbinary/animation/image/ScaleBaseProcessor.h"
+#endif
+#if __has_include("org/allbinary/animation/image/SetColorProcessor.h")
+#include "org/allbinary/animation/image/SetColorProcessor.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ChangeColorProcessor.h")
+#include "org/allbinary/animation/image/ChangeColorProcessor.h"
+#endif
+#if __has_include("org/allbinary/animation/image/AlphaProcessor.h")
+#include "org/allbinary/animation/image/AlphaProcessor.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_FILEUPLOADDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_FILEUPLOADDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/file/upload/FileUploadData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FileUploadData
-            : public Object
-         {
 
-    private: static FileUploadData* instance() { static std::unique_ptr<FileUploadData> value(new FileUploadData()); return value.get(); }
+FileUploadData::FileUploadData() {
+        }
+        auto FileUploadData::instance_owner() -> FileUploadData* { static std::unique_ptr<FileUploadData> value(new FileUploadData()); return value.get(); }
+FileUploadData* FileUploadData::instance = FileUploadData::instance_owner();
 
-    public: static FileUploadData* getInstance(){
+    auto FileUploadData::getInstance() -> FileUploadData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileUploadData::instance();
+                        return FileUploadData::instance;
     
 }
 
 
-    public: const std::string FILE = "download_file_permissions.xml";
 
-    public: const std::string UPLOAD_TO_FILE_PATH = "FILE_UPLOAD_UPLOAD_TO_FILE_PATH";
 
-    public: const std::string FILE_DATA = "FILE_UPLOAD_FILE_DATA";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_FILEUPLOADDATA_CPP

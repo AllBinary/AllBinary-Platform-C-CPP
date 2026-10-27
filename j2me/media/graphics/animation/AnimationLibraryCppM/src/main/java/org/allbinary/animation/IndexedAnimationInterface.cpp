@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/IndexedAnimationInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,15 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/SequentialAnimationInterface.h"
 
-class IndexedAnimationInterface: public SequentialAnimationInterface {
+//Interface - declared in the header
 
-    public: virtual void reset() = 0;
 
-    public: virtual void setFrame(int32_t index) = 0;
 
-    public: virtual int32_t getFrame() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,26 +37,12 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
-
-      
-#include <org/allbinary/data/tree/dom/ModDomHelper.h>
-
-      
-#include <org/allbinary/input/media/image/InputImageType.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class DomNodeHelper;
+class ModDomHelper;
+class InputImageType;
+class StdUtil;
+class Document;
+class Node;
 
 
 
@@ -71,22 +62,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerTypeInterface.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/SavedCaptureGenericProfileDataWorkerType.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerData.h"
+class SavedCaptureGenericProfileDataWorkerType;
+class GenericProfileDataWorkerData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GenericProfileDataWorkerType
-            : public Object
+            : public virtual Object
         , public GenericProfileDataWorkerTypeInterface {
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
+    private: static HashMap<Object*, Object*>* hashMap;
 
-    public: static inline GenericProfileDataWorkerType* SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE;
+    public: static GenericProfileDataWorkerType* SAVED_CAPTURE;
 
-    public: static GenericProfileDataWorkerType* SCREEN_CAPTURE() { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType("Screen " +InputImageType::CAPTURE.getName())); return value.get(); }
+    private: static GenericProfileDataWorkerType* SCREEN_CAPTURE_owner();
+    public: static GenericProfileDataWorkerType* SCREEN_CAPTURE;
 
-    public: static GenericProfileDataWorkerType* COMPARISON() { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType(InputImageType::COMPARISON()->getName())); return value.get(); }
+    private: static GenericProfileDataWorkerType* COMPARISON_owner();
+    public: static GenericProfileDataWorkerType* COMPARISON;
 
-    public: static GenericProfileDataWorkerType* MOTION() { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType(InputImageType::MOTION()->getName())); return value.get(); }
+    private: static GenericProfileDataWorkerType* MOTION_owner();
+    public: static GenericProfileDataWorkerType* MOTION;
 
     public: static GenericProfileDataWorkerType* getInstance(Node* node);
 
@@ -110,3 +108,40 @@ public: GenericProfileDataWorkerType(std::string name);
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeHelper.h>)
+#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/ModDomHelper.h>)
+#include <org/allbinary/data/tree/dom/ModDomHelper.h>
+#endif
+#if __has_include(<org/allbinary/input/media/image/InputImageType.h>)
+#include <org/allbinary/input/media/image/InputImageType.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerTypeInterface.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerTypeInterface.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/SavedCaptureGenericProfileDataWorkerType.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/SavedCaptureGenericProfileDataWorkerType.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerData.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerData.h"
+#endif
+
+        #endif
+    

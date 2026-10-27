@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,21 +52,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/types/TenderType.h"
+        class TenderType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TenderTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static TenderTypeFactory* instance() { static std::unique_ptr<TenderTypeFactory> value(new TenderTypeFactory()); return value.get(); }
+    private: static TenderTypeFactory* instance_owner();
+    private: static TenderTypeFactory* instance;
 
     public: static TenderTypeFactory* getInstance();
 
-    public: TenderType* CREDITCARD = new TenderType("Credit Card");
 
-    public: TenderType* CHECK = new TenderType("Check");
+            
+    public: TenderTypeFactory();
+        
+    public: TenderType* CREDITCARD;
 
-    public: TenderType* ACH = new TenderType("Ach");
+    public: TenderType* CHECK;
+
+    public: TenderType* ACH;
 
 };
 
@@ -69,3 +83,13 @@ class TenderTypeFactory
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/business/user/commerce/money/payment/types/TenderType.h")
+#include "org/allbinary/business/user/commerce/money/payment/types/TenderType.h"
+#endif
+
+        #endif
+    

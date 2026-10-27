@@ -11,6 +11,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TESTGAMEDEMO_R_CPP
+        #define ORG_ALLBINARY_GAME_TESTGAMEDEMO_R_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/testgamedemo/R.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -38,185 +48,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class R
-            : public Object
-         {
 
-//inner= member=true isStatic=static
-class attr
-            : public Object
-         {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-};
-
-            
-//inner= member=true isStatic=static
-class drawable
-            : public Object
-         {
-/*Static stuff is not allowed for CPP inner classes*/
-    public: static inline const int32_t testgamedemo_icon = 0x7f020000;
-
-    public: static inline const int32_t testgamedemo_wait_256_by_256 = 0x7f020001;
-/**/
-
-
-};
-
-            
-//inner= member=true isStatic=static
-class id
-            : public Object
-         {
-/*Static stuff is not allowed for CPP inner classes*/
-    public: static inline const int32_t ad_area_bottom = 0x7f060002;
-
-    public: static inline const int32_t ad_area_left = 0x7f060003;
-
-    public: static inline const int32_t ad_area_right = 0x7f060004;
-
-    public: static inline const int32_t ad_area_top = 0x7f060001;
-
-    public: static inline const int32_t testgamedemo = 0x7f060000;
-
-    public: static inline const int32_t testgamedemo_gl = 0x7f060005;
-/**/
-
-
-};
-
-            
-//inner= member=true isStatic=static
-class layout
-            : public Object
-         {
-/*Static stuff is not allowed for CPP inner classes*/
-    public: static inline const int32_t testgamedemo_ad_overlay_layout = 0x7f030000;
-
-    public: static inline const int32_t testgamedemo_gl_layout = 0x7f030001;
-
-    public: static inline const int32_t testgamedemo_layout = 0x7f030002;
-/**/
-
-
-};
-
-            
-//inner= member=true isStatic=static
-class raw
-            : public Object
-         {
-/*Static stuff is not allowed for CPP inner classes*/
-    public: static inline const int32_t error = 0x7f040000;
-
-    public: static inline const int32_t licenseinitdata = 0x7f040001;
-
-    public: static inline const int32_t partner = 0x7f040002;
-
-    public: static inline const int32_t select = 0x7f040003;
-
-    public: static inline const int32_t test = 0x7f040004;
-
-    public: static inline const int32_t testgamedemo_wait_256_by_256 = 0x7f040005;
-
-    public: static inline const int32_t ouya_a = 0x7f040012;
-
-    public: static inline const int32_t ouya_key = 0x7f040013;
-
-    public: static inline const int32_t ouya_o = 0x7f040014;
-
-    public: static inline const int32_t ouya_u = 0x7f040015;
-
-    public: static inline const int32_t ouya_y = 0x7f040016;
-
-    public: static inline const int32_t touch_button_128_by_128 = 0x7f040026;
-
-    public: static inline const int32_t touch_button_64_by_64 = 0x7f040027;
-
-    public: static inline const int32_t touch_button_create_128_by_128 = 0x7f040028;
-
-    public: static inline const int32_t touch_button_create_64_by_64 = 0x7f040029;
-
-    public: static inline const int32_t touch_button_down_arrow_128_by_128 = 0x7f04002a;
-
-    public: static inline const int32_t touch_button_down_arrow_64_by_64 = 0x7f04002b;
-
-    public: static inline const int32_t touch_button_generic_action_128_by_128 = 0x7f04002c;
-
-    public: static inline const int32_t touch_button_generic_action_64_by_64 = 0x7f04002d;
-
-    public: static inline const int32_t touch_button_join_128_by_128 = 0x7f04002e;
-
-    public: static inline const int32_t touch_button_join_64_by_64 = 0x7f04002f;
-
-    public: static inline const int32_t touch_button_leave_128_by_128 = 0x7f040030;
-
-    public: static inline const int32_t touch_button_leave_64_by_64 = 0x7f040031;
-
-    public: static inline const int32_t touch_button_login_128_by_128 = 0x7f040032;
-
-    public: static inline const int32_t touch_button_login_64_by_64 = 0x7f040033;
-
-    public: static inline const int32_t touch_button_next_128_by_128 = 0x7f040034;
-
-    public: static inline const int32_t touch_button_next_64_by_64 = 0x7f040035;
-
-    public: static inline const int32_t touch_button_refresh_128_by_128 = 0x7f040036;
-
-    public: static inline const int32_t touch_button_refresh_64_by_64 = 0x7f040037;
-
-    public: static inline const int32_t touch_button_start_128_by_128 = 0x7f040038;
-
-    public: static inline const int32_t touch_button_start_64_by_64 = 0x7f040039;
-
-    public: static inline const int32_t touch_button_add_local_player_128_by_128 = 0x7f040038;
-
-    public: static inline const int32_t touch_button_add_local_player_64_by_64 = 0x7f040039;
-
-    public: static inline const int32_t touch_button_strafe_left_arrow_128_by_128 = 0x7f04003a;
-
-    public: static inline const int32_t touch_button_strafe_left_arrow_64_by_64 = 0x7f04003b;
-
-    public: static inline const int32_t touch_button_strafe_right_arrow_128_by_128 = 0x7f04003c;
-
-    public: static inline const int32_t touch_button_strafe_right_arrow_64_by_64 = 0x7f04003d;
-
-    public: static inline const int32_t touch_button_turn_left_arrow_128_by_128 = 0x7f04003e;
-
-    public: static inline const int32_t touch_button_turn_left_arrow_64_by_64 = 0x7f04003f;
-
-    public: static inline const int32_t touch_button_turn_right_arrow_128_by_128 = 0x7f040040;
-
-    public: static inline const int32_t touch_button_turn_right_arrow_64_by_64 = 0x7f040041;
-
-    public: static inline const int32_t touch_button_up_arrow_128_by_128 = 0x7f040042;
-
-    public: static inline const int32_t touch_button_up_arrow_64_by_64 = 0x7f040043;
-
-    public: static inline const int32_t touch_button_generic_action_arrow_64_by_64 = 0x7f040009;
-/**/
-
-
-};
-
-            
-//inner= member=true isStatic=static
-class string
-            : public Object
-         {
-/*Static stuff is not allowed for CPP inner classes*/
-    public: static inline const int32_t progressbar_in_title_string = 0x7f050001;
-
-    public: static inline const int32_t testgamedemo_app_name = 0x7f050000;
-/**/
-
-
-};
-
-            
-};
-
-            
-
+R::R() {
+        }
+        
+R::attr::attr() {
+        }
+        
+R::drawable::drawable() {
+        }
+        
+R::id::id() {
+        }
+        
+R::layout::layout() {
+        }
+        
+R::raw::raw() {
+        }
+        
+R::string::string() {
+        }
+        
+
+
+        #endif //ORG_ALLBINARY_GAME_TESTGAMEDEMO_R_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class StoreFrontInterface;
+class ShippingInterface;
+class LogUtil;
+class AbeClientInformationInterface;
+class CommonStrings;
 
 
 
@@ -71,15 +62,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsInterface.h"
-#include "org/allbinary/business/user/commerce/shipping/ShippingMethodsFactory.h"
+class ShippingMethodsFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShippingMethods
-            : public Object
+            : public virtual Object
         , public ShippingMethodsInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: BasicArrayList* shippingVector;
 
@@ -103,3 +98,35 @@ public: ShippingMethods(AbeClientInformationInterface* abeClientInformation, Sto
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h>)
+#include <org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/shipping/ShippingMethodsInterface.h")
+#include "org/allbinary/business/user/commerce/shipping/ShippingMethodsInterface.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/shipping/ShippingMethodsFactory.h")
+#include "org/allbinary/business/user/commerce/shipping/ShippingMethodsFactory.h"
+#endif
+
+        #endif
+    

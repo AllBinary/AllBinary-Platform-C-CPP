@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_VIEWHELPERFACTORY_CPP
+        #define TAGHELPERS_VIEWHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/ViewHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,21 +72,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ViewHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "taghelpers.ViewHelper";
-
-    private: static inline const std::string FACTORYNAME = "taghelpers.ViewHelperFactory";
-
-public: ViewHelperFactory(){
+ViewHelperFactory::ViewHelperFactory(){
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+    auto ViewHelperFactory::getInstance(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -86,7 +89,6 @@ public: ViewHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_VIEWHELPERFACTORY_CPP

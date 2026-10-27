@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PlayerOwnedRTSLayers
-            : public Object
-         {
 
-    public: BasicArrayList* rtsLayerList = new BasicArrayListD();
-
-    public: std::string toString(){
+PlayerOwnedRTSLayers::PlayerOwnedRTSLayers() : rtsLayerList(new BasicArrayListD()) {
+        }
+        
+    auto PlayerOwnedRTSLayers::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -77,7 +85,6 @@ stringBuffer->appendint(this->rtsLayerList->size());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,51 +36,21 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/khronos/opengles/GL.h>
-
-      
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
+class GL;
+class GL10;
 #include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <javax/microedition/lcdui/OpenGLESPostLoadPlatformImage.h>
-
-      
-#include <javax/microedition/lcdui/PostLoadImageProcessor.h>
-
-      
-#include <org/allbinary/graphics/GraphicsStrings.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/platform/graphics/PlatformBitmapBase.h>
-
-      
-#include <org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>
-
-      
-#include <org/allbinary/platform/opengles/PlatformTextureBaseFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class NullImage;
+class OpenGLESPostLoadPlatformImage;
+class PostLoadImageProcessor;
+class GraphicsStrings;
+class LogUtil;
+class StringMaker;
+class PlatformBitmapBase;
+class PlatformBitmapBaseFactory;
+class PlatformTextureBaseFactory;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -95,32 +70,37 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
-#include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
-#include "org/allbinary/image/opengles/OpenGLESImageTranslate.h"
-#include "org/allbinary/image/opengles/OpenGLESImageProperties.h"
-#include "org/allbinary/image/opengles/OpenGLImageCacheFactory.h"
-//OpenGLESSWTJOGLImageJavaLibrary
+class OpenGLESImageProcessor;
+class OpenGLESImageTranslate;
+class OpenGLESImageProperties;
+class OpenGLImageCacheFactory;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //OpenGLESSWTJOGLImageJavaLibrary
 class OpenGLESImage: public Image, public OpenGLSurfaceChangedInterface {
 
-    public: static OpenGLESImage* NULL_OPENGL_IMAGE() { static std::unique_ptr<OpenGLESImage> value(new OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY)); return value.get(); }
+    private: static OpenGLESImage* NULL_OPENGL_IMAGE_owner();
+    public: static OpenGLESImage* NULL_OPENGL_IMAGE;
 
-    public: static inline BasicArrayList* texture2dList = new BasicArrayListD();
+    public: static BasicArrayList* texture2dList;
 
     public: static inline const int32_t TYPE = 4;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: PlatformTextureBaseFactory* textureFactory;
+    /*protected*/ public: PlatformTextureBaseFactory* textureFactory;
 
     public: PlatformBitmapBase* openGLBitmap;
 
-    public: OpenGLESImageProcessor* imageProcessor = OpenGLESImageProcessor::getInstance();
+    public: OpenGLESImageProcessor* imageProcessor;
 
-    public: OpenGLESImageTranslate* openGLESImageTranslate = OpenGLESImageTranslate::getInstance();
+    public: OpenGLESImageTranslate* openGLESImageTranslate;
 
-    public: OpenGLESImageProperties* openGLESImageProperties = new OpenGLESImageProperties();
+    public: OpenGLESImageProperties* openGLESImageProperties;
 
 public: OpenGLESImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory);
 
@@ -132,7 +112,7 @@ public: OpenGLESImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, Pl
             
     public: void set(GL* gl);
 
-    protected: bool initTexture(GL10* gl);
+    /*protected*/ public: bool initTexture(GL10* gl);
 
     public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
 
@@ -148,3 +128,70 @@ public: OpenGLESImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, Pl
 
 
         #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL.h>)
+#include <javax/microedition/khronos/opengles/GL.h>
+#endif
+#if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/OpenGLESPostLoadPlatformImage.h>)
+#include <javax/microedition/lcdui/OpenGLESPostLoadPlatformImage.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/PostLoadImageProcessor.h>)
+#include <javax/microedition/lcdui/PostLoadImageProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GraphicsStrings.h>)
+#include <org/allbinary/graphics/GraphicsStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/platform/graphics/PlatformBitmapBase.h>)
+#include <org/allbinary/platform/graphics/PlatformBitmapBase.h>
+#endif
+#if __has_include(<org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>)
+#include <org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>
+#endif
+#if __has_include(<org/allbinary/platform/opengles/PlatformTextureBaseFactory.h>)
+#include <org/allbinary/platform/opengles/PlatformTextureBaseFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h")
+#include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
+#endif
+#if __has_include("org/allbinary/image/opengles/OpenGLESImageProcessor.h")
+#include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
+#endif
+#if __has_include("org/allbinary/image/opengles/OpenGLESImageTranslate.h")
+#include "org/allbinary/image/opengles/OpenGLESImageTranslate.h"
+#endif
+#if __has_include("org/allbinary/image/opengles/OpenGLESImageProperties.h")
+#include "org/allbinary/image/opengles/OpenGLESImageProperties.h"
+#endif
+#if __has_include("org/allbinary/image/opengles/OpenGLImageCacheFactory.h")
+#include "org/allbinary/image/opengles/OpenGLImageCacheFactory.h"
+#endif
+
+        #endif
+    

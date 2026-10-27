@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_WORKFLOW_UPDATEVIEW_CPP
+        #define VIEWS_ADMIN_WORKFLOW_UPDATEVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/workflow/UpdateView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,11 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/workflow/WorkFlowView.h"
 
-class UpdateView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface){
+UpdateView::UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +85,7 @@ public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowVie
 }
 
 
-    public: bool isValid(){
+    auto UpdateView::isValid() -> bool{
 
         try {
             
@@ -92,10 +99,10 @@ public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowVie
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -111,7 +118,7 @@ public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowVie
 }
 
 
-    public: std::string validationInfo(){
+    auto UpdateView::validationInfo() -> std::string{
 
         try {
             
@@ -128,7 +135,7 @@ public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowVie
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -147,7 +154,7 @@ public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowVie
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto UpdateView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -157,7 +164,7 @@ public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowVie
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto UpdateView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -167,7 +174,6 @@ public: UpdateView(TransformInfoInterface* transformInfoInterface) : WorkFlowVie
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_WORKFLOW_UPDATEVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellTypeFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,29 +83,12 @@
         #include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellType.h"
 #include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapStrings.h"
 
-class BasicTopViewGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
 
-    public: BasicTopViewGeographicMapCellType* BLOCK_CELL_TYPE;
-
-    public: BasicTopViewGeographicMapCellType* OFF_MAP_CELL_TYPE;
-
-    public: BasicTopViewGeographicMapCellType* FLOOR_CELL_TYPE;
-
-    public: BasicTopViewGeographicMapCellType* DOOR_CELL_TYPE;
-
-    public: BasicTopViewGeographicMapCellType* STAIRS_UP_CELL_TYPE;
-
-    public: BasicTopViewGeographicMapCellType* STAIRS_DOWN_CELL_TYPE;
-
-    public: BasicTopViewGeographicMapCellType* OTHER_CELL_TYPE;
-
-    private: int32_t maxTileId;
-
-public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*>* tileTypeToTileIdsMap, int32_t maxTileId){
+BasicTopViewGeographicMapCellTypeFactory::BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*>* tileTypeToTileIdsMap, int32_t maxTileId){
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings->START, this, commonStrings->CONSTRUCTOR);
+this->logUtil->putF(commonStrings->START, this, commonStrings->CONSTRUCTOR);
     
 this->maxTileId= maxTileId;
     
@@ -174,7 +167,7 @@ key= keyArray[index];
 idsWithTypeList= dynamic_cast<BasicArrayList*>(tileTypeToTileIdsMap->get(key));
     
 
-                        if(key === basicTopViewGeographicMapStrings->WALL)
+                        if(JavaString::equals(key, basicTopViewGeographicMapStrings->WALL))
                         
                                     {
                                     basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->WALL, idsWithTypeList, 1000);
@@ -185,7 +178,7 @@ BLOCK_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings->OFF_MAP)
+                        if(JavaString::equals(key, basicTopViewGeographicMapStrings->OFF_MAP))
                         
                                     {
                                     basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->OFF_MAP, idsWithTypeList, 1001);
@@ -196,7 +189,7 @@ OFF_MAP_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings->FLOOR)
+                        if(JavaString::equals(key, basicTopViewGeographicMapStrings->FLOOR))
                         
                                     {
                                     basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->FLOOR, idsWithTypeList, 1);
@@ -207,7 +200,7 @@ FLOOR_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings->DOOR)
+                        if(JavaString::equals(key, basicTopViewGeographicMapStrings->DOOR))
                         
                                     {
                                     basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->DOOR, idsWithTypeList, 1);
@@ -218,7 +211,7 @@ DOOR_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings->STAIRS_UP)
+                        if(JavaString::equals(key, basicTopViewGeographicMapStrings->STAIRS_UP))
                         
                                     {
                                     basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->STAIRS_UP, idsWithTypeList, 1);
@@ -229,7 +222,7 @@ STAIRS_UP_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings->STAIRS_DOWN)
+                        if(JavaString::equals(key, basicTopViewGeographicMapStrings->STAIRS_DOWN))
                         
                                     {
                                     basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->STAIRS_DOWN, idsWithTypeList, 1);
@@ -240,7 +233,7 @@ STAIRS_DOWN_CELL_TYPE= basicPlatormGeographicMapCellType;
                                     }
                                 
                              else 
-                        if(key === basicTopViewGeographicMapStrings->OTHER)
+                        if(JavaString::equals(key, basicTopViewGeographicMapStrings->OTHER))
                         
                                     {
                                     basicPlatormGeographicMapCellType= new BasicTopViewGeographicMapCellType(basicTopViewGeographicMapStrings->OTHER, idsWithTypeList, 1);
@@ -303,7 +296,7 @@ type= this->maxTileId -2;
 }
 
 
-    public: int32_t getStartType(){
+    auto BasicTopViewGeographicMapCellTypeFactory::getStartType() -> int32_t{
 
 
 
@@ -313,7 +306,7 @@ type= this->maxTileId -2;
 }
 
 
-    public: int32_t getEndType(){
+    auto BasicTopViewGeographicMapCellTypeFactory::getEndType() -> int32_t{
 
 
 
@@ -323,7 +316,7 @@ type= this->maxTileId -2;
 }
 
 
-    public: int32_t getEmptyType(){
+    auto BasicTopViewGeographicMapCellTypeFactory::getEmptyType() -> int32_t{
 
 
 
@@ -333,7 +326,7 @@ type= this->maxTileId -2;
 }
 
 
-    public: bool isPath(GeographicMapCellType* cellType){
+    auto BasicTopViewGeographicMapCellTypeFactory::isPath(GeographicMapCellType* cellType) -> bool{
 
                         if(this->FLOOR_CELL_TYPE->isType(cellType))
                         
@@ -356,7 +349,7 @@ type= this->maxTileId -2;
 }
 
 
-    public: std::string toString(){
+    auto BasicTopViewGeographicMapCellTypeFactory::toString() -> std::string{
 
 
 
@@ -366,7 +359,6 @@ type= this->maxTileId -2;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_CPP

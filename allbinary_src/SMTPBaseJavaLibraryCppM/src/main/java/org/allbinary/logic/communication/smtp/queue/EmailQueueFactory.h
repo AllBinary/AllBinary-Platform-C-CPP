@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,14 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/smtp/queue/BasicEmailQueue.h"
-#include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
+        class BasicEmailQueue;
+class EmailQueueInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EmailQueueFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline EmailQueueInterface* emailQueueInterface = dynamic_cast<EmailQueueInterface*>(BasicEmailQueue::getInstance());
+    private: static EmailQueueInterface* emailQueueInterface;
 
     public: static EmailQueueInterface* getInstance();
 
@@ -66,3 +75,16 @@ private: EmailQueueFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/communication/smtp/queue/BasicEmailQueue.h")
+#include "org/allbinary/logic/communication/smtp/queue/BasicEmailQueue.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h")
+#include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
+#endif
+
+        #endif
+    

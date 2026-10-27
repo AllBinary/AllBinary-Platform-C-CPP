@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScore.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,21 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScore
-            : public Object
-         {
 
-    private: int32_t id;
-
-    private: std::string name;
-
-    private: GameInfo* gameInfo;
-
-    private: int64_t score;
-
-    private: std::string scoreString;
-
-public: HighScore(int32_t id, std::string name, GameInfo* gameInfo, int64_t score){
+HighScore::HighScore(int32_t id, std::string name, GameInfo* gameInfo, int64_t score){
 this->id= id;
     
 this->name= name;
@@ -94,7 +91,7 @@ this->scoreString= std::to_string(score);
 }
 
 
-    public: int32_t getId(){
+    auto HighScore::getId() -> int32_t{
 
 
 
@@ -104,7 +101,7 @@ this->scoreString= std::to_string(score);
 }
 
 
-    public: std::string getName(){
+    auto HighScore::getName() -> std::string{
 
 
 
@@ -114,7 +111,7 @@ this->scoreString= std::to_string(score);
 }
 
 
-    public: int64_t getScore(){
+    auto HighScore::getScore() -> int64_t{
 
 
 
@@ -126,7 +123,7 @@ this->scoreString= std::to_string(score);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> getAsBytes(){
+    auto HighScore::getAsBytes() -> std::vector<int8_t>{
 
     ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
     
@@ -146,7 +143,7 @@ outputStream->writeLong(this->getScore());
 }
 
 
-    public: GameInfo* getGameInfo(){
+    auto HighScore::getGameInfo() -> GameInfo*{
 
 
 
@@ -156,7 +153,7 @@ outputStream->writeLong(this->getScore());
 }
 
 
-    public: std::string getScoreString(){
+    auto HighScore::getScoreString() -> std::string{
 
 
 
@@ -166,13 +163,13 @@ outputStream->writeLong(this->getScore());
 }
 
 
-    public: void setName(std::string name){
+    auto HighScore::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string toString(){
+    auto HighScore::toString() -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -185,7 +182,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_CPP

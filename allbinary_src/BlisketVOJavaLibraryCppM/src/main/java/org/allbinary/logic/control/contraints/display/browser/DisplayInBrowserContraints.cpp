@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTS_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraints.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,23 +59,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h"
 
-class DisplayInBrowserContraints
-            : public Object
-        , public DisplayInBrowserContraintsInterface {
 
-    private: bool frameable= false;
-
-    private: bool mountable= false;
-
-    private: bool quickFrameable= false;
-
-    private: std::string mountedLink;
-
-public: DisplayInBrowserContraints(Node* node){
+DisplayInBrowserContraints::DisplayInBrowserContraints(Node* node){
 }
 
 
-    public: bool isMountable(){
+    auto DisplayInBrowserContraints::isMountable() -> bool{
 
 
 
@@ -75,13 +74,13 @@ public: DisplayInBrowserContraints(Node* node){
 }
 
 
-    public: void setMountable(bool mountable){
+    auto DisplayInBrowserContraints::setMountable(bool mountable) -> void{
 this->mountable= mountable;
     
 }
 
 
-    public: bool isFrameable(){
+    auto DisplayInBrowserContraints::isFrameable() -> bool{
 
 
 
@@ -91,13 +90,13 @@ this->mountable= mountable;
 }
 
 
-    public: void setFrameable(bool frameable){
+    auto DisplayInBrowserContraints::setFrameable(bool frameable) -> void{
 this->frameable= frameable;
     
 }
 
 
-    public: bool isQuickFrameable(){
+    auto DisplayInBrowserContraints::isQuickFrameable() -> bool{
 
 
 
@@ -107,13 +106,13 @@ this->frameable= frameable;
 }
 
 
-    public: void setQuickFrameable(bool quickFrameable){
+    auto DisplayInBrowserContraints::setQuickFrameable(bool quickFrameable) -> void{
 this->quickFrameable= quickFrameable;
     
 }
 
 
-    public: std::string getMountedLink(){
+    auto DisplayInBrowserContraints::getMountedLink() -> std::string{
 
 
 
@@ -123,13 +122,12 @@ this->quickFrameable= quickFrameable;
 }
 
 
-    public: void setMountedLink(std::string mountedLink){
+    auto DisplayInBrowserContraints::setMountedLink(std::string mountedLink) -> void{
 this->mountedLink= mountedLink;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTS_CPP

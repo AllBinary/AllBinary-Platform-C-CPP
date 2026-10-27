@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_GEOGRAPHICMAPTOPVIEWGAMELAYERBEHAVIOR1_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_GEOGRAPHICMAPTOPVIEWGAMELAYERBEHAVIOR1_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,36 +36,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/game/physics/acceleration/GravityUtil.h>
-
-      
-#include <org/allbinary/game/physics/velocity/VelocityProperties.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
-
-      
+class MultiGeographicMapBehavior;
+class AllBinaryTiledLayer;
+class GravityUtil;
+class VelocityProperties;
+class AllBinaryLayer;
+class LogUtil;
+class BasicGeographicMap;
+class GeographicMapCellPosition;
+class GeographicMapCellType;
+class SimpleGeographicMapCellPositionFactory;
 
 
 
@@ -80,21 +65,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/GeographicMapTopViewLayerBehavior.h"
-#include "org/allbinary/game/behavior/topview/TopViewCharacterInterface.h"
+class TopViewCharacterInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeographicMapTopViewGameLayerBehavior1: public GeographicMapTopViewLayerBehavior {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: GravityUtil* gravityUtil = GravityUtil::getInstance();
+    private: GravityUtil* gravityUtil;
 
-    private: MultiGeographicMapBehavior* geographicMapBehavior = new MultiGeographicMapBehavior();
+    private: MultiGeographicMapBehavior* geographicMapBehavior;
 
     private: bool autoStepBlocks;
 
     private: int32_t offsetY;
 
-    private: GeographicMapCellPosition* previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* previousGeographicMapCellPosition;
 
 public: GeographicMapTopViewGameLayerBehavior1(int32_t maxGravityActionIndex, bool autoStepBlocks, int32_t offsetY);
 
@@ -140,3 +129,46 @@ public: GeographicMapTopViewGameLayerBehavior1(int32_t maxGravityActionIndex, bo
 
 
         #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_GEOGRAPHICMAPTOPVIEWGAMELAYERBEHAVIOR1_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_GEOGRAPHICMAPTOPVIEWGAMELAYERBEHAVIOR1_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_GEOGRAPHICMAPTOPVIEWGAMELAYERBEHAVIOR1_H_COMPLETE
+        #if __has_include(<org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>)
+#include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/acceleration/GravityUtil.h>)
+#include <org/allbinary/game/physics/acceleration/GravityUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/VelocityProperties.h>)
+#include <org/allbinary/game/physics/velocity/VelocityProperties.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>)
+#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
+#endif
+#if __has_include("org/allbinary/game/behavior/topview/GeographicMapTopViewLayerBehavior.h")
+#include "org/allbinary/game/behavior/topview/GeographicMapTopViewLayerBehavior.h"
+#endif
+#if __has_include("org/allbinary/game/behavior/topview/TopViewCharacterInterface.h")
+#include "org/allbinary/game/behavior/topview/TopViewCharacterInterface.h"
+#endif
+
+        #endif
+    

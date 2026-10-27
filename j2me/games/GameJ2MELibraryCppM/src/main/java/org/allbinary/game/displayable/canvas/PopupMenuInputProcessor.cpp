@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPMENUINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPMENUINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/PopupMenuInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -92,17 +102,8 @@
         #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class PopupMenuInputProcessor: public BasicMenuInputProcessor {
 
-    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
-
-    private: const int32_t CLICK_DELAY = 120;
-
-    private: TimeDelayHelper* clickTimeHelper = new TimeDelayHelper(this->CLICK_DELAY);
-
-    private: Rectangle* rectangle;
-
-public: PopupMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, Rectangle* rectangle) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas){
+PopupMenuInputProcessor::PopupMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, Rectangle* rectangle) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas), rectangleCollisionUtil(RectangleCollisionUtil::getInstance()), clickTimeHelper(new TimeDelayHelper(this->CLICK_DELAY)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -114,7 +115,7 @@ this->rectangle= rectangle;
 }
 
 
-    public: void init(Rectangle* rectangle){
+    auto PopupMenuInputProcessor::init(Rectangle* rectangle) -> void{
 this->rectangle= rectangle;
     
 }
@@ -122,7 +123,7 @@ this->rectangle= rectangle;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processInput(int32_t key){
+    auto PopupMenuInputProcessor::processInput(int32_t key) -> int32_t{
 
                         if(key == Canvas::KEY_STAR)
                         
@@ -152,7 +153,7 @@ gameCanvas->toggleMenu();
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processInputList(){
+    auto PopupMenuInputProcessor::processInputList() -> int32_t{
 
         try {
             
@@ -231,7 +232,7 @@ this->clear();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, GameInputStrings::getInstance()->PROCESS_INPUT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, GameInputStrings::getInstance()->PROCESS_INPUT, &e);
     
 
 
@@ -246,23 +247,23 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, GameInputStrings::getInst
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processMotionInputs(){
+    auto PopupMenuInputProcessor::processMotionInputs() -> int32_t{
 
-    int32_t lastIndex = this->motionGestureEventList.size() -1;;
+    int32_t lastIndex = this->motionGestureEventList->size() -1;;
     
 
                         if(lastIndex >= 0)
                         
                                     {
                                     
-    MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->motionGestureEventList.objectArray[lastIndex]);;
+    MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->motionGestureEventList->objectArray[lastIndex]);;
     
 this->processMotionInput(motionGestureEvent);
     
 
                                     }
                                 
-this->motionGestureEventList.clear();
+this->motionGestureEventList->clear();
     
 
 
@@ -275,14 +276,14 @@ this->motionGestureEventList.clear();
 
                 //@Throws(Exception.constructor)
             
-    protected: void processMotionInput(MotionGestureEvent* motionGestureEvent){
+    auto PopupMenuInputProcessor::processMotionInput(MotionGestureEvent* motionGestureEvent) -> void{
 
                         if(motionGestureEvent == 
                                     nullptr
                                 )
                         
                                     {
-                                    this->logUtil.putF("Exception: Bug", this, this->gameInputStrings.PROCESS_MOTION_INPUT);
+                                    this->logUtil->putF("Exception: Bug", this, this->gameInputStrings->PROCESS_MOTION_INPUT);
     
 
 
@@ -334,7 +335,6 @@ gameCanvas->toggleMenu();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPMENUINPUTPROCESSOR_CPP

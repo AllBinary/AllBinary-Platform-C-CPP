@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INTERMISSION_CPP
+        #define ORG_ALLBINARY_GAME_INTERMISSION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/Intermission.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,27 +61,18 @@
 #include "org/allbinary/game/NullIntermissionEnableListener.h"
 #include "org/allbinary/game/IntermissionEnableListenerInterface.h"
 
-class Intermission
-            : public Object
-        , public IntermissionInterface {
 
-    private: bool enabled= false;
-
-    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(0);
-
-    private: IntermissionEnableListenerInterface* intermissionEnableListener = NullIntermissionEnableListener::getInstance();
-
-public: Intermission(){
+Intermission::Intermission() : timeElapsedHelper(new TimeDelayHelper(0)), intermissionEnableListener(NullIntermissionEnableListener::getInstance()){
 }
 
 
-    public: void setListener(IntermissionEnableListenerInterface* enableListener){
+    auto Intermission::setListener(IntermissionEnableListenerInterface* enableListener) -> void{
 this->intermissionEnableListener= enableListener;
     
 }
 
 
-    public: TimeDelayHelper* getTimeDelayHelper(){
+    auto Intermission::getTimeDelayHelper() -> TimeDelayHelper*{
 
 
 
@@ -81,7 +82,7 @@ this->intermissionEnableListener= enableListener;
 }
 
 
-    public: void setEnabled(bool enabled){
+    auto Intermission::setEnabled(bool enabled) -> void{
 this->enabled= enabled;
     
 
@@ -98,7 +99,7 @@ this->intermissionEnableListener->notifyIntermission(enabled);
 }
 
 
-    public: bool isEnabled(){
+    auto Intermission::isEnabled() -> bool{
 
 
 
@@ -108,7 +109,6 @@ this->intermissionEnableListener->notifyIntermission(enabled);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INTERMISSION_CPP

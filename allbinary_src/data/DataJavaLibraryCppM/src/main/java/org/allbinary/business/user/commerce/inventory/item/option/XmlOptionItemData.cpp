@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_OPTION_XMLOPTIONITEMDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_OPTION_XMLOPTIONITEMDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/option/XmlOptionItemData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class XmlOptionItemData
-            : public Object
-         {
 
-    public: static inline const std::string XML_FILE_STATUS = "XMLOPTIONITEM_XML_FILE_STATUS";
+XmlOptionItemData::XmlOptionItemData() {
+        }
+        
 
-    public: static inline const std::string OPTION_XML_FILE = "XMLOPTIONITEM_OPTION_XML_FILE";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_OPTION_XMLOPTIONITEMDATA_CPP

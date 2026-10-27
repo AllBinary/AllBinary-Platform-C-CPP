@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_FORMPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_FORMPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/FormPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,23 +60,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/PaintableForm.h"
 
-class FormPaintable: public Paintable {
 
-    private: PaintableForm* form;
-
-public: FormPaintable(PaintableForm* form){
+FormPaintable::FormPaintable(PaintableForm* form){
 this->form= form;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto FormPaintable::paint(Graphics* graphics) -> void{
 this->form->paint(graphics);
     
 }
 
 
-    public: PaintableForm* getForm(){
+    auto FormPaintable::getForm() -> PaintableForm*{
 
 
 
@@ -76,7 +83,6 @@ this->form->paint(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_FORMPAINTABLE_CPP

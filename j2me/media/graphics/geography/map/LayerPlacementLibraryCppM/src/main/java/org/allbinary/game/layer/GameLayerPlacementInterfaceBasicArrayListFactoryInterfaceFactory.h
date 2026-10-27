@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/LayerPlacementInterfaceBasicArrayListFactoryInterface.h"
+        class LayerPlacementInterfaceBasicArrayListFactoryInterface;
 
-class GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory
+            : public virtual Object
+         {
 
     public: virtual LayerPlacementInterfaceBasicArrayListFactoryInterface* getInstance(int32_t level) = 0;
 
@@ -59,3 +70,13 @@ class GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/layer/LayerPlacementInterfaceBasicArrayListFactoryInterface.h")
+#include "org/allbinary/game/layer/LayerPlacementInterfaceBasicArrayListFactoryInterface.h"
+#endif
+
+        #endif
+    

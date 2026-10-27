@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H
         #define ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InitEmulatorFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static InitEmulatorFactory* instance() { static std::unique_ptr<InitEmulatorFactory> value(new InitEmulatorFactory()); return value.get(); }
+    private: static InitEmulatorFactory* instance_owner();
+    private: static InitEmulatorFactory* instance;
 
     public: static InitEmulatorFactory* getInstance();
 
+
+            
+    public: InitEmulatorFactory();
+        
     public: void setInitEmulator(bool initEmulator);
 
     public: bool isInitEmulator();
@@ -68,3 +82,10 @@ class InitEmulatorFactory
 
 
         #endif //ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H_COMPLETE
+        
+        #endif
+    

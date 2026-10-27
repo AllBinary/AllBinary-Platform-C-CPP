@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_INPUTTYPEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_INPUTTYPEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/InputTypeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputTypeData
-            : public Object
-         {
+auto InputTypeData::instance_owner() -> InputTypeData* { static std::unique_ptr<InputTypeData> value(new InputTypeData()); return value.get(); }
+InputTypeData* InputTypeData::instance = InputTypeData::instance_owner();
 
-    private: static InputTypeData* instance() { static std::unique_ptr<InputTypeData> value(new InputTypeData()); return value.get(); }
-
-    public: static InputTypeData* getInstance(){
+    auto InputTypeData::getInstance() -> InputTypeData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputTypeData::instance();
+                        return InputTypeData::instance;
     
 }
 
 
-private: InputTypeData(){
+InputTypeData::InputTypeData(){
 }
 
 
-    public: const std::string NAME = "INPUT_TYPE_NAME";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_IO_INPUTTYPEDATA_CPP

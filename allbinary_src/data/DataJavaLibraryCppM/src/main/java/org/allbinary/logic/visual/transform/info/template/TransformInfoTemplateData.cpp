@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TEMPLATE_TRANSFORMINFOTEMPLATEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TEMPLATE_TRANSFORMINFOTEMPLATEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/template/TransformInfoTemplateData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoTemplateData
-            : public Object
-         {
+auto TransformInfoTemplateData::instance_owner() -> TransformInfoTemplateData* { static std::unique_ptr<TransformInfoTemplateData> value(new TransformInfoTemplateData()); return value.get(); }
+TransformInfoTemplateData* TransformInfoTemplateData::instance = TransformInfoTemplateData::instance_owner();
 
-    private: static TransformInfoTemplateData* instance() { static std::unique_ptr<TransformInfoTemplateData> value(new TransformInfoTemplateData()); return value.get(); }
-
-    public: static TransformInfoTemplateData* getInstance(){
+    auto TransformInfoTemplateData::getInstance() -> TransformInfoTemplateData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoTemplateData::instance();
+                        return TransformInfoTemplateData::instance;
     
 }
 
 
-private: TransformInfoTemplateData(){
+TransformInfoTemplateData::TransformInfoTemplateData(){
 }
 
 
-    public: const std::string UNCRYPTED_EXTENSION = "xsl";
 
-    public: const std::string ENCRYPTED_EXTENSION = "abv";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TEMPLATE_TRANSFORMINFOTEMPLATEDATA_CPP

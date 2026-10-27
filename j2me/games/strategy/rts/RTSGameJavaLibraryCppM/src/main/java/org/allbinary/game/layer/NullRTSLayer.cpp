@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_NULLRTSLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_NULLRTSLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/NullRTSLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,125 +90,127 @@
 #include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
 #include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
 
-class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface {
 
-    public: static NullRTSLayer* NULL_RTS_LAYER() { static std::unique_ptr<NullRTSLayer> value(new NullRTSLayer()); return value.get(); }
+NullRTSLayer::NullRTSLayer() {
+        }
+        auto NullRTSLayer::NULL_RTS_LAYER_owner() -> NullRTSLayer* { static std::unique_ptr<NullRTSLayer> value(new NullRTSLayer()); return value.get(); }
+NullRTSLayer* NullRTSLayer::NULL_RTS_LAYER = NullRTSLayer::NULL_RTS_LAYER_owner();
 
-    public: std::string getName(){
+    auto NullRTSLayer::getName() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager* layerManager){
+    auto NullRTSLayer::processInput(AllBinaryLayerManager* layerManager) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void initInputProcessors(){
+    auto NullRTSLayer::initInputProcessors() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: GameNotificationHud* getGameNotificationHud(){
+    auto NullRTSLayer::getGameNotificationHud() -> GameNotificationHud*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: ScrollSelectionForm* getCurrentScrollSelectionForm(){
+    auto NullRTSLayer::getCurrentScrollSelectionForm() -> ScrollSelectionForm*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setCurrentScrollSelectionForm(ScrollSelectionForm* currentScrollSelectionForm){
+    auto NullRTSLayer::setCurrentScrollSelectionForm(ScrollSelectionForm* currentScrollSelectionForm) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: ScrollSelectionForm* getBuildingScrollSelectionForm(){
+    auto NullRTSLayer::getBuildingScrollSelectionForm() -> ScrollSelectionForm*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: PlayerGameInput* getPlayerGameInput(){
+    auto NullRTSLayer::getPlayerGameInput() -> PlayerGameInput*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto NullRTSLayer::onEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void onDestroyed(DestroyedEvent* destroyedEvent){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto NullRTSLayer::onDestroyed(DestroyedEvent* destroyedEvent) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: Capital* getCapital(){
+                //@Throws(Exception.constructor)
+            
+    auto NullRTSLayer::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: RTSFormInput* getRTSFormInput(){
+    auto NullRTSLayer::getCapital() -> Capital*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullRTSLayer::getRTSFormInput() -> RTSFormInput*{
 
 
 
@@ -208,34 +220,33 @@ class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface 
 }
 
 
-    public: void add(Sound* sound){
+    auto NullRTSLayer::add(Sound* sound) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: PlayerOwnedRTSLayers* getPlayerOwnedRTSLayers(){
+    auto NullRTSLayer::getPlayerOwnedRTSLayers() -> PlayerOwnedRTSLayers*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool implmentsArtificialIntelligenceCompositeInterface(){
+    auto NullRTSLayer::implmentsArtificialIntelligenceCompositeInterface() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_NULLRTSLAYER_CPP

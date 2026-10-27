@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_SIMPLEGRAVITYVELOCITYMOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_SIMPLEGRAVITYVELOCITYMOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/SimpleGravityVelocityMovement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
-class SimpleGravityVelocityMovement: public BasicConstantVelocityMovement {
 
-public: SimpleGravityVelocityMovement(BasicDecimal* speedBasicDecimal) : BasicConstantVelocityMovement(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal->getUnscaled()), static_cast<int32_t>(speedBasicDecimal->getUnscaled()))){
+SimpleGravityVelocityMovement::SimpleGravityVelocityMovement(BasicDecimal* speedBasicDecimal) : BasicConstantVelocityMovement(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal->getUnscaled()), static_cast<int32_t>(speedBasicDecimal->getUnscaled()))), gravityUtil(GravityUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,19 +79,16 @@ public: SimpleGravityVelocityMovement(BasicDecimal* speedBasicDecimal) : BasicCo
 }
 
 
-    private: GravityUtil* gravityUtil = GravityUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
+    auto SimpleGravityVelocityMovement::process(AllBinaryGameLayer* layer) -> void{
 this->gravityUtil->process(this->getVelocityProperties(), this->gravityUtil->GAME_GRAVITY_VELOCITY);
     
-super.process(layer);
+BasicConstantVelocityMovement::process(layer);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_SIMPLEGRAVITYVELOCITYMOVEMENT_CPP

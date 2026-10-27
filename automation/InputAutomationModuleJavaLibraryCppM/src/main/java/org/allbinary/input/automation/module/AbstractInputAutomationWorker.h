@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -35,30 +40,14 @@
         
             #include "java/lang/Thread.h"
         
-#include <org/allbinary/input/media/image/capture/CaptureWorkerInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/media/image/comparison/ImageComparisonWorker.h>
-
-      
-#include <org/allbinary/media/image/comparison/motion/MotionRectanglesWorker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CaptureWorkerInterface;
+class LogUtil;
+class ImageComparisonWorker;
+class MotionRectanglesWorker;
+class CommonLabels;
+class CommonStrings;
 #include <org/allbinary/thread/RunnableInterface.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class TimeDelayHelper;
 
 
 
@@ -77,15 +66,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
+        class InputAutomationActionInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbstractInputAutomationWorker
-            : public Object
+            : public virtual Object
         , public RunnableInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: int64_t index= 0;
 
@@ -114,21 +107,21 @@ public: AbstractInputAutomationWorker(InputAutomationActionInterface* inputAutom
     public: void setRunning(bool running);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: bool isAnyDataWorkerRunning();
+    /*protected*/ public: bool isAnyDataWorkerRunning();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void startDataWorkers();
+    /*protected*/ public: void startDataWorkers();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void waitForDataWorkers();
+    /*protected*/ public: void waitForDataWorkers();
 
                 //@Throws(Exception.constructor)
             
-    protected: void stopDataWorkers();
+    /*protected*/ public: void stopDataWorkers();
 
                 //@Throws(Exception.constructor)
             
@@ -140,17 +133,17 @@ public: AbstractInputAutomationWorker(InputAutomationActionInterface* inputAutom
 
     public: void setInputAutomationActionInterface(InputAutomationActionInterface* inputAutomationActionInterface);
 
-    protected: CaptureWorkerInterface* getCaptureWorker();
+    /*protected*/ public: CaptureWorkerInterface* getCaptureWorker();
 
-    protected: void setCaptureWorker(CaptureWorkerInterface* captureWorkerInterface);
+    /*protected*/ public: void setCaptureWorker(CaptureWorkerInterface* captureWorkerInterface);
 
-    protected: ImageComparisonWorker* getImageComparisonWorker();
+    /*protected*/ public: ImageComparisonWorker* getImageComparisonWorker();
 
-    protected: void setImageComparisonWorker(ImageComparisonWorker* imageComparisonWorker);
+    /*protected*/ public: void setImageComparisonWorker(ImageComparisonWorker* imageComparisonWorker);
 
-    protected: MotionRectanglesWorker* getMotionRectanglesWorker();
+    /*protected*/ public: MotionRectanglesWorker* getMotionRectanglesWorker();
 
-    protected: void setMotionRectanglesWorker(MotionRectanglesWorker* motionRectanglesWorker);
+    /*protected*/ public: void setMotionRectanglesWorker(MotionRectanglesWorker* motionRectanglesWorker);
 
 };
 
@@ -158,3 +151,37 @@ public: AbstractInputAutomationWorker(InputAutomationActionInterface* inputAutom
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H_COMPLETE
+        #if __has_include(<org/allbinary/input/media/image/capture/CaptureWorkerInterface.h>)
+#include <org/allbinary/input/media/image/capture/CaptureWorkerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/ImageComparisonWorker.h>)
+#include <org/allbinary/media/image/comparison/ImageComparisonWorker.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/motion/MotionRectanglesWorker.h>)
+#include <org/allbinary/media/image/comparison/motion/MotionRectanglesWorker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/thread/RunnableInterface.h>)
+#include <org/allbinary/thread/RunnableInterface.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/InputAutomationActionInterface.h")
+#include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
+#endif
+
+        #endif
+    

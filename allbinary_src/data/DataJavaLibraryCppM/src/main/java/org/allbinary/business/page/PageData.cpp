@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/page/PageData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PageData
-            : public Object
-         {
+auto PageData::instance_owner() -> PageData* { static std::unique_ptr<PageData> value(new PageData()); return value.get(); }
+PageData* PageData::instance = PageData::instance_owner();
 
-    private: static PageData* instance() { static std::unique_ptr<PageData> value(new PageData()); return value.get(); }
-
-    public: static PageData* getInstance(){
+    auto PageData::getInstance() -> PageData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PageData::instance();
+                        return PageData::instance;
     
 }
 
 
-private: PageData(){
+PageData::PageData(){
 }
 
 
-    public: const std::string NAME = "PAGE_NAME";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/interfaces/NoHardwareComponent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,23 +59,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h"
 
-class NoHardwareComponent
-            : public Object
-        , public HardwareComponentInterface {
 
-    private: static NoHardwareComponent* instance() { static std::unique_ptr<NoHardwareComponent> value(new NoHardwareComponent()); return value.get(); }
+NoHardwareComponent::NoHardwareComponent() {
+        }
+        auto NoHardwareComponent::instance_owner() -> NoHardwareComponent* { static std::unique_ptr<NoHardwareComponent> value(new NoHardwareComponent()); return value.get(); }
+NoHardwareComponent* NoHardwareComponent::instance = NoHardwareComponent::instance_owner();
 
-    public: static NoHardwareComponent* getInstance(){
+    auto NoHardwareComponent::getInstance() -> NoHardwareComponent*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHardwareComponent::instance();
+                        return NoHardwareComponent::instance;
     
 }
 
 
-    public: bool compareTo(HardwareComponentInterface* componentInterface){
+    auto NoHardwareComponent::compareTo(HardwareComponentInterface* componentInterface) -> bool{
 
                         if(this == componentInterface)
                         
@@ -88,7 +98,7 @@ class NoHardwareComponent
 }
 
 
-    public: std::string toString(){
+    auto NoHardwareComponent::toString() -> std::string{
 
 
 
@@ -98,7 +108,6 @@ class NoHardwareComponent
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_CPP

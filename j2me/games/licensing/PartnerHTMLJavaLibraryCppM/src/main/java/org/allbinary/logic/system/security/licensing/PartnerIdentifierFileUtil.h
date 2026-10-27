@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PARTNERIDENTIFIERFILEUTIL_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PARTNERIDENTIFIERFILEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ResourceUtil;
+class LogUtil;
+class StringUtil;
+class CommonStrings;
 
 
 
@@ -62,15 +59,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PartnerIdentifierFileUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static PartnerIdentifierFileUtil* instance() { static std::unique_ptr<PartnerIdentifierFileUtil> value(new PartnerIdentifierFileUtil()); return value.get(); }
+    private: static PartnerIdentifierFileUtil* instance_owner();
+    private: static PartnerIdentifierFileUtil* instance;
 
     public: static PartnerIdentifierFileUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: PartnerIdentifierFileUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: const std::string FILE_NAME = "partner.txt";
 
@@ -82,3 +88,22 @@ class PartnerIdentifierFileUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PARTNERIDENTIFIERFILEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PARTNERIDENTIFIERFILEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PARTNERIDENTIFIERFILEUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

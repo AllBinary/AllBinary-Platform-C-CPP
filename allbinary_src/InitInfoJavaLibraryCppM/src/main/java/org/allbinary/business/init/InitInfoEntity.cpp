@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/InitInfoEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,29 +87,8 @@
         #include "org/allbinary/business/init/InitSql.h"
 #include "org/allbinary/business/init/InitInfo.h"
 
-class InitInfoEntity: public InitSql {
 
-    private: const std::string NAME = "InitInfoEntity";
-
-    private: const std::string NOTHING = "NOTHING";
-
-    private: const std::string tableName = "initdata";
-
-    private: std::string tableData;
-
-    private: const std::string NOT_IN_DB = "Not In DB";
-
-    private: const std::string METHOD_GET = "get()";
-
-    private: const std::string METHOD_IS = "is()";
-
-    private: const std::string METHOD_ADD = "add()";
-
-    private: const std::string CREATED_SUCCESS = " Created Successfully";
-
-    private: const std::string FAILED_TO_CREATE = "Failed to create ";
-
-public: InitInfoEntity() : InitSql(new UserDbInitInfo()){
+InitInfoEntity::InitInfoEntity() : InitSql(new UserDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -109,33 +98,33 @@ public: InitInfoEntity() : InitSql(new UserDbInitInfo()){
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE);
     
 stringBuffer->append(this->tableName);
     
-stringBuffer->append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings->START);
     
 stringBuffer->append(this->NOTHING);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(InitInfo::getInstance()->TESTING);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(InitInfo::getInstance()->TESTHTMLPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(InitInfo::getInstance()->MAINPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(this->sqlStrings.PRIMARY_KEY);
+stringBuffer->append(this->sqlStrings->PRIMARY_KEY);
     
 stringBuffer->append(this->NOTHING);
     
-stringBuffer->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->END);
     
 this->tableData= stringBuffer->toString();
     
@@ -144,7 +133,7 @@ this->setTable(this->tableName);
 }
 
 
-    public: bool get(){
+    auto InitInfoEntity::get() -> bool{
 
         try {
             
@@ -174,7 +163,7 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     PreLogUtil::put(this->NOT_IN_DB, NAME, this->METHOD_GET);
@@ -196,10 +185,10 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_GET, &e);
+                                    PreLogUtil::putOE(this->commonStrings->EXCEPTION, this->NAME, this->METHOD_GET, &e);
     
 
                                     }
@@ -215,7 +204,7 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 }
 
 
-    public: bool is(){
+    auto InitInfoEntity::is() -> bool{
 
         try {
             
@@ -243,7 +232,7 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     PreLogUtil::put(this->NOT_IN_DB, this->NAME, this->METHOD_IS);
@@ -265,10 +254,10 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_IS, &e);
+                                    PreLogUtil::putOE(this->commonStrings->EXCEPTION, this->NAME, this->METHOD_IS, &e);
     
 
                                     }
@@ -284,13 +273,13 @@ keyAndValue->put(this->NOTHING, this->NOTHING);
 }
 
 
-    public: void update(){
+    auto InitInfoEntity::update() -> void{
 updateWhere(NOTHING, NOTHING, InitInfo::getInstance()->toHashMap());
     
 }
 
 
-    public: void add(){
+    auto InitInfoEntity::add() -> void{
 
         try {
             
@@ -311,10 +300,10 @@ insert(values);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_ADD, &e);
+                                    PreLogUtil::putOE(this->commonStrings->EXCEPTION, this->NAME, this->METHOD_ADD, &e);
     
 
                                     }
@@ -324,9 +313,9 @@ insert(values);
 }
 
 
-    public: std::string createTable(){
+    auto InitInfoEntity::createTable() -> std::string{
 
-                        if(super.createTable(this->tableData))
+                        if(InitSql::createTable(this->tableData))
                         
                                     {
                                     
@@ -360,7 +349,6 @@ stringBuffer->append(AbPathData::getInstance()->EXTENSION_SEP);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/layer/PathFindingLayerInterface.h>
-
-      
-#include <org/allbinary/game/layer/WaypointBehaviorBase.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class PathFindingLayerInterface;
+class WaypointBehaviorBase;
+class GeographicMapCellPosition;
+class BasicArrayList;
 
 
 
@@ -60,14 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Waypoint2LogHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static Waypoint2LogHelper* instance() { static std::unique_ptr<Waypoint2LogHelper> value(new Waypoint2LogHelper()); return value.get(); }
+    private: static Waypoint2LogHelper* instance_owner();
+    private: static Waypoint2LogHelper* instance;
 
     public: static Waypoint2LogHelper* getInstance();
 
+
+            
+    public: Waypoint2LogHelper();
+        
     public: void initRange(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t closeRange, int32_t sensorRange);
 
     public: void processPossibleTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance, bool isShorterThanCurrentTargetDistance, bool isCurrentTargetDestroyed);
@@ -116,3 +122,22 @@ class Waypoint2LogHelper
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/PathFindingLayerInterface.h>)
+#include <org/allbinary/game/layer/PathFindingLayerInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/WaypointBehaviorBase.h>)
+#include <org/allbinary/game/layer/WaypointBehaviorBase.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

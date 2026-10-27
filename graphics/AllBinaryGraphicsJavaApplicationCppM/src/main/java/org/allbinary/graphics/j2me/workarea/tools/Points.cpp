@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,25 +62,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/workarea/tools/PointsInterface.h"
 
-class Points
-            : public Object
-        , public PointsInterface {
 
-    private: BasicArrayList* pointVector;
-
-public: Points(){
+Points::Points(){
 this->pointVector= new BasicArrayListD();
     
 }
 
 
-    public: void init(){
+    auto Points::init() -> void{
 this->pointVector->clear();
     
 }
 
 
-    public: BasicArrayList* getPoints(){
+    auto Points::getPoints() -> BasicArrayList*{
 
 
 
@@ -80,13 +85,13 @@ this->pointVector->clear();
 }
 
 
-    public: void addPoints(BasicArrayList* vector){
+    auto Points::addPoints(BasicArrayList* vector) -> void{
 this->pointVector->addAll2(vector);
     
 }
 
 
-    public: bool isValid(){
+    auto Points::isValid() -> bool{
 
                         if(this->pointVector->size() > 1)
                         
@@ -113,7 +118,7 @@ this->pointVector->addAll2(vector);
 }
 
 
-    public: int32_t getSize(){
+    auto Points::getSize() -> int32_t{
 
 
 
@@ -123,7 +128,6 @@ this->pointVector->addAll2(vector);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTS_CPP

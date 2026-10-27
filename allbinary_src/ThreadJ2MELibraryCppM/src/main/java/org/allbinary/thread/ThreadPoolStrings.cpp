@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_CPP
+        #define ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ThreadPoolStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThreadPoolStrings
-            : public Object
-         {
 
-    private: static ThreadPoolStrings* instance() { static std::unique_ptr<ThreadPoolStrings> value(new ThreadPoolStrings()); return value.get(); }
+ThreadPoolStrings::ThreadPoolStrings() {
+        }
+        auto ThreadPoolStrings::instance_owner() -> ThreadPoolStrings* { static std::unique_ptr<ThreadPoolStrings> value(new ThreadPoolStrings()); return value.get(); }
+ThreadPoolStrings* ThreadPoolStrings::instance = ThreadPoolStrings::instance_owner();
 
-    public: static ThreadPoolStrings* getInstance(){
+    auto ThreadPoolStrings::getInstance() -> ThreadPoolStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadPoolStrings::instance();
+                        return ThreadPoolStrings::instance;
     
 }
 
 
-    public: const std::string ADD_TASK = "addTask";
 
-    public: const std::string START_TASK = "Started Task: ";
 
-    public: const std::string COMPLETE_TASK = "Completed Task: ";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_CPP

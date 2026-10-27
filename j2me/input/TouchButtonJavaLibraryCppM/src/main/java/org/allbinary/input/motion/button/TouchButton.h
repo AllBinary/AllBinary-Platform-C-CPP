@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,45 +34,19 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
-
-      
-#include <org/allbinary/graphics/CellPosition.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/RectangleFactory.h>
-
-      
+class Graphics;
+class Animation;
+class FeaturedAnimationInterfaceFactoryInterfaceFactory;
+class CellPosition;
+class GPoint;
+class PointFactory;
+class Rectangle;
+class RectangleFactory;
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class CommonStrings;
 
 
 
@@ -86,18 +65,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
-#include "org/allbinary/input/motion/button/TouchButtonResource.h"
+        class TouchButtonInput;
+class TouchButtonResource;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButton: public Paintable {
 
                 //@Throws(Exception.constructor)
             
     public: static TouchButton* createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: TouchButtonInput* touchButtonInput;
 
@@ -105,21 +88,21 @@ class TouchButton: public Paintable {
 
     private: Animation* hintAnimationInterface;
 
-    protected: Rectangle* rawRectangle;
+    /*protected*/ public: Rectangle* rawRectangle;
 
-    protected: int32_t xBorder;
+    /*protected*/ public: int32_t xBorder;
 
-    protected: int32_t yBorder;
+    /*protected*/ public: int32_t yBorder;
 
-    protected: Rectangle* rectangleP = RectangleFactory::SINGLETON;
+    /*protected*/ public: Rectangle* rectangleP;
 
-    protected: CellPosition* cellPositionP;
+    /*protected*/ public: CellPosition* cellPositionP;
 
-    protected: int32_t animationX= 0;
+    /*protected*/ public: int32_t animationX= 0;
 
-    protected: int32_t animationY= 0;
+    /*protected*/ public: int32_t animationY= 0;
 
-    protected: int32_t hintAnimationY= 0;
+    /*protected*/ public: int32_t hintAnimationY= 0;
 
 public: TouchButton(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder);
 
@@ -127,7 +110,7 @@ public: TouchButton(TouchButtonInput* touchButtonInput, Animation* animationInte
 
     public: void paint(Graphics* graphics);
 
-    protected: void updateRectangle();
+    /*protected*/ public: void updateRectangle();
 
     public: CellPosition* getCellPosition();
 
@@ -143,3 +126,55 @@ public: TouchButton(TouchButtonInput* touchButtonInput, Animation* animationInte
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>)
+#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/CellPosition.h>)
+#include <org/allbinary/graphics/CellPosition.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/RectangleFactory.h>)
+#include <org/allbinary/graphics/RectangleFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonInput.h")
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonResource.h")
+#include "org/allbinary/input/motion/button/TouchButtonResource.h"
+#endif
+
+        #endif
+    

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ECLIPSE_SWT_GRAPHICS_RESOURCE_CPP
+        #define ORG_ECLIPSE_SWT_GRAPHICS_RESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/eclipse/swt/graphics/Resource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +41,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Resource
-            : public Object
-         {
 
-    public: void dispose(){
+Resource::Resource() {
+        }
+        
+    auto Resource::dispose() -> void{
 }
 
 
-    public: bool isDisposed(){
+    auto Resource::isDisposed() -> bool{
 
 
 
@@ -49,7 +59,6 @@ class Resource
 }
 
 
-};
 
-            
 
+        #endif //ORG_ECLIPSE_SWT_GRAPHICS_RESOURCE_CPP

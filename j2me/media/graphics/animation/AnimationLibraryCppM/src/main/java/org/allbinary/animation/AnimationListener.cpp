@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONLISTENER_CPP
+        #define ORG_ALLBINARY_ANIMATION_ANIMATIONLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/AnimationListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnimationListener: public EventListenerInterface {
+//Interface - declared in the header
 
-    public: virtual void onEnd() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_ANIMATIONLISTENER_CPP

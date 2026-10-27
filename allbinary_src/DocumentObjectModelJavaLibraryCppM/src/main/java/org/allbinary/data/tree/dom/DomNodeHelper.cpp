@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMNODEHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOMNODEHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/DomNodeHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,11 +70,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/dom/DomSearchHelper.h"
 
-class DomNodeHelper
-            : public Object
-         {
 
-    public: static Node* getFirstChildElement(Node* parentNode){
+DomNodeHelper::DomNodeHelper(){
+}
+
+
+    auto DomNodeHelper::getFirstChildElement(Node* parentNode) -> Node*{
 
     Node* node = parentNode->getFirstChild();;
     
@@ -110,7 +121,7 @@ node= nodeList->item(index);
 }
 
 
-    public: static std::string getTextNodeValue(Node* node){
+    auto DomNodeHelper::getTextNodeValue(Node* node) -> std::string{
 
     Node* nodeTextNode = node->getFirstChild();;
     
@@ -144,7 +155,7 @@ node= nodeList->item(index);
 
                 //@Throws(Exception.constructor)
             
-    public: static std::string getTextNodeValue(std::string nodeName, NodeList* nodeList){
+    auto DomNodeHelper::getTextNodeValue(std::string nodeName, NodeList* nodeList) -> std::string{
 
     Node* node = DomSearchHelper::getNode(nodeName, nodeList);;
     
@@ -157,7 +168,7 @@ node= nodeList->item(index);
 }
 
 
-    public: static std::string getTextNodesValue(Node* node){
+    auto DomNodeHelper::getTextNodesValue(Node* node) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -203,11 +214,6 @@ node= nodeList->item(index);
 }
 
 
-private: DomNodeHelper(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOMNODEHELPER_CPP

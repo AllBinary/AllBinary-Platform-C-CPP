@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/bool/BooleanUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,31 +69,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/java/bool/BooleanFactory.h"
 
-class BooleanUtil
-            : public Object
-         {
+auto BooleanUtil::instance_owner() -> BooleanUtil* { static std::unique_ptr<BooleanUtil> value(new BooleanUtil()); return value.get(); }
+BooleanUtil* BooleanUtil::instance = BooleanUtil::instance_owner();
 
-    private: static BooleanUtil* instance() { static std::unique_ptr<BooleanUtil> value(new BooleanUtil()); return value.get(); }
-
-    public: static BooleanUtil* getInstance(){
+    auto BooleanUtil::getInstance() -> BooleanUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanUtil::instance();
+                        return BooleanUtil::instance;
     
 }
 
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-private: BooleanUtil(){
+BooleanUtil::BooleanUtil() : tsUtil(TsUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool getFromString(std::string booleanString){
+    auto BooleanUtil::getFromString(std::string booleanString) -> bool{
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
@@ -136,7 +141,7 @@ private: BooleanUtil(){
                             
 
 
-                            throw new Exception("Invalid booleanString - Must be true or false");
+                            throw Exception("Invalid booleanString - Must be true or false");
                     
 
                         }
@@ -146,7 +151,7 @@ private: BooleanUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: bool isStringBoolean(std::string booleanString){
+    auto BooleanUtil::isStringBoolean(std::string booleanString) -> bool{
 
     BooleanFactory* booleanFactory = BooleanFactory::getInstance();;
     
@@ -175,7 +180,7 @@ private: BooleanUtil(){
 }
 
 
-    public: std::string toStringFromBooleanArray(std::vector<bool> booleanArray){
+    auto BooleanUtil::toStringFromBooleanArray(std::vector<bool> booleanArray) -> std::string{
 
     StringMaker* stringMaker = new StringMaker();;
     
@@ -202,7 +207,6 @@ stringMaker->appendboolean(booleanArray[index]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_CPP

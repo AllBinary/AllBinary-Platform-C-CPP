@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/ABTextItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -38,9 +48,8 @@
 #include "org/allbinary/graphics/form/item/ABCustomItemInterface.h"
 #include "org/allbinary/graphics/form/item/ABStringComponent.h"
 
-class ABTextItem: public CustomCustomItem, public ABCustomItemInterface {
 
-public: ABTextItem(std::string label, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : CustomCustomItem(label, backgroundBasicColor, foregroundBasicColor){
+ABTextItem::ABTextItem(std::string label, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : CustomCustomItem(label, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -50,15 +59,15 @@ public: ABTextItem(std::string label, int32_t layout, std::string altText, Basic
 }
 
 
-    public: void keyPressed(int32_t keyCode){
+    auto ABTextItem::keyPressed(int32_t keyCode) -> void{
 }
 
 
-    public: void paintUnselected(Graphics* graphics, int32_t x, int32_t y){
+    auto ABTextItem::paintUnselected(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-    public: ABStringComponent* getLabelStringComponent(){
+    auto ABTextItem::getLabelStringComponent() -> ABStringComponent*{
 
 
 
@@ -68,7 +77,6 @@ public: ABTextItem(std::string label, int32_t layout, std::string altText, Basic
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_CPP

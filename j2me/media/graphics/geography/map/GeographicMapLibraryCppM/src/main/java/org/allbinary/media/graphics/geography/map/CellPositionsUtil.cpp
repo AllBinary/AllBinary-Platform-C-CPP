@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CELLPOSITIONSUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CELLPOSITIONSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/CellPositionsUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,25 +71,28 @@
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
-class CellPositionsUtil
-            : public Object
-         {
 
-    private: static CellPositionsUtil* instance() { static std::unique_ptr<CellPositionsUtil> value(new CellPositionsUtil()); return value.get(); }
+CellPositionsUtil::CellPositionsUtil() : reusableSingleThreadedSurroundingList(new BasicArrayListS(8)), surroundArray(
+                                                        {
+                                                            { -1, -1},{0, -1},{1, -1},{ -1,1},{0,1},{1,1},{1,0},{ -1,0}
+                                                        }) {
+        }
+        auto CellPositionsUtil::instance_owner() -> CellPositionsUtil* { static std::unique_ptr<CellPositionsUtil> value(new CellPositionsUtil()); return value.get(); }
+CellPositionsUtil* CellPositionsUtil::instance = CellPositionsUtil::instance_owner();
 
-    public: static CellPositionsUtil* getInstance(){
+    auto CellPositionsUtil::getInstance() -> CellPositionsUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPositionsUtil::instance();
+                        return CellPositionsUtil::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAll(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* topRightGeographicMapCellPosition, int32_t columns, int32_t rows, BasicArrayList* reusableList){
+    auto CellPositionsUtil::getAll(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* topRightGeographicMapCellPosition, int32_t columns, int32_t rows, BasicArrayList* reusableList) -> BasicArrayList*{
 reusableList->clear();
     
 
@@ -136,11 +149,9 @@ reusableList->add(geographicMapCellPosition);
 }
 
 
-    private: BasicArrayList* reusableSingleThreadedSurroundingList = new BasicArrayListS(8);
-
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAllSurrounding(BasicGeographicMap* geographicMapInterface, BasicArrayList* occupyList, BasicArrayList* reusableList){
+    auto CellPositionsUtil::getAllSurrounding(BasicGeographicMap* geographicMapInterface, BasicArrayList* occupyList, BasicArrayList* reusableList) -> BasicArrayList*{
 reusableList->clear();
     
 
@@ -188,22 +199,9 @@ reusableList->clear();
 }
 
 
-    private: const std::vector<std::vector<int32_t>> surroundArray = 
-                                                        {
-                                                            intArrayOf( -1, -1)
-,[0, -1]
-,[1, -1]
-,[ -1,1]
-,[0,1]
-,[1,1]
-,[1,0]
-,[ -1,0]
-
-                                                        };
-
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAllSurroundingAt(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* layerGeographicMapCellPosition, BasicArrayList* reusableSurroundingList){
+    auto CellPositionsUtil::getAllSurroundingAt(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* layerGeographicMapCellPosition, BasicArrayList* reusableSurroundingList) -> BasicArrayList*{
 reusableSurroundingList->clear();
     
 
@@ -252,7 +250,6 @@ reusableSurroundingList->add(geographicMapCellPosition);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CELLPOSITIONSUTIL_CPP

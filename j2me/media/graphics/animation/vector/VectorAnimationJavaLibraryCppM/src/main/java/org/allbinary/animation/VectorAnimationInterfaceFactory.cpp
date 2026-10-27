@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorAnimationInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,17 +72,8 @@
 #include "org/allbinary/animation/VectorAnimation.h"
 #include "org/allbinary/animation/Animation.h"
 
-class VectorAnimationInterfaceFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints;
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-    protected: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: VectorAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory){
+VectorAnimationInterfaceFactory::VectorAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory) : basicColor(BasicColorFactory::getInstance()->WHITE){
 this->currentPoints= currentPoints;
     
 this->setBasicColorP(basicColor);
@@ -84,7 +85,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto VectorAnimationInterfaceFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -94,13 +95,13 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 }
 
 
-    protected: void setBasicColorP(BasicColor* basicColor){
+    auto VectorAnimationInterfaceFactory::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-    protected: BasicColor* getBasicColorP(){
+    auto VectorAnimationInterfaceFactory::getBasicColorP() -> BasicColor*{
 
 
 
@@ -110,11 +111,10 @@ this->basicColor= basicColor;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto VectorAnimationInterfaceFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACEFACTORY_CPP

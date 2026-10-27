@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTCACHEABLE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTCACHEABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
 
 
 
@@ -55,8 +56,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicArrayListCacheable: public BasicArrayListD, public CacheableInterface {
 
+
+            
+    public: BasicArrayListCacheable();
+        
     public: Object* getKey();
 
 };
@@ -65,3 +74,19 @@ class BasicArrayListCacheable: public BasicArrayListD, public CacheableInterface
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTCACHEABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTCACHEABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTCACHEABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+#endif
+
+        #endif
+    

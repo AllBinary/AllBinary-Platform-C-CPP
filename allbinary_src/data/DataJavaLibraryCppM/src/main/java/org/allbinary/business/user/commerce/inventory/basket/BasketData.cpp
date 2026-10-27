@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/basket/BasketData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,37 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasketData
-            : public Object
-         {
 
-    public: static inline const std::string BASKET = "BASKET";
-
-    public: static inline const std::string NAME = "NAME";
-
-    public: static inline const std::string BASKETREVIEW = "BASKET_REVIEW";
-
-    public: static inline const std::string TOTALWEIGHT = "BASKET_TOTALWEIGTH";
-
-    public: static inline const std::string ITEMTOTAL = "BASKET_ITEMTOTAL";
-
-    public: static inline const std::string ITEMTOTALINBASKET = "BASKET_ITEMTOTALINBASKET";
-
-    public: static inline const std::string SUBTOTAL = "BASKET_SUBTOTAL";
-
-    public: static inline const std::string ISEMPTY = "BASKET_ISEMPTY";
-
-    public: static inline const std::string INSERT = "BASKET_INSERT";
-
-    public: static inline const std::string DELETE = "BASKET_DELETE";
-
-    public: static inline const std::string ADJUST = "BASKET_ADJUST";
-
-private: BasketData(){
+BasketData::BasketData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETDATA_CPP

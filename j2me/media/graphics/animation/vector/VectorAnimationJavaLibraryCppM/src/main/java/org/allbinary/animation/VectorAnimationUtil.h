@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class GPoint;
+class BasicArrayList;
 
 
 
@@ -56,11 +57,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VectorAnimationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static VectorAnimationUtil* instance() { static std::unique_ptr<VectorAnimationUtil> value(new VectorAnimationUtil()); return value.get(); }
+    private: static VectorAnimationUtil* instance_owner();
+    private: static VectorAnimationUtil* instance;
 
     public: static VectorAnimationUtil* getInstance();
 
@@ -78,3 +84,16 @@ private: VectorAnimationUtil();
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

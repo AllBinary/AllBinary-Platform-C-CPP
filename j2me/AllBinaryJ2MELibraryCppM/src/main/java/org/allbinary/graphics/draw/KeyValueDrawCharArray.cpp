@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWCHARARRAY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWCHARARRAY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/draw/KeyValueDrawCharArray.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,23 +72,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeyValueDrawCharArray
-            : public Object
-        , public UpdateMyFontInterface {
 
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: std::string LABEL;
-
-    private: int32_t labelX;
-
-    private: int32_t valueX= 0;
-
-    private: std::vector<char> value = CharArrayFactory::getInstance()->getZeroCharArray();
-
-    private: int32_t len= 0;
-
-public: KeyValueDrawCharArray(std::string label, int32_t x){
+KeyValueDrawCharArray::KeyValueDrawCharArray(std::string label, int32_t x) : myFontProcessor(new UpdateMyFontProcessor(this)), value(CharArrayFactory::getInstance()->getZeroCharArray()){
 this->LABEL= label;
     
 this->labelX= x;
@@ -86,7 +81,7 @@ this->labelX= x;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto KeyValueDrawCharArray::updateMeasurement(Graphics* graphics) -> void{
 
     int32_t labelWidth = graphics->getFont()->stringWidth(this->LABEL) -LABEL.size();;
     
@@ -97,7 +92,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics, int32_t y){
+    auto KeyValueDrawCharArray::paint(Graphics* graphics, int32_t y) -> void{
 this->myFontProcessor->process(graphics);
     
 graphics->drawString(this->LABEL, this->labelX, y, 0);
@@ -107,7 +102,7 @@ graphics->drawChars(this->value, 0, this->len, this->valueX, y, 0);
 }
 
 
-    public: void update(std::vector<char> value, int32_t len){
+    auto KeyValueDrawCharArray::update(std::vector<char> value, int32_t len) -> void{
 this->value= value;
     
 this->len= len;
@@ -115,7 +110,6 @@ this->len= len;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWCHARARRAY_CPP

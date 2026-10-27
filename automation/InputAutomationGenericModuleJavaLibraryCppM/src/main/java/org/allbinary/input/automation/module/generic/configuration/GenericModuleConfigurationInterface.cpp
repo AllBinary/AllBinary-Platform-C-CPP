@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_GENERICMODULECONFIGURATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_GENERICMODULECONFIGURATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/GenericModuleConfigurationInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericModuleConfigurationInterface {
+//Interface - declared in the header
 
-    public: virtual GenericProfile* getSelectedGenericProfile() = 0;
 
-    public: virtual void setSelectedGenericProfile(GenericProfile* selectedGenericProfile) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_GENERICMODULECONFIGURATIONINTERFACE_CPP

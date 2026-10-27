@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
-#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/media/image/ImageToRotationImageArrayUtil.h>
-
-      
+class Image;
+class NullImage;
+class Animation;
+class AnimationBehaviorFactory;
+class GameConfigurationCentral;
+class PrimitiveIntUtil;
+class AngleFactory;
+class AngleInfo;
+class ImageToRotationImageArrayUtil;
 
 
 
@@ -77,9 +64,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
-#include "org/allbinary/animation/image/ImageArrayRotationAnimation.h"
-#include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
+class ImageArrayRotationAnimation;
+class AdjustedImageArrayRotationAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryArrayImageRotationAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
@@ -90,7 +81,7 @@ class AllBinaryArrayImageRotationAnimationFactory: public BaseImageAnimationFact
             
     public: static AllBinaryArrayImageRotationAnimationFactory* createFactoryA(Image* image, int32_t dx, int32_t dy, int32_t angleIncrement);
 
-    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
+    private: std::vector<Image*> imageArray;
 
     private: int32_t angleIncrement;
 
@@ -106,9 +97,9 @@ public: AllBinaryArrayImageRotationAnimationFactory(Image* image, int32_t width,
             
     public: Animation* getInstance(int32_t instanceId);
 
-    protected: void setImageArray(std::vector<Image*> imageArray);
+    /*protected*/ public: void setImageArray(std::vector<Image*> imageArray);
 
-    protected: int32_t getAngleIncrement();
+    /*protected*/ public: int32_t getAngleIncrement();
 
 };
 
@@ -116,3 +107,46 @@ public: AllBinaryArrayImageRotationAnimationFactory(Image* image, int32_t width,
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/GameConfigurationCentral.h>)
+#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageToRotationImageArrayUtil.h>)
+#include <org/allbinary/media/image/ImageToRotationImageArrayUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/BaseImageAnimationFactory.h")
+#include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ImageArrayRotationAnimation.h")
+#include "org/allbinary/animation/image/ImageArrayRotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h")
+#include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
+#endif
+
+        #endif
+    

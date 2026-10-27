@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_BASICPERSITANCE_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_BASICPERSITANCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/BasicPersitance.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,25 +88,8 @@
         #include "org/allbinary/game/configuration/persistance/PersistanceStrings.h"
 #include "org/allbinary/game/configuration/persistance/NullRecordStore.h"
 
-class BasicPersitance
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: PersistanceStrings* persistanceStrings = PersistanceStrings::getInstance();
-
-    private: PlatformRecordIdUtil* platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
-
-    private: std::string recordId;
-
-    protected: BasicArrayList* valueList = new BasicArrayListD();
-
-    protected: BasicArrayList* idList = new BasicArrayListD();
-
-protected: BasicPersitance(std::string recordId){
+BasicPersitance::BasicPersitance(std::string recordId) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), persistanceStrings(PersistanceStrings::getInstance()), platformRecordIdUtil(PlatformRecordIdUtil::getInstance()), valueList(new BasicArrayListD()), idList(new BasicArrayListD()){
 this->recordId= recordId;
     
 }
@@ -104,7 +97,7 @@ this->recordId= recordId;
 
                 //@Throws(Exception.constructor)
             
-    public: void deleteRecoreStore(AbeClientInformationInterface* abeClientInformation){
+    auto BasicPersitance::deleteRecoreStore(AbeClientInformationInterface* abeClientInformation) -> void{
 RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
     
 }
@@ -112,7 +105,7 @@ RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
 
                 //@Throws(Exception.constructor)
             
-    public: void deleteAll(AbeClientInformationInterface* abeClientInformation){
+    auto BasicPersitance::deleteAll(AbeClientInformationInterface* abeClientInformation) -> void{
 
     int32_t size = this->idList->size();;
     
@@ -126,7 +119,7 @@ RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
 
     int32_t integer = this->idList->objectArray[index];;
     
-this->delete(abeClientInformation, integer.intValue());
+this->delete_(abeClientInformation, integer.intValue());
     
 }
 
@@ -137,7 +130,7 @@ this->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void delete_(AbeClientInformationInterface* abeClientInformation, int32_t deleteId){
+    auto BasicPersitance::delete_(AbeClientInformationInterface* abeClientInformation, int32_t deleteId) -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -180,7 +173,7 @@ recordStore->closeRecordStore();
 }
 
 
-    public: std::string getRecordId(AbeClientInformationInterface* abeClientInformation){
+    auto BasicPersitance::getRecordId(AbeClientInformationInterface* abeClientInformation) -> std::string{
 
 
 
@@ -190,7 +183,7 @@ recordStore->closeRecordStore();
 }
 
 
-    public: BasicArrayList* getList(){
+    auto BasicPersitance::getList() -> BasicArrayList*{
 
 
 
@@ -200,7 +193,7 @@ recordStore->closeRecordStore();
 }
 
 
-    public: BasicArrayList* getIds(){
+    auto BasicPersitance::getIds() -> BasicArrayList*{
 
 
 
@@ -210,7 +203,7 @@ recordStore->closeRecordStore();
 }
 
 
-    public: void clear(){
+    auto BasicPersitance::clear() -> void{
 this->valueList->clear();
     
 this->idList->clear();
@@ -218,7 +211,6 @@ this->idList->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_BASICPERSITANCE_CPP

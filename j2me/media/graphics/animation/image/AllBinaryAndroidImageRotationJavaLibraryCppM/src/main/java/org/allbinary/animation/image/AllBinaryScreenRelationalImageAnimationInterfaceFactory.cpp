@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYSCREENRELATIONALIMAGEANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYSCREENRELATIONALIMAGEANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryScreenRelationalImageAnimationInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,11 +84,8 @@
         #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
 #include "org/allbinary/animation/image/ImageAnimation.h"
 
-class AllBinaryScreenRelationalImageAnimationInterfaceFactory: public BaseImageAnimationFactory {
 
-    private: Image* lastImage = NullImage::NULL_IMAGE;
-
-public: AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory){
+AllBinaryScreenRelationalImageAnimationInterfaceFactory::AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory), lastImage(NullImage::NULL_IMAGE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -107,17 +114,16 @@ this->lastImage= ImageScaleUtil::getInstance()->createImage(GameFeatureImageCach
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto AllBinaryScreenRelationalImageAnimationInterfaceFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ImageAnimation(this->lastImage, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new ImageAnimation(this->lastImage, this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYSCREENRELATIONALIMAGEANIMATIONINTERFACEFACTORY_CPP

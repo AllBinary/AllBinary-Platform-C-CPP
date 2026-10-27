@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/destroy/event/DestroyEventCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,29 +68,24 @@
         #include "org/allbinary/game/combat/destroy/event/DestroyEventFactory.h"
 #include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
 
-class DestroyEventCircularStaticPool
-            : public Object
-         {
+auto DestroyEventCircularStaticPool::instance_owner() -> DestroyEventCircularStaticPool* { static std::unique_ptr<DestroyEventCircularStaticPool> value(new DestroyEventCircularStaticPool()); return value.get(); }
+DestroyEventCircularStaticPool* DestroyEventCircularStaticPool::instance = DestroyEventCircularStaticPool::instance_owner();
 
-    private: static DestroyEventCircularStaticPool* instance() { static std::unique_ptr<DestroyEventCircularStaticPool> value(new DestroyEventCircularStaticPool()); return value.get(); }
-
-    public: static DestroyEventCircularStaticPool* getInstance(){
+    auto DestroyEventCircularStaticPool::getInstance() -> DestroyEventCircularStaticPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DestroyEventCircularStaticPool::instance();
+                        return DestroyEventCircularStaticPool::instance;
     
 }
 
 
-    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
-
-private: DestroyEventCircularStaticPool(){
+DestroyEventCircularStaticPool::DestroyEventCircularStaticPool() : EVENT_POOL(new AllBinaryEventCircularPool(20)){
 }
 
 
-    public: void init(AllBinaryGameCanvas* combatGameCanvas){
+    auto DestroyEventCircularStaticPool::init(AllBinaryGameCanvas* combatGameCanvas) -> void{
 this->EVENT_POOL->initAllBinaryEventCircularPool(new DestroyEventFactory(combatGameCanvas));
     
 }
@@ -88,7 +93,7 @@ this->EVENT_POOL->initAllBinaryEventCircularPool(new DestroyEventFactory(combatG
 
                 //@Throws(Exception.constructor)
             
-    public: DestroyedEvent* getInstanceForLayer(AllBinaryLayer* layerInterface){
+    auto DestroyEventCircularStaticPool::getInstanceForLayer(AllBinaryLayer* layerInterface) -> DestroyedEvent*{
 
     DestroyedEvent* destroyedEvent = dynamic_cast<DestroyedEvent*>(this->EVENT_POOL->getNextInstance());;
     
@@ -103,7 +108,6 @@ destroyedEvent->setLayerInterfaceForCircularStaticPool(layerInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTCIRCULARSTATICPOOL_CPP

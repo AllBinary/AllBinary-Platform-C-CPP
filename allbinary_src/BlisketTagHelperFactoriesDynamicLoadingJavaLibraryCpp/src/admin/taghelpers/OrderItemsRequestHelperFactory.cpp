@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_ORDERITEMSREQUESTHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_ORDERITEMSREQUESTHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/OrderItemsRequestHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,21 +66,14 @@
         #include "admin/taghelpers/TagHelperFactoryInterface.h"
 #include "admin/taghelpers/HelperFactory.h"
 
-class OrderItemsRequestHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "admin.taghelpers.OrderItemsRequestHelper";
-
-    private: static inline const std::string FACTORYNAME = "OrderItemsRequestHelperFactory";
-
-public: OrderItemsRequestHelperFactory(){
+OrderItemsRequestHelperFactory::OrderItemsRequestHelperFactory(){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto OrderItemsRequestHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -80,7 +83,6 @@ public: OrderItemsRequestHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_ORDERITEMSREQUESTHELPERFACTORY_CPP

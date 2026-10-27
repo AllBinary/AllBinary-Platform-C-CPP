@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -119,57 +129,20 @@
         //#include "org/allbinary/graphics/canvas/transition/progress/ProgressPaintable.h"
 #include "org/allbinary/graphics/canvas/transition/progress/ProgressEndListener.h"
 
-class ProgressCanvas: public RunnableCanvas, public PaintableInterface, public UpdateMyFontInterface {
 
-    protected: bool hasPainted= false;
-
-    private: BasicColor* backgroundBasicColor;
-
-//inner= member=true isStatic=
-class ProgressPaintable: public Paintable {
-
-    ProgressCanvas* progressCanvas;
-
-: ProgressPaintable(ProgressCanvas* progressCanvas){
+ProgressCanvas::ProgressPaintable::ProgressPaintable(ProgressCanvas* progressCanvas){
 this->progressCanvas= progressCanvas;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto ProgressCanvas::ProgressPaintable::paint(Graphics* graphics) -> void{
 this->progressCanvas->paint2(graphics);
     
 }
 
 
-};
-
-            
-    public: Paintable* GAUGE_PAINTABLE = new ProgressPaintable(this);
-
-    private: const float maxValue = 100.0;
-
-    protected: ABCustomGaugeItem* gauge;
-
-    private: const std::string TEXT = this->commonStrings.LOADING;
-
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    protected: AllBinaryMidlet* allbinaryMidlet = AllBinaryMidlet::getNullInstance();
-
-    private: float value= 0.0;
-
-    private: std::string text = this->TEXT;
-
-    private: bool background = true;
-
-    protected: PaintableInterface* paintable = this->GAUGE_PAINTABLE;
-
-    public: bool inProgress = false;
-
-    private: Processor* IN_GAME_PROCESSOR = class extends Processor
+ProgressCanvas::ProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : RunnableCanvas(NullCommandListener::NULL_COMMAND_LISTENER, CanvasStrings::getInstance()->EMPTY_CHILD_NAME_LIST, false), GAUGE_PAINTABLE(new ProgressPaintable(this)), TEXT(this->commonStrings->LOADING), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), allbinaryMidlet(AllBinaryMidlet::getNullInstance()), text(this->TEXT), paintable(this->GAUGE_PAINTABLE), IN_GAME_PROCESSOR(class extends Processor
                                 {
                                 
     ThreadPool* pathFindingThreadPool = PathFindingThreadPool::getInstance();
@@ -181,13 +154,7 @@ this->pathFindingThreadPool->runAPriorityTask();
 }
 
                                 }
-                            ;
-
-    public: Processor* inGameProcessor = Processor::getInstance();
-
-    public: ProgressEndListener* progressEndListener = ProgressEndListener::instance;
-
-: ProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : RunnableCanvas(NullCommandListener::NULL_COMMAND_LISTENER, CanvasStrings::getInstance()->EMPTY_CHILD_NAME_LIST, false){
+                            ), inGameProcessor(Processor::getInstance()), progressEndListener(ProgressEndListener::instance){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -201,7 +168,7 @@ this->gauge= new ABCustomGaugeItem(StringUtil::getInstance()->EMPTY_STRING, stat
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto ProgressCanvas::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -212,7 +179,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void init(AllBinaryMidlet* gameMidlet){
+    auto ProgressCanvas::init(AllBinaryMidlet* gameMidlet) -> void{
 this->allbinaryMidlet= gameMidlet;
     
 }
@@ -220,15 +187,15 @@ this->allbinaryMidlet= gameMidlet;
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Graphics* graphics){
+    auto ProgressCanvas::update(Graphics* graphics) -> void{
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto ProgressCanvas::initCommands(CommandListener* cmdListener) -> void{
 }
 
 
-    protected: float getMaxValue(){
+    auto ProgressCanvas::getMaxValue() -> float{
 
 
 
@@ -238,14 +205,14 @@ this->allbinaryMidlet= gameMidlet;
 }
 
 
-    public: void start(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START_METHOD_NAME);
+    auto ProgressCanvas::start() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START_METHOD_NAME);
     
 this->setBackground(true);
     
 this->gauge->setHeight(30);
     
-this->gauge->setLabel(this->commonStrings.PLEASE_WAIT);
+this->gauge->setLabel(this->commonStrings->PLEASE_WAIT);
     
 this->setText(this->TEXT);
     
@@ -260,12 +227,8 @@ this->inProgress= true;
 }
 
 
-    private: const std::string backgroundLabel = "Background AI Game Loading...";
-
-    private: const std::string START_BACKGROUND = "startBackground";
-
-    public: void startBackground(bool background){
-this->logUtil.putF(this->commonStrings.START, this, this->START_BACKGROUND);
+    auto ProgressCanvas::startBackground(bool background) -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->START_BACKGROUND);
     
 this->setBackground(background);
     
@@ -284,7 +247,7 @@ this->paintable= this->GAUGE_PAINTABLE;
 }
 
 
-    public: void endActual(){
+    auto ProgressCanvas::endActual() -> void{
 this->allbinaryMidlet->commandAction(GameCommandsFactory::getInstance()->SHOW_GAME_CANVAS, NullCanvas::NULL_CANVAS);
     
 this->inProgress= false;
@@ -294,7 +257,7 @@ this->inGame();
 }
 
 
-    public: void inGame(){
+    auto ProgressCanvas::inGame() -> void{
 this->progressEndListener->onEndEvent();
     
 this->inGameProcessor= this->IN_GAME_PROCESSOR;
@@ -302,8 +265,8 @@ this->inGameProcessor= this->IN_GAME_PROCESSOR;
 }
 
 
-    public: void end(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.END_METHOD_NAME);
+    auto ProgressCanvas::end() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->END_METHOD_NAME);
     
 this->gauge->setValue(this->getMaxValue());
     
@@ -314,7 +277,7 @@ this->paintable= NullPaintable::getInstance();
 }
 
 
-    public: void endFromInitialLazyLoadingComplete(){
+    auto ProgressCanvas::endFromInitialLazyLoadingComplete() -> void{
 this->progressEndListener->onEndEvent();
     
 this->gauge->setValue(this->getMaxValue());
@@ -324,7 +287,7 @@ this->inGameProcessor= this->IN_GAME_PROCESSOR;
 }
 
 
-    public: bool isInGame(){
+    auto ProgressCanvas::isInGame() -> bool{
 
                         if(this->inGameProcessor == this->IN_GAME_PROCESSOR)
                         
@@ -347,15 +310,11 @@ this->inGameProcessor= this->IN_GAME_PROCESSOR;
 }
 
 
-    public: void endIfPaintedSinceStart(){
+    auto ProgressCanvas::endIfPaintedSinceStart() -> void{
 }
 
 
-    protected: const std::string ADD_PORTION = "addPortion";
-
-    protected: const std::string ADD_EARLY_PORTION = "addEarlyPortion";
-
-    public: void addEarlyPortion(int32_t value, std::string text, int32_t index){
+    auto ProgressCanvas::addEarlyPortion(int32_t value, std::string text, int32_t index) -> void{
 this->setText((new StringMaker())->append(text)->append(SmallIntegerSingletonFactory::getInstance()->getAt(index)->toString())->toString());
     
 this->gauge->setValue(this->gauge->getValue() +this->getMaxValue() /value);
@@ -363,7 +322,7 @@ this->gauge->setValue(this->gauge->getValue() +this->getMaxValue() /value);
 }
 
 
-    public: void addPortion(int32_t value, std::string text, int32_t index){
+    auto ProgressCanvas::addPortion(int32_t value, std::string text, int32_t index) -> void{
 this->setText((new StringMaker())->append(text)->append(SmallIntegerSingletonFactory::getInstance()->getAt(index)->toString())->toString());
     
 PreLogUtil::put(this->text, this, this->ADD_PORTION);
@@ -373,7 +332,7 @@ this->gauge->setValue(this->gauge->getValue() +this->getMaxValue() /value);
 }
 
 
-    public: void addNormalPortion(int32_t value, std::string text){
+    auto ProgressCanvas::addNormalPortion(int32_t value, std::string text) -> void{
 
                         if(this->text != text)
                         
@@ -390,7 +349,7 @@ this->gauge->setValue(this->gauge->getValue() +this->getMaxValue() /value);
 }
 
 
-    protected: void setValue(int32_t value){
+    auto ProgressCanvas::setValue(int32_t value) -> void{
 this->value= value;
     
 this->gauge->setValue(value);
@@ -398,18 +357,18 @@ this->gauge->setValue(value);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto ProgressCanvas::paint(Graphics* graphics) -> void{
 this->paintable->paint(graphics);
     
 }
 
 
-    public: void paint2(Graphics* graphics){
+    auto ProgressCanvas::paint2(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 graphics->setColor(this->backgroundBasicColor->intValue());
     
-graphics->fillRect(0, 0, this->displayInfo.getLastWidth(), this->displayInfo.getLastHeight());
+graphics->fillRect(0, 0, this->displayInfo->getLastWidth(), this->displayInfo->getLastHeight());
     
 this->gauge->paintXY(graphics, 0, 0);
     
@@ -418,11 +377,11 @@ this->hasPainted= true;
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto ProgressCanvas::paintThreed(Graphics* graphics) -> void{
 }
 
 
-    protected: float getValue(){
+    auto ProgressCanvas::getValue() -> float{
 
 
 
@@ -432,13 +391,13 @@ this->hasPainted= true;
 }
 
 
-    public: void setText(std::string text){
+    auto ProgressCanvas::setText(std::string text) -> void{
 this->text= text;
     
 }
 
 
-    public: std::string getText(){
+    auto ProgressCanvas::getText() -> std::string{
 
 
 
@@ -448,13 +407,13 @@ this->text= text;
 }
 
 
-    protected: void setBackground(bool background){
+    auto ProgressCanvas::setBackground(bool background) -> void{
 this->background= background;
     
 }
 
 
-    protected: bool isBackground(){
+    auto ProgressCanvas::isBackground() -> bool{
 
 
 
@@ -464,7 +423,6 @@ this->background= background;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_CPP

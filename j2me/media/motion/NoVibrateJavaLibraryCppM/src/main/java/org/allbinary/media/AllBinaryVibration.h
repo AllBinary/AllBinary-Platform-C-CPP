@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H
         #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
-
-      
+class GameConfigurationCentral;
 
 
 
@@ -49,11 +52,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/AllBinaryVibrationME.h"
-#include "org/allbinary/media/AllBinaryNoVibration.h"
+class AllBinaryNoVibration;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryVibration: public AllBinaryVibrationME {
 
-    private: static inline AllBinaryVibrationME* VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
+    private: static AllBinaryVibrationME* VIBRATION;
 
     public: static AllBinaryVibrationME* getInstance();
 
@@ -69,3 +76,19 @@ private: AllBinaryVibration();
 
 
         #endif //ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/GameConfigurationCentral.h>)
+#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
+#endif
+#if __has_include("org/allbinary/media/AllBinaryVibrationME.h")
+#include "org/allbinary/media/AllBinaryVibrationME.h"
+#endif
+#if __has_include("org/allbinary/media/AllBinaryNoVibration.h")
+#include "org/allbinary/media/AllBinaryNoVibration.h"
+#endif
+
+        #endif
+    

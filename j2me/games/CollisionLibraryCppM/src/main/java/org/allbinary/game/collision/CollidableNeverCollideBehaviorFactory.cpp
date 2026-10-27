@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollidableNeverCollideBehaviorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,23 @@
 #include "org/allbinary/game/collision/CollidableNeverCollideBehavior.h"
 #include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
-class CollidableNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactory {
 
-    private: static CollidableNeverCollideBehaviorFactory* instanceC() { static std::unique_ptr<CollidableNeverCollideBehaviorFactory> value(new CollidableNeverCollideBehaviorFactory()); return value.get(); }
+CollidableNeverCollideBehaviorFactory::CollidableNeverCollideBehaviorFactory() : instance(new CollidableNeverCollideBehavior(false)) {
+        }
+        auto CollidableNeverCollideBehaviorFactory::instanceC_owner() -> CollidableNeverCollideBehaviorFactory* { static std::unique_ptr<CollidableNeverCollideBehaviorFactory> value(new CollidableNeverCollideBehaviorFactory()); return value.get(); }
+CollidableNeverCollideBehaviorFactory* CollidableNeverCollideBehaviorFactory::instanceC = CollidableNeverCollideBehaviorFactory::instanceC_owner();
 
-    public: static CollidableNeverCollideBehaviorFactory* getInstance(){
+    auto CollidableNeverCollideBehaviorFactory::getInstance() -> CollidableNeverCollideBehaviorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableNeverCollideBehaviorFactory::instanceC();
+                        return CollidableNeverCollideBehaviorFactory::instanceC;
     
 }
 
 
-    private: CollidableNeverCollideBehavior* instance = new CollidableNeverCollideBehavior(false);
-
-    public: CollidableBaseBehavior* createBehavior(){
+    auto CollidableNeverCollideBehaviorFactory::createBehavior() -> CollidableBaseBehavior*{
 
 
 
@@ -72,7 +82,6 @@ class CollidableNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactor
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIORFACTORY_CPP

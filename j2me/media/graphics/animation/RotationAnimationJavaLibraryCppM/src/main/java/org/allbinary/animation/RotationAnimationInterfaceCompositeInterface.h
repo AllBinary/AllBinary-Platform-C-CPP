@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACECOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,8 +51,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/IndexedAnimationInterfaceCompositeInterface.h"
-#include "org/allbinary/animation/RotationAnimation.h"
+class RotationAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RotationAnimationInterfaceCompositeInterface: public IndexedAnimationInterfaceCompositeInterface {
 
     public: virtual RotationAnimation* getRotationAnimationInterface() = 0;
@@ -60,3 +69,16 @@ class RotationAnimationInterfaceCompositeInterface: public IndexedAnimationInter
 
 
         #endif //ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACECOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACECOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACECOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/animation/IndexedAnimationInterfaceCompositeInterface.h")
+#include "org/allbinary/animation/IndexedAnimationInterfaceCompositeInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_UPDATETAXVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_SHIPPING_UPDATETAXVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/shipping/UpdateTaxValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,9 +92,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/shipping/ShippingAddressView.h"
 
-class UpdateTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public: UpdateTaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+UpdateTaxValidationView::UpdateTaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,7 +105,7 @@ public: UpdateTaxValidationView(TransformInfoInterface* transformInfoInterface) 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto UpdateTaxValidationView::isValid() -> bool{
 this->streetAddress= new StreetAddress(this->getRequest());
     
 
@@ -180,7 +189,7 @@ this->streetAddress= new StreetAddress(this->getRequest());
 }
 
 
-    public: std::string validationInfo(){
+    auto UpdateTaxValidationView::validationInfo() -> std::string{
 
 
 
@@ -190,7 +199,7 @@ this->streetAddress= new StreetAddress(this->getRequest());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto UpdateTaxValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -200,7 +209,7 @@ this->streetAddress= new StreetAddress(this->getRequest());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto UpdateTaxValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -210,7 +219,6 @@ this->streetAddress= new StreetAddress(this->getRequest());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_UPDATETAXVALIDATIONVIEW_CPP

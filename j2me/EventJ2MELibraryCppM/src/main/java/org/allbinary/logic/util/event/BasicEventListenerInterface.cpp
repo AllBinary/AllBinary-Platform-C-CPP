@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_BASICEVENTLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_BASICEVENTLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/BasicEventListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,9 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 
-class BasicEventListenerInterface: public EventListenerInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_BASICEVENTLISTENERINTERFACE_CPP

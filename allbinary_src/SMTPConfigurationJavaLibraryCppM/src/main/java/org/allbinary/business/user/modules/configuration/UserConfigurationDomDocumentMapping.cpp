@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/configuration/UserConfigurationDomDocumentMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
         #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
 #include "org/allbinary/business/user/modules/configuration/UserConfigurationView.h"
 
-class UserConfigurationDomDocumentMapping
-            : public Object
-        , public DomDocumentMappingInterface {
 
-    private: UserConfigurationInterface* userConfigurationInterface;
-
-public: UserConfigurationDomDocumentMapping(UserConfigurationInterface* userConfigurationInterface){
+UserConfigurationDomDocumentMapping::UserConfigurationDomDocumentMapping(UserConfigurationInterface* userConfigurationInterface){
 this->userConfigurationInterface= userConfigurationInterface;
     
 }
@@ -78,7 +83,7 @@ this->userConfigurationInterface= userConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto UserConfigurationDomDocumentMapping::toXmlDoc() -> Document*{
 
     Document* document = DomDocumentHelper::create();;
     
@@ -98,7 +103,7 @@ document->appendChild(node);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string toDomDocumentString(){
+    auto UserConfigurationDomDocumentMapping::toDomDocumentString() -> std::string{
 
 
 
@@ -108,7 +113,6 @@ document->appendChild(node);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_CPP

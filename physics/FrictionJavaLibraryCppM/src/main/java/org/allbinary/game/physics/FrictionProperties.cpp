@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/FrictionProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,21 +64,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FrictionProperties
-            : public Object
-         {
 
-public: FrictionProperties(){
+FrictionProperties::FrictionProperties(){
 }
 
 
-    public: void friction(VelocityProperties* velocityProperties, int32_t nominator){
-DragVelocityBehavior::instance.reduce(velocityProperties, nominator, FrictionData::getFrictionDenominator());
+    auto FrictionProperties::friction(VelocityProperties* velocityProperties, int32_t nominator) -> void{
+DragVelocityBehavior::instance->reduce(velocityProperties, nominator, FrictionData::getFrictionDenominator());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_CPP

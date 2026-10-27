@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/MultipassWaypointPathRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,107 +93,60 @@
 //#include "org/allbinary/game/layer/EndRunnable.h"
 #include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
-class MultipassWaypointPathRunnable: public WaypointPathRunnableBase {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    private: MultipassState* multipassState = new MultipassState();
-
-    private: bool done = false;
-
-    private: BasicArrayList* list = this->basicArrayListUtil->getImmutableInstance();
-
-    private: Object* pathFindingInfo = NullUtil::getInstance()->NULL_OBJECT;
-
-//inner= member=true isStatic=
-class FirstRunnable: public ARunnable {
-
-    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
-
-: FirstRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
+MultipassWaypointPathRunnable::FirstRunnable::FirstRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
 this->multipassWaypointPathRunnable= multipassWaypointPathRunnable;
     
 }
 
 
-    public: void run(){
+    auto MultipassWaypointPathRunnable::FirstRunnable::run() -> void{
 this->multipassWaypointPathRunnable->processFirstRunnable();
     
 }
 
 
-};
-
-            
-    private: Runnable* FIRST_RUNNABLE = new FirstRunnable(this);
-//    private boolean first = true;
-//inner= member=true isStatic=
-class SecondRunnable: public ARunnable {
-
-    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
-
-: SecondRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
+MultipassWaypointPathRunnable::SecondRunnable::SecondRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
 this->multipassWaypointPathRunnable= multipassWaypointPathRunnable;
     
 }
 
 
-    public: void run(){
+    auto MultipassWaypointPathRunnable::SecondRunnable::run() -> void{
 this->multipassWaypointPathRunnable->processSecondRunnable();
     
 }
 
 
-};
-
-            
-    private: Runnable* SECOND_RUNNABLE = new SecondRunnable(this);
-
-//inner= member=true isStatic=
-class EndRunnable: public ARunnable {
-
-    private: MultipassWaypointPathRunnable* multipassWaypointPathRunnable;
-
-: EndRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
+MultipassWaypointPathRunnable::EndRunnable::EndRunnable(MultipassWaypointPathRunnable* multipassWaypointPathRunnable){
 this->multipassWaypointPathRunnable= multipassWaypointPathRunnable;
     
 }
 
 
-    public: void run(){
+    auto MultipassWaypointPathRunnable::EndRunnable::run() -> void{
 this->multipassWaypointPathRunnable->processEndRunnable();
     
 }
 
 
-};
-
-            
-    private: Runnable* END_RUNNABLE = new EndRunnable(this);
-
-    private: Runnable* ALREADY_ENDED_RUNNABLE = class extends ARunnable
+MultipassWaypointPathRunnable::MultipassWaypointPathRunnable() : logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), multipassState(new MultipassState()), list(this->basicArrayListUtil->getImmutableInstance()), pathFindingInfo(NullUtil::getInstance()->NULL_OBJECT), FIRST_RUNNABLE(new FirstRunnable(this)), SECOND_RUNNABLE(new SecondRunnable(this)), END_RUNNABLE(new EndRunnable(this)), ALREADY_ENDED_RUNNABLE(class extends ARunnable
                                 {
                                 
     public: void run(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
                                 }
-                            ;
-
-    private: Runnable* currentPassRunnable = this->FIRST_RUNNABLE;
-
-public: MultipassWaypointPathRunnable(){
+                            ), currentPassRunnable(this->FIRST_RUNNABLE){
 }
 
 
-    public: void setRunning(bool isRunning){
+    auto MultipassWaypointPathRunnable::setRunning(bool isRunning) -> void{
 this->runningP= isRunning;
     
 
@@ -200,7 +163,7 @@ this->done= false;
 }
 
 
-    public: void run(){
+    auto MultipassWaypointPathRunnable::run() -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -224,7 +187,7 @@ this->setRunning(false);
 }
 
 
-    private: void reset2(){
+    auto MultipassWaypointPathRunnable::reset2() -> void{
 this->multipassState->step= 0;
     
 this->multipassState->iteration= 0;
@@ -236,7 +199,7 @@ this->pathFindingInfo= NullUtil::getInstance()->NULL_OBJECT;
 }
 
 
-    private: void finish(){
+    auto MultipassWaypointPathRunnable::finish() -> void{
 this->reset2();
     
 this->currentPassRunnable= this->ALREADY_ENDED_RUNNABLE;
@@ -246,7 +209,7 @@ this->done= true;
 }
 
 
-    public: bool isDone(){
+    auto MultipassWaypointPathRunnable::isDone() -> bool{
 
 
 
@@ -256,7 +219,7 @@ this->done= true;
 }
 
 
-    public: void reset(){
+    auto MultipassWaypointPathRunnable::reset() -> void{
 this->reset2();
     
 this->currentPassRunnable= this->FIRST_RUNNABLE;
@@ -266,15 +229,15 @@ this->done= false;
 }
 
 
-    private: void processFirstRunnable(){
+    auto MultipassWaypointPathRunnable::processFirstRunnable() -> void{
 
         try {
-            this->pathFindingLayer.getWaypointRunnableLogHelper()->start(this->pathFindingLayer);
+            this->pathFindingLayer->getWaypointRunnableLogHelper()->start(this->pathFindingLayer);
     
 this->reset2();
     
 
-    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer->getCurrentGeographicMapCellPosition();;
     
 
                         if(geographicMapCellPosition == 
@@ -285,17 +248,17 @@ this->reset2();
                                     
 
 
-                            throw new Exception("Should never be running here");
+                            throw Exception("Should never be running here");
                     
 
                                     }
                                 
-this->pathFindingInfo= this->targetPathFindingLayer.getWaypointBehavior()->getWaypoint()->getPathFindingInfo(geographicMapCellPosition);
+this->pathFindingInfo= this->targetPathFindingLayer->getWaypointBehavior()->getWaypoint()->getPathFindingInfo(geographicMapCellPosition);
     
 
     PathFindingInfo* localPathFindingInfo = dynamic_cast<PathFindingInfo*>(this->pathFindingInfo);;
     
-this->list= this->targetPathFindingLayer.getWaypointBehavior()->getWaypoint()->getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
+this->list= this->targetPathFindingLayer->getWaypointBehavior()->getWaypoint()->getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
     
 
                         if(this->list != this->basicArrayListUtil->getImmutableInstance())
@@ -330,16 +293,16 @@ this->finish();
 }
 
 
-    private: void processSecondRunnable(){
+    auto MultipassWaypointPathRunnable::processSecondRunnable() -> void{
 
         try {
             
-    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer->getCurrentGeographicMapCellPosition();;
     
 
     PathFindingInfo* localPathFindingInfo = dynamic_cast<PathFindingInfo*>(this->pathFindingInfo);;
     
-this->list= this->targetPathFindingLayer.getWaypointBehavior()->getWaypoint()->getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
+this->list= this->targetPathFindingLayer->getWaypointBehavior()->getWaypoint()->getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
     
 
                         if(this->list != this->basicArrayListUtil->getImmutableInstance())
@@ -368,15 +331,15 @@ this->finish();
 }
 
 
-    private: void processEndRunnable(){
+    auto MultipassWaypointPathRunnable::processEndRunnable() -> void{
 
         try {
             
-    WaypointBehaviorBase* waypointBehavior = this->pathFindingLayer.getWaypointBehavior();;
+    WaypointBehaviorBase* waypointBehavior = this->pathFindingLayer->getWaypointBehavior();;
     
 waypointBehavior->setWaypointPathsList(this->list);
     
-this->pathFindingLayer.getWaypointRunnableLogHelper()->end(this->pathFindingLayer);
+this->pathFindingLayer->getWaypointRunnableLogHelper()->end(this->pathFindingLayer);
     
 
                 //: 
@@ -396,7 +359,6 @@ this->finish();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_CPP

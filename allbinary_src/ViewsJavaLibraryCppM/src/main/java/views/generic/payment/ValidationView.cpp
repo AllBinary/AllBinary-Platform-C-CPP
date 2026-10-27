@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_PAYMENT_VALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_PAYMENT_VALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/payment/ValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/payment/PaymentView.h"
 
-class ValidationView: public PaymentView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface* transformInfoInterface) : PaymentView(transformInfoInterface){
+ValidationView::ValidationView(TransformInfoInterface* transformInfoInterface) : PaymentView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +82,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : Payment
 }
 
 
-    public: bool isValid(){
+    auto ValidationView::isValid() -> bool{
 
 
 
@@ -83,7 +92,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : Payment
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto ValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -93,7 +102,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : Payment
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto ValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -103,7 +112,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : Payment
 }
 
 
-    public: std::string validationInfo(){
+    auto ValidationView::validationInfo() -> std::string{
 
 
 
@@ -113,7 +122,6 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : Payment
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_PAYMENT_VALIDATIONVIEW_CPP

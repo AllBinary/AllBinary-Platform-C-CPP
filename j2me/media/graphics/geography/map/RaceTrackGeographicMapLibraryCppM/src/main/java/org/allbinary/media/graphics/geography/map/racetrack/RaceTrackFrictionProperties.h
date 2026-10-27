@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKFRICTIONPROPERTIES_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKFRICTIONPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/physics/friction/FrictionData.h>
-
-      
+class FrictionData;
 
 
 
@@ -51,8 +54,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RaceTrackFrictionProperties
-            : public Object
+            : public virtual Object
          {
 
     private: int32_t ROAD_FRICTION_NOMINATOR;
@@ -71,3 +78,13 @@ public: RaceTrackFrictionProperties(int32_t roadFriction, int32_t groundFriction
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKFRICTIONPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKFRICTIONPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKFRICTIONPROPERTIES_H_COMPLETE
+        #if __has_include(<org/allbinary/game/physics/friction/FrictionData.h>)
+#include <org/allbinary/game/physics/friction/FrictionData.h>
+#endif
+
+        #endif
+    

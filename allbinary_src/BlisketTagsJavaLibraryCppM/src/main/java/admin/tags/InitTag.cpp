@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_INITTAG_CPP
+        #define ADMIN_TAGS_INITTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/InitTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class InitTag: public TableTag {
 
-public: InitTag(){
+InitTag::InitTag(){
 this->setTagHelperFactory(new InitHelperFactory());
     
 this->setTagRequestHelperFactory(new InitHelperFactory());
@@ -57,7 +66,6 @@ this->setTagRequestHelperFactory(new InitHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_INITTAG_CPP

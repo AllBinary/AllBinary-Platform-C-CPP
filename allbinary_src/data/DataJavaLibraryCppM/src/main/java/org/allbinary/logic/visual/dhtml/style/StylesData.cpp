@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/StylesData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StylesData
-            : public Object
-         {
+auto StylesData::instance_owner() -> StylesData* { static std::unique_ptr<StylesData> value(new StylesData()); return value.get(); }
+StylesData* StylesData::instance = StylesData::instance_owner();
 
-    private: static StylesData* instance() { static std::unique_ptr<StylesData> value(new StylesData()); return value.get(); }
-
-    public: static StylesData* getInstance(){
+    auto StylesData::getInstance() -> StylesData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StylesData::instance();
+                        return StylesData::instance;
     
 }
 
 
-private: StylesData(){
+StylesData::StylesData(){
 }
 
 
-    public: const std::string NAME = "STYLES_NAME";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_CPP

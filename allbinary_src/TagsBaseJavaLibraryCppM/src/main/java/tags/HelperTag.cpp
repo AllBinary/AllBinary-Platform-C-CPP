@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_HELPERTAG_CPP
+        #define TAGS_HELPERTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/HelperTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,20 +64,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/PropertiesTag.h"
 
-class HelperTag: public PropertiesTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+HelperTag::HelperTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : logUtil(LogUtil::getInstance()){
 
-    private: TagHelperFactoryInterface* tagHelperFactoryInterface;
-
-    private: Object* anyType;
-
-public: HelperTag(TagHelperFactoryInterface* tagHelperFactoryInterface){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -79,7 +82,7 @@ this->tagHelperFactoryInterface= tagHelperFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    protected: void setHelper(){
+    auto HelperTag::setHelper() -> void{
 
                         if(this->anyType == 
                                     nullptr
@@ -87,10 +90,10 @@ this->tagHelperFactoryInterface= tagHelperFactoryInterface;
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Creating TagHelper with: \n" +this->getPropertiesHashMap()->toString(), this, "doStartTag");
+                                    this->logUtil->putF(JavaString::valueOf("Creating TagHelper with: \n") +JavaString::valueOf(this->getPropertiesHashMap()->toString()), this, "doStartTag");
     
 
                                     }
@@ -103,7 +106,7 @@ this->anyType= this->tagHelperFactoryInterface->getInstance(this->getPropertiesH
 }
 
 
-    public: Object* getHelper(){
+    auto HelperTag::getHelper() -> Object*{
 
 
 
@@ -113,9 +116,9 @@ this->anyType= this->tagHelperFactoryInterface->getInstance(this->getPropertiesH
 }
 
 
-    public: int32_t doEndTag(){
+    auto HelperTag::doEndTag() -> int32_t{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Tag Ended", this, "doEndTag");
@@ -131,12 +134,11 @@ this->anyType=
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doEndTag();;
+                        return PropertiesTag::doEndTag();;
     
 }
 
 
-};
 
-            
 
+        #endif //TAGS_HELPERTAG_CPP

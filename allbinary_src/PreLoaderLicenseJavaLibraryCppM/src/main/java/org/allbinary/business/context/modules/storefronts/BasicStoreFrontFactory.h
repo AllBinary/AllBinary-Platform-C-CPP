@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -55,18 +56,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontsEntity.h"
-#include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
+        class BasicStoreFrontsEntity;
+class BasicStoreFrontInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicStoreFrontFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicStoreFrontFactory* instance() { static std::unique_ptr<BasicStoreFrontFactory> value(new BasicStoreFrontFactory()); return value.get(); }
+    private: static BasicStoreFrontFactory* instance_owner();
+    private: static BasicStoreFrontFactory* instance;
 
     public: static BasicStoreFrontFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: BasicStoreFrontFactory();
 
@@ -80,3 +86,22 @@ private: BasicStoreFrontFactory();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/business/context/modules/storefronts/BasicStoreFrontsEntity.h")
+#include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontsEntity.h"
+#endif
+#if __has_include("org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h")
+#include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
+#endif
+
+        #endif
+    

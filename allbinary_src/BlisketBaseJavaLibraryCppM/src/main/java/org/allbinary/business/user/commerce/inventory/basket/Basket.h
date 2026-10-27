@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,32 +41,14 @@
             #include "java/lang/Float.h"
         
 #include <java/io/Serializable.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/Money.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/MoneyException.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class ItemInterface;
+class Money;
+class MoneyException;
+class InventoryEntity;
+class InventoryEntityFactory;
+class StdUtil;
 
 
 
@@ -82,11 +69,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Basket
-            : public Object
+            : public virtual Object
         , public BasketInterface, public Serializable {
 
-    private: HashMap<Object*, Object*>* items = StdUtil::getInstance()->createHashMap();
+    private: HashMap<Object*, Object*>* items;
 
 public: Basket();
 
@@ -116,3 +107,40 @@ public: Basket();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_H_COMPLETE
+        #if __has_include(<java/io/Serializable.h>)
+#include <java/io/Serializable.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/Money.h>)
+#include <org/allbinary/business/user/commerce/money/Money.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/MoneyException.h>)
+#include <org/allbinary/business/user/commerce/money/MoneyException.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>)
+#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h>)
+#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h")
+#include "org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h"
+#endif
+
+        #endif
+    

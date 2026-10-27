@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_H
         #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class NullUtil;
+class JsMethod;
+class JsConstructor;
+class JsProperty;
 
 
 
@@ -63,11 +58,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryEventObject
-            : public Object
+            : public virtual Object
          {
 
-    public: static AllBinaryEventObject* NULL_EVENT() { static std::unique_ptr<AllBinaryEventObject> value(new AllBinaryEventObject(NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
+    private: static AllBinaryEventObject* NULL_EVENT_owner();
+    public: static AllBinaryEventObject* NULL_EVENT;
 
     private: Object* source;
 
@@ -75,7 +75,8 @@ public: AllBinaryEventObject(Object* anyType);
 
     public: Object* getSource();
 
-    protected: void setSource(Object* source);
+    /*protected*/ public: void setSource(Object* source);
+    /*protected*/ public: void setSource(const std::string& source) { return setSource(JavaString::box(source)); }
 
 };
 
@@ -83,3 +84,25 @@ public: AllBinaryEventObject(Object* anyType);
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTOBJECT_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+
+        #endif
+    

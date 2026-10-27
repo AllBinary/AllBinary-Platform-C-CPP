@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTOREINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTOREINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStoreInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,13 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
 
-class TransformInfoHttpStoreInterface: public TransformInfoHttpInterface {
+//Interface - declared in the header
 
-    public: virtual void setStoreName(std::string value) = 0;
 
-    public: virtual std::string getStoreName() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTOREINTERFACE_CPP

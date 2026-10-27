@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/TopViewCharacterBehavior.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,21 +77,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TopViewCharacterBehavior
-            : public Object
-         {
 
+TopViewCharacterBehavior::TopViewCharacterBehavior() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, GeographicMapCellPosition* geographicMapCellPosition){
+    auto TopViewCharacterBehavior::terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, GeographicMapCellPosition* geographicMapCellPosition) -> void{
 }
 
 
-    public: void terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y){
+    auto TopViewCharacterBehavior::terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y) -> void{
 }
 
 
-    public: bool hasSolidBlock(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray){
+    auto TopViewCharacterBehavior::hasSolidBlock(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray) -> bool{
 
     int32_t size = geographicMapInterfaceArray.size();;
     
@@ -95,10 +105,10 @@ class TopViewCharacterBehavior
                         for (
     int32_t index = 0;index < size; index++)
         {
-basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMapCellTypeFactory*>(geographicMapInterfaceArray[index].getGeographicMapCellTypeFactory());
+basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMapCellTypeFactory*>(geographicMapInterfaceArray[index]->getGeographicMapCellTypeFactory());
     
 
-                        if(basicTopViewGeographicMapCellTypeFactory->BLOCK_CELL_TYPE.isType(geographicMapCellTypeArray[index]))
+                        if(basicTopViewGeographicMapCellTypeFactory->BLOCK_CELL_TYPE->isType(geographicMapCellTypeArray[index]))
                         
                                     {
                                     
@@ -121,7 +131,6 @@ basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMap
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERBEHAVIOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_PLAYERSSINGLETONFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_PLAYERSSINGLETONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/PlayersSingletonFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PlayersSingletonFactory
-            : public Object
-         {
 
-    public: static inline int32_t total= 0;
+PlayersSingletonFactory::PlayersSingletonFactory() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_PLAYERSSINGLETONFACTORY_CPP

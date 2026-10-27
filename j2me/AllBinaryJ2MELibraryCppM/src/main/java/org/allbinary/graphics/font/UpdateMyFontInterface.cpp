@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FONT_UPDATEMYFONTINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FONT_UPDATEMYFONTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/font/UpdateMyFontInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpdateMyFontInterface {
+//Interface - declared in the header
 
-    public: virtual void updateMeasurement(Graphics* graphics) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_FONT_UPDATEMYFONTINTERFACE_CPP

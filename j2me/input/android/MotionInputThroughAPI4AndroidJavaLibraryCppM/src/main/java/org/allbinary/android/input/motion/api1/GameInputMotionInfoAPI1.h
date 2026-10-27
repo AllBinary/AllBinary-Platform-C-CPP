@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONINFOAPI1_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONINFOAPI1_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/android/input/motion/GameInputMotionInfo.h>
-
-      
 
 
 
@@ -49,9 +52,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputMotionInfoAPI1: public GameInputMotionInfo {
 
-    private: static GameInputMotionInfoAPI1* instance() { static std::unique_ptr<GameInputMotionInfoAPI1> value(new GameInputMotionInfoAPI1()); return value.get(); }
+    private: static GameInputMotionInfoAPI1* instance_owner();
+    private: static GameInputMotionInfoAPI1* instance;
 
     public: static GameInputMotionInfoAPI1* getInstance();
 
@@ -63,3 +71,13 @@ private: GameInputMotionInfoAPI1();
 
 
         #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONINFOAPI1_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONINFOAPI1_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONINFOAPI1_H_COMPLETE
+        #if __has_include(<org/allbinary/android/input/motion/GameInputMotionInfo.h>)
+#include <org/allbinary/android/input/motion/GameInputMotionInfo.h>
+#endif
+
+        #endif
+    

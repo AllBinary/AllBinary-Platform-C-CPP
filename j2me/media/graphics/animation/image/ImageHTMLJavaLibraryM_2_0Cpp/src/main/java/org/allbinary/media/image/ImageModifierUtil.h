@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,48 +40,20 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/microemu/device/playn/PlaynImage.h>
-
-      
-#include <org/microemu/device/ResourceCallbackStrings.h>
-
-      
-#include <playn/core/Callback.h>
-
-      
-#include <playn/core/Canvas.h>
-
-      
-#include <playn/core/CoreImage.h>
-
-      
-#include <playn/core/ImageImpl.h>
-
-      
-#include <playn/html/HTMLPlaynUtil.h>
-
-      
+class Graphics;
+class Image;
+class Anchor;
+class BasicColor;
+class CommonStrings;
+class LogUtil;
+class StringMaker;
+class PlaynImage;
+class ResourceCallbackStrings;
+class Callback;
+class Canvas;
+class CoreImage;
+class ImageImpl;
+class HTMLPlaynUtil;
 
 
 
@@ -96,19 +73,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageModifierUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static ImageModifierUtil* getInstanceOrCreate();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+            
+    public: ImageModifierUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: ResourceCallbackStrings* resourceCallbackStrings = ResourceCallbackStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: HTMLPlaynUtil* playnUtil = HTMLPlaynUtil::getInstance();
+    private: ResourceCallbackStrings* resourceCallbackStrings;
+
+    private: HTMLPlaynUtil* playnUtil;
 
     private: std::vector<bool> alphaArray;
 
@@ -138,3 +123,52 @@ class ImageModifierUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/microemu/device/playn/PlaynImage.h>)
+#include <org/microemu/device/playn/PlaynImage.h>
+#endif
+#if __has_include(<org/microemu/device/ResourceCallbackStrings.h>)
+#include <org/microemu/device/ResourceCallbackStrings.h>
+#endif
+#if __has_include(<playn/core/Callback.h>)
+#include <playn/core/Callback.h>
+#endif
+#if __has_include(<playn/core/Canvas.h>)
+#include <playn/core/Canvas.h>
+#endif
+#if __has_include(<playn/core/CoreImage.h>)
+#include <playn/core/CoreImage.h>
+#endif
+#if __has_include(<playn/core/ImageImpl.h>)
+#include <playn/core/ImageImpl.h>
+#endif
+#if __has_include(<playn/html/HTMLPlaynUtil.h>)
+#include <playn/html/HTMLPlaynUtil.h>
+#endif
+
+        #endif
+    

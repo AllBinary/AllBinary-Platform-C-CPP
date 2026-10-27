@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_KEYUTIL_CPP
+        #define ORG_ALLBINARY_INPUT_KEYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/KeyUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeyUtil
-            : public Object
-         {
 
-    public: static bool isNormallyDisplayed(int32_t keyCode){
+KeyUtil::KeyUtil(){
+}
+
+
+    auto KeyUtil::isNormallyDisplayed(int32_t keyCode) -> bool{
 
 
 
@@ -78,11 +89,6 @@ default: {
 }
 
 
-public: KeyUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_KEYUTIL_CPP

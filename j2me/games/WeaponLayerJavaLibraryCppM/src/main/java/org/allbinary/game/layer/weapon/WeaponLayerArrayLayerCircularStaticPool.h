@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,9 +38,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class CircularIndexUtil;
 
 
 
@@ -54,21 +57,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+        class WeaponLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WeaponLayerArrayLayerCircularStaticPool
-            : public Object
+            : public virtual Object
          {
 
-    private: static WeaponLayerArrayLayerCircularStaticPool* instance() { static std::unique_ptr<WeaponLayerArrayLayerCircularStaticPool> value(new WeaponLayerArrayLayerCircularStaticPool()); return value.get(); }
+    private: static WeaponLayerArrayLayerCircularStaticPool* instance_owner();
+    private: static WeaponLayerArrayLayerCircularStaticPool* instance;
 
     public: static WeaponLayerArrayLayerCircularStaticPool* getInstance();
 
+
+            
+    public: WeaponLayerArrayLayerCircularStaticPool();
+        
     private: const int32_t MAX = 5;
 
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(this->MAX);
+    private: CircularIndexUtil* circularIndexUtil;
 
-    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = std::vector<std::vector<std::vector<Object*>>>(4);
+    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY;
 
     public: void init();
 
@@ -83,3 +95,16 @@ class WeaponLayerArrayLayerCircularStaticPool
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/game/layer/weapon/WeaponLayer.h")
+#include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+#endif
+
+        #endif
+    

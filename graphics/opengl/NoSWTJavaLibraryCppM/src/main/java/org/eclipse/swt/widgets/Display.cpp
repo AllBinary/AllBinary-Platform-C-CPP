@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ECLIPSE_SWT_WIDGETS_DISPLAY_CPP
+        #define ORG_ECLIPSE_SWT_WIDGETS_DISPLAY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/eclipse/swt/widgets/Display.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Display
-            : public Object
-         {
 
-    public: void sleep(){
+Display::Display() {
+        }
+        
+    auto Display::sleep() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ECLIPSE_SWT_WIDGETS_DISPLAY_CPP

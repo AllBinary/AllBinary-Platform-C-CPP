@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENCRYPTEDMAPPING_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENCRYPTEDMAPPING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,17 +37,9 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <org/allbinary/data/tables/TableMappingInterface.h>
-
-      
 
 
 
@@ -61,10 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
+        class PaymentGatewayInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentGatewayEncryptedMapping
-            : public Object
+            : public virtual Object
         , public TableMappingInterface {
 
     private: PaymentGatewayInterface* paymentGatewayInterface;
@@ -87,3 +88,23 @@ public: PaymentGatewayEncryptedMapping(PaymentGatewayInterface* paymentGatewayIn
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENCRYPTEDMAPPING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENCRYPTEDMAPPING_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENCRYPTEDMAPPING_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/data/tables/TableMappingInterface.h>)
+#include <org/allbinary/data/tables/TableMappingInterface.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h")
+#include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
+#endif
+
+        #endif
+    

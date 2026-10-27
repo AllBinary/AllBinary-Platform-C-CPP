@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_WORKFLOW_PROCESSING_BASIC_BASICWORKFLOWTAG_CPP
+        #define TAGS_WORKFLOW_PROCESSING_BASIC_BASICWORKFLOWTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/workflow/processing/basic/BasicWorkFlowTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,16 +70,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //and remove the hidden fields
-class BasicWorkFlowTag: public StoreWorkFlowTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+BasicWorkFlowTag::BasicWorkFlowTag() : logUtil(LogUtil::getInstance()){
 
-public: BasicWorkFlowTag(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -79,14 +86,14 @@ public: BasicWorkFlowTag(){
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto BasicWorkFlowTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(this->commonStrings->START, this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -97,7 +104,7 @@ this->getPropertiesHashMap()->put(DynamicObjectData::NAME, "workflows.template.d
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreWorkFlowTag::doStartTag();;
     
 
                 //: 
@@ -116,7 +123,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_WORKFLOW_PROCESSING_BASIC_BASICWORKFLOWTAG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/directory/Directory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,27 +83,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Directory
-            : public Object
-         {
+auto Directory::instance_owner() -> Directory* { static std::unique_ptr<Directory> value(new Directory()); return value.get(); }
+Directory* Directory::instance = Directory::instance_owner();
 
-    private: static Directory* instance() { static std::unique_ptr<Directory> value(new Directory()); return value.get(); }
-
-    public: static Directory* getInstance(){
+    auto Directory::getInstance() -> Directory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Directory::instance();
+                        return Directory::instance;
     
 }
 
 
-private: Directory(){
+Directory::Directory(){
 }
 
 
-    public: bool create(AbPath* directoryAbPath){
+    auto Directory::create(AbPath* directoryAbPath) -> bool{
 
 
 
@@ -105,13 +112,13 @@ private: Directory(){
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(AbPath* existingDirectoryAbPath){
+    auto Directory::remove(AbPath* existingDirectoryAbPath) -> void{
 this->remove(existingDirectoryAbPath->toFileSystemString());
     
 }
 
 
-    private: bool create(std::string directory){
+    auto Directory::create(std::string directory) -> bool{
 
         try {
             
@@ -121,7 +128,7 @@ this->remove(existingDirectoryAbPath->toFileSystemString());
                         if(!directoryFile->isDirectory())
                         
                                     {
-                                    PreLogUtil::put("Creating Directories: " +directory, this, "create");
+                                    PreLogUtil::put(JavaString::valueOf("Creating Directories: ") +JavaString::valueOf(directory), this, "create");
     
 
                         if(!directoryFile->mkdirs())
@@ -149,7 +156,7 @@ this->remove(existingDirectoryAbPath->toFileSystemString());
                 //: 
 } catch(Exception& e) 
             {
-PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e);
+PreLogUtil::putOE(JavaString::valueOf("Error Creating Directories: ") +JavaString::valueOf(directory), this, "create", &e);
     
 
 
@@ -164,7 +171,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e)
 
                 //@Throws(Exception.constructor)
             
-    private: void remove(std::string existingDirectory){
+    auto Directory::remove(std::string existingDirectory) -> void{
 
     AbFile* existingDirectoryFile = FileFactory::getInstance()->getInstance(existingDirectory);;
     
@@ -179,7 +186,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e)
                                     
 
 
-                            throw new Exception("Did not remove category: " +existingDirectory +" because files exist");
+                            throw Exception(JavaString::valueOf(JavaString::valueOf("Did not remove category: ") +JavaString::valueOf(existingDirectory)) +JavaString::valueOf(" because files exist"));
                     
 
                                     }
@@ -188,7 +195,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e)
                         if(existingDirectoryFile->delete_())
                         
                                     {
-                                    PreLogUtil::put("Successfully Removed: " +existingDirectory, "Directory", "remove");
+                                    PreLogUtil::put(JavaString::valueOf("Successfully Removed: ") +JavaString::valueOf(existingDirectory), "Directory", "remove");
     
 
                                     }
@@ -200,7 +207,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e)
                             
 
 
-                            throw new Exception("Category Directory Is Missing:" +existingDirectory);
+                            throw Exception(JavaString::valueOf("Category Directory Is Missing:") +JavaString::valueOf(existingDirectory));
                     
 
                         }
@@ -208,7 +215,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e)
 }
 
 
-    public: BasicArrayList* search(FileFilter* fileFilter, AbFile* file){
+    auto Directory::search(FileFilter* fileFilter, AbFile* file) -> BasicArrayList*{
 
 
 
@@ -218,7 +225,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e)
 }
 
 
-    public: BasicArrayList* search(FileFilter* fileFilter, AbFile* file, bool isRecursiveSearch){
+    auto Directory::search(FileFilter* fileFilter, AbFile* file, bool isRecursiveSearch) -> BasicArrayList*{
 
     BasicArrayList* fileList = new BasicArrayListD();;
     
@@ -233,9 +240,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e)
     std::vector<Object*> fileArray = file->listFilesFileFilter(fileFilter);;
     
 
-                        if(fileArray == 
-                                    nullptr
-                                )
+                        if(fileArray.empty())
                         
                                     {
                                     
@@ -251,9 +256,7 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", &e)
     std::vector<AbFile*> files = FileWrapperUtil::wrapFiles(fileArray);;
     
 
-                        if(files == 
-                                    nullptr
-                                )
+                        if(files.empty())
                         
                                     {
                                     
@@ -302,7 +305,7 @@ fileList->addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList* search(AbFile* file){
+    auto Directory::search(AbFile* file) -> BasicArrayList*{
 
 
 
@@ -312,7 +315,7 @@ fileList->addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList* search(AbFile* file, bool isRecursiveSearch){
+    auto Directory::search(AbFile* file, bool isRecursiveSearch) -> BasicArrayList*{
 
     BasicArrayList* fileList = new BasicArrayListD();;
     
@@ -327,9 +330,7 @@ fileList->addAllList(recursiveFileList);
     std::vector<Object*> fileArray = file->listFiles();;
     
 
-                        if(fileArray == 
-                                    nullptr
-                                )
+                        if(fileArray.empty())
                         
                                     {
                                     
@@ -345,9 +346,7 @@ fileList->addAllList(recursiveFileList);
     std::vector<AbFile*> files = FileWrapperUtil::wrapFiles(fileArray);;
     
 
-                        if(files == 
-                                    nullptr
-                                )
+                        if(files.empty())
                         
                                     {
                                     
@@ -393,7 +392,7 @@ fileList->addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList* search(std::string searchValue, AbFile* file){
+    auto Directory::search(std::string searchValue, AbFile* file) -> BasicArrayList*{
 
 
 
@@ -403,7 +402,7 @@ fileList->addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList* search(std::string searchValue, AbFile* file, bool isRecursiveSearch){
+    auto Directory::search(std::string searchValue, AbFile* file, bool isRecursiveSearch) -> BasicArrayList*{
 
     BasicArrayList* fileList = new BasicArrayListD();;
     
@@ -418,9 +417,7 @@ fileList->addAllList(recursiveFileList);
     std::vector<Object*> fileArray = file->listFiles();;
     
 
-                        if(fileArray == 
-                                    nullptr
-                                )
+                        if(fileArray.empty())
                         
                                     {
                                     
@@ -436,9 +433,7 @@ fileList->addAllList(recursiveFileList);
     std::vector<AbFile*> files = FileWrapperUtil::wrapFiles(fileArray);;
     
 
-                        if(files == 
-                                    nullptr
-                                )
+                        if(files.empty())
                         
                                     {
                                     
@@ -458,7 +453,7 @@ fileList->addAllList(recursiveFileList);
     int32_t index = 0;index < files.size(); index++)
         {
 
-                        if(files[index].getPath()->indexOf(searchValue) >= 0)
+                        if(files[index]->getPath()->indexOf(searchValue) >= 0)
                         
                                     {
                                     fileList->add(files[index]);
@@ -491,7 +486,7 @@ fileList->addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList* search(int32_t level, AbFile* file){
+    auto Directory::search(int32_t level, AbFile* file) -> BasicArrayList*{
 
 
 
@@ -501,7 +496,7 @@ fileList->addAllList(recursiveFileList);
 }
 
 
-    public: BasicArrayList* search(int32_t level, AbFile* file, bool isRecursiveSearch){
+    auto Directory::search(int32_t level, AbFile* file, bool isRecursiveSearch) -> BasicArrayList*{
 
     BasicArrayList* fileList = new BasicArrayListD();;
     
@@ -516,9 +511,7 @@ fileList->addAllList(recursiveFileList);
     std::vector<Object*> fileArray = file->listFiles();;
     
 
-                        if(fileArray == 
-                                    nullptr
-                                )
+                        if(fileArray.empty())
                         
                                     {
                                     
@@ -534,9 +527,7 @@ fileList->addAllList(recursiveFileList);
     std::vector<AbFile*> files = FileWrapperUtil::wrapFiles(fileArray);;
     
 
-                        if(files == 
-                                    nullptr
-                                )
+                        if(files.empty())
                         
                                     {
                                     
@@ -588,7 +579,6 @@ fileList->addAllList(recursiveFileList);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_BUFFEREDLINEREADER_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_BUFFEREDLINEREADER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/BufferedLineReader.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,25 +69,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BufferedLineReader
-            : public Object
-         {
 
-    private: BufferedReader* tmpIn;
-
-public: BufferedLineReader(AbFile* file){
+BufferedLineReader::BufferedLineReader(AbFile* file){
 this->tmpIn= new BufferedReader(new FileReader(AbFileNativeUtil::get(file)));
     
 }
 
 
-    public: void readUpToLines(int64_t readAheadIndex){
+    auto BufferedLineReader::readUpToLines(int64_t readAheadIndex) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string readLine(){
+    auto BufferedLineReader::readLine() -> std::string{
 
 
 
@@ -87,7 +92,7 @@ this->tmpIn= new BufferedReader(new FileReader(AbFileNativeUtil::get(file)));
 }
 
 
-    public: int64_t getSize(){
+    auto BufferedLineReader::getSize() -> int64_t{
 
 
 
@@ -97,7 +102,7 @@ this->tmpIn= new BufferedReader(new FileReader(AbFileNativeUtil::get(file)));
 }
 
 
-    public: int32_t getCurrent(){
+    auto BufferedLineReader::getCurrent() -> int32_t{
 
 
 
@@ -107,7 +112,6 @@ this->tmpIn= new BufferedReader(new FileReader(AbFileNativeUtil::get(file)));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_BUFFEREDLINEREADER_CPP

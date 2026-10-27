@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AI_BASICAI_CPP
+        #define ORG_ALLBINARY_GAME_AI_BASICAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ai/BasicAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,25 +93,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicAI: public ArtificialIntelligence, public GameKeyEventSourceInterface {
+int32_t BasicAI::AI_VISITOR = SmallIntegerSingletonFactory::getInstance()->getAt(2);
+int32_t BasicAI::ID = SmallIntegerSingletonFactory::getInstance()->getAt(1);
 
-    public: static inline int32_t AI_VISITOR = SmallIntegerSingletonFactory::getInstance()->getAt(2);
-
-    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(1);
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
-
-    private: AllBinaryLayer* ownerLayerInterface;
-
-    private: GameInput* gameInput;
-
-    private: int32_t lastKey =  -1;
-
-public: BasicAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+BasicAI::BasicAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), gameKeyEventFactory(GameKeyEventFactory::getInstance()){
 this->ownerLayerInterface= ownerLayerInterface;
     
 this->gameInput= gameInput;
@@ -111,18 +106,18 @@ this->gameInput= gameInput;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto BasicAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processKeyAI(int32_t key){
+    auto BasicAI::processKeyAI(int32_t key) -> void{
 
                         if(key !=  -1)
                         
@@ -135,13 +130,13 @@ this->gameInput= gameInput;
 }
 
 
-    public: void setLastKey(int32_t lastKey){
+    auto BasicAI::setLastKey(int32_t lastKey) -> void{
 this->lastKey= lastKey;
     
 }
 
 
-    public: int32_t getLastKey(){
+    auto BasicAI::getLastKey() -> int32_t{
 
 
 
@@ -151,7 +146,7 @@ this->lastKey= lastKey;
 }
 
 
-    public: AllBinaryLayer* getOwnerLayerInterface(){
+    auto BasicAI::getOwnerLayerInterface() -> AllBinaryLayer*{
 
 
 
@@ -161,7 +156,7 @@ this->lastKey= lastKey;
 }
 
 
-    public: GameInput* getGameInput(){
+    auto BasicAI::getGameInput() -> GameInput*{
 
 
 
@@ -171,7 +166,7 @@ this->lastKey= lastKey;
 }
 
 
-    public: std::string getName(){
+    auto BasicAI::getName() -> std::string{
 
 
 
@@ -181,7 +176,7 @@ this->lastKey= lastKey;
 }
 
 
-    public: std::string toString(){
+    auto BasicAI::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -202,7 +197,7 @@ stringBuffer->append(CanvasUtil::getKeyName(this->getLastKey()));
 }
 
 
-    public: int32_t getSourceId(){
+    auto BasicAI::getSourceId() -> int32_t{
 
 
 
@@ -212,7 +207,6 @@ stringBuffer->append(CanvasUtil::getKeyName(this->getLastKey()));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AI_BASICAI_CPP

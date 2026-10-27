@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -54,14 +57,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DestroyableBaseBehavior
-            : public Object
+            : public virtual Object
         , public DestroyableInterface {
 
-    private: static DestroyableBaseBehavior* instance() { static std::unique_ptr<DestroyableBaseBehavior> value(new DestroyableBaseBehavior()); return value.get(); }
+    private: static DestroyableBaseBehavior* instance_owner();
+    private: static DestroyableBaseBehavior* instance;
 
     public: static DestroyableBaseBehavior* getInstance();
 
+
+            
+    public: DestroyableBaseBehavior();
+        
     public: std::string getName();
 
                 //@Throws(Exception.constructor)
@@ -76,3 +88,16 @@ class DestroyableBaseBehavior
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEBASEBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/combat/destroy/DestroyableInterface.h")
+#include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/business/advertisement/AdvertisementsInterface.h>
-
-      
-#include <org/allbinary/business/advertisement/search/AdvertisementSearchInterface.h>
-
-      
+class AdvertisementsInterface;
+class AdvertisementSearchInterface;
 
 
 
@@ -54,7 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementCampaignInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class AdvertisementCampaignInterface
+            : public virtual Object
+         {
 
     public: virtual std::string getName() = 0;
 
@@ -72,3 +79,16 @@ class AdvertisementCampaignInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/advertisement/AdvertisementsInterface.h>)
+#include <org/allbinary/business/advertisement/AdvertisementsInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/search/AdvertisementSearchInterface.h>)
+#include <org/allbinary/business/advertisement/search/AdvertisementSearchInterface.h>
+#endif
+
+        #endif
+    

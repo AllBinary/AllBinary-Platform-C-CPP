@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/Animation.h>
-
-      
+class Animation;
 #include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
-
-      
 #include <org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class AllBinaryLayer;
+class ScaleProperties;
 
 
 
@@ -64,11 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/health/HealthBarThreedAnimation.h"
-#include "org/allbinary/game/health/HealthBarAnimation.h"
+        class HealthBarThreedAnimation;
+class HealthBarAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HealthBarAnimationInterfaceFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
 public: HealthBarAnimationInterfaceFactory();
@@ -93,3 +92,31 @@ public: HealthBarAnimationInterfaceFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/game/health/HealthBarThreedAnimation.h")
+#include "org/allbinary/game/health/HealthBarThreedAnimation.h"
+#endif
+#if __has_include("org/allbinary/game/health/HealthBarAnimation.h")
+#include "org/allbinary/game/health/HealthBarAnimation.h"
+#endif
+
+        #endif
+    

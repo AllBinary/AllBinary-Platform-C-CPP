@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SPINNERAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SPINNERAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/SpinnerAI.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,13 +72,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SpinnerAI: public BasicAI {
 
-    private: bool isEven= false;
-
-    private: std::vector<int32_t> direction;
-
-public: SpinnerAI(std::vector<int32_t> direction, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+SpinnerAI::SpinnerAI(std::vector<int32_t> direction, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,12 +87,12 @@ this->direction= direction;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto SpinnerAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->isEven)
                         
                                     {
-                                    super.processKeyAI(this->direction[0]);
+                                    BasicAI::processKeyAI(this->direction[0]);
     
 this->isEven= false;
     
@@ -95,7 +100,7 @@ this->isEven= false;
                                     }
                                 
                         else {
-                            super.processKeyAI(Canvas::KEY_NUM1);
+                            BasicAI::processKeyAI(Canvas::KEY_NUM1);
     
 this->isEven= true;
     
@@ -105,7 +110,6 @@ this->isEven= true;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SPINNERAI_CPP

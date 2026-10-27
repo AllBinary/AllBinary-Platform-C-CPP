@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_NULLINTERMISSIONENABLELISTENER_CPP
+        #define ORG_ALLBINARY_GAME_NULLINTERMISSIONENABLELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/NullIntermissionEnableListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/IntermissionEnableListenerInterface.h"
 
-class NullIntermissionEnableListener
-            : public Object
-        , public IntermissionEnableListenerInterface {
+IntermissionEnableListenerInterface* NullIntermissionEnableListener::SINGLETON = new NullIntermissionEnableListener();
 
-    private: static inline IntermissionEnableListenerInterface* SINGLETON = new NullIntermissionEnableListener();
-
-    public: static IntermissionEnableListenerInterface* getInstance(){
+    auto NullIntermissionEnableListener::getInstance() -> IntermissionEnableListenerInterface*{
 
 
 
@@ -62,15 +68,14 @@ class NullIntermissionEnableListener
 }
 
 
-private: NullIntermissionEnableListener(){
+NullIntermissionEnableListener::NullIntermissionEnableListener(){
 }
 
 
-    public: void notifyIntermission(bool enable){
+    auto NullIntermissionEnableListener::notifyIntermission(bool enable) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_NULLINTERMISSIONENABLELISTENER_CPP

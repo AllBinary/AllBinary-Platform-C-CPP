@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,23 +35,11 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
-
-      
-#include <org/allbinary/game/score/HighScores.h>
-
-      
-#include <org/allbinary/game/score/HighScoresHelperBase.h>
-
-      
-#include <org/allbinary/game/score/NullHighScoresSingletonFactory.h>
-
-      
-#include <org/allbinary/game/state/GameStateFactory.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
+class HighScores;
+class HighScoresHelperBase;
+class NullHighScoresSingletonFactory;
+class GameStateFactory;
+class NullPaintable;
 
 
 
@@ -65,11 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+        class AllBinaryGameCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EndGameProcessor: public Processor {
 
-    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
+    /*protected*/ public: GameStateFactory* gameStateFactory;
 
     private: AllBinaryGameCanvas* gameCanvas;
 
@@ -87,3 +84,31 @@ public: EndGameProcessor(AllBinaryGameCanvas* gameCanvas);
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+#if __has_include(<org/allbinary/game/score/HighScores.h>)
+#include <org/allbinary/game/score/HighScores.h>
+#endif
+#if __has_include(<org/allbinary/game/score/HighScoresHelperBase.h>)
+#include <org/allbinary/game/score/HighScoresHelperBase.h>
+#endif
+#if __has_include(<org/allbinary/game/score/NullHighScoresSingletonFactory.h>)
+#include <org/allbinary/game/score/NullHighScoresSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/state/GameStateFactory.h>)
+#include <org/allbinary/game/state/GameStateFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h")
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#endif
+
+        #endif
+    

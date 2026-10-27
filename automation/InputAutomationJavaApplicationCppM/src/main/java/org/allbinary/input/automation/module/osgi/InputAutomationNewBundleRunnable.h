@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONNEWBUNDLERUNNABLE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONNEWBUNDLERUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,74 +43,28 @@
             #include "java/lang/Thread.h"
         
 #include <java/io/File.h>
-
-      
 #include <java/io/FileFilter.h>
-
-      
 #include <java/io/FileInputStream.h>
-
-      
 #include <java/net/URL.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
-
-      
 #include <java/util/jar/JarInputStream.h>
-
-      
 #include <java/util/jar/Manifest.h>
-
-      
-#include <org/osgi/framework/Bundle.h>
-
-      
-#include <org/osgi/framework/BundleContext.h>
-
-      
-#include <org/osgi/framework/Constants.h>
-
-      
-#include <bundle/input/automation/InputAutomationBundleActivator.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/FileWrapperUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/directory/SubDirectory.h>
-
-      
-#include <org/allbinary/logic/io/file/filter/BasicFileFilterUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Bundle;
+class BundleContext;
+class Constants;
+class InputAutomationBundleActivator;
+class StdUtil;
+class LogUtil;
+class FileWrapperUtil;
+class SubDirectory;
+class BasicFileFilterUtil;
+class CommonLabels;
+class CommonStrings;
 #include <org/allbinary/thread/RunnableInterface.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class TimeDelayHelper;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -125,8 +84,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationNewBundleRunnable
-            : public Object
+            : public virtual Object
         , public RunnableInterface {
 
     private: static inline const std::string FILE = "file:";
@@ -137,9 +100,9 @@ class InputAutomationNewBundleRunnable
 
     private: static inline const int32_t MODULES_START_LEVEL = 8;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: InputAutomationBundleActivator* inputAutomationBundleActivator;
 
@@ -193,3 +156,79 @@ public: InputAutomationNewBundleRunnable(InputAutomationBundleActivator* inputAu
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONNEWBUNDLERUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONNEWBUNDLERUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONNEWBUNDLERUNNABLE_H_COMPLETE
+        #if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/io/FileFilter.h>)
+#include <java/io/FileFilter.h>
+#endif
+#if __has_include(<java/io/FileInputStream.h>)
+#include <java/io/FileInputStream.h>
+#endif
+#if __has_include(<java/net/URL.h>)
+#include <java/net/URL.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<java/util/jar/JarInputStream.h>)
+#include <java/util/jar/JarInputStream.h>
+#endif
+#if __has_include(<java/util/jar/Manifest.h>)
+#include <java/util/jar/Manifest.h>
+#endif
+#if __has_include(<org/osgi/framework/Bundle.h>)
+#include <org/osgi/framework/Bundle.h>
+#endif
+#if __has_include(<org/osgi/framework/BundleContext.h>)
+#include <org/osgi/framework/BundleContext.h>
+#endif
+#if __has_include(<org/osgi/framework/Constants.h>)
+#include <org/osgi/framework/Constants.h>
+#endif
+#if __has_include(<bundle/input/automation/InputAutomationBundleActivator.h>)
+#include <bundle/input/automation/InputAutomationBundleActivator.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileWrapperUtil.h>)
+#include <org/allbinary/logic/io/file/FileWrapperUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/directory/SubDirectory.h>)
+#include <org/allbinary/logic/io/file/directory/SubDirectory.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/filter/BasicFileFilterUtil.h>)
+#include <org/allbinary/logic/io/file/filter/BasicFileFilterUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/thread/RunnableInterface.h>)
+#include <org/allbinary/thread/RunnableInterface.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

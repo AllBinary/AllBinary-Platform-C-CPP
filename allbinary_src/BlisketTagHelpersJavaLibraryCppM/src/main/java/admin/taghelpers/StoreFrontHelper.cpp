@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_STOREFRONTHELPER_CPP
+        #define ADMIN_TAGHELPERS_STOREFRONTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/StoreFrontHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,15 +81,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class StoreFrontHelper: public TagHelper {
 
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: const std::string currentLocation;
-
-    private: const std::string currentHomeLocation;
-
-public: StoreFrontHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+StoreFrontHelper::StoreFrontHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
 
     std::string storeName = hashMap->get(StoreFrontData::getInstance()->NAME);;
     
@@ -112,7 +115,7 @@ this->currentHomeLocation= stringUtil->EMPTY_STRING;
 }
 
 
-    public: std::string getCurrentLocation(){
+    auto StoreFrontHelper::getCurrentLocation() -> std::string{
 
 
 
@@ -122,7 +125,7 @@ this->currentHomeLocation= stringUtil->EMPTY_STRING;
 }
 
 
-    public: std::string getCurrentHomeLocation(){
+    auto StoreFrontHelper::getCurrentHomeLocation() -> std::string{
 
 
 
@@ -132,7 +135,6 @@ this->currentHomeLocation= stringUtil->EMPTY_STRING;
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_STOREFRONTHELPER_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOG_LOGGING_H
         #define ORG_ALLBINARY_LOG_LOGGING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 
 
 
@@ -57,51 +56,74 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LOGGING
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline BasicArrayList* logging = new BasicArrayListD();
+    private: static BasicArrayList* logging;
 
     public: static bool contains(LOGGING* logType);
 
-    public: static LOGGING* GRAPHICSPAINT() { static std::unique_ptr<LOGGING> value(new LOGGING("Graphics Paint")); return value.get(); }
+    private: static LOGGING* GRAPHICSPAINT_owner();
+    public: static LOGGING* GRAPHICSPAINT;
 
-    public: static LOGGING* GRAPHICSCREATION() { static std::unique_ptr<LOGGING> value(new LOGGING("Graphics Creation")); return value.get(); }
+    private: static LOGGING* GRAPHICSCREATION_owner();
+    public: static LOGGING* GRAPHICSCREATION;
 
-    public: static LOGGING* GRAPHICSDELETION() { static std::unique_ptr<LOGGING> value(new LOGGING("Graphics Deletion")); return value.get(); }
+    private: static LOGGING* GRAPHICSDELETION_owner();
+    public: static LOGGING* GRAPHICSDELETION;
 
-    public: static LOGGING* LOADINGERROR() { static std::unique_ptr<LOGGING> value(new LOGGING("Loading Error")); return value.get(); }
+    private: static LOGGING* LOADINGERROR_owner();
+    public: static LOGGING* LOADINGERROR;
 
-    public: static LOGGING* MENUEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Menu Action Event")); return value.get(); }
+    private: static LOGGING* MENUEVENT_owner();
+    public: static LOGGING* MENUEVENT;
 
-    public: static LOGGING* MOUSEEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Mouse Action Event")); return value.get(); }
+    private: static LOGGING* MOUSEEVENT_owner();
+    public: static LOGGING* MOUSEEVENT;
 
-    public: static LOGGING* KEYEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Keyboard Action Event")); return value.get(); }
+    private: static LOGGING* KEYEVENT_owner();
+    public: static LOGGING* KEYEVENT;
 
-    public: static LOGGING* ACTIONEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Action Event")); return value.get(); }
+    private: static LOGGING* ACTIONEVENT_owner();
+    public: static LOGGING* ACTIONEVENT;
 
-    public: static LOGGING* ADJUSTMENTEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Adjustment Action Event")); return value.get(); }
+    private: static LOGGING* ADJUSTMENTEVENT_owner();
+    public: static LOGGING* ADJUSTMENTEVENT;
 
-    public: static LOGGING* COMPONENTEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Component Action Event")); return value.get(); }
+    private: static LOGGING* COMPONENTEVENT_owner();
+    public: static LOGGING* COMPONENTEVENT;
 
-    public: static LOGGING* CONTAINEREVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Container Action Event")); return value.get(); }
+    private: static LOGGING* CONTAINEREVENT_owner();
+    public: static LOGGING* CONTAINEREVENT;
 
-    public: static LOGGING* FOCUSEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Focus Action Event")); return value.get(); }
+    private: static LOGGING* FOCUSEVENT_owner();
+    public: static LOGGING* FOCUSEVENT;
 
-    public: static LOGGING* HIERARCHYEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Hierarchy Action Event")); return value.get(); }
+    private: static LOGGING* HIERARCHYEVENT_owner();
+    public: static LOGGING* HIERARCHYEVENT;
 
-    public: static LOGGING* INPUTEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Input Action Event")); return value.get(); }
+    private: static LOGGING* INPUTEVENT_owner();
+    public: static LOGGING* INPUTEVENT;
 
-    public: static LOGGING* INVOCATIONEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Invocation Action Event")); return value.get(); }
+    private: static LOGGING* INVOCATIONEVENT_owner();
+    public: static LOGGING* INVOCATIONEVENT;
 
-    public: static LOGGING* ITEMEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Item Action Event")); return value.get(); }
+    private: static LOGGING* ITEMEVENT_owner();
+    public: static LOGGING* ITEMEVENT;
 
-    public: static LOGGING* PAINTEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Paint Action Event")); return value.get(); }
+    private: static LOGGING* PAINTEVENT_owner();
+    public: static LOGGING* PAINTEVENT;
 
-    public: static LOGGING* TEXTEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Text Action Event")); return value.get(); }
+    private: static LOGGING* TEXTEVENT_owner();
+    public: static LOGGING* TEXTEVENT;
 
-    public: static LOGGING* WINDOWEVENT() { static std::unique_ptr<LOGGING> value(new LOGGING("Window Action Event")); return value.get(); }
+    private: static LOGGING* WINDOWEVENT_owner();
+    public: static LOGGING* WINDOWEVENT;
 
     private: std::string name;
 
@@ -115,3 +137,17 @@ private: LOGGING(std::string value);
 
 
         #endif //ORG_ALLBINARY_LOG_LOGGING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOG_LOGGING_H_COMPLETE)
+        #define ORG_ALLBINARY_LOG_LOGGING_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+
+        #endif
+    

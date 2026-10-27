@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITSQL_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITSQL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,74 +41,28 @@
             #include "java/lang/Exception.h"
         
 #include <java/sql/Connection.h>
-
-      
 #include <java/sql/DriverManager.h>
-
-      
 #include <java/sql/ResultSet.h>
-
-      
 #include <java/sql/ResultSetMetaData.h>
-
-      
 #include <java/sql/SQLException.h>
-
-      
 #include <java/sql/Statement.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
-
-      
-#include <org/allbinary/business/init/db/DbConnectionInfo.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
-
-      
-#include <org/allbinary/logic/communication/sql/SqlStrings.h>
-
-      
-#include <org/allbinary/logic/communication/sql/SqlTypeStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class DatabaseConnectionInfoInterface;
+class DbConnectionInfo;
+class StdUtil;
+class PreLogUtil;
+class LogConfigTypeFactory;
+class LogConfigTypes;
+class SqlStrings;
+class SqlTypeStrings;
+class StringMaker;
+class StringUtil;
+class StringValidationUtil;
+class CommonSeps;
+class CommonStrings;
 
 
 
@@ -123,23 +82,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InitSql
-            : public Object
+            : public virtual Object
          {
 
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
+    /*protected*/ public: StringUtil* stringUtil;
 
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
+    /*protected*/ public: CommonSeps* commonSeps;
 
-    protected: SqlTypeStrings* sqlTypeStrings = SqlTypeStrings::getInstance();
+    /*protected*/ public: SqlTypeStrings* sqlTypeStrings;
 
-    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
+    /*protected*/ public: SqlStrings* sqlStrings;
 
-    protected: StdUtil* stdUtil = StdUtil::getInstance();
+    /*protected*/ public: StdUtil* stdUtil;
 
-    protected: const std::string INSERT = "insert";
+    /*protected*/ public: const std::string INSERT = "insert";
 
-    protected: const std::string UPDATE = "update";
+    /*protected*/ public: const std::string UPDATE = "update";
 
     private: DbConnectionInfo* databaseConnectionInfoInterface;
 
@@ -153,13 +116,13 @@ class InitSql
 
     private: bool useridAndPassword= false;
 
-    protected: const std::string SUCCESS_SQL_STATEMENT = "Success\nSQL Statement: ";
+    /*protected*/ public: const std::string SUCCESS_SQL_STATEMENT = "Success\nSQL Statement: ";
 
-    protected: const std::string FAILED_SQL_STATEMENT = "Failed\nSQL Statement: ";
+    /*protected*/ public: const std::string FAILED_SQL_STATEMENT = "Failed\nSQL Statement: ";
 
     private: const std::string INIT_SQL = "InitSql";
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: const std::string EQUAL_QUOTE = "=\"";
 
@@ -213,3 +176,77 @@ public: InitSql(DbConnectionInfo* databaseConnectionInfoInterface);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_INITSQL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_INITSQL_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITSQL_H_COMPLETE
+        #if __has_include(<java/sql/Connection.h>)
+#include <java/sql/Connection.h>
+#endif
+#if __has_include(<java/sql/DriverManager.h>)
+#include <java/sql/DriverManager.h>
+#endif
+#if __has_include(<java/sql/ResultSet.h>)
+#include <java/sql/ResultSet.h>
+#endif
+#if __has_include(<java/sql/ResultSetMetaData.h>)
+#include <java/sql/ResultSetMetaData.h>
+#endif
+#if __has_include(<java/sql/SQLException.h>)
+#include <java/sql/SQLException.h>
+#endif
+#if __has_include(<java/sql/Statement.h>)
+#include <java/sql/Statement.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>)
+#include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/DbConnectionInfo.h>)
+#include <org/allbinary/business/init/db/DbConnectionInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/SqlStrings.h>)
+#include <org/allbinary/logic/communication/sql/SqlStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/SqlTypeStrings.h>)
+#include <org/allbinary/logic/communication/sql/SqlTypeStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

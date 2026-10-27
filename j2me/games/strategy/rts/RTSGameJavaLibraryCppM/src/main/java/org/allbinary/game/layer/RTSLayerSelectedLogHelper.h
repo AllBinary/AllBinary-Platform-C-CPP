@@ -21,45 +21,28 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERSELECTEDLOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERSELECTEDLOGHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/math/NamedAngle.h>
-
-      
-#include <org/allbinary/math/PositionStrings.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class LogUtil;
+class CommonLabels;
+class CommonSeps;
+class StringMaker;
+class StringUtil;
+class AngleInfo;
+class NamedAngle;
+class PositionStrings;
+class GeographicMapCellHistory;
+class GeographicMapCellPosition;
+class BasicArrayList;
 
 
 
@@ -79,19 +62,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/RTSLayerLogHelper.h"
-#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+class PathFindingLayerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSLayerSelectedLogHelper: public RTSLayerLogHelper {
 
-    private: static RTSLayerSelectedLogHelper* instanceC() { static std::unique_ptr<RTSLayerSelectedLogHelper> value(new RTSLayerSelectedLogHelper()); return value.get(); }
+    private: static RTSLayerSelectedLogHelper* instanceC_owner();
+    private: static RTSLayerSelectedLogHelper* instanceC;
 
     public: static RTSLayerSelectedLogHelper* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+            
+    public: RTSLayerSelectedLogHelper();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: PositionStrings* positionStrings = PositionStrings::getInstance();
+    private: CommonSeps* commonSeps;
+
+    private: PositionStrings* positionStrings;
 
     private: const std::string TRACKTO_TURNTO = "trackTo:turnTo";
 
@@ -133,3 +125,49 @@ class RTSLayerSelectedLogHelper: public RTSLayerLogHelper {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYERSELECTEDLOGHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RTSLAYERSELECTEDLOGHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERSELECTEDLOGHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/math/NamedAngle.h>)
+#include <org/allbinary/math/NamedAngle.h>
+#endif
+#if __has_include(<org/allbinary/math/PositionStrings.h>)
+#include <org/allbinary/math/PositionStrings.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/layer/RTSLayerLogHelper.h")
+#include "org/allbinary/game/layer/RTSLayerLogHelper.h"
+#endif
+#if __has_include("org/allbinary/game/layer/PathFindingLayerInterface.h")
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#endif
+
+        #endif
+    

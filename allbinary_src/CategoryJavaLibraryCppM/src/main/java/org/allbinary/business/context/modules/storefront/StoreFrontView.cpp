@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/StoreFrontView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,23 +83,16 @@
         #include "org/allbinary/business/context/modules/storefront/StoreFrontInterface.h"
 #include "org/allbinary/business/context/modules/storefront/StoreFrontData.h"
 
-class StoreFrontView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+StoreFrontView::StoreFrontView(StoreFrontInterface* storeFrontInterface) : logUtil(LogUtil::getInstance()){
 
-    private: StoreFrontInterface* storeFrontInterface;
-
-public: StoreFrontView(StoreFrontInterface* storeFrontInterface){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF("Constructing: StoreFrontView for: " +storeFrontInterface->getName(), this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf("Constructing: StoreFrontView for: ") +JavaString::valueOf(storeFrontInterface->getName()), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -101,7 +104,7 @@ this->storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StoreFrontView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->storeFrontInterface->toHashMap();;
     
@@ -130,7 +133,6 @@ hashMap->put(BasketData::NAME, this->storeFrontInterface->getBasketName());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTVIEW_CPP

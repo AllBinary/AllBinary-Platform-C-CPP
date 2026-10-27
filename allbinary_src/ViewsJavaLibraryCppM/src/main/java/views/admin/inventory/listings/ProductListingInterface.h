@@ -21,6 +21,11 @@
         #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_H
         #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ProductListingInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ProductListingInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -64,3 +75,10 @@ class ProductListingInterface {
 
 
         #endif //VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_H_COMPLETE)
+        #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_H_COMPLETE
+        
+        #endif
+    

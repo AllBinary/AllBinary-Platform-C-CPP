@@ -21,21 +21,20 @@
         #ifndef TAGS_GENERIC_GENERICVIEWTAG_H
         #define TAGS_GENERIC_GENERICVIEWTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/InputOutputTypeData.h>
-
-      
+class LogUtil;
+class InputOutputTypeData;
 #include <tags/TransformTag.h>
-
-      
 
 
 
@@ -55,9 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GenericViewTag: public TransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string output;
 
@@ -75,3 +78,19 @@ public: GenericViewTag();
 
 
         #endif //TAGS_GENERIC_GENERICVIEWTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGS_GENERIC_GENERICVIEWTAG_H_COMPLETE)
+        #define TAGS_GENERIC_GENERICVIEWTAG_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/InputOutputTypeData.h>)
+#include <org/allbinary/logic/io/InputOutputTypeData.h>
+#endif
+#if __has_include(<tags/TransformTag.h>)
+#include <tags/TransformTag.h>
+#endif
+
+        #endif
+    

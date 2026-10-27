@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_PGUTIL_H
         #define ORG_ALLBINARY_ANIMATION_PGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,16 +40,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/FixedPoint.h"
+        class FixedPoint;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PGUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static PGUtil* instance() { static std::unique_ptr<PGUtil> value(new PGUtil()); return value.get(); }
+    private: static PGUtil* instance_owner();
+    private: static PGUtil* instance;
 
     public: static PGUtil* getInstance();
 
+
+            
+    public: PGUtil();
+        
     public: void flattenCubicBezier(int32_t x0, int32_t y0, int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x3, int32_t y3, std::vector<int32_t> outX, std::vector<int32_t> outY, std::vector<int32_t> count, int32_t maxPoints);
 
 };
@@ -53,3 +67,13 @@ class PGUtil
 
 
         #endif //ORG_ALLBINARY_ANIMATION_PGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_PGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_PGUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/animation/FixedPoint.h")
+#include "org/allbinary/animation/FixedPoint.h"
+#endif
+
+        #endif
+    

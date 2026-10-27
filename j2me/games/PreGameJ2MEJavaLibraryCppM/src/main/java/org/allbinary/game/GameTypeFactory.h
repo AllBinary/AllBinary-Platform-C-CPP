@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_GAMETYPEFACTORY_H
         #define ORG_ALLBINARY_GAME_GAMETYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -52,25 +55,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/GameType.h"
+        class GameType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameTypeFactory* instance() { static std::unique_ptr<GameTypeFactory> value(new GameTypeFactory()); return value.get(); }
+    private: static GameTypeFactory* instance_owner();
+    private: static GameTypeFactory* instance;
 
     public: static GameTypeFactory* getInstance();
 
-    public: std::vector<GameType*> NULL_GAME_TYPE_ARRAY = {};
 
-    public: GameType* NONE = new GameType(StringUtil::getInstance()->NULL_STRING);
+            
+    public: GameTypeFactory();
+        
+    public: std::vector<GameType*> NULL_GAME_TYPE_ARRAY;
 
-    public: GameType* SINGLE_PLAYER = new GameType("Single Player");
+    public: GameType* NONE;
 
-    public: GameType* MULTI_PLAYER = new GameType("Multi Player");
+    public: GameType* SINGLE_PLAYER;
 
-    public: GameType* BOT = new GameType("Artificial Player");
+    public: GameType* MULTI_PLAYER;
+
+    public: GameType* BOT;
 
 };
 
@@ -78,3 +90,16 @@ class GameTypeFactory
 
 
         #endif //ORG_ALLBINARY_GAME_GAMETYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_GAMETYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_GAMETYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/game/GameType.h")
+#include "org/allbinary/game/GameType.h"
+#endif
+
+        #endif
+    

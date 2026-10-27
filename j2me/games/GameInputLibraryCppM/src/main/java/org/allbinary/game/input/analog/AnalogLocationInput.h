@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -15,9 +20,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/CustomGPoint.h>
-
-      
+class CustomGPoint;
 
 
 
@@ -37,11 +40,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AnalogLocationInput
-            : public Object
+            : public virtual Object
          {
 
-    public: static AnalogLocationInput* NULL_ANALOG_LOCATION_INPUT() { static std::unique_ptr<AnalogLocationInput> value(new AnalogLocationInput( -1)); return value.get(); }
+    private: static AnalogLocationInput* NULL_ANALOG_LOCATION_INPUT_owner();
+    public: static AnalogLocationInput* NULL_ANALOG_LOCATION_INPUT;
 
     private: int32_t playerId;
 
@@ -53,7 +61,7 @@ class AnalogLocationInput
 
     private: int32_t leftTrigger= 0;
 
-: AnalogLocationInput(int32_t playerId);
+public: AnalogLocationInput(int32_t playerId);
 
     public: int32_t getPlayerId();
 
@@ -77,3 +85,13 @@ class AnalogLocationInput
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/CustomGPoint.h>)
+#include <org/allbinary/graphics/CustomGPoint.h>
+#endif
+
+        #endif
+    

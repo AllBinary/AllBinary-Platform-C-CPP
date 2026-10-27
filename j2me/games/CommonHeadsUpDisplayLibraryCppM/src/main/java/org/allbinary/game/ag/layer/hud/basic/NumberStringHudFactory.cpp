@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUDFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUDFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/NumberStringHudFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,13 +78,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h"
 
-class NumberStringHudFactory
-            : public Object
-         {
 
-    private: static inline Object* instance = NullUtil::getInstance();
+NumberStringHudFactory::NumberStringHudFactory() : NULL_NUMBER_STRING_HUD(this->createHud()) {
+        }
+        Object* NumberStringHudFactory::instance = NullUtil::getInstance();
 
-    public: static NumberStringHudFactory* getInstance(){
+    auto NumberStringHudFactory::getInstance() -> NumberStringHudFactory*{
 
                         if(NumberStringHudFactory::instance == NullUtil::getInstance())
                         
@@ -93,7 +102,7 @@ class NumberStringHudFactory
 }
 
 
-    public: NumberStringHud* createHud(){
+    auto NumberStringHudFactory::createHud() -> NumberStringHud*{
 
         try {
             
@@ -117,16 +126,13 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    public: NumberStringHud* NULL_NUMBER_STRING_HUD = this->createHud();
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUDFACTORY_CPP

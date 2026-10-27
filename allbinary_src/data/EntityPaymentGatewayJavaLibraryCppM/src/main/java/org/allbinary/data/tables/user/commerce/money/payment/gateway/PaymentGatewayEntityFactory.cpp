@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntity.h"
 
-class PaymentGatewayEntityFactory
-            : public Object
-         {
+
+PaymentGatewayEntityFactory::PaymentGatewayEntityFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static PaymentGatewayEntity* getInstance(){
+    auto PaymentGatewayEntityFactory::getInstance() -> PaymentGatewayEntity*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -80,7 +91,7 @@ class PaymentGatewayEntityFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "PaymentGatewayEntityFactory", commonStrings->GET_INSTANCE, &e);
@@ -98,11 +109,6 @@ class PaymentGatewayEntityFactory
 }
 
 
-private: PaymentGatewayEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYFACTORY_CPP

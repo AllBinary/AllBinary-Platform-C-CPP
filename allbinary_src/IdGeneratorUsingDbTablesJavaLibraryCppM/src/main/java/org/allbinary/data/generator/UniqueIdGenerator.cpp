@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_GENERATOR_UNIQUEIDGENERATOR_CPP
+        #define ORG_ALLBINARY_DATA_GENERATOR_UNIQUEIDGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/generator/UniqueIdGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,25 +84,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/generator/IdGeneratorInterface.h"
 
-class UniqueIdGenerator
-            : public Object
-        , public IdGeneratorInterface {
 
-    public: static inline const std::string EXT = ".unq";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: IdGeneratorEntity* idGeneratorEntity;
-
-    private: std::string name;
-
-public: UniqueIdGenerator(){
+UniqueIdGenerator::UniqueIdGenerator() : logUtil(LogUtil::getInstance()){
 this->idGeneratorEntity= dynamic_cast<IdGeneratorEntity*>(IdGeneratorEntityFactory::getInstance());
     
 }
 
 
-    public: void initialize(int32_t value){
+    auto UniqueIdGenerator::initialize(int32_t value) -> void{
 
         try {
             
@@ -109,7 +108,7 @@ this->idGeneratorEntity->insert(vector);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     
@@ -128,7 +127,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "initialize", &e);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setFile(std::string filePathName, std::string name){
+    auto UniqueIdGenerator::setFile(std::string filePathName, std::string name) -> void{
 this->name= name;
     
 }
@@ -137,7 +136,7 @@ this->name= name;
                 //@Throws(IOException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string getNext(){
+    auto UniqueIdGenerator::getNext() -> std::string{
 
         try {
             
@@ -159,7 +158,7 @@ this->idGeneratorEntity->update(this->name, newValue);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     
@@ -181,7 +180,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getNext", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_GENERATOR_UNIQUEIDGENERATOR_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StylesData
-            : public Object
+            : public virtual Object
          {
 
-    private: static StylesData* instance() { static std::unique_ptr<StylesData> value(new StylesData()); return value.get(); }
+    private: static StylesData* instance_owner();
+    private: static StylesData* instance;
 
     public: static StylesData* getInstance();
 
@@ -66,3 +76,10 @@ private: StylesData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESDATA_H_COMPLETE
+        
+        #endif
+    

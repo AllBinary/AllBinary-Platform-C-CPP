@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericProfileActionData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_NAME";
-
-    public: static inline std::string SCRIPT = "GENERIC_CONFIGURATION_PROFILE_ACTION_SCRIPT";
-
-private: GenericProfileActionData(){
+GenericProfileActionData::GenericProfileActionData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/order/OrderHistory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -115,35 +125,8 @@
 #include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
 #include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h"
 
-class OrderHistory: public Order, public OrderHistoryInterface {
 
-    private: std::string userName;
-
-    private: StreetAddress* shippingAddress;
-
-    private: StreetAddress* billingAddress;
-
-    private: Payment* payment;
-
-    private: std::string shipDate;
-
-    private: std::string orderDate;
-
-    private: std::string transDate;
-
-    private: std::string cancelDate;
-
-    private: std::string status;
-
-    private: Money* subTotal;
-
-    private: Money* shippingCost;
-
-    private: Money* taxes;
-
-    private: Money* total;
-
-public: OrderHistory(BasketInterface* basketInterface) : Order(basketInterface){
+OrderHistory::OrderHistory(BasketInterface* basketInterface) : Order(basketInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -153,7 +136,7 @@ public: OrderHistory(BasketInterface* basketInterface) : Order(basketInterface){
 }
 
 
-public: OrderHistory(BasketInterface* basketInterface, OrderHistory* orderHistory) : Order(orderHistory->getStoreName(), basketInterface, orderHistory->getId(), orderHistory->getShippingMethod(), orderHistory->getSpecial(), orderHistory->getPaymentMethod()){
+OrderHistory::OrderHistory(BasketInterface* basketInterface, OrderHistory* orderHistory) : Order(orderHistory->getStoreName(), basketInterface, orderHistory->getId(), orderHistory->getShippingMethod(), orderHistory->getSpecial(), orderHistory->getPaymentMethod()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -186,18 +169,18 @@ this->taxes= orderHistory->getTaxes();
     
 this->total= orderHistory->getTotal();
     
-super.setUserComments(orderHistory->getUserComments());
+Order::setUserComments(orderHistory->getUserComments());
     
-super.setUserCancelComments(orderHistory->getUserCancelComments());
+Order::setUserCancelComments(orderHistory->getUserCancelComments());
     
-super.setStoreComments(orderHistory->getStoreComments());
+Order::setStoreComments(orderHistory->getStoreComments());
     
-super.setStoreCancelComments(orderHistory->getStoreCancelComments());
+Order::setStoreCancelComments(orderHistory->getStoreCancelComments());
     
 }
 
 
-public: OrderHistory(BasketInterface* basketInterface, HashMap<Object*, Object*>* orderHistoryHashMap) : Order(orderHistoryHashMap->get(StoreFrontData::getInstance()->NAME), basketInterface, orderHistoryHashMap->get(OrderData::ID), orderHistoryHashMap->get(ShippingMethodData::NAME), orderHistoryHashMap->get(EntryData::getInstance()->SPECIAL), orderHistoryHashMap->get(PaymentData::METHOD)){
+OrderHistory::OrderHistory(BasketInterface* basketInterface, HashMap<Object*, Object*>* orderHistoryHashMap) : Order(orderHistoryHashMap->get(StoreFrontData::getInstance()->NAME), basketInterface, orderHistoryHashMap->get(OrderData::ID), orderHistoryHashMap->get(ShippingMethodData::NAME), orderHistoryHashMap->get(EntryData::getInstance()->SPECIAL), orderHistoryHashMap->get(PaymentData::METHOD)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -230,96 +213,96 @@ this->shippingCost= new Money(orderHistoryHashMap->get(OrderHistoryData::SHIPPIN
     
 this->taxes= new Money(orderHistoryHashMap->get(OrderHistoryData::TAX));
     
-super.setUserComments(orderHistoryHashMap->get(OrderData::CUSTOMERCOMMENT));
+Order::setUserComments(orderHistoryHashMap->get(OrderData::CUSTOMERCOMMENT));
     
-super.setUserCancelComments(orderHistoryHashMap->get(OrderData::CUSTOMERCANCELCOMMENT));
+Order::setUserCancelComments(orderHistoryHashMap->get(OrderData::CUSTOMERCANCELCOMMENT));
     
-super.setStoreComments(orderHistoryHashMap->get(OrderData::STORECOMMENT));
+Order::setStoreComments(orderHistoryHashMap->get(OrderData::STORECOMMENT));
     
-super.setStoreCancelComments(orderHistoryHashMap->get(OrderData::STORECANCELCOMMENT));
+Order::setStoreCancelComments(orderHistoryHashMap->get(OrderData::STORECANCELCOMMENT));
     
 }
 
 
-    public: void setUserName(std::string value){
+    auto OrderHistory::setUserName(std::string value) -> void{
 this->userName= value;
     
 }
 
 
-    public: void setDefaultShippingAddress(StreetAddress* shippingAddress){
+    auto OrderHistory::setDefaultShippingAddress(StreetAddress* shippingAddress) -> void{
 this->shippingAddress= shippingAddress;
     
 }
 
 
-    public: void setBillingAddress(StreetAddress* billingAddress){
+    auto OrderHistory::setBillingAddress(StreetAddress* billingAddress) -> void{
 this->billingAddress= billingAddress;
     
 }
 
 
-    public: void setPaymentInfo(Payment* payment){
+    auto OrderHistory::setPaymentInfo(Payment* payment) -> void{
 this->payment= payment;
     
 }
 
 
-    public: void setShipDate(std::string value){
+    auto OrderHistory::setShipDate(std::string value) -> void{
 this->shipDate= value;
     
 }
 
 
-    public: void setOrderDate(std::string value){
+    auto OrderHistory::setOrderDate(std::string value) -> void{
 this->orderDate= value;
     
 }
 
 
-    public: void setTransDate(std::string value){
+    auto OrderHistory::setTransDate(std::string value) -> void{
 this->transDate= value;
     
 }
 
 
-    public: void setCancelDate(std::string value){
+    auto OrderHistory::setCancelDate(std::string value) -> void{
 this->cancelDate= value;
     
 }
 
 
-    public: void setStatus(std::string value){
+    auto OrderHistory::setStatus(std::string value) -> void{
 this->status= value;
     
 }
 
 
-    public: void setSubTotal(Money* value){
+    auto OrderHistory::setSubTotal(Money* value) -> void{
 this->subTotal= value;
     
 }
 
 
-    public: void setShippingCost(Money* value){
+    auto OrderHistory::setShippingCost(Money* value) -> void{
 this->shippingCost= value;
     
 }
 
 
-    public: void setTaxes(Money* value){
+    auto OrderHistory::setTaxes(Money* value) -> void{
 this->taxes= value;
     
 }
 
 
-    public: void setTotal(Money* value){
+    auto OrderHistory::setTotal(Money* value) -> void{
 this->total= value;
     
 }
 
 
-    public: std::string getUserName(){
+    auto OrderHistory::getUserName() -> std::string{
 
 
 
@@ -329,7 +312,7 @@ this->total= value;
 }
 
 
-    public: StreetAddress* getShippingAddress(){
+    auto OrderHistory::getShippingAddress() -> StreetAddress*{
 
 
 
@@ -339,7 +322,7 @@ this->total= value;
 }
 
 
-    public: StreetAddress* getBillingAddress(){
+    auto OrderHistory::getBillingAddress() -> StreetAddress*{
 
 
 
@@ -349,7 +332,7 @@ this->total= value;
 }
 
 
-    public: Payment* getPaymentInfo(){
+    auto OrderHistory::getPaymentInfo() -> Payment*{
 
 
 
@@ -359,7 +342,7 @@ this->total= value;
 }
 
 
-    public: std::string getShipDate(){
+    auto OrderHistory::getShipDate() -> std::string{
 
 
 
@@ -369,7 +352,7 @@ this->total= value;
 }
 
 
-    public: std::string getOrderDate(){
+    auto OrderHistory::getOrderDate() -> std::string{
 
 
 
@@ -379,7 +362,7 @@ this->total= value;
 }
 
 
-    public: std::string getTransDate(){
+    auto OrderHistory::getTransDate() -> std::string{
 
 
 
@@ -389,7 +372,7 @@ this->total= value;
 }
 
 
-    public: std::string getCancelDate(){
+    auto OrderHistory::getCancelDate() -> std::string{
 
 
 
@@ -399,7 +382,7 @@ this->total= value;
 }
 
 
-    public: std::string getStatus(){
+    auto OrderHistory::getStatus() -> std::string{
 
 
 
@@ -409,7 +392,7 @@ this->total= value;
 }
 
 
-    public: Money* getSubTotal(){
+    auto OrderHistory::getSubTotal() -> Money*{
 
 
 
@@ -419,7 +402,7 @@ this->total= value;
 }
 
 
-    public: Money* getShippingCost(){
+    auto OrderHistory::getShippingCost() -> Money*{
 
 
 
@@ -429,7 +412,7 @@ this->total= value;
 }
 
 
-    public: Money* getTaxes(){
+    auto OrderHistory::getTaxes() -> Money*{
 
 
 
@@ -439,7 +422,7 @@ this->total= value;
 }
 
 
-    public: Money* getTotal(){
+    auto OrderHistory::getTotal() -> Money*{
 
 
 
@@ -449,7 +432,7 @@ this->total= value;
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto OrderHistory::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -492,7 +475,7 @@ hashMap->put(OrderHistoryData::TAX, this->taxes->toString());
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto OrderHistory::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
@@ -508,7 +491,7 @@ hashMap->put(OrderHistoryData::TAX, this->taxes->toString());
 
     Node* node = document->createElement(OrderHistoryData::ORDERHISTORY);;
     
-node->appendChild(super.toXmlNode(document));
+node->appendChild(Order::toXmlNode(document));
     
 
     Node* billingAddressNode = document->createElement(BillingAddressData::BILLINGADDRESS);;
@@ -554,7 +537,6 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORY_CPP

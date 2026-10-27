@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONGENERICACTIONRESOURCE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONGENERICACTIONRESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonGenericActionResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
-class TouchButtonGenericActionResource: public TouchButtonResource {
+TouchButtonResource* TouchButtonGenericActionResource::instance = new TouchButtonGenericActionResource();
 
-    private: static inline TouchButtonResource* instance = new TouchButtonGenericActionResource();
-
-    public: static TouchButtonResource* getInstance(){
+    auto TouchButtonGenericActionResource::getInstance() -> TouchButtonResource*{
 
 
 
@@ -58,7 +66,7 @@ class TouchButtonGenericActionResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonGenericActionResource() : TouchButtonResource("/touch_button_generic_action_64_by_64.png", "/touch_button_generic_action_hint_64_by_64.png"){
+TouchButtonGenericActionResource::TouchButtonGenericActionResource() : TouchButtonResource("/touch_button_generic_action_64_by_64.png", "/touch_button_generic_action_hint_64_by_64.png"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +76,6 @@ private: TouchButtonGenericActionResource() : TouchButtonResource("/touch_button
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONGENERICACTIONRESOURCE_CPP

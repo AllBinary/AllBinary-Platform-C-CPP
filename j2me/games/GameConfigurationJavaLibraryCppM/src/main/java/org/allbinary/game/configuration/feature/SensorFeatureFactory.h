@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,33 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/feature/SensorFeature.h"
+        class SensorFeature;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SensorFeatureFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static SensorFeatureFactory* instance() { static std::unique_ptr<SensorFeatureFactory> value(new SensorFeatureFactory()); return value.get(); }
+    private: static SensorFeatureFactory* instance_owner();
+    private: static SensorFeatureFactory* instance;
 
     public: static SensorFeatureFactory* getInstance();
 
 private: SensorFeatureFactory();
 
-    public: SensorFeature* NO_ORIENTATION = new SensorFeature("No Orientation");
+    public: SensorFeature* NO_ORIENTATION;
 
-    public: SensorFeature* ORIENTATION_SENSORS = new SensorFeature("Orientation Sensors");
+    public: SensorFeature* ORIENTATION_SENSORS;
 
-    public: SensorFeature* SIMULATED_ORIENTATION_SENSORS = new SensorFeature("Simulated Orientation Sensors");
+    public: SensorFeature* SIMULATED_ORIENTATION_SENSORS;
 
-    public: SensorFeature* YAW = new SensorFeature("Yaw");
+    public: SensorFeature* YAW;
 
-    public: SensorFeature* YAW_MINUS_RIGHT_PLUS_LEFT = new SensorFeature("Yaw -Right +Left");
+    public: SensorFeature* YAW_MINUS_RIGHT_PLUS_LEFT;
 
-    public: SensorFeature* YAW_MINUS_LEFT_PLUS_RIGHT = new SensorFeature("Yaw -Left +Right ");
+    public: SensorFeature* YAW_MINUS_LEFT_PLUS_RIGHT;
 
-    public: SensorFeature* PITCH = new SensorFeature("Pitch");
+    public: SensorFeature* PITCH;
 
-    public: SensorFeature* ROLL = new SensorFeature("Roll");
+    public: SensorFeature* ROLL;
 
 };
 
@@ -81,3 +91,13 @@ private: SensorFeatureFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/configuration/feature/SensorFeature.h")
+#include "org/allbinary/game/configuration/feature/SensorFeature.h"
+#endif
+
+        #endif
+    

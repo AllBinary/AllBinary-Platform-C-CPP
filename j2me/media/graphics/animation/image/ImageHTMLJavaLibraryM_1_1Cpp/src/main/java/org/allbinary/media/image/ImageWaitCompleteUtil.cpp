@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageWaitCompleteUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,21 +84,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCompleteUtil.h"
 
-class ImageWaitCompleteUtil: public ImageCompleteUtil {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(18000);
-
-    private: TimeDelayHelper* allTimeDelayHelper = new TimeDelayHelper(120000);
-
-public: ImageWaitCompleteUtil(){
+ImageWaitCompleteUtil::ImageWaitCompleteUtil() : logUtil(LogUtil::getInstance()), timeDelayHelper(new TimeDelayHelper(18000)), allTimeDelayHelper(new TimeDelayHelper(120000)){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void waitForImage(Image* image, std::string name){
+    auto ImageWaitCompleteUtil::waitForImage(Image* image, std::string name) -> void{
 this->timeDelayHelper->setStartTimeTNT();
     
 this->waitForATime(image, name, this->timeDelayHelper);
@@ -98,7 +101,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public: void handleTimeout(std::string name){
+    auto ImageWaitCompleteUtil::handleTimeout(std::string name) -> void{
 
                         if(this->timeDelayHelper->isTimeTNT())
                         
@@ -106,7 +109,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
                                     
 
 
-                            throw new Exception("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw Exception(JavaString::valueOf("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: ") +JavaString::valueOf(name));
                     
 
                                     }
@@ -116,7 +119,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    private: void waitForATime(Image* image, std::string name, TimeDelayHelper* timeDelayHelper){
+    auto ImageWaitCompleteUtil::waitForATime(Image* image, std::string name, TimeDelayHelper* timeDelayHelper) -> void{
 
     PlaynImage* playnImage = dynamic_cast<PlaynImage*>(image);;
     
@@ -133,7 +136,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
                                     
 
 
-                            throw new Exception("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw Exception(JavaString::valueOf("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: ") +JavaString::valueOf(name));
                     
 
                                     }
@@ -154,7 +157,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public: void waitForAll(){
+    auto ImageWaitCompleteUtil::waitForAll() -> void{
 this->allTimeDelayHelper->setStartTimeTNT();
     
 
@@ -166,7 +169,7 @@ this->allTimeDelayHelper->setStartTimeTNT();
 
     int32_t size = objectArray.size();;
     
-PreLogUtil::put("Image Total: " +size, this, "waitForAll");
+PreLogUtil::put(JavaString::valueOf("Image Total: ") +JavaString::valueOf(size), this, "waitForAll");
     
 
 
@@ -182,7 +185,6 @@ this->waitForATime(dynamic_cast<Image*>(hashtable->get(objectArray[index])), obj
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_CPP

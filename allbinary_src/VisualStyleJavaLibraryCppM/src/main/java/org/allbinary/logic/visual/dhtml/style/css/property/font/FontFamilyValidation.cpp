@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/font/FontFamilyValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,11 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/style/css/property/font/FontFamilyView.h"
 
-class FontFamilyValidation: public FontFamilyView, public ValidationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: FontFamilyValidation() : FontFamilyView(){
+FontFamilyValidation::FontFamilyValidation() : FontFamilyView(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +82,7 @@ public: FontFamilyValidation() : FontFamilyView(){
 }
 
 
-public: FontFamilyValidation(Node* node) : FontFamilyView(node){
+FontFamilyValidation::FontFamilyValidation(Node* node) : FontFamilyView(node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,26 +94,26 @@ public: FontFamilyValidation(Node* node) : FontFamilyView(node){
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto FontFamilyValidation::isValid() -> bool{
 
         try {
             
     bool valid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("FontFamilyValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("FontFamilyValidation", this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("CssValidation: " +valid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("CssValidation: ") +JavaString::valueOf(valid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -122,10 +129,10 @@ public: FontFamilyValidation(Node* node) : FontFamilyView(node){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate data", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate data", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -143,7 +150,7 @@ public: FontFamilyValidation(Node* node) : FontFamilyView(node){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto FontFamilyValidation::validationInfo() -> std::string{
 
         try {
             
@@ -162,7 +169,7 @@ stringBuffer->append("Css Font Family Property Validation Error");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation info error", this, "validationInfo()", &e);
@@ -183,7 +190,7 @@ stringBuffer->append("Css Font Family Property Validation Error");
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toValidationInfoDoc(){
+    auto FontFamilyValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -195,7 +202,7 @@ stringBuffer->append("Css Font Family Property Validation Error");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toValidationInfoNode(Document* document){
+    auto FontFamilyValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -205,7 +212,6 @@ stringBuffer->append("Css Font Family Property Validation Error");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVALIDATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLVersionValidator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,33 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLVersionValidator
-            : public Object
-         {
 
-    private: static OpenGLVersionValidator* instance() { static std::unique_ptr<OpenGLVersionValidator> value(new OpenGLVersionValidator()); return value.get(); }
+OpenGLVersionValidator::OpenGLVersionValidator() {
+        }
+        auto OpenGLVersionValidator::instance_owner() -> OpenGLVersionValidator* { static std::unique_ptr<OpenGLVersionValidator> value(new OpenGLVersionValidator()); return value.get(); }
+OpenGLVersionValidator* OpenGLVersionValidator::instance = OpenGLVersionValidator::instance_owner();
 
-    public: static OpenGLVersionValidator* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLVersionValidator::instance();
-    
-}
-
-
-    public: bool isGL31OrHigher(){
+    auto OpenGLVersionValidator::getInstance() -> OpenGLVersionValidator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
+                        return OpenGLVersionValidator::instance;
     
 }
 
 
-    public: bool isAvailable(std::string glVersionRequired){
+    auto OpenGLVersionValidator::isGL31OrHigher() -> bool{
 
 
 
@@ -84,13 +84,20 @@ class OpenGLVersionValidator
 }
 
 
-    public: void setShaderComposite(ShaderComposite* shaderComposite, Object* anyType){
+    auto OpenGLVersionValidator::isAvailable(std::string glVersionRequired) -> bool{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
 }
 
 
-    public: int32_t EGL_CONTEXT_CLIENT_VERSION_VALUE =  -1;
+    auto OpenGLVersionValidator::setShaderComposite(ShaderComposite* shaderComposite, Object* anyType) -> void{
+}
 
-};
 
-            
 
+
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_CPP

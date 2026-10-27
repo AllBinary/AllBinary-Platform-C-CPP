@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORES_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScores.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,21 +74,8 @@
         #include "org/allbinary/game/score/HighScoresInterface.h"
 #include "org/allbinary/game/score/HighScore.h"
 
-class HighScores
-            : public Object
-        , public HighScoresInterface {
 
-    private: BasicArrayList* orderedHighScoresList = new BasicArrayListD();
-
-    private: std::string name;
-
-    private: std::string heading;
-
-    private: const std::string columnOneHeading = "Name";
-
-    private: std::string columnTwoHeading;
-
-public: HighScores(std::string name, std::string heading, std::string columnTwoHeading){
+HighScores::HighScores(std::string name, std::string heading, std::string columnTwoHeading) : orderedHighScoresList(new BasicArrayListD()){
 this->name= name;
     
 this->heading= heading;
@@ -88,13 +85,13 @@ this->columnTwoHeading= columnTwoHeading;
 }
 
 
-    public: void setList(BasicArrayList* orderedHighScoresList){
+    auto HighScores::setList(BasicArrayList* orderedHighScoresList) -> void{
 this->orderedHighScoresList= orderedHighScoresList;
     
 }
 
 
-    public: BasicArrayList* getList(){
+    auto HighScores::getList() -> BasicArrayList*{
 
 
 
@@ -104,7 +101,7 @@ this->orderedHighScoresList= orderedHighScoresList;
 }
 
 
-    public: std::string getName(){
+    auto HighScores::getName() -> std::string{
 
 
 
@@ -114,7 +111,7 @@ this->orderedHighScoresList= orderedHighScoresList;
 }
 
 
-    public: int32_t getTotal(){
+    auto HighScores::getTotal() -> int32_t{
 
 
 
@@ -124,13 +121,13 @@ this->orderedHighScoresList= orderedHighScoresList;
 }
 
 
-    public: void addHighScore(HighScore* newHighScore){
+    auto HighScores::addHighScore(HighScore* newHighScore) -> void{
 this->orderedHighScoresList->add(newHighScore);
     
 }
 
 
-    public: std::string getHeading(){
+    auto HighScores::getHeading() -> std::string{
 
 
 
@@ -140,7 +137,7 @@ this->orderedHighScoresList->add(newHighScore);
 }
 
 
-    public: std::string getColumnOneHeading(){
+    auto HighScores::getColumnOneHeading() -> std::string{
 
 
 
@@ -150,7 +147,7 @@ this->orderedHighScoresList->add(newHighScore);
 }
 
 
-    public: std::string getColumnTwoHeading(){
+    auto HighScores::getColumnTwoHeading() -> std::string{
 
 
 
@@ -162,7 +159,7 @@ this->orderedHighScoresList->add(newHighScore);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isBestScore(HighScore* newHighScore){
+    auto HighScores::isBestScore(HighScore* newHighScore) -> bool{
 
 
 
@@ -172,7 +169,7 @@ this->orderedHighScoresList->add(newHighScore);
 }
 
 
-    public: std::string toString(){
+    auto HighScores::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -195,7 +192,6 @@ stringBuffer->appendint(this->orderedHighScoresList->size());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORES_CPP

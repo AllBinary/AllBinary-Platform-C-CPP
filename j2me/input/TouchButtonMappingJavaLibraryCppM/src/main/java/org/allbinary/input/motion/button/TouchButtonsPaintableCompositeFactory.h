@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/input/mapping/InputMappingInterface.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/paint/ProcessPaintable.h>
-
-      
+class InputMappingInterface;
+class BasicColor;
+class ProcessPaintable;
 
 
 
@@ -56,17 +55,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/TouchButtonsPaintableComposite.h"
+        class TouchButtonsPaintableComposite;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonsPaintableCompositeFactory
-            : public Object
+            : public virtual Object
          {
 
     public: static ProcessPaintable* getInstance(InputMappingInterface* inputMappingInterface, BasicColor* basicColor);
 
+
+            
+    public: TouchButtonsPaintableCompositeFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/mapping/InputMappingInterface.h>)
+#include <org/allbinary/game/input/mapping/InputMappingInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/ProcessPaintable.h>)
+#include <org/allbinary/graphics/paint/ProcessPaintable.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonsPaintableComposite.h")
+#include "org/allbinary/input/motion/button/TouchButtonsPaintableComposite.h"
+#endif
+
+        #endif
+    

@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYER2SELECTEDLOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYER2SELECTEDLOGHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class LogUtil;
+class StringMaker;
 
 
 
@@ -52,15 +53,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
-#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+class PathFindingLayerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSLayer2SelectedLogHelper: public RTSLayer2LogHelper {
 
-    private: static RTSLayer2SelectedLogHelper* instanceC() { static std::unique_ptr<RTSLayer2SelectedLogHelper> value(new RTSLayer2SelectedLogHelper()); return value.get(); }
+    private: static RTSLayer2SelectedLogHelper* instanceC_owner();
+    private: static RTSLayer2SelectedLogHelper* instanceC;
 
     public: static RTSLayer2SelectedLogHelper* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: RTSLayer2SelectedLogHelper();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     private: const std::string TRACK_TO_FIRE_OR_MOVE = "trackTo:fireOrMove";
 
@@ -92,3 +102,22 @@ class RTSLayer2SelectedLogHelper: public RTSLayer2LogHelper {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYER2SELECTEDLOGHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RTSLAYER2SELECTEDLOGHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYER2SELECTEDLOGHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/game/layer/RTSLayer2LogHelper.h")
+#include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
+#endif
+#if __has_include("org/allbinary/game/layer/PathFindingLayerInterface.h")
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#endif
+
+        #endif
+    

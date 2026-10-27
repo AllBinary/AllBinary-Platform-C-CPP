@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/entry/EntryData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,45 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EntryData
-            : public Object
-         {
+auto EntryData::instance_owner() -> EntryData* { static std::unique_ptr<EntryData> value(new EntryData()); return value.get(); }
+EntryData* EntryData::instance = EntryData::instance_owner();
 
-    private: static EntryData* instance() { static std::unique_ptr<EntryData> value(new EntryData()); return value.get(); }
-
-    public: static EntryData* getInstance(){
+    auto EntryData::getInstance() -> EntryData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EntryData::instance();
+                        return EntryData::instance;
     
 }
 
 
-private: EntryData(){
+EntryData::EntryData(){
 }
 
 
-    public: const std::string ID = "ENTRY_ID";
 
-    public: const std::string ENCRYPTION = "ENTRY_ENCRYPTION";
 
-    public: const std::string TIMECREATED = "ENTRY_TIMECREATED";
-
-    public: const std::string LASTMODIFIED = "ENTRY_LASTMODIFIED";
-
-    public: const std::string DEFAULT = "ENTRY_DEFAULT";
-
-    public: const std::string SPECIAL = "ENTRY_SPECIAL";
-
-    public: const std::string ENABLE = "ENTRY_ENABLE";
-
-    public: const std::string YES = "Yes";
-
-    public: const std::string NO = "No";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_CPP

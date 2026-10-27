@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -52,22 +55,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/BasicColor.h"
-#include "org/allbinary/graphics/color/BasicColorFactory.h"
+        class BasicColor;
+class BasicColorFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SmallBasicColorCacheFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static SmallBasicColorCacheFactory* instance() { static std::unique_ptr<SmallBasicColorCacheFactory> value(new SmallBasicColorCacheFactory()); return value.get(); }
+    private: static SmallBasicColorCacheFactory* instance_owner();
+    private: static SmallBasicColorCacheFactory* instance;
 
     public: static SmallBasicColorCacheFactory* getInstance();
 
     private: const int32_t SIZE = 255;
 
-    private: const std::vector<int32_t> INDEX_TO_COLOR = std::vector<int32_t>(this->SIZE);
+    private: std::vector<int32_t> INDEX_TO_COLOR;
 
-    private: const std::vector<BasicColor*> BASIC_COLOR_ARRAY = std::vector<BasicColor*>(this->SIZE);
+    private: std::vector<BasicColor*> BASIC_COLOR_ARRAY;
 
     private: int32_t colorIndex = 0;
 
@@ -83,3 +91,19 @@ private: SmallBasicColorCacheFactory();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+
+        #endif
+    

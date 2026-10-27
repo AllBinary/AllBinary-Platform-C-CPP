@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_EDITVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_SHIPPING_EDITVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/shipping/EditValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,11 +79,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/shipping/ShippingAddressView.h"
 
-class EditValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-    private: std::string value;
-
-public: EditValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+EditValidationView::EditValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +95,7 @@ this->value= httpTransformInfoInterface->getPageContext()->getRequest()->getPara
 }
 
 
-    public: bool isValid(){
+    auto EditValidationView::isValid() -> bool{
 
                         if(this->getWeblisketSession()->getUserName() != 
                                     nullptr
@@ -128,32 +135,22 @@ this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->streetAddress.isValid();;
+                        return this->streetAddress->isValid();;
     
 }
 
 
-    public: std::string validationInfo(){
+    auto EditValidationView::validationInfo() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->streetAddress.validationInfo();;
+                        return this->streetAddress->validationInfo();;
     
 }
 
 
-    public: Document* toValidationInfoDoc(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -163,7 +160,16 @@ this->streetAddress= billingAddressesEntity->get(int32_t(this->value));
 }
 
 
-};
+    auto EditValidationView::toValidationInfoNode(Document* document) -> Node*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+
+
+        #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_EDITVALIDATIONVIEW_CPP

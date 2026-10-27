@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREENRELATIONALUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREENRELATIONALUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/ScreenRelationalUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -37,23 +47,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 
-class ScreenRelationalUtil
-            : public Object
-         {
 
-    private: static ScreenRelationalUtil* instance() { static std::unique_ptr<ScreenRelationalUtil> value(new ScreenRelationalUtil()); return value.get(); }
+ScreenRelationalUtil::ScreenRelationalUtil() {
+        }
+        auto ScreenRelationalUtil::instance_owner() -> ScreenRelationalUtil* { static std::unique_ptr<ScreenRelationalUtil> value(new ScreenRelationalUtil()); return value.get(); }
+ScreenRelationalUtil* ScreenRelationalUtil::instance = ScreenRelationalUtil::instance_owner();
 
-    public: static ScreenRelationalUtil* getInstance(){
+    auto ScreenRelationalUtil::getInstance() -> ScreenRelationalUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenRelationalUtil::instance();
+                        return ScreenRelationalUtil::instance;
     
 }
 
 
-    public: float getScaleImage(Image* image){
+    auto ScreenRelationalUtil::getScaleImage(Image* image) -> float{
 
 
 
@@ -63,7 +73,7 @@ class ScreenRelationalUtil
 }
 
 
-    public: float getScaleWH(int32_t aWidth, int32_t aHeight){
+    auto ScreenRelationalUtil::getScaleWH(int32_t aWidth, int32_t aHeight) -> float{
 
 
 
@@ -73,7 +83,7 @@ class ScreenRelationalUtil
 }
 
 
-    public: float getScaleWHA(int32_t aWidth, int32_t aHeight, int32_t add){
+    auto ScreenRelationalUtil::getScaleWHA(int32_t aWidth, int32_t aHeight, int32_t add) -> float{
 
     DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
@@ -110,7 +120,7 @@ class ScreenRelationalUtil
 }
 
 
-    public: int32_t getScaledHeight(int32_t aWidth, int32_t aHeight){
+    auto ScreenRelationalUtil::getScaledHeight(int32_t aWidth, int32_t aHeight) -> int32_t{
 
 
 
@@ -120,7 +130,7 @@ class ScreenRelationalUtil
 }
 
 
-    public: int32_t getScaledHeightAdd(int32_t aWidth, int32_t aHeight, int32_t add){
+    auto ScreenRelationalUtil::getScaledHeightAdd(int32_t aWidth, int32_t aHeight, int32_t add) -> int32_t{
 
 
 
@@ -130,7 +140,6 @@ class ScreenRelationalUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREENRELATIONALUTIL_CPP

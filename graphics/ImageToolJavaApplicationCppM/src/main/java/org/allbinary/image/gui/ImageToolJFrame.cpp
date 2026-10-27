@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_CPP
+        #define ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/gui/ImageToolJFrame.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -122,19 +132,8 @@
 #include "org/allbinary/image/gui/MirrorSpriteImageJPanel.h"
 #include "org/allbinary/image/gui/MirrorImageJPanel.h"
 
-class ImageToolJFrame: public javax::swing::JFrame, public FileJDialogListenerInterface {
 
-    private: static inline ImageProcessorInputCompositeInterface* imageProcessorInputCompositeInterface;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: FileJDialog* fileJDialog;
-
-    private: ImageProcessorInput* imageProcessorInput;
-
-public: ImageToolJFrame(){
+ImageToolJFrame::ImageToolJFrame() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->initComponents();
     
 
@@ -161,7 +160,7 @@ this->fileJDialog->addFinishedListener(this);
 }
 
 
-    private: void initComponents(){
+    auto ImageToolJFrame::initComponents() -> void{
 analysisActionJDialog= new javax::swing::JDialog();
     
 this->titleJLabel= new javax::swing::JLabel();
@@ -256,11 +255,11 @@ okJButtonActionPerformed(evt);
     
 this->analysisActionJDialog->getContentPane()->setLayout(analysisActionJDialogLayout);
     
-analysisActionJDialogLayout->setHorizontalGroup(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->addContainerGap()->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)->add(blueJLabel)->add(greenJLabel)->add(redJLabel)->add(colorRangeJLabel))->add(29, 29, 29)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)->add(org.jdesktop.layout.GroupLayout.TRAILING, minJLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 58, Short::MAX_VALUE)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)->add(org.jdesktop.layout.GroupLayout.LEADING, minBlueJTextField)->add(org.jdesktop.layout.GroupLayout.LEADING, minGreenJTextField)->add(org.jdesktop.layout.GroupLayout.LEADING, minRedJTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 42, Short::MAX_VALUE)->add(org.jdesktop.layout.GroupLayout.LEADING, okJButton)))->addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)->add(org.jdesktop.layout.GroupLayout.LEADING, analysisActionJDialogLayout->createSequentialGroup()->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)->add(org.jdesktop.layout.GroupLayout.LEADING, maxRedJTextField)->add(org.jdesktop.layout.GroupLayout.LEADING, analysisActionJDialogLayout->createSequentialGroup()->add(1, 1, 1)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)->add(maxBlueJTextField)->add(maxGreenJTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 43, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))->addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 17, Short::MAX_VALUE))->add(org.jdesktop.layout.GroupLayout.LEADING, maxJLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 61, Short::MAX_VALUE))->addContainerGap())->add(org.jdesktop.layout.GroupLayout.TRAILING, analysisActionJDialogLayout->createSequentialGroup()->add(titleJLabel)->add(25, 25, 25)))));
+analysisActionJDialogLayout->setHorizontalGroup(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->addContainerGap()->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(blueJLabel)->add(greenJLabel)->add(redJLabel)->add(colorRangeJLabel))->add(29, 29, 29)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(org.jdesktop->layout->GroupLayout->TRAILING, minJLabel, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, 58, Short::MAX_VALUE)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->TRAILING, false)->add(org.jdesktop->layout->GroupLayout->LEADING, minBlueJTextField)->add(org.jdesktop->layout->GroupLayout->LEADING, minGreenJTextField)->add(org.jdesktop->layout->GroupLayout->LEADING, minRedJTextField, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, 42, Short::MAX_VALUE)->add(org.jdesktop->layout->GroupLayout->LEADING, okJButton)))->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->TRAILING)->add(org.jdesktop->layout->GroupLayout->LEADING, analysisActionJDialogLayout->createSequentialGroup()->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->TRAILING, false)->add(org.jdesktop->layout->GroupLayout->LEADING, maxRedJTextField)->add(org.jdesktop->layout->GroupLayout->LEADING, analysisActionJDialogLayout->createSequentialGroup()->add(1, 1, 1)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(maxBlueJTextField)->add(maxGreenJTextField, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, 43, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE))))->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED, 17, Short::MAX_VALUE))->add(org.jdesktop->layout->GroupLayout->LEADING, maxJLabel, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, 61, Short::MAX_VALUE))->addContainerGap())->add(org.jdesktop->layout->GroupLayout->TRAILING, analysisActionJDialogLayout->createSequentialGroup()->add(titleJLabel)->add(25, 25, 25)))));
     
-analysisActionJDialogLayout->setVerticalGroup(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->add(titleJLabel)->addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)->add(minJLabel)->add(colorRangeJLabel)->add(maxJLabel))->addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)->add(redJLabel)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)->add(minRedJTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)->add(maxRedJTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))->addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)->add(greenJLabel)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)->add(minGreenJTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)->add(maxGreenJTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))->addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)->add(blueJLabel)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)->add(minBlueJTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)->add(maxBlueJTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))->add(16, 16, 16)->add(okJButton)->addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+analysisActionJDialogLayout->setVerticalGroup(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(analysisActionJDialogLayout->createSequentialGroup()->add(titleJLabel)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->BASELINE)->add(minJLabel)->add(colorRangeJLabel)->add(maxJLabel))->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->TRAILING)->add(redJLabel)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->BASELINE)->add(minRedJTextField, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->add(maxRedJTextField, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)))->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->TRAILING)->add(greenJLabel)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->BASELINE)->add(minGreenJTextField, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->add(maxGreenJTextField, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)))->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->TRAILING)->add(blueJLabel)->add(analysisActionJDialogLayout->createParallelGroup(org.jdesktop->layout->GroupLayout->BASELINE)->add(minBlueJTextField, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->add(maxBlueJTextField, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)))->add(16, 16, 16)->add(okJButton)->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
-setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+setDefaultCloseOperation(javax.swing->WindowConstants->EXIT_ON_CLOSE);
     
 getContentPane()->setLayout(new java::awt::GridLayout(1, 0));
     
@@ -470,7 +469,7 @@ pack();
 }
 
 
-    private: void createStripImageJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::createStripImageJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             
@@ -495,7 +494,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "createStripImageJMenuI
 }
 
 
-    private: void okJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::okJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "okJButtonActionPerformed");
@@ -526,11 +525,11 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "okJButtonActionPerform
 }
 
 
-    private: void processingJMenuActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::processingJMenuActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void openImageJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::openImageJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "openImageJMenuItemActionPerformed");
@@ -548,10 +547,10 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "openImageJMenuItemActi
 }
 
 
-    public: void onFiles(std::vector<File*> files){
+    auto ImageToolJFrame::onFiles(std::vector<File*> files) -> void{
 
         try {
-            this->logUtil->putF("Reading " +files.size() +" files.", this, "onFiles");
+            this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Reading ") +JavaString::valueOf(files.size())) +JavaString::valueOf(" files."), this, "onFiles");
     
 Arrays::sort(files, class extends Comparator<File*>
                                 {
@@ -628,7 +627,7 @@ bufferedImageArray[index]= ImageIO::read(files[index]);
                                     
 
 
-                            throw new Exception("Unable to read file: " +files[index].getPath());
+                            throw Exception(JavaString::valueOf("Unable to read file: ") +JavaString::valueOf(files[index]->getPath()));
                     
 
                                     }
@@ -661,11 +660,11 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "onFiles", &e);
 }
 
 
-    private: void fileJMenuActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::fileJMenuActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void analyzeJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::analyzeJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "analyzeJMenuItemActionPerformed");
@@ -683,7 +682,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "analyzeJMenuItemAction
 }
 
 
-    private: void generateRotationSpriteJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::generateRotationSpriteJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "generateRotationSpriteJMenuItemActionPerformed");
@@ -710,7 +709,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateRotationSprite
 }
 
 
-    private: void generateSpriteSplitterMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::generateSpriteSplitterMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "generateRotationSpriteJMenuItemActionPerformed");
@@ -737,7 +736,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateRotationMenuIt
 }
 
 
-    private: void generateRotationMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::generateRotationMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "generateRotationSpriteJMenuItemActionPerformed");
@@ -764,7 +763,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateRotationMenuIt
 }
 
 
-    private: void scaleImagesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::scaleImagesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "scaleImagesJMenuItemActionPerformed");
@@ -791,7 +790,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "scaleImagesJMenuItemAc
 }
 
 
-    private: void createIconsJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::createIconsJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "createIconsJMenuItemActionPerformed");
@@ -818,7 +817,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "scaleImagesJMenuItemAc
 }
 
 
-    private: void canvasImagesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::canvasImagesJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "canvasImagesJMenuItemActionPerformed");
@@ -845,7 +844,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "scaleImagesJMenuItemAc
 }
 
 
-    private: void generateMirrorSpriteMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::generateMirrorSpriteMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "generateMirrorSpriteJMenuItemActionPerformed");
@@ -872,7 +871,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateMirrorSpriteJM
 }
 
 
-    private: void mirrorJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageToolJFrame::mirrorJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->logUtil->putF("Starting", this, "generateMirrorJMenuItemActionPerformed");
@@ -899,7 +898,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateMirrorJMenuIte
 }
 
 
-    private: ColorRangeInterface* getColorRangeInterface(){
+    auto ImageToolJFrame::getColorRangeInterface() -> ColorRangeInterface*{
 
     ColorRangeInterface* colorRangeInterface = dynamic_cast<ColorRangeInterface*>(new ColorRange());;
     
@@ -924,7 +923,7 @@ colorRangeInterface->setMaxBlue((int32_t(this->getMaxBlueJTextField()->getText()
 }
 
 
-    public: javax::swing::JTextField* getMaxBlueJTextField(){
+    auto ImageToolJFrame::getMaxBlueJTextField() -> javax::swing::JTextField*{
 
 
 
@@ -934,13 +933,13 @@ colorRangeInterface->setMaxBlue((int32_t(this->getMaxBlueJTextField()->getText()
 }
 
 
-    public: void setMaxBlueJTextField(javax::swing::JTextField* maxBlueJTextField){
+    auto ImageToolJFrame::setMaxBlueJTextField(javax::swing::JTextField* maxBlueJTextField) -> void{
 this->maxBlueJTextField= this->maxBlueJTextField;
     
 }
 
 
-    public: javax::swing::JTextField* getMaxGreenJTextField(){
+    auto ImageToolJFrame::getMaxGreenJTextField() -> javax::swing::JTextField*{
 
 
 
@@ -950,13 +949,13 @@ this->maxBlueJTextField= this->maxBlueJTextField;
 }
 
 
-    public: void setMaxGreenJTextField(javax::swing::JTextField* maxGreenJTextField){
+    auto ImageToolJFrame::setMaxGreenJTextField(javax::swing::JTextField* maxGreenJTextField) -> void{
 this->maxGreenJTextField= this->maxGreenJTextField;
     
 }
 
 
-    public: javax::swing::JTextField* getMaxRedJTextField(){
+    auto ImageToolJFrame::getMaxRedJTextField() -> javax::swing::JTextField*{
 
 
 
@@ -966,13 +965,13 @@ this->maxGreenJTextField= this->maxGreenJTextField;
 }
 
 
-    public: void setMaxRedJTextField(javax::swing::JTextField* maxRedJTextField){
+    auto ImageToolJFrame::setMaxRedJTextField(javax::swing::JTextField* maxRedJTextField) -> void{
 this->maxRedJTextField= this->maxRedJTextField;
     
 }
 
 
-    public: javax::swing::JTextField* getMinBlueJTextField(){
+    auto ImageToolJFrame::getMinBlueJTextField() -> javax::swing::JTextField*{
 
 
 
@@ -982,13 +981,13 @@ this->maxRedJTextField= this->maxRedJTextField;
 }
 
 
-    public: void setMinBlueJTextField(javax::swing::JTextField* minBlueJTextField){
+    auto ImageToolJFrame::setMinBlueJTextField(javax::swing::JTextField* minBlueJTextField) -> void{
 this->minBlueJTextField= this->minBlueJTextField;
     
 }
 
 
-    public: javax::swing::JTextField* getMinGreenJTextField(){
+    auto ImageToolJFrame::getMinGreenJTextField() -> javax::swing::JTextField*{
 
 
 
@@ -998,13 +997,13 @@ this->minBlueJTextField= this->minBlueJTextField;
 }
 
 
-    public: void setMinGreenJTextField(javax::swing::JTextField* minGreenJTextField){
+    auto ImageToolJFrame::setMinGreenJTextField(javax::swing::JTextField* minGreenJTextField) -> void{
 this->minGreenJTextField= this->minGreenJTextField;
     
 }
 
 
-    public: javax::swing::JTextField* getMinRedJTextField(){
+    auto ImageToolJFrame::getMinRedJTextField() -> javax::swing::JTextField*{
 
 
 
@@ -1014,73 +1013,12 @@ this->minGreenJTextField= this->minGreenJTextField;
 }
 
 
-    public: void setMinRedJTextField(javax::swing::JTextField* minRedJTextField){
+    auto ImageToolJFrame::setMinRedJTextField(javax::swing::JTextField* minRedJTextField) -> void{
 this->minRedJTextField= this->minRedJTextField;
     
 }
 
 
-    private: javax::swing::JDialog* analysisActionJDialog;
 
-    private: javax::swing::JMenuItem* analyzeJMenuItem;
 
-    private: javax::swing::JLabel* blueJLabel;
-
-    private: javax::swing::JLabel* colorRangeJLabel;
-
-    private: javax::swing::JMenuItem* createStripImageJMenuItem;
-
-    private: javax::swing::JMenu* fileJMenu;
-
-    private: javax::swing::JMenuItem* generateSpriteSplitterMenuItem;
-
-    private: javax::swing::JMenuItem* generateRotationMenuItem;
-
-    private: javax::swing::JMenuItem* generateMirrorSpriteMenuItem;
-
-    private: javax::swing::JMenuItem* generateRotationSpriteJMenuItem;
-
-    private: javax::swing::JLabel* greenJLabel;
-
-    private: javax::swing::JPanel* jPanel1;
-
-    private: javax::swing::JMenuBar* mainJMenuBar;
-
-    private: javax::swing::JTextField* maxBlueJTextField;
-
-    private: javax::swing::JTextField* maxGreenJTextField;
-
-    private: javax::swing::JLabel* maxJLabel;
-
-    private: javax::swing::JTextField* maxRedJTextField;
-
-    private: javax::swing::JTextField* minBlueJTextField;
-
-    private: javax::swing::JTextField* minGreenJTextField;
-
-    private: javax::swing::JLabel* minJLabel;
-
-    private: javax::swing::JTextField* minRedJTextField;
-
-    private: javax::swing::JMenuItem* mirrorJMenuItem;
-
-    private: javax::swing::JButton* okJButton;
-
-    private: javax::swing::JMenuItem* openImageJMenuItem;
-
-    private: javax::swing::JMenu* processingJMenu;
-
-    private: javax::swing::JLabel* redJLabel;
-
-    private: javax::swing::JMenuItem* scaleImagesJMenuItem;
-
-    private: javax::swing::JMenuItem* canvasImagesJMenuItem;
-
-    private: javax::swing::JMenuItem* createIconImagesJMenuItem;
-
-    private: javax::swing::JLabel* titleJLabel;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_CPP

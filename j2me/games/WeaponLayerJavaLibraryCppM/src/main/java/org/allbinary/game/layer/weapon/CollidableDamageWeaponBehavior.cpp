@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/weapon/CollidableDamageWeaponBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,13 +82,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CollidableDamageWeaponBehavior: public CollidableDestroyableDamageableBehavior {
 
-    private: bool collided= false;
-
-    protected: CollisionHelper* collisionHelper;
-
-public: CollidableDamageWeaponBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+CollidableDamageWeaponBehavior::CollidableDamageWeaponBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,7 +99,7 @@ this->collisionHelper= CollidableHelperFactory::getInstance();
 }
 
 
-    public: void init(AllBinaryLayer* sourceLayerInterface){
+    auto CollidableDamageWeaponBehavior::init(AllBinaryLayer* sourceLayerInterface) -> void{
 this->setCollided(false);
     
 this->collisionHelper->setOwnerLayerInterface(sourceLayerInterface);
@@ -102,7 +107,7 @@ this->collisionHelper->setOwnerLayerInterface(sourceLayerInterface);
 }
 
 
-    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer){
+    auto CollidableDamageWeaponBehavior::isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer) -> bool{
 
                         if(this->collisionHelper->isCollidable(collisionLayer))
                         
@@ -115,7 +120,7 @@ this->collisionHelper->setOwnerLayerInterface(sourceLayerInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isCollision(ownerLayer, collisionLayer);;
+                        return CollidableDestroyableDamageableBehavior::isCollision(ownerLayer, collisionLayer);;
     
 
                                     }
@@ -134,15 +139,15 @@ this->collisionHelper->setOwnerLayerInterface(sourceLayerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer){
-super.collide(ownerLayer, collisionLayer);
+    auto CollidableDamageWeaponBehavior::collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer) -> void{
+CollidableDestroyableDamageableBehavior::collide(ownerLayer, collisionLayer);
     
 this->collided= true;
     
 }
 
 
-    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
+    auto CollidableDamageWeaponBehavior::isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> bool{
 
                         if(this->collisionHelper->isCollidable(dynamic_cast<CollidableCompositeLayer*>(collidableInterfaceCompositeInterface)))
                         
@@ -155,7 +160,7 @@ this->collided= true;
                         
                                     {
                                     
-                        if(this->layerCollisionUtil.isCollision(ownerLayer, layerInterface))
+                        if(this->layerCollisionUtil->isCollision(ownerLayer, layerInterface))
                         
                                     {
                                     
@@ -184,15 +189,15 @@ this->collided= true;
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
-this->damageUtil.process(dynamic_cast<DamageableInterface*>(ownerLayer), dynamic_cast<DamageableInterface*>(collidableInterfaceCompositeInterface));
+    auto CollidableDamageWeaponBehavior::collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> void{
+this->damageUtil->process(dynamic_cast<DamageableInterface*>(ownerLayer), dynamic_cast<DamageableInterface*>(collidableInterfaceCompositeInterface));
     
 this->collided= true;
     
 }
 
 
-    public: CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface){
+    auto CollidableDamageWeaponBehavior::getCollisionTypeWith(AllBinaryLayer* layerInterface) -> CollisionType*{
 
 
 
@@ -202,7 +207,7 @@ this->collided= true;
 }
 
 
-    public: bool isCollided(){
+    auto CollidableDamageWeaponBehavior::isCollided() -> bool{
 
 
 
@@ -212,13 +217,12 @@ this->collided= true;
 }
 
 
-    private: void setCollided(bool collided){
+    auto CollidableDamageWeaponBehavior::setCollided(bool collided) -> void{
 this->collided= collided;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_CPP

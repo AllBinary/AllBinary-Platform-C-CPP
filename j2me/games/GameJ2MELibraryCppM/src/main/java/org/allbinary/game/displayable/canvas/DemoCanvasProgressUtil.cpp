@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASPROGRESSUTIL_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASPROGRESSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/DemoCanvasProgressUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,17 +70,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
-class DemoCanvasProgressUtil
-            : public Object
-         {
 
-    public: static void showProgress(DemoCanvas* demoCanvas){
+DemoCanvasProgressUtil::DemoCanvasProgressUtil() {
+        }
+        
+    auto DemoCanvasProgressUtil::showProgress(DemoCanvas* demoCanvas) -> void{
 DemoCanvasProgressUtil::showProgressOptionallyInTheBackground(demoCanvas, false);
     
 }
 
 
-    public: static void showProgressOptionallyInTheBackground(DemoCanvas* demoCanvas, bool background){
+    auto DemoCanvasProgressUtil::showProgressOptionallyInTheBackground(DemoCanvas* demoCanvas, bool background) -> void{
 
     ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
@@ -90,7 +100,6 @@ demoCanvas->setPaintableInterface(demoCanvas->getDefaultPaintableInterface());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASPROGRESSUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATOR_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,24 +63,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorInterface.h"
 
-class TransformInfoObjectConfigGenerator
-            : public Object
-        , public TransformInfoObjectConfigGeneratorInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
+TransformInfoObjectConfigGenerator::TransformInfoObjectConfigGenerator() : commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: std::string process(std::string input){
+    auto TransformInfoObjectConfigGenerator::process(std::string input) -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATOR_CPP

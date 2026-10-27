@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONALINTERFACE_H
         #define ORG_ALLBINARY_DIRECTION_DIRECTIONALINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/math/Angle.h>
-
-      
+class Angle;
 
 
 
@@ -48,9 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/direction/Direction.h"
+        class Direction;
 
-class DirectionalInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class DirectionalInterface
+            : public virtual Object
+         {
 
     public: virtual void setFrameByDirection(Direction* direction) = 0;
 
@@ -66,3 +75,16 @@ class DirectionalInterface {
 
 
         #endif //ORG_ALLBINARY_DIRECTION_DIRECTIONALINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DIRECTION_DIRECTIONALINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DIRECTION_DIRECTIONALINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/math/Angle.h>)
+#include <org/allbinary/math/Angle.h>
+#endif
+#if __has_include("org/allbinary/direction/Direction.h")
+#include "org/allbinary/direction/Direction.h"
+#endif
+
+        #endif
+    

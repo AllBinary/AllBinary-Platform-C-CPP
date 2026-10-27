@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGAMEFEATURE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGAMEFEATURE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGameFeature.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTrackGameFeature: public GameFeature {
+GameFeature* RaceTrackGameFeature::MINI_MAP = new RaceTrackGameFeature("Mini Map");
+GameFeature* RaceTrackGameFeature::AUTO_FINISH_AI = new RaceTrackGameFeature("Auto Finish AI");
 
-    public: static inline GameFeature* MINI_MAP = new RaceTrackGameFeature("Mini Map");
-
-    public: static inline GameFeature* AUTO_FINISH_AI = new RaceTrackGameFeature("Auto Finish AI");
-
-protected: RaceTrackGameFeature(std::string name) : GameFeature(name){
+RaceTrackGameFeature::RaceTrackGameFeature(std::string name) : GameFeature(name){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,7 +69,6 @@ protected: RaceTrackGameFeature(std::string name) : GameFeature(name){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGAMEFEATURE_CPP

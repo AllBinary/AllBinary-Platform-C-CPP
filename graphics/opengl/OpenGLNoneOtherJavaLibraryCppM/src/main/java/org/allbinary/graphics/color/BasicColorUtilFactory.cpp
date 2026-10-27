@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTILFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTILFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/BasicColorUtilFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/color/BasicColorUtil.h"
 
-class BasicColorUtilFactory
-            : public Object
-         {
 
-    public: static BasicColorUtil* getInstance(){
+BasicColorUtilFactory::BasicColorUtilFactory() {
+        }
+        
+    auto BasicColorUtilFactory::getInstance() -> BasicColorUtil*{
 
 
 
@@ -60,7 +70,6 @@ class BasicColorUtilFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTILFACTORY_CPP

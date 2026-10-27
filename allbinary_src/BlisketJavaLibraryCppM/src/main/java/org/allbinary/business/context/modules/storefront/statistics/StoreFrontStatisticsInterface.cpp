@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,17 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontStatisticsInterface {
+//Interface - declared in the header
 
-    public: virtual StoreFrontAdvertisementsStatisticsInterface* getAdvertisements() = 0;
 
-    public: virtual StoreFrontUsersStatisticsInterface* getUsers() = 0;
 
-    public: virtual StoreFrontInventoryStatisticsInterface* getInventory() = 0;
-
-    public: virtual StoreFrontOrdersHistoryStatisticsInterface* getOrders() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSINTERFACE_CPP

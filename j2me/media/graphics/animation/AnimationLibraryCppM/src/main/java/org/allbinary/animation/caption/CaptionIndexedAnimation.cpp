@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONINDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONINDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/caption/CaptionIndexedAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -77,29 +87,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CaptionIndexedAnimation: public IndexedAnimation {
 
-    private: Animation* animationInterface;
-
-    private: IndexedAnimation* movieIndexedAnimationInterface;
-
-    private: int32_t captionDx;
-
-    private: int32_t captionDy;
-
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-    private: int32_t time;
-
-    private: AllBinaryEventObject* END_EVENT;
-
-    private: TimeDelayHelper* timeDelayHelper;
-
-    private: Player* player;
-
-public: CaptionIndexedAnimation(Animation* animationInterface, IndexedAnimation* movieIndexedAnimationInterface, Player* player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+CaptionIndexedAnimation::CaptionIndexedAnimation(Animation* animationInterface, IndexedAnimation* movieIndexedAnimationInterface, Player* player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -136,7 +125,7 @@ this->player->start();
 
                 //@Throws(Exception.constructor)
             
-    public: void nextFrame(){
+    auto CaptionIndexedAnimation::nextFrame() -> void{
 
                         if(this->timeDelayHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
@@ -158,7 +147,7 @@ this->player->start();
 }
 
 
-    public: bool isLastFrame(){
+    auto CaptionIndexedAnimation::isLastFrame() -> bool{
 
                         if(this->movieIndexedAnimationInterface->getFrame() == this->getSize() -1)
                         
@@ -185,19 +174,19 @@ this->player->start();
 }
 
 
-    public: void previousFrame(){
+    auto CaptionIndexedAnimation::previousFrame() -> void{
 this->movieIndexedAnimationInterface->previousFrame();
     
 }
 
 
-    public: void setFrame(int32_t index){
+    auto CaptionIndexedAnimation::setFrame(int32_t index) -> void{
 this->movieIndexedAnimationInterface->setFrame(index);
     
 }
 
 
-    public: int32_t getFrame(){
+    auto CaptionIndexedAnimation::getFrame() -> int32_t{
 
 
 
@@ -207,7 +196,7 @@ this->movieIndexedAnimationInterface->setFrame(index);
 }
 
 
-    public: int32_t getSize(){
+    auto CaptionIndexedAnimation::getSize() -> int32_t{
 
 
 
@@ -217,11 +206,11 @@ this->movieIndexedAnimationInterface->setFrame(index);
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto CaptionIndexedAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto CaptionIndexedAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -231,7 +220,7 @@ this->movieIndexedAnimationInterface->setFrame(index);
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto CaptionIndexedAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->animationInterface->paintXY(graphics, x +this->captionDx, y +this->captionDy);
     
 this->movieIndexedAnimationInterface->paintXY(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy);
@@ -239,7 +228,7 @@ this->movieIndexedAnimationInterface->paintXY(graphics, x +this->captionDx +this
 }
 
 
-    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+    auto CaptionIndexedAnimation::paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) -> void{
 this->animationInterface->paintThreedXYZ(graphics, x +this->captionDx, y +this->captionDy, z);
     
 this->movieIndexedAnimationInterface->paintThreedXYZ(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy, z);
@@ -247,7 +236,6 @@ this->movieIndexedAnimationInterface->paintThreedXYZ(graphics, x +this->captionD
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONINDEXEDANIMATION_CPP

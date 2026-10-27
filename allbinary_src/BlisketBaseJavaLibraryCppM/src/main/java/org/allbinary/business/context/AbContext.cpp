@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_ABCONTEXT_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_ABCONTEXT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/AbContext.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,24 +73,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbContext
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+AbContext::AbContext(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-    private: PageContext* pageContext;
-
-public: AbContext(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -92,7 +91,7 @@ this->pageContext= pageContext;
 }
 
 
-    public: WeblisketSessionInterface* getWeblisketSession(){
+    auto AbContext::getWeblisketSession() -> WeblisketSessionInterface*{
 
 
 
@@ -102,7 +101,7 @@ this->pageContext= pageContext;
 }
 
 
-    public: PageContext* getPageContext(){
+    auto AbContext::getPageContext() -> PageContext*{
 
 
 
@@ -112,7 +111,7 @@ this->pageContext= pageContext;
 }
 
 
-    public: HashMap<Object*, Object*>* getPropertiesHashMap(){
+    auto AbContext::getPropertiesHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -122,7 +121,6 @@ this->pageContext= pageContext;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_ABCONTEXT_CPP

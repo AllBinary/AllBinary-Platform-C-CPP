@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONMAPPING_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,19 +74,14 @@
         #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
 #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationData.h"
 
-class EmailServerConfigurationMapping
-            : public Object
-        , public TableMappingInterface {
 
-    private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
-
-public: EmailServerConfigurationMapping(EmailServerConfigurationInterface* emailServerConfigurationInterface){
+EmailServerConfigurationMapping::EmailServerConfigurationMapping(EmailServerConfigurationInterface* emailServerConfigurationInterface){
 this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto EmailServerConfigurationMapping::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -97,7 +102,7 @@ hashMap->put(EmailServerConfigurationData::PASSWORD, this->emailServerConfigurat
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto EmailServerConfigurationMapping::getKey() -> Object*{
 
 
 
@@ -109,7 +114,7 @@ hashMap->put(EmailServerConfigurationData::PASSWORD, this->emailServerConfigurat
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto EmailServerConfigurationMapping::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -124,7 +129,6 @@ vector->add(this->emailServerConfigurationInterface->getSmtpServer());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONMAPPING_CPP

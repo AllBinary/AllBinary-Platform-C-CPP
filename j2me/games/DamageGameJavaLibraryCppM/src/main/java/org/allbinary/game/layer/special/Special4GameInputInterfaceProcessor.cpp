@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL4GAMEINPUTINTERFACEPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL4GAMEINPUTINTERFACEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/Special4GameInputInterfaceProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h"
 #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
-class Special4GameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
 
-public: Special4GameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer) : SpecialGameInputInterfaceProcessor(collidableDestroyableDamageableLayer){
+Special4GameInputInterfaceProcessor::Special4GameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer) : SpecialGameInputInterfaceProcessor(collidableDestroyableDamageableLayer){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: Special4GameInputInterfaceProcessor(SpecialGameInputInterface* collidabl
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->specialGameInputInterface.special4(allbinaryLayerManager, gameKeyEvent);
+    auto Special4GameInputInterfaceProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->specialGameInputInterface->special4(allbinaryLayerManager, gameKeyEvent);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL4GAMEINPUTINTERFACEPROCESSOR_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,9 +38,7 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 
 
 
@@ -54,19 +57,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+        class GeographicMapCellType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeographicMapCellTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static GeographicMapCellTypeFactory* instance() { static std::unique_ptr<GeographicMapCellTypeFactory> value(new GeographicMapCellTypeFactory()); return value.get(); }
+    private: static GeographicMapCellTypeFactory* instance_owner();
+    private: static GeographicMapCellTypeFactory* instance;
 
     public: static GeographicMapCellTypeFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: const std::vector<GeographicMapCellType*> geographicMapCellTypeArray = std::vector<GeographicMapCellType*>(512);
+            
+    public: GeographicMapCellTypeFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: std::vector<GeographicMapCellType*> geographicMapCellTypeArray;
 
     public: GeographicMapCellType* get(int32_t type);
 
@@ -86,3 +98,16 @@ class GeographicMapCellTypeFactory
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellType.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+#endif
+
+        #endif
+    

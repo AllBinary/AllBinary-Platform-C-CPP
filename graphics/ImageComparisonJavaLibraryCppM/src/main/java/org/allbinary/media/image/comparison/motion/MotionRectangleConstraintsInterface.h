@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLECONSTRAINTSINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLECONSTRAINTSINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,11 +37,7 @@
             #include "java/lang/Long.h"
         
 #include <java/awt.h>
-
-      
 #include <java/awt/image/BufferedImage.h>
-
-      
 
 
 
@@ -55,10 +56,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/comparison/motion/Dimension.h"
-#include "org/allbinary/media/image/comparison/motion/Rectangle.h"
+        class Dimension;
+class Rectangle;
 
-class MotionRectangleConstraintsInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class MotionRectangleConstraintsInterface
+            : public virtual Object
+         {
 
     public: virtual int32_t getMaxMotionRectangles() = 0;
 
@@ -84,3 +91,22 @@ class MotionRectangleConstraintsInterface {
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLECONSTRAINTSINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLECONSTRAINTSINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLECONSTRAINTSINTERFACE_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/Dimension.h")
+#include "org/allbinary/media/image/comparison/motion/Dimension.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/Rectangle.h")
+#include "org/allbinary/media/image/comparison/motion/Rectangle.h"
+#endif
+
+        #endif
+    

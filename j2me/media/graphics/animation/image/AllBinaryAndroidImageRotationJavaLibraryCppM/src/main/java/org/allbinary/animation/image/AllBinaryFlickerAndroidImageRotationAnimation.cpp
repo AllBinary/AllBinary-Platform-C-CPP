@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,23 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
-class AllBinaryFlickerAndroidImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
-
-    private: AndroidImageUtil* androidImageUtil = AndroidImageUtil::getInstance();
-
-    private: Matrix* matrix = new Matrix();
-
-    private: int32_t halfWidth;
-
-    private: int32_t halfHeight;
-
-    private: int16_t increment;
-
-    private: Image* originalImage;
-
-public: AllBinaryFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+AllBinaryFlickerAndroidImageRotationAnimation::AllBinaryFlickerAndroidImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior), imageModifierUtil(ImageModifierUtil::getInstanceOrCreate()), androidImageUtil(AndroidImageUtil::getInstance()), matrix(new Matrix()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,12 +91,12 @@ this->halfWidth= (image->getWidth()>>1);
     
 this->halfHeight= (image->getHeight()>>1);
     
-this->increment= (this->angleInfo.getAngleIncrementInfo()->getAngleIncrement());
+this->increment= (this->angleInfo->getAngleIncrementInfo()->getAngleIncrement());
     
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto AllBinaryFlickerAndroidImageRotationAnimation::setBasicColorP(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -118,7 +113,7 @@ changed= true;
 
                                     }
                                 
-super.setBasicColorP(basicColor);
+ImageBaseRotationAnimation::setBasicColorP(basicColor);
     
 
                         if(changed)
@@ -134,13 +129,13 @@ this->updateImage();
 }
 
 
-    public: void changeBasicColor(BasicColor* basicColor){
+    auto AllBinaryFlickerAndroidImageRotationAnimation::changeBasicColor(BasicColor* basicColor) -> void{
 this->setBasicColorP(basicColor);
     
 }
 
 
-    public: void setAlpha(int32_t alpha){
+    auto AllBinaryFlickerAndroidImageRotationAnimation::setAlpha(int32_t alpha) -> void{
 
     bool changed = false;;
     
@@ -153,7 +148,7 @@ this->setBasicColorP(basicColor);
 
                                     }
                                 
-super.setAlpha(alpha);
+ImageBaseRotationAnimation::setAlpha(alpha);
     
 this->imageModifierUtil->setAlpha(this->originalImage, this->getImage(), 0, this->alphaP);
     
@@ -171,8 +166,8 @@ this->updateImage();
 }
 
 
-    public: void nextRotation(){
-super.nextRotation();
+    auto AllBinaryFlickerAndroidImageRotationAnimation::nextRotation() -> void{
+ImageBaseRotationAnimation::nextRotation();
     
 this->matrix->setRotate(this->increment, this->halfWidth, this->halfHeight);
     
@@ -181,8 +176,8 @@ this->updateImage();
 }
 
 
-    public: void previousRotation(){
-super.previousRotation();
+    auto AllBinaryFlickerAndroidImageRotationAnimation::previousRotation() -> void{
+ImageBaseRotationAnimation::previousRotation();
     
 this->matrix->setRotate( -this->increment, this->halfWidth, this->halfHeight);
     
@@ -191,22 +186,22 @@ this->updateImage();
 }
 
 
-    private: void updateImage(){
+    auto AllBinaryFlickerAndroidImageRotationAnimation::updateImage() -> void{
 this->androidImageUtil->rotate(this->getImage(), originalImage, matrix, imageModifierUtil->paint);
     
 }
 
 
-    public: void setFrame(int32_t index){
+    auto AllBinaryFlickerAndroidImageRotationAnimation::setFrame(int32_t index) -> void{
 
-    int32_t currentFrame = this->circularIndexUtil.getIndex();;
+    int32_t currentFrame = this->circularIndexUtil->getIndex();;
     
-this->circularIndexUtil.setIndex(index);
+this->circularIndexUtil->setIndex(index);
     
 
-    int32_t newFrame = this->circularIndexUtil.getIndex();;
+    int32_t newFrame = this->circularIndexUtil->getIndex();;
     
-this->angleInfo.adjustAngle(newFrame);
+this->angleInfo->adjustAngle(newFrame);
     
 this->matrix->setRotate((newFrame -currentFrame) *this->increment, this->halfWidth, this->halfHeight);
     
@@ -215,7 +210,6 @@ this->updateImage();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATION_CPP

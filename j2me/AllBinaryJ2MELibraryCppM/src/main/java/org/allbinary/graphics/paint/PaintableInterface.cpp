@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/PaintableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaintableInterface {
+//Interface - declared in the header
 
-    public: virtual void paint(Graphics* graphics) = 0;
 
-    public: virtual void paintThreed(Graphics* graphics) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_CPP

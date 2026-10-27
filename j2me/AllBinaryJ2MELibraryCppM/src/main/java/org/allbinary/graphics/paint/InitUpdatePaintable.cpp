@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/InitUpdatePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +57,21 @@
         #include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/graphics/paint/InitUpdatePaintableInterface.h"
 
-class InitUpdatePaintable: public Paintable, public InitUpdatePaintableInterface {
 
-protected: InitUpdatePaintable(){
+InitUpdatePaintable::InitUpdatePaintable(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto InitUpdatePaintable::init() -> void{
 }
 
 
-    public: void update(){
+    auto InitUpdatePaintable::update() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_CPP

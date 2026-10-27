@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
+        class CategoryPropertiesInterface;
 
-class CategoryPropertiesFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class CategoryPropertiesFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual CategoryPropertiesInterface* getInstance() = 0;
 
@@ -57,3 +68,13 @@ class CategoryPropertiesFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORYINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/business/category/properties/CategoryPropertiesInterface.h")
+#include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
+#endif
+
+        #endif
+    

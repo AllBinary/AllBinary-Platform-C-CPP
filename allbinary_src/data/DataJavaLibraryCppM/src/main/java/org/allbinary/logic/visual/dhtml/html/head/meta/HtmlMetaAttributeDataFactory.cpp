@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATAFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATAFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributeDataFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,33 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributeData.h"
 
-class HtmlMetaAttributeDataFactory
-            : public Object
-         {
+auto HtmlMetaAttributeDataFactory::instance_owner() -> HtmlMetaAttributeDataFactory* { static std::unique_ptr<HtmlMetaAttributeDataFactory> value(new HtmlMetaAttributeDataFactory()); return value.get(); }
+HtmlMetaAttributeDataFactory* HtmlMetaAttributeDataFactory::instance = HtmlMetaAttributeDataFactory::instance_owner();
 
-    private: static HtmlMetaAttributeDataFactory* instance() { static std::unique_ptr<HtmlMetaAttributeDataFactory> value(new HtmlMetaAttributeDataFactory()); return value.get(); }
-
-    public: static HtmlMetaAttributeDataFactory* getInstance(){
+    auto HtmlMetaAttributeDataFactory::getInstance() -> HtmlMetaAttributeDataFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlMetaAttributeDataFactory::instance();
+                        return HtmlMetaAttributeDataFactory::instance;
     
 }
 
 
-private: HtmlMetaAttributeDataFactory(){
+HtmlMetaAttributeDataFactory::HtmlMetaAttributeDataFactory() : NAME(new HtmlMetaAttributeData(0, "HTMLMETA_ATTRIBUTE_NAME")), HTTP_EQUIV(new HtmlMetaAttributeData(1, "HTMLMETA_ATTRIBUTE_HTTPEQUIV")), CONTENT(new HtmlMetaAttributeData(2, "HTMLMETA_ATTRIBUTE_CONTENT")){
 }
 
 
-    public: HtmlMetaAttributeData* NAME = new HtmlMetaAttributeData(0, "HTMLMETA_ATTRIBUTE_NAME");
 
-    public: HtmlMetaAttributeData* HTTP_EQUIV = new HtmlMetaAttributeData(1, "HTMLMETA_ATTRIBUTE_HTTPEQUIV");
 
-    public: HtmlMetaAttributeData* CONTENT = new HtmlMetaAttributeData(2, "HTMLMETA_ATTRIBUTE_CONTENT");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATAFACTORY_CPP

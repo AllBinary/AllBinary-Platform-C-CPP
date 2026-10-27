@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/AdConfiguration.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,17 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdConfiguration
-            : public Object
-         {
 
-    public: std::string INNERACTIVE;
-
-    public: std::string LEADBOLT;
-
-    public: std::string ADMOB;
-
-public: AdConfiguration(std::vector<Object*> advertIdArray){
+AdConfiguration::AdConfiguration(std::vector<Object*> advertIdArray){
 this->INNERACTIVE= advertIdArray[0];
     
 this->ADMOB= advertIdArray[1];
@@ -73,7 +74,7 @@ this->LEADBOLT= advertIdArray[2];
 }
 
 
-    public: std::vector<Direction*> getValidAdSpots(){
+    auto AdConfiguration::getValidAdSpots() -> std::vector<Direction*>{
 
 
 
@@ -83,23 +84,23 @@ this->LEADBOLT= advertIdArray[2];
 }
 
 
-    public: void process(GameState* gameState){
+    auto AdConfiguration::process(GameState* gameState) -> void{
 }
 
 
-    public: void processDemo(int32_t state){
+    auto AdConfiguration::processDemo(int32_t state) -> void{
 }
 
 
-    public: void setShowAds(){
+    auto AdConfiguration::setShowAds() -> void{
 }
 
 
-    public: void setToggleAds(bool showAds){
+    auto AdConfiguration::setToggleAds(bool showAds) -> void{
 }
 
 
-    public: bool isShowAds(){
+    auto AdConfiguration::isShowAds() -> bool{
 
 
 
@@ -109,7 +110,6 @@ this->LEADBOLT= advertIdArray[2];
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_CPP

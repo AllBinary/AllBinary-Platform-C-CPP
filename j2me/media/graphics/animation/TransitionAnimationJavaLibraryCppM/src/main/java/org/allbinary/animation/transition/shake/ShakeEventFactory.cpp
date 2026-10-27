@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/transition/shake/ShakeEventFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,35 +56,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/transition/shake/ShakeEvent.h"
 
-class ShakeEventFactory
-            : public Object
-         {
 
-    private: static ShakeEventFactory* instance() { static std::unique_ptr<ShakeEventFactory> value(new ShakeEventFactory()); return value.get(); }
+ShakeEventFactory::ShakeEventFactory() : MICRO(new ShakeEvent()), SMALL(new ShakeEvent()), MEDIUM(new ShakeEvent()), LARGE(new ShakeEvent()) {
+        }
+        auto ShakeEventFactory::instance_owner() -> ShakeEventFactory* { static std::unique_ptr<ShakeEventFactory> value(new ShakeEventFactory()); return value.get(); }
+ShakeEventFactory* ShakeEventFactory::instance = ShakeEventFactory::instance_owner();
 
-    public: static ShakeEventFactory* getInstance(){
+    auto ShakeEventFactory::getInstance() -> ShakeEventFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShakeEventFactory::instance();
+                        return ShakeEventFactory::instance;
     
 }
 
 
-    public: ShakeEvent* MICRO = new ShakeEvent();
-
-    public: ShakeEvent* SMALL = new ShakeEvent();
-
-    public: ShakeEvent* MEDIUM = new ShakeEvent();
-
-    public: ShakeEvent* LARGE = new ShakeEvent();
-
-    public: void init(){
+    auto ShakeEventFactory::init() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_CPP

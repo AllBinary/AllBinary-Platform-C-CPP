@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,12 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/Sound.h"
-#include "org/allbinary/media/audio/PlayerComposite.h"
-#include "org/allbinary/media/audio/AllBinaryMediaManager.h"
+class PlayerComposite;
+class AllBinaryMediaManager;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompositeSound: public Sound {
 
-protected: CompositeSound(std::string resource);
+/*protected*/ public: CompositeSound(std::string resource);
 
                 //@Throws(Exception.constructor)
             
@@ -65,3 +74,19 @@ protected: CompositeSound(std::string resource);
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_H_COMPLETE
+        #if __has_include("org/allbinary/media/audio/Sound.h")
+#include "org/allbinary/media/audio/Sound.h"
+#endif
+#if __has_include("org/allbinary/media/audio/PlayerComposite.h")
+#include "org/allbinary/media/audio/PlayerComposite.h"
+#endif
+#if __has_include("org/allbinary/media/audio/AllBinaryMediaManager.h")
+#include "org/allbinary/media/audio/AllBinaryMediaManager.h"
+#endif
+
+        #endif
+    

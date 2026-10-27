@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/WaypointPathRunnableBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,21 +75,11 @@
         #include "org/allbinary/game/layer/NullPathFindingLayer.h"
 #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
-class WaypointPathRunnableBase
-            : public Object
-        , public RunnableInterface, public PriorityRunnable {
 
-    private: LayerDistanceUtil* layerDistanceUtil = LayerDistanceUtil::getInstance();
-
-    protected: PathFindingLayerInterface* pathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-
-    protected: PathFindingLayerInterface* targetPathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-
-    protected: int32_t priorityP = Integer.MAX_VALUE;
-
-    protected: bool runningP= false;
-
-    public: bool isRunning(){
+WaypointPathRunnableBase::WaypointPathRunnableBase() : layerDistanceUtil(LayerDistanceUtil::getInstance()), pathFindingLayer(NullPathFindingLayer::NULL_PATH_FINDING_LAYER), targetPathFindingLayer(NullPathFindingLayer::NULL_PATH_FINDING_LAYER), priorityP(Integer.MAX_VALUE) {
+        }
+        
+    auto WaypointPathRunnableBase::isRunning() -> bool{
 
 
 
@@ -89,7 +89,7 @@ class WaypointPathRunnableBase
 }
 
 
-    public: void setRunning(bool isRunning){
+    auto WaypointPathRunnableBase::setRunning(bool isRunning) -> void{
 this->runningP= isRunning;
     
 }
@@ -97,11 +97,11 @@ this->runningP= isRunning;
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread* thread){
+    auto WaypointPathRunnableBase::setThread(Thread* thread) -> void{
 }
 
 
-    public: void setTargetLayer(PathFindingLayerInterface* waypointLayer){
+    auto WaypointPathRunnableBase::setTargetLayer(PathFindingLayerInterface* waypointLayer) -> void{
 this->targetPathFindingLayer= waypointLayer;
     
 this->setPriority();
@@ -109,7 +109,7 @@ this->setPriority();
 }
 
 
-    public: void setPriority(){
+    auto WaypointPathRunnableBase::setPriority() -> void{
 
     AllBinaryLayer* pathFindingLayer = dynamic_cast<AllBinaryLayer*>(this->pathFindingLayer);;
     
@@ -136,7 +136,7 @@ this->priorityP= distanceCategory;
 }
 
 
-    public: PathFindingLayerInterface* getTargetLayer(){
+    auto WaypointPathRunnableBase::getTargetLayer() -> PathFindingLayerInterface*{
 
 
 
@@ -146,13 +146,13 @@ this->priorityP= distanceCategory;
 }
 
 
-    public: void setUnitLayer(PathFindingLayerInterface* unitLayer){
+    auto WaypointPathRunnableBase::setUnitLayer(PathFindingLayerInterface* unitLayer) -> void{
 this->pathFindingLayer= unitLayer;
     
 }
 
 
-    public: int32_t getPriority(){
+    auto WaypointPathRunnableBase::getPriority() -> int32_t{
 
 
 
@@ -162,7 +162,7 @@ this->pathFindingLayer= unitLayer;
 }
 
 
-    public: bool isDone(){
+    auto WaypointPathRunnableBase::isDone() -> bool{
 
 
 
@@ -172,15 +172,14 @@ this->pathFindingLayer= unitLayer;
 }
 
 
-    public: void run(){
+    auto WaypointPathRunnableBase::run() -> void{
 }
 
 
-    public: void reset(){
+    auto WaypointPathRunnableBase::reset() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_CPP

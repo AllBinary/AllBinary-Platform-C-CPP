@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIG_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/LogConfig.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,22 +79,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/config/LogConfigData.h"
 
-class LogConfig
-            : public Object
-         {
 
-    private: bool isEnabled;
-
-    private: std::string name;
-
-    private: std::string description;
-
-    private: std::string path;
-
-    private: std::string fileName;
-
-public: LogConfig(std::string aName, std::string aDescription, std::string aPath, std::string aFileName){
-this->isEnabled= false;
+LogConfig::LogConfig(std::string aName, std::string aDescription, std::string aPath, std::string aFileName){
+this->isEnabled_= false;
     
 this->name= aName;
     
@@ -97,14 +94,14 @@ this->fileName= aFileName;
 }
 
 
-public: LogConfig(Node* node){
+LogConfig::LogConfig(Node* node){
 
     Node* enabledValueNode = DomSearchHelper::getNode(EntryData::getInstance()->ENABLE, node->getChildNodes());;
     
 
     std::string isEnabledString = DomNodeHelper::getTextNodeValue(enabledValueNode);;
     
-this->isEnabled= BooleanUtil::getInstance()->getFromString(isEnabledString);
+this->isEnabled_= BooleanUtil::getInstance()->getFromString(isEnabledString);
     
 
     LogConfigData* logConfigData = LogConfigData::getInstance();;
@@ -127,7 +124,7 @@ this->fileName= DomNodeHelper::getTextNodeValue(fileValueNode);
 }
 
 
-    public: std::string getName(){
+    auto LogConfig::getName() -> std::string{
 
 
 
@@ -137,29 +134,29 @@ this->fileName= DomNodeHelper::getTextNodeValue(fileValueNode);
 }
 
 
-    public: bool isEnabled(){
+    auto LogConfig::isEnabled() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isEnabled;
+                        return this->isEnabled_;
     
 }
 
 
-    public: void enable(){
-this->isEnabled= true;
+    auto LogConfig::enable() -> void{
+this->isEnabled_= true;
     
 }
 
 
-    public: void disable(){
-this->isEnabled= false;
+    auto LogConfig::disable() -> void{
+this->isEnabled_= false;
     
 }
 
 
-    public: std::string getDescription(){
+    auto LogConfig::getDescription() -> std::string{
 
 
 
@@ -169,7 +166,7 @@ this->isEnabled= false;
 }
 
 
-    public: std::string getFileName(){
+    auto LogConfig::getFileName() -> std::string{
 
 
 
@@ -179,25 +176,25 @@ this->isEnabled= false;
 }
 
 
-    public: void setName(std::string value){
+    auto LogConfig::setName(std::string value) -> void{
 this->name= value;
     
 }
 
 
-    public: void setDescription(std::string value){
+    auto LogConfig::setDescription(std::string value) -> void{
 this->description= value;
     
 }
 
 
-    public: void setPath(std::string value){
+    auto LogConfig::setPath(std::string value) -> void{
 this->path= value;
     
 }
 
 
-    public: void setFileName(std::string value){
+    auto LogConfig::setFileName(std::string value) -> void{
 this->fileName= value;
     
 }
@@ -205,7 +202,7 @@ this->fileName= value;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getTypeVector(){
+    auto LogConfig::getTypeVector() -> BasicArrayList*{
 
     BasicArrayList* logKeyVector = new BasicArrayListD();;
     
@@ -218,7 +215,6 @@ this->fileName= value;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIG_CPP

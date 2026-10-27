@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
+class CommandListener;
 #include <javax/microedition/lcdui/ItemStateListener.h>
-
-      
 #include <org/allbinary/game/state/GameStateCompositeInterface.h>
-
-      
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
 #include <org/allbinary/thread/RunnableInterface.h>
-
-      
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -67,6 +60,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class GameCanvasRunnableInterface: public RunnableInterface, public PaintableInterface, public ItemStateListener, public GameStateCompositeInterface {
 
@@ -114,3 +111,28 @@ class GameCanvasRunnableInterface: public RunnableInterface, public PaintableInt
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLEINTERFACE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/ItemStateListener.h>)
+#include <javax/microedition/lcdui/ItemStateListener.h>
+#endif
+#if __has_include(<org/allbinary/game/state/GameStateCompositeInterface.h>)
+#include <org/allbinary/game/state/GameStateCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/thread/RunnableInterface.h>)
+#include <org/allbinary/thread/RunnableInterface.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

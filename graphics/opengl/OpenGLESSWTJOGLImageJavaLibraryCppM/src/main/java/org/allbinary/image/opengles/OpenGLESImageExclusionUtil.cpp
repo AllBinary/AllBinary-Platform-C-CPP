@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESImageExclusionUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,31 +64,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLESImageExclusionUtil
-            : public Object
-         {
+auto OpenGLESImageExclusionUtil::instance_owner() -> OpenGLESImageExclusionUtil* { static std::unique_ptr<OpenGLESImageExclusionUtil> value(new OpenGLESImageExclusionUtil()); return value.get(); }
+OpenGLESImageExclusionUtil* OpenGLESImageExclusionUtil::instance = OpenGLESImageExclusionUtil::instance_owner();
 
-    private: static OpenGLESImageExclusionUtil* instance() { static std::unique_ptr<OpenGLESImageExclusionUtil> value(new OpenGLESImageExclusionUtil()); return value.get(); }
-
-    public: static OpenGLESImageExclusionUtil* getInstance(){
+    auto OpenGLESImageExclusionUtil::getInstance() -> OpenGLESImageExclusionUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageExclusionUtil::instance();
+                        return OpenGLESImageExclusionUtil::instance;
     
 }
 
 
-    private: const std::string EXCLUSION = "font";
-
-    public: BasicArrayList* list = new BasicArrayListD();
-
-private: OpenGLESImageExclusionUtil(){
+OpenGLESImageExclusionUtil::OpenGLESImageExclusionUtil() : list(new BasicArrayListD()){
 }
 
 
-    public: bool isCustomScaling(Image* image){
+    auto OpenGLESImageExclusionUtil::isCustomScaling(Image* image) -> bool{
 
     std::string imageName = image->getName();;
     
@@ -154,7 +157,6 @@ name= this->list->get(index);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_CPP

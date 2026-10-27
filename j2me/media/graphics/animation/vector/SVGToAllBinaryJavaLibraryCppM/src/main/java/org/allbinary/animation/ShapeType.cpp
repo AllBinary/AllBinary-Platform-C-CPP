@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SHAPETYPE_CPP
+        #define ORG_ALLBINARY_ANIMATION_SHAPETYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/ShapeType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShapeType
-            : public Object
-         {
 
-    private: std::string name;
-
-public: ShapeType(std::string name){
+ShapeType::ShapeType(std::string name){
 this->name= name;
     
 }
 
 
-    public: std::string getName(){
+    auto ShapeType::getName() -> std::string{
 
 
 
@@ -67,7 +72,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_SHAPETYPE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Command.h>
+class Command;
 
-      
-#include <org/allbinary/J2MEUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 
 
 
@@ -61,15 +60,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HighScoreCommandsBaseFactory
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     public: std::vector<Command*> HIGH_SCORE_COMMANDS;
 
-protected: HighScoreCommandsBaseFactory(std::vector<Command*> HIGH_SCORE_COMMANDS);
+/*protected*/ public: HighScoreCommandsBaseFactory(std::vector<Command*> HIGH_SCORE_COMMANDS);
 
     public: bool isHighScoreCommand(Command* command);
 
@@ -83,3 +86,17 @@ protected: HighScoreCommandsBaseFactory(std::vector<Command*> HIGH_SCORE_COMMAND
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEUTIL_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/damage/DamageUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,33 +70,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/damage/DamageableInterface.h"
 
-class DamageUtil
-            : public Object
-         {
+auto DamageUtil::instance_owner() -> DamageUtil* { static std::unique_ptr<DamageUtil> value(new DamageUtil()); return value.get(); }
+DamageUtil* DamageUtil::instance = DamageUtil::instance_owner();
 
-    private: static DamageUtil* instance() { static std::unique_ptr<DamageUtil> value(new DamageUtil()); return value.get(); }
-
-    public: static DamageUtil* getInstance(){
+    auto DamageUtil::getInstance() -> DamageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageUtil::instance();
+                        return DamageUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const std::string COLLIDE = "collide";
-
-private: DamageUtil(){
+DamageUtil::DamageUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(DamageableInterface* damageableInterface, DamageableInterface* damageableInterface2){
+    auto DamageUtil::process(DamageableInterface* damageableInterface, DamageableInterface* damageableInterface2) -> void{
 damageableInterface->damage(damageableInterface2->getDamage(0), 0);
     
 }
@@ -94,7 +97,7 @@ damageableInterface->damage(damageableInterface2->getDamage(0), 0);
 
                 //@Throws(Exception.constructor)
             
-    public: void debugDamage(CollidableCompositeLayer* collidableInterfaceCompositeInterface1, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto DamageUtil::debugDamage(CollidableCompositeLayer* collidableInterfaceCompositeInterface1, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> void{
 
     CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(collidableInterfaceCompositeInterface);;
     
@@ -128,7 +131,6 @@ this->logUtil->putF(stringBuffer->toString(), collidableInterfaceCompositeInterf
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEUTIL_CPP

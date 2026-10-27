@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/graphics/CellPosition.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class CellPosition;
+class AllBinaryLayer;
 
 
 
@@ -60,17 +57,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointCellPositionHistory
-            : public Object
+            : public virtual Object
          {
 
-    private: static WaypointCellPositionHistory* SINGLETON() { static std::unique_ptr<WaypointCellPositionHistory> value(new WaypointCellPositionHistory()); return value.get(); }
+    private: static WaypointCellPositionHistory* SINGLETON_owner();
+    private: static WaypointCellPositionHistory* SINGLETON;
 
     public: static WaypointCellPositionHistory* getInstance();
 
-    private: BasicArrayList* positionList = new BasicArrayListD();
 
-    private: BasicArrayList* layerList = new BasicArrayListD();
+            
+    public: WaypointCellPositionHistory();
+        
+    private: BasicArrayList* positionList;
+
+    private: BasicArrayList* layerList;
 
     public: void add(CellPosition* cellPosition, AllBinaryLayer* layerInterface);
 
@@ -94,3 +100,22 @@ class WaypointCellPositionHistory
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/graphics/CellPosition.h>)
+#include <org/allbinary/graphics/CellPosition.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CANVASTRIMUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CANVASTRIMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/CanvasTrimUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,29 +71,25 @@
         #include "org/allbinary/media/image/ImageProcessorInput.h"
 #include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
-class CanvasTrimUtil
-            : public Object
-         {
 
-    private: static CanvasTrimUtil* instance() { static std::unique_ptr<CanvasTrimUtil> value(new CanvasTrimUtil()); return value.get(); }
+CanvasTrimUtil::CanvasTrimUtil() : logUtil(LogUtil::getInstance()), stringUtil(StringUtil::getInstance()) {
+        }
+        auto CanvasTrimUtil::instance_owner() -> CanvasTrimUtil* { static std::unique_ptr<CanvasTrimUtil> value(new CanvasTrimUtil()); return value.get(); }
+CanvasTrimUtil* CanvasTrimUtil::instance = CanvasTrimUtil::instance_owner();
 
-    public: static CanvasTrimUtil* getInstance(){
+    auto CanvasTrimUtil::getInstance() -> CanvasTrimUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CanvasTrimUtil::instance();
+                        return CanvasTrimUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
                 //@Throws(IOException.constructor)
             
-    public: void process(ImageProcessorInput* imageProcessorInput, int32_t cutCanvasFromLeftReduction, int32_t cutCanvasFromTopReduction, int32_t cutCanvasFromRightReduction, int32_t cutCanvasFromBottomReduction, ImageProcessedVisitor* visitor){
+    auto CanvasTrimUtil::process(ImageProcessorInput* imageProcessorInput, int32_t cutCanvasFromLeftReduction, int32_t cutCanvasFromTopReduction, int32_t cutCanvasFromRightReduction, int32_t cutCanvasFromBottomReduction, ImageProcessedVisitor* visitor) -> void{
 
     std::vector<BufferedImage*> bufferedImageArray = imageProcessorInput->getBufferedImageArray();;
     
@@ -114,7 +120,6 @@ visitor->visit(subBufferedImageArray[index], this->stringUtil->EMPTY_STRING, ind
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_CANVASTRIMUTIL_CPP

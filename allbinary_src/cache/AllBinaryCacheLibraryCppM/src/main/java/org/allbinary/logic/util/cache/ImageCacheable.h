@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_IMAGECACHEABLE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_IMAGECACHEABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -51,11 +54,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageCacheable
-            : public Object
+            : public virtual Object
          {
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string name;
 
 public: ImageCacheable(std::string name, Object* anyType);
 
@@ -69,3 +76,13 @@ public: ImageCacheable(std::string name, Object* anyType);
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_IMAGECACHEABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_IMAGECACHEABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_IMAGECACHEABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

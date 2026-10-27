@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -18,23 +23,11 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/image/ImageFactory.h>
-
-      
+class Image;
+class ImageFactory;
 #include <org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>
-
-      
-#include <org/allbinary/platform/graphics/PlatformBitmapBase.h>
-
-      
+class PlatformBitmapBase;
 
 
 
@@ -53,18 +46,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "org/allbinary/graphics/Config.h"
-#include "org/allbinary/graphics/OpenGLBitmap.h"
+        //class Config;
+class OpenGLBitmap;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLBitmapFactory: public PlatformBitmapBaseFactory {
+public: class Config;
 
-    private: static OpenGLBitmapFactory* instance() { static std::unique_ptr<OpenGLBitmapFactory> value(new OpenGLBitmapFactory()); return value.get(); }
+    private: static OpenGLBitmapFactory* instance_owner();
+    private: static OpenGLBitmapFactory* instance;
 
     public: static OpenGLBitmapFactory* getInstance();
 
+
+            
+    public: OpenGLBitmapFactory();
+        
 //inner= member=true isStatic=
-class Config
-            : public Object
+public: class Config
+            : public virtual Object
          {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
@@ -76,8 +79,7 @@ private: Config(Object* bitmapConfig);
 };
 
             
-    public: ARGB_8888 = new Config(
-                            nullptr);
+    public: Config* ARGB_8888;
 
     public: OpenGLBitmap* createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory::Config* config);
 
@@ -93,3 +95,31 @@ private: Config(Object* bitmapConfig);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_H_COMPLETE
+        #if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageFactory.h>)
+#include <org/allbinary/image/ImageFactory.h>
+#endif
+#if __has_include(<org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>)
+#include <org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>
+#endif
+#if __has_include(<org/allbinary/platform/graphics/PlatformBitmapBase.h>)
+#include <org/allbinary/platform/graphics/PlatformBitmapBase.h>
+#endif
+#if __has_include("org/allbinary/graphics/OpenGLBitmap.h")
+#include "org/allbinary/graphics/OpenGLBitmap.h"
+#endif
+
+        #endif
+    

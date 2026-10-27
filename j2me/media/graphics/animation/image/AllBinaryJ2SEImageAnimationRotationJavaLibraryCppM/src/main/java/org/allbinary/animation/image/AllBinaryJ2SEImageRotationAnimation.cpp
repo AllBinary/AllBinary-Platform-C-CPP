@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryJ2SEImageRotationAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,43 +96,8 @@
 #include "org/allbinary/animation/image/ChangeColorProcessor.h"
 #include "org/allbinary/animation/image/AlphaProcessor.h"
 
-class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: ImageRotationUtil* imageRotationUtil = ImageRotationUtil::getInstance();
-
-    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
-
-    private: Image* realOriginalImage;
-
-    private: const std::vector<Image*> originalImageArray = std::vector<Image*>(1);
-
-    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
-
-    private: Image* imageToShow;
-
-    private: int32_t bufferedImageIndex= 0;
-
-    private: float lastScaleX = 1.0;
-
-    private: float lastScaleY = 1.0;
-
-    private: float scaleX = 1.0;
-
-    private: float scaleY = 1.0;
-
-    private: float maxScaleX= 0.0;
-
-    private: float maxScaleY= 0.0;
-
-    private: ModifierBaseProcessor* alphaProcessor = ModifierBaseProcessor::getInstance();
-
-    private: ModifierBaseProcessor* setColorProcessor = ModifierBaseProcessor::getInstance();
-
-    private: ModifierBaseProcessor* changeColorProcessor = ModifierBaseProcessor::getInstance();
-
-    private: ScaleBaseProcessor* scaleProcessor = ScaleProcessor::getInstance();
-
-public: AllBinaryJ2SEImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+AllBinaryJ2SEImageRotationAnimation::AllBinaryJ2SEImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior), imageRotationUtil(ImageRotationUtil::getInstance()), imageModifierUtil(ImageModifierUtil::getInstanceOrCreate()), originalImageArray(std::vector<Image*>(1)), twoImages(std::vector<Image*>(2)), alphaProcessor(ModifierBaseProcessor::getInstance()), setColorProcessor(ModifierBaseProcessor::getInstance()), changeColorProcessor(ModifierBaseProcessor::getInstance()), scaleProcessor(ScaleProcessor::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -142,7 +117,7 @@ this->twoImages[1]= ImageCopyUtil::getInstance()->createImageForRotation(image);
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto AllBinaryJ2SEImageRotationAnimation::setBasicColorP(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -157,7 +132,7 @@ this->twoImages[1]= ImageCopyUtil::getInstance()->createImageForRotation(image);
 
                                     }
                                 
-super.setBasicColorP(basicColor);
+ImageBaseRotationAnimation::setBasicColorP(basicColor);
     
 
                         if(changed)
@@ -173,7 +148,7 @@ this->updateImage();
 }
 
 
-    public: void changeBasicColor(BasicColor* basicColor){
+    auto AllBinaryJ2SEImageRotationAnimation::changeBasicColor(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -188,7 +163,7 @@ this->updateImage();
 
                                     }
                                 
-super.changeBasicColor(basicColor);
+ImageBaseRotationAnimation::changeBasicColor(basicColor);
     
 
                         if(changed)
@@ -204,7 +179,7 @@ this->updateImage();
 }
 
 
-    public: void setAlpha(int32_t alpha){
+    auto AllBinaryJ2SEImageRotationAnimation::setAlpha(int32_t alpha) -> void{
 
     bool changed = false;;
     
@@ -217,7 +192,7 @@ this->updateImage();
 
                                     }
                                 
-super.setAlpha(alpha);
+ImageBaseRotationAnimation::setAlpha(alpha);
     
 
                         if(changed)
@@ -233,7 +208,7 @@ this->updateImage();
 }
 
 
-    public: void setScale(float scaleX, float scaleY){
+    auto AllBinaryJ2SEImageRotationAnimation::setScale(float scaleX, float scaleY) -> void{
 this->scaleX= scaleX;
     
 this->scaleY= scaleY;
@@ -256,7 +231,7 @@ this->lastScaleY= this->scaleY;
 }
 
 
-    public: void setMaxScale(float maxScaleX, float maxScaleY){
+    auto AllBinaryJ2SEImageRotationAnimation::setMaxScale(float maxScaleX, float maxScaleY) -> void{
 this->maxScaleX= maxScaleX;
     
 this->maxScaleY= maxScaleY;
@@ -268,24 +243,24 @@ this->updateImage();
 }
 
 
-    public: void nextRotation(){
-super.nextRotation();
+    auto AllBinaryJ2SEImageRotationAnimation::nextRotation() -> void{
+ImageBaseRotationAnimation::nextRotation();
     
 this->updateImage();
     
 }
 
 
-    public: void previousRotation(){
-super.previousRotation();
+    auto AllBinaryJ2SEImageRotationAnimation::previousRotation() -> void{
+ImageBaseRotationAnimation::previousRotation();
     
 this->updateImage();
     
 }
 
 
-    private: void updateImage(){
-this->imageRotationUtil->rotateImage(this->originalImageArray[0], this->twoImages[this->bufferedImageIndex], this->angleInfo.getAngle() +90);
+    auto AllBinaryJ2SEImageRotationAnimation::updateImage() -> void{
+this->imageRotationUtil->rotateImage(this->originalImageArray[0], this->twoImages[this->bufferedImageIndex], this->angleInfo->getAngle() +90);
     
 this->alphaProcessor->updateAlpha(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->alphaP);
     
@@ -298,15 +273,15 @@ this->swap();
 }
 
 
-    public: void setFrame(int32_t index){
-super.setFrame(index);
+    auto AllBinaryJ2SEImageRotationAnimation::setFrame(int32_t index) -> void{
+ImageBaseRotationAnimation::setFrame(index);
     
 this->updateImage();
     
 }
 
 
-    public: void swap(){
+    auto AllBinaryJ2SEImageRotationAnimation::swap() -> void{
 this->imageToShow= this->twoImages[this->bufferedImageIndex];
     
 
@@ -327,14 +302,14 @@ this->imageToShow= this->twoImages[this->bufferedImageIndex];
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto AllBinaryJ2SEImageRotationAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawImage(this->imageToShow, x, y, this->anchor);
     
 }
 
 
-    public: void close(){
-super.close();
+    auto AllBinaryJ2SEImageRotationAnimation::close() -> void{
+ImageBaseRotationAnimation::close();
     
 
     DisposalUtil* disposalUtil = DisposalUtil::getInstance();;
@@ -376,8 +351,8 @@ disposalUtil->disposeImage(this->imageToShow);
 
                 //@Throws(Throwable.constructor)
             
-    protected: void finalize(){
-super.finalize();
+    auto AllBinaryJ2SEImageRotationAnimation::finalize() -> void{
+ImageBaseRotationAnimation::finalize();
     
 
     DisposalUtil* disposalUtil = DisposalUtil::getInstance();;
@@ -417,7 +392,6 @@ disposalUtil->disposeImage(this->imageToShow);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_CPP

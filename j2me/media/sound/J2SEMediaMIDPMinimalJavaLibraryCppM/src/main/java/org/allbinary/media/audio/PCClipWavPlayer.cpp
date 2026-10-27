@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PCCLIPWAVPLAYER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_PCCLIPWAVPLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/PCClipWavPlayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -108,15 +118,8 @@
 #include "org/allbinary/media/audio/NullClip.h"
 #include "org/allbinary/media/audio/NullControl.h"
 
-class PCClipWavPlayer: public BasicPlayer, public LineListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AudioInputStream* audioInputStream;
-
-    private: Clip* clip;
-
-public: PCClipWavPlayer(InputStream* inputStream){
+PCClipWavPlayer::PCClipWavPlayer(InputStream* inputStream) : logUtil(LogUtil::getInstance()){
 
     AudioInputStream* audioInputStream = new AudioInputStream(new ByteArrayInputStream(NullUtil::getInstance()->NULL_BYTE_ARRAY), NullAudioFormat::NULL_AUDIO_FORMAT, 0);;
     
@@ -135,12 +138,12 @@ clip= this->create(audioInputStream);
                                 )
                         
                                     {
-                                    this->logUtil->put("Clip was null", this, this->commonStrings.CONSTRUCTOR, new Exception());
+                                    this->logUtil->put("Clip was null", this, this->commonStrings->CONSTRUCTOR, new Exception());
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -149,7 +152,7 @@ clip= this->create(audioInputStream);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CONSTRUCTOR, &e);
     
 }
 
@@ -160,7 +163,7 @@ this->clip= clip;
 }
 
 
-    public: void close(){
+    auto PCClipWavPlayer::close() -> void{
 MusicThreadPool::getInstance()->runTask(class extends ARunnable
                                 {
                                 
@@ -187,7 +190,7 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, &e);
 
                 //@Throws(Exception.constructor)
             
-    private: void close2(){
+    auto PCClipWavPlayer::close2() -> void{
 this->clip->drain();
     
 this->clip->flush();
@@ -197,7 +200,7 @@ this->clip->close();
 }
 
 
-    public: std::string getContentType(){
+    auto PCClipWavPlayer::getContentType() -> std::string{
 
 
 
@@ -210,7 +213,7 @@ this->clip->close();
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void start(){
+    auto PCClipWavPlayer::start() -> void{
 MusicThreadPool::getInstance()->runTask(class extends ARunnable
                                 {
                                 
@@ -237,21 +240,21 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, &e);
 
                 //@Throws(Exception.constructor)
             
-    private: void start2(){
+    auto PCClipWavPlayer::start2() -> void{
 this->clip->setFramePosition(0);
     
 this->clip->loop(this->getLoopCount());
     
 this->clip->start();
     
-super.start();
+BasicPlayer::start();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: Clip* create(AudioInputStream* audioInputStream){
+    auto PCClipWavPlayer::create(AudioInputStream* audioInputStream) -> Clip*{
 
     Clip* clip = AudioSystem::getClip();;
     
@@ -271,7 +274,7 @@ clip->open(audioInputStream);
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void stop(){
+    auto PCClipWavPlayer::stop() -> void{
 MusicThreadPool::getInstance()->runTask(class extends ARunnable
                                 {
                                 
@@ -298,15 +301,15 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, &e);
 
                 //@Throws(Exception.constructor)
             
-    private: void stop2(){
+    auto PCClipWavPlayer::stop2() -> void{
 this->clip->stop();
     
-super.stop();
+BasicPlayer::stop();
     
 }
 
 
-    public: Control* getControl(std::string controlType){
+    auto PCClipWavPlayer::getControl(std::string controlType) -> Control*{
 
 
 
@@ -316,7 +319,7 @@ super.stop();
 }
 
 
-    public: std::vector<Control*> getControls(){
+    auto PCClipWavPlayer::getControls() -> std::vector<Control*>{
 
 
 
@@ -326,15 +329,15 @@ super.stop();
 }
 
 
-    public: void setVolume(int32_t leftVolume, int32_t rightVolume){
+    auto PCClipWavPlayer::setVolume(int32_t leftVolume, int32_t rightVolume) -> void{
 this->setVolumeF((leftVolume) /100.0);
     
 }
 
 
-    private: float getVolume(){
+    auto PCClipWavPlayer::getVolume() -> float{
 
-    FloatControl* masterGainFloatControl = dynamic_cast<FloatControl*>(clip->getControl(FloatControl::Type.MASTER_GAIN));;
+    FloatControl* masterGainFloatControl = dynamic_cast<FloatControl*>(clip->getControl(FloatControl::Type->MASTER_GAIN));;
     
 
 
@@ -345,7 +348,7 @@ this->setVolumeF((leftVolume) /100.0);
 }
 
 
-    private: void setVolumeF(float volume){
+    auto PCClipWavPlayer::setVolumeF(float volume) -> void{
 
                         if(volume < 0 || volume > 1)
                         
@@ -353,20 +356,20 @@ this->setVolumeF((leftVolume) /100.0);
                                     
 
 
-                            throw new IllegalArgumentException("Volume: " +volume);
+                            throw IllegalArgumentException(JavaString::valueOf("Volume: ") +JavaString::valueOf(volume));
                     
 
                                     }
                                 
 
-    FloatControl* masterGainFloatControl = dynamic_cast<FloatControl*>(this->clip->getControl(FloatControl::Type.MASTER_GAIN));;
+    FloatControl* masterGainFloatControl = dynamic_cast<FloatControl*>(this->clip->getControl(FloatControl::Type->MASTER_GAIN));;
     
 masterGainFloatControl->setValue(20 *Math::log10(volume));
     
 }
 
 
-    public: int64_t getDuration(){
+    auto PCClipWavPlayer::getDuration() -> int64_t{
 
 
 
@@ -376,13 +379,13 @@ masterGainFloatControl->setValue(20 *Math::log10(volume));
 }
 
 
-    public: void update(LineEvent* event){
+    auto PCClipWavPlayer::update(LineEvent* event) -> void{
 
-                        if(event->getType() === LineEvent::Type.STOP)
+                        if(event->getType()->equals(LineEvent::Type->STOP))
                         
                                     {
                                     
-    int32_t size = this->listenersList.size();;
+    int32_t size = this->listenersList->size();;
     
 
 
@@ -392,7 +395,7 @@ masterGainFloatControl->setValue(20 *Math::log10(volume));
     int32_t index = 0;index < size; index++)
         {
 
-    PlayerListener* listener = dynamic_cast<PlayerListener*>(this->listenersList.get(size));;
+    PlayerListener* listener = dynamic_cast<PlayerListener*>(this->listenersList->get(size));;
     
 listener->playerUpdate(this, PlayerListener::END_OF_MEDIA, 
                             nullptr);
@@ -405,7 +408,6 @@ listener->playerUpdate(this, PlayerListener::END_OF_MEDIA,
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_PCCLIPWAVPLAYER_CPP

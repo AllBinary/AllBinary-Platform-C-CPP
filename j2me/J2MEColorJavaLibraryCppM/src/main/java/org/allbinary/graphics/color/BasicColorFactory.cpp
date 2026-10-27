@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/BasicColorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,23 +69,23 @@
         #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorUtil.h"
 
-class BasicColorFactory
-            : public Object
-         {
 
-    private: static BasicColorFactory* instance() { static std::unique_ptr<BasicColorFactory> value(new BasicColorFactory()); return value.get(); }
+BasicColorFactory::BasicColorFactory() : NULL_COLOR(this->createInstanceARGB(255, 255, 255, 255, "null color")), TAN(this->createInstance(0xE9D8B5)), SKIN_PINK(this->createInstance(0xFDCECE)), RED(this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFF0000, "red")), LIGHT_RED(this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFFA0A0, "light red")), DARK_GREEN(this->createInstance(0x00FF00)), GREEN(this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x00DD00, "green")), LIGHT_GREEN(this->createInstance(0x007700)), PURPLE(this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x400040, "purple")), BLUE(this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x0000FF, "blue")), LIGHT_BLUE(this->createInstance(0x00aaff)), VERY_LIGHT_BLUE(this->createInstance(0x000033)), PUCE(this->createInstance(0xFF00AA)), AQUA(this->createInstance(0x00FFFF)), YELLOW(this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFFFF00, "yellow")), PINK(this->createInstance(0xFF00FF)), BLACK(this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x000000, "black")), GREY(this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xAAAAAA, "grey")), LIGHT_GREY(this->createInstance(0xC0C0C0)), DARK_GREY(this->createInstance(0x404040)), ORANGE(this->createInstance(0xe07718)), BROWN(this->createInstance(0x956B00)), WHITE(this->createInstance(0xFFFFFF)), TRANSPARENT_COLOR(this->createInstanceAN(0x00000000, 0x000000, StringUtil::getInstance()->EMPTY_STRING)), TRANSPARENT_GREY(this->createInstanceAN(0x52000000, 0xECECEC, StringUtil::getInstance()->EMPTY_STRING)), TRANSPARENT_BLACK(this->createInstanceAN(0x52000000, 0x000000, StringUtil::getInstance()->EMPTY_STRING)), TRANSPARENT_RED(this->createInstanceAN(0x52000000, 0xFF0000, StringUtil::getInstance()->EMPTY_STRING)), CLEAR_COLOR(this->BLACK), BORDER_COLOR(this->WHITE) {
+        }
+        auto BasicColorFactory::instance_owner() -> BasicColorFactory* { static std::unique_ptr<BasicColorFactory> value(new BasicColorFactory()); return value.get(); }
+BasicColorFactory* BasicColorFactory::instance = BasicColorFactory::instance_owner();
 
-    public: static BasicColorFactory* getInstance(){
+    auto BasicColorFactory::getInstance() -> BasicColorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorFactory::instance();
+                        return BasicColorFactory::instance;
     
 }
 
 
-    public: BasicColor* createInstance(int32_t value){
+    auto BasicColorFactory::createInstance(int32_t value) -> BasicColor*{
 
 
 
@@ -85,7 +95,7 @@ class BasicColorFactory
 }
 
 
-    public: BasicColor* createInstanceA(int32_t alphaValue, int32_t value){
+    auto BasicColorFactory::createInstanceA(int32_t alphaValue, int32_t value) -> BasicColor*{
 
 
 
@@ -95,7 +105,7 @@ class BasicColorFactory
 }
 
 
-    public: BasicColor* createInstanceAN(int32_t alphaValue, int32_t value, std::string name){
+    auto BasicColorFactory::createInstanceAN(int32_t alphaValue, int32_t value, std::string name) -> BasicColor*{
 
 
 
@@ -105,7 +115,7 @@ class BasicColorFactory
 }
 
 
-    public: BasicColor* createInstanceARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b, std::string name){
+    auto BasicColorFactory::createInstanceARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b, std::string name) -> BasicColor*{
 
     int32_t ALPHA_MASK = static_cast<int32_t>(0xFF000000);;
     
@@ -118,65 +128,6 @@ class BasicColorFactory
 }
 
 
-    public: BasicColor* NULL_COLOR = this->createInstanceARGB(255, 255, 255, 255, "null color");
 
-    public: BasicColor* TAN = this->createInstance(0xE9D8B5);
 
-    public: BasicColor* SKIN_PINK = this->createInstance(0xFDCECE);
-
-    public: BasicColor* RED = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFF0000, "red");
-
-    public: BasicColor* LIGHT_RED = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFFA0A0, "light red");
-
-    public: BasicColor* DARK_GREEN = this->createInstance(0x00FF00);
-
-    public: BasicColor* GREEN = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x00DD00, "green");
-
-    public: BasicColor* LIGHT_GREEN = this->createInstance(0x007700);
-
-    public: BasicColor* PURPLE = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x400040, "purple");
-
-    public: BasicColor* BLUE = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x0000FF, "blue");
-
-    public: BasicColor* LIGHT_BLUE = this->createInstance(0x00aaff);
-
-    public: BasicColor* VERY_LIGHT_BLUE = this->createInstance(0x000033);
-
-    public: BasicColor* PUCE = this->createInstance(0xFF00AA);
-
-    public: BasicColor* AQUA = this->createInstance(0x00FFFF);
-
-    public: BasicColor* YELLOW = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFFFF00, "yellow");
-
-    public: BasicColor* PINK = this->createInstance(0xFF00FF);
-
-    public: BasicColor* BLACK = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x000000, "black");
-
-    public: BasicColor* GREY = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xAAAAAA, "grey");
-
-    public: BasicColor* LIGHT_GREY = this->createInstance(0xC0C0C0);
-
-    public: BasicColor* DARK_GREY = this->createInstance(0x404040);
-
-    public: BasicColor* ORANGE = this->createInstance(0xe07718);
-
-    public: BasicColor* BROWN = this->createInstance(0x956B00);
-
-    public: BasicColor* WHITE = this->createInstance(0xFFFFFF);
-
-    public: BasicColor* TRANSPARENT_COLOR = this->createInstanceAN(0x00000000, 0x000000, StringUtil::getInstance()->EMPTY_STRING);
-
-    public: BasicColor* TRANSPARENT_GREY = this->createInstanceAN(0x52000000, 0xECECEC, StringUtil::getInstance()->EMPTY_STRING);
-
-    public: BasicColor* TRANSPARENT_BLACK = this->createInstanceAN(0x52000000, 0x000000, StringUtil::getInstance()->EMPTY_STRING);
-
-    public: BasicColor* TRANSPARENT_RED = this->createInstanceAN(0x52000000, 0xFF0000, StringUtil::getInstance()->EMPTY_STRING);
-
-    public: BasicColor* CLEAR_COLOR = this->BLACK;
-
-    public: BasicColor* BORDER_COLOR = this->WHITE;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORFACTORY_CPP

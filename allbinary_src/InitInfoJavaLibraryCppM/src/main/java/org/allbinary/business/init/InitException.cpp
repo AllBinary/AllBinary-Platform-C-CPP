@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITEXCEPTION_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITEXCEPTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/InitException.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InitException: public Exception {
 
-public: InitException(){
+InitException::InitException(){
 }
 
 
-public: InitException(std::string msg) : Exception(msg){
+InitException::InitException(std::string msg) : Exception(msg){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,6 @@ public: InitException(std::string msg) : Exception(msg){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_INITEXCEPTION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/NullOpenGLTextureProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
 
-class NullOpenGLTextureProcessor
-            : public Object
-         {
 
-    private: static OpenGLObject3dProcessor* instance() { static std::unique_ptr<OpenGLObject3dProcessor> value(new OpenGLObject3dProcessor()); return value.get(); }
+NullOpenGLTextureProcessor::NullOpenGLTextureProcessor() {
+        }
+        auto NullOpenGLTextureProcessor::instance_owner() -> OpenGLObject3dProcessor* { static std::unique_ptr<OpenGLObject3dProcessor> value(new OpenGLObject3dProcessor()); return value.get(); }
+OpenGLObject3dProcessor* NullOpenGLTextureProcessor::instance = NullOpenGLTextureProcessor::instance_owner();
 
-    public: static OpenGLObject3dProcessor* getInstance(){
+    auto NullOpenGLTextureProcessor::getInstance() -> OpenGLObject3dProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullOpenGLTextureProcessor::instance();
+                        return NullOpenGLTextureProcessor::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_CPP

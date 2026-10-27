@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/CountedLayersHudPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,29 +86,8 @@
         #include "org/allbinary/game/part/PartInterface.h"
 #include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
 
-class CountedLayersHudPaintable
-            : public Object
-        , public PaintableInterface, public UpdateMyFontInterface {
 
-    private: static inline int32_t XXStringWidth = 0;
-
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: std::vector<PartInterface*> partInterfaceArray;
-
-    private: int32_t countedTotalStringColor;
-
-    private: int32_t countedPartsBorder;
-
-    private: int32_t startIndex;
-
-    private: int32_t dropSize;
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: int32_t height= 0;
-
-public: CountedLayersHudPaintable(std::vector<PartInterface*> partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder){
+CountedLayersHudPaintable::CountedLayersHudPaintable(std::vector<PartInterface*> partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder) : displayInfoSingleton(DisplayInfoSingleton::getInstance()), myFontProcessor(new UpdateMyFontProcessor(this)){
 this->partInterfaceArray= partInterfaceArray;
     
 this->startIndex= startIndex;
@@ -112,7 +101,7 @@ this->dropSize= dropSize;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto CountedLayersHudPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -144,7 +133,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto CountedLayersHudPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -226,11 +215,10 @@ graphics->drawRect(lastWidth -(CountedLayersHudPaintable::XXStringWidth +this->d
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto CountedLayersHudPaintable::paintThreed(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_CPP

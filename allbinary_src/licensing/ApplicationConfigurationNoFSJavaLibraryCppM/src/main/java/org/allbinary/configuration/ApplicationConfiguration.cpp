@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CONFIGURATION_APPLICATIONCONFIGURATION_CPP
+        #define ORG_ALLBINARY_CONFIGURATION_APPLICATIONCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/configuration/ApplicationConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ApplicationConfiguration
-            : public Object
-         {
+Object* ApplicationConfiguration::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static ApplicationConfiguration* getInstance(){
+    auto ApplicationConfiguration::getInstance() -> ApplicationConfiguration*{
 
                         if(ApplicationConfiguration::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -79,15 +85,7 @@ class ApplicationConfiguration
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool fullscreen = true;
-
-    private: bool showTitleBar = false;
-
-    private: bool progressBarView = false;
-
-private: ApplicationConfiguration(){
+ApplicationConfiguration::ApplicationConfiguration() : logUtil(LogUtil::getInstance()){
 
         try {
             this->read();
@@ -108,27 +106,27 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 
                 //@Throws(Exception.constructor)
             
-    private: void read(){
+    auto ApplicationConfiguration::read() -> void{
 this->setFullscreen(true);
     
 this->setProgressBarView(false);
     
 this->setShowTitleBar(false);
     
-this->logUtil->putF("Read Configuration: " +this->toString(), this, "read");
+this->logUtil->putF(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf(this->toString()), this, "read");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void write(){
+    auto ApplicationConfiguration::write() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Feature* gameFeature){
+    auto ApplicationConfiguration::update(Feature* gameFeature) -> void{
 
                         if(gameFeature == MainFeatureFactory::getInstance()->FULL_SCREEN)
                         
@@ -175,13 +173,13 @@ this->write();
 }
 
 
-    public: void setFullscreen(bool fullscreen){
+    auto ApplicationConfiguration::setFullscreen(bool fullscreen) -> void{
 this->fullscreen= fullscreen;
     
 }
 
 
-    public: bool isFullscreen(){
+    auto ApplicationConfiguration::isFullscreen() -> bool{
 
 
 
@@ -191,13 +189,13 @@ this->fullscreen= fullscreen;
 }
 
 
-    public: void setShowTitleBar(bool showTitleBar){
+    auto ApplicationConfiguration::setShowTitleBar(bool showTitleBar) -> void{
 this->showTitleBar= showTitleBar;
     
 }
 
 
-    public: bool isShowTitleBar(){
+    auto ApplicationConfiguration::isShowTitleBar() -> bool{
 
 
 
@@ -207,13 +205,13 @@ this->showTitleBar= showTitleBar;
 }
 
 
-    public: void setProgressBarView(bool progressBarView){
+    auto ApplicationConfiguration::setProgressBarView(bool progressBarView) -> void{
 this->progressBarView= progressBarView;
     
 }
 
 
-    public: bool isProgressBarView(){
+    auto ApplicationConfiguration::isProgressBarView() -> bool{
 
 
 
@@ -223,7 +221,7 @@ this->progressBarView= progressBarView;
 }
 
 
-    public: std::string toString(){
+    auto ApplicationConfiguration::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -248,7 +246,6 @@ stringBuffer->appendboolean(this->isShowTitleBar());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CONFIGURATION_APPLICATIONCONFIGURATION_CPP

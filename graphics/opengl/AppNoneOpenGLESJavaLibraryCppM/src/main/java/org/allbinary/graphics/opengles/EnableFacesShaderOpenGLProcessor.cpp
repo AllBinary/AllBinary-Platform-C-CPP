@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_ENABLEFACESSHADEROPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_ENABLEFACESSHADEROPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/EnableFacesShaderOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -37,29 +47,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EnableFacesShaderOpenGLProcessor: public ObjectThreedOpenGLProcessor {
+auto EnableFacesShaderOpenGLProcessor::instance_owner() -> EnableFacesShaderOpenGLProcessor* { static std::unique_ptr<EnableFacesShaderOpenGLProcessor> value(new EnableFacesShaderOpenGLProcessor()); return value.get(); }
+EnableFacesShaderOpenGLProcessor* EnableFacesShaderOpenGLProcessor::instance = EnableFacesShaderOpenGLProcessor::instance_owner();
 
-    private: static EnableFacesShaderOpenGLProcessor* instance() { static std::unique_ptr<EnableFacesShaderOpenGLProcessor> value(new EnableFacesShaderOpenGLProcessor()); return value.get(); }
-
-    public: static EnableFacesShaderOpenGLProcessor* getInstance(){
+    auto EnableFacesShaderOpenGLProcessor::getInstance() -> EnableFacesShaderOpenGLProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EnableFacesShaderOpenGLProcessor::instance();
+                        return EnableFacesShaderOpenGLProcessor::instance;
     
 }
 
 
-public: EnableFacesShaderOpenGLProcessor(){
+EnableFacesShaderOpenGLProcessor::EnableFacesShaderOpenGLProcessor(){
 }
 
 
-    public: void process(GL10* gl, Object* anyType){
+    auto EnableFacesShaderOpenGLProcessor::process(GL10* gl, Object* anyType) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_ENABLEFACESSHADEROPENGLPROCESSOR_CPP

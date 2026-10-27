@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERINITIALIZER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERINITIALIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -54,25 +64,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/Shader.h"
 
-class ShaderInitializer
-            : public Object
-         {
 
-    private: static ShaderInitializer* instance() { static std::unique_ptr<ShaderInitializer> value(new ShaderInitializer()); return value.get(); }
+ShaderInitializer::ShaderInitializer() : commonStrings(CommonStrings::getInstance()) {
+        }
+        auto ShaderInitializer::instance_owner() -> ShaderInitializer* { static std::unique_ptr<ShaderInitializer> value(new ShaderInitializer()); return value.get(); }
+ShaderInitializer* ShaderInitializer::instance = ShaderInitializer::instance_owner();
 
-    public: static ShaderInitializer* getInstance(){
+    auto ShaderInitializer::getInstance() -> ShaderInitializer*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderInitializer::instance();
+                        return ShaderInitializer::instance;
     
 }
 
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: int32_t init(GL10* gl, std::vector<Shader*> shader, std::vector<std::string> attributeArray){
+    auto ShaderInitializer::init(GL10* gl, std::vector<Shader*> shader, std::vector<std::string> attributeArray) -> int32_t{
 
 
 
@@ -82,7 +90,6 @@ class ShaderInitializer
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERINITIALIZER_CPP

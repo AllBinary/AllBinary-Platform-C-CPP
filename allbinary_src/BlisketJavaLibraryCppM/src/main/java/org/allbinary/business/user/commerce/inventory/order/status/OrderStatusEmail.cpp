@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_STATUS_ORDERSTATUSEMAIL_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_STATUS_ORDERSTATUSEMAIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/order/status/OrderStatusEmail.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -98,23 +108,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderStatusEmail
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation;
-
-    private: OrderHistory* orderHistory;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: UserInterface* user;
-
-public: OrderStatusEmail(AbeClientInformationInterface* abeClientInformation, OrderHistory* orderHistory){
+OrderStatusEmail::OrderStatusEmail(AbeClientInformationInterface* abeClientInformation, OrderHistory* orderHistory) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->abeClientInformation= abeClientInformation;
     
 this->orderHistory= orderHistory;
@@ -131,7 +126,7 @@ this->user= UserEntityFactory::getInstance()->getUser(orderHistory->getUserName(
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto OrderStatusEmail::process() -> void{
 this->notifyStoreAdmin();
     
 this->notifyUser();
@@ -141,11 +136,11 @@ this->notifyUser();
 
                 //@Throws(Exception.constructor)
             
-    private: void notifyStoreAdmin(){
+    auto OrderStatusEmail::notifyStoreAdmin() -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Order Email", this, "emailStoreAdmin");
@@ -154,10 +149,10 @@ this->notifyUser();
                                     }
                                 
 
-    std::string adminEmailSubject = "Order " +this->orderHistory->getStatus() +" Attempt";;
+    std::string adminEmailSubject = JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->orderHistory->getStatus())) +JavaString::valueOf(" Attempt");;
     
 
-    std::string adminEmailTextBody = "Order attempt: " +this->orderHistory->getId() +" Preprocessing by: " +this->user->getUserName();;
+    std::string adminEmailTextBody = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Order attempt: ") +JavaString::valueOf(this->orderHistory->getId())) +JavaString::valueOf(" Preprocessing by: ")) +JavaString::valueOf(this->user->getUserName());;
     
 
     BasicEmailInfo* adminBasicEmailInfo = dynamic_cast<BasicEmailInfo*>(new AdminEmailInfo(adminEmailSubject, adminEmailTextBody));;
@@ -189,7 +184,7 @@ adminUserEmailEventHandler->receiveEmailInfo(userEmailEventNameData, adminEmailI
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "emailAdmin", &e);
@@ -204,11 +199,11 @@ adminUserEmailEventHandler->receiveEmailInfo(userEmailEventNameData, adminEmailI
 
                 //@Throws(Exception.constructor)
             
-    private: void notifyUser(){
+    auto OrderStatusEmail::notifyUser() -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Email User", this, "notifyUser()");
@@ -217,10 +212,10 @@ adminUserEmailEventHandler->receiveEmailInfo(userEmailEventNameData, adminEmailI
                                     }
                                 
 
-    std::string subject = "Order " +this->orderHistory->getStatus() +" Attempt";;
+    std::string subject = JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->orderHistory->getStatus())) +JavaString::valueOf(" Attempt");;
     
 
-    std::string textBody = "Order attempt: " +this->orderHistory->getId() +" Preprocessing by: " +this->user->getUserName();;
+    std::string textBody = JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Order attempt: ") +JavaString::valueOf(this->orderHistory->getId())) +JavaString::valueOf(" Preprocessing by: ")) +JavaString::valueOf(this->user->getUserName());;
     
 
     BasicEmailInfo* basicEmailInfo = dynamic_cast<BasicEmailInfo*>(new StoreEmailInfo(this->storeFrontInterface, subject, textBody));;
@@ -241,7 +236,7 @@ userEmailEventHandler->receiveEmailInfo(userEmailEventNameData, emailInfo);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "notifyUser", &e);
@@ -259,7 +254,6 @@ userEmailEventHandler->receiveEmailInfo(userEmailEventNameData, emailInfo);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_STATUS_ORDERSTATUSEMAIL_CPP

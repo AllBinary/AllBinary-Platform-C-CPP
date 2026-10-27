@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/InitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,57 +82,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/InitInfoEntity.h"
 
-class InitInfo
-            : public Object
-         {
+auto InitInfo::instance_owner() -> InitInfo* { static std::unique_ptr<InitInfo> value(new InitInfo()); return value.get(); }
+InitInfo* InitInfo::instance = InitInfo::instance_owner();
 
-    private: static InitInfo* instance() { static std::unique_ptr<InitInfo> value(new InitInfo()); return value.get(); }
-
-    public: static InitInfo* getInstance(){
+    auto InitInfo::getInstance() -> InitInfo*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitInfo::instance();
+                        return InitInfo::instance;
     
 }
 
 
-    public: const std::string TESTING = "TESTING";
-
-    public: const std::string MAINPATH = "MAINPATH";
-
-    public: const std::string TESTHTMLPATH = "TESTHTMLPATH";
-
-    private: std::string testing = 
-                null
-            ;
-
-    private: AbPath* mainPath = 
-                null
-            ;
-
-    private: AbPath* testHtmlPath = 
-                null
-            ;
-
-    private: bool hasRead = false;
-
-private: InitInfo(){
+InitInfo::InitInfo(){
 }
 
 
                 //@Throws(InitException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void set(){
+    auto InitInfo::set() -> void{
 
         try {
             
     InitInfoEntity* initInfoEntity = new InitInfoEntity();;
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     PreLogUtil::put("created entity", "InitInfo", "set()");
@@ -135,7 +122,7 @@ private: InitInfo(){
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     PreLogUtil::put("adding", "InitInfo", "set()");
@@ -150,7 +137,7 @@ initInfoEntity->add();
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
                                     PreLogUtil::put("update", "InitInfo", "set()");
@@ -170,7 +157,7 @@ this->hasRead= false;
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     PreLogUtil::putOE("error", "InitInfo", "set()", &e);
@@ -184,7 +171,7 @@ this->hasRead= false;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void set(HashMap<Object*, Object*>* hashMap){
+    auto InitInfo::set(HashMap<Object*, Object*>* hashMap) -> void{
 
         try {
             this->testing= hashMap->get(this->TESTING);
@@ -198,7 +185,7 @@ this->testHtmlPath= new AbPath(hashMap->get(this->TESTHTMLPATH), StringUtil::get
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     PreLogUtil::putOE("error", "InitInfo", "set()", &e);
@@ -212,7 +199,7 @@ this->testHtmlPath= new AbPath(hashMap->get(this->TESTHTMLPATH), StringUtil::get
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void get(){
+    auto InitInfo::get() -> void{
 
         try {
             this->testing= 
@@ -237,7 +224,7 @@ initInfoEntity->get();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     PreLogUtil::putOE("error", "InitInfo", "set()", &e);
@@ -257,14 +244,14 @@ initInfoEntity->get();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setHasRead(bool value){
+    auto InitInfo::setHasRead(bool value) -> void{
 this->hasRead= value;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void updateIfNeeded(){
+    auto InitInfo::updateIfNeeded() -> void{
 
         try {
             
@@ -283,7 +270,7 @@ this->get();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     PreLogUtil::putOE("error", "InitInfo", "updateIfNeeded()", &e);
@@ -302,7 +289,7 @@ this->get();
 }
 
 
-    public: bool isTesting(){
+    auto InitInfo::isTesting() -> bool{
 
         try {
             this->updateIfNeeded();
@@ -318,7 +305,7 @@ this->get();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     PreLogUtil::putOE("error", "InitInfo", "updateIfNeeded()", &e);
@@ -337,7 +324,7 @@ this->get();
 }
 
 
-    public: std::string getTesting(){
+    auto InitInfo::getTesting() -> std::string{
 this->updateIfNeeded();
     
 
@@ -349,7 +336,7 @@ this->updateIfNeeded();
 }
 
 
-    public: std::string getTestHtmlPath(){
+    auto InitInfo::getTestHtmlPath() -> std::string{
 this->updateIfNeeded();
     
 
@@ -380,7 +367,7 @@ this->updateIfNeeded();
 }
 
 
-    public: std::string getMainPath(){
+    auto InitInfo::getMainPath() -> std::string{
 this->updateIfNeeded();
     
 
@@ -411,25 +398,25 @@ this->updateIfNeeded();
 }
 
 
-    public: void setTesting(std::string value){
+    auto InitInfo::setTesting(std::string value) -> void{
 this->testing= value;
     
 }
 
 
-    public: void setTestHtmlPath(AbPath* value){
+    auto InitInfo::setTestHtmlPath(AbPath* value) -> void{
 this->testHtmlPath= value;
     
 }
 
 
-    public: void setMainPath(AbPath* value){
+    auto InitInfo::setMainPath(AbPath* value) -> void{
 this->mainPath= value;
     
 }
 
 
-    public: bool isMainPathValid(AbPath* abPath){
+    auto InitInfo::isMainPathValid(AbPath* abPath) -> bool{
 
 
 
@@ -439,7 +426,7 @@ this->mainPath= value;
 }
 
 
-    public: bool isTestHtmlPathValid(AbPath* abPath){
+    auto InitInfo::isTestHtmlPathValid(AbPath* abPath) -> bool{
 
 
 
@@ -451,7 +438,7 @@ this->mainPath= value;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isTestingValid(std::string testing){
+    auto InitInfo::isTestingValid(std::string testing) -> bool{
 
 
 
@@ -461,7 +448,7 @@ this->mainPath= value;
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto InitInfo::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -480,7 +467,6 @@ hashMap->put(this->TESTHTMLPATH, this->getTestHtmlPath());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_INITINFO_CPP

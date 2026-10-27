@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/data/TransformStoreDocumentFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,14 @@
         #include "org/allbinary/logic/visual/transform/data/TransformStoreDocument.h"
 #include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
 
-class TransformStoreDocumentFactory
-            : public Object
-         {
+
+TransformStoreDocumentFactory::TransformStoreDocumentFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface* getInstance(PageContext* pageContext, WeblisketSession* weblisketSession){
+    auto TransformStoreDocumentFactory::getInstance(PageContext* pageContext, WeblisketSession* weblisketSession) -> TransformDocumentInterface*{
 
 
 
@@ -76,7 +87,7 @@ class TransformStoreDocumentFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformDocumentInterface* getInstance(SearchRequest* searchRequest){
+    auto TransformStoreDocumentFactory::getInstance(SearchRequest* searchRequest) -> TransformDocumentInterface*{
 
 
 
@@ -86,11 +97,6 @@ class TransformStoreDocumentFactory
 }
 
 
-private: TransformStoreDocumentFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_CPP

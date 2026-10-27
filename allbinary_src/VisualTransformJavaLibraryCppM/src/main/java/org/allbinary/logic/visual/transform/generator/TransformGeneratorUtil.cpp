@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMGENERATORUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMGENERATORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/generator/TransformGeneratorUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,38 +84,33 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformGeneratorUtil
-            : public Object
-         {
+auto TransformGeneratorUtil::instance_owner() -> TransformGeneratorUtil* { static std::unique_ptr<TransformGeneratorUtil> value(new TransformGeneratorUtil()); return value.get(); }
+TransformGeneratorUtil* TransformGeneratorUtil::instance = TransformGeneratorUtil::instance_owner();
 
-    private: static TransformGeneratorUtil* instance() { static std::unique_ptr<TransformGeneratorUtil> value(new TransformGeneratorUtil()); return value.get(); }
-
-    public: static TransformGeneratorUtil* getInstance(){
+    auto TransformGeneratorUtil::getInstance() -> TransformGeneratorUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformGeneratorUtil::instance();
+                        return TransformGeneratorUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransformGeneratorUtil(){
+TransformGeneratorUtil::TransformGeneratorUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, TransformInfoInterface* ownerTransformInfoInterface){
+    auto TransformGeneratorUtil::generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, TransformInfoInterface* ownerTransformInfoInterface) -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Generating View: " +transformInfoInterface->getName(), this, "generate()");
+                                    this->logUtil->putF(JavaString::valueOf("Generating View: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "generate()");
     
 
                                     }
@@ -144,7 +149,7 @@ private: TransformGeneratorUtil(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate a view", this, "generate()", &e);
@@ -164,13 +169,12 @@ private: TransformGeneratorUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: void generate(AbeClientInformationInterface* abeClientInformation, TransformInfoDomNode* transformInfoDomNode, TransformInfoInterface* ownerTransformInfoInterface){
+    auto TransformGeneratorUtil::generate(AbeClientInformationInterface* abeClientInformation, TransformInfoDomNode* transformInfoDomNode, TransformInfoInterface* ownerTransformInfoInterface) -> void{
 this->generate(abeClientInformation, transformInfoDomNode->getTransformInfoInterface(), ownerTransformInfoInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMGENERATORUTIL_CPP

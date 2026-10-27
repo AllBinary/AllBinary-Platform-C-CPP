@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/area/AdvertisementAreaInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,29 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
 
-class AdvertisementAreaInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual std::string getStoreName() = 0;
 
-    public: virtual std::string getDescription() = 0;
-
-    public: virtual AdvertisementAreaConstraintsInterface* getConstraints() = 0;
-
-    public: virtual std::string getCampaign() = 0;
-
-    public: virtual void setName(std::string name) = 0;
-
-    public: virtual void setStoreName(std::string storeName) = 0;
-
-    public: virtual void setDescription(std::string description) = 0;
-
-    public: virtual void setConstraints(AdvertisementAreaConstraintsInterface* advertisementConstraintsInterface) = 0;
-
-    public: virtual void setCampaign(std::string campaign) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_CPP

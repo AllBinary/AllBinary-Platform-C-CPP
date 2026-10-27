@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,15 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class QueueInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class QueueInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
     public: virtual bool offer(Object* anyType) = 0;
+    public: bool offer(const std::string& anyType) { return offer(JavaString::box(anyType)); }
 
                 //@Throws(Exception.constructor)
             
     public: virtual void remove(Object* anyType) = 0;
+    public: void remove(const std::string& anyType) { return remove(JavaString::box(anyType)); }
 
                 //@Throws(Exception.constructor)
             
@@ -70,3 +83,10 @@ class QueueInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H_COMPLETE
+        
+        #endif
+    

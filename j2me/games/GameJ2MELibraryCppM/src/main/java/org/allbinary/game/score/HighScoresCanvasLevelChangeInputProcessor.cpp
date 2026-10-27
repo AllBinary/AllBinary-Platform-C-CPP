@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASLEVELCHANGEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASLEVELCHANGEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresCanvasLevelChangeInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,19 +92,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
 
-class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor, public UpdateMyFontInterface {
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: const std::string INSTRUCTIONS = "(Right = Next Track, Left = Previous Track)";
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: int32_t fontHeight = 0;
-
-public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas* highScoresCanvas) : HighScoresCanvasInputProcessor(highScoresCanvas){
+HighScoresCanvasLevelChangeInputProcessor::HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas* highScoresCanvas) : HighScoresCanvasInputProcessor(highScoresCanvas), displayInfoSingleton(DisplayInfoSingleton::getInstance()), myFontProcessor(new UpdateMyFontProcessor(this)), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -104,7 +103,7 @@ public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas* highScoresCa
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto HighScoresCanvasLevelChangeInputProcessor::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -115,20 +114,20 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void open(){
+    auto HighScoresCanvasLevelChangeInputProcessor::open() -> void{
 GameKeyEventHandler::getInstance()->addListener(this);
     
 }
 
 
-    public: void close(){
+    auto HighScoresCanvasLevelChangeInputProcessor::close() -> void{
 GameKeyEventHandler::getInstance()->removeListener(this);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void update(){
+    auto HighScoresCanvasLevelChangeInputProcessor::update() -> void{
 
     BasicArrayList* list = this->getGameKeyEventList();;
     
@@ -175,7 +174,7 @@ list->clear();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto HighScoresCanvasLevelChangeInputProcessor::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -189,7 +188,6 @@ graphics->drawString(this->INSTRUCTIONS, (width>>1) -topScoresWidth, this->fontH
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASLEVELCHANGEINPUTPROCESSOR_CPP

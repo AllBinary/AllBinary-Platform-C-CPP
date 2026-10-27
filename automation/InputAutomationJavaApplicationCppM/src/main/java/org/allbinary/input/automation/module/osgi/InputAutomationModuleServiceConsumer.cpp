@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/osgi/InputAutomationModuleServiceConsumer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/osgi/InputAutomationModuleOSGIServiceVisitor.h"
 
-class InputAutomationModuleServiceConsumer: public InputAutomationServiceConsumer {
 
-public: InputAutomationModuleServiceConsumer(BundleContext* bundleContext) : InputAutomationServiceConsumer(InputAutomationModuleServiceInterface.constructor.getName(), bundleContext, new InputAutomationModuleOSGIServiceVisitor()){
+InputAutomationModuleServiceConsumer::InputAutomationModuleServiceConsumer(BundleContext* bundleContext) : InputAutomationServiceConsumer(Class::forType(typeid(InputAutomationModuleServiceInterface))->getName(), bundleContext, new InputAutomationModuleOSGIServiceVisitor()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +74,6 @@ public: InputAutomationModuleServiceConsumer(BundleContext* bundleContext) : Inp
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_CPP

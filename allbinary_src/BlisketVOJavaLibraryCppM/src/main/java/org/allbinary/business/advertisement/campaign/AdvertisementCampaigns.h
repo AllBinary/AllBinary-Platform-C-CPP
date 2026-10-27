@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/advertisement/AdvertisementInterface.h>
-
-      
-#include <org/allbinary/business/advertisement/AdvertisementsInterface.h>
-
-      
-#include <org/allbinary/business/advertisement/search/AdvertisementSearchInterface.h>
-
-      
+class AdvertisementInterface;
+class AdvertisementsInterface;
+class AdvertisementSearchInterface;
 
 
 
@@ -64,8 +59,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignsInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvertisementCampaigns
-            : public Object
+            : public virtual Object
         , public AdvertisementCampaignsInterface {
 
     private: BasicArrayList* advertisementsVector;
@@ -88,3 +87,26 @@ public: AdvertisementCampaigns(BasicArrayList* vector);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/advertisement/AdvertisementInterface.h>)
+#include <org/allbinary/business/advertisement/AdvertisementInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/AdvertisementsInterface.h>)
+#include <org/allbinary/business/advertisement/AdvertisementsInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/search/AdvertisementSearchInterface.h>)
+#include <org/allbinary/business/advertisement/search/AdvertisementSearchInterface.h>
+#endif
+#if __has_include("org/allbinary/business/advertisement/campaign/AdvertisementCampaignsInterface.h")
+#include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignsInterface.h"
+#endif
+
+        #endif
+    

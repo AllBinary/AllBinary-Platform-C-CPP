@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CANVAS_ABTOGBUTIL_CPP
+        #define ORG_ALLBINARY_GAME_CANVAS_ABTOGBUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/canvas/ABToGBUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,27 +64,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ABToGBUtil
-            : public Object
-         {
 
-    private: static ABToGBUtil* instance() { static std::unique_ptr<ABToGBUtil> value(new ABToGBUtil()); return value.get(); }
+ABToGBUtil::ABToGBUtil() : abCanvas(NullCanvas::NULL_CANVAS), allBinaryGameLayerManager(AllBinaryGameLayerManager::getNullInstance()) {
+        }
+        auto ABToGBUtil::instance_owner() -> ABToGBUtil* { static std::unique_ptr<ABToGBUtil> value(new ABToGBUtil()); return value.get(); }
+ABToGBUtil* ABToGBUtil::instance = ABToGBUtil::instance_owner();
 
-    public: static ABToGBUtil* getInstance(){
+    auto ABToGBUtil::getInstance() -> ABToGBUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABToGBUtil::instance();
+                        return ABToGBUtil::instance;
     
 }
 
 
-    public: Canvas* abCanvas = NullCanvas::NULL_CANVAS;
 
-    public: AllBinaryGameLayerManager* allBinaryGameLayerManager = AllBinaryGameLayerManager::getNullInstance();
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_CANVAS_ABTOGBUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/BasicItemView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -84,21 +94,8 @@
         #include "org/allbinary/business/user/commerce/inventory/item/BasicItemData.h"
 #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
 
-class BasicItemView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    private: ItemInterface* itemInterface;
-
-    private: BasicArrayList* vector;
-
-public: BasicItemView(ItemInterface* itemInterface, BasicArrayList* vector){
+BasicItemView::BasicItemView(ItemInterface* itemInterface, BasicArrayList* vector) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), basicItemData(BasicItemData::getInstance()){
 this->itemInterface= itemInterface;
     
 this->vector= vector;
@@ -108,9 +105,9 @@ this->vector= vector;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto BasicItemView::toXmlNode(Document* document) -> Node*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toXmlNode");
@@ -194,7 +191,7 @@ node->appendChild(customNode);
 }
 
 
-    public: Document* toXmlDoc(){
+    auto BasicItemView::toXmlDoc() -> Document*{
 
 
 
@@ -204,7 +201,7 @@ node->appendChild(customNode);
 }
 
 
-    public: std::string view(){
+    auto BasicItemView::view() -> std::string{
 
 
 
@@ -214,7 +211,6 @@ node->appendChild(customNode);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMVIEW_CPP

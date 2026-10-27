@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSECLIENTANDSERVERTEST_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSECLIENTANDSERVERTEST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LicenseClientAndServerTest.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -84,37 +94,8 @@
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
 #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
 
-class LicenseClientAndServerTest
-            : public Object
-         {
 
-    public: static void main(std::vector<std::string> args){
-
-        try {
-            
-    LicenseClientAndServerTest* licensingTest = new LicenseClientAndServerTest(args);;
-    
-licensingTest->test();
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-
-    LogUtil* logUtil = LogUtil::getInstance();;
-    
-this->logUtil->put(this->commonStrings.EXCEPTION, "main()", "main()", &e);
-    
-}
-
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* vector = new BasicArrayListD();
-
-public: LicenseClientAndServerTest(std::vector<std::string> options){
+LicenseClientAndServerTest::LicenseClientAndServerTest(std::vector<std::string> options) : logUtil(LogUtil::getInstance()), vector(new BasicArrayListD()){
 LicenseInitInfoUtil::getInstance()->setFilePath(PrintLicenseInitInfo::PATH +PATH_GLOBALS::getInstance()->INIT_PATH);
     
 
@@ -133,7 +114,7 @@ this->vector->add(options[index]);
                         
                                     {
                                     
-    File* file = new File(PrintLicenseInitInfo::PATH +"testlicenseservers.txt");;
+    File* file = new File(JavaString::valueOf(PrintLicenseInitInfo::PATH) +JavaString::valueOf("testlicenseservers.txt"));;
     
 
     FileReader* reader = new FileReader(file);;
@@ -172,7 +153,7 @@ this->vector->add(options[index]);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void test(){
+    auto LicenseClientAndServerTest::test() -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -242,9 +223,9 @@ stringBuffer->append(abeLicenseInterface->toString());
                                 
 stringBuffer->append(END);
     
-this->logUtil->putF(RESULT +stringBuffer->toString(), this, "test");
+this->logUtil->putF(JavaString::valueOf(RESULT) +JavaString::valueOf(stringBuffer->toString()), this, "test");
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 
                 //: 
@@ -252,26 +233,47 @@ stringBuffer->delete(0, stringBuffer->length());
             {
 list->add(serverName);
     
-this->logUtil->put("Test Error: " +stringBuffer->toString(), this, "test", &e);
+this->logUtil->put(JavaString::valueOf("Test Error: ") +JavaString::valueOf(stringBuffer->toString()), this, "test", &e);
     
 }
 
 }
 
-this->logUtil->putF("Total Servers Failed: " +list->size() +" Failed Servers: " +list->toString(), this, "test");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Total Servers Failed: ") +JavaString::valueOf(list->size())) +JavaString::valueOf(" Failed Servers: ")) +JavaString::valueOf(list->toString()), this, "test");
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put("Test Error: " +stringBuffer->toString(), this, "test", &e);
+this->logUtil->put(JavaString::valueOf("Test Error: ") +JavaString::valueOf(stringBuffer->toString()), this, "test", &e);
     
 }
 
 }
 
 
-};
+    auto LicenseClientAndServerTest::main(std::vector<std::string> args) -> void{
 
+        try {
             
+    LicenseClientAndServerTest* licensingTest = new LicenseClientAndServerTest(args);;
+    
+licensingTest->test();
+    
 
+                //: 
+} catch(Exception& e) 
+            {
+
+    LogUtil* logUtil = LogUtil::getInstance();;
+    
+this->logUtil->put(this->commonStrings->EXCEPTION, "main()", "main()", &e);
+    
+}
+
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSECLIENTANDSERVERTEST_CPP

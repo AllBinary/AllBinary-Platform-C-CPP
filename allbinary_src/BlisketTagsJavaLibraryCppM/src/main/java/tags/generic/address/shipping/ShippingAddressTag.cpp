@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSTAG_CPP
+        #define TAGS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/generic/address/shipping/ShippingAddressTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,17 +70,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingAddressTag: public StoreValidationTransformTag {
 
-    private: std::string value;
-
-public: ShippingAddressTag(){
+ShippingAddressTag::ShippingAddressTag(){
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto ShippingAddressTag::doStartTag() -> int32_t{
 
         try {
             
@@ -80,7 +87,7 @@ public: ShippingAddressTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -91,7 +98,7 @@ this->setObjectFile("views.generic.address.shipping.ViewShippingAddressesView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->EDIT) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -102,7 +109,7 @@ this->setObjectFile("views.generic.address.shipping.EditShippingAddressesView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->NEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -113,7 +120,7 @@ this->setObjectFile("views.generic.address.shipping.NewShippingAddressesView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->INSERT) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -124,7 +131,7 @@ this->setObjectFile("views.generic.address.shipping.AddShippingAddressesView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->DELETE) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -160,7 +167,7 @@ this->setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -169,7 +176,7 @@ this->setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -177,7 +184,7 @@ this->setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -209,7 +216,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSTAG_CPP

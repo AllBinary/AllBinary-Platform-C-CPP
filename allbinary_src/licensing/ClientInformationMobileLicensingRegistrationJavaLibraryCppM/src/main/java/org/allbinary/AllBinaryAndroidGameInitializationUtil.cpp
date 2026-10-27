@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_CPP
+        #define ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/AllBinaryAndroidGameInitializationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/AndroidResources.h"
 
-class AllBinaryAndroidGameInitializationUtil
-            : public Object
-         {
 
-    public: static void init(){
+AllBinaryAndroidGameInitializationUtil::AllBinaryAndroidGameInitializationUtil() {
+        }
+        
+    auto AllBinaryAndroidGameInitializationUtil::init() -> void{
 
     ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
@@ -71,14 +81,13 @@ class AllBinaryAndroidGameInitializationUtil
 
     LicenseInitInfoUtil* licenseInitInfoUtil = LicenseInitInfoUtil::getInstance();;
     
-resourceUtil->addResource(licenseInitInfoUtil->INITFILENAME, Integer.valueOf(androidResources->raw.licenseinitdata));
+resourceUtil->addResource(licenseInitInfoUtil->INITFILENAME, Integer.valueOf(androidResources->raw->licenseinitdata));
     
-resourceUtil->addResource(PartnerIdentifierFileUtil::getInstance()->FILE_NAME, Integer.valueOf(androidResources->raw.partner));
+resourceUtil->addResource(PartnerIdentifierFileUtil::getInstance()->FILE_NAME, Integer.valueOf(androidResources->raw->partner));
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_CPP

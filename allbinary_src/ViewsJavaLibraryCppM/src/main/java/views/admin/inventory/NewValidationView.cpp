@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/NewValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,9 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/InventoryItemView.h"
 
-class NewValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-public: NewValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
+NewValidationView::NewValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,7 +90,7 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 }
 
 
-    public: bool isValid(){
+    auto NewValidationView::isValid() -> bool{
 
         try {
             
@@ -105,7 +114,7 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto NewValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -115,7 +124,7 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto NewValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -125,7 +134,7 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 }
 
 
-    public: std::string validationInfo(){
+    auto NewValidationView::validationInfo() -> std::string{
 
 
 
@@ -135,7 +144,6 @@ this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_NEWVALIDATIONVIEW_CPP

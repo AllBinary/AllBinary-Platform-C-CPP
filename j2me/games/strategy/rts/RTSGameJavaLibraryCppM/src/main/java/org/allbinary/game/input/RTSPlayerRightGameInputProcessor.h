@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class GameKeyEvent;
+class AllBinaryLayerManager;
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/RTSPlayerGameInputProcessor.h"
-#include "org/allbinary/game/input/RTSPlayerGameInput.h"
+class RTSPlayerGameInput;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSPlayerRightGameInputProcessor: public RTSPlayerGameInputProcessor {
 
 public: RTSPlayerRightGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput);
@@ -70,3 +75,22 @@ public: RTSPlayerRightGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput)
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include("org/allbinary/game/input/RTSPlayerGameInputProcessor.h")
+#include "org/allbinary/game/input/RTSPlayerGameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/RTSPlayerGameInput.h")
+#include "org/allbinary/game/input/RTSPlayerGameInput.h"
+#endif
+
+        #endif
+    

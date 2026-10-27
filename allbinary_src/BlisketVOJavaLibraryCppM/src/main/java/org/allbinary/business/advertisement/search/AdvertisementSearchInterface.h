@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,20 +33,10 @@
 
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/advertisement/search/category/AdvertisementCategoryInterface.h>
-
-      
-#include <org/allbinary/business/advertisement/search/website/AdvertisementWebsiteInterface.h>
-
-      
-#include <org/allbinary/logic/control/contraints/price/PriceConstraintInterface.h>
-
-      
-#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
-
-      
+class AdvertisementCategoryInterface;
+class AdvertisementWebsiteInterface;
+class PriceConstraintInterface;
+class TwoDimensionalConstraintInterface;
 
 
 
@@ -61,7 +56,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementSearchInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class AdvertisementSearchInterface
+            : public virtual Object
+         {
 
     public: virtual AdvertisementWebsiteInterface* getWebSite() = 0;
 
@@ -95,3 +96,25 @@ class AdvertisementSearchInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHINTERFACE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/search/category/AdvertisementCategoryInterface.h>)
+#include <org/allbinary/business/advertisement/search/category/AdvertisementCategoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/search/website/AdvertisementWebsiteInterface.h>)
+#include <org/allbinary/business/advertisement/search/website/AdvertisementWebsiteInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/contraints/price/PriceConstraintInterface.h>)
+#include <org/allbinary/logic/control/contraints/price/PriceConstraintInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>)
+#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
+#endif
+
+        #endif
+    

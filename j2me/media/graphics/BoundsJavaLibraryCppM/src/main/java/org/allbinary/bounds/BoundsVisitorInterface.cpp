@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BOUNDS_BOUNDSVISITORINTERFACE_CPP
+        #define ORG_ALLBINARY_BOUNDS_BOUNDSVISITORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bounds/BoundsVisitorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,21 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BoundsVisitorInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getX() = 0;
 
-    public: virtual int32_t getY() = 0;
 
-    public: virtual void maxX() = 0;
-
-    public: virtual void maxY() = 0;
-
-    public: virtual void minX() = 0;
-
-    public: virtual void minY() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BOUNDS_BOUNDSVISITORINTERFACE_CPP

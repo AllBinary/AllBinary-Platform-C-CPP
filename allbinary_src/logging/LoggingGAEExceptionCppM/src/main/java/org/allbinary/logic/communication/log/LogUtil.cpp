@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,37 +74,30 @@
 #include "org/allbinary/logic/communication/log/PreLogUtil.h"
 #include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
-/*actual*/ class LogUtil
-            : public Object
-         {
+auto LogUtil::instance_owner() -> LogUtil* { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
+LogUtil* LogUtil::instance = LogUtil::instance_owner();
 
-    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
-
-    /*actual*/ public: static LogUtil* getInstance(){
+    /*actual*/ auto LogUtil::getInstance() -> LogUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil::instance();
+                        return LogUtil::instance;
     
 }
 
 
-    private: Logger* logger = Logger::getLogger(LogUtil.constructor.getName());
-
-    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
-
-private: LogUtil(){
+LogUtil::LogUtil() : logger(Logger::getLogger(Class::forType(typeid(LogUtil))->getName())), logFormatUtil(LogFormatUtil::getInstance()){
 }
 
 
-    /*actual*/ public: void init(){
+    /*actual*/ auto LogUtil::init() -> void{
 PreLogUtil::put("Loggin Initialized", this, "init()");
     
 }
 
 
-    /*actual*/ public: void putL(Log* log){
+    /*actual*/ auto LogUtil::putL(Log* log) -> void{
 
     Object* exception = log->getThrowable();;
     
@@ -147,7 +150,7 @@ this->logger->log(Level::INFO, message);
 }
 
 
-    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+    /*actual*/ auto LogUtil::put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception) -> void{
 
         try {
             
@@ -194,7 +197,6 @@ this->logger->log(Level::INFO, message);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP

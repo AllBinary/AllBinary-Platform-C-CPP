@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEBASEBEHAVIORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEBASEBEHAVIORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,20 +59,19 @@
         #include "org/allbinary/game/collision/CollidableBaseBehaviorFactoryInterface.h"
 #include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
-class CollidableBaseBehaviorFactory
-            : public Object
-        , public CollidableBaseBehaviorFactoryInterface {
 
-    public: CollidableBaseBehavior* createBehavior(){
+CollidableBaseBehaviorFactory::CollidableBaseBehaviorFactory() {
+        }
+        
+    auto CollidableBaseBehaviorFactory::createBehavior() -> CollidableBaseBehavior*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEBASEBEHAVIORFACTORY_CPP

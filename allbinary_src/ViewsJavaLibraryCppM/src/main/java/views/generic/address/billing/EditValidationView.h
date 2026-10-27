@@ -21,6 +21,11 @@
         #ifndef VIEWS_GENERIC_ADDRESS_BILLING_EDITVALIDATIONVIEW_H
         #define VIEWS_GENERIC_ADDRESS_BILLING_EDITVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/business/user/address/StreetAddressData.h>
-
-      
-#include <org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h>
-
-      
+class StreetAddressData;
+class BillingAddressesEntity;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -69,6 +62,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/billing/BillingAddressView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EditValidationView: public BillingAddressView, public ValidationComponentInterface {
 
     private: std::string value;
@@ -89,3 +86,31 @@ public: EditValidationView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_GENERIC_ADDRESS_BILLING_EDITVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_GENERIC_ADDRESS_BILLING_EDITVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_GENERIC_ADDRESS_BILLING_EDITVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/address/StreetAddressData.h>)
+#include <org/allbinary/business/user/address/StreetAddressData.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h>)
+#include <org/allbinary/data/tables/user/address/billing/BillingAddressesEntity.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/generic/address/billing/BillingAddressView.h")
+#include "views/generic/address/billing/BillingAddressView.h"
+#endif
+
+        #endif
+    

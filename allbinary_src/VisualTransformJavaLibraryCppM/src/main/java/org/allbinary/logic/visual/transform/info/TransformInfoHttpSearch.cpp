@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSEARCH_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSEARCH_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpSearch.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,9 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/TransformInfoHttp.h"
 
-class TransformInfoHttpSearch: public TransformInfoHttp {
 
-public: TransformInfoHttpSearch(SearchRequest* searchRequest) : TransformInfoHttp(searchRequest->getPropertiesHashMap(), searchRequest->getPageContext()){
+TransformInfoHttpSearch::TransformInfoHttpSearch(SearchRequest* searchRequest) : TransformInfoHttp(searchRequest->getPropertiesHashMap(), searchRequest->getPageContext()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,7 +110,7 @@ this->setTemplateFile(dataFileName);
 
                 //@Throws(Exception.constructor)
             
-    private: std::string getPath(){
+    auto TransformInfoHttpSearch::getPath() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -124,7 +133,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getTemplateFilePath(){
+    auto TransformInfoHttpSearch::getTemplateFilePath() -> AbPath*{
 
 
 
@@ -136,7 +145,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getObjectConfigFilePath(){
+    auto TransformInfoHttpSearch::getObjectConfigFilePath() -> AbPath*{
 
 
 
@@ -148,7 +157,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getDataFilePath(){
+    auto TransformInfoHttpSearch::getDataFilePath() -> AbPath*{
 
 
 
@@ -158,7 +167,6 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSEARCH_CPP

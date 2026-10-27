@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +53,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ItemColorFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ItemColorFactory* instance() { static std::unique_ptr<ItemColorFactory> value(new ItemColorFactory()); return value.get(); }
+    private: static ItemColorFactory* instance_owner();
+    private: static ItemColorFactory* instance;
 
     public: static ItemColorFactory* getInstance();
 
-    public: int32_t INVERT_PAINT = static_cast<int32_t>(0xFF000000);
 
-    public: int32_t PAINT = static_cast<int32_t>(0xFFe07718);
+            
+    public: ItemColorFactory();
+        
+    public: int32_t INVERT_PAINT;
+
+    public: int32_t PAINT;
 
     public: int32_t TEXT_FIELD_NO_FOCUS = 0x7F7F7F;
 
@@ -68,3 +82,10 @@ class ItemColorFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_H_COMPLETE
+        
+        #endif
+    

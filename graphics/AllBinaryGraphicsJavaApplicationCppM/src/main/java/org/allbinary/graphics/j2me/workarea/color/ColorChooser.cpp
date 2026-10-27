@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_COLOR_COLORCHOOSER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_COLOR_COLORCHOOSER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/color/ColorChooser.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,27 +56,23 @@
 #include "org/allbinary/graphics/j2me/workarea/color/JColorChooser.h"
 #include "org/allbinary/graphics/j2me/workarea/color/BorderLayout.h"
 
-class ColorChooser: public javax::swing::JPanel {
 
-public: ColorChooser(){
+ColorChooser::ColorChooser(){
 this->initComponents();
     
 }
 
 
-    private: void initComponents(){
+    auto ColorChooser::initComponents() -> void{
 this->jColorChooser1= new javax::swing::JColorChooser();
     
 setLayout(new java::awt::BorderLayout());
     
-add(this->jColorChooser1, java.awt.BorderLayout.CENTER);
+add(this->jColorChooser1, java.awt->BorderLayout->CENTER);
     
 }
 
 
-    private: javax::swing::JColorChooser* jColorChooser1;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_COLOR_COLORCHOOSER_CPP

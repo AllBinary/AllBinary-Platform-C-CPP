@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullCanvas.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/graphics/displayable/MyCanvas.h>
-
-      
+class Canvas;
+class Graphics;
+class Image;
+class NullCanvas;
+class NullImage;
+class Anchor;
+class MyCanvas;
 #include <org/allbinary/graphics/paint/ProcessPaintable.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class CircularIndexUtil;
 
 
 
@@ -76,27 +63,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+        class AllBinaryGameCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BufferedGameCanvasPaintHelper: public ProcessPaintable {
 
     private: static inline const int32_t MAX_IMAGES = 4;
 
-    private: Canvas* gameCanvas = NullCanvas::NULL_CANVAS;
+    private: Canvas* gameCanvas;
 
-    private: const std::vector<Image*> offScreenImage = std::vector<Image*>(BufferedGameCanvasPaintHelper::MAX_IMAGES);
+    private: std::vector<Image*> offScreenImage;
 
-    private: Image* previousImage = NullImage::NULL_IMAGE;
+    private: Image* previousImage;
 
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(BufferedGameCanvasPaintHelper::MAX_IMAGES);
+    private: CircularIndexUtil* circularIndexUtil;
 
-    private: CircularIndexUtil* drawCircularIndexUtil = CircularIndexUtil::createInstanceAt(BufferedGameCanvasPaintHelper::MAX_IMAGES -1, BufferedGameCanvasPaintHelper::MAX_IMAGES);
+    private: CircularIndexUtil* drawCircularIndexUtil;
 
 public: BufferedGameCanvasPaintHelper(AllBinaryGameCanvas* gameCanvas);
 
     public: void process();
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
     public: void paint(Graphics* graphics);
 
@@ -106,3 +97,40 @@ public: BufferedGameCanvasPaintHelper(AllBinaryGameCanvas* gameCanvas);
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullCanvas.h>)
+#include <javax/microedition/lcdui/NullCanvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/MyCanvas.h>)
+#include <org/allbinary/graphics/displayable/MyCanvas.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/ProcessPaintable.h>)
+#include <org/allbinary/graphics/paint/ProcessPaintable.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h")
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#endif
+
+        #endif
+    

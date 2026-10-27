@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/TransformTemplateFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,31 +82,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/template/TransformTemplateInterface.h"
 
-class TransformTemplateFactory
-            : public Object
-         {
+auto TransformTemplateFactory::instance_owner() -> TransformTemplateFactory* { static std::unique_ptr<TransformTemplateFactory> value(new TransformTemplateFactory()); return value.get(); }
+TransformTemplateFactory* TransformTemplateFactory::instance = TransformTemplateFactory::instance_owner();
 
-    private: static TransformTemplateFactory* instance() { static std::unique_ptr<TransformTemplateFactory> value(new TransformTemplateFactory()); return value.get(); }
-
-    public: static TransformTemplateFactory* getInstance(){
+    auto TransformTemplateFactory::getInstance() -> TransformTemplateFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformTemplateFactory::instance();
+                        return TransformTemplateFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransformTemplateFactory(){
+TransformTemplateFactory::TransformTemplateFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformTemplateInterface* getInstance(AbeClientInformationInterface* abeClientInformation, std::string templateName, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+    auto TransformTemplateFactory::getInstance(AbeClientInformationInterface* abeClientInformation, std::string templateName, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) -> TransformTemplateInterface*{
 
         try {
             
@@ -119,10 +124,10 @@ private: TransformTemplateFactory(){
     std::string error = "Failed To Get Instance";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(error +templateName +"->TemplateFactory", this, "getInstance(viewName, HashMap, PageContext)", &e);
+                                    this->logUtil->put(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf(templateName)) +JavaString::valueOf("->TemplateFactory"), this, "getInstance(viewName, HashMap, PageContext)", &e);
     
 
                                     }
@@ -137,7 +142,6 @@ private: TransformTemplateFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_TRANSFORMTEMPLATEFACTORY_CPP

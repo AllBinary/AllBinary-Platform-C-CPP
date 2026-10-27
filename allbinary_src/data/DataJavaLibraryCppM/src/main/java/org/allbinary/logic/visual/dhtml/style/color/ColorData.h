@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorData
-            : public Object
+            : public virtual Object
          {
 
-    private: static ColorData* instance() { static std::unique_ptr<ColorData> value(new ColorData()); return value.get(); }
+    private: static ColorData* instance_owner();
+    private: static ColorData* instance;
 
     public: static ColorData* getInstance();
 
@@ -66,3 +76,10 @@ private: ColorData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORDATA_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_BOUNDBOUNCEAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_BOUNDBOUNCEAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/BoundBounceAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,15 +79,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BoundBounceAI: public BasicAI {
 
-    protected: int32_t currentRelativeAngle = 0;
-
-    private: LayerBounds* layerBounds;
-
-    private: BoundsVisitorInterface* boundsVisitorInterface;
-
-public: BoundBounceAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, LayerBounds* layerBounds, BoundsVisitorInterface* boundsVisitorInterface) : BasicAI(ownerLayerInterface, gameInput){
+BoundBounceAI::BoundBounceAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, LayerBounds* layerBounds, BoundsVisitorInterface* boundsVisitorInterface) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,7 +94,7 @@ this->boundsVisitorInterface= boundsVisitorInterface;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto BoundBounceAI::paint(Graphics* graphics) -> void{
 
     Rectangle* rectange = this->layerBounds->getRectangleP();;
     
@@ -102,13 +105,12 @@ graphics->drawRect(rectange->getPoint()->getX(), rectange->getPoint()->getY(), r
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto BoundBounceAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 this->layerBounds->visit(this->boundsVisitorInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_BOUNDBOUNCEAI_CPP

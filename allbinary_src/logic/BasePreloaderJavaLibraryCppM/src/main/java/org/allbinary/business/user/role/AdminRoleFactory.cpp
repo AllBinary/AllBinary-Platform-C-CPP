@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/role/AdminRoleFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,45 +62,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
 
-class AdminRoleFactory
-            : public Object
-         {
+auto AdminRoleFactory::instance_owner() -> AdminRoleFactory* { static std::unique_ptr<AdminRoleFactory> value(new AdminRoleFactory()); return value.get(); }
+AdminRoleFactory* AdminRoleFactory::instance = AdminRoleFactory::instance_owner();
 
-    private: static AdminRoleFactory* instance() { static std::unique_ptr<AdminRoleFactory> value(new AdminRoleFactory()); return value.get(); }
-
-    public: static AdminRoleFactory* getInstance(){
+    auto AdminRoleFactory::getInstance() -> AdminRoleFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdminRoleFactory::instance();
+                        return AdminRoleFactory::instance;
     
 }
 
 
-    private: BasicArrayList* adminRoles = new BasicArrayListD();
-
-    private: BasicArrayList* storeAdminRoles = new BasicArrayListD();
-
-    private: BasicArrayList* storeManagementRoles = new BasicArrayListD();
-
-    private: BasicArrayList* productManagementRoles = new BasicArrayListD();
-
-    private: BasicArrayList* reviewManagementRoles = new BasicArrayListD();
-
-    private: BasicArrayList* customerManagementRoles = new BasicArrayListD();
-
-    private: BasicArrayList* workflowManagementRoles = new BasicArrayListD();
-
-    private: BasicArrayList* orderManagementRoles = new BasicArrayListD();
-
-    private: BasicArrayList* adjusterManagementRoles = new BasicArrayListD();
-
-    private: BasicArrayList* shippingManagementRoles = new BasicArrayListD();
-
-    private: BasicArrayList* webManagementRoles = new BasicArrayListD();
-
-private: AdminRoleFactory(){
+AdminRoleFactory::AdminRoleFactory() : adminRoles(new BasicArrayListD()), storeAdminRoles(new BasicArrayListD()), storeManagementRoles(new BasicArrayListD()), productManagementRoles(new BasicArrayListD()), reviewManagementRoles(new BasicArrayListD()), customerManagementRoles(new BasicArrayListD()), workflowManagementRoles(new BasicArrayListD()), orderManagementRoles(new BasicArrayListD()), adjusterManagementRoles(new BasicArrayListD()), shippingManagementRoles(new BasicArrayListD()), webManagementRoles(new BasicArrayListD()){
 
     BasicUserRoleFactory* basicUserRoleFactory = BasicUserRoleFactory::getInstance();;
     
@@ -167,7 +152,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getProductManagementRoles(){
+    auto AdminRoleFactory::getProductManagementRoles() -> BasicArrayList*{
 
 
 
@@ -177,7 +162,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getAdminRoles(){
+    auto AdminRoleFactory::getAdminRoles() -> BasicArrayList*{
 
 
 
@@ -187,7 +172,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getStoreAdminRoles(){
+    auto AdminRoleFactory::getStoreAdminRoles() -> BasicArrayList*{
 
 
 
@@ -197,7 +182,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getStoreManagementRoles(){
+    auto AdminRoleFactory::getStoreManagementRoles() -> BasicArrayList*{
 
 
 
@@ -207,7 +192,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getReviewManagementRoles(){
+    auto AdminRoleFactory::getReviewManagementRoles() -> BasicArrayList*{
 
 
 
@@ -217,7 +202,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getCustomerManagementRoles(){
+    auto AdminRoleFactory::getCustomerManagementRoles() -> BasicArrayList*{
 
 
 
@@ -227,7 +212,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getWorkflowManagementRoles(){
+    auto AdminRoleFactory::getWorkflowManagementRoles() -> BasicArrayList*{
 
 
 
@@ -237,7 +222,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getWebManagementRoles(){
+    auto AdminRoleFactory::getWebManagementRoles() -> BasicArrayList*{
 
 
 
@@ -247,7 +232,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getShippingManagementRoles(){
+    auto AdminRoleFactory::getShippingManagementRoles() -> BasicArrayList*{
 
 
 
@@ -257,7 +242,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getAdjusterManagementRoles(){
+    auto AdminRoleFactory::getAdjusterManagementRoles() -> BasicArrayList*{
 
 
 
@@ -267,7 +252,7 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-    public: BasicArrayList* getOrderManagementRoles(){
+    auto AdminRoleFactory::getOrderManagementRoles() -> BasicArrayList*{
 
 
 
@@ -277,7 +262,6 @@ this->webManagementRoles->add(basicUserRoleFactory->VIEWEDITOR);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_ADMINROLEFACTORY_CPP

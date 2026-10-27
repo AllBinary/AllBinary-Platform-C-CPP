@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/RectangleFilledAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleFilledAnimation: public Animation, public ColorCompositeInterface {
 
-    protected: int32_t widthP;
-
-    protected: int32_t heightP;
-
-public: RectangleFilledAnimation(int32_t width, int32_t height, BasicColor* basicColor){
+RectangleFilledAnimation::RectangleFilledAnimation(int32_t width, int32_t height, BasicColor* basicColor){
 this->widthP= width;
     
 this->heightP= height;
@@ -71,31 +76,30 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void nextFrame(){
+    auto RectangleFilledAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    auto RectangleFilledAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 graphics->fillRect(x, y, this->widthP, this->heightP);
     
 }
 
 
-    public: void setWidth(int32_t width){
+    auto RectangleFilledAnimation::setWidth(int32_t width) -> void{
 this->widthP= width;
     
 }
 
 
-    public: void setHeight(int32_t height){
+    auto RectangleFilledAnimation::setHeight(int32_t height) -> void{
 this->heightP= height;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDANIMATION_CPP

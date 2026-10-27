@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
-#include <org/allbinary/game/paint/ColorFillBasePaintable.h>
-
-      
-#include <org/allbinary/game/paint/ColorFillPaintableFactory.h>
-
-      
-#include <org/allbinary/graphics/paint/Paintable.h>
-
-      
+class CommandListener;
+class Graphics;
+class AllBinaryGameLayerManager;
+class ColorFillBasePaintable;
+class ColorFillPaintableFactory;
+class Paintable;
 
 
 
@@ -69,6 +62,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicPaintablesCanvas: public GameCommandCanvas {
 
     private: std::vector<Paintable*> paintableArray;
@@ -85,3 +82,31 @@ public: BasicPaintablesCanvas(CommandListener* cmdListener, std::string name, Al
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/game/paint/ColorFillBasePaintable.h>)
+#include <org/allbinary/game/paint/ColorFillBasePaintable.h>
+#endif
+#if __has_include(<org/allbinary/game/paint/ColorFillPaintableFactory.h>)
+#include <org/allbinary/game/paint/ColorFillPaintableFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/GameCommandCanvas.h")
+#include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/CloudStreamUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,27 +68,25 @@
         #include "org/allbinary/logic/io/AbFileInputStream.h"
 #include "org/allbinary/logic/io/AbFileLocalInputStream.h"
 
-class CloudStreamUtil
-            : public Object
-         {
 
-    private: static CloudStreamUtil* instance() { static std::unique_ptr<CloudStreamUtil> value(new CloudStreamUtil()); return value.get(); }
+CloudStreamUtil::CloudStreamUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto CloudStreamUtil::instance_owner() -> CloudStreamUtil* { static std::unique_ptr<CloudStreamUtil> value(new CloudStreamUtil()); return value.get(); }
+CloudStreamUtil* CloudStreamUtil::instance = CloudStreamUtil::instance_owner();
 
-    public: static CloudStreamUtil* getInstance(){
+    auto CloudStreamUtil::getInstance() -> CloudStreamUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CloudStreamUtil::instance();
+                        return CloudStreamUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getFile(AbFile* file){
+    auto CloudStreamUtil::getFile(AbFile* file) -> InputStream*{
 
     InputStream* inputStream = new AbFileInputStream(file);;
     
@@ -90,10 +98,10 @@ class CloudStreamUtil
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Cloud File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil->putF(JavaString::valueOf("Cloud File Bytes: ") +JavaString::valueOf(available), this, "processRequest()");
     
 
                                     }
@@ -112,7 +120,7 @@ class CloudStreamUtil
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getFileAnyWhere(AbFile* file){
+    auto CloudStreamUtil::getFileAnyWhere(AbFile* file) -> InputStream*{
 
     InputStream* inputStream = new AbFileLocalInputStream(file);;
     
@@ -124,10 +132,10 @@ class CloudStreamUtil
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Local File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil->putF(JavaString::valueOf("Local File Bytes: ") +JavaString::valueOf(available), this, "processRequest()");
     
 
                                     }
@@ -145,10 +153,10 @@ available= inputStream->available();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->putF("Cloud File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil->putF(JavaString::valueOf("Cloud File Bytes: ") +JavaString::valueOf(available), this, "processRequest()");
     
 
                                     }
@@ -170,7 +178,7 @@ available= inputStream->available();
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getFileLocal(AbFile* file){
+    auto CloudStreamUtil::getFileLocal(AbFile* file) -> InputStream*{
 
     InputStream* inputStream = new AbFileLocalInputStream(file);;
     
@@ -182,10 +190,10 @@ available= inputStream->available();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Local File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil->putF(JavaString::valueOf("Local File Bytes: ") +JavaString::valueOf(available), this, "processRequest()");
     
 
                                     }
@@ -202,7 +210,6 @@ available= inputStream->available();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_CPP

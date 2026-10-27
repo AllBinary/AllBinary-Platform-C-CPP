@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h>
-
-      
+class BasketInterface;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class OrderInterface
+            : public virtual Object
+         {
 
     public: virtual void setShippingMethod(std::string shippingType) = 0;
 
@@ -93,3 +102,13 @@ class OrderInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h>
+#endif
+
+        #endif
+    

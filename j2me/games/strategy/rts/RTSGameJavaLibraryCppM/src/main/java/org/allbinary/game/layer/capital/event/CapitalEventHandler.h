@@ -20,6 +20,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,15 +33,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class AllBinaryEventObject;
+class EventListenerInterface;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -55,16 +54,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/capital/event/CapitalEventListenerInterface.h"
-#include "org/allbinary/game/layer/capital/event/CapitalEvent.h"
+        class CapitalEventListenerInterface;
+class CapitalEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CapitalEventHandler: public BasicEventHandler {
 
 public: CapitalEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -72,3 +75,25 @@ public: CapitalEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include("org/allbinary/game/layer/capital/event/CapitalEventListenerInterface.h")
+#include "org/allbinary/game/layer/capital/event/CapitalEventListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/layer/capital/event/CapitalEvent.h")
+#include "org/allbinary/game/layer/capital/event/CapitalEvent.h"
+#endif
+
+        #endif
+    

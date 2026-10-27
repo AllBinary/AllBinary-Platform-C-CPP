@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_ORDER_REVIEW_REVIEWORDERSTOREADMINUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_ORDER_REVIEW_REVIEWORDERSTOREADMINUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/admin/store/order/review/ReviewOrderStoreAdminUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/admin/store/order/review/ReviewOrderStoreAdminUser.h"
 
-class ReviewOrderStoreAdminUserFactory
-            : public Object
-        , public UserFactoryInterface {
 
-public: ReviewOrderStoreAdminUserFactory(){
+ReviewOrderStoreAdminUserFactory::ReviewOrderStoreAdminUserFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(){
+    auto ReviewOrderStoreAdminUserFactory::getInstance() -> UserInterface*{
 
 
 
@@ -79,7 +86,7 @@ public: ReviewOrderStoreAdminUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto ReviewOrderStoreAdminUserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
 
 
@@ -89,7 +96,6 @@ public: ReviewOrderStoreAdminUserFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_ORDER_REVIEW_REVIEWORDERSTOREADMINUSERFACTORY_CPP

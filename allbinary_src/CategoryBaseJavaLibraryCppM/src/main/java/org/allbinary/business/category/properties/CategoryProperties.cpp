@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIES_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/properties/CategoryProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -99,35 +109,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
-class CategoryProperties
-            : public Object
-        , public CategoryPropertiesInterface {
 
-    private: static inline const int32_t MAXDEPTH = 100;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string category;
-
-public: CategoryProperties(std::string name){
+CategoryProperties::CategoryProperties(std::string name) : logUtil(LogUtil::getInstance()){
 this->category= name;
     
 }
 
 
-public: CategoryProperties(Node* node){
+CategoryProperties::CategoryProperties(Node* node) : logUtil(LogUtil::getInstance()){
 this->category= CategoryUtil::getNameFromNode(node);
     
 }
 
 
-public: CategoryProperties(HashMap<Object*, Object*>* categoryPropertiesHashMap){
+CategoryProperties::CategoryProperties(HashMap<Object*, Object*>* categoryPropertiesHashMap) : logUtil(LogUtil::getInstance()){
 this->category= .toCharArray();
     
 }
 
 
-    public: bool isRealRoot(){
+    auto CategoryProperties::isRealRoot() -> bool{
 
 
 
@@ -137,7 +138,7 @@ this->category= .toCharArray();
 }
 
 
-    public: bool isRoot(){
+    auto CategoryProperties::isRoot() -> bool{
 
 
 
@@ -147,7 +148,7 @@ this->category= .toCharArray();
 }
 
 
-    public: Object* getKey(){
+    auto CategoryProperties::getKey() -> Object*{
 
 
 
@@ -157,7 +158,7 @@ this->category= .toCharArray();
 }
 
 
-    public: std::string getValue(){
+    auto CategoryProperties::getValue() -> std::string{
 
 
 
@@ -169,7 +170,7 @@ this->category= .toCharArray();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface){
+    auto CategoryProperties::getPath(CategoryHierarchyInterface* categoryHierarchyInterface) -> AbPath*{
 
     AbPathData* abPathData = AbPathData::getInstance();;
     
@@ -214,7 +215,7 @@ this->category= .toCharArray();
                                     }
                                 
                         else {
-                            pathStringBuffer->delete(0, pathStringBuffer->length());
+                            pathStringBuffer->delete_(0, pathStringBuffer->length());
     
 list->addAt(0, pathStringBuffer->append(abPathData->SEPARATOR)->append(nextParentCategoryInterface->getProperties()->getValue())->toString());
     
@@ -242,7 +243,7 @@ depthIndex++;
                                     
 
 
-                            throw new Exception("Probably Major Error");
+                            throw Exception("Probably Major Error");
                     
 
                                     }
@@ -252,7 +253,7 @@ depthIndex++;
 
                                     }
                                 
-pathStringBuffer->delete(0, pathStringBuffer->length());
+pathStringBuffer->delete_(0, pathStringBuffer->length());
     
 pathStringBuffer->append(abPathData->SEPARATOR)->append(this->getValue());
     
@@ -273,10 +274,10 @@ pathStringBuffer->append(list->get(index));
 pathStringBuffer->append(abPathData->SEPARATOR);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF("path = " +pathStringBuffer->toString(), this, "getPath");
+                                    this->logUtil->putF(JavaString::valueOf("path = ") +JavaString::valueOf(pathStringBuffer->toString()), this, "getPath");
     
 
                                     }
@@ -290,7 +291,7 @@ pathStringBuffer->append(abPathData->SEPARATOR);
 }
 
 
-    public: std::string getFileName(){
+    auto CategoryProperties::getFileName() -> std::string{
 
 
 
@@ -302,22 +303,22 @@ pathStringBuffer->append(abPathData->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getWebAppPath(){
+    auto CategoryProperties::getWebAppPath() -> AbPath*{
 
 
 
-                            throw new Exception("Not Root");
+                            throw Exception("Not Root");
                     
 }
 
 
-    public: void setValue(std::string value){
+    auto CategoryProperties::setValue(std::string value) -> void{
 this->category= value;
     
 }
 
 
-    public: bool isValid(){
+    auto CategoryProperties::isValid() -> bool{
 
     bool returnBoolean = Boolean::FALSE;;
     
@@ -339,7 +340,7 @@ this->category= value;
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto CategoryProperties::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* categoryHashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -354,7 +355,7 @@ categoryHashMap->put(CategoryData::getInstance()->NAME, this->category);
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto CategoryProperties::toVector() -> BasicArrayList*{
 
     BasicArrayList* categoryVector = new BasicArrayListD();;
     
@@ -371,7 +372,7 @@ categoryVector->add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toValidationInfoDoc(){
+    auto CategoryProperties::toValidationInfoDoc() -> Document*{
 
 
 
@@ -383,7 +384,7 @@ categoryVector->add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toValidationInfoNode(Document* document){
+    auto CategoryProperties::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -395,7 +396,7 @@ categoryVector->add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto CategoryProperties::validationInfo() -> std::string{
 
 
 
@@ -405,7 +406,6 @@ categoryVector->add(this->category);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIES_CPP

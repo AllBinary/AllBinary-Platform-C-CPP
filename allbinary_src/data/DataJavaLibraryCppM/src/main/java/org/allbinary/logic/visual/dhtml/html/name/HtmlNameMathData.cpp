@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/name/HtmlNameMathData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,37 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlNameMathData
-            : public Object
-         {
+auto HtmlNameMathData::instance_owner() -> HtmlNameMathData* { static std::unique_ptr<HtmlNameMathData> value(new HtmlNameMathData()); return value.get(); }
+HtmlNameMathData* HtmlNameMathData::instance = HtmlNameMathData::instance_owner();
 
-    private: static HtmlNameMathData* instance() { static std::unique_ptr<HtmlNameMathData> value(new HtmlNameMathData()); return value.get(); }
-
-    public: static HtmlNameMathData* getInstance(){
+    auto HtmlNameMathData::getInstance() -> HtmlNameMathData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlNameMathData::instance();
+                        return HtmlNameMathData::instance;
     
 }
 
 
-private: HtmlNameMathData(){
+HtmlNameMathData::HtmlNameMathData(){
 }
 
 
-    public: std::string EQUALS = "_EQUALS_";
 
-    public: std::string PLUS = "_PLUS_";
 
-    public: std::string MINUS = "_MINUS_";
-
-    public: std::string DIVIDE = "_DIVIDE_";
-
-    public: std::string MULTIPLY = "_MULTIPLY_";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_CPP

@@ -21,24 +21,21 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETONDEBUG_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETONDEBUG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class GPoint;
+class StringMaker;
+class StringUtil;
+class CommonSeps;
 
 
 
@@ -58,19 +55,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
-#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+class TouchButtonInput;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CurrentlyPressedTouchButtonSingletonDebug: public CurrentlyPressedTouchButtonSingleton {
 
-    private: static CurrentlyPressedTouchButtonSingletonDebug* instanceC() { static std::unique_ptr<CurrentlyPressedTouchButtonSingletonDebug> value(new CurrentlyPressedTouchButtonSingletonDebug()); return value.get(); }
+    private: static CurrentlyPressedTouchButtonSingletonDebug* instanceC_owner();
+    private: static CurrentlyPressedTouchButtonSingletonDebug* instanceC;
 
     public: static CurrentlyPressedTouchButtonSingleton* getInstance();
 
-    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: std::string listString = StringUtil::getInstance()->EMPTY_STRING;
+            
+    public: CurrentlyPressedTouchButtonSingletonDebug();
+        
+    private: std::string string;
 
-    private: std::string append = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string listString;
+
+    private: std::string append_;
 
     private: const std::string PRESSED_AND_FIRED = "pressed & fired";
 
@@ -84,9 +90,9 @@ class CurrentlyPressedTouchButtonSingletonDebug: public CurrentlyPressedTouchBut
 
     private: const std::string RELEASED_AND_NOT_FIRED = "rel & not fired";
 
-    private: void appendTouchButtonInput(std::string append, TouchButtonInput* touchButtonInput);
+    private: void appendTouchButtonInput(std::string append_, TouchButtonInput* touchButtonInput);
 
-    private: void append(std::string append);
+    private: void append(std::string append_);
 
     public: void clearLog(int32_t x, int32_t y);
 
@@ -116,3 +122,28 @@ class CurrentlyPressedTouchButtonSingletonDebug: public CurrentlyPressedTouchBut
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETONDEBUG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETONDEBUG_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETONDEBUG_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h")
+#include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonInput.h")
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#endif
+
+        #endif
+    

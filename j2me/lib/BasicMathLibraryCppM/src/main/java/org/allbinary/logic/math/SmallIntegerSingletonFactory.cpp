@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/SmallIntegerSingletonFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,37 +73,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SmallIntegerSingletonFactory
-            : public Object
-         {
+auto SmallIntegerSingletonFactory::instance_owner() -> SmallIntegerSingletonFactory* { static std::unique_ptr<SmallIntegerSingletonFactory> value(new SmallIntegerSingletonFactory()); return value.get(); }
+SmallIntegerSingletonFactory* SmallIntegerSingletonFactory::instance = SmallIntegerSingletonFactory::instance_owner();
 
-    private: static SmallIntegerSingletonFactory* instance() { static std::unique_ptr<SmallIntegerSingletonFactory> value(new SmallIntegerSingletonFactory()); return value.get(); }
-
-    public: static SmallIntegerSingletonFactory* getInstance(){
+    auto SmallIntegerSingletonFactory::getInstance() -> SmallIntegerSingletonFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SmallIntegerSingletonFactory::instance();
+                        return SmallIntegerSingletonFactory::instance;
     
 }
 
 
-    public: const int32_t NEGATIVE_MAX = 500;
-
-    public: const int32_t POSITIVE_MAX = 0x2D1;
-
-    private: const std::vector<int32_t> INTEGER_ARRAY = std::vector<int32_t>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
-
-    private: const std::vector<std::string> STRING_ARRAY = std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
-
-    private: int32_t MIN = 0;
-
-    private: int32_t lastMin = 0;
-
-    private: int32_t lastNegativeMin = 0;
-
-    public: int32_t getMin(){
+    auto SmallIntegerSingletonFactory::getMin() -> int32_t{
 
     int32_t minAllowed = this->getMinAllowed();;
     
@@ -157,7 +150,7 @@ logUtil->put("This means you loaded the InputFactory before determining the plat
 }
 
 
-    private: int32_t getMinAllowed(){
+    auto SmallIntegerSingletonFactory::getMinAllowed() -> int32_t{
 
                         if(J2MEUtil::isJ2ME())
                         
@@ -201,7 +194,7 @@ logUtil->put("This means you loaded the InputFactory before determining the plat
 }
 
 
-    public: void initWithRange(int32_t value, int32_t negativeValue){
+    auto SmallIntegerSingletonFactory::initWithRange(int32_t value, int32_t negativeValue) -> void{
 
 
 
@@ -247,7 +240,7 @@ this->MIN= value;
 }
 
 
-    public: void init(){
+    auto SmallIntegerSingletonFactory::init() -> void{
 
                         if(this->lastMin < this->POSITIVE_MAX || this->lastNegativeMin < this->NEGATIVE_MAX)
                         
@@ -286,13 +279,13 @@ this->lastNegativeMin= this->NEGATIVE_MAX;
 }
 
 
-private: SmallIntegerSingletonFactory(){
+SmallIntegerSingletonFactory::SmallIntegerSingletonFactory() : INTEGER_ARRAY(std::vector<int32_t>(this->NEGATIVE_MAX +this->POSITIVE_MAX)), STRING_ARRAY(std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX)){
 this->initWithRange(23, 0);
     
 }
 
 
-    public: int32_t getAt(int32_t index){
+    auto SmallIntegerSingletonFactory::getAt(int32_t index) -> int32_t{
 
 
 
@@ -302,7 +295,7 @@ this->initWithRange(23, 0);
 }
 
 
-    public: int32_t getAtNoThrow(int32_t index){
+    auto SmallIntegerSingletonFactory::getAtNoThrow(int32_t index) -> int32_t{
 
                         if(index +this->NEGATIVE_MAX > this->INTEGER_ARRAY.size() -1)
                         
@@ -325,14 +318,12 @@ this->initWithRange(23, 0);
 }
 
 
-    public: int32_t createInstance(int32_t index){
+    auto SmallIntegerSingletonFactory::createInstance(int32_t index) -> int32_t{
 
     int32_t integer = this->getAt(index);;
     
 
-                        if(integer == 
-                                    nullptr
-                                )
+                        if(false)
                         
                                     {
                                     integer= int32_t(index);
@@ -349,17 +340,15 @@ this->initWithRange(23, 0);
 }
 
 
-    public: std::string getString(int32_t index){
+    auto SmallIntegerSingletonFactory::getString(int32_t index) -> std::string{
 
     int32_t i = index +this->NEGATIVE_MAX;;
     
 
-                        if(this->STRING_ARRAY[i] == 
-                                    nullptr
-                                )
+                        if(this->STRING_ARRAY[i].empty())
                         
                                     {
-                                    this->STRING_ARRAY[i]= this->INTEGER_ARRAY[i].toString();
+                                    this->STRING_ARRAY[i]= std::to_string(this->INTEGER_ARRAY[i]);
     
 
                                     }
@@ -373,7 +362,6 @@ this->initWithRange(23, 0);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_CPP

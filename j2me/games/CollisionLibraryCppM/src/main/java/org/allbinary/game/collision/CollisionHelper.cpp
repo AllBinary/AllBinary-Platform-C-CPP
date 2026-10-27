@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollisionHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CollisionHelper
-            : public Object
-         {
 
-    protected: AllBinaryLayer* sourceLayerInterface;
-
-public: CollisionHelper(AllBinaryLayer* sourceLayerInterface){
+CollisionHelper::CollisionHelper(AllBinaryLayer* sourceLayerInterface){
 this->sourceLayerInterface= sourceLayerInterface;
     
 }
 
 
-    public: bool isCollidable(CollidableCompositeLayer* layerInterface){
+    auto CollisionHelper::isCollidable(CollidableCompositeLayer* layerInterface) -> bool{
 
 
 
@@ -73,7 +78,7 @@ this->sourceLayerInterface= sourceLayerInterface;
 }
 
 
-    public: AllBinaryLayer* getOwnerLayerInterface(){
+    auto CollisionHelper::getOwnerLayerInterface() -> AllBinaryLayer*{
 
 
 
@@ -83,13 +88,12 @@ this->sourceLayerInterface= sourceLayerInterface;
 }
 
 
-    public: void setOwnerLayerInterface(AllBinaryLayer* sourceLayerInterface){
+    auto CollisionHelper::setOwnerLayerInterface(AllBinaryLayer* sourceLayerInterface) -> void{
 this->sourceLayerInterface= sourceLayerInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_CPP

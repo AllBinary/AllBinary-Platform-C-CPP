@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAPCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAPCELLPOSITIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +53,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
-#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
-#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+class GeographicMapCellPosition;
+class BasicGeographicMap;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SimpleGeographicMapCellPositionFactory
-            : public Object
+            : public virtual Object
         , public GeographicMapCellPositionFactoryInterface {
 
-    public: static GeographicMapCellPosition* NULL_GEOGRAPHIC_MAP_CELL_POSITION() { static std::unique_ptr<GeographicMapCellPosition> value(new GeographicMapCellPosition( -1,  -1,  -1,  -1,  -1,  -1)); return value.get(); }
+    private: static GeographicMapCellPosition* NULL_GEOGRAPHIC_MAP_CELL_POSITION_owner();
+    public: static GeographicMapCellPosition* NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
+
+            
+    public: SimpleGeographicMapCellPositionFactory();
+        
     public: GeographicMapCellPosition* getInstance(BasicGeographicMap* geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height);
 
 };
@@ -65,3 +79,19 @@ class SimpleGeographicMapCellPositionFactory
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAPCELLPOSITIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAPCELLPOSITIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAPCELLPOSITIONFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/BasicGeographicMap.h")
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+#endif
+
+        #endif
+    

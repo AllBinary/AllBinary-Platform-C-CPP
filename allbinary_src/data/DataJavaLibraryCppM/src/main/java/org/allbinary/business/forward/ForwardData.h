@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_H
         #define ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ForwardData
-            : public Object
+            : public virtual Object
          {
 
-    private: static ForwardData* instance() { static std::unique_ptr<ForwardData> value(new ForwardData()); return value.get(); }
+    private: static ForwardData* instance_owner();
+    private: static ForwardData* instance;
 
     public: static ForwardData* getInstance();
 
@@ -70,3 +80,10 @@ private: ForwardData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_FORWARD_FORWARDDATA_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageRotationAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,11 +79,8 @@
 #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 #include "org/allbinary/animation/image/AdjustedImageBaseRotationAnimation.h"
 
-class ImageRotationAnimationFactory: public BaseImageAnimationFactory {
 
-    protected: int16_t angleIncrement;
-
-public: ImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
+ImageRotationAnimationFactory::ImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,27 +89,27 @@ public: ImageRotationAnimationFactory(Image* image, int32_t width, int32_t heigh
                     
 this->angleIncrement= angleIncrement;
     
-this->animationFactoryInitializationVisitor.dx= dx;
+this->animationFactoryInitializationVisitor->dx= dx;
     
-this->animationFactoryInitializationVisitor.dy= dy;
+this->animationFactoryInitializationVisitor->dy= dy;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto ImageRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
-                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
+                        if(this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0)
                         
                                     {
-                                    this->animationFactoryImageScaleUtil.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil->processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdjustedImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AdjustedImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                                     }
@@ -112,7 +119,7 @@ this->animationFactoryInitializationVisitor.dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new ImageBaseRotationAnimation(this->getImage(), AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance()->TOTAL_ANGLE, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
@@ -120,7 +127,7 @@ this->animationFactoryInitializationVisitor.dy= dy;
 }
 
 
-    protected: int16_t getAngleIncrementP(){
+    auto ImageRotationAnimationFactory::getAngleIncrementP() -> int16_t{
 
 
 
@@ -130,7 +137,6 @@ this->animationFactoryInitializationVisitor.dy= dy;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEROTATIONANIMATIONFACTORY_CPP

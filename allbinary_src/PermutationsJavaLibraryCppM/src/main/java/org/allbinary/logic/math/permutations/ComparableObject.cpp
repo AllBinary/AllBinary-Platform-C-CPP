@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_COMPARABLEOBJECT_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_COMPARABLEOBJECT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/permutations/ComparableObject.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/math/permutations/Comparable.h"
 
-class ComparableObject
-            : public Object
-        , public Comparable<Object*> {
 
-    public: int32_t compareTo(Object* anyType){
+ComparableObject::ComparableObject() {
+        }
+        
+    auto ComparableObject::compareTo(Object* anyType) -> int32_t{
 
                         if(TsUtil::getInstance()->hashCode(this) < TsUtil::getInstance()->hashCode(anyType))
                         
@@ -89,7 +99,6 @@ class ComparableObject
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_COMPARABLEOBJECT_CPP

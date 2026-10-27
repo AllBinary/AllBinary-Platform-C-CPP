@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/NullRecordComparator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,13 +60,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullRecordComparator
-            : public Object
-        , public RecordComparator {
 
-    public: static NullRecordComparator* NULL_RECORD_COMPARATOR() { static std::unique_ptr<NullRecordComparator> value(new NullRecordComparator()); return value.get(); }
+NullRecordComparator::NullRecordComparator() {
+        }
+        auto NullRecordComparator::NULL_RECORD_COMPARATOR_owner() -> NullRecordComparator* { static std::unique_ptr<NullRecordComparator> value(new NullRecordComparator()); return value.get(); }
+NullRecordComparator* NullRecordComparator::NULL_RECORD_COMPARATOR = NullRecordComparator::NULL_RECORD_COMPARATOR_owner();
 
-    public: int32_t compare(std::vector<int8_t> rec1, std::vector<int8_t> rec2){
+    auto NullRecordComparator::compare(std::vector<int8_t> rec1, std::vector<int8_t> rec2) -> int32_t{
 
 
 
@@ -66,7 +76,6 @@ class NullRecordComparator
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_CPP

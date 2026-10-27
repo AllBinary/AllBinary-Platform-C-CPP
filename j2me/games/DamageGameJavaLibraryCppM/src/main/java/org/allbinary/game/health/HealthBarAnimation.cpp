@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATION_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/HealthBarAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,19 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealthBarAnimation: public Animation {
 
-    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
-
-    protected: int32_t x2= 0;
-
-    protected: int32_t thickness= 0;
-
-    private: int32_t location;
-
-    protected: AllBinaryLayer* allbinaryLayer;
-
-public: HealthBarAnimation(AllBinaryLayer* layerInterface, int32_t location){
+HealthBarAnimation::HealthBarAnimation(AllBinaryLayer* layerInterface, int32_t location) : basicColorFactory(BasicColorFactory::getInstance()){
 this->allbinaryLayer= layerInterface;
     
 this->location= location;
@@ -84,7 +83,7 @@ this->location= location;
                                     
 
 
-                            throw new Exception("Location Not Valid");
+                            throw Exception("Location Not Valid");
                     
 
                                     }
@@ -116,7 +115,7 @@ this->location= location;
 }
 
 
-    public: void onHealthChange(int32_t newX2){
+    auto HealthBarAnimation::onHealthChange(int32_t newX2) -> void{
 this->x2= newX2;
     
 
@@ -128,7 +127,7 @@ this->x2= newX2;
                                     {
                                     this->basicColor= this->basicColorFactory->GREEN;
     
-this->colorP= this->basicColor.intValue();
+this->colorP= this->basicColor->intValue();
     
 
                                     }
@@ -139,7 +138,7 @@ this->colorP= this->basicColor.intValue();
                                     {
                                     this->basicColor= this->basicColorFactory->YELLOW;
     
-this->colorP= this->basicColor.intValue();
+this->colorP= this->basicColor->intValue();
     
 
                                     }
@@ -150,7 +149,7 @@ this->colorP= this->basicColor.intValue();
                                     {
                                     this->basicColor= this->basicColorFactory->ORANGE;
     
-this->colorP= this->basicColor.intValue();
+this->colorP= this->basicColor->intValue();
     
 
                                     }
@@ -158,7 +157,7 @@ this->colorP= this->basicColor.intValue();
                         else {
                             this->basicColor= this->basicColorFactory->RED;
     
-this->colorP= this->basicColor.intValue();
+this->colorP= this->basicColor->intValue();
     
 
                         }
@@ -166,7 +165,7 @@ this->colorP= this->basicColor.intValue();
 }
 
 
-    protected: int32_t getY(){
+    auto HealthBarAnimation::getY() -> int32_t{
 
     BasicHudFactory* basicHudFactory = BasicHudFactory::getInstance();;
     
@@ -205,7 +204,6 @@ this->colorP= this->basicColor.intValue();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATION_CPP

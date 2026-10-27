@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/staticpages/StaticPagesEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,15 +92,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/staticpages/StaticPagesEntityInterface.h"
 
-class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    private: const std::string TABLENAME = "staticpages";
-
-public: StaticPagesEntity() : AbSqlBean(new StaticPagesDbInitInfo()){
+StaticPagesEntity::StaticPagesEntity() : AbSqlBean(new StaticPagesDbInitInfo()), logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,16 +105,16 @@ this->setTableName(this->TABLENAME);
 }
 
 
-    public: void insert(BasicArrayList* values){
+    auto StaticPagesEntity::insert(BasicArrayList* values) -> void{
 
         try {
-            super.insert(values);
+            AbSqlBean::insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, INSERT);
     
 
                                     }
@@ -121,10 +124,10 @@ this->setTableName(this->TABLENAME);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -134,7 +137,7 @@ this->setTableName(this->TABLENAME);
 }
 
 
-    public: std::string getFile(std::string store, std::string keywords){
+    auto StaticPagesEntity::getFile(std::string store, std::string keywords) -> std::string{
 
     HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -143,7 +146,7 @@ whereHashMap->put(StoreFrontData::getInstance()->NAME, store);
 whereHashMap->put(basicItemData->KEYWORDS, keywords);
     
 
-    std::string file = super.getField(whereHashMap, SearchData::PAGE);;
+    std::string file = AbSqlBean::getField(whereHashMap, SearchData::PAGE);;
     
 
 
@@ -154,15 +157,15 @@ whereHashMap->put(basicItemData->KEYWORDS, keywords);
 }
 
 
-    public: void delete_(std::string keywords){
-super.deleteWhere(basicItemData->KEYWORDS, keywords);
+    auto StaticPagesEntity::delete_(std::string keywords) -> void{
+AbSqlBean::deleteWhere(basicItemData->KEYWORDS, keywords);
     
 }
 
 
-    public: std::string dropTable(){
+    auto StaticPagesEntity::dropTable() -> std::string{
 
-    std::string returnStr = super.dropTable();;
+    std::string returnStr = AbSqlBean::dropTable();;
     
 
 
@@ -173,17 +176,17 @@ super.deleteWhere(basicItemData->KEYWORDS, keywords);
 }
 
 
-    public: void update(HashMap<Object*, Object*>* updatedValues){
-super.updateWhere(basicItemData->KEYWORDS, updatedValues->get(basicItemData->KEYWORDS), updatedValues);
+    auto StaticPagesEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
+AbSqlBean::updateWhere(basicItemData->KEYWORDS, updatedValues->get(basicItemData->KEYWORDS), updatedValues);
     
 }
 
 
-    public: std::string createTableStatement(){
+    auto StaticPagesEntity::createTableStatement() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(TABLENAME)->append(this->sqlStrings.START)->append(StoreFrontData::getInstance()->NAME)->append(this->sqlTypeStrings.SIXTY_CHAR_COLUMN_NOT_NULL)->append(basicItemData->KEYWORDS)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(SearchData::PAGE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(StoreFrontData::getInstance()->NAME)->append(CommonSeps::getInstance()->COMMA_SEP)->append(basicItemData->KEYWORDS)->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(TABLENAME)->append(this->sqlStrings->START)->append(StoreFrontData::getInstance()->NAME)->append(this->sqlTypeStrings->SIXTY_CHAR_COLUMN_NOT_NULL)->append(basicItemData->KEYWORDS)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(SearchData::PAGE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(StoreFrontData::getInstance()->NAME)->append(CommonSeps::getInstance()->COMMA_SEP)->append(basicItemData->KEYWORDS)->append(this->sqlStrings->END);
     
 
 
@@ -194,17 +197,16 @@ stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(TABLENAME)->append(t
 }
 
 
-    public: std::string createTable(){
+    auto StaticPagesEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_CPP

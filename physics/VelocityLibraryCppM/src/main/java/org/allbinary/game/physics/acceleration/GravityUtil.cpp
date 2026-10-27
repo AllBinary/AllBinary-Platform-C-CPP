@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_ACCELERATION_GRAVITYUTIL_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_ACCELERATION_GRAVITYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/acceleration/GravityUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,33 +58,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GravityUtil
-            : public Object
-         {
 
-    private: static GravityUtil* instance() { static std::unique_ptr<GravityUtil> value(new GravityUtil()); return value.get(); }
+GravityUtil::GravityUtil() {
+        }
+        auto GravityUtil::instance_owner() -> GravityUtil* { static std::unique_ptr<GravityUtil> value(new GravityUtil()); return value.get(); }
+GravityUtil* GravityUtil::instance = GravityUtil::instance_owner();
 
-    public: static GravityUtil* getInstance(){
+    auto GravityUtil::getInstance() -> GravityUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GravityUtil::instance();
+                        return GravityUtil::instance;
     
 }
 
 
-    public: const int32_t GAME_GRAVITY_VELOCITY = 1800;
-
-    public: const int32_t MAX_GAME_VELOCITY = 18000;
-
-    public: void process(BasicVelocityProperties* velocityProperties, int32_t customGravity){
+    auto GravityUtil::process(BasicVelocityProperties* velocityProperties, int32_t customGravity) -> void{
 velocityProperties->getVelocityYBasicDecimalP()->addint(customGravity);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_ACCELERATION_GRAVITYUTIL_CPP

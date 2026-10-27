@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreThemeCategoryInterface: public CategoryInterface, public TableMappingInterface, public ValidationInterface, public CompositeTransformInfoInterface {
+//Interface - declared in the header
 
-    public: virtual void addTheme(ThemeValidation* themeValidation) = 0;
 
-    public: virtual BasicArrayList* getThemes() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_CPP

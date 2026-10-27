@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_MODIFYTABLE_CPP
+        #define ADMIN_TAGHELPERS_MODIFYTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/ModifyTable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,48 +66,43 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/ModifyTableInterface.h"
 
-class ModifyTable
-            : public Object
-        , public ModifyTableInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: TagStrings* tagStrings = TagStrings::getInstance();
-
+ModifyTable::ModifyTable() : commonStrings(CommonStrings::getInstance()), tagStrings(TagStrings::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: std::string insert(){
+    auto ModifyTable::insert() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string delete_(){
+    auto ModifyTable::delete_() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string update(){
+    auto ModifyTable::update() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_MODIFYTABLE_CPP

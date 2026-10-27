@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_MOBILECLIENTINFORMATION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_MOBILECLIENTINFORMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/MobileClientInformation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,9 @@
         #include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
 #include "org/allbinary/logic/system/security/licensing/PartnerIdentifierFileUtil.h"
 
-class MobileClientInformation: public AbeClientInformation {
+const std::string MobileClientInformation::ANDROID_DESC = JavaString::valueOf("Android") +JavaString::valueOf(MobileClientInformation::DESC);
 
-    protected: static inline const std::string DESC = "Mobile";
-
-    protected: static inline const std::string ANDROID_DESC = "Android" +MobileClientInformation::DESC;
-
-public: MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : AbeClientInformation(name, version, (new StringMaker())->append(specialName)->append(CommonSeps::getInstance()->SPACE)->append(PartnerIdentifierFileUtil::getInstance()->get())->toString(), shortName){
+MobileClientInformation::MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : AbeClientInformation(name, version, (new StringMaker())->append(specialName)->append(CommonSeps::getInstance()->SPACE)->append(PartnerIdentifierFileUtil::getInstance()->get())->toString(), shortName){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,13 +107,13 @@ public: MobileClientInformation(std::string name, std::string version, std::stri
                         if(this->isHardSale())
                         
                                     {
-                                    this->logUtil.putF("Use Hard Coded Selling", this, commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF("Use Hard Coded Selling", this, commonStrings->CONSTRUCTOR);
     
 
                                     }
                                 
                         else {
-                            this->logUtil.putF("Don't Use Hard Coded Selling", this, commonStrings->CONSTRUCTOR);
+                            this->logUtil->putF("Don't Use Hard Coded Selling", this, commonStrings->CONSTRUCTOR);
     
 
                         }
@@ -115,9 +121,9 @@ public: MobileClientInformation(std::string name, std::string version, std::stri
 }
 
 
-    public: ABHashtable<Object*, Object*>* toHashtable(){
+    auto MobileClientInformation::toHashtable() -> ABHashtable<Object*, Object*>*{
 
-    ABHashtable<Object*, Object*>* hashtable = super.toHashtable();;
+    ABHashtable<Object*, Object*>* hashtable = AbeClientInformation::toHashtable();;
     
 
     RegistrationConfiguration* registrationConfiguration = RegistrationConfiguration::getInstance();;
@@ -133,7 +139,6 @@ hashtable->put(registrationConfiguration->NAME, registrationConfiguration->getRe
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_MOBILECLIENTINFORMATION_CPP

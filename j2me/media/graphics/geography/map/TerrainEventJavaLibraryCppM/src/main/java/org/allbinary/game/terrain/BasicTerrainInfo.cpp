@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_CPP
+        #define ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/terrain/BasicTerrainInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,21 +61,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicTerrainInfo
-            : public Object
-         {
+auto BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO_owner() -> BasicTerrainInfo* { static std::unique_ptr<BasicTerrainInfo> value(new BasicTerrainInfo(AngleFactory::getInstance()->NOT_ANGLE)); return value.get(); }
+BasicTerrainInfo* BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO_owner();
 
-    public: static BasicTerrainInfo* NULL_BASIC_TERRAIN_INFO() { static std::unique_ptr<BasicTerrainInfo> value(new BasicTerrainInfo(AngleFactory::getInstance()->NOT_ANGLE)); return value.get(); }
-
-    private: Angle* angle;
-
-public: BasicTerrainInfo(Angle* angle){
+BasicTerrainInfo::BasicTerrainInfo(Angle* angle){
 this->angle= angle;
     
 }
 
 
-    public: Angle* getAngle(){
+    auto BasicTerrainInfo::getAngle() -> Angle*{
 
 
 
@@ -75,13 +80,12 @@ this->angle= angle;
 }
 
 
-    public: void setAngle(Angle* angle){
+    auto BasicTerrainInfo::setAngle(Angle* angle) -> void{
 this->angle= angle;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_CPP

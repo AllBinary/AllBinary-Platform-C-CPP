@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/InputFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,13 +73,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/Input.h"
 
-class InputFactory
-            : public Object
-         {
+Object* InputFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static InputFactory* getInstance(){
+    auto InputFactory::getInstance() -> InputFactory*{
 
                         if(InputFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -88,21 +94,7 @@ class InputFactory
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: const std::string KEY_CODE_LABEL = "KeyCode: ";
-
-    public: const std::string DEVICE_ID_LABEL = "DeviceId: ";
-
-    public: const int32_t MAX = SmallIntegerSingletonFactory::getInstance()->getMin();
-
-    protected: const std::vector<Input*> inputIntegerArray = std::vector<Input*>(this->MAX);
-
-    public: Input* NO_INPUT = new Input(0, this->commonStrings->UNKNOWN);
-
-private: InputFactory(){
+InputFactory::InputFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), MAX(SmallIntegerSingletonFactory::getInstance()->getMin()), inputIntegerArray(std::vector<Input*>(this->MAX)), NO_INPUT(new Input(0, this->commonStrings->UNKNOWN)){
 
     int32_t size = this->inputIntegerArray.size();;
     
@@ -120,13 +112,13 @@ this->inputIntegerArray[index]= this->NO_INPUT;
 }
 
 
-    public: void add(int32_t id, Input* input){
+    auto InputFactory::add(int32_t id, Input* input) -> void{
 this->inputIntegerArray[id]= input;
     
 }
 
 
-    public: Input* getInstanceById(int32_t id){
+    auto InputFactory::getInstanceById(int32_t id) -> Input*{
 
                         if(id < 0)
                         
@@ -160,7 +152,6 @@ this->inputIntegerArray[id]= input;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_CPP

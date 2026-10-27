@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEINTUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEINTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/PrimitiveIntUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,11 +60,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PrimitiveIntUtil
-            : public Object
-         {
 
-    public: static std::vector<int32_t> getArrayInstance(){
+PrimitiveIntUtil::PrimitiveIntUtil(){
+}
+
+
+    auto PrimitiveIntUtil::getArrayInstance() -> std::vector<int32_t>{
 
 
 
@@ -64,7 +75,7 @@ class PrimitiveIntUtil
 }
 
 
-    public: static std::vector<std::vector<int32_t>> getTwoDimensionalArrayInstance(){
+    auto PrimitiveIntUtil::getTwoDimensionalArrayInstance() -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -74,11 +85,6 @@ class PrimitiveIntUtil
 }
 
 
-private: PrimitiveIntUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEINTUTIL_CPP

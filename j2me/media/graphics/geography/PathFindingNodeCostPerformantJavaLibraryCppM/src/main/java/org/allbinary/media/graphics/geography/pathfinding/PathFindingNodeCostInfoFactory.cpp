@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,21 +68,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactoryBase.h"
 
-class PathFindingNodeCostInfoFactory: public PathFindingNodeCostInfoFactoryBase {
 
-public: PathFindingNodeCostInfoFactory(int32_t max){
+PathFindingNodeCostInfoFactory::PathFindingNodeCostInfoFactory(int32_t max){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+    auto PathFindingNodeCostInfoFactory::create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int64_t getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition){
+    auto PathFindingNodeCostInfoFactory::getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition) -> int64_t{
 
     GeographicMapCellType* geographicMapCellType = geographicMapInterface->getCellTypeAt(comingFromGeographicMapCellPosition);;
     
@@ -94,7 +103,6 @@ public: PathFindingNodeCostInfoFactory(int32_t max){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_CPP

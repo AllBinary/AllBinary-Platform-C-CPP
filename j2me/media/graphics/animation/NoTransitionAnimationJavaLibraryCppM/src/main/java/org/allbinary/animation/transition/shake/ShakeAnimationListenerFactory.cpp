@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENERFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/transition/shake/ShakeAnimationListenerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,11 @@
         #include "org/allbinary/animation/transition/shake/NoShakeAnimationListener.h"
 #include "org/allbinary/animation/transition/shake/ShakeAnimationListener.h"
 
-class ShakeAnimationListenerFactory
-            : public Object
-         {
 
-    public: static ShakeAnimationListener* getInstance(){
+ShakeAnimationListenerFactory::ShakeAnimationListenerFactory() {
+        }
+        
+    auto ShakeAnimationListenerFactory::getInstance() -> ShakeAnimationListener*{
 
 
 
@@ -61,7 +71,6 @@ class ShakeAnimationListenerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENERFACTORY_CPP

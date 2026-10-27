@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_H
         #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,15 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CharArrayFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static CharArrayFactory* instance() { static std::unique_ptr<CharArrayFactory> value(new CharArrayFactory()); return value.get(); }
+    private: static CharArrayFactory* instance_owner();
+    private: static CharArrayFactory* instance;
 
     public: static CharArrayFactory* getInstance();
 
-    private: const std::vector<char> zeroCharArray = std::vector<char>(0);
+
+            
+    public: CharArrayFactory();
+        
+    private: std::vector<char> zeroCharArray;
 
     public: std::vector<char> getZeroCharArray();
 
@@ -68,3 +82,10 @@ class CharArrayFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_TRACKBALLMOTIONGESTUREFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_TRACKBALLMOTIONGESTUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/TrackballMotionGestureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 
-class TrackballMotionGestureFactory
-            : public Object
-         {
+Object* TrackballMotionGestureFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static TrackballMotionGestureFactory* getInstance(){
+    auto TrackballMotionGestureFactory::getInstance() -> TrackballMotionGestureFactory*{
 
                         if(TrackballMotionGestureFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -77,15 +83,7 @@ class TrackballMotionGestureFactory
 }
 
 
-    public: MotionGestureInput* LEFT;
-
-    public: MotionGestureInput* RIGHT;
-
-    public: MotionGestureInput* UP;
-
-    public: MotionGestureInput* DOWN;
-
-private: TrackballMotionGestureFactory(){
+TrackballMotionGestureFactory::TrackballMotionGestureFactory(){
 
     int32_t MAX = InputFactory::getInstance()->MAX;;
     
@@ -100,7 +98,6 @@ this->DOWN= new MotionGestureInput(MAX -29, "D Trackball");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_TRACKBALLMOTIONGESTUREFACTORY_CPP

@@ -21,24 +21,21 @@
         #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H
         #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/LayerManager.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class AllBinaryLayer;
+class LayerManager;
+class StringMaker;
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
 
 
 
@@ -58,9 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerManagerEvent: public AllBinaryEventObject {
 
-    private: AllBinaryLayer* layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* layerInterface;
 
     private: std::string crud;
 
@@ -78,3 +79,22 @@ public: LayerManagerEvent(LayerManager* layerManager, std::string crud);
 
 
         #endif //ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerManager.h>)
+#include <org/allbinary/layer/LayerManager.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+
+        #endif
+    

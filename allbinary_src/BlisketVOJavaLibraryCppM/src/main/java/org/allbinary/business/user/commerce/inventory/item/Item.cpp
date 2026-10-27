@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/Item.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,23 +84,8 @@
         #include "org/allbinary/business/user/commerce/inventory/item/BasicItem.h"
 #include "org/allbinary/business/user/commerce/inventory/item/OrderItemInterface.h"
 
-class Item: public BasicItem, public OrderItemInterface {
 
-    private: std::string group;
-
-    private: std::string tax;
-
-    private: std::string shippingType;
-
-    private: std::string shippingCost;
-
-    private: std::string shippedDate;
-
-    private: StreetAddress* shippingAddress;
-
-    private: std::string special;
-
-public: Item(HashMap<Object*, Object*>* itemHashMap) : BasicItem(itemHashMap){
+Item::Item(HashMap<Object*, Object*>* itemHashMap) : BasicItem(itemHashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,7 +97,7 @@ this->setData(itemHashMap);
 }
 
 
-public: Item(){
+Item::Item(){
 
     std::string EMPTY = StringUtil::getInstance()->EMPTY_STRING;;
     
@@ -119,7 +114,7 @@ this->shippingAddress= new StreetAddress();
 }
 
 
-    private: void setData(HashMap<Object*, Object*>* itemHashMap){
+    auto Item::setData(HashMap<Object*, Object*>* itemHashMap) -> void{
 this->group= itemHashMap->get(ShippingMethodData::GROUP);
     
 this->tax= itemHashMap->get(OrderHistoryData::TAX);
@@ -147,43 +142,43 @@ this->shippingAddress= new StreetAddress(itemHashMap);
 }
 
 
-    public: void setGroup(std::string value){
+    auto Item::setGroup(std::string value) -> void{
 this->group= value;
     
 }
 
 
-    public: void setTax(std::string value){
+    auto Item::setTax(std::string value) -> void{
 this->tax= value;
     
 }
 
 
-    public: void setShippingType(std::string value){
+    auto Item::setShippingType(std::string value) -> void{
 this->shippingType= value;
     
 }
 
 
-    public: void setShippingCost(std::string value){
+    auto Item::setShippingCost(std::string value) -> void{
 this->shippingCost= value;
     
 }
 
 
-    public: void setShippingAddress(StreetAddress* value){
+    auto Item::setShippingAddress(StreetAddress* value) -> void{
 this->shippingAddress= value;
     
 }
 
 
-    public: void setSpecial(std::string value){
+    auto Item::setSpecial(std::string value) -> void{
 this->special= value;
     
 }
 
 
-    public: std::string getGroup(){
+    auto Item::getGroup() -> std::string{
 
 
 
@@ -193,7 +188,7 @@ this->special= value;
 }
 
 
-    public: std::string getTax(){
+    auto Item::getTax() -> std::string{
 
 
 
@@ -203,7 +198,7 @@ this->special= value;
 }
 
 
-    public: std::string getShippingType(){
+    auto Item::getShippingType() -> std::string{
 
 
 
@@ -213,7 +208,7 @@ this->special= value;
 }
 
 
-    public: std::string getShippingCost(){
+    auto Item::getShippingCost() -> std::string{
 
 
 
@@ -223,7 +218,7 @@ this->special= value;
 }
 
 
-    public: StreetAddress* getShippingAddress(){
+    auto Item::getShippingAddress() -> StreetAddress*{
 
 
 
@@ -233,7 +228,7 @@ this->special= value;
 }
 
 
-    public: std::string getSpecial(){
+    auto Item::getSpecial() -> std::string{
 
 
 
@@ -243,9 +238,9 @@ this->special= value;
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto Item::toHashMap() -> HashMap<Object*, Object*>*{
 
-    HashMap<Object*, Object*>* hashMap = super.toHashMap();;
+    HashMap<Object*, Object*>* hashMap = BasicItem::toHashMap();;
     
 hashMap->put(ShippingMethodData::GROUP, this->group);
     
@@ -268,7 +263,6 @@ hashMap->put(EntryData::getInstance()->SPECIAL, this->special);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_CPP

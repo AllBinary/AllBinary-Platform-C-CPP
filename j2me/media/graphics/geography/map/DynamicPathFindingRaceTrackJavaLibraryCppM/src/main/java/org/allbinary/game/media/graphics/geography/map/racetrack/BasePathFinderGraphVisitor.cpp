@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_CPP
+
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/BasePathFinderGraphVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,18 +72,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+
 template<typename V, typename E>
-class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
-
-    protected: BasicGeographicMap* geographicMapInterface;
-
-    protected: int32_t edgeMinimum;
-
-    protected: int32_t minPathWeight;
-
-    protected: int32_t maxPathWeight;
-
-public: BasePathFinderGraphVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
+BasePathFinderGraphVisitor<V, E>::BasePathFinderGraphVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
 this->geographicMapInterface= geographicMapInterface;
     
 this->edgeMinimum= edgeMinimum;
@@ -91,13 +88,15 @@ this->maxPathWeight= maxPathWeight;
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(SimpleWeightedGraph* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
+    template<typename V, typename E>
+auto BasePathFinderGraphVisitor<V, E>::visit(SimpleWeightedGraph* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList){
+    template<typename V, typename E>
+auto BasePathFinderGraphVisitor<V, E>::fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList) -> void{
 
 
 
@@ -117,7 +116,8 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
 }
 
 
-    public: bool isValid(GraphPath* graphPath){
+    template<typename V, typename E>
+auto BasePathFinderGraphVisitor<V, E>::isValid(GraphPath* graphPath) -> bool{
 
                         if(graphPath->getEdgeList()->size() > this->edgeMinimum && graphPath->getWeight() < this->maxPathWeight && graphPath->getWeight() > this->minPathWeight)
                         
@@ -144,7 +144,8 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
 }
 
 
-    public: std::string getInvalidReason(GraphPath* graphPath){
+    template<typename V, typename E>
+auto BasePathFinderGraphVisitor<V, E>::getInvalidReason(GraphPath* graphPath) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -152,7 +153,7 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
                         if(graphPath->getEdgeList()->size() < this->edgeMinimum)
                         
                                     {
-                                    stringBuffer->append("Ignoring Small: " +graphPath->getEdgeList()->size());
+                                    stringBuffer->append(JavaString::valueOf("Ignoring Small: ") +JavaString::valueOf(graphPath->getEdgeList()->size()));
     
 
                                     }
@@ -161,7 +162,7 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
                         if(graphPath->getWeight() <= this->minPathWeight)
                         
                                     {
-                                    stringBuffer->append(" Low Weighted Path: " +graphPath->getWeight());
+                                    stringBuffer->append(JavaString::valueOf(" Low Weighted Path: ") +JavaString::valueOf(graphPath->getWeight()));
     
 
                                     }
@@ -170,7 +171,7 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
                         if(graphPath->getWeight() >= this->maxPathWeight)
                         
                                     {
-                                    stringBuffer->append(" To High Weighted Path: " +graphPath->getWeight());
+                                    stringBuffer->append(JavaString::valueOf(" To High Weighted Path: ") +JavaString::valueOf(graphPath->getWeight()));
     
 
                                     }
@@ -184,7 +185,6 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_CPP

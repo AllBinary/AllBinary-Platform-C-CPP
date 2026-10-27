@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,15 +60,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TileMapPlacementVisitor
-            : public Object
-         {
 
-    public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData){
+TileMapPlacementVisitor::TileMapPlacementVisitor() {
+        }
+        
+    auto TileMapPlacementVisitor::visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_CPP

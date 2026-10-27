@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_TEMPINPUTROBOTNAMES_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_TEMPINPUTROBOTNAMES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/TempInputRobotNames.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TempInputRobotNames
-            : public Object
-         {
 
-    public: static inline const std::string LOW_NAME = "Low Level";
-
-    public: static inline const std::string SYS_NAME = "System Drivers";
-
-    public: static inline const std::string DX_NAME = "DirectX";
-
-public: TempInputRobotNames(){
+TempInputRobotNames::TempInputRobotNames(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_TEMPINPUTROBOTNAMES_CPP

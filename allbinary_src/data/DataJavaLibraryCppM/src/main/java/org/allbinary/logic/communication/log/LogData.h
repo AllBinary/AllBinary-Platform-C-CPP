@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
+class AbPathData;
 
 
 
@@ -51,15 +54,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogData
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: LogData();
+        
     public: const int64_t MAX = 5000000;
 
     public: const std::string extension = "log";
 
-    public: const std::string backupFileExt = AbPathData::getInstance()->EXTENSION_SEP +"bak" +AbPathData::getInstance()->EXTENSION_SEP +"txt";
+    public: const std::string backupFileExt;
 
     public: const std::string ALLBINARY = "allbinary";
 
@@ -73,3 +84,13 @@ class LogData
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+
+        #endif
+    

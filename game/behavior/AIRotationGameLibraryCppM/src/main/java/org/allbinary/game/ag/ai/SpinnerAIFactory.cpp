@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SPINNERAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SPINNERAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/SpinnerAIFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,11 +76,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/SpinnerAI.h"
 
-class SpinnerAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+SpinnerAIFactory::SpinnerAIFactory() {
+        }
+        
+    auto SpinnerAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
     std::vector<int32_t> direction = {Canvas::LEFT};;
     
@@ -83,7 +93,6 @@ class SpinnerAIFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SPINNERAIFACTORY_CPP

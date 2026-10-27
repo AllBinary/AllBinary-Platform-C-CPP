@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderData
-            : public Object
-         {
 
-    public: static inline const std::string ORDERS = "ORDERS";
+OrderData::OrderData() {
+        }
+        
 
-    public: static inline const std::string ORDER = "ORDER";
 
-    public: static inline const std::string ID = "ORDER_ID";
-
-    public: static inline const std::string CUSTOMERCOMMENT = "ORDER_CUSTOMER_COMMENT";
-
-    public: static inline const std::string CUSTOMERCANCELCOMMENT = "ORDER_CUSTOMER_CANCEL_COMMENT";
-
-    public: static inline const std::string STORECOMMENT = "ORDER_STORE_COMMENT";
-
-    public: static inline const std::string STORECANCELCOMMENT = "ORDER_STORE_CANCEL_COMMENT";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERDATA_CPP

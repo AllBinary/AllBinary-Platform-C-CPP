@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_NULLRUNNABLE_CPP
+        #define ORG_ALLBINARY_THREAD_NULLRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/NullRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,25 +63,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ARunnable.h"
 
-class NullRunnable: public ARunnable {
+auto NullRunnable::instance_owner() -> NullRunnable* { static std::unique_ptr<NullRunnable> value(new NullRunnable()); return value.get(); }
+NullRunnable* NullRunnable::instance = NullRunnable::instance_owner();
 
-    private: static NullRunnable* instance() { static std::unique_ptr<NullRunnable> value(new NullRunnable()); return value.get(); }
-
-    public: static NullRunnable* getInstance(){
+    auto NullRunnable::getInstance() -> NullRunnable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRunnable::instance();
+                        return NullRunnable::instance;
     
 }
 
 
-private: NullRunnable(){
+NullRunnable::NullRunnable(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_NULLRUNNABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/IndexedAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,21 +69,14 @@
 #include "org/allbinary/animation/IndexedAnimationInterface.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class IndexedAnimation: public Animation, public IndexedAnimationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: AnimationBehavior* animationBehaviorP;
-
-protected: IndexedAnimation(AnimationBehavior* animationBehavior){
+IndexedAnimation::IndexedAnimation(AnimationBehavior* animationBehavior) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->animationBehaviorP= animationBehavior;
     
 }
 
 
-    public: AnimationBehavior* getAnimationBehavior(){
+    auto IndexedAnimation::getAnimationBehavior() -> AnimationBehavior*{
 
 
 
@@ -83,7 +86,7 @@ this->animationBehaviorP= animationBehavior;
 }
 
 
-    public: void reset(){
+    auto IndexedAnimation::reset() -> void{
 this->animationBehaviorP->reset();
     
 this->setFrame(0);
@@ -91,11 +94,11 @@ this->setFrame(0);
 }
 
 
-    public: void setFrame(int32_t index){
+    auto IndexedAnimation::setFrame(int32_t index) -> void{
 }
 
 
-    public: int32_t getFrame(){
+    auto IndexedAnimation::getFrame() -> int32_t{
 
 
 
@@ -107,16 +110,16 @@ this->setFrame(0);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto IndexedAnimation::getAnimationSize() -> int32_t{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: int32_t getSize(){
+    auto IndexedAnimation::getSize() -> int32_t{
 
 
 
@@ -126,11 +129,11 @@ this->setFrame(0);
 }
 
 
-    public: void previousFrame(){
+    auto IndexedAnimation::previousFrame() -> void{
 }
 
 
-    public: bool isLastFrame(){
+    auto IndexedAnimation::isLastFrame() -> bool{
 
                         if(this->getFrame() == this->getSize() -1)
                         
@@ -157,11 +160,11 @@ this->setFrame(0);
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto IndexedAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto IndexedAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -171,7 +174,7 @@ this->setFrame(0);
 }
 
 
-    public: void setState(IndexedAnimation* indexedAnimation){
+    auto IndexedAnimation::setState(IndexedAnimation* indexedAnimation) -> void{
 this->setFrame(indexedAnimation->getFrame());
     
 this->setDx(indexedAnimation->getDx());
@@ -181,7 +184,7 @@ this->setDy(indexedAnimation->getDy());
 }
 
 
-    public: int32_t getWidth(){
+    auto IndexedAnimation::getWidth() -> int32_t{
 
 
 
@@ -191,7 +194,7 @@ this->setDy(indexedAnimation->getDy());
 }
 
 
-    public: int32_t getHeight(){
+    auto IndexedAnimation::getHeight() -> int32_t{
 
 
 
@@ -201,7 +204,6 @@ this->setDy(indexedAnimation->getDy());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_CPP

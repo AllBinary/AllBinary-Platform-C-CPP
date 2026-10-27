@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPRIMARYKEY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPRIMARYKEY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayPrimaryKey.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,15 +66,8 @@
         #include "org/allbinary/business/user/commerce/money/payment/gateway/Serializable.h"
 #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGateway.h"
 
-class PaymentGatewayPrimaryKey
-            : public Object
-        , public java::io::Serializable {
 
-    private: std::string storeName;
-
-    private: std::string name;
-
-public: PaymentGatewayPrimaryKey(std::string storeName, std::string gatewayName){
+PaymentGatewayPrimaryKey::PaymentGatewayPrimaryKey(std::string storeName, std::string gatewayName){
 this->setStoreName(storeName);
     
 this->setName(gatewayName);
@@ -72,7 +75,7 @@ this->setName(gatewayName);
 }
 
 
-    public: std::string getStoreName(){
+    auto PaymentGatewayPrimaryKey::getStoreName() -> std::string{
 
 
 
@@ -82,13 +85,13 @@ this->setName(gatewayName);
 }
 
 
-    public: void setStoreName(std::string storeName){
+    auto PaymentGatewayPrimaryKey::setStoreName(std::string storeName) -> void{
 this->storeName= storeName;
     
 }
 
 
-    public: std::string getName(){
+    auto PaymentGatewayPrimaryKey::getName() -> std::string{
 
 
 
@@ -98,19 +101,19 @@ this->storeName= storeName;
 }
 
 
-    public: void setName(std::string name){
+    auto PaymentGatewayPrimaryKey::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string toString(){
+    auto PaymentGatewayPrimaryKey::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(PaymentGatewayPrimaryKey.constructor.getName());
+stringBuffer->append(Class::forType(typeid(PaymentGatewayPrimaryKey))->getName());
     
-stringBuffer->append(StoreFront.constructor.getName());
+stringBuffer->append(Class::forType(typeid(StoreFront))->getName());
     
 stringBuffer->append(" =");
     
@@ -118,7 +121,7 @@ stringBuffer->append(this->getStoreName());
     
 stringBuffer->append(CommonSeps::getInstance()->SPACE);
     
-stringBuffer->append(PaymentGateway.constructor.getName());
+stringBuffer->append(Class::forType(typeid(PaymentGateway))->getName());
     
 stringBuffer->append("=");
     
@@ -133,7 +136,6 @@ stringBuffer->append(this->getName());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPRIMARYKEY_CPP

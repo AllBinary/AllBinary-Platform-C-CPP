@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/ItemPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ItemPaintable
-            : public Object
-         {
 
-    public: void paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y){
+ItemPaintable::ItemPaintable() {
+        }
+        
+    auto ItemPaintable::paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_CPP

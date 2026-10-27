@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP
+        #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/resource/ResourceUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,29 +74,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2ME
-class ResourceUtil
-            : public Object
-         {
+auto ResourceUtil::instance_owner() -> ResourceUtil* { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
+ResourceUtil* ResourceUtil::instance = ResourceUtil::instance_owner();
 
-    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
-
-    public: static ResourceUtil* getInstance(){
+    auto ResourceUtil::getInstance() -> ResourceUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil::instance();
+                        return ResourceUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ResourceUtil(){
+ResourceUtil::ResourceUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setLoadingPaths(std::string path, std::string ext){
+    auto ResourceUtil::setLoadingPaths(std::string path, std::string ext) -> void{
 this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoadingPaths");
     
 }
@@ -94,7 +99,7 @@ this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoa
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getResourceAsStream(std::string resource){
+    auto ResourceUtil::getResourceAsStream(std::string resource) -> InputStream*{
 
     InputStream* inputStream = resource.getClass()->getResourceAsStream(resource);;
     
@@ -160,7 +165,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 resourcePath= stringMaker->append("/")->append(RES)->append(JavaString::substring(resource, index))->toString();
     
@@ -175,7 +180,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 resourcePath= stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index))->toString();
     
@@ -187,7 +192,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 resourcePath= stringMaker->append(RES)->append(COLON)->append(JavaString::substring(resource, index +1))->toString();
     
@@ -202,7 +207,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
                                     
     std::string RESOURCE_STRING = "resource";;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 resourcePath= stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index))->toString();
     
@@ -214,7 +219,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 resourcePath= stringMaker->append(RESOURCE_STRING)->append(COLON)->append(JavaString::substring(resource, index +1))->toString();
     
@@ -226,12 +231,12 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
                                 )
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 
 
 
-                            throw new Exception(stringMaker->append("Unable to obtain: ")->append(resource)->toString());
+                            throw Exception(stringMaker->append("Unable to obtain: ")->append(resource)->toString());
                     
 
                                     }
@@ -277,7 +282,7 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
 
                 //@Throws(Exception.constructor)
             
-    private: InputStream* getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
+    auto ResourceUtil::getResourceAsStreamAtStart(std::string resource, int32_t startIndex) -> InputStream*{
 
     StringMaker* stringMaker = new StringMaker();;
     
@@ -314,11 +319,10 @@ inputStream= resource.getClass()->getResourceAsStream(resourcePath);
 }
 
 
-    public: void addResource(std::string resource, int32_t value){
+    auto ResourceUtil::addResource(std::string resource, int32_t value) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP

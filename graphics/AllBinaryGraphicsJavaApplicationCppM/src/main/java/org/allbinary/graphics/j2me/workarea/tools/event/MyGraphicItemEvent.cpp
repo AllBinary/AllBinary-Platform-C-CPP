@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENT_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         #include "org/allbinary/graphics/j2me/workarea/tools/event/EventObject.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventSource.h"
 
-class MyGraphicItemEvent: public java::util::EventObject {
 
-public: MyGraphicItemEvent(Object* source) : java::util::EventObject(source){
+MyGraphicItemEvent::MyGraphicItemEvent(Object* source) : java::util::EventObject(source){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,27 +71,27 @@ public: MyGraphicItemEvent(Object* source) : java::util::EventObject(source){
 }
 
 
-    public: Object* getSource(){
+    auto MyGraphicItemEvent::getSource() -> Object*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getSource();;
+                        return java::util::EventObject::getSource();;
     
 }
 
 
-    public: std::string toString(){
+    auto MyGraphicItemEvent::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.toString();;
+                        return java::util::EventObject::toString();;
     
 }
 
 
-    public: std::string getCommand(){
+    auto MyGraphicItemEvent::getCommand() -> std::string{
 
     MyGraphicItemEventSource* myEventSource = dynamic_cast<MyGraphicItemEventSource*>(this->getSource());;
     
@@ -95,7 +104,7 @@ public: MyGraphicItemEvent(Object* source) : java::util::EventObject(source){
 }
 
 
-    public: MutableTreeNode* getTreeNode(){
+    auto MyGraphicItemEvent::getTreeNode() -> MutableTreeNode*{
 
     MyGraphicItemEventSource* myEventSource = dynamic_cast<MyGraphicItemEventSource*>(this->getSource());;
     
@@ -108,7 +117,7 @@ public: MyGraphicItemEvent(Object* source) : java::util::EventObject(source){
 }
 
 
-    public: double getAngle(){
+    auto MyGraphicItemEvent::getAngle() -> double{
 
     MyGraphicItemEventSource* myEventSource = dynamic_cast<MyGraphicItemEventSource*>(this->getSource());;
     
@@ -121,7 +130,6 @@ public: MyGraphicItemEvent(Object* source) : java::util::EventObject(source){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENT_CPP

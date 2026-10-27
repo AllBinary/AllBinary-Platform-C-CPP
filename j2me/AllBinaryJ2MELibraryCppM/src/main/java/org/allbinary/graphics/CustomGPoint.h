@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CUSTOMGPOINT_H
         #define ORG_ALLBINARY_GRAPHICS_CUSTOMGPOINT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/GPoint.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomGPoint: public GPoint {
 
-    public: static CustomGPoint* NULL_CUSTOM_POINT() { static std::unique_ptr<CustomGPoint> value(new CustomGPoint(0, 0, 0)); return value.get(); }
+    private: static CustomGPoint* NULL_CUSTOM_POINT_owner();
+    public: static CustomGPoint* NULL_CUSTOM_POINT;
 
     public: static CustomGPoint* getInstance(GPoint* point);
 
@@ -81,3 +91,13 @@ public: CustomGPoint(int32_t x, int32_t y, int32_t z);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CUSTOMGPOINT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CUSTOMGPOINT_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CUSTOMGPOINT_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+
+        #endif
+    

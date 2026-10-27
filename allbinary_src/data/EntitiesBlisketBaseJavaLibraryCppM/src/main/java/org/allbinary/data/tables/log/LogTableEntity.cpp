@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/log/LogTableEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,11 +69,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/log/LogTableEntityInterface.h"
 
-class LogTableEntity: public AbSqlBean, public LogTableEntityInterface {
 
-    private: const std::string tableName = "log";
-
-public: LogTableEntity() : AbSqlBean(new LogDbInitInfo()){
+LogTableEntity::LogTableEntity() : AbSqlBean(new LogDbInitInfo()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,14 +82,14 @@ this->setTableName(this->tableName);
 }
 
 
-    public: std::string createTableStatement(){
+    auto LogTableEntity::createTableStatement() -> std::string{
 
     AbeHttpRequestInfoData* abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(this->sqlStrings.ID)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(abeHttpRequestInfoData->HTTP_USER_AGENT)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(abeHttpRequestInfoData->REMOTE_HOST)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(abeHttpRequestInfoData->REMOTE_ADDRESS)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(abeHttpRequestInfoData->REQUEST_FILE_PATH)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(abeHttpRequestInfoData->REMOTE_PORT)->append(this->sqlTypeStrings.MAX_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(this->sqlStrings.ID)->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(this->sqlStrings->START)->append(this->sqlStrings->ID)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(abeHttpRequestInfoData->HTTP_USER_AGENT)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(abeHttpRequestInfoData->REMOTE_HOST)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(abeHttpRequestInfoData->REMOTE_ADDRESS)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(abeHttpRequestInfoData->REQUEST_FILE_PATH)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(abeHttpRequestInfoData->REMOTE_PORT)->append(this->sqlTypeStrings->MAX_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(this->sqlStrings->ID)->append(this->sqlStrings->END);
     
 
 
@@ -93,17 +100,16 @@ stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(t
 }
 
 
-    public: std::string createTable(){
+    auto LogTableEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_CPP

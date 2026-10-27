@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_NULLUTIL_H
         #define ORG_ALLBINARY_LOGIC_NULLUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,23 +39,11 @@
             #include "java/lang/Class.h"
         
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Hashtable.h>
-
-      
 #include <java/util/Vector.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
+class JsType;
+class JsProperty;
+class JsMethod;
 
 
 
@@ -69,40 +62,49 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //ActualPlatform
 /*actual*/ class NullUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static NullUtil* instance() { static std::unique_ptr<NullUtil> value(new NullUtil()); return value.get(); }
+    private: static NullUtil* instance_owner();
+    private: static NullUtil* instance;
 
     /*actual*/ public: static NullUtil* getInstance();
 
-    /*actual*/ public: Object* NULL_OBJECT = new Object();
 
-    /*actual*/ public: Class* NULL_CLASS = this->NULL_OBJECT->getClass();
+            
+    public: NullUtil();
+        
+    /*actual*/ public: Object* NULL_OBJECT;
 
-    /*actual*/ public: const std::vector<Object*> NULL_OBJECT_ARRAY = {};
+    /*actual*/ public: Class* NULL_CLASS;
 
-    /*actual*/ public: const std::vector<int8_t> NULL_BYTE_ARRAY = std::vector<int8_t>(0);
+    /*actual*/ public: std::vector<Object*> NULL_OBJECT_ARRAY;
 
-    /*actual*/ public: const std::vector<char> NULL_CHAR_ARRAY = std::vector<char>(0);
+    /*actual*/ public: std::vector<int8_t> NULL_BYTE_ARRAY;
 
-    /*actual*/ public: const std::vector<std::vector<int16_t>> NULL_SHORT_ARRAY_ARRAY = std::vector<std::vector<int16_t>>(0, std::vector<int16_t>(0));
+    /*actual*/ public: std::vector<char> NULL_CHAR_ARRAY;
 
-    /*actual*/ public: const std::vector<int32_t> NULL_INT_ARRAY = std::vector<int32_t>(0);
+    /*actual*/ public: std::vector<std::vector<int16_t>> NULL_SHORT_ARRAY_ARRAY;
 
-    /*actual*/ public: const std::vector<std::vector<int32_t>> NULL_INT_ARRAY_ARRAY = std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0));
+    /*actual*/ public: std::vector<int32_t> NULL_INT_ARRAY;
 
-    /*actual*/ public: const std::vector<std::vector<std::vector<int32_t>>> NULL_INT_ARRAY_ARRAY_ARRAY = std::vector<std::vector<std::vector<int32_t>>>(0, std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0)));
+    /*actual*/ public: std::vector<std::vector<int32_t>> NULL_INT_ARRAY_ARRAY;
 
-    /*actual*/ public: const std::vector<float> NULL_FLOAT_ARRAY = std::vector<float>(0);
+    /*actual*/ public: std::vector<std::vector<std::vector<int32_t>>> NULL_INT_ARRAY_ARRAY_ARRAY;
 
-    /*actual*/ public: Vector<Object*>* EMPTY_VECTOR = new Vector<Object*>();
+    /*actual*/ public: std::vector<float> NULL_FLOAT_ARRAY;
 
-    /*actual*/ public: Hashtable<Object*, Object*>* NULL_TABLE = new Hashtable<Object*, Object*>();
+    /*actual*/ public: Vector<Object*>* EMPTY_VECTOR;
 
-    /*actual*/ public: HashMap<Object*, Object*>* NULL_MAP = new HashMap<Object*, Object*>();
+    /*actual*/ public: Hashtable<Object*, Object*>* NULL_TABLE;
+
+    /*actual*/ public: HashMap<Object*, Object*>* NULL_MAP;
 
 };
 
@@ -110,3 +112,28 @@
 
 
         #endif //ORG_ALLBINARY_LOGIC_NULLUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_NULLUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_NULLUTIL_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Hashtable.h>)
+#include <java/util/Hashtable.h>
+#endif
+#if __has_include(<java/util/Vector.h>)
+#include <java/util/Vector.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+
+        #endif
+    

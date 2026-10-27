@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ProgressActivityInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ProgressActivityInterface
+            : public virtual Object
+         {
 
     public: virtual void runOnUiThread(Runnable* action) = 0;
 
@@ -64,3 +75,10 @@ class ProgressActivityInterface {
 
 
         #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H_COMPLETE
+        
+        #endif
+    

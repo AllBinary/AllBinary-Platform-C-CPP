@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_PAYMENT_PAYMENTPROCESSORCOMPONENT_CPP
+        #define VIEWS_ADMIN_PAYMENT_PAYMENTPROCESSORCOMPONENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/payment/PaymentProcessorComponent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,11 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentProcessorComponent: public HttpStoreComponentView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: PaymentProcessorComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+PaymentProcessorComponent::PaymentProcessorComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,7 +89,7 @@ public: PaymentProcessorComponent(TransformInfoInterface* transformInfoInterface
 
                 //@Throws(Exception.constructor)
             
-    public: void addDomNodeInterfaces(){
+    auto PaymentProcessorComponent::addDomNodeInterfaces() -> void{
 
     PaymentProcessorInterface* paymentProcessorInterface = PaymentProcessorInterfaceFactory::getInstance()->getInstance(this->getTransformInfoInterface());;
     
@@ -100,7 +107,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(paymentProcessorInterf
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto PaymentProcessorComponent::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -109,17 +116,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(paymentProcessorInterf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -134,7 +141,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(paymentProcessorInterf
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_PAYMENT_PAYMENTPROCESSORCOMPONENT_CPP

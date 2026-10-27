@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOOBJECTFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOOBJECTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoObjectFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,41 +83,36 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
-class TransformInfoObjectFactory
-            : public Object
-         {
+auto TransformInfoObjectFactory::instance_owner() -> TransformInfoObjectFactory* { static std::unique_ptr<TransformInfoObjectFactory> value(new TransformInfoObjectFactory()); return value.get(); }
+TransformInfoObjectFactory* TransformInfoObjectFactory::instance = TransformInfoObjectFactory::instance_owner();
 
-    private: static TransformInfoObjectFactory* instance() { static std::unique_ptr<TransformInfoObjectFactory> value(new TransformInfoObjectFactory()); return value.get(); }
-
-    public: static TransformInfoObjectFactory* getInstance(){
+    auto TransformInfoObjectFactory::getInstance() -> TransformInfoObjectFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectFactory::instance();
+                        return TransformInfoObjectFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransformInfoObjectFactory(){
+TransformInfoObjectFactory::TransformInfoObjectFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface){
+    auto TransformInfoObjectFactory::getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) -> TransformInterface*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF("Creating View: " +transformInfoInterface->getName(), this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf("Creating View: ") +JavaString::valueOf(transformInfoInterface->getName()), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -153,7 +158,7 @@ stringBuffer->append(transformInfoInterface->getObjectFile());
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 
                                     }
@@ -162,7 +167,7 @@ stringBuffer->append(transformInfoInterface->getObjectFile());
                             
 
 
-                            throw new Exception("No Such View Object since transformInfo is null");
+                            throw Exception("No Such View Object since transformInfo is null");
                     
 
                         }
@@ -189,13 +194,13 @@ stringBuffer->append(transformInfoInterface->getObjectFile());
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface->getName();
+                                    error= JavaString::valueOf(error) +JavaString::valueOf(transformInfoInterface->getName());
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -225,13 +230,13 @@ this->logUtil->put(error, this, commonStrings->GET_INSTANCE, &e);
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface->getName();
+                                    error= JavaString::valueOf(error) +JavaString::valueOf(transformInfoInterface->getName());
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -252,7 +257,6 @@ this->logUtil->put(error, this, commonStrings->GET_INSTANCE, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOOBJECTFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_NULLEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_NULLEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/NullEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +57,16 @@
         #include "org/allbinary/logic/util/event/EventListenerInterface.h"
 #include "org/allbinary/logic/util/event/AllBinaryEventObject.h"
 
-class NullEventListener
-            : public Object
-        , public EventListenerInterface {
 
-    public: static NullEventListener* NULL_EVENT_LISTENER() { static std::unique_ptr<NullEventListener> value(new NullEventListener()); return value.get(); }
+NullEventListener::NullEventListener() {
+        }
+        auto NullEventListener::NULL_EVENT_LISTENER_owner() -> NullEventListener* { static std::unique_ptr<NullEventListener> value(new NullEventListener()); return value.get(); }
+NullEventListener* NullEventListener::NULL_EVENT_LISTENER = NullEventListener::NULL_EVENT_LISTENER_owner();
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto NullEventListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_NULLEVENTLISTENER_CPP

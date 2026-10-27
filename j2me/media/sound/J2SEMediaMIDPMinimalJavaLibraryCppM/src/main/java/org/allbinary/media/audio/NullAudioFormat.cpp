@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/NullAudioFormat.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullAudioFormat
-            : public Object
-         {
 
-    public: static AudioFormat* NULL_AUDIO_FORMAT() { static std::unique_ptr<AudioFormat> value(new AudioFormat(AudioFormat::Encoding.PCM_UNSIGNED, 0.0, 0, 0, 0, 0.0, false)); return value.get(); }
+NullAudioFormat::NullAudioFormat() {
+        }
+        auto NullAudioFormat::NULL_AUDIO_FORMAT_owner() -> AudioFormat* { static std::unique_ptr<AudioFormat> value(new AudioFormat(AudioFormat::Encoding->PCM_UNSIGNED, 0.0, 0, 0, 0, 0.0, false)); return value.get(); }
+AudioFormat* NullAudioFormat::NULL_AUDIO_FORMAT = NullAudioFormat::NULL_AUDIO_FORMAT_owner();
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_CPP

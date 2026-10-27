@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEMARRAYFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEMARRAYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,21 +89,14 @@
         #include "org/allbinary/graphics/form/item/CommandTextItem.h"
 #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
-class CommandTextItemArrayFactory
-            : public Object
-         {
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    private: Visitor* visitorInterface;
-
-public: CommandTextItemArrayFactory(Visitor* visitorInterface){
+CommandTextItemArrayFactory::CommandTextItemArrayFactory(Visitor* visitorInterface) : list(new BasicArrayListD()){
 this->visitorInterface= visitorInterface;
     
 }
 
 
-    public: std::vector<ABCustomItem*> getInstance(Object* vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
+    auto CommandTextItemArrayFactory::getInstance(Object* vector, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) -> std::vector<ABCustomItem*>{
 
     VectorUtil* vectorUtil = VectorUtil::getInstance();;
     
@@ -184,7 +187,6 @@ textItemArray[index]= dynamic_cast<ABCustomItem*>(this->list->objectArray[index]
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEMARRAYFACTORY_CPP

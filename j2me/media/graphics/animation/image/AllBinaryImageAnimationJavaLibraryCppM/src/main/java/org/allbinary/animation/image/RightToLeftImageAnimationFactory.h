@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_RIGHTTOLEFTIMAGEANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_RIGHTTOLEFTIMAGEANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
+class Image;
+class Animation;
+class AnimationBehaviorFactory;
+class PrimitiveIntUtil;
 
 
 
@@ -60,9 +57,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
-#include "org/allbinary/animation/image/RightToLeftImageAnimation.h"
-#include "org/allbinary/animation/image/AdjustedRightToLeftImageAnimation.h"
+class RightToLeftImageAnimation;
+class AdjustedRightToLeftImageAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RightToLeftImageAnimationFactory: public BaseImageAnimationFactory {
 
 public: RightToLeftImageAnimationFactory(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
@@ -77,3 +78,31 @@ public: RightToLeftImageAnimationFactory(Image* image, int32_t dx, int32_t dy, A
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_RIGHTTOLEFTIMAGEANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_RIGHTTOLEFTIMAGEANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_RIGHTTOLEFTIMAGEANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/BaseImageAnimationFactory.h")
+#include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/image/RightToLeftImageAnimation.h")
+#include "org/allbinary/animation/image/RightToLeftImageAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/image/AdjustedRightToLeftImageAnimation.h")
+#include "org/allbinary/animation/image/AdjustedRightToLeftImageAnimation.h"
+#endif
+
+        #endif
+    

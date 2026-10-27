@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/TestInputAutomationWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,23 +75,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TestInputAutomationWorker
-            : public Object
-         {
 
-    private: ScreenCaptureImagesWorker* captureWorker;
-
-    private: ImageComparisonWorker* imageComparisonWorker;
-
-    private: MotionRectanglesWorker* motionRectanglesWorker;
-
-    private: SaveImageComparisonWorker* changedPixelsImageComparisonResultsWorker;
-
-    private: SaveMotionRectanglesResultsWorker* saveMotionRectanglesAsImagesWorker;
-
-    private: TestInputForMotionRectanglesResultsWorker* moveMouseToFirstMotionRectanglesResultsWorker;
-
-public: TestInputAutomationWorker(){
+TestInputAutomationWorker::TestInputAutomationWorker(){
 this->captureWorker= new ScreenCaptureImagesWorker();
     
 this->changedPixelsImageComparisonResultsWorker= new SaveImageComparisonWorker();
@@ -103,7 +98,6 @@ this->captureWorker->addListenerInterface(this->imageComparisonWorker);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_CPP

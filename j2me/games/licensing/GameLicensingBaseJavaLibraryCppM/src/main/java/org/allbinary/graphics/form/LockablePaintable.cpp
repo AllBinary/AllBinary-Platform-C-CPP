@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/LockablePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,19 +71,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/ItemPaintable.h"
 
-class LockablePaintable: public ItemPaintable {
 
-    private: Animation* animation = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LockedResources::getInstance()->LOCKED_DEMO_GAME_FEATURE_RESOURCE)->getInstance(0);
-
-    private: int32_t lockedIndex;
-
-public: LockablePaintable(int32_t lockedIndex){
+LockablePaintable::LockablePaintable(int32_t lockedIndex) : animation(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LockedResources::getInstance()->LOCKED_DEMO_GAME_FEATURE_RESOURCE)->getInstance(0)){
 this->lockedIndex= lockedIndex;
     
 }
 
 
-    public: void paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y){
+    auto LockablePaintable::paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y) -> void{
 
                         if(LockedUtil::getInstance()->isLocked() && currentIndex >= this->getLockedIndex())
                         
@@ -86,7 +91,7 @@ this->lockedIndex= lockedIndex;
 }
 
 
-    protected: int32_t getLockedIndex(){
+    auto LockablePaintable::getLockedIndex() -> int32_t{
 
 
 
@@ -96,7 +101,7 @@ this->lockedIndex= lockedIndex;
 }
 
 
-    protected: Animation* getAnimation(){
+    auto LockablePaintable::getAnimation() -> Animation*{
 
 
 
@@ -106,7 +111,6 @@ this->lockedIndex= lockedIndex;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_COLLIDABLEWAYPOINTBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_COLLIDABLEWAYPOINTBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/CollidableWaypointBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,9 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CollidableWaypointBehavior: public CollidableRTSBehavior {
 
-public: CollidableWaypointBehavior(bool collidable) : CollidableRTSBehavior(collidable){
+CollidableWaypointBehavior::CollidableWaypointBehavior(bool collidable) : CollidableRTSBehavior(collidable){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,7 +75,7 @@ public: CollidableWaypointBehavior(bool collidable) : CollidableRTSBehavior(coll
 }
 
 
-    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer){
+    auto CollidableWaypointBehavior::isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer) -> bool{
 
 
 
@@ -78,11 +87,11 @@ public: CollidableWaypointBehavior(bool collidable) : CollidableRTSBehavior(coll
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer){
+    auto CollidableWaypointBehavior::collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer) -> void{
 }
 
 
-    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterface){
+    auto CollidableWaypointBehavior::isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterface) -> bool{
 
 
 
@@ -94,11 +103,10 @@ public: CollidableWaypointBehavior(bool collidable) : CollidableRTSBehavior(coll
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterface){
+    auto CollidableWaypointBehavior::collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterface) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_COLLIDABLEWAYPOINTBEHAVIOR_CPP

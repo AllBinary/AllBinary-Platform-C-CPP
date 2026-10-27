@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,15 +57,8 @@
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
-class GeographicMapCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<GeographicMapCellType*> geographicMapCellTypeArray() = 0;
 
-    public: virtual std::vector<BasicGeographicMap*> getGeographicMapInterface() = 0;
 
-    public: virtual void setGeographicMapInterface(std::vector<BasicGeographicMap*> geographicMapInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCOMPOSITEINTERFACE_CPP

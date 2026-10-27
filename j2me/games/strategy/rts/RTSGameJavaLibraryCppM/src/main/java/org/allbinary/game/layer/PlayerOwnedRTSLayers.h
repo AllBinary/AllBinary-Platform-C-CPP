@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_H
         #define ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class StringMaker;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -57,11 +56,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PlayerOwnedRTSLayers
-            : public Object
+            : public virtual Object
          {
 
-    public: BasicArrayList* rtsLayerList = new BasicArrayListD();
+
+            
+    public: PlayerOwnedRTSLayers();
+        
+    public: BasicArrayList* rtsLayerList;
 
     public: std::string toString();
 
@@ -71,3 +78,19 @@ class PlayerOwnedRTSLayers
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PLAYEROWNEDRTSLAYERS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

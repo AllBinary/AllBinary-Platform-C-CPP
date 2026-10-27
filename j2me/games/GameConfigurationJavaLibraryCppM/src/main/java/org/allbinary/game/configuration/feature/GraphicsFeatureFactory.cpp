@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GRAPHICSFEATUREFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GRAPHICSFEATUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/GraphicsFeatureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,45 +59,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/feature/GraphicsFeature.h"
 
-class GraphicsFeatureFactory
-            : public Object
-         {
+auto GraphicsFeatureFactory::instance_owner() -> GraphicsFeatureFactory* { static std::unique_ptr<GraphicsFeatureFactory> value(new GraphicsFeatureFactory()); return value.get(); }
+GraphicsFeatureFactory* GraphicsFeatureFactory::instance = GraphicsFeatureFactory::instance_owner();
 
-    private: static GraphicsFeatureFactory* instance() { static std::unique_ptr<GraphicsFeatureFactory> value(new GraphicsFeatureFactory()); return value.get(); }
-
-    public: static GraphicsFeatureFactory* getInstance(){
+    auto GraphicsFeatureFactory::getInstance() -> GraphicsFeatureFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GraphicsFeatureFactory::instance();
+                        return GraphicsFeatureFactory::instance;
     
 }
 
 
-private: GraphicsFeatureFactory(){
+GraphicsFeatureFactory::GraphicsFeatureFactory() : NONE(new GraphicsFeature(StringUtil::getInstance()->NULL_STRING)), TRANSPARENT_IMAGE_CREATION(new GraphicsFeature("Transparent Image Creation")), IMAGE_GRAPHICS(new GraphicsFeature("Image Graphics")), IMAGE_ROTATION_ON_THE_FLY(new GraphicsFeature("Image Rotated On The Fly")), IMAGE_TO_ARRAY_GRAPHICS(new GraphicsFeature("Image To Array Graphics")), SPRITE_QUARTER_ROTATION_GRAPHICS(new GraphicsFeature("Sprite Quarter Rotation Graphics")), SPRITE_FULL_GRAPHICS(new GraphicsFeature("Sprite Full Rotation Graphics")), VECTOR_GRAPHICS(new GraphicsFeature("BasicArrayList Graphics")), VECTOR_TO_IMAGE_GRAPHICS(new GraphicsFeature("BasicArrayList To Image Graphics")){
 }
 
 
-    public: GraphicsFeature* NONE = new GraphicsFeature(StringUtil::getInstance()->NULL_STRING);
 
-    public: GraphicsFeature* TRANSPARENT_IMAGE_CREATION = new GraphicsFeature("Transparent Image Creation");
 
-    public: GraphicsFeature* IMAGE_GRAPHICS = new GraphicsFeature("Image Graphics");
-
-    public: GraphicsFeature* IMAGE_ROTATION_ON_THE_FLY = new GraphicsFeature("Image Rotated On The Fly");
-
-    public: GraphicsFeature* IMAGE_TO_ARRAY_GRAPHICS = new GraphicsFeature("Image To Array Graphics");
-
-    public: GraphicsFeature* SPRITE_QUARTER_ROTATION_GRAPHICS = new GraphicsFeature("Sprite Quarter Rotation Graphics");
-
-    public: GraphicsFeature* SPRITE_FULL_GRAPHICS = new GraphicsFeature("Sprite Full Rotation Graphics");
-
-    public: GraphicsFeature* VECTOR_GRAPHICS = new GraphicsFeature("BasicArrayList Graphics");
-
-    public: GraphicsFeature* VECTOR_TO_IMAGE_GRAPHICS = new GraphicsFeature("BasicArrayList To Image Graphics");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GRAPHICSFEATUREFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class AllBinaryEventObject;
+class EventListenerInterface;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -56,12 +55,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
-#include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
+        class GameFeatureListenerInterface;
+class GameFeatureEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameFeatureEventHandler: public BasicEventHandler {
 
-    private: static GameFeatureEventHandler* gameKeyEventHandler() { static std::unique_ptr<GameFeatureEventHandler> value(new GameFeatureEventHandler()); return value.get(); }
+    private: static GameFeatureEventHandler* gameKeyEventHandler_owner();
+    private: static GameFeatureEventHandler* gameKeyEventHandler;
 
     public: static GameFeatureEventHandler* getInstance();
 
@@ -69,7 +73,7 @@ private: GameFeatureEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -77,3 +81,25 @@ private: GameFeatureEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include("org/allbinary/game/configuration/event/GameFeatureListenerInterface.h")
+#include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/event/GameFeatureEvent.h")
+#include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
+#endif
+
+        #endif
+    

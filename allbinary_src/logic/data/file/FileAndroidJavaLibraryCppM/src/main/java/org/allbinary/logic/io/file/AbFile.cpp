@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/AbFile.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,15 +84,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/AbFileInterface.h"
 
-class AbFile
-            : public Object
-        , public AbFileInterface {
-
-    public: static inline AbFile* NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInstance()->EMPTY_STRING);
+AbFile* AbFile::NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInstance()->EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public: static AbFile* createAbFileWithChild(AbFile* file, std::string childPathName){
+    auto AbFile::createAbFileWithChild(AbFile* file, std::string childPathName) -> AbFile*{
 
 
 
@@ -94,7 +100,7 @@ class AbFile
 
                 //@Throws(Exception.constructor)
             
-    public: static AbFile* createAbFile(std::string filePath){
+    auto AbFile::createAbFile(std::string filePath) -> AbFile*{
 
 
 
@@ -106,7 +112,7 @@ class AbFile
 
                 //@Throws(Exception.constructor)
             
-    public: static AbFile* createAbFilePathAndName(std::string filePath, std::string fileName){
+    auto AbFile::createAbFilePathAndName(std::string filePath, std::string fileName) -> AbFile*{
 
 
 
@@ -116,7 +122,7 @@ class AbFile
 }
 
 
-    public: static AbFile* createAbFileFromAbPath(AbPath* abPath){
+    auto AbFile::createAbFileFromAbPath(AbPath* abPath) -> AbFile*{
 
 
 
@@ -126,7 +132,7 @@ class AbFile
 }
 
 
-    public: static AbFile* createAbFileFromRawPath(std::string filePath){
+    auto AbFile::createAbFileFromRawPath(std::string filePath) -> AbFile*{
 
 
 
@@ -136,15 +142,13 @@ class AbFile
 }
 
 
-    private: File* file;
-
-protected: AbFile(File* file){
+AbFile::AbFile(File* file){
 this->file= file;
     
 }
 
 
-    protected: File* getFile(){
+    auto AbFile::getFile() -> File*{
 
 
 
@@ -154,7 +158,7 @@ this->file= file;
 }
 
 
-    public: std::string getName(){
+    auto AbFile::getName() -> std::string{
 
 
 
@@ -164,7 +168,7 @@ this->file= file;
 }
 
 
-    public: std::string getParent(){
+    auto AbFile::getParent() -> std::string{
 
 
 
@@ -174,7 +178,7 @@ this->file= file;
 }
 
 
-    public: File* getParentFile(){
+    auto AbFile::getParentFile() -> File*{
 
 
 
@@ -184,7 +188,7 @@ this->file= file;
 }
 
 
-    public: std::string getPath(){
+    auto AbFile::getPath() -> std::string{
 
 
 
@@ -194,7 +198,7 @@ this->file= file;
 }
 
 
-    public: bool isAbsolute(){
+    auto AbFile::isAbsolute() -> bool{
 
 
 
@@ -204,7 +208,7 @@ this->file= file;
 }
 
 
-    public: std::string getAbsolutePath(){
+    auto AbFile::getAbsolutePath() -> std::string{
 
 
 
@@ -214,7 +218,7 @@ this->file= file;
 }
 
 
-    public: File* getAbsoluteFile(){
+    auto AbFile::getAbsoluteFile() -> File*{
 
 
 
@@ -226,7 +230,7 @@ this->file= file;
 
                 //@Throws(IOException.constructor)
             
-    public: std::string getCanonicalPath(){
+    auto AbFile::getCanonicalPath() -> std::string{
 
 
 
@@ -238,7 +242,7 @@ this->file= file;
 
                 //@Throws(IOException.constructor)
             
-    public: File* getCanonicalFile(){
+    auto AbFile::getCanonicalFile() -> File*{
 
 
 
@@ -248,7 +252,7 @@ this->file= file;
 }
 
 
-    public: URI* toURI(){
+    auto AbFile::toURI() -> URI*{
 
 
 
@@ -258,7 +262,7 @@ this->file= file;
 }
 
 
-    public: bool canRead(){
+    auto AbFile::canRead() -> bool{
 
 
 
@@ -268,7 +272,7 @@ this->file= file;
 }
 
 
-    public: bool canWrite(){
+    auto AbFile::canWrite() -> bool{
 
 
 
@@ -278,7 +282,7 @@ this->file= file;
 }
 
 
-    public: bool exists(){
+    auto AbFile::exists() -> bool{
 
 
 
@@ -288,7 +292,7 @@ this->file= file;
 }
 
 
-    public: bool isDirectory(){
+    auto AbFile::isDirectory() -> bool{
 
 
 
@@ -298,7 +302,7 @@ this->file= file;
 }
 
 
-    public: bool isFile(){
+    auto AbFile::isFile() -> bool{
 
 
 
@@ -308,7 +312,7 @@ this->file= file;
 }
 
 
-    public: bool isHidden(){
+    auto AbFile::isHidden() -> bool{
 
 
 
@@ -318,7 +322,7 @@ this->file= file;
 }
 
 
-    public: int64_t lastModified(){
+    auto AbFile::lastModified() -> int64_t{
 
 
 
@@ -328,7 +332,7 @@ this->file= file;
 }
 
 
-    public: int64_t length(){
+    auto AbFile::length() -> int64_t{
 
 
 
@@ -340,7 +344,7 @@ this->file= file;
 
                 //@Throws(IOException.constructor)
             
-    public: bool createNewFile(){
+    auto AbFile::createNewFile() -> bool{
 
 
 
@@ -352,7 +356,7 @@ this->file= file;
 
                 //@Throws(IOException.constructor)
             
-    public: bool delete_(){
+    auto AbFile::delete_() -> bool{
 
 
 
@@ -362,13 +366,13 @@ this->file= file;
 }
 
 
-    public: void deleteOnExit(){
+    auto AbFile::deleteOnExit() -> void{
 this->file->deleteOnExit();
     
 }
 
 
-    public: std::vector<std::string> list(){
+    auto AbFile::list() -> std::vector<std::string>{
 
 
 
@@ -378,7 +382,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: std::vector<std::string> listWithFilter(FilenameFilter* filter){
+    auto AbFile::listWithFilter(FilenameFilter* filter) -> std::vector<std::string>{
 
 
 
@@ -388,7 +392,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: std::vector<Object*> listFiles(){
+    auto AbFile::listFiles() -> std::vector<Object*>{
 
 
 
@@ -398,7 +402,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: std::vector<Object*> listFilesFileNameFilter(FilenameFilter* filter){
+    auto AbFile::listFilesFileNameFilter(FilenameFilter* filter) -> std::vector<Object*>{
 
 
 
@@ -408,7 +412,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: std::vector<Object*> listFilesFileFilter(FileFilter* filter){
+    auto AbFile::listFilesFileFilter(FileFilter* filter) -> std::vector<Object*>{
 
 
 
@@ -418,7 +422,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: bool mkdir(){
+    auto AbFile::mkdir() -> bool{
 
 
 
@@ -428,7 +432,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: bool mkdirs(){
+    auto AbFile::mkdirs() -> bool{
 
 
 
@@ -438,7 +442,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: bool renameTo(AbFile* dest){
+    auto AbFile::renameTo(AbFile* dest) -> bool{
 
 
 
@@ -448,7 +452,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: bool setLastModified(int64_t time){
+    auto AbFile::setLastModified(int64_t time) -> bool{
 
 
 
@@ -458,7 +462,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: bool setReadOnly(){
+    auto AbFile::setReadOnly() -> bool{
 
 
 
@@ -468,7 +472,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: int32_t compareTo(File* pathname){
+    auto AbFile::compareTo(File* pathname) -> int32_t{
 
 
 
@@ -478,7 +482,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: bool equals(Object* obj){
+    auto AbFile::equals(Object* obj) -> bool{
 
 
 
@@ -488,7 +492,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: int32_t hashCode(){
+    auto AbFile::hashCode() -> int32_t{
 
 
 
@@ -498,7 +502,7 @@ this->file->deleteOnExit();
 }
 
 
-    public: std::string toString(){
+    auto AbFile::toString() -> std::string{
 
 
 
@@ -508,7 +512,6 @@ this->file->deleteOnExit();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_CPP

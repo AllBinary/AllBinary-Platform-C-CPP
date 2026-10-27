@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_TAGWORKFLOWFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_TAGWORKFLOWFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/TagWorkFlowFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,31 +89,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 
-class TagWorkFlowFactory
-            : public Object
-         {
+auto TagWorkFlowFactory::instance_owner() -> TagWorkFlowFactory* { static std::unique_ptr<TagWorkFlowFactory> value(new TagWorkFlowFactory()); return value.get(); }
+TagWorkFlowFactory* TagWorkFlowFactory::instance = TagWorkFlowFactory::instance_owner();
 
-    private: static TagWorkFlowFactory* instance() { static std::unique_ptr<TagWorkFlowFactory> value(new TagWorkFlowFactory()); return value.get(); }
-
-    public: static TagWorkFlowFactory* getInstance(){
+    auto TagWorkFlowFactory::getInstance() -> TagWorkFlowFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagWorkFlowFactory::instance();
+                        return TagWorkFlowFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TagWorkFlowFactory(){
+TagWorkFlowFactory::TagWorkFlowFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface* getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+    auto TagWorkFlowFactory::getInstance(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) -> WorkFlowInterface*{
 
         try {
             
@@ -134,7 +139,7 @@ params[1]= pageContext;
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -149,7 +154,7 @@ stringBuffer->append(workFlowClassName);
     
 stringBuffer->append("->");
     
-stringBuffer->append(TagWorkFlowFactory::instance()->getClass()->getName());
+stringBuffer->append(TagWorkFlowFactory::instance->getClass()->getName());
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
@@ -170,7 +175,7 @@ this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, 
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -185,7 +190,7 @@ stringBuffer->append(workFlowClassName);
     
 stringBuffer->append("->");
     
-stringBuffer->append(TagWorkFlowFactory::instance()->getClass()->getName());
+stringBuffer->append(TagWorkFlowFactory::instance->getClass()->getName());
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
@@ -205,7 +210,6 @@ this->logUtil->put(stringBuffer->toString(), this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_TAGWORKFLOWFACTORY_CPP

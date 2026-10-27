@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEDIFFICULTYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEDIFFICULTYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/GameDifficultyFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameDifficultyFactory
-            : public Object
-         {
 
-    private: static GameDifficultyFactory* instance() { static std::unique_ptr<GameDifficultyFactory> value(new GameDifficultyFactory()); return value.get(); }
+GameDifficultyFactory::GameDifficultyFactory() {
+        }
+        auto GameDifficultyFactory::instance_owner() -> GameDifficultyFactory* { static std::unique_ptr<GameDifficultyFactory> value(new GameDifficultyFactory()); return value.get(); }
+GameDifficultyFactory* GameDifficultyFactory::instance = GameDifficultyFactory::instance_owner();
 
-    public: static GameDifficultyFactory* getInstance(){
+    auto GameDifficultyFactory::getInstance() -> GameDifficultyFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameDifficultyFactory::instance();
+                        return GameDifficultyFactory::instance;
     
 }
 
 
-    private: int32_t level = 0;
-
-    public: void setLevel(int32_t level){
+    auto GameDifficultyFactory::setLevel(int32_t level) -> void{
 this->level= level;
     
 }
 
 
-    public: int32_t getLevel(){
+    auto GameDifficultyFactory::getLevel() -> int32_t{
 
 
 
@@ -79,7 +87,6 @@ this->level= level;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEDIFFICULTYFACTORY_CPP

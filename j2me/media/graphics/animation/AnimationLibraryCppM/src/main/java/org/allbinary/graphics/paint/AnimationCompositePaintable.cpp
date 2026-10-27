@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_ANIMATIONCOMPOSITEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_ANIMATIONCOMPOSITEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/AnimationCompositePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,29 +60,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/InitUpdatePaintable.h"
 
-class AnimationCompositePaintable: public InitUpdatePaintable {
 
-    private: Animation* animationInterface;
-
-public: AnimationCompositePaintable(Animation* animationInterface){
+AnimationCompositePaintable::AnimationCompositePaintable(Animation* animationInterface){
 this->animationInterface= animationInterface;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto AnimationCompositePaintable::paint(Graphics* graphics) -> void{
 this->animationInterface->paintXY(graphics, 0, 0);
     
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto AnimationCompositePaintable::paintThreed(Graphics* graphics) -> void{
 this->animationInterface->paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_ANIMATIONCOMPOSITEPAINTABLE_CPP

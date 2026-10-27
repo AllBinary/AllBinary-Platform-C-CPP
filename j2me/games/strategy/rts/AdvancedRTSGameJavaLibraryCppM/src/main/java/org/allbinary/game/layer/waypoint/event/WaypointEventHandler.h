@@ -20,6 +20,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,18 +33,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/RTSLayerEvent.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class RTSLayerEvent;
+class AllBinaryEventObject;
+class EventListenerInterface;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -58,15 +55,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/waypoint/event/WaypointEventListenerInterface.h"
+        class WaypointEventListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointEventHandler: public BasicEventHandler {
 
 public: WaypointEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -74,3 +75,25 @@ public: WaypointEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/RTSLayerEvent.h>)
+#include <org/allbinary/game/layer/RTSLayerEvent.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include("org/allbinary/game/layer/waypoint/event/WaypointEventListenerInterface.h")
+#include "org/allbinary/game/layer/waypoint/event/WaypointEventListenerInterface.h"
+#endif
+
+        #endif
+    

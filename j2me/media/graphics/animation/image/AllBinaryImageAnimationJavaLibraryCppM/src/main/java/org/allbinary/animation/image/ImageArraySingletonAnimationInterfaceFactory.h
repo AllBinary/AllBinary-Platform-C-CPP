@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
+class Image;
 
-      
-#include <org/allbinary/animation/Animation.h>
+class AnimationBehavior;
 
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/animation/IndexedAnimation.h>
-
-      
 #include <org/allbinary/animation/SingletonAnimationInterfaceFactory.h>
 
-      
-#include <org/allbinary/image/IndexedAnimationToImageArrayUtil.h>
-
-      
 
 
 
@@ -67,8 +60,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/image/ImageArrayAnimation.h"
+        class ImageArrayAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageArraySingletonAnimationInterfaceFactory: public SingletonAnimationInterfaceFactory {
 
 public: ImageArraySingletonAnimationInterfaceFactory(std::vector<Image*> imageArray);
@@ -79,3 +76,25 @@ public: ImageArraySingletonAnimationInterfaceFactory(std::vector<Image*> imageAr
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+
+#if __has_include(<org/allbinary/animation/SingletonAnimationInterfaceFactory.h>)
+#include <org/allbinary/animation/SingletonAnimationInterfaceFactory.h>
+#endif
+
+#if __has_include("org/allbinary/animation/image/ImageArrayAnimation.h")
+#include "org/allbinary/animation/image/ImageArrayAnimation.h"
+#endif
+
+        #endif
+    

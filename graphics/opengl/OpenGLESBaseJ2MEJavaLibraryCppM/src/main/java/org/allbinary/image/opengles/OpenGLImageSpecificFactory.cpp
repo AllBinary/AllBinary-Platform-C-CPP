@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLImageSpecificFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,27 +65,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLImageFactory.h"
 
-class OpenGLImageSpecificFactory
-            : public Object
-         {
 
-    private: static OpenGLImageSpecificFactory* instance() { static std::unique_ptr<OpenGLImageSpecificFactory> value(new OpenGLImageSpecificFactory()); return value.get(); }
+OpenGLImageSpecificFactory::OpenGLImageSpecificFactory() : imageFactory(OpenGLImageFactory::NULL_OPENGL_IMAGE_FACTORY) {
+        }
+        auto OpenGLImageSpecificFactory::instance_owner() -> OpenGLImageSpecificFactory* { static std::unique_ptr<OpenGLImageSpecificFactory> value(new OpenGLImageSpecificFactory()); return value.get(); }
+OpenGLImageSpecificFactory* OpenGLImageSpecificFactory::instance = OpenGLImageSpecificFactory::instance_owner();
 
-    public: static OpenGLImageSpecificFactory* getInstance(){
+    auto OpenGLImageSpecificFactory::getInstance() -> OpenGLImageSpecificFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLImageSpecificFactory::instance();
+                        return OpenGLImageSpecificFactory::instance;
     
 }
 
 
-    private: OpenGLImageFactory* imageFactory = OpenGLImageFactory::NULL_OPENGL_IMAGE_FACTORY;
-
-    public: bool updating = false;
-
-    public: void setImageFactory(OpenGLImageFactory* imageFactory){
+    auto OpenGLImageSpecificFactory::setImageFactory(OpenGLImageFactory* imageFactory) -> void{
 this->imageFactory= imageFactory;
     
 PreLogUtil::put((new StringMaker())->append("Selected Image Factory: ")->append(StringUtil::getInstance()->toString(this->imageFactory))->toString(), this, "setImageFactory");
@@ -83,7 +89,7 @@ PreLogUtil::put((new StringMaker())->append("Selected Image Factory: ")->append(
 }
 
 
-    public: OpenGLImageFactory* getImageFactory(){
+    auto OpenGLImageSpecificFactory::getImageFactory() -> OpenGLImageFactory*{
 
 
 
@@ -93,7 +99,6 @@ PreLogUtil::put((new StringMaker())->append("Selected Image Factory: ")->append(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_CPP

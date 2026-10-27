@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_VALIDATIONTRANSFORMTAG_CPP
+        #define TAGS_VALIDATIONTRANSFORMTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/ValidationTransformTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,15 +82,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/TransformTag.h"
 
-class ValidationTransformTag: public TransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string xslFile;
-
-    private: bool logic;
-
-public: ValidationTransformTag() : TransformTag(new ValidatedViewHelperFactory()){
+ValidationTransformTag::ValidationTransformTag() : TransformTag(new ValidatedViewHelperFactory()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,7 +95,7 @@ this->logic= true;
 }
 
 
-    public: void setXsl(std::string value){
+    auto ValidationTransformTag::setXsl(std::string value) -> void{
 this->xslFile= value;
     
 this->setTemplateFile(this->xslFile);
@@ -100,7 +103,7 @@ this->setTemplateFile(this->xslFile);
 }
 
 
-    public: void setLogic(bool logic){
+    auto ValidationTransformTag::setLogic(bool logic) -> void{
 this->logic= logic;
     
 }
@@ -108,7 +111,7 @@ this->logic= logic;
 
                 //@Throws(Exception.constructor)
             
-    private: bool isValid(){
+    auto ValidationTransformTag::isValid() -> bool{
 
         try {
             
@@ -133,10 +136,10 @@ this->logic= logic;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -153,7 +156,7 @@ this->logic= logic;
 
                 //@Throws(Exception.constructor)
             
-    private: std::string validationInfo(){
+    auto ValidationTransformTag::validationInfo() -> std::string{
 
         try {
             
@@ -178,10 +181,10 @@ this->logic= logic;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "validationInfo()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "validationInfo()", &e);
     
 
                                     }
@@ -198,18 +201,18 @@ this->logic= logic;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto ValidationTransformTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
     StringMaker* stringBuffer = new StringMaker();;
     
 
-    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext.getRequest());;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext->getRequest());;
     
 stringBuffer->append("ValidationViewTag Start For: ");
     
@@ -234,10 +237,10 @@ this->setHelper();
                         if(this->isValid())
                         
                                     {
-                                    super.doStartTag();
+                                    TransformTag::doStartTag();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -286,7 +289,7 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
                             pageContext.getOut()->print(this->validationInfo());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -363,9 +366,9 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-    public: int32_t doEndTag(){
+    auto ValidationTransformTag::doEndTag() -> int32_t{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic.communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic.communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Tag Ended", this, "doEndTag");
@@ -379,12 +382,11 @@ this->logic= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doEndTag();;
+                        return TransformTag::doEndTag();;
     
 }
 
 
-};
 
-            
 
+        #endif //TAGS_VALIDATIONTRANSFORMTAG_CPP

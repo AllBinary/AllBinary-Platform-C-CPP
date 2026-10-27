@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATIONDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/admin/configuration/AdminConfigurationData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdminConfigurationData
-            : public Object
-         {
 
-    public: static inline const std::string CONTEXTNAME = "Admin";
+AdminConfigurationData::AdminConfigurationData() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATIONDATA_CPP

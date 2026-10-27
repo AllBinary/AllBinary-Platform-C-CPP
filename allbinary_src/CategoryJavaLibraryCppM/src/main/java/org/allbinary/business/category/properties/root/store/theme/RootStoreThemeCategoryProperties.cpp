@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIES_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/properties/root/store/theme/RootStoreThemeCategoryProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,19 +97,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RootStoreThemeCategoryProperties: public RootStoreCategoryProperties {
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface) : RootStoreCategoryProperties(transformInfoInterface){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, AbPath* abPath) : RootStoreCategoryProperties(transformInfoInterface, abPath){
+RootStoreThemeCategoryProperties::RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface) : RootStoreCategoryProperties(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -109,7 +108,7 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoIn
 }
 
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, Node* node) : RootStoreCategoryProperties(transformInfoInterface, node){
+RootStoreThemeCategoryProperties::RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, AbPath* abPath) : RootStoreCategoryProperties(transformInfoInterface, abPath){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -119,7 +118,17 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoIn
 }
 
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap) : RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap){
+RootStoreThemeCategoryProperties::RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, Node* node) : RootStoreCategoryProperties(transformInfoInterface, node){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+RootStoreThemeCategoryProperties::RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap) : RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -131,7 +140,7 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface* transformInfoIn
 
                 //@Throws(Exception.constructor)
             
-    public: void initPath(){
+    auto RootStoreThemeCategoryProperties::initPath() -> void{
 
     TransformInfoHttpStoreInterface* transformInfoHttpStoreInterface = dynamic_cast<TransformInfoHttpStoreInterface*>(this->transformInfoInterface);;
     
@@ -164,7 +173,6 @@ this->setRootFilePath(new AbPath(URLGLOBALS::getMainPath() +abPath->toString(), 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIES_CPP

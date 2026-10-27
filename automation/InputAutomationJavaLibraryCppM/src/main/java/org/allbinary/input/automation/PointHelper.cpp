@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_POINTHELPER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_POINTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/PointHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,12 @@
 #include "org/allbinary/input/automation/Point.h"
 #include "org/allbinary/input/automation/Rectangle.h"
 
-class PointHelper
-            : public Object
-         {
 
-    private: static inline const double two = 2;
+PointHelper::PointHelper(){
+}
 
-    public: static Point* getCenterPoint(Rectangle* rectangle){
+
+    auto PointHelper::getCenterPoint(Rectangle* rectangle) -> Point*{
 
     double x = rectangle->getX() +rectangle->getWidth() /PointHelper::two;;
     
@@ -73,11 +82,6 @@ class PointHelper
 }
 
 
-public: PointHelper(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_POINTHELPER_CPP

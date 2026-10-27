@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICS_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatistics.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -83,15 +93,8 @@
         #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsInterface.h"
 #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsData.h"
 
-class StoreFrontUsersStatistics
-            : public Object
-        , public StoreFrontUsersStatisticsInterface {
 
-    private: int64_t totalNumberOfUsers;
-
-    private: HashMap<Object*, Object*>* totalUsersByRoleHashMap;
-
-public: StoreFrontUsersStatistics(StoreFrontInterface* storeFrontInterface){
+StoreFrontUsersStatistics::StoreFrontUsersStatistics(StoreFrontInterface* storeFrontInterface){
 this->totalUsersByRoleHashMap= StdUtil::getInstance()->createHashMap();
     
 
@@ -128,14 +131,12 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 }
 
 
-    private: int64_t getNewTotal(UserRole* userRole){
+    auto StoreFrontUsersStatistics::getNewTotal(UserRole* userRole) -> int64_t{
 
     int64_t numberOfUsersForRoleLong = this->totalUsersByRoleHashMap->get(userRole);;
     
 
-                        if(numberOfUsersForRoleLong == 
-                                    nullptr
-                                )
+                        if(false)
                         
                                     {
                                     numberOfUsersForRoleLong= int64_t(0);
@@ -152,7 +153,7 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 }
 
 
-    public: int64_t getNumberOfUsers(){
+    auto StoreFrontUsersStatistics::getNumberOfUsers() -> int64_t{
 
 
 
@@ -162,7 +163,7 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 }
 
 
-    public: int64_t getNumberOfUsersByRole(std::string role){
+    auto StoreFrontUsersStatistics::getNumberOfUsersByRole(std::string role) -> int64_t{
 
     int64_t totalForRole = this->totalUsersByRoleHashMap->get(role);;
     
@@ -175,7 +176,7 @@ this->totalUsersByRoleHashMap->put(nextUserRole, currentNumberOfUsersForRole);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto StoreFrontUsersStatistics::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -218,7 +219,7 @@ hashMap->put(nextUserRole->toString(), totalForRole.toString());
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto StoreFrontUsersStatistics::toVector() -> BasicArrayList*{
 
 
 
@@ -228,7 +229,7 @@ hashMap->put(nextUserRole->toString(), totalForRole.toString());
 }
 
 
-    public: Object* getKey(){
+    auto StoreFrontUsersStatistics::getKey() -> Object*{
 
 
 
@@ -238,7 +239,6 @@ hashMap->put(nextUserRole->toString(), totalForRole.toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICS_CPP

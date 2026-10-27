@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SWTUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SWTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/SWTUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SWTUtil
-            : public Object
-         {
 
-    public: static inline bool isSWT = false;
+SWTUtil::SWTUtil() {
+        }
+        
 
-    public: static inline std::string SWT = "SWT";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_SWTUTIL_CPP

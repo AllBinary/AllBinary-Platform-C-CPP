@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_LAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_LAYER_LAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/LayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,15 +64,8 @@
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 
-class LayerProcessor
-            : public Object
-        , public LayerProcessorInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: LayerManager* layerManager;
-
-public: LayerProcessor(LayerManager* layerManager){
+LayerProcessor::LayerProcessor(LayerManager* layerManager) : commonStrings(CommonStrings::getInstance()){
 this->layerManager= layerManager;
     
 }
@@ -70,27 +73,27 @@ this->layerManager= layerManager;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
+    auto LayerProcessor::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto LayerProcessor::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: LayerManager* getLayerManager(){
+    auto LayerProcessor::getLayerManager() -> LayerManager*{
 
 
 
@@ -102,7 +105,7 @@ this->layerManager= layerManager;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
+    auto LayerProcessor::process(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     LayerManager* layerManager = this->getLayerManager();;
     
@@ -123,7 +126,6 @@ this->processAt(allBinaryLayerManager, dynamic_cast<AllBinaryLayer*>(layerManage
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_LAYERPROCESSOR_CPP

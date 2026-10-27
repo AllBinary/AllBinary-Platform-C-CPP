@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
 
 
 
@@ -50,8 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
+        class GeographicMapCellPositionEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeographicMapCellPositionEventListenerInterface: public EventListenerInterface {
 
                 //@Throws(Exception.constructor)
@@ -68,3 +75,16 @@ class GeographicMapCellPositionEventListenerInterface: public EventListenerInter
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTLISTENERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h")
+#include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGERFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/music/MusicManagerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,21 +60,21 @@
         #include "org/allbinary/media/audio/music/MusicManager.h"
 #include "org/allbinary/media/audio/music/MusicService.h"
 
-class MusicManagerFactory
-            : public Object
-         {
 
-    public: static MusicManager* createMusicManager(BasicArrayList* soundList){
+MusicManagerFactory::MusicManagerFactory() {
+        }
+        
+    auto MusicManagerFactory::createMusicManager(BasicArrayList* soundList) -> MusicManager*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MusicManager(MusicService.constructor, soundList);
+                        return new MusicManager(
+                            Class::forType(typeid(MusicService)), soundList);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGERFACTORY_CPP

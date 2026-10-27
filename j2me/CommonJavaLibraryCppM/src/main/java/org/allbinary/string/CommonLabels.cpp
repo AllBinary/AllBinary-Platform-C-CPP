@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_STRING_COMMONLABELS_CPP
+        #define ORG_ALLBINARY_STRING_COMMONLABELS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/string/CommonLabels.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,53 +64,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CommonLabels
-            : public Object
-         {
 
-    private: static CommonLabels* instance() { static std::unique_ptr<CommonLabels> value(new CommonLabels()); return value.get(); }
+CommonLabels::CommonLabels() : START(this->START_LABEL) {
+        }
+        auto CommonLabels::instance_owner() -> CommonLabels* { static std::unique_ptr<CommonLabels> value(new CommonLabels()); return value.get(); }
+CommonLabels* CommonLabels::instance = CommonLabels::instance_owner();
 
-    public: static CommonLabels* getInstance(){
+    auto CommonLabels::getInstance() -> CommonLabels*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonLabels::instance();
+                        return CommonLabels::instance;
     
 }
 
 
-    public: const std::string WIDTH_LABEL = " Width: ";
 
-    public: const std::string HEIGHT_LABEL = " Height: ";
 
-    public: const std::string END_LABEL = "End: ";
-
-    public: const std::string TOTAL_LABEL = "Total: ";
-
-    public: const std::string INDEX_LABEL = "index: ";
-
-    public: const std::string START_LABEL = "Start: ";
-
-    public: const std::string COMMAND_LABEL = "Command: ";
-
-    public: const std::string NAME_LABEL = "Name: ";
-
-    public: const std::string START = this->START_LABEL;
-
-    public: const std::string ELAPSED = " Elapsed: ";
-
-    public: const std::string CURRENT = " Current: ";
-
-    public: const std::string NEXT = "Next";
-
-    public: const std::string ITEM_LABEL = "Item: ";
-
-    public: const std::string RESULT_ = "Result: ";
-
-    public: const std::string COLON_SEP = ": ";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_STRING_COMMONLABELS_CPP

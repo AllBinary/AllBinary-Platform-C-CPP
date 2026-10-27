@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AdvancedPlayerOwnedRTSLayers.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,107 +65,93 @@
 #include "org/allbinary/game/layer/RTSLayer.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
-class AdvancedPlayerOwnedRTSLayers: public PlayerOwnedRTSLayers {
 
-    private: BasicArrayList* unitsList = new BasicArrayListD();
-
-    private: BasicArrayList* waypointsList = new BasicArrayListD();
-
-    private: BasicArrayList* buildingList = new BasicArrayListD();
-
-    private: BasicArrayList* baseList = new BasicArrayListD();
-
-    private: BasicArrayList* garrisonList = new BasicArrayListD();
-
-    private: BasicArrayList* houseList = new BasicArrayListD();
-
-    private: BasicArrayList* labList = new BasicArrayListD();
-
-    private: BasicArrayList* factoryList = new BasicArrayListD();
-
-    public: void addUnit(RTSLayer* rtsLayer){
+AdvancedPlayerOwnedRTSLayers::AdvancedPlayerOwnedRTSLayers() : unitsList(new BasicArrayListD()), waypointsList(new BasicArrayListD()), buildingList(new BasicArrayListD()), baseList(new BasicArrayListD()), garrisonList(new BasicArrayListD()), houseList(new BasicArrayListD()), labList(new BasicArrayListD()), factoryList(new BasicArrayListD()) {
+        }
+        
+    auto AdvancedPlayerOwnedRTSLayers::addUnit(RTSLayer* rtsLayer) -> void{
 this->unitsList->add(rtsLayer);
     
-this->rtsLayerList.add(rtsLayer);
+this->rtsLayerList->add(rtsLayer);
     
 }
 
 
-    public: void addWaypoint(RTSLayer* rtsLayer){
+    auto AdvancedPlayerOwnedRTSLayers::addWaypoint(RTSLayer* rtsLayer) -> void{
 this->waypointsList->add(rtsLayer);
     
-this->rtsLayerList.add(rtsLayer);
+this->rtsLayerList->add(rtsLayer);
     
 }
 
 
-    public: void addBase(RTSLayer* rtsLayer){
+    auto AdvancedPlayerOwnedRTSLayers::addBase(RTSLayer* rtsLayer) -> void{
 this->baseList->add(rtsLayer);
     
 this->buildingList->add(rtsLayer);
     
-this->rtsLayerList.add(rtsLayer);
+this->rtsLayerList->add(rtsLayer);
     
 }
 
 
-    public: void addGarrison(RTSLayer* rtsLayer){
+    auto AdvancedPlayerOwnedRTSLayers::addGarrison(RTSLayer* rtsLayer) -> void{
 this->garrisonList->add(rtsLayer);
     
 this->buildingList->add(rtsLayer);
     
-this->rtsLayerList.add(rtsLayer);
+this->rtsLayerList->add(rtsLayer);
     
 }
 
 
-    public: void addHouse(RTSLayer* rtsLayer){
+    auto AdvancedPlayerOwnedRTSLayers::addHouse(RTSLayer* rtsLayer) -> void{
 this->houseList->add(rtsLayer);
     
 this->buildingList->add(rtsLayer);
     
-this->rtsLayerList.add(rtsLayer);
+this->rtsLayerList->add(rtsLayer);
     
 }
 
 
-    public: void addLab(RTSLayer* rtsLayer){
+    auto AdvancedPlayerOwnedRTSLayers::addLab(RTSLayer* rtsLayer) -> void{
 this->labList->add(rtsLayer);
     
 this->buildingList->add(rtsLayer);
     
-this->rtsLayerList.add(rtsLayer);
+this->rtsLayerList->add(rtsLayer);
     
 }
 
 
-    public: void addFactory(RTSLayer* rtsLayer){
+    auto AdvancedPlayerOwnedRTSLayers::addFactory(RTSLayer* rtsLayer) -> void{
 this->factoryList->add(rtsLayer);
     
 this->buildingList->add(rtsLayer);
     
-this->rtsLayerList.add(rtsLayer);
+this->rtsLayerList->add(rtsLayer);
     
 }
 
 
-    public: void removeUnit(AllBinaryGameLayer* gameLayer){
+    auto AdvancedPlayerOwnedRTSLayers::removeUnit(AllBinaryGameLayer* gameLayer) -> void{
 this->unitsList->remove(gameLayer);
     
-this->rtsLayerList.remove(gameLayer);
+this->rtsLayerList->remove(gameLayer);
     
 }
 
 
-    public: void removeWaypoint(AllBinaryGameLayer* gameLayer){
+    auto AdvancedPlayerOwnedRTSLayers::removeWaypoint(AllBinaryGameLayer* gameLayer) -> void{
 this->waypointsList->remove(gameLayer);
     
-this->rtsLayerList.remove(gameLayer);
+this->rtsLayerList->remove(gameLayer);
     
 }
 
 
-    public: BasicArrayList* getUnitsList(){
+    auto AdvancedPlayerOwnedRTSLayers::getUnitsList() -> BasicArrayList*{
 
 
 
@@ -165,7 +161,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList* getWaypointsList(){
+    auto AdvancedPlayerOwnedRTSLayers::getWaypointsList() -> BasicArrayList*{
 
 
 
@@ -175,7 +171,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList* getBaseList(){
+    auto AdvancedPlayerOwnedRTSLayers::getBaseList() -> BasicArrayList*{
 
 
 
@@ -185,7 +181,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList* getGarrisonList(){
+    auto AdvancedPlayerOwnedRTSLayers::getGarrisonList() -> BasicArrayList*{
 
 
 
@@ -195,7 +191,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList* getHouseList(){
+    auto AdvancedPlayerOwnedRTSLayers::getHouseList() -> BasicArrayList*{
 
 
 
@@ -205,7 +201,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList* getLabList(){
+    auto AdvancedPlayerOwnedRTSLayers::getLabList() -> BasicArrayList*{
 
 
 
@@ -215,7 +211,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: BasicArrayList* getFactoryList(){
+    auto AdvancedPlayerOwnedRTSLayers::getFactoryList() -> BasicArrayList*{
 
 
 
@@ -225,7 +221,7 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: int32_t getTotalBuildings(){
+    auto AdvancedPlayerOwnedRTSLayers::getTotalBuildings() -> int32_t{
 
 
 
@@ -235,14 +231,14 @@ this->rtsLayerList.remove(gameLayer);
 }
 
 
-    public: void removeBuilding(AllBinaryGameLayer* layerInterface){
+    auto AdvancedPlayerOwnedRTSLayers::removeBuilding(AllBinaryGameLayer* layerInterface) -> void{
 this->buildingList->add(layerInterface);
     
 
                         if(this->getBaseList()->remove(layerInterface))
                         
                                     {
-                                    this->rtsLayerList.remove(layerInterface);
+                                    this->rtsLayerList->remove(layerInterface);
     
 
                                     }
@@ -251,7 +247,7 @@ this->buildingList->add(layerInterface);
                         if(this->getFactoryList()->remove(layerInterface))
                         
                                     {
-                                    this->rtsLayerList.remove(layerInterface);
+                                    this->rtsLayerList->remove(layerInterface);
     
 
                                     }
@@ -260,7 +256,7 @@ this->buildingList->add(layerInterface);
                         if(this->getGarrisonList()->remove(layerInterface))
                         
                                     {
-                                    this->rtsLayerList.remove(layerInterface);
+                                    this->rtsLayerList->remove(layerInterface);
     
 
                                     }
@@ -269,7 +265,7 @@ this->buildingList->add(layerInterface);
                         if(this->getLabList()->remove(layerInterface))
                         
                                     {
-                                    this->rtsLayerList.remove(layerInterface);
+                                    this->rtsLayerList->remove(layerInterface);
     
 
                                     }
@@ -278,7 +274,7 @@ this->buildingList->add(layerInterface);
                         if(this->getHouseList()->remove(layerInterface))
                         
                                     {
-                                    this->rtsLayerList.remove(layerInterface);
+                                    this->rtsLayerList->remove(layerInterface);
     
 
                                     }
@@ -286,11 +282,11 @@ this->buildingList->add(layerInterface);
 }
 
 
-    public: std::string toString(){
+    auto AdvancedPlayerOwnedRTSLayers::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toString());
+stringBuffer->append(PlayerOwnedRTSLayers::toString());
     
 stringBuffer->append(" Bases: ");
     
@@ -329,7 +325,7 @@ stringBuffer->appendint(this->getUnitsList()->size());
 }
 
 
-    public: BasicArrayList* getBuildingList(){
+    auto AdvancedPlayerOwnedRTSLayers::getBuildingList() -> BasicArrayList*{
 
 
 
@@ -339,7 +335,6 @@ stringBuffer->appendint(this->getUnitsList()->size());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_CPP

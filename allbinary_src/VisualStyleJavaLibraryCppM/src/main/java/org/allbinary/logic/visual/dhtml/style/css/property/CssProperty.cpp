@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssProperty.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,17 +89,8 @@
         #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValues.h"
 #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyData.h"
 
-class CssProperty
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string propertyName;
-
-    private: CssPropertyValues* cssPropertyValues;
-
-public: CssProperty(std::string name){
+CssProperty::CssProperty(std::string name) : logUtil(LogUtil::getInstance()){
 this->propertyName= name;
     
 this->cssPropertyValues= new CssPropertyValues();
@@ -97,17 +98,17 @@ this->cssPropertyValues= new CssPropertyValues();
 }
 
 
-public: CssProperty(Node* node){
+CssProperty::CssProperty(Node* node) : logUtil(LogUtil::getInstance()){
 
     Node* propertyNode = DomSearchHelper::getNode(DomData::VALUE, node->getChildNodes());;
     
 this->propertyName= DomNodeHelper::getTextNodeValue(propertyNode);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->STYLE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
                         
                                     {
-                                    this->logUtil->putF("Name: " +this->getName(), this, "CssProperty()");
+                                    this->logUtil->putF(JavaString::valueOf("Name: ") +JavaString::valueOf(this->getName()), this, "CssProperty()");
     
 
                                     }
@@ -120,7 +121,7 @@ this->cssPropertyValues= new CssPropertyValues(propertyValuesNode);
 }
 
 
-    public: std::string getName(){
+    auto CssProperty::getName() -> std::string{
 
 
 
@@ -130,7 +131,7 @@ this->cssPropertyValues= new CssPropertyValues(propertyValuesNode);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto CssProperty::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -147,15 +148,15 @@ hashMap->put(CssPropertyData::getInstance()->NAME, this->propertyName);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto CssProperty::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("CssView HashMap: " +hashMap->toString(), this, "toXmlNode()");
+                                    this->logUtil->putF(JavaString::valueOf("CssView HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode()");
     
 
                                     }
@@ -174,7 +175,6 @@ node->appendChild(this->cssPropertyValues->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTY_CPP

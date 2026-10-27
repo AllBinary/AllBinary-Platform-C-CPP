@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOS_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
 
 
 
@@ -51,6 +54,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LinuxOS: public GenericOperatingSystem {
 
 public: LinuxOS();
@@ -63,3 +70,13 @@ public: LinuxOS();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+
+        #endif
+    

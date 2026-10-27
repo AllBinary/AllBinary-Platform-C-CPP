@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESImageProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLESImageProperties
-            : public Object
-         {
 
-    public: int32_t textureID =  -1;
+OpenGLESImageProperties::OpenGLESImageProperties() {
+        }
+        
 
-    public: float scaleX = 1.0;
 
-    public: float scaleY = 1.0;
-
-    public: float scaleX2 = 1.0;
-
-    public: float scaleY2 = 1.0;
-
-    public: int32_t angle= 0;
-
-    public: float redf = 1.0;
-
-    public: float greenf = 1.0;
-
-    public: float bluef = 1.0;
-
-    public: float alphaf = 1.0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_CPP

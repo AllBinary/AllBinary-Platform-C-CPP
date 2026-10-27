@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_OPENGLES_JOGL11_H
         #define ORG_ALLBINARY_OPENGLES_JOGL11_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,12 +34,8 @@
             #include "java/lang/String.h"
 
         
-#include <com/jogamp/opengl/GL.h>
-
-      
-#include <com/jogamp/opengl/GL2.h>
-
-      
+class GL;
+class GL2;
 
 
 
@@ -54,10 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/opengles/GL11.h"
-#include "org/allbinary/opengles/Buffer.h"
-#include "org/allbinary/opengles/FloatBuffer.h"
-#include "org/allbinary/opengles/IntBuffer.h"
-//JOGLEToKhronosGL11
+class Buffer;
+class FloatBuffer;
+class IntBuffer;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //JOGLEToKhronosGL11
 class JOGL11: public JOGL10, public javax::microedition::khronos::opengles::GL11 {
 
     private: GL2* gl11;
@@ -164,3 +169,28 @@ public: JOGL11(GL* gl, com::jogamp::opengl::GL2* gl2);
 
 
         #endif //ORG_ALLBINARY_OPENGLES_JOGL11_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_OPENGLES_JOGL11_H_COMPLETE)
+        #define ORG_ALLBINARY_OPENGLES_JOGL11_H_COMPLETE
+        #if __has_include(<com/jogamp/opengl/GL.h>)
+#include <com/jogamp/opengl/GL.h>
+#endif
+#if __has_include(<com/jogamp/opengl/GL2.h>)
+#include <com/jogamp/opengl/GL2.h>
+#endif
+#if __has_include("org/allbinary/opengles/GL11.h")
+#include "org/allbinary/opengles/GL11.h"
+#endif
+#if __has_include("org/allbinary/opengles/Buffer.h")
+#include "org/allbinary/opengles/Buffer.h"
+#endif
+#if __has_include("org/allbinary/opengles/FloatBuffer.h")
+#include "org/allbinary/opengles/FloatBuffer.h"
+#endif
+#if __has_include("org/allbinary/opengles/IntBuffer.h")
+#include "org/allbinary/opengles/IntBuffer.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_BOTTOMTOTOPIMAGEANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_BOTTOMTOTOPIMAGEANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/BottomToTopImageAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,9 +69,8 @@
         #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
 #include "org/allbinary/animation/image/BottomToTopImageAnimation.h"
 
-class BottomToTopImageAnimationFactory: public BaseImageAnimationFactory {
 
-public: BottomToTopImageAnimationFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getWidth(), image->getHeight(), 0, 0, animationBehaviorFactory){
+BottomToTopImageAnimationFactory::BottomToTopImageAnimationFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getWidth(), image->getHeight(), 0, 0, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,20 +82,19 @@ public: BottomToTopImageAnimationFactory(Image* image, AnimationBehaviorFactory*
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto BottomToTopImageAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
-    Image* scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Image* scaledImage = this->animationFactoryImageScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor->width, this->animationFactoryInitializationVisitor->height, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BottomToTopImageAnimation(scaledImage, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new BottomToTopImageAnimation(scaledImage, this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_BOTTOMTOTOPIMAGEANIMATIONFACTORY_CPP

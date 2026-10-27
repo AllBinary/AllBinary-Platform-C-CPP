@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_USERINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_USERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,23 +33,11 @@
 
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h>
-
-      
-#include <org/allbinary/business/user/role/UserRole.h>
-
-      
+class UserConfigurationInterface;
+class UserRole;
 #include <org/allbinary/data/tables/TableMappingInterface.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>
-
-      
+class WeblisketSessionInterface;
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
-
-      
 
 
 
@@ -63,6 +56,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class UserInterface: public TableMappingInterface, public ValidationInterface {
 
@@ -172,3 +169,28 @@ class UserInterface: public TableMappingInterface, public ValidationInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_USERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_USERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_USERINTERFACE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h>)
+#include <org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRole.h>)
+#include <org/allbinary/business/user/role/UserRole.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/TableMappingInterface.h>)
+#include <org/allbinary/data/tables/TableMappingInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationInterface.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,69 +72,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoInterface: public TableMappingInterface {
+//Interface - declared in the header
 
-    public: virtual std::string log() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void override(HashMap<Object*, Object*>* hashMap) = 0;
 
-    public: virtual std::string getName() = 0;
-
-    public: virtual void setStoreName(std::string value) = 0;
-
-    public: virtual std::string getStoreName() = 0;
-
-    public: virtual std::string getObjectFile() = 0;
-
-    public: virtual Object* getObject() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual AbPath* getTemplateFilePath() = 0;
-
-    public: virtual std::string getTemplateFile() = 0;
-
-    public: virtual std::string getTemplate() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual AbPath* getDataFilePath() = 0;
-
-    public: virtual std::string getDataFile() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual Document* getDataDocument() = 0;
-
-    public: virtual void setName(std::string value) = 0;
-
-    public: virtual void setObjectFile(std::string value) = 0;
-
-    public: virtual void setObject(Object anyType) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void setObjectConfigInterface(Object* transformInfoObjectConfigInterface) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual TransformInfoObjectConfigInterface* getObjectConfigInterface() = 0;
-
-    public: virtual void setTemplateFile(std::string value) = 0;
-
-    public: virtual void setTemplate(std::string value) = 0;
-
-    public: virtual void setDataFile(std::string value) = 0;
-
-    public: virtual void setData(std::string value) = 0;
-
-    public: virtual void setChild() = 0;
-
-    public: virtual bool isChild() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_CPP

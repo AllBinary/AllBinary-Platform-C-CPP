@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/db/InitDbHelperFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,15 +69,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h"
 
-class InitDbHelperFactory
-            : public Object
-         {
 
-    private: static inline const std::string CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
+InitDbHelperFactory::InitDbHelperFactory(){
+}
+
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface* abeClientInformation, DatabaseConnectionInfoInterface* databaseConnectionInfoInterface){
+    auto InitDbHelperFactory::getInstance(AbeClientInformationInterface* abeClientInformation, DatabaseConnectionInfoInterface* databaseConnectionInfoInterface) -> Object*{
 
     std::vector<Object*> params = std::vector<Object*>(1);;
     
@@ -94,7 +103,7 @@ params[0]= databaseConnectionInfoInterface;
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface* abeClientInformation){
+    auto InitDbHelperFactory::getInstance(AbeClientInformationInterface* abeClientInformation) -> Object*{
 
     Object* anyType = AbeFactory::getInstance()->getInstance(abeClientInformation, CLASSNAME, 
                             nullptr, 
@@ -109,11 +118,6 @@ params[0]= databaseConnectionInfoInterface;
 }
 
 
-private: InitDbHelperFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_CPP

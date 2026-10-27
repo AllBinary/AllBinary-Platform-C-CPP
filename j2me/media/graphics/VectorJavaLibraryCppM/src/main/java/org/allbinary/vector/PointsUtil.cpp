@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VECTOR_POINTSUTIL_CPP
+        #define ORG_ALLBINARY_VECTOR_POINTSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/vector/PointsUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,23 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PointsUtil
-            : public Object
-         {
 
-    private: static PointsUtil* instance() { static std::unique_ptr<PointsUtil> value(new PointsUtil()); return value.get(); }
+PointsUtil::PointsUtil() {
+        }
+        auto PointsUtil::instance_owner() -> PointsUtil* { static std::unique_ptr<PointsUtil> value(new PointsUtil()); return value.get(); }
+PointsUtil* PointsUtil::instance = PointsUtil::instance_owner();
 
-    public: static PointsUtil* getInstance(){
+    auto PointsUtil::getInstance() -> PointsUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointsUtil::instance();
+                        return PointsUtil::instance;
     
 }
 
 
-    public: std::vector<std::vector<std::vector<int32_t>>> adjustXY(std::vector<std::vector<std::vector<int32_t>>> points, int32_t x, int32_t y){
+    auto PointsUtil::adjustXY(std::vector<std::vector<std::vector<int32_t>>> points, int32_t x, int32_t y) -> std::vector<std::vector<std::vector<int32_t>>>{
 
     int32_t size = points.size();;
     
@@ -121,7 +131,7 @@ newPoints[index][index2][1]= 1000;
 }
 
 
-    public: std::vector<std::vector<int32_t>> adjust(std::vector<std::vector<int32_t>> points, int32_t both){
+    auto PointsUtil::adjust(std::vector<std::vector<int32_t>> points, int32_t both) -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -131,7 +141,7 @@ newPoints[index][index2][1]= 1000;
 }
 
 
-    public: std::vector<std::vector<int32_t>> adjust(std::vector<std::vector<int32_t>> points, int32_t x, int32_t y){
+    auto PointsUtil::adjust(std::vector<std::vector<int32_t>> points, int32_t x, int32_t y) -> std::vector<std::vector<int32_t>>{
 
     std::vector<std::vector<int32_t>> newPoints = std::vector<std::vector<int32_t>>(points.length, std::vector<int32_t>(2));;
     
@@ -172,7 +182,6 @@ newPoints[index2][1]= 1000;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VECTOR_POINTSUTIL_CPP

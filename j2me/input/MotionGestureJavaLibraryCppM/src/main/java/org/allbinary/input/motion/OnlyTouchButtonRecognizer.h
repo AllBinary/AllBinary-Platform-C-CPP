@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/input/motion/button/TouchButtonRecognizer.h>
-
-      
+class TouchButtonRecognizer;
 
 
 
@@ -52,6 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/MotionRecognizer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OnlyTouchButtonRecognizer: public MotionRecognizer {
 
     private: TouchButtonRecognizer* touchButtonRecognizer;
@@ -78,3 +85,16 @@ public: OnlyTouchButtonRecognizer();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H_COMPLETE
+        #if __has_include(<org/allbinary/input/motion/button/TouchButtonRecognizer.h>)
+#include <org/allbinary/input/motion/button/TouchButtonRecognizer.h>
+#endif
+#if __has_include("org/allbinary/input/motion/MotionRecognizer.h")
+#include "org/allbinary/input/motion/MotionRecognizer.h"
+#endif
+
+        #endif
+    

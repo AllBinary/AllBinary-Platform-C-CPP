@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_BASICWEIGHTSHIPPINGMODULE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_BASICWEIGHTSHIPPINGMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/modules/BasicWeightShippingModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,21 +68,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
-class BasicWeightShippingModule
-            : public Object
-        , public ShippingInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string name = "Basic Shipping (5 to 7 working days)";
-
-    private: const std::string description = "We will soon provide a variety of shipping methods.";
-
-public: BasicWeightShippingModule(){
+BasicWeightShippingModule::BasicWeightShippingModule() : commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: Money* getCost(OrderInterface* order){
+    auto BasicWeightShippingModule::getCost(OrderInterface* order) -> Money*{
 
     BasketInterface* basket = order->getBasket();;
     
@@ -94,7 +95,7 @@ money->add("3.50");
 }
 
 
-    public: std::string getDescription(){
+    auto BasicWeightShippingModule::getDescription() -> std::string{
 
 
 
@@ -104,7 +105,7 @@ money->add("3.50");
 }
 
 
-    public: std::string getName(){
+    auto BasicWeightShippingModule::getName() -> std::string{
 
 
 
@@ -114,7 +115,6 @@ money->add("3.50");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_BASICWEIGHTSHIPPINGMODULE_CPP

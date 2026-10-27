@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H
         #define ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +55,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LongData
-            : public Object
+            : public virtual Object
          {
 
-    public: static inline int32_t MAX_LONG_LENGTH = (int64_t(Long.MAX_VALUE)).toString().length();
+    public: static int32_t MAX_LONG_LENGTH;
 
 private: LongData();
 
@@ -64,3 +73,10 @@ private: LongData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_QUOTEHELPER_CPP
+        #define ADMIN_TAGHELPERS_QUOTEHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/QuoteHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -132,19 +142,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/BasicTable.h"
 
-class QuoteHelper: public BasicTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: Portion* portion;
-
-public: QuoteHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+QuoteHelper::QuoteHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
     std::string storeName = hashMap->get(StoreFrontData::getInstance()->NAME);;
     
@@ -172,7 +171,7 @@ this->portion= new Portion(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void emailUser(QuoteRequest* quoteRequest){
+    auto QuoteHelper::emailUser(QuoteRequest* quoteRequest) -> void{
 
     UserInterface* user = UserEntityFactory::getInstance()->getUser(quoteRequest->getUserName());;
     
@@ -207,7 +206,7 @@ userEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::QUOTEREQUEST, em
 
                 //@Throws(Exception.constructor)
             
-    private: void emailAdmins(QuoteRequest* quoteRequest){
+    auto QuoteHelper::emailAdmins(QuoteRequest* quoteRequest) -> void{
 
     std::string adminEmailSubject = "Quote Request";;
     
@@ -262,7 +261,7 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::QUOTEREQUES
 
                 //@Throws(Exception.constructor)
             
-    public: std::string email(){
+    auto QuoteHelper::email() -> std::string{
 
         try {
             
@@ -327,7 +326,7 @@ this->emailAdmins(quoteRequest);
                             
 
 
-                            throw new Exception("No Quote Request");
+                            throw Exception("No Quote Request");
                     
 
                         }
@@ -337,10 +336,10 @@ this->emailAdmins(quoteRequest);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "email", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "email", &e);
     
 
                                     }
@@ -356,17 +355,17 @@ this->emailAdmins(quoteRequest);
 }
 
 
-    public: std::string drop(){
+    auto QuoteHelper::drop() -> std::string{
 
         try {
             
     std::string success = QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->dropTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF(success, this, this->commonStrings.DROP);
+                                    this->logUtil->putF(success, this, this->commonStrings->DROP);
     
 
                                     }
@@ -385,10 +384,10 @@ this->emailAdmins(quoteRequest);
     std::string error = "Failed to drop QuoteRequest table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
     
 
                                     }
@@ -404,14 +403,14 @@ this->emailAdmins(quoteRequest);
 }
 
 
-    public: std::string create(){
+    auto QuoteHelper::create() -> std::string{
 
         try {
             
     std::string success = QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -433,10 +432,10 @@ this->emailAdmins(quoteRequest);
     std::string error = "Failed to create new QuoteRequest table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -452,7 +451,7 @@ this->emailAdmins(quoteRequest);
 }
 
 
-    public: std::string restore(){
+    auto QuoteHelper::restore() -> std::string{
 
         try {
             
@@ -462,7 +461,7 @@ this->emailAdmins(quoteRequest);
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance(), portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -484,10 +483,10 @@ this->emailAdmins(quoteRequest);
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -503,7 +502,7 @@ this->emailAdmins(quoteRequest);
 }
 
 
-    public: std::string backup(){
+    auto QuoteHelper::backup() -> std::string{
 
         try {
             
@@ -513,7 +512,7 @@ this->emailAdmins(quoteRequest);
     std::string result = AbSqlTableUtil::getInstance()->backupTable(QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -535,10 +534,10 @@ this->emailAdmins(quoteRequest);
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -554,7 +553,6 @@ this->emailAdmins(quoteRequest);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_QUOTEHELPER_CPP

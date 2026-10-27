@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTFILEHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTFILEHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/document/DomDocumentFileHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,13 +88,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/dom/document/DomDocumentHelper.h"
 
-class DomDocumentFileHelper
-            : public Object
-         {
+
+DomDocumentFileHelper::DomDocumentFileHelper(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static Document* createDocument(AbFile* xmlFile){
+    auto DomDocumentFileHelper::createDocument(AbFile* xmlFile) -> Document*{
 
         try {
             
@@ -109,7 +120,7 @@ class DomDocumentFileHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static void save(AbFile* file, Document* document){
+    auto DomDocumentFileHelper::save(AbFile* file, Document* document) -> void{
 
     AbDataOutputStream* dataOutputStream = 
                 null
@@ -130,7 +141,7 @@ class DomDocumentFileHelper
                         if(file->isFile())
                         
                                     {
-                                    file->delete();
+                                    file->delete_();
     
 
                                     }
@@ -166,11 +177,6 @@ dataOutputStream->flush();
 }
 
 
-private: DomDocumentFileHelper(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTFILEHELPER_CPP

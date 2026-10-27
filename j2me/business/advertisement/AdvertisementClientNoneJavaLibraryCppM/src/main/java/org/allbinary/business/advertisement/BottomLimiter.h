@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_BOTTOMLIMITER_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_BOTTOMLIMITER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/GameAdState.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
+class GameAdState;
+class DisplayInfoSingleton;
 
 
 
@@ -53,13 +54,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/advertisement/GameAdStateFactory.h"
+        class GameAdStateFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BottomLimiter
-            : public Object
+            : public virtual Object
          {
 
-    private: static BottomLimiter* instance() { static std::unique_ptr<BottomLimiter> value(new BottomLimiter()); return value.get(); }
+    private: static BottomLimiter* instance_owner();
+    private: static BottomLimiter* instance;
 
     public: static BottomLimiter* getInstance();
 
@@ -87,3 +93,19 @@ private: BottomLimiter();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_BOTTOMLIMITER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_BOTTOMLIMITER_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_BOTTOMLIMITER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/GameAdState.h>)
+#include <org/allbinary/game/GameAdState.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include("org/allbinary/business/advertisement/GameAdStateFactory.h")
+#include "org/allbinary/business/advertisement/GameAdStateFactory.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_PARENTINVENTORYTAGHELPER_CPP
+        #define ADMIN_TAGS_PARENTINVENTORYTAGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/ParentInventoryTagHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,25 +64,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/HelperTag.h"
 
-class ParentInventoryTagHelper
-            : public Object
-         {
 
-    private: static ParentInventoryTagHelper* instance() { static std::unique_ptr<ParentInventoryTagHelper> value(new ParentInventoryTagHelper()); return value.get(); }
+ParentInventoryTagHelper::ParentInventoryTagHelper() {
+        }
+        auto ParentInventoryTagHelper::instance_owner() -> ParentInventoryTagHelper* { static std::unique_ptr<ParentInventoryTagHelper> value(new ParentInventoryTagHelper()); return value.get(); }
+ParentInventoryTagHelper* ParentInventoryTagHelper::instance = ParentInventoryTagHelper::instance_owner();
 
-    public: static ParentInventoryTagHelper* getInstance(){
+    auto ParentInventoryTagHelper::getInstance() -> ParentInventoryTagHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ParentInventoryTagHelper::instance();
+                        return ParentInventoryTagHelper::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void isValid(Object* tagClass, Tag* parentTag){
+    auto ParentInventoryTagHelper::isValid(Object* tagClass, Tag* parentTag) -> void{
 
                         if(parentTag == 
                                     nullptr
@@ -82,7 +92,7 @@ class ParentInventoryTagHelper
                                     
 
 
-                            throw new Exception("Must have parent tag.");
+                            throw Exception("Must have parent tag.");
                     
 
                                     }
@@ -107,7 +117,7 @@ stringBuffer->append(parentTag->getClass()->getName());
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 
                                     }
@@ -115,7 +125,6 @@ stringBuffer->append(parentTag->getClass()->getName());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_PARENTINVENTORYTAGHELPER_CPP

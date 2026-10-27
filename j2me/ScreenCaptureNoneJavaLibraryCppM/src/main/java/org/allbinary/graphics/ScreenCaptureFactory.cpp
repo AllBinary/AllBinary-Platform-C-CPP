@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_SCREENCAPTUREFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_SCREENCAPTUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/ScreenCaptureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +57,12 @@
         #include "org/allbinary/graphics/ScreenCaptureNoneFactory.h"
 #include "org/allbinary/graphics/ScreenCapture.h"
 
-class ScreenCaptureFactory
-            : public Object
-         {
 
-    private: static inline ScreenCapture* instance = ScreenCaptureNoneFactory::getInstance();
+ScreenCaptureFactory::ScreenCaptureFactory() {
+        }
+        ScreenCapture* ScreenCaptureFactory::instance = ScreenCaptureNoneFactory::getInstance();
 
-    public: static ScreenCapture* getInstance(){
+    auto ScreenCaptureFactory::getInstance() -> ScreenCapture*{
 
 
 
@@ -63,7 +72,6 @@ class ScreenCaptureFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_SCREENCAPTUREFACTORY_CPP

@@ -7,6 +7,11 @@
         #ifndef ORG_PLATFORM_OPENGLRESOURCES_H
         #define ORG_PLATFORM_OPENGLRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -20,8 +25,6 @@
             #include "java/lang/RuntimeException.h"
         
 #include <java/io/InputStream.h>
-
-      
 
 
 
@@ -41,14 +44,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLResources* instance() { static std::unique_ptr<OpenGLResources> value(new OpenGLResources()); return value.get(); }
+    private: static OpenGLResources* instance_owner();
+    private: static OpenGLResources* instance;
 
     public: static OpenGLResources* getInstance();
 
+
+            
+    public: OpenGLResources();
+        
     public: void init();
 
     public: bool isExcluded(std::string name);
@@ -75,3 +87,13 @@ class OpenGLResources
 
 
         #endif //ORG_PLATFORM_OPENGLRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_PLATFORM_OPENGLRESOURCES_H_COMPLETE)
+        #define ORG_PLATFORM_OPENGLRESOURCES_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+
+        #endif
+    

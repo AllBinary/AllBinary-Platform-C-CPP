@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFODATA_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFODATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,19 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PathFindingNodeCostInfoData
-            : public Object
+            : public virtual Object
          {
 
-    private: static PathFindingNodeCostInfoData* instance() { static std::unique_ptr<PathFindingNodeCostInfoData> value(new PathFindingNodeCostInfoData()); return value.get(); }
+    private: static PathFindingNodeCostInfoData* instance_owner();
+    private: static PathFindingNodeCostInfoData* instance;
 
     public: static PathFindingNodeCostInfoData* getInstance();
 
 private: PathFindingNodeCostInfoData();
 
-    public: int32_t MAX_TOTAL_COST = Integer.MAX_VALUE;
+    public: int32_t MAX_TOTAL_COST;
 
-    public: int32_t MAX_NODE_COST = Integer.MAX_VALUE /10000;
+    public: int32_t MAX_NODE_COST;
 
 };
 
@@ -70,3 +80,10 @@ private: PathFindingNodeCostInfoData();
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFODATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFODATA_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFODATA_H_COMPLETE
+        
+        #endif
+    

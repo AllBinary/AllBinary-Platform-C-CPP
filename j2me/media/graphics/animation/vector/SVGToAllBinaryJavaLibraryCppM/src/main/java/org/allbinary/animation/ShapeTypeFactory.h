@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,16 +52,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/ShapeType.h"
+        class ShapeType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShapeTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ShapeTypeFactory* instance() { static std::unique_ptr<ShapeTypeFactory> value(new ShapeTypeFactory()); return value.get(); }
+    private: static ShapeTypeFactory* instance_owner();
+    private: static ShapeTypeFactory* instance;
 
     public: static ShapeTypeFactory* getInstance();
 
+
+            
+    public: ShapeTypeFactory();
+        
     public: const std::string KEY_LINE = "line";
 
     public: const std::string KEY_CIRCLE = "circle";
@@ -65,11 +79,11 @@ class ShapeTypeFactory
 
     public: const std::string KEY_RECT = "rect";
 
-    public: ShapeType* LINE = new ShapeType(KEY_LINE);
+    public: ShapeType* LINE;
 
-    public: ShapeType* CIRCLE = new ShapeType(KEY_CIRCLE);
+    public: ShapeType* CIRCLE;
 
-    public: ShapeType* RECTANGLE = new ShapeType(KEY_RECTANGLE);
+    public: ShapeType* RECTANGLE;
 
 };
 
@@ -77,3 +91,13 @@ class ShapeTypeFactory
 
 
         #endif //ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/animation/ShapeType.h")
+#include "org/allbinary/animation/ShapeType.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEFACTORY_CPP
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ai/ArtificialIntelligenceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,22 +61,21 @@
         #include "org/allbinary/ai/ArtificialIntelligenceFactoryInterface.h"
 #include "org/allbinary/ai/ArtificialIntelligence.h"
 
-class ArtificialIntelligenceFactory
-            : public Object
-        , public ArtificialIntelligenceFactoryInterface {
 
+ArtificialIntelligenceFactory::ArtificialIntelligenceFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligence* getInstance(Object* anyType){
+    auto ArtificialIntelligenceFactory::getInstance(Object* anyType) -> ArtificialIntelligence*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEFACTORY_CPP

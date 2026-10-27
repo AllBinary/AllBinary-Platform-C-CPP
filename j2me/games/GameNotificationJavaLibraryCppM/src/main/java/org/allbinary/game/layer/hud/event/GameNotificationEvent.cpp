@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENT_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,17 +69,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameNotificationEvent: public AllBinaryEventObject {
 
-    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: int32_t seconds;
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
-
-    private: bool removeable;
-
-public: GameNotificationEvent(Object* anyType, std::string string, int32_t seconds, BasicColor* basicColor, bool permanent) : AllBinaryEventObject(anyType){
+GameNotificationEvent::GameNotificationEvent(Object* anyType, std::string string, int32_t seconds, BasicColor* basicColor, bool permanent) : AllBinaryEventObject(anyType), string(StringUtil::getInstance()->EMPTY_STRING), basicColor(BasicColorFactory::getInstance()->BLACK){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,7 +88,7 @@ this->removeable= permanent;
 }
 
 
-    public: std::string getString(){
+    auto GameNotificationEvent::getString() -> std::string{
 
 
 
@@ -97,7 +98,7 @@ this->removeable= permanent;
 }
 
 
-    public: int32_t getSeconds(){
+    auto GameNotificationEvent::getSeconds() -> int32_t{
 
 
 
@@ -107,7 +108,7 @@ this->removeable= permanent;
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto GameNotificationEvent::getBasicColorP() -> BasicColor*{
 
 
 
@@ -117,7 +118,7 @@ this->removeable= permanent;
 }
 
 
-    public: bool getPermanent(){
+    auto GameNotificationEvent::getPermanent() -> bool{
 
 
 
@@ -127,19 +128,18 @@ this->removeable= permanent;
 }
 
 
-    public: void setString(std::string string){
+    auto GameNotificationEvent::setString(std::string string) -> void{
 this->string= string;
     
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto GameNotificationEvent::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/permutations/OrderedObjectArrayPermutationUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,66 +70,24 @@
         #include "org/allbinary/logic/math/permutations/ComparableObject.h"
 #include "org/allbinary/logic/math/permutations/ObjectPermutationVisitor.h"
 
-class OrderedObjectArrayPermutationUtil
-            : public Object
-         {
+auto OrderedObjectArrayPermutationUtil::instance_owner() -> OrderedObjectArrayPermutationUtil* { static std::unique_ptr<OrderedObjectArrayPermutationUtil> value(new OrderedObjectArrayPermutationUtil()); return value.get(); }
+OrderedObjectArrayPermutationUtil* OrderedObjectArrayPermutationUtil::instance = OrderedObjectArrayPermutationUtil::instance_owner();
 
-    private: static OrderedObjectArrayPermutationUtil* instance() { static std::unique_ptr<OrderedObjectArrayPermutationUtil> value(new OrderedObjectArrayPermutationUtil()); return value.get(); }
-
-    public: static OrderedObjectArrayPermutationUtil* getInstance(){
+    auto OrderedObjectArrayPermutationUtil::getInstance() -> OrderedObjectArrayPermutationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrderedObjectArrayPermutationUtil::instance();
+                        return OrderedObjectArrayPermutationUtil::instance;
     
 }
 
 
-    public: static void main(std::vector<std::string> args){
-
-    int32_t TOTAL = 7;;
-    
-
-    std::vector<Object*> data = std::vector<Object*>(TOTAL);;
-    
-
-
-
-
-                        for (
-    int32_t i = 0;i < TOTAL; i++)
-        {
-data[i]= new ComparableObject();
-    
-}
-
-Arrays::sort(data);
-    
-
-    ObjectPermutationVisitor* permutationVisitor = new ObjectPermutationVisitor(data);;
-    
-
-    std::string ORIGINAL_DATA_LABEL = "Original Data: ";;
-    
-System.out.print(ORIGINAL_DATA_LABEL);
-    
-permutationVisitor->visit(data);
-    
-OrderedObjectArrayPermutationUtil::getInstance()->generate(data, permutationVisitor);
-    
+OrderedObjectArrayPermutationUtil::OrderedObjectArrayPermutationUtil(){
 }
 
 
-    private: const std::string TOTAL_ITERATIONS_TABLE = "Total Iterations: ";
-
-    private: const std::string FINISHED = "\nFINISHED";
-
-private: OrderedObjectArrayPermutationUtil(){
-}
-
-
-    public: void getNext(std::vector<Object*> data){
+    auto OrderedObjectArrayPermutationUtil::getNext(std::vector<Object*> data) -> void{
 
     int32_t length = data.size();;
     
@@ -166,7 +134,7 @@ j--;
 }
 
 
-    public: void swap(std::vector<Object*> data, int32_t a, int32_t b){
+    auto OrderedObjectArrayPermutationUtil::swap(std::vector<Object*> data, int32_t a, int32_t b) -> void{
 
     Object* temp = data[a];;
     
@@ -177,7 +145,7 @@ data[b]= temp;
 }
 
 
-    public: int64_t factorial(int32_t dataLength){
+    auto OrderedObjectArrayPermutationUtil::factorial(int32_t dataLength) -> int64_t{
 
     int64_t temp = 1;;
     
@@ -208,7 +176,7 @@ temp *= i;
 }
 
 
-    public: void generate(std::vector<Object*> data, Visitor* visitor){
+    auto OrderedObjectArrayPermutationUtil::generate(std::vector<Object*> data, Visitor* visitor) -> void{
 
     int64_t iterations = this->factorial(data.size());;
     
@@ -234,7 +202,41 @@ System.out.println(this->FINISHED);
 }
 
 
-};
+    auto OrderedObjectArrayPermutationUtil::main(std::vector<std::string> args) -> void{
 
-            
+    int32_t TOTAL = 7;;
+    
 
+    std::vector<Object*> data = std::vector<Object*>(TOTAL);;
+    
+
+
+
+
+                        for (
+    int32_t i = 0;i < TOTAL; i++)
+        {
+data[i]= new ComparableObject();
+    
+}
+
+Arrays::sort(data);
+    
+
+    ObjectPermutationVisitor* permutationVisitor = new ObjectPermutationVisitor(data);;
+    
+
+    std::string ORIGINAL_DATA_LABEL = "Original Data: ";;
+    
+System.out.print(ORIGINAL_DATA_LABEL);
+    
+permutationVisitor->visit(data);
+    
+OrderedObjectArrayPermutationUtil::getInstance()->generate(data, permutationVisitor);
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMER_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/BasicTransformer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -102,15 +112,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/AbTransformer.h"
 
-class BasicTransformer: public AbTransformer {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StreamUtil* streamUtil = StreamUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation;
-
-public: BasicTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : AbTransformer(transformInfoInterface){
+BasicTransformer::BasicTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : AbTransformer(transformInfoInterface), logUtil(LogUtil::getInstance()), streamUtil(StreamUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -126,7 +129,7 @@ this->setTemplateAsInputStream();
 
                 //@Throws(Exception.constructor)
             
-    private: void setEncryptedTemplateFileAsInputStream(AbFile* file){
+    auto BasicTransformer::setEncryptedTemplateFileAsInputStream(AbFile* file) -> void{
 
     ByteArrayOutputStream* outputStream = 
                 null
@@ -152,12 +155,12 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputSt
     std::vector<int8_t> decrypted = abCrypt->decrypt(outputStream->toByteArray());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil->putF("Decrypted Template: \n" +
+                                    this->logUtil->putF(JavaString::valueOf("Decrypted Template: \n") +JavaString::valueOf(
                                     //Otherwise - right - ObjectCreationExpr
-, this, "setEncryptedTemplateFileAsInputStream(file)");
+), this, "setEncryptedTemplateFileAsInputStream(file)");
     
 
                                     }
@@ -171,7 +174,7 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformIn
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -210,7 +213,7 @@ this->streamUtil->close(inputStream);
 
                 //@Throws(Exception.constructor)
             
-    private: void setEncryptedTemplateAsInputStream(){
+    auto BasicTransformer::setEncryptedTemplateAsInputStream() -> void{
 
     ByteArrayOutputStream* outputStream = 
                 null
@@ -236,10 +239,10 @@ outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputSt
     std::vector<int8_t> decrypted = abCrypt->decrypt(outputStream->toByteArray());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil->putF("Decrypted Template: \n" +decrypted.toString(), this, "setEncryptedTemplateAsInputStream()");
+                                    this->logUtil->putF(JavaString::valueOf("Decrypted Template: \n") +JavaString::valueOf(decrypted.toString()), this, "setEncryptedTemplateAsInputStream()");
     
 
                                     }
@@ -253,10 +256,10 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new BasicUriResolver(TransformIn
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to set with template: " +this->getTransformInfoInterface()->getTemplateFilePath(), this, "setEncryptedTemplateFileAsInputStream()", &e);
+                                    this->logUtil->put(JavaString::valueOf("Failed to set with template: ") +JavaString::valueOf(this->getTransformInfoInterface()->getTemplateFilePath()), this, "setEncryptedTemplateFileAsInputStream()", &e);
     
 
                                     }
@@ -281,7 +284,7 @@ this->streamUtil->close(inputStream);
 
                 //@Throws(Exception.constructor)
             
-    private: void setTemplateAsInputStream(){
+    auto BasicTransformer::setTemplateAsInputStream() -> void{
 
     AbFileInputStream* inputStream = 
                 null
@@ -295,7 +298,7 @@ this->streamUtil->close(inputStream);
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -322,7 +325,7 @@ this->streamUtil->close(inputStream);
     std::string filePath = pathUtil->getWithoutExtensionWithAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -347,7 +350,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
     AbFile* encFile = AbFile::createAbFile(stringBuffer->toString());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -356,7 +359,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     stringBuffer= new StringMaker();
@@ -394,7 +397,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()"
     AbFile* file = AbFile::createAbFileFromAbPath(this->getTransformInfoInterface()->getTemplateFilePath());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->getTransformInfoInterface()->log(), this, "setTemplateAsInputStream()");
@@ -403,10 +406,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "setTemplateAsInputStream()"
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil->putF("Template File isFile=" +file->isFile(), this, "setTemplateAsInputStream()");
+                                    this->logUtil->putF(JavaString::valueOf("Template File isFile=") +JavaString::valueOf(file->isFile()), this, "setTemplateAsInputStream()");
     
 
                                     }
@@ -422,10 +425,10 @@ outputStream= new ByteArrayOutputStream();
 outputStream= dynamic_cast<ByteArrayOutputStream*>(this->streamUtil->get(inputStream, outputStream, std::vector<int8_t>(16384)));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
-                                    this->logUtil->putF("Template: " +outputStream->toString(), this, "getTemplateAsInputStream()");
+                                    this->logUtil->putF(JavaString::valueOf("Template: ") +JavaString::valueOf(outputStream->toString()), this, "getTemplateAsInputStream()");
     
 
                                     }
@@ -481,7 +484,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
                             
 
 
-                            throw new Exception("View Template File Type Is Not Recognized: " +this->getTransformInfoInterface()->getTemplateFilePath());
+                            throw Exception(JavaString::valueOf("View Template File Type Is Not Recognized: ") +JavaString::valueOf(this->getTransformInfoInterface()->getTemplateFilePath()));
                     
 
                         }
@@ -500,7 +503,7 @@ stringBuffer->append(transformInfoTemplateData->ENCRYPTED_EXTENSION);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put("Failed to get Template Data", this, "setTemplateAsInputStream()", &e);
@@ -526,12 +529,11 @@ this->streamUtil->close(inputStream);
 
 
 
-                            throw new Exception("Error setTemplateAsInputStream()");
+                            throw Exception("Error setTemplateAsInputStream()");
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMER_CPP

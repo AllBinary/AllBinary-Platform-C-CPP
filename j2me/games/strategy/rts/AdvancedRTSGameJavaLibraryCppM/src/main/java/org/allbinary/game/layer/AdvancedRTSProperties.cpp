@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AdvancedRTSProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
-class AdvancedRTSProperties
-            : public Object
-         {
 
-    public: static AdvancedRTSProperties* createPropertiesSimulated(){
+    auto AdvancedRTSProperties::createPropertiesSimulated() -> AdvancedRTSProperties*{
 
 
 
@@ -84,25 +91,17 @@ class AdvancedRTSProperties
 }
 
 
-    public: static AdvancedRTSProperties* createProperties(){
+    auto AdvancedRTSProperties::createProperties() -> AdvancedRTSProperties*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdvancedRTSProperties(ShakeAnimationListenerFactory::getInstance(), AllBinaryVibration::getInstance(), GameConfigurationCentral::getInstance()->VIBRATION.getValue()->intValue() *100, new WaypointBehaviorBase());
+                        return new AdvancedRTSProperties(ShakeAnimationListenerFactory::getInstance(), AllBinaryVibration::getInstance(), GameConfigurationCentral::getInstance()->VIBRATION->getValue()->intValue() *100, new WaypointBehaviorBase());
     
 }
 
 
-    public: ShakeAnimationListener* shakeListener;
-
-    public: AllBinaryVibrationME* vibration;
-
-    public: int32_t duration;
-
-    public: TickableInterface* waypointBehaviorBase;
-
-public: AdvancedRTSProperties(ShakeAnimationListener* shakeListener, AllBinaryVibrationME* vibration, int32_t duration, TickableInterface* waypointBehaviorBase){
+AdvancedRTSProperties::AdvancedRTSProperties(ShakeAnimationListener* shakeListener, AllBinaryVibrationME* vibration, int32_t duration, TickableInterface* waypointBehaviorBase){
 this->shakeListener= shakeListener;
     
 this->vibration= vibration;
@@ -114,7 +113,6 @@ this->waypointBehaviorBase= waypointBehaviorBase;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPROPERTIES_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_H
         #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/NullUtil.h>
 
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
 
 
 
@@ -56,11 +55,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/terrain/BasicTerrainInfo.h"
+        class BasicTerrainInfo;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TerrainEvent: public AllBinaryEventObject {
 
-    private: BasicTerrainInfo* basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
+    private: BasicTerrainInfo* basicTerrainInfo;
 
 public: TerrainEvent(Object* basicTerrainInfo);
 
@@ -78,3 +81,20 @@ public: TerrainEvent(Object* basicTerrainInfo);
 
 
         #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_H_COMPLETE
+        
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include("org/allbinary/game/terrain/BasicTerrainInfo.h")
+#include "org/allbinary/game/terrain/BasicTerrainInfo.h"
+#endif
+
+        #endif
+    

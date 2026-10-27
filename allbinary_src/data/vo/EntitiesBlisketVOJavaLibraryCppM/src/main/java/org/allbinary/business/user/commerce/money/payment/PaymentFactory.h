@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/servlet/ServletRequest.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ServletRequest;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -58,11 +57,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/Payment.h"
-#include "org/allbinary/business/user/commerce/money/payment/PaymentInterface.h"
+        class Payment;
+class PaymentInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentFactory
-            : public Object
+            : public virtual Object
          {
 
     public: static PaymentInterface* getInstance(ServletRequest* request);
@@ -75,3 +78,25 @@ private: PaymentFactory();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_H_COMPLETE
+        #if __has_include(<javax/servlet/ServletRequest.h>)
+#include <javax/servlet/ServletRequest.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/Payment.h")
+#include "org/allbinary/business/user/commerce/money/payment/Payment.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/PaymentInterface.h")
+#include "org/allbinary/business/user/commerce/money/payment/PaymentInterface.h"
+#endif
+
+        #endif
+    

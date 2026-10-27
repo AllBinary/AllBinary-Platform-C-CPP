@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLSURFACECHANGEDINTERFACE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLSURFACECHANGEDINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,13 +44,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLSurfaceChangedInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void set(GL* gl) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLSURFACECHANGEDINTERFACE_CPP

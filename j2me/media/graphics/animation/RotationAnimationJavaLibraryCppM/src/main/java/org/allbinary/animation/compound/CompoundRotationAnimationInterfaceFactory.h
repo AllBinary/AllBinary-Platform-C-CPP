@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATIONINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,21 +34,11 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
-#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/animation/RotationAnimation.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
+class Animation;
+class AnimationBehaviorFactory;
+class AnimationInterfaceFactoryInterface;
+class RotationAnimation;
+class ForcedLogUtil;
 
 
 
@@ -63,15 +58,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
-#include "org/allbinary/animation/compound/CompoundRotationAnimation.h"
+class CompoundRotationAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompoundRotationAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
 
 public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    protected: std::vector<Animation*> createArray(int32_t size);
+    /*protected*/ public: std::vector<Animation*> createArray(int32_t size);
 
-    protected: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray);
+    /*protected*/ public: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray);
 
 };
 
@@ -79,3 +78,31 @@ public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterface
 
 
         #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATIONINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATIONINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATIONINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/animation/RotationAnimation.h>)
+#include <org/allbinary/animation/RotationAnimation.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h")
+#include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/compound/CompoundRotationAnimation.h")
+#include "org/allbinary/animation/compound/CompoundRotationAnimation.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -40,14 +45,8 @@
             #include "java/lang/System.h"
         
 #include <java/lang/reflect/Constructor.h>
-
-      
 #include <java/lang/reflect/Method.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -66,10 +65,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/loader/NativeLibraryClassLoader.h"
+        class NativeLibraryClassLoader;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NativeLibraryHelperWrapper
-            : public Object
+            : public virtual Object
          {
 
     private: std::string libraryName;
@@ -98,3 +101,22 @@ public: NativeLibraryHelperWrapper(std::string libraryName);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Constructor.h>)
+#include <java/lang/reflect/Constructor.h>
+#endif
+#if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/system/loader/NativeLibraryClassLoader.h")
+#include "org/allbinary/logic/system/loader/NativeLibraryClassLoader.h"
+#endif
+
+        #endif
+    

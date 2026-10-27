@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class NullUtil;
+class LogUtil;
+class SmallIntegerSingletonFactory;
+class StringMaker;
+class CommonStrings;
 
 
 
@@ -64,29 +59,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/Input.h"
+        class Input;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static InputFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     public: const std::string KEY_CODE_LABEL = "KeyCode: ";
 
     public: const std::string DEVICE_ID_LABEL = "DeviceId: ";
 
-    public: const int32_t MAX = SmallIntegerSingletonFactory::getInstance()->getMin();
+    public: const int32_t MAX;
 
-    protected: const std::vector<Input*> inputIntegerArray = std::vector<Input*>(this->MAX);
+    /*protected*/ public: std::vector<Input*> inputIntegerArray;
 
-    public: Input* NO_INPUT = new Input(0, this->commonStrings->UNKNOWN);
+    public: Input* NO_INPUT;
 
 private: InputFactory();
 
@@ -100,3 +99,28 @@ private: InputFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/input/Input.h")
+#include "org/allbinary/game/input/Input.h"
+#endif
+
+        #endif
+    

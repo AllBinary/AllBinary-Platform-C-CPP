@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONCENTRAL_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONCENTRAL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,39 +38,17 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/game/configuration/persistance/GameConfigurationPersistanceSingleton.h>
-
-      
-#include <org/allbinary/game/configuration/persistance/KeyValuePersistance.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class GameConfigurationPersistanceSingleton;
+class KeyValuePersistance;
+class NullUtil;
+class LogUtil;
+class SmallIntegerSingletonFactory;
+class StringMaker;
+class AbeClientInformationInterface;
+class CommonSeps;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicArrayList;
 
 
 
@@ -84,17 +67,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/GameConfiguration.h"
+        class GameConfiguration;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameConfigurationCentral
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* SINGLETON;
 
     public: static GameConfigurationCentral* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     public: GameConfiguration* SCALE;
 
@@ -144,3 +131,46 @@ private: GameConfigurationCentral();
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONCENTRAL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONCENTRAL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONCENTRAL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/persistance/GameConfigurationPersistanceSingleton.h>)
+#include <org/allbinary/game/configuration/persistance/GameConfigurationPersistanceSingleton.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/persistance/KeyValuePersistance.h>)
+#include <org/allbinary/game/configuration/persistance/KeyValuePersistance.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/configuration/GameConfiguration.h")
+#include "org/allbinary/game/configuration/GameConfiguration.h"
+#endif
+
+        #endif
+    

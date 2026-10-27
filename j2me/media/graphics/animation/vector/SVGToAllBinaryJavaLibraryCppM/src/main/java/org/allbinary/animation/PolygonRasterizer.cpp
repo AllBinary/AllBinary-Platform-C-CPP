@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_POLYGONRASTERIZER_CPP
+        #define ORG_ALLBINARY_ANIMATION_POLYGONRASTERIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/PolygonRasterizer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,23 +45,23 @@
         #include "org/allbinary/animation/PathParser.h"
 #include "org/allbinary/animation/FixedPoint.h"
 
-class PolygonRasterizer
-            : public Object
-         {
 
-    private: static PolygonRasterizer* instance() { static std::unique_ptr<PolygonRasterizer> value(new PolygonRasterizer()); return value.get(); }
+PolygonRasterizer::PolygonRasterizer() {
+        }
+        auto PolygonRasterizer::instance_owner() -> PolygonRasterizer* { static std::unique_ptr<PolygonRasterizer> value(new PolygonRasterizer()); return value.get(); }
+PolygonRasterizer* PolygonRasterizer::instance = PolygonRasterizer::instance_owner();
 
-    public: static PolygonRasterizer* getInstance(){
+    auto PolygonRasterizer::getInstance() -> PolygonRasterizer*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PolygonRasterizer::instance();
+                        return PolygonRasterizer::instance;
     
 }
 
 
-    public: std::vector<int32_t> getPixelBuffer(std::string svgPath, std::vector<int32_t> pathX, std::vector<int32_t> pathY, std::vector<int32_t> pixelBuffer, int32_t width, int32_t height){
+    auto PolygonRasterizer::getPixelBuffer(std::string svgPath, std::vector<int32_t> pathX, std::vector<int32_t> pathY, std::vector<int32_t> pixelBuffer, int32_t width, int32_t height) -> std::vector<int32_t>{
 
     int32_t pointCount = PathParser::parsePath(svgPath, pathX, pathY, pathX.size());;
     
@@ -77,7 +87,7 @@ PolygonRasterizer::getInstance()->fillPolygon(pathX, pathY, pointCount, pixelBuf
 }
 
 
-    public: void fillPolygon(std::vector<int32_t> polyX, std::vector<int32_t> polyY, int32_t numPoints, std::vector<int32_t> buffer, int32_t width, int32_t height, int32_t colorRGB){
+    auto PolygonRasterizer::fillPolygon(std::vector<int32_t> polyX, std::vector<int32_t> polyY, int32_t numPoints, std::vector<int32_t> buffer, int32_t width, int32_t height, int32_t colorRGB) -> void{
 
                         if(numPoints < 3)
                         
@@ -256,7 +266,7 @@ buffer[rowOffset +pixelX]= colorRGB;
 }
 
 
-    public: void main(std::vector<std::string> args){
+    auto PolygonRasterizer::main(std::vector<std::string> args) -> void{
 
     int32_t width = 100;;
     
@@ -280,7 +290,6 @@ PolygonRasterizer::getInstance()->getPixelBuffer(svgPath, pathX, pathY, pixelBuf
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_POLYGONRASTERIZER_CPP

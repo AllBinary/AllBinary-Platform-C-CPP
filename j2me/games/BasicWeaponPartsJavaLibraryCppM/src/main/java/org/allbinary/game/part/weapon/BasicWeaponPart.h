@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,42 +36,18 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/NullAnimationFactory.h>
-
-      
-#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
-
-      
+class Graphics;
+class Animation;
+class NullAnimationFactory;
+class WeaponProperties;
 #include <org/allbinary/game/part/PartInterface.h>
-
-      
-#include <org/allbinary/game/score/NoScoreable.h>
-
-      
-#include <org/allbinary/game/score/ScoreableInterface.h>
-
-      
-#include <org/allbinary/graphics/RelativeRelationship.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/view/ViewPositionBase.h>
-
-      
+class NoScoreable;
+class ScoreableInterface;
+class RelativeRelationship;
+class AllBinaryLayer;
+class AllBinaryLayerManager;
+class CommonStrings;
+class ViewPositionBase;
 
 
 
@@ -87,23 +68,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/weapon/SalvoInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicWeaponPart
-            : public Object
+            : public virtual Object
         , public PartInterface, public SalvoInterface {
 
     public: static BasicWeaponPart* createBasicWeaponPart(Animation* animationInterface);
 
-    public: static inline BasicWeaponPart* NULL_BASIC_WEAPON_PART = BasicWeaponPart::createBasicWeaponPart(NullAnimationFactory::getFactoryInstance()->getInstance(0));
+    public: static BasicWeaponPart* NULL_BASIC_WEAPON_PART;
 
-    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
+    private: Animation* animationInterface;
 
-    private: AllBinaryLayer* ownerLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* ownerLayerInterface;
 
-    private: WeaponProperties* weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
+    private: WeaponProperties* weaponProperties;
 
-    private: ScoreableInterface* scoreableInterface = NoScoreable::getInstance();
+    private: ScoreableInterface* scoreableInterface;
 
-    protected: RelativeRelationship* relativeRelationship = RelativeRelationship::NULL_RELATIVE_RELATIONSHIP;
+    /*protected*/ public: RelativeRelationship* relativeRelationship;
 
 public: BasicWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship);
 
@@ -139,3 +124,49 @@ public: BasicWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLay
 
 
         #endif //ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/NullAnimationFactory.h>)
+#include <org/allbinary/animation/NullAnimationFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/weapon/WeaponProperties.h>)
+#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/part/PartInterface.h>)
+#include <org/allbinary/game/part/PartInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/score/NoScoreable.h>)
+#include <org/allbinary/game/score/NoScoreable.h>
+#endif
+#if __has_include(<org/allbinary/game/score/ScoreableInterface.h>)
+#include <org/allbinary/game/score/ScoreableInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/RelativeRelationship.h>)
+#include <org/allbinary/graphics/RelativeRelationship.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPositionBase.h>)
+#include <org/allbinary/view/ViewPositionBase.h>
+#endif
+#if __has_include("org/allbinary/game/part/weapon/SalvoInterface.h")
+#include "org/allbinary/game/part/weapon/SalvoInterface.h"
+#endif
+
+        #endif
+    

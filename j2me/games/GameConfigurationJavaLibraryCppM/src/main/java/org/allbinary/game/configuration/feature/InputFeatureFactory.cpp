@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INPUTFEATUREFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INPUTFEATUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/InputFeatureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,37 +57,24 @@
         #include "org/allbinary/game/configuration/feature/InputFeature.h"
 #include "org/allbinary/game/configuration/feature/Features.h"
 
-class InputFeatureFactory
-            : public Object
-         {
+auto InputFeatureFactory::instance_owner() -> InputFeatureFactory* { static std::unique_ptr<InputFeatureFactory> value(new InputFeatureFactory()); return value.get(); }
+InputFeatureFactory* InputFeatureFactory::instance = InputFeatureFactory::instance_owner();
 
-    private: static InputFeatureFactory* instance() { static std::unique_ptr<InputFeatureFactory> value(new InputFeatureFactory()); return value.get(); }
-
-    public: static InputFeatureFactory* getInstance(){
+    auto InputFeatureFactory::getInstance() -> InputFeatureFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputFeatureFactory::instance();
+                        return InputFeatureFactory::instance;
     
 }
 
 
-private: InputFeatureFactory(){
+InputFeatureFactory::InputFeatureFactory() : REMOVE_DUPLICATE_KEY_PRESSES(new InputFeature("Remove Duplicate Key Presses")), INPUT_MAPPING(new InputFeature("Input Mapping")), MULTI_KEY_PRESS(new InputFeature("Multi Key Press")), SINGLE_KEY_REPEAT_PRESS(new InputFeature("Single Key Repeat Press")), SINGLE_KEY_PRESS(new InputFeature("Single Key Press")){
 }
 
 
-    public: InputFeature* REMOVE_DUPLICATE_KEY_PRESSES = new InputFeature("Remove Duplicate Key Presses");
-
-    public: InputFeature* INPUT_MAPPING = new InputFeature("Input Mapping");
-
-    public: InputFeature* MULTI_KEY_PRESS = new InputFeature("Multi Key Press");
-
-    public: InputFeature* SINGLE_KEY_REPEAT_PRESS = new InputFeature("Single Key Repeat Press");
-
-    public: InputFeature* SINGLE_KEY_PRESS = new InputFeature("Single Key Press");
-
-    public: bool isSingleKeyProcessing(){
+    auto InputFeatureFactory::isSingleKeyProcessing() -> bool{
 
     Features* features = Features::getInstance();;
     
@@ -107,7 +104,6 @@ private: InputFeatureFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INPUTFEATUREFACTORY_CPP

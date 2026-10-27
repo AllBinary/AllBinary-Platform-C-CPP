@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICCOMPOSITEEVENTHANDLERINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICCOMPOSITEEVENTHANDLERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/handler/BasicCompositeEventHandlerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,13 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h"
 
-class BasicCompositeEventHandlerInterface {
+//Interface - declared in the header
 
-    public: virtual BasicEventHandlerInterface* getEventHandler() = 0;
 
-    public: virtual void setEventHandler(BasicEventHandlerInterface* basicEventHandlerInterface) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICCOMPOSITEEVENTHANDLERINTERFACE_CPP

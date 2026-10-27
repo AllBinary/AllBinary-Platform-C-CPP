@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintableSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
 
-class WaypointInfoHudPaintableSingleton
-            : public Object
-         {
 
-    private: static WaypointInfoHudPaintable* instance() { static std::unique_ptr<WaypointInfoHudPaintable> value(new WaypointInfoHudPaintable()); return value.get(); }
+WaypointInfoHudPaintableSingleton::WaypointInfoHudPaintableSingleton() {
+        }
+        auto WaypointInfoHudPaintableSingleton::instance_owner() -> WaypointInfoHudPaintable* { static std::unique_ptr<WaypointInfoHudPaintable> value(new WaypointInfoHudPaintable()); return value.get(); }
+WaypointInfoHudPaintable* WaypointInfoHudPaintableSingleton::instance = WaypointInfoHudPaintableSingleton::instance_owner();
 
-    public: static WaypointInfoHudPaintable* getInstance(){
+    auto WaypointInfoHudPaintableSingleton::getInstance() -> WaypointInfoHudPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointInfoHudPaintableSingleton::instance();
+                        return WaypointInfoHudPaintableSingleton::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLESINGLETON_CPP

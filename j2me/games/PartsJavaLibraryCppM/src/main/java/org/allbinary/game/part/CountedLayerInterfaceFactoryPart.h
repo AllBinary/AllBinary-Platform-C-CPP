@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_H
         #define ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,42 +38,18 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/NullAnimationFactory.h>
-
-      
-#include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Font;
+class Graphics;
+class Animation;
+class NullAnimationFactory;
+class CountedPickedUpLayerInterfaceFactory;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
-
-      
+class UpdateMyFontProcessor;
+class AllBinaryLayer;
+class NullUtil;
+class PrimitiveLongUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -89,25 +70,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/PartInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CountedLayerInterfaceFactoryPart
-            : public Object
+            : public virtual Object
         , public PartInterface, public UpdateMyFontInterface {
 
-    public: static CountedLayerInterfaceFactoryPart* NULL_COUNTED_LAYER_INTERFACE_FACTORY() { static std::unique_ptr<CountedLayerInterfaceFactoryPart> value(new CountedLayerInterfaceFactoryPart(0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY)); return value.get(); }
+    private: static CountedLayerInterfaceFactoryPart* NULL_COUNTED_LAYER_INTERFACE_FACTORY_owner();
+    public: static CountedLayerInterfaceFactoryPart* NULL_COUNTED_LAYER_INTERFACE_FACTORY;
 
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor;
 
-    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor;
 
-    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
+    private: Animation* animationInterface;
 
     private: int32_t total= 0;
 
-    private: std::vector<char> totalString = NullUtil::getInstance()->NULL_CHAR_ARRAY;
+    private: std::vector<char> totalString;
 
     private: int32_t xOffset= 0;
 
-    private: CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory;
 
     private: PrimitiveLongUtil* primitiveLongUtil;
 
@@ -149,3 +135,49 @@ public: CountedLayerInterfaceFactoryPart(int32_t total, CountedPickedUpLayerInte
 
 
         #endif //ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/NullAnimationFactory.h>)
+#include <org/allbinary/animation/NullAnimationFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>)
+#include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveLongUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/game/part/PartInterface.h")
+#include "org/allbinary/game/part/PartInterface.h"
+#endif
+
+        #endif
+    

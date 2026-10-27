@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_CAMELCASEUTIL_CPP
+        #define ORG_ALLBINARY_DATA_CAMELCASEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/CamelCaseUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,27 +80,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CamelCaseUtil
-            : public Object
-         {
 
-    private: static CamelCaseUtil* instance() { static std::unique_ptr<CamelCaseUtil> value(new CamelCaseUtil()); return value.get(); }
+CamelCaseUtil::CamelCaseUtil() : commonSeps(CommonSeps::getInstance()) {
+        }
+        auto CamelCaseUtil::instance_owner() -> CamelCaseUtil* { static std::unique_ptr<CamelCaseUtil> value(new CamelCaseUtil()); return value.get(); }
+CamelCaseUtil* CamelCaseUtil::instance = CamelCaseUtil::instance_owner();
 
-    public: static CamelCaseUtil* getInstance(){
+    auto CamelCaseUtil::getInstance() -> CamelCaseUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CamelCaseUtil::instance();
+                        return CamelCaseUtil::instance;
     
 }
 
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: std::string getAsCamelCase(std::string string, StringMaker* stringBuilder){
+    auto CamelCaseUtil::getAsCamelCase(std::string string, StringMaker* stringBuilder) -> std::string{
 
                         if(false)
                         
@@ -107,7 +115,7 @@ class CamelCaseUtil
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
-stringBuilder->delete(0, stringBuilder->length());
+stringBuilder->delete_(0, stringBuilder->length());
     
 
     BasicArrayList* list = new BasicArrayListD();;
@@ -154,7 +162,6 @@ stringBuilder->append(word);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_CAMELCASEUTIL_CPP

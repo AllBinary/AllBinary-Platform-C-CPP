@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/Money.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class OrderInterface;
+class Money;
+class CommonStrings;
 
 
 
@@ -58,11 +57,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoShippingModule
-            : public Object
+            : public virtual Object
         , public ShippingInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: const std::string name = "No Shipping";
 
@@ -82,3 +85,22 @@ public: NoShippingModule();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/Money.h>)
+#include <org/allbinary/business/user/commerce/money/Money.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h")
+#include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
+#endif
+
+        #endif
+    

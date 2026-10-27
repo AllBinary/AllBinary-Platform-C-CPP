@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUNDLE_LOGIC_PRELOADER_ALLBINARYPRELOADERACTIVATOR_CPP
+        #define ORG_ALLBINARY_BUNDLE_LOGIC_PRELOADER_ALLBINARYPRELOADERACTIVATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bundle/logic/preloader/AllBinaryPreloaderActivator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,15 +84,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryPreloaderActivator
-            : public Object
-        , public BundleActivator {
 
-    private: static inline BundleContext* context;
+AllBinaryPreloaderActivator::AllBinaryPreloaderActivator() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
+}
 
-    private: static inline const std::string CRYPT_REGISTRY_NAME = "bundle.abcs.logic.system.loader.CryptService";
 
-    public: static BundleContext* getBundleContext(){
+    auto AllBinaryPreloaderActivator::getBundleContext() -> BundleContext*{
 
 
 
@@ -92,17 +99,9 @@ class AllBinaryPreloaderActivator
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: AllBinaryPreloaderActivator(){
-}
-
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext* context){
+    auto AllBinaryPreloaderActivator::start(BundleContext* context) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "start");
@@ -129,7 +128,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "start", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void registerAsService(){
+    auto AllBinaryPreloaderActivator::registerAsService() -> void{
 
     ABHashtable<Object*, Object*>* properties = StdUtil::getInstance()->createHashtable();;
     
@@ -146,20 +145,19 @@ serviceReference= AllBinaryPreloaderActivator::context->getServiceReference(CRYP
                                     nullptr
                                 )
                         
-                                    throw new Exception("No Such Service Reference");
+                                    throw Exception("No Such Service Reference");
                                 
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext* context){
+    auto AllBinaryPreloaderActivator::stop(BundleContext* context) -> void{
 this->logUtil->putF(this->commonStrings->START, this, "stop");
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUNDLE_LOGIC_PRELOADER_ALLBINARYPRELOADERACTIVATOR_CPP

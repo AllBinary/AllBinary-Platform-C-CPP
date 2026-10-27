@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/graphics/CellPosition.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class Image;
+class NullImage;
+class CellPosition;
+class NullUtil;
 
 
 
@@ -64,13 +61,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RaceTrackData
-            : public Object
+            : public virtual Object
          {
 
-    private: Image* tileSetImage = NullImage::NULL_IMAGE;
+    private: Image* tileSetImage;
 
-    private: Image* miniTileSetImage = NullImage::NULL_IMAGE;
+    private: Image* miniTileSetImage;
 
     private: int32_t cellWidth = 0;
 
@@ -80,23 +81,23 @@ class RaceTrackData
 
     private: int32_t miniCellHeight = 0;
 
-    private: std::vector<std::vector<int32_t>> mapArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int32_t>> mapArray;
 
-    private: std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray = NullUtil::getInstance()->NULL_INT_ARRAY;
+    private: std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray;
 
-    private: std::vector<CellPosition*> NO_OVER_PASSES_ARRAY = {};
+    private: std::vector<CellPosition*> NO_OVER_PASSES_ARRAY;
 
-    private: std::vector<CellPosition*> overPassGeographicMapCellPositionArray = this->NO_OVER_PASSES_ARRAY;
+    private: std::vector<CellPosition*> overPassGeographicMapCellPositionArray;
 
     private: int32_t id;
 
 public: RaceTrackData(int32_t id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray);
 
-    protected: void setMapArray(std::vector<std::vector<int32_t>> mapArray);
+    /*protected*/ public: void setMapArray(std::vector<std::vector<int32_t>> mapArray);
 
     public: std::vector<std::vector<int32_t>> getMapArray();
 
-    protected: void setCellTypeIdToGeographicMapCellTypeArray(std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray);
+    /*protected*/ public: void setCellTypeIdToGeographicMapCellTypeArray(std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray);
 
     public: std::vector<int32_t> getCellTypeIdToGeographicMapCellTypeArray();
 
@@ -138,3 +139,22 @@ public: RaceTrackData(int32_t id, int32_t cellWidth, int32_t cellHeight, int32_t
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/graphics/CellPosition.h>)
+#include <org/allbinary/graphics/CellPosition.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+
+        #endif
+    

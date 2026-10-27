@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITORFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/util/visitor/Visitor.h>
-
-      
+class Visitor;
 
 
 
@@ -51,14 +54,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
-#include "org/allbinary/game/input/SelectAdvancedRTSLayerVisitor.h"
-#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+class SelectAdvancedRTSLayerVisitor;
+class SelectedRTSLayersPlayerGameInput;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SelectAdvancedRTSLayerVisitorFactory
-            : public Object
+            : public virtual Object
         , public SelectRTSLayerVisitorFactoryInterface {
 
-    private: static SelectAdvancedRTSLayerVisitorFactory* instance() { static std::unique_ptr<SelectAdvancedRTSLayerVisitorFactory> value(new SelectAdvancedRTSLayerVisitorFactory()); return value.get(); }
+    private: static SelectAdvancedRTSLayerVisitorFactory* instance_owner();
+    private: static SelectAdvancedRTSLayerVisitorFactory* instance;
 
     public: static SelectAdvancedRTSLayerVisitorFactory* getInstance();
 
@@ -72,3 +80,22 @@ private: SelectAdvancedRTSLayerVisitorFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITORFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/visitor/Visitor.h>)
+#include <org/allbinary/logic/util/visitor/Visitor.h>
+#endif
+#if __has_include("org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h")
+#include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/game/input/SelectAdvancedRTSLayerVisitor.h")
+#include "org/allbinary/game/input/SelectAdvancedRTSLayerVisitor.h"
+#endif
+#if __has_include("org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h")
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+#endif
+
+        #endif
+    

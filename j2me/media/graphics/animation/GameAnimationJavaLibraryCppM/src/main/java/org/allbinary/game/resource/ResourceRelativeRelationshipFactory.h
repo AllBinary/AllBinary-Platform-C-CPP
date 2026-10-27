@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_H
         #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/RelativeRelationship.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class RelativeRelationship;
+class StdUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class BasicArrayListUtil;
 
 
 
@@ -69,13 +62,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ResourceRelativeRelationshipFactory
-            : public Object
+            : public virtual Object
         , public ResourceRelativeRelationshipFactoryInterface {
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+            
+    public: ResourceRelativeRelationshipFactory();
+        
+    private: BasicArrayListUtil* basicArrayListUtil;
+
+    private: ABHashtable<Object*, Object*>* hashtable;
 
     private: bool initialized= false;
 
@@ -105,3 +106,31 @@ class ResourceRelativeRelationshipFactory
 
 
         #endif //ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCERELATIVERELATIONSHIPFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/RelativeRelationship.h>)
+#include <org/allbinary/graphics/RelativeRelationship.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h")
+#include "org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h"
+#endif
+
+        #endif
+    

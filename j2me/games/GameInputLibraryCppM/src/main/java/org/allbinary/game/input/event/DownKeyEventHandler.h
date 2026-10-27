@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,12 +34,8 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class LocalPlayerInputIdFactory;
+class EventListenerInterface;
 
 
 
@@ -55,18 +56,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/event/DownKeyEventHandlerBase.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DownKeyEventHandler: public DownKeyEventHandlerBase {
 
-    private: static DownKeyEventHandler* instance() { static std::unique_ptr<DownKeyEventHandler> value(new DownKeyEventHandler()); return value.get(); }
+    private: static DownKeyEventHandler* instance_owner();
+    private: static DownKeyEventHandler* instance;
 
-    private: static inline const std::vector<DownKeyEventHandlerBase*> instanceArray = 
-                                                        {
-                                                            new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase(),new DownKeyEventHandlerBase()
-                                                        };
+    private: static std::vector<DownKeyEventHandlerBase*> instanceArray;
 
     public: static DownKeyEventHandler* getInstance();
 
-    private: LocalPlayerInputIdFactory* playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
+    private: LocalPlayerInputIdFactory* playerInputIdFactory;
 
     public: DownKeyEventHandlerBase* getInstanceForDevice(int32_t deviceId);
 
@@ -87,3 +90,19 @@ private: DownKeyEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/LocalPlayerInputIdFactory.h>)
+#include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include("org/allbinary/game/input/event/DownKeyEventHandlerBase.h")
+#include "org/allbinary/game/input/event/DownKeyEventHandlerBase.h"
+#endif
+
+        #endif
+    

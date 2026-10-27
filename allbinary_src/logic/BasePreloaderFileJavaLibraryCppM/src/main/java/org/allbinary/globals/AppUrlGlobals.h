@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -51,12 +54,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/globals/UrlGlobalsInterface.h"
-//implements
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //implements
 class AppUrlGlobals: public UrlGlobalsInterface {
 
-    public: static AppUrlGlobals* NULL_APP_URL_GLOBALS() { static std::unique_ptr<AppUrlGlobals> value(new AppUrlGlobals()); return value.get(); }
+    private: static AppUrlGlobals* NULL_APP_URL_GLOBALS_owner();
+    public: static AppUrlGlobals* NULL_APP_URL_GLOBALS;
 
-    private: std::string path = StringUtil::getInstance()->EMPTY_STRING;
+
+            
+    public: AppUrlGlobals();
+        
+    private: std::string path;
 
     public: bool isTestingMode();
 
@@ -77,3 +89,16 @@ class AppUrlGlobals: public UrlGlobalsInterface {
 
 
         #endif //ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_H_COMPLETE)
+        #define ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/globals/UrlGlobalsInterface.h")
+#include "org/allbinary/globals/UrlGlobalsInterface.h"
+#endif
+
+        #endif
+    

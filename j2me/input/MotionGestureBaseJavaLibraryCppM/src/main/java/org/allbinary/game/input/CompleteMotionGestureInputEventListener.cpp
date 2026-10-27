@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/CompleteMotionGestureInputEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,19 +46,18 @@
         #include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
 
-class CompleteMotionGestureInputEventListener
-            : public Object
-        , public CompleteMotionGestureInputEventListenerInterface {
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+CompleteMotionGestureInputEventListener::CompleteMotionGestureInputEventListener() {
+        }
+        
+    auto CompleteMotionGestureInputEventListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 }
 
 
-    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent){
+    auto CompleteMotionGestureInputEventListener::onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTLISTENER_CPP

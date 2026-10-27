@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/GuiLog.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class GuiLog;
+class LogUtil;
 
 
 
@@ -56,11 +57,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GraphicsException: public java::lang::Exception {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: GuiLog* guiLog = GuiLog::getInstance();
+    private: GuiLog* guiLog;
 
 public: GraphicsException(std::string msg, Object* obj, std::string method);
 
@@ -72,3 +77,16 @@ public: GraphicsException(std::string msg, std::string className, std::string me
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/GuiLog.h>)
+#include <org/allbinary/logic/communication/log/GuiLog.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+        #endif
+    

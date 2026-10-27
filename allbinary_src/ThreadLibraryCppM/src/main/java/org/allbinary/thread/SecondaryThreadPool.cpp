@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_SECONDARYTHREADPOOL_CPP
+        #define ORG_ALLBINARY_THREAD_SECONDARYTHREADPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/SecondaryThreadPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ThreadPool.h"
 //This is mainly for network communications.
-class SecondaryThreadPool: public ThreadPool {
+ThreadPool* SecondaryThreadPool::instance = new SecondaryThreadPool("Secondary", 1, ThreadPool::NORMAL_PRIORITY);
 
-    private: static inline ThreadPool* instance = new SecondaryThreadPool("Secondary", 1, ThreadPool::NORMAL_PRIORITY);
-
-    public: static ThreadPool* getInstance(){
+    auto SecondaryThreadPool::getInstance() -> ThreadPool*{
 
 
 
@@ -71,7 +79,7 @@ class SecondaryThreadPool: public ThreadPool {
 }
 
 
-public: SecondaryThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority){
+SecondaryThreadPool::SecondaryThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,27 +89,26 @@ public: SecondaryThreadPool(std::string poolName, int32_t numThreads, int32_t pr
 }
 
 
-    public: void runTask(Runnable* task){
-this->logUtil.putF((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->threadPoolStrings.ADD_TASK);
+    auto SecondaryThreadPool::runTask(Runnable* task) -> void{
+this->logUtil->putF((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->threadPoolStrings->ADD_TASK);
     
-super.runTask(task);
-    
-}
-
-
-    protected: void startTask(Runnable* task){
-this->logUtil.putF((new StringMaker())->append(this->threadPoolStrings.START_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings.RUN);
+ThreadPool::runTask(task);
     
 }
 
 
-    protected: void completedTask(Runnable* task){
-this->logUtil.putF((new StringMaker())->append(this->threadPoolStrings.COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings.RUN);
+    auto SecondaryThreadPool::startTask(Runnable* task) -> void{
+this->logUtil->putF((new StringMaker())->append(this->threadPoolStrings->START_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings->RUN);
     
 }
 
 
-};
+    auto SecondaryThreadPool::completedTask(Runnable* task) -> void{
+this->logUtil->putF((new StringMaker())->append(this->threadPoolStrings->COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->commonStrings->RUN);
+    
+}
 
-            
 
+
+
+        #endif //ORG_ALLBINARY_THREAD_SECONDARYTHREADPOOL_CPP

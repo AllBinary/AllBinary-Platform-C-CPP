@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_ANDROIDRESOURCES_H
         #define ORG_ALLBINARY_ANDROIDRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -15,9 +20,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/testgamedemo/R.h>
-
-      
+class R;
 
 
 
@@ -37,23 +40,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static AndroidResources* instance() { static std::unique_ptr<AndroidResources> value(new AndroidResources()); return value.get(); }
+    private: static AndroidResources* instance_owner();
+    private: static AndroidResources* instance;
 
     public: static AndroidResources* getInstance();
 
-    public: R::Companion::drawable* drawable = new R::Companion::drawable();
 
-    public: R::Companion::id* id = new R::Companion::id();
+            
+    public: AndroidResources();
+        
+    public: R::Companion::drawable* drawable;
 
-    public: R::Companion::layout* layout = new R::Companion::layout();
+    public: R::Companion::id* id;
 
-    public: R::Companion::raw* raw = new R::Companion::raw();
+    public: R::Companion::layout* layout;
 
-    public: R::Companion::string* string = new R::Companion::string();
+    public: R::Companion::raw* raw;
+
+    public: R::Companion::string* string;
 
 };
 
@@ -61,3 +73,13 @@ class AndroidResources
 
 
         #endif //ORG_ALLBINARY_ANDROIDRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROIDRESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROIDRESOURCES_H_COMPLETE
+        #if __has_include(<org/allbinary/game/testgamedemo/R.h>)
+#include <org/allbinary/game/testgamedemo/R.h>
+#endif
+
+        #endif
+    

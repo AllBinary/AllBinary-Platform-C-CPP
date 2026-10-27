@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/Waypoint.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -122,19 +132,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/WaypointBase.h"
 
-class Waypoint: public WaypointBase, public BuildingEventListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    protected: PathFindingLayerInterface* ownerLayer;
-
-    private: BasicArrayList* endList = this->basicArrayListUtil->getImmutableInstance();
-
-    private: std::vector<std::vector<BasicArrayList*>> paths = this->basicArrayListUtil->NULL_ARRAY_OF_ARRAY;
-
-public: Waypoint(PathFindingLayerInterface* ownerLayer, Sound* sound) : WaypointBase(sound){
+Waypoint::Waypoint(PathFindingLayerInterface* ownerLayer, Sound* sound) : WaypointBase(sound), logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), endList(this->basicArrayListUtil->getImmutableInstance()), paths(this->basicArrayListUtil->NULL_ARRAY_OF_ARRAY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -148,8 +147,8 @@ this->ownerLayer= ownerLayer;
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto Waypoint::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+WaypointBase::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
@@ -167,7 +166,7 @@ super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -181,7 +180,7 @@ this->clearPaths();
 }
 
 
-    public: void releaseCachedPaths(){
+    auto Waypoint::releaseCachedPaths() -> void{
 
 
 
@@ -217,7 +216,7 @@ this->clearPaths();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition){
+    auto Waypoint::getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition) -> BasicArrayList*{
 
 
 
@@ -229,7 +228,7 @@ this->clearPaths();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition){
+    auto Waypoint::getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition) -> BasicArrayList*{
 
     BasicArrayList* pathsList = this->paths[geographicMapCellPosition->getColumn()][geographicMapCellPosition->getRow()];;
     
@@ -253,7 +252,7 @@ this->paths[geographicMapCellPosition->getColumn()][geographicMapCellPosition->g
 }
 
 
-    protected: GeographicMapCellPosition* getEndGeographicMapCellPosition(GeographicMapCellPosition* startGeographicMapCellPosition){
+    auto Waypoint::getEndGeographicMapCellPosition(GeographicMapCellPosition* startGeographicMapCellPosition) -> GeographicMapCellPosition*{
 
     GeographicMapCellPosition* endGeographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(this->basicArrayListUtil->getRandom(this->endList));;
     
@@ -296,7 +295,7 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(this->end
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* createPaths(GeographicMapCellPosition* startGeographicMapCellPosition){
+    auto Waypoint::createPaths(GeographicMapCellPosition* startGeographicMapCellPosition) -> BasicArrayList*{
 
                         if(this->endList->size() == 0)
                         
@@ -349,7 +348,7 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(this->end
                             
 
 
-                            throw new Exception("Start should not be End: " +this->endList->size());
+                            throw Exception(JavaString::valueOf("Start should not be End: ") +JavaString::valueOf(this->endList->size()));
                     
 
                         }
@@ -394,7 +393,7 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
                                     
 
 
-                            throw new Exception("Path may have been cleared by clearing caching");
+                            throw Exception("Path may have been cleared by clearing caching");
                     
 
                                     }
@@ -408,7 +407,7 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto Waypoint::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -416,13 +415,13 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    public: void onBuildingEvent(RTSLayerEvent* event){
+    auto Waypoint::onBuildingEvent(RTSLayerEvent* event) -> void{
 this->clearPaths();
     
 }
 
 
-    private: void clearPaths(){
+    auto Waypoint::clearPaths() -> void{
 
 
 
@@ -446,7 +445,7 @@ this->paths[columnIndex][rowIndex]= this->basicArrayListUtil->getImmutableInstan
 }
 
 
-    public: void reset(){
+    auto Waypoint::reset() -> void{
 this->getConnectedWaypointList()->clear();
     
 this->releaseCachedPaths();
@@ -456,7 +455,7 @@ this->releaseCachedPaths();
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(PathFindingLayerInterface* unitLayer){
+    auto Waypoint::visit(PathFindingLayerInterface* unitLayer) -> void{
 
                         if(unitLayer->getGroupInterface()[0] != this->ownerLayer->getGroupInterface()[0])
                         
@@ -514,7 +513,6 @@ break;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_VECTOR_MINEVECTORDATA_CPP
+        #define ORG_ALLBINARY_GAME_AG_VECTOR_MINEVECTORDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/vector/MineVectorData.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,38 +57,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MineVectorData
-            : public Object
-         {
 
-    public: static inline std::vector<std::vector<std::vector<int32_t>>> points = 
-                                                        {
-                                                            [[10,5]
-,[2,6]
-,[1000,1000]
-,[2,2]
-,[10,9]
-,[1000,1000]
-,[10,2]
-,[2,9]
-,[1000,1000]
-,[2,5]
-,[10,6]
-,[1000,1000]
-,[7,9]
-,[5,2]
-,[1000,1000]
-,[7,2]
-,[5,9]
-,[1000,1000]
-]
-                                                        };
-
-private: MineVectorData(){
+MineVectorData::MineVectorData(){
 }
 
+std::vector<std::vector<std::vector<int32_t>>> MineVectorData::points = 
+                                                        {
+                                                            {{10,5},{2,6},{1000,1000},{2,2},{10,9},{1000,1000},{10,2},{2,9},{1000,1000},{2,5},{10,6},{1000,1000},{7,9},{5,2},{1000,1000},{7,2},{5,9},{1000,1000}}
+                                                        };
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_VECTOR_MINEVECTORDATA_CPP

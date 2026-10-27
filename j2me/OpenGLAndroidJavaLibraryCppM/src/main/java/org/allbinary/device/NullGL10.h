@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DEVICE_NULLGL10_H
         #define ORG_ALLBINARY_DEVICE_NULLGL10_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,20 +37,10 @@
             #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
-
-      
 #include <java/nio/Buffer.h>
-
-      
 #include <java/nio/FloatBuffer.h>
-
-      
 #include <java/nio/IntBuffer.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -65,12 +60,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullGL10
-            : public Object
+            : public virtual Object
         , public GL10 {
 
-    public: static NullGL10* NULL_GL10() { static std::unique_ptr<NullGL10> value(new NullGL10()); return value.get(); }
+    private: static NullGL10* NULL_GL10_owner();
+    public: static NullGL10* NULL_GL10;
 
+
+            
+    public: NullGL10();
+        
     public: void glActiveTexture(int32_t texture);
 
     public: void glAlphaFunc(int32_t func, float ref);
@@ -323,3 +327,25 @@ class NullGL10
 
 
         #endif //ORG_ALLBINARY_DEVICE_NULLGL10_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DEVICE_NULLGL10_H_COMPLETE)
+        #define ORG_ALLBINARY_DEVICE_NULLGL10_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<java/nio/Buffer.h>)
+#include <java/nio/Buffer.h>
+#endif
+#if __has_include(<java/nio/FloatBuffer.h>)
+#include <java/nio/FloatBuffer.h>
+#endif
+#if __has_include(<java/nio/IntBuffer.h>)
+#include <java/nio/IntBuffer.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

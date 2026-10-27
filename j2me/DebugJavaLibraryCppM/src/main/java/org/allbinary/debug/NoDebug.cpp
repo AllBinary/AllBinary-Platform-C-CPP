@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEBUG_NODEBUG_CPP
+        #define ORG_ALLBINARY_DEBUG_NODEBUG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/debug/NoDebug.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/debug/DebugInterface.h"
 
-class NoDebug
-            : public Object
-        , public DebugInterface {
 
-    private: static inline DebugInterface* SINGLETON = new NoDebug();
+NoDebug::NoDebug() {
+        }
+        DebugInterface* NoDebug::SINGLETON = new NoDebug();
 
-    public: static DebugInterface* getInstance(){
+    auto NoDebug::getInstance() -> DebugInterface*{
 
 
 
@@ -62,15 +71,15 @@ class NoDebug
 }
 
 
-    public: void start(){
+    auto NoDebug::start() -> void{
 }
 
 
-    public: void stop(){
+    auto NoDebug::stop() -> void{
 }
 
 
-    public: int64_t getMaxTime(){
+    auto NoDebug::getMaxTime() -> int64_t{
 
 
 
@@ -80,7 +89,7 @@ class NoDebug
 }
 
 
-    public: int64_t getStartTime(){
+    auto NoDebug::getStartTime() -> int64_t{
 
 
 
@@ -90,7 +99,7 @@ class NoDebug
 }
 
 
-    public: bool isRunning(){
+    auto NoDebug::isRunning() -> bool{
 
 
 
@@ -100,7 +109,6 @@ class NoDebug
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEBUG_NODEBUG_CPP

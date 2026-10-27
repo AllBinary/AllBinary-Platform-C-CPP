@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPER_CPP
+        #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/caption/CaptionAnimationHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,23 +82,14 @@
         #include "org/allbinary/animation/caption/CaptionAnimationHelperBase.h"
 #include "org/allbinary/animation/caption/CaptionAnimation.h"
 
-class CaptionAnimationHelper: public CaptionAnimationHelperBase {
 
-    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(620);
-
-    private: TextAnimation* textAnimation = new TextAnimation(StringUtil::getInstance()->EMPTY_STRING, AnimationBehavior::getInstance());
-
-    private: Animation* captionAnimation;
-
-    private: Animation* animation = NullAnimationFactory::getFactoryInstance()->getInstance(0);
-
-public: CaptionAnimationHelper(Animation* captionAnimation, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy){
+CaptionAnimationHelper::CaptionAnimationHelper(Animation* captionAnimation, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy) : timeHelper(new TimeDelayHelper(620)), textAnimation(new TextAnimation(StringUtil::getInstance()->EMPTY_STRING, AnimationBehavior::getInstance())), animation(NullAnimationFactory::getFactoryInstance()->getInstance(0)){
 this->captionAnimation= new CaptionAnimation(captionAnimation, this->textAnimation, captionDx, captionDy, dx, dy);
     
 }
 
 
-    public: bool isShowing(){
+    auto CaptionAnimationHelper::isShowing() -> bool{
 
                         if(this->animation == this->captionAnimation)
                         
@@ -115,7 +116,7 @@ this->captionAnimation= new CaptionAnimation(captionAnimation, this->textAnimati
 }
 
 
-    public: void tick(){
+    auto CaptionAnimationHelper::tick() -> void{
 
                         if(this->timeHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
@@ -128,7 +129,7 @@ this->captionAnimation= new CaptionAnimation(captionAnimation, this->textAnimati
 }
 
 
-    public: void update(std::string message, BasicColor* basicColor){
+    auto CaptionAnimationHelper::update(std::string message, BasicColor* basicColor) -> void{
 this->textAnimation->setBasicColorP(basicColor);
     
 this->textAnimation->setText(message);
@@ -140,13 +141,12 @@ this->timeHelper->setStartTimeTNT();
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto CaptionAnimationHelper::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->animation->paintXY(graphics, x, y);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONANIMATIONHELPER_CPP

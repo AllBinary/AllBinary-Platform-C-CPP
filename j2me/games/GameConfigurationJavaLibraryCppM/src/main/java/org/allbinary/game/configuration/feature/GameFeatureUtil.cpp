@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREUTIL_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/GameFeatureUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -82,35 +92,25 @@
 #include "org/allbinary/game/configuration/feature/Feature.h"
 #include "org/allbinary/game/configuration/feature/GameFeatureChoiceGroups.h"
 
-class GameFeatureUtil
-            : public Object
-         {
 
-    private: static GameFeatureUtil* instance() { static std::unique_ptr<GameFeatureUtil> value(new GameFeatureUtil()); return value.get(); }
+GameFeatureUtil::GameFeatureUtil() : logUtil(LogUtil::getInstance()), tsUtil(TsUtil::getInstance()), enumerationUtil(EnumerationUtil::getInstance()) {
+        }
+        auto GameFeatureUtil::instance_owner() -> GameFeatureUtil* { static std::unique_ptr<GameFeatureUtil> value(new GameFeatureUtil()); return value.get(); }
+GameFeatureUtil* GameFeatureUtil::instance = GameFeatureUtil::instance_owner();
 
-    public: static GameFeatureUtil* getInstance(){
+    auto GameFeatureUtil::getInstance() -> GameFeatureUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureUtil::instance();
+                        return GameFeatureUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
-
-    public: const std::string ON_GAME_FEATURE_CHANGE = "onGameFeatureChange";
-
-    public: const std::string GAME_FEATURE_CHANGED = "Game Feature Changed: ";
-
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(ChoiceGroup* choiceGroup){
+    auto GameFeatureUtil::setDefault(ChoiceGroup* choiceGroup) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -148,7 +148,7 @@ this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
 
     bool isSelected = selectedArray_return[index];;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(SELECTED_ARRAY_RETURN);
     
@@ -192,7 +192,7 @@ choiceGroup->setSelectedIndex(index, false);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateMultiple(ChoiceGroup* choiceGroup){
+    auto GameFeatureUtil::updateMultiple(ChoiceGroup* choiceGroup) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -230,7 +230,7 @@ this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
 
     bool isSelected = selectedArray_return[index];;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(SELECTED_ARRAY_RETURN);
     
@@ -273,7 +273,7 @@ this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateExclusiveForChoiceGroup(ChoiceGroup* choiceGroup){
+    auto GameFeatureUtil::updateExclusiveForChoiceGroup(ChoiceGroup* choiceGroup) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -308,7 +308,7 @@ this->logUtil->putF(stringBuffer->toString(), this, METHOD_NAME);
 
     bool isSelected = selectedArray_return[index];;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(SELECTED_ARRAY_RETURN);
     
@@ -337,7 +337,7 @@ this->updateExclusive(selectedChoiceLabel);
 }
 
 
-    public: bool isExclusive(std::string itemLabel){
+    auto GameFeatureUtil::isExclusive(std::string itemLabel) -> bool{
 
     Enumeration<Object*>* enumeration = GameFeatureChoiceGroups::getExclusiveInstance()->get()->keys();;
     
@@ -375,7 +375,7 @@ name= this->enumerationUtil->nextElement(enumeration);
 
                 //@Throws(Exception.constructor)
             
-    private: void updateExclusive(std::string selectedChoiceLabel){
+    auto GameFeatureUtil::updateExclusive(std::string selectedChoiceLabel) -> void{
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->ITEM_LABEL)->append(selectedChoiceLabel)->toString(), this, "updateExclusive");
     
 
@@ -416,7 +416,7 @@ this->updateExclusiveList(gameFeature, basicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateExclusiveList(Feature* gameFeature, BasicArrayList* list){
+    auto GameFeatureUtil::updateExclusiveList(Feature* gameFeature, BasicArrayList* list) -> void{
 
                         if(list->contains(gameFeature))
                         
@@ -460,7 +460,6 @@ this->updateExclusiveList(gameFeature, basicArrayList);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREUTIL_CPP

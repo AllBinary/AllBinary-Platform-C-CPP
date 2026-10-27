@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LockedUtilInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,13 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
-class LockedUtilInterface {
+//Interface - declared in the header
 
-    public: virtual bool isLocked() = 0;
 
-    public: virtual bool isLockedFeature(LockableFeature* lockableFeatrue) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_CPP

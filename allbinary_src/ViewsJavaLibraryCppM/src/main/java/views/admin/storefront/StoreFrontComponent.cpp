@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_STOREFRONT_STOREFRONTCOMPONENT_CPP
+        #define VIEWS_ADMIN_STOREFRONT_STOREFRONTCOMPONENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/storefront/StoreFrontComponent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontComponent: public HttpStoreComponentView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: StoreFrontInterface* newStoreFrontInterface;
-
-public: StoreFrontComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+StoreFrontComponent::StoreFrontComponent(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,24 +97,24 @@ this->newStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto StoreFrontComponent::view() -> std::string{
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view", &e);
     
 
                                     }
@@ -124,7 +129,6 @@ this->newStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_STOREFRONT_STOREFRONTCOMPONENT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/number/LongData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +57,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LongData
-            : public Object
-         {
+int32_t LongData::MAX_LONG_LENGTH = (int64_t(Long.MAX_VALUE)).toString().length();
 
-    public: static inline int32_t MAX_LONG_LENGTH = (int64_t(Long.MAX_VALUE)).toString().length();
-
-private: LongData(){
+LongData::LongData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_CPP

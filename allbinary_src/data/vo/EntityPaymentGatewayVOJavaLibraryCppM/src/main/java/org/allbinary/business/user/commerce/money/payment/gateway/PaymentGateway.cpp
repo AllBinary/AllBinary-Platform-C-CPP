@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGateway.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,258 +90,187 @@
 #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
 #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayPrimaryKey.h"
 
-class PaymentGateway
-            : public Object
-        , public PaymentGatewayInterface {
 
-    private: std::string storeName;
-
-    private: std::string name;
-
-    private: std::string enable;
-
-    private: std::string paymentMethod;
-
-    private: std::string mode;
-
-    private: std::string testProtocol;
-
-    private: std::string testServer;
-
-    private: std::string testPort;
-
-    private: std::string testPath;
-
-    private: std::string serverProtocol;
-
-    private: std::string server;
-
-    private: std::string serverPort;
-
-    private: std::string serverPath;
-
-    private: std::string timeout;
-
-    private: std::string userName;
-
-    private: std::string password;
-
-    private: std::string proxyProtocol;
-
-    private: std::string proxyServer;
-
-    private: std::string proxyPort;
-
-    private: std::string proxyPath;
-
-    private: std::string proxyUserName;
-
-    private: std::string proxyPassword;
-
-    private: std::string proxyTimeout;
-
-    private: std::string special1;
-
-    private: std::string special2;
-
-    private: std::string special3;
-
-    private: std::string special4;
-
-    private: std::string special5;
-
-    private: std::string special6;
-
-    private: std::string special7;
-
-    private: std::string special8;
-
-    private: std::string special9;
-
-    private: std::string lastModified;
-
-    private: std::string timeEntered;
-
-public: PaymentGateway(HashMap<Object*, Object*>* hashMap){
+PaymentGateway::PaymentGateway(HashMap<Object*, Object*>* hashMap){
 this->getFormData(hashMap);
     
 }
 
 
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto PaymentGateway::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
 
     std::string empty = stringUtil->EMPTY_STRING;;
     
-this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME.toString());
+this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME->toString());
     
-this->name= hashMap->get(PaymentGatewayData::NAME.toString());
+this->name= hashMap->get(PaymentGatewayData::NAME->toString());
     
-this->enable= stringUtil->getNonNull(hashMap->get(EntryData::getInstance()->ENABLE.toString()));
+this->enable= stringUtil->getNonNull(hashMap->get(EntryData::getInstance()->ENABLE->toString()));
     
-this->paymentMethod= stringUtil->getNonNull(hashMap->get(PaymentData::METHOD.toString()));
+this->paymentMethod= stringUtil->getNonNull(hashMap->get(PaymentData::METHOD->toString()));
     
-this->mode= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::MODE.toString()));
+this->mode= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::MODE->toString()));
     
-this->testProtocol= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTPROTOCOL.toString()));
+this->testProtocol= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTPROTOCOL->toString()));
     
-this->testServer= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTSERVER.toString()));
+this->testServer= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTSERVER->toString()));
     
-this->testPort= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTPORT.toString()));
+this->testPort= stringUtil->getNonNull(hashMap->get(PaymentGatewayData::TESTPORT->toString()));
     
-this->testPath= hashMap->get(PaymentGatewayData::TESTPATH.toString());
+this->testPath= hashMap->get(PaymentGatewayData::TESTPATH->toString());
     
 
                         if(false)
                         this->testPath= empty;
                                 
-this->serverProtocol= hashMap->get(PaymentGatewayData::SERVERPROTOCOL.toString());
+this->serverProtocol= hashMap->get(PaymentGatewayData::SERVERPROTOCOL->toString());
     
 
                         if(false)
                         this->serverProtocol= empty;
                                 
-this->server= hashMap->get(PaymentGatewayData::SERVER.toString());
+this->server= hashMap->get(PaymentGatewayData::SERVER->toString());
     
 
                         if(false)
                         this->server= empty;
                                 
-this->serverPort= hashMap->get(PaymentGatewayData::SERVERPORT.toString());
+this->serverPort= hashMap->get(PaymentGatewayData::SERVERPORT->toString());
     
 
                         if(false)
                         this->serverPort= empty;
                                 
-this->serverPath= hashMap->get(PaymentGatewayData::SERVERPATH.toString());
+this->serverPath= hashMap->get(PaymentGatewayData::SERVERPATH->toString());
     
 
                         if(false)
                         this->serverPath= empty;
                                 
-this->userName= hashMap->get(UserData::USERNAME.toString());
+this->userName= hashMap->get(UserData::USERNAME->toString());
     
 
                         if(false)
                         this->userName= empty;
                                 
-this->password= hashMap->get(UserData::PASSWORD.toString());
+this->password= hashMap->get(UserData::PASSWORD->toString());
     
 
                         if(false)
                         this->password= empty;
                                 
-this->timeout= hashMap->get(PaymentGatewayData::TIMEOUT.toString());
+this->timeout= hashMap->get(PaymentGatewayData::TIMEOUT->toString());
     
 
                         if(false)
                         this->timeout= empty;
                                 
-this->proxyProtocol= hashMap->get(PaymentGatewayData::PROXYPROTOCOL.toString());
+this->proxyProtocol= hashMap->get(PaymentGatewayData::PROXYPROTOCOL->toString());
     
 
                         if(false)
                         this->proxyProtocol= empty;
                                 
-this->proxyServer= hashMap->get(PaymentGatewayData::PROXYSERVER.toString());
+this->proxyServer= hashMap->get(PaymentGatewayData::PROXYSERVER->toString());
     
 
                         if(false)
                         this->proxyServer= empty;
                                 
-this->proxyPort= hashMap->get(PaymentGatewayData::PROXYPORT.toString());
+this->proxyPort= hashMap->get(PaymentGatewayData::PROXYPORT->toString());
     
 
                         if(false)
                         this->proxyPort= empty;
                                 
-this->proxyPath= hashMap->get(PaymentGatewayData::PROXYPATH.toString());
+this->proxyPath= hashMap->get(PaymentGatewayData::PROXYPATH->toString());
     
 
                         if(false)
                         this->proxyPath= empty;
                                 
-this->proxyUserName= hashMap->get(PaymentGatewayData::PROXYUSERNAME.toString());
+this->proxyUserName= hashMap->get(PaymentGatewayData::PROXYUSERNAME->toString());
     
 
                         if(false)
                         this->proxyUserName= empty;
                                 
-this->proxyPassword= hashMap->get(PaymentGatewayData::PROXYPASSWORD.toString());
+this->proxyPassword= hashMap->get(PaymentGatewayData::PROXYPASSWORD->toString());
     
 
                         if(false)
                         this->proxyPassword= empty;
                                 
-this->proxyTimeout= hashMap->get(PaymentGatewayData::PROXYTIMEOUT.toString());
+this->proxyTimeout= hashMap->get(PaymentGatewayData::PROXYTIMEOUT->toString());
     
 
                         if(false)
                         this->proxyTimeout= empty;
                                 
-this->special1= hashMap->get(PaymentGatewayData::SPECIAL1.toString());
+this->special1= hashMap->get(PaymentGatewayData::SPECIAL1->toString());
     
 
                         if(false)
                         this->special1= empty;
                                 
-this->special2= hashMap->get(PaymentGatewayData::SPECIAL2.toString());
+this->special2= hashMap->get(PaymentGatewayData::SPECIAL2->toString());
     
 
                         if(false)
                         this->special2= empty;
                                 
-this->special3= hashMap->get(PaymentGatewayData::SPECIAL3.toString());
+this->special3= hashMap->get(PaymentGatewayData::SPECIAL3->toString());
     
 
                         if(false)
                         this->special3= empty;
                                 
-this->special4= hashMap->get(PaymentGatewayData::SPECIAL4.toString());
+this->special4= hashMap->get(PaymentGatewayData::SPECIAL4->toString());
     
 
                         if(false)
                         this->special4= empty;
                                 
-this->special5= hashMap->get(PaymentGatewayData::SPECIAL5.toString());
+this->special5= hashMap->get(PaymentGatewayData::SPECIAL5->toString());
     
 
                         if(false)
                         this->special5= empty;
                                 
-this->special6= hashMap->get(PaymentGatewayData::SPECIAL6.toString());
+this->special6= hashMap->get(PaymentGatewayData::SPECIAL6->toString());
     
 
                         if(false)
                         this->special6= empty;
                                 
-this->special7= hashMap->get(PaymentGatewayData::SPECIAL7.toString());
+this->special7= hashMap->get(PaymentGatewayData::SPECIAL7->toString());
     
 
                         if(false)
                         this->special7= empty;
                                 
-this->special8= hashMap->get(PaymentGatewayData::SPECIAL8.toString());
+this->special8= hashMap->get(PaymentGatewayData::SPECIAL8->toString());
     
 
                         if(false)
                         this->special8= empty;
                                 
-this->special9= hashMap->get(PaymentGatewayData::SPECIAL9.toString());
+this->special9= hashMap->get(PaymentGatewayData::SPECIAL9->toString());
     
 
                         if(false)
                         this->special9= empty;
                                 
-this->lastModified= hashMap->get(EntryData::getInstance()->LASTMODIFIED.toString());
+this->lastModified= hashMap->get(EntryData::getInstance()->LASTMODIFIED->toString());
     
 
                         if(false)
                         this->lastModified= empty;
                                 
-this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString());
+this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED->toString());
     
 
                         if(false)
@@ -340,7 +279,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getStoreName(){
+    auto PaymentGateway::getStoreName() -> std::string{
 
 
 
@@ -350,7 +289,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getName(){
+    auto PaymentGateway::getName() -> std::string{
 
 
 
@@ -360,7 +299,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getEnable(){
+    auto PaymentGateway::getEnable() -> std::string{
 
 
 
@@ -370,7 +309,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getPaymentMethod(){
+    auto PaymentGateway::getPaymentMethod() -> std::string{
 
 
 
@@ -380,7 +319,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getMode(){
+    auto PaymentGateway::getMode() -> std::string{
 
 
 
@@ -390,7 +329,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getTestProtocol(){
+    auto PaymentGateway::getTestProtocol() -> std::string{
 
 
 
@@ -400,7 +339,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getTestServer(){
+    auto PaymentGateway::getTestServer() -> std::string{
 
 
 
@@ -410,7 +349,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getTestPort(){
+    auto PaymentGateway::getTestPort() -> std::string{
 
 
 
@@ -420,7 +359,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getTestPath(){
+    auto PaymentGateway::getTestPath() -> std::string{
 
 
 
@@ -430,7 +369,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getServerProtocol(){
+    auto PaymentGateway::getServerProtocol() -> std::string{
 
 
 
@@ -440,7 +379,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getServer(){
+    auto PaymentGateway::getServer() -> std::string{
 
 
 
@@ -450,7 +389,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getServerPort(){
+    auto PaymentGateway::getServerPort() -> std::string{
 
 
 
@@ -460,7 +399,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getServerPath(){
+    auto PaymentGateway::getServerPath() -> std::string{
 
 
 
@@ -470,7 +409,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getUserName(){
+    auto PaymentGateway::getUserName() -> std::string{
 
 
 
@@ -480,7 +419,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getPassword(){
+    auto PaymentGateway::getPassword() -> std::string{
 
 
 
@@ -490,7 +429,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getProxyProtocol(){
+    auto PaymentGateway::getProxyProtocol() -> std::string{
 
 
 
@@ -500,7 +439,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getProxyServer(){
+    auto PaymentGateway::getProxyServer() -> std::string{
 
 
 
@@ -510,7 +449,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getProxyPath(){
+    auto PaymentGateway::getProxyPath() -> std::string{
 
 
 
@@ -520,7 +459,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getProxyPort(){
+    auto PaymentGateway::getProxyPort() -> std::string{
 
 
 
@@ -530,7 +469,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getProxyUserName(){
+    auto PaymentGateway::getProxyUserName() -> std::string{
 
 
 
@@ -540,7 +479,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getProxyPassword(){
+    auto PaymentGateway::getProxyPassword() -> std::string{
 
 
 
@@ -550,7 +489,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getTimeout(){
+    auto PaymentGateway::getTimeout() -> std::string{
 
 
 
@@ -560,7 +499,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getProxyTimeout(){
+    auto PaymentGateway::getProxyTimeout() -> std::string{
 
 
 
@@ -570,7 +509,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial1(){
+    auto PaymentGateway::getSpecial1() -> std::string{
 
 
 
@@ -580,7 +519,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial2(){
+    auto PaymentGateway::getSpecial2() -> std::string{
 
 
 
@@ -590,7 +529,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial3(){
+    auto PaymentGateway::getSpecial3() -> std::string{
 
 
 
@@ -600,7 +539,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial4(){
+    auto PaymentGateway::getSpecial4() -> std::string{
 
 
 
@@ -610,7 +549,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial5(){
+    auto PaymentGateway::getSpecial5() -> std::string{
 
 
 
@@ -620,7 +559,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial6(){
+    auto PaymentGateway::getSpecial6() -> std::string{
 
 
 
@@ -630,7 +569,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial7(){
+    auto PaymentGateway::getSpecial7() -> std::string{
 
 
 
@@ -640,7 +579,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial8(){
+    auto PaymentGateway::getSpecial8() -> std::string{
 
 
 
@@ -650,7 +589,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getSpecial9(){
+    auto PaymentGateway::getSpecial9() -> std::string{
 
 
 
@@ -660,7 +599,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getLastModified(){
+    auto PaymentGateway::getLastModified() -> std::string{
 
 
 
@@ -670,7 +609,7 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: std::string getTimeEntered(){
+    auto PaymentGateway::getTimeEntered() -> std::string{
 
 
 
@@ -680,205 +619,205 @@ this->timeEntered= hashMap->get(EntryData::getInstance()->TIMECREATED.toString()
 }
 
 
-    public: void setEnable(std::string value){
+    auto PaymentGateway::setEnable(std::string value) -> void{
 this->enable= value;
     
 }
 
 
-    public: void setStoreName(std::string value){
+    auto PaymentGateway::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 }
 
 
-    public: void setName(std::string value){
+    auto PaymentGateway::setName(std::string value) -> void{
 this->name= value;
     
 }
 
 
-    public: void setPaymentMethod(std::string value){
+    auto PaymentGateway::setPaymentMethod(std::string value) -> void{
 this->paymentMethod= value;
     
 }
 
 
-    public: void setMode(std::string value){
+    auto PaymentGateway::setMode(std::string value) -> void{
 this->mode= value;
     
 }
 
 
-    public: void setTestProtocol(std::string value){
+    auto PaymentGateway::setTestProtocol(std::string value) -> void{
 this->testProtocol= value;
     
 }
 
 
-    public: void setTestServer(std::string value){
+    auto PaymentGateway::setTestServer(std::string value) -> void{
 this->testServer= value;
     
 }
 
 
-    public: void setTestPort(std::string value){
+    auto PaymentGateway::setTestPort(std::string value) -> void{
 this->testPort= value;
     
 }
 
 
-    public: void setTestPath(std::string value){
+    auto PaymentGateway::setTestPath(std::string value) -> void{
 this->testPath= value;
     
 }
 
 
-    public: void setServerProtocol(std::string value){
+    auto PaymentGateway::setServerProtocol(std::string value) -> void{
 this->serverProtocol= value;
     
 }
 
 
-    public: void setServer(std::string value){
+    auto PaymentGateway::setServer(std::string value) -> void{
 this->server= value;
     
 }
 
 
-    public: void setServerPort(std::string value){
+    auto PaymentGateway::setServerPort(std::string value) -> void{
 this->serverPort= value;
     
 }
 
 
-    public: void setServerPath(std::string value){
+    auto PaymentGateway::setServerPath(std::string value) -> void{
 this->serverPath= value;
     
 }
 
 
-    public: void setTimeout(std::string value){
+    auto PaymentGateway::setTimeout(std::string value) -> void{
 this->timeout= value;
     
 }
 
 
-    public: void setUserName(std::string value){
+    auto PaymentGateway::setUserName(std::string value) -> void{
 this->userName= value;
     
 }
 
 
-    public: void setPassword(std::string value){
+    auto PaymentGateway::setPassword(std::string value) -> void{
 this->password= value;
     
 }
 
 
-    public: void setProxyProtocol(std::string value){
+    auto PaymentGateway::setProxyProtocol(std::string value) -> void{
 this->proxyProtocol= value;
     
 }
 
 
-    public: void setProxyServer(std::string value){
+    auto PaymentGateway::setProxyServer(std::string value) -> void{
 this->proxyServer= value;
     
 }
 
 
-    public: void setProxyPort(std::string value){
+    auto PaymentGateway::setProxyPort(std::string value) -> void{
 this->proxyPort= value;
     
 }
 
 
-    public: void setProxyPath(std::string value){
+    auto PaymentGateway::setProxyPath(std::string value) -> void{
 this->proxyPath= value;
     
 }
 
 
-    public: void setProxyUserName(std::string value){
+    auto PaymentGateway::setProxyUserName(std::string value) -> void{
 this->proxyUserName= value;
     
 }
 
 
-    public: void setProxyPassword(std::string value){
+    auto PaymentGateway::setProxyPassword(std::string value) -> void{
 this->proxyPassword= value;
     
 }
 
 
-    public: void setProxyTimeout(std::string value){
+    auto PaymentGateway::setProxyTimeout(std::string value) -> void{
 this->proxyTimeout= value;
     
 }
 
 
-    public: void setSpecial1(std::string value){
+    auto PaymentGateway::setSpecial1(std::string value) -> void{
 this->special1= value;
     
 }
 
 
-    public: void setSpecial2(std::string value){
+    auto PaymentGateway::setSpecial2(std::string value) -> void{
 this->special2= value;
     
 }
 
 
-    public: void setSpecial3(std::string value){
+    auto PaymentGateway::setSpecial3(std::string value) -> void{
 this->special3= value;
     
 }
 
 
-    public: void setSpecial4(std::string value){
+    auto PaymentGateway::setSpecial4(std::string value) -> void{
 this->special4= value;
     
 }
 
 
-    public: void setSpecial5(std::string value){
+    auto PaymentGateway::setSpecial5(std::string value) -> void{
 this->special5= value;
     
 }
 
 
-    public: void setSpecial6(std::string value){
+    auto PaymentGateway::setSpecial6(std::string value) -> void{
 this->special6= value;
     
 }
 
 
-    public: void setSpecial7(std::string value){
+    auto PaymentGateway::setSpecial7(std::string value) -> void{
 this->special7= value;
     
 }
 
 
-    public: void setSpecial8(std::string value){
+    auto PaymentGateway::setSpecial8(std::string value) -> void{
 this->special8= value;
     
 }
 
 
-    public: void setSpecial9(std::string value){
+    auto PaymentGateway::setSpecial9(std::string value) -> void{
 this->special9= value;
     
 }
 
 
-    public: void setLastModified(std::string value){
+    auto PaymentGateway::setLastModified(std::string value) -> void{
 this->lastModified= value;
     
 }
 
 
-    public: void setTimeEntered(std::string value){
+    auto PaymentGateway::setTimeEntered(std::string value) -> void{
 this->timeEntered= value;
     
 }
@@ -886,7 +825,7 @@ this->timeEntered= value;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto PaymentGateway::toHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -898,73 +837,35 @@ this->timeEntered= value;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(bool isEncrypted){
+    auto PaymentGateway::toHashMap(bool isEncrypted) -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* paymentGatewayHashMap = StdUtil::getInstance()->createHashMap();;
     
 paymentGatewayHashMap->put(EntryData::getInstance()->ENABLE, this->enable);
     
-paymentGatewayHashMap->put(StoreFrontData::getInstance()->NAME.toString(), this->storeName);
+paymentGatewayHashMap->put(StoreFrontData::getInstance()->NAME->toString(), this->storeName);
     
-paymentGatewayHashMap->put(PaymentGatewayData::NAME.toString(), this->getName());
+paymentGatewayHashMap->put(PaymentGatewayData::NAME->toString(), this->getName());
     
-paymentGatewayHashMap->put(PaymentData::METHOD.toString(), this->paymentMethod);
+paymentGatewayHashMap->put(PaymentData::METHOD->toString(), this->paymentMethod);
     
-paymentGatewayHashMap->put(PaymentGatewayData::MODE.toString(), this->mode);
+paymentGatewayHashMap->put(PaymentGatewayData::MODE->toString(), this->mode);
     
-paymentGatewayHashMap->put(PaymentGatewayData::TESTPROTOCOL.toString(), this->testProtocol);
+paymentGatewayHashMap->put(PaymentGatewayData::TESTPROTOCOL->toString(), this->testProtocol);
     
-paymentGatewayHashMap->put(PaymentGatewayData::TESTSERVER.toString(), this->testServer);
+paymentGatewayHashMap->put(PaymentGatewayData::TESTSERVER->toString(), this->testServer);
     
-paymentGatewayHashMap->put(PaymentGatewayData::TESTPORT.toString(), this->testPort);
+paymentGatewayHashMap->put(PaymentGatewayData::TESTPORT->toString(), this->testPort);
     
-paymentGatewayHashMap->put(PaymentGatewayData::TESTPATH.toString(), this->testPath);
+paymentGatewayHashMap->put(PaymentGatewayData::TESTPATH->toString(), this->testPath);
     
-paymentGatewayHashMap->put(PaymentGatewayData::SERVERPROTOCOL.toString(), this->serverProtocol);
+paymentGatewayHashMap->put(PaymentGatewayData::SERVERPROTOCOL->toString(), this->serverProtocol);
     
-paymentGatewayHashMap->put(PaymentGatewayData::SERVER.toString(), this->server);
+paymentGatewayHashMap->put(PaymentGatewayData::SERVER->toString(), this->server);
     
-paymentGatewayHashMap->put(PaymentGatewayData::SERVERPORT.toString(), this->serverPort);
+paymentGatewayHashMap->put(PaymentGatewayData::SERVERPORT->toString(), this->serverPort);
     
-paymentGatewayHashMap->put(PaymentGatewayData::SERVERPATH.toString(), this->serverPath);
-    
-
-                        if(isEncrypted)
-                        
-                                    {
-                                    
-    SuperCrypt* superCrypt = new SuperCrypt(PaymentGatewayData::CRYPTNUM);;
-    
-paymentGatewayHashMap->put(UserData::USERNAME.toString(), superCrypt->encrypt(this->userName));
-    
-paymentGatewayHashMap->put(UserData::PASSWORD.toString(), superCrypt->encrypt(this->password));
-    
-
-                                    }
-                                
-                        else {
-                            paymentGatewayHashMap->put(UserData::USERNAME.toString(), this->userName);
-    
-paymentGatewayHashMap->put(UserData::PASSWORD.toString(), this->password);
-    
-
-                        }
-                            
-paymentGatewayHashMap->put(PaymentGatewayData::TIMEOUT.toString(), this->timeout);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::PROXYPROTOCOL.toString(), this->proxyProtocol);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::PROXYSERVER.toString(), this->proxyServer);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::PROXYPORT.toString(), this->proxyPort);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::PROXYPATH.toString(), this->proxyPath);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::PROXYUSERNAME.toString(), this->proxyUserName);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::PROXYPASSWORD.toString(), this->proxyPassword);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::PROXYTIMEOUT.toString(), this->proxyTimeout);
+paymentGatewayHashMap->put(PaymentGatewayData::SERVERPATH->toString(), this->serverPath);
     
 
                         if(isEncrypted)
@@ -973,48 +874,86 @@ paymentGatewayHashMap->put(PaymentGatewayData::PROXYTIMEOUT.toString(), this->pr
                                     
     SuperCrypt* superCrypt = new SuperCrypt(PaymentGatewayData::CRYPTNUM);;
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL1.toString(), superCrypt->encrypt(this->special1));
+paymentGatewayHashMap->put(UserData::USERNAME->toString(), superCrypt->encrypt(this->userName));
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL2.toString(), superCrypt->encrypt(this->special2));
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL3.toString(), superCrypt->encrypt(this->special3));
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL4.toString(), superCrypt->encrypt(this->special4));
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL5.toString(), superCrypt->encrypt(this->special5));
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL6.toString(), superCrypt->encrypt(this->special6));
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL7.toString(), superCrypt->encrypt(this->special7));
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL8.toString(), superCrypt->encrypt(this->special8));
+paymentGatewayHashMap->put(UserData::PASSWORD->toString(), superCrypt->encrypt(this->password));
     
 
                                     }
                                 
                         else {
-                            paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL1.toString(), this->special1);
+                            paymentGatewayHashMap->put(UserData::USERNAME->toString(), this->userName);
     
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL2.toString(), this->special2);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL3.toString(), this->special3);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL4.toString(), this->special4);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL5.toString(), this->special5);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL6.toString(), this->special6);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL7.toString(), this->special7);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL8.toString(), this->special8);
-    
-paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL9.toString(), this->special9);
+paymentGatewayHashMap->put(UserData::PASSWORD->toString(), this->password);
     
 
                         }
                             
-paymentGatewayHashMap->put(EntryData::getInstance()->LASTMODIFIED.toString(), this->lastModified);
+paymentGatewayHashMap->put(PaymentGatewayData::TIMEOUT->toString(), this->timeout);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::PROXYPROTOCOL->toString(), this->proxyProtocol);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::PROXYSERVER->toString(), this->proxyServer);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::PROXYPORT->toString(), this->proxyPort);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::PROXYPATH->toString(), this->proxyPath);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::PROXYUSERNAME->toString(), this->proxyUserName);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::PROXYPASSWORD->toString(), this->proxyPassword);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::PROXYTIMEOUT->toString(), this->proxyTimeout);
+    
+
+                        if(isEncrypted)
+                        
+                                    {
+                                    
+    SuperCrypt* superCrypt = new SuperCrypt(PaymentGatewayData::CRYPTNUM);;
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL1->toString(), superCrypt->encrypt(this->special1));
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL2->toString(), superCrypt->encrypt(this->special2));
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL3->toString(), superCrypt->encrypt(this->special3));
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL4->toString(), superCrypt->encrypt(this->special4));
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL5->toString(), superCrypt->encrypt(this->special5));
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL6->toString(), superCrypt->encrypt(this->special6));
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL7->toString(), superCrypt->encrypt(this->special7));
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL8->toString(), superCrypt->encrypt(this->special8));
+    
+
+                                    }
+                                
+                        else {
+                            paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL1->toString(), this->special1);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL2->toString(), this->special2);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL3->toString(), this->special3);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL4->toString(), this->special4);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL5->toString(), this->special5);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL6->toString(), this->special6);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL7->toString(), this->special7);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL8->toString(), this->special8);
+    
+paymentGatewayHashMap->put(PaymentGatewayData::SPECIAL9->toString(), this->special9);
+    
+
+                        }
+                            
+paymentGatewayHashMap->put(EntryData::getInstance()->LASTMODIFIED->toString(), this->lastModified);
     
 
 
@@ -1025,7 +964,7 @@ paymentGatewayHashMap->put(EntryData::getInstance()->LASTMODIFIED.toString(), th
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto PaymentGateway::toVector() -> BasicArrayList*{
 
 
 
@@ -1035,7 +974,7 @@ paymentGatewayHashMap->put(EntryData::getInstance()->LASTMODIFIED.toString(), th
 }
 
 
-    public: BasicArrayList* toVector(bool isEncrypted){
+    auto PaymentGateway::toVector(bool isEncrypted) -> BasicArrayList*{
 
     BasicArrayList* updateVector = new BasicArrayListD();;
     
@@ -1164,7 +1103,7 @@ updateVector->add(this->special9);
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto PaymentGateway::getKey() -> Object*{
 
 
 
@@ -1174,7 +1113,6 @@ updateVector->add(this->special9);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABSTRINGCOMPONENT_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABSTRINGCOMPONENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/ABStringComponent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -37,13 +47,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ABStringComponent
-            : public Object
-         {
+auto ABStringComponent::NULL_STRING_COMPONENT_owner() -> ABStringComponent* { static std::unique_ptr<ABStringComponent> value(new ABStringComponent(BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE)); return value.get(); }
+ABStringComponent* ABStringComponent::NULL_STRING_COMPONENT = ABStringComponent::NULL_STRING_COMPONENT_owner();
 
-    public: static ABStringComponent* NULL_STRING_COMPONENT() { static std::unique_ptr<ABStringComponent> value(new ABStringComponent(BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE)); return value.get(); }
-
-    public: BasicColor* getBackgroundBasicColor(){
+    auto ABStringComponent::getBackgroundBasicColor() -> BasicColor*{
 
 
 
@@ -53,11 +60,11 @@ class ABStringComponent
 }
 
 
-public: ABStringComponent(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
+ABStringComponent::ABStringComponent(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
 }
 
 
-    public: BasicColor* getForegroundBasicColor(){
+    auto ABStringComponent::getForegroundBasicColor() -> BasicColor*{
 
 
 
@@ -67,11 +74,10 @@ public: ABStringComponent(BasicColor* backgroundBasicColor, BasicColor* foregrou
 }
 
 
-    public: void setForegroundBasicColor(BasicColor* foregroundBasicColor){
+    auto ABStringComponent::setForegroundBasicColor(BasicColor* foregroundBasicColor) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABSTRINGCOMPONENT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointLayerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,71 +79,8 @@
 #include "org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h"
 #include "org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h"
 
-class WaypointLayerInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList) = 0;
 
-    public: virtual BasicArrayList* getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void setClosestGeographicMapCellHistory(BasicArrayList* pathsList) = 0;
-
-    public: virtual void teleportTo(GeographicMapCellPosition* geographicMapCellPosition) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void setLoad(int32_t resource) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getSurroundingGeographicMapCellPositionList() = 0;
-
-    public: virtual bool isSelected() = 0;
-
-    public: virtual bool shouldAddWaypointFromBuilding() = 0;
-
-    public: virtual bool isShowMoreCaptionStates() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void trackTo(std::string reason) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void trackToDXY(int32_t dx, int32_t dy) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition) = 0;
-
-    public: virtual TrackingEvent* getTrackingEvent() = 0;
-
-    public: virtual void allStop() = 0;
-
-    public: virtual bool isWaypointListEmptyOrOnlyTargets() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual GeographicMapCellPosition* getCurrentGeographicMapCellPosition() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual GeographicMapCellPosition* getTopLeftGeographicMapCellPosition() = 0;
-
-    public: virtual CaptionAnimationHelperBase* getCaptionAnimationHelper() = 0;
-
-    public: virtual WaypointBehaviorBase* getWaypointBehavior() = 0;
-
-    public: virtual WaypointLogHelper* getWaypointLogHelper() = 0;
-
-    public: virtual Waypoint2LogHelper* getWaypoint2LogHelper() = 0;
-
-    public: virtual WaypointRunnableLogHelper* getWaypointRunnableLogHelper() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VECTORUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_VECTORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/VectorUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,23 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VectorUtil
-            : public Object
-         {
 
-    private: static VectorUtil* instance() { static std::unique_ptr<VectorUtil> value(new VectorUtil()); return value.get(); }
+VectorUtil::VectorUtil() {
+        }
+        auto VectorUtil::instance_owner() -> VectorUtil* { static std::unique_ptr<VectorUtil> value(new VectorUtil()); return value.get(); }
+VectorUtil* VectorUtil::instance = VectorUtil::instance_owner();
 
-    public: static VectorUtil* getInstance(){
+    auto VectorUtil::getInstance() -> VectorUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorUtil::instance();
+                        return VectorUtil::instance;
     
 }
 
 
-    public: int32_t getSize(Object* anyType){
+    auto VectorUtil::getSize(Object* anyType) -> int32_t{
 
     Vector<Object*>* vector = dynamic_cast<Vector<Object*>*>(anyType);;
     
@@ -80,7 +90,7 @@ class VectorUtil
 }
 
 
-    public: Object* elementAt(Object* anyType, int32_t index){
+    auto VectorUtil::elementAt(Object* anyType, int32_t index) -> Object*{
 
     Vector<Object*>* vector = dynamic_cast<Vector<Object*>*>(anyType);;
     
@@ -93,7 +103,6 @@ class VectorUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VECTORUTIL_CPP

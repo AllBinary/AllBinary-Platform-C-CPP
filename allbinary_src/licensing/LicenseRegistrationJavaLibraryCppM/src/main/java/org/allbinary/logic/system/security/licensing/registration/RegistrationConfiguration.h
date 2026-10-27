@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,41 +37,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/DataInputStream.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
 #include <java/io/OutputStream.h>
-
-      
-#include <org/allbinary/logic/io/AbDataOutputStream.h>
-
-      
-#include <org/allbinary/logic/io/FileStreamFactory.h>
-
-      
-#include <org/allbinary/logic/io/StreamUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/FileFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
+class AbDataOutputStream;
+class FileStreamFactory;
+class StreamUtil;
+class FileFactory;
+class CommonStrings;
+class StringMaker;
+class StringUtil;
+class LogUtil;
+class PreLogUtil;
 
 
 
@@ -86,15 +67,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RegistrationConfiguration
-            : public Object
+            : public virtual Object
          {
 
-    private: static RegistrationConfiguration* SINGLETON() { static std::unique_ptr<RegistrationConfiguration> value(new RegistrationConfiguration()); return value.get(); }
+    private: static RegistrationConfiguration* SINGLETON_owner();
+    private: static RegistrationConfiguration* SINGLETON;
 
     public: static RegistrationConfiguration* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string registrationCode = "No Registration Code";
 
@@ -124,3 +110,46 @@ private: RegistrationConfiguration();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_H_COMPLETE
+        #if __has_include(<java/io/DataInputStream.h>)
+#include <java/io/DataInputStream.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<java/io/OutputStream.h>)
+#include <java/io/OutputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/AbDataOutputStream.h>)
+#include <org/allbinary/logic/io/AbDataOutputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/FileStreamFactory.h>)
+#include <org/allbinary/logic/io/FileStreamFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
+#include <org/allbinary/logic/io/StreamUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileFactory.h>)
+#include <org/allbinary/logic/io/file/FileFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+
+        #endif
+    

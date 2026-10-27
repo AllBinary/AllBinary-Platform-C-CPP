@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_STATE_GAMESTATEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_STATE_GAMESTATEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/state/GameStateFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/state/GameState.h"
 
-class GameStateFactory
-            : public Object
-         {
+Object* GameStateFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameStateFactory* getInstance(){
+    auto GameStateFactory::getInstance() -> GameStateFactory*{
 
                         if(GameStateFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -74,21 +80,11 @@ class GameStateFactory
 }
 
 
-    private: int32_t index = 0;
-
-    public: GameState* NO_GAME_STATE = this->createGameState("NO_GAME_STATE");
-
-    public: GameState* PLAYING_GAME_STATE = this->createGameState("PLAYING_GAME_STATE");
-
-    public: GameState* SHOW_END_RESULT_GAME_STATE = this->createGameState("SHOW_END_RESULT_GAME_STATE");
-
-    public: GameState* SHOW_HIGH_SCORE_GAME_STATE = this->createGameState("SHOW_HIGH_SCORE_GAME_STATE");
-
-private: GameStateFactory(){
+GameStateFactory::GameStateFactory() : NO_GAME_STATE(this->createGameState("NO_GAME_STATE")), PLAYING_GAME_STATE(this->createGameState("PLAYING_GAME_STATE")), SHOW_END_RESULT_GAME_STATE(this->createGameState("SHOW_END_RESULT_GAME_STATE")), SHOW_HIGH_SCORE_GAME_STATE(this->createGameState("SHOW_HIGH_SCORE_GAME_STATE")){
 }
 
 
-    public: GameState* createGameState(std::string name){
+    auto GameStateFactory::createGameState(std::string name) -> GameState*{
 
 
 
@@ -98,7 +94,6 @@ private: GameStateFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_STATE_GAMESTATEFACTORY_CPP

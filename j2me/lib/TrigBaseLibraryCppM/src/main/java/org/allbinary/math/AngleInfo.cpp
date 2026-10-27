@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_ANGLEINFO_CPP
+        #define ORG_ALLBINARY_MATH_ANGLEINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/AngleInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,11 +76,8 @@
 #include "org/allbinary/math/AngleIncrementInfoFactory.h"
 #include "org/allbinary/math/FrameUtil.h"
 
-class AngleInfo
-            : public Object
-         {
 
-    public: static AngleInfo* getInstance(int16_t angleIncrement){
+    auto AngleInfo::getInstance(int16_t angleIncrement) -> AngleInfo*{
 
 
 
@@ -80,21 +87,13 @@ class AngleInfo
 }
 
 
-    private: static inline const std::string ANGLE = "Angle: ";
-
-    private: AngleIncrementInfo* angleIncrementInfo;
-
-    private: int16_t angle = 0;
-
-private: AngleInfo(AngleIncrementInfo* angleIncrementInfo){
+AngleInfo::AngleInfo(AngleIncrementInfo* angleIncrementInfo) : frameUtil(FrameUtil::getInstance()){
 this->angleIncrementInfo= angleIncrementInfo;
     
 }
 
 
-    private: FrameUtil* frameUtil = FrameUtil::getInstance();
-
-    public: void adjustAngle(int32_t frame){
+    auto AngleInfo::adjustAngle(int32_t frame) -> void{
 
     int32_t newAngle = this->angleIncrementInfo->getAngleIncrement() *frame -90;;
     
@@ -103,7 +102,7 @@ this->setAngle(this->frameUtil->adjustAngleToFrameAngle(newAngle));
 }
 
 
-    public: int16_t getAngle(){
+    auto AngleInfo::getAngle() -> int16_t{
 
 
 
@@ -113,13 +112,13 @@ this->setAngle(this->frameUtil->adjustAngleToFrameAngle(newAngle));
 }
 
 
-    public: void setAngle(int16_t angle){
+    auto AngleInfo::setAngle(int16_t angle) -> void{
 this->angle= angle;
     
 }
 
 
-    public: AngleIncrementInfo* getAngleIncrementInfo(){
+    auto AngleInfo::getAngleIncrementInfo() -> AngleIncrementInfo*{
 
 
 
@@ -129,7 +128,7 @@ this->angle= angle;
 }
 
 
-    public: std::string toString(){
+    auto AngleInfo::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -150,7 +149,6 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getAngleIncrement
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_ANGLEINFO_CPP

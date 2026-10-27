@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGenerator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,15 +80,8 @@
         #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBase.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
-class CustomMapGenerator: public CustomMapGeneratorBase {
 
-    private: std::vector<std::vector<int32_t>> customMapArray;
-
-    private: RaceTrackGeographicMap* raceTrackGeographicMap;
-
-    private: GeographicMapCellTypeFactory* geographicMapCellTypeFactory;
-
-public: CustomMapGenerator(RaceTrackGeographicMap* raceTrackGeographicMap){
+CustomMapGenerator::CustomMapGenerator(RaceTrackGeographicMap* raceTrackGeographicMap) : dropCellPositionHistory(DropCellPositionHistory::getInstance()){
 this->raceTrackGeographicMap= raceTrackGeographicMap;
     
 this->geographicMapCellTypeFactory= this->raceTrackGeographicMap->getGeographicMapCellTypeFactory();
@@ -98,7 +101,7 @@ this->customMapArray= std::vector<std::vector<int32_t>>(mapArray.length, std::ve
                                     
 
 
-                            throw new Exception("Array Incorrect");
+                            throw Exception("Array Incorrect");
                     
 
                                     }
@@ -108,7 +111,7 @@ this->customMapArray= std::vector<std::vector<int32_t>>(mapArray.length, std::ve
 
                 //@Throws(Exception.constructor)
             
-    public: void copyMapIntoCustomMap(){
+    auto CustomMapGenerator::copyMapIntoCustomMap() -> void{
 
     std::vector<std::vector<int32_t>> mapArray = this->raceTrackGeographicMap->getRaceTrackData()->getMapArray();;
     
@@ -138,11 +141,9 @@ this->customMapArray[index][index2]= this->getCustomType(index2, index, mapArray
 }
 
 
-    private: DropCellPositionHistory* dropCellPositionHistory = DropCellPositionHistory::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: int32_t getCustomType(int32_t column, int32_t row, int32_t currentType){
+    auto CustomMapGenerator::getCustomType(int32_t column, int32_t row, int32_t currentType) -> int32_t{
 
     int32_t emptyType = this->geographicMapCellTypeFactory->getEmptyType();;
     
@@ -200,7 +201,7 @@ this->customMapArray[index][index2]= this->getCustomType(index2, index, mapArray
 }
 
 
-    public: std::vector<std::vector<int32_t>> getCustomMapArray(){
+    auto CustomMapGenerator::getCustomMapArray() -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -210,7 +211,6 @@ this->customMapArray[index][index2]= this->getCustomType(index2, index, mapArray
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATOR_CPP

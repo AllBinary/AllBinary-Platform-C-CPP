@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/AbFileNativeUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/AbFile.h"
 
-class AbFileNativeUtil
-            : public Object
-         {
 
-    public: static File* get(AbFile* file){
+AbFileNativeUtil::AbFileNativeUtil() {
+        }
+        
+    auto AbFileNativeUtil::get(AbFile* file) -> File*{
 
 
 
@@ -63,7 +73,6 @@ class AbFileNativeUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_CPP

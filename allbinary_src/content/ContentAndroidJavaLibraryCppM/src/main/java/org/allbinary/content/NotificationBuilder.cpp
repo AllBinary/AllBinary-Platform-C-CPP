@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDER_CPP
+        #define ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/content/NotificationBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,13 +72,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NotificationBuilder
-            : public Object
-         {
 
-    public: static NotificationBuilder* NULL_NOTIFICATION_BUILDER() { static std::unique_ptr<NotificationBuilder> value(new NotificationBuilder()); return value.get(); }
+NotificationBuilder::NotificationBuilder() {
+        }
+        auto NotificationBuilder::NULL_NOTIFICATION_BUILDER_owner() -> NotificationBuilder* { static std::unique_ptr<NotificationBuilder> value(new NotificationBuilder()); return value.get(); }
+NotificationBuilder* NotificationBuilder::NULL_NOTIFICATION_BUILDER = NotificationBuilder::NULL_NOTIFICATION_BUILDER_owner();
 
-    public: Parcelable* build(Context* context, Command* command, std::string message, int32_t integer, PendingIntent* pendingIntent){
+    auto NotificationBuilder::build(Context* context, Command* command, std::string message, int32_t integer, PendingIntent* pendingIntent) -> Parcelable*{
 
 
 
@@ -78,7 +88,6 @@ class NotificationBuilder
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDER_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvertisementCampaignData
-            : public Object
+            : public virtual Object
          {
 
-    private: static AdvertisementCampaignData* instance() { static std::unique_ptr<AdvertisementCampaignData> value(new AdvertisementCampaignData()); return value.get(); }
+    private: static AdvertisementCampaignData* instance_owner();
+    private: static AdvertisementCampaignData* instance;
 
     public: static AdvertisementCampaignData* getInstance();
 
@@ -70,3 +80,10 @@ private: AdvertisementCampaignData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_PLATFORMKEYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_PLATFORMKEYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/PlatformKeyFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,12 @@
 #include "org/allbinary/game/input/J2MEKeyFactory.h"
 #include "org/allbinary/game/input/Input.h"
 
-class PlatformKeyFactory
-            : public Object
-         {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+PlatformKeyFactory::PlatformKeyFactory() {
+        }
+        Object* PlatformKeyFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static PlatformKeyFactory* getInstance(){
+    auto PlatformKeyFactory::getInstance() -> PlatformKeyFactory*{
 
                         if(PlatformKeyFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -76,7 +85,7 @@ class PlatformKeyFactory
 }
 
 
-    public: std::string getString(int32_t keyCode){
+    auto PlatformKeyFactory::getString(int32_t keyCode) -> std::string{
 
 
 
@@ -86,7 +95,7 @@ class PlatformKeyFactory
 }
 
 
-    public: bool isSubmission(Input* input){
+    auto PlatformKeyFactory::isSubmission(Input* input) -> bool{
 
 
 
@@ -96,7 +105,7 @@ class PlatformKeyFactory
 }
 
 
-    public: bool isDelete(Input* input){
+    auto PlatformKeyFactory::isDelete(Input* input) -> bool{
 
 
 
@@ -106,7 +115,7 @@ class PlatformKeyFactory
 }
 
 
-    public: bool isBackSpace(Input* input){
+    auto PlatformKeyFactory::isBackSpace(Input* input) -> bool{
 
 
 
@@ -116,7 +125,7 @@ class PlatformKeyFactory
 }
 
 
-    public: bool isLeft(Input* input){
+    auto PlatformKeyFactory::isLeft(Input* input) -> bool{
 
 
 
@@ -126,7 +135,7 @@ class PlatformKeyFactory
 }
 
 
-    public: bool isRight(Input* input){
+    auto PlatformKeyFactory::isRight(Input* input) -> bool{
 
 
 
@@ -136,7 +145,7 @@ class PlatformKeyFactory
 }
 
 
-    public: bool isUp(Input* input){
+    auto PlatformKeyFactory::isUp(Input* input) -> bool{
 
 
 
@@ -146,7 +155,7 @@ class PlatformKeyFactory
 }
 
 
-    public: bool isDown(Input* input){
+    auto PlatformKeyFactory::isDown(Input* input) -> bool{
 
 
 
@@ -156,7 +165,7 @@ class PlatformKeyFactory
 }
 
 
-    public: bool isEnter(Input* input){
+    auto PlatformKeyFactory::isEnter(Input* input) -> bool{
 
 
 
@@ -166,7 +175,6 @@ class PlatformKeyFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_PLATFORMKEYFACTORY_CPP

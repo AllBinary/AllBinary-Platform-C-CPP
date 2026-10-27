@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_ROTATEJDIALOG_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_ROTATEJDIALOG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/dialog/RotateJDialog.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -83,42 +93,8 @@
 #include "org/allbinary/graphics/j2me/dialog/WindowAdapter.h"
 #include "org/allbinary/graphics/j2me/dialog/WindowEvent.h"
 
-class RotateJDialog: public javax::swing::JDialog {
 
-    public: static void main(std::vector<std::string> args){
-java.awt.EventQueue.invokeLater(class extends ARunnable
-                                {
-                                
-    public: void run(){
-
-    RotateJDialog* dialog = new RotateJDialog(new javax::swing::JFrame(), true);;
-    
-dialog->addWindowListener(class extends java::awt::event::WindowAdapter
-                                {
-                                
-    public: void windowClosing(java::awt::event::WindowEvent* e){
-System.exit(0);
-    
-}
-
-                                }
-                            );
-    
-dialog->setVisible(true);
-    
-}
-
-                                }
-                            );
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
-
-public: RotateJDialog(java::awt::Frame* parent, bool modal) : javax::swing::JDialog(parent, modal){
+RotateJDialog::RotateJDialog(java::awt::Frame* parent, bool modal) : javax::swing::JDialog(parent, modal), logUtil(LogUtil::getInstance()), hashMap(StdUtil::getInstance()->createHashMap()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -130,7 +106,7 @@ this->initComponents();
 }
 
 
-    private: void initComponents(){
+    auto RotateJDialog::initComponents() -> void{
 angleIncrementJTextField= new javax::swing::JTextField();
     
 this->jLabel1= new javax::swing::JLabel();
@@ -143,7 +119,7 @@ this->jPanel1= new javax::swing::JPanel();
     
 this->jButton1= new javax::swing::JButton();
     
-setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+setDefaultCloseOperation(javax.swing->WindowConstants->DISPOSE_ON_CLOSE);
     
 this->angleIncrementJTextField->setText("36");
     
@@ -171,25 +147,25 @@ jButton1ActionPerformed(evt);
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addGap(62, 62, 62)->addComponent(jButton1)->addContainerGap(62, Short::MAX_VALUE)));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addGap(62, 62, 62)->addComponent(jButton1)->addContainerGap(62, Short::MAX_VALUE)));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(jButton1));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(jButton1));
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(getContentPane());;
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)->addComponent(jLabel1)->addComponent(jLabel2))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(totalRotationJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short::MAX_VALUE)->addComponent(angleIncrementJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))->addContainerGap())->addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->TRAILING)->addComponent(jLabel1)->addComponent(jLabel2))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->UNRELATED)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(totalRotationJTextField, javax.swing->GroupLayout->Alignment->TRAILING, javax.swing->GroupLayout->DEFAULT_SIZE, 31, Short::MAX_VALUE)->addComponent(angleIncrementJTextField, javax.swing->GroupLayout->Alignment->TRAILING, javax.swing->GroupLayout->PREFERRED_SIZE, 31, javax.swing->GroupLayout->PREFERRED_SIZE))->addContainerGap())->addComponent(jPanel1, javax.swing->GroupLayout->Alignment->TRAILING, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(angleIncrementJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(jLabel1))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(totalRotationJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(jLabel2))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short::MAX_VALUE)->addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addContainerGap()));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(angleIncrementJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel1))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(totalRotationJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel2))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 16, Short::MAX_VALUE)->addComponent(jPanel1, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addContainerGap()));
     
 pack();
     
 }
 
 
-    private: void jButton1ActionPerformed(java::awt::event::ActionEvent* evt){
+    auto RotateJDialog::jButton1ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->hashMap->put(Integer.valueOf(0)Integer.valueOf(this->angleIncrementJTextField->getText()));
@@ -216,19 +192,35 @@ this->logUtil->putF(commonStrings->EXCEPTION, this, "jButton1ActionPerformed");
 }
 
 
-    private: javax::swing::JTextField* angleIncrementJTextField;
+    auto RotateJDialog::main(std::vector<std::string> args) -> void{
+java.awt->EventQueue->invokeLater(class extends ARunnable
+                                {
+                                
+    public: void run(){
 
-    private: javax::swing::JButton* jButton1;
+    RotateJDialog* dialog = new RotateJDialog(new javax::swing::JFrame(), true);;
+    
+dialog->addWindowListener(class extends java::awt::event::WindowAdapter
+                                {
+                                
+    public: void windowClosing(java::awt::event::WindowEvent* e){
+System.exit(0);
+    
+}
 
-    private: javax::swing::JLabel* jLabel1;
+                                }
+                            );
+    
+dialog->setVisible(true);
+    
+}
 
-    private: javax::swing::JLabel* jLabel2;
+                                }
+                            );
+    
+}
 
-    private: javax::swing::JPanel* jPanel1;
 
-    private: javax::swing::JTextField* totalRotationJTextField;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_ROTATEJDIALOG_CPP

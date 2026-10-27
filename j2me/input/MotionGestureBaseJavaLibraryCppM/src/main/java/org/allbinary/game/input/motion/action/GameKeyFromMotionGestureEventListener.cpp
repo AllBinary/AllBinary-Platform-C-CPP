@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYFROMMOTIONGESTUREEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYFROMMOTIONGESTUREEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/motion/action/GameKeyFromMotionGestureEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,19 +86,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 
-class GameKeyFromMotionGestureEventListener: public CompleteMotionGestureInputEventListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameKeyEvent* previousGameKeyEvent = GameKeyEvent::NONE;
-
-    public: void onEvent(AllBinaryEventObject* eventObject){
+GameKeyFromMotionGestureEventListener::GameKeyFromMotionGestureEventListener() : logUtil(LogUtil::getInstance()), previousGameKeyEvent(GameKeyEvent::NONE) {
+        }
+        
+    auto GameKeyFromMotionGestureEventListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent){
+    auto GameKeyFromMotionGestureEventListener::onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent) -> void{
 
         try {
             
@@ -140,7 +148,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "onCompleteMotionGestureInput
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYFROMMOTIONGESTUREEVENTLISTENER_CPP

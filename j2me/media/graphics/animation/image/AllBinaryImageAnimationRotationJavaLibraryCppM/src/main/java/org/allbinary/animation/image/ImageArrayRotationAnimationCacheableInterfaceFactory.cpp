@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLEINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLEINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheableInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,13 +67,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
 
-class ImageArrayRotationAnimationCacheableInterfaceFactory
-            : public Object
-        , public CacheableInterfaceFactoryInterface {
 
+ImageArrayRotationAnimationCacheableInterfaceFactory::ImageArrayRotationAnimationCacheableInterfaceFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface* getInstance(Object* key){
+    auto ImageArrayRotationAnimationCacheableInterfaceFactory::getInstance(Object* key) -> CacheableInterface*{
 
 
 
@@ -73,7 +83,6 @@ class ImageArrayRotationAnimationCacheableInterfaceFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLEINTERFACEFACTORY_CPP

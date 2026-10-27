@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/BasicItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -95,79 +105,10 @@
         #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
 #include "org/allbinary/business/user/commerce/inventory/item/BasicItemData.h"
 
-class BasicItem
-            : public Object
-        , public ItemInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+BasicItem::BasicItem(HashMap<Object*, Object*>* itemHashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), basicItemData(BasicItemData::getInstance()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    protected: std::string itemId;
-
-    protected: std::string number;
-
-    protected: std::string inBaskets;
-
-    protected: std::string weight;
-
-    protected: std::string enabled;
-
-    protected: std::string newOrUsed;
-
-    protected: std::string summary;
-
-    protected: std::string distributor;
-
-    protected: std::string idUsedByDistributor;
-
-    protected: std::string producedBy;
-
-    protected: std::string productionDate;
-
-    protected: std::string startProductionDate;
-
-    protected: std::string description;
-
-    protected: std::string keywords;
-
-    protected: std::string category;
-
-    protected: std::string type;
-
-    protected: std::string smallImage;
-
-    protected: std::string mediumImage;
-
-    protected: std::string largeImage;
-
-    protected: Money* price;
-
-    protected: std::string comment;
-
-    protected: std::string customs;
-
-    private: std::string downloads;
-
-    protected: std::string groups;
-
-    protected: std::string options;
-
-    protected: std::string permissions;
-
-    protected: std::string specials;
-
-    private: bool downloadable= false;
-
-    protected: std::string timeEntered;
-
-    protected: std::string lastModified;
-
-public: BasicItem(HashMap<Object*, Object*>* itemHashMap){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "Constructor(HashMap)");
@@ -236,9 +177,9 @@ this->specials= itemHashMap->get(basicItemData->SPECIALS);
 }
 
 
-public: BasicItem(){
+BasicItem::BasicItem() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), basicItemData(BasicItemData::getInstance()){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -310,145 +251,145 @@ this->specials= EMPTY;
 }
 
 
-    public: void setId(std::string itemId){
+    auto BasicItem::setId(std::string itemId) -> void{
 this->itemId= itemId;
     
 }
 
 
-    public: void setNumber(std::string number){
+    auto BasicItem::setNumber(std::string number) -> void{
 this->number= number;
     
 }
 
 
-    public: void setInBaskets(std::string value){
+    auto BasicItem::setInBaskets(std::string value) -> void{
 this->inBaskets= value;
     
 }
 
 
-    public: void setWeight(std::string value){
+    auto BasicItem::setWeight(std::string value) -> void{
 this->weight= value;
     
 }
 
 
-    public: void setNewOrUsed(std::string value){
+    auto BasicItem::setNewOrUsed(std::string value) -> void{
 this->newOrUsed= value;
     
 }
 
 
-    public: void setSummary(std::string value){
+    auto BasicItem::setSummary(std::string value) -> void{
 this->summary= value;
     
 }
 
 
-    public: void setDistributor(std::string value){
+    auto BasicItem::setDistributor(std::string value) -> void{
 this->distributor= value;
     
 }
 
 
-    public: void setIdUsedByDistributor(std::string value){
+    auto BasicItem::setIdUsedByDistributor(std::string value) -> void{
 this->idUsedByDistributor= value;
     
 }
 
 
-    public: void setProducedBy(std::string value){
+    auto BasicItem::setProducedBy(std::string value) -> void{
 this->producedBy= value;
     
 }
 
 
-    public: void setProductionDate(std::string value){
+    auto BasicItem::setProductionDate(std::string value) -> void{
 this->productionDate= value;
     
 }
 
 
-    public: void setStartProductionDate(std::string value){
+    auto BasicItem::setStartProductionDate(std::string value) -> void{
 this->startProductionDate= value;
     
 }
 
 
-    public: void setDescription(std::string value){
+    auto BasicItem::setDescription(std::string value) -> void{
 this->description= value;
     
 }
 
 
-    public: void setKeywords(std::string value){
+    auto BasicItem::setKeywords(std::string value) -> void{
 this->keywords= value;
     
 }
 
 
-    public: void setCategory(std::string value){
+    auto BasicItem::setCategory(std::string value) -> void{
 this->category= value;
     
 }
 
 
-    public: void setType(std::string value){
+    auto BasicItem::setType(std::string value) -> void{
 this->type= value;
     
 }
 
 
-    public: void setSmallImage(std::string value){
+    auto BasicItem::setSmallImage(std::string value) -> void{
 this->smallImage= value;
     
 }
 
 
-    public: void setMediumImage(std::string value){
+    auto BasicItem::setMediumImage(std::string value) -> void{
 this->mediumImage= value;
     
 }
 
 
-    public: void setLargeImage(std::string value){
+    auto BasicItem::setLargeImage(std::string value) -> void{
 this->largeImage= value;
     
 }
 
 
-    public: void setTimeEntered(std::string value){
+    auto BasicItem::setTimeEntered(std::string value) -> void{
 this->timeEntered= value;
     
 }
 
 
-    public: void setLastModified(std::string value){
+    auto BasicItem::setLastModified(std::string value) -> void{
 this->lastModified= value;
     
 }
 
 
-    public: void setPrice(Money* value){
+    auto BasicItem::setPrice(Money* value) -> void{
 this->price= value;
     
 }
 
 
-    public: void setComment(std::string value){
+    auto BasicItem::setComment(std::string value) -> void{
 this->comment= value;
     
 }
 
 
-    public: void setCustoms(std::string value){
+    auto BasicItem::setCustoms(std::string value) -> void{
 this->customs= value;
     
 }
 
 
-    public: void setDownloads(std::string value){
+    auto BasicItem::setDownloads(std::string value) -> void{
 this->downloads= value;
     
 
@@ -473,37 +414,37 @@ this->downloads= value;
 }
 
 
-    public: void setGroups(std::string value){
+    auto BasicItem::setGroups(std::string value) -> void{
 this->groups= value;
     
 }
 
 
-    public: void setOptions(std::string value){
+    auto BasicItem::setOptions(std::string value) -> void{
 this->options= value;
     
 }
 
 
-    public: void setPermissions(std::string value){
+    auto BasicItem::setPermissions(std::string value) -> void{
 this->permissions= value;
     
 }
 
 
-    public: void setSpecials(std::string value){
+    auto BasicItem::setSpecials(std::string value) -> void{
 this->specials= value;
     
 }
 
 
-    public: void setEnabled(std::string value){
+    auto BasicItem::setEnabled(std::string value) -> void{
 this->enabled= value;
     
 }
 
 
-    public: std::string getId(){
+    auto BasicItem::getId() -> std::string{
 
 
 
@@ -513,7 +454,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getNumber(){
+    auto BasicItem::getNumber() -> std::string{
 
 
 
@@ -523,7 +464,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getInBaskets(){
+    auto BasicItem::getInBaskets() -> std::string{
 
 
 
@@ -533,7 +474,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getWeight(){
+    auto BasicItem::getWeight() -> std::string{
 
 
 
@@ -543,7 +484,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getNewOrUsed(){
+    auto BasicItem::getNewOrUsed() -> std::string{
 
 
 
@@ -553,7 +494,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getSummary(){
+    auto BasicItem::getSummary() -> std::string{
 
 
 
@@ -563,7 +504,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getDistributor(){
+    auto BasicItem::getDistributor() -> std::string{
 
 
 
@@ -573,7 +514,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getIdUsedByDistributor(){
+    auto BasicItem::getIdUsedByDistributor() -> std::string{
 
 
 
@@ -583,7 +524,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getProducedBy(){
+    auto BasicItem::getProducedBy() -> std::string{
 
 
 
@@ -593,7 +534,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getProductionDate(){
+    auto BasicItem::getProductionDate() -> std::string{
 
 
 
@@ -603,7 +544,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getStartProductionDate(){
+    auto BasicItem::getStartProductionDate() -> std::string{
 
 
 
@@ -613,7 +554,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getDescription(){
+    auto BasicItem::getDescription() -> std::string{
 
 
 
@@ -623,7 +564,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getKeywords(){
+    auto BasicItem::getKeywords() -> std::string{
 
 
 
@@ -633,7 +574,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getCategory(){
+    auto BasicItem::getCategory() -> std::string{
 
 
 
@@ -643,7 +584,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getType(){
+    auto BasicItem::getType() -> std::string{
 
 
 
@@ -653,7 +594,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getSmallImage(){
+    auto BasicItem::getSmallImage() -> std::string{
 
 
 
@@ -663,7 +604,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getMediumImage(){
+    auto BasicItem::getMediumImage() -> std::string{
 
 
 
@@ -673,7 +614,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getLargeImage(){
+    auto BasicItem::getLargeImage() -> std::string{
 
 
 
@@ -683,7 +624,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getTimeEntered(){
+    auto BasicItem::getTimeEntered() -> std::string{
 
 
 
@@ -693,7 +634,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getLastModified(){
+    auto BasicItem::getLastModified() -> std::string{
 
 
 
@@ -703,7 +644,7 @@ this->enabled= value;
 }
 
 
-    public: Money* getPrice(){
+    auto BasicItem::getPrice() -> Money*{
 
 
 
@@ -713,7 +654,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getComment(){
+    auto BasicItem::getComment() -> std::string{
 
 
 
@@ -723,7 +664,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getCustoms(){
+    auto BasicItem::getCustoms() -> std::string{
 
 
 
@@ -733,7 +674,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getDownloads(){
+    auto BasicItem::getDownloads() -> std::string{
 
 
 
@@ -743,7 +684,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getGroups(){
+    auto BasicItem::getGroups() -> std::string{
 
 
 
@@ -753,7 +694,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getOptions(){
+    auto BasicItem::getOptions() -> std::string{
 
 
 
@@ -763,7 +704,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getPermissions(){
+    auto BasicItem::getPermissions() -> std::string{
 
 
 
@@ -773,7 +714,7 @@ this->enabled= value;
 }
 
 
-    public: std::string getSpecials(){
+    auto BasicItem::getSpecials() -> std::string{
 
 
 
@@ -783,13 +724,13 @@ this->enabled= value;
 }
 
 
-    public: void setDownloadable(bool downloadable){
+    auto BasicItem::setDownloadable(bool downloadable) -> void{
 this->downloadable= downloadable;
     
 }
 
 
-    public: bool isDownloadable(){
+    auto BasicItem::isDownloadable() -> bool{
 
 
 
@@ -799,7 +740,7 @@ this->downloadable= downloadable;
 }
 
 
-    public: std::string getEnabled(){
+    auto BasicItem::getEnabled() -> std::string{
 
 
 
@@ -809,7 +750,7 @@ this->downloadable= downloadable;
 }
 
 
-    public: Money* getTotal(){
+    auto BasicItem::getTotal() -> Money*{
 
     Money* itemTotal = new Money(this->price);;
     
@@ -824,9 +765,9 @@ itemTotal->multiply((int32_t(this->number)).intValue());
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto BasicItem::toHashMap() -> HashMap<Object*, Object*>*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toHashMap");
@@ -908,9 +849,9 @@ hashMap->put(basicItemData->SPECIALS, this->specials);
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto BasicItem::toVector() -> BasicArrayList*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "toVector");
@@ -996,7 +937,7 @@ values->add(this->specials);
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto BasicItem::getKey() -> Object*{
 
 
 
@@ -1006,7 +947,6 @@ values->add(this->specials);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_CPP

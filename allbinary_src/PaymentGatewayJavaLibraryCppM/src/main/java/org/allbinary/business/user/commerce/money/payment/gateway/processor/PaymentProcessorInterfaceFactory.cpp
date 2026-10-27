@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PROCESSOR_PAYMENTPROCESSORINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PROCESSOR_PAYMENTPROCESSORINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,32 +83,27 @@
         #include "org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterfaceFactoryInterface.h"
 #include "org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterface.h"
 
-class PaymentProcessorInterfaceFactory
-            : public Object
-         {
+auto PaymentProcessorInterfaceFactory::instance_owner() -> PaymentProcessorInterfaceFactory* { static std::unique_ptr<PaymentProcessorInterfaceFactory> value(new PaymentProcessorInterfaceFactory()); return value.get(); }
+PaymentProcessorInterfaceFactory* PaymentProcessorInterfaceFactory::instance = PaymentProcessorInterfaceFactory::instance_owner();
 
-    private: static PaymentProcessorInterfaceFactory* instance() { static std::unique_ptr<PaymentProcessorInterfaceFactory> value(new PaymentProcessorInterfaceFactory()); return value.get(); }
-
-    public: static PaymentProcessorInterfaceFactory* getInstance(){
+    auto PaymentProcessorInterfaceFactory::getInstance() -> PaymentProcessorInterfaceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentProcessorInterfaceFactory::instance();
+                        return PaymentProcessorInterfaceFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: PaymentProcessorInterfaceFactory(){
+PaymentProcessorInterfaceFactory::PaymentProcessorInterfaceFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: PaymentProcessorInterface* getInstance(TransformInfoInterface* transformInfoInterface){
+    auto PaymentProcessorInterfaceFactory::getInstance(TransformInfoInterface* transformInfoInterface) -> PaymentProcessorInterface*{
 
         try {
             
@@ -129,14 +134,14 @@ private: PaymentProcessorInterfaceFactory(){
 
 
 
-                            throw new Exception("Error Getting PaymentProcessorInterface");
+                            throw Exception("Error Getting PaymentProcessorInterface");
                     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENTERROR))
                         
                                     {
                                     
@@ -157,7 +162,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PROCESSOR_PAYMENTPROCESSORINTERFACEFACTORY_CPP

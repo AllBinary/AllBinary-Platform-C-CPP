@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/page/PageValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,19 +88,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PageValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TitleValidation* title;
-
-public: PageValidation(){
+PageValidation::PageValidation() : logUtil(LogUtil::getInstance()){
 this->title= new TitleValidation();
     
 }
 
 
-public: PageValidation(Document* document){
+PageValidation::PageValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
     Node* node = DomSearchHelper::getNode(TitleData::getInstance()->NAME, document->getElementsByTagName(PageData::getInstance()->NAME));;
     
@@ -99,29 +104,29 @@ this->title= new TitleValidation(node);
 }
 
 
-public: PageValidation(HashMap<Object*, Object*>* hashMap){
+PageValidation::PageValidation(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 this->getFormData(hashMap);
     
 }
 
 
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto PageValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 this->title= new TitleValidation(hashMap);
     
 }
 
 
-    public: bool isValid(){
+    auto PageValidation::isValid() -> bool{
 
         try {
             
     bool valid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("PageValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("PageValidation", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -136,10 +141,10 @@ this->title= new TitleValidation(hashMap);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("PageValidation: " +valid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("PageValidation: ") +JavaString::valueOf(valid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -155,10 +160,10 @@ this->title= new TitleValidation(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -174,7 +179,7 @@ this->title= new TitleValidation(hashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto PageValidation::validationInfo() -> std::string{
 
         try {
             
@@ -200,7 +205,7 @@ this->title= new TitleValidation(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -219,7 +224,7 @@ this->title= new TitleValidation(hashMap);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto PageValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -229,7 +234,7 @@ this->title= new TitleValidation(hashMap);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto PageValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -241,7 +246,7 @@ this->title= new TitleValidation(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto PageValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(PageData::getInstance()->NAME);;
     
@@ -256,7 +261,6 @@ node->appendChild(this->title->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef JSINTEROP_ANNOTATIONS_JSTYPE_CPP
+        #define JSINTEROP_ANNOTATIONS_JSTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "jsinterop/annotations/JsType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,7 +41,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2SE to J2ME compatibility
-class JsType {
+class JsType
+            : public virtual Object
+         {
 
                 //Otherwise - member - AnnotationMemberDeclaration
 
@@ -43,3 +55,5 @@ class JsType {
 
             
 
+
+        #endif //JSINTEROP_ANNOTATIONS_JSTYPE_CPP

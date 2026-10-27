@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,12 +51,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/JPanel.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/JComboBox.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/JLabel.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/Short.h"
+class JComboBox;
+class JLabel;
+class DefaultComboBoxModel;
+class GroupLayout;
+class Short;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationTypeJPanel: public javax::swing::JPanel {
 
 public: InputAutomationTypeJPanel();
@@ -72,3 +81,28 @@ public: InputAutomationTypeJPanel();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEJPANEL_H_COMPLETE
+        #if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JPanel.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JPanel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JComboBox.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JComboBox.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JLabel.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JLabel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/Short.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Short.h"
+#endif
+
+        #endif
+    

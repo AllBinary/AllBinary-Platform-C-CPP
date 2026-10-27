@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AdvancedRTSLayerFormFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,13 +77,8 @@
         #include "org/allbinary/game/layer/RTSScrollSelectionFormFactory.h"
 #include "org/allbinary/game/layer/RTSLayer.h"
 
-class AdvancedRTSLayerFormFactory: public RTSLayerFormFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ScrollSelectionForm* scrollSelectionForm;
-
-protected: AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFactoryInterface* itemArrayFactoryInterface){
+AdvancedRTSLayerFormFactory::AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFactoryInterface* itemArrayFactoryInterface) : logUtil(LogUtil::getInstance()){
 
     ScrollSelectionForm* scrollSelectionForm = ScrollSelectionForm::getNullScrollSelectionForm();;
     
@@ -100,7 +105,7 @@ this->scrollSelectionForm= scrollSelectionForm;
 }
 
 
-    public: ScrollSelectionForm* getInstance(RTSLayer* rtsLayer){
+    auto AdvancedRTSLayerFormFactory::getInstance(RTSLayer* rtsLayer) -> ScrollSelectionForm*{
 
 
 
@@ -110,7 +115,6 @@ this->scrollSelectionForm= scrollSelectionForm;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_CPP

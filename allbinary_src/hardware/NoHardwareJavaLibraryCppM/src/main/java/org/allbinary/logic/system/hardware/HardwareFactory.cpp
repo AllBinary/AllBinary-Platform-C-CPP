@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/HardwareFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,31 +62,26 @@
         #include "org/allbinary/logic/system/hardware/NoHardware.h"
 #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 
-class HardwareFactory
-            : public Object
-         {
+auto HardwareFactory::instance_owner() -> HardwareFactory* { static std::unique_ptr<HardwareFactory> value(new HardwareFactory()); return value.get(); }
+HardwareFactory* HardwareFactory::instance = HardwareFactory::instance_owner();
 
-    private: static HardwareFactory* instance() { static std::unique_ptr<HardwareFactory> value(new HardwareFactory()); return value.get(); }
-
-    public: static HardwareFactory* getInstance(){
+    auto HardwareFactory::getInstance() -> HardwareFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HardwareFactory::instance();
+                        return HardwareFactory::instance;
     
 }
 
 
-    private: HardwareInterface* SINGLETON = NoHardware::getInstance();
-
-private: HardwareFactory(){
+HardwareFactory::HardwareFactory() : SINGLETON(NoHardware::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: HardwareInterface* getInstance(OperatingSystemInterface* os){
+    auto HardwareFactory::getInstance(OperatingSystemInterface* os) -> HardwareInterface*{
 
         try {
             
@@ -99,7 +104,6 @@ private: HardwareFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_CPP

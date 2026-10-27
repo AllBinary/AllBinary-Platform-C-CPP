@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_NONPLAYERTOPVIEWCHARACTERBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_NONPLAYERTOPVIEWCHARACTERBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/NonPlayerTopViewCharacterBehavior.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -90,17 +100,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/TopViewCharacterBehavior.h"
 
-class NonPlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
 
-    private: MultiGeographicMapBehavior* geographicMapBehavior = new MultiGeographicMapBehavior();
-
-    private: BasicTerrainInfo* CLIFF = new BasicTerrainInfo(AngleFactory::getInstance()->DOWN);
-
+NonPlayerTopViewCharacterBehavior::NonPlayerTopViewCharacterBehavior() : geographicMapBehavior(new MultiGeographicMapBehavior()), CLIFF(new BasicTerrainInfo(AngleFactory::getInstance()->DOWN)) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition){
+    auto NonPlayerTopViewCharacterBehavior::terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition) -> void{
 
-    int32_t maxColumns = geographicMapInterfaceArray[0].getAllBinaryTiledLayer()->getColumns();;
+    int32_t maxColumns = geographicMapInterfaceArray[0]->getAllBinaryTiledLayer()->getColumns();;
     
 
                         if(geographicMapCellPosition->getColumn() > 0 && geographicMapCellPosition->getColumn() < maxColumns)
@@ -110,7 +118,7 @@ class NonPlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
     GeographicMapCellPosition* nextTerrainGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
     
 
-    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = geographicMapInterfaceArray[0]->getGeographicMapCellPositionFactory();;
     
 
                         if(direction == DirectionFactory::getInstance()->LEFT)
@@ -153,13 +161,12 @@ TerrainEventHandler::getInstance(layer)->fireEvent(terrainEvent);
 }
 
 
-    public: void terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y){
+    auto NonPlayerTopViewCharacterBehavior::terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y) -> void{
 layer->moveDXY(x, y);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_NONPLAYERTOPVIEWCHARACTERBEHAVIOR_CPP

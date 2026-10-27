@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/ColorFillPaintableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,23 +67,23 @@
 #include "org/allbinary/game/paint/OverScanColorFillPaintable.h"
 #include "org/allbinary/game/paint/ColorFillBasePaintable.h"
 
-class ColorFillPaintableFactory
-            : public Object
-         {
 
-    private: static ColorFillPaintableFactory* instance() { static std::unique_ptr<ColorFillPaintableFactory> value(new ColorFillPaintableFactory()); return value.get(); }
+ColorFillPaintableFactory::ColorFillPaintableFactory() {
+        }
+        auto ColorFillPaintableFactory::instance_owner() -> ColorFillPaintableFactory* { static std::unique_ptr<ColorFillPaintableFactory> value(new ColorFillPaintableFactory()); return value.get(); }
+ColorFillPaintableFactory* ColorFillPaintableFactory::instance = ColorFillPaintableFactory::instance_owner();
 
-    public: static ColorFillPaintableFactory* getInstance(){
+    auto ColorFillPaintableFactory::getInstance() -> ColorFillPaintableFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorFillPaintableFactory::instance();
+                        return ColorFillPaintableFactory::instance;
     
 }
 
 
-    public: ColorFillBasePaintable* getInstance(BasicColor* basicColor, bool forThreedCanvas){
+    auto ColorFillPaintableFactory::getInstance(BasicColor* basicColor, bool forThreedCanvas) -> ColorFillBasePaintable*{
 
     GenericOperatingSystem* operatingSystem = OperatingSystemFactory::getInstance()->getOperatingSystemInstance();;
     
@@ -103,7 +113,6 @@ class ColorFillPaintableFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLEFACTORY_CPP

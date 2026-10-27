@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntity.h"
 
-class TransactionResultEntityFactory
-            : public Object
-         {
+auto TransactionResultEntityFactory::instance_owner() -> TransactionResultEntityFactory* { static std::unique_ptr<TransactionResultEntityFactory> value(new TransactionResultEntityFactory()); return value.get(); }
+TransactionResultEntityFactory* TransactionResultEntityFactory::instance = TransactionResultEntityFactory::instance_owner();
 
-    private: static TransactionResultEntityFactory* instance() { static std::unique_ptr<TransactionResultEntityFactory> value(new TransactionResultEntityFactory()); return value.get(); }
-
-    public: static TransactionResultEntityFactory* getInstance(){
+    auto TransactionResultEntityFactory::getInstance() -> TransactionResultEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransactionResultEntityFactory::instance();
+                        return TransactionResultEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransactionResultEntityFactory(){
+TransactionResultEntityFactory::TransactionResultEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: TransactionResultEntity* getTransactionResultEntityInstance(){
+    auto TransactionResultEntityFactory::getTransactionResultEntityInstance() -> TransactionResultEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: TransactionResultEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: TransactionResultEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITYFACTORY_CPP

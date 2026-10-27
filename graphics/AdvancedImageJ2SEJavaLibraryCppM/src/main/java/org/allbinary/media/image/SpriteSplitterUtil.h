@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,20 +41,10 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringMaker;
+class CommonSeps;
+class CommonStrings;
 
 
 
@@ -68,31 +63,37 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageUtil.h"
-#include "org/allbinary/media/image/ImageUnifierProperties.h"
-#include "org/allbinary/media/image/ImageUnifierCell.h"
-#include "org/allbinary/media/image/ImageUnifierUtil.h"
-#include "org/allbinary/media/image/ImageProcessorInput.h"
-#include "org/allbinary/media/image/ImageProcessedVisitor.h"
+        class ImageUtil;
+class ImageUnifierProperties;
+class ImageUnifierCell;
+class ImageUnifierUtil;
+class ImageProcessorInput;
+class ImageProcessedVisitor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SpriteSplitterUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static SpriteSplitterUtil* instance() { static std::unique_ptr<SpriteSplitterUtil> value(new SpriteSplitterUtil()); return value.get(); }
+    private: static SpriteSplitterUtil* instance_owner();
+    private: static SpriteSplitterUtil* instance;
 
     public: static SpriteSplitterUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+            
+    public: SpriteSplitterUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonSeps* commonSeps;
 
-    public: const std::vector<std::string> ANIMATIONS_LABELS = 
-                                                        {
-                                                            "Row Total:","Column Total:","Column Total:","Row Total:","Column Total:","Row Total:"
-                                                        };
+    private: CommonStrings* commonStrings;
+
+    public: std::vector<std::string> ANIMATIONS_LABELS;
 
     public: const std::string DIRECTIONAL_ANIMATIONS = "Directional DLRU";
 
@@ -100,10 +101,7 @@ class SpriteSplitterUtil
 
     public: const std::string HORIZONTAL_SPRITE = "Horizontal A=R=Y F=C=X";
 
-    private: const std::vector<std::string> ROW_NAME = 
-                                                        {
-                                                            "idle","walk","attack","defeat"
-                                                        };
+    private: std::vector<std::string> ROW_NAME;
 
     private: const std::string _ROW = "_row";
 
@@ -117,3 +115,43 @@ class SpriteSplitterUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageUtil.h")
+#include "org/allbinary/media/image/ImageUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageUnifierProperties.h")
+#include "org/allbinary/media/image/ImageUnifierProperties.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageUnifierCell.h")
+#include "org/allbinary/media/image/ImageUnifierCell.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageUnifierUtil.h")
+#include "org/allbinary/media/image/ImageUnifierUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageProcessorInput.h")
+#include "org/allbinary/media/image/ImageProcessorInput.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageProcessedVisitor.h")
+#include "org/allbinary/media/image/ImageProcessedVisitor.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_NOGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_NOGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/NoGeographicMapCellPositionFactoryInitVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,17 +62,16 @@
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h"
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
-class NoGeographicMapCellPositionFactoryInitVisitor
-            : public Object
-        , public GeographicMapCellPositionFactoryInitVisitorInterface {
 
+NoGeographicMapCellPositionFactoryInitVisitor::NoGeographicMapCellPositionFactoryInitVisitor() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition){
+    auto NoGeographicMapCellPositionFactoryInitVisitor::visit(AllBinaryTiledLayer* tiledLayer, GeographicMapCellPosition* cellPosition) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_NOGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_CPP

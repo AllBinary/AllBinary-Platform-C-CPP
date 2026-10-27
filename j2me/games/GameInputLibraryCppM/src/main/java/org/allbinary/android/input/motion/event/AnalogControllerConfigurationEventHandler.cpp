@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,27 +75,24 @@
         #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEventListenerInterface.h"
 #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEvent.h"
 
-class AnalogControllerConfigurationEventHandler: public BasicEventHandler {
+auto AnalogControllerConfigurationEventHandler::instance_owner() -> AnalogControllerConfigurationEventHandler* { static std::unique_ptr<AnalogControllerConfigurationEventHandler> value(new AnalogControllerConfigurationEventHandler()); return value.get(); }
+AnalogControllerConfigurationEventHandler* AnalogControllerConfigurationEventHandler::instance = AnalogControllerConfigurationEventHandler::instance_owner();
 
-    private: static AnalogControllerConfigurationEventHandler* instance() { static std::unique_ptr<AnalogControllerConfigurationEventHandler> value(new AnalogControllerConfigurationEventHandler()); return value.get(); }
-
-    public: static AnalogControllerConfigurationEventHandler* getInstance(){
+    auto AnalogControllerConfigurationEventHandler::getInstance() -> AnalogControllerConfigurationEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnalogControllerConfigurationEventHandler::instance();
+                        return AnalogControllerConfigurationEventHandler::instance;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: AnalogControllerConfigurationEventHandler(){
+AnalogControllerConfigurationEventHandler::AnalogControllerConfigurationEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(AnalogControllerConfigurationEventListenerInterface* analogControllerConfigurationEventListenerInterface){
+    auto AnalogControllerConfigurationEventHandler::addListener(AnalogControllerConfigurationEventListenerInterface* analogControllerConfigurationEventListenerInterface) -> void{
 
                         if(!this->list->contains(analogControllerConfigurationEventListenerInterface))
                         
@@ -98,25 +105,25 @@ private: AnalogControllerConfigurationEventHandler(){
 }
 
 
-    public: void removeAllListeners(){
+    auto AnalogControllerConfigurationEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto AnalogControllerConfigurationEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto AnalogControllerConfigurationEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -135,20 +142,20 @@ playerGameInput->onAnalogControllerConfigurationEvent(dynamic_cast<AnalogControl
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto AnalogControllerConfigurationEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     AnalogControllerConfigurationEventListenerInterface* analogControllerConfigurationEventListenerInterface = (dynamic_cast<AnalogControllerConfigurationEventListenerInterface*>(eventListenerInterface));;
     
@@ -157,7 +164,6 @@ analogControllerConfigurationEventListenerInterface->onAnalogControllerConfigura
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENTHANDLER_CPP

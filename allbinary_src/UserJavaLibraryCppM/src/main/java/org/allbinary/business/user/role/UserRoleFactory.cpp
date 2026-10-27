@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/role/UserRoleFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -96,60 +106,23 @@
 #include "org/allbinary/business/user/role/UserRoleB.h"
 #include "org/allbinary/business/user/role/UserRole.h"
 
-class UserRoleFactory
-            : public Object
-         {
 
-    private: static UserRoleFactory* instance() { static std::unique_ptr<UserRoleFactory> value(new UserRoleFactory()); return value.get(); }
+UserRoleFactory::UserRoleFactory() : basicUserRoleFactory(BasicUserRoleFactory::getInstance()), INSTALLER(new UserRoleB(this->basicUserRoleFactory->INSTALLER, 
+                            nullptr)), ADMINISTRATOR(new UserRoleB(this->basicUserRoleFactory->ADMINISTRATOR, new AdminUserFactory())), CUSTOMER(new UserRoleB(this->basicUserRoleFactory->CUSTOMER, new UserFactory())), SUBSCRIBERCUSTOMER(new UserRoleB(this->basicUserRoleFactory->SUBSCRIBERCUSTOMER, new SubscriberUserFactory())), WHOLESALECUSTOMER(new UserRoleB(this->basicUserRoleFactory->WHOLESALECUSTOMER, new WholesaleUserFactory())), STOREMANAGER(new UserRoleB(this->basicUserRoleFactory->STOREMANAGER, new StoreAdminUserFactory())), PRODUCTMANAGER(new UserRoleB(this->basicUserRoleFactory->PRODUCTMANAGER, new ProductStoreAdminUserFactory())), CUSTOMERMANAGER(new UserRoleB(this->basicUserRoleFactory->CUSTOMERMANAGER, new CustomerStoreAdminUserFactory())), PAYMENTMANAGER(new UserRoleB(this->basicUserRoleFactory->PAYMENTMANAGER, new PaymentStoreAdminUserFactory())), ORDERMANAGER(new UserRoleB(this->basicUserRoleFactory->ORDERMANAGER, new OrderStoreAdminUserFactory())), WEBMANAGER(new UserRoleB(this->basicUserRoleFactory->WEBMANAGER, new WebStoreAdminUserFactory())), REVIEWER(new UserRoleB(this->basicUserRoleFactory->REVIEWER, new ReviewOrderStoreAdminUserFactory())), SHIPPING(new UserRoleB(this->basicUserRoleFactory->SHIPPING, new ShipOrderStoreAdminUserFactory())), ADJUSTER(new UserRoleB(this->basicUserRoleFactory->ADJUSTER, new AdjustOrderStoreAdminUserFactory())), WORKFLOWEDITOR(new UserRoleB(this->basicUserRoleFactory->WORKFLOWEDITOR, new WorkflowEditorWebStoreAdminUserFactory())), WIZARD(new UserRoleB(this->basicUserRoleFactory->WIZARD, new WizardWebStoreAdminUserFactory())), VIEWEDITOR(new UserRoleB(this->basicUserRoleFactory->VIEWEDITOR, new ViewEditorWebStoreAdminUserFactory())) {
+        }
+        auto UserRoleFactory::instance_owner() -> UserRoleFactory* { static std::unique_ptr<UserRoleFactory> value(new UserRoleFactory()); return value.get(); }
+UserRoleFactory* UserRoleFactory::instance = UserRoleFactory::instance_owner();
 
-    public: static UserRoleFactory* getInstance(){
+    auto UserRoleFactory::getInstance() -> UserRoleFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserRoleFactory::instance();
+                        return UserRoleFactory::instance;
     
 }
 
 
-    private: BasicUserRoleFactory* basicUserRoleFactory = BasicUserRoleFactory::getInstance();
 
-    public: UserRole* INSTALLER = new UserRoleB(this->basicUserRoleFactory->INSTALLER, 
-                            nullptr);
 
-    public: UserRole* ADMINISTRATOR = new UserRoleB(this->basicUserRoleFactory->ADMINISTRATOR, new AdminUserFactory());
-
-    public: UserRole* CUSTOMER = new UserRoleB(this->basicUserRoleFactory->CUSTOMER, new UserFactory());
-
-    public: UserRole* SUBSCRIBERCUSTOMER = new UserRoleB(this->basicUserRoleFactory->SUBSCRIBERCUSTOMER, new SubscriberUserFactory());
-
-    public: UserRole* WHOLESALECUSTOMER = new UserRoleB(this->basicUserRoleFactory->WHOLESALECUSTOMER, new WholesaleUserFactory());
-
-    public: UserRole* STOREMANAGER = new UserRoleB(this->basicUserRoleFactory->STOREMANAGER, new StoreAdminUserFactory());
-
-    public: UserRole* PRODUCTMANAGER = new UserRoleB(this->basicUserRoleFactory->PRODUCTMANAGER, new ProductStoreAdminUserFactory());
-
-    public: UserRole* CUSTOMERMANAGER = new UserRoleB(this->basicUserRoleFactory->CUSTOMERMANAGER, new CustomerStoreAdminUserFactory());
-
-    public: UserRole* PAYMENTMANAGER = new UserRoleB(this->basicUserRoleFactory->PAYMENTMANAGER, new PaymentStoreAdminUserFactory());
-
-    public: UserRole* ORDERMANAGER = new UserRoleB(this->basicUserRoleFactory->ORDERMANAGER, new OrderStoreAdminUserFactory());
-
-    public: UserRole* WEBMANAGER = new UserRoleB(this->basicUserRoleFactory->WEBMANAGER, new WebStoreAdminUserFactory());
-
-    public: UserRole* REVIEWER = new UserRoleB(this->basicUserRoleFactory->REVIEWER, new ReviewOrderStoreAdminUserFactory());
-
-    public: UserRole* SHIPPING = new UserRoleB(this->basicUserRoleFactory->SHIPPING, new ShipOrderStoreAdminUserFactory());
-
-    public: UserRole* ADJUSTER = new UserRoleB(this->basicUserRoleFactory->ADJUSTER, new AdjustOrderStoreAdminUserFactory());
-
-    public: UserRole* WORKFLOWEDITOR = new UserRoleB(this->basicUserRoleFactory->WORKFLOWEDITOR, new WorkflowEditorWebStoreAdminUserFactory());
-
-    public: UserRole* WIZARD = new UserRoleB(this->basicUserRoleFactory->WIZARD, new WizardWebStoreAdminUserFactory());
-
-    public: UserRole* VIEWEDITOR = new UserRoleB(this->basicUserRoleFactory->VIEWEDITOR, new ViewEditorWebStoreAdminUserFactory());
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_CPP

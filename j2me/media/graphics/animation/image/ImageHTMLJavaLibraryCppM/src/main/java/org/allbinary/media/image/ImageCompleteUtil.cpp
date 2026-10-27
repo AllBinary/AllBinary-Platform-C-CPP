@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageCompleteUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,29 +78,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/Hashtable.h"
 
-class ImageCompleteUtil
-            : public Object
-         {
 
-    private: static ImageCompleteUtil* instance() { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
+ImageCompleteUtil::ImageCompleteUtil() : timeDelayHelper(new TimeDelayHelper(18000)), allTimeDelayHelper(new TimeDelayHelper(120000)) {
+        }
+        auto ImageCompleteUtil::instance_owner() -> ImageCompleteUtil* { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
+ImageCompleteUtil* ImageCompleteUtil::instance = ImageCompleteUtil::instance_owner();
 
-    public: static ImageCompleteUtil* getInstance(){
+    auto ImageCompleteUtil::getInstance() -> ImageCompleteUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCompleteUtil::instance();
+                        return ImageCompleteUtil::instance;
     
 }
 
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(18000);
-
-    private: TimeDelayHelper* allTimeDelayHelper = new TimeDelayHelper(120000);
-
                 //@Throws(Exception.constructor)
             
-    public: void waitForImage(Image* image, std::string name){
+    auto ImageCompleteUtil::waitForImage(Image* image, std::string name) -> void{
 this->timeDelayHelper->setStartTime();
     
 this->waitForATime(image, name, this->timeDelayHelper);
@@ -100,7 +106,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isReady(Image* image, std::string name, TimeDelayHelper* timeDelayHelper){
+    auto ImageCompleteUtil::isReady(Image* image, std::string name, TimeDelayHelper* timeDelayHelper) -> bool{
 
     PlaynImage* playnImage = dynamic_cast<PlaynImage*>(image);;
     
@@ -115,7 +121,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
                                     
 
 
-                            throw new Exception("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw Exception(JavaString::valueOf("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: ") +JavaString::valueOf(name));
                     
 
                                     }
@@ -140,7 +146,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    private: void waitForATime(Image* image, std::string name, TimeDelayHelper* timeDelayHelper){
+    auto ImageCompleteUtil::waitForATime(Image* image, std::string name, TimeDelayHelper* timeDelayHelper) -> void{
 
     PlaynImage* playnImage = dynamic_cast<PlaynImage*>(image);;
     
@@ -154,7 +160,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
                                     
 
 
-                            throw new Exception("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw Exception(JavaString::valueOf("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: ") +JavaString::valueOf(name));
                     
 
                                     }
@@ -166,7 +172,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public: void waitForAll(){
+    auto ImageCompleteUtil::waitForAll() -> void{
 this->allTimeDelayHelper->setStartTime();
     
 
@@ -178,7 +184,7 @@ this->allTimeDelayHelper->setStartTime();
 
     int32_t size = objectArray.size();;
     
-PreLogUtil::put("Total: " +size, this, "waitForAll");
+PreLogUtil::put(JavaString::valueOf("Total: ") +JavaString::valueOf(size), this, "waitForAll");
     
 
 
@@ -194,7 +200,6 @@ this->waitForATime(dynamic_cast<Image*>(hashtable->get(objectArray[index])), obj
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_CPP

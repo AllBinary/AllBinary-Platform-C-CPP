@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/TimeFiredInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,11 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeFiredInterface {
+//Interface - declared in the header
 
-    public: virtual int64_t getLastFireTime() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEFIREDINTERFACE_CPP

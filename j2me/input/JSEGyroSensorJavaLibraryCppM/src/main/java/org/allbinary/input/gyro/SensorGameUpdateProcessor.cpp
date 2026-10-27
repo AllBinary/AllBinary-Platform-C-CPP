@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/SensorGameUpdateProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,19 +70,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/gyro/GyroSensorFactory.h"
 
-class SensorGameUpdateProcessor
-            : public Object
-         {
 
-    private: AllBinarySensor* inputSensor;
-
-    protected: void setInputSensor(AllBinarySensor* inputSensor){
+SensorGameUpdateProcessor::SensorGameUpdateProcessor() {
+        }
+        
+    auto SensorGameUpdateProcessor::setInputSensor(AllBinarySensor* inputSensor) -> void{
 this->inputSensor= inputSensor;
     
 }
 
 
-    public: AllBinarySensor* getInputSensor(){
+    auto SensorGameUpdateProcessor::getInputSensor() -> AllBinarySensor*{
 
 
 
@@ -84,17 +92,17 @@ this->inputSensor= inputSensor;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Object* anyType){
+    auto SensorGameUpdateProcessor::process(Object* anyType) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void sendNotifications(Object* anyType){
+    auto SensorGameUpdateProcessor::sendNotifications(Object* anyType) -> void{
 }
 
 
-    public: bool isAnySensor(){
+    auto SensorGameUpdateProcessor::isAnySensor() -> bool{
 
                         if(this->inputSensor == NoAllBinarySensor::getInstance())
                         
@@ -121,7 +129,7 @@ this->inputSensor= inputSensor;
 }
 
 
-    protected: void setNoSensors(){
+    auto SensorGameUpdateProcessor::setNoSensors() -> void{
 GyroSensorFactory::getInstance()->setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
     
 AccelerometerSensorFactory::getInstance()->setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
@@ -131,7 +139,6 @@ this->setInputSensor(NoAllBinarySensor::getInstance());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_CPP

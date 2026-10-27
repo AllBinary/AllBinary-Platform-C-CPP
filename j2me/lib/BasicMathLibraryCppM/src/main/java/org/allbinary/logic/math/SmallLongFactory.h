@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_H
         #define ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,11 +57,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SmallLongFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static SmallLongFactory* instance() { static std::unique_ptr<SmallLongFactory> value(new SmallLongFactory()); return value.get(); }
+    private: static SmallLongFactory* instance_owner();
+    private: static SmallLongFactory* instance;
 
     public: static SmallLongFactory* getInstance();
 
@@ -64,9 +74,9 @@ class SmallLongFactory
 
     public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const std::vector<int64_t> INTEGER_ARRAY = std::vector<int64_t>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: std::vector<int64_t> INTEGER_ARRAY;
 
-    private: const std::vector<std::string> STRING_ARRAY = std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: std::vector<std::string> STRING_ARRAY;
 
     public: int32_t MIN = 0;
 
@@ -90,3 +100,10 @@ private: SmallLongFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_H_COMPLETE
+        
+        #endif
+    

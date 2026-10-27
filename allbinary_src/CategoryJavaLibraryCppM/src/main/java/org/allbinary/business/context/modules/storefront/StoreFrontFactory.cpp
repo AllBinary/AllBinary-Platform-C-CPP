@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/StoreFrontFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,11 +70,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/context/modules/storefront/StoreFront.h"
 
-class StoreFrontFactory
-            : public Object
-         {
 
-    public: static StoreFront* getInstance(std::string storeName){
+StoreFrontFactory::StoreFrontFactory(){
+}
+
+
+    auto StoreFrontFactory::getInstance(std::string storeName) -> StoreFront*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -87,7 +98,7 @@ class StoreFrontFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "StoreFrontFactory", commonStrings->GET_INSTANCE, &e);
@@ -106,11 +117,6 @@ class StoreFrontFactory
 }
 
 
-private: StoreFrontFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTFACTORY_CPP

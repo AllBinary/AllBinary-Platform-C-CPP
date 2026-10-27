@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DOM_DOMHELPER_CPP
+        #define ORG_ALLBINARY_DOM_DOMHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/dom/DomHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -89,29 +99,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DomHelper
-            : public Object
-         {
+auto DomHelper::instance_owner() -> DomHelper* { static std::unique_ptr<DomHelper> value(new DomHelper()); return value.get(); }
+DomHelper* DomHelper::instance = DomHelper::instance_owner();
 
-    private: static DomHelper* instance() { static std::unique_ptr<DomHelper> value(new DomHelper()); return value.get(); }
-
-    public: static DomHelper* getInstance(){
+    auto DomHelper::getInstance() -> DomHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomHelper::instance();
+                        return DomHelper::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: DomHelper(){
+DomHelper::DomHelper() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: Document* createDocument(){
+    auto DomHelper::createDocument() -> Document*{
 
         try {
             
@@ -146,7 +151,7 @@ private: DomHelper(){
 
                 //@Throws(Exception.constructor)
             
-    public: Document* createDocument(File* xmlFile){
+    auto DomHelper::createDocument(File* xmlFile) -> Document*{
 
         try {
             
@@ -180,7 +185,7 @@ private: DomHelper(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string toString(Document* document){
+    auto DomHelper::toString(Document* document) -> std::string{
 
         try {
             
@@ -222,7 +227,7 @@ copyTransformer->transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(File* file, Document* document){
+    auto DomHelper::save(File* file, Document* document) -> void{
 
         try {
             
@@ -257,7 +262,7 @@ copyTransformer->transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: NodeList* getChildNodeList(std::string nodeName, NodeList* nodeList){
+    auto DomHelper::getChildNodeList(std::string nodeName, NodeList* nodeList) -> NodeList*{
 
     int32_t numberOfNodes = nodeList->getLength();;
     
@@ -289,14 +294,14 @@ copyTransformer->transform(domSource, streamResult);
 
 
 
-                            throw new Exception(nodeName +" Node Not Found");
+                            throw Exception(JavaString::valueOf(nodeName) +JavaString::valueOf(" Node Not Found"));
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getChildrenWithoutTextNodes(std::string nodeName, NodeList* nodeList){
+    auto DomHelper::getChildrenWithoutTextNodes(std::string nodeName, NodeList* nodeList) -> BasicArrayList*{
 
     BasicArrayList* list = new BasicArrayListD();;
     
@@ -338,7 +343,7 @@ copyTransformer->transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getWithoutTextNodes(NodeList* nodeList){
+    auto DomHelper::getWithoutTextNodes(NodeList* nodeList) -> BasicArrayList*{
 
     BasicArrayList* list = new BasicArrayListD();;
     
@@ -377,7 +382,7 @@ copyTransformer->transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* searchNodeList(std::string nodeName, NodeList* nodeList){
+    auto DomHelper::searchNodeList(std::string nodeName, NodeList* nodeList) -> Node*{
 
     int32_t numberOfNodes = nodeList->getLength();;
     
@@ -391,7 +396,7 @@ copyTransformer->transform(domSource, streamResult);
 
     Node* node = nodeList->item(index);;
     
-this->logUtil->putF("NodeName: " +node->getNodeName(), this, "searchNodeList");
+this->logUtil->putF(JavaString::valueOf("NodeName: ") +JavaString::valueOf(node->getNodeName()), this, "searchNodeList");
     
 
                         if(node->getNodeName()->compareTo(nodeName) == 0)
@@ -411,14 +416,14 @@ this->logUtil->putF("NodeName: " +node->getNodeName(), this, "searchNodeList");
 
 
 
-                            throw new Exception(nodeName +" Node Not Found in search");
+                            throw Exception(JavaString::valueOf(nodeName) +JavaString::valueOf(" Node Not Found in search"));
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node* searchNodeList(std::string nodeName, BasicArrayList* nodeList){
+    auto DomHelper::searchNodeList(std::string nodeName, BasicArrayList* nodeList) -> Node*{
 
     int32_t numberOfNodes = nodeList->size();;
     
@@ -432,7 +437,7 @@ this->logUtil->putF("NodeName: " +node->getNodeName(), this, "searchNodeList");
 
     Node* node = dynamic_cast<Node*>(nodeList->get(index));;
     
-this->logUtil->putF("NodeName: " +node->getNodeName(), this, "searchNodeList");
+this->logUtil->putF(JavaString::valueOf("NodeName: ") +JavaString::valueOf(node->getNodeName()), this, "searchNodeList");
     
 
                         if(node->getNodeName()->compareTo(nodeName) == 0)
@@ -452,12 +457,11 @@ this->logUtil->putF("NodeName: " +node->getNodeName(), this, "searchNodeList");
 
 
 
-                            throw new Exception(nodeName +" Node Not Found in search");
+                            throw Exception(JavaString::valueOf(nodeName) +JavaString::valueOf(" Node Not Found in search"));
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DOM_DOMHELPER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_MULTIPARTREQUESTPARAMFORWARDHELPER_CPP
+        #define ADMIN_TAGHELPERS_MULTIPARTREQUESTPARAMFORWARDHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/MultipartRequestParamForwardHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,23 +94,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/InventoryItemViewParentTagHelper.h"
 
-class MultipartRequestParamForwardHelper
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: PageContext* pageContext;
-
-    private: RequestMapInterface* requestMapInterface;
-
-    private: std::string page;
-
-    private: std::string command;
-
-    private: BasicArrayList* paramVector;
-
-public: MultipartRequestParamForwardHelper(HelperTag* parentHelperTag, std::string page, std::string command, BasicArrayList* paramVector, PageContext* pageContext){
+MultipartRequestParamForwardHelper::MultipartRequestParamForwardHelper(HelperTag* parentHelperTag, std::string page, std::string command, BasicArrayList* paramVector, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->pageContext= pageContext;
     
 this->page= page;
@@ -116,7 +111,7 @@ this->requestMapInterface= InventoryItemViewParentTagHelper::getInstance()->getR
 
                 //@Throws(Exception.constructor)
             
-    public: void forward(){
+    auto MultipartRequestParamForwardHelper::forward() -> void{
 
         try {
             
@@ -146,7 +141,7 @@ this->pageContext->forward(stringBuffer->toString());
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "forward()", &e);
@@ -159,7 +154,7 @@ this->pageContext->forward(stringBuffer->toString());
 }
 
 
-    private: std::string getParams(){
+    auto MultipartRequestParamForwardHelper::getParams() -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -226,7 +221,7 @@ stringBuffer->append(value);
 }
 
 
-    private: bool shouldForward(){
+    auto MultipartRequestParamForwardHelper::shouldForward() -> bool{
 
     HashMap<Object*, Object*>* hashMap = this->requestMapInterface->getRequestHashMap();;
     
@@ -255,7 +250,6 @@ stringBuffer->append(value);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_MULTIPARTREQUESTPARAMFORWARDHELPER_CPP

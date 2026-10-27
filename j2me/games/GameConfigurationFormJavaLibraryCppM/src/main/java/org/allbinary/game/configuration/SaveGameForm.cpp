@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_SAVEGAMEFORM_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_SAVEGAMEFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/SaveGameForm.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,13 +78,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SaveGameForm: public CommandForm {
-
-    private: static inline CommandForm* FORM = CommandForm::getNullCommandForm();
+CommandForm* SaveGameForm::FORM = CommandForm::getNullCommandForm();
 
                 //@Throws(Exception.constructor)
             
-    public: static CommandForm* createForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor){
+    auto SaveGameForm::createForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) -> CommandForm*{
 SaveGameForm::FORM= new SaveGameForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
     
 
@@ -86,7 +94,7 @@ SaveGameForm::FORM= new SaveGameForm(commandListener, title, backgrounBasicColor
 }
 
 
-    public: static CommandForm* getInstance(){
+    auto SaveGameForm::getInstance() -> CommandForm*{
 
 
 
@@ -96,16 +104,14 @@ SaveGameForm::FORM= new SaveGameForm(commandListener, title, backgrounBasicColor
 }
 
 
-    private: MEUtil* meUtil = MEUtil::getInstance();
-
-private: SaveGameForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+SaveGameForm::SaveGameForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor), meUtil(MEUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
     std::string timeString = std::to_string(currentTimeMillis);;
@@ -117,7 +123,7 @@ this->initCommands(commandListener);
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto SaveGameForm::initCommands(CommandListener* cmdListener) -> void{
 
     GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
@@ -132,7 +138,6 @@ this->setCommandListener(cmdListener);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_SAVEGAMEFORM_CPP

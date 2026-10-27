@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/j2me/StatusFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class StatusFactory;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -58,20 +57,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h"
+        class GraphicsItemInterfaceFactoryInterface;
+class GraphicItemFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ToolFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ToolFactory* instance() { static std::unique_ptr<ToolFactory> value(new ToolFactory()); return value.get(); }
+    private: static ToolFactory* instance_owner();
+    private: static ToolFactory* instance;
 
     public: static ToolFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+            
+    public: ToolFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: CommonStrings* commonStrings;
 
     private: GraphicsItemInterfaceFactoryInterface* selectedTool = 
                 nullptr
@@ -93,3 +101,25 @@ class ToolFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/j2me/StatusFactory.h>)
+#include <org/allbinary/graphics/j2me/StatusFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h"
+#endif
+
+        #endif
+    

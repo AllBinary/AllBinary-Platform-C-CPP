@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_INVENTORYHELPER_CPP
+        #define TAGHELPERS_INVENTORYHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/InventoryHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -102,25 +112,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: HttpServletResponse* response;
-
-    private: HttpServletRequest* request;
-
-    private: StreetAddress* streetAddress;
-
-    private: std::string id;
-
-    private: SearchRequest* searchRequest;
-
-public: InventoryHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+InventoryHelper::InventoryHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 this->response= dynamic_cast<HttpServletResponse*>(pageContext->getResponse());
     
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
@@ -154,13 +147,13 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto InventoryHelper::getFormData() -> void{
 this->id= this->request->getParameter(basicItemData->ID);
     
 }
 
 
-    public: std::string viewSummary(){
+    auto InventoryHelper::viewSummary() -> std::string{
 
         try {
             
@@ -170,7 +163,7 @@ this->id= this->request->getParameter(basicItemData->ID);
     std::string result = inventoryViewSearchInterface->getProduct(this->id);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successfull Inventory View Summary", this, "viewSummary()");
@@ -192,10 +185,10 @@ this->id= this->request->getParameter(basicItemData->ID);
     std::string error = "Failed to View Summary";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "viewSummary()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "viewSummary()", &e);
     
 
                                     }
@@ -204,14 +197,14 @@ this->id= this->request->getParameter(basicItemData->ID);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return error +"<br>" +"Exception: " +e +"<br>";
+                        return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf("<br>")) +JavaString::valueOf("Exception: ")) +JavaString::valueOf(e)) +JavaString::valueOf("<br>");
     
 }
 
 }
 
 
-    public: std::string search(){
+    auto InventoryHelper::search() -> std::string{
 
         try {
             
@@ -240,7 +233,7 @@ this->id= this->request->getParameter(basicItemData->ID);
     std::string result = inventoryViewSearchInterface->searchSingleDynamicPage();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successful Inventory Dynamic Search", this, "searchSingleDynamicPage()");
@@ -262,10 +255,10 @@ this->id= this->request->getParameter(basicItemData->ID);
     std::string error = "Failed to search Inventory by keyword";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "searchSingleDynamicPage()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "searchSingleDynamicPage()", &e);
     
 
                                     }
@@ -274,14 +267,13 @@ this->id= this->request->getParameter(basicItemData->ID);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return error +"<br>" +"Exception: " +e +"<br>";
+                        return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf("<br>")) +JavaString::valueOf("Exception: ")) +JavaString::valueOf(e)) +JavaString::valueOf("<br>");
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_INVENTORYHELPER_CPP

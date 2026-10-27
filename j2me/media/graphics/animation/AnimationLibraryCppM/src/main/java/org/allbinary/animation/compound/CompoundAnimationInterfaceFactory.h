@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,24 +38,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
+class Animation;
+class AnimationBehaviorFactory;
 #include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+class NullAnimationFactory;
 
-      
-#include <org/allbinary/animation/NullAnimationFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class ScaleProperties;
 
 
 
@@ -70,13 +63,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompoundAnimationInterfaceFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface {
 
-    protected: std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArrayP;
+    /*protected*/ public: std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArrayP;
 
-    protected: AnimationBehaviorFactory* animationBehaviorFactory;
+    /*protected*/ public: AnimationBehaviorFactory* animationBehaviorFactory;
 
 public: CompoundAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory);
 
@@ -84,9 +81,9 @@ public: CompoundAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryI
             
     public: Animation* getInstance(int32_t instanceId);
 
-    protected: std::vector<Animation*> createArray(int32_t size);
+    /*protected*/ public: std::vector<Animation*> createArray(int32_t size);
 
-    protected: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray);
+    /*protected*/ public: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray);
 
     public: std::vector<AnimationInterfaceFactoryInterface*> getBasicAnimationInterfaceFactoryInterfaceArray();
 
@@ -98,3 +95,26 @@ public: CompoundAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryI
 
 
         #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/animation/NullAnimationFactory.h>)
+#include <org/allbinary/animation/NullAnimationFactory.h>
+#endif
+
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+
+        #endif
+    

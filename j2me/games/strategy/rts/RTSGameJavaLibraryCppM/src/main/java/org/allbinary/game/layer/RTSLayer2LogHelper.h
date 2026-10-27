@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,16 +52,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+        class PathFindingLayerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSLayer2LogHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static RTSLayer2LogHelper* instance() { static std::unique_ptr<RTSLayer2LogHelper> value(new RTSLayer2LogHelper()); return value.get(); }
+    private: static RTSLayer2LogHelper* instance_owner();
+    private: static RTSLayer2LogHelper* instance;
 
     public: static RTSLayer2LogHelper* getInstance();
 
+
+            
+    public: RTSLayer2LogHelper();
+        
     public: void steeringUp(PathFindingLayerInterface* pathFindingLayerInterface);
 
     public: void steeringFireOrStop(PathFindingLayerInterface* pathFindingLayerInterface);
@@ -83,3 +97,13 @@ class RTSLayer2LogHelper
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H_COMPLETE
+        #if __has_include("org/allbinary/game/layer/PathFindingLayerInterface.h")
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DIRECTION_DIRECTION_CPP
+        #define ORG_ALLBINARY_DIRECTION_DIRECTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/direction/Direction.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,31 +60,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Direction
-            : public Object
-         {
+std::vector<Direction*> Direction::directionArray = std::vector<Direction*>(13);
 
-    private: static inline std::vector<Direction*> directionArray = std::vector<Direction*>(13);
-
-    public: static Direction* getInstance(int32_t direction){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Direction::directionArray[direction];
-    
-}
-
-
-    private: std::string name;
-
-    private: std::string otherName;
-
-    private: int32_t value;
-
-    private: int32_t frameFactor;
-
-: Direction(std::string name, std::string otherName, int32_t value, int32_t frameFactor){
+Direction::Direction(std::string name, std::string otherName, int32_t value, int32_t frameFactor){
 this->name= name;
     
 this->otherName= otherName;
@@ -88,7 +76,17 @@ Direction::directionArray[value]= this;
 }
 
 
-    public: int32_t getValue(){
+    auto Direction::getInstance(int32_t direction) -> Direction*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Direction::directionArray[direction];
+    
+}
+
+
+    auto Direction::getValue() -> int32_t{
 
 
 
@@ -98,7 +96,7 @@ Direction::directionArray[value]= this;
 }
 
 
-    public: int32_t getFrameFactor(){
+    auto Direction::getFrameFactor() -> int32_t{
 
 
 
@@ -108,7 +106,7 @@ Direction::directionArray[value]= this;
 }
 
 
-    public: std::string getOtherName(){
+    auto Direction::getOtherName() -> std::string{
 
 
 
@@ -118,7 +116,7 @@ Direction::directionArray[value]= this;
 }
 
 
-    public: std::string getName(){
+    auto Direction::getName() -> std::string{
 
 
 
@@ -128,7 +126,7 @@ Direction::directionArray[value]= this;
 }
 
 
-    public: std::string toString(){
+    auto Direction::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -153,7 +151,6 @@ stringBuffer->appendint(this->value);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DIRECTION_DIRECTION_CPP

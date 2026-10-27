@@ -21,6 +21,11 @@
         #ifndef VIEWS_HTTPCOMPONENTVIEW_H
         #define VIEWS_HTTPCOMPONENTVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,54 +34,22 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
-#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/ServiceClientInformationInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/visual/transform/BasicTransformer.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class DomNodeHelper;
+class DomNodeInterface;
+class XmlDocumentHelper;
+class LogUtil;
+class AbeClientInformationInterface;
+class ServiceClientInformationInterfaceFactory;
+class BasicTransformer;
 #include <org/allbinary/logic/visual/transform/TransformInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/data/TransformHttpRequestDocumentFactory.h>
-
-      
+class TransformDocumentInterface;
+class TransformHttpRequestDocumentFactory;
 #include <org/allbinary/logic/visual/transform/info/TransformInfoHttpComposite.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -96,11 +69,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HttpComponentView: public TransformInfoHttpComposite, public TransformInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
+    /*protected*/ public: AbeClientInformationInterface* abeClientInformation;
 
     private: BasicArrayList* domNodeInterfaceVector;
 
@@ -136,3 +113,58 @@ public: HttpComponentView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_HTTPCOMPONENTVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_HTTPCOMPONENTVIEW_H_COMPLETE)
+        #define VIEWS_HTTPCOMPONENTVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeHelper.h>)
+#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/ServiceClientInformationInterfaceFactory.h>)
+#include <org/allbinary/logic/system/security/licensing/ServiceClientInformationInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/BasicTransformer.h>)
+#include <org/allbinary/logic/visual/transform/BasicTransformer.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/TransformInterface.h>)
+#include <org/allbinary/logic/visual/transform/TransformInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h>)
+#include <org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/data/TransformHttpRequestDocumentFactory.h>)
+#include <org/allbinary/logic/visual/transform/data/TransformHttpRequestDocumentFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoHttpComposite.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoHttpComposite.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONINFO_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,21 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageArrayRotationAnimationInfo
-            : public Object
-         {
 
-    private: std::vector<Image*> imageArray;
-
-    private: int32_t angleIncrement;
-
-    private: int32_t totalAngle;
-
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-public: ImageArrayRotationAnimationInfo(std::vector<Image*> imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy){
+ImageArrayRotationAnimationInfo::ImageArrayRotationAnimationInfo(std::vector<Image*> imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy){
 this->imageArray= imageArray;
     
 this->angleIncrement= angleIncrement;
@@ -81,13 +78,13 @@ this->dy= dy;
 }
 
 
-    public: void setImageArray(std::vector<Image*> imageArray){
+    auto ImageArrayRotationAnimationInfo::setImageArray(std::vector<Image*> imageArray) -> void{
 this->imageArray= imageArray;
     
 }
 
 
-    public: std::vector<Image*> getImageArray(){
+    auto ImageArrayRotationAnimationInfo::getImageArray() -> std::vector<Image*>{
 
 
 
@@ -97,7 +94,7 @@ this->imageArray= imageArray;
 }
 
 
-    public: AngleInfo* getAngleInfoP(){
+    auto ImageArrayRotationAnimationInfo::getAngleInfoP() -> AngleInfo*{
 
 
 
@@ -107,13 +104,13 @@ this->imageArray= imageArray;
 }
 
 
-    public: void setTotalAngle(int32_t totalAngle){
+    auto ImageArrayRotationAnimationInfo::setTotalAngle(int32_t totalAngle) -> void{
 this->totalAngle= totalAngle;
     
 }
 
 
-    public: int32_t getTotalAngle(){
+    auto ImageArrayRotationAnimationInfo::getTotalAngle() -> int32_t{
 
 
 
@@ -123,13 +120,13 @@ this->totalAngle= totalAngle;
 }
 
 
-    public: void setDx(int32_t dx){
+    auto ImageArrayRotationAnimationInfo::setDx(int32_t dx) -> void{
 this->dx= dx;
     
 }
 
 
-    public: int32_t getDx(){
+    auto ImageArrayRotationAnimationInfo::getDx() -> int32_t{
 
 
 
@@ -139,13 +136,13 @@ this->dx= dx;
 }
 
 
-    public: void setDy(int32_t dy){
+    auto ImageArrayRotationAnimationInfo::setDy(int32_t dy) -> void{
 this->dy= dy;
     
 }
 
 
-    public: int32_t getDy(){
+    auto ImageArrayRotationAnimationInfo::getDy() -> int32_t{
 
 
 
@@ -155,7 +152,6 @@ this->dy= dy;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONINFO_CPP

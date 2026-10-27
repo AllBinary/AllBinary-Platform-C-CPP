@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/FileStreamFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,9 @@
         #include "org/allbinary/logic/io/AbFileInputStream.h"
 #include "org/allbinary/logic/io/AbFileOutputStream.h"
 
-class FileStreamFactory
-            : public Object
-         {
+Object* FileStreamFactory::SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static FileStreamFactory* getInstance(){
+    auto FileStreamFactory::getInstance() -> FileStreamFactory*{
 
                         if(FileStreamFactory::SINGLETON == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -83,13 +89,13 @@ class FileStreamFactory
 }
 
 
-private: FileStreamFactory(){
+FileStreamFactory::FileStreamFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileInputStream* getFileInputStreamInstance(std::string path, std::string fileName){
+    auto FileStreamFactory::getFileInputStreamInstance(std::string path, std::string fileName) -> AbFileInputStream*{
 
     AbPath* FILEABPATH = new AbPath(path, fileName);;
     
@@ -107,7 +113,7 @@ private: FileStreamFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileOutputStream* getFileOutputStreamInstance(std::string path, std::string fileName){
+    auto FileStreamFactory::getFileOutputStreamInstance(std::string path, std::string fileName) -> AbFileOutputStream*{
 
     AbPath* FILEABPATH = new AbPath(path, fileName);;
     
@@ -118,7 +124,7 @@ private: FileStreamFactory(){
                         if(file->exists())
                         
                                     {
-                                    file->delete();
+                                    file->delete_();
     
 file->createNewFile();
     
@@ -136,19 +142,18 @@ file->createNewFile();
 
                 //@Throws(Exception.constructor)
             
-    public: void delete_(std::string path, std::string fileName){
+    auto FileStreamFactory::delete_(std::string path, std::string fileName) -> void{
 
     AbPath* FILEABPATH = new AbPath(path, fileName);;
     
 
     AbFile* file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
-file->delete();
+file->delete_();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_CPP

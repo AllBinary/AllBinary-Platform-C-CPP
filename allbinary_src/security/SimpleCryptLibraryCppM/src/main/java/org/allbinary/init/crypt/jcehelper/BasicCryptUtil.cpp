@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_CPP
+        #define ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/init/crypt/jcehelper/BasicCryptUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,31 +75,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/init/crypt/jcehelper/CryptInterface.h"
 
-class BasicCryptUtil
-            : public Object
-         {
 
-    private: static BasicCryptUtil* instance() { static std::unique_ptr<BasicCryptUtil> value(new BasicCryptUtil()); return value.get(); }
+BasicCryptUtil::BasicCryptUtil() : logUtil(LogUtil::getInstance()), tsUtil(TsUtil::getInstance()) {
+        }
+        auto BasicCryptUtil::instance_owner() -> BasicCryptUtil* { static std::unique_ptr<BasicCryptUtil> value(new BasicCryptUtil()); return value.get(); }
+BasicCryptUtil* BasicCryptUtil::instance = BasicCryptUtil::instance_owner();
 
-    public: static BasicCryptUtil* getInstance(){
+    auto BasicCryptUtil::getInstance() -> BasicCryptUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicCryptUtil::instance();
+                        return BasicCryptUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: const std::string XML_START = "<?xml";
-
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getDecryptedInputStream(InputStream* inputStream, CryptInterface* cryptInterface){
+    auto BasicCryptUtil::getDecryptedInputStream(InputStream* inputStream, CryptInterface* cryptInterface) -> InputStream*{
 
     ByteArrayOutputStream* buffer = new ByteArrayOutputStream();;
     
@@ -119,7 +123,7 @@ buffer->write(ch);
     std::vector<int8_t> decrypted = cryptInterface->decrypt(buffer->toByteArray());;
     
 
-    std::string decryptedString = String.fromCharCode(...decrypted);;
+    std::string decryptedString = JavaString::fromChars(decrypted);;
     
 
     int32_t index = JavaString::indexOf(decryptedString, this->XML_START);;
@@ -142,7 +146,6 @@ buffer->write(ch);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_CPP

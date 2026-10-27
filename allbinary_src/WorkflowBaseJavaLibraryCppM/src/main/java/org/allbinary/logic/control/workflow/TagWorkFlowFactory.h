@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_TAGWORKFLOWFACTORY_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_TAGWORKFLOWFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,32 +41,14 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/business/DynamicObjectData.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/system/loader/AbeFactory.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class PageContext;
+class DynamicObjectData;
+class LogUtil;
+class StringMaker;
+class AbeFactory;
+class AbeClientInformationInterface;
+class LicensingException;
+class CommonStrings;
 
 
 
@@ -80,17 +67,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
+        class WorkFlowInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TagWorkFlowFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static TagWorkFlowFactory* instance() { static std::unique_ptr<TagWorkFlowFactory> value(new TagWorkFlowFactory()); return value.get(); }
+    private: static TagWorkFlowFactory* instance_owner();
+    private: static TagWorkFlowFactory* instance;
 
     public: static TagWorkFlowFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: TagWorkFlowFactory();
 
@@ -104,3 +96,40 @@ private: TagWorkFlowFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_TAGWORKFLOWFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_TAGWORKFLOWFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_TAGWORKFLOWFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/business/DynamicObjectData.h>)
+#include <org/allbinary/business/DynamicObjectData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/loader/AbeFactory.h>)
+#include <org/allbinary/logic/system/loader/AbeFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/control/workflow/WorkFlowInterface.h")
+#include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_CPP
+        #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/event/LayerManagerEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,27 +62,26 @@
         #include "org/allbinary/layer/event/LayerManagerEventListenerInterface.h"
 #include "org/allbinary/layer/event/LayerManagerEvent.h"
 
-class LayerManagerEventListener
-            : public Object
-        , public LayerManagerEventListenerInterface {
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+LayerManagerEventListener::LayerManagerEventListener() {
+        }
+        
+    auto LayerManagerEventListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onCreateLayerManagerEvent(LayerManagerEvent* layerManagerEvent){
+    auto LayerManagerEventListener::onCreateLayerManagerEvent(LayerManagerEvent* layerManagerEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onDeleteLayerManagerEvent(LayerManagerEvent* layerManagerEvent){
+    auto LayerManagerEventListener::onDeleteLayerManagerEvent(LayerManagerEvent* layerManagerEvent) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/sql/AbSqlTable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,21 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/sql/AbSqlBasic.h"
 
-class AbSqlTable: public AbSqlBasic {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string tableName;
-
-    private: const std::string METHOD_CREATED_TABLE = "createTable()";
-
-    private: const std::string METHOD_DROP_TABLE = "dropTable()";
-
-    private: const std::string TABLE_CREATION_SUCCESS = "Table Creation Successful: ";
-
-    private: const std::string DROPPED_SUCCESS = " Dropped Successfully";
-
-public: AbSqlTable(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
+AbSqlTable::AbSqlTable(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,13 +73,13 @@ public: AbSqlTable(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlBas
 }
 
 
-    public: void setTableName(std::string tableName){
+    auto AbSqlTable::setTableName(std::string tableName) -> void{
 this->tableName= tableName;
     
 }
 
 
-    public: std::string getTableName(){
+    auto AbSqlTable::getTableName() -> std::string{
 
 
 
@@ -93,16 +90,16 @@ this->tableName= tableName;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string createTable(std::string data){
+    auto AbSqlTable::createTable(std::string data) -> std::string{
 
         try {
             this->executeSQLStatement(data);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->TABLE_CREATION_SUCCESS +this->tableName +" with statement: " +data, this, this->METHOD_CREATED_TABLE);
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(this->TABLE_CREATION_SUCCESS +this->tableName) +JavaString::valueOf(" with statement: ")) +JavaString::valueOf(data), this, this->METHOD_CREATED_TABLE);
     
 
                                     }
@@ -111,17 +108,17 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tableName +this->sqlStrings.CREATE_RETURN;
+                        return this->tableName +this->sqlStrings->CREATE_RETURN;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put("Table Creation Failed: " +this->tableName +" with statement: " +data, this, this->METHOD_CREATED_TABLE, &e);
+                                    this->logUtil->put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Table Creation Failed: ") +JavaString::valueOf(this->tableName)) +JavaString::valueOf(" with statement: ")) +JavaString::valueOf(data), this, this->METHOD_CREATED_TABLE, &e);
     
 
                                     }
@@ -130,7 +127,7 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Failed to Create " +this->tableName +" table.";
+                        return JavaString::valueOf(JavaString::valueOf("Failed to Create ") +JavaString::valueOf(this->tableName)) +JavaString::valueOf(" table.");
     
 }
 
@@ -138,19 +135,19 @@ this->tableName= tableName;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string dropTable(){
+    auto AbSqlTable::dropTable() -> std::string{
 
-    std::string sqlStatement = this->sqlStrings.DROP_TABLE +this->tableName;;
+    std::string sqlStatement = this->sqlStrings->DROP_TABLE +this->tableName;;
     
 
         try {
             this->executeSQLStatement(sqlStatement);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->SUCCESS_SQL_STATEMENT +sqlStatement, this, this->METHOD_DROP_TABLE);
+                                    this->logUtil->putF(JavaString::valueOf(this->SUCCESS_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, this->METHOD_DROP_TABLE);
     
 
                                     }
@@ -159,17 +156,17 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return tableName +this->DROPPED_SUCCESS;
+                        return JavaString::valueOf(tableName) +JavaString::valueOf(this->DROPPED_SUCCESS);
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +sqlStatement, this, this->METHOD_DROP_TABLE, &e);
+                                    this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, this->METHOD_DROP_TABLE, &e);
     
 
                                     }
@@ -178,14 +175,13 @@ this->tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Failed to Drop " +tableName +" table.";
+                        return JavaString::valueOf(JavaString::valueOf("Failed to Drop ") +JavaString::valueOf(tableName)) +JavaString::valueOf(" table.");
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLE_CPP

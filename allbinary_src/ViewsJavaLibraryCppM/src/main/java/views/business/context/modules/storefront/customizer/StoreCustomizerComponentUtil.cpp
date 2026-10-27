@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_STORECUSTOMIZERCOMPONENTUTIL_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_STORECUSTOMIZERCOMPONENTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/StoreCustomizerComponentUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,36 +82,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/CustomizerUtil.h"
 
-class StoreCustomizerComponentUtil
-            : public Object
-         {
+auto StoreCustomizerComponentUtil::instance_owner() -> StoreCustomizerComponentUtil* { static std::unique_ptr<StoreCustomizerComponentUtil> value(new StoreCustomizerComponentUtil()); return value.get(); }
+StoreCustomizerComponentUtil* StoreCustomizerComponentUtil::instance = StoreCustomizerComponentUtil::instance_owner();
 
-    private: static StoreCustomizerComponentUtil* instance() { static std::unique_ptr<StoreCustomizerComponentUtil> value(new StoreCustomizerComponentUtil()); return value.get(); }
-
-    public: static StoreCustomizerComponentUtil* getInstance(){
+    auto StoreCustomizerComponentUtil::getInstance() -> StoreCustomizerComponentUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreCustomizerComponentUtil::instance();
+                        return StoreCustomizerComponentUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: StoreCustomizerComponentUtil(){
+StoreCustomizerComponentUtil::StoreCustomizerComponentUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface){
+    auto StoreCustomizerComponentUtil::generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) -> std::string{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Generating Modified Views For: " +transformInfoInterface->getName(), this, "generateModifiedViews()");
+                                    this->logUtil->putF(JavaString::valueOf("Generating Modified Views For: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "generateModifiedViews()");
     
 
                                     }
@@ -129,10 +134,10 @@ private: StoreCustomizerComponentUtil(){
     BasicArrayList* allViewsToBeModified = customizerUtil->getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View or component that was modified by a Customizer: " +nextTransformInfoInterface->getName(), this, "generateModifiedViews()");
+                                    this->logUtil->putF(JavaString::valueOf("View or component that was modified by a Customizer: ") +JavaString::valueOf(nextTransformInfoInterface->getName()), this, "generateModifiedViews()");
     
 
                                     }
@@ -152,7 +157,7 @@ this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModifie
 
                 //@Throws(Exception.constructor)
             
-    private: void generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, BasicArrayList* allViewsToBeModifiedVector){
+    auto StoreCustomizerComponentUtil::generate(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, BasicArrayList* allViewsToBeModifiedVector) -> void{
 
     CustomizerUtil* customizerUtil = CustomizerUtil::getInstance();;
     
@@ -173,10 +178,10 @@ this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModifie
     TransformInfoInterface* specifiedTransformInfoInterface = customizerUtil->getTransformInfoInterfaceToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Retrieved: " +specifiedTransformInfoInterface->getName(), this, "generateModifiedViews()");
+                                    this->logUtil->putF(JavaString::valueOf("Retrieved: ") +JavaString::valueOf(specifiedTransformInfoInterface->getName()), this, "generateModifiedViews()");
     
 
                                     }
@@ -188,7 +193,6 @@ TransformGeneratorUtil::getInstance()->generate(abeClientInformation, nextTransf
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_STORECUSTOMIZERCOMPONENTUTIL_CPP

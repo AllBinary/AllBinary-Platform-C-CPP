@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTING_CPP
+        #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/listings/ProductListing.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -160,27 +170,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/listings/ProductListingInterface.h"
 
-class ProductListing
-            : public Object
-        , public ProductListingInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Directory* directory = Directory::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    private: StoreFrontsEntity* storeFronts;
-
-    private: StaticPagesEntity* staticPages;
-
-    private: InventoryEntity* inventory;
-
-    private: SearchRequest* searchRequest;
-
-    private: const std::string INVENTORY = ".InventoryView";
-
-public: ProductListing(SearchRequest* searchRequest){
+ProductListing::ProductListing(SearchRequest* searchRequest) : logUtil(LogUtil::getInstance()), directory(Directory::getInstance()), basicItemData(BasicItemData::getInstance()){
 this->searchRequest= searchRequest;
     
 this->storeFronts= new StoreFrontsEntity();
@@ -194,7 +185,7 @@ this->inventory= new InventoryEntity();
 
                 //@Throws(Exception.constructor)
             
-    private: HashSet* getHashSet(StoreFrontInterface* storeFront){
+    auto ProductListing::getHashSet(StoreFrontInterface* storeFront) -> HashSet*{
 
     InventoryColumnUtil* inventoryColumnUtil = InventoryColumnUtil::getInstance();;
     
@@ -218,7 +209,7 @@ this->inventory= new InventoryEntity();
     std::string subStore = subStoreVector->get(index);;
     
 
-    BasicArrayList* substoreKeywords = inventoryColumnUtil->getColumnWhereLike(this->inventory, AbPathData::getInstance()->SEPARATOR +subStore, basicItemData->CATEGORY);;
+    BasicArrayList* substoreKeywords = inventoryColumnUtil->getColumnWhereLike(this->inventory, JavaString::valueOf(AbPathData::getInstance()->SEPARATOR) +JavaString::valueOf(subStore), basicItemData->CATEGORY);;
     
 keywords->addAllList(substoreKeywords);
     
@@ -241,12 +232,12 @@ keywords->addAllList(substoreKeywords);
 
                 //@Throws(Exception.constructor)
             
-    private: void savePage(std::string file, std::string data){
+    auto ProductListing::savePage(std::string file, std::string data) -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Creating File: " +file, this, "generateAll()");
+                                    this->logUtil->putF(JavaString::valueOf("Creating File: ") +JavaString::valueOf(file), this, "generateAll()");
     
 
                                     }
@@ -258,7 +249,7 @@ keywords->addAllList(substoreKeywords);
                         if(newFile->exists())
                         
                                     {
-                                    newFile->delete();
+                                    newFile->delete_();
     
 
                                     }
@@ -279,10 +270,10 @@ idOutData->flush();
 StreamUtil::getInstance()->close(idOutData);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Wrote Total Bytes: " +newFile->length(), this, "generateAll()");
+                                    this->logUtil->putF(JavaString::valueOf("Wrote Total Bytes: ") +JavaString::valueOf(newFile->length()), this, "generateAll()");
     
 
                                     }
@@ -294,7 +285,7 @@ StreamUtil::getInstance()->close(idOutData);
                             
 
 
-                            throw new Exception("Could Not Create: " +file);
+                            throw Exception(JavaString::valueOf("Could Not Create: ") +JavaString::valueOf(file));
                     
 
                         }
@@ -304,7 +295,7 @@ StreamUtil::getInstance()->close(idOutData);
 
                 //@Throws(Exception.constructor)
             
-    private: void create(std::string keywordData, HashMap<Object*, Object*>* keywordFilenameHashMap, BasicArrayList* vector, AbPath* staticPath){
+    auto ProductListing::create(std::string keywordData, HashMap<Object*, Object*>* keywordFilenameHashMap, BasicArrayList* vector, AbPath* staticPath) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -344,9 +335,7 @@ this->searchRequest->setFileBaseName(pageName);
     int32_t index = 0;index < productListingPages.size(); index++)
         {
 
-                        if(productListingPages[index] == 
-                                    nullptr
-                                )
+                        if(productListingPages[index].empty())
                         
                                     {
                                     break;
@@ -356,10 +345,10 @@ this->searchRequest->setFileBaseName(pageName);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Saving Listing: " +index, this, "generateAll()");
+                                    this->logUtil->putF(JavaString::valueOf("Saving Listing: ") +JavaString::valueOf(index), this, "generateAll()");
     
 
                                     }
@@ -376,9 +365,9 @@ this->searchRequest->setFileBaseName(pageName);
 
                                     }
                                 
-keywordFilenameHashMap->put(keywordData, pageName +indexStr);
+keywordFilenameHashMap->put(keywordData, JavaString::valueOf(pageName) +JavaString::valueOf(indexStr));
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(staticPath->toString());
     
@@ -400,7 +389,7 @@ stringBuffer->append(InputOutputTypeData::getInstance()->DEFAULT);
                                     
 
 
-                            throw new Exception("Could Not Create Directory: " +staticPath);
+                            throw Exception(JavaString::valueOf("Could Not Create Directory: ") +JavaString::valueOf(staticPath));
                     
 
                                     }
@@ -412,7 +401,7 @@ this->savePage(file, productListingPages[index]);
 }
 
 
-    private: void addStaticPageInfoToDatabase(StoreFrontInterface* storeFront, HashMap<Object*, Object*>* keywordFilenameHashMap){
+    auto ProductListing::addStaticPageInfoToDatabase(StoreFrontInterface* storeFront, HashMap<Object*, Object*>* keywordFilenameHashMap) -> void{
 
     Set* keywordHashSet = keywordFilenameHashMap->keys();;
     
@@ -453,7 +442,7 @@ this->staticPages->insert(insertVector);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generateAll(){
+    auto ProductListing::generateAll() -> std::string{
 
         try {
             
@@ -474,10 +463,10 @@ stringBuffer->append(storeFront->getStaticPath());
     AbPath* staticPath = new AbPath(stringBuffer->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->STATICPAGEGENERATIONLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STATICPAGEGENERATIONLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Store Static Pages Path: " +staticPath, this, "generateAll()");
+                                    this->logUtil->putF(JavaString::valueOf("Store Static Pages Path: ") +JavaString::valueOf(staticPath), this, "generateAll()");
     
 
                                     }
@@ -498,7 +487,7 @@ stringBuffer->append(storeFront->getStaticPath());
                         if(size == 0)
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Products For ");
     
@@ -544,7 +533,7 @@ stringBuffer->append(" Store Not Found");
 
 this->addStaticPageInfoToDatabase(storeFront, keywordFilenameHashMap);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Static Files Generated Successfully For ");
     
@@ -578,7 +567,7 @@ stringBuffer->append(this->INVENTORY);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generateAll(std::string storeName){
+    auto ProductListing::generateAll(std::string storeName) -> std::string{
 
         try {
             
@@ -663,7 +652,6 @@ stringBuffer->append("All Static Pages Generated<br/>");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTING_CPP

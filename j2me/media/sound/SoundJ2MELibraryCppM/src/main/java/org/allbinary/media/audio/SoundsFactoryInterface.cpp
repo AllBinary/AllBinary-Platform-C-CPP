@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,19 +58,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/Sound.h"
 
-class SoundsFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual void init() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::vector<Sound*> getSoundInterfaceArray() = 0;
 
-    public: virtual void setInitialized(bool initialized) = 0;
-
-    public: virtual bool isInitialized() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSFACTORYINTERFACE_CPP

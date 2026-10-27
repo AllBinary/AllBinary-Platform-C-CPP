@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,15 +64,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/color/Color.h"
 
-class ColorCacheable
-            : public Object
-        , public CacheableInterface {
 
-    private: Object* key;
-
-    private: Color* color;
-
-public: ColorCacheable(Object* key){
+ColorCacheable::ColorCacheable(Object* key){
 this->key= key;
     
 this->color= new Color((key).intValue());
@@ -70,7 +73,7 @@ this->color= new Color((key).intValue());
 }
 
 
-    public: Object* getKey(){
+    auto ColorCacheable::getKey() -> Object*{
 
 
 
@@ -80,7 +83,7 @@ this->color= new Color((key).intValue());
 }
 
 
-    public: Color* getColor(){
+    auto ColorCacheable::getColor() -> Color*{
 
 
 
@@ -90,13 +93,12 @@ this->color= new Color((key).intValue());
 }
 
 
-    public: void setColor(Color* color){
+    auto ColorCacheable::setColor(Color* color) -> void{
 this->color= color;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_CPP

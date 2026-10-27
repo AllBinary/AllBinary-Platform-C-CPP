@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,21 +38,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
-
-      
-#include <org/allbinary/game/input/Input.h>
-
-      
-#include <org/allbinary/game/input/InputFactory.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class GameKeyEventSourceInterface;
+class Input;
+class InputFactory;
+class NullUtil;
+class LogUtil;
 
 
 
@@ -66,17 +61,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/event/GameKeyEvent.h"
+        class GameKeyEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyEventFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static GameKeyEventFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     public: const int32_t TOUCH_BUTTON_SOURCE_ID = 2;
 
@@ -84,7 +83,7 @@ class GameKeyEventFactory
 
     private: const int32_t MAX_SOURCES = 4;
 
-    private: std::vector<std::vector<GameKeyEvent*>> ARRAY = std::vector<std::vector<GameKeyEvent*>>(this->MAX_SOURCES, std::vector<GameKeyEvent*>(InputFactory::getInstance()->MAX));
+    private: std::vector<std::vector<GameKeyEvent*>> ARRAY;
 
 private: GameKeyEventFactory();
 
@@ -104,3 +103,28 @@ private: GameKeyEventFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/GameKeyEventSourceInterface.h>)
+#include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/Input.h>)
+#include <org/allbinary/game/input/Input.h>
+#endif
+#if __has_include(<org/allbinary/game/input/InputFactory.h>)
+#include <org/allbinary/game/input/InputFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/game/input/event/GameKeyEvent.h")
+#include "org/allbinary/game/input/event/GameKeyEvent.h"
+#endif
+
+        #endif
+    

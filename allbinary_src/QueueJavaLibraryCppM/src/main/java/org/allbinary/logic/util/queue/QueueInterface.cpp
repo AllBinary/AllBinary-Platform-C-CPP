@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/queue/QueueInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,21 +57,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class QueueInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool offer(Object* anyType) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void remove(Object* anyType) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual Object* remove() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_CPP

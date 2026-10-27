@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,47 +41,19 @@
             #include "java/lang/CharSequence.h"
         
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/IOException.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
 #include <java/io/OutputStream.h>
-
-      
 #include <java/io/Reader.h>
-
-      
 #include <java/io/Writer.h>
-
-      
 #include <java/nio/CharBuffer.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/StreamUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class NullUtil;
+class LogUtil;
+class StreamUtil;
+class StringMaker;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -96,11 +73,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SimpleFileUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static SimpleFileUtil* instance() { static std::unique_ptr<SimpleFileUtil> value(new SimpleFileUtil()); return value.get(); }
+    private: static SimpleFileUtil* instance_owner();
+    private: static SimpleFileUtil* instance;
 
     public: static SimpleFileUtil* getInstance();
 
@@ -110,17 +92,21 @@ class SimpleFileUtil
 
     public: static Reader* nullReader();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: Writer* NULL_WRITER = SimpleFileUtil::nullWriter();
+            
+    public: SimpleFileUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    public: Reader* NULL_READER = SimpleFileUtil::nullReader();
+    public: Writer* NULL_WRITER;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    public: Reader* NULL_READER;
 
-    private: NullUtil* nullUtil = NullUtil::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: StreamUtil* streamUtil = StreamUtil::getInstance();
+    private: NullUtil* nullUtil;
+
+    private: StreamUtil* streamUtil;
 
     public: BasicArrayList* loadFileAsList(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1);
 
@@ -134,3 +120,52 @@ class SimpleFileUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<java/io/OutputStream.h>)
+#include <java/io/OutputStream.h>
+#endif
+#if __has_include(<java/io/Reader.h>)
+#include <java/io/Reader.h>
+#endif
+#if __has_include(<java/io/Writer.h>)
+#include <java/io/Writer.h>
+#endif
+#if __has_include(<java/nio/CharBuffer.h>)
+#include <java/nio/CharBuffer.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
+#include <org/allbinary/logic/io/StreamUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

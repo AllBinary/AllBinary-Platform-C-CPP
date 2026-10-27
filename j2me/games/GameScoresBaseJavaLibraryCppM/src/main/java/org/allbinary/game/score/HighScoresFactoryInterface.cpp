@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,8 @@
         #include "org/allbinary/game/score/HighScoresResultsListener.h"
 #include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
-class HighScoresFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener) = 0;
 
-    public: virtual void fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload) = 0;
 
-    public: virtual HighScoresHelperBaseInterface* createHighScoresHelper() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESFACTORYINTERFACE_CPP

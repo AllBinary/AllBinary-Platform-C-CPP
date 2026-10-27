@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_POSITIONSTRINGS_CPP
+        #define ORG_ALLBINARY_MATH_POSITIONSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/PositionStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,39 +64,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PositionStrings
-            : public Object
-         {
 
-    private: static PositionStrings* instance() { static std::unique_ptr<PositionStrings> value(new PositionStrings()); return value.get(); }
+PositionStrings::PositionStrings() {
+        }
+        auto PositionStrings::instance_owner() -> PositionStrings* { static std::unique_ptr<PositionStrings> value(new PositionStrings()); return value.get(); }
+PositionStrings* PositionStrings::instance = PositionStrings::instance_owner();
 
-    public: static PositionStrings* getInstance(){
+    auto PositionStrings::getInstance() -> PositionStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PositionStrings::instance();
+                        return PositionStrings::instance;
     
 }
 
 
-    public: const std::string X = "x";
 
-    public: const std::string Y = "y";
 
-    public: const std::string X_LABEL = "x: ";
-
-    public: const std::string Y_LABEL = "y: ";
-
-    public: const std::string Z_LABEL = "z: ";
-
-    public: const std::string DX_LABEL = "dx: ";
-
-    public: const std::string DY_LABEL = "dy: ";
-
-    public: const std::string DZ_LABEL = "dz: ";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MATH_POSITIONSTRINGS_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 #include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
-
-      
-#include <org/allbinary/view/ViewPositionFactoryInterface.h>
-
-      
+class ViewPositionFactoryInterface;
 
 
 
@@ -58,10 +57,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/layer/weapon/mine/MineLayer.h"
+        class MineLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MineLayerFactory
-            : public Object
+            : public virtual Object
         , public AllBinaryLayerFactoryInterface {
 
     private: ViewPositionFactoryInterface* viewPositionFactoryInterface;
@@ -78,3 +81,22 @@ public: MineLayerFactory(ViewPositionFactoryInterface* viewPositionFactoryInterf
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerFactoryInterface.h>)
+#include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPositionFactoryInterface.h>)
+#include <org/allbinary/view/ViewPositionFactoryInterface.h>
+#endif
+#if __has_include("org/allbinary/game/ag/layer/weapon/mine/MineLayer.h")
+#include "org/allbinary/game/ag/layer/weapon/mine/MineLayer.h"
+#endif
+
+        #endif
+    

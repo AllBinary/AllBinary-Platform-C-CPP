@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_NULLKEYINPUTVIEWCOMPOSITE_CPP
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_NULLKEYINPUTVIEWCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/activity/NullKeyInputViewComposite.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,39 +63,38 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/activity/KeyInputViewCompositeInterface.h"
 
-class NullKeyInputViewComposite
-            : public Object
-        , public KeyInputViewCompositeInterface {
 
-    public: static NullKeyInputViewComposite* NULL_KEY_INPUT_VIEW_COMPOSITE() { static std::unique_ptr<NullKeyInputViewComposite> value(new NullKeyInputViewComposite()); return value.get(); }
+NullKeyInputViewComposite::NullKeyInputViewComposite() {
+        }
+        auto NullKeyInputViewComposite::NULL_KEY_INPUT_VIEW_COMPOSITE_owner() -> NullKeyInputViewComposite* { static std::unique_ptr<NullKeyInputViewComposite> value(new NullKeyInputViewComposite()); return value.get(); }
+NullKeyInputViewComposite* NullKeyInputViewComposite::NULL_KEY_INPUT_VIEW_COMPOSITE = NullKeyInputViewComposite::NULL_KEY_INPUT_VIEW_COMPOSITE_owner();
 
-    public: void setKeyInputView(View* keyInputView){
+    auto NullKeyInputViewComposite::setKeyInputView(View* keyInputView) -> void{
 }
 
 
-    public: View* getRootView(){
+    auto NullKeyInputViewComposite::getRootView() -> View*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: View* getView(){
+    auto NullKeyInputViewComposite::getView() -> View*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void runOnUiThread(Runnable* action){
+    auto NullKeyInputViewComposite::runOnUiThread(Runnable* action) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_NULLKEYINPUTVIEWCOMPOSITE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONJPANEL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,15 +71,8 @@
 #include "org/allbinary/input/automation/actions/script/condition/GroupLayout.h"
 #include "org/allbinary/input/automation/actions/script/condition/Short.h"
 
-class AlwaysActionScriptConditionJPanel: public javax::swing::JPanel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AlwaysActionScriptConditionInterface* alwaysActionScriptConditionInterface;
-
-public: AlwaysActionScriptConditionJPanel(AlwaysActionScriptConditionInterface* alwaysActionScriptConditionInterface){
+AlwaysActionScriptConditionJPanel::AlwaysActionScriptConditionJPanel(AlwaysActionScriptConditionInterface* alwaysActionScriptConditionInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->initComponents();
@@ -81,7 +84,7 @@ this->set();
 }
 
 
-    private: void set(){
+    auto AlwaysActionScriptConditionJPanel::set() -> void{
 
                         if(this->alwaysActionScriptConditionInterface->isIsOn())
                         
@@ -102,7 +105,7 @@ this->alwaysActionScriptConditionInterface->log();
 }
 
 
-    private: void update(){
+    auto AlwaysActionScriptConditionJPanel::update() -> void{
 
                         if(this->alwaysJComboBox->getSelectedIndex() == 0)
                         
@@ -123,7 +126,7 @@ this->alwaysActionScriptConditionInterface->log();
 }
 
 
-    public: javax::swing::JDialog* getAlwaysActionJDialog(){
+    auto AlwaysActionScriptConditionJPanel::getAlwaysActionJDialog() -> javax::swing::JDialog*{
 
 
 
@@ -133,13 +136,13 @@ this->alwaysActionScriptConditionInterface->log();
 }
 
 
-    public: void setAlwaysActionJDialog(javax::swing::JDialog* alwaysActionJDialog){
+    auto AlwaysActionScriptConditionJPanel::setAlwaysActionJDialog(javax::swing::JDialog* alwaysActionJDialog) -> void{
 this->alwaysActionJDialog= alwaysActionJDialog;
     
 }
 
 
-    private: void initComponents(){
+    auto AlwaysActionScriptConditionJPanel::initComponents() -> void{
 this->alwaysActionJDialog= new javax::swing::JDialog();
     
 this->titleJLabel= new javax::swing::JLabel();
@@ -183,9 +186,9 @@ this->alwaysJComboBox->setModel(new javax::swing::DefaultComboBoxModel(
     
 this->alwaysActionJDialog->getContentPane()->setLayout(alwaysActionJDialogLayout);
     
-alwaysActionJDialogLayout->setHorizontalGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGap(47, 47, 47)->addGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alwaysActionJDialogLayout->createSequentialGroup()->addComponent(jLabel2)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(alwaysJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))->addComponent(titleJLabel)))->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGap(79, 79, 79)->addComponent(okJButton)))->addContainerGap(45, Short::MAX_VALUE)));
+alwaysActionJDialogLayout->setHorizontalGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGap(47, 47, 47)->addGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING, false)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, alwaysActionJDialogLayout->createSequentialGroup()->addComponent(jLabel2)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(alwaysJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))->addComponent(titleJLabel)))->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addGap(79, 79, 79)->addComponent(okJButton)))->addContainerGap(45, Short::MAX_VALUE)));
     
-alwaysActionJDialogLayout->setVerticalGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(titleJLabel)->addGap(20, 20, 20)->addGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(alwaysJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(jLabel2))->addGap(15, 15, 15)->addComponent(okJButton)->addContainerGap()));
+alwaysActionJDialogLayout->setVerticalGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(alwaysActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(titleJLabel)->addGap(20, 20, 20)->addGroup(alwaysActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(alwaysJComboBox, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(jLabel2))->addGap(15, 15, 15)->addComponent(okJButton)->addContainerGap()));
     
 setMinimumSize(new java::awt::Dimension(100, 0));
     
@@ -209,14 +212,14 @@ this->jLabel1->setText("Always:");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short::MAX_VALUE)->addComponent(alwaysActionJButton)));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jLabel1)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 33, Short::MAX_VALUE)->addComponent(alwaysActionJButton)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel1)->addComponent(alwaysActionJButton)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(alwaysActionJButton)));
     
 }
 
 
-    private: void okJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto AlwaysActionScriptConditionJPanel::okJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->update();
     
 this->getAlwaysActionJDialog()->setVisible(false);
@@ -224,27 +227,12 @@ this->getAlwaysActionJDialog()->setVisible(false);
 }
 
 
-    private: void alwaysActionJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto AlwaysActionScriptConditionJPanel::alwaysActionJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->getAlwaysActionJDialog()->setVisible(true);
     
 }
 
 
-    private: javax::swing::JButton* alwaysActionJButton;
 
-    private: javax::swing::JDialog* alwaysActionJDialog;
 
-    private: javax::swing::JComboBox* alwaysJComboBox;
-
-    private: javax::swing::JLabel* jLabel1;
-
-    private: javax::swing::JLabel* jLabel2;
-
-    private: javax::swing::JButton* okJButton;
-
-    private: javax::swing::JLabel* titleJLabel;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITIONJPANEL_CPP

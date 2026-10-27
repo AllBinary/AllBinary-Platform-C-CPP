@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GenericProfileActionScript.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,19 +103,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileActionScriptNodeInterface {
 
-    private: static inline const std::string NAME = "Root";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GenericProfileActionJPanel* genericProfileActionJPanel;
-
-    private: BasicArrayList* profileActionConditionInterfaceVector;
-
-public: GenericProfileActionScript(GenericProfileActionJPanel* genericProfileActionJPanel, Node* node) : DefaultMutableTreeNode(NAME){
+GenericProfileActionScript::GenericProfileActionScript(GenericProfileActionJPanel* genericProfileActionJPanel, Node* node) : DefaultMutableTreeNode(NAME), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -156,7 +155,7 @@ this->setProfileActionConditionInterfaceVector(new BasicArrayListD());
                             
 
 
-                            throw new Exception("Profile Action Script Node Null");
+                            throw Exception("Profile Action Script Node Null");
                     
 
                         }
@@ -164,7 +163,7 @@ this->setProfileActionConditionInterfaceVector(new BasicArrayListD());
 }
 
 
-public: GenericProfileActionScript(GenericProfileActionJPanel* genericProfileActionJPanel){
+GenericProfileActionScript::GenericProfileActionScript(GenericProfileActionJPanel* genericProfileActionJPanel) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->genericProfileActionJPanel= genericProfileActionJPanel;
     
 this->setProfileActionConditionInterfaceVector(new BasicArrayListD());
@@ -172,7 +171,7 @@ this->setProfileActionConditionInterfaceVector(new BasicArrayListD());
 }
 
 
-    public: void addCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface){
+    auto GenericProfileActionScript::addCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface) -> void{
 this->logUtil->putF(this->commonStrings->START, this, "addCondition");
     
 this->getProfileActionConditionInterfaceVector()->add(profileActionScriptNodeInterface);
@@ -182,7 +181,7 @@ this->add(profileActionScriptNodeInterface);
 }
 
 
-    public: void removeCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface){
+    auto GenericProfileActionScript::removeCondition(ProfileActionScriptNodeInterface* profileActionScriptNodeInterface) -> void{
 this->logUtil->putF(this->commonStrings->START, this, "removeCondition");
     
 this->getProfileActionConditionInterfaceVector()->remove(profileActionScriptNodeInterface);
@@ -192,11 +191,11 @@ this->remove(profileActionScriptNodeInterface);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto GenericProfileActionScript::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -207,7 +206,7 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 }
 
 
-    public: BasicArrayList* getProfileActionConditionInterfaceVector(){
+    auto GenericProfileActionScript::getProfileActionConditionInterfaceVector() -> BasicArrayList*{
 
 
 
@@ -217,7 +216,7 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 }
 
 
-    public: void setProfileActionConditionInterfaceVector(BasicArrayList* profileActionConditionInterfaceVector){
+    auto GenericProfileActionScript::setProfileActionConditionInterfaceVector(BasicArrayList* profileActionConditionInterfaceVector) -> void{
 this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
     
 }
@@ -225,7 +224,7 @@ this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVect
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GenericProfileActionScript::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(GenericProfileActionData::SCRIPT);;
     
@@ -258,7 +257,6 @@ node->appendChild(profileActionConditionInterface->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPT_CPP

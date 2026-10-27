@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_OPENGLES_GLUTIL_CPP
+        #define ORG_ALLBINARY_OPENGLES_GLUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/opengles/GLUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,27 +71,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GLUtil
-            : public Object
-         {
 
-    private: static GLUtil* instance() { static std::unique_ptr<GLUtil> value(new GLUtil()); return value.get(); }
+GLUtil::GLUtil() : NULL_FLOAT_BUFFER(ByteBuffer::allocateDirect(0)->asFloatBuffer()) {
+        }
+        auto GLUtil::instance_owner() -> GLUtil* { static std::unique_ptr<GLUtil> value(new GLUtil()); return value.get(); }
+GLUtil* GLUtil::instance = GLUtil::instance_owner();
 
-    public: static GLUtil* getInstance(){
+    auto GLUtil::getInstance() -> GLUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GLUtil::instance();
+                        return GLUtil::instance;
     
 }
 
 
-    private: const int32_t BYTES_PER_FLOAT = 4;
-
-    public: FloatBuffer* NULL_FLOAT_BUFFER = ByteBuffer::allocateDirect(0)->asFloatBuffer();
-
-    public: FloatBuffer* makeFloatBuffer3(float p_a, float p_b, float p_c){
+    auto GLUtil::makeFloatBuffer3(float p_a, float p_b, float p_c) -> FloatBuffer*{
 
     ByteBuffer* b = ByteBuffer::allocateDirect(3 *this->BYTES_PER_FLOAT);;
     
@@ -107,7 +113,7 @@ this->position(buffer, 0);
 }
 
 
-    public: FloatBuffer* makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d){
+    auto GLUtil::makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d) -> FloatBuffer*{
 
     ByteBuffer* b = ByteBuffer::allocateDirect(4 *this->BYTES_PER_FLOAT);;
     
@@ -135,7 +141,7 @@ this->position(buffer, 0);
 }
 
 
-    public: FloatBuffer* makeFloatBuffer(ByteBuffer* byteBuffer){
+    auto GLUtil::makeFloatBuffer(ByteBuffer* byteBuffer) -> FloatBuffer*{
 
     ByteBuffer* b = ByteBuffer::allocateDirect(byteBuffer->limit() *this->BYTES_PER_FLOAT);;
     
@@ -172,7 +178,7 @@ this->position(buffer, 0);
 }
 
 
-    public: Buffer* position(Buffer* buffer, int32_t newPosition){
+    auto GLUtil::position(Buffer* buffer, int32_t newPosition) -> Buffer*{
 
 
 
@@ -182,7 +188,7 @@ this->position(buffer, 0);
 }
 
 
-    public: void rotateUVs(std::vector<float> uvs, float angleDegrees, float pivotU, float pivotV){
+    auto GLUtil::rotateUVs(std::vector<float> uvs, float angleDegrees, float pivotU, float pivotV) -> void{
 
     double angleRad = Math::toRadians(angleDegrees);;
     
@@ -226,7 +232,6 @@ uvs[i +1]= rv;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_OPENGLES_GLUTIL_CPP

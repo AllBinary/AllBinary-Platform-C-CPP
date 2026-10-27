@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_API3_VIRTUALKEYBOARDAPI3_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_API3_VIRTUALKEYBOARDAPI3_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/api3/VirtualKeyboardAPI3.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,21 +83,9 @@
         #include "org/allbinary/android/input/api3/ShowVirtualKeyboardRunnable.h"
 #include "org/allbinary/android/input/api3/HideVirtualKeyboardRunnable.h"
 
-class VirtualKeyboardAPI3: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
+int32_t VirtualKeyboardAPI3::MAX_API = Integer.MAX_VALUE;
 
-    public: static inline int32_t MAX_API = Integer.MAX_VALUE;
-
-    public: static inline int32_t MIN_API = 3;
-
-    private: bool virtualKeyboard= false;
-
-    private: Activity* activity;
-
-    private: Runnable* showVirtualKeyboardRunnable;
-
-    private: Runnable* hideVirtualKeyboardRunnable;
-
-public: VirtualKeyboardAPI3(Activity* activity) : VirtualKeyboard(){
+VirtualKeyboardAPI3::VirtualKeyboardAPI3(Activity* activity) : VirtualKeyboard(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,13 +108,13 @@ virtualKeyboardEventHandler->addListenerInterface(this);
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto VirtualKeyboardAPI3::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent){
+    auto VirtualKeyboardAPI3::onVirtualKeyboardEvent(VirtualKeyboardEvent* virtualKeyboardEvent) -> void{
 
     bool isShow = virtualKeyboardEvent->getSource();;
     
@@ -138,13 +136,13 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 }
 
 
-    public: void forceHide(){
+    auto VirtualKeyboardAPI3::forceHide() -> void{
 this->hideVirtualKeyboard();
     
 }
 
 
-    public: void hide(){
+    auto VirtualKeyboardAPI3::hide() -> void{
 
                         if(this->virtualKeyboard)
                         
@@ -157,7 +155,7 @@ this->hideVirtualKeyboard();
 }
 
 
-    private: void showVirtualKeyboard(){
+    auto VirtualKeyboardAPI3::showVirtualKeyboard() -> void{
 this->activity->runOnUiThread(this->showVirtualKeyboardRunnable);
     
 this->virtualKeyboard= true;
@@ -165,7 +163,7 @@ this->virtualKeyboard= true;
 }
 
 
-    private: void hideVirtualKeyboard(){
+    auto VirtualKeyboardAPI3::hideVirtualKeyboard() -> void{
 this->activity->runOnUiThread(this->hideVirtualKeyboardRunnable);
     
 this->virtualKeyboard= false;
@@ -173,7 +171,6 @@ this->virtualKeyboard= false;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_API3_VIRTUALKEYBOARDAPI3_CPP

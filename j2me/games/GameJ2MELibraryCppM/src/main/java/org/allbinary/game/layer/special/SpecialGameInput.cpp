@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/SpecialGameInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,91 +67,90 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
-class SpecialGameInput
-            : public Object
-        , public SpecialGameInputInterface {
 
+SpecialGameInput::SpecialGameInput() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void up(){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void down(){
+    auto SpecialGameInput::up() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void right(){
+    auto SpecialGameInput::down() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void left(){
+    auto SpecialGameInput::right() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void strafeLeft(){
+    auto SpecialGameInput::left() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void strafeRight(){
+    auto SpecialGameInput::strafeLeft() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fire(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
+    auto SpecialGameInput::strafeRight() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special1(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
+    auto SpecialGameInput::fire(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special2(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
+    auto SpecialGameInput::special1(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special3(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
+    auto SpecialGameInput::special2(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special4(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
+    auto SpecialGameInput::special3(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void special5(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent){
+    auto SpecialGameInput::special4(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
-}
-
-
-    public: void paintThreed(Graphics* graphics){
-}
-
-
-};
-
+                //@Throws(Exception.constructor)
             
+    auto SpecialGameInput::special5(AllBinaryLayerManager* layerManager, GameKeyEvent* gameKeyEvent) -> void{
+}
 
+
+    auto SpecialGameInput::paint(Graphics* graphics) -> void{
+}
+
+
+    auto SpecialGameInput::paintThreed(Graphics* graphics) -> void{
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUT_CPP

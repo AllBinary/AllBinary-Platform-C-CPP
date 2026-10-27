@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_INITHELPER_CPP
+        #define ADMIN_TAGHELPERS_INITHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/InitHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,15 +68,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/BasicTable.h"
 
-class InitHelper: public BasicTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+InitHelper::InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: std::string drop(){
+    auto InitHelper::drop() -> std::string{
 
         try {
             
@@ -88,10 +95,10 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
     std::string error = "Failed to drop log table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
     
 
                                     }
@@ -107,7 +114,7 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
 }
 
 
-    public: std::string create(){
+    auto InitHelper::create() -> std::string{
 
         try {
             
@@ -124,10 +131,10 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
     std::string error = "Failed to create new log table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -143,14 +150,14 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
 }
 
 
-    public: std::string view(){
+    auto InitHelper::view() -> std::string{
 
         try {
             
     std::string success = "Fix Me";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "view()");
@@ -172,10 +179,10 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
     std::string error = "Failed to view Log table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -191,7 +198,7 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
 }
 
 
-    public: std::string restore(){
+    auto InitHelper::restore() -> std::string{
 
         try {
             
@@ -201,7 +208,7 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
     std::string result = "Fix Me";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -223,10 +230,10 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -242,7 +249,7 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
 }
 
 
-    public: std::string backup(){
+    auto InitHelper::backup() -> std::string{
 
         try {
             
@@ -252,7 +259,7 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
     std::string result = "Fix Me";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -274,10 +281,10 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -293,7 +300,6 @@ public: InitHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext)
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_INITHELPER_CPP

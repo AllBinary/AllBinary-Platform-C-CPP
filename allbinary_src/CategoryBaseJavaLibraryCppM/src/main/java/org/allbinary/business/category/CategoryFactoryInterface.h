@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYFACTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,14 +33,8 @@
 
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class AbPath;
+class Node;
 
 
 
@@ -54,9 +53,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/category/CategoryInterface.h"
+        class CategoryInterface;
 
-class CategoryFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class CategoryFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual CategoryInterface* getRootInstance() = 0;
 
@@ -76,3 +81,22 @@ class CategoryFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/category/CategoryInterface.h")
+#include "org/allbinary/business/category/CategoryInterface.h"
+#endif
+
+        #endif
+    

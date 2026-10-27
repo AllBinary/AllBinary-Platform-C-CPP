@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/theme/ThemeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThemeData
-            : public Object
-         {
+auto ThemeData::instance_owner() -> ThemeData* { static std::unique_ptr<ThemeData> value(new ThemeData()); return value.get(); }
+ThemeData* ThemeData::instance = ThemeData::instance_owner();
 
-    private: static ThemeData* instance() { static std::unique_ptr<ThemeData> value(new ThemeData()); return value.get(); }
-
-    public: static ThemeData* getInstance(){
+    auto ThemeData::getInstance() -> ThemeData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThemeData::instance();
+                        return ThemeData::instance;
     
 }
 
 
-private: ThemeData(){
+ThemeData::ThemeData(){
 }
 
 
-    public: const std::string NAME = "THEME_NAME";
 
-    public: const std::string PATH = "THEME_PATH";
 
-    public: const std::string PREVIEW_IMAGE_NAME = "THEME_PREVIEW_IMAGE_NAME";
-
-    public: const std::string PREVIEW_IMAGE_PATH = "THEME_PREVIEW_IMAGE_PATH";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEDATA_CPP

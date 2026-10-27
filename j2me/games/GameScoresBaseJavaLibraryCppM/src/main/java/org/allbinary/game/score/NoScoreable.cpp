@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/NoScoreable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/Scoreable.h"
 
-class NoScoreable: public Scoreable {
+auto NoScoreable::SINGLETON_owner() -> NoScoreable* { static std::unique_ptr<NoScoreable> value(new NoScoreable()); return value.get(); }
+NoScoreable* NoScoreable::SINGLETON = NoScoreable::SINGLETON_owner();
 
-    private: static NoScoreable* SINGLETON() { static std::unique_ptr<NoScoreable> value(new NoScoreable()); return value.get(); }
-
-    public: static NoScoreable* getInstance(){
+    auto NoScoreable::getInstance() -> NoScoreable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoScoreable::SINGLETON();
+                        return NoScoreable::SINGLETON;
     
 }
 
 
-private: NoScoreable() : Scoreable(0){
+NoScoreable::NoScoreable() : Scoreable(0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,15 +77,14 @@ private: NoScoreable() : Scoreable(0){
 }
 
 
-    public: void addPoints(int32_t points){
+    auto NoScoreable::addPoints(int32_t points) -> void{
 }
 
 
-    public: void removePoints(int32_t points){
+    auto NoScoreable::removePoints(int32_t points) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_NOSCOREABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STDUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_STDUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/StdUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,29 +76,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //ActualPlatform
-/*actual*/ class StdUtil
-            : public Object
-         {
 
-    private: static StdUtil* instance() { static std::unique_ptr<StdUtil> value(new StdUtil()); return value.get(); }
+StdUtil::StdUtil() : EMPTY_VECTOR(this->createVector()), NULL_TABLE(this->createHashtable()), NULL_MAP(this->createHashMap()) {
+        }
+        auto StdUtil::instance_owner() -> StdUtil* { static std::unique_ptr<StdUtil> value(new StdUtil()); return value.get(); }
+StdUtil* StdUtil::instance = StdUtil::instance_owner();
 
-    /*actual*/ public: static StdUtil* getInstance(){
+    /*actual*/ auto StdUtil::getInstance() -> StdUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StdUtil::instance();
+                        return StdUtil::instance;
     
 }
 
 
-    /*actual*/ public: ABVector<Object*>* EMPTY_VECTOR = this->createVector();
-
-    /*actual*/ public: ABHashtable<Object*, Object*>* NULL_TABLE = this->createHashtable();
-
-    /*actual*/ public: ABHashMap<Object*, Object*>* NULL_MAP = this->createHashMap();
-
-    public: ABStack<Object*>* createStack(){
+    auto StdUtil::createStack() -> ABStack<Object*>*{
 
 
 
@@ -98,7 +102,7 @@
 }
 
 
-    public: ABVector<Object*>* createVector(){
+    auto StdUtil::createVector() -> ABVector<Object*>*{
 
 
 
@@ -108,7 +112,7 @@
 }
 
 
-    public: ABHashtable<Object*, Object*>* createHashtable(){
+    auto StdUtil::createHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -118,7 +122,7 @@
 }
 
 
-    public: ABHashMap<Object*, Object*>* createHashMap(){
+    auto StdUtil::createHashMap() -> ABHashMap<Object*, Object*>*{
 
 
 
@@ -128,7 +132,6 @@
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_STDUTIL_CPP

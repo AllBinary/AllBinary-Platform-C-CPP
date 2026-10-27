@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_XSLDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_XSLDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/XslData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class XslData
-            : public Object
-         {
+auto XslData::instance_owner() -> XslData* { static std::unique_ptr<XslData> value(new XslData()); return value.get(); }
+XslData* XslData::instance = XslData::instance_owner();
 
-    private: static XslData* instance() { static std::unique_ptr<XslData> value(new XslData()); return value.get(); }
-
-    public: static XslData* getInstance(){
+    auto XslData::getInstance() -> XslData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XslData::instance();
+                        return XslData::instance;
     
 }
 
 
-private: XslData(){
+XslData::XslData(){
 }
 
 
-    public: std::string NAME = "XSL_NAME";
 
-    public: std::string ROOT_IMPORT_URI = "ROOT_IMPORT_URI";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_XSLDATA_CPP

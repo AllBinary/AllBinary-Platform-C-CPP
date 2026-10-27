@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/points/PointsLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,11 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PointsLayer: public AllBinaryLayer {
 
-    private: int32_t points;
-
-public: PointsLayer(int32_t points) : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
+PointsLayer::PointsLayer(int32_t points) : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,17 +89,16 @@ this->points= points;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto PointsLayer::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void visit(ScoreableInterface* scoreableInterface){
+    auto PointsLayer::visit(ScoreableInterface* scoreableInterface) -> void{
 scoreableInterface->addPoints(this->points);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_CPP

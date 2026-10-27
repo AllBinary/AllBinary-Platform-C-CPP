@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/transform/info/TransformInfoEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/transform/info/TransformInfoEntity.h"
 
-class TransformInfoEntityFactory
-            : public Object
-         {
 
-    public: static TransformInfoEntity* getInstance(TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface* transformInfoFactoryInterface){
+TransformInfoEntityFactory::TransformInfoEntityFactory(){
+}
+
+
+    auto TransformInfoEntityFactory::getInstance(TransformInfoObjectConfigGeneratorFactoryInterface* transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase* transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface* transformInfoFactoryInterface) -> TransformInfoEntity*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -87,7 +98,7 @@ class TransformInfoEntityFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "TransformInfoEntityFactory", commonStrings->GET_INSTANCE, &e);
@@ -106,11 +117,6 @@ class TransformInfoEntityFactory
 }
 
 
-private: TransformInfoEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITYFACTORY_CPP

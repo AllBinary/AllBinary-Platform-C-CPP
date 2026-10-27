@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_PERMISSION_PERMISSIONITEMDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_PERMISSION_PERMISSIONITEMDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/permission/PermissionItemData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,23 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PermissionItemData
-            : public Object
-         {
 
-    public: static inline const std::string WHO = "PERMISSIONSITEM_WHO";
+PermissionItemData::PermissionItemData() {
+        }
+        
 
-    public: static inline const std::string WHAT = "PERMISSIONSITEM_WHAT";
 
-    public: static inline const std::string TYPE = "PERMISSIONSITEM_TYPE";
-
-    public: static inline const std::string START_TIME = "PERMISSIONSITEM_START_TIME";
-
-    public: static inline const std::string END_TIME = "PERMISSIONSITEM_END_TIME";
-
-    public: static inline const std::string REMOTE_ADDR = "PERMISSIONSITEM_REMOTE_ADDR";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_PERMISSION_PERMISSIONITEMDATA_CPP

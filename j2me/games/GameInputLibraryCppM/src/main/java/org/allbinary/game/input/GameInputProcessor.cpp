@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,57 +65,53 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInputProcessor
-            : public Object
-         {
+auto GameInputProcessor::instance_owner() -> GameInputProcessor* { static std::unique_ptr<GameInputProcessor> value(new GameInputProcessor()); return value.get(); }
+GameInputProcessor* GameInputProcessor::instance = GameInputProcessor::instance_owner();
 
-    private: static GameInputProcessor* instance() { static std::unique_ptr<GameInputProcessor> value(new GameInputProcessor()); return value.get(); }
-
-    public: static GameInputProcessor* getInstance(){
+    auto GameInputProcessor::getInstance() -> GameInputProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputProcessor::instance();
+                        return GameInputProcessor::instance;
     
 }
 
 
-protected: GameInputProcessor(){
+GameInputProcessor::GameInputProcessor(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
+    auto GameInputProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processReleasedEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
+    auto GameInputProcessor::processReleasedEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAnalog(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t analogValue){
+    auto GameInputProcessor::processAnalog(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent, int32_t analogValue) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager* allbinaryLayerManager, int32_t keyAsInteger){
+    auto GameInputProcessor::process(AllBinaryLayerManager* allbinaryLayerManager, int32_t keyAsInteger) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processReleased(AllBinaryLayerManager* allbinaryLayerManager, int32_t keyAsInteger){
+    auto GameInputProcessor::processReleased(AllBinaryLayerManager* allbinaryLayerManager, int32_t keyAsInteger) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSOR_CPP

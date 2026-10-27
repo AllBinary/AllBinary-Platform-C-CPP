@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +54,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/util/cache/PoolInterface.h"
-#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
-#include "org/allbinary/logic/util/cache/PoolType.h"
-#include "org/allbinary/logic/util/cache/CachePolicy.h"
+        class PoolInterface;
+class CacheableInterfaceFactoryInterface;
+class PoolType;
+class CachePolicy;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PoolInterfaceFactory
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -70,3 +79,22 @@ private: PoolInterfaceFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLINTERFACEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/util/cache/PoolInterface.h")
+#include "org/allbinary/logic/util/cache/PoolInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/PoolType.h")
+#include "org/allbinary/logic/util/cache/PoolType.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CachePolicy.h")
+#include "org/allbinary/logic/util/cache/CachePolicy.h"
+#endif
+
+        #endif
+    

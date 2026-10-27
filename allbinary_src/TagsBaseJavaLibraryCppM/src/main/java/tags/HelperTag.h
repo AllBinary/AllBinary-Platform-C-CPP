@@ -21,6 +21,11 @@
         #ifndef TAGS_HELPERTAG_H
         #define TAGS_HELPERTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <admin/taghelpers/TagHelperFactoryInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class TagHelperFactoryInterface;
+class LogUtil;
 
 
 
@@ -57,9 +58,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/PropertiesTag.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HelperTag: public PropertiesTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: TagHelperFactoryInterface* tagHelperFactoryInterface;
 
@@ -69,7 +74,7 @@ public: HelperTag(TagHelperFactoryInterface* tagHelperFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: void setHelper();
+    /*protected*/ public: void setHelper();
 
     public: Object* getHelper();
 
@@ -81,3 +86,19 @@ public: HelperTag(TagHelperFactoryInterface* tagHelperFactoryInterface);
 
 
         #endif //TAGS_HELPERTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGS_HELPERTAG_H_COMPLETE)
+        #define TAGS_HELPERTAG_H_COMPLETE
+        #if __has_include(<admin/taghelpers/TagHelperFactoryInterface.h>)
+#include <admin/taghelpers/TagHelperFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("tags/PropertiesTag.h")
+#include "tags/PropertiesTag.h"
+#endif
+
+        #endif
+    

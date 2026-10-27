@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/cache/BufferedImageCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,15 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/cache/BufferedImageInfo.h"
 
-class BufferedImageCacheable
-            : public Object
-        , public CacheableInterface {
 
-    private: BufferedImageInfo* key;
-
-    private: BufferedImage* bufferedImage;
-
-public: BufferedImageCacheable(BufferedImageInfo* key){
+BufferedImageCacheable::BufferedImageCacheable(BufferedImageInfo* key){
 this->key= key;
     
 this->setBufferedImage(new BufferedImage(key->getWidth(), key->getHeight(), key->getType()));
@@ -71,7 +74,7 @@ this->setBufferedImage(new BufferedImage(key->getWidth(), key->getHeight(), key-
 }
 
 
-    public: Object* getKey(){
+    auto BufferedImageCacheable::getKey() -> Object*{
 
 
 
@@ -81,7 +84,7 @@ this->setBufferedImage(new BufferedImage(key->getWidth(), key->getHeight(), key-
 }
 
 
-    public: BufferedImage* getBufferedImage(){
+    auto BufferedImageCacheable::getBufferedImage() -> BufferedImage*{
 
 
 
@@ -91,13 +94,13 @@ this->setBufferedImage(new BufferedImage(key->getWidth(), key->getHeight(), key-
 }
 
 
-    private: void setBufferedImage(BufferedImage* bufferedImage){
+    auto BufferedImageCacheable::setBufferedImage(BufferedImage* bufferedImage) -> void{
 this->bufferedImage= bufferedImage;
     
 }
 
 
-    public: std::string toString(){
+    auto BufferedImageCacheable::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -116,7 +119,6 @@ stringBuffer->append(this->getKey()->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLE_CPP

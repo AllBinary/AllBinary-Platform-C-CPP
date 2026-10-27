@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_SCOREABLE_H
         #define ORG_ALLBINARY_GAME_SCORE_SCOREABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
+class SmallIntegerSingletonFactory;
 
 
 
@@ -54,11 +57,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/ScoreableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Scoreable
-            : public Object
+            : public virtual Object
         , public ScoreableInterface {
 
-    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(3);
+    public: static int32_t ID;
 
     private: int32_t points;
 
@@ -68,7 +75,7 @@ public: Scoreable(int32_t points);
 
     public: void removePoints(int32_t points);
 
-    protected: void setPoints(int32_t points);
+    /*protected*/ public: void setPoints(int32_t points);
 
     public: int32_t getPoints();
 
@@ -78,3 +85,16 @@ public: Scoreable(int32_t points);
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_SCOREABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_SCOREABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_SCOREABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include("org/allbinary/game/score/ScoreableInterface.h")
+#include "org/allbinary/game/score/ScoreableInterface.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -51,13 +54,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MultiplayerBehavior
-            : public Object
+            : public virtual Object
          {
 
-    public: static MultiplayerBehavior* NULL_MULTIPLAYER_BEHAVIOR() { static std::unique_ptr<MultiplayerBehavior> value(new MultiplayerBehavior(StringUtil::getInstance()->EMPTY_STRING)); return value.get(); }
+    private: static MultiplayerBehavior* NULL_MULTIPLAYER_BEHAVIOR_owner();
+    public: static MultiplayerBehavior* NULL_MULTIPLAYER_BEHAVIOR;
 
-protected: MultiplayerBehavior(std::string username);
+/*protected*/ public: MultiplayerBehavior(std::string username);
 
     public: void startTick();
 
@@ -71,3 +79,13 @@ protected: MultiplayerBehavior(std::string username);
 
 
         #endif //ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

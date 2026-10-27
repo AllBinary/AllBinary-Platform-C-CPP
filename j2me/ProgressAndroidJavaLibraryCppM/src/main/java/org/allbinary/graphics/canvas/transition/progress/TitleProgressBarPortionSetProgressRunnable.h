@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <android/app/Activity.h>
-
-      
+class CommonStrings;
+class LogUtil;
+class Activity;
 
 
 
@@ -57,12 +56,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
-#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
-#include "org/allbinary/graphics/canvas/transition/progress/AndroidBasicTitleProgressBar.h"
+class ProgressCanvas;
+class AndroidBasicTitleProgressBar;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TitleProgressBarPortionSetProgressRunnable: public ProgressRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: TitleProgressBarPortionSetProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas);
 
@@ -74,3 +77,28 @@ public: TitleProgressBarPortionSetProgressRunnable(Activity* midletActivity, Pro
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<android/app/Activity.h>)
+#include <android/app/Activity.h>
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/AndroidBasicTitleProgressBar.h")
+#include "org/allbinary/graphics/canvas/transition/progress/AndroidBasicTitleProgressBar.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUD_CPP
+        #define ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/graphics/hud/BasicHud.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -108,49 +118,8 @@
         #include "org/allbinary/game/graphics/hud/HudGraphicsPosition.h"
 #include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
 
-class BasicHud
-            : public Object
-        , public UpdateMyFontInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
-
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
-
-    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
-
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    private: int32_t location= 0;
-
-    private: int32_t direction= 0;
-
-    private: int32_t bufferZone= 0;
-
-    private: int32_t bufferZoneY= 0;
-
-    private: HudGraphicsPosition* hudGraphicsPosition = HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION;
-
-    private: int32_t x= 0;
-
-    private: int32_t y= 0;
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
-
-    private: int32_t color;
-
-    protected: int32_t updateMaxWidth= 0;
-
-    protected: int32_t updateMaxHeight= 0;
-
-    protected: int32_t offsetY= 0;
-
-public: BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor){
+BasicHud::BasicHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), canvasStrings(CanvasStrings::getInstance()), basicSetColorUtil(BasicColorSetUtil::getInstance()), displayInfo(DisplayInfoSingleton::getInstance()), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), hudGraphicsPosition(HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION), basicColor(BasicColorFactory::getInstance()->BLACK){
 this->setLocation(location);
     
 this->setDirection(direction);
@@ -166,7 +135,7 @@ this->color= basicColor->intValue();
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto BasicHud::updateMeasurement(Graphics* graphics) -> void{
 
         try {
             this->hudGraphicsPosition= this->getHudGraphicsPositionWH(this->displayInfo->getLastWidth(), this->displayInfo->getLastHeight(), this->updateMaxWidth, this->updateMaxHeight);
@@ -191,7 +160,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: int32_t getLocation(){
+    auto BasicHud::getLocation() -> int32_t{
 
 
 
@@ -201,7 +170,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: int32_t getDirection(){
+    auto BasicHud::getDirection() -> int32_t{
 
 
 
@@ -213,7 +182,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    protected: HudGraphicsPosition* getHudGraphicsPositionWH(int32_t width, int32_t height, int32_t maxWidth, int32_t maxHeight){
+    auto BasicHud::getHudGraphicsPositionWH(int32_t width, int32_t height, int32_t maxWidth, int32_t maxHeight) -> HudGraphicsPosition*{
 
     int32_t x = 0;;
     
@@ -326,19 +295,19 @@ anchor= 0;
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto BasicHud::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
+    auto BasicHud::onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) -> void{
 this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    protected: GPoint* getPoint(int32_t x, int32_t y){
+    auto BasicHud::getPoint(int32_t x, int32_t y) -> GPoint*{
 
 
 
@@ -348,7 +317,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: int32_t getBufferZone(){
+    auto BasicHud::getBufferZone() -> int32_t{
 
 
 
@@ -358,7 +327,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void setBufferZone(int32_t bufferZone){
+    auto BasicHud::setBufferZone(int32_t bufferZone) -> void{
 this->bufferZone= bufferZone;
     
 
@@ -379,19 +348,19 @@ this->bufferZone= bufferZone;
 }
 
 
-    public: void setLocation(int32_t location){
+    auto BasicHud::setLocation(int32_t location) -> void{
 this->location= location;
     
 }
 
 
-    public: void setDirection(int32_t direction){
+    auto BasicHud::setDirection(int32_t direction) -> void{
 this->direction= direction;
     
 }
 
 
-    protected: HudGraphicsPosition* getHudGraphicsPosition(){
+    auto BasicHud::getHudGraphicsPosition() -> HudGraphicsPosition*{
 
 
 
@@ -401,7 +370,7 @@ this->direction= direction;
 }
 
 
-    public: int32_t getColor(){
+    auto BasicHud::getColor() -> int32_t{
 
 
 
@@ -411,7 +380,7 @@ this->direction= direction;
 }
 
 
-    public: int32_t getX(){
+    auto BasicHud::getX() -> int32_t{
 
 
 
@@ -421,19 +390,19 @@ this->direction= direction;
 }
 
 
-    public: void setX(int32_t x){
+    auto BasicHud::setX(int32_t x) -> void{
 this->x= x;
     
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto BasicHud::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto BasicHud::getBasicColorP() -> BasicColor*{
 
 
 
@@ -443,13 +412,13 @@ this->basicColor= basicColor;
 }
 
 
-    protected: void setY(int32_t y){
+    auto BasicHud::setY(int32_t y) -> void{
 this->y= y;
     
 }
 
 
-    protected: int32_t getY(){
+    auto BasicHud::getY() -> int32_t{
 
 
 
@@ -459,7 +428,7 @@ this->y= y;
 }
 
 
-    public: void paintSSO(Graphics* graphics, std::string string, std::string string2, int32_t offset){
+    auto BasicHud::paintSSO(Graphics* graphics, std::string string, std::string string2, int32_t offset) -> void{
 this->myFontProcessor->process(graphics);
     
 this->basicSetColorUtil->setBasicColorP(graphics, this->getBasicColorP());
@@ -471,7 +440,7 @@ graphics->drawString(string2, this->x +offset, this->getY(), this->hudGraphicsPo
 }
 
 
-    public: void paintSSOO(Graphics* graphics, std::string string, std::string string2, int32_t offset, int32_t offset2){
+    auto BasicHud::paintSSOO(Graphics* graphics, std::string string, std::string string2, int32_t offset, int32_t offset2) -> void{
 this->myFontProcessor->process(graphics);
     
 graphics->setColor(this->getColor());
@@ -483,7 +452,7 @@ graphics->drawString(string2, this->x +offset2, this->getY(), this->hudGraphicsP
 }
 
 
-    public: void paintDXY(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len, std::vector<char> charArray2, int32_t offset2, int32_t len2, int32_t xOffset, int32_t xOffset2){
+    auto BasicHud::paintDXY(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len, std::vector<char> charArray2, int32_t offset2, int32_t len2, int32_t xOffset, int32_t xOffset2) -> void{
 this->myFontProcessor->process(graphics);
     
 this->basicSetColorUtil->setBasicColorP(graphics, this->getBasicColorP());
@@ -498,7 +467,7 @@ graphics->drawChars(charArray2, offset2, len2, this->x +xOffset2, y, this->hudGr
 }
 
 
-    public: void paintDX(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len, std::vector<char> charArray2, int32_t offset2, int32_t len2, int32_t xOffset){
+    auto BasicHud::paintDX(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len, std::vector<char> charArray2, int32_t offset2, int32_t len2, int32_t xOffset) -> void{
 this->myFontProcessor->process(graphics);
     
 this->basicSetColorUtil->setBasicColorP(graphics, this->getBasicColorP());
@@ -513,7 +482,7 @@ graphics->drawChars(charArray2, offset2, len2, this->x +xOffset, y, this->hudGra
 }
 
 
-    public: void paintOffsetAndLength(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len){
+    auto BasicHud::paintOffsetAndLength(Graphics* graphics, std::vector<char> charArray, int32_t offset, int32_t len) -> void{
 this->myFontProcessor->process(graphics);
     
 this->basicSetColorUtil->setBasicColorP(graphics, this->getBasicColorP());
@@ -526,7 +495,7 @@ graphics->drawChars(charArray, offset, len, this->x, y, this->hudGraphicsPositio
 }
 
 
-    public: void paintString(Graphics* graphics, std::string string){
+    auto BasicHud::paintString(Graphics* graphics, std::string string) -> void{
 this->myFontProcessor->process(graphics);
     
 this->basicSetColorUtil->setBasicColorP(graphics, this->getBasicColorP());
@@ -539,7 +508,6 @@ graphics->drawString(string, this->x, y, this->hudGraphicsPosition->getAnchor())
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUD_CPP

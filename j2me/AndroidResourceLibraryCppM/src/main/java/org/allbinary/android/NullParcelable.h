@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_NULLPARCELABLE_H
         #define ORG_ALLBINARY_ANDROID_NULLPARCELABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -34,11 +39,7 @@
             #include "java/lang/RuntimeException.h"
         
 #include <android/os/Parcelable.h>
-
-      
-#include <android/os/Parcel.h>
-
-      
+class Parcel;
 
 
 
@@ -58,12 +59,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullParcelable
-            : public Object
+            : public virtual Object
         , public Parcelable {
 
-    public: static NullParcelable* NULL_PARCELABLE() { static std::unique_ptr<NullParcelable> value(new NullParcelable()); return value.get(); }
+    private: static NullParcelable* NULL_PARCELABLE_owner();
+    public: static NullParcelable* NULL_PARCELABLE;
 
+
+            
+    public: NullParcelable();
+        
     public: int32_t describeContents();
 
     public: void writeToParcel(Parcel* dest, int32_t flags);
@@ -74,3 +84,16 @@ class NullParcelable
 
 
         #endif //ORG_ALLBINARY_ANDROID_NULLPARCELABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_NULLPARCELABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_NULLPARCELABLE_H_COMPLETE
+        #if __has_include(<android/os/Parcelable.h>)
+#include <android/os/Parcelable.h>
+#endif
+#if __has_include(<android/os/Parcel.h>)
+#include <android/os/Parcel.h>
+#endif
+
+        #endif
+    

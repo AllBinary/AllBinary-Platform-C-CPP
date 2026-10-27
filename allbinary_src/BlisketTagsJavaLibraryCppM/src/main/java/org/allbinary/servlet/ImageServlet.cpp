@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_SERVLET_IMAGESERVLET_CPP
+        #define ORG_ALLBINARY_SERVLET_IMAGESERVLET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/servlet/ImageServlet.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -87,15 +97,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/servlet/BlisketServletUtil.h"
 
-class ImageServlet: public HttpServlet {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
+ImageServlet::ImageServlet() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response){
+    auto ImageServlet::processRequest(HttpServletRequest* request, HttpServletResponse* response) -> void{
 
     InputStream* inputStream = 
                 null
@@ -109,7 +117,7 @@ class ImageServlet: public HttpServlet {
     std::string requestURI = request->getRequestURI();;
     
 
-    AbFile* file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +requestURI);;
+    AbFile* file = AbFile::createAbFile(JavaString::valueOf(URLGLOBALS::getWebappPath()) +JavaString::valueOf(requestURI));;
     
 inputStream= CloudStreamUtil::getInstance()->getFileLocal(file);
     
@@ -128,7 +136,7 @@ response->getOutputStream()->write(byteArray);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processRequest()", &e);
@@ -158,7 +166,7 @@ response->getOutputStream()->write(byteArray);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response){
+    auto ImageServlet::doGet(HttpServletRequest* request, HttpServletResponse* response) -> void{
 this->processRequest(request, response);
     
 }
@@ -166,13 +174,13 @@ this->processRequest(request, response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response){
+    auto ImageServlet::doPost(HttpServletRequest* request, HttpServletResponse* response) -> void{
 this->processRequest(request, response);
     
 }
 
 
-    public: std::string getServletInfo(){
+    auto ImageServlet::getServletInfo() -> std::string{
 
 
 
@@ -182,7 +190,6 @@ this->processRequest(request, response);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_SERVLET_IMAGESERVLET_CPP

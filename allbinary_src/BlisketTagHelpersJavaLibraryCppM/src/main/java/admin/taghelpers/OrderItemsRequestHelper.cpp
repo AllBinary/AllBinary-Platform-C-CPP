@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_ORDERITEMSREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_ORDERITEMSREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/OrderItemsRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,19 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class OrderItemsRequestHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HttpServletRequest* request;
-
-    private: std::string id;
-
-    private: std::string groupId;
-
-    private: std::string status;
-
-public: OrderItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+OrderItemsRequestHelper::OrderItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->getFormData();
@@ -90,7 +89,7 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto OrderItemsRequestHelper::getFormData() -> void{
 this->id= this->request->getParameter(OrderData::ID);
     
 this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
@@ -100,7 +99,7 @@ this->status= this->request->getParameter(OrderHistoryData::STATUS);
 }
 
 
-    public: std::string setOrderStatus(std::string newStatus){
+    auto OrderItemsRequestHelper::setOrderStatus(std::string newStatus) -> std::string{
 
         try {
             
@@ -108,12 +107,12 @@ this->status= this->request->getParameter(OrderHistoryData::STATUS);
                         newStatus= this->status;
                                 
 
-    std::string success = "Status successfully set to: " +newStatus;;
+    std::string success = JavaString::valueOf("Status successfully set to: ") +JavaString::valueOf(newStatus);;
     
 OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newStatus);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setOrderStatus(newStatus)");
@@ -135,10 +134,10 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newSt
     std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus(newStatus)", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus(newStatus)", &e);
     
 
                                     }
@@ -154,16 +153,16 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, newSt
 }
 
 
-    public: std::string setOrderStatus(){
+    auto OrderItemsRequestHelper::setOrderStatus() -> std::string{
 
         try {
             
-    std::string success = "Status successfully set to: " +this->status;;
+    std::string success = JavaString::valueOf("Status successfully set to: ") +JavaString::valueOf(this->status);;
     
 OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this->status);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setOrderStatus(newStatus)");
@@ -185,10 +184,10 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this-
     std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus(newStatus)", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus(newStatus)", &e);
     
 
                                     }
@@ -204,7 +203,6 @@ OrderItemsEntityFactory::getInstance()->setStatus(this->id, this->groupId, this-
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_ORDERITEMSREQUESTHELPER_CPP

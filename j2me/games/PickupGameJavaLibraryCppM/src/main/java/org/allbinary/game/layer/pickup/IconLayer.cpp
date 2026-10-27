@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/IconLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,13 +77,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IconLayer: public AllBinaryLayer {
+auto IconLayer::NULL_ICON_LAYER_owner() -> IconLayer* { static std::unique_ptr<IconLayer> value(new IconLayer(NullAnimationFactory::getFactoryInstance()->getInstance(0), 0, 0)); return value.get(); }
+IconLayer* IconLayer::NULL_ICON_LAYER = IconLayer::NULL_ICON_LAYER_owner();
 
-    public: static IconLayer* NULL_ICON_LAYER() { static std::unique_ptr<IconLayer> value(new IconLayer(NullAnimationFactory::getFactoryInstance()->getInstance(0), 0, 0)); return value.get(); }
-
-    private: Animation* animationInterface;
-
-public: IconLayer(Animation* animationInterface, int32_t width, int32_t height) : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, width, height), ViewPosition::getInstanceD()){
+IconLayer::IconLayer(Animation* animationInterface, int32_t width, int32_t height) : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, width, height), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,19 +92,19 @@ this->animationInterface= animationInterface;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto IconLayer::paint(Graphics* graphics) -> void{
 this->animationInterface->paintXY(graphics, this->x, this->y);
     
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto IconLayer::paintThreed(Graphics* graphics) -> void{
 this->animationInterface->paintThreedXYZ(graphics, this->x, this->y, this->z);
     
 }
 
 
-    public: Animation* getAnimationInterface(){
+    auto IconLayer::getAnimationInterface() -> Animation*{
 
 
 
@@ -107,7 +114,6 @@ this->animationInterface->paintThreedXYZ(graphics, this->x, this->y, this->z);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYER_CPP

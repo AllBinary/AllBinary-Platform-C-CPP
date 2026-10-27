@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_WEBCOMMANDPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_WEBCOMMANDPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/WebCommandProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,29 +82,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/screen/AboutCommandProcessor.h"
 
-class WebCommandProcessor
-            : public Object
-         {
 
-    private: static WebCommandProcessor* instance() { static std::unique_ptr<WebCommandProcessor> value(new WebCommandProcessor()); return value.get(); }
+WebCommandProcessor::WebCommandProcessor() : logUtil(LogUtil::getInstance()), aboutCommandProcessor(AboutCommandProcessor::getInstance()), list(new BasicArrayListD()) {
+        }
+        auto WebCommandProcessor::instance_owner() -> WebCommandProcessor* { static std::unique_ptr<WebCommandProcessor> value(new WebCommandProcessor()); return value.get(); }
+WebCommandProcessor* WebCommandProcessor::instance = WebCommandProcessor::instance_owner();
 
-    public: static WebCommandProcessor* getInstance(){
+    auto WebCommandProcessor::getInstance() -> WebCommandProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WebCommandProcessor::instance();
+                        return WebCommandProcessor::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AboutCommandProcessor* aboutCommandProcessor = AboutCommandProcessor::getInstance();
-
-    public: BasicArrayList* list = new BasicArrayListD();
-
-    public: void process(CommandListener* midletCommandListener, Command* command, Canvas* canvas){
+    auto WebCommandProcessor::process(CommandListener* midletCommandListener, Command* command, Canvas* canvas) -> void{
 
         try {
             PlayN::openURL(this->list->removeAt(0));
@@ -113,7 +117,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->PROCESS, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_WEBCOMMANDPROCESSOR_CPP

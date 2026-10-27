@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,78 +34,30 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/NullCanvas.h>
-
-      
-#include <javax/microedition/lcdui/NullCommandListener.h>
-
-      
-#include <org/allbinary/canvas/Processor.h>
-
-      
+class CommandListener;
+class Font;
+class Graphics;
+class NullCanvas;
+class NullCommandListener;
+class Processor;
 #include <org/allbinary/canvas/RunnableCanvas.h>
-
-      
-#include <org/allbinary/game/commands/GameCommandsFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/displayable/CanvasStrings.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class GameCommandsFactory;
+class BasicColor;
+class CanvasStrings;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomGaugeItem.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
+class UpdateMyFontProcessor;
+class ABCustomGaugeItem;
+class NullPaintable;
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/midlet/AllBinaryMidlet.h>
-
-      
-#include <org/allbinary/thread/PathFindingThreadPool.h>
-
-      
-#include <org/allbinary/thread/ThreadPool.h>
-
-      
+class PreLogUtil;
+class SmallIntegerSingletonFactory;
+class StringMaker;
+class StringUtil;
+class AllBinaryMidlet;
+class PathFindingThreadPool;
+class ThreadPool;
 
 
 
@@ -119,66 +76,63 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "org/allbinary/graphics/canvas/transition/progress/ProgressPaintable.h"
-#include "org/allbinary/graphics/canvas/transition/progress/ProgressEndListener.h"
+        //class ProgressPaintable;
+class ProgressEndListener;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ProgressCanvas: public RunnableCanvas, public PaintableInterface, public UpdateMyFontInterface {
+public: class ProgressPaintable;
 
-    protected: bool hasPainted= false;
+    /*protected*/ public: bool hasPainted= false;
 
     private: BasicColor* backgroundBasicColor;
 
 //inner= member=true isStatic=
-class ProgressPaintable: public Paintable {
+public: class ProgressPaintable: public Paintable {
 
-    ProgressCanvas* progressCanvas;
+    public: ProgressCanvas* progressCanvas;
 
-: ProgressPaintable(ProgressCanvas* progressCanvas);
+public: ProgressPaintable(ProgressCanvas* progressCanvas);
 
     public: void paint(Graphics* graphics);
 
 };
 
             
-    public: Paintable* GAUGE_PAINTABLE = new ProgressPaintable(this);
+    public: Paintable* GAUGE_PAINTABLE;
 
     private: const float maxValue = 100.0;
 
-    protected: ABCustomGaugeItem* gauge;
+    /*protected*/ public: ABCustomGaugeItem* gauge;
 
-    private: const std::string TEXT = this->commonStrings.LOADING;
+    private: const std::string TEXT;
 
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor;
 
-    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor;
 
-    protected: AllBinaryMidlet* allbinaryMidlet = AllBinaryMidlet::getNullInstance();
+    /*protected*/ public: AllBinaryMidlet* allbinaryMidlet;
 
     private: float value= 0.0;
 
-    private: std::string text = this->TEXT;
+    private: std::string text;
 
     private: bool background = true;
 
-    protected: PaintableInterface* paintable = this->GAUGE_PAINTABLE;
+    /*protected*/ public: PaintableInterface* paintable;
 
     public: bool inProgress = false;
 
-    private: Processor* IN_GAME_PROCESSOR = class extends Processor
-                                {
-                                
-    ThreadPool* pathFindingThreadPool = PathFindingThreadPool::getInstance();
-                //@Throws(Exception.constructor)
-            
-    public: void process();
-                                }
-                            ;
+    private: Processor* IN_GAME_PROCESSOR;
 
-    public: Processor* inGameProcessor = Processor::getInstance();
+    public: Processor* inGameProcessor;
 
-    public: ProgressEndListener* progressEndListener = ProgressEndListener::instance;
+    public: ProgressEndListener* progressEndListener;
 
-: ProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
+public: ProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
     public: void updateMeasurement(Graphics* graphics);
 
@@ -190,7 +144,7 @@ class ProgressPaintable: public Paintable {
 
     public: void initCommands(CommandListener* cmdListener);
 
-    protected: float getMaxValue();
+    /*protected*/ public: float getMaxValue();
 
     public: void start();
 
@@ -212,9 +166,9 @@ class ProgressPaintable: public Paintable {
 
     public: void endIfPaintedSinceStart();
 
-    protected: const std::string ADD_PORTION = "addPortion";
+    /*protected*/ public: const std::string ADD_PORTION = "addPortion";
 
-    protected: const std::string ADD_EARLY_PORTION = "addEarlyPortion";
+    /*protected*/ public: const std::string ADD_EARLY_PORTION = "addEarlyPortion";
 
     public: void addEarlyPortion(int32_t value, std::string text, int32_t index);
 
@@ -222,7 +176,7 @@ class ProgressPaintable: public Paintable {
 
     public: void addNormalPortion(int32_t value, std::string text);
 
-    protected: void setValue(int32_t value);
+    /*protected*/ public: void setValue(int32_t value);
 
     public: void paint(Graphics* graphics);
 
@@ -230,15 +184,15 @@ class ProgressPaintable: public Paintable {
 
     public: void paintThreed(Graphics* graphics);
 
-    protected: float getValue();
+    /*protected*/ public: float getValue();
 
     public: void setText(std::string text);
 
     public: std::string getText();
 
-    protected: void setBackground(bool background);
+    /*protected*/ public: void setBackground(bool background);
 
-    protected: bool isBackground();
+    /*protected*/ public: bool isBackground();
 
 };
 
@@ -246,3 +200,85 @@ class ProgressPaintable: public Paintable {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullCanvas.h>)
+#include <javax/microedition/lcdui/NullCanvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullCommandListener.h>)
+#include <javax/microedition/lcdui/NullCommandListener.h>
+#endif
+#if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+#if __has_include(<org/allbinary/canvas/RunnableCanvas.h>)
+#include <org/allbinary/canvas/RunnableCanvas.h>
+#endif
+#if __has_include(<org/allbinary/game/commands/GameCommandsFactory.h>)
+#include <org/allbinary/game/commands/GameCommandsFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/CanvasStrings.h>)
+#include <org/allbinary/graphics/displayable/CanvasStrings.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomGaugeItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomGaugeItem.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/midlet/AllBinaryMidlet.h>)
+#include <org/allbinary/midlet/AllBinaryMidlet.h>
+#endif
+#if __has_include(<org/allbinary/thread/PathFindingThreadPool.h>)
+#include <org/allbinary/thread/PathFindingThreadPool.h>
+#endif
+#if __has_include(<org/allbinary/thread/ThreadPool.h>)
+#include <org/allbinary/thread/ThreadPool.h>
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ProgressEndListener.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressEndListener.h"
+#endif
+
+        #endif
+    

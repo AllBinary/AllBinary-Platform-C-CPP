@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_ADDFILEVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_ADDFILEVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/AddFileValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -117,17 +127,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/InventoryItemView.h"
 
-class AddFileValidationView: public InventoryItemView, public ValidationComponentInterface {
+const std::string AddFileValidationView::NEXTSTEP = JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" Step");
 
-    private: static inline const std::string ADDPRODUCT = "Add Product";
-
-    private: static inline const std::string NEXTSTEP = CommonLabels::getInstance()->NEXT +" Step";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-public: AddFileValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface){
+AddFileValidationView::AddFileValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface), logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -137,7 +139,7 @@ public: AddFileValidationView(TransformInfoInterface* transformInfoInterface) : 
 }
 
 
-    public: bool isValid(){
+    auto AddFileValidationView::isValid() -> bool{
 
         try {
             
@@ -148,7 +150,7 @@ public: AddFileValidationView(TransformInfoInterface* transformInfoInterface) : 
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -166,7 +168,7 @@ stringBuffer->append(" or ");
     
 stringBuffer->append(AddFileValidationView::NEXTSTEP);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -188,10 +190,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(basicItemValidation->validationInfo(), this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(basicItemValidation->validationInfo(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -208,10 +210,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
-this->itemInterface.setCategory(storeFrontInterface->getCategoryPath() +this->itemInterface.getCategory());
+this->itemInterface->setCategory(storeFrontInterface->getCategoryPath() +this->itemInterface->getCategory());
     
 
-    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface.getCategory())->toString();;
+    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface->getCategory())->toString();;
     
 
     AbFile* categoryFile = AbFile::createAbFile(fullCategory);;
@@ -221,10 +223,10 @@ this->itemInterface.setCategory(storeFrontInterface->getCategoryPath() +this->it
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Category Does Not Exist: " +fullCategory, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("Category Does Not Exist: ") +JavaString::valueOf(fullCategory), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -239,16 +241,16 @@ this->itemInterface.setCategory(storeFrontInterface->getCategoryPath() +this->it
                                     }
                                 
 
-                        if(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->itemInterface.getId()) != 
+                        if(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->itemInterface->getId()) != 
                                     nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Item Already Exists", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Item Already Exists", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -307,10 +309,10 @@ HttpFileUploadUtil::log(fileItem);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Exception in validation", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Exception in validation", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -326,7 +328,7 @@ HttpFileUploadUtil::log(fileItem);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto AddFileValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -336,7 +338,7 @@ HttpFileUploadUtil::log(fileItem);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto AddFileValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -346,7 +348,7 @@ HttpFileUploadUtil::log(fileItem);
 }
 
 
-    public: std::string validationInfo(){
+    auto AddFileValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -386,13 +388,13 @@ stringBuffer->append("<br/>");
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface.getCategory())->toString();;
+    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface->getCategory())->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Category: " +fullCategory, this, "validationInfo()");
+                                    this->logUtil->putF(JavaString::valueOf("Category: ") +JavaString::valueOf(fullCategory), this, "validationInfo()");
     
 
                                     }
@@ -406,7 +408,7 @@ stringBuffer->append("<br/>");
                                     {
                                     stringBuffer->append("Category ");
     
-stringBuffer->append(this->itemInterface.getCategory());
+stringBuffer->append(this->itemInterface->getCategory());
     
 stringBuffer->append(" does not exist.<br />");
     
@@ -416,7 +418,7 @@ stringBuffer->append(" does not exist.<br />");
 
         try {
             
-                        if(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->itemInterface.getId()) != 
+                        if(InventoryEntityFactory::getInstance()->getInventoryEntityInstance()->getItem(this->itemInterface->getId()) != 
                                     nullptr
                                 )
                         
@@ -431,7 +433,7 @@ stringBuffer->append(" does not exist.<br />");
 } catch(MoneyException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Existing Item With MoneyException", this, "validationInfo()");
@@ -476,7 +478,7 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -497,7 +499,7 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
                 //@Throws(Exception.constructor)
             
-    private: bool isValid(std::string fileName, int64_t size){
+    auto AddFileValidationView::isValid(std::string fileName, int64_t size) -> bool{
 
     FileData* fileData = FileData::getInstance();;
     
@@ -553,7 +555,7 @@ this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -567,7 +569,7 @@ stringBuffer->append(">");
     
 stringBuffer->appendint(fileData->MAXIMAGEFILESIZE);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -588,7 +590,7 @@ this->processImageFiles();
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -602,7 +604,7 @@ stringBuffer->append(">");
     
 stringBuffer->appendint(fileData->MINIMAGEFILESIZE);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -625,7 +627,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 }
 
 
-    private: void validationInfo(StringMaker* stringBuffer, std::string fileName, std::string fileItemFieldName, int64_t size){
+    auto AddFileValidationView::validationInfo(StringMaker* stringBuffer, std::string fileName, std::string fileItemFieldName, int64_t size) -> void{
 
     FileData* fileData = FileData::getInstance();;
     
@@ -724,7 +726,6 @@ stringBuffer->append("<br/>");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_ADDFILEVALIDATIONVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bounds/event/BoundsChangeEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/bounds/event/BoundsChangeEvent.h"
 
-class BoundsChangeEventListener: public EventListenerInterface {
+//Interface - declared in the header
 
-    public: virtual void onBoundsChangeEvent(BoundsChangeEvent* boundsChangeEvent) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTLISTENER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/terrain/TerrainEventListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/terrain/TerrainEvent.h"
 
-class TerrainEventListenerInterface: public EventListenerInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onTerrainEvent(TerrainEvent* trackingEvent) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTLISTENERINTERFACE_CPP

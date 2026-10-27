@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ADDRESS_BILLINGADDRESSDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_BILLINGADDRESSDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BillingAddressData
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const int32_t MAX = 255;
@@ -94,3 +103,10 @@ private: BillingAddressData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ADDRESS_BILLINGADDRESSDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ADDRESS_BILLINGADDRESSDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_BILLINGADDRESSDATA_H_COMPLETE
+        
+        #endif
+    

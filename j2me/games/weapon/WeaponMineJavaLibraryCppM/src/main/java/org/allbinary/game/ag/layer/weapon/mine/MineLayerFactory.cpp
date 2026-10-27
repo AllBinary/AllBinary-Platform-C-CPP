@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,13 +67,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/weapon/mine/MineLayer.h"
 
-class MineLayerFactory
-            : public Object
-        , public AllBinaryLayerFactoryInterface {
 
-    private: ViewPositionFactoryInterface* viewPositionFactoryInterface;
-
-public: MineLayerFactory(ViewPositionFactoryInterface* viewPositionFactoryInterface){
+MineLayerFactory::MineLayerFactory(ViewPositionFactoryInterface* viewPositionFactoryInterface){
 this->viewPositionFactoryInterface= viewPositionFactoryInterface;
     
 }
@@ -71,7 +76,7 @@ this->viewPositionFactoryInterface= viewPositionFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getInstance(){
+    auto MineLayerFactory::getInstance() -> AllBinaryLayer*{
 
 
 
@@ -81,7 +86,6 @@ this->viewPositionFactoryInterface= viewPositionFactoryInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERFACTORY_CPP

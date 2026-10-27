@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H
         #define ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,14 +35,8 @@
             #include "java/lang/Object.h"
         
 #include <java/text/SimpleDateFormat.h>
-
-      
 #include <java/util/Calendar.h>
-
-      
 //#include <java/util/Date.h>
-
-      
 
 
 
@@ -56,16 +55,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //ActualPlatform
 /*actual*/ class TimeStampUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
+    private: static TimeStampUtil* instance_owner();
+    private: static TimeStampUtil* instance;
 
     /*actual*/ public: static TimeStampUtil* getInstance();
 
-    private: SimpleDateFormat* simpleDataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    private: SimpleDateFormat* simpleDataFormat;
 
 private: TimeStampUtil();
 
@@ -77,3 +81,17 @@ private: TimeStampUtil();
 
 
         #endif //ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H_COMPLETE
+        #if __has_include(<java/text/SimpleDateFormat.h>)
+#include <java/text/SimpleDateFormat.h>
+#endif
+#if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+
+
+        #endif
+    

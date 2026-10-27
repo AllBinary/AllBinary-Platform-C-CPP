@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/HitPointGameObject.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,19 +70,8 @@
         #include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
 #include "org/allbinary/input/automation/module/game/HitPointGameObjectInterface.h"
 
-class HitPointGameObject: public MeteredGameObject, public HitPointGameObjectInterface {
 
-    private: bool damaged = false;
-
-    private: bool closeDeath = false;
-
-    private: const std::string HP_LABEL = "HP: ";
-
-    private: const std::string IS_DAMAGED_LABEL = "isDamaged: ";
-
-    private: const std::string IS_CLOSE_DEATH_LABEL = "isCloseDeath: ";
-
-public: HitPointGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y) : MeteredGameObject(bufferedImage, minX, maxX, y){
+HitPointGameObject::HitPointGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y) : MeteredGameObject(bufferedImage, minX, maxX, y){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -112,7 +111,7 @@ public: HitPointGameObject(std::vector<BufferedImage*> bufferedImage, int32_t mi
 }
 
 
-    public: bool isMoreThan(float aFloat){
+    auto HitPointGameObject::isMoreThan(float aFloat) -> bool{
 
                         if(this->getRatios()[this->getRatios()->length -1].doubleValue() > aFloat)
                         
@@ -139,7 +138,7 @@ public: HitPointGameObject(std::vector<BufferedImage*> bufferedImage, int32_t mi
 }
 
 
-    public: bool isCloseDeath(){
+    auto HitPointGameObject::isCloseDeath() -> bool{
 
 
 
@@ -149,13 +148,13 @@ public: HitPointGameObject(std::vector<BufferedImage*> bufferedImage, int32_t mi
 }
 
 
-    protected: void setCloseDeath(bool closeDeath){
+    auto HitPointGameObject::setCloseDeath(bool closeDeath) -> void{
 this->closeDeath= closeDeath;
     
 }
 
 
-    public: bool isDamaged(){
+    auto HitPointGameObject::isDamaged() -> bool{
 
 
 
@@ -165,13 +164,13 @@ this->closeDeath= closeDeath;
 }
 
 
-    public: void setDamaged(bool damaged){
+    auto HitPointGameObject::setDamaged(bool damaged) -> void{
 this->damaged= damaged;
     
 }
 
 
-    public: std::string toString(){
+    auto HitPointGameObject::toString() -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -180,7 +179,7 @@ this->damaged= damaged;
     
 stringBuffer->append(this->HP_LABEL);
     
-stringBuffer->append(super.toString());
+stringBuffer->append(MeteredGameObject::toString());
     
 stringBuffer->append(commonSeps->NEW_LINE);
     
@@ -203,7 +202,6 @@ stringBuffer->appendboolean(this->isCloseDeath());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACECOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/health/Health.h"
+        class Health;
 
-class HealthInterfaceCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class HealthInterfaceCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual Health* getHealthInterface() = 0;
 
@@ -57,3 +68,13 @@ class HealthInterfaceCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACECOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACECOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACECOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/health/Health.h")
+#include "org/allbinary/game/health/Health.h"
+#endif
+
+        #endif
+    

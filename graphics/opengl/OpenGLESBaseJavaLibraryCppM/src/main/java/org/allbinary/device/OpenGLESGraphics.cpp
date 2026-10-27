@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_CPP
+        #define ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/device/OpenGLESGraphics.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,45 +66,40 @@
         #include "org/allbinary/device/GraphicsInterface.h"
 #include "org/allbinary/device/NullGL10.h"
 
-class OpenGLESGraphics: public Graphics, public OpenGLSurfaceChangedInterface, public GraphicsInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: GL10* gl = NullGL10::NULL_GL10;
-
-public: OpenGLESGraphics(){
+OpenGLESGraphics::OpenGLESGraphics() : commonStrings(CommonStrings::getInstance()), gl(NullGL10::NULL_GL10){
 }
 
 
-    public: void updateGL(GL* gl){
+    auto OpenGLESGraphics::updateGL(GL* gl) -> void{
 }
 
 
-    public: void set(GL* gl){
+    auto OpenGLESGraphics::set(GL* gl) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto OpenGLESGraphics::init() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(){
+    auto OpenGLESGraphics::update() -> void{
 }
 
 
-    public: void setOrthoginalMode(){
+    auto OpenGLESGraphics::setOrthoginalMode() -> void{
 }
 
 
-    public: void setCameraMode(){
+    auto OpenGLESGraphics::setCameraMode() -> void{
 }
 
 
-    public: GL10* getGl10(){
+    auto OpenGLESGraphics::getGl10() -> GL10*{
 
 
 
@@ -104,16 +109,15 @@ public: OpenGLESGraphics(){
 }
 
 
-    public: void setFontDebug(Font* font, FontDebugBase* fontDebug){
+    auto OpenGLESGraphics::setFontDebug(Font* font, FontDebugBase* fontDebug) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_CPP

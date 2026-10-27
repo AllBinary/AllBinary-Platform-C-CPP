@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/weapon/WeaponLayerArrayLayerCircularStaticPool.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,29 +63,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
 
-class WeaponLayerArrayLayerCircularStaticPool
-            : public Object
-         {
 
-    private: static WeaponLayerArrayLayerCircularStaticPool* instance() { static std::unique_ptr<WeaponLayerArrayLayerCircularStaticPool> value(new WeaponLayerArrayLayerCircularStaticPool()); return value.get(); }
+WeaponLayerArrayLayerCircularStaticPool::WeaponLayerArrayLayerCircularStaticPool() : circularIndexUtil(CircularIndexUtil::createInstance(this->MAX)), ALL_WEAPONLAYER_ARRAY(std::vector<std::vector<std::vector<Object*>>>(4)) {
+        }
+        auto WeaponLayerArrayLayerCircularStaticPool::instance_owner() -> WeaponLayerArrayLayerCircularStaticPool* { static std::unique_ptr<WeaponLayerArrayLayerCircularStaticPool> value(new WeaponLayerArrayLayerCircularStaticPool()); return value.get(); }
+WeaponLayerArrayLayerCircularStaticPool* WeaponLayerArrayLayerCircularStaticPool::instance = WeaponLayerArrayLayerCircularStaticPool::instance_owner();
 
-    public: static WeaponLayerArrayLayerCircularStaticPool* getInstance(){
+    auto WeaponLayerArrayLayerCircularStaticPool::getInstance() -> WeaponLayerArrayLayerCircularStaticPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WeaponLayerArrayLayerCircularStaticPool::instance();
+                        return WeaponLayerArrayLayerCircularStaticPool::instance;
     
 }
 
 
-    private: const int32_t MAX = 5;
-
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(this->MAX);
-
-    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = std::vector<std::vector<std::vector<Object*>>>(4);
-
-    public: void init(){
+    auto WeaponLayerArrayLayerCircularStaticPool::init() -> void{
 
     std::vector<std::vector<Object*>> WEAPONLAYER_ARRAY = std::vector<std::vector<Object*>>(this->MAX *2);;
     
@@ -112,7 +116,7 @@ this->ALL_WEAPONLAYER_ARRAY[3]= THREE_WEAPONLAYER_ARRAY;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::vector<WeaponLayer*> getInstanceArray(int32_t size){
+    auto WeaponLayerArrayLayerCircularStaticPool::getInstanceArray(int32_t size) -> std::vector<WeaponLayer*>{
 
     std::vector<WeaponLayer*> weaponLayerArray = this->ALL_WEAPONLAYER_ARRAY[size][this->circularIndexUtil->getIndex()] as WeaponLayer[];;
     
@@ -127,7 +131,6 @@ this->circularIndexUtil->next();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_CPP

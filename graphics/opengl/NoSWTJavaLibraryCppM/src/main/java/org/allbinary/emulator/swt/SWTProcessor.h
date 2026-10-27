@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H
         #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Runnable.h"
         
-#include <org/eclipse/swt/widgets/Display.h>
-
-      
-#include <org/allbinary/thread/NullRunnable.h>
-
-      
+class Display;
+class NullRunnable;
 
 
 
@@ -56,15 +57,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SWTProcessor
-            : public Object
+            : public virtual Object
          {
 
-    private: static SWTProcessor* instance() { static std::unique_ptr<SWTProcessor> value(new SWTProcessor()); return value.get(); }
+    private: static SWTProcessor* instance_owner();
+    private: static SWTProcessor* instance;
 
     public: static SWTProcessor* getInstance();
 
-    public: Runnable* runnable = NullRunnable::getInstance();
+
+            
+    public: SWTProcessor();
+        
+    public: Runnable* runnable;
 
     public: void process(Display* display);
 
@@ -74,3 +84,16 @@ class SWTProcessor
 
 
         #endif //ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H_COMPLETE
+        #if __has_include(<org/eclipse/swt/widgets/Display.h>)
+#include <org/eclipse/swt/widgets/Display.h>
+#endif
+#if __has_include(<org/allbinary/thread/NullRunnable.h>)
+#include <org/allbinary/thread/NullRunnable.h>
+#endif
+
+        #endif
+    

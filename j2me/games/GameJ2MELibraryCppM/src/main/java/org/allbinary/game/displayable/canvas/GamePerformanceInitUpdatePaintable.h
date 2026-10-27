@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,33 +34,15 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/canvas/GameStatisticsFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Font;
+class Graphics;
+class GameStatisticsFactory;
+class BasicColorFactory;
+class DisplayInfoSingleton;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
+class UpdateMyFontProcessor;
 #include <org/allbinary/graphics/paint/InitUpdatePaintable.h>
-
-      
 
 
 
@@ -75,15 +62,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    private: const int32_t halfHeight = DisplayInfoSingleton::getInstance()->getLastHalfHeight();
 
-    private: const std::vector<int32_t> yArray = {this->halfHeight +30,this->halfHeight +30,this->halfHeight +30 +15,this->halfHeight +30 +15,this->halfHeight +30 +30,this->halfHeight +30 +30,this->halfHeight +30 +45,this->halfHeight +30 +45};
+            
+    public: GamePerformanceInitUpdatePaintable();
+        
+    private: const int32_t halfHeight;
 
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
+    private: std::vector<int32_t> yArray;
 
-    private: std::vector<std::vector<char>> baseRefreshHelperCharArray = std::vector<std::vector<char>>(0, std::vector<char>(0));
+    private: MyFontProcessor* myFontProcessor;
+
+    private: std::vector<std::vector<char>> baseRefreshHelperCharArray;
 
     private: int32_t defaultStringWidth= 0;
 
@@ -93,7 +88,7 @@ class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public Upd
 
     public: void update();
 
-    private: const int32_t RED = BasicColorFactory::getInstance()->RED.intValue();
+    private: const int32_t RED;
 
     public: void paint(Graphics* graphics);
 
@@ -103,3 +98,37 @@ class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public Upd
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/canvas/GameStatisticsFactory.h>)
+#include <org/allbinary/canvas/GameStatisticsFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/InitUpdatePaintable.h>)
+#include <org/allbinary/graphics/paint/InitUpdatePaintable.h>
+#endif
+
+        #endif
+    

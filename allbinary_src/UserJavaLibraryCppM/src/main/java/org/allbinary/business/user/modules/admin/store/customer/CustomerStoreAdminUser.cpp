@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_CUSTOMER_CUSTOMERSTOREADMINUSER_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_CUSTOMER_CUSTOMERSTOREADMINUSER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/admin/store/customer/CustomerStoreAdminUser.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,19 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomerStoreAdminUser: public User {
 
-public: CustomerStoreAdminUser() : User(){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-public: CustomerStoreAdminUser(HashMap<Object*, Object*>* userHashMap) : User(userHashMap){
+CustomerStoreAdminUser::CustomerStoreAdminUser() : User(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,21 +75,30 @@ public: CustomerStoreAdminUser(HashMap<Object*, Object*>* userHashMap) : User(us
 }
 
 
-    public: void validateSession(WeblisketSessionInterface* weblisketSession){
-super.validateSession(weblisketSession);
+CustomerStoreAdminUser::CustomerStoreAdminUser(HashMap<Object*, Object*>* userHashMap) : User(userHashMap){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+    auto CustomerStoreAdminUser::validateSession(WeblisketSessionInterface* weblisketSession) -> void{
+User::validateSession(weblisketSession);
     
 this->updateSession(weblisketSession);
     
 }
 
 
-    public: void updateSession(WeblisketSessionInterface* weblisketSession){
+    auto CustomerStoreAdminUser::updateSession(WeblisketSessionInterface* weblisketSession) -> void{
 weblisketSession->setStoreName(this->getPermissions());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_CUSTOMER_CUSTOMERSTOREADMINUSER_CPP

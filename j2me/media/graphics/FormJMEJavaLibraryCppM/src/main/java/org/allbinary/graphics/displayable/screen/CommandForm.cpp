@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/CommandForm.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,11 +103,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h"
 
-class CommandForm: public Form, public MyCommandInterface, public MenuListener {
+Object* CommandForm::NULL_COMMAND_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* NULL_COMMAND_FORM = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static CommandForm* getNullCommandForm(){
+    auto CommandForm::getNullCommandForm() -> CommandForm*{
 
                         if(CommandForm::NULL_COMMAND_FORM == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -116,15 +124,7 @@ class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Processor* repaintProcessor = ScreenRepaintProcessorFactory::getInstance()->create(this);
-
-    private: ABStack<Object*>* commandStack;
-
-public: CommandForm(CommandListener* commandListener, std::string formTitle, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : Form(formTitle){
+CommandForm::CommandForm(CommandListener* commandListener, std::string formTitle, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : Form(formTitle), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), repaintProcessor(ScreenRepaintProcessorFactory::getInstance()->create(this)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -148,17 +148,17 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto CommandForm::initCommands(CommandListener* cmdListener) -> void{
 }
 
 
-    public: void open(){
+    auto CommandForm::open() -> void{
 this->logUtil->putF(this->commonStrings->START, this, "open");
     
 }
 
 
-    public: void close(){
+    auto CommandForm::close() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CLOSE);
     
 }
@@ -166,13 +166,13 @@ this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CLOSE
 
                 //@Throws(Exception.constructor)
             
-    public: void update(){
+    auto CommandForm::update() -> void{
 this->repaintProcessor->process();
     
 }
 
 
-    public: int32_t getSourceId(){
+    auto CommandForm::getSourceId() -> int32_t{
 
 
 
@@ -182,15 +182,15 @@ this->repaintProcessor->process();
 }
 
 
-    public: void addCommand(Command* command){
+    auto CommandForm::addCommand(Command* command) -> void{
 this->commandStack->push(command);
     
-super.addCommand(command);
+Form::addCommand(command);
     
 }
 
 
-    public: void removeAllCommands(){
+    auto CommandForm::removeAllCommands() -> void{
 
     int32_t size = this->commandStack->size();;
     
@@ -201,14 +201,13 @@ super.addCommand(command);
                         for (
     int32_t index = 0;index < size; index++)
         {
-super.removeCommand(dynamic_cast<Command*>(this->commandStack->pop()));
+Form::removeCommand(dynamic_cast<Command*>(this->commandStack->pop()));
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_CPP

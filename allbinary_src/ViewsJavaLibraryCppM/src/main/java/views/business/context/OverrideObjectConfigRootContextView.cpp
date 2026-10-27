@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_OVERRIDEOBJECTCONFIGROOTCONTEXTVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_OVERRIDEOBJECTCONFIGROOTCONTEXTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/OverrideObjectConfigRootContextView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -90,11 +100,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OverrideObjectConfigRootContextView: public HttpStoreComponentView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: OverrideObjectConfigRootContextView(Object* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+OverrideObjectConfigRootContextView::OverrideObjectConfigRootContextView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,10 +109,10 @@ public: OverrideObjectConfigRootContextView(Object* transformInfoInterface) : Ht
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "OverrideObjectRootContextView()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "OverrideObjectRootContextView()");
     
 
                                     }
@@ -115,14 +122,14 @@ public: OverrideObjectConfigRootContextView(Object* transformInfoInterface) : Ht
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto OverrideObjectConfigRootContextView::view() -> std::string{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +this->getTransformInfoInterface()->getName(), this, "view()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(this->getTransformInfoInterface()->getName()), this, "view()");
     
 
                                     }
@@ -144,7 +151,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
                         if(this->getTransformInfoInterface()->getName().indexOf(GeneratorTransformInfoData::NAME) > 0)
                         
                                     {
-                                    rootTransformInfoInterface->setName(nameStart +GeneratorTransformInfoData::NAME);
+                                    rootTransformInfoInterface->setName(JavaString::valueOf(nameStart) +JavaString::valueOf(GeneratorTransformInfoData::NAME));
     
 
                                     }
@@ -153,7 +160,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
                         if(this->getTransformInfoInterface()->getName().indexOf(RootTransformInfoData::NAME) > 0)
                         
                                     {
-                                    rootTransformInfoInterface->setName(nameStart +RootTransformInfoData::NAME);
+                                    rootTransformInfoInterface->setName(JavaString::valueOf(nameStart) +JavaString::valueOf(RootTransformInfoData::NAME));
     
 
                                     }
@@ -162,7 +169,7 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
                             
 
 
-                            throw new Exception("Override Currently Not Supported");
+                            throw Exception("Override Currently Not Supported");
                     
 
                         }
@@ -171,10 +178,10 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
     Document* overrideObjectConfigDocument = this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Retrieved OverrideObjectConfig: " +XmlDocumentHelper::toString(overrideObjectConfigDocument), this, "view()");
+                                    this->logUtil->putF(JavaString::valueOf("Retrieved OverrideObjectConfig: ") +JavaString::valueOf(XmlDocumentHelper::toString(overrideObjectConfigDocument)), this, "view()");
     
 
                                     }
@@ -197,10 +204,10 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
 componentInterface->getTransformInfoInterface()->setObjectConfigInterface(transformInfoObjectConfigInterface);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Set OverrideObjectConfig: " +componentInterface->getTransformInfoInterface()->getObjectConfigInterface()->toString(), this, "view()");
+                                    this->logUtil->putF(JavaString::valueOf("Set OverrideObjectConfig: ") +JavaString::valueOf(componentInterface->getTransformInfoInterface()->getObjectConfigInterface()->toString()), this, "view()");
     
 
                                     }
@@ -216,10 +223,10 @@ componentInterface->getTransformInfoInterface()->setObjectConfigInterface(transf
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -234,7 +241,6 @@ componentInterface->getTransformInfoInterface()->setObjectConfigInterface(transf
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_OVERRIDEOBJECTCONFIGROOTCONTEXTVIEW_CPP

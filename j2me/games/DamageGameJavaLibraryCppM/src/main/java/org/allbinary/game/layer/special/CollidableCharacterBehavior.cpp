@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLECHARACTERBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLECHARACTERBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/CollidableCharacterBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,9 +75,8 @@
         #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h"
 #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
-class CollidableCharacterBehavior: public CollidableDestroyableDamageableBehavior {
 
-public: CollidableCharacterBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+CollidableCharacterBehavior::CollidableCharacterBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,7 +88,7 @@ public: CollidableCharacterBehavior(bool collidable) : CollidableDestroyableDama
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto CollidableCharacterBehavior::collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> void{
 
     CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
@@ -99,7 +108,7 @@ collidableDestroyableDamageableLayer->getPickupBehavior()->doPickupLayer(dynamic
                                     }
                                 
                         else {
-                            super.collide(ownerLayer, collidableInterfaceCompositeInterface);
+                            CollidableDestroyableDamageableBehavior::collide(ownerLayer, collidableInterfaceCompositeInterface);
     
 
                         }
@@ -109,13 +118,12 @@ collidableDestroyableDamageableLayer->getPickupBehavior()->doPickupLayer(dynamic
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+    auto CollidableCharacterBehavior::collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> void{
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLECHARACTERBEHAVIOR_CPP

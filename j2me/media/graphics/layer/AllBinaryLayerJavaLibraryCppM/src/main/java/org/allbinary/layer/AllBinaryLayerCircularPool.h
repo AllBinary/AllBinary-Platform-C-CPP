@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/cache/BaseCircularPool.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class CircularIndexUtil;
 
 
 
@@ -53,11 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
+        class AllBinaryLayerFactoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryLayerCircularPool: public BaseCircularPool {
 
-protected: AllBinaryLayerCircularPool();
+/*protected*/ public: AllBinaryLayerCircularPool();
 
                 //@Throws(Exception.constructor)
             
@@ -69,3 +74,19 @@ protected: AllBinaryLayerCircularPool();
 
 
         #endif //ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/cache/BaseCircularPool.h>)
+#include <org/allbinary/logic/util/cache/BaseCircularPool.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayerFactoryInterface.h")
+#include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
+#endif
+
+        #endif
+    

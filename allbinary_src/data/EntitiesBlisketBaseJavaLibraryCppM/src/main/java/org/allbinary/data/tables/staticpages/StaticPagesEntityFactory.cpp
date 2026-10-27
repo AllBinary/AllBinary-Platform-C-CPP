@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/staticpages/StaticPagesEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/staticpages/StaticPagesEntity.h"
 
-class StaticPagesEntityFactory
-            : public Object
-         {
+auto StaticPagesEntityFactory::instance_owner() -> StaticPagesEntityFactory* { static std::unique_ptr<StaticPagesEntityFactory> value(new StaticPagesEntityFactory()); return value.get(); }
+StaticPagesEntityFactory* StaticPagesEntityFactory::instance = StaticPagesEntityFactory::instance_owner();
 
-    private: static StaticPagesEntityFactory* instance() { static std::unique_ptr<StaticPagesEntityFactory> value(new StaticPagesEntityFactory()); return value.get(); }
-
-    public: static StaticPagesEntityFactory* getInstance(){
+    auto StaticPagesEntityFactory::getInstance() -> StaticPagesEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StaticPagesEntityFactory::instance();
+                        return StaticPagesEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: StaticPagesEntityFactory(){
+StaticPagesEntityFactory::StaticPagesEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: StaticPagesEntity* getStaticPagesEntityInstance(){
+    auto StaticPagesEntityFactory::getStaticPagesEntityInstance() -> StaticPagesEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: StaticPagesEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: StaticPagesEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/ProcessPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,13 +54,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/Paintable.h"
 
-class ProcessPaintable: public Paintable {
 
-    public: void process(){
+ProcessPaintable::ProcessPaintable() {
+        }
+        
+    auto ProcessPaintable::process() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOS_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/linux/LinuxOS.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LinuxOS: public GenericOperatingSystem {
 
-public: LinuxOS(){
+LinuxOS::LinuxOS(){
 this->scalable= true;
     
 }
 
 
-    public: bool isAutoHide(){
+    auto LinuxOS::isAutoHide() -> bool{
 
 
 
@@ -66,7 +75,6 @@ this->scalable= true;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOS_CPP

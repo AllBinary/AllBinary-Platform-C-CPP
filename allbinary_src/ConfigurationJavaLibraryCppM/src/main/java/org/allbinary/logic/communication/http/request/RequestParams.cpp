@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTPARAMS_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTPARAMS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/RequestParams.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,45 +96,36 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/request/RequestData.h"
 //Note: if request is destroyed or messed up this will not work. Use fileRequestParams
-class RequestParams
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Map* map;
-
-public: RequestParams(){
+RequestParams::RequestParams() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF("New RequestParams Size: 0", this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-public: RequestParams(HttpServletRequest* request){
+RequestParams::RequestParams(HttpServletRequest* request) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->map= request->getParameterMap();
     
-this->logUtil->putF("RequestParams Size: " +this->getMap()->keySet()->size(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("RequestParams Size: ") +JavaString::valueOf(this->getMap()->keySet()->size()), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-public: RequestParams(PageContext* pageContext){
+RequestParams::RequestParams(PageContext* pageContext) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->map= pageContext->getRequest()->getParameterMap();
     
-this->logUtil->putF("Request Params Size: " +this->getMap()->keySet()->size(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("Request Params Size: ") +JavaString::valueOf(this->getMap()->keySet()->size()), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-    protected: void setMap(Map* map){
+    auto RequestParams::setMap(Map* map) -> void{
 this->map= map;
     
 }
 
 
-    protected: Map* getMap(){
+    auto RequestParams::getMap() -> Map*{
 
 
 
@@ -134,11 +135,7 @@ this->map= map;
 }
 
 
-    private: const std::string KEY = "Key: ";
-
-    private: const std::string VALUE = " Value: ";
-
-    public: Node* toXmlNode(Document* document){
+    auto RequestParams::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -169,7 +166,7 @@ this->map= map;
 
     std::vector<std::string> values = this->map->get(key) as string[];;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->KEY);
     
@@ -210,7 +207,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode(document)", 
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto RequestParams::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -243,7 +240,7 @@ hashMap->put(std::string(key), .toCharArray());
     
 }
 
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("RequestParams: ");
     
@@ -264,7 +261,6 @@ this->logUtil->putF(stringBuffer->toString(), this, "toHashMap()");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTPARAMS_CPP

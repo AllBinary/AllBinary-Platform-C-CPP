@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,15 +34,9 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class BasicColor;
+class GameTickTimeDelayHelperFactory;
+class TimeDelayHelper;
 
 
 
@@ -57,11 +56,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/VectorAnimation.h"
-#include "org/allbinary/animation/AnimationBehavior.h"
+class AnimationBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TimedVectorAnimation: public VectorAnimation {
 
-    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(200);
+    private: TimeDelayHelper* timeElapsedHelper;
 
 public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior);
 
@@ -73,3 +76,25 @@ public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> curr
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelperFactory.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimation.h")
+#include "org/allbinary/animation/VectorAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+
+        #endif
+    

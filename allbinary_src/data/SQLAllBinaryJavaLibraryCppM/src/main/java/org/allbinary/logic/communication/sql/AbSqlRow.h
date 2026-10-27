@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLROW_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLROW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,41 +39,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
-
-      
 #include <java/sql/ResultSetMetaData.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/init/db/DbConnectionInfo.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/logic/string/regex/replace/Replace.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class DbConnectionInfo;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class StringValidationUtil;
+class Replace;
 
 
 
@@ -89,9 +70,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/sql/AbSqlColumn.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbSqlRow: public AbSqlColumn {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: const std::string EQUAL_QUOTE = "=\"";
 
@@ -160,3 +145,49 @@ public: AbSqlRow(DbConnectionInfo* databaseConnectionInfoInterface);
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLROW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLROW_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLROW_H_COMPLETE
+        #if __has_include(<java/sql/ResultSet.h>)
+#include <java/sql/ResultSet.h>
+#endif
+#if __has_include(<java/sql/ResultSetMetaData.h>)
+#include <java/sql/ResultSetMetaData.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/DbConnectionInfo.h>)
+#include <org/allbinary/business/init/db/DbConnectionInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/regex/replace/Replace.h>)
+#include <org/allbinary/logic/string/regex/replace/Replace.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/sql/AbSqlColumn.h")
+#include "org/allbinary/logic/communication/sql/AbSqlColumn.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_OSCILLATEVELOCITYMOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_OSCILLATEVELOCITYMOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/OscillateVelocityMovement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,17 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
-class OscillateVelocityMovement: public BasicConstantVelocityMovement {
 
-    private: int32_t oscillateMin;
-
-    private: int32_t oscillateMax;
-
-    private: int32_t oscillate= 0;
-
-    private: bool oscillatePositive= false;
-
-public: OscillateVelocityMovement(BasicDecimal* speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax) : BasicConstantVelocityMovement(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal->getUnscaled()), static_cast<int32_t>(speedBasicDecimal->getUnscaled()))){
+OscillateVelocityMovement::OscillateVelocityMovement(BasicDecimal* speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax) : BasicConstantVelocityMovement(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal->getUnscaled()), static_cast<int32_t>(speedBasicDecimal->getUnscaled()))){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,8 +82,8 @@ this->oscillateMax= oscillateMax;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
-super.process(layer);
+    auto OscillateVelocityMovement::process(AllBinaryGameLayer* layer) -> void{
+BasicConstantVelocityMovement::process(layer);
     
 
                         if(this->oscillate < this->oscillateMin)
@@ -124,7 +125,6 @@ this->getVelocityProperties()->getVelocityXBasicDecimalP()->subtractint(2000);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_OSCILLATEVELOCITYMOVEMENT_CPP

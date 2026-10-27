@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/game/Sprite.h>
-
-      
+class Image;
+class Sprite;
 
 
 
@@ -52,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SpriteFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class SpriteFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual Sprite* createSprite(Image* image, int32_t frameWidth, int32_t frameHeight) = 0;
 
@@ -62,3 +69,16 @@ class SpriteFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/game/Sprite.h>)
+#include <javax/microedition/lcdui/game/Sprite.h>
+#endif
+
+        #endif
+    

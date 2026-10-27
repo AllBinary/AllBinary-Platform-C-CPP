@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_EVENT_SCROLLMAPEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_LAYER_EVENT_SCROLLMAPEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/event/ScrollMapEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,26 @@
         #include "org/allbinary/layer/event/ScrollMapEventListenerInterface.h"
 #include "org/allbinary/layer/event/ScrollMapEvent.h"
 
-class ScrollMapEventHandler: public BasicEventHandler {
+auto ScrollMapEventHandler::SINGLETON_owner() -> ScrollMapEventHandler* { static std::unique_ptr<ScrollMapEventHandler> value(new ScrollMapEventHandler()); return value.get(); }
+ScrollMapEventHandler* ScrollMapEventHandler::SINGLETON = ScrollMapEventHandler::SINGLETON_owner();
 
-    private: static ScrollMapEventHandler* SINGLETON() { static std::unique_ptr<ScrollMapEventHandler> value(new ScrollMapEventHandler()); return value.get(); }
+ScrollMapEventHandler::ScrollMapEventHandler(){
+}
 
-    public: static ScrollMapEventHandler* getInstance(){
+
+    auto ScrollMapEventHandler::getInstance() -> ScrollMapEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollMapEventHandler::SINGLETON();
+                        return ScrollMapEventHandler::SINGLETON;
     
-}
-
-
-private: ScrollMapEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto ScrollMapEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     ScrollMapEventListenerInterface* scrollMapEventListenerInterface = (dynamic_cast<ScrollMapEventListenerInterface*>(eventListenerInterface));;
     
@@ -85,7 +94,6 @@ scrollMapEventListenerInterface->onMoveEvent(dynamic_cast<ScrollMapEvent*>(event
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_EVENT_SCROLLMAPEVENTHANDLER_CPP

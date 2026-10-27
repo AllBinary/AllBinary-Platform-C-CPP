@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_XMLOPTIONITEMSENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_XMLOPTIONITEMSENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/options/XmlOptionItemsEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/item/options/XmlOptionItemsEntity.h"
 
-class XmlOptionItemsEntityFactory
-            : public Object
-         {
+auto XmlOptionItemsEntityFactory::instance_owner() -> XmlOptionItemsEntityFactory* { static std::unique_ptr<XmlOptionItemsEntityFactory> value(new XmlOptionItemsEntityFactory()); return value.get(); }
+XmlOptionItemsEntityFactory* XmlOptionItemsEntityFactory::instance = XmlOptionItemsEntityFactory::instance_owner();
 
-    private: static XmlOptionItemsEntityFactory* instance() { static std::unique_ptr<XmlOptionItemsEntityFactory> value(new XmlOptionItemsEntityFactory()); return value.get(); }
-
-    public: static XmlOptionItemsEntityFactory* getInstance(){
+    auto XmlOptionItemsEntityFactory::getInstance() -> XmlOptionItemsEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XmlOptionItemsEntityFactory::instance();
+                        return XmlOptionItemsEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: XmlOptionItemsEntityFactory(){
+XmlOptionItemsEntityFactory::XmlOptionItemsEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: XmlOptionItemsEntity* getXmlOptionItemsEntityInstance(){
+    auto XmlOptionItemsEntityFactory::getXmlOptionItemsEntityInstance() -> XmlOptionItemsEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: XmlOptionItemsEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: XmlOptionItemsEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_OPTIONS_XMLOPTIONITEMSENTITYFACTORY_CPP

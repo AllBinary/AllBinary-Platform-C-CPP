@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASE_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/validate/ValidatorBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,27 +74,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/validate/ValidatorBaseInterface.h"
 
-class ValidatorBase
-            : public Object
-        , public ValidatorBaseInterface {
+auto ValidatorBase::instance_owner() -> ValidatorBase* { static std::unique_ptr<ValidatorBase> value(new ValidatorBase()); return value.get(); }
+ValidatorBase* ValidatorBase::instance = ValidatorBase::instance_owner();
 
-    private: static ValidatorBase* instance() { static std::unique_ptr<ValidatorBase> value(new ValidatorBase()); return value.get(); }
-
-    public: static ValidatorBase* getInstance(){
+    auto ValidatorBase::getInstance() -> ValidatorBase*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ValidatorBase::instance();
+                        return ValidatorBase::instance;
     
 }
 
 
-public: ValidatorBase(){
+ValidatorBase::ValidatorBase(){
 }
 
 
-    public: bool isValid(){
+    auto ValidatorBase::isValid() -> bool{
 
 
 
@@ -94,7 +101,7 @@ public: ValidatorBase(){
 }
 
 
-    public: std::string validationInfo(){
+    auto ValidatorBase::validationInfo() -> std::string{
 
 
 
@@ -104,7 +111,7 @@ public: ValidatorBase(){
 }
 
 
-    public: ABHashtable<Object*, Object*>* toHashtable(){
+    auto ValidatorBase::toHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -114,7 +121,7 @@ public: ValidatorBase(){
 }
 
 
-    public: BasicArrayList* toList(){
+    auto ValidatorBase::toList() -> BasicArrayList*{
 
 
 
@@ -124,7 +131,6 @@ public: ValidatorBase(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASE_CPP

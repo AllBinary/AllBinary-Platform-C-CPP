@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKSPATHPRINTER_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKSPATHPRINTER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTracksPathPrinter.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,11 +69,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTracksPathPrinter
-            : public Object
-         {
 
-    private: void printPath(BasicArrayList* list){
+RaceTracksPathPrinter::RaceTracksPathPrinter() {
+        }
+        
+    auto RaceTracksPathPrinter::printPath(BasicArrayList* list) -> void{
 
     int32_t size = list->size();;
     
@@ -84,7 +94,7 @@ PreLogUtil::put((new StringMaker())->append("pathList.add(cellPositionFactory.ge
 }
 
 
-    protected: void printPaths(BasicArrayList* list){
+    auto RaceTracksPathPrinter::printPaths(BasicArrayList* list) -> void{
 
     int32_t size = list->size();;
     
@@ -104,7 +114,6 @@ this->printPath(dynamic_cast<BasicArrayList*>(list->get(index)));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKSPATHPRINTER_CPP

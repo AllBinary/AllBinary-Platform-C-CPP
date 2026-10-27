@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
         #define ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
+class StringMaker;
+class CommonLabels;
 
 
 
@@ -54,12 +55,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScaleProperties
-            : public Object
+            : public virtual Object
          {
 
-    public: static ScaleProperties* instance() { static std::unique_ptr<ScaleProperties> value(new ScaleProperties()); return value.get(); }
+    private: static ScaleProperties* instance_owner();
+    public: static ScaleProperties* instance;
 
+
+            
+    public: ScaleProperties();
+        
     public: float scaleX= 0.0;
 
     public: float scaleY= 0.0;
@@ -78,3 +88,16 @@ class ScaleProperties
 
 
         #endif //ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+
+        #endif
+    

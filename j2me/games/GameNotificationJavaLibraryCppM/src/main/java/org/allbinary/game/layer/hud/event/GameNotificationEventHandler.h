@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <org/allbinary/logic/util/event/NullEventListener.h>
-
-      
+class AllBinaryEventObject;
+class EventListenerInterface;
+class NullEventListener;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicArrayList;
 
 
 
@@ -62,12 +57,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/hud/event/GameNotificationListenerInterface.h"
-#include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
+        class GameNotificationListenerInterface;
+class GameNotificationEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameNotificationEventHandler: public BasicEventHandler {
 
-    private: static GameNotificationEventHandler* instance() { static std::unique_ptr<GameNotificationEventHandler> value(new GameNotificationEventHandler()); return value.get(); }
+    private: static GameNotificationEventHandler* instance_owner();
+    private: static GameNotificationEventHandler* instance;
 
     public: static GameNotificationEventHandler* getInstance();
 
@@ -80,7 +80,7 @@ private: GameNotificationEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -88,3 +88,31 @@ private: GameNotificationEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/NullEventListener.h>)
+#include <org/allbinary/logic/util/event/NullEventListener.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/layer/hud/event/GameNotificationListenerInterface.h")
+#include "org/allbinary/game/layer/hud/event/GameNotificationListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/layer/hud/event/GameNotificationEvent.h")
+#include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
+#endif
+
+        #endif
+    

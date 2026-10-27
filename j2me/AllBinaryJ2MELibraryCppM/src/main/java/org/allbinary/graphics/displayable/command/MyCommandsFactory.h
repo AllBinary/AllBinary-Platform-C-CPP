@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_COMMAND_MYCOMMANDSFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_COMMAND_MYCOMMANDSFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class Command;
+class StringUtil;
 
 
 
@@ -54,25 +55,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MyCommandsFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static MyCommandsFactory* instance() { static std::unique_ptr<MyCommandsFactory> value(new MyCommandsFactory()); return value.get(); }
+    private: static MyCommandsFactory* instance_owner();
+    private: static MyCommandsFactory* instance;
 
     public: static MyCommandsFactory* getInstance();
 
-    public: Command* NO_COMMAND = new Command(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING,  -1,  -1);
+    public: Command* NO_COMMAND;
 
-    public: Command* GAUGE_CHANGE = new Command("GAUGE_CHANGE", StringUtil::getInstance()->EMPTY_STRING, Command::ITEM, 1);
+    public: Command* GAUGE_CHANGE;
 
-    public: Command* SET_DISPLAYABLE = new Command("Display", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 2);
+    public: Command* SET_DISPLAYABLE;
 
-    public: Command* PAUSE_COMMAND = new Command("Pause", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 0);
+    public: Command* PAUSE_COMMAND;
 
-    public: Command* RESUME_COMMAND = new Command("Resume", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 0);
+    public: Command* RESUME_COMMAND;
 
-protected: MyCommandsFactory();
+/*protected*/ public: MyCommandsFactory();
 
 };
 
@@ -80,3 +86,16 @@ protected: MyCommandsFactory();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_COMMAND_MYCOMMANDSFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_COMMAND_MYCOMMANDSFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_COMMAND_MYCOMMANDSFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

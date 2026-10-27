@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INIT_INITINTERFACE_CPP
+        #define ORG_ALLBINARY_INIT_INITINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/init/InitInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InitInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void init() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_INIT_INITINTERFACE_CPP

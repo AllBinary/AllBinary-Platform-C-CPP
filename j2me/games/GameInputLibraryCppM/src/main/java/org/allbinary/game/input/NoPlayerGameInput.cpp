@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_NOPLAYERGAMEINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_NOPLAYERGAMEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/NoPlayerGameInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,21 +60,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/PlayerGameInput.h"
 
-class NoPlayerGameInput: public PlayerGameInput {
+auto NoPlayerGameInput::SINGLETON_owner() -> NoPlayerGameInput* { static std::unique_ptr<NoPlayerGameInput> value(new NoPlayerGameInput()); return value.get(); }
+NoPlayerGameInput* NoPlayerGameInput::SINGLETON = NoPlayerGameInput::SINGLETON_owner();
 
-    private: static NoPlayerGameInput* SINGLETON() { static std::unique_ptr<NoPlayerGameInput> value(new NoPlayerGameInput()); return value.get(); }
-
-    public: static NoPlayerGameInput* getInstance(){
+    auto NoPlayerGameInput::getInstance() -> NoPlayerGameInput*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayerGameInput::SINGLETON();
+                        return NoPlayerGameInput::SINGLETON;
     
 }
 
 
-private: NoPlayerGameInput() : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
+NoPlayerGameInput::NoPlayerGameInput() : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,16 +84,15 @@ private: NoPlayerGameInput() : PlayerGameInput(new BasicArrayListD(), new BasicA
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto NoPlayerGameInput::onDownGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto NoPlayerGameInput::onUpGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_NOPLAYERGAMEINPUT_CPP

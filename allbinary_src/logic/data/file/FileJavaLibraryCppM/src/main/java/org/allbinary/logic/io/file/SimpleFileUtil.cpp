@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/SimpleFileUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -93,23 +103,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SimpleFileUtil
-            : public Object
-         {
 
-    private: static SimpleFileUtil* instance() { static std::unique_ptr<SimpleFileUtil> value(new SimpleFileUtil()); return value.get(); }
+SimpleFileUtil::SimpleFileUtil() : logUtil(LogUtil::getInstance()), NULL_WRITER(SimpleFileUtil::nullWriter()), NULL_READER(SimpleFileUtil::nullReader()), commonStrings(CommonStrings::getInstance()), nullUtil(NullUtil::getInstance()), streamUtil(StreamUtil::getInstance()) {
+        }
+        auto SimpleFileUtil::instance_owner() -> SimpleFileUtil* { static std::unique_ptr<SimpleFileUtil> value(new SimpleFileUtil()); return value.get(); }
+SimpleFileUtil* SimpleFileUtil::instance = SimpleFileUtil::instance_owner();
 
-    public: static SimpleFileUtil* getInstance(){
+    auto SimpleFileUtil::getInstance() -> SimpleFileUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleFileUtil::instance();
+                        return SimpleFileUtil::instance;
     
 }
 
 
-    public: static OutputStream* nullOutputStream(){
+    auto SimpleFileUtil::nullOutputStream() -> OutputStream*{
 
 
 
@@ -136,7 +146,7 @@ class SimpleFileUtil
 }
 
 
-    public: static Writer* nullWriter(){
+    auto SimpleFileUtil::nullWriter() -> Writer*{
 
 
 
@@ -212,7 +222,7 @@ class SimpleFileUtil
 }
 
 
-    public: static Reader* nullReader(){
+    auto SimpleFileUtil::nullReader() -> Reader*{
 
 
 
@@ -284,19 +294,7 @@ class SimpleFileUtil
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: Writer* NULL_WRITER = SimpleFileUtil::nullWriter();
-
-    public: Reader* NULL_READER = SimpleFileUtil::nullReader();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: NullUtil* nullUtil = NullUtil::getInstance();
-
-    private: StreamUtil* streamUtil = StreamUtil::getInstance();
-
-    public: BasicArrayList* loadFileAsList(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1){
+    auto SimpleFileUtil::loadFileAsList(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1) -> BasicArrayList*{
 
 
 
@@ -306,7 +304,7 @@ class SimpleFileUtil
 }
 
 
-    public: BasicArrayList* loadFileAsListReturnLine(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine){
+    auto SimpleFileUtil::loadFileAsListReturnLine(InputStream* inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine) -> BasicArrayList*{
 
     BasicArrayList* stringList = new BasicArrayListD();;
     
@@ -348,9 +346,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
 }
 
 
-                        if(byteArray == 
-                                    nullptr
-                                )
+                        if(byteArray.empty())
                         
                                     {
                                     
@@ -409,7 +405,7 @@ index++;
                                     }
                                 
 
-    std::string s = String.fromCharCode(...byteArray);;
+    std::string s = JavaString::fromChars(byteArray, startIndex, (index +includeReturnLine -returnLine -startIndex));;
     
 stringList->add(s);
     
@@ -426,7 +422,7 @@ index++;
 }
 
 
-    public: std::string createStringFromArrayOfStrings(std::vector<std::string> stringArray){
+    auto SimpleFileUtil::createStringFromArrayOfStrings(std::vector<std::string> stringArray) -> std::string{
 
     StringMaker* stringMaker = new StringMaker();;
     
@@ -453,7 +449,6 @@ stringMaker->append(stringArray[index]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_CPP

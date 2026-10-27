@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,66 +34,26 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/khronos/opengles/GL.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorSetUtil.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
-#include <org/allbinary/graphics/paint/Paintable.h>
-
-      
+class GL;
+class Graphics;
+class Rectangle;
+class BasicColor;
+class BasicColorFactory;
+class BasicColorSetUtil;
+class NullPaintable;
+class Paintable;
 #include <org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/view/ViewPositionBase.h>
-
-      
-#include <org/allbinary/view/event/ViewPositionEvent.h>
-
-      
+class AllBinaryLayerManager;
+class ForcedLogUtil;
+class AllBinaryEventObject;
+class EventStrings;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
+class ViewPositionBase;
+class ViewPositionEvent;
 #include <org/allbinary/view/event/ViewPositionEventListenerInterface.h>
-
-      
 
 
 
@@ -107,34 +72,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/SWTUtil.h"
-#include "org/allbinary/game/layer/GameLayerUtil.h"
+        class SWTUtil;
+class GameLayerUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryGameLayer: public AllBinaryLayer, public ViewPositionEventListenerInterface, public OpenGLSurfaceChangedInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
+    /*protected*/ public: BasicColorSetUtil* basicSetColorUtil;
 
-    protected: BasicColor* RED = BasicColorFactory::getInstance()->RED;
+    /*protected*/ public: BasicColor* RED;
 
-    private: Paintable* paintable = SWTUtil::isSWT
-                        ?       
-                                class extends Paintable
-                                {
-                                
-    BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
-    BasicColor* BLACK = BasicColorFactory::getInstance()->BLACK;
-    public: void paint(Graphics* graphics);
-                                }
-                            
-                                :
+    private: Paintable* paintable;
 
-                            NullPaintable::getInstance();
-
-    ;
-
-    private: BasicArrayList* gameKeyEventList = new BasicArrayListD();
+    private: BasicArrayList* gameKeyEventList;
 
 public: AllBinaryGameLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition);
 
@@ -178,3 +133,76 @@ public: AllBinaryGameLayer(std::string name, Rectangle* layerInfo, ViewPositionB
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL.h>)
+#include <javax/microedition/khronos/opengles/GL.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorSetUtil.h>)
+#include <org/allbinary/graphics/color/BasicColorSetUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h>)
+#include <org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPositionBase.h>)
+#include <org/allbinary/view/ViewPositionBase.h>
+#endif
+#if __has_include(<org/allbinary/view/event/ViewPositionEvent.h>)
+#include <org/allbinary/view/event/ViewPositionEvent.h>
+#endif
+#if __has_include(<org/allbinary/view/event/ViewPositionEventListenerInterface.h>)
+#include <org/allbinary/view/event/ViewPositionEventListenerInterface.h>
+#endif
+#if __has_include("org/allbinary/game/layer/SWTUtil.h")
+#include "org/allbinary/game/layer/SWTUtil.h"
+#endif
+#if __has_include("org/allbinary/game/layer/GameLayerUtil.h")
+#include "org/allbinary/game/layer/GameLayerUtil.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/help/BasicInputMappingHelpPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,13 +89,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/paint/help/HelpPaintable.h"
 
-class BasicInputMappingHelpPaintable: public HelpPaintable {
 
-    private: std::vector<GameInputMapping*> gameInputMappingArray;
-
-    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
-
-protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* basicColor) : HelpPaintable("Help Screen", BasicColorFactory::getInstance()->BLACK, basicColor){
+BasicInputMappingHelpPaintable::BasicInputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* basicColor) : HelpPaintable("Help Screen", BasicColorFactory::getInstance()->BLACK, basicColor), NONE(GameKeyFactory::getInstance()->NONE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,7 +104,7 @@ this->update(this->NONE, this->NONE);
 }
 
 
-    public: void update(GameKey* selectedGameKey, Input* selectedInput){
+    auto BasicInputMappingHelpPaintable::update(GameKey* selectedGameKey, Input* selectedInput) -> void{
 
     PersistentInputMapping* gameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance();;
     
@@ -137,18 +142,18 @@ gameKey= gameInputMapping->getGameKey();
     
 list= gameKeyMapping->getInputMapping()->getMappedInput(gameKey);
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 keyInfo[index]= stringMaker->append(gameInputMapping->getName())->append(EQUAL)->append(this->get(list))->toString();
     
 }
 
-super.setInputInfoP(keyInfo);
+HelpPaintable::setInputInfoP(keyInfo);
     
 }
 
 
-    private: std::string get(BasicArrayList* keyList){
+    auto BasicInputMappingHelpPaintable::get(BasicArrayList* keyList) -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -223,7 +228,6 @@ stringBuffer->append(AND);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_CPP

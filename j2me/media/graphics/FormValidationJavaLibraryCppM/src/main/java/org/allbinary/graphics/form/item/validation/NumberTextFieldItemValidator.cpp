@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_NUMBERTEXTFIELDITEMVALIDATOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_NUMBERTEXTFIELDITEMVALIDATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/validation/NumberTextFieldItemValidator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,17 +78,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NumberTextFieldItemValidator: public ValidatorBase {
 
-    private: ABTextFieldItem* textFieldItem;
-
-    private: int32_t min;
-
-    private: int32_t max;
-
-    private: int32_t maxChars;
-
-public: NumberTextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t maxChars, int32_t min, int32_t max){
+NumberTextFieldItemValidator::NumberTextFieldItemValidator(ABTextFieldItem* textFieldItem, int32_t maxChars, int32_t min, int32_t max){
 this->textFieldItem= textFieldItem;
     
 this->min= min;
@@ -90,7 +91,7 @@ this->maxChars= maxChars;
 }
 
 
-    protected: bool isNumberValid(int32_t value){
+    auto NumberTextFieldItemValidator::isNumberValid(int32_t value) -> bool{
 
 
 
@@ -100,7 +101,7 @@ this->maxChars= maxChars;
 }
 
 
-    protected: BasicArrayList* toNumberVector(int32_t value){
+    auto NumberTextFieldItemValidator::toNumberVector(int32_t value) -> BasicArrayList*{
 
 
 
@@ -110,7 +111,7 @@ this->maxChars= maxChars;
 }
 
 
-    public: bool isValid(){
+    auto NumberTextFieldItemValidator::isValid() -> bool{
 
     bool result = BooleanFactory::getInstance()->TRUE;;
     
@@ -170,7 +171,7 @@ result= BooleanFactory::getInstance()->FALSE;
 }
 
 
-    public: BasicArrayList* toList(){
+    auto NumberTextFieldItemValidator::toList() -> BasicArrayList*{
 
     BasicArrayList* list = new BasicArrayListD();;
     
@@ -205,7 +206,7 @@ result= BooleanFactory::getInstance()->FALSE;
                         if(number.intValue() > this->min)
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 list->add(stringMaker->append(name)->append(" is to small")->toString());
     
@@ -216,7 +217,7 @@ list->add(stringMaker->append(name)->append(" is to small")->toString());
                         if(number.intValue() > this->max)
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 list->add(stringMaker->append(name)->append(" is to large")->toString());
     
@@ -227,7 +228,7 @@ list->add(stringMaker->append(name)->append(" is to large")->toString());
                 //: 
 } catch(NumberFormatException& e) 
             {
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 list->add(stringMaker->append(name)->append(" is not a number")->toString());
     
@@ -241,7 +242,7 @@ list->add(stringMaker->append(name)->append(" is not a number")->toString());
                         if(textLength < 1)
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 list->add(stringMaker->append(name)->append(" is to short")->toString());
     
@@ -252,7 +253,7 @@ list->add(stringMaker->append(name)->append(" is to short")->toString());
                         if(textLength > this->maxChars)
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 list->add(stringMaker->append(name)->append(" is to long")->toString());
     
@@ -271,7 +272,6 @@ list->add(stringMaker->append(name)->append(" is to long")->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_NUMBERTEXTFIELDITEMVALIDATOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLET_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/DemoGameMidlet.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,9 +87,8 @@
 #include "org/allbinary/game/midlet/DemoRunnable.h"
 #include "org/allbinary/game/midlet/CreateGameRunnable.h"
 
-class DemoGameMidlet: public GameMidlet {
 
-public: DemoGameMidlet(ClientInformationFactory* clientInformationFactory) : GameMidlet(clientInformationFactory){
+DemoGameMidlet::DemoGameMidlet(ClientInformationFactory* clientInformationFactory) : GameMidlet(clientInformationFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,7 +100,7 @@ public: DemoGameMidlet(ClientInformationFactory* clientInformationFactory) : Gam
 
                 //@Throws(Exception.constructor)
             
-    protected: bool isContinue(){
+    auto DemoGameMidlet::isContinue() -> bool{
 
     ABHashtable<Object*, Object*>* hashtable = this->getStartStateHashtable();;
     
@@ -123,7 +132,7 @@ public: DemoGameMidlet(ClientInformationFactory* clientInformationFactory) : Gam
 }
 
 
-    public: int32_t getHighestLevel(){
+    auto DemoGameMidlet::getHighestLevel() -> int32_t{
 
 
 
@@ -135,8 +144,8 @@ public: DemoGameMidlet(ClientInformationFactory* clientInformationFactory) : Gam
 
                 //@Throws(Exception.constructor)
             
-    public: GameCanvasRunnableInterface* createDemoGameCanvasRunnableInterface(){
-this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, this->commonStrings.CREATE);
+    auto DemoGameMidlet::createDemoGameCanvasRunnableInterface() -> GameCanvasRunnableInterface*{
+this->logUtil->putF(this->commonStrings->NOT_IMPLEMENTED, this, this->commonStrings->CREATE);
     
 
 
@@ -149,18 +158,18 @@ this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, this->commonString
 
                 //@Throws(Exception.constructor)
             
-    protected: GameCanvasRunnableInterface* createGameCanvasRunnable(AllBinaryGameLayerManager* allBinaryGameLayerManager){
+    auto DemoGameMidlet::createGameCanvasRunnable(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> GameCanvasRunnableInterface*{
 
 
 
-                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: GameCanvasRunnableInterface* createGameCanvasRunnableInterface(){
+    auto DemoGameMidlet::createGameCanvasRunnableInterface() -> GameCanvasRunnableInterface*{
 
 
 
@@ -170,19 +179,19 @@ this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, this->commonString
 }
 
 
-    public: void demoSetup(){
+    auto DemoGameMidlet::demoSetup() -> void{
 }
 
 
-    public: void postDemoSetup(){
+    auto DemoGameMidlet::postDemoSetup() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setDemo(){
-this->logUtil.putF(this->commonStrings.START, this, "setDemo");
+    auto DemoGameMidlet::setDemo() -> void{
+this->logUtil->putF(this->commonStrings->START, this, "setDemo");
     
 
     ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
@@ -197,11 +206,11 @@ PrimaryThreadPool::getInstance()->runTask(new DemoRunnable(this));
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void createGame(){
+    auto DemoGameMidlet::createGame() -> void{
 
     std::string CREATE_GAME = "createGame";;
     
-this->logUtil.putF(this->commonStrings.START, this, CREATE_GAME);
+this->logUtil->putF(this->commonStrings->START, this, CREATE_GAME);
     
 
     ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
@@ -215,12 +224,12 @@ this->setStartStateHashtable(StdUtil::getInstance()->NULL_TABLE);
     
 PrimaryThreadPool::getInstance()->runTask(new CreateGameRunnable(this, hashtable));
     
-this->logUtil.putF(this->commonStrings.END, this, CREATE_GAME);
+this->logUtil->putF(this->commonStrings->END, this, CREATE_GAME);
     
 }
 
 
-    public: bool isReady(){
+    auto DemoGameMidlet::isReady() -> bool{
 
 
 
@@ -230,7 +239,6 @@ this->logUtil.putF(this->commonStrings.END, this, CREATE_GAME);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLET_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_CPP
+        #define ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ConcurrentImageLoadingProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,22 +74,14 @@
 //#include "org/allbinary/thread/ImageCacheRunnable.h"
 #include "org/allbinary/thread/ImageThreadPool.h"
 
-class ConcurrentImageLoadingProcessor: public BaseImageLoadingProcessor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-//inner= member=true isStatic=
-class ImageCacheRunnable: public ABRunnable {
-
-    private: ImageCache* imageCache;
-
-public: ImageCacheRunnable(ImageCache* imageCache){
+ConcurrentImageLoadingProcessor::ImageCacheRunnable::ImageCacheRunnable(ImageCache* imageCache){
 this->imageCache= imageCache;
     
 }
 
 
-    public: void run(){
+    auto ConcurrentImageLoadingProcessor::ImageCacheRunnable::run() -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -123,18 +125,13 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
-
-            
-    private: ABRunnable* runnable;
-
-public: ConcurrentImageLoadingProcessor(ImageCache* imageCache){
+ConcurrentImageLoadingProcessor::ConcurrentImageLoadingProcessor(ImageCache* imageCache) : logUtil(LogUtil::getInstance()){
 this->runnable= new ImageCacheRunnable(imageCache);
     
 }
 
 
-    public: void runTask(){
+    auto ConcurrentImageLoadingProcessor::runTask() -> void{
 
                         if(!this->runnable->isRunning())
                         
@@ -147,7 +144,6 @@ this->runnable= new ImageCacheRunnable(imageCache);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTMAPINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTMAPINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/RequestMapInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RequestMapInterface {
+//Interface - declared in the header
 
-    public: virtual HashMap<Object*, Object*>* getRequestHashMap() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTMAPINTERFACE_CPP

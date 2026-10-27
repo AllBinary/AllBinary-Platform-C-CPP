@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <jsinterop/annotations/JsType.h>
-
-      
+class JsType;
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorChangeListener: public EventListenerInterface {
 
 };
@@ -60,3 +65,16 @@ class ColorChangeListener: public EventListenerInterface {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGELISTENER_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+
+        #endif
+    

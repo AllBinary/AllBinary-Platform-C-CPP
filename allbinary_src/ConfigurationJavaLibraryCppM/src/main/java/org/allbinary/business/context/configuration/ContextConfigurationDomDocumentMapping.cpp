@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDOMDOCUMENTMAPPING_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDOMDOCUMENTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/configuration/ContextConfigurationDomDocumentMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
         #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
 #include "org/allbinary/business/context/configuration/ContextConfigurationView.h"
 
-class ContextConfigurationDomDocumentMapping
-            : public Object
-        , public DomDocumentMappingInterface {
 
-    private: ContextConfigurationInterface* contextConfigurationInterface;
-
-public: ContextConfigurationDomDocumentMapping(ContextConfigurationInterface* contextConfigurationInterface){
+ContextConfigurationDomDocumentMapping::ContextConfigurationDomDocumentMapping(ContextConfigurationInterface* contextConfigurationInterface){
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
@@ -78,7 +83,7 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto ContextConfigurationDomDocumentMapping::toXmlDoc() -> Document*{
 
     Document* document = DomDocumentHelper::create();;
     
@@ -98,7 +103,7 @@ document->appendChild(node);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string toDomDocumentString(){
+    auto ContextConfigurationDomDocumentMapping::toDomDocumentString() -> std::string{
 
 
 
@@ -108,7 +113,6 @@ document->appendChild(node);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDOMDOCUMENTMAPPING_CPP

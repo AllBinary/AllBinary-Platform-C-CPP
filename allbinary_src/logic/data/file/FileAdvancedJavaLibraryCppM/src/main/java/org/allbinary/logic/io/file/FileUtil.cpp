@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -116,78 +126,26 @@
 #include "org/allbinary/logic/io/file/FileWrapperUtil.h"
 #include "org/allbinary/logic/io/file/FileUtil2.h"
 //data/init/views/TestStore/template/type/genericTemplateObjectConfig.xml
-class FileUtil
-            : public Object
-         {
+auto FileUtil::instance_owner() -> FileUtil* { static std::unique_ptr<FileUtil> value(new FileUtil()); return value.get(); }
+FileUtil* FileUtil::instance = FileUtil::instance_owner();
 
-    private: static FileUtil* instance() { static std::unique_ptr<FileUtil> value(new FileUtil()); return value.get(); }
-
-    public: static FileUtil* getInstance(){
+    auto FileUtil::getInstance() -> FileUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileUtil::instance();
+                        return FileUtil::instance;
     
 }
 
 
-    private: static std::string getNewDirectory(AbFile* fromFile){
-
-    std::string newDirectory = fromFile->getPath();;
-    
-
-    std::string separatorChar = FilePathData::getInstance()->PATH_START;;
-    
-
-                        if(AbIOSystem::getInstance()->isType("com.vobject.appengine.java.io"))
-                        
-                                    {
-                                    separatorChar= AbPathData::getInstance()->SEPARATOR;
-    
-
-                                    }
-                                
-
-    int32_t lastIndex = JavaString::lastIndexOf(newDirectory, separatorChar);;
-    
-
-                        if(lastIndex >= newDirectory.size())
-                        
-                                    {
-                                    newDirectory= JavaString::substring(newDirectory, 0, newDirectory.size() -1);
-    
-lastIndex= JavaString::lastIndexOf(newDirectory, separatorChar);
-    
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return JavaString::substring(newDirectory, lastIndex, newDirectory.size());;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Directory* directory = Directory::getInstance();
-
-    private: LogConfigTypeFactory* logConfigTypeFactory = LogConfigTypeFactory::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: StreamUtil* streamUtil = StreamUtil::getInstance();
-
-private: FileUtil(){
+FileUtil::FileUtil() : logUtil(LogUtil::getInstance()), directory(Directory::getInstance()), logConfigTypeFactory(LogConfigTypeFactory::getInstance()), commonStrings(CommonStrings::getInstance()), streamUtil(StreamUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void write(InputStream* inputStream, AbFile* file){
+    auto FileUtil::write(InputStream* inputStream, AbFile* file) -> void{
 
     AbDataOutputStream* dataOutputStream = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(file);;
     
@@ -198,7 +156,7 @@ this->write(inputStream, dataOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(InputStream* inputStream, AbDataOutputStream* dataOutputStream){
+    auto FileUtil::write(InputStream* inputStream, AbDataOutputStream* dataOutputStream) -> void{
 
         try {
             dataOutputStream= dynamic_cast<AbDataOutputStream*>(StreamUtil::getInstance()->get(inputStream, dataOutputStream, std::vector<int8_t>(16384)));
@@ -217,7 +175,7 @@ dataOutputStream->flush();
 
                 //@Throws(Exception.constructor)
             
-    public: void write(InputStream* inputStream, AbDataOutputStream* dataOutputStream, std::vector<int8_t> buffer){
+    auto FileUtil::write(InputStream* inputStream, AbDataOutputStream* dataOutputStream, std::vector<int8_t> buffer) -> void{
 
         try {
             dataOutputStream= dynamic_cast<AbDataOutputStream*>(StreamUtil::getInstance()->get(inputStream, dataOutputStream, buffer));
@@ -236,7 +194,7 @@ dataOutputStream->flush();
 
                 //@Throws(Exception.constructor)
             
-    private: void copy(AbFileInputStream* dataInputStream, AbDataOutputStream* dataOutputStream){
+    auto FileUtil::copy(AbFileInputStream* dataInputStream, AbDataOutputStream* dataOutputStream) -> void{
 
         try {
             dataOutputStream= dynamic_cast<AbDataOutputStream*>(StreamUtil::getInstance()->get(dataInputStream, dataOutputStream, std::vector<int8_t>(16384)));
@@ -257,7 +215,7 @@ StreamUtil::getInstance()->close(dataInputStream);
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath* fixPath(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud){
+    auto FileUtil::fixPath(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud) -> AbPath*{
 
     int32_t beginIndex = file->getPath()->indexOf(cloud) +cloud.size();;
     
@@ -276,7 +234,7 @@ this->directory->create(fixedPath);
     std::string string = fixedPath->toFileSystemString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF(string, this, "fixPath");
@@ -298,7 +256,7 @@ this->directory->create(fixedPath);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyToCloud(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud){
+    auto FileUtil::copyToCloud(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud) -> void{
 this->copyToCloud(file, path, realPath, cloud, false, false);
     
 }
@@ -306,7 +264,7 @@ this->copyToCloud(file, path, realPath, cloud, false, false);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyToCloud(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud, bool overwriteNewer, bool overwriteAll){
+    auto FileUtil::copyToCloud(AbFile* file, AbPath* path, AbPath* realPath, std::string cloud, bool overwriteNewer, bool overwriteAll) -> void{
 
         try {
             
@@ -330,7 +288,7 @@ this->copyToCloud(file, path, realPath, cloud, false, false);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -367,7 +325,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILEERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -396,7 +354,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyToCloud", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyToCloud(AbFile* file, AbFile* outFile){
+    auto FileUtil::copyToCloud(AbFile* file, AbFile* outFile) -> void{
 this->copyToCloud(file, outFile, false, false);
     
 }
@@ -404,7 +362,7 @@ this->copyToCloud(file, outFile, false, false);
 
                 //@Throws(Exception.constructor)
             
-    public: void copyToCloud(AbFile* file, AbFile* outFile, bool overwriteNewer, bool overwriteAll){
+    auto FileUtil::copyToCloud(AbFile* file, AbFile* outFile, bool overwriteNewer, bool overwriteAll) -> void{
 
         try {
             
@@ -425,10 +383,10 @@ this->copyToCloud(file, outFile, false, false);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Out File: ");
     
@@ -461,7 +419,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILEERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -490,7 +448,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyToCloud", &e);
 
                 //@Throws(Exception.constructor)
             
-    private: bool copyPrepare(AbFile* fromFile, AbFile* toFile, bool overwriteNewer, bool overwriteAll){
+    auto FileUtil::copyPrepare(AbFile* fromFile, AbFile* toFile, bool overwriteNewer, bool overwriteAll) -> bool{
 
                         if(toFile->exists())
                         
@@ -503,10 +461,10 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyToCloud", &e);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Overwriting File: ");
     
@@ -517,7 +475,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
 
                                     }
                                 
-toFile->delete();
+toFile->delete_();
     
 toFile->createNewFile();
     
@@ -529,10 +487,10 @@ toFile->createNewFile();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Newer by: ");
     
@@ -549,7 +507,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
 
                                     }
                                 
-toFile->delete();
+toFile->delete_();
     
 toFile->createNewFile();
     
@@ -558,10 +516,10 @@ toFile->createNewFile();
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("File Already Exists");
     
@@ -618,7 +576,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyFile");
 
                 //@Throws(Exception.constructor)
             
-    private: void copyFile(AbFile* fromFile, AbFile* toFile){
+    auto FileUtil::copyFile(AbFile* fromFile, AbFile* toFile) -> void{
 this->copyFile(fromFile, toFile, false, false);
     
 }
@@ -626,11 +584,11 @@ this->copyFile(fromFile, toFile, false, false);
 
                 //@Throws(Exception.constructor)
             
-    private: void copyFile(AbFile* fromFile, AbFile* toFile, bool overwriteNewer, bool overwriteAll){
+    auto FileUtil::copyFile(AbFile* fromFile, AbFile* toFile, bool overwriteNewer, bool overwriteAll) -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -679,7 +637,7 @@ this->copy(fileInputStream, dataOutputStream);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILEERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -708,9 +666,48 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyFile", &e);
 }
 
 
+    auto FileUtil::getNewDirectory(AbFile* fromFile) -> std::string{
+
+    std::string newDirectory = fromFile->getPath();;
+    
+
+    std::string separatorChar = FilePathData::getInstance()->PATH_START;;
+    
+
+                        if(AbIOSystem::getInstance()->isType("com.vobject.appengine.java.io"))
+                        
+                                    {
+                                    separatorChar= AbPathData::getInstance()->SEPARATOR;
+    
+
+                                    }
+                                
+
+    int32_t lastIndex = JavaString::lastIndexOf(newDirectory, separatorChar);;
+    
+
+                        if(lastIndex >= newDirectory.size())
+                        
+                                    {
+                                    newDirectory= JavaString::substring(newDirectory, 0, newDirectory.size() -1);
+    
+lastIndex= JavaString::lastIndexOf(newDirectory, separatorChar);
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return JavaString::substring(newDirectory, lastIndex, newDirectory.size());;
+    
+}
+
+
                 //@Throws(Exception.constructor)
             
-    public: void copyDirectoryPortion(AbPath* fromDirectoryAbPath, AbPath* toDirectoryAbPath, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total){
+    auto FileUtil::copyDirectoryPortion(AbPath* fromDirectoryAbPath, AbPath* toDirectoryAbPath, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total) -> void{
 
     AbFile* file = AbFile::createAbFileFromAbPath(fromDirectoryAbPath);;
     
@@ -721,7 +718,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyFile", &e);
                                     
 
 
-                            throw new Exception("Not a directory: " +file->getPath());
+                            throw Exception(JavaString::valueOf("Not a directory: ") +JavaString::valueOf(file->getPath()));
                     
 
                                     }
@@ -770,7 +767,7 @@ stringBuffer->append(" - ");
 stringBuffer->appendint(end);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF(stringBuffer->toString(), getInstance(), "copySomeFilesToDirectory()");
@@ -831,11 +828,11 @@ this->copyFile(nextFile, toFile, overwriteNewer, overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    private: void copyDirectory(AbFile* fromFile, AbFile* to){
+    auto FileUtil::copyDirectory(AbFile* fromFile, AbFile* to) -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -858,7 +855,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyDirectory");
     std::string newDirectory = FileUtil::getNewDirectory(fromFile);;
     
 
-    AbPath* newDirectoryAbPath = new AbPath(to->getPath() +AbPathData::getInstance()->SEPARATOR +newDirectory, StringUtil::getInstance()->EMPTY_STRING);;
+    AbPath* newDirectoryAbPath = new AbPath(JavaString::valueOf(to->getPath() +AbPathData::getInstance()->SEPARATOR) +JavaString::valueOf(newDirectory), StringUtil::getInstance()->EMPTY_STRING);;
     
 
                         if(!this->directory->create(newDirectoryAbPath))
@@ -867,7 +864,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyDirectory");
                                     
 
 
-                            throw new Exception("Failed to create directory: " +newDirectoryAbPath);
+                            throw Exception(JavaString::valueOf("Failed to create directory: ") +JavaString::valueOf(newDirectoryAbPath));
                     
 
                                     }
@@ -879,7 +876,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), "copyDirectory");
     int32_t size = fileArray.size();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -936,7 +933,7 @@ file= fileArray[index];
                             
 
 
-                            throw new Exception("File Copy Error");
+                            throw Exception("File Copy Error");
                     
 
                         }
@@ -948,7 +945,7 @@ file= fileArray[index];
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILEERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -980,14 +977,14 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), "copyDirectory", &e)
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool copy(AbPath* fromAbPath, AbPath* to){
+    auto FileUtil::copy(AbPath* fromAbPath, AbPath* to) -> bool{
 
     std::string COPY = "copy";;
     
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1015,7 +1012,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
                                     
 
 
-                            throw new Exception("Cannot Copy From A Null Location");
+                            throw Exception("Cannot Copy From A Null Location");
                     
 
                                     }
@@ -1029,7 +1026,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
                                     
 
 
-                            throw new Exception("Cannot Copy To A Null Location");
+                            throw Exception("Cannot Copy To A Null Location");
                     
 
                                     }
@@ -1054,7 +1051,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
 this->copyFile(fromLocationFile, file);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1084,7 +1081,7 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
                             this->copyFile(fromLocationFile, toLocationFile);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     
@@ -1116,11 +1113,11 @@ this->logUtil->putF(stringBuffer->toString(), getInstance(), COPY);
                         
                                     {
                                     
-                        if(fromAbPath->toFileSystemString()[fromAbPath->toFileSystemString()->length() -1] == java.io.File.separatorChar)
+                        if(fromAbPath->toFileSystemString()[fromAbPath->toFileSystemString()->length() -1] == java.io->File->separatorChar)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copying subdirectories", getInstance(), COPY);
@@ -1166,7 +1163,7 @@ this->copyFile(file, aFile);
                             
 
 
-                            throw new Exception("File Copy Error");
+                            throw Exception("File Copy Error");
                     
 
                         }
@@ -1174,7 +1171,7 @@ this->copyFile(file, aFile);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copied subdirectories", getInstance(), COPY);
@@ -1187,7 +1184,7 @@ this->copyFile(file, aFile);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copyinhg directory", getInstance(), COPY);
@@ -1198,7 +1195,7 @@ this->copyFile(file, aFile);
 this->copyDirectory(fromLocationFile, toLocationFile);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILE))
                         
                                     {
                                     this->logUtil->putF("Copied directory", getInstance(), COPY);
@@ -1223,7 +1220,7 @@ this->copyDirectory(fromLocationFile, toLocationFile);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(this->logConfigTypeFactory->FILEERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(this->logConfigTypeFactory->FILEERROR))
                         
                                     {
                                     
@@ -1252,7 +1249,7 @@ this->logUtil->put(stringBuffer->toString(), getInstance(), COPY, &e);
 }
 
 
-    public: bool shouldSkip(AbFile* file, std::vector<std::string> skipFiles){
+    auto FileUtil::shouldSkip(AbFile* file, std::vector<std::string> skipFiles) -> bool{
 
     int32_t size = skipFiles.size();;
     
@@ -1292,15 +1289,9 @@ skipFile= skipFiles[index];
 }
 
 
-    private: const std::string WRITE_LABEL = "Write file: ";
-
-    private: const std::string DATA_LABEL = " data: ";
-
-    private: const std::string WRITE_METHOD = "write";
-
                 //@Throws(Exception.constructor)
             
-    public: void write(std::string filePath, std::string string){
+    auto FileUtil::write(std::string filePath, std::string string) -> void{
 
     AbDataOutputStream* dataOutputStream = 
                 null
@@ -1332,7 +1323,7 @@ dataOutputStream->flush();
 }
 
 
-    public: BasicArrayList* loadFileAsList(AbFile* file, int32_t max, std::vector<int8_t> byteArray1){
+    auto FileUtil::loadFileAsList(AbFile* file, int32_t max, std::vector<int8_t> byteArray1) -> BasicArrayList*{
 
 
 
@@ -1342,7 +1333,6 @@ dataOutputStream->flush();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL_CPP

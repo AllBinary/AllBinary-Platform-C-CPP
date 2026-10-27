@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/CellPositionFactory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPositionTracking.h>
-
-      
+class CellPositionFactory;
+class GeographicMapCellPositionTracking;
 
 
 
@@ -55,16 +56,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
-#include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventHandler.h"
+        class GeographicMapCellPositionEvent;
+class GeographicMapCellPositionEventHandler;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeographicMapCellPositionEventUtil
-            : public Object
+            : public virtual Object
          {
 
     private: GeographicMapCellPositionEvent* geographicMapCellPositionEvent;
 
-    private: GeographicMapCellPositionEventHandler* geographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler::getInstance();
+    private: GeographicMapCellPositionEventHandler* geographicMapCellPositionEventHandler;
 
 public: GeographicMapCellPositionEventUtil(Object* anyType);
 
@@ -82,3 +87,22 @@ public: GeographicMapCellPositionEventUtil(Object* anyType);
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/CellPositionFactory.h>)
+#include <org/allbinary/graphics/CellPositionFactory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPositionTracking.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPositionTracking.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h")
+#include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventHandler.h")
+#include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventHandler.h"
+#endif
+
+        #endif
+    

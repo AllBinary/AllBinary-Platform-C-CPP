@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_OSGI_FRAMEWORK_BASESERVICEREFERENCE_CPP
+        #define ORG_OSGI_FRAMEWORK_BASESERVICEREFERENCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/osgi/framework/BaseServiceReference.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,38 +60,37 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/osgi/framework/ServiceReference.h"
 
-class BaseServiceReference
-            : public Object
-        , public ServiceReference {
 
-    public: Object* getProperty(std::string key){
+BaseServiceReference::BaseServiceReference() {
+        }
+        
+    auto BaseServiceReference::getProperty(std::string key) -> Object*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::vector<std::string> getPropertyKeys(){
+    auto BaseServiceReference::getPropertyKeys() -> std::vector<std::string>{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t compareTo(Object* o){
+    auto BaseServiceReference::compareTo(Object* o) -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_OSGI_FRAMEWORK_BASESERVICEREFERENCE_CPP

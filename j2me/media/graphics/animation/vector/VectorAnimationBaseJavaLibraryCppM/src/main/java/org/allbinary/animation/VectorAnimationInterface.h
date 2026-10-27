@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -30,8 +35,6 @@
 
         
 #include <org/allbinary/graphics/color/ColorCompositeInterface.h>
-
-      
 
 
 
@@ -52,6 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/IndexedAnimationInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VectorAnimationInterface: public IndexedAnimationInterface, public ColorCompositeInterface {
 
     public: virtual std::vector<std::vector<int32_t>> getPoints(int32_t frame) = 0;
@@ -62,3 +69,16 @@ class VectorAnimationInterface: public IndexedAnimationInterface, public ColorCo
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/color/ColorCompositeInterface.h>)
+#include <org/allbinary/graphics/color/ColorCompositeInterface.h>
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimationInterface.h")
+#include "org/allbinary/animation/IndexedAnimationInterface.h"
+#endif
+
+        #endif
+    

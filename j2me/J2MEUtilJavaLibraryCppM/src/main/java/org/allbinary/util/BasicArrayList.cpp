@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLIST_CPP
+        #define ORG_ALLBINARY_UTIL_BASICARRAYLIST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/BasicArrayList.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,25 +70,14 @@
         #include "org/allbinary/util/ArrayUtil.h"
 #include "org/allbinary/util/BasicArrayListS.h"
 //This is a very fast and simple resizable list.
-class BasicArrayList
-            : public Object
-         {
 
-    private: static inline const std::string SIZE = ", Size: ";
-
-    private: ArrayUtil* arrayUtil = ArrayUtil::getInstance();
-
-    public: std::vector<Object*> objectArray;
-
-    private: int32_t currentIndex = 0;
-
-public: BasicArrayList(std::vector<Object*> objectArray){
+BasicArrayList::BasicArrayList(std::vector<Object*> objectArray) : arrayUtil(ArrayUtil::getInstance()){
 this->objectArray= objectArray;
     
 }
 
 
-    public: void addAt(int32_t index, Object* element){
+    auto BasicArrayList::addAt(int32_t index, Object* element) -> void{
 
                         if(index > this->currentIndex || index < 0)
                         
@@ -97,7 +96,7 @@ stringBuffer->appendint(this->currentIndex);
 
 
 
-                            throw new IndexOutOfBoundsException(stringBuffer->toString());
+                            throw IndexOutOfBoundsException(stringBuffer->toString());
                     
 
                                     }
@@ -113,7 +112,7 @@ this->currentIndex++;
 }
 
 
-    public: bool add(Object* anyType){
+    auto BasicArrayList::add(Object* anyType) -> bool{
 this->ensureCapacity(this->currentIndex +1);
     
 this->objectArray[this->currentIndex++]= anyType;
@@ -127,7 +126,7 @@ this->objectArray[this->currentIndex++]= anyType;
 }
 
 
-    public: Object* removeAt(int32_t index){
+    auto BasicArrayList::removeAt(int32_t index) -> Object*{
 
                         if(index >= this->currentIndex)
                         
@@ -146,7 +145,7 @@ stringBuffer->appendint(this->currentIndex);
 
 
 
-                            throw new IndexOutOfBoundsException(stringBuffer->toString());
+                            throw IndexOutOfBoundsException(stringBuffer->toString());
                     
 
                                     }
@@ -179,7 +178,7 @@ this->objectArray[--this->currentIndex]=
 }
 
 
-    public: bool remove(Object* anyType){
+    auto BasicArrayList::remove(Object* anyType) -> bool{
 
                         if(anyType == 
                                     nullptr
@@ -238,7 +237,7 @@ this->objectArray[--this->currentIndex]=
     int32_t index = 0;index < this->currentIndex; index++)
         {
 
-                        if(anyType == this->objectArray[index] || anyType === this->objectArray[index])
+                        if(anyType == this->objectArray[index] || anyType->equals(this->objectArray[index]))
                         
                                     {
                                     
@@ -280,7 +279,7 @@ this->objectArray[--this->currentIndex]=
 }
 
 
-    public: bool removeAll2(BasicArrayList* list){
+    auto BasicArrayList::removeAll2(BasicArrayList* list) -> bool{
 
     bool result = true;;
     
@@ -318,7 +317,7 @@ this->objectArray[--this->currentIndex]=
 }
 
 
-    public: bool addAll2(BasicArrayList* list){
+    auto BasicArrayList::addAll2(BasicArrayList* list) -> bool{
 this->ensureCapacity(this->currentIndex +list->currentIndex);
     
 
@@ -344,7 +343,7 @@ this->objectArray[this->currentIndex++]= list->objectArray[index];
 }
 
 
-    public: bool addAllList(BasicArrayList* list){
+    auto BasicArrayList::addAllList(BasicArrayList* list) -> bool{
 
     std::vector<Object*> newObjectArray = list->toArray();;
     
@@ -357,7 +356,7 @@ this->objectArray[this->currentIndex++]= list->objectArray[index];
 }
 
 
-    public: bool addAll(std::vector<Object*> newObjectArray){
+    auto BasicArrayList::addAll(std::vector<Object*> newObjectArray) -> bool{
 
     int32_t numSize = newObjectArray.size();;
     
@@ -376,7 +375,7 @@ this->currentIndex += numSize;
 }
 
 
-    public: void ensureCapacity(int32_t minSize){
+    auto BasicArrayList::ensureCapacity(int32_t minSize) -> void{
 
     int32_t oldCapacity = this->objectArray.size();;
     
@@ -404,7 +403,7 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 }
 
 
-    public: void trimToSize(){
+    auto BasicArrayList::trimToSize() -> void{
 
     int32_t oldCapacity = this->objectArray.size();;
     
@@ -420,7 +419,7 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 }
 
 
-    public: int32_t indexOf(Object* anyType){
+    auto BasicArrayList::indexOf(Object* anyType) -> int32_t{
 
                         if(anyType == 
                                     nullptr
@@ -463,7 +462,7 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
     int32_t i = 0;i < this->currentIndex; i++)
         {
 
-                        if(anyType === this->objectArray[i])
+                        if(anyType->equals(this->objectArray[i]))
                         
                                     {
                                     
@@ -489,7 +488,7 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 }
 
 
-    public: int32_t lastIndexOf(Object* anyType){
+    auto BasicArrayList::lastIndexOf(Object* anyType) -> int32_t{
 
                         if(anyType == 
                                     nullptr
@@ -532,7 +531,7 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
     int32_t i = this->currentIndex -1;i >= 0; i--)
         {
 
-                        if(anyType === this->objectArray[i])
+                        if(anyType->equals(this->objectArray[i]))
                         
                                     {
                                     
@@ -558,7 +557,7 @@ this->objectArray= this->arrayUtil->copyOf(this->objectArray, newCapacity);
 }
 
 
-    public: Object* get(int32_t index){
+    auto BasicArrayList::get(int32_t index) -> Object*{
 
                         if(index >= this->currentIndex)
                         
@@ -577,7 +576,7 @@ stringBuffer->appendint(this->currentIndex);
 
 
 
-                            throw new IndexOutOfBoundsException(stringBuffer->toString());
+                            throw IndexOutOfBoundsException(stringBuffer->toString());
                     
 
                                     }
@@ -591,7 +590,7 @@ stringBuffer->appendint(this->currentIndex);
 }
 
 
-    public: Object* set(int32_t index, Object* element){
+    auto BasicArrayList::set(int32_t index, Object* element) -> Object*{
 
                         if(index >= this->currentIndex)
                         
@@ -610,7 +609,7 @@ stringBuffer->appendint(this->currentIndex);
 
 
 
-                            throw new IndexOutOfBoundsException(stringBuffer->toString());
+                            throw IndexOutOfBoundsException(stringBuffer->toString());
                     
 
                                     }
@@ -629,7 +628,7 @@ this->objectArray[index]= element;
 }
 
 
-    public: void clear(){
+    auto BasicArrayList::clear() -> void{
 
 
 
@@ -648,7 +647,7 @@ this->currentIndex= 0;
 }
 
 
-    public: int32_t size(){
+    auto BasicArrayList::size() -> int32_t{
 
 
 
@@ -658,7 +657,7 @@ this->currentIndex= 0;
 }
 
 
-    public: bool isEmpty(){
+    auto BasicArrayList::isEmpty() -> bool{
 
 
 
@@ -668,7 +667,7 @@ this->currentIndex= 0;
 }
 
 
-    public: bool contains(Object* anyType){
+    auto BasicArrayList::contains(Object* anyType) -> bool{
 
 
 
@@ -678,7 +677,7 @@ this->currentIndex= 0;
 }
 
 
-    public: std::vector<Object*> toArray(){
+    auto BasicArrayList::toArray() -> std::vector<Object*>{
 
 
 
@@ -688,7 +687,7 @@ this->currentIndex= 0;
 }
 
 
-    public: std::vector<Object*> toArrayType(std::vector<Object*> objectArray){
+    auto BasicArrayList::toArrayType(std::vector<Object*> objectArray) -> std::vector<Object*>{
 
                         if(objectArray.size() < this->currentIndex)
                         
@@ -697,7 +696,7 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->arrayUtil->copyOfType(this->objectArray, this->currentIndex, objectArray.getClass());;
+                        return this->arrayUtil->copyOfType(this->objectArray, this->currentIndex, Class::forType(typeid(objectArray)));;
     
 
                                     }
@@ -724,7 +723,7 @@ System.arraycopy(this->objectArray, 0, objectArray, 0, this->currentIndex);
 }
 
 
-    public: Object* clone(){
+    auto BasicArrayList::clone() -> Object*{
 
     int32_t size = this->size();;
     
@@ -756,7 +755,7 @@ list->add(anyType);
 }
 
 
-    public: std::string toString(){
+    auto BasicArrayList::toString() -> std::string{
 
     std::string COMMA_SEP = CommonSeps::getInstance()->COMMA_SEP;;
     
@@ -770,7 +769,7 @@ list->add(anyType);
                         for (
     int32_t index = 0;index < this->currentIndex; index++)
         {
-stringBuffer->append(this->objectArray[index].toString());
+stringBuffer->append(this->objectArray[index]->toString());
     
 stringBuffer->append(COMMA_SEP);
     
@@ -785,7 +784,6 @@ stringBuffer->append(COMMA_SEP);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_BASICARRAYLIST_CPP

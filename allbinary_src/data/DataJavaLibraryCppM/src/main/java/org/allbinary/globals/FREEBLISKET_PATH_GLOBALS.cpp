@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_CPP
+        #define ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,47 +61,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FREEBLISKET_PATH_GLOBALS
-            : public Object
-         {
+auto FREEBLISKET_PATH_GLOBALS::instance_owner() -> FREEBLISKET_PATH_GLOBALS* { static std::unique_ptr<FREEBLISKET_PATH_GLOBALS> value(new FREEBLISKET_PATH_GLOBALS()); return value.get(); }
+FREEBLISKET_PATH_GLOBALS* FREEBLISKET_PATH_GLOBALS::instance = FREEBLISKET_PATH_GLOBALS::instance_owner();
 
-    private: static FREEBLISKET_PATH_GLOBALS* instance() { static std::unique_ptr<FREEBLISKET_PATH_GLOBALS> value(new FREEBLISKET_PATH_GLOBALS()); return value.get(); }
-
-    public: static FREEBLISKET_PATH_GLOBALS* getInstance(){
+    auto FREEBLISKET_PATH_GLOBALS::getInstance() -> FREEBLISKET_PATH_GLOBALS*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FREEBLISKET_PATH_GLOBALS::instance();
+                        return FREEBLISKET_PATH_GLOBALS::instance;
     
 }
 
 
-    public: std::string INSTALLPATH;
-
-    public: std::string XSLPATH;
-
-    public: const std::string TEMPLATEPATH = "template" +AbPathData::getInstance()->SEPARATOR;
-
-    public: const std::string STYLEPATH = this->TEMPLATEPATH +"style" +AbPathData::getInstance()->SEPARATOR;
-
-    public: const std::string THEMEPATH = this->STYLEPATH +"theme" +AbPathData::getInstance()->SEPARATOR;
-
-    public: const std::string DBINITPATH = PATH_GLOBALS::getInstance()->INIT_PATH +"db" +AbPathData::getInstance()->SEPARATOR;
-
-    public: const std::string LINEDATAPATH = PATH_GLOBALS::getInstance()->INIT_PATH +"lineData" +AbPathData::getInstance()->SEPARATOR;
-
-    public: std::string CONFIGURATIONPATH;
-
-    public: std::string USERCONFIGURATIONPATH;
-
-    public: std::string CONTEXTCONFIGURATIONPATH;
-
-    public: const std::string LICENSEERRORPAGE = "LicensingError.jsp";
-
-    public: const std::string ERRORPAGE = "Error.jsp";
-
-private: FREEBLISKET_PATH_GLOBALS(){
+FREEBLISKET_PATH_GLOBALS::FREEBLISKET_PATH_GLOBALS() : TEMPLATEPATH(JavaString::valueOf("template") +JavaString::valueOf(AbPathData::getInstance()->SEPARATOR)), STYLEPATH(JavaString::valueOf(JavaString::valueOf(this->TEMPLATEPATH) +JavaString::valueOf("style")) +JavaString::valueOf(AbPathData::getInstance()->SEPARATOR)), THEMEPATH(JavaString::valueOf(JavaString::valueOf(this->STYLEPATH) +JavaString::valueOf("theme")) +JavaString::valueOf(AbPathData::getInstance()->SEPARATOR)), DBINITPATH(JavaString::valueOf(JavaString::valueOf(PATH_GLOBALS::getInstance()->INIT_PATH) +JavaString::valueOf("db")) +JavaString::valueOf(AbPathData::getInstance()->SEPARATOR)), LINEDATAPATH(JavaString::valueOf(JavaString::valueOf(PATH_GLOBALS::getInstance()->INIT_PATH) +JavaString::valueOf("lineData")) +JavaString::valueOf(AbPathData::getInstance()->SEPARATOR)){
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -101,7 +84,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 this->INSTALLPATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(PATH_GLOBALS::getInstance()->INIT_PATH);
     
@@ -111,7 +94,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 this->XSLPATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->XSLPATH);
     
@@ -121,7 +104,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 this->CONFIGURATIONPATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->CONFIGURATIONPATH);
     
@@ -131,7 +114,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 this->USERCONFIGURATIONPATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->CONFIGURATIONPATH);
     
@@ -141,12 +124,11 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
     
 this->CONTEXTCONFIGURATIONPATH= stringBuffer->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_CPP

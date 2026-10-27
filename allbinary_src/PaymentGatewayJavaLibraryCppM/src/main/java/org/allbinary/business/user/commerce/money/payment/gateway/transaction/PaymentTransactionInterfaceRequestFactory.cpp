@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEREQUESTFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEREQUESTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceRequestFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -124,33 +134,26 @@
         #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceFactory.h"
 #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h"
 
-class PaymentTransactionInterfaceRequestFactory
-            : public Object
-         {
+auto PaymentTransactionInterfaceRequestFactory::instance_owner() -> PaymentTransactionInterfaceRequestFactory* { static std::unique_ptr<PaymentTransactionInterfaceRequestFactory> value(new PaymentTransactionInterfaceRequestFactory()); return value.get(); }
+PaymentTransactionInterfaceRequestFactory* PaymentTransactionInterfaceRequestFactory::instance = PaymentTransactionInterfaceRequestFactory::instance_owner();
 
-    private: static PaymentTransactionInterfaceRequestFactory* instance() { static std::unique_ptr<PaymentTransactionInterfaceRequestFactory> value(new PaymentTransactionInterfaceRequestFactory()); return value.get(); }
-
-    public: static PaymentTransactionInterfaceRequestFactory* getInstance(){
+    auto PaymentTransactionInterfaceRequestFactory::getInstance() -> PaymentTransactionInterfaceRequestFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentTransactionInterfaceRequestFactory::instance();
+                        return PaymentTransactionInterfaceRequestFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: PaymentTransactionInterfaceRequestFactory(){
+PaymentTransactionInterfaceRequestFactory::PaymentTransactionInterfaceRequestFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: PaymentTransactionInterface* getInstance(TransformInfoInterface* transformInfoInterface){
+    auto PaymentTransactionInterfaceRequestFactory::getInstance(TransformInfoInterface* transformInfoInterface) -> PaymentTransactionInterface*{
 
         try {
             
@@ -163,10 +166,10 @@ private: PaymentTransactionInterfaceRequestFactory(){
     HttpServletRequest* httpServletRequest = dynamic_cast<HttpServletRequest*>(pageContext->getRequest());;
     
 
-    std::string command = httpServletRequest->getParameter(org.allbinary.globals.GLOBALS2.ADMINCOMMAND);;
+    std::string command = httpServletRequest->getParameter(org.allbinary->globals->GLOBALS2->ADMINCOMMAND);;
     
 
-                        if(true && command.compare(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
+                        if(true && command.compare(org.allbinary->globals->GLOBALS2->AUTHORIZEFORMEVALBODYONERROR) == 0)
                         
                                     {
                                     
@@ -203,14 +206,14 @@ private: PaymentTransactionInterfaceRequestFactory(){
 
     Payment* orderPaymentInfo = orderReview->getPaymentInfo();;
     
-orderPaymentInfo->setTransactionType(TransactionTypeFactory::getInstance()->SALE.toString());
+orderPaymentInfo->setTransactionType(TransactionTypeFactory::getInstance()->SALE->toString());
     
-orderPaymentInfo->setTenderType(TenderTypeFactory::getInstance()->CREDITCARD.toString());
+orderPaymentInfo->setTenderType(TenderTypeFactory::getInstance()->CREDITCARD->toString());
     
 orderReview->setPaymentInfo(orderPaymentInfo);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(orderReview->getId(), this, "getPaymentTransactionInterface()");
@@ -235,7 +238,7 @@ orderReview->setPaymentInfo(orderPaymentInfo);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENTERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getPaymentTransactionInterface()", &e);
@@ -255,7 +258,7 @@ orderReview->setPaymentInfo(orderPaymentInfo);
 
                 //@Throws(Exception.constructor)
             
-    private: PaymentTransactionInterface* generateFromTestData(TransformInfoInterface* transformInfoInterface){
+    auto PaymentTransactionInterfaceRequestFactory::generateFromTestData(TransformInfoInterface* transformInfoInterface) -> PaymentTransactionInterface*{
 
         try {
             
@@ -283,7 +286,7 @@ orderReview->setPaymentInfo(orderPaymentInfo);
                         if(StringValidationUtil::getInstance()->isEmpty(gatewayName))
                         
                                     {
-                                    gatewayName= httpServletRequest->getParameter(PaymentGatewayData::NAME.toString());
+                                    gatewayName= httpServletRequest->getParameter(PaymentGatewayData::NAME->toString());
     
 
                                     }
@@ -421,7 +424,7 @@ orderReview->setPaymentInfo(payment);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENTERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "generatePaymentTransactionInterfaceFromTestData()", &e);
@@ -439,7 +442,6 @@ orderReview->setPaymentInfo(payment);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEREQUESTFACTORY_CPP

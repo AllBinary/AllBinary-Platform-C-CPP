@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/CustomTextBox.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,11 +98,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
 
-class CustomTextBox: public GameCommandCanvas, public RawKeyEventListener {
 
-    private: ABTextFieldItem* textFieldItem;
-
-public: CustomTextBox(CommandListener* cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : GameCommandCanvas(cmdListener, label, backgroundBasicColor, foregroundBasicColor){
+CustomTextBox::CustomTextBox(CommandListener* cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : GameCommandCanvas(cmdListener, label, backgroundBasicColor, foregroundBasicColor), inputFactory(InputFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -114,42 +121,40 @@ this->setTitle(label);
 }
 
 
-    public: void submit(){
+    auto CustomTextBox::submit() -> void{
 }
 
 
-    private: InputFactory* inputFactory = InputFactory::getInstance();
-
-    public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated){
-this->logUtil.putF((new StringMaker())->append(this->commonStrings.START)->appendint(keyCode)->toString(), this, "onEvent");
+    auto CustomTextBox::onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated) -> void{
+this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->appendint(keyCode)->toString(), this, "onEvent");
     
 this->keyPressedByDevice(keyCode, deviceId);
     
 }
 
 
-    public: void keyPressed(int32_t keyCode){
+    auto CustomTextBox::keyPressed(int32_t keyCode) -> void{
 this->keyPressedByDevice(keyCode, 0);
     
 }
 
 
-    public: void keyReleased(int32_t keyCode){
+    auto CustomTextBox::keyReleased(int32_t keyCode) -> void{
 this->keyReleasedByDevice(keyCode, 0);
     
 }
 
 
-    public: void keyRepeated(int32_t keyCode){
+    auto CustomTextBox::keyRepeated(int32_t keyCode) -> void{
 this->keyRepeatedByDevice(keyCode, 0);
     
 }
 
 
-    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+    auto CustomTextBox::keyPressedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 
         try {
-            this->logUtil.putF((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)->toString(), this, this->gameInputStrings.KEY_PRESSED);
+            this->logUtil->putF((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)->toString(), this, this->gameInputStrings->KEY_PRESSED);
     
 
     PlatformKeyFactory* platformKeyFactory = PlatformKeyFactory::getInstance();;
@@ -176,21 +181,21 @@ this->keyRepeatedByDevice(keyCode, 0);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.KEY_PRESSED, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->KEY_PRESSED, &e);
     
 }
 
 }
 
 
-    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
+    auto CustomTextBox::keyReleasedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto CustomTextBox::paint(Graphics* graphics) -> void{
 graphics->setColor(this->backgroundColor);
     
-graphics->fillRect(0, 0, this->displayInfo.getLastWidth(), this->displayInfo.getLastHeight());
+graphics->fillRect(0, 0, this->displayInfo->getLastWidth(), this->displayInfo->getLastHeight());
     
 graphics->setColor(this->foregroundColor);
     
@@ -205,18 +210,18 @@ graphics->setColor(this->foregroundColor);
                                 
 this->paintXY(graphics, 8, graphics->getFont()->getHeight() +2);
     
-super.paint(graphics);
+GameCommandCanvas::paint(graphics);
     
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto CustomTextBox::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->textFieldItem->paintXY(graphics, x, y);
     
 }
 
 
-    public: ABTextFieldItem* getTextFieldItem(){
+    auto CustomTextBox::getTextFieldItem() -> ABTextFieldItem*{
 
 
 
@@ -226,7 +231,6 @@ this->textFieldItem->paintXY(graphics, x, y);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_CPP

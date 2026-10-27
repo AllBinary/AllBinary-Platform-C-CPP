@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STRING_SERVLETSTRINGS_CPP
+        #define ORG_ALLBINARY_LOGIC_STRING_SERVLETSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/string/ServletStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ServletStrings
-            : public Object
-         {
 
-    private: static ServletStrings* instance() { static std::unique_ptr<ServletStrings> value(new ServletStrings()); return value.get(); }
+ServletStrings::ServletStrings() {
+        }
+        auto ServletStrings::instance_owner() -> ServletStrings* { static std::unique_ptr<ServletStrings> value(new ServletStrings()); return value.get(); }
+ServletStrings* ServletStrings::instance = ServletStrings::instance_owner();
 
-    public: static ServletStrings* getInstance(){
+    auto ServletStrings::getInstance() -> ServletStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ServletStrings::instance();
+                        return ServletStrings::instance;
     
 }
 
 
-    public: const std::string DOPOST = "doPost";
 
-    public: const std::string DOGET = "doGet";
 
-    public: const std::string REQUEST_EXCEPTION = "Request Failed";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_STRING_SERVLETSTRINGS_CPP

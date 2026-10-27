@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTEERRORHIGHSCORESSINGLETONFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTEERRORHIGHSCORESSINGLETONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/RemoteErrorHighScoresSingletonFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,23 +59,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/HighScores.h"
 
-class RemoteErrorHighScoresSingletonFactory
-            : public Object
-         {
 
-    private: static HighScores* SINGLETON() { static std::unique_ptr<HighScores> value(new HighScores(CommonStrings::getInstance()->LOADING, "Remote High Scores Did Not Load", CommonStrings::getInstance()->PERIODS)); return value.get(); }
+RemoteErrorHighScoresSingletonFactory::RemoteErrorHighScoresSingletonFactory() {
+        }
+        auto RemoteErrorHighScoresSingletonFactory::SINGLETON_owner() -> HighScores* { static std::unique_ptr<HighScores> value(new HighScores(CommonStrings::getInstance()->LOADING, "Remote High Scores Did Not Load", CommonStrings::getInstance()->PERIODS)); return value.get(); }
+HighScores* RemoteErrorHighScoresSingletonFactory::SINGLETON = RemoteErrorHighScoresSingletonFactory::SINGLETON_owner();
 
-    public: static HighScores* getInstance(){
+    auto RemoteErrorHighScoresSingletonFactory::getInstance() -> HighScores*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RemoteErrorHighScoresSingletonFactory::SINGLETON();
+                        return RemoteErrorHighScoresSingletonFactory::SINGLETON;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_REMOTEERRORHIGHSCORESSINGLETONFACTORY_CPP

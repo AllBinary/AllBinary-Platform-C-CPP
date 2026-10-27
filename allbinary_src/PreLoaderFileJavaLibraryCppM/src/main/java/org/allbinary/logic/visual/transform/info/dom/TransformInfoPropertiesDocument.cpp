@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DOM_TRANSFORMINFOPROPERTIESDOCUMENT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DOM_TRANSFORMINFOPROPERTIESDOCUMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/dom/TransformInfoPropertiesDocument.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -95,15 +105,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoPropertiesDocument
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Document* document;
-
-public: TransformInfoPropertiesDocument(std::string filePath){
+TransformInfoPropertiesDocument::TransformInfoPropertiesDocument(std::string filePath) : logUtil(LogUtil::getInstance()){
 
     AbFile* xmlFile = AbFile::createAbFile(filePath);;
     
@@ -112,7 +115,7 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
 }
 
 
-    public: HashMap<Object*, Object*>* toTransformInfoPropertiesHashMap(){
+    auto TransformInfoPropertiesDocument::toTransformInfoPropertiesHashMap() -> HashMap<Object*, Object*>*{
 
         try {
             
@@ -128,10 +131,10 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
     BasicArrayList* transformInfoNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance()->NAME, transformInfosChildNodeList);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Size: " +transformInfoNodeVector->size(), this, "toTransformInfoPropertiesHashMap()");
+                                    this->logUtil->putF(JavaString::valueOf("Size: ") +JavaString::valueOf(transformInfoNodeVector->size()), this, "toTransformInfoPropertiesHashMap()");
     
 
                                     }
@@ -171,7 +174,7 @@ transformInfoPropertiesHashMap->put(transformInfoProperties->getName(), transfor
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     
@@ -193,7 +196,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "toTransformInfoPropertiesHas
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DOM_TRANSFORMINFOPROPERTIESDOCUMENT_CPP

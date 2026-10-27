@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/DataOutputStreamFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,25 +63,25 @@
 #include "org/allbinary/logic/io/AbDataOutputStream.h"
 #include "org/allbinary/logic/io/FileStreamFactory.h"
 
-class DataOutputStreamFactory
-            : public Object
-         {
 
-    private: static DataOutputStreamFactory* instance() { static std::unique_ptr<DataOutputStreamFactory> value(new DataOutputStreamFactory()); return value.get(); }
+DataOutputStreamFactory::DataOutputStreamFactory() {
+        }
+        auto DataOutputStreamFactory::instance_owner() -> DataOutputStreamFactory* { static std::unique_ptr<DataOutputStreamFactory> value(new DataOutputStreamFactory()); return value.get(); }
+DataOutputStreamFactory* DataOutputStreamFactory::instance = DataOutputStreamFactory::instance_owner();
 
-    public: static DataOutputStreamFactory* getInstance(){
+    auto DataOutputStreamFactory::getInstance() -> DataOutputStreamFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DataOutputStreamFactory::instance();
+                        return DataOutputStreamFactory::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbDataOutputStream* getInstanceForAbFile(AbFile* file){
+    auto DataOutputStreamFactory::getInstanceForAbFile(AbFile* file) -> AbDataOutputStream*{
 
     AbFileOutputStream* idFileOutputStream = AbFileOutputStream::createFromAbFile(file);;
     
@@ -89,7 +99,7 @@ class DataOutputStreamFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AbDataOutputStream* getInstance(std::string filePath, std::string fileName){
+    auto DataOutputStreamFactory::getInstance(std::string filePath, std::string fileName) -> AbDataOutputStream*{
 
     FileStreamFactory* fileStreamFactory = FileStreamFactory::getInstance();;
     
@@ -108,7 +118,6 @@ class DataOutputStreamFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_CPP

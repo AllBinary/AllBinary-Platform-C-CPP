@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/Log.h"
-//ActualPlatform
+        class Log;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //ActualPlatform
 /*actual*/ class LogUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
+    private: static LogUtil* instance_owner();
+    private: static LogUtil* instance;
 
     /*actual*/ public: static LogUtil* getInstance();
 
@@ -73,3 +83,13 @@ private: LogUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/logic/communication/log/Log.h")
+#include "org/allbinary/logic/communication/log/Log.h"
+#endif
+
+        #endif
+    

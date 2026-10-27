@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_J2MEUTIL_CPP
+        #define ORG_ALLBINARY_J2MEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/J2MEUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class J2MEUtil
-            : public Object
-         {
 
-    public: static bool isJ2ME(){
+J2MEUtil::J2MEUtil(){
+}
+
+
+    auto J2MEUtil::isJ2ME() -> bool{
 
 
 
@@ -59,7 +70,7 @@ class J2MEUtil
 }
 
 
-    public: static bool isJ2SE(){
+    auto J2MEUtil::isJ2SE() -> bool{
 
 
 
@@ -69,7 +80,7 @@ class J2MEUtil
 }
 
 
-    public: static bool isHTML(){
+    auto J2MEUtil::isHTML() -> bool{
 
 
 
@@ -79,11 +90,6 @@ class J2MEUtil
 }
 
 
-private: J2MEUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_J2MEUTIL_CPP

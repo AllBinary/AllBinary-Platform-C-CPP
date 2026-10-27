@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_CUSTOM_CUSTOMITEMDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_CUSTOM_CUSTOMITEMDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/custom/CustomItemData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomItemData
-            : public Object
-         {
 
-    public: static inline const std::string PACKAGE = "CUSTOMITEM_PACKAGE";
+CustomItemData::CustomItemData() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_CUSTOM_CUSTOMITEMDATA_CPP

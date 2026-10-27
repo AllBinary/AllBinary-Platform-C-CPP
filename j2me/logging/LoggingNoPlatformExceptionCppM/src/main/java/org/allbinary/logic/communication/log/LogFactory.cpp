@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,18 +63,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/Log.h"
-//NoPlatform
-// class LogFactory
-            : public Object
-         {
 
-    public: static Log* LOG() { static std::unique_ptr<Log> value(new Log(StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT, StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
+//NoPlatform - declared in the header, implemented by the platform project
 
-    public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception)
 
-    public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName)
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_CPP

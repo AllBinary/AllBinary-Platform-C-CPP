@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,25 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-                //@Throws(MoneyException.constructor)
-            
-    public: virtual ItemInterface* getItem(std::string id) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getItems(StoreFrontInterface* storeFrontInterface) = 0;
 
-    public: virtual std::string getWeight(std::string id) = 0;
-
-    public: virtual void deleteWhere(std::string key, std::string value) = 0;
-
-    public: virtual void insert(BasicArrayList* values) = 0;
-
-    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYINTERFACE_CPP

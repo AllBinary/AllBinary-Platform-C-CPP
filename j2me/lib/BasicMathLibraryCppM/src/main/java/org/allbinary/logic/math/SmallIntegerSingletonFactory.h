@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,18 +40,10 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/AndroidUtil.h>
-
-      
-#include <org/allbinary/J2MEUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class AndroidUtil;
+class J2MEUtil;
+class LogUtil;
+class StringMaker;
 
 
 
@@ -66,11 +63,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SmallIntegerSingletonFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static SmallIntegerSingletonFactory* instance() { static std::unique_ptr<SmallIntegerSingletonFactory> value(new SmallIntegerSingletonFactory()); return value.get(); }
+    private: static SmallIntegerSingletonFactory* instance_owner();
+    private: static SmallIntegerSingletonFactory* instance;
 
     public: static SmallIntegerSingletonFactory* getInstance();
 
@@ -78,9 +80,9 @@ class SmallIntegerSingletonFactory
 
     public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const std::vector<int32_t> INTEGER_ARRAY = std::vector<int32_t>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: std::vector<int32_t> INTEGER_ARRAY;
 
-    private: const std::vector<std::string> STRING_ARRAY = std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: std::vector<std::string> STRING_ARRAY;
 
     private: int32_t MIN = 0;
 
@@ -112,3 +114,22 @@ private: SmallIntegerSingletonFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/AndroidUtil.h>)
+#include <org/allbinary/AndroidUtil.h>
+#endif
+#if __has_include(<org/allbinary/J2MEUtil.h>)
+#include <org/allbinary/J2MEUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

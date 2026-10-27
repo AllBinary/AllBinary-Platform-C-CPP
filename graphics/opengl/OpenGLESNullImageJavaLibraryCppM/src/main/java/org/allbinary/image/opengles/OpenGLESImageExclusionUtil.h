@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class Image;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -57,15 +56,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLESImageExclusionUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLESImageExclusionUtil* instance() { static std::unique_ptr<OpenGLESImageExclusionUtil> value(new OpenGLESImageExclusionUtil()); return value.get(); }
+    private: static OpenGLESImageExclusionUtil* instance_owner();
+    private: static OpenGLESImageExclusionUtil* instance;
 
     public: static OpenGLESImageExclusionUtil* getInstance();
 
-    public: BasicArrayList* list = new BasicArrayListD();
+
+            
+    public: OpenGLESImageExclusionUtil();
+        
+    public: BasicArrayList* list;
 
     public: bool isCustomScaling(Image* image);
 
@@ -75,3 +83,19 @@ class OpenGLESImageExclusionUtil
 
 
         #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEEXCLUSIONUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

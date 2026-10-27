@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/sql/connection/pool/SqlConnectionPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,58 +82,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SqlConnectionPool
-            : public Object
-         {
+auto SqlConnectionPool::instance_owner() -> SqlConnectionPool* { static std::unique_ptr<SqlConnectionPool> value(new SqlConnectionPool()); return value.get(); }
+SqlConnectionPool* SqlConnectionPool::instance = SqlConnectionPool::instance_owner();
 
-    private: static SqlConnectionPool* instance() { static std::unique_ptr<SqlConnectionPool> value(new SqlConnectionPool()); return value.get(); }
-
-    public: static SqlConnectionPool* getInstance(){
+    auto SqlConnectionPool::getInstance() -> SqlConnectionPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SqlConnectionPool::instance();
+                        return SqlConnectionPool::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: StdUtil* stdUtil = StdUtil::getInstance();
-
-    private: HashMap<Object*, Object*>* connectionHashMap = 
-                null
-            ;
-
-    private: const std::string FIRST_NEW_CONNECTION_CREATED = "First New Connection Created: ";
-
-    private: const std::string FIRST = "First ";
-
-    private: const std::string NEW_CONNECTION_FOR = "New Connection For ";
-
-    private: const std::string CREATED = " Created";
-
-    private: const std::string NUMBER_OF_SQL_CONNECTIONS_FOR = "Number Of Sql Connections for: ";
-
-    private: const std::string NUMBER_OF_SQL_CONNECTION_VECTORS = "Number Of Sql Connection Vectors: ";
-
-    private: const std::string IS = " is ";
-
-    private: const std::string CONNECTION_ALLREADY_CLOSED = "Connection AllReady Closed";
-
-    private: const std::string METHOD_GET = "get()";
-
-    private: const std::string METHOD_ADD = "add()";
-
-private: SqlConnectionPool(){
+SqlConnectionPool::SqlConnectionPool() : logUtil(LogUtil::getInstance()), stdUtil(StdUtil::getInstance()){
 }
 
 
                 //@Throws(SQLException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Connection* get(std::string url){
+    auto SqlConnectionPool::get(std::string url) -> Connection*{
 
                         if(this->connectionHashMap == 
                                     nullptr
@@ -133,10 +112,10 @@ private: SqlConnectionPool(){
                                     this->connectionHashMap= this->stdUtil->createHashMap();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
                         
                                     {
-                                    this->logUtil->putF(this->FIRST_NEW_CONNECTION_CREATED +url, this, METHOD_GET);
+                                    this->logUtil->putF(JavaString::valueOf(this->FIRST_NEW_CONNECTION_CREATED) +JavaString::valueOf(url), this, METHOD_GET);
     
 
                                     }
@@ -163,7 +142,7 @@ private: SqlConnectionPool(){
                                     connectionVector= new BasicArrayListD();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
@@ -196,7 +175,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append(this->NEW_CONNECTION_FOR)->append(url)->append(this->CREATED)->toString(), this, METHOD_GET);
@@ -239,10 +218,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
 this->connectionHashMap->put(url, connectionVector);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->NUMBER_OF_SQL_CONNECTIONS_FOR);
     
@@ -252,7 +231,7 @@ stringBuffer->append(this->IS);
     
 stringBuffer->appendint(connectionVector->size());
     
-this->logUtil->putF(NUMBER_OF_SQL_CONNECTION_VECTORS +this->connectionHashMap->size(), this, this->METHOD_GET);
+this->logUtil->putF(JavaString::valueOf(NUMBER_OF_SQL_CONNECTION_VECTORS) +JavaString::valueOf(this->connectionHashMap->size()), this, this->METHOD_GET);
     
 this->logUtil->putF(stringBuffer->toString(), this, METHOD_GET);
     
@@ -277,7 +256,7 @@ this->logUtil->putF(stringBuffer->toString(), this, METHOD_GET);
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
@@ -306,7 +285,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET);
                 //@Throws(SQLException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void add(std::string url, Connection* sqlConnection){
+    auto SqlConnectionPool::add(std::string url, Connection* sqlConnection) -> void{
 
                         if(!sqlConnection->isClosed())
                         
@@ -351,7 +330,7 @@ this->connectionHashMap->put(url, connectionVector);
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     
@@ -376,7 +355,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_ADD);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGPOOL))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGPOOL))
                         
                                     {
                                     this->logUtil->putF(this->CONNECTION_ALLREADY_CLOSED, this, METHOD_ADD);
@@ -387,7 +366,6 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_ADD);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_CPP

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/java/character/CharacterSet.h>
-
-      
+class CharacterSet;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OperatingSystemInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class OperatingSystemInterface
+            : public virtual Object
+         {
 
     public: virtual std::string getName() = 0;
 
@@ -77,3 +86,13 @@ class OperatingSystemInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/java/character/CharacterSet.h>)
+#include <org/allbinary/logic/java/character/CharacterSet.h>
+#endif
+
+        #endif
+    

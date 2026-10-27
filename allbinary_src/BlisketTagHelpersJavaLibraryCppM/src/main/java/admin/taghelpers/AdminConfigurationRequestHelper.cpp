@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_ADMINCONFIGURATIONREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_ADMINCONFIGURATIONREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/AdminConfigurationRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,18 +74,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/ModifyTable.h"
 
-class AdminConfigurationRequestHelper: public ModifyTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+AdminConfigurationRequestHelper::AdminConfigurationRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 
-    private: HttpServletRequest* request;
-
-public: AdminConfigurationRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -85,14 +90,14 @@ this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
 }
 
 
-    public: std::string insert(){
+    auto AdminConfigurationRequestHelper::insert() -> std::string{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, "insert()");
+                                    this->logUtil->putF(this->commonStrings->START, this, "insert()");
     
 
                                     }
@@ -106,7 +111,7 @@ this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
 adminConfigurationInterface->write();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert()");
@@ -128,10 +133,10 @@ adminConfigurationInterface->write();
     std::string error = "Failed to created AdminConfiguration";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -147,14 +152,14 @@ adminConfigurationInterface->write();
 }
 
 
-    public: std::string delete_(){
+    auto AdminConfigurationRequestHelper::delete_() -> std::string{
 
         try {
             
     std::string success = "Successfully deleted AdminConfiguration";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -176,10 +181,10 @@ adminConfigurationInterface->write();
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -195,7 +200,7 @@ adminConfigurationInterface->write();
 }
 
 
-    public: std::string update(){
+    auto AdminConfigurationRequestHelper::update() -> std::string{
 
         try {
             
@@ -205,7 +210,7 @@ adminConfigurationInterface->write();
     AdminConfigurationInterface* adminConfigurationInterface = dynamic_cast<AdminConfigurationInterface*>(new AdminConfiguration(this->request));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -227,10 +232,10 @@ adminConfigurationInterface->write();
     std::string error = "Failed to update";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -246,7 +251,6 @@ adminConfigurationInterface->write();
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_ADMINCONFIGURATIONREQUESTHELPER_CPP

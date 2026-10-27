@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h"
 
-class InventoryEntityFactory
-            : public Object
-         {
+auto InventoryEntityFactory::instance_owner() -> InventoryEntityFactory* { static std::unique_ptr<InventoryEntityFactory> value(new InventoryEntityFactory()); return value.get(); }
+InventoryEntityFactory* InventoryEntityFactory::instance = InventoryEntityFactory::instance_owner();
 
-    private: static InventoryEntityFactory* instance() { static std::unique_ptr<InventoryEntityFactory> value(new InventoryEntityFactory()); return value.get(); }
-
-    public: static InventoryEntityFactory* getInstance(){
+    auto InventoryEntityFactory::getInstance() -> InventoryEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventoryEntityFactory::instance();
+                        return InventoryEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: InventoryEntityFactory(){
+InventoryEntityFactory::InventoryEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: InventoryEntity* getInventoryEntityInstance(){
+    auto InventoryEntityFactory::getInventoryEntityInstance() -> InventoryEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: InventoryEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "getInventoryEntityInstance()", &e);
@@ -112,7 +117,6 @@ private: InventoryEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYFACTORY_CPP

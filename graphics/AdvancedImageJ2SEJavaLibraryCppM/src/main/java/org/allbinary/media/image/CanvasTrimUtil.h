@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CANVASTRIMUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_CANVASTRIMUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,17 +37,9 @@
             #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
 #include <java/io/IOException.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class LogUtil;
+class StringUtil;
 
 
 
@@ -61,20 +58,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageProcessorInput.h"
-#include "org/allbinary/media/image/ImageProcessedVisitor.h"
+        class ImageProcessorInput;
+class ImageProcessedVisitor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CanvasTrimUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static CanvasTrimUtil* instance() { static std::unique_ptr<CanvasTrimUtil> value(new CanvasTrimUtil()); return value.get(); }
+    private: static CanvasTrimUtil* instance_owner();
+    private: static CanvasTrimUtil* instance;
 
     public: static CanvasTrimUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: StringUtil* stringUtil = StringUtil::getInstance();
+            
+    public: CanvasTrimUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: StringUtil* stringUtil;
 
                 //@Throws(IOException.constructor)
             
@@ -86,3 +92,28 @@ class CanvasTrimUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_CANVASTRIMUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_CANVASTRIMUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CANVASTRIMUTIL_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageProcessorInput.h")
+#include "org/allbinary/media/image/ImageProcessorInput.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageProcessedVisitor.h")
+#include "org/allbinary/media/image/ImageProcessedVisitor.h"
+#endif
+
+        #endif
+    

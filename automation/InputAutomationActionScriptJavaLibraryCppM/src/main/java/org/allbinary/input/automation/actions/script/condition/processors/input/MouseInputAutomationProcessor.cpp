@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseInputAutomationProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,13 +72,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h"
 
-class MouseInputAutomationProcessor
-            : public Object
-         {
+
+MouseInputAutomationProcessor::MouseInputAutomationProcessor(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static void process(MouseActionScriptInputInterface* mouseActionScriptInputInterface){
+    auto MouseInputAutomationProcessor::process(MouseActionScriptInputInterface* mouseActionScriptInputInterface) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -109,11 +120,6 @@ Thread::sleep(mouseActionScriptInputInterface->getTime());
 }
 
 
-private: MouseInputAutomationProcessor(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLAYERTOPVIEWCHARACTERBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLAYERTOPVIEWCHARACTERBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/PlayerTopViewCharacterBehavior.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -78,19 +88,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/TopViewCharacterBehavior.h"
 
-class PlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
+PlayerTopViewCharacterBehavior::PlayerTopViewCharacterBehavior() : logUtil(LogUtil::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, GeographicMapCellPosition* geographicMapCellPosition){
+    auto PlayerTopViewCharacterBehavior::terrainEvent(AllBinaryLayer* layer, Direction* direction, int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, GeographicMapCellPosition* geographicMapCellPosition) -> void{
 TrackingEventHandler::getInstance()->fireEvent(TrackingEventCircularStaticPool::getInstance()->getNextInstance(layer));
     
 }
 
 
-    public: void terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y){
+    auto PlayerTopViewCharacterBehavior::terrainMove(AllBinaryLayer* layer, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, int32_t x, int32_t y) -> void{
 
     BasicGeographicMapUtil* basicGeographicMapUtil = BasicGeographicMapUtil::getInstance();;
     
@@ -99,11 +109,11 @@ basicGeographicMapUtil->setPosition(geographicMapInterfaceArray, x, y);
 }
 
 
-    private: void moveIfOnScreen(AllBinaryLayer* layer, int32_t ax, int32_t ay){
+    auto PlayerTopViewCharacterBehavior::moveIfOnScreen(AllBinaryLayer* layer, int32_t ax, int32_t ay) -> void{
 }
 
 
-    private: bool isTiledLayerMoveable(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t y){
+    auto PlayerTopViewCharacterBehavior::isTiledLayerMoveable(AllBinaryTiledLayer* terrainTiledLayer, int32_t x, int32_t y) -> bool{
 
 
 
@@ -113,7 +123,6 @@ basicGeographicMapUtil->setPosition(geographicMapInterfaceArray, x, y);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLAYERTOPVIEWCHARACTERBEHAVIOR_CPP

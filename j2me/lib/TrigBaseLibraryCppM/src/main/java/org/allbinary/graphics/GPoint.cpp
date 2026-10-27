@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_GPOINT_CPP
+        #define ORG_ALLBINARY_GRAPHICS_GPOINT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/GPoint.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GPoint
-            : public Object
-         {
 
-    public: static GPoint* getInstance(GPoint* point){
+    auto GPoint::getInstance(GPoint* point) -> GPoint*{
 
 
 
@@ -77,9 +84,87 @@ class GPoint
 }
 
 
-    private: static inline const std::string POINT_LABEL = "Point: ";
+GPoint::GPoint(int32_t x, int32_t y, int32_t z){
+this->x= x;
+    
+this->y= y;
+    
+this->z= z;
+    
+}
 
-    public: static std::string toStringStatic(int32_t x, int32_t y, int32_t z){
+
+    auto GPoint::getX() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->x;
+    
+}
+
+
+    auto GPoint::getY() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->y;
+    
+}
+
+
+    auto GPoint::getZ() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->z;
+    
+}
+
+
+    auto GPoint::getRawX() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->x;
+    
+}
+
+
+    auto GPoint::getRawY() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->y;
+    
+}
+
+
+    auto GPoint::getRawZ() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->z;
+    
+}
+
+
+    auto GPoint::toString() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GPoint::toStringStatic(this->getX(), this->getY(), this->getZ());;
+    
+}
+
+
+    auto GPoint::toStringStatic(int32_t x, int32_t y, int32_t z) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -113,93 +198,6 @@ stringBuffer->appendint(z);
 }
 
 
-    private: int32_t x;
-
-    private: int32_t y;
-
-    private: int32_t z;
-
-public: GPoint(int32_t x, int32_t y, int32_t z){
-this->x= x;
-    
-this->y= y;
-    
-this->z= z;
-    
-}
 
 
-    public: int32_t getX(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->x;
-    
-}
-
-
-    public: int32_t getY(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->y;
-    
-}
-
-
-    public: int32_t getZ(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->z;
-    
-}
-
-
-    public: int32_t getRawX(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->x;
-    
-}
-
-
-    public: int32_t getRawY(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->y;
-    
-}
-
-
-    public: int32_t getRawZ(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->z;
-    
-}
-
-
-    public: std::string toString(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GPoint::toStringStatic(this->getX(), this->getY(), this->getZ());;
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_GPOINT_CPP

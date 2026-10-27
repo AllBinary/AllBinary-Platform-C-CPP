@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/osgi/InputAutomationModuleOSGIServiceVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,19 +83,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationModuleOSGIServiceVisitor
-            : public Object
-        , public OSGIServiceVisitorInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: InputAutomationModuleOSGIServiceVisitor(){
+InputAutomationModuleOSGIServiceVisitor::InputAutomationModuleOSGIServiceVisitor() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto InputAutomationModuleOSGIServiceVisitor::visit(Object* anyType) -> Object*{
 
 
 
@@ -95,7 +98,7 @@ public: InputAutomationModuleOSGIServiceVisitor(){
 }
 
 
-    public: bool visit(OSGIServiceInterface* osgiServiceInterface){
+    auto InputAutomationModuleOSGIServiceVisitor::visit(OSGIServiceInterface* osgiServiceInterface) -> bool{
 
         try {
             
@@ -138,7 +141,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "visit", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_CPP

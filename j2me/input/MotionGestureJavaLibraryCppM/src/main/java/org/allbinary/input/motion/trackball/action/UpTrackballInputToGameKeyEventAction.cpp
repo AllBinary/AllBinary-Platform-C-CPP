@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_UPTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_UPTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/trackball/action/UpTrackballInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* UpTrackballInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto UpTrackballInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(UpTrackballInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class UpTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureI
 }
 
 
-private: UpTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", TrackballMotionGestureFactory::getInstance()->UP, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+UpTrackballInputToGameKeyEventAction::UpTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", TrackballMotionGestureFactory::getInstance()->UP, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: UpTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureIn
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_UPTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP

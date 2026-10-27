@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_TACTICAL_BASICRANDOMAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_TACTICAL_BASICRANDOMAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/tactical/BasicRandomAIFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,13 +82,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/tactical/BasicRandomAI.h"
 
-class BasicRandomAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+BasicRandomAIFactory::BasicRandomAIFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto BasicRandomAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
     Visitor* visitor = dynamic_cast<Visitor*>(hashtable->get(BasicAI::AI_VISITOR));;
     
@@ -91,7 +101,7 @@ class BasicRandomAIFactory
                                     
 
 
-                            throw new Exception("No Visitor Provided");
+                            throw Exception("No Visitor Provided");
                     
 
                                     }
@@ -108,7 +118,6 @@ class BasicRandomAIFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_TACTICAL_BASICRANDOMAIFACTORY_CPP

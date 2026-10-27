@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_OPENGLES_JOGL10_H
         #define ORG_ALLBINARY_OPENGLES_JOGL10_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <com/jogamp/opengl/glu/GLU.h>
-
-      
+class GLU;
 
 
 
@@ -53,37 +56,41 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/opengles/GL10.h"
-#include "org/allbinary/opengles/GL2.h"
-#include "org/allbinary/opengles/GL.h"
-#include "org/allbinary/opengles/Buffer.h"
-#include "org/allbinary/opengles/IntBuffer.h"
-#include "org/allbinary/opengles/FloatBuffer.h"
-//JOGLEToKhronosGL10
+class GL2;
+class GL;
+class Buffer;
+class IntBuffer;
+class FloatBuffer;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //JOGLEToKhronosGL10
 class JOGL10
-            : public Object
+            : public virtual Object
         , public javax::microedition::khronos::opengles::GL10 {
 
-    protected: const std::string RED = "red: ";
+    /*protected*/ public: const std::string RED = "red: ";
 
-    protected: const std::string GREEN = " green: ";
+    /*protected*/ public: const std::string GREEN = " green: ";
 
-    protected: const std::string BLUE = " blue: ";
+    /*protected*/ public: const std::string BLUE = " blue: ";
 
-    protected: const std::string ALPHA = " alpha: ";
+    /*protected*/ public: const std::string ALPHA = " alpha: ";
 
-    protected: const std::string PNAME = "pname: ";
+    /*protected*/ public: const std::string PNAME = "pname: ";
 
-    protected: const std::string _PNAME = " pname: ";
+    /*protected*/ public: const std::string _PNAME = " pname: ";
 
-    protected: const std::string PARAM = " param: ";
+    /*protected*/ public: const std::string PARAM = " param: ";
 
-    protected: const std::string PARAMS = " params: ";
+    /*protected*/ public: const std::string PARAMS = " params: ";
 
-    protected: const std::string LIGHT = "light: ";
+    /*protected*/ public: const std::string LIGHT = "light: ";
 
-    protected: const std::string FACE = "face: ";
+    /*protected*/ public: const std::string FACE = "face: ";
 
-    protected: const std::string TARGET = "target: ";
+    /*protected*/ public: const std::string TARGET = "target: ";
 
     private: com::jogamp::opengl::GL2* gl10;
 
@@ -291,3 +298,31 @@ public: JOGL10(com::jogamp::opengl::GL* gl, com::jogamp::opengl::GL2* gl2);
 
 
         #endif //ORG_ALLBINARY_OPENGLES_JOGL10_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_OPENGLES_JOGL10_H_COMPLETE)
+        #define ORG_ALLBINARY_OPENGLES_JOGL10_H_COMPLETE
+        #if __has_include(<com/jogamp/opengl/glu/GLU.h>)
+#include <com/jogamp/opengl/glu/GLU.h>
+#endif
+#if __has_include("org/allbinary/opengles/GL10.h")
+#include "org/allbinary/opengles/GL10.h"
+#endif
+#if __has_include("org/allbinary/opengles/GL2.h")
+#include "org/allbinary/opengles/GL2.h"
+#endif
+#if __has_include("org/allbinary/opengles/GL.h")
+#include "org/allbinary/opengles/GL.h"
+#endif
+#if __has_include("org/allbinary/opengles/Buffer.h")
+#include "org/allbinary/opengles/Buffer.h"
+#endif
+#if __has_include("org/allbinary/opengles/IntBuffer.h")
+#include "org/allbinary/opengles/IntBuffer.h"
+#endif
+#if __has_include("org/allbinary/opengles/FloatBuffer.h")
+#include "org/allbinary/opengles/FloatBuffer.h"
+#endif
+
+        #endif
+    

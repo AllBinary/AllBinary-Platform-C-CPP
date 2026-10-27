@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKSTARTPOINTUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKSTARTPOINTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackStartPointUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,13 +78,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTrackStartPointUtil
-            : public Object
-         {
 
+RaceTrackStartPointUtil::RaceTrackStartPointUtil() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static GPoint* get(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t index){
+    auto RaceTrackStartPointUtil::get(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t index) -> GPoint*{
 
     BasicArrayList* list = pathFindingInfo->getStartPathFindingNodeList();;
     
@@ -96,7 +106,6 @@ class RaceTrackStartPointUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKSTARTPOINTUTIL_CPP

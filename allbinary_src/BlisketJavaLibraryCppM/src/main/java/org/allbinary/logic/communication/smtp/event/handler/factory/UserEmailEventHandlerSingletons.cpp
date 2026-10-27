@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_USEREMAILEVENTHANDLERSINGLETONS_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_USEREMAILEVENTHANDLERSINGLETONS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/event/handler/factory/UserEmailEventHandlerSingletons.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,31 +93,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserEmailEventHandlerSingletons
-            : public Object
-         {
+auto UserEmailEventHandlerSingletons::instance_owner() -> UserEmailEventHandlerSingletons* { static std::unique_ptr<UserEmailEventHandlerSingletons> value(new UserEmailEventHandlerSingletons()); return value.get(); }
+UserEmailEventHandlerSingletons* UserEmailEventHandlerSingletons::instance = UserEmailEventHandlerSingletons::instance_owner();
 
-    private: static UserEmailEventHandlerSingletons* instance() { static std::unique_ptr<UserEmailEventHandlerSingletons> value(new UserEmailEventHandlerSingletons()); return value.get(); }
-
-    public: static UserEmailEventHandlerSingletons* getInstance(){
+    auto UserEmailEventHandlerSingletons::getInstance() -> UserEmailEventHandlerSingletons*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserEmailEventHandlerSingletons::instance();
+                        return UserEmailEventHandlerSingletons::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+UserEmailEventHandlerSingletons::UserEmailEventHandlerSingletons() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), userEmailEventHandlerHashMap(StdUtil::getInstance()->createHashMap()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: HashMap<Object*, Object*>* userEmailEventHandlerHashMap = StdUtil::getInstance()->createHashMap();
-
-private: UserEmailEventHandlerSingletons(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -120,9 +121,9 @@ private: UserEmailEventHandlerSingletons(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserEmailEventHandler* getInstance(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface){
+    auto UserEmailEventHandlerSingletons::getInstance(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface) -> UserEmailEventHandler*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->GET_INSTANCE);
@@ -140,7 +141,7 @@ private: UserEmailEventHandlerSingletons(){
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Creating New Named UserEmailEventHandler", this, this->commonStrings->GET_INSTANCE);
@@ -171,7 +172,7 @@ this->userEmailEventHandlerHashMap->put(userEmailEventNameData, newUserEmailEven
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("Returning existing UserEmailEventHandler", this, this->commonStrings->GET_INSTANCE);
@@ -191,7 +192,6 @@ this->userEmailEventHandlerHashMap->put(userEmailEventNameData, newUserEmailEven
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_USEREMAILEVENTHANDLERSINGLETONS_CPP

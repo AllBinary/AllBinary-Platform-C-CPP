@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLSTRINGS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -15,9 +20,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class CommonSeps;
 
 
 
@@ -37,14 +40,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SqlStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static SqlStrings* instance() { static std::unique_ptr<SqlStrings> value(new SqlStrings()); return value.get(); }
+    private: static SqlStrings* instance_owner();
+    private: static SqlStrings* instance;
 
     public: static SqlStrings* getInstance();
 
+
+            
+    public: SqlStrings();
+        
     public: const std::string CREATE_DATABASE = "CREATE DATABASE ";
 
     public: const std::string DROP_TABLE = "DROP TABLE ";
@@ -67,7 +79,7 @@ class SqlStrings
 
     public: const std::string SET = " SET ";
 
-    public: const std::string SELECT_ALL_FROM = this->SELECT_ALL +this->FROM;
+    public: const std::string SELECT_ALL_FROM;
 
     public: const std::string DELETE = "DELETE";
 
@@ -91,7 +103,7 @@ class SqlStrings
 
     public: const std::string EQUAL_QUOTE = " = \"";
 
-    public: const std::string CLOSE_QUOTE = CommonSeps::getInstance()->QUOTE;
+    public: const std::string CLOSE_QUOTE;
 
     public: const std::string EQUAL_QUOTE_NO_SPACE = "=\"";
 
@@ -121,3 +133,13 @@ class SqlStrings
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLSTRINGS_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

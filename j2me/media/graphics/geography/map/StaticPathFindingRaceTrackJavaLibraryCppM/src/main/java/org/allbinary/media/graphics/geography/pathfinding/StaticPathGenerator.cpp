@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_STATICPATHGENERATOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_STATICPATHGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/StaticPathGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,15 +107,8 @@
 #include "org/allbinary/media/graphics/geography/pathfinding/PathCacheFactory.h"
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h"
 
-class StaticPathGenerator
-            : public Object
-        , public PathGeneratorInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-protected: StaticPathGenerator(){
+StaticPathGenerator::StaticPathGenerator() : logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()){
 PreLogUtil::put("Using Static Path Finding", this, CommonStrings::getInstance()->CONSTRUCTOR);
     
 }
@@ -113,13 +116,13 @@ PreLogUtil::put("Using Static Path Finding", this, CommonStrings::getInstance()-
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Object* geographicMapInterface, int32_t totalPaths){
+    auto StaticPathGenerator::init(Object* geographicMapInterface, int32_t totalPaths) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory, BasicArrayList* pathList){
+    auto StaticPathGenerator::getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory, BasicArrayList* pathList) -> BasicArrayList*{
 
     BasicArrayList* list = new BasicArrayListD();;
     
@@ -158,7 +161,7 @@ list->add(geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* createList(BasicGeographicMap* geographicMapInterface, GeographicMapCellHistory* geographicMapCellHistory, PathFindingInfo* pathFindingInfo, int32_t totalPaths){
+    auto StaticPathGenerator::createList(BasicGeographicMap* geographicMapInterface, GeographicMapCellHistory* geographicMapCellHistory, PathFindingInfo* pathFindingInfo, int32_t totalPaths) -> BasicArrayList*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -242,7 +245,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_STATICPATHGENERATOR_CPP

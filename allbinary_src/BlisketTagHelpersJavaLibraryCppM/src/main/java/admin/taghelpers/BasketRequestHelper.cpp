@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_BASKETREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_BASKETREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/BasketRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,29 +95,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class BasketRequestHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-    private: PageContext* pageContext;
-
-    private: HttpServletRequest* request;
-
-    private: std::string id;
-
-    private: std::string num;
-
-    private: const int32_t MAX = 200;
-
-public: BasketRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+BasketRequestHelper::BasketRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
@@ -139,7 +128,7 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto BasketRequestHelper::getFormData() -> void{
 this->id= this->request->getParameter(basicItemData->ID);
     
 this->num= this->request->getParameter(BasketData::ITEMTOTALINBASKET);
@@ -147,7 +136,7 @@ this->num= this->request->getParameter(BasketData::ITEMTOTALINBASKET);
 }
 
 
-    public: bool addItemToBasket(){
+    auto BasketRequestHelper::addItemToBasket() -> bool{
 
         try {
             
@@ -178,7 +167,7 @@ basket->addItem(this->id, num);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successfully added item to Basket", this, "addItemToBasket()");
@@ -197,10 +186,10 @@ basket->addItem(this->id, num);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "addItemToBasket()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "addItemToBasket()", &e);
     
 
                                     }
@@ -216,7 +205,7 @@ basket->addItem(this->id, num);
 }
 
 
-    public: bool removeItemFromBasket(){
+    auto BasketRequestHelper::removeItemFromBasket() -> bool{
 
         try {
             
@@ -232,7 +221,7 @@ basket->removeItem(this->id);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successfully removed item from Basket", this, "removeItemFromBasket()");
@@ -251,10 +240,10 @@ basket->removeItem(this->id);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "removeItemFromBasket()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "removeItemFromBasket()", &e);
     
 
                                     }
@@ -270,7 +259,7 @@ basket->removeItem(this->id);
 }
 
 
-    public: bool adjustBasket(){
+    auto BasketRequestHelper::adjustBasket() -> bool{
 
         try {
             
@@ -281,7 +270,7 @@ basket->removeItem(this->id);
                         basket->adjustItem(this->id, this->num);
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF("Successfull Adjusted Basket", this, "adjustBasket()");
@@ -300,10 +289,10 @@ basket->removeItem(this->id);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "adjustBasket()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "adjustBasket()", &e);
     
 
                                     }
@@ -319,7 +308,6 @@ basket->removeItem(this->id);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_BASKETREQUESTHELPER_CPP

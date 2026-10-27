@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_MOTIONRECTANGLECONSTRAINTS_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_MOTIONRECTANGLECONSTRAINTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/MotionRectangleConstraints.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,23 +72,12 @@
         #include "org/allbinary/input/automation/module/Dimension.h"
 #include "org/allbinary/input/automation/module/Rectangle.h"
 
-class MotionRectangleConstraints
-            : public Object
-        , public MotionRectangleConstraintsInterface {
 
-    private: Dimension* minDimension;
-
-    private: Dimension* maxDimension;
-
-    private: int32_t maxMotionRectangles= 0;
-
-    private: int32_t minArea= 0;
-
-public: MotionRectangleConstraints(){
+MotionRectangleConstraints::MotionRectangleConstraints(){
 }
 
 
-    public: Dimension* getMinDimension(){
+    auto MotionRectangleConstraints::getMinDimension() -> Dimension*{
 
 
 
@@ -88,7 +87,7 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: Dimension* getMaxDimension(){
+    auto MotionRectangleConstraints::getMaxDimension() -> Dimension*{
 
 
 
@@ -98,7 +97,7 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: bool isTooSmall(Rectangle* rectangle){
+    auto MotionRectangleConstraints::isTooSmall(Rectangle* rectangle) -> bool{
 
                         if(rectangle->width < this->getMinDimension()->width || rectangle->height < this->getMinDimension()->height)
                         
@@ -125,7 +124,7 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: bool isAreaTooSmall(Rectangle* rectangle){
+    auto MotionRectangleConstraints::isAreaTooSmall(Rectangle* rectangle) -> bool{
 
                         if(rectangle->width *rectangle->height < this->getMinArea())
                         
@@ -152,7 +151,7 @@ public: MotionRectangleConstraints(){
 }
 
 
-    public: bool isTooBig(Rectangle* rectangle){
+    auto MotionRectangleConstraints::isTooBig(Rectangle* rectangle) -> bool{
 
                         if(rectangle->width > this->getMaxDimension()->width || rectangle->height > this->getMaxDimension()->height)
                         
@@ -181,28 +180,28 @@ public: MotionRectangleConstraints(){
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(int64_t frame, BufferedImage* bufferedImage, Rectangle* rectangle){
+    auto MotionRectangleConstraints::isValid(int64_t frame, BufferedImage* bufferedImage, Rectangle* rectangle) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setMinDimension(Dimension* minDimension){
+    auto MotionRectangleConstraints::setMinDimension(Dimension* minDimension) -> void{
 this->minDimension= minDimension;
     
 }
 
 
-    public: void setMaxDimension(Dimension* maxDimension){
+    auto MotionRectangleConstraints::setMaxDimension(Dimension* maxDimension) -> void{
 this->maxDimension= maxDimension;
     
 }
 
 
-    public: int32_t getMaxMotionRectangles(){
+    auto MotionRectangleConstraints::getMaxMotionRectangles() -> int32_t{
 
 
 
@@ -212,13 +211,13 @@ this->maxDimension= maxDimension;
 }
 
 
-    public: void setMaxMotionRectangles(int32_t maxMotionRectangles){
+    auto MotionRectangleConstraints::setMaxMotionRectangles(int32_t maxMotionRectangles) -> void{
 this->maxMotionRectangles= maxMotionRectangles;
     
 }
 
 
-    public: int32_t getMinArea(){
+    auto MotionRectangleConstraints::getMinArea() -> int32_t{
 
 
 
@@ -228,13 +227,12 @@ this->maxMotionRectangles= maxMotionRectangles;
 }
 
 
-    public: void setMinArea(int32_t minArea){
+    auto MotionRectangleConstraints::setMinArea(int32_t minArea) -> void{
 this->minArea= minArea;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_MOTIONRECTANGLECONSTRAINTS_CPP

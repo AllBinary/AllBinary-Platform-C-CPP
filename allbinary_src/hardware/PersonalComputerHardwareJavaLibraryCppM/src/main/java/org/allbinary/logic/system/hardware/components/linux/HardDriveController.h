@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_HARDDRIVECONTROLLER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_HARDDRIVECONTROLLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardDriveControllerInterface.h>
-
-      
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
-
-      
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HardDriveController
-            : public Object
+            : public virtual Object
         , public HardwareComponentInterface, public HardDriveControllerInterface {
 
     private: std::string data;
@@ -72,3 +77,16 @@ public: HardDriveController(std::string data);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_HARDDRIVECONTROLLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_HARDDRIVECONTROLLER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_HARDDRIVECONTROLLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardDriveControllerInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardDriveControllerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
+#endif
+
+        #endif
+    

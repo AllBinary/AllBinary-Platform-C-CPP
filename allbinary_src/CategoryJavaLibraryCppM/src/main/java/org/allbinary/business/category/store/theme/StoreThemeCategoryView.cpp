@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,9 +77,8 @@
         #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 #include "org/allbinary/business/category/store/theme/ThemeComparator.h"
 
-class StoreThemeCategoryView: public CategoryView, public DomNodeInterface {
 
-public: StoreThemeCategoryView(StoreThemeCategoryInterface* categoryInterface) : CategoryView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
+StoreThemeCategoryView::StoreThemeCategoryView(StoreThemeCategoryInterface* categoryInterface) : CategoryView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,9 +90,9 @@ public: StoreThemeCategoryView(StoreThemeCategoryInterface* categoryInterface) :
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StoreThemeCategoryView::toXmlNode(Document* document) -> Node*{
 
-    Node* node = super.toXmlNode(document);;
+    Node* node = CategoryView::toXmlNode(document);;
     
 
     StoreThemeCategoryInterface* storeThemeCategoryInterface = dynamic_cast<StoreThemeCategoryInterface*>(this->getCategoryInterface());;
@@ -119,7 +128,6 @@ node->appendChild(themeValidation->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVIEW_CPP

@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_TIME_TIMETYPEUTIL_H
         #define ORG_ALLBINARY_TIME_TIMETYPEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -16,11 +21,7 @@
             #include "java/lang/Object.h"
         
 #include <java/util/Calendar.h>
-
-      
 #include <java/util/TimeZone.h>
-
-      
 
 
 
@@ -40,14 +41,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TimeTypeUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static TimeTypeUtil* instance() { static std::unique_ptr<TimeTypeUtil> value(new TimeTypeUtil()); return value.get(); }
+    private: static TimeTypeUtil* instance_owner();
+    private: static TimeTypeUtil* instance;
 
     public: static TimeTypeUtil* getInstance();
 
+
+            
+    public: TimeTypeUtil();
+        
     public: const std::string NIGHT = "Night";
 
     public: const std::string DAY = "Day";
@@ -70,3 +80,16 @@ class TimeTypeUtil
 
 
         #endif //ORG_ALLBINARY_TIME_TIMETYPEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_TIMETYPEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_TIMETYPEUTIL_H_COMPLETE
+        #if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+#if __has_include(<java/util/TimeZone.h>)
+#include <java/util/TimeZone.h>
+#endif
+
+        #endif
+    

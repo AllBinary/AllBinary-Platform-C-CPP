@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageJ2MEScaleUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,29 +63,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCopyUtil.h"
 
-class ImageJ2MEScaleUtil
-            : public Object
-         {
+auto ImageJ2MEScaleUtil::instance_owner() -> ImageJ2MEScaleUtil* { static std::unique_ptr<ImageJ2MEScaleUtil> value(new ImageJ2MEScaleUtil()); return value.get(); }
+ImageJ2MEScaleUtil* ImageJ2MEScaleUtil::instance = ImageJ2MEScaleUtil::instance_owner();
 
-    private: static ImageJ2MEScaleUtil* instance() { static std::unique_ptr<ImageJ2MEScaleUtil> value(new ImageJ2MEScaleUtil()); return value.get(); }
-
-    public: static ImageJ2MEScaleUtil* getInstance(){
+    auto ImageJ2MEScaleUtil::getInstance() -> ImageJ2MEScaleUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageJ2MEScaleUtil::instance();
+                        return ImageJ2MEScaleUtil::instance;
     
 }
 
 
-private: ImageJ2MEScaleUtil(){
+ImageJ2MEScaleUtil::ImageJ2MEScaleUtil(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Image*> scaleArray(std::vector<Image*> images, int32_t width, int32_t height){
+    auto ImageJ2MEScaleUtil::scaleArray(std::vector<Image*> images, int32_t width, int32_t height) -> std::vector<Image*>{
 
     std::vector<Image*> scaledImages = std::vector<Image*>(images.length);;
     
@@ -101,7 +108,7 @@ scaledImages[index]= this->scale(images[index], width, height);
 
                 //@Throws(Exception.constructor)
             
-    public: Image* scale(Image* image, int32_t width, int32_t height){
+    auto ImageJ2MEScaleUtil::scale(Image* image, int32_t width, int32_t height) -> Image*{
 
     Image* scaledImage = ImageCopyUtil::getInstance()->createImageWH(image, width, height, true);;
     
@@ -114,7 +121,6 @@ scaledImages[index]= this->scale(images[index], width, height);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_CPP

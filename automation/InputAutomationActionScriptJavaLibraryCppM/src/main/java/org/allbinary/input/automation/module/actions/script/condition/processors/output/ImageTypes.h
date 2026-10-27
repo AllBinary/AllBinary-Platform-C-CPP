@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,36 +38,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
+class DomNodeHelper;
+class ModDomHelper;
+class InputImageType;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
-
-      
-#include <org/allbinary/data/tree/dom/ModDomHelper.h>
-
-      
-#include <org/allbinary/input/media/image/InputImageType.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
-#include <org/w3c/dom/NodeList.h>
-
-      
+class StringMaker;
+class Document;
+class Node;
+class NodeList;
 
 
 
@@ -81,15 +66,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
+        class ImageActionScriptOutputData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageTypes
-            : public Object
+            : public virtual Object
          {
 
     public: static ImageTypes* valueOf(std::vector<Object*> anyType);
 
-    private: BasicArrayList* vector = new BasicArrayListD();
+    private: BasicArrayList* vector;
 
 public: ImageTypes();
 
@@ -109,3 +98,41 @@ public: ImageTypes(Node* node);
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeHelper.h>)
+#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/ModDomHelper.h>)
+#include <org/allbinary/data/tree/dom/ModDomHelper.h>
+#endif
+#if __has_include(<org/allbinary/input/media/image/InputImageType.h>)
+#include <org/allbinary/input/media/image/InputImageType.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<org/w3c/dom/NodeList.h>)
+#include <org/w3c/dom/NodeList.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h")
+#include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
+#endif
+
+        #endif
+    

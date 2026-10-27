@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_PREGAMESCROLLSELECTIONTOUCHBUTTONSBUILDER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_PREGAMESCROLLSELECTIONTOUCHBUTTONSBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/PreGameScrollSelectionTouchButtonsBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,14 +76,14 @@
 #include "org/allbinary/input/motion/button/TouchButtonStrafeRightResource.h"
 #include "org/allbinary/input/motion/button/TouchButtonStartResource.h"
 
-class PreGameScrollSelectionTouchButtonsBuilder: public BaseTouchInput {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: BasicArrayList* getList(){
+PreGameScrollSelectionTouchButtonsBuilder::PreGameScrollSelectionTouchButtonsBuilder() : logUtil(LogUtil::getInstance()) {
+        }
+        
+    auto PreGameScrollSelectionTouchButtonsBuilder::getList() -> BasicArrayList*{
 
         try {
-            this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.GET_LIST);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->GET_LIST);
     
 
     BasicArrayList* list = new BasicArrayListD();;
@@ -112,7 +122,7 @@ list->add(START);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_LIST, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_LIST, &e);
     
 
 
@@ -125,7 +135,6 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_PREGAMESCROLLSELECTIONTOUCHBUTTONSBUILDER_CPP

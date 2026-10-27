@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
-
-      
 
 
 
@@ -50,13 +53,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/pickup/PickupLayer.h"
-#include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
-#include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
+        class PickupLayer;
+class PickedUpLayerInterface;
+class PickedUpLayerInterfaceFactoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PickupLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-    private: static PickupLayerCircularStaticPool* SINGLETON() { static std::unique_ptr<PickupLayerCircularStaticPool> value(new PickupLayerCircularStaticPool()); return value.get(); }
+    private: static PickupLayerCircularStaticPool* SINGLETON_owner();
+    private: static PickupLayerCircularStaticPool* SINGLETON;
 
     public: static PickupLayerCircularStaticPool* getInstance();
 
@@ -72,3 +80,22 @@ private: PickupLayerCircularStaticPool();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayerCircularPool.h>)
+#include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/PickupLayer.h")
+#include "org/allbinary/game/layer/pickup/PickupLayer.h"
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/PickedUpLayerInterface.h")
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h")
+#include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
+#endif
+
+        #endif
+    

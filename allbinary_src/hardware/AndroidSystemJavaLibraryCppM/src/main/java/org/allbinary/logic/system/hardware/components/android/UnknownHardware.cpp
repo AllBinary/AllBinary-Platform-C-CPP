@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_ANDROID_UNKNOWNHARDWARE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_ANDROID_UNKNOWNHARDWARE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/android/UnknownHardware.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -50,19 +60,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UnknownHardware
-            : public Object
-        , public HardwareComponentInterface {
 
-    private: std::string data;
-
-public: UnknownHardware(std::string data){
+UnknownHardware::UnknownHardware(std::string data){
 this->data= data;
     
 }
 
 
-    public: bool compareTo(HardwareComponentInterface* componentInterface){
+    auto UnknownHardware::compareTo(HardwareComponentInterface* componentInterface) -> bool{
 
 
 
@@ -72,7 +77,7 @@ this->data= data;
 }
 
 
-    public: std::string toString(){
+    auto UnknownHardware::toString() -> std::string{
 
 
 
@@ -82,7 +87,6 @@ this->data= data;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_ANDROID_UNKNOWNHARDWARE_CPP

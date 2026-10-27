@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_SPECIALDEMOGAMEMIDLET_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_SPECIALDEMOGAMEMIDLET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/SpecialDemoGameMidlet.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
 #include "org/allbinary/game/midlet/LicensedDemoSetupFactory.h"
 #include "org/allbinary/game/midlet/LicenseCheckRunnableFactory.h"
 
-class SpecialDemoGameMidlet: public DemoGameMidlet {
 
-public: SpecialDemoGameMidlet(ClientInformationFactory* clientInformationFactory, LicenseLoadingType* licenseLoadingType, LicensedDemoSetupFactory* demoSetupFactory, LicenseCheckRunnableFactory* licenseCheckRunnableFactory) : DemoGameMidlet(clientInformationFactory){
+SpecialDemoGameMidlet::SpecialDemoGameMidlet(ClientInformationFactory* clientInformationFactory, LicenseLoadingType* licenseLoadingType, LicensedDemoSetupFactory* demoSetupFactory, LicenseCheckRunnableFactory* licenseCheckRunnableFactory) : DemoGameMidlet(clientInformationFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,17 +74,16 @@ public: SpecialDemoGameMidlet(ClientInformationFactory* clientInformationFactory
 }
 
 
-    public: void initView(){
+    auto SpecialDemoGameMidlet::initView() -> void{
 }
 
 
-    public: void preInit(){
+    auto SpecialDemoGameMidlet::preInit() -> void{
 (new LicenseServerInitFileUtil())->init();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_SPECIALDEMOGAMEMIDLET_CPP

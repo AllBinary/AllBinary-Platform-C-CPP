@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_ROOTCONTEXTVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_ROOTCONTEXTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/RootContextView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,11 +88,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RootContextView: public HttpStoreComponentView, public TransformTemplateInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+RootContextView::RootContextView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,10 +97,10 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "RootContextView()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "RootContextView()");
     
 
                                     }
@@ -103,14 +110,14 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto RootContextView::view() -> std::string{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +this->getTransformInfoInterface()->getName(), this, "view()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(this->getTransformInfoInterface()->getName()), this, "view()");
     
 
                                     }
@@ -132,10 +139,10 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -152,7 +159,7 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getName(){
+    auto RootContextView::getName() -> std::string{
 
         try {
             
@@ -168,7 +175,7 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
                                     
 
 
-                            throw new Exception("Template View Not Set - No Components");
+                            throw Exception("Template View Not Set - No Components");
                     
 
                                     }
@@ -180,7 +187,7 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
                                     
 
 
-                            throw new Exception("To Many Root Template Views: " +componentsVector->size());
+                            throw Exception(JavaString::valueOf("To Many Root Template Views: ") +JavaString::valueOf(componentsVector->size()));
                     
 
                                     }
@@ -192,10 +199,10 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
     std::string viewName = transformInfoInterface->getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Root Template With View Name: " +viewName, this, "getName()");
+                                    this->logUtil->putF(JavaString::valueOf("Root Template With View Name: ") +JavaString::valueOf(viewName), this, "getName()");
     
 
                                     }
@@ -207,7 +214,7 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
                                     
 
 
-                            throw new Exception("Template View Not Set - No View Name");
+                            throw Exception("Template View Not Set - No View Name");
                     
 
                                     }
@@ -223,10 +230,10 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "getName()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getName()", &e);
     
 
                                     }
@@ -241,7 +248,6 @@ public: RootContextView(TransformInfoInterface* transformInfoInterface) : HttpSt
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_ROOTCONTEXTVIEW_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_NOMAGNETICFIELDSENSOR_H
         #define ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_NOMAGNETICFIELDSENSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/AllBinarySensorListener.h>
-
-      
-#include <org/allbinary/logic/math/Orientation.h>
-
-      
+class Orientation;
 
 
 
@@ -55,8 +56,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/magnetic/field/AllBinaryMagneticFieldSensor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoMagneticFieldSensor: public AllBinaryMagneticFieldSensor, public AllBinarySensorListener {
 
+
+            
+    public: NoMagneticFieldSensor();
+        
                 //@Throws(Exception.constructor)
             
     public: Orientation* getOrientation();
@@ -69,3 +78,19 @@ class NoMagneticFieldSensor: public AllBinaryMagneticFieldSensor, public AllBina
 
 
         #endif //ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_NOMAGNETICFIELDSENSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_NOMAGNETICFIELDSENSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MAGNETIC_FIELD_NOMAGNETICFIELDSENSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/input/AllBinarySensorListener.h>)
+#include <org/allbinary/input/AllBinarySensorListener.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/Orientation.h>)
+#include <org/allbinary/logic/math/Orientation.h>
+#endif
+#if __has_include("org/allbinary/input/magnetic/field/AllBinaryMagneticFieldSensor.h")
+#include "org/allbinary/input/magnetic/field/AllBinaryMagneticFieldSensor.h"
+#endif
+
+        #endif
+    

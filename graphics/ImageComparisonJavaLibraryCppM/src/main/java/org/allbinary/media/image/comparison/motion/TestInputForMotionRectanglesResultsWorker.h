@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,47 +41,19 @@
             #include "java/lang/Thread.h"
         
 #include <java/awt/Rectangle.h>
-
-      
 #include <java/awt/event/InputEvent.h>
-
-      
 #include <java/awt/event/KeyEvent.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
-
-      
-#include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class InputRobotFactory;
+class InputRobotInterface;
+class TempInputRobotNames;
+class LogUtil;
+class AllBinaryEventObject;
+class CommonLabels;
+class CommonStrings;
+class TimeDelayHelper;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -96,16 +73,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsListener.h"
-#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
-#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+class MotionRectanglesResultsEvent;
+class MotionRectangles;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TestInputForMotionRectanglesResultsWorker
-            : public Object
+            : public virtual Object
         , public MotionRectanglesResultsListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: int64_t index= 0;
 
@@ -135,3 +116,61 @@ public: TestInputForMotionRectanglesResultsWorker();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_TESTINPUTFORMOTIONRECTANGLESRESULTSWORKER_H_COMPLETE
+        #if __has_include(<java/awt/Rectangle.h>)
+#include <java/awt/Rectangle.h>
+#endif
+#if __has_include(<java/awt/event/InputEvent.h>)
+#include <java/awt/event/InputEvent.h>
+#endif
+#if __has_include(<java/awt/event/KeyEvent.h>)
+#include <java/awt/event/KeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobotFactory.h>)
+#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobotInterface.h>)
+#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/TempInputRobotNames.h>)
+#include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/MotionRectanglesResultsListener.h")
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsListener.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h")
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/MotionRectangles.h")
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#endif
+
+        #endif
+    

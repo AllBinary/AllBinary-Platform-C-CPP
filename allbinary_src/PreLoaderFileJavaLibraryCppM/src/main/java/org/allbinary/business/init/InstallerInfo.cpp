@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/InstallerInfo.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -85,39 +95,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InstallerInfo
-            : public Object
-         {
+auto InstallerInfo::instance_owner() -> InstallerInfo* { static std::unique_ptr<InstallerInfo> value(new InstallerInfo()); return value.get(); }
+InstallerInfo* InstallerInfo::instance = InstallerInfo::instance_owner();
+const std::string InstallerInfo::PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
+std::string InstallerInfo::userName = StringUtil::getInstance()->EMPTY_STRING;
+std::string InstallerInfo::password = StringUtil::getInstance()->EMPTY_STRING;
 
-    private: static InstallerInfo* instance() { static std::unique_ptr<InstallerInfo> value(new InstallerInfo()); return value.get(); }
-
-    private: static inline const std::string INITFILENAME = "installerdata.dat";
-
-    private: static inline const std::string PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
-
-    private: static inline std::string userName = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: static inline std::string password = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: static inline bool hasRead = false;
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public: static void setHasRead(bool value){
-InstallerInfo::hasRead= value;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InstallerInfo(){
+InstallerInfo::InstallerInfo() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void write(){
+    auto InstallerInfo::write() -> void{
 
     AbPath* FILEABPATH = new AbPath(URLGLOBALS::getMainPath() +InstallerInfo::PACKAGE, InstallerInfo::INITFILENAME);;
     
@@ -148,7 +139,7 @@ InstallerInfo::hasRead= false;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRELOADERERROR))
                         
                                     {
                                     this->logUtil->putF("Failed", this, "write");
@@ -169,7 +160,7 @@ InstallerInfo::hasRead= false;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void read(){
+    auto InstallerInfo::read() -> void{
 
     AbPath* FILEABPATH = new AbPath(URLGLOBALS::getMainPath() +InstallerInfo::PACKAGE, InstallerInfo::INITFILENAME);;
     
@@ -203,10 +194,10 @@ this->setPassword((new WeakCrypt(2))->decrypt(decryptedPassword));
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRELOADER))
                         
                                     {
-                                    this->logUtil->putF("Not a File - Failed Loading: " +FILEABPATH->toString(), this, "read");
+                                    this->logUtil->putF(JavaString::valueOf("Not a File - Failed Loading: ") +JavaString::valueOf(FILEABPATH->toString()), this, "read");
     
 
                                     }
@@ -219,7 +210,7 @@ this->setPassword((new WeakCrypt(2))->decrypt(decryptedPassword));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRELOADERERROR))
                         
                                     {
                                     this->logUtil->putF("Failed", this, "read");
@@ -231,14 +222,21 @@ this->setPassword((new WeakCrypt(2))->decrypt(decryptedPassword));
 
 }
 
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setUserName(std::string userName){
+    auto InstallerInfo::setHasRead(bool value) -> void{
+InstallerInfo::hasRead= value;
+    
+}
+
+
+    auto InstallerInfo::setUserName(std::string userName) -> void{
 InstallerInfo::userName= userName;
     
 }
 
 
-    public: void setPassword(std::string password){
+    auto InstallerInfo::setPassword(std::string password) -> void{
 InstallerInfo::password= password;
     
 }
@@ -247,7 +245,7 @@ InstallerInfo::password= password;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void updateIfNeeded(){
+    auto InstallerInfo::updateIfNeeded() -> void{
 
                         if(!InstallerInfo::hasRead)
                         
@@ -261,7 +259,7 @@ this->read();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRELOADER))
                         
                                     {
                                     this->logUtil->putF("Failed", this, "updateIfNeeded");
@@ -280,7 +278,7 @@ this->read();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getUserName(){
+    auto InstallerInfo::getUserName() -> std::string{
 this->updateIfNeeded();
     
 
@@ -294,7 +292,7 @@ this->updateIfNeeded();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getPassword(){
+    auto InstallerInfo::getPassword() -> std::string{
 this->updateIfNeeded();
     
 
@@ -308,7 +306,7 @@ this->updateIfNeeded();
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(std::string userName, std::string password){
+    auto InstallerInfo::isValid(std::string userName, std::string password) -> bool{
 this->updateIfNeeded();
     
 
@@ -333,7 +331,6 @@ this->updateIfNeeded();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_CPP

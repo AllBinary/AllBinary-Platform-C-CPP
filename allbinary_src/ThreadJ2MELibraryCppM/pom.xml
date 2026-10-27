@@ -51,7 +51,7 @@
         
         <dependency>
             <groupId>org.allbinary</groupId>
-            <artifactId>J2MEOnlyJavaLibraryCpp</artifactId>
+            <artifactId>NoneOnlyJavaLibraryCpp</artifactId>
             <!-- AllBinary Platform Version Start -->
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->
@@ -94,9 +94,8 @@
                         </goals>
                         <configuration>
                             <classifier>sources</classifier>
-                            <includeGroupIds>org.allbinary</includeGroupIds>
                             <includeScope>compile</includeScope>
-                            <includes>**/*.h</includes>
+                            <includes>**/*.h,**/*.cpp</includes>
                             <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
                             <outputDirectory>${project.build.directory}/native/dependency-include</outputDirectory>
                         </configuration>
@@ -152,4 +151,3 @@
     </build>
 
 </project>
-

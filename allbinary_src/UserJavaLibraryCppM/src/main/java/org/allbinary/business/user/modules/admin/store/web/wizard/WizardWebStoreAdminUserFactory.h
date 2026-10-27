@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WIZARD_WIZARDWEBSTOREADMINUSERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WIZARD_WIZARDWEBSTOREADMINUSERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,14 +37,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
 #include <org/allbinary/business/user/UserFactoryInterface.h>
-
-      
-#include <org/allbinary/business/user/UserInterface.h>
-
-      
+class UserInterface;
 
 
 
@@ -58,10 +57,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/modules/admin/store/web/wizard/WizardWebStoreAdminUser.h"
+        class WizardWebStoreAdminUser;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WizardWebStoreAdminUserFactory
-            : public Object
+            : public virtual Object
         , public UserFactoryInterface {
 
 public: WizardWebStoreAdminUserFactory();
@@ -80,3 +83,22 @@ public: WizardWebStoreAdminUserFactory();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WIZARD_WIZARDWEBSTOREADMINUSERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WIZARD_WIZARDWEBSTOREADMINUSERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WIZARD_WIZARDWEBSTOREADMINUSERFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserFactoryInterface.h>)
+#include <org/allbinary/business/user/UserFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserInterface.h>)
+#include <org/allbinary/business/user/UserInterface.h>
+#endif
+#if __has_include("org/allbinary/business/user/modules/admin/store/web/wizard/WizardWebStoreAdminUser.h")
+#include "org/allbinary/business/user/modules/admin/store/web/wizard/WizardWebStoreAdminUser.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_H
         #define ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +53,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/ViewPositionFactoryInterface.h"
-#include "org/allbinary/view/ViewPosition.h"
-#include "org/allbinary/view/ViewPositionBase.h"
+class ViewPosition;
+class ViewPositionBase;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ViewPositionFactory
-            : public Object
+            : public virtual Object
         , public ViewPositionFactoryInterface {
 
+
+            
+    public: ViewPositionFactory();
+        
     public: ViewPositionBase* getInstance();
 
 };
@@ -63,3 +76,19 @@ class ViewPositionFactory
 
 
         #endif //ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/view/ViewPositionFactoryInterface.h")
+#include "org/allbinary/view/ViewPositionFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/view/ViewPosition.h")
+#include "org/allbinary/view/ViewPosition.h"
+#endif
+#if __has_include("org/allbinary/view/ViewPositionBase.h")
+#include "org/allbinary/view/ViewPositionBase.h"
+#endif
+
+        #endif
+    

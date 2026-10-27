@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_COLOR_BACKGROUND_BACKGROUNDCOLORDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_COLOR_BACKGROUND_BACKGROUNDCOLORDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/color/background/BackgroundColorData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BackgroundColorData
-            : public Object
-         {
+auto BackgroundColorData::instance_owner() -> BackgroundColorData* { static std::unique_ptr<BackgroundColorData> value(new BackgroundColorData()); return value.get(); }
+BackgroundColorData* BackgroundColorData::instance = BackgroundColorData::instance_owner();
 
-    private: static BackgroundColorData* instance() { static std::unique_ptr<BackgroundColorData> value(new BackgroundColorData()); return value.get(); }
-
-    public: static BackgroundColorData* getInstance(){
+    auto BackgroundColorData::getInstance() -> BackgroundColorData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BackgroundColorData::instance();
+                        return BackgroundColorData::instance;
     
 }
 
 
-private: BackgroundColorData(){
+BackgroundColorData::BackgroundColorData(){
 }
 
 
-    public: const std::string VALUE = "background-color";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_COLOR_BACKGROUND_BACKGROUNDCOLORDATA_CPP

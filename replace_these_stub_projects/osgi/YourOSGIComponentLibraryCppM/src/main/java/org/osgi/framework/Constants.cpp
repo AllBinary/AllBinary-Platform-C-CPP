@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_OSGI_FRAMEWORK_CONSTANTS_CPP
+        #define ORG_OSGI_FRAMEWORK_CONSTANTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/osgi/framework/Constants.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,17 +42,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-            // Interfaces do not have static fields, so create a C++ helper class.
-            class ConstantsI {
-        
-    public: static inline const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance()->EMPTY_STRING;
-            };
-        
-class Constants {
+//Interface - declared in the header
 
-    //Interfaces do not have static fields - public: static inline const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance()->EMPTY_STRING;
 
-};
 
-            
-
+        #endif //ORG_OSGI_FRAMEWORK_CONSTANTS_CPP

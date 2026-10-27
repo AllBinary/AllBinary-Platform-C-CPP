@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
+class PreLogUtil;
 
 
 
@@ -51,7 +54,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbConnectionInfo.h"
-//import org.allbinary.logic.communication.log.config.type.LogConfigTypes;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //import org.allbinary.logic.communication.log.config.type.LogConfigTypes;
 class DbInitInfo: public DbConnectionInfo {
 
 public: DbInitInfo(std::string initFileName, bool read);
@@ -77,3 +84,16 @@ public: DbInitInfo(std::string initFileName, bool read);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include("org/allbinary/business/init/db/DbConnectionInfo.h")
+#include "org/allbinary/business/init/db/DbConnectionInfo.h"
+#endif
+
+        #endif
+    

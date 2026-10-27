@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/RTSPlayerRightGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/input/RTSPlayerGameInputProcessor.h"
 #include "org/allbinary/game/input/RTSPlayerGameInput.h"
 
-class RTSPlayerRightGameInputProcessor: public RTSPlayerGameInputProcessor {
 
-public: RTSPlayerRightGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput) : RTSPlayerGameInputProcessor(rtsPlayerGameInput){
+RTSPlayerRightGameInputProcessor::RTSPlayerRightGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput) : RTSPlayerGameInputProcessor(rtsPlayerGameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: RTSPlayerRightGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput)
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->rtsPlayerGameInput.right();
+    auto RTSPlayerRightGameInputProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->rtsPlayerGameInput->right();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_RTSPLAYERRIGHTGAMEINPUTPROCESSOR_CPP

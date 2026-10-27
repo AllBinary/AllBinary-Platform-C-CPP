@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INIT_INIT_CPP
+        #define ORG_ALLBINARY_INIT_INIT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/init/Init.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/init/InitInterface.h"
 
-class Init
-            : public Object
-        , public InitInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
+Init::Init() : commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto Init::init() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INIT_INIT_CPP

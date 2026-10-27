@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_SUPERCRYPT_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_SUPERCRYPT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,8 +39,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SuperCrypt
-            : public Object
+            : public virtual Object
          {
 
     public: static inline int32_t KEYMAX = 0;
@@ -52,3 +61,10 @@ public: SuperCrypt(int32_t key);
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_SUPERCRYPT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_SUPERCRYPT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_SUPERCRYPT_H_COMPLETE
+        
+        #endif
+    

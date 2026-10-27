@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,45 +107,23 @@
         #include "org/allbinary/graphics/opengles/OpenGLCapabilities.h"
 #include "org/allbinary/graphics/opengles/OpenGLLogUtil.h"
 
-class OpenGLUtil
-            : public Object
-         {
 
-    private: static OpenGLUtil* instance() { static std::unique_ptr<OpenGLUtil> value(new OpenGLUtil()); return value.get(); }
+OpenGLUtil::OpenGLUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), renderStrings(RendererStrings::getInstance()), canvasStrings(CanvasStrings::getInstance()), displayInfoSingleton(DisplayInfoSingleton::getInstance()), preResourceImageUtil(PreResourceImageUtil::getInstance()), lockObject(new SynchObject()), anyType(new SynchObject()), list(new BasicArrayListD()), runnableList(new BasicArrayListD()) {
+        }
+        auto OpenGLUtil::instance_owner() -> OpenGLUtil* { static std::unique_ptr<OpenGLUtil> value(new OpenGLUtil()); return value.get(); }
+OpenGLUtil* OpenGLUtil::instance = OpenGLUtil::instance_owner();
 
-    public: static OpenGLUtil* getInstance(){
+    auto OpenGLUtil::getInstance() -> OpenGLUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLUtil::instance();
+                        return OpenGLUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: RendererStrings* renderStrings = RendererStrings::getInstance();
-
-    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
-
-    protected: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
-
-    private: SynchObject* lockObject = new SynchObject();
-
-    private: SynchObject* anyType = new SynchObject();
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    public: BasicArrayList* runnableList = new BasicArrayListD();
-
-    private: bool created = false;
-
-    public: void onSurfaceCreated(GL10* gl){
+    auto OpenGLUtil::onSurfaceCreated(GL10* gl) -> void{
 
         try {
             
@@ -160,7 +148,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->renderStrings->ON
 }
 
 
-    public: void onSurfaceCreated(GL10* gl, LoadTextures* loadTextures){
+    auto OpenGLUtil::onSurfaceCreated(GL10* gl, LoadTextures* loadTextures) -> void{
 
         try {
             loadTextures->load(gl);
@@ -178,11 +166,9 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->renderStrings->ON
 }
 
 
-    private: bool surfaceCreatedAndInitialized = false;
-
                 //@Throws(Exception.constructor)
             
-    public: void onSurfaceChanged(GL10* gl, OpenGLESGraphics* graphics){
+    auto OpenGLUtil::onSurfaceChanged(GL10* gl, OpenGLESGraphics* graphics) -> void{
 
                         if(!this->surfaceCreatedAndInitialized)
                         
@@ -212,7 +198,7 @@ this->set(gl);
 }
 
 
-    public: Image* addImage(Image* image){
+    auto OpenGLUtil::addImage(Image* image) -> Image*{
 
     Image* encapsulateImage = this->preResourceImageUtil->encapsulate(image);;
     
@@ -249,7 +235,7 @@ this->list->add(encapsulateImage);
 }
 
 
-    public: void clear(){
+    auto OpenGLUtil::clear() -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -264,7 +250,7 @@ this->list->clear();
 }
 
 
-    public: void addRunnable(Runnable* runnable){
+    auto OpenGLUtil::addRunnable(Runnable* runnable) -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -288,7 +274,7 @@ this->displayInfoSingleton->add(this->canvasStrings->SCALED_IMAGES);
 }
 
 
-    private: void processRunnables(){
+    auto OpenGLUtil::processRunnables() -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -324,7 +310,7 @@ this->runnableList->clear();
 
                 //@Throws(Exception.constructor)
             
-    private: void set(GL10* gl){
+    auto OpenGLUtil::set(GL10* gl) -> void{
 
     int32_t size = this->list->size();;
     
@@ -347,7 +333,6 @@ image->set(gl);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_CPP

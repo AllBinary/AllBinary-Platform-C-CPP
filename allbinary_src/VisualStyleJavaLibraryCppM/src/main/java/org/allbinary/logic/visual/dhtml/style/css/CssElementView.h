@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,56 +37,22 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomData.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class DomData;
+class DomNodeHelper;
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
-
-      
-#include <org/allbinary/data/tree/dom/ModDomHelper.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/visual/dhtml/style/css/property/CssPropertiesValidationFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
-#include <org/w3c/dom/NodeList.h>
-
-      
+class DomSearchHelper;
+class ModDomHelper;
+class StdUtil;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class CssPropertiesValidationFactory;
+class CommonStrings;
+class Document;
+class Node;
+class NodeList;
 
 
 
@@ -100,16 +71,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementData.h"
-#include "org/allbinary/logic/visual/dhtml/style/css/CssElementsValidationFactory.h"
+        class CssElementData;
+class CssElementsValidationFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CssElementView
-            : public Object
+            : public virtual Object
         , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: const std::string TITLE = "title";
 
@@ -121,9 +96,9 @@ class CssElementView
 
     private: std::string description;
 
-    protected: BasicArrayList* cssElementVector;
+    /*protected*/ public: BasicArrayList* cssElementVector;
 
-    protected: BasicArrayList* cssPropertyVector;
+    /*protected*/ public: BasicArrayList* cssPropertyVector;
 
 public: CssElementView();
 
@@ -143,3 +118,67 @@ public: CssElementView(Node* node);
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVIEW_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVIEW_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomData.h>)
+#include <org/allbinary/data/tree/dom/DomData.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeHelper.h>)
+#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomSearchHelper.h>)
+#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/ModDomHelper.h>)
+#include <org/allbinary/data/tree/dom/ModDomHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/dhtml/style/css/property/CssPropertiesValidationFactory.h>)
+#include <org/allbinary/logic/visual/dhtml/style/css/property/CssPropertiesValidationFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<org/w3c/dom/NodeList.h>)
+#include <org/w3c/dom/NodeList.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/dhtml/style/css/CssElementData.h")
+#include "org/allbinary/logic/visual/dhtml/style/css/CssElementData.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/dhtml/style/css/CssElementsValidationFactory.h")
+#include "org/allbinary/logic/visual/dhtml/style/css/CssElementsValidationFactory.h"
+#endif
+
+        #endif
+    

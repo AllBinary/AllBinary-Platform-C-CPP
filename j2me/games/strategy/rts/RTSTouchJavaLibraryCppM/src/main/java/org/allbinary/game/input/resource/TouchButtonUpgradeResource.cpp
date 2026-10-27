@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONUPGRADERESOURCE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONUPGRADERESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/resource/TouchButtonUpgradeResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonUpgradeResource: public TouchButtonResource {
+TouchButtonResource* TouchButtonUpgradeResource::instance = new TouchButtonUpgradeResource();
 
-    private: static inline TouchButtonResource* instance = new TouchButtonUpgradeResource();
-
-    public: static TouchButtonResource* getInstance(){
+    auto TouchButtonUpgradeResource::getInstance() -> TouchButtonResource*{
 
 
 
@@ -60,7 +68,7 @@ class TouchButtonUpgradeResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonUpgradeResource() : TouchButtonResource("/touch_button_upgrade_64_by_64.png", "/touch_button_upgrade_hint_64_by_64.png"){
+TouchButtonUpgradeResource::TouchButtonUpgradeResource() : TouchButtonResource("/touch_button_upgrade_64_by_64.png", "/touch_button_upgrade_hint_64_by_64.png"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +78,6 @@ private: TouchButtonUpgradeResource() : TouchButtonResource("/touch_button_upgra
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONUPGRADERESOURCE_CPP

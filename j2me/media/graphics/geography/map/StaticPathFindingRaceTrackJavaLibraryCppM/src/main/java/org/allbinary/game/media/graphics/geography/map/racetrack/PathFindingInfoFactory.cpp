@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDINGINFOFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDINGINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/PathFindingInfoFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -71,27 +81,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PathFindingInfoFactory: public BasePathFindingInfoFactory {
+auto PathFindingInfoFactory::instance_owner() -> PathFindingInfoFactory* { static std::unique_ptr<PathFindingInfoFactory> value(new PathFindingInfoFactory()); return value.get(); }
+PathFindingInfoFactory* PathFindingInfoFactory::instance = PathFindingInfoFactory::instance_owner();
 
-    private: static PathFindingInfoFactory* instance() { static std::unique_ptr<PathFindingInfoFactory> value(new PathFindingInfoFactory()); return value.get(); }
-
-    public: static PathFindingInfoFactory* getInstance(){
+    auto PathFindingInfoFactory::getInstance() -> PathFindingInfoFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathFindingInfoFactory::instance();
+                        return PathFindingInfoFactory::instance;
     
 }
 
 
-private: PathFindingInfoFactory(){
+PathFindingInfoFactory::PathFindingInfoFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo* getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
+    auto PathFindingInfoFactory::getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> graphArray) -> PathFindingInfo*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -113,7 +122,6 @@ this->init(geographicMapInterface, pathFindingInfo, graphArray);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDINGINFOFACTORY_CPP

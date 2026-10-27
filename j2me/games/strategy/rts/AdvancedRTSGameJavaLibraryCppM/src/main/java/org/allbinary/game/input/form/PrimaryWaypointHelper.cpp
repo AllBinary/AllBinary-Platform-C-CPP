@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/PrimaryWaypointHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PrimaryWaypointHelper
-            : public Object
-         {
+auto PrimaryWaypointHelper::instance_owner() -> PrimaryWaypointHelper* { static std::unique_ptr<PrimaryWaypointHelper> value(new PrimaryWaypointHelper()); return value.get(); }
+PrimaryWaypointHelper* PrimaryWaypointHelper::instance = PrimaryWaypointHelper::instance_owner();
 
-    private: static PrimaryWaypointHelper* instance() { static std::unique_ptr<PrimaryWaypointHelper> value(new PrimaryWaypointHelper()); return value.get(); }
-
-    public: static PrimaryWaypointHelper* getInstance(){
+    auto PrimaryWaypointHelper::getInstance() -> PrimaryWaypointHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimaryWaypointHelper::instance();
+                        return PrimaryWaypointHelper::instance;
     
 }
 
 
-    private: PathFindingLayerInterface* waypointLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-
-private: PrimaryWaypointHelper(){
+PrimaryWaypointHelper::PrimaryWaypointHelper() : waypointLayer(NullPathFindingLayer::NULL_PATH_FINDING_LAYER){
 }
 
 
-    public: PathFindingLayerInterface* getWaypointLayer(){
+    auto PrimaryWaypointHelper::getWaypointLayer() -> PathFindingLayerInterface*{
 
 
 
@@ -86,13 +91,12 @@ private: PrimaryWaypointHelper(){
 }
 
 
-    public: void setWaypointLayer(WaypointLayer* waypointLayer){
+    auto PrimaryWaypointHelper::setWaypointLayer(WaypointLayer* waypointLayer) -> void{
 this->waypointLayer= waypointLayer;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_CPP

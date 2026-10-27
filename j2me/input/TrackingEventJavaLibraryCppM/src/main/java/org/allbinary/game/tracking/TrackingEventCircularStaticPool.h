@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTCIRCULARSTATICPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>
-
-      
+class AllBinaryLayer;
+class AllBinaryEventCircularPool;
 
 
 
@@ -55,18 +56,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/tracking/TrackingEventFactory.h"
-#include "org/allbinary/game/tracking/TrackingEvent.h"
+        class TrackingEventFactory;
+class TrackingEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TrackingEventCircularStaticPool
-            : public Object
+            : public virtual Object
          {
 
-    private: static TrackingEventCircularStaticPool* instance() { static std::unique_ptr<TrackingEventCircularStaticPool> value(new TrackingEventCircularStaticPool()); return value.get(); }
+    private: static TrackingEventCircularStaticPool* instance_owner();
+    private: static TrackingEventCircularStaticPool* instance;
 
     public: static TrackingEventCircularStaticPool* getInstance();
 
-    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
+
+            
+    public: TrackingEventCircularStaticPool();
+        
+    private: AllBinaryEventCircularPool* EVENT_POOL;
 
     public: void init();
 
@@ -81,3 +91,22 @@ class TrackingEventCircularStaticPool
 
 
         #endif //ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTCIRCULARSTATICPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTCIRCULARSTATICPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTCIRCULARSTATICPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>
+#endif
+#if __has_include("org/allbinary/game/tracking/TrackingEventFactory.h")
+#include "org/allbinary/game/tracking/TrackingEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/tracking/TrackingEvent.h")
+#include "org/allbinary/game/tracking/TrackingEvent.h"
+#endif
+
+        #endif
+    

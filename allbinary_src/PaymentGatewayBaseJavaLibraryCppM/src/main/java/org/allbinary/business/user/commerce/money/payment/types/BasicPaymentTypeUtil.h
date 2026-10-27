@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 
 
 
@@ -58,13 +57,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h"
+        class BasicPaymentType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicPaymentTypeUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicPaymentTypeUtil* instance() { static std::unique_ptr<BasicPaymentTypeUtil> value(new BasicPaymentTypeUtil()); return value.get(); }
+    private: static BasicPaymentTypeUtil* instance_owner();
+    private: static BasicPaymentTypeUtil* instance;
 
                     static int32_t initResult;
                 static int32_t init();
@@ -73,7 +77,7 @@ class BasicPaymentTypeUtil
 
 private: BasicPaymentTypeUtil();
 
-    private: BasicArrayList* paymentTypeVector = new BasicArrayListD();
+    private: BasicArrayList* paymentTypeVector;
 
     public: void add(BasicPaymentType* paymentType);
 
@@ -91,3 +95,20 @@ private: BasicPaymentTypeUtil();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPEUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include("org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h")
+#include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h"
+#endif
+
+        #endif
+    

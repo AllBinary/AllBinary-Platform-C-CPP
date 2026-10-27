@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_H
         #define ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Font;
+class Graphics;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
+class UpdateMyFontProcessor;
 
 
 
@@ -62,17 +57,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/draw/DrawStringUtil.h"
+        class DrawStringUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CanvasDrawLineString
-            : public Object
+            : public virtual Object
         , public UpdateMyFontInterface {
 
-    public: static CanvasDrawLineString* NULL_CANVAS_DRAW_LINE_STRING() { static std::unique_ptr<CanvasDrawLineString> value(new CanvasDrawLineString(0, 0)); return value.get(); }
+    private: static CanvasDrawLineString* NULL_CANVAS_DRAW_LINE_STRING_owner();
+    public: static CanvasDrawLineString* NULL_CANVAS_DRAW_LINE_STRING;
 
-    private: DrawStringUtil* drawStringUtil = DrawStringUtil::getInstance();
+    private: DrawStringUtil* drawStringUtil;
 
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor;
 
     private: int32_t x;
 
@@ -92,3 +92,28 @@ public: CanvasDrawLineString(int32_t x, int32_t y);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include("org/allbinary/graphics/draw/DrawStringUtil.h")
+#include "org/allbinary/graphics/draw/DrawStringUtil.h"
+#endif
+
+        #endif
+    

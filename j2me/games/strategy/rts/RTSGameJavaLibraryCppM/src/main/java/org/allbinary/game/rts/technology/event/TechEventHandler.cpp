@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/rts/technology/event/TechEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,27 +64,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/rts/technology/event/TechEventListenerInterface.h"
 
-class TechEventHandler: public BasicEventHandler {
+auto TechEventHandler::eventHandler_owner() -> TechEventHandler* { static std::unique_ptr<TechEventHandler> value(new TechEventHandler()); return value.get(); }
+TechEventHandler* TechEventHandler::eventHandler = TechEventHandler::eventHandler_owner();
 
-    private: static TechEventHandler* eventHandler() { static std::unique_ptr<TechEventHandler> value(new TechEventHandler()); return value.get(); }
+TechEventHandler::TechEventHandler(){
+}
 
-    public: static TechEventHandler* getInstance(){
+
+    auto TechEventHandler::getInstance() -> TechEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TechEventHandler::eventHandler();
+                        return TechEventHandler::eventHandler;
     
-}
-
-
-private: TechEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto TechEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     TechEventListenerInterface* techEventListenerInterface = (dynamic_cast<TechEventListenerInterface*>(eventListenerInterface));;
     
@@ -83,7 +92,6 @@ techEventListenerInterface->onTechEvent(eventObject);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_CPP

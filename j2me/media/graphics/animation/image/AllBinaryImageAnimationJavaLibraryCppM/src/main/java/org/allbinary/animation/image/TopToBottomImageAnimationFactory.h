@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
+class Image;
+class Animation;
+class AnimationBehaviorFactory;
 
 
 
@@ -59,8 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
-#include "org/allbinary/animation/image/TopToBottomImageAnimation.h"
+class TopToBottomImageAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TopToBottomImageAnimationFactory: public BaseImageAnimationFactory {
 
 public: TopToBottomImageAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory* animationBehaviorFactory);
@@ -75,3 +78,25 @@ public: TopToBottomImageAnimationFactory(Image* image, std::vector<int32_t> sequ
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include("org/allbinary/animation/image/BaseImageAnimationFactory.h")
+#include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/image/TopToBottomImageAnimation.h")
+#include "org/allbinary/animation/image/TopToBottomImageAnimation.h"
+#endif
+
+        #endif
+    

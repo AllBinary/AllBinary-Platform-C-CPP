@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -55,13 +56,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
+        class BasicEmailInfo;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EmailInfo
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: BasicEmailInfo* basicEmailInfo;
 
@@ -89,3 +94,19 @@ public: EmailInfo(BasicEmailInfo* basicEmailInfo, std::string htmlAttachment, st
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h")
+#include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
+#endif
+
+        #endif
+    

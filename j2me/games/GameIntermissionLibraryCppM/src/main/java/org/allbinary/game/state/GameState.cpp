@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_STATE_GAMESTATE_CPP
+        #define ORG_ALLBINARY_GAME_STATE_GAMESTATE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/state/GameState.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameState
-            : public Object
-         {
 
-    private: std::string name;
-
-public: GameState(std::string name, int32_t state){
+GameState::GameState(std::string name, int32_t state){
 this->name= name;
     
 }
 
 
-    public: std::string toString(){
+    auto GameState::toString() -> std::string{
 
 
 
@@ -67,7 +72,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_STATE_GAMESTATE_CPP

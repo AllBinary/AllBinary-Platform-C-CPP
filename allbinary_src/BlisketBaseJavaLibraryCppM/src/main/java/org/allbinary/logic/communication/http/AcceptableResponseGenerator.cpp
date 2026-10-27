@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/AcceptableResponseGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,31 +67,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/AcceptableResponseUtil.h"
 
-class AcceptableResponseGenerator
-            : public Object
-         {
+auto AcceptableResponseGenerator::instance_owner() -> AcceptableResponseGenerator* { static std::unique_ptr<AcceptableResponseGenerator> value(new AcceptableResponseGenerator()); return value.get(); }
+AcceptableResponseGenerator* AcceptableResponseGenerator::instance = AcceptableResponseGenerator::instance_owner();
 
-    private: static AcceptableResponseGenerator* instance() { static std::unique_ptr<AcceptableResponseGenerator> value(new AcceptableResponseGenerator()); return value.get(); }
-
-    public: static AcceptableResponseGenerator* getInstance(){
+    auto AcceptableResponseGenerator::getInstance() -> AcceptableResponseGenerator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AcceptableResponseGenerator::instance();
+                        return AcceptableResponseGenerator::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: AcceptableResponseGenerator(){
+AcceptableResponseGenerator::AcceptableResponseGenerator() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string get(HttpServletRequest* httpServletRequest){
+    auto AcceptableResponseGenerator::get(HttpServletRequest* httpServletRequest) -> std::string{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -97,10 +102,10 @@ private: AcceptableResponseGenerator(){
     std::string result = acceptableResponseUtil->getTagName(0);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTP))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
                         
                                     {
-                                    this->logUtil->putF("Request Type: " +acceptable, this, commonStrings->GET);
+                                    this->logUtil->putF(JavaString::valueOf("Request Type: ") +JavaString::valueOf(acceptable), this, commonStrings->GET);
     
 
                                     }
@@ -134,10 +139,10 @@ private: AcceptableResponseGenerator(){
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTP))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
                         
                                     {
-                                    this->logUtil->putF("Response Type: " +result, this, commonStrings->GET);
+                                    this->logUtil->putF(JavaString::valueOf("Response Type: ") +JavaString::valueOf(result), this, commonStrings->GET);
     
 
                                     }
@@ -153,7 +158,7 @@ private: AcceptableResponseGenerator(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET, &e);
@@ -171,7 +176,6 @@ private: AcceptableResponseGenerator(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_TAXVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_SHIPPING_TAXVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/shipping/TaxValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,9 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/shipping/ShippingAddressView.h"
 
-class TaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public: TaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+TaxValidationView::TaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +97,7 @@ public: TaxValidationView(TransformInfoInterface* transformInfoInterface) : Ship
 }
 
 
-    public: bool isValid(){
+    auto TaxValidationView::isValid() -> bool{
 
     ShippingAddressesEntity* billingAddressesEntity = new ShippingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
@@ -149,7 +158,7 @@ public: TaxValidationView(TransformInfoInterface* transformInfoInterface) : Ship
 }
 
 
-    public: std::string validationInfo(){
+    auto TaxValidationView::validationInfo() -> std::string{
 
 
 
@@ -159,7 +168,7 @@ public: TaxValidationView(TransformInfoInterface* transformInfoInterface) : Ship
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto TaxValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -169,7 +178,7 @@ public: TaxValidationView(TransformInfoInterface* transformInfoInterface) : Ship
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto TaxValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -179,7 +188,6 @@ public: TaxValidationView(TransformInfoInterface* transformInfoInterface) : Ship
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_TAXVALIDATIONVIEW_CPP

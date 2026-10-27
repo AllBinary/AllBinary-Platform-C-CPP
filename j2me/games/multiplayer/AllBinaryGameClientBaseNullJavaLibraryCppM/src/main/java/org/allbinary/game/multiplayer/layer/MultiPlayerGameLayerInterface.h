@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYERINTERFACE_H
         #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h"
+        class MultiplayerBehavior;
 
-class MultiPlayerGameLayerInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class MultiPlayerGameLayerInterface
+            : public virtual Object
+         {
 
     public: virtual MultiplayerBehavior* getMultiplayerBehavior() = 0;
 
@@ -57,3 +68,13 @@ class MultiPlayerGameLayerInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYERINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h")
+#include "org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h"
+#endif
+
+        #endif
+    

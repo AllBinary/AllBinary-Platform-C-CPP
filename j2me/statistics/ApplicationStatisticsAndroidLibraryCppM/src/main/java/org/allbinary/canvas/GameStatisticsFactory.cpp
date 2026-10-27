@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_CPP
+        #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/GameStatisticsFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/AndroidGameStatistics.h"
 //ActualPlatform
-/*actual*/ class GameStatisticsFactory: public AndroidGameStatistics {
 
-    private: static inline AndroidGameStatistics* SINGLETON = new GameStatisticsFactory();
+GameStatisticsFactory::GameStatisticsFactory() : stringBuffer(new StringMaker()) {
+        }
+        AndroidGameStatistics* GameStatisticsFactory::SINGLETON = new GameStatisticsFactory();
 
-    /*actual*/ public: static AndroidGameStatistics* getInstance(){
+    /*actual*/ auto GameStatisticsFactory::getInstance() -> AndroidGameStatistics*{
 
 
 
@@ -61,14 +72,12 @@
 }
 
 
-    private: StringMaker* stringBuffer = new StringMaker();
-
-    public: void add(std::string string){
+    auto GameStatisticsFactory::add(std::string string) -> void{
 
                         if(this->stringBuffer->length() > 12000)
                         
                                     {
-                                    this->stringBuffer->delete(0, this->stringBuffer->length());
+                                    this->stringBuffer->delete_(0, this->stringBuffer->length());
     
 this->stringBuffer->append("Old Stats Cleared");
     
@@ -80,17 +89,16 @@ this->stringBuffer->append(string);
 }
 
 
-    /*actual*/ public: std::string toString(){
+    /*actual*/ auto GameStatisticsFactory::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append(super.toString())->append(this->stringBuffer->toString())->toString();;
+                        return (new StringMaker())->append(AndroidGameStatistics::toString())->append(this->stringBuffer->toString())->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_CPP

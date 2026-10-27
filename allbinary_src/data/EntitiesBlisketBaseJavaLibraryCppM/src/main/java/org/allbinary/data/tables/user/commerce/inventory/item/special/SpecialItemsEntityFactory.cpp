@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/item/special/SpecialItemsEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/item/special/SpecialItemsEntity.h"
 
-class SpecialItemsEntityFactory
-            : public Object
-         {
+auto SpecialItemsEntityFactory::instance_owner() -> SpecialItemsEntityFactory* { static std::unique_ptr<SpecialItemsEntityFactory> value(new SpecialItemsEntityFactory()); return value.get(); }
+SpecialItemsEntityFactory* SpecialItemsEntityFactory::instance = SpecialItemsEntityFactory::instance_owner();
 
-    private: static SpecialItemsEntityFactory* instance() { static std::unique_ptr<SpecialItemsEntityFactory> value(new SpecialItemsEntityFactory()); return value.get(); }
-
-    public: static SpecialItemsEntityFactory* getInstance(){
+    auto SpecialItemsEntityFactory::getInstance() -> SpecialItemsEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpecialItemsEntityFactory::instance();
+                        return SpecialItemsEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: SpecialItemsEntityFactory(){
+SpecialItemsEntityFactory::SpecialItemsEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: SpecialItemsEntity* getSpecialItemsEntityInstance(){
+    auto SpecialItemsEntityFactory::getSpecialItemsEntityInstance() -> SpecialItemsEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: SpecialItemsEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: SpecialItemsEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMSENTITYFACTORY_CPP

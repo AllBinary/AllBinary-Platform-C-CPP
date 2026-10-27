@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,32 +39,14 @@
             #include "java/lang/RuntimeException.h"
         
 #include <android/app/Activity.h>
-
-      
-#include <android/view/MotionEvent.h>
-
-      
-#include <android/view/View.h>
-
-      
+class MotionEvent;
+class View;
 #include <org/allbinary/android/GenericMotionEventVerifyInterface.h>
-
-      
-#include <org/allbinary/game/configuration/event/GameFeatureEvent.h>
-
-      
+class GameFeatureEvent;
 #include <org/allbinary/game/configuration/event/GameFeatureListenerInterface.h>
-
-      
-#include <org/allbinary/game/configuration/event/GameInitializedEvent.h>
-
-      
+class GameInitializedEvent;
 #include <org/allbinary/game/configuration/event/GameInitializedListenerInterface.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
+class AllBinaryEventObject;
 
 
 
@@ -81,8 +68,16 @@
         #include "org/allbinary/android/activity/SimpleProgressActivityInterface.h"
 #include "org/allbinary/android/activity/KeyInputViewCompositeInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MidletActivityBase: public Activity, public GameFeatureListenerInterface, public GameInitializedListenerInterface, public SimpleProgressActivityInterface, public KeyInputViewCompositeInterface, public GenericMotionEventVerifyInterface {
 
+
+            
+    public: MidletActivityBase();
+        
     public: void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent);
 
     public: void onEvent(AllBinaryEventObject* eventObject);
@@ -115,3 +110,43 @@ class MidletActivityBase: public Activity, public GameFeatureListenerInterface, 
 
 
         #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_H_COMPLETE
+        #if __has_include(<android/app/Activity.h>)
+#include <android/app/Activity.h>
+#endif
+#if __has_include(<android/view/MotionEvent.h>)
+#include <android/view/MotionEvent.h>
+#endif
+#if __has_include(<android/view/View.h>)
+#include <android/view/View.h>
+#endif
+#if __has_include(<org/allbinary/android/GenericMotionEventVerifyInterface.h>)
+#include <org/allbinary/android/GenericMotionEventVerifyInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/event/GameFeatureEvent.h>)
+#include <org/allbinary/game/configuration/event/GameFeatureEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/event/GameFeatureListenerInterface.h>)
+#include <org/allbinary/game/configuration/event/GameFeatureListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/event/GameInitializedEvent.h>)
+#include <org/allbinary/game/configuration/event/GameInitializedEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/event/GameInitializedListenerInterface.h>)
+#include <org/allbinary/game/configuration/event/GameInitializedListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include("org/allbinary/android/activity/SimpleProgressActivityInterface.h")
+#include "org/allbinary/android/activity/SimpleProgressActivityInterface.h"
+#endif
+#if __has_include("org/allbinary/android/activity/KeyInputViewCompositeInterface.h")
+#include "org/allbinary/android/activity/KeyInputViewCompositeInterface.h"
+#endif
+
+        #endif
+    

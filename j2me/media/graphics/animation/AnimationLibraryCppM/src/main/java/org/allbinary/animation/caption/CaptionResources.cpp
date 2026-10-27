@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONRESOURCES_CPP
+        #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/caption/CaptionResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CaptionResources
-            : public Object
-         {
 
-    public: static inline const std::string RESOURCE = "/character_message_bubbled_box.png";
+CaptionResources::CaptionResources() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONRESOURCES_CPP

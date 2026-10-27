@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_VEHICLEPROPERTIESCOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_VEHICLEPROPERTIESCOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/VehiclePropertiesCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/VehicleProperties.h"
 
-class VehiclePropertiesCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual VehicleProperties* getVehicleProperties() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_VEHICLEPROPERTIESCOMPOSITEINTERFACE_CPP

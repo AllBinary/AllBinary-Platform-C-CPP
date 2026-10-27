@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_TRANSFORM_INFO_TRANSFORMINFOTABLETAG_CPP
+        #define TAGS_TRANSFORM_INFO_TRANSFORMINFOTABLETAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/transform/info/TransformInfoTableTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,15 +59,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoTableTag: public TableTag {
 
-public: TransformInfoTableTag(){
+TransformInfoTableTag::TransformInfoTableTag(){
 this->setTagHelperFactory(new TransformInfoHelperFactory());
     
 }
 
 
-};
 
-            
 
+        #endif //TAGS_TRANSFORM_INFO_TRANSFORMINFOTABLETAG_CPP

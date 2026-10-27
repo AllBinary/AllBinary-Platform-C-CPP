@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_ANDROIDGAMEKEY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_ANDROIDGAMEKEY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/AndroidGameKey.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,9 +44,33 @@
         #include "org/allbinary/game/input/Input.h"
 #include "org/allbinary/game/input/InputFactory.h"
 
-class AndroidGameKey: public Input {
 
-    public: static std::string getString(int32_t keyCode){
+AndroidGameKey::AndroidGameKey(int32_t keyCode, std::string name) : Input(keyCode, name){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+
+    InputFactory* inputFactory = InputFactory::getInstance();;
+    
+inputFactory->inputIntegerArray[this->getId()]= this;
+    
+}
+
+
+    auto AndroidGameKey::toString() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return JavaString::valueOf("AndroidGameKey: ") +JavaString::valueOf(Input::toString());
+    
+}
+
+
+    auto AndroidGameKey::getString(int32_t keyCode) -> std::string{
 
     Input* input = InputFactory::getInstance()->getInstanceById(keyCode);;
     
@@ -68,32 +102,6 @@ class AndroidGameKey: public Input {
 }
 
 
-: AndroidGameKey(int32_t keyCode, std::string name) : Input(keyCode, name){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-
-    InputFactory* inputFactory = InputFactory::getInstance();;
-    
-inputFactory->inputIntegerArray[this->getId()]= this;
-    
-}
 
 
-    public: std::string toString(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return "AndroidGameKey: " +super.toString();
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_ANDROIDGAMEKEY_CPP

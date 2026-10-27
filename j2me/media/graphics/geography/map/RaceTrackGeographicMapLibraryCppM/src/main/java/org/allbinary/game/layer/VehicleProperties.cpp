@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_VEHICLEPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_VEHICLEPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/VehicleProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,15 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/VehicleFrictionProperties.h"
 
-class VehicleProperties
-            : public Object
-         {
 
-    private: VelocityProperties* velocityProperties;
-
-    private: VehicleFrictionProperties* vehicleFrictionProperties;
-
-public: VehicleProperties(VelocityProperties* velocityProperties, VehicleFrictionProperties* vehicleFrictionProperties){
+VehicleProperties::VehicleProperties(VelocityProperties* velocityProperties, VehicleFrictionProperties* vehicleFrictionProperties){
 this->velocityProperties= velocityProperties;
     
 this->vehicleFrictionProperties= vehicleFrictionProperties;
@@ -65,7 +68,7 @@ this->vehicleFrictionProperties= vehicleFrictionProperties;
 }
 
 
-    public: VehicleFrictionProperties* getVehicleFrictionProperties(){
+    auto VehicleProperties::getVehicleFrictionProperties() -> VehicleFrictionProperties*{
 
 
 
@@ -75,13 +78,13 @@ this->vehicleFrictionProperties= vehicleFrictionProperties;
 }
 
 
-    public: void setVehicleFrictionProperties(VehicleFrictionProperties* vehicleFrictionProperties){
+    auto VehicleProperties::setVehicleFrictionProperties(VehicleFrictionProperties* vehicleFrictionProperties) -> void{
 this->vehicleFrictionProperties= vehicleFrictionProperties;
     
 }
 
 
-    public: VelocityProperties* getVelocityProperties(){
+    auto VehicleProperties::getVelocityProperties() -> VelocityProperties*{
 
 
 
@@ -91,7 +94,6 @@ this->vehicleFrictionProperties= vehicleFrictionProperties;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_VEHICLEPROPERTIES_CPP

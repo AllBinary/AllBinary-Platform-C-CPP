@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,14 @@
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInput.h"
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInput.h"
 
-class ProfileActionScriptInputFactory
-            : public Object
-         {
+
+ProfileActionScriptInputFactory::ProfileActionScriptInputFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static ProfileActionScriptInputInterface* getInstance(Node* node){
+    auto ProfileActionScriptInputFactory::getInstance(Node* node) -> ProfileActionScriptInputInterface*{
 
     ProfileActionScriptInputInterface* profileActionScriptInputInterface = 
                 null
@@ -96,7 +107,7 @@ class ProfileActionScriptInputFactory
                             
 
 
-                            throw new Exception("No Such ActionScript Input");
+                            throw Exception("No Such ActionScript Input");
                     
 
                         }
@@ -110,11 +121,6 @@ class ProfileActionScriptInputFactory
 }
 
 
-private: ProfileActionScriptInputFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_PROFILEACTIONSCRIPTINPUTFACTORY_CPP

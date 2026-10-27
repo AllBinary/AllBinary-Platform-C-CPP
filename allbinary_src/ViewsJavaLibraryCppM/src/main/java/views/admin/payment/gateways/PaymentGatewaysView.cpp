@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_PAYMENTGATEWAYSVIEW_CPP
+        #define VIEWS_ADMIN_PAYMENT_GATEWAYS_PAYMENTGATEWAYSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/payment/gateways/PaymentGatewaysView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -90,13 +100,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentGatewaysView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* paymentGatewayVector;
-
-public: PaymentGatewaysView(TransformInfoInterface* transformInfoInterface, BasicArrayList* gatewayVector) : HttpStoreComponentView(transformInfoInterface){
+PaymentGatewaysView::PaymentGatewaysView(TransformInfoInterface* transformInfoInterface, BasicArrayList* gatewayVector) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,7 +115,7 @@ this->paymentGatewayVector= gatewayVector;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto PaymentGatewaysView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -138,7 +143,7 @@ this->paymentGatewayVector= gatewayVector;
 hashMap->put(EntryData::getInstance()->DEFAULT, PaymentTypeUtil::getInstance()->getDefault(storeName)->getBasicPaymentType()->getName());
     
 
-    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME.toString(), hashMap);;
+    Node* paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME->toString(), hashMap);;
     
 paymentGatewaysNode->appendChild(paymentGatewayNode);
     
@@ -155,10 +160,10 @@ paymentGatewaysNode->appendChild(paymentGatewayNode);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -173,13 +178,13 @@ paymentGatewaysNode->appendChild(paymentGatewayNode);
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto PaymentGatewaysView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
 
-    public: std::string view(){
+    auto PaymentGatewaysView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -188,7 +193,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
@@ -198,10 +203,10 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     std::string error = "Failed to view payment gateways";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -217,7 +222,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_PAYMENT_GATEWAYS_PAYMENTGATEWAYSVIEW_CPP

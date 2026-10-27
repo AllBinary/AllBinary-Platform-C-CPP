@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_EVENT_USER_USEREMAILEVENTLISTENERMODULE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_EVENT_USER_USEREMAILEVENTLISTENERMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/event/modules/event/user/UserEmailEventListenerModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,15 +78,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserEmailEventListenerModule
-            : public Object
-        , public UserEmailEventListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: UserInterface* userInterface;
-
-public: UserEmailEventListenerModule(UserInterface* userInterface){
+UserEmailEventListenerModule::UserEmailEventListenerModule(UserInterface* userInterface) : logUtil(LogUtil::getInstance()){
 this->userInterface= userInterface;
     
 }
@@ -84,7 +87,7 @@ this->userInterface= userInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void onEmailSendFailure(EmailEvent* emailEvent){
+    auto UserEmailEventListenerModule::onEmailSendFailure(EmailEvent* emailEvent) -> void{
 
     std::string to = this->userInterface->getSecondaryEmail();;
     
@@ -98,12 +101,12 @@ EmailQueueFactory::getInstance()->offer(dynamic_cast<EmailInterface*>(email->get
 
                 //@Throws(Exception.constructor)
             
-    public: void onEmailSendRequest(EmailEvent* emailEvent){
+    auto UserEmailEventListenerModule::onEmailSendRequest(EmailEvent* emailEvent) -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Add Email To Que For Sending: " +emailEvent->toString(), this, "onEmailSendRequest");
+                                    this->logUtil->putF(JavaString::valueOf("Add Email To Que For Sending: ") +JavaString::valueOf(emailEvent->toString()), this, "onEmailSendRequest");
     
 
                                     }
@@ -119,7 +122,6 @@ EmailQueueFactory::getInstance()->offer(dynamic_cast<EmailInterface*>(email->get
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_EVENT_USER_USEREMAILEVENTLISTENERMODULE_CPP

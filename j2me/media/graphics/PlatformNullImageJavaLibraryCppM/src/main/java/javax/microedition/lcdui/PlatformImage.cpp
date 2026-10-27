@@ -18,6 +18,16 @@
 
 
 
+        #ifndef JAVAX_MICROEDITION_LCDUI_PLATFORMIMAGE_CPP
+        #define JAVAX_MICROEDITION_LCDUI_PLATFORMIMAGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "javax/microedition/lcdui/PlatformImage.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,11 +65,11 @@
 #include "javax/microedition/lcdui/Image.h"
 #include "javax/microedition/lcdui/Graphics.h"
 //PlatformNullImageJavaLibrary
-class PlatformImage
-            : public Object
-         {
 
-    public: Object* getImage(Object* graphicsSurface2){
+PlatformImage::PlatformImage() {
+        }
+        
+    auto PlatformImage::getImage(Object* graphicsSurface2) -> Object*{
 
 
 
@@ -69,7 +79,7 @@ class PlatformImage
 }
 
 
-    public: int32_t getSurfaceWidth(Object* graphicsSurface2, int32_t width){
+    auto PlatformImage::getSurfaceWidth(Object* graphicsSurface2, int32_t width) -> int32_t{
 
 
 
@@ -79,7 +89,7 @@ class PlatformImage
 }
 
 
-    public: int32_t getSurfaceHeight(Object* graphicsSurface2, int32_t height){
+    auto PlatformImage::getSurfaceHeight(Object* graphicsSurface2, int32_t height) -> int32_t{
 
 
 
@@ -89,7 +99,7 @@ class PlatformImage
 }
 
 
-    public: int32_t getWidth(Image* image, int32_t width){
+    auto PlatformImage::getWidth(Image* image, int32_t width) -> int32_t{
 
 
 
@@ -99,7 +109,7 @@ class PlatformImage
 }
 
 
-    public: int32_t getHeight(Image* image, int32_t height){
+    auto PlatformImage::getHeight(Image* image, int32_t height) -> int32_t{
 
 
 
@@ -109,32 +119,32 @@ class PlatformImage
 }
 
 
-    public: javax::microedition::lcdui::Graphics* getGraphics(Object* graphicsSurface, int32_t width, int32_t height, Image* image){
+    auto PlatformImage::getGraphics(Object* graphicsSurface, int32_t width, int32_t height, Image* image) -> javax::microedition::lcdui::Graphics*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void drawImage(Image* image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics* g2, Object* g){
+    auto PlatformImage::drawImage(Image* image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics* g2, Object* g) -> void{
 }
 
 
-    public: void drawRegion(Image* image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, javax::microedition::lcdui::Graphics* g){
+    auto PlatformImage::drawRegion(Image* image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, javax::microedition::lcdui::Graphics* g) -> void{
 }
 
 
-    public: void getRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image* image){
+    auto PlatformImage::getRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image* image) -> void{
 }
 
 
-    public: void setRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image* image){
+    auto PlatformImage::setRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image* image) -> void{
 }
 
 
-    public: std::vector<int32_t> getData(Image* image){
+    auto PlatformImage::getData(Image* image) -> std::vector<int32_t>{
 
 
 
@@ -144,7 +154,6 @@ class PlatformImage
 }
 
 
-};
 
-            
 
+        #endif //JAVAX_MICROEDITION_LCDUI_PLATFORMIMAGE_CPP

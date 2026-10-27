@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,36 +36,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
+class Image;
+class NullImage;
+class Animation;
+class AnimationBehaviorFactory;
 #include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
 
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/media/image/ImageCopyUtil.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class ImageCopyUtil;
+class AngleFactory;
+class AngleInfo;
+class ScaleProperties;
 
 
 
@@ -79,17 +64,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
+        class AllBinaryFlickerAndroidImageRotationAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryFlickerAndroidImageRotationAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface {
 
-    private: Image* image = NullImage::NULL_IMAGE;
+    private: Image* image;
 
     private: int16_t angleIncrement;
 
-    protected: AnimationBehaviorFactory* animationBehaviorFactory;
+    /*protected*/ public: AnimationBehaviorFactory* animationBehaviorFactory;
 
 public: AllBinaryFlickerAndroidImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory);
 
@@ -97,11 +86,11 @@ public: AllBinaryFlickerAndroidImageRotationAnimationFactory(Image* image, int32
             
     public: Animation* getInstance(int32_t instanceId);
 
-    protected: int16_t getAngleIncrement();
+    /*protected*/ public: int16_t getAngleIncrement();
 
-    protected: void setImage(Image* image);
+    /*protected*/ public: void setImage(Image* image);
 
-    protected: Image* getImage();
+    /*protected*/ public: Image* getImage();
 
     public: void setInitialScale(ScaleProperties* scaleProperties);
 
@@ -111,3 +100,41 @@ public: AllBinaryFlickerAndroidImageRotationAnimationFactory(Image* image, int32
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYFLICKERANDROIDIMAGEROTATIONANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+#endif
+
+#if __has_include(<org/allbinary/media/image/ImageCopyUtil.h>)
+#include <org/allbinary/media/image/ImageCopyUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h")
+#include "org/allbinary/animation/image/AllBinaryFlickerAndroidImageRotationAnimation.h"
+#endif
+
+        #endif
+    

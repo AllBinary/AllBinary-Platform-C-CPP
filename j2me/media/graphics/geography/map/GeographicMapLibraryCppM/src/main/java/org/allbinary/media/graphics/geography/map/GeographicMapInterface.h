@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/layer/Layer.h>
-
-      
+class AllBinaryTiledLayer;
+class BasicColor;
+class Layer;
 
 
 
@@ -60,12 +59,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
-#include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
-#include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
-#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
+        class GeographicMapCellPosition;
+class GeographicMapCellType;
+class BasicGeographicMapCellPositionFactory;
+class GeographicMapCellPositionFactoryInterface;
 
-class GeographicMapInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GeographicMapInterface
+            : public virtual Object
+         {
 
     public: virtual int32_t getId() = 0;
 
@@ -111,3 +116,31 @@ class GeographicMapInterface {
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/layer/Layer.h>)
+#include <org/allbinary/layer/Layer.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellType.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h")
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
+#endif
+
+        #endif
+    

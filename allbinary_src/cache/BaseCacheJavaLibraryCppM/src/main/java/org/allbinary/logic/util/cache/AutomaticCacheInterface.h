@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,13 +55,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/CacheInterface.h"
-#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+class CacheableInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AutomaticCacheInterface: public CacheInterface {
 
                 //@Throws(Exception.constructor)
             
     public: virtual CacheableInterface* get(Object* key) = 0;
+    public: CacheableInterface* get(const std::string& key) { return get(JavaString::box(key)); }
 
 };
 
@@ -64,3 +74,16 @@ class AutomaticCacheInterface: public CacheInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/logic/util/cache/CacheInterface.h")
+#include "org/allbinary/logic/util/cache/CacheInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+#endif
+
+        #endif
+    

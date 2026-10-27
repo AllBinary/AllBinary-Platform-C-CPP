@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENT_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/midlet/DemoGameMidletState.h"
 
-class DemoGameMidletEvent: public AllBinaryEventObject {
 
-    private: DemoGameMidletState* demoGameMidletState;
-
-public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState* demoGameMidletState) : AllBinaryEventObject(anyType){
+DemoGameMidletEvent::DemoGameMidletEvent(Object* anyType, DemoGameMidletState* demoGameMidletState) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,19 +72,19 @@ this->demoGameMidletState= demoGameMidletState;
 }
 
 
-    public: void init(Object* anyType){
+    auto DemoGameMidletEvent::init(Object* anyType) -> void{
 this->setSource(anyType);
     
 }
 
 
-    public: void setDemoGameMidletState(DemoGameMidletState* demoGameMidletState){
+    auto DemoGameMidletEvent::setDemoGameMidletState(DemoGameMidletState* demoGameMidletState) -> void{
 this->demoGameMidletState= demoGameMidletState;
     
 }
 
 
-    public: DemoGameMidletState* getDemoGameMidletState(){
+    auto DemoGameMidletEvent::getDemoGameMidletState() -> DemoGameMidletState*{
 
 
 
@@ -87,7 +94,6 @@ this->demoGameMidletState= demoGameMidletState;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENT_CPP

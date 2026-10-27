@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/CommonButtons.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CommonButtons
-            : public Object
-         {
+auto CommonButtons::instance_owner() -> CommonButtons* { static std::unique_ptr<CommonButtons> value(new CommonButtons()); return value.get(); }
+CommonButtons* CommonButtons::instance = CommonButtons::instance_owner();
 
-    private: static CommonButtons* instance() { static std::unique_ptr<CommonButtons> value(new CommonButtons()); return value.get(); }
-
-    public: static CommonButtons* getInstance(){
+    auto CommonButtons::getInstance() -> CommonButtons*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonButtons::instance();
+                        return CommonButtons::instance;
     
 }
 
 
-    public: int32_t STANDARD_BUTTON_SIZE;
-
-    public: Rectangle* NORMAL_BUTTON;
-
-    public: Rectangle* LARGE_BUTTON;
-
-private: CommonButtons(){
+CommonButtons::CommonButtons(){
 
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
@@ -127,7 +128,6 @@ this->LARGE_BUTTON= new Rectangle(PointFactory::getInstance()->ZERO_ZERO, this->
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_CPP

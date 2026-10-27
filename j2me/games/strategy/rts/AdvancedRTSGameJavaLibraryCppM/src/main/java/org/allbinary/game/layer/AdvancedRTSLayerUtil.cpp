@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AdvancedRTSLayerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,23 +67,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/RTSLayerUtil.h"
 
-class AdvancedRTSLayerUtil
-            : public Object
-         {
 
-    private: static AdvancedRTSLayerUtil* instance() { static std::unique_ptr<AdvancedRTSLayerUtil> value(new AdvancedRTSLayerUtil()); return value.get(); }
+AdvancedRTSLayerUtil::AdvancedRTSLayerUtil() {
+        }
+        auto AdvancedRTSLayerUtil::instance_owner() -> AdvancedRTSLayerUtil* { static std::unique_ptr<AdvancedRTSLayerUtil> value(new AdvancedRTSLayerUtil()); return value.get(); }
+AdvancedRTSLayerUtil* AdvancedRTSLayerUtil::instance = AdvancedRTSLayerUtil::instance_owner();
 
-    public: static AdvancedRTSLayerUtil* getInstance(){
+    auto AdvancedRTSLayerUtil::getInstance() -> AdvancedRTSLayerUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvancedRTSLayerUtil::instance();
+                        return AdvancedRTSLayerUtil::instance;
     
 }
 
 
-    public: ABHashtable<Object*, Object*>* createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap* baseRaceTrackGeographicMap){
+    auto AdvancedRTSLayerUtil::createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap* baseRaceTrackGeographicMap) -> ABHashtable<Object*, Object*>*{
 
     ABHashtable<Object*, Object*>* hashtable = RTSLayerUtil::getInstance()->createFakeRTSLayerHashtable(baseRaceTrackGeographicMap);;
     
@@ -88,7 +98,6 @@ hashtable->put(WorkWaypoint::ID, SmallIntegerSingletonFactory::getInstance()->ge
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERUTIL_CPP

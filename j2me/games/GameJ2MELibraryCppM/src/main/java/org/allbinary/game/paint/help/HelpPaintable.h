@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,39 +34,17 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Font;
+class Graphics;
+class Anchor;
+class BasicColor;
+class DisplayInfoSingleton;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
+class UpdateMyFontProcessor;
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class NullUtil;
+class StringUtil;
 
 
 
@@ -81,25 +64,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HelpPaintable: public Paintable, public UpdateMyFontInterface {
 
-    protected: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
+    /*protected*/ public: DisplayInfoSingleton* displayInfo;
 
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    /*protected*/ public: MyFontProcessor* updateMyFontProcessor;
 
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    /*protected*/ public: MyFontProcessor* myFontProcessor;
 
-    protected: int32_t anchor = Anchor::TOP_LEFT;
+    /*protected*/ public: int32_t anchor;
 
-    protected: std::string title;
+    /*protected*/ public: std::string title;
 
-    protected: std::vector<std::string> inputInfo = StringUtil::getInstance()->getArrayInstance();
+    /*protected*/ public: std::vector<std::string> inputInfo;
 
-    protected: BasicColor* basicColor;
+    /*protected*/ public: BasicColor* basicColor;
 
-    protected: int32_t titleBeginWidth= 0;
+    /*protected*/ public: int32_t titleBeginWidth= 0;
 
-    private: std::vector<int32_t> beginWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY;
+    private: std::vector<int32_t> beginWidthArray;
 
     private: int32_t charHeight= 0;
 
@@ -117,3 +104,43 @@ public: HelpPaintable(std::string title, BasicColor* backgroundBasicColor, Basic
 
 
         #endif //ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

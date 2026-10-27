@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_MODIFYTAG_CPP
+        #define TAGS_MODIFYTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/ModifyTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,11 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/HelperTag.h"
 
-class ModifyTag: public HelperTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : HelperTag(tagHelperFactoryInterface){
+ModifyTag::ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : HelperTag(tagHelperFactoryInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,7 +94,7 @@ public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Helper
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -100,7 +107,7 @@ public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Helper
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string insert(){
+    auto ModifyTag::insert() -> std::string{
 
         try {
             
@@ -128,7 +135,7 @@ public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Helper
     std::string error = "Failed to insert";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert()", &e);
@@ -149,7 +156,7 @@ public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Helper
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string delete_(){
+    auto ModifyTag::delete_() -> std::string{
 
         try {
             
@@ -177,7 +184,7 @@ public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Helper
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
@@ -198,7 +205,7 @@ public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Helper
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string update(){
+    auto ModifyTag::update() -> std::string{
 
         try {
             
@@ -226,7 +233,7 @@ public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Helper
     std::string error = "Failed to update";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
@@ -247,15 +254,15 @@ public: ModifyTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Helper
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto ModifyTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
-    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext.getRequest());;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext->getRequest());;
     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -274,7 +281,7 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -299,10 +306,10 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     std::string output = this->insert();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -318,10 +325,10 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     std::string output = this->delete_();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -337,10 +344,10 @@ this->logUtil->putF(stringBuffer->toString(), this, tagStrings.DO_START_TAG);
     std::string output = this->update();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -387,7 +394,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_MODIFYTAG_CPP

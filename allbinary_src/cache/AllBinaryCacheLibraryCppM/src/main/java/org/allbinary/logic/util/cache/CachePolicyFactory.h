@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICYFACTORY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,29 +54,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/util/cache/CachePolicy.h"
+        class CachePolicy;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CachePolicyFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static CachePolicyFactory* instance() { static std::unique_ptr<CachePolicyFactory> value(new CachePolicyFactory()); return value.get(); }
+    private: static CachePolicyFactory* instance_owner();
+    private: static CachePolicyFactory* instance;
 
     public: static CachePolicyFactory* getInstance();
 
+
+            
+    public: CachePolicyFactory();
+        
     public: const std::string NAME = "lru";
 
-    public: CachePolicy* MAX_TIME_THOUSAND_MAX = new CachePolicy(this->NAME, Long.MAX_VALUE, 1000);
+    public: CachePolicy* MAX_TIME_THOUSAND_MAX;
 
-    public: CachePolicy* THIRTY_MINUTES_TEN_THOUSAND_MAX = new CachePolicy(this->NAME, 1000 *60 *30, 10000);
+    public: CachePolicy* THIRTY_MINUTES_TEN_THOUSAND_MAX;
 
-    public: CachePolicy* THIRTY_MINUTES_FIFTY_THOUSAND_MAX = new CachePolicy(this->NAME, 1000 *60 *30, 100000);
+    public: CachePolicy* THIRTY_MINUTES_FIFTY_THOUSAND_MAX;
 
-    public: CachePolicy* ONE_MINUTE_FIVE_MAX = new CachePolicy(this->NAME, 1000 *60 *1, 5);
+    public: CachePolicy* ONE_MINUTE_FIVE_MAX;
 
-    public: CachePolicy* ONE_MINUTE_TEN_MAX = new CachePolicy(this->NAME, 1000 *60 *1, 10);
+    public: CachePolicy* ONE_MINUTE_TEN_MAX;
 
-    public: CachePolicy* ONE_MINUTE_ONE_HUNDRED_MAX = new CachePolicy(this->NAME, 1000 *60 *1, 100);
+    public: CachePolicy* ONE_MINUTE_ONE_HUNDRED_MAX;
 
 };
 
@@ -79,3 +93,13 @@ class CachePolicyFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICYFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/util/cache/CachePolicy.h")
+#include "org/allbinary/logic/util/cache/CachePolicy.h"
+#endif
+
+        #endif
+    

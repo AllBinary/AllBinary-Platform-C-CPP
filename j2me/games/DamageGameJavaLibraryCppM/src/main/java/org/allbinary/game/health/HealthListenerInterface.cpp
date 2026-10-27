@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/HealthListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,11 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealthListenerInterface {
+//Interface - declared in the header
 
-    public: virtual void onHealthChange() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_CPP

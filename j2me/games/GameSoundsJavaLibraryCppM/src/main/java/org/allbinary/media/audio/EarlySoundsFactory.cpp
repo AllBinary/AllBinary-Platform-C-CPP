@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_EARLYSOUNDSFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_EARLYSOUNDSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/EarlySoundsFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,23 +61,15 @@
 #include "org/allbinary/media/audio/SelectSound.h"
 #include "org/allbinary/media/audio/ErrorSound.h"
 
-class EarlySoundsFactory: public BaseSoundsFactory {
 
-    private: static EarlySoundsFactory* instance() { static std::unique_ptr<EarlySoundsFactory> value(new EarlySoundsFactory()); return value.get(); }
-
-    public: static EarlySoundsFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return EarlySoundsFactory::instance();
-    
-}
-
+EarlySoundsFactory::EarlySoundsFactory() {
+        }
+        auto EarlySoundsFactory::instance_owner() -> EarlySoundsFactory* { static std::unique_ptr<EarlySoundsFactory> value(new EarlySoundsFactory()); return value.get(); }
+EarlySoundsFactory* EarlySoundsFactory::instance = EarlySoundsFactory::instance_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Sound*> getSoundInterfaceArray(){
+    auto EarlySoundsFactory::getSoundInterfaceArray() -> std::vector<Sound*>{
 
     std::vector<Sound*> soundInterfaceArray = std::vector<Sound*>(2);;
     
@@ -87,7 +89,16 @@ soundInterfaceArray[index++]= ErrorSound::getInstance();
 }
 
 
-};
+    auto EarlySoundsFactory::getInstance() -> EarlySoundsFactory*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return EarlySoundsFactory::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_EARLYSOUNDSFACTORY_CPP

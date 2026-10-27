@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageModifierUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -87,11 +97,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageModifierUtil
-            : public Object
-         {
 
-    public: static ImageModifierUtil* getInstanceOrCreate(){
+ImageModifierUtil::ImageModifierUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), resourceCallbackStrings(ResourceCallbackStrings::getInstance()) {
+        }
+        
+    auto ImageModifierUtil::getInstanceOrCreate() -> ImageModifierUtil*{
 
 
 
@@ -101,23 +111,15 @@ class ImageModifierUtil
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ResourceCallbackStrings* resourceCallbackStrings = ResourceCallbackStrings::getInstance();
-
-    private: std::vector<bool> alphaArray;
-
-    public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+    auto ImageModifierUtil::setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
 }
 
 
-    public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+    auto ImageModifierUtil::changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
 }
 
 
-    public: void setAlpha(Image* originalImage, Image* image, int32_t imageIndex, int32_t alpha){
+    auto ImageModifierUtil::setAlpha(Image* originalImage, Image* image, int32_t imageIndex, int32_t alpha) -> void{
 
     float alphaF = alpha;;
     
@@ -129,7 +131,7 @@ this->setAlphaF(originalImage, image, imageIndex, alphaFloat);
 }
 
 
-    public: void setAlphaF(Image* originalImage, Image* image, int32_t imageIndex, float alpha){
+    auto ImageModifierUtil::setAlphaF(Image* originalImage, Image* image, int32_t imageIndex, float alpha) -> void{
 
                         if(this->alphaArray[imageIndex])
                         
@@ -144,7 +146,7 @@ this->setAlpha2(originalImage, image, imageIndex, alpha);
 }
 
 
-    public: void setAlpha2(Image* originalImage, Image* image, int32_t imageIndex, float alpha){
+    auto ImageModifierUtil::setAlpha2(Image* originalImage, Image* image, int32_t imageIndex, float alpha) -> void{
 
     PlaynImage* htmlImage = dynamic_cast<PlaynImage*>(image);;
     
@@ -166,7 +168,7 @@ canvas->drawImage(originalPlaynImage, 0, 0);
 }
 
 
-    public: void setAlpha3(Image* image, float alpha){
+    auto ImageModifierUtil::setAlpha3(Image* image, float alpha) -> void{
 
     float alphaF = alpha;;
     
@@ -187,7 +189,7 @@ canvas->setAlpha(alphaFloat);
 }
 
 
-    public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray){
+    auto ImageModifierUtil::getImageArray(std::vector<Image*> originalImageArray) -> std::vector<Image*>{
 
     int32_t size = originalImageArray.size();;
     
@@ -218,7 +220,7 @@ this->handleImage(imageArray, index, originalImageArray[index]);
 }
 
 
-    public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image){
+    auto ImageModifierUtil::handleImage(std::vector<Image*> imageArray, int32_t index, Image* image) -> void{
 
     playn::core::Image* image3 = dynamic_cast<playn::core::Image*>((image)).getImage());;
     
@@ -280,7 +282,7 @@ image3->addCallback(callback);
 }
 
 
-    public: void copy(std::vector<Image*> imageArray, int32_t index, Image* image, playn::core::Image* image3){
+    auto ImageModifierUtil::copy(std::vector<Image*> imageArray, int32_t index, Image* image, playn::core::Image* image3) -> void{
 
         try {
             
@@ -304,7 +306,7 @@ this->logUtil->putF(this->commonStrings->EXCEPTION_LABEL +resourceCallbackString
 }
 
 
-    public: void reset(){
+    auto ImageModifierUtil::reset() -> void{
 
     int32_t size = this->alphaArray.size();;
     
@@ -322,7 +324,6 @@ this->alphaArray[index]= true;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP

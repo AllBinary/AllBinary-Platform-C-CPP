@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_H
         #define ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/ai/BasicAI.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/java/bool/BooleanFactory.h>
-
-      
+class BasicAI;
+class LogUtil;
+class BooleanFactory;
 #include <org/allbinary/logic/util/visitor/Visitor.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -65,15 +60,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LastKeyAIVisitor: public Visitor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: bool TRUE = BooleanFactory::getInstance()->TRUE;
+    private: bool TRUE;
 
 public: LastKeyAIVisitor();
 
     public: Object* visit(Object* anyType);
+    public: Object* visit(const std::string& anyType) { return visit(JavaString::box(anyType)); }
 
 };
 
@@ -81,3 +81,25 @@ public: LastKeyAIVisitor();
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/ai/BasicAI.h>)
+#include <org/allbinary/game/ai/BasicAI.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/bool/BooleanFactory.h>)
+#include <org/allbinary/logic/java/bool/BooleanFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/visitor/Visitor.h>)
+#include <org/allbinary/logic/util/visitor/Visitor.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

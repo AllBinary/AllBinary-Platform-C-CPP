@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvertisementSearchData
-            : public Object
+            : public virtual Object
          {
 
-    private: static AdvertisementSearchData* instance() { static std::unique_ptr<AdvertisementSearchData> value(new AdvertisementSearchData()); return value.get(); }
+    private: static AdvertisementSearchData* instance_owner();
+    private: static AdvertisementSearchData* instance;
 
     public: static AdvertisementSearchData* getInstance();
 
@@ -72,3 +82,10 @@ private: AdvertisementSearchData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_H_COMPLETE
+        
+        #endif
+    

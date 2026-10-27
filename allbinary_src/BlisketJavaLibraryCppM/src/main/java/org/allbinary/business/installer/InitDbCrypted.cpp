@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITDBCRYPTED_CPP
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITDBCRYPTED_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/installer/InitDbCrypted.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -135,23 +145,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Warning you must have sql root access
-class InitDbCrypted: public AbDatabaseManagement {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: UserDbInitInfo* userDbInitInfo;
-
-    private: InventoryDbInitInfo* inventoryDbInitInfo;
-
-    private: HistoryDbInitInfo* historyDbInitInfo;
-
-    private: StaticPagesDbInitInfo* staticpagesDbInitInfo;
-
-    private: LogDbInitInfo* logDbInitInfo;
-
-    private: const std::string SQL_FILE = "initWeblisket.sql";
-
-public: InitDbCrypted(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface) : AbDatabaseManagement(dynamic_cast<DbConnectionInfo*>(databaseConnectionInfoInterface)){
+InitDbCrypted::InitDbCrypted(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface) : AbDatabaseManagement(dynamic_cast<DbConnectionInfo*>(databaseConnectionInfoInterface)), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -161,10 +156,10 @@ public: InitDbCrypted(DatabaseConnectionInfoInterface* databaseConnectionInfoInt
 }
 
 
-    public: bool addUsers(){
+    auto InitDbCrypted::addUsers() -> bool{
 
         try {
-            this->logUtil->putF(this->commonStrings.START, this, this->METHOD_ADD_USERS);
+            this->logUtil->putF(this->commonStrings->START, this, this->METHOD_ADD_USERS);
     
 this->userDbInitInfo= new UserDbInitInfo();
     
@@ -189,7 +184,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDbUser(CUSTOMERDB, CUSTOMERDBUSER, CUSTOMERDBPASSWORD))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +CUSTOMERDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_USER) +JavaString::valueOf(CUSTOMERDBUSER), this, this->METHOD_ADD_USERS);
     
 
 
@@ -213,7 +208,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDbUser(INVENTORYDB, INVENTORYDBUSER, INVENTORYDBPASSWORD))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +INVENTORYDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_USER) +JavaString::valueOf(INVENTORYDBUSER), this, this->METHOD_ADD_USERS);
     
 
 
@@ -237,7 +232,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDbUser(HISTORYDB, HISTORYDBUSER, HISTORYDBPASSWORD))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +HISTORYDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_USER) +JavaString::valueOf(HISTORYDBUSER), this, this->METHOD_ADD_USERS);
     
 
 
@@ -261,7 +256,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDbUser(STATICPAGESDB, STATICPAGESDBUSER, STATICPAGESDBPASSWORD))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +STATICPAGESDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_USER) +JavaString::valueOf(STATICPAGESDBUSER), this, this->METHOD_ADD_USERS);
     
 
 
@@ -285,7 +280,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDbUser(LOGDB, LOGDBUSER, LOGDBPASSWORD))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_USER +LOGDBUSER, this, this->METHOD_ADD_USERS);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_USER) +JavaString::valueOf(LOGDBUSER), this, this->METHOD_ADD_USERS);
     
 
 
@@ -296,7 +291,7 @@ this->logDbInitInfo= new LogDbInitInfo();
 
                                     }
                                 
-this->logUtil->putF(this->commonStrings.END, this, this->METHOD_ADD_USERS);
+this->logUtil->putF(this->commonStrings->END, this, this->METHOD_ADD_USERS);
     
 
 
@@ -308,7 +303,7 @@ this->logUtil->putF(this->commonStrings.END, this, this->METHOD_ADD_USERS);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_USERS, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_ADD_USERS, &e);
     
 
 
@@ -321,10 +316,10 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_USERS, 
 }
 
 
-    public: bool addDatabases(){
+    auto InitDbCrypted::addDatabases() -> bool{
 
         try {
-            this->logUtil->putF(this->commonStrings.START, this, this->METHOD_ADD_DATABASES);
+            this->logUtil->putF(this->commonStrings->START, this, this->METHOD_ADD_DATABASES);
     
 this->userDbInitInfo= new UserDbInitInfo();
     
@@ -343,7 +338,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDb(CUSTOMERDB))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +CUSTOMERDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_DATABASE) +JavaString::valueOf(CUSTOMERDB), this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -361,7 +356,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDb(INVENTORYDB))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +INVENTORYDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_DATABASE) +JavaString::valueOf(INVENTORYDB), this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -379,7 +374,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDb(HISTORYDB))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +HISTORYDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_DATABASE) +JavaString::valueOf(HISTORYDB), this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -397,7 +392,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDb(STATICPAGESDB))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +STATICPAGESDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_DATABASE) +JavaString::valueOf(STATICPAGESDB), this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -415,7 +410,7 @@ this->logDbInitInfo= new LogDbInitInfo();
                         if(!this->addDb(LOGDB))
                         
                                     {
-                                    this->logUtil->putF(this->UNABLE_TO_CREATE_DATABASE +LOGDB, this, this->METHOD_ADD_DATABASES);
+                                    this->logUtil->putF(JavaString::valueOf(this->UNABLE_TO_CREATE_DATABASE) +JavaString::valueOf(LOGDB), this, this->METHOD_ADD_DATABASES);
     
 
 
@@ -434,7 +429,7 @@ file->createNewFile();
 
     AbDataOutputStream* idOutData = DataOutputStreamFactory::getInstance()->getInstanceForAbFile(file);;
     
-idOutData->writeBytes(this->sqlCommandLog.toString());
+idOutData->writeBytes(this->sqlCommandLog->toString());
     
 
 
@@ -446,7 +441,7 @@ idOutData->writeBytes(this->sqlCommandLog.toString());
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_DATABASES, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_ADD_DATABASES, &e);
     
 
 
@@ -459,21 +454,21 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_DATABAS
 }
 
 
-    public: bool addTables(){
+    auto InitDbCrypted::addTables() -> bool{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-this->logUtil->putF(this->commonStrings.START, this, this->METHOD_ADD_TABLES);
+this->logUtil->putF(this->commonStrings->START, this, this->METHOD_ADD_TABLES);
     
 stringBuffer->append(UserEntityFactory::getInstance()->createTable());
     
 stringBuffer->append(StoreFrontsEntityFactory::getInstance()->getStoreFrontsEntityInstance()->createTable());
     
-stringBuffer->append(BillingAddressesEntityFactory::getInstance()->getInstance(this->stringUtil.EMPTY_STRING)->createTable());
+stringBuffer->append(BillingAddressesEntityFactory::getInstance()->getInstance(this->stringUtil->EMPTY_STRING)->createTable());
     
-stringBuffer->append(ShippingAddressesEntityFactory::getInstance()->getInstance(this->stringUtil.EMPTY_STRING)->createTable());
+stringBuffer->append(ShippingAddressesEntityFactory::getInstance()->getInstance(this->stringUtil->EMPTY_STRING)->createTable());
     
 stringBuffer->append(PaymentEntityFactory::getInstance()->getPaymentEntityInstance()->createTable());
     
@@ -511,7 +506,7 @@ this->logUtil->putF(ADD_TABLES_RESULTS_LABEL +stringBuffer->toString(), this, th
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_TABLES, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_ADD_TABLES, &e);
     
 
 
@@ -524,7 +519,6 @@ this->logUtil->put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_TABLES,
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_INITDBCRYPTED_CPP

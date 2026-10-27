@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,27 +52,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/types/TransactionType.h"
+        class TransactionType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransactionTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static TransactionTypeFactory* instance() { static std::unique_ptr<TransactionTypeFactory> value(new TransactionTypeFactory()); return value.get(); }
+    private: static TransactionTypeFactory* instance_owner();
+    private: static TransactionTypeFactory* instance;
 
     public: static TransactionTypeFactory* getInstance();
 
-    public: TransactionType* SALE = new TransactionType("Sale");
 
-    public: TransactionType* CREDIT = new TransactionType("Credit");
+            
+    public: TransactionTypeFactory();
+        
+    public: TransactionType* SALE;
 
-    public: TransactionType* AUTHORIZATION = new TransactionType("Authorization");
+    public: TransactionType* CREDIT;
 
-    public: TransactionType* DELAYEDCAPTURE = new TransactionType("Delayed Capture");
+    public: TransactionType* AUTHORIZATION;
 
-    public: TransactionType* VOID = new TransactionType("Void");
+    public: TransactionType* DELAYEDCAPTURE;
 
-    public: TransactionType* INQUIRY = new TransactionType("Inquiry");
+    public: TransactionType* VOID;
+
+    public: TransactionType* INQUIRY;
 
 };
 
@@ -75,3 +89,13 @@ class TransactionTypeFactory
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TRANSACTIONTYPEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/business/user/commerce/money/payment/types/TransactionType.h")
+#include "org/allbinary/business/user/commerce/money/payment/types/TransactionType.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_BASICLAYERPROCESSOR_H
         #define ORG_ALLBINARY_LAYER_BASICLAYERPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class LogUtil;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -61,20 +58,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/layer/AllBinaryLayer.h"
-#include "org/allbinary/layer/AllBinaryLayerManager.h"
+        class AllBinaryLayer;
+class AllBinaryLayerManager;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicLayerProcessor
-            : public Object
+            : public virtual Object
          {
 
-    public: static BasicLayerProcessor* NULL_LAYER_PROCESSOR() { static std::unique_ptr<BasicLayerProcessor> value(new BasicLayerProcessor()); return value.get(); }
+    private: static BasicLayerProcessor* NULL_LAYER_PROCESSOR_owner();
+    public: static BasicLayerProcessor* NULL_LAYER_PROCESSOR;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
-protected: BasicLayerProcessor();
+/*protected*/ public: BasicLayerProcessor();
 
     public: void add(AllBinaryLayer* layerInterface);
 
@@ -90,3 +92,28 @@ protected: BasicLayerProcessor();
 
 
         #endif //ORG_ALLBINARY_LAYER_BASICLAYERPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_BASICLAYERPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_BASICLAYERPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayerManager.h")
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
+#endif
+
+        #endif
+    

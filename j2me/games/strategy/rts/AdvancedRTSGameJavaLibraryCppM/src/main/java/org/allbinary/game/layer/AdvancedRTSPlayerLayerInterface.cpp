@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPLAYERLAYERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPLAYERLAYERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AdvancedRTSPlayerLayerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,8 @@
         #include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
 #include "org/allbinary/game/layer/AdvancedPlayerOwnedRTSLayers.h"
 
-class AdvancedRTSPlayerLayerInterface: public RTSPlayerLayerInterface {
+//Interface - declared in the header
 
-    public: virtual AdvancedPlayerOwnedRTSLayers* getAdvancedPlayerOwnedRTSLayers() = 0;
 
-    public: virtual bool isLocalPlayer() = 0;
 
-    public: virtual GameType* getGameType() = 0;
-
-    public: virtual BasicColor* getDecalBasicColor() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPLAYERLAYERINTERFACE_CPP

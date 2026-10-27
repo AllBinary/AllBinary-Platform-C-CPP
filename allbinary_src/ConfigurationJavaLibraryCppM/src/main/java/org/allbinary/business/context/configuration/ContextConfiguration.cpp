@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATION_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/configuration/ContextConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,17 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
 
-class ContextConfiguration
-            : public Object
-        , public ContextConfigurationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: EmailServerConfigurationInterface* emailServerConfigurationInterface;
-
-public: ContextConfiguration(){
+ContextConfiguration::ContextConfiguration() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF(this->commonStrings->START, this, "ContextConfiguration");
     
 this->setEmailServerConfigurationInterface(dynamic_cast<EmailServerConfigurationInterface*>(new EmailServerConfiguration()));
@@ -79,7 +80,7 @@ this->setEmailServerConfigurationInterface(dynamic_cast<EmailServerConfiguration
 }
 
 
-public: ContextConfiguration(HashMap<Object*, Object*>* hashMap){
+ContextConfiguration::ContextConfiguration(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->logUtil->putF(this->commonStrings->START, this, "ContextConfiguration(HashMap)");
     
 this->setEmailServerConfigurationInterface(dynamic_cast<EmailServerConfigurationInterface*>(new EmailServerConfiguration(hashMap)));
@@ -87,7 +88,7 @@ this->setEmailServerConfigurationInterface(dynamic_cast<EmailServerConfiguration
 }
 
 
-    public: EmailServerConfigurationInterface* getEmailServerConfigurationInterface(){
+    auto ContextConfiguration::getEmailServerConfigurationInterface() -> EmailServerConfigurationInterface*{
 
 
 
@@ -97,13 +98,12 @@ this->setEmailServerConfigurationInterface(dynamic_cast<EmailServerConfiguration
 }
 
 
-    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface){
+    auto ContextConfiguration::setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface) -> void{
 this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATION_CPP

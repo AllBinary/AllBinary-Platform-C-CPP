@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLSUBMITINPUT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLSUBMITINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlSubmitInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +55,8 @@
         #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
 #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
-class HtmlSubmitInput: public HtmlValueInput {
 
-public: HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance()->SUBMIT, name, value, after){
+HtmlSubmitInput::HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance()->SUBMIT, name, value, after){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -57,7 +66,6 @@ public: HtmlSubmitInput(std::string before, std::string name, std::string value,
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLSUBMITINPUT_CPP

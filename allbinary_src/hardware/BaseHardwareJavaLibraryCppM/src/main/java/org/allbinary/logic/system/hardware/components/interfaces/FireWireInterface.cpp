@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_FIREWIREINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_FIREWIREINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/interfaces/FireWireInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,9 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FireWireInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_FIREWIREINTERFACE_CPP

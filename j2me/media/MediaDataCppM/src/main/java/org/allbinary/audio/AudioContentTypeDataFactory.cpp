@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_CPP
+        #define ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/audio/AudioContentTypeDataFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,39 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/audio/AudioContentTypeData.h"
 
-class AudioContentTypeDataFactory
-            : public Object
-         {
+auto AudioContentTypeDataFactory::instance_owner() -> AudioContentTypeDataFactory* { static std::unique_ptr<AudioContentTypeDataFactory> value(new AudioContentTypeDataFactory()); return value.get(); }
+AudioContentTypeDataFactory* AudioContentTypeDataFactory::instance = AudioContentTypeDataFactory::instance_owner();
 
-    private: static AudioContentTypeDataFactory* instance() { static std::unique_ptr<AudioContentTypeDataFactory> value(new AudioContentTypeDataFactory()); return value.get(); }
-
-    public: static AudioContentTypeDataFactory* getInstance(){
+    auto AudioContentTypeDataFactory::getInstance() -> AudioContentTypeDataFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AudioContentTypeDataFactory::instance();
+                        return AudioContentTypeDataFactory::instance;
     
 }
 
 
-    public: AudioContentTypeData* MIME_AUDIO_TONE = new AudioContentTypeData("audio/x-tone-seq");
-
-    public: AudioContentTypeData* MIME_AUDIO_AMR = new AudioContentTypeData("audio/amr");
-
-    public: AudioContentTypeData* MIME_AUDIO_AMR_WB = new AudioContentTypeData("audio/amr-wb");
-
-    public: AudioContentTypeData* MIME_AUDIO_WAV = new AudioContentTypeData("audio/x-wav");
-
-    public: AudioContentTypeData* MIME_AUDIO_MIDI = new AudioContentTypeData("audio/midi");
-
-    public: AudioContentTypeData* MIME_AUDIO_SP_MIDI = new AudioContentTypeData("audio/sp-midi");
-
-private: AudioContentTypeDataFactory(){
+AudioContentTypeDataFactory::AudioContentTypeDataFactory() : MIME_AUDIO_TONE(new AudioContentTypeData("audio/x-tone-seq")), MIME_AUDIO_AMR(new AudioContentTypeData("audio/amr")), MIME_AUDIO_AMR_WB(new AudioContentTypeData("audio/amr-wb")), MIME_AUDIO_WAV(new AudioContentTypeData("audio/x-wav")), MIME_AUDIO_MIDI(new AudioContentTypeData("audio/midi")), MIME_AUDIO_SP_MIDI(new AudioContentTypeData("audio/sp-midi")){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_NULLTHREAD_CPP
+        #define ORG_ALLBINARY_THREAD_NULLTHREAD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/NullThread.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/NullRunnable.h"
 
-class NullThread
-            : public Object
-         {
 
-    public: static Thread* NULL_THREAD() { static std::unique_ptr<Thread> value(new Thread(NullRunnable::getInstance(), StringUtil::getInstance()->EMPTY_STRING)); return value.get(); }
+NullThread::NullThread() {
+        }
+        auto NullThread::NULL_THREAD_owner() -> Thread* { static std::unique_ptr<Thread> value(new Thread(NullRunnable::getInstance(), StringUtil::getInstance()->EMPTY_STRING)); return value.get(); }
+Thread* NullThread::NULL_THREAD = NullThread::NULL_THREAD_owner();
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_NULLTHREAD_CPP

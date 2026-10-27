@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASNONBOTPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASNONBOTPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameCanvasNonBotPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,23 +60,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class GameCanvasNonBotPaintable: public Paintable {
 
-    private: AllBinaryGameCanvas* gameCanvas;
-
-public: GameCanvasNonBotPaintable(AllBinaryGameCanvas* gameCanvas){
+GameCanvasNonBotPaintable::GameCanvasNonBotPaintable(AllBinaryGameCanvas* gameCanvas){
 this->gameCanvas= gameCanvas;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto GameCanvasNonBotPaintable::paint(Graphics* graphics) -> void{
 this->gameCanvas->nonBotPaint(graphics);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASNONBOTPAINTABLE_CPP

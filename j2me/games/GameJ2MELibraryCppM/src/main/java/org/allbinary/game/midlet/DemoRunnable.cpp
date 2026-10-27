@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMORUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMORUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/DemoRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,19 +81,8 @@
 #include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
 #include "org/allbinary/game/midlet/DemoGameMidletEventHandler.h"
 
-class DemoRunnable
-            : public Object
-        , public Runnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: DemoGameMidlet* demoGameMidlet;
-
-    private: DemoGameMidletEvent* startDemoGameMidletEvent;
-
-public: DemoRunnable(DemoGameMidlet* demoGameMidlet){
+DemoRunnable::DemoRunnable(DemoGameMidlet* demoGameMidlet) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->demoGameMidlet= demoGameMidlet;
     
 this->startDemoGameMidletEvent= new DemoGameMidletEvent(this->demoGameMidlet, DemoGameMidletStateFactory::getInstance()->START_DEMO);
@@ -91,7 +90,7 @@ this->startDemoGameMidletEvent= new DemoGameMidletEvent(this->demoGameMidlet, De
 }
 
 
-    public: void run(){
+    auto DemoRunnable::run() -> void{
 
         try {
             this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append("GameCanvasRunnableInterface")->toString(), this, this->commonStrings->RUN);
@@ -121,7 +120,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_DEMORUNNABLE_CPP

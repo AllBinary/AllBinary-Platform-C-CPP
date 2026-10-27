@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_ROLLRIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_ROLLRIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gyro/action/RollRightOrientationInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RollRightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* RollRightOrientationInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto RollRightOrientationInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(RollRightOrientationInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class RollRightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotio
 }
 
 
-private: RollRightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Roll Right Action", OrientationMotionGestureFactory::getInstance()->ROLL_RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+RollRightOrientationInputToGameKeyEventAction::RollRightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Roll Right Action", OrientationMotionGestureFactory::getInstance()->ROLL_RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: RollRightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotion
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_ROLLRIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP

@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_H
         #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class StringMaker;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -55,26 +54,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
-#include "org/allbinary/game/layer/RTSLayer.h"
-#include "org/allbinary/game/layer/AllBinaryGameLayer.h"
+class RTSLayer;
+class AllBinaryGameLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvancedPlayerOwnedRTSLayers: public PlayerOwnedRTSLayers {
 
-    private: BasicArrayList* unitsList = new BasicArrayListD();
 
-    private: BasicArrayList* waypointsList = new BasicArrayListD();
+            
+    public: AdvancedPlayerOwnedRTSLayers();
+        
+    private: BasicArrayList* unitsList;
 
-    private: BasicArrayList* buildingList = new BasicArrayListD();
+    private: BasicArrayList* waypointsList;
 
-    private: BasicArrayList* baseList = new BasicArrayListD();
+    private: BasicArrayList* buildingList;
 
-    private: BasicArrayList* garrisonList = new BasicArrayListD();
+    private: BasicArrayList* baseList;
 
-    private: BasicArrayList* houseList = new BasicArrayListD();
+    private: BasicArrayList* garrisonList;
 
-    private: BasicArrayList* labList = new BasicArrayListD();
+    private: BasicArrayList* houseList;
 
-    private: BasicArrayList* factoryList = new BasicArrayListD();
+    private: BasicArrayList* labList;
+
+    private: BasicArrayList* factoryList;
 
     public: void addUnit(RTSLayer* rtsLayer);
 
@@ -122,3 +129,28 @@ class AdvancedPlayerOwnedRTSLayers: public PlayerOwnedRTSLayers {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDPLAYEROWNEDRTSLAYERS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/layer/PlayerOwnedRTSLayers.h")
+#include "org/allbinary/game/layer/PlayerOwnedRTSLayers.h"
+#endif
+#if __has_include("org/allbinary/game/layer/RTSLayer.h")
+#include "org/allbinary/game/layer/RTSLayer.h"
+#endif
+#if __has_include("org/allbinary/game/layer/AllBinaryGameLayer.h")
+#include "org/allbinary/game/layer/AllBinaryGameLayer.h"
+#endif
+
+        #endif
+    

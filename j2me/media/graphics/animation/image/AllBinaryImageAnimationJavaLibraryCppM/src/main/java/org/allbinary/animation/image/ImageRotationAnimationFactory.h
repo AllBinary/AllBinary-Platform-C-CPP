@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEROTATIONANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
+class Image;
+class Animation;
+class AnimationBehaviorFactory;
 
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
-#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
+class PrimitiveIntUtil;
+class AngleFactory;
+class AngleInfo;
 
 
 
@@ -69,12 +60,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
-#include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
-#include "org/allbinary/animation/image/AdjustedImageBaseRotationAnimation.h"
+class ImageBaseRotationAnimation;
+class AdjustedImageBaseRotationAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageRotationAnimationFactory: public BaseImageAnimationFactory {
 
-    protected: int16_t angleIncrement;
+    /*protected*/ public: int16_t angleIncrement;
 
 public: ImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory);
 
@@ -82,7 +77,7 @@ public: ImageRotationAnimationFactory(Image* image, int32_t width, int32_t heigh
             
     public: Animation* getInstance(int32_t instanceId);
 
-    protected: int16_t getAngleIncrementP();
+    /*protected*/ public: int16_t getAngleIncrementP();
 
 };
 
@@ -90,3 +85,38 @@ public: ImageRotationAnimationFactory(Image* image, int32_t width, int32_t heigh
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEROTATIONANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEROTATIONANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEROTATIONANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include("org/allbinary/animation/image/BaseImageAnimationFactory.h")
+#include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ImageBaseRotationAnimation.h")
+#include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/image/AdjustedImageBaseRotationAnimation.h")
+#include "org/allbinary/animation/image/AdjustedImageBaseRotationAnimation.h"
+#endif
+
+        #endif
+    

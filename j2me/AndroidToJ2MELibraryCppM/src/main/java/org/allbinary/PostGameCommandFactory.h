@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H
         #define ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/commands/GameCommandsFactory.h>
-
-      
-#include <org/allbinary/game/configuration/feature/MultiPlayerGameFeatureFactory.h>
-
-      
-#include <org/allbinary/graphics/displayable/MyCanvas.h>
-
-      
-#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
-
-      
+class GameCommandsFactory;
+class MultiPlayerGameFeatureFactory;
+class MyCanvas;
+class GenericOperatingSystem;
+class OperatingSystemFactory;
 
 
 
@@ -63,14 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PostGameCommandFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PostGameCommandFactory* instance() { static std::unique_ptr<PostGameCommandFactory> value(new PostGameCommandFactory()); return value.get(); }
+    private: static PostGameCommandFactory* instance_owner();
+    private: static PostGameCommandFactory* instance;
 
     public: static PostGameCommandFactory* getInstance();
 
+
+            
+    public: PostGameCommandFactory();
+        
     public: void addCommands(MyCanvas* canvas);
 
 };
@@ -79,3 +83,25 @@ class PostGameCommandFactory
 
 
         #endif //ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/commands/GameCommandsFactory.h>)
+#include <org/allbinary/game/commands/GameCommandsFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/MultiPlayerGameFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/MultiPlayerGameFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/MyCanvas.h>)
+#include <org/allbinary/graphics/displayable/MyCanvas.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/OperatingSystemFactory.h>)
+#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_PLAYERGAMEINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_PLAYERGAMEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/PlayerGameInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,13 +84,8 @@
         #include "org/allbinary/game/input/GameInput.h"
 #include "org/allbinary/game/input/GameInputStrings.h"
 
-class PlayerGameInput: public GameInput, public GameKeyEventListenerInterface {
 
-    protected: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
-
-    private: int32_t playerInputId;
-
-public: PlayerGameInput(BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList, int32_t playerInputId) : GameInput(gameKeyEventList, removalGameKeyEventList){
+PlayerGameInput::PlayerGameInput(BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList, int32_t playerInputId) : GameInput(gameKeyEventList, removalGameKeyEventList), gameInputStrings(GameInputStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,7 +98,7 @@ this->playerInputId= playerInputId;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onPressGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto PlayerGameInput::onPressGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 this->add(gameKeyEvent);
     
 this->addForRemoval(gameKeyEvent);
@@ -102,14 +107,14 @@ this->addForRemoval(gameKeyEvent);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto PlayerGameInput::onDownGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 this->add(gameKeyEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto PlayerGameInput::onDownKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 this->add(gameKeyEvent);
     
 this->addForRemoval(gameKeyEvent);
@@ -118,31 +123,31 @@ this->addForRemoval(gameKeyEvent);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownKey(int32_t gameKeyEvent){
+    auto PlayerGameInput::onDownKey(int32_t gameKeyEvent) -> void{
 PreLogUtil::put((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(gameKeyEvent->toString())->toString(), this, this->gameInputStrings->ON_DOWN_GAME_KEY);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto PlayerGameInput::onUpGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 this->addForRemoval(gameKeyEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpKeyEvent(int32_t gameKeyEvent){
+    auto PlayerGameInput::onUpKeyEvent(int32_t gameKeyEvent) -> void{
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto PlayerGameInput::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: int32_t getPlayerInputId(){
+    auto PlayerGameInput::getPlayerInputId() -> int32_t{
 
 
 
@@ -152,7 +157,6 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_PLAYERGAMEINPUT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
+class JsType;
+class CircularIndexUtil;
+class JsMethod;
+class JsConstructor;
 
 
 
@@ -61,10 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/BasicColor.h"
+        class BasicColor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicColorArrayIndexer
-            : public Object
+            : public virtual Object
          {
 
     private: std::vector<BasicColor*> basicColorArray;
@@ -85,3 +86,25 @@ public: BasicColorArrayIndexer(std::vector<BasicColor*> basicColorArray);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+
+        #endif
+    

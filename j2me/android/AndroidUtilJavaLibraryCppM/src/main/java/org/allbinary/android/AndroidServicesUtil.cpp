@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ANDROIDSERVICESUTIL_CPP
+        #define ORG_ALLBINARY_ANDROID_ANDROIDSERVICESUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/AndroidServicesUtil.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -68,33 +78,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AndroidServicesUtil
-            : public Object
-         {
 
-    public: static AndroidServicesUtil* getInstance(){
+AndroidServicesUtil::AndroidServicesUtil() : logUtil(LogUtil::getInstance()), resourceUtil(ResourceUtil::getInstance()) {
+        }
+        
+    auto AndroidServicesUtil::getInstance() -> AndroidServicesUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidServicesUtil::instance();
+                        return AndroidServicesUtil::instance;
     
 }
 
+auto AndroidServicesUtil::instance_owner() -> AndroidServicesUtil* { static std::unique_ptr<AndroidServicesUtil> value(new AndroidServicesUtil()); return value.get(); }
+AndroidServicesUtil* AndroidServicesUtil::instance = AndroidServicesUtil::instance_owner();
 
-    private: static AndroidServicesUtil* instance() { static std::unique_ptr<AndroidServicesUtil> value(new AndroidServicesUtil()); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
-
-    private: const int32_t SERVICE_LIMIT_MAX = 1000;
-
-    private: const std::string IS_SERVICE_RUNNING = "isServiceRunning";
-
-    private: const std::string SERVICE_NOT_FOUND_RUNNING = "Service not found Running: ";
-
-    public: bool isServiceRunning(std::string name){
+    auto AndroidServicesUtil::isServiceRunning(std::string name) -> bool{
 
     ActivityManager* activityManager = dynamic_cast<ActivityManager*>(this->resourceUtil->getContext()->getSystemService(Context::ACTIVITY_SERVICE) as unknown);;
     
@@ -141,7 +141,7 @@ serviceName= serviceComponent->toString();
                                 
 }
 
-this->logUtil->putF(this->SERVICE_NOT_FOUND_RUNNING +name, this, this->IS_SERVICE_RUNNING);
+this->logUtil->putF(JavaString::valueOf(this->SERVICE_NOT_FOUND_RUNNING) +JavaString::valueOf(name), this, this->IS_SERVICE_RUNNING);
     
 
 
@@ -152,7 +152,6 @@ this->logUtil->putF(this->SERVICE_NOT_FOUND_RUNNING +name, this, this->IS_SERVIC
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_ANDROIDSERVICESUTIL_CPP

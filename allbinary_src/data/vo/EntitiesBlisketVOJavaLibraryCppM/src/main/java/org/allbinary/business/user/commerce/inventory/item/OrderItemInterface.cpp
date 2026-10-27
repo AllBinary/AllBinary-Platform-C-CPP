@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ORDERITEMINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ORDERITEMINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/OrderItemInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,33 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
 
-class OrderItemInterface: public ItemInterface {
+//Interface - declared in the header
 
-    public: virtual void setGroup(std::string value) = 0;
 
-    public: virtual void setTax(std::string value) = 0;
 
-    public: virtual void setShippingType(std::string value) = 0;
-
-    public: virtual void setShippingCost(std::string value) = 0;
-
-    public: virtual void setShippingAddress(StreetAddress* value) = 0;
-
-    public: virtual void setSpecial(std::string value) = 0;
-
-    public: virtual std::string getGroup() = 0;
-
-    public: virtual std::string getTax() = 0;
-
-    public: virtual std::string getShippingType() = 0;
-
-    public: virtual std::string getShippingCost() = 0;
-
-    public: virtual StreetAddress* getShippingAddress() = 0;
-
-    public: virtual std::string getSpecial() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ORDERITEMINTERFACE_CPP

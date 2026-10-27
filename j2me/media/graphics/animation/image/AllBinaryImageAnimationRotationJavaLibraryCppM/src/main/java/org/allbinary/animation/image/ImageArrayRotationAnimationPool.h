@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONPOOL_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,17 +37,9 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/cache/BasicArrayListResetablePool.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheableInterface.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/logic/util/cache/PoolInterface.h>
-
-      
+class CacheableInterface;
+class CacheableInterfaceFactoryInterface;
+class PoolInterface;
 
 
 
@@ -61,13 +58,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheableInterfaceFactory.h"
-#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
-#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
+        class ImageArrayRotationAnimationCacheableInterfaceFactory;
+class ImageArrayRotationAnimationInfo;
+class ImageArrayRotationAnimationCacheable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageArrayRotationAnimationPool: public BasicArrayListResetablePool {
 
-    private: static inline PoolInterface* IMAGE_ROTATION_ANIMATION_POOL = new ImageArrayRotationAnimationPool(new ImageArrayRotationAnimationCacheableInterfaceFactory());
+    private: static PoolInterface* IMAGE_ROTATION_ANIMATION_POOL;
 
     public: static PoolInterface* getInstance();
 
@@ -76,6 +77,7 @@ public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface* cach
                 //@Throws(Exception.constructor)
             
     public: CacheableInterface* remove(Object* key);
+    public: CacheableInterface* remove(const std::string& key) { return remove(JavaString::box(key)); }
 
 };
 
@@ -83,3 +85,31 @@ public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface* cach
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/cache/BasicArrayListResetablePool.h>)
+#include <org/allbinary/logic/util/cache/BasicArrayListResetablePool.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/PoolInterface.h>)
+#include <org/allbinary/logic/util/cache/PoolInterface.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ImageArrayRotationAnimationCacheableInterfaceFactory.h")
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheableInterfaceFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h")
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h")
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
+#endif
+
+        #endif
+    

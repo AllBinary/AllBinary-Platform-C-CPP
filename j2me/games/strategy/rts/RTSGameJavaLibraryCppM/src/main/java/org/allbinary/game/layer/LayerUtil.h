@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/math/PositionStrings.h>
-
-      
+class CommonSeps;
+class StringMaker;
+class StringUtil;
+class PositionStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -63,17 +58,47 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerUtil
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string HASHTABLE = "Hashtable: ";
 
     public: static std::string toString(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z);
 
+
+            
+    public: LayerUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/PositionStrings.h>)
+#include <org/allbinary/math/PositionStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

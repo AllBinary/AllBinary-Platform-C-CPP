@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class NullUtil;
 
 
 
@@ -52,47 +55,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/identification/Group.h"
+        class Group;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicGroupFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static BasicGroupFactory* getInstance();
 
+
+            
+    public: BasicGroupFactory();
+        
     public: const std::string NAME = "GROUP_NAME";
 
     public: const std::string NO_SUCH_GROUP = "No Such Group: ";
 
-    public: Group* GOOD = new Group("Good Guys", 0);
+    public: Group* GOOD;
 
-    public: Group* ENEMY = new Group("Bad Guys", 1);
+    public: Group* ENEMY;
 
-    public: Group* ENEMY_ON_LEVEL = new Group("Bad Guys on Level", 2);
+    public: Group* ENEMY_ON_LEVEL;
 
-    public: Group* NONE = new Group("Not On A Team", 3);
+    public: Group* NONE;
 
-    public: const std::vector<Group*> GOOD_ARRAY = 
-                                                        {
-                                                            this->GOOD
-                                                        };
+    public: std::vector<Group*> GOOD_ARRAY;
 
-    public: const std::vector<Group*> ENEMY_ARRAY = 
-                                                        {
-                                                            this->ENEMY
-                                                        };
+    public: std::vector<Group*> ENEMY_ARRAY;
 
-    public: const std::vector<Group*> ENEMY_ON_LEVEL_ARRAY = 
-                                                        {
-                                                            this->ENEMY,this->ENEMY_ON_LEVEL
-                                                        };
+    public: std::vector<Group*> ENEMY_ON_LEVEL_ARRAY;
 
-    public: const std::vector<Group*> NONE_ARRAY = 
-                                                        {
-                                                            this->NONE
-                                                        };
+    public: std::vector<Group*> NONE_ARRAY;
 
 };
 
@@ -100,3 +99,16 @@ class BasicGroupFactory
 
 
         #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include("org/allbinary/game/identification/Group.h")
+#include "org/allbinary/game/identification/Group.h"
+#endif
+
+        #endif
+    

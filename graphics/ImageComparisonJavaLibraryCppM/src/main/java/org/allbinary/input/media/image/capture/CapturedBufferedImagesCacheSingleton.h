@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDBUFFEREDIMAGESCACHESINGLETON_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDBUFFEREDIMAGESCACHESINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/util/cache/AutomaticCacheInterface.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheInterface.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/util/cache/CachePolicyFactory.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheTypeFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class AutomaticCacheInterface;
+class CacheInterface;
+class CacheInterfaceFactory;
+class CachePolicyFactory;
+class CacheTypeFactory;
+class CommonStrings;
 
 
 
@@ -71,8 +62,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CapturedBufferedImagesCacheSingleton
-            : public Object
+            : public virtual Object
          {
 
     private: static inline AutomaticCacheInterface* cacheInterface = 
@@ -84,7 +79,7 @@ class CapturedBufferedImagesCacheSingleton
                     static int32_t initResult;
                 static int32_t init();
             
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: CapturedBufferedImagesCacheSingleton();
 
@@ -94,3 +89,31 @@ private: CapturedBufferedImagesCacheSingleton();
 
 
         #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDBUFFEREDIMAGESCACHESINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDBUFFEREDIMAGESCACHESINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDBUFFEREDIMAGESCACHESINGLETON_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/AutomaticCacheInterface.h>)
+#include <org/allbinary/logic/util/cache/AutomaticCacheInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheInterfaceFactory.h>)
+#include <org/allbinary/logic/util/cache/CacheInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CachePolicyFactory.h>)
+#include <org/allbinary/logic/util/cache/CachePolicyFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheTypeFactory.h>)
+#include <org/allbinary/logic/util/cache/CacheTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_GENERICCSSSTYLEVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_GENERICCSSSTYLEVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/style/css/GenericCssStyleValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,22 +91,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericCssStyleValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: GenericCssStyleValidation(){
+GenericCssStyleValidation::GenericCssStyleValidation() : logUtil(LogUtil::getInstance()){
 }
 
 
-public: GenericCssStyleValidation(Document* document){
+GenericCssStyleValidation::GenericCssStyleValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
     NodeList* nodeList = document->getElementsByTagName(StylesData::getInstance()->NAME);;
     
 }
 
 
-public: GenericCssStyleValidation(HashMap<Object*, Object*>* hashMap){
+GenericCssStyleValidation::GenericCssStyleValidation(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 this->getFormData(hashMap);
     
 }
@@ -104,30 +111,30 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto GenericCssStyleValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 }
 
 
-    public: bool isValid(){
+    auto GenericCssStyleValidation::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("End: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("End: ") +JavaString::valueOf(isValid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -143,10 +150,10 @@ this->getFormData(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -162,7 +169,7 @@ this->getFormData(hashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto GenericCssStyleValidation::validationInfo() -> std::string{
 
         try {
             
@@ -179,7 +186,7 @@ this->getFormData(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -198,7 +205,7 @@ this->getFormData(hashMap);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto GenericCssStyleValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -208,7 +215,7 @@ this->getFormData(hashMap);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto GenericCssStyleValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -220,7 +227,7 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GenericCssStyleValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance()->NAME, StringUtil::getInstance()->EMPTY_STRING);;
     
@@ -233,7 +240,6 @@ this->getFormData(hashMap);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_GENERICCSSSTYLEVALIDATION_CPP

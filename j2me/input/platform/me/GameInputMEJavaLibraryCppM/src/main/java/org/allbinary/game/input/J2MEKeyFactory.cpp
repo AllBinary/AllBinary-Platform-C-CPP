@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_J2MEKEYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_J2MEKEYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/J2MEKeyFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,29 +61,24 @@
 #include "org/allbinary/game/input/InputFactory.h"
 #include "org/allbinary/game/input/Input.h"
 
-class J2MEKeyFactory
-            : public Object
-         {
+auto J2MEKeyFactory::instance_owner() -> J2MEKeyFactory* { static std::unique_ptr<J2MEKeyFactory> value(new J2MEKeyFactory()); return value.get(); }
+J2MEKeyFactory* J2MEKeyFactory::instance = J2MEKeyFactory::instance_owner();
 
-    private: static J2MEKeyFactory* instance() { static std::unique_ptr<J2MEKeyFactory> value(new J2MEKeyFactory()); return value.get(); }
-
-    public: static J2MEKeyFactory* getInstance(){
+    auto J2MEKeyFactory::getInstance() -> J2MEKeyFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory::instance();
+                        return J2MEKeyFactory::instance;
     
 }
 
 
-private: J2MEKeyFactory(){
+J2MEKeyFactory::J2MEKeyFactory() : gameKeyFactory(GameKeyFactory::getInstance()){
 }
 
 
-    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
-
-    public: void init(){
+    auto J2MEKeyFactory::init() -> void{
 
     std::vector<GameKey*> gameKeyArray = 
                                                         {
@@ -90,14 +95,14 @@ private: J2MEKeyFactory(){
                         for (
     int32_t index = gameKeyArray.size();--index >= 0; )
         {
-inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
+inputFactory->add(gameKeyArray[index]->getId(), gameKeyArray[index]);
     
 }
 
 }
 
 
-    public: bool isSubmission(Input* input){
+    auto J2MEKeyFactory::isSubmission(Input* input) -> bool{
 
                         if(input == this->gameKeyFactory->FIRE)
                         
@@ -120,7 +125,7 @@ inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isDelete(Input* input){
+    auto J2MEKeyFactory::isDelete(Input* input) -> bool{
 
                         if(input == this->gameKeyFactory->GAME_D)
                         
@@ -143,7 +148,7 @@ inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isBackSpace(Input* input){
+    auto J2MEKeyFactory::isBackSpace(Input* input) -> bool{
 
 
 
@@ -153,7 +158,7 @@ inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isUp(Input* input){
+    auto J2MEKeyFactory::isUp(Input* input) -> bool{
 
                         if(input == this->gameKeyFactory->UP)
                         
@@ -176,7 +181,7 @@ inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isDown(Input* input){
+    auto J2MEKeyFactory::isDown(Input* input) -> bool{
 
                         if(input == this->gameKeyFactory->DOWN)
                         
@@ -199,7 +204,7 @@ inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isLeft(Input* input){
+    auto J2MEKeyFactory::isLeft(Input* input) -> bool{
 
                         if(input == this->gameKeyFactory->LEFT)
                         
@@ -222,7 +227,7 @@ inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isRight(Input* input){
+    auto J2MEKeyFactory::isRight(Input* input) -> bool{
 
                         if(input == this->gameKeyFactory->RIGHT)
                         
@@ -245,7 +250,7 @@ inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-    public: bool isEnter(Input* input){
+    auto J2MEKeyFactory::isEnter(Input* input) -> bool{
 
                         if(input == this->gameKeyFactory->FIRE)
                         
@@ -268,7 +273,6 @@ inputFactory->add(gameKeyArray[index].getId(), gameKeyArray[index]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_J2MEKEYFACTORY_CPP

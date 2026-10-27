@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_COMPLETEMOTIONGESTUREINPUTTOGAMEMOTIONGESTUREINPUT_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_COMPLETEMOTIONGESTUREINPUTTOGAMEMOTIONGESTUREINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/CompleteMotionGestureInputToGameMotionGestureInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -98,25 +108,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CompleteMotionGestureInputToGameMotionGestureInput
-            : public Object
-         {
 
-    private: static CompleteMotionGestureInputToGameMotionGestureInput* instance() { static std::unique_ptr<CompleteMotionGestureInputToGameMotionGestureInput> value(new CompleteMotionGestureInputToGameMotionGestureInput()); return value.get(); }
+CompleteMotionGestureInputToGameMotionGestureInput::CompleteMotionGestureInputToGameMotionGestureInput() : logUtil(LogUtil::getInstance()) {
+        }
+        auto CompleteMotionGestureInputToGameMotionGestureInput::instance_owner() -> CompleteMotionGestureInputToGameMotionGestureInput* { static std::unique_ptr<CompleteMotionGestureInputToGameMotionGestureInput> value(new CompleteMotionGestureInputToGameMotionGestureInput()); return value.get(); }
+CompleteMotionGestureInputToGameMotionGestureInput* CompleteMotionGestureInputToGameMotionGestureInput::instance = CompleteMotionGestureInputToGameMotionGestureInput::instance_owner();
 
-    public: static CompleteMotionGestureInputToGameMotionGestureInput* getInstance(){
+    auto CompleteMotionGestureInputToGameMotionGestureInput::getInstance() -> CompleteMotionGestureInputToGameMotionGestureInput*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompleteMotionGestureInputToGameMotionGestureInput::instance();
+                        return CompleteMotionGestureInputToGameMotionGestureInput::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: void init(){
+    auto CompleteMotionGestureInputToGameMotionGestureInput::init() -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -196,7 +204,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_COMPLETEMOTIONGESTUREINPUTTOGAMEMOTIONGESTUREINPUT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTPROCESSORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_INPUTPROCESSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/InputProcessorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,25 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/InputProcessor.h"
 
-class InputProcessorFactory
-            : public Object
-         {
 
-    private: static InputProcessorFactory* instance() { static std::unique_ptr<InputProcessorFactory> value(new InputProcessorFactory()); return value.get(); }
+InputProcessorFactory::InputProcessorFactory() : inputProcessor(new InputProcessor()) {
+        }
+        auto InputProcessorFactory::instance_owner() -> InputProcessorFactory* { static std::unique_ptr<InputProcessorFactory> value(new InputProcessorFactory()); return value.get(); }
+InputProcessorFactory* InputProcessorFactory::instance = InputProcessorFactory::instance_owner();
 
-    public: static InputProcessorFactory* getInstance(){
+    auto InputProcessorFactory::getInstance() -> InputProcessorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputProcessorFactory::instance();
+                        return InputProcessorFactory::instance;
     
 }
 
 
-    private: InputProcessor* inputProcessor = new InputProcessor();
-
-    public: InputProcessor* getInputProcessor(){
+    auto InputProcessorFactory::getInputProcessor() -> InputProcessor*{
 
 
 
@@ -74,7 +82,6 @@ class InputProcessorFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_INPUTPROCESSORFACTORY_CPP

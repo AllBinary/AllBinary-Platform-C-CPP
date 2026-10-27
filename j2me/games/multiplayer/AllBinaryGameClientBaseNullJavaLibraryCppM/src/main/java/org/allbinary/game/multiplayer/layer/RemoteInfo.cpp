@@ -10,6 +10,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_REMOTEINFO_CPP
+        #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_REMOTEINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/multiplayer/layer/RemoteInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -40,19 +50,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RemoteInfo
-            : public Object
-         {
+auto RemoteInfo::REMOTE_INFO_owner() -> RemoteInfo* { static std::unique_ptr<RemoteInfo> value(new RemoteInfo(StringUtil::getInstance()->EMPTY_STRING,  -1,  -1, RemoteInfo::NEW_PLAYER_ID)); return value.get(); }
+RemoteInfo* RemoteInfo::REMOTE_INFO = RemoteInfo::REMOTE_INFO_owner();
 
-    public: static inline const int32_t NEW_PLAYER_ID = 0;
-
-    public: static RemoteInfo* REMOTE_INFO() { static std::unique_ptr<RemoteInfo> value(new RemoteInfo(StringUtil::getInstance()->EMPTY_STRING,  -1,  -1, RemoteInfo::NEW_PLAYER_ID)); return value.get(); }
-
-public: RemoteInfo(std::string username, int32_t actorSessionId, int32_t playerInputId, int32_t id){
+RemoteInfo::RemoteInfo(std::string username, int32_t actorSessionId, int32_t playerInputId, int32_t id){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_REMOTEINFO_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GAMESTRINGS_CPP
+        #define ORG_ALLBINARY_GAME_GAMESTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/GameStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,43 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameStrings
-            : public Object
-         {
 
-    private: static GameStrings* instance() { static std::unique_ptr<GameStrings> value(new GameStrings()); return value.get(); }
+GameStrings::GameStrings() {
+        }
+        auto GameStrings::instance_owner() -> GameStrings* { static std::unique_ptr<GameStrings> value(new GameStrings()); return value.get(); }
+GameStrings* GameStrings::instance = GameStrings::instance_owner();
 
-    public: static GameStrings* getInstance(){
+    auto GameStrings::getInstance() -> GameStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameStrings::instance();
+                        return GameStrings::instance;
     
 }
 
 
-    public: const std::string PROCESS_TICK = "processTick";
 
-    public: const std::string ON_GAME_INITIALIZED = "onGameInitialized";
 
-    public: const std::string UPDATESURFACE = "updateSurface";
-
-    public: const std::string ON_SET_DISPLAYABLE = "onSetDisplayable";
-
-    public: const std::string UNPAUSE = "unPause";
-
-    public: const std::string TOGGLE_MENU = "toggleMenu";
-
-    public: const std::string SET_GAME_OVER = "setGameOver";
-
-    public: const std::string GAME_STATE = "Game State: ";
-
-    public: const std::string SET_GAME_STATE = "setGameState";
-
-    public: const std::string STOP_GAME_CANVAS_RUNNABLE_INTERFACE = "stopGameCanvasRunnableInterface";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_GAMESTRINGS_CPP

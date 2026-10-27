@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORENAMEPERSISTANCESINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORENAMEPERSISTANCESINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoreNamePersistanceSingleton.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -120,37 +130,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScoreNamePersistanceSingleton
-            : public Object
-         {
 
-    private: static HighScoreNamePersistanceSingleton* SINGLETON() { static std::unique_ptr<HighScoreNamePersistanceSingleton> value(new HighScoreNamePersistanceSingleton()); return value.get(); }
+HighScoreNamePersistanceSingleton::HighScoreNamePersistanceSingleton() : logUtil(LogUtil::getInstance()), tsUtil(TsUtil::getInstance()), commonStrings(CommonStrings::getInstance()), platformRecordIdUtil(PlatformRecordIdUtil::getInstance()), name(StringUtil::getInstance()->EMPTY_STRING), nameBasicArrayList(new BasicArrayListD()) {
+        }
+        auto HighScoreNamePersistanceSingleton::SINGLETON_owner() -> HighScoreNamePersistanceSingleton* { static std::unique_ptr<HighScoreNamePersistanceSingleton> value(new HighScoreNamePersistanceSingleton()); return value.get(); }
+HighScoreNamePersistanceSingleton* HighScoreNamePersistanceSingleton::SINGLETON = HighScoreNamePersistanceSingleton::SINGLETON_owner();
 
-    public: static HighScoreNamePersistanceSingleton* getInstance(){
+    auto HighScoreNamePersistanceSingleton::getInstance() -> HighScoreNamePersistanceSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoreNamePersistanceSingleton::SINGLETON();
+                        return HighScoreNamePersistanceSingleton::SINGLETON;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: PlatformRecordIdUtil* platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
-
-    private: const std::string RECORD_ID = "_SN";
-
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: BasicArrayList* nameBasicArrayList = new BasicArrayListD();
-
-    public: void clear(){
+    auto HighScoreNamePersistanceSingleton::clear() -> void{
 this->name= StringUtil::getInstance()->EMPTY_STRING;
     
 }
@@ -158,7 +154,7 @@ this->name= StringUtil::getInstance()->EMPTY_STRING;
 
                 //@Throws(Exception.constructor)
             
-    public: void deleteAll(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo){
+    auto HighScoreNamePersistanceSingleton::deleteAll(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo) -> void{
 
     int32_t size = this->nameBasicArrayList->size();;
     
@@ -172,7 +168,7 @@ this->name= StringUtil::getInstance()->EMPTY_STRING;
 
     int32_t integer = this->nameBasicArrayList->objectArray[index];;
     
-this->delete(abeClientInformation, gameInfo, integer.intValue());
+this->delete_(abeClientInformation, gameInfo, integer.intValue());
     
 }
 
@@ -181,7 +177,7 @@ this->clear();
 }
 
 
-    private: std::string getRecordId(AbeClientInformationInterface* abeClientInformation){
+    auto HighScoreNamePersistanceSingleton::getRecordId(AbeClientInformationInterface* abeClientInformation) -> std::string{
 
 
 
@@ -193,7 +189,7 @@ this->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void delete_(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, int32_t deleteId){
+    auto HighScoreNamePersistanceSingleton::delete_(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, int32_t deleteId) -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -236,7 +232,7 @@ recordStore->closeRecordStore();
 }
 
 
-    public: BasicArrayList* getIds(){
+    auto HighScoreNamePersistanceSingleton::getIds() -> BasicArrayList*{
 
 
 
@@ -246,7 +242,7 @@ recordStore->closeRecordStore();
 }
 
 
-    public: std::string load(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo){
+    auto HighScoreNamePersistanceSingleton::load(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo) -> std::string{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -350,7 +346,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->LO
 }
 
 
-    public: void save(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, std::string name){
+    auto HighScoreNamePersistanceSingleton::save(AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo, std::string name) -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -413,7 +409,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SA
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORENAMEPERSISTANCESINGLETON_CPP

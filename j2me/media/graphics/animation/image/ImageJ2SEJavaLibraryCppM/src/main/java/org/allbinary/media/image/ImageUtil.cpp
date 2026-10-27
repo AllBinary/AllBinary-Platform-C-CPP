@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,35 +101,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageUtil
-            : public Object
-         {
+auto ImageUtil::instance_owner() -> ImageUtil* { static std::unique_ptr<ImageUtil> value(new ImageUtil()); return value.get(); }
+ImageUtil* ImageUtil::instance = ImageUtil::instance_owner();
 
-    private: static ImageUtil* instance() { static std::unique_ptr<ImageUtil> value(new ImageUtil()); return value.get(); }
-
-    public: static ImageUtil* getInstance(){
+    auto ImageUtil::getInstance() -> ImageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageUtil::instance();
+                        return ImageUtil::instance;
     
 }
 
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: std::string IIOIMAGE_POOL_NAME = "IIOIMAGE_POOL_NAME";
-
-    private: const std::string CREATE_BUFFERED_IMAGE = "createBufferedImage";
-
-private: ImageUtil(){
+ImageUtil::ImageUtil() : commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()){
 }
 
 
-    private: GraphicsConfiguration* getDefaultConfiguration(){
+    auto ImageUtil::getDefaultConfiguration() -> GraphicsConfiguration*{
 
     GraphicsEnvironment* ge = GraphicsEnvironment::getLocalGraphicsEnvironment();;
     
@@ -135,7 +134,7 @@ private: ImageUtil(){
 }
 
 
-    public: BufferedImage* create(int32_t width, int32_t height){
+    auto ImageUtil::create(int32_t width, int32_t height) -> BufferedImage*{
 
     GraphicsConfiguration* graphicsConfiguration = this->getDefaultConfiguration();;
     
@@ -150,7 +149,7 @@ private: ImageUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage*> createBufferedImageForResize(std::vector<BufferedImage*> bufferedImageArray, int32_t percent, bool scale){
+    auto ImageUtil::createBufferedImageForResize(std::vector<BufferedImage*> bufferedImageArray, int32_t percent, bool scale) -> std::vector<BufferedImage*>{
 
     int32_t size = bufferedImageArray.size();;
     
@@ -190,7 +189,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImage, newWid
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage*> createBufferedImage2(std::vector<BufferedImage*> bufferedImageArray, float percent, bool scale){
+    auto ImageUtil::createBufferedImage2(std::vector<BufferedImage*> bufferedImageArray, float percent, bool scale) -> std::vector<BufferedImage*>{
 
     int32_t size = bufferedImageArray.size();;
     
@@ -230,7 +229,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImage, newWid
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage*> createBufferedImage3(std::vector<BufferedImage*> bufferedImageArray, int32_t width, int32_t height, bool scale){
+    auto ImageUtil::createBufferedImage3(std::vector<BufferedImage*> bufferedImageArray, int32_t width, int32_t height, bool scale) -> std::vector<BufferedImage*>{
 
     int32_t size = bufferedImageArray.size();;
     
@@ -259,7 +258,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImageArray[in
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage* createBufferedImageForSave(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight){
+    auto ImageUtil::createBufferedImageForSave(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight) -> BufferedImage*{
 
 
 
@@ -271,7 +270,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImageArray[in
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage* createBufferedImage(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale){
+    auto ImageUtil::createBufferedImage(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale) -> BufferedImage*{
 
 
 
@@ -283,7 +282,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImageArray[in
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage* createBufferedImageAllowTranslate(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale, bool allowTranslate){
+    auto ImageUtil::createBufferedImageAllowTranslate(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale, bool allowTranslate) -> BufferedImage*{
 
     double width = bufferedImage->getWidth();;
     
@@ -356,7 +355,7 @@ graphics->drawRenderedImage(bufferedImage, affineTransform);
 
                 //@Throws(Exception.constructor)
             
-    public: BufferedImage* createBufferedImageWithLargerCanvas(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight){
+    auto ImageUtil::createBufferedImageWithLargerCanvas(BufferedImage* bufferedImage, int32_t newWidth, int32_t newHeight) -> BufferedImage*{
 
     double width = bufferedImage->getWidth();;
     
@@ -411,7 +410,7 @@ graphics->drawImage(bufferedImage, dx4, dy4,
 }
 
 
-    public: BufferedImage* convertToBufferedImage(java::awt::Image* toolkitImage){
+    auto ImageUtil::convertToBufferedImage(java::awt::Image* toolkitImage) -> BufferedImage*{
 
                         if(toolkitImage == 
                                     nullptr
@@ -449,7 +448,7 @@ g2d->dispose();
 }
 
 
-    public: BufferedImage* getBufferedImage(Image* image){
+    auto ImageUtil::getBufferedImage(Image* image) -> BufferedImage*{
 
     BufferedImage* bufferedImage;;
     
@@ -483,7 +482,7 @@ bufferedImage= dynamic_cast<BufferedImage*>(j2seImage->getImage());
 }
 
 
-    public: std::string toString(BufferedImage* bufferedImage){
+    auto ImageUtil::toString(BufferedImage* bufferedImage) -> std::string{
 
     CommonLabels* commonLabels = CommonLabels::getInstance();;
     
@@ -513,7 +512,6 @@ stringBuffer->appendint(bufferedImage->getType());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_CPP

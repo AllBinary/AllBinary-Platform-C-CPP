@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/PickupBehavior.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -84,13 +94,9 @@
 #include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
 #include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
 
-class PickupBehavior
-            : public Object
-        , public PickupBehaviorInterface {
+Object* PickupBehavior::NULL_PICKUP_BEHAVIOR = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static inline Object* NULL_PICKUP_BEHAVIOR = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static PickupBehavior* getNullInstance(){
+    auto PickupBehavior::getNullInstance() -> PickupBehavior*{
 
                         if(PickupBehavior::NULL_PICKUP_BEHAVIOR == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -109,13 +115,7 @@ class PickupBehavior
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: int32_t countedIndex;
-
-    private: CollidableCompositeLayer* ownerLayerInterface;
-
-public: PickupBehavior(CollidableCompositeLayer* ownerLayerInterface, int32_t countedIndex){
+PickupBehavior::PickupBehavior(CollidableCompositeLayer* ownerLayerInterface, int32_t countedIndex) : logUtil(LogUtil::getInstance()){
 this->ownerLayerInterface= ownerLayerInterface;
     
 this->countedIndex= countedIndex;
@@ -123,7 +123,7 @@ this->countedIndex= countedIndex;
 }
 
 
-    public: void doPickup(PickupProcessorInterface* pickupProcessorInterface){
+    auto PickupBehavior::doPickup(PickupProcessorInterface* pickupProcessorInterface) -> void{
 
         try {
             
@@ -152,7 +152,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "doPickup", &e);
 }
 
 
-    public: void doPickupLayer(PickedUpLayerInterface* pickupLayerInterface){
+    auto PickupBehavior::doPickupLayer(PickedUpLayerInterface* pickupLayerInterface) -> void{
 
         try {
             
@@ -217,7 +217,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, "doPickup", &e);
 }
 
 
-    protected: void add(CountedPickedUpLayerInterfaceFactoryInterface* countedPickedUpLayerInterfaceFactoryInterface){
+    auto PickupBehavior::add(CountedPickedUpLayerInterfaceFactoryInterface* countedPickedUpLayerInterfaceFactoryInterface) -> void{
 
     int32_t partIndex = countedPickedUpLayerInterfaceFactoryInterface->getId() +this->countedIndex;;
     
@@ -226,7 +226,7 @@ this->addAt(countedPickedUpLayerInterfaceFactoryInterface, partIndex);
 }
 
 
-    protected: void addAt(CountedPickedUpLayerInterfaceFactoryInterface* countedPickedUpLayerInterfaceFactoryInterface, int32_t partIndex){
+    auto PickupBehavior::addAt(CountedPickedUpLayerInterfaceFactoryInterface* countedPickedUpLayerInterfaceFactoryInterface, int32_t partIndex) -> void{
 
     CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(this->ownerLayerInterface);;
     
@@ -238,7 +238,7 @@ countedLayerInterfaceFactory->setTotal(countedLayerInterfaceFactory->getTotal() 
 }
 
 
-    public: CountedLayerInterfaceFactoryPart* getFirstAvailableCountedLayerInterfaceFactory(std::vector<PickedUpLayerType*> pickedUpLayerTypeArray){
+    auto PickupBehavior::getFirstAvailableCountedLayerInterfaceFactory(std::vector<PickedUpLayerType*> pickedUpLayerTypeArray) -> CountedLayerInterfaceFactoryPart*{
 
     CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(this->ownerLayerInterface);;
     
@@ -307,7 +307,7 @@ countedPickedUpLayerInterfaceFactory= nextCountedLayerInterfaceFactory->getCount
 
                 //@Throws(Exception.constructor)
             
-    public: CountedLayerInterfaceFactoryPart* getCountedLayerInterfaceFactoryForSlot(int32_t slotIndex){
+    auto PickupBehavior::getCountedLayerInterfaceFactoryForSlot(int32_t slotIndex) -> CountedLayerInterfaceFactoryPart*{
 
     int32_t currentSlot = 0;;
     
@@ -369,7 +369,7 @@ nextCountedLayerInterfaceFactory= dynamic_cast<CountedLayerInterfaceFactoryPart*
 }
 
 
-    public: int32_t getCountedIndex(){
+    auto PickupBehavior::getCountedIndex() -> int32_t{
 
 
 
@@ -379,7 +379,6 @@ nextCountedLayerInterfaceFactory= dynamic_cast<CountedLayerInterfaceFactoryPart*
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/velocity/VelocityProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,10 @@
         #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 #include "org/allbinary/game/physics/velocity/VelocityInterface.h"
 
-class VelocityProperties: public BasicVelocityProperties, public VelocityInterface {
+auto VelocityProperties::NULL_VELOCITY_PROPERTIES_owner() -> VelocityProperties* { static std::unique_ptr<VelocityProperties> value(new VelocityProperties(0, 0)); return value.get(); }
+VelocityProperties* VelocityProperties::NULL_VELOCITY_PROPERTIES = VelocityProperties::NULL_VELOCITY_PROPERTIES_owner();
 
-    public: static VelocityProperties* NULL_VELOCITY_PROPERTIES() { static std::unique_ptr<VelocityProperties> value(new VelocityProperties(0, 0)); return value.get(); }
-
-    private: int32_t maxForwardVelocity= 0;
-
-    private: int32_t maxReverseVelocity= 0;
-
-public: VelocityProperties(int32_t maxForwardVelocity, int32_t maxReverseVelocity){
+VelocityProperties::VelocityProperties(int32_t maxForwardVelocity, int32_t maxReverseVelocity){
 this->setMaxForwardVelocity(maxForwardVelocity);
     
 this->setMaxReverseVelocity(maxReverseVelocity);
@@ -61,7 +66,7 @@ this->setMaxReverseVelocity(maxReverseVelocity);
 }
 
 
-    public: int32_t getMaxForwardVelocity(){
+    auto VelocityProperties::getMaxForwardVelocity() -> int32_t{
 
 
 
@@ -71,13 +76,13 @@ this->setMaxReverseVelocity(maxReverseVelocity);
 }
 
 
-    public: void setMaxForwardVelocity(int32_t maxForwardVelocity){
+    auto VelocityProperties::setMaxForwardVelocity(int32_t maxForwardVelocity) -> void{
 this->maxForwardVelocity= maxForwardVelocity;
     
 }
 
 
-    public: int32_t getMaxReverseVelocity(){
+    auto VelocityProperties::getMaxReverseVelocity() -> int32_t{
 
 
 
@@ -87,49 +92,49 @@ this->maxForwardVelocity= maxForwardVelocity;
 }
 
 
-    public: void setMaxReverseVelocity(int32_t maxReverseVelocity){
+    auto VelocityProperties::setMaxReverseVelocity(int32_t maxReverseVelocity) -> void{
 this->maxReverseVelocity= maxReverseVelocity;
     
 }
 
 
-    public: void limitMaxXYForwardVelocity(){
+    auto VelocityProperties::limitMaxXYForwardVelocity() -> void{
 this->limitMaxXYVelocity(this->getMaxForwardVelocity());
     
 }
 
 
-    public: void limitMaxXYReverseVelocity(){
+    auto VelocityProperties::limitMaxXYReverseVelocity() -> void{
 this->limitMaxXYVelocity(this->getMaxReverseVelocity());
     
 }
 
 
-    public: void limitMaxYForwardVelocity(){
+    auto VelocityProperties::limitMaxYForwardVelocity() -> void{
 this->limitMaxYVelocity(this->getMaxForwardVelocity());
     
 }
 
 
-    public: void limitMaxYReverseVelocity(){
+    auto VelocityProperties::limitMaxYReverseVelocity() -> void{
 this->limitMaxYVelocity(this->getMaxReverseVelocity());
     
 }
 
 
-    public: void limitMaxXForwardVelocity(){
+    auto VelocityProperties::limitMaxXForwardVelocity() -> void{
 this->limitMaxXVelocity(this->getMaxForwardVelocity());
     
 }
 
 
-    public: void limitMaxXReverseVelocity(){
+    auto VelocityProperties::limitMaxXReverseVelocity() -> void{
 this->limitMaxXVelocity(this->getMaxReverseVelocity());
     
 }
 
 
-    public: bool isOverXYMaxForwardVelocity(){
+    auto VelocityProperties::isOverXYMaxForwardVelocity() -> bool{
 
 
 
@@ -139,7 +144,7 @@ this->limitMaxXVelocity(this->getMaxReverseVelocity());
 }
 
 
-    public: bool isOverXYMaxReverseVelocity(){
+    auto VelocityProperties::isOverXYMaxReverseVelocity() -> bool{
 
 
 
@@ -149,7 +154,7 @@ this->limitMaxXVelocity(this->getMaxReverseVelocity());
 }
 
 
-    public: void limitXYToForwardAndReverseMaxVelocity(){
+    auto VelocityProperties::limitXYToForwardAndReverseMaxVelocity() -> void{
 this->limitMaxXYForwardVelocity();
     
 this->limitMaxXYReverseVelocity();
@@ -157,7 +162,7 @@ this->limitMaxXYReverseVelocity();
 }
 
 
-    public: void limitMaxXYVelocity(int32_t maxVelocity){
+    auto VelocityProperties::limitMaxXYVelocity(int32_t maxVelocity) -> void{
 this->limitMaxXVelocity(maxVelocity);
     
 this->limitMaxYVelocity(maxVelocity);
@@ -165,12 +170,12 @@ this->limitMaxYVelocity(maxVelocity);
 }
 
 
-    public: void limitMaxPositiveYVelocity(int32_t maxVelocity){
+    auto VelocityProperties::limitMaxPositiveYVelocity(int32_t maxVelocity) -> void{
 
-                        if(this->velocityYBasicDecimal.getUnscaled() > maxVelocity)
+                        if(this->velocityYBasicDecimal->getUnscaled() > maxVelocity)
                         
                                     {
-                                    this->velocityYBasicDecimal.setint(maxVelocity);
+                                    this->velocityYBasicDecimal->setint(maxVelocity);
     
 
                                     }
@@ -178,12 +183,12 @@ this->limitMaxYVelocity(maxVelocity);
 }
 
 
-    public: void limitMaxNegativeYVelocity(int32_t maxVelocity){
+    auto VelocityProperties::limitMaxNegativeYVelocity(int32_t maxVelocity) -> void{
 
-                        if(this->velocityYBasicDecimal.getUnscaled() <  -maxVelocity)
+                        if(this->velocityYBasicDecimal->getUnscaled() <  -maxVelocity)
                         
                                     {
-                                    this->velocityYBasicDecimal.setint( -maxVelocity);
+                                    this->velocityYBasicDecimal->setint( -maxVelocity);
     
 
                                     }
@@ -191,7 +196,7 @@ this->limitMaxYVelocity(maxVelocity);
 }
 
 
-    public: void limitMaxYVelocity(int32_t maxVelocity){
+    auto VelocityProperties::limitMaxYVelocity(int32_t maxVelocity) -> void{
 this->limitMaxPositiveYVelocity(maxVelocity);
     
 this->limitMaxNegativeYVelocity(maxVelocity);
@@ -199,21 +204,21 @@ this->limitMaxNegativeYVelocity(maxVelocity);
 }
 
 
-    public: void limitMaxXVelocity(int32_t maxVelocity){
+    auto VelocityProperties::limitMaxXVelocity(int32_t maxVelocity) -> void{
 
-                        if(this->velocityXBasicDecimal.getUnscaled() > maxVelocity)
+                        if(this->velocityXBasicDecimal->getUnscaled() > maxVelocity)
                         
                                     {
-                                    this->velocityXBasicDecimal.setint(maxVelocity);
+                                    this->velocityXBasicDecimal->setint(maxVelocity);
     
 
                                     }
                                 
 
-                        if(this->velocityXBasicDecimal.getUnscaled() <  -maxVelocity)
+                        if(this->velocityXBasicDecimal->getUnscaled() <  -maxVelocity)
                         
                                     {
-                                    this->velocityXBasicDecimal.setint( -maxVelocity);
+                                    this->velocityXBasicDecimal->setint( -maxVelocity);
     
 
                                     }
@@ -221,9 +226,9 @@ this->limitMaxNegativeYVelocity(maxVelocity);
 }
 
 
-    public: bool isOverXYMaxVelocity(int32_t maxVelocity){
+    auto VelocityProperties::isOverXYMaxVelocity(int32_t maxVelocity) -> bool{
 
-                        if(this->velocityXBasicDecimal.getUnscaled() > maxVelocity)
+                        if(this->velocityXBasicDecimal->getUnscaled() > maxVelocity)
                         
                                     {
                                     
@@ -236,7 +241,7 @@ this->limitMaxNegativeYVelocity(maxVelocity);
                                     }
                                 
 
-                        if(this->velocityXBasicDecimal.getUnscaled() <  -maxVelocity)
+                        if(this->velocityXBasicDecimal->getUnscaled() <  -maxVelocity)
                         
                                     {
                                     
@@ -249,7 +254,7 @@ this->limitMaxNegativeYVelocity(maxVelocity);
                                     }
                                 
 
-                        if(this->velocityYBasicDecimal.getUnscaled() > maxVelocity)
+                        if(this->velocityYBasicDecimal->getUnscaled() > maxVelocity)
                         
                                     {
                                     
@@ -262,7 +267,7 @@ this->limitMaxNegativeYVelocity(maxVelocity);
                                     }
                                 
 
-                        if(this->velocityYBasicDecimal.getUnscaled() <  -maxVelocity)
+                        if(this->velocityYBasicDecimal->getUnscaled() <  -maxVelocity)
                         
                                     {
                                     
@@ -283,23 +288,22 @@ this->limitMaxNegativeYVelocity(maxVelocity);
 }
 
 
-    public: void setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
-super.setVelocityi(magnitude, angle, otherAngle);
+    auto VelocityProperties::setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle) -> void{
+BasicVelocityProperties::setVelocityi(magnitude, angle, otherAngle);
     
 this->limitXYToForwardAndReverseMaxVelocity();
     
 }
 
 
-    public: void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
-super.addVelocityi(magnitude, angle, otherAngle);
+    auto VelocityProperties::addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle) -> void{
+BasicVelocityProperties::addVelocityi(magnitude, angle, otherAngle);
     
 this->limitXYToForwardAndReverseMaxVelocity();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYPROPERTIES_CPP

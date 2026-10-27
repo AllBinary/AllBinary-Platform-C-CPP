@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORIESVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORIESVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoriesView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,13 +73,8 @@
         #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 #include "org/allbinary/business/category/store/theme/StoreThemeCategoryView.h"
 
-class StoreThemeCategoriesView
-            : public Object
-        , public DomNodeInterface {
 
-    private: StoreThemeCategoryInterface* categoryInterface;
-
-public: StoreThemeCategoriesView(StoreThemeCategoryInterface* categoryInterface){
+StoreThemeCategoriesView::StoreThemeCategoriesView(StoreThemeCategoryInterface* categoryInterface){
 this->categoryInterface= categoryInterface;
     
 }
@@ -77,7 +82,7 @@ this->categoryInterface= categoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StoreThemeCategoriesView::toXmlNode(Document* document) -> Node*{
 
     Node* node = (new StoreThemeCategoryView(this->categoryInterface))->toXmlNode(document);;
     
@@ -113,7 +118,6 @@ node->appendChild(childCategoryNode);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORIESVIEW_CPP

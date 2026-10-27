@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_GENERICVALIDATOR_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_GENERICVALIDATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/validate/GenericValidator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,13 +60,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/validate/ValidatorBase.h"
 
-class GenericValidator: public ValidatorBase {
 
-public: GenericValidator(){
+GenericValidator::GenericValidator(){
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto GenericValidator::toValidationInfoDoc() -> Document*{
 
 
 
@@ -66,7 +75,7 @@ public: GenericValidator(){
 }
 
 
-    public: Node* toValidationInfoNode(org::w3c::dom::Document* document){
+    auto GenericValidator::toValidationInfoNode(org::w3c::dom::Document* document) -> Node*{
 
 
 
@@ -76,7 +85,6 @@ public: GenericValidator(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_GENERICVALIDATOR_CPP

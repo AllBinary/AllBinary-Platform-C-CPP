@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -51,12 +54,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/ThirdPartyInApplicationPurchaseInterface.h"
-#include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
+class LockableFeature;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThirdPartyInApplicationPurchase
-            : public Object
+            : public virtual Object
         , public ThirdPartyInApplicationPurchaseInterface {
 
+
+            
+    public: ThirdPartyInApplicationPurchase();
+        
     public: bool isPurchased(LockableFeature* lockableFeature);
 
     public: void onCreate(Object* anyType, Object* stateObject);
@@ -66,8 +77,10 @@ class ThirdPartyInApplicationPurchase
     public: void onStart();
 
     public: void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject);
+    public: void onActivityResult(int32_t requestCode, int32_t resultCode, const std::string& dataObject) { return onActivityResult(requestCode, resultCode, JavaString::box(dataObject)); }
 
     public: void onSaveInstanceState(Object* anyType);
+    public: void onSaveInstanceState(const std::string& anyType) { return onSaveInstanceState(JavaString::box(anyType)); }
 
     public: void onStop();
 
@@ -81,7 +94,7 @@ class ThirdPartyInApplicationPurchase
 
     public: bool isEnabled();
 
-    protected: void requestProducts();
+    /*protected*/ public: void requestProducts();
 
 };
 
@@ -89,3 +102,19 @@ class ThirdPartyInApplicationPurchase
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/ThirdPartyInApplicationPurchaseInterface.h")
+#include "org/allbinary/logic/system/security/licensing/ThirdPartyInApplicationPurchaseInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/LockableFeature.h")
+#include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
+#endif
+
+        #endif
+    

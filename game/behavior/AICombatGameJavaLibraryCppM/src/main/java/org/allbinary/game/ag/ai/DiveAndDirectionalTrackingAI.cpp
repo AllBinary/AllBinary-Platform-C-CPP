@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/DiveAndDirectionalTrackingAI.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -137,41 +147,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DiveAndDirectionalTrackingAI: public BasicAI, public TrackingEventListenerInterface, public DestroyedEventListenerInterface {
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
-
-    private: DirectionFactory* directionFactory = DirectionFactory::getInstance();
-
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(500);
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    private: DirectionalInterface* directionalInterface;
-
-    private: BasicVelocityProperties* velocityInterface;
-
-    private: const std::vector<int32_t> directionToKeyMap = {Canvas::LEFT,Canvas::DOWN,Canvas::UP,Canvas::RIGHT};
-
-    private: bool initialDropped= false;
-
-    private: bool diveP= false;
-
-    private: Direction* directionOfTarget = Direction::getInstance(0);
-
-    private: const int32_t MIN_DISTANCE = 40;
-
-    private: AllBinaryLayer* lastTrackingLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-    private: ArtificialIntelligenceInterface* artificialIntelligenceInterface;
-
-    private: Visitor* aiVistor;
-
-    private: Direction* lastDirection = DirectionFactory::getInstance()->NO_DIRECTION;
-
-public: DiveAndDirectionalTrackingAI(AllBinaryLayer* ownerLayerInterface, ArtificialIntelligenceInterface* artificialIntelligenceInterface, GameInput* gameInput, Visitor* visitor) : BasicAI(ownerLayerInterface, gameInput){
+DiveAndDirectionalTrackingAI::DiveAndDirectionalTrackingAI(AllBinaryLayer* ownerLayerInterface, ArtificialIntelligenceInterface* artificialIntelligenceInterface, GameInput* gameInput, Visitor* visitor) : BasicAI(ownerLayerInterface, gameInput), mathUtil(MathUtil::getInstance()), directionFactory(DirectionFactory::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), timeDelayHelper(new TimeDelayHelper(500)), list(new BasicArrayListD()), directionToKeyMap({Canvas::LEFT,Canvas::DOWN,Canvas::UP,Canvas::RIGHT}), directionOfTarget(Direction::getInstance(0)), lastTrackingLayerInterface(AllBinaryLayer::NULL_ALLBINARY_LAYER), lastDirection(DirectionFactory::getInstance()->NO_DIRECTION){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -201,7 +178,7 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto DiveAndDirectionalTrackingAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->isBeyondTarget())
                         
@@ -235,7 +212,7 @@ this->list->clear();
 }
 
 
-    private: void init(){
+    auto DiveAndDirectionalTrackingAI::init() -> void{
 this->diveP= false;
     
 this->directionOfTarget= DirectionFactory::getInstance()->NOT_BORDERED_WITH;
@@ -247,7 +224,7 @@ TrackingEventHandler::getInstance()->addListenerInterface(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void target(AllBinaryLayerManager* allBinaryLayerManager){
+    auto DiveAndDirectionalTrackingAI::target(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->list->size() == 0)
                         
@@ -392,7 +369,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent->getLayerInterface();
 
                 //@Throws(Exception.constructor)
             
-    private: void verticalTargeting(int32_t x){
+    auto DiveAndDirectionalTrackingAI::verticalTargeting(int32_t x) -> void{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -428,7 +405,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent->getLayerInterface();
 
                 //@Throws(Exception.constructor)
             
-    private: void horizontalTargeting(int32_t y){
+    auto DiveAndDirectionalTrackingAI::horizontalTargeting(int32_t y) -> void{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -462,7 +439,7 @@ this->lastTrackingLayerInterface= lastTrackingEvent->getLayerInterface();
 }
 
 
-    private: void setDive(){
+    auto DiveAndDirectionalTrackingAI::setDive() -> void{
 this->diveP= true;
     
 this->velocityInterface->zero();
@@ -474,7 +451,7 @@ TrackingEventHandler::getInstance()->removeListener(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void moveRight(){
+    auto DiveAndDirectionalTrackingAI::moveRight() -> void{
 this->setLastDirection(this->directionFactory->RIGHT);
     
 this->directionalInterface->setFrameByDirection(this->lastDirection);
@@ -486,7 +463,7 @@ this->aiVistor->visit(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void moveLeft(){
+    auto DiveAndDirectionalTrackingAI::moveLeft() -> void{
 this->setLastDirection(this->directionFactory->LEFT);
     
 this->directionalInterface->setFrameByDirection(this->lastDirection);
@@ -498,7 +475,7 @@ this->aiVistor->visit(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void moveDown(){
+    auto DiveAndDirectionalTrackingAI::moveDown() -> void{
 this->setLastDirection(this->directionFactory->DOWN);
     
 this->directionalInterface->setFrameByDirection(this->lastDirection);
@@ -510,7 +487,7 @@ this->aiVistor->visit(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void moveUp(){
+    auto DiveAndDirectionalTrackingAI::moveUp() -> void{
 this->setLastDirection(this->directionFactory->UP);
     
 this->directionalInterface->setFrameByDirection(this->lastDirection);
@@ -522,7 +499,7 @@ this->aiVistor->visit(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void dive(){
+    auto DiveAndDirectionalTrackingAI::dive() -> void{
 this->directionalInterface->setFrameByDirection(this->directionOfTarget);
     
 this->aiVistor->visit(this);
@@ -532,15 +509,15 @@ this->aiVistor->visit(this);
 
                 //@Throws(Exception.constructor)
             
-    private: void attack(){
-super.processKeyAI(Canvas::KEY_NUM1);
+    auto DiveAndDirectionalTrackingAI::attack() -> void{
+BasicAI::processKeyAI(Canvas::KEY_NUM1);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void drop(){
+    auto DiveAndDirectionalTrackingAI::drop() -> void{
 
                         if(this->timeDelayHelper->isTime(this->gameTickTimeDelayHelper->startTime))
                         
@@ -555,7 +532,7 @@ this->aiVistor->visit(this);
 }
 
 
-    private: bool isBeyondTarget(){
+    auto DiveAndDirectionalTrackingAI::isBeyondTarget() -> bool{
 
                         if(this->directionOfTarget == this->directionFactory->DOWN)
                         
@@ -689,19 +666,19 @@ this->aiVistor->visit(this);
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto DiveAndDirectionalTrackingAI::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onMovement(TrackingEvent* trackingEvent){
+    auto DiveAndDirectionalTrackingAI::onMovement(TrackingEvent* trackingEvent) -> void{
 this->list->add(trackingEvent);
     
 }
 
 
-    public: void onDestroyed(DestroyedEvent* destroyedEvent){
+    auto DiveAndDirectionalTrackingAI::onDestroyed(DestroyedEvent* destroyedEvent) -> void{
 
                         if(this->getOwnerLayerInterface() == destroyedEvent->getLayerInterface())
                         
@@ -716,7 +693,7 @@ DestroyedEventHandler::getInstance()->removeListener(this);
 }
 
 
-    public: void setLastDirection(Direction* lastDirection){
+    auto DiveAndDirectionalTrackingAI::setLastDirection(Direction* lastDirection) -> void{
 this->lastDirection= lastDirection;
     
 
@@ -726,7 +703,7 @@ this->lastDirection= lastDirection;
                         if(value < 4)
                         
                                     {
-                                    super.setLastKey(this->directionToKeyMap[value]);
+                                    BasicAI::setLastKey(this->directionToKeyMap[value]);
     
 
                                     }
@@ -734,8 +711,8 @@ this->lastDirection= lastDirection;
 }
 
 
-    public: void setLastKey(int32_t lastKey){
-super.setLastKey(lastKey);
+    auto DiveAndDirectionalTrackingAI::setLastKey(int32_t lastKey) -> void{
+BasicAI::setLastKey(lastKey);
     
 
                         if(this->getLastKey() == Canvas::LEFT)
@@ -776,7 +753,7 @@ super.setLastKey(lastKey);
 }
 
 
-    public: Direction* getLastDirection(){
+    auto DiveAndDirectionalTrackingAI::getLastDirection() -> Direction*{
 
 
 
@@ -786,11 +763,11 @@ super.setLastKey(lastKey);
 }
 
 
-    public: std::string toString(){
+    auto DiveAndDirectionalTrackingAI::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toString());
+stringBuffer->append(BasicAI::toString());
     
 stringBuffer->append(" LastDirection: ");
     
@@ -805,7 +782,6 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getLastDirection(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAI_CPP

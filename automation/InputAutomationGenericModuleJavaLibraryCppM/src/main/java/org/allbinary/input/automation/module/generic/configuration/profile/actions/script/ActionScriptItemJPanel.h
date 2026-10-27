@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_ACTIONSCRIPTITEMJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_ACTIONSCRIPTITEMJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +51,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JPanel.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GridLayout.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GroupLayout.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Short.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Dimension.h"
+class GridLayout;
+class GroupLayout;
+class Short;
+class Dimension;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ActionScriptItemJPanel: public javax::swing::JPanel {
 
 public: ActionScriptItemJPanel();
@@ -93,3 +102,25 @@ public: ActionScriptItemJPanel();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_ACTIONSCRIPTITEMJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_ACTIONSCRIPTITEMJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_ACTIONSCRIPTITEMJPANEL_H_COMPLETE
+        #if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JPanel.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JPanel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GridLayout.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GridLayout.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GroupLayout.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GroupLayout.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Short.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Short.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Dimension.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/Dimension.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURETOMOTIONGESTUREACTIONASSOCIATION_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURETOMOTIONGESTUREACTIONASSOCIATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class CompleteMotionGestureInputEvent;
+class BasicArrayList;
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MotionGestureToMotionGestureActionAssociation
-            : public Object
+            : public virtual Object
          {
 
     private: BasicArrayList* list;
@@ -80,3 +85,16 @@ public: MotionGestureToMotionGestureActionAssociation(BasicArrayList* list, Comp
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURETOMOTIONGESTUREACTIONASSOCIATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURETOMOTIONGESTUREACTIONASSOCIATION_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURETOMOTIONGESTUREACTIONASSOCIATION_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/CompleteMotionGestureInputEvent.h>)
+#include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

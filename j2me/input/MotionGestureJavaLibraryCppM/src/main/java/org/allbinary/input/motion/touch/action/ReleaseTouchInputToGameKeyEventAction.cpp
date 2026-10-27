@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RELEASETOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RELEASETOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/touch/action/ReleaseTouchInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,11 +81,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* ReleaseTouchInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto ReleaseTouchInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(ReleaseTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -94,9 +102,7 @@ class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGesture
 }
 
 
-    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
-
-private: ReleaseTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Release Action", TouchMotionGestureFactory::getInstance()->RELEASED, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+ReleaseTouchInputToGameKeyEventAction::ReleaseTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Release Action", TouchMotionGestureFactory::getInstance()->RELEASED, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()), NONE(GameKeyFactory::getInstance()->NONE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -116,18 +122,17 @@ this->setGameKeyEvent(GameKeyEventFactory::getInstance()->getInstanceForInput(th
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
     
 }
 
 }
 
 
-    public: void update(){
+    auto ReleaseTouchInputToGameKeyEventAction::update() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RELEASETOUCHINPUTTOGAMEKEYEVENTACTION_CPP

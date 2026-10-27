@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,21 +38,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/AbFileInputStream.h>
-
-      
-#include <org/allbinary/logic/io/StreamUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class LogUtil;
+class AbFileInputStream;
+class StreamUtil;
+class CommonStrings;
+class BasicArrayList;
 
 
 
@@ -66,22 +61,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/file/SimpleFileUtil.h"
-#include "org/allbinary/logic/io/file/AbFile.h"
+        class SimpleFileUtil;
+class AbFile;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileUtil2
-            : public Object
+            : public virtual Object
          {
 
-    private: static FileUtil2* instance() { static std::unique_ptr<FileUtil2> value(new FileUtil2()); return value.get(); }
+    private: static FileUtil2* instance_owner();
+    private: static FileUtil2* instance;
 
     public: static FileUtil2* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: StreamUtil* streamUtil = StreamUtil::getInstance();
+    private: StreamUtil* streamUtil;
 
 private: FileUtil2();
 
@@ -93,3 +93,31 @@ private: FileUtil2();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/AbFileInputStream.h>)
+#include <org/allbinary/logic/io/AbFileInputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
+#include <org/allbinary/logic/io/StreamUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/logic/io/file/SimpleFileUtil.h")
+#include "org/allbinary/logic/io/file/SimpleFileUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/io/file/AbFile.h")
+#include "org/allbinary/logic/io/file/AbFile.h"
+#endif
+
+        #endif
+    

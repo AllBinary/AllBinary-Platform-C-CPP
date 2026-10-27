@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,28 +78,25 @@
         #include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
 #include "org/allbinary/game/combat/destroy/event/DestroyedEventListenerInterface.h"
 
-class DestroyedEventHandler: public BasicEventHandler {
-
-    private: static DestroyedEventHandler* instance() { static std::unique_ptr<DestroyedEventHandler> value(new DestroyedEventHandler()); return value.get(); }
+auto DestroyedEventHandler::instance_owner() -> DestroyedEventHandler* { static std::unique_ptr<DestroyedEventHandler> value(new DestroyedEventHandler()); return value.get(); }
+DestroyedEventHandler* DestroyedEventHandler::instance = DestroyedEventHandler::instance_owner();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static DestroyedEventHandler* getInstance(){
+    auto DestroyedEventHandler::getInstance() -> DestroyedEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DestroyedEventHandler::instance();
+                        return DestroyedEventHandler::instance;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: DestroyedEventHandler(){
+DestroyedEventHandler::DestroyedEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer){
+    auto DestroyedEventHandler::addListener(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer) -> void{
 
                         if(!this->list->contains(collidableDestroyableDamageableLayer))
                         
@@ -103,26 +110,26 @@ private: DestroyedEventHandler(){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeAllListeners(){
+    auto DestroyedEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto DestroyedEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto DestroyedEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -141,20 +148,20 @@ collidableDestroyableDamageableLayer->onDestroyed(dynamic_cast<DestroyedEvent*>(
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto DestroyedEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     DestroyedEventListenerInterface* destroyedEventListenerInterface = dynamic_cast<DestroyedEventListenerInterface*>(eventListenerInterface);;
     
@@ -163,7 +170,6 @@ destroyedEventListenerInterface->onDestroyed(dynamic_cast<DestroyedEvent*>(event
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENTHANDLER_CPP

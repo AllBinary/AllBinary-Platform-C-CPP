@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREABASE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREABASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,51 +69,50 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/GeographicMapCellPositionAreaInterface.h"
 
-class GeographicMapCellPositionAreaBase
-            : public Object
-        , public GeographicMapCellPositionAreaInterface {
 
-    public: static GeographicMapCellPositionAreaBase* NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE() { static std::unique_ptr<GeographicMapCellPositionAreaBase> value(new GeographicMapCellPositionAreaBase()); return value.get(); }
+GeographicMapCellPositionAreaBase::GeographicMapCellPositionAreaBase() {
+        }
+        auto GeographicMapCellPositionAreaBase::NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE_owner() -> GeographicMapCellPositionAreaBase* { static std::unique_ptr<GeographicMapCellPositionAreaBase> value(new GeographicMapCellPositionAreaBase()); return value.get(); }
+GeographicMapCellPositionAreaBase* GeographicMapCellPositionAreaBase::NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE = GeographicMapCellPositionAreaBase::NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE_owner();
 
-    public: GeographicMapCellPosition* getNextSurroundingGeographicMapCellPosition(){
+    auto GeographicMapCellPositionAreaBase::getNextSurroundingGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BasicArrayList* getOccupyingGeographicMapCellPositionList(){
+    auto GeographicMapCellPositionAreaBase::getOccupyingGeographicMapCellPositionList() -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BasicArrayList* getSurroundingGeographicMapCellPositionList(){
+    auto GeographicMapCellPositionAreaBase::getSurroundingGeographicMapCellPositionList() -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(BasicGeographicMap* geographicMapInterface){
+    auto GeographicMapCellPositionAreaBase::update(BasicGeographicMap* geographicMapInterface) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREABASE_CPP

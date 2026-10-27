@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/DisplayableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,19 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DisplayableInterface {
+//Interface - declared in the header
 
-    public: virtual void addCommand(Command* cmd) = 0;
 
-    public: virtual int32_t getHeight() = 0;
 
-    public: virtual int32_t getWidth() = 0;
-
-    public: virtual void removeCommand(Command* cmd) = 0;
-
-    public: virtual void setCommandListener(CommandListener* l) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYABLEINTERFACE_CPP

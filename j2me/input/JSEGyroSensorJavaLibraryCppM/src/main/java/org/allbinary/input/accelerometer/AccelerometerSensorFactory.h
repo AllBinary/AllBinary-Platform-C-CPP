@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_H
         #define ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/SensorFeatureFactory.h>
-
-      
-#include <org/allbinary/input/gyro/AllBinaryOrientationSensor.h>
-
-      
+class Features;
+class SensorFeatureFactory;
+class AllBinaryOrientationSensor;
 
 
 
@@ -58,10 +57,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/accelerometer/NoAccelerometerSensor.h"
+        class NoAccelerometerSensor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AccelerometerSensorFactory
-            : public Object
+            : public virtual Object
          {
 
     private: static inline AllBinaryOrientationSensor* allBinaryAccelerometerSensor;
@@ -72,9 +75,32 @@ class AccelerometerSensorFactory
 
     public: static AllBinaryOrientationSensor* getInstance();
 
+
+            
+    public: AccelerometerSensorFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/SensorFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/SensorFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/gyro/AllBinaryOrientationSensor.h>)
+#include <org/allbinary/input/gyro/AllBinaryOrientationSensor.h>
+#endif
+#if __has_include("org/allbinary/input/accelerometer/NoAccelerometerSensor.h")
+#include "org/allbinary/input/accelerometer/NoAccelerometerSensor.h"
+#endif
+
+        #endif
+    

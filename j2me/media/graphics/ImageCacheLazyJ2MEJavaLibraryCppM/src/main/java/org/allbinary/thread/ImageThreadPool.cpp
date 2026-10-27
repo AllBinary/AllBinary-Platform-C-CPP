@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_IMAGETHREADPOOL_CPP
+        #define ORG_ALLBINARY_THREAD_IMAGETHREADPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ImageThreadPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ThreadPool.h"
 //This is mainly for network communications.
-class ImageThreadPool: public ThreadPool {
+ThreadPool* ImageThreadPool::instance = new ImageThreadPool("ImageLoader", 1, ThreadPool::NORMAL_PRIORITY);
 
-    private: static inline ThreadPool* instance = new ImageThreadPool("ImageLoader", 1, ThreadPool::NORMAL_PRIORITY);
-
-    public: static ThreadPool* getInstance(){
+    auto ImageThreadPool::getInstance() -> ThreadPool*{
 
 
 
@@ -72,9 +80,7 @@ class ImageThreadPool: public ThreadPool {
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority){
+ImageThreadPool::ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,21 +91,20 @@ public: ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priori
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void runTask(Runnable* task){
-super.runTask(task);
+    auto ImageThreadPool::runTask(Runnable* task) -> void{
+ThreadPool::runTask(task);
     
 }
 
 
-    protected: void startTask(Runnable* task){
+    auto ImageThreadPool::startTask(Runnable* task) -> void{
 }
 
 
-    protected: void completedTask(Runnable* task){
+    auto ImageThreadPool::completedTask(Runnable* task) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_IMAGETHREADPOOL_CPP

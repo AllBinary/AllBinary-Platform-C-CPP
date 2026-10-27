@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/points/PointsLayerCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,17 +68,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/pickup/points/PointsLayer.h"
 
-class PointsLayerCircularStaticPool: public AllBinaryLayerCircularPool {
 
-public: PointsLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
-super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
+PointsLayerCircularStaticPool::PointsLayerCircularStaticPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
+AllBinaryLayerCircularPool::initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(AllBinaryLayer* sourceLayerInterface){
+    auto PointsLayerCircularStaticPool::visit(AllBinaryLayer* sourceLayerInterface) -> void{
 
     PointsLayer* pointsLayer = dynamic_cast<PointsLayer*>(this->getNextInstance());;
     
@@ -80,7 +89,6 @@ pointsLayer->visit(scoreableInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERCIRCULARSTATICPOOL_CPP

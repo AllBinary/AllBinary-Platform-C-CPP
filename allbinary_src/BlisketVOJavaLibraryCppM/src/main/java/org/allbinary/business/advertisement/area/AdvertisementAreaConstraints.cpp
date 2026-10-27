@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraints.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,15 +80,8 @@
         #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
 #include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
 
-class AdvertisementAreaConstraints
-            : public Object
-        , public AdvertisementAreaConstraintsInterface {
 
-    private: DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface;
-
-    private: TwoDimensionalConstraintInterface* twoDimensionConstraintsInterface;
-
-public: AdvertisementAreaConstraints(Document* document){
+AdvertisementAreaConstraints::AdvertisementAreaConstraints(Document* document){
 
     Node* node = DomSearchHelper::getNode(AdvertisementAreaData::getInstance()->NAME, document->getChildNodes());;
     
@@ -89,19 +92,19 @@ this->twoDimensionConstraintsInterface= new TwoDimensionalConstraint(node);
 }
 
 
-    public: void setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface){
+    auto AdvertisementAreaConstraints::setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface) -> void{
 this->displayInBrowserContraintsInterface= displayInBrowserContraintsInterface;
     
 }
 
 
-    public: void getTwoDimensionContraints(TwoDimensionalConstraintInterface* twoDimensionConstraintsInterface){
+    auto AdvertisementAreaConstraints::getTwoDimensionContraints(TwoDimensionalConstraintInterface* twoDimensionConstraintsInterface) -> void{
 this->twoDimensionConstraintsInterface= twoDimensionConstraintsInterface;
     
 }
 
 
-    public: DisplayInBrowserContraintsInterface* getDisplayInBrowserContraints(){
+    auto AdvertisementAreaConstraints::getDisplayInBrowserContraints() -> DisplayInBrowserContraintsInterface*{
 
 
 
@@ -111,7 +114,7 @@ this->twoDimensionConstraintsInterface= twoDimensionConstraintsInterface;
 }
 
 
-    public: TwoDimensionalConstraintInterface* getTwoDimensionContraints(){
+    auto AdvertisementAreaConstraints::getTwoDimensionContraints() -> TwoDimensionalConstraintInterface*{
 
 
 
@@ -121,7 +124,6 @@ this->twoDimensionConstraintsInterface= twoDimensionConstraintsInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/remote/RemoteHighScoresData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RemoteHighScoresData
-            : public Object
-         {
 
-    private: static RemoteHighScoresData* SINGLETON() { static std::unique_ptr<RemoteHighScoresData> value(new RemoteHighScoresData()); return value.get(); }
+RemoteHighScoresData::RemoteHighScoresData() {
+        }
+        auto RemoteHighScoresData::SINGLETON_owner() -> RemoteHighScoresData* { static std::unique_ptr<RemoteHighScoresData> value(new RemoteHighScoresData()); return value.get(); }
+RemoteHighScoresData* RemoteHighScoresData::SINGLETON = RemoteHighScoresData::SINGLETON_owner();
 
-    public: static RemoteHighScoresData* getInstance(){
+    auto RemoteHighScoresData::getInstance() -> RemoteHighScoresData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RemoteHighScoresData::SINGLETON();
+                        return RemoteHighScoresData::SINGLETON;
     
 }
 
 
-    public: const std::string HIGH_SCORES = "HIGH_SCORES";
 
-    public: std::string CUSTOMER_USER_NAME = "CUSTOMER_USER_NAME";
 
-    public: std::string DISPLAY_NAME = "DISPLAY_NAME";
-
-    public: std::string SCORE = "SCORE";
-
-    public: std::string GAME_INFO = "GAME_INFO";
-
-    public: std::string GAME_CONFIGURATION = "GAME_CONFIGURATION";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SEQUENCEINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_SEQUENCEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/SequenceInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -45,13 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SequenceInterface {
+//Interface - declared in the header
 
-    public: virtual void setSequence(std::vector<int32_t> sequence) = 0;
 
-    public: virtual std::vector<int32_t> getSequence() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_SEQUENCEINTERFACE_CPP

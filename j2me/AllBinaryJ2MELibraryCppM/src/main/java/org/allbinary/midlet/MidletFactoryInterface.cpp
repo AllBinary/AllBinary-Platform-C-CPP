@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/MidletFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/midlet/AllBinaryMidlet.h"
 
-class MidletFactoryInterface
-            : public Object
-         {
 
-    public: MIDlet* getInstance(){
+MidletFactoryInterface::MidletFactoryInterface() {
+        }
+        
+    auto MidletFactoryInterface::getInstance() -> MIDlet*{
 
 
 
@@ -63,7 +73,6 @@ class MidletFactoryInterface
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_CPP

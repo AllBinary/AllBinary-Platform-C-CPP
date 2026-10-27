@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/CompositeSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,8 @@
 #include "org/allbinary/media/audio/PlayerComposite.h"
 #include "org/allbinary/media/audio/AllBinaryMediaManager.h"
 
-class CompositeSound: public Sound {
 
-protected: CompositeSound(std::string resource) : Sound(resource){
+CompositeSound::CompositeSound(std::string resource) : Sound(resource){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,13 +71,12 @@ protected: CompositeSound(std::string resource) : Sound(resource){
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto CompositeSound::init() -> void{
 this->setPlayerP(new PlayerComposite(AllBinaryMediaManager::createPlayer(this->getResource()), 570));
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
-
-      
-#include <org/allbinary/game/score/ScoreableInterface.h>
-
-      
-#include <org/allbinary/graphics/RelativeRelationship.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class WeaponProperties;
+class ScoreableInterface;
+class RelativeRelationship;
+class AllBinaryLayer;
 
 
 
@@ -61,16 +58,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
-#include "org/allbinary/game/part/weapon/BasicWeaponPartFactoryInterface.h"
+        class BasicWeaponPart;
+class BasicWeaponPartFactoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicWeaponPartCircularPool
-            : public Object
+            : public virtual Object
          {
 
-    public: static BasicWeaponPartCircularPool* NULL_BASIC_WEAPON_PART_CIRCULAR_POOL() { static std::unique_ptr<BasicWeaponPartCircularPool> value(new BasicWeaponPartCircularPool()); return value.get(); }
+    private: static BasicWeaponPartCircularPool* NULL_BASIC_WEAPON_PART_CIRCULAR_POOL_owner();
+    public: static BasicWeaponPartCircularPool* NULL_BASIC_WEAPON_PART_CIRCULAR_POOL;
 
-    private: BasicWeaponPart* basicWeaponPart = BasicWeaponPart::NULL_BASIC_WEAPON_PART;
+
+            
+    public: BasicWeaponPartCircularPool();
+        
+    private: BasicWeaponPart* basicWeaponPart;
 
                 //@Throws(Exception.constructor)
             
@@ -87,3 +93,28 @@ class BasicWeaponPartCircularPool
 
 
         #endif //ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/combat/weapon/WeaponProperties.h>)
+#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/score/ScoreableInterface.h>)
+#include <org/allbinary/game/score/ScoreableInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/RelativeRelationship.h>)
+#include <org/allbinary/graphics/RelativeRelationship.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/part/weapon/BasicWeaponPart.h")
+#include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
+#endif
+#if __has_include("org/allbinary/game/part/weapon/BasicWeaponPartFactoryInterface.h")
+#include "org/allbinary/game/part/weapon/BasicWeaponPartFactoryInterface.h"
+#endif
+
+        #endif
+    

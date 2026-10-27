@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLANCHOR_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLANCHOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/HtmlAnchor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlAnchor
-            : public Object
-         {
 
-public: HtmlAnchor(){
+HtmlAnchor::HtmlAnchor(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLANCHOR_CPP

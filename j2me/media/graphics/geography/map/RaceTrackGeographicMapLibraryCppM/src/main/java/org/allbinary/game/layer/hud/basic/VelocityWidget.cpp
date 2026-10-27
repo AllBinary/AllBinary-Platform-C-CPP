@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_VELOCITYWIDGET_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_VELOCITYWIDGET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/hud/basic/VelocityWidget.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,29 +84,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VelocityWidget: public BasicHud {
 
-    private: const std::vector<char> KILOMETERS_PER_HOUR_STR = [' ','k','m','/','h'];
-
-    private: const int32_t totalChars = this->KILOMETERS_PER_HOUR_STR.size();
-
-    private: int32_t velocity;
-
-    private: int32_t maxVelocity;
-
-    private: std::vector<char> string = PrimitiveLongSingleton::getInstance()->ZERO;
-
-    private: int32_t totalDigits = 1;
-
-    private: int32_t powerOfTenVelocity;
-
-    private: PrimitiveLongUtil* primitiveLongUtil;
-
-    private: int32_t offset = 0;
-
-    private: int32_t offset2 = 0;
-
-public: VelocityWidget(int32_t powerOfTenVelocity, int32_t location, int32_t direction, BasicColor* basicColor) : BasicHud(location, direction, 2, basicColor){
+VelocityWidget::VelocityWidget(int32_t powerOfTenVelocity, int32_t location, int32_t direction, BasicColor* basicColor) : BasicHud(location, direction, 2, basicColor), KILOMETERS_PER_HOUR_STR({' ','k','m','/','h'}), totalChars(this->KILOMETERS_PER_HOUR_STR.size()), string(PrimitiveLongSingleton::getInstance()->ZERO){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -116,13 +105,13 @@ this->updateMaxHeight= 14;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto VelocityWidget::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
 this->updateMaxWidth= font->getSize() *(5 +MathUtil::getInstance()->getTotalDigits(this->powerOfTenVelocity) +1);
     
-super.updateMeasurement(graphics);
+BasicHud::updateMeasurement(graphics);
     
 this->offset= MyFontProcessor::defaultStringWidth(font, this->primitiveLongUtil->getMaxDigits()) +MyFontProcessor::defaultStringWidth(font, 2);
     
@@ -131,7 +120,7 @@ this->offset2= this->offset -MyFontProcessor::defaultStringWidth(font, this->tot
 }
 
 
-    public: int32_t get(){
+    auto VelocityWidget::get() -> int32_t{
 
 
 
@@ -141,13 +130,13 @@ this->offset2= this->offset -MyFontProcessor::defaultStringWidth(font, this->tot
 }
 
 
-    public: void add(int32_t value){
+    auto VelocityWidget::add(int32_t value) -> void{
 this->set(this->velocity +value);
     
 }
 
 
-    public: void set(int32_t value){
+    auto VelocityWidget::set(int32_t value) -> void{
 
     int32_t lastVelocity = this->velocity;;
     
@@ -191,19 +180,18 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void reduce(int32_t value){
+    auto VelocityWidget::reduce(int32_t value) -> void{
 this->set(this->velocity -value);
     
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paintDXY(graphics, this->string, 0, this->totalDigits, this->KILOMETERS_PER_HOUR_STR, 0, this->totalChars, this->offset2, this->offset);
+    auto VelocityWidget::paint(Graphics* graphics) -> void{
+BasicHud::paintDXY(graphics, this->string, 0, this->totalDigits, this->KILOMETERS_PER_HOUR_STR, 0, this->totalChars, this->offset2, this->offset);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_VELOCITYWIDGET_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/io/file/directory/Directory.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
+class Directory;
+class AbPath;
 
 
 
@@ -54,15 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InitInfo2
-            : public Object
+            : public virtual Object
          {
 
-    private: static InitInfo2* instance() { static std::unique_ptr<InitInfo2> value(new InitInfo2()); return value.get(); }
+    private: static InitInfo2* instance_owner();
+    private: static InitInfo2* instance;
 
     public: static InitInfo2* getInstance();
 
-    private: Directory* directory = Directory::getInstance();
+
+            
+    public: InitInfo2();
+        
+    private: Directory* directory;
 
     public: bool isTestHtmlPathValid(AbPath* value);
 
@@ -74,3 +84,16 @@ class InitInfo2
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/directory/Directory.h>)
+#include <org/allbinary/logic/io/file/directory/Directory.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
+class Graphics;
+class StringMaker;
 
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
 #include <org/allbinary/layer/Layer.h>
-
-      
 #include <org/allbinary/layer/NamedInterface.h>
 
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
 
 
 
@@ -70,6 +61,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class AllBinaryTiledLayer: public Layer, public NamedInterface, public PaintableInterface {
 
@@ -137,3 +132,27 @@ public: AllBinaryTiledLayer(int32_t dataId, int32_t width, int32_t height, int32
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/Layer.h>)
+#include <org/allbinary/layer/Layer.h>
+#endif
+#if __has_include(<org/allbinary/layer/NamedInterface.h>)
+#include <org/allbinary/layer/NamedInterface.h>
+#endif
+
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/BaseCircularPool.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,18 +75,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/AllBinaryObjectFactoryInterface.h"
 
-class BaseCircularPool
-            : public Object
-         {
 
-    protected: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
-
-    protected: std::vector<Object*> OBJECT_ARRAY = NullUtil::getInstance()->NULL_OBJECT_ARRAY;
-
+BaseCircularPool::BaseCircularPool() : circularIndexUtil(CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL), OBJECT_ARRAY(NullUtil::getInstance()->NULL_OBJECT_ARRAY) {
+        }
+        
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Object* getNextInstance(){
+    auto BaseCircularPool::getNextInstance() -> Object*{
 
     Object* anyType = this->OBJECT_ARRAY[this->circularIndexUtil->getIndex()];;
     
@@ -91,7 +97,7 @@ this->circularIndexUtil->next();
 }
 
 
-    public: void init(AllBinaryObjectFactoryInterface* allBinaryObjectFactoryInterface){
+    auto BaseCircularPool::init(AllBinaryObjectFactoryInterface* allBinaryObjectFactoryInterface) -> void{
 this->circularIndexUtil->setIndex(0);
     
 
@@ -113,7 +119,7 @@ this->OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface->getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getInstance(int32_t index){
+    auto BaseCircularPool::getInstance(int32_t index) -> Object*{
 
 
 
@@ -123,7 +129,6 @@ this->OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface->getInstance();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_CPP

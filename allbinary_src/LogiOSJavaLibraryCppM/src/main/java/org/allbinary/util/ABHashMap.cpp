@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABHASHMAP_CPP
+        #define ORG_ALLBINARY_UTIL_ABHASHMAP_CPP
+
+        #include "org/allbinary/util/ABHashMap.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,10 +52,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+
 template<typename K, typename V>
-class ABHashMap: public HashMap<K, V> {
+ABHashMap<K, V>::ABHashMap() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_UTIL_ABHASHMAP_CPP

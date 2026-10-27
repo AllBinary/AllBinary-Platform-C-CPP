@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ACTIVITYFRACTUREINPUTUTILFACTORY_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ACTIVITYFRACTUREINPUTUTILFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/ActivityFractureInputUtilFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ActivityFractureInputUtilFactory
-            : public Object
-         {
 
-    public: static ActivityFractureUtil* getInstance(){
+ActivityFractureInputUtilFactory::ActivityFractureInputUtilFactory() {
+        }
+        
+    auto ActivityFractureInputUtilFactory::getInstance() -> ActivityFractureUtil*{
 
     int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
@@ -123,7 +133,6 @@ class ActivityFractureInputUtilFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_ACTIVITYFRACTUREINPUTUTILFACTORY_CPP

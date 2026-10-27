@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUDCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUDCOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h"
+        class GameNotificationHud;
 
-class GameNotificationHudCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GameNotificationHudCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual GameNotificationHud* getGameNotificationHud() = 0;
 
@@ -57,3 +68,13 @@ class GameNotificationHudCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUDCOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUDCOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUDCOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h")
+#include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h"
+#endif
+
+        #endif
+    

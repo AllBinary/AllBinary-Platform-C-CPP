@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_NOHIGHSCORESFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_NOHIGHSCORESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/NoHighScoresFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,29 +66,24 @@
 #include "org/allbinary/game/score/HighScoresHelperBase.h"
 #include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
-class NoHighScoresFactory: public HighScoresBase {
+auto NoHighScoresFactory::instance_owner() -> NoHighScoresFactory* { static std::unique_ptr<NoHighScoresFactory> value(new NoHighScoresFactory()); return value.get(); }
+NoHighScoresFactory* NoHighScoresFactory::instance = NoHighScoresFactory::instance_owner();
 
-    private: static NoHighScoresFactory* instance() { static std::unique_ptr<NoHighScoresFactory> value(new NoHighScoresFactory()); return value.get(); }
-
-    public: static NoHighScoresFactory* getInstance(){
+    auto NoHighScoresFactory::getInstance() -> NoHighScoresFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHighScoresFactory::instance();
+                        return NoHighScoresFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const std::vector<HighScores*> NO_HIGH_SCORES = {};
-
-private: NoHighScoresFactory(){
+NoHighScoresFactory::NoHighScoresFactory() : logUtil(LogUtil::getInstance()), NO_HIGH_SCORES({}){
 }
 
 
-    public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener){
+    auto NoHighScoresFactory::fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener) -> void{
 this->logUtil->putF("Getting No HighScores", this, "fetchHighScores");
     
 highScoresResultsListener->setHighScoresArray(this->NO_HIGH_SCORES);
@@ -86,7 +91,7 @@ highScoresResultsListener->setHighScoresArray(this->NO_HIGH_SCORES);
 }
 
 
-    public: HighScoresHelperBaseInterface* createHighScoresHelper(){
+    auto NoHighScoresFactory::createHighScoresHelper() -> HighScoresHelperBaseInterface*{
 
 
 
@@ -96,7 +101,6 @@ highScoresResultsListener->setHighScoresArray(this->NO_HIGH_SCORES);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_NOHIGHSCORESFACTORY_CPP

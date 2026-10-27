@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/api1/GameInputMotionEventProcessorAPI1.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,11 +75,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcessor {
+Object* GameInputMotionEventProcessorAPI1::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameInputMotionEventProcessorAPI1* getInstance(){
+    auto GameInputMotionEventProcessorAPI1::getInstance() -> GameInputMotionEventProcessorAPI1*{
 
                         if(GameInputMotionEventProcessorAPI1::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -88,15 +96,11 @@ class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcesso
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: MotionRecognizer* motionRecognizer = new AllMotionRecognizer();
-
-private: GameInputMotionEventProcessorAPI1(){
+GameInputMotionEventProcessorAPI1::GameInputMotionEventProcessorAPI1() : logUtil(LogUtil::getInstance()), motionRecognizer(new AllMotionRecognizer()){
 }
 
 
-    public: void process(MotionEvent* motionEvent){
+    auto GameInputMotionEventProcessorAPI1::process(MotionEvent* motionEvent) -> void{
 
         try {
             
@@ -139,14 +143,13 @@ private: GameInputMotionEventProcessorAPI1(){
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_CPP

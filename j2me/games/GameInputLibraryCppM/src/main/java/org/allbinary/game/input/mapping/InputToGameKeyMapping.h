@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,45 +40,19 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <org/allbinary/game/input/GameKey.h>
-
-      
-#include <org/allbinary/game/input/GameKeyFactory.h>
-
-      
-#include <org/allbinary/game/input/Input.h>
-
-      
-#include <org/allbinary/game/input/InputFactory.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class Canvas;
+class GameKey;
+class GameKeyFactory;
+class Input;
+class InputFactory;
+class NullUtil;
+class PreLogUtil;
+class StringMaker;
+class StringUtil;
+class CommonLabels;
+class CommonSeps;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -94,28 +73,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/mapping/InputMapping.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputToGameKeyMapping: public InputMapping {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static InputToGameKeyMapping* getNullInstance();
 
-    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
+    private: GameKeyFactory* gameKeyFactory;
 
-    private: const std::vector<GameKey*> mappedGameKeys = 
-                                                        {
-                                                            this->gameKeyFactory->UP,this->gameKeyFactory->DOWN,this->gameKeyFactory->LEFT,this->gameKeyFactory->RIGHT
-                                                        };
+    private: std::vector<GameKey*> mappedGameKeys;
 
-    private: const std::vector<GameKey*> platformToGameKeyMapping = std::vector<GameKey*>(InputFactory::getInstance()->MAX);
+    private: std::vector<GameKey*> platformToGameKeyMapping;
 
-    protected: std::vector<GameKey*> negativePlatformToGameKeyMapping = {};
+    /*protected*/ public: std::vector<GameKey*> negativePlatformToGameKeyMapping;
 
 public: InputToGameKeyMapping();
 
     private: void clear();
 
-    protected: void removeAll();
+    /*protected*/ public: void removeAll();
 
     public: void addMapping(InputToGameKeyMapping* inputToGameKeyMapping);
 
@@ -151,3 +131,52 @@ public: InputToGameKeyMapping();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKey.h>)
+#include <org/allbinary/game/input/GameKey.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKeyFactory.h>)
+#include <org/allbinary/game/input/GameKeyFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/Input.h>)
+#include <org/allbinary/game/input/Input.h>
+#endif
+#if __has_include(<org/allbinary/game/input/InputFactory.h>)
+#include <org/allbinary/game/input/InputFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/input/mapping/InputMapping.h")
+#include "org/allbinary/game/input/mapping/InputMapping.h"
+#endif
+
+        #endif
+    

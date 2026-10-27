@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,13 +79,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicMenuInputProcessor: public PlayerGameInput, public BaseMotionGestureEventListener {
 
-    public: BasicArrayList* motionGestureEventList = new BasicArrayListD();
-
-    private: Canvas* canvas = NullCanvas::NULL_CANVAS;
-
-protected: BasicMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, Canvas* gameCanvas) : PlayerGameInput(gameKeyEventList, new BasicArrayListD(), playerInputId){
+BasicMenuInputProcessor::BasicMenuInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, Canvas* gameCanvas) : PlayerGameInput(gameKeyEventList, new BasicArrayListD(), playerInputId), motionGestureEventList(new BasicArrayListD()), canvas(NullCanvas::NULL_CANVAS){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,23 +92,23 @@ this->canvas= gameCanvas;
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+    auto BasicMenuInputProcessor::onMotionGestureEvent(MotionGestureEvent* motionGestureEvent) -> void{
 this->motionGestureEventList->add(motionGestureEvent);
     
 }
 
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+    auto BasicMenuInputProcessor::onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent) -> void{
 }
 
 
-    private: void setCanvas(MyCanvas* canvas){
+    auto BasicMenuInputProcessor::setCanvas(MyCanvas* canvas) -> void{
 this->canvas= canvas;
     
 }
 
 
-    protected: MyCanvas* getCanvas(){
+    auto BasicMenuInputProcessor::getCanvas() -> MyCanvas*{
 
 
 
@@ -115,7 +120,7 @@ this->canvas= canvas;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processInputList(){
+    auto BasicMenuInputProcessor::processInputList() -> int32_t{
 
 
 
@@ -125,7 +130,6 @@ this->canvas= canvas;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICMENUINPUTPROCESSOR_CPP

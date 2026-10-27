@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_WINDOWS_WINDOWSOPERATINGSYSTEMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_WINDOWS_WINDOWSOPERATINGSYSTEMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/windows/WindowsOperatingSystemFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,29 +82,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/os/windows/WindowsOS.h"
 
-class WindowsOperatingSystemFactory
-            : public Object
-         {
+auto WindowsOperatingSystemFactory::instance_owner() -> WindowsOperatingSystemFactory* { static std::unique_ptr<WindowsOperatingSystemFactory> value(new WindowsOperatingSystemFactory()); return value.get(); }
+WindowsOperatingSystemFactory* WindowsOperatingSystemFactory::instance = WindowsOperatingSystemFactory::instance_owner();
 
-    private: static WindowsOperatingSystemFactory* instance() { static std::unique_ptr<WindowsOperatingSystemFactory> value(new WindowsOperatingSystemFactory()); return value.get(); }
-
-    public: static WindowsOperatingSystemFactory* getInstance(){
+    auto WindowsOperatingSystemFactory::getInstance() -> WindowsOperatingSystemFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WindowsOperatingSystemFactory::instance();
+                        return WindowsOperatingSystemFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: WindowsOperatingSystemFactory(){
+WindowsOperatingSystemFactory::WindowsOperatingSystemFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: GenericOperatingSystem* getOperatingSystemInstance(){
+    auto WindowsOperatingSystemFactory::getOperatingSystemInstance() -> GenericOperatingSystem*{
 
         try {
             
@@ -174,7 +179,7 @@ private: WindowsOperatingSystemFactory(){
                             
 
 
-                            throw new Exception("Specific Windows OS Not Supported: " +osName);
+                            throw Exception(JavaString::valueOf("Specific Windows OS Not Supported: ") +JavaString::valueOf(osName));
                     
 
                         }
@@ -193,7 +198,7 @@ private: WindowsOperatingSystemFactory(){
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     
@@ -215,7 +220,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_WINDOWS_WINDOWSOPERATINGSYSTEMFACTORY_CPP

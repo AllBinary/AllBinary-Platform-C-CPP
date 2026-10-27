@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/GamePersistanceSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,20 @@
         #include "org/allbinary/game/configuration/persistance/KeyValuePersistance.h"
 #include "org/allbinary/game/configuration/persistance/GamePersistanceStrings.h"
 
-class GamePersistanceSingleton: public KeyValuePersistance {
+auto GamePersistanceSingleton::GAME_PERSISTANCE_owner() -> GamePersistanceSingleton* { static std::unique_ptr<GamePersistanceSingleton> value(new GamePersistanceSingleton()); return value.get(); }
+GamePersistanceSingleton* GamePersistanceSingleton::GAME_PERSISTANCE = GamePersistanceSingleton::GAME_PERSISTANCE_owner();
 
-    private: static GamePersistanceSingleton* GAME_PERSISTANCE() { static std::unique_ptr<GamePersistanceSingleton> value(new GamePersistanceSingleton()); return value.get(); }
-
-    public: static GamePersistanceSingleton* getInstance(){
+    auto GamePersistanceSingleton::getInstance() -> GamePersistanceSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GamePersistanceSingleton::GAME_PERSISTANCE();
+                        return GamePersistanceSingleton::GAME_PERSISTANCE;
     
 }
 
 
-private: GamePersistanceSingleton() : KeyValuePersistance(GamePersistanceStrings::getInstance()->SAVED_GAME_RECORD_ID){
+GamePersistanceSingleton::GamePersistanceSingleton() : KeyValuePersistance(GamePersistanceStrings::getInstance()->SAVED_GAME_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +78,6 @@ private: GamePersistanceSingleton() : KeyValuePersistance(GamePersistanceStrings
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESINGLETON_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCERELATIVERELATIONSHIPFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCERELATIVERELATIONSHIPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/resource/FeaturedResourceRelativeRelationshipFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,29 +81,26 @@
         #include "org/allbinary/game/resource/FeaturedResourceFactory.h"
 #include "org/allbinary/game/resource/ResourceRelativeRelationshipFactoryInterface.h"
 
-class FeaturedResourceRelativeRelationshipFactory: public FeaturedResourceFactory {
+auto FeaturedResourceRelativeRelationshipFactory::INSTANCE_owner() -> FeaturedResourceRelativeRelationshipFactory* { static std::unique_ptr<FeaturedResourceRelativeRelationshipFactory> value(new FeaturedResourceRelativeRelationshipFactory()); return value.get(); }
+FeaturedResourceRelativeRelationshipFactory* FeaturedResourceRelativeRelationshipFactory::INSTANCE = FeaturedResourceRelativeRelationshipFactory::INSTANCE_owner();
 
-    private: static FeaturedResourceRelativeRelationshipFactory* INSTANCE() { static std::unique_ptr<FeaturedResourceRelativeRelationshipFactory> value(new FeaturedResourceRelativeRelationshipFactory()); return value.get(); }
+FeaturedResourceRelativeRelationshipFactory::FeaturedResourceRelativeRelationshipFactory() : basicArrayListUtil(BasicArrayListUtil::getInstance()){
+}
 
-    public: static FeaturedResourceRelativeRelationshipFactory* getInstance(){
+
+    auto FeaturedResourceRelativeRelationshipFactory::getInstance() -> FeaturedResourceRelativeRelationshipFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeaturedResourceRelativeRelationshipFactory::INSTANCE();
+                        return FeaturedResourceRelativeRelationshipFactory::INSTANCE;
     
 }
 
 
-private: FeaturedResourceRelativeRelationshipFactory(){
-}
-
-
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getRelativeRelationshipList(std::string resource, AllBinaryLayer* layer){
+    auto FeaturedResourceRelativeRelationshipFactory::getRelativeRelationshipList(std::string resource, AllBinaryLayer* layer) -> BasicArrayList*{
 
     BasicArrayList* featureReleaseList = this->getList();;
     
@@ -138,14 +145,14 @@ private: FeaturedResourceRelativeRelationshipFactory(){
 
 
 
-                            throw new Exception((new StringMaker())->append("Not available for current feature selection or Resource: ")->append(resource)->toString());
+                            throw Exception((new StringMaker())->append("Not available for current feature selection or Resource: ")->append(resource)->toString());
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* duplicate(BasicArrayList* list, AllBinaryLayer* layer){
+    auto FeaturedResourceRelativeRelationshipFactory::duplicate(BasicArrayList* list, AllBinaryLayer* layer) -> BasicArrayList*{
 
     PointFactory* pointFactory = PointFactory::getInstance();;
     
@@ -178,7 +185,6 @@ newList->add(new RelativeLayerRelationship(layer, pointFactory->createXY(relativ
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCERELATIVERELATIONSHIPFACTORY_CPP

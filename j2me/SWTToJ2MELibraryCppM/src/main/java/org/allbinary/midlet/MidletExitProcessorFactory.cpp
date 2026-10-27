@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSORFACTORY_CPP
+        #define ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/MidletExitProcessorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,23 +68,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/midlet/MidletExitProcessor.h"
 
-class MidletExitProcessorFactory
-            : public Object
-         {
 
-    private: static MidletExitProcessorFactory* instance() { static std::unique_ptr<MidletExitProcessorFactory> value(new MidletExitProcessorFactory()); return value.get(); }
+MidletExitProcessorFactory::MidletExitProcessorFactory() {
+        }
+        auto MidletExitProcessorFactory::instance_owner() -> MidletExitProcessorFactory* { static std::unique_ptr<MidletExitProcessorFactory> value(new MidletExitProcessorFactory()); return value.get(); }
+MidletExitProcessorFactory* MidletExitProcessorFactory::instance = MidletExitProcessorFactory::instance_owner();
 
-    public: static MidletExitProcessorFactory* getInstance(){
+    auto MidletExitProcessorFactory::getInstance() -> MidletExitProcessorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MidletExitProcessorFactory::instance();
+                        return MidletExitProcessorFactory::instance;
     
 }
 
 
-    public: Processor* getExitInstance(MIDlet* midlet){
+    auto MidletExitProcessorFactory::getExitInstance(MIDlet* midlet) -> Processor*{
 
                         if(AppletUtil::isAppletLoader(midlet) || J2MEUtil::isJ2ME())
                         
@@ -101,7 +111,6 @@ class MidletExitProcessorFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSORFACTORY_CPP

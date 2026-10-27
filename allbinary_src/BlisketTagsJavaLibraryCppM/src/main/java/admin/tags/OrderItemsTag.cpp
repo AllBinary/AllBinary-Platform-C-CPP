@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_ORDERITEMSTAG_CPP
+        #define ADMIN_TAGS_ORDERITEMSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/OrderItemsTag.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,13 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class OrderItemsTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string status;
-
-public: OrderItemsTag(){
+OrderItemsTag::OrderItemsTag() : logUtil(LogUtil::getInstance()){
 this->setTagHelperFactory(new OrderItemsHelperFactory());
     
 this->setTagRequestHelperFactory(new OrderItemsRequestHelperFactory());
@@ -90,7 +95,7 @@ this->setTagRequestHelperFactory(new OrderItemsRequestHelperFactory());
 }
 
 
-    public: void setStatus(std::string value){
+    auto OrderItemsTag::setStatus(std::string value) -> void{
 this->status= value;
     
 }
@@ -98,7 +103,7 @@ this->status= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string setOrderStatus(){
+    auto OrderItemsTag::setOrderStatus() -> std::string{
 
         try {
             
@@ -174,13 +179,13 @@ this->status= value;
  catch(Exception& e) 
             {
 
-    std::string error = "Failed to set Order status to: " +this->status;;
+    std::string error = JavaString::valueOf("Failed to set Order status to: ") +JavaString::valueOf(this->status);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus()", &e);
     
 
                                     }
@@ -198,7 +203,7 @@ this->status= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto OrderItemsTag::doStartTag() -> int32_t{
 
         try {
             
@@ -217,7 +222,7 @@ this->status= value;
                         if(this->getCommand()->compareTo(OrderHistoryData::SETSTATUS) == 0)
                         
                                     {
-                                    this->pageContext.getOut()->print(this->setOrderStatus());
+                                    this->pageContext->getOut()->print(this->setOrderStatus());
     
 
                                     }
@@ -227,7 +232,7 @@ this->status= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                         }
@@ -274,7 +279,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_ORDERITEMSTAG_CPP

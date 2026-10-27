@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_GEOGRAPHICMAPTOPVIEWLAYERBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_GEOGRAPHICMAPTOPVIEWLAYERBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/GeographicMapTopViewLayerBehavior.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -72,9 +82,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/TopViewGameLayerBehavior.h"
 
-class GeographicMapTopViewLayerBehavior: public TopViewGameLayerBehavior {
 
-public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopViewGameLayerBehavior(maxGravityActionIndex){
+GeographicMapTopViewLayerBehavior::GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopViewGameLayerBehavior(maxGravityActionIndex){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +95,7 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopVi
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getGeographicMapCellPositionIfNotSolidBlockOrOffMapLocation(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y){
+    auto GeographicMapTopViewLayerBehavior::getGeographicMapCellPositionIfNotSolidBlockOrOffMapLocation(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y) -> GeographicMapCellPosition*{
 
 
 
@@ -98,7 +107,7 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopVi
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getGeographicMapCellPositionIfNotSolidBlockOrOffMap(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition, VelocityProperties* velocityProperties, AllBinaryLayer* layer){
+    auto GeographicMapTopViewLayerBehavior::getGeographicMapCellPositionIfNotSolidBlockOrOffMap(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition, VelocityProperties* velocityProperties, AllBinaryLayer* layer) -> GeographicMapCellPosition*{
 
 
 
@@ -110,7 +119,7 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopVi
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getGeographicMapCellPositionFromListIfNotSolidBlockOrOffMap(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, BasicArrayList* geographicMapCellPositionList, VelocityProperties* velocityProperties, AllBinaryLayer* layer){
+    auto GeographicMapTopViewLayerBehavior::getGeographicMapCellPositionFromListIfNotSolidBlockOrOffMap(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, BasicArrayList* geographicMapCellPositionList, VelocityProperties* velocityProperties, AllBinaryLayer* layer) -> GeographicMapCellPosition*{
 
 
 
@@ -122,19 +131,19 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopVi
 
                 //@Throws(Exception.constructor)
             
-    public: void gravity(VelocityProperties* velocityProperties, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition){
+    auto GeographicMapTopViewLayerBehavior::gravity(VelocityProperties* velocityProperties, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void left(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer){
+    auto GeographicMapTopViewLayerBehavior::left(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool move(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y){
+    auto GeographicMapTopViewLayerBehavior::move(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y) -> bool{
 
 
 
@@ -146,17 +155,17 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopVi
 
                 //@Throws(Exception.constructor)
             
-    public: void moveAndLand(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y){
+    auto GeographicMapTopViewLayerBehavior::moveAndLand(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition, VelocityProperties* velocityProperties, AllBinaryLayer* layer, int32_t x, int32_t y) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void right(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer){
+    auto GeographicMapTopViewLayerBehavior::right(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, VelocityProperties* velocityProperties, AllBinaryLayer* layer) -> void{
 }
 
 
-    public: bool hasSolidBlock(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray){
+    auto GeographicMapTopViewLayerBehavior::hasSolidBlock(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray) -> bool{
 
     int32_t size = geographicMapInterfaceArray.size();;
     
@@ -170,10 +179,10 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopVi
                         for (
     int32_t index = 0;index < size; index++)
         {
-basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMapCellTypeFactory*>(geographicMapInterfaceArray[index].getGeographicMapCellTypeFactory());
+basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMapCellTypeFactory*>(geographicMapInterfaceArray[index]->getGeographicMapCellTypeFactory());
     
 
-                        if(basicTopViewGeographicMapCellTypeFactory->BLOCK_CELL_TYPE.isType(geographicMapCellTypeArray[index]))
+                        if(basicTopViewGeographicMapCellTypeFactory->BLOCK_CELL_TYPE->isType(geographicMapCellTypeArray[index]))
                         
                                     {
                                     
@@ -196,7 +205,7 @@ basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMap
 }
 
 
-    public: bool isOffMap(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray){
+    auto GeographicMapTopViewLayerBehavior::isOffMap(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray) -> bool{
 
     int32_t size = geographicMapInterfaceArray.size();;
     
@@ -210,10 +219,10 @@ basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMap
                         for (
     int32_t index = 0;index < size; index++)
         {
-basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMapCellTypeFactory*>(geographicMapInterfaceArray[index].getGeographicMapCellTypeFactory());
+basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMapCellTypeFactory*>(geographicMapInterfaceArray[index]->getGeographicMapCellTypeFactory());
     
 
-                        if(basicTopViewGeographicMapCellTypeFactory->OFF_MAP_CELL_TYPE.isType(geographicMapCellTypeArray[index]))
+                        if(basicTopViewGeographicMapCellTypeFactory->OFF_MAP_CELL_TYPE->isType(geographicMapCellTypeArray[index]))
                         
                                     {
                                     
@@ -236,7 +245,6 @@ basicTopViewGeographicMapCellTypeFactory= dynamic_cast<BasicTopViewGeographicMap
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_GEOGRAPHICMAPTOPVIEWLAYERBEHAVIOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_POINTFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_POINTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/PointFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,13 +61,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/Point.h"
 
-class PointFactory
-            : public Object
-         {
+std::vector<std::vector<Point*>> PointFactory::pointArray = std::vector<std::vector<Point*>>(3000, std::vector<Point*>(3000));
 
-    private: static inline std::vector<std::vector<Point*>> pointArray = std::vector<std::vector<Point*>>(3000, std::vector<Point*>(3000));
+PointFactory::PointFactory(){
+}
 
-    public: static Point* getInstance(int32_t x, int32_t y){
+
+    auto PointFactory::getInstance(int32_t x, int32_t y) -> Point*{
 
     Point* point = PointFactory::pointArray[x][y];;
     
@@ -81,11 +91,6 @@ class PointFactory
 }
 
 
-private: PointFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_POINTFACTORY_CPP

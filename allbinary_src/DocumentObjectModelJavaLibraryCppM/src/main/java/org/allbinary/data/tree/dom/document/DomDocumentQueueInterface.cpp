@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTQUEUEINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTQUEUEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/document/DomDocumentQueueInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DomDocumentQueueInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool offer(DomDocumentMappingInterface* domDocumentMappingInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual DomDocumentMappingInterface* remove() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTQUEUEINTERFACE_CPP

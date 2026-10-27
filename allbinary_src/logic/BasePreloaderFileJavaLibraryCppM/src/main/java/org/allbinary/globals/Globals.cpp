@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_GLOBALS_CPP
+        #define ORG_ALLBINARY_GLOBALS_GLOBALS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/Globals.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,29 +77,24 @@
         #include "org/allbinary/globals/AppUrlGlobals.h"
 #include "org/allbinary/globals/URLGLOBALS.h"
 
-class Globals
-            : public Object
-         {
+auto Globals::instance_owner() -> Globals* { static std::unique_ptr<Globals> value(new Globals()); return value.get(); }
+Globals* Globals::instance = Globals::instance_owner();
 
-    private: static Globals* instance() { static std::unique_ptr<Globals> value(new Globals()); return value.get(); }
-
-    public: static Globals* getInstance(){
+    auto Globals::getInstance() -> Globals*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Globals::instance();
+                        return Globals::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: Globals(){
+Globals::Globals() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void init(ClassLoader* classLoader, std::string pathString){
+    auto Globals::init(ClassLoader* classLoader, std::string pathString) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -122,7 +127,7 @@ this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
                         if(stringValidationUtil->isEmpty(pathString))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("No Path Provided. Using Process Path: ");
     
@@ -141,7 +146,7 @@ this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
 
                                     }
                                 
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Webapp Path Set To: ");
     
@@ -152,7 +157,6 @@ this->logUtil->putF(stringBuffer->toString(), this, commonStrings->INIT);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_GLOBALS_CPP

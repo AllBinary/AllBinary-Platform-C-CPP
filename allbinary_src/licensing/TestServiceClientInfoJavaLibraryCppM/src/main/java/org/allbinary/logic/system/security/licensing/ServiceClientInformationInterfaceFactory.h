@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SERVICECLIENTINFORMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SERVICECLIENTINFORMATIONINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,20 +52,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/security/licensing/TestClientInformation.h"
-#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+        class TestClientInformation;
+class AbeClientInformationInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ServiceClientInformationInterfaceFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static TestClientInformation* instance() { static std::unique_ptr<TestClientInformation> value(new TestClientInformation()); return value.get(); }
+    private: static TestClientInformation* instance_owner();
+    private: static TestClientInformation* instance;
 
     public: static AbeClientInformationInterface* getInstance();
 
+
+            
+    public: ServiceClientInformationInterfaceFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SERVICECLIENTINFORMATIONINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SERVICECLIENTINFORMATIONINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SERVICECLIENTINFORMATIONINTERFACEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/system/security/licensing/TestClientInformation.h")
+#include "org/allbinary/logic/system/security/licensing/TestClientInformation.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h")
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#endif
+
+        #endif
+    

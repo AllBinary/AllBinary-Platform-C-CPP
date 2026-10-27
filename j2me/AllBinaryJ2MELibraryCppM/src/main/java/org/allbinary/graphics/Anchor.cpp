@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_ANCHOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_ANCHOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/Anchor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Anchor
-            : public Object
-         {
 
-    public: static inline int32_t TOP_LEFT = Graphics::TOP&Graphics::LEFT;
+Anchor::Anchor() {
+        }
+        int32_t Anchor::TOP_LEFT = Graphics::TOP&Graphics::LEFT;
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_ANCHOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -109,41 +119,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h"
 
-class WeaponLayer: public MultiPlayerGameLayer, public TickableInterface {
 
-    public: static int32_t getStaticType(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0;
-    
-}
-
-
-    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
-
-    protected: Animation* initAnimationInterface;
-
-    private: Animation* destroyedAnimationInterface;
-
-    private: AllBinaryLayer* sourceLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-    protected: int32_t totalDamage= 0;
-
-    private: int32_t initDamage= 0;
-
-    private: bool destroyed = true;
-
-    protected: ScoreableInterface* scoreableInterface = NoScoreable::getInstance();
-
-    private: Movement* movement;
-
-    private: WeaponProperties* weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
-
-    private: int32_t multiPlayerType;
-
-protected: WeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition) : MultiPlayerGameLayer(remoteInfo, BasicGroupFactory::getInstance()->NONE_ARRAY, name, rectangle, viewPosition){
+WeaponLayer::WeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition) : MultiPlayerGameLayer(remoteInfo, BasicGroupFactory::getInstance()->NONE_ARRAY, name, rectangle, viewPosition), animationInterface(NullAnimationFactory::getFactoryInstance()->getInstance(0)), sourceLayerInterface(AllBinaryLayer::NULL_ALLBINARY_LAYER), scoreableInterface(NoScoreable::getInstance()), weaponProperties(WeaponProperties::NULL_WEAPON_PROPERTIES), collidableWeaponBehavior(CollidableWeaponBehavior::getNullInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -163,10 +140,8 @@ this->multiPlayerType= multiPlayerType;
 }
 
 
-    private: CollidableWeaponBehavior* collidableWeaponBehavior = CollidableWeaponBehavior::getNullInstance();
-
-    public: void setCollidableInferface(CollidableBaseBehavior* collidableInferface){
-super.setCollidableInferface(collidableInferface);
+    auto WeaponLayer::setCollidableInferface(CollidableBaseBehavior* collidableInferface) -> void{
+MultiPlayerGameLayer::setCollidableInferface(collidableInferface);
     
 this->collidableWeaponBehavior= dynamic_cast<CollidableWeaponBehavior*>(this->getCollidableInferface());
     
@@ -175,7 +150,7 @@ this->collidableWeaponBehavior= dynamic_cast<CollidableWeaponBehavior*>(this->ge
 
                 //@Throws(Exception.constructor)
             
-    public: void initXYZ(int32_t x, int32_t y, int32_t z){
+    auto WeaponLayer::initXYZ(int32_t x, int32_t y, int32_t z) -> void{
 this->x= x;
     
 this->y= y;
@@ -187,7 +162,7 @@ this->z= z;
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AllBinaryLayer* sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreable){
+    auto WeaponLayer::init(AllBinaryLayer* sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreable) -> void{
 this->setWeaponPropertiesP(weaponProperties);
     
 this->setReadyForExplosion(false);
@@ -222,7 +197,7 @@ this->movement->init(weaponProperties->getSpeed(), angle, otherAngle);
 }
 
 
-    protected: void setGroupInterfaces(){
+    auto WeaponLayer::setGroupInterfaces() -> void{
 
     BasicGroupFactory* basicGroupFactory = BasicGroupFactory::getInstance();;
     
@@ -246,7 +221,7 @@ this->movement->init(weaponProperties->getSpeed(), angle, otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto WeaponLayer::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->isExhausted() && !this->isDestroyed())
                         
@@ -315,7 +290,7 @@ this->totalDamage += this->weaponProperties->getDissipation();
 }
 
 
-    public: bool isDestroyed(){
+    auto WeaponLayer::isDestroyed() -> bool{
 
 
 
@@ -325,19 +300,19 @@ this->totalDamage += this->weaponProperties->getDissipation();
 }
 
 
-    public: void damage(int32_t damage, int32_t damageType){
+    auto WeaponLayer::damage(int32_t damage, int32_t damageType) -> void{
 this->totalDamage += damage *damage;
     
 }
 
 
-    protected: void givePoints(int32_t total){
+    auto WeaponLayer::givePoints(int32_t total) -> void{
 this->scoreableInterface->addPoints(GameConfigurationUtil::getInstance()->getCompetitionValue() *total);
     
 }
 
 
-    protected: bool isExhausted(){
+    auto WeaponLayer::isExhausted() -> bool{
 
                         if(this->totalDamage > this->getInitDamage() || this->totalDamage < 0)
                         
@@ -364,7 +339,7 @@ this->scoreableInterface->addPoints(GameConfigurationUtil::getInstance()->getCom
 }
 
 
-    public: int32_t getDamage(int32_t damageType){
+    auto WeaponLayer::getDamage(int32_t damageType) -> int32_t{
 
                         if(!this->isExhausted())
                         
@@ -392,7 +367,7 @@ this->givePoints(total);
 }
 
 
-    public: void setDestroyed(bool destroyed){
+    auto WeaponLayer::setDestroyed(bool destroyed) -> void{
 this->destroyed= destroyed;
     
 
@@ -409,7 +384,7 @@ DestroyedLayerProcessor::getInstance()->add(this);
 }
 
 
-    protected: int32_t getInitDamage(){
+    auto WeaponLayer::getInitDamage() -> int32_t{
 
 
 
@@ -419,13 +394,13 @@ DestroyedLayerProcessor::getInstance()->add(this);
 }
 
 
-    protected: void setAnimationInterface(Animation* animationInterface){
+    auto WeaponLayer::setAnimationInterface(Animation* animationInterface) -> void{
 this->animationInterface= animationInterface;
     
 }
 
 
-    protected: Animation* getAnimationInterface(){
+    auto WeaponLayer::getAnimationInterface() -> Animation*{
 
 
 
@@ -435,7 +410,7 @@ this->animationInterface= animationInterface;
 }
 
 
-    public: Animation* getInitAnimationInterfaceP(){
+    auto WeaponLayer::getInitAnimationInterfaceP() -> Animation*{
 
 
 
@@ -445,13 +420,13 @@ this->animationInterface= animationInterface;
 }
 
 
-    public: void setInitAnimationInterfaceP(Animation* initAnimationInterface){
+    auto WeaponLayer::setInitAnimationInterfaceP(Animation* initAnimationInterface) -> void{
 this->initAnimationInterface= initAnimationInterface;
     
 }
 
 
-    public: Animation* getDestroyedAnimationInterface(){
+    auto WeaponLayer::getDestroyedAnimationInterface() -> Animation*{
 
 
 
@@ -461,7 +436,7 @@ this->initAnimationInterface= initAnimationInterface;
 }
 
 
-    public: AllBinaryLayer* getOwnerLayerInterface(){
+    auto WeaponLayer::getOwnerLayerInterface() -> AllBinaryLayer*{
 
 
 
@@ -471,13 +446,13 @@ this->initAnimationInterface= initAnimationInterface;
 }
 
 
-    public: void setOwnerLayerInterface(AllBinaryLayer* sourceLayerInterface){
+    auto WeaponLayer::setOwnerLayerInterface(AllBinaryLayer* sourceLayerInterface) -> void{
 this->sourceLayerInterface= sourceLayerInterface;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto WeaponLayer::paint(Graphics* graphics) -> void{
 
     ViewPositionBase* viewPosition = this->getViewPosition();;
     
@@ -486,7 +461,7 @@ this->animationInterface->paintXY(graphics, viewPosition->getX() -this->getHalfW
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto WeaponLayer::paintThreed(Graphics* graphics) -> void{
 
     ViewPositionBase* viewPosition = this->getViewPosition();;
     
@@ -495,7 +470,7 @@ this->animationInterface->paintThreedXYZ(graphics, viewPosition->getX() -this->g
 }
 
 
-    public: Movement* getMovement(){
+    auto WeaponLayer::getMovement() -> Movement*{
 
 
 
@@ -505,13 +480,13 @@ this->animationInterface->paintThreedXYZ(graphics, viewPosition->getX() -this->g
 }
 
 
-    public: void setMovement(Movement* movement){
+    auto WeaponLayer::setMovement(Movement* movement) -> void{
 this->movement= movement;
     
 }
 
 
-    public: int32_t getType(){
+    auto WeaponLayer::getType() -> int32_t{
 
 
 
@@ -521,7 +496,17 @@ this->movement= movement;
 }
 
 
-    public: int32_t getMultiPlayerType(){
+    auto WeaponLayer::getStaticType() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    auto WeaponLayer::getMultiPlayerType() -> int32_t{
 
 
 
@@ -531,13 +516,13 @@ this->movement= movement;
 }
 
 
-    public: void setWeaponPropertiesP(WeaponProperties* weaponProperties){
+    auto WeaponLayer::setWeaponPropertiesP(WeaponProperties* weaponProperties) -> void{
 this->weaponProperties= weaponProperties;
     
 }
 
 
-    public: WeaponProperties* getWeaponPropertiesP(){
+    auto WeaponLayer::getWeaponPropertiesP() -> WeaponProperties*{
 
 
 
@@ -547,7 +532,7 @@ this->weaponProperties= weaponProperties;
 }
 
 
-    public: bool implmentsTickableInterface(){
+    auto WeaponLayer::implmentsTickableInterface() -> bool{
 
 
 
@@ -559,13 +544,12 @@ this->weaponProperties= weaponProperties;
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL* gl){
+    auto WeaponLayer::set(GL* gl) -> void{
 this->initAnimationInterface->set(gl);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_CPP

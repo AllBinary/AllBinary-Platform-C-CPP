@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_BASICWEBLISKETSESSION_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_BASICWEBLISKETSESSION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/session/BasicWeblisketSession.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,15 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
 
-class BasicWeblisketSession
-            : public Object
-         {
 
-    private: HttpSession* session;
-
-    private: PageContext* pageContext;
-
-public: BasicWeblisketSession(PageContext* pageContext){
+BasicWeblisketSession::BasicWeblisketSession(PageContext* pageContext){
 this->pageContext= pageContext;
     
 
@@ -94,75 +97,75 @@ this->session= request->getSession(true);
 }
 
 
-    public: void setRole(BasicUserRole* aRole){
-this->session->setAttribute(BasicUserRoleData::NAME.toString(), aRole);
+    auto BasicWeblisketSession::setRole(BasicUserRole* aRole) -> void{
+this->session->setAttribute(BasicUserRoleData::NAME->toString(), aRole);
     
 }
 
 
-    public: BasicUserRole* getRole(){
+    auto BasicWeblisketSession::getRole() -> BasicUserRole*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return dynamic_cast<BasicUserRole*>(this->session->getAttribute(BasicUserRoleData::NAME.toString()));
+                        return dynamic_cast<BasicUserRole*>(this->session->getAttribute(BasicUserRoleData::NAME->toString()));
     
 }
 
 
-    public: void setPassword(std::string password){
+    auto BasicWeblisketSession::setPassword(std::string password) -> void{
 this->session->setAttribute(UserData::PASSWORD, password);
     
 }
 
 
-    public: void setUserName(std::string userName){
+    auto BasicWeblisketSession::setUserName(std::string userName) -> void{
 this->session->setAttribute(UserData::USERNAME, userName);
     
 }
 
 
-    public: void setPaymentMethod(std::string value){
-this->session->setAttribute(PaymentGatewayData::NAME.toString(), value);
+    auto BasicWeblisketSession::setPaymentMethod(std::string value) -> void{
+this->session->setAttribute(PaymentGatewayData::NAME->toString(), value);
     
 }
 
 
-    public: void setAuthenticated(){
+    auto BasicWeblisketSession::setAuthenticated() -> void{
 this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance()->TRUE_STRING);
     
 }
 
 
-    public: void setAttempts(int32_t value){
+    auto BasicWeblisketSession::setAttempts(int32_t value) -> void{
 this->session->setAttribute(WeblisketSessionData::ATTEMPTS, value);
     
 }
 
 
-    public: void setTimeout(std::string value){
+    auto BasicWeblisketSession::setTimeout(std::string value) -> void{
 this->session->setAttribute(WeblisketSessionData::TIMEOUT, value);
     
 }
 
 
-    public: void setStoreName(std::string value){
+    auto BasicWeblisketSession::setStoreName(std::string value) -> void{
 this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
     
 }
 
 
-    public: std::string getWebAppPath(){
+    auto BasicWeblisketSession::getWebAppPath() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH);
+                        return this->session->getAttribute(org.allbinary->globals->GLOBALS2->WEBAPPPATH);
     
 }
 
 
-    public: std::string getUserName(){
+    auto BasicWeblisketSession::getUserName() -> std::string{
 
 
 
@@ -172,7 +175,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: std::string getPassword(){
+    auto BasicWeblisketSession::getPassword() -> std::string{
 
 
 
@@ -182,17 +185,17 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: std::string getPaymentMethod(){
+    auto BasicWeblisketSession::getPaymentMethod() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(PaymentGatewayData::NAME.toString());
+                        return this->session->getAttribute(PaymentGatewayData::NAME->toString());
     
 }
 
 
-    public: std::string getAuthentication(){
+    auto BasicWeblisketSession::getAuthentication() -> std::string{
 
 
 
@@ -202,7 +205,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: int32_t getAttempts(){
+    auto BasicWeblisketSession::getAttempts() -> int32_t{
 
 
 
@@ -212,7 +215,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: std::string getTimeout(){
+    auto BasicWeblisketSession::getTimeout() -> std::string{
 
 
 
@@ -222,7 +225,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: std::string getStoreName(){
+    auto BasicWeblisketSession::getStoreName() -> std::string{
 
 
 
@@ -232,25 +235,25 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: void setAuthenticated(bool value){
+    auto BasicWeblisketSession::setAuthenticated(bool value) -> void{
 this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance()->FALSE_STRING);
     
 }
 
 
-    public: void clear(){
+    auto BasicWeblisketSession::clear() -> void{
 this->session->removeAttribute(WeblisketSessionData::AUTHENTICATED);
     
 this->session->removeAttribute(WeblisketSessionData::TIMEOUT);
     
-this->session->removeAttribute(BasicUserRoleData::NAME.toString());
+this->session->removeAttribute(BasicUserRoleData::NAME->toString());
     
 this->session->removeAttribute(UserData::USERNAME);
     
 }
 
 
-    public: int64_t getCreationTime(){
+    auto BasicWeblisketSession::getCreationTime() -> int64_t{
 
 
 
@@ -260,7 +263,7 @@ this->session->removeAttribute(UserData::USERNAME);
 }
 
 
-    public: int64_t getLastAccessedTime(){
+    auto BasicWeblisketSession::getLastAccessedTime() -> int64_t{
 
     int64_t lastAccessedTime = this->session->getLastAccessedTime();;
     
@@ -273,7 +276,6 @@ this->session->removeAttribute(UserData::USERNAME);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_BASICWEBLISKETSESSION_CPP

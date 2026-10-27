@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_FLOCKINGAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_FLOCKINGAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/FlockingAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,11 +93,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 
-class FlockingAI: public BasicAI {
 
-    private: int32_t allowedDistance;
-
-public: FlockingAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+FlockingAI::FlockingAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -104,7 +111,7 @@ this->allowedDistance= allowedDistance.intValue();
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto FlockingAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     int32_t maxDistance = 0;;
     
@@ -223,7 +230,7 @@ farAllbinaryLayer= allBinaryLayer;
 }
 
 
-    private: int32_t getXYDistance(AllBinaryLayer* allBinaryLayer){
+    auto FlockingAI::getXYDistance(AllBinaryLayer* allBinaryLayer) -> int32_t{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -248,7 +255,6 @@ farAllbinaryLayer= allBinaryLayer;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_FLOCKINGAI_CPP

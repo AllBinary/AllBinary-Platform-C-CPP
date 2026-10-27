@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_J2SEUTIL_CPP
+        #define ORG_ALLBINARY_J2SEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/J2SEUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,23 +66,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2SEForJ2ME
-class J2SEUtil
-            : public Object
-         {
 
-    private: static J2SEUtil* instance() { static std::unique_ptr<J2SEUtil> value(new J2SEUtil()); return value.get(); }
+J2SEUtil::J2SEUtil() {
+        }
+        auto J2SEUtil::instance_owner() -> J2SEUtil* { static std::unique_ptr<J2SEUtil> value(new J2SEUtil()); return value.get(); }
+J2SEUtil* J2SEUtil::instance = J2SEUtil::instance_owner();
 
-    public: static J2SEUtil* getInstance(){
+    auto J2SEUtil::getInstance() -> J2SEUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2SEUtil::instance();
+                        return J2SEUtil::instance;
     
 }
 
 
-    public: std::vector<Object*> getHashMapAsArray(HashMap<Object*, Object*>* hashMap){
+    auto J2SEUtil::getHashMapAsArray(HashMap<Object*, Object*>* hashMap) -> std::vector<Object*>{
 
     std::vector<Object*> objectArray = hashMap->keys().();;
     
@@ -85,7 +95,7 @@ class J2SEUtil
 }
 
 
-    public: std::vector<Object*> getMapAsArray(Map<Object*, Object*>* map){
+    auto J2SEUtil::getMapAsArray(Map<Object*, Object*>* map) -> std::vector<Object*>{
 
     std::vector<Object*> objectArray = map->keySet()->();;
     
@@ -98,7 +108,7 @@ class J2SEUtil
 }
 
 
-    public: std::vector<Object*> getSetAsArray(Set<std::string>* set){
+    auto J2SEUtil::getSetAsArray(Set<std::string>* set) -> std::vector<Object*>{
 
     std::vector<Object*> objectArray = set->toArray();;
     
@@ -111,7 +121,6 @@ class J2SEUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_J2SEUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_SIMPLESTATETAXMODULE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_SIMPLESTATETAXMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/tax/modules/SimpleStateTaxModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -113,33 +123,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/tax/modules/TaxModuleInterface.h"
 
-class SimpleStateTaxModule
-            : public Object
-        , public TaxModuleInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: StreetAddress* streetAddress;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: const std::string ALL = CommonPhoneStrings::getInstance()->STAR;
-
-    private: const std::string STATETAXPATH = "/generic/taxes/";
-
-    private: const std::string STATETAXFILE = "stateTaxation.xml";
-
-    private: Document* document;
-
-public: SimpleStateTaxModule(){
+SimpleStateTaxModule::SimpleStateTaxModule() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), ALL(CommonPhoneStrings::getInstance()->STAR){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: float getTaxRate(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface){
+    auto SimpleStateTaxModule::getTaxRate(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface) -> float{
 this->streetAddress= streetAddress;
     
 this->storeFrontInterface= storeFrontInterface;
@@ -153,10 +144,10 @@ this->storeFrontInterface= storeFrontInterface;
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAX))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
-                                    this->logUtil->putF("Tax Doc: " +XmlDocumentHelper::toString(this->document), this, "getTaxRate");
+                                    this->logUtil->putF(JavaString::valueOf("Tax Doc: ") +JavaString::valueOf(XmlDocumentHelper::toString(this->document)), this, "getTaxRate");
     
 
                                     }
@@ -236,7 +227,7 @@ state= JavaString::toUpperCase(state);
 }
 
 
-    public: bool isValid(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface){
+    auto SimpleStateTaxModule::isValid(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface) -> bool{
 
         try {
             this->streetAddress= streetAddress;
@@ -252,10 +243,10 @@ this->storeFrontInterface= storeFrontInterface;
 this->document= DomDocumentHelper::create(data);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAX))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
-                                    this->logUtil->putF("Tax Doc: " +XmlDocumentHelper::toString(this->document), this, this->commonStrings->IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("Tax Doc: ") +JavaString::valueOf(XmlDocumentHelper::toString(this->document)), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -286,7 +277,7 @@ this->document= DomDocumentHelper::create(data);
     Node* streetAddressNode = DomSearchHelper::getNode(StreetAddressData::NAME, taxNodeChildren);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAX))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
                                     
@@ -364,7 +355,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
@@ -383,7 +374,6 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_SIMPLESTATETAXMODULE_CPP

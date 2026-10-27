@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDRIGHTTOLEFTIMAGEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDRIGHTTOLEFTIMAGEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AdjustedRightToLeftImageAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/RightToLeftImageAnimation.h"
 
-class AdjustedRightToLeftImageAnimation: public RightToLeftImageAnimation {
 
-    private: int32_t dx= 0;
-
-    private: int32_t dy= 0;
-
-public: AdjustedRightToLeftImageAnimation(Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : RightToLeftImageAnimation(image, animationBehavior){
+AdjustedRightToLeftImageAnimation::AdjustedRightToLeftImageAnimation(Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : RightToLeftImageAnimation(image, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +80,7 @@ this->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t dx, int32_t dy){
+    auto AdjustedRightToLeftImageAnimation::init(int32_t dx, int32_t dy) -> void{
 this->dx= dx;
     
 this->dy= dy;
@@ -83,13 +88,12 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this->dx, y +this->dy);
+    auto AdjustedRightToLeftImageAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+RightToLeftImageAnimation::paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDRIGHTTOLEFTIMAGEANIMATION_CPP

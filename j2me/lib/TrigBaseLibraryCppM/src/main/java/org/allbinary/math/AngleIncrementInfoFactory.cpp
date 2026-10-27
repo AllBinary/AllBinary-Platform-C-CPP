@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_CPP
+        #define ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/AngleIncrementInfoFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,25 +59,23 @@
         #include "org/allbinary/math/AngleFactory.h"
 #include "org/allbinary/math/AngleIncrementInfo.h"
 
-class AngleIncrementInfoFactory
-            : public Object
-         {
 
-    private: static AngleIncrementInfoFactory* instance() { static std::unique_ptr<AngleIncrementInfoFactory> value(new AngleIncrementInfoFactory()); return value.get(); }
+AngleIncrementInfoFactory::AngleIncrementInfoFactory() : angleIncrementInfo(std::vector<AngleIncrementInfo*>(static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE))) {
+        }
+        auto AngleIncrementInfoFactory::instance_owner() -> AngleIncrementInfoFactory* { static std::unique_ptr<AngleIncrementInfoFactory> value(new AngleIncrementInfoFactory()); return value.get(); }
+AngleIncrementInfoFactory* AngleIncrementInfoFactory::instance = AngleIncrementInfoFactory::instance_owner();
 
-    public: static AngleIncrementInfoFactory* getInstance(){
+    auto AngleIncrementInfoFactory::getInstance() -> AngleIncrementInfoFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AngleIncrementInfoFactory::instance();
+                        return AngleIncrementInfoFactory::instance;
     
 }
 
 
-    private: const std::vector<AngleIncrementInfo*> angleIncrementInfo = std::vector<AngleIncrementInfo*>(static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE));
-
-    public: AngleIncrementInfo* getAt(int16_t angleIncrement){
+    auto AngleIncrementInfoFactory::getAt(int16_t angleIncrement) -> AngleIncrementInfo*{
 
     int32_t halfAngleIncrement = (static_cast<int32_t>(angleIncrement)>>1);;
     
@@ -111,7 +119,6 @@ this->angleIncrementInfo[halfAngleIncrement]= angleIncrementInfo;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_CPP

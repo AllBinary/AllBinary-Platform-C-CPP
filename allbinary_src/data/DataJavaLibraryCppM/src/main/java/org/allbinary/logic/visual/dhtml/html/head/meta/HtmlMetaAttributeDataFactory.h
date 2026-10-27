@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATAFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATAFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +52,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributeData.h"
+        class HtmlMetaAttributeData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlMetaAttributeDataFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static HtmlMetaAttributeDataFactory* instance() { static std::unique_ptr<HtmlMetaAttributeDataFactory> value(new HtmlMetaAttributeDataFactory()); return value.get(); }
+    private: static HtmlMetaAttributeDataFactory* instance_owner();
+    private: static HtmlMetaAttributeDataFactory* instance;
 
     public: static HtmlMetaAttributeDataFactory* getInstance();
 
 private: HtmlMetaAttributeDataFactory();
 
-    public: HtmlMetaAttributeData* NAME = new HtmlMetaAttributeData(0, "HTMLMETA_ATTRIBUTE_NAME");
+    public: HtmlMetaAttributeData* NAME;
 
-    public: HtmlMetaAttributeData* HTTP_EQUIV = new HtmlMetaAttributeData(1, "HTMLMETA_ATTRIBUTE_HTTPEQUIV");
+    public: HtmlMetaAttributeData* HTTP_EQUIV;
 
-    public: HtmlMetaAttributeData* CONTENT = new HtmlMetaAttributeData(2, "HTMLMETA_ATTRIBUTE_CONTENT");
+    public: HtmlMetaAttributeData* CONTENT;
 
 };
 
@@ -71,3 +81,13 @@ private: HtmlMetaAttributeDataFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATAFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATAFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATAFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributeData.h")
+#include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributeData.h"
+#endif
+
+        #endif
+    

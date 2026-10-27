@@ -21,6 +21,11 @@
         #ifndef VIEWS_GENERIC_USER_USERSVALIDATIONVIEW_H
         #define VIEWS_GENERIC_USER_USERSVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,24 +34,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tables/user/UserEntityFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class UserEntityFactory;
+class LogUtil;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -67,9 +60,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/user/UsersView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UsersValidationView: public UsersView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: UsersValidationView(TransformInfoInterface* transformInfoInterface);
 
@@ -87,3 +84,31 @@ public: UsersValidationView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_GENERIC_USER_USERSVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_GENERIC_USER_USERSVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_GENERIC_USER_USERSVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tables/user/UserEntityFactory.h>)
+#include <org/allbinary/data/tables/user/UserEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/generic/user/UsersView.h")
+#include "views/generic/user/UsersView.h"
+#endif
+
+        #endif
+    

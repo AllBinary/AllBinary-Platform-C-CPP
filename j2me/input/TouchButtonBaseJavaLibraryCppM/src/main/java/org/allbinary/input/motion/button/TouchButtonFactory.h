@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -56,19 +57,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static TouchButtonFactory* SINGLETON() { static std::unique_ptr<TouchButtonFactory> value(new TouchButtonFactory()); return value.get(); }
+    private: static TouchButtonFactory* SINGLETON_owner();
+    private: static TouchButtonFactory* SINGLETON;
 
     public: static TouchButtonFactory* getInstance();
 
-    private: BasicArrayList* LIST = BasicArrayListUtil::getInstance()->getImmutableInstance();
+    private: BasicArrayList* LIST;
 
-    private: BasicArrayList* list = this->LIST;
+    private: BasicArrayList* list;
 
-    private: BasicArrayList* savedList = this->LIST;
+    private: BasicArrayList* savedList;
 
 private: TouchButtonFactory();
 
@@ -83,7 +89,7 @@ private: TouchButtonFactory();
             
     public: void setList(BasicArrayList* list);
 
-    protected: BasicArrayList* getList();
+    /*protected*/ public: BasicArrayList* getList();
 
 };
 
@@ -91,3 +97,16 @@ private: TouchButtonFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+
+        #endif
+    

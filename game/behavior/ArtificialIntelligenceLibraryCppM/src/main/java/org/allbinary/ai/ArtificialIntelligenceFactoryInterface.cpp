@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ai/ArtificialIntelligenceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/ai/ArtificialIntelligence.h"
 
-class ArtificialIntelligenceFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual ArtificialIntelligence* getInstance(Object* anyType) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEFACTORYINTERFACE_CPP

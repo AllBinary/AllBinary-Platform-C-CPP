@@ -21,6 +21,11 @@
         #ifndef TAGS_CUSTOMTAGSUPPORT_H
         #define TAGS_CUSTOMTAGSUPPORT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <javax/servlet/jsp/tagext/TagSupport.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -51,13 +52,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "tags/TagStrings.h"
+        class TagStrings;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomTagSupport: public TagSupport {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
 
-    protected: TagStrings* tagStrings = TagStrings::getInstance();
+            
+    public: CustomTagSupport();
+        
+    /*protected*/ public: CommonStrings* commonStrings;
+
+    /*protected*/ public: TagStrings* tagStrings;
 
 };
 
@@ -65,3 +74,19 @@ class CustomTagSupport: public TagSupport {
 
 
         #endif //TAGS_CUSTOMTAGSUPPORT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGS_CUSTOMTAGSUPPORT_H_COMPLETE)
+        #define TAGS_CUSTOMTAGSUPPORT_H_COMPLETE
+        #if __has_include(<javax/servlet/jsp/tagext/TagSupport.h>)
+#include <javax/servlet/jsp/tagext/TagSupport.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("tags/TagStrings.h")
+#include "tags/TagStrings.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
-#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
+class MotionGestureEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MotionGestureEventListener: public BaseMotionGestureEventListener {
 
     public: virtual void onPressedMotionGestureEvent(MotionGestureEvent* ev) = 0;
@@ -80,3 +89,16 @@ class MotionGestureEventListener: public BaseMotionGestureEventListener {
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_H_COMPLETE
+        #if __has_include("org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h")
+#include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h")
+#include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_THREADPOOL_CPP
+        #define ORG_ALLBINARY_THREAD_THREADPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ThreadPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,39 +77,14 @@
 #include "org/allbinary/thread/ThreadObjectUtil.h"
 #include "org/allbinary/thread/PriorityRunnable.h"
 
-class ThreadPool
-            : public Object
-         {
 
-    public: static inline const int32_t NORMAL_PRIORITY = 5;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: NullRunnable* NULL_RUNNABLE = NullRunnable::getInstance();
-
-    protected: ThreadPoolStrings* threadPoolStrings = ThreadPoolStrings::getInstance();
-
-    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
-
-    private: bool isAlive= false;
-
-    private: BasicArrayList* taskQueue = new BasicArrayListD();
-
-    private: int32_t numThreads= 0;
-
-    private: bool runningTask= false;
-
-public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
+ThreadPool::ThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), NULL_RUNNABLE(NullRunnable::getInstance()), threadPoolStrings(ThreadPoolStrings::getInstance()), threadObjectUtil(ThreadObjectUtil::getInstance()), taskQueue(new BasicArrayListD()), currentPriorityRunnable(this->threadObjectUtil->NULL_PRIORITY_RUNNABLE){
 }
 
 
-    private: PriorityRunnable* currentPriorityRunnable = this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
-
                 //@Throws(Exception.constructor)
             
-    public: void runAPriorityTask(){
+    auto ThreadPool::runAPriorityTask() -> void{
 
                         if(!this->currentPriorityRunnable->isDone())
                         
@@ -147,7 +132,7 @@ this->currentPriorityRunnable->run();
 
                 //@Throws(Exception.constructor)
             
-    public: void runATask(){
+    auto ThreadPool::runATask() -> void{
 
     Runnable* runnable = this->getTask();;
     
@@ -165,7 +150,7 @@ this->currentPriorityRunnable->run();
 }
 
 
-    public: void init(){
+    auto ThreadPool::init() -> void{
 
                         if(!this->isAlive)
                         
@@ -181,7 +166,7 @@ this->taskQueue= new BasicArrayListD();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void runTaskWithPriority(PriorityRunnable* task){
+    auto ThreadPool::runTaskWithPriority(PriorityRunnable* task) -> void{
 
                         if(!this->isAlive)
                         
@@ -254,7 +239,7 @@ this->taskQueue->addAt(index, task);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void runTask(Runnable* task){
+    auto ThreadPool::runTask(Runnable* task) -> void{
 
                         if(!this->isAlive)
                         
@@ -281,7 +266,7 @@ this->taskQueue->addAt(index, task);
                 //@Throws(InterruptedException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: Runnable* getTask(){
+    auto ThreadPool::getTask() -> Runnable*{
 
                         if(this->taskQueue->isEmpty())
                         
@@ -305,14 +290,14 @@ this->taskQueue->addAt(index, task);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void clear(){
+    auto ThreadPool::clear() -> void{
 this->taskQueue->clear();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void close(){
+    auto ThreadPool::close() -> void{
 
                         if(this->isAlive)
                         
@@ -329,7 +314,7 @@ this->currentPriorityRunnable= this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 }
 
 
-    public: void join(){
+    auto ThreadPool::join() -> void{
 this->isAlive= false;
     
 this->taskQueue->clear();
@@ -339,7 +324,7 @@ this->currentPriorityRunnable= this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 }
 
 
-    public: bool isBusy(){
+    auto ThreadPool::isBusy() -> bool{
 
                         if(!this->isAlive)
                         
@@ -388,11 +373,11 @@ this->currentPriorityRunnable= this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 }
 
 
-    protected: void threadStarted(){
+    auto ThreadPool::threadStarted() -> void{
 }
 
 
-    protected: void threadStopped(){
+    auto ThreadPool::threadStopped() -> void{
 
                         if(this->numThreads == 1)
                         
@@ -409,15 +394,14 @@ this->currentPriorityRunnable= this->threadObjectUtil->NULL_PRIORITY_RUNNABLE;
 }
 
 
-    protected: void startTask(Runnable* task){
+    auto ThreadPool::startTask(Runnable* task) -> void{
 }
 
 
-    protected: void completedTask(Runnable* task){
+    auto ThreadPool::completedTask(Runnable* task) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_THREADPOOL_CPP

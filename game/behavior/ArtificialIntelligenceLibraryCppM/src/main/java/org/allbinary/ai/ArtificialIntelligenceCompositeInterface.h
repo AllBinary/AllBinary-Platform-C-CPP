@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
+        class ArtificialIntelligenceInterface;
 
-class ArtificialIntelligenceCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ArtificialIntelligenceCompositeInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -61,3 +72,13 @@ class ArtificialIntelligenceCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/ai/ArtificialIntelligenceInterface.h")
+#include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
+#endif
+
+        #endif
+    

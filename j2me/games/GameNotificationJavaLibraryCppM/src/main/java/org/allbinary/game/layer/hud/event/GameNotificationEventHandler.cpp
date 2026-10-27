@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/hud/event/GameNotificationEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,28 +72,15 @@
         #include "org/allbinary/game/layer/hud/event/GameNotificationListenerInterface.h"
 #include "org/allbinary/game/layer/hud/event/GameNotificationEvent.h"
 
-class GameNotificationEventHandler: public BasicEventHandler {
+auto GameNotificationEventHandler::instance_owner() -> GameNotificationEventHandler* { static std::unique_ptr<GameNotificationEventHandler> value(new GameNotificationEventHandler()); return value.get(); }
+GameNotificationEventHandler* GameNotificationEventHandler::instance = GameNotificationEventHandler::instance_owner();
 
-    private: static GameNotificationEventHandler* instance() { static std::unique_ptr<GameNotificationEventHandler> value(new GameNotificationEventHandler()); return value.get(); }
-
-    public: static GameNotificationEventHandler* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameNotificationEventHandler::instance();
-    
+GameNotificationEventHandler::GameNotificationEventHandler(){
 }
 
-
-private: GameNotificationEventHandler(){
-}
-
-
-    public: bool enabled = true;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeAllListeners(){
+    auto GameNotificationEventHandler::removeAllListeners() -> void{
 
     EventListenerInterface* eventListenerInterface = NullEventListener::NULL_EVENT_LISTENER;;
     
@@ -99,7 +96,7 @@ private: GameNotificationEventHandler(){
 
                                     }
                                 
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 
                         if(eventListenerInterface != NullEventListener::NULL_EVENT_LISTENER)
@@ -113,9 +110,19 @@ super.removeAllListeners();
 }
 
 
+    auto GameNotificationEventHandler::getInstance() -> GameNotificationEventHandler*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameNotificationEventHandler::instance;
+    
+}
+
+
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto GameNotificationEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
                         if(!this->enabled)
                         
@@ -137,7 +144,6 @@ gameNotificationListenerInterface->onGameNotificationEvent(dynamic_cast<GameNoti
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONEVENTHANDLER_CPP

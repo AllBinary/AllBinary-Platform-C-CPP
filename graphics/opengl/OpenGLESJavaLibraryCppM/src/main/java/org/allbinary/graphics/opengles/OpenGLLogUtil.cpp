@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLLOGUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLLOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLLogUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,25 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLLogUtil
-            : public Object
-         {
 
-    private: static OpenGLLogUtil* instance() { static std::unique_ptr<OpenGLLogUtil> value(new OpenGLLogUtil()); return value.get(); }
+OpenGLLogUtil::OpenGLLogUtil() {
+        }
+        auto OpenGLLogUtil::instance_owner() -> OpenGLLogUtil* { static std::unique_ptr<OpenGLLogUtil> value(new OpenGLLogUtil()); return value.get(); }
+OpenGLLogUtil* OpenGLLogUtil::instance = OpenGLLogUtil::instance_owner();
 
-    public: static OpenGLLogUtil* getInstance(){
+    auto OpenGLLogUtil::getInstance() -> OpenGLLogUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLLogUtil::instance();
+                        return OpenGLLogUtil::instance;
     
 }
 
 
-    private: const std::string MAX_TEXTURE = " Max Texture Size: ";
-
-    public: void logError(GL10* gl){
+    auto OpenGLLogUtil::logError(GL10* gl) -> void{
 
     int32_t error = gl->glGetError();;
     
@@ -121,11 +129,7 @@ stringBuffer->appendint(maxTextureSize[0]);
 }
 
 
-    private: const std::string LOG_ERROR = "logError";
-
-    private: const std::string IMAGE = " Image: ";
-
-    public: void logError(GL10* gl, Image* image){
+    auto OpenGLLogUtil::logError(GL10* gl, Image* image) -> void{
 
     int32_t error = gl->glGetError();;
     
@@ -168,7 +172,6 @@ PreLogUtil::put(stringBuffer->toString(), this, this->LOG_ERROR);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLLOGUTIL_CPP

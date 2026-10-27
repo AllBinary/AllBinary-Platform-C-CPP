@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_STOREWORKFLOWTAG_CPP
+        #define TAGS_STOREWORKFLOWTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/StoreWorkFlowTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,15 +81,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/HelperTag.h"
 //and hidden field removal
-class StoreWorkFlowTag: public HelperTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string viewName;
-
-    private: std::string viewFile;
-
-public: StoreWorkFlowTag() : HelperTag(new StoreTagWorkFlowHelperFactory()){
+StoreWorkFlowTag::StoreWorkFlowTag() : HelperTag(new StoreTagWorkFlowHelperFactory()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,10 +90,10 @@ public: StoreWorkFlowTag() : HelperTag(new StoreTagWorkFlowHelperFactory()){
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -98,7 +101,7 @@ public: StoreWorkFlowTag() : HelperTag(new StoreTagWorkFlowHelperFactory()){
 }
 
 
-    public: void setName(std::string value){
+    auto StoreWorkFlowTag::setName(std::string value) -> void{
 this->viewName= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->viewName);
@@ -108,14 +111,14 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t process(){
+    auto StoreWorkFlowTag::process() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);
     
 
                                     }
@@ -142,10 +145,10 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 
                                     }
@@ -162,14 +165,14 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto StoreWorkFlowTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(this->commonStrings->START, this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -212,7 +215,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_STOREWORKFLOWTAG_CPP

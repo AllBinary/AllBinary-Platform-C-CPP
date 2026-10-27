@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMEHUDWIDGET_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMEHUDWIDGET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/time/TimeHudWidget.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,11 +76,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/hud/basic/time/Timer.h"
 
-class TimeHudWidget: public BasicHud {
 
                 //@Throws(Exception.constructor)
             
-    public: static TimeHudWidget* getInstance(int32_t location, int32_t direction, BasicColor* basicColor, Timer* timer){
+    auto TimeHudWidget::getInstance(int32_t location, int32_t direction, BasicColor* basicColor, Timer* timer) -> TimeHudWidget*{
 
 
 
@@ -80,19 +89,7 @@ class TimeHudWidget: public BasicHud {
 }
 
 
-    private: const std::string TIME_STRING = "Time ";
-
-    private: const std::vector<char> TIME_CHAR_ARRAY = ['T','i','m','e',' '];
-
-    private: int32_t offset= 0;
-
-    private: std::vector<char> string = PrimitiveLongSingleton::getInstance()->ZERO;
-
-    private: int32_t totalDigits = 1;
-
-    private: Timer* timer;
-
-public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor, Timer* timer) : BasicHud(location, direction, bufferZone, basicColor){
+TimeHudWidget::TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor, Timer* timer) : BasicHud(location, direction, bufferZone, basicColor), TIME_CHAR_ARRAY({'T','i','m','e',' '}), string(PrimitiveLongSingleton::getInstance()->ZERO){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +105,7 @@ this->updateMaxHeight= 14;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto TimeHudWidget::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -116,12 +113,12 @@ this->updateMaxWidth= font->getSize() *5;
     
 this->offset= font->stringWidth(this->TIME_STRING) +MyFontProcessor::defaultStringWidth(font, 3);
     
-super.updateMeasurement(graphics);
+BasicHud::updateMeasurement(graphics);
     
 }
 
 
-    public: void update(){
+    auto TimeHudWidget::update() -> void{
 this->timer->update();
     
 this->set();
@@ -129,7 +126,7 @@ this->set();
 }
 
 
-    private: void set(){
+    auto TimeHudWidget::set() -> void{
 this->string= this->timer->getTimeChars();
     
 this->totalDigits= this->timer->getCurrentTotalDigits();
@@ -137,7 +134,7 @@ this->totalDigits= this->timer->getCurrentTotalDigits();
 }
 
 
-    public: Timer* getTimer(){
+    auto TimeHudWidget::getTimer() -> Timer*{
 
 
 
@@ -147,13 +144,12 @@ this->totalDigits= this->timer->getCurrentTotalDigits();
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paintDX(graphics, this->TIME_CHAR_ARRAY, 0, this->TIME_CHAR_ARRAY.size(), this->string, 0, this->totalDigits, this->offset);
+    auto TimeHudWidget::paint(Graphics* graphics) -> void{
+BasicHud::paintDX(graphics, this->TIME_CHAR_ARRAY, 0, this->TIME_CHAR_ARRAY.size(), this->string, 0, this->totalDigits, this->offset);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMEHUDWIDGET_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageScaleUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,43 +95,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageScaleUtil
-            : public Object
-         {
+auto ImageScaleUtil::instance_owner() -> ImageScaleUtil* { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+ImageScaleUtil* ImageScaleUtil::instance = ImageScaleUtil::instance_owner();
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
-
-    public: static ImageScaleUtil* getInstance(){
+    auto ImageScaleUtil::getInstance() -> ImageScaleUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil::instance();
+                        return ImageScaleUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ImageScaleUtil(){
+ImageScaleUtil::ImageScaleUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), anchor(Anchor::TOP_LEFT), imageBasicArrayList(new BasicArrayListD()), scaledImageBasicArrayList(new BasicArrayListD()), scaleXBasicArrayList(new BasicArrayListD()), scaleYBasicArrayList(new BasicArrayListD()){
 }
 
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: BasicArrayList* imageBasicArrayList = new BasicArrayListD();
-
-    private: BasicArrayList* scaledImageBasicArrayList = new BasicArrayListD();
-
-    private: BasicArrayList* scaleXBasicArrayList = new BasicArrayListD();
-
-    private: BasicArrayList* scaleYBasicArrayList = new BasicArrayListD();
-
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
+    auto ImageScaleUtil::createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached) -> Image*{
 
 
 
@@ -133,7 +126,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_){
+    auto ImageScaleUtil::createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_) -> Image*{
 
     float scaleX = scaleNominatorX /scaleDenominatorX;;
     
@@ -151,7 +144,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, bool cached){
+    auto ImageScaleUtil::createImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, bool cached) -> Image*{
 
     AndroidImageInterface* originalAndroidImage = dynamic_cast<AndroidImageInterface*>(originalImage);;
     
@@ -237,7 +230,7 @@ this->scaleYBasicArrayList->add(scaleY);
 
                 //@Throws(Exception.constructor)
             
-    private: Image* getScaledImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached){
+    auto ImageScaleUtil::getScaledImage(ImageCache* imageCache, Image* originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached) -> Image*{
 
     Image* image = NullImage::NULL_IMAGE;;
     
@@ -280,7 +273,7 @@ image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -288,7 +281,7 @@ image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
 }
 
 
-    private: void scale(Image* image, Matrix* matrix, float scaleX, float scaleY){
+    auto ImageScaleUtil::scale(Image* image, Matrix* matrix, float scaleX, float scaleY) -> void{
 matrix->setScale(scaleX, scaleY);
     
 
@@ -299,7 +292,6 @@ canvas->concat(matrix);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/AdjustedVectorAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,13 +63,8 @@
         #include "org/allbinary/animation/VectorAnimation.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class AdjustedVectorAnimation: public VectorAnimation {
 
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-public: AdjustedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : VectorAnimation(currentPoints, basicColor, animationBehavior){
+AdjustedVectorAnimation::AdjustedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : VectorAnimation(currentPoints, basicColor, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,13 +78,12 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this->dx, y +this->dy);
+    auto AdjustedVectorAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+VectorAnimation::paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameSpeed.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +57,13 @@
         #include "org/allbinary/game/configuration/GameConfigurationCentral.h"
 #include "org/allbinary/game/configuration/GameConfiguration.h"
 
-class GameSpeed
-            : public Object
-         {
 
-    private: static GameSpeed* instance() { static std::unique_ptr<GameSpeed> value(new GameSpeed()); return value.get(); }
+GameSpeed::GameSpeed() {
+        }
+        auto GameSpeed::instance_owner() -> GameSpeed* { static std::unique_ptr<GameSpeed> value(new GameSpeed()); return value.get(); }
+GameSpeed* GameSpeed::instance = GameSpeed::instance_owner();
 
-    public: static GameSpeed* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameSpeed::instance();
-    
-}
-
-
-    public: int32_t getSpeed(){
+    auto GameSpeed::getSpeed() -> int32_t{
 
     GameConfiguration* speedGameConfiguration = GameConfigurationCentral::getInstance()->SPEED;;
     
@@ -76,7 +76,7 @@ class GameSpeed
 }
 
 
-    public: int32_t getDelay(){
+    auto GameSpeed::getDelay() -> int32_t{
 
     GameConfiguration* speedGameConfiguration = GameConfigurationCentral::getInstance()->SPEED;;
     
@@ -89,7 +89,16 @@ class GameSpeed
 }
 
 
-};
+    auto GameSpeed::getInstance() -> GameSpeed*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameSpeed::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/GameAdStateFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -44,30 +54,26 @@
 #include "org/allbinary/business/advertisement/AppNameLicensingAdConfiguration.h"
 #include "org/allbinary/business/advertisement/GameAdStateBase.h"
 
-class GameAdStateFactory
-            : public Object
-        , public GameAdStateFactoryInterface {
 
-    private: static GameAdStateFactory* instance() { static std::unique_ptr<GameAdStateFactory> value(new GameAdStateFactory()); return value.get(); }
+GameAdStateFactory::GameAdStateFactory() : gameAdStateArray(
+                                                        {
+                                                            new GameAdState(new AppNameLicensingAdConfiguration())
+                                                        }), gameAdState(this->gameAdStateArray[0]) {
+        }
+        auto GameAdStateFactory::instance_owner() -> GameAdStateFactory* { static std::unique_ptr<GameAdStateFactory> value(new GameAdStateFactory()); return value.get(); }
+GameAdStateFactory* GameAdStateFactory::instance = GameAdStateFactory::instance_owner();
 
-    public: static GameAdStateFactory* getInstance(){
+    auto GameAdStateFactory::getInstance() -> GameAdStateFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameAdStateFactory::instance();
+                        return GameAdStateFactory::instance;
     
 }
 
 
-    private: const std::vector<GameAdState*> gameAdStateArray = 
-                                                        {
-                                                            new GameAdState(new AppNameLicensingAdConfiguration())
-                                                        };
-
-    private: GameAdState* gameAdState = this->gameAdStateArray[0];
-
-    public: GameAdState* getCurrentInstance(){
+    auto GameAdStateFactory::getCurrentInstance() -> GameAdState*{
 
 
 
@@ -79,7 +85,7 @@ class GameAdStateFactory
 
                 //@Throws(Exception.constructor)
             
-    public: GameAdStateBase* getInstanceForApp(SoftwareInformation* softwareInformation){
+    auto GameAdStateFactory::getInstanceForApp(SoftwareInformation* softwareInformation) -> GameAdStateBase*{
 this->gameAdState= this->gameAdStateArray[0];
     
 
@@ -91,7 +97,7 @@ this->gameAdState= this->gameAdStateArray[0];
 }
 
 
-    public: bool isEnabled(){
+    auto GameAdStateFactory::isEnabled() -> bool{
 
 
 
@@ -101,7 +107,6 @@ this->gameAdState= this->gameAdStateArray[0];
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_CPP

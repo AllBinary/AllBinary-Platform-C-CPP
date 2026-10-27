@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMGAUGEITEM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMGAUGEITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/ABCustomGaugeItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,11 +49,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
-class ABCustomGaugeItem: public ABCustomItem {
+auto ABCustomGaugeItem::NULL_GAUGE_ITEM_owner() -> ABCustomGaugeItem* { static std::unique_ptr<ABCustomGaugeItem> value(new ABCustomGaugeItem(StringUtil::getInstance()->EMPTY_STRING, 1, 0, BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE)); return value.get(); }
+ABCustomGaugeItem* ABCustomGaugeItem::NULL_GAUGE_ITEM = ABCustomGaugeItem::NULL_GAUGE_ITEM_owner();
 
-    public: static ABCustomGaugeItem* NULL_GAUGE_ITEM() { static std::unique_ptr<ABCustomGaugeItem> value(new ABCustomGaugeItem(StringUtil::getInstance()->EMPTY_STRING, 1, 0, BasicColorFactory::getInstance()->BLACK, BasicColorFactory::getInstance()->WHITE)); return value.get(); }
-
-public: ABCustomGaugeItem(std::string label, int32_t maxValue, int32_t initialValue, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
+ABCustomGaugeItem::ABCustomGaugeItem(std::string label, int32_t maxValue, int32_t initialValue, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -53,7 +62,6 @@ public: ABCustomGaugeItem(std::string label, int32_t maxValue, int32_t initialVa
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMGAUGEITEM_CPP

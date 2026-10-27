@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEFORMPAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEFORMPAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/PreGameLockableFormPaintableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/PreGameLockablePaintable.h"
 
-class PreGameLockableFormPaintableFactory: public ItemPaintableFactory {
 
-    private: int32_t lockedIndex;
-
-public: PreGameLockableFormPaintableFactory(int32_t lockedIndex){
+PreGameLockableFormPaintableFactory::PreGameLockableFormPaintableFactory(int32_t lockedIndex){
 this->lockedIndex= lockedIndex;
     
 }
@@ -70,7 +77,7 @@ this->lockedIndex= lockedIndex;
 
                 //@Throws(Exception.constructor)
             
-    public: ItemPaintable* getInstanceItemPaintable(PaintableForm* paintableForm){
+    auto PreGameLockableFormPaintableFactory::getInstanceItemPaintable(PaintableForm* paintableForm) -> ItemPaintable*{
 
 
 
@@ -80,7 +87,6 @@ this->lockedIndex= lockedIndex;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEFORMPAINTABLEFACTORY_CPP

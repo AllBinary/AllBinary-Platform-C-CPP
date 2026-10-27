@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATURE_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATURE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/SensorFeature.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,9 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/feature/Feature.h"
 
-class SensorFeature: public Feature {
 
-: SensorFeature(std::string name) : Feature(name){
+SensorFeature::SensorFeature(std::string name) : Feature(name){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,7 +65,6 @@ class SensorFeature: public Feature {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATURE_CPP

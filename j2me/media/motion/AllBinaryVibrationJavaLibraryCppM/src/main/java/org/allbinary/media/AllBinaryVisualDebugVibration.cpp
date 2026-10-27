@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYVISUALDEBUGVIBRATION_CPP
+        #define ORG_ALLBINARY_MEDIA_ALLBINARYVISUALDEBUGVIBRATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/AllBinaryVisualDebugVibration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,21 +80,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/AllBinaryVibrationME.h"
 
-class AllBinaryVisualDebugVibration: public AllBinaryVibrationME, public UpdateMyFontInterface {
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(Integer.MAX_VALUE);
-
-    private: const std::string VIBRATING = "Vibrating";
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: int32_t width= 0;
-
-    public: void updateMeasurement(Graphics* graphics){
+AllBinaryVisualDebugVibration::AllBinaryVisualDebugVibration() : displayInfoSingleton(DisplayInfoSingleton::getInstance()), timeDelayHelper(new TimeDelayHelper(Integer.MAX_VALUE)), myFontProcessor(new UpdateMyFontProcessor(this)), anchor(Anchor::TOP_LEFT) {
+        }
+        
+    auto AllBinaryVisualDebugVibration::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -95,13 +95,13 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void vibrate(int32_t duration, int32_t type, int32_t volume){
+    auto AllBinaryVisualDebugVibration::vibrate(int32_t duration, int32_t type, int32_t volume) -> void{
 this->timeDelayHelper->delay= duration;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto AllBinaryVisualDebugVibration::paint(Graphics* graphics) -> void{
 
                         if(this->timeDelayHelper->isTimeTNT())
                         
@@ -118,7 +118,6 @@ graphics->drawString(this->VIBRATING, this->displayInfoSingleton->getLastHalfWid
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_ALLBINARYVISUALDEBUGVIBRATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,11 +101,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/mapping/InputMapping.h"
 
-class InputToGameKeyMapping: public InputMapping {
+Object* InputToGameKeyMapping::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static InputToGameKeyMapping* getNullInstance(){
+    auto InputToGameKeyMapping::getNullInstance() -> InputToGameKeyMapping*{
 
                         if(InputToGameKeyMapping::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -114,26 +122,18 @@ class InputToGameKeyMapping: public InputMapping {
 }
 
 
-    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
-
-    private: const std::vector<GameKey*> mappedGameKeys = 
+InputToGameKeyMapping::InputToGameKeyMapping() : gameKeyFactory(GameKeyFactory::getInstance()), mappedGameKeys(
                                                         {
                                                             this->gameKeyFactory->UP,this->gameKeyFactory->DOWN,this->gameKeyFactory->LEFT,this->gameKeyFactory->RIGHT
-                                                        };
-
-    private: const std::vector<GameKey*> platformToGameKeyMapping = std::vector<GameKey*>(InputFactory::getInstance()->MAX);
-
-    protected: std::vector<GameKey*> negativePlatformToGameKeyMapping = {};
-
-public: InputToGameKeyMapping(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                                        }), platformToGameKeyMapping(std::vector<GameKey*>(InputFactory::getInstance()->MAX)), negativePlatformToGameKeyMapping({}){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->clear();
     
 }
 
 
-    private: void clear(){
+    auto InputToGameKeyMapping::clear() -> void{
 
 
 
@@ -148,15 +148,15 @@ this->platformToGameKeyMapping[index]= this->gameKeyFactory->NONE;
 }
 
 
-    protected: void removeAll(){
-super.removeAll();
+    auto InputToGameKeyMapping::removeAll() -> void{
+InputMapping::removeAll();
     
 this->clear();
     
 }
 
 
-    public: void addMapping(InputToGameKeyMapping* inputToGameKeyMapping){
+    auto InputToGameKeyMapping::addMapping(InputToGameKeyMapping* inputToGameKeyMapping) -> void{
 
 
 
@@ -181,7 +181,7 @@ this->clear();
 }
 
 
-    private: void addAll(Input* input, BasicArrayList* list){
+    auto InputToGameKeyMapping::addAll(Input* input, BasicArrayList* list) -> void{
 
 
 
@@ -199,25 +199,25 @@ this->add(input, mappedToInput);
 }
 
 
-    public: void add(Input* input, Input* mappedToInput){
-super.add(input, mappedToInput);
+    auto InputToGameKeyMapping::add(Input* input, Input* mappedToInput) -> void{
+InputMapping::add(input, mappedToInput);
     
 this->set(input, mappedToInput);
     
 }
 
 
-    public: void remove(Input* input, Input* mappedToInput){
-this->logUtil.putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(input))->append(" == ")->append(StringUtil::getInstance()->toString(mappedToInput))->toString(), this, "InputToGameKeyMapping::remove");
+    auto InputToGameKeyMapping::remove(Input* input, Input* mappedToInput) -> void{
+this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(input))->append(" == ")->append(StringUtil::getInstance()->toString(mappedToInput))->toString(), this, "InputToGameKeyMapping::remove");
     
-super.remove(input, mappedToInput);
+InputMapping::remove(input, mappedToInput);
     
 this->set(input, this->gameKeyFactory->NONE);
     
 }
 
 
-    private: void set(Input* input, Input* mappedToInput){
+    auto InputToGameKeyMapping::set(Input* input, Input* mappedToInput) -> void{
 
     int32_t id = mappedToInput->getId();;
     
@@ -233,7 +233,7 @@ this->set(input, this->gameKeyFactory->NONE);
 }
 
 
-    public: int32_t getMaxMappable(){
+    auto InputToGameKeyMapping::getMaxMappable() -> int32_t{
 
 
 
@@ -243,7 +243,7 @@ this->set(input, this->gameKeyFactory->NONE);
 }
 
 
-    public: BasicArrayList* getReverseInstance(int32_t id){
+    auto InputToGameKeyMapping::getReverseInstance(int32_t id) -> BasicArrayList*{
 
     BasicArrayList* list = new BasicArrayListD();;
     
@@ -258,7 +258,7 @@ this->set(input, this->gameKeyFactory->NONE);
     int32_t index = 0;index < this->platformToGameKeyMapping.size(); index++)
         {
 
-                        if(this->platformToGameKeyMapping[index].getId() == id)
+                        if(this->platformToGameKeyMapping[index]->getId() == id)
                         
                                     {
                                     
@@ -291,7 +291,7 @@ this->set(input, this->gameKeyFactory->NONE);
 
                 //@Throws(Exception.constructor)
             
-    private: void initGameKey(Canvas* canvas, GameKey* gameKey){
+    auto InputToGameKeyMapping::initGameKey(Canvas* canvas, GameKey* gameKey) -> void{
 
     int32_t key = canvas->getKeyCode(gameKey->getId());;
     
@@ -321,7 +321,7 @@ this->set(input, this->gameKeyFactory->NONE);
                                     }
                                 
                         else {
-                            PreLogUtil::putOE((new StringMaker())->append(gameKey->toString())->append(CommonSeps::getInstance()->COLON_SEP)->appendint(key)->toString(), this, this->commonStrings.INIT, new Exception());
+                            PreLogUtil::putOE((new StringMaker())->append(gameKey->toString())->append(CommonSeps::getInstance()->COLON_SEP)->appendint(key)->toString(), this, this->commonStrings->INIT, new Exception());
     
 
                         }
@@ -331,7 +331,7 @@ this->set(input, this->gameKeyFactory->NONE);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t getSmallestCanvasGameKeyCode(Canvas* canvas){
+    auto InputToGameKeyMapping::getSmallestCanvasGameKeyCode(Canvas* canvas) -> int32_t{
 
     int32_t nextKey = 0;;
     
@@ -345,7 +345,7 @@ this->set(input, this->gameKeyFactory->NONE);
                         for (
     int32_t index = this->mappedGameKeys.size();--index >= 0; )
         {
-nextKey= canvas->getKeyCode(this->mappedGameKeys[index].getId());
+nextKey= canvas->getKeyCode(this->mappedGameKeys[index]->getId());
     
 
                         if(nextKey < smallestKey)
@@ -367,7 +367,7 @@ nextKey= canvas->getKeyCode(this->mappedGameKeys[index].getId());
 }
 
 
-    public: void init(Canvas* canvas){
+    auto InputToGameKeyMapping::init(Canvas* canvas) -> void{
 
         try {
             
@@ -424,14 +424,14 @@ this->initGameKey(canvas, this->mappedGameKeys[index]);
                 //: 
 } catch(Throwable& t) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, &t);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, &t);
     
 }
 
 }
 
 
-    public: GameKey* getInstanceForCanvas(Canvas* canvas, int32_t id){
+    auto InputToGameKeyMapping::getInstanceForCanvas(Canvas* canvas, int32_t id) -> GameKey*{
 
                         if(id >= 0 && id < this->platformToGameKeyMapping.size())
                         
@@ -471,7 +471,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
 }
 
 
-    public: GameKey* getInstance(int32_t id){
+    auto InputToGameKeyMapping::getInstance(int32_t id) -> GameKey*{
 
                         if(id >= 0 && id < this->platformToGameKeyMapping.size())
                         
@@ -511,7 +511,6 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_CPP

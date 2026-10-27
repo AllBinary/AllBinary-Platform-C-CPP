@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEGAMEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEGAMEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/BaseGameBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,23 +75,25 @@
         #include "org/allbinary/game/displayable/canvas/DemoGameBehavior.h"
 #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class BaseGameBehavior: public DemoGameBehavior {
 
-    private: static BaseGameBehavior* instanceC() { static std::unique_ptr<BaseGameBehavior> value(new BaseGameBehavior()); return value.get(); }
+BaseGameBehavior::BaseGameBehavior() {
+        }
+        auto BaseGameBehavior::instanceC_owner() -> BaseGameBehavior* { static std::unique_ptr<BaseGameBehavior> value(new BaseGameBehavior()); return value.get(); }
+BaseGameBehavior* BaseGameBehavior::instanceC = BaseGameBehavior::instanceC_owner();
 
-    public: static DemoGameBehavior* getInstance(){
+    auto BaseGameBehavior::getInstance() -> DemoGameBehavior*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BaseGameBehavior::instanceC();
+                        return BaseGameBehavior::instanceC;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto BaseGameBehavior::init() -> void{
 
     GameAdState* gameAdState = GameAdStateFactory::getInstance()->getCurrentInstance();;
     
@@ -90,7 +102,7 @@ gameAdState->playingAdState();
 }
 
 
-    public: void pause(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::pause(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 
     Features* features = Features::getInstance();;
     
@@ -109,7 +121,7 @@ currentDisplayableFactory->setRunnable(allBinaryGameCanvas->gamePauseRunnable);
 }
 
 
-    public: void unPause(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::unPause(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 
                         if(Features::getInstance()->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD))
                         
@@ -129,7 +141,7 @@ currentDisplayableFactory->setDisplayable(allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateTouch(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::updateTouch(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->updateTouch2();
     
 }
@@ -137,7 +149,7 @@ allBinaryGameCanvas->updateTouch2();
 
                 //@Throws(Exception.constructor)
             
-    public: void updateScreenButtonPaintable(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::updateScreenButtonPaintable(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->updateScreenButtonPaintable2();
     
 }
@@ -145,13 +157,13 @@ allBinaryGameCanvas->updateScreenButtonPaintable2();
 
                 //@Throws(Exception.constructor)
             
-    public: void setGameState(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::setGameState(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->updateGameState();
     
 }
 
 
-    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::removeAllGameKeyInputListeners(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->removeAllGameKeyInputListeners2();
     
 }
@@ -159,7 +171,7 @@ allBinaryGameCanvas->removeAllGameKeyInputListeners2();
 
                 //@Throws(Exception.constructor)
             
-    public: void updateEndGameProcessor(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::updateEndGameProcessor(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->updateEndGameProcessor2();
     
 }
@@ -167,7 +179,7 @@ allBinaryGameCanvas->updateEndGameProcessor2();
 
                 //@Throws(Exception.constructor)
             
-    public: void buildGame(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::buildGame(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->buildGame2();
     
 }
@@ -175,7 +187,7 @@ allBinaryGameCanvas->buildGame2();
 
                 //@Throws(Exception.constructor)
             
-    public: void run(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseGameBehavior::run(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->run2();
     
 }
@@ -183,13 +195,12 @@ allBinaryGameCanvas->run2();
 
                 //@Throws(Exception.constructor)
             
-    public: void setHighScore(AbeClientInformationInterface* abeClientInformation, AllBinaryGameCanvas* allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast){
+    auto BaseGameBehavior::setHighScore(AbeClientInformationInterface* abeClientInformation, AllBinaryGameCanvas* allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast) -> void{
 allBinaryGameCanvas->setHighScore2(abeClientInformation, name, score, autoSubmit, isLast);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEGAMEBEHAVIOR_CPP

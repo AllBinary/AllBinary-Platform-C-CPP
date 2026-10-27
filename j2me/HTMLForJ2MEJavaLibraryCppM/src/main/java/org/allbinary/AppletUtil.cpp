@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_APPLETUTIL_CPP
+        #define ORG_ALLBINARY_APPLETUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/AppletUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AppletUtil
-            : public Object
-         {
 
-    public: static bool isAppletLoader(Object* anyType){
+AppletUtil::AppletUtil(){
+}
+
+
+    auto AppletUtil::isAppletLoader(Object* anyType) -> bool{
 
 
 
@@ -59,11 +70,6 @@ class AppletUtil
 }
 
 
-private: AppletUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_APPLETUTIL_CPP

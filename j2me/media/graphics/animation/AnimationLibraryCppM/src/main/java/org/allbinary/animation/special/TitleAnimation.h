@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/animation/IndexedAnimationBehavior.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/logic/ABSystemWrapper.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
+class Graphics;
+class AnimationBehavior;
+class IndexedAnimation;
+class IndexedAnimationBehavior;
+class BasicColor;
+class BasicColorFactory;
+class DisplayInfoSingleton;
+class ABSystemWrapper;
+class PrimitiveIntUtil;
 
 
 
@@ -78,11 +65,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/special/SpecialAnimation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TitleAnimation: public SpecialAnimation {
 
     public: static TitleAnimation* createAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width);
 
-    protected: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
+    /*protected*/ public: ABSystemWrapper* systemWrapper;
 
     public: float deltaX= 0.0;
 
@@ -90,23 +81,23 @@ class TitleAnimation: public SpecialAnimation {
 
     public: float deltaZ= 0.0;
 
-    protected: std::vector<BasicColor*> basicColorArray;
+    /*protected*/ public: std::vector<BasicColor*> basicColorArray;
 
-    protected: std::vector<int32_t> dxArray;
+    /*protected*/ public: std::vector<int32_t> dxArray;
 
-    protected: std::vector<int32_t> dyArray;
+    /*protected*/ public: std::vector<int32_t> dyArray;
 
-    protected: int32_t widthP;
+    /*protected*/ public: int32_t widthP;
 
-    protected: std::vector<IndexedAnimation*> animationInterfaceArray;
+    /*protected*/ public: std::vector<IndexedAnimation*> animationInterfaceArray;
 
-    protected: int32_t sizeP;
+    /*protected*/ public: int32_t sizeP;
 
-    protected: int32_t y;
+    /*protected*/ public: int32_t y;
 
     private: int64_t lastFrameStartTime;
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton;
 
 public: TitleAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior);
 
@@ -132,7 +123,7 @@ public: TitleAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, s
 
     public: void paintFrameXY(Graphics* graphics, int32_t frame, int32_t x, int32_t y);
 
-    protected: BasicColor* CLEAR_COLOR = BasicColorFactory::getInstance()->CLEAR_COLOR;
+    /*protected*/ public: BasicColor* CLEAR_COLOR;
 
     public: void paintXY(Graphics* graphics, int32_t ax, int32_t ay);
 
@@ -142,3 +133,40 @@ public: TitleAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, s
 
 
         #endif //ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimationBehavior.h>)
+#include <org/allbinary/animation/IndexedAnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/logic/ABSystemWrapper.h>)
+#include <org/allbinary/logic/ABSystemWrapper.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/special/SpecialAnimation.h")
+#include "org/allbinary/animation/special/SpecialAnimation.h"
+#endif
+
+        #endif
+    

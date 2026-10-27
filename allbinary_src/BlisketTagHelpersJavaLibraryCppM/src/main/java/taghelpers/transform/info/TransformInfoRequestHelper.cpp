@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOREQUESTHELPER_CPP
+        #define TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/transform/info/TransformInfoRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,19 +82,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoRequestHelper: public ModifyTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TransformInfoHttpInterface* transformInfoInterface;
-
-public: TransformInfoRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+TransformInfoRequestHelper::TransformInfoRequestHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->transformInfoInterface= new TransformInfoHttpStoreNoManipulation(propertiesHashMap, pageContext);
     
 }
 
 
-    public: std::string update(){
+    auto TransformInfoRequestHelper::update() -> std::string{
 
         try {
             
@@ -96,7 +101,7 @@ this->transformInfoInterface= new TransformInfoHttpStoreNoManipulation(propertie
 TransformInfoEntityBuilder::getInstance()->update(hashMapData);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -118,10 +123,10 @@ TransformInfoEntityBuilder::getInstance()->update(hashMapData);
     std::string error = "Failed to update storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -137,7 +142,7 @@ TransformInfoEntityBuilder::getInstance()->update(hashMapData);
 }
 
 
-    public: std::string insert(){
+    auto TransformInfoRequestHelper::insert() -> std::string{
 
         try {
             
@@ -149,7 +154,7 @@ TransformInfoEntityBuilder::getInstance()->update(hashMapData);
 TransformInfoEntityBuilder::getInstance()->insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert()");
@@ -171,10 +176,10 @@ TransformInfoEntityBuilder::getInstance()->insert(values);
     std::string error = "Failed to add storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -190,16 +195,16 @@ TransformInfoEntityBuilder::getInstance()->insert(values);
 }
 
 
-    public: std::string delete_(){
+    auto TransformInfoRequestHelper::delete_() -> std::string{
 
         try {
             
     std::string success = "Delete Successfully";;
     
-TransformInfoEntityBuilder::getInstance()->delete(this->transformInfoInterface->getKey());
+TransformInfoEntityBuilder::getInstance()->delete_(this->transformInfoInterface->getKey());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -221,10 +226,10 @@ TransformInfoEntityBuilder::getInstance()->delete(this->transformInfoInterface->
     std::string error = "Failed to delete storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -240,7 +245,6 @@ TransformInfoEntityBuilder::getInstance()->delete(this->transformInfoInterface->
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOREQUESTHELPER_CPP

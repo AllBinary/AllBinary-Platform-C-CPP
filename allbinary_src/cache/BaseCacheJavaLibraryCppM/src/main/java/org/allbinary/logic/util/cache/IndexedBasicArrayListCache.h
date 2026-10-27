@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,21 +38,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class CommonStrings;
+class JsMethod;
+class JsConstructor;
+class JsProperty;
 
 
 
@@ -68,19 +63,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/BaseBasicArrayListCache.h"
 #include "org/allbinary/logic/util/cache/CacheInterface.h"
-#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+class CacheableInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class IndexedBasicArrayListCache: public BaseBasicArrayListCache, public CacheInterface {
 
                 //@Throws(Exception.constructor)
             
     public: static IndexedBasicArrayListCache* createCache(int32_t size);
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: int32_t size = 0;
 
-    protected: int32_t index = 0;
+    /*protected*/ public: int32_t index = 0;
 
 public: IndexedBasicArrayListCache();
 
@@ -96,7 +95,8 @@ public: IndexedBasicArrayListCache();
 
                 //@Throws(Exception.constructor)
             
-    public: void addObject(Object anyType);
+    public: void addObject(Object* anyType);
+    public: void addObject(const std::string& anyType) { return addObject(JavaString::box(anyType)); }
 
                 //@Throws(Exception.constructor)
             
@@ -114,3 +114,34 @@ public: IndexedBasicArrayListCache();
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include("org/allbinary/logic/util/cache/BaseBasicArrayListCache.h")
+#include "org/allbinary/logic/util/cache/BaseBasicArrayListCache.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheInterface.h")
+#include "org/allbinary/logic/util/cache/CacheInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+#endif
+
+        #endif
+    

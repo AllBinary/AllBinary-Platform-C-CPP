@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTSLISTENER_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTSLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/util/event/BasicEventListenerInterface.h>
-
-      
 
 
 
@@ -48,8 +51,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h"
+        class ImageComparisonResultsEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageComparisonResultsListener: public BasicEventListenerInterface {
 
     public: virtual void onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent) = 0;
@@ -60,3 +67,16 @@ class ImageComparisonResultsListener: public BasicEventListenerInterface {
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTSLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTSLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTSLISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/BasicEventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/BasicEventListenerInterface.h>
+#endif
+#if __has_include("org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h")
+#include "org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h"
+#endif
+
+        #endif
+    

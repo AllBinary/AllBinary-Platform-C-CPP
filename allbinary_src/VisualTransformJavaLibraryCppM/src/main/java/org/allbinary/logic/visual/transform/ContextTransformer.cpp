@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_CONTEXTTRANSFORMER_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_CONTEXTTRANSFORMER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/ContextTransformer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/BasicTransformer.h"
 
-class ContextTransformer: public BasicTransformer {
 
-public: ContextTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : BasicTransformer(abeClientInformation, transformInfoInterface){
+ContextTransformer::ContextTransformer(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : BasicTransformer(abeClientInformation, transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +84,6 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new ContextUriResolver(dynamic_c
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_CONTEXTTRANSFORMER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 
-class VelocityBehaviorBase
-            : public Object
-         {
 
-    public: void reduce(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator){
+VelocityBehaviorBase::VelocityBehaviorBase() {
+        }
+        
+    auto VelocityBehaviorBase::reduce(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator) -> void{
 }
 
 
-    public: void reduceX(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator){
+    auto VelocityBehaviorBase::reduceX(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator) -> void{
 }
 
 
-    public: void reduceY(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator){
+    auto VelocityBehaviorBase::reduceY(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_CPP

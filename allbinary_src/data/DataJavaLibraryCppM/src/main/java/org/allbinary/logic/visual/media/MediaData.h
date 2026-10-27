@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,11 +37,7 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class StdUtil;
 
 
 
@@ -55,14 +56,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/media/MediaTypeData.h"
-#include "org/allbinary/logic/visual/media/MediaDataFactory.h"
+        class MediaTypeData;
+class MediaDataFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MediaData
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
+    private: static HashMap<Object*, Object*>* hashMap;
 
                 //@Throws(Exception.constructor)
             
@@ -78,7 +83,7 @@ class MediaData
 
     private: std::string extension;
 
-protected: MediaData(std::string a_Name);
+/*protected*/ public: MediaData(std::string a_Name);
 
     public: std::string getName();
 
@@ -96,3 +101,22 @@ protected: MediaData(std::string a_Name);
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/media/MediaTypeData.h")
+#include "org/allbinary/logic/visual/media/MediaTypeData.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/media/MediaDataFactory.h")
+#include "org/allbinary/logic/visual/media/MediaDataFactory.h"
+#endif
+
+        #endif
+    

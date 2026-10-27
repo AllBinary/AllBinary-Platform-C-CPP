@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/help/JavaHelpSetNotifier.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,13 +69,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class JavaHelpSetNotifier
-            : public Object
-         {
+BasicArrayList* JavaHelpSetNotifier::vector = new BasicArrayListD();
 
-    private: static inline BasicArrayList* vector = new BasicArrayListD();
+JavaHelpSetNotifier::JavaHelpSetNotifier(){
+}
 
-    private: static BasicArrayList* get(){
+
+    auto JavaHelpSetNotifier::get() -> BasicArrayList*{
 
 
 
@@ -75,7 +85,7 @@ class JavaHelpSetNotifier
 }
 
 
-    public: static bool isNotified(HelpSet* helpSet){
+    auto JavaHelpSetNotifier::isNotified(HelpSet* helpSet) -> bool{
 
     bool isNotified = false;;
     
@@ -120,11 +130,6 @@ JavaHelpSetNotifier::vector->add(url);
 }
 
 
-private: JavaHelpSetNotifier(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_CPP

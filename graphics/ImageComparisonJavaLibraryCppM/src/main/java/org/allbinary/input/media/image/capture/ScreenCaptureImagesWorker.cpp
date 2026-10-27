@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENCAPTUREIMAGESWORKER_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENCAPTUREIMAGESWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/ScreenCaptureImagesWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,19 +85,8 @@
 #include "org/allbinary/input/media/image/capture/CapturedBufferedImagesCacheSingleton.h"
 #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
 
-class ScreenCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static inline int64_t index;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: bool running= false;
-
-    private: ScreenScavangerRobot* screenScavangerRobot;
-
-public: ScreenCaptureImagesWorker(){
+ScreenCaptureImagesWorker::ScreenCaptureImagesWorker() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 screenScavangerRobot= new ScreenScavangerRobot();
     
 ScreenCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
@@ -96,7 +95,7 @@ ScreenCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto ScreenCaptureImagesWorker::isRunning() -> bool{
 
 
 
@@ -107,7 +106,7 @@ ScreenCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto ScreenCaptureImagesWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
@@ -115,11 +114,11 @@ this->running= running;
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread* thread){
+    auto ScreenCaptureImagesWorker::setThread(Thread* thread) -> void{
 }
 
 
-    public: void run(){
+    auto ScreenCaptureImagesWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -168,7 +167,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENCAPTUREIMAGESWORKER_CPP

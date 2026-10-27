@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/media/image/comparison/ImageComparisonResult.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class ImageComparisonResult;
 
 
 
@@ -59,8 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MotionRectangles
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
@@ -69,7 +72,7 @@ class MotionRectangles
 
     private: ImageComparisonResult* imageComparisonResult;
 
-    protected: const int32_t MAX_PIXEL_DISTANCE_THRESHOLD = 2;
+    /*protected*/ public: const int32_t MAX_PIXEL_DISTANCE_THRESHOLD = 2;
 
 public: MotionRectangles(std::string name, ImageComparisonResult* imageComparisonResult);
 
@@ -89,3 +92,19 @@ public: MotionRectangles(std::string name, ImageComparisonResult* imageCompariso
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/ImageComparisonResult.h>)
+#include <org/allbinary/media/image/comparison/ImageComparisonResult.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_TABLE_H
         #define ADMIN_TAGHELPERS_TABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,9 +38,7 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -56,11 +59,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Table
-            : public Object
+            : public virtual Object
         , public TableInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+
+            
+    public: Table();
+        
+    /*protected*/ public: CommonStrings* commonStrings;
 
                 //@Throws(Exception.constructor)
             
@@ -96,3 +107,16 @@ class Table
 
 
         #endif //ADMIN_TAGHELPERS_TABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_TABLE_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_TABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("admin/taghelpers/TableInterface.h")
+#include "admin/taghelpers/TableInterface.h"
+#endif
+
+        #endif
+    

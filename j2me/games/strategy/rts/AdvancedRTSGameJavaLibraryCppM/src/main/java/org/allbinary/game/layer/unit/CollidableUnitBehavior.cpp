@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_COLLIDABLEUNITBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_COLLIDABLEUNITBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/unit/CollidableUnitBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -103,11 +113,8 @@
         #include "org/allbinary/game/layer/unit/UnitLayer.h"
 //#include "org/allbinary/game/layer/unit/SimpleSteeringVisitor.h"
 
-class CollidableUnitBehavior: public CollidableRTSBehavior {
 
-    private: LayerPartialCellPositionsUtil* layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
-
-public: CollidableUnitBehavior(bool collidable) : CollidableRTSBehavior(collidable){
+CollidableUnitBehavior::CollidableUnitBehavior(bool collidable) : CollidableRTSBehavior(collidable), layerPartialCellPositionsUtil(LayerPartialCellPositionsUtil::getInstance()), simpleSteeringVisitor(new SimpleSteeringVisitor()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -119,7 +126,7 @@ public: CollidableUnitBehavior(bool collidable) : CollidableRTSBehavior(collidab
 
                 //@Throws(Exception.constructor)
             
-    protected: void collideNone(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto CollidableUnitBehavior::collideNone(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> void{
 this->chase(ownerLayer, collidableInterfaceCompositeInterface);
     
 
@@ -137,10 +144,10 @@ this->chase(ownerLayer, collidableInterfaceCompositeInterface);
 }
 
 
-//inner= member=true isStatic=
-class SimpleSteeringVisitor: public SteeringVisitor {
-
-    public: Object* visit(Object* anyType){
+CollidableUnitBehavior::SimpleSteeringVisitor::SimpleSteeringVisitor() {
+        }
+        
+    auto CollidableUnitBehavior::SimpleSteeringVisitor::visit(Object* anyType) -> Object*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -209,14 +216,9 @@ logUtil->put(commonStrings->EXCEPTION, this, "visit", &e);
 }
 
 
-};
-
-            
-    private: simpleSteeringVisitor = new SimpleSteeringVisitor();
-
                 //@Throws(Exception.constructor)
             
-    private: bool steer(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto CollidableUnitBehavior::steer(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> bool{
 
     UnitLayer* ownerUnitLayer = dynamic_cast<UnitLayer*>(ownerLayer);;
     
@@ -263,14 +265,14 @@ logUtil->put(commonStrings->EXCEPTION, this, "visit", &e);
 
 
 
-                            throw new Exception("Error");
+                            throw Exception("Error");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void chase(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto CollidableUnitBehavior::chase(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> void{
 
     AdvancedRTSGameLayer* rtsLayer = dynamic_cast<AdvancedRTSGameLayer*>(collidableInterfaceCompositeInterface);;
     
@@ -310,7 +312,7 @@ logUtil->put(commonStrings->EXCEPTION, this, "visit", &e);
 
                 //@Throws(Exception.constructor)
             
-    protected: void collideUnit(CollidableCompositeLayer* ownerLayer, UnitLayer* unitLayer){
+    auto CollidableUnitBehavior::collideUnit(CollidableCompositeLayer* ownerLayer, UnitLayer* unitLayer) -> void{
 
     UnitLayer* ownerUnitLayer = dynamic_cast<UnitLayer*>(ownerLayer);;
     
@@ -442,7 +444,6 @@ unitLayer->setPosition(x, y, unitLayer->getZP());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_COLLIDABLEUNITBEHAVIOR_CPP

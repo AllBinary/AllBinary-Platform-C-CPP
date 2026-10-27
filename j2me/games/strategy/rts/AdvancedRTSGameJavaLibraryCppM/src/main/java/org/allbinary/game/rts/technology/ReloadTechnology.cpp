@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_RELOADTECHNOLOGY_CPP
+        #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_RELOADTECHNOLOGY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/rts/technology/ReloadTechnology.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,21 +59,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/rts/technology/UnitTechnologySingletonFactory.h"
 
-class ReloadTechnology
-            : public Object
-        , public RTSInterface {
 
-    private: int32_t level= 0;
-
-    private: int32_t maxLevel;
-
-public: ReloadTechnology(int32_t maxLevel){
+ReloadTechnology::ReloadTechnology(int32_t maxLevel){
 this->maxLevel= maxLevel;
     
 }
 
 
-    public: bool isCompleted(){
+    auto ReloadTechnology::isCompleted() -> bool{
 
 
 
@@ -73,7 +76,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getPercentComplete(){
+    auto ReloadTechnology::getPercentComplete() -> int32_t{
 
 
 
@@ -83,7 +86,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getLevel(){
+    auto ReloadTechnology::getLevel() -> int32_t{
 
 
 
@@ -93,7 +96,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getMaxLevel(){
+    auto ReloadTechnology::getMaxLevel() -> int32_t{
 
 
 
@@ -103,7 +106,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getCost(){
+    auto ReloadTechnology::getCost() -> int32_t{
 
 
 
@@ -113,11 +116,11 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: void downgrade(){
+    auto ReloadTechnology::downgrade() -> void{
 }
 
 
-    public: int32_t getDowngradeCost(){
+    auto ReloadTechnology::getDowngradeCost() -> int32_t{
 
 
 
@@ -127,7 +130,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: bool isDowngradeable(){
+    auto ReloadTechnology::isDowngradeable() -> bool{
 
 
 
@@ -137,7 +140,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getUpgradeCost(){
+    auto ReloadTechnology::getUpgradeCost() -> int32_t{
 
 
 
@@ -147,7 +150,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: bool isUpgradeable(){
+    auto ReloadTechnology::isUpgradeable() -> bool{
 
                         if(this->getLevel() < this->getMaxLevel())
                         
@@ -174,7 +177,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: void upgrade(){
+    auto ReloadTechnology::upgrade() -> void{
 this->level++;
     
 
@@ -185,7 +188,7 @@ unitTechnologySingletonFactory->setReload(unitTechnologySingletonFactory->getRel
 }
 
 
-    public: bool isSelfUpgradeable(){
+    auto ReloadTechnology::isSelfUpgradeable() -> bool{
 
 
 
@@ -195,7 +198,6 @@ unitTechnologySingletonFactory->setReload(unitTechnologySingletonFactory->getRel
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_RELOADTECHNOLOGY_CPP

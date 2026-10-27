@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintableSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintable.h"
 
-class GeologicalResourceInfoHudPaintableSingleton
-            : public Object
-         {
 
-    private: static GeologicalResourceInfoHudPaintable* instance() { static std::unique_ptr<GeologicalResourceInfoHudPaintable> value(new GeologicalResourceInfoHudPaintable()); return value.get(); }
+GeologicalResourceInfoHudPaintableSingleton::GeologicalResourceInfoHudPaintableSingleton() {
+        }
+        auto GeologicalResourceInfoHudPaintableSingleton::instance_owner() -> GeologicalResourceInfoHudPaintable* { static std::unique_ptr<GeologicalResourceInfoHudPaintable> value(new GeologicalResourceInfoHudPaintable()); return value.get(); }
+GeologicalResourceInfoHudPaintable* GeologicalResourceInfoHudPaintableSingleton::instance = GeologicalResourceInfoHudPaintableSingleton::instance_owner();
 
-    public: static GeologicalResourceInfoHudPaintable* getInstance(){
+    auto GeologicalResourceInfoHudPaintableSingleton::getInstance() -> GeologicalResourceInfoHudPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeologicalResourceInfoHudPaintableSingleton::instance();
+                        return GeologicalResourceInfoHudPaintableSingleton::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_CPP

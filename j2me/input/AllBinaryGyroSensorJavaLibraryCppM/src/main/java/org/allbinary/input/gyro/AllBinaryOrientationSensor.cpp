@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,34 +72,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryOrientationSensor: public AllBinarySensor {
 
-    protected: std::vector<float> sensorDataFloatArray = PrimitiveFloatUtil::getArrayInstance();
-
-    protected: CompleteMotionGestureInputEventListenerInterface* listener = NoCompleteMotionGestureInputEventListener::getInstance();
-
-    public: void setCompleteMotionGestureInputEventListener(CompleteMotionGestureInputEventListenerInterface* completeMotionGestureInputEventListenerInterface){
+    auto AllBinaryOrientationSensor::setCompleteMotionGestureInputEventListener(CompleteMotionGestureInputEventListenerInterface* completeMotionGestureInputEventListenerInterface) -> void{
 this->listener= completeMotionGestureInputEventListenerInterface;
     
 }
 
 
-protected: AllBinaryOrientationSensor(){
+AllBinaryOrientationSensor::AllBinaryOrientationSensor() : sensorDataFloatArray(PrimitiveFloatUtil::getArrayInstance()), listener(NoCompleteMotionGestureInputEventListener::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Orientation* getOrientation(){
+    auto AllBinaryOrientationSensor::getOrientation() -> Orientation*{
 
 
 
-                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_CPP

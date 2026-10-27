@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/visitor/VisitorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VisitorInterface {
+//Interface - declared in the header
 
-    public: virtual Object* visit(Object* anyType) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,14 +39,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/Set.h>
-
-      
 #include <javax/swing.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
-
-      
+class InputRobotFactory;
 
 
 
@@ -60,10 +59,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
+        class DefaultComboBoxModel;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationTypeDefaultComboBoxModelFactory
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -78,3 +81,22 @@ private: InputAutomationTypeDefaultComboBoxModelFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_H_COMPLETE
+        #if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<javax/swing.h>)
+#include <javax/swing.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobotFactory.h>)
+#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
+#endif
+
+        #endif
+    

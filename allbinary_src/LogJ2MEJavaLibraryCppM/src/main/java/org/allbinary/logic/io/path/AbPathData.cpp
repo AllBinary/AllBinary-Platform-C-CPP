@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/path/AbPathData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,33 +64,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbPathData
-            : public Object
-         {
+auto AbPathData::instance_owner() -> AbPathData* { static std::unique_ptr<AbPathData> value(new AbPathData()); return value.get(); }
+AbPathData* AbPathData::instance = AbPathData::instance_owner();
 
-    private: static AbPathData* instance() { static std::unique_ptr<AbPathData> value(new AbPathData()); return value.get(); }
-
-    public: static AbPathData* getInstance(){
+    auto AbPathData::getInstance() -> AbPathData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPathData::instance();
+                        return AbPathData::instance;
     
 }
 
 
-    public: const std::string EXTENSION_SEP = CommonSeps::getInstance()->PERIOD;
-
-    public: const char SEPARATORCHAR = '/';
-
-    public: const std::string SEPARATOR = CommonSeps::getInstance()->FORWARD_SLASH;
-
-private: AbPathData(){
+AbPathData::AbPathData() : EXTENSION_SEP(CommonSeps::getInstance()->PERIOD), SEPARATOR(CommonSeps::getInstance()->FORWARD_SLASH){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHDATA_CPP

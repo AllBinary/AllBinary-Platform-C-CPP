@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_VECTOR_VECTORINTERFACE_H
         #define ORG_ALLBINARY_VECTOR_VECTORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VectorInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class VectorInterface
+            : public virtual Object
+         {
 
     public: virtual std::vector<std::vector<int32_t>> getPoints(int32_t frame) = 0;
 
@@ -60,3 +71,10 @@ class VectorInterface {
 
 
         #endif //ORG_ALLBINARY_VECTOR_VECTORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_VECTOR_VECTORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_VECTOR_VECTORINTERFACE_H_COMPLETE
+        
+        #endif
+    

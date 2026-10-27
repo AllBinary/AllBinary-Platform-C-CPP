@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LicenseServerInitFileUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LicenseServerInitFileUtil
-            : public Object
-         {
 
-    public: void init(){
+LicenseServerInitFileUtil::LicenseServerInitFileUtil() {
+        }
+        
+    auto LicenseServerInitFileUtil::init() -> void{
 }
 
 
-    private: void write(){
+    auto LicenseServerInitFileUtil::write() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_CPP

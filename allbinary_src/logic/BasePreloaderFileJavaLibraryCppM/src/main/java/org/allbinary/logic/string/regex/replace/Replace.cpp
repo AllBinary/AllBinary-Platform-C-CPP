@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STRING_REGEX_REPLACE_REPLACE_CPP
+        #define ORG_ALLBINARY_LOGIC_STRING_REGEX_REPLACE_REPLACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/string/regex/replace/Replace.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,64 +90,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Replace
-            : public Object
-         {
 
-    public: static void main(std::vector<std::string> args){
-
-        try {
-            
-    StringUtil* stringUtil = StringUtil::getInstance();;
-    
-
-    AppUrlGlobals* appUrlGlobals = new AppUrlGlobals();;
-    
-appUrlGlobals->setWebappPath("G:/mnt/bc/mydev/work/allbinary_src/ToolsJavaLibrary/tools");
-    
-URLGLOBALS::init(appUrlGlobals);
-    
-
-    std::string testString = "\"super gun\" big tank \"goodgunriflegun";;
-    
-
-    Replace* replace = new Replace("gun", "abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz");;
-    
-System.out.println("Old String: " +testString);
-    
-testString= replace->all(testString);
-    
-System.out.println("New String: " +testString);
-    
-
-    Replace* replaceCat = new Replace("abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz", stringUtil->EMPTY_STRING);;
-    
-testString= replaceCat->all(testString);
-    
-System.out.println("New String: " +testString);
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-}
-
-}
-
-
-    private: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: J2SEUtil* j2seUtil = J2SEUtil::getInstance();
-
-    private: const std::string REPLACERS_ = "Replacers: ";
-
-    private: const std::string ALL = "all";
-
-    private: const std::string FOUND_KEY = "found key total: ";
-
-    private: HashMap<Object*, Object*>* hashMap;
-
-public: Replace(std::string key, std::string value){
+Replace::Replace(std::string key, std::string value) : logUtil(LogUtil::getInstance()), j2seUtil(J2SEUtil::getInstance()){
 this->hashMap= StdUtil::getInstance()->createHashMap();
     
 this->hashMap->put(
@@ -151,7 +105,7 @@ this->hashMap->put(
 }
 
 
-public: Replace(std::vector<std::string> keys, std::vector<std::string> values){
+Replace::Replace(std::vector<std::string> keys, std::vector<std::string> values) : logUtil(LogUtil::getInstance()), j2seUtil(J2SEUtil::getInstance()){
 this->hashMap= StdUtil::getInstance()->createHashMap();
     
 this->hashMap->put(keys, values);
@@ -159,13 +113,13 @@ this->hashMap->put(keys, values);
 }
 
 
-public: Replace(HashMap<Object*, Object*>* hashMap){
+Replace::Replace(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()), j2seUtil(J2SEUtil::getInstance()){
 this->hashMap= hashMap;
     
 }
 
 
-    public: std::string all(std::string replace){
+    auto Replace::all(std::string replace) -> std::string{
 
 
 
@@ -175,7 +129,7 @@ this->hashMap= hashMap;
 }
 
 
-    public: std::string upTo(std::string replace, int32_t total){
+    auto Replace::upTo(std::string replace, int32_t total) -> std::string{
 
     StringMaker* newStringBuffer = new StringMaker();;
     
@@ -248,7 +202,7 @@ nextKey= keys[0];
     
 end= begin +nextKey.size();
     
-newStringBuffer->delete(0, newStringBuffer->length());
+newStringBuffer->delete_(0, newStringBuffer->length());
     
 newStringBuffer->append(JavaString::substring(replace, 0, begin));
     
@@ -275,7 +229,7 @@ begin2= JavaString::indexOf(replace, nextSecondKey, index);
                                     
     int32_t end2 = begin2 +nextSecondKey.size();;
     
-newStringBuffer->delete(0, newStringBuffer->length());
+newStringBuffer->delete_(0, newStringBuffer->length());
     
 newStringBuffer->append(JavaString::substring(replace, 0, begin2));
     
@@ -324,10 +278,10 @@ totalNumberOfReplaces++;
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->REPLACE))
+                        if(LogConfigTypes::LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->REPLACE))
                         
                                     {
-                                    this->logUtil->putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this->ALL);
+                                    this->logUtil->putF(JavaString::valueOf("Total Number Of Replaces: ") +JavaString::valueOf(totalNumberOfReplaces), this, this->ALL);
     
 
                                     }
@@ -344,7 +298,7 @@ totalNumberOfReplaces++;
 }
 
 
-    public: std::string line(std::string replace){
+    auto Replace::line(std::string replace) -> std::string{
 
     StringMaker* newStringBuffer = new StringMaker();;
     
@@ -380,7 +334,7 @@ value= this->hashMap->get(key);
 
         while(index < replace.size())
         {
-newStringBuffer->delete(0, newStringBuffer->length());
+newStringBuffer->delete_(0, newStringBuffer->length());
     
 
     int32_t begin = JavaString::indexOf(replace, key, index);;
@@ -426,10 +380,10 @@ totalNumberOfReplaces++;
 }
 
 
-                        if(LogConfigTypes::LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->REPLACE))
+                        if(LogConfigTypes::LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->REPLACE))
                         
                                     {
-                                    this->logUtil->putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this->ALL);
+                                    this->logUtil->putF(JavaString::valueOf("Total Number Of Replaces: ") +JavaString::valueOf(totalNumberOfReplaces), this, this->ALL);
     
 
                                     }
@@ -443,7 +397,47 @@ totalNumberOfReplaces++;
 }
 
 
-};
+    auto Replace::main(std::vector<std::string> args) -> void{
 
+        try {
             
+    StringUtil* stringUtil = StringUtil::getInstance();;
+    
 
+    AppUrlGlobals* appUrlGlobals = new AppUrlGlobals();;
+    
+appUrlGlobals->setWebappPath("G:/mnt/bc/mydev/work/allbinary_src/ToolsJavaLibrary/tools");
+    
+URLGLOBALS::init(appUrlGlobals);
+    
+
+    std::string testString = "\"super gun\" big tank \"goodgunriflegun";;
+    
+
+    Replace* replace = new Replace("gun", "abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz");;
+    
+System.out.println(JavaString::valueOf("Old String: ") +JavaString::valueOf(testString));
+    
+testString= replace->all(testString);
+    
+System.out.println(JavaString::valueOf("New String: ") +JavaString::valueOf(testString));
+    
+
+    Replace* replaceCat = new Replace("abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz", stringUtil->EMPTY_STRING);;
+    
+testString= replaceCat->all(testString);
+    
+System.out.println(JavaString::valueOf("New String: ") +JavaString::valueOf(testString));
+    
+
+                //: 
+} catch(Exception& e) 
+            {
+}
+
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_STRING_REGEX_REPLACE_REPLACE_CPP

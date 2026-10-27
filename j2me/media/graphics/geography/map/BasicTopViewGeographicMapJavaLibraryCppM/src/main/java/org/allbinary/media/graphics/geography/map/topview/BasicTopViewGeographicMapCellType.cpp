@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellType.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,11 +83,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicTopViewGeographicMapCellType
-            : public Object
-         {
 
-    public: static BasicTopViewGeographicMapCellType* createType(std::string name, int32_t type, int32_t cost){
+    auto BasicTopViewGeographicMapCellType::createType(std::string name, int32_t type, int32_t cost) -> BasicTopViewGeographicMapCellType*{
 
     BasicArrayList* types = new BasicArrayListS(1);;
     
@@ -92,15 +99,7 @@ types->add(type);
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: std::string name;
-
-    public: int32_t cost;
-
-    private: std::vector<int32_t> types;
-
-public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList* types, int32_t cost){
+BasicTopViewGeographicMapCellType::BasicTopViewGeographicMapCellType(std::string name, BasicArrayList* types, int32_t cost) : logUtil(LogUtil::getInstance()){
 
     int32_t size = types->size();;
     
@@ -152,7 +151,7 @@ this->types= typeArray;
 }
 
 
-    public: bool isType(GeographicMapCellType* type){
+    auto BasicTopViewGeographicMapCellType::isType(GeographicMapCellType* type) -> bool{
 
 
 
@@ -162,9 +161,9 @@ this->types= typeArray;
 }
 
 
-    public: bool hasType(int32_t type){
+    auto BasicTopViewGeographicMapCellType::hasType(int32_t type) -> bool{
 
-    int32_t size = this->types->size();;
+    int32_t size = this->types.size();;
     
 
 
@@ -197,7 +196,7 @@ this->types= typeArray;
 }
 
 
-    public: std::vector<int32_t> getTypes(){
+    auto BasicTopViewGeographicMapCellType::getTypes() -> std::vector<int32_t>{
 
 
 
@@ -207,12 +206,12 @@ this->types= typeArray;
 }
 
 
-    public: std::string toString(){
+    auto BasicTopViewGeographicMapCellType::toString() -> std::string{
 
     StringMaker* stringMaker = new StringMaker();;
     
 
-    int32_t size = this->types->size();;
+    int32_t size = this->types.size();;
     
 
 
@@ -234,7 +233,6 @@ stringMaker->appendint(this->types[index])->append(CommonSeps::getInstance()->CO
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPE_CPP

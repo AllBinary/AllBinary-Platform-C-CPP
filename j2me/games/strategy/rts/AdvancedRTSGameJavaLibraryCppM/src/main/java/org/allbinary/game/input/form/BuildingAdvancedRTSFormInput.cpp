@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGADVANCEDRTSFORMINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGADVANCEDRTSFORMINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/BuildingAdvancedRTSFormInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -110,11 +120,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/form/BuildingRTSFormInput.h"
 
-class BuildingAdvancedRTSFormInput: public BuildingRTSFormInput {
 
-    protected: GameNotificationEvent* atLeastOneHouseGameNotificationEvent;
-
-public: BuildingAdvancedRTSFormInput(std::vector<Group*> groupInterface, bool isUnitProducer) : BuildingRTSFormInput(groupInterface, isUnitProducer){
+BuildingAdvancedRTSFormInput::BuildingAdvancedRTSFormInput(std::vector<Group*> groupInterface, bool isUnitProducer) : BuildingRTSFormInput(groupInterface, isUnitProducer), BUILD_BUILDING_RTS_LAYER_EVENT(new RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -131,8 +138,8 @@ this->atLeastOneHouseGameNotificationEvent= new GameNotificationEvent(this, "Bui
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto BuildingAdvancedRTSFormInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+BuildingRTSFormInput::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
@@ -145,7 +152,7 @@ this->atLeastOneHouseGameNotificationEvent->setBasicColorP(geographicMapInterfac
 }
 
 
-    public: bool isPositionBlocked(){
+    auto BuildingAdvancedRTSFormInput::isPositionBlocked() -> bool{
 
                         if(DropCellPositionHistory::getInstance()->isCellPositionWithDrop(this->getSelectedGeographicCellPosition()) || WaypointCellPositionHistory::getInstance()->isCellPositionWithDrop(this->getSelectedGeographicCellPosition()))
                         
@@ -174,7 +181,7 @@ this->atLeastOneHouseGameNotificationEvent->setBasicColorP(geographicMapInterfac
 
                 //@Throws(Exception.constructor)
             
-    protected: bool isBuildAttemptValid(RTSPlayerLayerInterface* rtsPlayerLayerInterface, RTSLayer* layerInterface){
+    auto BuildingAdvancedRTSFormInput::isBuildAttemptValid(RTSPlayerLayerInterface* rtsPlayerLayerInterface, RTSLayer* layerInterface) -> bool{
 
     AdvancedRTSPlayerLayerInterface* advancedRTSPlayerLayerInterface = dynamic_cast<AdvancedRTSPlayerLayerInterface*>(rtsPlayerLayerInterface);;
     
@@ -212,16 +219,14 @@ this->atLeastOneHouseGameNotificationEvent->setBasicColorP(geographicMapInterfac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isBuildAttemptValid(rtsPlayerLayerInterface, layerInterface);;
+                        return BuildingRTSFormInput::isBuildAttemptValid(rtsPlayerLayerInterface, layerInterface);;
     
 }
 
 
-    private: RTSLayerEvent* BUILD_BUILDING_RTS_LAYER_EVENT = new RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
-
                 //@Throws(Exception.constructor)
             
-    protected: void add(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface){
+    auto BuildingAdvancedRTSFormInput::add(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface) -> void{
 this->BUILD_BUILDING_RTS_LAYER_EVENT->setRtsLayer(layerInterface);
     
 BuildingEventHandler::getInstance()->fireEvent(this->BUILD_BUILDING_RTS_LAYER_EVENT);
@@ -235,12 +240,11 @@ BuildingEventHandler::getInstance()->fireEvent(this->BUILD_BUILDING_RTS_LAYER_EV
 
                                     }
                                 
-super.add(rtsPlayerLayerInterface, layerManager, layerInterface);
+BuildingRTSFormInput::add(rtsPlayerLayerInterface, layerManager, layerInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGADVANCEDRTSFORMINPUT_CPP

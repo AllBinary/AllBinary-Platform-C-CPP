@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_H
         #define ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <org/allbinary/init/Init.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 
 
 
@@ -52,9 +53,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class KeyFactoryInitializer: public Init {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: KeyFactoryInitializer();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: void init();
 
@@ -64,3 +73,16 @@ class KeyFactoryInitializer: public Init {
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_H_COMPLETE
+        #if __has_include(<org/allbinary/init/Init.h>)
+#include <org/allbinary/init/Init.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+        #endif
+    

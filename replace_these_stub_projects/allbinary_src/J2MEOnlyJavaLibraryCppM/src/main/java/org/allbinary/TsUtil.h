@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TSUTIL_H
         #define ORG_ALLBINARY_TSUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,27 +40,13 @@
         
             #include "java/lang/System.h"
         
-#include <javax/microedition/lcdui/Displayable.h>
-
-      
-#include <javax/microedition/lcdui/Form.h>
-
-      
-#include <javax/microedition/rms/InvalidRecordIDException.h>
-
-      
-#include <javax/microedition/rms/RecordStore.h>
-
-      
-#include <javax/microedition/rms/RecordStoreException.h>
-
-      
-#include <javax/microedition/rms/RecordStoreNotOpenException.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class Displayable;
+class Form;
+class InvalidRecordIDException;
+class RecordStore;
+class RecordStoreException;
+class RecordStoreNotOpenException;
+class NullUtil;
 
 
 
@@ -74,24 +65,36 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //J2ME
 class TsUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static TsUtil* instance() { static std::unique_ptr<TsUtil> value(new TsUtil()); return value.get(); }
+    private: static TsUtil* instance_owner();
+    private: static TsUtil* instance;
 
     public: static TsUtil* getInstance();
 
+
+            
+    public: TsUtil();
+        
     public: int32_t hashCode(Object* anyType);
+    public: int32_t hashCode(const std::string& anyType) { return hashCode(JavaString::box(anyType)); }
 
                 //@Throws(InterruptedException.constructor)
             
     public: void waitFor(Object* any, int64_t timeoutMillis);
+    public: void waitFor(const std::string& any, int64_t timeoutMillis) { return waitFor(JavaString::box(any), timeoutMillis); }
 
                 //@Throws(RecordStoreNotOpenException.constructor, InvalidRecordIDException.constructor, RecordStoreException.constructor)
             
     public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId);
+    public: std::vector<int8_t> getRecord(const std::string& anyType, int32_t recordId) { return getRecord(JavaString::box(anyType), recordId); }
 
     public: int32_t compareTo(std::string a, std::string b);
 
@@ -108,6 +111,7 @@ class TsUtil
     public: bool isItemListener(Displayable* owner);
 
     public: void printAvailableMethods(Object* anyType);
+    public: void printAvailableMethods(const std::string& anyType) { return printAvailableMethods(JavaString::box(anyType)); }
 
     public: void gc();
 
@@ -117,3 +121,31 @@ class TsUtil
 
 
         #endif //ORG_ALLBINARY_TSUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TSUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_TSUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Displayable.h>)
+#include <javax/microedition/lcdui/Displayable.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Form.h>)
+#include <javax/microedition/lcdui/Form.h>
+#endif
+#if __has_include(<javax/microedition/rms/InvalidRecordIDException.h>)
+#include <javax/microedition/rms/InvalidRecordIDException.h>
+#endif
+#if __has_include(<javax/microedition/rms/RecordStore.h>)
+#include <javax/microedition/rms/RecordStore.h>
+#endif
+#if __has_include(<javax/microedition/rms/RecordStoreException.h>)
+#include <javax/microedition/rms/RecordStoreException.h>
+#endif
+#if __has_include(<javax/microedition/rms/RecordStoreNotOpenException.h>)
+#include <javax/microedition/rms/RecordStoreNotOpenException.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+
+        #endif
+    

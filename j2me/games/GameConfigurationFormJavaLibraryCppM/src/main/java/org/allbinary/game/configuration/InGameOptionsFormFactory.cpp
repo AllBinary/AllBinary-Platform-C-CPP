@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORMFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/InGameOptionsFormFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,13 +79,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/InGameOptionsForm.h"
 
-class InGameOptionsFormFactory
-            : public Object
-         {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+InGameOptionsFormFactory::InGameOptionsFormFactory() : logUtil(LogUtil::getInstance()), SINGLETON(CommandForm::getNullCommandForm()) {
+        }
+        Object* InGameOptionsFormFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static InGameOptionsFormFactory* getInstance(){
+    auto InGameOptionsFormFactory::getInstance() -> InGameOptionsFormFactory*{
 
                         if(InGameOptionsFormFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -94,11 +103,7 @@ class InGameOptionsFormFactory
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommandForm* SINGLETON = CommandForm::getNullCommandForm();
-
-    public: void init(CommandListener* commandListener, Init* initInterface, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor){
+    auto InGameOptionsFormFactory::init(CommandListener* commandListener, Init* initInterface, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) -> void{
 
         try {
             
@@ -126,7 +131,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 }
 
 
-    public: CommandForm* get(){
+    auto InGameOptionsFormFactory::get() -> CommandForm*{
 
 
 
@@ -136,7 +141,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORMFACTORY_CPP

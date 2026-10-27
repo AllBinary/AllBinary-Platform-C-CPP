@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,15 +75,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PathFindingNode
-            : public Object
-         {
 
-    public: Object* parent = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: GeographicMapCellPosition* geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-public: PathFindingNode(Object* parent, GeographicMapCellPosition* geographicMapCellPosition){
+PathFindingNode::PathFindingNode(Object* parent, GeographicMapCellPosition* geographicMapCellPosition) : parent(NullUtil::getInstance()->NULL_OBJECT), geographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION){
 this->parent= parent;
     
 this->setGeographicMapCellPositionP(geographicMapCellPosition);
@@ -85,7 +88,7 @@ this->setGeographicMapCellPositionP(geographicMapCellPosition);
                                     
 
 
-                            throw new Exception("No GeographicMapCellPosition");
+                            throw Exception("No GeographicMapCellPosition");
                     
 
                                     }
@@ -93,7 +96,7 @@ this->setGeographicMapCellPositionP(geographicMapCellPosition);
 }
 
 
-    public: PathFindingNode* getParentP(){
+    auto PathFindingNode::getParentP() -> PathFindingNode*{
 
 
 
@@ -103,13 +106,13 @@ this->setGeographicMapCellPositionP(geographicMapCellPosition);
 }
 
 
-    public: void setGeographicMapCellPositionP(GeographicMapCellPosition* geographicMapCellPosition){
+    auto PathFindingNode::setGeographicMapCellPositionP(GeographicMapCellPosition* geographicMapCellPosition) -> void{
 this->geographicMapCellPosition= geographicMapCellPosition;
     
 }
 
 
-    public: std::string toString(){
+    auto PathFindingNode::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -146,7 +149,6 @@ pathFindingNode= pathFindingNode->getParentP();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODE_CPP

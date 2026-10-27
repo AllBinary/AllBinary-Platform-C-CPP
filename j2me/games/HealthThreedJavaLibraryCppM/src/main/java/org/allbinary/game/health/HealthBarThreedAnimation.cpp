@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTHREEDANIMATION_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTHREEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/HealthBarThreedAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,13 +92,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/health/HealthBarAnimation.h"
 
-class HealthBarThreedAnimation: public HealthBarAnimation {
 
-    private: Rectangle* rectangle;
-
-    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
-
-public: HealthBarThreedAnimation(AllBinaryLayer* layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
+HealthBarThreedAnimation::HealthBarThreedAnimation(AllBinaryLayer* layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location), basicColorFactory(BasicColorFactory::getInstance()), object3dProcessor(Object3dProcessorUtil::getInstance()->getInstanceObject3dProcessor()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,7 +102,7 @@ public: HealthBarThreedAnimation(AllBinaryLayer* layerInterface, int32_t locatio
                     
 this->basicColor= this->basicColorFactory->GREEN;
     
-this->colorP= this->basicColor.intValue();
+this->colorP= this->basicColor->intValue();
     
 this->rectangle= new Rectangle(0, 0, 1, 1, this->basicColor);
     
@@ -110,7 +115,7 @@ this->rectangle->setTexturesEnabled(false);
 }
 
 
-    private: void updateColor(){
+    auto HealthBarThreedAnimation::updateColor() -> void{
 
     ColorBufferList* colorBufferList = this->rectangle->getVertices()->getColor4BufferList();;
     
@@ -131,7 +136,7 @@ colorBufferList->set(index, this->basicColor);
 }
 
 
-    private: void updateSize(){
+    auto HealthBarThreedAnimation::updateSize() -> void{
 
     Number3dBufferList* number3dBufferList = this->rectangle->getVertices()->getPointsOnFacesNumber3dBufferList();;
     
@@ -191,8 +196,8 @@ number3dBufferList->set(index++, col *w -width5, row *h -height5, 0);
 }
 
 
-    public: void onHealthChange(int32_t newX2){
-super.onHealthChange(newX2);
+    auto HealthBarThreedAnimation::onHealthChange(int32_t newX2) -> void{
+HealthBarAnimation::onHealthChange(newX2);
     
 this->updateColor();
     
@@ -201,9 +206,7 @@ this->updateSize();
 }
 
 
-    private: Object3dProcessor* object3dProcessor = Object3dProcessorUtil::getInstance()->getInstanceObject3dProcessor();
-
-    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+    auto HealthBarThreedAnimation::paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) -> void{
 
     OpenGLESGraphics* openGLESGraphics = dynamic_cast<OpenGLESGraphics*>(graphics);;
     
@@ -211,7 +214,7 @@ this->updateSize();
     GL10* gl = openGLESGraphics->getGl10();;
     
 
-    ViewPositionBase* viewPosition = this->allbinaryLayer.getViewPosition();;
+    ViewPositionBase* viewPosition = this->allbinaryLayer->getViewPosition();;
     
 
     Number3d* positionNumber3d = this->rectangle->getPosition();;
@@ -220,14 +223,13 @@ positionNumber3d->x=  -(viewPosition->getX());
     
 positionNumber3d->z=  -(viewPosition->getY());
     
-positionNumber3d->y= viewPosition->getZ() +this->allbinaryLayer.getHeight();
+positionNumber3d->y= viewPosition->getZ() +this->allbinaryLayer->getHeight();
     
 this->object3dProcessor->drawObject(gl, this->rectangle);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTHREEDANIMATION_CPP

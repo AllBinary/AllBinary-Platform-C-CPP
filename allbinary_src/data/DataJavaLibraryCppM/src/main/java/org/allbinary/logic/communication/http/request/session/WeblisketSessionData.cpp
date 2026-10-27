@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WeblisketSessionData
-            : public Object
-         {
 
-    public: static inline const std::string INVALIDATESESSION = "SESSION_INVALIDATE_SESSION";
-
-    public: static inline const std::string ATTEMPTS = "SESSION_ATTEMPTS";
-
-    public: static inline const std::string TIMEOUT = "SESSION_TIMEOUT";
-
-    public: static inline const std::string REMOVABLEUSERNAME = "SESSION_REMOVABLE_USER_NAME";
-
-    public: static inline const std::string REMOVABLEPASSWORD = "SESSION_REMOVABLE_PASSWORD";
-
-    public: static inline const std::string REMOVABLENEWPASSWORD = "SESSION_REMOVABLE_NEW_PASSWORD";
-
-    public: static inline const std::string REMOVABLEREENTERNEWPASSWORD = "SESSION_REMOVABLE_REENTER_NEW_PASSWORD";
-
-    public: static inline const std::string AUTHENTICATED = "SESSION_AUTHENTICATED";
-
-public: WeblisketSessionData(){
+WeblisketSessionData::WeblisketSessionData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONDATA_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITWAYPOINTSTRINGS_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITWAYPOINTSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonLabels.h>
-
-      
+class CommonLabels;
 
 
 
@@ -51,14 +54,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UnitWaypointStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static UnitWaypointStrings* instance() { static std::unique_ptr<UnitWaypointStrings> value(new UnitWaypointStrings()); return value.get(); }
+    private: static UnitWaypointStrings* instance_owner();
+    private: static UnitWaypointStrings* instance;
 
     public: static UnitWaypointStrings* getInstance();
 
+
+            
+    public: UnitWaypointStrings();
+        
     public: const std::string WANDERING = "Order?";
 
     public: const std::string THINKING = "Thinking";
@@ -83,7 +95,7 @@ class UnitWaypointStrings
 
     public: const std::string ALREADY_THERE = "Already There";
 
-    public: const std::string NEXT_PATH_NODE = CommonLabels::getInstance()->NEXT +" Path Node";
+    public: const std::string NEXT_PATH_NODE;
 
 };
 
@@ -91,3 +103,13 @@ class UnitWaypointStrings
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_UNITWAYPOINTSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_UNIT_UNITWAYPOINTSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITWAYPOINTSTRINGS_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+
+        #endif
+    

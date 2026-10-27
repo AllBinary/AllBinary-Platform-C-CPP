@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_FILEEXTENSIONDATA_H
         #define ORG_ALLBINARY_LOGIC_JAVA_FILEEXTENSIONDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileExtensionData
-            : public Object
+            : public virtual Object
          {
 
-    private: static FileExtensionData* instance() { static std::unique_ptr<FileExtensionData> value(new FileExtensionData()); return value.get(); }
+    private: static FileExtensionData* instance_owner();
+    private: static FileExtensionData* instance;
 
     public: static FileExtensionData* getInstance();
 
@@ -68,3 +78,10 @@ private: FileExtensionData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_FILEEXTENSIONDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_FILEEXTENSIONDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_FILEEXTENSIONDATA_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_TABLE_CPP
+        #define ADMIN_TAGHELPERS_TABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/Table.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,90 +63,87 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TableInterface.h"
 
-class Table
-            : public Object
-        , public TableInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
+Table::Table() : commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: std::string drop(){
+    auto Table::drop() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string create(){
+    auto Table::create() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string restore(){
+    auto Table::restore() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string backup(){
+    auto Table::backup() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string insert(){
+    auto Table::insert() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string delete_(){
+    auto Table::delete_() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string update(){
+    auto Table::update() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_TABLE_CPP

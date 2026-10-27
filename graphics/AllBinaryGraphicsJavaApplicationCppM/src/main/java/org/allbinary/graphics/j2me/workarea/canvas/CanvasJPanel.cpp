@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASJPANEL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -172,39 +182,12 @@
 #include "org/allbinary/graphics/j2me/workarea/canvas/MouseEvent.h"
 #include "org/allbinary/graphics/j2me/workarea/canvas/KeyEvent.h"
 
-class CanvasJPanel: public javax::swing::JPanel, public java::awt::event::MouseListener, public java::awt::event::MouseMotionListener, public java::awt::event::KeyListener, public MyGraphicItemEventListener {
+auto CanvasJPanel::gridColor_owner() -> Color* { static std::unique_ptr<Color> value(new Color(BasicColorFactory::getInstance()->WHITE->intValue())); return value.get(); }
+Color* CanvasJPanel::gridColor = CanvasJPanel::gridColor_owner();
+auto CanvasJPanel::backgroundColor_owner() -> Color* { static std::unique_ptr<Color> value(new Color(BasicColorFactory::getInstance()->CLEAR_COLOR->intValue())); return value.get(); }
+Color* CanvasJPanel::backgroundColor = CanvasJPanel::backgroundColor_owner();
 
-    private: static inline int32_t frame = 0;
-
-    private: static Color* gridColor() { static std::unique_ptr<Color> value(new Color(BasicColorFactory::getInstance()->WHITE.intValue())); return value.get(); }
-
-    private: static Color* backgroundColor() { static std::unique_ptr<Color> value(new Color(BasicColorFactory::getInstance()->CLEAR_COLOR.intValue())); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GuiLog* guiLog = GuiLog::getInstance();
-
-    private: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
-
-    private: GraphicItemInterface* selectedTool = 
-                null
-            ;
-
-    private: HashMap<Object*, Object*>* graphicItemHashMap;
-
-    private: IntegerDimension* canvasDimension;
-
-    private: double angle = 0;
-
-    private: DefaultMutableTreeNode* canvasTreeNode;
-
-    private: CanvasTreeLabel* frameLabel;
-
-    private: WorkAreaJTreeJPanel* workAreaJTreeJPanel;
-
-    private: Grid* grid;
-
-public: CanvasJPanel(WorkAreaJTreeJPanel* workAreaJTreeJPanel, Dimension* dimension, int32_t x, int32_t y){
+CanvasJPanel::CanvasJPanel(WorkAreaJTreeJPanel* workAreaJTreeJPanel, Dimension* dimension, int32_t x, int32_t y) : logUtil(LogUtil::getInstance()), guiLog(GuiLog::getInstance()), gameInputStrings(GameInputStrings::getInstance()){
 this->grid= new Grid();
     
 
@@ -237,7 +220,7 @@ this->setCanvasSize(x, y);
 }
 
 
-public: CanvasJPanel(WorkAreaJTreeJPanel* workAreaJTreeJPanel, Dimension* dimension, CanvasDom* canvasDom){
+CanvasJPanel::CanvasJPanel(WorkAreaJTreeJPanel* workAreaJTreeJPanel, Dimension* dimension, CanvasDom* canvasDom) : logUtil(LogUtil::getInstance()), guiLog(GuiLog::getInstance()), gameInputStrings(GameInputStrings::getInstance()){
 this->grid= new Grid(canvasDom->getGrid());
     
 
@@ -304,8 +287,8 @@ this->workAreaJTreeJPanel->repaint();
 
                 //@Throws(Exception.constructor)
             
-    private: void initMyComponents(){
-this->frameLabel= new CanvasTreeLabel("FrameLabel" +(int32_t(CanvasJPanel::frame)).toString());
+    auto CanvasJPanel::initMyComponents() -> void{
+this->frameLabel= new CanvasTreeLabel(JavaString::valueOf("FrameLabel") +JavaString::valueOf((int32_t(CanvasJPanel::frame)).toString()));
     
 this->canvasTreeNode= new DefaultMutableTreeNode(this->frameLabel);
     
@@ -334,7 +317,7 @@ MyGraphicItemEventService::addListener(this);
 }
 
 
-    public: MutableTreeNode* getTreeNode(){
+    auto CanvasJPanel::getTreeNode() -> MutableTreeNode*{
 
 
 
@@ -344,7 +327,7 @@ MyGraphicItemEventService::addListener(this);
 }
 
 
-    private: void initComponents(){
+    auto CanvasJPanel::initComponents() -> void{
 setLayout(new java::awt::GridLayout(1, 1));
     
 }
@@ -352,7 +335,7 @@ setLayout(new java::awt::GridLayout(1, 1));
 
                 //@Throws(Exception.constructor)
             
-    public: void setCanvasSize(int32_t x, int32_t y){
+    auto CanvasJPanel::setCanvasSize(int32_t x, int32_t y) -> void{
 this->grid->isGridPossible= true;
     
 
@@ -364,7 +347,7 @@ this->grid->isGridPossible= true;
 
 
 
-                            throw new GraphicsException("X Size Error: " +x, this, "setWorkAreaSize");
+                            throw GraphicsException(JavaString::valueOf("X Size Error: ") +JavaString::valueOf(x), this, "setWorkAreaSize");
                     
 
                                     }
@@ -378,7 +361,7 @@ this->grid->isGridPossible= true;
 
 
 
-                            throw new GraphicsException("Y Size Error: " +y, this, "setWorkAreaSize");
+                            throw GraphicsException(JavaString::valueOf("Y Size Error: ") +JavaString::valueOf(y), this, "setWorkAreaSize");
                     
 
                                     }
@@ -408,13 +391,13 @@ this->grid->isChanged= true;
 }
 
 
-    public: void setGrid(GPoint* point){
+    auto CanvasJPanel::setGrid(GPoint* point) -> void{
 this->setGrid(point->getX(), point->getY());
     
 }
 
 
-    public: void setGrid(int32_t xSize, int32_t ySize){
+    auto CanvasJPanel::setGrid(int32_t xSize, int32_t ySize) -> void{
 
         try {
             
@@ -424,7 +407,7 @@ this->setGrid(point->getX(), point->getY());
                                     
 
 
-                            throw new GraphicsException("X Size Error: " +xSize +" WorkArea X: " +getCanvasDimension()->getWidth(), this, "setGrid");
+                            throw GraphicsException(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("X Size Error: ") +JavaString::valueOf(xSize)) +JavaString::valueOf(" WorkArea X: ")) +JavaString::valueOf(getCanvasDimension()->getWidth()), this, "setGrid");
                     
 
                                     }
@@ -436,7 +419,7 @@ this->setGrid(point->getX(), point->getY());
                                     
 
 
-                            throw new GraphicsException("Y Size Error" +ySize +" WorkArea Y: " +getCanvasDimension()->getHeight(), this, "setGrid");
+                            throw GraphicsException(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Y Size Error") +JavaString::valueOf(ySize)) +JavaString::valueOf(" WorkArea Y: ")) +JavaString::valueOf(getCanvasDimension()->getHeight()), this, "setGrid");
                     
 
                                     }
@@ -456,7 +439,7 @@ this->grid->isChanged= true;
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefaultGrid(){
+    auto CanvasJPanel::setDefaultGrid() -> void{
 
     int32_t xPixelsPerWorkAreaPixel = this->getWidth() /this->getCanvasDimension()->getWidth();;
     
@@ -470,7 +453,7 @@ this->grid->isChanged= true;
 }
 
 
-    public: double getAngle(){
+    auto CanvasJPanel::getAngle() -> double{
 
 
 
@@ -480,19 +463,19 @@ this->grid->isChanged= true;
 }
 
 
-    public: void setAngle(double angle){
+    auto CanvasJPanel::setAngle(double angle) -> void{
 this->angle= angle;
     
 }
 
 
-    public: void addAngle(double angle){
+    auto CanvasJPanel::addAngle(double angle) -> void{
 this->setAngle(this->angle +angle);
     
 }
 
 
-    public: void explodeAll(){
+    auto CanvasJPanel::explodeAll() -> void{
 
     BasicArrayList* newPoints = new BasicArrayListD();;
     
@@ -585,7 +568,7 @@ this->workAreaJTreeJPanel->repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: void explode(int32_t howMuch, int32_t explosionType){
+    auto CanvasJPanel::explode(int32_t howMuch, int32_t explosionType) -> void{
 
     std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap()->keys().();;
     
@@ -626,7 +609,7 @@ this->repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: void mirror(){
+    auto CanvasJPanel::mirror() -> void{
 
     int32_t width = this->getCanvasDimension()->getWidth();;
     
@@ -665,7 +648,7 @@ this->repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: void center(){
+    auto CanvasJPanel::center() -> void{
 (new VectorCenterGenerator())->transform(this->getGraphicItemHashMap());
     
 this->repaint();
@@ -673,7 +656,7 @@ this->repaint();
 }
 
 
-    public: void setNewTool(){
+    auto CanvasJPanel::setNewTool() -> void{
 
         try {
             StatusFactory::getInstance()->setStatus("Tool Selected");
@@ -696,7 +679,7 @@ this->canvasTreeNode->add(newNode);
                                     
 
 
-                            throw new GraphicsException("No Tool Selected", this, "setSelectedTool");
+                            throw GraphicsException("No Tool Selected", this, "setSelectedTool");
                     
 
                                     }
@@ -712,7 +695,7 @@ this->canvasTreeNode->add(newNode);
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicateGraphicItem(GraphicItemInterface* graphicItem){
+    auto CanvasJPanel::duplicateGraphicItem(GraphicItemInterface* graphicItem) -> void{
 
     GraphicItemInterface* graphicItemClone = graphicItem->duplicate();;
     
@@ -725,7 +708,7 @@ this->canvasTreeNode->add(graphicItemClone->getTreeNode());
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicateGraphicItemHashMap(HashMap<Object*, Object*>* hashMap){
+    auto CanvasJPanel::duplicateGraphicItemHashMap(HashMap<Object*, Object*>* hashMap) -> void{
 
     std::vector<Object*> mutableTreeNodeArray = hashMap->keys().();;
     
@@ -752,7 +735,7 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: HashMap<Object*, Object*>* getGraphicItemHashMap(){
+    auto CanvasJPanel::getGraphicItemHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -762,7 +745,7 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: int32_t getXPixelsPerWorkAreaPixel(){
+    auto CanvasJPanel::getXPixelsPerWorkAreaPixel() -> int32_t{
 
     int32_t x = this->getGrid()->grid->getX() *(this->getWidth() -10) /this->getCanvasDimension()->getWidth();;
     
@@ -792,7 +775,7 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: int32_t getYPixelsPerWorkAreaPixel(){
+    auto CanvasJPanel::getYPixelsPerWorkAreaPixel() -> int32_t{
 
     int32_t y = this->getGrid()->grid->getY() *(this->getHeight() -10) /this->getCanvasDimension()->getHeight();;
     
@@ -822,7 +805,7 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: GraphicItemInterface* getSelectedTool(){
+    auto CanvasJPanel::getSelectedTool() -> GraphicItemInterface*{
 
 
 
@@ -832,7 +815,7 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: void drawItems(Graphics* graphics){
+    auto CanvasJPanel::drawItems(Graphics* graphics) -> void{
 
     double angleDouble = double(this->angle);;
     
@@ -859,7 +842,7 @@ item->paint(graphics, angleDouble, this->getCanvasDimension(), this->getXPixelsP
 }
 
 
-    public: void drawGrid(Graphics* graphics){
+    auto CanvasJPanel::drawGrid(Graphics* graphics) -> void{
 
     int32_t xAdjust = (this->getWidth() % this->getXPixelsPerWorkAreaPixel()) /2;;
     
@@ -878,7 +861,7 @@ item->paint(graphics, angleDouble, this->getCanvasDimension(), this->getXPixelsP
 
     int32_t yLower = this->getHeight() -yAdjust;;
     
-graphics->setColor(CanvasJPanel::gridColor());
+graphics->setColor(CanvasJPanel::gridColor);
     
 
 
@@ -905,14 +888,14 @@ graphics->drawLine(value, yUpper, value, yLower);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto CanvasJPanel::paint(Graphics* graphics) -> void{
 
         try {
             
                         if(this->getGrid()->isChanged)
                         
                                     {
-                                    graphics->setColor(CanvasJPanel::backgroundColor());
+                                    graphics->setColor(CanvasJPanel::backgroundColor);
     
 graphics->fillRect(0, 0, getWidth(), getHeight());
     
@@ -945,7 +928,7 @@ this->grid->isChanged= false;
 }
 
 
-    public: void repaint(){
+    auto CanvasJPanel::repaint() -> void{
 
                         if(this->grid != 
                                     nullptr
@@ -957,14 +940,14 @@ this->grid->isChanged= false;
 
                                     }
                                 
-super.repaint();
+javax::swing::JPanel::repaint();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toDom(){
+    auto CanvasJPanel::toDom() -> Node*{
 
 
 
@@ -974,13 +957,13 @@ super.repaint();
 }
 
 
-    public: void changed(){
+    auto CanvasJPanel::changed() -> void{
 this->grid->isChanged= true;
     
 }
 
 
-    public: void mouseClicked(java::awt::event::MouseEvent* mouseEvent){
+    auto CanvasJPanel::mouseClicked(java::awt::event::MouseEvent* mouseEvent) -> void{
 StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_CLICKED_LABEL +this->logMouseEvent(mouseEvent));
     
 
@@ -1030,19 +1013,19 @@ this->workAreaJTreeJPanel->repaint();
 }
 
 
-    public: void mouseEntered(java::awt::event::MouseEvent* mouseEvent){
+    auto CanvasJPanel::mouseEntered(java::awt::event::MouseEvent* mouseEvent) -> void{
 StatusFactory::getInstance()->setStatusNoLog(this->logMouseEvent(mouseEvent));
     
 }
 
 
-    public: void mouseExited(java::awt::event::MouseEvent* mouseEvent){
+    auto CanvasJPanel::mouseExited(java::awt::event::MouseEvent* mouseEvent) -> void{
 StatusFactory::getInstance()->setStatusNoLog(this->logMouseEvent(mouseEvent));
     
 }
 
 
-    public: void mousePressed(java::awt::event::MouseEvent* mouseEvent){
+    auto CanvasJPanel::mousePressed(java::awt::event::MouseEvent* mouseEvent) -> void{
 StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_PRESSED_LABEL +this->logMouseEvent(mouseEvent));
     
 
@@ -1068,7 +1051,7 @@ this->repaint();
 }
 
 
-    public: void mouseReleased(java::awt::event::MouseEvent* mouseEvent){
+    auto CanvasJPanel::mouseReleased(java::awt::event::MouseEvent* mouseEvent) -> void{
 StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_RELEASED_LABEL +this->logMouseEvent(mouseEvent));
     
 
@@ -1094,7 +1077,7 @@ this->repaint();
 }
 
 
-    public: void mouseDragged(java::awt::event::MouseEvent* mouseEvent){
+    auto CanvasJPanel::mouseDragged(java::awt::event::MouseEvent* mouseEvent) -> void{
 StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_DRAGGED_LABEL +this->logMouseEvent(mouseEvent));
     
 
@@ -1120,7 +1103,7 @@ this->repaint();
 }
 
 
-    public: void mouseMoved(java::awt::event::MouseEvent* mouseEvent){
+    auto CanvasJPanel::mouseMoved(java::awt::event::MouseEvent* mouseEvent) -> void{
 StatusFactory::getInstance()->setStatusNoLog(MouseStrings::getInstance()->MOUSE_MOVED_LABEL +this->logMouseEvent(mouseEvent));
     
 
@@ -1146,7 +1129,7 @@ this->repaint();
 }
 
 
-    private: std::string logMouseEvent(java::awt::event::MouseEvent* mouseEvent){
+    auto CanvasJPanel::logMouseEvent(java::awt::event::MouseEvent* mouseEvent) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -1169,7 +1152,7 @@ stringBuffer->appendint(mouseEvent->getY() /this->getYPixelsPerWorkAreaPixel());
 }
 
 
-    public: void keyPressed(java::awt::event::KeyEvent* keyEvent){
+    auto CanvasJPanel::keyPressed(java::awt::event::KeyEvent* keyEvent) -> void{
 StatusFactory::getInstance()->setStatus("Key Pressed");
     
 
@@ -1278,15 +1261,15 @@ this->repaint();
 }
 
 
-    public: void keyReleased(java::awt::event::KeyEvent* keyEvent){
+    auto CanvasJPanel::keyReleased(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
-    public: void keyTyped(java::awt::event::KeyEvent* keyEvent){
+    auto CanvasJPanel::keyTyped(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
-    public: void delete_(MyGraphicItemEvent* evt){
+    auto CanvasJPanel::delete_(MyGraphicItemEvent* evt) -> void{
 this->getGraphicItemHashMap()->remove(evt->getTreeNode());
     
 this->workAreaJTreeJPanel->updateTree();
@@ -1298,7 +1281,7 @@ this->workAreaJTreeJPanel->repaint();
 }
 
 
-    public: void deselect(MyGraphicItemEvent* evt){
+    auto CanvasJPanel::deselect(MyGraphicItemEvent* evt) -> void{
 
     GraphicItemInterface* graphicItemInterface = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(evt->getTreeNode()));;
     
@@ -1320,7 +1303,7 @@ this->workAreaJTreeJPanel->repaint();
 }
 
 
-    public: void highlight(MyGraphicItemEvent* evt){
+    auto CanvasJPanel::highlight(MyGraphicItemEvent* evt) -> void{
 
     GraphicItemInterface* graphicItemInterface = dynamic_cast<GraphicItemInterface*>(this->getGraphicItemHashMap()->get(evt->getTreeNode()));;
     
@@ -1344,7 +1327,7 @@ this->workAreaJTreeJPanel->repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: CanvasJPanel* duplicate(){
+    auto CanvasJPanel::duplicate() -> CanvasJPanel*{
 
     CanvasJPanel* newCanvasJPanel = new CanvasJPanel(this->workAreaJTreeJPanel, this->getSize(), this->getCanvasDimension()->getWidth(), this->getCanvasDimension()->getHeight());;
     
@@ -1371,7 +1354,7 @@ this->workAreaJTreeJPanel->repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicate(MyGraphicItemEvent* event){
+    auto CanvasJPanel::duplicate(MyGraphicItemEvent* event) -> void{
 
     MutableTreeNode* treeNode = event->getTreeNode();;
     
@@ -1398,7 +1381,7 @@ this->workAreaJTreeJPanel->repaint();
 }
 
 
-    public: void rotate(MyGraphicItemEvent* event){
+    auto CanvasJPanel::rotate(MyGraphicItemEvent* event) -> void{
 
     MutableTreeNode* treeNode = event->getTreeNode();;
     
@@ -1419,7 +1402,7 @@ this->workAreaJTreeJPanel->repaint();
 }
 
 
-    public: IntegerDimension* getCanvasDimension(){
+    auto CanvasJPanel::getCanvasDimension() -> IntegerDimension*{
 
 
 
@@ -1429,13 +1412,13 @@ this->workAreaJTreeJPanel->repaint();
 }
 
 
-    public: void setCanvasDimension(IntegerDimension* canvasDimension){
+    auto CanvasJPanel::setCanvasDimension(IntegerDimension* canvasDimension) -> void{
 this->canvasDimension= canvasDimension;
     
 }
 
 
-    public: Grid* getGrid(){
+    auto CanvasJPanel::getGrid() -> Grid*{
 
 
 
@@ -1445,7 +1428,6 @@ this->canvasDimension= canvasDimension;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASJPANEL_CPP

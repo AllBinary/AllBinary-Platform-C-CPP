@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GUI_SWING_WORKERS_JLISTSWINGWORKER_CPP
+        #define ORG_ALLBINARY_GUI_SWING_WORKERS_JLISTSWINGWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/gui/swing/workers/JListSwingWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,8 @@
 #include "org/allbinary/gui/swing/workers/JList.h"
 #include "org/allbinary/gui/swing/workers/ListModel.h"
 
-class JListSwingWorker: public SwingWorker {
 
-    private: JList* jList;
-
-    private: ListModel* listModel;
-
-public: JListSwingWorker(JList* jList, ListModel* listModel){
+JListSwingWorker::JListSwingWorker(JList* jList, ListModel* listModel){
 this->setJList(jList);
     
 this->setListModel(listModel);
@@ -65,7 +70,7 @@ this->setListModel(listModel);
 }
 
 
-    public: Object* doInBackground(){
+    auto JListSwingWorker::doInBackground() -> Object*{
 
 
 
@@ -75,13 +80,13 @@ this->setListModel(listModel);
 }
 
 
-    protected: void done(){
+    auto JListSwingWorker::done() -> void{
 this->getJList()->setModel(this->getListModel());
     
 }
 
 
-    private: JList* getJList(){
+    auto JListSwingWorker::getJList() -> JList*{
 
 
 
@@ -91,13 +96,13 @@ this->getJList()->setModel(this->getListModel());
 }
 
 
-    private: void setJList(JList* jList){
+    auto JListSwingWorker::setJList(JList* jList) -> void{
 this->jList= jList;
     
 }
 
 
-    private: ListModel* getListModel(){
+    auto JListSwingWorker::getListModel() -> ListModel*{
 
 
 
@@ -107,13 +112,12 @@ this->jList= jList;
 }
 
 
-    private: void setListModel(ListModel* listModel){
+    auto JListSwingWorker::setListModel(ListModel* listModel) -> void{
 this->listModel= listModel;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GUI_SWING_WORKERS_JLISTSWINGWORKER_CPP

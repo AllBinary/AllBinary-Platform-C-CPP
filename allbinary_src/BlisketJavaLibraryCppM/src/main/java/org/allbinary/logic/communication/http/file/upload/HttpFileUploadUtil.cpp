@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEUPLOADUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEUPLOADUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,25 +75,71 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HttpFileUploadUtil
-            : public Object
-         {
+auto HttpFileUploadUtil::instance_owner() -> HttpFileUploadUtil* { static std::unique_ptr<HttpFileUploadUtil> value(new HttpFileUploadUtil()); return value.get(); }
+HttpFileUploadUtil* HttpFileUploadUtil::instance = HttpFileUploadUtil::instance_owner();
 
-    private: static HttpFileUploadUtil* instance() { static std::unique_ptr<HttpFileUploadUtil> value(new HttpFileUploadUtil()); return value.get(); }
-
-    public: static HttpFileUploadUtil* getInstance(){
+    auto HttpFileUploadUtil::getInstance() -> HttpFileUploadUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HttpFileUploadUtil::instance();
+                        return HttpFileUploadUtil::instance;
+    
+}
+
+
+HttpFileUploadUtil::HttpFileUploadUtil() : logUtil(LogUtil::getInstance()){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto HttpFileUploadUtil::isValid(Object* anyType) -> bool{
+
+                        if(anyType != 
+                                    nullptr
+                                 && !((dynamic_cast<const String*>(anyType) != nullptr)))
+                        
+                                    {
+                                    
+                        if(
+                                        (dynamic_cast<const FileItem*>(anyType) != nullptr)
+                                    )
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                            throw Exception(JavaString::valueOf("Object Not Instance Of FileItem but is: ") +JavaString::valueOf(ClassUtil::viewAll(anyType, CommonSeps::getInstance()->NEW_LINE)));
+                    
+
+                        }
+                            
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static void log(FileItemStream* fileItem){
+    auto HttpFileUploadUtil::log(FileItemStream* fileItem) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -120,7 +176,7 @@ stringBuffer->append("Size:");
 stringBuffer->append(" Not Calculated Yet");
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTP))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTP))
                         
                                     {
                                     logUtil->putF(stringBuffer->toString(), getInstance(), "log()");
@@ -131,7 +187,7 @@ stringBuffer->append(" Not Calculated Yet");
 }
 
 
-    public: static void log(FileItem* fileItem){
+    auto HttpFileUploadUtil::log(FileItem* fileItem) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -168,7 +224,7 @@ stringBuffer->append("Size:");
 stringBuffer->appendlong(fileItem->getSize());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPREQUEST))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPREQUEST))
                         
                                     {
                                     logUtil->putF(stringBuffer->toString(), getInstance(), "log()");
@@ -179,58 +235,6 @@ stringBuffer->appendlong(fileItem->getSize());
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: HttpFileUploadUtil(){
-}
 
 
-                //@Throws(Exception.constructor)
-            
-    public: bool isValid(Object* anyType){
-
-                        if(anyType != 
-                                    nullptr
-                                 && !((dynamic_cast<const String*>(anyType) != nullptr)))
-                        
-                                    {
-                                    
-                        if(
-                                        (dynamic_cast<const FileItem*>(anyType) != nullptr)
-                                    )
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw new Exception("Object Not Instance Of FileItem but is: " +ClassUtil::viewAll(anyType, CommonSeps::getInstance()->NEW_LINE));
-                    
-
-                        }
-                            
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEUPLOADUTIL_CPP

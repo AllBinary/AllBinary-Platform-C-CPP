@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETSTATEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETSTATEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/GameMidletStateFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,31 +59,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameMidletStateFactory
-            : public Object
-         {
+auto GameMidletStateFactory::INSTANCE_owner() -> GameMidletStateFactory* { static std::unique_ptr<GameMidletStateFactory> value(new GameMidletStateFactory()); return value.get(); }
+GameMidletStateFactory* GameMidletStateFactory::INSTANCE = GameMidletStateFactory::INSTANCE_owner();
 
-    private: static GameMidletStateFactory* INSTANCE() { static std::unique_ptr<GameMidletStateFactory> value(new GameMidletStateFactory()); return value.get(); }
+GameMidletStateFactory::GameMidletStateFactory() : logUtil(LogUtil::getInstance()), currentGameState(GameStateFactory::getInstance()->NO_GAME_STATE){
+}
 
-    public: static GameMidletStateFactory* getInstance(){
+
+    auto GameMidletStateFactory::getInstance() -> GameMidletStateFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameMidletStateFactory::INSTANCE();
+                        return GameMidletStateFactory::INSTANCE;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameState* currentGameState = GameStateFactory::getInstance()->NO_GAME_STATE;
-
-private: GameMidletStateFactory(){
-}
-
-
-    public: GameState* getCurrentGameState(){
+    auto GameMidletStateFactory::getCurrentGameState() -> GameState*{
 
 
 
@@ -83,7 +86,7 @@ private: GameMidletStateFactory(){
 }
 
 
-    public: void setCurrentGameState(GameState* currentGameState){
+    auto GameMidletStateFactory::setCurrentGameState(GameState* currentGameState) -> void{
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->CURRENT)->append(" GameState: ")->append(StringUtil::getInstance()->toString(currentGameState))->toString(), this, "setCurrentGameState");
     
 this->currentGameState= currentGameState;
@@ -91,7 +94,6 @@ this->currentGameState= currentGameState;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETSTATEFACTORY_CPP

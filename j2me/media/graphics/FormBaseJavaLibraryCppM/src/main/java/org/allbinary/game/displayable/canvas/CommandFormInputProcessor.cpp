@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDFORMINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDFORMINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -113,25 +123,8 @@
         #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 #include "org/allbinary/game/displayable/canvas/CommandRunnable.h"
 //In general allow scrolling of the menu and selection the center item
-class CommandFormInputProcessor: public BasicMenuInputProcessor {
 
-    private: const int32_t MOTION_GESTURE_SOURCE_ID = GameKeyEventFactory::getInstance()->MOTION_GESTURE_SOURCE_ID;
-
-    private: const int32_t CLICK_DELAY = 150;
-
-    private: TimeDelayHelper* clickTimeHelper = new TimeDelayHelper(this->CLICK_DELAY);
-
-    private: const int32_t DOUBLE_CLICK_DELAY = 1200;
-
-    private: TimeDelayHelper* doubleClickTimeHelper = new TimeDelayHelper(this->DOUBLE_CLICK_DELAY);
-
-    protected: const bool isSingleKeyProcessing = InputFeatureFactory::getInstance()->isSingleKeyProcessing();
-
-    private: ScrollSelectionForm* form;
-
-    private: bool hasPressed = false;
-
-public: CommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas){
+CommandFormInputProcessor::CommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas), MOTION_GESTURE_SOURCE_ID(GameKeyEventFactory::getInstance()->MOTION_GESTURE_SOURCE_ID), clickTimeHelper(new TimeDelayHelper(this->CLICK_DELAY)), doubleClickTimeHelper(new TimeDelayHelper(this->DOUBLE_CLICK_DELAY)), isSingleKeyProcessing(InputFeatureFactory::getInstance()->isSingleKeyProcessing()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -145,7 +138,7 @@ this->form= form;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processInput(int32_t key){
+    auto CommandFormInputProcessor::processInput(int32_t key) -> int32_t{
 
                         if(key == Canvas::LEFT || key == Canvas::RIGHT || key == Canvas::UP || key == Canvas::DOWN)
                         
@@ -187,16 +180,14 @@ this->form->processInputKey(key);
 }
 
 
-    private: const std::string PROCESS_COMMAND = "processCommand";
-
-    private: int32_t processCommand(){
+    auto CommandFormInputProcessor::processCommand() -> int32_t{
 
     CommandCurrentSelectionForm* commandCurrentSelectionForm = dynamic_cast<CommandCurrentSelectionForm*>(this->form);;
     
 
     Command* command = commandCurrentSelectionForm->getSelectedCommand();;
     
-this->logUtil.putF(command->toString(), this, this->PROCESS_COMMAND);
+this->logUtil->putF(command->toString(), this, this->PROCESS_COMMAND);
     
 
     Features* features = Features::getInstance();;
@@ -247,7 +238,7 @@ this->logUtil.putF(command->toString(), this, this->PROCESS_COMMAND);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processInputList(){
+    auto CommandFormInputProcessor::processInputList() -> int32_t{
 
         try {
             
@@ -324,7 +315,7 @@ this->clear();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->PROCESS_INPUT, &e);
     
 
 
@@ -339,23 +330,23 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processMotionInputs(){
+    auto CommandFormInputProcessor::processMotionInputs() -> int32_t{
 
-    int32_t lastIndex = this->motionGestureEventList.size() -1;;
+    int32_t lastIndex = this->motionGestureEventList->size() -1;;
     
 
                         if(lastIndex >= 0)
                         
                                     {
                                     
-    MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->motionGestureEventList.objectArray[lastIndex]);;
+    MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->motionGestureEventList->objectArray[lastIndex]);;
     
 this->processMotionInput(motionGestureEvent);
     
 
                                     }
                                 
-this->motionGestureEventList.clear();
+this->motionGestureEventList->clear();
     
 
 
@@ -368,7 +359,7 @@ this->motionGestureEventList.clear();
 
                 //@Throws(Exception.constructor)
             
-    protected: void processMotionInput(MotionGestureEvent* motionGestureEvent){
+    auto CommandFormInputProcessor::processMotionInput(MotionGestureEvent* motionGestureEvent) -> void{
 
     TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
@@ -435,7 +426,7 @@ this->motionGestureEventList.clear();
                         if(!this->doubleClickTimeHelper->isTimeTNT())
                         
                                     {
-                                    this->logUtil.putF("Double Press", this, this->gameInputStrings.PROCESS_MOTION_INPUT);
+                                    this->logUtil->putF("Double Press", this, this->gameInputStrings->PROCESS_MOTION_INPUT);
     
 this->processCommand();
     
@@ -468,19 +459,16 @@ this->hasPressed= true;
 }
 
 
-    private: const std::string NAME_LABEL = " ScrollSelectionForm: ";
-
-    public: std::string toString(){
+    auto CommandFormInputProcessor::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append(super.toString())->append(this->NAME_LABEL)->append(this->form->toString())->toString();;
+                        return (new StringMaker())->append(BasicMenuInputProcessor::toString())->append(this->NAME_LABEL)->append(this->form->toString())->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_COMMANDFORMINPUTPROCESSOR_CPP

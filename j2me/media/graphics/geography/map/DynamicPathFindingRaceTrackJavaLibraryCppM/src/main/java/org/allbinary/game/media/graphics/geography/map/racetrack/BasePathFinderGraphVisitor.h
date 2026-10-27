@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_H
         #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/jgrapht/GraphPath.h>
-
-      
-#include <org/jgrapht/graph/SimpleWeightedGraph.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
+class GraphPath;
+class SimpleWeightedGraph;
+class StringMaker;
+class BasicGeographicMap;
 #include <org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h>
-
-      
-#include <org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class PathFindingNode;
+class BasicArrayList;
 
 
 
@@ -69,16 +60,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 template<typename V, typename E>
 class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
 
-    protected: BasicGeographicMap* geographicMapInterface;
+    /*protected*/ public: BasicGeographicMap* geographicMapInterface;
 
-    protected: int32_t edgeMinimum;
+    /*protected*/ public: int32_t edgeMinimum;
 
-    protected: int32_t minPathWeight;
+    /*protected*/ public: int32_t minPathWeight;
 
-    protected: int32_t maxPathWeight;
+    /*protected*/ public: int32_t maxPathWeight;
 
 public: BasePathFinderGraphVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
 
@@ -98,5 +93,35 @@ public: BasePathFinderGraphVisitor(BasicGeographicMap* geographicMapInterface, i
 
             
 
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/BasePathFinderGraphVisitor.cpp"
+        
 
         #endif //ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_H_COMPLETE
+        #if __has_include(<org/jgrapht/GraphPath.h>)
+#include <org/jgrapht/GraphPath.h>
+#endif
+#if __has_include(<org/jgrapht/graph/SimpleWeightedGraph.h>)
+#include <org/jgrapht/graph/SimpleWeightedGraph.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h>)
+#include <org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h>)
+#include <org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

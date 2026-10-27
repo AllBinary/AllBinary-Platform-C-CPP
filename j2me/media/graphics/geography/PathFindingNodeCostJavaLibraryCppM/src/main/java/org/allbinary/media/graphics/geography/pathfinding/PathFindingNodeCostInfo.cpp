@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,19 +67,8 @@
         #include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"
 
-class PathFindingNodeCostInfo
-            : public Object
-        , public Comparable<PathFindingNodeCostInfo*> {
 
-    private: PathFindingNodeCostInfoData* pathFindingNodeCostInfoData = PathFindingNodeCostInfoData::getInstance();
-
-    public: int64_t costFromStartP;
-
-    public: int64_t costToEndP;
-
-    public: int64_t totalCostP= 0;
-
-public: PathFindingNodeCostInfo(int64_t costFromStart, int64_t costToGoal){
+PathFindingNodeCostInfo::PathFindingNodeCostInfo(int64_t costFromStart, int64_t costToGoal) : pathFindingNodeCostInfoData(PathFindingNodeCostInfoData::getInstance()){
 this->costFromStartP= costFromStart;
     
 this->costToEndP= costToGoal;
@@ -79,13 +78,13 @@ this->setCalculatedTotalCost();
 }
 
 
-    public: void setCostToEnd(int64_t costToEnd){
+    auto PathFindingNodeCostInfo::setCostToEnd(int64_t costToEnd) -> void{
 this->costToEndP= costToEnd;
     
 }
 
 
-    public: void setTotalCost(int64_t totalCost){
+    auto PathFindingNodeCostInfo::setTotalCost(int64_t totalCost) -> void{
 this->totalCostP= totalCost;
     
 }
@@ -93,7 +92,7 @@ this->totalCostP= totalCost;
 
                 //@Throws(Exception.constructor)
             
-    public: void setCalculatedTotalCost(){
+    auto PathFindingNodeCostInfo::setCalculatedTotalCost() -> void{
 this->totalCostP= this->costFromStartP +this->costToEndP;
     
 
@@ -103,7 +102,7 @@ this->totalCostP= this->costFromStartP +this->costToEndP;
                                     
 
 
-                            throw new Exception("Max Cost Exceeded");
+                            throw Exception("Max Cost Exceeded");
                     
 
                                     }
@@ -111,19 +110,19 @@ this->totalCostP= this->costFromStartP +this->costToEndP;
 }
 
 
-    public: void setCostFromStart(int64_t cost){
+    auto PathFindingNodeCostInfo::setCostFromStart(int64_t cost) -> void{
 this->costFromStartP= cost;
     
 }
 
 
-    public: void addCostFromStart(int64_t cost){
+    auto PathFindingNodeCostInfo::addCostFromStart(int64_t cost) -> void{
 this->costFromStartP += cost;
     
 }
 
 
-    public: int32_t compareTo(PathFindingNodeCostInfo* pathFindingNodeCostInfo){
+    auto PathFindingNodeCostInfo::compareTo(PathFindingNodeCostInfo* pathFindingNodeCostInfo) -> int32_t{
 
 
 
@@ -133,7 +132,7 @@ this->costFromStartP += cost;
 }
 
 
-    public: std::string toString(){
+    auto PathFindingNodeCostInfo::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -162,7 +161,6 @@ stringBuffer->appendlong(this->totalCostP);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPER_CPP
+        #define TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/transform/info/TransformInfoHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,19 +76,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoHelper: public BasicTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Portion* portion;
-
-public: TransformInfoHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+TransformInfoHelper::TransformInfoHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->portion= new Portion(hashMap);
     
 }
 
 
-    public: std::string drop(){
+    auto TransformInfoHelper::drop() -> std::string{
 
         try {
             
@@ -95,10 +100,10 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to drop view info table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
     
 
                                     }
@@ -114,7 +119,7 @@ this->portion= new Portion(hashMap);
 }
 
 
-    public: std::string create(){
+    auto TransformInfoHelper::create() -> std::string{
 
         try {
             
@@ -131,10 +136,10 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to create view info table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -150,7 +155,7 @@ this->portion= new Portion(hashMap);
 }
 
 
-    public: std::string restore(){
+    auto TransformInfoHelper::restore() -> std::string{
 
         try {
             
@@ -160,7 +165,7 @@ this->portion= new Portion(hashMap);
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(TransformInfoEntityBuilder::getInstance(), this->portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -182,10 +187,10 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -201,7 +206,7 @@ this->portion= new Portion(hashMap);
 }
 
 
-    public: std::string backup(){
+    auto TransformInfoHelper::backup() -> std::string{
 
         try {
             
@@ -211,7 +216,7 @@ this->portion= new Portion(hashMap);
     std::string result = AbSqlTableUtil::getInstance()->backupTable(TransformInfoEntityBuilder::getInstance());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -233,10 +238,10 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -252,7 +257,6 @@ this->portion= new Portion(hashMap);
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPER_CPP

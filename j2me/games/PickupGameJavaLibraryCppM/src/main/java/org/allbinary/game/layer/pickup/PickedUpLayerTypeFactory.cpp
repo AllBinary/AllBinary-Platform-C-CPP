@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,43 +59,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
 
-class PickedUpLayerTypeFactory
-            : public Object
-         {
 
-    private: static PickedUpLayerTypeFactory* instance() { static std::unique_ptr<PickedUpLayerTypeFactory> value(new PickedUpLayerTypeFactory()); return value.get(); }
+PickedUpLayerTypeFactory::PickedUpLayerTypeFactory() : NONE(new PickedUpLayerType(StringUtil::getInstance()->NULL_STRING)), BEAM(new PickedUpLayerType("BEAM")), MINE(new PickedUpLayerType("MINE")), PROJECTILE(new PickedUpLayerType("PROJECTILE")), ENHANCEMENT(new PickedUpLayerType("Enhancement")), MORPH(new PickedUpLayerType("Morph")), PART(new PickedUpLayerType("Part")), HEAL(new PickedUpLayerType("Heal")), LIFE(new PickedUpLayerType("Life")), POINTS(new PickedUpLayerType("Points")) {
+        }
+        auto PickedUpLayerTypeFactory::instance_owner() -> PickedUpLayerTypeFactory* { static std::unique_ptr<PickedUpLayerTypeFactory> value(new PickedUpLayerTypeFactory()); return value.get(); }
+PickedUpLayerTypeFactory* PickedUpLayerTypeFactory::instance = PickedUpLayerTypeFactory::instance_owner();
 
-    public: static PickedUpLayerTypeFactory* getInstance(){
+    auto PickedUpLayerTypeFactory::getInstance() -> PickedUpLayerTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PickedUpLayerTypeFactory::instance();
+                        return PickedUpLayerTypeFactory::instance;
     
 }
 
 
-    public: PickedUpLayerType* NONE = new PickedUpLayerType(StringUtil::getInstance()->NULL_STRING);
 
-    public: PickedUpLayerType* BEAM = new PickedUpLayerType("BEAM");
 
-    public: PickedUpLayerType* MINE = new PickedUpLayerType("MINE");
-
-    public: PickedUpLayerType* PROJECTILE = new PickedUpLayerType("PROJECTILE");
-
-    public: PickedUpLayerType* ENHANCEMENT = new PickedUpLayerType("Enhancement");
-
-    public: PickedUpLayerType* MORPH = new PickedUpLayerType("Morph");
-
-    public: PickedUpLayerType* PART = new PickedUpLayerType("Part");
-
-    public: PickedUpLayerType* HEAL = new PickedUpLayerType("Heal");
-
-    public: PickedUpLayerType* LIFE = new PickedUpLayerType("Life");
-
-    public: PickedUpLayerType* POINTS = new PickedUpLayerType("Points");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERTYPEFACTORY_CPP

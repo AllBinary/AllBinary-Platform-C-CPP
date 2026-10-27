@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_WEBAPPURLGLOBALS_CPP
+        #define ORG_ALLBINARY_GLOBALS_WEBAPPURLGLOBALS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/WebAppUrlGlobals.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/globals/UrlGlobalsInterface.h"
 
-class WebAppUrlGlobals: public UrlGlobalsInterface {
 
-    private: std::string path;
-
-    private: bool isWebappPathSet = false;
-
-    public: bool isTestingMode(){
+WebAppUrlGlobals::WebAppUrlGlobals() {
+        }
+        
+    auto WebAppUrlGlobals::isTestingMode() -> bool{
 
 
 
@@ -68,7 +76,7 @@ class WebAppUrlGlobals: public UrlGlobalsInterface {
 }
 
 
-    public: std::string getWebappPath(){
+    auto WebAppUrlGlobals::getWebappPath() -> std::string{
 
 
 
@@ -79,7 +87,7 @@ class WebAppUrlGlobals: public UrlGlobalsInterface {
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setWebappPath(std::string path){
+    auto WebAppUrlGlobals::setWebappPath(std::string path) -> void{
 path= path;
     
 this->isWebappPathSet= true;
@@ -87,7 +95,7 @@ this->isWebappPathSet= true;
 }
 
 
-    public: std::string getTestHtmlPath(){
+    auto WebAppUrlGlobals::getTestHtmlPath() -> std::string{
 
 
 
@@ -99,7 +107,7 @@ this->isWebappPathSet= true;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getMainPath(){
+    auto WebAppUrlGlobals::getMainPath() -> std::string{
 
     std::string mainPath = InitInfo::getInstance()->getMainPath();;
     
@@ -133,7 +141,7 @@ this->isWebappPathSet= true;
                             
 
 
-                            throw new Exception("Webapp Path is not set");
+                            throw Exception("Webapp Path is not set");
                     
 
                         }
@@ -141,7 +149,6 @@ this->isWebappPathSet= true;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_WEBAPPURLGLOBALS_CPP

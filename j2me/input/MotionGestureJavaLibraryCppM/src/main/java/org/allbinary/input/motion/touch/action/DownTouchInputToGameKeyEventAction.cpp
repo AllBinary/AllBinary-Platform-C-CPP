@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DOWNTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DOWNTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/touch/action/DownTouchInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DownTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* DownTouchInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto DownTouchInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(DownTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class DownTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInp
 }
 
 
-private: DownTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Down Action", TouchMotionGestureFactory::getInstance()->DOWN, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+DownTouchInputToGameKeyEventAction::DownTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Down Action", TouchMotionGestureFactory::getInstance()->DOWN, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: DownTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInpu
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DOWNTOUCHINPUTTOGAMEKEYEVENTACTION_CPP

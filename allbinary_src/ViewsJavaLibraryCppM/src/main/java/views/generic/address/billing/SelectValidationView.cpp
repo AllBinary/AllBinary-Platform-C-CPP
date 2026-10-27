@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_BILLING_SELECTVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_BILLING_SELECTVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/billing/SelectValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/billing/BillingAddressView.h"
 
-class SelectValidationView: public BillingAddressView, public ValidationComponentInterface {
 
-public: SelectValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
+SelectValidationView::SelectValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +82,7 @@ public: SelectValidationView(TransformInfoInterface* transformInfoInterface) : B
 }
 
 
-    public: bool isValid(){
+    auto SelectValidationView::isValid() -> bool{
 
 
 
@@ -83,7 +92,7 @@ public: SelectValidationView(TransformInfoInterface* transformInfoInterface) : B
 }
 
 
-    public: std::string validationInfo(){
+    auto SelectValidationView::validationInfo() -> std::string{
 
 
 
@@ -93,7 +102,7 @@ public: SelectValidationView(TransformInfoInterface* transformInfoInterface) : B
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto SelectValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -103,7 +112,7 @@ public: SelectValidationView(TransformInfoInterface* transformInfoInterface) : B
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto SelectValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -113,7 +122,6 @@ public: SelectValidationView(TransformInfoInterface* transformInfoInterface) : B
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_BILLING_SELECTVALIDATIONVIEW_CPP

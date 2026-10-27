@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,6 +54,10 @@
 #include "org/allbinary/game/input/event/UpGameKeyEventListenerInterface.h"
 #include "org/allbinary/game/input/event/PressGameKeyEventListenerInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyEventListenerInterface: public DownGameKeyEventListenerInterface, public UpGameKeyEventListenerInterface, public PressGameKeyEventListenerInterface {
 
 };
@@ -57,3 +66,19 @@ class GameKeyEventListenerInterface: public DownGameKeyEventListenerInterface, p
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTLISTENERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTLISTENERINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/input/event/DownGameKeyEventListenerInterface.h")
+#include "org/allbinary/game/input/event/DownGameKeyEventListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/UpGameKeyEventListenerInterface.h")
+#include "org/allbinary/game/input/event/UpGameKeyEventListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/input/event/PressGameKeyEventListenerInterface.h")
+#include "org/allbinary/game/input/event/PressGameKeyEventListenerInterface.h"
+#endif
+
+        #endif
+    

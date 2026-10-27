@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/db/DbInitInfo.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -102,23 +112,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbConnectionInfo.h"
 
-class DbInitInfo: public DbConnectionInfo {
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Directory* directory = Directory::getInstance();
-
-    private: HttpData* httpData = HttpData::getInstance();
-
-    private: const std::string GET_URL = "getUrl";
-
-    private: const std::string PACKAGE = FREEBLISKET_PATH_GLOBALS::getInstance()->DBINITPATH;
-
-    private: std::string initFileName;
-
-    private: bool hasRead = false;
-
-public: DbInitInfo(std::string initFileName, bool read) : DbConnectionInfo(){
+DbInitInfo::DbInitInfo(std::string initFileName, bool read) : DbConnectionInfo(), commonStrings(CommonStrings::getInstance()), directory(Directory::getInstance()), httpData(HttpData::getInstance()), PACKAGE(FREEBLISKET_PATH_GLOBALS::getInstance()->DBINITPATH){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -145,15 +140,15 @@ this->initFileName= initFileName;
 }
 
 
-    public: std::string getUrl(){
+    auto DbInitInfo::getUrl() -> std::string{
 
-    std::string url = super.getUrl();;
+    std::string url = DbConnectionInfo::getUrl();;
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
-                                    PreLogUtil::put(this->httpData->URL_LABEL +url, this, GET_URL);
+                                    PreLogUtil::put(JavaString::valueOf(this->httpData->URL_LABEL) +JavaString::valueOf(url), this, GET_URL);
     
 
                                     }
@@ -169,7 +164,7 @@ this->initFileName= initFileName;
 
                 //@Throws(Exception.constructor)
             
-    public: void write(){
+    auto DbInitInfo::write() -> void{
 
     AbPath* PATH = new AbPath(URLGLOBALS::getWebappPath() +this->PACKAGE, StringUtil::getInstance()->EMPTY_STRING);;
     
@@ -239,10 +234,10 @@ this->hasRead= false;
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE("Failed Write: " +FILEABPATH->toString(), this, "write", &e);
+                                    PreLogUtil::putOE(JavaString::valueOf("Failed Write: ") +JavaString::valueOf(FILEABPATH->toString()), this, "write", &e);
     
 
                                     }
@@ -254,7 +249,7 @@ this->hasRead= false;
 
                 //@Throws(Exception.constructor)
             
-    private: void load(){
+    auto DbInitInfo::load() -> void{
 
     AbPath* FILEABPATH = new AbPath(URLGLOBALS::getWebappPath() +this->PACKAGE, this->initFileName);;
     
@@ -327,10 +322,10 @@ this->setPort((new WeakCrypt(7))->decrypt(decryptedPort));
                             this->hasRead= false;
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
-                                    PreLogUtil::put("Not a File - Failed Loading: " +FILEABPATH->toString(), this, this->commonStrings->LOAD);
+                                    PreLogUtil::put(JavaString::valueOf("Not a File - Failed Loading: ") +JavaString::valueOf(FILEABPATH->toString()), this, this->commonStrings->LOAD);
     
 
                                     }
@@ -343,10 +338,10 @@ this->setPort((new WeakCrypt(7))->decrypt(decryptedPort));
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil::putOE("Failed Loading: " +FILEABPATH->toString(), this, this->commonStrings->LOAD, &e);
+                                    PreLogUtil::putOE(JavaString::valueOf("Failed Loading: ") +JavaString::valueOf(FILEABPATH->toString()), this, this->commonStrings->LOAD, &e);
     
 
                                     }
@@ -356,13 +351,13 @@ this->setPort((new WeakCrypt(7))->decrypt(decryptedPort));
 }
 
 
-    public: void setHasRead(bool value){
+    auto DbInitInfo::setHasRead(bool value) -> void{
 this->hasRead= value;
     
 }
 
 
-    private: void updateIfNeeded(){
+    auto DbInitInfo::updateIfNeeded() -> void{
 
         try {
             
@@ -381,7 +376,7 @@ this->load();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, "updateIfNeeded", &e);
@@ -394,14 +389,14 @@ this->load();
 }
 
 
-    public: std::string getName(){
+    auto DbInitInfo::getName() -> std::string{
 this->updateIfNeeded();
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
-                                    PreLogUtil::put("Name: " +super.getName(), this, "getName");
+                                    PreLogUtil::put(JavaString::valueOf("Name: ") +JavaString::valueOf(DbConnectionInfo::getName()), this, "getName");
     
 
                                     }
@@ -410,19 +405,19 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getName();;
+                        return DbConnectionInfo::getName();;
     
 }
 
 
-    public: std::string getUserName(){
+    auto DbInitInfo::getUserName() -> std::string{
 this->updateIfNeeded();
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADER))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADER))
                         
                                     {
-                                    PreLogUtil::put("Name: " +super.getUserName(), this, "getUserName");
+                                    PreLogUtil::put(JavaString::valueOf("Name: ") +JavaString::valueOf(DbConnectionInfo::getUserName()), this, "getUserName");
     
 
                                     }
@@ -431,60 +426,59 @@ this->updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getUserName();;
+                        return DbConnectionInfo::getUserName();;
     
 }
 
 
-    public: std::string getPassword(){
+    auto DbInitInfo::getPassword() -> std::string{
 this->updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getPassword();;
+                        return DbConnectionInfo::getPassword();;
     
 }
 
 
-    public: std::string getSchema(){
+    auto DbInitInfo::getSchema() -> std::string{
 this->updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getSchema();;
+                        return DbConnectionInfo::getSchema();;
     
 }
 
 
-    public: std::string getServer(){
+    auto DbInitInfo::getServer() -> std::string{
 this->updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getServer();;
+                        return DbConnectionInfo::getServer();;
     
 }
 
 
-    public: std::string getPort(){
+    auto DbInitInfo::getPort() -> std::string{
 this->updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getPort();;
+                        return DbConnectionInfo::getPort();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_CPP

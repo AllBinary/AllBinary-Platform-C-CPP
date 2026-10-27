@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_STATICPAGESTAG_CPP
+        #define ADMIN_TAGS_STATICPAGESTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/StaticPagesTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,13 +87,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class StaticPagesTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string xslFile;
-
-public: StaticPagesTag(){
+StaticPagesTag::StaticPagesTag() : logUtil(LogUtil::getInstance()){
 this->setTagHelperFactory(new StaticPagesHelperFactory());
     
 this->setTagRequestHelperFactory(new StaticPagesRequestHelperFactory());
@@ -91,7 +96,7 @@ this->setTagRequestHelperFactory(new StaticPagesRequestHelperFactory());
 }
 
 
-    public: void setXsl(std::string value){
+    auto StaticPagesTag::setXsl(std::string value) -> void{
 this->xslFile= value;
     
 }
@@ -99,7 +104,7 @@ this->xslFile= value;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string generateStaticPages(){
+    auto StaticPagesTag::generateStaticPages() -> std::string{
 
         try {
             
@@ -140,10 +145,10 @@ this->xslFile= value;
     std::string error = "Failed to generate staticpages table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "generateStaticPages()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "generateStaticPages()", &e);
     
 
                                     }
@@ -161,7 +166,7 @@ this->xslFile= value;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string makePublic(){
+    auto StaticPagesTag::makePublic() -> std::string{
 
         try {
             
@@ -202,10 +207,10 @@ this->xslFile= value;
     std::string error = "Failed to makePublic";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "makePublic()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "makePublic()", &e);
     
 
                                     }
@@ -223,7 +228,7 @@ this->xslFile= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto StaticPagesTag::doStartTag() -> int32_t{
 
         try {
             
@@ -246,10 +251,10 @@ this->xslFile= value;
     std::string output = this->generateStaticPages();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output);
+                                    this->pageContext->getOut()->print(output);
     
 
                                     }
@@ -265,10 +270,10 @@ this->xslFile= value;
     std::string output = this->makePublic();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output);
+                                    this->pageContext->getOut()->print(output);
     
 
                                     }
@@ -281,7 +286,7 @@ this->xslFile= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                         }
@@ -328,7 +333,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_STATICPAGESTAG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/PoolType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,19 +56,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/CacheType.h"
 
-class PoolType
-            : public Object
-         {
 
-    private: CacheType* cacheType;
-
-public: PoolType(CacheType* cacheType){
+PoolType::PoolType(CacheType* cacheType){
 this->cacheType= cacheType;
     
 }
 
 
-    public: CacheType* getCacheType(){
+    auto PoolType::getCacheType() -> CacheType*{
 
 
 
@@ -68,7 +73,7 @@ this->cacheType= cacheType;
 }
 
 
-    public: std::string toString(){
+    auto PoolType::toString() -> std::string{
 
     std::string POOL_TYPE = "PoolType: ";;
     
@@ -76,12 +81,11 @@ this->cacheType= cacheType;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return POOL_TYPE +this->getCacheType()->toString();
+                        return JavaString::valueOf(POOL_TYPE) +JavaString::valueOf(this->getCacheType()->toString());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_CPP

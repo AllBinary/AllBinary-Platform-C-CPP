@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_RESOURCES_KEYVALUEFACTORY_CPP
+        #define ORG_ALLBINARY_RESOURCES_KEYVALUEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/resources/KeyValueFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,25 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeyValueFactory
-            : public Object
-         {
 
-    private: static KeyValueFactory* instance() { static std::unique_ptr<KeyValueFactory> value(new KeyValueFactory()); return value.get(); }
+KeyValueFactory::KeyValueFactory() : MAP(StdUtil::getInstance()->createHashtable()) {
+        }
+        auto KeyValueFactory::instance_owner() -> KeyValueFactory* { static std::unique_ptr<KeyValueFactory> value(new KeyValueFactory()); return value.get(); }
+KeyValueFactory* KeyValueFactory::instance = KeyValueFactory::instance_owner();
 
-    public: static KeyValueFactory* getInstance(){
+    auto KeyValueFactory::getInstance() -> KeyValueFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return KeyValueFactory::instance();
+                        return KeyValueFactory::instance;
     
 }
 
 
-    public: ABHashtable<Object*, Object*>* MAP = StdUtil::getInstance()->createHashtable();
-
-    public: std::string get(std::string key){
+    auto KeyValueFactory::get(std::string key) -> std::string{
 
     std::string value = this->MAP->get(key);;
     
@@ -95,7 +103,6 @@ class KeyValueFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_RESOURCES_KEYVALUEFACTORY_CPP

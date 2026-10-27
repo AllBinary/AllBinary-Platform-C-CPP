@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_GAMEINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_GAMEINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/GameInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInputMapping
-            : public Object
-         {
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: GameKey* gameKey = GameKey::NULL_GAME_KEY;
-
-public: GameInputMapping(std::string name, GameKey* gameKey){
+GameInputMapping::GameInputMapping(std::string name, GameKey* gameKey) : name(StringUtil::getInstance()->EMPTY_STRING), gameKey(GameKey::NULL_GAME_KEY){
 this->setName(name);
     
 this->setGameKey(gameKey);
@@ -67,13 +70,13 @@ this->setGameKey(gameKey);
 }
 
 
-    private: void setGameKey(GameKey* gameKey){
+    auto GameInputMapping::setGameKey(GameKey* gameKey) -> void{
 this->gameKey= gameKey;
     
 }
 
 
-    public: GameKey* getGameKey(){
+    auto GameInputMapping::getGameKey() -> GameKey*{
 
 
 
@@ -83,13 +86,13 @@ this->gameKey= gameKey;
 }
 
 
-    private: void setName(std::string name){
+    auto GameInputMapping::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string getName(){
+    auto GameInputMapping::getName() -> std::string{
 
 
 
@@ -99,7 +102,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_GAMEINPUTMAPPING_CPP

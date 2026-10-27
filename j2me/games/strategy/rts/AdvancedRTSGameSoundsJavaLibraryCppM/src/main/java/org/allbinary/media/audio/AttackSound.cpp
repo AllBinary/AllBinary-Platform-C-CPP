@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ATTACKSOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ATTACKSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/AttackSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,9 @@
         #include "org/allbinary/media/audio/CompositeSound.h"
 #include "org/allbinary/media/audio/Sound.h"
 
-class AttackSound: public CompositeSound {
+Sound* AttackSound::soundInterface = new AttackSound();
 
-    private: static inline Sound* soundInterface = new AttackSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AttackSound::soundInterface;
-    
-}
-
-
-private: AttackSound() : CompositeSound("resource:/wav/attack.wav"){
+AttackSound::AttackSound() : CompositeSound("resource:/wav/attack.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +66,16 @@ private: AttackSound() : CompositeSound("resource:/wav/attack.wav"){
 }
 
 
-};
+    auto AttackSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return AttackSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_ATTACKSOUND_CPP

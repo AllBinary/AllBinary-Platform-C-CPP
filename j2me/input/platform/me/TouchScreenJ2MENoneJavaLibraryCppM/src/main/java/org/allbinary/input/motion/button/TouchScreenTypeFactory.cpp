@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchScreenTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchScreenFactory.h"
 
-class TouchScreenTypeFactory
-            : public Object
-         {
 
-    private: static TouchScreenTypeFactory* instance() { static std::unique_ptr<TouchScreenTypeFactory> value(new TouchScreenTypeFactory()); return value.get(); }
+TouchScreenTypeFactory::TouchScreenTypeFactory() {
+        }
+        auto TouchScreenTypeFactory::instance_owner() -> TouchScreenTypeFactory* { static std::unique_ptr<TouchScreenTypeFactory> value(new TouchScreenTypeFactory()); return value.get(); }
+TouchScreenTypeFactory* TouchScreenTypeFactory::instance = TouchScreenTypeFactory::instance_owner();
 
-    public: static TouchScreenTypeFactory* getInstance(){
+    auto TouchScreenTypeFactory::getInstance() -> TouchScreenTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenTypeFactory::instance();
+                        return TouchScreenTypeFactory::instance;
     
 }
 
 
-    public: void TouchScreenTypeFactory(){
+    auto TouchScreenTypeFactory::TouchScreenTypeFactory() -> void{
 
     TouchScreenFactory* touchScreenFactory = TouchScreenFactory::getInstance();;
     
@@ -71,7 +81,6 @@ touchScreenFactory->setTouch(false);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPEFACTORY_CPP

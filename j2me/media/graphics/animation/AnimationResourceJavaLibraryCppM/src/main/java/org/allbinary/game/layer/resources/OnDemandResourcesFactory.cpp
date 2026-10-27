@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/resources/OnDemandResourcesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/resources/OnDemandResources.h"
 
-class OnDemandResourcesFactory
-            : public Object
-         {
 
-    public: int32_t size(){
+OnDemandResourcesFactory::OnDemandResourcesFactory() {
+        }
+        
+    auto OnDemandResourcesFactory::size() -> int32_t{
 
 
 
@@ -60,7 +70,7 @@ class OnDemandResourcesFactory
 }
 
 
-    public: OnDemandResources* remove(int32_t layerId){
+    auto OnDemandResourcesFactory::remove(int32_t layerId) -> OnDemandResources*{
 
 
 
@@ -70,7 +80,6 @@ class OnDemandResourcesFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_CPP

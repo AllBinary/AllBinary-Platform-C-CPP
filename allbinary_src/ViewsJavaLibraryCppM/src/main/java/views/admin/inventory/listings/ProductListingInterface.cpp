@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_CPP
+        #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/listings/ProductListingInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ProductListingInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string generateAll() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string generateAll(std::string storeName) = 0;
 
-};
-
-            
-
+        #endif //VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementCampaignInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual Object* getComponent() = 0;
 
-    public: virtual void setName(std::string name) = 0;
-
-    public: virtual void setComponentName(std::string name) = 0;
-
-    public: virtual AdvertisementsInterface* search(AdvertisementSearchInterface* advertisementSearchInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNINTERFACE_CPP

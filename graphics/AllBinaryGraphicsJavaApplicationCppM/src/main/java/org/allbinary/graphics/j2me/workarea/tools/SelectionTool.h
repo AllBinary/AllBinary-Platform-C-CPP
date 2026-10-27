@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,44 +43,18 @@
             #include "java/lang/Double.h"
         
 #include <java/awt.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
-#include <javax/swing/tree/MutableTreeNode.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/math/RectangleCollisionPointUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class MutableTreeNode;
+class GPoint;
+class PointFactory;
+class BasicColorFactory;
+class CanvasDom;
+class CanvasJPanel;
+class IntegerDimension;
+class LogUtil;
+class RectangleCollisionPointUtil;
+class CommonStrings;
+class Node;
 
 
 
@@ -95,25 +74,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/MouseStrings.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
+class Color;
+class Points;
+class LinesGraphicItem;
+class Graphics;
+class MouseEvent;
+class MouseStrings;
+class KeyEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SelectionTool
-            : public Object
+            : public virtual Object
         , public GraphicItemInterface {
 
     private: static inline const std::string NAME = "Selection Tool";
 
     public: static std::string getStaticName();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     private: CanvasJPanel* canvasJPanel;
 
@@ -157,7 +140,7 @@ public: SelectionTool(CanvasJPanel* canvasJPanel);
 
     private: void makeSelection();
 
-    private: Color* rectColor = new Color(BasicColorFactory::getInstance()->RED.intValue());
+    private: Color* rectColor;
 
     public: int32_t getXRect();
 
@@ -175,9 +158,9 @@ public: SelectionTool(CanvasJPanel* canvasJPanel);
 
     public: std::string getName();
 
-    private: GPoint* startPoint = PointFactory::getInstance()->ZERO_ZERO;
+    private: GPoint* startPoint;
 
-    private: GPoint* endPoint = this->startPoint;
+    private: GPoint* endPoint;
 
     public: void mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
@@ -209,3 +192,73 @@ public: SelectionTool(CanvasJPanel* canvasJPanel);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/swing/tree/MutableTreeNode.h>)
+#include <javax/swing/tree/MutableTreeNode.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/RectangleCollisionPointUtil.h>)
+#include <org/allbinary/math/RectangleCollisionPointUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Color.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Points.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Graphics.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/MouseStrings.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseStrings.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
+#endif
+
+        #endif
+    

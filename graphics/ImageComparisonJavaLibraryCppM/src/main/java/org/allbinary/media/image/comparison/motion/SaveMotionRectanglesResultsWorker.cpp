@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_SAVEMOTIONRECTANGLESRESULTSWORKER_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_SAVEMOTIONRECTANGLESRESULTSWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/SaveMotionRectanglesResultsWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,25 +85,14 @@
 #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 #include "org/allbinary/media/image/comparison/motion/MotionRectanglesImageInputOutput.h"
 
-class SaveMotionRectanglesResultsWorker
-            : public Object
-        , public MotionRectanglesResultsListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: bool running= false;
-
-    private: BasicArrayList* motionRectanglesVector;
-
-public: SaveMotionRectanglesResultsWorker(){
+SaveMotionRectanglesResultsWorker::SaveMotionRectanglesResultsWorker() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->motionRectanglesVector= new BasicArrayListD();
     
 }
 
 
-    public: BasicArrayList* getMotionRectanglesVector(){
+    auto SaveMotionRectanglesResultsWorker::getMotionRectanglesVector() -> BasicArrayList*{
 
 
 
@@ -103,7 +102,7 @@ this->motionRectanglesVector= new BasicArrayListD();
 }
 
 
-    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesResultsEvent){
+    auto SaveMotionRectanglesResultsWorker::onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent* motionRectanglesResultsEvent) -> void{
 this->getMotionRectanglesVector()->add(motionRectanglesResultsEvent);
     
 this->run();
@@ -111,14 +110,14 @@ this->run();
 }
 
 
-    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+    auto SaveMotionRectanglesResultsWorker::onEvent(AllBinaryEventObject* allBinaryEventObject) -> void{
 this->onMotionRectanglesImageComparisonResultsEvent(dynamic_cast<MotionRectanglesResultsEvent*>(allBinaryEventObject));
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto SaveMotionRectanglesResultsWorker::isRunning() -> bool{
 
 
 
@@ -129,13 +128,13 @@ this->onMotionRectanglesImageComparisonResultsEvent(dynamic_cast<MotionRectangle
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto SaveMotionRectanglesResultsWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 
-    public: void run(){
+    auto SaveMotionRectanglesResultsWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -172,7 +171,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_SAVEMOTIONRECTANGLESRESULTSWORKER_CPP

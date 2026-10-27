@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/osgi/InputAutomationModuleServiceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,21 +78,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationModuleServiceFactory
-            : public Object
-        , public ServiceFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray;
-
-public: InputAutomationModuleServiceFactory(){
+InputAutomationModuleServiceFactory::InputAutomationModuleServiceFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: Object* getService(Bundle* bundle, ServiceRegistration* registration){
+    auto InputAutomationModuleServiceFactory::getService(Bundle* bundle, ServiceRegistration* registration) -> Object*{
 this->logUtil->putF(this->commonStrings->START, this, "getService");
     
 
@@ -94,11 +95,11 @@ this->logUtil->putF(this->commonStrings->START, this, "getService");
 }
 
 
-    public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service){
+    auto InputAutomationModuleServiceFactory::ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service) -> void{
 }
 
 
-    public: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray(){
+    auto InputAutomationModuleServiceFactory::getInputAutomationModuleInterfaceArray() -> std::vector<InputAutomationModuleFactoryInterface*>{
 
 
 
@@ -108,13 +109,12 @@ this->logUtil->putF(this->commonStrings->START, this, "getService");
 }
 
 
-    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray){
+    auto InputAutomationModuleServiceFactory::setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray) -> void{
 this->inputAutomationModuleInterfaceArray= inputAutomationModuleInterfaceArray;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICEFACTORY_CPP

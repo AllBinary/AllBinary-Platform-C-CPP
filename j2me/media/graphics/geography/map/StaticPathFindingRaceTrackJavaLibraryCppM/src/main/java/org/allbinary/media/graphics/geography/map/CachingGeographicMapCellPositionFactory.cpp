@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CACHINGGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CACHINGGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/CachingGeographicMapCellPositionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,9 +67,8 @@
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactory.h"
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
-class CachingGeographicMapCellPositionFactory: public BasicGeographicMapCellPositionFactory {
 
-protected: CachingGeographicMapCellPositionFactory(BasicGeographicMap* geographicMapInterface) : BasicGeographicMapCellPositionFactory(geographicMapInterface){
+CachingGeographicMapCellPositionFactory::CachingGeographicMapCellPositionFactory(BasicGeographicMap* geographicMapInterface) : BasicGeographicMapCellPositionFactory(geographicMapInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,7 +80,7 @@ protected: CachingGeographicMapCellPositionFactory(BasicGeographicMap* geographi
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height){
+    auto CachingGeographicMapCellPositionFactory::createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height) -> GeographicMapCellPosition*{
 
     ABHashtable<Object*, Object*>* hashtable = GeographicMapCellPositionFactory::getHashtable();;
     
@@ -87,7 +96,7 @@ protected: CachingGeographicMapCellPositionFactory(BasicGeographicMap* geographi
                                 )
                         
                                     {
-                                    cellPositionCanBeNull= this->geographicMapCellPositionFactoryInterface.getInstance(this->geographicMapInterface, i_column, i_row, this->getColumns(), this->getRows(), width, height);
+                                    cellPositionCanBeNull= this->geographicMapCellPositionFactoryInterface->getInstance(this->geographicMapInterface, i_column, i_row, this->getColumns(), this->getRows(), width, height);
     
 this->geographicMapCellPositionArray[i_row][i_column]= dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
@@ -105,7 +114,6 @@ hashtable->put(cellPositionKey, cellPositionCanBeNull);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CACHINGGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP

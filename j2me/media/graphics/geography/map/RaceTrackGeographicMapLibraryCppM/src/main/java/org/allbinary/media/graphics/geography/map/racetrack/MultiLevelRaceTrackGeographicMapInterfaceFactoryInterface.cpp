@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_MULTILEVELRACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_MULTILEVELRACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,17 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterfaceFactoryInterface.h"
 
-class MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface: public RaceTrackGeographicMapInterfaceFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual int32_t getFirstWaveWithTrack(int32_t track) = 0;
 
-    public: virtual int32_t getTotalTracks() = 0;
 
-    public: virtual int32_t getTotalLevels() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_MULTILEVELRACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_CPP

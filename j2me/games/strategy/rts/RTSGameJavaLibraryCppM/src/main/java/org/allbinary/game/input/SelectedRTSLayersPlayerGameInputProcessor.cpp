@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,13 @@
         #include "org/allbinary/game/input/GameInputProcessor.h"
 #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
-class SelectedRTSLayersPlayerGameInputProcessor: public GameInputProcessor {
 
-    protected: SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput;
-
-public: SelectedRTSLayersPlayerGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
+SelectedRTSLayersPlayerGameInputProcessor::SelectedRTSLayersPlayerGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
 this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERGAMEINPUTPROCESSOR_CPP

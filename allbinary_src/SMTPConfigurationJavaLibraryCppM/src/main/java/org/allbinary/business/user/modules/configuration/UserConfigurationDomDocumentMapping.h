@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
-
-      
-#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
-
-      
+class DomDocumentHelper;
+class XmlDocumentHelper;
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class Document;
+class Node;
 
 
 
@@ -64,11 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
-#include "org/allbinary/business/user/modules/configuration/UserConfigurationView.h"
+        class UserConfigurationInterface;
+class UserConfigurationView;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserConfigurationDomDocumentMapping
-            : public Object
+            : public virtual Object
         , public DomDocumentMappingInterface {
 
     private: UserConfigurationInterface* userConfigurationInterface;
@@ -89,3 +88,31 @@ public: UserConfigurationDomDocumentMapping(UserConfigurationInterface* userConf
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDOMDOCUMENTMAPPING_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tree/dom/document/DomDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>)
+#include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h")
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h"
+#endif
+#if __has_include("org/allbinary/business/user/modules/configuration/UserConfigurationView.h")
+#include "org/allbinary/business/user/modules/configuration/UserConfigurationView.h"
+#endif
+
+        #endif
+    

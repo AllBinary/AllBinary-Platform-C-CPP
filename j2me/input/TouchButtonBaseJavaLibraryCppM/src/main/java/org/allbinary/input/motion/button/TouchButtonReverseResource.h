@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONREVERSERESOURCE_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONREVERSERESOURCE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonReverseResource: public TouchButtonResource {
 
-    private: static inline TouchButtonResource* instance = new TouchButtonReverseResource();
+    private: static TouchButtonResource* instance;
 
     public: static TouchButtonResource* getInstance();
 
@@ -61,3 +70,13 @@ private: TouchButtonReverseResource();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONREVERSERESOURCE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONREVERSERESOURCE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONREVERSERESOURCE_H_COMPLETE
+        #if __has_include("org/allbinary/input/motion/button/TouchButtonResource.h")
+#include "org/allbinary/input/motion/button/TouchButtonResource.h"
+#endif
+
+        #endif
+    

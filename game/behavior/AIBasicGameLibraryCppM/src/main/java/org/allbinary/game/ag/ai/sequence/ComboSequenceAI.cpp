@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_COMBOSEQUENCEAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_COMBOSEQUENCEAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/sequence/ComboSequenceAI.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,9 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/sequence/SequenceAI.h"
 
-class ComboSequenceAI: public SequenceAI {
 
-public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
+ComboSequenceAI::ComboSequenceAI(std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +83,7 @@ public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface*> artificial
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto ComboSequenceAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterfaceArray = this->getArtificialIntelligenceInterface();;
     
@@ -90,14 +99,13 @@ public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface*> artificial
         {
 this->setIndex(index);
     
-super.processAI(allBinaryLayerManager);
+SequenceAI::processAI(allBinaryLayerManager);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_COMBOSEQUENCEAI_CPP

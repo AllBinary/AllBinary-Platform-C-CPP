@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_H
         #define ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class JsMethod;
+class JsConstructor;
+class JsProperty;
 
 
 
@@ -62,26 +59,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StringUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static StringUtil* instance() { static std::unique_ptr<StringUtil> value(new StringUtil()); return value.get(); }
+    private: static StringUtil* instance_owner();
+    private: static StringUtil* instance;
 
     public: static StringUtil* getInstance();
 
-    public: const std::string INIT_STRING = "";
+    public: const std::string INIT_STRING;
 
     public: const std::string NULL_STRING = "null";
 
     public: const std::string EMPTY_STRING = "";
 
-    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = 
-                                                        {
-                                                            this->EMPTY_STRING
-                                                        };
+    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY;
 
-    private: const std::vector<std::string> stringArray = {};
+    private: std::vector<std::string> stringArray;
 
 private: StringUtil();
 
@@ -92,6 +91,7 @@ private: StringUtil();
     public: int32_t count(std::string string, char aChar);
 
     public: std::string toString(Object* anyType);
+    public: std::string toString(const std::string& anyType) { return toString(JavaString::box(anyType)); }
 
 };
 
@@ -99,3 +99,22 @@ private: StringUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+
+        #endif
+    

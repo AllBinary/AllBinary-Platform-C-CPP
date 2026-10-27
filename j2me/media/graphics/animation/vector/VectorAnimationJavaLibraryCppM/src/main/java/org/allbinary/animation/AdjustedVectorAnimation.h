@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,12 +34,8 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class Graphics;
+class BasicColor;
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/VectorAnimation.h"
-#include "org/allbinary/animation/AnimationBehavior.h"
+class AnimationBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdjustedVectorAnimation: public VectorAnimation {
 
     private: int32_t dx;
@@ -72,3 +77,22 @@ public: AdjustedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> c
 
 
         #endif //ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimation.h")
+#include "org/allbinary/animation/VectorAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+
+        #endif
+    

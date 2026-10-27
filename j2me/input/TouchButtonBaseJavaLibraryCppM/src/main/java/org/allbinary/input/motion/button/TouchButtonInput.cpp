@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONINPUT_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,17 +82,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonInput: public Input, public GameKeyEventSourceInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
-
-    private: const int32_t TOUCH_BUTTON_SOURCE_ID = this->gameKeyEventFactory->TOUCH_BUTTON_SOURCE_ID;
-
-    private: GameKeyEvent* gameKeyEvent = GameKeyEvent::NONE;
-
-public: TouchButtonInput(int32_t id, std::string name) : Input(id, name){
+TouchButtonInput::TouchButtonInput(int32_t id, std::string name) : Input(id, name), logUtil(LogUtil::getInstance()), gameKeyEventFactory(GameKeyEventFactory::getInstance()), TOUCH_BUTTON_SOURCE_ID(this->gameKeyEventFactory->TOUCH_BUTTON_SOURCE_ID), gameKeyEvent(GameKeyEvent::NONE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,7 +98,7 @@ inputFactory->add(this->getId(), this);
 }
 
 
-    public: void update(InputToGameKeyMapping* inputToGameKeyMapping){
+    auto TouchButtonInput::update(InputToGameKeyMapping* inputToGameKeyMapping) -> void{
 
         try {
             
@@ -119,7 +120,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
 }
 
 
-    public: int32_t getSourceId(){
+    auto TouchButtonInput::getSourceId() -> int32_t{
 
 
 
@@ -129,7 +130,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
 }
 
 
-    public: GameKeyEvent* getGameKeyEvent(){
+    auto TouchButtonInput::getGameKeyEvent() -> GameKeyEvent*{
 
 
 
@@ -139,7 +140,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONINPUT_CPP

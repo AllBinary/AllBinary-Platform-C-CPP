@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_H
         #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //import java.nio.charset.Charset;
 class CharacterSet
-            : public Object
+            : public virtual Object
          {
 
 public: CharacterSet();
@@ -62,3 +71,10 @@ public: CharacterSet();
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_H_COMPLETE
+        
+        #endif
+    

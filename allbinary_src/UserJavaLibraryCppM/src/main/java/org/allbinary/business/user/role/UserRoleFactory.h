@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,54 +34,22 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/business/user/modules/UserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/AdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/StoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/customer/CustomerStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/order/OrderStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/order/adjust/AdjustOrderStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/order/review/ReviewOrderStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/order/ship/ShipOrderStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/payment/PaymentStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/product/ProductStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/web/WebStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/web/view/editor/ViewEditorWebStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/web/wizard/WizardWebStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/store/web/workflow/editor/WorkflowEditorWebStoreAdminUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/customer/subscriber/SubscriberUserFactory.h>
-
-      
-#include <org/allbinary/business/user/modules/customer/wholesale/WholesaleUserFactory.h>
-
-      
+class UserFactory;
+class AdminUserFactory;
+class StoreAdminUserFactory;
+class CustomerStoreAdminUserFactory;
+class OrderStoreAdminUserFactory;
+class AdjustOrderStoreAdminUserFactory;
+class ReviewOrderStoreAdminUserFactory;
+class ShipOrderStoreAdminUserFactory;
+class PaymentStoreAdminUserFactory;
+class ProductStoreAdminUserFactory;
+class WebStoreAdminUserFactory;
+class ViewEditorWebStoreAdminUserFactory;
+class WizardWebStoreAdminUserFactory;
+class WorkflowEditorWebStoreAdminUserFactory;
+class SubscriberUserFactory;
+class WholesaleUserFactory;
 
 
 
@@ -95,54 +68,62 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
-#include "org/allbinary/business/user/role/UserRoleB.h"
-#include "org/allbinary/business/user/role/UserRole.h"
+        class BasicUserRoleFactory;
+class UserRoleB;
+class UserRole;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserRoleFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static UserRoleFactory* instance() { static std::unique_ptr<UserRoleFactory> value(new UserRoleFactory()); return value.get(); }
+    private: static UserRoleFactory* instance_owner();
+    private: static UserRoleFactory* instance;
 
     public: static UserRoleFactory* getInstance();
 
-    private: BasicUserRoleFactory* basicUserRoleFactory = BasicUserRoleFactory::getInstance();
 
-    public: UserRole* INSTALLER = new UserRoleB(this->basicUserRoleFactory->INSTALLER, 
-                            nullptr);
+            
+    public: UserRoleFactory();
+        
+    private: BasicUserRoleFactory* basicUserRoleFactory;
 
-    public: UserRole* ADMINISTRATOR = new UserRoleB(this->basicUserRoleFactory->ADMINISTRATOR, new AdminUserFactory());
+    public: UserRole* INSTALLER;
 
-    public: UserRole* CUSTOMER = new UserRoleB(this->basicUserRoleFactory->CUSTOMER, new UserFactory());
+    public: UserRole* ADMINISTRATOR;
 
-    public: UserRole* SUBSCRIBERCUSTOMER = new UserRoleB(this->basicUserRoleFactory->SUBSCRIBERCUSTOMER, new SubscriberUserFactory());
+    public: UserRole* CUSTOMER;
 
-    public: UserRole* WHOLESALECUSTOMER = new UserRoleB(this->basicUserRoleFactory->WHOLESALECUSTOMER, new WholesaleUserFactory());
+    public: UserRole* SUBSCRIBERCUSTOMER;
 
-    public: UserRole* STOREMANAGER = new UserRoleB(this->basicUserRoleFactory->STOREMANAGER, new StoreAdminUserFactory());
+    public: UserRole* WHOLESALECUSTOMER;
 
-    public: UserRole* PRODUCTMANAGER = new UserRoleB(this->basicUserRoleFactory->PRODUCTMANAGER, new ProductStoreAdminUserFactory());
+    public: UserRole* STOREMANAGER;
 
-    public: UserRole* CUSTOMERMANAGER = new UserRoleB(this->basicUserRoleFactory->CUSTOMERMANAGER, new CustomerStoreAdminUserFactory());
+    public: UserRole* PRODUCTMANAGER;
 
-    public: UserRole* PAYMENTMANAGER = new UserRoleB(this->basicUserRoleFactory->PAYMENTMANAGER, new PaymentStoreAdminUserFactory());
+    public: UserRole* CUSTOMERMANAGER;
 
-    public: UserRole* ORDERMANAGER = new UserRoleB(this->basicUserRoleFactory->ORDERMANAGER, new OrderStoreAdminUserFactory());
+    public: UserRole* PAYMENTMANAGER;
 
-    public: UserRole* WEBMANAGER = new UserRoleB(this->basicUserRoleFactory->WEBMANAGER, new WebStoreAdminUserFactory());
+    public: UserRole* ORDERMANAGER;
 
-    public: UserRole* REVIEWER = new UserRoleB(this->basicUserRoleFactory->REVIEWER, new ReviewOrderStoreAdminUserFactory());
+    public: UserRole* WEBMANAGER;
 
-    public: UserRole* SHIPPING = new UserRoleB(this->basicUserRoleFactory->SHIPPING, new ShipOrderStoreAdminUserFactory());
+    public: UserRole* REVIEWER;
 
-    public: UserRole* ADJUSTER = new UserRoleB(this->basicUserRoleFactory->ADJUSTER, new AdjustOrderStoreAdminUserFactory());
+    public: UserRole* SHIPPING;
 
-    public: UserRole* WORKFLOWEDITOR = new UserRoleB(this->basicUserRoleFactory->WORKFLOWEDITOR, new WorkflowEditorWebStoreAdminUserFactory());
+    public: UserRole* ADJUSTER;
 
-    public: UserRole* WIZARD = new UserRoleB(this->basicUserRoleFactory->WIZARD, new WizardWebStoreAdminUserFactory());
+    public: UserRole* WORKFLOWEDITOR;
 
-    public: UserRole* VIEWEDITOR = new UserRoleB(this->basicUserRoleFactory->VIEWEDITOR, new ViewEditorWebStoreAdminUserFactory());
+    public: UserRole* WIZARD;
+
+    public: UserRole* VIEWEDITOR;
 
 };
 
@@ -150,3 +131,67 @@ class UserRoleFactory
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/modules/UserFactory.h>)
+#include <org/allbinary/business/user/modules/UserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/AdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/AdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/StoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/StoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/customer/CustomerStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/customer/CustomerStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/order/OrderStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/order/OrderStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/order/adjust/AdjustOrderStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/order/adjust/AdjustOrderStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/order/review/ReviewOrderStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/order/review/ReviewOrderStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/order/ship/ShipOrderStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/order/ship/ShipOrderStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/payment/PaymentStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/payment/PaymentStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/product/ProductStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/product/ProductStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/web/WebStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/web/WebStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/web/view/editor/ViewEditorWebStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/web/view/editor/ViewEditorWebStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/web/wizard/WizardWebStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/web/wizard/WizardWebStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/store/web/workflow/editor/WorkflowEditorWebStoreAdminUserFactory.h>)
+#include <org/allbinary/business/user/modules/admin/store/web/workflow/editor/WorkflowEditorWebStoreAdminUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/customer/subscriber/SubscriberUserFactory.h>)
+#include <org/allbinary/business/user/modules/customer/subscriber/SubscriberUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/customer/wholesale/WholesaleUserFactory.h>)
+#include <org/allbinary/business/user/modules/customer/wholesale/WholesaleUserFactory.h>
+#endif
+#if __has_include("org/allbinary/business/user/role/BasicUserRoleFactory.h")
+#include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
+#endif
+#if __has_include("org/allbinary/business/user/role/UserRoleB.h")
+#include "org/allbinary/business/user/role/UserRoleB.h"
+#endif
+#if __has_include("org/allbinary/business/user/role/UserRole.h")
+#include "org/allbinary/business/user/role/UserRole.h"
+#endif
+
+        #endif
+    

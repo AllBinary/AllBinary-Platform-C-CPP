@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_PROCESSINGFRAMEINDEXFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_PROCESSINGFRAMEINDEXFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/ProcessingFrameIndexFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,14 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ProcessingFrameIndexFactory
-            : public Object
-         {
 
-    private: static inline int64_t currentFrame = 0;
+ProcessingFrameIndexFactory::ProcessingFrameIndexFactory(){
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static int64_t next(){
+    auto ProcessingFrameIndexFactory::next() -> int64_t{
 
 
 
@@ -62,11 +71,6 @@ class ProcessingFrameIndexFactory
 }
 
 
-private: ProcessingFrameIndexFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_PROCESSINGFRAMEINDEXFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/BasePathFinderGraphVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,17 +72,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //1.4.2
-class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
 
-    protected: BasicGeographicMap* geographicMapInterface;
-
-    protected: int32_t edgeMinimum;
-
-    protected: int32_t minPathWeight;
-
-    protected: int32_t maxPathWeight;
-
-public: BasePathFinderGraphVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
+BasePathFinderGraphVisitor::BasePathFinderGraphVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
 this->geographicMapInterface= geographicMapInterface;
     
 this->edgeMinimum= edgeMinimum;
@@ -86,13 +87,13 @@ this->maxPathWeight= maxPathWeight;
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
+    auto BasePathFinderGraphVisitor::visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList){
+    auto BasePathFinderGraphVisitor::fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList) -> void{
 
     PathFindingNode* startPathFindingNode;;
     
@@ -114,7 +115,7 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
 }
 
 
-    public: bool isValid(Object* graphPath){
+    auto BasePathFinderGraphVisitor::isValid(Object* graphPath) -> bool{
 
 
 
@@ -124,7 +125,7 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
 }
 
 
-    public: std::string getInvalidReason(Object* graphPath){
+    auto BasePathFinderGraphVisitor::getInvalidReason(Object* graphPath) -> std::string{
 
 
 
@@ -134,7 +135,6 @@ pathList->addAt(0, startPathFindingNode->geographicMapCellPosition);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_CPP

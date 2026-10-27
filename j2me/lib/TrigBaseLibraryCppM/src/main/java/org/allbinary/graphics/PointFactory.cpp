@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_POINTFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_POINTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/PointFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,33 +68,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/GPoint.h"
 
-class PointFactory
-            : public Object
-         {
+auto PointFactory::instance_owner() -> PointFactory* { static std::unique_ptr<PointFactory> value(new PointFactory()); return value.get(); }
+PointFactory* PointFactory::instance = PointFactory::instance_owner();
 
-    private: static PointFactory* instance() { static std::unique_ptr<PointFactory> value(new PointFactory()); return value.get(); }
-
-    public: static PointFactory* getInstance(){
+    auto PointFactory::getInstance() -> PointFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointFactory::instance();
+                        return PointFactory::instance;
     
 }
 
 
-    public: GPoint* ZERO_ZERO = this->createXYZ(0, 0, 0);
-
-    public: void init(){
+    auto PointFactory::init() -> void{
 }
 
 
-private: PointFactory(){
+PointFactory::PointFactory() : ZERO_ZERO(this->createXYZ(0, 0, 0)){
 }
 
 
-    public: GPoint* createXY(int32_t x, int32_t y){
+    auto PointFactory::createXY(int32_t x, int32_t y) -> GPoint*{
 
 
 
@@ -94,7 +99,7 @@ private: PointFactory(){
 }
 
 
-    public: GPoint* createXYZ(int32_t x, int32_t y, int32_t z){
+    auto PointFactory::createXYZ(int32_t x, int32_t y, int32_t z) -> GPoint*{
 
 
 
@@ -104,7 +109,6 @@ private: PointFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_POINTFACTORY_CPP

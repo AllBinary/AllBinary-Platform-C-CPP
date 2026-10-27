@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_PRERESOURCEIMAGEUTIL_CPP
+        #define ORG_ALLBINARY_IMAGE_PRERESOURCEIMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/PreResourceImageUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,23 +64,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PreResourceImageUtil
-            : public Object
-         {
 
-    private: static PreResourceImageUtil* instance() { static std::unique_ptr<PreResourceImageUtil> value(new PreResourceImageUtil()); return value.get(); }
+PreResourceImageUtil::PreResourceImageUtil() {
+        }
+        auto PreResourceImageUtil::instance_owner() -> PreResourceImageUtil* { static std::unique_ptr<PreResourceImageUtil> value(new PreResourceImageUtil()); return value.get(); }
+PreResourceImageUtil* PreResourceImageUtil::instance = PreResourceImageUtil::instance_owner();
 
-    public: static PreResourceImageUtil* getInstance(){
+    auto PreResourceImageUtil::getInstance() -> PreResourceImageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PreResourceImageUtil::instance();
+                        return PreResourceImageUtil::instance;
     
 }
 
 
-    public: Image* encapsulate(Image* image){
+    auto PreResourceImageUtil::encapsulate(Image* image) -> Image*{
 
 
 
@@ -80,15 +90,14 @@ class PreResourceImageUtil
 }
 
 
-    public: void updateGL(GL* gl, Image* image){
+    auto PreResourceImageUtil::updateGL(GL* gl, Image* image) -> void{
 }
 
 
-    public: void update(Graphics* graphics, Image* image){
+    auto PreResourceImageUtil::update(Graphics* graphics, Image* image) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_PRERESOURCEIMAGEUTIL_CPP

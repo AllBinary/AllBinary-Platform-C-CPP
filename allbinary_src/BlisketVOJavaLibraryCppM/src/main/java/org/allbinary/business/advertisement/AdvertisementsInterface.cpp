@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTSINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTSINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/AdvertisementsInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,43 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/AdvertisementInterface.h"
 
-class AdvertisementsInterface {
+//Interface - declared in the header
 
-    public: virtual void add(AdvertisementInterface* advertisementInterface) = 0;
 
-    public: virtual AdvertisementInterface* get(int32_t index) = 0;
 
-    public: virtual int32_t getCurrentPageNum() = 0;
-
-    public: virtual std::string getErrorDescription() = 0;
-
-    public: virtual std::string getErrorNum() = 0;
-
-    public: virtual int32_t getNumberOfPosters() = 0;
-
-    public: virtual int32_t getNumberOfProductsInPage() = 0;
-
-    public: virtual int32_t getStatusCode() = 0;
-
-    public: virtual int32_t getTotalNumberOfProducts() = 0;
-
-    public: virtual bool isSearchValid() = 0;
-
-    public: virtual void setCurrentPageNum(int32_t currentPageNum) = 0;
-
-    public: virtual void setErrorDescription(std::string errorDescription) = 0;
-
-    public: virtual void setErrorNum(std::string errorNum) = 0;
-
-    public: virtual void setNumberOfProductsInPage(int32_t numberOfProductsInPage) = 0;
-
-    public: virtual void setStatusCode(int32_t statusCode) = 0;
-
-    public: virtual void setTotalNumberOfProducts(int32_t totalNumberOfProducts) = 0;
-
-    public: virtual std::string toString() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTSINTERFACE_CPP

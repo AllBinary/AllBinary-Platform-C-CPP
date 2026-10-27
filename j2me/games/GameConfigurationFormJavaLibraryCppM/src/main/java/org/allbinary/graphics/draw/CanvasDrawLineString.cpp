@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/draw/CanvasDrawLineString.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,23 +71,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/draw/DrawStringUtil.h"
 
-class CanvasDrawLineString
-            : public Object
-        , public UpdateMyFontInterface {
+auto CanvasDrawLineString::NULL_CANVAS_DRAW_LINE_STRING_owner() -> CanvasDrawLineString* { static std::unique_ptr<CanvasDrawLineString> value(new CanvasDrawLineString(0, 0)); return value.get(); }
+CanvasDrawLineString* CanvasDrawLineString::NULL_CANVAS_DRAW_LINE_STRING = CanvasDrawLineString::NULL_CANVAS_DRAW_LINE_STRING_owner();
 
-    public: static CanvasDrawLineString* NULL_CANVAS_DRAW_LINE_STRING() { static std::unique_ptr<CanvasDrawLineString> value(new CanvasDrawLineString(0, 0)); return value.get(); }
-
-    private: DrawStringUtil* drawStringUtil = DrawStringUtil::getInstance();
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: int32_t x;
-
-    private: int32_t y;
-
-    private: int32_t fontHeight = 0;
-
-public: CanvasDrawLineString(int32_t x, int32_t y){
+CanvasDrawLineString::CanvasDrawLineString(int32_t x, int32_t y) : drawStringUtil(DrawStringUtil::getInstance()), myFontProcessor(new UpdateMyFontProcessor(this)){
 this->x= x;
     
 this->y= y;
@@ -85,7 +82,7 @@ this->y= y;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto CanvasDrawLineString::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -96,7 +93,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics, std::string string, int32_t line){
+    auto CanvasDrawLineString::paint(Graphics* graphics, std::string string, int32_t line) -> void{
 this->myFontProcessor->process(graphics);
     
 this->drawStringUtil->drawCenterString(graphics, string, 0, string.size()this->x, this->y +(line *this->fontHeight));
@@ -104,7 +101,6 @@ this->drawStringUtil->drawCenterString(graphics, string, 0, string.size()this->x
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LayerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,13 +70,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerUtil
-            : public Object
-         {
 
-    private: static inline const std::string HASHTABLE = "Hashtable: ";
-
-    public: static std::string toString(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
+LayerUtil::LayerUtil() {
+        }
+        
+    auto LayerUtil::toString(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z) -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -107,7 +115,6 @@ stringBuffer->appendint(z);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_LAYERUTIL_CPP

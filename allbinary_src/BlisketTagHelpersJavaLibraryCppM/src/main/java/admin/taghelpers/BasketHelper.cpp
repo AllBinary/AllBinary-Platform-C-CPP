@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_BASKETHELPER_CPP
+        #define ADMIN_TAGHELPERS_BASKETHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/BasketHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,21 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class BasketHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-    private: PageContext* pageContext;
-
-    private: const int32_t MAX = 200;
-
-public: BasketHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+BasketHelper::BasketHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->propertiesHashMap= hashMap;
     
 this->pageContext= pageContext;
@@ -106,7 +103,7 @@ this->weblisketSession= new WeblisketSession(hashMap, pageContext);
 }
 
 
-    public: bool isBasketEmpty(){
+    auto BasketHelper::isBasketEmpty() -> bool{
 
         try {
             
@@ -140,10 +137,10 @@ this->weblisketSession= new WeblisketSession(hashMap, pageContext);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isBasketEmpty()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "isBasketEmpty()", &e);
     
 
                                     }
@@ -159,7 +156,6 @@ this->weblisketSession= new WeblisketSession(hashMap, pageContext);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_BASKETHELPER_CPP

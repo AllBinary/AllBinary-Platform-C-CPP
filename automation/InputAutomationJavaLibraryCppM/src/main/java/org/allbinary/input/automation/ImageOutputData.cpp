@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/ImageOutputData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,17 +63,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageOutputData
-            : public Object
-         {
 
-    public: static inline const std::string SAVE_PATH = (new StringMaker())->append(System.getProperty("user.dir"))->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->append("saves")->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->toString();
-
-private: ImageOutputData(){
+ImageOutputData::ImageOutputData(){
 }
 
+const std::string ImageOutputData::SAVE_PATH = (new StringMaker())->append(System.getProperty("user.dir"))->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->append("saves")->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->toString();
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_CPP

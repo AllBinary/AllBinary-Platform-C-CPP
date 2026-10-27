@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGING_H
         #define ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class TsUtil;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class CommonSeps;
 
 
 
@@ -65,20 +60,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/LayerManagerLoggingBase.h"
-#include "org/allbinary/layer/AllBinaryLayer.h"
-#include "org/allbinary/layer/LayerManager.h"
+class AllBinaryLayer;
+class LayerManager;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerManagerLogging: public LayerManagerLoggingBase {
 
-    private: static LayerManagerLogging* instance() { static std::unique_ptr<LayerManagerLogging> value(new LayerManagerLogging()); return value.get(); }
+    private: static LayerManagerLogging* instance_owner();
+    private: static LayerManagerLogging* instance;
 
     public: static LayerManagerLogging* getInstance();
 
     private: static inline bool removeFailed = false;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: StringMaker* stringBuilder = new StringMaker();
+            
+    public: LayerManagerLogging();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: StringMaker* stringBuilder;
 
     private: const std::string APPEND = "append";
 
@@ -116,3 +120,34 @@ class LayerManagerLogging: public LayerManagerLoggingBase {
 
 
         #endif //ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGING_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGING_H_COMPLETE
+        #if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/layer/LayerManagerLoggingBase.h")
+#include "org/allbinary/layer/LayerManagerLoggingBase.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+#if __has_include("org/allbinary/layer/LayerManager.h")
+#include "org/allbinary/layer/LayerManager.h"
+#endif
+
+        #endif
+    

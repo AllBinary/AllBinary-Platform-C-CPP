@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,18 +38,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/util/cache/PoolType.h"
-#include "org/allbinary/logic/util/cache/CacheTypeFactory.h"
+        class PoolType;
+class CacheTypeFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PoolTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PoolTypeFactory* instance() { static std::unique_ptr<PoolTypeFactory> value(new PoolTypeFactory()); return value.get(); }
+    private: static PoolTypeFactory* instance_owner();
+    private: static PoolTypeFactory* instance;
 
     public: static PoolTypeFactory* getInstance();
 
-    public: PoolType* VECTOR_POOL = new PoolType(CacheTypeFactory::getInstance()->NO_CACHE);
+
+            
+    public: PoolTypeFactory();
+        
+    public: PoolType* VECTOR_POOL;
 
 };
 
@@ -52,3 +66,16 @@ class PoolTypeFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/util/cache/PoolType.h")
+#include "org/allbinary/logic/util/cache/PoolType.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheTypeFactory.h")
+#include "org/allbinary/logic/util/cache/CacheTypeFactory.h"
+#endif
+
+        #endif
+    

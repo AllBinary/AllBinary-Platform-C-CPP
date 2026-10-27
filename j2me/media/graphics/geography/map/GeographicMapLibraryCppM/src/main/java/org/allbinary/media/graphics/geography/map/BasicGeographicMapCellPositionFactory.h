@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class LogUtil;
+class AllBinaryTiledLayer;
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -63,22 +60,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
-#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
-#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
-#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h"
+        class BasicGeographicMap;
+class GeographicMapCellPositionFactoryInterface;
+class GeographicMapCellPosition;
+class GeographicMapCellPositionFactoryInitVisitorInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicGeographicMapCellPositionFactory
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: std::vector<std::vector<GeographicMapCellPosition*>> geographicMapCellPositionArray;
+    /*protected*/ public: std::vector<std::vector<GeographicMapCellPosition*>> geographicMapCellPositionArray;
 
-    protected: BasicGeographicMap* geographicMapInterface;
+    /*protected*/ public: BasicGeographicMap* geographicMapInterface;
 
-    protected: GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface;
+    /*protected*/ public: GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface;
 
     private: int32_t columns;
 
@@ -118,3 +119,34 @@ public: BasicGeographicMapCellPositionFactory(BasicGeographicMap* geographicMapI
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/BasicGeographicMap.h")
+#include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInitVisitorInterface.h"
+#endif
+
+        #endif
+    

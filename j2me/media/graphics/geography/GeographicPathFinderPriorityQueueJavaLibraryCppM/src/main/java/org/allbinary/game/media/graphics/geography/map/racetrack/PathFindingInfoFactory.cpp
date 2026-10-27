@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDINGINFOFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDINGINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/PathFindingInfoFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -77,33 +87,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //1.4.2
-class PathFindingInfoFactory: public BasePathFindingInfoFactory {
+auto PathFindingInfoFactory::instance_owner() -> PathFindingInfoFactory* { static std::unique_ptr<PathFindingInfoFactory> value(new PathFindingInfoFactory()); return value.get(); }
+PathFindingInfoFactory* PathFindingInfoFactory::instance = PathFindingInfoFactory::instance_owner();
 
-    private: static PathFindingInfoFactory* instance() { static std::unique_ptr<PathFindingInfoFactory> value(new PathFindingInfoFactory()); return value.get(); }
-
-    public: static PathFindingInfoFactory* getInstance(){
+    auto PathFindingInfoFactory::getInstance() -> PathFindingInfoFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathFindingInfoFactory::instance();
+                        return PathFindingInfoFactory::instance;
     
 }
 
 
-    private: static inline int32_t MAX = 32768;
-
-    public: static void initMax(int32_t max){
+    auto PathFindingInfoFactory::initMax(int32_t max) -> void{
 PathFindingInfoFactory::MAX= max;
     
 }
 
 
-    private: PathFindingInfo* pathFindingInfo;
-
-    private: PathFinder* pathFinder;
-
-private: PathFindingInfoFactory(){
+PathFindingInfoFactory::PathFindingInfoFactory(){
 this->pathFindingInfo= new PathFindingInfo(new PathFindingNodeCostInfoFactory(PathFindingInfoFactory::MAX), new BasicArrayListS(1), new BasicArrayListS(1));
     
 this->pathFinder= new PathFinder();
@@ -113,7 +116,7 @@ this->pathFinder= new PathFinder();
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingInfo* getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> mapArray){
+    auto PathFindingInfoFactory::getInstancePathFindingInfo(BasicGeographicMap* geographicMapInterface, std::vector<std::vector<int32_t>> mapArray) -> PathFindingInfo*{
 
     PathFindingInfo* pathFindingInfo = new PathFindingInfo(this->pathFindingInfo->getPathFindingNodeCostInfoFactoryInterface(), new BasicArrayListS(1), new BasicArrayListS(1));;
     
@@ -136,8 +139,8 @@ pathFindingInfo->setPathFinder(this->pathFinder);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
-super.init(geographicMapInterface, pathFindingInfo, mapArray);
+    auto PathFindingInfoFactory::init(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray) -> void{
+BasePathFindingInfoFactory::init(geographicMapInterface, pathFindingInfo, mapArray);
     
 this->buildPathFindingNodes(geographicMapInterface, pathFindingInfo, mapArray);
     
@@ -146,13 +149,13 @@ this->buildPathFindingNodes(geographicMapInterface, pathFindingInfo, mapArray);
 
                 //@Throws(Exception.constructor)
             
-    private: void buildPathFindingNodesForCellPosition(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray, GeographicMapCellPosition* cellPosition){
+    auto PathFindingInfoFactory::buildPathFindingNodesForCellPosition(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray, GeographicMapCellPosition* cellPosition) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void buildPathFindingNodes(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
+    auto PathFindingInfoFactory::buildPathFindingNodes(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, std::vector<std::vector<int32_t>> mapArray) -> void{
 
     BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
@@ -188,7 +191,6 @@ this->buildPathFindingNodesForCellPosition(geographicMapInterface, pathFindingIn
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDINGINFOFACTORY_CPP

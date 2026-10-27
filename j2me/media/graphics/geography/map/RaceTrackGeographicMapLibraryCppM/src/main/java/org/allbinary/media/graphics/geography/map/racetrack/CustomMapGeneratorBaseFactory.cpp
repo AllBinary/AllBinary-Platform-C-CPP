@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORBASEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORBASEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBaseFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,29 +59,26 @@
         #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBase.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
 
-class CustomMapGeneratorBaseFactory
-            : public Object
-         {
+auto CustomMapGeneratorBaseFactory::instance_owner() -> CustomMapGeneratorBaseFactory* { static std::unique_ptr<CustomMapGeneratorBaseFactory> value(new CustomMapGeneratorBaseFactory()); return value.get(); }
+CustomMapGeneratorBaseFactory* CustomMapGeneratorBaseFactory::instance = CustomMapGeneratorBaseFactory::instance_owner();
 
-    private: static CustomMapGeneratorBaseFactory* instance() { static std::unique_ptr<CustomMapGeneratorBaseFactory> value(new CustomMapGeneratorBaseFactory()); return value.get(); }
-
-    public: static CustomMapGeneratorBaseFactory* getInstance(){
+    auto CustomMapGeneratorBaseFactory::getInstance() -> CustomMapGeneratorBaseFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomMapGeneratorBaseFactory::instance();
+                        return CustomMapGeneratorBaseFactory::instance;
     
 }
 
 
-public: CustomMapGeneratorBaseFactory(){
+CustomMapGeneratorBaseFactory::CustomMapGeneratorBaseFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: CustomMapGeneratorBase* create(RaceTrackGeographicMap* raceTrackGeographicMap){
+    auto CustomMapGeneratorBaseFactory::create(RaceTrackGeographicMap* raceTrackGeographicMap) -> CustomMapGeneratorBase*{
 
 
 
@@ -81,7 +88,6 @@ public: CustomMapGeneratorBaseFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORBASEFACTORY_CPP

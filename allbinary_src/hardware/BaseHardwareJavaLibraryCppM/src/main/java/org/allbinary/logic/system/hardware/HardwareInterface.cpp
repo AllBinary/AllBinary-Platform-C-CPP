@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HardwareInterface {
+//Interface - declared in the header
 
-    public: virtual HardwareComponentInterface* getComponent(int32_t index) = 0;
 
-    public: virtual std::string toString() = 0;
 
-    public: virtual bool compareTo(HardwareInterface* hardwareInterface) = 0;
-
-    public: virtual ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_CPP

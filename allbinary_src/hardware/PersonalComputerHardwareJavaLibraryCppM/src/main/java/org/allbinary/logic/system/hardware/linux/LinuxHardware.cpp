@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/linux/LinuxHardware.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -135,51 +145,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/hardware/linux/PCComponentFactory.h"
 
-class LinuxHardware
-            : public Object
-        , public HardwareInterface {
 
-    private: static inline const std::string PCIFILE = "/proc/pci";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* componentInterfaceVector;
-
-    private: BasicArrayList* videoInterfaceVector;
-
-    private: BasicArrayList* hardDriveControllerInterfaceVector;
-
-    private: BasicArrayList* cpuInterfaceVector;
-
-    private: BasicArrayList* usbInterfaceVector;
-
-    private: BasicArrayList* ethernetInterfaceVector;
-
-    private: BasicArrayList* multimediaInterfaceVector;
-
-    private: BasicArrayList* fireWireInterfaceVector;
-
-    private: BasicArrayList* bridgeInterfaceVector;
-
-    private: BasicArrayList* hardDriveInterfaceVector;
-
-    private: BasicArrayList* macInterfaceVector;
-
-    private: BasicArrayList* monitorInterfaceVector;
-
-    private: const std::string NAME = "Linux Hardware Profile";
-
-    private: const int32_t MINHARDWARE = 5;
-
-public: LinuxHardware(std::string path){
+LinuxHardware::LinuxHardware(std::string path) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->init(path);
     
 }
 
 
-public: LinuxHardware(){
+LinuxHardware::LinuxHardware() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->init(PCIFILE);
     
 
@@ -189,7 +162,7 @@ this->init(PCIFILE);
                                     
 
 
-                            throw new Exception("Not Enough Data For A Valid License On Linux");
+                            throw Exception("Not Enough Data For A Valid License On Linux");
                     
 
                                     }
@@ -211,10 +184,10 @@ this->componentInterfaceVector->add(cpu);
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil->putF("Hardware Data: " +this->toString(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(this->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -224,7 +197,7 @@ this->componentInterfaceVector->add(cpu);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(std::string filePath){
+    auto LinuxHardware::init(std::string filePath) -> void{
 
     LineNumberReader* lineNumberReader = 
                 null
@@ -239,10 +212,10 @@ this->componentInterfaceVector->add(cpu);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil->put("Hardware Data: " +this->toString(), this, this->commonStrings->CONSTRUCTOR, &e);
+                                    this->logUtil->put(JavaString::valueOf("Hardware Data: ") +JavaString::valueOf(this->toString()), this, this->commonStrings->CONSTRUCTOR, &e);
     
 
                                     }
@@ -259,7 +232,7 @@ this->componentInterfaceVector->add(cpu);
 
                 //@Throws(Exception.constructor)
             
-    private: void init(LineNumberReader* lineNumberReader, std::string filePath){
+    auto LinuxHardware::init(LineNumberReader* lineNumberReader, std::string filePath) -> void{
 
         try {
             this->componentInterfaceVector= new BasicArrayListD();
@@ -321,7 +294,7 @@ lineNumberReader= new LineNumberReader(new FileReader(file->getPath()));
                                     
 
 
-                            throw new Exception("No Linux File Data");
+                            throw Exception("No Linux File Data");
                     
 
                                     }
@@ -336,7 +309,7 @@ lineNumberReader= new LineNumberReader(new FileReader(file->getPath()));
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
                                     this->logUtil->putF("PCI File Found", this, this->commonStrings->CONSTRUCTOR);
@@ -373,10 +346,10 @@ nextLine= lineNumberReader->readLine();
     StringMaker* componentData = new StringMaker();;
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
-                                    this->logUtil->putF("Found Hardware Device: " +this->componentInterfaceVector->size(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Found Hardware Device: ") +JavaString::valueOf(this->componentInterfaceVector->size()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -434,7 +407,7 @@ nextLine= lineNumberReader->readLine();
                                 
                         else {
                             
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->OS))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->OS))
                         
                                     {
                                     this->logUtil->putF("Could not load PCI File", this, this->commonStrings->CONSTRUCTOR);
@@ -461,7 +434,7 @@ lineNumberReader->close();
 }
 
 
-    public: MediaInterface* getMultimedia(int32_t index){
+    auto LinuxHardware::getMultimedia(int32_t index) -> MediaInterface*{
 
 
 
@@ -471,7 +444,7 @@ lineNumberReader->close();
 }
 
 
-    public: BridgeInterface* getBridge(int32_t index){
+    auto LinuxHardware::getBridge(int32_t index) -> BridgeInterface*{
 
 
 
@@ -481,7 +454,7 @@ lineNumberReader->close();
 }
 
 
-    public: CpuInterface* getCpu(int32_t index){
+    auto LinuxHardware::getCpu(int32_t index) -> CpuInterface*{
 
 
 
@@ -491,7 +464,7 @@ lineNumberReader->close();
 }
 
 
-    public: EthernetInterface* getEthernet(int32_t index){
+    auto LinuxHardware::getEthernet(int32_t index) -> EthernetInterface*{
 
 
 
@@ -501,7 +474,7 @@ lineNumberReader->close();
 }
 
 
-    public: FireWireInterface* getFireWire(int32_t index){
+    auto LinuxHardware::getFireWire(int32_t index) -> FireWireInterface*{
 
 
 
@@ -511,7 +484,7 @@ lineNumberReader->close();
 }
 
 
-    public: HardDriveControllerInterface* getHardDriveController(int32_t index){
+    auto LinuxHardware::getHardDriveController(int32_t index) -> HardDriveControllerInterface*{
 
 
 
@@ -521,7 +494,7 @@ lineNumberReader->close();
 }
 
 
-    public: HardDriveInterface* getHardDrive(int32_t index){
+    auto LinuxHardware::getHardDrive(int32_t index) -> HardDriveInterface*{
 
 
 
@@ -531,7 +504,7 @@ lineNumberReader->close();
 }
 
 
-    public: MachineAccessControlAddressInterface* getMachineAccessControlAddress(int32_t index){
+    auto LinuxHardware::getMachineAccessControlAddress(int32_t index) -> MachineAccessControlAddressInterface*{
 
 
 
@@ -541,7 +514,7 @@ lineNumberReader->close();
 }
 
 
-    public: MonitorInterface* getMonitor(int32_t index){
+    auto LinuxHardware::getMonitor(int32_t index) -> MonitorInterface*{
 
 
 
@@ -551,7 +524,7 @@ lineNumberReader->close();
 }
 
 
-    public: UsbInterface* getUsb(int32_t index){
+    auto LinuxHardware::getUsb(int32_t index) -> UsbInterface*{
 
 
 
@@ -561,7 +534,7 @@ lineNumberReader->close();
 }
 
 
-    public: VideoInterface* getVideo(int32_t index){
+    auto LinuxHardware::getVideo(int32_t index) -> VideoInterface*{
 
 
 
@@ -571,7 +544,7 @@ lineNumberReader->close();
 }
 
 
-    public: HardwareComponentInterface* getComponent(int32_t index){
+    auto LinuxHardware::getComponent(int32_t index) -> HardwareComponentInterface*{
 
 
 
@@ -581,7 +554,7 @@ lineNumberReader->close();
 }
 
 
-    public: std::string toString(){
+    auto LinuxHardware::toString() -> std::string{
 
     StringMaker* hardwareBuffer = new StringMaker();;
     
@@ -619,7 +592,7 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: bool compareTo(HardwareInterface* hardwareInterface){
+    auto LinuxHardware::compareTo(HardwareInterface* hardwareInterface) -> bool{
 
 
 
@@ -629,7 +602,7 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
+    auto LinuxHardware::difference(HardwareInterface* hardwareInterface) -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -639,7 +612,7 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-    public: bool isNextHardware(std::string nextLine){
+    auto LinuxHardware::isNextHardware(std::string nextLine) -> bool{
 
                         if(true)
                         
@@ -672,7 +645,6 @@ hardwareBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_CPP

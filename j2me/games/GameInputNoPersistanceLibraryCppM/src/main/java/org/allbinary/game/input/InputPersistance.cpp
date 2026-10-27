@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTPERSISTANCE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_INPUTPERSISTANCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/InputPersistance.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -92,11 +102,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/Input.h"
 //GameInputNoPersistanceLibrary
-class InputPersistance: public BasicPersitance {
 
-    private: HashtableUtil* hashtableUtil = HashtableUtil::getInstance();
-
-public: InputPersistance(std::string name) : BasicPersitance(name){
+InputPersistance::InputPersistance(std::string name) : BasicPersitance(name), hashtableUtil(HashtableUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +115,7 @@ public: InputPersistance(std::string name) : BasicPersitance(name){
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAll(AbeClientInformationInterface* abeClientInformation){
+    auto InputPersistance::loadAll(AbeClientInformationInterface* abeClientInformation) -> void{
 
     RecordStore* recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;
     
@@ -132,15 +139,15 @@ public: InputPersistance(std::string name) : BasicPersitance(name){
         {
 id= recordEnum->nextRecordId();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
-this->logUtil.putF(stringBuffer->append(this->persistanceStrings.LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings.LOAD_ALL);
+this->logUtil->putF(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings->LOAD_ALL);
     
 hashtable= StdUtil::getInstance()->createHashtable();
     
-this->valueList.add(hashtable);
+this->valueList->add(hashtable);
     
-this->idList.add(smallIntegerSingletonFactory->getAt(id));
+this->idList->add(smallIntegerSingletonFactory->getAt(id));
     
 }
 
@@ -151,8 +158,8 @@ recordStore->closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable){
-PreLogUtil::put((new StringMaker())->append(this->persistanceStrings.NOT_SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings.SAVE);
+    auto InputPersistance::save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable) -> void{
+PreLogUtil::put((new StringMaker())->append(this->persistanceStrings->NOT_SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings->SAVE);
     
 
     RecordStore* recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;
@@ -201,7 +208,6 @@ recordStore->closeRecordStore();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_INPUTPERSISTANCE_CPP

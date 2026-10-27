@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONJPANEL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,21 +84,14 @@
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionListener.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionEvent.h"
 
-class GenericProfileActionJPanel: public javax::swing::JPanel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GenericProfileAction* genericProfileAction;
-
-    private: GenericProfileActionScriptJPanel* genericProfileActionScriptJPanel;
-
-public: GenericProfileActionJPanel(){
+GenericProfileActionJPanel::GenericProfileActionJPanel() : logUtil(LogUtil::getInstance()){
 this->initComponents();
     
 }
 
 
-    public: void updateProfileActionUI(){
+    auto GenericProfileActionJPanel::updateProfileActionUI() -> void{
 this->blankProfileActionScriptJPanel->removeAll();
     
 
@@ -105,16 +108,16 @@ this->getGenericProfileActionScriptJPanel()->updateJTree();
 
     javax::swing::GroupLayout* layout = dynamic_cast<javax::swing::GroupLayout*>(this->blankProfileActionScriptJPanel->getLayout());;
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionScriptJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionScriptJPanel(), javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionScriptJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionScriptJPanel(), javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE));
     
 this->logUtil->putF("Updated UI", this, "updateUI");
     
 }
 
 
-    public: GenericProfileAction* getGenericProfileAction(){
+    auto GenericProfileActionJPanel::getGenericProfileAction() -> GenericProfileAction*{
 
 
 
@@ -124,13 +127,13 @@ this->logUtil->putF("Updated UI", this, "updateUI");
 }
 
 
-    public: void setGenericProfileAction(GenericProfileAction* genericProfileAction){
+    auto GenericProfileActionJPanel::setGenericProfileAction(GenericProfileAction* genericProfileAction) -> void{
 this->genericProfileAction= genericProfileAction;
     
 }
 
 
-    public: GenericProfileActionScriptJPanel* getGenericProfileActionScriptJPanel(){
+    auto GenericProfileActionJPanel::getGenericProfileActionScriptJPanel() -> GenericProfileActionScriptJPanel*{
 
 
 
@@ -140,13 +143,13 @@ this->genericProfileAction= genericProfileAction;
 }
 
 
-    public: void setGenericProfileActionScriptJPanel(GenericProfileActionScriptJPanel* genericProfileActionScriptJPanel){
+    auto GenericProfileActionJPanel::setGenericProfileActionScriptJPanel(GenericProfileActionScriptJPanel* genericProfileActionScriptJPanel) -> void{
 this->genericProfileActionScriptJPanel= genericProfileActionScriptJPanel;
     
 }
 
 
-    private: void initComponents(){
+    auto GenericProfileActionJPanel::initComponents() -> void{
 this->genericProfileActionScriptJScrollPane= new javax::swing::JScrollPane();
     
 this->blankProfileActionScriptJPanel= new javax::swing::JPanel();
@@ -172,9 +175,9 @@ this->blankProfileActionScriptJPanel->setMinimumSize(new java::awt::Dimension(40
     
 this->blankProfileActionScriptJPanel->setLayout(blankProfileActionScriptJPanelLayout);
     
-blankProfileActionScriptJPanelLayout->setHorizontalGroup(blankProfileActionScriptJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 9996, Short::MAX_VALUE));
+blankProfileActionScriptJPanelLayout->setHorizontalGroup(blankProfileActionScriptJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 9996, Short::MAX_VALUE));
     
-blankProfileActionScriptJPanelLayout->setVerticalGroup(blankProfileActionScriptJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 9967, Short::MAX_VALUE));
+blankProfileActionScriptJPanelLayout->setVerticalGroup(blankProfileActionScriptJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 9967, Short::MAX_VALUE));
     
 this->genericProfileActionScriptJScrollPane->setViewportView(this->blankProfileActionScriptJPanel);
     
@@ -224,14 +227,14 @@ newAlwaysJButtonActionPerformed(evt);
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(ifJLabel)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(newColorAtJButton)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(newTimeIntervalJButton)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(newAlwaysJButton)->addContainerGap(61, Short::MAX_VALUE))->addComponent(genericProfileActionScriptJScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short::MAX_VALUE));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(ifJLabel)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(newColorAtJButton)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(newTimeIntervalJButton)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(newAlwaysJButton)->addContainerGap(61, Short::MAX_VALUE))->addComponent(genericProfileActionScriptJScrollPane, javax.swing->GroupLayout->DEFAULT_SIZE, 440, Short::MAX_VALUE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(ifJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)->addComponent(newColorAtJButton)->addComponent(newTimeIntervalJButton)->addComponent(newAlwaysJButton))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(genericProfileActionScriptJScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(ifJLabel, javax.swing->GroupLayout->PREFERRED_SIZE, 14, javax.swing->GroupLayout->PREFERRED_SIZE)->addComponent(newColorAtJButton)->addComponent(newTimeIntervalJButton)->addComponent(newAlwaysJButton))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(genericProfileActionScriptJScrollPane, javax.swing->GroupLayout->DEFAULT_SIZE, 246, Short::MAX_VALUE)));
     
 }
 
 
-    private: void newTimeIntervalJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto GenericProfileActionJPanel::newTimeIntervalJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->logUtil->putF("New Time Interval Action Condition", this, "newTimeIntervalJButtonActionPerformed");
     
 this->getGenericProfileAction()->getGenericProfileActionScript()->addCondition(dynamic_cast<ProfileActionScriptConditionInterface*>(new TimeIntervalActionScriptCondition()));
@@ -241,7 +244,7 @@ this->updateProfileActionUI();
 }
 
 
-    private: void newAlwaysJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto GenericProfileActionJPanel::newAlwaysJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->logUtil->putF("New EveryTime Action Condition", this, "newEveryTimeJButtonActionPerformed");
     
 this->getGenericProfileAction()->getGenericProfileActionScript()->addCondition(dynamic_cast<ProfileActionScriptConditionInterface*>(new AlwaysActionScriptCondition()));
@@ -251,7 +254,7 @@ this->updateProfileActionUI();
 }
 
 
-    private: void newColorAtJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto GenericProfileActionJPanel::newColorAtJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->logUtil->putF("New Color At Action Condition", this, "newColorAtJButtonActionPerformed");
     
 this->getGenericProfileAction()->getGenericProfileActionScript()->addCondition(dynamic_cast<ProfileActionScriptConditionInterface*>(new ColorAtActionScriptCondition()));
@@ -261,19 +264,6 @@ this->updateProfileActionUI();
 }
 
 
-    private: javax::swing::JPanel* blankProfileActionScriptJPanel;
 
-    private: javax::swing::JScrollPane* genericProfileActionScriptJScrollPane;
 
-    private: javax::swing::JLabel* ifJLabel;
-
-    private: javax::swing::JButton* newAlwaysJButton;
-
-    private: javax::swing::JButton* newColorAtJButton;
-
-    private: javax::swing::JButton* newTimeIntervalJButton;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONJPANEL_CPP

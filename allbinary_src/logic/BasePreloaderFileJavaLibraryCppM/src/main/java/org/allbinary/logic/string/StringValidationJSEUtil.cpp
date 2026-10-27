@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONJSEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONJSEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/string/StringValidationJSEUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StringValidationJSEUtil
-            : public Object
-         {
 
-    public: static bool isBlank(std::string string){
+StringValidationJSEUtil::StringValidationJSEUtil(){
+}
+
+
+    auto StringValidationJSEUtil::isBlank(std::string string) -> bool{
 
     int32_t len = string.size();;
     
@@ -89,11 +100,6 @@ class StringValidationJSEUtil
 }
 
 
-private: StringValidationJSEUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONJSEUTIL_CPP

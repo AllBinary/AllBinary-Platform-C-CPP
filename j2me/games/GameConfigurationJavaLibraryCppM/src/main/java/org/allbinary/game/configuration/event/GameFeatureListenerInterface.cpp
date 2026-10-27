@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATURELISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATURELISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/event/GameFeatureListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
 
-class GameFeatureListenerInterface: public EventListenerInterface {
+//Interface - declared in the header
 
-    public: virtual void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATURELISTENERINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_COLLIDABLEVEHICLEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_COLLIDABLEVEHICLEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/CollidableVehicleBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
 #include "org/allbinary/game/layer/VehicleProperties.h"
 #include "org/allbinary/game/layer/VehicleFrictionProperties.h"
 
-class CollidableVehicleBehavior: public CollidableDestroyableDamageableBehavior {
 
-    protected: int64_t totalImpactVelocity = 0;
-
-public: CollidableVehicleBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+CollidableVehicleBehavior::CollidableVehicleBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +93,7 @@ public: CollidableVehicleBehavior(bool collidable) : CollidableDestroyableDamage
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto CollidableVehicleBehavior::collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> void{
 
     CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
@@ -109,7 +116,7 @@ collidableDestroyableDamageableLayer->getPickupBehavior()->doPickupLayer(dynamic
                         if(collisionType == collisionTypeFactory->COLLISION)
                         
                                     {
-                                    super.collide(ownerLayer, collidableInterfaceCompositeInterface);
+                                    CollidableDestroyableDamageableBehavior::collide(ownerLayer, collidableInterfaceCompositeInterface);
     
 
                                     }
@@ -123,17 +130,13 @@ collidableDestroyableDamageableLayer->getPickupBehavior()->doPickupLayer(dynamic
 }
 
 
-    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
+    auto CollidableVehicleBehavior::collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> void{
 ForcedLogUtil::log("Don't Use Interface Version It Is Slower", this);
     
 }
 
 
-    private: int64_t halfImpactVelocityX= 0;
-
-    private: int64_t halfImpactVelocityY= 0;
-
-    protected: void collideVehicle(CollidableCompositeLayer* ownerLayer, VehiclePropertiesCompositeInterface* vehiclePropertiesCompositeInterface){
+    auto CollidableVehicleBehavior::collideVehicle(CollidableCompositeLayer* ownerLayer, VehiclePropertiesCompositeInterface* vehiclePropertiesCompositeInterface) -> void{
 
     VehiclePropertiesCompositeInterface* ownerVehicleLayerInterface = (dynamic_cast<VehiclePropertiesCompositeInterface*>(ownerLayer));;
     
@@ -192,7 +195,7 @@ this->totalImpactVelocity= impactVelocityX +impactVelocityY;
 }
 
 
-    private: void collideFriction(VehiclePropertiesCompositeInterface* vehiclePropertiesCompositeInterface){
+    auto CollidableVehicleBehavior::collideFriction(VehiclePropertiesCompositeInterface* vehiclePropertiesCompositeInterface) -> void{
 
     VehicleFrictionProperties* vehicleFrictionProperties = vehiclePropertiesCompositeInterface->getVehicleProperties()->getVehicleFrictionProperties();;
     
@@ -201,7 +204,6 @@ vehiclePropertiesCompositeInterface->getVehicleProperties()->getVehicleFrictionP
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_COLLIDABLEVEHICLEBEHAVIOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_SAVEDCAPTUREIMAGESWORKER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_SAVEDCAPTUREIMAGESWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/SavedCaptureImagesWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -103,21 +113,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SavedCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static inline int64_t index;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: bool running= false;
-
-    private: ScreenScavangerRobot* screenScavangerRobot;
-
-    private: SavedCaptureGenericProfileDataWorkerType* savedCaptureGenericProfileDataWorkerType;
-
-public: SavedCaptureImagesWorker(SavedCaptureGenericProfileDataWorkerType* savedCaptureGenericProfileDataWorkerType){
+SavedCaptureImagesWorker::SavedCaptureImagesWorker(SavedCaptureGenericProfileDataWorkerType* savedCaptureGenericProfileDataWorkerType) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->savedCaptureGenericProfileDataWorkerType= savedCaptureGenericProfileDataWorkerType;
     
 this->screenScavangerRobot= new ScreenScavangerRobot();
@@ -129,12 +126,12 @@ SavedCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread* thread){
+    auto SavedCaptureImagesWorker::setThread(Thread* thread) -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto SavedCaptureImagesWorker::isRunning() -> bool{
 
 
 
@@ -145,13 +142,13 @@ SavedCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto SavedCaptureImagesWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 
-    public: void run(){
+    auto SavedCaptureImagesWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -176,12 +173,12 @@ filePathStringBuffer->append(this->savedCaptureGenericProfileDataWorkerType->get
     
 filePathStringBuffer->append(LongUtil::fillIn(frame.toString()));
     
-filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG.getExtension());
+filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
 
     std::string filePath = filePathStringBuffer->toString();;
     
-this->logUtil->putF("Loading Image File Path: " +filePath, this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf("Loading Image File Path: ") +JavaString::valueOf(filePath), this, this->commonStrings->RUN);
     
 
     File* file = new File(filePath);;
@@ -206,7 +203,7 @@ this->fireEvent(capturedImageEvent);
                                     }
                                 
                         else {
-                            this->logUtil->putF("Could Not Load File: " +filePath, this, this->commonStrings->RUN);
+                            this->logUtil->putF(JavaString::valueOf("Could Not Load File: ") +JavaString::valueOf(filePath), this, this->commonStrings->RUN);
     
 
                         }
@@ -230,7 +227,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_SAVEDCAPTUREIMAGESWORKER_CPP

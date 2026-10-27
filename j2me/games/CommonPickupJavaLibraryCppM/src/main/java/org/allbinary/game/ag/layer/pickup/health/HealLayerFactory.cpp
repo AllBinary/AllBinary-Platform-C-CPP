@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/health/HealLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/pickup/health/HealLayer.h"
 
-class HealLayerFactory
-            : public Object
-        , public AllBinaryLayerFactoryInterface {
 
+HealLayerFactory::HealLayerFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getInstance(){
+    auto HealLayerFactory::getInstance() -> AllBinaryLayer*{
 
 
 
@@ -70,7 +80,6 @@ class HealLayerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYERFACTORY_CPP

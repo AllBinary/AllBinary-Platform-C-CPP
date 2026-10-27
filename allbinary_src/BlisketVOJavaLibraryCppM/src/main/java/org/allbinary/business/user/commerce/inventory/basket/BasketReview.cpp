@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETREVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETREVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/basket/BasketReview.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -81,17 +91,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/basket/BasketData.h"
 
-class BasketReview
-            : public Object
-         {
 
-    BasicArrayList* items = new BasicArrayListD();
-
-public: BasketReview(){
+BasketReview::BasketReview() : items(new BasicArrayListD()){
 }
 
 
-    public: bool isValid(){
+    auto BasketReview::isValid() -> bool{
 
 
 
@@ -101,13 +106,13 @@ public: BasketReview(){
 }
 
 
-    public: void addItem(Item* item){
+    auto BasketReview::addItem(Item* item) -> void{
 this->items->add(item);
     
 }
 
 
-    public: BasicArrayList* getItems(){
+    auto BasketReview::getItems() -> BasicArrayList*{
 
 
 
@@ -117,7 +122,7 @@ this->items->add(item);
 }
 
 
-    public: void removeItem(std::string id){
+    auto BasketReview::removeItem(std::string id) -> void{
 
     std::vector<Object*> itemArray = this->items->toArray();;
     
@@ -148,7 +153,7 @@ this->items->add(item);
 }
 
 
-    public: void adjustItem(std::string id, std::string num){
+    auto BasketReview::adjustItem(std::string id, std::string num) -> void{
 
     std::vector<Object*> itemArray = this->items->toArray();;
     
@@ -179,7 +184,7 @@ this->items->add(item);
 }
 
 
-    public: std::string getTotalWeight(){
+    auto BasketReview::getTotalWeight() -> std::string{
 
     float weightFloat = 0;;
     
@@ -212,7 +217,7 @@ weightFloat += (float(item->getWeight()));
 }
 
 
-    public: int32_t getNumberOfItems(){
+    auto BasketReview::getNumberOfItems() -> int32_t{
 
 
 
@@ -222,7 +227,7 @@ weightFloat += (float(item->getWeight()));
 }
 
 
-    public: Set* getIds(){
+    auto BasketReview::getIds() -> Set*{
 
     HashSet* idSet = new HashSet();;
     
@@ -255,7 +260,7 @@ idSet->add(item->getId());
 }
 
 
-    public: int32_t getNumberOf(std::string id){
+    auto BasketReview::getNumberOf(std::string id) -> int32_t{
 
     std::vector<Object*> itemArray = this->items->toArray();;
     
@@ -298,7 +303,7 @@ idSet->add(item->getId());
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto BasketReview::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(BasketData::BASKET);;
     
@@ -331,7 +336,6 @@ node->appendChild((new ItemView(item, new BasicArrayListD()))->toXmlNode(documen
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETREVIEW_CPP

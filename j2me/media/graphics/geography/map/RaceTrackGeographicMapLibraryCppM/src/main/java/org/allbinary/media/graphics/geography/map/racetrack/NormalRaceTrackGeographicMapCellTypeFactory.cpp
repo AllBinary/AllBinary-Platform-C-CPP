@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NORMALRACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NORMALRACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/NormalRaceTrackGeographicMapCellTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,20 @@
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/EmptyRaceRaceTrackGeographicMapCellTypeFactory.h"
 
-class NormalRaceTrackGeographicMapCellTypeFactory: public RaceTrackGeographicMapCellTypeFactory {
+auto NormalRaceTrackGeographicMapCellTypeFactory::instanceC_owner() -> NormalRaceTrackGeographicMapCellTypeFactory* { static std::unique_ptr<NormalRaceTrackGeographicMapCellTypeFactory> value(new NormalRaceTrackGeographicMapCellTypeFactory()); return value.get(); }
+NormalRaceTrackGeographicMapCellTypeFactory* NormalRaceTrackGeographicMapCellTypeFactory::instanceC = NormalRaceTrackGeographicMapCellTypeFactory::instanceC_owner();
 
-    private: static NormalRaceTrackGeographicMapCellTypeFactory* instanceC() { static std::unique_ptr<NormalRaceTrackGeographicMapCellTypeFactory> value(new NormalRaceTrackGeographicMapCellTypeFactory()); return value.get(); }
-
-    public: static NormalRaceTrackGeographicMapCellTypeFactory* getInstance(){
+    auto NormalRaceTrackGeographicMapCellTypeFactory::getInstance() -> NormalRaceTrackGeographicMapCellTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NormalRaceTrackGeographicMapCellTypeFactory::instanceC();
+                        return NormalRaceTrackGeographicMapCellTypeFactory::instanceC;
     
 }
 
 
-private: NormalRaceTrackGeographicMapCellTypeFactory(){
+NormalRaceTrackGeographicMapCellTypeFactory::NormalRaceTrackGeographicMapCellTypeFactory(){
 this->EMPTY_CELL_TYPE= EmptyRaceRaceTrackGeographicMapCellTypeFactory::getInstance()->EMPTY_CELL_TYPE;
     
 this->EASY_CELL_TYPE= this->EMPTY_CELL_TYPE;
@@ -69,7 +78,6 @@ this->FINISH_LINE_ROAD_CELL_TYPE= this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NORMALRACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_CPP

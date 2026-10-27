@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_RIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_RIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gyro/action/RightOrientationInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* RightOrientationInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto RightOrientationInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(RightOrientationInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class RightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGes
 }
 
 
-private: RightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Right Action", OrientationMotionGestureFactory::getInstance()->RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+RightOrientationInputToGameKeyEventAction::RightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Right Action", OrientationMotionGestureFactory::getInstance()->RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: RightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGest
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_RIGHTORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP

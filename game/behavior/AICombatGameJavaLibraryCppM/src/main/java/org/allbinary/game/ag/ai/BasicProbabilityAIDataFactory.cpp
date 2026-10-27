@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_BASICPROBABILITYAIDATAFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_BASICPROBABILITYAIDATAFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/BasicProbabilityAIDataFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,11 +72,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/InputProbability.h"
 
-class BasicProbabilityAIDataFactory
-            : public Object
-         {
 
-    public: ABHashtable<Object*, Object*>* getInstance(){
+BasicProbabilityAIDataFactory::BasicProbabilityAIDataFactory() {
+        }
+        
+    auto BasicProbabilityAIDataFactory::getInstance() -> ABHashtable<Object*, Object*>*{
 
     std::vector<std::vector<int32_t>> likelyhoodIntegerArray = std::vector<std::vector<int32_t>>(Canvas::KEY_NUM9 +1, std::vector<int32_t>(2));;
     
@@ -130,7 +140,6 @@ repeatLikelyhoodIntegerArray[Canvas::KEY_NUM1]= smallIntegerSingletonFactory->ge
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_BASICPROBABILITYAIDATAFACTORY_CPP

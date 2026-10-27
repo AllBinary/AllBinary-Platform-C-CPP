@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H
         #define ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PositionInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class PositionInterface
+            : public virtual Object
+         {
 
     public: virtual void setPosition(int32_t x, int32_t y, int32_t z) = 0;
 
@@ -56,3 +67,10 @@ class PositionInterface {
 
 
         #endif //ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H_COMPLETE
+        
+        #endif
+    

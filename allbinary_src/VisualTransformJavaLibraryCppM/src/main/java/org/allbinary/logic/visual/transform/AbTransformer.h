@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,35 +37,15 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
-
-      
 #include <java/io/StringBufferInputStream.h>
-
-      
-#include <javax/xml/transform/URIResolver.h>
-
-      
-#include <javax/xml/transform/stream/StreamSource.h>
-
-      
-#include <org/allbinary/data/tree/dom/XslHelper.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class URIResolver;
+class StreamSource;
+class XslHelper;
+class LogUtil;
+class TransformInfoInterface;
+class TransformInfoObjectConfigGenerator;
+class TransformInfoObjectConfigGeneratorFactory;
+class CommonStrings;
 
 
 
@@ -81,13 +66,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/BasicTransformerInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbTransformer
-            : public Object
+            : public virtual Object
         , public BasicTransformerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: TransformInfoInterface* transformInfoInterface;
 
@@ -119,3 +108,43 @@ public: AbTransformer(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<java/io/StringBufferInputStream.h>)
+#include <java/io/StringBufferInputStream.h>
+#endif
+#if __has_include(<javax/xml/transform/URIResolver.h>)
+#include <javax/xml/transform/URIResolver.h>
+#endif
+#if __has_include(<javax/xml/transform/stream/StreamSource.h>)
+#include <javax/xml/transform/stream/StreamSource.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/XslHelper.h>)
+#include <org/allbinary/data/tree/dom/XslHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h>)
+#include <org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactory.h>)
+#include <org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/BasicTransformerInterface.h")
+#include "org/allbinary/logic/visual/transform/BasicTransformerInterface.h"
+#endif
+
+        #endif
+    

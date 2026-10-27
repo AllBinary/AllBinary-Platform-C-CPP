@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMSGENERATORUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMSGENERATORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/generator/TransformsGeneratorUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,36 +82,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/generator/TransformGeneratorUtil.h"
 
-class TransformsGeneratorUtil
-            : public Object
-         {
+auto TransformsGeneratorUtil::instance_owner() -> TransformsGeneratorUtil* { static std::unique_ptr<TransformsGeneratorUtil> value(new TransformsGeneratorUtil()); return value.get(); }
+TransformsGeneratorUtil* TransformsGeneratorUtil::instance = TransformsGeneratorUtil::instance_owner();
 
-    private: static TransformsGeneratorUtil* instance() { static std::unique_ptr<TransformsGeneratorUtil> value(new TransformsGeneratorUtil()); return value.get(); }
-
-    public: static TransformsGeneratorUtil* getInstance(){
+    auto TransformsGeneratorUtil::getInstance() -> TransformsGeneratorUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformsGeneratorUtil::instance();
+                        return TransformsGeneratorUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransformsGeneratorUtil(){
+TransformsGeneratorUtil::TransformsGeneratorUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generateComponentsFromObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string group){
+    auto TransformsGeneratorUtil::generateComponentsFromObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, std::string group) -> std::string{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started Group: " +group, this, "generateComponentsFromObjectConfig(2)");
+                                    this->logUtil->putF(JavaString::valueOf("Started Group: ") +JavaString::valueOf(group), this, "generateComponentsFromObjectConfig(2)");
     
 
                                     }
@@ -113,10 +118,10 @@ private: TransformsGeneratorUtil(){
     std::string result = this->generateComponentsFromObjectConfig(abeClientInformation, transformInfoObjectConfigInterface, transformInfoInterface, group);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("End Group: " +group, this, "generateComponentsFromObjectConfig(2)");
+                                    this->logUtil->putF(JavaString::valueOf("End Group: ") +JavaString::valueOf(group), this, "generateComponentsFromObjectConfig(2)");
     
 
                                     }
@@ -132,12 +137,12 @@ private: TransformsGeneratorUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generateComponentsFromObjectConfig(Object* abeClientInformation, Object* transformInfoObjectConfigInterface, Object* transformInfoInterface, std::string group){
+    auto TransformsGeneratorUtil::generateComponentsFromObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoObjectConfigInterface* transformInfoObjectConfigInterface, TransformInfoInterface* transformInfoInterface, std::string group) -> std::string{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started Group: " +group, this, "generateComponentsFromObjectConfig()");
+                                    this->logUtil->putF(JavaString::valueOf("Started Group: ") +JavaString::valueOf(group), this, "generateComponentsFromObjectConfig()");
     
 
                                     }
@@ -146,7 +151,7 @@ private: TransformsGeneratorUtil(){
     BasicArrayList* transformInfoObjectConfigComponentVector = transformInfoObjectConfigInterface->getTransformsGroup(group);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -172,7 +177,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "generateComponentsFromObjec
                                     
 
 
-                            throw new Exception("No Pages Generated For Template.");
+                            throw Exception("No Pages Generated For Template.");
                     
 
                                     }
@@ -195,10 +200,10 @@ TransformGeneratorUtil::getInstance()->generate(abeClientInformation, transformI
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Done Group: " +group, this, "generateComponentsFromObjectConfig()");
+                                    this->logUtil->putF(JavaString::valueOf("Done Group: ") +JavaString::valueOf(group), this, "generateComponentsFromObjectConfig()");
     
 
                                     }
@@ -221,7 +226,6 @@ stringBuffer->append("-->");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_GENERATOR_TRANSFORMSGENERATORUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCOMPOSITE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpComposite.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,22 +74,13 @@
         #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
-class TransformInfoHttpComposite
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+TransformInfoHttpComposite::TransformInfoHttpComposite(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: TransformInfoHttpInterface* transformInfoInterface;
-
-public: TransformInfoHttpComposite(TransformInfoInterface* transformInfoInterface){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -91,7 +92,7 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto TransformInfoHttpComposite::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -101,7 +102,7 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 }
 
 
-    public: WeblisketSession* getWeblisketSession(){
+    auto TransformInfoHttpComposite::getWeblisketSession() -> WeblisketSession*{
 
 
 
@@ -111,7 +112,7 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 }
 
 
-    public: PageContext* getPageContext(){
+    auto TransformInfoHttpComposite::getPageContext() -> PageContext*{
 
 
 
@@ -121,7 +122,7 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 }
 
 
-    public: HashMap<Object*, Object*>* getPropertiesHashMap(){
+    auto TransformInfoHttpComposite::getPropertiesHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -131,7 +132,6 @@ this->transformInfoInterface= dynamic_cast<TransformInfoHttpInterface*>(transfor
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCOMPOSITE_CPP

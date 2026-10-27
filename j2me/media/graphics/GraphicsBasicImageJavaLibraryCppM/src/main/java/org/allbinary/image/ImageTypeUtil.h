@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_H
         #define ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -54,11 +55,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageTypeUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageTypeUtil* SINGLETON() { static std::unique_ptr<ImageTypeUtil> value(new ImageTypeUtil()); return value.get(); }
+    private: static ImageTypeUtil* SINGLETON_owner();
+    private: static ImageTypeUtil* SINGLETON;
 
     public: static ImageTypeUtil* getInstance();
 
@@ -68,7 +74,7 @@ class ImageTypeUtil
 
     public: const std::string GIF = "gif";
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
 private: ImageTypeUtil();
 
@@ -80,3 +86,16 @@ private: ImageTypeUtil();
 
 
         #endif //ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

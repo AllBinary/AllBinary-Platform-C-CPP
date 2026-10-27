@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
         #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
+class Command;
+class ResourceUtil;
+class TsUtil;
 
 
 
@@ -60,22 +59,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/content/Context.h"
-#include "org/allbinary/content/NotificationManager.h"
-#include "org/allbinary/content/CommandUriAction.h"
-#include "org/allbinary/content/Intent.h"
-#include "org/allbinary/content/Notification.h"
-#include "org/allbinary/content/PendingIntent.h"
+        class Context;
+class NotificationManager;
+class CommandUriAction;
+class Intent;
+class Notification;
+class PendingIntent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NotificationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
+    private: static NotificationUtil* SINGLETON_owner();
+    private: static NotificationUtil* SINGLETON;
 
     public: static NotificationUtil* getInstance();
 
-    private: NotificationManager* notificationManager = dynamic_cast<NotificationManager*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::NOTIFICATION_SERVICE));
+
+            
+    public: NotificationUtil();
+        
+    private: NotificationManager* notificationManager;
 
     public: void notify(Command* command, std::string resource, std::string message);
 
@@ -85,3 +93,37 @@ class NotificationUtil
 
 
         #endif //ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include("org/allbinary/content/Context.h")
+#include "org/allbinary/content/Context.h"
+#endif
+#if __has_include("org/allbinary/content/NotificationManager.h")
+#include "org/allbinary/content/NotificationManager.h"
+#endif
+#if __has_include("org/allbinary/content/CommandUriAction.h")
+#include "org/allbinary/content/CommandUriAction.h"
+#endif
+#if __has_include("org/allbinary/content/Intent.h")
+#include "org/allbinary/content/Intent.h"
+#endif
+#if __has_include("org/allbinary/content/Notification.h")
+#include "org/allbinary/content/Notification.h"
+#endif
+#if __has_include("org/allbinary/content/PendingIntent.h")
+#include "org/allbinary/content/PendingIntent.h"
+#endif
+
+        #endif
+    

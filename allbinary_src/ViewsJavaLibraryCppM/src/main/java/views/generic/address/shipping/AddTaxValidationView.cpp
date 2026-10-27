@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_ADDTAXVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_SHIPPING_ADDTAXVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/shipping/AddTaxValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -91,11 +101,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/shipping/ShippingAddressView.h"
 
-class AddTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+AddTaxValidationView::AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -107,7 +114,7 @@ public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : S
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto AddTaxValidationView::isValid() -> bool{
 
         try {
             this->streetAddress= new StreetAddress(this->getRequest());
@@ -206,10 +213,10 @@ public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : S
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -227,7 +234,7 @@ public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : S
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto AddTaxValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -304,7 +311,7 @@ public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : S
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to create validateInfo", this, "validationInfo()", &e);
@@ -323,7 +330,7 @@ public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : S
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto AddTaxValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -333,7 +340,7 @@ public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : S
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto AddTaxValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -343,7 +350,6 @@ public: AddTaxValidationView(TransformInfoInterface* transformInfoInterface) : S
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_ADDTAXVALIDATIONVIEW_CPP

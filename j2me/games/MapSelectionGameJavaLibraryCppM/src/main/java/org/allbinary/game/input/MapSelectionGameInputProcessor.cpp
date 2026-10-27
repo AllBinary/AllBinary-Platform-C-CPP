@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPSELECTIONGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPSELECTIONGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/MapSelectionGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -105,23 +115,8 @@
 #include "org/allbinary/game/input/PlayerGameInput.h"
 #include "org/allbinary/game/input/GameInputProcessorComposite.h"
 
-class MapSelectionGameInputProcessor: public Processor, public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AllBinaryGameCanvas* gameCanvas;
-
-    private: MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface;
-
-    private: PreGameSelectorPaintable* preGameSelectorPaintable;
-
-    private: TimeDelayHelper* inputTimeHelper = new TimeDelayHelper(650);
-
-    private: PlayerGameInput* playerGameInput;
-
-    private: int32_t lockedIndex;
-
-    private: ABRunnable* abRunnable = class extends ABRunnable
+MapSelectionGameInputProcessor::MapSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable* mapSelectorPaintable, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable(class extends ABRunnable
                                 {
                                 
     public: void run(){
@@ -164,9 +159,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
                                 }
-                            ;
-
-public: MapSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface* raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable* mapSelectorPaintable, int32_t lockedIndex){
+                            ){
 this->gameCanvas= gameCanvas;
     
 this->raceTrackGeographicMapInterfaceFactoryInterface= raceTrackGeographicMapInterfaceFactoryInterface;
@@ -182,7 +175,7 @@ this->lockedIndex= lockedIndex;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto MapSelectionGameInputProcessor::process() -> void{
 this->getPlayerGameInput()->update();
     
 }
@@ -190,7 +183,7 @@ this->getPlayerGameInput()->update();
 
                 //@Throws(Exception.constructor)
             
-    public: void onInput(BasicArrayList* list){
+    auto MapSelectionGameInputProcessor::onInput(BasicArrayList* list) -> void{
 
     int32_t size = list->size();;
     
@@ -274,15 +267,15 @@ list->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager* layerManager){
+    auto MapSelectionGameInputProcessor::processInput(AllBinaryLayerManager* layerManager) -> void{
 }
 
 
-    public: void initInputProcessors(){
+    auto MapSelectionGameInputProcessor::initInputProcessors() -> void{
 }
 
 
-    public: std::string getName(){
+    auto MapSelectionGameInputProcessor::getName() -> std::string{
 
 
 
@@ -292,7 +285,7 @@ list->clear();
 }
 
 
-    public: PlayerGameInput* getPlayerGameInput(){
+    auto MapSelectionGameInputProcessor::getPlayerGameInput() -> PlayerGameInput*{
 
 
 
@@ -302,7 +295,6 @@ list->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPSELECTIONGAMEINPUTPROCESSOR_CPP

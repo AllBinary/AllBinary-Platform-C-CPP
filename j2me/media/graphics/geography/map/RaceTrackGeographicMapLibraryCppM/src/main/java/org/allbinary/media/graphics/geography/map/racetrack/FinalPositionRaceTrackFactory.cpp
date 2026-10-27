@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_FINALPOSITIONRACETRACKFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_FINALPOSITIONRACETRACKFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/FinalPositionRaceTrackFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,16 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FinalPositionRaceTrackFactory
-            : public Object
-         {
+int32_t FinalPositionRaceTrackFactory::index = FinalPositionRaceTrackFactory::FIRST_POSITION;
 
-    public: static inline const int32_t FIRST_POSITION = 1;
+FinalPositionRaceTrackFactory::FinalPositionRaceTrackFactory(){
+}
 
-    private: static inline int32_t index = FinalPositionRaceTrackFactory::FIRST_POSITION;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static int32_t getInstance(){
+    auto FinalPositionRaceTrackFactory::getInstance() -> int32_t{
 
 
 
@@ -65,17 +73,12 @@ class FinalPositionRaceTrackFactory
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void reset(){
+    auto FinalPositionRaceTrackFactory::reset() -> void{
 FinalPositionRaceTrackFactory::index= FinalPositionRaceTrackFactory::FIRST_POSITION;
     
 }
 
 
-private: FinalPositionRaceTrackFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_FINALPOSITIONRACETRACKFACTORY_CPP

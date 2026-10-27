@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bounds/event/BoundsChangeEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,11 +66,13 @@
         #include "org/allbinary/bounds/event/BoundsChangeEventListener.h"
 #include "org/allbinary/bounds/event/BoundsChangeEvent.h"
 
-class BoundsChangeEventHandler: public BasicEventHandler {
+BasicEventHandler* BoundsChangeEventHandler::SINGLETON = new BoundsChangeEventHandler();
 
-    private: static inline BasicEventHandler* SINGLETON = new BoundsChangeEventHandler();
+BoundsChangeEventHandler::BoundsChangeEventHandler(){
+}
 
-    public: static BasicEventHandler* getInstance(){
+
+    auto BoundsChangeEventHandler::getInstance() -> BasicEventHandler*{
 
 
 
@@ -70,13 +82,9 @@ class BoundsChangeEventHandler: public BasicEventHandler {
 }
 
 
-private: BoundsChangeEventHandler(){
-}
-
-
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto BoundsChangeEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     BoundsChangeEventListener* boundsChangeEventListener = dynamic_cast<BoundsChangeEventListener*>(eventListenerInterface);;
     
@@ -85,7 +93,6 @@ boundsChangeEventListener->onBoundsChangeEvent(dynamic_cast<BoundsChangeEvent*>(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTHANDLER_CPP

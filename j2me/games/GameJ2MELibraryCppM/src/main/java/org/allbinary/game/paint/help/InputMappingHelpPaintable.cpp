@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_HELP_INPUTMAPPINGHELPPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_HELP_INPUTMAPPINGHELPPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/help/InputMappingHelpPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -104,65 +114,11 @@
         #include "org/allbinary/game/paint/help/HelpPaintable.h"
 //#include "org/allbinary/game/paint/help/UpdateMyFontProperties.h"
 
-class InputMappingHelpPaintable: public HelpPaintable {
 
-    private: static inline const std::string AND = " and ";
-
-    private: static inline const std::string SEP = ", ";
-
-    private: static inline const std::string MORE_THAN_TWO_IN_LIST_AND = ", and ";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
-
-    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
-
-    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
-
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: std::vector<GameInputMapping*> gameInputMappingArray;
-
-    private: std::vector<BasicArrayList*> keyMappingArray = {};
-
-    private: std::vector<BasicColor*> actionBasicColor = BasicColorUtil::getInstance()->ZERO_ARRAY;
-
-    private: std::vector<std::vector<BasicColor*>> inputBasicColorArray = std::vector<std::vector<BasicColor*>>(0, std::vector<BasicColor*>(0));
-
-    private: BasicColor* selectedBasicColor;
-
-//inner= member=true isStatic=
-class UpdateMyFontProperties
-            : public Object
-         {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    std::vector<std::string> actionStringArray = StringUtil::getInstance()->getArrayInstance();
-
-    std::vector<int32_t> keymappingBeginWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY;
-
-    std::vector<int32_t> actionStringDeltaXArray = NullUtil::getInstance()->NULL_INT_ARRAY;
-
-    std::vector<std::vector<int32_t>> inputDeltaXArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
-
-    std::vector<std::vector<std::string>> sepArray = std::vector<std::vector<std::string>>(0, std::vector<std::string>(0));
-
-    std::vector<std::vector<int32_t>> sepWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
-
-    int32_t charHeight= 0;
-
-};
-
-            
-    private: updateMyFontProperties = new UpdateMyFontProperties();
-
-protected: InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* backgroundBasicColor, BasicColor* basicColor) : HelpPaintable("Input Mapping", backgroundBasicColor, basicColor){
+InputMappingHelpPaintable::UpdateMyFontProperties::UpdateMyFontProperties() : actionStringArray(StringUtil::getInstance()->getArrayInstance()), keymappingBeginWidthArray(NullUtil::getInstance()->NULL_INT_ARRAY), actionStringDeltaXArray(NullUtil::getInstance()->NULL_INT_ARRAY), inputDeltaXArray(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY), sepArray(std::vector<std::vector<std::string>>(0, std::vector<std::string>(0))), sepWidthArray(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY) {
+        }
+        
+InputMappingHelpPaintable::InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* backgroundBasicColor, BasicColor* basicColor) : HelpPaintable("Input Mapping", backgroundBasicColor, basicColor), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), stringUtil(StringUtil::getInstance()), basicColorFactory(BasicColorFactory::getInstance()), NONE(GameKeyFactory::getInstance()->NONE), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), keyMappingArray({}), actionBasicColor(BasicColorUtil::getInstance()->ZERO_ARRAY), inputBasicColorArray(std::vector<std::vector<BasicColor*>>(0, std::vector<BasicColor*>(0))), updateMyFontProperties(new UpdateMyFontProperties()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -191,12 +147,12 @@ this->update(this->NONE, this->NONE);
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto InputMappingHelpPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
 
-    updateMyFontProperties = new UpdateMyFontProperties();;
+    UpdateMyFontProperties* updateMyFontProperties = new UpdateMyFontProperties();;
     
 updateMyFontProperties->charHeight= font->getHeight();
     
@@ -247,13 +203,13 @@ list= this->keyMappingArray[index];
     
 keyMappings= this->get(list);
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 actionString= stringMaker->append(inputInfo[index])->append(commonSeps->COLON)->append(commonSeps->SPACE)->append(commonSeps->SPACE)->toString();
     
 updateMyFontProperties->actionStringArray[index]= actionString;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 updateMyFontProperties->keymappingBeginWidthArray[index]= (font->stringWidth(stringMaker->append(updateMyFontProperties->actionStringArray[index])->append(keyMappings)->toString())>>1);
     
@@ -330,12 +286,12 @@ updateMyFontProperties->sepArray[index][index2]= EMPTY_STRING;
 
 this->updateMyFontProperties= updateMyFontProperties;
     
-super.updateMeasurement(graphics);
+HelpPaintable::updateMeasurement(graphics);
     
 }
 
 
-    public: void update(GameKey* selectedGameKey, Input* selectedInput){
+    auto InputMappingHelpPaintable::update(GameKey* selectedGameKey, Input* selectedInput) -> void{
 
     StringMaker* stringMaker = new StringMaker();;
     
@@ -401,7 +357,7 @@ inputBasicColorArray[index][index2]= this->basicColor;
                         if(gameKey == selectedGameKey)
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append("Found: selected GameKey: ")->append(this->stringUtil->toString(selectedGameKey))->toString(), this, this->commonStrings->UPDATE);
     
@@ -414,7 +370,7 @@ actionBasicColor[index]= this->selectedBasicColor;
                         if(indexOfSelectedInput >= 0)
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append("Found: selected Input: ")->append(this->stringUtil->toString(selectedInput))->toString(), this, this->commonStrings->UPDATE);
     
@@ -444,14 +400,14 @@ this->actionBasicColor= actionBasicColor;
     
 this->inputBasicColorArray= inputBasicColorArray;
     
-super.setInputInfoP(keyInfo);
+HelpPaintable::setInputInfoP(keyInfo);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    private: std::string get(BasicArrayList* keyList){
+    auto InputMappingHelpPaintable::get(BasicArrayList* keyList) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -518,13 +474,13 @@ stringBuffer->append(key->getName());
 }
 
 
-    public: void paint(Graphics* graphics){
-this->myFontProcessor.process(graphics);
+    auto InputMappingHelpPaintable::paint(Graphics* graphics) -> void{
+this->myFontProcessor->process(graphics);
     
 
-    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
+    int32_t halfWidth = this->displayInfo->getLastHalfWidth();;
     
-graphics->setColor(this->basicColor.intValue());
+graphics->setColor(this->basicColor->intValue());
     
 graphics->drawString(this->title, halfWidth -this->titleBeginWidth, this->updateMyFontProperties->charHeight, this->anchor);
     
@@ -575,7 +531,7 @@ size2= list->size();
     
 beginWidth= this->updateMyFontProperties->keymappingBeginWidthArray[index];
     
-graphics->setColor(this->actionBasicColor[index].intValue());
+graphics->setColor(this->actionBasicColor[index]->intValue());
     
 actionString= this->updateMyFontProperties->actionStringArray[index];
     
@@ -600,7 +556,7 @@ deltaX += this->updateMyFontProperties->inputDeltaXArray[index][index2];
     
 sep= this->updateMyFontProperties->sepArray[index][index2];
     
-graphics->setColor(this->basicColor.intValue());
+graphics->setColor(this->basicColor->intValue());
     
 graphics->drawString(sep, halfWidth -beginWidth +deltaX, y, this->anchor);
     
@@ -613,7 +569,6 @@ deltaX += this->updateMyFontProperties->sepWidthArray[index][index2];
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_HELP_INPUTMAPPINGHELPPAINTABLE_CPP

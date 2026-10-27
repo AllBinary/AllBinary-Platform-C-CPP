@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDLEVELINTERMISSIONPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDLEVELINTERMISSIONPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/EndLevelIntermissionProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class EndLevelIntermissionProcessor: public Processor {
 
-    private: AllBinaryGameCanvas* gameCanvas;
-
-public: EndLevelIntermissionProcessor(AllBinaryGameCanvas* gameCanvas){
+EndLevelIntermissionProcessor::EndLevelIntermissionProcessor(AllBinaryGameCanvas* gameCanvas){
 this->gameCanvas= gameCanvas;
     
 }
@@ -61,13 +68,12 @@ this->gameCanvas= gameCanvas;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto EndLevelIntermissionProcessor::process() -> void{
 this->gameCanvas->processEndLevelIntermissionGameState();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDLEVELINTERMISSIONPROCESSOR_CPP

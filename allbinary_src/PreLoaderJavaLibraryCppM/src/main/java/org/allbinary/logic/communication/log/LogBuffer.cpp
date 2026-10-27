@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogBuffer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,20 @@
         #include "org/allbinary/logic/communication/log/LogUtil.h"
 #include "org/allbinary/logic/communication/log/Log.h"
 
-class LogBuffer
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    BasicArrayList* logEntryVector;
-
-public: LogBuffer(){
+LogBuffer::LogBuffer() : logUtil(LogUtil::getInstance()){
 this->logEntryVector= new BasicArrayListD();
     
 }
 
 
-    public: void add(Log* log){
+    auto LogBuffer::add(Log* log) -> void{
 this->logEntryVector->add(log);
     
 }
 
 
-    public: void logAll(){
+    auto LogBuffer::logAll() -> void{
 
     int32_t size = this->logEntryVector->size();;
     
@@ -97,7 +100,6 @@ this->logUtil->putL(log);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_CPP

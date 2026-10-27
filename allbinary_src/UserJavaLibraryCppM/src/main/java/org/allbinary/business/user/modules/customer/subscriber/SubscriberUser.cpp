@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_SUBSCRIBER_SUBSCRIBERUSER_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_SUBSCRIBER_SUBSCRIBERUSER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/customer/subscriber/SubscriberUser.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SubscriberUser: public User {
 
-    private: Subscription* subscription;
-
-public: SubscriberUser() : User(){
+SubscriberUser::SubscriberUser() : User(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +80,7 @@ this->subscription= new Subscription();
 }
 
 
-public: SubscriberUser(HashMap<Object*, Object*>* userHashMap) : User(userHashMap){
+SubscriberUser::SubscriberUser(HashMap<Object*, Object*>* userHashMap) : User(userHashMap){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,21 +92,21 @@ this->subscription= new Subscription();
 }
 
 
-    public: void validateSession(WeblisketSessionInterface* weblisketSession){
-super.validateSession(weblisketSession);
+    auto SubscriberUser::validateSession(WeblisketSessionInterface* weblisketSession) -> void{
+User::validateSession(weblisketSession);
     
 this->updateSession(weblisketSession);
     
 }
 
 
-    public: void updateSession(WeblisketSessionInterface* weblisketSession){
+    auto SubscriberUser::updateSession(WeblisketSessionInterface* weblisketSession) -> void{
 weblisketSession->setStoreName(this->getPermissions());
     
 }
 
 
-    public: bool isSessionValid(){
+    auto SubscriberUser::isSessionValid() -> bool{
 
 
 
@@ -109,7 +116,6 @@ weblisketSession->setStoreName(this->getPermissions());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_SUBSCRIBER_SUBSCRIBERUSER_CPP

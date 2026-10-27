@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESBASE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,44 +66,38 @@
 #include "org/allbinary/game/score/HighScoresResultsListener.h"
 #include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
-class HighScoresBase
-            : public Object
-        , public HighScoresFactoryInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-protected: HighScoresBase(){
+HighScoresBase::HighScoresBase() : commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener){
+    auto HighScoresBase::fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload){
+    auto HighScoresBase::fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: HighScoresHelperBaseInterface* createHighScoresHelper(){
+    auto HighScoresBase::createHighScoresHelper() -> HighScoresHelperBaseInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESBASE_CPP

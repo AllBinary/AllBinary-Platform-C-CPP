@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/SystemProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,26 +56,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //NoPlatform
-// class SystemProperties
-            : public Object
-         {
-
-    private: static SystemProperties* instance() { static std::unique_ptr<SystemProperties> value(new SystemProperties()); return value.get(); }
-
-    public: static SystemProperties* getInstance()
+        
+//NoPlatform - declared in the header, implemented by the platform project
 
 
 
-    public: std::string getName()
-
-    public: std::string getArch()
-
-    public: std::string getVersion()
-
-    public: std::string getUserHomePath()
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_CPP

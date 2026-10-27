@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_BASICURIRESOLVER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_BASICURIRESOLVER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/BasicUriResolver.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,23 +94,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/dom/URIResolverStrings.h"
 
-class BasicUriResolver
-            : public Object
-        , public URIResolver {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: URIResolverStrings* uriResolverStrings = URIResolverStrings::getInstance();
-
-    private: std::string extension;
-
-public: BasicUriResolver(std::string extension){
+BasicUriResolver::BasicUriResolver(std::string extension) : logUtil(LogUtil::getInstance()), uriResolverStrings(URIResolverStrings::getInstance()){
 this->extension= extension;
     
 }
 
 
-    public: std::string getExtension(){
+    auto BasicUriResolver::getExtension() -> std::string{
 
 
 
@@ -112,7 +113,7 @@ this->extension= extension;
 
                 //@Throws(TransformerException.constructor)
             
-    public: Source* resolve(std::string href, std::string base){
+    auto BasicUriResolver::resolve(std::string href, std::string base) -> Source*{
 
         try {
             
@@ -128,10 +129,10 @@ stringBuffer->append(href);
     AbPath* abPath = dynamic_cast<AbPath*>(new AbFilePath(stringBuffer->toString()));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XMLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XMLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->uriResolverStrings->ATTEMPT);
     
@@ -183,14 +184,14 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
 
-                            throw new TransformerException(&e);
+                            throw TransformerException(&e);
                     
 }
 
 }
 
 
-    public: std::string toString(){
+    auto BasicUriResolver::toString() -> std::string{
 
         try {
             
@@ -223,7 +224,6 @@ stringBuffer->append(this->uriResolverStrings->IMPORT_URL);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_BASICURIRESOLVER_CPP

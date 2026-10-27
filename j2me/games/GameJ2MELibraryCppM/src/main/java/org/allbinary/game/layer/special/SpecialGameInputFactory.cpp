@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/SpecialGameInputFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/special/SpecialGameInput.h"
 
-class SpecialGameInputFactory
-            : public Object
-         {
 
-    public: static SpecialGameInput* NO_SPECIAL_GAME_INPUT() { static std::unique_ptr<SpecialGameInput> value(new SpecialGameInput()); return value.get(); }
+SpecialGameInputFactory::SpecialGameInputFactory() {
+        }
+        auto SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT_owner() -> SpecialGameInput* { static std::unique_ptr<SpecialGameInput> value(new SpecialGameInput()); return value.get(); }
+SpecialGameInput* SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT = SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT_owner();
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTFACTORY_CPP

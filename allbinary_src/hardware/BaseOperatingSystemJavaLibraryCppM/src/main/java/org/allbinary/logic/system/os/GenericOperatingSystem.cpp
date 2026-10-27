@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_GENERICOPERATINGSYSTEM_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_GENERICOPERATINGSYSTEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,21 +72,8 @@
         #include "org/allbinary/logic/system/os/OperatingSystemInterface.h"
 #include "org/allbinary/logic/system/os/SystemProperties.h"
 
-class GenericOperatingSystem
-            : public Object
-        , public OperatingSystemInterface {
 
-    private: const std::string osName;
-
-    private: const std::string osArch;
-
-    private: const std::string osVersion;
-
-    private: CharacterSet* characterSet = new CharacterSet();
-
-    protected: bool scalable = false;
-
-public: GenericOperatingSystem(){
+GenericOperatingSystem::GenericOperatingSystem() : characterSet(new CharacterSet()){
 
     SystemProperties* systemProperties = SystemProperties::getInstance();;
     
@@ -134,7 +131,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: std::string getName(){
+    auto GenericOperatingSystem::getName() -> std::string{
 
 
 
@@ -144,7 +141,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: std::string getVersion(){
+    auto GenericOperatingSystem::getVersion() -> std::string{
 
 
 
@@ -154,7 +151,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: std::string getArch(){
+    auto GenericOperatingSystem::getArch() -> std::string{
 
 
 
@@ -164,7 +161,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: CharacterSet* getCharacterSet(){
+    auto GenericOperatingSystem::getCharacterSet() -> CharacterSet*{
 
 
 
@@ -174,7 +171,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: bool isOverScan(){
+    auto GenericOperatingSystem::isOverScan() -> bool{
 
 
 
@@ -184,7 +181,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: int32_t getOverScanXPercent(){
+    auto GenericOperatingSystem::getOverScanXPercent() -> int32_t{
 
 
 
@@ -194,7 +191,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: int32_t getOverScanYPercent(){
+    auto GenericOperatingSystem::getOverScanYPercent() -> int32_t{
 
 
 
@@ -204,7 +201,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: bool isScalable(){
+    auto GenericOperatingSystem::isScalable() -> bool{
 
 
 
@@ -214,7 +211,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: bool isAutoHide(){
+    auto GenericOperatingSystem::isAutoHide() -> bool{
 
 
 
@@ -224,7 +221,7 @@ public: GenericOperatingSystem(){
 }
 
 
-    public: std::string toString(){
+    auto GenericOperatingSystem::toString() -> std::string{
 
     std::string NEW_LINE = CommonSeps::getInstance()->NEW_LINE;;
     
@@ -258,7 +255,6 @@ osBuffer->append(NEW_LINE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_GENERICOPERATINGSYSTEM_CPP

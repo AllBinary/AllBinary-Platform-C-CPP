@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_PRESSSTARTMENUPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_PRESSSTARTMENUPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/PressStartMenuPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,25 +89,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PressStartMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
-
-    private: const std::string PRESS_START = "Press Screen To Start";
-
-    private: const std::string KEY_START = "Press or Click F2 To Begin";
-
-    private: const std::string MENU_START = "Press Start From The Menu To Begin";
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: std::string startString = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(1100);
-
-    private: bool flash= false;
-
-public: PressStartMenuPaintable(){
+PressStartMenuPaintable::PressStartMenuPaintable() : displayInfo(DisplayInfoSingleton::getInstance()), myFontProcessor(new UpdateMyFontProcessor(this)), startString(StringUtil::getInstance()->EMPTY_STRING), timeDelayHelper(new TimeDelayHelper(1100)), anchor(Anchor::TOP_LEFT){
 
                         if(TouchScreenFactory::getInstance()->isTouch())
                         
@@ -125,13 +118,7 @@ public: PressStartMenuPaintable(){
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: int32_t beginWidth= 0;
-
-    private: int32_t line= 0;
-
-    public: void updateMeasurement(Graphics* graphics){
+    auto PressStartMenuPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -144,7 +131,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto PressStartMenuPaintable::paint(Graphics* graphics) -> void{
 
                         if(this->timeDelayHelper->isTimeTNT())
                         
@@ -181,13 +168,13 @@ graphics->drawString(this->startString, displayInfo->getLastHalfWidth() -beginWi
 }
 
 
-    private: void setFlash(bool flash){
+    auto PressStartMenuPaintable::setFlash(bool flash) -> void{
 this->flash= flash;
     
 }
 
 
-    private: bool isFlash(){
+    auto PressStartMenuPaintable::isFlash() -> bool{
 
 
 
@@ -197,7 +184,6 @@ this->flash= flash;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_PRESSSTARTMENUPAINTABLE_CPP

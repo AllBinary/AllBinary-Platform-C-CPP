@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_OVERLAYPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_OVERLAYPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/OverlayPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OverlayPaintable: public InitUpdatePaintable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: OverlayPaintable(){
+OverlayPaintable::OverlayPaintable() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void update(){
+    auto OverlayPaintable::update() -> void{
 
         try {
             
@@ -82,11 +89,10 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto OverlayPaintable::paint(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_OVERLAYPAINTABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLPASSWORDINPUT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLPASSWORDINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlPasswordInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         #include "org/allbinary/logic/visual/dhtml/html/input/HtmlLengthInput.h"
 #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
-class HtmlPasswordInput: public HtmlLengthInput {
 
-public: HtmlPasswordInput(std::string before, std::string name, std::string value, std::string after) : HtmlLengthInput(before, HtmlInputData::getInstance()->PASSWORD, name, value, after){
+HtmlPasswordInput::HtmlPasswordInput(std::string before, std::string name, std::string value, std::string after) : HtmlLengthInput(before, HtmlInputData::getInstance()->PASSWORD, name, value, after){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +72,6 @@ setMaxLength(int32_t(128));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLPASSWORDINPUT_CPP

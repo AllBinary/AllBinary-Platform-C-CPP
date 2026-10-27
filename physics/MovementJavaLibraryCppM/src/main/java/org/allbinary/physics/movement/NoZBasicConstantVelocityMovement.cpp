@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_NOZBASICCONSTANTVELOCITYMOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_NOZBASICCONSTANTVELOCITYMOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/NoZBasicConstantVelocityMovement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,15 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/Movement.h"
 
-class NoZBasicConstantVelocityMovement: public Movement, public VelocityInterfaceCompositeInterface {
 
-    private: BasicVelocityProperties* velocityProperties;
-
-    private: BasicDecimal* speedBasicDecimal = BasicDecimal::ZERO_BIGDECIMAL;
-
-    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
-
-public: NoZBasicConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties){
+NoZBasicConstantVelocityMovement::NoZBasicConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties) : speedBasicDecimal(BasicDecimal::ZERO_BIGDECIMAL), axisMathVectorUtil(AxisMathVectorUtil::getInstance()){
 this->setSpeedBasicDecimal(basicDecimal);
     
 this->velocityProperties= velocityProperties;
@@ -83,7 +86,7 @@ this->velocityProperties= velocityProperties;
 }
 
 
-    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle){
+    auto NoZBasicConstantVelocityMovement::init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) -> void{
 this->speedBasicDecimal= speedBasicDecimal;
     
 
@@ -94,7 +97,7 @@ this->velocityProperties->setVelocityWithBigDecimal(speedBasicDecimal, angleFact
 }
 
 
-    public: void moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle){
+    auto NoZBasicConstantVelocityMovement::moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle) -> void{
 
     int32_t scaleFactorValue = this->speedBasicDecimal->getScaledFactorValue();;
     
@@ -111,13 +114,13 @@ layer->moveDXYZ(xVector, yVector, 0);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
+    auto NoZBasicConstantVelocityMovement::process(AllBinaryGameLayer* layer) -> void{
 layer->moveDXYZ(this->velocityProperties->getVelocityXBasicDecimalP()->getScaled(), this->velocityProperties->getVelocityYBasicDecimalP()->getScaled(), 0);
     
 }
 
 
-    public: std::string toString(){
+    auto NoZBasicConstantVelocityMovement::toString() -> std::string{
 
 
 
@@ -127,13 +130,13 @@ layer->moveDXYZ(this->velocityProperties->getVelocityXBasicDecimalP()->getScaled
 }
 
 
-    public: void stop(){
+    auto NoZBasicConstantVelocityMovement::stop() -> void{
 this->velocityProperties->zero();
     
 }
 
 
-    public: BasicVelocityProperties* getVelocityProperties(){
+    auto NoZBasicConstantVelocityMovement::getVelocityProperties() -> BasicVelocityProperties*{
 
 
 
@@ -143,19 +146,19 @@ this->velocityProperties->zero();
 }
 
 
-    public: void setVelocityProperties(BasicVelocityProperties* velocityProperties){
+    auto NoZBasicConstantVelocityMovement::setVelocityProperties(BasicVelocityProperties* velocityProperties) -> void{
 this->velocityProperties= velocityProperties;
     
 }
 
 
-    protected: void setSpeedBasicDecimal(BasicDecimal* speedBasicDecimal){
+    auto NoZBasicConstantVelocityMovement::setSpeedBasicDecimal(BasicDecimal* speedBasicDecimal) -> void{
 this->speedBasicDecimal= speedBasicDecimal;
     
 }
 
 
-    protected: BasicDecimal* getSpeedBasicDecimal(){
+    auto NoZBasicConstantVelocityMovement::getSpeedBasicDecimal() -> BasicDecimal*{
 
 
 
@@ -165,7 +168,6 @@ this->speedBasicDecimal= speedBasicDecimal;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_NOZBASICCONSTANTVELOCITYMOVEMENT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,19 +53,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameSkillType
-            : public Object
+            : public virtual Object
          {
 
-    public: static GameSkillType* MANA() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Mana")); return value.get(); }
+    private: static GameSkillType* MANA_owner();
+    public: static GameSkillType* MANA;
 
-    public: static GameSkillType* REPLENISH() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Replenish")); return value.get(); }
+    private: static GameSkillType* REPLENISH_owner();
+    public: static GameSkillType* REPLENISH;
 
-    public: static GameSkillType* TIMED() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Timed")); return value.get(); }
+    private: static GameSkillType* TIMED_owner();
+    public: static GameSkillType* TIMED;
 
-    public: static GameSkillType* ATTACK() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Attack")); return value.get(); }
+    private: static GameSkillType* ATTACK_owner();
+    public: static GameSkillType* ATTACK;
 
-    public: static GameSkillType* TRANSPORT() { static std::unique_ptr<GameSkillType> value(new GameSkillType("Transport")); return value.get(); }
+    private: static GameSkillType* TRANSPORT_owner();
+    public: static GameSkillType* TRANSPORT;
 
     private: const std::string SPELL_GAME_SKILL_TYPE = "SpellGameSkillType: ";
 
@@ -70,7 +84,7 @@ private: GameSkillType(std::string name);
 
     public: std::string getName();
 
-    protected: void setName(std::string name);
+    /*protected*/ public: void setName(std::string name);
 
     public: std::string toString();
 
@@ -80,3 +94,10 @@ private: GameSkillType(std::string name);
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H_COMPLETE
+        
+        #endif
+    

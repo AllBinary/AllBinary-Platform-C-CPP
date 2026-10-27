@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_FEATUREDANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_FEATUREDANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,27 +92,26 @@
 #include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/NullAnimationFactory.h"
 
-class FeaturedAnimationInterfaceFactoryInterfaceFactory: public FeaturedResourceFactory {
+auto FeaturedAnimationInterfaceFactoryInterfaceFactory::INSTANCE_owner() -> FeaturedAnimationInterfaceFactoryInterfaceFactory* { static std::unique_ptr<FeaturedAnimationInterfaceFactoryInterfaceFactory> value(new FeaturedAnimationInterfaceFactoryInterfaceFactory()); return value.get(); }
+FeaturedAnimationInterfaceFactoryInterfaceFactory* FeaturedAnimationInterfaceFactoryInterfaceFactory::INSTANCE = FeaturedAnimationInterfaceFactoryInterfaceFactory::INSTANCE_owner();
 
-    private: static FeaturedAnimationInterfaceFactoryInterfaceFactory* INSTANCE() { static std::unique_ptr<FeaturedAnimationInterfaceFactoryInterfaceFactory> value(new FeaturedAnimationInterfaceFactoryInterfaceFactory()); return value.get(); }
+FeaturedAnimationInterfaceFactoryInterfaceFactory::FeaturedAnimationInterfaceFactoryInterfaceFactory(){
+}
 
-    public: static FeaturedAnimationInterfaceFactoryInterfaceFactory* getInstance(){
+
+    auto FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance() -> FeaturedAnimationInterfaceFactoryInterfaceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeaturedAnimationInterfaceFactoryInterfaceFactory::INSTANCE();
+                        return FeaturedAnimationInterfaceFactoryInterfaceFactory::INSTANCE;
     
-}
-
-
-private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Rectangle* getRectangle(std::string resource){
+    auto FeaturedAnimationInterfaceFactoryInterfaceFactory::getRectangle(std::string resource) -> Rectangle*{
 
 
 
@@ -114,7 +123,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Rectangle* getRectangleXY(std::string resource, int32_t x, int32_t y){
+    auto FeaturedAnimationInterfaceFactoryInterfaceFactory::getRectangleXY(std::string resource, int32_t x, int32_t y) -> Rectangle*{
 
     PointFactory* pointFactory = PointFactory::getInstance();;
     
@@ -122,7 +131,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
     BasicArrayList* list = this->getList();;
     
 
-    int32_t scale = GameConfigurationCentral::getInstance()->SCALE.getValue()->intValue();;
+    int32_t scale = GameConfigurationCentral::getInstance()->SCALE->getValue()->intValue();;
     
 
     int32_t size = this->getList()->size();;
@@ -165,14 +174,14 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
 
 
-                            throw new Exception((new StringMaker())->append("No rectangle available for current feature selection or Resource: ")->append(resource)->toString());
+                            throw Exception((new StringMaker())->append("No rectangle available for current feature selection or Resource: ")->append(resource)->toString());
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ProceduralAnimationInterfaceFactoryInterface* getProcedural(std::string resource){
+    auto FeaturedAnimationInterfaceFactoryInterfaceFactory::getProcedural(std::string resource) -> ProceduralAnimationInterfaceFactoryInterface*{
 
 
 
@@ -184,7 +193,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: AnimationInterfaceFactoryInterface* get(std::string resource){
+    auto FeaturedAnimationInterfaceFactoryInterfaceFactory::get(std::string resource) -> AnimationInterfaceFactoryInterface*{
 
 
 
@@ -196,7 +205,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    private: BasicAnimationInterfaceFactoryInterface* getBasicAnimationInterfaceFactoryInstance(std::string resource){
+    auto FeaturedAnimationInterfaceFactoryInterfaceFactory::getBasicAnimationInterfaceFactoryInstance(std::string resource) -> BasicAnimationInterfaceFactoryInterface*{
 
     BasicArrayList* list = this->getList();;
     
@@ -330,7 +339,7 @@ stringBuffer->append(RESOURCES_LABEL);
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 
                                     }
@@ -357,12 +366,12 @@ stringBuffer->append(CommonSeps::getInstance()->SPACE);
 
     std::string result = stringBuffer->toString();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 
 
 
-                            throw new Exception(stringBuffer->append("No feature resource type available for Resource: ")->append(resource)->append(" Resource Factories Available: ")->append(result)->toString());
+                            throw Exception(stringBuffer->append("No feature resource type available for Resource: ")->append(resource)->append(" Resource Factories Available: ")->append(result)->toString());
                     
 
                         }
@@ -370,7 +379,6 @@ stringBuffer->delete(0, stringBuffer->length());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_FEATUREDANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP

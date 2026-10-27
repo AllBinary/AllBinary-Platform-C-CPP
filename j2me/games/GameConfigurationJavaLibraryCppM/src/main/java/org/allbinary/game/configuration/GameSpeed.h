@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +52,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/GameConfigurationCentral.h"
-#include "org/allbinary/game/configuration/GameConfiguration.h"
+        class GameConfigurationCentral;
+class GameConfiguration;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameSpeed
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameSpeed* instance() { static std::unique_ptr<GameSpeed> value(new GameSpeed()); return value.get(); }
+    private: static GameSpeed* instance_owner();
+    private: static GameSpeed* instance;
 
     public: static GameSpeed* getInstance();
 
+
+            
+    public: GameSpeed();
+        
     public: int32_t getSpeed();
 
     public: int32_t getDelay();
@@ -68,3 +82,16 @@ class GameSpeed
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMESPEED_H_COMPLETE
+        #if __has_include("org/allbinary/game/configuration/GameConfigurationCentral.h")
+#include "org/allbinary/game/configuration/GameConfigurationCentral.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/GameConfiguration.h")
+#include "org/allbinary/game/configuration/GameConfiguration.h"
+#endif
+
+        #endif
+    

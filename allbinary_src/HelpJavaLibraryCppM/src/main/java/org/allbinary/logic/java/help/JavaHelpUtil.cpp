@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/help/JavaHelpUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,55 +96,25 @@
 #include "org/allbinary/logic/java/help/JLabel.h"
 #include "org/allbinary/logic/java/help/DisplayHelpFromSource.h"
 
-class JavaHelpUtil
-            : public Object
-         {
+auto JavaHelpUtil::instance_owner() -> JavaHelpUtil* { static std::unique_ptr<JavaHelpUtil> value(new JavaHelpUtil()); return value.get(); }
+JavaHelpUtil* JavaHelpUtil::instance = JavaHelpUtil::instance_owner();
 
-    private: static JavaHelpUtil* instance() { static std::unique_ptr<JavaHelpUtil> value(new JavaHelpUtil()); return value.get(); }
-
-    public: static JavaHelpUtil* getInstance(){
+    auto JavaHelpUtil::getInstance() -> JavaHelpUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return JavaHelpUtil::instance();
+                        return JavaHelpUtil::instance;
     
 }
 
 
-    public: static void main(std::vector<std::string> args){
-
-        try {
-            
-    JavaHelpUtil* javaHelpUtil = JavaHelpUtil::getInstance();;
-    
-javaHelpUtil->show(javaHelpUtil->getHelpSet("G:/mnt/bc/mydev/working/automation/InputAutomationJavaApplication/AllBinaryInputAutomationHelp/AllBinaryInputAutomation.hs"));
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-}
-
+JavaHelpUtil::JavaHelpUtil() : logUtil(LogUtil::getInstance()), point(new Point(0, 0)), dimension(new Dimension(640, 480)), contextSensitiveHelpActionEvent(new ActionEvent(new JLabel(), ActionEvent::ACTION_FIRST, 
+                            nullptr)), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Point* point = new Point(0, 0);
-
-    private: Dimension* dimension = new Dimension(640, 480);
-
-    private: ActionEvent* contextSensitiveHelpActionEvent = new ActionEvent(new JLabel(), ActionEvent::ACTION_FIRST, 
-                            nullptr);
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-private: JavaHelpUtil(){
-}
-
-
-    public: HelpSet* getHelpSet(std::string filePath){
+    auto JavaHelpUtil::getHelpSet(std::string filePath) -> HelpSet*{
 
         try {
             
@@ -166,7 +146,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "set", &e);
 }
 
 
-    public: HelpSet* getHelpSet(URL* url){
+    auto JavaHelpUtil::getHelpSet(URL* url) -> HelpSet*{
 
         try {
             
@@ -193,7 +173,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "set", &e);
 }
 
 
-    public: void show(HelpSet* helpSet){
+    auto JavaHelpUtil::show(HelpSet* helpSet) -> void{
 
         try {
             
@@ -218,7 +198,23 @@ this->logUtil->put(this->commonStrings->EXCEPTION, getInstance(), "show", &e);
 }
 
 
-};
+    auto JavaHelpUtil::main(std::vector<std::string> args) -> void{
 
+        try {
             
+    JavaHelpUtil* javaHelpUtil = JavaHelpUtil::getInstance();;
+    
+javaHelpUtil->show(javaHelpUtil->getHelpSet("G:/mnt/bc/mydev/working/automation/InputAutomationJavaApplication/AllBinaryInputAutomationHelp/AllBinaryInputAutomation.hs"));
+    
 
+                //: 
+} catch(Exception& e) 
+            {
+}
+
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPUTIL_CPP

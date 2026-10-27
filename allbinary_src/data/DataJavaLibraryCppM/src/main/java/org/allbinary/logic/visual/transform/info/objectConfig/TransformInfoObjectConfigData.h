@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
-
-      
+class CommonDataFileStrings;
 
 
 
@@ -51,11 +54,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformInfoObjectConfigData
-            : public Object
+            : public virtual Object
          {
 
-    private: static TransformInfoObjectConfigData* instance() { static std::unique_ptr<TransformInfoObjectConfigData> value(new TransformInfoObjectConfigData()); return value.get(); }
+    private: static TransformInfoObjectConfigData* instance_owner();
+    private: static TransformInfoObjectConfigData* instance;
 
     public: static TransformInfoObjectConfigData* getInstance();
 
@@ -65,9 +73,9 @@ private: TransformInfoObjectConfigData();
 
     public: const std::string VARKEY = "$";
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION;
 
 };
 
@@ -75,3 +83,13 @@ private: TransformInfoObjectConfigData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/CommonDataFileStrings.h>)
+#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
+#endif
+
+        #endif
+    

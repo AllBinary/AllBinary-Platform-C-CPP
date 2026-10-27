@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULTINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,55 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransactionResultInterface {
+//Interface - declared in the header
 
-    public: virtual std::string toString() = 0;
 
-    public: virtual BasicArrayList* getValues() = 0;
 
-    public: virtual std::string getResult() = 0;
-
-    public: virtual std::string getPnRef() = 0;
-
-    public: virtual std::string getRespMsg() = 0;
-
-    public: virtual std::string getAvsAddr() = 0;
-
-    public: virtual std::string getAvsZip() = 0;
-
-    public: virtual std::string getOrigResult() = 0;
-
-    public: virtual std::string getStatus() = 0;
-
-    public: virtual std::string getFraudCode() = 0;
-
-    public: virtual std::string getFraudMsg() = 0;
-
-    public: virtual std::string getErrCode() = 0;
-
-    public: virtual std::string getScore() = 0;
-
-    public: virtual std::string getReason1() = 0;
-
-    public: virtual std::string getReason2() = 0;
-
-    public: virtual std::string getReason3() = 0;
-
-    public: virtual std::string getException1() = 0;
-
-    public: virtual std::string getException2() = 0;
-
-    public: virtual std::string getException3() = 0;
-
-    public: virtual std::string getException4() = 0;
-
-    public: virtual std::string getException5() = 0;
-
-    public: virtual std::string getException6() = 0;
-
-    public: virtual std::string getException7() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULTINTERFACE_CPP

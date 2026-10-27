@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_NEWWORKAREAJDIALOG_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_NEWWORKAREAJDIALOG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/dialog/NewWorkAreaJDialog.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -82,33 +92,8 @@
 #include "org/allbinary/graphics/j2me/dialog/WindowAdapter.h"
 #include "org/allbinary/graphics/j2me/dialog/WindowEvent.h"
 
-class NewWorkAreaJDialog: public javax::swing::JDialog {
 
-    public: static void main(std::vector<std::string> args){
-
-        try {
-            (new NewWorkAreaJDialog(new MyFrame(), true, new Dimension(100, 100), "testing"))->show();
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-}
-
-}
-
-
-    private: MyFrame* parent;
-
-    private: Dimension* dimension;
-
-    private: JTextField* xSizeJTextField;
-
-    private: JTextField* ySizeJTextField;
-
-    private: JTextField* nameJTextField;
-
-public: NewWorkAreaJDialog(MyFrame* parent, bool modal, Dimension* dimension, std::string newName) : javax::swing::JDialog(dynamic_cast<java::awt::Frame*>(parent), modal){
+NewWorkAreaJDialog::NewWorkAreaJDialog(MyFrame* parent, bool modal, Dimension* dimension, std::string newName) : javax::swing::JDialog(dynamic_cast<java::awt::Frame*>(parent), modal){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -191,7 +176,7 @@ this->show();
 
                 //@Throws(Exception.constructor)
             
-    private: void disposeNewDialog(){
+    auto NewWorkAreaJDialog::disposeNewDialog() -> void{
 
         try {
             
@@ -206,7 +191,7 @@ this->show();
 
                         if(false)
                         
-                                    throw new GraphicsException("No Name", this, "disposeNewDialog");
+                                    throw GraphicsException("No Name", this, "disposeNewDialog");
                                 
 
     WorkAreaJPanel* workAreaJPanel = new WorkAreaJPanel(newName, this->dimension, canvasWidth.intValue(), canvasHeight.intValue());;
@@ -231,7 +216,7 @@ this->dispose();
 }
 
 
-    private: void initComponents(){
+    auto NewWorkAreaJDialog::initComponents() -> void{
 addWindowListener(class extends java::awt::event::WindowAdapter
                                 {
                                 
@@ -248,7 +233,7 @@ pack();
 }
 
 
-    private: void closeDialog(java::awt::event::WindowEvent* evt){
+    auto NewWorkAreaJDialog::closeDialog(java::awt::event::WindowEvent* evt) -> void{
 setVisible(false);
     
 dispose();
@@ -256,7 +241,20 @@ dispose();
 }
 
 
-};
+    auto NewWorkAreaJDialog::main(std::vector<std::string> args) -> void{
 
-            
+        try {
+            (new NewWorkAreaJDialog(new MyFrame(), true, new Dimension(100, 100), "testing"))->show();
+    
 
+                //: 
+} catch(Exception& e) 
+            {
+}
+
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_NEWWORKAREAJDIALOG_CPP

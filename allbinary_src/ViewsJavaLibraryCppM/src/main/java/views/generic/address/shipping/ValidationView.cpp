@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_VALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_SHIPPING_VALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/shipping/ValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,9 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/shipping/ShippingAddressesView.h"
 
-class ValidationView: public ShippingAddressesView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressesView(transformInfoInterface){
+ValidationView::ValidationView(TransformInfoInterface* transformInfoInterface) : ShippingAddressesView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,7 +85,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : Shippin
 }
 
 
-    public: bool isValid(){
+    auto ValidationView::isValid() -> bool{
 
     ShippingAddressesEntity* billingAddressesEntity = new ShippingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
@@ -98,7 +107,7 @@ this->streetAddressList= billingAddressesEntity->get();
                                     }
                                 
 
-    int32_t size = this->streetAddressList.size();;
+    int32_t size = this->streetAddressList->size();;
     
 
 
@@ -122,7 +131,7 @@ this->streetAddressList= billingAddressesEntity->get();
 }
 
 
-                        if(this->streetAddressList.size() < 1)
+                        if(this->streetAddressList->size() < 1)
                         
                                     {
                                     
@@ -143,7 +152,7 @@ this->streetAddressList= billingAddressesEntity->get();
 }
 
 
-    public: std::string validationInfo(){
+    auto ValidationView::validationInfo() -> std::string{
 
 
 
@@ -153,7 +162,7 @@ this->streetAddressList= billingAddressesEntity->get();
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto ValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -163,7 +172,7 @@ this->streetAddressList= billingAddressesEntity->get();
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto ValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -173,7 +182,6 @@ this->streetAddressList= billingAddressesEntity->get();
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_VALIDATIONVIEW_CPP

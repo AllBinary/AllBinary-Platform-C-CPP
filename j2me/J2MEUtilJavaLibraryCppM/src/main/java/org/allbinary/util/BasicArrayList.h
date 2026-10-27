@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLIST_H
         #define ORG_ALLBINARY_UTIL_BASICARRAYLIST_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -21,27 +26,13 @@
         
             #include "java/lang/System.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class StringMaker;
+class CommonLabels;
+class CommonSeps;
+class JsMethod;
+class JsConstructor;
+class JsProperty;
 
 
 
@@ -60,16 +51,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/util/ArrayUtil.h"
-#include "org/allbinary/util/BasicArrayListS.h"
-//This is a very fast and simple resizable list.
+        class ArrayUtil;
+class BasicArrayListS;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //This is a very fast and simple resizable list.
 class BasicArrayList
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string SIZE = ", Size: ";
 
-    private: ArrayUtil* arrayUtil = ArrayUtil::getInstance();
+    private: ArrayUtil* arrayUtil;
 
     public: std::vector<Object*> objectArray;
 
@@ -78,12 +73,15 @@ class BasicArrayList
 public: BasicArrayList(std::vector<Object*> objectArray);
 
     public: void addAt(int32_t index, Object* element);
+    public: void addAt(int32_t index, const std::string& element) { return addAt(index, JavaString::box(element)); }
 
     public: bool add(Object* anyType);
+    public: bool add(const std::string& anyType) { return add(JavaString::box(anyType)); }
 
     public: Object* removeAt(int32_t index);
 
     public: bool remove(Object* anyType);
+    public: bool remove(const std::string& anyType) { return remove(JavaString::box(anyType)); }
 
     public: bool removeAll2(BasicArrayList* list);
 
@@ -98,12 +96,15 @@ public: BasicArrayList(std::vector<Object*> objectArray);
     public: void trimToSize();
 
     public: int32_t indexOf(Object* anyType);
+    public: int32_t indexOf(const std::string& anyType) { return indexOf(JavaString::box(anyType)); }
 
     public: int32_t lastIndexOf(Object* anyType);
+    public: int32_t lastIndexOf(const std::string& anyType) { return lastIndexOf(JavaString::box(anyType)); }
 
     public: Object* get(int32_t index);
 
     public: Object* set(int32_t index, Object* element);
+    public: Object* set(int32_t index, const std::string& element) { return set(index, JavaString::box(element)); }
 
     public: void clear();
 
@@ -112,6 +113,7 @@ public: BasicArrayList(std::vector<Object*> objectArray);
     public: bool isEmpty();
 
     public: bool contains(Object* anyType);
+    public: bool contains(const std::string& anyType) { return contains(JavaString::box(anyType)); }
 
     public: std::vector<Object*> toArray();
 
@@ -127,3 +129,37 @@ public: BasicArrayList(std::vector<Object*> objectArray);
 
 
         #endif //ORG_ALLBINARY_UTIL_BASICARRAYLIST_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_BASICARRAYLIST_H_COMPLETE)
+        #define ORG_ALLBINARY_UTIL_BASICARRAYLIST_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include("org/allbinary/util/ArrayUtil.h")
+#include "org/allbinary/util/ArrayUtil.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayListS.h")
+#include "org/allbinary/util/BasicArrayListS.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENT_CPP
+        #define ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bounds/event/BoundsChangeEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BoundsChangeEvent: public AllBinaryEventObject {
 
-public: BoundsChangeEvent(Rectangle* rectangle) : AllBinaryEventObject(rectangle){
+BoundsChangeEvent::BoundsChangeEvent(Rectangle* rectangle) : AllBinaryEventObject(rectangle){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,7 @@ public: BoundsChangeEvent(Rectangle* rectangle) : AllBinaryEventObject(rectangle
 }
 
 
-    public: Rectangle* getRectangle(){
+    auto BoundsChangeEvent::getRectangle() -> Rectangle*{
 
 
 
@@ -71,7 +80,6 @@ public: BoundsChangeEvent(Rectangle* rectangle) : AllBinaryEventObject(rectangle
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSLISTENER_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
 
-class CapturedImageWorkerResultsListener: public BasicEventListenerInterface {
+//Interface - declared in the header
 
-    public: virtual void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedimageworkerresultsevent) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSLISTENER_CPP

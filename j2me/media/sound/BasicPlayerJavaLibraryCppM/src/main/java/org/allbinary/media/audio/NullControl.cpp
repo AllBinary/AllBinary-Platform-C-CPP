@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLCONTROL_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NULLCONTROL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/NullControl.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +58,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullControl
-            : public Object
-        , public Control {
 
-};
+NullControl::NullControl() {
+        }
+        
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_NULLCONTROL_CPP

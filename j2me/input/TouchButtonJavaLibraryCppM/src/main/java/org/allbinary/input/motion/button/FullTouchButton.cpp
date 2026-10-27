@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_FULLTOUCHBUTTON_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_FULLTOUCHBUTTON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/FullTouchButton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,11 +76,10 @@
 #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
-class FullTouchButton: public TouchButton {
 
                 //@Throws(Exception.constructor)
             
-    public: static FullTouchButton* createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder){
+    auto FullTouchButton::createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) -> FullTouchButton*{
 
 
 
@@ -80,7 +89,7 @@ class FullTouchButton: public TouchButton {
 }
 
 
-public: FullTouchButton(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) : TouchButton(touchButtonInput, animationInterface, hintAnimationInterface, rawRectangle, cellPosition, xBorder, yBorder){
+FullTouchButton::FullTouchButton(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) : TouchButton(touchButtonInput, animationInterface, hintAnimationInterface, rawRectangle, cellPosition, xBorder, yBorder){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,41 +99,40 @@ public: FullTouchButton(TouchButtonInput* touchButtonInput, Animation* animation
 }
 
 
-    protected: void updateRectangle(){
+    auto FullTouchButton::updateRectangle() -> void{
 
         try {
             
     PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    int32_t x = this->rawRectangle.getWidth() *this->cellPositionP.getColumn();;
+    int32_t x = this->rawRectangle->getWidth() *this->cellPositionP->getColumn();;
     
 
-    int32_t y = this->rawRectangle.getHeight() *this->cellPositionP.getRow();;
+    int32_t y = this->rawRectangle->getHeight() *this->cellPositionP->getRow();;
     
-this->rectangleP= new Rectangle(pointFactory->createXY(x, y), this->rawRectangle.getWidth() +(2 *this->xBorder), this->rawRectangle.getHeight() +(2 *this->yBorder));
+this->rectangleP= new Rectangle(pointFactory->createXY(x, y), this->rawRectangle->getWidth() +(2 *this->xBorder), this->rawRectangle->getHeight() +(2 *this->yBorder));
     
 
-    GPoint* point = this->rectangleP.getPoint();;
+    GPoint* point = this->rectangleP->getPoint();;
     
 this->animationX= point->getX() +this->xBorder;
     
 this->animationY= point->getY() +this->yBorder;
     
-this->hintAnimationY= this->animationY -this->rectangleP.getHeight()>>1;
+this->hintAnimationY= this->animationY -this->rectangleP->getHeight()>>1;
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateRectangle", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_FULLTOUCHBUTTON_CPP

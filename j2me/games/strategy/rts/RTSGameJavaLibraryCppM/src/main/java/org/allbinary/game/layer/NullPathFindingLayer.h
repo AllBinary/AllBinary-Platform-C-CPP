@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,36 +40,16 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/animation/caption/CaptionAnimationHelperBase.h>
-
-      
-#include <org/allbinary/game/identification/Group.h>
-
-      
-#include <org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h>
-
-      
-#include <org/allbinary/game/layer/waypoint/WaypointLogHelper.h>
-
-      
-#include <org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h>
-
-      
-#include <org/allbinary/game/tracking/TrackingEvent.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class CaptionAnimationHelperBase;
+class Group;
+class Waypoint2LogHelper;
+class WaypointLogHelper;
+class WaypointRunnableLogHelper;
+class TrackingEvent;
+class AllBinaryLayer;
+class GeographicMapCellHistory;
+class GeographicMapCellPosition;
+class BasicArrayList;
 
 
 
@@ -84,17 +69,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
-#include "org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h"
-#include "org/allbinary/game/layer/SelectionHudPaintable.h"
-#include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
-#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+class GeographicMapCellPositionAreaBase;
+class SelectionHudPaintable;
+class RTSLayer2LogHelper;
+class WaypointBehaviorBase;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullPathFindingLayer
-            : public Object
+            : public virtual Object
         , public PathFindingLayerInterface {
 
-    public: static NullPathFindingLayer* NULL_PATH_FINDING_LAYER() { static std::unique_ptr<NullPathFindingLayer> value(new NullPathFindingLayer()); return value.get(); }
+    private: static NullPathFindingLayer* NULL_PATH_FINDING_LAYER_owner();
+    public: static NullPathFindingLayer* NULL_PATH_FINDING_LAYER;
 
+
+            
+    public: NullPathFindingLayer();
+        
     public: std::string getName();
 
                 //@Throws(Exception.constructor)
@@ -195,3 +189,55 @@ class NullPathFindingLayer
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/caption/CaptionAnimationHelperBase.h>)
+#include <org/allbinary/animation/caption/CaptionAnimationHelperBase.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h>)
+#include <org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/waypoint/WaypointLogHelper.h>)
+#include <org/allbinary/game/layer/waypoint/WaypointLogHelper.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h>)
+#include <org/allbinary/game/layer/waypoint/WaypointRunnableLogHelper.h>
+#endif
+#if __has_include(<org/allbinary/game/tracking/TrackingEvent.h>)
+#include <org/allbinary/game/tracking/TrackingEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/layer/PathFindingLayerInterface.h")
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h")
+#include "org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h"
+#endif
+#if __has_include("org/allbinary/game/layer/SelectionHudPaintable.h")
+#include "org/allbinary/game/layer/SelectionHudPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/layer/RTSLayer2LogHelper.h")
+#include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
+#endif
+#if __has_include("org/allbinary/game/layer/WaypointBehaviorBase.h")
+#include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+#endif
+
+        #endif
+    

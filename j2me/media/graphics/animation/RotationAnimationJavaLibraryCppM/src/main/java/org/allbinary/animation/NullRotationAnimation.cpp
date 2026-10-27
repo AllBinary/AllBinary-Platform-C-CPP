@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/NullRotationAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -42,9 +52,8 @@
         #include "org/allbinary/animation/RotationAnimation.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class NullRotationAnimation: public RotationAnimation {
 
-    public: static NullRotationAnimation* createTotalAngle(AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior){
+    auto NullRotationAnimation::createTotalAngle(AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) -> NullRotationAnimation*{
 
 
 
@@ -54,7 +63,7 @@ class NullRotationAnimation: public RotationAnimation {
 }
 
 
-    public: static NullRotationAnimation* createQuarter(AnimationBehavior* animationBehavior){
+    auto NullRotationAnimation::createQuarter(AnimationBehavior* animationBehavior) -> NullRotationAnimation*{
 
 
 
@@ -64,7 +73,7 @@ class NullRotationAnimation: public RotationAnimation {
 }
 
 
-protected: NullRotationAnimation(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, circularIndexUtil, animationBehavior){
+NullRotationAnimation::NullRotationAnimation(AngleInfo* angleInfo, CircularIndexUtil* circularIndexUtil, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, circularIndexUtil, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,7 +85,7 @@ protected: NullRotationAnimation(AngleInfo* angleInfo, CircularIndexUtil* circul
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto NullRotationAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -86,7 +95,6 @@ protected: NullRotationAnimation(AngleInfo* angleInfo, CircularIndexUtil* circul
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_CPP

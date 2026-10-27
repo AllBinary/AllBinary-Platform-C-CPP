@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/special/TitleAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,9 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/special/SpecialAnimation.h"
 
-class TitleAnimation: public SpecialAnimation {
 
-    public: static TitleAnimation* createAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width){
+    auto TitleAnimation::createAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width) -> TitleAnimation*{
 
 
 
@@ -87,33 +96,7 @@ class TitleAnimation: public SpecialAnimation {
 }
 
 
-    protected: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
-
-    public: float deltaX= 0.0;
-
-    public: float deltaY= 0.0;
-
-    public: float deltaZ= 0.0;
-
-    protected: std::vector<BasicColor*> basicColorArray;
-
-    protected: std::vector<int32_t> dxArray;
-
-    protected: std::vector<int32_t> dyArray;
-
-    protected: int32_t widthP;
-
-    protected: std::vector<IndexedAnimation*> animationInterfaceArray;
-
-    protected: int32_t sizeP;
-
-    protected: int32_t y;
-
-    private: int64_t lastFrameStartTime;
-
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-public: TitleAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior) : SpecialAnimation(animationBehavior){
+TitleAnimation::TitleAnimation(std::vector<IndexedAnimation*> animationInterfaceArray, std::vector<BasicColor*> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior* animationBehavior) : SpecialAnimation(animationBehavior), systemWrapper(ABSystemWrapper::getInstance()), displayInfoSingleton(DisplayInfoSingleton::getInstance()), CLEAR_COLOR(BasicColorFactory::getInstance()->CLEAR_COLOR){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -141,7 +124,7 @@ this->reset();
 }
 
 
-    public: void nextFrame(){
+    auto TitleAnimation::nextFrame() -> void{
 
     int64_t currentTime = this->systemWrapper->currentTimeMillis();;
     
@@ -163,7 +146,7 @@ this->lastFrameStartTime= currentTime;
                                     }
                                 
 
-                        if(this->animationInterfaceArray[0].getFrame() == 0)
+                        if(this->animationInterfaceArray[0]->getFrame() == 0)
                         
                                     {
                                     indexedAnimationBehavior->loopIndex++;
@@ -174,7 +157,7 @@ this->lastFrameStartTime= currentTime;
 }
 
 
-    public: bool isComplete(){
+    auto TitleAnimation::isComplete() -> bool{
 
     IndexedAnimationBehavior* indexedAnimationBehavior = dynamic_cast<IndexedAnimationBehavior*>(this->getAnimationBehavior());;
     
@@ -204,11 +187,11 @@ this->lastFrameStartTime= currentTime;
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto TitleAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto TitleAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -218,27 +201,27 @@ this->lastFrameStartTime= currentTime;
 }
 
 
-    public: int32_t getSize(){
+    auto TitleAnimation::getSize() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[0].getSize();;
+                        return this->animationInterfaceArray[0]->getSize();;
     
 }
 
 
-    public: int32_t getFrame(){
+    auto TitleAnimation::getFrame() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[0].getFrame();;
+                        return this->animationInterfaceArray[0]->getFrame();;
     
 }
 
 
-    public: void setFrame(int32_t frame){
+    auto TitleAnimation::setFrame(int32_t frame) -> void{
 
 
 
@@ -246,20 +229,20 @@ this->lastFrameStartTime= currentTime;
                         for (
     int32_t index = 0;index < this->sizeP; index++)
         {
-this->animationInterfaceArray[index].setFrame(frame);
+this->animationInterfaceArray[index]->setFrame(frame);
     
 }
 
 }
 
 
-    public: void setLastFrame(){
+    auto TitleAnimation::setLastFrame() -> void{
 this->setFrame(this->getSize() -1);
     
 }
 
 
-    public: void reset(){
+    auto TitleAnimation::reset() -> void{
 this->setLastFrame();
     
 
@@ -270,7 +253,7 @@ indexedAnimationBehavior->reset();
 }
 
 
-    public: void previousFrame(){
+    auto TitleAnimation::previousFrame() -> void{
 
 
 
@@ -278,14 +261,14 @@ indexedAnimationBehavior->reset();
                         for (
     int32_t index = 0;index < this->sizeP; index++)
         {
-this->animationInterfaceArray[index].previousFrame();
+this->animationInterfaceArray[index]->previousFrame();
     
 }
 
 }
 
 
-    public: void paintFrameXY(Graphics* graphics, int32_t frame, int32_t x, int32_t y){
+    auto TitleAnimation::paintFrameXY(Graphics* graphics, int32_t frame, int32_t x, int32_t y) -> void{
 this->setFrame(frame);
     
 this->paintXY(graphics, x, y);
@@ -293,9 +276,7 @@ this->paintXY(graphics, x, y);
 }
 
 
-    protected: BasicColor* CLEAR_COLOR = BasicColorFactory::getInstance()->CLEAR_COLOR;
-
-    public: void paintXY(Graphics* graphics, int32_t ax, int32_t ay){
+    auto TitleAnimation::paintXY(Graphics* graphics, int32_t ax, int32_t ay) -> void{
 
     int32_t x = 0;;
     
@@ -329,19 +310,18 @@ deltaY= this->dyArray[index] +this->y;
                         if(this->basicColorArray[index] != this->CLEAR_COLOR)
                         
                                     {
-                                    this->basicSetColorUtil.setBasicColorP(graphics, this->basicColorArray[index]);
+                                    this->basicSetColorUtil->setBasicColorP(graphics, this->basicColorArray[index]);
     
 
                                     }
                                 
-this->animationInterfaceArray[index].paintXY(graphics, deltaX, deltaY);
+this->animationInterfaceArray[index]->paintXY(graphics, deltaX, deltaY);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_CPP

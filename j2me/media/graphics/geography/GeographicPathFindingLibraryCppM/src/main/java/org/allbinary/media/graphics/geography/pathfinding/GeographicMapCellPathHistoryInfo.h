@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
-
-      
+class GeographicMapCellPosition;
+class SimpleGeographicMapCellPositionFactory;
 
 
 
@@ -54,19 +55,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeographicMapCellPathHistoryInfo
-            : public Object
+            : public virtual Object
          {
 
-    private: GeographicMapCellPosition* previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: GeographicMapCellPosition* previousOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+            
+    public: GeographicMapCellPathHistoryInfo();
+        
+    private: GeographicMapCellPosition* previousGeographicMapCellPosition;
 
-    private: GeographicMapCellPosition* nextUnvisitedOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* previousOnPathGeographicMapCellPosition;
 
-    private: GeographicMapCellPosition* nextOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* nextUnvisitedOnPathGeographicMapCellPosition;
 
-    private: GeographicMapCellPosition* nextChosenOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* nextOnPathGeographicMapCellPosition;
+
+    private: GeographicMapCellPosition* nextChosenOnPathGeographicMapCellPosition;
 
     public: GeographicMapCellPosition* getPreviousGeographicMapCellPosition();
 
@@ -94,3 +103,16 @@ class GeographicMapCellPathHistoryInfo
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_H_COMPLETE
+        #if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>)
+#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESTRINGS_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GamePersistanceStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static GamePersistanceStrings* instance() { static std::unique_ptr<GamePersistanceStrings> value(new GamePersistanceStrings()); return value.get(); }
+    private: static GamePersistanceStrings* instance_owner();
+    private: static GamePersistanceStrings* instance;
 
     public: static GamePersistanceStrings* getInstance();
 
+
+            
+    public: GamePersistanceStrings();
+        
     public: const std::string SAVED_GAME_RECORD_ID = "_SG";
 
     public: const std::string SAVED_GAME_CONFIGURATION_RECORD_ID = "_SGC";
@@ -70,3 +84,10 @@ class GamePersistanceStrings
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_GAMEPERSISTANCESTRINGS_H_COMPLETE
+        
+        #endif
+    

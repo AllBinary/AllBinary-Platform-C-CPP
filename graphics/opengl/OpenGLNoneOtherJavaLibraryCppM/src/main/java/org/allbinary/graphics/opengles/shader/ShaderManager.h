@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class GL10;
+class CommonStrings;
+class BasicArrayList;
 
 
 
@@ -59,17 +58,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShaderManager
-            : public Object
+            : public virtual Object
          {
 
-    private: static ShaderManager* instance() { static std::unique_ptr<ShaderManager> value(new ShaderManager( -1,  -1)); return value.get(); }
+    private: static ShaderManager* instance_owner();
+    private: static ShaderManager* instance;
 
     public: static ShaderManager* getInstance();
 
-    protected: const std::string LOAD_SHADER = "loadShader";
+    /*protected*/ public: const std::string LOAD_SHADER = "loadShader";
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     public: int32_t GL_VERTEX_SHADER;
 
@@ -87,3 +91,19 @@ public: ShaderManager(int32_t GL_VERTEX_SHADER, int32_t GL_FRAGMENT_SHADER);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

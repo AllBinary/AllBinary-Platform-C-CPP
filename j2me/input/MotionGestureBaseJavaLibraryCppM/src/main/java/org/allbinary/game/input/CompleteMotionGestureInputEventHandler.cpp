@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,27 +76,24 @@
 #include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
 #include "org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h"
 
-class CompleteMotionGestureInputEventHandler: public BasicEventHandler {
+auto CompleteMotionGestureInputEventHandler::SINGLETON_owner() -> CompleteMotionGestureInputEventHandler* { static std::unique_ptr<CompleteMotionGestureInputEventHandler> value(new CompleteMotionGestureInputEventHandler()); return value.get(); }
+CompleteMotionGestureInputEventHandler* CompleteMotionGestureInputEventHandler::SINGLETON = CompleteMotionGestureInputEventHandler::SINGLETON_owner();
 
-    private: static CompleteMotionGestureInputEventHandler* SINGLETON() { static std::unique_ptr<CompleteMotionGestureInputEventHandler> value(new CompleteMotionGestureInputEventHandler()); return value.get(); }
-
-    public: static CompleteMotionGestureInputEventHandler* getInstance(){
+    auto CompleteMotionGestureInputEventHandler::getInstance() -> CompleteMotionGestureInputEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompleteMotionGestureInputEventHandler::SINGLETON();
+                        return CompleteMotionGestureInputEventHandler::SINGLETON;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: CompleteMotionGestureInputEventHandler(){
+CompleteMotionGestureInputEventHandler::CompleteMotionGestureInputEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(CompleteMotionGestureInputEventListener* completeMotionGestureInputEventListener){
+    auto CompleteMotionGestureInputEventHandler::addListener(CompleteMotionGestureInputEventListener* completeMotionGestureInputEventListener) -> void{
 
                         if(!this->list->contains(completeMotionGestureInputEventListener))
                         
@@ -99,25 +106,25 @@ private: CompleteMotionGestureInputEventHandler(){
 }
 
 
-    public: void removeAllListeners(){
+    auto CompleteMotionGestureInputEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto CompleteMotionGestureInputEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto CompleteMotionGestureInputEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -136,20 +143,20 @@ completeMotionGestureInputEventListener->onCompleteMotionGestureInputEvent(dynam
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto CompleteMotionGestureInputEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     CompleteMotionGestureInputEventListenerInterface* completeMotionGestureInputEventListenerInterface = dynamic_cast<CompleteMotionGestureInputEventListenerInterface*>(eventListenerInterface);;
     
@@ -158,7 +165,6 @@ completeMotionGestureInputEventListenerInterface->onCompleteMotionGestureInputEv
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENTHANDLER_CPP

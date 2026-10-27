@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_CHOICEGROUPIMAGEUTIL_CPP
+        #define ORG_ALLBINARY_IMAGE_CHOICEGROUPIMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/ChoiceGroupImageUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,23 +76,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/PreResourceImageUtil.h"
 
-class ChoiceGroupImageUtil
-            : public Object
-         {
 
-    private: static ChoiceGroupImageUtil* instance() { static std::unique_ptr<ChoiceGroupImageUtil> value(new ChoiceGroupImageUtil()); return value.get(); }
+ChoiceGroupImageUtil::ChoiceGroupImageUtil() {
+        }
+        auto ChoiceGroupImageUtil::instance_owner() -> ChoiceGroupImageUtil* { static std::unique_ptr<ChoiceGroupImageUtil> value(new ChoiceGroupImageUtil()); return value.get(); }
+ChoiceGroupImageUtil* ChoiceGroupImageUtil::instance = ChoiceGroupImageUtil::instance_owner();
 
-    public: static ChoiceGroupImageUtil* getInstance(){
+    auto ChoiceGroupImageUtil::getInstance() -> ChoiceGroupImageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ChoiceGroupImageUtil::instance();
+                        return ChoiceGroupImageUtil::instance;
     
 }
 
 
-    public: void init(){
+    auto ChoiceGroupImageUtil::init() -> void{
 
     Features* features = Features::getInstance();;
     
@@ -121,7 +131,7 @@ choiceGroupFactory->init(imageArray);
 }
 
 
-    public: void update(GL* gl){
+    auto ChoiceGroupImageUtil::update(GL* gl) -> void{
 
     Features* features = Features::getInstance();;
     
@@ -160,7 +170,7 @@ choiceGroupFactory->init(imageArray);
 }
 
 
-    public: void update(Graphics* graphics){
+    auto ChoiceGroupImageUtil::update(Graphics* graphics) -> void{
 
     Features* features = Features::getInstance();;
     
@@ -199,7 +209,6 @@ choiceGroupFactory->init(imageArray);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_CHOICEGROUPIMAGEUTIL_CPP

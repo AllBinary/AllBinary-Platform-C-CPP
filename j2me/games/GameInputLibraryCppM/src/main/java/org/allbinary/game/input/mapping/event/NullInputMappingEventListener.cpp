@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_NULLINPUTMAPPINGEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_NULLINPUTMAPPINGEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/event/NullInputMappingEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,23 +62,22 @@
         #include "org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h"
 #include "org/allbinary/game/input/mapping/event/InputMappingEvent.h"
 
-class NullInputMappingEventListener
-            : public Object
-        , public InputMappingEventListenerInterface {
 
-    public: static NullInputMappingEventListener* NULL_INPUT_MAPPING_EVENT_LISTENER() { static std::unique_ptr<NullInputMappingEventListener> value(new NullInputMappingEventListener()); return value.get(); }
+NullInputMappingEventListener::NullInputMappingEventListener() {
+        }
+        auto NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER_owner() -> NullInputMappingEventListener* { static std::unique_ptr<NullInputMappingEventListener> value(new NullInputMappingEventListener()); return value.get(); }
+NullInputMappingEventListener* NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: void onInputMappingEvent(InputMappingEvent* inputMappingEvent){
+    auto NullInputMappingEventListener::onInputMappingEvent(InputMappingEvent* inputMappingEvent) -> void{
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto NullInputMappingEventListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_NULLINPUTMAPPINGEVENTLISTENER_CPP

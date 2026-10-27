@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFODOCUMENT_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITINFODOCUMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/InitInfoDocument.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InitInfoDocument
-            : public Object
-         {
 
-    private: Document* initInfoDocument;
-
-public: InitInfoDocument(){
+InitInfoDocument::InitInfoDocument(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_INITINFODOCUMENT_CPP

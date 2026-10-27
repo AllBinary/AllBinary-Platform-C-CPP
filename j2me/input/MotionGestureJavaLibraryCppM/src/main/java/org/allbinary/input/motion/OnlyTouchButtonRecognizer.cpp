@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/OnlyTouchButtonRecognizer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/MotionRecognizer.h"
 
-class OnlyTouchButtonRecognizer: public MotionRecognizer {
 
-    private: TouchButtonRecognizer* touchButtonRecognizer;
-
-    private: bool touchButtonProcessing = false;
-
-public: OnlyTouchButtonRecognizer(){
+OnlyTouchButtonRecognizer::OnlyTouchButtonRecognizer(){
 this->touchButtonRecognizer= new TouchButtonRecognizer();
     
 }
@@ -63,7 +68,7 @@ this->touchButtonRecognizer= new TouchButtonRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto OnlyTouchButtonRecognizer::processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 
                         if(this->touchButtonRecognizer->pressTouchButtonInput(x, y, deviceId))
                         
@@ -78,7 +83,7 @@ this->touchButtonRecognizer= new TouchButtonRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto OnlyTouchButtonRecognizer::processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 
                         if(this->touchButtonProcessing)
                         
@@ -106,7 +111,7 @@ this->touchButtonRecognizer= new TouchButtonRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto OnlyTouchButtonRecognizer::processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 
                         if(this->touchButtonProcessing)
                         
@@ -119,7 +124,6 @@ this->touchButtonRecognizer= new TouchButtonRecognizer();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_CPP

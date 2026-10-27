@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_LURCHROTATIONAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_LURCHROTATIONAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/LurchRotationAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,11 +74,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LurchRotationAI: public LurchAI {
 
-    private: IndexedAnimation* rotationAnimationInterface;
-
-public: LurchRotationAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : LurchAI(ownerLayerInterface, gameInput){
+LurchRotationAI::LurchRotationAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : LurchAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,15 +92,15 @@ this->update();
 }
 
 
-    protected: void reverse(){
-super.reverse();
+    auto LurchRotationAI::reverse() -> void{
+LurchAI::reverse();
     
 this->update();
     
 }
 
 
-    private: void update(){
+    auto LurchRotationAI::update() -> void{
 
                         if(this->currentRelativeAngle == 0)
                         
@@ -107,7 +114,7 @@ this->update();
 
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
     
 
                                     }
@@ -125,7 +132,7 @@ rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT
 
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME->intValue());
     
 
                                     }
@@ -133,7 +140,6 @@ rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_LURCHROTATIONAI_CPP

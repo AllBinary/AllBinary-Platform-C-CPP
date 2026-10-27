@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageCopyUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -103,47 +113,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageCopyUtil
-            : public Object
-         {
+auto ImageCopyUtil::instance_owner() -> ImageCopyUtil* { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
+ImageCopyUtil* ImageCopyUtil::instance = ImageCopyUtil::instance_owner();
 
-    private: static ImageCopyUtil* instance() { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
-
-    public: static ImageCopyUtil* getInstance(){
+    auto ImageCopyUtil::getInstance() -> ImageCopyUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCopyUtil::instance();
+                        return ImageCopyUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ImageCopyUtil(){
+ImageCopyUtil::ImageCopyUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), gameFeatureFactory(GameFeatureFactory::getInstance()), features(Features::getInstance()), openGLFeatureFactory(OpenGLFeatureFactory::getInstance()), openGLUtil(OpenGLUtil::getInstance()), openGLESImageExclusionUtil(OpenGLESImageExclusionUtil::getInstance()){
 }
 
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
-
-    private: Features* features = Features::getInstance();
-
-    private: OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
-
-    private: OpenGLUtil* openGLUtil = OpenGLUtil::getInstance();
-
-    private: OpenGLESImageExclusionUtil* openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
-
-    private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
-
-    private: const std::string UNABLE = "Unable to scale image without dimensions";
-
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageForRotation(Image* originalImage){
+    auto ImageCopyUtil::createImageForRotation(Image* originalImage) -> Image*{
 
                         if(this->features->isFeature(this->openGLFeatureFactory->OPENGL))
                         
@@ -177,7 +166,7 @@ image= this->openGLUtil->addImage(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage(Image* originalImage){
+    auto ImageCopyUtil::createImage(Image* originalImage) -> Image*{
 
                         if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
@@ -207,7 +196,7 @@ image= this->openGLUtil->addImage(image);
                                     
     OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(originalImage));;
     
-originalImage2= openGLESImage->openGLBitmap.getImage();
+originalImage2= openGLESImage->openGLBitmap->getImage();
     
 
                                     }
@@ -254,7 +243,7 @@ image= this->openGLUtil->addImage(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageWH(Image* originalImage, int32_t width, int32_t height, bool mutable_){
+    auto ImageCopyUtil::createImageWH(Image* originalImage, int32_t width, int32_t height, bool mutable_) -> Image*{
 
     Image* originalImage2 = originalImage;;
     
@@ -297,7 +286,7 @@ image= this->openGLUtil->addImage(image);
                                     
     OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(originalImage));;
     
-originalImage2= openGLESImage->openGLBitmap.getImage();
+originalImage2= openGLESImage->openGLBitmap->getImage();
     
 
                                     }
@@ -399,13 +388,9 @@ image= this->openGLUtil->addImage(image);
 }
 
 
-    private: const std::string INFORMATION = "about_";
-
-    private: const std::string LEADERBOARD = "leaderboard";
-
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage2(Image* originalImage, int32_t width, int32_t height, bool mutable_){
+    auto ImageCopyUtil::createImage2(Image* originalImage, int32_t width, int32_t height, bool mutable_) -> Image*{
 
     Image* originalImage2 = originalImage;;
     
@@ -447,10 +432,10 @@ image= this->openGLUtil->addImage(image);
     OpenGLESImageProperties* openGLESImageProperties = openGLESImage->openGLESImageProperties;;
     
 
-    int32_t openGLWidth = openGLESImage->openGLBitmap.getWidth();;
+    int32_t openGLWidth = openGLESImage->openGLBitmap->getWidth();;
     
 
-    int32_t openGLHeight = openGLESImage->openGLBitmap.getHeight();;
+    int32_t openGLHeight = openGLESImage->openGLBitmap->getHeight();;
     
 openGLESImageProperties->scaleX= openGLESImageProperties->scaleX2= ((width) /openGLWidth);
     
@@ -634,7 +619,7 @@ image= this->openGLUtil->addImage(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageScale(Image* originalImage, float canvasScale, bool resize){
+    auto ImageCopyUtil::createImageScale(Image* originalImage, float canvasScale, bool resize) -> Image*{
 
                         if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
@@ -828,7 +813,6 @@ getImage.
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP

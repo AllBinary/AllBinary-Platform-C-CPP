@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,23 +60,12 @@
         #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
 #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
 
-class FtpConfiguration
-            : public Object
-        , public FtpConfigurationInterface {
 
-    private: std::string ftpServer;
-
-    private: std::string ftpPath;
-
-    private: std::string ftpUserName;
-
-    private: std::string ftpPassword;
-
-public: FtpConfiguration(){
+FtpConfiguration::FtpConfiguration(){
 }
 
 
-public: FtpConfiguration(HashMap<Object*, Object*>* hashMap){
+FtpConfiguration::FtpConfiguration(HashMap<Object*, Object*>* hashMap){
 this->ftpServer= hashMap->get(FtpConfigurationData::SERVER);
     
 this->ftpPath= hashMap->get(FtpConfigurationData::PATH);
@@ -78,7 +77,7 @@ this->ftpPassword= hashMap->get(FtpConfigurationData::PASSWORD);
 }
 
 
-    public: std::string getServer(){
+    auto FtpConfiguration::getServer() -> std::string{
 
 
 
@@ -88,7 +87,7 @@ this->ftpPassword= hashMap->get(FtpConfigurationData::PASSWORD);
 }
 
 
-    public: std::string getPath(){
+    auto FtpConfiguration::getPath() -> std::string{
 
 
 
@@ -98,7 +97,7 @@ this->ftpPassword= hashMap->get(FtpConfigurationData::PASSWORD);
 }
 
 
-    public: std::string getUserName(){
+    auto FtpConfiguration::getUserName() -> std::string{
 
 
 
@@ -108,7 +107,7 @@ this->ftpPassword= hashMap->get(FtpConfigurationData::PASSWORD);
 }
 
 
-    public: std::string getPassword(){
+    auto FtpConfiguration::getPassword() -> std::string{
 
 
 
@@ -118,31 +117,30 @@ this->ftpPassword= hashMap->get(FtpConfigurationData::PASSWORD);
 }
 
 
-    public: void setServer(std::string value){
+    auto FtpConfiguration::setServer(std::string value) -> void{
 this->ftpServer= value;
     
 }
 
 
-    public: void setPath(std::string value){
+    auto FtpConfiguration::setPath(std::string value) -> void{
 this->ftpPath= value;
     
 }
 
 
-    public: void setUserName(std::string value){
+    auto FtpConfiguration::setUserName(std::string value) -> void{
 this->ftpUserName= value;
     
 }
 
 
-    public: void setPassword(std::string value){
+    auto FtpConfiguration::setPassword(std::string value) -> void{
 this->ftpPassword= value;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_CPP

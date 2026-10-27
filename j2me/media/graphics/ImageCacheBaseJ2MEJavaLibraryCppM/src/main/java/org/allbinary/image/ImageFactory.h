@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,11 +37,7 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
+class Image;
 
 
 
@@ -55,15 +56,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //ImageCacheBaseJavaLibrary - J2ME
 class ImageFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageFactory* instance() { static std::unique_ptr<ImageFactory> value(new ImageFactory()); return value.get(); }
+    private: static ImageFactory* instance_owner();
+    private: static ImageFactory* instance;
 
     public: static ImageFactory* getInstance();
 
+
+            
+    public: ImageFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: Image* createImageUrl(std::string url);
@@ -75,6 +85,7 @@ class ImageFactory
                 //@Throws(Exception.constructor)
             
     public: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
+    public: Image* createImageFromInputStream(const std::string& key, InputStream* inputStream) { return createImageFromInputStream(JavaString::box(key), inputStream); }
 
                 //@Throws(Exception.constructor)
             
@@ -86,3 +97,16 @@ class ImageFactory
 
 
         #endif //ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+
+        #endif
+    

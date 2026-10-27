@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderItemsEntity.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -134,15 +144,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderItemsEntityInterface.h"
 
-class OrderItemsEntity: public AbSqlBean, public OrderItemsEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    protected: const std::string tableName = "orderitems";
-
-public: OrderItemsEntity() : AbSqlBean(new HistoryDbInitInfo()){
+OrderItemsEntity::OrderItemsEntity() : AbSqlBean(new HistoryDbInitInfo()), logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -154,7 +157,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(std::string userName, OrderInterface* order){
+    auto OrderItemsEntity::insert(std::string userName, OrderInterface* order) -> void{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -287,10 +290,10 @@ this->insert(vector);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Command Success Added: " +items->size(), this, INSERT);
+                                    this->logUtil->putF(JavaString::valueOf("Command Success Added: ") +JavaString::valueOf(items->size()), this, INSERT);
     
 
                                     }
@@ -300,10 +303,10 @@ this->insert(vector);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put("Command Failed: " +vector->toString(), this, INSERT, &e);
+                                    this->logUtil->put(JavaString::valueOf("Command Failed: ") +JavaString::valueOf(vector->toString()), this, INSERT, &e);
     
 
                                     }
@@ -313,7 +316,7 @@ this->insert(vector);
 }
 
 
-    public: void setStatus(std::string orderId, std::string groupId, std::string status){
+    auto OrderItemsEntity::setStatus(std::string orderId, std::string groupId, std::string status) -> void{
 
         try {
             
@@ -328,17 +331,17 @@ whereHashMap->put(ShippingMethodData::GROUP, groupId);
     
 updateHashMap->put(OrderHistoryData::STATUS, status);
     
-super.updateWhere(whereHashMap, updateHashMap);
+AbSqlBean::updateWhere(whereHashMap, updateHashMap);
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "setStatus", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "setStatus", &e);
     
 
                                     }
@@ -348,11 +351,11 @@ super.updateWhere(whereHashMap, updateHashMap);
 }
 
 
-    public: bool isEverythingShipped(std::string orderId){
+    auto OrderItemsEntity::isEverythingShipped(std::string orderId) -> bool{
 
         try {
             
-    BasicArrayList* itemStatusVector = super.getColumnWhere(OrderHistoryData::STATUS, OrderData::ID, orderId);;
+    BasicArrayList* itemStatusVector = AbSqlBean::getColumnWhere(OrderHistoryData::STATUS, OrderData::ID, orderId);;
     
 
     int32_t size = itemStatusVector->size();;
@@ -393,10 +396,10 @@ super.updateWhere(whereHashMap, updateHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "isEverythingShipped", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "isEverythingShipped", &e);
     
 
                                     }
@@ -412,7 +415,7 @@ super.updateWhere(whereHashMap, updateHashMap);
 }
 
 
-    public: BasketReview* getBasketReview(std::string orderId){
+    auto OrderItemsEntity::getBasketReview(std::string orderId) -> BasketReview*{
 
         try {
             
@@ -424,7 +427,7 @@ super.updateWhere(whereHashMap, updateHashMap);
 keyValues->put(OrderData::ID, orderId);
     
 
-    BasicArrayList* items = super.getRows(keyValues);;
+    BasicArrayList* items = AbSqlBean::getRows(keyValues);;
     
 
     EntryData* entryData = EntryData::getInstance();;
@@ -501,10 +504,10 @@ basketReview->addItem(item);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "getBasketReview", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "getBasketReview", &e);
     
 
                                     }
@@ -520,7 +523,7 @@ basketReview->addItem(item);
 }
 
 
-    public: std::string createTableStatement(){
+    auto OrderItemsEntity::createTableStatement() -> std::string{
 
     EntryData* entryData = EntryData::getInstance();;
     
@@ -535,91 +538,91 @@ stringBuffer->append(" (");
     
 stringBuffer->append(entryData->ID);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(OrderData::ID);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(ShippingMethodData::GROUP);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(UserData::USERNAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(StoreFrontData::getInstance()->NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->ID);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->NUMBER);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->NEWORUSED);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->SUMMARY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->DISTRIBUTOR);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->IDUSEDBYDISTRIBUTOR);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->PRODUCEDBY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->PRODUCTIONDATE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->STARTPRODUCTIONDATE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->DESCRIPTION);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(basicItemData->KEYWORDS);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->CATEGORY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->TYPE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->SMALLIMAGE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->MEDIUMIMAGE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->LARGEIMAGE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->WEIGHT);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(basicItemData->PRICE);
     
@@ -627,51 +630,51 @@ stringBuffer->append(" VARCHAR(20) NOT NULL,");
     
 stringBuffer->append(basicItemData->COMMENT);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(basicItemData->CUSTOMS);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(basicItemData->DOWNLOADS);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(ShippingMethodData::COST);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::TAX);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::STREET);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::CITY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::STATE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::CODE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::COUNTRY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingMethodData::NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(entryData->SPECIAL);
     
@@ -679,15 +682,15 @@ stringBuffer->append(" VARCHAR(255) ,");
     
 stringBuffer->append(OrderHistoryData::STATUS);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::CANCELINFO);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::CANCELTYPE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::SHIPPEDDATE);
     
@@ -695,7 +698,7 @@ stringBuffer->append(" BIGINT(19) UNSIGNED ,");
     
 stringBuffer->append(OrderHistoryData::ORDERDATE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::TRANSDATE);
     
@@ -720,27 +723,26 @@ stringBuffer->append(") )");
 }
 
 
-    public: std::string createTable(){
+    auto OrderItemsEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-    public: std::string dropTable(){
+    auto OrderItemsEntity::dropTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITY_CPP

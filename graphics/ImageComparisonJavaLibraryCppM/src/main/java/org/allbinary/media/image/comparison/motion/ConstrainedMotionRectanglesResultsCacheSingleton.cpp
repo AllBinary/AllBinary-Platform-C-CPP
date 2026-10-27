@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSTRAINEDMOTIONRECTANGLESRESULTSCACHESINGLETON_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSTRAINEDMOTIONRECTANGLESRESULTSCACHESINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectanglesResultsCacheSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,16 +75,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ConstrainedMotionRectanglesResultsCacheSingleton
-            : public Object
-         {
-
-    private: static inline CacheInterface* cacheInterface = 
-                null
-            ;
-
-                    static int32_t initResult = ConstrainedMotionRectanglesResultsCacheSingleton::init();
-                static int32_t init() { 
+int32_t ConstrainedMotionRectanglesResultsCacheSingleton::initResult = ConstrainedMotionRectanglesResultsCacheSingleton::init();
+        auto ConstrainedMotionRectanglesResultsCacheSingleton::init() -> int32_t {
                     
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -107,9 +109,13 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 
 
                     return 0;
-                }
-            
-    public: static CacheInterface* getInstance(){
+        }
+                
+ConstrainedMotionRectanglesResultsCacheSingleton::ConstrainedMotionRectanglesResultsCacheSingleton() : logUtil(LogUtil::getInstance()){
+}
+
+
+    auto ConstrainedMotionRectanglesResultsCacheSingleton::getInstance() -> CacheInterface*{
 
 
 
@@ -119,13 +125,6 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ConstrainedMotionRectanglesResultsCacheSingleton(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSTRAINEDMOTIONRECTANGLESRESULTSCACHESINGLETON_CPP

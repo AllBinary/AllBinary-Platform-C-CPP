@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGINGBASE_H
         #define ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGINGBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +54,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/layer/AllBinaryLayer.h"
-#include "org/allbinary/layer/LayerManager.h"
+        class AllBinaryLayer;
+class LayerManager;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerManagerLoggingBase
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: LayerManagerLoggingBase();
+        
                 //@Throws(Exception.constructor)
             
     public: void append(AllBinaryLayer* layerInterface);
@@ -74,3 +87,16 @@ class LayerManagerLoggingBase
 
 
         #endif //ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGINGBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGINGBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGINGBASE_H_COMPLETE
+        #if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+#if __has_include("org/allbinary/layer/LayerManager.h")
+#include "org/allbinary/layer/LayerManager.h"
+#endif
+
+        #endif
+    

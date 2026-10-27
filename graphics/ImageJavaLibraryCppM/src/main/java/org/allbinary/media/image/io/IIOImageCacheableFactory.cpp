@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/io/IIOImageCacheableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,15 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/io/IIOImageCacheable.h"
 
-class IIOImageCacheableFactory
-            : public Object
-        , public CacheableInterfaceFactoryInterface {
 
-public: IIOImageCacheableFactory(){
+IIOImageCacheableFactory::IIOImageCacheableFactory(){
 }
 
 
-    public: CacheableInterface* getInstance(Object* key){
+    auto IIOImageCacheableFactory::getInstance(Object* key) -> CacheableInterface*{
 
 
 
@@ -70,7 +77,6 @@ public: IIOImageCacheableFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLEFACTORY_CPP

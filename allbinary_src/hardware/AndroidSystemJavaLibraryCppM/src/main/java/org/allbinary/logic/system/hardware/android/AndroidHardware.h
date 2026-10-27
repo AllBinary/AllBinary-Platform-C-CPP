@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_ANDROID_ANDROIDHARDWARE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_ANDROID_ANDROIDHARDWARE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -34,50 +39,20 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/Closeable.h>
-
-      
 #include <java/io/FileReader.h>
-
-      
 #include <java/io/LineNumberReader.h>
-
-      
-#include <org/allbinary/logic/io/NullCloseable.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class NullCloseable;
+class StdUtil;
+class LogUtil;
+class StringMaker;
 #include <org/allbinary/logic/system/hardware/HardwareInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/android/UnknownHardware.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class UnknownHardware;
+class HardwareComponentInterface;
+class CommonSeps;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -97,19 +72,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidHardware
-            : public Object
+            : public virtual Object
         , public HardwareInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: BasicArrayList* componentInterfaceVector = new BasicArrayListD();
+    private: BasicArrayList* componentInterfaceVector;
 
     private: const std::string PROC_BUS_INPUT_DIRECTORY = "/proc/bus/input/";
 
-    private: const std::string DEVICES = this->PROC_BUS_INPUT_DIRECTORY +"devices/";
+    private: const std::string DEVICES;
 
     private: const int32_t MINHARDWARE = 3;
 
@@ -137,3 +116,55 @@ public: AndroidHardware();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_ANDROID_ANDROIDHARDWARE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_ANDROID_ANDROIDHARDWARE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_ANDROID_ANDROIDHARDWARE_H_COMPLETE
+        #if __has_include(<java/io/Closeable.h>)
+#include <java/io/Closeable.h>
+#endif
+#if __has_include(<java/io/FileReader.h>)
+#include <java/io/FileReader.h>
+#endif
+#if __has_include(<java/io/LineNumberReader.h>)
+#include <java/io/LineNumberReader.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/NullCloseable.h>)
+#include <org/allbinary/logic/io/NullCloseable.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/HardwareInterface.h>)
+#include <org/allbinary/logic/system/hardware/HardwareInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/android/UnknownHardware.h>)
+#include <org/allbinary/logic/system/hardware/components/android/UnknownHardware.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

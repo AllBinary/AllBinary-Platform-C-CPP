@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASEBASICARRAYLISTCACHE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASEBASICARRAYLISTCACHE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/BaseBasicArrayListCache.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BaseBasicArrayListCache
-            : public Object
-         {
 
-    protected: BasicArrayList* list = new BasicArrayListD();
-
-    public: std::string log(){
+BaseBasicArrayListCache::BaseBasicArrayListCache() : list(new BasicArrayListD()) {
+        }
+        
+    auto BaseBasicArrayListCache::log() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -86,7 +94,6 @@ stringBuffer->appendint(this->list->size());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASEBASICARRAYLISTCACHE_CPP

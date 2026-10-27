@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MATH_RECTANGLECOLLISIONPOINTUTIL_H
         #define ORG_ALLBINARY_MATH_RECTANGLECOLLISIONPOINTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class GPoint;
+class BasicArrayList;
 
 
 
@@ -53,10 +54,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/math/RectangleCollisionUtil.h"
+        class RectangleCollisionUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RectangleCollisionPointUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static bool allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list);
@@ -71,3 +76,19 @@ private: RectangleCollisionPointUtil();
 
 
         #endif //ORG_ALLBINARY_MATH_RECTANGLECOLLISIONPOINTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MATH_RECTANGLECOLLISIONPOINTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MATH_RECTANGLECOLLISIONPOINTUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/math/RectangleCollisionUtil.h")
+#include "org/allbinary/math/RectangleCollisionUtil.h"
+#endif
+
+        #endif
+    

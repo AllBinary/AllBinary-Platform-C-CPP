@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageSwtUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,23 +64,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageSwtUtil
-            : public Object
-         {
 
-    private: static ImageSwtUtil* instance() { static std::unique_ptr<ImageSwtUtil> value(new ImageSwtUtil()); return value.get(); }
+ImageSwtUtil::ImageSwtUtil() {
+        }
+        auto ImageSwtUtil::instance_owner() -> ImageSwtUtil* { static std::unique_ptr<ImageSwtUtil> value(new ImageSwtUtil()); return value.get(); }
+ImageSwtUtil* ImageSwtUtil::instance = ImageSwtUtil::instance_owner();
 
-    public: static ImageSwtUtil* getInstance(){
+    auto ImageSwtUtil::getInstance() -> ImageSwtUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageSwtUtil::instance();
+                        return ImageSwtUtil::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/font/FontDebugFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,29 +61,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FontDebugFactory
-            : public Object
-         {
 
-    private: static FontDebugFactory* instance() { static std::unique_ptr<FontDebugFactory> value(new FontDebugFactory()); return value.get(); }
+FontDebugFactory::FontDebugFactory() {
+        }
+        auto FontDebugFactory::instance_owner() -> FontDebugFactory* { static std::unique_ptr<FontDebugFactory> value(new FontDebugFactory()); return value.get(); }
+FontDebugFactory* FontDebugFactory::instance = FontDebugFactory::instance_owner();
 
-    public: static FontDebugFactory* getInstance(){
+    auto FontDebugFactory::getInstance() -> FontDebugFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FontDebugFactory::instance();
+                        return FontDebugFactory::instance;
     
 }
 
 
-    public: void setFont(Font* font, Graphics* graphics){
+    auto FontDebugFactory::setFont(Font* font, Graphics* graphics) -> void{
 graphics->setFont(font);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FONT_FONTDEBUGFACTORY_CPP

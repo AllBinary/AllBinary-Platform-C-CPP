@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLEDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -53,17 +56,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlTableData
-            : public Object
+            : public virtual Object
          {
 
-    private: static HtmlTableData* instance() { static std::unique_ptr<HtmlTableData> value(new HtmlTableData()); return value.get(); }
+    private: static HtmlTableData* instance_owner();
+    private: static HtmlTableData* instance;
 
     public: static HtmlTableData* getInstance();
 
-    public: const std::string LEFT = CommonStrings::getInstance()->LEFT;
 
-    public: const std::string RIGHT = CommonStrings::getInstance()->RIGHT;
+            
+    public: HtmlTableData();
+        
+    public: const std::string LEFT;
+
+    public: const std::string RIGHT;
 
     public: const std::string NONE = "none";
 
@@ -83,10 +95,7 @@ class HtmlTableData
 
     public: const std::string ROWS = "rows";
 
-    public: const std::vector<std::string> FRAMES = 
-                                                        {
-                                                            this->NONE,this->TOP,this->BOTTOM,this->TOPBOT,this->SIDES,this->ALL,this->BORDERED
-                                                        };
+    public: std::vector<std::string> FRAMES;
 
 };
 
@@ -94,3 +103,13 @@ class HtmlTableData
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLEDATA_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

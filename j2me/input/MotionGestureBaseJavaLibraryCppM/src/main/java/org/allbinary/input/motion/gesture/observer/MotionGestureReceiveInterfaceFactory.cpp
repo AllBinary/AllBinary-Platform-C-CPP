@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTURERECEIVEINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTURERECEIVEINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/MotionGestureReceiveInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,11 +64,11 @@
 #include "org/allbinary/input/motion/gesture/observer/NullCompleteMotionGestureReceiver.h"
 #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 
-class MotionGestureReceiveInterfaceFactory
-            : public Object
-         {
 
-    public: static CompleteMotionGestureListenerInterface* getInstance(){
+MotionGestureReceiveInterfaceFactory::MotionGestureReceiveInterfaceFactory() {
+        }
+        
+    auto MotionGestureReceiveInterfaceFactory::getInstance() -> CompleteMotionGestureListenerInterface*{
 
     MotionGestureConfiguration* configuration = MotionGestureConfigurationFactory::getInstance();;
     
@@ -88,7 +98,6 @@ class MotionGestureReceiveInterfaceFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTURERECEIVEINTERFACEFACTORY_CPP

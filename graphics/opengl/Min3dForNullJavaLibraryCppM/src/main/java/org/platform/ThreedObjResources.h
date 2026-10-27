@@ -21,6 +21,11 @@
         #ifndef ORG_PLATFORM_THREEDOBJRESOURCES_H
         #define ORG_PLATFORM_THREEDOBJRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class StdUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -54,15 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThreedObjResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThreedObjResources* instance() { static std::unique_ptr<ThreedObjResources> value(new ThreedObjResources()); return value.get(); }
+    private: static ThreedObjResources* instance_owner();
+    private: static ThreedObjResources* instance;
 
     public: static ThreedObjResources* getInstance();
 
-    public: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+
+            
+    public: ThreedObjResources();
+        
+    public: ABHashtable<Object*, Object*>* hashtable;
 
     public: std::string get(std::string resourceName);
 
@@ -72,3 +82,16 @@ class ThreedObjResources
 
 
         #endif //ORG_PLATFORM_THREEDOBJRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_PLATFORM_THREEDOBJRESOURCES_H_COMPLETE)
+        #define ORG_PLATFORM_THREEDOBJRESOURCES_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

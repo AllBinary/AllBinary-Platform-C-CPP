@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_H
         #define ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/view/ViewPositionBase.h>
-
-      
+class ViewPositionBase;
 #include <org/allbinary/view/ViewPositionFactoryInterface.h>
-
-      
 
 
 
@@ -55,12 +56,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/view/StaticTileLayerIntoPositionViewPosition.h"
+        class StaticTileLayerIntoPositionViewPosition;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StaticTileLayerViewPositionFactory
-            : public Object
+            : public virtual Object
         , public ViewPositionFactoryInterface {
 
+
+            
+    public: StaticTileLayerViewPositionFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: ViewPositionBase* getInstance();
@@ -71,3 +80,19 @@ class StaticTileLayerViewPositionFactory
 
 
         #endif //ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/view/ViewPositionBase.h>)
+#include <org/allbinary/view/ViewPositionBase.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPositionFactoryInterface.h>)
+#include <org/allbinary/view/ViewPositionFactoryInterface.h>
+#endif
+#if __has_include("org/allbinary/game/view/StaticTileLayerIntoPositionViewPosition.h")
+#include "org/allbinary/game/view/StaticTileLayerIntoPositionViewPosition.h"
+#endif
+
+        #endif
+    

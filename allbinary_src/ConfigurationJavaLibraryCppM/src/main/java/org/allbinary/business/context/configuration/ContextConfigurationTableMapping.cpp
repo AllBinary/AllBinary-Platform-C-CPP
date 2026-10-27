@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONTABLEMAPPING_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONTABLEMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/configuration/ContextConfigurationTableMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,19 +74,14 @@
         #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
 #include "org/allbinary/business/context/configuration/ContextConfigurationData.h"
 
-class ContextConfigurationTableMapping
-            : public Object
-        , public TableMappingInterface {
 
-    private: ContextConfigurationInterface* contextConfigurationInterface;
-
-public: ContextConfigurationTableMapping(ContextConfigurationInterface* contextConfigurationInterface){
+ContextConfigurationTableMapping::ContextConfigurationTableMapping(ContextConfigurationInterface* contextConfigurationInterface){
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto ContextConfigurationTableMapping::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -91,7 +96,7 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto ContextConfigurationTableMapping::getKey() -> Object*{
 
 
 
@@ -103,7 +108,7 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto ContextConfigurationTableMapping::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -116,7 +121,6 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONTABLEMAPPING_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/validate/ValidatorBaseInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ValidatorBaseInterface {
+//Interface - declared in the header
 
-    public: virtual bool isValid() = 0;
 
-    public: virtual std::string validationInfo() = 0;
 
-    public: virtual ABHashtable<Object*, Object*>* toHashtable() = 0;
-
-    public: virtual BasicArrayList* toList() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASEINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/BaseSoundsFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,19 +61,17 @@
         #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
 #include "org/allbinary/media/audio/Sound.h"
 
-class BaseSoundsFactory
-            : public Object
-        , public SoundsFactoryInterface {
 
-    private: bool initialized= false;
-
-    public: void init(){
+BaseSoundsFactory::BaseSoundsFactory() {
+        }
+        
+    auto BaseSoundsFactory::init() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Sound*> getSoundInterfaceArray(){
+    auto BaseSoundsFactory::getSoundInterfaceArray() -> std::vector<Sound*>{
 
 
 
@@ -73,13 +81,13 @@ class BaseSoundsFactory
 }
 
 
-    public: void setInitialized(bool initialized){
+    auto BaseSoundsFactory::setInitialized(bool initialized) -> void{
 this->initialized= initialized;
     
 }
 
 
-    public: bool isInitialized(){
+    auto BaseSoundsFactory::isInitialized() -> bool{
 
 
 
@@ -89,7 +97,6 @@ this->initialized= initialized;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_CPP

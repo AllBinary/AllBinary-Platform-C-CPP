@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_GENERIC_PAGE_PAGEVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_GENERIC_PAGE_PAGEVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/generic/page/PageValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -103,11 +113,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/generic/page/PageView.h"
 
-class PageValidationView: public PageView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: PageValidationView(TransformInfoInterface* transformInfoInterface) : PageView(transformInfoInterface){
+PageValidationView::PageValidationView(TransformInfoInterface* transformInfoInterface) : PageView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -115,10 +122,10 @@ public: PageValidationView(TransformInfoInterface* transformInfoInterface) : Pag
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "PageViewValidation()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "PageViewValidation()");
     
 
                                     }
@@ -126,17 +133,17 @@ public: PageValidationView(TransformInfoInterface* transformInfoInterface) : Pag
 }
 
 
-    public: bool isValid(){
+    auto PageValidationView::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -151,10 +158,10 @@ public: PageValidationView(TransformInfoInterface* transformInfoInterface) : Pag
     BasicArrayList* allViewsToBeModifiedVector = pageObjectConfigInterface->getGroupTransforms();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Views To Be Modified: " +allViewsToBeModifiedVector->size(), this, "get(transformInfoInterface)");
+                                    this->logUtil->putF(JavaString::valueOf("Views To Be Modified: ") +JavaString::valueOf(allViewsToBeModifiedVector->size()), this, "get(transformInfoInterface)");
     
 
                                     }
@@ -176,7 +183,7 @@ public: PageValidationView(TransformInfoInterface* transformInfoInterface) : Pag
     std::string viewNameOfViewToBeModified = transformInfoInterface->getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -200,7 +207,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
     TransformInfoInterface* specifiedTransformInfoInterface = transformInfoEntityInterface->get(viewNameOfViewToBeModified, httpTransformInfoInterface->getPropertiesHashMap(), httpTransformInfoInterface->getPageContext());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -227,13 +234,13 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
                         if(title.compare("index") == 0)
                         
                                     {
-                                    hashMap->put(TitleData::getInstance()->TEXT, this->getTransformInfoInterface()->getStoreName() +" - Home Page");
+                                    hashMap->put(TitleData::getInstance()->TEXT, JavaString::valueOf(this->getTransformInfoInterface()->getStoreName()) +JavaString::valueOf(" - Home Page"));
     
 
                                     }
                                 
                         else {
-                            hashMap->put(TitleData::getInstance()->TEXT, this->getTransformInfoInterface()->getStoreName() +" -" +title);
+                            hashMap->put(TitleData::getInstance()->TEXT, JavaString::valueOf(JavaString::valueOf(this->getTransformInfoInterface()->getStoreName()) +JavaString::valueOf(" -")) +JavaString::valueOf(title));
     
 
                         }
@@ -263,7 +270,7 @@ document->appendChild(pageValidation->toXmlNode(document));
     std::string documentString = XmlDocumentHelper::toString(document);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -279,7 +286,7 @@ stringBuffer->append(" to the following data:\n");
     
 stringBuffer->append(documentString);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -302,10 +309,10 @@ CustomizerUtil::getInstance()->write(specifiedTransformInfoInterface, documentSt
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -321,7 +328,7 @@ CustomizerUtil::getInstance()->write(specifiedTransformInfoInterface, documentSt
 }
 
 
-    public: std::string validationInfo(){
+    auto PageValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -368,13 +375,13 @@ CustomizerUtil::getInstance()->write(specifiedTransformInfoInterface, documentSt
                         if(title.compare("index") == 0)
                         
                                     {
-                                    hashMap->put(TitleData::getInstance()->TEXT, this->getTransformInfoInterface()->getStoreName() +" - Home Page");
+                                    hashMap->put(TitleData::getInstance()->TEXT, JavaString::valueOf(this->getTransformInfoInterface()->getStoreName()) +JavaString::valueOf(" - Home Page"));
     
 
                                     }
                                 
                         else {
-                            hashMap->put(TitleData::getInstance()->TEXT, this->getTransformInfoInterface()->getStoreName() +" -" +title);
+                            hashMap->put(TitleData::getInstance()->TEXT, JavaString::valueOf(JavaString::valueOf(this->getTransformInfoInterface()->getStoreName()) +JavaString::valueOf(" -")) +JavaString::valueOf(title));
     
 
                         }
@@ -386,11 +393,11 @@ CustomizerUtil::getInstance()->write(specifiedTransformInfoInterface, documentSt
                         if(pageValidation->isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer->append("TransformInfo Name for PageValidation:" +specifiedTransformInfoInterface->getName());
+                                    stringBuffer->append(JavaString::valueOf("TransformInfo Name for PageValidation:") +JavaString::valueOf(specifiedTransformInfoInterface->getName()));
     
-stringBuffer->append("PageValidation:" +hashMap);
+stringBuffer->append(JavaString::valueOf("PageValidation:") +JavaString::valueOf(hashMap));
     
-stringBuffer->append("PageValidation Info:" +pageValidation->validationInfo());
+stringBuffer->append(JavaString::valueOf("PageValidation Info:") +JavaString::valueOf(pageValidation->validationInfo()));
     
 
                                     }
@@ -408,7 +415,7 @@ stringBuffer->append("PageValidation Info:" +pageValidation->validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -427,7 +434,7 @@ stringBuffer->append("PageValidation Info:" +pageValidation->validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto PageValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -437,7 +444,7 @@ stringBuffer->append("PageValidation Info:" +pageValidation->validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto PageValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -447,7 +454,6 @@ stringBuffer->append("PageValidation Info:" +pageValidation->validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_GENERIC_PAGE_PAGEVALIDATIONVIEW_CPP

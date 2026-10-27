@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealthListenerInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class HealthListenerInterface
+            : public virtual Object
+         {
 
     public: virtual void onHealthChange() = 0;
 
@@ -56,3 +67,10 @@ class HealthListenerInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHLISTENERINTERFACE_H_COMPLETE
+        
+        #endif
+    

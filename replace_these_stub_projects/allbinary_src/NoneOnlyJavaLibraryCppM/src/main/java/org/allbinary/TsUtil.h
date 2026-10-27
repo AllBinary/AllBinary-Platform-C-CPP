@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TSUTIL_H
         #define ORG_ALLBINARY_TSUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,22 +58,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //None - Do not use
 class TsUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static TsUtil* instance() { static std::unique_ptr<TsUtil> value(new TsUtil()); return value.get(); }
+    private: static TsUtil* instance_owner();
+    private: static TsUtil* instance;
 
     public: static TsUtil* getInstance();
 
+
+            
+    public: TsUtil();
+        
     public: int32_t hashCode(Object* anyType);
+    public: int32_t hashCode(const std::string& anyType) { return hashCode(JavaString::box(anyType)); }
 
                 //@Throws(InterruptedException.constructor)
             
     public: void waitFor(Object* any, int64_t timeoutMillis);
+    public: void waitFor(const std::string& any, int64_t timeoutMillis) { return waitFor(JavaString::box(any), timeoutMillis); }
 
     public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId);
+    public: std::vector<int8_t> getRecord(const std::string& anyType, int32_t recordId) { return getRecord(JavaString::box(anyType), recordId); }
 
     public: int32_t compareTo(std::string a, std::string b);
 
@@ -83,8 +100,10 @@ class TsUtil
     public: std::vector<int8_t> getByteArray(std::string string);
 
     public: bool isItemListener(Object* owner);
+    public: bool isItemListener(const std::string& owner) { return isItemListener(JavaString::box(owner)); }
 
     public: void printAvailableMethods(Object* anyType);
+    public: void printAvailableMethods(const std::string& anyType) { return printAvailableMethods(JavaString::box(anyType)); }
 
     public: void gc();
 
@@ -94,3 +113,10 @@ class TsUtil
 
 
         #endif //ORG_ALLBINARY_TSUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TSUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_TSUTIL_H_COMPLETE
+        
+        #endif
+    

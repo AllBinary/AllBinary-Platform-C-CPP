@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BOUNDS_TOPULAYERBOUNDS_CPP
+        #define ORG_ALLBINARY_BOUNDS_TOPULAYERBOUNDS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bounds/TopULayerBounds.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,8 @@
         #include "org/allbinary/bounds/LayerBounds.h"
 #include "org/allbinary/bounds/BoundsVisitorInterface.h"
 
-class TopULayerBounds: public LayerBounds {
 
-public: TopULayerBounds(Rectangle* rectangle) : LayerBounds(rectangle){
+TopULayerBounds::TopULayerBounds(Rectangle* rectangle) : LayerBounds(rectangle){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,9 +69,9 @@ public: TopULayerBounds(Rectangle* rectangle) : LayerBounds(rectangle){
 }
 
 
-    public: void visit(BoundsVisitorInterface* boundsVisitorInterface){
+    auto TopULayerBounds::visit(BoundsVisitorInterface* boundsVisitorInterface) -> void{
 
-                        if(boundsVisitorInterface->getX() > this->rectangle.getMaxX())
+                        if(boundsVisitorInterface->getX() > this->rectangle->getMaxX())
                         
                                     {
                                     boundsVisitorInterface->maxX();
@@ -71,7 +80,7 @@ public: TopULayerBounds(Rectangle* rectangle) : LayerBounds(rectangle){
                                     }
                                 
 
-                        if(boundsVisitorInterface->getX() < this->rectangle.getPoint()->getX())
+                        if(boundsVisitorInterface->getX() < this->rectangle->getPoint()->getX())
                         
                                     {
                                     boundsVisitorInterface->minX();
@@ -80,7 +89,7 @@ public: TopULayerBounds(Rectangle* rectangle) : LayerBounds(rectangle){
                                     }
                                 
 
-                        if(boundsVisitorInterface->getY() < this->rectangle.getPoint()->getY())
+                        if(boundsVisitorInterface->getY() < this->rectangle->getPoint()->getY())
                         
                                     {
                                     boundsVisitorInterface->minY();
@@ -91,7 +100,6 @@ public: TopULayerBounds(Rectangle* rectangle) : LayerBounds(rectangle){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BOUNDS_TOPULAYERBOUNDS_CPP

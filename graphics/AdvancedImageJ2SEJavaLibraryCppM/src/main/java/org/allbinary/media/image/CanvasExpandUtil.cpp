@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/CanvasExpandUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,29 +71,25 @@
 #include "org/allbinary/media/image/ImageProcessorInput.h"
 #include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
-class CanvasExpandUtil
-            : public Object
-         {
 
-    private: static CanvasExpandUtil* instance() { static std::unique_ptr<CanvasExpandUtil> value(new CanvasExpandUtil()); return value.get(); }
+CanvasExpandUtil::CanvasExpandUtil() : logUtil(LogUtil::getInstance()), stringUtil(StringUtil::getInstance()) {
+        }
+        auto CanvasExpandUtil::instance_owner() -> CanvasExpandUtil* { static std::unique_ptr<CanvasExpandUtil> value(new CanvasExpandUtil()); return value.get(); }
+CanvasExpandUtil* CanvasExpandUtil::instance = CanvasExpandUtil::instance_owner();
 
-    public: static CanvasExpandUtil* getInstance(){
+    auto CanvasExpandUtil::getInstance() -> CanvasExpandUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CanvasExpandUtil::instance();
+                        return CanvasExpandUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void process(ImageProcessorInput* imageProcessorInput, int32_t increaseX, int32_t increaseY, ImageProcessedVisitor* visitor){
+    auto CanvasExpandUtil::process(ImageProcessorInput* imageProcessorInput, int32_t increaseX, int32_t increaseY, ImageProcessedVisitor* visitor) -> void{
 
     ImageUtil* imageUtil = ImageUtil::getInstance();;
     
@@ -117,7 +123,6 @@ visitor->visit(subBufferedImageArray[index], this->stringUtil->EMPTY_STRING, ind
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_CPP

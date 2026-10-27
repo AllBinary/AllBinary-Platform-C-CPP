@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_API19_ACTIVITYFRACTUREUTILAPI19_CPP
+        #define ORG_ALLBINARY_ANDROID_API19_ACTIVITYFRACTUREUTILAPI19_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/api19/ActivityFractureUtilAPI19.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,21 +62,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ActivityFractureUtilAPI19: public ActivityFractureUtilAPI5 {
 
-    private: static ActivityFractureUtilAPI19* instance19() { static std::unique_ptr<ActivityFractureUtilAPI19> value(new ActivityFractureUtilAPI19()); return value.get(); }
+ActivityFractureUtilAPI19::ActivityFractureUtilAPI19() {
+        }
+        auto ActivityFractureUtilAPI19::instance19_owner() -> ActivityFractureUtilAPI19* { static std::unique_ptr<ActivityFractureUtilAPI19> value(new ActivityFractureUtilAPI19()); return value.get(); }
+ActivityFractureUtilAPI19* ActivityFractureUtilAPI19::instance19 = ActivityFractureUtilAPI19::instance19_owner();
 
-    public: static ActivityFractureUtilAPI19* getInstance(){
+    auto ActivityFractureUtilAPI19::getInstance() -> ActivityFractureUtilAPI19*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI19::instance19();
+                        return ActivityFractureUtilAPI19::instance19;
     
 }
 
 
-    public: void setFullScreen(Activity* activity){
+    auto ActivityFractureUtilAPI19::setFullScreen(Activity* activity) -> void{
 
     View* decorView = activity->getWindow()->getDecorView();;
     
@@ -78,7 +90,6 @@ decorView->setSystemUiVisibility(visibility);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_API19_ACTIVITYFRACTUREUTILAPI19_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_INPUTAUTOMATIONSERVICEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_INPUTAUTOMATIONSERVICEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/osgi/InputAutomationServiceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,31 +73,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationServiceFactory
-            : public Object
-        , public ServiceFactory {
+auto InputAutomationServiceFactory::inputAutomationServiceFactory_owner() -> InputAutomationServiceFactory* { static std::unique_ptr<InputAutomationServiceFactory> value(new InputAutomationServiceFactory()); return value.get(); }
+InputAutomationServiceFactory* InputAutomationServiceFactory::inputAutomationServiceFactory = InputAutomationServiceFactory::inputAutomationServiceFactory_owner();
 
-    private: static InputAutomationServiceFactory* inputAutomationServiceFactory() { static std::unique_ptr<InputAutomationServiceFactory> value(new InputAutomationServiceFactory()); return value.get(); }
+InputAutomationServiceFactory::InputAutomationServiceFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
+}
 
-    public: static InputAutomationServiceFactory* getInstance(){
+
+    auto InputAutomationServiceFactory::getInstance() -> InputAutomationServiceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationServiceFactory::inputAutomationServiceFactory();
+                        return InputAutomationServiceFactory::inputAutomationServiceFactory;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-private: InputAutomationServiceFactory(){
-}
-
-
-    public: Object* getService(Bundle* bundle, ServiceRegistration* registration){
+    auto InputAutomationServiceFactory::getService(Bundle* bundle, ServiceRegistration* registration) -> Object*{
 this->logUtil->putF(this->commonStrings->START, this, "getService");
     
 
@@ -99,11 +102,10 @@ this->logUtil->putF(this->commonStrings->START, this, "getService");
 }
 
 
-    public: void ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service){
+    auto InputAutomationServiceFactory::ungetService(Bundle* bundle, ServiceRegistration* registration, Object* service) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_INPUTAUTOMATIONSERVICEFACTORY_CPP

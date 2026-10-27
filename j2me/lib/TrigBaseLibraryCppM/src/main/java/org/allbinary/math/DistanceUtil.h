@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MATH_DISTANCEUTIL_H
         #define ORG_ALLBINARY_MATH_DISTANCEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/math/MathUtil.h>
-
-      
+class MathUtil;
 
 
 
@@ -51,15 +54,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DistanceUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static DistanceUtil* instance() { static std::unique_ptr<DistanceUtil> value(new DistanceUtil()); return value.get(); }
+    private: static DistanceUtil* instance_owner();
+    private: static DistanceUtil* instance;
 
     public: static DistanceUtil* getInstance();
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
+
+            
+    public: DistanceUtil();
+        
+    private: MathUtil* mathUtil;
 
     public: int32_t getDistance(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
 
@@ -69,3 +81,13 @@ class DistanceUtil
 
 
         #endif //ORG_ALLBINARY_MATH_DISTANCEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MATH_DISTANCEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MATH_DISTANCEUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/math/MathUtil.h>)
+#include <org/allbinary/logic/math/MathUtil.h>
+#endif
+
+        #endif
+    

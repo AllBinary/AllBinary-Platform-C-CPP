@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_ADMINCONFIGURATIONTAG_CPP
+        #define ADMIN_TAGS_ADMINCONFIGURATIONTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/AdminConfigurationTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class AdminConfigurationTag: public TableTag {
 
-public: AdminConfigurationTag(){
+AdminConfigurationTag::AdminConfigurationTag(){
 this->setTagHelperFactory(new AdminConfigurationHelperFactory());
     
 this->setTagRequestHelperFactory(new AdminConfigurationRequestHelperFactory());
@@ -60,7 +69,6 @@ this->setTagRequestHelperFactory(new AdminConfigurationRequestHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_ADMINCONFIGURATIONTAG_CPP

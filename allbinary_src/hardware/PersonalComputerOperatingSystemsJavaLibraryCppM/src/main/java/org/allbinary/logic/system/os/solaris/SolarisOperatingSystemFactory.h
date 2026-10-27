@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
-
-      
-#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/NoOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/OperatingSystems.h>
-
-      
-#include <org/allbinary/logic/system/os/SystemProperties.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class LogConfigTypeFactory;
+class LogConfigTypes;
+class GenericOperatingSystem;
+class NoOperatingSystem;
+class OperatingSystems;
+class SystemProperties;
+class CommonStrings;
 
 
 
@@ -73,17 +62,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/os/solaris/SolarisOS.h"
+        class SolarisOS;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SolarisOperatingSystemFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static SolarisOperatingSystemFactory* instance() { static std::unique_ptr<SolarisOperatingSystemFactory> value(new SolarisOperatingSystemFactory()); return value.get(); }
+    private: static SolarisOperatingSystemFactory* instance_owner();
+    private: static SolarisOperatingSystemFactory* instance;
 
     public: static SolarisOperatingSystemFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: SolarisOperatingSystemFactory();
 
@@ -95,3 +89,37 @@ private: SolarisOperatingSystemFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/NoOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/NoOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/OperatingSystems.h>)
+#include <org/allbinary/logic/system/os/OperatingSystems.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/SystemProperties.h>)
+#include <org/allbinary/logic/system/os/SystemProperties.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/system/os/solaris/SolarisOS.h")
+#include "org/allbinary/logic/system/os/solaris/SolarisOS.h"
+#endif
+
+        #endif
+    

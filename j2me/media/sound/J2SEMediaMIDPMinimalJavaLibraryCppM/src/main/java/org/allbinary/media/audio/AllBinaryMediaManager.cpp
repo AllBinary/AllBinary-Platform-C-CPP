@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/AllBinaryMediaManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -99,13 +109,12 @@
 #include "org/allbinary/media/audio/NoPlayer.h"
 #include "org/allbinary/media/audio/PCClipWavPlayer.h"
 //J2SEMediaMIDPMinimalJavaLibrary
-class AllBinaryMediaManager
-            : public Object
-         {
 
-    private: static inline const std::string THIS = "AllBinaryMediaManagerPC";
+AllBinaryMediaManager::AllBinaryMediaManager(){
+}
 
-    public: static bool isMuted(){
+
+    auto AllBinaryMediaManager::isMuted() -> bool{
 
 
 
@@ -115,11 +124,11 @@ class AllBinaryMediaManager
 }
 
 
-    public: static void setMuted(bool aMuted){
+    auto AllBinaryMediaManager::setMuted(bool aMuted) -> void{
 }
 
 
-    public: static bool update(){
+    auto AllBinaryMediaManager::update() -> bool{
 
 
 
@@ -131,7 +140,7 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(SoundsFactoryInterface* soundsFactoryInterface){
+    auto AllBinaryMediaManager::init(SoundsFactoryInterface* soundsFactoryInterface) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -149,7 +158,7 @@ ProgressCanvasFactory::getInstance()->addNormalPortion(50, "Media Manager");
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
+    auto AllBinaryMediaManager::shutdown(SoundsFactoryInterface* soundsFactoryInterface) -> void{
 (new Sounds(soundsFactoryInterface))->stopAll();
     
 (new Sounds(soundsFactoryInterface))->closeAll();
@@ -159,11 +168,9 @@ TsUtil::getInstance()->gc();
 }
 
 
-    private: static inline const std::string CREATE_PLAYER = "createPlayer";
-
                 //@Throws(Exception.constructor)
             
-    public: static Player* createPlayer(std::string resource){
+    auto AllBinaryMediaManager::createPlayer(std::string resource) -> Player*{
 
                         if(JavaString::startsWith(resource, Manager::TONE_DEVICE_LOCATOR))
                         
@@ -172,7 +179,7 @@ TsUtil::getInstance()->gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryMediaManager::createPlayerFromInputStream(new ByteArrayInputStream(NullUtil::getInstance()->NULL_BYTE_ARRAY), AudioContentTypeDataFactory::getInstance()->MIME_AUDIO_TONE.getName());;
+                        return AllBinaryMediaManager::createPlayerFromInputStream(new ByteArrayInputStream(NullUtil::getInstance()->NULL_BYTE_ARRAY), AudioContentTypeDataFactory::getInstance()->MIME_AUDIO_TONE->getName());;
     
 
                                     }
@@ -233,11 +240,11 @@ logUtil->put(commonString->EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER
 
                 //@Throws(IOException.constructor, MediaException.constructor)
             
-    public: static Player* createPlayerFromInputStream(InputStream* stream, std::string type){
+    auto AllBinaryMediaManager::createPlayerFromInputStream(InputStream* stream, std::string type) -> Player*{
 
 
 
-                            throw new MediaException("No Impl");
+                            throw MediaException("No Impl");
                     
 }
 
@@ -245,16 +252,16 @@ logUtil->put(commonString->EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void playTone(int32_t frequency, int32_t time, int32_t volume){
+    auto AllBinaryMediaManager::playTone(int32_t frequency, int32_t time, int32_t volume) -> void{
 
 
 
-                            throw new MediaException("No Impl");
+                            throw MediaException("No Impl");
                     
 }
 
 
-    public: static bool isInitialized(){
+    auto AllBinaryMediaManager::isInitialized() -> bool{
 
 
 
@@ -264,11 +271,6 @@ logUtil->put(commonString->EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER
 }
 
 
-private: AllBinaryMediaManager(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_CPP

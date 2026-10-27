@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHE_CPP
+        #define ORG_ALLBINARY_IMAGE_IMAGECACHE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/ImageCache.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -92,25 +102,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/ImageCacheBase.h"
 
-class ImageCache: public ImageCacheBase {
+auto ImageCache::NULL_IMAGE_CACHE_owner() -> ImageCache* { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
+ImageCache* ImageCache::NULL_IMAGE_CACHE = ImageCache::NULL_IMAGE_CACHE_owner();
 
-    public: static ImageCache* NULL_IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-public: ImageCache(){
+ImageCache::ImageCache() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), systemWrapper(ABSystemWrapper::getInstance()), tsUtil(TsUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Image* get(std::string caller, int32_t width, int32_t height){
+    auto ImageCache::get(std::string caller, int32_t width, int32_t height) -> Image*{
 
     int32_t foundIndex = this->getIndexWH(width, height);;
     
@@ -167,7 +168,7 @@ this->listOfList[foundIndex].add(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image* get(Object* key){
+    auto ImageCache::get(Object* key) -> Image*{
 
     ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
@@ -212,7 +213,7 @@ image= this->createImage(key, inputStream);
     
 }
 
-this->hashtable.put(resourceId, image);
+this->hashtable->put(resourceId, image);
     
 
                                     }
@@ -226,7 +227,7 @@ this->hashtable.put(resourceId, image);
 }
 
 
-    public: int32_t getIndex(Object* key){
+    auto ImageCache::getIndex(Object* key) -> int32_t{
 
     GDResources* gdResources = GDResources::getInstance();;
     
@@ -263,14 +264,14 @@ this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImage(Object* key, InputStream* inputStream){
+    auto ImageCache::createImage(Object* key, InputStream* inputStream) -> Image*{
 
 
 
@@ -280,16 +281,15 @@ this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(
 }
 
 
-    public: bool isLazy(){
+    auto ImageCache::isLazy() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_IMAGECACHE_CPP

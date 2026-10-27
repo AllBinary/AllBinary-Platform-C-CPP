@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/regex/replace/Replace.h>
-
-      
+class StringUtil;
+class Replace;
 
 
 
@@ -56,8 +57,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DocumentToNode
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string XMLROOT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
@@ -88,3 +93,16 @@ private: DocumentToNode();
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/regex/replace/Replace.h>)
+#include <org/allbinary/logic/string/regex/replace/Replace.h>
+#endif
+
+        #endif
+    

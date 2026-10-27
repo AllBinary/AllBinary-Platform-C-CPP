@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/BasicHighScoresGameInfoFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,27 +59,22 @@
 #include "org/allbinary/game/GameMode.h"
 #include "org/allbinary/game/PlayerTypesFactory.h"
 
-class BasicHighScoresGameInfoFactory
-            : public Object
-         {
 
-    private: static BasicHighScoresGameInfoFactory* SINGLETON() { static std::unique_ptr<BasicHighScoresGameInfoFactory> value(new BasicHighScoresGameInfoFactory()); return value.get(); }
+BasicHighScoresGameInfoFactory::BasicHighScoresGameInfoFactory() : MULTI_PLAYER_SERVER(new GameInfo(GameTypeFactory::getInstance()->MULTI_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0)), SINGLE_PLAYER_SERVER(new GameInfo(GameTypeFactory::getInstance()->SINGLE_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0)) {
+        }
+        auto BasicHighScoresGameInfoFactory::SINGLETON_owner() -> BasicHighScoresGameInfoFactory* { static std::unique_ptr<BasicHighScoresGameInfoFactory> value(new BasicHighScoresGameInfoFactory()); return value.get(); }
+BasicHighScoresGameInfoFactory* BasicHighScoresGameInfoFactory::SINGLETON = BasicHighScoresGameInfoFactory::SINGLETON_owner();
 
-    public: static BasicHighScoresGameInfoFactory* getInstance(){
+    auto BasicHighScoresGameInfoFactory::getInstance() -> BasicHighScoresGameInfoFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicHighScoresGameInfoFactory::SINGLETON();
+                        return BasicHighScoresGameInfoFactory::SINGLETON;
     
 }
 
 
-    public: GameInfo* MULTI_PLAYER_SERVER = new GameInfo(GameTypeFactory::getInstance()->MULTI_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0);
 
-    public: GameInfo* SINGLE_PLAYER_SERVER = new GameInfo(GameTypeFactory::getInstance()->SINGLE_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0);
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_CPP

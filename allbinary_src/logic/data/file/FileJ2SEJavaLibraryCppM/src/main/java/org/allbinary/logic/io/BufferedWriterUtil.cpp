@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_BUFFEREDWRITERUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_BUFFEREDWRITERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/BufferedWriterUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,33 +84,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BufferedWriterUtil
-            : public Object
-         {
 
-    private: static BufferedWriterUtil* instance() { static std::unique_ptr<BufferedWriterUtil> value(new BufferedWriterUtil()); return value.get(); }
+BufferedWriterUtil::BufferedWriterUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonLabels(CommonLabels::getInstance()) {
+        }
+        auto BufferedWriterUtil::instance_owner() -> BufferedWriterUtil* { static std::unique_ptr<BufferedWriterUtil> value(new BufferedWriterUtil()); return value.get(); }
+BufferedWriterUtil* BufferedWriterUtil::instance = BufferedWriterUtil::instance_owner();
 
-    public: static BufferedWriterUtil* getInstance(){
+    auto BufferedWriterUtil::getInstance() -> BufferedWriterUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BufferedWriterUtil::instance();
+                        return BufferedWriterUtil::instance;
     
 }
 
 
-    private: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CommonLabels* commonLabels = CommonLabels::getInstance();
-
-    private: const std::string REMOVING_OLD = "Remove old for overwriting: ";
-
                 //@Throws(Exception.constructor)
             
-    public: void overwrite(std::string path, std::string data){
+    auto BufferedWriterUtil::overwrite(std::string path, std::string data) -> void{
 
     AbFile* abFile = AbFile::createAbFile(path);;
     
@@ -108,9 +110,9 @@ class BufferedWriterUtil
                         if(abFile->exists())
                         
                                     {
-                                    this->logUtil->putF(this->REMOVING_OLD +path, this, this->commonStrings->CREATE);
+                                    this->logUtil->putF(JavaString::valueOf(this->REMOVING_OLD) +JavaString::valueOf(path), this, this->commonStrings->CREATE);
     
-abFile->delete();
+abFile->delete_();
     
 
                                     }
@@ -138,7 +140,7 @@ this->logUtil->putF(stringBuilder->append(this->commonStrings->CREATE)->append(t
 
     bool result = abFileDirectory->mkdirs();;
     
-stringBuilder->delete(0, stringBuilder->length());
+stringBuilder->delete_(0, stringBuilder->length());
     
 this->logUtil->putF(stringBuilder->append(this->commonLabels->RESULT_)->appendboolean(result)->toString(), this, this->commonStrings->CREATE);
     
@@ -155,14 +157,14 @@ this->write(abFile, data);
 
                 //@Throws(Exception.constructor)
             
-    public: void overwrite(AbFile* abFile, std::string data){
+    auto BufferedWriterUtil::overwrite(AbFile* abFile, std::string data) -> void{
 
                         if(abFile->exists())
                         
                                     {
                                     this->logUtil->putF(this->REMOVING_OLD +abFile->getPath(), this, this->commonStrings->CREATE);
     
-abFile->delete();
+abFile->delete_();
     
 
                                     }
@@ -190,7 +192,7 @@ this->logUtil->putF(stringBuilder->append(this->commonStrings->CREATE)->append(t
 
     bool result = abFileDirectory->mkdirs();;
     
-stringBuilder->delete(0, stringBuilder->length());
+stringBuilder->delete_(0, stringBuilder->length());
     
 this->logUtil->putF(stringBuilder->append(this->commonLabels->RESULT_)->appendboolean(result)->toString(), this, this->commonStrings->CREATE);
     
@@ -207,7 +209,7 @@ this->write(abFile, data);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(AbFile* abFile, std::string data){
+    auto BufferedWriterUtil::write(AbFile* abFile, std::string data) -> void{
 
     BufferedWriter* fileOut = new BufferedWriter(new FileWriter(AbFileNativeUtil::get(abFile)));;
     
@@ -220,7 +222,6 @@ fileOut->flush();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_BUFFEREDWRITERUTIL_CPP

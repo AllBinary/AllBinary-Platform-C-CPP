@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_TIME_TIME_CPP
+        #define ORG_ALLBINARY_BUSINESS_TIME_TIME_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/time/Time.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,25 +57,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Time
-            : public Object
-         {
 
-    private: int64_t timeLong;
-
-public: Time(std::string time){
+Time::Time(std::string time){
 this->timeLong= int64_t(time);
     
 }
 
 
-public: Time(int64_t time){
+Time::Time(int64_t time){
 this->timeLong= int64_t(time);
     
 }
 
 
-    public: int64_t getLong(){
+    auto Time::getLong() -> int64_t{
 
 
 
@@ -75,7 +80,7 @@ this->timeLong= int64_t(time);
 }
 
 
-    public: int64_t getlong(){
+    auto Time::getlong() -> int64_t{
 
 
 
@@ -85,7 +90,7 @@ this->timeLong= int64_t(time);
 }
 
 
-    public: std::string toString(){
+    auto Time::toString() -> std::string{
 
 
 
@@ -95,7 +100,6 @@ this->timeLong= int64_t(time);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_TIME_TIME_CPP

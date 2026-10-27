@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h>
-
-      
+class EmailServerConfigurationInterface;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ContextConfigurationInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ContextConfigurationInterface
+            : public virtual Object
+         {
 
     public: virtual EmailServerConfigurationInterface* getEmailServerConfigurationInterface() = 0;
 
@@ -61,3 +70,13 @@ class ContextConfigurationInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h>)
+#include <org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h>
+#endif
+
+        #endif
+    

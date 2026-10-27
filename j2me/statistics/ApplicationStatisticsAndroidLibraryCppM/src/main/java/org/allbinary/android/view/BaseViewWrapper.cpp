@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_VIEW_BASEVIEWWRAPPER_CPP
+        #define ORG_ALLBINARY_ANDROID_VIEW_BASEVIEWWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/view/BaseViewWrapper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BaseViewWrapper
-            : public Object
-         {
 
-    public: static BaseViewWrapper* NULL_VIEW_WRAPPER() { static std::unique_ptr<BaseViewWrapper> value(new BaseViewWrapper()); return value.get(); }
+BaseViewWrapper::BaseViewWrapper() {
+        }
+        auto BaseViewWrapper::NULL_VIEW_WRAPPER_owner() -> BaseViewWrapper* { static std::unique_ptr<BaseViewWrapper> value(new BaseViewWrapper()); return value.get(); }
+BaseViewWrapper* BaseViewWrapper::NULL_VIEW_WRAPPER = BaseViewWrapper::NULL_VIEW_WRAPPER_owner();
 
-    public: void invalidate(){
+    auto BaseViewWrapper::invalidate() -> void{
 }
 
 
-    public: void postInvalidate(){
+    auto BaseViewWrapper::postInvalidate() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_VIEW_BASEVIEWWRAPPER_CPP

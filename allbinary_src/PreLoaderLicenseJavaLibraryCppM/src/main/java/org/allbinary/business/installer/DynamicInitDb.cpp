@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_DYNAMICINITDB_CPP
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_DYNAMICINITDB_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/installer/DynamicInitDb.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,21 +66,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/installer/InitDb.h"
 //Warning you must have sql root access
-class DynamicInitDb: public InitDb {
 
-public: DynamicInitDb(AbeClientInformationInterface* abeClientInformation){
+DynamicInitDb::DynamicInitDb(AbeClientInformationInterface* abeClientInformation){
 this->setHelper(InitDbHelperFactory::getInstance(abeClientInformation));
     
 }
 
 
-public: DynamicInitDb(AbeClientInformationInterface* abeClientInformation, DatabaseConnectionInfoInterface* databaseConnectionInfoInterface){
+DynamicInitDb::DynamicInitDb(AbeClientInformationInterface* abeClientInformation, DatabaseConnectionInfoInterface* databaseConnectionInfoInterface){
 this->setHelper(InitDbHelperFactory::getInstance(abeClientInformation, databaseConnectionInfoInterface));
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_DYNAMICINITDB_CPP

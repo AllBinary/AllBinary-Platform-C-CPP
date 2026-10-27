@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/address/StreetAddressesEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,21 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StreetAddressesEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-    public: virtual void remove(int32_t index) = 0;
 
-    public: virtual void add(StreetAddress* address) = 0;
 
-    public: virtual void update(StreetAddress* address) = 0;
-
-    public: virtual std::string getLastId() = 0;
-
-    public: virtual StreetAddress* getDefault() = 0;
-
-    public: virtual void setDefault(std::string value) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_STREETADDRESSESENTITYINTERFACE_CPP

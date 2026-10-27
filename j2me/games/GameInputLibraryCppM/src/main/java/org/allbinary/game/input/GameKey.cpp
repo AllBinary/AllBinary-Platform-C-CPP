@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEKEY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameKey.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/Input.h"
 
-class GameKey: public Input {
+auto GameKey::NULL_GAME_KEY_owner() -> GameKey* { static std::unique_ptr<GameKey> value(new GameKey( -1, StringUtil::getInstance()->NULL_STRING)); return value.get(); }
+GameKey* GameKey::NULL_GAME_KEY = GameKey::NULL_GAME_KEY_owner();
 
-    public: static GameKey* NULL_GAME_KEY() { static std::unique_ptr<GameKey> value(new GameKey( -1, StringUtil::getInstance()->NULL_STRING)); return value.get(); }
-
-: GameKey(int32_t key, std::string name) : Input(key, name){
+GameKey::GameKey(int32_t key, std::string name) : Input(key, name){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,17 +73,16 @@ class GameKey: public Input {
 }
 
 
-    public: std::string toString(){
+    auto GameKey::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append("GameKey ")->append(super.toString())->toString();;
+                        return (new StringMaker())->append("GameKey ")->append(Input::toString())->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEKEY_CPP

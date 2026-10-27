@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSISRESULTS_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSISRESULTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/analysis/ImageAnalysisResults.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +57,8 @@
         #include "org/allbinary/media/image/analysis/ImageColorRangeResults.h"
 #include "org/allbinary/media/image/analysis/ImageColorResults.h"
 
-class ImageAnalysisResults
-            : public Object
-         {
 
-    private: ImageColorRangeResults* imageColorRangeResults;
-
-    private: ImageColorResults* imageColorResults;
-
-    private: float averageAmbientLevel= 0.0;
-
-public: ImageAnalysisResults(){
+ImageAnalysisResults::ImageAnalysisResults(){
 this->imageColorRangeResults= new ImageColorRangeResults();
     
 this->imageColorResults= new ImageColorResults();
@@ -65,7 +66,7 @@ this->imageColorResults= new ImageColorResults();
 }
 
 
-    public: ImageColorRangeResults* getImageColorRangeResults(){
+    auto ImageAnalysisResults::getImageColorRangeResults() -> ImageColorRangeResults*{
 
 
 
@@ -75,13 +76,13 @@ this->imageColorResults= new ImageColorResults();
 }
 
 
-    public: void setImageColorRangeResults(ImageColorRangeResults* imageColorRangeResults){
+    auto ImageAnalysisResults::setImageColorRangeResults(ImageColorRangeResults* imageColorRangeResults) -> void{
 this->imageColorRangeResults= imageColorRangeResults;
     
 }
 
 
-    public: float getAverageAmbientLevel(){
+    auto ImageAnalysisResults::getAverageAmbientLevel() -> float{
 
 
 
@@ -91,13 +92,13 @@ this->imageColorRangeResults= imageColorRangeResults;
 }
 
 
-    public: void setAverageAmbientLevel(float averageAmbientLevel){
+    auto ImageAnalysisResults::setAverageAmbientLevel(float averageAmbientLevel) -> void{
 this->averageAmbientLevel= averageAmbientLevel;
     
 }
 
 
-    public: ImageColorResults* getImageColorResults(){
+    auto ImageAnalysisResults::getImageColorResults() -> ImageColorResults*{
 
 
 
@@ -107,13 +108,12 @@ this->averageAmbientLevel= averageAmbientLevel;
 }
 
 
-    public: void setImageColorResults(ImageColorResults* imageColorResults){
+    auto ImageAnalysisResults::setImageColorResults(ImageColorResults* imageColorResults) -> void{
 this->imageColorResults= imageColorResults;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSISRESULTS_CPP

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
-
-      
+class ScrollSelectionForm;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BuildMenuCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class BuildMenuCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual ScrollSelectionForm* getCurrentScrollSelectionForm() = 0;
 
@@ -63,3 +72,13 @@ class BuildMenuCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/form/ScrollSelectionForm.h>)
+#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
+#endif
+
+        #endif
+    

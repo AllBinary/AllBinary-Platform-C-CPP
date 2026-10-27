@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHEBASE_CPP
+        #define ORG_ALLBINARY_IMAGE_IMAGECACHEBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/ImageCacheBase.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -85,31 +95,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/ImageFactory.h"
 
-class ImageCacheBase
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: ImageFactory* imageFactory = ImageFactory::getInstance();
-
-    protected: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    protected: const int32_t SIZE = 128;
-
-    protected: const std::vector<int32_t> widths = std::vector<int32_t>(this->SIZE);
-
-    protected: const std::vector<int32_t> heights = std::vector<int32_t>(this->SIZE);
-
-    protected: const std::vector<BasicArrayList*> listOfList = std::vector<BasicArrayList*>(this->SIZE);
-
-    protected: const std::vector<BasicArrayList*> availableListOfList = std::vector<BasicArrayList*>(this->SIZE);
-
-    protected: int32_t volume = 0;
-
-    protected: int32_t nextIndex = 0;
-
-public: ImageCacheBase(){
+ImageCacheBase::ImageCacheBase() : logUtil(LogUtil::getInstance()), imageFactory(ImageFactory::getInstance()), hashtable(StdUtil::getInstance()->createHashtable()), widths(std::vector<int32_t>(this->SIZE)), heights(std::vector<int32_t>(this->SIZE)), listOfList(std::vector<BasicArrayList*>(this->SIZE)), availableListOfList(std::vector<BasicArrayList*>(this->SIZE)){
 
 
 
@@ -135,7 +122,7 @@ this->availableListOfList[index]= new BasicArrayListD();
 }
 
 
-    protected: Image* getImage(Object* resourceId){
+    auto ImageCacheBase::getImage(Object* resourceId) -> Image*{
 
     Object* imageCanBeNull = this->hashtable->get(resourceId);;
     
@@ -163,7 +150,7 @@ this->availableListOfList[index]= new BasicArrayListD();
 }
 
 
-    public: void releaseAll(){
+    auto ImageCacheBase::releaseAll() -> void{
 
 
 
@@ -171,9 +158,9 @@ this->availableListOfList[index]= new BasicArrayListD();
                         for (
     int32_t index = this->listOfList.size() -1;index >= 0; index--)
         {
-this->availableListOfList[index].clear();
+this->availableListOfList[index]->clear();
     
-this->availableListOfList[index].addAllList(this->listOfList[index]);
+this->availableListOfList[index]->addAllList(this->listOfList[index]);
     
 }
 
@@ -182,7 +169,7 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 }
 
 
-    protected: int32_t getIndexWH(int32_t width, int32_t height){
+    auto ImageCacheBase::getIndexWH(int32_t width, int32_t height) -> int32_t{
 
     int32_t foundIndex =  -1;;
     
@@ -222,13 +209,13 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 }
 
 
-    protected: Image* getFromAvailable(int32_t foundIndex, int32_t width, int32_t height){
+    auto ImageCacheBase::getFromAvailable(int32_t foundIndex, int32_t width, int32_t height) -> Image*{
 
                         if(foundIndex !=  -1)
                         
                                     {
                                     
-                        if(this->availableListOfList[foundIndex].size() > 0)
+                        if(this->availableListOfList[foundIndex]->size() > 0)
                         
                                     {
                                     
@@ -257,29 +244,29 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 
                 //@Throws(Exception.constructor)
             
-    public: Image* get(std::string caller, int32_t width, int32_t height){
+    auto ImageCacheBase::get(std::string caller, int32_t width, int32_t height) -> Image*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Image* getWithKey(Object* key){
+    auto ImageCacheBase::getWithKey(Object* key) -> Image*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImage(std::string caller, int32_t width, int32_t height){
+    auto ImageCacheBase::createImage(std::string caller, int32_t width, int32_t height) -> Image*{
 
 
 
@@ -291,7 +278,7 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImageFromInputStream(Object* key, InputStream* inputStream){
+    auto ImageCacheBase::createImageFromInputStream(Object* key, InputStream* inputStream) -> Image*{
 
 
 
@@ -301,7 +288,7 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
 }
 
 
-    public: std::string toString(){
+    auto ImageCacheBase::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -319,10 +306,10 @@ this->logUtil->putF((new StringMaker())->append("ImageCache: ")->append(this->to
     int32_t height = this->heights[index];;
     
 
-    int32_t total = this->listOfList[index].size();;
+    int32_t total = this->listOfList[index]->size();;
     
 
-    int32_t totalAvailable = this->availableListOfList[index].size();;
+    int32_t totalAvailable = this->availableListOfList[index]->size();;
     
 stringBuffer->append(" w: ");
     
@@ -353,7 +340,7 @@ stringBuffer->appendint(totalAvailable);
 }
 
 
-    public: ABHashtable<Object*, Object*>* getHashtableP(){
+    auto ImageCacheBase::getHashtableP() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -363,15 +350,14 @@ stringBuffer->appendint(totalAvailable);
 }
 
 
-    public: void init(Image* image){
+    auto ImageCacheBase::init(Image* image) -> void{
 }
 
 
-    public: void initProgress(){
+    auto ImageCacheBase::initProgress() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_IMAGECACHEBASE_CPP

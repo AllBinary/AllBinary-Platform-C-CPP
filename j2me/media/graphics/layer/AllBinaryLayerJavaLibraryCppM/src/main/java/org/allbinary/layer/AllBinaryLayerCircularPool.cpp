@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_CPP
+        #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/AllBinaryLayerCircularPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,15 +62,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
 
-class AllBinaryLayerCircularPool: public BaseCircularPool {
 
-protected: AllBinaryLayerCircularPool(){
+AllBinaryLayerCircularPool::AllBinaryLayerCircularPool(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total){
+    auto AllBinaryLayerCircularPool::initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface* allbinaryLayerFactoryInterface, int32_t total) -> void{
 this->circularIndexUtil= CircularIndexUtil::createInstance(total);
     
 this->OBJECT_ARRAY= std::vector<AllBinaryLayer*>(total);
@@ -79,7 +88,6 @@ this->OBJECT_ARRAY[localIndex]= allbinaryLayerFactoryInterface->getInstance();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLPOSTFORM_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLPOSTFORM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,6 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/html/HtmlForm.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlPostForm: public HtmlForm {
 
 public: HtmlPostForm(std::string action);
@@ -57,3 +66,13 @@ public: HtmlPostForm(std::string action);
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLPOSTFORM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLPOSTFORM_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLPOSTFORM_H_COMPLETE
+        #if __has_include("org/allbinary/logic/visual/dhtml/html/HtmlForm.h")
+#include "org/allbinary/logic/visual/dhtml/html/HtmlForm.h"
+#endif
+
+        #endif
+    

@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/osgi/framework/BundleContext.h>
-
-      
-#include <bundle/input/automation/module/InputAutomationModuleServiceInterface.h>
-
-      
+class BundleContext;
+class InputAutomationModuleServiceInterface;
 #include <org/allbinary/osgi/service/InputAutomationServiceConsumer.h>
-
-      
 
 
 
@@ -54,8 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/osgi/InputAutomationModuleOSGIServiceVisitor.h"
+        class InputAutomationModuleOSGIServiceVisitor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationModuleServiceConsumer: public InputAutomationServiceConsumer {
 
 public: InputAutomationModuleServiceConsumer(BundleContext* bundleContext);
@@ -66,3 +69,22 @@ public: InputAutomationModuleServiceConsumer(BundleContext* bundleContext);
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICECONSUMER_H_COMPLETE
+        #if __has_include(<org/osgi/framework/BundleContext.h>)
+#include <org/osgi/framework/BundleContext.h>
+#endif
+#if __has_include(<bundle/input/automation/module/InputAutomationModuleServiceInterface.h>)
+#include <bundle/input/automation/module/InputAutomationModuleServiceInterface.h>
+#endif
+#if __has_include(<org/allbinary/osgi/service/InputAutomationServiceConsumer.h>)
+#include <org/allbinary/osgi/service/InputAutomationServiceConsumer.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/osgi/InputAutomationModuleOSGIServiceVisitor.h")
+#include "org/allbinary/input/automation/module/osgi/InputAutomationModuleOSGIServiceVisitor.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DEVICE_LOADTEXTURES_H
         #define ORG_ALLBINARY_DEVICE_LOADTEXTURES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
+class GL10;
 
 
 
@@ -53,10 +56,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LoadTextures
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: LoadTextures();
+        
                 //@Throws(Exception.constructor)
             
     public: void load(GL10* gl);
@@ -67,3 +78,13 @@ class LoadTextures
 
 
         #endif //ORG_ALLBINARY_DEVICE_LOADTEXTURES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DEVICE_LOADTEXTURES_H_COMPLETE)
+        #define ORG_ALLBINARY_DEVICE_LOADTEXTURES_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INIT_INIT_H
         #define ORG_ALLBINARY_INIT_INIT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -54,11 +57,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/init/InitInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Init
-            : public Object
+            : public virtual Object
         , public InitInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+
+            
+    public: Init();
+        
+    /*protected*/ public: CommonStrings* commonStrings;
 
                 //@Throws(Exception.constructor)
             
@@ -70,3 +81,16 @@ class Init
 
 
         #endif //ORG_ALLBINARY_INIT_INIT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INIT_INIT_H_COMPLETE)
+        #define ORG_ALLBINARY_INIT_INIT_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/init/InitInterface.h")
+#include "org/allbinary/init/InitInterface.h"
+#endif
+
+        #endif
+    

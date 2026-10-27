@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_KEYSPECFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_KEYSPECFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -69,33 +79,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeySpecFactory
-            : public Object
-         {
+auto KeySpecFactory::instance_owner() -> KeySpecFactory* { static std::unique_ptr<KeySpecFactory> value(new KeySpecFactory()); return value.get(); }
+KeySpecFactory* KeySpecFactory::instance = KeySpecFactory::instance_owner();
 
-    private: static KeySpecFactory* instance() { static std::unique_ptr<KeySpecFactory> value(new KeySpecFactory()); return value.get(); }
-
-    public: static KeySpecFactory* getInstance(){
+    auto KeySpecFactory::getInstance() -> KeySpecFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return KeySpecFactory::instance();
+                        return KeySpecFactory::instance;
     
 }
 
 
-    public: const std::string DES = "DES";
-
-    public: const std::string DESEDE = "DESede";
-
-    public: const std::string BLOWFISH = "Blowfish";
-
-private: KeySpecFactory(){
+KeySpecFactory::KeySpecFactory(){
 }
 
 
-    public: KeySpec* getInstance(std::string algorithm, std::vector<int8_t> keyData){
+    auto KeySpecFactory::getInstance(std::string algorithm, std::vector<int8_t> keyData) -> KeySpec*{
 
         try {
             
@@ -131,7 +132,7 @@ private: KeySpecFactory(){
                             
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                         }
@@ -148,14 +149,13 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_KEYSPECFACTORY_CPP

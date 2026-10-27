@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class HttpServletRequest;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -58,17 +57,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/http/AcceptableResponseUtil.h"
+        class AcceptableResponseUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AcceptableResponseGenerator
-            : public Object
+            : public virtual Object
          {
 
-    private: static AcceptableResponseGenerator* instance() { static std::unique_ptr<AcceptableResponseGenerator> value(new AcceptableResponseGenerator()); return value.get(); }
+    private: static AcceptableResponseGenerator* instance_owner();
+    private: static AcceptableResponseGenerator* instance;
 
     public: static AcceptableResponseGenerator* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: AcceptableResponseGenerator();
 
@@ -82,3 +86,22 @@ private: AcceptableResponseGenerator();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEGENERATOR_H_COMPLETE
+        #if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/http/AcceptableResponseUtil.h")
+#include "org/allbinary/logic/communication/http/AcceptableResponseUtil.h"
+#endif
+
+        #endif
+    

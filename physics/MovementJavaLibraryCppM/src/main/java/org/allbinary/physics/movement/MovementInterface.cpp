@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/MovementInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MovementInterface {
+//Interface - declared in the header
 
-    public: virtual void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void process(AllBinaryGameLayer* layer) = 0;
 
-    public: virtual void stop() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFOINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFOINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
+class AbPath;
 
 
 
@@ -51,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InitInfoInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class InitInfoInterface
+            : public virtual Object
+         {
 
     public: virtual bool isTesting() = 0;
 
@@ -81,3 +90,13 @@ class InitInfoInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_INITINFOINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_INITINFOINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITINFOINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+
+        #endif
+    

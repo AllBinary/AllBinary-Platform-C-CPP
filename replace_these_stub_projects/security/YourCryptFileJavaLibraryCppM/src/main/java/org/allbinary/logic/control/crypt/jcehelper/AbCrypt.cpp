@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_JCEHELPER_ABCRYPT_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_JCEHELPER_ABCRYPT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/crypt/jcehelper/AbCrypt.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,15 +57,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbCrypt
-            : public Object
-         {
 
-public: AbCrypt(std::string algorithm, std::string key){
+AbCrypt::AbCrypt(std::string algorithm, std::string key){
 }
 
 
-    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    auto AbCrypt::encrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
 
 
@@ -65,7 +72,7 @@ public: AbCrypt(std::string algorithm, std::string key){
 }
 
 
-    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    auto AbCrypt::decrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
 
 
@@ -75,7 +82,7 @@ public: AbCrypt(std::string algorithm, std::string key){
 }
 
 
-    public: std::vector<int8_t> mutilate(std::vector<int8_t> array){
+    auto AbCrypt::mutilate(std::vector<int8_t> array) -> std::vector<int8_t>{
 
 
 
@@ -85,7 +92,6 @@ public: AbCrypt(std::string algorithm, std::string key){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_JCEHELPER_ABCRYPT_CPP

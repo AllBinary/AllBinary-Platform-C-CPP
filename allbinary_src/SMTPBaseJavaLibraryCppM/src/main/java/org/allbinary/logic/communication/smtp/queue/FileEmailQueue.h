@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/data/tree/dom/document/DomDocumentQueueInterface.h>
-
-      
+class DomDocumentQueueInterface;
 
 
 
@@ -51,8 +54,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileEmailQueue
-            : public Object
+            : public virtual Object
          {
 
     private: DomDocumentQueueInterface* domDocumentQueueInterface;
@@ -65,3 +72,13 @@ public: FileEmailQueue();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tree/dom/document/DomDocumentQueueInterface.h>)
+#include <org/allbinary/data/tree/dom/document/DomDocumentQueueInterface.h>
+#endif
+
+        #endif
+    

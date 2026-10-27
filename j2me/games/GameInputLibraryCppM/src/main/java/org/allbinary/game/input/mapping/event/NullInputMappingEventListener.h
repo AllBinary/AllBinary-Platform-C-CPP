@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_NULLINPUTMAPPINGEVENTLISTENER_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_NULLINPUTMAPPINGEVENTLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
+class AllBinaryEventObject;
 
 
 
@@ -53,14 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h"
-#include "org/allbinary/game/input/mapping/event/InputMappingEvent.h"
+class InputMappingEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullInputMappingEventListener
-            : public Object
+            : public virtual Object
         , public InputMappingEventListenerInterface {
 
-    public: static NullInputMappingEventListener* NULL_INPUT_MAPPING_EVENT_LISTENER() { static std::unique_ptr<NullInputMappingEventListener> value(new NullInputMappingEventListener()); return value.get(); }
+    private: static NullInputMappingEventListener* NULL_INPUT_MAPPING_EVENT_LISTENER_owner();
+    public: static NullInputMappingEventListener* NULL_INPUT_MAPPING_EVENT_LISTENER;
 
+
+            
+    public: NullInputMappingEventListener();
+        
                 //@Throws(Exception.constructor)
             
     public: void onInputMappingEvent(InputMappingEvent* inputMappingEvent);
@@ -73,3 +85,19 @@ class NullInputMappingEventListener
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_NULLINPUTMAPPINGEVENTLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_NULLINPUTMAPPINGEVENTLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_EVENT_NULLINPUTMAPPINGEVENTLISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include("org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h")
+#include "org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/input/mapping/event/InputMappingEvent.h")
+#include "org/allbinary/game/input/mapping/event/InputMappingEvent.h"
+#endif
+
+        #endif
+    

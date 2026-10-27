@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,57 +36,23 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/khronos/opengles/GL.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/animation/NullRotationAnimationFactory.h>
-
-      
+class GL;
+class Graphics;
+class Image;
+class AnimationBehavior;
+class IndexedAnimation;
+class NullRotationAnimationFactory;
 #include <org/allbinary/animation/RotationAnimation.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
-#include <org/allbinary/image/ImageCacheFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class BasicColor;
+class ImageCache;
+class ImageCacheFactory;
+class LogUtil;
+class AngleFactory;
+class AngleInfo;
+class CommonSeps;
+class StringMaker;
+class ScaleProperties;
+class CircularIndexUtil;
 
 
 
@@ -100,13 +71,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+        class BaseImageAnimationFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LazyImageRotationAnimation: public RotationAnimation {
 
     private: static inline const std::string SET_REAL_ANIMATION = "setRealAnimation";
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     public: int32_t layoutIndex;
 
@@ -118,7 +93,7 @@ class LazyImageRotationAnimation: public RotationAnimation {
 
     private: IndexedAnimation* animation;
 
-    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
+    public: ScaleProperties* scaleProperties;
 
 public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties* scaleProperties, BaseImageAnimationFactory* animationInterfaceFactoryInterface, AnimationBehavior* animationBehavior);
 
@@ -206,3 +181,64 @@ public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, Scal
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL.h>)
+#include <javax/microedition/khronos/opengles/GL.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/animation/NullRotationAnimationFactory.h>)
+#include <org/allbinary/animation/NullRotationAnimationFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/RotationAnimation.h>)
+#include <org/allbinary/animation/RotationAnimation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCacheFactory.h>)
+#include <org/allbinary/image/ImageCacheFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/BaseImageAnimationFactory.h")
+#include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
+#endif
+
+        #endif
+    

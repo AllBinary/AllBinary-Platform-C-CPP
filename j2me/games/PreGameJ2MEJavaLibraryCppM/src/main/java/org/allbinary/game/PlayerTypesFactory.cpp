@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/PlayerTypesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,29 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/PlayerType.h"
 
-class PlayerTypesFactory
-            : public Object
-         {
 
-    private: static PlayerTypesFactory* SINGLETON() { static std::unique_ptr<PlayerTypesFactory> value(new PlayerTypesFactory()); return value.get(); }
+PlayerTypesFactory::PlayerTypesFactory() : PLAYER_TYPE_ONE(new PlayerType("Player Type One", 0)), PLAYER_TYPE_TWO(new PlayerType("Player Type Two", 1)), PLAYER_TYPE_THREE(new PlayerType("Player Type Three", 2)) {
+        }
+        auto PlayerTypesFactory::SINGLETON_owner() -> PlayerTypesFactory* { static std::unique_ptr<PlayerTypesFactory> value(new PlayerTypesFactory()); return value.get(); }
+PlayerTypesFactory* PlayerTypesFactory::SINGLETON = PlayerTypesFactory::SINGLETON_owner();
 
-    public: static PlayerTypesFactory* getInstance(){
+    auto PlayerTypesFactory::getInstance() -> PlayerTypesFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlayerTypesFactory::SINGLETON();
+                        return PlayerTypesFactory::SINGLETON;
     
 }
 
 
-    public: PlayerType* PLAYER_TYPE_ONE = new PlayerType("Player Type One", 0);
 
-    public: PlayerType* PLAYER_TYPE_TWO = new PlayerType("Player Type Two", 1);
 
-    public: PlayerType* PLAYER_TYPE_THREE = new PlayerType("Player Type Three", 2);
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_CPP

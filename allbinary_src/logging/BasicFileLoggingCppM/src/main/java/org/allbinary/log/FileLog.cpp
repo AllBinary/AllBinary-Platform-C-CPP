@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOG_FILELOG_CPP
+        #define ORG_ALLBINARY_LOG_FILELOG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/log/FileLog.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,45 +91,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FileLog
-            : public Object
-         {
+StringUtil* FileLog::stringUtil = StringUtil::getInstance();
+const std::string FileLog::extension = "dat";
+const std::string FileLog::fileName = .toCharArray();
+const std::string FileLog::backupFileName = FileLog::fileName.concat(".bak");
+auto FileLog::logFile_owner() -> File* { static std::unique_ptr<File> value(new File(FileLog::logPath, FileLog::fileName)); return value.get(); }
+File* FileLog::logFile = FileLog::logFile_owner();
 
-    private: static inline StringUtil* stringUtil = StringUtil::getInstance();
+FileLog::FileLog(){
+}
 
-    private: static inline const int64_t logLength = 33000000;
-
-    private: static inline const std::string logPath = "g:\\log\\";
-
-    private: static inline const std::string extension = "dat";
-
-    private: static inline const std::string fileName = .toCharArray();
-
-    private: static inline const std::string backupFileName = FileLog::fileName().concat(".bak");
-
-    private: static inline const std::string ORG_ALLBINARY = "org.allbinary: ";
-
-    private: static inline bool firstTime = true;
-
-    private: static File* logFile() { static std::unique_ptr<File> value(new File(FileLog::logPath, FileLog::fileName())); return value.get(); }
-
-    private: static inline File* logFileBak;
-
-    private: static inline BufferedWriter* fileOut;
-
-    private: static inline int32_t backupIndex= 0;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static bool createLogFile(){
+    auto FileLog::createLogFile() -> bool{
 
         try {
-            FileLog::logFile()= new File(logPath, fileName());
+            FileLog::logFile= new File(logPath, fileName);
     
 
                         if(!FileLog::firstTime)
                         
                                     {
-                                    FileLog::fileOut= new BufferedWriter(new FileWriter(logFile()));
+                                    FileLog::fileOut= new BufferedWriter(new FileWriter(logFile));
     
 
                                     }
@@ -128,7 +121,7 @@ class FileLog
                             FileLog::firstTime= false;
     
 
-    RandomAccessFile* raFile = new RandomAccessFile(logFile(), "rw");;
+    RandomAccessFile* raFile = new RandomAccessFile(logFile, "rw");;
     
 raFile->seek(raFile->length());
     
@@ -138,7 +131,7 @@ FileLog::fileOut= new BufferedWriter(new FileWriter(raFile->getFD()));
                         }
                             
 
-    bool canWrite = FileLog::logFile()->canWrite();;
+    bool canWrite = FileLog::logFile->canWrite();;
     
 
 
@@ -150,7 +143,7 @@ FileLog::fileOut= new BufferedWriter(new FileWriter(raFile->getFD()));
                 //: 
 } catch(Exception& e) 
             {
-System.out.println("Error Creating Log: " +e);
+System.out.println(JavaString::valueOf("Error Creating Log: ") +JavaString::valueOf(e));
     
 
 
@@ -164,7 +157,7 @@ System.out.println("Error Creating Log: " +e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: static bool createLogFileBackup(){
+    auto FileLog::createLogFileBackup() -> bool{
 
         try {
             
@@ -177,20 +170,20 @@ FileLog::logFileBak= new File(logPath, stringMaker->append(backupFileName)->appe
         {
 FileLog::backupIndex++;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 FileLog::logFileBak= new File(logPath, stringMaker->append(backupFileName)->append(CommonSeps::getInstance()->PERIOD)->appendint(backupIndex)->toString());
     
 }
 
 
-    std::string line = .toCharArray();;
+    std::string line = std::string();;
     
 
     BufferedWriter* tmpOut = new BufferedWriter(new FileWriter(logFileBak));;
     
 
-    BufferedReader* tmpIn = new BufferedReader(new FileReader(logFile()));;
+    BufferedReader* tmpIn = new BufferedReader(new FileReader(logFile));;
     
 
         while((line= tmpIn->readLine()) != 
@@ -209,7 +202,7 @@ tmpOut->close();
     
 tmpIn->close();
     
-FileLog::logFile()->delete();
+FileLog::logFile->delete_();
     
 
 
@@ -221,7 +214,7 @@ FileLog::logFile()->delete();
                 //: 
 } catch(Exception& e) 
             {
-System.out.println("Error Creating Backup: " +e);
+System.out.println(JavaString::valueOf("Error Creating Backup: ") +JavaString::valueOf(e));
     
 
 
@@ -235,7 +228,7 @@ System.out.println("Error Creating Backup: " +e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName){
+    auto FileLog::put(std::string specialMessage, Object* anyType, std::string functionName) -> std::string{
 
 
 
@@ -247,7 +240,7 @@ System.out.println("Error Creating Backup: " +e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName, Throwable* exception){
+    auto FileLog::put(std::string specialMessage, Object* anyType, std::string functionName, Throwable* exception) -> std::string{
 
         try {
             
@@ -273,7 +266,7 @@ System.out.println("Error Creating Backup: " +e);
                                     }
                                 
 
-    int64_t length = FileLog::logFile()->length();;
+    int64_t length = FileLog::logFile->length();;
     
 
                         if(length > FileLog::logLength)
@@ -341,7 +334,7 @@ FileLog::fileOut->flush();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string put(std::string specialMessage, std::string className, std::string functionName){
+    auto FileLog::put(std::string specialMessage, std::string className, std::string functionName) -> std::string{
 
 
 
@@ -353,7 +346,7 @@ FileLog::fileOut->flush();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static std::string put(std::string specialMessage, std::string className, std::string functionName, Exception* exception){
+    auto FileLog::put(std::string specialMessage, std::string className, std::string functionName, Exception* exception) -> std::string{
 
         try {
             
@@ -379,7 +372,7 @@ FileLog::fileOut->flush();
                                     }
                                 
 
-    int64_t length = FileLog::logFile()->length();;
+    int64_t length = FileLog::logFile->length();;
     
 
                         if(length > FileLog::logLength)
@@ -439,21 +432,16 @@ FileLog::fileOut->flush();
 }
 
 
-    public: static std::string getFilePath(){
+    auto FileLog::getFilePath() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileLog::logPath +FileLog::fileName();
+                        return FileLog::logPath +FileLog::fileName;
     
 }
 
 
-private: FileLog(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOG_FILELOG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODSFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -118,14 +128,8 @@
         #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsData.h"
 #include "org/allbinary/business/user/commerce/shipping/ShippingMethodData.h"
 
-class ShippingMethodsFactory
-            : public Object
-         {
-
-    private: static inline const std::string SHIPPINGMETHODSFILEPATHSTRING;
-
-                    static int32_t initResult = ShippingMethodsFactory::init();
-                static int32_t init() { 
+int32_t ShippingMethodsFactory::initResult = ShippingMethodsFactory::init();
+        auto ShippingMethodsFactory::init() -> int32_t {
                     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -148,17 +152,9 @@ SHIPPINGMETHODSFILEPATHSTRING= stringBuffer->toString();
 
 
                     return 0;
-                }
-            
-    private: static inline const std::string SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
-
-    private: ShippingInterface* defaultShippingMethodInterface;
-
-    private: Document* document;
-
-    private: BasicArrayList* shippingVector;
-
-public: ShippingMethodsFactory(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface){
+        }
+                
+ShippingMethodsFactory::ShippingMethodsFactory(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface){
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -245,7 +241,7 @@ this->shippingVector->add(new NoShippingModuleView());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getInstance(){
+    auto ShippingMethodsFactory::getInstance() -> BasicArrayList*{
 
 
 
@@ -255,7 +251,7 @@ this->shippingVector->add(new NoShippingModuleView());
 }
 
 
-    public: ShippingInterface* getDefaultInstance(){
+    auto ShippingMethodsFactory::getDefaultInstance() -> ShippingInterface*{
 
 
 
@@ -265,7 +261,6 @@ this->shippingVector->add(new NoShippingModuleView());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODSFACTORY_CPP

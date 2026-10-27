@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_EMAILEVENTHANDLERUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_EMAILEVENTHANDLERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/event/handler/EmailEventHandlerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,62 +97,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/event/handler/UserEmailEventHandler.h"
 
-class EmailEventHandlerUtil
-            : public Object
-         {
+auto EmailEventHandlerUtil::instance_owner() -> EmailEventHandlerUtil* { static std::unique_ptr<EmailEventHandlerUtil> value(new EmailEventHandlerUtil()); return value.get(); }
+EmailEventHandlerUtil* EmailEventHandlerUtil::instance = EmailEventHandlerUtil::instance_owner();
 
-    private: static EmailEventHandlerUtil* instance() { static std::unique_ptr<EmailEventHandlerUtil> value(new EmailEventHandlerUtil()); return value.get(); }
-
-    public: static EmailEventHandlerUtil* getInstance(){
+    auto EmailEventHandlerUtil::getInstance() -> EmailEventHandlerUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EmailEventHandlerUtil::instance();
+                        return EmailEventHandlerUtil::instance;
     
+}
+
+
+EmailEventHandlerUtil::EmailEventHandlerUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList* getUserEmailEventListenerVector(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface){
+    auto EmailEventHandlerUtil::getEventHandler(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, BasicArrayList* userVector) -> UserEmailEventHandler*{
 
-    UserConfigurationInterface* userConfigurationInterface = userInterface->getUserConfigurationInterface();;
-    
-
-    UserEmailConfigurationInterface* userEmailConfigurationInterface = userConfigurationInterface->getUserEmailConfigurationInterface();;
-    
-
-    UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface = userEmailConfigurationInterface->getUserEmailEventsConfigurationInterface();;
-    
-
-    UserEmailEventListenerInterface* userEmailEventListenerInterface = userEmailEventsConfigurationInterface->getEventListener(abeClientInformation, userEmailEventNameData, userInterface);;
-    
-
-    BasicArrayList* vector = new BasicArrayListD();;
-    
-vector->add(userEmailEventListenerInterface);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return vector;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: EmailEventHandlerUtil(){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: UserEmailEventHandler* getEventHandler(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, BasicArrayList* userVector){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -193,7 +169,35 @@ userEmailEventHandler->addListener(vector);
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto EmailEventHandlerUtil::getUserEmailEventListenerVector(AbeClientInformationInterface* abeClientInformation, UserEmailEventNameData* userEmailEventNameData, UserInterface* userInterface) -> BasicArrayList*{
 
+    UserConfigurationInterface* userConfigurationInterface = userInterface->getUserConfigurationInterface();;
+    
+
+    UserEmailConfigurationInterface* userEmailConfigurationInterface = userConfigurationInterface->getUserEmailConfigurationInterface();;
+    
+
+    UserEmailEventsConfigurationInterface* userEmailEventsConfigurationInterface = userEmailConfigurationInterface->getUserEmailEventsConfigurationInterface();;
+    
+
+    UserEmailEventListenerInterface* userEmailEventListenerInterface = userEmailEventsConfigurationInterface->getEventListener(abeClientInformation, userEmailEventNameData, userInterface);;
+    
+
+    BasicArrayList* vector = new BasicArrayListD();;
+    
+vector->add(userEmailEventListenerInterface);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return vector;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_EMAILEVENTHANDLERUTIL_CPP

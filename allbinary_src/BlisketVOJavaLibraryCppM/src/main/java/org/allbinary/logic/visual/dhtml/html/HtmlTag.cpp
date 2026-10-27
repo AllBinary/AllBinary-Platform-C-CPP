@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/HtmlTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,25 +61,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlTag
-            : public Object
-         {
 
-    protected: HashMap<Object*, Object*>* otherAttributes;
-
-public: HtmlTag(){
+HtmlTag::HtmlTag(){
 this->otherAttributes= StdUtil::getInstance()->createHashMap();
     
 }
 
 
-    public: void addAttribute(std::string key, std::string value){
+    auto HtmlTag::addAttribute(std::string key, std::string value) -> void{
 this->otherAttributes->put(key, value);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAG_CPP

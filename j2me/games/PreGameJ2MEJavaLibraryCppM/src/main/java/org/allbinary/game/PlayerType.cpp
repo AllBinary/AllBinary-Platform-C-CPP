@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PLAYERTYPE_CPP
+        #define ORG_ALLBINARY_GAME_PLAYERTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/PlayerType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PlayerType
-            : public Object
-         {
 
-    private: int32_t id;
-
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-: PlayerType(std::string name, int32_t value){
+PlayerType::PlayerType(std::string name, int32_t value) : name(StringUtil::getInstance()->EMPTY_STRING){
 this->name= name;
     
 this->id= value;
@@ -64,7 +67,7 @@ this->id= value;
 }
 
 
-    public: int32_t getId(){
+    auto PlayerType::getId() -> int32_t{
 
 
 
@@ -74,7 +77,7 @@ this->id= value;
 }
 
 
-    public: std::string getName(){
+    auto PlayerType::getName() -> std::string{
 
 
 
@@ -84,7 +87,7 @@ this->id= value;
 }
 
 
-    public: std::string toString(){
+    auto PlayerType::toString() -> std::string{
 
 
 
@@ -94,7 +97,6 @@ this->id= value;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PLAYERTYPE_CPP

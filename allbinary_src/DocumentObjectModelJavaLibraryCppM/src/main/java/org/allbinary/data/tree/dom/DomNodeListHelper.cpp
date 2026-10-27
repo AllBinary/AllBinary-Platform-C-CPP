@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMNODELISTHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOMNODELISTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/DomNodeListHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/dom/DomNodeHelper.h"
 
-class DomNodeListHelper
-            : public Object
-         {
 
-    public: static BasicArrayList* getVector(NodeList* nodeList){
+DomNodeListHelper::DomNodeListHelper() {
+        }
+        
+    auto DomNodeListHelper::getVector(NodeList* nodeList) -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -89,7 +99,6 @@ vector->add(DomNodeHelper::getTextNodeValue(nodeList->item(index)));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOMNODELISTHELPER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_TRANSFORMTAG_CPP
+        #define TAGS_TRANSFORMTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/TransformTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,11 +79,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformTag: public TransformInfoTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TransformTag() : TransformInfoTag(new ViewHelperFactory()){
+TransformTag::TransformTag() : TransformInfoTag(new ViewHelperFactory()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,10 +88,10 @@ public: TransformTag() : TransformInfoTag(new ViewHelperFactory()){
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -92,7 +99,7 @@ public: TransformTag() : TransformInfoTag(new ViewHelperFactory()){
 }
 
 
-public: TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : TransformInfoTag(tagHelperFactoryInterface){
+TransformTag::TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : TransformInfoTag(tagHelperFactoryInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -100,10 +107,10 @@ public: TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Tra
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -113,7 +120,7 @@ public: TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Tra
 
                 //@Throws(Exception.constructor)
             
-    protected: std::string view(){
+    auto TransformTag::view() -> std::string{
 
         try {
             
@@ -132,10 +139,10 @@ public: TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Tra
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -152,20 +159,20 @@ public: TransformTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : Tra
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto TransformTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Creating with: \n" +this->getPropertiesHashMap()->toString(), this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(JavaString::valueOf("Creating with: \n") +JavaString::valueOf(this->getPropertiesHashMap()->toString()), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -189,7 +196,7 @@ this->setHelper();
 pageContext.getOut()->print(this->view());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Tag End", this, tagStrings.DO_START_TAG);
@@ -233,7 +240,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_TRANSFORMTAG_CPP

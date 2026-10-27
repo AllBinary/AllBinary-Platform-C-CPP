@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/NullClip.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,25 +89,25 @@
         #include "org/allbinary/media/audio/NullJ2SEControl.h"
 #include "org/allbinary/media/audio/NullAudioFormat.h"
 
-class NullClip
-            : public Object
-        , public Clip {
 
-    public: static NullJ2SEControl* NULL_CONTROL() { static std::unique_ptr<NullJ2SEControl> value(new NullJ2SEControl(BooleanControl::Type.MUTE)); return value.get(); }
+NullClip::NullClip() {
+        }
+        auto NullClip::NULL_CONTROL_owner() -> NullJ2SEControl* { static std::unique_ptr<NullJ2SEControl> value(new NullJ2SEControl(BooleanControl::Type->MUTE)); return value.get(); }
+NullJ2SEControl* NullClip::NULL_CONTROL = NullClip::NULL_CONTROL_owner();
 
                 //@Throws(LineUnavailableException.constructor)
             
-    public: void open(AudioFormat* format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize){
+    auto NullClip::open(AudioFormat* format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize) -> void{
 }
 
 
                 //@Throws(LineUnavailableException.constructor, IOException.constructor)
             
-    public: void open(AudioInputStream* stream){
+    auto NullClip::open(AudioInputStream* stream) -> void{
 }
 
 
-    public: int32_t getFrameLength(){
+    auto NullClip::getFrameLength() -> int32_t{
 
 
 
@@ -107,7 +117,7 @@ class NullClip
 }
 
 
-    public: int64_t getMicrosecondLength(){
+    auto NullClip::getMicrosecondLength() -> int64_t{
 
 
 
@@ -117,39 +127,39 @@ class NullClip
 }
 
 
-    public: void setFramePosition(int32_t frames){
+    auto NullClip::setFramePosition(int32_t frames) -> void{
 }
 
 
-    public: void setMicrosecondPosition(int64_t microseconds){
+    auto NullClip::setMicrosecondPosition(int64_t microseconds) -> void{
 }
 
 
-    public: void setLoopPoints(int32_t start, int32_t end){
+    auto NullClip::setLoopPoints(int32_t start, int32_t end) -> void{
 }
 
 
-    public: void loop(int32_t count){
+    auto NullClip::loop(int32_t count) -> void{
 }
 
 
-    public: void drain(){
+    auto NullClip::drain() -> void{
 }
 
 
-    public: void flush(){
+    auto NullClip::flush() -> void{
 }
 
 
-    public: void start(){
+    auto NullClip::start() -> void{
 }
 
 
-    public: void stop(){
+    auto NullClip::stop() -> void{
 }
 
 
-    public: bool isRunning(){
+    auto NullClip::isRunning() -> bool{
 
 
 
@@ -159,7 +169,7 @@ class NullClip
 }
 
 
-    public: bool isActive(){
+    auto NullClip::isActive() -> bool{
 
 
 
@@ -169,7 +179,7 @@ class NullClip
 }
 
 
-    public: AudioFormat* getFormat(){
+    auto NullClip::getFormat() -> AudioFormat*{
 
 
 
@@ -179,7 +189,7 @@ class NullClip
 }
 
 
-    public: int32_t getBufferSize(){
+    auto NullClip::getBufferSize() -> int32_t{
 
 
 
@@ -189,7 +199,7 @@ class NullClip
 }
 
 
-    public: int32_t available(){
+    auto NullClip::available() -> int32_t{
 
 
 
@@ -199,7 +209,7 @@ class NullClip
 }
 
 
-    public: int32_t getFramePosition(){
+    auto NullClip::getFramePosition() -> int32_t{
 
 
 
@@ -209,7 +219,7 @@ class NullClip
 }
 
 
-    public: int64_t getLongFramePosition(){
+    auto NullClip::getLongFramePosition() -> int64_t{
 
 
 
@@ -219,7 +229,7 @@ class NullClip
 }
 
 
-    public: int64_t getMicrosecondPosition(){
+    auto NullClip::getMicrosecondPosition() -> int64_t{
 
 
 
@@ -229,7 +239,7 @@ class NullClip
 }
 
 
-    public: float getLevel(){
+    auto NullClip::getLevel() -> float{
 
 
 
@@ -239,7 +249,7 @@ class NullClip
 }
 
 
-    public: Info* getLineInfo(){
+    auto NullClip::getLineInfo() -> Info*{
 
 
 
@@ -251,15 +261,15 @@ class NullClip
 
                 //@Throws(LineUnavailableException.constructor)
             
-    public: void open(){
+    auto NullClip::open() -> void{
 }
 
 
-    public: void close(){
+    auto NullClip::close() -> void{
 }
 
 
-    public: bool isOpen(){
+    auto NullClip::isOpen() -> bool{
 
 
 
@@ -269,7 +279,7 @@ class NullClip
 }
 
 
-    public: std::vector<Control*> getControls(){
+    auto NullClip::getControls() -> std::vector<Control*>{
 
 
 
@@ -279,7 +289,7 @@ class NullClip
 }
 
 
-    public: bool isControlSupported(Type* control){
+    auto NullClip::isControlSupported(Type* control) -> bool{
 
 
 
@@ -289,25 +299,24 @@ class NullClip
 }
 
 
-    public: Control* getControl(Type* control){
+    auto NullClip::getControl(Type* control) -> Control*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullClip::NULL_CONTROL();
+                        return NullClip::NULL_CONTROL;
     
 }
 
 
-    public: void addLineListener(LineListener* listener){
+    auto NullClip::addLineListener(LineListener* listener) -> void{
 }
 
 
-    public: void removeLineListener(LineListener* listener){
+    auto NullClip::removeLineListener(LineListener* listener) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_CPP

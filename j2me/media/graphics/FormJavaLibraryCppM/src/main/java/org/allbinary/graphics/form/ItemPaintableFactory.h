@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/ItemPaintable.h"
-#include "org/allbinary/graphics/form/PaintableForm.h"
+class PaintableForm;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ItemPaintableFactory: public ItemPaintable {
 
-    private: static ItemPaintableFactory* instance() { static std::unique_ptr<ItemPaintableFactory> value(new ItemPaintableFactory()); return value.get(); }
+    private: static ItemPaintableFactory* instance_owner();
+    private: static ItemPaintableFactory* instance;
 
     public: static ItemPaintableFactory* getInstance();
 
+
+            
+    public: ItemPaintableFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: ItemPaintable* getInstanceItemPaintable(PaintableForm* paintableForm);
@@ -66,3 +80,16 @@ class ItemPaintableFactory: public ItemPaintable {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/form/ItemPaintable.h")
+#include "org/allbinary/graphics/form/ItemPaintable.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/PaintableForm.h")
+#include "org/allbinary/graphics/form/PaintableForm.h"
+#endif
+
+        #endif
+    

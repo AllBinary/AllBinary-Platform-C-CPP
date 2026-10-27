@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/Advertisement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,37 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/AdvertisementInterface.h"
 
-class Advertisement
-            : public Object
-        , public AdvertisementInterface {
 
-    private: std::string artist;
-
-    private: std::string artistLink;
-
-    private: std::string title;
-
-    private: std::string dateAdded;
-
-    private: std::string directory;
-
-    private: std::string framedLink;
-
-    private: int32_t rank= 0;
-
-    private: Money* listPrice;
-
-    private: Money* ourPrice;
-
-    private: AdvertisementImageInterface* image;
-
-    private: AdvertisementProductInterface* product;
-
-    private: AdvertisementThumbnailInterface* thumbnail;
-
-    private: DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface;
-
-public: Advertisement(){
+Advertisement::Advertisement(){
 this->displayInBrowserContraintsInterface= 
                                         nullptr
                                     ;
@@ -99,7 +80,7 @@ this->displayInBrowserContraintsInterface=
 }
 
 
-    public: std::string getArtist(){
+    auto Advertisement::getArtist() -> std::string{
 
 
 
@@ -109,13 +90,13 @@ this->displayInBrowserContraintsInterface=
 }
 
 
-    public: void setArtist(std::string artist){
+    auto Advertisement::setArtist(std::string artist) -> void{
 this->artist= artist;
     
 }
 
 
-    public: std::string getArtistLink(){
+    auto Advertisement::getArtistLink() -> std::string{
 
 
 
@@ -125,13 +106,13 @@ this->artist= artist;
 }
 
 
-    public: void setArtistLink(std::string artistLink){
+    auto Advertisement::setArtistLink(std::string artistLink) -> void{
 this->artistLink= artistLink;
     
 }
 
 
-    public: std::string getTitle(){
+    auto Advertisement::getTitle() -> std::string{
 
 
 
@@ -141,13 +122,13 @@ this->artistLink= artistLink;
 }
 
 
-    public: void setTitle(std::string title){
+    auto Advertisement::setTitle(std::string title) -> void{
 this->title= title;
     
 }
 
 
-    public: std::string getDateAdded(){
+    auto Advertisement::getDateAdded() -> std::string{
 
 
 
@@ -157,13 +138,13 @@ this->title= title;
 }
 
 
-    public: void setDateAdded(std::string dateAdded){
+    auto Advertisement::setDateAdded(std::string dateAdded) -> void{
 this->dateAdded= dateAdded;
     
 }
 
 
-    public: std::string getDirectory(){
+    auto Advertisement::getDirectory() -> std::string{
 
 
 
@@ -173,13 +154,13 @@ this->dateAdded= dateAdded;
 }
 
 
-    public: void setDirectory(std::string directory){
+    auto Advertisement::setDirectory(std::string directory) -> void{
 this->directory= directory;
     
 }
 
 
-    public: std::string getFramedLink(){
+    auto Advertisement::getFramedLink() -> std::string{
 
 
 
@@ -189,13 +170,13 @@ this->directory= directory;
 }
 
 
-    public: void setFramedLink(std::string framedLink){
+    auto Advertisement::setFramedLink(std::string framedLink) -> void{
 this->framedLink= framedLink;
     
 }
 
 
-    public: Money* getListPrice(){
+    auto Advertisement::getListPrice() -> Money*{
 
 
 
@@ -205,13 +186,13 @@ this->framedLink= framedLink;
 }
 
 
-    public: void setListPrice(Money* listPrice){
+    auto Advertisement::setListPrice(Money* listPrice) -> void{
 this->listPrice= listPrice;
     
 }
 
 
-    public: Money* getOurPrice(){
+    auto Advertisement::getOurPrice() -> Money*{
 
 
 
@@ -221,13 +202,13 @@ this->listPrice= listPrice;
 }
 
 
-    public: void setOurPrice(Money* ourPrice){
+    auto Advertisement::setOurPrice(Money* ourPrice) -> void{
 this->ourPrice= ourPrice;
     
 }
 
 
-    public: int32_t getRank(){
+    auto Advertisement::getRank() -> int32_t{
 
 
 
@@ -237,13 +218,13 @@ this->ourPrice= ourPrice;
 }
 
 
-    public: void setRank(int32_t rank){
+    auto Advertisement::setRank(int32_t rank) -> void{
 this->rank= rank;
     
 }
 
 
-    public: AdvertisementImageInterface* getImage(){
+    auto Advertisement::getImage() -> AdvertisementImageInterface*{
 
 
 
@@ -253,13 +234,13 @@ this->rank= rank;
 }
 
 
-    public: void setImage(AdvertisementImageInterface* image){
+    auto Advertisement::setImage(AdvertisementImageInterface* image) -> void{
 this->image= image;
     
 }
 
 
-    public: AdvertisementProductInterface* getProduct(){
+    auto Advertisement::getProduct() -> AdvertisementProductInterface*{
 
 
 
@@ -269,13 +250,13 @@ this->image= image;
 }
 
 
-    public: void setProduct(AdvertisementProductInterface* product){
+    auto Advertisement::setProduct(AdvertisementProductInterface* product) -> void{
 this->product= product;
     
 }
 
 
-    public: AdvertisementThumbnailInterface* getThumbnail(){
+    auto Advertisement::getThumbnail() -> AdvertisementThumbnailInterface*{
 
 
 
@@ -285,13 +266,13 @@ this->product= product;
 }
 
 
-    public: void setThumbnail(AdvertisementThumbnailInterface* thumbnail){
+    auto Advertisement::setThumbnail(AdvertisementThumbnailInterface* thumbnail) -> void{
 this->thumbnail= thumbnail;
     
 }
 
 
-    public: DisplayInBrowserContraintsInterface* getDisplayInBrowserContraintsInterface(){
+    auto Advertisement::getDisplayInBrowserContraintsInterface() -> DisplayInBrowserContraintsInterface*{
 
 
 
@@ -301,7 +282,6 @@ this->thumbnail= thumbnail;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_CPP

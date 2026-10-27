@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTUTIL_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/GameKeyEventUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/event/GameKeyEvent.h"
 
-class GameKeyEventUtil
-            : public Object
-         {
 
-    public: static int32_t getKey(Object* anyType){
+GameKeyEventUtil::GameKeyEventUtil(){
+}
+
+
+    auto GameKeyEventUtil::getKey(Object* anyType) -> int32_t{
 
     GameKeyEvent* gameKeyEvent = dynamic_cast<GameKeyEvent*>(anyType);;
     
@@ -63,11 +74,6 @@ class GameKeyEventUtil
 }
 
 
-private: GameKeyEventUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTUTIL_CPP

@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERMANAGER_H
         #define ORG_ALLBINARY_LAYER_LAYERMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -17,30 +22,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/thread/SynchObject.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/ABSystemWrapper.h>
-
-      
+class Graphics;
+class TsUtil;
+class LogUtil;
+class CommonStrings;
+class SynchObject;
+class BasicArrayList;
+class BasicArrayListD;
+class ABSystemWrapper;
 
 
 
@@ -59,27 +48,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/layer/LayerManagerLoggingBase.h"
-#include "org/allbinary/layer/AllBinaryLayer.h"
-#include "org/allbinary/layer/Layer.h"
+        class LayerManagerLoggingBase;
+class AllBinaryLayer;
+class Layer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerManager
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
+    private: ABSystemWrapper* systemWrapper;
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
     private: LayerManagerLoggingBase* layerManagerLogging;
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
-    private: SynchObject* anyType = new SynchObject();
+    private: SynchObject* anyType;
 
 public: LayerManager(LayerManagerLoggingBase* layerManagerLogging);
 
@@ -121,3 +114,43 @@ public: LayerManager(LayerManagerLoggingBase* layerManagerLogging);
 
 
         #endif //ORG_ALLBINARY_LAYER_LAYERMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_LAYERMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_LAYERMANAGER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/thread/SynchObject.h>)
+#include <org/allbinary/thread/SynchObject.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/logic/ABSystemWrapper.h>)
+#include <org/allbinary/logic/ABSystemWrapper.h>
+#endif
+#if __has_include("org/allbinary/layer/LayerManagerLoggingBase.h")
+#include "org/allbinary/layer/LayerManagerLoggingBase.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+#if __has_include("org/allbinary/layer/Layer.h")
+#include "org/allbinary/layer/Layer.h"
+#endif
+
+        #endif
+    

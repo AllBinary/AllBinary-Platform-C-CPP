@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -53,21 +54,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
+        class BasicUserRoleFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreRoleFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static StoreRoleFactory* instance() { static std::unique_ptr<StoreRoleFactory> value(new StoreRoleFactory()); return value.get(); }
+    private: static StoreRoleFactory* instance_owner();
+    private: static StoreRoleFactory* instance;
 
     public: static StoreRoleFactory* getInstance();
 
-    private: BasicArrayList* roles = new BasicArrayListD();
+    private: BasicArrayList* roles;
 
-    private: BasicArrayList* subscriberRoles = new BasicArrayListD();
+    private: BasicArrayList* subscriberRoles;
 
-    private: BasicArrayList* wholesaleRoles = new BasicArrayListD();
+    private: BasicArrayList* wholesaleRoles;
 
 private: StoreRoleFactory();
 
@@ -83,3 +89,19 @@ private: StoreRoleFactory();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_STOREROLEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/business/user/role/BasicUserRoleFactory.h")
+#include "org/allbinary/business/user/role/BasicUserRoleFactory.h"
+#endif
+
+        #endif
+    

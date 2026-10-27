@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CURRENTGEOGRAPHICMAPCELLPOSITIONINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CURRENTGEOGRAPHICMAPCELLPOSITIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+        class GeographicMapCellPosition;
 
-class CurrentGeographicMapCellPositionInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class CurrentGeographicMapCellPositionInterface
+            : public virtual Object
+         {
 
     public: virtual GeographicMapCellPosition* getCurrentGeographicMapCellPosition() = 0;
 
@@ -57,3 +68,13 @@ class CurrentGeographicMapCellPositionInterface {
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CURRENTGEOGRAPHICMAPCELLPOSITIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CURRENTGEOGRAPHICMAPCELLPOSITIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CURRENTGEOGRAPHICMAPCELLPOSITIONINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h")
+#include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+#endif
+
+        #endif
+    

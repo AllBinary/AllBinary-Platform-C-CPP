@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/solaris/SolarisOperatingSystemFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,29 +82,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/os/solaris/SolarisOS.h"
 
-class SolarisOperatingSystemFactory
-            : public Object
-         {
+auto SolarisOperatingSystemFactory::instance_owner() -> SolarisOperatingSystemFactory* { static std::unique_ptr<SolarisOperatingSystemFactory> value(new SolarisOperatingSystemFactory()); return value.get(); }
+SolarisOperatingSystemFactory* SolarisOperatingSystemFactory::instance = SolarisOperatingSystemFactory::instance_owner();
 
-    private: static SolarisOperatingSystemFactory* instance() { static std::unique_ptr<SolarisOperatingSystemFactory> value(new SolarisOperatingSystemFactory()); return value.get(); }
-
-    public: static SolarisOperatingSystemFactory* getInstance(){
+    auto SolarisOperatingSystemFactory::getInstance() -> SolarisOperatingSystemFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SolarisOperatingSystemFactory::instance();
+                        return SolarisOperatingSystemFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: SolarisOperatingSystemFactory(){
+SolarisOperatingSystemFactory::SolarisOperatingSystemFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: GenericOperatingSystem* getOperatingSystemInstance(){
+    auto SolarisOperatingSystemFactory::getOperatingSystemInstance() -> GenericOperatingSystem*{
 
         try {
             
@@ -129,7 +134,7 @@ private: SolarisOperatingSystemFactory(){
                             
 
 
-                            throw new Exception("Specific Solaris OS Not Supported: " +osName);
+                            throw Exception(JavaString::valueOf("Specific Solaris OS Not Supported: ") +JavaString::valueOf(osName));
                     
 
                         }
@@ -148,7 +153,7 @@ private: SolarisOperatingSystemFactory(){
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     
@@ -170,7 +175,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOPERATINGSYSTEMFACTORY_CPP

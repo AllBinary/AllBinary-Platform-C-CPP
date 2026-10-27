@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DISPOSALUTIL_CPP
+        #define ORG_ALLBINARY_DISPOSALUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/DisposalUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,27 +61,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DisposalUtil
-            : public Object
-         {
 
-    private: static DisposalUtil* instance() { static std::unique_ptr<DisposalUtil> value(new DisposalUtil()); return value.get(); }
+DisposalUtil::DisposalUtil() {
+        }
+        auto DisposalUtil::instance_owner() -> DisposalUtil* { static std::unique_ptr<DisposalUtil> value(new DisposalUtil()); return value.get(); }
+DisposalUtil* DisposalUtil::instance = DisposalUtil::instance_owner();
 
-    public: static DisposalUtil* getInstance(){
+    auto DisposalUtil::getInstance() -> DisposalUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisposalUtil::instance();
+                        return DisposalUtil::instance;
     
 }
 
 
-    public: void disposeImage(Image* image){
+    auto DisposalUtil::disposeImage(Image* image) -> void{
 }
 
 
-    public: void disposeResource(Resource* resource){
+    auto DisposalUtil::disposeResource(Resource* resource) -> void{
 
                         if(!resource->isDisposed())
                         
@@ -84,7 +94,6 @@ class DisposalUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DISPOSALUTIL_CPP

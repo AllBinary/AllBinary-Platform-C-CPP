@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_AUTHENTICATIONHELPERUTIL_H
         #define ADMIN_TAGHELPERS_AUTHENTICATIONHELPERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,39 +36,17 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/user/role/BasicUserRole.h>
-
-      
-#include <org/allbinary/business/user/role/UserRole.h>
-
-      
-#include <org/allbinary/globals/URLGLOBALS.h>
-
-      
-#include <org/allbinary/logic/communication/http/file/upload/HttpFilePermissions.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/HttpRequestUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
+class BasicUserRole;
+class UserRole;
+class URLGLOBALS;
+class HttpFilePermissions;
+class HttpRequestUtil;
+class LogUtil;
+class AbPath;
+class StringUtil;
+class CommonLabels;
 
 
 
@@ -82,17 +65,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "admin/taghelpers/AuthenticationHelper.h"
+        class AuthenticationHelper;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AuthenticationHelperUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static AuthenticationHelperUtil* instance() { static std::unique_ptr<AuthenticationHelperUtil> value(new AuthenticationHelperUtil()); return value.get(); }
+    private: static AuthenticationHelperUtil* instance_owner();
+    private: static AuthenticationHelperUtil* instance;
 
     public: static AuthenticationHelperUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: AuthenticationHelperUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -104,3 +96,44 @@ class AuthenticationHelperUtil
 
 
         #endif //ADMIN_TAGHELPERS_AUTHENTICATIONHELPERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_AUTHENTICATIONHELPERUTIL_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_AUTHENTICATIONHELPERUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/user/role/BasicUserRole.h>)
+#include <org/allbinary/business/user/role/BasicUserRole.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRole.h>)
+#include <org/allbinary/business/user/role/UserRole.h>
+#endif
+#if __has_include(<org/allbinary/globals/URLGLOBALS.h>)
+#include <org/allbinary/globals/URLGLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/file/upload/HttpFilePermissions.h>)
+#include <org/allbinary/logic/communication/http/file/upload/HttpFilePermissions.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/HttpRequestUtil.h>)
+#include <org/allbinary/logic/communication/http/request/HttpRequestUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include("admin/taghelpers/AuthenticationHelper.h")
+#include "admin/taghelpers/AuthenticationHelper.h"
+#endif
+
+        #endif
+    

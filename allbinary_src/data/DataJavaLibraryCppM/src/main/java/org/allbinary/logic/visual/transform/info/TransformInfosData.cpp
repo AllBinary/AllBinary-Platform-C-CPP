@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOSDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfosData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,37 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfosData
-            : public Object
-         {
+auto TransformInfosData::instance_owner() -> TransformInfosData* { static std::unique_ptr<TransformInfosData> value(new TransformInfosData()); return value.get(); }
+TransformInfosData* TransformInfosData::instance = TransformInfosData::instance_owner();
 
-    private: static TransformInfosData* instance() { static std::unique_ptr<TransformInfosData> value(new TransformInfosData()); return value.get(); }
+TransformInfosData::TransformInfosData(){
+}
 
-    public: static TransformInfosData* getInstance(){
+
+    auto TransformInfosData::getInstance() -> TransformInfosData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfosData::instance();
+                        return TransformInfosData::instance;
     
 }
 
 
-private: TransformInfosData(){
-}
 
 
-    public: const std::string NAME = "TRANSFORM_INFOS_NAME";
-
-    public: const std::string GROUP = "TRANSFORM_INFOS_GROUP";
-
-    public: const std::string ALL = "TRANSFORM_INFOS_ALL";
-
-    public: const std::string PREVIEW = "TRANSFORM_INFOS_PREVIEW";
-
-    public: const std::string SMALL_PREVIEW = "TRANSFORM_INFOS_SMALL_PREVIEW";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOSDATA_CPP

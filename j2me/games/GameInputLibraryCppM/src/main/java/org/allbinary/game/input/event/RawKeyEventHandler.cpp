@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/RawKeyEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,43 +76,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/event/RawKeyEventListener.h"
 
-class RawKeyEventHandler
-            : public Object
-         {
+auto RawKeyEventHandler::instance_owner() -> RawKeyEventHandler* { static std::unique_ptr<RawKeyEventHandler> value(new RawKeyEventHandler()); return value.get(); }
+RawKeyEventHandler* RawKeyEventHandler::instance = RawKeyEventHandler::instance_owner();
 
-    private: static RawKeyEventHandler* instance() { static std::unique_ptr<RawKeyEventHandler> value(new RawKeyEventHandler()); return value.get(); }
-
-    public: static RawKeyEventHandler* getInstance(){
+    auto RawKeyEventHandler::getInstance() -> RawKeyEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RawKeyEventHandler::instance();
+                        return RawKeyEventHandler::instance;
     
 }
 
 
-    private: static inline const std::string TOTAL_LISTENERS = "Total Listeners: ";
-
-    private: static inline const std::string LISTENER_LABEL = " Listener: ";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicArrayList* eventListenerInterfaceList;
-
-public: RawKeyEventHandler(){
+RawKeyEventHandler::RawKeyEventHandler() : logUtil(LogUtil::getInstance()){
 this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
-    public: void removeAllListeners(){
+    auto RawKeyEventHandler::removeAllListeners() -> void{
 this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
-    public: void addListeners(BasicArrayList* vector){
+    auto RawKeyEventHandler::addListeners(BasicArrayList* vector) -> void{
 
     RawKeyEventListener* eventListenerInterface;;
     
@@ -125,7 +124,7 @@ this->addListener(eventListenerInterface);
 }
 
 
-    public: void addListenerSingleThreaded(RawKeyEventListener* eventListenerInterface){
+    auto RawKeyEventHandler::addListenerSingleThreaded(RawKeyEventListener* eventListenerInterface) -> void{
 
                         if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
@@ -138,7 +137,7 @@ this->addListener(eventListenerInterface);
 }
 
 
-    public: void addListener(RawKeyEventListener* eventListenerInterface){
+    auto RawKeyEventHandler::addListener(RawKeyEventListener* eventListenerInterface) -> void{
 
                         if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
@@ -151,13 +150,13 @@ this->addListener(eventListenerInterface);
 }
 
 
-    public: void removeListenerSingleThreaded(RawKeyEventListener* eventListenerInterface){
+    auto RawKeyEventHandler::removeListenerSingleThreaded(RawKeyEventListener* eventListenerInterface) -> void{
 this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
 
 
-    public: void removeListener(RawKeyEventListener* eventListenerInterface){
+    auto RawKeyEventHandler::removeListener(RawKeyEventListener* eventListenerInterface) -> void{
 this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
@@ -165,7 +164,7 @@ this->eventListenerInterfaceList->remove(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(int32_t keyCode, int32_t deviceId, bool repeated){
+    auto RawKeyEventHandler::fireEvent(int32_t keyCode, int32_t deviceId, bool repeated) -> void{
 
     RawKeyEventListener* eventListenerInterface;;
     
@@ -201,13 +200,13 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener* eventListenerInterface){
+    auto RawKeyEventHandler::process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener* eventListenerInterface) -> void{
 eventListenerInterface->onEventRaw(keyCode, deviceId, repeated);
     
 }
 
 
-    public: BasicArrayList* getEventListenerInterfaceListP(){
+    auto RawKeyEventHandler::getEventListenerInterfaceListP() -> BasicArrayList*{
 
 
 
@@ -217,7 +216,7 @@ eventListenerInterface->onEventRaw(keyCode, deviceId, repeated);
 }
 
 
-    public: std::string toString(){
+    auto RawKeyEventHandler::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -266,7 +265,6 @@ index++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_CPP

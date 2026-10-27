@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_LAYERMANAGER_CPP
+        #define ORG_ALLBINARY_LAYER_LAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/LayerManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,25 +70,8 @@
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/Layer.h"
 
-class LayerManager
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: LayerManagerLoggingBase* layerManagerLogging;
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    private: SynchObject* anyType = new SynchObject();
-
-public: LayerManager(LayerManagerLoggingBase* layerManagerLogging){
+LayerManager::LayerManager(LayerManagerLoggingBase* layerManagerLogging) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), systemWrapper(ABSystemWrapper::getInstance()), tsUtil(TsUtil::getInstance()), list(new BasicArrayListD()), anyType(new SynchObject()){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->layerManagerLogging= layerManagerLogging;
@@ -86,7 +79,7 @@ this->layerManagerLogging= layerManagerLogging;
 }
 
 
-    public: bool contains(AllBinaryLayer* layerInterface){
+    auto LayerManager::contains(AllBinaryLayer* layerInterface) -> bool{
 
 
 
@@ -98,7 +91,7 @@ this->layerManagerLogging= layerManagerLogging;
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryLayer* layerInterface){
+    auto LayerManager::update(AllBinaryLayer* layerInterface) -> void{
 
     bool had = this->list->remove(layerInterface);;
     
@@ -148,7 +141,7 @@ this->list->add(layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void insert(AllBinaryLayer* layerInterface){
+    auto LayerManager::insert(AllBinaryLayer* layerInterface) -> void{
 
     AllBinaryLayer* nextLayerInterface;;
     
@@ -188,7 +181,7 @@ this->append(layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void append(AllBinaryLayer* layerInterface){
+    auto LayerManager::append(AllBinaryLayer* layerInterface) -> void{
 this->layerManagerLogging->append(layerInterface);
     
 this->list->add(layerInterface);
@@ -198,7 +191,7 @@ this->list->add(layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void appendAt(AllBinaryLayer* layerInterface, int32_t index){
+    auto LayerManager::appendAt(AllBinaryLayer* layerInterface, int32_t index) -> void{
 this->layerManagerLogging->appendAt(layerInterface, index);
     
 this->list->addAt(index, layerInterface);
@@ -208,7 +201,7 @@ this->list->addAt(index, layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(AllBinaryLayer* layerInterface){
+    auto LayerManager::remove(AllBinaryLayer* layerInterface) -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -228,7 +221,7 @@ this->layerManagerLogging->removeResult(this, layerInterface, result);
 }
 
 
-    public: Layer* getLayerAt(int32_t index){
+    auto LayerManager::getLayerAt(int32_t index) -> Layer*{
 
 
 
@@ -238,7 +231,7 @@ this->layerManagerLogging->removeResult(this, layerInterface, result);
 }
 
 
-    public: int32_t getSize(){
+    auto LayerManager::getSize() -> int32_t{
 
 
 
@@ -250,7 +243,7 @@ this->layerManagerLogging->removeResult(this, layerInterface, result);
 
                 //@Throws(Exception.constructor)
             
-    public: void cleanup(){
+    auto LayerManager::cleanup() -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -271,7 +264,7 @@ this->tsUtil->gc();
 }
 
 
-    public: void paint(Graphics* g, int32_t x, int32_t y){
+    auto LayerManager::paint(Graphics* g, int32_t x, int32_t y) -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -309,7 +302,6 @@ comp= dynamic_cast<Layer*>(this->list->objectArray[index]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_LAYERMANAGER_CPP

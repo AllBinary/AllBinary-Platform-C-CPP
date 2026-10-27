@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/skill/GameSkill.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,37 +75,9 @@
         #include "org/allbinary/input/automation/module/game/skill/GameSkillType.h"
 #include "org/allbinary/input/automation/module/game/skill/GameSkillPropertyInterface.h"
 
-class GameSkill
-            : public Object
-         {
+HashMap<Object*, Object*>* GameSkill::hashMap = StdUtil::getInstance()->createHashMap();
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
-
-    public: static GameSkill* getInstance(GameSkillType* gameSkillType, std::string extra){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return dynamic_cast<GameSkill*>(GameSkill::hashMap->get((new StringMaker())->append(gameSkillType->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra)->toString()));
-    
-}
-
-
-    private: GameSkillType* gameSkillType;
-
-    private: std::string extra;
-
-    private: int32_t time= 0;
-
-    private: BasicArrayList* vector;
-
-    private: const std::string GAME_SKILL_LABEL = "GameSkill: ";
-
-    private: const std::string EXTRA_LABEL = "Extra: ";
-
-    private: const std::string TIME_LABEL = "Time: ";
-
-public: GameSkill(GameSkillType* gameSkillType, std::string extra, int32_t time){
+GameSkill::GameSkill(GameSkillType* gameSkillType, std::string extra, int32_t time){
 this->setGameSkillType(gameSkillType);
     
 this->setExtra(extra);
@@ -109,7 +91,7 @@ GameSkill::hashMap->put((new StringMaker())->append(this->getGameSkillType()->ge
 }
 
 
-    public: GameSkillType* getGameSkillType(){
+    auto GameSkill::getGameSkillType() -> GameSkillType*{
 
 
 
@@ -119,13 +101,13 @@ GameSkill::hashMap->put((new StringMaker())->append(this->getGameSkillType()->ge
 }
 
 
-    public: void setGameSkillType(GameSkillType* gameSkillType){
+    auto GameSkill::setGameSkillType(GameSkillType* gameSkillType) -> void{
 this->gameSkillType= gameSkillType;
     
 }
 
 
-    public: std::string getExtra(){
+    auto GameSkill::getExtra() -> std::string{
 
 
 
@@ -135,13 +117,13 @@ this->gameSkillType= gameSkillType;
 }
 
 
-    public: void setExtra(std::string extra){
+    auto GameSkill::setExtra(std::string extra) -> void{
 this->extra= extra;
     
 }
 
 
-    public: int32_t getTime(){
+    auto GameSkill::getTime() -> int32_t{
 
 
 
@@ -151,19 +133,19 @@ this->extra= extra;
 }
 
 
-    public: void setTime(int32_t time){
+    auto GameSkill::setTime(int32_t time) -> void{
 this->time= time;
     
 }
 
 
-    public: void addProperty(GameSkillPropertyInterface* gameSkillPropertyInterface){
+    auto GameSkill::addProperty(GameSkillPropertyInterface* gameSkillPropertyInterface) -> void{
 this->vector->add(gameSkillPropertyInterface);
     
 }
 
 
-    public: BasicArrayList* getProperties(){
+    auto GameSkill::getProperties() -> BasicArrayList*{
 
 
 
@@ -173,7 +155,17 @@ this->vector->add(gameSkillPropertyInterface);
 }
 
 
-    public: std::string toString(){
+    auto GameSkill::getInstance(GameSkillType* gameSkillType, std::string extra) -> GameSkill*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return dynamic_cast<GameSkill*>(GameSkill::hashMap->get((new StringMaker())->append(gameSkillType->getName())->append(CommonSeps::getInstance()->SPACE)->append(extra)->toString()));
+    
+}
+
+
+    auto GameSkill::toString() -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -205,7 +197,6 @@ stringBuffer->appendlong(this->getTime());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILL_CPP

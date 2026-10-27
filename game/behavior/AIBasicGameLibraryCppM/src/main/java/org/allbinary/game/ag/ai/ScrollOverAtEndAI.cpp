@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERATENDAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERATENDAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/ScrollOverAtEndAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,9 +70,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScrollOverAtEndAI: public BasicAI {
 
-public: ScrollOverAtEndAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+ScrollOverAtEndAI::ScrollOverAtEndAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +83,7 @@ public: ScrollOverAtEndAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameIn
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto ScrollOverAtEndAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -132,7 +141,6 @@ public: ScrollOverAtEndAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameIn
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERATENDAI_CPP

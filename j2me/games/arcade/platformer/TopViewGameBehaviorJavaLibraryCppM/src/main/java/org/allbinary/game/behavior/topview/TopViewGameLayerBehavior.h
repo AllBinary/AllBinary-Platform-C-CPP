@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,14 +33,8 @@
 
         
 #include <org/allbinary/game/layer/behavior/GameLayerBehavior.h>
-
-      
-#include <org/allbinary/game/physics/acceleration/BasicAccelerationProperties.h>
-
-      
-#include <org/allbinary/game/physics/velocity/VelocityProperties.h>
-
-      
+class BasicAccelerationProperties;
+class VelocityProperties;
 
 
 
@@ -54,8 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/behavior/topview/InitialJumpBehavior.h"
+        class InitialJumpBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TopViewGameLayerBehavior: public GameLayerBehavior {
 
     public: int32_t maxGravityActionIndex;
@@ -86,3 +89,22 @@ public: TopViewGameLayerBehavior(int32_t maxGravityActionIndex);
 
 
         #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/behavior/GameLayerBehavior.h>)
+#include <org/allbinary/game/layer/behavior/GameLayerBehavior.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/acceleration/BasicAccelerationProperties.h>)
+#include <org/allbinary/game/physics/acceleration/BasicAccelerationProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/VelocityProperties.h>)
+#include <org/allbinary/game/physics/velocity/VelocityProperties.h>
+#endif
+#if __has_include("org/allbinary/game/behavior/topview/InitialJumpBehavior.h")
+#include "org/allbinary/game/behavior/topview/InitialJumpBehavior.h"
+#endif
+
+        #endif
+    

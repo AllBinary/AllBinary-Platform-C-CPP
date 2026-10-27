@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/TopToBottomImageAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,11 +73,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageSegmentAnimation.h"
 
-class TopToBottomImageAnimation: public ImageSegmentAnimation {
 
-    private: int32_t currentHeight;
-
-public: TopToBottomImageAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior) : ImageSegmentAnimation(image, sequenceArray, animationBehavior){
+TopToBottomImageAnimation::TopToBottomImageAnimation(Image* image, std::vector<int32_t> sequenceArray, AnimationBehavior* animationBehavior) : ImageSegmentAnimation(image, sequenceArray, animationBehavior), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,18 +95,18 @@ this->currentHeight= 0;
 }
 
 
-    public: void nextFrame(){
+    auto TopToBottomImageAnimation::nextFrame() -> void{
 
                         if(this->getSequence()[0] ==  -1)
                         
                                     {
-                                    super.previousFrame();
+                                    ImageSegmentAnimation::previousFrame();
     
 
                                     }
                                 
                         else {
-                            super.nextFrame();
+                            ImageSegmentAnimation::nextFrame();
     
 
                         }
@@ -109,18 +116,18 @@ this->update();
 }
 
 
-    public: void previousFrame(){
+    auto TopToBottomImageAnimation::previousFrame() -> void{
 
                         if(this->getSequence()[0] ==  -1)
                         
                                     {
-                                    super.nextFrame();
+                                    ImageSegmentAnimation::nextFrame();
     
 
                                     }
                                 
                         else {
-                            super.previousFrame();
+                            ImageSegmentAnimation::previousFrame();
     
 
                         }
@@ -130,29 +137,26 @@ this->update();
 }
 
 
-    public: void setFrame(int32_t index){
-super.setFrame(index);
+    auto TopToBottomImageAnimation::setFrame(int32_t index) -> void{
+ImageSegmentAnimation::setFrame(index);
     
 this->update();
     
 }
 
 
-    private: void update(){
+    auto TopToBottomImageAnimation::update() -> void{
 this->currentHeight= this->getDrawHeight() *this->getFrame() /this->getSize();
     
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto TopToBottomImageAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawRegion(this->getImage(), this->getStartX(), this->getStartY(), this->getDrawWidth(), this->currentHeight, Sprite::TRANS_NONE, x, y, this->anchor);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATION_CPP

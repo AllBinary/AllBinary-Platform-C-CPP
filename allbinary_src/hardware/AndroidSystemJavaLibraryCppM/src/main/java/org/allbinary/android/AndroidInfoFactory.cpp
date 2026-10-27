@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ANDROIDINFOFACTORY_CPP
+        #define ORG_ALLBINARY_ANDROID_ANDROIDINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/AndroidInfoFactory.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -52,25 +62,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AndroidInfoFactory
-            : public Object
-         {
 
-    private: static AndroidInfoFactory* instance() { static std::unique_ptr<AndroidInfoFactory> value(new AndroidInfoFactory()); return value.get(); }
+AndroidInfoFactory::AndroidInfoFactory() : version(Integer.parseInt(Build::VERSION->SDK)) {
+        }
+        auto AndroidInfoFactory::instance_owner() -> AndroidInfoFactory* { static std::unique_ptr<AndroidInfoFactory> value(new AndroidInfoFactory()); return value.get(); }
+AndroidInfoFactory* AndroidInfoFactory::instance = AndroidInfoFactory::instance_owner();
 
-    public: static AndroidInfoFactory* getInstance(){
+    auto AndroidInfoFactory::getInstance() -> AndroidInfoFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidInfoFactory::instance();
+                        return AndroidInfoFactory::instance;
     
 }
 
 
-    private: const int32_t version = Integer.parseInt(Build::VERSION.SDK);
-
-    public: int32_t getVersion(){
+    auto AndroidInfoFactory::getVersion() -> int32_t{
 
 
 
@@ -80,7 +88,6 @@ class AndroidInfoFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_ANDROIDINFOFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/CacheInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -54,21 +64,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
-class CacheInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void add(CacheableInterface* cacheableInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void addArray(std::vector<CacheableInterface*> cacheableInterfaces) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void clear() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEINTERFACE_CPP

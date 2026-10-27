@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_BASICGENERATOR_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_BASICGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/BasicGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,20 +57,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h"
 
-class BasicGenerator: public TransformInfoObjectConfigGenerator {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: BasicGenerator(){
+BasicGenerator::BasicGenerator() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: std::string process(std::string input){
+    auto BasicGenerator::process(std::string input) -> std::string{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Processing", this, this->commonStrings.PROCESS);
+                                    this->logUtil->putF("Processing", this, this->commonStrings->PROCESS);
     
 
                                     }
@@ -74,7 +81,6 @@ public: BasicGenerator(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_BASICGENERATOR_CPP

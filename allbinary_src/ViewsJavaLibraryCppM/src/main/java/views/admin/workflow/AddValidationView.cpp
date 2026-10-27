@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_WORKFLOW_ADDVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_WORKFLOW_ADDVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/workflow/AddValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,13 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/workflow/WorkFlowView.h"
 
-class AddValidationView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-public: AddValidationView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface){
+AddValidationView::AddValidationView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface), logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,7 +99,7 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 }
 
 
-    public: bool isValid(){
+    auto AddValidationView::isValid() -> bool{
 
         try {
             
@@ -108,10 +113,10 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -127,20 +132,20 @@ this->workFlowInterface= NewWorkFlowFactory::getInstance()->getInstance(this->ab
 }
 
 
-    public: std::string validationInfo(){
+    auto AddValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(WorkFlowEntityFactory::getInstance()->create2()->get(this->workFlowInterface.getName(), this->getTransformInfoInterface()->getStoreName()) != 
+                        if(WorkFlowEntityFactory::getInstance()->create2()->get(this->workFlowInterface->getName(), this->getTransformInfoInterface()->getStoreName()) != 
                                     nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Workflow already exist", this, "validationInfo()");
@@ -164,7 +169,7 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -183,7 +188,7 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto AddValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -193,7 +198,7 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto AddValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -203,7 +208,6 @@ stringBuffer->append("The WorkFlow name you selected is already in use.<br/>  Pl
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_WORKFLOW_ADDVALIDATIONVIEW_CPP

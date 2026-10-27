@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
+class Canvas;
 
 
 
@@ -51,14 +54,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameKeyUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameKeyUtil* instance() { static std::unique_ptr<GameKeyUtil> value(new GameKeyUtil()); return value.get(); }
+    private: static GameKeyUtil* instance_owner();
+    private: static GameKeyUtil* instance;
 
     public: static GameKeyUtil* getInstance();
 
+
+            
+    public: GameKeyUtil();
+        
     public: bool isDirectionKey(int32_t key);
 
 };
@@ -67,3 +79,13 @@ class GameKeyUtil
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+
+        #endif
+    

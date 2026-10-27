@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTEXCEPTION_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTEXCEPTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/PaymentException.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentException: public Exception {
 
-public: PaymentException(std::string error) : Exception(error){
+PaymentException::PaymentException(std::string error) : Exception(error){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -57,7 +66,6 @@ public: PaymentException(std::string error) : Exception(error){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTEXCEPTION_CPP

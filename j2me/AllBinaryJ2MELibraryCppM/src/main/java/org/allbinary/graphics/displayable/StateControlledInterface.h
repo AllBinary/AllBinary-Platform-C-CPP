@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_STATECONTROLLEDINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_STATECONTROLLEDINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StateControlledInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class StateControlledInterface
+            : public virtual Object
+         {
 
     public: virtual void setState(int32_t state) = 0;
 
@@ -56,3 +67,10 @@ class StateControlledInterface {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_STATECONTROLLEDINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_STATECONTROLLEDINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_STATECONTROLLEDINTERFACE_H_COMPLETE
+        
+        #endif
+    

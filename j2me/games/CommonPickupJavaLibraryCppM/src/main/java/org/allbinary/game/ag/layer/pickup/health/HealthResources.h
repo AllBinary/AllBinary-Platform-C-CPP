@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HealthResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static HealthResources* SINGLETON() { static std::unique_ptr<HealthResources> value(new HealthResources()); return value.get(); }
+    private: static HealthResources* SINGLETON_owner();
+    private: static HealthResources* SINGLETON;
 
     public: static HealthResources* getInstance();
 
@@ -66,3 +76,10 @@ private: HealthResources();
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALTHRESOURCES_H_COMPLETE
+        
+        #endif
+    

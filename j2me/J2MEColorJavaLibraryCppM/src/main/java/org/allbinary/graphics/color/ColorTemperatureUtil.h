@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,18 +52,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/BasicColorFactory.h"
-#include "org/allbinary/graphics/color/BasicColor.h"
+        class BasicColorFactory;
+class BasicColor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorTemperatureUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ColorTemperatureUtil* instance() { static std::unique_ptr<ColorTemperatureUtil> value(new ColorTemperatureUtil()); return value.get(); }
+    private: static ColorTemperatureUtil* instance_owner();
+    private: static ColorTemperatureUtil* instance;
 
     public: static ColorTemperatureUtil* getInstance();
 
-    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
+
+            
+    public: ColorTemperatureUtil();
+        
+    private: BasicColorFactory* basicColorFactory;
 
     public: BasicColor* getBasicColor(int32_t thirdTemp);
 
@@ -68,3 +82,16 @@ class ColorTemperatureUtil
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/color/BasicColorFactory.h")
+#include "org/allbinary/graphics/color/BasicColorFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+
+        #endif
+    

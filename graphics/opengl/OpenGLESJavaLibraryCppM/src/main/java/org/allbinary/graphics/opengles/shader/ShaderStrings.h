@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShaderStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static ShaderStrings* instance() { static std::unique_ptr<ShaderStrings> value(new ShaderStrings()); return value.get(); }
+    private: static ShaderStrings* instance_owner();
+    private: static ShaderStrings* instance;
 
     public: static ShaderStrings* getInstance();
 
+
+            
+    public: ShaderStrings();
+        
     public: const std::string NO_PROGRAM_HANDLE = "No program handle";
 
     public: const std::string UNIFORM_BLOCK_HANDLE = "Uniform Block Handle: ";
@@ -70,3 +84,10 @@ class ShaderStrings
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERSTRINGS_H_COMPLETE
+        
+        #endif
+    

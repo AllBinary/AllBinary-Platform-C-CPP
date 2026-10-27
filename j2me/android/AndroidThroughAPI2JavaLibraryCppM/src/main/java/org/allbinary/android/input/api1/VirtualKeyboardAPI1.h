@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_API1_VIRTUALKEYBOARDAPI1_H
         #define ORG_ALLBINARY_ANDROID_INPUT_API1_VIRTUALKEYBOARDAPI1_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,14 +33,8 @@
 
         
 #include <org/allbinary/android/input/VirtualKeyboard.h>
-
-      
 #include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
-
-      
-#include <android/app/Activity.h>
-
-      
+class Activity;
 
 
 
@@ -55,6 +54,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VirtualKeyboardAPI1: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
 
     public: static inline int32_t MIN_API = 1;
@@ -69,3 +72,19 @@ public: VirtualKeyboardAPI1(Activity* activity);
 
 
         #endif //ORG_ALLBINARY_ANDROID_INPUT_API1_VIRTUALKEYBOARDAPI1_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_INPUT_API1_VIRTUALKEYBOARDAPI1_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_INPUT_API1_VIRTUALKEYBOARDAPI1_H_COMPLETE
+        #if __has_include(<org/allbinary/android/input/VirtualKeyboard.h>)
+#include <org/allbinary/android/input/VirtualKeyboard.h>
+#endif
+#if __has_include(<org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>)
+#include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
+#endif
+#if __has_include(<android/app/Activity.h>)
+#include <android/app/Activity.h>
+#endif
+
+        #endif
+    

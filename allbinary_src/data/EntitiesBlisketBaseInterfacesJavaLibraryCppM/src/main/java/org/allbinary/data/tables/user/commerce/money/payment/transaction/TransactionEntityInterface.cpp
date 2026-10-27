@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransactionEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-    public: virtual void remove(std::string userName, std::string orderNumber) = 0;
 
-    public: virtual void add(std::string userName, std::string orderNumber, PaymentTransactionInterface* paymentTransactionInterface) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONENTITYINTERFACE_CPP

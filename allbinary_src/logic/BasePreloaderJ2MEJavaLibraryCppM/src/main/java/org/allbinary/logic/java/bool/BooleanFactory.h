@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H
         #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +53,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BooleanFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BooleanFactory* instance() { static std::unique_ptr<BooleanFactory> value(new BooleanFactory()); return value.get(); }
+    private: static BooleanFactory* instance_owner();
+    private: static BooleanFactory* instance;
 
     public: static BooleanFactory* getInstance();
 
-    public: bool TRUE = true;
 
-    public: bool FALSE = false;
+            
+    public: BooleanFactory();
+        
+    public: bool TRUE;
 
-    public: const std::string TRUE_STRING = this->TRUE.toString();
+    public: bool FALSE;
 
-    public: const std::string FALSE_STRING = this->FALSE.toString();
+    public: const std::string TRUE_STRING;
+
+    public: const std::string FALSE_STRING;
 
     public: const std::string YES = "yes";
 
@@ -76,3 +90,10 @@ class BooleanFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H_COMPLETE
+        
+        #endif
+    

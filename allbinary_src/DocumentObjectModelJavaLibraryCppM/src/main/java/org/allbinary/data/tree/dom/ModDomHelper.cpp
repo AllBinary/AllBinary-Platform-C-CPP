@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/ModDomHelper.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,13 +89,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/dom/DomData.h"
 
-class ModDomHelper
-            : public Object
-         {
+
+ModDomHelper::ModDomHelper(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createTextNode(Document* document, std::string name, std::string text){
+    auto ModDomHelper::createTextNode(Document* document, std::string name, std::string text) -> Node*{
 
     Node* newValueNode = document->createElement(name);;
     
@@ -105,7 +116,7 @@ newValueNode->appendChild(newValueTextNode);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createValueNode(Document* document, std::string text){
+    auto ModDomHelper::createValueNode(Document* document, std::string text) -> Node*{
 
 
 
@@ -117,7 +128,7 @@ newValueNode->appendChild(newValueTextNode);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNameNode(Document* document, std::string text){
+    auto ModDomHelper::createNameNode(Document* document, std::string text) -> Node*{
 
 
 
@@ -129,7 +140,7 @@ newValueNode->appendChild(newValueTextNode);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createIndexNode(Document* document, int32_t index){
+    auto ModDomHelper::createIndexNode(Document* document, int32_t index) -> Node*{
 
 
 
@@ -141,7 +152,7 @@ newValueNode->appendChild(newValueTextNode);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNameValueNodes(Document* document, std::string elementName, std::string nameText, std::string valueText){
+    auto ModDomHelper::createNameValueNodes(Document* document, std::string elementName, std::string nameText, std::string valueText) -> Node*{
 
     Node* newNode = document->createElement(elementName);;
     
@@ -160,7 +171,7 @@ newNode->appendChild(ModDomHelper::createValueNode(document, valueText));
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNameValueNodes(Document* document, std::string elementNameAndNameText, std::string valueText){
+    auto ModDomHelper::createNameValueNodes(Document* document, std::string elementNameAndNameText, std::string valueText) -> Node*{
 
     Node* newNode = ModDomHelper::createNameValueNodes(document, elementNameAndNameText, elementNameAndNameText, valueText);;
     
@@ -175,7 +186,7 @@ newNode->appendChild(ModDomHelper::createValueNode(document, valueText));
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNameValueIndexNodes(Document* document, std::string elementNameAndNameText, int32_t index, std::string valueText){
+    auto ModDomHelper::createNameValueIndexNodes(Document* document, std::string elementNameAndNameText, int32_t index, std::string valueText) -> Node*{
 
     Node* newNode = ModDomHelper::createNameValueNodes(document, elementNameAndNameText, valueText);;
     
@@ -192,7 +203,7 @@ newNode->appendChild(ModDomHelper::createIndexNode(document, index));
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNameValueNodes(Document* document, std::string rootNode, HashMap<Object*, Object*>* hashMap){
+    auto ModDomHelper::createNameValueNodes(Document* document, std::string rootNode, HashMap<Object*, Object*>* hashMap) -> Node*{
 
     Node* node = document->createElement(rootNode);;
     
@@ -207,7 +218,7 @@ newNode->appendChild(ModDomHelper::createIndexNode(document, index));
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNameValueNodes(Document* document, Node* node, HashMap<Object*, Object*>* hashMap){
+    auto ModDomHelper::createNameValueNodes(Document* document, Node* node, HashMap<Object*, Object*>* hashMap) -> Node*{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -279,7 +290,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
                             
 
 
-                            throw new Exception("HashMap value is the wrong instance and is: " +ClassUtil::viewAll(anyType, CommonSeps::getInstance()->NEW_LINE));
+                            throw Exception(JavaString::valueOf("HashMap value is the wrong instance and is: ") +JavaString::valueOf(ClassUtil::viewAll(anyType, CommonSeps::getInstance()->NEW_LINE)));
                     
 
                         }
@@ -297,7 +308,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNameValueNodes(Document* document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList* valueVector){
+    auto ModDomHelper::createNameValueNodes(Document* document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList* valueVector) -> Node*{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -332,7 +343,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNameValueIndexNodes(Document* document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList* valueVector){
+    auto ModDomHelper::createNameValueIndexNodes(Document* document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList* valueVector) -> Node*{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -367,7 +378,7 @@ node->appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNod
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNodeWithValueNodes(Document* document, std::string rootNode, HashMap<Object*, Object*>* hashMap){
+    auto ModDomHelper::createNodeWithValueNodes(Document* document, std::string rootNode, HashMap<Object*, Object*>* hashMap) -> Node*{
 
     Node* node = document->createElement(rootNode);;
     
@@ -382,7 +393,7 @@ node->appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNod
 
                 //@Throws(Exception.constructor)
             
-    public: static Node* createNodeWithValueNodes(Document* document, Node* node, HashMap<Object*, Object*>* hashMap){
+    auto ModDomHelper::createNodeWithValueNodes(Document* document, Node* node, HashMap<Object*, Object*>* hashMap) -> Node*{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -424,11 +435,6 @@ node->appendChild(ModDomHelper::createTextNode(document, name, value));
 }
 
 
-private: ModDomHelper(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_CPP

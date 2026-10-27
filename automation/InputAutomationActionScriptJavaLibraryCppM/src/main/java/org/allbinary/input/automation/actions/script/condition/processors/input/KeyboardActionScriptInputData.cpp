@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeyboardActionScriptInputData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "KEY_ACTION_INPUT_NAME";
-
-    public: static inline std::string KEY = "KEY_ACTION_INPUT_KEY";
-
-    public: static inline std::string DELAY_BETWEEN_KEYS = "KEY_ACTION_INPUT_DELAY_BETWEEN_KEYS";
-
-    public: static inline std::string PRESS = "KEY_ACTION_INPUT_PRESS";
-
-    public: static inline std::string RELEASE = "KEY_ACTION_INPUT_RELEASE";
-
-private: KeyboardActionScriptInputData(){
+KeyboardActionScriptInputData::KeyboardActionScriptInputData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTDATA_CPP

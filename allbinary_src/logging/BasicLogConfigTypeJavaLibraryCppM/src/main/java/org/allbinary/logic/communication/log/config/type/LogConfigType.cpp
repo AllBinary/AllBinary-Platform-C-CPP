@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LogConfigType
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: std::string description;
-
-public: LogConfigType(std::string name, std::string description){
+LogConfigType::LogConfigType(std::string name, std::string description){
 this->name= name;
     
 this->description= description;
@@ -61,7 +64,7 @@ this->description= description;
 }
 
 
-    public: std::string getName(){
+    auto LogConfigType::getName() -> std::string{
 
 
 
@@ -71,7 +74,7 @@ this->description= description;
 }
 
 
-    public: std::string getDescription(){
+    auto LogConfigType::getDescription() -> std::string{
 
 
 
@@ -81,19 +84,18 @@ this->description= description;
 }
 
 
-    public: void setName(std::string value){
+    auto LogConfigType::setName(std::string value) -> void{
 this->name= value;
     
 }
 
 
-    public: void setDescription(std::string value){
+    auto LogConfigType::setDescription(std::string value) -> void{
 this->description= value;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPE_CPP

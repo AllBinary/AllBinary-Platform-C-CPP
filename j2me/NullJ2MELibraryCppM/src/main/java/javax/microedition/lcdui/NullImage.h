@@ -21,6 +21,11 @@
         #ifndef JAVAX_MICROEDITION_LCDUI_NULLIMAGE_H
         #define JAVAX_MICROEDITION_LCDUI_NULLIMAGE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,19 +54,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "javax/microedition/lcdui/Image.h"
+        class Image;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullImage
-            : public Object
+            : public virtual Object
          {
 
-    public: static inline const std::vector<Image*> NULL_IMAGE_ARRAY = {};
+    public: static std::vector<Image*> NULL_IMAGE_ARRAY;
 
-    public: static Image* NULL_IMAGE() { static std::unique_ptr<Image> value(new Image()); return value.get(); }
+    private: static Image* NULL_IMAGE_owner();
+    public: static Image* NULL_IMAGE;
 
+
+            
+    public: NullImage();
+        
 };
 
             
 
 
         #endif //JAVAX_MICROEDITION_LCDUI_NULLIMAGE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(JAVAX_MICROEDITION_LCDUI_NULLIMAGE_H_COMPLETE)
+        #define JAVAX_MICROEDITION_LCDUI_NULLIMAGE_H_COMPLETE
+        #if __has_include("javax/microedition/lcdui/Image.h")
+#include "javax/microedition/lcdui/Image.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESELECTORPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESELECTORPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/PreGameSelectorPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,15 +69,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/PreGameScrollSelectionForm.h"
 
-class PreGameSelectorPaintable: public InitUpdatePaintable {
 
-    private: std::string title;
-
-    private: CanvasDrawLineString* canvasDrawLineString;
-
-    private: PreGameScrollSelectionForm* preGameScrollSelectionForm;
-
-public: PreGameSelectorPaintable(std::string title, PreGameScrollSelectionForm* preGameScrollSelectionForm){
+PreGameSelectorPaintable::PreGameSelectorPaintable(std::string title, PreGameScrollSelectionForm* preGameScrollSelectionForm){
 this->title= title;
     
 
@@ -80,7 +83,7 @@ this->preGameScrollSelectionForm= preGameScrollSelectionForm;
 }
 
 
-    public: void update(){
+    auto PreGameSelectorPaintable::update() -> void{
 
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
@@ -89,8 +92,8 @@ this->canvasDrawLineString= new CanvasDrawLineString(displayInfo->getLastHalfWid
 }
 
 
-    public: void paint(Graphics* graphics){
-graphics->setColor(BasicColorFactory::getInstance()->WHITE.intValue());
+    auto PreGameSelectorPaintable::paint(Graphics* graphics) -> void{
+graphics->setColor(BasicColorFactory::getInstance()->WHITE->intValue());
     
 this->canvasDrawLineString->paint(graphics, title, 0);
     
@@ -99,7 +102,7 @@ this->getPreGameSelectionForm()->paint(graphics);
 }
 
 
-    public: PreGameScrollSelectionForm* getPreGameSelectionForm(){
+    auto PreGameSelectorPaintable::getPreGameSelectionForm() -> PreGameScrollSelectionForm*{
 
 
 
@@ -109,7 +112,6 @@ this->getPreGameSelectionForm()->paint(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESELECTORPAINTABLE_CPP

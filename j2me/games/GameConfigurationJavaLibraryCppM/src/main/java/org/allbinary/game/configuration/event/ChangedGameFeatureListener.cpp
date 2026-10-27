@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_CHANGEDGAMEFEATURELISTENER_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_CHANGEDGAMEFEATURELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/event/ChangedGameFeatureListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,31 +57,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/event/BaseChangedGameFeatureListener.h"
 
-class ChangedGameFeatureListener: public BaseChangedGameFeatureListener {
 
-    private: static ChangedGameFeatureListener* gameFeatureListener() { static std::unique_ptr<ChangedGameFeatureListener> value(new ChangedGameFeatureListener()); return value.get(); }
+ChangedGameFeatureListener::ChangedGameFeatureListener() {
+        }
+        auto ChangedGameFeatureListener::gameFeatureListener_owner() -> ChangedGameFeatureListener* { static std::unique_ptr<ChangedGameFeatureListener> value(new ChangedGameFeatureListener()); return value.get(); }
+ChangedGameFeatureListener* ChangedGameFeatureListener::gameFeatureListener = ChangedGameFeatureListener::gameFeatureListener_owner();
 
-    public: static ChangedGameFeatureListener* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ChangedGameFeatureListener::gameFeatureListener();
-    
-}
-
-
-    public: bool isChangedGameConfiguration(GameConfiguration* gameConfiguration){
+    auto ChangedGameFeatureListener::getInstance() -> ChangedGameFeatureListener*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.contains(gameConfiguration);;
+                        return ChangedGameFeatureListener::gameFeatureListener;
     
 }
 
 
-};
+    auto ChangedGameFeatureListener::isChangedGameConfiguration(GameConfiguration* gameConfiguration) -> bool{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->list->contains(gameConfiguration);;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_CHANGEDGAMEFEATURELISTENER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_INSERTCSSVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_INSERTCSSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/style/css/InsertCssValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,11 +83,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/includes/style/css/CssCustomizerView.h"
 
-class InsertCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface){
+InsertCssValidationView::InsertCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -89,7 +96,7 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto InsertCssValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -99,17 +106,17 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 }
 
 
-    public: bool isValid(){
+    auto InsertCssValidationView::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started Validation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started Validation", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -134,10 +141,10 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -153,7 +160,7 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 }
 
 
-    public: std::string validationInfo(){
+    auto InsertCssValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -170,7 +177,7 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -189,7 +196,7 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto InsertCssValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -199,7 +206,7 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto InsertCssValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -211,7 +218,7 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto InsertCssValidationView::view() -> std::string{
 
         try {
             
@@ -225,10 +232,10 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -243,7 +250,6 @@ public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) 
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_INSERTCSSVALIDATIONVIEW_CPP

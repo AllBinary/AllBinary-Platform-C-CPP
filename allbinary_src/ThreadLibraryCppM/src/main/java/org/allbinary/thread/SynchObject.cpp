@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_SYNCHOBJECT_CPP
+        #define ORG_ALLBINARY_THREAD_SYNCHOBJECT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/SynchObject.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SynchObject
-            : public Object
-         {
 
-};
+SynchObject::SynchObject() {
+        }
+        
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_SYNCHOBJECT_CPP

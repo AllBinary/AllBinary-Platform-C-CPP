@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/event/WaypointEventHandlerFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,16 +61,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/event/WaypointEventHandler.h"
 
-class WaypointEventHandlerFactory
-            : public Object
-         {
 
-    private: static inline const std::vector<WaypointEventHandler*> eventHandlerArray = 
+WaypointEventHandlerFactory::WaypointEventHandlerFactory() {
+        }
+        std::vector<WaypointEventHandler*> WaypointEventHandlerFactory::eventHandlerArray = 
                                                         {
                                                             new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler()
                                                         };
 
-    public: static WaypointEventHandler* getInstance(Group* groupInterface){
+    auto WaypointEventHandlerFactory::getInstance(Group* groupInterface) -> WaypointEventHandler*{
 
 
 
@@ -70,7 +79,7 @@ class WaypointEventHandlerFactory
 }
 
 
-    public: static void removeAll(){
+    auto WaypointEventHandlerFactory::removeAll() -> void{
 
 
 
@@ -78,14 +87,13 @@ class WaypointEventHandlerFactory
                         for (
     int32_t index = WaypointEventHandlerFactory::eventHandlerArray.size() -1;index >= 0; index--)
         {
-WaypointEventHandlerFactory::eventHandlerArray[index].removeAllListeners();
+WaypointEventHandlerFactory::eventHandlerArray[index]->removeAllListeners();
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_CPP

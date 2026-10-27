@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/TestingInputSingleton.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -85,23 +95,20 @@
 #include "org/allbinary/game/input/GameInputProcessorUtil.h"
 #include "org/allbinary/game/input/TestInputInterface.h"
 
-class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterface {
+auto TestingInputSingleton::instance_owner() -> TestingInputSingleton* { static std::unique_ptr<TestingInputSingleton> value(new TestingInputSingleton()); return value.get(); }
+TestingInputSingleton* TestingInputSingleton::instance = TestingInputSingleton::instance_owner();
 
-    private: static TestingInputSingleton* instance() { static std::unique_ptr<TestingInputSingleton> value(new TestingInputSingleton()); return value.get(); }
-
-    public: static TestingInputSingleton* getInstance(){
+    auto TestingInputSingleton::getInstance() -> TestingInputSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TestingInputSingleton::instance();
+                        return TestingInputSingleton::instance;
     
 }
 
 
-    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
-
-private: TestingInputSingleton() : AllBinaryGameLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPosition::getInstanceD()){
+TestingInputSingleton::TestingInputSingleton() : AllBinaryGameLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPosition::getInstanceD()), inputProcessorArray(std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX)), paintable(NullPaintable::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -113,13 +120,11 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
 }
 
 
-    private: PaintableInterface* paintable = NullPaintable::getInstance();
-
-    public: void initInputProcessors(){
+    auto TestingInputSingleton::initInputProcessors() -> void{
 }
 
 
-    public: void initInputProcessorsForTestInput(TestInputInterface* aTestInputInterface){
+    auto TestingInputSingleton::initInputProcessorsForTestInput(TestInputInterface* aTestInputInterface) -> void{
 
     TestInputInterface* testInputInterface = aTestInputInterface;;
     
@@ -211,7 +216,7 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void processInputList(AllBinaryLayerManager* allbinaryLayerManager, BasicArrayList* list){
+    auto TestingInputSingleton::processInputList(AllBinaryLayerManager* allbinaryLayerManager, BasicArrayList* list) -> void{
 
     int32_t key = 0;;
     
@@ -232,7 +237,7 @@ gameKeyEvent= (dynamic_cast<GameKeyEvent*>(list->objectArray[index]));
     
 key= gameKeyEvent->getKey();
     
-this->inputProcessorArray[key].processEvent(allbinaryLayerManager, GameKeyEvent::NONE);
+this->inputProcessorArray[key]->processEvent(allbinaryLayerManager, GameKeyEvent::NONE);
     
 }
 
@@ -242,7 +247,7 @@ this->inputProcessorArray[key].processEvent(allbinaryLayerManager, GameKeyEvent:
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void processInput(AllBinaryLayerManager* allbinaryLayerManager){
+    auto TestingInputSingleton::processInput(AllBinaryLayerManager* allbinaryLayerManager) -> void{
 this->processInputList(allbinaryLayerManager, this->getGameKeyEventList());
     
 this->getGameKeyEventList()->clear();
@@ -250,13 +255,13 @@ this->getGameKeyEventList()->clear();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto TestingInputSingleton::paint(Graphics* graphics) -> void{
 this->paintable->paint(graphics);
     
 }
 
 
-    public: bool implmentsGameInputInterface(){
+    auto TestingInputSingleton::implmentsGameInputInterface() -> bool{
 
 
 
@@ -266,7 +271,6 @@ this->paintable->paint(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_CPP

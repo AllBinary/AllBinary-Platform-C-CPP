@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_CPUINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_CPUINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/interfaces/CpuInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,27 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CpuInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getProcessor() = 0;
 
-    public: virtual std::string getVendorId() = 0;
 
-    public: virtual std::string getCpuFamily() = 0;
-
-    public: virtual std::string getModel() = 0;
-
-    public: virtual std::string getModelName() = 0;
-
-    public: virtual std::string getStepping() = 0;
-
-    public: virtual std::string getCpuSpeed() = 0;
-
-    public: virtual std::string getCacheSize() = 0;
-
-    public: virtual bool compareTo(CpuInterface* cpuInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_CPUINTERFACE_CPP

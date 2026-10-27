@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/ViewPositionFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/ViewPositionBase.h"
 
-class ViewPositionFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual ViewPositionBase* getInstance() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORYINTERFACE_CPP

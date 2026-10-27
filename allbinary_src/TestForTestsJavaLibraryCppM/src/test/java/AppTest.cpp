@@ -3,6 +3,16 @@
         
 
 
+        #ifndef _APPTEST_CPP
+        #define _APPTEST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "AppTest.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,17 +49,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AppTest
-            : public Object
-         {
 
-    void testAddition(){
+AppTest::AppTest() {
+        }
+        
+    auto AppTest::testAddition() -> void{
 Assertions::assertEquals(2, 1 +1);
     
 }
 
 
-    void testStringEquality(){
+    auto AppTest::testStringEquality() -> void{
 
     std::string expected = "Hello World!";;
     
@@ -61,7 +71,7 @@ Assertions::assertEquals(expected, actual);
 }
 
 
-    void testBooleanAssertions(){
+    auto AppTest::testBooleanAssertions() -> void{
 Assertions::assertTrue(true);
     
 Assertions::assertFalse(false);
@@ -69,7 +79,6 @@ Assertions::assertFalse(false);
 }
 
 
-};
 
-            
 
+        #endif //_APPTEST_CPP

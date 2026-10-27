@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_EXPLOSIONBASICSOUND_CPP
+        #define ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_EXPLOSIONBASICSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ag/weapon/media/audio/ExplosionBasicSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,21 +59,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ExplosionBasicSound: public CompositeSound {
+Sound* ExplosionBasicSound::soundInterface = new ExplosionBasicSound();
 
-    private: static inline Sound* soundInterface = new ExplosionBasicSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ExplosionBasicSound::soundInterface;
-    
-}
-
-
-private: ExplosionBasicSound() : CompositeSound("resource:/wav/explosion.wav"){
+ExplosionBasicSound::ExplosionBasicSound() : CompositeSound("resource:/wav/explosion.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +71,16 @@ private: ExplosionBasicSound() : CompositeSound("resource:/wav/explosion.wav"){
 }
 
 
-};
+    auto ExplosionBasicSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ExplosionBasicSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_EXPLOSIONBASICSOUND_CPP

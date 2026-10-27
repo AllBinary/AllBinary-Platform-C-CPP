@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_ACCELEROMETERSENSORUPDATEPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_ACCELEROMETERSENSORUPDATEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/AccelerometerSensorUpdateProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AccelerometerSensorUpdateProcessor: public Processor {
 
+AccelerometerSensorUpdateProcessor::AccelerometerSensorUpdateProcessor() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto AccelerometerSensorUpdateProcessor::process() -> void{
 
     SensorFeatureFactory* sensorFeatureFactory = SensorFeatureFactory::getInstance();;
     
@@ -102,7 +114,7 @@ class AccelerometerSensorUpdateProcessor: public Processor {
                             
 
 
-                            throw new Exception("Sensor Feature Not Set");
+                            throw Exception("Sensor Feature Not Set");
                     
 
                         }
@@ -110,7 +122,6 @@ class AccelerometerSensorUpdateProcessor: public Processor {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_ACCELEROMETERSENSORUPDATEPROCESSOR_CPP

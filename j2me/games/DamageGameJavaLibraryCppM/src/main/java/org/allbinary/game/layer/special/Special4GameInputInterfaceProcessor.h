@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL4GAMEINPUTINTERFACEPROCESSOR_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL4GAMEINPUTINTERFACEPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class GameKeyEvent;
+class AllBinaryLayerManager;
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h"
-#include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
+class SpecialGameInputInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Special4GameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
 
 public: Special4GameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer);
@@ -70,3 +75,22 @@ public: Special4GameInputInterfaceProcessor(SpecialGameInputInterface* collidabl
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL4GAMEINPUTINTERFACEPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL4GAMEINPUTINTERFACEPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIAL4GAMEINPUTINTERFACEPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include("org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h")
+#include "org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/layer/special/SpecialGameInputInterface.h")
+#include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
+#endif
+
+        #endif
+    

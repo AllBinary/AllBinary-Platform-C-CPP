@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/NumberInSameGroupSequence.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,11 +62,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NumberInSameGroupSequence
-            : public Object
-         {
 
-    public: static NumberInSameGroupSequence* getInstance(){
+    auto NumberInSameGroupSequence::getInstance() -> NumberInSameGroupSequence*{
 
 
 
@@ -66,29 +73,7 @@ class NumberInSameGroupSequence
 }
 
 
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_ONE;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_TWO;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_THREE;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_SIX;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT;
-
-    public: int32_t NUMBER_ON_SAME_TEAM_SEQUENCE_NINE;
-
-    public: std::vector<int32_t> NUMBER_ON_SAME_TEAM_SEQUENCE;
-
-private: NumberInSameGroupSequence(){
+NumberInSameGroupSequence::NumberInSameGroupSequence(){
 
     SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
@@ -120,7 +105,6 @@ this->NUMBER_ON_SAME_TEAM_SEQUENCE=
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_CPP

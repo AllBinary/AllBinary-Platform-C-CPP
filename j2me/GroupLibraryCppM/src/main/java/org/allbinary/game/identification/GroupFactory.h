@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -64,21 +59,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/identification/Group.h"
+        class Group;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GroupFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static GroupFactory* instance() { static std::unique_ptr<GroupFactory> value(new GroupFactory()); return value.get(); }
+    private: static GroupFactory* instance_owner();
+    private: static GroupFactory* instance;
 
     public: static GroupFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    public: const std::vector<Group*> NULL_GROUP_ARRAY = {};
+            
+    public: GroupFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    public: std::vector<Group*> NULL_GROUP_ARRAY;
+
+    private: BasicArrayList* list;
 
     private: int32_t index = 0;
 
@@ -94,3 +98,28 @@ class GroupFactory
 
 
         #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/identification/Group.h")
+#include "org/allbinary/game/identification/Group.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/NameSpaceRequestParamData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NameSpaceRequestParamData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "NAMESPACE_REQUESTDATA_NAME";
-
-    public: static inline const std::string VALUE = "INPUT_VALUE";
-
-    public: static inline const std::string PROPERTIES = "_PROPERTIES_";
-
-    public: static inline const std::string SEP = "_DOT_";
-
-    public: static inline const std::string PROPERTIESSEPARATOR = "_PROPDOT_";
-
-    public: static inline const std::string DOCUMENT = "NAMESPACE_REQUESTDATA_DOCUMENT";
-
-public: NameSpaceRequestParamData(){
+NameSpaceRequestParamData::NameSpaceRequestParamData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMDATA_CPP

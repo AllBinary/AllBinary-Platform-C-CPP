@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHGENERATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,15 +38,9 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicGeographicMap;
+class GeographicMapCellHistory;
+class BasicArrayList;
 
 
 
@@ -61,15 +60,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/PathGeneratorInterface.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
+class PathFindingInfo;
+class GeographicPathFinderBase;
+class MultipassState;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PathGenerator
-            : public Object
+            : public virtual Object
         , public PathGeneratorInterface {
 
-    private: static PathGenerator* SINGLETON() { static std::unique_ptr<PathGenerator> value(new PathGenerator()); return value.get(); }
+    private: static PathGenerator* SINGLETON_owner();
+    private: static PathGenerator* SINGLETON;
 
     public: static PathGenerator* getInstance();
 
@@ -78,6 +82,7 @@ private: PathGenerator();
                 //@Throws(Exception.constructor)
             
     public: void init(Object* geographicMapInterface, int32_t totalPaths);
+    public: void init(const std::string& geographicMapInterface, int32_t totalPaths) { return init(JavaString::box(geographicMapInterface), totalPaths); }
 
                 //@Throws(Exception.constructor)
             
@@ -105,3 +110,31 @@ private: PathGenerator();
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHGENERATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHGENERATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHGENERATOR_H_COMPLETE
+        #if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathGeneratorInterface.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/PathGeneratorInterface.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingInfo.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/MultipassState.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
+#endif
+
+        #endif
+    

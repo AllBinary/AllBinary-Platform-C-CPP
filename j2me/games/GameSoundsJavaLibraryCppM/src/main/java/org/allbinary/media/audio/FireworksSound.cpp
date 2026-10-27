@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_FIREWORKSSOUND_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_FIREWORKSSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/FireworksSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,9 @@
         #include "org/allbinary/media/audio/CompositeSound.h"
 #include "org/allbinary/media/audio/Sound.h"
 //Use 8hz16bitmono for most J2ME
-class FireworksSound: public CompositeSound {
+Sound* FireworksSound::soundInterface = new FireworksSound();
 
-    private: static inline Sound* soundInterface = new FireworksSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return FireworksSound::soundInterface;
-    
-}
-
-
-private: FireworksSound() : CompositeSound("resource:/wav/fireworks.wav"){
+FireworksSound::FireworksSound() : CompositeSound("resource:/wav/fireworks.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +67,16 @@ private: FireworksSound() : CompositeSound("resource:/wav/fireworks.wav"){
 }
 
 
-};
+    auto FireworksSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return FireworksSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_FIREWORKSSOUND_CPP

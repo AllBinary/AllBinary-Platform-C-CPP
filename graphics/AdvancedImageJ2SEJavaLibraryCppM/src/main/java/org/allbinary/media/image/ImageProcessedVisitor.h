@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSEDVISITOR_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSEDVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <java/awt/image/BufferedImage.h>
-
-      
 #include <java/io/IOException.h>
-
-      
 
 
 
@@ -53,6 +54,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageProcessorInputCompositeInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageProcessedVisitor: public ImageProcessorInputCompositeInterface {
 
                 //@Throws(IOException.constructor)
@@ -65,3 +70,19 @@ class ImageProcessedVisitor: public ImageProcessorInputCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSEDVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSEDVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSEDVISITOR_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageProcessorInputCompositeInterface.h")
+#include "org/allbinary/media/image/ImageProcessorInputCompositeInterface.h"
+#endif
+
+        #endif
+    

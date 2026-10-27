@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Font;
+class Graphics;
+class PickedUpLayerInterfaceFactoryInterface;
+class DisplayInfoSingleton;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
+class UpdateMyFontProcessor;
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 
 
 
@@ -76,16 +63,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/part/PartInterface.h"
-#include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
+        class PartInterface;
+class CountedLayerInterfaceFactoryPart;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CountedLayersHudPaintable
-            : public Object
+            : public virtual Object
         , public PaintableInterface, public UpdateMyFontInterface {
 
     private: static inline int32_t XXStringWidth = 0;
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    private: DisplayInfoSingleton* displayInfoSingleton;
 
     private: std::vector<PartInterface*> partInterfaceArray;
 
@@ -97,7 +88,7 @@ class CountedLayersHudPaintable
 
     private: int32_t dropSize;
 
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor* myFontProcessor;
 
     private: int32_t height= 0;
 
@@ -115,3 +106,43 @@ public: CountedLayersHudPaintable(std::vector<PartInterface*> partInterfaceArray
 
 
         #endif //ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>)
+#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/part/PartInterface.h")
+#include "org/allbinary/game/part/PartInterface.h"
+#endif
+#if __has_include("org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h")
+#include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
+#endif
+
+        #endif
+    

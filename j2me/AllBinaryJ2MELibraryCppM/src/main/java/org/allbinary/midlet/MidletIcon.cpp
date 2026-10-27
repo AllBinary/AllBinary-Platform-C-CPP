@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_MIDLETICON_CPP
+        #define ORG_ALLBINARY_MIDLET_MIDLETICON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/MidletIcon.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MidletIcon
-            : public Object
-         {
 
-    public: static inline std::string RESOURCE = "icon";
+MidletIcon::MidletIcon() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_MIDLET_MIDLETICON_CPP

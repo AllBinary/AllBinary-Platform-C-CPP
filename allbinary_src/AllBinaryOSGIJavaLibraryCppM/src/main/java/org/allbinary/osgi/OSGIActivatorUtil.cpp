@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_CPP
+        #define ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/osgi/OSGIActivatorUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,13 +75,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OSGIActivatorUtil
-            : public Object
-         {
+
+OSGIActivatorUtil::OSGIActivatorUtil(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName){
+    auto OSGIActivatorUtil::registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName) -> void{
 OSGIActivatorUtil::registerAsService(bundleContext, anyType, serviceName, StdUtil::getInstance()->createHashtable());
     
 }
@@ -79,7 +90,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, anyType, serviceName, StdUti
 
                 //@Throws(Exception.constructor)
             
-    public: static void registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties){
+    auto OSGIActivatorUtil::registerAsService(BundleContext* bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*>* properties) -> void{
 
     ServiceRegistration* serviceRegistration = bundleContext->registerService(serviceName, anyType, properties);;
     
@@ -95,7 +106,7 @@ serviceReference= bundleContext->getServiceReference(serviceName);
                                     
 
 
-                            throw new Exception("No Such Service Reference");
+                            throw Exception("No Such Service Reference");
                     
 
                                     }
@@ -103,11 +114,6 @@ serviceReference= bundleContext->getServiceReference(serviceName);
 }
 
 
-private: OSGIActivatorUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_CPP

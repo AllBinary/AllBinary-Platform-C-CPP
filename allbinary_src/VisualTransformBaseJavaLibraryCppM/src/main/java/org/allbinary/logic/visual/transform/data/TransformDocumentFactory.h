@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/transform/data/TransformDocument.h"
-#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
+        class TransformDocument;
+class TransformDocumentInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformDocumentFactory
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -68,3 +77,16 @@ private: TransformDocumentFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMDOCUMENTFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/visual/transform/data/TransformDocument.h")
+#include "org/allbinary/logic/visual/transform/data/TransformDocument.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h")
+#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
+#endif
+
+        #endif
+    

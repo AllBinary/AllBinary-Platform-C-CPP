@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_SHOWTITLEPROGRESSBARRUNNABLE_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_SHOWTITLEPROGRESSBARRUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/transition/TransistionTypes.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <android/app/Activity.h>
-
-      
+class TransistionTypes;
+class CommonStrings;
+class LogUtil;
+class Activity;
 
 
 
@@ -62,15 +59,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
-#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+class ProgressCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShowTitleProgressBarRunnable: public ProgressRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: ShowTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas);
 
-    private: const std::vector<int32_t> FADE_IN_HALF = {TransistionTypes::getInstance()->FADE_IN_TO_HALF_ALPHA,TransistionTypes::getInstance()->FADE_IN_FROM_HALF_ALPHA};
+    private: std::vector<int32_t> FADE_IN_HALF;
 
     public: void run();
 
@@ -80,3 +81,28 @@ public: ShowTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* p
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_SHOWTITLEPROGRESSBARRUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_SHOWTITLEPROGRESSBARRUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_SHOWTITLEPROGRESSBARRUNNABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/transition/TransistionTypes.h>)
+#include <org/allbinary/animation/transition/TransistionTypes.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<android/app/Activity.h>)
+#include <android/app/Activity.h>
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/area/AdvertisementArea.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,21 +76,8 @@
 #include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
 #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraints.h"
 
-class AdvertisementArea
-            : public Object
-        , public AdvertisementAreaInterface {
 
-    private: std::string name;
-
-    private: std::string storeName;
-
-    private: std::string description;
-
-    private: AdvertisementAreaConstraintsInterface* advertisementAreaConstraintsInterface;
-
-    private: std::string campaign;
-
-public: AdvertisementArea(HashMap<Object*, Object*>* hashMap){
+AdvertisementArea::AdvertisementArea(HashMap<Object*, Object*>* hashMap){
 this->name= hashMap->get(AdvertisementAreaData::getInstance()->NAME);
     
 this->storeName= hashMap->get(StoreFrontData::getInstance()->NAME);
@@ -100,7 +97,7 @@ this->campaign= hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
 }
 
 
-    public: std::string getName(){
+    auto AdvertisementArea::getName() -> std::string{
 
 
 
@@ -110,7 +107,7 @@ this->campaign= hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
 }
 
 
-    public: std::string getStoreName(){
+    auto AdvertisementArea::getStoreName() -> std::string{
 
 
 
@@ -120,7 +117,7 @@ this->campaign= hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
 }
 
 
-    public: std::string getDescription(){
+    auto AdvertisementArea::getDescription() -> std::string{
 
 
 
@@ -130,7 +127,7 @@ this->campaign= hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
 }
 
 
-    public: AdvertisementAreaConstraintsInterface* getConstraints(){
+    auto AdvertisementArea::getConstraints() -> AdvertisementAreaConstraintsInterface*{
 
 
 
@@ -140,7 +137,7 @@ this->campaign= hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
 }
 
 
-    public: std::string getCampaign(){
+    auto AdvertisementArea::getCampaign() -> std::string{
 
 
 
@@ -150,37 +147,36 @@ this->campaign= hashMap->get(AdvertisementCampaignData::getInstance()->NAME);
 }
 
 
-    public: void setName(std::string name){
+    auto AdvertisementArea::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: void setStoreName(std::string storeName){
+    auto AdvertisementArea::setStoreName(std::string storeName) -> void{
 this->storeName= storeName;
     
 }
 
 
-    public: void setDescription(std::string description){
+    auto AdvertisementArea::setDescription(std::string description) -> void{
 this->description= description;
     
 }
 
 
-    public: void setConstraints(AdvertisementAreaConstraintsInterface* advertisementConstraintsInterface){
+    auto AdvertisementArea::setConstraints(AdvertisementAreaConstraintsInterface* advertisementConstraintsInterface) -> void{
 this->advertisementAreaConstraintsInterface= this->advertisementAreaConstraintsInterface;
     
 }
 
 
-    public: void setCampaign(std::string campaign){
+    auto AdvertisementArea::setCampaign(std::string campaign) -> void{
 this->campaign= campaign;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_CPP

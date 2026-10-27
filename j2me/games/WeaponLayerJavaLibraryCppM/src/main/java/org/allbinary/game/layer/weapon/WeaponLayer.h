@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,69 +34,27 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/khronos/opengles/GL.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/animation/NullAnimationFactory.h>
-
-      
-#include <org/allbinary/game/collision/CollidableBaseBehavior.h>
-
-      
-#include <org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h>
-
-      
-#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
-
-      
-#include <org/allbinary/game/configuration/GameConfigurationUtil.h>
-
-      
-#include <org/allbinary/game/identification/BasicGroupFactory.h>
-
-      
+class GL;
+class Graphics;
+class Animation;
+class IndexedAnimation;
+class NullAnimationFactory;
+class CollidableBaseBehavior;
+class DestroyedLayerProcessor;
+class WeaponProperties;
+class GameConfigurationUtil;
+class BasicGroupFactory;
 #include <org/allbinary/game/multiplayer/layer/MultiPlayerGameLayer.h>
-
-      
-#include <org/allbinary/game/multiplayer/layer/RemoteInfo.h>
-
-      
-#include <org/allbinary/game/score/NoScoreable.h>
-
-      
-#include <org/allbinary/game/score/ScoreableInterface.h>
-
-      
+class RemoteInfo;
+class NoScoreable;
+class ScoreableInterface;
 #include <org/allbinary/game/tick/TickableInterface.h>
+class Rectangle;
+class AllBinaryLayer;
+class AllBinaryLayerManager;
+class Movement;
 
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/physics/movement/Movement.h>
-
-      
-#include <org/allbinary/view/ViewPosition.h>
-
-      
-#include <org/allbinary/view/ViewPositionBase.h>
-
-      
+class ViewPositionBase;
 
 
 
@@ -110,37 +73,41 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h"
+        class CollidableWeaponBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WeaponLayer: public MultiPlayerGameLayer, public TickableInterface {
 
     public: static int32_t getStaticType();
 
-    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
+    private: Animation* animationInterface;
 
-    protected: Animation* initAnimationInterface;
+    /*protected*/ public: Animation* initAnimationInterface;
 
     private: Animation* destroyedAnimationInterface;
 
-    private: AllBinaryLayer* sourceLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* sourceLayerInterface;
 
-    protected: int32_t totalDamage= 0;
+    /*protected*/ public: int32_t totalDamage= 0;
 
     private: int32_t initDamage= 0;
 
     private: bool destroyed = true;
 
-    protected: ScoreableInterface* scoreableInterface = NoScoreable::getInstance();
+    /*protected*/ public: ScoreableInterface* scoreableInterface;
 
     private: Movement* movement;
 
-    private: WeaponProperties* weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
+    private: WeaponProperties* weaponProperties;
 
     private: int32_t multiPlayerType;
 
-protected: WeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition);
+/*protected*/ public: WeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPlayerType, Movement* movement, Animation* animationInterface, Animation* destroyedAnimationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition);
 
-    private: CollidableWeaponBehavior* collidableWeaponBehavior = CollidableWeaponBehavior::getNullInstance();
+    private: CollidableWeaponBehavior* collidableWeaponBehavior;
 
     public: void setCollidableInferface(CollidableBaseBehavior* collidableInferface);
 
@@ -152,7 +119,7 @@ protected: WeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPl
             
     public: void init(AllBinaryLayer* sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreable);
 
-    protected: void setGroupInterfaces();
+    /*protected*/ public: void setGroupInterfaces();
 
                 //@Throws(Exception.constructor)
             
@@ -162,19 +129,19 @@ protected: WeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPl
 
     public: void damage(int32_t damage, int32_t damageType);
 
-    protected: void givePoints(int32_t total);
+    /*protected*/ public: void givePoints(int32_t total);
 
-    protected: bool isExhausted();
+    /*protected*/ public: bool isExhausted();
 
     public: int32_t getDamage(int32_t damageType);
 
     public: void setDestroyed(bool destroyed);
 
-    protected: int32_t getInitDamage();
+    /*protected*/ public: int32_t getInitDamage();
 
-    protected: void setAnimationInterface(Animation* animationInterface);
+    /*protected*/ public: void setAnimationInterface(Animation* animationInterface);
 
-    protected: Animation* getAnimationInterface();
+    /*protected*/ public: Animation* getAnimationInterface();
 
     public: Animation* getInitAnimationInterfaceP();
 
@@ -214,3 +181,74 @@ protected: WeaponLayer(std::string name, RemoteInfo* remoteInfo, int32_t multiPl
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL.h>)
+#include <javax/microedition/khronos/opengles/GL.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/animation/NullAnimationFactory.h>)
+#include <org/allbinary/animation/NullAnimationFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollidableBaseBehavior.h>)
+#include <org/allbinary/game/collision/CollidableBaseBehavior.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h>)
+#include <org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/weapon/WeaponProperties.h>)
+#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/GameConfigurationUtil.h>)
+#include <org/allbinary/game/configuration/GameConfigurationUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/BasicGroupFactory.h>)
+#include <org/allbinary/game/identification/BasicGroupFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/multiplayer/layer/MultiPlayerGameLayer.h>)
+#include <org/allbinary/game/multiplayer/layer/MultiPlayerGameLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/multiplayer/layer/RemoteInfo.h>)
+#include <org/allbinary/game/multiplayer/layer/RemoteInfo.h>
+#endif
+#if __has_include(<org/allbinary/game/score/NoScoreable.h>)
+#include <org/allbinary/game/score/NoScoreable.h>
+#endif
+#if __has_include(<org/allbinary/game/score/ScoreableInterface.h>)
+#include <org/allbinary/game/score/ScoreableInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/tick/TickableInterface.h>)
+#include <org/allbinary/game/tick/TickableInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/physics/movement/Movement.h>)
+#include <org/allbinary/physics/movement/Movement.h>
+#endif
+
+#if __has_include(<org/allbinary/view/ViewPositionBase.h>)
+#include <org/allbinary/view/ViewPositionBase.h>
+#endif
+#if __has_include("org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h")
+#include "org/allbinary/game/layer/weapon/CollidableWeaponBehavior.h"
+#endif
+
+        #endif
+    

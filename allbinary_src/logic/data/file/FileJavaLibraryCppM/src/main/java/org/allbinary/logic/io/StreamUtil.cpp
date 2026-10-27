@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/StreamUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,31 +77,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StreamUtil
-            : public Object
-         {
+auto StreamUtil::instance_owner() -> StreamUtil* { static std::unique_ptr<StreamUtil> value(new StreamUtil()); return value.get(); }
+StreamUtil* StreamUtil::instance = StreamUtil::instance_owner();
 
-    private: static StreamUtil* instance() { static std::unique_ptr<StreamUtil> value(new StreamUtil()); return value.get(); }
-
-    public: static StreamUtil* getInstance(){
+    auto StreamUtil::getInstance() -> StreamUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StreamUtil::instance();
+                        return StreamUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: StreamUtil(){
+StreamUtil::StreamUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: OutputStream* get(InputStream* inputStream, OutputStream* outputStream, std::vector<int8_t> buffer){
+    auto StreamUtil::get(InputStream* inputStream, OutputStream* outputStream, std::vector<int8_t> buffer) -> OutputStream*{
 
     int32_t len = 0;;
     
@@ -129,7 +134,7 @@ outputStream->write(buffer, 0, len);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> getByteArray(InputStream* inputStream, ByteArrayOutputStream* outputStream2, std::vector<int8_t> byteArray){
+    auto StreamUtil::getByteArray(InputStream* inputStream, ByteArrayOutputStream* outputStream2, std::vector<int8_t> byteArray) -> std::vector<int8_t>{
 
     ByteArrayOutputStream* outputStream = outputStream2;;
     
@@ -163,7 +168,7 @@ outputStream->write(buffer, 0, len);
 }
 
 
-    public: bool close(Closeable* closeable){
+    auto StreamUtil::close(Closeable* closeable) -> bool{
 
         try {
             
@@ -203,7 +208,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CLOSE, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_CPP

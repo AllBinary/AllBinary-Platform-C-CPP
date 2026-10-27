@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/InputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputProcessor: public Processor {
 
-    private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface;
-
-public: InputProcessor(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface){
+InputProcessor::InputProcessor(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface){
 this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
     
 }
@@ -63,13 +70,12 @@ this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto InputProcessor::process() -> void{
 this->playerGameInputCompositeInterface->getPlayerGameInput()->update();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_CPP

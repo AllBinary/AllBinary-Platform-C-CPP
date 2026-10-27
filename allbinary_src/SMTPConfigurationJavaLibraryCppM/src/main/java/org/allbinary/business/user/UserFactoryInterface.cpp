@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_USERFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_USERFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/UserFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/UserInterface.h"
 
-class UserFactoryInterface: public Serializable {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual UserInterface* getInstance(HashMap<Object*, Object*>* hashMap) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_USERFACTORYINTERFACE_CPP

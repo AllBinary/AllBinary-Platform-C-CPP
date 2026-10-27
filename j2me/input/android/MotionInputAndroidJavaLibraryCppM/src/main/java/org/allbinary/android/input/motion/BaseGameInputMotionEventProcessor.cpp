@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/BaseGameInputMotionEventProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,13 +69,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
-class BaseGameInputMotionEventProcessor: public MotionEventProcessor {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GameMotionGestureListener* gameMotionGestureListener;
-
-protected: BaseGameInputMotionEventProcessor(){
+BaseGameInputMotionEventProcessor::BaseGameInputMotionEventProcessor() : commonStrings(CommonStrings::getInstance()){
 this->gameMotionGestureListener= new GameMotionGestureListener(MotionGestureReceiveInterfaceFactory::getInstance());
     
 this->addListener();
@@ -73,11 +78,11 @@ this->addListener();
 }
 
 
-    public: void process(MotionEvent* motionEvent){
+    auto BaseGameInputMotionEventProcessor::process(MotionEvent* motionEvent) -> void{
 }
 
 
-    public: void addListener(){
+    auto BaseGameInputMotionEventProcessor::addListener() -> void{
 
     BasicMotionGesturesHandler* motionGesturesHandler = BasicMotionGesturesHandler::getInstance();;
     
@@ -86,7 +91,6 @@ motionGesturesHandler->addListenerInterface(this->gameMotionGestureListener);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_CPP

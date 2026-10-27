@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_UPSSHIPPINGMODULE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_UPSSHIPPINGMODULE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/Money.h>
-
-      
+class OrderInterface;
+class Money;
 
 
 
@@ -55,8 +56,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UpsShippingModule
-            : public Object
+            : public virtual Object
         , public ShippingInterface {
 
     private: const std::string name = "UPS";
@@ -77,3 +82,19 @@ public: UpsShippingModule();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_UPSSHIPPINGMODULE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_UPSSHIPPINGMODULE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_UPSSHIPPINGMODULE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/Money.h>)
+#include <org/allbinary/business/user/commerce/money/Money.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h")
+#include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
+#endif
+
+        #endif
+    

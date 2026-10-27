@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_SERVLET_FILE_DOWNLOADFILESERVLET_CPP
+        #define ORG_ALLBINARY_SERVLET_FILE_DOWNLOADFILESERVLET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/servlet/file/DownloadFileServlet.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -108,19 +118,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DownloadFileServlet: public HttpServlet {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string DOWNLOAD = "download";
-
-    private: const int32_t DEFAULT_BUFFER_SIZE = 16384;
-
+DownloadFileServlet::DownloadFileServlet() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response){
+    auto DownloadFileServlet::processRequest(HttpServletRequest* request, HttpServletResponse* response) -> void{
 
     InputStream* inputStream = 
                 null
@@ -170,7 +174,7 @@ class DownloadFileServlet: public HttpServlet {
                         }
                             
 
-    AbFile* file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +filePath);;
+    AbFile* file = AbFile::createAbFile(JavaString::valueOf(URLGLOBALS::getWebappPath()) +JavaString::valueOf(filePath));;
     
 
                         if(!file->exists())
@@ -259,7 +263,7 @@ StreamUtil::getInstance()->get(inputStream, response->getOutputStream(), std::ve
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "processRequest()", &e);
@@ -289,7 +293,7 @@ response->sendError(HttpServletResponse::SC_NOT_FOUND);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response){
+    auto DownloadFileServlet::doGet(HttpServletRequest* request, HttpServletResponse* response) -> void{
 this->processRequest(request, response);
     
 }
@@ -297,13 +301,13 @@ this->processRequest(request, response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response){
+    auto DownloadFileServlet::doPost(HttpServletRequest* request, HttpServletResponse* response) -> void{
 this->processRequest(request, response);
     
 }
 
 
-    public: std::string getServletInfo(){
+    auto DownloadFileServlet::getServletInfo() -> std::string{
 
 
 
@@ -313,7 +317,6 @@ this->processRequest(request, response);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_SERVLET_FILE_DOWNLOADFILESERVLET_CPP

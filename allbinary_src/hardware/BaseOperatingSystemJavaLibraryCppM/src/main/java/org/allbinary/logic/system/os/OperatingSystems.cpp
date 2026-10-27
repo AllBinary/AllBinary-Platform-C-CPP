@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/OperatingSystems.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,51 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OperatingSystems
-            : public Object
-         {
+auto OperatingSystems::instance_owner() -> OperatingSystems* { static std::unique_ptr<OperatingSystems> value(new OperatingSystems()); return value.get(); }
+OperatingSystems* OperatingSystems::instance = OperatingSystems::instance_owner();
 
-    private: static OperatingSystems* instance() { static std::unique_ptr<OperatingSystems> value(new OperatingSystems()); return value.get(); }
-
-    public: static OperatingSystems* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OperatingSystems::instance();
-    
+OperatingSystems::OperatingSystems() : ANDROID(this->LINUX){
 }
 
 
-    public: const std::string LINUX = "Linux";
-
-    public: const std::string WINDOWS = "Windows";
-
-    public: const std::string SOLARIS = "Solaris";
-
-    public: const std::string WINDOWS2000 = "Windows 2000";
-
-    public: const std::string WINDOWS_NT = "Windows NT";
-
-    public: const std::string WINDOWS_10 = "Windows 10";
-
-    public: const std::string WINDOWS_11 = "Windows 11";
-
-    public: const std::string WINDOWS_VISTA = "Windows Vista";
-
-    public: const std::string WINDOWS_XP = "Windows XP";
-
-    public: const std::string ANDROID = this->LINUX;
-
-    public: const std::string HARMONY = "HarmonyOS";
-
-private: OperatingSystems(){
-}
-
-
-    private: bool unknownSpecificOSAllowed = true;
-
-    public: bool isUnknownSpecificOSAllowed(){
+    auto OperatingSystems::isUnknownSpecificOSAllowed() -> bool{
 
 
 
@@ -99,13 +72,22 @@ private: OperatingSystems(){
 }
 
 
-    public: void setUnknownSpecificOSAllowed(bool aUnknownSpecificOSAllowed){
+    auto OperatingSystems::setUnknownSpecificOSAllowed(bool aUnknownSpecificOSAllowed) -> void{
 this->unknownSpecificOSAllowed= aUnknownSpecificOSAllowed;
     
 }
 
 
-};
+    auto OperatingSystems::getInstance() -> OperatingSystems*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return OperatingSystems::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_CPP

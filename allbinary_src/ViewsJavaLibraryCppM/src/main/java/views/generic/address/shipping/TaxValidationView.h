@@ -21,6 +21,11 @@
         #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_TAXVALIDATIONVIEW_H
         #define VIEWS_GENERIC_ADDRESS_SHIPPING_TAXVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,36 +34,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/user/address/ShippingAddressData.h>
-
-      
-#include <org/allbinary/business/user/address/StreetAddress.h>
-
-      
-#include <org/allbinary/data/tables/user/address/shipping/ShippingAddressesEntity.h>
-
-      
+class ShippingAddressData;
+class StreetAddress;
+class ShippingAddressesEntity;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class StringUtil;
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -79,6 +64,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/shipping/ShippingAddressView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
 public: TaxValidationView(TransformInfoInterface* transformInfoInterface);
@@ -97,3 +86,41 @@ public: TaxValidationView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_GENERIC_ADDRESS_SHIPPING_TAXVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_GENERIC_ADDRESS_SHIPPING_TAXVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_GENERIC_ADDRESS_SHIPPING_TAXVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/user/address/ShippingAddressData.h>)
+#include <org/allbinary/business/user/address/ShippingAddressData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/address/StreetAddress.h>)
+#include <org/allbinary/business/user/address/StreetAddress.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/address/shipping/ShippingAddressesEntity.h>)
+#include <org/allbinary/data/tables/user/address/shipping/ShippingAddressesEntity.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/generic/address/shipping/ShippingAddressView.h")
+#include "views/generic/address/shipping/ShippingAddressView.h"
+#endif
+
+        #endif
+    

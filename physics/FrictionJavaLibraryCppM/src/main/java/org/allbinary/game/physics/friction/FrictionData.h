@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_FRICTION_FRICTIONDATA_H
         #define ORG_ALLBINARY_GAME_PHYSICS_FRICTION_FRICTIONDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FrictionData
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const int32_t FRICTION_DENOMINATOR = 100;
@@ -64,3 +73,10 @@ private: FrictionData();
 
 
         #endif //ORG_ALLBINARY_GAME_PHYSICS_FRICTION_FRICTIONDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PHYSICS_FRICTION_FRICTIONDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PHYSICS_FRICTION_FRICTIONDATA_H_COMPLETE
+        
+        #endif
+    

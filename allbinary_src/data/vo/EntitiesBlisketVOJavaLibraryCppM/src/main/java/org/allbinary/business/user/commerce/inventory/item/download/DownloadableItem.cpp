@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEM_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadableItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,37 +93,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadItemData.h"
 
-class DownloadableItem
-            : public Object
-         {
 
-    private: std::string id;
-
-    private: std::string basicItemId;
-
-    private: std::string enabled;
-
-    private: std::string system;
-
-    private: std::string platform;
-
-    private: std::string specialName;
-
-    private: std::string version;
-
-    private: std::string changes;
-
-    private: std::string licenseFile;
-
-    private: std::string file;
-
-    private: int64_t size;
-
-    private: int64_t validTime;
-
-    private: std::string retries;
-
-public: DownloadableItem(std::string id){
+DownloadableItem::DownloadableItem(std::string id){
 
     std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
@@ -146,7 +127,7 @@ this->retries= EMPTY_STRING;
 }
 
 
-public: DownloadableItem(HashMap<Object*, Object*>* hashMap){
+DownloadableItem::DownloadableItem(HashMap<Object*, Object*>* hashMap){
 this->id= hashMap->get(DownloadItemData::ID);
     
 this->basicItemId= hashMap->get(BasicItemData::getInstance()->ID);
@@ -229,7 +210,7 @@ this->retries= hashMap->get(DownloadItemData::RETRIES);
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto DownloadableItem::toVector() -> BasicArrayList*{
 
     Calendar* calendar = Calendar::getInstance();;
     
@@ -278,7 +259,7 @@ values->add(time);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto DownloadableItem::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
@@ -325,7 +306,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getId(){
+    auto DownloadableItem::getId() -> std::string{
 
 
 
@@ -335,7 +316,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getSystem(){
+    auto DownloadableItem::getSystem() -> std::string{
 
 
 
@@ -345,7 +326,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getPlatform(){
+    auto DownloadableItem::getPlatform() -> std::string{
 
 
 
@@ -355,7 +336,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getSpecialName(){
+    auto DownloadableItem::getSpecialName() -> std::string{
 
 
 
@@ -365,7 +346,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getVersion(){
+    auto DownloadableItem::getVersion() -> std::string{
 
 
 
@@ -375,7 +356,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getChanges(){
+    auto DownloadableItem::getChanges() -> std::string{
 
 
 
@@ -385,7 +366,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getLicenseFile(){
+    auto DownloadableItem::getLicenseFile() -> std::string{
 
 
 
@@ -395,7 +376,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getFile(){
+    auto DownloadableItem::getFile() -> std::string{
 
 
 
@@ -405,7 +386,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: int64_t getSize(){
+    auto DownloadableItem::getSize() -> int64_t{
 
 
 
@@ -415,7 +396,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: int64_t getValidTime(){
+    auto DownloadableItem::getValidTime() -> int64_t{
 
 
 
@@ -425,7 +406,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string getRetries(){
+    auto DownloadableItem::getRetries() -> std::string{
 
 
 
@@ -435,7 +416,6 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEM_CPP

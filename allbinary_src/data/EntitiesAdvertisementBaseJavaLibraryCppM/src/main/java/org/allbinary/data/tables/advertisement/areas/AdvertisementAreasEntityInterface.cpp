@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,23 +70,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementAreasEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* get(std::string storeName) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual AdvertisementAreaInterface* get(std::string storeName, std::string advertisementAreaName) = 0;
 
-    public: virtual void delete_(std::string value) = 0;
-
-    public: virtual void insert(BasicArrayList* values) = 0;
-
-    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYINTERFACE_CPP

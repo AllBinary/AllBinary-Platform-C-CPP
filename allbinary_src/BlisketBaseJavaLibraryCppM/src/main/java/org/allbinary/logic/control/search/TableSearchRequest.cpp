@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_TABLESEARCHREQUEST_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_TABLESEARCHREQUEST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/search/TableSearchRequest.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,21 +74,8 @@
         #include "org/allbinary/logic/control/search/SearchParams.h"
 #include "org/allbinary/logic/control/search/SearchData.h"
 
-class TableSearchRequest
-            : public Object
-         {
 
-    private: std::string xslFile;
-
-    private: std::string pageName;
-
-    private: std::string contentType;
-
-    private: std::string keywords;
-
-    private: SearchParams* searchParams;
-
-public: TableSearchRequest(std::string keywords, SearchParams* searchParams, std::string xslFile, std::string contentType){
+TableSearchRequest::TableSearchRequest(std::string keywords, SearchParams* searchParams, std::string xslFile, std::string contentType){
 this->keywords= keywords;
     
 this->searchParams= searchParams;
@@ -92,37 +89,37 @@ this->contentType= contentType;
 }
 
 
-    public: void setKeywords(std::string value){
+    auto TableSearchRequest::setKeywords(std::string value) -> void{
 this->keywords= value;
     
 }
 
 
-    public: void setParams(SearchParams* searchParams){
+    auto TableSearchRequest::setParams(SearchParams* searchParams) -> void{
 this->searchParams= searchParams;
     
 }
 
 
-    public: void setXslFile(std::string value){
+    auto TableSearchRequest::setXslFile(std::string value) -> void{
 this->xslFile= value;
     
 }
 
 
-    public: void setFileBaseName(std::string value){
+    auto TableSearchRequest::setFileBaseName(std::string value) -> void{
 this->pageName= value;
     
 }
 
 
-    public: void setContentType(std::string value){
+    auto TableSearchRequest::setContentType(std::string value) -> void{
 this->contentType= value;
     
 }
 
 
-    public: std::string getKeywords(){
+    auto TableSearchRequest::getKeywords() -> std::string{
 
 
 
@@ -132,7 +129,7 @@ this->contentType= value;
 }
 
 
-    public: SearchParams* getParams(){
+    auto TableSearchRequest::getParams() -> SearchParams*{
 
 
 
@@ -144,7 +141,7 @@ this->contentType= value;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getXslFile(){
+    auto TableSearchRequest::getXslFile() -> std::string{
 
     std::string path = URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH +this->xslFile;;
     
@@ -157,7 +154,7 @@ this->contentType= value;
 }
 
 
-    public: std::string getFileBaseName(){
+    auto TableSearchRequest::getFileBaseName() -> std::string{
 
 
 
@@ -167,7 +164,7 @@ this->contentType= value;
 }
 
 
-    public: std::string getContentType(){
+    auto TableSearchRequest::getContentType() -> std::string{
 
 
 
@@ -179,7 +176,7 @@ this->contentType= value;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* getFileBaseNameNode(Document* document){
+    auto TableSearchRequest::getFileBaseNameNode(Document* document) -> Node*{
 
 
 
@@ -189,7 +186,6 @@ this->contentType= value;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_TABLESEARCHREQUEST_CPP

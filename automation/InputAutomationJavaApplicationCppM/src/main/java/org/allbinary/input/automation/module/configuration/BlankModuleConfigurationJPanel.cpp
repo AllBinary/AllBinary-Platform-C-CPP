@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_BLANKMODULECONFIGURATIONJPANEL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_BLANKMODULECONFIGURATIONJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/configuration/BlankModuleConfigurationJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +57,14 @@
 #include "org/allbinary/input/automation/module/configuration/GroupLayout.h"
 #include "org/allbinary/input/automation/module/configuration/Short.h"
 
-class BlankModuleConfigurationJPanel: public javax::swing::JPanel {
 
-public: BlankModuleConfigurationJPanel(){
+BlankModuleConfigurationJPanel::BlankModuleConfigurationJPanel(){
 this->initComponents();
     
 }
 
 
-    private: void initComponents(){
+    auto BlankModuleConfigurationJPanel::initComponents() -> void{
 this->jLabel1= new javax::swing::JLabel();
     
 this->jLabel1->setText("No Configuration Available");
@@ -65,16 +74,13 @@ this->jLabel1->setText("No Configuration Available");
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout->createSequentialGroup()->addContainerGap(231, Short::MAX_VALUE)->addComponent(jLabel1)->addGap(225, 225, 225)));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, layout->createSequentialGroup()->addContainerGap(231, Short::MAX_VALUE)->addComponent(jLabel1)->addGap(225, 225, 225)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel1)->addContainerGap(362, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(jLabel1)->addContainerGap(362, Short::MAX_VALUE)));
     
 }
 
 
-    private: javax::swing::JLabel* jLabel1;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_BLANKMODULECONFIGURATIONJPANEL_CPP

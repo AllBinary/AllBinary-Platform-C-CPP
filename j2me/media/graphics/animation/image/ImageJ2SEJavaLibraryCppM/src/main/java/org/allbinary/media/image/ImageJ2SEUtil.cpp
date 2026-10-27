@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageJ2SEUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,25 +58,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageJ2SEUtil
-            : public Object
-         {
 
-    private: static ImageJ2SEUtil* instance() { static std::unique_ptr<ImageJ2SEUtil> value(new ImageJ2SEUtil()); return value.get(); }
+ImageJ2SEUtil::ImageJ2SEUtil() : TRANSPARENT_COLOR(new Color(0, 0, 0, 0)) {
+        }
+        auto ImageJ2SEUtil::instance_owner() -> ImageJ2SEUtil* { static std::unique_ptr<ImageJ2SEUtil> value(new ImageJ2SEUtil()); return value.get(); }
+ImageJ2SEUtil* ImageJ2SEUtil::instance = ImageJ2SEUtil::instance_owner();
 
-    public: static ImageJ2SEUtil* getInstance(){
+    auto ImageJ2SEUtil::getInstance() -> ImageJ2SEUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageJ2SEUtil::instance();
+                        return ImageJ2SEUtil::instance;
     
 }
 
 
-    public: Color* TRANSPARENT_COLOR = new Color(0, 0, 0, 0);
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_CPP

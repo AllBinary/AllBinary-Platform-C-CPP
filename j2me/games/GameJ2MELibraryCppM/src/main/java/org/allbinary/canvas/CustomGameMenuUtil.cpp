@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_CUSTOMGAMEMENUUTIL_CPP
+        #define ORG_ALLBINARY_CANVAS_CUSTOMGAMEMENUUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/CustomGameMenuUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomGameMenuUtil
-            : public Object
-         {
 
-    public: static void add(MyCanvas* canvas){
+CustomGameMenuUtil::CustomGameMenuUtil() {
+        }
+        
+    auto CustomGameMenuUtil::add(MyCanvas* canvas) -> void{
 
     GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
@@ -88,7 +98,6 @@ class CustomGameMenuUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_CUSTOMGAMEMENUUTIL_CPP

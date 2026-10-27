@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_NOGYROSENSOR_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_NOGYROSENSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/NoGyroSensor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,17 +62,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
 
-class NoGyroSensor: public AllBinaryOrientationSensor, public AllBinarySensorListener {
 
-public: NoGyroSensor(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+NoGyroSensor::NoGyroSensor(){
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Orientation* getOrientation(){
+    auto NoGyroSensor::getOrientation() -> Orientation*{
 
 
 
@@ -72,11 +81,10 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
 }
 
 
-    public: void onSensorChange(){
+    auto NoGyroSensor::onSensorChange() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_NOGYROSENSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/PlayerStateUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,35 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PlayerStateUtil
-            : public Object
-         {
 
-    private: static PlayerStateUtil* instance() { static std::unique_ptr<PlayerStateUtil> value(new PlayerStateUtil()); return value.get(); }
+PlayerStateUtil::PlayerStateUtil() : commonStrings(CommonStrings::getInstance()) {
+        }
+        auto PlayerStateUtil::instance_owner() -> PlayerStateUtil* { static std::unique_ptr<PlayerStateUtil> value(new PlayerStateUtil()); return value.get(); }
+PlayerStateUtil* PlayerStateUtil::instance = PlayerStateUtil::instance_owner();
 
-    public: static PlayerStateUtil* getInstance(){
+    auto PlayerStateUtil::getInstance() -> PlayerStateUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlayerStateUtil::instance();
+                        return PlayerStateUtil::instance;
     
 }
 
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: const std::string UNREALIZED = "UNREALIZED";
-
-    public: const std::string REALIZED = "REALIZED";
-
-    public: const std::string PREFETCHED = "PREFETCHED";
-
-    public: const std::string STARTED = "STARTED";
-
-    public: const std::string CLOSED = "CLOSED";
-
-    public: std::string convert(int32_t state){
+    auto PlayerStateUtil::convert(int32_t state) -> std::string{
 
                         if(state == Player::UNREALIZED)
                         
@@ -154,7 +152,6 @@ class PlayerStateUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_CPP

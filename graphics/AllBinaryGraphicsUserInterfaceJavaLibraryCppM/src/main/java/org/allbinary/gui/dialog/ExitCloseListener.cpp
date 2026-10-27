@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_CPP
+        #define ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/gui/dialog/ExitCloseListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +58,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/gui/dialog/CloseJDialogListenerInterface.h"
 
-class ExitCloseListener
-            : public Object
-        , public CloseJDialogListenerInterface {
 
-public: ExitCloseListener(){
+ExitCloseListener::ExitCloseListener(){
 }
 
 
-    public: void onClose(){
+    auto ExitCloseListener::onClose() -> void{
 System.exit( -1);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_CPP

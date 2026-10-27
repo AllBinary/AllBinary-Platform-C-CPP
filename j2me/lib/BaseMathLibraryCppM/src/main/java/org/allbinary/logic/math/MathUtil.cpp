@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_MATHUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_MATHUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/MathUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,23 +44,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MathUtil
-            : public Object
-         {
 
-    private: static MathUtil* instance() { static std::unique_ptr<MathUtil> value(new MathUtil()); return value.get(); }
+MathUtil::MathUtil() {
+        }
+        auto MathUtil::instance_owner() -> MathUtil* { static std::unique_ptr<MathUtil> value(new MathUtil()); return value.get(); }
+MathUtil* MathUtil::instance = MathUtil::instance_owner();
 
-    public: static MathUtil* getInstance(){
+    auto MathUtil::getInstance() -> MathUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MathUtil::instance();
+                        return MathUtil::instance;
     
 }
 
 
-    public: int32_t getTotalDigits(int32_t digits){
+    auto MathUtil::getTotalDigits(int32_t digits) -> int32_t{
 
     int32_t total = 0;;
     
@@ -72,7 +82,7 @@ total++;
 }
 
 
-    public: int32_t sqrt(int32_t value){
+    auto MathUtil::sqrt(int32_t value) -> int32_t{
 
                         if(value <= 1)
                         
@@ -101,7 +111,7 @@ result= (accumulated +(value /accumulated))>>1;
     
 }
 
-        while(accumulated > result)
+        while(accumulated > result);
     
 
 
@@ -112,9 +122,7 @@ result= (accumulated +(value /accumulated))>>1;
 }
 
 
-    private: const int32_t ACCURACY = 100;
-
-    public: double sqrtd(int32_t x){
+    auto MathUtil::sqrtd(int32_t x) -> double{
 
                         if(x == 0)
                         
@@ -164,7 +172,7 @@ result= (result +(x /result)) /2;
 }
 
 
-    public: int32_t abs(int32_t value){
+    auto MathUtil::abs(int32_t value) -> int32_t{
 
 
 
@@ -181,7 +189,7 @@ result= (result +(x /result)) /2;
 }
 
 
-    public: int64_t abslong(int64_t value){
+    auto MathUtil::abslong(int64_t value) -> int64_t{
 
 
 
@@ -198,7 +206,7 @@ result= (result +(x /result)) /2;
 }
 
 
-    public: int32_t min(int32_t value, int32_t value2){
+    auto MathUtil::min(int32_t value, int32_t value2) -> int32_t{
 
 
 
@@ -215,7 +223,7 @@ result= (result +(x /result)) /2;
 }
 
 
-    public: int32_t max(int32_t value, int32_t value2){
+    auto MathUtil::max(int32_t value, int32_t value2) -> int32_t{
 
 
 
@@ -232,7 +240,6 @@ result= (result +(x /result)) /2;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_MATHUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_RUNNABLECANVAS_CPP
+        #define ORG_ALLBINARY_CANVAS_RUNNABLECANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/RunnableCanvas.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,54 +107,15 @@
         #include "org/allbinary/canvas/Processor.h"
 #include "org/allbinary/canvas/RunnableCanvasRefreshHelper.h"
 
-class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
-    protected: NullUtil* nullUtil = NullUtil::getInstance();
-
-    protected: StdUtil* stdUtil = StdUtil::getInstance();
-
-    protected: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
-
-    protected: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: Thread* thread = NullThread::NULL_THREAD;
-
-    private: Thread* currentThread = NullThread::NULL_THREAD;
-
-    private: bool running= false;
-
-    protected: TimeDelayHelper* loopTimeHelper = new TimeDelayHelper(NullWaitGameRunnable::getInstance()->WAIT);
-
-    protected: Processor* runnableCanvasRefreshHelper = Processor::getInstance();
-
-    protected: CommonLabels* commonLabels = CommonLabels::getInstance();
-
-    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
-
-    protected: const std::string SET_RUNNING = "setRunning";
-
-    private: const std::string IS_RUNNING = "isRunning";
-
-    private: const std::string THREAD = "Thread: ";
-
-    private: const std::string NOT_EQUAL = " != ";
-
-    private: const std::string PAUSE_SLEEP = "pause sleep";
-
-    private: const std::string START_PAUSE = "start pause - game thread sleep at: ";
-
-    private: const std::string END_PAUSE = "end pause - game thread sleep at: ";
-
-    private: const std::string PROCESS_LOOP_SLEEP = "processLoopSleep";
-
-public: RunnableCanvas(CommandListener* commandListener, BasicArrayList* childNameList, bool hasParam) : MyCanvas(CommonStrings::getInstance()->UNKNOWN, childNameList){
+RunnableCanvas::RunnableCanvas(CommandListener* commandListener, BasicArrayList* childNameList, bool hasParam) : MyCanvas(CommonStrings::getInstance()->UNKNOWN, childNameList), nullUtil(NullUtil::getInstance()), stdUtil(StdUtil::getInstance()), systemWrapper(ABSystemWrapper::getInstance()), tsUtil(TsUtil::getInstance()), thread(NullThread::NULL_THREAD), currentThread(NullThread::NULL_THREAD), loopTimeHelper(new TimeDelayHelper(NullWaitGameRunnable::getInstance()->WAIT)), runnableCanvasRefreshHelper(Processor::getInstance()), commonLabels(CommonLabels::getInstance()), threadObjectUtil(ThreadObjectUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF((new StringMaker())->append("RunnableCanvas delay: ")->appendint(this->loopTimeHelper->delay)->toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF((new StringMaker())->append("RunnableCanvas delay: ")->appendint(this->loopTimeHelper->delay)->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 this->runnableCanvasRefreshHelper= new RunnableCanvasRefreshHelper(this);
     
@@ -163,7 +134,7 @@ this->runnableCanvasRefreshHelper= new RunnableCanvasRefreshHelper(this);
                         if(hasParam)
                         
                                     {
-                                    this->logUtil.putF("commandListener was null", this, "initCommands");
+                                    this->logUtil->putF("commandListener was null", this, "initCommands");
     
 
                                     }
@@ -171,13 +142,13 @@ this->runnableCanvasRefreshHelper= new RunnableCanvasRefreshHelper(this);
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
-this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, "initCommands");
+    auto RunnableCanvas::initCommands(CommandListener* cmdListener) -> void{
+this->logUtil->putF(this->commonStrings->NOT_IMPLEMENTED, this, "initCommands");
     
 }
 
 
-    public: bool isMainCanvas(){
+    auto RunnableCanvas::isMainCanvas() -> bool{
 
                         if(this->getCustomCommandListener() != 
                                     nullptr
@@ -206,13 +177,13 @@ this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, "initCommands");
 }
 
 
-    public: void setThread(Thread* thread){
+    auto RunnableCanvas::setThread(Thread* thread) -> void{
 this->thread= thread;
     
 }
 
 
-    public: void setRunning(bool running){
+    auto RunnableCanvas::setRunning(bool running) -> void{
 this->running= running;
     
 
@@ -235,13 +206,13 @@ this->threadObjectUtil->notifyObject(this);
 
                                     }
                                 
-this->logUtil.putF((new StringMaker())->append(this->IS_RUNNING)->appendboolean(this->running)->toString(), this, this->SET_RUNNING);
+this->logUtil->putF((new StringMaker())->append(this->IS_RUNNING)->appendboolean(this->running)->toString(), this, this->SET_RUNNING);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto RunnableCanvas::isRunning() -> bool{
 
                         if(this->thread == this->currentThread)
                         
@@ -285,7 +256,7 @@ stringBuffer->append(this->NOT_EQUAL);
 
                                     }
                                 
-this->logUtil.putF(stringBuffer->toString(), this, this->IS_RUNNING);
+this->logUtil->putF(stringBuffer->toString(), this, this->IS_RUNNING);
     
 
 
@@ -299,7 +270,7 @@ this->logUtil.putF(stringBuffer->toString(), this, this->IS_RUNNING);
 }
 
 
-    public: TimeDelayHelper* getLoopTimeHelperP(){
+    auto RunnableCanvas::getLoopTimeHelperP() -> TimeDelayHelper*{
 
 
 
@@ -309,19 +280,17 @@ this->logUtil.putF(stringBuffer->toString(), this, this->IS_RUNNING);
 }
 
 
-    private: int64_t pauseWait = 0;
-
-    protected: void setWait(int32_t wait){
+    auto RunnableCanvas::setWait(int32_t wait) -> void{
 this->loopTimeHelper->delay= wait;
     
 this->pauseWait= wait *3;
     
-this->logUtil.putF((new StringMaker())->append("setWait - delay: ")->appendint(this->loopTimeHelper->delay)->toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF((new StringMaker())->append("setWait - delay: ")->appendint(this->loopTimeHelper->delay)->toString(), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-    protected: int32_t getWait(){
+    auto RunnableCanvas::getWait() -> int32_t{
 
 
 
@@ -331,19 +300,19 @@ this->logUtil.putF((new StringMaker())->append("setWait - delay: ")->appendint(t
 }
 
 
-    public: void setCurrentThread(){
+    auto RunnableCanvas::setCurrentThread() -> void{
 this->currentThread= Thread::currentThread();
     
 }
 
 
-    protected: void setCurrentThreadFake(){
+    auto RunnableCanvas::setCurrentThreadFake() -> void{
 this->currentThread= this->thread;
     
 }
 
 
-    protected: void showNotify(){
+    auto RunnableCanvas::showNotify() -> void{
 
         try {
             this->stopWaiting();
@@ -352,18 +321,16 @@ this->currentThread= this->thread;
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "showNotify", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "showNotify", &e);
     
 }
 
 }
 
 
-    private: bool notified = false;
-
                 //@Throws(Exception.constructor)
             
-    private: void stopWaiting(){
+    auto RunnableCanvas::stopWaiting() -> void{
 this->notified= true;
     
 
@@ -385,7 +352,7 @@ this->repaint();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void waitOnNotify(int64_t wait){
+    auto RunnableCanvas::waitOnNotify(int64_t wait) -> void{
 
                         if(!this->notified)
                         
@@ -413,13 +380,13 @@ this->repaint();
 
                 //@Throws(Exception.constructor)
             
-    public: void processSleep(){
+    auto RunnableCanvas::processSleep() -> void{
 Thread::sleep(this->pauseWait);
     
 }
 
 
-    public: bool isPausable(){
+    auto RunnableCanvas::isPausable() -> bool{
 
 
 
@@ -431,7 +398,7 @@ Thread::sleep(this->pauseWait);
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSleep(int64_t sleep){
+    auto RunnableCanvas::processGameSleep(int64_t sleep) -> void{
 Thread::sleep(sleep);
     
 }
@@ -439,7 +406,7 @@ Thread::sleep(sleep);
 
                 //@Throws(Exception.constructor)
             
-    public: void processLoopSleep(){
+    auto RunnableCanvas::processLoopSleep() -> void{
 this->runnableCanvasRefreshHelper->process();
     
 
@@ -453,12 +420,12 @@ this->runnableCanvasRefreshHelper->process();
                         if(this->isRunning() && !this->isSingleThread())
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 
     int64_t currentTimeMillis = this->systemWrapper->currentTimeMillis();;
     
-this->logUtil.putF(stringMaker->append(this->START_PAUSE)->appendlong(currentTimeMillis)->append(this->PAUSE_SLEEP)->appendlong(this->pauseWait)->toString(), this, this->PROCESS_LOOP_SLEEP);
+this->logUtil->putF(stringMaker->append(this->START_PAUSE)->appendlong(currentTimeMillis)->append(this->PAUSE_SLEEP)->appendlong(this->pauseWait)->toString(), this, this->PROCESS_LOOP_SLEEP);
     
 
         while(this->isPaused() && this->isRunning() && !this->isSingleThread())
@@ -469,9 +436,9 @@ this->processSleep();
                         if(!this->isPausable())
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil.putF(stringMaker->append(this->END_PAUSE)->appendlong(currentTimeMillis)->toString(), this, this->PROCESS_LOOP_SLEEP);
+this->logUtil->putF(stringMaker->append(this->END_PAUSE)->appendlong(currentTimeMillis)->toString(), this, this->PROCESS_LOOP_SLEEP);
     
 
 
@@ -514,7 +481,7 @@ this->logUtil.putF(stringMaker->append(this->END_PAUSE)->appendlong(currentTimeM
 }
 
 
-    public: bool isSingleThread(){
+    auto RunnableCanvas::isSingleThread() -> bool{
 
 
 
@@ -524,7 +491,7 @@ this->logUtil.putF(stringMaker->append(this->END_PAUSE)->appendlong(currentTimeM
 }
 
 
-    public: void run(){
+    auto RunnableCanvas::run() -> void{
 this->setCurrentThread();
     
 }
@@ -532,11 +499,11 @@ this->setCurrentThread();
 
                 //@Throws(Exception.constructor)
             
-    public: void end2(){
+    auto RunnableCanvas::end2() -> void{
 }
 
 
-    public: int32_t getType(){
+    auto RunnableCanvas::getType() -> int32_t{
 
 
 
@@ -546,7 +513,6 @@ this->setCurrentThread();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_RUNNABLECANVAS_CPP

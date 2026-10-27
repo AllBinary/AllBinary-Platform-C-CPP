@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLImageCache.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,25 +96,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLESImage.h"
 //ImageCacheOpenGLESJavaLibrary
-class OpenGLImageCache: public ImageCache {
 
-    private: ImageCache* imageCache = ImageCacheFactory::getInstance();
-
-    private: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
-
-    private: GL10* gl = NullGL10::NULL_GL10;
-
-    private: SynchObject* lock = new SynchObject();
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    private: AllBinaryRendererBase3* renderer = new AllBinaryRendererBase3();
-
-public: OpenGLImageCache(){
+OpenGLImageCache::OpenGLImageCache() : imageCache(ImageCacheFactory::getInstance()), preResourceImageUtil(PreResourceImageUtil::getInstance()), gl(NullGL10::NULL_GL10), lock(new SynchObject()), list(new BasicArrayListD()), renderer(new AllBinaryRendererBase3()){
 }
 
 
-    public: void addListener(Object* renderer){
+    auto OpenGLImageCache::addListener(Object* renderer) -> void{
 this->renderer= dynamic_cast<AllBinaryRendererBase3*>(renderer);
     
 }
@@ -112,7 +109,7 @@ this->renderer= dynamic_cast<AllBinaryRendererBase3*>(renderer);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(GL10* gl){
+    auto OpenGLImageCache::update(GL10* gl) -> void{
 this->gl= gl;
     
 
@@ -150,7 +147,7 @@ this->gl= gl;
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImage(std::string caller, int32_t width, int32_t height){
+    auto OpenGLImageCache::createImage(std::string caller, int32_t width, int32_t height) -> Image*{
 
     int32_t textureSize = width;;
     
@@ -209,7 +206,7 @@ height= textureSize;
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImageFromInputStream(Object* key, InputStream* inputStream){
+    auto OpenGLImageCache::createImageFromInputStream(Object* key, InputStream* inputStream) -> Image*{
 
     Image* cachedImage = this->imageCache->getWithKey(key);;
     
@@ -243,7 +240,7 @@ height= textureSize;
 }
 
 
-    public: GL10* getGlP(){
+    auto OpenGLImageCache::getGlP() -> GL10*{
 
 
 
@@ -253,7 +250,7 @@ height= textureSize;
 }
 
 
-    public: void init(Image* image){
+    auto OpenGLImageCache::init(Image* image) -> void{
 
         try {
             
@@ -270,7 +267,7 @@ height= textureSize;
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -285,14 +282,13 @@ this->renderer->add(image);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMCAMERAPOSITIONOPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMCAMERAPOSITIONOPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/UniformCameraPositionOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,17 +60,15 @@
         #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
 #include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
 
-class UniformCameraPositionOpenGLProcessor: public OpenGLObject3dProcessor {
 
-public: UniformCameraPositionOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex){
+UniformCameraPositionOpenGLProcessor::UniformCameraPositionOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex){
 }
 
 
-    public: void process(GL10* gl, Object* anyType){
+    auto UniformCameraPositionOpenGLProcessor::process(GL10* gl, Object* anyType) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMCAMERAPOSITIONOPENGLPROCESSOR_CPP

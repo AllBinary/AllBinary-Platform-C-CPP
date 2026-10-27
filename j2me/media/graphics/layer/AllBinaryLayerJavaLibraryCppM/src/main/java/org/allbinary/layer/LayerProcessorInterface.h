@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERPROCESSORINTERFACE_H
         #define ORG_ALLBINARY_LAYER_LAYERPROCESSORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,10 +53,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/BasicLayerProcessorInterface.h"
-#include "org/allbinary/layer/LayerManager.h"
-#include "org/allbinary/layer/AllBinaryLayerManager.h"
-#include "org/allbinary/layer/AllBinaryLayer.h"
+class LayerManager;
+class AllBinaryLayerManager;
+class AllBinaryLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerProcessorInterface: public BasicLayerProcessorInterface {
 
     public: virtual LayerManager* getLayerManager() = 0;
@@ -70,3 +79,22 @@ class LayerProcessorInterface: public BasicLayerProcessorInterface {
 
 
         #endif //ORG_ALLBINARY_LAYER_LAYERPROCESSORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_LAYERPROCESSORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_LAYERPROCESSORINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/layer/BasicLayerProcessorInterface.h")
+#include "org/allbinary/layer/BasicLayerProcessorInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/LayerManager.h")
+#include "org/allbinary/layer/LayerManager.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayerManager.h")
+#include "org/allbinary/layer/AllBinaryLayerManager.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+
+        #endif
+    

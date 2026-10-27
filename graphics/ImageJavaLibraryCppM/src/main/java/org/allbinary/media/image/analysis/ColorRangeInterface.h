@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGEINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <java/awt.h>
-
-      
 
 
 
@@ -48,9 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/analysis/Color.h"
+        class Color;
 
-class ColorRangeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ColorRangeInterface
+            : public virtual Object
+         {
 
     public: virtual int32_t getMinRed() = 0;
 
@@ -84,3 +93,16 @@ class ColorRangeInterface {
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGEINTERFACE_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include("org/allbinary/media/image/analysis/Color.h")
+#include "org/allbinary/media/image/analysis/Color.h"
+#endif
+
+        #endif
+    

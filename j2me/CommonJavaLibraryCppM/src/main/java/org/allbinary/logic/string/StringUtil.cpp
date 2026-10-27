@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/string/StringUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,40 +69,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StringUtil
-            : public Object
-         {
+auto StringUtil::instance_owner() -> StringUtil* { static std::unique_ptr<StringUtil> value(new StringUtil()); return value.get(); }
+StringUtil* StringUtil::instance = StringUtil::instance_owner();
 
-    private: static StringUtil* instance() { static std::unique_ptr<StringUtil> value(new StringUtil()); return value.get(); }
-
-    public: static StringUtil* getInstance(){
+    auto StringUtil::getInstance() -> StringUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil::instance();
+                        return StringUtil::instance;
     
 }
 
 
-    public: const std::string INIT_STRING = "";
-
-    public: const std::string NULL_STRING = "null";
-
-    public: const std::string EMPTY_STRING = "";
-
-    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = 
+StringUtil::StringUtil() : INIT_STRING(""), ONE_EMPTY_STRING_ARRAY(
                                                         {
                                                             this->EMPTY_STRING
-                                                        };
-
-    private: const std::vector<std::string> stringArray = {};
-
-private: StringUtil(){
+                                                        }), stringArray({}){
 }
 
 
-    public: std::string getNonNull(std::string string){
+    auto StringUtil::getNonNull(std::string string) -> std::string{
 
                         if(false)
                         
@@ -119,7 +116,7 @@ private: StringUtil(){
 }
 
 
-    public: std::vector<std::string> getArrayInstance(){
+    auto StringUtil::getArrayInstance() -> std::vector<std::string>{
 
 
 
@@ -129,7 +126,7 @@ private: StringUtil(){
 }
 
 
-    public: int32_t count(std::string string, char aChar){
+    auto StringUtil::count(std::string string, char aChar) -> int32_t{
 
     int32_t count = 0;;
     
@@ -163,7 +160,7 @@ private: StringUtil(){
 }
 
 
-    public: std::string toString(Object* anyType){
+    auto StringUtil::toString(Object* anyType) -> std::string{
 
                         if(anyType != 
                                     nullptr
@@ -192,7 +189,6 @@ private: StringUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_STRING_STRINGUTIL_CPP

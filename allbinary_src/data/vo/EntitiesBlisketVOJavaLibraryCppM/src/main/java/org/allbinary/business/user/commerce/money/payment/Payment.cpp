@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENT_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/Payment.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,45 +92,8 @@
 #include "org/allbinary/business/user/commerce/money/payment/PaymentData.h"
 #include "org/allbinary/business/user/commerce/money/payment/CreditCardType.h"
 
-class Payment
-            : public Object
-        , public PaymentInterface, public DomNodeInterface {
 
-    private: std::string name;
-
-    private: std::string expiration;
-
-    private: std::string encryption;
-
-    private: std::string number;
-
-    private: std::string id;
-
-    private: std::string type;
-
-    private: std::string tenderType;
-
-    private: std::string transactionType;
-
-    private: std::string aba;
-
-    private: std::string account;
-
-    private: std::string accountType;
-
-    private: std::string authorizationCode;
-
-    private: std::string checkNumber;
-
-    private: std::string checkType;
-
-    private: std::string driversLicense;
-
-    private: std::string magneticInkCheckReader;
-
-    private: bool isDefault = false;
-
-public: Payment(HashMap<Object*, Object*>* payment){
+Payment::Payment(HashMap<Object*, Object*>* payment){
 this->name= payment->get(PaymentData::NAME);
     
 this->type= payment->get(PaymentData::TYPE);
@@ -140,13 +113,13 @@ this->id= payment->get(PaymentData::ID);
                         if(true && def.compare(EntryData::getInstance()->DEFAULT) == 0)
                         
                                     {
-                                    this->isDefault= true;
+                                    this->isDefault_= true;
     
 
                                     }
                                 
                         else {
-                            this->isDefault= false;
+                            this->isDefault_= false;
     
 
                         }
@@ -174,7 +147,7 @@ this->magneticInkCheckReader= payment->get(PaymentData::MAGNETICINKCHECKREADER);
 }
 
 
-public: Payment(ServletRequest* request){
+Payment::Payment(ServletRequest* request){
 this->name= request->getParameter(PaymentData::NAME);
     
 this->type= request->getParameter(PaymentData::TYPE);
@@ -206,11 +179,11 @@ this->magneticInkCheckReader= request->getParameter(PaymentData::MAGNETICINKCHEC
 }
 
 
-public: Payment(){
+Payment::Payment(){
 }
 
 
-    public: bool isValid(){
+    auto Payment::isValid() -> bool{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -270,7 +243,7 @@ public: Payment(){
                                     }
                                 
 
-                        if(number.size() > org.allbinary.business.user.commerce.money.payment.types.CreditCardType.MAXLEN)
+                        if(number.size() > org.allbinary->business->user->commerce->money->payment->types->CreditCardType->MAXLEN)
                         
                                     {
                                     
@@ -291,85 +264,85 @@ public: Payment(){
 }
 
 
-    public: void setTenderType(std::string value){
+    auto Payment::setTenderType(std::string value) -> void{
 this->tenderType= value;
     
 }
 
 
-    public: void setTransactionType(std::string value){
+    auto Payment::setTransactionType(std::string value) -> void{
 this->transactionType= value;
     
 }
 
 
-    public: void setAuthorizationCode(std::string value){
+    auto Payment::setAuthorizationCode(std::string value) -> void{
 this->authorizationCode= value;
     
 }
 
 
-    public: void setCheckType(std::string value){
+    auto Payment::setCheckType(std::string value) -> void{
 this->checkType= value;
     
 }
 
 
-    public: void setCheckNumber(std::string value){
+    auto Payment::setCheckNumber(std::string value) -> void{
 this->checkNumber= value;
     
 }
 
 
-    public: void setDriversLicense(std::string value){
+    auto Payment::setDriversLicense(std::string value) -> void{
 this->driversLicense= value;
     
 }
 
 
-    public: void setMagneticInkCheckReader(std::string value){
+    auto Payment::setMagneticInkCheckReader(std::string value) -> void{
 this->magneticInkCheckReader= value;
     
 }
 
 
-    public: void setAba(std::string value){
+    auto Payment::setAba(std::string value) -> void{
 this->aba= value;
     
 }
 
 
-    public: void setAccountType(std::string value){
+    auto Payment::setAccountType(std::string value) -> void{
 this->accountType= value;
     
 }
 
 
-    public: void setName(std::string value){
+    auto Payment::setName(std::string value) -> void{
 this->name= value;
     
 }
 
 
-    public: void setType(std::string value){
+    auto Payment::setType(std::string value) -> void{
 this->type= value;
     
 }
 
 
-    public: void setExpiration(std::string value){
+    auto Payment::setExpiration(std::string value) -> void{
 this->expiration= value;
     
 }
 
 
-    public: void setNumber(std::string value){
+    auto Payment::setNumber(std::string value) -> void{
 this->number= value;
     
 }
 
 
-    public: std::string getId(){
+    auto Payment::getId() -> std::string{
 
 
 
@@ -379,7 +352,7 @@ this->number= value;
 }
 
 
-    public: std::string getName(){
+    auto Payment::getName() -> std::string{
 
 
 
@@ -389,7 +362,7 @@ this->number= value;
 }
 
 
-    public: std::string getType(){
+    auto Payment::getType() -> std::string{
 
 
 
@@ -399,7 +372,7 @@ this->number= value;
 }
 
 
-    public: std::string getExpiration(){
+    auto Payment::getExpiration() -> std::string{
 
 
 
@@ -409,7 +382,7 @@ this->number= value;
 }
 
 
-    public: std::string getEncryption(){
+    auto Payment::getEncryption() -> std::string{
 
 
 
@@ -419,7 +392,7 @@ this->number= value;
 }
 
 
-    public: std::string getNumber(){
+    auto Payment::getNumber() -> std::string{
 
 
 
@@ -429,7 +402,7 @@ this->number= value;
 }
 
 
-    public: std::string getTenderType(){
+    auto Payment::getTenderType() -> std::string{
 
 
 
@@ -439,7 +412,7 @@ this->number= value;
 }
 
 
-    public: std::string getTransactionType(){
+    auto Payment::getTransactionType() -> std::string{
 
 
 
@@ -449,7 +422,7 @@ this->number= value;
 }
 
 
-    public: std::string getAba(){
+    auto Payment::getAba() -> std::string{
 
 
 
@@ -459,7 +432,7 @@ this->number= value;
 }
 
 
-    public: std::string getAccount(){
+    auto Payment::getAccount() -> std::string{
 
 
 
@@ -469,7 +442,7 @@ this->number= value;
 }
 
 
-    public: std::string getAccountType(){
+    auto Payment::getAccountType() -> std::string{
 
 
 
@@ -479,7 +452,7 @@ this->number= value;
 }
 
 
-    public: std::string getAuthorizationCode(){
+    auto Payment::getAuthorizationCode() -> std::string{
 
 
 
@@ -489,7 +462,7 @@ this->number= value;
 }
 
 
-    public: std::string getCheckNumber(){
+    auto Payment::getCheckNumber() -> std::string{
 
 
 
@@ -499,7 +472,7 @@ this->number= value;
 }
 
 
-    public: std::string getCheckType(){
+    auto Payment::getCheckType() -> std::string{
 
 
 
@@ -509,7 +482,7 @@ this->number= value;
 }
 
 
-    public: std::string getDriversLicense(){
+    auto Payment::getDriversLicense() -> std::string{
 
 
 
@@ -519,7 +492,7 @@ this->number= value;
 }
 
 
-    public: std::string getMagneticInkCheckReader(){
+    auto Payment::getMagneticInkCheckReader() -> std::string{
 
 
 
@@ -529,7 +502,7 @@ this->number= value;
 }
 
 
-    public: std::string getLastFour(){
+    auto Payment::getLastFour() -> std::string{
 
                         if(number.size() > PaymentData::MIN && number.size() <= PaymentData::MAX)
                         
@@ -556,17 +529,17 @@ this->number= value;
 }
 
 
-    public: bool isDefault(){
+    auto Payment::isDefault() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isDefault;
+                        return this->isDefault_;
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto Payment::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -597,7 +570,7 @@ hashMap->put(PaymentData::DRIVERSLICENSE, this->driversLicense);
 hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
     
 
-                        if(this->isDefault)
+                        if(this->isDefault_)
                         
                                     {
                                     hashMap->put(EntryData::getInstance()->DEFAULT, EntryData::getInstance()->DEFAULT);
@@ -622,7 +595,7 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto Payment::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
@@ -638,7 +611,7 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-    public: Document* toXmlDoc(){
+    auto Payment::toXmlDoc() -> Document*{
 
 
 
@@ -648,7 +621,7 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-    public: std::string view(){
+    auto Payment::view() -> std::string{
 
 
 
@@ -658,7 +631,7 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto Payment::toValidationInfoDoc() -> Document*{
 
 
 
@@ -668,7 +641,7 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto Payment::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -678,7 +651,7 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-    public: std::string validationInfo(){
+    auto Payment::validationInfo() -> std::string{
 
 
 
@@ -688,7 +661,6 @@ hashMap->put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENT_CPP

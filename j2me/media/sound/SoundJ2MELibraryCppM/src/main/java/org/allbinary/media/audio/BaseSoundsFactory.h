@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,12 +57,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
-#include "org/allbinary/media/audio/Sound.h"
+class Sound;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseSoundsFactory
-            : public Object
+            : public virtual Object
         , public SoundsFactoryInterface {
 
+
+            
+    public: BaseSoundsFactory();
+        
     private: bool initialized= false;
 
     public: void init();
@@ -76,3 +89,16 @@ class BaseSoundsFactory
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/media/audio/SoundsFactoryInterface.h")
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/media/audio/Sound.h")
+#include "org/allbinary/media/audio/Sound.h"
+#endif
+
+        #endif
+    

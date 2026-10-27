@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKADJACENTDROPLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKADJACENTDROPLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackAdjacentDropLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,35 +67,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTrackAdjacentDropLayerFactory
-            : public Object
-         {
+auto RaceTrackAdjacentDropLayerFactory::DROP_LAYER_FACTORY_owner() -> RaceTrackAdjacentDropLayerFactory* { static std::unique_ptr<RaceTrackAdjacentDropLayerFactory> value(new RaceTrackAdjacentDropLayerFactory()); return value.get(); }
+RaceTrackAdjacentDropLayerFactory* RaceTrackAdjacentDropLayerFactory::DROP_LAYER_FACTORY = RaceTrackAdjacentDropLayerFactory::DROP_LAYER_FACTORY_owner();
 
-    private: static RaceTrackAdjacentDropLayerFactory* DROP_LAYER_FACTORY() { static std::unique_ptr<RaceTrackAdjacentDropLayerFactory> value(new RaceTrackAdjacentDropLayerFactory()); return value.get(); }
-
-    public: static RaceTrackAdjacentDropLayerFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackAdjacentDropLayerFactory::DROP_LAYER_FACTORY();
-    
+RaceTrackAdjacentDropLayerFactory::RaceTrackAdjacentDropLayerFactory() : list(new BasicArrayListD()), basicArrayListUtil(BasicArrayListUtil::getInstance()){
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: RaceTrackAdjacentDropLayerFactory(){
-}
-
-
-    public: void clear(){
+    auto RaceTrackAdjacentDropLayerFactory::clear() -> void{
 this->list->clear();
     
 }
 
 
-    public: int32_t getSize(){
+    auto RaceTrackAdjacentDropLayerFactory::getInstance() -> RaceTrackAdjacentDropLayerFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return RaceTrackAdjacentDropLayerFactory::DROP_LAYER_FACTORY;
+    
+}
+
+
+    auto RaceTrackAdjacentDropLayerFactory::getSize() -> int32_t{
 
 
 
@@ -95,9 +100,7 @@ this->list->clear();
 }
 
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    public: LayerInterfaceFactoryInterface* getRandomInstance(){
+    auto RaceTrackAdjacentDropLayerFactory::getRandomInstance() -> LayerInterfaceFactoryInterface*{
 
 
 
@@ -107,13 +110,12 @@ this->list->clear();
 }
 
 
-    public: void add(LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+    auto RaceTrackAdjacentDropLayerFactory::add(LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface) -> void{
 this->list->add(layerInterfaceFactoryInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKADJACENTDROPLAYERFACTORY_CPP

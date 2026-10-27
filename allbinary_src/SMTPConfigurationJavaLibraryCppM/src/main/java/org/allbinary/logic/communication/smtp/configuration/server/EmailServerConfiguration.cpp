@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATION_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,21 +69,10 @@
         #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
 #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationData.h"
 
-class EmailServerConfiguration
-            : public Object
-        , public EmailServerConfigurationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+EmailServerConfiguration::EmailServerConfiguration() : logUtil(LogUtil::getInstance()){
 
-    private: std::string accountName;
-
-    private: std::string password;
-
-    private: std::string smtpServer;
-
-public: EmailServerConfiguration(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -89,9 +88,9 @@ this->setSmtpServer(StringUtil::getInstance()->EMPTY_STRING);
 }
 
 
-public: EmailServerConfiguration(HashMap<Object*, Object*>* hashMap){
+EmailServerConfiguration::EmailServerConfiguration(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -113,9 +112,9 @@ this->log();
 }
 
 
-public: EmailServerConfiguration(std::string account, std::string password, std::string server){
+EmailServerConfiguration::EmailServerConfiguration(std::string account, std::string password, std::string server) : logUtil(LogUtil::getInstance()){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -137,13 +136,13 @@ this->log();
 }
 
 
-    public: void setSmtpServer(std::string value){
+    auto EmailServerConfiguration::setSmtpServer(std::string value) -> void{
 this->smtpServer= value;
     
 }
 
 
-    public: std::string getSmtpServer(){
+    auto EmailServerConfiguration::getSmtpServer() -> std::string{
 
 
 
@@ -153,7 +152,7 @@ this->smtpServer= value;
 }
 
 
-    public: std::string getAccountName(){
+    auto EmailServerConfiguration::getAccountName() -> std::string{
 
 
 
@@ -163,13 +162,13 @@ this->smtpServer= value;
 }
 
 
-    public: void setAccountName(std::string accountName){
+    auto EmailServerConfiguration::setAccountName(std::string accountName) -> void{
 this->accountName= accountName;
     
 }
 
 
-    public: std::string getPassword(){
+    auto EmailServerConfiguration::getPassword() -> std::string{
 
 
 
@@ -179,15 +178,15 @@ this->accountName= accountName;
 }
 
 
-    public: void setPassword(std::string password){
+    auto EmailServerConfiguration::setPassword(std::string password) -> void{
 this->password= password;
     
 }
 
 
-    public: void log(){
+    auto EmailServerConfiguration::log() -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->toString(), this, "EmailServerConfiguration");
@@ -198,17 +197,16 @@ this->password= password;
 }
 
 
-    public: std::string toString(){
+    auto EmailServerConfiguration::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Email Server Configuration:\n" +"Smtp Server: \n" +this->getSmtpServer() +"\nAccount Name: " +this->getAccountName() +"\nPassword: " +this->getPassword();
+                        return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Email Server Configuration:\n") +JavaString::valueOf("Smtp Server: \n")) +JavaString::valueOf(this->getSmtpServer())) +JavaString::valueOf("\nAccount Name: ")) +JavaString::valueOf(this->getAccountName())) +JavaString::valueOf("\nPassword: ")) +JavaString::valueOf(this->getPassword());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaigns.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,25 +71,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignsInterface.h"
 
-class AdvertisementCampaigns
-            : public Object
-        , public AdvertisementCampaignsInterface {
 
-    private: BasicArrayList* advertisementsVector;
-
-public: AdvertisementCampaigns(BasicArrayList* vector){
+AdvertisementCampaigns::AdvertisementCampaigns(BasicArrayList* vector){
 this->advertisementsVector= this->advertisementsVector;
     
 }
 
 
-    public: void add(AdvertisementInterface* advertisementInterface){
+    auto AdvertisementCampaigns::add(AdvertisementInterface* advertisementInterface) -> void{
 this->advertisementsVector->add(advertisementInterface);
     
 }
 
 
-    public: AdvertisementInterface* get(int32_t index){
+    auto AdvertisementCampaigns::get(int32_t index) -> AdvertisementInterface*{
 
 
 
@@ -89,7 +94,7 @@ this->advertisementsVector->add(advertisementInterface);
 }
 
 
-    public: int32_t size(){
+    auto AdvertisementCampaigns::size() -> int32_t{
 
 
 
@@ -99,7 +104,7 @@ this->advertisementsVector->add(advertisementInterface);
 }
 
 
-    public: bool isEnabled(){
+    auto AdvertisementCampaigns::isEnabled() -> bool{
 
 
 
@@ -109,7 +114,7 @@ this->advertisementsVector->add(advertisementInterface);
 }
 
 
-    public: AdvertisementsInterface* search(AdvertisementSearchInterface* advertisementSearchInterface){
+    auto AdvertisementCampaigns::search(AdvertisementSearchInterface* advertisementSearchInterface) -> AdvertisementsInterface*{
 
 
 
@@ -119,7 +124,6 @@ this->advertisementsVector->add(advertisementInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNS_CPP

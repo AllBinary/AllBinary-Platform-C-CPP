@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_HTTPREQUESTUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_HTTPREQUESTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/HttpRequestUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,27 +60,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HttpRequestUtil
-            : public Object
-         {
+auto HttpRequestUtil::instance_owner() -> HttpRequestUtil* { static std::unique_ptr<HttpRequestUtil> value(new HttpRequestUtil()); return value.get(); }
+HttpRequestUtil* HttpRequestUtil::instance = HttpRequestUtil::instance_owner();
 
-    private: static HttpRequestUtil* instance() { static std::unique_ptr<HttpRequestUtil> value(new HttpRequestUtil()); return value.get(); }
-
-    public: static HttpRequestUtil* getInstance(){
+    auto HttpRequestUtil::getInstance() -> HttpRequestUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HttpRequestUtil::instance();
+                        return HttpRequestUtil::instance;
     
 }
 
 
-private: HttpRequestUtil(){
+HttpRequestUtil::HttpRequestUtil(){
 }
 
 
-    public: int32_t getLastSeparatorIndex(std::string requestPath){
+    auto HttpRequestUtil::getLastSeparatorIndex(std::string requestPath) -> int32_t{
 
     int32_t beginIndex = JavaString::lastIndexOf(requestPath, AbPathData::getInstance()->SEPARATOR);;
     
@@ -94,7 +101,7 @@ private: HttpRequestUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string generateFileName(std::string requestPath){
+    auto HttpRequestUtil::generateFileName(std::string requestPath) -> std::string{
 
     int32_t beginIndex = this->getLastSeparatorIndex(requestPath);;
     
@@ -124,7 +131,6 @@ private: HttpRequestUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_HTTPREQUESTUTIL_CPP

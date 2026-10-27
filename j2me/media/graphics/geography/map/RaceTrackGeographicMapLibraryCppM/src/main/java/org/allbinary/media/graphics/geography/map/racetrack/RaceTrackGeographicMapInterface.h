@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/media/graphics/geography/map/GeographicMapInterface.h>
-
-      
 
 
 
@@ -48,9 +51,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
-#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
+        class RaceTrackInfo;
+class RaceTrackData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RaceTrackGeographicMapInterface: public GeographicMapInterface {
 
     public: virtual RaceTrackInfo* getRaceTrackInfo() = 0;
@@ -67,3 +74,19 @@ class RaceTrackGeographicMapInterface: public GeographicMapInterface {
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapInterface.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapInterface.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 
 
 
@@ -57,17 +56,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/health/HealthListenerInterface.h"
-#include "org/allbinary/game/health/HealthBarAnimation.h"
-#include "org/allbinary/game/health/HealthInterface.h"
-#include "org/allbinary/game/health/Health.h"
+class HealthBarAnimation;
+class HealthInterface;
+class Health;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HealthBar: public Paintable, public HealthListenerInterface {
 
     private: HealthBarAnimation* animationInterface;
 
     private: HealthInterface* healthInterface;
 
-    protected: AllBinaryLayer* allbinaryLayer;
+    /*protected*/ public: AllBinaryLayer* allbinaryLayer;
 
 public: HealthBar(AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction);
 
@@ -83,3 +86,31 @@ public: HealthBar(AllBinaryLayer* layerInterface, Health* healthInterface, Healt
 
 
         #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/health/HealthListenerInterface.h")
+#include "org/allbinary/game/health/HealthListenerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/health/HealthBarAnimation.h")
+#include "org/allbinary/game/health/HealthBarAnimation.h"
+#endif
+#if __has_include("org/allbinary/game/health/HealthInterface.h")
+#include "org/allbinary/game/health/HealthInterface.h"
+#endif
+#if __has_include("org/allbinary/game/health/Health.h")
+#include "org/allbinary/game/health/Health.h"
+#endif
+
+        #endif
+    

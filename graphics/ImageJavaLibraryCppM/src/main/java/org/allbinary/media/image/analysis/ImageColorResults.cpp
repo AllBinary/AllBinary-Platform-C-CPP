@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRESULTS_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRESULTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/analysis/ImageColorResults.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +57,8 @@
         #include "org/allbinary/media/image/analysis/ColorRange.h"
 #include "org/allbinary/media/image/analysis/ColorAverage.h"
 
-class ImageColorResults
-            : public Object
-         {
 
-    private: ColorRange* colorRange;
-
-    private: ColorAverage* colorAverage;
-
-public: ImageColorResults(){
+ImageColorResults::ImageColorResults(){
 this->setColorRange(new ColorRange());
     
 this->getColorRange()->setMaxRed( -1);
@@ -75,7 +78,7 @@ this->setColorAverage(new ColorAverage());
 }
 
 
-    public: ColorRange* getColorRange(){
+    auto ImageColorResults::getColorRange() -> ColorRange*{
 
 
 
@@ -85,13 +88,13 @@ this->setColorAverage(new ColorAverage());
 }
 
 
-    public: void setColorRange(ColorRange* colorRange){
+    auto ImageColorResults::setColorRange(ColorRange* colorRange) -> void{
 this->colorRange= colorRange;
     
 }
 
 
-    public: ColorAverage* getColorAverage(){
+    auto ImageColorResults::getColorAverage() -> ColorAverage*{
 
 
 
@@ -101,13 +104,12 @@ this->colorRange= colorRange;
 }
 
 
-    public: void setColorAverage(ColorAverage* colorAverage){
+    auto ImageColorResults::setColorAverage(ColorAverage* colorAverage) -> void{
 this->colorAverage= colorAverage;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRESULTS_CPP

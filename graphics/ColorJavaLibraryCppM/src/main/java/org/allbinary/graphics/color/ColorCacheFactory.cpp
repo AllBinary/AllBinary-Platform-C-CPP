@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorCacheFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,16 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/color/ColorCacheableFactory.h"
 
-class ColorCacheFactory
-            : public Object
-         {
-
-    private: static inline AutomaticCacheInterface* cacheInterface = 
-                null
-            ;
-
-                    static int32_t initResult = ColorCacheFactory::init();
-                static int32_t init() { 
+int32_t ColorCacheFactory::initResult = ColorCacheFactory::init();
+        auto ColorCacheFactory::init() -> int32_t {
                     
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -88,26 +90,33 @@ class ColorCacheFactory
     
 
         try {
-            logUtil->putF(commonStrings->START, ColorCacheFactory.constructor, STATIC_BLOCK);
+            logUtil->putF(commonStrings->START, 
+                            Class::forType(typeid(ColorCacheFactory)), STATIC_BLOCK);
     
 ColorCacheFactory::cacheInterface= AutomaticCacheInterfaceFactory::getInstance(new ColorCacheableFactory(), CacheTypeFactory::getInstance()->CACHE, CachePolicyFactory::getInstance()->THIRTY_MINUTES_TEN_THOUSAND_MAX);
     
-logUtil->putF(commonStrings->END, ColorCacheFactory.constructor, STATIC_BLOCK);
+logUtil->putF(commonStrings->END, 
+                            Class::forType(typeid(ColorCacheFactory)), STATIC_BLOCK);
     
 
                 //: 
 } catch(Exception& e) 
             {
-logUtil->put(commonStrings->EXCEPTION, ColorCacheFactory.constructor, STATIC_BLOCK, &e);
+logUtil->put(commonStrings->EXCEPTION, 
+                            Class::forType(typeid(ColorCacheFactory)), STATIC_BLOCK, &e);
     
 }
 
 
 
                     return 0;
-                }
-            
-    public: static AutomaticCacheInterface* getInstance(){
+        }
+                
+ColorCacheFactory::ColorCacheFactory(){
+}
+
+
+    auto ColorCacheFactory::getInstance() -> AutomaticCacheInterface*{
 
 
 
@@ -117,11 +126,6 @@ logUtil->put(commonStrings->EXCEPTION, ColorCacheFactory.constructor, STATIC_BLO
 }
 
 
-private: ColorCacheFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_CPP

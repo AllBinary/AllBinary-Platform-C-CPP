@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class CommonSeps;
 
 
 
@@ -51,15 +54,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileUnamedUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static FileUnamedUtil* instance() { static std::unique_ptr<FileUnamedUtil> value(new FileUnamedUtil()); return value.get(); }
+    private: static FileUnamedUtil* instance_owner();
+    private: static FileUnamedUtil* instance;
 
     public: static FileUnamedUtil* getInstance();
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+
+            
+    public: FileUnamedUtil();
+        
+    private: CommonSeps* commonSeps;
 
     public: std::string process(std::string string);
 
@@ -69,3 +81,13 @@ class FileUnamedUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

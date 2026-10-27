@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEPATHUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEPATHUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FilePathUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/FilePathData.h"
 //Used to correct user input for paths
-class FilePathUtil
-            : public Object
-         {
 
-    public: static std::string adjust(std::string path){
+FilePathUtil::FilePathUtil(){
+}
+
+
+    auto FilePathUtil::adjust(std::string path) -> std::string{
 
     AbPathData* abPathData = AbPathData::getInstance();;
     
@@ -90,11 +101,6 @@ path= JavaString::replace(path, abPathData->SEPARATORCHAR, filePathData->SEPARAT
 }
 
 
-private: FilePathUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEPATHUTIL_CPP

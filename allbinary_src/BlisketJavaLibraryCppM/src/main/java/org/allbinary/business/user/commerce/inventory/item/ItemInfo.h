@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,19 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ItemInfo
-            : public Object
+            : public virtual Object
          {
 
-    std::vector<std::string> type;
+    public: std::vector<std::string> type;
 
-    std::vector<std::string> view;
+    public: std::vector<std::string> view;
 
-    std::vector<std::string> data;
+    public: std::vector<std::string> data;
 
-    std::vector<std::string> creationDate;
+    public: std::vector<std::string> creationDate;
 
-    std::vector<std::string> lastModified;
+    public: std::vector<std::string> lastModified;
 
 public: ItemInfo();
 
@@ -72,3 +81,10 @@ public: ItemInfo();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_H_COMPLETE
+        
+        #endif
+    

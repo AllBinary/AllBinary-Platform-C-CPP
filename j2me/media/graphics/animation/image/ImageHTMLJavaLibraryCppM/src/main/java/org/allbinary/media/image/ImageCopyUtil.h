@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
+class Graphics;
+class Image;
+class Anchor;
 
-      
-#include <javax/microedition/lcdui/Image.h>
 
-      
-#include <org/allbinary/graphics/Anchor.h>
 
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorSetUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 
 
 
@@ -70,23 +61,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageCreationUtil.h"
+        class ImageCreationUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageCopyUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageCopyUtil* instance() { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
+    private: static ImageCopyUtil* instance_owner();
+    private: static ImageCopyUtil* instance;
 
     public: static ImageCopyUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: ImageCreationUtil* imageCreationUtil = ImageCreationUtil::getInstance();
+    private: ImageCreationUtil* imageCreationUtil;
 
 private: ImageCopyUtil();
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
                 //@Throws(Exception.constructor)
             
@@ -106,3 +102,28 @@ private: ImageCopyUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+
+
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageCreationUtil.h")
+#include "org/allbinary/media/image/ImageCreationUtil.h"
+#endif
+
+        #endif
+    

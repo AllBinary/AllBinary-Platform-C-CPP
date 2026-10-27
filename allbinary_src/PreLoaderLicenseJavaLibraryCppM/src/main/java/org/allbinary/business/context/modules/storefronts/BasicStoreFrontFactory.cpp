@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,31 +65,26 @@
         #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontsEntity.h"
 #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
-class BasicStoreFrontFactory
-            : public Object
-         {
+auto BasicStoreFrontFactory::instance_owner() -> BasicStoreFrontFactory* { static std::unique_ptr<BasicStoreFrontFactory> value(new BasicStoreFrontFactory()); return value.get(); }
+BasicStoreFrontFactory* BasicStoreFrontFactory::instance = BasicStoreFrontFactory::instance_owner();
 
-    private: static BasicStoreFrontFactory* instance() { static std::unique_ptr<BasicStoreFrontFactory> value(new BasicStoreFrontFactory()); return value.get(); }
-
-    public: static BasicStoreFrontFactory* getInstance(){
+    auto BasicStoreFrontFactory::getInstance() -> BasicStoreFrontFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicStoreFrontFactory::instance();
+                        return BasicStoreFrontFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: BasicStoreFrontFactory(){
+BasicStoreFrontFactory::BasicStoreFrontFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicStoreFrontInterface* getInstance(std::string storeName){
+    auto BasicStoreFrontFactory::getInstance(std::string storeName) -> BasicStoreFrontInterface*{
 
         try {
             
@@ -96,7 +101,7 @@ private: BasicStoreFrontFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
                                     
@@ -118,7 +123,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTFACTORY_CPP

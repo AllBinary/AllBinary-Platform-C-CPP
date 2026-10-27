@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALSINTERFACE_CPP
+        #define ORG_ALLBINARY_GLOBALS_URLGLOBALSINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/UrlGlobalsInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,13 +60,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UrlGlobalsInterface
-            : public Object
-         {
 
+UrlGlobalsInterface::UrlGlobalsInterface() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    std::string getMainPath(){
+    auto UrlGlobalsInterface::getMainPath() -> std::string{
 
 
 
@@ -66,7 +76,7 @@ class UrlGlobalsInterface
 }
 
 
-    std::string getTestHtmlPath(){
+    auto UrlGlobalsInterface::getTestHtmlPath() -> std::string{
 
 
 
@@ -76,7 +86,7 @@ class UrlGlobalsInterface
 }
 
 
-    std::string getWebappPath(){
+    auto UrlGlobalsInterface::getWebappPath() -> std::string{
 
 
 
@@ -86,7 +96,7 @@ class UrlGlobalsInterface
 }
 
 
-    bool isTestingMode(){
+    auto UrlGlobalsInterface::isTestingMode() -> bool{
 
 
 
@@ -96,7 +106,6 @@ class UrlGlobalsInterface
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_URLGLOBALSINTERFACE_CPP

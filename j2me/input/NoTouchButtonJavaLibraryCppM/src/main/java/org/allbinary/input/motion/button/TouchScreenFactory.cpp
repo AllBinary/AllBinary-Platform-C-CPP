@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchScreenFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,33 +57,24 @@
         #include "org/allbinary/input/motion/button/TouchScreenTypesFactory.h"
 #include "org/allbinary/input/motion/button/TouchScreenType.h"
 
-class TouchScreenFactory
-            : public Object
-         {
+auto TouchScreenFactory::SINGLETON_owner() -> TouchScreenFactory* { static std::unique_ptr<TouchScreenFactory> value(new TouchScreenFactory()); return value.get(); }
+TouchScreenFactory* TouchScreenFactory::SINGLETON = TouchScreenFactory::SINGLETON_owner();
 
-    private: static TouchScreenFactory* SINGLETON() { static std::unique_ptr<TouchScreenFactory> value(new TouchScreenFactory()); return value.get(); }
+TouchScreenFactory::TouchScreenFactory() : touchScreenType(TouchScreenTypesFactory::getInstance()->NOTOUCH){
+}
 
-    public: static TouchScreenFactory* getInstance(){
+
+    auto TouchScreenFactory::getInstance() -> TouchScreenFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenFactory::SINGLETON();
+                        return TouchScreenFactory::SINGLETON;
     
 }
 
 
-    private: bool multiTouch= false;
-
-    private: bool touch= false;
-
-    private: TouchScreenType* touchScreenType = TouchScreenTypesFactory::getInstance()->NOTOUCH;
-
-private: TouchScreenFactory(){
-}
-
-
-    public: bool isMultiTouch(){
+    auto TouchScreenFactory::isMultiTouch() -> bool{
 
 
 
@@ -83,11 +84,11 @@ private: TouchScreenFactory(){
 }
 
 
-    public: void setTouch(bool touch){
+    auto TouchScreenFactory::setTouch(bool touch) -> void{
 }
 
 
-    public: bool isTouch(){
+    auto TouchScreenFactory::isTouch() -> bool{
 
 
 
@@ -97,7 +98,7 @@ private: TouchScreenFactory(){
 }
 
 
-    public: TouchScreenType* getTouchScreenType(){
+    auto TouchScreenFactory::getTouchScreenType() -> TouchScreenType*{
 
 
 
@@ -107,7 +108,6 @@ private: TouchScreenFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_CPP

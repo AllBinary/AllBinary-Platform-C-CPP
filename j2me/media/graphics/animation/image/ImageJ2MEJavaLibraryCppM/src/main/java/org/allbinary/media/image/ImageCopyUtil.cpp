@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageCopyUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,43 +79,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCreationUtil.h"
 
-class ImageCopyUtil
-            : public Object
-         {
+auto ImageCopyUtil::instance_owner() -> ImageCopyUtil* { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
+ImageCopyUtil* ImageCopyUtil::instance = ImageCopyUtil::instance_owner();
 
-    private: static ImageCopyUtil* instance() { static std::unique_ptr<ImageCopyUtil> value(new ImageCopyUtil()); return value.get(); }
-
-    public: static ImageCopyUtil* getInstance(){
+    auto ImageCopyUtil::getInstance() -> ImageCopyUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCopyUtil::instance();
+                        return ImageCopyUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ImageCreationUtil* imageCreationUtil = ImageCreationUtil::getInstance();
-
-private: ImageCopyUtil(){
+ImageCopyUtil::ImageCopyUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), imageCreationUtil(ImageCreationUtil::getInstance()), anchor(Anchor::TOP_LEFT), gameFeatureFactory(GameFeatureFactory::getInstance()), features(Features::getInstance()){
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
-
-    private: Features* features = Features::getInstance();
-
-    private: const std::string NO_COPY = "J2ME does not need to copy images after initial loading";
-
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageForRotation(Image* originalImage){
+    auto ImageCopyUtil::createImageForRotation(Image* originalImage) -> Image*{
 
 
 
@@ -117,7 +110,7 @@ private: ImageCopyUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage(Image* originalImage){
+    auto ImageCopyUtil::createImage(Image* originalImage) -> Image*{
 
                         if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
@@ -155,7 +148,7 @@ private: ImageCopyUtil(){
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -165,7 +158,7 @@ private: ImageCopyUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImageScale(Image* originalImage, float canvasScale, bool resize){
+    auto ImageCopyUtil::createImageScale(Image* originalImage, float canvasScale, bool resize) -> Image*{
 
                         if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
@@ -243,7 +236,7 @@ graphics->drawImage(originalImage, halfWidthDelta, halfHeightDelta, this->anchor
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -251,7 +244,6 @@ graphics->drawImage(originalImage, halfWidthDelta, halfHeightDelta, this->anchor
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_CPP

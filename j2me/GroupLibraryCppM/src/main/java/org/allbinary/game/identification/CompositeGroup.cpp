@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_CPP
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/identification/CompositeGroup.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,29 +75,20 @@
         #include "org/allbinary/game/identification/Group.h"
 #include "org/allbinary/game/identification/GroupCommonFactory.h"
 
-class CompositeGroup
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Group* groupInterface;
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-public: CompositeGroup(Group* groupInterface){
+CompositeGroup::CompositeGroup(Group* groupInterface) : logUtil(LogUtil::getInstance()), list(new BasicArrayListD()){
 this->groupInterface= groupInterface;
     
 }
 
 
-    public: void clear(){
+    auto CompositeGroup::clear() -> void{
 this->list->clear();
     
 }
 
 
-    public: void add(Group* groupInterface){
+    auto CompositeGroup::add(Group* groupInterface) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -112,7 +113,7 @@ this->list->add(groupInterface);
 }
 
 
-    public: bool isInGroup(Group* groupInterface){
+    auto CompositeGroup::isInGroup(Group* groupInterface) -> bool{
 
                         if(this->list->contains(groupInterface))
                         
@@ -139,7 +140,7 @@ this->list->add(groupInterface);
 }
 
 
-    public: Group* getGroup(){
+    auto CompositeGroup::getGroup() -> Group*{
 
 
 
@@ -149,7 +150,6 @@ this->list->add(groupInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_CPP

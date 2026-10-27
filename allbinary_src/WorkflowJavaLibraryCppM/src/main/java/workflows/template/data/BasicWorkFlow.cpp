@@ -18,6 +18,16 @@
 
 
 
+        #ifndef WORKFLOWS_TEMPLATE_DATA_BASICWORKFLOW_CPP
+        #define WORKFLOWS_TEMPLATE_DATA_BASICWORKFLOW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "workflows/template/data/BasicWorkFlow.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,28 +92,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicWorkFlow
-            : public Object
-        , public WorkFlowInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+BasicWorkFlow::BasicWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: ValidationComponentInterface* validationDomNodeInterface;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-    private: PageContext* pageContext;
-
-public: BasicWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->WORKFLOW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->WORKFLOW))
                         
                                     {
-                                    this->logUtil->putF("Properties: " +propertiesHashMap->toString(), this, "BasicWorkFlow()");
+                                    this->logUtil->putF(JavaString::valueOf("Properties: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "BasicWorkFlow()");
     
 
                                     }
@@ -119,7 +114,7 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getName(){
+    auto BasicWorkFlow::getName() -> std::string{
 
 
 
@@ -129,7 +124,7 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 }
 
 
-    protected: HashMap<Object*, Object*>* getPropertiesHashMap(){
+    auto BasicWorkFlow::getPropertiesHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -139,7 +134,7 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 }
 
 
-    protected: PageContext* getPageContext(){
+    auto BasicWorkFlow::getPageContext() -> PageContext*{
 
 
 
@@ -151,9 +146,9 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t process(){
+    auto BasicWorkFlow::process() -> int32_t{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->WORKFLOW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->WORKFLOW))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);
@@ -191,7 +186,6 @@ this->validationDomNodeInterface= dynamic_cast<ValidationComponentInterface*>(Tr
 }
 
 
-};
 
-            
 
+        #endif //WORKFLOWS_TEMPLATE_DATA_BASICWORKFLOW_CPP

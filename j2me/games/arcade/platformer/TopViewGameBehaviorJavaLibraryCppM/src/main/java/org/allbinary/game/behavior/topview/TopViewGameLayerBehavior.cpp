@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/TopViewGameLayerBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,25 +63,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/InitialJumpBehavior.h"
 
-class TopViewGameLayerBehavior: public GameLayerBehavior {
 
-    public: int32_t maxGravityActionIndex;
-
-    public: bool isJumpAction = true;
-
-    public: bool isJumpOver = false;
-
-    public: bool isFallingWithoutJumpAttempt = false;
-
-    public: int32_t gravityActionIndex = 0;
-
-public: TopViewGameLayerBehavior(int32_t maxGravityActionIndex){
+TopViewGameLayerBehavior::TopViewGameLayerBehavior(int32_t maxGravityActionIndex){
 this->maxGravityActionIndex= maxGravityActionIndex;
     
 }
 
 
-    public: void gravity(){
+    auto TopViewGameLayerBehavior::gravity() -> void{
 
                         if(this->gravityActionIndex == 0)
                         
@@ -86,7 +85,7 @@ this->isFallingWithoutJumpAttempt= true;
 }
 
 
-    public: void land(VelocityProperties* velocityProperties){
+    auto TopViewGameLayerBehavior::land(VelocityProperties* velocityProperties) -> void{
 velocityProperties->getVelocityYBasicDecimalP()->setint(0);
     
 this->landReset();
@@ -94,7 +93,7 @@ this->landReset();
 }
 
 
-    public: void landReset(){
+    auto TopViewGameLayerBehavior::landReset() -> void{
 this->gravityActionIndex= 0;
     
 this->isFallingWithoutJumpAttempt= false;
@@ -106,7 +105,7 @@ this->isJumpOver= false;
 }
 
 
-    public: void up(VelocityProperties* velocityProperties, BasicAccelerationProperties* acceleration, InitialJumpBehavior* jumpBehavior, int32_t accelerationMultiplier){
+    auto TopViewGameLayerBehavior::up(VelocityProperties* velocityProperties, BasicAccelerationProperties* acceleration, InitialJumpBehavior* jumpBehavior, int32_t accelerationMultiplier) -> void{
 
                         if(!this->isJumpOver)
                         
@@ -152,7 +151,7 @@ this->isJumpAction= false;
 }
 
 
-    public: void inputFrames(VelocityProperties* velocityProperties){
+    auto TopViewGameLayerBehavior::inputFrames(VelocityProperties* velocityProperties) -> void{
 
                         if(this->gravityActionIndex > 0 && velocityProperties->getVelocityYBasicDecimalP()->getUnscaled() > 0)
                         
@@ -165,7 +164,6 @@ this->isJumpAction= false;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWGAMELAYERBEHAVIOR_CPP

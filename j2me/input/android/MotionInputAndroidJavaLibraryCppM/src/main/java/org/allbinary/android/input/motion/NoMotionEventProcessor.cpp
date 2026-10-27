@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_NOMOTIONEVENTPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_NOMOTIONEVENTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/NoMotionEventProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
-class NoMotionEventProcessor: public MotionEventProcessor {
 
-    public: static MotionEventProcessor* SINGLETON() { static std::unique_ptr<MotionEventProcessor> value(new MotionEventProcessor()); return value.get(); }
+NoMotionEventProcessor::NoMotionEventProcessor() {
+        }
+        auto NoMotionEventProcessor::SINGLETON_owner() -> MotionEventProcessor* { static std::unique_ptr<MotionEventProcessor> value(new MotionEventProcessor()); return value.get(); }
+MotionEventProcessor* NoMotionEventProcessor::SINGLETON = NoMotionEventProcessor::SINGLETON_owner();
 
-    public: static MotionEventProcessor* getInstance(){
+    auto NoMotionEventProcessor::getInstance() -> MotionEventProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoMotionEventProcessor::SINGLETON();
+                        return NoMotionEventProcessor::SINGLETON;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_NOMOTIONEVENTPROCESSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_COLLIDABLERTSBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_COLLIDABLERTSBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/CollidableRTSBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,9 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/CollidableCompositeLayer.h"
 
-class CollidableRTSBehavior: public CollidableDestroyableDamageableBehavior {
 
-public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+CollidableRTSBehavior::CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +76,7 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
 }
 
 
-    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto CollidableRTSBehavior::isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> bool{
 
     CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
@@ -89,7 +98,7 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isCollision(ownerLayer, collidableInterfaceCompositeInterface);;
+                        return CollidableDestroyableDamageableBehavior::isCollision(ownerLayer, collidableInterfaceCompositeInterface);;
     
 
                                     }
@@ -132,7 +141,7 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto CollidableRTSBehavior::collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> void{
 
     CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
@@ -150,7 +159,7 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
                         if(collisionType == collisionTypeFactory->COLLISION)
                         
                                     {
-                                    super.collide(ownerLayer, collidableInterfaceCompositeInterface);
+                                    CollidableDestroyableDamageableBehavior::collide(ownerLayer, collidableInterfaceCompositeInterface);
     
 
                                     }
@@ -166,11 +175,10 @@ public: CollidableRTSBehavior(bool collidable) : CollidableDestroyableDamageable
 
                 //@Throws(Exception.constructor)
             
-    protected: void collideNone(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterface){
+    auto CollidableRTSBehavior::collideNone(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterface) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_COLLIDABLERTSBEHAVIOR_CPP

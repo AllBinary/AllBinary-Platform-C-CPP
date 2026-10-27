@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLE_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         #include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
 #include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 
-class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public CacheableInterface {
 
-public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior* animationBehavior) : AdjustedImageArrayRotationAnimation((anyType)).getImageArray(), (anyType)).getAngleInfoP(), (anyType)).getTotalAngle(), (anyType)).getDx(), (anyType)).getDy(), animationBehavior){
+ImageArrayRotationAnimationCacheable::ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior* animationBehavior) : AdjustedImageArrayRotationAnimation((anyType)).getImageArray(), (anyType)).getAngleInfoP(), (anyType)).getTotalAngle(), (anyType)).getDx(), (anyType)).getDy(), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +82,7 @@ public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior*
 }
 
 
-    public: Object* getKey(){
+    auto ImageArrayRotationAnimationCacheable::getKey() -> Object*{
 
 
 
@@ -83,7 +92,7 @@ public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior*
 }
 
 
-    public: std::string toString(){
+    auto ImageArrayRotationAnimationCacheable::toString() -> std::string{
 
 
 
@@ -93,7 +102,6 @@ public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior*
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLE_CPP

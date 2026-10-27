@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LicenseType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LicenseType
-            : public Object
-         {
 
-    private: std::string name;
-
-protected: LicenseType(std::string name){
+LicenseType::LicenseType(std::string name){
 this->setName(name);
     
 }
 
 
-    private: void setName(std::string name){
+    auto LicenseType::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string getName(){
+    auto LicenseType::getName() -> std::string{
 
 
 
@@ -73,7 +78,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPE_CPP

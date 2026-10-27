@@ -21,24 +21,21 @@
         #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H
         #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <android/content/Context.h>
-
-      
-#include <android/os/Vibrator.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
-
-      
+class Context;
+class Vibrator;
+class ResourceUtil;
+class GameConfigurationCentral;
 
 
 
@@ -58,19 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/AllBinaryVibrationME.h"
-#include "org/allbinary/media/AllBinaryNoVibration.h"
+class AllBinaryNoVibration;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryVibration: public AllBinaryVibrationME {
 
-    private: static inline AllBinaryVibrationME* VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
+    private: static AllBinaryVibrationME* VIBRATION;
 
     public: static AllBinaryVibrationME* getInstance();
 
     public: static void init();
 
-    private: Vibrator* vibrator = dynamic_cast<Vibrator*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::VIBRATOR_SERVICE) as unknown);
+    private: Vibrator* vibrator;
 
-protected: AllBinaryVibration();
+/*protected*/ public: AllBinaryVibration();
 
     public: void vibrate(int32_t duration, int32_t type, int32_t volume);
 
@@ -80,3 +81,28 @@ protected: AllBinaryVibration();
 
 
         #endif //ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_H_COMPLETE
+        #if __has_include(<android/content/Context.h>)
+#include <android/content/Context.h>
+#endif
+#if __has_include(<android/os/Vibrator.h>)
+#include <android/os/Vibrator.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/GameConfigurationCentral.h>)
+#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
+#endif
+#if __has_include("org/allbinary/media/AllBinaryVibrationME.h")
+#include "org/allbinary/media/AllBinaryVibrationME.h"
+#endif
+#if __has_include("org/allbinary/media/AllBinaryNoVibration.h")
+#include "org/allbinary/media/AllBinaryNoVibration.h"
+#endif
+
+        #endif
+    

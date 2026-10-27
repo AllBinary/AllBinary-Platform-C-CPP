@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESCROLLSELECTIONFORM_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESCROLLSELECTIONFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/PreGameScrollSelectionForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,9 +75,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PreGameScrollSelectionForm: public ScrollCurrentSelectionForm {
 
-public: PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollCurrentSelectionForm(title, items, formPaintableFactory, 0, 3, false, backgroundBasicColor, foregroundBasicColor){
+PreGameScrollSelectionForm::PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollCurrentSelectionForm(title, items, formPaintableFactory, 0, 3, false, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,13 +88,12 @@ public: PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem*>
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle* rectangle){
-super.init(rectangle, FormTypeFactory::getInstance()->TEMP_HORIZONTAL_FORM);
+    auto PreGameScrollSelectionForm::init(Rectangle* rectangle) -> void{
+ScrollCurrentSelectionForm::init(rectangle, FormTypeFactory::getInstance()->TEMP_HORIZONTAL_FORM);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESCROLLSELECTIONFORM_CPP

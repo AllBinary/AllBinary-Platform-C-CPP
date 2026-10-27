@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/LazyImageRotationAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,17 +77,8 @@
         #include "org/allbinary/animation/image/BaseImageAnimationFactory.h"
 #include "org/allbinary/animation/image/LazyImageRotationAnimation.h"
 
-class LazyImageRotationAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    private: int32_t layoutIndex;
-
-    private: BaseImageAnimationFactory* animationInterfaceFactoryInterface;
-
-    public: ScaleProperties* scaleProperties = ScaleProperties::instance;
-
-public: LazyImageRotationAnimationFactory(int32_t layoutIndex, int32_t associatedLazyAnimationId, BaseImageAnimationFactory* animationInterfaceFactoryInterface){
+LazyImageRotationAnimationFactory::LazyImageRotationAnimationFactory(int32_t layoutIndex, int32_t associatedLazyAnimationId, BaseImageAnimationFactory* animationInterfaceFactoryInterface) : scaleProperties(ScaleProperties::instance){
 this->layoutIndex= layoutIndex;
     
 this->animationInterfaceFactoryInterface= animationInterfaceFactoryInterface;
@@ -98,7 +99,7 @@ ImageCacheFactory::getInstance()->hasAnyLazyAnimationFactories= true;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto LazyImageRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
                         if(this->animationInterfaceFactoryInterface->getImage()->isReady())
                         
@@ -119,7 +120,7 @@ ImageCacheFactory::getInstance()->hasAnyLazyAnimationFactories= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LazyImageRotationAnimation(this->layoutIndex, instanceId, this->scaleProperties, this->animationInterfaceFactoryInterface, this->animationInterfaceFactoryInterface->animationBehaviorFactory.getOrCreateInstance());
+                        return new LazyImageRotationAnimation(this->layoutIndex, instanceId, this->scaleProperties, this->animationInterfaceFactoryInterface, this->animationInterfaceFactoryInterface->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
@@ -127,13 +128,12 @@ ImageCacheFactory::getInstance()->hasAnyLazyAnimationFactories= true;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto LazyImageRotationAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 this->scaleProperties= scaleProperties;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATIONFACTORY_CPP

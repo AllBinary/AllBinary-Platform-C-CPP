@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/media/image/ImageModifierUtil.h>
-
-      
+class Image;
+class BasicColor;
+class ImageModifierUtil;
 
 
 
@@ -57,14 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ModifierBaseProcessor
-            : public Object
+            : public virtual Object
          {
 
-    private: static ModifierBaseProcessor* instance() { static std::unique_ptr<ModifierBaseProcessor> value(new ModifierBaseProcessor()); return value.get(); }
+    private: static ModifierBaseProcessor* instance_owner();
+    private: static ModifierBaseProcessor* instance;
 
     public: static ModifierBaseProcessor* getInstance();
 
+
+            
+    public: ModifierBaseProcessor();
+        
     public: void updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor);
 
     public: void updateAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, int32_t alpha);
@@ -75,3 +83,19 @@ class ModifierBaseProcessor
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageModifierUtil.h>)
+#include <org/allbinary/media/image/ImageModifierUtil.h>
+#endif
+
+        #endif
+    

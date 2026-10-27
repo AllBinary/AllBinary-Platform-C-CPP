@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/SecretComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -57,17 +67,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
 
-class SecretComposite: public BaseSecretComposite {
 
-    private: ByteUtil* byteUtil = ByteUtil::getInstance();
-
-    private: Cipher* cipher;
-
-    private: SecretKey* secretKey;
-
-    private: std::vector<int8_t> key;
-
-public: SecretComposite(SecretKey* secretKey, Cipher* cipher, std::vector<int8_t> key){
+SecretComposite::SecretComposite(SecretKey* secretKey, Cipher* cipher, std::vector<int8_t> key) : byteUtil(ByteUtil::getInstance()){
 this->secretKey= secretKey;
     
 this->cipher= cipher;
@@ -79,7 +80,7 @@ this->key= key;
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    auto SecretComposite::encrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 array= this->mutilate(array);
     
 this->cipher->init(Cipher::ENCRYPT_MODE, this->secretKey);
@@ -95,7 +96,7 @@ this->cipher->init(Cipher::ENCRYPT_MODE, this->secretKey);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    auto SecretComposite::decrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 this->cipher->init(Cipher::DECRYPT_MODE, this->secretKey);
     
 
@@ -107,7 +108,7 @@ this->cipher->init(Cipher::DECRYPT_MODE, this->secretKey);
 }
 
 
-    private: std::vector<int8_t> mutilate(std::vector<int8_t> array){
+    auto SecretComposite::mutilate(std::vector<int8_t> array) -> std::vector<int8_t>{
 
 
 
@@ -138,7 +139,6 @@ this->cipher->init(Cipher::DECRYPT_MODE, this->secretKey);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_CPP

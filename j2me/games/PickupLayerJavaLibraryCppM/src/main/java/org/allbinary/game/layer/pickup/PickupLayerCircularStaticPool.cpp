@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/PickupLayerCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,27 +61,26 @@
 #include "org/allbinary/game/layer/pickup/PickedUpLayerInterface.h"
 #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 
-class PickupLayerCircularStaticPool: public AllBinaryLayerCircularPool {
+auto PickupLayerCircularStaticPool::SINGLETON_owner() -> PickupLayerCircularStaticPool* { static std::unique_ptr<PickupLayerCircularStaticPool> value(new PickupLayerCircularStaticPool()); return value.get(); }
+PickupLayerCircularStaticPool* PickupLayerCircularStaticPool::SINGLETON = PickupLayerCircularStaticPool::SINGLETON_owner();
 
-    private: static PickupLayerCircularStaticPool* SINGLETON() { static std::unique_ptr<PickupLayerCircularStaticPool> value(new PickupLayerCircularStaticPool()); return value.get(); }
+PickupLayerCircularStaticPool::PickupLayerCircularStaticPool(){
+}
 
-    public: static PickupLayerCircularStaticPool* getInstance(){
+
+    auto PickupLayerCircularStaticPool::getInstance() -> PickupLayerCircularStaticPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PickupLayerCircularStaticPool::SINGLETON();
+                        return PickupLayerCircularStaticPool::SINGLETON;
     
-}
-
-
-private: PickupLayerCircularStaticPool(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: PickedUpLayerInterface* getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z){
+    auto PickupLayerCircularStaticPool::getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z) -> PickedUpLayerInterface*{
 
     PickupLayer* pickupLayer = dynamic_cast<PickupLayer*>(this->getNextInstance());;
     
@@ -88,7 +97,6 @@ pickupLayer->init(pickedUpLayerInterfaceFactoryInterface, pickedUpLayerInterface
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_CPP

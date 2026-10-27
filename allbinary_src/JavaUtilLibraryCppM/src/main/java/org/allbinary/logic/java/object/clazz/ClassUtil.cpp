@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_CLASSUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_CLASSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/anyType/clazz/ClassUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,11 +71,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ClassUtil
-            : public Object
-         {
 
-    public: static std::string viewAll(Object* anyType, std::string lineBreak){
+ClassUtil::ClassUtil(){
+}
+
+
+    auto ClassUtil::viewAll(Object* anyType, std::string lineBreak) -> std::string{
 
                         if(anyType != 
                                     nullptr
@@ -87,7 +98,7 @@ class ClassUtil
 }
 
 
-    public: static std::string viewAll(Class* myClass, std::string lineBreak){
+    auto ClassUtil::viewAll(Class* myClass, std::string lineBreak) -> std::string{
 
                         if(myClass != 
                                     nullptr
@@ -129,7 +140,7 @@ stringBuffer->append(lineBreak);
         {
 stringBuffer->append("Class: ");
     
-stringBuffer->append(classes[index].getName());
+stringBuffer->append(classes[index]->getName());
     
 stringBuffer->append(lineBreak);
     
@@ -160,11 +171,6 @@ stringBuffer->append(MethodUtil::viewAll(myClass, lineBreak));
 }
 
 
-private: ClassUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_CLASSUTIL_CPP

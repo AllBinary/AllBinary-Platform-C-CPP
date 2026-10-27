@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSFACTORY_CPP
+        #define ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/device/OpenGLESGraphicsFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,11 @@
         #include "org/allbinary/device/OpenGLESNullGraphicsFactory.h"
 #include "org/allbinary/device/OpenGLESGraphics.h"
 
-class OpenGLESGraphicsFactory
-            : public Object
-         {
 
-    public: OpenGLESGraphics* getOpenGLESGraphicsInstance(){
+OpenGLESGraphicsFactory::OpenGLESGraphicsFactory() {
+        }
+        
+    auto OpenGLESGraphicsFactory::getOpenGLESGraphicsInstance() -> OpenGLESGraphics*{
 
 
 
@@ -61,7 +71,6 @@ class OpenGLESGraphicsFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSFACTORY_CPP

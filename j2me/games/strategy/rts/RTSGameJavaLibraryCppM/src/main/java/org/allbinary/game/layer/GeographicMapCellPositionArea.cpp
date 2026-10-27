@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREA_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/GeographicMapCellPositionArea.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,27 +83,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/GeographicMapCellPositionAreaBase.h"
 
-class GeographicMapCellPositionArea: public GeographicMapCellPositionAreaBase {
 
-    private: CellPositionsUtil* cellPositionsUtil = CellPositionsUtil::getInstance();
-
-    private: LayerCoveringCellPositionsUtil* layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
-
-    private: BasicArrayList* reusableOccupyingGeographicMapCellPositionList = new BasicArrayListS(4);
-
-    private: BasicArrayList* reusableSurroundingGeographicMapCellPositionList = new BasicArrayListS(12);
-
-    private: CircularIndexUtil* surroundingCircularIndexUtil = CircularIndexUtil::createInstance(0);
-
-    private: AllBinaryLayer* layerInterface;
-
-    private: BasicArrayList* LIST = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
-    private: BasicArrayList* occupyingGeographicMapCellPositionList = this->LIST;
-
-    private: BasicArrayList* surroundingGeographicMapCellPositionList = this->LIST;
-
-public: GeographicMapCellPositionArea(AllBinaryLayer* layerInterface){
+GeographicMapCellPositionArea::GeographicMapCellPositionArea(AllBinaryLayer* layerInterface) : cellPositionsUtil(CellPositionsUtil::getInstance()), layerCoveringCellPositionsUtil(LayerCoveringCellPositionsUtil::getInstance()), reusableOccupyingGeographicMapCellPositionList(new BasicArrayListS(4)), reusableSurroundingGeographicMapCellPositionList(new BasicArrayListS(12)), surroundingCircularIndexUtil(CircularIndexUtil::createInstance(0)), LIST(BasicArrayListUtil::getInstance()->getImmutableInstance()), occupyingGeographicMapCellPositionList(this->LIST), surroundingGeographicMapCellPositionList(this->LIST){
 this->layerInterface= layerInterface;
     
 }
@@ -101,7 +92,7 @@ this->layerInterface= layerInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: void update(BasicGeographicMap* geographicMapInterface){
+    auto GeographicMapCellPositionArea::update(BasicGeographicMap* geographicMapInterface) -> void{
 this->occupyingGeographicMapCellPositionList= this->layerCoveringCellPositionsUtil->getAllXY(geographicMapInterface, this->layerInterface, this->layerInterface->getXP(), this->layerInterface->getYP(), this->reusableOccupyingGeographicMapCellPositionList);
     
 this->surroundingGeographicMapCellPositionList= this->cellPositionsUtil->getAllSurrounding(geographicMapInterface, this->occupyingGeographicMapCellPositionList, this->reusableSurroundingGeographicMapCellPositionList);
@@ -111,7 +102,7 @@ this->surroundingCircularIndexUtil->setSize(this->surroundingGeographicMapCellPo
 }
 
 
-    public: BasicArrayList* getOccupyingGeographicMapCellPositionList(){
+    auto GeographicMapCellPositionArea::getOccupyingGeographicMapCellPositionList() -> BasicArrayList*{
 
 
 
@@ -121,7 +112,7 @@ this->surroundingCircularIndexUtil->setSize(this->surroundingGeographicMapCellPo
 }
 
 
-    public: BasicArrayList* getSurroundingGeographicMapCellPositionList(){
+    auto GeographicMapCellPositionArea::getSurroundingGeographicMapCellPositionList() -> BasicArrayList*{
 
 
 
@@ -131,7 +122,7 @@ this->surroundingCircularIndexUtil->setSize(this->surroundingGeographicMapCellPo
 }
 
 
-    public: GeographicMapCellPosition* getNextSurroundingGeographicMapCellPosition(){
+    auto GeographicMapCellPositionArea::getNextSurroundingGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
     GeographicMapCellPosition* geographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(this->surroundingGeographicMapCellPositionList->get(this->surroundingCircularIndexUtil->getIndex()));;
     
@@ -146,7 +137,6 @@ this->surroundingCircularIndexUtil->next();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOGRAPHICMAPCELLPOSITIONAREA_CPP

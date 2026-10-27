@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEARRAYROTATIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEARRAYROTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageArrayRotationUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,31 +74,25 @@
 #include "org/allbinary/media/image/ImageProcessorInput.h"
 #include "org/allbinary/media/image/ImageProcessedVisitor.h"
 
-class ImageArrayRotationUtil
-            : public Object
-         {
 
-    private: static ImageArrayRotationUtil* instance() { static std::unique_ptr<ImageArrayRotationUtil> value(new ImageArrayRotationUtil()); return value.get(); }
+ImageArrayRotationUtil::ImageArrayRotationUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        auto ImageArrayRotationUtil::instance_owner() -> ImageArrayRotationUtil* { static std::unique_ptr<ImageArrayRotationUtil> value(new ImageArrayRotationUtil()); return value.get(); }
+ImageArrayRotationUtil* ImageArrayRotationUtil::instance = ImageArrayRotationUtil::instance_owner();
 
-    public: static ImageArrayRotationUtil* getInstance(){
+    auto ImageArrayRotationUtil::getInstance() -> ImageArrayRotationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageArrayRotationUtil::instance();
+                        return ImageArrayRotationUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string TOTAL_ANGLE = "totalAngle: ";
-
                 //@Throws(IOException.constructor)
             
-    public: void process(ImageProcessorInput* imageProcessorInput, std::string input, ImageProcessedVisitor* visitor){
+    auto ImageArrayRotationUtil::process(ImageProcessorInput* imageProcessorInput, std::string input, ImageProcessedVisitor* visitor) -> void{
 
     int32_t totalAngle;;
     
@@ -140,7 +144,6 @@ visitor->visit(generatedBufferedImage, input, index);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEARRAYROTATIONUTIL_CPP

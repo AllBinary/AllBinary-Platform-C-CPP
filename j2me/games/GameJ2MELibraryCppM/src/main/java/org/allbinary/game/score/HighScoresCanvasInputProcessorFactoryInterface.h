@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSORFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSORFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
-
-      
+class HighScoresCanvas;
 
 
 
@@ -48,9 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
+        class HighScoresCanvasInputProcessor;
 
-class HighScoresCanvasInputProcessorFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class HighScoresCanvasInputProcessorFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual HighScoresCanvasInputProcessor* getInstance(HighScoresCanvas* highScoresCanvas) = 0;
 
@@ -60,3 +69,16 @@ class HighScoresCanvasInputProcessorFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSORFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSORFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSORFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/score/displayable/HighScoresCanvas.h>)
+#include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
+#endif
+#if __has_include("org/allbinary/game/score/HighScoresCanvasInputProcessor.h")
+#include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
+#endif
+
+        #endif
+    

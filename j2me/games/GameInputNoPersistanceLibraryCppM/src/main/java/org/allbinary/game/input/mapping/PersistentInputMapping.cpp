@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/PersistentInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -96,13 +106,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 //GameInputNoPersistanceLibrary
-class PersistentInputMapping
-            : public Object
-         {
+Object* PersistentInputMapping::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static PersistentInputMapping* getNullInstance(){
+    auto PersistentInputMapping::getNullInstance() -> PersistentInputMapping*{
 
                         if(PersistentInputMapping::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -121,25 +127,13 @@ class PersistentInputMapping
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
-
-    private: InputToGameKeyMapping* inputMapping = new InputToGameKeyMapping();
-
-    private: InputMappingEventListenerInterface* inputMappingEventListenerInterface = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
-
-    private: InputPersistance* inputPersistance;
-
-protected: PersistentInputMapping(std::string name){
+PersistentInputMapping::PersistentInputMapping(std::string name) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), enumerationUtil(EnumerationUtil::getInstance()), inputMapping(new InputToGameKeyMapping()), inputMappingEventListenerInterface(NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER), inputMappingEvent(new InputMappingEvent(this)){
 this->inputPersistance= new InputPersistance(name);
     
 }
 
 
-    public: int32_t getTotalMapped(){
+    auto PersistentInputMapping::getTotalMapped() -> int32_t{
 
 
 
@@ -149,7 +143,7 @@ this->inputPersistance= new InputPersistance(name);
 }
 
 
-    protected: bool isDefaultNew(){
+    auto PersistentInputMapping::isDefaultNew() -> bool{
 
 
 
@@ -159,7 +153,7 @@ this->inputPersistance= new InputPersistance(name);
 }
 
 
-    protected: InputToGameKeyMapping* getDefault(){
+    auto PersistentInputMapping::getDefault() -> InputToGameKeyMapping*{
 
 
 
@@ -171,7 +165,7 @@ this->inputPersistance= new InputPersistance(name);
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(AbeClientInformationInterface* abeClientInformation){
+    auto PersistentInputMapping::setDefault(AbeClientInformationInterface* abeClientInformation) -> void{
 this->getInputMapping()->removeAll();
     
 this->getInputMapping()->addMapping(this->getDefault());
@@ -183,7 +177,7 @@ this->save(abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AbeClientInformationInterface* abeClientInformation){
+    auto PersistentInputMapping::update(AbeClientInformationInterface* abeClientInformation) -> void{
 this->inputPersistance->deleteAll(abeClientInformation);
     
 this->save(abeClientInformation);
@@ -191,11 +185,9 @@ this->save(abeClientInformation);
 }
 
 
-    private: InputMappingEvent* inputMappingEvent = new InputMappingEvent(this);
-
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface* abeClientInformation){
+    auto PersistentInputMapping::save(AbeClientInformationInterface* abeClientInformation) -> void{
 this->inputPersistance->save(abeClientInformation, this->getInputMapping()->getHashtable());
     
 this->inputMappingEvent->setInputToGameKeyMapping(this->getInputMapping());
@@ -216,7 +208,7 @@ this->inputMappingEvent->setInputToGameKeyMapping(this->getInputMapping());
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface* abeClientInformation){
+    auto PersistentInputMapping::init(AbeClientInformationInterface* abeClientInformation) -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->INIT);
     
 
@@ -300,13 +292,13 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
 }
 
 
-    public: void setInputMappingEventListenerInterface(InputMappingEventListenerInterface* inputMappingEventListenerInterface){
+    auto PersistentInputMapping::setInputMappingEventListenerInterface(InputMappingEventListenerInterface* inputMappingEventListenerInterface) -> void{
 this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
     
 }
 
 
-    private: InputMappingEventListenerInterface* getInputMappingEventListenerInterface(){
+    auto PersistentInputMapping::getInputMappingEventListenerInterface() -> InputMappingEventListenerInterface*{
 
 
 
@@ -316,7 +308,7 @@ this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
 }
 
 
-    public: InputToGameKeyMapping* getInputMapping(){
+    auto PersistentInputMapping::getInputMapping() -> InputToGameKeyMapping*{
 
 
 
@@ -328,27 +320,26 @@ this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDelete(Input* input){
+    auto PersistentInputMapping::isDelete(Input* input) -> bool{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isSystemInput(Input* input){
+    auto PersistentInputMapping::isSystemInput(Input* input) -> bool{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_CPP

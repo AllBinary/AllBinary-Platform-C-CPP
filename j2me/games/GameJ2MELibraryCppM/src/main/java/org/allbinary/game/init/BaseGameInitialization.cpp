@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INIT_BASEGAMEINITIALIZATION_CPP
+        #define ORG_ALLBINARY_GAME_INIT_BASEGAMEINITIALIZATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/init/BaseGameInitialization.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -104,27 +114,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/init/GameInitializationInterface.h"
 
-class BaseGameInitialization
-            : public Object
-        , public GameInitializationInterface {
+auto BaseGameInitialization::NULL_BASE_GAME_INITIALIZATION_owner() -> BaseGameInitialization* { static std::unique_ptr<BaseGameInitialization> value(new BaseGameInitialization({}, 0)); return value.get(); }
+BaseGameInitialization* BaseGameInitialization::NULL_BASE_GAME_INITIALIZATION = BaseGameInitialization::NULL_BASE_GAME_INITIALIZATION_owner();
 
-    public: static BaseGameInitialization* NULL_BASE_GAME_INITIALIZATION() { static std::unique_ptr<BaseGameInitialization> value(new BaseGameInitialization({}, 0)); return value.get(); }
-
-    protected: std::vector<ResourceInitialization*> resourceInitializationArray;
-
-    private: int32_t portion;
-
-    private: bool initialized= false;
-
-    protected: const int32_t EARLY_RESOURCES = 0;
-
-    protected: const int32_t GAME_RESOURCES = 1;
-
-    protected: const int32_t EARLY_CHANGABLE_RESOURCES = 2;
-
-    protected: const int32_t GAME_CHANGABLE_RESOURCES = 3;
-
-public: BaseGameInitialization(std::vector<ResourceInitialization*> resourceInitializationArray, int32_t portion){
+BaseGameInitialization::BaseGameInitialization(std::vector<ResourceInitialization*> resourceInitializationArray, int32_t portion){
 this->resourceInitializationArray= resourceInitializationArray;
     
 this->portion= portion;
@@ -134,13 +127,13 @@ this->portion= portion;
 
                 //@Throws(Exception.constructor)
             
-    public: void initKey(int32_t portion){
+    auto BaseGameInitialization::initKey(int32_t portion) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void initKeyMapping(AbeClientInformationInterface* abeClientInformation, int32_t portion){
+    auto BaseGameInitialization::initKeyMapping(AbeClientInformationInterface* abeClientInformation, int32_t portion) -> void{
 
                         if(ChangedGameFeatureListener::getInstance()->isChangedFeature(InputFeatureFactory::getInstance()->INPUT_MAPPING))
                         
@@ -159,19 +152,19 @@ ChangedGameFeatureListener::getInstance()->remove(InputFeatureFactory::getInstan
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level){
+    auto BaseGameInitialization::init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level) -> void{
 
     ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(!this->isInitialized() && (level == resourceLoadingLevelFactory->LOAD_ALL.getLevel() || level == resourceLoadingLevelFactory->LOAD_EARLY.getLevel()))
+                        if(!this->isInitialized() && (level == resourceLoadingLevelFactory->LOAD_ALL->getLevel() || level == resourceLoadingLevelFactory->LOAD_EARLY->getLevel()))
                         
                                     {
                                     
     int32_t localPortion = 40;;
     
 
-                        if(level == resourceLoadingLevelFactory->LOAD_EARLY.getLevel())
+                        if(level == resourceLoadingLevelFactory->LOAD_EARLY->getLevel())
                         
                                     {
                                     localPortion= 8;
@@ -206,7 +199,7 @@ GameFeatureImageCacheFactory::init();
     
 progressCanvas->addNormalPortion(localPortion, "Image Cache");
     
-this->resourceInitializationArray[this->EARLY_RESOURCES].init();
+this->resourceInitializationArray[this->EARLY_RESOURCES]->init();
     
 
                                     }
@@ -214,29 +207,25 @@ this->resourceInitializationArray[this->EARLY_RESOURCES].init();
 }
 
 
-    private: bool gameInitialized= false;
-
-    private: bool allLoaded= false;
-
                 //@Throws(Exception.constructor)
             
-    public: void resourceInitialization(int32_t level){
+    auto BaseGameInitialization::resourceInitialization(int32_t level) -> void{
 
     ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(this->resourceAnimationChange() && level == resourceLoadingLevelFactory->LOAD_EARLY.getLevel())
+                        if(this->resourceAnimationChange() && level == resourceLoadingLevelFactory->LOAD_EARLY->getLevel())
                         
                                     {
                                     this->clearResources();
     
-this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES].init();
+this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES]->init();
     
 
                                     }
                                 
 
-                        if(this->resourceAnimationChange() && level == resourceLoadingLevelFactory->LOAD_ALL.getLevel())
+                        if(this->resourceAnimationChange() && level == resourceLoadingLevelFactory->LOAD_ALL->getLevel())
                         
                                     {
                                     
@@ -252,12 +241,12 @@ this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES].init();
                         if(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->getList()->size() == 0)
                         
                                     {
-                                    this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES].init();
+                                    this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES]->init();
     
 
                                     }
                                 
-this->resourceInitializationArray[this->GAME_CHANGABLE_RESOURCES].init();
+this->resourceInitializationArray[this->GAME_CHANGABLE_RESOURCES]->init();
     
 this->allLoaded= true;
     
@@ -267,7 +256,7 @@ this->allLoaded= true;
 }
 
 
-    public: bool resourceAnimationChange(){
+    auto BaseGameInitialization::resourceAnimationChange() -> bool{
 
     ChangedGameFeatureListener* changedGameFeatureListener = ChangedGameFeatureListener::getInstance();;
     
@@ -309,7 +298,7 @@ this->allLoaded= true;
 }
 
 
-    private: void clearResources(){
+    auto BaseGameInitialization::clearResources() -> void{
 this->allLoaded= false;
     
 GameFeatureImageCacheFactory::releaseAll();
@@ -324,13 +313,13 @@ FeaturedResourceRelativeRelationshipFactory::getInstance()->clear();
 }
 
 
-    protected: void setGameInitialized(bool gameInitialized){
+    auto BaseGameInitialization::setGameInitialized(bool gameInitialized) -> void{
 this->gameInitialized= gameInitialized;
     
 }
 
 
-    protected: bool isGameInitialized(){
+    auto BaseGameInitialization::isGameInitialized() -> bool{
 
 
 
@@ -340,7 +329,7 @@ this->gameInitialized= gameInitialized;
 }
 
 
-    protected: int32_t getPortion(){
+    auto BaseGameInitialization::getPortion() -> int32_t{
 
 
 
@@ -350,13 +339,13 @@ this->gameInitialized= gameInitialized;
 }
 
 
-    public: void setInitialized(bool initialized){
+    auto BaseGameInitialization::setInitialized(bool initialized) -> void{
 this->initialized= initialized;
     
 }
 
 
-    public: bool isInitialized(){
+    auto BaseGameInitialization::isInitialized() -> bool{
 
 
 
@@ -366,7 +355,6 @@ this->initialized= initialized;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INIT_BASEGAMEINITIALIZATION_CPP

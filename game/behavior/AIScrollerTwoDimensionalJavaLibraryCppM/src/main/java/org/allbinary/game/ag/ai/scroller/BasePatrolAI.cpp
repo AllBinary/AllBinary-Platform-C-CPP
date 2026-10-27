@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,27 +86,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasePatrolAI: public BasicAI {
+int32_t BasePatrolAI::MAX_DISTANCE = SmallIntegerSingletonFactory::getInstance()->getAt(2);
+int32_t BasePatrolAI::DIRECTION_ARRAY = SmallIntegerSingletonFactory::getInstance()->getAt(3);
+int32_t BasePatrolAI::FIRING_DISTANCE = SmallIntegerSingletonFactory::getInstance()->getAt(4);
+int32_t BasePatrolAI::SPEED = SmallIntegerSingletonFactory::getInstance()->getAt(5);
 
-    public: static inline int32_t MAX_DISTANCE = SmallIntegerSingletonFactory::getInstance()->getAt(2);
-
-    public: static inline int32_t DIRECTION_ARRAY = SmallIntegerSingletonFactory::getInstance()->getAt(3);
-
-    public: static inline int32_t FIRING_DISTANCE = SmallIntegerSingletonFactory::getInstance()->getAt(4);
-
-    public: static inline int32_t SPEED = SmallIntegerSingletonFactory::getInstance()->getAt(5);
-
-    protected: int32_t maxDistance;
-
-    protected: int32_t currentDistance;
-
-    protected: int32_t xTotalDistance= 0;
-
-    protected: int32_t lastKeyDirection = Canvas::RIGHT;
-
-    protected: int32_t keyDirection = Canvas::RIGHT;
-
-public: BasePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+BasePatrolAI::BasePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput), lastKeyDirection(Canvas::RIGHT), keyDirection(Canvas::RIGHT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,7 +105,7 @@ this->currentDistance= this->maxDistance.intValue();
 }
 
 
-    protected: void update(){
+    auto BasePatrolAI::update() -> void{
 this->updateTotalDistance();
     
 this->changeDirectionIfReachedPacingAreaMax();
@@ -118,7 +113,7 @@ this->changeDirectionIfReachedPacingAreaMax();
 }
 
 
-    private: void updateTotalDistance(){
+    auto BasePatrolAI::updateTotalDistance() -> void{
 
     VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(this->getOwnerLayerInterface());;
     
@@ -130,7 +125,7 @@ this->xTotalDistance += velocityProperties->getVelocityXBasicDecimalP()->getScal
 }
 
 
-    private: void changeDirectionIfReachedPacingAreaMax(){
+    auto BasePatrolAI::changeDirectionIfReachedPacingAreaMax() -> void{
 
     MathUtil* mathUtil = MathUtil::getInstance();;
     
@@ -149,7 +144,7 @@ this->xTotalDistance += velocityProperties->getVelocityXBasicDecimalP()->getScal
 }
 
 
-    protected: void nextDirection(){
+    auto BasePatrolAI::nextDirection() -> void{
 
                         if(this->lastKeyDirection == Canvas::LEFT)
                         
@@ -179,11 +174,10 @@ this->xTotalDistance= 0;
 }
 
 
-    public: void disable(){
+    auto BasePatrolAI::disable() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_CPP

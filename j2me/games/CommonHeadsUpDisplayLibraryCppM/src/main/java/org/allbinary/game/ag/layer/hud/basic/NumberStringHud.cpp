@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/NumberStringHud.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,25 +84,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NumberStringHud: public BasicHud, public PaintableInterface {
 
-    private: PrimitiveLongUtil* primitiveLongUtil;
-
-    private: std::string prependString;
-
-    private: std::vector<char> PREPEND_STRING;
-
-    private: int32_t value;
-
-    private: int32_t max;
-
-    private: int32_t offset= 0;
-
-    private: std::vector<char> valueString;
-
-    private: int32_t valueTotalDigits= 0;
-
-public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : BasicHud(location, direction, bufferZone, basicColor){
+NumberStringHud::NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : BasicHud(location, direction, bufferZone, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -118,7 +111,7 @@ this->value= 0;
                                     
 
 
-                            throw new RuntimeException(BasicHudFactory::getInstance()->DIRECTION_EXCEPTION);
+                            throw RuntimeException(BasicHudFactory::getInstance()->DIRECTION_EXCEPTION);
                     
 
                                     }
@@ -126,18 +119,18 @@ this->value= 0;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto NumberStringHud::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
 this->offset= font->stringWidth(this->prependString) +MyFontProcessor::defaultCharWidth(font);
     
-super.updateMeasurement(graphics);
+BasicHud::updateMeasurement(graphics);
     
 }
 
 
-    public: int32_t get(){
+    auto NumberStringHud::get() -> int32_t{
 
 
 
@@ -147,13 +140,13 @@ super.updateMeasurement(graphics);
 }
 
 
-    public: void add(int32_t value){
+    auto NumberStringHud::add(int32_t value) -> void{
 this->set(this->value +value);
     
 }
 
 
-    public: void set(int32_t value){
+    auto NumberStringHud::set(int32_t value) -> void{
 this->value= value;
     
 
@@ -172,20 +165,20 @@ this->valueTotalDigits= this->primitiveLongUtil->getCurrentTotalDigits();
 }
 
 
-    public: void reduce(int32_t value){
+    auto NumberStringHud::reduce(int32_t value) -> void{
 this->set(this->value -value);
     
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paintDX(graphics, this->PREPEND_STRING, 0, this->PREPEND_STRING.size(), this->valueString, 0, this->valueTotalDigits, this->offset);
+    auto NumberStringHud::paint(Graphics* graphics) -> void{
+BasicHud::paintDX(graphics, this->PREPEND_STRING, 0, this->PREPEND_STRING.size(), this->valueString, 0, this->valueTotalDigits, this->offset);
     
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->myFontProcessor.process(graphics);
+    auto NumberStringHud::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->myFontProcessor->process(graphics);
     
 
     std::vector<char> charArray = this->PREPEND_STRING;;
@@ -199,7 +192,7 @@ this->myFontProcessor.process(graphics);
 
     int32_t len2 = this->valueTotalDigits;;
     
-this->basicSetColorUtil.setBasicColorP(graphics, this->getBasicColorP());
+this->basicSetColorUtil->setBasicColorP(graphics, this->getBasicColorP());
     
 graphics->drawChars(charArray, 0, len, x, y, 0);
     
@@ -208,11 +201,10 @@ graphics->drawChars(charArray2, 0, len2, x -this->offset, y, 0);
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto NumberStringHud::paintThreed(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_CPP

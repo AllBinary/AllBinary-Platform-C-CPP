@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_THREADPOOL_CPP
+        #define ORG_ALLBINARY_THREAD_THREADPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ThreadPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,39 +88,8 @@
 #include "org/allbinary/thread/PooledThread.h"
 #include "org/allbinary/thread/PriorityRunnable.h"
 
-class ThreadPool
-            : public Object
-         {
 
-    private: static inline const std::string ROOT_NAME = "-PooledThread-";
-
-    public: static inline const int32_t NORMAL_PRIORITY = Thread::NORM_PRIORITY;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: NullRunnable* NULL_RUNNABLE = NullRunnable::getInstance();
-
-    protected: ThreadPoolStrings* threadPoolStrings = ThreadPoolStrings::getInstance();
-
-    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
-
-    private: std::string poolName;
-
-    private: int32_t priority;
-
-    private: bool isAlive = false;
-
-    private: BasicArrayList* taskQueue = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
-    private: int32_t threadID= 0;
-
-    private: int32_t numThreads;
-
-    protected: bool runningTask= false;
-
-public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
+ThreadPool::ThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), NULL_RUNNABLE(NullRunnable::getInstance()), threadPoolStrings(ThreadPoolStrings::getInstance()), threadObjectUtil(ThreadObjectUtil::getInstance()), taskQueue(BasicArrayListUtil::getInstance()->getImmutableInstance()){
 this->poolName= poolName;
     
 this->priority= priority;
@@ -120,7 +99,7 @@ this->numThreads= numThreads;
 }
 
 
-    public: void init(){
+    auto ThreadPool::init() -> void{
 
                         if(!this->isAlive)
                         
@@ -155,16 +134,16 @@ pooledThread->start();
 
                 //@Throws(Exception.constructor)
             
-    public: void runAPriorityTask(){
+    auto ThreadPool::runAPriorityTask() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void runTaskWithPriority(PriorityRunnable* task){
+    auto ThreadPool::runTaskWithPriority(PriorityRunnable* task) -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -247,7 +226,7 @@ this->notify();
 }
 
 
-    public: void runTask(Runnable* task){
+    auto ThreadPool::runTask(Runnable* task) -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -284,7 +263,7 @@ this->notify();
 
                 //@Throws(InterruptedException.constructor)
             
-    protected: Runnable* getTask(){
+    auto ThreadPool::getTask() -> Runnable*{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -326,7 +305,7 @@ this->wait();
 }
 
 
-    public: void clear(){
+    auto ThreadPool::clear() -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -348,7 +327,7 @@ this->wait();
 }
 
 
-    public: void close(){
+    auto ThreadPool::close() -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -372,7 +351,7 @@ this->taskQueue->clear();
 }
 
 
-    public: void join(){
+    auto ThreadPool::join() -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -391,7 +370,7 @@ this->notifyAll();
 }
 
 
-    public: bool isBusy(){
+    auto ThreadPool::isBusy() -> bool{
 
                         if(!this->isAlive)
                         
@@ -440,11 +419,11 @@ this->notifyAll();
 }
 
 
-    protected: void threadStarted(){
+    auto ThreadPool::threadStarted() -> void{
 }
 
 
-    protected: void threadStopped(){
+    auto ThreadPool::threadStopped() -> void{
 
                         if(this->numThreads == 1)
                         
@@ -459,15 +438,15 @@ this->taskQueue->clear();
 }
 
 
-    protected: void startTask(Runnable* task){
+    auto ThreadPool::startTask(Runnable* task) -> void{
 }
 
 
-    protected: void completedTask(Runnable* task){
+    auto ThreadPool::completedTask(Runnable* task) -> void{
 }
 
 
-    public: std::string createName(){
+    auto ThreadPool::createName() -> std::string{
 
 
 
@@ -477,7 +456,6 @@ this->taskQueue->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_THREADPOOL_CPP

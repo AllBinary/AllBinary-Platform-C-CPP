@@ -20,6 +20,11 @@
         #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,15 +33,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class AllBinaryEventObject;
+class EventListenerInterface;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -55,11 +54,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/rts/technology/event/TechEventListenerInterface.h"
+        class TechEventListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TechEventHandler: public BasicEventHandler {
 
-    private: static TechEventHandler* eventHandler() { static std::unique_ptr<TechEventHandler> value(new TechEventHandler()); return value.get(); }
+    private: static TechEventHandler* eventHandler_owner();
+    private: static TechEventHandler* eventHandler;
 
     public: static TechEventHandler* getInstance();
 
@@ -67,7 +71,7 @@ private: TechEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -75,3 +79,22 @@ private: TechEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include("org/allbinary/game/rts/technology/event/TechEventListenerInterface.h")
+#include "org/allbinary/game/rts/technology/event/TechEventListenerInterface.h"
+#endif
+
+        #endif
+    

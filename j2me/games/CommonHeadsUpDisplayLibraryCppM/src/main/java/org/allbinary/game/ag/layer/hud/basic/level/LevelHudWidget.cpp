@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/level/LevelHudWidget.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,11 +78,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LevelHudWidget: public BasicHud, public PaintableInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static LevelHudWidget* createHud(int32_t maxlevel, int32_t location, int32_t direction){
+    auto LevelHudWidget::createHud(int32_t maxlevel, int32_t location, int32_t direction) -> LevelHudWidget*{
 
 
 
@@ -82,21 +91,7 @@ class LevelHudWidget: public BasicHud, public PaintableInterface {
 }
 
 
-    private: int32_t level;
-
-    private: int32_t maxlevel;
-
-    private: std::vector<char> levelString;
-
-    private: std::vector<char> levelNumberCharArray = NullUtil::getInstance()->NULL_CHAR_ARRAY;
-
-    private: int32_t levelNumberTotalDigits= 0;
-
-    private: int32_t offset= 0;
-
-    private: PrimitiveLongUtil* primitiveLongUtil;
-
-public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->GREY){
+LevelHudWidget::LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance()->GREY), levelNumberCharArray(NullUtil::getInstance()->NULL_CHAR_ARRAY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -121,7 +116,7 @@ this->updateMaxHeight= 14;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto LevelHudWidget::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -129,12 +124,12 @@ this->updateMaxWidth= font->getSize() *4;
     
 this->offset= font->charsWidth(this->levelString, 0, this->levelString.size()) +font->getSize();
     
-super.updateMeasurement(graphics);
+BasicHud::updateMeasurement(graphics);
     
 }
 
 
-    private: void update(){
+    auto LevelHudWidget::update() -> void{
 this->levelNumberCharArray= this->primitiveLongUtil->getCharArray(this->level);
     
 this->levelNumberTotalDigits= this->primitiveLongUtil->getCurrentTotalDigits();
@@ -142,7 +137,7 @@ this->levelNumberTotalDigits= this->primitiveLongUtil->getCurrentTotalDigits();
 }
 
 
-    public: void setLevel(int32_t level){
+    auto LevelHudWidget::setLevel(int32_t level) -> void{
 this->level= level;
     
 this->update();
@@ -150,7 +145,7 @@ this->update();
 }
 
 
-    public: void nextLevel(){
+    auto LevelHudWidget::nextLevel() -> void{
 this->level++;
     
 this->update();
@@ -158,7 +153,7 @@ this->update();
 }
 
 
-    public: void previousLevel(){
+    auto LevelHudWidget::previousLevel() -> void{
 this->level--;
     
 
@@ -175,7 +170,7 @@ this->update();
 }
 
 
-    public: bool isComplete(){
+    auto LevelHudWidget::isComplete() -> bool{
 
                         if(this->level <= this->maxlevel)
                         
@@ -202,17 +197,16 @@ this->update();
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paintDX(graphics, this->levelString, 0, this->levelString.size(), this->levelNumberCharArray, 0, this->levelNumberTotalDigits, this->offset);
+    auto LevelHudWidget::paint(Graphics* graphics) -> void{
+BasicHud::paintDX(graphics, this->levelString, 0, this->levelString.size(), this->levelNumberCharArray, 0, this->levelNumberTotalDigits, this->offset);
     
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto LevelHudWidget::paintThreed(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_CPP

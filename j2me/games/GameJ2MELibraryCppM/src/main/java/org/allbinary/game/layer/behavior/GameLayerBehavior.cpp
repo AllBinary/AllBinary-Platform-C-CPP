@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_BEHAVIOR_GAMELAYERBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_BEHAVIOR_GAMELAYERBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/behavior/GameLayerBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameLayerBehavior
-            : public Object
-         {
 
-};
+GameLayerBehavior::GameLayerBehavior() {
+        }
+        
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_BEHAVIOR_GAMELAYERBEHAVIOR_CPP

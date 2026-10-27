@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/LineAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,21 +73,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LineAnimation: public Animation, public ColorCompositeInterface, public PositionInterface {
 
-    private: std::vector<std::vector<int32_t>> newLine = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
-
-    private: std::vector<std::vector<int32_t>> tempLine = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
-
-    private: std::vector<std::vector<int32_t>> line = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
-
-public: LineAnimation(BasicColor* basicColor){
+LineAnimation::LineAnimation(BasicColor* basicColor) : newLine(std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2))), tempLine(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY), line(std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2))){
 this->setBasicColorP(basicColor);
     
 }
 
 
-    public: void init(int32_t x, int32_t y){
+    auto LineAnimation::init(int32_t x, int32_t y) -> void{
 this->newLine[0][0]= x;
     
 this->newLine[0][1]= y;
@@ -95,7 +98,7 @@ this->newLine= this->tempLine;
 }
 
 
-    public: void setPosition(int32_t x, int32_t y, int32_t z){
+    auto LineAnimation::setPosition(int32_t x, int32_t y, int32_t z) -> void{
 this->newLine[0][0]= this->line[1][0];
     
 this->newLine[0][1]= this->line[1][1];
@@ -113,22 +116,21 @@ this->newLine= this->tempLine;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto LineAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 
     std::vector<std::vector<int32_t>> currentLine = this->line;;
     
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 graphics->drawLine(currentLine[0][0], currentLine[0][1], currentLine[1][0], currentLine[1][1]);
     
 }
 
 
-    public: void nextFrame(){
+    auto LineAnimation::nextFrame() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_CPP

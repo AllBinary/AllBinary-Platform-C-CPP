@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/InputRobotInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,55 +69,8 @@
 #include "org/allbinary/input/automation/robot/Color.h"
 #include "org/allbinary/input/automation/robot/Point.h"
 
-class InputRobotInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual HelpSet* getHelpSet() = 0;
 
-    public: virtual BufferedImage* createScreenCapture(Rectangle* screenRect) = 0;
-
-    public: virtual void delay(int32_t ms) = 0;
-
-    public: virtual int32_t getAutoDelay() = 0;
-
-    public: virtual Color* getPixelColor(int32_t x, int32_t y) = 0;
-
-    public: virtual bool isAutoWaitForIdle() = 0;
-
-    public: virtual void keyPress(int32_t keycode) = 0;
-
-    public: virtual void keyRelease(int32_t keycode) = 0;
-
-    public: virtual Point* getMousePoint() = 0;
-
-    public: virtual void mouseMove(int32_t x, int32_t y) = 0;
-
-    public: virtual void mousePress(int32_t buttons) = 0;
-
-    public: virtual void mouseRelease(int32_t buttons) = 0;
-
-    public: virtual void mouseWheel(int32_t wheelAmt) = 0;
-
-    public: virtual void setAutoDelay(int32_t ms) = 0;
-
-    public: virtual void setAutoWaitForIdle(bool isOn) = 0;
-
-    public: virtual std::string toString() = 0;
-
-    public: virtual void waitForIdle() = 0;
-
-    public: virtual void mouseMove(Point* point) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void mouseMoveToTarget(Rectangle* rectangle) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void mouseMoveToTarget(Rectangle* rectangle, int32_t x, int32_t y) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,12 +52,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+        class BasicVelocityProperties;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VelocityBehaviorBase
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: VelocityBehaviorBase();
+        
     public: void reduce(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
 
     public: void reduceX(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator);
@@ -65,3 +78,13 @@ class VelocityBehaviorBase
 
 
         #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H_COMPLETE
+        #if __has_include("org/allbinary/game/physics/velocity/BasicVelocityProperties.h")
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#endif
+
+        #endif
+    

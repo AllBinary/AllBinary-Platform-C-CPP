@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
+        class LockableFeature;
 
-class LockedUtilInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class LockedUtilInterface
+            : public virtual Object
+         {
 
     public: virtual bool isLocked() = 0;
 
@@ -59,3 +70,13 @@ class LockedUtilInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKEDUTILINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/logic/system/security/licensing/LockableFeature.h")
+#include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
+#endif
+
+        #endif
+    

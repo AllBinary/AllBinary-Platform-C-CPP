@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RemoteHighScoresData
-            : public Object
+            : public virtual Object
          {
 
-    private: static RemoteHighScoresData* SINGLETON() { static std::unique_ptr<RemoteHighScoresData> value(new RemoteHighScoresData()); return value.get(); }
+    private: static RemoteHighScoresData* SINGLETON_owner();
+    private: static RemoteHighScoresData* SINGLETON;
 
     public: static RemoteHighScoresData* getInstance();
 
+
+            
+    public: RemoteHighScoresData();
+        
     public: const std::string HIGH_SCORES = "HIGH_SCORES";
 
     public: std::string CUSTOMER_USER_NAME = "CUSTOMER_USER_NAME";
@@ -74,3 +88,10 @@ class RemoteHighScoresData
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESDATA_H_COMPLETE
+        
+        #endif
+    

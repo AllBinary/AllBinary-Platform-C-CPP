@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_USER_EDITVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_USER_EDITVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/user/EditValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/user/UserView.h"
 
-class EditValidationView: public UserView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: EditValidationView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface){
+EditValidationView::EditValidationView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,7 +91,7 @@ public: EditValidationView(TransformInfoInterface* transformInfoInterface) : Use
 }
 
 
-    public: bool isValid(){
+    auto EditValidationView::isValid() -> bool{
 
         try {
             
@@ -92,10 +99,10 @@ public: EditValidationView(TransformInfoInterface* transformInfoInterface) : Use
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Failed to validate username", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Failed to validate username", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -118,10 +125,10 @@ this->user= UserEntityFactory::getInstance()->getUser(this->getWeblisketSession(
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("User does not exist", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("User does not exist", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -136,14 +143,14 @@ this->user= UserEntityFactory::getInstance()->getUser(this->getWeblisketSession(
                                     }
                                 
 
-                        if(this->user.isValid() == Boolean::FALSE)
+                        if(this->user->isValid() == Boolean::FALSE)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("User exists but is invalid - Probably manually modified", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("User exists but is invalid - Probably manually modified", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -168,10 +175,10 @@ this->user= UserEntityFactory::getInstance()->getUser(this->getWeblisketSession(
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -187,7 +194,7 @@ this->user= UserEntityFactory::getInstance()->getUser(this->getWeblisketSession(
 }
 
 
-    public: std::string validationInfo(){
+    auto EditValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -198,7 +205,7 @@ this->user= UserEntityFactory::getInstance()->getUser(this->getWeblisketSession(
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Failed to validate username", this, "validationInfo()");
@@ -218,10 +225,10 @@ stringBuffer->append("Session User Name is not valid - Your session data has bee
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("User does not exist", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("User does not exist", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -232,19 +239,19 @@ stringBuffer->append("User profile does not exist - Your session data has been l
                                     }
                                 
 
-                        if(this->user.isValid() == Boolean::FALSE)
+                        if(this->user->isValid() == Boolean::FALSE)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("User exists but is invalid - Probably manually modified", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("User exists but is invalid - Probably manually modified", this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
-stringBuffer->append(this->user.validationInfo());
+stringBuffer->append(this->user->validationInfo());
     
 
                                     }
@@ -260,7 +267,7 @@ stringBuffer->append(this->user.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -279,7 +286,7 @@ stringBuffer->append(this->user.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -289,7 +296,7 @@ stringBuffer->append(this->user.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -299,7 +306,6 @@ stringBuffer->append(this->user.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_USER_EDITVALIDATIONVIEW_CPP

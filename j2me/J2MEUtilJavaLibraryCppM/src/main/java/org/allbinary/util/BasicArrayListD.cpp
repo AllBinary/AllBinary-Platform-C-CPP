@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLISTD_CPP
+        #define ORG_ALLBINARY_UTIL_BASICARRAYLISTD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/BasicArrayListD.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/util/BasicArrayListS.h"
 
-class BasicArrayListD: public BasicArrayListS {
 
-public: BasicArrayListD() : BasicArrayListS(7){
+BasicArrayListD::BasicArrayListD() : BasicArrayListS(7){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,7 +71,6 @@ public: BasicArrayListD() : BasicArrayListS(7){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_BASICARRAYLISTD_CPP

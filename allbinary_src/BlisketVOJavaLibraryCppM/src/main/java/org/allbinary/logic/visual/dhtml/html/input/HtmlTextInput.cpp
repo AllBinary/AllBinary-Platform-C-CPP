@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLTEXTINPUT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLTEXTINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlTextInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         #include "org/allbinary/logic/visual/dhtml/html/input/HtmlLengthInput.h"
 #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
-class HtmlTextInput: public HtmlLengthInput {
 
-public: HtmlTextInput(std::string before, std::string name, std::string value, std::string after) : HtmlLengthInput(before, HtmlInputData::getInstance()->TEXT, name, value, after){
+HtmlTextInput::HtmlTextInput(std::string before, std::string name, std::string value, std::string after) : HtmlLengthInput(before, HtmlInputData::getInstance()->TEXT, name, value, after){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +72,6 @@ setMaxLength(int32_t(60));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLTEXTINPUT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTFRAMECACHEABLE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTFRAMECACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/ImageComparisonResultFrameCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,15 +64,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
-class ImageComparisonResultFrameCacheable
-            : public Object
-        , public CacheableInterface {
 
-    private: int64_t frame;
-
-    private: ImageComparisonResult* imageComparisonResult;
-
-public: ImageComparisonResultFrameCacheable(ImageComparisonResult* imageComparisonResult, int64_t frame){
+ImageComparisonResultFrameCacheable::ImageComparisonResultFrameCacheable(ImageComparisonResult* imageComparisonResult, int64_t frame){
 this->setImageComparisonResult(imageComparisonResult);
     
 this->frame= frame;
@@ -70,7 +73,7 @@ this->frame= frame;
 }
 
 
-    public: Object* getKey(){
+    auto ImageComparisonResultFrameCacheable::getKey() -> Object*{
 
 
 
@@ -80,7 +83,7 @@ this->frame= frame;
 }
 
 
-    public: int64_t getFrame(){
+    auto ImageComparisonResultFrameCacheable::getFrame() -> int64_t{
 
 
 
@@ -90,13 +93,13 @@ this->frame= frame;
 }
 
 
-    public: void setFrame(int64_t frame){
+    auto ImageComparisonResultFrameCacheable::setFrame(int64_t frame) -> void{
 this->frame= frame;
     
 }
 
 
-    public: ImageComparisonResult* getImageComparisonResult(){
+    auto ImageComparisonResultFrameCacheable::getImageComparisonResult() -> ImageComparisonResult*{
 
 
 
@@ -106,13 +109,13 @@ this->frame= frame;
 }
 
 
-    public: void setImageComparisonResult(ImageComparisonResult* imageComparisonResult){
+    auto ImageComparisonResultFrameCacheable::setImageComparisonResult(ImageComparisonResult* imageComparisonResult) -> void{
 this->imageComparisonResult= imageComparisonResult;
     
 }
 
 
-    public: std::string toString(){
+    auto ImageComparisonResultFrameCacheable::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -131,7 +134,6 @@ stringBuffer->appendlong(this->getFrame());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULTFRAMECACHEABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
         #define ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <android/content/Intent.h>
-
-      
-#include <android/net/Uri.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Command;
+class Intent;
+class Uri;
+class ResourceUtil;
+class StdUtil;
+class LogUtil;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -74,17 +63,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommandUriAction
-            : public Object
+            : public virtual Object
          {
 
-    private: static CommandUriAction* instance() { static std::unique_ptr<CommandUriAction> value(new CommandUriAction()); return value.get(); }
+    private: static CommandUriAction* instance_owner();
+    private: static CommandUriAction* instance;
 
     public: static CommandUriAction* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+            
+    public: CommandUriAction();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: ABHashtable<Object*, Object*>* hashtable;
 
     public: void add(Command* command, std::string url);
 
@@ -98,3 +96,34 @@ class CommandUriAction
 
 
         #endif //ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H_COMPLETE)
+        #define ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<android/content/Intent.h>)
+#include <android/content/Intent.h>
+#endif
+#if __has_include(<android/net/Uri.h>)
+#include <android/net/Uri.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

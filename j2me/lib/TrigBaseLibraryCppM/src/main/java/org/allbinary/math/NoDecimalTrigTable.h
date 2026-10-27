@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_H
         #define ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,33 +40,15 @@
         
             #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/math/MathUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class PreLogUtil;
+class MathUtil;
+class StringMaker;
+class CommonLabels;
+class CommonSeps;
+class JsMethod;
+class JsConstructor;
+class JsProperty;
 
 
 
@@ -80,19 +67,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/math/AngleFactory.h"
-#include "org/allbinary/math/PositionStrings.h"
-#include "org/allbinary/math/Angle.h"
+        class AngleFactory;
+class PositionStrings;
+class Angle;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoDecimalTrigTable
-            : public Object
+            : public virtual Object
          {
 
-    private: static NoDecimalTrigTable* instance() { static std::unique_ptr<NoDecimalTrigTable> value(new NoDecimalTrigTable()); return value.get(); }
+    private: static NoDecimalTrigTable* instance_owner();
+    private: static NoDecimalTrigTable* instance;
 
     public: static NoDecimalTrigTable* getInstance();
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
+    private: MathUtil* mathUtil;
 
     private: std::vector<int64_t> noDecimalSin;
 
@@ -124,3 +116,46 @@ private: NoDecimalTrigTable();
 
 
         #endif //ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/MathUtil.h>)
+#include <org/allbinary/logic/math/MathUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include("org/allbinary/math/AngleFactory.h")
+#include "org/allbinary/math/AngleFactory.h"
+#endif
+#if __has_include("org/allbinary/math/PositionStrings.h")
+#include "org/allbinary/math/PositionStrings.h"
+#endif
+#if __has_include("org/allbinary/math/Angle.h")
+#include "org/allbinary/math/Angle.h"
+#endif
+
+        #endif
+    

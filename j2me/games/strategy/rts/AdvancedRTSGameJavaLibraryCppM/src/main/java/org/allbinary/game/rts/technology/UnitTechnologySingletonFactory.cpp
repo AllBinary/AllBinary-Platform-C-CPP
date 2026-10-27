@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/rts/technology/UnitTechnologySingletonFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,37 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UnitTechnologySingletonFactory
-            : public Object
-         {
+auto UnitTechnologySingletonFactory::instance_owner() -> UnitTechnologySingletonFactory* { static std::unique_ptr<UnitTechnologySingletonFactory> value(new UnitTechnologySingletonFactory()); return value.get(); }
+UnitTechnologySingletonFactory* UnitTechnologySingletonFactory::instance = UnitTechnologySingletonFactory::instance_owner();
 
-    private: static UnitTechnologySingletonFactory* instance() { static std::unique_ptr<UnitTechnologySingletonFactory> value(new UnitTechnologySingletonFactory()); return value.get(); }
-
-    public: static UnitTechnologySingletonFactory* getInstance(){
+    auto UnitTechnologySingletonFactory::getInstance() -> UnitTechnologySingletonFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UnitTechnologySingletonFactory::instance();
+                        return UnitTechnologySingletonFactory::instance;
     
 }
 
 
-    private: int32_t damage= 0;
-
-    private: int32_t health= 0;
-
-    private: int32_t reload= 0;
-
-    private: int32_t repair= 0;
-
-    private: int32_t speed= 0;
-
-private: UnitTechnologySingletonFactory(){
+UnitTechnologySingletonFactory::UnitTechnologySingletonFactory(){
 }
 
 
-    public: void init(){
+    auto UnitTechnologySingletonFactory::init() -> void{
 this->setDamage(0);
     
 this->setHealth(0);
@@ -89,7 +86,7 @@ this->setSpeed(0);
 }
 
 
-    public: int32_t getDamage(){
+    auto UnitTechnologySingletonFactory::getDamage() -> int32_t{
 
 
 
@@ -99,13 +96,13 @@ this->setSpeed(0);
 }
 
 
-    public: void setDamage(int32_t damage){
+    auto UnitTechnologySingletonFactory::setDamage(int32_t damage) -> void{
 this->damage= damage;
     
 }
 
 
-    public: int32_t getHealth(){
+    auto UnitTechnologySingletonFactory::getHealth() -> int32_t{
 
 
 
@@ -115,13 +112,13 @@ this->damage= damage;
 }
 
 
-    public: void setHealth(int32_t health){
+    auto UnitTechnologySingletonFactory::setHealth(int32_t health) -> void{
 this->health= health;
     
 }
 
 
-    public: int32_t getReload(){
+    auto UnitTechnologySingletonFactory::getReload() -> int32_t{
 
 
 
@@ -131,13 +128,13 @@ this->health= health;
 }
 
 
-    public: void setReload(int32_t reload){
+    auto UnitTechnologySingletonFactory::setReload(int32_t reload) -> void{
 this->reload= reload;
     
 }
 
 
-    public: int32_t getRepair(){
+    auto UnitTechnologySingletonFactory::getRepair() -> int32_t{
 
 
 
@@ -147,13 +144,13 @@ this->reload= reload;
 }
 
 
-    public: void setRepair(int32_t repair){
+    auto UnitTechnologySingletonFactory::setRepair(int32_t repair) -> void{
 this->repair= repair;
     
 }
 
 
-    public: int32_t getSpeed(){
+    auto UnitTechnologySingletonFactory::getSpeed() -> int32_t{
 
 
 
@@ -163,13 +160,12 @@ this->repair= repair;
 }
 
 
-    public: void setSpeed(int32_t speed){
+    auto UnitTechnologySingletonFactory::setSpeed(int32_t speed) -> void{
 this->speed= speed;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_CPP

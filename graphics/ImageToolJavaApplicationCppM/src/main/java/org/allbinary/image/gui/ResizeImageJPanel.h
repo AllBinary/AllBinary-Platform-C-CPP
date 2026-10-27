@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -40,35 +45,15 @@
             #include "java/lang/Thread.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
 #include <java/awt/image/Raster.h>
-
-      
 #include <java/io/File.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/FileWrapperUtil.h>
-
-      
-#include <org/allbinary/media/image/ImagePersistanceUtil.h>
-
-      
-#include <org/allbinary/media/image/ImageProcessorInput.h>
-
-      
+class LogUtil;
+class FileWrapperUtil;
+class ImagePersistanceUtil;
+class ImageProcessorInput;
 #include <org/allbinary/media/image/ImageProcessorInputCompositeInterface.h>
-
-      
-#include <org/allbinary/media/image/ImageUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ImageUtil;
+class CommonStrings;
 
 
 
@@ -89,21 +74,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/gui/JPanel.h"
 #include "org/allbinary/image/gui/DefaultComboBoxModel.h"
-#include "org/allbinary/image/gui/JLabel.h"
+class JLabel;
 #include "org/allbinary/image/gui/JComboBox.h"
-#include "org/allbinary/image/gui/JButton.h"
-#include "org/allbinary/image/gui/JTextField.h"
-#include "org/allbinary/image/gui/ActionListener.h"
-#include "org/allbinary/image/gui/ActionEvent.h"
-#include "org/allbinary/image/gui/Dimension.h"
-#include "org/allbinary/image/gui/GroupLayout.h"
-#include "org/allbinary/image/gui/Short.h"
+class JButton;
+class JTextField;
+class ActionListener;
+class ActionEvent;
+class Dimension;
+class GroupLayout;
+class Short;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ResizeImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     private: ImageProcessorInput* imageProcessorInput;
 
@@ -159,3 +148,73 @@ public: ResizeImageJPanel(ImageProcessorInput* imageProcessorInput);
 
 
         #endif //ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<java/awt/image/Raster.h>)
+#include <java/awt/image/Raster.h>
+#endif
+#if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileWrapperUtil.h>)
+#include <org/allbinary/logic/io/file/FileWrapperUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImagePersistanceUtil.h>)
+#include <org/allbinary/media/image/ImagePersistanceUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageProcessorInput.h>)
+#include <org/allbinary/media/image/ImageProcessorInput.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageProcessorInputCompositeInterface.h>)
+#include <org/allbinary/media/image/ImageProcessorInputCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageUtil.h>)
+#include <org/allbinary/media/image/ImageUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/image/gui/JPanel.h")
+#include "org/allbinary/image/gui/JPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/DefaultComboBoxModel.h")
+#include "org/allbinary/image/gui/DefaultComboBoxModel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JLabel.h")
+#include "org/allbinary/image/gui/JLabel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JComboBox.h")
+#include "org/allbinary/image/gui/JComboBox.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JButton.h")
+#include "org/allbinary/image/gui/JButton.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JTextField.h")
+#include "org/allbinary/image/gui/JTextField.h"
+#endif
+#if __has_include("org/allbinary/image/gui/ActionListener.h")
+#include "org/allbinary/image/gui/ActionListener.h"
+#endif
+#if __has_include("org/allbinary/image/gui/ActionEvent.h")
+#include "org/allbinary/image/gui/ActionEvent.h"
+#endif
+#if __has_include("org/allbinary/image/gui/Dimension.h")
+#include "org/allbinary/image/gui/Dimension.h"
+#endif
+#if __has_include("org/allbinary/image/gui/GroupLayout.h")
+#include "org/allbinary/image/gui/GroupLayout.h"
+#endif
+#if __has_include("org/allbinary/image/gui/Short.h")
+#include "org/allbinary/image/gui/Short.h"
+#endif
+
+        #endif
+    

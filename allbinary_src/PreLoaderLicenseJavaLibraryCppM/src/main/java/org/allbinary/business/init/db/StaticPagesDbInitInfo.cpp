@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_STATICPAGESDBINITINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_STATICPAGESDBINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/db/StaticPagesDbInitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbInitInfo.h"
 
-class StaticPagesDbInitInfo: public DbInitInfo {
 
-    private: static inline const std::string INITFILE = "staticpagesbinitdata.dat";
-
-public: StaticPagesDbInitInfo() : DbInitInfo(INITFILE, true){
+StaticPagesDbInitInfo::StaticPagesDbInitInfo() : DbInitInfo(INITFILE, true){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +65,7 @@ public: StaticPagesDbInitInfo() : DbInitInfo(INITFILE, true){
 }
 
 
-public: StaticPagesDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
+StaticPagesDbInitInfo::StaticPagesDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +75,6 @@ public: StaticPagesDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_STATICPAGESDBINITINFO_CPP

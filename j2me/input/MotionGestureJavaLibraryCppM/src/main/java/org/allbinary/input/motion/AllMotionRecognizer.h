@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/CustomGPoint.h>
-
-      
-#include <org/allbinary/graphics/GPointCircularPool.h>
-
-      
-#include <org/allbinary/input/motion/button/TouchButtonRecognizer.h>
-
-      
-#include <org/allbinary/input/motion/gesture/MotionGestureRecognizer.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class CustomGPoint;
+class GPointCircularPool;
+class TouchButtonRecognizer;
+class MotionGestureRecognizer;
+class LogUtil;
 
 
 
@@ -64,13 +59,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/MotionRecognizer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllMotionRecognizer: public MotionRecognizer {
 
     private: static inline int32_t index = 0;
 
-    private: static GPointCircularPool* pointCircularPool() { static std::unique_ptr<GPointCircularPool> value(new GPointCircularPool(40)); return value.get(); }
+    private: static GPointCircularPool* pointCircularPool_owner();
+    private: static GPointCircularPool* pointCircularPool;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: MotionGestureRecognizer* motionGestureRecognizer;
 
@@ -114,3 +114,28 @@ public: AllMotionRecognizer();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/CustomGPoint.h>)
+#include <org/allbinary/graphics/CustomGPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPointCircularPool.h>)
+#include <org/allbinary/graphics/GPointCircularPool.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/button/TouchButtonRecognizer.h>)
+#include <org/allbinary/input/motion/button/TouchButtonRecognizer.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/MotionGestureRecognizer.h>)
+#include <org/allbinary/input/motion/gesture/MotionGestureRecognizer.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/input/motion/MotionRecognizer.h")
+#include "org/allbinary/input/motion/MotionRecognizer.h"
+#endif
+
+        #endif
+    

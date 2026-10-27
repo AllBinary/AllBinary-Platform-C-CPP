@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/BasicColorArrayIndexer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,15 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/color/BasicColor.h"
 
-class BasicColorArrayIndexer
-            : public Object
-         {
 
-    private: std::vector<BasicColor*> basicColorArray;
-
-    private: CircularIndexUtil* circularIndexUtil;
-
-public: BasicColorArrayIndexer(std::vector<BasicColor*> basicColorArray){
+BasicColorArrayIndexer::BasicColorArrayIndexer(std::vector<BasicColor*> basicColorArray){
 this->basicColorArray= basicColorArray;
     
 this->circularIndexUtil= CircularIndexUtil::createInstance(this->basicColorArray.size());
@@ -76,13 +79,13 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->basicColorArray
 }
 
 
-    public: void next(){
+    auto BasicColorArrayIndexer::next() -> void{
 this->circularIndexUtil->next();
     
 }
 
 
-    public: BasicColor* get(){
+    auto BasicColorArrayIndexer::get() -> BasicColor*{
 
 
 
@@ -92,7 +95,7 @@ this->circularIndexUtil->next();
 }
 
 
-    public: std::vector<BasicColor*> getBasicColorArray(){
+    auto BasicColorArrayIndexer::getBasicColorArray() -> std::vector<BasicColor*>{
 
 
 
@@ -102,7 +105,6 @@ this->circularIndexUtil->next();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_CPP

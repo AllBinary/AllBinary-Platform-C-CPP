@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INIT_COMMONGAMEINITIALIZATION_CPP
+        #define ORG_ALLBINARY_GAME_INIT_COMMONGAMEINITIALIZATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/init/CommonGameInitialization.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -78,11 +88,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/init/BaseGameInitialization.h"
 
-class CommonGameInitialization: public BaseGameInitialization {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-protected: CommonGameInitialization(std::vector<ResourceInitialization*> resourceInitializationArray, int32_t portion) : BaseGameInitialization(resourceInitializationArray, portion){
+CommonGameInitialization::CommonGameInitialization(std::vector<ResourceInitialization*> resourceInitializationArray, int32_t portion) : BaseGameInitialization(resourceInitializationArray, portion), commonStrings(CommonStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,14 +101,14 @@ protected: CommonGameInitialization(std::vector<ResourceInitialization*> resourc
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level){
-super.init(abeClientInformation, commandListener, level);
+    auto CommonGameInitialization::init(AbeClientInformationInterface* abeClientInformation, CommandListener* commandListener, int32_t level) -> void{
+BaseGameInitialization::init(abeClientInformation, commandListener, level);
     
 
     ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(!this->isGameInitialized() && level == resourceLoadingLevelFactory->LOAD_ALL.getLevel())
+                        if(!this->isGameInitialized() && level == resourceLoadingLevelFactory->LOAD_ALL->getLevel())
                         
                                     {
                                     this->setGameInitialized(true);
@@ -123,28 +130,27 @@ progressCanvas->addNormalPortion(50, "Angles");
     
 this->initGame();
     
-this->resourceInitializationArray[this->GAME_RESOURCES].init();
+this->resourceInitializationArray[this->GAME_RESOURCES]->init();
     
 
                                     }
                                 
-super.resourceInitialization(level);
+BaseGameInitialization::resourceInitialization(level);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void initGame(){
+    auto CommonGameInitialization::initGame() -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INIT_COMMONGAMEINITIALIZATION_CPP

@@ -21,6 +21,11 @@
         #ifndef VIEWS_GENERIC_ADDRESS_BILLING_UPDATEVALIDATIONVIEW_H
         #define VIEWS_GENERIC_ADDRESS_BILLING_UPDATEVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/user/address/StreetAddress.h>
-
-      
+class StreetAddress;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class TransformInfoInterface;
+class Document;
+class Node;
 
 
 
@@ -64,6 +59,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/billing/BillingAddressView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UpdateValidationView: public BillingAddressView, public ValidationComponentInterface {
 
 public: UpdateValidationView(TransformInfoInterface* transformInfoInterface);
@@ -84,3 +83,28 @@ public: UpdateValidationView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_GENERIC_ADDRESS_BILLING_UPDATEVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_GENERIC_ADDRESS_BILLING_UPDATEVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_GENERIC_ADDRESS_BILLING_UPDATEVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/address/StreetAddress.h>)
+#include <org/allbinary/business/user/address/StreetAddress.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/generic/address/billing/BillingAddressView.h")
+#include "views/generic/address/billing/BillingAddressView.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/analysis/ImageColorRangeResults.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +57,14 @@
         #include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
 #include "org/allbinary/media/image/analysis/ColorRange.h"
 
-class ImageColorRangeResults
-            : public Object
-         {
 
-    private: ColorRangeInterface* colorRangeInterface;
-
-    private: int64_t matchingPixelsChecked= 0;
-
-    private: int64_t totalPixelsChecked= 0;
-
-public: ImageColorRangeResults(){
+ImageColorRangeResults::ImageColorRangeResults(){
 this->setColorRangeInterface(dynamic_cast<ColorRangeInterface*>(new ColorRange()));
     
 }
 
 
-    public: ColorRangeInterface* getColorRangeInterface(){
+    auto ImageColorRangeResults::getColorRangeInterface() -> ColorRangeInterface*{
 
 
 
@@ -73,13 +74,13 @@ this->setColorRangeInterface(dynamic_cast<ColorRangeInterface*>(new ColorRange()
 }
 
 
-    public: void setColorRangeInterface(ColorRangeInterface* colorRangeInterface){
+    auto ImageColorRangeResults::setColorRangeInterface(ColorRangeInterface* colorRangeInterface) -> void{
 this->colorRangeInterface= colorRangeInterface;
     
 }
 
 
-    public: int64_t getMatchingPixelsChecked(){
+    auto ImageColorRangeResults::getMatchingPixelsChecked() -> int64_t{
 
 
 
@@ -89,19 +90,19 @@ this->colorRangeInterface= colorRangeInterface;
 }
 
 
-    public: void setMatchingPixelsChecked(int64_t matchingPixelsChecked){
+    auto ImageColorRangeResults::setMatchingPixelsChecked(int64_t matchingPixelsChecked) -> void{
 this->matchingPixelsChecked= matchingPixelsChecked;
     
 }
 
 
-    public: void addMatchingPixelsChecked(){
+    auto ImageColorRangeResults::addMatchingPixelsChecked() -> void{
 this->matchingPixelsChecked++;
     
 }
 
 
-    public: int64_t getTotalPixelsChecked(){
+    auto ImageColorRangeResults::getTotalPixelsChecked() -> int64_t{
 
 
 
@@ -111,19 +112,19 @@ this->matchingPixelsChecked++;
 }
 
 
-    public: void addTotalPixelsChecked(){
+    auto ImageColorRangeResults::addTotalPixelsChecked() -> void{
 this->totalPixelsChecked++;
     
 }
 
 
-    public: void setTotalPixelsChecked(int64_t totalPixelsChecked){
+    auto ImageColorRangeResults::setTotalPixelsChecked(int64_t totalPixelsChecked) -> void{
 this->totalPixelsChecked= totalPixelsChecked;
     
 }
 
 
-    public: float getPercent(){
+    auto ImageColorRangeResults::getPercent() -> float{
 
 
 
@@ -133,7 +134,6 @@ this->totalPixelsChecked= totalPixelsChecked;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGECOLORRANGERESULTS_CPP

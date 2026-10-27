@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/drop/DropCellPositionHistory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,29 +70,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DropCellPositionHistory
-            : public Object
-         {
 
-    private: static DropCellPositionHistory* SINGLETON() { static std::unique_ptr<DropCellPositionHistory> value(new DropCellPositionHistory()); return value.get(); }
+DropCellPositionHistory::DropCellPositionHistory() : cellPositionFactory(CellPositionFactory::getInstance()), positionList(new BasicArrayListD()), layerList(new BasicArrayListD()) {
+        }
+        auto DropCellPositionHistory::SINGLETON_owner() -> DropCellPositionHistory* { static std::unique_ptr<DropCellPositionHistory> value(new DropCellPositionHistory()); return value.get(); }
+DropCellPositionHistory* DropCellPositionHistory::SINGLETON = DropCellPositionHistory::SINGLETON_owner();
 
-    public: static DropCellPositionHistory* getInstance(){
+    auto DropCellPositionHistory::getInstance() -> DropCellPositionHistory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropCellPositionHistory::SINGLETON();
+                        return DropCellPositionHistory::SINGLETON;
     
 }
 
 
-    private: CellPositionFactory* cellPositionFactory = CellPositionFactory::getInstance();
-
-    private: BasicArrayList* positionList = new BasicArrayListD();
-
-    private: BasicArrayList* layerList = new BasicArrayListD();
-
-    public: void add(CellPosition* cellPosition, AllBinaryLayer* layerInterface){
+    auto DropCellPositionHistory::add(CellPosition* cellPosition, AllBinaryLayer* layerInterface) -> void{
 this->positionList->add(cellPosition);
     
 this->layerList->add(layerInterface);
@@ -90,7 +94,7 @@ this->layerList->add(layerInterface);
 }
 
 
-    public: void addAll(BasicArrayList* list, AllBinaryLayer* layerInterface){
+    auto DropCellPositionHistory::addAll(BasicArrayList* list, AllBinaryLayer* layerInterface) -> void{
 
 
 
@@ -105,7 +109,7 @@ this->add(dynamic_cast<CellPosition*>(list->get(index)), layerInterface);
 }
 
 
-    public: void remove(CellPosition* cellPosition){
+    auto DropCellPositionHistory::remove(CellPosition* cellPosition) -> void{
 
     int32_t index = this->positionList->indexOf(cellPosition);;
     
@@ -123,7 +127,7 @@ this->layerList->removeAt(index);
 }
 
 
-    public: void removeAll(AllBinaryLayer* layerInterface){
+    auto DropCellPositionHistory::removeAll(AllBinaryLayer* layerInterface) -> void{
 
     int32_t index = 0;;
     
@@ -148,7 +152,7 @@ this->layerList->removeAt(index);
 }
 
 
-    public: void clear(){
+    auto DropCellPositionHistory::clear() -> void{
 this->positionList->clear();
     
 this->layerList->clear();
@@ -156,7 +160,7 @@ this->layerList->clear();
 }
 
 
-    public: bool isCellPositionWithDrop(CellPosition* cellPosition){
+    auto DropCellPositionHistory::isCellPositionWithDrop(CellPosition* cellPosition) -> bool{
 
 
 
@@ -166,7 +170,7 @@ this->layerList->clear();
 }
 
 
-    public: bool anyCellPositionWithDrop(BasicArrayList* list){
+    auto DropCellPositionHistory::anyCellPositionWithDrop(BasicArrayList* list) -> bool{
 
 
 
@@ -198,7 +202,7 @@ this->layerList->clear();
 }
 
 
-    public: CellPosition* getCellPositionWithDrop(BasicArrayList* list){
+    auto DropCellPositionHistory::getCellPositionWithDrop(BasicArrayList* list) -> CellPosition*{
 
     CellPosition* cellPosition;;
     
@@ -235,7 +239,7 @@ cellPosition= dynamic_cast<CellPosition*>(list->get(index));
 }
 
 
-    public: AllBinaryLayer* getLayerInterface(CellPosition* cellPosition){
+    auto DropCellPositionHistory::getLayerInterface(CellPosition* cellPosition) -> AllBinaryLayer*{
 
     int32_t index = this->positionList->indexOf(cellPosition);;
     
@@ -265,7 +269,6 @@ cellPosition= dynamic_cast<CellPosition*>(list->get(index));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONHISTORY_CPP

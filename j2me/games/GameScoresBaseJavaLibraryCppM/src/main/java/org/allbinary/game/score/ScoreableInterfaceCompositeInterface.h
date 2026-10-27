@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACECOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/score/Scoreable.h"
+        class Scoreable;
 
-class ScoreableInterfaceCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ScoreableInterfaceCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual Scoreable* getScoreableInterface() = 0;
 
@@ -57,3 +68,13 @@ class ScoreableInterfaceCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACECOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACECOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACECOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/score/Scoreable.h")
+#include "org/allbinary/game/score/Scoreable.h"
+#endif
+
+        #endif
+    

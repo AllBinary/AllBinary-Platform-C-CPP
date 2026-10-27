@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_AGGRESSION_H
         #define ORG_ALLBINARY_GAME_LAYER_AGGRESSION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
+class SmallIntegerSingletonFactory;
 
 
 
@@ -53,15 +56,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Aggression
-            : public Object
+            : public virtual Object
          {
 
-    private: int32_t ram = SmallIntegerSingletonFactory::getInstance()->getAt(0);
+    private: int32_t ram;
 
-    private: int32_t projectile = SmallIntegerSingletonFactory::getInstance()->getAt(0);
+    private: int32_t projectile;
 
-    private: int32_t drops = SmallIntegerSingletonFactory::getInstance()->getAt(0);
+    private: int32_t drops;
 
 public: Aggression(int32_t ram, int32_t projectile, int32_t drops);
 
@@ -83,3 +90,13 @@ public: Aggression(int32_t ram, int32_t projectile, int32_t drops);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_AGGRESSION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_AGGRESSION_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_AGGRESSION_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+
+        #endif
+    

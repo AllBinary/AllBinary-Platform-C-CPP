@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_VIEW_EDITOR_VIEWEDITORWEBSTOREADMINUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_VIEW_EDITOR_VIEWEDITORWEBSTOREADMINUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/admin/store/web/view/editor/ViewEditorWebStoreAdminUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/admin/store/web/view/editor/ViewEditorWebStoreAdminUser.h"
 
-class ViewEditorWebStoreAdminUserFactory
-            : public Object
-        , public UserFactoryInterface {
 
-public: ViewEditorWebStoreAdminUserFactory(){
+ViewEditorWebStoreAdminUserFactory::ViewEditorWebStoreAdminUserFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(){
+    auto ViewEditorWebStoreAdminUserFactory::getInstance() -> UserInterface*{
 
 
 
@@ -79,7 +86,7 @@ public: ViewEditorWebStoreAdminUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto ViewEditorWebStoreAdminUserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
 
 
@@ -89,7 +96,6 @@ public: ViewEditorWebStoreAdminUserFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_VIEW_EDITOR_VIEWEDITORWEBSTOREADMINUSERFACTORY_CPP

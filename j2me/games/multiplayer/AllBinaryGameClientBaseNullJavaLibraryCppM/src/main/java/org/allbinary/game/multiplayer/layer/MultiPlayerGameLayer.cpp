@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYER_CPP
+        #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/multiplayer/layer/MultiPlayerGameLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,9 +70,8 @@
 #include "org/allbinary/game/multiplayer/layer/RemoteInfo.h"
 #include "org/allbinary/game/multiplayer/layer/MultiplayerBehavior.h"
 
-class MultiPlayerGameLayer: public CollidableDestroyableDamageableLayer, public MultiPlayerGameLayerInterface {
 
-public: MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupInterface, std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition) : CollidableDestroyableDamageableLayer(groupInterface, name, layerInfo, viewPosition){
+MultiPlayerGameLayer::MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupInterface, std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition) : CollidableDestroyableDamageableLayer(groupInterface, name, layerInfo, viewPosition){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +81,7 @@ public: MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupIn
 }
 
 
-    public: MultiplayerBehavior* getMultiplayerBehavior(){
+    auto MultiPlayerGameLayer::getMultiplayerBehavior() -> MultiplayerBehavior*{
 
 
 
@@ -82,15 +91,15 @@ public: MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupIn
 }
 
 
-    public: void setPingInfo(bool show){
+    auto MultiPlayerGameLayer::setPingInfo(bool show) -> void{
 }
 
 
-    protected: void setFiring(int16_t firing){
+    auto MultiPlayerGameLayer::setFiring(int16_t firing) -> void{
 }
 
 
-    protected: int16_t getFiring(){
+    auto MultiPlayerGameLayer::getFiring() -> int16_t{
 
 
 
@@ -100,7 +109,6 @@ public: MultiPlayerGameLayer(RemoteInfo* remoteInfo, std::vector<Group*> groupIn
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYER_CPP

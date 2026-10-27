@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,41 +37,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/File.h>
-
-      
 #include <java/io/OutputStream.h>
-
-      
 #include <java/io/StringBufferInputStream.h>
-
-      
-#include <javax/xml/transform/Templates.h>
-
-      
-#include <javax/xml/transform/Transformer.h>
-
-      
-#include <javax/xml/transform/TransformerFactory.h>
-
-      
-#include <javax/xml/transform/URIResolver.h>
-
-      
-#include <javax/xml/transform/stream/StreamResult.h>
-
-      
-#include <javax/xml/transform/stream/StreamSource.h>
-
-      
-#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
+class Templates;
+class Transformer;
+class TransformerFactory;
+class URIResolver;
+class StreamResult;
+class StreamSource;
+class XmlDocumentHelper;
+class Document;
 
 
 
@@ -85,12 +66,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //import org.allbinary.data.tree.dom.document.DomDocumentHelper;
 class XslHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static XslHelper* instance() { static std::unique_ptr<XslHelper> value(new XslHelper()); return value.get(); }
+    private: static XslHelper* instance_owner();
+    private: static XslHelper* instance;
 
     public: static XslHelper* getInstance();
 
@@ -130,3 +116,46 @@ private: XslHelper();
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_DOM_XSLHELPER_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/io/OutputStream.h>)
+#include <java/io/OutputStream.h>
+#endif
+#if __has_include(<java/io/StringBufferInputStream.h>)
+#include <java/io/StringBufferInputStream.h>
+#endif
+#if __has_include(<javax/xml/transform/Templates.h>)
+#include <javax/xml/transform/Templates.h>
+#endif
+#if __has_include(<javax/xml/transform/Transformer.h>)
+#include <javax/xml/transform/Transformer.h>
+#endif
+#if __has_include(<javax/xml/transform/TransformerFactory.h>)
+#include <javax/xml/transform/TransformerFactory.h>
+#endif
+#if __has_include(<javax/xml/transform/URIResolver.h>)
+#include <javax/xml/transform/URIResolver.h>
+#endif
+#if __has_include(<javax/xml/transform/stream/StreamResult.h>)
+#include <javax/xml/transform/stream/StreamResult.h>
+#endif
+#if __has_include(<javax/xml/transform/stream/StreamSource.h>)
+#include <javax/xml/transform/stream/StreamSource.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+
+        #endif
+    

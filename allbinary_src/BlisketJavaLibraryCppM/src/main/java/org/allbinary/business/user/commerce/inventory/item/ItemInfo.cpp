@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/ItemInfo.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,25 +57,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ItemInfo
-            : public Object
-         {
 
-    std::vector<std::string> type;
-
-    std::vector<std::string> view;
-
-    std::vector<std::string> data;
-
-    std::vector<std::string> creationDate;
-
-    std::vector<std::string> lastModified;
-
-public: ItemInfo(){
+ItemInfo::ItemInfo(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_CPP

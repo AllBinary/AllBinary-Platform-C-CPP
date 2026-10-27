@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDSTORE_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDSTORE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/NullRecordStore.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullRecordStore: public RecordStore {
 
-    public: static NullRecordStore* NULL_RECORD_STORE() { static std::unique_ptr<NullRecordStore> value(new NullRecordStore()); return value.get(); }
+NullRecordStore::NullRecordStore() {
+        }
+        auto NullRecordStore::NULL_RECORD_STORE_owner() -> NullRecordStore* { static std::unique_ptr<NullRecordStore> value(new NullRecordStore()); return value.get(); }
+NullRecordStore* NullRecordStore::NULL_RECORD_STORE = NullRecordStore::NULL_RECORD_STORE_owner();
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDSTORE_CPP

@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABHASHTABLE_CPP
+        #define ORG_ALLBINARY_UTIL_ABHASHTABLE_CPP
+
+        #include "org/allbinary/util/ABHashtable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,10 +66,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-template<typename K, typename V>
-class ABHashtable: public Hashtable<K, V> {
 
-public: ABHashtable() : Hashtable<K, V>(){
+template<typename K, typename V>
+ABHashtable<K, V>::ABHashtable() : Hashtable<K, V>(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,123 +78,134 @@ public: ABHashtable() : Hashtable<K, V>(){
 }
 
 
-    public: int32_t size(){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::size() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.size();;
+                        return Hashtable<K, V>::size();;
     
 }
 
 
-    public: bool isEmpty(){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::isEmpty() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isEmpty();;
+                        return Hashtable<K, V>::isEmpty();;
     
 }
 
 
-    public: Enumeration<V>* elements(){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::elements() -> Enumeration<V>*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.elements();;
+                        return Hashtable<K, V>::elements();;
     
 }
 
 
-    public: bool contains(Object* value){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::contains(Object* value) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.contains(value);;
+                        return Hashtable<K, V>::contains(value);;
     
 }
 
 
-    public: bool containsValue(Object* value){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::containsValue(Object* value) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.containsValue(value);;
+                        return Hashtable<K, V>::containsValue(value);;
     
 }
 
 
-    public: bool containsKey(Object* key){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::containsKey(Object* key) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.containsKey(key);;
+                        return Hashtable<K, V>::containsKey(key);;
     
 }
 
 
-    public: V get(Object* key){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::get(Object* key) -> V{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.get(key);;
+                        return Hashtable<K, V>::get(key);;
     
 }
 
 
-    public: void clear(){
-super.clear();
+    template<typename K, typename V>
+auto ABHashtable<K, V>::clear() -> void{
+Hashtable<K, V>::clear();
     
 }
 
 
-    public: Object* clone(){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::clone() -> Object*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.clone();;
+                        return Hashtable<K, V>::clone();;
     
 }
 
 
-    public: std::string toString(){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.toString();;
+                        return Hashtable<K, V>::toString();;
     
 }
 
 
-    public: bool equals(Object* obj){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::equals(Object* obj) -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super. === obj;;
+                        return Hashtable<K, V>::->equals(obj);;
     
 }
 
 
-    public: int32_t hashCode(){
+    template<typename K, typename V>
+auto ABHashtable<K, V>::hashCode() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.hashCode();;
+                        return Hashtable<K, V>::hashCode();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_ABHASHTABLE_CPP

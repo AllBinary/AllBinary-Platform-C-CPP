@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_MULTIPARTREQUESTPARAMFORWARDTAG_CPP
+        #define ADMIN_TAGS_MULTIPARTREQUESTPARAMFORWARDTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/MultipartRequestParamForwardTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,27 +90,23 @@
         #include "admin/tags/ParentInventoryTagHelper.h"
 #include "admin/tags/AbTagData.h"
 
-class MultipartRequestParamForwardTag: public CustomTagSupport {
 
-    private: std::string page;
-
-    private: std::string command;
-
-    private: BasicArrayList* paramVector;
-
-    public: void setPage(std::string page){
+MultipartRequestParamForwardTag::MultipartRequestParamForwardTag() {
+        }
+        
+    auto MultipartRequestParamForwardTag::setPage(std::string page) -> void{
 this->page= page;
     
 }
 
 
-    public: void setCommand(std::string command){
+    auto MultipartRequestParamForwardTag::setCommand(std::string command) -> void{
 this->command= command;
     
 }
 
 
-    public: void setParamVector(BasicArrayList* paramVector){
+    auto MultipartRequestParamForwardTag::setParamVector(BasicArrayList* paramVector) -> void{
 this->paramVector= paramVector;
     
 }
@@ -108,7 +114,7 @@ this->paramVector= paramVector;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto MultipartRequestParamForwardTag::doStartTag() -> int32_t{
 
         try {
             
@@ -162,7 +168,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_MULTIPARTREQUESTPARAMFORWARDTAG_CPP

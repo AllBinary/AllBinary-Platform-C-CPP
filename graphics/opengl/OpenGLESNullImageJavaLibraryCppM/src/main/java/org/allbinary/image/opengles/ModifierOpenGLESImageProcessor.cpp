@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/ModifierOpenGLESImageProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
 
-class ModifierOpenGLESImageProcessor: public OpenGLESImageProcessor {
 
-    private: static ModifierOpenGLESImageProcessor* instanceC() { static std::unique_ptr<ModifierOpenGLESImageProcessor> value(new ModifierOpenGLESImageProcessor()); return value.get(); }
+ModifierOpenGLESImageProcessor::ModifierOpenGLESImageProcessor() {
+        }
+        auto ModifierOpenGLESImageProcessor::instanceC_owner() -> ModifierOpenGLESImageProcessor* { static std::unique_ptr<ModifierOpenGLESImageProcessor> value(new ModifierOpenGLESImageProcessor()); return value.get(); }
+ModifierOpenGLESImageProcessor* ModifierOpenGLESImageProcessor::instanceC = ModifierOpenGLESImageProcessor::instanceC_owner();
 
-    public: static ModifierOpenGLESImageProcessor* getInstance(){
+    auto ModifierOpenGLESImageProcessor::getInstance() -> ModifierOpenGLESImageProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModifierOpenGLESImageProcessor::instanceC();
+                        return ModifierOpenGLESImageProcessor::instanceC;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_CPP

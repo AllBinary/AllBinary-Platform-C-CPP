@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORYPROGRESS_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORYPROGRESS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellHistoryProgress.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,13 +60,8 @@
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellHistoryProgressBase.h"
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h"
 
-class GeographicMapCellHistoryProgress: public GeographicMapCellHistoryProgressBase {
 
-    private: std::vector<int32_t> totalVisitedArray = NullUtil::getInstance()->NULL_INT_ARRAY;
-
-    private: std::vector<GeographicMapCellHistory*> geographicMapCellHistoryArray = GeographicMapCellHistory::NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY;
-
-public: GeographicMapCellHistoryProgress(std::vector<GeographicMapCellHistory*> geographicMapCellHistoryArray){
+GeographicMapCellHistoryProgress::GeographicMapCellHistoryProgress(std::vector<GeographicMapCellHistory*> geographicMapCellHistoryArray) : totalVisitedArray(NullUtil::getInstance()->NULL_INT_ARRAY), geographicMapCellHistoryArray(GeographicMapCellHistory::NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY){
 this->geographicMapCellHistoryArray= geographicMapCellHistoryArray;
     
 this->init();
@@ -64,13 +69,13 @@ this->init();
 }
 
 
-    public: void init(){
+    auto GeographicMapCellHistoryProgress::init() -> void{
 this->totalVisitedArray= std::vector<int32_t>(this->geographicMapCellHistoryArray.length);
     
 }
 
 
-    public: bool isAnyProgress(){
+    auto GeographicMapCellHistoryProgress::isAnyProgress() -> bool{
 
     bool isProgressing = false;;
     
@@ -90,7 +95,7 @@ this->totalVisitedArray= std::vector<int32_t>(this->geographicMapCellHistoryArra
                         for (
     int32_t index = 0;index < size; index++)
         {
-totalVisited= this->geographicMapCellHistoryArray[index].getTotalVisited();
+totalVisited= this->geographicMapCellHistoryArray[index]->getTotalVisited();
     
 currentTotalVisited= this->totalVisitedArray[index];
     
@@ -116,7 +121,6 @@ this->totalVisitedArray[index]= totalVisited;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORYPROGRESS_CPP

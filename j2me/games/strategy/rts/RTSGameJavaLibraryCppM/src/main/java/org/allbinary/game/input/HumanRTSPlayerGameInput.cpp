@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_HUMANRTSPLAYERGAMEINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_HUMANRTSPLAYERGAMEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/HumanRTSPlayerGameInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -183,27 +193,8 @@
 #include "org/allbinary/game/input/LayerPositionFinderInterface.h"
 #include "org/allbinary/game/input/SelectRTSLayerVisitorFactoryInterface.h"
 
-class HumanRTSPlayerGameInput: public RTSPlayerGameInput, public BaseMotionGestureEventListener {
 
-    private: bool isDragging = false;
-
-    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
-
-    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
-
-    private: TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();
-
-    private: MotionGestureInput* PRESSED = this->touchMotionGestureFactory->PRESSED;
-
-    private: MotionGestureInput* RELEASED = this->touchMotionGestureFactory->RELEASED;
-
-    private: TouchButtonsBuilderFactory* touchButtonsBuilderFactory;
-
-    private: GameNotificationEvent* notYoursGameNotificationEvent;
-
-    private: CollidableDestroyableDamageableLayer* selectedRtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
-
-public: HumanRTSPlayerGameInput(AllBinaryGameCanvas* gameCanvas, BasicArrayList* inputList, int32_t playerInputId, RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, LayerPositionFinderInterface* layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory* touchButtonsBuilderFactory) : RTSPlayerGameInput(gameCanvas, inputList, playerInputId, towerInfoPaintable, rtsPlayerLayerInterface, layerPositionFinderInterface, selectRTSLayerVisitorFactoryInterface){
+HumanRTSPlayerGameInput::HumanRTSPlayerGameInput(AllBinaryGameCanvas* gameCanvas, BasicArrayList* inputList, int32_t playerInputId, RTSLayerInfoPaintable* towerInfoPaintable, RTSPlayerLayerInterface* rtsPlayerLayerInterface, LayerPositionFinderInterface* layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface* selectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory* touchButtonsBuilderFactory) : RTSPlayerGameInput(gameCanvas, inputList, playerInputId, towerInfoPaintable, rtsPlayerLayerInterface, layerPositionFinderInterface, selectRTSLayerVisitorFactoryInterface), gameStateFactory(GameStateFactory::getInstance()), rectangleCollisionUtil(RectangleCollisionUtil::getInstance()), touchMotionGestureFactory(TouchMotionGestureFactory::getInstance()), PRESSED(this->touchMotionGestureFactory->PRESSED), RELEASED(this->touchMotionGestureFactory->RELEASED), selectedRtsLayer(CollidableDestroyableDamageableLayer::getNullInstance()), startPoint(PointFactory::getInstance()->ZERO_ZERO), endPoint(PointFactory::getInstance()->ZERO_ZERO), SPACE(CommonSeps::getInstance()->SPACE), multiSelectPaintable(new MultiSelectPaintable()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -224,7 +215,7 @@ BasicMotionGesturesHandler::getInstance()->addListenerInterface(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
+    auto HumanRTSPlayerGameInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
     
@@ -238,7 +229,7 @@ this->notYoursGameNotificationEvent->setBasicColorP(geographicMapInterface->getF
 
                 //@Throws(Exception.constructor)
             
-    private: bool processDraggingMotionInput(AllBinaryLayerManager* layerManager){
+    auto HumanRTSPlayerGameInput::processDraggingMotionInput(AllBinaryLayerManager* layerManager) -> bool{
 
     MotionGestureEvent* motionGestureEvent = dynamic_cast<MotionGestureEvent*>(this->getMotionGestureInputList()->get(this->getMotionGestureInputList()->size() -1));;
     
@@ -331,21 +322,7 @@ rtsFormInput->setSelectedStickyItemIndex( -1);
 }
 
 
-    private: GPoint* startPoint = PointFactory::getInstance()->ZERO_ZERO;
-
-    private: GPoint* endPoint = PointFactory::getInstance()->ZERO_ZERO;
-
-    const std::string POSSIBLE = "Possible: ";
-
-    const std::string AT = "At: ";
-
-    const std::string METHOD = "makeSelection";
-
-    const std::string ADDING = "Adding: ";
-
-    const std::string SPACE = CommonSeps::getInstance()->SPACE;
-
-    private: void makeSelection(){
+    auto HumanRTSPlayerGameInput::makeSelection() -> void{
 
     BasicArrayList* rtsLayerList = this->getRtsPlayerLayerInterface()->getPlayerOwnedRTSLayers()->rtsLayerList;;
     
@@ -416,7 +393,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD);
         {
 rtsLayer= dynamic_cast<RTSLayer*>(rtsLayerList->get(index));
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 
     ViewPositionBase* viewPosition = rtsLayer->getViewPosition();;
@@ -483,7 +460,7 @@ this->updatePaintable();
 
                 //@Throws(Exception.constructor)
             
-    private: void processSelectionBoxMotionInput(AllBinaryLayerManager* layerManager){
+    auto HumanRTSPlayerGameInput::processSelectionBoxMotionInput(AllBinaryLayerManager* layerManager) -> void{
 
 
 
@@ -539,7 +516,7 @@ this->endPoint= PointFactory::getInstance()->ZERO_ZERO;
 
                 //@Throws(Exception.constructor)
             
-    public: void processMotionInput(AllBinaryLayerManager* layerManager){
+    auto HumanRTSPlayerGameInput::processMotionInput(AllBinaryLayerManager* layerManager) -> void{
 
                         if(this->getMotionGestureInputList()->size() > 0)
                         
@@ -573,20 +550,20 @@ this->getMotionGestureInputList()->clear();
 }
 
 
-    public: void setSelectedRtsFormInput(RTSFormInput* selectedRtsFormInput){
+    auto HumanRTSPlayerGameInput::setSelectedRtsFormInput(RTSFormInput* selectedRtsFormInput) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START)->append(StringUtil::getInstance()->toString(selectedRtsFormInput))->toString(), this, "setSelectedRtsFormInput");
     
-super.setSelectedRtsFormInput(selectedRtsFormInput);
+RTSPlayerGameInput::setSelectedRtsFormInput(selectedRtsFormInput);
     
 this->setSelectedRtsLayer(CollidableDestroyableDamageableLayer::getNullInstance());
     
 }
 
 
-    private: void updateFormForLayer(RTSLayer* rtsLayer){
+    auto HumanRTSPlayerGameInput::updateFormForLayer(RTSLayer* rtsLayer) -> void{
 
     ScrollSelectionForm* scrollSelectionForm = rtsLayer->getScrollSelectionForm();;
     
@@ -616,7 +593,7 @@ this->getSelectedBuildingPlayerGameInput()->setSelectedRTSLayer(CollidableDestro
 }
 
 
-    private: void updateForm(ScrollSelectionForm* scrollSelectionForm, RTSFormInput* rtfFormInput){
+    auto HumanRTSPlayerGameInput::updateForm(ScrollSelectionForm* scrollSelectionForm, RTSFormInput* rtfFormInput) -> void{
 this->getRtsPlayerLayerInterface()->setCurrentScrollSelectionForm(scrollSelectionForm);
     
 this->setSelectedRtsFormInput(rtfFormInput);
@@ -626,7 +603,7 @@ this->setSelectedRtsFormInput(rtfFormInput);
 
                 //@Throws(Exception.constructor)
             
-    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer* rtSLayer, GeographicMapCellPosition* geographicMapCellPosition){
+    auto HumanRTSPlayerGameInput::setSelectedRTSLayer(CollidableDestroyableDamageableLayer* rtSLayer, GeographicMapCellPosition* geographicMapCellPosition) -> void{
 
                         if(rtSLayer != CollidableDestroyableDamageableLayer::getNullInstance() && this->getRtsPlayerLayerInterface()->getGroupInterface()[0] != rtSLayer->getGroupInterface()[0])
                         
@@ -755,9 +732,7 @@ this->updatePaintable();
 }
 
 
-    private: MultiSelectPaintable* multiSelectPaintable = new MultiSelectPaintable();
-
-    public: void updatePaintable(){
+    auto HumanRTSPlayerGameInput::updatePaintable() -> void{
 
     BasicArrayList* list = this->getSelectedBuildingPlayerGameInput()->getSelectedBasicArrayList();;
     
@@ -801,14 +776,14 @@ this->getRTSLayerInfoPaintable()->updateRTSLayerInfoSelection(rtsLayer->createHu
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paint(graphics);
+    auto HumanRTSPlayerGameInput::paint(Graphics* graphics) -> void{
+RTSPlayerGameInput::paint(graphics);
     
 
                         if(this->startPoint != PointFactory::getInstance()->ZERO_ZERO && this->endPoint != PointFactory::getInstance()->ZERO_ZERO)
                         
                                     {
-                                    graphics->setColor(BasicColorFactory::getInstance()->RED.intValue());
+                                    graphics->setColor(BasicColorFactory::getInstance()->RED->intValue());
     
 
     int32_t rectX1 = this->startPoint->getX();;
@@ -852,17 +827,17 @@ graphics->drawRect(rectX1, rectY1, rectX2 -rectX1, rectY2 -rectY1);
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+    auto HumanRTSPlayerGameInput::onMotionGestureEvent(MotionGestureEvent* motionGestureEvent) -> void{
 this->getMotionGestureInputList()->add(motionGestureEvent);
     
 }
 
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+    auto HumanRTSPlayerGameInput::onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent) -> void{
 }
 
 
-    private: CollidableDestroyableDamageableLayer* getSelectedRtsLayer(){
+    auto HumanRTSPlayerGameInput::getSelectedRtsLayer() -> CollidableDestroyableDamageableLayer*{
 
 
 
@@ -872,13 +847,12 @@ this->getMotionGestureInputList()->add(motionGestureEvent);
 }
 
 
-    private: void setSelectedRtsLayer(CollidableDestroyableDamageableLayer* selectedRtsLayer){
+    auto HumanRTSPlayerGameInput::setSelectedRtsLayer(CollidableDestroyableDamageableLayer* selectedRtsLayer) -> void{
 this->selectedRtsLayer= selectedRtsLayer;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_HUMANRTSPLAYERGAMEINPUT_CPP

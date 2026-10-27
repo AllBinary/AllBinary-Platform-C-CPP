@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/PlatformInputMappingFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,27 +67,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/NormalJ2MEGameInputMapping.h"
 
-class PlatformInputMappingFactory
-            : public Object
-         {
 
-    private: static PlatformInputMappingFactory* instance() { static std::unique_ptr<PlatformInputMappingFactory> value(new PlatformInputMappingFactory()); return value.get(); }
+PlatformInputMappingFactory::PlatformInputMappingFactory() : logUtil(LogUtil::getInstance()), inputToGameKeyMapping(PersistentInputMapping::getNullInstance()) {
+        }
+        auto PlatformInputMappingFactory::instance_owner() -> PlatformInputMappingFactory* { static std::unique_ptr<PlatformInputMappingFactory> value(new PlatformInputMappingFactory()); return value.get(); }
+PlatformInputMappingFactory* PlatformInputMappingFactory::instance = PlatformInputMappingFactory::instance_owner();
 
-    public: static PlatformInputMappingFactory* getInstance(){
+    auto PlatformInputMappingFactory::getInstance() -> PlatformInputMappingFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformInputMappingFactory::instance();
+                        return PlatformInputMappingFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: PersistentInputMapping* inputToGameKeyMapping = PersistentInputMapping::getNullInstance();
-
-    public: PersistentInputMapping* getPersistentInputMappingInstance(){
+    auto PlatformInputMappingFactory::getPersistentInputMappingInstance() -> PersistentInputMapping*{
 
         try {
             
@@ -109,7 +115,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALPHABASEPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALPHABASEPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/media/image/ImageModifierUtil.h>
-
-      
+class Image;
+class ImageModifierUtil;
 
 
 
@@ -54,14 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AlphaBaseProcessor
-            : public Object
+            : public virtual Object
          {
 
-    private: static AlphaBaseProcessor* instance() { static std::unique_ptr<AlphaBaseProcessor> value(new AlphaBaseProcessor()); return value.get(); }
+    private: static AlphaBaseProcessor* instance_owner();
+    private: static AlphaBaseProcessor* instance;
 
     public: static AlphaBaseProcessor* getInstance();
 
+
+            
+    public: AlphaBaseProcessor();
+        
     public: void setAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t alpha);
 
 };
@@ -70,3 +80,16 @@ class AlphaBaseProcessor
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALPHABASEPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ALPHABASEPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALPHABASEPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageModifierUtil.h>)
+#include <org/allbinary/media/image/ImageModifierUtil.h>
+#endif
+
+        #endif
+    

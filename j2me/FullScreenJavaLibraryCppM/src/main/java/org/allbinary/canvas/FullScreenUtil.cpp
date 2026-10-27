@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_FULLSCREENUTIL_CPP
+        #define ORG_ALLBINARY_CANVAS_FULLSCREENUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/FullScreenUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,25 +70,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/RunnableCanvas.h"
 
-class FullScreenUtil
-            : public Object
-         {
 
-    private: static FullScreenUtil* instance() { static std::unique_ptr<FullScreenUtil> value(new FullScreenUtil()); return value.get(); }
+FullScreenUtil::FullScreenUtil() {
+        }
+        auto FullScreenUtil::instance_owner() -> FullScreenUtil* { static std::unique_ptr<FullScreenUtil> value(new FullScreenUtil()); return value.get(); }
+FullScreenUtil* FullScreenUtil::instance = FullScreenUtil::instance_owner();
 
-    public: static FullScreenUtil* getInstance(){
+    auto FullScreenUtil::getInstance() -> FullScreenUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FullScreenUtil::instance();
+                        return FullScreenUtil::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void initOnRun(Canvas* fullScreenInterface, CommandListener* commandListener){
+    auto FullScreenUtil::initOnRun(Canvas* fullScreenInterface, CommandListener* commandListener) -> void{
 fullScreenInterface = dynamic_cast<RunnableCanvas*>(fullScreenInterfacefullScreenInterface)
 fullScreenInterface.
                     waitOnNotify(0);
@@ -97,7 +107,7 @@ fullScreenInterface.
 }
 
 
-    public: void init(Canvas* fullScreenInterface){
+    auto FullScreenUtil::init(Canvas* fullScreenInterface) -> void{
 
     MainFeatureFactory* mainFeatureFactory = MainFeatureFactory::getInstance();;
     
@@ -122,7 +132,7 @@ fullScreenInterface.
 }
 
 
-    public: bool isScreenChange(bool isFullScreen){
+    auto FullScreenUtil::isScreenChange(bool isFullScreen) -> bool{
 
     MainFeatureFactory* mainFeatureFactory = MainFeatureFactory::getInstance();;
     
@@ -151,7 +161,7 @@ fullScreenInterface.
 }
 
 
-    public: bool isScreenChangeCanvas(Canvas* fullScreenInterface){
+    auto FullScreenUtil::isScreenChangeCanvas(Canvas* fullScreenInterface) -> bool{
 
 
 
@@ -161,7 +171,6 @@ fullScreenInterface.
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_FULLSCREENUTIL_CPP

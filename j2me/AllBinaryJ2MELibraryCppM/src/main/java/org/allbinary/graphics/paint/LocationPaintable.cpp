@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/LocationPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,27 +59,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/LocationPaintableInterface.h"
 
-class LocationPaintable
-            : public Object
-        , public LocationPaintableInterface {
 
-    private: static LocationPaintable* instance() { static std::unique_ptr<LocationPaintable> value(new LocationPaintable()); return value.get(); }
+LocationPaintable::LocationPaintable() {
+        }
+        auto LocationPaintable::instance_owner() -> LocationPaintable* { static std::unique_ptr<LocationPaintable> value(new LocationPaintable()); return value.get(); }
+LocationPaintable* LocationPaintable::instance = LocationPaintable::instance_owner();
 
-    public: static LocationPaintable* getInstance(){
+    auto LocationPaintable::getInstance() -> LocationPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LocationPaintable::instance();
+                        return LocationPaintable::instance;
     
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto LocationPaintable::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,9 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/score/HighScores.h"
+        class HighScores;
 
-class HighScoresResultsListener {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class HighScoresResultsListener
+            : public virtual Object
+         {
 
     public: virtual void setHighScoresArray(std::vector<HighScores*> highScoresArrayP) = 0;
 
@@ -59,3 +70,13 @@ class HighScoresResultsListener {
 
 
         #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_H_COMPLETE
+        #if __has_include("org/allbinary/game/score/HighScores.h")
+#include "org/allbinary/game/score/HighScores.h"
+#endif
+
+        #endif
+    

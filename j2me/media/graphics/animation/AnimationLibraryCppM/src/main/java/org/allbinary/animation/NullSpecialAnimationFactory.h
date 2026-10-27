@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/special/SpecialAnimation.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class SpecialAnimation;
+class ScaleProperties;
 
 
 
@@ -57,13 +58,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
-#include "org/allbinary/animation/Animation.h"
+class Animation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullSpecialAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: static NullSpecialAnimationFactory* NULL_SPECIAL_ANIMATION_FACTORY() { static std::unique_ptr<NullSpecialAnimationFactory> value(new NullSpecialAnimationFactory()); return value.get(); }
+    private: static NullSpecialAnimationFactory* NULL_SPECIAL_ANIMATION_FACTORY_owner();
+    private: static NullSpecialAnimationFactory* NULL_SPECIAL_ANIMATION_FACTORY;
 
     public: static NullSpecialAnimationFactory* getFactoryInstance();
 
@@ -85,3 +91,25 @@ private: NullSpecialAnimationFactory();
 
 
         #endif //ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/special/SpecialAnimation.h>)
+#include <org/allbinary/animation/special/SpecialAnimation.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_USER_DELETEVALIDATIONUSERVIEW_CPP
+        #define VIEWS_ADMIN_USER_DELETEVALIDATIONUSERVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/user/DeleteValidationUserView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,13 +89,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/user/UserView.h"
 
-class DeleteValidationUserView: public UserView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string userName;
-
-public: DeleteValidationUserView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface){
+DeleteValidationUserView::DeleteValidationUserView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,10 +106,10 @@ public: DeleteValidationUserView(TransformInfoInterface* transformInfoInterface)
 this->userName= (new UserName(hashMap))->get();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("User Name: " +this->userName, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("User Name: ") +JavaString::valueOf(this->userName), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -112,7 +117,7 @@ this->userName= (new UserName(hashMap))->get();
 }
 
 
-    public: bool isValid(){
+    auto DeleteValidationUserView::isValid() -> bool{
 
         try {
             
@@ -160,10 +165,10 @@ this->userName= (new UserName(hashMap))->get();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -179,7 +184,7 @@ this->userName= (new UserName(hashMap))->get();
 }
 
 
-    public: std::string validationInfo(){
+    auto DeleteValidationUserView::validationInfo() -> std::string{
 
         try {
             
@@ -217,7 +222,7 @@ this->userName= (new UserName(hashMap))->get();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -236,7 +241,7 @@ this->userName= (new UserName(hashMap))->get();
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto DeleteValidationUserView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -246,7 +251,7 @@ this->userName= (new UserName(hashMap))->get();
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto DeleteValidationUserView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -256,7 +261,6 @@ this->userName= (new UserName(hashMap))->get();
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_USER_DELETEVALIDATIONUSERVIEW_CPP

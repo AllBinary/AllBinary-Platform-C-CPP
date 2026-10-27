@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_NULLPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_NULLPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/NullPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,25 +54,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/Paintable.h"
 
-class NullPaintable: public Paintable {
+auto NullPaintable::SINGLETON_owner() -> NullPaintable* { static std::unique_ptr<NullPaintable> value(new NullPaintable()); return value.get(); }
+NullPaintable* NullPaintable::SINGLETON = NullPaintable::SINGLETON_owner();
 
-    private: static NullPaintable* SINGLETON() { static std::unique_ptr<NullPaintable> value(new NullPaintable()); return value.get(); }
+NullPaintable::NullPaintable(){
+}
 
-    public: static Paintable* getInstance(){
+
+    auto NullPaintable::getInstance() -> Paintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullPaintable::SINGLETON();
+                        return NullPaintable::SINGLETON;
     
 }
 
 
-private: NullPaintable(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_NULLPAINTABLE_CPP

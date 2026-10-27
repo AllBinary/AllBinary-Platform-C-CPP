@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_SMALLINSERT_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_SMALLINSERT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/SmallInsert.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,19 +74,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SmallInsert
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string fileName;
-
-    private: std::string string;
-
-public: SmallInsert(std::string fileName){
+SmallInsert::SmallInsert(std::string fileName) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->fileName= fileName;
     
 this->string= AbFileSystem::getInstance()->readAsString(fileName);
@@ -84,7 +83,7 @@ this->string= AbFileSystem::getInstance()->readAsString(fileName);
 }
 
 
-    public: bool atBeginning(std::string text){
+    auto SmallInsert::atBeginning(std::string text) -> bool{
 
         try {
             
@@ -93,7 +92,7 @@ this->string= AbFileSystem::getInstance()->readAsString(fileName);
 
     DataOutputStream* idOutData = new DataOutputStream(idFile);;
     
-idOutData->writeBytes(text +this->string);
+idOutData->writeBytes(JavaString::valueOf(text) +JavaString::valueOf(this->string));
     
 
 
@@ -106,7 +105,7 @@ idOutData->writeBytes(text +this->string);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "insertAtBeginning", &e);
@@ -125,7 +124,7 @@ idOutData->writeBytes(text +this->string);
 }
 
 
-    public: bool after(std::string text, std::string after){
+    auto SmallInsert::after(std::string text, std::string after) -> bool{
 
         try {
             
@@ -135,7 +134,7 @@ idOutData->writeBytes(text +this->string);
                         if(index < 0)
                         
                                     {
-                                    System.out.println("No such start: " +after +" in: " +this->string);
+                                    System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("No such start: ") +JavaString::valueOf(after)) +JavaString::valueOf(" in: ")) +JavaString::valueOf(this->string));
     
 
 
@@ -160,7 +159,7 @@ index= index +after.size();
 
     DataOutputStream* idOutData = new DataOutputStream(idFile);;
     
-idOutData->writeBytes(start +text +end);
+idOutData->writeBytes(JavaString::valueOf(JavaString::valueOf(start) +JavaString::valueOf(text)) +JavaString::valueOf(end));
     
 idOutData->close();
     
@@ -177,7 +176,7 @@ idFile->close();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "after", &e);
@@ -196,7 +195,7 @@ idFile->close();
 }
 
 
-    public: bool atEnd(std::string text){
+    auto SmallInsert::atEnd(std::string text) -> bool{
 
         try {
             
@@ -205,7 +204,7 @@ idFile->close();
 
     DataOutputStream* idOutData = new DataOutputStream(idFile);;
     
-idOutData->writeBytes(this->string +text);
+idOutData->writeBytes(JavaString::valueOf(this->string) +JavaString::valueOf(text));
     
 
 
@@ -218,7 +217,7 @@ idOutData->writeBytes(this->string +text);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "insertAtEnd", &e);
@@ -237,7 +236,6 @@ idOutData->writeBytes(this->string +text);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_SMALLINSERT_CPP

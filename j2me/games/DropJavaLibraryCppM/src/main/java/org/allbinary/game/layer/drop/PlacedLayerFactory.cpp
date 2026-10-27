@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_PLACEDLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_DROP_PLACEDLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/drop/PlacedLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,35 +53,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PlacedLayerFactory
-            : public Object
-         {
+auto PlacedLayerFactory::instance_owner() -> PlacedLayerFactory* { static std::unique_ptr<PlacedLayerFactory> value(new PlacedLayerFactory()); return value.get(); }
+PlacedLayerFactory* PlacedLayerFactory::instance = PlacedLayerFactory::instance_owner();
 
-    private: static PlacedLayerFactory* instance() { static std::unique_ptr<PlacedLayerFactory> value(new PlacedLayerFactory()); return value.get(); }
-
-    public: static PlacedLayerFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlacedLayerFactory::instance();
-    
+PlacedLayerFactory::PlacedLayerFactory() : list(new BasicArrayListD()), basicArrayListUtil(BasicArrayListUtil::getInstance()){
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: PlacedLayerFactory(){
-}
-
-
-    public: void clear(){
+    auto PlacedLayerFactory::clear() -> void{
 this->list->clear();
     
 }
 
 
-    public: int32_t getSize(){
+    auto PlacedLayerFactory::getInstance() -> PlacedLayerFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return PlacedLayerFactory::instance;
+    
+}
+
+
+    auto PlacedLayerFactory::getSize() -> int32_t{
 
 
 
@@ -81,9 +86,7 @@ this->list->clear();
 }
 
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    public: AllBinaryLayerFactoryInterface* getRandomInstance(){
+    auto PlacedLayerFactory::getRandomInstance() -> AllBinaryLayerFactoryInterface*{
 
 
 
@@ -93,13 +96,12 @@ this->list->clear();
 }
 
 
-    public: void add(AllBinaryLayerFactoryInterface* layerInterfaceFactoryInterface){
+    auto PlacedLayerFactory::add(AllBinaryLayerFactoryInterface* layerInterfaceFactoryInterface) -> void{
 this->list->add(layerInterfaceFactoryInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_DROP_PLACEDLAYERFACTORY_CPP

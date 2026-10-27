@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_LAPWIDGET_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_LAPWIDGET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/hud/basic/LapWidget.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,15 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LapWidget: public BasicHud {
 
-    private: const std::string LAP_STR = "Lap ";
-
-    private: const std::string OF_STR = " of ";
-
-    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
-
-public: LapWidget(int32_t location, int32_t direction, BasicColor* basicColor) : BasicHud(location, direction, 2, basicColor){
+LapWidget::LapWidget(int32_t location, int32_t direction, BasicColor* basicColor) : BasicHud(location, direction, 2, basicColor), string(StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,11 +88,11 @@ this->updateMaxWidth= 40;
 }
 
 
-    public: void update(LapInfo* lapInfo){
+    auto LapWidget::update(LapInfo* lapInfo) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->LAP_STR);
     
@@ -104,13 +107,12 @@ this->string= stringBuffer->toString();
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paintString(graphics, this->string);
+    auto LapWidget::paint(Graphics* graphics) -> void{
+BasicHud::paintString(graphics, this->string);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_LAPWIDGET_CPP

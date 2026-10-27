@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
+        class OpenGLObject3dProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullOpenGLTextureProcessor
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLObject3dProcessor* instance() { static std::unique_ptr<OpenGLObject3dProcessor> value(new OpenGLObject3dProcessor()); return value.get(); }
+    private: static OpenGLObject3dProcessor* instance_owner();
+    private: static OpenGLObject3dProcessor* instance;
 
     public: static OpenGLObject3dProcessor* getInstance();
 
+
+            
+    public: NullOpenGLTextureProcessor();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h")
+#include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
+#endif
+
+        #endif
+    

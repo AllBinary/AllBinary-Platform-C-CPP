@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_RUNNABLECANVASSINGLETHREADSTARTRUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_RUNNABLECANVASSINGLETHREADSTARTRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/RunnableCanvasSingleThreadStartRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,19 +65,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 
-class RunnableCanvasSingleThreadStartRunnable: public GameRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: RunnableCanvas* runnableCanvas;
-
-public: RunnableCanvasSingleThreadStartRunnable(RunnableCanvas* demoCanvas){
+RunnableCanvasSingleThreadStartRunnable::RunnableCanvasSingleThreadStartRunnable(RunnableCanvas* demoCanvas) : logUtil(LogUtil::getInstance()){
 this->runnableCanvas= demoCanvas;
     
 }
 
 
-    public: void run(){
+    auto RunnableCanvasSingleThreadStartRunnable::run() -> void{
 
         try {
             this->runnableCanvas->run();
@@ -88,13 +93,12 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void processLoopSleep(){
+    auto RunnableCanvasSingleThreadStartRunnable::processLoopSleep() -> void{
 this->runnableCanvas->processLoopSleep();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_RUNNABLECANVASSINGLETHREADSTARTRUNNABLE_CPP

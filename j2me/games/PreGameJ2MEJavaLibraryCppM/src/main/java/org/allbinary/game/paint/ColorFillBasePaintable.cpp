@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_COLORFILLBASEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_COLORFILLBASEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/ColorFillBasePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,19 +68,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorFillBasePaintable: public Paintable, public ColorCompositeInterface {
 
-    protected: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-    protected: int32_t colorP= 0;
-
-public: ColorFillBasePaintable(BasicColor* basicColor){
+ColorFillBasePaintable::ColorFillBasePaintable(BasicColor* basicColor) : basicColor(BasicColorFactory::getInstance()->WHITE){
 this->setBasicColorP(basicColor);
     
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto ColorFillBasePaintable::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 this->setColor(this->getBasicColorP()->intValue());
@@ -78,7 +83,7 @@ this->setColor(this->getBasicColorP()->intValue());
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto ColorFillBasePaintable::getBasicColorP() -> BasicColor*{
 
 
 
@@ -88,7 +93,7 @@ this->setColor(this->getBasicColorP()->intValue());
 }
 
 
-    protected: int32_t getColor(){
+    auto ColorFillBasePaintable::getColor() -> int32_t{
 
 
 
@@ -98,17 +103,16 @@ this->setColor(this->getBasicColorP()->intValue());
 }
 
 
-    protected: void setColor(int32_t color){
+    auto ColorFillBasePaintable::setColor(int32_t color) -> void{
 this->colorP= color;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto ColorFillBasePaintable::paint(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_COLORFILLBASEPAINTABLE_CPP

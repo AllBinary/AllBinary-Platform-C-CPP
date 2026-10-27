@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGS_PAYMENTPROCESSTAG_H
         #define ADMIN_TAGS_PAYMENTPROCESSTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,26 +39,12 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <admin/taghelpers/PaymentProcessHelperFactory.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class JspTagException;
+class PaymentProcessHelperFactory;
+class AbResponseHandler;
+class LogUtil;
+class LicensingException;
 #include <tags/StoreValidationTransformTag.h>
-
-      
 
 
 
@@ -73,9 +64,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentProcessTag: public StoreValidationTransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: PaymentProcessTag();
 
@@ -93,3 +88,31 @@ public: PaymentProcessTag();
 
 
         #endif //ADMIN_TAGS_PAYMENTPROCESSTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGS_PAYMENTPROCESSTAG_H_COMPLETE)
+        #define ADMIN_TAGS_PAYMENTPROCESSTAG_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<admin/taghelpers/PaymentProcessHelperFactory.h>)
+#include <admin/taghelpers/PaymentProcessHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<tags/StoreValidationTransformTag.h>)
+#include <tags/StoreValidationTransformTag.h>
+#endif
+
+        #endif
+    

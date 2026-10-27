@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMEDIFFICULTYOPTIONS_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEDIFFICULTYOPTIONS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameDifficultyOptions.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,20 +95,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameDifficultyOptions: public CommandForm {
 
-    private: MEUtil* meUtil = MEUtil::getInstance();
-
-    private: BasicArrayList* list;
-
-public: GameDifficultyOptions(CommandListener* commandListener, std::string title, BasicArrayList* list, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+GameDifficultyOptions::GameDifficultyOptions(CommandListener* commandListener, std::string title, BasicArrayList* list, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor), meUtil(MEUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->list= list;
     
@@ -114,14 +119,14 @@ this->setSelectedId(gameDifficultyFactory->getLevel());
 }
 
 
-    public: void open(){
-super.open();
+    auto GameDifficultyOptions::open() -> void{
+CommandForm::open();
     
 }
 
 
-    public: void close(){
-super.close();
+    auto GameDifficultyOptions::close() -> void{
+CommandForm::close();
     
 this->save();
     
@@ -130,7 +135,7 @@ this->save();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(){
+    auto GameDifficultyOptions::save() -> void{
 
     GameDifficultyFactory* gameDifficultyFactory = GameDifficultyFactory::getInstance();;
     
@@ -139,7 +144,7 @@ gameDifficultyFactory->setLevel(this->getSelectedId());
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto GameDifficultyOptions::initCommands(CommandListener* cmdListener) -> void{
 
     GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
@@ -154,17 +159,17 @@ this->setCommandListener(cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(){
+    auto GameDifficultyOptions::update() -> void{
 this->deleteAll();
     
 this->add(this->list, "Difficulty", Choice::EXCLUSIVE);
     
-super.update();
+CommandForm::update();
     
 }
 
 
-    private: void add(BasicArrayList* list, std::string name, int32_t option){
+    auto GameDifficultyOptions::add(BasicArrayList* list, std::string name, int32_t option) -> void{
 
     ChoiceGroup* choiceGroup = this->getChoiceGroup(list, name, option);;
     
@@ -182,7 +187,7 @@ this->meUtil->appendItem(this, choiceGroup);
 }
 
 
-    private: ChoiceGroup* getChoiceGroup(BasicArrayList* list, std::string name, int32_t option){
+    auto GameDifficultyOptions::getChoiceGroup(BasicArrayList* list, std::string name, int32_t option) -> ChoiceGroup*{
 
     std::string METHOD_NAME = "addChoiceGroup";;
     
@@ -207,7 +212,7 @@ this->meUtil->appendItem(this, choiceGroup);
         {
 anyType= list->objectArray[index];
     
-this->logUtil.putF((new StringMaker())->append(NAME)->append(anyType->toString())->toString(), this, METHOD_NAME);
+this->logUtil->putF((new StringMaker())->append(NAME)->append(anyType->toString())->toString(), this, METHOD_NAME);
     
 choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
     
@@ -222,7 +227,7 @@ choiceGroup->append(anyType->toString(), NullImage::NULL_IMAGE);
 }
 
 
-    public: void setSelectedId(int32_t id){
+    auto GameDifficultyOptions::setSelectedId(int32_t id) -> void{
 
     ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
@@ -231,7 +236,7 @@ choiceGroup->setSelectedIndex(id, true);
 }
 
 
-    public: int32_t getSelectedId(){
+    auto GameDifficultyOptions::getSelectedId() -> int32_t{
 
     ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
@@ -244,7 +249,7 @@ choiceGroup->setSelectedIndex(id, true);
 }
 
 
-    public: int32_t getSelectedText(){
+    auto GameDifficultyOptions::getSelectedText() -> int32_t{
 
     ChoiceGroup* choiceGroup = dynamic_cast<ChoiceGroup*>(this->get(0));;
     
@@ -260,7 +265,6 @@ choiceGroup->setSelectedIndex(id, true);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMEDIFFICULTYOPTIONS_CPP

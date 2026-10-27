@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageActionScriptOutputData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "IMAGE_ACTION_OUTPUT_NAME";
-
-    public: static inline std::string SAVE = "SAVE_IMAGE_ACTION_OUTPUT_NAME";
-
-    public: static inline std::string DISPLAY = "DISPLAY_IMAGE_ACTION_OUTPUT_NAME";
-
-    public: static inline std::string TYPE = "TYPE_IMAGE_ACTION_OUTPUT_NAME";
-
-    public: static inline std::string TYPES = "TYPES_IMAGE_ACTION_OUTPUT_NAME";
-
-private: ImageActionScriptOutputData(){
+ImageActionScriptOutputData::ImageActionScriptOutputData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTDATA_CPP

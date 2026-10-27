@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_CPP
+        #define ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/AppUrlGlobals.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/globals/UrlGlobalsInterface.h"
 //implements
-class AppUrlGlobals: public UrlGlobalsInterface {
 
-    public: static AppUrlGlobals* NULL_APP_URL_GLOBALS() { static std::unique_ptr<AppUrlGlobals> value(new AppUrlGlobals()); return value.get(); }
+AppUrlGlobals::AppUrlGlobals() : path(StringUtil::getInstance()->EMPTY_STRING) {
+        }
+        auto AppUrlGlobals::NULL_APP_URL_GLOBALS_owner() -> AppUrlGlobals* { static std::unique_ptr<AppUrlGlobals> value(new AppUrlGlobals()); return value.get(); }
+AppUrlGlobals* AppUrlGlobals::NULL_APP_URL_GLOBALS = AppUrlGlobals::NULL_APP_URL_GLOBALS_owner();
 
-    private: std::string path = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: bool isTestingMode(){
+    auto AppUrlGlobals::isTestingMode() -> bool{
 
 
 
@@ -65,7 +75,7 @@ class AppUrlGlobals: public UrlGlobalsInterface {
 }
 
 
-    public: std::string getWebappPath(){
+    auto AppUrlGlobals::getWebappPath() -> std::string{
 
 
 
@@ -76,14 +86,14 @@ class AppUrlGlobals: public UrlGlobalsInterface {
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setWebappPath(std::string path){
+    auto AppUrlGlobals::setWebappPath(std::string path) -> void{
 this->path= path;
     
 
                         if(!(this->path.endsWith("\\") || this->path.endsWith("/")))
                         
                                     {
-                                    this->path= this->path +"\\";
+                                    this->path= JavaString::valueOf(this->path) +JavaString::valueOf("\\");
     
 
                                     }
@@ -91,7 +101,7 @@ this->path= path;
 }
 
 
-    public: std::string getTestHtmlPath(){
+    auto AppUrlGlobals::getTestHtmlPath() -> std::string{
 
 
 
@@ -103,7 +113,7 @@ this->path= path;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getMainPath(){
+    auto AppUrlGlobals::getMainPath() -> std::string{
 
 
 
@@ -113,7 +123,6 @@ this->path= path;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_APPURLGLOBALS_CPP

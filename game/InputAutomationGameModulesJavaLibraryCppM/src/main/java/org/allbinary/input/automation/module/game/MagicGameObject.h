@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,14 +39,8 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -63,6 +62,10 @@
         #include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
 #include "org/allbinary/input/automation/module/game/MagicGameObjectInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MagicGameObject: public MeteredGameObject, public MagicGameObjectInterface {
 
     private: const std::string MP_LABEL = "MP:";
@@ -77,3 +80,25 @@ public: MagicGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX,
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/MeteredGameObject.h")
+#include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/MagicGameObjectInterface.h")
+#include "org/allbinary/input/automation/module/game/MagicGameObjectInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLSHADERCOMPOSITE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLSHADERCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/NullShaderComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,9 +72,7 @@
 #include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
 #include "org/allbinary/graphics/opengles/shader/ModelViewProjection.h"
 
-class NullShaderComposite: public ShaderComposite {
-
-    private: static inline NullShaderComposite* instance = class extends NullShaderComposite
+NullShaderComposite* NullShaderComposite::instance = class extends NullShaderComposite
                                 {
                                 
     public: void init(GL10* gl){
@@ -73,17 +81,17 @@ class NullShaderComposite: public ShaderComposite {
                                 }
                             ;
 
-    public: static ShaderComposite* getInstance(){
+    auto NullShaderComposite::getInstance() -> ShaderComposite*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullShaderComposite::instance();
+                        return NullShaderComposite::instance;
     
 }
 
 
-public: NullShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader*> shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor, OpenGLProcessor* disableProgramShaderOpenGLProcessor) : ShaderComposite(requiresOpenGLVersion, shaderArray, compositeShaderUpdater, shaderInitializer, modelViewProjection, colorOpenGLProcessor, vertexOpenGLProcessor, disableProgramShaderOpenGLProcessor){
+NullShaderComposite::NullShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader*> shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor, OpenGLProcessor* disableProgramShaderOpenGLProcessor) : ShaderComposite(requiresOpenGLVersion, shaderArray, compositeShaderUpdater, shaderInitializer, modelViewProjection, colorOpenGLProcessor, vertexOpenGLProcessor, disableProgramShaderOpenGLProcessor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -95,7 +103,6 @@ this->useProgramShaderOpenGLProcessor= NullOpenGLProcessorFactory::getInstance()
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLSHADERCOMPOSITE_CPP

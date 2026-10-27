@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/CacheTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -35,31 +45,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/CacheType.h"
 
-class CacheTypeFactory
-            : public Object
-         {
 
-    private: static CacheTypeFactory* instance() { static std::unique_ptr<CacheTypeFactory> value(new CacheTypeFactory()); return value.get(); }
+CacheTypeFactory::CacheTypeFactory() : NO_CACHE(new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING)), CACHE(new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING)), SET(new CacheType(StringUtil::getInstance()->EMPTY_STRING, "Set")), CACHE_VECTOR(new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING)) {
+        }
+        auto CacheTypeFactory::instance_owner() -> CacheTypeFactory* { static std::unique_ptr<CacheTypeFactory> value(new CacheTypeFactory()); return value.get(); }
+CacheTypeFactory* CacheTypeFactory::instance = CacheTypeFactory::instance_owner();
 
-    public: static CacheTypeFactory* getInstance(){
+    auto CacheTypeFactory::getInstance() -> CacheTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CacheTypeFactory::instance();
+                        return CacheTypeFactory::instance;
     
 }
 
 
-    public: CacheType* NO_CACHE = new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING);
 
-    public: CacheType* CACHE = new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING);
 
-    public: CacheType* SET = new CacheType(StringUtil::getInstance()->EMPTY_STRING, "Set");
-
-    public: CacheType* CACHE_VECTOR = new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING);
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPEFACTORY_CPP

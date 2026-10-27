@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/visitor/BooleanFileVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,23 +70,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BooleanFileVisitor
-            : public Object
-        , public VisitorInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* filterStringBasicArrayList;
-
-public: BooleanFileVisitor(BasicArrayList* filterStringBasicArrayList){
+BooleanFileVisitor::BooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : commonStrings(CommonStrings::getInstance()){
 this->setFilterStringBasicArrayList(filterStringBasicArrayList);
     
-PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList()->toString(), this, this->commonStrings->CONSTRUCTOR);
+PreLogUtil::put(JavaString::valueOf("Filter BasicArrayList: ") +JavaString::valueOf(this->getFilterStringBasicArrayList()->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto BooleanFileVisitor::visit(Object* anyType) -> Object*{
 
 
 
@@ -86,7 +89,7 @@ PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList()
 }
 
 
-    public: bool visit(AbFile* file){
+    auto BooleanFileVisitor::visit(AbFile* file) -> bool{
 
     BasicArrayList* list = this->getFilterStringBasicArrayList();;
     
@@ -129,7 +132,7 @@ nextFileFilterString= list->get(index);
 }
 
 
-    public: BasicArrayList* getFilterStringBasicArrayList(){
+    auto BooleanFileVisitor::getFilterStringBasicArrayList() -> BasicArrayList*{
 
 
 
@@ -139,13 +142,13 @@ nextFileFilterString= list->get(index);
 }
 
 
-    public: void setFilterStringBasicArrayList(BasicArrayList* filterStringBasicArrayList){
+    auto BooleanFileVisitor::setFilterStringBasicArrayList(BasicArrayList* filterStringBasicArrayList) -> void{
 this->filterStringBasicArrayList= filterStringBasicArrayList;
     
 }
 
 
-    public: bool visit(AbFile* file, std::string fileNameString){
+    auto BooleanFileVisitor::visit(AbFile* file, std::string fileNameString) -> bool{
 
 
 
@@ -155,7 +158,6 @@ this->filterStringBasicArrayList= filterStringBasicArrayList;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_BOOLEANFILEVISITOR_CPP

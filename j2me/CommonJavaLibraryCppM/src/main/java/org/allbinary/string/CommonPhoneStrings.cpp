@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_STRING_COMMONPHONESTRINGS_CPP
+        #define ORG_ALLBINARY_STRING_COMMONPHONESTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/string/CommonPhoneStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,57 +58,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CommonPhoneStrings
-            : public Object
-         {
 
-    private: static CommonPhoneStrings* instance() { static std::unique_ptr<CommonPhoneStrings> value(new CommonPhoneStrings()); return value.get(); }
+CommonPhoneStrings::CommonPhoneStrings() {
+        }
+        auto CommonPhoneStrings::instance_owner() -> CommonPhoneStrings* { static std::unique_ptr<CommonPhoneStrings> value(new CommonPhoneStrings()); return value.get(); }
+CommonPhoneStrings* CommonPhoneStrings::instance = CommonPhoneStrings::instance_owner();
 
-    public: static CommonPhoneStrings* getInstance(){
+    auto CommonPhoneStrings::getInstance() -> CommonPhoneStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonPhoneStrings::instance();
+                        return CommonPhoneStrings::instance;
     
 }
 
 
-    public: const std::string UP = "UP";
 
-    public: const std::string DOWN = "DOWN";
 
-    public: const std::string LEFT = "LEFT";
-
-    public: const std::string RIGHT = "RIGHT";
-
-    public: const std::string ZERO = "0";
-
-    public: const std::string ONE = "1";
-
-    public: const std::string TWO = "2";
-
-    public: const std::string THREE = "3";
-
-    public: const std::string FOUR = "4";
-
-    public: const std::string FIVE = "5";
-
-    public: const std::string SIX = "6";
-
-    public: const std::string SEVEN = "7";
-
-    public: const std::string EIGHT = "8";
-
-    public: const std::string NINE = "9";
-
-    public: const std::string POUND = "#";
-
-    public: const std::string STAR = "*";
-
-    public: const std::string FIRE = "FIRE";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_STRING_COMMONPHONESTRINGS_CPP

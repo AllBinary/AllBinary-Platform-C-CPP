@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,26 +84,21 @@
 #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h"
 #include "org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h"
 
-class PaymentGatewayInterfaceFactory
-            : public Object
-        , public PaymentGatewayInterfaceFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: PaymentGatewayInterfaceFactory(){
+PaymentGatewayInterfaceFactory::PaymentGatewayInterfaceFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterface* getInstance(HttpServletRequest* httpServletRequest){
+    auto PaymentGatewayInterfaceFactory::getInstance(HttpServletRequest* httpServletRequest) -> PaymentGatewayInterface*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF("Getting", this, commonStrings->GET_INSTANCE);
@@ -112,7 +117,7 @@ public: PaymentGatewayInterfaceFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENTERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "getInstance(HttpServletRequest)", &e);
@@ -132,11 +137,11 @@ public: PaymentGatewayInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterface* getInstance(BasicPaymentType* paymentType){
+    auto PaymentGatewayInterfaceFactory::getInstance(BasicPaymentType* paymentType) -> PaymentGatewayInterface*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(PaymentGatewayData::NAME.toString(), paymentType->getName());
+hashMap->put(PaymentGatewayData::NAME->toString(), paymentType->getName());
     
 
 
@@ -149,23 +154,23 @@ hashMap->put(PaymentGatewayData::NAME.toString(), paymentType->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto PaymentGatewayInterfaceFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> PaymentGatewayInterface*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    std::string gatewayName = hashMap->get(PaymentGatewayData::NAME.toString());;
+    std::string gatewayName = hashMap->get(PaymentGatewayData::NAME->toString());;
     
 
     BasicPaymentType* paymentType = BasicPaymentTypeUtil::getInstance()->get(gatewayName);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
-                                    this->logUtil->putF("Getting PaymentGatewayInterface for PaymentType: " +paymentType->getName() +" with: " +hashMap, this, commonStrings->GET_INSTANCE);
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Getting PaymentGatewayInterface for PaymentType: ") +JavaString::valueOf(paymentType->getName())) +JavaString::valueOf(" with: ")) +JavaString::valueOf(hashMap), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -184,7 +189,7 @@ hashMap->put(PaymentGatewayData::NAME.toString(), paymentType->getName());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENTERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -202,7 +207,6 @@ hashMap->put(PaymentGatewayData::NAME.toString(), paymentType->getName());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACEFACTORY_CPP

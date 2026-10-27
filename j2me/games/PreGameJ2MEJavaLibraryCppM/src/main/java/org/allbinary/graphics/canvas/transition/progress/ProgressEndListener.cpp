@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSENDLISTENER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSENDLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressEndListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ProgressEndListener
-            : public Object
-         {
 
-    public: static ProgressEndListener* instance() { static std::unique_ptr<ProgressEndListener> value(new ProgressEndListener()); return value.get(); }
+ProgressEndListener::ProgressEndListener() {
+        }
+        auto ProgressEndListener::instance_owner() -> ProgressEndListener* { static std::unique_ptr<ProgressEndListener> value(new ProgressEndListener()); return value.get(); }
+ProgressEndListener* ProgressEndListener::instance = ProgressEndListener::instance_owner();
 
-    public: void onEndEvent(){
+    auto ProgressEndListener::onEndEvent() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSENDLISTENER_CPP

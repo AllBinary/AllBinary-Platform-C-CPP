@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/system/security/AbKeys.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class AbKeys;
+class AbeClientInformationInterface;
+class LicensingException;
 
 
 
@@ -55,8 +54,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/loader/NativeLibraryHelperWrapper.h"
-#include "org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h"
+class SecuredNativeLibraryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SecuredNativeLibraryHelperWrapper: public NativeLibraryHelperWrapper {
 
     private: SecuredNativeLibraryInterface* securedNativeLibraryInterface;
@@ -73,3 +76,25 @@ public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface* secured
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/system/security/AbKeys.h>)
+#include <org/allbinary/logic/system/security/AbKeys.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include("org/allbinary/logic/system/loader/NativeLibraryHelperWrapper.h")
+#include "org/allbinary/logic/system/loader/NativeLibraryHelperWrapper.h"
+#endif
+#if __has_include("org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h")
+#include "org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h"
+#endif
+
+        #endif
+    

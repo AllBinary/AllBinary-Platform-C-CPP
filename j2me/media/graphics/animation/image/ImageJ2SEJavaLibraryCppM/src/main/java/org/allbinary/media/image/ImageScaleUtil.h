@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,20 +39,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/awt/Graphics2D.h>
-
-      
 #include <java/awt/geom/AffineTransform.h>
-
-      
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
+class Image;
+class ImageCache;
 
 
 
@@ -66,23 +61,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageUtil.h"
-#include "org/allbinary/media/image/ImageJ2SEUtil.h"
-#include "org/allbinary/media/image/ImageCreationUtil.h"
+        class ImageUtil;
+class ImageJ2SEUtil;
+class ImageCreationUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageScaleUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+    private: static ImageScaleUtil* instance_owner();
+    private: static ImageScaleUtil* instance;
 
     public: static ImageScaleUtil* getInstance();
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil;
 
-    private: ImageJ2SEUtil* imageJ2SEUtil = ImageJ2SEUtil::getInstance();
+    private: ImageJ2SEUtil* imageJ2SEUtil;
 
-    private: ImageCreationUtil* imageCreationUtil = ImageCreationUtil::getInstance();
+    private: ImageCreationUtil* imageCreationUtil;
 
 private: ImageScaleUtil();
 
@@ -106,3 +106,34 @@ private: ImageScaleUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE
+        #if __has_include(<java/awt/Graphics2D.h>)
+#include <java/awt/Graphics2D.h>
+#endif
+#if __has_include(<java/awt/geom/AffineTransform.h>)
+#include <java/awt/geom/AffineTransform.h>
+#endif
+#if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageUtil.h")
+#include "org/allbinary/media/image/ImageUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageJ2SEUtil.h")
+#include "org/allbinary/media/image/ImageJ2SEUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageCreationUtil.h")
+#include "org/allbinary/media/image/ImageCreationUtil.h"
+#endif
+
+        #endif
+    

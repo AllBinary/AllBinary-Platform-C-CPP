@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GD_RESOURCE_GDRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_GD_RESOURCE_GDRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/gd/resource/GDResources.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,30 +57,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GDResources
-            : public Object
-         {
 
-    private: static GDResources* instance() { static std::unique_ptr<GDResources> value(new GDResources()); return value.get(); }
+GDResources::GDResources() : resourceStringArray(
+                                                        {
+                                                            
+                                                        }) {
+        }
+        auto GDResources::instance_owner() -> GDResources* { static std::unique_ptr<GDResources> value(new GDResources()); return value.get(); }
+GDResources* GDResources::instance = GDResources::instance_owner();
 
-    public: static GDResources* getInstance(){
+    auto GDResources::getInstance() -> GDResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GDResources::instance();
+                        return GDResources::instance;
     
 }
 
 
-    public: const std::vector<std::string> resourceStringArray = 
-                                                        {
-                                                            
-                                                        };
 
-    public: int32_t currentLayoutRequiredTotal= 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_GD_RESOURCE_GDRESOURCES_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/FilePathData.h>
-
-      
-#include <org/allbinary/logic/io/path/AbFilePath.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
+class LogUtil;
+class FilePathData;
+class AbFilePath;
+class AbPath;
+class AbPathData;
+class StringUtil;
+class StringValidationUtil;
 
 
 
@@ -70,22 +61,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //Used to correct user input for paths
 class AbPathUtilOld
-            : public Object
+            : public virtual Object
          {
 
-    private: static AbPathUtilOld* instance() { static std::unique_ptr<AbPathUtilOld> value(new AbPathUtilOld()); return value.get(); }
+    private: static AbPathUtilOld* instance_owner();
+    private: static AbPathUtilOld* instance;
 
     public: static AbPathUtilOld* getInstance();
 
     private: static inline const int32_t MIN = 4;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: AbPathData* abPathData = AbPathData::getInstance();
+    private: AbPathData* abPathData;
 
-    private: FilePathData* filePathData = FilePathData::getInstance();
+    private: FilePathData* filePathData;
 
 private: AbPathUtilOld();
 
@@ -139,3 +135,31 @@ private: AbPathUtilOld();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_PATH_ABPATHUTILOLD_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FilePathData.h>)
+#include <org/allbinary/logic/io/file/FilePathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbFilePath.h>)
+#include <org/allbinary/logic/io/path/AbFilePath.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+
+        #endif
+    

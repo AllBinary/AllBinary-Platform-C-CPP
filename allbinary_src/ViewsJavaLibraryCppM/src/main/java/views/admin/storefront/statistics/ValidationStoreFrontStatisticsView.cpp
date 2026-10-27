@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_STOREFRONT_STATISTICS_VALIDATIONSTOREFRONTSTATISTICSVIEW_CPP
+        #define VIEWS_ADMIN_STOREFRONT_STATISTICS_VALIDATIONSTOREFRONTSTATISTICSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/storefront/statistics/ValidationStoreFrontStatisticsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,13 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/storefront/statistics/StoreFrontStatisticsComponent.h"
 //extends StoreFrontComponent
-class ValidationStoreFrontStatisticsView: public StoreFrontStatisticsComponent, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: StoreFrontInterface* newStoreFrontInterface;
-
-public: ValidationStoreFrontStatisticsView(TransformInfoInterface* transformInfoInterface) : StoreFrontStatisticsComponent(transformInfoInterface){
+ValidationStoreFrontStatisticsView::ValidationStoreFrontStatisticsView(TransformInfoInterface* transformInfoInterface) : StoreFrontStatisticsComponent(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,7 +88,7 @@ public: ValidationStoreFrontStatisticsView(TransformInfoInterface* transformInfo
 }
 
 
-    public: bool isValid(){
+    auto ValidationStoreFrontStatisticsView::isValid() -> bool{
 
         try {
             
@@ -100,10 +105,10 @@ public: ValidationStoreFrontStatisticsView(TransformInfoInterface* transformInfo
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -119,7 +124,7 @@ public: ValidationStoreFrontStatisticsView(TransformInfoInterface* transformInfo
 }
 
 
-    public: std::string validationInfo(){
+    auto ValidationStoreFrontStatisticsView::validationInfo() -> std::string{
 
         try {
             
@@ -138,7 +143,7 @@ stringBuffer->append("Never");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -157,7 +162,7 @@ stringBuffer->append("Never");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto ValidationStoreFrontStatisticsView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -167,7 +172,7 @@ stringBuffer->append("Never");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto ValidationStoreFrontStatisticsView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -177,7 +182,6 @@ stringBuffer->append("Never");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_STOREFRONT_STATISTICS_VALIDATIONSTOREFRONTSTATISTICSVIEW_CPP

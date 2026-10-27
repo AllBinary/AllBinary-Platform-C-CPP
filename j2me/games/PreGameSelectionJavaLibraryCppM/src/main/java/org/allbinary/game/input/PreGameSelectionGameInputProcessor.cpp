@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_PREGAMESELECTIONGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_PREGAMESELECTIONGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/PreGameSelectionGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -105,23 +115,8 @@
 #include "org/allbinary/game/input/PlayerGameInput.h"
 #include "org/allbinary/game/input/GameInputProcessorComposite.h"
 
-class PreGameSelectionGameInputProcessor: public Processor, public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AllBinaryGameCanvas* gameCanvas;
-
-    private: PreGameSelectorPaintable* preGameSelectorPaintable;
-
-    private: TimeDelayHelper* inputTimeHelper = new TimeDelayHelper(650);
-
-    private: GameState* nextGameState;
-
-    private: PlayerGameInput* playerGameInput;
-
-    private: int32_t lockedIndex;
-
-    private: ABRunnable* abRunnable = class extends ABRunnable
+PreGameSelectionGameInputProcessor::PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex) : logUtil(LogUtil::getInstance()), inputTimeHelper(new TimeDelayHelper(650)), abRunnable(class extends ABRunnable
                                 {
                                 
     public: void run(){
@@ -156,9 +151,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
                                 }
-                            ;
-
-public: PreGameSelectionGameInputProcessor(AllBinaryGameCanvas* gameCanvas, PreGameSelectorPaintable* preGameSelectorPaintable, GameState* nextGameState, int32_t lockedIndex){
+                            ){
 this->gameCanvas= gameCanvas;
     
 this->preGameSelectorPaintable= preGameSelectorPaintable;
@@ -174,7 +167,7 @@ this->lockedIndex= lockedIndex;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto PreGameSelectionGameInputProcessor::process() -> void{
 this->getPlayerGameInput()->update();
     
 }
@@ -182,7 +175,7 @@ this->getPlayerGameInput()->update();
 
                 //@Throws(Exception.constructor)
             
-    public: void onInput(BasicArrayList* list){
+    auto PreGameSelectionGameInputProcessor::onInput(BasicArrayList* list) -> void{
 
     int32_t size = list->size();;
     
@@ -264,7 +257,7 @@ list->clear();
 }
 
 
-    public: PreGameSelectorPaintable* getPreGameSelectorPaintable(){
+    auto PreGameSelectionGameInputProcessor::getPreGameSelectorPaintable() -> PreGameSelectorPaintable*{
 
 
 
@@ -276,15 +269,15 @@ list->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager* layerManager){
+    auto PreGameSelectionGameInputProcessor::processInput(AllBinaryLayerManager* layerManager) -> void{
 }
 
 
-    public: void initInputProcessors(){
+    auto PreGameSelectionGameInputProcessor::initInputProcessors() -> void{
 }
 
 
-    public: std::string getName(){
+    auto PreGameSelectionGameInputProcessor::getName() -> std::string{
 
 
 
@@ -294,7 +287,7 @@ list->clear();
 }
 
 
-    public: PlayerGameInput* getPlayerGameInput(){
+    auto PreGameSelectionGameInputProcessor::getPlayerGameInput() -> PlayerGameInput*{
 
 
 
@@ -304,7 +297,6 @@ list->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_PREGAMESELECTIONGAMEINPUTPROCESSOR_CPP

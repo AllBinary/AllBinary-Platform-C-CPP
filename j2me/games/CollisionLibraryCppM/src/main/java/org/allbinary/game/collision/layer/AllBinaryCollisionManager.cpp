@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/layer/AllBinaryCollisionManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,29 +69,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryCollisionManager
-            : public Object
-         {
+auto AllBinaryCollisionManager::allBinaryCollisionManager_owner() -> AllBinaryCollisionManager* { static std::unique_ptr<AllBinaryCollisionManager> value(new AllBinaryCollisionManager()); return value.get(); }
+AllBinaryCollisionManager* AllBinaryCollisionManager::allBinaryCollisionManager = AllBinaryCollisionManager::allBinaryCollisionManager_owner();
 
-    private: static AllBinaryCollisionManager* allBinaryCollisionManager() { static std::unique_ptr<AllBinaryCollisionManager> value(new AllBinaryCollisionManager()); return value.get(); }
+AllBinaryCollisionManager::AllBinaryCollisionManager(){
+}
 
-    public: static AllBinaryCollisionManager* getInstance(){
+
+    auto AllBinaryCollisionManager::getInstance() -> AllBinaryCollisionManager*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryCollisionManager::allBinaryCollisionManager();
+                        return AllBinaryCollisionManager::allBinaryCollisionManager;
     
-}
-
-
-private: AllBinaryCollisionManager(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(LayerManager* layerManager, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface, int32_t startIndex){
+    auto AllBinaryCollisionManager::process(LayerManager* layerManager, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface, int32_t startIndex) -> void{
 
     int32_t size = layerManager->getSize();;
     
@@ -104,7 +111,7 @@ this->collide(layerManager, collidableInterfaceCompositeInterface, collidableInt
 
                 //@Throws(Exception.constructor)
             
-    private: void collide(LayerManager* layerManager, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface2){
+    auto AllBinaryCollisionManager::collide(LayerManager* layerManager, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface2) -> void{
 
     CollidableBaseBehavior* collidableBase2 = collidableInterfaceCompositeInterface2->getCollidableInferface();;
     
@@ -132,7 +139,6 @@ collidableBase2->collideInterface(dynamic_cast<CollidableCompositeLayer*>(collid
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_CPP

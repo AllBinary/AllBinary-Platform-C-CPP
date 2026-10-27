@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/hardware/android/AndroidHardware.h>
-
-      
-#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/OperatingSystems.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class TsUtil;
+class LogUtil;
+class AndroidHardware;
+class GenericOperatingSystem;
+class OperatingSystems;
+class CommonStrings;
 
 
 
@@ -67,20 +60,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/hardware/NoHardware.h"
-#include "org/allbinary/logic/system/hardware/HardwareInterface.h"
+        class NoHardware;
+class HardwareInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HardwareFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static HardwareFactory* instance() { static std::unique_ptr<HardwareFactory> value(new HardwareFactory()); return value.get(); }
+    private: static HardwareFactory* instance_owner();
+    private: static HardwareFactory* instance;
 
     public: static HardwareFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
 private: HardwareFactory();
 
@@ -94,3 +92,34 @@ private: HardwareFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/android/AndroidHardware.h>)
+#include <org/allbinary/logic/system/hardware/android/AndroidHardware.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/OperatingSystems.h>)
+#include <org/allbinary/logic/system/os/OperatingSystems.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/NoHardware.h")
+#include "org/allbinary/logic/system/hardware/NoHardware.h"
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/HardwareInterface.h")
+#include "org/allbinary/logic/system/hardware/HardwareInterface.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,99 +53,104 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicViewData
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicViewData* instance() { static std::unique_ptr<BasicViewData> value(new BasicViewData()); return value.get(); }
+    private: static BasicViewData* instance_owner();
+    private: static BasicViewData* instance;
 
     public: static BasicViewData* getInstance();
 
 private: BasicViewData();
 
-    const std::string GENERICDIR = "generic/";
+    public: const std::string GENERICDIR = "generic/";
 
-    const std::string USERDIR = this->GENERICDIR +"user/";
+    public: const std::string USERDIR;
 
-    const std::string ADDRESSDIR = this->USERDIR +"address/";
+    public: const std::string ADDRESSDIR;
 
-    const std::string BILLINGADDRESSDIR = this->ADDRESSDIR +"billing/";
+    public: const std::string BILLINGADDRESSDIR;
 
-    const std::string SHIPPINGADDRESSDIR = this->ADDRESSDIR +"shipping/";
+    public: const std::string SHIPPINGADDRESSDIR;
 
-    const std::string COMMERCEDIR = this->USERDIR +"commerce/";
+    public: const std::string COMMERCEDIR;
 
-    const std::string INVENTORYDIR = this->COMMERCEDIR +"inventory/";
+    public: const std::string INVENTORYDIR;
 
-    const std::string BASKETDIR = this->INVENTORYDIR +"basket/";
+    public: const std::string BASKETDIR;
 
-    const std::string ITEMDIR = this->INVENTORYDIR +"item/";
+    public: const std::string ITEMDIR;
 
-    const std::string MONEYDIR = this->COMMERCEDIR +"money/";
+    public: const std::string MONEYDIR;
 
-    const std::string SHIPPINGDIR = this->COMMERCEDIR +"shipping/";
+    public: const std::string SHIPPINGDIR;
 
-    const std::string ORDERDIR = this->INVENTORYDIR +"order/";
+    public: const std::string ORDERDIR;
 
-    const std::string ORDEREMAILDIR = this->ORDERDIR +"email/";
+    public: const std::string ORDEREMAILDIR;
 
-    const std::string ORDERHISTORYDIR = this->ORDERDIR +"history/";
+    public: const std::string ORDERHISTORYDIR;
 
-    const std::string ORDERREVIEWDIR = this->ORDERDIR +"review/";
+    public: const std::string ORDERREVIEWDIR;
 
-    public: const std::string PAYMENTDIR = this->MONEYDIR +"payment/";
+    public: const std::string PAYMENTDIR;
 
-    const std::string GENERATIONDIR = this->GENERICDIR +"generation/";
+    public: const std::string GENERATIONDIR;
 
-    const std::string PRODUCTSDIR = this->GENERICDIR +"products/";
+    public: const std::string PRODUCTSDIR;
 
-    public: const std::string IGNOREXMLXSL = this->GENERICDIR +"ignoreXmlView.xsl";
+    public: const std::string IGNOREXMLXSL;
 
-    public: const std::string REVIEWORDERVIEWXSL = this->ORDERREVIEWDIR +"reviewOrderView.xsl";
+    public: const std::string REVIEWORDERVIEWXSL;
 
-    public: const std::string ORDERVIEWXSL = this->REVIEWORDERVIEWXSL;
+    public: const std::string ORDERVIEWXSL;
 
-    public: const std::string INVENTORYXSL = this->INVENTORYDIR +"inventory.xsl";
+    public: const std::string INVENTORYXSL;
 
-    public: const std::string BASKETXSL = this->BASKETDIR +"basket.xsl";
+    public: const std::string BASKETXSL;
 
-    public: const std::string CHECKOUTBASKETXSL = this->BASKETDIR +"staticBasket.xsl";
+    public: const std::string CHECKOUTBASKETXSL;
 
-    public: const std::string MINIBASKETXSL = this->BASKETDIR +"miniBasket.xsl";
+    public: const std::string MINIBASKETXSL;
 
-    public: const std::string BILLINGADDRESSCHANGEFORMXSL = this->BILLINGADDRESSDIR +"billingAddressChangeForm.xsl";
+    public: const std::string BILLINGADDRESSCHANGEFORMXSL;
 
-    public: const std::string BILLINGADDRESSINPUTFORMXSL = this->BILLINGADDRESSDIR +"billingAddressInputForm.xsl";
+    public: const std::string BILLINGADDRESSINPUTFORMXSL;
 
-    public: const std::string BILLINGADDRESSVIEWXSL = this->BILLINGADDRESSDIR +"billingAddressView.xsl";
+    public: const std::string BILLINGADDRESSVIEWXSL;
 
-    public: const std::string SHIPPINGADDRESSCHANGEFORMXSL = this->SHIPPINGADDRESSDIR +"shippingAddressChangeForm.xsl";
+    public: const std::string SHIPPINGADDRESSCHANGEFORMXSL;
 
-    public: const std::string SHIPPINGADDRESSINPUTFORMXSL = this->SHIPPINGADDRESSDIR +"shippingAddressInputForm.xsl";
+    public: const std::string SHIPPINGADDRESSINPUTFORMXSL;
 
-    public: const std::string SHIPPINGADDRESSVIEWXSL = this->SHIPPINGADDRESSDIR +"shippingAddressView.xsl";
+    public: const std::string SHIPPINGADDRESSVIEWXSL;
 
-    public: const std::string NEWTAXADDRESSXSL = this->SHIPPINGADDRESSDIR +"newTaxAddressView.xsl";
+    public: const std::string NEWTAXADDRESSXSL;
 
-    public: const std::string EDITTAXADDRESSXSL = this->SHIPPINGADDRESSDIR +"editTaxAddressView.xsl";
+    public: const std::string EDITTAXADDRESSXSL;
 
-    public: const std::string SHIPPINGMETHODSXSL = this->SHIPPINGDIR +"shippingMethods.xsl";
+    public: const std::string SHIPPINGMETHODSXSL;
 
-    public: const std::string ORDERCUSTOMEREMAILVIEWXSL = this->ORDEREMAILDIR +"orderCustomerEmailView.xsl";
+    public: const std::string ORDERCUSTOMEREMAILVIEWXSL;
 
-    public: const std::string ORDERMANAGEREMAILVIEWXSL = this->ORDEREMAILDIR +"orderManagerEmailView.xsl";
+    public: const std::string ORDERMANAGEREMAILVIEWXSL;
 
-    public: const std::string EDITCUSTOMERXSL = this->USERDIR +"editCustomerInputForm.xsl";
+    public: const std::string EDITCUSTOMERXSL;
 
-    public: const std::string ORDERHISTORYXSL = this->ORDERHISTORYDIR +"orderHistory.xsl";
+    public: const std::string ORDERHISTORYXSL;
 
-    public: const std::string PAYMENTVIEWXSL = this->PAYMENTDIR +"paymentView.xsl";
+    public: const std::string PAYMENTVIEWXSL;
 
-    public: const std::string SUMMARYXSL = this->ITEMDIR +"summary/summary.xsl";
+    public: const std::string SUMMARYXSL;
 
-    public: const std::string PAYMENTGATEWAYOPTIONSXSL = this->PAYMENTDIR +"paymentGatewayOptions.xsl";
+    public: const std::string PAYMENTGATEWAYOPTIONSXSL;
 
-    public: const std::string MAKEPAYMENTVIEWXSL = this->PAYMENTDIR +"invoice/" +"makePayment.xsl";
+    public: const std::string MAKEPAYMENTVIEWXSL;
 
 };
 
@@ -148,3 +158,10 @@ private: BasicViewData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_H_COMPLETE
+        
+        #endif
+    

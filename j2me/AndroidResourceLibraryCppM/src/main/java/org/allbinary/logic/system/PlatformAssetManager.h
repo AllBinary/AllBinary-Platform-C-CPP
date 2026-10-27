@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,11 +37,7 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
+class ResourceUtil;
 
 
 
@@ -56,14 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PlatformAssetManager
-            : public Object
+            : public virtual Object
          {
 
-    private: static PlatformAssetManager* instance() { static std::unique_ptr<PlatformAssetManager> value(new PlatformAssetManager()); return value.get(); }
+    private: static PlatformAssetManager* instance_owner();
+    private: static PlatformAssetManager* instance;
 
     public: static PlatformAssetManager* getInstance();
 
+
+            
+    public: PlatformAssetManager();
+        
                 //@Throws(Exception.constructor)
             
     public: InputStream* getResourceAsStream(std::string resource);
@@ -74,3 +84,16 @@ class PlatformAssetManager
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+
+        #endif
+    

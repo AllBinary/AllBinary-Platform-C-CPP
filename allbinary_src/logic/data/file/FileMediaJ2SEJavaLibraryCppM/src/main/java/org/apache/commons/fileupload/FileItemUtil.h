@@ -7,6 +7,11 @@
         #ifndef ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_H
         #define ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -20,26 +25,12 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/StreamUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFileNativeUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class LogUtil;
+class StreamUtil;
+class AbFile;
+class AbFileNativeUtil;
+class StringMaker;
 
 
 
@@ -58,18 +49,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/apache/commons/fileupload/FileItemStream.h"
-#include "org/apache/commons/fileupload/FileItem.h"
+        class FileItemStream;
+class FileItem;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileItemUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static FileItemUtil* instance() { static std::unique_ptr<FileItemUtil> value(new FileItemUtil()); return value.get(); }
+    private: static FileItemUtil* instance_owner();
+    private: static FileItemUtil* instance;
 
     public: static FileItemUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: FileItemUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: const std::string DEFAULT_CHARSET = "ISO-8859-1";
 
@@ -95,3 +95,37 @@ class FileItemUtil
 
 
         #endif //ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_H_COMPLETE)
+        #define ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
+#include <org/allbinary/logic/io/StreamUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFileNativeUtil.h>)
+#include <org/allbinary/logic/io/file/AbFileNativeUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/apache/commons/fileupload/FileItemStream.h")
+#include "org/apache/commons/fileupload/FileItemStream.h"
+#endif
+#if __has_include("org/apache/commons/fileupload/FileItem.h")
+#include "org/apache/commons/fileupload/FileItem.h"
+#endif
+
+        #endif
+    

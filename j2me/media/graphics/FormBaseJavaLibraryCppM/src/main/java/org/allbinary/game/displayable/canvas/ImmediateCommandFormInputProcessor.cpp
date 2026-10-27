@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_IMMEDIATECOMMANDFORMINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_IMMEDIATECOMMANDFORMINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/ImmediateCommandFormInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,13 +72,8 @@
         #include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
 #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
 
-class ImmediateCommandFormInputProcessor: public CommandFormInputProcessor {
 
-    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(25);
-
-    protected: GameCommandCanvas* gameCommandCanvas;
-
-public: ImmediateCommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, GameCommandCanvas* gameCommandCanvas, ScrollSelectionForm* form) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCommandCanvas, form){
+ImmediateCommandFormInputProcessor::ImmediateCommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, GameCommandCanvas* gameCommandCanvas, ScrollSelectionForm* form) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCommandCanvas, form), timeHelper(new TimeDelayHelper(25)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,10 +86,10 @@ this->gameCommandCanvas= gameCommandCanvas;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onPressGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto ImmediateCommandFormInputProcessor::onPressGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 
         try {
-            super.onPressGameKeyEvent(gameKeyEvent);
+            CommandFormInputProcessor::onPressGameKeyEvent(gameKeyEvent);
     
 
                         if(this->timeHelper->isTimeTNT())
@@ -92,7 +97,7 @@ this->gameCommandCanvas= gameCommandCanvas;
                                     {
                                     this->processInputList();
     
-this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
+this->gameCommandCanvas->repaintBehavior->onChangeRepaint(this->getCanvas());
     
 
                                     }
@@ -101,7 +106,7 @@ this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_PRESS_GAME_KEY, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->ON_PRESS_GAME_KEY, &e);
     
 }
 
@@ -109,10 +114,10 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto ImmediateCommandFormInputProcessor::onDownGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 
         try {
-            super.onDownGameKeyEvent(gameKeyEvent);
+            CommandFormInputProcessor::onDownGameKeyEvent(gameKeyEvent);
     
 
                         if(this->timeHelper->isTimeTNT())
@@ -120,7 +125,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON
                                     {
                                     this->processInputList();
     
-this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
+this->gameCommandCanvas->repaintBehavior->onChangeRepaint(this->getCanvas());
     
 
                                     }
@@ -129,7 +134,7 @@ this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_DOWN_GAME_KEY, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->ON_DOWN_GAME_KEY, &e);
     
 }
 
@@ -137,10 +142,10 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto ImmediateCommandFormInputProcessor::onUpGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 
         try {
-            super.onUpGameKeyEvent(gameKeyEvent);
+            CommandFormInputProcessor::onUpGameKeyEvent(gameKeyEvent);
     
 
                         if(this->timeHelper->isTimeTNT())
@@ -148,7 +153,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON
                                     {
                                     this->processInputList();
     
-this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
+this->gameCommandCanvas->repaintBehavior->onChangeRepaint(this->getCanvas());
     
 
                                     }
@@ -157,17 +162,17 @@ this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_UP_GAME_KEY, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->ON_UP_GAME_KEY, &e);
     
 }
 
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+    auto ImmediateCommandFormInputProcessor::onMotionGestureEvent(MotionGestureEvent* motionGestureEvent) -> void{
 
         try {
-            super.onMotionGestureEvent(motionGestureEvent);
+            CommandFormInputProcessor::onMotionGestureEvent(motionGestureEvent);
     
 
                         if(this->timeHelper->isTimeTNT())
@@ -175,7 +180,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON
                                     {
                                     this->processInputList();
     
-this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
+this->gameCommandCanvas->repaintBehavior->onChangeRepaint(this->getCanvas());
     
 
                                     }
@@ -184,14 +189,13 @@ this->gameCommandCanvas->repaintBehavior.onChangeRepaint(this->getCanvas());
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMotionGestureEvent", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "onMotionGestureEvent", &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_IMMEDIATECOMMANDFORMINPUTPROCESSOR_CPP

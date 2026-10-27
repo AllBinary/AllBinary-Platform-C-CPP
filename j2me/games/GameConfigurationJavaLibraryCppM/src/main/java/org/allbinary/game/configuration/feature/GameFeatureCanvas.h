@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 
 
 
@@ -52,11 +53,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameFeatureCanvas: public Canvas {
 
 public: GameFeatureCanvas();
 
-    protected: void paint(Graphics* graphics);
+    /*protected*/ public: void paint(Graphics* graphics);
 
 };
 
@@ -64,3 +69,16 @@ public: GameFeatureCanvas();
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECANVAS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+
+        #endif
+    

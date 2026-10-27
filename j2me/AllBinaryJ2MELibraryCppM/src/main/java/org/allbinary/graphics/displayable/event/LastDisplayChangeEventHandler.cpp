@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_LASTDISPLAYCHANGEEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_LASTDISPLAYCHANGEEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/event/LastDisplayChangeEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,26 @@
         #include "org/allbinary/graphics/displayable/event/DisplayChangeEventListener.h"
 #include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
 
-class LastDisplayChangeEventHandler: public BasicEventHandler {
+auto LastDisplayChangeEventHandler::SINGLETON_owner() -> LastDisplayChangeEventHandler* { static std::unique_ptr<LastDisplayChangeEventHandler> value(new LastDisplayChangeEventHandler()); return value.get(); }
+LastDisplayChangeEventHandler* LastDisplayChangeEventHandler::SINGLETON = LastDisplayChangeEventHandler::SINGLETON_owner();
 
-    private: static LastDisplayChangeEventHandler* SINGLETON() { static std::unique_ptr<LastDisplayChangeEventHandler> value(new LastDisplayChangeEventHandler()); return value.get(); }
-
-    public: static LastDisplayChangeEventHandler* getInstance(){
+    auto LastDisplayChangeEventHandler::getInstance() -> LastDisplayChangeEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LastDisplayChangeEventHandler::SINGLETON();
+                        return LastDisplayChangeEventHandler::SINGLETON;
     
 }
 
 
-private: LastDisplayChangeEventHandler(){
+LastDisplayChangeEventHandler::LastDisplayChangeEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto LastDisplayChangeEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     DisplayChangeEventListener* displayChangeEventListener = (dynamic_cast<DisplayChangeEventListener*>(eventListenerInterface));;
     
@@ -85,7 +94,6 @@ displayChangeEventListener->onDisplayChangeEvent(dynamic_cast<DisplayChangeEvent
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_LASTDISPLAYCHANGEEVENTHANDLER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/EventStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EventStrings
-            : public Object
-         {
 
-    private: static EventStrings* instance() { static std::unique_ptr<EventStrings> value(new EventStrings()); return value.get(); }
+EventStrings::EventStrings() {
+        }
+        auto EventStrings::instance_owner() -> EventStrings* { static std::unique_ptr<EventStrings> value(new EventStrings()); return value.get(); }
+EventStrings* EventStrings::instance = EventStrings::instance_owner();
 
-    public: static EventStrings* getInstance(){
+    auto EventStrings::getInstance() -> EventStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EventStrings::instance();
+                        return EventStrings::instance;
     
 }
 
 
-    public: const std::string PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
 
-    public: const std::string TOTAL_LISTENERS = "Total Listeners: ";
 
-    public: const std::string LISTENER_LABEL = " Listener: ";
-
-    public: const std::string FIRE_EVENT = "fireEvent";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_CPP

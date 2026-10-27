@@ -20,18 +20,19 @@
         #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
+class AllBinaryEventObject;
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
 
 
 
@@ -51,6 +52,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TechEventListenerInterface: public EventListenerInterface {
 
     public: virtual void onTechEvent(AllBinaryEventObject* event) = 0;
@@ -61,3 +66,16 @@ class TechEventListenerInterface: public EventListenerInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTLISTENERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTLISTENERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/money/payment/PaymentEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -104,13 +114,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/money/payment/PaymentEntityInterface.h"
 
-class PaymentEntity: public AbSqlBean, public PaymentEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string tableName = "payment";
-
-public: PaymentEntity() : AbSqlBean(new UserDbInitInfo()){
+PaymentEntity::PaymentEntity() : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -122,17 +127,17 @@ this->setTableName(this->tableName);
 }
 
 
-    public: std::string getLastId(std::string userName){
+    auto PaymentEntity::getLastId(std::string userName) -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getLargestIntegerInColumnWhere(PaymentData::ID, UserData::USERNAME, userName);;
+                        return AbSqlBean::getLargestIntegerInColumnWhere(PaymentData::ID, UserData::USERNAME, userName);;
     
 }
 
 
-    public: void setDefault(std::string userName, int32_t index){
+    auto PaymentEntity::setDefault(std::string userName, int32_t index) -> void{
 
         try {
             
@@ -156,7 +161,7 @@ whereKeyAndValue->put(UserData::USERNAME, userName);
     
 whereKeyAndValue->put(PaymentData::ID, paymentInterface->getId());
     
-super.updateWhere(whereKeyAndValue, updateKeyAndValue);
+AbSqlBean::updateWhere(whereKeyAndValue, updateKeyAndValue);
     
 
                                     }
@@ -165,13 +170,13 @@ updateKeyAndValue->put(EntryData::getInstance()->DEFAULT, EntryData::getInstance
     
 whereKeyAndValue->put(PaymentData::ID, std::to_string(index));
     
-super.updateWhere(whereKeyAndValue, updateKeyAndValue);
+AbSqlBean::updateWhere(whereKeyAndValue, updateKeyAndValue);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "setDefault");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "setDefault");
     
 
                                     }
@@ -181,10 +186,10 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "setDefault", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "setDefault", &e);
     
 
                                     }
@@ -194,7 +199,7 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
 }
 
 
-    public: BasicArrayList* get(std::string userName){
+    auto PaymentEntity::get(std::string userName) -> BasicArrayList*{
 
         try {
             
@@ -206,7 +211,7 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
 keyAndValue->put(UserData::USERNAME, userName);
     
 
-    BasicArrayList* paymentList = super.getRows(keyAndValue);;
+    BasicArrayList* paymentList = AbSqlBean::getRows(keyAndValue);;
     
 
     int32_t size = paymentList->size();;
@@ -248,10 +253,10 @@ keyAndValue->put(UserData::USERNAME, userName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -267,7 +272,7 @@ keyAndValue->put(UserData::USERNAME, userName);
 }
 
 
-    public: PaymentInterface* getDefault(std::string userName){
+    auto PaymentEntity::getDefault(std::string userName) -> PaymentInterface*{
 
         try {
             
@@ -280,7 +285,7 @@ updateKeyAndValue->put(EntryData::getInstance()->DEFAULT, EntryData::getInstance
     
 updateKeyAndValue->put(UserData::USERNAME, userName);
     
-paymentHashMap= super.getRow(updateKeyAndValue);
+paymentHashMap= AbSqlBean::getRow(updateKeyAndValue);
     
 
                         if(paymentHashMap != 
@@ -292,10 +297,10 @@ paymentHashMap= super.getRow(updateKeyAndValue);
     Payment* payment = new Payment(paymentHashMap);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "getDefault");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "getDefault");
     
 
                                     }
@@ -324,10 +329,10 @@ paymentHashMap= super.getRow(updateKeyAndValue);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "getDefault", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "getDefault", &e);
     
 
                                     }
@@ -343,7 +348,7 @@ paymentHashMap= super.getRow(updateKeyAndValue);
 }
 
 
-    public: void remove(std::string userName, int32_t index){
+    auto PaymentEntity::remove(std::string userName, int32_t index) -> void{
 
         try {
             
@@ -353,13 +358,13 @@ whereHashMap->put(UserData::USERNAME, userName);
     
 whereHashMap->put(PaymentData::ID, std::to_string(index));
     
-super.deleteWhere(whereHashMap);
+AbSqlBean::deleteWhere(whereHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "remove");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "remove");
     
 
                                     }
@@ -369,10 +374,10 @@ super.deleteWhere(whereHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "remove", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "remove", &e);
     
 
                                     }
@@ -382,7 +387,7 @@ super.deleteWhere(whereHashMap);
 }
 
 
-    public: void add(std::string userName, PaymentInterface* paymentInterface){
+    auto PaymentEntity::add(std::string userName, PaymentInterface* paymentInterface) -> void{
 
         try {
             
@@ -415,13 +420,13 @@ vector->add((int32_t(random)).toString());
     
 vector->add(time);
     
-super.insert(vector);
+AbSqlBean::insert(vector);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "add");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "add");
     
 
                                     }
@@ -431,10 +436,10 @@ super.insert(vector);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "add", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "add", &e);
     
 
                                     }
@@ -444,14 +449,14 @@ super.insert(vector);
 }
 
 
-    public: std::string createTableStatement(){
+    auto PaymentEntity::createTableStatement() -> std::string{
 
     EntryData* entryData = EntryData::getInstance();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(PaymentData::ID)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL)->append(UserData::USERNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(entryData->DEFAULT)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::TYPE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::EXPIRATION)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::NUMBER)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(entryData->ENCRYPTION)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(entryData->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(PaymentData::ID)->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(this->sqlStrings->START)->append(PaymentData::ID)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL)->append(UserData::USERNAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(entryData->DEFAULT)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::TYPE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::EXPIRATION)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(PaymentData::NUMBER)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(entryData->ENCRYPTION)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(entryData->TIMECREATED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(PaymentData::ID)->append(this->sqlStrings->END);
     
 
 
@@ -462,27 +467,26 @@ stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(t
 }
 
 
-    public: std::string createTable(){
+    auto PaymentEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-    public: std::string drop(){
+    auto PaymentEntity::drop() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITY_CPP

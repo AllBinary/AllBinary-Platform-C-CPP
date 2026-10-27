@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GRAPHICS_HUD_HUDGRAPHICSPOSITION_CPP
+        #define ORG_ALLBINARY_GAME_GRAPHICS_HUD_HUDGRAPHICSPOSITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/graphics/hud/HudGraphicsPosition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HudGraphicsPosition
-            : public Object
-         {
+auto HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION_owner() -> HudGraphicsPosition* { static std::unique_ptr<HudGraphicsPosition> value(new HudGraphicsPosition(PointFactory::getInstance()->ZERO_ZERO, 9)); return value.get(); }
+HudGraphicsPosition* HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION = HudGraphicsPosition::NULL_HUD_GRAPHICS_POSITION_owner();
 
-    public: static HudGraphicsPosition* NULL_HUD_GRAPHICS_POSITION() { static std::unique_ptr<HudGraphicsPosition> value(new HudGraphicsPosition(PointFactory::getInstance()->ZERO_ZERO, 9)); return value.get(); }
-
-    private: int32_t anchor= 0;
-
-    private: GPoint* point = PointFactory::getInstance()->ZERO_ZERO;
-
-public: HudGraphicsPosition(GPoint* point, int32_t anchor){
+HudGraphicsPosition::HudGraphicsPosition(GPoint* point, int32_t anchor) : point(PointFactory::getInstance()->ZERO_ZERO){
 this->setAnchor(anchor);
     
 this->setPoint(point);
@@ -69,7 +72,7 @@ this->setPoint(point);
 }
 
 
-    public: int32_t getAnchor(){
+    auto HudGraphicsPosition::getAnchor() -> int32_t{
 
 
 
@@ -79,13 +82,13 @@ this->setPoint(point);
 }
 
 
-    private: void setAnchor(int32_t anchor){
+    auto HudGraphicsPosition::setAnchor(int32_t anchor) -> void{
 this->anchor= anchor;
     
 }
 
 
-    public: GPoint* getPoint(){
+    auto HudGraphicsPosition::getPoint() -> GPoint*{
 
 
 
@@ -95,13 +98,12 @@ this->anchor= anchor;
 }
 
 
-    public: void setPoint(GPoint* point){
+    auto HudGraphicsPosition::setPoint(GPoint* point) -> void{
 this->point= point;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_GRAPHICS_HUD_HUDGRAPHICSPOSITION_CPP

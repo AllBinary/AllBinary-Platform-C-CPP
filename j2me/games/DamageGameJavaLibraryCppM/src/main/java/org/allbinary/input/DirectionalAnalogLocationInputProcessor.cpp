@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_DIRECTIONALANALOGLOCATIONINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_DIRECTIONALANALOGLOCATIONINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/DirectionalAnalogLocationInputProcessor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,27 +90,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DirectionalAnalogLocationInputProcessor: public AnalogLocationInputProcessor, public GameKeyEventSourceInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::vector<GameInputProcessor*> inputProcessorArray;
-
-    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
-
-    private: GameKeyEvent* leftGameKeyEvent = GameKeyEvent::NONE;
-
-    private: GameKeyEvent* rightGameKeyEvent = GameKeyEvent::NONE;
-
-    private: GameKeyEvent* upGameKeyEvent = GameKeyEvent::NONE;
-
-    private: GameKeyEvent* downGameKeyEvent = GameKeyEvent::NONE;
-
-    private: GameKeyEvent* leftTriggerGameKeyEvent = GameKeyEvent::NONE;
-
-    private: GameKeyEvent* rightTriggerGameKeyEvent = GameKeyEvent::NONE;
-
-public: DirectionalAnalogLocationInputProcessor(std::vector<GameInputProcessor*> inputProcessorArray){
+DirectionalAnalogLocationInputProcessor::DirectionalAnalogLocationInputProcessor(std::vector<GameInputProcessor*> inputProcessorArray) : logUtil(LogUtil::getInstance()), gameKeyFactory(GameKeyFactory::getInstance()), leftGameKeyEvent(GameKeyEvent::NONE), rightGameKeyEvent(GameKeyEvent::NONE), upGameKeyEvent(GameKeyEvent::NONE), downGameKeyEvent(GameKeyEvent::NONE), leftTriggerGameKeyEvent(GameKeyEvent::NONE), rightTriggerGameKeyEvent(GameKeyEvent::NONE){
 this->inputProcessorArray= inputProcessorArray;
     
 
@@ -131,7 +122,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 }
 
 
-    public: void process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInput* analogLocationInput){
+    auto DirectionalAnalogLocationInputProcessor::process(AllBinaryLayerManager* allbinaryLayerManager, AnalogLocationInput* analogLocationInput) -> void{
 
         try {
             
@@ -155,7 +146,7 @@ customGPoint= analogLocationInput->getCustomGPoint();
                         if(x < 0)
                         
                                     {
-                                    this->inputProcessorArray[this->leftGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->leftGameKeyEvent, x);
+                                    this->inputProcessorArray[this->leftGameKeyEvent->getKey()]->processAnalog(allbinaryLayerManager, this->leftGameKeyEvent, x);
     
 
                                     }
@@ -164,7 +155,7 @@ customGPoint= analogLocationInput->getCustomGPoint();
                         if(x > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->rightGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->rightGameKeyEvent, x);
+                                    this->inputProcessorArray[this->rightGameKeyEvent->getKey()]->processAnalog(allbinaryLayerManager, this->rightGameKeyEvent, x);
     
 
                                     }
@@ -173,7 +164,7 @@ customGPoint= analogLocationInput->getCustomGPoint();
                         if(y < 0)
                         
                                     {
-                                    this->inputProcessorArray[this->downGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->downGameKeyEvent, y);
+                                    this->inputProcessorArray[this->downGameKeyEvent->getKey()]->processAnalog(allbinaryLayerManager, this->downGameKeyEvent, y);
     
 
                                     }
@@ -182,7 +173,7 @@ customGPoint= analogLocationInput->getCustomGPoint();
                         if(y > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->upGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->upGameKeyEvent, y);
+                                    this->inputProcessorArray[this->upGameKeyEvent->getKey()]->processAnalog(allbinaryLayerManager, this->upGameKeyEvent, y);
     
 
                                     }
@@ -191,7 +182,7 @@ customGPoint= analogLocationInput->getCustomGPoint();
                         if(leftTrigger > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->leftTriggerGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->leftTriggerGameKeyEvent, leftTrigger);
+                                    this->inputProcessorArray[this->leftTriggerGameKeyEvent->getKey()]->processAnalog(allbinaryLayerManager, this->leftTriggerGameKeyEvent, leftTrigger);
     
 
                                     }
@@ -200,7 +191,7 @@ customGPoint= analogLocationInput->getCustomGPoint();
                         if(rightTrigger > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->rightTriggerGameKeyEvent->getKey()].processAnalog(allbinaryLayerManager, this->rightTriggerGameKeyEvent, rightTrigger);
+                                    this->inputProcessorArray[this->rightTriggerGameKeyEvent->getKey()]->processAnalog(allbinaryLayerManager, this->rightTriggerGameKeyEvent, rightTrigger);
     
 
                                     }
@@ -219,7 +210,7 @@ this->logUtil->put("Unable to process analog input", this, commonStrings->PROCES
 }
 
 
-    public: int32_t getSourceId(){
+    auto DirectionalAnalogLocationInputProcessor::getSourceId() -> int32_t{
 
 
 
@@ -229,7 +220,6 @@ this->logUtil->put("Unable to process analog input", this, commonStrings->PROCES
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_DIRECTIONALANALOGLOCATIONINPUTPROCESSOR_CPP

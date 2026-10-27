@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,12 +54,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //ActualPlatform
 /*actual*/ class SystemProperties
-            : public Object
+            : public virtual Object
          {
 
-    private: static SystemProperties* instance() { static std::unique_ptr<SystemProperties> value(new SystemProperties()); return value.get(); }
+    private: static SystemProperties* instance_owner();
+    private: static SystemProperties* instance;
 
     /*actual*/ public: static SystemProperties* getInstance();
 
@@ -82,3 +92,10 @@ private: SystemProperties();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_H_COMPLETE
+        
+        #endif
+    

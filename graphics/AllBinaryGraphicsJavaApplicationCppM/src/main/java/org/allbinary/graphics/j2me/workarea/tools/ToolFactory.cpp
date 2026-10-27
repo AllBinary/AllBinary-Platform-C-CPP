@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/ToolFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,40 +68,26 @@
         #include "org/allbinary/graphics/j2me/workarea/tools/GraphicsItemInterfaceFactoryInterface.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h"
 
-class ToolFactory
-            : public Object
-         {
 
-    private: static ToolFactory* instance() { static std::unique_ptr<ToolFactory> value(new ToolFactory()); return value.get(); }
+ToolFactory::ToolFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        auto ToolFactory::instance_owner() -> ToolFactory* { static std::unique_ptr<ToolFactory> value(new ToolFactory()); return value.get(); }
+ToolFactory* ToolFactory::instance = ToolFactory::instance_owner();
 
-    public: static ToolFactory* getInstance(){
+    auto ToolFactory::getInstance() -> ToolFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ToolFactory::instance();
+                        return ToolFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GraphicsItemInterfaceFactoryInterface* selectedTool = 
-                null
-            ;
-
-    private: std::string tool = 
-                null
-            ;
-
-    private: const std::string SELECTED_LABEL = "Selected: ";
-
-    public: void setSelectedTool(std::string tool){
+    auto ToolFactory::setSelectedTool(std::string tool) -> void{
 
         try {
-            StatusFactory::getInstance()->setStatus(this->SELECTED_LABEL +tool);
+            StatusFactory::getInstance()->setStatus(JavaString::valueOf(this->SELECTED_LABEL) +JavaString::valueOf(tool));
     
 this->tool= tool;
     
@@ -106,8 +102,8 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "setSelectionTool", &e)
 }
 
 
-    public: GraphicsItemInterfaceFactoryInterface* getSelectedToolFactory(){
-StatusFactory::getInstance()->setStatus("Tool In Use: " +this->tool);
+    auto ToolFactory::getSelectedToolFactory() -> GraphicsItemInterfaceFactoryInterface*{
+StatusFactory::getInstance()->setStatus(JavaString::valueOf("Tool In Use: ") +JavaString::valueOf(this->tool));
     
 
                         if(true)
@@ -115,7 +111,7 @@ StatusFactory::getInstance()->setStatus("Tool In Use: " +this->tool);
                                     {
                                     this->selectedTool= GraphicItemFactory::getInstance()->getInstance(this->tool);
     
-this->logUtil->putF("New Tool: " +this->selectedTool, this, "getSelectedToolFactory");
+this->logUtil->putF(JavaString::valueOf("New Tool: ") +JavaString::valueOf(this->selectedTool), this, "getSelectedToolFactory");
     
 
 
@@ -139,7 +135,6 @@ this->logUtil->putF("New Tool: " +this->selectedTool, this, "getSelectedToolFact
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_TOOLFACTORY_CPP

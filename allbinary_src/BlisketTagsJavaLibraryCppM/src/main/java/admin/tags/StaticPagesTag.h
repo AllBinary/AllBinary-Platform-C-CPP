@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGS_STATICPAGESTAG_H
         #define ADMIN_TAGS_STATICPAGESTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,32 +39,14 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <admin/taghelpers/StaticPagesHelperFactory.h>
-
-      
-#include <admin/taghelpers/StaticPagesRequestHelperFactory.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/control/search/SearchData.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
-
-      
+class JspTagException;
+class StaticPagesHelperFactory;
+class StaticPagesRequestHelperFactory;
+class AbResponseHandler;
+class LogUtil;
+class SearchData;
+class LicensingException;
+class TransformInfoData;
 
 
 
@@ -80,9 +67,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StaticPagesTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string xslFile;
 
@@ -108,3 +99,40 @@ public: StaticPagesTag();
 
 
         #endif //ADMIN_TAGS_STATICPAGESTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGS_STATICPAGESTAG_H_COMPLETE)
+        #define ADMIN_TAGS_STATICPAGESTAG_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<admin/taghelpers/StaticPagesHelperFactory.h>)
+#include <admin/taghelpers/StaticPagesHelperFactory.h>
+#endif
+#if __has_include(<admin/taghelpers/StaticPagesRequestHelperFactory.h>)
+#include <admin/taghelpers/StaticPagesRequestHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/search/SearchData.h>)
+#include <org/allbinary/logic/control/search/SearchData.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoData.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
+#endif
+#if __has_include("admin/tags/TableTag.h")
+#include "admin/tags/TableTag.h"
+#endif
+
+        #endif
+    

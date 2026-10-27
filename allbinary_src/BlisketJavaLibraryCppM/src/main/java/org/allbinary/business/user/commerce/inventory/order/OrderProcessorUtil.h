@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/generator/OrderIdGenerator.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntity.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/inventory/order/OrderItemsEntity.h>
-
-      
+class OrderIdGenerator;
+class OrderHistoryEntity;
+class OrderItemsEntity;
 
 
 
@@ -58,16 +57,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/inventory/order/Order.h"
+        class Order;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OrderProcessorUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static OrderProcessorUtil* instance() { static std::unique_ptr<OrderProcessorUtil> value(new OrderProcessorUtil()); return value.get(); }
+    private: static OrderProcessorUtil* instance_owner();
+    private: static OrderProcessorUtil* instance;
 
     public: static OrderProcessorUtil* getInstance();
 
+
+            
+    public: OrderProcessorUtil();
+        
     private: const std::string ORDER_PROCESSED = "Order Processed";
 
                 //@Throws(Exception.constructor)
@@ -80,3 +88,22 @@ class OrderProcessorUtil
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERPROCESSORUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/data/generator/OrderIdGenerator.h>)
+#include <org/allbinary/data/generator/OrderIdGenerator.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntity.h>)
+#include <org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntity.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/inventory/order/OrderItemsEntity.h>)
+#include <org/allbinary/data/tables/user/commerce/inventory/order/OrderItemsEntity.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/order/Order.h")
+#include "org/allbinary/business/user/commerce/inventory/order/Order.h"
+#endif
+
+        #endif
+    

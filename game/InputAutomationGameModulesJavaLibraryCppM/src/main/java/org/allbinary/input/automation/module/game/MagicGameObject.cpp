@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/MagicGameObject.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,11 +70,8 @@
         #include "org/allbinary/input/automation/module/game/MeteredGameObject.h"
 #include "org/allbinary/input/automation/module/game/MagicGameObjectInterface.h"
 
-class MagicGameObject: public MeteredGameObject, public MagicGameObjectInterface {
 
-    private: const std::string MP_LABEL = "MP:";
-
-public: MagicGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y) : MeteredGameObject(bufferedImage, minX, maxX, y){
+MagicGameObject::MagicGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX, int32_t maxX, int32_t y) : MeteredGameObject(bufferedImage, minX, maxX, y){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +81,7 @@ public: MagicGameObject(std::vector<BufferedImage*> bufferedImage, int32_t minX,
 }
 
 
-    public: std::string toString(){
+    auto MagicGameObject::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -82,7 +89,7 @@ stringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
     
 stringBuffer->append(this->MP_LABEL);
     
-stringBuffer->append(super.toString());
+stringBuffer->append(MeteredGameObject::toString());
     
 
 
@@ -93,7 +100,6 @@ stringBuffer->append(super.toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_CPP

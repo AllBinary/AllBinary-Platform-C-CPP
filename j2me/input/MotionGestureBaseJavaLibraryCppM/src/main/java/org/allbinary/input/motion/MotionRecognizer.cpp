@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_MOTIONRECOGNIZER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_MOTIONRECOGNIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/MotionRecognizer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,29 +57,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionRecognizer
-            : public Object
-         {
 
+MotionRecognizer::MotionRecognizer() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto MotionRecognizer::processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto MotionRecognizer::processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto MotionRecognizer::processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_MOTIONRECOGNIZER_CPP

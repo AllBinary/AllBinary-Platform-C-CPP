@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_MESSAGES_CPP
+        #define ORG_ALLBINARY_GLOBALS_MESSAGES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/MESSAGES.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MESSAGES
-            : public Object
-         {
 
-    public: static inline std::string CONTACTADMIN = "Please contact the administrator.";
-
-private: MESSAGES(){
+MESSAGES::MESSAGES(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_MESSAGES_CPP

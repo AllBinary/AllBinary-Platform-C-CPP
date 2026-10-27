@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_PLATFORMFORMINPUTMAPPINGFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_PLATFORMFORMINPUTMAPPINGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/PlatformFormInputMappingFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,13 +71,12 @@
         #include "org/allbinary/game/input/PCKeyFactory.h"
 #include "org/allbinary/game/input/GameKeyFactory.h"
 
-class PlatformFormInputMappingFactory
-            : public Object
-         {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+PlatformFormInputMappingFactory::PlatformFormInputMappingFactory() : logUtil(LogUtil::getInstance()), inputToGameKeyMapping(InputToGameKeyMapping::getNullInstance()) {
+        }
+        Object* PlatformFormInputMappingFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static PlatformFormInputMappingFactory* getInstance(){
+    auto PlatformFormInputMappingFactory::getInstance() -> PlatformFormInputMappingFactory*{
 
                         if(PlatformFormInputMappingFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -86,11 +95,7 @@ class PlatformFormInputMappingFactory
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: InputToGameKeyMapping* inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
-
-    public: InputToGameKeyMapping* getOrCreate(){
+    auto PlatformFormInputMappingFactory::getOrCreate() -> InputToGameKeyMapping*{
 
         try {
             
@@ -141,7 +146,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_PLATFORMFORMINPUTMAPPINGFACTORY_CPP

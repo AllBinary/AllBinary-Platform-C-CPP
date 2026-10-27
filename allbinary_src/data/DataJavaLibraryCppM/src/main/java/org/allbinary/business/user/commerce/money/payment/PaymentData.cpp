@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/PaymentData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,57 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentData
-            : public Object
-         {
 
-    public: static inline const int32_t MIN = 4;
+PaymentData::PaymentData() {
+        }
+        
 
-    public: static inline const int32_t MAX = 19;
 
-    public: static inline const std::string ADDNEW = "Add New Payment";
-
-    public: static inline const std::string VIEW = "View Payment";
-
-    public: static inline const std::string SELECT = "Select Payment";
-
-    public: static inline const std::string CHANGE = "Change Payment";
-
-    public: static inline const std::string PAYMENT = "PAYMENT";
-
-    public: static inline const std::string METHOD = "PAYMENT_METHOD";
-
-    public: static inline const std::string ID = "PAYMENT_ID";
-
-    public: static inline const std::string NUMBER = "PAYMENT_NUMBER";
-
-    public: static inline const std::string NAME = "PAYMENT_NAME";
-
-    public: static inline const std::string TYPE = "PAYMENT_TYPE";
-
-    public: static inline const std::string EXPIRATION = "PAYMENT_EXPIRATION";
-
-    public: static inline const std::string TENDERTYPE = "PAYMENT_TENDERTYPE";
-
-    public: static inline const std::string TRANSACTIONTYPE = "PAYMENT_TRANSACTIONTYPE";
-
-    public: static inline const std::string ABA = "PAYMENT_ABA";
-
-    public: static inline const std::string ACCOUNT = "PAYMENT_ACCOUNT";
-
-    public: static inline const std::string ACCOUNTTYPE = "PAYMENT_ACCOUNTTYPE";
-
-    public: static inline const std::string AUTHORIZATIONCODE = "PAYMENT_AUTHORIZATIONCODE";
-
-    public: static inline const std::string CHECKNUMBER = "PAYMENT_CHECKNUMBER";
-
-    public: static inline const std::string CHECKTYPE = "PAYMENT_CHECKTYPE";
-
-    public: static inline const std::string DRIVERSLICENSE = "PAYMENT_DRIVERSLICENSE";
-
-    public: static inline const std::string MAGNETICINKCHECKREADER = "PAYMENT_MAGNETICINKCHECKREADER";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTDATA_CPP

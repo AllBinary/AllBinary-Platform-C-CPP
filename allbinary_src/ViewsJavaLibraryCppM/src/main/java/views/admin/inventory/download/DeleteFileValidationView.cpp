@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_DELETEFILEVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_DELETEFILEVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/download/DeleteFileValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,11 +107,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
 
-class DeleteFileValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-    private: std::string downloadItemId;
-
-public: DeleteFileValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
+DeleteFileValidationView::DeleteFileValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -115,7 +122,7 @@ this->getFormData();
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(){
+    auto DeleteFileValidationView::getFormData() -> void{
 
     HashMap<Object*, Object*>* hashMap = (new RequestParams(request))->toHashMap();;
     
@@ -128,7 +135,7 @@ this->getFormData();
                                     
 
 
-                            throw new Exception("No Request Params Found");
+                            throw Exception("No Request Params Found");
                     
 
                                     }
@@ -140,7 +147,7 @@ this->downloadItemId= hashMap->get(DownloadItemData::ID);
 }
 
 
-    public: bool isValid(){
+    auto DeleteFileValidationView::isValid() -> bool{
 
         try {
             
@@ -218,7 +225,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto DeleteFileValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -228,7 +235,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto DeleteFileValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -238,7 +245,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 }
 
 
-    public: std::string validationInfo(){
+    auto DeleteFileValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -311,7 +318,6 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_DOWNLOAD_DELETEFILEVALIDATIONVIEW_CPP

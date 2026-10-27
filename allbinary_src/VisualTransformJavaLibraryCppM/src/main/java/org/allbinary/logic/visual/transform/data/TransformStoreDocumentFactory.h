@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
-
-      
-#include <org/allbinary/logic/control/search/SearchRequest.h>
-
-      
+class PageContext;
+class WeblisketSession;
+class SearchRequest;
 
 
 
@@ -58,11 +57,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/transform/data/TransformStoreDocument.h"
-#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
+        class TransformStoreDocument;
+class TransformDocumentInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TransformStoreDocumentFactory
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -81,3 +84,25 @@ private: TransformStoreDocumentFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_DATA_TRANSFORMSTOREDOCUMENTFACTORY_H_COMPLETE
+        #if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSession.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/search/SearchRequest.h>)
+#include <org/allbinary/logic/control/search/SearchRequest.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/data/TransformStoreDocument.h")
+#include "org/allbinary/logic/visual/transform/data/TransformStoreDocument.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h")
+#include "org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h"
+#endif
+
+        #endif
+    

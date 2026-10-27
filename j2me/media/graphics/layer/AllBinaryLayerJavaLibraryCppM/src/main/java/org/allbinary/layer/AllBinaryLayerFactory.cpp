@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/AllBinaryLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,19 +66,14 @@
         #include "org/allbinary/layer/AllBinaryLayerFactoryInterface.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 
-class AllBinaryLayerFactory
-            : public Object
-        , public AllBinaryLayerFactoryInterface {
 
-    private: Rectangle* rectangle;
-
-public: AllBinaryLayerFactory(Rectangle* rectangle){
+AllBinaryLayerFactory::AllBinaryLayerFactory(Rectangle* rectangle){
 this->rectangle= rectangle;
     
 }
 
 
-    public: AllBinaryLayer* getInstance(){
+    auto AllBinaryLayerFactory::getInstance() -> AllBinaryLayer*{
 
 
 
@@ -78,7 +83,6 @@ this->rectangle= rectangle;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORY_CPP

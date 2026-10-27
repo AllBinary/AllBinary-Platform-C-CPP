@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,29 +59,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/LicenseType.h"
 
-class LicenseTypeFactory
-            : public Object
-         {
 
-    private: static LicenseTypeFactory* instance() { static std::unique_ptr<LicenseTypeFactory> value(new LicenseTypeFactory()); return value.get(); }
+LicenseTypeFactory::LicenseTypeFactory() : UNKNOWN(new LicenseType(CommonStrings::getInstance()->UNKNOWN)), DEMO(new LicenseType("Demo")), NORMAL(new LicenseType("Normal")) {
+        }
+        auto LicenseTypeFactory::instance_owner() -> LicenseTypeFactory* { static std::unique_ptr<LicenseTypeFactory> value(new LicenseTypeFactory()); return value.get(); }
+LicenseTypeFactory* LicenseTypeFactory::instance = LicenseTypeFactory::instance_owner();
 
-    public: static LicenseTypeFactory* getInstance(){
+    auto LicenseTypeFactory::getInstance() -> LicenseTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseTypeFactory::instance();
+                        return LicenseTypeFactory::instance;
     
 }
 
 
-    public: LicenseType* UNKNOWN = new LicenseType(CommonStrings::getInstance()->UNKNOWN);
-
-    public: LicenseType* DEMO = new LicenseType("Demo");
-
-    public: LicenseType* NORMAL = new LicenseType("Normal");
-
-    public: LicenseType* getInstance(std::string name){
+    auto LicenseTypeFactory::getInstance(std::string name) -> LicenseType*{
 
                         if(this->DEMO->getName().compareTo(name) == 0)
                         
@@ -107,7 +111,6 @@ class LicenseTypeFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSETYPEFACTORY_CPP

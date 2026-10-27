@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GRAPHICSFEATURE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GRAPHICSFEATURE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/feature/Feature.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GraphicsFeature: public Feature {
 
-: GraphicsFeature(std::string name);
+public: GraphicsFeature(std::string name);
 
 };
 
@@ -57,3 +66,13 @@ class GraphicsFeature: public Feature {
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GRAPHICSFEATURE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GRAPHICSFEATURE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GRAPHICSFEATURE_H_COMPLETE
+        #if __has_include("org/allbinary/game/configuration/feature/Feature.h")
+#include "org/allbinary/game/configuration/feature/Feature.h"
+#endif
+
+        #endif
+    

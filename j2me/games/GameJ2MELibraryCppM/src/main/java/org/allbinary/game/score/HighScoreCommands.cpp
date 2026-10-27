@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDS_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoreCommands.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,29 +61,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScoreCommands
-            : public Object
-         {
 
-    private: static HighScoreCommands* instance() { static std::unique_ptr<HighScoreCommands> value(new HighScoreCommands()); return value.get(); }
+HighScoreCommands::HighScoreCommands() : DISPLAY(new Command("Scores", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)), PERSONAL(new Command("Personal", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)), WORLD(new Command("World", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)) {
+        }
+        auto HighScoreCommands::instance_owner() -> HighScoreCommands* { static std::unique_ptr<HighScoreCommands> value(new HighScoreCommands()); return value.get(); }
+HighScoreCommands* HighScoreCommands::instance = HighScoreCommands::instance_owner();
 
-    public: static HighScoreCommands* getInstance(){
+    auto HighScoreCommands::getInstance() -> HighScoreCommands*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoreCommands::instance();
+                        return HighScoreCommands::instance;
     
 }
 
 
-    public: Command* DISPLAY = new Command("Scores", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: Command* PERSONAL = new Command("Personal", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
 
-    public: Command* WORLD = new Command("World", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1);
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDS_CPP

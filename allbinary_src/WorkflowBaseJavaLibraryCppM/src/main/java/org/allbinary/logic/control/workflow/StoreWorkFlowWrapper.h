@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,14 +39,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -62,9 +61,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreWorkFlowWrapper: public WorkFlowWrapper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: StoreWorkFlowWrapper(Object* anyType);
 
@@ -78,3 +81,22 @@ public: StoreWorkFlowWrapper(Object* anyType);
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/control/workflow/WorkFlowWrapper.h")
+#include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
+#endif
+
+        #endif
+    

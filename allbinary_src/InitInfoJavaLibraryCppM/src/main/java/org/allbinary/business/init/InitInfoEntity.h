@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,35 +35,15 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/init/db/UserDbInitInfo.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class UserDbInitInfo;
+class StdUtil;
+class PreLogUtil;
+class LogConfigTypeFactory;
+class LogConfigTypes;
+class AbPathData;
+class StringMaker;
 
 
 
@@ -78,8 +63,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/InitSql.h"
-#include "org/allbinary/business/init/InitInfo.h"
+class InitInfo;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InitInfoEntity: public InitSql {
 
     private: const std::string NAME = "InitInfoEntity";
@@ -120,3 +109,46 @@ public: InitInfoEntity();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/UserDbInitInfo.h>)
+#include <org/allbinary/business/init/db/UserDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/business/init/InitSql.h")
+#include "org/allbinary/business/init/InitSql.h"
+#endif
+#if __has_include("org/allbinary/business/init/InitInfo.h")
+#include "org/allbinary/business/init/InitInfo.h"
+#endif
+
+        #endif
+    

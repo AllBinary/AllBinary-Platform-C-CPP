@@ -21,6 +21,11 @@
         #ifndef VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,72 +36,28 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
+class StoreFrontFactory;
+class StoreFrontInterface;
 
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/BasicItemValidation.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/MoneyException.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h>
-
-      
-#include <org/allbinary/globals/GLOBALS2.h>
-
-      
-#include <org/allbinary/globals/URLGLOBALS.h>
-
-      
-#include <org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class BasicItemValidation;
+class MoneyException;
+class InventoryEntity;
+class InventoryEntityFactory;
+class GLOBALS2;
+class URLGLOBALS;
+class HttpFileUploadUtil;
+class LogUtil;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/FileData.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/apache/commons/fileupload/FileItem.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class AbFile;
+class FileData;
+class StringMaker;
+class StringValidationUtil;
+class TransformInfoInterface;
+class CommonSeps;
+class CommonStrings;
+class FileItem;
+class Document;
+class Node;
 
 
 
@@ -117,11 +78,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/InventoryItemView.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UpdateFileValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-    private: static inline const std::string UPDATEPRODUCT = CommonStrings::getInstance()->UPDATE;
+    private: static const std::string UPDATEPRODUCT;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface);
 
@@ -147,3 +112,77 @@ public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface)
 
 
         #endif //VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+#endif
+
+#if __has_include(<org/allbinary/business/user/commerce/inventory/item/BasicItemValidation.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItemValidation.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/MoneyException.h>)
+#include <org/allbinary/business/user/commerce/money/MoneyException.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>)
+#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h>)
+#include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/globals/GLOBALS2.h>)
+#include <org/allbinary/globals/GLOBALS2.h>
+#endif
+#if __has_include(<org/allbinary/globals/URLGLOBALS.h>)
+#include <org/allbinary/globals/URLGLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h>)
+#include <org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileData.h>)
+#include <org/allbinary/logic/io/file/FileData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/apache/commons/fileupload/FileItem.h>)
+#include <org/apache/commons/fileupload/FileItem.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("views/admin/inventory/InventoryItemView.h")
+#include "views/admin/inventory/InventoryItemView.h"
+#endif
+
+        #endif
+    

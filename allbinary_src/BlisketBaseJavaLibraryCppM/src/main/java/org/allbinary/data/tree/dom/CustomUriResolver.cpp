@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_CUSTOMURIRESOLVER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_CUSTOMURIRESOLVER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/CustomUriResolver.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,19 +98,8 @@
         #include "org/allbinary/data/tree/dom/URIResolverStrings.h"
 #include "org/allbinary/data/tree/dom/BasicUriResolver.h"
 
-class CustomUriResolver
-            : public Object
-        , public URIResolver {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: URIResolverStrings* uriResolverStrings = URIResolverStrings::getInstance();
-
-    private: std::string path;
-
-    private: BasicUriResolver* basicURIResolver;
-
-public: CustomUriResolver(std::string path, BasicUriResolver* basicURIResolver){
+CustomUriResolver::CustomUriResolver(std::string path, BasicUriResolver* basicURIResolver) : logUtil(LogUtil::getInstance()), uriResolverStrings(URIResolverStrings::getInstance()){
 this->path= path;
     
 this->basicURIResolver= basicURIResolver;
@@ -110,7 +109,7 @@ this->basicURIResolver= basicURIResolver;
 
                 //@Throws(TransformerException.constructor)
             
-    public: Source* resolve(std::string href, std::string base){
+    auto CustomUriResolver::resolve(std::string href, std::string base) -> Source*{
 
         try {
             
@@ -126,10 +125,10 @@ stringBuffer->append(href);
     AbPath* fileAbPath = dynamic_cast<AbPath*>(new AbFilePath(stringBuffer->toString()));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XMLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XMLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->uriResolverStrings->ATTEMPT);
     
@@ -179,14 +178,14 @@ stringBuffer->append(this->basicURIResolver->getExtension());
 
 
 
-                            throw new TransformerException(&e);
+                            throw TransformerException(&e);
                     
 }
 
 }
 
 
-    public: std::string toString(){
+    auto CustomUriResolver::toString() -> std::string{
 
 
 
@@ -196,7 +195,6 @@ stringBuffer->append(this->basicURIResolver->getExtension());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_CUSTOMURIRESOLVER_CPP

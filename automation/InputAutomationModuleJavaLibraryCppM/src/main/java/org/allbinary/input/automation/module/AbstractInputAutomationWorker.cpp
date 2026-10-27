@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/AbstractInputAutomationWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,40 +86,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
 
-class AbstractInputAutomationWorker
-            : public Object
-        , public RunnableInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: int64_t index= 0;
-
-    private: bool running= false;
-
-    private: InputAutomationActionInterface* inputAutomationActionInterface;
-
-    private: CaptureWorkerInterface* captureWorkerInterface;
-
-    private: ImageComparisonWorker* imageComparisonWorker;
-
-    private: MotionRectanglesWorker* motionRectanglesWorker;
-
-    private: Thread* captureThread;
-
-public: AbstractInputAutomationWorker(InputAutomationActionInterface* inputAutomationActionInterface){
+AbstractInputAutomationWorker::AbstractInputAutomationWorker(InputAutomationActionInterface* inputAutomationActionInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread* thread){
+    auto AbstractInputAutomationWorker::setThread(Thread* thread) -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto AbstractInputAutomationWorker::isRunning() -> bool{
 
 
 
@@ -120,14 +109,14 @@ public: AbstractInputAutomationWorker(InputAutomationActionInterface* inputAutom
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto AbstractInputAutomationWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: bool isAnyDataWorkerRunning(){
+    auto AbstractInputAutomationWorker::isAnyDataWorkerRunning() -> bool{
 
                         if(this->captureThread != 
                                     nullptr
@@ -155,14 +144,14 @@ this->running= running;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void startDataWorkers(){
+    auto AbstractInputAutomationWorker::startDataWorkers() -> void{
 
                         if(!isAnyDataWorkerRunning())
                         
                                     {
                                     this->captureThread= new Thread(this->getCaptureWorker());
     
-this->logUtil->putF("Starting CaptureWorkers - Need more images - Thread State: " +this->captureThread->getState()->toString(), this, "startCaptureWorkers");
+this->logUtil->putF(JavaString::valueOf("Starting CaptureWorkers - Need more images - Thread State: ") +JavaString::valueOf(this->captureThread->getState()->toString()), this, "startCaptureWorkers");
     
 this->captureThread->start();
     
@@ -175,7 +164,7 @@ this->captureThread->start();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void waitForDataWorkers(){
+    auto AbstractInputAutomationWorker::waitForDataWorkers() -> void{
 
         while(isAnyDataWorkerRunning())
         {
@@ -190,7 +179,7 @@ Thread::sleep(250);
 
                 //@Throws(Exception.constructor)
             
-    protected: void stopDataWorkers(){
+    auto AbstractInputAutomationWorker::stopDataWorkers() -> void{
 this->getCaptureWorker()->setRunning(false);
     
 }
@@ -198,16 +187,16 @@ this->getCaptureWorker()->setRunning(false);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto AbstractInputAutomationWorker::process() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void run(){
+    auto AbstractInputAutomationWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -226,7 +215,7 @@ this->process();
     
 this->index++;
     
-this->logUtil->putF(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT() +" Index: " +this->index, this, this->commonStrings->RUN);
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(CommonLabels::getInstance()->ELAPSED +timeHelper->getElapsedTNT()) +JavaString::valueOf(" Index: ")) +JavaString::valueOf(this->index), this, this->commonStrings->RUN);
     
 }
 
@@ -247,7 +236,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-    public: InputAutomationActionInterface* getInputAutomationActionInterface(){
+    auto AbstractInputAutomationWorker::getInputAutomationActionInterface() -> InputAutomationActionInterface*{
 
 
 
@@ -257,13 +246,13 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-    public: void setInputAutomationActionInterface(InputAutomationActionInterface* inputAutomationActionInterface){
+    auto AbstractInputAutomationWorker::setInputAutomationActionInterface(InputAutomationActionInterface* inputAutomationActionInterface) -> void{
 this->inputAutomationActionInterface= inputAutomationActionInterface;
     
 }
 
 
-    protected: CaptureWorkerInterface* getCaptureWorker(){
+    auto AbstractInputAutomationWorker::getCaptureWorker() -> CaptureWorkerInterface*{
 
 
 
@@ -273,13 +262,13 @@ this->inputAutomationActionInterface= inputAutomationActionInterface;
 }
 
 
-    protected: void setCaptureWorker(CaptureWorkerInterface* captureWorkerInterface){
+    auto AbstractInputAutomationWorker::setCaptureWorker(CaptureWorkerInterface* captureWorkerInterface) -> void{
 this->captureWorkerInterface= captureWorkerInterface;
     
 }
 
 
-    protected: ImageComparisonWorker* getImageComparisonWorker(){
+    auto AbstractInputAutomationWorker::getImageComparisonWorker() -> ImageComparisonWorker*{
 
 
 
@@ -289,13 +278,13 @@ this->captureWorkerInterface= captureWorkerInterface;
 }
 
 
-    protected: void setImageComparisonWorker(ImageComparisonWorker* imageComparisonWorker){
+    auto AbstractInputAutomationWorker::setImageComparisonWorker(ImageComparisonWorker* imageComparisonWorker) -> void{
 this->imageComparisonWorker= imageComparisonWorker;
     
 }
 
 
-    protected: MotionRectanglesWorker* getMotionRectanglesWorker(){
+    auto AbstractInputAutomationWorker::getMotionRectanglesWorker() -> MotionRectanglesWorker*{
 
 
 
@@ -305,13 +294,12 @@ this->imageComparisonWorker= imageComparisonWorker;
 }
 
 
-    protected: void setMotionRectanglesWorker(MotionRectanglesWorker* motionRectanglesWorker){
+    auto AbstractInputAutomationWorker::setMotionRectanglesWorker(MotionRectanglesWorker* motionRectanglesWorker) -> void{
 this->motionRectanglesWorker= motionRectanglesWorker;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,14 +43,8 @@
             #include "java/lang/Double.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -65,10 +64,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
-#include "org/allbinary/input/automation/module/game/GraphicsAnalysisUtil.h"
+class GraphicsAnalysisUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MeteredGameObject
-            : public Object
+            : public virtual Object
         , public MeteredGameObjectInterface {
 
     private: std::vector<double> ratios;
@@ -95,11 +98,11 @@ public: MeteredGameObject(std::vector<BufferedImage*> bufferedImage, int32_t min
 
     public: bool isGood();
 
-    protected: void setGood(bool good);
+    /*protected*/ public: void setGood(bool good);
 
     public: bool isDropping();
 
-    protected: void setDropping(bool dropping);
+    /*protected*/ public: void setDropping(bool dropping);
 
     public: std::vector<double> getRatios();
 
@@ -129,3 +132,25 @@ public: MeteredGameObject(std::vector<BufferedImage*> bufferedImage, int32_t min
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h")
+#include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/GraphicsAnalysisUtil.h")
+#include "org/allbinary/input/automation/module/game/GraphicsAnalysisUtil.h"
+#endif
+
+        #endif
+    

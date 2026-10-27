@@ -21,18 +21,19 @@
         #ifndef MIN3D_CORE_RENDERER_H
         #define MIN3D_CORE_RENDERER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/khronos/egl/EGLConfig.h>
-
-      
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
+class EGLConfig;
+class GL10;
 
 
 
@@ -52,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Renderer {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class Renderer
+            : public virtual Object
+         {
 
     public: virtual void onSurfaceCreated(GL10* gl, EGLConfig* config) = 0;
 
@@ -66,3 +73,16 @@ class Renderer {
 
 
         #endif //MIN3D_CORE_RENDERER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(MIN3D_CORE_RENDERER_H_COMPLETE)
+        #define MIN3D_CORE_RENDERER_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/egl/EGLConfig.h>)
+#include <javax/microedition/khronos/egl/EGLConfig.h>
+#endif
+#if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+
+        #endif
+    

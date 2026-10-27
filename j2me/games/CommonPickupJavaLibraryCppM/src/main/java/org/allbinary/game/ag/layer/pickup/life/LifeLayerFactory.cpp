@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/life/LifeLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/pickup/life/LifeLayer.h"
 
-class LifeLayerFactory
-            : public Object
-        , public AllBinaryLayerFactoryInterface {
 
+LifeLayerFactory::LifeLayerFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getInstance(){
+    auto LifeLayerFactory::getInstance() -> AllBinaryLayer*{
 
 
 
@@ -70,7 +80,6 @@ class LifeLayerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERFACTORY_CPP

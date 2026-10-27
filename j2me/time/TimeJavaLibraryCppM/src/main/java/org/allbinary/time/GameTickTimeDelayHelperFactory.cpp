@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_CPP
+        #define ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/GameTickTimeDelayHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,27 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/time/GameTickTimeDelayHelper.h"
 
-class GameTickTimeDelayHelperFactory
-            : public Object
-         {
+auto GameTickTimeDelayHelperFactory::instance_owner() -> GameTickTimeDelayHelper* { static std::unique_ptr<GameTickTimeDelayHelper> value(new GameTickTimeDelayHelper( -1)); return value.get(); }
+GameTickTimeDelayHelper* GameTickTimeDelayHelperFactory::instance = GameTickTimeDelayHelperFactory::instance_owner();
 
-    private: static GameTickTimeDelayHelper* instance() { static std::unique_ptr<GameTickTimeDelayHelper> value(new GameTickTimeDelayHelper( -1)); return value.get(); }
-
-    public: static GameTickTimeDelayHelper* getInstance(){
+    auto GameTickTimeDelayHelperFactory::getInstance() -> GameTickTimeDelayHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameTickTimeDelayHelperFactory::instance();
+                        return GameTickTimeDelayHelperFactory::instance;
     
 }
 
 
-private: GameTickTimeDelayHelperFactory(){
+GameTickTimeDelayHelperFactory::GameTickTimeDelayHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_CPP

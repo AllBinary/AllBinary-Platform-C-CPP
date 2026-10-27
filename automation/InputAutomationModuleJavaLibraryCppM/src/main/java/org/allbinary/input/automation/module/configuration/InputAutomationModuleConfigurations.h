@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,41 +39,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
-
-      
 #include <java/io/FileInputStream.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/List.h>
-
-      
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
-
-      
-#include <org/allbinary/input/automation/module/InputAutomationModuleData.h>
-
-      
-#include <org/allbinary/input/automation/module/NewInputAutomationModulesData.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
-#include <org/w3c/dom/NodeList.h>
-
-      
+class DomDocumentHelper;
+class InputAutomationModuleData;
+class NewInputAutomationModulesData;
+class LogUtil;
+class AbeClientInformationInterface;
+class Document;
+class Node;
+class NodeList;
 
 
 
@@ -87,13 +68,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h"
+        class InputAutomationModuleConfiguration;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationModuleConfigurations
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: HashMap<Object*, Object*>* hashMap;
 
@@ -119,3 +104,49 @@ public: InputAutomationModuleConfigurations();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_H_COMPLETE
+        #if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/io/FileInputStream.h>)
+#include <java/io/FileInputStream.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/List.h>)
+#include <java/util/List.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/DomDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/InputAutomationModuleData.h>)
+#include <org/allbinary/input/automation/module/InputAutomationModuleData.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/NewInputAutomationModulesData.h>)
+#include <org/allbinary/input/automation/module/NewInputAutomationModulesData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<org/w3c/dom/NodeList.h>)
+#include <org/w3c/dom/NodeList.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h")
+#include "org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h"
+#endif
+
+        #endif
+    

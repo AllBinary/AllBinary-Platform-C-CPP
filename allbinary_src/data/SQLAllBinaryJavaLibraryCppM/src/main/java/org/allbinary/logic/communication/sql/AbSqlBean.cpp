@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBEAN_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBEAN_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/sql/AbSqlBean.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,15 +78,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/sql/AbSqlRow.h"
 
-class AbSqlBean: public AbSqlRow {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string METHOD_GET_FIELD = "getField";
-
-    private: const std::string METHOD_IS_SUBSET_OF_ENTRY = "isSubsetOfEntry";
-
-public: AbSqlBean(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlRow(databaseConnectionInfoInterface){
+AbSqlBean::AbSqlBean(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlRow(databaseConnectionInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,27 +89,27 @@ public: AbSqlBean(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlRow(
 }
 
 
-    public: std::string getField(std::string key, std::string value, std::string requestedField){
+    auto AbSqlBean::getField(std::string key, std::string value, std::string requestedField) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.SELECT);
+stringBuffer->append(this->sqlStrings->SELECT);
     
 stringBuffer->append(requestedField);
     
-stringBuffer->append(this->sqlStrings.FROM);
+stringBuffer->append(this->sqlStrings->FROM);
     
 stringBuffer->append(this->getTableName());
     
-stringBuffer->append(this->sqlStrings.WHERE);
+stringBuffer->append(this->sqlStrings->WHERE);
     
 stringBuffer->append(key);
     
-stringBuffer->append(this->sqlStrings.EQUAL_QUOTE);
+stringBuffer->append(this->sqlStrings->EQUAL_QUOTE);
     
 stringBuffer->append(value);
     
-stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
+stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
     std::string sqlStatement = stringBuffer->toString();;
@@ -114,7 +117,7 @@ stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
 
         try {
             
-    std::string field = this->stringUtil.EMPTY_STRING;;
+    std::string field = this->stringUtil->EMPTY_STRING;;
     
 
     ResultSet* rset = executeSQLStatement(sqlStatement);;
@@ -125,16 +128,16 @@ stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
 field= rset->getString(requestedField);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
-stringBuffer->append(this->sqlStrings.SQL_STATEMENT_LABEL);
+stringBuffer->append(this->sqlStrings->SQL_STATEMENT_LABEL);
     
 stringBuffer->append(sqlStatement);
     
-stringBuffer->append(this->sqlStrings.FIELD_VALUE);
+stringBuffer->append(this->sqlStrings->FIELD_VALUE);
     
 stringBuffer->append(field);
     
@@ -162,10 +165,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_GET_FIELD, &e);
+                                    this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_GET_FIELD, &e);
     
 
                                     }
@@ -174,31 +177,31 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->FAILED_SQL_STATEMENT +sqlStatement;
+                        return JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement);
     
 }
 
 }
 
 
-    public: std::string getField(HashMap<Object*, Object*>* keysAndValues, std::string requestedField){
+    auto AbSqlBean::getField(HashMap<Object*, Object*>* keysAndValues, std::string requestedField) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.SELECT);
+stringBuffer->append(this->sqlStrings->SELECT);
     
 stringBuffer->append(requestedField);
     
-stringBuffer->append(this->sqlStrings.FROM);
+stringBuffer->append(this->sqlStrings->FROM);
     
 stringBuffer->append(this->getTableName());
     
-stringBuffer->append(this->sqlStrings.WHERE);
+stringBuffer->append(this->sqlStrings->WHERE);
     
 
         try {
             
-    std::string field = this->stringUtil.EMPTY_STRING;;
+    std::string field = this->stringUtil->EMPTY_STRING;;
     
 
     Set* set = keysAndValues->keySet();;
@@ -228,17 +231,17 @@ value= .toCharArray();
     
 stringBuffer->append(key);
     
-stringBuffer->append(this->sqlStrings.EQUAL_QUOTE);
+stringBuffer->append(this->sqlStrings->EQUAL_QUOTE);
     
 stringBuffer->append(value);
     
-stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
+stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
                         if(i < size -1)
                         
                                     {
-                                    stringBuffer->append(this->sqlStrings.AND);
+                                    stringBuffer->append(this->sqlStrings->AND);
     
 
                                     }
@@ -257,16 +260,16 @@ stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
 field= rset->getString(requestedField);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
-stringBuffer->append(this->sqlStrings.SQL_STATEMENT_LABEL);
+stringBuffer->append(this->sqlStrings->SQL_STATEMENT_LABEL);
     
 stringBuffer->append(sqlStatement);
     
-stringBuffer->append(this->sqlStrings.FIELD_VALUE);
+stringBuffer->append(this->sqlStrings->FIELD_VALUE);
     
 stringBuffer->append(field);
     
@@ -297,10 +300,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
     std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_GET_FIELD, &e);
+                                    this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_GET_FIELD, &e);
     
 
                                     }
@@ -309,18 +312,18 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_FIELD);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->FAILED_SQL_STATEMENT +sqlStatement;
+                        return JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement);
     
 }
 
 }
 
 
-    public: std::string isSubsetOfEntry(std::string key, std::string value, HashMap<Object*, Object*>* columnsAndValues){
+    auto AbSqlBean::isSubsetOfEntry(std::string key, std::string value, HashMap<Object*, Object*>* columnsAndValues) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.SELECT);
+stringBuffer->append(this->sqlStrings->SELECT);
     
 
         try {
@@ -330,7 +333,7 @@ stringBuffer->append(this->sqlStrings.SELECT);
 
     int32_t size = keyArray.size();;
     
-stringBuffer->append(this->commonSeps.SPACE);
+stringBuffer->append(this->commonSeps->SPACE);
     
 stringBuffer->append(key);
     
@@ -341,25 +344,25 @@ stringBuffer->append(key);
                         for (
     int32_t i = 0;i < size; i++)
         {
-stringBuffer->append(this->commonSeps.SPACE);
+stringBuffer->append(this->commonSeps->SPACE);
     
-stringBuffer->append(keyArray[i].toString());
+stringBuffer->append(keyArray[i]->toString());
     
 }
 
-stringBuffer->append(this->sqlStrings.FROM);
+stringBuffer->append(this->sqlStrings->FROM);
     
 stringBuffer->append(this->getTableName());
     
-stringBuffer->append(this->sqlStrings.WHERE);
+stringBuffer->append(this->sqlStrings->WHERE);
     
 stringBuffer->append(key);
     
-stringBuffer->append(this->sqlStrings.EQUAL_QUOTE);
+stringBuffer->append(this->sqlStrings->EQUAL_QUOTE);
     
 stringBuffer->append(value);
     
-stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
+stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
     std::string sqlStatement = stringBuffer->toString();;
@@ -389,7 +392,7 @@ stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
                         for (
     int32_t i = 0;i < size2; i++)
         {
-columnName= keyArray2[i].toString();
+columnName= keyArray2[i]->toString();
     
 field= rset->getObject(columnName)->toString();
     
@@ -401,7 +404,7 @@ field= rset->getObject(columnName)->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org.allbinary.globals.GLOBALS2.NOTASUBSET;
+                        return org.allbinary->globals->GLOBALS2->NOTASUBSET;
     
 
                                     }
@@ -418,7 +421,7 @@ field= rset->getObject(columnName)->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org.allbinary.globals.GLOBALS2.NOTASUBSET;
+                        return org.allbinary->globals->GLOBALS2->NOTASUBSET;
     
 
                                     }
@@ -428,7 +431,7 @@ field= rset->getObject(columnName)->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org.allbinary.globals.GLOBALS2.ISASUBSET;
+                        return org.allbinary->globals->GLOBALS2->ISASUBSET;
     
 
                         }
@@ -441,10 +444,10 @@ field= rset->getObject(columnName)->toString();
     std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_IS_SUBSET_OF_ENTRY, &e);
+                                    this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_IS_SUBSET_OF_ENTRY, &e);
     
 
                                     }
@@ -453,14 +456,13 @@ field= rset->getObject(columnName)->toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->FAILED_SQL_STATEMENT +sqlStatement;
+                        return JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBEAN_CPP

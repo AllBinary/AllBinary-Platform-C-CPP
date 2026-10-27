@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/test/TestModuleFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,13 +71,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/game/test/JPanel.h"
 
-class TestModuleFactory: public AbstractInputAutomationFactory {
+std::string TestModuleFactory::NAME = JavaString::valueOf("Test New Game") +JavaString::valueOf(InputAutomationModuleData::MODULE_NAME_END);
 
-    private: static inline std::string NAME = "Test New Game" +InputAutomationModuleData::MODULE_NAME_END;
-
-    private: BlankModuleConfigurationJPanel* blankModuleConfigurationJPanel;
-
-public: TestModuleFactory() : AbstractInputAutomationFactory(NAME, new BlankModuleConfigurationJPanel()){
+TestModuleFactory::TestModuleFactory() : AbstractInputAutomationFactory(NAME, new BlankModuleConfigurationJPanel()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,7 +83,7 @@ public: TestModuleFactory() : AbstractInputAutomationFactory(NAME, new BlankModu
 }
 
 
-    public: std::string getName(){
+    auto TestModuleFactory::getName() -> std::string{
 
 
 
@@ -87,7 +93,7 @@ public: TestModuleFactory() : AbstractInputAutomationFactory(NAME, new BlankModu
 }
 
 
-    public: JPanel* getConfigurationJPanel(){
+    auto TestModuleFactory::getConfigurationJPanel() -> JPanel*{
 
 
 
@@ -100,7 +106,7 @@ public: TestModuleFactory() : AbstractInputAutomationFactory(NAME, new BlankModu
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: RunnableInterface* getInstance(){
+    auto TestModuleFactory::getInstance() -> RunnableInterface*{
 
 
 
@@ -110,7 +116,6 @@ public: TestModuleFactory() : AbstractInputAutomationFactory(NAME, new BlankModu
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageUnifierUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,31 +75,24 @@
 #include "org/allbinary/media/image/Graphics2D.h"
 #include "org/allbinary/media/image/ImageUnifierProperties.h"
 
-class ImageUnifierUtil
-            : public Object
-         {
+auto ImageUnifierUtil::instance_owner() -> ImageUnifierUtil* { static std::unique_ptr<ImageUnifierUtil> value(new ImageUnifierUtil()); return value.get(); }
+ImageUnifierUtil* ImageUnifierUtil::instance = ImageUnifierUtil::instance_owner();
 
-    private: static ImageUnifierUtil* instance() { static std::unique_ptr<ImageUnifierUtil> value(new ImageUnifierUtil()); return value.get(); }
-
-    public: static ImageUnifierUtil* getInstance(){
+    auto ImageUnifierUtil::getInstance() -> ImageUnifierUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageUnifierUtil::instance();
+                        return ImageUnifierUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-private: ImageUnifierUtil(){
+ImageUnifierUtil::ImageUnifierUtil() : logUtil(LogUtil::getInstance()), imageUtil(ImageUtil::getInstance()){
 }
 
 
-    public: GraphicsConfiguration* getDefaultConfiguration(){
+    auto ImageUnifierUtil::getDefaultConfiguration() -> GraphicsConfiguration*{
 
     GraphicsEnvironment* ge = GraphicsEnvironment::getLocalGraphicsEnvironment();;
     
@@ -105,14 +108,14 @@ private: ImageUnifierUtil(){
 }
 
 
-    public: BufferedImage* getImage(std::vector<BufferedImage*> bufferedImageArray, ImageUnifierProperties* imageUnifierProperties){
+    auto ImageUnifierUtil::getImage(std::vector<BufferedImage*> bufferedImageArray, ImageUnifierProperties* imageUnifierProperties) -> BufferedImage*{
 
     BufferedImage* newBufferedImage = this->imageUtil->create(imageUnifierProperties->getWidth(), imageUnifierProperties->getHeight());;
     
 
     CommonLabels* commonLabels = CommonLabels::getInstance();;
     
-this->logUtil->putF("Setting Image - " +commonLabels->WIDTH_LABEL +newBufferedImage->getWidth() +commonLabels->HEIGHT_LABEL +newBufferedImage->getHeight(), this, "getImage");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Setting Image - ") +JavaString::valueOf(commonLabels->WIDTH_LABEL)) +JavaString::valueOf(newBufferedImage->getWidth())) +JavaString::valueOf(commonLabels->HEIGHT_LABEL)) +JavaString::valueOf(newBufferedImage->getHeight()), this, "getImage");
     
 
     Graphics2D* g = newBufferedImage->createGraphics();;
@@ -136,7 +139,7 @@ this->logUtil->putF("Setting Image - " +commonLabels->WIDTH_LABEL +newBufferedIm
 
     int32_t y = imageUnifierProperties->getImageUnifierCell()->getHeight()->intValue() *rowIndex;;
     
-this->logUtil->putF("Adding Image: " +index +" x: " +x +" y: " +y, this, "getImage");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Adding Image: ") +JavaString::valueOf(index)) +JavaString::valueOf(" x: ")) +JavaString::valueOf(x)) +JavaString::valueOf(" y: ")) +JavaString::valueOf(y), this, "getImage");
     
 g->drawImage(bufferedImageArray[index], x, y, imageUnifierProperties->getImageUnifierCell()->getWidth()->intValue(), imageUnifierProperties->getImageUnifierCell()->getHeight()->intValue(), 
                             nullptr);
@@ -168,7 +171,6 @@ g->dispose();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERUTIL_CPP

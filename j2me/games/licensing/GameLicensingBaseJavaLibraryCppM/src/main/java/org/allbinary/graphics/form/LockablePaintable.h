@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LockedResources.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LockedUtil.h>
-
-      
+class Graphics;
+class Animation;
+class FeaturedAnimationInterfaceFactoryInterfaceFactory;
+class LockedResources;
+class LockedUtil;
 
 
 
@@ -64,9 +59,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/ItemPaintable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LockablePaintable: public ItemPaintable {
 
-    private: Animation* animation = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(LockedResources::getInstance()->LOCKED_DEMO_GAME_FEATURE_RESOURCE)->getInstance(0);
+    private: Animation* animation;
 
     private: int32_t lockedIndex;
 
@@ -74,9 +73,9 @@ public: LockablePaintable(int32_t lockedIndex);
 
     public: void paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y);
 
-    protected: int32_t getLockedIndex();
+    /*protected*/ public: int32_t getLockedIndex();
 
-    protected: Animation* getAnimation();
+    /*protected*/ public: Animation* getAnimation();
 
 };
 
@@ -84,3 +83,28 @@ public: LockablePaintable(int32_t lockedIndex);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>)
+#include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LockedResources.h>)
+#include <org/allbinary/logic/system/security/licensing/LockedResources.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LockedUtil.h>)
+#include <org/allbinary/logic/system/security/licensing/LockedUtil.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemPaintable.h")
+#include "org/allbinary/graphics/form/ItemPaintable.h"
+#endif
+
+        #endif
+    

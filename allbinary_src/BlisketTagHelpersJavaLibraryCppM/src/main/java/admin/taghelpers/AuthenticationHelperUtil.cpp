@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_AUTHENTICATIONHELPERUTIL_CPP
+        #define ADMIN_TAGHELPERS_AUTHENTICATIONHELPERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/AuthenticationHelperUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,32 +91,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/AuthenticationHelper.h"
 
-class AuthenticationHelperUtil
-            : public Object
-         {
 
-    private: static AuthenticationHelperUtil* instance() { static std::unique_ptr<AuthenticationHelperUtil> value(new AuthenticationHelperUtil()); return value.get(); }
+AuthenticationHelperUtil::AuthenticationHelperUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto AuthenticationHelperUtil::instance_owner() -> AuthenticationHelperUtil* { static std::unique_ptr<AuthenticationHelperUtil> value(new AuthenticationHelperUtil()); return value.get(); }
+AuthenticationHelperUtil* AuthenticationHelperUtil::instance = AuthenticationHelperUtil::instance_owner();
 
-    public: static AuthenticationHelperUtil* getInstance(){
+    auto AuthenticationHelperUtil::getInstance() -> AuthenticationHelperUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AuthenticationHelperUtil::instance();
+                        return AuthenticationHelperUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: bool isAuthorized(AuthenticationHelper* authenticationHelper, std::string filePath){
+    auto AuthenticationHelperUtil::isAuthorized(AuthenticationHelper* authenticationHelper, std::string filePath) -> bool{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->putF(CommonLabels::getInstance()->START +filePath, this, "isAuthorized()");
+                                    this->logUtil->putF(JavaString::valueOf(CommonLabels::getInstance()->START) +JavaString::valueOf(filePath), this, "isAuthorized()");
     
 
                                     }
@@ -134,7 +142,7 @@ class AuthenticationHelperUtil
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Authorized", this, "isAuthorized()");
@@ -153,10 +161,10 @@ class AuthenticationHelperUtil
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Not Authorized: " +basicUserRole->toString(), this, "isAuthorized()");
+                                    this->logUtil->putF(JavaString::valueOf("Not Authorized: ") +JavaString::valueOf(basicUserRole->toString()), this, "isAuthorized()");
     
 
                                     }
@@ -173,7 +181,6 @@ class AuthenticationHelperUtil
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_AUTHENTICATIONHELPERUTIL_CPP

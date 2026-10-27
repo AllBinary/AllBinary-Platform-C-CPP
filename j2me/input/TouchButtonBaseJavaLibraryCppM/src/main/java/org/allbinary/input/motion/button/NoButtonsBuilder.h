@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSBUILDER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSBUILDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class LogUtil;
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -58,9 +57,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoButtonsBuilder: public BaseTouchInput {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: NoButtonsBuilder();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: BasicArrayList* getList();
 
@@ -70,3 +77,22 @@ class NoButtonsBuilder: public BaseTouchInput {
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSBUILDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSBUILDER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSBUILDER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/BaseTouchInput.h")
+#include "org/allbinary/input/motion/button/BaseTouchInput.h"
+#endif
+
+        #endif
+    

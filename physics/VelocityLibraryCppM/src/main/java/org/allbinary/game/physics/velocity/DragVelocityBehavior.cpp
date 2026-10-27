@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_DRAGVELOCITYBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_DRAGVELOCITYBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/velocity/DragVelocityBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +58,13 @@
         #include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
 #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 
-class DragVelocityBehavior: public VelocityBehaviorBase {
 
-    public: static DragVelocityBehavior* instance() { static std::unique_ptr<DragVelocityBehavior> value(new DragVelocityBehavior()); return value.get(); }
+DragVelocityBehavior::DragVelocityBehavior() {
+        }
+        auto DragVelocityBehavior::instance_owner() -> DragVelocityBehavior* { static std::unique_ptr<DragVelocityBehavior> value(new DragVelocityBehavior()); return value.get(); }
+DragVelocityBehavior* DragVelocityBehavior::instance = DragVelocityBehavior::instance_owner();
 
-    public: void reduce(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator){
+    auto DragVelocityBehavior::reduce(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator) -> void{
 
                         if(velocityProperties->getVelocityXBasicDecimalP()->getUnscaled() != 0)
                         
@@ -84,7 +96,7 @@ basicDecimal->divideint(denominator);
 }
 
 
-    public: void reduceX(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator){
+    auto DragVelocityBehavior::reduceX(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator) -> void{
 
     BasicDecimal* basicDecimal = velocityProperties->getVelocityXBasicDecimalP();;
     
@@ -102,7 +114,7 @@ basicDecimal->divideint(denominator);
 }
 
 
-    public: void reduceY(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator){
+    auto DragVelocityBehavior::reduceY(BasicVelocityProperties* velocityProperties, int32_t nominator, int32_t denominator) -> void{
 
                         if(velocityProperties->getVelocityYBasicDecimalP()->getUnscaled() != 0)
                         
@@ -120,7 +132,6 @@ basicDecimal->divideint(denominator);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_DRAGVELOCITYBEHAVIOR_CPP

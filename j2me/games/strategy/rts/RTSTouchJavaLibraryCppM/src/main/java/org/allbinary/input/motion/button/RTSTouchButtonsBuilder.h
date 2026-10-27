@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_RTSTOUCHBUTTONSBUILDER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_RTSTOUCHBUTTONSBUILDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class BasicArrayListUtil;
+class LogUtil;
 
 
 
@@ -60,13 +57,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/BaseTouchInput.h"
-#include "org/allbinary/input/motion/button/BasicTouchButtonsBuilder.h"
-#include "org/allbinary/input/motion/button/BuildingScrollTouchButtonsBuilder.h"
-#include "org/allbinary/input/motion/button/UpgradeDowngradeTouchButtonsBuilder.h"
+class BasicTouchButtonsBuilder;
+class BuildingScrollTouchButtonsBuilder;
+class UpgradeDowngradeTouchButtonsBuilder;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSTouchButtonsBuilder: public BaseTouchInput {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: RTSTouchButtonsBuilder();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: BasicArrayList* getList();
 
@@ -76,3 +81,34 @@ class RTSTouchButtonsBuilder: public BaseTouchInput {
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_RTSTOUCHBUTTONSBUILDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_RTSTOUCHBUTTONSBUILDER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_RTSTOUCHBUTTONSBUILDER_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/BaseTouchInput.h")
+#include "org/allbinary/input/motion/button/BaseTouchInput.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/BasicTouchButtonsBuilder.h")
+#include "org/allbinary/input/motion/button/BasicTouchButtonsBuilder.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/BuildingScrollTouchButtonsBuilder.h")
+#include "org/allbinary/input/motion/button/BuildingScrollTouchButtonsBuilder.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/UpgradeDowngradeTouchButtonsBuilder.h")
+#include "org/allbinary/input/motion/button/UpgradeDowngradeTouchButtonsBuilder.h"
+#endif
+
+        #endif
+    

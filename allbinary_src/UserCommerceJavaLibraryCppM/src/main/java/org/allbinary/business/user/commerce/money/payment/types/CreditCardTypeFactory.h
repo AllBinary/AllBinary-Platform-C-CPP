@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +52,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/types/CreditCardType.h"
+        class CreditCardType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CreditCardTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static CreditCardTypeFactory* instance() { static std::unique_ptr<CreditCardTypeFactory> value(new CreditCardTypeFactory()); return value.get(); }
+    private: static CreditCardTypeFactory* instance_owner();
+    private: static CreditCardTypeFactory* instance;
 
     public: static CreditCardTypeFactory* getInstance();
 
-    public: CreditCardType* VISA = new CreditCardType("Visa");
 
-    public: CreditCardType* MASTERCARD = new CreditCardType("MasterCard");
+            
+    public: CreditCardTypeFactory();
+        
+    public: CreditCardType* VISA;
 
-    public: CreditCardType* DISCOVER = new CreditCardType("Discover");
+    public: CreditCardType* MASTERCARD;
 
-    public: CreditCardType* AMERICANEXPRESS = new CreditCardType("AMX");
+    public: CreditCardType* DISCOVER;
+
+    public: CreditCardType* AMERICANEXPRESS;
 
 };
 
@@ -71,3 +85,13 @@ class CreditCardTypeFactory
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CREDITCARDTYPEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/business/user/commerce/money/payment/types/CreditCardType.h")
+#include "org/allbinary/business/user/commerce/money/payment/types/CreditCardType.h"
+#endif
+
+        #endif
+    

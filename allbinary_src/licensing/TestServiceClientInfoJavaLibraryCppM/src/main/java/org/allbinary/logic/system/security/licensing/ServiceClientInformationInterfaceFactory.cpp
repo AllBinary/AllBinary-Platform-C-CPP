@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SERVICECLIENTINFORMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SERVICECLIENTINFORMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/ServiceClientInformationInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +57,22 @@
         #include "org/allbinary/logic/system/security/licensing/TestClientInformation.h"
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
 
-class ServiceClientInformationInterfaceFactory
-            : public Object
-         {
 
-    private: static TestClientInformation* instance() { static std::unique_ptr<TestClientInformation> value(new TestClientInformation()); return value.get(); }
+ServiceClientInformationInterfaceFactory::ServiceClientInformationInterfaceFactory() {
+        }
+        auto ServiceClientInformationInterfaceFactory::instance_owner() -> TestClientInformation* { static std::unique_ptr<TestClientInformation> value(new TestClientInformation()); return value.get(); }
+TestClientInformation* ServiceClientInformationInterfaceFactory::instance = ServiceClientInformationInterfaceFactory::instance_owner();
 
-    public: static AbeClientInformationInterface* getInstance(){
+    auto ServiceClientInformationInterfaceFactory::getInstance() -> AbeClientInformationInterface*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ServiceClientInformationInterfaceFactory::instance();
+                        return ServiceClientInformationInterfaceFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SERVICECLIENTINFORMATIONINTERFACEFACTORY_CPP

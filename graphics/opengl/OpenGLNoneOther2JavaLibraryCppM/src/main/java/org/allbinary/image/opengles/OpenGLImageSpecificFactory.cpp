@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLImageSpecificFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,25 +64,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLImageSpecificFactory
-            : public Object
-         {
 
-    private: static OpenGLImageSpecificFactory* instance() { static std::unique_ptr<OpenGLImageSpecificFactory> value(new OpenGLImageSpecificFactory()); return value.get(); }
+OpenGLImageSpecificFactory::OpenGLImageSpecificFactory() {
+        }
+        auto OpenGLImageSpecificFactory::instance_owner() -> OpenGLImageSpecificFactory* { static std::unique_ptr<OpenGLImageSpecificFactory> value(new OpenGLImageSpecificFactory()); return value.get(); }
+OpenGLImageSpecificFactory* OpenGLImageSpecificFactory::instance = OpenGLImageSpecificFactory::instance_owner();
 
-    public: static OpenGLImageSpecificFactory* getInstance(){
+    auto OpenGLImageSpecificFactory::getInstance() -> OpenGLImageSpecificFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLImageSpecificFactory::instance();
+                        return OpenGLImageSpecificFactory::instance;
     
 }
 
 
-    public: bool updating = false;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_CPP

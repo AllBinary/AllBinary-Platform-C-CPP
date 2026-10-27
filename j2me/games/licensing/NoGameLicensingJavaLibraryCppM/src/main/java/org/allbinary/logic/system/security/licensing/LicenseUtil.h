@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
+class CommandListener;
 
 
 
@@ -51,14 +54,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static LicenseUtil* instance() { static std::unique_ptr<LicenseUtil> value(new LicenseUtil()); return value.get(); }
+    private: static LicenseUtil* instance_owner();
+    private: static LicenseUtil* instance;
 
     public: static LicenseUtil* getInstance();
 
+
+            
+    public: LicenseUtil();
+        
     public: void init();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
@@ -75,3 +87,13 @@ class LicenseUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+
+        #endif
+    

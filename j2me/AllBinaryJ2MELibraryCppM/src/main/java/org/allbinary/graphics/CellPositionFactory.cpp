@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/CellPositionFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,37 +69,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/CellPosition.h"
 
-class CellPositionFactory
-            : public Object
-         {
+auto CellPositionFactory::SINGLETON_owner() -> CellPositionFactory* { static std::unique_ptr<CellPositionFactory> value(new CellPositionFactory()); return value.get(); }
+CellPositionFactory* CellPositionFactory::SINGLETON = CellPositionFactory::SINGLETON_owner();
 
-    private: static CellPositionFactory* SINGLETON() { static std::unique_ptr<CellPositionFactory> value(new CellPositionFactory()); return value.get(); }
-
-    public: static CellPositionFactory* getInstance(){
+    auto CellPositionFactory::getInstance() -> CellPositionFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPositionFactory::SINGLETON();
+                        return CellPositionFactory::SINGLETON;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: CellPosition* NONE = new CellPosition( -1,  -1,  -1,  -1);
-
-    private: std::vector<std::vector<CellPosition*>> cellPositionArray = std::vector<std::vector<CellPosition*>>(0, std::vector<CellPosition*>(0));
-
-    private: int32_t columns= 0;
-
-    private: int32_t rows= 0;
-
-private: CellPositionFactory(){
+CellPositionFactory::CellPositionFactory() : logUtil(LogUtil::getInstance()), NONE(new CellPosition( -1,  -1,  -1,  -1)), cellPositionArray(std::vector<std::vector<CellPosition*>>(0, std::vector<CellPosition*>(0))){
 }
 
 
-    public: void init(int32_t columns, int32_t rows){
+    auto CellPositionFactory::init(int32_t columns, int32_t rows) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -135,7 +132,7 @@ this->createInstance(column, row);
 }
 
 
-    public: CellPosition* getInstanceColRow(int32_t i_column, int32_t i_row){
+    auto CellPositionFactory::getInstanceColRow(int32_t i_column, int32_t i_row) -> CellPosition*{
 
         try {
             
@@ -164,7 +161,7 @@ this->logUtil->put((new StringMaker())->append("columns: ")->appendint(this->get
 }
 
 
-    public: CellPosition* createInstance(int32_t i_column, int32_t i_row){
+    auto CellPositionFactory::createInstance(int32_t i_column, int32_t i_row) -> CellPosition*{
 
     CellPosition* cellPositionCanBeNull = this->cellPositionArray[i_column][i_row];;
     
@@ -190,7 +187,7 @@ this->cellPositionArray[i_column][i_row]= cellPositionCanBeNull;
 }
 
 
-    public: int32_t getColumns(){
+    auto CellPositionFactory::getColumns() -> int32_t{
 
 
 
@@ -200,7 +197,7 @@ this->cellPositionArray[i_column][i_row]= cellPositionCanBeNull;
 }
 
 
-    public: int32_t getRows(){
+    auto CellPositionFactory::getRows() -> int32_t{
 
 
 
@@ -210,7 +207,6 @@ this->cellPositionArray[i_column][i_row]= cellPositionCanBeNull;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_CPP

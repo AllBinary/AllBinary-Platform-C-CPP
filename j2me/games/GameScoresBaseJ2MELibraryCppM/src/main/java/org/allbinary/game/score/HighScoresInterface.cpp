@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,19 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/HighScore.h"
 
-class HighScoresInterface {
+//Interface - declared in the header
 
-    public: virtual BasicArrayList* getList() = 0;
 
-    public: virtual void addHighScore(HighScore* newHighScore) = 0;
 
-    public: virtual int32_t getTotal() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isBestScore(HighScore* newHighScore) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_CPP

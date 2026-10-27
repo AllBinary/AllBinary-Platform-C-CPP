@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/PickupLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,15 +95,8 @@
 #include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h"
 #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 
-class PickupLayer: public MultiPlayerGameLayer, public PickedUpLayerInterface, public PickupableInterface {
 
-    private: PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
-
-    private: bool destroyed= false;
-
-    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
-
-public: PickupLayer(std::string name, RemoteInfo* remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, Animation* animationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition) : MultiPlayerGameLayer(remoteInfo, BasicGroupFactory::getInstance()->NONE_ARRAY, name, rectangle, viewPosition){
+PickupLayer::PickupLayer(std::string name, RemoteInfo* remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, Animation* animationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition) : MultiPlayerGameLayer(remoteInfo, BasicGroupFactory::getInstance()->NONE_ARRAY, name, rectangle, viewPosition), pickedUpLayerInterfaceFactoryInterface(CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY), animationInterface(NullAnimationFactory::getFactoryInstance()->getInstance(0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -111,7 +114,7 @@ this->init(pickedUpLayerInterfaceFactoryInterface, animationInterface);
 }
 
 
-    public: void init(PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, Animation* animationInterface){
+    auto PickupLayer::init(PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface, Animation* animationInterface) -> void{
 this->pickedUpLayerInterfaceFactoryInterface= pickedUpLayerInterfaceFactoryInterface;
     
 this->animationInterface= animationInterface;
@@ -121,13 +124,13 @@ this->setDestroyed(false);
 }
 
 
-    public: void initXYZ(int32_t x, int32_t y, int32_t z){
+    auto PickupLayer::initXYZ(int32_t x, int32_t y, int32_t z) -> void{
 this->setPosition(x, y, z);
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto PickupLayer::paint(Graphics* graphics) -> void{
 
     ViewPositionBase* viewPosition = this->getViewPosition();;
     
@@ -142,7 +145,7 @@ this->animationInterface->paintXY(graphics, viewX, viewY);
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto PickupLayer::paintThreed(Graphics* graphics) -> void{
 
     ViewPositionBase* viewPosition = this->getViewPosition();;
     
@@ -157,7 +160,7 @@ this->animationInterface->paintThreedXYZ(graphics, viewX, viewY, 3);
 }
 
 
-    public: PickedUpLayerInterfaceFactoryInterface* getPickedUpLayerInterfaceFactoryInterface(){
+    auto PickupLayer::getPickedUpLayerInterfaceFactoryInterface() -> PickedUpLayerInterfaceFactoryInterface*{
 
 
 
@@ -167,13 +170,13 @@ this->animationInterface->paintThreedXYZ(graphics, viewX, viewY, 3);
 }
 
 
-    public: void setPickedUp(){
+    auto PickupLayer::setPickedUp() -> void{
 this->setDestroyed(true);
     
 }
 
 
-    public: bool isDestroyed(){
+    auto PickupLayer::isDestroyed() -> bool{
 
 
 
@@ -183,7 +186,7 @@ this->setDestroyed(true);
 }
 
 
-    public: void setDestroyed(bool destroyed){
+    auto PickupLayer::setDestroyed(bool destroyed) -> void{
 this->destroyed= destroyed;
     
 
@@ -198,11 +201,11 @@ this->destroyed= destroyed;
 }
 
 
-    public: void damage(int32_t damage, int32_t damageType){
+    auto PickupLayer::damage(int32_t damage, int32_t damageType) -> void{
 }
 
 
-    public: int32_t getDamage(int32_t damageType){
+    auto PickupLayer::getDamage(int32_t damageType) -> int32_t{
 
 
 
@@ -214,7 +217,7 @@ this->destroyed= destroyed;
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL* gl){
+    auto PickupLayer::set(GL* gl) -> void{
 
     OpenGLSurfaceChangedInterface* openGLSurfaceChangedInterface = dynamic_cast<OpenGLSurfaceChangedInterface*>(this->animationInterface);;
     
@@ -223,7 +226,6 @@ openGLSurfaceChangedInterface->set(gl);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYER_CPP

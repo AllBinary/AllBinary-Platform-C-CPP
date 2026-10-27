@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class AnalogLocationInputFactory;
+class LogUtil;
+class StringMaker;
 
 
 
@@ -59,25 +58,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LocalPlayerInputIdFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static LocalPlayerInputIdFactory* instance() { static std::unique_ptr<LocalPlayerInputIdFactory> value(new LocalPlayerInputIdFactory()); return value.get(); }
+    private: static LocalPlayerInputIdFactory* instance_owner();
+    private: static LocalPlayerInputIdFactory* instance;
 
     public: static LocalPlayerInputIdFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     public: const int32_t MAX_NUMBER_OF_PLAYERS = 6;
 
     private: const int32_t MAX_FAST_DEVICEID = 65;
 
-    private: const std::vector<int32_t> deviceIdToplayerId = std::vector<int32_t>(this->MAX_FAST_DEVICEID);
+    private: std::vector<int32_t> deviceIdToplayerId;
 
-    private: const std::vector<int32_t> playerIdToDeviceId = std::vector<int32_t>(this->MAX_NUMBER_OF_PLAYERS);
+    private: std::vector<int32_t> playerIdToDeviceId;
 
-    private: const std::vector<bool> playersInPlay = std::vector<bool>(this->MAX_NUMBER_OF_PLAYERS);
+    private: std::vector<bool> playersInPlay;
 
     private: int32_t totalDevicesMapped = 0;
 
@@ -103,3 +107,19 @@ private: LocalPlayerInputIdFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/analog/AnalogLocationInputFactory.h>)
+#include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

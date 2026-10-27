@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/image/PaintableToImageUtil.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/view/ViewPositionBase.h>
-
-      
+class Graphics;
+class Image;
+class NullImage;
+class Anchor;
+class PaintableToImageUtil;
+class BasicGeographicMap;
+class ViewPositionBase;
 
 
 
@@ -70,17 +61,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/geographic/map/MiniMapLayer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageMiniMapLayer: public MiniMapLayer {
 
-    private: Image* image = NullImage::NULL_IMAGE;
+    private: Image* image;
 
 public: ImageMiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositionBase* viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    protected: void init();
+    /*protected*/ public: void init();
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
     public: void paint(Graphics* graphics);
 
@@ -90,3 +85,34 @@ public: ImageMiniMapLayer(BasicGeographicMap* geographicMapInterface, ViewPositi
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_IMAGEMINIMAPLAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/image/PaintableToImageUtil.h>)
+#include <org/allbinary/image/PaintableToImageUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPositionBase.h>)
+#include <org/allbinary/view/ViewPositionBase.h>
+#endif
+#if __has_include("org/allbinary/game/layer/geographic/map/MiniMapLayer.h")
+#include "org/allbinary/game/layer/geographic/map/MiniMapLayer.h"
+#endif
+
+        #endif
+    

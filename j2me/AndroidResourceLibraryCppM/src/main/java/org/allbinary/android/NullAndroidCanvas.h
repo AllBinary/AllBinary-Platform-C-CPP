@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_NULLANDROIDCANVAS_H
         #define ORG_ALLBINARY_ANDROID_NULLANDROIDCANVAS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Object.h"
         
-#include <android/graphics/Canvas.h>
-
-      
-#include <android/media/MediaPlayer.h>
-
-      
+class Canvas;
+class MediaPlayer;
 
 
 
@@ -56,17 +57,40 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullAndroidCanvas
-            : public Object
+            : public virtual Object
          {
 
-    public: static Canvas* NULL_CANVAS() { static std::unique_ptr<Canvas> value(new Canvas()); return value.get(); }
+    private: static Canvas* NULL_CANVAS_owner();
+    public: static Canvas* NULL_CANVAS;
 
-    public: static MediaPlayer* NULL_MEDIA_PLAYER() { static std::unique_ptr<MediaPlayer> value(new MediaPlayer()); return value.get(); }
+    private: static MediaPlayer* NULL_MEDIA_PLAYER_owner();
+    public: static MediaPlayer* NULL_MEDIA_PLAYER;
 
+
+            
+    public: NullAndroidCanvas();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_ANDROID_NULLANDROIDCANVAS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_NULLANDROIDCANVAS_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_NULLANDROIDCANVAS_H_COMPLETE
+        #if __has_include(<android/graphics/Canvas.h>)
+#include <android/graphics/Canvas.h>
+#endif
+#if __has_include(<android/media/MediaPlayer.h>)
+#include <android/media/MediaPlayer.h>
+#endif
+
+        #endif
+    

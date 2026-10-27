@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_BUFFEREDIMAGEUTIL2_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_BUFFEREDIMAGEUTIL2_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/BufferedImageUtil2.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -41,25 +51,23 @@
         #include "org/allbinary/media/image/ImageUtil.h"
 #include "org/allbinary/media/image/Graphics2D.h"
 
-class BufferedImageUtil2
-            : public Object
-         {
 
-    private: static BufferedImageUtil2* instance() { static std::unique_ptr<BufferedImageUtil2> value(new BufferedImageUtil2()); return value.get(); }
+BufferedImageUtil2::BufferedImageUtil2() : imageUtil(ImageUtil::getInstance()) {
+        }
+        auto BufferedImageUtil2::instance_owner() -> BufferedImageUtil2* { static std::unique_ptr<BufferedImageUtil2> value(new BufferedImageUtil2()); return value.get(); }
+BufferedImageUtil2* BufferedImageUtil2::instance = BufferedImageUtil2::instance_owner();
 
-    public: static BufferedImageUtil2* getInstance(){
+    auto BufferedImageUtil2::getInstance() -> BufferedImageUtil2*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BufferedImageUtil2::instance();
+                        return BufferedImageUtil2::instance;
     
 }
 
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-    public: BufferedImage* createSpriteImage(std::vector<BufferedImage*> bufferedImageArray){
+    auto BufferedImageUtil2::createSpriteImage(std::vector<BufferedImage*> bufferedImageArray) -> BufferedImage*{
 
     int32_t columns = bufferedImageArray.size();;
     
@@ -90,8 +98,8 @@ rows= (bufferedImageArray.size() /columns);
                                     }
                                 
 
-    BufferedImage* bufferedImage = this->imageUtil->create(bufferedImageArray[0].getWidth(
-                            nullptr) *columns, bufferedImageArray[0].getHeight(
+    BufferedImage* bufferedImage = this->imageUtil->create(bufferedImageArray[0]->getWidth(
+                            nullptr) *columns, bufferedImageArray[0]->getHeight(
                             nullptr) *rows);;
     
 
@@ -121,10 +129,10 @@ columnIndex= 0;
 
                                     }
                                 
-g->drawImage(bufferedImageArray[index], bufferedImageArray[index].getWidth(
-                            nullptr) *columnIndex, bufferedImageArray[index].getHeight(
-                            nullptr) *rowIndex, bufferedImageArray[index].getWidth(
-                            nullptr), bufferedImageArray[index].getHeight(
+g->drawImage(bufferedImageArray[index], bufferedImageArray[index]->getWidth(
+                            nullptr) *columnIndex, bufferedImageArray[index]->getHeight(
+                            nullptr) *rowIndex, bufferedImageArray[index]->getWidth(
+                            nullptr), bufferedImageArray[index]->getHeight(
                             nullptr), 
                             nullptr);
     
@@ -143,7 +151,6 @@ g->dispose();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_BUFFEREDIMAGEUTIL2_CPP

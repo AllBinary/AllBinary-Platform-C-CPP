@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITION_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptCondition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,17 +93,8 @@
 #include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionJPanel.h"
 #include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionData.h"
 
-class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition, public TimeIntervalActionScriptConditionInterface {
 
-    private: static inline const std::string NAME = "Time Interval";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TimeIntervalActionScriptConditionJPanel* timeIntervalActionScriptConditionJPanel;
-
-    private: TimeDelayHelper* timeHelper;
-
-public: TimeIntervalActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(TimeIntervalActionScriptCondition::NAME, node){
+TimeIntervalActionScriptCondition::TimeIntervalActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(TimeIntervalActionScriptCondition::NAME, node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -138,7 +139,7 @@ this->setTimeDelayHelper(new TimeDelayHelper(Integer.valueOf(interval)));
                             
 
 
-                            throw new Exception("Time Interval Action Script Condition Unknown Node");
+                            throw Exception("Time Interval Action Script Condition Unknown Node");
                     
 
                         }
@@ -152,7 +153,7 @@ this->setTimeDelayHelper(new TimeDelayHelper(Integer.valueOf(interval)));
                             
 
 
-                            throw new Exception("Time Interval Action Script Condition Node Null");
+                            throw Exception("Time Interval Action Script Condition Node Null");
                     
 
                         }
@@ -162,7 +163,7 @@ this->init();
 }
 
 
-public: TimeIntervalActionScriptCondition() : BasicProfileActionScriptCondition(TimeIntervalActionScriptCondition::NAME){
+TimeIntervalActionScriptCondition::TimeIntervalActionScriptCondition() : BasicProfileActionScriptCondition(TimeIntervalActionScriptCondition::NAME), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -176,25 +177,25 @@ this->init();
 }
 
 
-    private: void init(){
+    auto TimeIntervalActionScriptCondition::init() -> void{
 this->timeIntervalActionScriptConditionJPanel= new TimeIntervalActionScriptConditionJPanel(this);
     
 }
 
 
-    public: void showDialog(){
+    auto TimeIntervalActionScriptCondition::showDialog() -> void{
 this->timeIntervalActionScriptConditionJPanel->getTimeIntervalActionJDialog()->setVisible(true);
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto TimeIntervalActionScriptCondition::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 hashMap->put(TimeIntervalActionScriptConditionData::TIME, std::to_string(delay));
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -207,9 +208,9 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TimeIntervalActionScriptCondition::toXmlNode(Document* document) -> Node*{
 
-    Node* node = super.toXmlNode(document);;
+    Node* node = BasicProfileActionScriptCondition::toXmlNode(document);;
     
 node->appendChild(ModDomHelper::createNodeWithValueNodes(document, TimeIntervalActionScriptConditionData::NAME, this->toHashMap()));
     
@@ -222,13 +223,13 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, TimeIntervalA
 }
 
 
-    public: void log(){
-this->logUtil->putF("Time Interval: " +this->timeHelper->delay, this, "log");
+    auto TimeIntervalActionScriptCondition::log() -> void{
+this->logUtil->putF(JavaString::valueOf("Time Interval: ") +JavaString::valueOf(this->timeHelper->delay), this, "log");
     
 }
 
 
-    public: TimeDelayHelper* getTimeDelayHelper(){
+    auto TimeIntervalActionScriptCondition::getTimeDelayHelper() -> TimeDelayHelper*{
 
 
 
@@ -238,7 +239,7 @@ this->logUtil->putF("Time Interval: " +this->timeHelper->delay, this, "log");
 }
 
 
-    public: void setTimeDelayHelper(TimeDelayHelper* timeHelper){
+    auto TimeIntervalActionScriptCondition::setTimeDelayHelper(TimeDelayHelper* timeHelper) -> void{
 this->timeHelper= timeHelper;
     
 }
@@ -246,7 +247,7 @@ this->timeHelper= timeHelper;
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(int64_t frame){
+    auto TimeIntervalActionScriptCondition::shouldProcess(int64_t frame) -> bool{
 
     TimeDelayHelper* timeHelper = this->getTimeDelayHelper();;
     
@@ -260,7 +261,7 @@ this->timeHelper= timeHelper;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.shouldProcess(frame);;
+                        return BasicProfileActionScriptCondition::shouldProcess(frame);;
     
 
                                     }
@@ -274,7 +275,6 @@ this->timeHelper= timeHelper;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITION_CPP

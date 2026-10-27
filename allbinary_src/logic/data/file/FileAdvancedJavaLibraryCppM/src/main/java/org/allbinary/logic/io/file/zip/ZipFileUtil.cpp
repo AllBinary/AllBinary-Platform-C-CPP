@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ZIP_ZIPFILEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ZIP_ZIPFILEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/zip/ZipFileUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,27 +101,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ZipFileUtil
-            : public Object
-         {
 
-    private: static ZipFileUtil* instance() { static std::unique_ptr<ZipFileUtil> value(new ZipFileUtil()); return value.get(); }
+ZipFileUtil::ZipFileUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        auto ZipFileUtil::instance_owner() -> ZipFileUtil* { static std::unique_ptr<ZipFileUtil> value(new ZipFileUtil()); return value.get(); }
+ZipFileUtil* ZipFileUtil::instance = ZipFileUtil::instance_owner();
 
-    public: static ZipFileUtil* getInstance(){
+    auto ZipFileUtil::getInstance() -> ZipFileUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ZipFileUtil::instance();
+                        return ZipFileUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: void create(std::string outFilename, BasicArrayList* fileBasicArrayList){
+    auto ZipFileUtil::create(std::string outFilename, BasicArrayList* fileBasicArrayList) -> void{
 
         try {
             
@@ -121,7 +127,7 @@ class ZipFileUtil
                         if(zipFile->exists())
                         
                                     {
-                                    zipFile->delete();
+                                    zipFile->delete_();
     
 
                                     }
@@ -170,7 +176,7 @@ zipFile->createNewFile();
                         if(file->isFile())
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->appendint(current);
     
@@ -196,7 +202,7 @@ streamUtil->close(fileInputStream);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->putF("Skipping File (Probably Local): " +file->getPath(), this, "create()");
+this->logUtil->putF(JavaString::valueOf("Skipping File (Probably Local): ") +JavaString::valueOf(file->getPath()), this, "create()");
     
 }
 
@@ -222,7 +228,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "create", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void unzip(std::string path, AbFile* zipFile, std::string fileName){
+    auto ZipFileUtil::unzip(std::string path, AbFile* zipFile, std::string fileName) -> void{
 
     std::vector<int8_t> buffer = std::vector<int8_t>(16384);;
     
@@ -261,9 +267,9 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "create", &e);
                                 
                         else {
                             
-    AbFile* entryFile = AbFile::createAbFile(path +entryName);;
+    AbFile* entryFile = AbFile::createAbFile(JavaString::valueOf(path) +JavaString::valueOf(entryName));;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("ZipEntry Name: ");
     
@@ -305,7 +311,6 @@ inputStream->closeEntry();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ZIP_ZIPFILEUTIL_CPP

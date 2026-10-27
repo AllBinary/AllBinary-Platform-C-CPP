@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/OperatingSystemFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,36 +96,25 @@
 #include "org/allbinary/logic/system/os/OperatingSystems.h"
 #include "org/allbinary/logic/system/os/SystemProperties.h"
 
-class OperatingSystemFactory
-            : public Object
-         {
+auto OperatingSystemFactory::instance_owner() -> OperatingSystemFactory* { static std::unique_ptr<OperatingSystemFactory> value(new OperatingSystemFactory()); return value.get(); }
+OperatingSystemFactory* OperatingSystemFactory::instance = OperatingSystemFactory::instance_owner();
 
-    private: static OperatingSystemFactory* instance() { static std::unique_ptr<OperatingSystemFactory> value(new OperatingSystemFactory()); return value.get(); }
-
-    public: static OperatingSystemFactory* getInstance(){
+    auto OperatingSystemFactory::getInstance() -> OperatingSystemFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OperatingSystemFactory::instance();
+                        return OperatingSystemFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GenericOperatingSystem* genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
-
-    private: bool hasDetected = false;
-
-private: OperatingSystemFactory(){
+OperatingSystemFactory::OperatingSystemFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), genericOperatingSystem(NoOperatingSystem::NO_OPERATING_SYSTEM){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: GenericOperatingSystem* getOperatingSystemInstance(){
+    auto OperatingSystemFactory::getOperatingSystemInstance() -> GenericOperatingSystem*{
 
         try {
             
@@ -137,7 +136,7 @@ private: OperatingSystemFactory(){
                         if(!this->hasDetected)
                         
                                     {
-                                    this->logUtil->putF("osName: " +osName, this, this->commonStrings->GET_INSTANCE);
+                                    this->logUtil->putF(JavaString::valueOf("osName: ") +JavaString::valueOf(osName), this, this->commonStrings->GET_INSTANCE);
     
 this->hasDetected= true;
     
@@ -146,7 +145,7 @@ this->hasDetected= true;
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     this->logUtil->putF("Found a Linux OS", this, this->commonStrings->GET_INSTANCE);
@@ -164,7 +163,7 @@ this->genericOperatingSystem= LinuxOperatingSystemFactory::getInstance()->getOpe
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     this->logUtil->putF("Found a Windows OS", this, this->commonStrings->GET_INSTANCE);
@@ -182,7 +181,7 @@ this->genericOperatingSystem= WindowsOperatingSystemFactory::getInstance()->getO
                         
                                     {
                                     
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     this->logUtil->putF("Found a Solaris OS", this, this->commonStrings->GET_INSTANCE);
@@ -199,7 +198,7 @@ this->genericOperatingSystem= SolarisOperatingSystemFactory::getInstance()->getO
                             
 
 
-                            throw new Exception((new StringMaker())->append("OS Not Supported: ")->append(osName)->toString());
+                            throw Exception((new StringMaker())->append("OS Not Supported: ")->append(osName)->toString());
                     
 
                         }
@@ -225,7 +224,7 @@ this->logUtil->putL(log);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
@@ -244,7 +243,6 @@ this->logUtil->putL(log);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMFACTORY_CPP

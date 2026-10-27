@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,8 +37,6 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
-
-      
 
 
 
@@ -53,10 +56,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoCrypt
-            : public Object
+            : public virtual Object
         , public CryptInterface {
 
+
+            
+    public: NoCrypt();
+        
     public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
 
     public: std::vector<int8_t> decrypt(std::vector<int8_t> array);
@@ -67,3 +78,13 @@ class NoCrypt
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_H_COMPLETE
+        #if __has_include(<org/allbinary/init/crypt/jcehelper/CryptInterface.h>)
+#include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_QUOTEREQUEST_QUOTEREQUESTDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_QUOTEREQUEST_QUOTEREQUESTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/quoterequest/QuoteRequestData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,39 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class QuoteRequestData
-            : public Object
-         {
+auto QuoteRequestData::instance_owner() -> QuoteRequestData* { static std::unique_ptr<QuoteRequestData> value(new QuoteRequestData()); return value.get(); }
+QuoteRequestData* QuoteRequestData::instance = QuoteRequestData::instance_owner();
 
-    private: static QuoteRequestData* instance() { static std::unique_ptr<QuoteRequestData> value(new QuoteRequestData()); return value.get(); }
-
-    public: static QuoteRequestData* getInstance(){
+    auto QuoteRequestData::getInstance() -> QuoteRequestData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return QuoteRequestData::instance();
+                        return QuoteRequestData::instance;
     
 }
 
 
-private: QuoteRequestData(){
+QuoteRequestData::QuoteRequestData(){
 }
 
 
-    public: const std::string ID = "QUOTEREQUEST_ID";
 
-    public: const std::string PROJECT_INFO = "QUOTEREQUEST_PROJECT_INFO";
 
-    public: const std::string CUSTOMER_COMMENTS = "QUOTEREQUEST_CUSTOMER_COMMENTS";
-
-    public: const std::string BUDGET = "QUOTEREQUEST_BUDGET";
-
-    public: const std::string TIMEFRAME = "QUOTEREQUEST_TIMEFRAME";
-
-    public: const std::string COMMENTS = "QUOTEREQUEST_COMMENTS";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_QUOTEREQUEST_QUOTEREQUESTDATA_CPP

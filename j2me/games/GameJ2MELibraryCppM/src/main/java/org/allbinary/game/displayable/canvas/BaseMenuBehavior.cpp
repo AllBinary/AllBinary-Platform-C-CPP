@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEMENUBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEMENUBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/BaseMenuBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class BaseMenuBehavior
-            : public Object
-         {
 
-    private: static BaseMenuBehavior* instance() { static std::unique_ptr<BaseMenuBehavior> value(new BaseMenuBehavior()); return value.get(); }
+BaseMenuBehavior::BaseMenuBehavior() {
+        }
+        auto BaseMenuBehavior::instance_owner() -> BaseMenuBehavior* { static std::unique_ptr<BaseMenuBehavior> value(new BaseMenuBehavior()); return value.get(); }
+BaseMenuBehavior* BaseMenuBehavior::instance = BaseMenuBehavior::instance_owner();
 
-    public: static BaseMenuBehavior* getInstance(){
+    auto BaseMenuBehavior::getInstance() -> BaseMenuBehavior*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BaseMenuBehavior::instance();
+                        return BaseMenuBehavior::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onDisplayChangeEvent(AllBinaryGameCanvas* allBinaryGameCanvas, DisplayChangeEvent* displayChangeEvent){
+    auto BaseMenuBehavior::onDisplayChangeEvent(AllBinaryGameCanvas* allBinaryGameCanvas, DisplayChangeEvent* displayChangeEvent) -> void{
 }
 
 
-    public: void initSpecialPaint(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseMenuBehavior::initSpecialPaint(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 allBinaryGameCanvas->setNonBotPaintableP(NullPaintable::getInstance());
     
 }
@@ -84,27 +94,26 @@ allBinaryGameCanvas->setNonBotPaintableP(NullPaintable::getInstance());
 
                 //@Throws(Exception.constructor)
             
-    public: void initMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseMenuBehavior::initMenu(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void updateMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseMenuBehavior::updateMenu(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void popupMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseMenuBehavior::popupMenu(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
-    public: void closeMenu(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto BaseMenuBehavior::closeMenu(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASEMENUBEHAVIOR_CPP

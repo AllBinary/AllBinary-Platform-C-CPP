@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,32 +39,14 @@
             #include "java/lang/Exception.h"
         
 #include <java/awt/Dimension.h>
-
-      
 #include <java/awt/Rectangle.h>
-
-      
 #include <java/awt/Toolkit.h>
-
-      
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class InputRobotFactory;
+class InputRobotInterface;
+class LogUtil;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -79,13 +66,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScreenScavangerRobot
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
 public: ScreenScavangerRobot();
 
@@ -99,3 +90,37 @@ public: ScreenScavangerRobot();
 
 
         #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_H_COMPLETE
+        #if __has_include(<java/awt/Dimension.h>)
+#include <java/awt/Dimension.h>
+#endif
+#if __has_include(<java/awt/Rectangle.h>)
+#include <java/awt/Rectangle.h>
+#endif
+#if __has_include(<java/awt/Toolkit.h>)
+#include <java/awt/Toolkit.h>
+#endif
+#if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobotFactory.h>)
+#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobotInterface.h>)
+#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_GYROSENSORFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_GYROSENSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/GyroSensorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,21 +59,19 @@
         #include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
 #include "org/allbinary/input/gyro/NoGyroSensor.h"
 
-class GyroSensorFactory
-            : public Object
-         {
 
-    private: static inline AllBinaryOrientationSensor* allBinaryGyroSensor;
-
+GyroSensorFactory::GyroSensorFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static void init(){
+    auto GyroSensorFactory::init() -> void{
 GyroSensorFactory::allBinaryGyroSensor= new NoGyroSensor();
     
 }
 
 
-    public: static AllBinaryOrientationSensor* getInstance(){
+    auto GyroSensorFactory::getInstance() -> AllBinaryOrientationSensor*{
 
 
 
@@ -73,7 +81,6 @@ GyroSensorFactory::allBinaryGyroSensor= new NoGyroSensor();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_GYROSENSORFACTORY_CPP

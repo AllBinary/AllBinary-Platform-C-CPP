@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/mapping/PersistentInputMapping.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class PersistentInputMapping;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -58,19 +57,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/MotionJ2MEGameInputMapping.h"
+        class MotionJ2MEGameInputMapping;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PlatformInputMappingFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PlatformInputMappingFactory* instance() { static std::unique_ptr<PlatformInputMappingFactory> value(new PlatformInputMappingFactory()); return value.get(); }
+    private: static PlatformInputMappingFactory* instance_owner();
+    private: static PlatformInputMappingFactory* instance;
 
     public: static PlatformInputMappingFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: PersistentInputMapping* inputToGameKeyMapping = PersistentInputMapping::getNullInstance();
+            
+    public: PlatformInputMappingFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: PersistentInputMapping* inputToGameKeyMapping;
 
     public: PersistentInputMapping* getPersistentInputMappingInstance();
 
@@ -80,3 +88,22 @@ class PlatformInputMappingFactory
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_PLATFORMINPUTMAPPINGFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/mapping/PersistentInputMapping.h>)
+#include <org/allbinary/game/input/mapping/PersistentInputMapping.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/input/MotionJ2MEGameInputMapping.h")
+#include "org/allbinary/game/input/MotionJ2MEGameInputMapping.h"
+#endif
+
+        #endif
+    

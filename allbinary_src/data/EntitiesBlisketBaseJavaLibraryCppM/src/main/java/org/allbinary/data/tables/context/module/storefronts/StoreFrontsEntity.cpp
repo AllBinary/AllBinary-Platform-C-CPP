@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,13 +89,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntityInterface.h"
 
-class StoreFrontsEntity: public AbSqlBean, public StoreFrontsEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: const std::string tableName = "storefronts";
-
-public: StoreFrontsEntity() : AbSqlBean(new UserDbInitInfo()){
+StoreFrontsEntity::StoreFrontsEntity() : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,16 +102,16 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(BasicArrayList* values){
+    auto StoreFrontsEntity::insert(BasicArrayList* values) -> void{
 
         try {
-            super.insert(values);
+            AbSqlBean::insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, INSERT);
     
 
                                     }
@@ -116,10 +121,10 @@ this->setTableName(this->tableName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -129,16 +134,16 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void delete_(std::string value){
+    auto StoreFrontsEntity::delete_(std::string value) -> void{
 
         try {
-            super.deleteWhere(StoreFrontData::getInstance()->NAME, value);
+            AbSqlBean::deleteWhere(StoreFrontData::getInstance()->NAME, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, this->commonStrings->delete_);
     
 
                                     }
@@ -148,10 +153,10 @@ this->setTableName(this->tableName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->delete_, &e);
     
 
                                     }
@@ -163,14 +168,14 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: StoreFront* getStoreFrontInterface(std::string name){
+    auto StoreFrontsEntity::getStoreFrontInterface(std::string name) -> StoreFront*{
 
     HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
 keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
     
 
-    HashMap<Object*, Object*>* storeHashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* storeHashMap = AbSqlBean::getRow(keysAndValues);;
     
 
                         if(storeHashMap != 
@@ -200,9 +205,9 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
 }
 
 
-    public: BasicArrayList* getStoreFrontNames(){
+    auto StoreFrontsEntity::getStoreFrontNames() -> BasicArrayList*{
 
-    BasicArrayList* storeFrontNames = super.getColumn(StoreFrontData::getInstance()->NAME);;
+    BasicArrayList* storeFrontNames = AbSqlBean::getColumn(StoreFrontData::getInstance()->NAME);;
     
 
 
@@ -213,138 +218,138 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
 }
 
 
-    public: void update(HashMap<Object*, Object*>* updatedValues){
-super.updateWhere(StoreFrontData::getInstance()->NAME, updatedValues->get(StoreFrontData::getInstance()->NAME), updatedValues);
+    auto StoreFrontsEntity::update(HashMap<Object*, Object*>* updatedValues) -> void{
+AbSqlBean::updateWhere(StoreFrontData::getInstance()->NAME, updatedValues->get(StoreFrontData::getInstance()->NAME), updatedValues);
     
 }
 
 
-    public: std::string createTableStatement(){
+    auto StoreFrontsEntity::createTableStatement() -> std::string{
 
     StoreFrontData* storeFrontData = StoreFrontData::getInstance();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE);
     
 stringBuffer->append(this->tableName);
     
-stringBuffer->append(this->sqlStrings.START);
+stringBuffer->append(this->sqlStrings->START);
     
 stringBuffer->append(storeFrontData->NAME);
     
-stringBuffer->append(this->sqlTypeStrings.SIXTY_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->SIXTY_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->HOMEHOSTNAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->HOMEHOSTNAMEPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->HOSTNAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->HOSTNAMEPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TESTHOMEHOSTNAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TESTHOMEHOSTNAMEPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TESTHOSTNAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TESTHOSTNAMEPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->IMAGEPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->STATICPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->CATEGORYPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->INVENTORYCONTROL);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->CONFIGURATION);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(storeFrontData->SUBSTORES);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TAGLOCATION);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->PACKAGELOCATION);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->FTP);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->FTPPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->FTPUSERNAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->FTPPASSWORD);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TESTFTP);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TESTFTPPATH);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TESTFTPUSERNAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(storeFrontData->TESTFTPPASSWORD);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(EntryData::getInstance()->TIMECREATED);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(EntryData::getInstance()->getInstance()->LASTMODIFIED);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer->append(this->sqlStrings.PRIMARY_KEY);
+stringBuffer->append(this->sqlStrings->PRIMARY_KEY);
     
 stringBuffer->append(storeFrontData->NAME);
     
-stringBuffer->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->END);
     
 
 
@@ -355,27 +360,26 @@ stringBuffer->append(this->sqlStrings.END);
 }
 
 
-    public: std::string createTable(){
+    auto StoreFrontsEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-    public: std::string dropTable(){
+    auto StoreFrontsEntity::dropTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICS_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/java/vm/stats/JvmStatistics.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class JvmStatistics
-            : public Object
-         {
 
-    private: Runtime* runtime;
-
-public: JvmStatistics(){
+JvmStatistics::JvmStatistics(){
 this->runtime= Runtime::getRuntime();
     
 }
 
 
-    public: int64_t getFreeMemoryBytes(){
+    auto JvmStatistics::getFreeMemoryBytes() -> int64_t{
 
 
 
@@ -73,7 +78,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getFreeMemoryKilobytes(){
+    auto JvmStatistics::getFreeMemoryKilobytes() -> int64_t{
 
 
 
@@ -83,7 +88,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getFreeMemoryMegabytes(){
+    auto JvmStatistics::getFreeMemoryMegabytes() -> int64_t{
 
 
 
@@ -93,7 +98,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getMaxMemoryBytes(){
+    auto JvmStatistics::getMaxMemoryBytes() -> int64_t{
 
 
 
@@ -103,7 +108,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getMaxMemoryKilobytes(){
+    auto JvmStatistics::getMaxMemoryKilobytes() -> int64_t{
 
 
 
@@ -113,7 +118,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getMaxMemoryMegabytes(){
+    auto JvmStatistics::getMaxMemoryMegabytes() -> int64_t{
 
 
 
@@ -123,7 +128,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getTotalMemoryBytes(){
+    auto JvmStatistics::getTotalMemoryBytes() -> int64_t{
 
 
 
@@ -133,7 +138,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getTotalMemoryKilobytes(){
+    auto JvmStatistics::getTotalMemoryKilobytes() -> int64_t{
 
 
 
@@ -143,7 +148,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getTotalMemoryMegabytes(){
+    auto JvmStatistics::getTotalMemoryMegabytes() -> int64_t{
 
 
 
@@ -153,7 +158,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getFreeMemoryBytesLong(){
+    auto JvmStatistics::getFreeMemoryBytesLong() -> int64_t{
 
 
 
@@ -163,7 +168,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getFreeMemoryKilobytesLong(){
+    auto JvmStatistics::getFreeMemoryKilobytesLong() -> int64_t{
 
 
 
@@ -173,7 +178,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getFreeMemoryMegabytesLong(){
+    auto JvmStatistics::getFreeMemoryMegabytesLong() -> int64_t{
 
 
 
@@ -183,7 +188,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getMaxMemoryBytesLong(){
+    auto JvmStatistics::getMaxMemoryBytesLong() -> int64_t{
 
 
 
@@ -193,7 +198,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getMaxMemoryKilobytesLong(){
+    auto JvmStatistics::getMaxMemoryKilobytesLong() -> int64_t{
 
 
 
@@ -203,7 +208,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getMaxMemoryMegabytesLong(){
+    auto JvmStatistics::getMaxMemoryMegabytesLong() -> int64_t{
 
 
 
@@ -213,7 +218,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getTotalMemoryBytesLong(){
+    auto JvmStatistics::getTotalMemoryBytesLong() -> int64_t{
 
 
 
@@ -223,7 +228,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getTotalMemoryKilobytesLong(){
+    auto JvmStatistics::getTotalMemoryKilobytesLong() -> int64_t{
 
 
 
@@ -233,7 +238,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getTotalMemoryMegabytesLong(){
+    auto JvmStatistics::getTotalMemoryMegabytesLong() -> int64_t{
 
 
 
@@ -243,7 +248,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getFreeMemoryBytesString(){
+    auto JvmStatistics::getFreeMemoryBytesString() -> std::string{
 
 
 
@@ -253,7 +258,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getFreeMemoryKilobytesString(){
+    auto JvmStatistics::getFreeMemoryKilobytesString() -> std::string{
 
 
 
@@ -263,7 +268,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getFreeMemoryMegabytesString(){
+    auto JvmStatistics::getFreeMemoryMegabytesString() -> std::string{
 
 
 
@@ -273,7 +278,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getMaxMemoryBytesString(){
+    auto JvmStatistics::getMaxMemoryBytesString() -> std::string{
 
 
 
@@ -283,7 +288,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getMaxMemoryKilobytesString(){
+    auto JvmStatistics::getMaxMemoryKilobytesString() -> std::string{
 
 
 
@@ -293,7 +298,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getMaxMemoryMegabytesString(){
+    auto JvmStatistics::getMaxMemoryMegabytesString() -> std::string{
 
 
 
@@ -303,7 +308,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getTotalMemoryBytesString(){
+    auto JvmStatistics::getTotalMemoryBytesString() -> std::string{
 
 
 
@@ -313,7 +318,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getTotalMemoryKilobytesString(){
+    auto JvmStatistics::getTotalMemoryKilobytesString() -> std::string{
 
 
 
@@ -323,7 +328,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getTotalMemoryMegabytesString(){
+    auto JvmStatistics::getTotalMemoryMegabytesString() -> std::string{
 
 
 
@@ -333,7 +338,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getNumberOfThreads(){
+    auto JvmStatistics::getNumberOfThreads() -> int64_t{
 
 
 
@@ -343,7 +348,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: int64_t getNumberOfThreadsLong(){
+    auto JvmStatistics::getNumberOfThreadsLong() -> int64_t{
 
 
 
@@ -353,7 +358,7 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: std::string getNumberOfThreadsString(){
+    auto JvmStatistics::getNumberOfThreadsString() -> std::string{
 
 
 
@@ -363,13 +368,12 @@ this->runtime= Runtime::getRuntime();
 }
 
 
-    public: void collectGarbage(){
+    auto JvmStatistics::collectGarbage() -> void{
 this->runtime->gc();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICS_CPP

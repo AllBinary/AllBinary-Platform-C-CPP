@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/document/DocumentToNode.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,25 +63,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DocumentToNode
-            : public Object
-         {
 
-    private: static inline const std::string XMLROOT = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+DocumentToNode::DocumentToNode(){
+}
 
-    private: static inline const std::string XMLROOTSTART = "<?xml";
-
-    private: static inline const std::string XMLROOTEND = "?>";
-
-    private: static inline const std::string XMLJSPROOTSTART = "<jsp:root";
-
-    private: static inline const std::string XMLEND = ">";
-
-    private: static inline const std::string XMLJSPROOTENDSTART = "</jsp:root";
 
                 //@Throws(Exception.constructor)
             
-    public: static std::string convertDocumentToNodeString(std::string documentString){
+    auto DocumentToNode::convertDocumentToNodeString(std::string documentString) -> std::string{
 documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROOTSTART, DocumentToNode::XMLEND);
     
 documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROOTENDSTART, DocumentToNode::XMLEND);
@@ -88,7 +87,7 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 }
 
 
-    public: static std::string removeXmlDefinitionFromDocumentString(std::string documentString){
+    auto DocumentToNode::removeXmlDefinitionFromDocumentString(std::string documentString) -> std::string{
 
 
 
@@ -98,7 +97,7 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 }
 
 
-    public: static std::string remove(std::string documentString, std::string start, std::string end){
+    auto DocumentToNode::remove(std::string documentString, std::string start, std::string end) -> std::string{
 
     int32_t startIndex= 0;;
     
@@ -126,7 +125,7 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return startString +resultString;
+                        return JavaString::valueOf(startString) +JavaString::valueOf(resultString);
     
 
                                     }
@@ -145,11 +144,6 @@ documentString= DocumentToNode::remove(documentString, DocumentToNode::XMLJSPROO
 }
 
 
-private: DocumentToNode(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOCUMENTTONODE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/opengles/shader/ShaderComposite.h>
-
-      
+class ShaderComposite;
 
 
 
@@ -51,19 +54,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLVersionValidator
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLVersionValidator* instance() { static std::unique_ptr<OpenGLVersionValidator> value(new OpenGLVersionValidator()); return value.get(); }
+    private: static OpenGLVersionValidator* instance_owner();
+    private: static OpenGLVersionValidator* instance;
 
     public: static OpenGLVersionValidator* getInstance();
 
+
+            
+    public: OpenGLVersionValidator();
+        
     public: bool isGL31OrHigher();
 
     public: bool isAvailable(std::string glVersionRequired);
 
     public: void setShaderComposite(ShaderComposite* shaderComposite, Object* anyType);
+    public: void setShaderComposite(ShaderComposite* shaderComposite, const std::string& anyType) { return setShaderComposite(shaderComposite, JavaString::box(anyType)); }
 
     public: int32_t EGL_CONTEXT_CLIENT_VERSION_VALUE =  -1;
 
@@ -73,3 +86,13 @@ class OpenGLVersionValidator
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/opengles/shader/ShaderComposite.h>)
+#include <org/allbinary/graphics/opengles/shader/ShaderComposite.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/DefaultListModelHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,15 +71,8 @@
         #include "org/allbinary/input/automation/module/DefaultListModel.h"
 #include "org/allbinary/input/automation/module/ListModel.h"
 
-class DefaultListModelHelper
-            : public Object
-         {
 
-    private: DefaultListModel* defaultListModel;
-
-    private: BasicArrayList* vector;
-
-public: DefaultListModelHelper(){
+DefaultListModelHelper::DefaultListModelHelper(){
 this->vector= new BasicArrayListD();
     
 this->defaultListModel= new DefaultListModel();
@@ -77,7 +80,7 @@ this->defaultListModel= new DefaultListModel();
 }
 
 
-    public: void initDefaultModelList(){
+    auto DefaultListModelHelper::initDefaultModelList() -> void{
 this->defaultListModel= new DefaultListModel();
     
 
@@ -100,7 +103,7 @@ this->defaultListModel->addElement(moduleName);
 }
 
 
-    public: ListModel* getListModel(){
+    auto DefaultListModelHelper::getListModel() -> ListModel*{
 
 
 
@@ -110,19 +113,18 @@ this->defaultListModel->addElement(moduleName);
 }
 
 
-    public: void add(std::string string){
+    auto DefaultListModelHelper::add(std::string string) -> void{
 this->vector->add(string);
     
 }
 
 
-    public: void remove(std::string string){
+    auto DefaultListModelHelper::remove(std::string string) -> void{
 this->vector->remove(string);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_CPP

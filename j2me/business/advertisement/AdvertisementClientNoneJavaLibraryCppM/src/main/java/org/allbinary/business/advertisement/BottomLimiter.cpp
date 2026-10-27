@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_BOTTOMLIMITER_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_BOTTOMLIMITER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/BottomLimiter.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,35 +62,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/GameAdStateFactory.h"
 
-class BottomLimiter
-            : public Object
-         {
+auto BottomLimiter::instance_owner() -> BottomLimiter* { static std::unique_ptr<BottomLimiter> value(new BottomLimiter()); return value.get(); }
+BottomLimiter* BottomLimiter::instance = BottomLimiter::instance_owner();
 
-    private: static BottomLimiter* instance() { static std::unique_ptr<BottomLimiter> value(new BottomLimiter()); return value.get(); }
-
-    public: static BottomLimiter* getInstance(){
+    auto BottomLimiter::getInstance() -> BottomLimiter*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BottomLimiter::instance();
+                        return BottomLimiter::instance;
     
 }
 
 
-    private: int32_t bottom= 0;
-
-    private: int32_t deltaY= 0;
-
-    private: int32_t lower= 0;
-
-    private: int32_t higher= 0;
-
-private: BottomLimiter(){
+BottomLimiter::BottomLimiter(){
 }
 
 
-    public: void init(int32_t lower, int32_t higher){
+    auto BottomLimiter::init(int32_t lower, int32_t higher) -> void{
 this->lower= lower;
     
 this->higher= higher;
@@ -88,7 +87,7 @@ this->higher= higher;
 }
 
 
-    public: void update(){
+    auto BottomLimiter::update() -> void{
 
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
@@ -115,7 +114,7 @@ this->bottom= displayInfo->getLastHeight() -this->deltaY;
 }
 
 
-    public: int32_t getDeltaY(){
+    auto BottomLimiter::getDeltaY() -> int32_t{
 
 
 
@@ -125,7 +124,7 @@ this->bottom= displayInfo->getLastHeight() -this->deltaY;
 }
 
 
-    public: int32_t getBottom(){
+    auto BottomLimiter::getBottom() -> int32_t{
 
 
 
@@ -135,7 +134,6 @@ this->bottom= displayInfo->getLastHeight() -this->deltaY;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_BOTTOMLIMITER_CPP

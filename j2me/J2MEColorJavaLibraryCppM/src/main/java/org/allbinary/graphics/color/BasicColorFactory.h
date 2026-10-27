@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class StringUtil;
+class JsMethod;
+class JsProperty;
 
 
 
@@ -59,17 +56,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/BasicColor.h"
-#include "org/allbinary/graphics/color/BasicColorUtil.h"
+        class BasicColor;
+class BasicColorUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicColorFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicColorFactory* instance() { static std::unique_ptr<BasicColorFactory> value(new BasicColorFactory()); return value.get(); }
+    private: static BasicColorFactory* instance_owner();
+    private: static BasicColorFactory* instance;
 
     public: static BasicColorFactory* getInstance();
 
+
+            
+    public: BasicColorFactory();
+        
     public: BasicColor* createInstance(int32_t value);
 
     public: BasicColor* createInstanceA(int32_t alphaValue, int32_t value);
@@ -78,63 +84,63 @@ class BasicColorFactory
 
     public: BasicColor* createInstanceARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b, std::string name);
 
-    public: BasicColor* NULL_COLOR = this->createInstanceARGB(255, 255, 255, 255, "null color");
+    public: BasicColor* NULL_COLOR;
 
-    public: BasicColor* TAN = this->createInstance(0xE9D8B5);
+    public: BasicColor* TAN;
 
-    public: BasicColor* SKIN_PINK = this->createInstance(0xFDCECE);
+    public: BasicColor* SKIN_PINK;
 
-    public: BasicColor* RED = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFF0000, "red");
+    public: BasicColor* RED;
 
-    public: BasicColor* LIGHT_RED = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFFA0A0, "light red");
+    public: BasicColor* LIGHT_RED;
 
-    public: BasicColor* DARK_GREEN = this->createInstance(0x00FF00);
+    public: BasicColor* DARK_GREEN;
 
-    public: BasicColor* GREEN = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x00DD00, "green");
+    public: BasicColor* GREEN;
 
-    public: BasicColor* LIGHT_GREEN = this->createInstance(0x007700);
+    public: BasicColor* LIGHT_GREEN;
 
-    public: BasicColor* PURPLE = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x400040, "purple");
+    public: BasicColor* PURPLE;
 
-    public: BasicColor* BLUE = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x0000FF, "blue");
+    public: BasicColor* BLUE;
 
-    public: BasicColor* LIGHT_BLUE = this->createInstance(0x00aaff);
+    public: BasicColor* LIGHT_BLUE;
 
-    public: BasicColor* VERY_LIGHT_BLUE = this->createInstance(0x000033);
+    public: BasicColor* VERY_LIGHT_BLUE;
 
-    public: BasicColor* PUCE = this->createInstance(0xFF00AA);
+    public: BasicColor* PUCE;
 
-    public: BasicColor* AQUA = this->createInstance(0x00FFFF);
+    public: BasicColor* AQUA;
 
-    public: BasicColor* YELLOW = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xFFFF00, "yellow");
+    public: BasicColor* YELLOW;
 
-    public: BasicColor* PINK = this->createInstance(0xFF00FF);
+    public: BasicColor* PINK;
 
-    public: BasicColor* BLACK = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0x000000, "black");
+    public: BasicColor* BLACK;
 
-    public: BasicColor* GREY = this->createInstanceAN(BasicColorUtil::getInstance()->ALPHA, 0xAAAAAA, "grey");
+    public: BasicColor* GREY;
 
-    public: BasicColor* LIGHT_GREY = this->createInstance(0xC0C0C0);
+    public: BasicColor* LIGHT_GREY;
 
-    public: BasicColor* DARK_GREY = this->createInstance(0x404040);
+    public: BasicColor* DARK_GREY;
 
-    public: BasicColor* ORANGE = this->createInstance(0xe07718);
+    public: BasicColor* ORANGE;
 
-    public: BasicColor* BROWN = this->createInstance(0x956B00);
+    public: BasicColor* BROWN;
 
-    public: BasicColor* WHITE = this->createInstance(0xFFFFFF);
+    public: BasicColor* WHITE;
 
-    public: BasicColor* TRANSPARENT_COLOR = this->createInstanceAN(0x00000000, 0x000000, StringUtil::getInstance()->EMPTY_STRING);
+    public: BasicColor* TRANSPARENT_COLOR;
 
-    public: BasicColor* TRANSPARENT_GREY = this->createInstanceAN(0x52000000, 0xECECEC, StringUtil::getInstance()->EMPTY_STRING);
+    public: BasicColor* TRANSPARENT_GREY;
 
-    public: BasicColor* TRANSPARENT_BLACK = this->createInstanceAN(0x52000000, 0x000000, StringUtil::getInstance()->EMPTY_STRING);
+    public: BasicColor* TRANSPARENT_BLACK;
 
-    public: BasicColor* TRANSPARENT_RED = this->createInstanceAN(0x52000000, 0xFF0000, StringUtil::getInstance()->EMPTY_STRING);
+    public: BasicColor* TRANSPARENT_RED;
 
-    public: BasicColor* CLEAR_COLOR = this->BLACK;
+    public: BasicColor* CLEAR_COLOR;
 
-    public: BasicColor* BORDER_COLOR = this->WHITE;
+    public: BasicColor* BORDER_COLOR;
 
 };
 
@@ -142,3 +148,28 @@ class BasicColorFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORFACTORY_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColor.h")
+#include "org/allbinary/graphics/color/BasicColor.h"
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorUtil.h")
+#include "org/allbinary/graphics/color/BasicColorUtil.h"
+#endif
+
+        #endif
+    

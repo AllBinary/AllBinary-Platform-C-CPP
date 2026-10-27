@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AllBinaryTiledLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,20 +80,20 @@
         #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 #include "org/allbinary/game/layer/AllBinaryJ2METiledLayer.h"
 
-class AllBinaryTiledLayerFactory
-            : public Object
-        , public AllBinaryTiledLayerFactoryInterface {
 
+AllBinaryTiledLayerFactory::AllBinaryTiledLayerFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer* getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData){
+    auto AllBinaryTiledLayerFactory::getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData) -> AllBinaryTiledLayer*{
 
     AllBinaryTiledLayer* allbinaryTiledLayer;;
     
 
     TiledLayer* tiledLayer = (new TiledLayerFactory())->getInstance(raceTrackData);;
     
-allbinaryTiledLayer= new AllBinaryJ2METiledLayer(raceTrackData->getId(), tiledLayer, raceTrackData->getMapArray(), BasicColorFactory::getInstance()->RED.intValue());
+allbinaryTiledLayer= new AllBinaryJ2METiledLayer(raceTrackData->getId(), tiledLayer, raceTrackData->getMapArray(), BasicColorFactory::getInstance()->RED->intValue());
     
 allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
     
@@ -98,7 +108,7 @@ allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryTiledLayer* getMiniInstance(RaceTrackData* raceTrackData){
+    auto AllBinaryTiledLayerFactory::getMiniInstance(RaceTrackData* raceTrackData) -> AllBinaryTiledLayer*{
 
     SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
@@ -106,7 +116,7 @@ allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
     TiledLayer* tiledLayer = (new TiledLayerFactory())->getMiniInstance(raceTrackData);;
     
 
-    AllBinaryTiledLayer* allbinaryTiledLayer = new AllBinaryJ2METiledLayer(smallIntegerSingletonFactory->getAt(raceTrackData->getId()->intValue() +100 +1), tiledLayer, raceTrackData->getMapArray(), BasicColorFactory::getInstance()->RED.intValue());;
+    AllBinaryTiledLayer* allbinaryTiledLayer = new AllBinaryJ2METiledLayer(smallIntegerSingletonFactory->getAt(raceTrackData->getId()->intValue() +100 +1), tiledLayer, raceTrackData->getMapArray(), BasicColorFactory::getInstance()->RED->intValue());;
     
 allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
     
@@ -119,7 +129,6 @@ allbinaryTiledLayer->setCells(raceTrackData->getMapArray());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYERFACTORY_CPP

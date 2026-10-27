@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLESHADERINITIALIZER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLESHADERINITIALIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/SimpleShaderInitializer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
 
-class SimpleShaderInitializer: public ShaderInitializer {
 
-    private: static SimpleShaderInitializer* instanceC() { static std::unique_ptr<SimpleShaderInitializer> value(new SimpleShaderInitializer()); return value.get(); }
+SimpleShaderInitializer::SimpleShaderInitializer() {
+        }
+        auto SimpleShaderInitializer::instanceC_owner() -> SimpleShaderInitializer* { static std::unique_ptr<SimpleShaderInitializer> value(new SimpleShaderInitializer()); return value.get(); }
+SimpleShaderInitializer* SimpleShaderInitializer::instanceC = SimpleShaderInitializer::instanceC_owner();
 
-    public: static SimpleShaderInitializer* getInstance(){
+    auto SimpleShaderInitializer::getInstance() -> SimpleShaderInitializer*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleShaderInitializer::instanceC();
+                        return SimpleShaderInitializer::instanceC;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLESHADERINITIALIZER_CPP

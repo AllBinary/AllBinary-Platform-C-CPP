@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGETRANSLATE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGETRANSLATE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESImageTranslate.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,31 +59,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLESImage.h"
 
-class OpenGLESImageTranslate
-            : public Object
-         {
 
-    private: static OpenGLESImageTranslate* instance() { static std::unique_ptr<OpenGLESImageTranslate> value(new OpenGLESImageTranslate()); return value.get(); }
+OpenGLESImageTranslate::OpenGLESImageTranslate() {
+        }
+        auto OpenGLESImageTranslate::instance_owner() -> OpenGLESImageTranslate* { static std::unique_ptr<OpenGLESImageTranslate> value(new OpenGLESImageTranslate()); return value.get(); }
+OpenGLESImageTranslate* OpenGLESImageTranslate::instance = OpenGLESImageTranslate::instance_owner();
 
-    public: static OpenGLESImageTranslate* getInstance(){
+    auto OpenGLESImageTranslate::getInstance() -> OpenGLESImageTranslate*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageTranslate::instance();
+                        return OpenGLESImageTranslate::instance;
     
 }
 
 
-    public: void translate(GL10* gl, OpenGLESImage* openGLESImage, float x, float y){
+    auto OpenGLESImageTranslate::translate(GL10* gl, OpenGLESImage* openGLESImage, float x, float y) -> void{
 }
 
 
-    public: void translate2(GL10* gl, OpenGLESImage* openGLESImage){
+    auto OpenGLESImageTranslate::translate2(GL10* gl, OpenGLESImage* openGLESImage) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGETRANSLATE_CPP

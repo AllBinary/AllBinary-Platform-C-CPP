@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_DEVICE_GRAPHICSINTERFACE_H
         #define ORG_ALLBINARY_DEVICE_GRAPHICSINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <org/allbinary/graphics/font/FontDebugBase.h>
-
-      
+class Font;
+class FontDebugBase;
 
 
 
@@ -52,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GraphicsInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GraphicsInterface
+            : public virtual Object
+         {
 
     public: virtual void setFontDebug(Font* font, FontDebugBase* fontDebug) = 0;
 
@@ -62,3 +69,16 @@ class GraphicsInterface {
 
 
         #endif //ORG_ALLBINARY_DEVICE_GRAPHICSINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DEVICE_GRAPHICSINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DEVICE_GRAPHICSINTERFACE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/FontDebugBase.h>)
+#include <org/allbinary/graphics/font/FontDebugBase.h>
+#endif
+
+        #endif
+    

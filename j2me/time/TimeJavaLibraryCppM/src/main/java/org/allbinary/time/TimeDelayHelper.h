@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H
         #define ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Long.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
+class StringMaker;
+class StringUtil;
+class CommonLabels;
 
 
 
@@ -61,13 +60,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TimeDelayHelper
-            : public Object
+            : public virtual Object
          {
 
     private: int64_t startTime =  -1;
 
-    private: int64_t elapsedTimeAtPause = Long.MIN_VALUE;
+    private: int64_t elapsedTimeAtPause;
 
     public: int32_t delay;
 
@@ -111,3 +114,19 @@ public: TimeDelayHelper(int32_t delay);
 
 
         #endif //ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+
+        #endif
+    

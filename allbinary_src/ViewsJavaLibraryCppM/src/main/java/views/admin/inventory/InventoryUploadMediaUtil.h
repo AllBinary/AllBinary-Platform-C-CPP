@@ -21,6 +21,11 @@
         #ifndef VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_H
         #define VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,50 +39,20 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>
-
-      
-#include <org/allbinary/globals/URLGLOBALS.h>
-
-      
-#include <org/allbinary/logic/communication/http/file/upload/media/UploadMediaSingleton.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/FileUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/logic/visual/media/MediaData.h>
-
-      
-#include <org/allbinary/logic/visual/media/MediaTypeData.h>
-
-      
-#include <org/allbinary/logic/visual/media/MediaUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class StoreFrontInterface;
+class ItemInterface;
+class URLGLOBALS;
+class UploadMediaSingleton;
+class LogUtil;
+class AbFile;
+class FileUtil;
+class AbPathData;
+class StringMaker;
+class StringValidationUtil;
+class MediaData;
+class MediaTypeData;
+class MediaUtil;
+class CommonStrings;
 
 
 
@@ -97,13 +72,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InventoryUploadMediaUtil
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: MediaUtil* mediaUtil = MediaUtil::getInstance();
+    private: MediaUtil* mediaUtil;
 
     private: const int32_t LARGEWIDTH = 1024;
 
@@ -141,3 +120,55 @@ public: InventoryUploadMediaUtil(StoreFrontInterface* storeFrontInterface, ItemI
 
 
         #endif //VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_H_COMPLETE)
+        #define VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayInputStream.h>)
+#include <java/io/ByteArrayInputStream.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/ItemInterface.h>
+#endif
+#if __has_include(<org/allbinary/globals/URLGLOBALS.h>)
+#include <org/allbinary/globals/URLGLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/file/upload/media/UploadMediaSingleton.h>)
+#include <org/allbinary/logic/communication/http/file/upload/media/UploadMediaSingleton.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileUtil.h>)
+#include <org/allbinary/logic/io/file/FileUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/media/MediaData.h>)
+#include <org/allbinary/logic/visual/media/MediaData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/media/MediaTypeData.h>)
+#include <org/allbinary/logic/visual/media/MediaTypeData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/media/MediaUtil.h>)
+#include <org/allbinary/logic/visual/media/MediaUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

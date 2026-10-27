@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGEUNIFIERJPANEL_CPP
+        #define ORG_ALLBINARY_IMAGE_GUI_IMAGEUNIFIERJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/gui/ImageUnifierJPanel.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -127,27 +137,8 @@
 #include "org/allbinary/image/gui/GroupLayout.h"
 #include "org/allbinary/image/gui/Short.h"
 
-class ImageUnifierJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ImageStrings* imageStrings = ImageStrings::getInstance();
-
-    private: ImagesRatioUtil* imagesRatioUtil = ImagesRatioUtil::getInstance();
-
-    private: ImageProcessorInput* imageProcessorInput;
-
-    private: std::vector<ImageIconUnique*> icon;
-
-    private: ImageUnifierProperties* imageUnifierProperties;
-
-    private: BufferedImage* result;
-
-    private: bool isImageFillIn = true;
-
-public: ImageUnifierJPanel(ImageProcessorInput* imageProcessorInput){
+ImageUnifierJPanel::ImageUnifierJPanel(ImageProcessorInput* imageProcessorInput) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), imageStrings(ImageStrings::getInstance()), imagesRatioUtil(ImagesRatioUtil::getInstance()){
 this->initComponents();
     
 this->setImageProcessorInput(imageProcessorInput);
@@ -155,7 +146,7 @@ this->setImageProcessorInput(imageProcessorInput);
 }
 
 
-    public: void init(){
+    auto ImageUnifierJPanel::init() -> void{
 
         try {
             
@@ -177,10 +168,10 @@ this->icon= std::vector<ImageIconUnique*>(bufferedImageArray.length);
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    double width = bufferedImageArray[index].getWidth();;
+    double width = bufferedImageArray[index]->getWidth();;
     
 
-    double height = bufferedImageArray[index].getHeight();;
+    double height = bufferedImageArray[index]->getHeight();;
     
 
     int32_t newWidth = 52;;
@@ -215,7 +206,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 }
 
 
-    private: void updateImage(){
+    auto ImageUnifierJPanel::updateImage() -> void{
 
         try {
             
@@ -292,7 +283,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateImage", &e);
 }
 
 
-    private: void updateImageWithFudgedImages(){
+    auto ImageUnifierJPanel::updateImageWithFudgedImages() -> void{
 
         try {
             
@@ -340,7 +331,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateImageWithFudgedI
 }
 
 
-    private: void updateImage(std::vector<BufferedImage*> tempBufferedImageArray){
+    auto ImageUnifierJPanel::updateImage(std::vector<BufferedImage*> tempBufferedImageArray) -> void{
 this->result= ImageUnifierUtil::getInstance()->getImage(tempBufferedImageArray, this->imageUnifierProperties);
     
 
@@ -356,9 +347,9 @@ this->updateUI();
 }
 
 
-    private: void updateOnPropertiesChange(){
+    auto ImageUnifierJPanel::updateOnPropertiesChange() -> void{
 
-                        if(this->rowsJTextField->getText()->length() > 0 && this->columnsJTextField->getText()->length() > 0 && this->cellWidthJTextField->getText()->length() > 0 && this->cellHeightJTextField->getText()->length() > 0)
+                        if(this->rowsJTextField->getText().length() > 0 && this->columnsJTextField->getText().length() > 0 && this->cellWidthJTextField->getText().length() > 0 && this->cellHeightJTextField->getText().length() > 0)
                         
                                     {
                                     this->imageUnifierProperties= new ImageUnifierProperties();
@@ -397,7 +388,7 @@ this->updateImage();
 }
 
 
-    private: void initComponents(){
+    auto ImageUnifierJPanel::initComponents() -> void{
 
     CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
@@ -631,71 +622,71 @@ jButtonOrderActionPerformed(evt);
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout->createSequentialGroup()->addContainerGap()->addGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)->addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(upJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short::MAX_VALUE)->addComponent(downJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))->addComponent(fudgeItJButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout->createSequentialGroup()->addComponent(jLabel3)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, javax.swing.GroupLayout.PREFERRED_SIZE))->addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout->createSequentialGroup()->addComponent(jLabel4)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, javax.swing.GroupLayout.PREFERRED_SIZE))->addComponent(avgRatioJTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(cellRatioJTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(cellHeightJTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(cellWidthJTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE)->addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout->createSequentialGroup()->addGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(jLabel2)->addComponent(jLabel1))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(rowsJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short::MAX_VALUE)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(columnsJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short::MAX_VALUE)->addGap(1, 1, 1))))->addComponent(jButtonOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short::MAX_VALUE))->addContainerGap()));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, jPanel1Layout->createSequentialGroup()->addContainerGap()->addGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->TRAILING)->addComponent(jButton1, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(upJButton, javax.swing->GroupLayout->PREFERRED_SIZE, 71, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 10, Short::MAX_VALUE)->addComponent(downJButton, javax.swing->GroupLayout->PREFERRED_SIZE, 70, javax.swing->GroupLayout->PREFERRED_SIZE))->addComponent(fudgeItJButton, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addGroup(javax.swing->GroupLayout->Alignment->LEADING, jPanel1Layout->createSequentialGroup()->addComponent(jLabel3)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 99, javax.swing->GroupLayout->PREFERRED_SIZE))->addGroup(javax.swing->GroupLayout->Alignment->LEADING, jPanel1Layout->createSequentialGroup()->addComponent(jLabel4)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 96, javax.swing->GroupLayout->PREFERRED_SIZE))->addComponent(avgRatioJTextField, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(jLabel6, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(cellRatioJTextField, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(jLabel5, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(cellHeightJTextField, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(cellWidthJTextField, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addComponent(jButton2, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE)->addGroup(javax.swing->GroupLayout->Alignment->LEADING, jPanel1Layout->createSequentialGroup()->addGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(jLabel2)->addComponent(jLabel1))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(rowsJTextField, javax.swing->GroupLayout->DEFAULT_SIZE, 103, Short::MAX_VALUE)->addGroup(jPanel1Layout->createSequentialGroup()->addComponent(columnsJTextField, javax.swing->GroupLayout->DEFAULT_SIZE, 102, Short::MAX_VALUE)->addGap(1, 1, 1))))->addComponent(jButtonOrder, javax.swing->GroupLayout->DEFAULT_SIZE, 151, Short::MAX_VALUE))->addContainerGap()));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addContainerGap()->addComponent(jButton1)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(upJButton)->addComponent(downJButton))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jButtonOrder)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(fudgeItJButton)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel2)->addComponent(columnsJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(jPanel1Layout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(jLabel1)->addComponent(rowsJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel3)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(cellWidthJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel4)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(cellHeightJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jButton2)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jLabel5)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(cellRatioJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addGap(7, 7, 7)->addComponent(jLabel6)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(avgRatioJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addGap(66, 66, 66)));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(jPanel1Layout->createSequentialGroup()->addContainerGap()->addComponent(jButton1)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(upJButton)->addComponent(downJButton))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jButtonOrder)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(fudgeItJButton)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel2)->addComponent(columnsJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(jPanel1Layout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(jLabel1)->addComponent(rowsJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel3)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(cellWidthJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel4)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(cellHeightJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jButton2)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jLabel5)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addComponent(cellRatioJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addGap(7, 7, 7)->addComponent(jLabel6)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(avgRatioJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addGap(66, 66, 66)));
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(jScrollPane1, javax.swing->GroupLayout->PREFERRED_SIZE, 84, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jPanel1, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(jScrollPane2, javax.swing->GroupLayout->DEFAULT_SIZE, 527, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)->addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, 0, 445, Short::MAX_VALUE)->addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short::MAX_VALUE)->addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short::MAX_VALUE))->addContainerGap()));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->TRAILING)->addComponent(jPanel1, javax.swing->GroupLayout->Alignment->LEADING, 0, 445, Short::MAX_VALUE)->addComponent(jScrollPane2, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 445, Short::MAX_VALUE)->addComponent(jScrollPane1, javax.swing->GroupLayout->Alignment->LEADING, javax.swing->GroupLayout->DEFAULT_SIZE, 445, Short::MAX_VALUE))->addContainerGap()));
     
 }
 
 
-    private: void jButton2ActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::jButton2ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->updateOnPropertiesChange();
     
 }
 
 
-    private: void columnsJTextFieldKeyPressed(java::awt::event::KeyEvent* evt){
+    auto ImageUnifierJPanel::columnsJTextFieldKeyPressed(java::awt::event::KeyEvent* evt) -> void{
 }
 
 
-    private: void columnsJTextFieldKeyTyped(java::awt::event::KeyEvent* evt){
+    auto ImageUnifierJPanel::columnsJTextFieldKeyTyped(java::awt::event::KeyEvent* evt) -> void{
 }
 
 
-    private: void columnsJTextFieldPropertyChange(java::beans::PropertyChangeEvent* evt){
+    auto ImageUnifierJPanel::columnsJTextFieldPropertyChange(java::beans::PropertyChangeEvent* evt) -> void{
 }
 
 
-    private: void fudgeItJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::fudgeItJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->updateImageWithFudgedImages();
     
 }
 
 
-    private: void cellHeightJTextFieldActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::cellHeightJTextFieldActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->updateOnPropertiesChange();
     
 }
 
 
-    private: void cellWidthJTextFieldActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::cellWidthJTextFieldActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->updateOnPropertiesChange();
     
 }
 
 
-    private: void columnsJTextFieldActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::columnsJTextFieldActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->updateOnPropertiesChange();
     
 }
 
 
-    private: void rowsJTextFieldActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::rowsJTextFieldActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->updateOnPropertiesChange();
     
 }
 
 
-    private: void jButton1ActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::jButton1ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             
@@ -712,7 +703,7 @@ this->updateOnPropertiesChange();
     
 filePath= (new StringMaker())->append(JavaString::substring(filePath, 0, extensionIndex))->append(CommonSeps::getInstance()->UNDERSCORE)->appendint(this->imageUnifierProperties->getColumns())->append("_By_")->appendint(this->imageUnifierProperties->getRows())->append("_Unified")->append(this->imageStrings->PNG_EXTENSION)->toString();
     
-this->logUtil->putF("New File Path: " +filePath, this, StringUtil::getInstance()->EMPTY_STRING);
+this->logUtil->putF(JavaString::valueOf("New File Path: ") +JavaString::valueOf(filePath), this, StringUtil::getInstance()->EMPTY_STRING);
     
 
     File* outputFile = new File(filePath);;
@@ -730,7 +721,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "jButton1ActionPerforme
 }
 
 
-    private: void downJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::downJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
     int32_t index = this->imageJList->getSelectedIndex();;
     
@@ -756,7 +747,7 @@ this->updateImage();
 }
 
 
-    private: void upJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::upJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
     int32_t index = this->imageJList->getSelectedIndex();;
     
@@ -782,7 +773,7 @@ this->updateImage();
 }
 
 
-    private: void jButtonOrderActionPerformed(java::awt::event::ActionEvent* evt){
+    auto ImageUnifierJPanel::jButtonOrderActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
     DefaultListModel* defaultListModel = dynamic_cast<DefaultListModel*>(this->imageJList->getModel());;
     
@@ -820,51 +811,7 @@ this->updateImage();
 }
 
 
-    private: javax::swing::JTextField* avgRatioJTextField;
-
-    private: javax::swing::JTextField* cellHeightJTextField;
-
-    private: javax::swing::JTextField* cellRatioJTextField;
-
-    private: javax::swing::JTextField* cellWidthJTextField;
-
-    private: javax::swing::JTextField* columnsJTextField;
-
-    private: javax::swing::JButton* downJButton;
-
-    private: javax::swing::JButton* fudgeItJButton;
-
-    private: javax::swing::JList* imageJList;
-
-    private: javax::swing::JButton* jButton1;
-
-    private: javax::swing::JButton* jButton2;
-
-    private: javax::swing::JButton* jButtonOrder;
-
-    private: javax::swing::JLabel* jLabel1;
-
-    private: javax::swing::JLabel* jLabel2;
-
-    private: javax::swing::JLabel* jLabel3;
-
-    private: javax::swing::JLabel* jLabel4;
-
-    private: javax::swing::JLabel* jLabel5;
-
-    private: javax::swing::JLabel* jLabel6;
-
-    private: javax::swing::JPanel* jPanel1;
-
-    private: javax::swing::JScrollPane* jScrollPane1;
-
-    private: javax::swing::JScrollPane* jScrollPane2;
-
-    private: javax::swing::JTextField* rowsJTextField;
-
-    private: javax::swing::JButton* upJButton;
-
-    public: ImageProcessorInput* getImageProcessorInput(){
+    auto ImageUnifierJPanel::getImageProcessorInput() -> ImageProcessorInput*{
 
 
 
@@ -874,7 +821,7 @@ this->updateImage();
 }
 
 
-    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput){
+    auto ImageUnifierJPanel::setImageProcessorInput(ImageProcessorInput* imageProcessorInput) -> void{
 this->imageProcessorInput= imageProcessorInput;
     
 this->init();
@@ -882,7 +829,6 @@ this->init();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_GUI_IMAGEUNIFIERJPANEL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_H
         #define ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/midlet/MIDlet.h>
-
-      
+class MIDlet;
 #include <org/allbinary/canvas/Processor.h>
-
-      
 
 
 
@@ -54,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MidletExitProcessor: public Processor {
 
     private: MIDlet* midlet;
@@ -70,3 +75,16 @@ public: MidletExitProcessor(MIDlet* midlet);
 
 
         #endif //ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/midlet/MIDlet.h>)
+#include <javax/microedition/midlet/MIDlet.h>
+#endif
+#if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RTSLAYERFORMFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_RTSLAYERFORMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/game/layer/RTSLayer.h>
-
-      
-#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
-
-      
+class RTSLayer;
+class ScrollSelectionForm;
 
 
 
@@ -57,10 +58,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/RTSLayerFormFactoryInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSLayerFormFactory
-            : public Object
+            : public virtual Object
         , public RTSLayerFormFactoryInterface {
 
+
+            
+    public: RTSLayerFormFactory();
+        
     public: ScrollSelectionForm* getInstance(RTSLayer* rtsLayer);
 
 };
@@ -69,3 +78,19 @@ class RTSLayerFormFactory
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_RTSLAYERFORMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_RTSLAYERFORMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_RTSLAYERFORMFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/RTSLayer.h>)
+#include <org/allbinary/game/layer/RTSLayer.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/ScrollSelectionForm.h>)
+#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
+#endif
+#if __has_include("org/allbinary/game/input/RTSLayerFormFactoryInterface.h")
+#include "org/allbinary/game/input/RTSLayerFormFactoryInterface.h"
+#endif
+
+        #endif
+    

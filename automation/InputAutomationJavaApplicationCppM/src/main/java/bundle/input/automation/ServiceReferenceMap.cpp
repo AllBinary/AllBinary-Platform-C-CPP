@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_SERVICEREFERENCEMAP_CPP
+        #define BUNDLE_INPUT_AUTOMATION_SERVICEREFERENCEMAP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/ServiceReferenceMap.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,32 +72,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ServiceReferenceMap
-            : public Object
-        , public Map {
 
-    public: static std::string toString(Map* map){
-
-    StringMaker* stringBuffer = new StringMaker();;
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer->toString();;
-    
-}
-
-
-    private: ServiceReference* serviceReference;
-
-public: ServiceReferenceMap(ServiceReference* serviceReference){
+ServiceReferenceMap::ServiceReferenceMap(ServiceReference* serviceReference){
 this->serviceReference= serviceReference;
     
 }
 
 
-    public: int32_t size(){
+    auto ServiceReferenceMap::size() -> int32_t{
 
 
 
@@ -97,7 +89,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: bool isEmpty(){
+    auto ServiceReferenceMap::isEmpty() -> bool{
 
 
 
@@ -107,7 +99,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: bool containsKey(Object* key){
+    auto ServiceReferenceMap::containsKey(Object* key) -> bool{
 
 
 
@@ -117,7 +109,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: bool containsValue(Object* value){
+    auto ServiceReferenceMap::containsValue(Object* value) -> bool{
 
 
 
@@ -127,7 +119,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Object* get(Object* key){
+    auto ServiceReferenceMap::get(Object* key) -> Object*{
 
 
 
@@ -137,7 +129,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Object* put(Object* key, Object* value){
+    auto ServiceReferenceMap::put(Object* key, Object* value) -> Object*{
 
 
 
@@ -147,7 +139,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Object* remove(Object* key){
+    auto ServiceReferenceMap::remove(Object* key) -> Object*{
 
 
 
@@ -157,15 +149,15 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: void putAll(Map* m){
+    auto ServiceReferenceMap::putAll(Map* m) -> void{
 }
 
 
-    public: void clear(){
+    auto ServiceReferenceMap::clear() -> void{
 }
 
 
-    public: Set* keySet(){
+    auto ServiceReferenceMap::keySet() -> Set*{
 
     std::vector<std::string> keyStringArray = this->serviceReference->getPropertyKeys();;
     
@@ -178,7 +170,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Collection<Object*>* values(){
+    auto ServiceReferenceMap::values() -> Collection<Object*>*{
 
 
 
@@ -188,7 +180,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Set* entrySet(){
+    auto ServiceReferenceMap::entrySet() -> Set*{
 
 
 
@@ -198,7 +190,19 @@ this->serviceReference= serviceReference;
 }
 
 
-};
+    auto ServiceReferenceMap::toString(Map* map) -> std::string{
 
-            
+    StringMaker* stringBuffer = new StringMaker();;
+    
 
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer->toString();;
+    
+}
+
+
+
+
+        #endif //BUNDLE_INPUT_AUTOMATION_SERVICEREFERENCEMAP_CPP

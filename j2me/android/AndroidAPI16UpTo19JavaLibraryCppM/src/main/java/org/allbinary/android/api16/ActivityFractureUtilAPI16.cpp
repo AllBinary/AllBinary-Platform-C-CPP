@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_API16_ACTIVITYFRACTUREUTILAPI16_CPP
+        #define ORG_ALLBINARY_ANDROID_API16_ACTIVITYFRACTUREUTILAPI16_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/api16/ActivityFractureUtilAPI16.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,21 +62,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ActivityFractureUtilAPI16: public ActivityFractureUtilAPI5 {
 
-    private: static ActivityFractureUtilAPI16* instance16() { static std::unique_ptr<ActivityFractureUtilAPI16> value(new ActivityFractureUtilAPI16()); return value.get(); }
+ActivityFractureUtilAPI16::ActivityFractureUtilAPI16() {
+        }
+        auto ActivityFractureUtilAPI16::instance16_owner() -> ActivityFractureUtilAPI16* { static std::unique_ptr<ActivityFractureUtilAPI16> value(new ActivityFractureUtilAPI16()); return value.get(); }
+ActivityFractureUtilAPI16* ActivityFractureUtilAPI16::instance16 = ActivityFractureUtilAPI16::instance16_owner();
 
-    public: static ActivityFractureUtilAPI16* getInstance(){
+    auto ActivityFractureUtilAPI16::getInstance() -> ActivityFractureUtilAPI16*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI16::instance16();
+                        return ActivityFractureUtilAPI16::instance16;
     
 }
 
 
-    public: void setFullScreen(Activity* activity){
+    auto ActivityFractureUtilAPI16::setFullScreen(Activity* activity) -> void{
 
     View* decorView = activity->getWindow()->getDecorView();;
     
@@ -78,7 +90,6 @@ decorView->setSystemUiVisibility(visibility);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_API16_ACTIVITYFRACTUREUTILAPI16_CPP

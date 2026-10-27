@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,32 +37,14 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/visual/media/MediaData.h>
-
-      
-#include <org/allbinary/logic/visual/media/MediaIOUtil.h>
-
-      
-#include <org/allbinary/logic/visual/media/MediaTypeData.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class StdUtil;
+class LogUtil;
+class StringMaker;
+class MediaData;
+class MediaIOUtil;
+class MediaTypeData;
+class CommonStrings;
 
 
 
@@ -77,8 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UploadMediaSingleton
-            : public Object
+            : public virtual Object
          {
 
     private: static inline UploadMediaSingleton* uploadMedia;
@@ -86,9 +77,9 @@ class UploadMediaSingleton
 
     public: static UploadMediaSingleton* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: HashMap<Object*, Object*>* readerFileTypesHashMap;
 
@@ -116,3 +107,37 @@ private: UploadMediaSingleton();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/media/MediaData.h>)
+#include <org/allbinary/logic/visual/media/MediaData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/media/MediaIOUtil.h>)
+#include <org/allbinary/logic/visual/media/MediaIOUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/media/MediaTypeData.h>)
+#include <org/allbinary/logic/visual/media/MediaTypeData.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

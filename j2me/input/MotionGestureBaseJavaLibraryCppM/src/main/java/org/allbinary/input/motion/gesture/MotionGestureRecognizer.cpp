@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURERECOGNIZER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURERECOGNIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/MotionGestureRecognizer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,31 +103,8 @@
         #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
 #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 
-class MotionGestureRecognizer
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: J2SEMath* j2seMath = J2SEMath::getInstance();
-
-    private: GPoint* origin = PointFactory::getInstance()->ZERO_ZERO;
-
-    private: GPoint* previous = this->origin;
-
-    private: GPoint* intermediate = this->origin;
-
-    private: Line* line = new Line(this->origin, this->origin);
-
-    private: BasicMotionGesturesHandler* motionGesturesHandler;
-
-    private: BasicEventHandler* movedMotionGesturesHandler;
-
-    private: BasicEventHandler* scrolledMotionGesturesHandler;
-
-    private: MotionEventCircularPool* motionEventCircularPool;
-
-public: MotionGestureRecognizer(int32_t id){
+MotionGestureRecognizer::MotionGestureRecognizer(int32_t id) : logUtil(LogUtil::getInstance()), j2seMath(J2SEMath::getInstance()), origin(PointFactory::getInstance()->ZERO_ZERO), previous(this->origin), intermediate(this->origin), line(new Line(this->origin, this->origin)){
 this->motionEventCircularPool= MotionEventCircularPool::createPool(id);
     
 
@@ -159,7 +146,7 @@ this->scrolledMotionGesturesHandler= scrolledMotionGesturesHandler;
 
                 //@Throws(Exception.constructor)
             
-    public: bool processPressedMotionEvent(GPoint* current, int32_t deviceId, int32_t button){
+    auto MotionGestureRecognizer::processPressedMotionEvent(GPoint* current, int32_t deviceId, int32_t button) -> bool{
 this->intermediate= this->origin;
     
 this->previous= this->origin;
@@ -184,7 +171,7 @@ this->motionGesturesHandler->fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processReleasedMotionEvent(GPoint* current, int32_t deviceId, int32_t button){
+    auto MotionGestureRecognizer::processReleasedMotionEvent(GPoint* current, int32_t deviceId, int32_t button) -> bool{
 
     MotionGestureEvent* event = this->motionEventCircularPool->getInstance(TouchMotionGestureFactory::getInstance()->RELEASED);;
     
@@ -205,7 +192,7 @@ this->motionGesturesHandler->fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public: void processDraggedMotionEvent(GPoint* current, int32_t deviceId, int32_t buttonMask){
+    auto MotionGestureRecognizer::processDraggedMotionEvent(GPoint* current, int32_t deviceId, int32_t buttonMask) -> void{
 
                         if(this->previous == this->origin || this->intermediate == this->origin)
                         
@@ -394,7 +381,7 @@ this->motionGesturesHandler->fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processMovedMotionEvent(GPoint* current, int32_t deviceId, int32_t button){
+    auto MotionGestureRecognizer::processMovedMotionEvent(GPoint* current, int32_t deviceId, int32_t button) -> bool{
 
     MotionGestureEvent* event = this->motionEventCircularPool->getInstance(TouchMotionGestureFactory::getInstance()->NO_MOTION);;
     
@@ -415,7 +402,7 @@ this->movedMotionGesturesHandler->fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public: bool processScrolledMotionEvent(GPoint* current, int32_t deviceId, int32_t button){
+    auto MotionGestureRecognizer::processScrolledMotionEvent(GPoint* current, int32_t deviceId, int32_t button) -> bool{
 
     TouchMotionGestureFactory* touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
@@ -458,7 +445,7 @@ this->scrolledMotionGesturesHandler->fireEvent(event);
 }
 
 
-    public: BasicMotionGesturesHandler* getMotionGesturesHandler(){
+    auto MotionGestureRecognizer::getMotionGesturesHandler() -> BasicMotionGesturesHandler*{
 
 
 
@@ -468,7 +455,6 @@ this->scrolledMotionGesturesHandler->fireEvent(event);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURERECOGNIZER_CPP

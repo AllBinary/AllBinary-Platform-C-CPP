@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_APACHE_XMLRPC_XMLRPCCLIENT_CPP
+        #define ORG_APACHE_XMLRPC_XMLRPCCLIENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/apache/xmlrpc/XmlRpcClient.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,19 +63,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/apache/xmlrpc/XmlRpcHandler.h"
 
-class XmlRpcClient
-            : public Object
-        , public XmlRpcHandler {
 
-    private: URL* url;
-
-public: XmlRpcClient(std::string url){
+XmlRpcClient::XmlRpcClient(std::string url){
 this->url= new URL(url);
     
 }
 
 
-    public: URL* getURL(){
+    auto XmlRpcClient::getURL() -> URL*{
 
 
 
@@ -75,13 +80,13 @@ this->url= new URL(url);
 }
 
 
-    public: void setBasicAuthentication(std::string user, std::string password){
+    auto XmlRpcClient::setBasicAuthentication(std::string user, std::string password) -> void{
 }
 
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public: Object* execute(std::string method, BasicArrayList* params){
+    auto XmlRpcClient::execute(std::string method, BasicArrayList* params) -> Object*{
 
 
 
@@ -93,7 +98,7 @@ this->url= new URL(url);
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public: Object* execute(std::string method, BasicArrayList* params, CryptInterface* cryptInterface){
+    auto XmlRpcClient::execute(std::string method, BasicArrayList* params, CryptInterface* cryptInterface) -> Object*{
 
 
 
@@ -103,7 +108,6 @@ this->url= new URL(url);
 }
 
 
-};
 
-            
 
+        #endif //ORG_APACHE_XMLRPC_XMLRPCCLIENT_CPP

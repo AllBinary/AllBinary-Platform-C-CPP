@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_BASICHIGHSCORESFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_BASICHIGHSCORESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/BasicHighScoresFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -88,38 +98,8 @@
 #include "org/allbinary/game/score/HighScoresHelper2.h"
 #include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
 
-class BasicHighScoresFactory: public HighScoresBase {
 
-    public: static bool loaded(int32_t index2){
-
-                        if(index2 >= 0)
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation;
-
-    private: SoftwareInformation* softwareInformation;
-
-public: BasicHighScoresFactory(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation){
+BasicHighScoresFactory::BasicHighScoresFactory(AbeClientInformationInterface* abeClientInformation, SoftwareInformation* softwareInformation) : logUtil(LogUtil::getInstance()), highScoresArray(std::vector<HighScores*>(2)){
 this->abeClientInformation= abeClientInformation;
     
 this->softwareInformation= softwareInformation;
@@ -127,19 +107,7 @@ this->softwareInformation= softwareInformation;
 }
 
 
-    private: const std::vector<HighScores*> highScoresArray = std::vector<HighScores*>(2);
-
-    private: const std::string TOP = "Top";
-
-    private: const std::string SCORES = "Scores";
-
-    private: const std::string PERSONAL_HIGH_SCORES = "Personal Top Scores";
-
-    private: const std::string WORLD_TOP_SCORES = "World Top Scores";
-
-    private: const std::string FETCH = "fetchHighScores";
-
-    public: void fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener){
+    auto BasicHighScoresFactory::fetchHighScores(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener) -> void{
 this->logUtil->putF("Getting Remote/Local HighScores", this, this->FETCH);
     
 this->fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
@@ -147,7 +115,7 @@ this->fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
 }
 
 
-    public: void fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload){
+    auto BasicHighScoresFactory::fetchHighScoresPreload(GameInfo* gameInfo, HighScoresResultsListener* highScoresResultsListener, bool preload) -> void{
 SecondaryThreadPool::getInstance()->runTask(class extends ARunnable
                                 {
                                 
@@ -157,7 +125,7 @@ SecondaryThreadPool::getInstance()->runTask(class extends ARunnable
     
 
         try {
-            logUtil->putF(this->commonStrings.START, this, FETCH);
+            logUtil->putF(this->commonStrings->START, this, FETCH);
     
 highScoresArray[0]= RecordStoreHighScores::getInstance(abeClientInformation, gameInfo, TOP, PERSONAL_HIGH_SCORES, SCORES, new ScoreComparator(true));
     
@@ -190,7 +158,7 @@ highScoresArray[0]= RecordStoreHighScores::getInstance(abeClientInformation, gam
                                 
 highScoresArray[1]= RemoteHighScores::getInstancePreload(abeClientInformation, softwareInformation, gameInfo2, WORLD_TOP_SCORES, SCORES, BooleanFactory::getInstance()->FALSE, preload);
     
-logUtil->putF(this->commonStrings.END, this, FETCH);
+logUtil->putF(this->commonStrings->END, this, FETCH);
     
 LastFetchHighScoresFactory::getInstance()->highScoresArray= highScoresArray;
     
@@ -212,7 +180,7 @@ logUtil->put(commonStrings.EXCEPTION, this, FETCH, &e);
 }
 
 
-    public: HighScoresHelperBaseInterface* createHighScoresHelper(){
+    auto BasicHighScoresFactory::createHighScoresHelper() -> HighScoresHelperBaseInterface*{
 
 
 
@@ -222,7 +190,29 @@ logUtil->put(commonStrings.EXCEPTION, this, FETCH, &e);
 }
 
 
-};
+    auto BasicHighScoresFactory::loaded(int32_t index2) -> bool{
 
-            
+                        if(index2 >= 0)
+                        
+                                    {
+                                    
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_SCORE_BASICHIGHSCORESFACTORY_CPP

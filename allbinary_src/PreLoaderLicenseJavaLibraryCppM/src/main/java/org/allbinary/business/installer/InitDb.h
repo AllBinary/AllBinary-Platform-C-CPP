@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,14 +39,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <org/allbinary/business/init/db/DbConnectionInfo.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class DbConnectionInfo;
+class LicensingException;
 
 
 
@@ -60,9 +59,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //Warning you must have sql root access
 class InitDb
-            : public Object
+            : public virtual Object
          {
 
     private: Object* anyType;
@@ -83,9 +86,10 @@ public: InitDb();
 
 public: InitDb(DbConnectionInfo* dbConnectionInfo);
 
-    protected: void setHelper(Object* anyType);
+    /*protected*/ public: void setHelper(Object* anyType);
+    /*protected*/ public: void setHelper(const std::string& anyType) { return setHelper(JavaString::box(anyType)); }
 
-    protected: Object* getHelper();
+    /*protected*/ public: Object* getHelper();
 
     private: std::string getHostName();
 
@@ -105,3 +109,19 @@ public: InitDb(DbConnectionInfo* dbConnectionInfo);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/DbConnectionInfo.h>)
+#include <org/allbinary/business/init/db/DbConnectionInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ONEROWSPRITEINDEXEDANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ONEROWSPRITEINDEXEDANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/OneRowSpriteIndexedAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,11 +83,10 @@
         #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
 #include "org/allbinary/animation/image/sprite/AdjustedSpriteIndexedAnimation.h"
 
-class OneRowSpriteIndexedAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory* createFactoryDX(Image* image, int32_t dx, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto OneRowSpriteIndexedAnimationFactory::createFactoryDX(Image* image, int32_t dx, AnimationBehaviorFactory* animationBehaviorFactory) -> OneRowSpriteIndexedAnimationFactory*{
 
     OneRowSpriteIndexedAnimationFactory* oneRowSpriteIndexedAnimationFactory = new OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getHeight(), image->getHeight(), 0, 0, animationBehaviorFactory);;
     
@@ -94,7 +103,7 @@ oneRowSpriteIndexedAnimationFactory->initW(dx);
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory* createFactoryDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto OneRowSpriteIndexedAnimationFactory::createFactoryDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) -> OneRowSpriteIndexedAnimationFactory*{
 
     OneRowSpriteIndexedAnimationFactory* oneRowSpriteIndexedAnimationFactory = new OneRowSpriteIndexedAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image->getHeight(), image->getHeight(), 0, 0, animationBehaviorFactory);;
     
@@ -111,7 +120,7 @@ oneRowSpriteIndexedAnimationFactory->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory* createFactoryWH(Image* image, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto OneRowSpriteIndexedAnimationFactory::createFactoryWH(Image* image, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory) -> OneRowSpriteIndexedAnimationFactory*{
 
 
 
@@ -123,7 +132,7 @@ oneRowSpriteIndexedAnimationFactory->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static OneRowSpriteIndexedAnimationFactory* createFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto OneRowSpriteIndexedAnimationFactory::createFactory(Image* image, AnimationBehaviorFactory* animationBehaviorFactory) -> OneRowSpriteIndexedAnimationFactory*{
 
 
 
@@ -133,9 +142,7 @@ oneRowSpriteIndexedAnimationFactory->init(dx, dy);
 }
 
 
-    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
-
-public: OneRowSpriteIndexedAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, width, height, dx, dy, animationBehaviorFactory){
+OneRowSpriteIndexedAnimationFactory::OneRowSpriteIndexedAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, width, height, dx, dy, animationBehaviorFactory), animationFactorySpriteScaleUtil(AnimationFactorySpriteScaleUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -145,37 +152,37 @@ public: OneRowSpriteIndexedAnimationFactory(Image* image, std::vector<int32_t> s
 }
 
 
-    public: void init(int32_t dx, int32_t dy){
-this->animationFactoryInitializationVisitor.dx= dx;
+    auto OneRowSpriteIndexedAnimationFactory::init(int32_t dx, int32_t dy) -> void{
+this->animationFactoryInitializationVisitor->dx= dx;
     
-this->animationFactoryInitializationVisitor.dy= dy;
+this->animationFactoryInitializationVisitor->dy= dy;
     
 }
 
 
-    public: void initW(int32_t dx){
+    auto OneRowSpriteIndexedAnimationFactory::initW(int32_t dx) -> void{
 this->init(dx, 0);
     
-this->animationFactoryInitializationVisitor.dx +=  -(this->animationFactoryInitializationVisitor.width>>2);
+this->animationFactoryInitializationVisitor->dx +=  -(this->animationFactoryInitializationVisitor->width>>2);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto OneRowSpriteIndexedAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
-    Sprite* sprite = this->animationFactorySpriteScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Sprite* sprite = this->animationFactorySpriteScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor->width, this->animationFactoryInitializationVisitor->height, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
-                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
+                        if(this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdjustedSpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AdjustedSpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                                     }
@@ -185,7 +192,7 @@ this->animationFactoryInitializationVisitor.dx +=  -(this->animationFactoryIniti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new SpriteIndexedAnimation(sprite, this->getImage(), BasicColorUtil::getInstance()->ZERO_ARRAY, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
@@ -193,7 +200,6 @@ this->animationFactoryInitializationVisitor.dx +=  -(this->animationFactoryIniti
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ONEROWSPRITEINDEXEDANIMATIONFACTORY_CPP

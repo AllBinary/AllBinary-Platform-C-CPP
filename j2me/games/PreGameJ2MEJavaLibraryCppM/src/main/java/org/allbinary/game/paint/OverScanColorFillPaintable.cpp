@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_OVERSCANCOLORFILLPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_OVERSCANCOLORFILLPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/OverScanColorFillPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/paint/ColorFillPaintable.h"
 
-class OverScanColorFillPaintable: public ColorFillPaintable {
 
-public: OverScanColorFillPaintable(BasicColor* basicColor) : ColorFillPaintable(basicColor){
+OverScanColorFillPaintable::OverScanColorFillPaintable(BasicColor* basicColor) : ColorFillPaintable(basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,15 +71,14 @@ public: OverScanColorFillPaintable(BasicColor* basicColor) : ColorFillPaintable(
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto OverScanColorFillPaintable::paint(Graphics* graphics) -> void{
 graphics->setColor(this->colorP);
     
-graphics->fillRect( -graphics->getClipX(),  -graphics->getClipY(), this->displayInfoSingleton.getLastWidth() +(graphics->getClipX() *2), this->displayInfoSingleton.getLastHeight() +(graphics->getClipY() *2));
+graphics->fillRect( -graphics->getClipX(),  -graphics->getClipY(), this->displayInfoSingleton->getLastWidth() +(graphics->getClipX() *2), this->displayInfoSingleton->getLastHeight() +(graphics->getClipY() *2));
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_OVERSCANCOLORFILLPAINTABLE_CPP

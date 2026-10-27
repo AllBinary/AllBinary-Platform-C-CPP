@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,35 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoObjectConfigData
-            : public Object
-         {
+auto TransformInfoObjectConfigData::instance_owner() -> TransformInfoObjectConfigData* { static std::unique_ptr<TransformInfoObjectConfigData> value(new TransformInfoObjectConfigData()); return value.get(); }
+TransformInfoObjectConfigData* TransformInfoObjectConfigData::instance = TransformInfoObjectConfigData::instance_owner();
 
-    private: static TransformInfoObjectConfigData* instance() { static std::unique_ptr<TransformInfoObjectConfigData> value(new TransformInfoObjectConfigData()); return value.get(); }
-
-    public: static TransformInfoObjectConfigData* getInstance(){
+    auto TransformInfoObjectConfigData::getInstance() -> TransformInfoObjectConfigData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfigData::instance();
+                        return TransformInfoObjectConfigData::instance;
     
 }
 
 
-private: TransformInfoObjectConfigData(){
+TransformInfoObjectConfigData::TransformInfoObjectConfigData() : UNCRYPTED_EXTENSION(CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION), ENCRYPTED_EXTENSION(CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION){
 }
 
 
-    public: const std::string NAME = "OBJECTCONFIG_NAME";
 
-    public: const std::string VARKEY = "$";
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
-
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGDATA_CPP

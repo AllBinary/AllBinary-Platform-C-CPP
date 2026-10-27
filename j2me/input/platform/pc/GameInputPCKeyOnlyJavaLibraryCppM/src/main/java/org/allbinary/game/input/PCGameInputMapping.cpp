@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_PCGAMEINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_PCGAMEINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/PCGameInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,9 +66,8 @@
         #include "org/allbinary/game/input/PCKeyFactory.h"
 #include "org/allbinary/game/input/Input.h"
 
-class PCGameInputMapping: public PersistentInputMapping {
 
-public: PCGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID){
+PCGameInputMapping::PCGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,12 +79,12 @@ public: PCGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::ge
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface* abeClientInformation){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
+    auto PCGameInputMapping::init(AbeClientInformationInterface* abeClientInformation) -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->INIT);
     
 PCKeyFactory::getInstance();
     
-super.init(abeClientInformation);
+PersistentInputMapping::init(abeClientInformation);
     
 
                         if(this->getTotalMapped() == 0 || this->isDefaultNew())
@@ -91,7 +100,7 @@ this->save(abeClientInformation);
 }
 
 
-    public: bool isDelete(Input* input){
+    auto PCGameInputMapping::isDelete(Input* input) -> bool{
 
                         if(input == PCKeyFactory::getInstance()->DEL)
                         
@@ -118,7 +127,7 @@ this->save(abeClientInformation);
 }
 
 
-    public: bool isSystemInput(Input* input){
+    auto PCGameInputMapping::isSystemInput(Input* input) -> bool{
 
 
 
@@ -128,7 +137,6 @@ this->save(abeClientInformation);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_PCGAMEINPUTMAPPING_CPP

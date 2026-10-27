@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/PaymentFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,12 @@
         #include "org/allbinary/business/user/commerce/money/payment/Payment.h"
 #include "org/allbinary/business/user/commerce/money/payment/PaymentInterface.h"
 
-class PaymentFactory
-            : public Object
-         {
 
-    public: static PaymentInterface* getInstance(ServletRequest* request){
+PaymentFactory::PaymentFactory(){
+}
+
+
+    auto PaymentFactory::getInstance(ServletRequest* request) -> PaymentInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -82,7 +93,7 @@ class PaymentFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "PaymentFactory", commonStrings->GET_INSTANCE, &e);
@@ -101,11 +112,6 @@ class PaymentFactory
 }
 
 
-private: PaymentFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENTFACTORY_CPP

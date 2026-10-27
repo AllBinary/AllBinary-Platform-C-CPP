@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORYPROGRESSBASE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORYPROGRESSBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellHistoryProgressBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,45 +57,41 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GeographicMapCellHistoryProgressBase
-            : public Object
-         {
+auto GeographicMapCellHistoryProgressBase::instance_owner() -> GeographicMapCellHistoryProgressBase* { static std::unique_ptr<GeographicMapCellHistoryProgressBase> value(new GeographicMapCellHistoryProgressBase()); return value.get(); }
+GeographicMapCellHistoryProgressBase* GeographicMapCellHistoryProgressBase::instance = GeographicMapCellHistoryProgressBase::instance_owner();
 
-    private: static GeographicMapCellHistoryProgressBase* instance() { static std::unique_ptr<GeographicMapCellHistoryProgressBase> value(new GeographicMapCellHistoryProgressBase()); return value.get(); }
-
-    public: static GeographicMapCellHistoryProgressBase* getInstance(){
+    auto GeographicMapCellHistoryProgressBase::getInstance() -> GeographicMapCellHistoryProgressBase*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapCellHistoryProgressBase::instance();
+                        return GeographicMapCellHistoryProgressBase::instance;
     
 }
 
 
-public: GeographicMapCellHistoryProgressBase(){
+GeographicMapCellHistoryProgressBase::GeographicMapCellHistoryProgressBase(){
 }
 
 
-    public: void init(){
+    auto GeographicMapCellHistoryProgressBase::init() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isAnyProgress(){
+    auto GeographicMapCellHistoryProgressBase::isAnyProgress() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORYPROGRESSBASE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONUPRESOURCE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONUPRESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonUpResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
-class TouchButtonUpResource: public TouchButtonResource {
+TouchButtonResource* TouchButtonUpResource::instance = new TouchButtonUpResource();
 
-    private: static inline TouchButtonResource* instance = new TouchButtonUpResource();
-
-    public: static TouchButtonResource* getInstance(){
+    auto TouchButtonUpResource::getInstance() -> TouchButtonResource*{
 
 
 
@@ -58,7 +66,7 @@ class TouchButtonUpResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonUpResource() : TouchButtonResource("/touch_button_up_arrow_64_by_64.png", "/touch_button_up_arrow_hint_64_by_64.png"){
+TouchButtonUpResource::TouchButtonUpResource() : TouchButtonResource("/touch_button_up_arrow_64_by_64.png", "/touch_button_up_arrow_hint_64_by_64.png"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +76,6 @@ private: TouchButtonUpResource() : TouchButtonResource("/touch_button_up_arrow_6
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONUPRESOURCE_CPP

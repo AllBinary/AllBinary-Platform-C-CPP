@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTTYPE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LayerPlacementType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerPlacementType
-            : public Object
-         {
 
-    private: int32_t type;
-
-: LayerPlacementType(int32_t type){
+LayerPlacementType::LayerPlacementType(int32_t type){
 this->type= type;
     
 }
 
 
-    public: int32_t getType(){
+    auto LayerPlacementType::getType() -> int32_t{
 
 
 
@@ -67,13 +72,12 @@ this->type= type;
 }
 
 
-    protected: void setType(int32_t type){
+    auto LayerPlacementType::setType(int32_t type) -> void{
 this->type= type;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTTYPE_CPP

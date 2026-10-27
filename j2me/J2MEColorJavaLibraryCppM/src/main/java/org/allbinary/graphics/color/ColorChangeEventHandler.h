@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENTHANDLER_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -49,9 +52,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorChangeEventHandler: public BasicEventHandler {
 
-    private: static ColorChangeEventHandler* eventHandler() { static std::unique_ptr<ColorChangeEventHandler> value(new ColorChangeEventHandler()); return value.get(); }
+    private: static ColorChangeEventHandler* eventHandler_owner();
+    private: static ColorChangeEventHandler* eventHandler;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static ColorChangeEventHandler* getInstance();
@@ -64,3 +72,13 @@ private: ColorChangeEventHandler();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+
+        #endif
+    

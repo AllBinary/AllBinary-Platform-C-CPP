@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATIONFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidation.h"
 
-class CssElementValidationFactory
-            : public Object
-         {
+
+CssElementValidationFactory::CssElementValidationFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static ValidationInterface* getInstance(Node* node){
+    auto CssElementValidationFactory::getInstance(Node* node) -> ValidationInterface*{
 
 
 
@@ -70,11 +81,6 @@ class CssElementValidationFactory
 }
 
 
-private: CssElementValidationFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATIONFACTORY_CPP

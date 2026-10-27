@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,10 +52,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/util/cache/CacheType.h"
+        class CacheType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PoolType
-            : public Object
+            : public virtual Object
          {
 
     private: CacheType* cacheType;
@@ -67,3 +76,13 @@ public: PoolType(CacheType* cacheType);
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H_COMPLETE
+        #if __has_include("org/allbinary/logic/util/cache/CacheType.h")
+#include "org/allbinary/logic/util/cache/CacheType.h"
+#endif
+
+        #endif
+    

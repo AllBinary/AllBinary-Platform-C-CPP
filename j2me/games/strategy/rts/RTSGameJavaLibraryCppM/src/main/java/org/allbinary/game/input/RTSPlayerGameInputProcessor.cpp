@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_RTSPLAYERGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_RTSPLAYERGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/RTSPlayerGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,13 @@
         #include "org/allbinary/game/input/GameInputProcessor.h"
 #include "org/allbinary/game/input/RTSPlayerGameInput.h"
 
-class RTSPlayerGameInputProcessor: public GameInputProcessor {
 
-    protected: RTSPlayerGameInput* rtsPlayerGameInput;
-
-public: RTSPlayerGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput){
+RTSPlayerGameInputProcessor::RTSPlayerGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput){
 this->rtsPlayerGameInput= rtsPlayerGameInput;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_RTSPLAYERGAMEINPUTPROCESSOR_CPP

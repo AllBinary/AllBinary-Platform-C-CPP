@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_STOREFRONTORDERSSTATISTICSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_STOREFRONTORDERSSTATISTICSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/orders/StoreFrontOrdersStatisticsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontOrdersStatisticsData
-            : public Object
-         {
+auto StoreFrontOrdersStatisticsData::instance_owner() -> StoreFrontOrdersStatisticsData* { static std::unique_ptr<StoreFrontOrdersStatisticsData> value(new StoreFrontOrdersStatisticsData()); return value.get(); }
+StoreFrontOrdersStatisticsData* StoreFrontOrdersStatisticsData::instance = StoreFrontOrdersStatisticsData::instance_owner();
 
-    private: static StoreFrontOrdersStatisticsData* instance() { static std::unique_ptr<StoreFrontOrdersStatisticsData> value(new StoreFrontOrdersStatisticsData()); return value.get(); }
-
-    public: static StoreFrontOrdersStatisticsData* getInstance(){
+    auto StoreFrontOrdersStatisticsData::getInstance() -> StoreFrontOrdersStatisticsData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontOrdersStatisticsData::instance();
+                        return StoreFrontOrdersStatisticsData::instance;
     
 }
 
 
-private: StoreFrontOrdersStatisticsData(){
+StoreFrontOrdersStatisticsData::StoreFrontOrdersStatisticsData(){
 }
 
 
-    public: const std::string NAME = "STOREFRONT_ORDERS_STATISTICS_NAME";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_STOREFRONTORDERSSTATISTICSDATA_CPP

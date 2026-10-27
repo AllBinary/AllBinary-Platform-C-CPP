@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
-
-      
+class BasicColor;
+class GenericOperatingSystem;
+class OperatingSystemFactory;
 
 
 
@@ -56,18 +55,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/paint/ColorFillPaintable.h"
-#include "org/allbinary/game/paint/OverScanColorFillPaintable.h"
-#include "org/allbinary/game/paint/ColorFillBasePaintable.h"
+        class ColorFillPaintable;
+class OverScanColorFillPaintable;
+class ColorFillBasePaintable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorFillPaintableFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ColorFillPaintableFactory* instance() { static std::unique_ptr<ColorFillPaintableFactory> value(new ColorFillPaintableFactory()); return value.get(); }
+    private: static ColorFillPaintableFactory* instance_owner();
+    private: static ColorFillPaintableFactory* instance;
 
     public: static ColorFillPaintableFactory* getInstance();
 
+
+            
+    public: ColorFillPaintableFactory();
+        
     public: ColorFillBasePaintable* getInstance(BasicColor* basicColor, bool forThreedCanvas);
 
 };
@@ -76,3 +84,28 @@ class ColorFillPaintableFactory
 
 
         #endif //ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PAINT_COLORFILLPAINTABLEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/OperatingSystemFactory.h>)
+#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
+#endif
+#if __has_include("org/allbinary/game/paint/ColorFillPaintable.h")
+#include "org/allbinary/game/paint/ColorFillPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/paint/OverScanColorFillPaintable.h")
+#include "org/allbinary/game/paint/OverScanColorFillPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/paint/ColorFillBasePaintable.h")
+#include "org/allbinary/game/paint/ColorFillBasePaintable.h"
+#endif
+
+        #endif
+    

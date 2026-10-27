@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/PrimitiveLongSingleton.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,41 +62,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PrimitiveLongSingleton
-            : public Object
-         {
 
-    private: static PrimitiveLongSingleton* instance() { static std::unique_ptr<PrimitiveLongSingleton> value(new PrimitiveLongSingleton()); return value.get(); }
+PrimitiveLongSingleton::PrimitiveLongSingleton() : UNK({'U','n','k'}), NUMBER_ARRAY({0,1,2,3,4,5,6,7,8,9}), NUMBER_CHAR_ARRAY({'0','1','2','3','4','5','6','7','8','9'}), NUMBER_CHAR_ARRAYS(
+                                                        {
+                                                            {'0'},{'1'},{'2'},{'3'},{'4'},{'5'},{'6'},{'7'},{'8'},{'9'}
+                                                        }), ZERO(
+                                                        
+                                                        {this->NUMBER_CHAR_ARRAY[0]}
+                                                    ) {
+        }
+        auto PrimitiveLongSingleton::instance_owner() -> PrimitiveLongSingleton* { static std::unique_ptr<PrimitiveLongSingleton> value(new PrimitiveLongSingleton()); return value.get(); }
+PrimitiveLongSingleton* PrimitiveLongSingleton::instance = PrimitiveLongSingleton::instance_owner();
 
-    public: static PrimitiveLongSingleton* getInstance(){
+    auto PrimitiveLongSingleton::getInstance() -> PrimitiveLongSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveLongSingleton::instance();
+                        return PrimitiveLongSingleton::instance;
     
 }
 
 
-    public: const std::vector<char> UNK = ['U','n','k'];
-
-    public: const std::vector<int8_t> NUMBER_ARRAY = {0,1,2,3,4,5,6,7,8,9};
-
-    public: const std::vector<char> NUMBER_CHAR_ARRAY = ['0','1','2','3','4','5','6','7','8','9'];
-
-    public: const std::vector<std::vector<char>> NUMBER_CHAR_ARRAYS = 
-                                                        {
-                                                            ['0'],['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8'],['9']
-                                                        };
-
-    public: const std::vector<char> ZERO = 
-                                                        
-                                                        {this->NUMBER_CHAR_ARRAY[0]}
-                                                    ;
-
                 //@Throws(Exception.constructor)
             
-    public: int8_t getNumberFromChar(char numberAsChar){
+    auto PrimitiveLongSingleton::getNumberFromChar(char numberAsChar) -> int8_t{
 
     int32_t size = this->NUMBER_CHAR_ARRAY.size();;
     
@@ -115,12 +115,11 @@ class PrimitiveLongSingleton
 
 
 
-                            throw new Exception((new StringMaker())->append("numberAsChar was not in array: ")->appendchar(numberAsChar)->toString());
+                            throw Exception((new StringMaker())->append("numberAsChar was not in array: ")->appendchar(numberAsChar)->toString());
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_CPP

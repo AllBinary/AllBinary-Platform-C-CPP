@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_NAMEDINTERFACE_CPP
+        #define ORG_ALLBINARY_LAYER_NAMEDINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/NamedInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,11 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NamedInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LAYER_NAMEDINTERFACE_CPP

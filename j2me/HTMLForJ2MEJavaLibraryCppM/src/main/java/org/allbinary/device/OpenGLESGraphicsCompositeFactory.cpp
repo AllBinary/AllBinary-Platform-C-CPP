@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSCOMPOSITEFACTORY_CPP
+        #define ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSCOMPOSITEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/device/OpenGLESGraphicsCompositeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,31 +56,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/device/OpenGLESGraphicsFactory.h"
 
-class OpenGLESGraphicsCompositeFactory
-            : public Object
-         {
 
-    private: static OpenGLESGraphicsCompositeFactory* instance() { static std::unique_ptr<OpenGLESGraphicsCompositeFactory> value(new OpenGLESGraphicsCompositeFactory()); return value.get(); }
+OpenGLESGraphicsCompositeFactory::OpenGLESGraphicsCompositeFactory() : openGLESGraphicsFactory(new OpenGLESGraphicsFactory()) {
+        }
+        auto OpenGLESGraphicsCompositeFactory::instance_owner() -> OpenGLESGraphicsCompositeFactory* { static std::unique_ptr<OpenGLESGraphicsCompositeFactory> value(new OpenGLESGraphicsCompositeFactory()); return value.get(); }
+OpenGLESGraphicsCompositeFactory* OpenGLESGraphicsCompositeFactory::instance = OpenGLESGraphicsCompositeFactory::instance_owner();
 
-    public: static OpenGLESGraphicsCompositeFactory* getInstance(){
+    auto OpenGLESGraphicsCompositeFactory::getInstance() -> OpenGLESGraphicsCompositeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESGraphicsCompositeFactory::instance();
+                        return OpenGLESGraphicsCompositeFactory::instance;
     
 }
 
 
-    private: OpenGLESGraphicsFactory* openGLESGraphicsFactory = new OpenGLESGraphicsFactory();
-
-    public: void set(OpenGLESGraphicsFactory* openGLESGraphicsFactory){
+    auto OpenGLESGraphicsCompositeFactory::set(OpenGLESGraphicsFactory* openGLESGraphicsFactory) -> void{
 this->openGLESGraphicsFactory= openGLESGraphicsFactory;
     
 }
 
 
-    public: OpenGLESGraphicsFactory* get(){
+    auto OpenGLESGraphicsCompositeFactory::get() -> OpenGLESGraphicsFactory*{
 
 
 
@@ -80,7 +88,6 @@ this->openGLESGraphicsFactory= openGLESGraphicsFactory;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSCOMPOSITEFACTORY_CPP

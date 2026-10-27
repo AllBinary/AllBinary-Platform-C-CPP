@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_USERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_USERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/UserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/User.h"
 
-class UserFactory
-            : public Object
-        , public UserFactoryInterface {
 
-public: UserFactory(){
+UserFactory::UserFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto UserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
 
 
@@ -77,7 +84,6 @@ public: UserFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_USERFACTORY_CPP

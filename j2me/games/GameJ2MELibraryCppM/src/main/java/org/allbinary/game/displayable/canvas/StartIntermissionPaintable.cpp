@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/StartIntermissionPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,39 +101,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class StartIntermissionPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    protected: FontDebugFactory* fontDebugFactory = FontDebugFactory::getInstance();
-
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
-
-    protected: AllBinaryGameCanvas* gameCanvas;
-
-    protected: std::vector<std::string> stringArray;
-
-    protected: int32_t fontSize;
-
-    protected: Font* font;
-
-    public: std::vector<int32_t> lastWidth;
-
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
-
-    private: int32_t color;
-
-    protected: std::vector<int32_t> lineYOffsetArray = NullUtil::getInstance()->NULL_INT_ARRAY;
-
-    private: bool hasChanged = true;
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    protected: int32_t fontHeightP= 0;
-
-public: StartIntermissionPaintable(AllBinaryGameCanvas* gameCanvas, std::vector<std::string> stringArray, BasicColor* basicColor, Font* font){
+StartIntermissionPaintable::StartIntermissionPaintable(AllBinaryGameCanvas* gameCanvas, std::vector<std::string> stringArray, BasicColor* basicColor, Font* font) : fontDebugFactory(FontDebugFactory::getInstance()), basicSetColorUtil(BasicColorSetUtil::getInstance()), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), basicColor(BasicColorFactory::getInstance()->BLACK), lineYOffsetArray(NullUtil::getInstance()->NULL_INT_ARRAY), anchor(Anchor::TOP_LEFT), EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING){
 this->gameCanvas= gameCanvas;
     
 this->stringArray= stringArray;
@@ -141,7 +120,7 @@ this->font= font;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto StartIntermissionPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -152,7 +131,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto StartIntermissionPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -197,11 +176,7 @@ this->fontDebugFactory->setFont(existingFont, graphics);
 }
 
 
-    private: const std::string BEGIN_LEVEL = "Begin Level ";
-
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: void update(){
+    auto StartIntermissionPaintable::update() -> void{
 
     int32_t level = this->gameCanvas->getLayerManager()->getGameInfo()->getCurrentLevel();;
     
@@ -221,13 +196,13 @@ this->stringArray[index]= this->EMPTY_STRING;
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto StartIntermissionPaintable::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto StartIntermissionPaintable::getBasicColorP() -> BasicColor*{
 
 
 
@@ -237,7 +212,6 @@ this->basicColor= basicColor;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_CPP

@@ -21,15 +21,18 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGELISTENER_H
         #define BUNDLE_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/input/automation/configuration/InputAutomationConfigurationModuleChangeEvent.h>
-
-      
+class InputAutomationConfigurationModuleChangeEvent;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationConfigurationModuleChangeListener {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class InputAutomationConfigurationModuleChangeListener
+            : public virtual Object
+         {
 
     public: virtual void onAdd(InputAutomationConfigurationModuleChangeEvent* inputAutomationConfigurationChangeEvent) = 0;
 
@@ -61,3 +70,13 @@ class InputAutomationConfigurationModuleChangeListener {
 
 
         #endif //BUNDLE_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(BUNDLE_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGELISTENER_H_COMPLETE)
+        #define BUNDLE_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGELISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/configuration/InputAutomationConfigurationModuleChangeEvent.h>)
+#include <org/allbinary/input/automation/configuration/InputAutomationConfigurationModuleChangeEvent.h>
+#endif
+
+        #endif
+    

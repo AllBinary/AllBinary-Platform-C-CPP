@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_EMULATORCUSTOMRENDERER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_EMULATORCUSTOMRENDERER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/renderer/EmulatorCustomRenderer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,17 +78,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/renderer/RendererStrings.h"
 
-class EmulatorCustomRenderer
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: RendererStrings* renderStrings = RendererStrings::getInstance();
-
-    public: void onSurfaceCreated(GL10* gl, EGLConfig* eglConfig){
+EmulatorCustomRenderer::EmulatorCustomRenderer() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), renderStrings(RendererStrings::getInstance()) {
+        }
+        
+    auto EmulatorCustomRenderer::onSurfaceCreated(GL10* gl, EGLConfig* eglConfig) -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->renderStrings->ON_SURFACE_CREATED);
     
 
@@ -116,7 +120,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->renderStrings->ON
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_EMULATORCUSTOMRENDERER_CPP

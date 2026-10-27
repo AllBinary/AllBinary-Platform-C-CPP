@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_ORDERHISTORYHELPER_CPP
+        #define TAGHELPERS_ORDERHISTORYHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/OrderHistoryHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -96,31 +106,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderHistoryHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-    private: PageContext* pageContext;
-
-    private: HttpServletRequest* request;
-
-    private: StreetAddress* streetAddress;
-
-    private: std::string id;
-
-    private: std::string groupId;
-
-    private: std::string status;
-
-    private: std::string newStatus;
-
-public: OrderHistoryHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+OrderHistoryHelper::OrderHistoryHelper(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
@@ -146,7 +133,7 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto OrderHistoryHelper::getFormData() -> void{
 this->id= this->request->getParameter(OrderData::ID);
     
 this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
@@ -163,11 +150,11 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 }
 
 
-    public: std::string setOrderStatus(){
+    auto OrderHistoryHelper::setOrderStatus() -> std::string{
 
         try {
             
-    std::string success = "Status successfully set to: " +this->status;;
+    std::string success = JavaString::valueOf("Status successfully set to: ") +JavaString::valueOf(this->status);;
     
 
     OrderHistoryInterface* orderReviewInterface = OrderHistoryFactory::getInstance(this->id);;
@@ -183,7 +170,7 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this->id +" Already Cancelled<br/>";
+                        return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" Already Cancelled<br/>");
     
 
                                     }
@@ -196,7 +183,7 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this->id +" Already Shipped. You can't cancel a shipped order.<br/>";
+                        return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" Already Shipped. You can't cancel a shipped order.<br/>");
     
 
                                     }
@@ -209,7 +196,7 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this->id +" has been cancelled.<br/>";
+                        return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" has been cancelled.<br/>");
     
 
                                     }
@@ -222,7 +209,7 @@ this->groupId= this->request->getParameter(ShippingMethodData::GROUP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this->id +" Partially Shipped. You can cancel unshipped items, but not the whole order.<br/>";
+                        return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" Partially Shipped. You can cancel unshipped items, but not the whole order.<br/>");
     
 
                                     }
@@ -240,13 +227,13 @@ orderHistoryEntityInterface->setStatus(this->id, this->newStatus);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this->id +" has been cancelled.<br/>";
+                        return JavaString::valueOf(JavaString::valueOf("Order ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" has been cancelled.<br/>");
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setOrderStatus()");
@@ -268,10 +255,10 @@ orderHistoryEntityInterface->setStatus(this->id, this->newStatus);
     std::string error = "Failed to set order status";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setOrderStatus()", &e);
     
 
                                     }
@@ -280,14 +267,13 @@ orderHistoryEntityInterface->setStatus(this->id, this->newStatus);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return error +"<br/>" +"Exception: " +e +"<br/>";
+                        return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(error) +JavaString::valueOf("<br/>")) +JavaString::valueOf("Exception: ")) +JavaString::valueOf(e)) +JavaString::valueOf("<br/>");
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_ORDERHISTORYHELPER_CPP

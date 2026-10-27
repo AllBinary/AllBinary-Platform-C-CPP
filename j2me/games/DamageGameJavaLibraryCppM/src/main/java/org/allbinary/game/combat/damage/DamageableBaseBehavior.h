@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,14 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/damage/DamageableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DamageableBaseBehavior
-            : public Object
+            : public virtual Object
         , public DamageableInterface {
 
-    private: static DamageableBaseBehavior* instance() { static std::unique_ptr<DamageableBaseBehavior> value(new DamageableBaseBehavior()); return value.get(); }
+    private: static DamageableBaseBehavior* instance_owner();
+    private: static DamageableBaseBehavior* instance;
 
     public: static DamageableBaseBehavior* getInstance();
 
+
+            
+    public: DamageableBaseBehavior();
+        
     public: std::string getName();
 
                 //@Throws(Exception.constructor)
@@ -75,3 +89,13 @@ class DamageableBaseBehavior
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_H_COMPLETE
+        #if __has_include("org/allbinary/game/combat/damage/DamageableInterface.h")
+#include "org/allbinary/game/combat/damage/DamageableInterface.h"
+#endif
+
+        #endif
+    

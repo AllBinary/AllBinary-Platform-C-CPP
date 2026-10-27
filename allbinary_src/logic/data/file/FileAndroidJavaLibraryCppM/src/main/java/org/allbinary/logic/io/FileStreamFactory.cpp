@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/FileStreamFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,9 @@
         #include "org/allbinary/logic/io/AbFileInputStream.h"
 #include "org/allbinary/logic/io/AbFileOutputStream.h"
 
-class FileStreamFactory
-            : public Object
-         {
+Object* FileStreamFactory::SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static FileStreamFactory* getInstance(){
+    auto FileStreamFactory::getInstance() -> FileStreamFactory*{
 
                         if(FileStreamFactory::SINGLETON == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -83,9 +89,7 @@ class FileStreamFactory
 }
 
 
-    private: Object* context;
-
-private: FileStreamFactory(Context* context){
+FileStreamFactory::FileStreamFactory(Context* context){
 this->context= context;
     
 }
@@ -93,7 +97,7 @@ this->context= context;
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileInputStream* getFileInputStreamInstance(std::string path, std::string fileName){
+    auto FileStreamFactory::getFileInputStreamInstance(std::string path, std::string fileName) -> AbFileInputStream*{
 
 
 
@@ -105,7 +109,7 @@ this->context= context;
 
                 //@Throws(Exception.constructor)
             
-    public: AbFileOutputStream* getFileOutputStreamInstance(std::string path, std::string fileName){
+    auto FileStreamFactory::getFileOutputStreamInstance(std::string path, std::string fileName) -> AbFileOutputStream*{
 
     Context* context = this->getContext();;
     
@@ -122,13 +126,13 @@ context->deleteFile(fileName);
 
                 //@Throws(Exception.constructor)
             
-    public: void delete_(std::string path, std::string fileName){
+    auto FileStreamFactory::delete_(std::string path, std::string fileName) -> void{
 this->getContext()->deleteFile(fileName);
     
 }
 
 
-    private: Context* getContext(){
+    auto FileStreamFactory::getContext() -> Context*{
 
 
 
@@ -138,7 +142,6 @@ this->getContext()->deleteFile(fileName);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_CPP

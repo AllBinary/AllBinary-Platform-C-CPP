@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,59 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FileData
-            : public Object
-         {
+auto FileData::instance_owner() -> FileData* { static std::unique_ptr<FileData> value(new FileData()); return value.get(); }
+FileData* FileData::instance = FileData::instance_owner();
 
-    private: static FileData* instance() { static std::unique_ptr<FileData> value(new FileData()); return value.get(); }
-
-    public: static FileData* getInstance(){
+    auto FileData::getInstance() -> FileData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileData::instance();
+                        return FileData::instance;
     
 }
 
 
-private: FileData(){
+FileData::FileData() : MAXDOWNLOADABLEFILESIZE(1048576 *20){
 }
 
 
-    public: const std::string NAME = "FILE_NAME";
 
-    public: const std::string ISFILE = "FILE_ISFILE";
 
-    public: const std::string ISDIRECTORY = "FILE_ISDIRECTORY";
-
-    public: const std::string ISHIDDEN = "FILE_ISHIDDEN";
-
-    public: const std::string ISABSOLUTE = "FILE_ISABSOLUTE";
-
-    public: const std::string ROOT_NAME = "FILE_ROOT_NAME";
-
-    public: const std::string PATH = "FILE_PATH";
-
-    public: const std::string ABSOLUTE_PATH = "FILE_ABSOLUTE_PATH";
-
-    public: const std::string CANONICAL_PATH = "FILE_CANONICAL_PATH";
-
-    public: const std::string PARENT = "FILE_PARENT";
-
-    public: const int32_t MINLEN = 1;
-
-    public: const int32_t MAXLEN = 120;
-
-    public: const int32_t MAXIMAGEFILESIZE = 1048576;
-
-    public: const int32_t MINIMAGEFILESIZE = 32;
-
-    public: const int32_t MAXDOWNLOADABLEFILESIZE = 1048576 *20;
-
-    public: const int32_t MINDOWNLOADABLEFILESIZE = 1;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEDATA_CPP

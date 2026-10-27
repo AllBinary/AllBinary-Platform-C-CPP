@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,14 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlInputData
-            : public Object
+            : public virtual Object
          {
 
-    private: static HtmlInputData* instance() { static std::unique_ptr<HtmlInputData> value(new HtmlInputData()); return value.get(); }
+    private: static HtmlInputData* instance_owner();
+    private: static HtmlInputData* instance;
 
     public: static HtmlInputData* getInstance();
 
+
+            
+    public: HtmlInputData();
+        
     public: const std::string TEXT = "text";
 
     public: const std::string RADIO = "radio";
@@ -74,10 +88,7 @@ class HtmlInputData
 
     public: const std::string SUBMIT = "submit";
 
-    public: const std::vector<std::string> TYPES = 
-                                                        {
-                                                            this->TEXT,this->RADIO,this->CHECKBOX,this->HIDDEN,this->IMAGE,this->PASSWORD,this->RADIO,this->RESET,this->SUBMIT
-                                                        };
+    public: std::vector<std::string> TYPES;
 
 };
 
@@ -85,3 +96,10 @@ class HtmlInputData
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_H_COMPLETE
+        
+        #endif
+    

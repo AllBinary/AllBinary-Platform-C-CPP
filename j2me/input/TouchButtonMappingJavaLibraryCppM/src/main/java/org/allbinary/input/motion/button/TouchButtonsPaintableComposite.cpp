@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonsPaintableComposite.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -100,21 +110,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonsMappingPaintable.h"
 
-class TouchButtonsPaintableComposite: public ProcessPaintable, public CompleteMotionGestureInputEventListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: InputMappingInterface* inputMappingInterface;
-
-    protected: TouchButtonsMappingPaintable* touchButtonsPaintable;
-
-    private: TimeDelayHelper* timeHelper = new TimeDelayHelper(250);
-
-    private: bool released = true;
-
-public: TouchButtonsPaintableComposite(InputMappingInterface* inputMappingInterface, BasicColor* basicColor){
+TouchButtonsPaintableComposite::TouchButtonsPaintableComposite(InputMappingInterface* inputMappingInterface, BasicColor* basicColor) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), timeHelper(new TimeDelayHelper(250)){
 this->inputMappingInterface= inputMappingInterface;
     
 CompleteMotionGestureInputEventHandler::getInstance()->addListenerInterface(this);
@@ -124,21 +121,13 @@ this->touchButtonsPaintable= new TouchButtonsMappingPaintable(basicColor);
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto TouchButtonsPaintableComposite::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    private: const std::string METHOD_NAME = "onCompleteMotionGestureInputEvent";
-
-    private: const std::string RELEASE = "Ignoring: MotionGestureInput Release";
-
-    private: const std::string FAST_REPEAT = "Ignoring: MotionGestureInput Repeated To Quickly";
-
-    private: const std::string IGNORE = "Ignoring: Until Released";
-
-    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent){
+    auto TouchButtonsPaintableComposite::onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent* completeMotionGestureInputEvent) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "onCompleteMotionGestureInputEvent");
@@ -219,13 +208,12 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->METHOD_NAME, &e);
 }
 
 
-    public: void process(){
+    auto TouchButtonsPaintableComposite::process() -> void{
 CompleteMotionGestureInputEventHandler::getInstance()->removeListener(this);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSPAINTABLECOMPOSITE_CPP

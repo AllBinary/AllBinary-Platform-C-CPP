@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEMVALIDATION_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEMVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadableItemValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,19 +77,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/item/download/DownloadableItem.h"
 
-class DownloadableItemValidation: public Validation {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: DownloadableItem* downloadableItem;
-
-public: DownloadableItemValidation(DownloadableItem* downloadableItem){
+DownloadableItemValidation::DownloadableItemValidation(DownloadableItem* downloadableItem) : logUtil(LogUtil::getInstance()){
 this->downloadableItem= downloadableItem;
     
 }
 
 
-    public: bool isValid(){
+    auto DownloadableItemValidation::isValid() -> bool{
 
         try {
             
@@ -303,10 +308,10 @@ this->downloadableItem= downloadableItem;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -322,7 +327,7 @@ this->downloadableItem= downloadableItem;
 }
 
 
-    public: std::string validationInfo(){
+    auto DownloadableItemValidation::validationInfo() -> std::string{
 
         try {
             
@@ -533,7 +538,7 @@ stringBuffer->append(" and > 0 digits.<br/>");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -552,7 +557,7 @@ stringBuffer->append(" and > 0 digits.<br/>");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto DownloadableItemValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -562,7 +567,7 @@ stringBuffer->append(" and > 0 digits.<br/>");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto DownloadableItemValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -572,7 +577,6 @@ stringBuffer->append(" and > 0 digits.<br/>");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_DOWNLOAD_DOWNLOADABLEITEMVALIDATION_CPP

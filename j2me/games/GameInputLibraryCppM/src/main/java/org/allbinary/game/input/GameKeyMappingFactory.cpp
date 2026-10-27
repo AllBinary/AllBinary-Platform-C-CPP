@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameKeyMappingFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,13 +63,9 @@
 #include "org/allbinary/game/input/GameKey.h"
 #include "org/allbinary/game/input/GameKeyFactory.h"
 
-class GameKeyMappingFactory
-            : public Object
-         {
+Object* GameKeyMappingFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyMappingFactory* getInstance(){
+    auto GameKeyMappingFactory::getInstance() -> GameKeyMappingFactory*{
 
                         if(GameKeyMappingFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -78,9 +84,7 @@ class GameKeyMappingFactory
 }
 
 
-    private: std::vector<GameKey*> intKeyToGameKey = std::vector<GameKey*>(InputFactory::getInstance()->MAX);
-
-private: GameKeyMappingFactory(){
+GameKeyMappingFactory::GameKeyMappingFactory() : intKeyToGameKey(std::vector<GameKey*>(InputFactory::getInstance()->MAX)){
 
     GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();;
     
@@ -135,7 +139,7 @@ this->setGameKey(gameKeyFactory->LEVEL_UP);
 }
 
 
-    public: GameKey* getGameKey(int32_t key){
+    auto GameKeyMappingFactory::getGameKey(int32_t key) -> GameKey*{
 
 
 
@@ -145,13 +149,12 @@ this->setGameKey(gameKeyFactory->LEVEL_UP);
 }
 
 
-    private: void setGameKey(GameKey* gameKey){
+    auto GameKeyMappingFactory::setGameKey(GameKey* gameKey) -> void{
 this->intKeyToGameKey[gameKey->getId()]= gameKey;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_CPP

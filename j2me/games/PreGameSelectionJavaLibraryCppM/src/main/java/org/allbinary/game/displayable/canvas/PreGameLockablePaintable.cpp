@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/PreGameLockablePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PreGameLockablePaintable: public LockablePaintable {
 
-    private: int32_t halfWidth;
-
-    private: ScrollCurrentSelectionForm* paintableForm;
-
-public: PreGameLockablePaintable(ScrollCurrentSelectionForm* paintableForm, int32_t lockedIndex) : LockablePaintable(lockedIndex){
+PreGameLockablePaintable::PreGameLockablePaintable(ScrollCurrentSelectionForm* paintableForm, int32_t lockedIndex) : LockablePaintable(lockedIndex){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,7 +88,7 @@ this->halfWidth= GameFeatureImageCacheFactory::getInstance()->getWithKey(LockedR
 }
 
 
-    public: void paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y){
+    auto PreGameLockablePaintable::paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y) -> void{
 
                         if(LockedUtil::getInstance()->isLocked() && this->getPaintableForm()->getSelectedIndex() >= this->getLockedIndex())
                         
@@ -96,7 +101,7 @@ this->halfWidth= GameFeatureImageCacheFactory::getInstance()->getWithKey(LockedR
 }
 
 
-    protected: ScrollCurrentSelectionForm* getPaintableForm(){
+    auto PreGameLockablePaintable::getPaintableForm() -> ScrollCurrentSelectionForm*{
 
 
 
@@ -106,7 +111,6 @@ this->halfWidth= GameFeatureImageCacheFactory::getInstance()->getWithKey(LockedR
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEPAINTABLE_CPP

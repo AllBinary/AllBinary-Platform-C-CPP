@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 #include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
-
-      
 
 
 
@@ -55,12 +56,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h"
+        class RaceTrackPickupLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RaceTrackPickupLayerFactory
-            : public Object
+            : public virtual Object
         , public AllBinaryLayerFactoryInterface {
 
+
+            
+    public: RaceTrackPickupLayerFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: AllBinaryLayer* getInstance();
@@ -71,3 +80,19 @@ class RaceTrackPickupLayerFactory
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerFactoryInterface.h>)
+#include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h")
+#include "org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h"
+#endif
+
+        #endif
+    

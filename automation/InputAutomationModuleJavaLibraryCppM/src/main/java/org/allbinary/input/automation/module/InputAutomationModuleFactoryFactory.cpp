@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/InputAutomationModuleFactoryFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,19 +98,8 @@
         #include "org/allbinary/input/automation/module/DefaultListModelHelper.h"
 #include "org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h"
 
-class InputAutomationModuleFactoryFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HashMap<Object*, Object*>* hashMap;
-
-    private: DefaultListModelHelper* defaultListModelHelper;
-
-    private: HelpSetListener* helpSetListenerInterface;
-
-public: InputAutomationModuleFactoryFactory(InputAutomationModuleConfigurations* inputAutomationModuleConfigurations, HelpSetListener* helpSetListenerInterface){
+InputAutomationModuleFactoryFactory::InputAutomationModuleFactoryFactory(InputAutomationModuleConfigurations* inputAutomationModuleConfigurations, HelpSetListener* helpSetListenerInterface) : logUtil(LogUtil::getInstance()){
 this->helpSetListenerInterface= helpSetListenerInterface;
     
 this->defaultListModelHelper= new DefaultListModelHelper();
@@ -127,12 +126,12 @@ this->add(inputAutomationModuleConfiguration);
 
 this->defaultListModelHelper->initDefaultModelList();
     
-this->logUtil->putF("Loaded " +this->hashMap->size() +"/" +this->defaultListModelHelper->getListModel()->getSize() +" Input Automation Modules", this, "Contructor");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Loaded ") +JavaString::valueOf(this->hashMap->size())) +JavaString::valueOf("/")) +JavaString::valueOf(this->defaultListModelHelper->getListModel()->getSize())) +JavaString::valueOf(" Input Automation Modules"), this, "Contructor");
     
 }
 
 
-    private: void add(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
+    auto InputAutomationModuleFactoryFactory::add(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration) -> void{
 
     InputAutomationModuleFactoryInterface* inputAutomationModuleInterface = inputAutomationModuleConfiguration->getInputAutomationModuleInterface();;
     
@@ -158,7 +157,7 @@ this->helpSetListenerInterface->helpSetAdded(helpSetEvent);
 }
 
 
-    public: ListModel* getListModel(){
+    auto InputAutomationModuleFactoryFactory::getListModel() -> ListModel*{
 
 
 
@@ -168,11 +167,11 @@ this->helpSetListenerInterface->helpSetAdded(helpSetEvent);
 }
 
 
-    public: InputAutomationModuleFactoryInterface* getInstance(std::string moduleName){
+    auto InputAutomationModuleFactoryFactory::getInstance(std::string moduleName) -> InputAutomationModuleFactoryInterface*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF("Getting Module: " +moduleName, this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf("Getting Module: ") +JavaString::valueOf(moduleName), this, commonStrings->GET_INSTANCE);
     
 
     InputAutomationModuleFactoryInterface* inputAutomationModuleFactoryInterface = dynamic_cast<InputAutomationModuleFactoryInterface*>(this->hashMap->get(moduleName));;
@@ -183,7 +182,7 @@ this->logUtil->putF("Getting Module: " +moduleName, this, commonStrings->GET_INS
                                 )
                         
                                     {
-                                    this->logUtil->putF("Module: " +moduleName +" was null", this, commonStrings->GET_INSTANCE);
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Module: ") +JavaString::valueOf(moduleName)) +JavaString::valueOf(" was null"), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -197,7 +196,6 @@ this->logUtil->putF("Getting Module: " +moduleName, this, commonStrings->GET_INS
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYFACTORY_CPP

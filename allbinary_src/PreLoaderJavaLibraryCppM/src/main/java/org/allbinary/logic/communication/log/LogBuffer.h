@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 
 
 
@@ -56,16 +55,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/LogUtil.h"
-#include "org/allbinary/logic/communication/log/Log.h"
+        class LogUtil;
+class Log;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogBuffer
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    BasicArrayList* logEntryVector;
+    public: BasicArrayList* logEntryVector;
 
 public: LogBuffer();
 
@@ -79,3 +82,23 @@ public: LogBuffer();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGBUFFER_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include("org/allbinary/logic/communication/log/LogUtil.h")
+#include "org/allbinary/logic/communication/log/LogUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/Log.h")
+#include "org/allbinary/logic/communication/log/Log.h"
+#endif
+
+        #endif
+    

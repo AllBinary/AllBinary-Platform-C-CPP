@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/PaymentType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,17 +80,8 @@
         #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h"
 #include "org/allbinary/business/user/commerce/money/payment/types/PaymentTypeUtil.h"
 
-class PaymentType
-            : public Object
-         {
 
-    private: BasicPaymentType* basicPaymentType;
-
-    private: PaymentTransactionInterfaceFactoryInterface* paymentTransactionInterfaceFactoryInterface;
-
-    private: PaymentProcessorInterfaceFactoryInterface* paymentProcessorInterfaceFactoryInterface;
-
-protected: PaymentType(BasicPaymentType* basicPaymentType){
+PaymentType::PaymentType(BasicPaymentType* basicPaymentType){
 this->basicPaymentType= basicPaymentType;
     
 this->paymentTransactionInterfaceFactoryInterface= 
@@ -96,7 +97,7 @@ PaymentTypeUtil::getInstance()->add(this);
 }
 
 
-protected: PaymentType(BasicPaymentType* basicPaymentType, PaymentTransactionInterfaceFactoryInterface* paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface* paymentProcessorInterfaceFactoryInterface){
+PaymentType::PaymentType(BasicPaymentType* basicPaymentType, PaymentTransactionInterfaceFactoryInterface* paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface* paymentProcessorInterfaceFactoryInterface){
 this->basicPaymentType= basicPaymentType;
     
 this->paymentTransactionInterfaceFactoryInterface= paymentTransactionInterfaceFactoryInterface;
@@ -110,7 +111,7 @@ PaymentTypeUtil::getInstance()->add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentTransactionInterfaceFactoryInterface* getPaymentTransactionInterfaceFactoryInterface(){
+    auto PaymentType::getPaymentTransactionInterfaceFactoryInterface() -> PaymentTransactionInterfaceFactoryInterface*{
 
                         if(this->paymentTransactionInterfaceFactoryInterface == 
                                     nullptr
@@ -120,7 +121,7 @@ PaymentTypeUtil::getInstance()->add(this);
                                     
 
 
-                            throw new Exception("PaymentTransactionInterfaceFactoryInterface is Null");
+                            throw Exception("PaymentTransactionInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -136,7 +137,7 @@ PaymentTypeUtil::getInstance()->add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentProcessorInterfaceFactoryInterface* getPaymentProcessorInterfaceFactoryInterface(){
+    auto PaymentType::getPaymentProcessorInterfaceFactoryInterface() -> PaymentProcessorInterfaceFactoryInterface*{
 
                         if(this->paymentProcessorInterfaceFactoryInterface == 
                                     nullptr
@@ -146,7 +147,7 @@ PaymentTypeUtil::getInstance()->add(this);
                                     
 
 
-                            throw new Exception("PaymentProcessorInterfaceFactoryInterface is Null");
+                            throw Exception("PaymentProcessorInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -160,7 +161,7 @@ PaymentTypeUtil::getInstance()->add(this);
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto PaymentType::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -197,7 +198,7 @@ vector->addAllList(this->getBasicPaymentType()->toVector());
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto PaymentType::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -209,7 +210,7 @@ hashMap->putAll(this->getBasicPaymentType()->toHashMap());
                                 )
                         
                                     {
-                                    hashMap->put(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE.toString(), this->paymentTransactionInterfaceFactoryInterface->getClass()->getName());
+                                    hashMap->put(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE->toString(), this->paymentTransactionInterfaceFactoryInterface->getClass()->getName());
     
 
                                     }
@@ -220,7 +221,7 @@ hashMap->putAll(this->getBasicPaymentType()->toHashMap());
                                 )
                         
                                     {
-                                    hashMap->put(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE.toString(), this->paymentProcessorInterfaceFactoryInterface->getClass()->getName());
+                                    hashMap->put(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE->toString(), this->paymentProcessorInterfaceFactoryInterface->getClass()->getName());
     
 
                                     }
@@ -234,7 +235,7 @@ hashMap->putAll(this->getBasicPaymentType()->toHashMap());
 }
 
 
-    public: BasicPaymentType* getBasicPaymentType(){
+    auto PaymentType::getBasicPaymentType() -> BasicPaymentType*{
 
 
 
@@ -244,7 +245,6 @@ hashMap->putAll(this->getBasicPaymentType()->toHashMap());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_WEAPON_SIMPLEWEAPONPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_WEAPON_SIMPLEWEAPONPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/weapon/SimpleWeaponProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SimpleWeaponProperties
-            : public Object
-         {
 
-    private: int32_t damage= 0;
-
-    private: int16_t dissipation= 0;
-
-    private: int32_t range= 0;
-
-    public: void set(SimpleWeaponProperties* simpleWeaponProperties){
+SimpleWeaponProperties::SimpleWeaponProperties() {
+        }
+        
+    auto SimpleWeaponProperties::set(SimpleWeaponProperties* simpleWeaponProperties) -> void{
 this->setDamage(simpleWeaponProperties->getDamage());
     
 this->setDissipation(simpleWeaponProperties->getDissipation());
@@ -65,13 +69,13 @@ this->setRange(simpleWeaponProperties->getRange());
 }
 
 
-    public: void setDamage(int32_t damage){
+    auto SimpleWeaponProperties::setDamage(int32_t damage) -> void{
 this->damage= damage;
     
 }
 
 
-    public: int32_t getDamage(){
+    auto SimpleWeaponProperties::getDamage() -> int32_t{
 
 
 
@@ -81,13 +85,13 @@ this->damage= damage;
 }
 
 
-    public: void setDissipation(int16_t dissipation){
+    auto SimpleWeaponProperties::setDissipation(int16_t dissipation) -> void{
 this->dissipation= dissipation;
     
 }
 
 
-    public: int16_t getDissipation(){
+    auto SimpleWeaponProperties::getDissipation() -> int16_t{
 
 
 
@@ -97,7 +101,7 @@ this->dissipation= dissipation;
 }
 
 
-    public: int32_t getRange(){
+    auto SimpleWeaponProperties::getRange() -> int32_t{
 
 
 
@@ -107,13 +111,12 @@ this->dissipation= dissipation;
 }
 
 
-    public: void setRange(int32_t range){
+    auto SimpleWeaponProperties::setRange(int32_t range) -> void{
 this->range= range;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_WEAPON_SIMPLEWEAPONPROPERTIES_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SORT_STRINGCOMPARATOR_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_SORT_STRINGCOMPARATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/sort/StringComparator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StringComparator
-            : public Object
-        , public Comparator {
 
-public: StringComparator(){
+StringComparator::StringComparator(){
 }
 
 
-    public: int32_t compare(Object* anyType, Object* object2){
+    auto StringComparator::compare(Object* anyType, Object* object2) -> int32_t{
 
     std::string string = anyType;;
     
@@ -72,7 +79,6 @@ public: StringComparator(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_SORT_STRINGCOMPARATOR_CPP

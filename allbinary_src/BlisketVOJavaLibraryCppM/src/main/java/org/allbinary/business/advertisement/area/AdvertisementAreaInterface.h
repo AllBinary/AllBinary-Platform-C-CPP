@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
+        class AdvertisementAreaConstraintsInterface;
 
-class AdvertisementAreaInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class AdvertisementAreaInterface
+            : public virtual Object
+         {
 
     public: virtual std::string getName() = 0;
 
@@ -75,3 +86,13 @@ class AdvertisementAreaInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREAINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h")
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
+#endif
+
+        #endif
+    

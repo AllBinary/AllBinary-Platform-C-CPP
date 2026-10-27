@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LIFE_LIFE_H
         #define ORG_ALLBINARY_GAME_AG_LIFE_LIFE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,13 +58,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/life/LifeInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Life
-            : public Object
+            : public virtual Object
         , public LifeInterface {
 
     public: static Life* createLife();
 
-    public: static inline Life* NO_LIFE = Life::createLife();
+    public: static Life* NO_LIFE;
 
     private: int16_t lives;
 
@@ -95,3 +104,13 @@ public: Life(int16_t lives, int16_t maxlives);
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LIFE_LIFE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LIFE_LIFE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LIFE_LIFE_H_COMPLETE
+        #if __has_include("org/allbinary/game/ag/life/LifeInterface.h")
+#include "org/allbinary/game/ag/life/LifeInterface.h"
+#endif
+
+        #endif
+    

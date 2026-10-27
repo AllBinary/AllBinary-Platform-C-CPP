@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_HACKROTATIONSPRITEINDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_HACKROTATIONSPRITEINDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/HackRotationSpriteIndexedAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -71,13 +81,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HackRotationSpriteIndexedAnimation: public RotationAnimation {
 
-    protected: Sprite* sprite;
-
-    private: Image* image;
-
-public: HackRotationSpriteIndexedAnimation(Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior){
+HackRotationSpriteIndexedAnimation::HackRotationSpriteIndexedAnimation(Sprite* sprite, Image* image, AngleInfo* angleInfo, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,7 +98,7 @@ this->image= image;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto HackRotationSpriteIndexedAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -103,7 +108,7 @@ this->image= image;
 }
 
 
-    public: void paintFrame(Graphics* g, int32_t frame, int32_t x, int32_t y){
+    auto HackRotationSpriteIndexedAnimation::paintFrame(Graphics* g, int32_t frame, int32_t x, int32_t y) -> void{
 this->setFrame(frame);
     
 this->paintXY(g, x, y);
@@ -111,7 +116,7 @@ this->paintXY(g, x, y);
 }
 
 
-    public: void paintXY(Graphics* g, int32_t x, int32_t y){
+    auto HackRotationSpriteIndexedAnimation::paintXY(Graphics* g, int32_t x, int32_t y) -> void{
 this->sprite->setPosition(x, y);
     
 this->paint(g);
@@ -119,25 +124,25 @@ this->paint(g);
 }
 
 
-    protected: void paint(Graphics* g){
+    auto HackRotationSpriteIndexedAnimation::paint(Graphics* g) -> void{
 this->sprite->paint(g);
     
 }
 
 
-    public: void nextRotation(){
+    auto HackRotationSpriteIndexedAnimation::nextRotation() -> void{
 this->sprite->nextFrame();
     
 }
 
 
-    public: void previousRotation(){
+    auto HackRotationSpriteIndexedAnimation::previousRotation() -> void{
 this->sprite->prevFrame();
     
 }
 
 
-    public: int32_t getSize(){
+    auto HackRotationSpriteIndexedAnimation::getSize() -> int32_t{
 
 
 
@@ -147,13 +152,13 @@ this->sprite->prevFrame();
 }
 
 
-    public: void setFrame(int32_t frame){
+    auto HackRotationSpriteIndexedAnimation::setFrame(int32_t frame) -> void{
 this->sprite->setFrame(frame);
     
 }
 
 
-    public: int32_t getFrame(){
+    auto HackRotationSpriteIndexedAnimation::getFrame() -> int32_t{
 
 
 
@@ -163,11 +168,11 @@ this->sprite->setFrame(frame);
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto HackRotationSpriteIndexedAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto HackRotationSpriteIndexedAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -177,7 +182,6 @@ this->sprite->setFrame(frame);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_HACKROTATIONSPRITEINDEXEDANIMATION_CPP

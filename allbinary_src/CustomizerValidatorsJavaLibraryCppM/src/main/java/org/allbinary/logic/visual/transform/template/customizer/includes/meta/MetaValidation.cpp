@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_META_METAVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_META_METAVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/includes/meta/MetaValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,23 +94,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MetaValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string label;
-
-    private: std::string name;
-
-    private: std::string httpEquiv;
-
-    private: std::string content;
-
-public: MetaValidation(HtmlMetaAttributeData* htmlMetaAttributeData, std::string label, std::string attributeValue, std::string contentValue){
+MetaValidation::MetaValidation(HtmlMetaAttributeData* htmlMetaAttributeData, std::string label, std::string attributeValue, std::string contentValue) : logUtil(LogUtil::getInstance()){
 this->label= label;
     
 
-                        if(htmlMetaAttributeData === HtmlMetaAttributeDataFactory::getInstance()->HTTP_EQUIV)
+                        if(htmlMetaAttributeData->equals(HtmlMetaAttributeDataFactory::getInstance()->HTTP_EQUIV))
                         
                                     {
                                     this->httpEquiv= attributeValue;
@@ -109,7 +108,7 @@ this->label= label;
                                     }
                                 
                              else 
-                        if(htmlMetaAttributeData === HtmlMetaAttributeDataFactory::getInstance()->NAME)
+                        if(htmlMetaAttributeData->equals(HtmlMetaAttributeDataFactory::getInstance()->NAME))
                         
                                     {
                                     this->name= attributeValue;
@@ -122,16 +121,16 @@ this->content= contentValue;
 }
 
 
-public: MetaValidation(Document* document){
+MetaValidation::MetaValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: bool isValid(){
+    auto MetaValidation::isValid() -> bool{
 
         try {
             
@@ -148,10 +147,10 @@ public: MetaValidation(Document* document){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -167,7 +166,7 @@ public: MetaValidation(Document* document){
 }
 
 
-    public: std::string validationInfo(){
+    auto MetaValidation::validationInfo() -> std::string{
 
         try {
             
@@ -184,7 +183,7 @@ public: MetaValidation(Document* document){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -203,7 +202,7 @@ public: MetaValidation(Document* document){
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto MetaValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -213,7 +212,7 @@ public: MetaValidation(Document* document){
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto MetaValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -223,20 +222,20 @@ public: MetaValidation(Document* document){
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto MetaValidation::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 
     HtmlMetaAttributeDataFactory* htmlMetaAttributeDataFactory = HtmlMetaAttributeDataFactory::getInstance();;
     
-hashMap->put(HtmlMetaData::getInstance()->LABEL.toString(), this->label);
+hashMap->put(HtmlMetaData::getInstance()->LABEL->toString(), this->label);
     
-hashMap->put(htmlMetaAttributeDataFactory->NAME.toString(), this->name);
+hashMap->put(htmlMetaAttributeDataFactory->NAME->toString(), this->name);
     
-hashMap->put(htmlMetaAttributeDataFactory->HTTP_EQUIV.toString(), this->httpEquiv);
+hashMap->put(htmlMetaAttributeDataFactory->HTTP_EQUIV->toString(), this->httpEquiv);
     
-hashMap->put(htmlMetaAttributeDataFactory->CONTENT.toString(), this->content);
+hashMap->put(htmlMetaAttributeDataFactory->CONTENT->toString(), this->content);
     
 
 
@@ -249,9 +248,9 @@ hashMap->put(htmlMetaAttributeDataFactory->CONTENT.toString(), this->content);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto MetaValidation::toXmlNode(Document* document) -> Node*{
 
-    Node* node = ModDomHelper::createNameValueNodes(document, HtmlMetaData::getInstance()->NAME.toString(), this->toHashMap());;
+    Node* node = ModDomHelper::createNameValueNodes(document, HtmlMetaData::getInstance()->NAME->toString(), this->toHashMap());;
     
 
 
@@ -262,7 +261,6 @@ hashMap->put(htmlMetaAttributeDataFactory->CONTENT.toString(), this->content);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_META_METAVALIDATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORROTATIONGENERATOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORROTATIONGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorRotationGenerator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,31 +90,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/VectorAnimationUtil.h"
 
-class VectorRotationGenerator
-            : public Object
-         {
+auto VectorRotationGenerator::instance_owner() -> VectorRotationGenerator* { static std::unique_ptr<VectorRotationGenerator> value(new VectorRotationGenerator()); return value.get(); }
+VectorRotationGenerator* VectorRotationGenerator::instance = VectorRotationGenerator::instance_owner();
 
-    private: static VectorRotationGenerator* instance() { static std::unique_ptr<VectorRotationGenerator> value(new VectorRotationGenerator()); return value.get(); }
-
-    public: static VectorRotationGenerator* getInstance(){
+    auto VectorRotationGenerator::getInstance() -> VectorRotationGenerator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorRotationGenerator::instance();
+                        return VectorRotationGenerator::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: VectorAnimationUtil* vectorAnimationUtil = VectorAnimationUtil::getInstance();
-
-private: VectorRotationGenerator(){
+VectorRotationGenerator::VectorRotationGenerator() : logUtil(LogUtil::getInstance()), vectorAnimationUtil(VectorAnimationUtil::getInstance()), angleFactory(AngleFactory::getInstance()){
 }
 
 
-    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(VectorInfo* vectorRotationInfo){
+    auto VectorRotationGenerator::getInstance(VectorInfo* vectorRotationInfo) -> std::vector<std::vector<std::vector<int32_t>>>{
 
 
 
@@ -114,9 +117,7 @@ private: VectorRotationGenerator(){
 }
 
 
-    private: AngleFactory* angleFactory = AngleFactory::getInstance();
-
-    public: std::vector<std::vector<std::vector<int32_t>>> getInstanceFrames(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t frames){
+    auto VectorRotationGenerator::getInstanceFrames(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t frames) -> std::vector<std::vector<std::vector<int32_t>>>{
 
         try {
             
@@ -191,7 +192,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getListAtAngle(int32_t width, int32_t height, BasicArrayList* pointBasicArrayList, Angle* angle){
+    auto VectorRotationGenerator::getListAtAngle(int32_t width, int32_t height, BasicArrayList* pointBasicArrayList, Angle* angle) -> BasicArrayList*{
 
     BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(pointBasicArrayList);;
     
@@ -212,7 +213,6 @@ graphicsPipe->translate((width>>1), (height>>1));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORROTATIONGENERATOR_CPP

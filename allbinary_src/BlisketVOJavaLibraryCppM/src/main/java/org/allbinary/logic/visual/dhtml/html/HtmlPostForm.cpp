@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLPOSTFORM_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLPOSTFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/HtmlPostForm.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,9 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/html/HtmlForm.h"
 
-class HtmlPostForm: public HtmlForm {
 
-public: HtmlPostForm(std::string action) : HtmlForm(action){
+HtmlPostForm::HtmlPostForm(std::string action) : HtmlForm(action){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +67,6 @@ setPost();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLPOSTFORM_CPP

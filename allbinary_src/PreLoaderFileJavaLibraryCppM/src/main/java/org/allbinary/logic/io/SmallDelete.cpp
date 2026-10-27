@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_SMALLDELETE_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_SMALLDELETE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/SmallDelete.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,19 +72,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SmallDelete
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string fileName;
-
-    private: std::string string;
-
-public: SmallDelete(std::string fileName){
+SmallDelete::SmallDelete(std::string fileName) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->fileName= fileName;
     
 this->string= AbFileSystem::getInstance()->readAsString(fileName);
@@ -82,7 +81,7 @@ this->string= AbFileSystem::getInstance()->readAsString(fileName);
 }
 
 
-    public: bool deleteAtStart(std::string start, std::string end){
+    auto SmallDelete::deleteAtStart(std::string start, std::string end) -> bool{
 
         try {
             
@@ -127,7 +126,7 @@ idOutData->writeBytes(text);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "deleteAtStart", &e);
@@ -146,7 +145,7 @@ idOutData->writeBytes(text);
 }
 
 
-    public: bool deleteBetween(std::string start, std::string end, std::string newText){
+    auto SmallDelete::deleteBetween(std::string start, std::string end, std::string newText) -> bool{
 
         try {
             
@@ -172,7 +171,7 @@ endIndex= this->string.indexOf(end);
 
     DataOutputStream* idOutData = new DataOutputStream(idFile);;
     
-idOutData->writeBytes(newStart +newText +text);
+idOutData->writeBytes(JavaString::valueOf(JavaString::valueOf(newStart) +JavaString::valueOf(newText)) +JavaString::valueOf(text));
     
 
 
@@ -194,7 +193,7 @@ idOutData->writeBytes(newStart +newText +text);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->IDLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->IDLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "deleteAtStart", &e);
@@ -213,7 +212,6 @@ idOutData->writeBytes(newStart +newText +text);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_SMALLDELETE_CPP

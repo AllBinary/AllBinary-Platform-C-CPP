@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_CREATEUSERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_CREATEUSERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/user/role/UserRole.h>
-
-      
-#include <org/allbinary/business/user/role/UserRoleB.h>
-
-      
-#include <org/allbinary/business/user/role/UserRoleData.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
+class UserRole;
+class UserRoleB;
+class UserRoleData;
+class StringValidationUtil;
 
 
 
@@ -64,10 +59,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/UserInterface.h"
+        class UserInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CreateUserFactory
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -82,3 +81,28 @@ private: CreateUserFactory();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_CREATEUSERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_CREATEUSERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_CREATEUSERFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRole.h>)
+#include <org/allbinary/business/user/role/UserRole.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRoleB.h>)
+#include <org/allbinary/business/user/role/UserRoleB.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRoleData.h>)
+#include <org/allbinary/business/user/role/UserRoleData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include("org/allbinary/business/user/UserInterface.h")
+#include "org/allbinary/business/user/UserInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_CPP
+        #define ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/PrimaryThreadPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,21 +64,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ThreadPool.h"
 
-class PrimaryThreadPool: public ThreadPool {
+auto PrimaryThreadPool::THREAD_POOL_owner() -> ThreadPool* { static std::unique_ptr<ThreadPool> value(new ThreadPool("Primary", 1, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
+ThreadPool* PrimaryThreadPool::THREAD_POOL = PrimaryThreadPool::THREAD_POOL_owner();
 
-    private: static ThreadPool* THREAD_POOL() { static std::unique_ptr<ThreadPool> value(new ThreadPool("Primary", 1, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
-
-    public: static ThreadPool* getInstance(){
+    auto PrimaryThreadPool::getInstance() -> ThreadPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimaryThreadPool::THREAD_POOL();
+                        return PrimaryThreadPool::THREAD_POOL;
     
 }
 
 
-public: PrimaryThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority){
+PrimaryThreadPool::PrimaryThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,27 +87,26 @@ public: PrimaryThreadPool(std::string poolName, int32_t numThreads, int32_t prio
 }
 
 
-    public: void runTask(Runnable* task){
-this->logUtil.putF((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->threadPoolStrings.ADD_TASK);
+    auto PrimaryThreadPool::runTask(Runnable* task) -> void{
+this->logUtil->putF((new StringMaker())->append(StringUtil::getInstance()->toString(task))->appendlong(System.currentTimeMillis())->toString(), this, this->threadPoolStrings->ADD_TASK);
     
-super.runTask(task);
-    
-}
-
-
-    protected: void startTask(Runnable* task){
-this->logUtil.putF((new StringMaker())->append(this->threadPoolStrings.START_TASK)->append(StringUtil::getInstance()->toString(task))->toString(), this, this->commonStrings.RUN);
+ThreadPool::runTask(task);
     
 }
 
 
-    protected: void completedTask(Runnable* task){
-this->logUtil.putF((new StringMaker())->append(this->threadPoolStrings.COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->toString(), this, this->commonStrings.RUN);
+    auto PrimaryThreadPool::startTask(Runnable* task) -> void{
+this->logUtil->putF((new StringMaker())->append(this->threadPoolStrings->START_TASK)->append(StringUtil::getInstance()->toString(task))->toString(), this, this->commonStrings->RUN);
     
 }
 
 
-};
+    auto PrimaryThreadPool::completedTask(Runnable* task) -> void{
+this->logUtil->putF((new StringMaker())->append(this->threadPoolStrings->COMPLETE_TASK)->append(StringUtil::getInstance()->toString(task))->toString(), this, this->commonStrings->RUN);
+    
+}
 
-            
 
+
+
+        #endif //ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_ANDROIDAPI9KEYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_ANDROIDAPI9KEYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/AndroidAPI9KeyFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,11 +49,9 @@
         #include "org/allbinary/game/input/AndroidKeyFactory.h"
 #include "org/allbinary/game/input/AndroidGameKey.h"
 
-class AndroidAPI9KeyFactory: public AndroidKeyFactory {
+Object* AndroidAPI9KeyFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static AndroidAPI9KeyFactory* getInstance(){
+    auto AndroidAPI9KeyFactory::getInstance() -> AndroidAPI9KeyFactory*{
 
                         if(AndroidAPI9KeyFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -62,7 +70,7 @@ class AndroidAPI9KeyFactory: public AndroidKeyFactory {
 }
 
 
-protected: AndroidAPI9KeyFactory(){
+AndroidAPI9KeyFactory::AndroidAPI9KeyFactory(){
 this->KEYCODE_BUTTON_L1= new AndroidGameKey(KeyEvent::KEYCODE_BUTTON_L1, "BUTTON L1");
     
 this->KEYCODE_BUTTON_R1= new AndroidGameKey(KeyEvent::KEYCODE_BUTTON_R1, "BUTTON R1");
@@ -96,7 +104,6 @@ this->KEYCODE_BUTTON_Z= new AndroidGameKey(KeyEvent::KEYCODE_BUTTON_Z, "BUTTON Z
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_ANDROIDAPI9KEYFACTORY_CPP

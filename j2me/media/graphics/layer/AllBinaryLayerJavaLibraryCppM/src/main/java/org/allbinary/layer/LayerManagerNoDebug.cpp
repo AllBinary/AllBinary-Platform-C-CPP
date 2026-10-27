@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_LAYERMANAGERNODEBUG_CPP
+        #define ORG_ALLBINARY_LAYER_LAYERMANAGERNODEBUG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/LayerManagerNoDebug.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,21 +54,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/LayerManagerLoggingBase.h"
 
-class LayerManagerNoDebug: public LayerManagerLoggingBase {
 
-    private: static LayerManagerNoDebug* instance() { static std::unique_ptr<LayerManagerNoDebug> value(new LayerManagerNoDebug()); return value.get(); }
+LayerManagerNoDebug::LayerManagerNoDebug() {
+        }
+        auto LayerManagerNoDebug::instance_owner() -> LayerManagerNoDebug* { static std::unique_ptr<LayerManagerNoDebug> value(new LayerManagerNoDebug()); return value.get(); }
+LayerManagerNoDebug* LayerManagerNoDebug::instance = LayerManagerNoDebug::instance_owner();
 
-    public: static LayerManagerNoDebug* getInstance(){
+    auto LayerManagerNoDebug::getInstance() -> LayerManagerNoDebug*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerManagerNoDebug::instance();
+                        return LayerManagerNoDebug::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_LAYERMANAGERNODEBUG_CPP

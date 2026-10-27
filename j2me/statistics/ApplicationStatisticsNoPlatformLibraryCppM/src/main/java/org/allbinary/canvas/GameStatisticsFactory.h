@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
         #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,10 +53,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/BaseGameStatistics.h"
-//NoPlatform
-// class GameStatisticsFactory: public BaseGameStatistics {
 
-    private: static GameStatisticsFactory* instance() { static std::unique_ptr<GameStatisticsFactory> value(new GameStatisticsFactory()); return value.get(); }
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //NoPlatform
+class GameStatisticsFactory: public BaseGameStatistics {
+
+    private: static inline GameStatisticsFactory* instance;
 
     public: static GameStatisticsFactory* getInstance();
 
@@ -65,3 +74,13 @@
 
 
         #endif //ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/canvas/BaseGameStatistics.h")
+#include "org/allbinary/canvas/BaseGameStatistics.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_UNKNOWN_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_UNKNOWN_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/linux/Unknown.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,19 +58,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //import org.allbinary.logic.system.hardware.components.interfaces.MediaInterface;
-class Unknown
-            : public Object
-        , public HardwareComponentInterface {
 
-    private: std::string data;
-
-public: Unknown(std::string data){
+Unknown::Unknown(std::string data){
 this->data= data;
     
 }
 
 
-    public: bool compareTo(HardwareComponentInterface* componentInterface){
+    auto Unknown::compareTo(HardwareComponentInterface* componentInterface) -> bool{
 
 
 
@@ -70,7 +75,7 @@ this->data= data;
 }
 
 
-    public: std::string toString(){
+    auto Unknown::toString() -> std::string{
 
 
 
@@ -80,7 +85,6 @@ this->data= data;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_UNKNOWN_CPP

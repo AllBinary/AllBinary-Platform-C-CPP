@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
+class PaymentGatewayInterface;
+class DomNodeInterface;
 
 
 
@@ -52,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentGatewayDomNodeFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class PaymentGatewayDomNodeFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual DomNodeInterface* getInstance(PaymentGatewayInterface* paymentGatewayInterface) = 0;
 
@@ -62,3 +69,16 @@ class PaymentGatewayDomNodeFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_MODULES_GATEWAY_PAYMENTGATEWAYDOMNODEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+
+        #endif
+    

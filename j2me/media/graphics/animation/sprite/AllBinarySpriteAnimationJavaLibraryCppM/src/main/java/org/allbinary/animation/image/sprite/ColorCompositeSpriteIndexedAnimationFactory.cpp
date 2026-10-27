@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_COLORCOMPOSITESPRITEINDEXEDANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_COLORCOMPOSITESPRITEINDEXEDANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/ColorCompositeSpriteIndexedAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,13 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
 
-class ColorCompositeSpriteIndexedAnimationFactory: public BaseImageAnimationFactory, public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: AnimationFactorySpriteScaleUtil* animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
-
-    private: std::vector<BasicColor*> basicColorArray;
-
-public: ColorCompositeSpriteIndexedAnimationFactory(Image* image, std::vector<BasicColor*> basicColorArray, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
+ColorCompositeSpriteIndexedAnimationFactory::ColorCompositeSpriteIndexedAnimationFactory(Image* image, std::vector<BasicColor*> basicColorArray, int32_t width, int32_t height, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory), animationFactorySpriteScaleUtil(AnimationFactorySpriteScaleUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -95,22 +100,22 @@ this->basicColorArray= basicColorArray;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto ColorCompositeSpriteIndexedAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
-    Sprite* sprite = this->animationFactorySpriteScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Sprite* sprite = this->animationFactorySpriteScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor->width, this->animationFactoryInitializationVisitor->height, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SpriteIndexedAnimation(sprite, this->getImage(), this->basicColorArray, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new SpriteIndexedAnimation(sprite, this->getImage(), this->basicColorArray, this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto ColorCompositeSpriteIndexedAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -120,7 +125,6 @@ this->basicColorArray= basicColorArray;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_COLORCOMPOSITESPRITEINDEXEDANIMATIONFACTORY_CPP

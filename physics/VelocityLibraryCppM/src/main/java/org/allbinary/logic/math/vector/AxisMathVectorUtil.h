@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/math/NoDecimalTrigTable.h>
-
-      
+class NoDecimalTrigTable;
 
 
 
@@ -51,15 +54,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AxisMathVectorUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static AxisMathVectorUtil* instance() { static std::unique_ptr<AxisMathVectorUtil> value(new AxisMathVectorUtil()); return value.get(); }
+    private: static AxisMathVectorUtil* instance_owner();
+    private: static AxisMathVectorUtil* instance;
 
     public: static AxisMathVectorUtil* getInstance();
 
-    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
+
+            
+    public: AxisMathVectorUtil();
+        
+    private: NoDecimalTrigTable* noDecimalTrigTable;
 
     public: int64_t calculateX(int64_t magnitude, int32_t angle);
 
@@ -73,3 +85,13 @@ class AxisMathVectorUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/math/NoDecimalTrigTable.h>)
+#include <org/allbinary/math/NoDecimalTrigTable.h>
+#endif
+
+        #endif
+    

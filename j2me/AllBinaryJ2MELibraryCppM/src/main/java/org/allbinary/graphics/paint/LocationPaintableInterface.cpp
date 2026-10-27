@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/LocationPaintableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LocationPaintableInterface {
+//Interface - declared in the header
 
-    public: virtual void paintXY(Graphics* graphics, int32_t x, int32_t y) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLEINTERFACE_CPP

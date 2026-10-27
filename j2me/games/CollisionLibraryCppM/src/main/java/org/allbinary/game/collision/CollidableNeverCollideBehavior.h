@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
+class CollidableCompositeLayer;
 
 
 
@@ -51,11 +54,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/collision/CollidableBaseBehavior.h"
-#include "org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h"
+class CollidableInterfaceCompositeInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollidableNeverCollideBehavior: public CollidableBaseBehavior {
 
-: CollidableNeverCollideBehavior(bool isCollidable);
+public: CollidableNeverCollideBehavior(bool isCollidable);
 
     public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer);
 
@@ -73,3 +80,19 @@ class CollidableNeverCollideBehavior: public CollidableBaseBehavior {
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/CollidableCompositeLayer.h>)
+#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableBaseBehavior.h")
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h")
+#include "org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h"
+#endif
+
+        #endif
+    

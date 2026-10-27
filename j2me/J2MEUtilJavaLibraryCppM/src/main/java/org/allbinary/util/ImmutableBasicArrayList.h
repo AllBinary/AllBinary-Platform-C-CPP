@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_H
         #define ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
+class ForcedLogUtil;
 
 
 
@@ -52,6 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/util/BasicArrayListS.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImmutableBasicArrayList: public BasicArrayListS {
 
     private: std::string name;
@@ -59,8 +66,10 @@ class ImmutableBasicArrayList: public BasicArrayListS {
 public: ImmutableBasicArrayList(std::string name, int32_t size);
 
     public: bool add(Object* e);
+    public: bool add(const std::string& e) { return add(JavaString::box(e)); }
 
     public: void addAt(int32_t index, Object* element);
+    public: void addAt(int32_t index, const std::string& element) { return addAt(index, JavaString::box(element)); }
 
     public: std::string toString();
 
@@ -70,3 +79,16 @@ public: ImmutableBasicArrayList(std::string name, int32_t size);
 
 
         #endif //ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_H_COMPLETE)
+        #define ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include("org/allbinary/util/BasicArrayListS.h")
+#include "org/allbinary/util/BasicArrayListS.h"
+#endif
+
+        #endif
+    

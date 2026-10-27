@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,41 +35,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
-#include <org/allbinary/business/init/db/StaticPagesDbInitInfo.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class StoreFrontData;
+class StaticPagesDbInitInfo;
+class BasicItemData;
+class StdUtil;
+class LogUtil;
 #include <org/allbinary/logic/communication/sql/AbSqlBean.h>
-
-      
-#include <org/allbinary/logic/control/search/SearchData.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class SearchData;
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -85,11 +66,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/staticpages/StaticPagesEntityInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
+    /*protected*/ public: BasicItemData* basicItemData;
 
     private: const std::string TABLENAME = "staticpages";
 
@@ -115,3 +100,47 @@ public: StaticPagesEntity();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/StaticPagesDbInitInfo.h>)
+#include <org/allbinary/business/init/db/StaticPagesDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>)
+#include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/AbSqlBean.h>)
+#include <org/allbinary/logic/communication/sql/AbSqlBean.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/search/SearchData.h>)
+#include <org/allbinary/logic/control/search/SearchData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/data/tables/staticpages/StaticPagesEntityInterface.h")
+#include "org/allbinary/data/tables/staticpages/StaticPagesEntityInterface.h"
+#endif
+
+        #endif
+    

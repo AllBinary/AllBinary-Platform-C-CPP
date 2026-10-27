@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/BaseTouchInput.h"
+        class BaseTouchInput;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoButtonsTouchInputFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BaseTouchInput* instance() { static std::unique_ptr<BaseTouchInput> value(new BaseTouchInput()); return value.get(); }
+    private: static BaseTouchInput* instance_owner();
+    private: static BaseTouchInput* instance;
 
     public: static BaseTouchInput* getInstance();
 
+
+            
+    public: NoButtonsTouchInputFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/input/motion/button/BaseTouchInput.h")
+#include "org/allbinary/input/motion/button/BaseTouchInput.h"
+#endif
+
+        #endif
+    

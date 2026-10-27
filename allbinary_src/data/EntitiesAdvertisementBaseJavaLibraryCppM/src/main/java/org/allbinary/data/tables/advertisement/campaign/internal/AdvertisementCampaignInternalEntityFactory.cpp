@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_CAMPAIGN_INTERNAL_ADVERTISEMENTCAMPAIGNINTERNALENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_CAMPAIGN_INTERNAL_ADVERTISEMENTCAMPAIGNINTERNALENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/advertisement/campaign/internal/AdvertisementCampaignInternalEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,12 @@
         #include "org/allbinary/data/tables/advertisement/campaign/internal/AdvertisementCampaignInternalEntity.h"
 #include "org/allbinary/data/tables/advertisement/campaign/internal/AdvertisementCampaignInternalEntityInterface.h"
 
-class AdvertisementCampaignInternalEntityFactory
-            : public Object
-         {
 
-    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementCampaignEntity";
+AdvertisementCampaignInternalEntityFactory::AdvertisementCampaignInternalEntityFactory(){
+}
 
-    public: static AdvertisementCampaignInternalEntityInterface* getInstance(){
+
+    auto AdvertisementCampaignInternalEntityFactory::getInstance() -> AdvertisementCampaignInternalEntityInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -78,7 +87,7 @@ class AdvertisementCampaignInternalEntityFactory
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
@@ -100,11 +109,6 @@ logUtil->put(commonStrings->EXCEPTION, "AdvertisementCampaignEntityFactory", com
 }
 
 
-private: AdvertisementCampaignInternalEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_CAMPAIGN_INTERNAL_ADVERTISEMENTCAMPAIGNINTERNALENTITYFACTORY_CPP

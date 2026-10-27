@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONTEXTINPUT_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONTEXTINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameConfigurationTextInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameConfigurationTextInput
-            : public Object
-         {
+ABHashtable<Object*, Object*>* GameConfigurationTextInput::hashtable = StdUtil::getInstance()->createHashtable();
+auto GameConfigurationTextInput::SIMULATOR_IP_owner() -> GameConfigurationTextInput* { static std::unique_ptr<GameConfigurationTextInput> value(new GameConfigurationTextInput("IP: ", "192.168.1.3")); return value.get(); }
+GameConfigurationTextInput* GameConfigurationTextInput::SIMULATOR_IP = GameConfigurationTextInput::SIMULATOR_IP_owner();
+auto GameConfigurationTextInput::SIMULATOR_PORT_owner() -> GameConfigurationTextInput* { static std::unique_ptr<GameConfigurationTextInput> value(new GameConfigurationTextInput("Port: ", "8010")); return value.get(); }
+GameConfigurationTextInput* GameConfigurationTextInput::SIMULATOR_PORT = GameConfigurationTextInput::SIMULATOR_PORT_owner();
 
-    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+GameConfigurationTextInput::GameConfigurationTextInput(std::string label, std::string text) : label(StringUtil::getInstance()->EMPTY_STRING), text(StringUtil::getInstance()->EMPTY_STRING){
+this->setText(text);
+    
+this->setLabel(label);
+    
+GameConfigurationTextInput::hashtable->put(this->getLabel(), this);
+    
+}
 
-    public: static GameConfigurationTextInput* SIMULATOR_IP() { static std::unique_ptr<GameConfigurationTextInput> value(new GameConfigurationTextInput("IP: ", "192.168.1.3")); return value.get(); }
 
-    public: static GameConfigurationTextInput* SIMULATOR_PORT() { static std::unique_ptr<GameConfigurationTextInput> value(new GameConfigurationTextInput("Port: ", "8010")); return value.get(); }
-
-    public: static void update(TextField* textField){
+    auto GameConfigurationTextInput::update(TextField* textField) -> void{
 
     Object* anyType = textField->getLabel();;
     
@@ -79,37 +95,13 @@ gameConfigurationTextInput->setText(textField->getString());
 }
 
 
-    public: static ABHashtable<Object*, Object*>* getHashtable(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationTextInput::hashtable;
-    
-}
-
-
-    private: std::string label = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: std::string text = StringUtil::getInstance()->EMPTY_STRING;
-
-public: GameConfigurationTextInput(std::string label, std::string text){
-this->setText(text);
-    
-this->setLabel(label);
-    
-GameConfigurationTextInput::hashtable->put(this->getLabel(), this);
-    
-}
-
-
-    public: void setText(std::string text){
+    auto GameConfigurationTextInput::setText(std::string text) -> void{
 this->text= text;
     
 }
 
 
-    public: std::string getText(){
+    auto GameConfigurationTextInput::getText() -> std::string{
 
 
 
@@ -119,13 +111,13 @@ this->text= text;
 }
 
 
-    public: void setLabel(std::string label){
+    auto GameConfigurationTextInput::setLabel(std::string label) -> void{
 this->label= label;
     
 }
 
 
-    public: std::string getLabel(){
+    auto GameConfigurationTextInput::getLabel() -> std::string{
 
 
 
@@ -135,7 +127,16 @@ this->label= label;
 }
 
 
-};
+    auto GameConfigurationTextInput::getHashtable() -> ABHashtable<Object*, Object*>*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameConfigurationTextInput::hashtable;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONTEXTINPUT_CPP

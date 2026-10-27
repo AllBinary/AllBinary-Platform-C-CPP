@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/media/MediaUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,70 +80,26 @@
         #include "org/allbinary/logic/visual/media/ImageIOUtil.h"
 #include "org/allbinary/logic/visual/media/MediaData.h"
 //import com.sun.imageio.plugins.common.ImageUtil;
-class MediaUtil
-            : public Object
-         {
+auto MediaUtil::instance_owner() -> MediaUtil* { static std::unique_ptr<MediaUtil> value(new MediaUtil()); return value.get(); }
+MediaUtil* MediaUtil::instance = MediaUtil::instance_owner();
 
-    private: static MediaUtil* instance() { static std::unique_ptr<MediaUtil> value(new MediaUtil()); return value.get(); }
-
-    public: static MediaUtil* getInstance(){
+    auto MediaUtil::getInstance() -> MediaUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaUtil::instance();
+                        return MediaUtil::instance;
     
 }
 
 
-    private: static HashMap<Object*, Object*>* getImageBufferPropertyHashMap(BufferedImage* bufferedImage){
-
-    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
-    
-
-    std::vector<std::string> propertyStringArray = bufferedImage->getPropertyNames();;
-    
-
-                        if(propertyStringArray != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    
-
-
-
-                        for (
-    int32_t index = 0;index < propertyStringArray.size(); index++)
-        {
-
-    Object* propertyObject = bufferedImage->getProperty(propertyStringArray[index]);;
-    
-hashMap->put(propertyStringArray[index], propertyObject->toString());
-    
-}
-
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return hashMap;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: MediaUtil(){
+MediaUtil::MediaUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void saveImageFile(AbFile* originalImageFile, std::string newImageFileName, std::string category, MediaData* mediaData, int32_t newWidth, int32_t newHeight){
+    auto MediaUtil::saveImageFile(AbFile* originalImageFile, std::string newImageFileName, std::string category, MediaData* mediaData, int32_t newWidth, int32_t newHeight) -> void{
 
                         if(originalImageFile == 
                                     nullptr
@@ -143,7 +109,7 @@ private: MediaUtil(){
                                     
 
 
-                            throw new Exception("Original Image File Does Not Exist.");
+                            throw Exception("Original Image File Does Not Exist.");
                     
 
                                     }
@@ -160,25 +126,25 @@ private: MediaUtil(){
                                     
 
 
-                            throw new Exception("Unable to find ImageReader for this file.");
+                            throw Exception("Unable to find ImageReader for this file.");
                     
 
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
     HashMap<Object*, Object*>* hashMap = this->getImageBufferPropertyHashMap(bufferedImage);;
     
-this->logUtil->putF("Image Properties: " +hashMap->toString(), this, "saveImageFile()");
+this->logUtil->putF(JavaString::valueOf("Image Properties: ") +JavaString::valueOf(hashMap->toString()), this, "saveImageFile()");
     
 
                                     }
                                 
 
-    AbFile* imageFile = AbFile::createAbFile(category +newImageFileName);;
+    AbFile* imageFile = AbFile::createAbFile(JavaString::valueOf(category) +JavaString::valueOf(newImageFileName));;
     
 imageFile->createNewFile();
     
@@ -198,13 +164,13 @@ imageFile->createNewFile();
                                     
 
 
-                            throw new Exception("Unable to write.");
+                            throw Exception("Unable to write.");
                     
 
                                     }
                                 
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->VIEW))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->VIEW))
                         
                                     {
                                     
@@ -253,7 +219,43 @@ this->logUtil->putF(stringBuffer->toString(), this, "saveImageFile()");
 }
 
 
-};
+    auto MediaUtil::getImageBufferPropertyHashMap(BufferedImage* bufferedImage) -> HashMap<Object*, Object*>*{
 
-            
+    HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
+    
 
+    std::vector<std::string> propertyStringArray = bufferedImage->getPropertyNames();;
+    
+
+                        if(!propertyStringArray.empty())
+                        
+                                    {
+                                    
+
+
+
+                        for (
+    int32_t index = 0;index < propertyStringArray.size(); index++)
+        {
+
+    Object* propertyObject = bufferedImage->getProperty(propertyStringArray[index]);;
+    
+hashMap->put(propertyStringArray[index], propertyObject->toString());
+    
+}
+
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return hashMap;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAUTIL_CPP

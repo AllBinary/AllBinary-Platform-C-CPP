@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/loader/AbeFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,34 +89,27 @@
         #include "org/allbinary/logic/system/loader/WebappClassLoaderInfo.h"
 #include "org/allbinary/logic/system/loader/AbeClassLoader.h"
 
-class AbeFactory
-            : public Object
-         {
+auto AbeFactory::instance_owner() -> AbeFactory* { static std::unique_ptr<AbeFactory> value(new AbeFactory()); return value.get(); }
+AbeFactory* AbeFactory::instance = AbeFactory::instance_owner();
 
-    private: static AbeFactory* instance() { static std::unique_ptr<AbeFactory> value(new AbeFactory()); return value.get(); }
-
-    public: static AbeFactory* getInstance(){
+    auto AbeFactory::getInstance() -> AbeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory::instance();
+                        return AbeFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool useCustomLoader = false;
-
-private: AbeFactory(){
+AbeFactory::AbeFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Object* getInstance(AbeClientInformationInterface* abeClientInformation, std::string className){
+    auto AbeFactory::getInstance(AbeClientInformationInterface* abeClientInformation, std::string className) -> Object*{
 
         try {
             
@@ -120,10 +123,10 @@ private: AbeFactory(){
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->LOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
                         
                                     {
-                                    this->logUtil->put("Failure for: " +className, this, "getInstance(classname)", &e);
+                                    this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getInstance(classname)", &e);
     
 
                                     }
@@ -139,10 +142,10 @@ private: AbeFactory(){
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->LOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
                         
                                     {
-                                    this->logUtil->put("Failure for: " +className, this, "getInstance(classname)", &e);
+                                    this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getInstance(classname)", &e);
     
 
                                     }
@@ -161,7 +164,7 @@ private: AbeFactory(){
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Object* getInstance(AbeClientInformationInterface* abeClientInformation, std::string className, std::vector<Class*> classes, std::vector<Object*> params){
+    auto AbeFactory::getInstance(AbeClientInformationInterface* abeClientInformation, std::string className, std::vector<Class*> classes, std::vector<Object*> params) -> Object*{
 
     Constructor* constructor = 
                 null
@@ -213,7 +216,7 @@ constructor= myClass->getConstructor(classes);
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->LOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
                         
                                     {
                                     
@@ -243,7 +246,7 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->LOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
                         
                                     {
                                     
@@ -276,7 +279,7 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Class* getClass()(AbeClientInformationInterface* abeClientInformation, std::string className){
+    auto AbeFactory::getClass()(AbeClientInformationInterface* abeClientInformation, std::string className) -> Class*{
 
         try {
             
@@ -319,10 +322,10 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->LOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
                         
                                     {
-                                    this->logUtil->put("Failure for: " +className, this, "getClass(className)", &e);
+                                    this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getClass(className)", &e);
     
 
                                     }
@@ -338,10 +341,10 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->LOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->LOADERERROR))
                         
                                     {
-                                    this->logUtil->put("Failure for: " +className, this, "getClass(className)", &e);
+                                    this->logUtil->put(JavaString::valueOf("Failure for: ") +JavaString::valueOf(className), this, "getClass(className)", &e);
     
 
                                     }
@@ -357,7 +360,6 @@ this->logUtil->put(stringBuffer->toString(), this, "getInstance(className,params
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_CPP

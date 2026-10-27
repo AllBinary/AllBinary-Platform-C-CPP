@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,15 +77,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CompoundAnimationInterfaceFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    protected: std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArrayP;
-
-    protected: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: CompoundAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory){
+CompoundAnimationInterfaceFactory::CompoundAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory){
 this->basicAnimationInterfaceFactoryInterfaceArrayP= basicAnimationInterfaceFactoryInterfaceArray;
     
 this->animationBehaviorFactory= animationBehaviorFactory;
@@ -85,7 +88,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto CompoundAnimationInterfaceFactory::getInstance(int32_t instanceId) -> Animation*{
 
     int32_t size = this->basicAnimationInterfaceFactoryInterfaceArrayP.size();;
     
@@ -99,7 +102,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
                         for (
     int32_t index = 0;index < size; index++)
         {
-animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArrayP[index].getInstance(instanceId);
+animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArrayP[index]->getInstance(instanceId);
     
 }
 
@@ -112,7 +115,7 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
 }
 
 
-    protected: std::vector<Animation*> createArray(int32_t size){
+    auto CompoundAnimationInterfaceFactory::createArray(int32_t size) -> std::vector<Animation*>{
 
 
 
@@ -122,7 +125,7 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
 }
 
 
-    protected: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray){
+    auto CompoundAnimationInterfaceFactory::createAnimation(std::vector<Animation*> animationInterfaceArray) -> Animation*{
 
 
 
@@ -132,7 +135,7 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
 }
 
 
-    public: std::vector<AnimationInterfaceFactoryInterface*> getBasicAnimationInterfaceFactoryInterfaceArray(){
+    auto CompoundAnimationInterfaceFactory::getBasicAnimationInterfaceFactoryInterfaceArray() -> std::vector<AnimationInterfaceFactoryInterface*>{
 
 
 
@@ -142,7 +145,7 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto CompoundAnimationInterfaceFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 
     int32_t size = this->basicAnimationInterfaceFactoryInterfaceArrayP.size();;
     
@@ -153,14 +156,13 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->basicAnimationInterfaceFactoryInterfaceArrayP[index].setInitialScale(scaleProperties);
+this->basicAnimationInterfaceFactoryInterfaceArrayP[index]->setInitialScale(scaleProperties);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_CPP

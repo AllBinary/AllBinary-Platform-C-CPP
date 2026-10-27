@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GAMEMODE_CPP
+        #define ORG_ALLBINARY_GAME_GAMEMODE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/GameMode.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,31 +58,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameMode
-            : public Object
-         {
+auto GameMode::NONE_owner() -> GameMode* { static std::unique_ptr<GameMode> value(new GameMode(StringUtil::getInstance()->NULL_STRING)); return value.get(); }
+GameMode* GameMode::NONE = GameMode::NONE_owner();
+auto GameMode::SERVER_owner() -> GameMode* { static std::unique_ptr<GameMode> value(new GameMode("Server")); return value.get(); }
+GameMode* GameMode::SERVER = GameMode::SERVER_owner();
+auto GameMode::CLIENT_owner() -> GameMode* { static std::unique_ptr<GameMode> value(new GameMode("Client")); return value.get(); }
+GameMode* GameMode::CLIENT = GameMode::CLIENT_owner();
 
-    public: static GameMode* NONE() { static std::unique_ptr<GameMode> value(new GameMode(StringUtil::getInstance()->NULL_STRING)); return value.get(); }
-
-    public: static GameMode* SERVER() { static std::unique_ptr<GameMode> value(new GameMode("Server")); return value.get(); }
-
-    public: static GameMode* CLIENT() { static std::unique_ptr<GameMode> value(new GameMode("Client")); return value.get(); }
-
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-private: GameMode(std::string name){
+GameMode::GameMode(std::string name) : name(StringUtil::getInstance()->EMPTY_STRING){
 this->setName(name);
     
 }
 
 
-    private: void setName(std::string name){
+    auto GameMode::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string getName(){
+    auto GameMode::getName() -> std::string{
 
 
 
@@ -82,7 +87,7 @@ this->name= name;
 }
 
 
-    public: std::string toString(){
+    auto GameMode::toString() -> std::string{
 
 
 
@@ -92,7 +97,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_GAMEMODE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/util/cache/AutomaticCacheInterface.h>
-
-      
-#include <org/allbinary/logic/util/cache/AutomaticCacheInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/util/cache/CachePolicyFactory.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheTypeFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class AutomaticCacheInterface;
+class AutomaticCacheInterfaceFactory;
+class CachePolicyFactory;
+class CacheTypeFactory;
+class CommonStrings;
 
 
 
@@ -67,10 +60,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/ColorCacheableFactory.h"
+        class ColorCacheableFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ColorCacheFactory
-            : public Object
+            : public virtual Object
          {
 
     private: static inline AutomaticCacheInterface* cacheInterface = 
@@ -90,3 +87,31 @@ private: ColorCacheFactory();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/AutomaticCacheInterface.h>)
+#include <org/allbinary/logic/util/cache/AutomaticCacheInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/AutomaticCacheInterfaceFactory.h>)
+#include <org/allbinary/logic/util/cache/AutomaticCacheInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CachePolicyFactory.h>)
+#include <org/allbinary/logic/util/cache/CachePolicyFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheTypeFactory.h>)
+#include <org/allbinary/logic/util/cache/CacheTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/graphics/color/ColorCacheableFactory.h")
+#include "org/allbinary/graphics/color/ColorCacheableFactory.h"
+#endif
+
+        #endif
+    

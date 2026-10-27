@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/queue/FileEmailQueue.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FileEmailQueue
-            : public Object
-         {
 
-    private: DomDocumentQueueInterface* domDocumentQueueInterface;
-
-public: FileEmailQueue(){
+FileEmailQueue::FileEmailQueue(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_FILEEMAILQUEUE_CPP

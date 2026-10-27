@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_TILELAYERITEM_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_TILELAYERITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/TileLayerItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,11 +69,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
-class TileLayerItem: public ABCustomItem, public ABCustomItemInterface {
 
-    private: AllBinaryTiledLayer* tiledLayer;
-
-public: TileLayerItem(std::string label, AllBinaryTiledLayer* tiledLayer, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
+TileLayerItem::TileLayerItem(std::string label, AllBinaryTiledLayer* tiledLayer, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,11 +82,11 @@ this->tiledLayer= tiledLayer;
 }
 
 
-    public: void setOwner(Screen* owner){
+    auto TileLayerItem::setOwner(Screen* owner) -> void{
 }
 
 
-    public: int32_t getMinimumWidth(){
+    auto TileLayerItem::getMinimumWidth() -> int32_t{
 
 
 
@@ -89,7 +96,7 @@ this->tiledLayer= tiledLayer;
 }
 
 
-    public: int32_t getMinimumHeight(){
+    auto TileLayerItem::getMinimumHeight() -> int32_t{
 
 
 
@@ -99,7 +106,7 @@ this->tiledLayer= tiledLayer;
 }
 
 
-    protected: int32_t getMinContentHeight(){
+    auto TileLayerItem::getMinContentHeight() -> int32_t{
 
 
 
@@ -109,7 +116,7 @@ this->tiledLayer= tiledLayer;
 }
 
 
-    protected: int32_t getMinContentWidth(){
+    auto TileLayerItem::getMinContentWidth() -> int32_t{
 
 
 
@@ -119,7 +126,7 @@ this->tiledLayer= tiledLayer;
 }
 
 
-    protected: int32_t getPrefContentHeight(int32_t width){
+    auto TileLayerItem::getPrefContentHeight(int32_t width) -> int32_t{
 
 
 
@@ -129,7 +136,7 @@ this->tiledLayer= tiledLayer;
 }
 
 
-    protected: int32_t getPrefContentWidth(int32_t height){
+    auto TileLayerItem::getPrefContentWidth(int32_t height) -> int32_t{
 
 
 
@@ -139,7 +146,7 @@ this->tiledLayer= tiledLayer;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto TileLayerItem::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->tiledLayer->setPosition(x, y, this->tiledLayer->getZP());
     
 this->tiledLayer->paint(graphics);
@@ -147,11 +154,10 @@ this->tiledLayer->paint(graphics);
 }
 
 
-    public: void paintUnselected(Graphics* graphics, int32_t x, int32_t y){
+    auto TileLayerItem::paintUnselected(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_TILELAYERITEM_CPP

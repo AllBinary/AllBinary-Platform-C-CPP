@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INAPPLICATIONPURCHASEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INAPPLICATIONPURCHASEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/InApplicationPurchaseFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,59 +59,56 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
-class InApplicationPurchaseFactory
-            : public Object
-         {
+auto InApplicationPurchaseFactory::instance_owner() -> InApplicationPurchaseFactory* { static std::unique_ptr<InApplicationPurchaseFactory> value(new InApplicationPurchaseFactory()); return value.get(); }
+InApplicationPurchaseFactory* InApplicationPurchaseFactory::instance = InApplicationPurchaseFactory::instance_owner();
 
-    private: static InApplicationPurchaseFactory* instance() { static std::unique_ptr<InApplicationPurchaseFactory> value(new InApplicationPurchaseFactory()); return value.get(); }
-
-    public: static InApplicationPurchaseFactory* getInstance(){
+    auto InApplicationPurchaseFactory::getInstance() -> InApplicationPurchaseFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InApplicationPurchaseFactory::instance();
+                        return InApplicationPurchaseFactory::instance;
     
 }
 
 
-private: InApplicationPurchaseFactory(){
+InApplicationPurchaseFactory::InApplicationPurchaseFactory(){
 }
 
 
-    public: void init(Object* anyType, Object* stateObject){
+    auto InApplicationPurchaseFactory::init(Object* anyType, Object* stateObject) -> void{
 }
 
 
-    public: void onCreate(Object* anyType, Object* stateObject){
+    auto InApplicationPurchaseFactory::onCreate(Object* anyType, Object* stateObject) -> void{
 }
 
 
-    public: void onStart(){
+    auto InApplicationPurchaseFactory::onStart() -> void{
 }
 
 
-    public: void onResult(int32_t requestCode, int32_t resultCode, Object* data){
+    auto InApplicationPurchaseFactory::onResult(int32_t requestCode, int32_t resultCode, Object* data) -> void{
 }
 
 
-    public: void onSaveState(Object* anyType){
+    auto InApplicationPurchaseFactory::onSaveState(Object* anyType) -> void{
 }
 
 
-    public: void onStop(){
+    auto InApplicationPurchaseFactory::onStop() -> void{
 }
 
 
-    public: void onDestroy(){
+    auto InApplicationPurchaseFactory::onDestroy() -> void{
 }
 
 
-    public: void purchase(LockableFeature* lockableFeature){
+    auto InApplicationPurchaseFactory::purchase(LockableFeature* lockableFeature) -> void{
 }
 
 
-    public: bool isPurchased(LockableFeature* lockableFeature){
+    auto InApplicationPurchaseFactory::isPurchased(LockableFeature* lockableFeature) -> bool{
 
 
 
@@ -111,11 +118,11 @@ private: InApplicationPurchaseFactory(){
 }
 
 
-    public: void add(LockableFeature* lockableFeature){
+    auto InApplicationPurchaseFactory::add(LockableFeature* lockableFeature) -> void{
 }
 
 
-    public: std::string getUserName(){
+    auto InApplicationPurchaseFactory::getUserName() -> std::string{
 
 
 
@@ -125,7 +132,7 @@ private: InApplicationPurchaseFactory(){
 }
 
 
-    public: bool isEnabled(){
+    auto InApplicationPurchaseFactory::isEnabled() -> bool{
 
 
 
@@ -135,7 +142,6 @@ private: InApplicationPurchaseFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INAPPLICATIONPURCHASEFACTORY_CPP

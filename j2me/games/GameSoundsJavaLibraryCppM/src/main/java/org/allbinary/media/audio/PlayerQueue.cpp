@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERQUEUE_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERQUEUE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/PlayerQueue.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,25 +77,14 @@
         #include "org/allbinary/media/audio/Sound.h"
 #include "org/allbinary/media/audio/NoSound.h"
 
-class PlayerQueue
-            : public Object
-         {
 
-    private: static inline const std::string TOTAL = "Sounds In Queue: ";
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    private: int32_t max;
-
-: PlayerQueue(int32_t max){
+PlayerQueue::PlayerQueue(int32_t max) : commonStrings(CommonStrings::getInstance()), list(new BasicArrayListD()){
 this->max= max;
     
 }
 
 
-    public: void add(Sound* sound){
+    auto PlayerQueue::add(Sound* sound) -> void{
 
         try {
             
@@ -108,7 +107,7 @@ PreLogUtil::put(this->commonStrings->EXCEPTION, this, this->commonStrings->ADD);
 }
 
 
-    public: bool process(){
+    auto PlayerQueue::process() -> bool{
 
     Sound* sound = NoSound::getInstance();;
     
@@ -183,13 +182,13 @@ PreLogUtil::put((new StringMaker())->append(this->commonStrings->EXCEPTION_LABEL
 }
 
 
-    public: void clear(){
+    auto PlayerQueue::clear() -> void{
 this->list->clear();
     
 }
 
 
-    public: std::string toString(){
+    auto PlayerQueue::toString() -> std::string{
 
 
 
@@ -199,7 +198,6 @@ this->list->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_PLAYERQUEUE_CPP

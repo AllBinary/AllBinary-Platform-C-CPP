@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresResultsListener.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -46,11 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/HighScores.h"
 
-class HighScoresResultsListener {
+//Interface - declared in the header
 
-    public: virtual void setHighScoresArray(std::vector<HighScores*> highScoresArrayP) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_CPP

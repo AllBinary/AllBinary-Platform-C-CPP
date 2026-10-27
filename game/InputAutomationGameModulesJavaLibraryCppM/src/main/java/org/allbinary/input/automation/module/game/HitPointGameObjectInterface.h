@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,6 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HitPointGameObjectInterface: public MeteredGameObjectInterface {
 
     public: virtual bool isMoreThan(float aFloat) = 0;
@@ -61,3 +70,13 @@ class HitPointGameObjectInterface: public MeteredGameObjectInterface {
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h")
+#include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
+#endif
+
+        #endif
+    

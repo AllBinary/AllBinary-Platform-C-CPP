@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H
         #define ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/http/request/RequestMapInterface.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/visual/transform/TransformInterface.h>
-
-      
-#include <taghelpers/ValidationViewHelper.h>
-
-      
-#include <tags/HelperTag.h>
-
-      
-#include <views/admin/inventory/InventoryItemView.h>
-
-      
-#include <views/admin/inventory/download/DownloadableInventoryItemView.h>
-
-      
+class RequestMapInterface;
+class StringMaker;
+class TransformInterface;
+class ValidationViewHelper;
+class HelperTag;
+class InventoryItemView;
+class DownloadableInventoryItemView;
 
 
 
@@ -71,14 +62,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InventoryItemViewParentTagHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static InventoryItemViewParentTagHelper* instance() { static std::unique_ptr<InventoryItemViewParentTagHelper> value(new InventoryItemViewParentTagHelper()); return value.get(); }
+    private: static InventoryItemViewParentTagHelper* instance_owner();
+    private: static InventoryItemViewParentTagHelper* instance;
 
     public: static InventoryItemViewParentTagHelper* getInstance();
 
+
+            
+    public: InventoryItemViewParentTagHelper();
+        
                 //@Throws(Exception.constructor)
             
     public: InventoryItemView* getInventoryItemView(HelperTag* inventoryTag);
@@ -94,6 +94,7 @@ class InventoryItemViewParentTagHelper
                 //@Throws(Exception.constructor)
             
     public: void checkForValidationViewHelper(Object* helperObject);
+    public: void checkForValidationViewHelper(const std::string& helperObject) { return checkForValidationViewHelper(JavaString::box(helperObject)); }
 
 };
 
@@ -101,3 +102,31 @@ class InventoryItemViewParentTagHelper
 
 
         #endif //ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/http/request/RequestMapInterface.h>)
+#include <org/allbinary/logic/communication/http/request/RequestMapInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/TransformInterface.h>)
+#include <org/allbinary/logic/visual/transform/TransformInterface.h>
+#endif
+#if __has_include(<taghelpers/ValidationViewHelper.h>)
+#include <taghelpers/ValidationViewHelper.h>
+#endif
+#if __has_include(<tags/HelperTag.h>)
+#include <tags/HelperTag.h>
+#endif
+#if __has_include(<views/admin/inventory/InventoryItemView.h>)
+#include <views/admin/inventory/InventoryItemView.h>
+#endif
+#if __has_include(<views/admin/inventory/download/DownloadableInventoryItemView.h>)
+#include <views/admin/inventory/download/DownloadableInventoryItemView.h>
+#endif
+
+        #endif
+    

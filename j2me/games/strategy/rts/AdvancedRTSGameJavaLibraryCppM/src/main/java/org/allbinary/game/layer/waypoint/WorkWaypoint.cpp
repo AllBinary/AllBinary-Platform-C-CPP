@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WORKWAYPOINT_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WORKWAYPOINT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WorkWaypoint.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,11 +86,9 @@
         #include "org/allbinary/game/layer/waypoint/Waypoint.h"
 #include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
 
-class WorkWaypoint: public Waypoint {
+int32_t WorkWaypoint::ID = SmallIntegerSingletonFactory::getInstance()->getAt(25);
 
-    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(25);
-
-public: WorkWaypoint(PathFindingLayerInterface* ownerLayer) : Waypoint(ownerLayer, WorkSound::getInstance()){
+WorkWaypoint::WorkWaypoint(PathFindingLayerInterface* ownerLayer) : Waypoint(ownerLayer, WorkSound::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,9 +100,9 @@ public: WorkWaypoint(PathFindingLayerInterface* ownerLayer) : Waypoint(ownerLaye
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(UnitLayer* unitLayer){
+    auto WorkWaypoint::visit(UnitLayer* unitLayer) -> void{
 
-                        if(unitLayer->getGroupInterface()[0] != this->ownerLayer.getGroupInterface()[0])
+                        if(unitLayer->getGroupInterface()[0] != this->ownerLayer->getGroupInterface()[0])
                         
                                     {
                                     
@@ -114,7 +122,7 @@ public: WorkWaypoint(PathFindingLayerInterface* ownerLayer) : Waypoint(ownerLaye
                         
                                     {
                                     
-    BasicArrayList* occupyList = this->ownerLayer.getGeographicMapCellPositionArea()->getOccupyingGeographicMapCellPositionList();;
+    BasicArrayList* occupyList = this->ownerLayer->getGeographicMapCellPositionArea()->getOccupyingGeographicMapCellPositionList();;
     
 
     bool outOfResources = true;;
@@ -155,7 +163,7 @@ unitLayer->setLoad(maxResourceLoad);
 }
 
 
-    WaypointInfoHudPaintable* waypointInfoHudPaintable = dynamic_cast<WaypointInfoHudPaintable*>(this->ownerLayer.getHudPaintable());;
+    WaypointInfoHudPaintable* waypointInfoHudPaintable = dynamic_cast<WaypointInfoHudPaintable*>(this->ownerLayer->getHudPaintable());;
     
 
                         if(this->ownerLayer == waypointInfoHudPaintable->getRtsLayer())
@@ -210,7 +218,7 @@ break;
 }
 
 
-    public: int32_t getType(){
+    auto WorkWaypoint::getType() -> int32_t{
 
 
 
@@ -220,7 +228,6 @@ break;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WORKWAYPOINT_CPP

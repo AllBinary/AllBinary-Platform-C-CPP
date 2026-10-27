@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONMAPPING_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,19 +74,14 @@
         #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
 #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
 
-class FtpConfigurationMapping
-            : public Object
-        , public TableMappingInterface {
 
-    private: FtpConfigurationInterface* ftpConfigurationInterface;
-
-public: FtpConfigurationMapping(FtpConfigurationInterface* ftpConfigurationInterface){
+FtpConfigurationMapping::FtpConfigurationMapping(FtpConfigurationInterface* ftpConfigurationInterface){
 this->ftpConfigurationInterface= ftpConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto FtpConfigurationMapping::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -99,7 +104,7 @@ hashMap->put(FtpConfigurationData::PATH, this->ftpConfigurationInterface->getPat
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto FtpConfigurationMapping::getKey() -> Object*{
 
 
 
@@ -111,7 +116,7 @@ hashMap->put(FtpConfigurationData::PATH, this->ftpConfigurationInterface->getPat
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto FtpConfigurationMapping::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -132,7 +137,6 @@ vector->add(this->ftpConfigurationInterface->getPath());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATIONMAPPING_CPP

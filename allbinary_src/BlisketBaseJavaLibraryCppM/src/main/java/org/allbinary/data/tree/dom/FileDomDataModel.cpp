@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_FILEDOMDATAMODEL_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_FILEDOMDATAMODEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/FileDomDataModel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,13 +75,8 @@
 #include "org/allbinary/data/tree/dom/FileTableMapping.h"
 #include "org/allbinary/data/tree/dom/ModDomHelper.h"
 
-class FileDomDataModel
-            : public Object
-        , public DomNodeInterface {
 
-    private: AbFile* file;
-
-public: FileDomDataModel(AbFile* file){
+FileDomDataModel::FileDomDataModel(AbFile* file){
 this->file= file;
     
 }
@@ -79,7 +84,7 @@ this->file= file;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto FileDomDataModel::toXmlNode(Document* document) -> Node*{
 
     TableMappingInterface* tableMappingInterface = dynamic_cast<TableMappingInterface*>(new FileTableMapping(this->file));;
     
@@ -95,7 +100,6 @@ this->file= file;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_FILEDOMDATAMODEL_CPP

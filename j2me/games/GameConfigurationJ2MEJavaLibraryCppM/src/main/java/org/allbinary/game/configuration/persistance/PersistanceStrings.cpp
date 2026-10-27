@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_PERSISTANCESTRINGS_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_PERSISTANCESTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/PersistanceStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,45 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PersistanceStrings
-            : public Object
-         {
 
-    private: static PersistanceStrings* instance() { static std::unique_ptr<PersistanceStrings> value(new PersistanceStrings()); return value.get(); }
+PersistanceStrings::PersistanceStrings() {
+        }
+        auto PersistanceStrings::instance_owner() -> PersistanceStrings* { static std::unique_ptr<PersistanceStrings> value(new PersistanceStrings()); return value.get(); }
+PersistanceStrings* PersistanceStrings::instance = PersistanceStrings::instance_owner();
 
-    public: static PersistanceStrings* getInstance(){
+    auto PersistanceStrings::getInstance() -> PersistanceStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PersistanceStrings::instance();
+                        return PersistanceStrings::instance;
     
 }
 
 
-    public: const std::string SAVING = "Saving: ";
 
-    public: const std::string NUMBER_OF_RECORDS = "Number of records: ";
 
-    public: const std::string LOADING_ID = "Loading data with id: ";
-
-    public: const std::string LOAD_ALL = "loadAll";
-
-    public: const std::string DELETING_WITH_ID = "Deleting data with id: ";
-
-    public: const std::string CLOSING_RECORDSTORE = "Closing RecordStore";
-
-    public: const std::string NOT_SAVING = "Not Saving: ";
-
-    public: const std::string ERROR_LOADING = "Error Loading gameActionInput: ";
-
-    public: const std::string ERROR_LOADING_ID = "Error Loading id: ";
-
-    public: const std::string ID = " id: ";
-
-    public: const std::string GAME_ACTION_INPUT = " GameActionInput: ";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_PERSISTANCESTRINGS_CPP

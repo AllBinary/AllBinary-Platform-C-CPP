@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,13 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/LayerPlacementInterfaceBasicArrayListFactoryInterface.h"
 
-class GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory {
+//Interface - declared in the header
 
-    public: virtual LayerPlacementInterfaceBasicArrayListFactoryInterface* getInstance(int32_t level) = 0;
 
-    public: virtual int32_t size() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_GAMELAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACEFACTORY_CPP

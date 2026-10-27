@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_FILTER_IMAGEFILEFILTER_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_FILTER_IMAGEFILEFILTER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/filter/ImageFileFilter.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //TWB - replace with file visitor version
-class ImageFileFilter: public FileFilter {
 
-    public: bool accept(File* f){
+ImageFileFilter::ImageFileFilter() {
+        }
+        
+    auto ImageFileFilter::accept(File* f) -> bool{
 
                         if(f->isDirectory())
                         
@@ -79,7 +91,7 @@ class ImageFileFilter: public FileFilter {
     std::string ext = s.substring(i +1).toLowerCase();;
     
 
-                        if(ext === "jpg" || ext === "jpeg")
+                        if(JavaString::equals(ext, "jpg") || JavaString::equals(ext, "jpeg"))
                         
 
 
@@ -98,7 +110,7 @@ class ImageFileFilter: public FileFilter {
 }
 
 
-    public: std::string getDescription(){
+    auto ImageFileFilter::getDescription() -> std::string{
 
 
 
@@ -108,7 +120,6 @@ class ImageFileFilter: public FileFilter {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_FILTER_IMAGEFILEFILTER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/event/handler/UserEmailEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,17 +78,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserEmailEventHandler
-            : public Object
-         {
 
-    private: BasicArrayList* emailVector;
-
-    private: EmailInfo* emailInfo;
-
-    private: UserEmailEventNameData* userEmailEventNameData;
-
-public: UserEmailEventHandler(){
+UserEmailEventHandler::UserEmailEventHandler(){
 this->emailVector= new BasicArrayListD();
     
 }
@@ -87,7 +88,7 @@ this->emailVector= new BasicArrayListD();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void receiveEmailInfo(UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo){
+    auto UserEmailEventHandler::receiveEmailInfo(UserEmailEventNameData* userEmailEventNameData, EmailInfo* emailInfo) -> void{
 this->userEmailEventNameData= userEmailEventNameData;
     
 this->emailInfo= emailInfo;
@@ -98,7 +99,7 @@ this->fireEmailEvent();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addListener(BasicArrayList* vector){
+    auto UserEmailEventHandler::addListener(BasicArrayList* vector) -> void{
 
     int32_t size = vector->size();;
     
@@ -120,14 +121,14 @@ this->addListener(userEmailEventListenerInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addListener(UserEmailEventListenerInterface* emailEventListenerInterface){
+    auto UserEmailEventHandler::addListener(UserEmailEventListenerInterface* emailEventListenerInterface) -> void{
 this->emailVector->add(emailEventListenerInterface);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(UserEmailEventListenerInterface* emailEventListenerInterface){
+    auto UserEmailEventHandler::removeListener(UserEmailEventListenerInterface* emailEventListenerInterface) -> void{
 this->emailVector->remove(emailEventListenerInterface);
     
 }
@@ -136,7 +137,7 @@ this->emailVector->remove(emailEventListenerInterface);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void fireEmailEvent(){
+    auto UserEmailEventHandler::fireEmailEvent() -> void{
 
     EmailEvent* emailEvent = new EmailEvent(this, this->userEmailEventNameData, this->emailInfo, 0);;
     
@@ -160,7 +161,6 @@ emailEventListenerInterface->onEmailSendRequest(emailEvent);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_CPP

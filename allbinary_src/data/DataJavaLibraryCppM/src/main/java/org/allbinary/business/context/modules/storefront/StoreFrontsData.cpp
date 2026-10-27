@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/StoreFrontsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,37 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontsData
-            : public Object
-         {
 
-    private: static StoreFrontsData* instance() { static std::unique_ptr<StoreFrontsData> value(new StoreFrontsData()); return value.get(); }
+StoreFrontsData::StoreFrontsData() {
+        }
+        auto StoreFrontsData::instance_owner() -> StoreFrontsData* { static std::unique_ptr<StoreFrontsData> value(new StoreFrontsData()); return value.get(); }
+StoreFrontsData* StoreFrontsData::instance = StoreFrontsData::instance_owner();
 
-    public: static StoreFrontsData* getInstance(){
+    auto StoreFrontsData::getInstance() -> StoreFrontsData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontsData::instance();
+                        return StoreFrontsData::instance;
     
 }
 
 
-    public: const std::string TYPE = "STOREFRONTS_TYPE";
 
-    public: const std::string RETAIL = "STOREFRONTS_RETAIL";
 
-    public: const std::string SUBSCRIPTION = "STOREFRONTS_SUBSCRIPTION";
-
-    public: const std::string AUCTION = "STOREFRONTS_AUCTION";
-
-    public: const std::string NEWS = "STOREFRONTS_NEWS";
-
-    public: const std::string BLOG = "STOREFRONTS_BLOG";
-
-    public: const std::string FORUM = "STOREFRONTS_FORUM";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTSDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,51 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoObjectConfigInterface: public DomDocumentMappingInterface {
+//Interface - declared in the header
 
-    public: virtual bool containsView(TransformInfoInterface* transformInfoInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string getName() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getTransformsGroup(std::string group) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getTransforms() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getParentTransforms() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getGroupTransforms() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string getOutputTypeName() = 0;
-
-    public: virtual void setOutputTypeName(std::string value) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string getInputOutputTypeName() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string getInputOutputTypeFile() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string getImportUriPath() = 0;
-
-    public: virtual std::string toString() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGINTERFACE_CPP

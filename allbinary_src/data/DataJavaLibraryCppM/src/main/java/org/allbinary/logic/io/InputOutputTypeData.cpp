@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/InputOutputTypeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,49 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputOutputTypeData
-            : public Object
-         {
+auto InputOutputTypeData::instance_owner() -> InputOutputTypeData* { static std::unique_ptr<InputOutputTypeData> value(new InputOutputTypeData()); return value.get(); }
+InputOutputTypeData* InputOutputTypeData::instance = InputOutputTypeData::instance_owner();
 
-    private: static InputOutputTypeData* instance() { static std::unique_ptr<InputOutputTypeData> value(new InputOutputTypeData()); return value.get(); }
-
-    public: static InputOutputTypeData* getInstance(){
+    auto InputOutputTypeData::getInstance() -> InputOutputTypeData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputOutputTypeData::instance();
+                        return InputOutputTypeData::instance;
     
 }
 
 
-private: InputOutputTypeData(){
+InputOutputTypeData::InputOutputTypeData() : DEFAULT(this->JSP), DEFAULT_FRAGMENT(this->JSP_FRAGMENT){
 }
 
 
-    public: const std::string NAME = "INPUT_OUTPUT_TYPE_NAME";
 
-    public: const std::string FILE = "INPUT_OUTPUT_TYPE_FILE";
 
-    public: const std::string RESPONSE = "INPUT_OUTPUT_TYPE_RESPONSE";
-
-    public: const std::string DB = "INPUT_OUTPUT_TYPE_DB";
-
-    public: const std::string JSP = "jsp";
-
-    public: const std::string JSP_FRAGMENT = "jspf";
-
-    public: const std::string PHP = "php";
-
-    public: const std::string ASP = "asp";
-
-    public: const std::string PL = "pl";
-
-    public: const std::string DEFAULT = this->JSP;
-
-    public: const std::string DEFAULT_FRAGMENT = this->JSP_FRAGMENT;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_CPP

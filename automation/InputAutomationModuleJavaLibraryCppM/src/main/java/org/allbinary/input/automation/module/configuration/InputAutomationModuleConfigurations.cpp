@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/configuration/InputAutomationModuleConfigurations.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,15 +96,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h"
 
-class InputAutomationModuleConfigurations
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HashMap<Object*, Object*>* hashMap;
-
-public: InputAutomationModuleConfigurations(AbeClientInformationInterface* abeClientInformation, File* file){
+InputAutomationModuleConfigurations::InputAutomationModuleConfigurations(AbeClientInformationInterface* abeClientInformation, File* file) : logUtil(LogUtil::getInstance()){
 this->setHashMap(new HashMap<Object*, Object*>());
     
 
@@ -107,7 +110,7 @@ this->setHashMap(new HashMap<Object*, Object*>());
     int32_t length = idFile->read(bytes);;
     
 
-    std::string data = String.fromCharCode(...bytes);;
+    std::string data = JavaString::fromChars(bytes);;
     
 
     int32_t endIndex = JavaString::lastIndexOf(data, '>');;
@@ -125,7 +128,7 @@ this->setHashMap(new HashMap<Object*, Object*>());
                                     
     NodeList* nameNodeList = document->getElementsByTagName(InputAutomationModuleData::NAME);;
     
-this->logUtil->putF("Number Of Module(s) Specified: " +nameNodeList->getLength(), this, "Contructor");
+this->logUtil->putF(JavaString::valueOf("Number Of Module(s) Specified: ") +JavaString::valueOf(nameNodeList->getLength()), this, "Contructor");
     
 
 
@@ -147,13 +150,13 @@ this->add(new InputAutomationModuleConfiguration(abeClientInformation, node));
 }
 
 
-public: InputAutomationModuleConfigurations(AbeClientInformationInterface* abeClientInformation, Document* document){
+InputAutomationModuleConfigurations::InputAutomationModuleConfigurations(AbeClientInformationInterface* abeClientInformation, Document* document) : logUtil(LogUtil::getInstance()){
 this->setHashMap(new HashMap<Object*, Object*>());
     
 
     NodeList* nameNodeList = document->getElementsByTagName(InputAutomationModuleData::NAME);;
     
-this->logUtil->putF("Number Of Module(s) Specified: " +nameNodeList->getLength(), this, "Contructor");
+this->logUtil->putF(JavaString::valueOf("Number Of Module(s) Specified: ") +JavaString::valueOf(nameNodeList->getLength()), this, "Contructor");
     
 
 
@@ -172,7 +175,7 @@ this->add(new InputAutomationModuleConfiguration(abeClientInformation, node));
 }
 
 
-public: InputAutomationModuleConfigurations(List<InputAutomationModuleConfiguration*>* inputAutomationModuleConfigurationList){
+InputAutomationModuleConfigurations::InputAutomationModuleConfigurations(List<InputAutomationModuleConfiguration*>* inputAutomationModuleConfigurationList) : logUtil(LogUtil::getInstance()){
 this->setHashMap(new HashMap<Object*, Object*>());
     
 
@@ -197,25 +200,25 @@ this->add(inputAutomationModuleConfiguration);
 }
 
 
-public: InputAutomationModuleConfigurations(){
+InputAutomationModuleConfigurations::InputAutomationModuleConfigurations() : logUtil(LogUtil::getInstance()){
 this->setHashMap(new HashMap<Object*, Object*>());
     
 }
 
 
-    public: void add(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
+    auto InputAutomationModuleConfigurations::add(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration) -> void{
 this->getHashMap()->put(inputAutomationModuleConfiguration->getClassName(), inputAutomationModuleConfiguration);
     
 }
 
 
-    public: void remove(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
+    auto InputAutomationModuleConfigurations::remove(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration) -> void{
 this->getHashMap()->remove(inputAutomationModuleConfiguration->getClassName());
     
 }
 
 
-    public: HashMap<Object*, Object*>* getHashMap(){
+    auto InputAutomationModuleConfigurations::getHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -225,13 +228,12 @@ this->getHashMap()->remove(inputAutomationModuleConfiguration->getClassName());
 }
 
 
-    public: void setHashMap(HashMap<Object*, Object*>* hashMap){
+    auto InputAutomationModuleConfigurations::setHashMap(HashMap<Object*, Object*>* hashMap) -> void{
 this->hashMap= hashMap;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_CPP

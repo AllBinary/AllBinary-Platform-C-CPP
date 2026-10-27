@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/music/MusicManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -92,28 +102,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //#include "org/allbinary/media/audio/music/MusicManagerPlayerListener.h"
 
-class MusicManager
-            : public Object
-         {
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-    private: PlayerStateUtil* playerStateUtil = PlayerStateUtil::getInstance();
-
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
-//Handle Media ending for Avian
-//inner= member=true isStatic=
-class MusicManagerPlayerListener
-            : public Object
-        , public PlayerListener {
-
-    public: void playerUpdate(Player* player, std::string event, Object* eventData){
+MusicManager::MusicManagerPlayerListener::MusicManagerPlayerListener() {
+        }
+        
+    auto MusicManager::MusicManagerPlayerListener::playerUpdate(Player* player, std::string event, Object* eventData) -> void{
 PreLogUtil::put(event, this, commonStrings->PROCESS);
     
 
@@ -128,46 +121,13 @@ PreLogUtil::put(event, this, commonStrings->PROCESS);
 }
 
 
-};
-
-            
-    private: PlayerListener* playerListener = new MusicManagerPlayerListener();
-
-    private: const std::string PLAY = "Play ";
-
-    private: const std::string SONG = " for: ";
-
-    private: const std::string NEXT_SONG = CommonLabels::getInstance()->NEXT +" Song: ";
-
-    private: const std::string STOPPING = "Stopping Current Song: ";
-
-    private: const std::string ENDING = "Ending Current Song: ";
-
-    private: const std::string WAITING_FOR_MEDIA_TO_END = "Waiting for media to end";
-
-    private: const std::string ALREADY_PLAYING = "Already Playing: ";
-
-    private: const std::string ALREADY_ENDED = "Last Song already ended: ";
-
-    private: BasicArrayList* songList;
-
-    private: Sound* currentSongSound = NoSound::getInstance();
-
-    private: Sound* nextSongSound = NoSound::getInstance();
-
-    private: bool reset= false;
-
-    private: bool noDuration= false;
-
-    private: bool stopped = true;
-
-public: MusicManager(Class* musicServiceClass, BasicArrayList* songList){
+MusicManager::MusicManager(Class* musicServiceClass, BasicArrayList* songList) : commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), playerStateUtil(PlayerStateUtil::getInstance()), timeDelayHelper(new TimeDelayHelper(0)), playerListener(new MusicManagerPlayerListener()), NEXT_SONG(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" Song: ")), currentSongSound(NoSound::getInstance()), nextSongSound(NoSound::getInstance()){
 this->songList= songList;
     
 }
 
 
-    public: void startNewSong(){
+    auto MusicManager::startNewSong() -> void{
 
                         if(this->nextSongSound == NoSound::getInstance())
                         
@@ -185,7 +145,7 @@ this->process();
 }
 
 
-    public: void nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume){
+    auto MusicManager::nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume) -> void{
 PreLogUtil::put((new StringMaker())->append(NEXT_SONG)->append(nextSongSound->getResource())->toString(), this, this->commonStrings->PROCESS);
     
 this->nextSongSound= nextSongSound;
@@ -197,13 +157,13 @@ this->stopped= false;
 }
 
 
-    public: void reset(){
-this->reset= true;
+    auto MusicManager::reset() -> void{
+this->reset_= true;
     
 }
 
 
-    public: void process(){
+    auto MusicManager::process() -> void{
 
         try {
             
@@ -233,10 +193,10 @@ this->reset= true;
                                     }
                                 
 
-                        if((this->timeDelayHelper->isTime(this->gameTickTimeDelayHelper->startTime) && !this->noDuration) || this->reset)
+                        if((this->timeDelayHelper->isTime(this->gameTickTimeDelayHelper->startTime) && !this->noDuration) || this->reset_)
                         
                                     {
-                                    this->reset= false;
+                                    this->reset_= false;
     
 this->noDuration= false;
     
@@ -372,7 +332,7 @@ this->currentSongSound->getPlayerP()->start();
 
                                     }
                                 
-PreLogUtil::putOE(this->commonStrings->EXCEPTION_LABEL +resource, this, this->commonStrings->PROCESS, &e);
+PreLogUtil::putOE(JavaString::valueOf(this->commonStrings->EXCEPTION_LABEL) +JavaString::valueOf(resource), this, this->commonStrings->PROCESS, &e);
     
 }
 
@@ -381,7 +341,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION_LABEL +resource, this, this->co
 
                 //@Throws(Exception.constructor)
             
-    private: void waitForStateChange(Sound* endingCurrentSongSound, Sound* startingCurrentSongSound){
+    auto MusicManager::waitForStateChange(Sound* endingCurrentSongSound, Sound* startingCurrentSongSound) -> void{
 
         while(endingCurrentSongSound->getPlayerP()->getState() == Player::STARTED)
         {
@@ -400,7 +360,7 @@ startingCurrentSongSound->getPlayerP()->start();
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(){
+    auto MusicManager::stop() -> void{
 
         try {
             
@@ -439,14 +399,13 @@ PreLogUtil::put((new StringMaker())->append(this->commonStrings->END)->append(St
 
                                     }
                                 
-PreLogUtil::putOE(this->commonStrings->EXCEPTION_LABEL +resource, this, this->commonStrings->END, &e);
+PreLogUtil::putOE(JavaString::valueOf(this->commonStrings->EXCEPTION_LABEL) +JavaString::valueOf(resource), this, this->commonStrings->END, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_CPP

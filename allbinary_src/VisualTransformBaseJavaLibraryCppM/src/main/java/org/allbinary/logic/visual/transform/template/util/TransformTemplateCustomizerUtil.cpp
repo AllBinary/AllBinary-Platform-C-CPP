@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_UTIL_TRANSFORMTEMPLATECUSTOMIZERUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_UTIL_TRANSFORMTEMPLATECUSTOMIZERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/util/TransformTemplateCustomizerUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,67 +90,46 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformTemplateCustomizerUtil
-            : public Object
-         {
+auto TransformTemplateCustomizerUtil::instance_owner() -> TransformTemplateCustomizerUtil* { static std::unique_ptr<TransformTemplateCustomizerUtil> value(new TransformTemplateCustomizerUtil()); return value.get(); }
+TransformTemplateCustomizerUtil* TransformTemplateCustomizerUtil::instance = TransformTemplateCustomizerUtil::instance_owner();
 
-    private: static TransformTemplateCustomizerUtil* instance() { static std::unique_ptr<TransformTemplateCustomizerUtil> value(new TransformTemplateCustomizerUtil()); return value.get(); }
-
-    public: static TransformTemplateCustomizerUtil* getInstance(){
+    auto TransformTemplateCustomizerUtil::getInstance() -> TransformTemplateCustomizerUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformTemplateCustomizerUtil::instance();
+                        return TransformTemplateCustomizerUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string CUSTOMIZER_NAME;
-
-    private: std::string BODY_VIEWNAMEKEY;
-
-    private: std::string TITLE_VIEWNAMEKEY;
-
-    private: std::string GLOBALS_NEW;
-
-    private: std::string GLOBALS_INSERT;
-
-    private: std::string GLOBALS_DELETE;
-
-    private: std::string GLOBALS_EDIT;
-
-    private: std::string GLOBALS_UPDATE;
-
-private: TransformTemplateCustomizerUtil(){
+TransformTemplateCustomizerUtil::TransformTemplateCustomizerUtil() : logUtil(LogUtil::getInstance()){
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     std::string SPACE = CommonSeps::getInstance()->SPACE;;
     
-this->CUSTOMIZER_NAME= SPACE +CustomizerTransformInfoData::NAME;
+this->CUSTOMIZER_NAME= JavaString::valueOf(SPACE) +JavaString::valueOf(CustomizerTransformInfoData::NAME);
     
-this->BODY_VIEWNAMEKEY= SPACE +BodyData::getInstance()->VIEWNAMEKEY;
+this->BODY_VIEWNAMEKEY= JavaString::valueOf(SPACE) +JavaString::valueOf(BodyData::getInstance()->VIEWNAMEKEY);
     
-this->TITLE_VIEWNAMEKEY= SPACE +TitleData::getInstance()->VIEWNAMEKEY;
+this->TITLE_VIEWNAMEKEY= JavaString::valueOf(SPACE) +JavaString::valueOf(TitleData::getInstance()->VIEWNAMEKEY);
     
-this->GLOBALS_NEW= GLOBALS2::NEW +SPACE;
+this->GLOBALS_NEW= JavaString::valueOf(GLOBALS2::NEW) +JavaString::valueOf(SPACE);
     
-this->GLOBALS_INSERT= commonStrings->INSERT +SPACE;
+this->GLOBALS_INSERT= JavaString::valueOf(commonStrings->INSERT) +JavaString::valueOf(SPACE);
     
-this->GLOBALS_DELETE= commonStrings->DELETE +SPACE;
+this->GLOBALS_DELETE= JavaString::valueOf(commonStrings->DELETE) +JavaString::valueOf(SPACE);
     
-this->GLOBALS_EDIT= GLOBALS2::EDIT +SPACE;
+this->GLOBALS_EDIT= JavaString::valueOf(GLOBALS2::EDIT) +JavaString::valueOf(SPACE);
     
-this->GLOBALS_UPDATE= commonStrings->UPDATE +SPACE;
+this->GLOBALS_UPDATE= JavaString::valueOf(commonStrings->UPDATE) +JavaString::valueOf(SPACE);
     
 }
 
 
-    public: std::string getPageNameHack(std::string viewName, std::string storeName){
+    auto TransformTemplateCustomizerUtil::getPageNameHack(std::string viewName, std::string storeName) -> std::string{
 
     std::string SPACE = CommonSeps::getInstance()->SPACE;;
     
@@ -152,12 +141,12 @@ this->GLOBALS_UPDATE= commonStrings->UPDATE +SPACE;
     
 hashMap->put(
                                                 {
-                                                    viewName +SPACE
+                                                    JavaString::valueOf(viewName) +JavaString::valueOf(SPACE)
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
 hashMap->put(
                                                 {
-                                                    storeName +SPACE
+                                                    JavaString::valueOf(storeName) +JavaString::valueOf(SPACE)
                                                 }, ONE_EMPTY_STRING_ARRAY);
     
 hashMap->put(
@@ -209,10 +198,10 @@ hashMap->put(
     std::string rootViewName = replace->all(viewName);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("RootViewName for ObjectConfig: " +rootViewName, this, "getPageNameHack");
+                                    this->logUtil->putF(JavaString::valueOf("RootViewName for ObjectConfig: ") +JavaString::valueOf(rootViewName), this, "getPageNameHack");
     
 
                                     }
@@ -226,7 +215,6 @@ hashMap->put(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_UTIL_TRANSFORMTEMPLATECUSTOMIZERUTIL_CPP

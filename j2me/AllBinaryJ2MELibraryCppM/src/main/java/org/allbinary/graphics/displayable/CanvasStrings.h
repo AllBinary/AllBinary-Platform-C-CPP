@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -54,14 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CanvasStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static CanvasStrings* instance() { static std::unique_ptr<CanvasStrings> value(new CanvasStrings()); return value.get(); }
+    private: static CanvasStrings* instance_owner();
+    private: static CanvasStrings* instance;
 
     public: static CanvasStrings* getInstance();
 
+
+            
+    public: CanvasStrings();
+        
     public: const std::string CONSTRUCTOR = "MyCanvas::MyCanvas";
 
     public: const std::string PAUSE = "MyCanvas::pause";
@@ -84,7 +94,7 @@ class CanvasStrings
 
     public: const std::string FD_HEIGHT = " font/display height: ";
 
-    public: BasicArrayList* EMPTY_CHILD_NAME_LIST = BasicArrayListUtil::getInstance()->getImmutableInstance();
+    public: BasicArrayList* EMPTY_CHILD_NAME_LIST;
 
     public: const std::string ABOUT = "About";
 
@@ -104,3 +114,16 @@ class CanvasStrings
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_CANVASSTRINGS_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+
+        #endif
+    

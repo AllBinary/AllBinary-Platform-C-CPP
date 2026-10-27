@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DIAGONALDOWNLEFTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DIAGONALDOWNLEFTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/touch/action/DiagonalDownLeftTouchInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DiagonalDownLeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* DiagonalDownLeftTouchInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto DiagonalDownLeftTouchInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(DiagonalDownLeftTouchInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class DiagonalDownLeftTouchInputToGameKeyEventAction: public GameKeyCompleteMoti
 }
 
 
-private: DiagonalDownLeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Diagonal Down Left Action", TouchMotionGestureFactory::getInstance()->DIAGONAL_DOWN_LEFT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+DiagonalDownLeftTouchInputToGameKeyEventAction::DiagonalDownLeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Diagonal Down Left Action", TouchMotionGestureFactory::getInstance()->DIAGONAL_DOWN_LEFT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: DiagonalDownLeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotio
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_DIAGONALDOWNLEFTTOUCHINPUTTOGAMEKEYEVENTACTION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/CategoryComponent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,9 +72,8 @@
         #include "org/allbinary/business/category/CategoryView.h"
 #include "org/allbinary/business/category/CategoryInterface.h"
 
-class CategoryComponent: public CategoryView, public TransformInterface {
 
-public: CategoryComponent(CategoryInterface* categoryInterface) : CategoryView(categoryInterface){
+CategoryComponent::CategoryComponent(CategoryInterface* categoryInterface) : CategoryView(categoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,9 +83,7 @@ public: CategoryComponent(CategoryInterface* categoryInterface) : CategoryView(c
 }
 
 
-    public: int32_t NO_TYPE = 0;
-
-    public: int32_t getTypeId(){
+    auto CategoryComponent::getTypeId() -> int32_t{
 
 
 
@@ -86,7 +93,7 @@ public: CategoryComponent(CategoryInterface* categoryInterface) : CategoryView(c
 }
 
 
-    public: TransformDocumentInterface* getTransformDocumentInterface(){
+    auto CategoryComponent::getTransformDocumentInterface() -> TransformDocumentInterface*{
 
 
 
@@ -98,7 +105,7 @@ public: CategoryComponent(CategoryInterface* categoryInterface) : CategoryView(c
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto CategoryComponent::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -108,13 +115,13 @@ public: CategoryComponent(CategoryInterface* categoryInterface) : CategoryView(c
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface){
+    auto CategoryComponent::setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto CategoryComponent::toXmlDoc() -> Document*{
 
     Document* document = DomDocumentHelper::create();;
     
@@ -131,7 +138,7 @@ document->appendChild((new CategoryView(this->getCategoryInterface()))->toXmlNod
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto CategoryComponent::view() -> std::string{
 
 
 
@@ -141,7 +148,6 @@ document->appendChild((new CategoryView(this->getCategoryInterface()))->toXmlNod
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_CPP

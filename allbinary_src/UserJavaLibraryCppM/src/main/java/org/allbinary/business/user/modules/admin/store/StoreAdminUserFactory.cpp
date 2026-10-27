@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_STOREADMINUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_STOREADMINUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/admin/store/StoreAdminUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/admin/store/StoreAdminUser.h"
 
-class StoreAdminUserFactory
-            : public Object
-        , public UserFactoryInterface {
 
-public: StoreAdminUserFactory(){
+StoreAdminUserFactory::StoreAdminUserFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(){
+    auto StoreAdminUserFactory::getInstance() -> UserInterface*{
 
 
 
@@ -79,7 +86,7 @@ public: StoreAdminUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto StoreAdminUserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
 
 
@@ -89,7 +96,6 @@ public: StoreAdminUserFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_STOREADMINUSERFACTORY_CPP

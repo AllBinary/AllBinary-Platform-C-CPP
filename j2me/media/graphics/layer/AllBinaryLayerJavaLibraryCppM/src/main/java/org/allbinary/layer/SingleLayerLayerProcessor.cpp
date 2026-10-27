@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_SINGLELAYERLAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_LAYER_SINGLELAYERLAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/SingleLayerLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
 #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 
-class SingleLayerLayerProcessor: public LayerProcessor {
 
-public: SingleLayerLayerProcessor() : LayerProcessor(new SingleLayerLayerManager()){
+SingleLayerLayerProcessor::SingleLayerLayerProcessor() : LayerProcessor(new SingleLayerLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,7 +73,7 @@ public: SingleLayerLayerProcessor() : LayerProcessor(new SingleLayerLayerManager
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
+    auto SingleLayerLayerProcessor::process(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     LayerManager* layerManager = this->getLayerManager();;
     
@@ -73,7 +82,6 @@ this->processAt(allBinaryLayerManager, dynamic_cast<AllBinaryLayer*>(layerManage
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_SINGLELAYERLAYERPROCESSOR_CPP

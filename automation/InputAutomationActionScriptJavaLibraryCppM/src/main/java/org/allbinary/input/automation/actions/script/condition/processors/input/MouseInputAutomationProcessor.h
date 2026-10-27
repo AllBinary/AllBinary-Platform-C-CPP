@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Thread.h"
         
-#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class InputRobotInterface;
+class LogUtil;
+class StringMaker;
+class CommonStrings;
 
 
 
@@ -63,10 +60,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h"
+        class MouseActionScriptInputInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MouseInputAutomationProcessor
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -81,3 +82,25 @@ private: MouseInputAutomationProcessor();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/robot/InputRobotInterface.h>)
+#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h"
+#endif
+
+        #endif
+    

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/MultipleScrollSelectionHorizontalForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -82,11 +92,10 @@
 //#include "org/allbinary/graphics/form/MultipleScrollSelectionFormVerticalPaintable.h"
 //#include "org/allbinary/graphics/form/MultipleScrollSelectionFormHorizontalPaintable.h"
 
-class MultipleScrollSelectionHorizontalForm: public ScrollSelectionForm, public UpdateMyFontInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static ScrollSelectionForm* createForm(std::string title, std::vector<ABCustomItem*> items, Rectangle* rectangle, FormType* formType, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
+    auto MultipleScrollSelectionHorizontalForm::createForm(std::string title, std::vector<ABCustomItem*> items, Rectangle* rectangle, FormType* formType, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) -> ScrollSelectionForm*{
 
     ScrollSelectionForm* scrollSelectionForm = new MultipleScrollSelectionHorizontalForm(title, items, ItemPaintableFactory::getInstance(), border, backgroundBasicColor, foregroundBasicColor);;
     
@@ -101,14 +110,7 @@ scrollSelectionForm->init(rectangle, formType);
 }
 
 
-//inner= member=true isStatic=
-class MultipleScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm;
-
-: MultipleScrollSelectionFormHorizontalPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm){
+MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionFormHorizontalPaintable::MultipleScrollSelectionFormHorizontalPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm){
 this->multipleScrollSelectionForm= multipleScrollSelectionForm;
     
 }
@@ -116,7 +118,7 @@ this->multipleScrollSelectionForm= multipleScrollSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionFormHorizontalPaintable::paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -126,17 +128,7 @@ this->multipleScrollSelectionForm= multipleScrollSelectionForm;
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class MultipleScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm;
-
-: MultipleScrollSelectionFormVerticalPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm){
+MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionFormVerticalPaintable::MultipleScrollSelectionFormVerticalPaintable(MultipleScrollSelectionHorizontalForm* multipleScrollSelectionForm){
 this->multipleScrollSelectionForm= multipleScrollSelectionForm;
     
 }
@@ -144,7 +136,7 @@ this->multipleScrollSelectionForm= multipleScrollSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionFormVerticalPaintable::paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -154,22 +146,7 @@ this->multipleScrollSelectionForm= multipleScrollSelectionForm;
 }
 
 
-};
-
-            
-    private: Paintable* rectPaintable = NullPaintable::getInstance();
-
-    private: ItemIndexPaintable* multipleScrollSelectionHorizontalFormTypeItemIndexPaintable = ItemIndexPaintable::getInstance();
-
-    private: const int32_t backgroundColor = BasicColorFactory::getInstance()->TRANSPARENT_GREY.intValue();
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: bool logged = false;
-
-    private: int32_t fontHeight = 0;
-
-public: MultipleScrollSelectionHorizontalForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollSelectionForm(title, items, formPaintableFactory, border, 3, backgroundBasicColor, foregroundBasicColor){
+MultipleScrollSelectionHorizontalForm::MultipleScrollSelectionHorizontalForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ScrollSelectionForm(title, items, formPaintableFactory, border, 3, backgroundBasicColor, foregroundBasicColor), rectPaintable(NullPaintable::getInstance()), multipleScrollSelectionHorizontalFormTypeItemIndexPaintable(ItemIndexPaintable::getInstance()), backgroundColor(BasicColorFactory::getInstance()->TRANSPARENT_GREY->intValue()), myFontProcessor(new UpdateMyFontProcessor(this)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -208,18 +185,18 @@ this->rectPaintable= new MPaintable();
 }
 
 
-    private: void fillRect(Graphics* graphics){
+    auto MultipleScrollSelectionHorizontalForm::fillRect(Graphics* graphics) -> void{
 graphics->setColor(this->backgroundColor);
     
-graphics->fillRect(this->x, this->y, this->rectangle.getWidth(), this->rectangle.getHeight());
+graphics->fillRect(this->x, this->y, this->rectangle->getWidth(), this->rectangle->getHeight());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle* rectangle, FormType* formType){
-super.init(rectangle, formType);
+    auto MultipleScrollSelectionHorizontalForm::init(Rectangle* rectangle, FormType* formType) -> void{
+ScrollSelectionForm::init(rectangle, formType);
     
 
     FormTypeFactory* formTypeFactory = FormTypeFactory::getInstance();;
@@ -253,7 +230,7 @@ super.init(rectangle, formType);
                             
 
 
-                            throw new Exception(formTypeFactory->UNK);
+                            throw Exception(formTypeFactory->UNK);
                     
 
                         }
@@ -261,7 +238,7 @@ super.init(rectangle, formType);
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto MultipleScrollSelectionHorizontalForm::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -274,11 +251,11 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t paintHorizontal(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto MultipleScrollSelectionHorizontalForm::paintHorizontal(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
     int32_t dx2 = this->paintItem(graphics, index, item, dx, dy) +this->border;;
     
-this->paintable.paint(graphics, index, dx, dy);
+this->paintable->paint(graphics, index, dx, dy);
     
 dx= dx2;
     
@@ -293,10 +270,10 @@ dx= dx2;
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t paintVertical(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto MultipleScrollSelectionHorizontalForm::paintVertical(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 this->paintItem(graphics, index, item, dx, dy);
     
-this->paintable.paint(graphics, index, dx, dy);
+this->paintable->paint(graphics, index, dx, dy);
     
 
 
@@ -307,7 +284,7 @@ this->paintable.paint(graphics, index, dx, dy);
 }
 
 
-    public: int32_t getStartIndex(){
+    auto MultipleScrollSelectionHorizontalForm::getStartIndex() -> int32_t{
 
 
 
@@ -317,7 +294,7 @@ this->paintable.paint(graphics, index, dx, dy);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto MultipleScrollSelectionHorizontalForm::paint(Graphics* graphics) -> void{
 
         try {
             this->myFontProcessor->process(graphics);
@@ -351,7 +328,7 @@ graphics->drawString(this->getTitle(), this->x, this->y -this->fontHeight, 0);
 item= this->get(index);
     
 
-                        if(dx >= this->rectangle.getMaxX())
+                        if(dx >= this->rectangle->getMaxX())
                         
                                     {
                                     
@@ -364,7 +341,7 @@ item= this->get(index);
                         else {
                             this->logged= true;
     
-PreLogUtil::put((new StringMaker())->append("painting beyond maxx: ")->appendint(this->rectangle.getMaxX())->toString(), this, this->canvasStrings.PAINT);
+PreLogUtil::put((new StringMaker())->append("painting beyond maxx: ")->appendint(this->rectangle->getMaxX())->toString(), this, this->canvasStrings->PAINT);
     
 
                         }
@@ -380,14 +357,13 @@ dx= this->multipleScrollSelectionHorizontalFormTypeItemIndexPaintable->paint(gra
                 //: 
 } catch(Exception& e) 
             {
-PreLogUtil::put(this->commonStrings.EXCEPTION, this, this->canvasStrings.PAINT);
+PreLogUtil::put(this->commonStrings->EXCEPTION, this, this->canvasStrings->PAINT);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_MULTIPLESCROLLSELECTIONHORIZONTALFORM_CPP

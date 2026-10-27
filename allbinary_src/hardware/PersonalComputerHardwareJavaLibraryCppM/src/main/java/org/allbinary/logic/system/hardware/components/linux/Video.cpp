@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_VIDEO_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_VIDEO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/linux/Video.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Video
-            : public Object
-        , public HardwareComponentInterface, public VideoInterface {
 
-    private: std::string data;
-
-public: Video(std::string data){
+Video::Video(std::string data){
 this->data= data;
     
 }
 
 
-    public: bool compareTo(HardwareComponentInterface* componentInterface){
+    auto Video::compareTo(HardwareComponentInterface* componentInterface) -> bool{
 
 
 
@@ -73,7 +78,7 @@ this->data= data;
 }
 
 
-    public: std::string toString(){
+    auto Video::toString() -> std::string{
 
 
 
@@ -83,7 +88,6 @@ this->data= data;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_VIDEO_CPP

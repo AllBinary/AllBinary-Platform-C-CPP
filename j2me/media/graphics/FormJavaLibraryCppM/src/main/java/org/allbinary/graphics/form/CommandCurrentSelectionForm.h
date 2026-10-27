@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,42 +36,18 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/J2MEUtil.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/NullAnimationFactory.h>
-
-      
-#include <org/allbinary/animation/vector/RectangleAdjustedAnimation.h>
-
-      
-#include <org/allbinary/animation/vector/RectangleFilledAdjustedAnimation.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
+class Command;
+class Graphics;
+class J2MEUtil;
+class Animation;
+class NullAnimationFactory;
+class RectangleAdjustedAnimation;
+class RectangleFilledAdjustedAnimation;
+class BasicColor;
+class BasicColorFactory;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/form/item/CommandTextItem.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
+class CommandTextItem;
+class ABCustomItem;
 
 
 
@@ -86,13 +67,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
-#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+class ItemPaintableFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm, public UpdateMyFontInterface {
 
-    protected: const std::vector<Animation*> selectedAnimationArray = std::vector<Animation*>(16);
+    /*protected*/ public: std::vector<Animation*> selectedAnimationArray;
 
-    protected: const std::vector<Animation*> unSelectedAnimationArray = std::vector<Animation*>(16);
+    /*protected*/ public: std::vector<Animation*> unSelectedAnimationArray;
 
 public: CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem*> items, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
@@ -136,3 +121,52 @@ public: CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem*
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/J2MEUtil.h>)
+#include <org/allbinary/J2MEUtil.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/NullAnimationFactory.h>)
+#include <org/allbinary/animation/NullAnimationFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/vector/RectangleAdjustedAnimation.h>)
+#include <org/allbinary/animation/vector/RectangleAdjustedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/animation/vector/RectangleFilledAdjustedAnimation.h>)
+#include <org/allbinary/animation/vector/RectangleFilledAdjustedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/CommandTextItem.h>)
+#include <org/allbinary/graphics/form/item/CommandTextItem.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/ScrollCurrentSelectionForm.h")
+#include "org/allbinary/graphics/form/ScrollCurrentSelectionForm.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemPaintableFactory.h")
+#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#endif
+
+        #endif
+    

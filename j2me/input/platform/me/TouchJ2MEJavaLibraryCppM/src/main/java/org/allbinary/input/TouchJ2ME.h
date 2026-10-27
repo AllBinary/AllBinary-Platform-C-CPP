@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
         #define ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/input/motion/AllMotionRecognizer.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/GameMotionGestureListener.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/MotionGestureReceiveInterfaceFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class AllMotionRecognizer;
+class BasicMotionGesturesHandler;
+class GameMotionGestureListener;
+class MotionGestureReceiveInterfaceFactory;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -67,16 +60,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //TouchJ2ME
 class TouchJ2ME
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: const int32_t DEVICE_ID = 0;
 
-    private: AllMotionRecognizer* motionRecognizer = new AllMotionRecognizer();
+    private: AllMotionRecognizer* motionRecognizer;
 
 public: TouchJ2ME();
 
@@ -92,3 +89,28 @@ public: TouchJ2ME();
 
 
         #endif //ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_TOUCHJ2ME_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_TOUCHJ2ME_H_COMPLETE
+        #if __has_include(<org/allbinary/input/motion/AllMotionRecognizer.h>)
+#include <org/allbinary/input/motion/AllMotionRecognizer.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>)
+#include <org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/GameMotionGestureListener.h>)
+#include <org/allbinary/input/motion/gesture/observer/GameMotionGestureListener.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/MotionGestureReceiveInterfaceFactory.h>)
+#include <org/allbinary/input/motion/gesture/observer/MotionGestureReceiveInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

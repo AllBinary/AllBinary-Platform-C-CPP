@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPGAMEINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPGAMEINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/MotionLaptopGameInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,11 @@
         #include "org/allbinary/game/input/PCGameInputMapping.h"
 #include "org/allbinary/game/input/MotionLaptopDefaultGameInputMapping.h"
 
-class MotionLaptopGameInputMapping: public PCGameInputMapping {
 
-    protected: InputToGameKeyMapping* getDefault(){
+MotionLaptopGameInputMapping::MotionLaptopGameInputMapping() {
+        }
+        
+    auto MotionLaptopGameInputMapping::getDefault() -> InputToGameKeyMapping*{
 
 
 
@@ -60,7 +72,6 @@ class MotionLaptopGameInputMapping: public PCGameInputMapping {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPGAMEINPUTMAPPING_CPP

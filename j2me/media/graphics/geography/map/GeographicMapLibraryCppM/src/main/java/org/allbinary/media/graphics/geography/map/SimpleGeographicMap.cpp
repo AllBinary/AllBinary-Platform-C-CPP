@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAP_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/SimpleGeographicMap.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,25 +76,8 @@
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
-class SimpleGeographicMap
-            : public Object
-         {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: int32_t id;
-
-    private: std::string name;
-
-    protected: std::vector<int32_t> cellTypeIdToGeographicMapCellType;
-
-    private: AllBinaryTiledLayer* tiledLayer;
-
-    private: BasicColor* foregroundBasicColor = BasicColorFactory::getInstance()->NULL_COLOR;
-
-    private: BasicColor* backgroundBasicColor = BasicColorFactory::getInstance()->NULL_COLOR;
-
-public: SimpleGeographicMap(int32_t id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer* tiledLayer, BasicColor* foregroundBasicColor, BasicColor* backgroundBasicColor){
+SimpleGeographicMap::SimpleGeographicMap(int32_t id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer* tiledLayer, BasicColor* foregroundBasicColor, BasicColor* backgroundBasicColor) : commonStrings(CommonStrings::getInstance()), foregroundBasicColor(BasicColorFactory::getInstance()->NULL_COLOR), backgroundBasicColor(BasicColorFactory::getInstance()->NULL_COLOR), geographicMapCellTypeFactory(GeographicMapCellTypeFactory::getInstance()){
 this->id= id;
     
 this->name= name;
@@ -100,7 +93,7 @@ this->setForegroundBasicColor(foregroundBasicColor);
 }
 
 
-    public: int32_t getId(){
+    auto SimpleGeographicMap::getId() -> int32_t{
 
 
 
@@ -110,7 +103,7 @@ this->setForegroundBasicColor(foregroundBasicColor);
 }
 
 
-    public: std::string getName(){
+    auto SimpleGeographicMap::getName() -> std::string{
 
 
 
@@ -120,11 +113,11 @@ this->setForegroundBasicColor(foregroundBasicColor);
 }
 
 
-    public: void reset(){
+    auto SimpleGeographicMap::reset() -> void{
 }
 
 
-    public: AllBinaryTiledLayer* getAllBinaryTiledLayer(){
+    auto SimpleGeographicMap::getAllBinaryTiledLayer() -> AllBinaryTiledLayer*{
 
 
 
@@ -134,11 +127,9 @@ this->setForegroundBasicColor(foregroundBasicColor);
 }
 
 
-    private: GeographicMapCellTypeFactory* geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType* getCellTypeAt(GeographicMapCellPosition* cellPosition){
+    auto SimpleGeographicMap::getCellTypeAt(GeographicMapCellPosition* cellPosition) -> GeographicMapCellType*{
 
     int32_t i_column = cellPosition->getColumn();;
     
@@ -166,7 +157,7 @@ this->setForegroundBasicColor(foregroundBasicColor);
 }
 
 
-    public: int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId){
+    auto SimpleGeographicMap::getCellTypeFromMapCellTypeInt(int32_t cellTypeId) -> int32_t{
 
 
 
@@ -176,7 +167,7 @@ this->setForegroundBasicColor(foregroundBasicColor);
 }
 
 
-    public: BasicColor* getForegroundBasicColor(){
+    auto SimpleGeographicMap::getForegroundBasicColor() -> BasicColor*{
 
 
 
@@ -186,13 +177,13 @@ this->setForegroundBasicColor(foregroundBasicColor);
 }
 
 
-    private: void setForegroundBasicColor(BasicColor* foregroundBasicColor){
+    auto SimpleGeographicMap::setForegroundBasicColor(BasicColor* foregroundBasicColor) -> void{
 this->foregroundBasicColor= foregroundBasicColor;
     
 }
 
 
-    public: BasicColor* getBackgroundBasicColor(){
+    auto SimpleGeographicMap::getBackgroundBasicColor() -> BasicColor*{
 
 
 
@@ -202,13 +193,12 @@ this->foregroundBasicColor= foregroundBasicColor;
 }
 
 
-    private: void setBackgroundBasicColor(BasicColor* backgroundBasicColor){
+    auto SimpleGeographicMap::setBackgroundBasicColor(BasicColor* backgroundBasicColor) -> void{
 this->backgroundBasicColor= backgroundBasicColor;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAP_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,44 +63,33 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonFactory
-            : public Object
-         {
+auto TouchButtonFactory::SINGLETON_owner() -> TouchButtonFactory* { static std::unique_ptr<TouchButtonFactory> value(new TouchButtonFactory()); return value.get(); }
+TouchButtonFactory* TouchButtonFactory::SINGLETON = TouchButtonFactory::SINGLETON_owner();
 
-    private: static TouchButtonFactory* SINGLETON() { static std::unique_ptr<TouchButtonFactory> value(new TouchButtonFactory()); return value.get(); }
-
-    public: static TouchButtonFactory* getInstance(){
+    auto TouchButtonFactory::getInstance() -> TouchButtonFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButtonFactory::SINGLETON();
+                        return TouchButtonFactory::SINGLETON;
     
 }
 
 
-    private: BasicArrayList* LIST = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
-    private: BasicArrayList* list = this->LIST;
-
-    private: BasicArrayList* savedList = this->LIST;
-
-private: TouchButtonFactory(){
+TouchButtonFactory::TouchButtonFactory() : LIST(BasicArrayListUtil::getInstance()->getImmutableInstance()), list(this->LIST), savedList(this->LIST){
 }
 
 
-    public: void defaultList(){
+    auto TouchButtonFactory::defaultList() -> void{
 this->list= this->LIST;
     
 this->toggle(false, this->LIST);
     
 }
 
-
-    private: bool saved = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void toggle(bool save, BasicArrayList* list){
+    auto TouchButtonFactory::toggle(bool save, BasicArrayList* list) -> void{
 
                         if(list != BasicArrayListUtil::getInstance()->getImmutableInstance())
                         
@@ -150,7 +149,7 @@ this->saved= false;
 
                 //@Throws(Exception.constructor)
             
-    public: void setList(BasicArrayList* list){
+    auto TouchButtonFactory::setList(BasicArrayList* list) -> void{
 
                         if(list == 
                                     nullptr
@@ -160,7 +159,7 @@ this->saved= false;
                                     
 
 
-                            throw new Exception("Null List");
+                            throw Exception("Null List");
                     
 
                                     }
@@ -170,7 +169,7 @@ this->list= list;
 }
 
 
-    protected: BasicArrayList* getList(){
+    auto TouchButtonFactory::getList() -> BasicArrayList*{
 
 
 
@@ -180,7 +179,6 @@ this->list= list;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFACTORY_CPP

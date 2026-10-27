@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_STATICVIEWPOSITION_CPP
+        #define ORG_ALLBINARY_VIEW_STATICVIEWPOSITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/StaticViewPosition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,9 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/ViewPosition.h"
 
-class StaticViewPosition: public ViewPosition {
 
-public: StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPosition(x, y, z){
+StaticViewPosition::StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPosition(x, y, z){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,7 +65,7 @@ public: StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPosition(x, y,
 }
 
 
-    public: int32_t getX(){
+    auto StaticViewPosition::getX() -> int32_t{
 
 
 
@@ -66,7 +75,7 @@ public: StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPosition(x, y,
 }
 
 
-    public: int32_t getY(){
+    auto StaticViewPosition::getY() -> int32_t{
 
 
 
@@ -76,7 +85,7 @@ public: StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPosition(x, y,
 }
 
 
-    public: int32_t getZ(){
+    auto StaticViewPosition::getZ() -> int32_t{
 
 
 
@@ -86,7 +95,6 @@ public: StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPosition(x, y,
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VIEW_STATICVIEWPOSITION_CPP

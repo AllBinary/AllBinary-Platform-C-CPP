@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorTemperatureUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,25 +57,23 @@
         #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 
-class ColorTemperatureUtil
-            : public Object
-         {
 
-    private: static ColorTemperatureUtil* instance() { static std::unique_ptr<ColorTemperatureUtil> value(new ColorTemperatureUtil()); return value.get(); }
+ColorTemperatureUtil::ColorTemperatureUtil() : basicColorFactory(BasicColorFactory::getInstance()) {
+        }
+        auto ColorTemperatureUtil::instance_owner() -> ColorTemperatureUtil* { static std::unique_ptr<ColorTemperatureUtil> value(new ColorTemperatureUtil()); return value.get(); }
+ColorTemperatureUtil* ColorTemperatureUtil::instance = ColorTemperatureUtil::instance_owner();
 
-    public: static ColorTemperatureUtil* getInstance(){
+    auto ColorTemperatureUtil::getInstance() -> ColorTemperatureUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorTemperatureUtil::instance();
+                        return ColorTemperatureUtil::instance;
     
 }
 
 
-    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
-
-    public: BasicColor* getBasicColor(int32_t thirdTemp){
+    auto ColorTemperatureUtil::getBasicColor(int32_t thirdTemp) -> BasicColor*{
 
     BasicColor* basicColor = this->basicColorFactory->RED;;
     
@@ -141,7 +149,6 @@ class ColorTemperatureUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORTEMPERATUREUTIL_CPP

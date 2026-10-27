@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_NOGAMENOTIFICATIONHUDSINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_NOGAMENOTIFICATIONHUDSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/notification/NoGameNotificationHudSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,27 +70,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h"
 
-class NoGameNotificationHudSingleton
-            : public Object
-         {
+auto NoGameNotificationHudSingleton::instance_owner() -> NoGameNotificationHudSingleton* { static std::unique_ptr<NoGameNotificationHudSingleton> value(new NoGameNotificationHudSingleton()); return value.get(); }
+NoGameNotificationHudSingleton* NoGameNotificationHudSingleton::instance = NoGameNotificationHudSingleton::instance_owner();
 
-    private: static NoGameNotificationHudSingleton* instance() { static std::unique_ptr<NoGameNotificationHudSingleton> value(new NoGameNotificationHudSingleton()); return value.get(); }
-
-    public: static NoGameNotificationHudSingleton* getInstance(){
+    auto NoGameNotificationHudSingleton::getInstance() -> NoGameNotificationHudSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoGameNotificationHudSingleton::instance();
+                        return NoGameNotificationHudSingleton::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameNotificationHud* gameNotificationHud = GameNotificationHud::NULL_GAME_NOTIFICATION;
-
-private: NoGameNotificationHudSingleton(){
+NoGameNotificationHudSingleton::NoGameNotificationHudSingleton() : logUtil(LogUtil::getInstance()), gameNotificationHud(GameNotificationHud::NULL_GAME_NOTIFICATION){
 
         try {
             
@@ -126,7 +129,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 }
 
 
-    public: GameNotificationHud* getGameNotificationHud(){
+    auto NoGameNotificationHudSingleton::getGameNotificationHud() -> GameNotificationHud*{
 
 
 
@@ -136,7 +139,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_NOGAMENOTIFICATIONHUDSINGLETON_CPP

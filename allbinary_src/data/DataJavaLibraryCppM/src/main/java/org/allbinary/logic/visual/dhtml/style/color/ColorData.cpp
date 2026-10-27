@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/color/ColorData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorData
-            : public Object
-         {
+auto ColorData::instance_owner() -> ColorData* { static std::unique_ptr<ColorData> value(new ColorData()); return value.get(); }
+ColorData* ColorData::instance = ColorData::instance_owner();
 
-    private: static ColorData* instance() { static std::unique_ptr<ColorData> value(new ColorData()); return value.get(); }
-
-    public: static ColorData* getInstance(){
+    auto ColorData::getInstance() -> ColorData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorData::instance();
+                        return ColorData::instance;
     
 }
 
 
-private: ColorData(){
+ColorData::ColorData(){
 }
 
 
-    public: const std::string NAME = "COLOR_NAME";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORDATA_CPP

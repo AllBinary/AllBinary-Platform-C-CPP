@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUD_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,11 +88,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotification.h"
 
-class GameNotificationHud: public BasicHud, public GameNotificationListenerInterface {
+auto GameNotificationHud::NULL_GAME_NOTIFICATION_owner() -> GameNotificationHud* { static std::unique_ptr<GameNotificationHud> value(new GameNotificationHud(BasicHudFactory::getInstance()->TOPCENTER, BasicHudFactory::getInstance()->HORIZONTAL, 0, BasicColorFactory::getInstance()->RED)); return value.get(); }
+GameNotificationHud* GameNotificationHud::NULL_GAME_NOTIFICATION = GameNotificationHud::NULL_GAME_NOTIFICATION_owner();
 
-    public: static GameNotificationHud* NULL_GAME_NOTIFICATION() { static std::unique_ptr<GameNotificationHud> value(new GameNotificationHud(BasicHudFactory::getInstance()->TOPCENTER, BasicHudFactory::getInstance()->HORIZONTAL, 0, BasicColorFactory::getInstance()->RED)); return value.get(); }
-
-public: GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : BasicHud(location, direction, bufferZone, basicColor){
+GameNotificationHud::GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : BasicHud(location, direction, bufferZone, basicColor), lastGameNotificationEvent(GameNotification::NULL_GAME_NOTIFICATION_EVENT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,26 +101,22 @@ public: GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZ
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto GameNotificationHud::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    private: const std::string METHOD_NAME = "onGameNotificationEvent";
-
-    private: GameNotificationEvent* lastGameNotificationEvent = GameNotification::NULL_GAME_NOTIFICATION_EVENT;
-
                 //@Throws(Exception.constructor)
             
-    public: void onGameNotificationEvent(GameNotificationEvent* gameNotificationEvent){
+    auto GameNotificationHud::onGameNotificationEvent(GameNotificationEvent* gameNotificationEvent) -> void{
 
                         if(this->lastGameNotificationEvent != gameNotificationEvent)
                         
                                     {
                                     this->lastGameNotificationEvent= gameNotificationEvent;
     
-this->logUtil.putF(gameNotificationEvent->getString(), this, this->METHOD_NAME);
+this->logUtil->putF(gameNotificationEvent->getString(), this, this->METHOD_NAME);
     
 
                                     }
@@ -121,25 +126,24 @@ this->add(gameNotificationEvent->getString(), gameNotificationEvent->getSeconds(
 }
 
 
-    protected: void add(std::string string, int32_t seconds, BasicColor* basicColor, bool permanent){
+    auto GameNotificationHud::add(std::string string, int32_t seconds, BasicColor* basicColor, bool permanent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(){
+    auto GameNotificationHud::processTick() -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto GameNotificationHud::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void clear(){
+    auto GameNotificationHud::clear() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATIONHUD_CPP

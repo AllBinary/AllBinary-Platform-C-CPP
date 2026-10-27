@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATION_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/configuration/InputAutomationModuleConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -106,31 +116,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationModuleConfiguration
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string className;
-
-    private: std::string name;
-
-    private: InputAutomationModuleFactoryInterface* inputAutomationModuleInterface;
-
-public: InputAutomationModuleConfiguration(){
+InputAutomationModuleConfiguration::InputAutomationModuleConfiguration() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-public: InputAutomationModuleConfiguration(AbeClientInformationInterface* abeClientInformation, Node* node){
+InputAutomationModuleConfiguration::InputAutomationModuleConfiguration(AbeClientInformationInterface* abeClientInformation, Node* node) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->init(abeClientInformation, node);
     
 }
 
 
-public: InputAutomationModuleConfiguration(AbeClientInformationInterface* abeClientInformation, std::string name, std::string className){
+InputAutomationModuleConfiguration::InputAutomationModuleConfiguration(AbeClientInformationInterface* abeClientInformation, std::string name, std::string className) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->setName(name);
     
 this->setClassName(className);
@@ -140,7 +137,7 @@ this->init(abeClientInformation);
 }
 
 
-public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface* inputAutomationModuleInterface){
+InputAutomationModuleConfiguration::InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface* inputAutomationModuleInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->setInputAutomationModuleInterface(inputAutomationModuleInterface);
     
 this->setClassName(this->inputAutomationModuleInterface->getClass()->getName());
@@ -150,7 +147,7 @@ this->setClassName(this->inputAutomationModuleInterface->getClass()->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface* abeClientInformation, Node* node){
+    auto InputAutomationModuleConfiguration::init(AbeClientInformationInterface* abeClientInformation, Node* node) -> void{
 
     NodeList* nodeList = node->getChildNodes();;
     
@@ -186,7 +183,7 @@ this->init(abeClientInformation);
                                     }
                                 
                         else {
-                            this->logUtil->putF(InputAutomationData::NAME +" Node Has No Children", this, "Contructor");
+                            this->logUtil->putF(JavaString::valueOf(InputAutomationData::NAME) +JavaString::valueOf(" Node Has No Children"), this, "Contructor");
     
 
                         }
@@ -194,12 +191,12 @@ this->init(abeClientInformation);
 }
 
 
-    public: void init(AbeClientInformationInterface* abeClientInformation){
+    auto InputAutomationModuleConfiguration::init(AbeClientInformationInterface* abeClientInformation) -> void{
 
         try {
-            this->logUtil->putF("Name: " +getName(), this, this->commonStrings->INIT);
+            this->logUtil->putF(JavaString::valueOf("Name: ") +JavaString::valueOf(getName()), this, this->commonStrings->INIT);
     
-this->logUtil->putF("ClassName: " +className, this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("ClassName: ") +JavaString::valueOf(className), this, this->commonStrings->INIT);
     
 this->setInputAutomationModuleInterface(dynamic_cast<InputAutomationModuleFactoryInterface*>(AbeFactory::getInstance()->getInstance()->getInstance(abeClientInformation, getClassName())));
     
@@ -212,7 +209,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
@@ -221,7 +218,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toDomNode(Document* document){
+    auto InputAutomationModuleConfiguration::toDomNode(Document* document) -> Node*{
 
     Node* node = document->createElement(InputAutomationModuleData::NAME);;
     
@@ -239,7 +236,7 @@ node->appendChild(classNameNode);
 }
 
 
-    public: std::string getName(){
+    auto InputAutomationModuleConfiguration::getName() -> std::string{
 
 
 
@@ -249,15 +246,15 @@ node->appendChild(classNameNode);
 }
 
 
-    public: void setName(std::string name){
-this->logUtil->putF("Name: " +name, this, "setName");
+    auto InputAutomationModuleConfiguration::setName(std::string name) -> void{
+this->logUtil->putF(JavaString::valueOf("Name: ") +JavaString::valueOf(name), this, "setName");
     
 this->name= name;
     
 }
 
 
-    public: std::string getClassName(){
+    auto InputAutomationModuleConfiguration::getClassName() -> std::string{
 
 
 
@@ -267,15 +264,15 @@ this->name= name;
 }
 
 
-    public: void setClassName(std::string className){
-this->logUtil->putF("ClassName : " +className, this, "setClassName");
+    auto InputAutomationModuleConfiguration::setClassName(std::string className) -> void{
+this->logUtil->putF(JavaString::valueOf("ClassName : ") +JavaString::valueOf(className), this, "setClassName");
     
 this->className= className;
     
 }
 
 
-    public: InputAutomationModuleFactoryInterface* getInputAutomationModuleInterface(){
+    auto InputAutomationModuleConfiguration::getInputAutomationModuleInterface() -> InputAutomationModuleFactoryInterface*{
 
 
 
@@ -285,8 +282,8 @@ this->className= className;
 }
 
 
-    public: void setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface* inputAutomationModuleInterface){
-this->logUtil->putF("InputAutomationModuleFactoryInterface : " +inputAutomationModuleInterface, this, "setInputAutomationModuleInterface");
+    auto InputAutomationModuleConfiguration::setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface* inputAutomationModuleInterface) -> void{
+this->logUtil->putF(JavaString::valueOf("InputAutomationModuleFactoryInterface : ") +JavaString::valueOf(inputAutomationModuleInterface), this, "setInputAutomationModuleInterface");
     
 this->inputAutomationModuleInterface= inputAutomationModuleInterface;
     
@@ -295,7 +292,6 @@ this->setName(this->inputAutomationModuleInterface->getName());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATION_CPP

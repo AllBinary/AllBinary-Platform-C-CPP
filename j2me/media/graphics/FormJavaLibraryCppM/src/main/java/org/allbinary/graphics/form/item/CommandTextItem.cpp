@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/CommandTextItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/ABTextItem.h"
 
-class CommandTextItem: public ABTextItem {
 
-    private: Command* command;
-
-public: CommandTextItem(Command* command, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(command->getLabel(), layout, altText, backgroundBasicColor, foregroundBasicColor){
+CommandTextItem::CommandTextItem(Command* command, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(command->getLabel(), layout, altText, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,7 +73,7 @@ this->command= command;
 }
 
 
-    public: bool isFocusable(){
+    auto CommandTextItem::isFocusable() -> bool{
 
 
 
@@ -76,7 +83,7 @@ this->command= command;
 }
 
 
-    public: Command* getCommand(){
+    auto CommandTextItem::getCommand() -> Command*{
 
 
 
@@ -86,7 +93,6 @@ this->command= command;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEM_CPP

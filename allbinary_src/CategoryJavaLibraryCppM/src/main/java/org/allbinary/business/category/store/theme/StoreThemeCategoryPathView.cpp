@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategoryPathView.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -71,9 +81,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 
-class StoreThemeCategoryPathView: public CategoryView, public DomNodeInterface {
 
-public: StoreThemeCategoryPathView(StoreThemeCategoryInterface* categoryInterface) : CategoryView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
+StoreThemeCategoryPathView::StoreThemeCategoryPathView(StoreThemeCategoryInterface* categoryInterface) : CategoryView(dynamic_cast<StoreThemeCategoryInterface*>(categoryInterface)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,9 +94,9 @@ public: StoreThemeCategoryPathView(StoreThemeCategoryInterface* categoryInterfac
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StoreThemeCategoryPathView::toXmlNode(Document* document) -> Node*{
 
-    Node* node = super.toXmlNode(document);;
+    Node* node = CategoryView::toXmlNode(document);;
     
 
     StoreThemeCategoryInterface* storeThemeCategoryInterface = dynamic_cast<StoreThemeCategoryInterface*>(this->getCategoryInterface());;
@@ -124,7 +133,6 @@ node->appendChild(domNodeInterface->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_CPP

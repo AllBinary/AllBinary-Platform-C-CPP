@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGERSHUTDOWN_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGERSHUTDOWN_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/AllBinaryMediaManagerShutdown.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,24 +61,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/SoundsFactoryInterface.h"
 
-class AllBinaryMediaManagerShutdown
-            : public Object
-         {
 
-    private: static AllBinaryMediaManagerShutdown* instance() { static std::unique_ptr<AllBinaryMediaManagerShutdown> value(new AllBinaryMediaManagerShutdown()); return value.get(); }
+AllBinaryMediaManagerShutdown::AllBinaryMediaManagerShutdown() {
+        }
+        auto AllBinaryMediaManagerShutdown::instance_owner() -> AllBinaryMediaManagerShutdown* { static std::unique_ptr<AllBinaryMediaManagerShutdown> value(new AllBinaryMediaManagerShutdown()); return value.get(); }
+AllBinaryMediaManagerShutdown* AllBinaryMediaManagerShutdown::instance = AllBinaryMediaManagerShutdown::instance_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface){
+    auto AllBinaryMediaManagerShutdown::shutdown(SoundsFactoryInterface* soundsFactoryInterface) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
-logUtil->putF("No Media Shutdown for Android Process", AllBinaryMediaManagerShutdown::instance(), "shutdown");
+logUtil->putF("No Media Shutdown for Android Process", AllBinaryMediaManagerShutdown::instance, "shutdown");
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGERSHUTDOWN_CPP

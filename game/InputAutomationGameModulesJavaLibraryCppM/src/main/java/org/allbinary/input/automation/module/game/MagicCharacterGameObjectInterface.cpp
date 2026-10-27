@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICCHARACTERGAMEOBJECTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICCHARACTERGAMEOBJECTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/MagicCharacterGameObjectInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,8 @@
         #include "org/allbinary/input/automation/module/game/HitPointGameObjectInterface.h"
 #include "org/allbinary/input/automation/module/game/MagicGameObjectInterface.h"
 
-class MagicCharacterGameObjectInterface {
+//Interface - declared in the header
 
-    public: virtual HitPointGameObjectInterface* getHitPointGameObjectInterface() = 0;
 
-    public: virtual MagicGameObjectInterface* getMagicGameObjectInterface() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICCHARACTERGAMEOBJECTINTERFACE_CPP

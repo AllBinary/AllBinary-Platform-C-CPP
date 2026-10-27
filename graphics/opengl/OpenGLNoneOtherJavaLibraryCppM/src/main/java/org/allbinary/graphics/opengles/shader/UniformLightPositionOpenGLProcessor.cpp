@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMLIGHTPOSITIONOPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMLIGHTPOSITIONOPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/UniformLightPositionOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,17 +60,15 @@
         #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
 #include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
 
-class UniformLightPositionOpenGLProcessor: public OpenGLObject3dProcessor {
 
-public: UniformLightPositionOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex){
+UniformLightPositionOpenGLProcessor::UniformLightPositionOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex){
 }
 
 
-    public: void process(GL10* gl, Object* unused){
+    auto UniformLightPositionOpenGLProcessor::process(GL10* gl, Object* unused) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMLIGHTPOSITIONOPENGLPROCESSOR_CPP

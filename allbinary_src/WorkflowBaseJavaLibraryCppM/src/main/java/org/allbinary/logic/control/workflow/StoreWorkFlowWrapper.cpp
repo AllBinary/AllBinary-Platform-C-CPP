@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/StoreWorkFlowWrapper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,11 +69,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/control/workflow/WorkFlowWrapper.h"
 
-class StoreWorkFlowWrapper: public WorkFlowWrapper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(anyType){
+StoreWorkFlowWrapper::StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(anyType), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +82,7 @@ public: StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(anyType){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getStoreName(){
+    auto StoreWorkFlowWrapper::getStoreName() -> std::string{
 
         try {
             
@@ -103,7 +110,7 @@ public: StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(anyType){
     std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     
@@ -117,14 +124,13 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "getStoreName()", &e);
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_CPP

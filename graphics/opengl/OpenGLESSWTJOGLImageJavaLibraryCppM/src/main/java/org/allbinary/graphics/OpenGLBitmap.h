@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -17,21 +22,11 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/DisposalUtil.h>
-
-      
+class Image;
+class DisposalUtil;
 #include <org/allbinary/platform/graphics/PlatformBitmapBase.h>
-
-      
-#include <org/microemu/device/swt/SwtImmutableImage.h>
-
-      
-#include <org/microemu/device/swt/SwtMutableImage.h>
-
-      
+class SwtImmutableImage;
+class SwtMutableImage;
 
 
 
@@ -50,6 +45,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class OpenGLBitmap: public PlatformBitmapBase {
 
@@ -77,3 +76,25 @@ public: OpenGLBitmap(Object* bitmap);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/DisposalUtil.h>)
+#include <org/allbinary/DisposalUtil.h>
+#endif
+#if __has_include(<org/allbinary/platform/graphics/PlatformBitmapBase.h>)
+#include <org/allbinary/platform/graphics/PlatformBitmapBase.h>
+#endif
+#if __has_include(<org/microemu/device/swt/SwtImmutableImage.h>)
+#include <org/microemu/device/swt/SwtImmutableImage.h>
+#endif
+#if __has_include(<org/microemu/device/swt/SwtMutableImage.h>)
+#include <org/microemu/device/swt/SwtMutableImage.h>
+#endif
+
+        #endif
+    

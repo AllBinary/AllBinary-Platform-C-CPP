@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_TITLE_TITLEBODYVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_TITLE_TITLEBODYVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/bodies/title/TitleBodyValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -99,20 +109,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TitleBodyValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+TitleBodyValidation::TitleBodyValidation() : logUtil(LogUtil::getInstance()){
 
-    private: std::string body;
-
-    private: TitleNotRequiredValidation* titleValidation;
-
-public: TitleBodyValidation(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -127,12 +130,12 @@ this->titleValidation= new TitleNotRequiredValidation();
 }
 
 
-public: TitleBodyValidation(Document* document){
+TitleBodyValidation::TitleBodyValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.CONSTRUCTOR, this, "Constructor(document)");
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "Constructor(document)");
     
 
                                     }
@@ -165,10 +168,10 @@ this->titleValidation= new TitleNotRequiredValidation(titleNode);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("To Many Body Nodes", this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF("To Many Body Nodes", this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -181,12 +184,12 @@ this->titleValidation= new TitleNotRequiredValidation(titleNode);
 }
 
 
-public: TitleBodyValidation(HashMap<Object*, Object*>* hashMap){
+TitleBodyValidation::TitleBodyValidation(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, "Constructor(hashmap)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "Constructor(hashmap)");
     
 
                                     }
@@ -198,7 +201,7 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto TitleBodyValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 this->body= hashMap->get(BodyData::getInstance()->NAME);
     
 this->titleValidation= new TitleNotRequiredValidation(hashMap);
@@ -206,17 +209,17 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
 }
 
 
-    public: bool isValid(){
+    auto TitleBodyValidation::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TitleBodyValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("TitleBodyValidation", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -240,10 +243,10 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TitleBodyValidation: " +isValid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("TitleBodyValidation: ") +JavaString::valueOf(isValid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -259,10 +262,10 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -278,7 +281,7 @@ this->titleValidation= new TitleNotRequiredValidation(hashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto TitleBodyValidation::validationInfo() -> std::string{
 
         try {
             
@@ -309,7 +312,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -328,7 +331,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto TitleBodyValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -338,7 +341,7 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto TitleBodyValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -350,12 +353,12 @@ stringBuffer->appendint(AbSqlData::MAXBLOB);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TitleBodyValidation::toXmlNode(Document* document) -> Node*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Title Body: " +this->body, this, "toXmlNode(document)");
+                                    this->logUtil->putF(JavaString::valueOf("Title Body: ") +JavaString::valueOf(this->body), this, "toXmlNode(document)");
     
 
                                     }
@@ -374,7 +377,6 @@ node->appendChild(this->titleValidation->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_TITLE_TITLEBODYVALIDATION_CPP

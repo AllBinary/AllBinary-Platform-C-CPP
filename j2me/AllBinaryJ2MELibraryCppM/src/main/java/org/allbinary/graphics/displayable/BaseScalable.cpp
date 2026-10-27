@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_BASESCALABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_BASESCALABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/BaseScalable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/ScalableListener.h"
 
-class BaseScalable
-            : public Object
-        , public ScalableListener {
 
-    public: float getRatio(float ratio){
+BaseScalable::BaseScalable() {
+        }
+        
+    auto BaseScalable::getRatio(float ratio) -> float{
 
 
 
@@ -60,7 +70,7 @@ class BaseScalable
 }
 
 
-    public: int32_t getLeft(int32_t xOffset){
+    auto BaseScalable::getLeft(int32_t xOffset) -> int32_t{
 
 
 
@@ -70,7 +80,7 @@ class BaseScalable
 }
 
 
-    public: int32_t getTop(int32_t yOffset){
+    auto BaseScalable::getTop(int32_t yOffset) -> int32_t{
 
 
 
@@ -80,11 +90,10 @@ class BaseScalable
 }
 
 
-    public: void scale(float ratio){
+    auto BaseScalable::scale(float ratio) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_BASESCALABLE_CPP

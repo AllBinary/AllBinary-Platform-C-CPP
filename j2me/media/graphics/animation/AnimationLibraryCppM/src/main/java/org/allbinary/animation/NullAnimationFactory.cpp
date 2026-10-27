@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_NULLANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_NULLANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/NullAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -58,40 +68,33 @@
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/Animation.h"
 
-class NullAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+auto NullAnimationFactory::NULL_NOT_FOR_USE_ANIMATION_FACTORY_owner() -> NullAnimationFactory* { static std::unique_ptr<NullAnimationFactory> value(new NullAnimationFactory()); return value.get(); }
+NullAnimationFactory* NullAnimationFactory::NULL_NOT_FOR_USE_ANIMATION_FACTORY = NullAnimationFactory::NULL_NOT_FOR_USE_ANIMATION_FACTORY_owner();
+auto NullAnimationFactory::NULL_ANIMATION_FACTORY_owner() -> NullAnimationFactory* { static std::unique_ptr<NullAnimationFactory> value(new NullAnimationFactory()); return value.get(); }
+NullAnimationFactory* NullAnimationFactory::NULL_ANIMATION_FACTORY = NullAnimationFactory::NULL_ANIMATION_FACTORY_owner();
 
-    public: static NullAnimationFactory* NULL_NOT_FOR_USE_ANIMATION_FACTORY() { static std::unique_ptr<NullAnimationFactory> value(new NullAnimationFactory()); return value.get(); }
-
-    private: static NullAnimationFactory* NULL_ANIMATION_FACTORY() { static std::unique_ptr<NullAnimationFactory> value(new NullAnimationFactory()); return value.get(); }
-
-    public: static NullAnimationFactory* getFactoryInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory::NULL_ANIMATION_FACTORY();
-    
-}
-
-
-    private: Animation* NULL_ANIMATION = class extends Animation
+NullAnimationFactory::NullAnimationFactory() : NULL_ANIMATION(class extends Animation
                                 {
                                 
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
 }
 
                                 }
-                            ;
-
-    public: const std::vector<Animation*> EMPTY_ARRAY = {};
-
-private: NullAnimationFactory(){
+                            ), EMPTY_ARRAY({}){
 }
 
 
-    public: Animation* getInstance(int32_t instanceId){
+    auto NullAnimationFactory::getFactoryInstance() -> NullAnimationFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullAnimationFactory::NULL_ANIMATION_FACTORY;
+    
+}
+
+
+    auto NullAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -103,7 +106,7 @@ private: NullAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto NullAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -113,11 +116,10 @@ private: NullAnimationFactory(){
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto NullAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_NULLANIMATIONFACTORY_CPP

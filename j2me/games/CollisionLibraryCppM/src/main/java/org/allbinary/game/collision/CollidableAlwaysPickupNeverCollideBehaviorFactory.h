@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIORFACTORY_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,16 +51,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
-#include "org/allbinary/game/collision/CollidableAlwaysPickupNeverCollideBehavior.h"
-#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+class CollidableAlwaysPickupNeverCollideBehavior;
+class CollidableBaseBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollidableAlwaysPickupNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactory {
 
-    private: static CollidableAlwaysPickupNeverCollideBehaviorFactory* instanceC() { static std::unique_ptr<CollidableAlwaysPickupNeverCollideBehaviorFactory> value(new CollidableAlwaysPickupNeverCollideBehaviorFactory()); return value.get(); }
+    private: static CollidableAlwaysPickupNeverCollideBehaviorFactory* instanceC_owner();
+    private: static CollidableAlwaysPickupNeverCollideBehaviorFactory* instanceC;
 
     public: static CollidableAlwaysPickupNeverCollideBehaviorFactory* getInstance();
 
-    private: CollidableAlwaysPickupNeverCollideBehavior* instance = new CollidableAlwaysPickupNeverCollideBehavior();
+
+            
+    public: CollidableAlwaysPickupNeverCollideBehaviorFactory();
+        
+    private: CollidableAlwaysPickupNeverCollideBehavior* instance;
 
     public: CollidableBaseBehavior* createBehavior();
 
@@ -65,3 +79,19 @@ class CollidableAlwaysPickupNeverCollideBehaviorFactory: public CollidableBaseBe
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIORFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/collision/CollidableBaseBehaviorFactory.h")
+#include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableAlwaysPickupNeverCollideBehavior.h")
+#include "org/allbinary/game/collision/CollidableAlwaysPickupNeverCollideBehavior.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableBaseBehavior.h")
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+#endif
+
+        #endif
+    

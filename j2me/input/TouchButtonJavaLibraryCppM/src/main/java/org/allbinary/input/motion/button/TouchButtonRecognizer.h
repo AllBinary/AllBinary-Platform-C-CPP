@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRECOGNIZER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/event/DownGameKeyEventHandler.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/game/input/event/UpGameKeyEventHandler.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/math/RectangleCollisionUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class DownGameKeyEventHandler;
+class GameKeyEvent;
+class UpGameKeyEventHandler;
+class GPoint;
+class Rectangle;
+class LogUtil;
+class RectangleCollisionUtil;
+class BasicArrayList;
 
 
 
@@ -73,38 +62,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
-#include "org/allbinary/input/motion/button/TouchButtonInput.h"
-#include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
+        class BasicTouchInputFactory;
+class TouchButtonInput;
+class CurrentlyPressedTouchButtonSingleton;
 //#include "org/allbinary/input/motion/button/ReleaseHelper.h"
-#include "org/allbinary/input/motion/button/CancelTouchButtonInputFactory.h"
-#include "org/allbinary/input/motion/button/TouchScreenFactory.h"
-//#include "org/allbinary/input/motion/button/MultitouchReleaseHelper.h"
-#include "org/allbinary/input/motion/button/TouchButtonFactory.h"
-#include "org/allbinary/input/motion/button/TouchButton.h"
+class CancelTouchButtonInputFactory;
+class TouchScreenFactory;
+//class MultitouchReleaseHelper;
+class TouchButtonFactory;
+class TouchButton;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonRecognizer
-            : public Object
+            : public virtual Object
          {
+public: class ReleaseHelper;
+public: class MultitouchReleaseHelper;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
+    private: RectangleCollisionUtil* rectangleCollisionUtil;
 
-    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler;
 
-    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler;
 
-    private: TouchButtonInput* lastPressedTouchButtonInput = BasicTouchInputFactory::getInstance()->NONE;
+    private: TouchButtonInput* lastPressedTouchButtonInput;
 
-    private: CurrentlyPressedTouchButtonSingleton* currentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton::getInstance();
+    private: CurrentlyPressedTouchButtonSingleton* currentlyPressedTouchButtonSingleton;
 //CurrentlyPressedTouchButtonSingletonDebug.getInstance();
 //inner= member=true isStatic=
-class ReleaseHelper
-            : public Object
+public: class ReleaseHelper
+            : public virtual Object
          {
 
-    protected: TouchButtonRecognizer* touchButtonRecognizer;
+    /*protected*/ public: TouchButtonRecognizer* touchButtonRecognizer;
 
 public: ReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
 
@@ -116,7 +111,7 @@ public: ReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
 
             
 //inner= member=true isStatic=
-class MultitouchReleaseHelper: public ReleaseHelper {
+public: class MultitouchReleaseHelper: public ReleaseHelper {
 
 public: MultitouchReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
 
@@ -127,7 +122,7 @@ public: MultitouchReleaseHelper(TouchButtonRecognizer* touchButtonRecognizer);
 };
 
             
-    private: releaseHelper;
+    private: ReleaseHelper* releaseHelper;
 
 public: TouchButtonRecognizer();
 
@@ -151,3 +146,55 @@ public: TouchButtonRecognizer();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRECOGNIZER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRECOGNIZER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRECOGNIZER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/event/DownGameKeyEventHandler.h>)
+#include <org/allbinary/game/input/event/DownGameKeyEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/UpGameKeyEventHandler.h>)
+#include <org/allbinary/game/input/event/UpGameKeyEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/RectangleCollisionUtil.h>)
+#include <org/allbinary/math/RectangleCollisionUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/BasicTouchInputFactory.h")
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonInput.h")
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h")
+#include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/CancelTouchButtonInputFactory.h")
+#include "org/allbinary/input/motion/button/CancelTouchButtonInputFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchScreenFactory.h")
+#include "org/allbinary/input/motion/button/TouchScreenFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonFactory.h")
+#include "org/allbinary/input/motion/button/TouchButtonFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButton.h")
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#endif
+
+        #endif
+    

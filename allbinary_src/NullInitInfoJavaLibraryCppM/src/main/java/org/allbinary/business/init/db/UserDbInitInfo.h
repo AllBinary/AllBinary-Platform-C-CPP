@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_USERDBINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_USERDBINITINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,6 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbInitInfo.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserDbInitInfo: public DbInitInfo {
 
 public: UserDbInitInfo();
@@ -59,3 +68,13 @@ public: UserDbInitInfo(bool read);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_USERDBINITINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_DB_USERDBINITINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_USERDBINITINFO_H_COMPLETE
+        #if __has_include("org/allbinary/business/init/db/DbInitInfo.h")
+#include "org/allbinary/business/init/db/DbInitInfo.h"
+#endif
+
+        #endif
+    

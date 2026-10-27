@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMERUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMERUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/DemoGameRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,21 +69,14 @@
         #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 #include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
-class DemoGameRunnable: public GameRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: DemoCanvas* demoCanvas;
-
-public: DemoGameRunnable(DemoCanvas* demoCanvas){
+DemoGameRunnable::DemoGameRunnable(DemoCanvas* demoCanvas) : logUtil(LogUtil::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()){
 this->demoCanvas= demoCanvas;
     
 }
 
 
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-    public: void run(){
+    auto DemoGameRunnable::run() -> void{
 
         try {
             this->demoCanvas->getLoopTimeHelperP()->setStartTime(this->gameTickTimeDelayHelper->setStartTime());
@@ -96,13 +99,12 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void processLoopSleep(){
+    auto DemoGameRunnable::processLoopSleep() -> void{
 this->demoCanvas->processLoopSleep();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMERUNNABLE_CPP

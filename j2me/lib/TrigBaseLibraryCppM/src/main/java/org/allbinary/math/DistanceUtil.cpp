@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_DISTANCEUTIL_CPP
+        #define ORG_ALLBINARY_MATH_DISTANCEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/DistanceUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,25 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DistanceUtil
-            : public Object
-         {
 
-    private: static DistanceUtil* instance() { static std::unique_ptr<DistanceUtil> value(new DistanceUtil()); return value.get(); }
+DistanceUtil::DistanceUtil() : mathUtil(MathUtil::getInstance()) {
+        }
+        auto DistanceUtil::instance_owner() -> DistanceUtil* { static std::unique_ptr<DistanceUtil> value(new DistanceUtil()); return value.get(); }
+DistanceUtil* DistanceUtil::instance = DistanceUtil::instance_owner();
 
-    public: static DistanceUtil* getInstance(){
+    auto DistanceUtil::getInstance() -> DistanceUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DistanceUtil::instance();
+                        return DistanceUtil::instance;
     
 }
 
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
-
-    public: int32_t getDistance(int32_t x1, int32_t y1, int32_t x2, int32_t y2){
+    auto DistanceUtil::getDistance(int32_t x1, int32_t y1, int32_t x2, int32_t y2) -> int32_t{
 
     int32_t dx = x1 -x2;;
     
@@ -82,7 +90,6 @@ class DistanceUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_DISTANCEUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILELISTFETCHER_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILELISTFETCHER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileListFetcher.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,25 +83,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/AbFile.h"
 
-class FileListFetcher
-            : public Object
-         {
 
-    private: static FileListFetcher* instance() { static std::unique_ptr<FileListFetcher> value(new FileListFetcher()); return value.get(); }
+FileListFetcher::FileListFetcher() : subDirectory(SubDirectory::getInstance()) {
+        }
+        auto FileListFetcher::instance_owner() -> FileListFetcher* { static std::unique_ptr<FileListFetcher> value(new FileListFetcher()); return value.get(); }
+FileListFetcher* FileListFetcher::instance = FileListFetcher::instance_owner();
 
-    public: static FileListFetcher* getInstance(){
+    auto FileListFetcher::getInstance() -> FileListFetcher*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileListFetcher::instance();
+                        return FileListFetcher::instance;
     
 }
 
 
-    private: SubDirectory* subDirectory = SubDirectory::getInstance();
-
-    public: BasicArrayList* getFiles(std::string path){
+    auto FileListFetcher::getFiles(std::string path) -> BasicArrayList*{
 
         try {
             
@@ -109,7 +117,7 @@ class FileListFetcher
             {
 e.printStackTrace();
     
-System.out.println("Error: " +e +"\nMsg: " +e.message);
+System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Error: ") +JavaString::valueOf(e)) +JavaString::valueOf("\nMsg: ")) +JavaString::valueOf(e.message));
     
 }
 
@@ -122,7 +130,7 @@ System.out.println("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList* getFiles(std::string path, std::vector<std::string> includeExtensions){
+    auto FileListFetcher::getFiles(std::string path, std::vector<std::string> includeExtensions) -> BasicArrayList*{
 
         try {
             
@@ -160,7 +168,7 @@ includeExtensionBasicArrayList->add(includeExtensions[index]);
             {
 e.printStackTrace();
     
-System.out.println("Error: " +e +"\nMsg: " +e.message);
+System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Error: ") +JavaString::valueOf(e)) +JavaString::valueOf("\nMsg: ")) +JavaString::valueOf(e.message));
     
 }
 
@@ -173,7 +181,7 @@ System.out.println("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList* getFiles(std::string path, std::string includeExtension){
+    auto FileListFetcher::getFiles(std::string path, std::string includeExtension) -> BasicArrayList*{
 
         try {
             
@@ -199,7 +207,7 @@ includeExtensionBasicArrayList->add(includeExtension);
             {
 e.printStackTrace();
     
-System.out.println("Error: " +e +"\nMsg: " +e.message);
+System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Error: ") +JavaString::valueOf(e)) +JavaString::valueOf("\nMsg: ")) +JavaString::valueOf(e.message));
     
 }
 
@@ -212,7 +220,7 @@ System.out.println("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList* getFiles(std::string path, std::string pathIncludes, std::string includeExtension){
+    auto FileListFetcher::getFiles(std::string path, std::string pathIncludes, std::string includeExtension) -> BasicArrayList*{
 
         try {
             
@@ -238,7 +246,7 @@ includeExtensionBasicArrayList->add(includeExtension);
             {
 e.printStackTrace();
     
-System.out.println("Error: " +e +"\nMsg: " +e.message);
+System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Error: ") +JavaString::valueOf(e)) +JavaString::valueOf("\nMsg: ")) +JavaString::valueOf(e.message));
     
 }
 
@@ -251,7 +259,7 @@ System.out.println("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList* getTrackedFiles(std::string path, std::vector<std::string> includeExtensions){
+    auto FileListFetcher::getTrackedFiles(std::string path, std::vector<std::string> includeExtensions) -> BasicArrayList*{
 
         try {
             
@@ -289,7 +297,7 @@ includeExtensionBasicArrayList->add(includeExtensions[index]);
             {
 e.printStackTrace();
     
-System.out.println("Error: " +e +"\nMsg: " +e.message);
+System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Error: ") +JavaString::valueOf(e)) +JavaString::valueOf("\nMsg: ")) +JavaString::valueOf(e.message));
     
 }
 
@@ -302,7 +310,7 @@ System.out.println("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList* getTrackedFiles(std::string path, std::string includeExtension){
+    auto FileListFetcher::getTrackedFiles(std::string path, std::string includeExtension) -> BasicArrayList*{
 
         try {
             
@@ -328,7 +336,7 @@ includeExtensionBasicArrayList->add(includeExtension);
             {
 e.printStackTrace();
     
-System.out.println("Error: " +e +"\nMsg: " +e.message);
+System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Error: ") +JavaString::valueOf(e)) +JavaString::valueOf("\nMsg: ")) +JavaString::valueOf(e.message));
     
 }
 
@@ -341,7 +349,7 @@ System.out.println("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public: BasicArrayList* getDirectories(std::string path){
+    auto FileListFetcher::getDirectories(std::string path) -> BasicArrayList*{
 
         try {
             
@@ -362,7 +370,7 @@ System.out.println("Error: " +e +"\nMsg: " +e.message);
             {
 e.printStackTrace();
     
-System.out.println("Error: " +e +"\nMsg: " +e.message);
+System.out.println(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Error: ") +JavaString::valueOf(e)) +JavaString::valueOf("\nMsg: ")) +JavaString::valueOf(e.message));
     
 }
 
@@ -375,7 +383,6 @@ System.out.println("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILELISTFETCHER_CPP

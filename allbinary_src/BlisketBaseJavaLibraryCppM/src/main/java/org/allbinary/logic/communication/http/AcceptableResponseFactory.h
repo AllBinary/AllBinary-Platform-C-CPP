@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,21 +52,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/http/AcceptableResponse.h"
+        class AcceptableResponse;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AcceptableResponseFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AcceptableResponseFactory* instance() { static std::unique_ptr<AcceptableResponseFactory> value(new AcceptableResponseFactory()); return value.get(); }
+    private: static AcceptableResponseFactory* instance_owner();
+    private: static AcceptableResponseFactory* instance;
 
     public: static AcceptableResponseFactory* getInstance();
 
-    public: AcceptableResponse* HTML = new AcceptableResponse("text/html", "html", 0);
 
-    public: AcceptableResponse* WML = new AcceptableResponse("text/wml", "wml", 1);
+            
+    public: AcceptableResponseFactory();
+        
+    public: AcceptableResponse* HTML;
 
-    public: AcceptableResponse* VXML = new AcceptableResponse("text/vxml", "vxml", 2);
+    public: AcceptableResponse* WML;
+
+    public: AcceptableResponse* VXML;
 
 };
 
@@ -69,3 +83,13 @@ class AcceptableResponseFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/communication/http/AcceptableResponse.h")
+#include "org/allbinary/logic/communication/http/AcceptableResponse.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDLEFTTORIGHTIMAGEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDLEFTTORIGHTIMAGEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AdjustedLeftToRightImageAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -57,13 +67,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/LeftToRightImageAnimation.h"
 
-class AdjustedLeftToRightImageAnimation: public LeftToRightImageAnimation {
 
-    private: int32_t dx= 0;
-
-    private: int32_t dy= 0;
-
-public: AdjustedLeftToRightImageAnimation(Image* image, std::vector<int32_t> sequenceArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : LeftToRightImageAnimation(image, sequenceArray, animationBehavior){
+AdjustedLeftToRightImageAnimation::AdjustedLeftToRightImageAnimation(Image* image, std::vector<int32_t> sequenceArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : LeftToRightImageAnimation(image, sequenceArray, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,7 +82,7 @@ this->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t dx, int32_t dy){
+    auto AdjustedLeftToRightImageAnimation::init(int32_t dx, int32_t dy) -> void{
 this->dx= dx;
     
 this->dy= dy;
@@ -85,13 +90,12 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this->dx, y +this->dy);
+    auto AdjustedLeftToRightImageAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+LeftToRightImageAnimation::paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDLEFTTORIGHTIMAGEANIMATION_CPP

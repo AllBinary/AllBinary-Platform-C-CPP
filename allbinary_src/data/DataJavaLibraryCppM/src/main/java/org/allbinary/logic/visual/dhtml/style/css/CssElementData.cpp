@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CssElementData
-            : public Object
-         {
+auto CssElementData::instance_owner() -> CssElementData* { static std::unique_ptr<CssElementData> value(new CssElementData()); return value.get(); }
+CssElementData* CssElementData::instance = CssElementData::instance_owner();
 
-    private: static CssElementData* instance() { static std::unique_ptr<CssElementData> value(new CssElementData()); return value.get(); }
-
-    public: static CssElementData* getInstance(){
+    auto CssElementData::getInstance() -> CssElementData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CssElementData::instance();
+                        return CssElementData::instance;
     
 }
 
 
-private: CssElementData(){
+CssElementData::CssElementData(){
 }
 
 
-    public: const std::string NAME = "CSS_ELEMENT_NAME";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTDATA_CPP

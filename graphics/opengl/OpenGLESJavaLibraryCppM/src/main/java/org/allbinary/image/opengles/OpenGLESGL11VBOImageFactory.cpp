@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11VBOIMAGEFACTORY_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11VBOIMAGEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESGL11VBOImageFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,9 +64,11 @@
         #include "org/allbinary/image/opengles/OpenGLImageFactory.h"
 #include "org/allbinary/image/opengles/OpenGLESGL10Image.h"
 
-class OpenGLESGL11VBOImageFactory: public OpenGLImageFactory {
 
-    public: Image* getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory){
+OpenGLESGL11VBOImageFactory::OpenGLESGL11VBOImageFactory() {
+        }
+        
+    auto OpenGLESGL11VBOImageFactory::getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) -> Image*{
 
 
 
@@ -66,7 +78,6 @@ class OpenGLESGL11VBOImageFactory: public OpenGLImageFactory {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11VBOIMAGEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_BILLING_NEWVALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_BILLING_NEWVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/billing/NewValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/billing/BillingAddressView.h"
 
-class NewValidationView: public BillingAddressView, public ValidationComponentInterface {
 
-public: NewValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
+NewValidationView::NewValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +82,7 @@ public: NewValidationView(TransformInfoInterface* transformInfoInterface) : Bill
 }
 
 
-    public: bool isValid(){
+    auto NewValidationView::isValid() -> bool{
 this->streetAddress= new StreetAddress();
     
 
@@ -85,7 +94,7 @@ this->streetAddress= new StreetAddress();
 }
 
 
-    public: std::string validationInfo(){
+    auto NewValidationView::validationInfo() -> std::string{
 
 
 
@@ -95,7 +104,7 @@ this->streetAddress= new StreetAddress();
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto NewValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -105,7 +114,7 @@ this->streetAddress= new StreetAddress();
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto NewValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -115,7 +124,6 @@ this->streetAddress= new StreetAddress();
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_BILLING_NEWVALIDATIONVIEW_CPP

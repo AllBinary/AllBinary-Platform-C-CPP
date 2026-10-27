@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageScaleUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,41 +78,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCopyUtil.h"
 
-class ImageScaleUtil
-            : public Object
-         {
+auto ImageScaleUtil::instance_owner() -> ImageScaleUtil* { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+ImageScaleUtil* ImageScaleUtil::instance = ImageScaleUtil::instance_owner();
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
-
-    public: static ImageScaleUtil* getInstance(){
+    auto ImageScaleUtil::getInstance() -> ImageScaleUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil::instance();
+                        return ImageScaleUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ImageCopyUtil* imageCopyUtil = ImageCopyUtil::getInstance();
-
-    private: GameFeatureFactory* gameFeatureFactory = GameFeatureFactory::getInstance();
-
-    private: Features* features = Features::getInstance();
-
-    private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
-
-private: ImageScaleUtil(){
+ImageScaleUtil::ImageScaleUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), imageCopyUtil(ImageCopyUtil::getInstance()), gameFeatureFactory(GameFeatureFactory::getInstance()), features(Features::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
+    auto ImageScaleUtil::createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached) -> Image*{
 
 
 
@@ -114,7 +109,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_){
+    auto ImageScaleUtil::createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_) -> Image*{
 
                         if(!this->features->isFeature(this->gameFeatureFactory->POST_IMAGE_LOADING_MODIFICATION))
                         
@@ -156,7 +151,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: void scale2(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    auto ImageScaleUtil::scale2(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY) -> void{
 this->scale(originalImage, originalImageArray, ximageToShowArray, unused, scaleX, scaleY, maxScaleX, maxScaleY, true);
     
 }
@@ -164,7 +159,7 @@ this->scale(originalImage, originalImageArray, ximageToShowArray, unused, scaleX
 
                 //@Throws(Exception.constructor)
             
-    public: void scale(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY, bool mutable_){
+    auto ImageScaleUtil::scale(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY, bool mutable_) -> void{
 
     int32_t width = originalImage->getWidth();;
     
@@ -179,7 +174,6 @@ originalImageArray[0]= scaledImage;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_EDITTITLEBODYVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_EDITTITLEBODYVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/bodies/generic/title/EditTitleBodyValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/bodies/generic/title/TitleBodyCustomizerView.h"
 
-class EditTitleBodyValidationView: public TitleBodyCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: EditTitleBodyValidationView(TransformInfoInterface* transformInfoInterface) : TitleBodyCustomizerView(transformInfoInterface){
+EditTitleBodyValidationView::EditTitleBodyValidationView(TransformInfoInterface* transformInfoInterface) : TitleBodyCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,7 +91,7 @@ public: EditTitleBodyValidationView(TransformInfoInterface* transformInfoInterfa
 }
 
 
-    public: bool isValid(){
+    auto EditTitleBodyValidationView::isValid() -> bool{
 
         try {
             
@@ -93,7 +100,7 @@ public: EditTitleBodyValidationView(TransformInfoInterface* transformInfoInterfa
 this->titleBody= new TitleBodyValidation(document);
     
 
-    bool isValid = this->titleBody.isValid();;
+    bool isValid = this->titleBody->isValid();;
     
 
 
@@ -106,10 +113,10 @@ this->titleBody= new TitleBodyValidation(document);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -125,13 +132,13 @@ this->titleBody= new TitleBodyValidation(document);
 }
 
 
-    public: std::string validationInfo(){
+    auto EditTitleBodyValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->titleBody.validationInfo());
+stringBuffer->append(this->titleBody->validationInfo());
     
 
 
@@ -144,7 +151,7 @@ stringBuffer->append(this->titleBody.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -163,7 +170,7 @@ stringBuffer->append(this->titleBody.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditTitleBodyValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -173,7 +180,7 @@ stringBuffer->append(this->titleBody.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditTitleBodyValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -183,7 +190,6 @@ stringBuffer->append(this->titleBody.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_EDITTITLEBODYVALIDATIONVIEW_CPP

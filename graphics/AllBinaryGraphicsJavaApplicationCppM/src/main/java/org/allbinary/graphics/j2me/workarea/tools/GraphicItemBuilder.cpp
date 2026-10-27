@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMBUILDER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMBUILDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemBuilder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,13 +63,14 @@
 #include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
 
-class GraphicItemBuilder
-            : public Object
-         {
+
+GraphicItemBuilder::GraphicItemBuilder(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static GraphicItemInterface* getInstance(Node* node){
+    auto GraphicItemBuilder::getInstance(Node* node) -> GraphicItemInterface*{
 
     std::string graphicItemName = node->getNodeName();;
     
@@ -80,7 +91,7 @@ class GraphicItemBuilder
                             
 
 
-                            throw new Exception("Graphic Item Does Not Exist: " +graphicItemName);
+                            throw Exception(JavaString::valueOf("Graphic Item Does Not Exist: ") +JavaString::valueOf(graphicItemName));
                     
 
                         }
@@ -88,11 +99,6 @@ class GraphicItemBuilder
 }
 
 
-private: GraphicItemBuilder(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMBUILDER_CPP

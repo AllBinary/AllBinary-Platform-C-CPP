@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/WeblisketFinder.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -78,49 +88,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WeblisketFinder
-            : public Object
-         {
+auto WeblisketFinder::instance_owner() -> WeblisketFinder* { static std::unique_ptr<WeblisketFinder> value(new WeblisketFinder()); return value.get(); }
+WeblisketFinder* WeblisketFinder::instance = WeblisketFinder::instance_owner();
 
-    private: static WeblisketFinder* instance() { static std::unique_ptr<WeblisketFinder> value(new WeblisketFinder()); return value.get(); }
-
-    public: static WeblisketFinder* getInstance(){
+    auto WeblisketFinder::getInstance() -> WeblisketFinder*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WeblisketFinder::instance();
+                        return WeblisketFinder::instance;
     
 }
 
 
-    private: static inline const std::string KEY = "installerdata.dat";
-
-                //@Throws(Exception.constructor)
-            
-    public: static void main(std::vector<std::string> args){
-
-    StringUtil* stringUtil = StringUtil::getInstance();;
-    
-
-    BasicArrayList* vector = WeblisketFinder::getInstance()->findAll(stringUtil->EMPTY_STRING);;
-    
-System.out.println(vector->size());
-    
+WeblisketFinder::WeblisketFinder() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), subDirectory(SubDirectory::getInstance()){
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: SubDirectory* subDirectory = SubDirectory::getInstance();
-
-private: WeblisketFinder(){
-}
-
-
-    public: BasicArrayList* findAll(std::string path){
+    auto WeblisketFinder::findAll(std::string path) -> BasicArrayList*{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "findAll");
@@ -138,7 +123,7 @@ private: WeblisketFinder(){
 this->logUtil->put(this->commonStrings->EXCEPTION, this, "findAll", &e);
     
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->PRELOADERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "findAll", &e);
@@ -157,7 +142,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "findAll", &e);
 }
 
 
-    public: std::string getInstallationPath(AbFile* file){
+    auto WeblisketFinder::getInstallationPath(AbFile* file) -> std::string{
 
         try {
             
@@ -190,7 +175,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "findAll", &e);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRELOADERERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstallationPath", &e);
@@ -209,7 +194,20 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "findAll", &e);
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto WeblisketFinder::main(std::vector<std::string> args) -> void{
 
+    StringUtil* stringUtil = StringUtil::getInstance();;
+    
+
+    BasicArrayList* vector = WeblisketFinder::getInstance()->findAll(stringUtil->EMPTY_STRING);;
+    
+System.out.println(vector->size());
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_CPP

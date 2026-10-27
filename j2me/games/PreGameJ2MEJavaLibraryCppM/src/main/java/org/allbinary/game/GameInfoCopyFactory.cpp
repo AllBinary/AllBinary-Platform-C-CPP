@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GAMEINFOCOPYFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_GAMEINFOCOPYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/GameInfoCopyFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/GameInfo.h"
 
-class GameInfoCopyFactory
-            : public Object
-         {
 
-    public: static GameInfo* getInstanceMaxLevel(GameInfo* gameInfo, int32_t maxLevel){
+GameInfoCopyFactory::GameInfoCopyFactory() {
+        }
+        
+    auto GameInfoCopyFactory::getInstanceMaxLevel(GameInfo* gameInfo, int32_t maxLevel) -> GameInfo*{
 
 
 
@@ -60,7 +70,7 @@ class GameInfoCopyFactory
 }
 
 
-    public: static GameInfo* getInstance(GameInfo* gameInfo){
+    auto GameInfoCopyFactory::getInstance(GameInfo* gameInfo) -> GameInfo*{
 
 
 
@@ -70,7 +80,6 @@ class GameInfoCopyFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_GAMEINFOCOPYFACTORY_CPP

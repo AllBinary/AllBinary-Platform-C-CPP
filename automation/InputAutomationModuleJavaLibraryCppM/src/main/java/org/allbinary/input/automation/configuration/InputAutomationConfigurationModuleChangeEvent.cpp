@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGEEVENT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGEEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/configuration/InputAutomationConfigurationModuleChangeEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,19 +58,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationConfigurationModuleChangeEvent
-            : public Object
-         {
 
-    private: InputAutomationModuleConfiguration* inputAutomationModuleConfiguration;
-
-public: InputAutomationConfigurationModuleChangeEvent(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
+InputAutomationConfigurationModuleChangeEvent::InputAutomationConfigurationModuleChangeEvent(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
 this->setInputAutomationModuleConfiguration(inputAutomationModuleConfiguration);
     
 }
 
 
-    public: InputAutomationModuleConfiguration* getInputAutomationModuleConfiguration(){
+    auto InputAutomationConfigurationModuleChangeEvent::getInputAutomationModuleConfiguration() -> InputAutomationModuleConfiguration*{
 
 
 
@@ -70,13 +75,12 @@ this->setInputAutomationModuleConfiguration(inputAutomationModuleConfiguration);
 }
 
 
-    private: void setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration){
+    auto InputAutomationConfigurationModuleChangeEvent::setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration* inputAutomationModuleConfiguration) -> void{
 this->inputAutomationModuleConfiguration= inputAutomationModuleConfiguration;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONMODULECHANGEEVENT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ENUMERATIONUTIL_CPP
+        #define ORG_ALLBINARY_UTIL_ENUMERATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/EnumerationUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -58,23 +68,23 @@
         #include "org/allbinary/util/BasicArrayListD.h"
 #include "org/allbinary/util/BasicArrayList.h"
 //ArkTs does not have this.  So this is for the ArkTs build.
-class EnumerationUtil
-            : public Object
-         {
 
-    private: static EnumerationUtil* instance() { static std::unique_ptr<EnumerationUtil> value(new EnumerationUtil()); return value.get(); }
+EnumerationUtil::EnumerationUtil() {
+        }
+        auto EnumerationUtil::instance_owner() -> EnumerationUtil* { static std::unique_ptr<EnumerationUtil> value(new EnumerationUtil()); return value.get(); }
+EnumerationUtil* EnumerationUtil::instance = EnumerationUtil::instance_owner();
 
-    public: static EnumerationUtil* getInstance(){
+    auto EnumerationUtil::getInstance() -> EnumerationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EnumerationUtil::instance();
+                        return EnumerationUtil::instance;
     
 }
 
 
-    public: bool hasMoreElements(Enumeration<Object*>* enumeration){
+    auto EnumerationUtil::hasMoreElements(Enumeration<Object*>* enumeration) -> bool{
 
 
 
@@ -84,7 +94,7 @@ class EnumerationUtil
 }
 
 
-    public: Object* nextElement(Enumeration<Object*>* enumeration){
+    auto EnumerationUtil::nextElement(Enumeration<Object*>* enumeration) -> Object*{
 
 
 
@@ -94,7 +104,7 @@ class EnumerationUtil
 }
 
 
-    public: std::vector<Object*> getAsArray(Enumeration<Object*>* enumeration){
+    auto EnumerationUtil::getAsArray(Enumeration<Object*>* enumeration) -> std::vector<Object*>{
 
     BasicArrayList* basicArrayList = new BasicArrayListD();;
     
@@ -114,7 +124,6 @@ basicArrayList->add(this->nextElement(enumeration));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_ENUMERATIONUTIL_CPP

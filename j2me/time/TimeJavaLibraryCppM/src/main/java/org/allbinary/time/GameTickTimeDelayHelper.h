@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPER_H
         #define ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,8 +57,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameTickTimeDelayHelper
-            : public Object
+            : public virtual Object
          {
 
     public: int64_t timeDelta= 0;
@@ -76,3 +85,10 @@ public: GameTickTimeDelayHelper(int64_t startTime);
 
 
         #endif //ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPER_H_COMPLETE
+        
+        #endif
+    

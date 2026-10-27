@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_RIGHTTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_RIGHTTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/trackball/action/RightTrackballInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RightTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* RightTrackballInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto RightTrackballInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(RightTrackballInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class RightTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestu
 }
 
 
-private: RightTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Right Action", TrackballMotionGestureFactory::getInstance()->RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+RightTrackballInputToGameKeyEventAction::RightTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Right Action", TrackballMotionGestureFactory::getInstance()->RIGHT, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: RightTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestur
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_RIGHTTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP

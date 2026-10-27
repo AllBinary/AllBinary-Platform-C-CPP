@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
 #include <org/allbinary/data/tables/TableMappingInterface.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
+class AbPath;
+class TransformInfoObjectConfigInterface;
+class Document;
 
 
 
@@ -64,6 +59,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class TransformInfoInterface: public TableMappingInterface {
 
@@ -105,11 +104,12 @@ class TransformInfoInterface: public TableMappingInterface {
 
     public: virtual void setObjectFile(std::string value) = 0;
 
-    public: virtual void setObject(Object anyType) = 0;
+    public: virtual void setObject(Object* anyType) = 0;
+    public: void setObject(const std::string& anyType) { return setObject(JavaString::box(anyType)); }
 
                 //@Throws(Exception.constructor)
             
-    public: virtual void setObjectConfigInterface(Object* transformInfoObjectConfigInterface) = 0;
+    public: virtual void setObjectConfigInterface(TransformInfoObjectConfigInterface* transformInfoObjectConfigInterface) = 0;
 
                 //@Throws(Exception.constructor)
             
@@ -133,3 +133,25 @@ class TransformInfoInterface: public TableMappingInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/TableMappingInterface.h>)
+#include <org/allbinary/data/tables/TableMappingInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+
+        #endif
+    

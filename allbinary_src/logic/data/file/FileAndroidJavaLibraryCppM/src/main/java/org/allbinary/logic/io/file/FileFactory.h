@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,14 +37,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/FileNotFoundException.h>
-
-      
-#include <android/content/Context.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
+class Context;
+class ResourceUtil;
 
 
 
@@ -58,13 +57,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/file/AbFile.h"
+        class AbFile;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static FileFactory* SINGLETON() { static std::unique_ptr<FileFactory> value(new FileFactory(ResourceUtil::getInstance()->getContext())); return value.get(); }
+    private: static FileFactory* SINGLETON_owner();
+    private: static FileFactory* SINGLETON;
 
     public: static FileFactory* getInstance();
 
@@ -92,3 +96,22 @@ private: FileFactory(Context* context);
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEFACTORY_H_COMPLETE
+        #if __has_include(<java/io/FileNotFoundException.h>)
+#include <java/io/FileNotFoundException.h>
+#endif
+#if __has_include(<android/content/Context.h>)
+#include <android/content/Context.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/io/file/AbFile.h")
+#include "org/allbinary/logic/io/file/AbFile.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_H
         #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UnitTechnologySingletonFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static UnitTechnologySingletonFactory* instance() { static std::unique_ptr<UnitTechnologySingletonFactory> value(new UnitTechnologySingletonFactory()); return value.get(); }
+    private: static UnitTechnologySingletonFactory* instance_owner();
+    private: static UnitTechnologySingletonFactory* instance;
 
     public: static UnitTechnologySingletonFactory* getInstance();
 
@@ -96,3 +106,10 @@ private: UnitTechnologySingletonFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_H_COMPLETE
+        
+        #endif
+    

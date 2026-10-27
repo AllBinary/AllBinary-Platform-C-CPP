@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/media/image/ImageModifierUtil.h>
-
-      
+class Image;
+class ImageModifierUtil;
 
 
 
@@ -53,12 +54,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AlphaProcessor: public ModifierBaseProcessor {
 
-    private: static AlphaProcessor* instanceC() { static std::unique_ptr<AlphaProcessor> value(new AlphaProcessor()); return value.get(); }
+    private: static AlphaProcessor* instanceC_owner();
+    private: static AlphaProcessor* instanceC;
 
     public: static AlphaProcessor* getInstance();
 
+
+            
+    public: AlphaProcessor();
+        
     public: void updateAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, int32_t alpha);
 
 };
@@ -67,3 +77,19 @@ class AlphaProcessor: public ModifierBaseProcessor {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALPHAPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageModifierUtil.h>)
+#include <org/allbinary/media/image/ImageModifierUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ModifierBaseProcessor.h")
+#include "org/allbinary/animation/image/ModifierBaseProcessor.h"
+#endif
+
+        #endif
+    

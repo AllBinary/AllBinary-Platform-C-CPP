@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/RandomPatrolAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,11 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/scroller/BasePatrolAI.h"
 
-class RandomPatrolAI: public BasePatrolAI {
 
-    private: bool changedDirection = true;
-
-public: RandomPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasePatrolAI(hashtable, ownerLayerInterface, gameInput){
+RandomPatrolAI::RandomPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasePatrolAI(hashtable, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,24 +89,24 @@ this->updateRandomDistance();
 }
 
 
-    private: void updateRandomDistance(){
-this->currentDistance= MyRandomFactory::getInstance()->getAbsoluteNextInt(this->maxDistance.intValue());
+    auto RandomPatrolAI::updateRandomDistance() -> void{
+this->currentDistance= MyRandomFactory::getInstance()->getAbsoluteNextInt(this->maxDistance->intValue());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
-super.update();
+    auto RandomPatrolAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
+BasePatrolAI::update();
     
-super.processKeyAI(this->keyDirection);
+BasePatrolAI::processKeyAI(this->keyDirection);
     
 
                         if(this->changedDirection)
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_NUM1);
+                                    BasePatrolAI::processKeyAI(Canvas::KEY_NUM1);
     
 this->updateRandomDistance();
     
@@ -111,15 +118,14 @@ this->changedDirection= false;
 }
 
 
-    protected: void nextDirection(){
-super.nextDirection();
+    auto RandomPatrolAI::nextDirection() -> void{
+BasePatrolAI::nextDirection();
     
 this->changedDirection= true;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLAI_CPP

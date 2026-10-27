@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_H
         #define ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,22 +52,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/GameInfo.h"
-#include "org/allbinary/game/GameTypeFactory.h"
-#include "org/allbinary/game/GameMode.h"
-#include "org/allbinary/game/PlayerTypesFactory.h"
+        class GameInfo;
+class GameTypeFactory;
+class GameMode;
+class PlayerTypesFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicHighScoresGameInfoFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicHighScoresGameInfoFactory* SINGLETON() { static std::unique_ptr<BasicHighScoresGameInfoFactory> value(new BasicHighScoresGameInfoFactory()); return value.get(); }
+    private: static BasicHighScoresGameInfoFactory* SINGLETON_owner();
+    private: static BasicHighScoresGameInfoFactory* SINGLETON;
 
     public: static BasicHighScoresGameInfoFactory* getInstance();
 
-    public: GameInfo* MULTI_PLAYER_SERVER = new GameInfo(GameTypeFactory::getInstance()->MULTI_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0);
 
-    public: GameInfo* SINGLE_PLAYER_SERVER = new GameInfo(GameTypeFactory::getInstance()->SINGLE_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE, 0, 0);
+            
+    public: BasicHighScoresGameInfoFactory();
+        
+    public: GameInfo* MULTI_PLAYER_SERVER;
+
+    public: GameInfo* SINGLE_PLAYER_SERVER;
 
 };
 
@@ -70,3 +84,22 @@ class BasicHighScoresGameInfoFactory
 
 
         #endif //ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_BASICHIGHSCORESGAMEINFOFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/GameInfo.h")
+#include "org/allbinary/game/GameInfo.h"
+#endif
+#if __has_include("org/allbinary/game/GameTypeFactory.h")
+#include "org/allbinary/game/GameTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/game/GameMode.h")
+#include "org/allbinary/game/GameMode.h"
+#endif
+#if __has_include("org/allbinary/game/PlayerTypesFactory.h")
+#include "org/allbinary/game/PlayerTypesFactory.h"
+#endif
+
+        #endif
+    

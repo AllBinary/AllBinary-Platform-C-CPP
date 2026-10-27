@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageModifierUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,31 +85,27 @@
         #include "org/allbinary/media/image/ImageUtil.h"
 #include "org/allbinary/media/image/ImageCreationUtil.h"
 
-class ImageModifierUtil
-            : public Object
-         {
 
-    private: static ImageModifierUtil* instance() { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
+ImageModifierUtil::ImageModifierUtil() : imageUtil(ImageUtil::getInstance()), colorArray(std::vector<int32_t>(1)) {
+        }
+        auto ImageModifierUtil::instance_owner() -> ImageModifierUtil* { static std::unique_ptr<ImageModifierUtil> value(new ImageModifierUtil()); return value.get(); }
+ImageModifierUtil* ImageModifierUtil::instance = ImageModifierUtil::instance_owner();
 
-    public: static ImageModifierUtil* getInstanceOrCreate(){
+    auto ImageModifierUtil::getInstanceOrCreate() -> ImageModifierUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageModifierUtil::instance();
+                        return ImageModifierUtil::instance;
     
 }
 
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto ImageModifierUtil::setBasicColorP(BasicColor* basicColor) -> void{
 }
 
 
-    private: const std::vector<int32_t> colorArray = std::vector<int32_t>(1);
-
-    public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+    auto ImageModifierUtil::setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
 
     BufferedImage* newBufferedImage = this->imageUtil->getBufferedImage(image);;
     
@@ -179,7 +185,7 @@ bx= colorModel->getBlue(dataElements);
 }
 
 
-    public: void changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor){
+    auto ImageModifierUtil::changeColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor) -> void{
 
     BufferedImage* newBufferedImage = this->imageUtil->getBufferedImage(image);;
     
@@ -261,7 +267,7 @@ newBufferedImage->setRGB(index, index2, (ax<<24) | (rx<<16) | (gx<<8) | (bx));
 }
 
 
-    public: void setAlpha(Image* unusedOriginalImage, Image* image, int32_t imageIndex, int32_t alphaInt){
+    auto ImageModifierUtil::setAlpha(Image* unusedOriginalImage, Image* image, int32_t imageIndex, int32_t alphaInt) -> void{
 
     int8_t alpha = alphaInt;;
     
@@ -304,7 +310,7 @@ raster->setPixel(index, index2, this->colorArray);
 }
 
 
-    public: std::vector<Image*> getImageArray(std::vector<Image*> originalImageArray){
+    auto ImageModifierUtil::getImageArray(std::vector<Image*> originalImageArray) -> std::vector<Image*>{
 
         try {
             
@@ -360,15 +366,14 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, "getImageArray", &e);
 }
 
 
-    public: void handleImage(std::vector<Image*> imageArray, int32_t index, Image* image){
+    auto ImageModifierUtil::handleImage(std::vector<Image*> imageArray, int32_t index, Image* image) -> void{
 }
 
 
-    public: void reset(){
+    auto ImageModifierUtil::reset() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_CPP

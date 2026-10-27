@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFIRERESOURCE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFIRERESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonFireResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
-class TouchButtonFireResource: public TouchButtonResource {
+TouchButtonResource* TouchButtonFireResource::instance = new TouchButtonFireResource();
 
-    private: static inline TouchButtonResource* instance = new TouchButtonFireResource();
-
-    public: static TouchButtonResource* getInstance(){
+    auto TouchButtonFireResource::getInstance() -> TouchButtonResource*{
 
 
 
@@ -58,7 +66,7 @@ class TouchButtonFireResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonFireResource() : TouchButtonResource("/touch_button_fire_64_by_64.png", "/touch_button_fire_hint_64_by_64.png"){
+TouchButtonFireResource::TouchButtonFireResource() : TouchButtonResource("/touch_button_fire_64_by_64.png", "/touch_button_fire_hint_64_by_64.png"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +76,6 @@ private: TouchButtonFireResource() : TouchButtonResource("/touch_button_fire_64_
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONFIRERESOURCE_CPP

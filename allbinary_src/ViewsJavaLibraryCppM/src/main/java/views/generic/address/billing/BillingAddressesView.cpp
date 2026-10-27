@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_BILLING_BILLINGADDRESSESVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_BILLING_BILLINGADDRESSESVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/billing/BillingAddressesView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -89,15 +99,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BillingAddressesView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HttpServletRequest* request;
-
-    protected: BasicArrayList* streetAddresses;
-
-public: BillingAddressesView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+BillingAddressesView::BillingAddressesView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -112,7 +115,7 @@ this->request= dynamic_cast<HttpServletRequest*>(httpTransformInfoInterface->get
 }
 
 
-    protected: HttpServletRequest* getRequest(){
+    auto BillingAddressesView::getRequest() -> HttpServletRequest*{
 
 
 
@@ -122,7 +125,7 @@ this->request= dynamic_cast<HttpServletRequest*>(httpTransformInfoInterface->get
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto BillingAddressesView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -158,10 +161,10 @@ billingAddressesNode->appendChild(ModDomHelper::createNameValueNodes(document, S
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -177,7 +180,7 @@ billingAddressesNode->appendChild(ModDomHelper::createNameValueNodes(document, S
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto BillingAddressesView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
@@ -185,7 +188,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto BillingAddressesView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -194,17 +197,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -219,7 +222,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_BILLING_BILLINGADDRESSESVIEW_CPP

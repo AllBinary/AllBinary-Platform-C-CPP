@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,55 +52,64 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/media/MediaData.h"
+        class MediaData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MediaDataFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static MediaDataFactory* instance() { static std::unique_ptr<MediaDataFactory> value(new MediaDataFactory()); return value.get(); }
+    private: static MediaDataFactory* instance_owner();
+    private: static MediaDataFactory* instance;
 
     public: static MediaDataFactory* getInstance();
 
-    public: MediaData* AVI = new MediaData("avi");
 
-    public: MediaData* BMP = new MediaData("bmp");
+            
+    public: MediaDataFactory();
+        
+    public: MediaData* AVI;
 
-    public: MediaData* CEL = new MediaData("cel");
+    public: MediaData* BMP;
 
-    public: MediaData* FITS = new MediaData("fits");
+    public: MediaData* CEL;
 
-    public: MediaData* FLI = new MediaData("fli");
+    public: MediaData* FITS;
 
-    public: MediaData* GBR = new MediaData("gbr");
+    public: MediaData* FLI;
 
-    public: MediaData* GIF = new MediaData("gif");
+    public: MediaData* GBR;
 
-    public: MediaData* GIH = new MediaData("gih");
+    public: MediaData* GIF;
 
-    public: MediaData* JPG = new MediaData("jpg");
+    public: MediaData* GIH;
 
-    public: MediaData* PIX = new MediaData("pix");
+    public: MediaData* JPG;
 
-    public: MediaData* PNG = new MediaData("png");
+    public: MediaData* PIX;
 
-    public: MediaData* PNM = new MediaData("pnm");
+    public: MediaData* PNG;
 
-    public: MediaData* PSD = new MediaData("psd");
+    public: MediaData* PNM;
 
-    public: MediaData* PSP = new MediaData("psp");
+    public: MediaData* PSD;
 
-    public: MediaData* PS = new MediaData("ps");
+    public: MediaData* PSP;
 
-    public: MediaData* SGI = new MediaData("SGI");
+    public: MediaData* PS;
 
-    public: MediaData* SWF = new MediaData("swf");
+    public: MediaData* SGI;
 
-    public: MediaData* TGA = new MediaData("tga");
+    public: MediaData* SWF;
 
-    public: MediaData* TIFF = new MediaData("tiff");
+    public: MediaData* TGA;
 
-    public: MediaData* WMF = new MediaData("wmf");
+    public: MediaData* TIFF;
+
+    public: MediaData* WMF;
 
 };
 
@@ -103,3 +117,13 @@ class MediaDataFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/visual/media/MediaData.h")
+#include "org/allbinary/logic/visual/media/MediaData.h"
+#endif
+
+        #endif
+    

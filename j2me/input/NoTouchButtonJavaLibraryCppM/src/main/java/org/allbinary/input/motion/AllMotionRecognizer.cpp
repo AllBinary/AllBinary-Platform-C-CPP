@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/AllMotionRecognizer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +57,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllMotionRecognizer
-            : public Object
-         {
 
-    private: static inline int32_t index = 0;
-
-    private: int32_t id;
-
-public: AllMotionRecognizer(){
+AllMotionRecognizer::AllMotionRecognizer(){
 this->id= AllMotionRecognizer::index++;
     
 }
@@ -63,35 +66,35 @@ this->id= AllMotionRecognizer::index++;
 
                 //@Throws(Exception.constructor)
             
-    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto AllMotionRecognizer::processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto AllMotionRecognizer::processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto AllMotionRecognizer::processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processMovedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto AllMotionRecognizer::processMovedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    auto AllMotionRecognizer::processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers) -> void{
 }
 
 
-    public: int32_t getId(){
+    auto AllMotionRecognizer::getId() -> int32_t{
 
 
 
@@ -101,7 +104,6 @@ this->id= AllMotionRecognizer::index++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_CPP

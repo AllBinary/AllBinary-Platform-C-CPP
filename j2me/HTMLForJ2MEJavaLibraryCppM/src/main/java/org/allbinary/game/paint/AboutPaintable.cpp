@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_ABOUTPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_ABOUTPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/AboutPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -72,9 +82,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //HTMLForJ2ME
-class AboutPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static AboutPaintable* getInstance(std::vector<std::string> info, std::vector<std::string> developers){
+    auto AboutPaintable::getInstance(std::vector<std::string> info, std::vector<std::string> developers) -> AboutPaintable*{
 
 
 
@@ -84,32 +93,10 @@ class AboutPaintable: public Paintable, public UpdateMyFontInterface {
 }
 
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: const std::string ABOUT = CanvasStrings::getInstance()->ABOUT;
-
-    private: std::vector<std::string> info;
-
-    private: std::vector<std::string> developers;
-
-    private: const std::vector<Paintable*> paintableArray = 
+AboutPaintable::AboutPaintable(std::vector<std::string> info, std::vector<std::string> developers) : displayInfoSingleton(DisplayInfoSingleton::getInstance()), ABOUT(CanvasStrings::getInstance()->ABOUT), paintableArray(
                                                         {
                                                             this
-                                                        };
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: int32_t charHeight= 0;
-
-    private: int32_t aboutBeginWidth= 0;
-
-    private: std::vector<int32_t> infoBeginWidth;
-
-    private: std::vector<int32_t> developersBeginWidth;
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-private: AboutPaintable(std::vector<std::string> info, std::vector<std::string> developers){
+                                                        }), myFontProcessor(new UpdateMyFontProcessor(this)), anchor(Anchor::TOP_LEFT){
 this->info= info;
     
 this->infoBeginWidth= std::vector<int32_t>(this->info.length);
@@ -121,7 +108,7 @@ this->developersBeginWidth= std::vector<int32_t>(this->developers.length);
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto AboutPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -162,7 +149,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: std::vector<Paintable*> getPaintableArrayInstance(){
+    auto AboutPaintable::getPaintableArrayInstance() -> std::vector<Paintable*>{
 
 
 
@@ -172,7 +159,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto AboutPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -211,7 +198,6 @@ graphics->drawString(this->developers[index], halfWidth -this->developersBeginWi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_ABOUTPAINTABLE_CPP

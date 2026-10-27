@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEWFACTORY_H
         #define ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEWFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class DomNodeInterface;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -58,10 +57,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/globals/UrlGlobalsView.h"
+        class UrlGlobalsView;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UrlGlobalsViewFactory
-            : public Object
+            : public virtual Object
          {
 
     public: static DomNodeInterface* getInstance();
@@ -74,3 +77,22 @@ private: UrlGlobalsViewFactory();
 
 
         #endif //ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEWFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEWFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEWFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/globals/UrlGlobalsView.h")
+#include "org/allbinary/globals/UrlGlobalsView.h"
+#endif
+
+        #endif
+    

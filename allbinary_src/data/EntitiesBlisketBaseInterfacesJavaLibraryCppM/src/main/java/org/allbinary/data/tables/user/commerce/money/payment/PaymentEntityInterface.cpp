@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/money/payment/PaymentEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,23 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getLastId(std::string userName) = 0;
 
-    public: virtual void setDefault(std::string userName, int32_t index) = 0;
 
-    public: virtual PaymentInterface* getDefault(std::string userName) = 0;
-
-    public: virtual BasicArrayList* get(std::string userName) = 0;
-
-    public: virtual void add(std::string userName, PaymentInterface* paymentInterface) = 0;
-
-    public: virtual void remove(std::string userName, int32_t index) = 0;
-
-    public: virtual void insert(BasicArrayList* values) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITYINTERFACE_CPP

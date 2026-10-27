@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKROADSGEOGRAPHICMAPCELLHISTORYFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKROADSGEOGRAPHICMAPCELLHISTORYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackRoadsGeographicMapCellHistoryFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,27 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTrackRoadsGeographicMapCellHistoryFactory
-            : public Object
-         {
+auto RaceTrackRoadsGeographicMapCellHistoryFactory::geographicMapCellHistory_owner() -> GeographicMapCellHistory* { static std::unique_ptr<GeographicMapCellHistory> value(new GeographicMapCellHistory()); return value.get(); }
+GeographicMapCellHistory* RaceTrackRoadsGeographicMapCellHistoryFactory::geographicMapCellHistory = RaceTrackRoadsGeographicMapCellHistoryFactory::geographicMapCellHistory_owner();
 
-    private: static GeographicMapCellHistory* geographicMapCellHistory() { static std::unique_ptr<GeographicMapCellHistory> value(new GeographicMapCellHistory()); return value.get(); }
+RaceTrackRoadsGeographicMapCellHistoryFactory::RaceTrackRoadsGeographicMapCellHistoryFactory(){
+}
 
-    public: static GeographicMapCellHistory* getInstance(){
+
+    auto RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance() -> GeographicMapCellHistory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackRoadsGeographicMapCellHistoryFactory::geographicMapCellHistory();
+                        return RaceTrackRoadsGeographicMapCellHistoryFactory::geographicMapCellHistory;
     
 }
 
 
-private: RaceTrackRoadsGeographicMapCellHistoryFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKROADSGEOGRAPHICMAPCELLHISTORYFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H
         #define ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,11 +37,7 @@
             #include "java/lang/RuntimeException.h"
         
 #include <java/util/Calendar.h>
-
-      
 //#include <java/util/Date.h>
-
-      
 
 
 
@@ -55,12 +56,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //NoPlatform
-// class TimeStampUtil
-            : public Object
+class TimeStampUtil
+            : public virtual Object
          {
 
-    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
+    private: static inline TimeStampUtil* instance;
 
     public: static TimeStampUtil* getInstance();
 
@@ -74,3 +79,14 @@
 
 
         #endif //ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_TIMESTAMPUTIL_H_COMPLETE
+        #if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+
+
+        #endif
+    

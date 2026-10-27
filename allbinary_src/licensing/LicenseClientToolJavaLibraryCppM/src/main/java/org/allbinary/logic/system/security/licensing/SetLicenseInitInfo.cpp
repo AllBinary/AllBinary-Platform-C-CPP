@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SETLICENSEINITINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SETLICENSEINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/SetLicenseInitInfo.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -83,26 +93,10 @@
         #include "org/allbinary/logic/system/security/licensing/BasicArrayListD.h"
 #include "org/allbinary/logic/system/security/licensing/PrintLicenseInitInfo.h"
 
-class SetLicenseInitInfo
-            : public Object
-         {
+auto SetLicenseInitInfo::stdinput_owner() -> BufferedReader* { static std::unique_ptr<BufferedReader> value(new BufferedReader(new InputStreamReader(System.in))); return value.get(); }
+BufferedReader* SetLicenseInitInfo::stdinput = SetLicenseInitInfo::stdinput_owner();
 
-    private: static BufferedReader* stdinput() { static std::unique_ptr<BufferedReader> value(new BufferedReader(new InputStreamReader(System.in))); return value.get(); }
-
-                //@Throws(Exception.constructor)
-            
-    public: static void main(std::vector<std::string> args){
-
-    SetLicenseInitInfo* initInfo = new SetLicenseInitInfo(args);;
-    
-initInfo->createNewLicenseInitInfo(new BasicArrayListD());
-    
-}
-
-
-    private: BasicArrayList* vector = new BasicArrayListD();
-
-public: SetLicenseInitInfo(std::vector<std::string> options){
+SetLicenseInitInfo::SetLicenseInitInfo(std::vector<std::string> options) : vector(new BasicArrayListD()){
 LicenseInitInfoUtil::getInstance()->setFilePath(PrintLicenseInitInfo::PATH +PATH_GLOBALS::getInstance()->INIT_PATH);
     
 
@@ -121,7 +115,7 @@ this->vector->add(options[index]);
 
                 //@Throws(Exception.constructor)
             
-    public: LicenseInitInfo* getLicenseInitInfo(){
+    auto SetLicenseInitInfo::getLicenseInitInfo() -> LicenseInitInfo*{
 
     LicenseInitInfoUtil* licenseInitInfoUtil = LicenseInitInfoUtil::getInstance();;
     
@@ -151,7 +145,7 @@ this->vector->add(options[index]);
 }
 
 
-    public: void createNewLicenseInitInfo(BasicArrayList* licenceServerVector){
+    auto SetLicenseInitInfo::createNewLicenseInitInfo(BasicArrayList* licenceServerVector) -> void{
 
         try {
             
@@ -163,7 +157,7 @@ this->vector->add(options[index]);
                                     
 
 
-                            throw new Exception("null BasicArrayList Passed - Just Make Empty if you want");
+                            throw Exception("null BasicArrayList Passed - Just Make Empty if you want");
                     
 
                                     }
@@ -176,7 +170,7 @@ System.out.println("License Serv Example: http://www.dartstatistics.com/LicServ/
 licenseInitInfo->clearServers();
     
 
-    File* file = new File(PrintLicenseInitInfo::PATH +"licenseservers.txt");;
+    File* file = new File(JavaString::valueOf(PrintLicenseInitInfo::PATH) +JavaString::valueOf("licenseservers.txt"));;
     
 
     FileReader* reader = new FileReader(file);;
@@ -216,7 +210,7 @@ LicenseInitInfoUtil::getInstance()->read();
                 //: 
 } catch(Exception& e) 
             {
-System.out.print("Error: " +e);
+System.out.print(JavaString::valueOf("Error: ") +JavaString::valueOf(e));
     
 e.printStackTrace();
     
@@ -225,7 +219,17 @@ e.printStackTrace();
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto SetLicenseInitInfo::main(std::vector<std::string> args) -> void{
 
+    SetLicenseInitInfo* initInfo = new SetLicenseInitInfo(args);;
+    
+initInfo->createNewLicenseInitInfo(new BasicArrayListD());
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SETLICENSEINITINFO_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,26 +39,12 @@
             #include "java/lang/RuntimeException.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/category/properties/CategoryPropertiesFactory.h>
-
-      
-#include <org/allbinary/business/category/properties/CategoryPropertiesFactoryInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class CategoryPropertiesFactory;
+class CategoryPropertiesFactoryInterface;
+class LogUtil;
+class AbPath;
+class CommonStrings;
+class Node;
 
 
 
@@ -73,16 +64,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/CategoryFactoryInterface.h"
-#include "org/allbinary/business/category/CategoryInterface.h"
-#include "org/allbinary/business/category/Category.h"
+class CategoryInterface;
+class Category;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoryAbstractFactory
-            : public Object
+            : public virtual Object
         , public CategoryFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
 public: CategoryAbstractFactory();
 
@@ -108,3 +103,40 @@ public: CategoryAbstractFactory();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/category/properties/CategoryPropertiesFactory.h>)
+#include <org/allbinary/business/category/properties/CategoryPropertiesFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/category/properties/CategoryPropertiesFactoryInterface.h>)
+#include <org/allbinary/business/category/properties/CategoryPropertiesFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/category/CategoryFactoryInterface.h")
+#include "org/allbinary/business/category/CategoryFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/business/category/CategoryInterface.h")
+#include "org/allbinary/business/category/CategoryInterface.h"
+#endif
+#if __has_include("org/allbinary/business/category/Category.h")
+#include "org/allbinary/business/category/Category.h"
+#endif
+
+        #endif
+    

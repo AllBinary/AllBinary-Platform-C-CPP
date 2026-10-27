@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_LICENSEREGISTRATIONUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_LICENSEREGISTRATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/registration/LicenseRegistrationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,18 +77,19 @@
         #include "org/allbinary/logic/system/security/licensing/registration/RegistrationConfiguration.h"
 #include "org/allbinary/logic/system/security/licensing/registration/XmlRpcRemoteLicenseRegistrationClient.h"
 
-class LicenseRegistrationUtil
-            : public Object
-         {
+
+LicenseRegistrationUtil::LicenseRegistrationUtil(){
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void process(AbeClientInformationInterface* abeClientInformation, std::string registrationId){
+    auto LicenseRegistrationUtil::process(AbeClientInformationInterface* abeClientInformation, std::string registrationId) -> void{
 
         try {
             
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil::put(CommonLabels::getInstance()->START_LABEL +"License Registration", "LicenseRegistrationUtil", commonStrings->PROCESS);
+PreLogUtil::put(JavaString::valueOf(CommonLabels::getInstance()->START_LABEL) +JavaString::valueOf("License Registration"), "LicenseRegistrationUtil", commonStrings->PROCESS);
     
 
     RegistrationConfiguration* registrationConfiguration = RegistrationConfiguration::getInstance();;
@@ -107,11 +118,6 @@ PreLogUtil::putOE("License Registration Exception", "LicenseRegistrationUtil", "
 }
 
 
-private: LicenseRegistrationUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_LICENSEREGISTRATIONUTIL_CPP

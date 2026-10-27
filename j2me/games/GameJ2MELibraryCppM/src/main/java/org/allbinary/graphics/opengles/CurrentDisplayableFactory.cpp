@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_CURRENTDISPLAYABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_CURRENTDISPLAYABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/CurrentDisplayableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -115,51 +125,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 
-class CurrentDisplayableFactory
-            : public Object
-         {
+auto CurrentDisplayableFactory::instance_owner() -> CurrentDisplayableFactory* { static std::unique_ptr<CurrentDisplayableFactory> value(new CurrentDisplayableFactory()); return value.get(); }
+CurrentDisplayableFactory* CurrentDisplayableFactory::instance = CurrentDisplayableFactory::instance_owner();
 
-    private: static CurrentDisplayableFactory* instance() { static std::unique_ptr<CurrentDisplayableFactory> value(new CurrentDisplayableFactory()); return value.get(); }
-
-    public: static CurrentDisplayableFactory* getInstance(){
+    auto CurrentDisplayableFactory::getInstance() -> CurrentDisplayableFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CurrentDisplayableFactory::instance();
+                        return CurrentDisplayableFactory::instance;
     
 }
 
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    private: const std::string SET_DISPLAYABLE = "setDisplayable";
-
-    private: const std::string SET_RUNNABLE = "setRunnable";
-
-    private: const std::string CLEAR_RUNNABLE = "clearRunnable";
-
-    private: const std::string SET_USED_RUNNABLE = "setUsedRunnable";
-
-    private: const std::string RUNNABLE = "Runnable: ";
-
-    private: const std::string RUNNABLE_WAS_ALREADY_IN_USE = "Runnable was already in use: ";
-
-    public: BasicArrayList* DEFAULT_CHILD_NAME_LIST = new BasicArrayListD();
-
-    private: Displayable* displayable = NullDisplayable::getInstance();
-
-    private: Displayable* openGlReadydisplayable = NullDisplayable::getInstance();
-
-    private: GameRunnable* runnable = NullWaitGameRunnable::getInstance();
-
-    private: GameRunnable* usedRunnable = NullWaitGameRunnable::getInstance();
-
-private: CurrentDisplayableFactory(){
+CurrentDisplayableFactory::CurrentDisplayableFactory() : commonStrings(CommonStrings::getInstance()), canvasStrings(CanvasStrings::getInstance()), stringUtil(StringUtil::getInstance()), DEFAULT_CHILD_NAME_LIST(new BasicArrayListD()), displayable(NullDisplayable::getInstance()), openGlReadydisplayable(NullDisplayable::getInstance()), runnable(NullWaitGameRunnable::getInstance()), usedRunnable(NullWaitGameRunnable::getInstance()){
 this->DEFAULT_CHILD_NAME_LIST->add(this->canvasStrings->ABOUT);
     
 this->DEFAULT_CHILD_NAME_LIST->add(this->canvasStrings->OPTIONS);
@@ -173,7 +152,7 @@ this->DEFAULT_CHILD_NAME_LIST->add(HighScoresCanvas::NAME);
 }
 
 
-    public: void setMyCanvas(MyCanvas* displayable){
+    auto CurrentDisplayableFactory::setMyCanvas(MyCanvas* displayable) -> void{
 
                         if(
                                         (dynamic_cast<const MyCanvas*>(this->displayable) != nullptr)
@@ -203,7 +182,7 @@ this->setDisplayable(displayable);
 }
 
 
-    public: void setDisplayable(Displayable* displayable){
+    auto CurrentDisplayableFactory::setDisplayable(Displayable* displayable) -> void{
 this->displayable= displayable;
     
 this->setOpenGlReadydisplayable(displayable);
@@ -211,7 +190,7 @@ this->setOpenGlReadydisplayable(displayable);
 }
 
 
-    public: void setOpenGlReadydisplayable(Displayable* openGlReadydisplayable){
+    auto CurrentDisplayableFactory::setOpenGlReadydisplayable(Displayable* openGlReadydisplayable) -> void{
 this->openGlReadydisplayable= openGlReadydisplayable;
     
 this->update();
@@ -219,7 +198,7 @@ this->update();
 }
 
 
-    public: Displayable* getOpenGlReadydisplayable(){
+    auto CurrentDisplayableFactory::getOpenGlReadydisplayable() -> Displayable*{
 
 
 
@@ -229,7 +208,7 @@ this->update();
 }
 
 
-    public: void setRunnable(GameRunnable* runnable){
+    auto CurrentDisplayableFactory::setRunnable(GameRunnable* runnable) -> void{
 PreLogUtil::put((new StringMaker())->append(this->RUNNABLE)->append(this->stringUtil->toString(runnable))->toString(), this, this->SET_RUNNABLE);
     
 this->runnable= runnable;
@@ -252,7 +231,7 @@ this->runnable= runnable;
 }
 
 
-    public: void clearRunnable(){
+    auto CurrentDisplayableFactory::clearRunnable() -> void{
 PreLogUtil::put((new StringMaker())->append(this->RUNNABLE)->append(this->stringUtil->toString(NullRunnable::getInstance()))->toString(), this, this->CLEAR_RUNNABLE);
     
 this->setUsedRunnable(NullWaitGameRunnable::getInstance());
@@ -260,7 +239,7 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 }
 
 
-    private: void update(){
+    auto CurrentDisplayableFactory::update() -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -309,7 +288,7 @@ this->setUsedRunnable(this->runnable);
                                  || features->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
                                     {
-                                    PreLogUtil::put(stringMaker->append(commonSeps->SPACE)->append(OpenGLFeatureFactory::getInstance()->OPENGL.toString())->append(commonSeps->SPACE)->append(this->RUNNABLE)->append(this->stringUtil->toString(this->runnable))->toString(), this, this->commonStrings->UPDATE);
+                                    PreLogUtil::put(stringMaker->append(commonSeps->SPACE)->append(OpenGLFeatureFactory::getInstance()->OPENGL->toString())->append(commonSeps->SPACE)->append(this->RUNNABLE)->append(this->stringUtil->toString(this->runnable))->toString(), this, this->commonStrings->UPDATE);
     
 this->setUsedRunnable(this->runnable);
     
@@ -329,7 +308,7 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 }
 
 
-    public: Displayable* getDisplayable(){
+    auto CurrentDisplayableFactory::getDisplayable() -> Displayable*{
 
 
 
@@ -339,7 +318,7 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 }
 
 
-    public: GameRunnable* getUsedRunnable(){
+    auto CurrentDisplayableFactory::getUsedRunnable() -> GameRunnable*{
 
 
 
@@ -349,7 +328,7 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 }
 
 
-    public: void setUsedRunnable(GameRunnable* usedRunnable){
+    auto CurrentDisplayableFactory::setUsedRunnable(GameRunnable* usedRunnable) -> void{
 PreLogUtil::put((new StringMaker())->append(this->RUNNABLE)->append(this->stringUtil->toString(this->runnable))->append(CommonSeps::getInstance()->COLON_SEP)->append(this->stringUtil->toString(usedRunnable))->toString(), this, this->SET_USED_RUNNABLE);
     
 this->usedRunnable= usedRunnable;
@@ -357,7 +336,6 @@ this->usedRunnable= usedRunnable;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_CURRENTDISPLAYABLEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/BasicArrayListResetablePool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
 #include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
 #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
-class BasicArrayListResetablePool: public AbstractArrayListPool {
 
-public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : AbstractArrayListPool(cacheableInterfaceFactoryInterface){
+BasicArrayListResetablePool::BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : AbstractArrayListPool(cacheableInterfaceFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,15 +71,15 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheabl
 }
 
 
-    public: void clear(){
+    auto BasicArrayListResetablePool::clear() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface* remove(Object* key){
+    auto BasicArrayListResetablePool::remove(Object* key) -> CacheableInterface*{
 
-    int32_t size = this->buffers.size();;
+    int32_t size = this->buffers->size();;
     
 
                         if(size > 0)
@@ -80,7 +89,7 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheabl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return dynamic_cast<CacheableInterface*>(this->buffers.removeAt(size -1));
+                        return dynamic_cast<CacheableInterface*>(this->buffers->removeAt(size -1));
     
 
                                     }
@@ -90,7 +99,7 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheabl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cacheableInterfaceFactoryInterface.getInstance(key);;
+                        return this->cacheableInterfaceFactoryInterface->getInstance(key);;
     
 
                         }
@@ -98,7 +107,6 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheabl
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_CPP

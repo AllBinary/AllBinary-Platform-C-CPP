@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/HtmlTags.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,19 +65,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/html/HtmlTag.h"
 
-class HtmlTags
-            : public Object
-         {
 
-    private: BasicArrayList* htmlTagVector;
-
-public: HtmlTags(){
+HtmlTags::HtmlTags(){
 this->htmlTagVector= new BasicArrayListD();
     
 }
 
 
-    public: HtmlTag* get(int32_t index){
+    auto HtmlTags::get(int32_t index) -> HtmlTag*{
 
 
 
@@ -77,13 +82,13 @@ this->htmlTagVector= new BasicArrayListD();
 }
 
 
-    public: void add(HtmlTag* htmlTag){
+    auto HtmlTags::add(HtmlTag* htmlTag) -> void{
 this->htmlTagVector->add(htmlTag);
     
 }
 
 
-    public: int32_t size(){
+    auto HtmlTags::size() -> int32_t{
 
 
 
@@ -93,7 +98,6 @@ this->htmlTagVector->add(htmlTag);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_CPP

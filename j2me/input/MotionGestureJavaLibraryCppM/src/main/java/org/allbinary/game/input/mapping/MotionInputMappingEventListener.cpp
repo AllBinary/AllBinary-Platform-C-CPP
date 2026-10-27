@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_MOTIONINPUTMAPPINGEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_MOTIONINPUTMAPPINGEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/MotionInputMappingEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,11 +78,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionInputMappingEventListener
-            : public Object
-        , public InputMappingEventListenerInterface {
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+MotionInputMappingEventListener::MotionInputMappingEventListener() {
+        }
+        
+    auto MotionInputMappingEventListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -80,7 +90,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    public: void onInputMappingEvent(InputMappingEvent* inputMappingEvent){
+    auto MotionInputMappingEventListener::onInputMappingEvent(InputMappingEvent* inputMappingEvent) -> void{
 GameKeyCompleteMotionGestureInputEventFactory::getInstance()->updateAll();
     
 BasicTouchInputFactory::getInstance()->updateAll(inputMappingEvent->getInputToGameKeyMapping());
@@ -88,7 +98,6 @@ BasicTouchInputFactory::getInstance()->updateAll(inputMappingEvent->getInputToGa
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_MOTIONINPUTMAPPINGEVENTLISTENER_CPP

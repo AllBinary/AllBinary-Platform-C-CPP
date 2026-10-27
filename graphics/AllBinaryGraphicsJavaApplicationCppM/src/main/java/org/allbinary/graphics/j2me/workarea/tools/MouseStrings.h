@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_MOUSESTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_MOUSESTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class CommonSeps;
 
 
 
@@ -51,14 +54,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MouseStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static MouseStrings* instance() { static std::unique_ptr<MouseStrings> value(new MouseStrings()); return value.get(); }
+    private: static MouseStrings* instance_owner();
+    private: static MouseStrings* instance;
 
     public: static MouseStrings* getInstance();
 
+
+            
+    public: MouseStrings();
+        
     public: const std::string MOUSE_PRESSED = "mousePressed";
 
     public: const std::string MOUSE_RELEASED = "mouseReleased";
@@ -69,15 +81,15 @@ class MouseStrings
 
     public: const std::string MOUSE_MOVED = "mouseMoved";
 
-    public: const std::string MOUSE_PRESSED_LABEL = "MousePressed" +CommonSeps::getInstance()->COLON_SEP;
+    public: const std::string MOUSE_PRESSED_LABEL;
 
-    public: const std::string MOUSE_RELEASED_LABEL = "MouseReleased" +CommonSeps::getInstance()->COLON_SEP;
+    public: const std::string MOUSE_RELEASED_LABEL;
 
-    public: const std::string MOUSE_CLICKED_LABEL = "MouseClicked" +CommonSeps::getInstance()->COLON_SEP;
+    public: const std::string MOUSE_CLICKED_LABEL;
 
-    public: const std::string MOUSE_DRAGGED_LABEL = "MouseDragged" +CommonSeps::getInstance()->COLON_SEP;
+    public: const std::string MOUSE_DRAGGED_LABEL;
 
-    public: const std::string MOUSE_MOVED_LABEL = "MouseMoved" +CommonSeps::getInstance()->COLON_SEP;
+    public: const std::string MOUSE_MOVED_LABEL;
 
 };
 
@@ -85,3 +97,13 @@ class MouseStrings
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_MOUSESTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_MOUSESTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_MOUSESTRINGS_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

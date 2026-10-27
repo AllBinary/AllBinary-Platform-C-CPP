@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTH_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTH_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class ForcedLogUtil;
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -57,14 +56,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/health/HealthInterface.h"
-#include "org/allbinary/game/health/NullHealthListener.h"
-#include "org/allbinary/game/health/HealthListenerInterface.h"
+class NullHealthListener;
+class HealthListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Health
-            : public Object
+            : public virtual Object
         , public HealthInterface {
 
-    public: static Health* NULL_HEALTH() { static std::unique_ptr<Health> value(new Health(0)); return value.get(); }
+    private: static Health* NULL_HEALTH_owner();
+    public: static Health* NULL_HEALTH;
 
     public: static inline const std::string NAME = "Health Resource";
 
@@ -76,7 +80,7 @@ class Health
 
     private: int32_t maxHealth= 0;
 
-    private: HealthListenerInterface* healthListenerInterface = NullHealthListener::NULL_HEALTH_LISTENER;
+    private: HealthListenerInterface* healthListenerInterface;
 
 public: Health(int32_t maxHealth);
 
@@ -108,3 +112,28 @@ public: Health(int32_t maxHealth);
 
 
         #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTH_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_HEALTH_HEALTH_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTH_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/game/health/HealthInterface.h")
+#include "org/allbinary/game/health/HealthInterface.h"
+#endif
+#if __has_include("org/allbinary/game/health/NullHealthListener.h")
+#include "org/allbinary/game/health/NullHealthListener.h"
+#endif
+#if __has_include("org/allbinary/game/health/HealthListenerInterface.h")
+#include "org/allbinary/game/health/HealthListenerInterface.h"
+#endif
+
+        #endif
+    

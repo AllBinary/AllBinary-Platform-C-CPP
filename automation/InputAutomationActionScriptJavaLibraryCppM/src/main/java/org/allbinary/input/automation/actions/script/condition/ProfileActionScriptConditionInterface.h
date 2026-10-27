@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,14 +37,8 @@
             #include "java/lang/Long.h"
         
 #include <org/allbinary/input/automation/actions/script/ProfileActionScriptItemInterface.h>
-
-      
 #include <org/allbinary/input/automation/actions/script/ProfileActionScriptNodeInterface.h>
-
-      
-#include <org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h>
-
-      
+class ProfileActionScriptProcessorInterface;
 
 
 
@@ -60,6 +59,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/CustomTreeNodeInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ProfileActionScriptConditionInterface: public ProfileActionScriptNodeInterface, public CustomTreeNodeInterface, public ProfileActionScriptItemInterface {
 
     public: virtual void addProcessor(ProfileActionScriptProcessorInterface* profileActionProcessorInterface) = 0;
@@ -76,3 +79,22 @@ class ProfileActionScriptConditionInterface: public ProfileActionScriptNodeInter
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/actions/script/ProfileActionScriptItemInterface.h>)
+#include <org/allbinary/input/automation/actions/script/ProfileActionScriptItemInterface.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/actions/script/ProfileActionScriptNodeInterface.h>)
+#include <org/allbinary/input/automation/actions/script/ProfileActionScriptNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h>)
+#include <org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h>
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/CustomTreeNodeInterface.h")
+#include "org/allbinary/input/automation/actions/script/condition/CustomTreeNodeInterface.h"
+#endif
+
+        #endif
+    

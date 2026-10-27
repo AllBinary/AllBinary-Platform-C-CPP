@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCE_CPP
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ai/ArtificialIntelligence.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,35 +61,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/ai/ArtificialIntelligenceInterface.h"
 
-class ArtificialIntelligence
-            : public Object
-        , public ArtificialIntelligenceInterface {
+auto ArtificialIntelligence::instance_owner() -> ArtificialIntelligence* { static std::unique_ptr<ArtificialIntelligence> value(new ArtificialIntelligence()); return value.get(); }
+ArtificialIntelligence* ArtificialIntelligence::instance = ArtificialIntelligence::instance_owner();
 
-    public: static inline const int32_t AI_ID = 2;
-
-    private: static ArtificialIntelligence* instance() { static std::unique_ptr<ArtificialIntelligence> value(new ArtificialIntelligence()); return value.get(); }
-
-    public: static ArtificialIntelligence* getInstance(){
+    auto ArtificialIntelligence::getInstance() -> ArtificialIntelligence*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArtificialIntelligence::instance();
+                        return ArtificialIntelligence::instance;
     
 }
 
 
-public: ArtificialIntelligence(){
+ArtificialIntelligence::ArtificialIntelligence(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* layerManager){
+    auto ArtificialIntelligence::processAI(AllBinaryLayerManager* layerManager) -> void{
 }
 
 
-    public: int32_t getId(){
+    auto ArtificialIntelligence::getId() -> int32_t{
 
 
 
@@ -89,7 +94,6 @@ public: ArtificialIntelligence(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCE_CPP

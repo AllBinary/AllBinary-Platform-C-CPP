@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ITEMARRAYSINGLETONFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ITEMARRAYSINGLETONFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,9 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/form/item/ABCustomItem.h"
+        class ABCustomItem;
 
-class ItemArraySingletonFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ItemArraySingletonFactoryInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -63,3 +74,13 @@ class ItemArraySingletonFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ITEMARRAYSINGLETONFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ITEMARRAYSINGLETONFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ITEMARRAYSINGLETONFACTORYINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/form/item/ABCustomItem.h")
+#include "org/allbinary/graphics/form/item/ABCustomItem.h"
+#endif
+
+        #endif
+    

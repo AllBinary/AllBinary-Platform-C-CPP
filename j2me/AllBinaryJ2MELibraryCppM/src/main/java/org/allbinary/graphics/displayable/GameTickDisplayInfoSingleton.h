@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,25 +52,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+        class DisplayInfoSingleton;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameTickDisplayInfoSingleton
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameTickDisplayInfoSingleton* instance() { static std::unique_ptr<GameTickDisplayInfoSingleton> value(new GameTickDisplayInfoSingleton()); return value.get(); }
+    private: static GameTickDisplayInfoSingleton* instance_owner();
+    private: static GameTickDisplayInfoSingleton* instance;
 
     public: static GameTickDisplayInfoSingleton* getInstance();
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: int32_t lastWidth = this->displayInfoSingleton->getLastWidth();
+            
+    public: GameTickDisplayInfoSingleton();
+        
+    private: DisplayInfoSingleton* displayInfoSingleton;
 
-    private: int32_t lastHeight = this->displayInfoSingleton->getLastHeight();
+    private: int32_t lastWidth;
 
-    private: int32_t lastHalfWidth = this->displayInfoSingleton->getLastHalfWidth();
+    private: int32_t lastHeight;
 
-    private: int32_t lastHalfHeight = this->displayInfoSingleton->getLastHalfHeight();
+    private: int32_t lastHalfWidth;
+
+    private: int32_t lastHalfHeight;
 
     public: void update();
 
@@ -83,3 +97,13 @@ class GameTickDisplayInfoSingleton
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_GAMETICKDISPLAYINFOSINGLETON_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
+
+        #endif
+    

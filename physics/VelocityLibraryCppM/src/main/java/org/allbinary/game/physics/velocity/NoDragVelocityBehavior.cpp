@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_NODRAGVELOCITYBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_NODRAGVELOCITYBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/velocity/NoDragVelocityBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
 
-class NoDragVelocityBehavior: public VelocityBehaviorBase {
 
-    public: static NoDragVelocityBehavior* instance() { static std::unique_ptr<NoDragVelocityBehavior> value(new NoDragVelocityBehavior()); return value.get(); }
+NoDragVelocityBehavior::NoDragVelocityBehavior() {
+        }
+        auto NoDragVelocityBehavior::instance_owner() -> NoDragVelocityBehavior* { static std::unique_ptr<NoDragVelocityBehavior> value(new NoDragVelocityBehavior()); return value.get(); }
+NoDragVelocityBehavior* NoDragVelocityBehavior::instance = NoDragVelocityBehavior::instance_owner();
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_NODRAGVELOCITYBEHAVIOR_CPP

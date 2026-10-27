@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/queue/BasicEmailQueue.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,14 +70,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
 
-class BasicEmailQueue: public BasicQueue, public EmailQueueInterface {
+auto BasicEmailQueue::instance_owner() -> BasicEmailQueue* { static std::unique_ptr<BasicEmailQueue> value(new BasicEmailQueue()); return value.get(); }
+BasicEmailQueue* BasicEmailQueue::instance = BasicEmailQueue::instance_owner();
 
-    private: static BasicEmailQueue* instance() { static std::unique_ptr<BasicEmailQueue> value(new BasicEmailQueue()); return value.get(); }
+BasicEmailQueue::BasicEmailQueue() : logUtil(LogUtil::getInstance()){
+}
 
-    private: static inline BasicEmailQueue* basicEmailQueue;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static BasicEmailQueue* getInstance(){
+    auto BasicEmailQueue::getInstance() -> BasicEmailQueue*{
 
                         if(BasicEmailQueue::basicEmailQueue == 
                                     nullptr
@@ -88,16 +99,10 @@ class BasicEmailQueue: public BasicQueue, public EmailQueueInterface {
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: BasicEmailQueue(){
-}
-
-
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool offer(EmailInterface* emailInterface){
+    auto BasicEmailQueue::offer(EmailInterface* emailInterface) -> bool{
 this->offer(emailInterface);
     
 this->post(emailInterface);
@@ -112,14 +117,14 @@ this->post(emailInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void remove(EmailInterface* emailInterface){
+    auto BasicEmailQueue::remove(EmailInterface* emailInterface) -> void{
 this->remove(emailInterface);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: EmailInterface* remove(){
+    auto BasicEmailQueue::remove() -> EmailInterface*{
 
 
 
@@ -132,7 +137,7 @@ this->remove(emailInterface);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void post(EmailInterface* emailInterface){
+    auto BasicEmailQueue::post(EmailInterface* emailInterface) -> void{
 
                         if(this->send(emailInterface))
                         
@@ -150,7 +155,7 @@ this->processAllUnsent();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void processAllUnsent(){
+    auto BasicEmailQueue::processAllUnsent() -> void{
 
     int32_t size = queueVector.size();;
     
@@ -181,14 +186,14 @@ this->processAllUnsent();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: bool send(EmailInterface* emailInterface){
+    auto BasicEmailQueue::send(EmailInterface* emailInterface) -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Sending: " +emailInterface->log(), this, "send");
+                                    this->logUtil->putF(JavaString::valueOf("Sending: ") +JavaString::valueOf(emailInterface->log()), this, "send");
     
 
                                     }
@@ -196,10 +201,10 @@ this->processAllUnsent();
 Transport::send(emailInterface->getMimeMessage());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Email Send Debug: " +emailInterface->getDebugInfo(), this, "send");
+                                    this->logUtil->putF(JavaString::valueOf("Email Send Debug: ") +JavaString::valueOf(emailInterface->getDebugInfo()), this, "send");
     
 
                                     }
@@ -215,10 +220,10 @@ Transport::send(emailInterface->getMimeMessage());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil->put("Failed Email Send Debug: " +emailInterface->getDebugInfo(), this, "send", &e);
+                                    this->logUtil->put(JavaString::valueOf("Failed Email Send Debug: ") +JavaString::valueOf(emailInterface->getDebugInfo()), this, "send", &e);
     
 
                                     }
@@ -234,7 +239,6 @@ Transport::send(emailInterface->getMimeMessage());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_CPP

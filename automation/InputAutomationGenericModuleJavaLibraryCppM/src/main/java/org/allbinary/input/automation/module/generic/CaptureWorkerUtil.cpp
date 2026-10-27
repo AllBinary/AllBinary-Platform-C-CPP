@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CAPTUREWORKERUTIL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CAPTUREWORKERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/CaptureWorkerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CaptureWorkerUtil
-            : public Object
-         {
+
+CaptureWorkerUtil::CaptureWorkerUtil() : logUtil(LogUtil::getInstance()){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static void processProfileActionConditions(BasicArrayList* vector, int64_t frame){
+    auto CaptureWorkerUtil::processProfileActionConditions(BasicArrayList* vector, int64_t frame) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -110,13 +121,6 @@ logUtil->putF(commonStrings->START, "CaptureWorkerUtil", "processProfileActionCo
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: CaptureWorkerUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CAPTUREWORKERUTIL_CPP

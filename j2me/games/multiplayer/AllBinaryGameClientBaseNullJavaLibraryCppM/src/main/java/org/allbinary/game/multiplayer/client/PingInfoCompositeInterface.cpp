@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_CLIENT_PINGINFOCOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_MULTIPLAYER_CLIENT_PINGINFOCOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/multiplayer/client/PingInfoCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,11 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PingInfoCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual void setPingInfo(bool show) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_MULTIPLAYER_CLIENT_PINGINFOCOMPOSITEINTERFACE_CPP

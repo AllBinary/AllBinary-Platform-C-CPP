@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class AllBinaryEventObject;
+class EventListenerInterface;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -56,11 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/midlet/GameMidletEventListener.h"
+        class GameMidletEventListener;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameMidletEventHandler: public BasicEventHandler {
 
-    private: static GameMidletEventHandler* gameKeyEventHandler() { static std::unique_ptr<GameMidletEventHandler> value(new GameMidletEventHandler()); return value.get(); }
+    private: static GameMidletEventHandler* gameKeyEventHandler_owner();
+    private: static GameMidletEventHandler* gameKeyEventHandler;
 
     public: static GameMidletEventHandler* getInstance();
 
@@ -68,7 +72,7 @@ private: GameMidletEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -76,3 +80,22 @@ private: GameMidletEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include("org/allbinary/game/midlet/GameMidletEventListener.h")
+#include "org/allbinary/game/midlet/GameMidletEventListener.h"
+#endif
+
+        #endif
+    

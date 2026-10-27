@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/AbeNoLicense.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,29 +67,24 @@
 #include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
 #include "org/allbinary/logic/system/security/licensing/LicenseType.h"
 
-class AbeNoLicense
-            : public Object
-        , public AbeLicenseInterface {
+auto AbeNoLicense::abeNoLicense_owner() -> AbeNoLicense* { static std::unique_ptr<AbeNoLicense> value(new AbeNoLicense()); return value.get(); }
+AbeNoLicense* AbeNoLicense::abeNoLicense = AbeNoLicense::abeNoLicense_owner();
 
-    private: static AbeNoLicense* abeNoLicense() { static std::unique_ptr<AbeNoLicense> value(new AbeNoLicense()); return value.get(); }
+AbeNoLicense::AbeNoLicense() : serverVector(new BasicArrayListD()){
+}
 
-    public: static AbeNoLicense* getInstance(){
+
+    auto AbeNoLicense::getInstance() -> AbeNoLicense*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeNoLicense::abeNoLicense();
+                        return AbeNoLicense::abeNoLicense;
     
 }
 
 
-    public: BasicArrayList* serverVector = new BasicArrayListD();
-
-private: AbeNoLicense(){
-}
-
-
-    public: bool hasKey(){
+    auto AbeNoLicense::hasKey() -> bool{
 
 
 
@@ -89,7 +94,7 @@ private: AbeNoLicense(){
 }
 
 
-    public: std::string getKey(std::string keyName){
+    auto AbeNoLicense::getKey(std::string keyName) -> std::string{
 
 
 
@@ -99,7 +104,7 @@ private: AbeNoLicense(){
 }
 
 
-    public: std::string getLicenseId(){
+    auto AbeNoLicense::getLicenseId() -> std::string{
 
 
 
@@ -109,7 +114,7 @@ private: AbeNoLicense(){
 }
 
 
-    public: std::string getSpecial(){
+    auto AbeNoLicense::getSpecial() -> std::string{
 
 
 
@@ -119,7 +124,7 @@ private: AbeNoLicense(){
 }
 
 
-    public: BasicArrayList* getServers(){
+    auto AbeNoLicense::getServers() -> BasicArrayList*{
 
 
 
@@ -129,7 +134,7 @@ private: AbeNoLicense(){
 }
 
 
-    public: bool isValid(){
+    auto AbeNoLicense::isValid() -> bool{
 
 
 
@@ -139,7 +144,7 @@ private: AbeNoLicense(){
 }
 
 
-    public: LicenseType* getLicenseType(){
+    auto AbeNoLicense::getLicenseType() -> LicenseType*{
 
 
 
@@ -149,7 +154,6 @@ private: AbeNoLicense(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_CPP

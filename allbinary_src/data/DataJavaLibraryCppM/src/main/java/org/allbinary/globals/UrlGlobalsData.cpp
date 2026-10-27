@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALSDATA_CPP
+        #define ORG_ALLBINARY_GLOBALS_URLGLOBALSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/UrlGlobalsData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UrlGlobalsData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "URLGLOBALS_NAME";
-
-    public: static inline const std::string WEBAPPPATH = "URLGLOBALS_WEBAPPPATH";
-
-    public: static inline const std::string TESTINGMODE = "URLGLOBALS_TESTINGMODE";
-
-    public: static inline const std::string TESTINGHTMLPATH = "URLGLOBALS_TESTINGHTMLPATH";
-
-    public: static inline const std::string MAINPATH = "URLGLOBALS_MAINPATH";
-
-private: UrlGlobalsData(){
+UrlGlobalsData::UrlGlobalsData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GLOBALS_URLGLOBALSDATA_CPP

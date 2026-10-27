@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/platform/BasicPlatormGeographicMapCellTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,23 +77,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/platform/BasicPlatormGeographicMapCellType.h"
 
-class BasicPlatormGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
 
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
-
-    public: BasicPlatormGeographicMapCellType* BLOCK_CELL_TYPE;
-
-    public: BasicPlatormGeographicMapCellType* JUMP_THRU_CELL_TYPE;
-
-    public: BasicPlatormGeographicMapCellType* LADDER_CELL_TYPE;
-
-    private: int32_t maxTileId;
-
-public: BasicPlatormGeographicMapCellTypeFactory(ABHashtable<Object*, Object*>* tileTypeToTileIdsMap, int32_t maxTileId){
+BasicPlatormGeographicMapCellTypeFactory::BasicPlatormGeographicMapCellTypeFactory(ABHashtable<Object*, Object*>* tileTypeToTileIdsMap, int32_t maxTileId) : enumerationUtil(EnumerationUtil::getInstance()){
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings->START, this, commonStrings->INIT);
+this->logUtil->putF(commonStrings->START, this, commonStrings->INIT);
     
 this->maxTileId= maxTileId;
     
@@ -124,14 +123,14 @@ new GeographicMapCellType(0, 0);
         {
 key= this->enumerationUtil->nextElement(enumeration);
     
-this->logUtil.putF(key, this, commonStrings->INIT);
+this->logUtil->putF(key, this, commonStrings->INIT);
     
 idsWithTypeList= dynamic_cast<BasicArrayList*>(tileTypeToTileIdsMap->get(key));
     
 basicPlatormGeographicMapCellType= new BasicPlatormGeographicMapCellType(idsWithTypeList);
     
 
-                        if(key === PLATFORM)
+                        if(JavaString::equals(key, PLATFORM))
                         
                                     {
                                     BLOCK_CELL_TYPE= basicPlatormGeographicMapCellType;
@@ -140,7 +139,7 @@ basicPlatormGeographicMapCellType= new BasicPlatormGeographicMapCellType(idsWith
                                     }
                                 
 
-                        if(key === JUMP_TRHU)
+                        if(JavaString::equals(key, JUMP_TRHU))
                         
                                     {
                                     JUMP_THRU_CELL_TYPE= basicPlatormGeographicMapCellType;
@@ -149,7 +148,7 @@ basicPlatormGeographicMapCellType= new BasicPlatormGeographicMapCellType(idsWith
                                     }
                                 
 
-                        if(key === LADDER)
+                        if(JavaString::equals(key, LADDER))
                         
                                     {
                                     LADDER_CELL_TYPE= basicPlatormGeographicMapCellType;
@@ -172,7 +171,7 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 }
 
 
-    public: int32_t getStartType(){
+    auto BasicPlatormGeographicMapCellTypeFactory::getStartType() -> int32_t{
 
 
 
@@ -182,7 +181,7 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 }
 
 
-    public: int32_t getEndType(){
+    auto BasicPlatormGeographicMapCellTypeFactory::getEndType() -> int32_t{
 
 
 
@@ -192,7 +191,7 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 }
 
 
-    public: int32_t getEmptyType(){
+    auto BasicPlatormGeographicMapCellTypeFactory::getEmptyType() -> int32_t{
 
 
 
@@ -202,7 +201,7 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 }
 
 
-    public: bool isPath(GeographicMapCellType* cellType){
+    auto BasicPlatormGeographicMapCellTypeFactory::isPath(GeographicMapCellType* cellType) -> bool{
 
                         if(cellType->getType() == 0)
                         
@@ -225,7 +224,6 @@ new GeographicMapCellType(this->maxTileId -2, 0);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPEFACTORY_CPP

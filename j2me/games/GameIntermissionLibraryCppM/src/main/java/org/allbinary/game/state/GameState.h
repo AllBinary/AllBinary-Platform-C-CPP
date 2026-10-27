@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_STATE_GAMESTATE_H
         #define ORG_ALLBINARY_GAME_STATE_GAMESTATE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameState
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
@@ -64,3 +73,10 @@ public: GameState(std::string name, int32_t state);
 
 
         #endif //ORG_ALLBINARY_GAME_STATE_GAMESTATE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_STATE_GAMESTATE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_STATE_GAMESTATE_H_COMPLETE
+        
+        #endif
+    

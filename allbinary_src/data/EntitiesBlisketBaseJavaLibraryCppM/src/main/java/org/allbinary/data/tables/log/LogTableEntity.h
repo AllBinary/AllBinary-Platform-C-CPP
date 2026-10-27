@@ -21,27 +21,22 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/init/db/LogDbInitInfo.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h>
-
-      
+class EntryData;
+class LogDbInitInfo;
+class AbeHttpRequestInfoData;
 #include <org/allbinary/logic/communication/sql/AbSqlBean.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -62,6 +57,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/log/LogTableEntityInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogTableEntity: public AbSqlBean, public LogTableEntityInterface {
 
     private: const std::string tableName = "log";
@@ -78,3 +77,28 @@ public: LogTableEntity();
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_LOG_LOGTABLEENTITY_H_COMPLETE
+        #if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/LogDbInitInfo.h>)
+#include <org/allbinary/business/init/db/LogDbInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h>)
+#include <org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/AbSqlBean.h>)
+#include <org/allbinary/logic/communication/sql/AbSqlBean.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/data/tables/log/LogTableEntityInterface.h")
+#include "org/allbinary/data/tables/log/LogTableEntityInterface.h"
+#endif
+
+        #endif
+    

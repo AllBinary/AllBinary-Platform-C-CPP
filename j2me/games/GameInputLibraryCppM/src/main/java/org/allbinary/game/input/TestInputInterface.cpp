@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/TestInputInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,21 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TestInputInterface: public PaintableInterface {
+//Interface - declared in the header
 
-    public: virtual void up() = 0;
 
-    public: virtual void down() = 0;
 
-    public: virtual void left() = 0;
-
-    public: virtual void right() = 0;
-
-    public: virtual void strafeLeft() = 0;
-
-    public: virtual void strafeRight() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_TESTINPUTINTERFACE_CPP

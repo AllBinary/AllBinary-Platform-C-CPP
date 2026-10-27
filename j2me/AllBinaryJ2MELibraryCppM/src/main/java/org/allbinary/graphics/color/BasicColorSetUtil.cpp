@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORSETUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORSETUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/BasicColorSetUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,39 +59,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/color/BasicColor.h"
 
-class BasicColorSetUtil
-            : public Object
-         {
+auto BasicColorSetUtil::instance_owner() -> BasicColorSetUtil* { static std::unique_ptr<BasicColorSetUtil> value(new BasicColorSetUtil()); return value.get(); }
+BasicColorSetUtil* BasicColorSetUtil::instance = BasicColorSetUtil::instance_owner();
 
-    private: static BasicColorSetUtil* instance() { static std::unique_ptr<BasicColorSetUtil> value(new BasicColorSetUtil()); return value.get(); }
-
-    public: static BasicColorSetUtil* getInstance(){
+    auto BasicColorSetUtil::getInstance() -> BasicColorSetUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorSetUtil::instance();
+                        return BasicColorSetUtil::instance;
     
 }
 
 
-protected: BasicColorSetUtil(){
+BasicColorSetUtil::BasicColorSetUtil(){
 }
 
 
-    public: void setBasicColorP(Graphics* graphics, BasicColor* basicColor){
+    auto BasicColorSetUtil::setBasicColorP(Graphics* graphics, BasicColor* basicColor) -> void{
 graphics->setColor(basicColor->intValue());
     
 }
 
 
-    public: void setBasicColorP3(Graphics* graphics, BasicColor* basicColor, int32_t value){
+    auto BasicColorSetUtil::setBasicColorP3(Graphics* graphics, BasicColor* basicColor, int32_t value) -> void{
 graphics->setColor(value);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORSETUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/ShaderManager.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,33 +66,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShaderManager
-            : public Object
-         {
+auto ShaderManager::instance_owner() -> ShaderManager* { static std::unique_ptr<ShaderManager> value(new ShaderManager( -1,  -1)); return value.get(); }
+ShaderManager* ShaderManager::instance = ShaderManager::instance_owner();
 
-    private: static ShaderManager* instance() { static std::unique_ptr<ShaderManager> value(new ShaderManager( -1,  -1)); return value.get(); }
-
-    public: static ShaderManager* getInstance(){
+    auto ShaderManager::getInstance() -> ShaderManager*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderManager::instance();
+                        return ShaderManager::instance;
     
 }
 
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: const std::string LOAD_SHADER = "loadShader";
-
-    protected: const std::string __VERSION__ = "__VERSION__";
-
-    public: int32_t GL_VERTEX_SHADER;
-
-    public: int32_t GL_FRAGMENT_SHADER;
-
-public: ShaderManager(int32_t GL_VERTEX_SHADER, int32_t GL_FRAGMENT_SHADER){
+ShaderManager::ShaderManager(int32_t GL_VERTEX_SHADER, int32_t GL_FRAGMENT_SHADER) : commonStrings(CommonStrings::getInstance()){
 this->GL_VERTEX_SHADER= GL_VERTEX_SHADER;
     
 this->GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
@@ -90,7 +87,7 @@ this->GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
 }
 
 
-    public: int32_t load(GL10* gl, std::string resource, std::vector<std::string> shaderAsStringArray, int32_t shaderType){
+    auto ShaderManager::load(GL10* gl, std::string resource, std::vector<std::string> shaderAsStringArray, int32_t shaderType) -> int32_t{
 
 
 
@@ -100,7 +97,7 @@ this->GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
 }
 
 
-    public: int32_t loadShader(GL10* gl, std::string resource, BasicArrayList* stringList, int32_t shaderType){
+    auto ShaderManager::loadShader(GL10* gl, std::string resource, BasicArrayList* stringList, int32_t shaderType) -> int32_t{
 
 
 
@@ -110,7 +107,6 @@ this->GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_CPP

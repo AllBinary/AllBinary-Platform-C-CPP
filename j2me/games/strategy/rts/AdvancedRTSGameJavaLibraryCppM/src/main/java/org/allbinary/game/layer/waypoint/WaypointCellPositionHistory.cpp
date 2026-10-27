@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointCellPositionHistory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,27 +67,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WaypointCellPositionHistory
-            : public Object
-         {
 
-    private: static WaypointCellPositionHistory* SINGLETON() { static std::unique_ptr<WaypointCellPositionHistory> value(new WaypointCellPositionHistory()); return value.get(); }
+WaypointCellPositionHistory::WaypointCellPositionHistory() : positionList(new BasicArrayListD()), layerList(new BasicArrayListD()) {
+        }
+        auto WaypointCellPositionHistory::SINGLETON_owner() -> WaypointCellPositionHistory* { static std::unique_ptr<WaypointCellPositionHistory> value(new WaypointCellPositionHistory()); return value.get(); }
+WaypointCellPositionHistory* WaypointCellPositionHistory::SINGLETON = WaypointCellPositionHistory::SINGLETON_owner();
 
-    public: static WaypointCellPositionHistory* getInstance(){
+    auto WaypointCellPositionHistory::getInstance() -> WaypointCellPositionHistory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointCellPositionHistory::SINGLETON();
+                        return WaypointCellPositionHistory::SINGLETON;
     
 }
 
 
-    private: BasicArrayList* positionList = new BasicArrayListD();
-
-    private: BasicArrayList* layerList = new BasicArrayListD();
-
-    public: void add(CellPosition* cellPosition, AllBinaryLayer* layerInterface){
+    auto WaypointCellPositionHistory::add(CellPosition* cellPosition, AllBinaryLayer* layerInterface) -> void{
 this->positionList->add(cellPosition);
     
 this->layerList->add(layerInterface);
@@ -85,7 +91,7 @@ this->layerList->add(layerInterface);
 }
 
 
-    public: void addList(BasicArrayList* list, AllBinaryLayer* layerInterface){
+    auto WaypointCellPositionHistory::addList(BasicArrayList* list, AllBinaryLayer* layerInterface) -> void{
 
 
 
@@ -100,7 +106,7 @@ this->add(dynamic_cast<CellPosition*>(list->get(index)), layerInterface);
 }
 
 
-    public: void remove(CellPosition* cellPosition){
+    auto WaypointCellPositionHistory::remove(CellPosition* cellPosition) -> void{
 
     int32_t index = this->positionList->indexOf(cellPosition);;
     
@@ -118,7 +124,7 @@ this->layerList->removeAt(index);
 }
 
 
-    public: void removeLayer(AllBinaryLayer* layerInterface){
+    auto WaypointCellPositionHistory::removeLayer(AllBinaryLayer* layerInterface) -> void{
 
     int32_t index = 0;;
     
@@ -143,7 +149,7 @@ this->layerList->removeAt(index);
 }
 
 
-    public: void clear(){
+    auto WaypointCellPositionHistory::clear() -> void{
 this->positionList->clear();
     
 this->layerList->clear();
@@ -151,7 +157,7 @@ this->layerList->clear();
 }
 
 
-    public: bool isCellPositionWithDrop(CellPosition* cellPosition){
+    auto WaypointCellPositionHistory::isCellPositionWithDrop(CellPosition* cellPosition) -> bool{
 
 
 
@@ -161,7 +167,7 @@ this->layerList->clear();
 }
 
 
-    public: bool anyCellPositionWithDrop(BasicArrayList* list){
+    auto WaypointCellPositionHistory::anyCellPositionWithDrop(BasicArrayList* list) -> bool{
 
 
 
@@ -193,7 +199,7 @@ this->layerList->clear();
 }
 
 
-    public: AllBinaryLayer* getLayerInterface(CellPosition* cellPosition){
+    auto WaypointCellPositionHistory::getLayerInterface(CellPosition* cellPosition) -> AllBinaryLayer*{
 
     int32_t index = this->positionList->indexOf(cellPosition);;
     
@@ -223,7 +229,6 @@ this->layerList->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTCELLPOSITIONHISTORY_CPP

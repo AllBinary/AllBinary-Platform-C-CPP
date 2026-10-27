@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
 
 
 
@@ -51,10 +54,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
-#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
+class FtpConfigurationData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FtpConfiguration
-            : public Object
+            : public virtual Object
         , public FtpConfigurationInterface {
 
     private: std::string ftpServer;
@@ -91,3 +98,19 @@ public: FtpConfiguration(HashMap<Object*, Object*>* hashMap);
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h")
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h")
+#include "org/allbinary/logic/communication/ftp/configuration/FtpConfigurationData.h"
+#endif
+
+        #endif
+    

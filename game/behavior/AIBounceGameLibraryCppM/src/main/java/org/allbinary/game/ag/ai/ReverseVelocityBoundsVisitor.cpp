@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_REVERSEVELOCITYBOUNDSVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_REVERSEVELOCITYBOUNDSVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/ReverseVelocityBoundsVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,17 +70,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ReverseVelocityBoundsVisitor
-            : public Object
-        , public BoundsVisitorInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: VelocityInterface* velocityInterface;
-
-    private: LayerInterface* layerInterface;
-
-public: ReverseVelocityBoundsVisitor(LayerInterface* layerInterface){
+ReverseVelocityBoundsVisitor::ReverseVelocityBoundsVisitor(LayerInterface* layerInterface) : logUtil(LogUtil::getInstance()){
 this->layerInterface= layerInterface;
     
 
@@ -81,7 +82,7 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(velocityInterfaceCompo
 }
 
 
-    public: int32_t getX(){
+    auto ReverseVelocityBoundsVisitor::getX() -> int32_t{
 
 
 
@@ -91,7 +92,7 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(velocityInterfaceCompo
 }
 
 
-    public: int32_t getY(){
+    auto ReverseVelocityBoundsVisitor::getY() -> int32_t{
 
 
 
@@ -101,7 +102,7 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(velocityInterfaceCompo
 }
 
 
-    public: void minX(){
+    auto ReverseVelocityBoundsVisitor::minX() -> void{
 
                         if(this->velocityInterface->getVelocityXBasicDecimalP()->getUnscaled() < 0)
                         this->velocityInterface->getVelocityXBasicDecimalP()->multiplyint( -1);
@@ -109,7 +110,7 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(velocityInterfaceCompo
 }
 
 
-    public: void maxX(){
+    auto ReverseVelocityBoundsVisitor::maxX() -> void{
 
                         if(this->velocityInterface->getVelocityXBasicDecimalP()->getUnscaled() > 0)
                         this->velocityInterface->getVelocityXBasicDecimalP()->multiplyint( -1);
@@ -117,7 +118,7 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(velocityInterfaceCompo
 }
 
 
-    public: void minY(){
+    auto ReverseVelocityBoundsVisitor::minY() -> void{
 
                         if(this->velocityInterface->getVelocityYBasicDecimalP()->getUnscaled() < 0)
                         this->velocityInterface->getVelocityYBasicDecimalP()->multiplyint( -1);
@@ -125,7 +126,7 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(velocityInterfaceCompo
 }
 
 
-    public: void maxY(){
+    auto ReverseVelocityBoundsVisitor::maxY() -> void{
 
                         if(this->velocityInterface->getVelocityYBasicDecimalP()->getUnscaled() > 0)
                         this->velocityInterface->getVelocityYBasicDecimalP()->multiplyint( -1);
@@ -133,7 +134,6 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(velocityInterfaceCompo
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_REVERSEVELOCITYBOUNDSVISITOR_CPP

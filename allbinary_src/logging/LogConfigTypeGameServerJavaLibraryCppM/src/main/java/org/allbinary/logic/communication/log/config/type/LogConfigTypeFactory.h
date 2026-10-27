@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
-
-      
+class LogConfigTypes;
+class LogConfigTypeFactory;
 
 
 
@@ -53,27 +54,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
+        class LogConfigType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogConfigTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static LogConfigTypeFactory* instance() { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
+    private: static LogConfigTypeFactory* instance_owner();
+    private: static LogConfigTypeFactory* instance;
 
     public: static LogConfigTypeFactory* getInstance();
 
     private: const std::string NO_DESCRIPTION = "No Description";
 
-    public: LogConfigType* INIT_SERVER = new LogConfigType("Init Server", this->NO_DESCRIPTION);
+    public: LogConfigType* INIT_SERVER;
 
-    public: LogConfigType* LOBBY_SERVER = new LogConfigType("Lobby Server", this->NO_DESCRIPTION);
+    public: LogConfigType* LOBBY_SERVER;
 
-    public: LogConfigType* GAME_SERVER = new LogConfigType("Game Server", this->NO_DESCRIPTION);
+    public: LogConfigType* GAME_SERVER;
 
-    public: LogConfigType* GAME_SIMULATOR = new LogConfigType("Game Simulator", this->NO_DESCRIPTION);
+    public: LogConfigType* GAME_SIMULATOR;
 
-    public: LogConfigType* CUSTOM_TYPES = new LogConfigType("Custom Types", this->NO_DESCRIPTION);
+    public: LogConfigType* CUSTOM_TYPES;
 
 private: LogConfigTypeFactory();
 
@@ -83,3 +89,19 @@ private: LogConfigTypeFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigType.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
+#endif
+
+        #endif
+    

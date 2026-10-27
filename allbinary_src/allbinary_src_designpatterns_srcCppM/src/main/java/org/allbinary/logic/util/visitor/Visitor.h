@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITOR_H
         #define ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class NullUtil;
 
 
 
@@ -52,17 +55,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/visitor/VisitorInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Visitor
-            : public Object
+            : public virtual Object
         , public VisitorInterface {
 
-    private: static Visitor* instance() { static std::unique_ptr<Visitor> value(new Visitor()); return value.get(); }
+    private: static Visitor* instance_owner();
+    private: static Visitor* instance;
 
     public: static Visitor* getInstance();
 
-    protected: NullUtil* nullUtil = NullUtil::getInstance();
+
+            
+    public: Visitor();
+        
+    /*protected*/ public: NullUtil* nullUtil;
 
     public: Object* visit(Object* anyType);
+    public: Object* visit(const std::string& anyType) { return visit(JavaString::box(anyType)); }
 
 };
 
@@ -70,3 +83,16 @@ class Visitor
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITOR_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/util/visitor/VisitorInterface.h")
+#include "org/allbinary/logic/util/visitor/VisitorInterface.h"
+#endif
+
+        #endif
+    

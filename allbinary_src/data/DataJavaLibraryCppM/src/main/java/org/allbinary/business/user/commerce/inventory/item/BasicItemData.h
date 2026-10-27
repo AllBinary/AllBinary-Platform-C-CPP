@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicItemData
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicItemData* instance() { static std::unique_ptr<BasicItemData> value(new BasicItemData()); return value.get(); }
+    private: static BasicItemData* instance_owner();
+    private: static BasicItemData* instance;
 
     public: static BasicItemData* getInstance();
 
+
+            
+    public: BasicItemData();
+        
     public: const std::string ITEM = "BASICITEM";
 
     public: const std::string TOTAL = "BASICITEM_TOTAL";
@@ -120,3 +134,10 @@ class BasicItemData
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMDATA_H_COMPLETE
+        
+        #endif
+    

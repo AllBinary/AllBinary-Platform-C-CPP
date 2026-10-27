@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -94,26 +104,15 @@
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputData.h"
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseInputAutomationProcessor.h"
 
-class MouseActionScriptInput: public BasicProfileActionScriptInput, public MouseActionScriptInputInterface {
 
-    private: static inline const std::string NAME = "Mouse";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Point* point;
-
-    private: int32_t buttons= 0;
-
-    private: MouseActionScriptInputJPanel* mouseActionScriptInputJPanel;
-
-public: MouseActionScriptInput(Node* node) : BasicProfileActionScriptInput(NAME, node){
+MouseActionScriptInput::MouseActionScriptInput(Node* node) : BasicProfileActionScriptInput(NAME, node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->point= new Point();
     
@@ -185,7 +184,7 @@ this->setPoint(newPoint);
                             
 
 
-                            throw new Exception("Action Script Input Unknown Node");
+                            throw Exception("Action Script Input Unknown Node");
                     
 
                         }
@@ -199,7 +198,7 @@ this->setPoint(newPoint);
                             
 
 
-                            throw new Exception("Action Script Input Node Null");
+                            throw Exception("Action Script Input Node Null");
                     
 
                         }
@@ -211,7 +210,7 @@ this->mouseActionScriptInputJPanel= new MouseActionScriptInputJPanel(this);
 }
 
 
-public: MouseActionScriptInput() : BasicProfileActionScriptInput(NAME){
+MouseActionScriptInput::MouseActionScriptInput() : BasicProfileActionScriptInput(NAME), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -227,13 +226,13 @@ this->mouseActionScriptInputJPanel= new MouseActionScriptInputJPanel(this);
 }
 
 
-    public: void setPoint(Point* point){
+    auto MouseActionScriptInput::setPoint(Point* point) -> void{
 this->point= point;
     
 }
 
 
-    public: Point* getPoint(){
+    auto MouseActionScriptInput::getPoint() -> Point*{
 
 
 
@@ -243,7 +242,7 @@ this->point= point;
 }
 
 
-    public: int32_t getButtonClicks(){
+    auto MouseActionScriptInput::getButtonClicks() -> int32_t{
 
 
 
@@ -253,25 +252,25 @@ this->point= point;
 }
 
 
-    public: void setButtonClicks(int32_t buttons){
+    auto MouseActionScriptInput::setButtonClicks(int32_t buttons) -> void{
 this->buttons= buttons;
     
 }
 
 
-    public: void showDialog(){
+    auto MouseActionScriptInput::showDialog() -> void{
 this->mouseActionScriptInputJPanel->getMouseActionJDialog()->setVisible(true);
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto MouseActionScriptInput::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 hashMap->put(MouseActionScriptInputData::BUTTONS, std::to_string(getButtonClicks));
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -284,9 +283,9 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto MouseActionScriptInput::toXmlNode(Document* document) -> Node*{
 
-    Node* node = super.toXmlNode(document);;
+    Node* node = BasicProfileActionScriptInput::toXmlNode(document);;
     
 
     Node* mouseNode = ModDomHelper::createNodeWithValueNodes(document, MouseActionScriptInputData::NAME, this->toHashMap());;
@@ -313,13 +312,13 @@ mouseNode->appendChild(ModDomHelper::createNodeWithValueNodes(document, MouseAct
 
                 //@Throws(Exception.constructor)
             
-    public: void process(int64_t frame){
+    auto MouseActionScriptInput::process(int64_t frame) -> void{
 MouseInputAutomationProcessor::process(this);
     
 }
 
 
-    public: void log(){
+    auto MouseActionScriptInput::log() -> void{
 
     StringMaker* buttonStringBuffer = new StringMaker();;
     
@@ -377,12 +376,11 @@ buttonStringBuffer->append(" 3: ");
 
                         }
                             
-this->logUtil->putF("Input Type: " +this->getInputRobotInterface()->getName() +" Point: " +this->getPoint() +" Buttons Clicked: " +buttonStringBuffer->toString(), this, "log");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Input Type: ") +JavaString::valueOf(this->getInputRobotInterface()->getName())) +JavaString::valueOf(" Point: ")) +JavaString::valueOf(this->getPoint())) +JavaString::valueOf(" Buttons Clicked: ")) +JavaString::valueOf(buttonStringBuffer->toString()), this, "log");
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUT_CPP

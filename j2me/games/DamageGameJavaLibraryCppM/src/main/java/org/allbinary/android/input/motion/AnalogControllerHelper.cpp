@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERHELPER_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/AnalogControllerHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,31 +64,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/AnalogControllerConfigurationFactory.h"
 
-class AnalogControllerHelper
-            : public Object
-         {
 
-    private: int32_t reduceTimeFactor;
-
-public: AnalogControllerHelper(int32_t reduceTimeFactor){
+AnalogControllerHelper::AnalogControllerHelper(int32_t reduceTimeFactor) : SCALE_VALUE(AnalogControllerConfigurationFactory::getInstance()->SCALE_VALUE), rightTimeElapsedHelper(new TimeDelayHelper(0)), leftTimeElapsedHelper(new TimeDelayHelper(0)), downTimeElapsedHelper(new TimeDelayHelper(0)), upTimeElapsedHelper(new TimeDelayHelper(0)){
 this->reduceTimeFactor= reduceTimeFactor;
     
 }
 
 
-    private: const int32_t SCALE_VALUE = AnalogControllerConfigurationFactory::getInstance()->SCALE_VALUE;
-
-    private: TimeDelayHelper* rightTimeElapsedHelper = new TimeDelayHelper(0);
-
-    private: TimeDelayHelper* leftTimeElapsedHelper = new TimeDelayHelper(0);
-
-    private: TimeDelayHelper* downTimeElapsedHelper = new TimeDelayHelper(0);
-
-    private: TimeDelayHelper* upTimeElapsedHelper = new TimeDelayHelper(0);
-
                 //@Throws(Exception.constructor)
             
-    public: void right(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue){
+    auto AnalogControllerHelper::right(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue) -> void{
 this->rightTimeElapsedHelper->delay= ((this->SCALE_VALUE -xAnalogValue)>>this->reduceTimeFactor);
     
 
@@ -95,7 +90,7 @@ this->rightTimeElapsedHelper->delay= ((this->SCALE_VALUE -xAnalogValue)>>this->r
 
                 //@Throws(Exception.constructor)
             
-    public: void left(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue){
+    auto AnalogControllerHelper::left(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue) -> void{
 this->leftTimeElapsedHelper->delay= ((this->SCALE_VALUE +xAnalogValue)>>this->reduceTimeFactor);
     
 
@@ -112,7 +107,7 @@ this->leftTimeElapsedHelper->delay= ((this->SCALE_VALUE +xAnalogValue)>>this->re
 
                 //@Throws(Exception.constructor)
             
-    public: void up(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue){
+    auto AnalogControllerHelper::up(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue) -> void{
 this->upTimeElapsedHelper->delay= ((this->SCALE_VALUE -xAnalogValue)>>this->reduceTimeFactor);
     
 
@@ -129,7 +124,7 @@ this->upTimeElapsedHelper->delay= ((this->SCALE_VALUE -xAnalogValue)>>this->redu
 
                 //@Throws(Exception.constructor)
             
-    public: void down(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue){
+    auto AnalogControllerHelper::down(CollidableDestroyableDamageableLayer* collidableDestroyableDamageableLayer, int32_t xAnalogValue) -> void{
 this->downTimeElapsedHelper->delay= ((this->SCALE_VALUE +xAnalogValue)>>this->reduceTimeFactor);
     
 
@@ -144,7 +139,6 @@ this->downTimeElapsedHelper->delay= ((this->SCALE_VALUE +xAnalogValue)>>this->re
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERHELPER_CPP

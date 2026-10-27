@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYPOOL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,37 +61,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CountedPickedUpLayerInterfaceFactoryPool
-            : public Object
-         {
+auto CountedPickedUpLayerInterfaceFactoryPool::SINGLETON_owner() -> CountedPickedUpLayerInterfaceFactoryPool* { static std::unique_ptr<CountedPickedUpLayerInterfaceFactoryPool> value(new CountedPickedUpLayerInterfaceFactoryPool()); return value.get(); }
+CountedPickedUpLayerInterfaceFactoryPool* CountedPickedUpLayerInterfaceFactoryPool::SINGLETON = CountedPickedUpLayerInterfaceFactoryPool::SINGLETON_owner();
 
-    private: static CountedPickedUpLayerInterfaceFactoryPool* SINGLETON() { static std::unique_ptr<CountedPickedUpLayerInterfaceFactoryPool> value(new CountedPickedUpLayerInterfaceFactoryPool()); return value.get(); }
-
-    public: static CountedPickedUpLayerInterfaceFactoryPool* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CountedPickedUpLayerInterfaceFactoryPool::SINGLETON();
-    
-}
-
-
-    public: static void init(){
-CountedPickedUpLayerInterfaceFactoryPool::SINGLETON()= new CountedPickedUpLayerInterfaceFactoryPool();
-    
-}
-
-
-    private: BasicArrayList* list;
-
-private: CountedPickedUpLayerInterfaceFactoryPool(){
+CountedPickedUpLayerInterfaceFactoryPool::CountedPickedUpLayerInterfaceFactoryPool(){
 this->list= new BasicArrayListD();
     
 }
 
 
-    public: BasicArrayList* getList(){
+    auto CountedPickedUpLayerInterfaceFactoryPool::getList() -> BasicArrayList*{
 
 
 
@@ -91,7 +80,22 @@ this->list= new BasicArrayListD();
 }
 
 
-};
+    auto CountedPickedUpLayerInterfaceFactoryPool::getInstance() -> CountedPickedUpLayerInterfaceFactoryPool*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return CountedPickedUpLayerInterfaceFactoryPool::SINGLETON;
+    
+}
+
+
+    auto CountedPickedUpLayerInterfaceFactoryPool::init() -> void{
+CountedPickedUpLayerInterfaceFactoryPool::SINGLETON= new CountedPickedUpLayerInterfaceFactoryPool();
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYPOOL_CPP

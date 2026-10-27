@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FONT_MYFONTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FONT_MYFONTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/font/MyFontProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MyFontProcessor
-            : public Object
-         {
 
-    public: static int32_t defaultCharWidth(Font* font){
+MyFontProcessor::MyFontProcessor() {
+        }
+        
+    auto MyFontProcessor::defaultCharWidth(Font* font) -> int32_t{
 
 
 
@@ -65,7 +75,7 @@ class MyFontProcessor
 }
 
 
-    public: static int32_t defaultStringWidth(Font* font, int32_t size){
+    auto MyFontProcessor::defaultStringWidth(Font* font, int32_t size) -> int32_t{
 
 
 
@@ -74,24 +84,23 @@ class MyFontProcessor
     
 }
 
+auto MyFontProcessor::instance_owner() -> MyFontProcessor* { static std::unique_ptr<MyFontProcessor> value(new MyFontProcessor()); return value.get(); }
+MyFontProcessor* MyFontProcessor::instance = MyFontProcessor::instance_owner();
 
-    private: static MyFontProcessor* instance() { static std::unique_ptr<MyFontProcessor> value(new MyFontProcessor()); return value.get(); }
-
-    public: static MyFontProcessor* getInstance(){
+    auto MyFontProcessor::getInstance() -> MyFontProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyFontProcessor::instance();
+                        return MyFontProcessor::instance;
     
 }
 
 
-    public: void process(Graphics* graphics){
+    auto MyFontProcessor::process(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FONT_MYFONTPROCESSOR_CPP

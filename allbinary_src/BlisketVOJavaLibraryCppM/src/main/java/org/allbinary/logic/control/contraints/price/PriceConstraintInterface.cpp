@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_PRICE_PRICECONSTRAINTINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_PRICE_PRICECONSTRAINTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/contraints/price/PriceConstraintInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,9 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PriceConstraintInterface: public MinMaxDoubleConstraintInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_PRICE_PRICECONSTRAINTINTERFACE_CPP

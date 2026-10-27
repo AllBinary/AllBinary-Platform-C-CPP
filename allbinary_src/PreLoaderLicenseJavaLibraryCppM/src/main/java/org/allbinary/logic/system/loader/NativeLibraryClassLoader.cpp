@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYCLASSLOADER_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYCLASSLOADER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/loader/NativeLibraryClassLoader.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NativeLibraryClassLoader: public ClassLoader {
 
-    private: std::string message = "This Class Loader Does Not Load Classes - Only For Loading and Unloading of Native Libraries";
-
-public: NativeLibraryClassLoader(ClassLoader* parent) : ClassLoader(parent){
+NativeLibraryClassLoader::NativeLibraryClassLoader(ClassLoader* parent) : ClassLoader(parent){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -59,7 +66,6 @@ public: NativeLibraryClassLoader(ClassLoader* parent) : ClassLoader(parent){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYCLASSLOADER_CPP

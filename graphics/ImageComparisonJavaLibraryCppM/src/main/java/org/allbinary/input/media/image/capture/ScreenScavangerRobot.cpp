@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/ScreenScavangerRobot.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,21 +86,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScreenScavangerRobot
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: ScreenScavangerRobot(){
+ScreenScavangerRobot::ScreenScavangerRobot() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<BufferedImage*> getScreenAsBufferedImages(){
+    auto ScreenScavangerRobot::getScreenAsBufferedImages() -> std::vector<BufferedImage*>{
 this->logUtil->putF(this->commonStrings->START, this, "getScreenAsBufferedImages");
     
 
@@ -124,7 +127,6 @@ this->logUtil->putF("Finish", this, "getScreenAsBufferedImages");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_CPP

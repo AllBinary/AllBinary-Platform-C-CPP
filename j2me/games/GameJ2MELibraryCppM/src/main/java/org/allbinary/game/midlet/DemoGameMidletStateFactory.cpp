@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/DemoGameMidletStateFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,35 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/midlet/DemoGameMidletState.h"
 
-class DemoGameMidletStateFactory
-            : public Object
-         {
+auto DemoGameMidletStateFactory::STATE_owner() -> DemoGameMidletStateFactory* { static std::unique_ptr<DemoGameMidletStateFactory> value(new DemoGameMidletStateFactory()); return value.get(); }
+DemoGameMidletStateFactory* DemoGameMidletStateFactory::STATE = DemoGameMidletStateFactory::STATE_owner();
 
-    private: static DemoGameMidletStateFactory* STATE() { static std::unique_ptr<DemoGameMidletStateFactory> value(new DemoGameMidletStateFactory()); return value.get(); }
+DemoGameMidletStateFactory::DemoGameMidletStateFactory() : NONE(new DemoGameMidletState()), START_DEMO(new DemoGameMidletState()), START_GAME(new DemoGameMidletState()), START_INPUT_MAPPING(new DemoGameMidletState()){
+}
 
-    public: static DemoGameMidletStateFactory* getInstance(){
+
+    auto DemoGameMidletStateFactory::getInstance() -> DemoGameMidletStateFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameMidletStateFactory::STATE();
+                        return DemoGameMidletStateFactory::STATE;
     
 }
 
 
-    public: DemoGameMidletState* NONE = new DemoGameMidletState();
-
-    public: DemoGameMidletState* START_DEMO = new DemoGameMidletState();
-
-    public: DemoGameMidletState* START_GAME = new DemoGameMidletState();
-
-    public: DemoGameMidletState* START_INPUT_MAPPING = new DemoGameMidletState();
-
-private: DemoGameMidletStateFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATEFACTORY_CPP

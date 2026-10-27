@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITWAYPOINTSTRINGS_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITWAYPOINTSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/unit/UnitWaypointStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,49 +58,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UnitWaypointStrings
-            : public Object
-         {
 
-    private: static UnitWaypointStrings* instance() { static std::unique_ptr<UnitWaypointStrings> value(new UnitWaypointStrings()); return value.get(); }
+UnitWaypointStrings::UnitWaypointStrings() : NEXT_PATH_NODE(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" Path Node")) {
+        }
+        auto UnitWaypointStrings::instance_owner() -> UnitWaypointStrings* { static std::unique_ptr<UnitWaypointStrings> value(new UnitWaypointStrings()); return value.get(); }
+UnitWaypointStrings* UnitWaypointStrings::instance = UnitWaypointStrings::instance_owner();
 
-    public: static UnitWaypointStrings* getInstance(){
+    auto UnitWaypointStrings::getInstance() -> UnitWaypointStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UnitWaypointStrings::instance();
+                        return UnitWaypointStrings::instance;
     
 }
 
 
-    public: const std::string WANDERING = "Order?";
 
-    public: const std::string THINKING = "Thinking";
 
-    public: const std::string THINKING_ABOUT_TARGET = "Hmmm";
-
-    public: const std::string TARGET = "Target";
-
-    public: const std::string KILL = "Kill!";
-
-    public: const std::string STOP = "Stop";
-
-    public: const std::string WAYPOINT_DESTROYED_SHORT = "Uh Oh";
-
-    public: const std::string WAYPOINT_DESTROYED = "Waypoint Destroyed";
-
-    public: const std::string ALL_VISITED_SHORT = "Arrived";
-
-    public: const std::string ALL_VISITED = "All Visited";
-
-    public: const std::string ALREADY_THERE_SHORT = "Again?";
-
-    public: const std::string ALREADY_THERE = "Already There";
-
-    public: const std::string NEXT_PATH_NODE = CommonLabels::getInstance()->NEXT +" Path Node";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_UNITWAYPOINTSTRINGS_CPP

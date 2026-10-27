@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTFIELDITEM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTFIELDITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/ABTextFieldItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/ABTextItem.h"
 
-class ABTextFieldItem: public ABTextItem {
 
-    private: Font* font;
-
-public: ABTextFieldItem(Canvas* canvas, Visitor* visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
+ABTextFieldItem::ABTextFieldItem(Canvas* canvas, Visitor* visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font* font, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +68,7 @@ this->font= font;
 }
 
 
-    public: std::string getLabel(){
+    auto ABTextFieldItem::getLabel() -> std::string{
 
 
 
@@ -71,11 +78,11 @@ this->font= font;
 }
 
 
-    public: void setLabel(std::string label){
+    auto ABTextFieldItem::setLabel(std::string label) -> void{
 }
 
 
-    public: std::string getString(){
+    auto ABTextFieldItem::getString() -> std::string{
 
 
 
@@ -85,15 +92,15 @@ this->font= font;
 }
 
 
-    public: void setString(std::string string){
+    auto ABTextFieldItem::setString(std::string string) -> void{
 }
 
 
-    public: void setFocus(bool state){
+    auto ABTextFieldItem::setFocus(bool state) -> void{
 }
 
 
-    public: int32_t getFontHeight(){
+    auto ABTextFieldItem::getFontHeight() -> int32_t{
 
 
 
@@ -103,15 +110,14 @@ this->font= font;
 }
 
 
-    public: void setBackgroundBasicColorP(BasicColor* basicColor){
+    auto ABTextFieldItem::setBackgroundBasicColorP(BasicColor* basicColor) -> void{
 }
 
 
-    public: void setForegroundBasicColorP(BasicColor* basicColor){
+    auto ABTextFieldItem::setForegroundBasicColorP(BasicColor* basicColor) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTFIELDITEM_CPP

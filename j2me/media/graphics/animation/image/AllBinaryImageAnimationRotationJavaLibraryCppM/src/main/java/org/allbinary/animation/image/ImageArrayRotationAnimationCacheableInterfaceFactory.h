@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLEINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLEINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/logic/util/cache/CacheableInterface.h>
-
-      
+class AnimationBehavior;
+class CacheableInterface;
 #include <org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>
-
-      
 
 
 
@@ -58,15 +57,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
+        class ImageArrayRotationAnimationCacheable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageArrayRotationAnimationCacheableInterfaceFactory
-            : public Object
+            : public virtual Object
         , public CacheableInterfaceFactoryInterface {
 
+
+            
+    public: ImageArrayRotationAnimationCacheableInterfaceFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: CacheableInterface* getInstance(Object* key);
+    public: CacheableInterface* getInstance(const std::string& key) { return getInstance(JavaString::box(key)); }
 
 };
 
@@ -74,3 +82,22 @@ class ImageArrayRotationAnimationCacheableInterfaceFactory
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLEINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLEINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONCACHEABLEINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h")
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
+#endif
+
+        #endif
+    

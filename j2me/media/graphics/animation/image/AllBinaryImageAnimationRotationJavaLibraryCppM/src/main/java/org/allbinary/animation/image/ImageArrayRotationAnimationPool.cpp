@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONPOOL_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageArrayRotationAnimationPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,21 +72,9 @@
 #include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
 #include "org/allbinary/animation/image/ImageArrayRotationAnimationCacheable.h"
 
-class ImageArrayRotationAnimationPool: public BasicArrayListResetablePool {
+PoolInterface* ImageArrayRotationAnimationPool::IMAGE_ROTATION_ANIMATION_POOL = new ImageArrayRotationAnimationPool(new ImageArrayRotationAnimationCacheableInterfaceFactory());
 
-    private: static inline PoolInterface* IMAGE_ROTATION_ANIMATION_POOL = new ImageArrayRotationAnimationPool(new ImageArrayRotationAnimationCacheableInterfaceFactory());
-
-    public: static PoolInterface* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageArrayRotationAnimationPool::IMAGE_ROTATION_ANIMATION_POOL;
-    
-}
-
-
-public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : BasicArrayListResetablePool(cacheableInterfaceFactoryInterface){
+ImageArrayRotationAnimationPool::ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : BasicArrayListResetablePool(cacheableInterfaceFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,11 +84,21 @@ public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface* cach
 }
 
 
+    auto ImageArrayRotationAnimationPool::getInstance() -> PoolInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ImageArrayRotationAnimationPool::IMAGE_ROTATION_ANIMATION_POOL;
+    
+}
+
+
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface* remove(Object* key){
+    auto ImageArrayRotationAnimationPool::remove(Object* key) -> CacheableInterface*{
 
-    CacheableInterface* cacheableInterface = super.remove(key);;
+    CacheableInterface* cacheableInterface = BasicArrayListResetablePool::remove(key);;
     
 
     ImageArrayRotationAnimationInfo* allBinaryImageRotationAnimationInfo = dynamic_cast<ImageArrayRotationAnimationInfo*>(key);;
@@ -109,7 +117,6 @@ imageArrayRotationAnimationCacheable->setImageArray(allBinaryImageRotationAnimat
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONPOOL_CPP

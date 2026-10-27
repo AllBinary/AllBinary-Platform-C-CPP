@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_BASICGROUPITEMSHELPER_CPP
+        #define ADMIN_TAGHELPERS_BASICGROUPITEMSHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/BasicGroupItemsHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,26 +77,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/BasicTable.h"
 
-class BasicGroupItemsHelper: public BasicTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Portion* portion;
-
-public: BasicGroupItemsHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+BasicGroupItemsHelper::BasicGroupItemsHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->portion= new Portion(hashMap);
     
 }
 
 
-    public: std::string create(){
+    auto BasicGroupItemsHelper::create() -> std::string{
 
         try {
             
     std::string success = BasicGroupItemsEntityFactory::getInstance()->getBasicGroupItemsEntityInstance()->createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -108,10 +113,10 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to create table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -127,17 +132,17 @@ this->portion= new Portion(hashMap);
 }
 
 
-    public: std::string drop(){
+    auto BasicGroupItemsHelper::drop() -> std::string{
 
         try {
             
     std::string success = BasicGroupItemsEntityFactory::getInstance()->getBasicGroupItemsEntityInstance()->dropTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF(success, this, this->commonStrings.DROP);
+                                    this->logUtil->putF(success, this, this->commonStrings->DROP);
     
 
                                     }
@@ -156,10 +161,10 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to drop pricing tables";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
     
 
                                     }
@@ -175,7 +180,7 @@ this->portion= new Portion(hashMap);
 }
 
 
-    public: std::string restore(){
+    auto BasicGroupItemsHelper::restore() -> std::string{
 
         try {
             
@@ -188,7 +193,7 @@ this->portion= new Portion(hashMap);
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(basicGroupItemsEntity, this->portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -210,10 +215,10 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -229,7 +234,7 @@ this->portion= new Portion(hashMap);
 }
 
 
-    public: std::string backup(){
+    auto BasicGroupItemsHelper::backup() -> std::string{
 
         try {
             
@@ -239,7 +244,7 @@ this->portion= new Portion(hashMap);
     std::string result = AbSqlTableUtil::getInstance()->backupTable(BasicGroupItemsEntityFactory::getInstance()->getBasicGroupItemsEntityInstance());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -261,10 +266,10 @@ this->portion= new Portion(hashMap);
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -280,7 +285,6 @@ this->portion= new Portion(hashMap);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_BASICGROUPITEMSHELPER_CPP

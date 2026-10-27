@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +52,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/OpenGLVUtilBase.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLVUtil: public OpenGLVUtilBase {
 
-    private: static OpenGLVUtil* instance() { static std::unique_ptr<OpenGLVUtil> value(new OpenGLVUtil()); return value.get(); }
+    private: static OpenGLVUtil* instance_owner();
+    private: static OpenGLVUtil* instance;
 
     public: static OpenGLVUtil* getInstance();
 
+
+            
+    public: OpenGLVUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/opengles/OpenGLVUtilBase.h")
+#include "org/allbinary/graphics/opengles/OpenGLVUtilBase.h"
+#endif
+
+        #endif
+    

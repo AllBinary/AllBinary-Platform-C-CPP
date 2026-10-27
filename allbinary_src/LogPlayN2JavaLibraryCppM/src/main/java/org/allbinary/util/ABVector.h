@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_UTIL_ABVECTOR_H
         #define ORG_ALLBINARY_UTIL_ABVECTOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,11 +37,7 @@
             #include "java/lang/Object.h"
         
 #include <java/util/Vector.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
+class JsType;
 
 
 
@@ -56,9 +57,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 template<typename E>
 class ABVector: public Vector<E> {
 
+
+            
+    public: ABVector();
+        
     public: void ensureCapacity(int32_t minCapacity);
 
     public: int32_t capacity();
@@ -68,10 +77,13 @@ class ABVector: public Vector<E> {
     public: bool isEmpty();
 
     public: bool contains(Object* obj);
+    public: bool contains(const std::string& obj) { return contains(JavaString::box(obj)); }
 
     public: int32_t indexOf(Object* obj);
+    public: int32_t indexOf(const std::string& obj) { return indexOf(JavaString::box(obj)); }
 
     public: int32_t lastIndexOf(Object* obj);
+    public: int32_t lastIndexOf(const std::string& obj) { return lastIndexOf(JavaString::box(obj)); }
 
     public: E elementAt(int32_t index);
 
@@ -88,6 +100,7 @@ class ABVector: public Vector<E> {
     public: void insertElementAt(E obj, int32_t index);
 
     public: bool removeElement(Object* obj);
+    public: bool removeElement(const std::string& obj) { return removeElement(JavaString::box(obj)); }
 
     public: void removeAllElements();
 
@@ -100,6 +113,7 @@ class ABVector: public Vector<E> {
     public: bool add(E element);
 
     public: bool remove(Object* obj);
+    public: bool remove(const std::string& obj) { return remove(JavaString::box(obj)); }
 
     public: void add(int32_t index, E element);
 
@@ -108,16 +122,32 @@ class ABVector: public Vector<E> {
     public: void clear();
 
     public: bool equals(Object* obj);
+    public: bool equals(const std::string& obj) { return equals(JavaString::box(obj)); }
 
     public: int32_t hashCode();
 
     public: std::string toString();
 
-    protected: void removeRange(int32_t fromIndex, int32_t toIndex);
+    /*protected*/ public: void removeRange(int32_t fromIndex, int32_t toIndex);
 
 };
 
             
 
+        #include "org/allbinary/util/ABVector.cpp"
+        
 
         #endif //ORG_ALLBINARY_UTIL_ABVECTOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_ABVECTOR_H_COMPLETE)
+        #define ORG_ALLBINARY_UTIL_ABVECTOR_H_COMPLETE
+        #if __has_include(<java/util/Vector.h>)
+#include <java/util/Vector.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/compound/SimultaneousCompoundIndexAnimationInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,15 +78,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/compound/SimultaneousCompoundIndexAnimation.h"
 
-class SimultaneousCompoundIndexAnimationInterfaceFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    private: std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray;
-
-    private: AnimationBehaviorFactory* animationBehaviorFactory;
-
-public: SimultaneousCompoundIndexAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory){
+SimultaneousCompoundIndexAnimationInterfaceFactory::SimultaneousCompoundIndexAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory){
 this->basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
     
 this->animationBehaviorFactory= animationBehaviorFactory;
@@ -86,7 +89,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto SimultaneousCompoundIndexAnimationInterfaceFactory::getInstance(int32_t instanceId) -> Animation*{
 
     int32_t size = this->basicAnimationInterfaceFactoryInterfaceArray.size();;
     
@@ -100,7 +103,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
                         for (
     int32_t index = 0;index < size; index++)
         {
-animationInterfaceArray[index]= dynamic_cast<IndexedAnimation*>(this->basicAnimationInterfaceFactoryInterfaceArray[index].getInstance(instanceId));
+animationInterfaceArray[index]= dynamic_cast<IndexedAnimation*>(this->basicAnimationInterfaceFactoryInterfaceArray[index]->getInstance(instanceId));
     
 }
 
@@ -113,7 +116,7 @@ animationInterfaceArray[index]= dynamic_cast<IndexedAnimation*>(this->basicAnima
 }
 
 
-    protected: Animation* getOrCreate(std::vector<IndexedAnimation*> animationInterfaceArray){
+    auto SimultaneousCompoundIndexAnimationInterfaceFactory::getOrCreate(std::vector<IndexedAnimation*> animationInterfaceArray) -> Animation*{
 
 
 
@@ -123,7 +126,7 @@ animationInterfaceArray[index]= dynamic_cast<IndexedAnimation*>(this->basicAnima
 }
 
 
-    public: std::vector<AnimationInterfaceFactoryInterface*> getBasicAnimationInterfaceFactoryInterfaceArray(){
+    auto SimultaneousCompoundIndexAnimationInterfaceFactory::getBasicAnimationInterfaceFactoryInterfaceArray() -> std::vector<AnimationInterfaceFactoryInterface*>{
 
 
 
@@ -133,11 +136,10 @@ animationInterfaceArray[index]= dynamic_cast<IndexedAnimation*>(this->basicAnima
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto SimultaneousCompoundIndexAnimationInterfaceFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXANIMATIONINTERFACEFACTORY_CPP

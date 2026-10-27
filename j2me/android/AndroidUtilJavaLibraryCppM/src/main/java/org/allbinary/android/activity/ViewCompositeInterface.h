@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_VIEWCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_VIEWCOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Runnable.h"
         
-#include <android/view/View.h>
-
-      
+class View;
 
 
 
@@ -51,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ViewCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ViewCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual View* getRootView() = 0;
 
@@ -65,3 +74,13 @@ class ViewCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_VIEWCOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_ACTIVITY_VIEWCOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_VIEWCOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include(<android/view/View.h>)
+#include <android/view/View.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ORDER_VALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ORDER_VALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/order/ValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/order/OrderView.h"
 
-class ValidationView: public OrderView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderView(transformInfoInterface){
+ValidationView::ValidationView(TransformInfoInterface* transformInfoInterface) : OrderView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,14 +91,14 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderVi
 }
 
 
-    public: bool isValid(){
+    auto ValidationView::isValid() -> bool{
 
         try {
             
     bool valid = Boolean::TRUE;;
     
 
-                        if(this->order.isIdValid() == Boolean::FALSE)
+                        if(this->order->isIdValid() == Boolean::FALSE)
                         
                                     {
                                     
@@ -104,12 +111,12 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderVi
                                     }
                                 
                         else {
-                            this->orderHistory= OrderHistoryFactory::getInstance(this->order.getId());
+                            this->orderHistory= OrderHistoryFactory::getInstance(this->order->getId());
     
 
                         if(this->orderHistory == 
                                     nullptr
-                                 || this->orderHistory.isValid() == Boolean::FALSE)
+                                 || this->orderHistory->isValid() == Boolean::FALSE)
                         
                                     {
                                     
@@ -124,12 +131,12 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : OrderVi
 
     OrderItemsEntity* orderItems = new OrderItemsEntity();;
     
-this->basketReview= orderItems->getBasketReview(this->order.getId());
+this->basketReview= orderItems->getBasketReview(this->order->getId());
     
 
                         if(this->basketReview == 
                                     nullptr
-                                 || this->basketReview.isValid() == Boolean::FALSE)
+                                 || this->basketReview->isValid() == Boolean::FALSE)
                         
                                     {
                                     
@@ -155,10 +162,10 @@ this->basketReview= orderItems->getBasketReview(this->order.getId());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -174,33 +181,33 @@ this->basketReview= orderItems->getBasketReview(this->order.getId());
 }
 
 
-    public: std::string validationInfo(){
+    auto ValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(this->order.isIdValid() == Boolean::FALSE)
+                        if(this->order->isIdValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer->append(this->order.getIdValidationInfo());
+                                    stringBuffer->append(this->order->getIdValidationInfo());
     
 
                                     }
                                 
                         else {
-                            this->orderHistory= OrderHistoryFactory::getInstance(this->order.getId());
+                            this->orderHistory= OrderHistoryFactory::getInstance(this->order->getId());
     
 
                         if(this->orderHistory == 
                                     nullptr
-                                 || this->orderHistory.isValid() == Boolean::FALSE)
+                                 || this->orderHistory->isValid() == Boolean::FALSE)
                         
                                     {
                                     stringBuffer->append("Order History data error for: ");
     
-stringBuffer->append(this->order.getId());
+stringBuffer->append(this->order->getId());
     
 stringBuffer->append("<br />");
     
@@ -210,7 +217,7 @@ stringBuffer->append("<br />");
 
     OrderItemsEntity* orderItems = new OrderItemsEntity();;
     
-this->basketReview= orderItems->getBasketReview(this->order.getId());
+this->basketReview= orderItems->getBasketReview(this->order->getId());
     
 
                         if(this->basketReview == 
@@ -220,7 +227,7 @@ this->basketReview= orderItems->getBasketReview(this->order.getId());
                                     {
                                     stringBuffer->append("Order Items data error - does not exist for: ");
     
-stringBuffer->append(this->order.getId());
+stringBuffer->append(this->order->getId());
     
 stringBuffer->append("<br />");
     
@@ -228,12 +235,12 @@ stringBuffer->append("<br />");
                                     }
                                 
                              else 
-                        if(this->basketReview.isValid() == Boolean::FALSE)
+                        if(this->basketReview->isValid() == Boolean::FALSE)
                         
                                     {
                                     stringBuffer->append("Order Items data error - not valid for: ");
     
-stringBuffer->append(this->order.getId());
+stringBuffer->append(this->order->getId());
     
 stringBuffer->append("<br />");
     
@@ -254,7 +261,7 @@ stringBuffer->append("<br />");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -273,7 +280,7 @@ stringBuffer->append("<br />");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto ValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -283,7 +290,7 @@ stringBuffer->append("<br />");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto ValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -293,7 +300,6 @@ stringBuffer->append("<br />");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ORDER_VALIDATIONVIEW_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class LogUtil;
+class StringMaker;
+class EventStrings;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -67,13 +60,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/event/RawKeyEventListener.h"
+        class RawKeyEventListener;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RawKeyEventHandler
-            : public Object
+            : public virtual Object
          {
 
-    private: static RawKeyEventHandler* instance() { static std::unique_ptr<RawKeyEventHandler> value(new RawKeyEventHandler()); return value.get(); }
+    private: static RawKeyEventHandler* instance_owner();
+    private: static RawKeyEventHandler* instance;
 
     public: static RawKeyEventHandler* getInstance();
 
@@ -81,9 +79,9 @@ class RawKeyEventHandler
 
     private: static inline const std::string LISTENER_LABEL = " Listener: ";
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: BasicArrayList* eventListenerInterfaceList;
+    /*protected*/ public: BasicArrayList* eventListenerInterfaceList;
 
 public: RawKeyEventHandler();
 
@@ -105,7 +103,7 @@ public: RawKeyEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener* eventListenerInterface);
+    /*protected*/ public: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener* eventListenerInterface);
 
     public: BasicArrayList* getEventListenerInterfaceListP();
 
@@ -117,3 +115,31 @@ public: RawKeyEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_RAWKEYEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/input/event/RawKeyEventListener.h")
+#include "org/allbinary/game/input/event/RawKeyEventListener.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_PLATFORM_THREEDOBJRESOURCES_CPP
+        #define ORG_PLATFORM_THREEDOBJRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/platform/ThreedObjResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,25 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThreedObjResources
-            : public Object
-         {
 
-    private: static ThreedObjResources* instance() { static std::unique_ptr<ThreedObjResources> value(new ThreedObjResources()); return value.get(); }
+ThreedObjResources::ThreedObjResources() : hashtable(StdUtil::getInstance()->createHashtable()) {
+        }
+        auto ThreedObjResources::instance_owner() -> ThreedObjResources* { static std::unique_ptr<ThreedObjResources> value(new ThreedObjResources()); return value.get(); }
+ThreedObjResources* ThreedObjResources::instance = ThreedObjResources::instance_owner();
 
-    public: static ThreedObjResources* getInstance(){
+    auto ThreedObjResources::getInstance() -> ThreedObjResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreedObjResources::instance();
+                        return ThreedObjResources::instance;
     
 }
 
 
-    public: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    public: std::string get(std::string resourceName){
+    auto ThreedObjResources::get(std::string resourceName) -> std::string{
 
     std::string resourceName2 = this->hashtable->get(resourceName);;
     
@@ -95,7 +103,6 @@ class ThreedObjResources
 }
 
 
-};
 
-            
 
+        #endif //ORG_PLATFORM_THREEDOBJRESOURCES_CPP

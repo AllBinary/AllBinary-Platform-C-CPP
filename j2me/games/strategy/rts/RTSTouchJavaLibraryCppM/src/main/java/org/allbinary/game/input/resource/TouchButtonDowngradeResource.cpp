@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONDOWNGRADERESOURCE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONDOWNGRADERESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/resource/TouchButtonDowngradeResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonDowngradeResource: public TouchButtonResource {
+TouchButtonResource* TouchButtonDowngradeResource::instance = new TouchButtonDowngradeResource();
 
-    private: static inline TouchButtonResource* instance = new TouchButtonDowngradeResource();
-
-    public: static TouchButtonResource* getInstance(){
+    auto TouchButtonDowngradeResource::getInstance() -> TouchButtonResource*{
 
 
 
@@ -63,7 +71,7 @@ class TouchButtonDowngradeResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonDowngradeResource() : TouchButtonResource("/touch_button_downgrade_64_by_64.png", "/touch_button_downgrade_hint_64_by_64.png"){
+TouchButtonDowngradeResource::TouchButtonDowngradeResource() : TouchButtonResource("/touch_button_downgrade_64_by_64.png", "/touch_button_downgrade_hint_64_by_64.png"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +81,6 @@ private: TouchButtonDowngradeResource() : TouchButtonResource("/touch_button_dow
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONDOWNGRADERESOURCE_CPP

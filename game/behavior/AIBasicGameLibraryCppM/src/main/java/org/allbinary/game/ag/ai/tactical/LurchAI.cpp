@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_TACTICAL_LURCHAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_TACTICAL_LURCHAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/tactical/LurchAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LurchAI: public BasicAI {
 
-    protected: int32_t currentRelativeAngle = 0;
-
-    private: int32_t currentSpeed= 0;
-
-public: LurchAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+LurchAI::LurchAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,7 +86,7 @@ public: LurchAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : Bas
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto LurchAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->currentSpeed ==  -1)
                         
@@ -151,7 +156,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
                         if(this->currentRelativeAngle == 0)
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_NUM0);
+                                    BasicAI::processKeyAI(Canvas::KEY_NUM0);
     
 
                                     }
@@ -160,7 +165,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
                         if(this->currentRelativeAngle == 180)
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_POUND);
+                                    BasicAI::processKeyAI(Canvas::KEY_POUND);
     
 
                                     }
@@ -168,7 +173,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
 }
 
 
-    protected: void reverse(){
+    auto LurchAI::reverse() -> void{
 
                         if(this->currentRelativeAngle == 180)
                         
@@ -190,7 +195,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
 }
 
 
-    private: void accelerate(){
+    auto LurchAI::accelerate() -> void{
 
                         if(this->currentSpeed < 20)
                         
@@ -203,7 +208,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
 }
 
 
-    private: void drop(){
+    auto LurchAI::drop() -> void{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -230,7 +235,6 @@ ownerLayerInterface->setPosition(ownerLayerInterface->getXP(), y, ownerLayerInte
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_TACTICAL_LURCHAI_CPP

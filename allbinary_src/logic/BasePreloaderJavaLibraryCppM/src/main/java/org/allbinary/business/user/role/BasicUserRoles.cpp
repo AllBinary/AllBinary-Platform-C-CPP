@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/role/BasicUserRoles.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,27 +64,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/role/BasicUserRole.h"
 
-class BasicUserRoles
-            : public Object
-         {
 
-    private: static BasicUserRoles* instance() { static std::unique_ptr<BasicUserRoles> value(new BasicUserRoles()); return value.get(); }
+BasicUserRoles::BasicUserRoles() : roleVector(new BasicArrayListD()) {
+        }
+        auto BasicUserRoles::instance_owner() -> BasicUserRoles* { static std::unique_ptr<BasicUserRoles> value(new BasicUserRoles()); return value.get(); }
+BasicUserRoles* BasicUserRoles::instance = BasicUserRoles::instance_owner();
 
-    public: static BasicUserRoles* getInstance(){
+    auto BasicUserRoles::getInstance() -> BasicUserRoles*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicUserRoles::instance();
+                        return BasicUserRoles::instance;
     
 }
 
 
-    public: BasicArrayList* roleVector = new BasicArrayListD();
-
                 //@Throws(Exception.constructor)
             
-    public: BasicUserRole* getRole(std::string role){
+    auto BasicUserRoles::getRole(std::string role) -> BasicUserRole*{
 
     BasicArrayList* roleVector = this->getAll();;
     
@@ -109,12 +117,12 @@ class BasicUserRoles
 
 
 
-                            throw new Exception("Unable to get role - Unknown Role");
+                            throw Exception("Unable to get role - Unknown Role");
                     
 }
 
 
-    public: BasicArrayList* getAll(){
+    auto BasicUserRoles::getAll() -> BasicArrayList*{
 
 
 
@@ -124,7 +132,6 @@ class BasicUserRoles
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLES_CPP

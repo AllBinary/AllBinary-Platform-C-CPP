@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSDATA_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreFrontOrdersHistoryStatisticsData
-            : public Object
+            : public virtual Object
          {
 
-    private: static StoreFrontOrdersHistoryStatisticsData* instance() { static std::unique_ptr<StoreFrontOrdersHistoryStatisticsData> value(new StoreFrontOrdersHistoryStatisticsData()); return value.get(); }
+    private: static StoreFrontOrdersHistoryStatisticsData* instance_owner();
+    private: static StoreFrontOrdersHistoryStatisticsData* instance;
 
     public: static StoreFrontOrdersHistoryStatisticsData* getInstance();
 
@@ -76,3 +86,10 @@ private: StoreFrontOrdersHistoryStatisticsData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ORDERS_HISTORY_STOREFRONTORDERSHISTORYSTATISTICSDATA_H_COMPLETE
+        
+        #endif
+    

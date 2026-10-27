@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_XMLRPCREMOTELICENSEREGISTRATIONCLIENT_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_XMLRPCREMOTELICENSEREGISTRATIONCLIENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/registration/XmlRpcRemoteLicenseRegistrationClient.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,13 +96,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class XmlRpcRemoteLicenseRegistrationClient: public XmlRpcAbeClient {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string PAGE = "licenseregistrationserverssl.php";
-
-public: XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface* clientInfo) : XmlRpcAbeClient(clientInfo, "LicenseRegistrationServer.process"){
+XmlRpcRemoteLicenseRegistrationClient::XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface* clientInfo) : XmlRpcAbeClient(clientInfo, "LicenseRegistrationServer.process"), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,7 +111,7 @@ this->setServer(0);
 
                 //@Throws(Exception.constructor)
             
-    public: Object* get(Object* anyType, CryptInterface* cryptInterface){
+    auto XmlRpcRemoteLicenseRegistrationClient::get(Object* anyType, CryptInterface* cryptInterface) -> Object*{
 
         try {
             
@@ -123,7 +128,7 @@ stringBuffer->append(SEP);
     
 stringBuffer->append(server);
     
-this->logUtil->putF(CommonLabels::getInstance()->START_LABEL +stringBuffer->toString(), this, this->commonStrings.GET);
+this->logUtil->putF(CommonLabels::getInstance()->START_LABEL +stringBuffer->toString(), this, this->commonStrings->GET);
     
 
     BasicArrayList* param = new BasicArrayListD();;
@@ -148,14 +153,14 @@ xmlRpcClient->setBasicAuthentication(
 
     ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
     
-this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonStrings.GET);
+this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonStrings->GET);
     
 param->add(hashtable);
     
 
     Object* result = xmlRpcClient->execute(this->getRemoteMethod(), param, cryptInterface);;
     
-this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings.GET);
+this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings->GET);
     
 isOnline= true;
     
@@ -169,7 +174,7 @@ isOnline= true;
                 //: 
 } catch(IOException& e) 
             {
-this->logUtil->putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->commonStrings.GET);
+this->logUtil->putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->commonStrings->GET);
     
 
                         if(!e.getMessage().startsWith(HOST_NOT_RESOLVED))
@@ -188,7 +193,7 @@ this->logUtil->putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStack
                             
 
 
-                            throw new Exception(HOST_NOT_RESOLVED_MSG);
+                            throw Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -198,7 +203,7 @@ this->logUtil->putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStack
                 //: 
  catch(XmlRpcException& e) 
             {
-this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, &e);
+this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings->GET, &e);
     
 
 
@@ -211,7 +216,7 @@ this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, &e);
                 //: 
  catch(Exception& e) 
             {
-this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings.GET, &e);
+this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings->GET, &e);
     
 
 
@@ -224,7 +229,6 @@ this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings.GET, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_XMLRPCREMOTELICENSEREGISTRATIONCLIENT_CPP

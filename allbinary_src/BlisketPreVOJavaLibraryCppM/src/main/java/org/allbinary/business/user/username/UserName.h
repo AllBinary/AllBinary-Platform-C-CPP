@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_H
         #define ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,26 +37,12 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/user/UserData.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/java/bool/BooleanFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class UserData;
+class LogUtil;
+class BooleanFactory;
+class StringUtil;
+class StringValidationUtil;
+class CommonStrings;
 
 
 
@@ -71,17 +62,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserName
-            : public Object
+            : public virtual Object
          {
 
-    private: static UserName* instance() { static std::unique_ptr<UserName> value(new UserName()); return value.get(); }
+    private: static UserName* instance_owner();
+    private: static UserName* instance;
 
     public: static UserName* getInstance();
 
     public: static std::string getValidationInfo(std::string aUserName);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string userName;
 
@@ -101,3 +97,31 @@ public: UserName(HashMap<Object*, Object*>* hashMap);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_USERNAME_USERNAME_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserData.h>)
+#include <org/allbinary/business/user/UserData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/bool/BooleanFactory.h>)
+#include <org/allbinary/logic/java/bool/BooleanFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,19 +40,9 @@
         
 #include <java/io/InputStream.h>
 
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringUtil;
+class CommonStrings;
 
 
 
@@ -66,18 +61,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //J2MEForJ2ME
 class AbFileSystem
-            : public Object
+            : public virtual Object
          {
 
-    private: static AbFileSystem* instance() { static std::unique_ptr<AbFileSystem> value(new AbFileSystem()); return value.get(); }
+    private: static AbFileSystem* instance_owner();
+    private: static AbFileSystem* instance;
 
     public: static AbFileSystem* getInstance();
 
-    private: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+            
+    public: AbFileSystem();
+        
+    private: LogUtil* logUtil;
+
+    private: CommonStrings* commonStrings;
 
     public: bool isDirectoryOrFile(std::string path);
 
@@ -90,6 +94,7 @@ class AbFileSystem
     public: std::string readAsString(std::string fileName, std::vector<int8_t> bytes);
 
     public: bool close(Object* closeable);
+    public: bool close(const std::string& closeable) { return close(JavaString::box(closeable)); }
 
 };
 
@@ -97,3 +102,23 @@ class AbFileSystem
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

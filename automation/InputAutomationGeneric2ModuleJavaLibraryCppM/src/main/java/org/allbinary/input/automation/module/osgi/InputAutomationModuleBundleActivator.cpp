@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/osgi/InputAutomationModuleBundleActivator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -87,19 +97,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationModuleBundleActivator
-            : public Object
-        , public BundleActivator {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface;
-
-    private: ServiceFactory* serviceFactory;
-
-public: InputAutomationModuleBundleActivator(){
+InputAutomationModuleBundleActivator::InputAutomationModuleBundleActivator() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->init();
     
 }
@@ -107,20 +106,20 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto InputAutomationModuleBundleActivator::init() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: InputAutomationConfigurationModuleChangeListener* getInputAutomationConfigurationModuleChangeListener(BundleContext* context){
+    auto InputAutomationModuleBundleActivator::getInputAutomationConfigurationModuleChangeListener(BundleContext* context) -> InputAutomationConfigurationModuleChangeListener*{
 
-    ServiceReference* serviceReference = context->getServiceReference(InputAutomationConfigurationModuleChangeListener.constructor.getName());;
+    ServiceReference* serviceReference = context->getServiceReference(Class::forType(typeid(InputAutomationConfigurationModuleChangeListener))->getName());;
     
 
                         if(serviceReference != 
@@ -136,7 +135,7 @@ this->init();
                                     nullptr
                                 )
                         
-                                    throw new Exception("No Service For ServiceReference");
+                                    throw Exception("No Service For ServiceReference");
                                 
 
 
@@ -148,7 +147,7 @@ this->init();
                                     }
                                 
                         else {
-                            this->logUtil->putF("No ServiceReference: " +InputAutomationConfigurationModuleChangeListener.constructor.getName(), this, "addModules");
+                            this->logUtil->putF(JavaString::valueOf("No ServiceReference: ") +JavaString::valueOf(Class::forType(typeid(InputAutomationConfigurationModuleChangeListener))->getName()), this, "addModules");
     
 
 
@@ -162,7 +161,7 @@ this->init();
 }
 
 
-    private: void addModules(BundleContext* context){
+    auto InputAutomationModuleBundleActivator::addModules(BundleContext* context) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "addModules");
@@ -206,13 +205,13 @@ this->logUtil->putF(this->commonStrings->EXCEPTION, this, "addModules");
 
                 //@Throws(Exception.constructor)
             
-    public: void registerAsService(BundleContext* bundleContext){
-OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAutomationModuleServiceInterface.constructor.getName());
+    auto InputAutomationModuleBundleActivator::registerAsService(BundleContext* bundleContext) -> void{
+OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), Class::forType(typeid(InputAutomationModuleServiceInterface))->getName());
     
 }
 
 
-    private: void removeModules(BundleContext* context){
+    auto InputAutomationModuleBundleActivator::removeModules(BundleContext* context) -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, "removeModules");
@@ -256,7 +255,7 @@ this->logUtil->putF(this->commonStrings->EXCEPTION, this, "removeModules");
 
                 //@Throws(Exception.constructor)
             
-    public: void start(BundleContext* context){
+    auto InputAutomationModuleBundleActivator::start(BundleContext* context) -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START);
     
 this->addModules(context);
@@ -268,7 +267,7 @@ this->registerAsService(context);
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(BundleContext* context){
+    auto InputAutomationModuleBundleActivator::stop(BundleContext* context) -> void{
 this->logUtil->putF(this->commonStrings->START, this, "stop");
     
 this->removeModules(context);
@@ -276,7 +275,7 @@ this->removeModules(context);
 }
 
 
-    protected: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterface(){
+    auto InputAutomationModuleBundleActivator::getInputAutomationModuleInterface() -> std::vector<InputAutomationModuleFactoryInterface*>{
 
 
 
@@ -286,13 +285,13 @@ this->removeModules(context);
 }
 
 
-    protected: void setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface){
+    auto InputAutomationModuleBundleActivator::setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface) -> void{
 this->inputAutomationModuleInterface= inputAutomationModuleInterface;
     
 }
 
 
-    protected: Object* getServiceFactory(){
+    auto InputAutomationModuleBundleActivator::getServiceFactory() -> Object*{
 
 
 
@@ -302,13 +301,12 @@ this->inputAutomationModuleInterface= inputAutomationModuleInterface;
 }
 
 
-    protected: void setServiceFactory(ServiceFactory* serviceObject){
+    auto InputAutomationModuleBundleActivator::setServiceFactory(ServiceFactory* serviceObject) -> void{
 this->serviceFactory= serviceObject;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_CPP

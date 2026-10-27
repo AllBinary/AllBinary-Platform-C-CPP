@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/NullHighScoresSingletonFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,23 +59,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/HighScores.h"
 
-class NullHighScoresSingletonFactory
-            : public Object
-         {
 
-    private: static HighScores* SINGLETON() { static std::unique_ptr<HighScores> value(new HighScores(CommonStrings::getInstance()->LOADING, "High Scores Not Loaded", CommonStrings::getInstance()->PERIODS)); return value.get(); }
+NullHighScoresSingletonFactory::NullHighScoresSingletonFactory() {
+        }
+        auto NullHighScoresSingletonFactory::SINGLETON_owner() -> HighScores* { static std::unique_ptr<HighScores> value(new HighScores(CommonStrings::getInstance()->LOADING, "High Scores Not Loaded", CommonStrings::getInstance()->PERIODS)); return value.get(); }
+HighScores* NullHighScoresSingletonFactory::SINGLETON = NullHighScoresSingletonFactory::SINGLETON_owner();
 
-    public: static HighScores* getInstance(){
+    auto NullHighScoresSingletonFactory::getInstance() -> HighScores*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullHighScoresSingletonFactory::SINGLETON();
+                        return NullHighScoresSingletonFactory::SINGLETON;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_NULLHIGHSCORESSINGLETONFACTORY_CPP

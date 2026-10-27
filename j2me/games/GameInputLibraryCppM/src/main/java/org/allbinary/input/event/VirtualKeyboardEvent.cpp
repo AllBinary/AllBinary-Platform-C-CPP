@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENT_CPP
+        #define ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/event/VirtualKeyboardEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VirtualKeyboardEvent: public AllBinaryEventObject {
 
-public: VirtualKeyboardEvent(Object* anyType) : AllBinaryEventObject(anyType){
+VirtualKeyboardEvent::VirtualKeyboardEvent(Object* anyType) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,7 +69,6 @@ public: VirtualKeyboardEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYDATA_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
-
-      
+class CommonDataFileStrings;
 
 
 
@@ -51,11 +54,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoryData
-            : public Object
+            : public virtual Object
          {
 
-    private: static CategoryData* instance() { static std::unique_ptr<CategoryData> value(new CategoryData()); return value.get(); }
+    private: static CategoryData* instance_owner();
+    private: static CategoryData* instance;
 
     public: static CategoryData* getInstance();
 
@@ -77,9 +85,9 @@ private: CategoryData();
 
     public: const std::string ROOTCATEGORY = "Category";
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION;
 
 };
 
@@ -87,3 +95,13 @@ private: CategoryData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYDATA_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/CommonDataFileStrings.h>)
+#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
+#endif
+
+        #endif
+    

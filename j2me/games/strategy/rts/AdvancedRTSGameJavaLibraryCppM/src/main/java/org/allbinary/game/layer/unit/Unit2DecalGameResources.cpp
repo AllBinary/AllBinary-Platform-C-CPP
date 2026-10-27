@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNIT2DECALGAMERESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNIT2DECALGAMERESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/unit/Unit2DecalGameResources.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,21 +69,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Unit2DecalGameResources: public BasicGameResources {
+auto Unit2DecalGameResources::instance_owner() -> Unit2DecalGameResources* { static std::unique_ptr<Unit2DecalGameResources> value(new Unit2DecalGameResources()); return value.get(); }
+Unit2DecalGameResources* Unit2DecalGameResources::instance = Unit2DecalGameResources::instance_owner();
 
-    private: static Unit2DecalGameResources* instance() { static std::unique_ptr<Unit2DecalGameResources> value(new Unit2DecalGameResources()); return value.get(); }
-
-    public: static BasicGameResources* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Unit2DecalGameResources::instance();
-    
-}
-
-
-private: Unit2DecalGameResources(){
+Unit2DecalGameResources::Unit2DecalGameResources(){
 
     std::string ROOT = "/unit_decal";;
     
@@ -98,22 +97,22 @@ private: Unit2DecalGameResources(){
                                                             SMALL,MEDIUM,SIZE_FOUR,SIZE_FIVE,SIZE_SIX
                                                         };;
     
-super.init(ROOT, SIZE);
+BasicGameResources::init(ROOT, SIZE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void append(std::string ROOT, std::string sizeString){
-super.append(ROOT, sizeString);
+    auto Unit2DecalGameResources::append(std::string ROOT, std::string sizeString) -> void{
+BasicGameResources::append(ROOT, sizeString);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: std::string getString(){
+    auto Unit2DecalGameResources::getString() -> std::string{
 
                         if(AndroidUtil::isAndroid())
                         
@@ -132,7 +131,7 @@ super.append(ROOT, sizeString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getString();;
+                        return BasicGameResources::getString();;
     
 
                         }
@@ -140,7 +139,16 @@ super.append(ROOT, sizeString);
 }
 
 
-};
+    auto Unit2DecalGameResources::getInstance() -> BasicGameResources*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Unit2DecalGameResources::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_UNIT2DECALGAMERESOURCES_CPP

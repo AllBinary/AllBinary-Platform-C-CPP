@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLESINGLETONFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLESINGLETONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/ProcessPaintableSingletonFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,27 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/ProcessPaintable.h"
 
-class ProcessPaintableSingletonFactory
-            : public Object
-         {
+auto ProcessPaintableSingletonFactory::SINGLETON_owner() -> ProcessPaintable* { static std::unique_ptr<ProcessPaintable> value(new ProcessPaintable()); return value.get(); }
+ProcessPaintable* ProcessPaintableSingletonFactory::SINGLETON = ProcessPaintableSingletonFactory::SINGLETON_owner();
 
-    private: static ProcessPaintable* SINGLETON() { static std::unique_ptr<ProcessPaintable> value(new ProcessPaintable()); return value.get(); }
+ProcessPaintableSingletonFactory::ProcessPaintableSingletonFactory(){
+}
 
-    public: static ProcessPaintable* getInstance(){
+
+    auto ProcessPaintableSingletonFactory::getInstance() -> ProcessPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProcessPaintableSingletonFactory::SINGLETON();
+                        return ProcessPaintableSingletonFactory::SINGLETON;
     
 }
 
 
-private: ProcessPaintableSingletonFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLESINGLETONFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_PRICE_PRICECONSTRAINTINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_PRICE_PRICECONSTRAINTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/control/contraints/MinMaxDoubleConstraintInterface.h>
-
-      
 
 
 
@@ -49,6 +52,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PriceConstraintInterface: public MinMaxDoubleConstraintInterface {
 
 };
@@ -57,3 +64,13 @@ class PriceConstraintInterface: public MinMaxDoubleConstraintInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_PRICE_PRICECONSTRAINTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_PRICE_PRICECONSTRAINTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_PRICE_PRICECONSTRAINTINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/control/contraints/MinMaxDoubleConstraintInterface.h>)
+#include <org/allbinary/logic/control/contraints/MinMaxDoubleConstraintInterface.h>
+#endif
+
+        #endif
+    

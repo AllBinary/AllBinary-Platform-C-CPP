@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERDOWNGRADEGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERDOWNGRADEGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectedRTSLayersPlayerDowngradeGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInputProcessor.h"
 #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
-class SelectedRTSLayersPlayerDowngradeGameInputProcessor: public SelectedRTSLayersPlayerGameInputProcessor {
 
-public: SelectedRTSLayersPlayerDowngradeGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) : SelectedRTSLayersPlayerGameInputProcessor(selectedRTSLayersPlayerGameInput){
+SelectedRTSLayersPlayerDowngradeGameInputProcessor::SelectedRTSLayersPlayerDowngradeGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) : SelectedRTSLayersPlayerGameInputProcessor(selectedRTSLayersPlayerGameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: SelectedRTSLayersPlayerDowngradeGameInputProcessor(SelectedRTSLayersPlay
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->selectedRTSLayersPlayerGameInput.downgrade();
+    auto SelectedRTSLayersPlayerDowngradeGameInputProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->selectedRTSLayersPlayerGameInput->downgrade();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERDOWNGRADEGAMEINPUTPROCESSOR_CPP

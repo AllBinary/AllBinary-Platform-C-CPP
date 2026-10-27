@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/WorkFlowData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WorkFlowData
-            : public Object
-         {
+auto WorkFlowData::instance_owner() -> WorkFlowData* { static std::unique_ptr<WorkFlowData> value(new WorkFlowData()); return value.get(); }
+WorkFlowData* WorkFlowData::instance = WorkFlowData::instance_owner();
 
-    private: static WorkFlowData* instance() { static std::unique_ptr<WorkFlowData> value(new WorkFlowData()); return value.get(); }
-
-    public: static WorkFlowData* getInstance(){
+    auto WorkFlowData::getInstance() -> WorkFlowData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowData::instance();
+                        return WorkFlowData::instance;
     
 }
 
 
-private: WorkFlowData(){
+WorkFlowData::WorkFlowData(){
 }
 
 
-    public: std::string WORKFLOWS = "WORKFLOWS";
 
-    public: std::string WORKFLOW = "WORKFLOW";
 
-    public: std::string NAME = "WORKFLOW_NAME";
-
-    public: std::string DATA = "WORKFLOW_DATA";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWDATA_CPP

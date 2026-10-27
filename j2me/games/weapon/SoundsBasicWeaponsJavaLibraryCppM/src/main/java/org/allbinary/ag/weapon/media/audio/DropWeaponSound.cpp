@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_CPP
+        #define ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ag/weapon/media/audio/DropWeaponSound.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,21 +59,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DropWeaponSound: public CompositeSound {
+Sound* DropWeaponSound::soundInterface = new DropWeaponSound();
 
-    private: static inline Sound* soundInterface = new DropWeaponSound();
-
-    public: static Sound* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropWeaponSound::soundInterface;
-    
-}
-
-
-private: DropWeaponSound() : CompositeSound("resource:/wav/mine.wav"){
+DropWeaponSound::DropWeaponSound() : CompositeSound("resource:/wav/mine.wav"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +71,16 @@ private: DropWeaponSound() : CompositeSound("resource:/wav/mine.wav"){
 }
 
 
-};
+    auto DropWeaponSound::getInstance() -> Sound*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return DropWeaponSound::soundInterface;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_AG_WEAPON_MEDIA_AUDIO_DROPWEAPONSOUND_CPP

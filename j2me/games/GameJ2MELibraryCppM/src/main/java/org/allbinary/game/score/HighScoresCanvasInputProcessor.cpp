@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresCanvasInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,11 +71,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScoresCanvasInputProcessor: public PlayerGameInput {
 
-    private: HighScoresCanvas* highScoresCanvas;
-
-public: HighScoresCanvasInputProcessor(HighScoresCanvas* highScoresCanvas) : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
+HighScoresCanvasInputProcessor::HighScoresCanvasInputProcessor(HighScoresCanvas* highScoresCanvas) : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,17 +84,17 @@ this->highScoresCanvas= highScoresCanvas;
 }
 
 
-    public: void open(){
+    auto HighScoresCanvasInputProcessor::open() -> void{
 }
 
 
-    public: void close(){
+    auto HighScoresCanvasInputProcessor::close() -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onPressGameKeyEvent(GameKeyEvent* gameKeyEvent){
-super.onPressGameKeyEvent(gameKeyEvent);
+    auto HighScoresCanvasInputProcessor::onPressGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
+PlayerGameInput::onPressGameKeyEvent(gameKeyEvent);
     
 this->update();
     
@@ -95,8 +102,8 @@ this->update();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
-super.onDownGameKeyEvent(gameKeyEvent);
+    auto HighScoresCanvasInputProcessor::onDownGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
+PlayerGameInput::onDownGameKeyEvent(gameKeyEvent);
     
 this->update();
     
@@ -104,19 +111,19 @@ this->update();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
-super.onUpGameKeyEvent(gameKeyEvent);
+    auto HighScoresCanvasInputProcessor::onUpGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
+PlayerGameInput::onUpGameKeyEvent(gameKeyEvent);
     
 this->update();
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto HighScoresCanvasInputProcessor::paint(Graphics* graphics) -> void{
 }
 
 
-    public: HighScoresCanvas* getHighScoresCanvas(){
+    auto HighScoresCanvasInputProcessor::getHighScoresCanvas() -> HighScoresCanvas*{
 
 
 
@@ -126,7 +133,6 @@ this->update();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSOR_CPP

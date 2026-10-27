@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SCALEPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SCALEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ScaleProcessor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,27 +70,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ScaleBaseProcessor.h"
 
-class ScaleProcessor: public ScaleBaseProcessor {
 
-    private: static ScaleProcessor* instanceC() { static std::unique_ptr<ScaleProcessor> value(new ScaleProcessor()); return value.get(); }
+ScaleProcessor::ScaleProcessor() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), imageScaleUtil(ImageScaleUtil::getInstance()) {
+        }
+        auto ScaleProcessor::instanceC_owner() -> ScaleProcessor* { static std::unique_ptr<ScaleProcessor> value(new ScaleProcessor()); return value.get(); }
+ScaleProcessor* ScaleProcessor::instanceC = ScaleProcessor::instanceC_owner();
 
-    public: static ScaleBaseProcessor* getInstance(){
+    auto ScaleProcessor::getInstance() -> ScaleBaseProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScaleProcessor::instanceC();
+                        return ScaleProcessor::instanceC;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ImageScaleUtil* imageScaleUtil = ImageScaleUtil::getInstance();
-
-    public: void update(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    auto ScaleProcessor::update(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY) -> void{
 
         try {
             this->imageScaleUtil->scale2(originalImage, originalImageArray, ximageToShowArray, unused, scaleX, scaleY, maxScaleX, maxScaleY);
@@ -96,7 +102,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UP
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SCALEPROCESSOR_CPP

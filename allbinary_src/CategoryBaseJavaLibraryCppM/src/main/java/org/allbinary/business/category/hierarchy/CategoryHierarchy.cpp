@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/hierarchy/CategoryHierarchy.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,17 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h"
 
-class CategoryHierarchy
-            : public Object
-        , public CategoryHierarchyInterface {
 
-    private: CategoryInterface* rootCategoryInterface;
-
-    private: CategoryInterface* parentCategoryInterface;
-
-    private: int32_t level;
-
-public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface){
+CategoryHierarchy::CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface){
 this->level= 0;
     
 this->setRoot(rootCategoryInterface);
@@ -80,7 +81,7 @@ this->setParent(parentCategoryInterface);
 }
 
 
-public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, int32_t level){
+CategoryHierarchy::CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, int32_t level){
 this->level= level;
     
 this->setRoot(rootCategoryInterface);
@@ -90,7 +91,7 @@ this->setParent(parentCategoryInterface);
 }
 
 
-public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
+CategoryHierarchy::CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
 
     std::string levelString = StringUtil::getInstance()->getNonNull(categoryPropertiesHashMap->get(CategoryData::getInstance()->LEVEL));;
     
@@ -103,7 +104,7 @@ this->setParent(parentCategoryInterface);
 }
 
 
-    public: int32_t getLevel(){
+    auto CategoryHierarchy::getLevel() -> int32_t{
 
 
 
@@ -113,7 +114,7 @@ this->setParent(parentCategoryInterface);
 }
 
 
-    public: std::string getLevelString(){
+    auto CategoryHierarchy::getLevelString() -> std::string{
 
 
 
@@ -123,25 +124,25 @@ this->setParent(parentCategoryInterface);
 }
 
 
-    public: void setLevel(int32_t level){
+    auto CategoryHierarchy::setLevel(int32_t level) -> void{
 this->level= level;
     
 }
 
 
-    public: void setParent(CategoryInterface* categoryInterface){
+    auto CategoryHierarchy::setParent(CategoryInterface* categoryInterface) -> void{
 this->parentCategoryInterface= categoryInterface;
     
 }
 
 
-    public: void setRoot(CategoryInterface* categoryInterface){
+    auto CategoryHierarchy::setRoot(CategoryInterface* categoryInterface) -> void{
 this->rootCategoryInterface= categoryInterface;
     
 }
 
 
-    public: CategoryInterface* getRoot(){
+    auto CategoryHierarchy::getRoot() -> CategoryInterface*{
 
 
 
@@ -151,7 +152,7 @@ this->rootCategoryInterface= categoryInterface;
 }
 
 
-    public: CategoryInterface* getParent(){
+    auto CategoryHierarchy::getParent() -> CategoryInterface*{
 
 
 
@@ -161,7 +162,6 @@ this->rootCategoryInterface= categoryInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_CPP

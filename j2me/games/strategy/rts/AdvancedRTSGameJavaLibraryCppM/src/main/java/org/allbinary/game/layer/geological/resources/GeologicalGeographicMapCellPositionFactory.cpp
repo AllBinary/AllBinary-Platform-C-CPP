@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPositionFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,13 +76,8 @@
         #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
 #include "org/allbinary/game/layer/geological/resources/GeologicalResource.h"
 
-class GeologicalGeographicMapCellPositionFactory
-            : public Object
-        , public GeographicMapCellPositionFactoryInterface {
 
-    private: std::vector<int32_t> resourcePerMapCellType;
-
-public: GeologicalGeographicMapCellPositionFactory(std::vector<int32_t> resourcePerMapCellType){
+GeologicalGeographicMapCellPositionFactory::GeologicalGeographicMapCellPositionFactory(std::vector<int32_t> resourcePerMapCellType){
 this->resourcePerMapCellType= resourcePerMapCellType;
     
 }
@@ -80,7 +85,7 @@ this->resourcePerMapCellType= resourcePerMapCellType;
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getInstance(BasicGeographicMap* geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height){
+    auto GeologicalGeographicMapCellPositionFactory::getInstance(BasicGeographicMap* geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height) -> GeographicMapCellPosition*{
 
     AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
@@ -96,7 +101,6 @@ this->resourcePerMapCellType= resourcePerMapCellType;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,32 +41,14 @@
             #include "java/lang/System.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <org/apache/xmlrpc/XmlRpcException.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/canvas/SpecialMessageUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class XmlRpcException;
+class CommonSeps;
+class StringMaker;
+class AbeClientInformationInterface;
+class SpecialMessageUtil;
+class CommonStrings;
+class TimeDelayHelper;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -80,15 +67,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/Log.h"
-#include "org/allbinary/logic/communication/log/LogFormatUtil.h"
-#include "org/allbinary/logic/communication/log/XmlRpcRemoteLogClient.h"
-//ActualPlatform
+        class Log;
+class LogFormatUtil;
+class XmlRpcRemoteLogClient;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //ActualPlatform
 /*actual*/ class LogUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
+    private: static LogUtil* instance_owner();
+    private: static LogUtil* instance;
 
     /*actual*/ public: static LogUtil* getInstance();
 
@@ -96,13 +88,13 @@
 
     private: bool isFirstException = true;
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(200000);
+    private: TimeDelayHelper* timeDelayHelper;
 
     public: AbeClientInformationInterface* abeClientInformation;
 
 private: LogUtil();
 
-    private: StringMaker* stringBuffer = new StringMaker();
+    private: StringMaker* stringBuffer;
 
     /*actual*/ public: void putL(Log* log);
 
@@ -118,3 +110,46 @@ private: LogUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H_COMPLETE
+        #if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<org/apache/xmlrpc/XmlRpcException.h>)
+#include <org/apache/xmlrpc/XmlRpcException.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/canvas/SpecialMessageUtil.h>)
+#include <org/allbinary/canvas/SpecialMessageUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/log/Log.h")
+#include "org/allbinary/logic/communication/log/Log.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/LogFormatUtil.h")
+#include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/XmlRpcRemoteLogClient.h")
+#include "org/allbinary/logic/communication/log/XmlRpcRemoteLogClient.h"
+#endif
+
+        #endif
+    

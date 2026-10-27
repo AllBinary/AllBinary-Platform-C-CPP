@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_AUTOCOMPOUNDROTATIONANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_AUTOCOMPOUNDROTATIONANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/compound/AutoCompoundRotationAnimationInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,9 +69,8 @@
         #include "org/allbinary/animation/compound/CompoundAnimationInterfaceFactory.h"
 #include "org/allbinary/animation/compound/AutoCompoundRotationAnimation.h"
 
-class AutoCompoundRotationAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
 
-public: AutoCompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
+AutoCompoundRotationAnimationInterfaceFactory::AutoCompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory* animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,7 +80,7 @@ public: AutoCompoundRotationAnimationInterfaceFactory(std::vector<AnimationInter
 }
 
 
-    protected: std::vector<Animation*> createArray(int32_t size){
+    auto AutoCompoundRotationAnimationInterfaceFactory::createArray(int32_t size) -> std::vector<Animation*>{
 
 
 
@@ -81,17 +90,16 @@ public: AutoCompoundRotationAnimationInterfaceFactory(std::vector<AnimationInter
 }
 
 
-    protected: Animation* createAnimation(std::vector<Animation*> animationInterfaceArray){
+    auto AutoCompoundRotationAnimationInterfaceFactory::createAnimation(std::vector<Animation*> animationInterfaceArray) -> Animation*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AutoCompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AutoCompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory->getOrCreateInstance());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_AUTOCOMPOUNDROTATIONANIMATIONINTERFACEFACTORY_CPP

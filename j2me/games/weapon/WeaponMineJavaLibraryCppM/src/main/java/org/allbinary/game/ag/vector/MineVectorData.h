@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_VECTOR_MINEVECTORDATA_H
         #define ORG_ALLBINARY_GAME_AG_VECTOR_MINEVECTORDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,32 +55,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MineVectorData
-            : public Object
+            : public virtual Object
          {
 
-    public: static inline std::vector<std::vector<std::vector<int32_t>>> points = 
-                                                        {
-                                                            [[10,5]
-,[2,6]
-,[1000,1000]
-,[2,2]
-,[10,9]
-,[1000,1000]
-,[10,2]
-,[2,9]
-,[1000,1000]
-,[2,5]
-,[10,6]
-,[1000,1000]
-,[7,9]
-,[5,2]
-,[1000,1000]
-,[7,2]
-,[5,9]
-,[1000,1000]
-]
-                                                        };
+    public: static std::vector<std::vector<std::vector<int32_t>>> points;
 
 private: MineVectorData();
 
@@ -85,3 +73,10 @@ private: MineVectorData();
 
 
         #endif //ORG_ALLBINARY_GAME_AG_VECTOR_MINEVECTORDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_VECTOR_MINEVECTORDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_VECTOR_MINEVECTORDATA_H_COMPLETE
+        
+        #endif
+    

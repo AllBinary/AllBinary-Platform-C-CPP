@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_J2MEGAMEKEY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_J2MEGAMEKEY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/J2MEGameKey.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,9 +61,43 @@
         #include "org/allbinary/game/input/Input.h"
 #include "org/allbinary/game/input/InputFactory.h"
 
-class J2MEGameKey: public Input {
 
-    public: static std::string getString(int32_t keyCode){
+J2MEGameKey::J2MEGameKey(int32_t key, std::string keyName) : Input(key, keyName){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+
+    int32_t id = this->getId();;
+    
+
+                        if(id >= 0)
+                        
+                                    {
+                                    
+    InputFactory* inputFactory = InputFactory::getInstance();;
+    
+inputFactory->add(id, this);
+    
+
+                                    }
+                                
+}
+
+
+    auto J2MEGameKey::toString() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return (new StringMaker())->append("J2MEGameKey: ")->append(Input::toString())->toString();;
+    
+}
+
+
+    auto J2MEGameKey::getString(int32_t keyCode) -> std::string{
 
     Input* input = InputFactory::getInstance()->getInstanceById(keyCode);;
     
@@ -85,42 +129,6 @@ class J2MEGameKey: public Input {
 }
 
 
-protected: J2MEGameKey(int32_t key, std::string keyName) : Input(key, keyName){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-
-    int32_t id = this->getId();;
-    
-
-                        if(id >= 0)
-                        
-                                    {
-                                    
-    InputFactory* inputFactory = InputFactory::getInstance();;
-    
-inputFactory->add(id, this);
-    
-
-                                    }
-                                
-}
 
 
-    public: std::string toString(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append("J2MEGameKey: ")->append(super.toString())->toString();;
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_J2MEGAMEKEY_CPP

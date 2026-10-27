@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,26 @@
         #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
 #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
-class BasicMotionGesturesHandler: public BasicEventHandler {
+auto BasicMotionGesturesHandler::SINGLETON_owner() -> BasicMotionGesturesHandler* { static std::unique_ptr<BasicMotionGesturesHandler> value(new BasicMotionGesturesHandler()); return value.get(); }
+BasicMotionGesturesHandler* BasicMotionGesturesHandler::SINGLETON = BasicMotionGesturesHandler::SINGLETON_owner();
 
-    private: static BasicMotionGesturesHandler* SINGLETON() { static std::unique_ptr<BasicMotionGesturesHandler> value(new BasicMotionGesturesHandler()); return value.get(); }
-
-    public: static BasicMotionGesturesHandler* getInstance(){
+    auto BasicMotionGesturesHandler::getInstance() -> BasicMotionGesturesHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicMotionGesturesHandler::SINGLETON();
+                        return BasicMotionGesturesHandler::SINGLETON;
     
 }
 
 
-protected: BasicMotionGesturesHandler(){
+BasicMotionGesturesHandler::BasicMotionGesturesHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto BasicMotionGesturesHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     BaseMotionGestureEventListener* baseMotionGestureEventListener = dynamic_cast<BaseMotionGestureEventListener*>(eventListenerInterface);;
     
@@ -85,7 +94,6 @@ baseMotionGestureEventListener->onMotionGestureEvent(dynamic_cast<MotionGestureE
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_CPP

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
         #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -49,14 +52,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/BaseGameStatistics.h"
-//ActualPlatform
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //ActualPlatform
 /*actual*/ class GameStatisticsFactory: public BaseGameStatistics {
 
-    private: static GameStatisticsFactory* instance() { static std::unique_ptr<GameStatisticsFactory> value(new GameStatisticsFactory()); return value.get(); }
+    private: static GameStatisticsFactory* instance_owner();
+    private: static GameStatisticsFactory* instance;
 
     /*actual*/ public: static GameStatisticsFactory* getInstance();
 
-    private: StringMaker* stringBuffer = new StringMaker();
+
+            
+    public: GameStatisticsFactory();
+        
+    private: StringMaker* stringBuffer;
 
     public: void add(std::string string);
 
@@ -68,3 +80,16 @@
 
 
         #endif //ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/canvas/BaseGameStatistics.h")
+#include "org/allbinary/canvas/BaseGameStatistics.h"
+#endif
+
+        #endif
+    

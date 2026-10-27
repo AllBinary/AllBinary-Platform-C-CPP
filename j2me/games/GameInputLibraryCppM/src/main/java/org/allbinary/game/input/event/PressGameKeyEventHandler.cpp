@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_PRESSGAMEKEYEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_PRESSGAMEKEYEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/PressGameKeyEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,27 +81,24 @@
         #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/game/input/event/PressGameKeyEventListenerInterface.h"
 
-class PressGameKeyEventHandler: public BasicEventHandler {
+auto PressGameKeyEventHandler::instance_owner() -> PressGameKeyEventHandler* { static std::unique_ptr<PressGameKeyEventHandler> value(new PressGameKeyEventHandler()); return value.get(); }
+PressGameKeyEventHandler* PressGameKeyEventHandler::instance = PressGameKeyEventHandler::instance_owner();
 
-    private: static PressGameKeyEventHandler* instance() { static std::unique_ptr<PressGameKeyEventHandler> value(new PressGameKeyEventHandler()); return value.get(); }
-
-    public: static PressGameKeyEventHandler* getInstance(){
+    auto PressGameKeyEventHandler::getInstance() -> PressGameKeyEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PressGameKeyEventHandler::instance();
+                        return PressGameKeyEventHandler::instance;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: PressGameKeyEventHandler(){
+PressGameKeyEventHandler::PressGameKeyEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(PlayerGameInput* playerGameInput){
+    auto PressGameKeyEventHandler::addListener(PlayerGameInput* playerGameInput) -> void{
 
                         if(!this->list->contains(playerGameInput))
                         
@@ -104,25 +111,25 @@ private: PressGameKeyEventHandler(){
 }
 
 
-    public: void removeAllListeners(){
+    auto PressGameKeyEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto PressGameKeyEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto PressGameKeyEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -141,20 +148,20 @@ playerGameInput->onPressGameKeyEvent(dynamic_cast<GameKeyEvent*>(eventObject));
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto PressGameKeyEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     PressGameKeyEventListenerInterface* pressGameKeyEventListenerInterface = (dynamic_cast<PressGameKeyEventListenerInterface*>(eventListenerInterface));;
     
@@ -163,7 +170,6 @@ pressGameKeyEventListenerInterface->onPressGameKeyEvent(dynamic_cast<GameKeyEven
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_PRESSGAMEKEYEVENTHANDLER_CPP

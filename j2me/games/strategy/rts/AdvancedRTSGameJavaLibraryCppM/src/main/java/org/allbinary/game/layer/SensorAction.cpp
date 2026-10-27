@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SENSORACTION_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SENSORACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/SensorAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SensorAction
-            : public Object
-         {
 
-    public: std::string name;
-
-public: SensorAction(std::string name){
+SensorAction::SensorAction(std::string name){
 this->name= name;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SENSORACTION_CPP

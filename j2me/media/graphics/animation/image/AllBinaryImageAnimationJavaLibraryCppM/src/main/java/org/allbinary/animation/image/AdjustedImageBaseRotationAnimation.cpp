@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEBASEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEBASEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AdjustedImageBaseRotationAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
 
-class AdjustedImageBaseRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: int32_t dx= 0;
-
-    private: int32_t dy= 0;
-
-public: AdjustedImageBaseRotationAnimation(Image* image, AngleInfo* angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+AdjustedImageBaseRotationAnimation::AdjustedImageBaseRotationAnimation(Image* image, AngleInfo* angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +83,7 @@ this->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t dx, int32_t dy){
+    auto AdjustedImageBaseRotationAnimation::init(int32_t dx, int32_t dy) -> void{
 this->dx= dx;
     
 this->dy= dy;
@@ -86,13 +91,12 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this->dx, y +this->dy);
+    auto AdjustedImageBaseRotationAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+ImageBaseRotationAnimation::paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEBASEROTATIONANIMATION_CPP

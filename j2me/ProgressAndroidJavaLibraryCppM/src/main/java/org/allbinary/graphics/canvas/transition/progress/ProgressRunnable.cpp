@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSRUNNABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,13 +66,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
-class ProgressRunnable: public ARunnable {
 
-    protected: SimpleProgressActivityInterface* midletActivity;
-
-    protected: ProgressCanvas* progressCanvas;
-
-public: ProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas){
+ProgressRunnable::ProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas){
 
     MidletActivityBase* midletActivity2 = dynamic_cast<MidletActivityBase*>(midletActivity);;
     
@@ -73,11 +78,10 @@ this->progressCanvas= progressCanvas;
 }
 
 
-    public: void run(){
+    auto ProgressRunnable::run() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSRUNNABLE_CPP

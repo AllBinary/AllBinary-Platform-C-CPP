@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESImage.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -97,29 +107,11 @@
 #include "org/allbinary/image/opengles/OpenGLESImageProperties.h"
 #include "org/allbinary/image/opengles/OpenGLImageCacheFactory.h"
 //OpenGLESSWTJOGLImageJavaLibrary
-class OpenGLESImage: public Image, public OpenGLSurfaceChangedInterface {
+auto OpenGLESImage::NULL_OPENGL_IMAGE_owner() -> OpenGLESImage* { static std::unique_ptr<OpenGLESImage> value(new OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY)); return value.get(); }
+OpenGLESImage* OpenGLESImage::NULL_OPENGL_IMAGE = OpenGLESImage::NULL_OPENGL_IMAGE_owner();
+BasicArrayList* OpenGLESImage::texture2dList = new BasicArrayListD();
 
-    public: static OpenGLESImage* NULL_OPENGL_IMAGE() { static std::unique_ptr<OpenGLESImage> value(new OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY)); return value.get(); }
-
-    public: static inline BasicArrayList* texture2dList = new BasicArrayListD();
-
-    public: static inline const int32_t TYPE = 4;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: PlatformTextureBaseFactory* textureFactory;
-
-    public: PlatformBitmapBase* openGLBitmap;
-
-    public: OpenGLESImageProcessor* imageProcessor = OpenGLESImageProcessor::getInstance();
-
-    public: OpenGLESImageTranslate* openGLESImageTranslate = OpenGLESImageTranslate::getInstance();
-
-    public: OpenGLESImageProperties* openGLESImageProperties = new OpenGLESImageProperties();
-
-public: OpenGLESImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : Image(image->getName(), PostLoadImageProcessor::NULL_POST_LOAD_IMAGE_PROCESSOR){
+OpenGLESImage::OpenGLESImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : Image(image->getName(), PostLoadImageProcessor::NULL_POST_LOAD_IMAGE_PROCESSOR), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), imageProcessor(OpenGLESImageProcessor::getInstance()), openGLESImageTranslate(OpenGLESImageTranslate::getInstance()), openGLESImageProperties(new OpenGLESImageProperties()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -137,7 +129,7 @@ this->platformImage= OpenGLESPostLoadPlatformImage::getInstance();
 }
 
 
-    public: int32_t getHeight(){
+    auto OpenGLESImage::getHeight() -> int32_t{
 
 
 
@@ -147,7 +139,7 @@ this->platformImage= OpenGLESPostLoadPlatformImage::getInstance();
 }
 
 
-    public: int32_t getWidth(){
+    auto OpenGLESImage::getWidth() -> int32_t{
 
 
 
@@ -159,16 +151,16 @@ this->platformImage= OpenGLESPostLoadPlatformImage::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL* gl){
+    auto OpenGLESImage::set(GL* gl) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    protected: bool initTexture(GL10* gl){
+    auto OpenGLESImage::initTexture(GL10* gl) -> bool{
 
                         if(!OpenGLESImage::texture2dList->contains(this))
                         
@@ -221,15 +213,15 @@ gl->glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_T, GL10::GL_CLAMP
 }
 
 
-    public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESImage::drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z) -> void{
 }
 
 
-    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESImage::draw(GL10* gl, int32_t x, int32_t y, int32_t z) -> void{
 }
 
 
-    public: int32_t getType(){
+    auto OpenGLESImage::getType() -> int32_t{
 
 
 
@@ -239,7 +231,7 @@ gl->glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_T, GL10::GL_CLAMP
 }
 
 
-    public: std::string toString(){
+    auto OpenGLESImage::toString() -> std::string{
 
     GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();;
     
@@ -247,12 +239,11 @@ gl->glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_T, GL10::GL_CLAMP
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append(this->getName())->append(super.toString())->append(graphicsStrings->OPACITY)->appendfloat(this->openGLESImageProperties->alphaf)->toString();;
+                        return (new StringMaker())->append(this->getName())->append(Image::toString())->append(graphicsStrings->OPACITY)->appendfloat(this->openGLESImageProperties->alphaf)->toString();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_CPP

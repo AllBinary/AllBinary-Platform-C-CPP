@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,60 +38,24 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Displayable.h>
-
-      
-#include <org/allbinary/AndroidUtil.h>
-
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
-
-      
-#include <org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>
-
-      
-#include <org/allbinary/graphics/displayable/event/LastDisplayChangeEventHandler.h>
-
-      
-#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
-
-      
-#include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class Displayable;
+class AndroidUtil;
+class Features;
+class DisplayChangeEvent;
+class DisplayChangeEventHandler;
+class LastDisplayChangeEventHandler;
+class OpenGLFeatureFactory;
+class SWTJOGLProcessor;
+class LogUtil;
+class PreLogUtil;
+class StringMaker;
+class GenericOperatingSystem;
+class OperatingSystemFactory;
+class CommonLabels;
+class CommonSeps;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -105,24 +74,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/displayable/BaseScalable.h"
-#include "org/allbinary/graphics/displayable/ScalableListener.h"
+        class BaseScalable;
+class ScalableListener;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DisplayInfoSingleton
-            : public Object
+            : public virtual Object
          {
 
-    private: static DisplayInfoSingleton* SINGLETON() { static std::unique_ptr<DisplayInfoSingleton> value(new DisplayInfoSingleton()); return value.get(); }
+    private: static DisplayInfoSingleton* SINGLETON_owner();
+    private: static DisplayInfoSingleton* SINGLETON;
 
     public: static DisplayInfoSingleton* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonLabels* commonLabels = CommonLabels::getInstance();
+    private: CommonLabels* commonLabels;
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     public: const std::string ORIENTATION = "ORIENTATION";
 
@@ -130,11 +104,11 @@ class DisplayInfoSingleton
 
     public: const std::string ADJUSTING_FOR_SCALING_IN_LANDSCAPE = "Adjusting for Scaling in landscape display ratio: ";
 
-    private: std::vector<int32_t> last = std::vector<int32_t>(4);
+    private: std::vector<int32_t> last;
 
-    private: std::vector<int32_t> lastHalf = std::vector<int32_t>(4);
+    private: std::vector<int32_t> lastHalf;
 
-    private: std::vector<int32_t> full = std::vector<int32_t>(4);
+    private: std::vector<int32_t> full;
 
     private: int32_t top= 0;
 
@@ -154,7 +128,7 @@ class DisplayInfoSingleton
 
     public: const int32_t CUSTOM_HEIGHT = 3;
 
-    private: BaseScalable* scalableListener = new BaseScalable();
+    private: BaseScalable* scalableListener;
 
     private: float displayRatio= 0.0;
 
@@ -194,7 +168,7 @@ private: DisplayInfoSingleton();
 
     public: bool isPortrait();
 
-    public: DisplayChangeEvent* displayChangeEvent = new DisplayChangeEvent(this);
+    public: DisplayChangeEvent* displayChangeEvent;
 
     private: const std::string FIRE_METHOD_NAME = "fire";
 
@@ -202,7 +176,7 @@ private: DisplayInfoSingleton();
 
     private: const std::string UPDATE_FROM_ORIENTATION_CHANGE = "Updating from Orientation Change ";
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
     public: void add(std::string reason);
 
@@ -266,3 +240,70 @@ private: DisplayInfoSingleton();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Displayable.h>)
+#include <javax/microedition/lcdui/Displayable.h>
+#endif
+#if __has_include(<org/allbinary/AndroidUtil.h>)
+#include <org/allbinary/AndroidUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>)
+#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>)
+#include <org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/event/LastDisplayChangeEventHandler.h>)
+#include <org/allbinary/graphics/displayable/event/LastDisplayChangeEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>)
+#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/threed/SWTJOGLProcessor.h>)
+#include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/OperatingSystemFactory.h>)
+#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/graphics/displayable/BaseScalable.h")
+#include "org/allbinary/graphics/displayable/BaseScalable.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/ScalableListener.h")
+#include "org/allbinary/graphics/displayable/ScalableListener.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/motion/action/NoCompleteMotionGestureInputEventListener.h>
-
-      
-#include <org/allbinary/input/AllBinarySensor.h>
-
-      
-#include <org/allbinary/input/NoAllBinarySensor.h>
-
-      
-#include <org/allbinary/input/accelerometer/AccelerometerSensorFactory.h>
-
-      
+class NoCompleteMotionGestureInputEventListener;
+class AllBinarySensor;
+class NoAllBinarySensor;
+class AccelerometerSensorFactory;
 
 
 
@@ -61,29 +58,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/gyro/GyroSensorFactory.h"
+        class GyroSensorFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SensorGameUpdateProcessor
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: SensorGameUpdateProcessor();
+        
     private: AllBinarySensor* inputSensor;
 
-    protected: void setInputSensor(AllBinarySensor* inputSensor);
+    /*protected*/ public: void setInputSensor(AllBinarySensor* inputSensor);
 
     public: AllBinarySensor* getInputSensor();
 
                 //@Throws(Exception.constructor)
             
     public: void process(Object* anyType);
+    public: void process(const std::string& anyType) { return process(JavaString::box(anyType)); }
 
                 //@Throws(Exception.constructor)
             
     public: void sendNotifications(Object* anyType);
+    public: void sendNotifications(const std::string& anyType) { return sendNotifications(JavaString::box(anyType)); }
 
     public: bool isAnySensor();
 
-    protected: void setNoSensors();
+    /*protected*/ public: void setNoSensors();
 
 };
 
@@ -91,3 +98,25 @@ class SensorGameUpdateProcessor
 
 
         #endif //ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/motion/action/NoCompleteMotionGestureInputEventListener.h>)
+#include <org/allbinary/game/input/motion/action/NoCompleteMotionGestureInputEventListener.h>
+#endif
+#if __has_include(<org/allbinary/input/AllBinarySensor.h>)
+#include <org/allbinary/input/AllBinarySensor.h>
+#endif
+#if __has_include(<org/allbinary/input/NoAllBinarySensor.h>)
+#include <org/allbinary/input/NoAllBinarySensor.h>
+#endif
+#if __has_include(<org/allbinary/input/accelerometer/AccelerometerSensorFactory.h>)
+#include <org/allbinary/input/accelerometer/AccelerometerSensorFactory.h>
+#endif
+#if __has_include("org/allbinary/input/gyro/GyroSensorFactory.h")
+#include "org/allbinary/input/gyro/GyroSensorFactory.h"
+#endif
+
+        #endif
+    

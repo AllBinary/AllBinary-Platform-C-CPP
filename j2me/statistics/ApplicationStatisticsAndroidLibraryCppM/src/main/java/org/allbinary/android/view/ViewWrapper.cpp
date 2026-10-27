@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_VIEW_VIEWWRAPPER_CPP
+        #define ORG_ALLBINARY_ANDROID_VIEW_VIEWWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/view/ViewWrapper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,29 +57,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/view/BaseViewWrapper.h"
 
-class ViewWrapper: public BaseViewWrapper {
 
-    private: View* view;
-
-public: ViewWrapper(View* view){
+ViewWrapper::ViewWrapper(View* view){
 this->view= view;
     
 }
 
 
-    public: void invalidate(){
+    auto ViewWrapper::invalidate() -> void{
 this->view->invalidate();
     
 }
 
 
-    public: void postInvalidate(){
+    auto ViewWrapper::postInvalidate() -> void{
 this->view->postInvalidate();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_VIEW_VIEWWRAPPER_CPP

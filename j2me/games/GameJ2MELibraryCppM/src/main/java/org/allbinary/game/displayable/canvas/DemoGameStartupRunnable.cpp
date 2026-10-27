@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/DemoGameStartupRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,21 +65,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
 
-class DemoGameStartupRunnable: public ABRunnable {
 
-    public: static inline const int32_t TYPE = 4;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: DemoCanvas* demoCanvas;
-
-public: DemoGameStartupRunnable(DemoCanvas* demoCanvas){
+DemoGameStartupRunnable::DemoGameStartupRunnable(DemoCanvas* demoCanvas) : logUtil(LogUtil::getInstance()){
 this->demoCanvas= demoCanvas;
     
 }
 
 
-    public: void run(){
+    auto DemoGameStartupRunnable::run() -> void{
 
         try {
             this->setRunning(true);
@@ -98,7 +101,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    public: int32_t getType(){
+    auto DemoGameStartupRunnable::getType() -> int32_t{
 
 
 
@@ -108,7 +111,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMESTARTUPRUNNABLE_CPP

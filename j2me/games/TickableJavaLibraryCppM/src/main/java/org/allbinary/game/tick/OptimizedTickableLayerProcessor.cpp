@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TICK_OPTIMIZEDTICKABLELAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_TICK_OPTIMIZEDTICKABLELAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tick/OptimizedTickableLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/tick/OptimizedTickableLayerManager.h"
 
-class OptimizedTickableLayerProcessor: public LayerProcessor {
 
-public: OptimizedTickableLayerProcessor() : LayerProcessor(new OptimizedTickableLayerManager()){
+OptimizedTickableLayerProcessor::OptimizedTickableLayerProcessor() : LayerProcessor(new OptimizedTickableLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +81,7 @@ public: OptimizedTickableLayerProcessor() : LayerProcessor(new OptimizedTickable
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
+    auto OptimizedTickableLayerProcessor::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) -> void{
 
     AllBinaryGameLayer* tickableInterface = dynamic_cast<AllBinaryGameLayer*>(layerInterface);;
     
@@ -81,7 +90,7 @@ tickableInterface->processTick(allBinaryLayerManager);
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto OptimizedTickableLayerProcessor::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
                         if(layerInterface->implmentsTickableInterface())
                         
@@ -108,7 +117,6 @@ tickableInterface->processTick(allBinaryLayerManager);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TICK_OPTIMIZEDTICKABLELAYERPROCESSOR_CPP

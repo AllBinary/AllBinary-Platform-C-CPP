@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACE_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/health/HealthListenerInterface.h"
+        class HealthListenerInterface;
 
-class HealthInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class HealthInterface
+            : public virtual Object
+         {
 
     public: virtual bool isAlive() = 0;
 
@@ -71,3 +82,13 @@ class HealthInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/health/HealthListenerInterface.h")
+#include "org/allbinary/game/health/HealthListenerInterface.h"
+#endif
+
+        #endif
+    

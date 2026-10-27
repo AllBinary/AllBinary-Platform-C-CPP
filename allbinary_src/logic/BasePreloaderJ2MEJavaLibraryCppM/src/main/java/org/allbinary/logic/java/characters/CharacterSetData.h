@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H
         #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CharacterSetData
-            : public Object
+            : public virtual Object
          {
 
-    private: static CharacterSetData* instance() { static std::unique_ptr<CharacterSetData> value(new CharacterSetData()); return value.get(); }
+    private: static CharacterSetData* instance_owner();
+    private: static CharacterSetData* instance;
 
     public: static CharacterSetData* getInstance();
 
@@ -76,3 +86,10 @@ private: CharacterSetData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H_COMPLETE
+        
+        #endif
+    

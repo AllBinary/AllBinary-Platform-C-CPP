@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SEQUENCEINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_SEQUENCEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SequenceInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class SequenceInterface
+            : public virtual Object
+         {
 
     public: virtual void setSequence(std::vector<int32_t> sequence) = 0;
 
@@ -60,3 +71,10 @@ class SequenceInterface {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_SEQUENCEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_SEQUENCEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_SEQUENCEINTERFACE_H_COMPLETE
+        
+        #endif
+    

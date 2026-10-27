@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORYBASE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORYBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,40 +65,39 @@
         #include "org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h"
 #include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
 
-class PickedUpLayerInterfaceFactoryBase
-            : public Object
-        , public PickedUpLayerInterfaceFactoryInterface {
 
-    public: static PickedUpLayerInterfaceFactoryBase* NULL_PICKED_UP_LAYER_FACTORY_BASE() { static std::unique_ptr<PickedUpLayerInterfaceFactoryBase> value(new PickedUpLayerInterfaceFactoryBase()); return value.get(); }
+PickedUpLayerInterfaceFactoryBase::PickedUpLayerInterfaceFactoryBase() {
+        }
+        auto PickedUpLayerInterfaceFactoryBase::NULL_PICKED_UP_LAYER_FACTORY_BASE_owner() -> PickedUpLayerInterfaceFactoryBase* { static std::unique_ptr<PickedUpLayerInterfaceFactoryBase> value(new PickedUpLayerInterfaceFactoryBase()); return value.get(); }
+PickedUpLayerInterfaceFactoryBase* PickedUpLayerInterfaceFactoryBase::NULL_PICKED_UP_LAYER_FACTORY_BASE = PickedUpLayerInterfaceFactoryBase::NULL_PICKED_UP_LAYER_FACTORY_BASE_owner();
 
-    public: AllBinaryLayer* getIconLayer(){
+    auto PickedUpLayerInterfaceFactoryBase::getIconLayer() -> AllBinaryLayer*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: Animation* getAnimationInterface(){
+    auto PickedUpLayerInterfaceFactoryBase::getAnimationInterface() -> Animation*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: PickedUpLayerType* getPickedUpLayerType(){
+    auto PickedUpLayerInterfaceFactoryBase::getPickedUpLayerType() -> PickedUpLayerType*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERINTERFACEFACTORYBASE_CPP

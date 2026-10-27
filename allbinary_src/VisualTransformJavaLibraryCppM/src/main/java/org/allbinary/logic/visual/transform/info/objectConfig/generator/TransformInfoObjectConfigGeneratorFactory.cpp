@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGeneratorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,42 +73,37 @@
 #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/BasicGenerator.h"
 #include "org/allbinary/logic/visual/transform/info/objectConfig/generator/TransformInfoObjectConfigGenerator.h"
 
-class TransformInfoObjectConfigGeneratorFactory
-            : public Object
-        , public TransformInfoObjectConfigGeneratorFactoryInterface {
+auto TransformInfoObjectConfigGeneratorFactory::instance_owner() -> TransformInfoObjectConfigGeneratorFactory* { static std::unique_ptr<TransformInfoObjectConfigGeneratorFactory> value(new TransformInfoObjectConfigGeneratorFactory()); return value.get(); }
+TransformInfoObjectConfigGeneratorFactory* TransformInfoObjectConfigGeneratorFactory::instance = TransformInfoObjectConfigGeneratorFactory::instance_owner();
 
-    private: static TransformInfoObjectConfigGeneratorFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigGeneratorFactory> value(new TransformInfoObjectConfigGeneratorFactory()); return value.get(); }
-
-    public: static TransformInfoObjectConfigGeneratorFactory* getInstance(){
+    auto TransformInfoObjectConfigGeneratorFactory::getInstance() -> TransformInfoObjectConfigGeneratorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfigGeneratorFactory::instance();
+                        return TransformInfoObjectConfigGeneratorFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransformInfoObjectConfigGeneratorFactory(){
+TransformInfoObjectConfigGeneratorFactory::TransformInfoObjectConfigGeneratorFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigGenerator* getInstance(TransformInfoInterface* transformInfoInterface){
+    auto TransformInfoObjectConfigGeneratorFactory::getInstance(TransformInfoInterface* transformInfoInterface) -> TransformInfoObjectConfigGenerator*{
 
     std::string type = transformInfoInterface->getObjectConfigInterface()->getOutputTypeName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF("Generating Instance for type: " +type, this, commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf("Generating Instance for type: ") +JavaString::valueOf(type), this, commonStrings->GET_INSTANCE);
     
 
                                     }
@@ -133,7 +138,7 @@ this->logUtil->putF("Generating Instance for type: " +type, this, commonStrings-
                             
 
 
-                            throw new Exception("No Such TransformInfoObjectConfigGenerator Type");
+                            throw Exception("No Such TransformInfoObjectConfigGenerator Type");
                     
 
                         }
@@ -141,7 +146,6 @@ this->logUtil->putF("Generating Instance for type: " +type, this, commonStrings-
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERATOR_TRANSFORMINFOOBJECTCONFIGGENERATORFACTORY_CPP

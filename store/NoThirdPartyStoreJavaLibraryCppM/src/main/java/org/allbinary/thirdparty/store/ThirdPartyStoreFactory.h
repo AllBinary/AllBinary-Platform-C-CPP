@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_H
         #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,14 +52,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/thirdparty/store/NoThirdPartyStore.h"
-#include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
+        class NoThirdPartyStore;
+class ThirdPartyStore;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThirdPartyStoreFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static NoThirdPartyStore* instance() { static std::unique_ptr<NoThirdPartyStore> value(new NoThirdPartyStore()); return value.get(); }
+    private: static NoThirdPartyStore* instance_owner();
+    private: static NoThirdPartyStore* instance;
 
     public: static ThirdPartyStore* getInstance();
 
@@ -66,3 +76,16 @@ private: ThirdPartyStoreFactory();
 
 
         #endif //ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/thirdparty/store/NoThirdPartyStore.h")
+#include "org/allbinary/thirdparty/store/NoThirdPartyStore.h"
+#endif
+#if __has_include("org/allbinary/thirdparty/store/ThirdPartyStore.h")
+#include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
+#endif
+
+        #endif
+    

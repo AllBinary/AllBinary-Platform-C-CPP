@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,45 +36,19 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
+class Font;
+class Graphics;
+class AnimationBehavior;
 #include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Anchor;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+class UpdateMyFontProcessor;
+class SWTJOGLProcessor;
 
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
-#include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class StringUtil;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -88,23 +67,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/text/TextChangeListener.h"
+        class TextChangeListener;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor;
 
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    /*protected*/ public: MyFontProcessor* myFontProcessor;
 
-    protected: std::vector<std::string> textArrayP = StringUtil::getInstance()->ONE_EMPTY_STRING_ARRAY;
+    /*protected*/ public: std::vector<std::string> textArrayP;
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
     private: int32_t fontHeight = 0;
 
     private: int32_t offsetY = 0;
 
-    private: TextChangeListener* textChangeListener = TextChangeListener::getInstance();
+    private: TextChangeListener* textChangeListener;
 
 public: TextAnimation(std::string text, AnimationBehavior* animationBehavior);
 
@@ -132,3 +115,50 @@ public: TextAnimation(std::string text, AnimationBehavior* animationBehavior);
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/threed/SWTJOGLProcessor.h>)
+#include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/animation/text/TextChangeListener.h")
+#include "org/allbinary/animation/text/TextChangeListener.h"
+#endif
+
+        #endif
+    

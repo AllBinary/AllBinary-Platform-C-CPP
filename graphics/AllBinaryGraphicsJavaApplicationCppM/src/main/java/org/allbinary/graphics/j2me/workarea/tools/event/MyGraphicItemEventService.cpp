@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventService.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,32 +65,23 @@
 #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventListener.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h"
 
-class MyGraphicItemEventService
-            : public Object
-         {
+auto MyGraphicItemEventService::listenerList_owner() -> javax::swing::event::EventListenerList* { static std::unique_ptr<javax::swing::event::EventListenerList> value(new javax::swing::event::EventListenerList()); return value.get(); }
+javax::swing::event::EventListenerList* MyGraphicItemEventService::listenerList = MyGraphicItemEventService::listenerList_owner();
 
-    private: static javax::swing::event::EventListenerList* listenerList() { static std::unique_ptr<javax::swing::event::EventListenerList> value(new javax::swing::event::EventListenerList()); return value.get(); }
+MyGraphicItemEventService::MyGraphicItemEventService(){
+}
 
-    public: static inline std::string DELETE = "delete";
-
-    public: static inline std::string DESELECT = "deselect";
-
-    public: static inline std::string SELECT = "select";
-
-    public: static inline std::string DUPLICATE = "duplicate";
-
-    public: static inline std::string ROTATE = "rotate";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void addListener(MyGraphicItemEventListener* listener){
-MyGraphicItemEventService::listenerList()->add(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
+    auto MyGraphicItemEventService::addListener(MyGraphicItemEventListener* listener) -> void{
+MyGraphicItemEventService::listenerList->add(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void removeListener(MyGraphicItemEventListener* listener){
-MyGraphicItemEventService::listenerList()->remove(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
+    auto MyGraphicItemEventService::removeListener(MyGraphicItemEventListener* listener) -> void{
+MyGraphicItemEventService::listenerList->remove(listener->getClass(), dynamic_cast<java::util::EventListener*>(listener));
     
 }
 
@@ -88,9 +89,9 @@ MyGraphicItemEventService::listenerList()->remove(listener->getClass(), dynamic_
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void fire(MyGraphicItemEvent* evt){
+    auto MyGraphicItemEventService::fire(MyGraphicItemEvent* evt) -> void{
 
-    std::vector<Object*> listeners = listenerList()->getListenerList();;
+    std::vector<Object*> listeners = listenerList->getListenerList();;
     
 
 
@@ -100,7 +101,7 @@ MyGraphicItemEventService::listenerList()->remove(listener->getClass(), dynamic_
     int32_t i = 0;i < listeners.size(); )
         {
 
-                        if(listeners[i] == listeners[i +1].getClass())
+                        if(listeners[i] == listeners[i +1]->getClass())
                         
                                     {
                                     
@@ -131,7 +132,7 @@ MyGraphicItemEventService::listenerList()->remove(listener->getClass(), dynamic_
                                     {
                                      = dynamic_cast<MyGraphicItemEventListener*>(listeners[i +1])
 .
-                    delete(evt);
+                    delete_(evt);
     
 
                                     }
@@ -166,11 +167,6 @@ MyGraphicItemEventService::listenerList()->remove(listener->getClass(), dynamic_
 }
 
 
-private: MyGraphicItemEventService(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathCacheFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,31 +71,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PathCacheFactory
-            : public Object
-         {
+auto PathCacheFactory::pathFactory_owner() -> PathCacheFactory* { static std::unique_ptr<PathCacheFactory> value(new PathCacheFactory()); return value.get(); }
+PathCacheFactory* PathCacheFactory::pathFactory = PathCacheFactory::pathFactory_owner();
 
-    private: static PathCacheFactory* pathFactory() { static std::unique_ptr<PathCacheFactory> value(new PathCacheFactory()); return value.get(); }
+PathCacheFactory::PathCacheFactory() : basicArrayListUtil(BasicArrayListUtil::getInstance()), hashtable(StdUtil::getInstance()->createHashtable()){
+}
 
-    public: static PathCacheFactory* getInstance(){
+
+    auto PathCacheFactory::getInstance() -> PathCacheFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathCacheFactory::pathFactory();
+                        return PathCacheFactory::pathFactory;
     
 }
 
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-private: PathCacheFactory(){
-}
-
-
-    public: int32_t getSize(){
+    auto PathCacheFactory::getSize() -> int32_t{
 
 
 
@@ -95,13 +98,13 @@ private: PathCacheFactory(){
 }
 
 
-    public: void add(int32_t pathId, BasicArrayList* list){
+    auto PathCacheFactory::add(int32_t pathId, BasicArrayList* list) -> void{
 this->hashtable->put(pathId, list);
     
 }
 
 
-    public: void remove(int32_t pathId){
+    auto PathCacheFactory::remove(int32_t pathId) -> void{
 this->hashtable->remove(pathId);
     
 }
@@ -109,7 +112,7 @@ this->hashtable->remove(pathId);
 
                 //@Throws(Exception.constructor)
             
-    public: void removeAll(){
+    auto PathCacheFactory::removeAll() -> void{
 this->hashtable->clear();
     
 
@@ -119,7 +122,7 @@ this->hashtable->clear();
                                     
 
 
-                            throw new Exception("Did not clear");
+                            throw Exception("Did not clear");
                     
 
                                     }
@@ -129,7 +132,7 @@ this->hashtable->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getOrCreate(int32_t pathIdInteger){
+    auto PathCacheFactory::getOrCreate(int32_t pathIdInteger) -> BasicArrayList*{
 
     Object* listCanBeNull = this->hashtable->get(pathIdInteger);;
     
@@ -153,7 +156,6 @@ this->hashtable->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHCACHEFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/input/media/image/capture/ScreenCaptureImagesWorker.h>
-
-      
-#include <org/allbinary/media/image/comparison/ImageComparisonWorker.h>
-
-      
-#include <org/allbinary/media/image/comparison/SaveImageComparisonWorker.h>
-
-      
-#include <org/allbinary/media/image/comparison/motion/MotionRectanglesWorker.h>
-
-      
-#include <org/allbinary/media/image/comparison/motion/SaveMotionRectanglesResultsWorker.h>
-
-      
-#include <org/allbinary/media/image/comparison/motion/TestInputForMotionRectanglesResultsWorker.h>
-
-      
+class ScreenCaptureImagesWorker;
+class ImageComparisonWorker;
+class SaveImageComparisonWorker;
+class MotionRectanglesWorker;
+class SaveMotionRectanglesResultsWorker;
+class TestInputForMotionRectanglesResultsWorker;
 
 
 
@@ -68,8 +61,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TestInputAutomationWorker
-            : public Object
+            : public virtual Object
          {
 
     private: ScreenCaptureImagesWorker* captureWorker;
@@ -92,3 +89,28 @@ public: TestInputAutomationWorker();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONWORKER_H_COMPLETE
+        #if __has_include(<org/allbinary/input/media/image/capture/ScreenCaptureImagesWorker.h>)
+#include <org/allbinary/input/media/image/capture/ScreenCaptureImagesWorker.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/ImageComparisonWorker.h>)
+#include <org/allbinary/media/image/comparison/ImageComparisonWorker.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/SaveImageComparisonWorker.h>)
+#include <org/allbinary/media/image/comparison/SaveImageComparisonWorker.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/motion/MotionRectanglesWorker.h>)
+#include <org/allbinary/media/image/comparison/motion/MotionRectanglesWorker.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/motion/SaveMotionRectanglesResultsWorker.h>)
+#include <org/allbinary/media/image/comparison/motion/SaveMotionRectanglesResultsWorker.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/motion/TestInputForMotionRectanglesResultsWorker.h>)
+#include <org/allbinary/media/image/comparison/motion/TestInputForMotionRectanglesResultsWorker.h>
+#endif
+
+        #endif
+    

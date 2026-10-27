@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGINGBASE_CPP
+        #define ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGINGBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/LayerManagerLoggingBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,33 +59,32 @@
         #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/LayerManager.h"
 
-class LayerManagerLoggingBase
-            : public Object
-         {
 
+LayerManagerLoggingBase::LayerManagerLoggingBase() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void append(AllBinaryLayer* layerInterface){
+    auto LayerManagerLoggingBase::append(AllBinaryLayer* layerInterface) -> void{
 }
 
 
-    public: void appendAt(AllBinaryLayer* layerInterface, int32_t index){
+    auto LayerManagerLoggingBase::appendAt(AllBinaryLayer* layerInterface, int32_t index) -> void{
 }
 
 
-    public: void remove(AllBinaryLayer* layerInterface){
+    auto LayerManagerLoggingBase::remove(AllBinaryLayer* layerInterface) -> void{
 }
 
 
-    public: void removeResult(LayerManager* layerManager, AllBinaryLayer* layerInterface, bool result){
+    auto LayerManagerLoggingBase::removeResult(LayerManager* layerManager, AllBinaryLayer* layerInterface, bool result) -> void{
 }
 
 
-    public: void clear(){
+    auto LayerManagerLoggingBase::clear() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_LAYERMANAGERLOGGINGBASE_CPP

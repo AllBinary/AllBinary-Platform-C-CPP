@@ -21,6 +21,11 @@
         #ifndef VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVIEW_H
         #define VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,68 +39,26 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class TransformInfoEntityBuilder;
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+class ModDomHelper;
+class GLOBALS2;
 
-      
-#include <org/allbinary/data/tree/dom/ModDomHelper.h>
-
-      
-#include <org/allbinary/globals/GLOBALS2.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/control/sort/StringComparator.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/CustomizerTransformInfoData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/template/customizer/TransformTemplateCustomizerData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/template/customizer/TransformTemplateCustomizersData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/template/customizer/bodies/BodyData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/template/util/TransformTemplateCustomizerUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class LogUtil;
+class StringComparator;
+class CustomizerTransformInfoData;
+class TransformInfoInterface;
+class TransformTemplateCustomizerData;
+class TransformTemplateCustomizersData;
+class BodyData;
+class TitleData;
+class TransformTemplateCustomizerUtil;
+class CommonStrings;
+class Document;
+class Node;
 #include <views/business/context/modules/storefront/HttpStoreComponentView.h>
-
-      
 
 
 
@@ -115,13 +78,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomizersView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: BasicArrayList* customizersVector;
+    /*protected*/ public: BasicArrayList* customizersVector;
 
 public: CustomizersView(TransformInfoInterface* transformInfoInterface);
 
@@ -139,3 +106,71 @@ public: CustomizersView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVIEW_H_COMPLETE)
+        #define VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVIEW_H_COMPLETE
+        #if __has_include(<java/util/Arrays.h>)
+#include <java/util/Arrays.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>)
+#include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/ModDomHelper.h>)
+#include <org/allbinary/data/tree/dom/ModDomHelper.h>
+#endif
+#if __has_include(<org/allbinary/globals/GLOBALS2.h>)
+#include <org/allbinary/globals/GLOBALS2.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/sort/StringComparator.h>)
+#include <org/allbinary/logic/control/sort/StringComparator.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/CustomizerTransformInfoData.h>)
+#include <org/allbinary/logic/visual/transform/info/CustomizerTransformInfoData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/template/customizer/TransformTemplateCustomizerData.h>)
+#include <org/allbinary/logic/visual/transform/template/customizer/TransformTemplateCustomizerData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/template/customizer/TransformTemplateCustomizersData.h>)
+#include <org/allbinary/logic/visual/transform/template/customizer/TransformTemplateCustomizersData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/template/customizer/bodies/BodyData.h>)
+#include <org/allbinary/logic/visual/transform/template/customizer/bodies/BodyData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h>)
+#include <org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/template/util/TransformTemplateCustomizerUtil.h>)
+#include <org/allbinary/logic/visual/transform/template/util/TransformTemplateCustomizerUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<views/business/context/modules/storefront/HttpStoreComponentView.h>)
+#include <views/business/context/modules/storefront/HttpStoreComponentView.h>
+#endif
+
+        #endif
+    

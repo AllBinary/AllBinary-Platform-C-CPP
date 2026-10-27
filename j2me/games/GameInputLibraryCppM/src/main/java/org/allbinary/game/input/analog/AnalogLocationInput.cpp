@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/analog/AnalogLocationInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,23 +44,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnalogLocationInput
-            : public Object
-         {
+auto AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT_owner() -> AnalogLocationInput* { static std::unique_ptr<AnalogLocationInput> value(new AnalogLocationInput( -1)); return value.get(); }
+AnalogLocationInput* AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT = AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT_owner();
 
-    public: static AnalogLocationInput* NULL_ANALOG_LOCATION_INPUT() { static std::unique_ptr<AnalogLocationInput> value(new AnalogLocationInput( -1)); return value.get(); }
-
-    private: int32_t playerId;
-
-    private: CustomGPoint* customGPoint;
-
-    private: int32_t rz= 0;
-
-    private: int32_t rightTrigger= 0;
-
-    private: int32_t leftTrigger= 0;
-
-: AnalogLocationInput(int32_t playerId){
+AnalogLocationInput::AnalogLocationInput(int32_t playerId){
 this->playerId= playerId;
     
 this->customGPoint= new CustomGPoint(0, 0, 0);
@@ -58,7 +55,7 @@ this->customGPoint= new CustomGPoint(0, 0, 0);
 }
 
 
-    public: int32_t getPlayerId(){
+    auto AnalogLocationInput::getPlayerId() -> int32_t{
 
 
 
@@ -68,7 +65,7 @@ this->customGPoint= new CustomGPoint(0, 0, 0);
 }
 
 
-    public: CustomGPoint* getCustomGPoint(){
+    auto AnalogLocationInput::getCustomGPoint() -> CustomGPoint*{
 
 
 
@@ -78,7 +75,7 @@ this->customGPoint= new CustomGPoint(0, 0, 0);
 }
 
 
-    public: int32_t getRz(){
+    auto AnalogLocationInput::getRz() -> int32_t{
 
 
 
@@ -88,13 +85,13 @@ this->customGPoint= new CustomGPoint(0, 0, 0);
 }
 
 
-    public: void setRz(int32_t rz){
+    auto AnalogLocationInput::setRz(int32_t rz) -> void{
 this->rz= rz;
     
 }
 
 
-    public: int32_t getRightTrigger(){
+    auto AnalogLocationInput::getRightTrigger() -> int32_t{
 
 
 
@@ -104,13 +101,13 @@ this->rz= rz;
 }
 
 
-    public: void setRightTrigger(int32_t rightTrigger){
+    auto AnalogLocationInput::setRightTrigger(int32_t rightTrigger) -> void{
 this->rightTrigger= rightTrigger;
     
 }
 
 
-    public: int32_t getLeftTrigger(){
+    auto AnalogLocationInput::getLeftTrigger() -> int32_t{
 
 
 
@@ -120,13 +117,12 @@ this->rightTrigger= rightTrigger;
 }
 
 
-    public: void setLeftTrigger(int32_t leftTrigger){
+    auto AnalogLocationInput::setLeftTrigger(int32_t leftTrigger) -> void{
 this->leftTrigger= leftTrigger;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_ANALOG_ANALOGLOCATIONINPUT_CPP

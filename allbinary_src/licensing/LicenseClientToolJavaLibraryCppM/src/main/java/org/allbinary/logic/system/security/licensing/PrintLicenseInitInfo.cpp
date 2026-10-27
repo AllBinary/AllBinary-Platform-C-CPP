@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PRINTLICENSEINITINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PRINTLICENSEINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/PrintLicenseInitInfo.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,24 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PrintLicenseInitInfo
-            : public Object
-         {
 
-    public: static inline const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
-
-                //@Throws(Exception.constructor)
-            
-    public: static void main(std::vector<std::string> args){
-
-    PrintLicenseInitInfo* initInfo = new PrintLicenseInitInfo(args);;
-    
-initInfo->printInitInfo();
-    
-}
-
-
-public: PrintLicenseInitInfo(std::vector<std::string> options){
+PrintLicenseInitInfo::PrintLicenseInitInfo(std::vector<std::string> options){
 LicenseInitInfoUtil::getInstance()->setFilePath(PrintLicenseInitInfo::PATH +PATH_GLOBALS::getInstance()->INIT_PATH);
     
 }
@@ -91,7 +85,7 @@ LicenseInitInfoUtil::getInstance()->setFilePath(PrintLicenseInitInfo::PATH +PATH
 
                 //@Throws(Exception.constructor)
             
-    public: LicenseInitInfo* getLicenseInitInfo(){
+    auto PrintLicenseInitInfo::getLicenseInitInfo() -> LicenseInitInfo*{
 
     LicenseInitInfoUtil* licenseInitInfoUtil = LicenseInitInfoUtil::getInstance();;
     
@@ -109,7 +103,7 @@ LicenseInitInfoUtil::getInstance()->setFilePath(PrintLicenseInitInfo::PATH +PATH
                                     }
                                 
                         else {
-                            System.out.println("No Licence File at: " +licenseInitInfoUtil->getFilePath());
+                            System.out.println(JavaString::valueOf("No Licence File at: ") +JavaString::valueOf(licenseInitInfoUtil->getFilePath()));
     
 
 
@@ -123,13 +117,13 @@ LicenseInitInfoUtil::getInstance()->setFilePath(PrintLicenseInitInfo::PATH +PATH
 }
 
 
-    public: void printInitInfo(){
+    auto PrintLicenseInitInfo::printInitInfo() -> void{
 
         try {
             
     LicenseInitInfo* licenseInitInfo = this->getLicenseInitInfo();;
     
-System.out.println("License ID: " +licenseInitInfo->getLicenseId());
+System.out.println(JavaString::valueOf("License ID: ") +JavaString::valueOf(licenseInitInfo->getLicenseId()));
     
 
     BasicArrayList* list = licenseInitInfo->getServerList();;
@@ -144,7 +138,7 @@ System.out.println("License ID: " +licenseInitInfo->getLicenseId());
                         for (
     int32_t index = 0;index < size; index++)
         {
-System.out.println("Lic Serv: " +list->get(index));
+System.out.println(JavaString::valueOf("Lic Serv: ") +JavaString::valueOf(list->get(index)));
     
 }
 
@@ -152,7 +146,7 @@ System.out.println("Lic Serv: " +list->get(index));
                 //: 
 } catch(Exception& e) 
             {
-System.out.print("Error: " +e);
+System.out.print(JavaString::valueOf("Error: ") +JavaString::valueOf(e));
     
 e.printStackTrace();
     
@@ -161,7 +155,17 @@ e.printStackTrace();
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto PrintLicenseInitInfo::main(std::vector<std::string> args) -> void{
 
+    PrintLicenseInitInfo* initInfo = new PrintLicenseInitInfo(args);;
+    
+initInfo->printInitInfo();
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PRINTLICENSEINITINFO_CPP

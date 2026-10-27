@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOS_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/android/AndroidOS.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -60,17 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/os/android/AndroidSystemProperties.h"
 
-class AndroidOS: public GenericOperatingSystem {
 
-    private: StringMaker* stringBuffer = new StringMaker();
-
-    private: const std::string DEVICE_ID = "DeviceId";
-
-    private: const std::string DEVICE_SOFTWARE_VERSION = "DeviceSoftwareVersion";
-
-    private: const std::string LINE_1_NUMBER = "Line1Number";
-
-public: AndroidOS(){
+AndroidOS::AndroidOS() : stringBuffer(new StringMaker()){
 
     int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
@@ -212,9 +213,7 @@ this->stringBuffer->append(commonStrings->SPACE);
 }
 
 
-    private: const std::string OUYA = "ouya";
-
-    public: bool isOverScan(){
+    auto AndroidOS::isOverScan() -> bool{
 
     AndroidSystemProperties* properties = AndroidSystemProperties::getInstance();;
     
@@ -240,7 +239,7 @@ this->stringBuffer->append(commonStrings->SPACE);
 }
 
 
-    public: int32_t getOverScanXPercent(){
+    auto AndroidOS::getOverScanXPercent() -> int32_t{
 
 
 
@@ -250,7 +249,7 @@ this->stringBuffer->append(commonStrings->SPACE);
 }
 
 
-    public: int32_t getOverScanYPercent(){
+    auto AndroidOS::getOverScanYPercent() -> int32_t{
 
 
 
@@ -260,11 +259,11 @@ this->stringBuffer->append(commonStrings->SPACE);
 }
 
 
-    public: std::string toString(){
+    auto AndroidOS::toString() -> std::string{
 
     StringMaker* osBuffer = new StringMaker();;
     
-osBuffer->append(super.toString());
+osBuffer->append(GenericOperatingSystem::toString());
     
 osBuffer->append(CommonSeps::getInstance()->SPACE);
     
@@ -281,7 +280,6 @@ osBuffer->append(this->stringBuffer->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOS_CPP

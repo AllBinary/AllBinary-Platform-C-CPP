@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_PAYMENT_PAYMENTVIEW_CPP
+        #define VIEWS_GENERIC_PAYMENT_PAYMENTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/payment/PaymentView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,11 +88,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: PaymentView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+PaymentView::PaymentView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,7 +101,7 @@ public: PaymentView(TransformInfoInterface* transformInfoInterface) : HttpStoreC
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto PaymentView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -133,10 +140,10 @@ paymentNode->appendChild(payment->toXmlNode(document));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -151,13 +158,13 @@ paymentNode->appendChild(payment->toXmlNode(document));
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto PaymentView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
 
-    public: std::string view(){
+    auto PaymentView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -166,7 +173,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
@@ -176,10 +183,10 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     std::string error = "Failed to view Payment";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -195,7 +202,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_PAYMENT_PAYMENTVIEW_CPP

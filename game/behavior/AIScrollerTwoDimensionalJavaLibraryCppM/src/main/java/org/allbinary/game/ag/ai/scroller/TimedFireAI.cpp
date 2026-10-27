@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEDFIREAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEDFIREAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/TimedFireAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,15 +82,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/scroller/TimeFiredInterface.h"
 
-class TimedFireAI: public BasicAI {
+int32_t TimedFireAI::TIME = SmallIntegerSingletonFactory::getInstance()->getAt(1);
 
-    public: static inline int32_t TIME = SmallIntegerSingletonFactory::getInstance()->getAt(1);
-
-    protected: TimeDelayHelper* maxFireDelayTimeHelper = new TimeDelayHelper(0);
-
-    private: int32_t delay;
-
-public: TimedFireAI(int32_t delay, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+TimedFireAI::TimedFireAI(int32_t delay, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput), maxFireDelayTimeHelper(new TimeDelayHelper(0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,7 +98,7 @@ this->delay= delay;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto TimedFireAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     TimeFiredInterface* timeFiredInterface = dynamic_cast<TimeFiredInterface*>(this->getOwnerLayerInterface());;
     
@@ -102,7 +106,7 @@ this->delay= delay;
                         if(this->maxFireDelayTimeHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime) && timeFiredInterface->getLastFireTime() +this->maxFireDelayTimeHelper->delay < this->maxFireDelayTimeHelper->getStartTime())
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_NUM1);
+                                    BasicAI::processKeyAI(Canvas::KEY_NUM1);
     
 this->maxFireDelayTimeHelper->delay= this->delay;
     
@@ -112,7 +116,6 @@ this->maxFireDelayTimeHelper->delay= this->delay;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEDFIREAI_CPP

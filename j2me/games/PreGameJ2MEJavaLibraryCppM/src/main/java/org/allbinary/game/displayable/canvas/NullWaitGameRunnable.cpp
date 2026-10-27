@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLWAITGAMERUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLWAITGAMERUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/NullWaitGameRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 
-class NullWaitGameRunnable: public GameRunnable {
 
-    private: static inline GameRunnable* instance = new NullWaitGameRunnable();
+NullWaitGameRunnable::NullWaitGameRunnable() {
+        }
+        GameRunnable* NullWaitGameRunnable::instance = new NullWaitGameRunnable();
 
-    public: static GameRunnable* getInstance(){
+    auto NullWaitGameRunnable::getInstance() -> GameRunnable*{
 
 
 
@@ -58,7 +69,6 @@ class NullWaitGameRunnable: public GameRunnable {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLWAITGAMERUNNABLE_CPP

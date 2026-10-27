@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -206,49 +216,8 @@
 #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 #include "org/allbinary/game/displayable/canvas/ImmediateCommandFormInputProcessor.h"
 
-class GameCommandCanvas: public MyCanvas, public MenuListener, public DisplayChangeEventListener, public UpdateMyFontInterface {
 
-    private: static inline const int32_t id = 0;
-
-    private: Processor* repaintProcessor = ScreenRepaintProcessorFactory::getInstance()->create(this);
-
-    protected: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
-
-    protected: BasicColor* foregroundBasicColor;
-
-    protected: BasicColor* backgroundBasicColor;
-
-    protected: InputToGameKeyMapping* inputToGameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping();
-
-    protected: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
-
-    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
-
-    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
-
-    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
-
-    public: RepaintBehavior* repaintBehavior;
-
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    protected: int32_t foregroundColor;
-
-    protected: int32_t backgroundColor;
-
-    private: BasicMenuInputProcessor* menuInputProcessor = NoMenuInputProcessor::getInstance();
-
-    private: Paintable* menuPaintable = NullPaintable::getInstance();
-
-    private: PaintableForm* menuForm = PaintableForm::getNullPaintableForm();
-
-    private: bool isSingleKeyRepeatableProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS);
-
-    protected: int32_t fontHeight = 0;
-
-public: GameCommandCanvas(CommandListener* cmdListener, std::string name, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : MyCanvas(name, CanvasStrings::getInstance()->EMPTY_CHILD_NAME_LIST){
+GameCommandCanvas::GameCommandCanvas(CommandListener* cmdListener, std::string name, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : MyCanvas(name, CanvasStrings::getInstance()->EMPTY_CHILD_NAME_LIST), repaintProcessor(ScreenRepaintProcessorFactory::getInstance()->create(this)), gameInputStrings(GameInputStrings::getInstance()), inputToGameKeyMapping(PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()), gameKeyFactory(GameKeyFactory::getInstance()), gameKeyEventFactory(GameKeyEventFactory::getInstance()), downGameKeyEventHandler(DownGameKeyEventHandler::getInstance()), upGameKeyEventHandler(UpGameKeyEventHandler::getInstance()), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), menuInputProcessor(NoMenuInputProcessor::getInstance()), menuPaintable(NullPaintable::getInstance()), menuForm(PaintableForm::getNullPaintableForm()), isSingleKeyRepeatableProcessing(Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -284,7 +253,7 @@ this->repaintProcessor->process();
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
@@ -294,13 +263,13 @@ this->repaintProcessor->process();
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto GameCommandCanvas::updateMeasurement(Graphics* graphics) -> void{
 
         try {
             
     Font* font = graphics->getFont();;
     
-this->logUtil.putF((new StringMaker())->append(this->commonStrings.START)->append(this->canvasStrings.FD_WIDTH)->appendint(MyFontProcessor::defaultCharWidth(font))->append(this->canvasStrings.FD_HEIGHT)->appendint(font->getHeight())->toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
+this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(this->canvasStrings->FD_WIDTH)->appendint(MyFontProcessor::defaultCharWidth(font))->append(this->canvasStrings->FD_HEIGHT)->appendint(font->getHeight())->toString(), this, this->canvasStrings->UPDATE_MEASUREMENT);
     
 this->fontHeight= font->getHeight();
     
@@ -315,7 +284,7 @@ this->update();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT, &e);
     
 }
 
@@ -324,21 +293,21 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto GameCommandCanvas::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
-this->logUtil.putF((new StringMaker())->append(this->commonStrings.START)->append(DisplayInfoSingleton::getInstance()->toString())->toString(), this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT);
+    auto GameCommandCanvas::onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) -> void{
+this->logUtil->putF((new StringMaker())->append(this->commonStrings->START)->append(DisplayInfoSingleton::getInstance()->toString())->toString(), this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto GameCommandCanvas::initCommands(CommandListener* cmdListener) -> void{
 this->removeAllCommands();
     
 this->addCommand(GameCommandsFactory::getInstance()->CLOSE_AND_SHOW_GAME_CANVAS);
@@ -350,7 +319,7 @@ this->setCommandListener(cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    protected: void initMenu(){
+    auto GameCommandCanvas::initMenu() -> void{
 
     ScrollSelectionForm* form = this->createForm();;
     
@@ -374,7 +343,7 @@ this->repaintBehavior->onChangeRepaint(this);
 
                 //@Throws(Exception.constructor)
             
-    public: ScrollSelectionForm* createForm(){
+    auto GameCommandCanvas::createForm() -> ScrollSelectionForm*{
 
     std::vector<ABCustomItem*> items = (new CommandTextItemArrayFactory(new AllCommandsVisitor()))->getInstance(this->getCommandStack(), this->backgroundBasicColor, this->foregroundBasicColor);;
     
@@ -390,18 +359,18 @@ this->repaintBehavior->onChangeRepaint(this);
 }
 
 
-    public: Rectangle* createRectangle(int32_t size){
+    auto GameCommandCanvas::createRectangle(int32_t size) -> Rectangle*{
 
     int32_t height = size *this->fontHeight;;
     
 
-    int32_t startY = (this->displayInfo.getLastHeight() *2 /3) -height;;
+    int32_t startY = (this->displayInfo->getLastHeight() *2 /3) -height;;
     
 
     PointFactory* pointFactory = PointFactory::getInstance();;
     
 
-    Rectangle* rectangle = new Rectangle(pointFactory->createXY(30, startY), this->displayInfo.getLastWidth() -30, startY);;
+    Rectangle* rectangle = new Rectangle(pointFactory->createXY(30, startY), this->displayInfo->getLastWidth() -30, startY);;
     
 
 
@@ -412,8 +381,8 @@ this->repaintBehavior->onChangeRepaint(this);
 }
 
 
-    public: void open(){
-this->logUtil.putF(this->commonStrings.START, this, "open");
+    auto GameCommandCanvas::open() -> void{
+this->logUtil->putF(this->commonStrings->START, this, "open");
     
 BasicMotionGesturesHandler::getInstance()->addListenerInterface(this->getMenuInputProcessor());
     
@@ -424,8 +393,8 @@ DisplayChangeEventHandler::getInstance()->addListenerInterface(this);
 }
 
 
-    public: void close(){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CLOSE);
+    auto GameCommandCanvas::close() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CLOSE);
     
 BasicMotionGesturesHandler::getInstance()->removeListener(this->getMenuInputProcessor());
     
@@ -438,13 +407,13 @@ DisplayChangeEventHandler::getInstance()->removeListener(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(){
+    auto GameCommandCanvas::update() -> void{
 this->repaintProcessor->process();
     
 }
 
 
-    public: int32_t getSourceId(){
+    auto GameCommandCanvas::getSourceId() -> int32_t{
 
 
 
@@ -454,39 +423,39 @@ this->repaintProcessor->process();
 }
 
 
-    public: void keyPressed(int32_t keyCode){
+    auto GameCommandCanvas::keyPressed(int32_t keyCode) -> void{
 this->keyPressedByDevice(keyCode, 0);
     
 }
 
 
-    public: void keyReleased(int32_t keyCode){
+    auto GameCommandCanvas::keyReleased(int32_t keyCode) -> void{
 this->keyReleasedByDevice(keyCode, 0);
     
 }
 
 
-    public: void keyRepeated(int32_t keyCode){
+    auto GameCommandCanvas::keyRepeated(int32_t keyCode) -> void{
 this->keyRepeatedByDevice(keyCode, 0);
     
 }
 
 
-    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
-this->logUtil.putF((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)->toString(), this, this->gameInputStrings->KEY_PRESSED);
+    auto GameCommandCanvas::keyPressedByDevice(int32_t keyCode, int32_t deviceId) -> void{
+this->logUtil->putF((new StringMaker())->append(CommonSeps::getInstance()->SPACE)->appendint(keyCode)->toString(), this, this->gameInputStrings->KEY_PRESSED);
     
 this->addGameKeyEvent(keyCode, 0, false);
     
 }
 
 
-    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
+    auto GameCommandCanvas::keyReleasedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 this->removeGameKeyEvent(keyCode, deviceId, false);
     
 }
 
 
-    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId){
+    auto GameCommandCanvas::keyRepeatedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 
                         if(this->isSingleKeyRepeatableProcessing)
                         
@@ -499,7 +468,7 @@ this->removeGameKeyEvent(keyCode, deviceId, false);
 }
 
 
-    private: void addGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated){
+    auto GameCommandCanvas::addGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated) -> void{
 
         try {
             
@@ -520,7 +489,7 @@ this->downGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKey
                                     }
                                 
                         else {
-                            this->logUtil.putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
+                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->ADD_KEY_EVENT);
     
 
                         }
@@ -529,14 +498,14 @@ this->downGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKey
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put("Key Event Error", this, this->gameInputStrings->ADD_KEY_EVENT, &e);
+this->logUtil->put("Key Event Error", this, this->gameInputStrings->ADD_KEY_EVENT, &e);
     
 }
 
 }
 
 
-    private: void removeGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated){
+    auto GameCommandCanvas::removeGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated) -> void{
 
         try {
             
@@ -557,7 +526,7 @@ this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEv
                                     }
                                 
                         else {
-                            this->logUtil.putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->REMOVE_KEY_EVENT);
+                            this->logUtil->putF((new StringMaker())->append(this->gameInputStrings->NO_KEY)->appendint(keyCode)->toString(), this, this->gameInputStrings->REMOVE_KEY_EVENT);
     
 
                         }
@@ -566,14 +535,14 @@ this->upGameKeyEventHandler->getInstanceForDevice(deviceId)->fireEvent(gameKeyEv
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put("Key Event Error", this, this->gameInputStrings->REMOVE_KEY_EVENT, &e);
+this->logUtil->put("Key Event Error", this, this->gameInputStrings->REMOVE_KEY_EVENT, &e);
     
 }
 
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto GameCommandCanvas::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 this->menuPaintable->paint(graphics);
@@ -583,13 +552,13 @@ this->repaintBehavior->repaint(this);
 }
 
 
-    private: void setMenuInputProcessor(BasicMenuInputProcessor* menuInputProcessor){
+    auto GameCommandCanvas::setMenuInputProcessor(BasicMenuInputProcessor* menuInputProcessor) -> void{
 this->menuInputProcessor= menuInputProcessor;
     
 }
 
 
-    protected: BasicMenuInputProcessor* getMenuInputProcessor(){
+    auto GameCommandCanvas::getMenuInputProcessor() -> BasicMenuInputProcessor*{
 
 
 
@@ -599,7 +568,6 @@ this->menuInputProcessor= menuInputProcessor;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_CPP

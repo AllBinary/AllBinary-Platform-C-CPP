@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_PRIMITIVEARRAYTOSTRING_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_PRIMITIVEARRAYTOSTRING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/PrimitiveArrayToString.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,11 +60,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PrimitiveArrayToString
-            : public Object
-         {
 
-    public: static std::string toString(std::vector<float> floats){
+PrimitiveArrayToString::PrimitiveArrayToString() {
+        }
+        
+    auto PrimitiveArrayToString::toString(std::vector<float> floats) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -78,7 +88,6 @@ stringBuffer->appendfloat(floats[index]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_PRIMITIVEARRAYTOSTRING_CPP

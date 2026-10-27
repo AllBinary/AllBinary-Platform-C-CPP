@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,12 +38,8 @@
         
             #include "java/lang/Long.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
+class StringMaker;
+class CommonLabels;
 
 
 
@@ -58,13 +59,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
-#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"
+class PathFindingNodeCostInfoData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PathFindingNodeCostInfo
-            : public Object
+            : public virtual Object
         , public Comparable<PathFindingNodeCostInfo*> {
 
-    private: PathFindingNodeCostInfoData* pathFindingNodeCostInfoData = PathFindingNodeCostInfoData::getInstance();
+    private: PathFindingNodeCostInfoData* pathFindingNodeCostInfoData;
 
     public: int64_t costFromStartP;
 
@@ -96,3 +101,22 @@ public: PathFindingNodeCostInfo(int64_t costFromStart, int64_t costToGoal);
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFO_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/Comparable.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/Comparable.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEFILLEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEFILLEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/CircleFilledAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CircleFilledAnimation: public Animation, public ColorCompositeInterface {
 
-    private: int32_t width;
-
-    private: int32_t height;
-
-public: CircleFilledAnimation(int32_t width, int32_t height, BasicColor* basicColor) : Animation(){
+CircleFilledAnimation::CircleFilledAnimation(int32_t width, int32_t height, BasicColor* basicColor) : Animation(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,19 +82,18 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void nextFrame(){
+    auto CircleFilledAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    auto CircleFilledAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 graphics->fillRect(x, y, this->width, this->height);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEFILLEDANIMATION_CPP

@@ -21,6 +21,11 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H
         #define BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationBundleActivatorListenerInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class InputAutomationBundleActivatorListenerInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -64,3 +75,10 @@ class InputAutomationBundleActivatorListenerInterface {
 
 
         #endif //BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H_COMPLETE)
+        #define BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H_COMPLETE
+        
+        #endif
+    

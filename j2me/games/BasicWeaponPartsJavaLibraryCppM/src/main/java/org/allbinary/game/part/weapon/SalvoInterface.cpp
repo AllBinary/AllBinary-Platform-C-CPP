@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/weapon/SalvoInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,17 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SalvoInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void process(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_PART_WEAPON_SALVOINTERFACE_CPP

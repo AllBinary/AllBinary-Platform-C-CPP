@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESS_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/address/StreetAddress.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -92,33 +102,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/address/StreetAddressData.h"
 
-class StreetAddress
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string id;
-
-    private: std::string name;
-
-    private: std::string street;
-
-    private: std::string city;
-
-    private: std::string state;
-
-    private: std::string code;
-
-    private: std::string country;
-
-    private: bool isDefault = false;
-
-public: StreetAddress(){
+StreetAddress::StreetAddress() : logUtil(LogUtil::getInstance()){
 }
 
 
-public: StreetAddress(Node* node){
+StreetAddress::StreetAddress(Node* node) : logUtil(LogUtil::getInstance()){
 
     Node* nameNode = DomSearchHelper::getNode(StreetAddressData::NAME, node->getChildNodes());;
     
@@ -154,7 +143,7 @@ this->log();
 }
 
 
-public: StreetAddress(StreetAddress* streetAddress){
+StreetAddress::StreetAddress(StreetAddress* streetAddress) : logUtil(LogUtil::getInstance()){
 this->id= streetAddress->getId();
     
 this->name= streetAddress->getName();
@@ -169,14 +158,14 @@ this->code= streetAddress->getCode();
     
 this->country= streetAddress->getCountry();
     
-this->isDefault= streetAddress->isDefault();
+this->isDefault_= streetAddress->isDefault();
     
 this->log();
     
 }
 
 
-public: StreetAddress(HttpServletRequest* request){
+StreetAddress::StreetAddress(HttpServletRequest* request) : logUtil(LogUtil::getInstance()){
 this->setId(request->getParameter(StreetAddressData::ID));
     
 this->setName(request->getParameter(StreetAddressData::NAME));
@@ -196,7 +185,7 @@ this->log();
 }
 
 
-public: StreetAddress(std::string name, std::string street, std::string city, std::string state, std::string code, std::string country){
+StreetAddress::StreetAddress(std::string name, std::string street, std::string city, std::string state, std::string code, std::string country) : logUtil(LogUtil::getInstance()){
 this->name= name;
     
 this->street= street;
@@ -214,7 +203,7 @@ this->log();
 }
 
 
-public: StreetAddress(HashMap<Object*, Object*>* address){
+StreetAddress::StreetAddress(HashMap<Object*, Object*>* address) : logUtil(LogUtil::getInstance()){
 this->id= address->get(StreetAddressData::ID);
     
 this->name= address->get(StreetAddressData::NAME);
@@ -236,13 +225,13 @@ this->country= address->get(StreetAddressData::COUNTRY);
                         if(true && def.compare(StreetAddressData::DEFAULT) == 0)
                         
                                     {
-                                    this->isDefault= true;
+                                    this->isDefault_= true;
     
 
                                     }
                                 
                         else {
-                            this->isDefault= false;
+                            this->isDefault_= false;
     
 
                         }
@@ -252,12 +241,12 @@ this->log();
 }
 
 
-    private: void log(){
+    auto StreetAddress::log() -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Created Address: \n" +this->toHashMap(), this, "log");
+                                    this->logUtil->putF(JavaString::valueOf("Created Address: \n") +JavaString::valueOf(this->toHashMap()), this, "log");
     
 
                                     }
@@ -265,49 +254,49 @@ this->log();
 }
 
 
-    public: void setId(std::string id){
+    auto StreetAddress::setId(std::string id) -> void{
 this->id= id;
     
 }
 
 
-    public: void setName(std::string name){
+    auto StreetAddress::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: void setStreet(std::string value){
+    auto StreetAddress::setStreet(std::string value) -> void{
 this->street= value;
     
 }
 
 
-    public: void setCity(std::string value){
+    auto StreetAddress::setCity(std::string value) -> void{
 this->city= value;
     
 }
 
 
-    public: void setState(std::string value){
+    auto StreetAddress::setState(std::string value) -> void{
 this->state= value;
     
 }
 
 
-    public: void setCode(std::string value){
+    auto StreetAddress::setCode(std::string value) -> void{
 this->code= value;
     
 }
 
 
-    public: void setCountry(std::string value){
+    auto StreetAddress::setCountry(std::string value) -> void{
 this->country= value;
     
 }
 
 
-    public: std::string getName(){
+    auto StreetAddress::getName() -> std::string{
 
 
 
@@ -317,7 +306,7 @@ this->country= value;
 }
 
 
-    public: std::string getStreet(){
+    auto StreetAddress::getStreet() -> std::string{
 
 
 
@@ -327,7 +316,7 @@ this->country= value;
 }
 
 
-    public: std::string getCity(){
+    auto StreetAddress::getCity() -> std::string{
 
 
 
@@ -337,7 +326,7 @@ this->country= value;
 }
 
 
-    public: std::string getState(){
+    auto StreetAddress::getState() -> std::string{
 
 
 
@@ -347,7 +336,7 @@ this->country= value;
 }
 
 
-    public: std::string getCode(){
+    auto StreetAddress::getCode() -> std::string{
 
 
 
@@ -357,7 +346,7 @@ this->country= value;
 }
 
 
-    public: std::string getCountry(){
+    auto StreetAddress::getCountry() -> std::string{
 
 
 
@@ -367,7 +356,7 @@ this->country= value;
 }
 
 
-    public: std::string getId(){
+    auto StreetAddress::getId() -> std::string{
 
 
 
@@ -377,17 +366,17 @@ this->country= value;
 }
 
 
-    public: bool isDefault(){
+    auto StreetAddress::isDefault() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isDefault;
+                        return this->isDefault_;
     
 }
 
 
-    public: bool isEmpty(){
+    auto StreetAddress::isEmpty() -> bool{
 
     std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
@@ -423,7 +412,7 @@ this->country= value;
 }
 
 
-    public: bool isValid(){
+    auto StreetAddress::isValid() -> bool{
 
     std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
@@ -459,7 +448,7 @@ this->country= value;
 }
 
 
-    public: std::string validationInfo(){
+    auto StreetAddress::validationInfo() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -543,7 +532,7 @@ stringBuffer->append("<br></br>");
 }
 
 
-    private: Document* toValidationInfoDoc(){
+    auto StreetAddress::toValidationInfoDoc() -> Document*{
 
 
 
@@ -553,7 +542,7 @@ stringBuffer->append("<br></br>");
 }
 
 
-    private: Node* toValidationInfoNode(Document* document){
+    auto StreetAddress::toValidationInfoNode(Document* document) -> Node*{
 
         try {
             
@@ -572,7 +561,7 @@ node->appendChild(this->toXmlNode(document));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     
@@ -594,7 +583,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "toValidationInfoNode", &e);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto StreetAddress::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -623,7 +612,7 @@ hashMap->put(StreetAddressData::COUNTRY, this->country);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StreetAddress::toXmlNode(Document* document) -> Node*{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -668,7 +657,6 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESS_CPP

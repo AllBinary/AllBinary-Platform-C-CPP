@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,32 +41,14 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/java/anyType/clazz/ClassUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class ClassUtil;
+class StringUtil;
+class CommonSeps;
+class Document;
+class Node;
 
 
 
@@ -80,10 +67,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/data/tree/dom/DomData.h"
+        class DomData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ModDomHelper
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -146,3 +137,38 @@ private: ModDomHelper();
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/java/anyType/clazz/ClassUtil.h>)
+#include <org/allbinary/logic/java/anyType/clazz/ClassUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/data/tree/dom/DomData.h")
+#include "org/allbinary/data/tree/dom/DomData.h"
+#endif
+
+        #endif
+    

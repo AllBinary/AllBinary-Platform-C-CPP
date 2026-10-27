@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/view/StaticTileLayerViewPositionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/view/StaticTileLayerIntoPositionViewPosition.h"
 
-class StaticTileLayerViewPositionFactory
-            : public Object
-        , public ViewPositionFactoryInterface {
 
+StaticTileLayerViewPositionFactory::StaticTileLayerViewPositionFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ViewPositionBase* getInstance(){
+    auto StaticTileLayerViewPositionFactory::getInstance() -> ViewPositionBase*{
 
 
 
@@ -70,7 +80,6 @@ class StaticTileLayerViewPositionFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_CPP

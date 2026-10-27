@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/file/upload/AbFileItem.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -93,21 +103,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileItem
-            : public Object
-        , public FileItem {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string name;
-
-    private: std::string fieldName;
-
-    private: std::vector<int8_t> byteArray;
-
-public: AbFileItem(std::string name, std::string fieldName, std::vector<int8_t> byteArray){
+AbFileItem::AbFileItem(std::string name, std::string fieldName, std::vector<int8_t> byteArray) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->name= name;
     
 this->fieldName= fieldName;
@@ -119,16 +116,16 @@ this->byteArray= byteArray;
 
                 //@Throws(IOException.constructor)
             
-    public: InputStream* getInputStream(){
+    auto AbFileItem::getInputStream() -> InputStream*{
 
 
 
-                            throw new IOException(this->commonStrings->NOT_IMPLEMENTED);
+                            throw IOException(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: std::string getContentType(){
+    auto AbFileItem::getContentType() -> std::string{
 
 
 
@@ -138,7 +135,7 @@ this->byteArray= byteArray;
 }
 
 
-    public: std::string getName(){
+    auto AbFileItem::getName() -> std::string{
 
 
 
@@ -148,7 +145,7 @@ this->byteArray= byteArray;
 }
 
 
-    public: bool isInMemory(){
+    auto AbFileItem::isInMemory() -> bool{
 
 
 
@@ -158,7 +155,7 @@ this->byteArray= byteArray;
 }
 
 
-    public: int64_t getSize(){
+    auto AbFileItem::getSize() -> int64_t{
 
 
 
@@ -168,7 +165,7 @@ this->byteArray= byteArray;
 }
 
 
-    public: std::vector<int8_t> get(){
+    auto AbFileItem::get() -> std::vector<int8_t>{
 
 
 
@@ -180,17 +177,17 @@ this->byteArray= byteArray;
 
                 //@Throws(UnsupportedEncodingException.constructor)
             
-    public: std::string getString(std::string encoding){
+    auto AbFileItem::getString(std::string encoding) -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.byteArray;
+                        return JavaString::fromChars(this->byteArray, encoding);
     
 }
 
 
-    public: std::string getString(){
+    auto AbFileItem::getString() -> std::string{
 
         try {
             
@@ -204,7 +201,7 @@ this->byteArray= byteArray;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->HTTPERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->HTTPERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "getString", &e);
@@ -225,33 +222,33 @@ this->byteArray= byteArray;
 
                 //@Throws(Exception.constructor)
             
-    public: void write(File* file){
+    auto AbFileItem::write(File* file) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void write(AbFile* file){
+    auto AbFileItem::write(AbFile* file) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void delete_(){
+    auto AbFileItem::delete_() -> void{
 ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, "delete()");
     
 }
 
 
-    public: std::string getFieldName(){
+    auto AbFileItem::getFieldName() -> std::string{
 
 
 
@@ -261,13 +258,13 @@ ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, "delete()");
 }
 
 
-    public: void setFieldName(std::string name){
+    auto AbFileItem::setFieldName(std::string name) -> void{
 this->fieldName= name;
     
 }
 
 
-    public: bool isFormField(){
+    auto AbFileItem::isFormField() -> bool{
 
                         if(StringValidationUtil::getInstance()->isEmpty(this->fieldName))
                         
@@ -294,40 +291,39 @@ this->fieldName= name;
 }
 
 
-    public: void setFormField(bool state){
+    auto AbFileItem::setFormField(bool state) -> void{
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public: OutputStream* getOutputStream(){
+    auto AbFileItem::getOutputStream() -> OutputStream*{
 
 
 
-                            throw new IOException(this->commonStrings->NOT_IMPLEMENTED);
+                            throw IOException(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: FileItemHeaders* getHeaders(){
+    auto AbFileItem::getHeaders() -> FileItemHeaders*{
 
 
 
-                            throw new RuntimeException(this->commonStrings->NOT_IMPLEMENTED);
+                            throw RuntimeException(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void setHeaders(FileItemHeaders* fih){
+    auto AbFileItem::setHeaders(FileItemHeaders* fih) -> void{
 
 
 
-                            throw new RuntimeException(this->commonStrings->NOT_IMPLEMENTED);
+                            throw RuntimeException(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_CPP

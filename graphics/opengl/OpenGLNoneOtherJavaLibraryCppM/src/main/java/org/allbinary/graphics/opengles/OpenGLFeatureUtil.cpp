@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLFeatureUtil
-            : public Object
-         {
+auto OpenGLFeatureUtil::instance_owner() -> OpenGLFeatureUtil* { static std::unique_ptr<OpenGLFeatureUtil> value(new OpenGLFeatureUtil()); return value.get(); }
+OpenGLFeatureUtil* OpenGLFeatureUtil::instance = OpenGLFeatureUtil::instance_owner();
 
-    private: static OpenGLFeatureUtil* instance() { static std::unique_ptr<OpenGLFeatureUtil> value(new OpenGLFeatureUtil()); return value.get(); }
-
-    public: static OpenGLFeatureUtil* getInstance(){
+    auto OpenGLFeatureUtil::getInstance() -> OpenGLFeatureUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureUtil::instance();
+                        return OpenGLFeatureUtil::instance;
     
 }
 
 
-public: OpenGLFeatureUtil(){
+OpenGLFeatureUtil::OpenGLFeatureUtil(){
 }
 
 
-    public: bool isAnyThreed(){
+    auto OpenGLFeatureUtil::isAnyThreed() -> bool{
 
 
 
@@ -75,7 +82,6 @@ public: OpenGLFeatureUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_CPP

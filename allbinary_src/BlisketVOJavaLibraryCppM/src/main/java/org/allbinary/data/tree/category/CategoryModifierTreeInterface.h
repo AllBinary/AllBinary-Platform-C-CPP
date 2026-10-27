@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREEINTERFACE_H
         #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/category/CategoryInterface.h>
-
-      
+class CategoryInterface;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CategoryModifierTreeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class CategoryModifierTreeInterface
+            : public virtual Object
+         {
 
     public: virtual void insert(CategoryInterface* parentCategoryInterface, CategoryInterface* newChildCategoryInterface) = 0;
 
@@ -61,3 +70,13 @@ class CategoryModifierTreeInterface {
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/category/CategoryInterface.h>)
+#include <org/allbinary/business/category/CategoryInterface.h>
+#endif
+
+        #endif
+    

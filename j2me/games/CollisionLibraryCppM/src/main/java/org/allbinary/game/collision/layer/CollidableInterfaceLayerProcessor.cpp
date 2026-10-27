@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYER_COLLIDABLEINTERFACELAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_LAYER_COLLIDABLEINTERFACELAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/layer/CollidableInterfaceLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,9 +72,8 @@
         #include "org/allbinary/game/collision/layer/CollidableInterfaceLayerManager.h"
 #include "org/allbinary/game/collision/layer/AllBinaryCollisionManager.h"
 
-class CollidableInterfaceLayerProcessor: public LayerProcessor {
 
-public: CollidableInterfaceLayerProcessor() : LayerProcessor(new CollidableInterfaceLayerManager()){
+CollidableInterfaceLayerProcessor::CollidableInterfaceLayerProcessor() : LayerProcessor(new CollidableInterfaceLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,7 +85,7 @@ public: CollidableInterfaceLayerProcessor() : LayerProcessor(new CollidableInter
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
+    auto CollidableInterfaceLayerProcessor::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) -> void{
 
     CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface = dynamic_cast<CollidableInterfaceCompositeInterface*>(layerInterface);;
     
@@ -92,7 +101,7 @@ public: CollidableInterfaceLayerProcessor() : LayerProcessor(new CollidableInter
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto CollidableInterfaceLayerProcessor::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
                         if(layerInterface->implmentsCollidableInterface())
                         
@@ -119,7 +128,6 @@ public: CollidableInterfaceLayerProcessor() : LayerProcessor(new CollidableInter
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_LAYER_COLLIDABLEINTERFACELAYERPROCESSOR_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,36 +36,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/GameKeyFactory.h>
-
-      
+class GameKeyFactory;
 #include <org/allbinary/game/input/PlayerGameInput.h>
+class GameKeyEvent;
+class GameKeyEventUtil;
+class AllBinaryGameLayerManager;
+class SpecialGameInputFactory;
+class SpecialGameInputInterface;
 
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEventUtil.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
-#include <org/allbinary/game/layer/special/SpecialGameInputFactory.h>
-
-      
-#include <org/allbinary/game/layer/special/SpecialGameInputInterface.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -79,11 +64,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+        class AllBinaryGameCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CheatGameInputProcessor: public PlayerGameInput {
 
-    public: static inline SpecialGameInputInterface* inputProcessor = SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT;
+    public: static SpecialGameInputInterface* inputProcessor;
 
     private: const std::string PROCESS_GAME = "processGame";
 
@@ -91,7 +80,7 @@ class CheatGameInputProcessor: public PlayerGameInput {
 
 public: CheatGameInputProcessor(AllBinaryGameCanvas* gameCanvas);
 
-    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
+    private: GameKeyFactory* gameKeyFactory;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void update();
@@ -102,3 +91,41 @@ public: CheatGameInputProcessor(AllBinaryGameCanvas* gameCanvas);
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/GameKeyFactory.h>)
+#include <org/allbinary/game/input/GameKeyFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlayerGameInput.h>)
+#include <org/allbinary/game/input/PlayerGameInput.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEventUtil.h>)
+#include <org/allbinary/game/input/event/GameKeyEventUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/special/SpecialGameInputFactory.h>)
+#include <org/allbinary/game/layer/special/SpecialGameInputFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/special/SpecialGameInputInterface.h>)
+#include <org/allbinary/game/layer/special/SpecialGameInputInterface.h>
+#endif
+
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h")
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#endif
+
+        #endif
+    

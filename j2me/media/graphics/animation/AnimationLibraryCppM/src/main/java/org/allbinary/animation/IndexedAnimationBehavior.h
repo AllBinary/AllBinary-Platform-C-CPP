@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_H
         #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,6 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationBehavior.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class IndexedAnimationBehavior: public AnimationBehavior {
 
     public: int64_t frameDelayTime;
@@ -67,3 +76,13 @@ public: IndexedAnimationBehavior(int32_t loopTotal, int64_t frameDelayTime);
 
 
         #endif //ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_H_COMPLETE
+        #if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+
+        #endif
+    

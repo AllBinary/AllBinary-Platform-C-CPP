@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLECHARACTERNODAMAGEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLECHARACTERNODAMAGEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/CollidableCharacterNoDamageBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,9 +75,8 @@
         #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h"
 #include "org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h"
 
-class CollidableCharacterNoDamageBehavior: public CollidableDestroyableDamageableBehavior {
 
-public: CollidableCharacterNoDamageBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+CollidableCharacterNoDamageBehavior::CollidableCharacterNoDamageBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,7 +88,7 @@ public: CollidableCharacterNoDamageBehavior(bool collidable) : CollidableDestroy
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface){
+    auto CollidableCharacterNoDamageBehavior::collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) -> void{
 
     CollisionTypeFactory* collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
@@ -107,13 +116,12 @@ collidableDestroyableDamageableLayer->getPickupBehavior()->doPickupLayer(dynamic
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
-ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+    auto CollidableCharacterNoDamageBehavior::collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> void{
+ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLECHARACTERNODAMAGEBEHAVIOR_CPP

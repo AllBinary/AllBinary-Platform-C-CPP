@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER2_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER2_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresHelper2.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,19 +61,17 @@
 #include "org/allbinary/game/score/NullHighScoresSingletonFactory.h"
 #include "org/allbinary/game/score/HighScores.h"
 
-class HighScoresHelper2: public HighScoresHelperBase {
 
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstanceAt(0, 0);
-
-    private: HighScores* selectedHighScores = NullHighScoresSingletonFactory::getInstance();
-
-    public: void setSelectedHighScores(HighScores* selectedHighScores){
+HighScoresHelper2::HighScoresHelper2() : circularIndexUtil(CircularIndexUtil::createInstanceAt(0, 0)), selectedHighScores(NullHighScoresSingletonFactory::getInstance()) {
+        }
+        
+    auto HighScoresHelper2::setSelectedHighScores(HighScores* selectedHighScores) -> void{
 this->selectedHighScores= selectedHighScores;
     
 }
 
 
-    public: HighScores* getSelectedHighScores(){
+    auto HighScoresHelper2::getSelectedHighScores() -> HighScores*{
 
 
 
@@ -73,19 +81,19 @@ this->selectedHighScores= selectedHighScores;
 }
 
 
-    public: void setHighScoresArray(std::vector<HighScores*> highScoresArrayP){
-super.setHighScoresArray(highScoresArrayP);
+    auto HighScoresHelper2::setHighScoresArray(std::vector<HighScores*> highScoresArrayP) -> void{
+HighScoresHelperBase::setHighScoresArray(highScoresArrayP);
     
-this->circularIndexUtil->setSize(this->highScoresArrayP.size());
+this->circularIndexUtil->setSize(this->highScoresArrayP->size());
     
 this->selectHighScores();
     
 }
 
 
-    public: void selectHighScores(){
+    auto HighScoresHelper2::selectHighScores() -> void{
 
-                        if(this->highScoresArrayP.size() == 0)
+                        if(this->highScoresArrayP->size() == 0)
                         
                                     {
                                     this->setSelectedHighScores(NullHighScoresSingletonFactory::getInstance());
@@ -108,7 +116,7 @@ this->circularIndexUtil->next();
     int32_t index = 0;;
     
 
-        while(highScores->getTotal() < 1 && index < this->highScoresArrayP.size())
+        while(highScores->getTotal() < 1 && index < this->highScoresArrayP->size())
         {
 highScores= this->highScoresArrayP[this->circularIndexUtil->next()];
     
@@ -121,7 +129,6 @@ this->setSelectedHighScores(highScores);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER2_CPP

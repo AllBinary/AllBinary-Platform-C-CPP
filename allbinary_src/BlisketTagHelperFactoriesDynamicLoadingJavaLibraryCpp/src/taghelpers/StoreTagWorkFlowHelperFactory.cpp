@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_CPP
+        #define TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/StoreTagWorkFlowHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,21 +72,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreTagWorkFlowHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "taghelpers.StoreTagWorkFlowHelper";
-
-    private: static inline const std::string FACTORYNAME = "taghelpers.StoreTagWorkFlowHelperFactory";
-
-public: StoreTagWorkFlowHelperFactory(){
+StoreTagWorkFlowHelperFactory::StoreTagWorkFlowHelperFactory(){
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+    auto StoreTagWorkFlowHelperFactory::getInstance(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -86,7 +89,6 @@ public: StoreTagWorkFlowHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_CPP

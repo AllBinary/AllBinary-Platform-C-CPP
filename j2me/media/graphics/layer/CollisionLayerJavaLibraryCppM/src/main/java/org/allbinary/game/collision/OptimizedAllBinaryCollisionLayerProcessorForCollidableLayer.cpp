@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_OPTIMIZEDALLBINARYCOLLISIONLAYERPROCESSORFORCOLLIDABLELAYER_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_OPTIMIZEDALLBINARYCOLLISIONLAYERPROCESSORFORCOLLIDABLELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,9 +72,8 @@
         #include "org/allbinary/game/collision/OptimizedAllBinaryCollisionLayerManager.h"
 #include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 
-class OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer: public LayerProcessor {
 
-public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer() : LayerProcessor(new OptimizedAllBinaryCollisionLayerManager()){
+OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer::OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer() : LayerProcessor(new OptimizedAllBinaryCollisionLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,7 +85,7 @@ public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer() : LayerPro
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t startIndex){
+    auto OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t startIndex) -> void{
 
     CollidableCompositeLayer* collidableInterfaceCompositeInterface = dynamic_cast<CollidableCompositeLayer*>(layerInterface);;
     
@@ -129,7 +138,7 @@ collidableBase2->collide(collidableInterfaceCompositeInterface2, collidableInter
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
                         if(layerInterface->implmentsCollidableInterface())
                         
@@ -156,7 +165,6 @@ collidableBase2->collide(collidableInterfaceCompositeInterface2, collidableInter
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_OPTIMIZEDALLBINARYCOLLISIONLAYERPROCESSORFORCOLLIDABLELAYER_CPP

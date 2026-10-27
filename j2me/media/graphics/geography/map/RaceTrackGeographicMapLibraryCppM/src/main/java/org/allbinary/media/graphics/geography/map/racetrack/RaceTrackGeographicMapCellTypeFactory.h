@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
-
-      
+class GeographicMapCellType;
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
-
-      
 
 
 
@@ -51,18 +52,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
-#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypes.h"
+        class RaceTrackGeographicMapCellType;
+class RaceTrackGeographicMapCellTypes;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RaceTrackGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
 
-    private: static RaceTrackGeographicMapCellTypeFactory* instanceC() { static std::unique_ptr<RaceTrackGeographicMapCellTypeFactory> value(new RaceTrackGeographicMapCellTypeFactory()); return value.get(); }
+    private: static RaceTrackGeographicMapCellTypeFactory* instanceC_owner();
+    private: static RaceTrackGeographicMapCellTypeFactory* instanceC;
 
     public: static RaceTrackGeographicMapCellTypeFactory* getInstance();
 
-    public: GeographicMapCellType* EMPTY_CELL_TYPE = new GeographicMapCellType(0,  -1);
+    public: GeographicMapCellType* EMPTY_CELL_TYPE;
 
-    public: GeographicMapCellType* EASY_CELL_TYPE = this->EMPTY_CELL_TYPE;
+    public: GeographicMapCellType* EASY_CELL_TYPE;
 
     public: RaceTrackGeographicMapCellType* BOTTOM_LEFT_TURN_ROAD_CELL_TYPE;
 
@@ -80,7 +86,7 @@ class RaceTrackGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory
 
     public: RaceTrackGeographicMapCellType* DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
 
-    public: GeographicMapCellType* FINISH_LINE_ROAD_CELL_TYPE = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;
+    public: GeographicMapCellType* FINISH_LINE_ROAD_CELL_TYPE;
 
 public: RaceTrackGeographicMapCellTypeFactory();
 
@@ -98,3 +104,22 @@ public: RaceTrackGeographicMapCellTypeFactory();
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypes.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypes.h"
+#endif
+
+        #endif
+    

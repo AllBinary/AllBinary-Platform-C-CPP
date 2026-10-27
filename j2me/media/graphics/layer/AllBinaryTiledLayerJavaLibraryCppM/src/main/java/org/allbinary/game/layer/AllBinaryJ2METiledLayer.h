@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/game/TiledLayer.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class Font;
+class Graphics;
+class TiledLayer;
+class CommonSeps;
+class StringMaker;
 
 
 
@@ -66,17 +61,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryJ2METiledLayer: public AllBinaryTiledLayer {
 
-    protected: TiledLayer* tiledLayerP;
+    /*protected*/ public: TiledLayer* tiledLayerP;
 
-    protected: int32_t debugColor;
+    /*protected*/ public: int32_t debugColor;
 
 public: AllBinaryJ2METiledLayer(int32_t dataId, TiledLayer* tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor);
 
     public: void paint(Graphics* graphics);
 
-    Font* font2 = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, 4);
+    public: Font* font2;
 
     public: void paintDebug(Graphics* graphics);
 
@@ -106,3 +105,28 @@ public: AllBinaryJ2METiledLayer(int32_t dataId, TiledLayer* tiledLayer, std::vec
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/game/TiledLayer.h>)
+#include <javax/microedition/lcdui/game/TiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/game/layer/AllBinaryTiledLayer.h")
+#include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
+#endif
+
+        #endif
+    

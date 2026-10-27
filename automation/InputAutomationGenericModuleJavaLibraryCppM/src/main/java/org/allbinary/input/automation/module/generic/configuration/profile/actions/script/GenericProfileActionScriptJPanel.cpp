@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPTJPANEL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPTJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GenericProfileActionScriptJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,17 +91,8 @@
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JPopupMenu.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/script/JComponent.h"
 
-class GenericProfileActionScriptJPanel: public javax::swing::JPanel, public JTreeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: DefaultMutableTreeNode* defaultMutableTreeNode = new DefaultMutableTreeNode("Root");
-
-    private: GenericProfileActionScript* genericProfileActionScript;
-
-public: GenericProfileActionScriptJPanel(){
+GenericProfileActionScriptJPanel::GenericProfileActionScriptJPanel() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), defaultMutableTreeNode(new DefaultMutableTreeNode("Root")){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->initComponents();
@@ -99,7 +100,7 @@ this->initComponents();
 }
 
 
-    public: void updateJTree(){
+    auto GenericProfileActionScriptJPanel::updateJTree() -> void{
 
     DefaultTreeModel* defaultTreeModel = new DefaultTreeModel(this->getGenericProfileActionScript());;
     
@@ -112,7 +113,7 @@ this->logUtil->putF("Updated UI", this, "updateJTree");
 }
 
 
-    public: GenericProfileActionScript* getGenericProfileActionScript(){
+    auto GenericProfileActionScriptJPanel::getGenericProfileActionScript() -> GenericProfileActionScript*{
 
 
 
@@ -122,13 +123,13 @@ this->logUtil->putF("Updated UI", this, "updateJTree");
 }
 
 
-    public: void setGenericProfileActionScript(GenericProfileActionScript* genericProfileActionScript){
+    auto GenericProfileActionScriptJPanel::setGenericProfileActionScript(GenericProfileActionScript* genericProfileActionScript) -> void{
 this->genericProfileActionScript= genericProfileActionScript;
     
 }
 
 
-    public: javax::swing::JTree* getActionScriptJTree(){
+    auto GenericProfileActionScriptJPanel::getActionScriptJTree() -> javax::swing::JTree*{
 
 
 
@@ -138,13 +139,13 @@ this->genericProfileActionScript= genericProfileActionScript;
 }
 
 
-    public: void setActionScriptJTree(javax::swing::JTree* actionScriptJTree){
+    auto GenericProfileActionScriptJPanel::setActionScriptJTree(javax::swing::JTree* actionScriptJTree) -> void{
 this->actionScriptJTree= actionScriptJTree;
     
 }
 
 
-    private: void initComponents(){
+    auto GenericProfileActionScriptJPanel::initComponents() -> void{
 this->jScrollPane1= new javax::swing::JScrollPane();
     
 this->actionScriptJTree= new javax::swing::JTree();
@@ -176,7 +177,7 @@ add(this->jScrollPane1);
 }
 
 
-    private: void actionScriptJTreeMouseReleased(java::awt::event::MouseEvent* evt){
+    auto GenericProfileActionScriptJPanel::actionScriptJTreeMouseReleased(java::awt::event::MouseEvent* evt) -> void{
 
     int32_t button = evt->getButton();;
     
@@ -222,15 +223,10 @@ jPopupMenu->show(dynamic_cast<JComponent*>(evt->getSource()), evt->getX(), evt->
 }
 
 
-    private: void actionScriptJTreeMouseClicked(java::awt::event::MouseEvent* evt){
+    auto GenericProfileActionScriptJPanel::actionScriptJTreeMouseClicked(java::awt::event::MouseEvent* evt) -> void{
 }
 
 
-    private: javax::swing::JTree* actionScriptJTree;
 
-    private: javax::swing::JScrollPane* jScrollPane1;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPTJPANEL_CPP

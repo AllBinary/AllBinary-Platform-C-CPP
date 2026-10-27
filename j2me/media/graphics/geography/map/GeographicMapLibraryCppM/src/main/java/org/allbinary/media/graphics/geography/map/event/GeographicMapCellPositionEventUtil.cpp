@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,15 +65,8 @@
         #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
 #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventHandler.h"
 
-class GeographicMapCellPositionEventUtil
-            : public Object
-         {
 
-    private: GeographicMapCellPositionEvent* geographicMapCellPositionEvent;
-
-    private: GeographicMapCellPositionEventHandler* geographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler::getInstance();
-
-public: GeographicMapCellPositionEventUtil(Object* anyType){
+GeographicMapCellPositionEventUtil::GeographicMapCellPositionEventUtil(Object* anyType) : geographicMapCellPositionEventHandler(GeographicMapCellPositionEventHandler::getInstance()){
 this->geographicMapCellPositionEvent= new GeographicMapCellPositionEvent(anyType, CellPositionFactory::getInstance()->NONE);
     
 }
@@ -71,7 +74,7 @@ this->geographicMapCellPositionEvent= new GeographicMapCellPositionEvent(anyType
 
                 //@Throws(Exception.constructor)
             
-    public: void update(GeographicMapCellPositionTracking* geographicMapCellPositionTracking){
+    auto GeographicMapCellPositionEventUtil::update(GeographicMapCellPositionTracking* geographicMapCellPositionTracking) -> void{
 this->geographicMapCellPositionEvent->setGeographicMapCellPosition(geographicMapCellPositionTracking->getCurrentGeographicMapCellPosition());
     
 this->geographicMapCellPositionEventHandler->fireEvent(this->geographicMapCellPositionEvent);
@@ -81,7 +84,7 @@ this->geographicMapCellPositionEventHandler->fireEvent(this->geographicMapCellPo
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(GeographicMapCellPositionTracking* geographicMapCellPositionTracking){
+    auto GeographicMapCellPositionEventUtil::remove(GeographicMapCellPositionTracking* geographicMapCellPositionTracking) -> void{
 this->geographicMapCellPositionEvent->setGeographicMapCellPosition(geographicMapCellPositionTracking->getCurrentGeographicMapCellPosition());
     
 this->geographicMapCellPositionEventHandler->fireRemoveEvent(this->geographicMapCellPositionEvent);
@@ -89,7 +92,6 @@ this->geographicMapCellPositionEventHandler->fireRemoveEvent(this->geographicMap
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTUTIL_CPP

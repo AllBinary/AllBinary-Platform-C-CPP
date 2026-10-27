@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_KEYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_KEYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/KeyInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,17 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeyInterface {
+//Interface - declared in the header
 
-    public: virtual void keyPressed(int32_t keyCode) = 0;
 
-    public: virtual void keyReleased(int32_t keyCode) = 0;
 
-    public: virtual void keyPressedByDevice(int32_t keyCode, int32_t deviceId) = 0;
-
-    public: virtual void keyReleasedByDevice(int32_t keyCode, int32_t deviceId) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_KEYINTERFACE_CPP

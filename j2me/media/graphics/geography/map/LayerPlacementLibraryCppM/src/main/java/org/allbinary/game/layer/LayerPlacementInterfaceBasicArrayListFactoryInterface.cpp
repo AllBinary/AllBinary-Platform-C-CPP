@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LayerPlacementInterfaceBasicArrayListFactoryInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,13 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerPlacementInterfaceBasicArrayListFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual BasicArrayList* getInstance() = 0;
 
-    public: virtual std::vector<int32_t> getOnDemandResources() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACE_CPP

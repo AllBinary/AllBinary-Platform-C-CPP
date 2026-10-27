@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,24 +34,12 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 #include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class BasicColor;
 #include <org/allbinary/graphics/color/ColorCompositeInterface.h>
-
-      
 #include <org/allbinary/layer/PositionInterface.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class NullUtil;
 
 
 
@@ -66,13 +59,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LineAnimation: public Animation, public ColorCompositeInterface, public PositionInterface {
 
-    private: std::vector<std::vector<int32_t>> newLine = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
+    private: std::vector<std::vector<int32_t>> newLine;
 
-    private: std::vector<std::vector<int32_t>> tempLine = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int32_t>> tempLine;
 
-    private: std::vector<std::vector<int32_t>> line = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
+    private: std::vector<std::vector<int32_t>> line;
 
 public: LineAnimation(BasicColor* basicColor);
 
@@ -90,3 +87,28 @@ public: LineAnimation(BasicColor* basicColor);
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/ColorCompositeInterface.h>)
+#include <org/allbinary/graphics/color/ColorCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/PositionInterface.h>)
+#include <org/allbinary/layer/PositionInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,21 +38,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class Graphics;
+class AngleFactory;
+class AngleInfo;
+class ScaleProperties;
+class CircularIndexUtil;
 
 
 
@@ -68,35 +63,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
-#include "org/allbinary/animation/RotationAnimation.h"
+class RotationAnimation;
 #include "org/allbinary/animation/NullRotationAnimation.h"
-#include "org/allbinary/animation/IndexedAnimationBehavior.h"
-//#include "org/allbinary/animation/NullRotationAnimation2.h"
-#include "org/allbinary/animation/Animation.h"
+class IndexedAnimationBehavior;
+//class NullRotationAnimation2;
+class Animation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullRotationAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+public: class NullRotationAnimation2;
 
-    private: static NullRotationAnimationFactory* NULL_ROTATION_ANIMATION_FACTORY() { static std::unique_ptr<NullRotationAnimationFactory> value(new NullRotationAnimationFactory()); return value.get(); }
+    private: static NullRotationAnimationFactory* NULL_ROTATION_ANIMATION_FACTORY_owner();
+    private: static NullRotationAnimationFactory* NULL_ROTATION_ANIMATION_FACTORY;
 
     public: static NullRotationAnimationFactory* getFactoryInstance();
 
-    public: const std::vector<RotationAnimation*> NULL_ROTATION_ANIMATION_ARRAY = {};
+    public: std::vector<RotationAnimation*> NULL_ROTATION_ANIMATION_ARRAY;
 
 //inner= member=true isStatic=
-class NullRotationAnimation2: public NullRotationAnimation {
+public: class NullRotationAnimation2: public NullRotationAnimation {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-: NullRotationAnimation2();
+public: NullRotationAnimation2();
 
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 
             
-    private: Animation* NULL_ANIMATION = new NullRotationAnimation2();
+    private: Animation* NULL_ANIMATION;
 
 private: NullRotationAnimationFactory();
 
@@ -114,3 +115,43 @@ private: NullRotationAnimationFactory();
 
 
         #endif //ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/RotationAnimation.h")
+#include "org/allbinary/animation/RotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/NullRotationAnimation.h")
+#include "org/allbinary/animation/NullRotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimationBehavior.h")
+#include "org/allbinary/animation/IndexedAnimationBehavior.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+
+        #endif
+    

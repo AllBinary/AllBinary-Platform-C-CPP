@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/InitInfo2.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,25 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InitInfo2
-            : public Object
-         {
 
-    private: static InitInfo2* instance() { static std::unique_ptr<InitInfo2> value(new InitInfo2()); return value.get(); }
+InitInfo2::InitInfo2() : directory(Directory::getInstance()) {
+        }
+        auto InitInfo2::instance_owner() -> InitInfo2* { static std::unique_ptr<InitInfo2> value(new InitInfo2()); return value.get(); }
+InitInfo2* InitInfo2::instance = InitInfo2::instance_owner();
 
-    public: static InitInfo2* getInstance(){
+    auto InitInfo2::getInstance() -> InitInfo2*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitInfo2::instance();
+                        return InitInfo2::instance;
     
 }
 
 
-    private: Directory* directory = Directory::getInstance();
-
-    public: bool isTestHtmlPathValid(AbPath* value){
+    auto InitInfo2::isTestHtmlPathValid(AbPath* value) -> bool{
 
 
 
@@ -79,7 +87,7 @@ class InitInfo2
 }
 
 
-    public: bool isMainPathValid(AbPath* value){
+    auto InitInfo2::isMainPathValid(AbPath* value) -> bool{
 
 
 
@@ -89,7 +97,6 @@ class InitInfo2
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_CPP

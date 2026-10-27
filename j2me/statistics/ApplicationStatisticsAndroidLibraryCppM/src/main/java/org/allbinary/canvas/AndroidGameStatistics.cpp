@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_CPP
+        #define ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/AndroidGameStatistics.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,15 +73,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/BaseGameStatistics.h"
 
-class AndroidGameStatistics: public BaseGameStatistics {
 
-    private: BaseViewWrapper* view = BaseViewWrapper::NULL_VIEW_WRAPPER;
-
-    private: int64_t totalOnDraws= 0;
-
-    private: const std::vector<std::string> ANDROID_STRING_ARRAY = std::vector<std::string>(14);
-
-public: AndroidGameStatistics(){
+AndroidGameStatistics::AndroidGameStatistics() : view(BaseViewWrapper::NULL_VIEW_WRAPPER), ANDROID_STRING_ARRAY(std::vector<std::string>(14)){
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -89,8 +92,8 @@ this->ANDROID_STRING_ARRAY[index]= stringUtil->EMPTY_STRING;
 }
 
 
-    public: void initView(View* view){
-super.init();
+    auto AndroidGameStatistics::initView(View* view) -> void{
+BaseGameStatistics::init();
     
 this->view= new ViewWrapper(view);
     
@@ -99,25 +102,21 @@ this->totalOnDraws= 0;
 }
 
 
-    public: void process(){
+    auto AndroidGameStatistics::process() -> void{
 this->view->postInvalidate();
     
 }
 
 
-    public: void nextOnDraw(){
+    auto AndroidGameStatistics::nextOnDraw() -> void{
 this->totalOnDraws++;
     
 }
 
 
-    private: const std::string TOTAL_ONDRAWS = " Total onDraws: ";
+    auto AndroidGameStatistics::toStringArray() -> std::vector<std::string>{
 
-    private: const std::string ONDRAWS_RATE = " onDraws(/10) Sec: ";
-
-    public: std::vector<std::string> toStringArray(){
-
-    std::vector<std::string> stringArray = super.toStringArray();;
+    std::vector<std::string> stringArray = BaseGameStatistics::toStringArray();;
     
 
 
@@ -131,7 +130,7 @@ this->ANDROID_STRING_ARRAY[index]= stringArray[index];
 }
 
 
-    int64_t totalTime = this->getTimeDelayHelper()->getElapsed(this->gameTickTimeDelayHelper.startTime);;
+    int64_t totalTime = this->getTimeDelayHelper()->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
 totalTime= (totalTime /10000);
     
@@ -152,9 +151,9 @@ this->ANDROID_STRING_ARRAY[13]= std::to_string();
 }
 
 
-    public: std::string toString(){
+    auto AndroidGameStatistics::toString() -> std::string{
 
-    int64_t totalTime = this->getTimeDelayHelper()->getElapsed(this->gameTickTimeDelayHelper.startTime);;
+    int64_t totalTime = this->getTimeDelayHelper()->getElapsed(this->gameTickTimeDelayHelper->startTime);;
     
 totalTime= (totalTime /1000);
     
@@ -165,7 +164,7 @@ totalTime= (totalTime /1000);
                                     
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toStringAt(totalTime));
+stringBuffer->append(BaseGameStatistics::toStringAt(totalTime));
     
 
                         if(this->totalOnDraws > 0)
@@ -207,7 +206,6 @@ stringBuffer->append(drawsOverTime);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_CPP

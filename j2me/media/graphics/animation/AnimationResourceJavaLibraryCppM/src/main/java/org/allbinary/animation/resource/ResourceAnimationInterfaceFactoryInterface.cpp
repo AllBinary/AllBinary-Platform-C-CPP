@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/resource/ResourceAnimationInterfaceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ResourceAnimationInterfaceFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicAnimationInterfaceFactoryInterface* getBasicAnimationInterfaceFactoryInstance(std::string resource) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_RESOURCE_RESOURCEANIMATIONINTERFACEFACTORYINTERFACE_CPP

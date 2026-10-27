@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_ORDERHISTORY_USERNAMEORDERHISTORYVIEW_CPP
+        #define VIEWS_ADMIN_ORDERHISTORY_USERNAMEORDERHISTORYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/orderhistory/UserNameOrderHistoryView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -99,27 +109,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserNameOrderHistoryView: public HttpStoreComponentView, public ValidationComponentInterface, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HttpServletRequest* request;
-
-    private: std::string userName;
-
-    private: std::string shipped;
-
-    private: std::string partiallyShipped;
-
-    private: std::string processing;
-
-    private: std::string preprocessing;
-
-    private: std::string cancelled;
-
-    private: const std::string ON = "on";
-
-public: UserNameOrderHistoryView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+UserNameOrderHistoryView::UserNameOrderHistoryView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -143,7 +134,7 @@ this->cancelled= this->request->getParameter(OrderHistoryData::CANCELLEDNAME);
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto UserNameOrderHistoryView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
@@ -151,7 +142,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto UserNameOrderHistoryView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -160,17 +151,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -185,7 +176,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto UserNameOrderHistoryView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -221,7 +212,7 @@ node->appendChild(orderHistory->toXmlNode(document));
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Attempt to View a users order history", this, "view");
@@ -252,10 +243,10 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -271,12 +262,12 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 }
 
 
-    public: bool isValid(){
+    auto UserNameOrderHistoryView::isValid() -> bool{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -303,7 +294,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto UserNameOrderHistoryView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -313,7 +304,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto UserNameOrderHistoryView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -323,7 +314,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 }
 
 
-    public: std::string validationInfo(){
+    auto UserNameOrderHistoryView::validationInfo() -> std::string{
 
                         if(false)
                         
@@ -354,7 +345,6 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_ORDERHISTORY_USERNAMEORDERHISTORYVIEW_CPP

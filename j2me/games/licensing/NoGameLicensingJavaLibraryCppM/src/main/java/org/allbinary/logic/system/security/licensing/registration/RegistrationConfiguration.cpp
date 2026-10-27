@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/registration/RegistrationConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,43 +60,36 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RegistrationConfiguration
-            : public Object
-         {
+auto RegistrationConfiguration::SINGLETON_owner() -> RegistrationConfiguration* { static std::unique_ptr<RegistrationConfiguration> value(new RegistrationConfiguration()); return value.get(); }
+RegistrationConfiguration* RegistrationConfiguration::SINGLETON = RegistrationConfiguration::SINGLETON_owner();
 
-    private: static RegistrationConfiguration* SINGLETON() { static std::unique_ptr<RegistrationConfiguration> value(new RegistrationConfiguration()); return value.get(); }
+RegistrationConfiguration::RegistrationConfiguration(){
+}
 
-    public: static RegistrationConfiguration* getInstance(){
+
+    auto RegistrationConfiguration::getInstance() -> RegistrationConfiguration*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RegistrationConfiguration::SINGLETON();
+                        return RegistrationConfiguration::SINGLETON;
     
 }
 
 
-    private: std::string registrationCode = "No Registration Code";
-
-    public: const std::string NAME = "registrationid";
-
-private: RegistrationConfiguration(){
+                //@Throws(Exception.constructor)
+            
+    auto RegistrationConfiguration::read() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void read(){
+    auto RegistrationConfiguration::write() -> void{
 }
 
 
-                //@Throws(Exception.constructor)
-            
-    public: void write(){
-}
-
-
-    public: std::string toString(){
+    auto RegistrationConfiguration::toString() -> std::string{
 
 
 
@@ -96,13 +99,13 @@ private: RegistrationConfiguration(){
 }
 
 
-    public: void setRegistrationCode(std::string registrationCode){
+    auto RegistrationConfiguration::setRegistrationCode(std::string registrationCode) -> void{
 this->registrationCode= registrationCode;
     
 }
 
 
-    public: std::string getRegistrationCode(){
+    auto RegistrationConfiguration::getRegistrationCode() -> std::string{
 
 
 
@@ -112,7 +115,6 @@ this->registrationCode= registrationCode;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_REGISTRATIONCONFIGURATION_CPP

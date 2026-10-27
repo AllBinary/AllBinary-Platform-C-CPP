@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINEWEAPONRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINEWEAPONRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineWeaponResources.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,11 +63,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MineWeaponResources: public BasicGameResources {
+Object* MineWeaponResources::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static MineWeaponResources* getInstance(){
+    auto MineWeaponResources::getInstance() -> MineWeaponResources*{
 
                         if(MineWeaponResources::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -76,13 +84,7 @@ class MineWeaponResources: public BasicGameResources {
 }
 
 
-    public: const std::string DROP_TEXT_RESOURCE = "/mine_drop_text_20_by_20.png";
-
-    public: const std::string DROP_RESOURCE = "/mine_drop_20_by_20.png";
-
-    public: const std::string DROP_ICON_RESOURCE = "/mine_drop_icon_20_by_20.png";
-
-protected: MineWeaponResources(){
+MineWeaponResources::MineWeaponResources(){
 
     std::string ROOT = "/mine";;
     
@@ -107,12 +109,11 @@ protected: MineWeaponResources(){
                                                             SMALL,MEDIUM,SIZE_FOUR,SIZE_FIVE,SIZE_SIX
                                                         };;
     
-super.init(ROOT, SIZE);
+BasicGameResources::init(ROOT, SIZE);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINEWEAPONRESOURCES_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMERUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMERUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelper.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
-
-      
+class LogUtil;
+class CommonStrings;
+class GameTickTimeDelayHelper;
+class GameTickTimeDelayHelperFactory;
 
 
 
@@ -60,17 +57,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
-#include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
+class DemoCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DemoGameRunnable: public GameRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: DemoCanvas* demoCanvas;
 
 public: DemoGameRunnable(DemoCanvas* demoCanvas);
 
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper;
 
     public: void run();
 
@@ -84,3 +85,28 @@ public: DemoGameRunnable(DemoCanvas* demoCanvas);
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMERUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMERUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOGAMERUNNABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelper.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelperFactory.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/GameRunnable.h")
+#include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/DemoCanvas.h")
+#include "org/allbinary/game/displayable/canvas/DemoCanvas.h"
+#endif
+
+        #endif
+    

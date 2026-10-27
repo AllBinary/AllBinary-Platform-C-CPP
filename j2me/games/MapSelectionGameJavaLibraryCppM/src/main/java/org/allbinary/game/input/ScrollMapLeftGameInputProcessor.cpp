@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SCROLLMAPLEFTGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPLEFTGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/ScrollMapLeftGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/input/ScrollMapGameInputProcessor.h"
 #include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
 
-class ScrollMapLeftGameInputProcessor: public ScrollMapGameInputProcessor {
 
-public: ScrollMapLeftGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlayerGameInput) : ScrollMapGameInputProcessor(scrollMapPlayerGameInput){
+ScrollMapLeftGameInputProcessor::ScrollMapLeftGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlayerGameInput) : ScrollMapGameInputProcessor(scrollMapPlayerGameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: ScrollMapLeftGameInputProcessor(ScrollMapPlayerGameInput* scrollMapPlaye
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->scrollMapPlayerGameInput.left();
+    auto ScrollMapLeftGameInputProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->scrollMapPlayerGameInput->left();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SCROLLMAPLEFTGAMEINPUTPROCESSOR_CPP

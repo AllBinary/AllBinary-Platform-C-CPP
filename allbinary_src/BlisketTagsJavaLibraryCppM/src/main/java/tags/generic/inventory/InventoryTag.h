@@ -21,6 +21,11 @@
         #ifndef TAGS_GENERIC_INVENTORY_INVENTORYTAG_H
         #define TAGS_GENERIC_INVENTORY_INVENTORYTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,26 +39,12 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
-#include <taghelpers/InventoryHelperFactory.h>
-
-      
+class JspTagException;
+class AbResponseHandler;
+class LogUtil;
+class LicensingException;
+class InventoryHelperFactory;
 #include <tags/StoreValidationTransformTag.h>
-
-      
 
 
 
@@ -73,9 +64,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InventoryTag: public StoreValidationTransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: InventoryTag();
 
@@ -97,3 +92,31 @@ public: InventoryTag();
 
 
         #endif //TAGS_GENERIC_INVENTORY_INVENTORYTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGS_GENERIC_INVENTORY_INVENTORYTAG_H_COMPLETE)
+        #define TAGS_GENERIC_INVENTORY_INVENTORYTAG_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<taghelpers/InventoryHelperFactory.h>)
+#include <taghelpers/InventoryHelperFactory.h>
+#endif
+#if __has_include(<tags/StoreValidationTransformTag.h>)
+#include <tags/StoreValidationTransformTag.h>
+#endif
+
+        #endif
+    

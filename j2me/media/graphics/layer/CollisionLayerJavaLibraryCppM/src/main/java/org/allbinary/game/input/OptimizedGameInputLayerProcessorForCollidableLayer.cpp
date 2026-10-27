@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_OPTIMIZEDGAMEINPUTLAYERPROCESSORFORCOLLIDABLELAYER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_OPTIMIZEDGAMEINPUTLAYERPROCESSORFORCOLLIDABLELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/OptimizedGameInputLayerProcessorForCollidableLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/OptimizedGameInputLayerManager.h"
 
-class OptimizedGameInputLayerProcessorForCollidableLayer: public LayerProcessor {
 
-public: OptimizedGameInputLayerProcessorForCollidableLayer() : LayerProcessor(new OptimizedGameInputLayerManager()){
+OptimizedGameInputLayerProcessorForCollidableLayer::OptimizedGameInputLayerProcessorForCollidableLayer() : LayerProcessor(new OptimizedGameInputLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +81,7 @@ public: OptimizedGameInputLayerProcessorForCollidableLayer() : LayerProcessor(ne
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
+    auto OptimizedGameInputLayerProcessorForCollidableLayer::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) -> void{
 
     AllBinaryGameLayer* gameInputInterface = dynamic_cast<AllBinaryGameLayer*>(layerInterface);;
     
@@ -81,7 +90,7 @@ gameInputInterface->processInput(allBinaryLayerManager);
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto OptimizedGameInputLayerProcessorForCollidableLayer::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
                         if(layerInterface->implmentsGameInputInterface())
                         
@@ -108,7 +117,6 @@ gameInputInterface->processInput(allBinaryLayerManager);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_OPTIMIZEDGAMEINPUTLAYERPROCESSORFORCOLLIDABLELAYER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_CPP
+        #define ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/PostGameCommandFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,29 +61,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PostGameCommandFactory
-            : public Object
-         {
 
-    private: static PostGameCommandFactory* instance() { static std::unique_ptr<PostGameCommandFactory> value(new PostGameCommandFactory()); return value.get(); }
+PostGameCommandFactory::PostGameCommandFactory() {
+        }
+        auto PostGameCommandFactory::instance_owner() -> PostGameCommandFactory* { static std::unique_ptr<PostGameCommandFactory> value(new PostGameCommandFactory()); return value.get(); }
+PostGameCommandFactory* PostGameCommandFactory::instance = PostGameCommandFactory::instance_owner();
 
-    public: static PostGameCommandFactory* getInstance(){
+    auto PostGameCommandFactory::getInstance() -> PostGameCommandFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PostGameCommandFactory::instance();
+                        return PostGameCommandFactory::instance;
     
 }
 
 
-    public: void addCommands(Canvas* canvas){
+    auto PostGameCommandFactory::addCommands(Canvas* canvas) -> void{
 MultiPlayerGameFeatureFactory::getInstance()->addCommands(canvas);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_CPP

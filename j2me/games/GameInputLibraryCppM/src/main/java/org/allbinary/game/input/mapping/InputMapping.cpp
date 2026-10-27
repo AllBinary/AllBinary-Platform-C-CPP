@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/mapping/InputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,23 +88,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
 
-class InputMapping
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    private: BasicArrayList* mappedList = new BasicArrayListD();
-
-protected: InputMapping(){
+InputMapping::InputMapping() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), hashtable(StdUtil::getInstance()->createHashtable()), mappedList(new BasicArrayListD()){
 }
 
 
-    public: int32_t getTotalMapped(){
+    auto InputMapping::getTotalMapped() -> int32_t{
 
 
 
@@ -104,7 +103,7 @@ protected: InputMapping(){
 }
 
 
-    protected: bool isDefaultNew(){
+    auto InputMapping::isDefaultNew() -> bool{
 
 
 
@@ -114,7 +113,7 @@ protected: InputMapping(){
 }
 
 
-    protected: InputToGameKeyMapping* getDefault(){
+    auto InputMapping::getDefault() -> InputToGameKeyMapping*{
 
 
 
@@ -124,7 +123,7 @@ protected: InputMapping(){
 }
 
 
-    protected: void removeAll(){
+    auto InputMapping::removeAll() -> void{
 this->hashtable->clear();
     
 this->mappedList->clear();
@@ -132,7 +131,7 @@ this->mappedList->clear();
 }
 
 
-    public: void remove(Input* input, Input* mappedToInput){
+    auto InputMapping::remove(Input* input, Input* mappedToInput) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -160,7 +159,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
     
 this->mappedList->remove(mappedToInput);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Removed: ");
     
@@ -176,7 +175,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
                                     }
                                 
                         else {
-                            stringBuffer->delete(0, stringBuffer->length());
+                            stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Not Deleted: ");
     
@@ -196,16 +195,16 @@ this->logUtil->putF(stringBuffer->toString(), this, "InputMapping::remove");
 
                 //@Throws(Exception.constructor)
             
-    public: void addMapping(InputToGameKeyMapping* inputToGameKeyMapping){
+    auto InputMapping::addMapping(InputToGameKeyMapping* inputToGameKeyMapping) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void add(Input* input, Input* mappedToInput){
+    auto InputMapping::add(Input* input, Input* mappedToInput) -> void{
 
     BasicArrayList* list = this->getMappedInput(input);;
     
@@ -223,7 +222,7 @@ this->mappedList->add(mappedToInput);
 }
 
 
-    public: bool isMapped(Input* input){
+    auto InputMapping::isMapped(Input* input) -> bool{
 
 
 
@@ -233,7 +232,7 @@ this->mappedList->add(mappedToInput);
 }
 
 
-    public: BasicArrayList* getMappedInput(Input* id){
+    auto InputMapping::getMappedInput(Input* id) -> BasicArrayList*{
 
     Object* mappingInputCanBeNullList = this->hashtable->get(id);;
     
@@ -266,7 +265,7 @@ this->hashtable->put(id, list);
 }
 
 
-    public: ABHashtable<Object*, Object*>* getHashtable(){
+    auto InputMapping::getHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -276,7 +275,6 @@ this->hashtable->put(id, list);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_CPP

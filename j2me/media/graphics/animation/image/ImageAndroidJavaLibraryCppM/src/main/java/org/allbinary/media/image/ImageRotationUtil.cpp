@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageRotationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,33 +76,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageCreationUtil.h"
 
-class ImageRotationUtil
-            : public Object
-         {
+auto ImageRotationUtil::instance_owner() -> ImageRotationUtil* { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
+ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_owner();
 
-    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
-
-    public: static ImageRotationUtil* getInstance(){
+    auto ImageRotationUtil::getInstance() -> ImageRotationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil::instance();
+                        return ImageRotationUtil::instance;
     
 }
 
 
-    private: Matrix* matrix = new Matrix();
-
-private: ImageRotationUtil(){
+ImageRotationUtil::ImageRotationUtil() : matrix(new Matrix()), anchor(Anchor::TOP_LEFT){
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
                 //@Throws(Exception.constructor)
             
-    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
+    auto ImageRotationUtil::createRotatedImage(Image* originalImage, int32_t rotationInDegrees) -> Image*{
 
     Image* image = ImageCreationUtil::getInstance()->createImageWH(originalImage->getWidth(), originalImage->getHeight());;
     
@@ -131,7 +134,7 @@ image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -139,7 +142,6 @@ image->getGraphics()->drawImage(originalImage, 0, 0, this->anchor);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,50 +39,20 @@
             #include "java/lang/Exception.h"
         
 #include <java/awt/GraphicsDevice.h>
-
-      
 #include <java/awt/GraphicsEnvironment.h>
-
-      
 #include <java/util/Collection.h>
-
-      
 #include <java/util/Iterator.h>
-
-      
 #include <java/util/Set.h>
-
-      
-#include <javax/help/HelpSet.h>
-
-      
-#include <javax/help/event/HelpSetEvent.h>
-
-      
-#include <javax/help/event/HelpSetListener.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/java/help/JavaHelpSetNotifier.h>
-
-      
-#include <org/allbinary/logic/java/anyType/InterfaceUtil.h>
-
-      
-#include <org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class HelpSet;
+class HelpSetEvent;
+class HelpSetListener;
+class StdUtil;
+class LogUtil;
+class JavaHelpSetNotifier;
+class InterfaceUtil;
+class SecuredNativeLibraryInterface;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -96,14 +71,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/robot/InputRobotInterface.h"
-#include "org/allbinary/input/automation/robot/InputRobot.h"
+        class InputRobotInterface;
+class InputRobot;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputRobotFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static InputRobotFactory* inputRobotFactory() { static std::unique_ptr<InputRobotFactory> value(new InputRobotFactory()); return value.get(); }
+    private: static InputRobotFactory* inputRobotFactory_owner();
+    private: static InputRobotFactory* inputRobotFactory;
 
                 //@Throws(Exception.constructor)
             
@@ -117,11 +97,11 @@ class InputRobotFactory
             
     public: static void loadLibrary(InputRobotInterface* inputRobotInterface);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable;
 
     private: HelpSetListener* helpSetListenerInterface;
 
@@ -153,3 +133,61 @@ private: InputRobotFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTFACTORY_H_COMPLETE
+        #if __has_include(<java/awt/GraphicsDevice.h>)
+#include <java/awt/GraphicsDevice.h>
+#endif
+#if __has_include(<java/awt/GraphicsEnvironment.h>)
+#include <java/awt/GraphicsEnvironment.h>
+#endif
+#if __has_include(<java/util/Collection.h>)
+#include <java/util/Collection.h>
+#endif
+#if __has_include(<java/util/Iterator.h>)
+#include <java/util/Iterator.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<javax/help/HelpSet.h>)
+#include <javax/help/HelpSet.h>
+#endif
+#if __has_include(<javax/help/event/HelpSetEvent.h>)
+#include <javax/help/event/HelpSetEvent.h>
+#endif
+#if __has_include(<javax/help/event/HelpSetListener.h>)
+#include <javax/help/event/HelpSetListener.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/help/JavaHelpSetNotifier.h>)
+#include <org/allbinary/logic/java/help/JavaHelpSetNotifier.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/anyType/InterfaceUtil.h>)
+#include <org/allbinary/logic/java/anyType/InterfaceUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h>)
+#include <org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/input/automation/robot/InputRobotInterface.h")
+#include "org/allbinary/input/automation/robot/InputRobotInterface.h"
+#endif
+#if __has_include("org/allbinary/input/automation/robot/InputRobot.h")
+#include "org/allbinary/input/automation/robot/InputRobot.h"
+#endif
+
+        #endif
+    

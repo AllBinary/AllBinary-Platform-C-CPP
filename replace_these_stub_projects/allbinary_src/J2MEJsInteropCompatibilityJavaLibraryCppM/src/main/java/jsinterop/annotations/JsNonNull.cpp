@@ -4,6 +4,16 @@
 
 
 
+        #ifndef JSINTEROP_ANNOTATIONS_JSNONNULL_CPP
+        #define JSINTEROP_ANNOTATIONS_JSNONNULL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "jsinterop/annotations/JsNonNull.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +41,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2SE to J2ME compatibility
-class JsNonNull {
+class JsNonNull
+            : public virtual Object
+         {
 
 };
 
             
 
+
+        #endif //JSINTEROP_ANNOTATIONS_JSNONNULL_CPP

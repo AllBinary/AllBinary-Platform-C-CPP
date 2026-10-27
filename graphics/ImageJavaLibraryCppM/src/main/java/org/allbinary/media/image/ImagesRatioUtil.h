@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESRATIOUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESRATIOUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,17 +39,9 @@
             #include "java/lang/Exception.h"
         
 #include <java/awt.h>
-
-      
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
+class LogUtil;
+class CommonLabels;
 
 
 
@@ -63,23 +60,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageUtil.h"
-#include "org/allbinary/media/image/Point.h"
-#include "org/allbinary/media/image/Graphics2D.h"
+        class ImageUtil;
+class Point;
+class Graphics2D;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImagesRatioUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImagesRatioUtil* instance() { static std::unique_ptr<ImagesRatioUtil> value(new ImagesRatioUtil()); return value.get(); }
+    private: static ImagesRatioUtil* instance_owner();
+    private: static ImagesRatioUtil* instance;
 
     public: static ImagesRatioUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: ImagesRatioUtil();
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil;
 
     public: bool isEqual(std::vector<BufferedImage*> bufferedImageArray, int32_t totalImages);
 
@@ -99,3 +101,31 @@ private: ImagesRatioUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESRATIOUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGESRATIOUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESRATIOUTIL_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageUtil.h")
+#include "org/allbinary/media/image/ImageUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/Point.h")
+#include "org/allbinary/media/image/Point.h"
+#endif
+#if __has_include("org/allbinary/media/image/Graphics2D.h")
+#include "org/allbinary/media/image/Graphics2D.h"
+#endif
+
+        #endif
+    

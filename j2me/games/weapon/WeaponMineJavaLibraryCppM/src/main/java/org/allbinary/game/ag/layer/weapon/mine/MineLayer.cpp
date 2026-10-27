@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,11 +89,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/weapon/mine/MineWeaponResources.h"
 
-class MineLayer: public SimpleWeaponLayer {
 
-    private: static inline const std::string NAME = "MineLayer";
-
-public: MineLayer(ViewPositionBase* viewPosition) : SimpleWeaponLayer(MineLayer::NAME, RemoteInfo::REMOTE_INFO,  -1, NoMovementFactory::getInstance()->getMovmentInstance(), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->RESOURCE)->getInstance(0), SimpleWeaponLayer::createDestroyed(), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 10, 10), viewPosition){
+MineLayer::MineLayer(ViewPositionBase* viewPosition) : SimpleWeaponLayer(MineLayer::NAME, RemoteInfo::REMOTE_INFO,  -1, NoMovementFactory::getInstance()->getMovmentInstance(), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(MineWeaponResources::getInstance()->RESOURCE)->getInstance(0), SimpleWeaponLayer::createDestroyed(), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 10, 10), viewPosition), viewPositionEventHandler(ViewPositionEventHandler::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,9 +100,7 @@ public: MineLayer(ViewPositionBase* viewPosition) : SimpleWeaponLayer(MineLayer:
 }
 
 
-    private: ViewPositionEventHandler* viewPositionEventHandler = ViewPositionEventHandler::getInstance();
-
-    public: void initXYZ(int32_t x, int32_t y, int32_t z){
+    auto MineLayer::initXYZ(int32_t x, int32_t y, int32_t z) -> void{
 this->setPosition(x +5, y +5, z);
     
 this->viewPositionEventHandler->addListener(dynamic_cast<AllBinaryLayer*>(this));
@@ -105,14 +110,14 @@ SecondaryPlayerQueueFactory::getInstance()->add(DropWeaponSound::getInstance());
 }
 
 
-    public: void damage(int32_t damage, int32_t damageType){
+    auto MineLayer::damage(int32_t damage, int32_t damageType) -> void{
 this->totalDamage= this->getInitDamage() +1;
     
 }
 
 
-    public: int32_t getDamage(int32_t damageType){
-super.getDamage(damageType);
+    auto MineLayer::getDamage(int32_t damageType) -> int32_t{
+SimpleWeaponLayer::getDamage(damageType);
     
 
 
@@ -123,8 +128,8 @@ super.getDamage(damageType);
 }
 
 
-    public: void setDestroyed(bool destroyed){
-super.setDestroyed(destroyed);
+    auto MineLayer::setDestroyed(bool destroyed) -> void{
+SimpleWeaponLayer::setDestroyed(destroyed);
     
 
                         if(this->isDestroyed())
@@ -138,7 +143,6 @@ super.setDestroyed(destroyed);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_CPP

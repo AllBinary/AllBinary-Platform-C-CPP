@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_ADMIN_INVENTORY_DOWNLOADITEMTAG_CPP
+        #define TAGS_ADMIN_INVENTORY_DOWNLOADITEMTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/admin/inventory/DownloadItemTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DownloadItemTag: public StoreValidationTransformTag {
 
-public: DownloadItemTag(){
+DownloadItemTag::DownloadItemTag(){
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto DownloadItemTag::doStartTag() -> int32_t{
 
         try {
             
@@ -75,19 +84,19 @@ public: DownloadItemTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->INSERT) == 0)
                         
                                     {
                                     this->setName("Add Inventory Item Validation View");
@@ -98,7 +107,7 @@ this->setObjectFile("views.admin.inventory.download.AddFileValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.DELETE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->DELETE) == 0)
                         
                                     {
                                     this->setName("Delete Inventory Item Validation View");
@@ -109,7 +118,7 @@ this->setObjectFile("views.admin.inventory.download.DeleteFileValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->EDIT) == 0)
                         
                                     {
                                     this->setName("Edit Inventory Item Validation View");
@@ -120,7 +129,7 @@ this->setObjectFile("views.admin.inventory.download.EditValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->NEW) == 0)
                         
                                     {
                                     this->setName("New Inventory Item Validation View");
@@ -131,7 +140,7 @@ this->setObjectFile("views.admin.inventory.download.NewValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.UPDATE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->UPDATE) == 0)
                         
                                     {
                                     this->setName("Update Inventory Item Validation View");
@@ -145,7 +154,7 @@ this->setObjectFile("views.admin.inventory.download.UpdateFileValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -154,7 +163,7 @@ this->setObjectFile("views.admin.inventory.download.UpdateFileValidationView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -162,7 +171,7 @@ this->setObjectFile("views.admin.inventory.download.UpdateFileValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -194,7 +203,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_ADMIN_INVENTORY_DOWNLOADITEMTAG_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +52,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/collision/CollisionType.h"
+        class CollisionType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollisionTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static CollisionTypeFactory* SINGLETON() { static std::unique_ptr<CollisionTypeFactory> value(new CollisionTypeFactory()); return value.get(); }
+    private: static CollisionTypeFactory* SINGLETON_owner();
+    private: static CollisionTypeFactory* SINGLETON;
 
     public: static CollisionTypeFactory* getInstance();
 
-    public: CollisionType* NONE = new CollisionType("None");
 
-    public: CollisionType* DAMAGE = new CollisionType("Damage");
+            
+    public: CollisionTypeFactory();
+        
+    public: CollisionType* NONE;
 
-    public: CollisionType* PICKUP = new CollisionType("Pickup");
+    public: CollisionType* DAMAGE;
 
-    public: CollisionType* COLLISION = new CollisionType("Collision");
+    public: CollisionType* PICKUP;
+
+    public: CollisionType* COLLISION;
 
 };
 
@@ -71,3 +85,13 @@ class CollisionTypeFactory
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/collision/CollisionType.h")
+#include "org/allbinary/game/collision/CollisionType.h"
+#endif
+
+        #endif
+    

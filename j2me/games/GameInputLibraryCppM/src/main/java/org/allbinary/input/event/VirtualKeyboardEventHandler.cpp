@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/event/VirtualKeyboardEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,31 +71,26 @@
         #include "org/allbinary/input/event/VirtualKeyboardEvent.h"
 #include "org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h"
 
-class VirtualKeyboardEventHandler: public BasicEventHandler {
+auto VirtualKeyboardEventHandler::gameKeyEventHandler_owner() -> VirtualKeyboardEventHandler* { static std::unique_ptr<VirtualKeyboardEventHandler> value(new VirtualKeyboardEventHandler()); return value.get(); }
+VirtualKeyboardEventHandler* VirtualKeyboardEventHandler::gameKeyEventHandler = VirtualKeyboardEventHandler::gameKeyEventHandler_owner();
 
-    private: static VirtualKeyboardEventHandler* gameKeyEventHandler() { static std::unique_ptr<VirtualKeyboardEventHandler> value(new VirtualKeyboardEventHandler()); return value.get(); }
+VirtualKeyboardEventHandler::VirtualKeyboardEventHandler() : SHOW_EVENT(new VirtualKeyboardEvent(BooleanFactory::getInstance()->TRUE)), HIDE_EVENT(new VirtualKeyboardEvent(BooleanFactory::getInstance()->FALSE)){
+}
 
-    public: static VirtualKeyboardEventHandler* getInstance(){
+
+    auto VirtualKeyboardEventHandler::getInstance() -> VirtualKeyboardEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VirtualKeyboardEventHandler::gameKeyEventHandler();
+                        return VirtualKeyboardEventHandler::gameKeyEventHandler;
     
 }
 
 
-private: VirtualKeyboardEventHandler(){
-}
-
-
-    public: VirtualKeyboardEvent* SHOW_EVENT = new VirtualKeyboardEvent(BooleanFactory::getInstance()->TRUE);
-
-    public: VirtualKeyboardEvent* HIDE_EVENT = new VirtualKeyboardEvent(BooleanFactory::getInstance()->FALSE);
-
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto VirtualKeyboardEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     VirtualKeyboardEventListenerInterface* virtualKeyboardEventListenerInterface = dynamic_cast<VirtualKeyboardEventListenerInterface*>(eventListenerInterface as unknown);;
     
@@ -94,7 +99,7 @@ virtualKeyboardEventListenerInterface->onVirtualKeyboardEvent(dynamic_cast<Virtu
 }
 
 
-    public: void open(){
+    auto VirtualKeyboardEventHandler::open() -> void{
 
         try {
             Thread::sleep(120);
@@ -105,14 +110,14 @@ this->fireEvent(this->SHOW_EVENT);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "open", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "open", &e);
     
 }
 
 }
 
 
-    public: void close(){
+    auto VirtualKeyboardEventHandler::close() -> void{
 
         try {
             Thread::sleep(120);
@@ -123,14 +128,13 @@ this->fireEvent(this->HIDE_EVENT);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CLOSE, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENTHANDLER_CPP

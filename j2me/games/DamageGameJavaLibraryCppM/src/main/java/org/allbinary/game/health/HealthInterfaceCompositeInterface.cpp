@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACECOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACECOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/HealthInterfaceCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/health/Health.h"
 
-class HealthInterfaceCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual Health* getHealthInterface() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHINTERFACECOMPOSITEINTERFACE_CPP

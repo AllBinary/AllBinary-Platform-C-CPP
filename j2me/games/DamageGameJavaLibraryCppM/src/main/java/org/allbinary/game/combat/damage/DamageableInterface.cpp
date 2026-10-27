@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/damage/DamageableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DamageableInterface: public NamedInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void damage(int32_t damage, int32_t damageType) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual int32_t getDamage(int32_t damageType) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringMaker;
+class StringUtil;
 
 
 
@@ -54,19 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentGatewayPageData
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string EXTENSION = ".jsp";
 
-    private: static inline const std::string NAME = StringUtil::getInstance()->EMPTY_STRING;
+    private: static const std::string NAME;
 
     public: static inline const std::string FORWARDMAKEPAYMENT = "MakePayment.jsp";
 
-    public: static inline const std::string PAYMENTOPTIONS = "PaymentOptions" +PaymentGatewayPageData::EXTENSION;
+    public: static const std::string PAYMENTOPTIONS;
 
-    public: static inline const std::string STARTCHECKOUT = "StartCheckout" +PaymentGatewayPageData::EXTENSION;
+    public: static const std::string STARTCHECKOUT;
 
     public: std::string MAKEPAYMENT;
 
@@ -94,3 +99,16 @@ public: PaymentGatewayPageData(std::string location, std::string paymentMethod);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYPAGEDATA_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

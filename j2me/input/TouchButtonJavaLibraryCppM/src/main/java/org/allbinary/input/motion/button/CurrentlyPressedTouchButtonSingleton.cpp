@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETON_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/CurrentlyPressedTouchButtonSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,29 +62,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
-class CurrentlyPressedTouchButtonSingleton
-            : public Object
-         {
+auto CurrentlyPressedTouchButtonSingleton::instance_owner() -> CurrentlyPressedTouchButtonSingleton* { static std::unique_ptr<CurrentlyPressedTouchButtonSingleton> value(new CurrentlyPressedTouchButtonSingleton()); return value.get(); }
+CurrentlyPressedTouchButtonSingleton* CurrentlyPressedTouchButtonSingleton::instance = CurrentlyPressedTouchButtonSingleton::instance_owner();
 
-    private: static CurrentlyPressedTouchButtonSingleton* instance() { static std::unique_ptr<CurrentlyPressedTouchButtonSingleton> value(new CurrentlyPressedTouchButtonSingleton()); return value.get(); }
-
-    public: static CurrentlyPressedTouchButtonSingleton* getInstance(){
+    auto CurrentlyPressedTouchButtonSingleton::getInstance() -> CurrentlyPressedTouchButtonSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CurrentlyPressedTouchButtonSingleton::instance();
+                        return CurrentlyPressedTouchButtonSingleton::instance;
     
 }
 
 
-    protected: BasicArrayList* list = new BasicArrayListD();
-
-protected: CurrentlyPressedTouchButtonSingleton(){
+CurrentlyPressedTouchButtonSingleton::CurrentlyPressedTouchButtonSingleton() : list(new BasicArrayListD()){
 }
 
 
-    public: int32_t size(){
+    auto CurrentlyPressedTouchButtonSingleton::size() -> int32_t{
 
 
 
@@ -84,7 +89,7 @@ protected: CurrentlyPressedTouchButtonSingleton(){
 }
 
 
-    public: TouchButtonInput* removeAt(int32_t index){
+    auto CurrentlyPressedTouchButtonSingleton::removeAt(int32_t index) -> TouchButtonInput*{
 
 
 
@@ -94,7 +99,7 @@ protected: CurrentlyPressedTouchButtonSingleton(){
 }
 
 
-    public: bool remove(TouchButtonInput* touchButtonInput){
+    auto CurrentlyPressedTouchButtonSingleton::remove(TouchButtonInput* touchButtonInput) -> bool{
 
 
 
@@ -104,7 +109,7 @@ protected: CurrentlyPressedTouchButtonSingleton(){
 }
 
 
-    public: TouchButtonInput* get(int32_t index){
+    auto CurrentlyPressedTouchButtonSingleton::get(int32_t index) -> TouchButtonInput*{
 
 
 
@@ -114,7 +119,7 @@ protected: CurrentlyPressedTouchButtonSingleton(){
 }
 
 
-    public: bool contains(TouchButtonInput* touchButtonInput){
+    auto CurrentlyPressedTouchButtonSingleton::contains(TouchButtonInput* touchButtonInput) -> bool{
 
 
 
@@ -124,13 +129,12 @@ protected: CurrentlyPressedTouchButtonSingleton(){
 }
 
 
-    public: void add(TouchButtonInput* touchButtonInput){
+    auto CurrentlyPressedTouchButtonSingleton::add(TouchButtonInput* touchButtonInput) -> void{
 this->list->add(touchButtonInput);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_CURRENTLYPRESSEDTOUCHBUTTONSINGLETON_CPP

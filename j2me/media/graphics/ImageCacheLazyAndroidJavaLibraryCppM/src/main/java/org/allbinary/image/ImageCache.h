@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHE_H
         #define ORG_ALLBINARY_IMAGE_IMAGECACHE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -40,41 +45,17 @@
             #include "java/lang/Thread.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/game/gd/resource/GDResources.h>
-
-      
-#include <org/allbinary/logic/ABSystemWrapper.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/system/Memory.h>
-
-      
+class Image;
+class NullImage;
+class TsUtil;
+class LogUtil;
+class CommonStrings;
+class StringMaker;
+class ResourceUtil;
+class GDResources;
+class ABSystemWrapper;
+class StringUtil;
+class Memory;
 
 
 
@@ -95,17 +76,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/ImageCacheBase.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageCache: public ImageCacheBase {
 
-    public: static ImageCache* NULL_IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
+    private: static ImageCache* NULL_IMAGE_CACHE_owner();
+    public: static ImageCache* NULL_IMAGE_CACHE;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: ABSystemWrapper* systemWrapper = ABSystemWrapper::getInstance();
+    private: ABSystemWrapper* systemWrapper;
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
 public: ImageCache();
 
@@ -118,10 +104,12 @@ public: ImageCache();
     public: Image* get(Object* key);
 
     public: int32_t getIndex(Object* key);
+    public: int32_t getIndex(const std::string& key) { return getIndex(JavaString::box(key)); }
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImage(Object* key, InputStream* inputStream);
+    /*protected*/ public: Image* createImage(Object* key, InputStream* inputStream);
+    /*protected*/ public: Image* createImage(const std::string& key, InputStream* inputStream) { return createImage(JavaString::box(key), inputStream); }
 
     public: bool isLazy();
 
@@ -131,3 +119,49 @@ public: ImageCache();
 
 
         #endif //ORG_ALLBINARY_IMAGE_IMAGECACHE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_IMAGECACHE_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_IMAGECACHE_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/gd/resource/GDResources.h>)
+#include <org/allbinary/game/gd/resource/GDResources.h>
+#endif
+#if __has_include(<org/allbinary/logic/ABSystemWrapper.h>)
+#include <org/allbinary/logic/ABSystemWrapper.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/system/Memory.h>)
+#include <org/allbinary/system/Memory.h>
+#endif
+#if __has_include("org/allbinary/image/ImageCacheBase.h")
+#include "org/allbinary/image/ImageCacheBase.h"
+#endif
+
+        #endif
+    

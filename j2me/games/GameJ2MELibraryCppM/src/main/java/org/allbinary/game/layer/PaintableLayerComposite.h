@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_H
         #define ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,18 +34,10 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <org/allbinary/layer/Layer.h>
-
-      
+class PaintableInterface;
+class Layer;
 
 
 
@@ -60,6 +57,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaintableLayerComposite: public Paintable {
 
     private: std::vector<Layer*> paintableArray;
@@ -76,3 +77,22 @@ public: PaintableLayerComposite(std::vector<Layer*> paintableArray);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/Layer.h>)
+#include <org/allbinary/layer/Layer.h>
+#endif
+
+        #endif
+    

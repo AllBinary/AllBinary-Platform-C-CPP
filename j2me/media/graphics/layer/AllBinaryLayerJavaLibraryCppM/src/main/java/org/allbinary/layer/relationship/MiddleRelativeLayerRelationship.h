@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_H
         #define ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class PointFactory;
+class AllBinaryLayer;
+class BasicArrayListUtil;
 
 
 
@@ -58,6 +57,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/relationship/RelativeLayerRelationship.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MiddleRelativeLayerRelationship: public RelativeLayerRelationship {
 
 public: MiddleRelativeLayerRelationship(AllBinaryLayer* layer);
@@ -68,3 +71,22 @@ public: MiddleRelativeLayerRelationship(AllBinaryLayer* layer);
 
 
         #endif //ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/layer/relationship/RelativeLayerRelationship.h")
+#include "org/allbinary/layer/relationship/RelativeLayerRelationship.h"
+#endif
+
+        #endif
+    

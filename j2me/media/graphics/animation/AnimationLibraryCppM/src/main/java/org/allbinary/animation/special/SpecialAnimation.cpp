@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/special/SpecialAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,21 +63,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/special/SpecialAnimationInterface.h"
 
-class SpecialAnimation: public IndexedAnimation, public SpecialAnimationInterface {
+auto SpecialAnimation::NULL_SPECIAL_ANIMATION_owner() -> SpecialAnimation* { static std::unique_ptr<SpecialAnimation> value(new SpecialAnimation(new IndexedAnimationBehavior(1, 250))); return value.get(); }
+SpecialAnimation* SpecialAnimation::NULL_SPECIAL_ANIMATION = SpecialAnimation::NULL_SPECIAL_ANIMATION_owner();
 
-    private: static SpecialAnimation* NULL_SPECIAL_ANIMATION() { static std::unique_ptr<SpecialAnimation> value(new SpecialAnimation(new IndexedAnimationBehavior(1, 250))); return value.get(); }
-
-    public: static SpecialAnimation* getInstance(){
+    auto SpecialAnimation::getInstance() -> SpecialAnimation*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpecialAnimation::NULL_SPECIAL_ANIMATION();
+                        return SpecialAnimation::NULL_SPECIAL_ANIMATION;
     
 }
 
 
-public: SpecialAnimation(AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+SpecialAnimation::SpecialAnimation(AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,7 +86,7 @@ public: SpecialAnimation(AnimationBehavior* animationBehavior) : IndexedAnimatio
 }
 
 
-    public: void nextFrame(){
+    auto SpecialAnimation::nextFrame() -> void{
 
     IndexedAnimationBehavior* indexedAnimationBehavior = (dynamic_cast<IndexedAnimationBehavior*>(this->animationBehaviorP));;
     
@@ -86,11 +95,11 @@ indexedAnimationBehavior->loopIndex++;
 }
 
 
-    public: void setLastFrame(){
+    auto SpecialAnimation::setLastFrame() -> void{
 }
 
 
-    public: bool isComplete(){
+    auto SpecialAnimation::isComplete() -> bool{
 
 
 
@@ -100,19 +109,18 @@ indexedAnimationBehavior->loopIndex++;
 }
 
 
-    public: void open(){
+    auto SpecialAnimation::open() -> void{
 }
 
 
-    public: void close(){
+    auto SpecialAnimation::close() -> void{
 }
 
 
-    public: void process(){
+    auto SpecialAnimation::process() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_CPP

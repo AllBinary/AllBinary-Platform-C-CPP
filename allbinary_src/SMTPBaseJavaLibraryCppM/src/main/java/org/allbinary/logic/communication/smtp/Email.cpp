@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/Email.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -117,35 +127,8 @@
         #include "org/allbinary/logic/communication/smtp/EmailInterface.h"
 #include "org/allbinary/logic/communication/smtp/EmailData.h"
 
-class Email
-            : public Object
-        , public EmailInterface {
 
-    private: static inline const std::string DEBUG = "mail.debug";
-
-    private: static inline const std::string SMTP_HOST = "mail.smtp.host";
-
-    private: static inline const std::string SMTP_PORT = "mail.smtp.port";
-
-    private: static inline const std::string SMTP_USER = "mail.smtp.user";
-
-    private: static inline const std::string SMTP_RETURN_ADDRESS = "mail.from";
-
-    private: static inline const std::string SMTP_LOCAL_HOST = "mail.smtp.localhost";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: MimeMessage* msg;
-
-    private: Properties* properties;
-
-    private: ByteArrayOutputStream* bs;
-
-    private: bool isDebug;
-
-public: Email(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase){
+Email::Email(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->isDebug= false;
     
 this->init(from, to, subject, server, textBody, htmlAttachment, contentBase);
@@ -153,7 +136,7 @@ this->init(from, to, subject, server, textBody, htmlAttachment, contentBase);
 }
 
 
-public: Email(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase, bool isDebug){
+Email::Email(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase, bool isDebug) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->isDebug= isDebug;
     
 this->init(from, to, subject, server, textBody, htmlAttachment, contentBase);
@@ -163,7 +146,7 @@ this->init(from, to, subject, server, textBody, htmlAttachment, contentBase);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase){
+    auto Email::init(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase) -> void{
 
         try {
             
@@ -176,7 +159,7 @@ this->init(from, to, subject, server, textBody, htmlAttachment, contentBase);
     
 mimeBodyParts[0]= new MimeBodyPart();
     
-mimeBodyParts[0].setText(textBody);
+mimeBodyParts[0]->setText(textBody);
     
 
                         if(!stringValidationUtil->isEmpty(htmlAttachment))
@@ -214,7 +197,7 @@ this->init(server, dynamic_cast<Authenticator*>(nullptr),
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     
@@ -237,7 +220,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "emailConstructor", &e);
 
                 //@Throws(MessagingException.constructor)
             
-    public: void init(std::string server, Authenticator* authenticator, std::vector<InternetAddress*> addresses_from, std::vector<InternetAddress*> addresses_to, std::vector<InternetAddress*> addresses_cc, std::vector<InternetAddress*> addresses_bcc, std::string subject, std::vector<MimeBodyPart*> mimeBodyParts){
+    auto Email::init(std::string server, Authenticator* authenticator, std::vector<InternetAddress*> addresses_from, std::vector<InternetAddress*> addresses_to, std::vector<InternetAddress*> addresses_cc, std::vector<InternetAddress*> addresses_bcc, std::string subject, std::vector<MimeBodyPart*> mimeBodyParts) -> void{
 this->properties= new Properties();
     
 this->properties->put(Email::SMTP_HOST, server);
@@ -252,7 +235,7 @@ this->properties->put(Email::SMTP_HOST, server);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->putF("Unable to get HostName so using fake", this, "init()");
@@ -270,7 +253,7 @@ this->properties->put(Email::SMTP_LOCAL_HOST, "FakeHostName");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put("Continuing on Exception: Unable to get HostName", this, "init()", &e);
@@ -314,11 +297,11 @@ this->msg= new MimeMessage(session);
     
 this->msg->addFrom(addresses_from);
     
-this->msg->setRecipients(Message::RecipientType.TO, addresses_to);
+this->msg->setRecipients(Message::RecipientType->TO, addresses_to);
     
-this->msg->setRecipients(Message::RecipientType.CC, addresses_cc);
+this->msg->setRecipients(Message::RecipientType->CC, addresses_cc);
     
-this->msg->setRecipients(Message::RecipientType.BCC, addresses_bcc);
+this->msg->setRecipients(Message::RecipientType->BCC, addresses_bcc);
     
 this->msg->setSubject(subject);
     
@@ -341,7 +324,7 @@ this->msg->setContent(mimeMultipart);
 }
 
 
-    public: MimeMessage* getMimeMessage(){
+    auto Email::getMimeMessage() -> MimeMessage*{
 
 
 
@@ -351,7 +334,7 @@ this->msg->setContent(mimeMultipart);
 }
 
 
-    public: std::string getDebugInfo(){
+    auto Email::getDebugInfo() -> std::string{
 
                         if(this->isDebug)
                         
@@ -360,9 +343,9 @@ this->msg->setContent(mimeMultipart);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "More Logging Before This To Standard Out: " +
+                        return JavaString::valueOf("More Logging Before This To Standard Out: ") +JavaString::valueOf(
                                     //Otherwise - right - ObjectCreationExpr
-;
+);
     
 
                                     }
@@ -382,19 +365,19 @@ this->msg->setContent(mimeMultipart);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string log(){
+    auto Email::log() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "\nHashMap: " +this->toHashMap()->toString();
+                        return JavaString::valueOf("\nHashMap: ") +JavaString::valueOf(this->toHashMap()->toString());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto Email::toHashMap() -> HashMap<Object*, Object*>*{
 
         try {
             
@@ -406,9 +389,7 @@ hashMap->put(EmailData::SERVER, this->properties->get(Email::SMTP_HOST));
     std::vector<Address*> addresses = this->msg->getFrom();;
     
 
-                        if(addresses != 
-                                    nullptr
-                                )
+                        if(!addresses.empty())
                         
                                     {
                                     
@@ -418,19 +399,17 @@ hashMap->put(EmailData::SERVER, this->properties->get(Email::SMTP_HOST));
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap->put(EmailData::FROM, addresses[index].toString());
+hashMap->put(EmailData::FROM, addresses[index]->toString());
     
 }
 
 
                                     }
                                 
-addresses= this->msg->getRecipients(Message::RecipientType.TO);
+addresses= this->msg->getRecipients(Message::RecipientType->TO);
     
 
-                        if(addresses != 
-                                    nullptr
-                                )
+                        if(!addresses.empty())
                         
                                     {
                                     
@@ -440,19 +419,17 @@ addresses= this->msg->getRecipients(Message::RecipientType.TO);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap->put(EmailData::TO, addresses[index].toString());
+hashMap->put(EmailData::TO, addresses[index]->toString());
     
 }
 
 
                                     }
                                 
-addresses= this->msg->getRecipients(Message::RecipientType.CC);
+addresses= this->msg->getRecipients(Message::RecipientType->CC);
     
 
-                        if(addresses != 
-                                    nullptr
-                                )
+                        if(!addresses.empty())
                         
                                     {
                                     
@@ -462,19 +439,17 @@ addresses= this->msg->getRecipients(Message::RecipientType.CC);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap->put(EmailData::CC, addresses[index].toString());
+hashMap->put(EmailData::CC, addresses[index]->toString());
     
 }
 
 
                                     }
                                 
-addresses= this->msg->getRecipients(Message::RecipientType.BCC);
+addresses= this->msg->getRecipients(Message::RecipientType->BCC);
     
 
-                        if(addresses != 
-                                    nullptr
-                                )
+                        if(!addresses.empty())
                         
                                     {
                                     
@@ -484,7 +459,7 @@ addresses= this->msg->getRecipients(Message::RecipientType.BCC);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap->put(EmailData::BCC, addresses[index].toString());
+hashMap->put(EmailData::BCC, addresses[index]->toString());
     
 }
 
@@ -530,7 +505,7 @@ hashMap->put(EmailData::CONTENT, content);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->EXCEPTION, this, "toHashMap()", &e);
@@ -550,7 +525,7 @@ hashMap->put(EmailData::CONTENT, content);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto Email::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createNameValueNodes(document, EmailData::NAME, this->toHashMap());;
     
@@ -565,16 +540,15 @@ hashMap->put(EmailData::CONTENT, content);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto Email::toXmlDoc() -> Document*{
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_CPP

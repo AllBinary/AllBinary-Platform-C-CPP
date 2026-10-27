@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABELICENSEINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABELICENSEINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,43 +77,26 @@
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
 #include "org/allbinary/logic/system/security/licensing/LicensingException.h"
 
-class AbeLicenseInterfaceFactory
-            : public Object
-         {
+auto AbeLicenseInterfaceFactory::SINGLETON_owner() -> AbeLicenseInterfaceFactory* { static std::unique_ptr<AbeLicenseInterfaceFactory> value(new AbeLicenseInterfaceFactory()); return value.get(); }
+AbeLicenseInterfaceFactory* AbeLicenseInterfaceFactory::SINGLETON = AbeLicenseInterfaceFactory::SINGLETON_owner();
 
-    private: static AbeLicenseInterfaceFactory* SINGLETON() { static std::unique_ptr<AbeLicenseInterfaceFactory> value(new AbeLicenseInterfaceFactory()); return value.get(); }
-
-    public: static AbeLicenseInterfaceFactory* getInstance(){
+    auto AbeLicenseInterfaceFactory::getInstance() -> AbeLicenseInterfaceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeLicenseInterfaceFactory::SINGLETON();
+                        return AbeLicenseInterfaceFactory::SINGLETON;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: int64_t time = 0;
-
-    private: bool check = false;
-
-    private: int32_t checkPeriod = 36000000;
-
-    private: AbeLicenseInterface* abeLicenseInterface = 
-                null
-            ;
-
-private: AbeLicenseInterfaceFactory(){
+AbeLicenseInterfaceFactory::AbeLicenseInterfaceFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: AbeLicenseInterface* getLicenseInstance(AbeClientInformationInterface* abeClientInformation){
+    auto AbeLicenseInterfaceFactory::getLicenseInstance(AbeClientInformationInterface* abeClientInformation) -> AbeLicenseInterface*{
 
                         if(isTimeToGetKey())
                         
@@ -132,7 +125,7 @@ private: AbeLicenseInterfaceFactory(){
 
                 //@Throws(LicensingException.constructor)
             
-    private: AbeLicenseInterface* get(AbeClientInformationInterface* abeClientInformation){
+    auto AbeLicenseInterfaceFactory::get(AbeClientInformationInterface* abeClientInformation) -> AbeLicenseInterface*{
 
         try {
             this->logUtil->putF("Getting Keys", this, this->commonStrings->GET);
@@ -150,7 +143,7 @@ this->abeLicenseInterface= licenseClient->get(abeClientInformation);
                                 )
                         
                                     {
-                                    this->logUtil->putF("Default Key: " +this->abeLicenseInterface->getKey(AbeClientInformationData::getInstance()->KEY), this, this->commonStrings->GET);
+                                    this->logUtil->putF(JavaString::valueOf("Default Key: ") +JavaString::valueOf(this->abeLicenseInterface->getKey(AbeClientInformationData::getInstance()->KEY)), this, this->commonStrings->GET);
     
 
                                     }
@@ -170,7 +163,7 @@ this->logUtil->put("Licensing IO Error", this, this->commonStrings->GET, &e);
 
 
 
-                            throw new LicensingException("License Server Connection Error");
+                            throw LicensingException("License Server Connection Error");
                     
 }
 
@@ -182,14 +175,14 @@ this->logUtil->put("Licensing Failure", this, this->commonStrings->GET, &e);
 
 
 
-                            throw new LicensingException("Unknown License Failure: " +this->getClass()->getName());
+                            throw LicensingException(JavaString::valueOf("Unknown License Failure: ") +JavaString::valueOf(this->getClass()->getName()));
                     
 }
 
 }
 
 
-    private: bool isTimeToGetKey(){
+    auto AbeLicenseInterfaceFactory::isTimeToGetKey() -> bool{
 
     Calendar* calendar = Calendar::getInstance();;
     
@@ -223,13 +216,13 @@ this->time= currentTime;
 }
 
 
-    public: void setCheck(bool check){
+    auto AbeLicenseInterfaceFactory::setCheck(bool check) -> void{
 this->check= check;
     
 }
 
 
-    private: bool isCheck(){
+    auto AbeLicenseInterfaceFactory::isCheck() -> bool{
 
 
 
@@ -239,7 +232,6 @@ this->check= check;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABELICENSEINTERFACEFACTORY_CPP

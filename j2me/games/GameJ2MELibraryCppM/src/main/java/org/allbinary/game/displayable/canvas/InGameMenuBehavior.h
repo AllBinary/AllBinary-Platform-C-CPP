@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INGAMEMENUBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INGAMEMENUBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
-
-      
+class DisplayChangeEvent;
 
 
 
@@ -51,15 +54,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/BaseMenuBehavior.h"
-#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
-#include "org/allbinary/game/displayable/canvas/GameCanvasNonBotPaintable.h"
+class AllBinaryGameCanvas;
+class GameCanvasNonBotPaintable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InGameMenuBehavior: public BaseMenuBehavior {
 
-    private: static InGameMenuBehavior* instanceC() { static std::unique_ptr<InGameMenuBehavior> value(new InGameMenuBehavior()); return value.get(); }
+    private: static InGameMenuBehavior* instanceC_owner();
+    private: static InGameMenuBehavior* instanceC;
 
     public: static InGameMenuBehavior* getInstance();
 
+
+            
+    public: InGameMenuBehavior();
+        
                 //@Throws(Exception.constructor)
             
     public: void onDisplayChangeEvent(AllBinaryGameCanvas* allBinaryGameCanvas, DisplayChangeEvent* displayChangeEvent);
@@ -86,3 +98,22 @@ class InGameMenuBehavior: public BaseMenuBehavior {
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INGAMEMENUBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INGAMEMENUBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INGAMEMENUBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>)
+#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/BaseMenuBehavior.h")
+#include "org/allbinary/game/displayable/canvas/BaseMenuBehavior.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h")
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/GameCanvasNonBotPaintable.h")
+#include "org/allbinary/game/displayable/canvas/GameCanvasNonBotPaintable.h"
+#endif
+
+        #endif
+    

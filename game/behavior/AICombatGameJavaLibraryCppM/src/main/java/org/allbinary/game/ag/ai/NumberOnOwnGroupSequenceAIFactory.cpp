@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/NumberOnOwnGroupSequenceAIFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -80,15 +90,13 @@
         #include "org/allbinary/game/ag/ai/NumberInSameGroupSequence.h"
 #include "org/allbinary/game/ag/ai/NumberOnOwnGroupSequenceAI.h"
 
-class NumberOnOwnGroupSequenceAIFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
+NumberOnOwnGroupSequenceAIFactory::NumberOnOwnGroupSequenceAIFactory() : logUtil(LogUtil::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto NumberOnOwnGroupSequenceAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
     std::vector<int32_t> integerArray = NumberInSameGroupSequence::getInstance()->NUMBER_ON_SAME_TEAM_SEQUENCE;;
     
@@ -146,7 +154,7 @@ this->logUtil->putF(stringBuffer->toString(), this, commonStrings->GET_INSTANCE)
                                     
 
 
-                            throw new Exception("Not enough AI properties.");
+                            throw Exception("Not enough AI properties.");
                     
 
                                     }
@@ -158,7 +166,7 @@ this->logUtil->putF(stringBuffer->toString(), this, commonStrings->GET_INSTANCE)
                                     
 
 
-                            throw new Exception("Too Many AI properties.");
+                            throw Exception("Too Many AI properties.");
                     
 
                                     }
@@ -186,7 +194,6 @@ numberOnSameTeam[index]= list->objectArray[index];
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAIFACTORY_CPP

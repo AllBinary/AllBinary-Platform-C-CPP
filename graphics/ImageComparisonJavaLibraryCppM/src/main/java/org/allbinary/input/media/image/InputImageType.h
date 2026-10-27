@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,17 +35,9 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class StdUtil;
 
 
 
@@ -60,19 +57,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputImageType
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
+    private: static HashMap<Object*, Object*>* hashMap;
 
-    private: static inline BasicArrayList* TYPE_VECTOR = new BasicArrayListD();
+    private: static BasicArrayList* TYPE_VECTOR;
 
-    public: static InputImageType* CAPTURE() { static std::unique_ptr<InputImageType> value(new InputImageType("Capture", 0)); return value.get(); }
+    private: static InputImageType* CAPTURE_owner();
+    public: static InputImageType* CAPTURE;
 
-    public: static InputImageType* COMPARISON() { static std::unique_ptr<InputImageType> value(new InputImageType("Comparison", 1)); return value.get(); }
+    private: static InputImageType* COMPARISON_owner();
+    public: static InputImageType* COMPARISON;
 
-    public: static InputImageType* MOTION() { static std::unique_ptr<InputImageType> value(new InputImageType("Motion", 2)); return value.get(); }
+    private: static InputImageType* MOTION_owner();
+    public: static InputImageType* MOTION;
 
     public: static InputImageType* getInstance(std::string imageTypeString);
 
@@ -96,3 +100,22 @@ private: InputImageType(std::string name, int32_t index);
 
 
         #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+
+        #endif
+    

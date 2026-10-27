@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/ABCustomItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ABCustomItem
-            : public Object
-         {
+Object* ABCustomItem::NULL_CUSTOM_ITEM = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static inline Object* NULL_CUSTOM_ITEM = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static ABCustomItem* getNullInstance(){
+    auto ABCustomItem::getNullInstance() -> ABCustomItem*{
 
                         if(ABCustomItem::NULL_CUSTOM_ITEM == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -74,23 +80,23 @@ class ABCustomItem
 }
 
 
-protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
+ABCustomItem::ABCustomItem(std::string label, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
 }
 
 
-    public: void setOwner(Screen* owner){
+    auto ABCustomItem::setOwner(Screen* owner) -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto ABCustomItem::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-    public: void paintUnselected(Graphics* graphics, int32_t x, int32_t y){
+    auto ABCustomItem::paintUnselected(Graphics* graphics, int32_t x, int32_t y) -> void{
 }
 
 
-    public: bool isFocusable(){
+    auto ABCustomItem::isFocusable() -> bool{
 
 
 
@@ -100,7 +106,7 @@ protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, Bas
 }
 
 
-    public: std::string getLabel(){
+    auto ABCustomItem::getLabel() -> std::string{
 
 
 
@@ -110,11 +116,11 @@ protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, Bas
 }
 
 
-    public: void setLabel(std::string label){
+    auto ABCustomItem::setLabel(std::string label) -> void{
 }
 
 
-    public: int32_t getHeight(){
+    auto ABCustomItem::getHeight() -> int32_t{
 
 
 
@@ -124,11 +130,11 @@ protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, Bas
 }
 
 
-    public: void setHeight(int32_t height){
+    auto ABCustomItem::setHeight(int32_t height) -> void{
 }
 
 
-    public: float getValue(){
+    auto ABCustomItem::getValue() -> float{
 
 
 
@@ -138,11 +144,11 @@ protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, Bas
 }
 
 
-    public: void setValue(float value){
+    auto ABCustomItem::setValue(float value) -> void{
 }
 
 
-    public: int32_t getMinimumWidth(){
+    auto ABCustomItem::getMinimumWidth() -> int32_t{
 
 
 
@@ -152,7 +158,7 @@ protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, Bas
 }
 
 
-    public: int32_t getMinimumHeight(){
+    auto ABCustomItem::getMinimumHeight() -> int32_t{
 
 
 
@@ -162,11 +168,10 @@ protected: ABCustomItem(std::string label, BasicColor* backgroundBasicColor, Bas
 }
 
 
-    public: void preMeasurement(Graphics* graphics){
+    auto ABCustomItem::preMeasurement(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEM_CPP

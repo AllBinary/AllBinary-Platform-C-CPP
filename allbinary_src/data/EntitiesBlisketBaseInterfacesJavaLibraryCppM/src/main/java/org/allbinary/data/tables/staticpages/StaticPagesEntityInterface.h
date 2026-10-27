@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,17 +33,9 @@
 
         
 #include <java/util/HashMap.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <org/allbinary/data/tables/BasicDataTableInterface.h>
-
-      
 
 
 
@@ -58,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StaticPagesEntityInterface: public BasicDataTableInterface {
 
     public: virtual std::string getFile(std::string store, std::string keywords) = 0;
@@ -74,3 +75,20 @@ class StaticPagesEntityInterface: public BasicDataTableInterface {
 
 
         #endif //ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TABLES_STATICPAGES_STATICPAGESENTITYINTERFACE_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/data/tables/BasicDataTableInterface.h>)
+#include <org/allbinary/data/tables/BasicDataTableInterface.h>
+#endif
+
+        #endif
+    

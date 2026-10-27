@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageToRotationImageArrayUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,29 +63,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageRotationUtil.h"
 
-class ImageToRotationImageArrayUtil
-            : public Object
-         {
+auto ImageToRotationImageArrayUtil::instance_owner() -> ImageToRotationImageArrayUtil* { static std::unique_ptr<ImageToRotationImageArrayUtil> value(new ImageToRotationImageArrayUtil()); return value.get(); }
+ImageToRotationImageArrayUtil* ImageToRotationImageArrayUtil::instance = ImageToRotationImageArrayUtil::instance_owner();
 
-    private: static ImageToRotationImageArrayUtil* instance() { static std::unique_ptr<ImageToRotationImageArrayUtil> value(new ImageToRotationImageArrayUtil()); return value.get(); }
-
-    public: static ImageToRotationImageArrayUtil* getInstance(){
+    auto ImageToRotationImageArrayUtil::getInstance() -> ImageToRotationImageArrayUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageToRotationImageArrayUtil::instance();
+                        return ImageToRotationImageArrayUtil::instance;
     
 }
 
 
-private: ImageToRotationImageArrayUtil(){
+ImageToRotationImageArrayUtil::ImageToRotationImageArrayUtil(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<Image*> generate(Image* image, int32_t angleIncrement, int32_t totalAngle){
+    auto ImageToRotationImageArrayUtil::generate(Image* image, int32_t angleIncrement, int32_t totalAngle) -> std::vector<Image*>{
 
     ImageRotationUtil* imageRotationUtil = ImageRotationUtil::getInstance();;
     
@@ -107,7 +114,6 @@ imageArray[index]= imageRotationUtil->createRotatedImage(image, index *angleIncr
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_CPP

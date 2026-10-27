@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITION_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GeographicMapCellPosition: public CellPosition {
 
-    private: GPoint* point;
-
-    private: GPoint* midPoint;
-
-public: GeographicMapCellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows, int32_t width, int32_t height) : CellPosition(column, row, columns, rows){
+GeographicMapCellPosition::GeographicMapCellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows, int32_t width, int32_t height) : CellPosition(column, row, columns, rows){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,7 +86,7 @@ this->midPoint= pointFactory->createXY(x +(width>>1), y +(height>>1));
 }
 
 
-    public: GPoint* getPoint(){
+    auto GeographicMapCellPosition::getPoint() -> GPoint*{
 
 
 
@@ -91,7 +96,7 @@ this->midPoint= pointFactory->createXY(x +(width>>1), y +(height>>1));
 }
 
 
-    public: GPoint* getMidPoint(){
+    auto GeographicMapCellPosition::getMidPoint() -> GPoint*{
 
 
 
@@ -101,13 +106,12 @@ this->midPoint= pointFactory->createXY(x +(width>>1), y +(height>>1));
 }
 
 
-    public: void setMidPoint(GPoint* midPoint){
+    auto GeographicMapCellPosition::setMidPoint(GPoint* midPoint) -> void{
 this->midPoint= midPoint;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITION_CPP

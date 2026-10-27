@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/SpriteFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SpriteFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual Sprite* createSprite(Image* image, int32_t frameWidth, int32_t frameHeight) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORYINTERFACE_CPP

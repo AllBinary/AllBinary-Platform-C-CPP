@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEINPUTOUTPUT_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEINPUTOUTPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/capture/CapturedImageInputOutput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,29 +96,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/media/image/capture/CapturedBufferedImagesCacheSingleton.h"
 
-class CapturedImageInputOutput
-            : public Object
-        , public ImageIOInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
+CapturedImageInputOutput::CapturedImageInputOutput() : logUtil(LogUtil::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void save(int64_t frame){
+    auto CapturedImageInputOutput::save(int64_t frame) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
     BufferedImageFrameCacheable* capturedBufferedImageCacheable = (dynamic_cast<BufferedImageFrameCacheable*>((getInstance)).get(frame)));;
     
-this->logUtil->putF(("Saving: " +capturedBufferedImageCacheable->toString()), this, commonStrings->SAVE);
+this->logUtil->putF((JavaString::valueOf("Saving: ") +JavaString::valueOf(capturedBufferedImageCacheable->toString())), this, commonStrings->SAVE);
     
 this->save(capturedBufferedImageCacheable->getBufferedImage(), frame);
     
 }
 
 
-    public: void save(BufferedImage* bufferedImage, int64_t frame){
+    auto CapturedImageInputOutput::save(BufferedImage* bufferedImage, int64_t frame) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -122,12 +130,12 @@ filePathStringBuffer->append(ImageOutputData::SAVE_PATH);
     
 filePathStringBuffer->append(LongUtil::fillIn(frame.toString()));
     
-filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG.getExtension());
+filePathStringBuffer->append(MediaDataFactory::getInstance()->JPG->getExtension());
     
 
     std::string filePath = filePathStringBuffer->toString();;
     
-this->logUtil->putF(("Image File Path: " +filePath +imageUtil->toString(bufferedImage)), this, commonStrings->SAVE);
+this->logUtil->putF((JavaString::valueOf(JavaString::valueOf("Image File Path: ") +JavaString::valueOf(filePath)) +JavaString::valueOf(imageUtil->toString(bufferedImage))), this, commonStrings->SAVE);
     
 
     ImagePersistanceUtil* imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
@@ -137,7 +145,6 @@ imagePersistanceUtil->saveWithImageIO(filePath, bufferedImage);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEINPUTOUTPUT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/weapon/WeaponProperties.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,29 +71,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/weapon/SimpleWeaponProperties.h"
 
-class WeaponProperties: public SimpleWeaponProperties {
+auto WeaponProperties::NULL_WEAPON_PROPERTIES_owner() -> WeaponProperties* { static std::unique_ptr<WeaponProperties> value(new WeaponProperties(0, 0, 0, 0, 0)); return value.get(); }
+WeaponProperties* WeaponProperties::NULL_WEAPON_PROPERTIES = WeaponProperties::NULL_WEAPON_PROPERTIES_owner();
 
-    public: static WeaponProperties* NULL_WEAPON_PROPERTIES() { static std::unique_ptr<WeaponProperties> value(new WeaponProperties(0, 0, 0, 0, 0)); return value.get(); }
-
-    private: static inline bool messageSent = false;
-
-    private: static inline const std::string DAMAGE = "Damage: ";
-
-    private: static inline const std::string RANGE = "Range: ";
-
-    private: static inline const std::string RELOAD = "Reload: ";
-
-    private: int64_t reloadTime= 0;
-
-    private: int64_t targetingTime= 0;
-
-    private: BasicDecimal* speed = BasicDecimal::ZERO_BIGDECIMAL;
-
-    private: const int64_t MAX = 10240;
-
-    private: const int16_t ZERO = 0;
-
-public: WeaponProperties(int64_t reloadTime, int64_t targetingTime, int64_t speed, int32_t damage, int16_t dissipation){
+WeaponProperties::WeaponProperties(int64_t reloadTime, int64_t targetingTime, int64_t speed, int32_t damage, int16_t dissipation) : speed(BasicDecimal::ZERO_BIGDECIMAL){
 
                         if(speed < this->MAX && speed != 0 && !WeaponProperties::messageSent)
                         
@@ -132,13 +123,13 @@ this->setRange(static_cast<int32_t>((value *9)) /10);
 }
 
 
-    private: void setReloadTime(int64_t reloadTime){
+    auto WeaponProperties::setReloadTime(int64_t reloadTime) -> void{
 this->reloadTime= reloadTime;
     
 }
 
 
-    public: int64_t getReloadTime(){
+    auto WeaponProperties::getReloadTime() -> int64_t{
 
 
 
@@ -148,13 +139,13 @@ this->reloadTime= reloadTime;
 }
 
 
-    private: void setTargetingTime(int64_t targetingTime){
+    auto WeaponProperties::setTargetingTime(int64_t targetingTime) -> void{
 this->targetingTime= targetingTime;
     
 }
 
 
-    public: int64_t getTargetingTime(){
+    auto WeaponProperties::getTargetingTime() -> int64_t{
 
 
 
@@ -164,7 +155,7 @@ this->targetingTime= targetingTime;
 }
 
 
-    public: BasicDecimal* getSpeed(){
+    auto WeaponProperties::getSpeed() -> BasicDecimal*{
 
 
 
@@ -174,13 +165,13 @@ this->targetingTime= targetingTime;
 }
 
 
-    public: void setSpeed(BasicDecimal* speed){
+    auto WeaponProperties::setSpeed(BasicDecimal* speed) -> void{
 this->speed= speed;
     
 }
 
 
-    public: int32_t getDamageI(int32_t range){
+    auto WeaponProperties::getDamageI(int32_t range) -> int32_t{
 
 
 
@@ -190,7 +181,7 @@ this->speed= speed;
 }
 
 
-    public: std::vector<std::string> toStringArray(){
+    auto WeaponProperties::toStringArray() -> std::vector<std::string>{
 
     int32_t index = 0;;
     
@@ -202,11 +193,11 @@ this->speed= speed;
     
 stringArray[index++]= stringBuffer->append(WeaponProperties::DAMAGE)->appendint(this->getDamage())->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringArray[index++]= stringBuffer->append(WeaponProperties::RANGE)->appendint(this->getRange())->toString();
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringArray[index++]= stringBuffer->append(WeaponProperties::RELOAD)->appendlong(this->getReloadTime())->toString();
     
@@ -219,7 +210,7 @@ stringArray[index++]= stringBuffer->append(WeaponProperties::RELOAD)->appendlong
 }
 
 
-    public: std::string toString(){
+    auto WeaponProperties::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -242,7 +233,6 @@ stringBuffer->append(WeaponProperties::RELOAD)->appendlong(this->getReloadTime()
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_CPP

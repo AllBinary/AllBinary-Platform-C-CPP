@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_EMULATORVIEWINTERFACE_CPP
+        #define ORG_ALLBINARY_VIEW_EMULATORVIEWINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/EmulatorViewInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -37,15 +47,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EmulatorViewInterface {
+//Interface - declared in the header
 
-    public: virtual void setMidlet(MIDlet* midlet) = 0;
 
-    public: virtual void onEmulatorInitComplete(Object* midletActivity) = 0;
 
-    public: virtual void onSetDisplayable(Displayable* displayable) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_VIEW_EMULATORVIEWINTERFACE_CPP

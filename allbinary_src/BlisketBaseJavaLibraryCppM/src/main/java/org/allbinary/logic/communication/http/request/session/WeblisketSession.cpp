@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/session/WeblisketSession.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -102,13 +112,8 @@
         #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h"
 #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
 
-class WeblisketSession
-            : public Object
-        , public WeblisketSessionInterface {
 
-    private: HttpSession* session;
-
-public: WeblisketSession(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : WeblisketSession(hashMap, dynamic_cast<HttpServletRequest*>(pageContext->getRequest())){
+WeblisketSession::WeblisketSession(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : WeblisketSession(hashMap, dynamic_cast<HttpServletRequest*>(pageContext->getRequest())){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -118,7 +123,7 @@ public: WeblisketSession(HashMap<Object*, Object*>* hashMap, PageContext* pageCo
 }
 
 
-public: WeblisketSession(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest){
+WeblisketSession::WeblisketSession(HashMap<Object*, Object*>* hashMap, HttpServletRequest* httpServletRequest){
 
     HashMap<Object*, Object*>* propertiesHashMap = hashMap;;
     
@@ -141,7 +146,7 @@ this->session= request->getSession(true);
 }
 
 
-    public: std::string getId(){
+    auto WeblisketSession::getId() -> std::string{
 
 
 
@@ -151,65 +156,65 @@ this->session= request->getSession(true);
 }
 
 
-    public: void setPassword(std::string password){
+    auto WeblisketSession::setPassword(std::string password) -> void{
 this->session->setAttribute(UserData::PASSWORD, password);
     
 }
 
 
-    public: void setUserName(std::string userName){
+    auto WeblisketSession::setUserName(std::string userName) -> void{
 this->session->setAttribute(UserData::USERNAME, userName);
     
 }
 
 
-    public: void setPaymentMethod(std::string value){
-this->session->setAttribute(PaymentGatewayData::NAME.toString(), value);
+    auto WeblisketSession::setPaymentMethod(std::string value) -> void{
+this->session->setAttribute(PaymentGatewayData::NAME->toString(), value);
     
 }
 
 
-    public: void setAuthenticated(){
+    auto WeblisketSession::setAuthenticated() -> void{
 this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance()->TRUE_STRING);
     
 }
 
 
-    public: void setRole(UserRole* aRole){
-this->session->setAttribute(UserRoleData::NAME.toString(), aRole);
+    auto WeblisketSession::setRole(UserRole* aRole) -> void{
+this->session->setAttribute(UserRoleData::NAME->toString(), aRole);
     
 }
 
 
-    public: void setAttempts(int32_t value){
+    auto WeblisketSession::setAttempts(int32_t value) -> void{
 this->session->setAttribute(WeblisketSessionData::ATTEMPTS, value);
     
 }
 
 
-    public: void setTimeout(std::string value){
+    auto WeblisketSession::setTimeout(std::string value) -> void{
 this->session->setAttribute(WeblisketSessionData::TIMEOUT, value);
     
 }
 
 
-    public: void setStoreName(std::string value){
+    auto WeblisketSession::setStoreName(std::string value) -> void{
 this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
     
 }
 
 
-    public: std::string getWebAppPath(){
+    auto WeblisketSession::getWebAppPath() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH);
+                        return this->session->getAttribute(org.allbinary->globals->GLOBALS2->WEBAPPPATH);
     
 }
 
 
-    public: std::string getUserName(){
+    auto WeblisketSession::getUserName() -> std::string{
 
 
 
@@ -219,7 +224,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: std::string getPassword(){
+    auto WeblisketSession::getPassword() -> std::string{
 
 
 
@@ -229,17 +234,17 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: std::string getPaymentMethod(){
+    auto WeblisketSession::getPaymentMethod() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session->getAttribute(PaymentGatewayData::NAME.toString());
+                        return this->session->getAttribute(PaymentGatewayData::NAME->toString());
     
 }
 
 
-    public: std::string getAuthentication(){
+    auto WeblisketSession::getAuthentication() -> std::string{
 
 
 
@@ -249,7 +254,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: int32_t getAttempts(){
+    auto WeblisketSession::getAttempts() -> int32_t{
 
 
 
@@ -259,7 +264,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: std::string getTimeout(){
+    auto WeblisketSession::getTimeout() -> std::string{
 
 
 
@@ -269,7 +274,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 }
 
 
-    public: std::string getStoreName(){
+    auto WeblisketSession::getStoreName() -> std::string{
 
 
 
@@ -281,9 +286,9 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
                 //@Throws(Exception.constructor)
             
-    public: UserRole* getRole(){
+    auto WeblisketSession::getRole() -> UserRole*{
 
-    UserRole* userRole = dynamic_cast<UserRole*>(this->session->getAttribute(UserRoleData::NAME.toString()));;
+    UserRole* userRole = dynamic_cast<UserRole*>(this->session->getAttribute(UserRoleData::NAME->toString()));;
     
 
                         if(userRole != 
@@ -315,7 +320,7 @@ this->session->setAttribute(StoreFrontData::getInstance()->NAME, value);
 
                 //@Throws(Exception.constructor)
             
-    public: OrderInterface* getOrder(){
+    auto WeblisketSession::getOrder() -> OrderInterface*{
 
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getStoreName());;
     
@@ -355,7 +360,7 @@ this->session->setAttribute(basketName, orderInterface);
                             
 
 
-                            throw new Exception("Basket Name Not Found");
+                            throw Exception("Basket Name Not Found");
                     
 
                         }
@@ -363,25 +368,25 @@ this->session->setAttribute(basketName, orderInterface);
 }
 
 
-    public: void setAuthenticated(bool value){
+    auto WeblisketSession::setAuthenticated(bool value) -> void{
 this->session->setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance()->FALSE_STRING);
     
 }
 
 
-    public: void clear(){
+    auto WeblisketSession::clear() -> void{
 this->session->removeAttribute(WeblisketSessionData::AUTHENTICATED);
     
 this->session->removeAttribute(WeblisketSessionData::TIMEOUT);
     
-this->session->removeAttribute(UserRoleData::NAME.toString());
+this->session->removeAttribute(UserRoleData::NAME->toString());
     
 this->session->removeAttribute(UserData::USERNAME);
     
 }
 
 
-    public: int64_t getCreationTime(){
+    auto WeblisketSession::getCreationTime() -> int64_t{
 
 
 
@@ -391,7 +396,7 @@ this->session->removeAttribute(UserData::USERNAME);
 }
 
 
-    public: int64_t getLastAccessedTime(){
+    auto WeblisketSession::getLastAccessedTime() -> int64_t{
 
 
 
@@ -401,7 +406,7 @@ this->session->removeAttribute(UserData::USERNAME);
 }
 
 
-    public: void removeBasket(){
+    auto WeblisketSession::removeBasket() -> void{
 
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getStoreName());;
     
@@ -420,7 +425,6 @@ this->session->removeAttribute(UserData::USERNAME);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_CPP

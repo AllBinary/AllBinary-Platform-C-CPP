@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/NullPathFindingLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,345 +96,344 @@
 #include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
 #include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
-class NullPathFindingLayer
-            : public Object
-        , public PathFindingLayerInterface {
 
-    public: static NullPathFindingLayer* NULL_PATH_FINDING_LAYER() { static std::unique_ptr<NullPathFindingLayer> value(new NullPathFindingLayer()); return value.get(); }
+NullPathFindingLayer::NullPathFindingLayer() {
+        }
+        auto NullPathFindingLayer::NULL_PATH_FINDING_LAYER_owner() -> NullPathFindingLayer* { static std::unique_ptr<NullPathFindingLayer> value(new NullPathFindingLayer()); return value.get(); }
+NullPathFindingLayer* NullPathFindingLayer::NULL_PATH_FINDING_LAYER = NullPathFindingLayer::NULL_PATH_FINDING_LAYER_owner();
 
-    public: std::string getName(){
+    auto NullPathFindingLayer::getName() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getEndGeographicMapCellPositionList(){
+    auto NullPathFindingLayer::getEndGeographicMapCellPositionList() -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool shouldHandleStartSameAsEnd(){
+    auto NullPathFindingLayer::shouldHandleStartSameAsEnd() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: GeographicMapCellPositionAreaBase* getGeographicMapCellPositionArea(){
+    auto NullPathFindingLayer::getGeographicMapCellPositionArea() -> GeographicMapCellPositionAreaBase*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: SelectionHudPaintable* getHudPaintable(){
+    auto NullPathFindingLayer::getHudPaintable() -> SelectionHudPaintable*{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void handleCost(PathFindingLayerInterface* ownerLayer){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: PathFindingLayerInterface* getParentLayer(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: RTSLayer2LogHelper* getRTSLayer2LogHelper(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setTarget(PathFindingLayerInterface* targetGameLayer){
+    auto NullPathFindingLayer::handleCost(PathFindingLayerInterface* ownerLayer) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getParentLayer() -> PathFindingLayerInterface*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getRTSLayer2LogHelper() -> RTSLayer2LogHelper*{
+
+
+
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList){
+    auto NullPathFindingLayer::setTarget(PathFindingLayerInterface* targetGameLayer) -> void{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: BasicArrayList* getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setClosestGeographicMapCellHistory(BasicArrayList* pathsList){
+    auto NullPathFindingLayer::init(GeographicMapCellHistory* geographicMapCellHistory, BasicArrayList* geographicMapCellPositionBasicArrayList) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void teleportTo(GeographicMapCellPosition* geographicMapCellPosition){
+    auto NullPathFindingLayer::getMoveOutOfBuildAreaPath(GeographicMapCellPosition* geographicMapCellPosition) -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void setLoad(int32_t resource){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getSurroundingGeographicMapCellPositionList(){
+    auto NullPathFindingLayer::setClosestGeographicMapCellHistory(BasicArrayList* pathsList) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isSelected(){
+    auto NullPathFindingLayer::teleportTo(GeographicMapCellPosition* geographicMapCellPosition) -> void{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: bool shouldAddWaypointFromBuilding(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: bool isShowMoreCaptionStates(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void trackTo(std::string reason){
+    auto NullPathFindingLayer::setLoad(int32_t resource) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void trackToDXY(int32_t dx, int32_t dy){
+    auto NullPathFindingLayer::getSurroundingGeographicMapCellPositionList() -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::isSelected() -> bool{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::shouldAddWaypointFromBuilding() -> bool{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::isShowMoreCaptionStates() -> bool{
+
+
+
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition){
+    auto NullPathFindingLayer::trackTo(std::string reason) -> void{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: TrackingEvent* getTrackingEvent(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: void allStop(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: bool isWaypointListEmptyOrOnlyTargets(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getCurrentGeographicMapCellPosition(){
+    auto NullPathFindingLayer::trackToDXY(int32_t dx, int32_t dy) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellPosition* getTopLeftGeographicMapCellPosition(){
+    auto NullPathFindingLayer::buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: CaptionAnimationHelperBase* getCaptionAnimationHelper(){
+    auto NullPathFindingLayer::getTrackingEvent() -> TrackingEvent*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: WaypointBehaviorBase* getWaypointBehavior(){
+    auto NullPathFindingLayer::allStop() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: WaypointLogHelper* getWaypointLogHelper(){
+    auto NullPathFindingLayer::isWaypointListEmptyOrOnlyTargets() -> bool{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: Waypoint2LogHelper* getWaypoint2LogHelper(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: WaypointRunnableLogHelper* getWaypointRunnableLogHelper(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: std::vector<Group*> getGroupInterface(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isDestroyed(){
+    auto NullPathFindingLayer::getCurrentGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getSourceId(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-};
-
+                //@Throws(Exception.constructor)
             
+    auto NullPathFindingLayer::getTopLeftGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getCaptionAnimationHelper() -> CaptionAnimationHelperBase*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getWaypointBehavior() -> WaypointBehaviorBase*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getWaypointLogHelper() -> WaypointLogHelper*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getWaypoint2LogHelper() -> Waypoint2LogHelper*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getWaypointRunnableLogHelper() -> WaypointRunnableLogHelper*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getGroupInterface() -> std::vector<Group*>{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto NullPathFindingLayer::isDestroyed() -> bool{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto NullPathFindingLayer::getSourceId() -> int32_t{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_CPP

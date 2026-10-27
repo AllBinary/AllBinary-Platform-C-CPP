@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTESDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTESDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributesData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlMetaAttributesData
-            : public Object
-         {
+auto HtmlMetaAttributesData::instance_owner() -> HtmlMetaAttributesData* { static std::unique_ptr<HtmlMetaAttributesData> value(new HtmlMetaAttributesData()); return value.get(); }
+HtmlMetaAttributesData* HtmlMetaAttributesData::instance = HtmlMetaAttributesData::instance_owner();
 
-    private: static HtmlMetaAttributesData* instance() { static std::unique_ptr<HtmlMetaAttributesData> value(new HtmlMetaAttributesData()); return value.get(); }
-
-    public: static HtmlMetaAttributesData* getInstance(){
+    auto HtmlMetaAttributesData::getInstance() -> HtmlMetaAttributesData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlMetaAttributesData::instance();
+                        return HtmlMetaAttributesData::instance;
     
 }
 
 
-private: HtmlMetaAttributesData(){
+HtmlMetaAttributesData::HtmlMetaAttributesData(){
 }
 
 
-    public: std::string NAME_VALUE = "name";
 
-    public: std::string HTTP_EQUIV_VALUE = "http-equiv";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTESDATA_CPP

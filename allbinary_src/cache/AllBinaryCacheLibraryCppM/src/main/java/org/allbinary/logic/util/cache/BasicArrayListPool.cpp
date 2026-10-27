@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/BasicArrayListPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,9 +64,8 @@
 #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 #include "org/allbinary/logic/util/cache/BasicArrayListCacheable.h"
 
-class BasicArrayListPool: public AbstractArrayListPool {
 
-public: BasicArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : AbstractArrayListPool(cacheableInterfaceFactoryInterface){
+BasicArrayListPool::BasicArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface) : AbstractArrayListPool(cacheableInterfaceFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -66,17 +75,17 @@ public: BasicArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfac
 }
 
 
-    public: void clear(){
-this->buffers.clear();
+    auto BasicArrayListPool::clear() -> void{
+this->buffers->clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: CacheableInterface* remove(Object* key){
+    auto BasicArrayListPool::remove(Object* key) -> CacheableInterface*{
 
-    int32_t size = this->buffers.size();;
+    int32_t size = this->buffers->size();;
     
 
                         if(size > 0)
@@ -86,7 +95,7 @@ this->buffers.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return dynamic_cast<CacheableInterface*>(this->buffers.removeAt(size -1));
+                        return dynamic_cast<CacheableInterface*>(this->buffers->removeAt(size -1));
     
 
                                     }
@@ -96,7 +105,7 @@ this->buffers.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cacheableInterfaceFactoryInterface.getInstance(key);;
+                        return this->cacheableInterfaceFactoryInterface->getInstance(key);;
     
 
                         }
@@ -106,7 +115,7 @@ this->buffers.clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void addAll(BasicArrayList* usedList){
+    auto BasicArrayListPool::addAll(BasicArrayList* usedList) -> void{
 
 
 
@@ -128,7 +137,7 @@ usedList->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void releaseUsedBackToPool(BasicArrayList* usedList){
+    auto BasicArrayListPool::releaseUsedBackToPool(BasicArrayList* usedList) -> void{
 
 
 
@@ -155,7 +164,6 @@ this->add(list);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_INCLUDEFILEEXTENSIONSBOOLEANFILEVISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_INCLUDEFILEEXTENSIONSBOOLEANFILEVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/visitor/IncludeFileExtensionsBooleanFileVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/visitor/BooleanFileVisitor.h"
 
-class IncludeFileExtensionsBooleanFileVisitor: public BooleanFileVisitor {
 
-public: IncludeFileExtensionsBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : BooleanFileVisitor(filterStringBasicArrayList){
+IncludeFileExtensionsBooleanFileVisitor::IncludeFileExtensionsBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : BooleanFileVisitor(filterStringBasicArrayList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,7 +71,7 @@ public: IncludeFileExtensionsBooleanFileVisitor(BasicArrayList* filterStringBasi
 }
 
 
-    public: bool visit(AbFile* file){
+    auto IncludeFileExtensionsBooleanFileVisitor::visit(AbFile* file) -> bool{
 
                         if(this->getFilterStringBasicArrayList()->size() == 0)
                         
@@ -80,12 +89,12 @@ public: IncludeFileExtensionsBooleanFileVisitor(BasicArrayList* filterStringBasi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.visit(file);;
+                        return BooleanFileVisitor::visit(file);;
     
 }
 
 
-    public: bool visit(AbFile* file, std::string fileNameString){
+    auto IncludeFileExtensionsBooleanFileVisitor::visit(AbFile* file, std::string fileNameString) -> bool{
 
     std::string fileNameAndExtension = file->getPath();;
     
@@ -124,7 +133,6 @@ public: IncludeFileExtensionsBooleanFileVisitor(BasicArrayList* filterStringBasi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_VISITOR_INCLUDEFILEEXTENSIONSBOOLEANFILEVISITOR_CPP

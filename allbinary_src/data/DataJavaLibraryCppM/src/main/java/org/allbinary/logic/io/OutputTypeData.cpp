@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_OUTPUTTYPEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_OUTPUTTYPEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/OutputTypeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OutputTypeData
-            : public Object
-         {
+auto OutputTypeData::instance_owner() -> OutputTypeData* { static std::unique_ptr<OutputTypeData> value(new OutputTypeData()); return value.get(); }
+OutputTypeData* OutputTypeData::instance = OutputTypeData::instance_owner();
 
-    private: static OutputTypeData* instance() { static std::unique_ptr<OutputTypeData> value(new OutputTypeData()); return value.get(); }
+OutputTypeData::OutputTypeData(){
+}
 
-    public: static OutputTypeData* getInstance(){
+
+    auto OutputTypeData::getInstance() -> OutputTypeData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OutputTypeData::instance();
+                        return OutputTypeData::instance;
     
 }
 
 
-private: OutputTypeData(){
-}
 
 
-    public: const std::string NAME = "OUTPUT_TYPE_NAME";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_IO_OUTPUTTYPEDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTCACHEABLE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTCACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/BasicArrayListCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,9 +62,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/CacheableInterface.h"
 
-class BasicArrayListCacheable: public BasicArrayListD, public CacheableInterface {
 
-    public: Object* getKey(){
+BasicArrayListCacheable::BasicArrayListCacheable() {
+        }
+        
+    auto BasicArrayListCacheable::getKey() -> Object*{
 
 
 
@@ -64,7 +76,6 @@ class BasicArrayListCacheable: public BasicArrayListD, public CacheableInterface
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTCACHEABLE_CPP

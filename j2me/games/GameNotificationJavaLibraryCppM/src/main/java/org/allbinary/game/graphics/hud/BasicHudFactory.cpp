@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUDFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUDFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/graphics/hud/BasicHudFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,47 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicHudFactory
-            : public Object
-         {
+auto BasicHudFactory::instance_owner() -> BasicHudFactory* { static std::unique_ptr<BasicHudFactory> value(new BasicHudFactory()); return value.get(); }
+BasicHudFactory* BasicHudFactory::instance = BasicHudFactory::instance_owner();
 
-    private: static BasicHudFactory* instance() { static std::unique_ptr<BasicHudFactory> value(new BasicHudFactory()); return value.get(); }
-
-    public: static BasicHudFactory* getInstance(){
+    auto BasicHudFactory::getInstance() -> BasicHudFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicHudFactory::instance();
+                        return BasicHudFactory::instance;
     
 }
 
 
-private: BasicHudFactory(){
+BasicHudFactory::BasicHudFactory(){
 }
 
 
-    public: const std::string DIRECTION_EXCEPTION = "Only Horizontal Direction is Allowed Currently";
 
-    public: const int32_t VERTICAL = 0;
 
-    public: const int32_t HORIZONTAL = 1;
-
-    public: const int32_t BOTTOMLEFT = 0;
-
-    public: const int32_t BOTTOMRIGHT = 1;
-
-    public: const int32_t TOPLEFT = 2;
-
-    public: const int32_t TOPRIGHT = 3;
-
-    public: const int32_t BOTTOMCENTER = 4;
-
-    public: const int32_t TOPCENTER = 5;
-
-    public: const int32_t ABSOLUTE = 6;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_GRAPHICS_HUD_BASICHUDFACTORY_CPP

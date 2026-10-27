@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,9 +34,7 @@
             #include "java/lang/String.h"
 
         
-#include <org/mapeditor/core/TiledMap.h>
-
-      
+class TiledMap;
 
 
 
@@ -52,8 +55,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllAnimationsEverywhereTileMapPlacementVisitor: public TileMapPlacementVisitor {
 
+
+            
+    public: AllAnimationsEverywhereTileMapPlacementVisitor();
+        
     public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData);
 
 };
@@ -62,3 +73,16 @@ class AllAnimationsEverywhereTileMapPlacementVisitor: public TileMapPlacementVis
 
 
         #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_H_COMPLETE
+        #if __has_include(<org/mapeditor/core/TiledMap.h>)
+#include <org/mapeditor/core/TiledMap.h>
+#endif
+#if __has_include("org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h")
+#include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,31 +94,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h"
 
-class BasicEventHandler
-            : public Object
-        , public BasicEventHandlerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: EventStrings* eventStrings = EventStrings::getInstance();
-
-    protected: BasicArrayList* eventListenerInterfaceList;
-
-public: BasicEventHandler(){
+BasicEventHandler::BasicEventHandler() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), eventStrings(EventStrings::getInstance()){
 this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
-    public: void removeAllListeners(){
+    auto BasicEventHandler::removeAllListeners() -> void{
 this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
-    public: void addListeners(BasicArrayList* vector){
+    auto BasicEventHandler::addListeners(BasicArrayList* vector) -> void{
 
     EventListenerInterface* eventListenerInterface;;
     
@@ -131,7 +130,7 @@ this->addListenerInterface(eventListenerInterface);
 }
 
 
-    public: void removeListeners(BasicArrayList* vector){
+    auto BasicEventHandler::removeListeners(BasicArrayList* vector) -> void{
 
     EventListenerInterface* eventListenerInterface;;
     
@@ -154,7 +153,7 @@ this->removeListener(eventListenerInterface);
 }
 
 
-    public: void addListenerSingleThreaded(EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::addListenerSingleThreaded(EventListenerInterface* eventListenerInterface) -> void{
 
                         if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
@@ -167,7 +166,7 @@ this->removeListener(eventListenerInterface);
 }
 
 
-    public: void addListenerInterface(EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::addListenerInterface(EventListenerInterface* eventListenerInterface) -> void{
 
                         if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
@@ -180,13 +179,13 @@ this->removeListener(eventListenerInterface);
 }
 
 
-    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface) -> void{
 this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
@@ -194,7 +193,7 @@ this->eventListenerInterfaceList->remove(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto BasicEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
     EventListenerInterface* eventListenerInterface;;
     
@@ -227,13 +226,13 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 eventListenerInterface->onEvent(eventObject);
     
 }
 
 
-    public: BasicArrayList* getEventListenerInterfaceListP(){
+    auto BasicEventHandler::getEventListenerInterfaceListP() -> BasicArrayList*{
 
 
 
@@ -243,7 +242,7 @@ eventListenerInterface->onEvent(eventObject);
 }
 
 
-    public: std::string toString(){
+    auto BasicEventHandler::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -289,7 +288,6 @@ index++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_CPP

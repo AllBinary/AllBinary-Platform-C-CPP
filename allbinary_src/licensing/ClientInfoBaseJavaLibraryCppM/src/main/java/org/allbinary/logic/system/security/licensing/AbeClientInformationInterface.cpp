@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,37 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbeClientInformationInterface {
+//Interface - declared in the header
 
-    public: virtual void init() = 0;
 
-    public: virtual GenericOperatingSystem* getOperatingSystemInterface() = 0;
 
-    public: virtual std::string getName() = 0;
-
-    public: virtual std::string getSpecialName() = 0;
-
-    public: virtual std::string getVersion() = 0;
-
-    public: virtual std::string getLicenseId() = 0;
-
-    public: virtual BasicArrayList* getLicenseServers() = 0;
-
-    public: virtual std::string getLicenseServer(int32_t index) = 0;
-
-    public: virtual int32_t getNumberOfLicenseServers() = 0;
-
-    public: virtual ABHashtable<Object*, Object*>* toHashtable() = 0;
-
-    public: virtual bool isSameId(std::string alicenseId) = 0;
-
-    public: virtual bool isLargerOrDifferentServerList(BasicArrayList* vector) = 0;
-
-    public: virtual bool isHardSale() = 0;
-
-    public: virtual std::string toShortString() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATIONINTERFACE_CPP

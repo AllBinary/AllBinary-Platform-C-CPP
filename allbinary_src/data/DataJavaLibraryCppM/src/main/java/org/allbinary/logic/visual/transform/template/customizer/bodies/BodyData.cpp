@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_BODYDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_BODYDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/bodies/BodyData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BodyData
-            : public Object
-         {
+auto BodyData::instance_owner() -> BodyData* { static std::unique_ptr<BodyData> value(new BodyData()); return value.get(); }
+BodyData* BodyData::instance = BodyData::instance_owner();
 
-    private: static BodyData* instance() { static std::unique_ptr<BodyData> value(new BodyData()); return value.get(); }
+BodyData::BodyData(){
+}
 
-    public: static BodyData* getInstance(){
+
+    auto BodyData::getInstance() -> BodyData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BodyData::instance();
+                        return BodyData::instance;
     
 }
 
 
-private: BodyData(){
-}
 
 
-    public: const std::string NAME = "BODY_NAME";
-
-    public: const std::string VIEWNAMEKEY = "Body";
-
-    public: const int32_t MIN = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_BODYDATA_CPP

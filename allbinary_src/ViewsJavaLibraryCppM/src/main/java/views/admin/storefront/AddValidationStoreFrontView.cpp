@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_STOREFRONT_ADDVALIDATIONSTOREFRONTVIEW_CPP
+        #define VIEWS_ADMIN_STOREFRONT_ADDVALIDATIONSTOREFRONTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/storefront/AddValidationStoreFrontView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,13 +103,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AddValidationStoreFrontView: public HttpContextView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: StoreFrontInterface* newStoreFrontInterface;
-
-public: AddValidationStoreFrontView(TransformInfoInterface* transformInfoInterface) : HttpContextView(transformInfoInterface){
+AddValidationStoreFrontView::AddValidationStoreFrontView(TransformInfoInterface* transformInfoInterface) : HttpContextView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -115,7 +120,7 @@ this->newStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(
 }
 
 
-    public: bool isValid(){
+    auto AddValidationStoreFrontView::isValid() -> bool{
 
         try {
             
@@ -161,10 +166,10 @@ this->newStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -182,7 +187,7 @@ this->newStoreFrontInterface= dynamic_cast<StoreFrontInterface*>(new StoreFront(
 
                 //@Throws(Exception.constructor)
             
-    private: std::string getStoreViewsPath(){
+    auto AddValidationStoreFrontView::getStoreViewsPath() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -201,7 +206,7 @@ stringBuffer->append(this->newStoreFrontInterface->getName());
 }
 
 
-    public: std::string validationInfo(){
+    auto AddValidationStoreFrontView::validationInfo() -> std::string{
 
         try {
             
@@ -247,7 +252,7 @@ stringBuffer->append(this->newStoreFrontInterface->getName());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -266,7 +271,7 @@ stringBuffer->append(this->newStoreFrontInterface->getName());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto AddValidationStoreFrontView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -276,7 +281,7 @@ stringBuffer->append(this->newStoreFrontInterface->getName());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto AddValidationStoreFrontView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -288,17 +293,16 @@ stringBuffer->append(this->newStoreFrontInterface->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto AddValidationStoreFrontView::view() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
+                        return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_STOREFRONT_ADDVALIDATIONSTOREFRONTVIEW_CPP

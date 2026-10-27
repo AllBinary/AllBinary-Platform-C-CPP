@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGFACTORY_CPP
+        #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/listings/ProductListingFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,12 @@
         #include "views/admin/inventory/listings/ProductListing.h"
 #include "views/admin/inventory/listings/ProductListingInterface.h"
 
-class ProductListingFactory
-            : public Object
-         {
 
-    public: static ProductListingInterface* getInstance(SearchRequest* searchRequest){
+ProductListingFactory::ProductListingFactory(){
+}
+
+
+    auto ProductListingFactory::getInstance(SearchRequest* searchRequest) -> ProductListingInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -79,7 +90,7 @@ class ProductListingFactory
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
                                     
@@ -101,11 +112,6 @@ logUtil->put(commonStrings->EXCEPTION, "ProductListingFactory", commonStrings->G
 }
 
 
-private: ProductListingFactory(){
-}
 
 
-};
-
-            
-
+        #endif //VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGETOOL_H
         #define ORG_ALLBINARY_IMAGE_IMAGETOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/thread/ARunnable.h>
-
-      
-#include <org/allbinary/image/gui/ImageToolJFrame.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ARunnable;
+class ImageToolJFrame;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -63,15 +60,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/image/EventQueue.h"
+        class EventQueue;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageTool
-            : public Object
+            : public virtual Object
          {
 
     public: static void main(std::vector<std::string> args);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: ImageTool();
 
@@ -81,3 +82,25 @@ public: ImageTool();
 
 
         #endif //ORG_ALLBINARY_IMAGE_IMAGETOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_IMAGETOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_IMAGETOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/thread/ARunnable.h>)
+#include <org/allbinary/thread/ARunnable.h>
+#endif
+#if __has_include(<org/allbinary/image/gui/ImageToolJFrame.h>)
+#include <org/allbinary/image/gui/ImageToolJFrame.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/image/EventQueue.h")
+#include "org/allbinary/image/EventQueue.h"
+#endif
+
+        #endif
+    

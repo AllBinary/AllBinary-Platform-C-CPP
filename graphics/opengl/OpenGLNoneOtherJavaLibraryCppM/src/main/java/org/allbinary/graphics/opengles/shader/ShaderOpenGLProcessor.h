@@ -7,18 +7,19 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
+class GL10;
 #include <org/allbinary/graphics/opengles/OpenGLProcessor.h>
-
-      
 
 
 
@@ -37,6 +38,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class ShaderOpenGLProcessor: public OpenGLProcessor {
 
@@ -58,3 +63,16 @@ public: ShaderOpenGLProcessor();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLProcessor.h>)
+#include <org/allbinary/graphics/opengles/OpenGLProcessor.h>
+#endif
+
+        #endif
+    

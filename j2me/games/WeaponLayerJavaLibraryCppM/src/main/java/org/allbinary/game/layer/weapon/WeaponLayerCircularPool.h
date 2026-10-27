@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
-
-      
-#include <org/allbinary/game/score/ScoreableInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class WeaponProperties;
+class ScoreableInterface;
+class AllBinaryLayer;
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
-
-      
 
 
 
@@ -59,8 +56,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+        class WeaponLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WeaponLayerCircularPool: public AllBinaryLayerCircularPool {
 
 public: WeaponLayerCircularPool();
@@ -75,3 +76,25 @@ public: WeaponLayerCircularPool();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/combat/weapon/WeaponProperties.h>)
+#include <org/allbinary/game/combat/weapon/WeaponProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/score/ScoreableInterface.h>)
+#include <org/allbinary/game/score/ScoreableInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerCircularPool.h>)
+#include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
+#endif
+#if __has_include("org/allbinary/game/layer/weapon/WeaponLayer.h")
+#include "org/allbinary/game/layer/weapon/WeaponLayer.h"
+#endif
+
+        #endif
+    

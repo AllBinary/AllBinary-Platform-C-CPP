@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_GRAPHICSSTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_GRAPHICSSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GraphicsStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static GraphicsStrings* instance() { static std::unique_ptr<GraphicsStrings> value(new GraphicsStrings()); return value.get(); }
+    private: static GraphicsStrings* instance_owner();
+    private: static GraphicsStrings* instance;
 
     public: static GraphicsStrings* getInstance();
 
+
+            
+    public: GraphicsStrings();
+        
     public: const std::string ANIMATION = "animation";
 
     public: const std::string ANGLE = "angle";
@@ -78,3 +92,10 @@ class GraphicsStrings
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_GRAPHICSSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_GRAPHICSSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_GRAPHICSSTRINGS_H_COMPLETE
+        
+        #endif
+    

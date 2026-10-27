@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_TEXTUREATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_TEXTUREATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
+class GL10;
 #include <org/allbinary/graphics/threed/min3d/renderer/processor/ObjectThreedOpenGLProcessor.h>
-
-      
 
 
 
@@ -56,15 +57,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TextureAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
 
-    private: static TextureAttributePointerVBOOpenGLProcessor* instance() { static std::unique_ptr<TextureAttributePointerVBOOpenGLProcessor> value(new TextureAttributePointerVBOOpenGLProcessor()); return value.get(); }
+    private: static TextureAttributePointerVBOOpenGLProcessor* instance_owner();
+    private: static TextureAttributePointerVBOOpenGLProcessor* instance;
 
     public: static TextureAttributePointerVBOOpenGLProcessor* getInstance();
 
 public: TextureAttributePointerVBOOpenGLProcessor();
 
     public: void process(GL10* gl, Object* anyType);
+    public: void process(GL10* gl, const std::string& anyType) { return process(gl, JavaString::box(anyType)); }
 
 };
 
@@ -72,3 +79,16 @@ public: TextureAttributePointerVBOOpenGLProcessor();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_TEXTUREATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_TEXTUREATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_TEXTUREATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<org/allbinary/graphics/threed/min3d/renderer/processor/ObjectThreedOpenGLProcessor.h>)
+#include <org/allbinary/graphics/threed/min3d/renderer/processor/ObjectThreedOpenGLProcessor.h>
+#endif
+
+        #endif
+    

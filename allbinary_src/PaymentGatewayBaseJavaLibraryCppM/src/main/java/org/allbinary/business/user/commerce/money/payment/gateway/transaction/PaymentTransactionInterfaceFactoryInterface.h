@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/user/commerce/inventory/order/OrderHistory.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/types/TenderType.h>
-
-      
+class OrderHistory;
+class TenderType;
 
 
 
@@ -53,9 +54,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h"
+        class PaymentTransactionInterface;
 
-class PaymentTransactionInterfaceFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class PaymentTransactionInterfaceFactoryInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -91,3 +98,19 @@ class PaymentTransactionInterfaceFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderHistory.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderHistory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/types/TenderType.h>)
+#include <org/allbinary/business/user/commerce/money/payment/types/TenderType.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h")
+#include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Runnable.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/android/activity/NullProgressActivity.h>
-
-      
-#include <org/allbinary/android/activity/ProgressActivityInterface.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Graphics;
+class NullProgressActivity;
+class ProgressActivityInterface;
+class BasicColor;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -68,21 +61,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
-//#include "org/allbinary/graphics/canvas/transition/progress/ShowTitleProgressBarRunnable.h"
-//#include "org/allbinary/graphics/canvas/transition/progress/DismissTitleProgressBarRunnable.h"
-//#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarPortionSetProgressRunnable.h"
-//#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarSetProgressRunnable.h"
+//class ShowTitleProgressBarRunnable;
+//class DismissTitleProgressBarRunnable;
+//class TitleProgressBarPortionSetProgressRunnable;
+//class TitleProgressBarSetProgressRunnable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidTitleProgressBar: public ProgressCanvas {
+public: class TitleProgressBarSetProgressRunnable;
+public: class TitleProgressBarPortionSetProgressRunnable;
+public: class ShowTitleProgressBarRunnable;
+public: class DismissTitleProgressBarRunnable;
 
 //inner= member=true isStatic=
-class TitleProgressBarSetProgressRunnable
-            : public Object
+public: class TitleProgressBarSetProgressRunnable
+            : public virtual Object
         , public Runnable {
 
     private: AndroidTitleProgressBar* androidTitleProgressBar;
 
-: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
+public: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
 
     public: void run();
 
@@ -90,13 +91,13 @@ class TitleProgressBarSetProgressRunnable
 
             
 //inner= member=true isStatic=
-class TitleProgressBarPortionSetProgressRunnable
-            : public Object
+public: class TitleProgressBarPortionSetProgressRunnable
+            : public virtual Object
         , public Runnable {
 
     private: AndroidTitleProgressBar* androidTitleProgressBar;
 
-: TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
+public: TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
 
     public: void run();
 
@@ -104,13 +105,13 @@ class TitleProgressBarPortionSetProgressRunnable
 
             
 //inner= member=true isStatic=
-class ShowTitleProgressBarRunnable
-            : public Object
+public: class ShowTitleProgressBarRunnable
+            : public virtual Object
         , public Runnable {
 
     private: AndroidTitleProgressBar* androidTitleProgressBar;
 
-: ShowTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
+public: ShowTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
 
     public: void run();
 
@@ -118,32 +119,32 @@ class ShowTitleProgressBarRunnable
 
             
 //inner= member=true isStatic=
-class DismissTitleProgressBarRunnable
-            : public Object
+public: class DismissTitleProgressBarRunnable
+            : public virtual Object
         , public Runnable {
 
     private: AndroidTitleProgressBar* androidTitleProgressBar;
 
-: DismissTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
+public: DismissTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar);
 
     public: void run();
 
 };
 
             
-    private: showTitleProgressBarRunnable = new ShowTitleProgressBarRunnable(this);
+    private: ShowTitleProgressBarRunnable* showTitleProgressBarRunnable;
 
-    private: dismissTitleProgressBarRunnable = new DismissTitleProgressBarRunnable(this);
+    private: DismissTitleProgressBarRunnable* dismissTitleProgressBarRunnable;
 
-    private: progressDialogPortionSetProgressRunnable = new TitleProgressBarPortionSetProgressRunnable(this);
+    private: TitleProgressBarPortionSetProgressRunnable* progressDialogPortionSetProgressRunnable;
 
-    private: progressDialogSetProgressRunnable = new TitleProgressBarSetProgressRunnable(this);
+    private: TitleProgressBarSetProgressRunnable* progressDialogSetProgressRunnable;
 
-    private: ProgressActivityInterface* progressActivity = NullProgressActivity::NULL_PROGRESS_ACTIVITY;
+    private: ProgressActivityInterface* progressActivity;
 
     private: int32_t portion = 0;
 
-protected: AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
+/*protected*/ public: AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
     public: void init(ProgressActivityInterface* activity);
 
@@ -157,7 +158,7 @@ protected: AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasi
 
     public: void addNormalPortion(int32_t value, std::string text);
 
-    protected: void setValue(int32_t value);
+    /*protected*/ public: void setValue(int32_t value);
 
     public: void waitUntilDisplayed();
 
@@ -169,3 +170,31 @@ protected: AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasi
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/android/activity/NullProgressActivity.h>)
+#include <org/allbinary/android/activity/NullProgressActivity.h>
+#endif
+#if __has_include(<org/allbinary/android/activity/ProgressActivityInterface.h>)
+#include <org/allbinary/android/activity/ProgressActivityInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h")
+#include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
+#endif
+
+        #endif
+    

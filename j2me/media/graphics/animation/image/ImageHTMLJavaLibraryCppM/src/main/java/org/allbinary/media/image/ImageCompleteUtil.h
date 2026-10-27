@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,24 +38,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <org/allbinary/util/HashtableUtil.h>
-
-      
-#include <org/microemu/device/playn/PlaynImage.h>
-
-      
+class Image;
+class GameFeatureImageCacheFactory;
+class PreLogUtil;
+class TimeDelayHelper;
+class HashtableUtil;
+class PlaynImage;
 
 
 
@@ -69,19 +62,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/Hashtable.h"
+        class Hashtable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageCompleteUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageCompleteUtil* instance() { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
+    private: static ImageCompleteUtil* instance_owner();
+    private: static ImageCompleteUtil* instance;
 
     public: static ImageCompleteUtil* getInstance();
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(18000);
 
-    private: TimeDelayHelper* allTimeDelayHelper = new TimeDelayHelper(120000);
+            
+    public: ImageCompleteUtil();
+        
+    private: TimeDelayHelper* timeDelayHelper;
+
+    private: TimeDelayHelper* allTimeDelayHelper;
 
                 //@Throws(Exception.constructor)
             
@@ -105,3 +107,31 @@ class ImageCompleteUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/image/GameFeatureImageCacheFactory.h>)
+#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/util/HashtableUtil.h>)
+#include <org/allbinary/util/HashtableUtil.h>
+#endif
+#if __has_include(<org/microemu/device/playn/PlaynImage.h>)
+#include <org/microemu/device/playn/PlaynImage.h>
+#endif
+#if __has_include("org/allbinary/media/image/Hashtable.h")
+#include "org/allbinary/media/image/Hashtable.h"
+#endif
+
+        #endif
+    

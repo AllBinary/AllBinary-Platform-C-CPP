@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_SPECIALITEMSTAG_CPP
+        #define ADMIN_TAGS_SPECIALITEMSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/SpecialItemsTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class SpecialItemsTag: public TableTag {
 
-public: SpecialItemsTag(){
+SpecialItemsTag::SpecialItemsTag(){
 this->setTagHelperFactory(new SpecialItemsHelperFactory());
     
 this->setTagRequestHelperFactory(new SpecialItemsRequestHelperFactory());
@@ -60,7 +69,6 @@ this->setTagRequestHelperFactory(new SpecialItemsRequestHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_SPECIALITEMSTAG_CPP

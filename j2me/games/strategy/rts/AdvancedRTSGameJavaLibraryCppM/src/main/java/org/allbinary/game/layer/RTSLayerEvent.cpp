@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSLayerEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,8 @@
         #include "org/allbinary/game/layer/NullPathFindingLayer.h"
 #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
-class RTSLayerEvent: public AllBinaryEventObject {
 
-    private: PathFindingLayerInterface* rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-
-public: RTSLayerEvent(PathFindingLayerInterface* rtsLayer) : AllBinaryEventObject(rtsLayer){
+RTSLayerEvent::RTSLayerEvent(PathFindingLayerInterface* rtsLayer) : AllBinaryEventObject(rtsLayer), rtsLayer(NullPathFindingLayer::NULL_PATH_FINDING_LAYER){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,7 +71,7 @@ public: RTSLayerEvent(PathFindingLayerInterface* rtsLayer) : AllBinaryEventObjec
 }
 
 
-    public: std::string toString(){
+    auto RTSLayerEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -83,7 +90,7 @@ stringBuffer->append(this->getRtsLayer()->toString());
 }
 
 
-    public: PathFindingLayerInterface* getRtsLayer(){
+    auto RTSLayerEvent::getRtsLayer() -> PathFindingLayerInterface*{
 
 
 
@@ -93,13 +100,12 @@ stringBuffer->append(this->getRtsLayer()->toString());
 }
 
 
-    public: void setRtsLayer(PathFindingLayerInterface* rtsLayer){
+    auto RTSLayerEvent::setRtsLayer(PathFindingLayerInterface* rtsLayer) -> void{
 this->rtsLayer= rtsLayer;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYEREVENT_CPP

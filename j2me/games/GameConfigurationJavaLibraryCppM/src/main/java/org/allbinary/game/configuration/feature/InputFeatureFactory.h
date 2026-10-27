@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INPUTFEATUREFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INPUTFEATUREFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,28 +52,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/feature/InputFeature.h"
-#include "org/allbinary/game/configuration/feature/Features.h"
+        class InputFeature;
+class Features;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputFeatureFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static InputFeatureFactory* instance() { static std::unique_ptr<InputFeatureFactory> value(new InputFeatureFactory()); return value.get(); }
+    private: static InputFeatureFactory* instance_owner();
+    private: static InputFeatureFactory* instance;
 
     public: static InputFeatureFactory* getInstance();
 
 private: InputFeatureFactory();
 
-    public: InputFeature* REMOVE_DUPLICATE_KEY_PRESSES = new InputFeature("Remove Duplicate Key Presses");
+    public: InputFeature* REMOVE_DUPLICATE_KEY_PRESSES;
 
-    public: InputFeature* INPUT_MAPPING = new InputFeature("Input Mapping");
+    public: InputFeature* INPUT_MAPPING;
 
-    public: InputFeature* MULTI_KEY_PRESS = new InputFeature("Multi Key Press");
+    public: InputFeature* MULTI_KEY_PRESS;
 
-    public: InputFeature* SINGLE_KEY_REPEAT_PRESS = new InputFeature("Single Key Repeat Press");
+    public: InputFeature* SINGLE_KEY_REPEAT_PRESS;
 
-    public: InputFeature* SINGLE_KEY_PRESS = new InputFeature("Single Key Press");
+    public: InputFeature* SINGLE_KEY_PRESS;
 
     public: bool isSingleKeyProcessing();
 
@@ -78,3 +88,16 @@ private: InputFeatureFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INPUTFEATUREFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INPUTFEATUREFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INPUTFEATUREFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/configuration/feature/InputFeature.h")
+#include "org/allbinary/game/configuration/feature/InputFeature.h"
+#endif
+#if __has_include("org/allbinary/game/configuration/feature/Features.h")
+#include "org/allbinary/game/configuration/feature/Features.h"
+#endif
+
+        #endif
+    

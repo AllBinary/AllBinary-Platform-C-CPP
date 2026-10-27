@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHUTIL_CPP
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/inventory/InventorySearchUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -145,33 +155,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/inventory/InventoryColumnUtil.h"
 
-class InventorySearchUtil
-            : public Object
-         {
 
-    private: static InventorySearchUtil* instance() { static std::unique_ptr<InventorySearchUtil> value(new InventorySearchUtil()); return value.get(); }
+InventorySearchUtil::InventorySearchUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonPhoneStrings(CommonPhoneStrings::getInstance()), basicItemData(BasicItemData::getInstance()) {
+        }
+        auto InventorySearchUtil::instance_owner() -> InventorySearchUtil* { static std::unique_ptr<InventorySearchUtil> value(new InventorySearchUtil()); return value.get(); }
+InventorySearchUtil* InventorySearchUtil::instance = InventorySearchUtil::instance_owner();
 
-    public: static InventorySearchUtil* getInstance(){
+    auto InventorySearchUtil::getInstance() -> InventorySearchUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventorySearchUtil::instance();
+                        return InventorySearchUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getBasicItemIdColumn(SearchRequest* searchRequest){
+    auto InventorySearchUtil::getBasicItemIdColumn(SearchRequest* searchRequest) -> BasicArrayList*{
 
     InventoryEntity* inventoryEntityInterface = InventoryEntityFactory::getInstance()->getInventoryEntityInstance();;
     
@@ -185,10 +187,10 @@ class InventorySearchUtil
     BasicArrayList* column = inventorySearchUtil->getColumnWhereLike(inventoryEntityInterface, storeFrontInterface->getCategoryPath(), basicItemData->ID);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Number Of Items Found: " +column->size(), this, "search");
+                                    this->logUtil->putF(JavaString::valueOf("Number Of Items Found: ") +JavaString::valueOf(column->size()), this, "search");
     
 
                                     }
@@ -217,10 +219,10 @@ column->addAllList(substoreIdColumn);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Number Of Items Found Including SubStores: " +column->size(), this, "search");
+                                    this->logUtil->putF(JavaString::valueOf("Number Of Items Found Including SubStores: ") +JavaString::valueOf(column->size()), this, "search");
     
 
                                     }
@@ -236,7 +238,7 @@ column->addAllList(substoreIdColumn);
 
                 //@Throws(Exception.constructor)
             
-    private: std::string getNoResults(TransformDocumentInterface* viewDocumentInterface, Node* inventoryNode){
+    auto InventorySearchUtil::getNoResults(TransformDocumentInterface* viewDocumentInterface, Node* inventoryNode) -> std::string{
 inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_PAGES, this->commonPhoneStrings->ZERO));
     
 inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface->getDoc(), SearchData::TOTAL_NUMBER_ITEMS, this->commonPhoneStrings->ZERO));
@@ -245,10 +247,10 @@ inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterf
     std::string success = XmlDocumentHelper::toString(viewDocumentInterface->getDoc());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil->putF("No Results Xml: " +success, this, "search");
+                                    this->logUtil->putF(JavaString::valueOf("No Results Xml: ") +JavaString::valueOf(success), this, "search");
     
 
                                     }
@@ -262,7 +264,7 @@ inventoryNode->appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterf
 }
 
 
-    public: std::vector<std::string> search(AbeClientInformationInterface* abeClientInformation, SearchRequest* searchRequest, BasicArrayList* column){
+    auto InventorySearchUtil::search(AbeClientInformationInterface* abeClientInformation, SearchRequest* searchRequest, BasicArrayList* column) -> std::vector<std::string>{
 
         try {
             
@@ -517,9 +519,9 @@ savedPagesInRange++;
                                     
     Document* tempDocument = documents[index];;
     
-inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, (int32_t(lastPage +1)).toString()));
+inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, (int32_t(lastPage +1)).toString()));
     
-inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, (int32_t(numberOfResults)).toString()));
+inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, (int32_t(numberOfResults)).toString()));
     
 
 
@@ -528,7 +530,7 @@ inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocumen
                         for (
     int32_t pageIndex = 0;pageIndex <= lastPage; pageIndex++)
         {
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(searchRequest->getFileBaseName());
     
@@ -545,13 +547,13 @@ stringBuffer->append(searchRequest->getFileBaseName());
 
                                     }
                                 
-inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)stringBuffer->toString()));
+inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)stringBuffer->toString()));
     
 
                                     }
                                 
                         else {
-                            inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)SearchData::SEARCH));
+                            inventoryNodes[index]->appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)SearchData::SEARCH));
     
 
                         }
@@ -604,7 +606,7 @@ productListingPages[0]= (new StoreTransformer(abeClientInformation, new Transfor
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRODUCTSEARCHLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "search", &e);
@@ -623,7 +625,6 @@ productListingPages[0]= (new StoreTransformer(abeClientInformation, new Transfor
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHUTIL_CPP

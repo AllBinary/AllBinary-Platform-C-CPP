@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_ALLBINARYMIDLETVIEWINTERFACE_CPP
+        #define ORG_ALLBINARY_VIEW_ALLBINARYMIDLETVIEWINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/AllBinaryMidletViewInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,15 +49,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/EmulatorViewInterface.h"
 
-class AllBinaryMidletViewInterface: public MidletCompositeInterface, public EmulatorViewInterface, public DemoGameMidletEventListener, public GameInitializedListenerInterface {
+//Interface - declared in the header
 
-    public: virtual void onResume() = 0;
 
-    public: virtual void onPause() = 0;
 
-    public: virtual void onDestroy() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_VIEW_ALLBINARYMIDLETVIEWINTERFACE_CPP

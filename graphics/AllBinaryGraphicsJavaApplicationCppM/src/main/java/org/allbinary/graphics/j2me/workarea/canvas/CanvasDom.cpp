@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -96,43 +106,8 @@
 #include "org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h"
 #include "org/allbinary/graphics/j2me/workarea/canvas/Document.h"
 
-class CanvasDom
-            : public Object
-         {
 
-    public: static inline const std::string FRAME = "frame";
-
-    public: static inline const std::string ROTATE = "rotate";
-
-    public: static inline const std::string SIZE = "size";
-
-    public: static inline const std::string X = "X";
-
-    public: static inline const std::string Y = "Y";
-
-    public: static inline const std::string ZOOM = "zoom";
-
-    public: static inline const std::string GRID = "grid";
-
-    public: static inline const std::string ENABLED = "enabled";
-
-    public: static inline const std::string POSSIBLE = "possible";
-
-    public: static inline const std::string GRAPHICITEMS = "graphicItems";
-
-    public: static inline const std::string REAL_SIZE = "realSize";
-
-    private: GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();
-
-    private: HashMap<Object*, Object*>* graphicItemHashMap;
-
-    private: double angle;
-
-    private: IntegerDimension* dimension;
-
-    private: Grid* grid;
-
-public: CanvasDom(Node* canvasNode){
+CanvasDom::CanvasDom(Node* canvasNode) : graphicsStrings(GraphicsStrings::getInstance()){
 this->grid= new Grid();
     
 this->grid->grid= PointFactory::getInstance()->createXY(0, 0);
@@ -253,7 +228,7 @@ this->grid->isGridPossible= ().valueOf();
                             
 
 
-                            throw new Exception("Frame Element Not Found but Found: " +name);
+                            throw Exception(JavaString::valueOf("Frame Element Not Found but Found: ") +JavaString::valueOf(name));
                     
 
                         }
@@ -261,7 +236,7 @@ this->grid->isGridPossible= ().valueOf();
 }
 
 
-public: CanvasDom(CanvasJPanel* canvasJPanel){
+CanvasDom::CanvasDom(CanvasJPanel* canvasJPanel) : graphicsStrings(GraphicsStrings::getInstance()){
 this->angle= canvasJPanel->getAngle();
     
 this->graphicItemHashMap= canvasJPanel->getGraphicItemHashMap();
@@ -275,7 +250,7 @@ this->angle= canvasJPanel->getAngle();
 }
 
 
-    public: double getAngle(){
+    auto CanvasDom::getAngle() -> double{
 
 
 
@@ -285,7 +260,7 @@ this->angle= canvasJPanel->getAngle();
 }
 
 
-    public: HashMap<Object*, Object*>* getGraphicItemHashMap(){
+    auto CanvasDom::getGraphicItemHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -295,7 +270,7 @@ this->angle= canvasJPanel->getAngle();
 }
 
 
-    public: void setAngle(double angle){
+    auto CanvasDom::setAngle(double angle) -> void{
 this->angle= angle;
     
 }
@@ -303,7 +278,7 @@ this->angle= angle;
 
                 //@Throws(Exception.constructor)
             
-    public: void setWorkArea(int32_t x, int32_t y){
+    auto CanvasDom::setWorkArea(int32_t x, int32_t y) -> void{
 this->setDimension(new IntegerDimension(x, y));
     
 }
@@ -311,13 +286,13 @@ this->setDimension(new IntegerDimension(x, y));
 
                 //@Throws(Exception.constructor)
             
-    public: void setGrid(int32_t gridX, int32_t gridY){
+    auto CanvasDom::setGrid(int32_t gridX, int32_t gridY) -> void{
 this->grid->grid= PointFactory::getInstance()->createXY(gridX, gridY);
     
 }
 
 
-    private: Node* getPointNode(GPoint* point, std::string pointName){
+    auto CanvasDom::getPointNode(GPoint* point, std::string pointName) -> Node*{
 
     org::w3c::dom::Document* document = WorkAreaJPanel::getDocument();;
     
@@ -355,7 +330,7 @@ pointNode->appendChild(yNode);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toDom(){
+    auto CanvasDom::toDom() -> Node*{
 
     org::w3c::dom::Document* document = WorkAreaJPanel::getDocument();;
     
@@ -495,7 +470,7 @@ frameNode->appendChild(graphicItemNode);
 }
 
 
-    public: IntegerDimension* getDimension(){
+    auto CanvasDom::getDimension() -> IntegerDimension*{
 
 
 
@@ -505,13 +480,13 @@ frameNode->appendChild(graphicItemNode);
 }
 
 
-    public: void setDimension(IntegerDimension* dimension){
+    auto CanvasDom::setDimension(IntegerDimension* dimension) -> void{
 this->dimension= dimension;
     
 }
 
 
-    public: Grid* getGrid(){
+    auto CanvasDom::getGrid() -> Grid*{
 
 
 
@@ -521,7 +496,6 @@ this->dimension= dimension;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_CPP

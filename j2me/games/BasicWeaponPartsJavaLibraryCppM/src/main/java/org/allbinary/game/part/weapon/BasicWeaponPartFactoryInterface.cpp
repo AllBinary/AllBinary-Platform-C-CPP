@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/weapon/BasicWeaponPartFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
 
-class BasicWeaponPartFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicWeaponPart* getInstance() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTFACTORYINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/input/automation/module/DefaultListModelHelper.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class DefaultListModelHelper;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -61,28 +60,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JPanel.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActions.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JDialog.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JLabel.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JButton.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JTextField.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JScrollPane.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JList.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/Dimension.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionListener.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionEvent.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GroupLayout.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/Short.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ListSelectionListener.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ListSelectionEvent.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h"
+class GenericProfileActions;
+class GenericProfileActionJPanel;
+class JDialog;
+class JLabel;
+class JButton;
+class JTextField;
+class JScrollPane;
+class JList;
+class Dimension;
+class ActionListener;
+class ActionEvent;
+class GroupLayout;
+class Short;
+class ListSelectionListener;
+class ListSelectionEvent;
+class GenericProfileAction;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GenericProfileActionsJPanel: public javax::swing::JPanel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     private: GenericProfileActions* genericProfileActions;
 
@@ -146,3 +149,70 @@ public: GenericProfileActionsJPanel();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/module/DefaultListModelHelper.h>)
+#include <org/allbinary/input/automation/module/DefaultListModelHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/JPanel.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JPanel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActions.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActions.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/JDialog.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JDialog.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/JLabel.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JLabel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/JButton.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JButton.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/JTextField.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JTextField.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/JScrollPane.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JScrollPane.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/JList.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/JList.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/Dimension.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/Dimension.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionListener.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionListener.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionEvent.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ActionEvent.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/GroupLayout.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GroupLayout.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/Short.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/Short.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/ListSelectionListener.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ListSelectionListener.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/ListSelectionEvent.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ListSelectionEvent.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h"
+#endif
+
+        #endif
+    

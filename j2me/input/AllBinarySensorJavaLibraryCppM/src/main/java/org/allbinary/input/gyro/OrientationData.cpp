@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/OrientationData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrientationData
-            : public Object
-         {
+auto OrientationData::SINGLETON_owner() -> OrientationData* { static std::unique_ptr<OrientationData> value(new OrientationData()); return value.get(); }
+OrientationData* OrientationData::SINGLETON = OrientationData::SINGLETON_owner();
 
-    private: static OrientationData* SINGLETON() { static std::unique_ptr<OrientationData> value(new OrientationData()); return value.get(); }
+OrientationData::OrientationData(){
+}
 
-    public: static OrientationData* getInstance(){
+
+    auto OrientationData::getInstance() -> OrientationData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrientationData::SINGLETON();
+                        return OrientationData::SINGLETON;
     
 }
 
 
-private: OrientationData(){
-}
 
 
-    public: const std::string ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input";
-
-    public: const std::string ORIENTATION_TYPE = "Orientation Type";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDADJUSTEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDADJUSTEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/RectangleFilledAdjustedAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,13 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/vector/RectangleFilledAnimation.h"
 
-class RectangleFilledAdjustedAnimation: public RectangleFilledAnimation, public ColorCompositeInterface {
 
-    private: int32_t offsetX;
-
-    private: int32_t offsetY;
-
-public: RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor) : RectangleFilledAnimation(width, height, basicColor){
+RectangleFilledAdjustedAnimation::RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor* basicColor) : RectangleFilledAnimation(width, height, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,31 +80,30 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void nextFrame(){
+    auto RectangleFilledAdjustedAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    auto RectangleFilledAdjustedAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
-super.paintXY(graphics, x +this->offsetX, y +this->offsetY);
+RectangleFilledAnimation::paintXY(graphics, x +this->offsetX, y +this->offsetY);
     
 }
 
 
-    public: void setOffsetX(int32_t offsetX){
+    auto RectangleFilledAdjustedAnimation::setOffsetX(int32_t offsetX) -> void{
 this->offsetX= offsetX;
     
 }
 
 
-    public: void setOffsetY(int32_t offsetY){
+    auto RectangleFilledAdjustedAnimation::setOffsetY(int32_t offsetY) -> void{
 this->offsetY= offsetY;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDADJUSTEDANIMATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_INSERTTHEMEVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_INSERTTHEMEVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/style/theme/InsertThemeValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,13 +92,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/includes/style/theme/ThemeCustomizerView.h"
 
-class InsertThemeValidationView: public ThemeCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HashMap<Object*, Object*>* requestHashMap;
-
-public: InsertThemeValidationView(TransformInfoInterface* transformInfoInterface) : ThemeCustomizerView(transformInfoInterface){
+InsertThemeValidationView::InsertThemeValidationView(TransformInfoInterface* transformInfoInterface) : ThemeCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -96,10 +101,10 @@ public: InsertThemeValidationView(TransformInfoInterface* transformInfoInterface
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.CONSTRUCTOR, this, "started");
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "started");
     
 
                                     }
@@ -107,10 +112,10 @@ public: InsertThemeValidationView(TransformInfoInterface* transformInfoInterface
 this->requestHashMap= (new NameSpaceRequestParams(this->getPageContext()))->toHashMap();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.CONSTRUCTOR, this, "begin loading theme");
+                                    this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "begin loading theme");
     
 
                                     }
@@ -120,7 +125,7 @@ this->requestHashMap= (new NameSpaceRequestParams(this->getPageContext()))->toHa
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto InsertThemeValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -130,17 +135,17 @@ this->requestHashMap= (new NameSpaceRequestParams(this->getPageContext()))->toHa
 }
 
 
-    public: bool isValid(){
+    auto InsertThemeValidationView::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started Validation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started Validation", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -159,7 +164,7 @@ this->requestHashMap= (new NameSpaceRequestParams(this->getPageContext()))->toHa
                                 
 this->validationInterface= themeValidation->getCssStyleValidation();
     
-isValid= this->validationInterface.isValid();
+isValid= this->validationInterface->isValid();
     
 
                         if(isValid == Boolean::TRUE)
@@ -181,10 +186,10 @@ isValid= this->validationInterface.isValid();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -200,7 +205,7 @@ isValid= this->validationInterface.isValid();
 }
 
 
-    public: std::string validationInfo(){
+    auto InsertThemeValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -217,7 +222,7 @@ isValid= this->validationInterface.isValid();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -236,7 +241,7 @@ isValid= this->validationInterface.isValid();
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto InsertThemeValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -246,7 +251,7 @@ isValid= this->validationInterface.isValid();
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto InsertThemeValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -258,7 +263,7 @@ isValid= this->validationInterface.isValid();
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto InsertThemeValidationView::view() -> std::string{
 
         try {
             
@@ -272,10 +277,10 @@ isValid= this->validationInterface.isValid();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -290,7 +295,6 @@ isValid= this->validationInterface.isValid();
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_INSERTTHEMEVALIDATIONVIEW_CPP

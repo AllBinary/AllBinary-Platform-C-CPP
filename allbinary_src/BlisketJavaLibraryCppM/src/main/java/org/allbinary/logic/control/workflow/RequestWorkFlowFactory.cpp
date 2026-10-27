@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUESTWORKFLOWFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUESTWORKFLOWFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/workflow/RequestWorkFlowFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,13 +92,14 @@
         #include "org/allbinary/logic/control/workflow/WorkFlowInterface.h"
 #include "org/allbinary/logic/control/workflow/WorkFlowData.h"
 
-class RequestWorkFlowFactory
-            : public Object
-         {
+
+RequestWorkFlowFactory::RequestWorkFlowFactory(){
+}
+
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: static WorkFlowInterface* getInstance(ServletRequest* request, ServletResponse* response, ServletConfig* servletConfig, ServletContext* servletContext){
+    auto RequestWorkFlowFactory::getInstance(ServletRequest* request, ServletResponse* response, ServletConfig* servletConfig, ServletContext* servletContext) -> WorkFlowInterface*{
 
     HttpServletRequest* httpRequest = dynamic_cast<HttpServletRequest*>(request);;
     
@@ -115,7 +126,7 @@ class RequestWorkFlowFactory
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: static WorkFlowInterface* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto RequestWorkFlowFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> WorkFlowInterface*{
 
     std::string workFlowName = pageContext->getRequest()->getParameter(WorkFlowData::getInstance()->NAME);;
     
@@ -134,11 +145,6 @@ class RequestWorkFlowFactory
 }
 
 
-private: RequestWorkFlowFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUESTWORKFLOWFACTORY_CPP

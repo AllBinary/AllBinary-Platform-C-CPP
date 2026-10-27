@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageRotationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,31 +82,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/ImageSwtRotationUtil.h"
 
-class ImageRotationUtil
-            : public Object
-         {
+auto ImageRotationUtil::instance_owner() -> ImageRotationUtil* { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
+ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_owner();
 
-    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
-
-    public: static ImageRotationUtil* getInstance(){
+    auto ImageRotationUtil::getInstance() -> ImageRotationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil::instance();
+                        return ImageRotationUtil::instance;
     
 }
 
 
-    private: ImageSwtRotationUtil* imageSwtRotationUtil = ImageSwtRotationUtil::getInstance();
-
-private: ImageRotationUtil(){
+ImageRotationUtil::ImageRotationUtil() : imageSwtRotationUtil(ImageSwtRotationUtil::getInstance()), features(Features::getInstance()){
 }
 
 
-    private: Features* features = Features::getInstance();
-
-    public: void rotateImage(Image* originalImage, Image* image, int32_t totalAngle){
+    auto ImageRotationUtil::rotateImage(Image* originalImage, Image* image, int32_t totalAngle) -> void{
 
     Image* originalImage2 = originalImage;;
     
@@ -111,7 +114,7 @@ private: ImageRotationUtil(){
                                     
     OpenGLESImage* openGLESImage = (dynamic_cast<OpenGLESImage*>(image));;
     
-openGLESImage->openGLESImageProperties.angle= totalAngle;
+openGLESImage->openGLESImageProperties->angle= totalAngle;
     
 
 
@@ -123,7 +126,7 @@ openGLESImage->openGLESImageProperties.angle= totalAngle;
                                     }
                                 
                         else {
-                            PreLogUtil::put("OpenGL but image is: " +image +" type: " +image->getType(), this, "rotateImage");
+                            PreLogUtil::put(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("OpenGL but image is: ") +JavaString::valueOf(image)) +JavaString::valueOf(" type: ")) +JavaString::valueOf(image->getType()), this, "rotateImage");
     
 
                         }
@@ -161,7 +164,7 @@ this->imageSwtRotationUtil->rotateImage(originalSwtImage, copySwtImage, gc, tota
                                     }
                                 
                         else {
-                            PreLogUtil::put("No rotation for: " +image->toString(), this, "rotateImage");
+                            PreLogUtil::put(JavaString::valueOf("No rotation for: ") +JavaString::valueOf(image->toString()), this, "rotateImage");
     
 
                         }
@@ -171,7 +174,7 @@ this->imageSwtRotationUtil->rotateImage(originalSwtImage, copySwtImage, gc, tota
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
+    auto ImageRotationUtil::createRotatedImage(Image* originalImage, int32_t rotationInDegrees) -> Image*{
 
 
 
@@ -181,7 +184,6 @@ this->imageSwtRotationUtil->rotateImage(originalSwtImage, copySwtImage, gc, tota
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP

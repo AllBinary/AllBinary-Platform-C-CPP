@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_GUILOG_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_GUILOG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/GuiLog.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,32 +75,25 @@
 #include "org/allbinary/logic/communication/log/JTextArea.h"
 #include "org/allbinary/logic/communication/log/PreLogUtil.h"
 
-class GuiLog
-            : public Object
-         {
+auto GuiLog::instance_owner() -> GuiLog* { static std::unique_ptr<GuiLog> value(new GuiLog()); return value.get(); }
+GuiLog* GuiLog::instance = GuiLog::instance_owner();
 
-    private: static GuiLog* instance() { static std::unique_ptr<GuiLog> value(new GuiLog()); return value.get(); }
-
-    public: static GuiLog* getInstance(){
+    auto GuiLog::getInstance() -> GuiLog*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GuiLog::instance();
+                        return GuiLog::instance;
     
 }
 
 
-    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-private: GuiLog(){
+GuiLog::GuiLog() : logFormatUtil(LogFormatUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void showDialog(std::string msg){
+    auto GuiLog::showDialog(std::string msg) -> void{
 
     JDialog* error = new JDialog();;
     
@@ -140,7 +143,7 @@ error->show();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string put(std::string specialMessage, Object* anyType, std::string functionName){
+    auto GuiLog::put(std::string specialMessage, Object* anyType, std::string functionName) -> std::string{
 
 
 
@@ -152,7 +155,7 @@ error->show();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string put(std::string specialMessage, Object* anyType, std::string functionName, Exception* exception){
+    auto GuiLog::put(std::string specialMessage, Object* anyType, std::string functionName, Exception* exception) -> std::string{
 
         try {
             
@@ -186,7 +189,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, "put", &e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string put(std::string specialMessage, std::string className, std::string functionName){
+    auto GuiLog::put(std::string specialMessage, std::string className, std::string functionName) -> std::string{
 
 
 
@@ -198,7 +201,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, "put", &e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string put(std::string specialMessage, std::string className, std::string functionName, Exception* exception){
+    auto GuiLog::put(std::string specialMessage, std::string className, std::string functionName, Exception* exception) -> std::string{
 
         try {
             
@@ -231,7 +234,6 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, "put", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_GUILOG_CPP

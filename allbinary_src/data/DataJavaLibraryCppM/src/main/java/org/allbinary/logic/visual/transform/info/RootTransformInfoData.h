@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RootTransformInfoData
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string NAME = "ROOT_TRANSFORM_INFO_NAME";
@@ -62,3 +71,10 @@ private: RootTransformInfoData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_ROOTTRANSFORMINFODATA_H_COMPLETE
+        
+        #endif
+    

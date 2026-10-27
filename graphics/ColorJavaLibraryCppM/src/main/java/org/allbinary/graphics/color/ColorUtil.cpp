@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,23 +61,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/color/Color.h"
 
-class ColorUtil
-            : public Object
-         {
 
-    private: static ColorUtil* instance() { static std::unique_ptr<ColorUtil> value(new ColorUtil()); return value.get(); }
+ColorUtil::ColorUtil() {
+        }
+        auto ColorUtil::instance_owner() -> ColorUtil* { static std::unique_ptr<ColorUtil> value(new ColorUtil()); return value.get(); }
+ColorUtil* ColorUtil::instance = ColorUtil::instance_owner();
 
-    public: static ColorUtil* getInstance(){
+    auto ColorUtil::getInstance() -> ColorUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorUtil::instance();
+                        return ColorUtil::instance;
     
 }
 
 
-    public: bool isGreyishOrWhiteLike(Color* color){
+    auto ColorUtil::isGreyishOrWhiteLike(Color* color) -> bool{
 
                         if(Math::abs(color->getRed() -color->getGreen()) > 20 || Math::abs(color->getRed() -color->getBlue()) > 20 || Math::abs(color->getGreen() -color->getBlue()) > 20)
                         
@@ -90,7 +100,7 @@ class ColorUtil
 }
 
 
-    public: bool isDark(Color* color){
+    auto ColorUtil::isDark(Color* color) -> bool{
 
                         if(color->getRed() < 0x77 && color->getRed() < 0x77 && color->getRed() < 0x77)
                         
@@ -113,7 +123,6 @@ class ColorUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORUTIL_CPP

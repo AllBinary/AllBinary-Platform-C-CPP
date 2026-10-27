@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_CPP
+        #define ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/osgi/framework/NullServiceReferenceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,25 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/osgi/framework/NullServiceReference.h"
 
-class NullServiceReferenceFactory
-            : public Object
-         {
 
-    private: static NullServiceReferenceFactory* instance() { static std::unique_ptr<NullServiceReferenceFactory> value(new NullServiceReferenceFactory()); return value.get(); }
+NullServiceReferenceFactory::NullServiceReferenceFactory() : NULL_SERVICE_REFERENCE(new NullServiceReference()) {
+        }
+        auto NullServiceReferenceFactory::instance_owner() -> NullServiceReferenceFactory* { static std::unique_ptr<NullServiceReferenceFactory> value(new NullServiceReferenceFactory()); return value.get(); }
+NullServiceReferenceFactory* NullServiceReferenceFactory::instance = NullServiceReferenceFactory::instance_owner();
 
-    public: static NullServiceReferenceFactory* getInstance(){
+    auto NullServiceReferenceFactory::getInstance() -> NullServiceReferenceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullServiceReferenceFactory::instance();
+                        return NullServiceReferenceFactory::instance;
     
 }
 
 
-    public: NullServiceReference* NULL_SERVICE_REFERENCE = new NullServiceReference();
 
-};
 
-            
-
+        #endif //ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_CPP

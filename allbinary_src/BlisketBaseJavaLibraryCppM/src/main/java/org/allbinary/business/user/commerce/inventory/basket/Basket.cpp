@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/basket/Basket.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,17 +89,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h"
 
-class Basket
-            : public Object
-        , public BasketInterface, public Serializable {
 
-    private: HashMap<Object*, Object*>* items = StdUtil::getInstance()->createHashMap();
-
-public: Basket(){
+Basket::Basket() : items(StdUtil::getInstance()->createHashMap()){
 }
 
 
-    public: void addItem(std::string id, std::string num){
+    auto Basket::addItem(std::string id, std::string num) -> void{
 
                         if(this->items->containsKey(id))
                         
@@ -120,13 +125,13 @@ this->items->put(id, newNumInt.toString());
 }
 
 
-    public: void removeItem(std::string id){
+    auto Basket::removeItem(std::string id) -> void{
 this->items->remove(id);
     
 }
 
 
-    public: void adjustItem(std::string id, std::string num){
+    auto Basket::adjustItem(std::string id, std::string num) -> void{
 
                         if(Integer.valueOf(num)->intValue() > 0)
                         
@@ -145,7 +150,7 @@ this->items->remove(id);
 }
 
 
-    public: std::string getTotalWeight(){
+    auto Basket::getTotalWeight() -> std::string{
 
     HashMap<Object*, Object*>* itemsAndNumberInBasket = this->getItems();;
     
@@ -200,7 +205,7 @@ totalWeight->add(weightFloat.toString());
 }
 
 
-    public: int32_t getNumberOfItems(){
+    auto Basket::getNumberOfItems() -> int32_t{
 
 
 
@@ -210,7 +215,7 @@ totalWeight->add(weightFloat.toString());
 }
 
 
-    public: Set* getIds(){
+    auto Basket::getIds() -> Set*{
 
     Set* set = this->items->keySet();;
     
@@ -223,7 +228,7 @@ totalWeight->add(weightFloat.toString());
 }
 
 
-    public: HashMap<Object*, Object*>* getItems(){
+    auto Basket::getItems() -> HashMap<Object*, Object*>*{
 
 
 
@@ -233,7 +238,7 @@ totalWeight->add(weightFloat.toString());
 }
 
 
-    public: int32_t getNumberOf(std::string product){
+    auto Basket::getNumberOf(std::string product) -> int32_t{
 
     std::string numStr = this->items->get(product);;
     
@@ -248,7 +253,7 @@ totalWeight->add(weightFloat.toString());
 
                 //@Throws(MoneyException.constructor)
             
-    public: Money* getSubTotal(){
+    auto Basket::getSubTotal() -> Money*{
 
     HashMap<Object*, Object*>* itemsAndNumberInBasket = this->getItems();;
     
@@ -308,7 +313,6 @@ subTotal->add(productTotal->toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_CPP

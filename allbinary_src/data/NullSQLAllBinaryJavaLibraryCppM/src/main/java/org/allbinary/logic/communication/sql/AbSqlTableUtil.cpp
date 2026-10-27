@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/sql/AbSqlTableUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,34 +72,24 @@
         #include "org/allbinary/logic/communication/sql/SqlStrings.h"
 #include "org/allbinary/logic/communication/sql/AbSqlTable.h"
 
-class AbSqlTableUtil
-            : public Object
-         {
 
-    private: static AbSqlTableUtil* instance() { static std::unique_ptr<AbSqlTableUtil> value(new AbSqlTableUtil()); return value.get(); }
+AbSqlTableUtil::AbSqlTableUtil() : stringUtil(StringUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), sqlStrings(SqlStrings::getInstance()) {
+        }
+        auto AbSqlTableUtil::instance_owner() -> AbSqlTableUtil* { static std::unique_ptr<AbSqlTableUtil> value(new AbSqlTableUtil()); return value.get(); }
+AbSqlTableUtil* AbSqlTableUtil::instance = AbSqlTableUtil::instance_owner();
 
-    public: static AbSqlTableUtil* getInstance(){
+    auto AbSqlTableUtil::getInstance() -> AbSqlTableUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbSqlTableUtil::instance();
+                        return AbSqlTableUtil::instance;
     
 }
 
-
-    private: const std::string TABLE_LABEL = "Table: ";
-
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string backupTable(AbSqlTable* abSqlTable){
+    auto AbSqlTableUtil::backupTable(AbSqlTable* abSqlTable) -> std::string{
 
     std::string tableName = abSqlTable->getTableName();;
     
@@ -97,13 +97,13 @@ class AbSqlTableUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->TABLE_LABEL +tableName +" Backup Failed";
+                        return JavaString::valueOf(JavaString::valueOf(this->TABLE_LABEL) +JavaString::valueOf(tableName)) +JavaString::valueOf(" Backup Failed");
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: std::string restoreTable(AbSqlTable* abSqlTable, Portion* portion){
+    auto AbSqlTableUtil::restoreTable(AbSqlTable* abSqlTable, Portion* portion) -> std::string{
 
     std::string tableName = abSqlTable->getTableName();;
     
@@ -125,7 +125,6 @@ stringBuffer->append(" Restoration Failed");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_CPP

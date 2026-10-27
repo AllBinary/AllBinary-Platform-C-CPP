@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Object.h"
         
 #include <java/awt/Color.h>
-
-      
 
 
 
@@ -51,15 +54,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageJ2SEUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageJ2SEUtil* instance() { static std::unique_ptr<ImageJ2SEUtil> value(new ImageJ2SEUtil()); return value.get(); }
+    private: static ImageJ2SEUtil* instance_owner();
+    private: static ImageJ2SEUtil* instance;
 
     public: static ImageJ2SEUtil* getInstance();
 
-    public: Color* TRANSPARENT_COLOR = new Color(0, 0, 0, 0);
+
+            
+    public: ImageJ2SEUtil();
+        
+    public: Color* TRANSPARENT_COLOR;
 
 };
 
@@ -67,3 +79,13 @@ class ImageJ2SEUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_H_COMPLETE
+        #if __has_include(<java/awt/Color.h>)
+#include <java/awt/Color.h>
+#endif
+
+        #endif
+    

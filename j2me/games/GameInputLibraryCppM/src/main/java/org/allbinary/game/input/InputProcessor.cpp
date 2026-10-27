@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_INPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/InputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,21 +59,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/GameInputStrings.h"
 
-class InputProcessor
-            : public Object
-         {
 
-    protected: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
-
-    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+InputProcessor::InputProcessor() : gameInputStrings(GameInputStrings::getInstance()) {
+        }
+        
+    auto InputProcessor::keyPressedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 }
 
 
-    public: void keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId){
+    auto InputProcessor::keyReleasedByDevice(Canvas* canvas, int32_t keyCode, int32_t deviceId) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_INPUTPROCESSOR_CPP

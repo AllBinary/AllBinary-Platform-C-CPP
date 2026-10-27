@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_PLAYERGAMEINPUTCOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_PLAYERGAMEINPUTCOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/PlayerGameInputCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,8 @@
         #include "org/allbinary/game/input/GameInputInterface.h"
 #include "org/allbinary/game/input/PlayerGameInput.h"
 
-class PlayerGameInputCompositeInterface: public GameInputInterface {
+//Interface - declared in the header
 
-    public: virtual PlayerGameInput* getPlayerGameInput() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_PLAYERGAMEINPUTCOMPOSITEINTERFACE_CPP

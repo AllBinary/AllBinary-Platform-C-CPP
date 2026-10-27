@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
-/*actual*/ class LogFactory
-            : public Object
-         {
 
-    public: static Log* LOG() { static std::unique_ptr<Log> value(new Log(StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT, StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
+LogFactory::LogFactory() {
+        }
+        auto LogFactory::LOG_owner() -> Log* { static std::unique_ptr<Log> value(new Log(StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT, StringUtil::getInstance()->EMPTY_STRING, NullUtil::getInstance()->NULL_OBJECT)); return value.get(); }
+Log* LogFactory::LOG = LogFactory::LOG_owner();
 
-    /*actual*/ public: static Log* getInstanceD(){
+    /*actual*/ auto LogFactory::getInstanceD() -> Log*{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -74,27 +84,26 @@
 }
 
 
-    /*actual*/ public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+    /*actual*/ auto LogFactory::getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception) -> Log*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogFactory::LOG();
+                        return LogFactory::LOG;
     
 }
 
 
-    /*actual*/ public: static Log* getInstanceF(std::string specialMessage, Object* anyType, std::string functionName){
+    /*actual*/ auto LogFactory::getInstanceF(std::string specialMessage, Object* anyType, std::string functionName) -> Log*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogFactory::LOG();
+                        return LogFactory::LOG;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_CPP

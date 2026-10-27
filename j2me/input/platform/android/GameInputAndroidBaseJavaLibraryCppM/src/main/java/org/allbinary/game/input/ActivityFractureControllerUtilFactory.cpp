@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_ACTIVITYFRACTURECONTROLLERUTILFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_ACTIVITYFRACTURECONTROLLERUTILFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/ActivityFractureControllerUtilFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -38,11 +48,11 @@
 #include "org/allbinary/game/input/AndroidAPI1KeyFactory.h"
 #include "org/allbinary/game/input/AndroidKeyFactory.h"
 
-class ActivityFractureControllerUtilFactory
-            : public Object
-         {
 
-    public: static AndroidKeyFactory* getInstance(){
+ActivityFractureControllerUtilFactory::ActivityFractureControllerUtilFactory() {
+        }
+        
+    auto ActivityFractureControllerUtilFactory::getInstance() -> AndroidKeyFactory*{
 
     int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
@@ -85,7 +95,6 @@ class ActivityFractureControllerUtilFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_ACTIVITYFRACTURECONTROLLERUTILFACTORY_CPP

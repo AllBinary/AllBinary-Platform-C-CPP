@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,11 +80,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageAnimation: public IndexedAnimation {
 
-    private: Image* image;
-
-public: ImageAnimation(Image* image, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+ImageAnimation::ImageAnimation(Image* image, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +95,7 @@ this->image= image;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto ImageAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -98,19 +105,19 @@ this->image= image;
 }
 
 
-    public: void nextFrame(){
+    auto ImageAnimation::nextFrame() -> void{
 }
 
 
-    public: void previousFrame(){
+    auto ImageAnimation::previousFrame() -> void{
 }
 
 
-    public: void setFrame(int32_t index){
+    auto ImageAnimation::setFrame(int32_t index) -> void{
 }
 
 
-    public: int32_t getFrame(){
+    auto ImageAnimation::getFrame() -> int32_t{
 
 
 
@@ -120,7 +127,7 @@ this->image= image;
 }
 
 
-    public: int32_t getSize(){
+    auto ImageAnimation::getSize() -> int32_t{
 
 
 
@@ -130,11 +137,11 @@ this->image= image;
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto ImageAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto ImageAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -144,15 +151,13 @@ this->image= image;
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto ImageAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawImage(this->image, x, y, this->anchor);
     
 }
 
 
-    protected: Image* getImage(){
+    auto ImageAnimation::getImage() -> Image*{
 
 
 
@@ -162,7 +167,7 @@ graphics->drawImage(this->image, x, y, this->anchor);
 }
 
 
-    public: void close(){
+    auto ImageAnimation::close() -> void{
 DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
@@ -170,13 +175,12 @@ DisposalUtil::getInstance()->disposeImage(this->image);
 
                 //@Throws(Throwable.constructor)
             
-    protected: void finalize(){
+    auto ImageAnimation::finalize() -> void{
 DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEANIMATION_CPP

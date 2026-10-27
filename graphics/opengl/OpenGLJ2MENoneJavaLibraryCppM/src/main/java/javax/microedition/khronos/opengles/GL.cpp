@@ -4,6 +4,16 @@
 
 
 
+        #ifndef JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL_CPP
+        #define JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "javax/microedition/khronos/opengles/GL.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +39,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GL {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL_CPP

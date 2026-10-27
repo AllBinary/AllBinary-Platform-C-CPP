@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,6 +55,10 @@
         #include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomTransformInfo: public TransformInfo, public TransformInfoInterface {
 
 public: CustomTransformInfo(std::string outputTypeName, std::string inputOutputTypeName, std::string inputOutputTypeFile, std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName);
@@ -60,3 +69,16 @@ public: CustomTransformInfo(std::string outputTypeName, std::string inputOutputT
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_CUSTOMTRANSFORMINFO_H_COMPLETE
+        #if __has_include("org/allbinary/logic/visual/transform/info/TransformInfo.h")
+#include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/transform/info/TransformInfoInterface.h")
+#include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYPROPERTIES_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +53,14 @@
         #include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
 #include "org/allbinary/game/physics/velocity/VelocityInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VelocityProperties: public BasicVelocityProperties, public VelocityInterface {
 
-    public: static VelocityProperties* NULL_VELOCITY_PROPERTIES() { static std::unique_ptr<VelocityProperties> value(new VelocityProperties(0, 0)); return value.get(); }
+    private: static VelocityProperties* NULL_VELOCITY_PROPERTIES_owner();
+    public: static VelocityProperties* NULL_VELOCITY_PROPERTIES;
 
     private: int32_t maxForwardVelocity= 0;
 
@@ -106,3 +116,16 @@ public: VelocityProperties(int32_t maxForwardVelocity, int32_t maxReverseVelocit
 
 
         #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYPROPERTIES_H_COMPLETE
+        #if __has_include("org/allbinary/game/physics/velocity/BasicVelocityProperties.h")
+#include "org/allbinary/game/physics/velocity/BasicVelocityProperties.h"
+#endif
+#if __has_include("org/allbinary/game/physics/velocity/VelocityInterface.h")
+#include "org/allbinary/game/physics/velocity/VelocityInterface.h"
+#endif
+
+        #endif
+    

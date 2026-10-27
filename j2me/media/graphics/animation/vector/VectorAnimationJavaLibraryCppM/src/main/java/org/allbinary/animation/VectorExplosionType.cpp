@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONTYPE_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorExplosionType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VectorExplosionType
-            : public Object
-         {
 
-};
+VectorExplosionType::VectorExplosionType() {
+        }
+        
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONTYPE_CPP

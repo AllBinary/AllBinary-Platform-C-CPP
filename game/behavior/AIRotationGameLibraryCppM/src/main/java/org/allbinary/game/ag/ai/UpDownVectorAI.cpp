@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_UPDOWNVECTORAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_UPDOWNVECTORAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/UpDownVectorAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,13 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpDownVectorAI: public BasicAI {
 
-    private: BasicVelocityProperties* velocityInterface;
-
-    private: int32_t index = 0;
-
-public: UpDownVectorAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+UpDownVectorAI::UpDownVectorAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,7 +96,7 @@ this->velocityInterface->getVelocityYBasicDecimalP()->setint(0);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto UpDownVectorAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     int32_t y = this->getOwnerLayerInterface()->getHeight() *270;;
     
@@ -138,7 +143,6 @@ this->processAI(allBinaryLayerManager);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_UPDOWNVECTORAI_CPP

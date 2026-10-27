@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_USERSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_USERSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/UsersData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UsersData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "USERS_NAME";
-
-private: UsersData(){
+UsersData::UsersData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_USERSDATA_CPP

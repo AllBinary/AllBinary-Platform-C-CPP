@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/AboutPaintableFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,23 +69,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AboutPaintableFactory
-            : public Object
-         {
+auto AboutPaintableFactory::instance_owner() -> AboutPaintableFactory* { static std::unique_ptr<AboutPaintableFactory> value(new AboutPaintableFactory()); return value.get(); }
+AboutPaintableFactory* AboutPaintableFactory::instance = AboutPaintableFactory::instance_owner();
 
-    private: static AboutPaintableFactory* instance() { static std::unique_ptr<AboutPaintableFactory> value(new AboutPaintableFactory()); return value.get(); }
-
-    public: static AboutPaintableFactory* getInstance(){
+    auto AboutPaintableFactory::getInstance() -> AboutPaintableFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AboutPaintableFactory::instance();
+                        return AboutPaintableFactory::instance;
     
 }
 
 
-private: AboutPaintableFactory(){
+AboutPaintableFactory::AboutPaintableFactory() : paintableArray(
+                                                {
+                                                    NullPaintable::getInstance()
+                                                }){
 
     std::vector<std::string> INFO = 
                                                         {
@@ -93,12 +103,6 @@ this->paintableArray= AboutPaintable::getInstance(INFO, DEVELOPERS)->getPaintabl
 }
 
 
-    public: std::vector<Paintable*> paintableArray = 
-                                                {
-                                                    NullPaintable::getInstance()
-                                                };
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_CPP

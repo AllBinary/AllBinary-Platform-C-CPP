@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILELOCALINPUTSTREAM_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_ABFILELOCALINPUTSTREAM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/AbFileLocalInputStream.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/AbFileInputStream.h"
 
-class AbFileLocalInputStream: public AbFileInputStream {
 
-public: AbFileLocalInputStream(AbFile* file) : AbFileInputStream(AbFileNativeUtil::get(file)){
+AbFileLocalInputStream::AbFileLocalInputStream(AbFile* file) : AbFileInputStream(AbFileNativeUtil::get(file)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +74,6 @@ public: AbFileLocalInputStream(AbFile* file) : AbFileInputStream(AbFileNativeUti
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_ABFILELOCALINPUTSTREAM_CPP

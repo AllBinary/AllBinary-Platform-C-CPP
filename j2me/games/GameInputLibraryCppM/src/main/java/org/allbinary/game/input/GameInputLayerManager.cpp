@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERMANAGER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameInputLayerManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInputLayerManager: public LayerManager {
 
-public: GameInputLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+GameInputLayerManager::GameInputLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,6 @@ public: GameInputLayerManager() : LayerManager(LayerManagerNoDebug::getInstance(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERMANAGER_CPP

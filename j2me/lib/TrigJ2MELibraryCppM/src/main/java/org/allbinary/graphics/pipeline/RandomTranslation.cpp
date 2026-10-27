@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMTRANSLATION_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMTRANSLATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/pipeline/RandomTranslation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 
-class RandomTranslation
-            : public Object
-         {
 
+RandomTranslation::RandomTranslation() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList* getInstance(BasicArrayList* vector, int32_t howMuch){
+    auto RandomTranslation::getInstance(BasicArrayList* vector, int32_t howMuch) -> BasicArrayList*{
 
     MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();;
     
@@ -86,7 +96,6 @@ graphicsPipe->translate(x, y);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMTRANSLATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/properties/CategoryPropertiesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,33 +72,26 @@
 #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 #include "org/allbinary/business/category/properties/CategoryProperties.h"
 
-class CategoryPropertiesFactory
-            : public Object
-        , public CategoryPropertiesFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CategoryPropertiesInterface* categoryPropertiesInterface;
-
-public: CategoryPropertiesFactory(std::string name){
+CategoryPropertiesFactory::CategoryPropertiesFactory(std::string name) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new CategoryProperties(name));
     
 }
 
 
-public: CategoryPropertiesFactory(Node* node){
+CategoryPropertiesFactory::CategoryPropertiesFactory(Node* node) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new CategoryProperties(node));
     
 }
 
 
-public: CategoryPropertiesFactory(HashMap<Object*, Object*>* categoryPropertiesHashMap){
+CategoryPropertiesFactory::CategoryPropertiesFactory(HashMap<Object*, Object*>* categoryPropertiesHashMap) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new CategoryProperties(categoryPropertiesHashMap));
     
 }
 
 
-    public: CategoryPropertiesInterface* getInstance(){
+    auto CategoryPropertiesFactory::getInstance() -> CategoryPropertiesInterface*{
 
         try {
             
@@ -105,7 +108,7 @@ this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(ne
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -124,7 +127,6 @@ this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(ne
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ThreadPool.h"
-#include "org/allbinary/thread/PriorityRunnable.h"
-//This is mainly for network communications.
+class PriorityRunnable;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //This is mainly for network communications.
 class PathFindingThreadPool: public ThreadPool {
 
-    private: static inline ThreadPool* instance = new PathFindingThreadPool("PathFinding", 1, 1);
+    private: static ThreadPool* instance;
 
     public: static ThreadPool* getInstance();
 
@@ -62,9 +71,9 @@ public: PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t 
 
     public: void runTask(Runnable* task);
 
-    protected: void startTask(Runnable* task);
+    /*protected*/ public: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable* task);
+    /*protected*/ public: void completedTask(Runnable* task);
 
 };
 
@@ -72,3 +81,16 @@ public: PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t 
 
 
         #endif //ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H_COMPLETE
+        #if __has_include("org/allbinary/thread/ThreadPool.h")
+#include "org/allbinary/thread/ThreadPool.h"
+#endif
+#if __has_include("org/allbinary/thread/PriorityRunnable.h")
+#include "org/allbinary/thread/PriorityRunnable.h"
+#endif
+
+        #endif
+    

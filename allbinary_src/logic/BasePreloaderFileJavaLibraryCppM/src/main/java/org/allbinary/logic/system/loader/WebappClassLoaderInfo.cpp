@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_WEBAPPCLASSLOADERINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_WEBAPPCLASSLOADERINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/loader/WebappClassLoaderInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,21 +60,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WebappClassLoaderInfo
-            : public Object
-         {
+Object* WebappClassLoaderInfo::classLoader = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* classLoader = NullUtil::getInstance()->NULL_OBJECT;
+WebappClassLoaderInfo::WebappClassLoaderInfo(){
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void setLoader(ClassLoader* classLoader){
+    auto WebappClassLoaderInfo::setLoader(ClassLoader* classLoader) -> void{
 WebappClassLoaderInfo::classLoader= classLoader;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static ClassLoader* getLoader(){
+    auto WebappClassLoaderInfo::getLoader() -> ClassLoader*{
 
 
 
@@ -74,11 +84,6 @@ WebappClassLoaderInfo::classLoader= classLoader;
 }
 
 
-private: WebappClassLoaderInfo(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_WEBAPPCLASSLOADERINFO_CPP

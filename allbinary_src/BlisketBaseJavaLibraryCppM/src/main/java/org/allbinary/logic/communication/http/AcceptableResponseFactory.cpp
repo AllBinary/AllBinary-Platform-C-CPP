@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/AcceptableResponseFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,29 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/AcceptableResponse.h"
 
-class AcceptableResponseFactory
-            : public Object
-         {
 
-    private: static AcceptableResponseFactory* instance() { static std::unique_ptr<AcceptableResponseFactory> value(new AcceptableResponseFactory()); return value.get(); }
+AcceptableResponseFactory::AcceptableResponseFactory() : HTML(new AcceptableResponse("text/html", "html", 0)), WML(new AcceptableResponse("text/wml", "wml", 1)), VXML(new AcceptableResponse("text/vxml", "vxml", 2)) {
+        }
+        auto AcceptableResponseFactory::instance_owner() -> AcceptableResponseFactory* { static std::unique_ptr<AcceptableResponseFactory> value(new AcceptableResponseFactory()); return value.get(); }
+AcceptableResponseFactory* AcceptableResponseFactory::instance = AcceptableResponseFactory::instance_owner();
 
-    public: static AcceptableResponseFactory* getInstance(){
+    auto AcceptableResponseFactory::getInstance() -> AcceptableResponseFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AcceptableResponseFactory::instance();
+                        return AcceptableResponseFactory::instance;
     
 }
 
 
-    public: AcceptableResponse* HTML = new AcceptableResponse("text/html", "html", 0);
 
-    public: AcceptableResponse* WML = new AcceptableResponse("text/wml", "wml", 1);
 
-    public: AcceptableResponse* VXML = new AcceptableResponse("text/vxml", "vxml", 2);
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ACCEPTABLERESPONSEFACTORY_CPP

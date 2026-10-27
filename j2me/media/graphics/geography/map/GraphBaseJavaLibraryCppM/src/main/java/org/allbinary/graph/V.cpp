@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPH_V_CPP
+        #define ORG_ALLBINARY_GRAPH_V_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graph/V.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,11 +41,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class V
-            : public Object
-         {
 
-    public: int32_t getId(){
+V::V() {
+        }
+        
+    auto V::getId() -> int32_t{
 
 
 
@@ -45,7 +55,6 @@ class V
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPH_V_CPP

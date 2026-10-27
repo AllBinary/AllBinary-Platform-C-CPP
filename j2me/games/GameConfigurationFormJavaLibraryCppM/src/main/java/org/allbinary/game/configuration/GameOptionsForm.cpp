@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORM_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameOptionsForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -129,18 +139,15 @@
 #include "org/allbinary/game/configuration/GameConfigurationUtil.h"
 #include "org/allbinary/game/configuration/GameConfigurationCentral.h"
 
-class GameOptionsForm: public CommandForm {
 
-    private: MEUtil* meUtil = MEUtil::getInstance();
-
-public: GameOptionsForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+GameOptionsForm::GameOptionsForm(CommandListener* commandListener, std::string title, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor), meUtil(MEUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->addConfiguration();
     
@@ -162,15 +169,15 @@ this->addTextFieldsIfSimulated();
 
                 //@Throws(Exception.constructor)
             
-    public: void closeClientInformation(AbeClientInformationInterface* abeClientInformation){
-super.close();
+    auto GameOptionsForm::closeClientInformation(AbeClientInformationInterface* abeClientInformation) -> void{
+CommandForm::close();
     
 this->save(abeClientInformation);
     
 }
 
 
-    private: void addTextFieldsIfSimulated(){
+    auto GameOptionsForm::addTextFieldsIfSimulated() -> void{
 
     std::string key = OrientationData::getInstance()->ORIENTATION_SENSOR_INPUT;;
     
@@ -213,7 +220,7 @@ this->save(abeClientInformation);
 }
 
 
-    private: void addTextFields(){
+    auto GameOptionsForm::addTextFields() -> void{
 
     ABHashtable<Object*, Object*>* hashtable = GameConfigurationTextInput::getHashtable();;
     
@@ -247,7 +254,7 @@ this->meUtil->appendItem(this, textField);
 }
 
 
-    private: void addConfiguration(){
+    auto GameOptionsForm::addConfiguration() -> void{
 
     std::string METHOD_NAME = "addConfiguration";;
     
@@ -281,9 +288,9 @@ this->meUtil->appendItem(this, textField);
         {
 gameConfiguration= dynamic_cast<GameConfiguration*>(list->objectArray[index]);
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
-this->logUtil.putF(stringMaker->append(NAME)->append(gameConfiguration->toString())->toString(), this, METHOD_NAME);
+this->logUtil->putF(stringMaker->append(NAME)->append(gameConfiguration->toString())->toString(), this, METHOD_NAME);
     
 gauge= new GameConfigurationGauge(gameConfiguration);
     
@@ -298,7 +305,7 @@ this->meUtil->appendItem(this, gauge);
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto GameOptionsForm::initCommands(CommandListener* cmdListener) -> void{
 
     GameCommandsFactory* gameCommandsFactory = GameCommandsFactory::getInstance();;
     
@@ -315,7 +322,7 @@ this->setCommandListener(cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface* abeClientInformation){
+    auto GameOptionsForm::save(AbeClientInformationInterface* abeClientInformation) -> void{
 
     int32_t size = this->size();;
     
@@ -392,14 +399,13 @@ keyValuePersistance->save(abeClientInformation, hashtable);
         {
 integer= list->objectArray[index];
     
-keyValuePersistance->delete(abeClientInformation, integer.intValue());
+keyValuePersistance->delete_(abeClientInformation, integer.intValue());
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORM_CPP

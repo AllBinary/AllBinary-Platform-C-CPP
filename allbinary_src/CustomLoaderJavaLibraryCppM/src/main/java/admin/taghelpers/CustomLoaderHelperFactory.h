@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_CUSTOMLOADERHELPERFACTORY_H
         #define ADMIN_TAGHELPERS_CUSTOMLOADERHELPERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,20 +35,10 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/ServiceClientInformationInterfaceFactory.h>
-
-      
+class PageContext;
+class AbeClientInformationInterface;
+class LicensingException;
+class ServiceClientInformationInterfaceFactory;
 
 
 
@@ -63,10 +58,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelperFactoryInterface.h"
-#include "admin/taghelpers/HelperFactory.h"
+class HelperFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomLoaderHelperFactory
-            : public Object
+            : public virtual Object
         , public TagHelperFactoryInterface {
 
     private: static inline const std::string CLASSNAME = "admin.taghelpers.CustomLoaderHelper";
@@ -89,3 +88,31 @@ public: CustomLoaderHelperFactory();
 
 
         #endif //ADMIN_TAGHELPERS_CUSTOMLOADERHELPERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_CUSTOMLOADERHELPERFACTORY_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_CUSTOMLOADERHELPERFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/ServiceClientInformationInterfaceFactory.h>)
+#include <org/allbinary/logic/system/security/licensing/ServiceClientInformationInterfaceFactory.h>
+#endif
+#if __has_include("admin/taghelpers/TagHelperFactoryInterface.h")
+#include "admin/taghelpers/TagHelperFactoryInterface.h"
+#endif
+#if __has_include("admin/taghelpers/HelperFactory.h")
+#include "admin/taghelpers/HelperFactory.h"
+#endif
+
+        #endif
+    

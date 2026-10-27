@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_CPP
+        #define ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/ImageTypeUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,31 +61,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageTypeUtil
-            : public Object
-         {
+auto ImageTypeUtil::SINGLETON_owner() -> ImageTypeUtil* { static std::unique_ptr<ImageTypeUtil> value(new ImageTypeUtil()); return value.get(); }
+ImageTypeUtil* ImageTypeUtil::SINGLETON = ImageTypeUtil::SINGLETON_owner();
 
-    private: static ImageTypeUtil* SINGLETON() { static std::unique_ptr<ImageTypeUtil> value(new ImageTypeUtil()); return value.get(); }
-
-    public: static ImageTypeUtil* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageTypeUtil::SINGLETON();
-    
-}
-
-
-    public: const std::string PNG = "png";
-
-    public: const std::string JPG = "jpg";
-
-    public: const std::string GIF = "gif";
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: ImageTypeUtil(){
+ImageTypeUtil::ImageTypeUtil() : list(new BasicArrayListD()){
 this->list->add(JPG);
     
 this->list->add(GIF);
@@ -85,7 +74,7 @@ this->list->add(PNG);
 }
 
 
-    public: bool isSupported(std::string mediaFileType){
+    auto ImageTypeUtil::isSupported(std::string mediaFileType) -> bool{
 mediaFileType= JavaString::toLowerCase(mediaFileType);
     
 
@@ -122,7 +111,16 @@ mediaFileType= JavaString::toLowerCase(mediaFileType);
 }
 
 
-};
+    auto ImageTypeUtil::getInstance() -> ImageTypeUtil*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ImageTypeUtil::SINGLETON;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_IMAGE_IMAGETYPEUTIL_CPP

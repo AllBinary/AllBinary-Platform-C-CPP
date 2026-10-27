@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlMetaAttributeData
-            : public Object
-         {
 
-    private: int32_t id;
-
-    private: std::string name;
-
-public: HtmlMetaAttributeData(int32_t id, std::string value){
+HtmlMetaAttributeData::HtmlMetaAttributeData(int32_t id, std::string value){
 this->name= value;
     
 this->id= id;
@@ -61,7 +64,7 @@ this->id= id;
 }
 
 
-    public: bool equals(HtmlMetaAttributeData* htmlMetaAttributeData){
+    auto HtmlMetaAttributeData::equals(HtmlMetaAttributeData* htmlMetaAttributeData) -> bool{
 
                         if(htmlMetaAttributeData->id == this->id)
                         
@@ -88,7 +91,7 @@ this->id= id;
 }
 
 
-    public: std::string toString(){
+    auto HtmlMetaAttributeData::toString() -> std::string{
 
 
 
@@ -98,7 +101,6 @@ this->id= id;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEDATA_CPP

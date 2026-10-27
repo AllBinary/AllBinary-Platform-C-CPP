@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_PARTFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_PART_PARTFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/PartFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/PartInterface.h"
 
-class PartFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual PartInterface* getInstance(AllBinaryLayer* sourceLayerInterface, RelativeRelationship* relativeRelationship) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_PART_PARTFACTORYINTERFACE_CPP

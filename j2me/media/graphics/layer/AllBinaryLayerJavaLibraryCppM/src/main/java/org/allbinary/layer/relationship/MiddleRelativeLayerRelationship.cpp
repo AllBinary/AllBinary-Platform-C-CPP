@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_CPP
+        #define ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/relationship/MiddleRelativeLayerRelationship.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,9 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/relationship/RelativeLayerRelationship.h"
 
-class MiddleRelativeLayerRelationship: public RelativeLayerRelationship {
 
-public: MiddleRelativeLayerRelationship(AllBinaryLayer* layer) : RelativeLayerRelationship(layer, PointFactory::getInstance()->createXY(layer->getHalfWidth(), layer->getHalfHeight()), BasicArrayListUtil::getInstance()->getImmutableInstance()){
+MiddleRelativeLayerRelationship::MiddleRelativeLayerRelationship(AllBinaryLayer* layer) : RelativeLayerRelationship(layer, PointFactory::getInstance()->createXY(layer->getHalfWidth(), layer->getHalfHeight()), BasicArrayListUtil::getInstance()->getImmutableInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,7 +76,6 @@ public: MiddleRelativeLayerRelationship(AllBinaryLayer* layer) : RelativeLayerRe
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_CPP

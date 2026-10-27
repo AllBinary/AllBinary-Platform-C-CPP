@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,39 +38,17 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/animation/NullAnimationFactory.h>
-
-      
-#include <org/allbinary/game/resource/ResourceLoadingLevelFactory.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/RectangleFactory.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class BasicAnimationInterfaceFactoryInterface;
+class NullAnimationFactory;
+class ResourceLoadingLevelFactory;
+class Rectangle;
+class RectangleFactory;
+class ImageCache;
+class LogUtil;
+class StringMaker;
+class CommonSeps;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -86,13 +69,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseResourceAnimationInterfaceFactoryInterfaceFactory
-            : public Object
+            : public virtual Object
         , public FeatureResourceAnimationInterfaceFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: ABHashtable<Object*, Object*>* hashtable;
 
@@ -114,7 +101,7 @@ public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, 
 
                 //@Throws(Exception.constructor)
             
-    protected: void initImageCache(ImageCache* imageCache, int32_t level);
+    /*protected*/ public: void initImageCache(ImageCache* imageCache, int32_t level);
 
                 //@Throws(Exception.constructor)
             
@@ -152,7 +139,7 @@ public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, 
 
     public: ABHashtable<Object*, Object*>* getRectangleArrayOfArraysHashtable();
 
-    protected: void setInitialized(bool initialized);
+    /*protected*/ public: void setInitialized(bool initialized);
 
     public: bool isInitialized();
 
@@ -162,3 +149,46 @@ public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, 
 
 
         #endif //ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/animation/NullAnimationFactory.h>)
+#include <org/allbinary/animation/NullAnimationFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/resource/ResourceLoadingLevelFactory.h>)
+#include <org/allbinary/game/resource/ResourceLoadingLevelFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/RectangleFactory.h>)
+#include <org/allbinary/graphics/RectangleFactory.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h"
+#endif
+
+        #endif
+    

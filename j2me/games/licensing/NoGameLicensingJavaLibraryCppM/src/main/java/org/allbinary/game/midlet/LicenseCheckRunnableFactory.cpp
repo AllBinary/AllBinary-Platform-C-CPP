@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/LicenseCheckRunnableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/midlet/SpecialDemoGameMidlet.h"
 
-class LicenseCheckRunnableFactory
-            : public Object
-         {
 
-    public: ABRunnable* getInstance(SpecialDemoGameMidlet* specialDemoGameMidlet){
+LicenseCheckRunnableFactory::LicenseCheckRunnableFactory() {
+        }
+        
+    auto LicenseCheckRunnableFactory::getInstance(SpecialDemoGameMidlet* specialDemoGameMidlet) -> ABRunnable*{
 
 
 
@@ -66,7 +76,6 @@ class LicenseCheckRunnableFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_CPP

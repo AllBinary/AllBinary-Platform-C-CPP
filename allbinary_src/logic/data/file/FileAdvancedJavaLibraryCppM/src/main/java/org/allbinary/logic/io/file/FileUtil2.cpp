@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileUtil2.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,33 +76,24 @@
         #include "org/allbinary/logic/io/file/SimpleFileUtil.h"
 #include "org/allbinary/logic/io/file/AbFile.h"
 
-class FileUtil2
-            : public Object
-         {
+auto FileUtil2::instance_owner() -> FileUtil2* { static std::unique_ptr<FileUtil2> value(new FileUtil2()); return value.get(); }
+FileUtil2* FileUtil2::instance = FileUtil2::instance_owner();
 
-    private: static FileUtil2* instance() { static std::unique_ptr<FileUtil2> value(new FileUtil2()); return value.get(); }
-
-    public: static FileUtil2* getInstance(){
+    auto FileUtil2::getInstance() -> FileUtil2*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileUtil2::instance();
+                        return FileUtil2::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: StreamUtil* streamUtil = StreamUtil::getInstance();
-
-private: FileUtil2(){
+FileUtil2::FileUtil2() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), streamUtil(StreamUtil::getInstance()){
 }
 
 
-    public: BasicArrayList* loadFileAsList(AbFile* file, int32_t max, std::vector<int8_t> byteArray1){
+    auto FileUtil2::loadFileAsList(AbFile* file, int32_t max, std::vector<int8_t> byteArray1) -> BasicArrayList*{
 
     AbFileInputStream* inputStream = 
                 null
@@ -119,7 +120,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->AD
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_CPP

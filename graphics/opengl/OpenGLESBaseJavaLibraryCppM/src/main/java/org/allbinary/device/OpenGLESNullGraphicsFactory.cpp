@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEVICE_OPENGLESNULLGRAPHICSFACTORY_CPP
+        #define ORG_ALLBINARY_DEVICE_OPENGLESNULLGRAPHICSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/device/OpenGLESNullGraphicsFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,23 +42,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/device/OpenGLESGraphics.h"
 
-class OpenGLESNullGraphicsFactory
-            : public Object
-         {
 
-    private: static OpenGLESGraphics* instance() { static std::unique_ptr<OpenGLESGraphics> value(new OpenGLESGraphics()); return value.get(); }
+OpenGLESNullGraphicsFactory::OpenGLESNullGraphicsFactory() {
+        }
+        auto OpenGLESNullGraphicsFactory::instance_owner() -> OpenGLESGraphics* { static std::unique_ptr<OpenGLESGraphics> value(new OpenGLESGraphics()); return value.get(); }
+OpenGLESGraphics* OpenGLESNullGraphicsFactory::instance = OpenGLESNullGraphicsFactory::instance_owner();
 
-    public: static OpenGLESGraphics* getInstance(){
+    auto OpenGLESNullGraphicsFactory::getInstance() -> OpenGLESGraphics*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESNullGraphicsFactory::instance();
+                        return OpenGLESNullGraphicsFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEVICE_OPENGLESNULLGRAPHICSFACTORY_CPP

@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAINTHELPER_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAINTHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 #include <org/allbinary/graphics/paint/ProcessPaintable.h>
-
-      
 
 
 
@@ -51,8 +52,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+        class AllBinaryGameCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameCanvasPaintHelper: public ProcessPaintable {
 
     private: AllBinaryGameCanvas* gameCanvas;
@@ -69,3 +74,19 @@ public: GameCanvasPaintHelper(AllBinaryGameCanvas* gameCanvas);
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAINTHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAINTHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASPAINTHELPER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/ProcessPaintable.h>)
+#include <org/allbinary/graphics/paint/ProcessPaintable.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h")
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#endif
+
+        #endif
+    

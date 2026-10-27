@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_WHOLESALE_WHOLESALEUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_WHOLESALE_WHOLESALEUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/customer/wholesale/WholesaleUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/customer/wholesale/WholesaleUser.h"
 
-class WholesaleUserFactory
-            : public Object
-        , public UserFactoryInterface {
 
-public: WholesaleUserFactory(){
+WholesaleUserFactory::WholesaleUserFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(){
+    auto WholesaleUserFactory::getInstance() -> UserInterface*{
 
 
 
@@ -79,7 +86,7 @@ public: WholesaleUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto WholesaleUserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
 
 
@@ -89,7 +96,6 @@ public: WholesaleUserFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_WHOLESALE_WHOLESALEUSERFACTORY_CPP

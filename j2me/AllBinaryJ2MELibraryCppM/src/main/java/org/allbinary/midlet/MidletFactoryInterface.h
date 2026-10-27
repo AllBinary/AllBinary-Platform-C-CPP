@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_H
         #define ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/midlet/MIDlet.h>
-
-      
+class MIDlet;
 
 
 
@@ -50,12 +53,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/midlet/AllBinaryMidlet.h"
+        class AllBinaryMidlet;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MidletFactoryInterface
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: MidletFactoryInterface();
+        
     public: MIDlet* getInstance();
 
 };
@@ -64,3 +75,16 @@ class MidletFactoryInterface
 
 
         #endif //ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<javax/microedition/midlet/MIDlet.h>)
+#include <javax/microedition/midlet/MIDlet.h>
+#endif
+#if __has_include("org/allbinary/midlet/AllBinaryMidlet.h")
+#include "org/allbinary/midlet/AllBinaryMidlet.h"
+#endif
+
+        #endif
+    

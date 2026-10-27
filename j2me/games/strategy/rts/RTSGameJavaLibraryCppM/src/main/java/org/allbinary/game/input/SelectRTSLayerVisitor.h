@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/util/visitor/Visitor.h>
-
-      
 
 
 
@@ -49,6 +52,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SelectRTSLayerVisitor: public Visitor {
 
 public: SelectRTSLayerVisitor();
@@ -59,3 +66,13 @@ public: SelectRTSLayerVisitor();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/visitor/Visitor.h>)
+#include <org/allbinary/logic/util/visitor/Visitor.h>
+#endif
+
+        #endif
+    

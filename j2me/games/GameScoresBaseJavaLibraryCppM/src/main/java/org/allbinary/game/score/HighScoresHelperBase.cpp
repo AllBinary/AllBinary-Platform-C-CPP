@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresHelperBase.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,19 +72,13 @@
 #include "org/allbinary/game/score/HighScores.h"
 #include "org/allbinary/game/score/NullHighScoresSingletonFactory.h"
 
-class HighScoresHelperBase
-            : public Object
-        , public HighScoresHelperBaseInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+HighScoresHelperBase::HighScoresHelperBase() : logUtil(LogUtil::getInstance()), highScoresArrayP(LastFetchHighScoresFactory::getInstance()->highScoresArray) {
+        }
+        
+    auto HighScoresHelperBase::setHighScoresArray(std::vector<HighScores*> highScoresArrayP) -> void{
 
-    protected: std::vector<HighScores*> highScoresArrayP = LastFetchHighScoresFactory::getInstance()->highScoresArray;
-
-    public: void setHighScoresArray(std::vector<HighScores*> highScoresArrayP){
-
-                        if(highScoresArrayP != 
-                                    nullptr
-                                )
+                        if(!highScoresArrayP.empty())
                         
                                     {
                                     
@@ -99,7 +103,7 @@ this->highScoresArrayP= highScoresArrayP;
 }
 
 
-    public: HighScores* getNextHighScores(){
+    auto HighScoresHelperBase::getNextHighScores() -> HighScores*{
 
 
 
@@ -109,20 +113,20 @@ this->highScoresArrayP= highScoresArrayP;
 }
 
 
-    public: bool isAnyHighScores(){
+    auto HighScoresHelperBase::isAnyHighScores() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setSelectedHighScores(HighScores* selectedHighScores){
+    auto HighScoresHelperBase::setSelectedHighScores(HighScores* selectedHighScores) -> void{
 }
 
 
-    public: HighScores* getSelectedHighScores(){
+    auto HighScoresHelperBase::getSelectedHighScores() -> HighScores*{
 
 
 
@@ -132,7 +136,7 @@ this->highScoresArrayP= highScoresArrayP;
 }
 
 
-    public: std::vector<HighScores*> getHighScoresArray(){
+    auto HighScoresHelperBase::getHighScoresArray() -> std::vector<HighScores*>{
 
 
 
@@ -142,11 +146,10 @@ this->highScoresArrayP= highScoresArrayP;
 }
 
 
-    public: void selectHighScores(){
+    auto HighScoresHelperBase::selectHighScores() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASE_CPP

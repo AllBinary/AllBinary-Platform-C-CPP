@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_SCREENEMPTYLISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_SCREENEMPTYLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,10 +54,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/ScreenListenerInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScreenEmptyListener
-            : public Object
+            : public virtual Object
         , public ScreenListenerInterface {
 
+
+            
+    public: ScreenEmptyListener();
+        
     public: void onFullScreen(bool isFullScreen);
 
     public: void onFullScreenDisplay();
@@ -63,3 +76,13 @@ class ScreenEmptyListener
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_SCREENEMPTYLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_SCREENEMPTYLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_SCREENEMPTYLISTENER_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/ScreenListenerInterface.h")
+#include "org/allbinary/graphics/ScreenListenerInterface.h"
+#endif
+
+        #endif
+    

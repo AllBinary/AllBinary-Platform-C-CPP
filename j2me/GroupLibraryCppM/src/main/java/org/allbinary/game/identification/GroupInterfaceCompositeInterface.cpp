@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPINTERFACECOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPINTERFACECOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/identification/GroupInterfaceCompositeInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -46,11 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/identification/Group.h"
 
-class GroupInterfaceCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<Group*> getGroupInterface() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPINTERFACECOMPOSITEINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_STORECUSTOMIZERCOMPONENTUTIL_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_STORECUSTOMIZERCOMPONENTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/generator/TransformGeneratorUtil.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfo.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
+class LogUtil;
+class StringUtil;
+class AbeClientInformationInterface;
+class TransformGeneratorUtil;
+class TransformInfo;
+class TransformInfoInterface;
 
 
 
@@ -73,17 +62,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "views/business/context/modules/storefront/customizer/CustomizerUtil.h"
+        class CustomizerUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreCustomizerComponentUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static StoreCustomizerComponentUtil* instance() { static std::unique_ptr<StoreCustomizerComponentUtil> value(new StoreCustomizerComponentUtil()); return value.get(); }
+    private: static StoreCustomizerComponentUtil* instance_owner();
+    private: static StoreCustomizerComponentUtil* instance;
 
     public: static StoreCustomizerComponentUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: StoreCustomizerComponentUtil();
 
@@ -101,3 +95,35 @@ private: StoreCustomizerComponentUtil();
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_STORECUSTOMIZERCOMPONENTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_STORECUSTOMIZERCOMPONENTUTIL_H_COMPLETE)
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_STORECUSTOMIZERCOMPONENTUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/generator/TransformGeneratorUtil.h>)
+#include <org/allbinary/logic/visual/transform/generator/TransformGeneratorUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfo.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include("views/business/context/modules/storefront/customizer/CustomizerUtil.h")
+#include "views/business/context/modules/storefront/customizer/CustomizerUtil.h"
+#endif
+
+        #endif
+    

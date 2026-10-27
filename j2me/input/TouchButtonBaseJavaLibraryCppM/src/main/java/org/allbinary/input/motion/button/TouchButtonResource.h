@@ -13,6 +13,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCE_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -40,15 +45,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonResource
-            : public Object
+            : public virtual Object
          {
 
     public: std::string RESOURCE;
 
     public: std::string HINT;
 
-protected: TouchButtonResource(std::string resource, std::string hint);
+/*protected*/ public: TouchButtonResource(std::string resource, std::string hint);
 
 };
 
@@ -56,3 +65,10 @@ protected: TouchButtonResource(std::string resource, std::string hint);
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCE_H_COMPLETE
+        
+        #endif
+    

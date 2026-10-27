@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_VALIDATIONVIEWHELPER_CPP
+        #define TAGHELPERS_VALIDATIONVIEWHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/ValidationViewHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "taghelpers/ViewHelper.h"
 
-class ValidationViewHelper: public ViewHelper, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ValidationComponentInterface* viewInterface;
-
-public: ValidationViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : ViewHelper(hashMap, pageContext){
+ValidationViewHelper::ValidationViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : ViewHelper(hashMap, pageContext), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,10 +85,10 @@ public: ValidationViewHelper(HashMap<Object*, Object*>* hashMap, PageContext* pa
 this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewObject());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -91,14 +96,14 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 }
 
 
-    public: bool isValid(){
+    auto ValidationViewHelper::isValid() -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF("Started", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -114,10 +119,10 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -133,7 +138,7 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 }
 
 
-    public: std::string validationInfo(){
+    auto ValidationViewHelper::validationInfo() -> std::string{
 
         try {
             
@@ -147,10 +152,10 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "validationInfo()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "validationInfo()", &e);
     
 
                                     }
@@ -166,7 +171,7 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto ValidationViewHelper::toValidationInfoDoc() -> Document*{
 
         try {
             
@@ -180,10 +185,10 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toValidationInfoDoc()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toValidationInfoDoc()", &e);
     
 
                                     }
@@ -199,7 +204,7 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto ValidationViewHelper::toValidationInfoNode(Document* document) -> Node*{
 
         try {
             
@@ -213,10 +218,10 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toValidationInfoNode()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toValidationInfoNode()", &e);
     
 
                                     }
@@ -232,7 +237,6 @@ this->viewInterface= dynamic_cast<ValidationComponentInterface*>(this->getViewOb
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_VALIDATIONVIEWHELPER_CPP

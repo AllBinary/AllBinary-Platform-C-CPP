@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_H
         #define ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,17 +37,9 @@
             #include "java/lang/Object.h"
         
 #include <java/net/URL.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <javax/help/HelpSet.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class HelpSet;
 
 
 
@@ -62,11 +59,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class JavaHelpSetNotifier
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline BasicArrayList* vector = new BasicArrayListD();
+    private: static BasicArrayList* vector;
 
     private: static BasicArrayList* get();
 
@@ -80,3 +81,22 @@ private: JavaHelpSetNotifier();
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_H_COMPLETE
+        #if __has_include(<java/net/URL.h>)
+#include <java/net/URL.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<javax/help/HelpSet.h>)
+#include <javax/help/HelpSet.h>
+#endif
+
+        #endif
+    

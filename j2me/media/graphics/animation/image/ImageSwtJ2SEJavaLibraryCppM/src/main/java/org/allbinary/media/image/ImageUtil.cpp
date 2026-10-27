@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -95,33 +105,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/Image.h"
 
-class ImageUtil
-            : public Object
-         {
+auto ImageUtil::instance_owner() -> ImageUtil* { static std::unique_ptr<ImageUtil> value(new ImageUtil()); return value.get(); }
+ImageUtil* ImageUtil::instance = ImageUtil::instance_owner();
 
-    private: static ImageUtil* instance() { static std::unique_ptr<ImageUtil> value(new ImageUtil()); return value.get(); }
-
-    public: static ImageUtil* getInstance(){
+    auto ImageUtil::getInstance() -> ImageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageUtil::instance();
+                        return ImageUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: std::string IIOIMAGE_POOL_NAME = "IIOIMAGE_POOL_NAME";
-
-    private: const std::string CREATE_BUFFERED_IMAGE = "createBufferedImage";
-
-private: ImageUtil(){
+ImageUtil::ImageUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()){
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -137,9 +134,9 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 }
 
 
-    public: org::eclipse::swt::graphics::Image* create(int32_t width, int32_t height){
+    auto ImageUtil::create(int32_t width, int32_t height) -> org::eclipse::swt::graphics::Image*{
 
-    Display* display = BareMain::shell.getDisplay();;
+    Display* display = BareMain::shell->getDisplay();;
     
 
 
@@ -152,7 +149,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<org::eclipse::swt::graphics::Image*> createBufferedImage(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray, int32_t percent, bool scale){
+    auto ImageUtil::createBufferedImage(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray, int32_t percent, bool scale) -> std::vector<org::eclipse::swt::graphics::Image*>{
 
     int32_t size = bufferedImageArray.size();;
     
@@ -197,7 +194,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImage, newWi
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<org::eclipse::swt::graphics::Image*> createBufferedImage2(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray, float percent, bool scale){
+    auto ImageUtil::createBufferedImage2(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray, float percent, bool scale) -> std::vector<org::eclipse::swt::graphics::Image*>{
 
     int32_t size = bufferedImageArray.size();;
     
@@ -242,7 +239,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImage, newWi
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<org::eclipse::swt::graphics::Image*> createBufferedImage3(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray, int32_t width, int32_t height, bool scale){
+    auto ImageUtil::createBufferedImage3(std::vector<org::eclipse::swt::graphics::Image*> bufferedImageArray, int32_t width, int32_t height, bool scale) -> std::vector<org::eclipse::swt::graphics::Image*>{
 
     int32_t size = bufferedImageArray.size();;
     
@@ -271,7 +268,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImageArray[i
 
                 //@Throws(Exception.constructor)
             
-    public: org::eclipse::swt::graphics::Image* createBufferedImage4(org::eclipse::swt::graphics::Image* bufferedImage, int32_t newWidth, int32_t newHeight){
+    auto ImageUtil::createBufferedImage4(org::eclipse::swt::graphics::Image* bufferedImage, int32_t newWidth, int32_t newHeight) -> org::eclipse::swt::graphics::Image*{
 
 
 
@@ -283,7 +280,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImageArray[i
 
                 //@Throws(Exception.constructor)
             
-    public: org::eclipse::swt::graphics::Image* createBufferedImage5(org::eclipse::swt::graphics::Image* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale){
+    auto ImageUtil::createBufferedImage5(org::eclipse::swt::graphics::Image* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale) -> org::eclipse::swt::graphics::Image*{
 
 
 
@@ -295,7 +292,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImageArray[i
 
                 //@Throws(Exception.constructor)
             
-    public: org::eclipse::swt::graphics::Image* createBufferedImage6(org::eclipse::swt::graphics::Image* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale, bool allowTranslate){
+    auto ImageUtil::createBufferedImage6(org::eclipse::swt::graphics::Image* bufferedImage, int32_t newWidth, int32_t newHeight, bool scale, bool allowTranslate) -> org::eclipse::swt::graphics::Image*{
 
     ImageData* imageData = bufferedImage->getImageData();;
     
@@ -356,7 +353,7 @@ this->logUtil->putF((new StringMaker())->append("Translate dx: ")->appendfloat(d
                                     }
                                 
 
-    org::eclipse::swt::graphics::Image* newBufferedImage = new org::eclipse::swt::graphics::Image(BareMain::shell.getDisplay(), newWidth, newHeight);;
+    org::eclipse::swt::graphics::Image* newBufferedImage = new org::eclipse::swt::graphics::Image(BareMain::shell->getDisplay(), newWidth, newHeight);;
     
 
     GC* gc = new GC(newBufferedImage);;
@@ -387,7 +384,7 @@ gc->dispose();
 }
 
 
-    public: Canvas* drawTransformedImage(org::eclipse::swt::graphics::Image* image, Composite* parent, int32_t dx, int32_t dy, int32_t width, int32_t height){
+    auto ImageUtil::drawTransformedImage(org::eclipse::swt::graphics::Image* image, Composite* parent, int32_t dx, int32_t dy, int32_t width, int32_t height) -> Canvas*{
 
     Canvas* imageCanvas = new Canvas(parent, SWT::NONE);;
     
@@ -423,7 +420,7 @@ gc->drawImage(image, 0, 0, image->getBounds()->width, image->getBounds()->height
 }
 
 
-    public: std::string toString(org::eclipse::swt::graphics::Image* bufferedImage){
+    auto ImageUtil::toString(org::eclipse::swt::graphics::Image* bufferedImage) -> std::string{
 
     CommonLabels* commonLabels = CommonLabels::getInstance();;
     
@@ -456,7 +453,6 @@ stringBuffer->appendint(imageData->type);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_CPP

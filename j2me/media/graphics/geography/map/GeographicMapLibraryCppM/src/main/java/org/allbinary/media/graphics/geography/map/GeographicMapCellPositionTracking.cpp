@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONTRACKING_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONTRACKING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionTracking.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,25 +68,14 @@
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h"
 
-class GeographicMapCellPositionTracking
-            : public Object
-         {
 
-    private: GeographicMapCellPosition* currentGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    private: GeographicMapCellPosition* previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    private: GeographicMapCellPosition* newGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    private: GeographicMapCellType* currentCellType = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;
-
-public: GeographicMapCellPositionTracking(){
+GeographicMapCellPositionTracking::GeographicMapCellPositionTracking() : currentGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), previousGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), newGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), currentCellType(GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GeographicMapCellType* getCurrentOverCellType(BasicGeographicMap* geographicMap){
+    auto GeographicMapCellPositionTracking::getCurrentOverCellType(BasicGeographicMap* geographicMap) -> GeographicMapCellType*{
 
     GeographicMapCellPosition* geographicMapCellPosition = this->currentGeographicMapCellPosition;;
     
@@ -100,7 +99,7 @@ public: GeographicMapCellPositionTracking(){
 
                 //@Throws(Exception.constructor)
             
-    public: bool updateStart(AllBinaryGameCanvasInterface* gameCanvasInterface, AllBinaryLayer* layer){
+    auto GeographicMapCellPositionTracking::updateStart(AllBinaryGameCanvasInterface* gameCanvasInterface, AllBinaryLayer* layer) -> bool{
 
                         if(gameCanvasInterface != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
@@ -140,7 +139,7 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 }
 
 
-    public: bool updateEnd(){
+    auto GeographicMapCellPositionTracking::updateEnd() -> bool{
 
                         if(this->currentGeographicMapCellPosition != this->previousGeographicMapCellPosition)
                         
@@ -165,7 +164,7 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 }
 
 
-    public: GeographicMapCellPosition* getPreviousGeographicMapCellPosition(){
+    auto GeographicMapCellPositionTracking::getPreviousGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -175,7 +174,7 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 }
 
 
-    public: GeographicMapCellPosition* getCurrentGeographicMapCellPosition(){
+    auto GeographicMapCellPositionTracking::getCurrentGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -185,7 +184,6 @@ this->newGeographicMapCellPosition= geographicMapInterface->getCellPositionAtXY(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONTRACKING_CPP

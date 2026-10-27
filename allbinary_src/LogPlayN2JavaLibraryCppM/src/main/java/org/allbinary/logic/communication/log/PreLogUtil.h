@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Throwable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <playn/core/PlayN.h>
-
-      
+class JsType;
+class CommonSeps;
+class CommonStrings;
+class StringMaker;
+class StringUtil;
+class PlayN;
 
 
 
@@ -67,10 +60,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
-//ActualPlatform
+        class LogFormatUtil;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //ActualPlatform
 /*actual*/ class PreLogUtil
-            : public Object
+            : public virtual Object
          {
 
     /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName);
@@ -84,6 +81,7 @@
     /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
 
     /*actual*/ public: static std::string getClassName(Object* anyType);
+    public: static std::string getClassName(const std::string& anyType) { return getClassName(JavaString::box(anyType)); }
 
 public: PreLogUtil();
 
@@ -93,3 +91,31 @@ public: PreLogUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<playn/core/PlayN.h>)
+#include <playn/core/PlayN.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/log/LogFormatUtil.h")
+#include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#endif
+
+        #endif
+    

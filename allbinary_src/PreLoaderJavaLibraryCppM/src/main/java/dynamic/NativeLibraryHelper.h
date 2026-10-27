@@ -21,6 +21,11 @@
         #ifndef DYNAMIC_NATIVELIBRARYHELPER_H
         #define DYNAMIC_NATIVELIBRARYHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NativeLibraryHelper
-            : public Object
+            : public virtual Object
          {
 
     private: std::string library;
@@ -66,3 +75,10 @@ public: NativeLibraryHelper(std::string library);
 
 
         #endif //DYNAMIC_NATIVELIBRARYHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(DYNAMIC_NATIVELIBRARYHELPER_H_COMPLETE)
+        #define DYNAMIC_NATIVELIBRARYHELPER_H_COMPLETE
+        
+        #endif
+    

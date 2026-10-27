@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_CPP
+        #define ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/direction/DirectionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,51 +65,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/direction/Direction.h"
 
-class DirectionFactory
-            : public Object
-         {
+auto DirectionFactory::instance_owner() -> DirectionFactory* { static std::unique_ptr<DirectionFactory> value(new DirectionFactory()); return value.get(); }
+DirectionFactory* DirectionFactory::instance = DirectionFactory::instance_owner();
 
-    private: static DirectionFactory* instance() { static std::unique_ptr<DirectionFactory> value(new DirectionFactory()); return value.get(); }
-
-    public: static DirectionFactory* getInstance(){
+    auto DirectionFactory::getInstance() -> DirectionFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DirectionFactory::instance();
+                        return DirectionFactory::instance;
     
 }
 
 
-    public: const std::string NAME = "DIRECTION";
-
-    public: Direction* LEFT = new Direction(CommonPhoneStrings::getInstance()->LEFT, "WEST", 0, 1);
-
-    public: Direction* RIGHT = new Direction(CommonPhoneStrings::getInstance()->RIGHT, "EAST", 1, 0);
-
-    public: Direction* DOWN = new Direction(CommonPhoneStrings::getInstance()->DOWN, "SOUTH", 2, 0);
-
-    public: Direction* UP = new Direction(CommonPhoneStrings::getInstance()->UP, "NORTH", 3, 0);
-
-    public: Direction* UP_LEFT;
-
-    public: Direction* UP_RIGHT;
-
-    public: Direction* DOWN_LEFT;
-
-    public: Direction* DOWN_RIGHT;
-
-    public: Direction* NOT_BORDERED_WITH = new Direction("NOT_BORDERED_WITH", "NOT_BORDERED_WITH", 8, 0);
-
-    public: Direction* NO_DIRECTION = new Direction("NO_DIRECTION", "NO_DIRECTION", 9, 0);
-
-    public: Direction* TOP = new Direction("TOP", "TOP", 10, 0);
-
-    public: Direction* BOTTOM = new Direction("BOTTOM", "BOTTOM", 11, 0);
-
-    public: Direction* ALL_DIRECTION = new Direction("ALL_DIRECTION", "ALL_DIRECTION", 12, 0);
-
-private: DirectionFactory(){
+DirectionFactory::DirectionFactory() : LEFT(new Direction(CommonPhoneStrings::getInstance()->LEFT, "WEST", 0, 1)), RIGHT(new Direction(CommonPhoneStrings::getInstance()->RIGHT, "EAST", 1, 0)), DOWN(new Direction(CommonPhoneStrings::getInstance()->DOWN, "SOUTH", 2, 0)), UP(new Direction(CommonPhoneStrings::getInstance()->UP, "NORTH", 3, 0)), NOT_BORDERED_WITH(new Direction("NOT_BORDERED_WITH", "NOT_BORDERED_WITH", 8, 0)), NO_DIRECTION(new Direction("NO_DIRECTION", "NO_DIRECTION", 9, 0)), TOP(new Direction("TOP", "TOP", 10, 0)), BOTTOM(new Direction("BOTTOM", "BOTTOM", 11, 0)), ALL_DIRECTION(new Direction("ALL_DIRECTION", "ALL_DIRECTION", 12, 0)){
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -108,22 +87,21 @@ private: DirectionFactory(){
     
 this->UP_LEFT= new Direction("UP LEFT", stringBuffer->append(this->UP->getOtherName())->append(commonSeps->SPACE)->append(this->LEFT->getOtherName())->toString(), 4, 0);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 this->UP_RIGHT= new Direction("UP RIGHT", stringBuffer->append(this->UP->getOtherName())->append(commonSeps->SPACE)->append(this->RIGHT->getOtherName())->toString(), 5, 0);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 this->DOWN_LEFT= new Direction("DOWN LEFT", stringBuffer->append(this->DOWN->getOtherName())->append(commonSeps->SPACE)->append(this->LEFT->getOtherName())->toString(), 6, 0);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 this->DOWN_RIGHT= new Direction("DOWN RIGHT", stringBuffer->append(this->DOWN->getOtherName())->append(commonSeps->SPACE)->append(this->RIGHT->getOtherName())->toString(), 7, 0);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_CPP

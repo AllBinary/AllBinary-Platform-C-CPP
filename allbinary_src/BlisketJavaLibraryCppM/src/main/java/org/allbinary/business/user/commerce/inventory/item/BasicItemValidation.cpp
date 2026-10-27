@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMVALIDATION_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/BasicItemValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,23 +77,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
 
-class BasicItemValidation: public Validation {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const int32_t MAXWEIGHT = 14;
-
-    private: const int32_t MAXPRICE = 14;
-
-    private: ItemInterface* itemInterface;
-
-public: BasicItemValidation(ItemInterface* itemInterface){
+BasicItemValidation::BasicItemValidation(ItemInterface* itemInterface) : logUtil(LogUtil::getInstance()){
 this->itemInterface= itemInterface;
     
 }
 
 
-    public: bool isValid(){
+    auto BasicItemValidation::isValid() -> bool{
 
         try {
             
@@ -430,10 +431,10 @@ this->itemInterface= itemInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -449,7 +450,7 @@ this->itemInterface= itemInterface;
 }
 
 
-    public: std::string validationInfo(){
+    auto BasicItemValidation::validationInfo() -> std::string{
 
         try {
             
@@ -461,7 +462,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getId()->length() < 1 || this->itemInterface->getId()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Id is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Id is invalid. Must be number < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -486,7 +487,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getNumber()->length() < 1 || this->itemInterface->getNumber()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Number of items is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Number of items is invalid. Must be number < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -508,7 +509,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getInBaskets()->length() < 1 || this->itemInterface->getInBaskets()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Number in baskets is invalid. Must be < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Number in baskets is invalid. Must be < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -530,7 +531,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getWeight()->length() < 1 || this->itemInterface->getWeight()->length() > this->MAXWEIGHT)
                         
                                     {
-                                    stringBuffer->append("Weight value is invalid. Must be < " +this->MAXWEIGHT +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Weight value is invalid. Must be < ") +JavaString::valueOf(this->MAXWEIGHT)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -552,7 +553,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getEnabled()->length() < 1 || this->itemInterface->getEnabled()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer->append("For Sale value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("For Sale value is invalid. Must be < ") +JavaString::valueOf(AbSqlData::MAXSTRING)) +JavaString::valueOf(" and > 0 characters long.<br />"));
     
 
                                     }
@@ -563,7 +564,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getNewOrUsed()->length() < 1 || this->itemInterface->getNewOrUsed()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer->append("New Or Used value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("New Or Used value is invalid. Must be < ") +JavaString::valueOf(AbSqlData::MAXSTRING)) +JavaString::valueOf(" and > 0 characters long.<br />"));
     
 
                                     }
@@ -574,7 +575,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getSummary()->length() < 1 || this->itemInterface->getSummary()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer->append("Summary value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Summary value is invalid. Must be < ") +JavaString::valueOf(AbSqlData::MAXSTRING)) +JavaString::valueOf(" and > 0 characters long.<br />"));
     
 
                                     }
@@ -585,7 +586,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getDescription()->length() < 1 || this->itemInterface->getDescription()->length() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer->append("Description value is invalid. Must be < " +AbSqlData::MAXBLOB +" and > 0 characters long.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Description value is invalid. Must be < ") +JavaString::valueOf(AbSqlData::MAXBLOB)) +JavaString::valueOf(" and > 0 characters long.<br />"));
     
 
                                     }
@@ -596,7 +597,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getKeywords()->length() < 1 || this->itemInterface->getKeywords()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer->append("Keywords value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Keywords value is invalid. Must be < ") +JavaString::valueOf(AbSqlData::MAXSTRING)) +JavaString::valueOf(" and > 0 characters long.<br />"));
     
 
                                     }
@@ -607,7 +608,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getCategory()->length() < 1 || this->itemInterface->getCategory()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer->append("Category value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Category value is invalid. Must be < ") +JavaString::valueOf(AbSqlData::MAXSTRING)) +JavaString::valueOf(" and > 0 characters long.<br />"));
     
 
                                     }
@@ -618,7 +619,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getType()->length() < 1 || this->itemInterface->getType()->length() > AbSqlData::MAXSTRING)
                         
                                     {
-                                    stringBuffer->append("Type value is invalid. Must be < " +AbSqlData::MAXSTRING +" and > 0 characters long.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Type value is invalid. Must be < ") +JavaString::valueOf(AbSqlData::MAXSTRING)) +JavaString::valueOf(" and > 0 characters long.<br />"));
     
 
                                     }
@@ -629,7 +630,7 @@ this->itemInterface= itemInterface;
                                  || !this->itemInterface->getPrice()->isValid())
                         
                                     {
-                                    stringBuffer->append("Price value is invalid. Must be < " +this->MAXPRICE +" and > 0 in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Price value is invalid. Must be < ") +JavaString::valueOf(this->MAXPRICE)) +JavaString::valueOf(" and > 0 in length.<br />"));
     
 
                                     }
@@ -640,7 +641,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getCustoms()->length() < 1 || this->itemInterface->getCustoms()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Custom items value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Custom items value is invalid. Must be number < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -651,7 +652,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getDownloads()->length() < 1 || this->itemInterface->getDownloads()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Downloadable item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Downloadable item value is invalid. Must be number < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -662,7 +663,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getGroups()->length() < 1 || this->itemInterface->getGroups()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Group item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Group item value is invalid. Must be number < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -673,7 +674,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getOptions()->length() < 1 || this->itemInterface->getOptions()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Option item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Option item value is invalid. Must be number < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -684,7 +685,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getPermissions()->length() < 1 || this->itemInterface->getPermissions()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Permission item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Permission item value is invalid. Must be number < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -695,7 +696,7 @@ this->itemInterface= itemInterface;
                                  || this->itemInterface->getSpecials()->length() < 1 || this->itemInterface->getSpecials()->length() > AbSqlData::MAXNUM)
                         
                                     {
-                                    stringBuffer->append("Special item value is invalid. Must be number < " +AbSqlData::MAXNUM +" and > 0 digits.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf("Special item value is invalid. Must be number < ") +JavaString::valueOf(AbSqlData::MAXNUM)) +JavaString::valueOf(" and > 0 digits.<br />"));
     
 
                                     }
@@ -711,7 +712,7 @@ this->itemInterface= itemInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -730,7 +731,7 @@ this->itemInterface= itemInterface;
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto BasicItemValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -740,7 +741,7 @@ this->itemInterface= itemInterface;
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto BasicItemValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -750,7 +751,6 @@ this->itemInterface= itemInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMVALIDATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_NULLUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_NULLUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/NullUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,43 +62,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //ActualPlatform
-/*actual*/ class NullUtil
-            : public Object
-         {
 
-    private: static NullUtil* instance() { static std::unique_ptr<NullUtil> value(new NullUtil()); return value.get(); }
+NullUtil::NullUtil() : NULL_OBJECT(new Object()), NULL_CLASS(this->NULL_OBJECT->getClass()), NULL_OBJECT_ARRAY({}), NULL_CHAR_ARRAY(std::vector<char>(0)), NULL_BYTE_ARRAY(std::vector<int8_t>(0)), NULL_SHORT_ARRAY_ARRAY(std::vector<std::vector<int16_t>>(0, std::vector<int16_t>(0))), NULL_INT_ARRAY(std::vector<int32_t>(0)), NULL_INT_ARRAY_ARRAY(std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0))), NULL_INT_ARRAY_ARRAY_ARRAY(std::vector<std::vector<std::vector<int32_t>>>(0, std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0)))), NULL_FLOAT_ARRAY(std::vector<float>(0)) {
+        }
+        auto NullUtil::instance_owner() -> NullUtil* { static std::unique_ptr<NullUtil> value(new NullUtil()); return value.get(); }
+NullUtil* NullUtil::instance = NullUtil::instance_owner();
 
-    /*actual*/ public: static NullUtil* getInstance(){
+    /*actual*/ auto NullUtil::getInstance() -> NullUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::instance();
+                        return NullUtil::instance;
     
 }
 
 
-    /*actual*/ public: Object* NULL_OBJECT = new Object();
 
-    /*actual*/ public: Class* NULL_CLASS = this->NULL_OBJECT->getClass();
 
-    /*actual*/ public: const std::vector<Object*> NULL_OBJECT_ARRAY = {};
-
-    /*actual*/ public: const std::vector<char> NULL_CHAR_ARRAY = std::vector<char>(0);
-
-    /*actual*/ public: const std::vector<int8_t> NULL_BYTE_ARRAY = std::vector<int8_t>(0);
-
-    /*actual*/ public: const std::vector<std::vector<int16_t>> NULL_SHORT_ARRAY_ARRAY = std::vector<std::vector<int16_t>>(0, std::vector<int16_t>(0));
-
-    /*actual*/ public: const std::vector<int32_t> NULL_INT_ARRAY = std::vector<int32_t>(0);
-
-    /*actual*/ public: const std::vector<std::vector<int32_t>> NULL_INT_ARRAY_ARRAY = std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0));
-
-    /*actual*/ public: const std::vector<std::vector<std::vector<int32_t>>> NULL_INT_ARRAY_ARRAY_ARRAY = std::vector<std::vector<std::vector<int32_t>>>(0, std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0)));
-
-    /*actual*/ public: const std::vector<float> NULL_FLOAT_ARRAY = std::vector<float>(0);
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_NULLUTIL_CPP

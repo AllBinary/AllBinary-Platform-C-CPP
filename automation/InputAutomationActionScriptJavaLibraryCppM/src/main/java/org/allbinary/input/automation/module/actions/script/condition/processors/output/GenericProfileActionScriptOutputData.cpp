@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_GENERICPROFILEACTIONSCRIPTOUTPUTDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_GENERICPROFILEACTIONSCRIPTOUTPUTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/GenericProfileActionScriptOutputData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericProfileActionScriptOutputData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_NAME";
-
-    public: static inline std::string TYPE = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_TYPE";
-
-private: GenericProfileActionScriptOutputData(){
+GenericProfileActionScriptOutputData::GenericProfileActionScriptOutputData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_GENERICPROFILEACTIONSCRIPTOUTPUTDATA_CPP

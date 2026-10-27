@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDBASICTITLEPROGRESSBAR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDBASICTITLEPROGRESSBAR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/AndroidBasicTitleProgressBar.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -137,37 +147,8 @@
 #include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarSetProgressRunnable.h"
 #include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarPortionSetProgressRunnable.h"
 
-class AndroidBasicTitleProgressBar: public ProgressCanvas, public DisplayChangeEventListener {
 
-    public: static inline const std::string RESOURCE = "ProgressImage";
-
-    private: static inline int32_t background= 0;
-
-    public: static void setBackgroundResource(int32_t background){
-AndroidBasicTitleProgressBar::background= background;
-    
-}
-
-
-    private: ARunnable* showTitleProgressBarRunnable = NullRunnable::getInstance();
-
-    private: ARunnable* dismissTitleProgressBarRunnable = NullRunnable::getInstance();
-
-    private: ARunnable* titleProgressDialogPortionSetProgressRunnable = NullRunnable::getInstance();
-
-    private: ARunnable* titleProgressDialogSetProgressRunnable = NullRunnable::getInstance();
-
-    private: Activity* midletActivity = AndroidUtil::NULL_ACTIVITY;
-
-    private: int32_t portion = 0;
-
-    private: const std::vector<Image*> IMAGE = std::vector<Image*>(4);
-
-    private: Image* image = NullImage::NULL_IMAGE;
-
-    private: Animation* animation = NullAnimationFactory::getFactoryInstance()->getInstance(0);
-
-: AndroidBasicTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
+AndroidBasicTitleProgressBar::AndroidBasicTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor), showTitleProgressBarRunnable(NullRunnable::getInstance()), dismissTitleProgressBarRunnable(NullRunnable::getInstance()), titleProgressDialogPortionSetProgressRunnable(NullRunnable::getInstance()), titleProgressDialogSetProgressRunnable(NullRunnable::getInstance()), midletActivity(AndroidUtil::NULL_ACTIVITY), IMAGE(std::vector<Image*>(4)), image(NullImage::NULL_IMAGE), animation(NullAnimationFactory::getFactoryInstance()->getInstance(0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -195,7 +176,7 @@ this->IMAGE[index]= NullImage::NULL_IMAGE;
 }
 
 
-    private: void init(){
+    auto AndroidBasicTitleProgressBar::init() -> void{
 
         try {
             
@@ -215,14 +196,14 @@ this->image= ImageCacheFactory::getInstance()->getWithKey(AndroidBasicTitleProgr
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e);
     
 }
 
 }
 
 
-    public: void initActivity(Activity* activity){
+    auto AndroidBasicTitleProgressBar::initActivity(Activity* activity) -> void{
 
         try {
             
@@ -250,14 +231,14 @@ this->updateCurrent();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, &e);
     
 }
 
 }
 
 
-    private: void updateCurrent(){
+    auto AndroidBasicTitleProgressBar::updateCurrent() -> void{
 
         try {
             
@@ -318,20 +299,20 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UPDATE, &e);
     
 }
 
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto AndroidBasicTitleProgressBar::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
+    auto AndroidBasicTitleProgressBar::onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) -> void{
 
         try {
             this->loadProgressImages();
@@ -342,7 +323,7 @@ this->updateCurrent();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT);
+this->logUtil->putF(this->commonStrings->EXCEPTION_LABEL +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->canvasStrings->ON_DISPLAY_CHANGE_EVENT);
     
 this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
@@ -351,7 +332,7 @@ this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
 }
 
 
-    private: void loadProgressImages(){
+    auto AndroidBasicTitleProgressBar::loadProgressImages() -> void{
 
         try {
             
@@ -382,7 +363,7 @@ this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
                 //: 
 } catch(IllegalArgumentException& e) 
             {
-this->logUtil.putF("IllegalArgumentException " +ExceptionUtil::getInstance()->getStackTrace(&e), this, "loadProgressImages");
+this->logUtil->putF(JavaString::valueOf("IllegalArgumentException ") +JavaString::valueOf(ExceptionUtil::getInstance()->getStackTrace(&e)), this, "loadProgressImages");
     
 this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
@@ -391,7 +372,7 @@ this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
                 //: 
  catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +ExceptionUtil::getInstance()->getStackTrace(&e), this, "loadProgressImages");
+this->logUtil->putF(this->commonStrings->EXCEPTION_LABEL +ExceptionUtil::getInstance()->getStackTrace(&e), this, "loadProgressImages");
     
 this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
     
@@ -400,7 +381,7 @@ this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
 }
 
 
-    public: bool isInitialized(){
+    auto AndroidBasicTitleProgressBar::isInitialized() -> bool{
 
                         if(this->midletActivity != AndroidUtil::NULL_ACTIVITY)
                         
@@ -427,12 +408,12 @@ this->animation= NullAnimationFactory::getFactoryInstance()->getInstance(0);
 }
 
 
-    public: void start(){
+    auto AndroidBasicTitleProgressBar::start() -> void{
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START_METHOD_NAME);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START_METHOD_NAME);
     
-super.start();
+ProgressCanvas::start();
     
 this->midletActivity->runOnUiThread(this->showTitleProgressBarRunnable);
     
@@ -440,39 +421,39 @@ this->midletActivity->runOnUiThread(this->showTitleProgressBarRunnable);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->START_METHOD_NAME, &e);
     
 }
 
 }
 
 
-    public: void end(){
+    auto AndroidBasicTitleProgressBar::end() -> void{
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.END_METHOD_NAME);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->END_METHOD_NAME);
     
 this->midletActivity->runOnUiThread(this->dismissTitleProgressBarRunnable);
     
-super.end();
+ProgressCanvas::end();
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->END_METHOD_NAME, &e);
     
 }
 
 }
 
 
-    public: void addEarlyPortion(int32_t value, std::string text, int32_t index){
+    auto AndroidBasicTitleProgressBar::addEarlyPortion(int32_t value, std::string text, int32_t index) -> void{
 
         try {
             this->portion= value;
     
-super.addEarlyPortion(value, text, index);
+ProgressCanvas::addEarlyPortion(value, text, index);
     
 
                         if(this->midletActivity != AndroidUtil::NULL_ACTIVITY)
@@ -487,19 +468,19 @@ super.addEarlyPortion(value, text, index);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->ADD_PORTION, &e);
     
 }
 
 }
 
 
-    public: void addPortion(int32_t value, std::string text, int32_t index){
+    auto AndroidBasicTitleProgressBar::addPortion(int32_t value, std::string text, int32_t index) -> void{
 
         try {
             this->portion= value;
     
-super.addPortion(value, text, index);
+ProgressCanvas::addPortion(value, text, index);
     
 this->midletActivity->runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
     
@@ -507,19 +488,19 @@ this->midletActivity->runOnUiThread(this->titleProgressDialogPortionSetProgressR
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->ADD_PORTION, &e);
     
 }
 
 }
 
 
-    public: void addNormalPortion(int32_t value, std::string text){
+    auto AndroidBasicTitleProgressBar::addNormalPortion(int32_t value, std::string text) -> void{
 
         try {
             this->portion= value;
     
-super.addNormalPortion(value, text);
+ProgressCanvas::addNormalPortion(value, text);
     
 this->midletActivity->runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
     
@@ -527,17 +508,17 @@ this->midletActivity->runOnUiThread(this->titleProgressDialogPortionSetProgressR
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->ADD_PORTION, &e);
     
 }
 
 }
 
 
-    protected: void setValue(int32_t value){
+    auto AndroidBasicTitleProgressBar::setValue(int32_t value) -> void{
 
         try {
-            super.setValue(value);
+            ProgressCanvas::setValue(value);
     
 this->midletActivity->runOnUiThread(this->titleProgressDialogSetProgressRunnable);
     
@@ -545,20 +526,20 @@ this->midletActivity->runOnUiThread(this->titleProgressDialogSetProgressRunnable
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "setValue", &e);
     
 }
 
 }
 
 
-    public: void waitUntilDisplayed(){
+    auto AndroidBasicTitleProgressBar::waitUntilDisplayed() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void setImages(int32_t index, int32_t lastWidth, int32_t lastHeight){
+    auto AndroidBasicTitleProgressBar::setImages(int32_t index, int32_t lastWidth, int32_t lastHeight) -> void{
 
     Image* image = this->image;;
     
@@ -606,8 +587,8 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void initOpenGL(Graphics* graphics){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
+    auto AndroidBasicTitleProgressBar::initOpenGL(Graphics* graphics) -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->INIT);
     
 this->image= GameFeatureImageCacheFactory::getInstance()->getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
     
@@ -642,8 +623,8 @@ this->updateCurrent();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Graphics* graphics){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.UPDATE);
+    auto AndroidBasicTitleProgressBar::update(Graphics* graphics) -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->UPDATE);
     
 this->initOpenGL(graphics);
     
@@ -678,7 +659,7 @@ this->image= GameFeatureImageCacheFactory::getInstance()->getWithKey(AndroidBasi
 
                 //@Throws(Exception.constructor)
             
-    private: Image* getImage(int32_t index){
+    auto AndroidBasicTitleProgressBar::getImage(int32_t index) -> Image*{
 
     Image* image = NullImage::NULL_IMAGE;;
     
@@ -706,39 +687,45 @@ this->image= GameFeatureImageCacheFactory::getInstance()->getWithKey(AndroidBasi
 }
 
 
-    public: void paint2(Graphics* graphics){
+    auto AndroidBasicTitleProgressBar::paint2(Graphics* graphics) -> void{
 
         try {
             this->animation->paintXY(graphics, 0, 20);
     
-super.paint2(graphics);
+ProgressCanvas::paint2(graphics);
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.PAINT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->canvasStrings->PAINT, &e);
     
 }
 
 }
 
 
-    protected: void setBackground(bool background){
-super.setBackground(background);
+    auto AndroidBasicTitleProgressBar::setBackgroundResource(int32_t background) -> void{
+AndroidBasicTitleProgressBar::background= background;
+    
+}
+
+
+    auto AndroidBasicTitleProgressBar::setBackground(bool background) -> void{
+ProgressCanvas::setBackground(background);
     
 this->updateCurrent();
     
 }
 
 
-    protected: void setPortion(int32_t portion){
+    auto AndroidBasicTitleProgressBar::setPortion(int32_t portion) -> void{
 this->portion= portion;
     
 }
 
 
-    protected: int32_t getPortion(){
+    auto AndroidBasicTitleProgressBar::getPortion() -> int32_t{
 
 
 
@@ -748,7 +735,6 @@ this->portion= portion;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDBASICTITLEPROGRESSBAR_CPP

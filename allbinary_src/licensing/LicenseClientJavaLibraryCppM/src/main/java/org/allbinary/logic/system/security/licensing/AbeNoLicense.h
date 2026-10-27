@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class StringUtil;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -57,18 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
-#include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
-#include "org/allbinary/logic/system/security/licensing/LicenseType.h"
+class LicenseTypeFactory;
+class LicenseType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbeNoLicense
-            : public Object
+            : public virtual Object
         , public AbeLicenseInterface {
 
-    private: static AbeNoLicense* abeNoLicense() { static std::unique_ptr<AbeNoLicense> value(new AbeNoLicense()); return value.get(); }
+    private: static AbeNoLicense* abeNoLicense_owner();
+    private: static AbeNoLicense* abeNoLicense;
 
     public: static AbeNoLicense* getInstance();
 
-    public: BasicArrayList* serverVector = new BasicArrayListD();
+    public: BasicArrayList* serverVector;
 
 private: AbeNoLicense();
 
@@ -92,3 +96,28 @@ private: AbeNoLicense();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABENOLICENSE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h")
+#include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h")
+#include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/LicenseType.h")
+#include "org/allbinary/logic/system/security/licensing/LicenseType.h"
+#endif
+
+        #endif
+    

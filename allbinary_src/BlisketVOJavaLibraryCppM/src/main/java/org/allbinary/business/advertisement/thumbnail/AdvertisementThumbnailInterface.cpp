@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_THUMBNAIL_ADVERTISEMENTTHUMBNAILINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_THUMBNAIL_ADVERTISEMENTTHUMBNAILINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/thumbnail/AdvertisementThumbnailInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,9 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementThumbnailInterface: public AdvertisementImageInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_THUMBNAIL_ADVERTISEMENTTHUMBNAILINTERFACE_CPP

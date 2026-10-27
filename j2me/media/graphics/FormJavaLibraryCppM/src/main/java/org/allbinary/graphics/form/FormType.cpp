@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/FormType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FormType
-            : public Object
-         {
 
-    std::string name;
-
-public: FormType(std::string name){
+FormType::FormType(std::string name){
 this->name= name;
     
 }
 
 
-    public: std::string toString(){
+    auto FormType::toString() -> std::string{
 
 
 
@@ -67,7 +72,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPE_CPP

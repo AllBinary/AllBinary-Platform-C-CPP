@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,30 +34,14 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/input/InputFactory.h>
-
-      
-#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class InputFactory;
+class InputToGameKeyMapping;
+class NullUtil;
+class LogUtil;
+class StringMaker;
+class CommonLabels;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -71,17 +60,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
+        class TouchButtonInput;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicTouchInputFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static BasicTouchInputFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     public: TouchButtonInput* SPECIAL_BUTTON_SEVEN_TESTING_ONLY;
 
@@ -111,7 +104,7 @@ class BasicTouchInputFactory
 
     private: bool initialized = false;
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
 private: BasicTouchInputFactory();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -130,3 +123,37 @@ private: BasicTouchInputFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/InputFactory.h>)
+#include <org/allbinary/game/input/InputFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/InputToGameKeyMapping.h>)
+#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonInput.h")
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#endif
+
+        #endif
+    

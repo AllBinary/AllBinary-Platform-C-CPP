@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_PAYMENTTAG_CPP
+        #define ADMIN_TAGS_PAYMENTTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/PaymentTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,15 +90,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class PaymentTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string storeName;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-public: PaymentTag(){
+PaymentTag::PaymentTag() : logUtil(LogUtil::getInstance()){
 this->setTagHelperFactory(new PaymentHelperFactory());
     
 this->setTagRequestHelperFactory(new PaymentHelperFactory());
@@ -96,7 +99,7 @@ this->setTagRequestHelperFactory(new PaymentHelperFactory());
 }
 
 
-    public: void setStoreName(std::string value){
+    auto PaymentTag::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 }
@@ -104,7 +107,7 @@ this->storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string select(){
+    auto PaymentTag::select() -> std::string{
 
         try {
             
@@ -145,10 +148,10 @@ this->storeName= value;
     std::string error = "Failed to select Payment";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "selectPayment()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "selectPayment()", &e);
     
 
                                     }
@@ -166,7 +169,7 @@ this->storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto PaymentTag::doStartTag() -> int32_t{
 
         try {
             
@@ -191,10 +194,10 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
     std::string output = this->select();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -213,7 +216,7 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                         }
@@ -260,7 +263,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_PAYMENTTAG_CPP

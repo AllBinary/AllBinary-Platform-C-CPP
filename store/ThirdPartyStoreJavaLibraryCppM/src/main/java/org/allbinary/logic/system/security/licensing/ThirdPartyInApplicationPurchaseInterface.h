@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
+        class LockableFeature;
 
-class ThirdPartyInApplicationPurchaseInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ThirdPartyInApplicationPurchaseInterface
+            : public virtual Object
+         {
 
     public: virtual bool isPurchased(LockableFeature* lockableFeature) = 0;
 
@@ -60,8 +71,10 @@ class ThirdPartyInApplicationPurchaseInterface {
     public: virtual void onStart() = 0;
 
     public: virtual void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject) = 0;
+    public: void onActivityResult(int32_t requestCode, int32_t resultCode, const std::string& dataObject) { return onActivityResult(requestCode, resultCode, JavaString::box(dataObject)); }
 
     public: virtual void onSaveInstanceState(Object* anyType) = 0;
+    public: void onSaveInstanceState(const std::string& anyType) { return onSaveInstanceState(JavaString::box(anyType)); }
 
     public: virtual void onStop() = 0;
 
@@ -81,3 +94,13 @@ class ThirdPartyInApplicationPurchaseInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/logic/system/security/licensing/LockableFeature.h")
+#include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
+#endif
+
+        #endif
+    

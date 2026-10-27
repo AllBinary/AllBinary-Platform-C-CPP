@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDISPLAYABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDISPLAYABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/NullDisplayable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -41,33 +51,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2MEForJ2ME
-class NullDisplayable: public Canvas {
+auto NullDisplayable::SINGLETON_owner() -> NullDisplayable* { static std::unique_ptr<NullDisplayable> value(new NullDisplayable()); return value.get(); }
+NullDisplayable* NullDisplayable::SINGLETON = NullDisplayable::SINGLETON_owner();
 
-    private: static NullDisplayable* SINGLETON() { static std::unique_ptr<NullDisplayable> value(new NullDisplayable()); return value.get(); }
-
-    public: static NullDisplayable* getInstance(){
+    auto NullDisplayable::getInstance() -> NullDisplayable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullDisplayable::SINGLETON();
+                        return NullDisplayable::SINGLETON;
     
 }
 
 
-private: NullDisplayable(){
+NullDisplayable::NullDisplayable() : baseGameStatistics(GameStatisticsFactory::getInstance()){
 }
 
 
-    private: BaseGameStatistics* baseGameStatistics = GameStatisticsFactory::getInstance();
-
-    public: void paint(Graphics* graphics){
+    auto NullDisplayable::paint(Graphics* graphics) -> void{
 this->baseGameStatistics->nextRefresh();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDISPLAYABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_CPP
+        #define VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/InventoryUploadMediaUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -94,37 +104,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryUploadMediaUtil
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: MediaUtil* mediaUtil = MediaUtil::getInstance();
-
-    private: const int32_t LARGEWIDTH = 1024;
-
-    private: const int32_t LARGEHEIGHT = 1024;
-
-    private: const int32_t MEDIUMWIDTH = 256;
-
-    private: const int32_t MEDIUMHEIGHT = 256;
-
-    private: const int32_t SMALLWIDTH = 128;
-
-    private: const int32_t SMALLHEIGHT = 128;
-
-    private: const std::string SMALL = "Small";
-
-    private: const std::string MEDIUM = "Medium";
-
-    private: const std::string LARGE = "Large";
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: ItemInterface* itemInterface;
-
-public: InventoryUploadMediaUtil(StoreFrontInterface* storeFrontInterface, ItemInterface* itemInterface){
+InventoryUploadMediaUtil::InventoryUploadMediaUtil(StoreFrontInterface* storeFrontInterface, ItemInterface* itemInterface) : logUtil(LogUtil::getInstance()), mediaUtil(MediaUtil::getInstance()){
 this->storeFrontInterface= storeFrontInterface;
     
 this->itemInterface= itemInterface;
@@ -134,12 +115,12 @@ this->itemInterface= itemInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: ItemInterface* saveFiles(std::vector<int8_t> byteArray, std::string fileName, MediaData* mediaData){
+    auto InventoryUploadMediaUtil::saveFiles(std::vector<int8_t> byteArray, std::string fileName, MediaData* mediaData) -> ItemInterface*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF("Start FileName: " +fileName, this, "saveFiles()");
+                                    this->logUtil->putF(JavaString::valueOf("Start FileName: ") +JavaString::valueOf(fileName), this, "saveFiles()");
     
 
                                     }
@@ -151,7 +132,7 @@ this->itemInterface= itemInterface;
                                     
 
 
-                            throw new Exception("Image File Name Was Null");
+                            throw Exception("Image File Name Was Null");
                     
 
                                     }
@@ -181,12 +162,12 @@ stringBuffer->append(this->itemInterface->getCategory());
                                     
 
 
-                            throw new Exception("Unable to save file to non existant directory");
+                            throw Exception("Unable to save file to non existant directory");
                     
 
                                     }
                                 
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(fullPath);
     
@@ -200,10 +181,10 @@ stringBuffer->append(mediaData->getName());
     AbFile* originalImageFile = AbFile::createAbFile(stringBuffer->toString());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF("Saving Original Image: " +originalImageFile, this, "saveFiles()");
+                                    this->logUtil->putF(JavaString::valueOf("Saving Original Image: ") +JavaString::valueOf(originalImageFile), this, "saveFiles()");
     
 
                                     }
@@ -219,10 +200,10 @@ fileUtil->write(new ByteArrayInputStream(byteArray), originalImageFile);
     bool isMediaSupported = uploadMedia->isWriterSupported(mediaData->getName()) || uploadMedia->isReaderSupported(mediaData->getName());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Is Image Type: ");
     
@@ -250,10 +231,10 @@ this->setFileNames(fileName);
     bool isMediaResizable = uploadMedia->isWriterMedia(mediaData->getName(), MediaTypeData::getInstance()->RESIZABLE_MEDIA);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Is ");
     
@@ -277,10 +258,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "saveFiles()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF("Saving Small Image: " +this->itemInterface->getSmallImage(), this, "saveFiles()");
+                                    this->logUtil->putF(JavaString::valueOf("Saving Small Image: ") +JavaString::valueOf(this->itemInterface->getSmallImage()), this, "saveFiles()");
     
 
                                     }
@@ -299,10 +280,10 @@ this->mediaUtil->saveImageFile(originalImageFile, this->itemInterface->getLargeI
     bool isConvertable = mediaData->isConvertableTo(defaultMediaData);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("Converting: ");
     
@@ -326,10 +307,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "saveFiles()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF("Saving Small Image: " +this->itemInterface->getSmallImage(), this, "saveFiles()");
+                                    this->logUtil->putF(JavaString::valueOf("Saving Small Image: ") +JavaString::valueOf(this->itemInterface->getSmallImage()), this, "saveFiles()");
     
 
                                     }
@@ -375,7 +356,7 @@ fileUtil->write(new ByteArrayInputStream(byteArray), largeImageFile);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     
@@ -395,7 +376,7 @@ this->logUtil->putF(commonStrings->END, this, "saveFiles()");
 }
 
 
-    private: void setFileNames(std::string fileName){
+    auto InventoryUploadMediaUtil::setFileNames(std::string fileName) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -408,7 +389,7 @@ stringBuffer->append(MediaData::getDefault()->getName());
 
     std::string END = stringBuffer->toString();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(fileName);
     
@@ -421,7 +402,7 @@ stringBuffer->append(END);
     
 this->itemInterface->setSmallImage(newImageFileName);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(fileName);
     
@@ -433,7 +414,7 @@ newImageFileName= stringBuffer->toString();
     
 this->itemInterface->setMediumImage(newImageFileName);
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(fileName);
     
@@ -448,7 +429,6 @@ this->itemInterface->setLargeImage(newImageFileName);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_CPP

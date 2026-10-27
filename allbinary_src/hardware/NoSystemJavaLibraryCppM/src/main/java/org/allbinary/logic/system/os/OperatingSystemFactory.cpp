@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/OperatingSystemFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,32 +70,25 @@
         #include "org/allbinary/logic/system/os/NoOperatingSystem.h"
 #include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
 
-class OperatingSystemFactory
-            : public Object
-         {
+auto OperatingSystemFactory::instance_owner() -> OperatingSystemFactory* { static std::unique_ptr<OperatingSystemFactory> value(new OperatingSystemFactory()); return value.get(); }
+OperatingSystemFactory* OperatingSystemFactory::instance = OperatingSystemFactory::instance_owner();
 
-    private: static OperatingSystemFactory* instance() { static std::unique_ptr<OperatingSystemFactory> value(new OperatingSystemFactory()); return value.get(); }
-
-    public: static OperatingSystemFactory* getInstance(){
+    auto OperatingSystemFactory::getInstance() -> OperatingSystemFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OperatingSystemFactory::instance();
+                        return OperatingSystemFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GenericOperatingSystem* genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
-
-private: OperatingSystemFactory(){
+OperatingSystemFactory::OperatingSystemFactory() : logUtil(LogUtil::getInstance()), genericOperatingSystem(NoOperatingSystem::NO_OPERATING_SYSTEM){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: GenericOperatingSystem* getOperatingSystemInstance(){
+    auto OperatingSystemFactory::getOperatingSystemInstance() -> GenericOperatingSystem*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -115,7 +118,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMFACTORY_CPP

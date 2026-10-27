@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -57,13 +56,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseTouchInput
-            : public Object
+            : public virtual Object
          {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil;
 
 public: BaseTouchInput();
 
@@ -77,3 +80,19 @@ public: BaseTouchInput();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+
+        #endif
+    

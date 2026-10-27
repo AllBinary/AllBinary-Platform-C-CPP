@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEGAMEINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEGAMEINPUTMAPPING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
-
-      
+class InputToGameKeyMapping;
 
 
 
@@ -49,11 +52,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/J2MEGameInputMapping.h"
-#include "org/allbinary/game/input/NormalJ2MEDefaultGameInputMapping.h"
+class NormalJ2MEDefaultGameInputMapping;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NormalJ2MEGameInputMapping: public J2MEGameInputMapping {
 
-    protected: InputToGameKeyMapping* getDefault();
+
+            
+    public: NormalJ2MEGameInputMapping();
+        
+    /*protected*/ public: InputToGameKeyMapping* getDefault();
 
 };
 
@@ -61,3 +72,19 @@ class NormalJ2MEGameInputMapping: public J2MEGameInputMapping {
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEGAMEINPUTMAPPING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEGAMEINPUTMAPPING_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEGAMEINPUTMAPPING_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/mapping/InputToGameKeyMapping.h>)
+#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
+#endif
+#if __has_include("org/allbinary/game/input/J2MEGameInputMapping.h")
+#include "org/allbinary/game/input/J2MEGameInputMapping.h"
+#endif
+#if __has_include("org/allbinary/game/input/NormalJ2MEDefaultGameInputMapping.h")
+#include "org/allbinary/game/input/NormalJ2MEDefaultGameInputMapping.h"
+#endif
+
+        #endif
+    

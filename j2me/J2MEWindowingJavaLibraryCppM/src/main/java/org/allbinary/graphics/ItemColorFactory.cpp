@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/ItemColorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ItemColorFactory
-            : public Object
-         {
 
-    private: static ItemColorFactory* instance() { static std::unique_ptr<ItemColorFactory> value(new ItemColorFactory()); return value.get(); }
+ItemColorFactory::ItemColorFactory() : INVERT_PAINT(static_cast<int32_t>(0xFF000000)), PAINT(static_cast<int32_t>(0xFFe07718)) {
+        }
+        auto ItemColorFactory::instance_owner() -> ItemColorFactory* { static std::unique_ptr<ItemColorFactory> value(new ItemColorFactory()); return value.get(); }
+ItemColorFactory* ItemColorFactory::instance = ItemColorFactory::instance_owner();
 
-    public: static ItemColorFactory* getInstance(){
+    auto ItemColorFactory::getInstance() -> ItemColorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ItemColorFactory::instance();
+                        return ItemColorFactory::instance;
     
 }
 
 
-    public: int32_t INVERT_PAINT = static_cast<int32_t>(0xFF000000);
 
-    public: int32_t PAINT = static_cast<int32_t>(0xFFe07718);
 
-    public: int32_t TEXT_FIELD_NO_FOCUS = 0x7F7F7F;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_ITEMCOLORFACTORY_CPP

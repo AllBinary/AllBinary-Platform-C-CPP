@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGRTSFORMINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGRTSFORMINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/BuildingRTSFormInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -152,31 +162,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/form/RTSFormInput.h"
 
-class BuildingRTSFormInput: public RTSFormInput {
 
-    private: bool isUnitProducer;
-
-    private: GameNotificationEvent* buildOnPathGameNotificationEvent;
-
-    private: GameNotificationEvent* spotTakenGameNotificationEvent;
-
-    private: GameNotificationEvent* selectBuildSpotGameNotificationEvent;
-
-    private: GameNotificationEvent* roadCollisionGameNotificationEvent;
-
-    private: GameNotificationEvent* noMoneyGameNotificationEvent;
-
-    private: GameNotificationEvent* buildingCollisionGameNotificationEvent;
-
-    private: GameNotificationEvent* structureToCloseCollisionGameNotificationEvent;
-
-    private: GameNotificationEvent* buildingGameNotificationEvent;
-
-    private: GameNotificationEvent* mapEdgeGameNotificationEvent;
-
-    private: DropCellPositionHistory* dropCellPositionHistory = DropCellPositionHistory::getInstance();
-
-public: BuildingRTSFormInput(std::vector<Group*> groupInterface, bool isUnitProducer) : RTSFormInput(groupInterface){
+BuildingRTSFormInput::BuildingRTSFormInput(std::vector<Group*> groupInterface, bool isUnitProducer) : RTSFormInput(groupInterface), dropCellPositionHistory(DropCellPositionHistory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -214,8 +201,8 @@ this->mapEdgeGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrin
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto BuildingRTSFormInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+RTSFormInput::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
@@ -246,15 +233,15 @@ this->mapEdgeGameNotificationEvent->setBasicColorP(geographicMapInterface->getFo
 
                 //@Throws(Exception.constructor)
             
-    public: void processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex){
-super.process(layerManager);
+    auto BuildingRTSFormInput::processGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex) -> void{
+RTSFormInput::process(layerManager);
     
 this->buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemIndex);
     
 }
 
 
-    public: bool isPositionBlocked(){
+    auto BuildingRTSFormInput::isPositionBlocked() -> bool{
 
 
 
@@ -264,7 +251,7 @@ this->buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemInde
 }
 
 
-    private: bool isDemoLocked(ABCustomItem* item){
+    auto BuildingRTSFormInput::isDemoLocked(ABCustomItem* item) -> bool{
 
     LayerInterfaceFactoryImageItem* factoryItem = dynamic_cast<LayerInterfaceFactoryImageItem*>(item);;
     
@@ -299,11 +286,11 @@ this->buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemInde
 
                 //@Throws(Exception.constructor)
             
-    public: void buildFromMotionInput(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex){
+    auto BuildingRTSFormInput::buildFromMotionInput(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t itemIndex) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.putF(commonStrings->START, this, "buildFromMotionInput");
+this->logUtil->putF(commonStrings->START, this, "buildFromMotionInput");
     
 
                         if(layerManager == 
@@ -314,7 +301,7 @@ this->logUtil.putF(commonStrings->START, this, "buildFromMotionInput");
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -381,7 +368,7 @@ LockedFeatureNotificationUtil::getInstance()->fireWithColor(geographicMapInterfa
     
 rtsLayer->setPosition(cellPoint->getX(), cellPoint->getY(), cellPoint->getZ());
     
-rtsLayer->geographicMapCellPositionAreaBase.update(geographicMapInterface);
+rtsLayer->geographicMapCellPositionAreaBase->update(geographicMapInterface);
     
 
                         }
@@ -450,8 +437,8 @@ this->attemptBuild(rtsPlayerLayerInterface, layerManager, rtsLayer, itemIndex);
 
                 //@Throws(Exception.constructor)
             
-    protected: bool attemptBuild(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex){
-this->logUtil.putF((new StringMaker())->append("Layer: ")->append(StringUtil::getInstance()->toString(layerInterface))->toString(), this, "attemptBuild");
+    auto BuildingRTSFormInput::attemptBuild(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex) -> bool{
+this->logUtil->putF((new StringMaker())->append("Layer: ")->append(StringUtil::getInstance()->toString(layerInterface))->toString(), this, "attemptBuild");
     
 
     GeographicMapCellPositionAreaBase* geographicMapCellPositionArea = layerInterface->geographicMapCellPositionAreaBase;;
@@ -540,7 +527,7 @@ stringBuffer->append(" with ");
     
 stringBuffer->appendint(capital->getTotalMoney());
     
-this->logUtil.putF(stringBuffer->toString(), this, "attemptBuild");
+this->logUtil->putF(stringBuffer->toString(), this, "attemptBuild");
     
 
                         if(cost <= capital->getTotalMoney())
@@ -589,7 +576,7 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: bool isBuildAttemptValid(RTSPlayerLayerInterface* rtsPlayerLayerInterface, RTSLayer* layerInterface){
+    auto BuildingRTSFormInput::isBuildAttemptValid(RTSPlayerLayerInterface* rtsPlayerLayerInterface, RTSLayer* layerInterface) -> bool{
 
     GeographicMapCellPositionAreaBase* geographicMapCellPositionArea = layerInterface->geographicMapCellPositionAreaBase;;
     
@@ -683,7 +670,7 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    protected: void add(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface){
+    auto BuildingRTSFormInput::add(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface) -> void{
 
     GeographicMapCellPositionAreaBase* geographicMapCellPositionArea = layerInterface->geographicMapCellPositionAreaBase;;
     
@@ -713,7 +700,7 @@ rtsPlayerLayerInterface->add(BuildingSound::getInstance());
 }
 
 
-    private: bool isSurroundingCellsOffMap(RTSLayer* layerInterface){
+    auto BuildingRTSFormInput::isSurroundingCellsOffMap(RTSLayer* layerInterface) -> bool{
 
     GeographicMapCellPositionAreaBase* geographicMapCellPositionArea = layerInterface->geographicMapCellPositionAreaBase;;
     
@@ -744,7 +731,7 @@ stringBuffer->append(" surroundList: ");
     
 stringBuffer->append(StringUtil::getInstance()->toString(surroundList));
     
-this->logUtil.putF(stringBuffer->toString(), this, "isSurroundingCellsOffMap");
+this->logUtil->putF(stringBuffer->toString(), this, "isSurroundingCellsOffMap");
     
 
     bool isSurroundOffMap = false;;
@@ -793,7 +780,6 @@ this->logUtil.putF(stringBuffer->toString(), this, "isSurroundingCellsOffMap");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGRTSFORMINPUT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATION_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,25 +78,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/GameConfigurationSingleton.h"
 
-class GameConfiguration
-            : public Object
-         {
+int32_t GameConfiguration::MIN_VALUE = int32_t(Integer.MIN_VALUE);
 
-    private: static inline int32_t MIN_VALUE = int32_t(Integer.MIN_VALUE());
-
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: int32_t defaultValue = SmallIntegerSingletonFactory::getInstance()->getAt(0);
-
-    private: int32_t value = GameConfiguration::MIN_VALUE();
-
-    private: int32_t minValue = this->defaultValue;
-
-    private: int32_t maxValue = this->defaultValue;
-
-    private: bool modifiable = BooleanFactory::getInstance()->TRUE;
-
-public: GameConfiguration(std::string name, int32_t defaultValue, int32_t minValue, int32_t maxValue){
+GameConfiguration::GameConfiguration(std::string name, int32_t defaultValue, int32_t minValue, int32_t maxValue) : name(StringUtil::getInstance()->EMPTY_STRING), defaultValue(SmallIntegerSingletonFactory::getInstance()->getAt(0)), value(GameConfiguration::MIN_VALUE), minValue(this->defaultValue), maxValue(this->defaultValue), modifiable(BooleanFactory::getInstance()->TRUE){
 this->setName(name);
     
 this->setDefaultValue(defaultValue);
@@ -104,7 +98,7 @@ GameConfigurationSingleton::getInstance()->getHashtable()->put(this->getName(), 
 
                 //@Throws(Exception.constructor)
             
-    public: void setValue(int32_t value){
+    auto GameConfiguration::setValue(int32_t value) -> void{
 
                         if(this->value != value)
                         
@@ -122,7 +116,7 @@ GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(this, (ne
 }
 
 
-    public: int32_t getValue(){
+    auto GameConfiguration::getValue() -> int32_t{
 
 
 
@@ -132,13 +126,13 @@ GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(this, (ne
 }
 
 
-    public: void setMaxValue(int32_t maxValue){
+    auto GameConfiguration::setMaxValue(int32_t maxValue) -> void{
 this->maxValue= maxValue;
     
 }
 
 
-    public: int32_t getMaxValue(){
+    auto GameConfiguration::getMaxValue() -> int32_t{
 
 
 
@@ -148,13 +142,13 @@ this->maxValue= maxValue;
 }
 
 
-    public: void setMinValue(int32_t minValue){
+    auto GameConfiguration::setMinValue(int32_t minValue) -> void{
 this->minValue= minValue;
     
 }
 
 
-    public: int32_t getMinValue(){
+    auto GameConfiguration::getMinValue() -> int32_t{
 
 
 
@@ -164,13 +158,13 @@ this->minValue= minValue;
 }
 
 
-    public: void setName(std::string name){
+    auto GameConfiguration::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string getName(){
+    auto GameConfiguration::getName() -> std::string{
 
 
 
@@ -180,13 +174,13 @@ this->name= name;
 }
 
 
-    public: void setDefaultValue(int32_t defaultValue){
+    auto GameConfiguration::setDefaultValue(int32_t defaultValue) -> void{
 this->defaultValue= defaultValue;
     
 }
 
 
-    protected: int32_t getDefaultValue(){
+    auto GameConfiguration::getDefaultValue() -> int32_t{
 
 
 
@@ -198,13 +192,13 @@ this->defaultValue= defaultValue;
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(){
+    auto GameConfiguration::setDefault() -> void{
 this->setValue(this->getDefaultValue());
     
 }
 
 
-    public: std::string toString(){
+    auto GameConfiguration::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -241,13 +235,13 @@ stringBuffer->appendboolean(this->isModifiable().valueOf());
 }
 
 
-    public: void setModifiable(bool modifiable){
+    auto GameConfiguration::setModifiable(bool modifiable) -> void{
 this->modifiable= modifiable;
     
 }
 
 
-    public: bool isModifiable(){
+    auto GameConfiguration::isModifiable() -> bool{
 
 
 
@@ -257,7 +251,6 @@ this->modifiable= modifiable;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATION_CPP

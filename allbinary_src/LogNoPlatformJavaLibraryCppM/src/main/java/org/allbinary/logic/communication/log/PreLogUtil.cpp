@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/PreLogUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,20 +59,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //NoPlatform
-// class PreLogUtil
-            : public Object
-         {
+        
+//NoPlatform - declared in the header, implemented by the platform project
 
-    public: static void put(std::string specialMessage, Object* anyType, std::string functionName)
 
-    public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception)
 
-    public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception)
-
-public: PreLogUtil()
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP

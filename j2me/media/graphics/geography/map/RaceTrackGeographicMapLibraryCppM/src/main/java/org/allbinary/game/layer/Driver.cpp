@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_DRIVER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_DRIVER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/Driver.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/Aggression.h"
 
-class Driver
-            : public Object
-         {
+auto Driver::NULL_DRIVER_owner() -> Driver* { static std::unique_ptr<Driver> value(new Driver(SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0), new Aggression(SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0)))); return value.get(); }
+Driver* Driver::NULL_DRIVER = Driver::NULL_DRIVER_owner();
 
-    public: static Driver* NULL_DRIVER() { static std::unique_ptr<Driver> value(new Driver(SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0), new Aggression(SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0), SmallIntegerSingletonFactory::getInstance()->getAt(0)))); return value.get(); }
-
-    private: int32_t turnSpeed = SmallIntegerSingletonFactory::getInstance()->getAt(0);
-
-    private: int32_t trackPathSelectionSkill = SmallIntegerSingletonFactory::getInstance()->getAt(0);
-
-    private: Aggression* aggression;
-
-public: Driver(int32_t turnSpeed, int32_t trackPathSelectionSkill, Aggression* aggression){
+Driver::Driver(int32_t turnSpeed, int32_t trackPathSelectionSkill, Aggression* aggression) : turnSpeed(SmallIntegerSingletonFactory::getInstance()->getAt(0)), trackPathSelectionSkill(SmallIntegerSingletonFactory::getInstance()->getAt(0)){
 this->setTurnSpeed(turnSpeed);
     
 this->setTrackPathSelectionSkill(trackPathSelectionSkill);
@@ -73,7 +74,7 @@ this->aggression= aggression;
 }
 
 
-    public: int32_t getTurnSpeed(){
+    auto Driver::getTurnSpeed() -> int32_t{
 
 
 
@@ -83,13 +84,13 @@ this->aggression= aggression;
 }
 
 
-    public: void setTurnSpeed(int32_t turnSpeed){
+    auto Driver::setTurnSpeed(int32_t turnSpeed) -> void{
 this->turnSpeed= turnSpeed;
     
 }
 
 
-    public: int32_t getTrackPathSelectionSkill(){
+    auto Driver::getTrackPathSelectionSkill() -> int32_t{
 
 
 
@@ -99,13 +100,13 @@ this->turnSpeed= turnSpeed;
 }
 
 
-    public: void setTrackPathSelectionSkill(int32_t trackPathSelectionSkill){
+    auto Driver::setTrackPathSelectionSkill(int32_t trackPathSelectionSkill) -> void{
 this->trackPathSelectionSkill= trackPathSelectionSkill;
     
 }
 
 
-    public: Aggression* getAggression(){
+    auto Driver::getAggression() -> Aggression*{
 
 
 
@@ -115,13 +116,12 @@ this->trackPathSelectionSkill= trackPathSelectionSkill;
 }
 
 
-    public: void setAggression(Aggression* aggression){
+    auto Driver::setAggression(Aggression* aggression) -> void{
 this->aggression= aggression;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_DRIVER_CPP

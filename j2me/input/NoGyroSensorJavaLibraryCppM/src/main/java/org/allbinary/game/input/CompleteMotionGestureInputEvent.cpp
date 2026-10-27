@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/CompleteMotionGestureInputEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,15 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/CompleteMotionGestureInputInterface.h"
 
-class CompleteMotionGestureInputEvent: public AllBinaryEventObject, public CompleteMotionGestureInputInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: MotionGestureInput* motionGestureInput = TouchMotionGestureFactory::getInstance()->NO_MOTION;
-
-public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput* motionGestureInput) : AllBinaryEventObject(motionGestureInput){
+CompleteMotionGestureInputEvent::CompleteMotionGestureInputEvent(std::string name, MotionGestureInput* motionGestureInput) : AllBinaryEventObject(motionGestureInput), logUtil(LogUtil::getInstance()), name(StringUtil::getInstance()->EMPTY_STRING), motionGestureInput(TouchMotionGestureFactory::getInstance()->NO_MOTION){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,13 +102,13 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "InputToGameKeyEventAction", 
 }
 
 
-    protected: void setName(std::string name){
+    auto CompleteMotionGestureInputEvent::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string getName(){
+    auto CompleteMotionGestureInputEvent::getName() -> std::string{
 
 
 
@@ -115,13 +118,13 @@ this->name= name;
 }
 
 
-    public: void setMotionGestureInput(MotionGestureInput* motionGestureInput){
+    auto CompleteMotionGestureInputEvent::setMotionGestureInput(MotionGestureInput* motionGestureInput) -> void{
 this->motionGestureInput= motionGestureInput;
     
 }
 
 
-    public: MotionGestureInput* getMotionGestureInput(){
+    auto CompleteMotionGestureInputEvent::getMotionGestureInput() -> MotionGestureInput*{
 
 
 
@@ -131,7 +134,6 @@ this->motionGestureInput= motionGestureInput;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_CPP

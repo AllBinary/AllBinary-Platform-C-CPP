@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_DATABASEENCODER_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_DATABASEENCODER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/crypt/DatabaseEncoder.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,11 +86,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DatabaseEncoder
-            : public Object
-         {
 
-    public: static std::string encode(std::vector<int8_t> value){
+DatabaseEncoder::DatabaseEncoder(){
+}
+
+
+    auto DatabaseEncoder::encode(std::vector<int8_t> value) -> std::string{
 
         try {
             
@@ -135,7 +146,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
 }
 
 
-    public: static std::vector<int8_t> decode(std::string value){
+    auto DatabaseEncoder::decode(std::string value) -> std::vector<int8_t>{
 
         try {
             
@@ -216,11 +227,6 @@ PreLogUtil::putSE(commonStrings->EXCEPTION, "DatabaseEncoder", "decode", &e);
 }
 
 
-private: DatabaseEncoder(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_DATABASEENCODER_CPP

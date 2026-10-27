@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_TOUCHJ2ME_CPP
+        #define ORG_ALLBINARY_INPUT_TOUCHJ2ME_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/TouchJ2ME.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //TouchJ2MENone
-class TouchJ2ME
-            : public Object
-         {
 
-public: TouchJ2ME(){
+TouchJ2ME::TouchJ2ME(){
 }
 
 
-    public: void pointerDragged(int32_t x, int32_t y){
+    auto TouchJ2ME::pointerDragged(int32_t x, int32_t y) -> void{
 }
 
 
-    public: void pointerPressed(int32_t x, int32_t y){
+    auto TouchJ2ME::pointerPressed(int32_t x, int32_t y) -> void{
 }
 
 
-    public: void pointerReleased(int32_t x, int32_t y){
+    auto TouchJ2ME::pointerReleased(int32_t x, int32_t y) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_TOUCHJ2ME_CPP

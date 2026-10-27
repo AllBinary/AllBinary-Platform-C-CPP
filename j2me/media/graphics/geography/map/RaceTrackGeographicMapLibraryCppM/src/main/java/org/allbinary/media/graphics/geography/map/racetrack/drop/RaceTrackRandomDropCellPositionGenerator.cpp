@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackRandomDropCellPositionGenerator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -81,42 +91,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/drop/RaceTrackDropCellPositionGenerator.h"
 
-class RaceTrackRandomDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
+auto RaceTrackRandomDropCellPositionGenerator::SINGLETON_owner() -> RaceTrackRandomDropCellPositionGenerator* { static std::unique_ptr<RaceTrackRandomDropCellPositionGenerator> value(new RaceTrackRandomDropCellPositionGenerator()); return value.get(); }
+RaceTrackRandomDropCellPositionGenerator* RaceTrackRandomDropCellPositionGenerator::SINGLETON = RaceTrackRandomDropCellPositionGenerator::SINGLETON_owner();
 
-    private: static RaceTrackRandomDropCellPositionGenerator* SINGLETON() { static std::unique_ptr<RaceTrackRandomDropCellPositionGenerator> value(new RaceTrackRandomDropCellPositionGenerator()); return value.get(); }
-
-    public: static RaceTrackRandomDropCellPositionGenerator* getInstance(){
+    auto RaceTrackRandomDropCellPositionGenerator::getInstance() -> RaceTrackRandomDropCellPositionGenerator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackRandomDropCellPositionGenerator::SINGLETON();
+                        return RaceTrackRandomDropCellPositionGenerator::SINGLETON;
     
 }
 
 
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
-
-    private: const int32_t cellsPerRowOrColumn = 3;
-
-    private: const int32_t totalCells = this->cellsPerRowOrColumn *this->cellsPerRowOrColumn;
-
-    private: const std::vector<int32_t> rowArray = {0,1,2,0,1,2,0,1,2};
-
-    private: const std::vector<int32_t> columnArray = {0,0,0,1,1,1,2,2,2};
-
-    private: int32_t cellWidth= 0;
-
-    private: int32_t cellHeight= 0;
-
-private: RaceTrackRandomDropCellPositionGenerator(){
+RaceTrackRandomDropCellPositionGenerator::RaceTrackRandomDropCellPositionGenerator() : myRandomFactory(MyRandomFactory::getInstance()), totalCells(this->cellsPerRowOrColumn *this->cellsPerRowOrColumn), rowArray({0,1,2,0,1,2,0,1,2}), columnArray({0,0,0,1,1,1,2,2,2}){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface){
-super.update(allBinaryGameLayerManager, geographicMapInterface);
+    auto RaceTrackRandomDropCellPositionGenerator::update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface) -> void{
+RaceTrackDropCellPositionGenerator::update(allBinaryGameLayerManager, geographicMapInterface);
     
 
     AllBinaryTiledLayer* tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
@@ -130,9 +125,9 @@ this->cellHeight= tiledLayer->getCellHeight() /this->cellsPerRowOrColumn;
 
                 //@Throws(Exception.constructor)
             
-    protected: void drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index){
+    auto RaceTrackRandomDropCellPositionGenerator::drop(AllBinaryLayerManager* allBinaryLayerManager, int32_t index) -> void{
 
-    GeographicMapCellPosition* geographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(this->list.get(index));;
+    GeographicMapCellPosition* geographicMapCellPosition = dynamic_cast<GeographicMapCellPosition*>(this->list->get(index));;
     
 
     GPoint* point = geographicMapCellPosition->getPoint();;
@@ -156,7 +151,7 @@ this->cellHeight= tiledLayer->getCellHeight() /this->cellsPerRowOrColumn;
     PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactory = DropLayerFactory::getInstance()->getRandomInstance();;
     
 
-    AllBinaryTiledLayer* tiledLayer = this->raceTrackGeographicMap.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = this->raceTrackGeographicMap->getAllBinaryTiledLayer();;
     
 
     RaceTrackPickupLayer* pickupLayer = dynamic_cast<RaceTrackPickupLayer*>(PickupLayerCircularStaticPool::getInstance()->getInstanceXYZ(pickedUpLayerInterfaceFactory, x, y, tiledLayer->getZP() +3));;
@@ -168,7 +163,6 @@ allBinaryLayerManager->append(pickupLayer);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_CPP

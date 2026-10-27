@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUES_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValues.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,21 +103,14 @@
         #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValueData.h"
 #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyData.h"
 
-class CssPropertyValues
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* propertyValueVector;
-
-public: CssPropertyValues(){
+CssPropertyValues::CssPropertyValues() : logUtil(LogUtil::getInstance()){
 this->propertyValueVector= new BasicArrayListD();
     
 }
 
 
-public: CssPropertyValues(Node* node){
+CssPropertyValues::CssPropertyValues(Node* node) : logUtil(LogUtil::getInstance()){
 
     HashMap<Object*, Object*>* indexPropertyValueHashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -117,10 +120,10 @@ this->propertyValueVector= new BasicArrayListD();
     BasicArrayList* cssPropertyNodeVector = DomSearchHelper::getAllNodes(CssPropertyValueData::getInstance()->NAME, node->getChildNodes());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->STYLE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
                         
                                     {
-                                    this->logUtil->putF("Number Of Properties: " +cssPropertyNodeVector->size(), this, "CssProperties()");
+                                    this->logUtil->putF(JavaString::valueOf("Number Of Properties: ") +JavaString::valueOf(cssPropertyNodeVector->size()), this, "CssProperties()");
     
 
                                     }
@@ -145,10 +148,10 @@ this->propertyValueVector= new BasicArrayListD();
     std::string propertyValue = DomNodeHelper::getTextNodeValue(valueNode);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->STYLE))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->STYLE))
                         
                                     {
-                                    this->logUtil->putF("Property Value: " +propertyValue, this, "CssProperties()");
+                                    this->logUtil->putF(JavaString::valueOf("Property Value: ") +JavaString::valueOf(propertyValue), this, "CssProperties()");
     
 
                                     }
@@ -186,7 +189,7 @@ this->propertyValueVector->add(propertyValue);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto CssPropertyValues::toHashMap() -> HashMap<Object*, Object*>*{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -212,7 +215,7 @@ this->propertyValueVector->add(propertyValue);
 
     std::string value = this->propertyValueVector->get(index);;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(cssPropertyValueData->NAME);
     
@@ -239,15 +242,15 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto CssPropertyValues::toXmlNode(Document* document) -> Node*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
-this->logUtil->putF("CssPropertyValues HashMap: " +hashMap->toString(), this, "toXmlNode()");
+this->logUtil->putF(JavaString::valueOf("CssPropertyValues HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toXmlNode()");
     
 
                                     }
@@ -261,7 +264,6 @@ this->logUtil->putF("CssPropertyValues HashMap: " +hashMap->toString(), this, "t
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVALUES_CPP

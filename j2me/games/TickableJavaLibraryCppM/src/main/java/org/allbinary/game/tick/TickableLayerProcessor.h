@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class AllBinaryLayer;
+class AllBinaryLayerManager;
 #include <org/allbinary/layer/LayerProcessor.h>
-
-      
 
 
 
@@ -56,9 +55,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/tick/TickableLayerManager.h"
-#include "org/allbinary/game/tick/TickableInterface.h"
+        class TickableLayerManager;
+class TickableInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TickableLayerProcessor: public LayerProcessor {
 
 public: TickableLayerProcessor();
@@ -75,3 +78,25 @@ public: TickableLayerProcessor();
 
 
         #endif //ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TICK_TICKABLELAYERPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerProcessor.h>)
+#include <org/allbinary/layer/LayerProcessor.h>
+#endif
+#if __has_include("org/allbinary/game/tick/TickableLayerManager.h")
+#include "org/allbinary/game/tick/TickableLayerManager.h"
+#endif
+#if __has_include("org/allbinary/game/tick/TickableInterface.h")
+#include "org/allbinary/game/tick/TickableInterface.h"
+#endif
+
+        #endif
+    

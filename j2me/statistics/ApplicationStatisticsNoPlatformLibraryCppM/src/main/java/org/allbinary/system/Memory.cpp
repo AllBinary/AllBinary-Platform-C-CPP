@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_SYSTEM_MEMORY_CPP
+        #define ORG_ALLBINARY_SYSTEM_MEMORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/system/Memory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,14 +59,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //NoPlatform
-// class Memory
-            : public Object
-         {
+        
+//NoPlatform - declared in the header, implemented by the platform project
 
-    public: static std::string getInfo()
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_SYSTEM_MEMORY_CPP

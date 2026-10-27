@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_CPP
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,11 +94,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/weapon/SalvoInterface.h"
 
-class BasicWeaponPart
-            : public Object
-        , public PartInterface, public SalvoInterface {
 
-    public: static BasicWeaponPart* createBasicWeaponPart(Animation* animationInterface){
+    auto BasicWeaponPart::createBasicWeaponPart(Animation* animationInterface) -> BasicWeaponPart*{
 
 
 
@@ -97,20 +104,9 @@ class BasicWeaponPart
     
 }
 
+BasicWeaponPart* BasicWeaponPart::NULL_BASIC_WEAPON_PART = BasicWeaponPart::createBasicWeaponPart(NullAnimationFactory::getFactoryInstance()->getInstance(0));
 
-    public: static inline BasicWeaponPart* NULL_BASIC_WEAPON_PART = BasicWeaponPart::createBasicWeaponPart(NullAnimationFactory::getFactoryInstance()->getInstance(0));
-
-    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
-
-    private: AllBinaryLayer* ownerLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-    private: WeaponProperties* weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
-
-    private: ScoreableInterface* scoreableInterface = NoScoreable::getInstance();
-
-    protected: RelativeRelationship* relativeRelationship = RelativeRelationship::NULL_RELATIVE_RELATIONSHIP;
-
-public: BasicWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship){
+BasicWeaponPart::BasicWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) : animationInterface(NullAnimationFactory::getFactoryInstance()->getInstance(0)), ownerLayerInterface(AllBinaryLayer::NULL_ALLBINARY_LAYER), weaponProperties(WeaponProperties::NULL_WEAPON_PROPERTIES), scoreableInterface(NoScoreable::getInstance()), relativeRelationship(RelativeRelationship::NULL_RELATIVE_RELATIONSHIP){
 this->init(sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
     
 this->setAnimationInterface(animationInterface);
@@ -118,7 +114,7 @@ this->setAnimationInterface(animationInterface);
 }
 
 
-    public: void init(AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship){
+    auto BasicWeaponPart::init(AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) -> void{
 this->setOwnerLayerInterface(sourceLayerInterface);
     
 this->setWeaponProperties(weaponProperties);
@@ -132,7 +128,7 @@ this->relativeRelationship= relativeRelationship;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle){
+    auto BasicWeaponPart::process(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle) -> void{
 this->processScore(allbinaryLayerManager, angle, otherAngle, this->getWeaponProperties(), this->scoreableInterface);
     
 }
@@ -140,16 +136,16 @@ this->processScore(allbinaryLayerManager, angle, otherAngle, this->getWeaponProp
 
                 //@Throws(Exception.constructor)
             
-    public: void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface){
+    auto BasicWeaponPart::processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface) -> void{
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: AllBinaryLayer* getOwnerLayerInterface(){
+    auto BasicWeaponPart::getOwnerLayerInterface() -> AllBinaryLayer*{
 
 
 
@@ -159,13 +155,13 @@ this->processScore(allbinaryLayerManager, angle, otherAngle, this->getWeaponProp
 }
 
 
-    public: void setOwnerLayerInterface(AllBinaryLayer* ownerLayerInterface){
+    auto BasicWeaponPart::setOwnerLayerInterface(AllBinaryLayer* ownerLayerInterface) -> void{
 this->ownerLayerInterface= ownerLayerInterface;
     
 }
 
 
-    public: Animation* getAnimationInterface(){
+    auto BasicWeaponPart::getAnimationInterface() -> Animation*{
 
 
 
@@ -175,13 +171,13 @@ this->ownerLayerInterface= ownerLayerInterface;
 }
 
 
-    public: void setAnimationInterface(Animation* animationInterface){
+    auto BasicWeaponPart::setAnimationInterface(Animation* animationInterface) -> void{
 this->animationInterface= animationInterface;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto BasicWeaponPart::paint(Graphics* graphics) -> void{
 
     ViewPositionBase* viewPosition = this->getOwnerLayerInterface()->getViewPosition();;
     
@@ -196,11 +192,11 @@ this->animationInterface->paintXY(graphics, viewX, viewY);
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto BasicWeaponPart::paintThreed(Graphics* graphics) -> void{
 }
 
 
-    public: WeaponProperties* getWeaponProperties(){
+    auto BasicWeaponPart::getWeaponProperties() -> WeaponProperties*{
 
 
 
@@ -210,13 +206,12 @@ this->animationInterface->paintXY(graphics, viewX, viewY);
 }
 
 
-    public: void setWeaponProperties(WeaponProperties* weaponProperties){
+    auto BasicWeaponPart::setWeaponProperties(WeaponProperties* weaponProperties) -> void{
 this->weaponProperties= weaponProperties;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPART_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileLockUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,31 +82,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/AbFile.h"
 
-class FileLockUtil
-            : public Object
-         {
+auto FileLockUtil::instance_owner() -> FileLockUtil* { static std::unique_ptr<FileLockUtil> value(new FileLockUtil()); return value.get(); }
+FileLockUtil* FileLockUtil::instance = FileLockUtil::instance_owner();
 
-    private: static FileLockUtil* instance() { static std::unique_ptr<FileLockUtil> value(new FileLockUtil()); return value.get(); }
-
-    public: static FileLockUtil* getInstance(){
+    auto FileLockUtil::getInstance() -> FileLockUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileLockUtil::instance();
+                        return FileLockUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: FileLockUtil(){
+FileLockUtil::FileLockUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAll(BasicArrayList* vector, bool isReturnOnFailure){
+    auto FileLockUtil::getAll(BasicArrayList* vector, bool isReturnOnFailure) -> BasicArrayList*{
 
     BasicArrayList* fileLockVector = new BasicArrayListD();;
     
@@ -122,7 +127,7 @@ private: FileLockUtil(){
                                 )
                         
                                     {
-                                    this->logUtil->putF("File Lock Obtained: " +file->getAbsolutePath(), this, "getAll");
+                                    this->logUtil->putF(JavaString::valueOf("File Lock Obtained: ") +JavaString::valueOf(file->getAbsolutePath()), this, "getAll");
     
 fileLockVector->add(fileLock);
     
@@ -133,7 +138,7 @@ fileLockVector->add(fileLock);
                         if(isReturnOnFailure)
                         
                                     {
-                                    this->logUtil->putF("Total Locks Obtained: " +fileLockVector->size(), this, "getAll");
+                                    this->logUtil->putF(JavaString::valueOf("Total Locks Obtained: ") +JavaString::valueOf(fileLockVector->size()), this, "getAll");
     
 
 
@@ -146,7 +151,7 @@ fileLockVector->add(fileLock);
                                 
 }
 
-this->logUtil->putF("Total Locks Obtained: " +fileLockVector->size(), this, "getAll");
+this->logUtil->putF(JavaString::valueOf("Total Locks Obtained: ") +JavaString::valueOf(fileLockVector->size()), this, "getAll");
     
 
 
@@ -159,7 +164,7 @@ this->logUtil->putF("Total Locks Obtained: " +fileLockVector->size(), this, "get
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAllPossible(BasicArrayList* vector){
+    auto FileLockUtil::getAllPossible(BasicArrayList* vector) -> BasicArrayList*{
 
 
 
@@ -171,7 +176,7 @@ this->logUtil->putF("Total Locks Obtained: " +fileLockVector->size(), this, "get
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAllOrNone(BasicArrayList* vector){
+    auto FileLockUtil::getAllOrNone(BasicArrayList* vector) -> BasicArrayList*{
 
     BasicArrayList* fileLockVector = this->getAll(vector, true);;
     
@@ -203,7 +208,7 @@ this->logUtil->putF("Total Locks Obtained: " +fileLockVector->size(), this, "get
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock* getLock(AbFile* file){
+    auto FileLockUtil::getLock(AbFile* file) -> FileLock*{
 
         try {
             
@@ -235,7 +240,7 @@ this->logUtil->put("Exception returns null", this, "getLock", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock* getLock(AbFileOutputStream* fileOutputStream){
+    auto FileLockUtil::getLock(AbFileOutputStream* fileOutputStream) -> FileLock*{
 
         try {
             
@@ -274,7 +279,7 @@ StreamUtil::getInstance()->close(fileOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    public: FileLock* getLock(FileChannel* fileChannel){
+    auto FileLockUtil::getLock(FileChannel* fileChannel) -> FileLock*{
 
         try {
             
@@ -311,7 +316,6 @@ fileChannel->close();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_CPP

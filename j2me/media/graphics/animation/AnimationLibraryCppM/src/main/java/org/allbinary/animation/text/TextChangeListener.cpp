@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_CPP
+        #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/text/TextChangeListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TextChangeListener
-            : public Object
-         {
 
-    private: static TextChangeListener* instance() { static std::unique_ptr<TextChangeListener> value(new TextChangeListener()); return value.get(); }
+TextChangeListener::TextChangeListener() {
+        }
+        auto TextChangeListener::instance_owner() -> TextChangeListener* { static std::unique_ptr<TextChangeListener> value(new TextChangeListener()); return value.get(); }
+TextChangeListener* TextChangeListener::instance = TextChangeListener::instance_owner();
 
-    public: static TextChangeListener* getInstance(){
+    auto TextChangeListener::getInstance() -> TextChangeListener*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TextChangeListener::instance();
+                        return TextChangeListener::instance;
     
 }
 
 
-    public: void onMeasure(){
+    auto TextChangeListener::onMeasure() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_CPP

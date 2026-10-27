@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_ANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/Animation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,27 +76,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationInterface.h"
 
-class Animation
-            : public Object
-        , public AnimationInterface, public OpenGLSurfaceChangedInterface {
 
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
-
-    protected: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-    protected: int32_t colorP= 0;
-
-    protected: BasicColor* changeBasicColorP = BasicColorFactory::getInstance()->NULL_COLOR;
-
-    protected: int32_t changeColorP= 0;
-
-    public: int32_t alphaP= 0;
-
-public: Animation(){
+Animation::Animation() : basicSetColorUtil(BasicColorSetUtil::getInstance()), basicColor(BasicColorFactory::getInstance()->WHITE), changeBasicColorP(BasicColorFactory::getInstance()->NULL_COLOR){
 }
 
 
-    public: void setAlpha(int32_t alpha){
+    auto Animation::setAlpha(int32_t alpha) -> void{
 this->alphaP= alpha;
     
 }
@@ -94,21 +89,21 @@ this->alphaP= alpha;
 
                 //@Throws(Exception.constructor)
             
-    public: void nextFrame(){
+    auto Animation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto Animation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 }
 
 
-    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+    auto Animation::paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) -> void{
 }
 
 
-    public: bool isThreed(){
+    auto Animation::isThreed() -> bool{
 
 
 
@@ -118,7 +113,7 @@ this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this-
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto Animation::getBasicColorP() -> BasicColor*{
 
 
 
@@ -128,7 +123,7 @@ this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this-
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto Animation::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 this->colorP= this->basicColor->intValue();
@@ -136,11 +131,11 @@ this->colorP= this->basicColor->intValue();
 }
 
 
-    public: void setBackgroundBasicColorP(BasicColor* basicColor){
+    auto Animation::setBackgroundBasicColorP(BasicColor* basicColor) -> void{
 }
 
 
-    public: BasicColor* getChangeBasicColor(){
+    auto Animation::getChangeBasicColor() -> BasicColor*{
 
 
 
@@ -150,7 +145,7 @@ this->colorP= this->basicColor->intValue();
 }
 
 
-    public: void changeBasicColor(BasicColor* basicColor){
+    auto Animation::changeBasicColor(BasicColor* basicColor) -> void{
 this->changeBasicColorP= basicColor;
     
 this->changeColorP= this->changeBasicColorP->intValue();
@@ -158,7 +153,7 @@ this->changeColorP= this->changeBasicColorP->intValue();
 }
 
 
-    public: int32_t getChangeColor(){
+    auto Animation::getChangeColor() -> int32_t{
 
 
 
@@ -168,7 +163,7 @@ this->changeColorP= this->changeBasicColorP->intValue();
 }
 
 
-    public: int32_t getColor(){
+    auto Animation::getColor() -> int32_t{
 
 
 
@@ -178,25 +173,25 @@ this->changeColorP= this->changeBasicColorP->intValue();
 }
 
 
-    public: void setScale(float scaleX, float scaleY){
+    auto Animation::setScale(float scaleX, float scaleY) -> void{
 }
 
 
-    public: void setMaxScale(float maxScaleX, float maxScaleY){
+    auto Animation::setMaxScale(float maxScaleX, float maxScaleY) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL* gl){
+    auto Animation::set(GL* gl) -> void{
 }
 
 
-    public: void setDx(int32_t dx){
+    auto Animation::setDx(int32_t dx) -> void{
 }
 
 
-    public: int32_t getDx(){
+    auto Animation::getDx() -> int32_t{
 
 
 
@@ -206,11 +201,11 @@ this->changeColorP= this->changeBasicColorP->intValue();
 }
 
 
-    public: void setDy(int32_t dy){
+    auto Animation::setDy(int32_t dy) -> void{
 }
 
 
-    public: int32_t getDy(){
+    auto Animation::getDy() -> int32_t{
 
 
 
@@ -220,7 +215,6 @@ this->changeColorP= this->changeBasicColorP->intValue();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_ANIMATION_CPP

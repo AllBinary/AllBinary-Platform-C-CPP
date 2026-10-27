@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,33 +36,15 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Font;
+class Graphics;
 #include <org/allbinary/game/graphics/hud/BasicHud.h>
-
-      
-#include <org/allbinary/game/graphics/hud/BasicHudFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class BasicHudFactory;
+class BasicColor;
+class MyFontProcessor;
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
-
-      
+class PrimitiveLongSingleton;
+class PrimitiveLongUtil;
 
 
 
@@ -76,6 +63,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class NumberStringHud: public BasicHud, public PaintableInterface {
 
@@ -119,3 +110,37 @@ public: NumberStringHud(std::string prependString, int32_t max, int32_t location
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/graphics/hud/BasicHud.h>)
+#include <org/allbinary/game/graphics/hud/BasicHud.h>
+#endif
+#if __has_include(<org/allbinary/game/graphics/hud/BasicHudFactory.h>)
+#include <org/allbinary/game/graphics/hud/BasicHudFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveLongSingleton.h>)
+#include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveLongUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveLongUtil.h>
+#endif
+
+        #endif
+    

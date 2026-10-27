@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_J2SEUTIL_H
         #define ORG_ALLBINARY_J2SEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,14 +37,8 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Map.h>
-
-      
 #include <java/util/Set.h>
-
-      
 
 
 
@@ -58,15 +57,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //J2SEForJ2ME
 class J2SEUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static J2SEUtil* instance() { static std::unique_ptr<J2SEUtil> value(new J2SEUtil()); return value.get(); }
+    private: static J2SEUtil* instance_owner();
+    private: static J2SEUtil* instance;
 
     public: static J2SEUtil* getInstance();
 
+
+            
+    public: J2SEUtil();
+        
     public: std::vector<Object*> getHashMapAsArray(HashMap<Object*, Object*>* hashMap);
 
     public: std::vector<Object*> getMapAsArray(Map<Object*, Object*>* map);
@@ -79,3 +87,19 @@ class J2SEUtil
 
 
         #endif //ORG_ALLBINARY_J2SEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_J2SEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_J2SEUTIL_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Map.h>)
+#include <java/util/Map.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_HORIZONTAROTATIONMANEUVERAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_HORIZONTAROTATIONMANEUVERAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/HorizontaRotationManeuverAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -95,19 +105,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HorizontaRotationManeuverAI: public BasicAI, public ArtificialIntelligenceTransitionInterface {
 
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstanceAt(10, Integer.MAX_VALUE);
-
-    private: int32_t currentSpeedDivisor = 5;
-
-    private: IndexedAnimation* rotationAnimationInterface;
-
-    private: BasicVelocityProperties* baseVelocityInterface;
-
-    private: VelocityInterface* velocityInterface;
-
-public: HorizontaRotationManeuverAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+HorizontaRotationManeuverAI::HorizontaRotationManeuverAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput), circularIndexUtil(CircularIndexUtil::createInstanceAt(10, Integer.MAX_VALUE)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -132,12 +131,12 @@ this->velocityInterface= dynamic_cast<VelocityInterface*>(this->baseVelocityInte
 
     AngleIncrementInfo* angleIncrementInfo = rotationAnimationInterface->getAngleInfoP()->getAngleIncrementInfo();;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
     
 }
 
 
-    public: void transition(){
+    auto HorizontaRotationManeuverAI::transition() -> void{
 
     RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown);;
     
@@ -147,7 +146,7 @@ rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT
 
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
     
 
     AllBinaryLayer* allbinaryLayer = this->getOwnerLayerInterface();;
@@ -159,7 +158,7 @@ allbinaryLayer->setPosition(allbinaryLayer->getXP(), 1, allbinaryLayer->getZP())
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto HorizontaRotationManeuverAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     RotationAnimationInterface* rotationAnimationInterface = (dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown));;
     
@@ -173,7 +172,7 @@ allbinaryLayer->setPosition(allbinaryLayer->getXP(), 1, allbinaryLayer->getZP())
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-                        if(ownerLayerInterface->getXP() -ownerLayerInterface->getWidth() <= 0 && frame == angleIncrementInfo->LEFT_FRAME.intValue())
+                        if(ownerLayerInterface->getXP() -ownerLayerInterface->getWidth() <= 0 && frame == angleIncrementInfo->LEFT_FRAME->intValue())
                         
                                     {
                                     this->reverse();
@@ -187,7 +186,7 @@ this->drop();
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-                        if(ownerLayerInterface->getX2() +ownerLayerInterface->getWidth() > displayInfo->getLastWidth() && frame == angleIncrementInfo->RIGHT_FRAME.intValue())
+                        if(ownerLayerInterface->getX2() +ownerLayerInterface->getWidth() > displayInfo->getLastWidth() && frame == angleIncrementInfo->RIGHT_FRAME->intValue())
                         
                                     {
                                     this->reverse();
@@ -206,7 +205,7 @@ this->drop();
                         if(index % this->currentSpeedDivisor == 0 && index % 2 == 0)
                         
                                     {
-                                    super.processKeyAI(Canvas::UP);
+                                    BasicAI::processKeyAI(Canvas::UP);
     
 this->velocityInterface->limitMaxXYVelocity(this->velocityInterface->getMaxForwardVelocity() /this->currentSpeedDivisor);
     
@@ -216,19 +215,19 @@ this->velocityInterface->limitMaxXYVelocity(this->velocityInterface->getMaxForwa
 this->circularIndexUtil->next();
     
 
-                        if(frame == angleIncrementInfo->LEFT_FRAME.intValue())
+                        if(frame == angleIncrementInfo->LEFT_FRAME->intValue())
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_NUM0);
+                                    BasicAI::processKeyAI(Canvas::KEY_NUM0);
     
 
                                     }
                                 
                              else 
-                        if(frame == angleIncrementInfo->RIGHT_FRAME.intValue())
+                        if(frame == angleIncrementInfo->RIGHT_FRAME->intValue())
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_POUND);
+                                    BasicAI::processKeyAI(Canvas::KEY_POUND);
     
 
                                     }
@@ -236,7 +235,7 @@ this->circularIndexUtil->next();
 }
 
 
-    protected: void reverse(){
+    auto HorizontaRotationManeuverAI::reverse() -> void{
 
     RotationAnimationInterface* rotationAnimationInterface = dynamic_cast<RotationAnimationInterface*>(this->rotationAnimationInterface as unknown);;
     
@@ -247,13 +246,13 @@ this->circularIndexUtil->next();
     int32_t frame = this->rotationAnimationInterface->getFrame();;
     
 
-                        if(frame == angleIncrementInfo->LEFT_FRAME.intValue())
+                        if(frame == angleIncrementInfo->LEFT_FRAME->intValue())
                         
                                     {
                                     
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->RIGHT_FRAME->intValue());
     
 this->baseVelocityInterface->zero();
     
@@ -261,13 +260,13 @@ this->baseVelocityInterface->zero();
                                     }
                                 
                              else 
-                        if(frame == angleIncrementInfo->RIGHT_FRAME.intValue())
+                        if(frame == angleIncrementInfo->RIGHT_FRAME->intValue())
                         
                                     {
                                     
     RotationAnimationInterfaceCompositeInterface* rotationAnimationInterfaceCompositeInterface = dynamic_cast<RotationAnimationInterfaceCompositeInterface*>(this->getOwnerLayerInterface() as unknown);;
     
-rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface->setFrame(angleIncrementInfo->LEFT_FRAME->intValue());
     
 this->baseVelocityInterface->zero();
     
@@ -277,7 +276,7 @@ this->baseVelocityInterface->zero();
 }
 
 
-    private: void accelerate(){
+    auto HorizontaRotationManeuverAI::accelerate() -> void{
 
                         if(this->currentSpeedDivisor > 1)
                         
@@ -290,7 +289,7 @@ this->baseVelocityInterface->zero();
 }
 
 
-    private: void drop(){
+    auto HorizontaRotationManeuverAI::drop() -> void{
 
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
@@ -320,7 +319,7 @@ ownerLayerInterface->setPosition(ownerLayerInterface->getXP(), y, ownerLayerInte
 }
 
 
-    public: int32_t getId(){
+    auto HorizontaRotationManeuverAI::getId() -> int32_t{
 
 
 
@@ -330,7 +329,6 @@ ownerLayerInterface->setPosition(ownerLayerInterface->getXP(), y, ownerLayerInte
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_HORIZONTAROTATIONMANEUVERAI_CPP

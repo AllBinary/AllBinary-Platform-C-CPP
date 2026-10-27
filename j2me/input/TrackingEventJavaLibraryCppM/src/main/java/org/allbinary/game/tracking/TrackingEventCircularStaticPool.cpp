@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tracking/TrackingEventCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,25 +65,23 @@
         #include "org/allbinary/game/tracking/TrackingEventFactory.h"
 #include "org/allbinary/game/tracking/TrackingEvent.h"
 
-class TrackingEventCircularStaticPool
-            : public Object
-         {
 
-    private: static TrackingEventCircularStaticPool* instance() { static std::unique_ptr<TrackingEventCircularStaticPool> value(new TrackingEventCircularStaticPool()); return value.get(); }
+TrackingEventCircularStaticPool::TrackingEventCircularStaticPool() : EVENT_POOL(new AllBinaryEventCircularPool(20)) {
+        }
+        auto TrackingEventCircularStaticPool::instance_owner() -> TrackingEventCircularStaticPool* { static std::unique_ptr<TrackingEventCircularStaticPool> value(new TrackingEventCircularStaticPool()); return value.get(); }
+TrackingEventCircularStaticPool* TrackingEventCircularStaticPool::instance = TrackingEventCircularStaticPool::instance_owner();
 
-    public: static TrackingEventCircularStaticPool* getInstance(){
+    auto TrackingEventCircularStaticPool::getInstance() -> TrackingEventCircularStaticPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackingEventCircularStaticPool::instance();
+                        return TrackingEventCircularStaticPool::instance;
     
 }
 
 
-    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
-
-    public: void init(){
+    auto TrackingEventCircularStaticPool::init() -> void{
 this->EVENT_POOL->initAllBinaryEventCircularPool(new TrackingEventFactory());
     
 }
@@ -82,7 +90,7 @@ this->EVENT_POOL->initAllBinaryEventCircularPool(new TrackingEventFactory());
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: TrackingEvent* getNextInstance(AllBinaryLayer* layerInterface){
+    auto TrackingEventCircularStaticPool::getNextInstance(AllBinaryLayer* layerInterface) -> TrackingEvent*{
 
     TrackingEvent* trackingEvent = dynamic_cast<TrackingEvent*>(this->EVENT_POOL->getNextInstance());;
     
@@ -97,7 +105,6 @@ trackingEvent->setLayerInterfaceForCircularStaticPool(layerInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTCIRCULARSTATICPOOL_CPP

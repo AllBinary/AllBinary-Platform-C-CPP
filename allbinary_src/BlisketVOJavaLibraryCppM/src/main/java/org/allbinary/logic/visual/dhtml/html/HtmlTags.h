@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 
 
 
@@ -56,10 +55,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/dhtml/html/HtmlTag.h"
+        class HtmlTag;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlTags
-            : public Object
+            : public virtual Object
          {
 
     private: BasicArrayList* htmlTagVector;
@@ -78,3 +81,20 @@ public: HtmlTags();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLTAGS_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include("org/allbinary/logic/visual/dhtml/html/HtmlTag.h")
+#include "org/allbinary/logic/visual/dhtml/html/HtmlTag.h"
+#endif
+
+        #endif
+    

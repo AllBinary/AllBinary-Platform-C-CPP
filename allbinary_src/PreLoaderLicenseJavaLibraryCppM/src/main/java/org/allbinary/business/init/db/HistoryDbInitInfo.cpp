@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_HISTORYDBINITINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_HISTORYDBINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/db/HistoryDbInitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbInitInfo.h"
 
-class HistoryDbInitInfo: public DbInitInfo {
 
-    private: static inline const std::string INITFILE = "historydbinitdata.dat";
-
-public: HistoryDbInitInfo() : DbInitInfo(INITFILE, true){
+HistoryDbInitInfo::HistoryDbInitInfo() : DbInitInfo(INITFILE, true){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +65,7 @@ public: HistoryDbInitInfo() : DbInitInfo(INITFILE, true){
 }
 
 
-public: HistoryDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
+HistoryDbInitInfo::HistoryDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +75,6 @@ public: HistoryDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_HISTORYDBINITINFO_CPP

@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTLISTENER_H
         #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
+class AllBinaryEventObject;
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
 
 
 
@@ -52,6 +53,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameMidletEventListener: public EventListenerInterface {
 
     public: virtual void onGameEnd(AllBinaryEventObject* eventObject) = 0;
@@ -62,3 +67,16 @@ class GameMidletEventListener: public EventListenerInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLETEVENTLISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+
+        #endif
+    

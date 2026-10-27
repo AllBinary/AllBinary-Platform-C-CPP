@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/accelerometer/AccelerometerSensorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/accelerometer/NoAccelerometerSensor.h"
 
-class AccelerometerSensorFactory
-            : public Object
-         {
 
-    private: static inline AllBinaryOrientationSensor* allBinaryAccelerometerSensor = AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR;
+AccelerometerSensorFactory::AccelerometerSensorFactory() {
+        }
+        AllBinaryOrientationSensor* AccelerometerSensorFactory::allBinaryAccelerometerSensor = AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR;
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(){
+    auto AccelerometerSensorFactory::init() -> void{
 
     Features* features = Features::getInstance();;
     
@@ -79,7 +88,7 @@ class AccelerometerSensorFactory
                                     
 
 
-                            throw new Exception("No Orientation Sensors");
+                            throw Exception("No Orientation Sensors");
                     
 
                                     }
@@ -91,7 +100,7 @@ class AccelerometerSensorFactory
                                     
 
 
-                            throw new Exception("No Simulation Sensors");
+                            throw Exception("No Simulation Sensors");
                     
 
                                     }
@@ -109,7 +118,7 @@ class AccelerometerSensorFactory
                             
 
 
-                            throw new Exception("Not Such SensorFeature");
+                            throw Exception("Not Such SensorFeature");
                     
 
                         }
@@ -117,7 +126,7 @@ class AccelerometerSensorFactory
 }
 
 
-    public: static AllBinaryOrientationSensor* getInstance(){
+    auto AccelerometerSensorFactory::getInstance() -> AllBinaryOrientationSensor*{
 
 
 
@@ -127,7 +136,6 @@ class AccelerometerSensorFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_ACCELEROMETER_ACCELEROMETERSENSORFACTORY_CPP

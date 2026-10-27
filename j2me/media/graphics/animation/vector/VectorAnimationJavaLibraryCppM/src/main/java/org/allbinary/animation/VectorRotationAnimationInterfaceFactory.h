@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATIONINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class BasicColor;
+class BasicColorFactory;
+class NullUtil;
+class ScaleProperties;
 
 
 
@@ -64,19 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
-#include "org/allbinary/animation/AnimationBehaviorFactory.h"
-#include "org/allbinary/animation/VectorRotationAnimation.h"
-#include "org/allbinary/animation/Animation.h"
+class AnimationBehaviorFactory;
+class VectorRotationAnimation;
+class Animation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VectorRotationAnimationInterfaceFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints;
 
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
+    private: BasicColor* basicColor;
 
-    protected: AnimationBehaviorFactory* animationBehaviorFactory;
+    /*protected*/ public: AnimationBehaviorFactory* animationBehaviorFactory;
 
 public: VectorRotationAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehaviorFactory* animationBehaviorFactory);
 
@@ -84,9 +85,9 @@ public: VectorRotationAnimationInterfaceFactory(std::vector<std::vector<std::vec
             
     public: Animation* getInstance(int32_t instanceId);
 
-    protected: void setBasicColorP(BasicColor* basicColor);
+    /*protected*/ public: void setBasicColorP(BasicColor* basicColor);
 
-    protected: BasicColor* getBasicColorP();
+    /*protected*/ public: BasicColor* getBasicColorP();
 
     public: void setInitialScale(ScaleProperties* scaleProperties);
 
@@ -96,3 +97,34 @@ public: VectorRotationAnimationInterfaceFactory(std::vector<std::vector<std::vec
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATIONINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATIONINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATIONINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehaviorFactory.h")
+#include "org/allbinary/animation/AnimationBehaviorFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/VectorRotationAnimation.h")
+#include "org/allbinary/animation/VectorRotationAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+
+        #endif
+    

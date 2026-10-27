@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/HudResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HudResources
-            : public Object
-         {
+auto HudResources::instance_owner() -> HudResources* { static std::unique_ptr<HudResources> value(new HudResources()); return value.get(); }
+HudResources* HudResources::instance = HudResources::instance_owner();
 
-    private: static HudResources* instance() { static std::unique_ptr<HudResources> value(new HudResources()); return value.get(); }
-
-    public: static HudResources* getInstance(){
+    auto HudResources::getInstance() -> HudResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HudResources::instance();
+                        return HudResources::instance;
     
 }
 
 
-private: HudResources(){
+HudResources::HudResources(){
 }
 
 
-    public: const std::string RESOURCE_LIFE = "/hud_life_10_by_10.png";
 
-    public: const std::string RESOURCE_HEALTH = "/hud_health_10_by_10.png";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HUDRESOURCES_CPP

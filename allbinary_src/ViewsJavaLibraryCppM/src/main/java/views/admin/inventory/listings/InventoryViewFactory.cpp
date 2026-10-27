@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWFACTORY_CPP
+        #define VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/listings/InventoryViewFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/listings/InventoryViewSearchInterface.h"
 
-class InventoryViewFactory
-            : public Object
-         {
+
+InventoryViewFactory::InventoryViewFactory(){
+}
+
 
                 //@Throws(LicensingException.constructor)
             
-    public: static InventoryViewSearchInterface* getInstance(SearchRequest* searchRequest){
+    auto InventoryViewFactory::getInstance(SearchRequest* searchRequest) -> InventoryViewSearchInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -86,7 +97,7 @@ class InventoryViewFactory
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -108,11 +119,6 @@ logUtil->put(commonStrings->EXCEPTION, "InventoryViewFactory", "getInstance(Sear
 }
 
 
-private: InventoryViewFactory(){
-}
 
 
-};
-
-            
-
+        #endif //VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWFACTORY_CPP

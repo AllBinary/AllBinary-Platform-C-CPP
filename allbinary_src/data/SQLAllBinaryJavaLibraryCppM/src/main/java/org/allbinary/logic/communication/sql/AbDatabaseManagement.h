@@ -13,6 +13,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -22,23 +27,11 @@
             #include "java/lang/Exception.h"
         
 #include <java/net/InetAddress.h>
-
-      
-#include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
-
-      
-#include <org/allbinary/business/init/db/DbConnectionInfo.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class DatabaseConnectionInfoInterface;
+class DbConnectionInfo;
+class LogUtil;
+class StringMaker;
+class CommonStrings;
 
 
 
@@ -59,13 +52,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/sql/AbSqlBean.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbDatabaseManagement: public AbSqlBean {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: StringMaker* sqlCommandLog = new StringMaker();
+    /*protected*/ public: StringMaker* sqlCommandLog;
 
     private: const std::string GRANT_ALL = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON ";
 
@@ -85,21 +82,21 @@ class AbDatabaseManagement: public AbSqlBean {
 
     private: const std::string METHOD_ADD_USER = "addUser()";
 
-    protected: const std::string METHOD_ADD_USERS = "addUsers()";
+    /*protected*/ public: const std::string METHOD_ADD_USERS = "addUsers()";
 
     private: const std::string METHOD_ADD_DB = "addDb()";
 
-    protected: const std::string METHOD_ADD_DATABASES = "addDatabases()";
+    /*protected*/ public: const std::string METHOD_ADD_DATABASES = "addDatabases()";
 
-    protected: const std::string METHOD_ADD_TABLES = "addTables()";
+    /*protected*/ public: const std::string METHOD_ADD_TABLES = "addTables()";
 
-    protected: const std::string UNABLE_TO_CREATE_USER = "Unable to Create User: ";
+    /*protected*/ public: const std::string UNABLE_TO_CREATE_USER = "Unable to Create User: ";
 
-    protected: const std::string UNABLE_TO_CREATE_DATABASE = "Unable to Create Database: ";
+    /*protected*/ public: const std::string UNABLE_TO_CREATE_DATABASE = "Unable to Create Database: ";
 
-    protected: const std::string UNABLE_TO_CREATE_TABLES = "Unable to Create Tables";
+    /*protected*/ public: const std::string UNABLE_TO_CREATE_TABLES = "Unable to Create Tables";
 
-    protected: const std::string ADD_TABLES_RESULTS_LABEL = "Add Table Results: ";
+    /*protected*/ public: const std::string ADD_TABLES_RESULTS_LABEL = "Add Table Results: ";
 
 public: AbDatabaseManagement(DatabaseConnectionInfoInterface* databaseConnectionInfoInterface);
 
@@ -109,11 +106,11 @@ public: AbDatabaseManagement(DbConnectionInfo* connectionInfo);
 
                 //@Throws(Exception.constructor)
             
-    protected: bool addDbUser(std::string hostName, std::string db, std::string userName, std::string password);
+    /*protected*/ public: bool addDbUser(std::string hostName, std::string db, std::string userName, std::string password);
 
-    protected: bool addDbUser(std::string db, std::string userName, std::string password);
+    /*protected*/ public: bool addDbUser(std::string db, std::string userName, std::string password);
 
-    protected: bool addDb(std::string db);
+    /*protected*/ public: bool addDb(std::string db);
 
 };
 
@@ -121,3 +118,31 @@ public: AbDatabaseManagement(DbConnectionInfo* connectionInfo);
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H_COMPLETE
+        #if __has_include(<java/net/InetAddress.h>)
+#include <java/net/InetAddress.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>)
+#include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/init/db/DbConnectionInfo.h>)
+#include <org/allbinary/business/init/db/DbConnectionInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/sql/AbSqlBean.h")
+#include "org/allbinary/logic/communication/sql/AbSqlBean.h"
+#endif
+
+        #endif
+    

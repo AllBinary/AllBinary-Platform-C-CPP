@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
-#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
-#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+class CacheableInterfaceFactoryInterface;
+class CacheableInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicArrayListResetablePool: public AbstractArrayListPool {
 
 public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
@@ -62,6 +71,7 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheabl
                 //@Throws(Exception.constructor)
             
     public: CacheableInterface* remove(Object* key);
+    public: CacheableInterface* remove(const std::string& key) { return remove(JavaString::box(key)); }
 
 };
 
@@ -69,3 +79,19 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface* cacheabl
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTRESETABLEPOOL_H_COMPLETE
+        #if __has_include("org/allbinary/logic/util/cache/AbstractArrayListPool.h")
+#include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+#endif
+
+        #endif
+    

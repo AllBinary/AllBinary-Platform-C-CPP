@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/GraphicsAnalysisUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,15 +75,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/game/Color.h"
 
-class GraphicsAnalysisUtil
-            : public Object
-         {
 
-    private: static inline const int32_t MAX = 122;
+GraphicsAnalysisUtil::GraphicsAnalysisUtil(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static double getNominator(BufferedImage* bufferedImage, int32_t min_x, int32_t max_x, int32_t y){
+    auto GraphicsAnalysisUtil::getNominator(BufferedImage* bufferedImage, int32_t min_x, int32_t max_x, int32_t y) -> double{
 
 
 
@@ -121,11 +130,6 @@ class GraphicsAnalysisUtil
 }
 
 
-private: GraphicsAnalysisUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_CPP

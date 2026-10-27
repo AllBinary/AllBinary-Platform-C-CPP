@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANELINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANELINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/w3c/dom/Document.h>
-
-      
+class Document;
 
 
 
@@ -52,6 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/workarea/KeyListener.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WorkAreaJPanelInterface: public java::awt::event::KeyListener {
 
     public: virtual std::string getName() = 0;
@@ -92,3 +99,16 @@ class WorkAreaJPanelInterface: public java::awt::event::KeyListener {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANELINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANELINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANELINTERFACE_H_COMPLETE
+        #if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/KeyListener.h")
+#include "org/allbinary/graphics/j2me/workarea/KeyListener.h"
+#endif
+
+        #endif
+    

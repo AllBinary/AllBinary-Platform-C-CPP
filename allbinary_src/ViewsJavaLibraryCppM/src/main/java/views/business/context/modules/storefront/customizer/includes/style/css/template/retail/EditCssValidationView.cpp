@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/style/css/template/retail/EditCssValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,11 +82,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EditCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: EditCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface){
+EditCssValidationView::EditCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +93,7 @@ public: EditCssValidationView(TransformInfoInterface* transformInfoInterface) : 
 }
 
 
-    public: bool isValid(){
+    auto EditCssValidationView::isValid() -> bool{
 
         try {
             
@@ -95,7 +102,7 @@ public: EditCssValidationView(TransformInfoInterface* transformInfoInterface) : 
 this->styleValidationInterface= new EditCssStyleValidation(document);
     
 
-    bool isValid = this->styleValidationInterface.isValid();;
+    bool isValid = this->styleValidationInterface->isValid();;
     
 
 
@@ -108,10 +115,10 @@ this->styleValidationInterface= new EditCssStyleValidation(document);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -127,13 +134,13 @@ this->styleValidationInterface= new EditCssStyleValidation(document);
 }
 
 
-    public: std::string validationInfo(){
+    auto EditCssValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->styleValidationInterface.validationInfo());
+stringBuffer->append(this->styleValidationInterface->validationInfo());
     
 
 
@@ -146,7 +153,7 @@ stringBuffer->append(this->styleValidationInterface.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -165,7 +172,7 @@ stringBuffer->append(this->styleValidationInterface.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditCssValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -175,7 +182,7 @@ stringBuffer->append(this->styleValidationInterface.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditCssValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -185,7 +192,6 @@ stringBuffer->append(this->styleValidationInterface.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSVALIDATIONVIEW_CPP

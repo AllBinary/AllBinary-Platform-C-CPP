@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_JCEHELPER_KEYSPECFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_JCEHELPER_KEYSPECFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/crypt/jcehelper/KeySpecFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,15 +60,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeySpecFactory
-            : public Object
-         {
 
-    public: static inline const std::string DES = "DES";
+KeySpecFactory::KeySpecFactory(){
+}
 
-    public: static inline const std::string DESEDE = "DESede";
 
-    public: static KeySpec* getInstance(std::string algorithm, std::vector<int8_t> keyData){
+    auto KeySpecFactory::getInstance(std::string algorithm, std::vector<int8_t> keyData) -> KeySpec*{
 
 
 
@@ -68,11 +75,6 @@ class KeySpecFactory
 }
 
 
-private: KeySpecFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_JCEHELPER_KEYSPECFACTORY_CPP

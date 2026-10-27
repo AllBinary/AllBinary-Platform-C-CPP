@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/store/theme/StoreThemeCategory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,13 +98,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
 
-class StoreThemeCategory: public Category, public StoreThemeCategoryInterface {
 
-    private: TransformInfoInterface* transformInfoInterface;
-
-    private: BasicArrayList* themeVector;
-
-public: StoreThemeCategory(TransformInfoInterface* transformInfoInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
+StoreThemeCategory::StoreThemeCategory(TransformInfoInterface* transformInfoInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +113,7 @@ this->themeVector= new BasicArrayListD();
 }
 
 
-public: StoreThemeCategory(TransformInfoInterface* transformInfoInterface, CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
+StoreThemeCategory::StoreThemeCategory(TransformInfoInterface* transformInfoInterface, CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -122,23 +127,7 @@ this->themeVector= new BasicArrayListD();
 }
 
 
-public: StoreThemeCategory(TransformInfoInterface* transformInfoInterface, Node* node, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this->transformInfoInterface= transformInfoInterface;
-    
-this->themeVector= new BasicArrayListD();
-    
-this->addThemes(node);
-    
-}
-
-
-public: StoreThemeCategory(TransformInfoInterface* transformInfoInterface, Node* node, CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
+StoreThemeCategory::StoreThemeCategory(TransformInfoInterface* transformInfoInterface, Node* node, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -154,7 +143,23 @@ this->addThemes(node);
 }
 
 
-    public: TransformInfoInterface* getTransformInfoInterface(){
+StoreThemeCategory::StoreThemeCategory(TransformInfoInterface* transformInfoInterface, Node* node, CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this->transformInfoInterface= transformInfoInterface;
+    
+this->themeVector= new BasicArrayListD();
+    
+this->addThemes(node);
+    
+}
+
+
+    auto StoreThemeCategory::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -166,7 +171,7 @@ this->addThemes(node);
 
                 //@Throws(Exception.constructor)
             
-    public: void addThemes(Node* node){
+    auto StoreThemeCategory::addThemes(Node* node) -> void{
 
     Node* themesNode = DomSearchHelper::getNode(ThemesData::getInstance()->NAME, node->getChildNodes());;
     
@@ -197,13 +202,13 @@ this->addThemes(node);
 }
 
 
-    public: void addTheme(ThemeValidation* themeValidation){
+    auto StoreThemeCategory::addTheme(ThemeValidation* themeValidation) -> void{
 this->themeVector->add(themeValidation);
     
 }
 
 
-    public: BasicArrayList* getThemes(){
+    auto StoreThemeCategory::getThemes() -> BasicArrayList*{
 
 
 
@@ -215,9 +220,9 @@ this->themeVector->add(themeValidation);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto StoreThemeCategory::isValid() -> bool{
 
-                        if(!super.isValid().valueOf())
+                        if(!Category::isValid().valueOf())
                         
                                     {
                                     
@@ -240,9 +245,9 @@ this->themeVector->add(themeValidation);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto StoreThemeCategory::toHashMap() -> HashMap<Object*, Object*>*{
 
-    HashMap<Object*, Object*>* categoryHashMap = super.toHashMap();;
+    HashMap<Object*, Object*>* categoryHashMap = Category::toHashMap();;
     
 categoryHashMap->put(ThemesData::getInstance()->NAME, this->themeVector);
     
@@ -257,9 +262,9 @@ categoryHashMap->put(ThemesData::getInstance()->NAME, this->themeVector);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto StoreThemeCategory::toVector() -> BasicArrayList*{
 
-    BasicArrayList* categoryVector = super.toVector();;
+    BasicArrayList* categoryVector = Category::toVector();;
     
 
 
@@ -270,7 +275,6 @@ categoryHashMap->put(ThemesData::getInstance()->NAME, this->themeVector);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORY_CPP

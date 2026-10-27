@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/log/FrameLog.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,35 +85,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FrameLog
-            : public Object
-         {
+std::vector<int8_t> FrameLog::frameBytes = ("Frame: ").getBytes();
+std::vector<int8_t> FrameLog::info = ("Info: \n").getBytes();
+std::vector<int8_t> FrameLog::actions = ("Actions: \n").getBytes();
 
-    private: static inline std::vector<int8_t> frameBytes = ("Frame: ").getBytes();
-
-    private: static inline std::vector<int8_t> info = ("Info: \n").getBytes();
-
-    private: static inline std::vector<int8_t> actions = ("Actions: \n").getBytes();
-
-    private: int64_t frame;
-
-    private: StringMaker* infoStringBuffer = new StringMaker();
-
-    private: StringMaker* actionsStringBuffer = new StringMaker();
-
-public: FrameLog(int64_t frame){
+FrameLog::FrameLog(int64_t frame) : infoStringBuffer(new StringMaker()), actionsStringBuffer(new StringMaker()){
 this->frame= frame;
     
 }
 
 
-    public: void addInfo(std::string infoString){
+    auto FrameLog::addInfo(std::string infoString) -> void{
 this->infoStringBuffer->append(infoString);
     
 }
 
 
-    public: void addActions(BasicArrayList* vectorOfStrings){
+    auto FrameLog::addActions(BasicArrayList* vectorOfStrings) -> void{
 
     int32_t size = vectorOfStrings->size();;
     
@@ -121,7 +119,7 @@ this->addAction(vectorOfStrings->get(index));
 }
 
 
-    public: void addAction(std::string action){
+    auto FrameLog::addAction(std::string action) -> void{
 this->actionsStringBuffer->append(action);
     
 this->actionsStringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
@@ -131,7 +129,7 @@ this->actionsStringBuffer->append(CommonSeps::getInstance()->NEW_LINE);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(){
+    auto FrameLog::write() -> void{
 
     StringMaker* filePathStringBuffer = new StringMaker();;
     
@@ -168,7 +166,7 @@ fileOutputStream->close();
 }
 
 
-    public: int64_t getFrame(){
+    auto FrameLog::getFrame() -> int64_t{
 
 
 
@@ -178,7 +176,6 @@ fileOutputStream->close();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_BUFFEREDIOUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_BUFFEREDIOUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/BufferedIOUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,13 +78,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BufferedIOUtil
-            : public Object
-         {
 
+BufferedIOUtil::BufferedIOUtil() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static void copy(AbFile* backupFile, AbFile* backupFileBak){
+    auto BufferedIOUtil::copy(AbFile* backupFile, AbFile* backupFileBak) -> void{
 
     std::string line = StringUtil::getInstance()->EMPTY_STRING;;
     
@@ -110,7 +120,6 @@ tmpOut->flush();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_BUFFEREDIOUTIL_CPP

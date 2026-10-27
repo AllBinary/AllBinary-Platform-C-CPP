@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYER_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/health/HealLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,9 +79,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealLayer: public AllBinaryLayer, public HealthVisitorInterface {
 
-public: HealLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
+HealLayer::HealLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,11 +90,11 @@ public: HealLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, ne
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto HealLayer::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void visit(HealthInterface* healthInterface){
+    auto HealLayer::visit(HealthInterface* healthInterface) -> void{
 
                         if(healthInterface->isAlive())
                         
@@ -96,7 +105,7 @@ public: HealLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, ne
                                     }
                                 
                         else {
-                            this->logUtil.putF("Heal attempt on dead: Does not currently occur", this, "visit");
+                            this->logUtil->putF("Heal attempt on dead: Does not currently occur", this, "visit");
     
 
                         }
@@ -104,7 +113,6 @@ public: HealLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, ne
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_HEALTH_HEALLAYER_CPP

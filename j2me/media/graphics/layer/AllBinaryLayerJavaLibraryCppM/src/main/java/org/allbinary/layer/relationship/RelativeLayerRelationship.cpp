@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_CPP
+        #define ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/relationship/RelativeLayerRelationship.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RelativeLayerRelationship: public RelativeRelationship {
 
-    private: AllBinaryLayer* layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-public: RelativeLayerRelationship(AllBinaryLayer* layer, GPoint* point, BasicArrayList* typesAllowedList) : RelativeRelationship(point, typesAllowedList){
+RelativeLayerRelationship::RelativeLayerRelationship(AllBinaryLayer* layer, GPoint* point, BasicArrayList* typesAllowedList) : RelativeRelationship(point, typesAllowedList), layer(AllBinaryLayer::NULL_ALLBINARY_LAYER){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,37 +78,36 @@ this->layer= layer;
 }
 
 
-    public: int32_t getX(){
+    auto RelativeLayerRelationship::getX() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layer->getXP() +super.getX();
+                        return this->layer->getXP() +RelativeRelationship::getX();
     
 }
 
 
-    public: int32_t getY(){
+    auto RelativeLayerRelationship::getY() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layer->getYP() +super.getY();
+                        return this->layer->getYP() +RelativeRelationship::getY();
     
 }
 
 
-    public: int32_t getZ(){
+    auto RelativeLayerRelationship::getZ() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layer->getZP() +super.getZ();
+                        return this->layer->getZP() +RelativeRelationship::getZ();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AI_BASICAI_H
         #define ORG_ALLBINARY_GAME_AI_BASICAI_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,41 +37,17 @@
             #include "java/lang/Integer.h"
         
 #include <org/allbinary/ai/ArtificialIntelligence.h>
-
-      
-#include <org/allbinary/game/displayable/canvas/CanvasUtil.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
+class CanvasUtil;
+class GameInput;
 #include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEventFactory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class GameKeyEventFactory;
+class AllBinaryLayer;
+class AllBinaryLayerManager;
+class LogUtil;
+class SmallIntegerSingletonFactory;
+class StringMaker;
+class CommonSeps;
+class CommonStrings;
 
 
 
@@ -86,17 +67,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicAI: public ArtificialIntelligence, public GameKeyEventSourceInterface {
 
-    public: static inline int32_t AI_VISITOR = SmallIntegerSingletonFactory::getInstance()->getAt(2);
+    public: static int32_t AI_VISITOR;
 
-    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(1);
+    public: static int32_t ID;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    /*protected*/ public: GameKeyEventFactory* gameKeyEventFactory;
 
     private: AllBinaryLayer* ownerLayerInterface;
 
@@ -134,3 +119,46 @@ public: BasicAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
 
         #endif //ORG_ALLBINARY_GAME_AI_BASICAI_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AI_BASICAI_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AI_BASICAI_H_COMPLETE
+        #if __has_include(<org/allbinary/ai/ArtificialIntelligence.h>)
+#include <org/allbinary/ai/ArtificialIntelligence.h>
+#endif
+#if __has_include(<org/allbinary/game/displayable/canvas/CanvasUtil.h>)
+#include <org/allbinary/game/displayable/canvas/CanvasUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKeyEventSourceInterface.h>)
+#include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEventFactory.h>)
+#include <org/allbinary/game/input/event/GameKeyEventFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

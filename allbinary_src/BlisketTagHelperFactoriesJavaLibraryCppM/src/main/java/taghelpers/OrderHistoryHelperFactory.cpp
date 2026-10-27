@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_ORDERHISTORYHELPERFACTORY_CPP
+        #define TAGHELPERS_ORDERHISTORYHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/OrderHistoryHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,19 +73,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "taghelpers/OrderHistoryHelper.h"
 
-class OrderHistoryHelperFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: OrderHistoryHelperFactory(){
+OrderHistoryHelperFactory::OrderHistoryHelperFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto OrderHistoryHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
         try {
             
@@ -89,7 +94,7 @@ public: OrderHistoryHelperFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -111,7 +116,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_ORDERHISTORYHELPERFACTORY_CPP

@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -19,12 +24,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/GameAdState.h>
-
-      
-#include <org/allbinary/logic/system/SoftwareInformation.h>
-
-      
+class GameAdState;
+class SoftwareInformation;
 
 
 
@@ -44,23 +45,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/GameAdStateFactoryInterface.h"
-#include "org/allbinary/business/advertisement/AppNameLicensingAdConfiguration.h"
-#include "org/allbinary/business/advertisement/GameAdStateBase.h"
+class AppNameLicensingAdConfiguration;
+class GameAdStateBase;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameAdStateFactory
-            : public Object
+            : public virtual Object
         , public GameAdStateFactoryInterface {
 
-    private: static GameAdStateFactory* instance() { static std::unique_ptr<GameAdStateFactory> value(new GameAdStateFactory()); return value.get(); }
+    private: static GameAdStateFactory* instance_owner();
+    private: static GameAdStateFactory* instance;
 
     public: static GameAdStateFactory* getInstance();
 
-    private: const std::vector<GameAdState*> gameAdStateArray = 
-                                                        {
-                                                            new GameAdState(new AppNameLicensingAdConfiguration())
-                                                        };
 
-    private: GameAdState* gameAdState = this->gameAdStateArray[0];
+            
+    public: GameAdStateFactory();
+        
+    private: std::vector<GameAdState*> gameAdStateArray;
+
+    private: GameAdState* gameAdState;
 
     public: GameAdState* getCurrentInstance();
 
@@ -76,3 +83,25 @@ class GameAdStateFactory
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/GameAdState.h>)
+#include <org/allbinary/game/GameAdState.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/SoftwareInformation.h>)
+#include <org/allbinary/logic/system/SoftwareInformation.h>
+#endif
+#if __has_include("org/allbinary/business/advertisement/GameAdStateFactoryInterface.h")
+#include "org/allbinary/business/advertisement/GameAdStateFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/AppNameLicensingAdConfiguration.h")
+#include "org/allbinary/business/advertisement/AppNameLicensingAdConfiguration.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/GameAdStateBase.h")
+#include "org/allbinary/business/advertisement/GameAdStateBase.h"
+#endif
+
+        #endif
+    

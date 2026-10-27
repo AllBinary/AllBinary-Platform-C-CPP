@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGERFACTORY_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicArrayList;
 
 
 
@@ -50,18 +53,42 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/music/MusicManager.h"
-#include "org/allbinary/media/audio/music/MusicService.h"
+        class MusicManager;
+class MusicService;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MusicManagerFactory
-            : public Object
+            : public virtual Object
          {
 
     public: static MusicManager* createMusicManager(BasicArrayList* soundList);
 
+
+            
+    public: MusicManagerFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGERFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/media/audio/music/MusicManager.h")
+#include "org/allbinary/media/audio/music/MusicManager.h"
+#endif
+#if __has_include("org/allbinary/media/audio/music/MusicService.h")
+#include "org/allbinary/media/audio/music/MusicService.h"
+#endif
+
+        #endif
+    

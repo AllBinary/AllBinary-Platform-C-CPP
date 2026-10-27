@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,11 +39,7 @@
             #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
 #include <java/io/File.h>
-
-      
 
 
 
@@ -58,8 +59,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageProcessorInput
-            : public Object
+            : public virtual Object
          {
 
     private: std::vector<BufferedImage*> bufferedImageArray;
@@ -78,3 +83,16 @@ public: ImageProcessorInput(std::vector<File*> files, std::vector<BufferedImage*
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+
+        #endif
+    

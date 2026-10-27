@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_NUMBERLAYERSSEQUENCEAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_NUMBERLAYERSSEQUENCEAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/sequence/NumberLayersSequenceAI.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,11 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/sequence/SequenceAI.h"
 
-class NumberLayersSequenceAI: public SequenceAI {
 
-    private: int32_t numberOfLayersLeft;
-
-public: NumberLayersSequenceAI(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
+NumberLayersSequenceAI::NumberLayersSequenceAI(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +85,7 @@ this->numberOfLayersLeft= numberOfEnemiesLeft;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto NumberLayersSequenceAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->getIndex() == 0)
                         
@@ -95,12 +102,11 @@ this->numberOfLayersLeft= numberOfEnemiesLeft;
 
                                     }
                                 
-super.processAI(allBinaryLayerManager);
+SequenceAI::processAI(allBinaryLayerManager);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_NUMBERLAYERSSEQUENCEAI_CPP

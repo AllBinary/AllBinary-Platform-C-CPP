@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_MIDLETSTRINGS_CPP
+        #define ORG_ALLBINARY_MIDLET_MIDLETSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/MidletStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,25 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MidletStrings
-            : public Object
-         {
 
-    private: static MidletStrings* instance() { static std::unique_ptr<MidletStrings> value(new MidletStrings()); return value.get(); }
+MidletStrings::MidletStrings() {
+        }
+        auto MidletStrings::instance_owner() -> MidletStrings* { static std::unique_ptr<MidletStrings> value(new MidletStrings()); return value.get(); }
+MidletStrings* MidletStrings::instance = MidletStrings::instance_owner();
 
-    public: static MidletStrings* getInstance(){
+    auto MidletStrings::getInstance() -> MidletStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MidletStrings::instance();
+                        return MidletStrings::instance;
     
 }
 
 
-    public: const std::string COMMAND_ACTION = "commandAction";
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_MIDLET_MIDLETSTRINGS_CPP

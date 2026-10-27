@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/BasicColorUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,31 +58,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/color/BasicColor.h"
 
-class BasicColorUtil
-            : public Object
-         {
 
-    private: static BasicColorUtil* instance() { static std::unique_ptr<BasicColorUtil> value(new BasicColorUtil()); return value.get(); }
+BasicColorUtil::BasicColorUtil() : ZERO_ARRAY({}), ALPHA(static_cast<int32_t>(0xFF000000)) {
+        }
+        auto BasicColorUtil::instance_owner() -> BasicColorUtil* { static std::unique_ptr<BasicColorUtil> value(new BasicColorUtil()); return value.get(); }
+BasicColorUtil* BasicColorUtil::instance = BasicColorUtil::instance_owner();
 
-    public: static BasicColorUtil* getInstance(){
+    auto BasicColorUtil::getInstance() -> BasicColorUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorUtil::instance();
+                        return BasicColorUtil::instance;
     
 }
 
 
-    public: const std::vector<BasicColor*> ZERO_ARRAY = {};
-
-    public: const int32_t ALPHA = static_cast<int32_t>(0xFF000000);
-
-    public: const bool isAlpha = true;
-
-    public: const bool ffOpaque = true;
-
-    public: int32_t getRGB(int32_t red, int32_t green, int32_t blue){
+    auto BasicColorUtil::getRGB(int32_t red, int32_t green, int32_t blue) -> int32_t{
 
     int32_t value = 0;;
     
@@ -107,7 +109,7 @@ value= blue | value;
 }
 
 
-    public: int32_t getARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b){
+    auto BasicColorUtil::getARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b) -> int32_t{
 
 
 
@@ -117,7 +119,7 @@ value= blue | value;
 }
 
 
-    public: int32_t get(int32_t alphaValue, int32_t color){
+    auto BasicColorUtil::get(int32_t alphaValue, int32_t color) -> int32_t{
 
 
 
@@ -127,7 +129,7 @@ value= blue | value;
 }
 
 
-    public: int32_t invert(int32_t color){
+    auto BasicColorUtil::invert(int32_t color) -> int32_t{
 
 
 
@@ -137,7 +139,6 @@ value= blue | value;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/TenderType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TenderType
-            : public Object
-         {
 
-    private: std::string name;
-
-public: TenderType(std::string name){
+TenderType::TenderType(std::string name){
 this->name= name;
     
 }
 
 
-    public: bool isEqual(TenderType* tenderType){
+    auto TenderType::isEqual(TenderType* tenderType) -> bool{
 
                         if(this->toString().compareTo(tenderType->toString()) == 0)
                         
@@ -84,7 +89,7 @@ this->name= name;
 }
 
 
-    public: std::string toString(){
+    auto TenderType::toString() -> std::string{
 
 
 
@@ -94,7 +99,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_TENDERTYPE_CPP

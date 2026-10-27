@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEWRITER_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEWRITER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/crypt/file/CryptFileWriter.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,21 +49,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CryptFileWriter
-            : public Object
-         {
 
-public: CryptFileWriter(std::string decryptedExtension, std::string encryptedExtension){
+CryptFileWriter::CryptFileWriter(std::string decryptedExtension, std::string encryptedExtension){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void write(AbPath* fileAbPath, Document* document){
+    auto CryptFileWriter::write(AbPath* fileAbPath, Document* document) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEWRITER_CPP

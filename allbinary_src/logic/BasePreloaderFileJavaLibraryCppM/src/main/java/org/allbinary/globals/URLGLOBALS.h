@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_URLGLOBALS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,14 +54,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/globals/AppUrlGlobals.h"
-#include "org/allbinary/globals/UrlGlobalsInterface.h"
+        class AppUrlGlobals;
+class UrlGlobalsInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class URLGLOBALS
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline UrlGlobalsInterface* urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
+    private: static UrlGlobalsInterface* urlGlobalsInterface;
 
     public: static void init(UrlGlobalsInterface* urlGlobalsInterface);
 
@@ -70,9 +79,26 @@ class URLGLOBALS
             
     public: static std::string getMainPath();
 
+
+            
+    public: URLGLOBALS();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GLOBALS_URLGLOBALS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GLOBALS_URLGLOBALS_H_COMPLETE)
+        #define ORG_ALLBINARY_GLOBALS_URLGLOBALS_H_COMPLETE
+        #if __has_include("org/allbinary/globals/AppUrlGlobals.h")
+#include "org/allbinary/globals/AppUrlGlobals.h"
+#endif
+#if __has_include("org/allbinary/globals/UrlGlobalsInterface.h")
+#include "org/allbinary/globals/UrlGlobalsInterface.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_H
         #define ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,21 +38,11 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <org/allbinary/direction/Direction.h>
-
-      
-#include <org/allbinary/direction/DirectionFactory.h>
-
-      
-#include <org/allbinary/math/AngleIncrementInfo.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
+class Canvas;
+class Direction;
+class DirectionFactory;
+class AngleIncrementInfo;
+class AngleInfo;
 
 
 
@@ -67,8 +62,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicDirectionAIHelper
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
@@ -83,7 +82,7 @@ public: BasicDirectionAIHelper(std::string name, AngleInfo* angleInfo);
 
     public: int32_t getAIKeyPressedFromDirection(Direction* geographicMapDirectionData);
 
-    protected: AngleInfo* getAngleInfoP();
+    /*protected*/ public: AngleInfo* getAngleInfoP();
 
     public: std::string getName();
 
@@ -93,3 +92,25 @@ public: BasicDirectionAIHelper(std::string name, AngleInfo* angleInfo);
 
 
         #endif //ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AI_PATH_BASICDIRECTIONAIHELPER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<org/allbinary/direction/Direction.h>)
+#include <org/allbinary/direction/Direction.h>
+#endif
+#if __has_include(<org/allbinary/direction/DirectionFactory.h>)
+#include <org/allbinary/direction/DirectionFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleIncrementInfo.h>)
+#include <org/allbinary/math/AngleIncrementInfo.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/quoterequest/QuoteRequestEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,21 +70,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class QuoteRequestEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual QuoteRequest* get(std::string userName, int32_t id) = 0;
 
-    public: virtual BasicArrayList* getIds(std::string userName) = 0;
 
-    public: virtual void deleteWhere(std::string key, std::string value) = 0;
-
-    public: virtual void insert(BasicArrayList* values) = 0;
-
-    public: virtual void update(std::string userName, HashMap<Object*, Object*>* updatedValues) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYINTERFACE_CPP

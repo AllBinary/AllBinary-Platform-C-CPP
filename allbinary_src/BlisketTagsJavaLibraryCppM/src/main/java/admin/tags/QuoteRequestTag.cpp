@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_QUOTEREQUESTTAG_CPP
+        #define ADMIN_TAGS_QUOTEREQUESTTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/QuoteRequestTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,13 +84,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class QuoteRequestTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string storeName;
-
-public: QuoteRequestTag(){
+QuoteRequestTag::QuoteRequestTag() : logUtil(LogUtil::getInstance()){
 this->setTagHelperFactory(new QuoteHelperFactory());
     
 this->setTagRequestHelperFactory(new QuoteRequestHelperFactory());
@@ -88,7 +93,7 @@ this->setTagRequestHelperFactory(new QuoteRequestHelperFactory());
 }
 
 
-    public: void setStoreName(std::string storeName){
+    auto QuoteRequestTag::setStoreName(std::string storeName) -> void{
 this->storeName= storeName;
     
 }
@@ -96,7 +101,7 @@ this->storeName= storeName;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string email(){
+    auto QuoteRequestTag::email() -> std::string{
 
         try {
             
@@ -137,10 +142,10 @@ this->storeName= storeName;
     std::string error = "Failed to send QuoteRequest emails";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "sendEmail()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "sendEmail()", &e);
     
 
                                     }
@@ -158,7 +163,7 @@ this->storeName= storeName;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto QuoteRequestTag::doStartTag() -> int32_t{
 
         try {
             
@@ -189,7 +194,7 @@ this->storeName= storeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                         }
@@ -233,7 +238,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_QUOTEREQUESTTAG_CPP

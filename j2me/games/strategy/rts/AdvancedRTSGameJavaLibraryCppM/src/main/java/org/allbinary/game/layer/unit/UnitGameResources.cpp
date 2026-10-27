@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITGAMERESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITGAMERESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/unit/UnitGameResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,88 +70,70 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UnitGameResources: public BasicGameResources {
 
-    private: static inline const std::string ICON = "_icon";
-
-    private: static inline const std::string BUILD = "_build";
-
-    private: static inline const std::string DESTROY = "_destroy";
-
-    private: static inline const std::string ICON_BUILD = "_icon" +UnitGameResources::BUILD;
-
-    public: std::string NAME = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: std::string RESOURCE_ICON_ANIMATION = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: std::string RESOURCE_ICON_BUILD = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: std::string RESOURCE_ICON = StringUtil::getInstance()->EMPTY_STRING;
-
-protected: UnitGameResources(){
+UnitGameResources::UnitGameResources() : NAME(StringUtil::getInstance()->EMPTY_STRING), RESOURCE_ICON_ANIMATION(StringUtil::getInstance()->EMPTY_STRING), RESOURCE_ICON_BUILD(StringUtil::getInstance()->EMPTY_STRING), RESOURCE_ICON(StringUtil::getInstance()->EMPTY_STRING){
 }
 
-
-    private: const std::string ICON_SIZE = "_64_by_64.png";
+const std::string UnitGameResources::ICON_BUILD = JavaString::valueOf("_icon") +JavaString::valueOf(UnitGameResources::BUILD);
 
                 //@Throws(Exception.constructor)
             
-    protected: void append(std::string ROOT, std::string sizeString){
-super.append(ROOT, sizeString);
+    auto UnitGameResources::append(std::string ROOT, std::string sizeString) -> void{
+BasicGameResources::append(ROOT, sizeString);
     
 
     std::string string = GameGraphicsResourceUtil::getInstance()->getName();;
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-BasicGameResources::stringBuffer.append(UnitGameResources::DESTROY);
+BasicGameResources::stringBuffer->append(UnitGameResources::DESTROY);
     
-BasicGameResources::stringBuffer.append(string);
+BasicGameResources::stringBuffer->append(string);
     
-BasicGameResources::stringBuffer.append(sizeString);
+BasicGameResources::stringBuffer->append(sizeString);
     
-this->RESOURCE_DESTROY= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_DESTROY= BasicGameResources::stringBuffer->toString();
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer.append(UnitGameResources::ICON);
+BasicGameResources::stringBuffer->append(UnitGameResources::ICON);
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-this->RESOURCE_ICON_ANIMATION= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_ICON_ANIMATION= BasicGameResources::stringBuffer->toString();
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-BasicGameResources::stringBuffer.append(UnitGameResources::ICON);
+BasicGameResources::stringBuffer->append(UnitGameResources::ICON);
     
-BasicGameResources::stringBuffer.append(string);
+BasicGameResources::stringBuffer->append(string);
     
-BasicGameResources::stringBuffer.append(this->ICON_SIZE);
+BasicGameResources::stringBuffer->append(this->ICON_SIZE);
     
-this->RESOURCE_ICON= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_ICON= BasicGameResources::stringBuffer->toString();
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-BasicGameResources::stringBuffer.append(UnitGameResources::ICON_BUILD);
+BasicGameResources::stringBuffer->append(UnitGameResources::ICON_BUILD);
     
-BasicGameResources::stringBuffer.append(string);
+BasicGameResources::stringBuffer->append(string);
     
-BasicGameResources::stringBuffer.append(this->ICON_SIZE);
+BasicGameResources::stringBuffer->append(this->ICON_SIZE);
     
-this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer->toString();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: std::string getString(){
+    auto UnitGameResources::getString() -> std::string{
 
                         if(AndroidUtil::isAndroid())
                         
@@ -160,7 +152,7 @@ this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer.toString();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getString();;
+                        return BasicGameResources::getString();;
     
 
                         }
@@ -168,7 +160,6 @@ this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer.toString();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_UNITGAMERESOURCES_CPP

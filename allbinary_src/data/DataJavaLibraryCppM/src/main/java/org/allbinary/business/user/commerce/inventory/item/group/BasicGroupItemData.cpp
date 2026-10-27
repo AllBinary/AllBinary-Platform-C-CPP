@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_GROUP_BASICGROUPITEMDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_GROUP_BASICGROUPITEMDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/item/group/BasicGroupItemData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicGroupItemData
-            : public Object
-         {
 
-    public: static inline const std::string ITEM_ONE = "BASICGROUPITEM_ONE";
+BasicGroupItemData::BasicGroupItemData() {
+        }
+        
 
-    public: static inline const std::string ITEM_TWO = "BASICGROUPITEM_TWO";
 
-    public: static inline const std::string ITEM_THREE = "BASICGROUPITEM_THREE";
-
-    public: static inline const std::string ITEM_FOUR = "BASICGROUPITEM_FOUR";
-
-    public: static inline const std::string ITEM_FIVE = "BASICGROUPITEM_FIVE";
-
-    public: static inline const std::string ITEM_SIX = "BASICGROUPITEM_SIX";
-
-    public: static inline const std::string ITEM_SEVEN = "BASICGROUPITEM_SEVEN";
-
-    public: static inline const std::string ITEM_EIGHT = "BASICGROUPITEM_EIGHT";
-
-    public: static inline const std::string ITEM_NINE = "BASICGROUPITEM_NINE";
-
-    public: static inline const std::string ITEM_TEN = "BASICGROUPITEM_TEN";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_GROUP_BASICGROUPITEMDATA_CPP

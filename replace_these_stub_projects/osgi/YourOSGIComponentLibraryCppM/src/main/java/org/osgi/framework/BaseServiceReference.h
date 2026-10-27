@@ -21,6 +21,11 @@
         #ifndef ORG_OSGI_FRAMEWORK_BASESERVICEREFERENCE_H
         #define ORG_OSGI_FRAMEWORK_BASESERVICEREFERENCE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,15 +58,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/osgi/framework/ServiceReference.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseServiceReference
-            : public Object
+            : public virtual Object
         , public ServiceReference {
 
+
+            
+    public: BaseServiceReference();
+        
     public: Object* getProperty(std::string key);
 
     public: std::vector<std::string> getPropertyKeys();
 
     public: int32_t compareTo(Object* o);
+    public: int32_t compareTo(const std::string& o) { return compareTo(JavaString::box(o)); }
 
 };
 
@@ -69,3 +83,13 @@ class BaseServiceReference
 
 
         #endif //ORG_OSGI_FRAMEWORK_BASESERVICEREFERENCE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_OSGI_FRAMEWORK_BASESERVICEREFERENCE_H_COMPLETE)
+        #define ORG_OSGI_FRAMEWORK_BASESERVICEREFERENCE_H_COMPLETE
+        #if __has_include("org/osgi/framework/ServiceReference.h")
+#include "org/osgi/framework/ServiceReference.h"
+#endif
+
+        #endif
+    

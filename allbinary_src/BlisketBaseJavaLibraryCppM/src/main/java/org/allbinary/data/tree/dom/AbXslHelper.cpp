@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_ABXSLHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_ABXSLHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/AbXslHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,25 +73,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/dom/XslHelper.h"
 
-class AbXslHelper
-            : public Object
-         {
 
-    private: static AbXslHelper* instance() { static std::unique_ptr<AbXslHelper> value(new AbXslHelper()); return value.get(); }
+AbXslHelper::AbXslHelper() {
+        }
+        auto AbXslHelper::instance_owner() -> AbXslHelper* { static std::unique_ptr<AbXslHelper> value(new AbXslHelper()); return value.get(); }
+AbXslHelper* AbXslHelper::instance = AbXslHelper::instance_owner();
 
-    public: static AbXslHelper* getInstance(){
+    auto AbXslHelper::getInstance() -> AbXslHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbXslHelper::instance();
+                        return AbXslHelper::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(AbFile* xslFile, AbFile* xmlFile){
+    auto AbXslHelper::translate(AbFile* xslFile, AbFile* xmlFile) -> std::string{
 
 
 
@@ -93,7 +103,7 @@ class AbXslHelper
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(AbPath* xslPath, AbPath* xmlPath){
+    auto AbXslHelper::translate(AbPath* xslPath, AbPath* xmlPath) -> std::string{
 
 
 
@@ -105,7 +115,7 @@ class AbXslHelper
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(std::string xsltFilePath, std::string xmlFilePath){
+    auto AbXslHelper::translate(std::string xsltFilePath, std::string xmlFilePath) -> std::string{
 
         try {
             
@@ -131,7 +141,6 @@ class AbXslHelper
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_ABXSLHELPER_CPP

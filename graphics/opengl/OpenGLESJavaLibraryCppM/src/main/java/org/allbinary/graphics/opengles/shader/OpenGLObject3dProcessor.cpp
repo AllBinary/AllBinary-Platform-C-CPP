@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_OPENGLOBJECT3DPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_OPENGLOBJECT3DPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -37,21 +47,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLObject3dProcessor
-            : public Object
-         {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: void process(GL10* gl, Object* object3d){
+OpenGLObject3dProcessor::OpenGLObject3dProcessor() : commonStrings(CommonStrings::getInstance()) {
+        }
+        
+    auto OpenGLObject3dProcessor::process(GL10* gl, Object* object3d) -> void{
 }
 
 
-    public: void process(GL10* gl, Object* object3d, int32_t index){
+    auto OpenGLObject3dProcessor::process(GL10* gl, Object* object3d, int32_t index) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_OPENGLOBJECT3DPROCESSOR_CPP

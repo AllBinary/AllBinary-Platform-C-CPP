@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_DOWNTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_DOWNTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/trackball/action/DownTrackballInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DownTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* DownTrackballInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto DownTrackballInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(DownTrackballInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class DownTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestur
 }
 
 
-private: DownTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Down Action", TrackballMotionGestureFactory::getInstance()->DOWN, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+DownTrackballInputToGameKeyEventAction::DownTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Down Action", TrackballMotionGestureFactory::getInstance()->DOWN, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: DownTrackballInputToGameKeyEventAction() : GameKeyCompleteMotionGesture
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_TRACKBALL_ACTION_DOWNTRACKBALLINPUTTOGAMEKEYEVENTACTION_CPP

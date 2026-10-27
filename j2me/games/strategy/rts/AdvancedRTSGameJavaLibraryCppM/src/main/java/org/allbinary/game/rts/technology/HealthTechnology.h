@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_HEALTHTECHNOLOGY_H
         #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_HEALTHTECHNOLOGY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/RTSInterface.h>
-
-      
 
 
 
@@ -50,10 +53,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/rts/technology/UnitTechnologySingletonFactory.h"
+        class UnitTechnologySingletonFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HealthTechnology
-            : public Object
+            : public virtual Object
         , public RTSInterface {
 
     private: int32_t level= 0;
@@ -92,3 +99,16 @@ public: HealthTechnology(int32_t maxLevel);
 
 
         #endif //ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_HEALTHTECHNOLOGY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_HEALTHTECHNOLOGY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_HEALTHTECHNOLOGY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/RTSInterface.h>)
+#include <org/allbinary/game/layer/RTSInterface.h>
+#endif
+#if __has_include("org/allbinary/game/rts/technology/UnitTechnologySingletonFactory.h")
+#include "org/allbinary/game/rts/technology/UnitTechnologySingletonFactory.h"
+#endif
+
+        #endif
+    

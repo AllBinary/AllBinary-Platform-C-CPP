@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ABFILEITEMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ABFILEITEMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/AbFileItemFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,9 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileItemFactory: public DefaultFileItemFactory {
 
-public: AbFileItemFactory() : DefaultFileItemFactory(){
+AbFileItemFactory::AbFileItemFactory() : DefaultFileItemFactory(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +67,6 @@ public: AbFileItemFactory() : DefaultFileItemFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_ABFILEITEMFACTORY_CPP

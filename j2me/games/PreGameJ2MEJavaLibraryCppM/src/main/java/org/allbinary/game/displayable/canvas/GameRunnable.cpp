@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMERUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMERUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,21 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameRunnable
-            : public Object
-        , public Runnable {
 
-    public: const int32_t WAIT = 240;
-
-    public: const int32_t FAST = 60;
-
-    public: int64_t waitInMillis = this->WAIT;
-
-public: GameRunnable(){
+GameRunnable::GameRunnable() : waitInMillis(this->WAIT){
 }
 
 
-    public: void run(){
+    auto GameRunnable::run() -> void{
 DisplayInfoSingleton::getInstance()->process();
     
 }
@@ -76,13 +77,12 @@ DisplayInfoSingleton::getInstance()->process();
 
                 //@Throws(Exception.constructor)
             
-    public: void processLoopSleep(){
+    auto GameRunnable::processLoopSleep() -> void{
 Thread::sleep(this->waitInMillis);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMERUNNABLE_CPP

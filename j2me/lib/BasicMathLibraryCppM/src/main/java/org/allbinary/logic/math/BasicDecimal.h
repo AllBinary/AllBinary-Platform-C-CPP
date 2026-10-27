@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H
         #define ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +54,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/math/ScaleFactorFactory.h"
+        class ScaleFactorFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicDecimal
-            : public Object
+            : public virtual Object
          {
 
-    public: static BasicDecimal* ZERO_BIGDECIMAL() { static std::unique_ptr<BasicDecimal> value(new BasicDecimal(0)); return value.get(); }
+    private: static BasicDecimal* ZERO_BIGDECIMAL_owner();
+    public: static BasicDecimal* ZERO_BIGDECIMAL;
 
     public: static BasicDecimal* createBigDecimal(BasicDecimal* bigDecimal);
 
@@ -103,9 +113,9 @@ public: BasicDecimal(int64_t units);
 
     public: std::string toString();
 
-    private: const int32_t factor = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR;
+    private: const int32_t factor;
 
-    private: const int32_t factorValue = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE;
+    private: const int32_t factorValue;
 
     public: int32_t getScaledFactor();
 
@@ -117,3 +127,13 @@ public: BasicDecimal(int64_t units);
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H_COMPLETE
+        #if __has_include("org/allbinary/logic/math/ScaleFactorFactory.h")
+#include "org/allbinary/logic/math/ScaleFactorFactory.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/LayerInterfaceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/AllBinaryLayer.h"
 
-class LayerInterfaceFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual AllBinaryLayer* getNextInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORYINTERFACE_CPP

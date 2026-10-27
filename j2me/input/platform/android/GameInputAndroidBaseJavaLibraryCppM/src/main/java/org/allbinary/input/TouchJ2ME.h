@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
         #define ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //TouchAndroid
 class TouchJ2ME
-            : public Object
+            : public virtual Object
          {
 
 public: TouchJ2ME();
@@ -66,3 +75,10 @@ public: TouchJ2ME();
 
 
         #endif //ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_TOUCHJ2ME_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_TOUCHJ2ME_H_COMPLETE
+        
+        #endif
+    

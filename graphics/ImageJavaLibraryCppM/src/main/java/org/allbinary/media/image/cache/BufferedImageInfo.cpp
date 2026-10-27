@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFO_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/cache/BufferedImageInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BufferedImageInfo
-            : public Object
-         {
 
-    private: int32_t width;
-
-    private: int32_t height;
-
-    private: int32_t type;
-
-public: BufferedImageInfo(int32_t width, int32_t height, int32_t type){
+BufferedImageInfo::BufferedImageInfo(int32_t width, int32_t height, int32_t type){
 this->width= width;
     
 this->height= height;
@@ -71,7 +72,7 @@ this->type= type;
 }
 
 
-    public: int32_t getWidth(){
+    auto BufferedImageInfo::getWidth() -> int32_t{
 
 
 
@@ -81,13 +82,13 @@ this->type= type;
 }
 
 
-    public: void setWidth(int32_t width){
+    auto BufferedImageInfo::setWidth(int32_t width) -> void{
 this->width= width;
     
 }
 
 
-    public: int32_t getHeight(){
+    auto BufferedImageInfo::getHeight() -> int32_t{
 
 
 
@@ -97,13 +98,13 @@ this->width= width;
 }
 
 
-    public: void setHeight(int32_t height){
+    auto BufferedImageInfo::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-    public: int32_t getType(){
+    auto BufferedImageInfo::getType() -> int32_t{
 
 
 
@@ -113,13 +114,13 @@ this->height= height;
 }
 
 
-    public: void setType(int32_t type){
+    auto BufferedImageInfo::setType(int32_t type) -> void{
 this->type= type;
     
 }
 
 
-    public: std::string toString(){
+    auto BufferedImageInfo::toString() -> std::string{
 
     CommonLabels* commonLabels = CommonLabels::getInstance();;
     
@@ -149,7 +150,6 @@ stringBuffer->appendint(this->getType());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFO_CPP

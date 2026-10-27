@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_CPP
+        #define ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/osgi/framework/NullServiceReference.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,11 +65,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullServiceReference
-            : public Object
-         {
 
-    public: Object* getProperty(std::string key){
+NullServiceReference::NullServiceReference() {
+        }
+        
+    auto NullServiceReference::getProperty(std::string key) -> Object*{
 
 
 
@@ -69,7 +79,7 @@ class NullServiceReference
 }
 
 
-    public: std::vector<std::string> getPropertyKeys(){
+    auto NullServiceReference::getPropertyKeys() -> std::vector<std::string>{
 
 
 
@@ -79,16 +89,15 @@ class NullServiceReference
 }
 
 
-    public: int32_t compareTo(Object* o){
+    auto NullServiceReference::compareTo(Object* o) -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_CPP

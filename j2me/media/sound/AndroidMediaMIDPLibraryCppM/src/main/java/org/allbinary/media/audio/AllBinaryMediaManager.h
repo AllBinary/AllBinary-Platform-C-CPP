@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,41 +39,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
-
-      
 #include <java/io/InputStream.h>
+class MediaException;
+class Player;
+class TsUtil;
+class Features;
+class GameFeatureFactory;
+class ProgressCanvasFactory;
 
-      
-#include <javax/microedition/media/MediaException.h>
-
-      
-#include <javax/microedition/media/Player.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
-
-      
-#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
-
-      
-#include <org/allbinary/logic/ABSystemWrapper.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonLabels;
+class CommonStrings;
 
 
 
@@ -87,16 +68,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/Sounds.h"
-#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
-#include "org/allbinary/media/audio/Sound.h"
-#include "org/allbinary/media/audio/AndroidMediaPlayerWrapper.h"
-#include "org/allbinary/media/audio/PlayerComposite.h"
-#include "org/allbinary/media/audio/MediaPlayerUtil.h"
-#include "org/allbinary/media/audio/NoPlayer.h"
-//AndroidMediaMIDPLibrary
+        class Sounds;
+class SoundsFactoryInterface;
+class Sound;
+class AndroidMediaPlayerWrapper;
+class PlayerComposite;
+class MediaPlayerUtil;
+class NoPlayer;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //AndroidMediaMIDPLibrary
 class AllBinaryMediaManager
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string THIS = "AllBinaryMediaManagerAndroid";
@@ -115,7 +100,7 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    static void shutdown(SoundsFactoryInterface* soundsFactoryInterface);
+    public: static void shutdown(SoundsFactoryInterface* soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -140,3 +125,65 @@ private: AllBinaryMediaManager();
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H_COMPLETE
+        #if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<javax/microedition/media/MediaException.h>)
+#include <javax/microedition/media/MediaException.h>
+#endif
+#if __has_include(<javax/microedition/media/Player.h>)
+#include <javax/microedition/media/Player.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/GameFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>)
+#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/audio/Sounds.h")
+#include "org/allbinary/media/audio/Sounds.h"
+#endif
+#if __has_include("org/allbinary/media/audio/SoundsFactoryInterface.h")
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/media/audio/Sound.h")
+#include "org/allbinary/media/audio/Sound.h"
+#endif
+#if __has_include("org/allbinary/media/audio/AndroidMediaPlayerWrapper.h")
+#include "org/allbinary/media/audio/AndroidMediaPlayerWrapper.h"
+#endif
+#if __has_include("org/allbinary/media/audio/PlayerComposite.h")
+#include "org/allbinary/media/audio/PlayerComposite.h"
+#endif
+#if __has_include("org/allbinary/media/audio/MediaPlayerUtil.h")
+#include "org/allbinary/media/audio/MediaPlayerUtil.h"
+#endif
+#if __has_include("org/allbinary/media/audio/NoPlayer.h")
+#include "org/allbinary/media/audio/NoPlayer.h"
+#endif
+
+        #endif
+    

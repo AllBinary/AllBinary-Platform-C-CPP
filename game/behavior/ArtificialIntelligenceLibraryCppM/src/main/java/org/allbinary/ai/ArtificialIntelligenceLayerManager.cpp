@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCELAYERMANAGER_CPP
+        #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCELAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ai/ArtificialIntelligenceLayerManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ArtificialIntelligenceLayerManager: public LayerManager {
 
-public: ArtificialIntelligenceLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+ArtificialIntelligenceLayerManager::ArtificialIntelligenceLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,6 @@ public: ArtificialIntelligenceLayerManager() : LayerManager(LayerManagerNoDebug:
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCELAYERMANAGER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_CPP
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/terrain/TerrainEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/terrain/BasicTerrainInfo.h"
 
-class TerrainEvent: public AllBinaryEventObject {
 
-    private: BasicTerrainInfo* basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
-
-public: TerrainEvent(Object* basicTerrainInfo) : AllBinaryEventObject(basicTerrainInfo){
+TerrainEvent::TerrainEvent(Object* basicTerrainInfo) : AllBinaryEventObject(basicTerrainInfo), basicTerrainInfo(BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,7 +78,7 @@ this->setBasicTerrainInfo(this->basicTerrainInfo);
 }
 
 
-    public: std::string toString(){
+    auto TerrainEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -90,7 +97,7 @@ stringBuffer->append(this->basicTerrainInfo->toString());
 }
 
 
-    public: BasicTerrainInfo* getBasicTerrainInfo(){
+    auto TerrainEvent::getBasicTerrainInfo() -> BasicTerrainInfo*{
 
 
 
@@ -100,19 +107,18 @@ stringBuffer->append(this->basicTerrainInfo->toString());
 }
 
 
-    public: void setBasicTerrainInfo(BasicTerrainInfo* basicTerrainInfo){
+    auto TerrainEvent::setBasicTerrainInfo(BasicTerrainInfo* basicTerrainInfo) -> void{
 this->basicTerrainInfo= basicTerrainInfo;
     
 }
 
 
-    public: void setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo* basicTerrainInfo){
+    auto TerrainEvent::setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo* basicTerrainInfo) -> void{
 this->basicTerrainInfo= basicTerrainInfo;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENT_CPP

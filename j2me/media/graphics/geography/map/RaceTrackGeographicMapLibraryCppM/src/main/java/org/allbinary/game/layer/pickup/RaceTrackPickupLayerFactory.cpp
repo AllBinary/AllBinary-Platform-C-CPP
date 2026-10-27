@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/pickup/RaceTrackPickupLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/pickup/RaceTrackPickupLayer.h"
 
-class RaceTrackPickupLayerFactory
-            : public Object
-        , public AllBinaryLayerFactoryInterface {
 
+RaceTrackPickupLayerFactory::RaceTrackPickupLayerFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getInstance(){
+    auto RaceTrackPickupLayerFactory::getInstance() -> AllBinaryLayer*{
 
 
 
@@ -70,7 +80,6 @@ class RaceTrackPickupLayerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_RACETRACKPICKUPLAYERFACTORY_CPP

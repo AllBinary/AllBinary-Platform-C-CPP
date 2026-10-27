@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,43 +76,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionGestureConfiguration
-            : public Object
-         {
 
-    private: bool diagonalMotionGestureAllowed = true;
-
-    private: int32_t diagonalTolerance = 7;
-
-    private: int32_t minimumMotionGesture = 9;
-
-    private: std::string button = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: BasicColor* color = BasicColorFactory::getInstance()->BLUE;
-
-    private: bool executingActions = true;
-
-    private: int32_t mouseButtonMask = 0;
-
-    private: BasicArrayList* activeCommands = new BasicArrayListD();
-
-public: MotionGestureConfiguration(){
+MotionGestureConfiguration::MotionGestureConfiguration() : button(StringUtil::getInstance()->EMPTY_STRING), color(BasicColorFactory::getInstance()->BLUE), activeCommands(new BasicArrayListD()){
 }
 
 
-    public: void addMotionGestureAction(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction){
+    auto MotionGestureConfiguration::addMotionGestureAction(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction) -> void{
 this->activeCommands->add(new MotionGestureToMotionGestureActionAssociation(list, commandAction));
     
 }
 
 
-    public: void clearMotionGestureAction(){
+    auto MotionGestureConfiguration::clearMotionGestureAction() -> void{
 this->activeCommands->clear();
     
 }
 
 
-    public: BasicArrayList* getAssociateCommandActionsList(){
+    auto MotionGestureConfiguration::getAssociateCommandActionsList() -> BasicArrayList*{
 
 
 
@@ -112,7 +103,7 @@ this->activeCommands->clear();
 }
 
 
-    public: bool isDiagonalMotionGestureAllowed(){
+    auto MotionGestureConfiguration::isDiagonalMotionGestureAllowed() -> bool{
 
 
 
@@ -122,7 +113,7 @@ this->activeCommands->clear();
 }
 
 
-    public: bool isExecutingActionsAllowed(){
+    auto MotionGestureConfiguration::isExecutingActionsAllowed() -> bool{
 
 
 
@@ -132,19 +123,19 @@ this->activeCommands->clear();
 }
 
 
-    public: void setExecutingActionsAllowed(bool executingActionAllowed){
+    auto MotionGestureConfiguration::setExecutingActionsAllowed(bool executingActionAllowed) -> void{
 this->executingActions= executingActionAllowed;
     
 }
 
 
-    public: void setDiagonalMotionGestureAllowed(bool diagonalMotionGestureAllowed){
+    auto MotionGestureConfiguration::setDiagonalMotionGestureAllowed(bool diagonalMotionGestureAllowed) -> void{
 this->diagonalMotionGestureAllowed= diagonalMotionGestureAllowed;
     
 }
 
 
-    public: int32_t getDiagonalTolerance(){
+    auto MotionGestureConfiguration::getDiagonalTolerance() -> int32_t{
 
 
 
@@ -154,13 +145,13 @@ this->diagonalMotionGestureAllowed= diagonalMotionGestureAllowed;
 }
 
 
-    public: void setDiagonalTolerance(int32_t diagonalTolerance){
+    auto MotionGestureConfiguration::setDiagonalTolerance(int32_t diagonalTolerance) -> void{
 this->diagonalTolerance= diagonalTolerance;
     
 }
 
 
-    public: int32_t getMinimumMotionGesture(){
+    auto MotionGestureConfiguration::getMinimumMotionGesture() -> int32_t{
 
 
 
@@ -170,13 +161,13 @@ this->diagonalTolerance= diagonalTolerance;
 }
 
 
-    public: void setMinimumMotionGesture(int32_t minimumMotionGesture){
+    auto MotionGestureConfiguration::setMinimumMotionGesture(int32_t minimumMotionGesture) -> void{
 this->minimumMotionGesture= minimumMotionGesture;
     
 }
 
 
-    public: std::string getButton(){
+    auto MotionGestureConfiguration::getButton() -> std::string{
 
 
 
@@ -186,13 +177,13 @@ this->minimumMotionGesture= minimumMotionGesture;
 }
 
 
-    public: void setButton(std::string button){
+    auto MotionGestureConfiguration::setButton(std::string button) -> void{
 this->button= button;
     
 }
 
 
-    public: BasicColor* getColor(){
+    auto MotionGestureConfiguration::getColor() -> BasicColor*{
 
 
 
@@ -202,13 +193,13 @@ this->button= button;
 }
 
 
-    public: void setColor(BasicColor* color){
+    auto MotionGestureConfiguration::setColor(BasicColor* color) -> void{
 this->color= color;
     
 }
 
 
-    public: int32_t getMouseButtonMask(){
+    auto MotionGestureConfiguration::getMouseButtonMask() -> int32_t{
 
 
 
@@ -218,13 +209,12 @@ this->color= color;
 }
 
 
-    public: void setMouseButtonMask(int32_t mouseButtonMask){
+    auto MotionGestureConfiguration::setMouseButtonMask(int32_t mouseButtonMask) -> void{
 this->mouseButtonMask= mouseButtonMask;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/placement/AllAnimationsEverywhereTileMapPlacementVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,9 +59,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
 
-class AllAnimationsEverywhereTileMapPlacementVisitor: public TileMapPlacementVisitor {
 
-    public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData){
+AllAnimationsEverywhereTileMapPlacementVisitor::AllAnimationsEverywhereTileMapPlacementVisitor() {
+        }
+        
+    auto AllAnimationsEverywhereTileMapPlacementVisitor::visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData) -> void{
 
     int32_t size = mapData.size();;
     
@@ -93,7 +105,6 @@ mapData[index][index2 +6]= 97;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_CPP

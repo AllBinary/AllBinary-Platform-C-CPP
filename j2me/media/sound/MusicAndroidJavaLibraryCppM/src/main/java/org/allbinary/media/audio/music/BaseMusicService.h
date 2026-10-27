@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -24,35 +29,15 @@
             #include "java/lang/Runnable.h"
         
 #include <android/app/Service.h>
-
-      
-#include <android/content/Intent.h>
-
-      
-#include <android/media/MediaPlayer.h>
-
-      
-#include <android/os/IBinder.h>
-
-      
-#include <org/allbinary/android/NullAndroidCanvas.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStateStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Intent;
+class MediaPlayer;
+class IBinder;
+class NullAndroidCanvas;
+class LogUtil;
+class CommonLabels;
+class CommonStateStrings;
+class CommonStrings;
 #include <org/allbinary/thread/ARunnable.h>
-
-      
 
 
 
@@ -71,21 +56,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/music/MusicStrings.h"
+        class MusicStrings;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseMusicService: public Service {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+            
+    public: BaseMusicService();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();
+    private: CommonStrings* commonStrings;
+
+    private: CommonStateStrings* commonStateStrings;
 
     private: const std::string ALREADY_PLAYING = "This is one song per music service";
 
     private: const std::string WAITING_FOR_MUSIC_TO_END = "Waiting for music to end";
 
-    private: MediaPlayer* player = NullAndroidCanvas::NULL_MEDIA_PLAYER;
+    private: MediaPlayer* player;
 
     private: int32_t songId =  -1;
 
@@ -117,3 +110,43 @@ class BaseMusicService: public Service {
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_H_COMPLETE
+        #if __has_include(<android/app/Service.h>)
+#include <android/app/Service.h>
+#endif
+#if __has_include(<android/content/Intent.h>)
+#include <android/content/Intent.h>
+#endif
+#if __has_include(<android/media/MediaPlayer.h>)
+#include <android/media/MediaPlayer.h>
+#endif
+#if __has_include(<android/os/IBinder.h>)
+#include <android/os/IBinder.h>
+#endif
+#if __has_include(<org/allbinary/android/NullAndroidCanvas.h>)
+#include <org/allbinary/android/NullAndroidCanvas.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStateStrings.h>)
+#include <org/allbinary/string/CommonStateStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/thread/ARunnable.h>)
+#include <org/allbinary/thread/ARunnable.h>
+#endif
+#if __has_include("org/allbinary/media/audio/music/MusicStrings.h")
+#include "org/allbinary/media/audio/music/MusicStrings.h"
+#endif
+
+        #endif
+    

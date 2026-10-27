@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_POOLEDTHREAD_CPP
+        #define ORG_ALLBINARY_THREAD_POOLEDTHREAD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/PooledThread.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,17 +75,8 @@
         #include "org/allbinary/thread/ThreadObjectUtil.h"
 #include "org/allbinary/thread/ThreadPool.h"
 
-class PooledThread: public Thread {
 
-    private: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
-
-    private: ThreadPool* threadPool;
-
-public: PooledThread(ThreadPool* threadPool) : Thread(threadPool->createName()){
+PooledThread::PooledThread(ThreadPool* threadPool) : Thread(threadPool->createName()), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), threadObjectUtil(ThreadObjectUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -89,9 +90,7 @@ this->threadPool= threadPool;
 }
 
 
-    private: const std::string INTERRUPT_EXCEPTION = "Exit InterruptedException";
-
-    public: void run(){
+    auto PooledThread::run() -> void{
 this->threadPool->threadStarted();
     
 
@@ -158,7 +157,6 @@ this->threadPool->threadStopped();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_POOLEDTHREAD_CPP

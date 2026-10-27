@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_ADMIN_USERNAMEORDERHISTORYTAG_CPP
+        #define TAGS_ADMIN_USERNAMEORDERHISTORYTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/admin/UserNameOrderHistoryTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,11 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserNameOrderHistoryTag: public StoreValidationTransformTag {
 
-    private: std::string status;
-
-public: UserNameOrderHistoryTag() : StoreValidationTransformTag(){
+UserNameOrderHistoryTag::UserNameOrderHistoryTag() : StoreValidationTransformTag(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +75,7 @@ public: UserNameOrderHistoryTag() : StoreValidationTransformTag(){
 }
 
 
-    public: void setStatus(std::string value){
+    auto UserNameOrderHistoryTag::setStatus(std::string value) -> void{
 this->status= value;
     
 }
@@ -76,7 +83,7 @@ this->status= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto UserNameOrderHistoryTag::doStartTag() -> int32_t{
 
         try {
             this->setName("Range Order History View");
@@ -90,7 +97,7 @@ this->setObjectFile("views.admin.orderhistory.UserNameOrderHistoryView");
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     
@@ -100,7 +107,7 @@ this->setObjectFile("views.admin.orderhistory.UserNameOrderHistoryView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -109,7 +116,7 @@ this->setObjectFile("views.admin.orderhistory.UserNameOrderHistoryView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -117,7 +124,7 @@ this->setObjectFile("views.admin.orderhistory.UserNameOrderHistoryView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -136,7 +143,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_ADMIN_USERNAMEORDERHISTORYTAG_CPP

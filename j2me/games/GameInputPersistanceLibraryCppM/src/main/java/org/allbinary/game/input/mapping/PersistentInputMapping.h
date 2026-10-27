@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,53 +37,21 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/Enumeration.h>
-
-      
-#include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
-
-      
-#include <org/allbinary/game/input/Input.h>
-
-      
-#include <org/allbinary/game/input/InputPersistance.h>
-
-      
-#include <org/allbinary/game/input/mapping/event/InputMappingEvent.h>
-
-      
-#include <org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h>
-
-      
-#include <org/allbinary/game/input/mapping/event/NullInputMappingEventListener.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class GamePersistanceStrings;
+class Input;
+class InputPersistance;
+class InputMappingEvent;
+class InputMappingEventListenerInterface;
+class NullInputMappingEventListener;
+class NullUtil;
+class LogUtil;
+class PreLogUtil;
+class StringMaker;
+class AbeClientInformationInterface;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/EnumerationUtil.h>
-
-      
+class BasicArrayList;
+class EnumerationUtil;
 
 
 
@@ -97,35 +70,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
-//GameInputPersistanceLibrary
+        class InputToGameKeyMapping;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //GameInputPersistanceLibrary
 class PersistentInputMapping
-            : public Object
+            : public virtual Object
          {
 
-    public: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    public: static Object* instance;
 
     public: static PersistentInputMapping* getNullInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
+    private: EnumerationUtil* enumerationUtil;
 
-    private: InputToGameKeyMapping* inputMapping = new InputToGameKeyMapping();
+    private: InputToGameKeyMapping* inputMapping;
 
-    private: InputMappingEventListenerInterface* inputMappingEventListenerInterface = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
+    private: InputMappingEventListenerInterface* inputMappingEventListenerInterface;
 
     private: InputPersistance* inputPersistance;
 
-protected: PersistentInputMapping(std::string name);
+/*protected*/ public: PersistentInputMapping(std::string name);
 
     public: int32_t getTotalMapped();
 
-    protected: bool isDefaultNew();
+    /*protected*/ public: bool isDefaultNew();
 
-    protected: InputToGameKeyMapping* getDefault();
+    /*protected*/ public: InputToGameKeyMapping* getDefault();
 
                 //@Throws(Exception.constructor)
             
@@ -135,7 +112,7 @@ protected: PersistentInputMapping(std::string name);
             
     public: void update(AbeClientInformationInterface* abeClientInformation);
 
-    private: InputMappingEvent* inputMappingEvent = new InputMappingEvent(this);
+    private: InputMappingEvent* inputMappingEvent;
 
                 //@Throws(Exception.constructor)
             
@@ -165,3 +142,61 @@ protected: PersistentInputMapping(std::string name);
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_PERSISTENTINPUTMAPPING_H_COMPLETE
+        #if __has_include(<java/util/Enumeration.h>)
+#include <java/util/Enumeration.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>)
+#include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
+#endif
+#if __has_include(<org/allbinary/game/input/Input.h>)
+#include <org/allbinary/game/input/Input.h>
+#endif
+#if __has_include(<org/allbinary/game/input/InputPersistance.h>)
+#include <org/allbinary/game/input/InputPersistance.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/event/InputMappingEvent.h>)
+#include <org/allbinary/game/input/mapping/event/InputMappingEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h>)
+#include <org/allbinary/game/input/mapping/event/InputMappingEventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/event/NullInputMappingEventListener.h>)
+#include <org/allbinary/game/input/mapping/event/NullInputMappingEventListener.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/EnumerationUtil.h>)
+#include <org/allbinary/util/EnumerationUtil.h>
+#endif
+#if __has_include("org/allbinary/game/input/mapping/InputToGameKeyMapping.h")
+#include "org/allbinary/game/input/mapping/InputToGameKeyMapping.h"
+#endif
+
+        #endif
+    

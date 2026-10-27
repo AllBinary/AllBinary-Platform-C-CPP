@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATORCONSTRAINTSINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATORCONSTRAINTSINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/ImageComparatorConstraintsInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,23 +66,8 @@
         #include "org/allbinary/media/image/comparison/Rectangle.h"
 #include "org/allbinary/media/image/comparison/Color.h"
 
-class ImageComparatorConstraintsInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getMaxNonMatchingPixelDeltas() = 0;
 
-    public: virtual bool isCollisionWithAvoidRectangles(Rectangle* rectangle) = 0;
 
-    public: virtual bool isCollisionWithAvoidRectangles(GPoint* point) = 0;
-
-    public: virtual bool isColorAllowed(int32_t frame, GPoint* point, Color* color) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isImageValid(BufferedImage* bufferedImage) = 0;
-
-    public: virtual bool isFrameAllowed(int32_t frame) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATORCONSTRAINTSINTERFACE_CPP

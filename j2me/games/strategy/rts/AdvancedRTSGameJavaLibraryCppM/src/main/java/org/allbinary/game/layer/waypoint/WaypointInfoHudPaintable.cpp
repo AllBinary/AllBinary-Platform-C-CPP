@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,22 +74,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WaypointInfoHudPaintable: public SelectionHudPaintable {
 
-    private: KeyValueDrawString* keyvalueDrawString;
-
-    protected: PathFindingLayerInterface* rtsLayerP = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-
-    private: int32_t textLine2Y= 0;
-
-public: WaypointInfoHudPaintable(){
+WaypointInfoHudPaintable::WaypointInfoHudPaintable() : rtsLayerP(NullPathFindingLayer::NULL_PATH_FINDING_LAYER){
 this->keyvalueDrawString= new KeyValueDrawString("Owner: ", this->textX);
     
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
-super.updateMeasurement(graphics);
+    auto WaypointInfoHudPaintable::updateMeasurement(Graphics* graphics) -> void{
+SelectionHudPaintable::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -89,7 +92,7 @@ this->textLine2Y= (this->y +font->getHeight());
 }
 
 
-    public: void updateSelectionInfo(){
+    auto WaypointInfoHudPaintable::updateSelectionInfo() -> void{
 
     RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->rtsLayerP);;
     
@@ -102,13 +105,13 @@ this->keyvalueDrawString->update(rtsLayer->getParentLayer()->getName());
 }
 
 
-    public: void setRtsLayer(RTSLayer* rtsLayer){
+    auto WaypointInfoHudPaintable::setRtsLayer(RTSLayer* rtsLayer) -> void{
 this->rtsLayerP= rtsLayer;
     
 }
 
 
-    public: PathFindingLayerInterface* getRtsLayer(){
+    auto WaypointInfoHudPaintable::getRtsLayer() -> PathFindingLayerInterface*{
 
 
 
@@ -118,8 +121,8 @@ this->rtsLayerP= rtsLayer;
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paint(graphics);
+    auto WaypointInfoHudPaintable::paint(Graphics* graphics) -> void{
+SelectionHudPaintable::paint(graphics);
     
 this->keyvalueDrawString->paint(graphics, this->textLine2Y);
     
@@ -128,7 +131,6 @@ this->getAnimationInterface()->paintXY(graphics, this->imageX, this->y);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTINFOHUDPAINTABLE_CPP

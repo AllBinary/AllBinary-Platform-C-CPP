@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFORMUTIL_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFORMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/GameFeatureFormUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,27 +101,23 @@
 #include "org/allbinary/game/configuration/feature/Feature.h"
 #include "org/allbinary/game/configuration/feature/GameFeatureUtil.h"
 
-class GameFeatureFormUtil
-            : public Object
-         {
 
-    private: static GameFeatureFormUtil* instance() { static std::unique_ptr<GameFeatureFormUtil> value(new GameFeatureFormUtil()); return value.get(); }
+GameFeatureFormUtil::GameFeatureFormUtil() : logUtil(LogUtil::getInstance()), meUtil(MEUtil::getInstance()) {
+        }
+        auto GameFeatureFormUtil::instance_owner() -> GameFeatureFormUtil* { static std::unique_ptr<GameFeatureFormUtil> value(new GameFeatureFormUtil()); return value.get(); }
+GameFeatureFormUtil* GameFeatureFormUtil::instance = GameFeatureFormUtil::instance_owner();
 
-    public: static GameFeatureFormUtil* getInstance(){
+    auto GameFeatureFormUtil::getInstance() -> GameFeatureFormUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureFormUtil::instance();
+                        return GameFeatureFormUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: MEUtil* meUtil = MEUtil::getInstance();
-
-    public: ChoiceGroup* getChoiceGroup(ABHashtable<Object*, Object*>* hashtable, std::string name, int32_t option){
+    auto GameFeatureFormUtil::getChoiceGroup(ABHashtable<Object*, Object*>* hashtable, std::string name, int32_t option) -> ChoiceGroup*{
 
     StringMaker* stringMaker = new StringMaker();;
     
@@ -143,7 +149,7 @@ class GameFeatureFormUtil
 
     Feature* gameFeature = dynamic_cast<Feature*>(list->objectArray[index]);;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(name)->append(ADD_CHOICE)->append(gameFeature->toString())->toString(), this, GET_CHOICE_GROUP);
     
@@ -169,7 +175,7 @@ choiceGroup->append(gameFeature->toString(), NullImage::NULL_IMAGE);
 }
 
 
-    public: void addChoiceGroup(CommandForm* form, ABHashtable<Object*, Object*>* hashtable, int32_t option){
+    auto GameFeatureFormUtil::addChoiceGroup(CommandForm* form, ABHashtable<Object*, Object*>* hashtable, int32_t option) -> void{
 
     StringMaker* stringMaker = new StringMaker();;
     
@@ -197,7 +203,7 @@ choiceGroup->append(gameFeature->toString(), NullImage::NULL_IMAGE);
         {
 name= objectArray[index];
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(ADDING_CHOICE_GROUP)->append(name)->toString(), this, ADD_CHOICE_GROUP);
     
@@ -210,7 +216,7 @@ this->meUtil->appendItem(form, this->getChoiceGroup(hashtable, name, option));
 
                 //@Throws(Exception.constructor)
             
-    public: void setDefault(CommandForm* form){
+    auto GameFeatureFormUtil::setDefault(CommandForm* form) -> void{
 
     int32_t size = form->size();;
     
@@ -251,7 +257,6 @@ this->meUtil->appendItem(form, this->getChoiceGroup(hashtable, name, option));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFORMUTIL_CPP

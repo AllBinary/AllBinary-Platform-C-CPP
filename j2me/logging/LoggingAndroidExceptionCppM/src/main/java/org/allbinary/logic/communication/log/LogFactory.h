@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,10 +52,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/Log.h"
-//ActualPlatform
+        class Log;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //ActualPlatform
 /*actual*/ class LogFactory
-            : public Object
+            : public virtual Object
          {
 
     /*actual*/ public: static Log* getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
@@ -59,9 +68,23 @@
 
     /*actual*/ public: static Log* getInstanceSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
 
+
+            
+    public: LogFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/logic/communication/log/Log.h")
+#include "org/allbinary/logic/communication/log/Log.h"
+#endif
+
+        #endif
+    

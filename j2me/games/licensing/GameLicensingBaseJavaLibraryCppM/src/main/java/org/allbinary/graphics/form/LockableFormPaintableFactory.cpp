@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEFORMPAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEFORMPAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/LockableFormPaintableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
 #include "org/allbinary/graphics/form/ItemPaintable.h"
 #include "org/allbinary/graphics/form/PaintableForm.h"
 
-class LockableFormPaintableFactory: public ItemPaintableFactory {
 
-    private: int32_t lockedIndex;
-
-public: LockableFormPaintableFactory(int32_t lockedIndex){
+LockableFormPaintableFactory::LockableFormPaintableFactory(int32_t lockedIndex){
 this->lockedIndex= lockedIndex;
     
 }
@@ -61,7 +68,7 @@ this->lockedIndex= lockedIndex;
 
                 //@Throws(Exception.constructor)
             
-    public: ItemPaintable* getInstanceItemPaintable(PaintableForm* paintableForm){
+    auto LockableFormPaintableFactory::getInstanceItemPaintable(PaintableForm* paintableForm) -> ItemPaintable*{
 
 
 
@@ -71,7 +78,6 @@ this->lockedIndex= lockedIndex;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEFORMPAINTABLEFACTORY_CPP

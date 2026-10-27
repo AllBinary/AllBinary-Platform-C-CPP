@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Throwable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <playn/core/PlayN.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
+class JsType;
+class CommonStrings;
+class PlayN;
+class JsMethod;
+class JsConstructor;
 
 
 
@@ -64,19 +59,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
-#include "org/allbinary/logic/communication/log/Log.h"
-#include "org/allbinary/logic/communication/log/PreLogUtil.h"
-//ActualPlatform
+        class LogFormatUtil;
+class Log;
+class PreLogUtil;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //ActualPlatform
 /*actual*/ class LogUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
+    private: static LogUtil* instance_owner();
+    private: static LogUtil* instance;
 
     /*actual*/ public: static LogUtil* getInstance();
 
-    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
+    private: LogFormatUtil* logFormatUtil;
 
     private: const std::string LOG_SUCCESS = "org.allbinary: ";
 
@@ -96,3 +96,34 @@ private: LogUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<playn/core/PlayN.h>)
+#include <playn/core/PlayN.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/log/LogFormatUtil.h")
+#include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/Log.h")
+#include "org/allbinary/logic/communication/log/Log.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/PreLogUtil.h")
+#include "org/allbinary/logic/communication/log/PreLogUtil.h"
+#endif
+
+        #endif
+    

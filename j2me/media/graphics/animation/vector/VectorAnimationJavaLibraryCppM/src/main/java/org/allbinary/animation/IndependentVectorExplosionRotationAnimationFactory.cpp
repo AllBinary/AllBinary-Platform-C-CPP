@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/IndependentVectorExplosionRotationAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,19 +74,8 @@
 #include "org/allbinary/animation/IndexedAnimation.h"
 #include "org/allbinary/animation/Animation.h"
 
-class IndependentVectorExplosionRotationAnimationFactory
-            : public Object
-        , public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> framePoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
-
-    private: VectorInfo* vectorInfo;
-
-    private: BasicColor* basicColor;
-
-    private: VectorAnimationFactoryInterface* vectorAnimationFactoryInterface;
-
-public: IndependentVectorExplosionRotationAnimationFactory(VectorInfo* vectorInfo, BasicColor* basicColor, VectorAnimationFactoryInterface* vectorAnimationFactoryInterface){
+IndependentVectorExplosionRotationAnimationFactory::IndependentVectorExplosionRotationAnimationFactory(VectorInfo* vectorInfo, BasicColor* basicColor, VectorAnimationFactoryInterface* vectorAnimationFactoryInterface) : framePoints(NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY), vectorExplosionGenerator(VectorExplosionGenerator::getInstance()){
 this->vectorInfo= vectorInfo;
     
 this->basicColor= basicColor;
@@ -90,17 +89,15 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(){
+    auto IndependentVectorExplosionRotationAnimationFactory::init() -> void{
 this->framePoints= VectorRotationGenerator::getInstance()->getInstance(this->vectorInfo);
     
 }
 
 
-    private: VectorExplosionGenerator* vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto IndependentVectorExplosionRotationAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
     int32_t frame = 0;;
     
@@ -130,7 +127,6 @@ frame= rotationAnimationInterface->getFrame();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_CPP

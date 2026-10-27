@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONACTIONWORKER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONACTIONWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/TestInputAutomationActionWorker.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,20 +84,15 @@
         #include "org/allbinary/input/automation/module/AbstractInputAutomationWorker.h"
 #include "org/allbinary/input/automation/module/InputAutomationActionInterface.h"
 
-class TestInputAutomationActionWorker: public AbstractInputAutomationWorker {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: int32_t sleep;
-
-public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface* inputAutomationActionInterface, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+TestInputAutomationActionWorker::TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface* inputAutomationActionInterface, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF("BasicTestAttackWorder", this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF("BasicTestAttackWorder", this, this->commonStrings->CONSTRUCTOR);
     
 this->sleep= sleep;
     
@@ -96,7 +101,7 @@ this->sleep= sleep;
 
                 //@Throws(Exception.constructor)
             
-    public: void processBetweenWorkers(){
+    auto TestInputAutomationActionWorker::processBetweenWorkers() -> void{
 Thread::sleep(2000);
     
 }
@@ -104,8 +109,8 @@ Thread::sleep(2000);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
-this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+    auto TestInputAutomationActionWorker::process() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);
     
 
     ABHashtable<Object*, Object*>* hashtable = InputRobotFactory::getInstance()->get();;
@@ -146,7 +151,6 @@ this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONACTIONWORKER_CPP

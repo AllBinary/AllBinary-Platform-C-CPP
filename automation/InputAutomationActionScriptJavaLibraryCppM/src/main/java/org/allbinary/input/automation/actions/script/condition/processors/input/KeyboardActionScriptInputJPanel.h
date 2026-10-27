@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,32 +37,14 @@
             #include "java/lang/Integer.h"
         
 #include <javax/swing.h>
-
-      
-#include <org/allbinary/input/KeySingletonFactory.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobot.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
-
-      
-#include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class KeySingletonFactory;
+class InputRobot;
+class InputRobotFactory;
+class TempInputRobotNames;
+class LogUtil;
+class StringValidationUtil;
+class CommonPhoneStrings;
+class CommonStrings;
 
 
 
@@ -77,29 +64,33 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/JPanel.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyNameDefaultComboBoxModelFactory.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyCharDefaultComboBoxModelFactory.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/ComboBoxModel.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/JDialog.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/JLabel.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/JComboBox.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/JTextField.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/JRadioButton.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/JButton.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/Dimension.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/ActionListener.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/ActionEvent.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/Insets.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h"
-#include "org/allbinary/input/automation/actions/script/condition/processors/input/Short.h"
+class KeyboardActionScriptInputInterface;
+class DefaultComboBoxModel;
+class KeyNameDefaultComboBoxModelFactory;
+class KeyCharDefaultComboBoxModelFactory;
+class ComboBoxModel;
+class JDialog;
+class JLabel;
+class JComboBox;
+class JTextField;
+class JRadioButton;
+class JButton;
+class Dimension;
+class ActionListener;
+class ActionEvent;
+class Insets;
+class GroupLayout;
+class Short;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class KeyboardActionScriptInputJPanel: public javax::swing::JPanel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: KeyboardActionScriptInputInterface* keyActionScriptInputInterface;
 
@@ -195,3 +186,91 @@ public: KeyboardActionScriptInputJPanel(KeyboardActionScriptInputInterface* keyA
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUTJPANEL_H_COMPLETE
+        #if __has_include(<javax/swing.h>)
+#include <javax/swing.h>
+#endif
+#if __has_include(<org/allbinary/input/KeySingletonFactory.h>)
+#include <org/allbinary/input/KeySingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobot.h>)
+#include <org/allbinary/input/automation/robot/InputRobot.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobotFactory.h>)
+#include <org/allbinary/input/automation/robot/InputRobotFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/TempInputRobotNames.h>)
+#include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JPanel.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JPanel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/DefaultComboBoxModel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/KeyNameDefaultComboBoxModelFactory.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyNameDefaultComboBoxModelFactory.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/KeyCharDefaultComboBoxModelFactory.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyCharDefaultComboBoxModelFactory.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/ComboBoxModel.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ComboBoxModel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JDialog.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JDialog.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JLabel.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JLabel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JComboBox.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JComboBox.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JTextField.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JTextField.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JRadioButton.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JRadioButton.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/JButton.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/JButton.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/Dimension.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Dimension.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/ActionListener.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ActionListener.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/ActionEvent.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/ActionEvent.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/Insets.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Insets.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/GroupLayout.h"
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/processors/input/Short.h")
+#include "org/allbinary/input/automation/actions/script/condition/processors/input/Short.h"
+#endif
+
+        #endif
+    

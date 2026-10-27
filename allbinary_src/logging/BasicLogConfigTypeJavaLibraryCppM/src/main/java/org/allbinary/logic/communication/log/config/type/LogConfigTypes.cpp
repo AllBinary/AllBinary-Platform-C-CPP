@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigTypes.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,17 +61,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LogConfigTypes
-            : public Object
-         {
+BasicArrayList* LogConfigTypes::LOGGING = new BasicArrayListD();
 
-    public: static inline BasicArrayList* LOGGING = new BasicArrayListD();
-
-private: LogConfigTypes(){
+LogConfigTypes::LogConfigTypes(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_BILLINGADDRESSTAG_CPP
+        #define ADMIN_TAGS_BILLINGADDRESSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/BillingAddressTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,13 +81,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class BillingAddressTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string value;
-
-public: BillingAddressTag(){
+BillingAddressTag::BillingAddressTag() : logUtil(LogUtil::getInstance()){
 this->setTagHelperFactory(new BillingAddressHelperFactory());
     
 this->setTagRequestHelperFactory(new BillingAddressHelperFactory());
@@ -85,7 +90,7 @@ this->setTagRequestHelperFactory(new BillingAddressHelperFactory());
 }
 
 
-    public: void setValue(std::string value){
+    auto BillingAddressTag::setValue(std::string value) -> void{
 this->value= value;
     
 }
@@ -93,7 +98,7 @@ this->value= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string set(){
+    auto BillingAddressTag::set() -> std::string{
 
         try {
             
@@ -134,10 +139,10 @@ this->value= value;
     std::string error = "Failed to set billing Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "set()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "set()", &e);
     
 
                                     }
@@ -155,7 +160,7 @@ this->value= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string setToShippingAddress(){
+    auto BillingAddressTag::setToShippingAddress() -> std::string{
 
         try {
             
@@ -196,10 +201,10 @@ this->value= value;
     std::string error = "Failed to Set Billing address to Shipping Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setToShippingAddress()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setToShippingAddress()", &e);
     
 
                                     }
@@ -217,7 +222,7 @@ this->value= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto BillingAddressTag::doStartTag() -> int32_t{
 
         try {
             
@@ -259,7 +264,7 @@ this->value= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                         }
@@ -306,7 +311,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_BILLINGADDRESSTAG_CPP

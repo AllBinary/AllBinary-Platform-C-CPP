@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -30,14 +35,8 @@
 
         
 #include <java/io/FilenameFilter.h>
-
-      
 #include <java/io/IOException.h>
-
-      
 #include <java/net/URI.h>
-
-      
 
 
 
@@ -57,7 +56,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class AbFileInterface
+            : public virtual Object
+         {
 
     public: virtual bool canRead() = 0;
 
@@ -119,3 +124,19 @@ class AbFileInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ABFILEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_ABFILEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILEINTERFACE_H_COMPLETE
+        #if __has_include(<java/io/FilenameFilter.h>)
+#include <java/io/FilenameFilter.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/net/URI.h>)
+#include <java/net/URI.h>
+#endif
+
+        #endif
+    

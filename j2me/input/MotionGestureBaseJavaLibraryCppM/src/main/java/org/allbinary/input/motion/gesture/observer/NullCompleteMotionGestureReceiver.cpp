@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_NULLCOMPLETEMOTIONGESTURERECEIVER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_NULLCOMPLETEMOTIONGESTURERECEIVER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/NullCompleteMotionGestureReceiver.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,13 +67,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 
-class NullCompleteMotionGestureReceiver
-            : public Object
-        , public CompleteMotionGestureListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NullCompleteMotionGestureReceiver(){
+NullCompleteMotionGestureReceiver::NullCompleteMotionGestureReceiver() : logUtil(LogUtil::getInstance()){
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -74,11 +79,10 @@ this->logUtil->putF("Null Gesture Reciever", this, commonStrings->CONSTRUCTOR);
 
                 //@Throws(Exception.constructor)
             
-    public: void onMotionGestureCompleted(BasicArrayList* list){
+    auto NullCompleteMotionGestureReceiver::onMotionGestureCompleted(BasicArrayList* list) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_NULLCOMPLETEMOTIONGESTURERECEIVER_CPP

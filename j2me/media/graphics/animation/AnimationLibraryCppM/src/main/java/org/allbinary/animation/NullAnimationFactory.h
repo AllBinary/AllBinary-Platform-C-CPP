@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_NULLANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,12 +38,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class Graphics;
+class ScaleProperties;
 
 
 
@@ -59,26 +60,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
-#include "org/allbinary/animation/Animation.h"
+class Animation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    public: static NullAnimationFactory* NULL_NOT_FOR_USE_ANIMATION_FACTORY() { static std::unique_ptr<NullAnimationFactory> value(new NullAnimationFactory()); return value.get(); }
+    private: static NullAnimationFactory* NULL_NOT_FOR_USE_ANIMATION_FACTORY_owner();
+    public: static NullAnimationFactory* NULL_NOT_FOR_USE_ANIMATION_FACTORY;
 
-    private: static NullAnimationFactory* NULL_ANIMATION_FACTORY() { static std::unique_ptr<NullAnimationFactory> value(new NullAnimationFactory()); return value.get(); }
+    private: static NullAnimationFactory* NULL_ANIMATION_FACTORY_owner();
+    private: static NullAnimationFactory* NULL_ANIMATION_FACTORY;
 
     public: static NullAnimationFactory* getFactoryInstance();
 
-    private: Animation* NULL_ANIMATION = class extends Animation
-                                {
-                                
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
-                                }
-                            ;
+    private: Animation* NULL_ANIMATION;
 
-    public: const std::vector<Animation*> EMPTY_ARRAY = {};
+    public: std::vector<Animation*> EMPTY_ARRAY;
 
 private: NullAnimationFactory();
 
@@ -96,3 +98,25 @@ private: NullAnimationFactory();
 
 
         #endif //ORG_ALLBINARY_ANIMATION_NULLANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_NULLANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_NULLANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+
+        #endif
+    

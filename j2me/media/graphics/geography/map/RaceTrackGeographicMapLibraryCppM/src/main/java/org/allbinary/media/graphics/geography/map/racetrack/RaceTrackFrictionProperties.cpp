@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKFRICTIONPROPERTIES_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKFRICTIONPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackFrictionProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RaceTrackFrictionProperties
-            : public Object
-         {
 
-    private: int32_t ROAD_FRICTION_NOMINATOR;
-
-    private: int32_t GROUND_FRICTION_NOMINATOR;
-
-public: RaceTrackFrictionProperties(int32_t roadFriction, int32_t groundFriction){
+RaceTrackFrictionProperties::RaceTrackFrictionProperties(int32_t roadFriction, int32_t groundFriction){
 this->ROAD_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -roadFriction;
     
 this->GROUND_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -groundFriction;
@@ -64,7 +67,7 @@ this->GROUND_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -groundF
 }
 
 
-    public: int32_t getRoadFrictionNominator(){
+    auto RaceTrackFrictionProperties::getRoadFrictionNominator() -> int32_t{
 
 
 
@@ -74,7 +77,7 @@ this->GROUND_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -groundF
 }
 
 
-    public: int32_t getGroundFrictionNominator(){
+    auto RaceTrackFrictionProperties::getGroundFrictionNominator() -> int32_t{
 
 
 
@@ -84,7 +87,6 @@ this->GROUND_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -groundF
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKFRICTIONPROPERTIES_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTNAMEDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTNAMEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,14 +37,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class OrderHistoryData;
+class StdUtil;
 
 
 
@@ -59,61 +58,89 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserEmailEventNameData
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline HashMap<Object*, Object*>* userNameEvenNameHashMap = StdUtil::getInstance()->createHashMap();
+    private: static HashMap<Object*, Object*>* userNameEvenNameHashMap;
 
     private: static inline int32_t nextId = 0;
 
-    public: static UserEmailEventNameData* INSTALLER() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Installer")); return value.get(); }
+    private: static UserEmailEventNameData* INSTALLER_owner();
+    public: static UserEmailEventNameData* INSTALLER;
 
-    public: static UserEmailEventNameData* EXCEPTION() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Exception")); return value.get(); }
+    private: static UserEmailEventNameData* EXCEPTION_owner();
+    public: static UserEmailEventNameData* EXCEPTION;
 
-    public: static UserEmailEventNameData* LOGGEDEXCEPTION() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Logged Exception")); return value.get(); }
+    private: static UserEmailEventNameData* LOGGEDEXCEPTION_owner();
+    public: static UserEmailEventNameData* LOGGEDEXCEPTION;
 
-    public: static UserEmailEventNameData* ERROR() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Error")); return value.get(); }
+    private: static UserEmailEventNameData* ERROR_owner();
+    public: static UserEmailEventNameData* ERROR;
 
-    public: static UserEmailEventNameData* OUTOFMEMORY() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Out Of Memory Error")); return value.get(); }
+    private: static UserEmailEventNameData* OUTOFMEMORY_owner();
+    public: static UserEmailEventNameData* OUTOFMEMORY;
 
-    public: static UserEmailEventNameData* ADMINGENERATINGSTATICPAGES() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Admin Generating Static Pages")); return value.get(); }
+    private: static UserEmailEventNameData* ADMINGENERATINGSTATICPAGES_owner();
+    public: static UserEmailEventNameData* ADMINGENERATINGSTATICPAGES;
 
-    public: static UserEmailEventNameData* STOREERROROCCURRED() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Store Error Occurred")); return value.get(); }
+    private: static UserEmailEventNameData* STOREERROROCCURRED_owner();
+    public: static UserEmailEventNameData* STOREERROROCCURRED;
 
-    public: static UserEmailEventNameData* STOREOUTOFMEMORY() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Store Out Of Memory Error")); return value.get(); }
+    private: static UserEmailEventNameData* STOREOUTOFMEMORY_owner();
+    public: static UserEmailEventNameData* STOREOUTOFMEMORY;
 
-    public: static UserEmailEventNameData* STORECREATED() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Store Created")); return value.get(); }
+    private: static UserEmailEventNameData* STORECREATED_owner();
+    public: static UserEmailEventNameData* STORECREATED;
 
-    public: static UserEmailEventNameData* STOREOPENED() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Store Opened")); return value.get(); }
+    private: static UserEmailEventNameData* STOREOPENED_owner();
+    public: static UserEmailEventNameData* STOREOPENED;
 
-    public: static UserEmailEventNameData* STORECLOSED() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Store Closed")); return value.get(); }
+    private: static UserEmailEventNameData* STORECLOSED_owner();
+    public: static UserEmailEventNameData* STORECLOSED;
 
-    public: static UserEmailEventNameData* STOREGENERATINGSTATICPAGES() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Store Generating Static Pages")); return value.get(); }
+    private: static UserEmailEventNameData* STOREGENERATINGSTATICPAGES_owner();
+    public: static UserEmailEventNameData* STOREGENERATINGSTATICPAGES;
 
-    public: static UserEmailEventNameData* PRODUCTISOUT() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Product Is Out")); return value.get(); }
+    private: static UserEmailEventNameData* PRODUCTISOUT_owner();
+    public: static UserEmailEventNameData* PRODUCTISOUT;
 
-    public: static UserEmailEventNameData* PRODUCTISAVAILABLE() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Product Is Available")); return value.get(); }
+    private: static UserEmailEventNameData* PRODUCTISAVAILABLE_owner();
+    public: static UserEmailEventNameData* PRODUCTISAVAILABLE;
 
-    public: static UserEmailEventNameData* PRODUCTISOLD() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Product Is Old")); return value.get(); }
+    private: static UserEmailEventNameData* PRODUCTISOLD_owner();
+    public: static UserEmailEventNameData* PRODUCTISOLD;
 
-    public: static UserEmailEventNameData* PRODUCTISONSALE() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Product Is On Sale")); return value.get(); }
+    private: static UserEmailEventNameData* PRODUCTISONSALE_owner();
+    public: static UserEmailEventNameData* PRODUCTISONSALE;
 
-    public: static UserEmailEventNameData* PRODUCTSALEISOVER() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Product Sale Is Over")); return value.get(); }
+    private: static UserEmailEventNameData* PRODUCTSALEISOVER_owner();
+    public: static UserEmailEventNameData* PRODUCTSALEISOVER;
 
-    public: static UserEmailEventNameData* ORDERPREPROCESSING() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData(OrderHistoryData::PREPROCESSING)); return value.get(); }
+    private: static UserEmailEventNameData* ORDERPREPROCESSING_owner();
+    public: static UserEmailEventNameData* ORDERPREPROCESSING;
 
-    public: static UserEmailEventNameData* ORDERPROCESSING() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData(OrderHistoryData::PROCESSING)); return value.get(); }
+    private: static UserEmailEventNameData* ORDERPROCESSING_owner();
+    public: static UserEmailEventNameData* ORDERPROCESSING;
 
-    public: static UserEmailEventNameData* ORDERCANCELLED() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData(OrderHistoryData::CANCELLED)); return value.get(); }
+    private: static UserEmailEventNameData* ORDERCANCELLED_owner();
+    public: static UserEmailEventNameData* ORDERCANCELLED;
 
-    public: static UserEmailEventNameData* ORDERPARTIALLYSHIPPED() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData(OrderHistoryData::PARTIALLYSHIPPED)); return value.get(); }
+    private: static UserEmailEventNameData* ORDERPARTIALLYSHIPPED_owner();
+    public: static UserEmailEventNameData* ORDERPARTIALLYSHIPPED;
 
-    public: static UserEmailEventNameData* ORDERSHIPPED() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData(OrderHistoryData::SHIPPED)); return value.get(); }
+    private: static UserEmailEventNameData* ORDERSHIPPED_owner();
+    public: static UserEmailEventNameData* ORDERSHIPPED;
 
-    public: static UserEmailEventNameData* QUOTEREQUEST() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("Quote Request")); return value.get(); }
+    private: static UserEmailEventNameData* QUOTEREQUEST_owner();
+    public: static UserEmailEventNameData* QUOTEREQUEST;
 
-    public: static UserEmailEventNameData* NEWPASSWORD() { static std::unique_ptr<UserEmailEventNameData> value(new UserEmailEventNameData("New Password")); return value.get(); }
+    private: static UserEmailEventNameData* NEWPASSWORD_owner();
+    public: static UserEmailEventNameData* NEWPASSWORD;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -139,3 +166,19 @@ public: UserEmailEventNameData(std::string eventHandlerName);
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTNAMEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTNAMEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTNAMEDATA_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+
+        #endif
+    

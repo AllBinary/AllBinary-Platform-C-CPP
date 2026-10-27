@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/terrain/TerrainEventCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,25 +63,23 @@
 #include "org/allbinary/game/terrain/TerrainEvent.h"
 #include "org/allbinary/game/terrain/BasicTerrainInfo.h"
 
-class TerrainEventCircularStaticPool
-            : public Object
-         {
 
-    private: static TerrainEventCircularStaticPool* instance() { static std::unique_ptr<TerrainEventCircularStaticPool> value(new TerrainEventCircularStaticPool()); return value.get(); }
+TerrainEventCircularStaticPool::TerrainEventCircularStaticPool() : EVENT_POOL(new AllBinaryEventCircularPool(20)) {
+        }
+        auto TerrainEventCircularStaticPool::instance_owner() -> TerrainEventCircularStaticPool* { static std::unique_ptr<TerrainEventCircularStaticPool> value(new TerrainEventCircularStaticPool()); return value.get(); }
+TerrainEventCircularStaticPool* TerrainEventCircularStaticPool::instance = TerrainEventCircularStaticPool::instance_owner();
 
-    public: static TerrainEventCircularStaticPool* getInstance(){
+    auto TerrainEventCircularStaticPool::getInstance() -> TerrainEventCircularStaticPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TerrainEventCircularStaticPool::instance();
+                        return TerrainEventCircularStaticPool::instance;
     
 }
 
 
-    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
-
-    public: void init(){
+    auto TerrainEventCircularStaticPool::init() -> void{
 this->EVENT_POOL->initAllBinaryEventCircularPool(new TerrainEventFactory());
     
 }
@@ -80,7 +88,7 @@ this->EVENT_POOL->initAllBinaryEventCircularPool(new TerrainEventFactory());
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: TerrainEvent* getNext(BasicTerrainInfo* basicTerrainInfo){
+    auto TerrainEventCircularStaticPool::getNext(BasicTerrainInfo* basicTerrainInfo) -> TerrainEvent*{
 
     TerrainEvent* trackingEvent = dynamic_cast<TerrainEvent*>(this->EVENT_POOL->getNextInstance());;
     
@@ -95,7 +103,6 @@ trackingEvent->setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_CPP

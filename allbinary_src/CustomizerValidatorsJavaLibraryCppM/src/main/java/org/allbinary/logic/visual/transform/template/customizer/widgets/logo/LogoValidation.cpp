@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -95,19 +105,8 @@
         #include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoData.h"
 #include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoImageFileUtil.h"
 
-class LogoValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: FileItem* logoFileItem;
-
-    private: AbPath* logoAbPath;
-
-    private: std::string logoFile;
-
-    private: bool isFile;
-
-public: LogoValidation(){
+LogoValidation::LogoValidation() : logUtil(LogUtil::getInstance()){
 this->isFile= false;
     
 this->logoAbPath= 
@@ -121,7 +120,7 @@ this->logoFile=
 }
 
 
-public: LogoValidation(Node* node){
+LogoValidation::LogoValidation(Node* node) : logUtil(LogUtil::getInstance()){
 this->isFile= false;
     
 this->logoAbPath= new AbPath(DomSearchHelper::getNode(LogoData::getInstance()->IMAGEPATH, node->getChildNodes())->getNodeValue(), StringUtil::getInstance()->EMPTY_STRING);
@@ -131,7 +130,7 @@ this->logoFile= DomSearchHelper::getNode(LogoData::getInstance()->IMAGEFILENAME,
 }
 
 
-public: LogoValidation(HashMap<Object*, Object*>* hashMap){
+LogoValidation::LogoValidation(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 this->isFile= true;
     
 this->getFormData(hashMap);
@@ -141,7 +140,7 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto LogoValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 this->logoFileItem= dynamic_cast<FileItem*>(hashMap->get(LogoData::getInstance()->IMAGE));
     
 this->logoAbPath= new AbPath(hashMap->get(LogoData::getInstance()->IMAGEPATH), StringUtil::getInstance()->EMPTY_STRING);
@@ -158,7 +157,7 @@ this->logoAbPath= new AbPath(hashMap->get(LogoData::getInstance()->IMAGEPATH), S
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -180,7 +179,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 }
 
 
-    public: bool isValid(){
+    auto LogoValidation::isValid() -> bool{
 
         try {
             
@@ -190,10 +189,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
     FileData* fileData = FileData::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("LogoValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("LogoValidation", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -203,10 +202,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("logoPath is invalid: " +this->logoAbPath->toString(), this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("logoPath is invalid: ") +JavaString::valueOf(this->logoAbPath->toString()), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -225,10 +224,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("logoFile is invalid: " +this->logoFile, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("logoFile is invalid: ") +JavaString::valueOf(this->logoFile), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -266,10 +265,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Image File Is Not The Right Size. " +fileData->MINIMAGEFILESIZE +"< > " +fileData->MAXIMAGEFILESIZE, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Image File Is Not The Right Size. ") +JavaString::valueOf(fileData->MINIMAGEFILESIZE)) +JavaString::valueOf("< > ")) +JavaString::valueOf(fileData->MAXIMAGEFILESIZE), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -287,10 +286,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Logo Validation: " +valid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("Logo Validation: ") +JavaString::valueOf(valid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -306,10 +305,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -325,7 +324,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "getFormData()");
 }
 
 
-    public: std::string validationInfo(){
+    auto LogoValidation::validationInfo() -> std::string{
 
         try {
             
@@ -344,7 +343,7 @@ stringBuffer->append("Logo is not valid.");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -363,7 +362,7 @@ stringBuffer->append("Logo is not valid.");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto LogoValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -373,7 +372,7 @@ stringBuffer->append("Logo is not valid.");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto LogoValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -383,7 +382,7 @@ stringBuffer->append("Logo is not valid.");
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto LogoValidation::toHashMap() -> HashMap<Object*, Object*>*{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -423,7 +422,7 @@ hashMap->put(LogoData::getInstance()->IMAGEFILENAME, this->logoFile);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto LogoValidation::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->toHashMap();;
     
@@ -438,9 +437,9 @@ hashMap->put(LogoData::getInstance()->IMAGEFILENAME, this->logoFile);
 
                 //@Throws(Exception.constructor)
             
-    public: void processLogoFile(){
+    auto LogoValidation::processLogoFile() -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -462,7 +461,6 @@ this->logUtil->putF(stringBuffer->toString(), this, "processLogoFile()");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOVALIDATION_CPP

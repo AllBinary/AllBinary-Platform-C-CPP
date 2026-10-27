@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATIONME_CPP
+        #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATIONME_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/AllBinaryVibrationME.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryVibrationME
-            : public Object
-         {
 
-    public: void vibrate(int32_t duration, int32_t type, int32_t volume){
+AllBinaryVibrationME::AllBinaryVibrationME() {
+        }
+        
+    auto AllBinaryVibrationME::vibrate(int32_t duration, int32_t type, int32_t volume) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATIONME_CPP

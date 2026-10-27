@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDINPUTAUTOMATIONPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDINPUTAUTOMATIONPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardInputAutomationProcessor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -69,13 +79,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/KeyboardActionScriptInputInterface.h"
 
-class KeyboardInputAutomationProcessor
-            : public Object
-         {
+
+KeyboardInputAutomationProcessor::KeyboardInputAutomationProcessor(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static void process(KeyboardActionScriptInputInterface* keyActionScriptInputInterface){
+    auto KeyboardInputAutomationProcessor::process(KeyboardActionScriptInputInterface* keyActionScriptInputInterface) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -186,11 +197,6 @@ Thread::sleep(50);
 }
 
 
-private: KeyboardInputAutomationProcessor(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDINPUTAUTOMATIONPROCESSOR_CPP

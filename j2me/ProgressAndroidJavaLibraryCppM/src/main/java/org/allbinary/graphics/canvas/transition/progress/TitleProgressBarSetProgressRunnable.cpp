@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARSETPROGRESSRUNNABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARSETPROGRESSRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarSetProgressRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,11 +66,8 @@
         #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
 #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
-class TitleProgressBarSetProgressRunnable: public ProgressRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TitleProgressBarSetProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
+TitleProgressBarSetProgressRunnable::TitleProgressBarSetProgressRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,10 +77,10 @@ public: TitleProgressBarSetProgressRunnable(Activity* midletActivity, ProgressCa
 }
 
 
-    public: void run(){
+    auto TitleProgressBarSetProgressRunnable::run() -> void{
 
         try {
-            this->midletActivity.onSetProgress(static_cast<int32_t>(this->progressCanvas.getValue()), this->progressCanvas.getText());
+            this->midletActivity->onSetProgress(static_cast<int32_t>(this->progressCanvas->getValue()), this->progressCanvas->getText());
     
 
                 //: 
@@ -89,7 +96,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARSETPROGRESSRUNNABLE_CPP

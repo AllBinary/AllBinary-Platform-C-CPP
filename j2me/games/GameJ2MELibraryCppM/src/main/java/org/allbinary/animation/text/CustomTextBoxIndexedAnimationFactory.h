@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,39 +36,17 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/TextField.h>
-
-      
-#include <org/allbinary/graphics/form/item/CustomTextBox.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
+class Font;
+class TextField;
+class CustomTextBox;
+class Animation;
 #include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+class ABToGBUtil;
+class AllBinaryGameCanvas;
+class LogUtil;
 
-      
-#include <org/allbinary/game/canvas/ABToGBUtil.h>
-
-      
-#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class StringUtil;
+class ScaleProperties;
 
 
 
@@ -82,14 +65,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/text/CustomTextBox2.h"
-#include "org/allbinary/animation/text/CustomTextBoxIndexedAnimation.h"
+        class CustomTextBox2;
+class CustomTextBoxIndexedAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomTextBoxIndexedAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     public: ScaleProperties* scaleProperties;
 
@@ -109,3 +96,47 @@ public: CustomTextBoxIndexedAnimationFactory(int32_t fontSize, int32_t maxLength
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/TextField.h>)
+#include <javax/microedition/lcdui/TextField.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/CustomTextBox.h>)
+#include <org/allbinary/graphics/form/item/CustomTextBox.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/canvas/ABToGBUtil.h>)
+#include <org/allbinary/game/canvas/ABToGBUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>)
+#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/text/CustomTextBox2.h")
+#include "org/allbinary/animation/text/CustomTextBox2.h"
+#endif
+#if __has_include("org/allbinary/animation/text/CustomTextBoxIndexedAnimation.h")
+#include "org/allbinary/animation/text/CustomTextBoxIndexedAnimation.h"
+#endif
+
+        #endif
+    

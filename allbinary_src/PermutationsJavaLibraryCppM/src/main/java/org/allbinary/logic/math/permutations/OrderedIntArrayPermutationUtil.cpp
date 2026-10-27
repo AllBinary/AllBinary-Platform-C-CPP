@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDINTARRAYPERMUTATIONUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDINTARRAYPERMUTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/permutations/OrderedIntArrayPermutationUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,64 +63,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/math/permutations/IntPermutationVisitor.h"
 
-class OrderedIntArrayPermutationUtil
-            : public Object
-         {
+auto OrderedIntArrayPermutationUtil::instance_owner() -> OrderedIntArrayPermutationUtil* { static std::unique_ptr<OrderedIntArrayPermutationUtil> value(new OrderedIntArrayPermutationUtil()); return value.get(); }
+OrderedIntArrayPermutationUtil* OrderedIntArrayPermutationUtil::instance = OrderedIntArrayPermutationUtil::instance_owner();
 
-    private: static OrderedIntArrayPermutationUtil* instance() { static std::unique_ptr<OrderedIntArrayPermutationUtil> value(new OrderedIntArrayPermutationUtil()); return value.get(); }
-
-    public: static OrderedIntArrayPermutationUtil* getInstance(){
+    auto OrderedIntArrayPermutationUtil::getInstance() -> OrderedIntArrayPermutationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrderedIntArrayPermutationUtil::instance();
+                        return OrderedIntArrayPermutationUtil::instance;
     
 }
 
 
-    public: static void main(std::vector<std::string> args){
-
-    int32_t TOTAL = 3;;
-    
-
-    std::vector<int32_t> data = std::vector<int32_t>(TOTAL);;
-    
-
-
-
-
-                        for (
-    int32_t i = 0;i < TOTAL; i++)
-        {
-data[i]= i;
-    
+OrderedIntArrayPermutationUtil::OrderedIntArrayPermutationUtil(){
 }
 
 
-    IntPermutationVisitor* permutationVisitor = new IntPermutationVisitor(data);;
-    
-
-    std::string ORIGINAL_DATA_LABEL = "Original Data: ";;
-    
-System.out.print(ORIGINAL_DATA_LABEL);
-    
-permutationVisitor->print(data);
-    
-OrderedIntArrayPermutationUtil::getInstance()->generate(data, permutationVisitor);
-    
-}
-
-
-    private: const std::string TOTAL_ITERATIONS_TABLE = "Total Iterations: ";
-
-    private: const std::string FINISHED = "\nFINISHED";
-
-private: OrderedIntArrayPermutationUtil(){
-}
-
-
-    public: void getNext(std::vector<int32_t> data){
+    auto OrderedIntArrayPermutationUtil::getNext(std::vector<int32_t> data) -> void{
 
     int32_t length = data.size();;
     
@@ -154,7 +124,7 @@ j--;
 }
 
 
-    public: void swap(std::vector<int32_t> data, int32_t a, int32_t b){
+    auto OrderedIntArrayPermutationUtil::swap(std::vector<int32_t> data, int32_t a, int32_t b) -> void{
 
     int32_t temp = data[a];;
     
@@ -165,7 +135,7 @@ data[b]= temp;
 }
 
 
-    public: int64_t factorial(int32_t dataLength){
+    auto OrderedIntArrayPermutationUtil::factorial(int32_t dataLength) -> int64_t{
 
     int64_t temp = 1;;
     
@@ -196,7 +166,7 @@ temp *= i;
 }
 
 
-    public: void generate(std::vector<int32_t> data, Visitor* visitor){
+    auto OrderedIntArrayPermutationUtil::generate(std::vector<int32_t> data, Visitor* visitor) -> void{
 
     int64_t iterations = this->factorial(data.size());;
     
@@ -222,7 +192,39 @@ System.out.println(this->FINISHED);
 }
 
 
-};
+    auto OrderedIntArrayPermutationUtil::main(std::vector<std::string> args) -> void{
 
-            
+    int32_t TOTAL = 3;;
+    
 
+    std::vector<int32_t> data = std::vector<int32_t>(TOTAL);;
+    
+
+
+
+
+                        for (
+    int32_t i = 0;i < TOTAL; i++)
+        {
+data[i]= i;
+    
+}
+
+
+    IntPermutationVisitor* permutationVisitor = new IntPermutationVisitor(data);;
+    
+
+    std::string ORIGINAL_DATA_LABEL = "Original Data: ";;
+    
+System.out.print(ORIGINAL_DATA_LABEL);
+    
+permutationVisitor->print(data);
+    
+OrderedIntArrayPermutationUtil::getInstance()->generate(data, permutationVisitor);
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDINTARRAYPERMUTATIONUTIL_CPP

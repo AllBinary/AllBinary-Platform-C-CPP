@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMUTIL_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/FormUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,23 +67,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FormUtil
-            : public Object
-         {
 
-    private: static FormUtil* instance() { static std::unique_ptr<FormUtil> value(new FormUtil()); return value.get(); }
+FormUtil::FormUtil() {
+        }
+        auto FormUtil::instance_owner() -> FormUtil* { static std::unique_ptr<FormUtil> value(new FormUtil()); return value.get(); }
+FormUtil* FormUtil::instance = FormUtil::instance_owner();
 
-    public: static FormUtil* getInstance(){
+    auto FormUtil::getInstance() -> FormUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FormUtil::instance();
+                        return FormUtil::instance;
     
 }
 
 
-    public: Rectangle* createFormRectangle(){
+    auto FormUtil::createFormRectangle() -> Rectangle*{
 
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
@@ -92,7 +102,6 @@ class FormUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_FORMUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_ARCEDMULTIBEAMWEAPONPART_CPP
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_ARCEDMULTIBEAMWEAPONPART_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/weapon/ArcedMultiBeamWeaponPart.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,13 +83,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
 
-class ArcedMultiBeamWeaponPart: public BasicWeaponPart {
 
-    private: WeaponLayerCircularPool* weaponLayerCircularStaticPool;
-
-    private: int32_t total;
-
-public: ArcedMultiBeamWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool, int32_t total, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) : BasicWeaponPart(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship){
+ArcedMultiBeamWeaponPart::ArcedMultiBeamWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool, int32_t total, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) : BasicWeaponPart(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship), TOTAL_ANGLE(static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -93,11 +98,9 @@ this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
 }
 
 
-    private: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);
-
                 //@Throws(Exception.constructor)
             
-    public: void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface){
+    auto ArcedMultiBeamWeaponPart::processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface) -> void{
 
     int16_t increment = ((this->total -1) /this->TOTAL_ANGLE);;
     
@@ -117,7 +120,7 @@ this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
                         for (
     int32_t index = 0;index < this->total; index++)
         {
-weaponLayer= this->weaponLayerCircularStaticPool->getInstanceWeaponLayer(this->getOwnerLayerInterface(), this->relativeRelationship.getX(), this->relativeRelationship.getY(), 0, static_cast<int32_t>((minAngle +increment)), static_cast<int32_t>(otherAngle), weaponProperties, scoreableInterface);
+weaponLayer= this->weaponLayerCircularStaticPool->getInstanceWeaponLayer(this->getOwnerLayerInterface(), this->relativeRelationship->getX(), this->relativeRelationship->getY(), 0, static_cast<int32_t>((minAngle +increment)), static_cast<int32_t>(otherAngle), weaponProperties, scoreableInterface);
     
 allbinaryLayerManager->append(weaponLayer);
     
@@ -128,7 +131,6 @@ next += increment;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_WEAPON_ARCEDMULTIBEAMWEAPONPART_CPP

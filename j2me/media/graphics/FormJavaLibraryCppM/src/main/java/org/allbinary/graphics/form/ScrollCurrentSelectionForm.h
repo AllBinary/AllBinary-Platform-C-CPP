@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 #include <org/allbinary/canvas/Processor.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Rectangle;
+class BasicColor;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
+class UpdateMyFontProcessor;
+class ABCustomItem;
 
 
 
@@ -75,26 +64,36 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/ScrollSelectionForm.h"
 #include "org/allbinary/graphics/form/ItemIndexDx.h"
-#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
-#include "org/allbinary/graphics/form/FormTypeFactory.h"
-//#include "org/allbinary/graphics/form/VerticalFormProcessor.h"
-//#include "org/allbinary/graphics/form/VerticalItemIndexDx.h"
-//#include "org/allbinary/graphics/form/HorizontalFormProcessor.h"
-//#include "org/allbinary/graphics/form/HorizontalItemIndexDx.h"
-//#include "org/allbinary/graphics/form/TempHorizontalFormProcessor.h"
-//#include "org/allbinary/graphics/form/TempHorizontalItemIndexDx.h"
-#include "org/allbinary/graphics/form/FormType.h"
+class ItemPaintableFactory;
+class FormTypeFactory;
+//class VerticalFormProcessor;
+//class VerticalItemIndexDx;
+//class HorizontalFormProcessor;
+//class HorizontalItemIndexDx;
+//class TempHorizontalFormProcessor;
+//class TempHorizontalItemIndexDx;
+class FormType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScrollCurrentSelectionForm: public ScrollSelectionForm, public UpdateMyFontInterface {
+public: class TempHorizontalFormProcessor;
+public: class HorizontalFormProcessor;
+public: class VerticalFormProcessor;
+public: class TempHorizontalItemIndexDx;
+public: class HorizontalItemIndexDx;
+public: class VerticalItemIndexDx;
 
     private: bool moveForSmallScreen;
 
 //inner= member=true isStatic=
-class TempHorizontalFormProcessor: public Processor {
+public: class TempHorizontalFormProcessor: public Processor {
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: TempHorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
+public: TempHorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -104,11 +103,11 @@ class TempHorizontalFormProcessor: public Processor {
 
             
 //inner= member=true isStatic=
-class HorizontalFormProcessor: public Processor {
+public: class HorizontalFormProcessor: public Processor {
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: HorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
+public: HorizontalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -118,11 +117,11 @@ class HorizontalFormProcessor: public Processor {
 
             
 //inner= member=true isStatic=
-class VerticalFormProcessor: public Processor {
+public: class VerticalFormProcessor: public Processor {
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: VerticalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
+public: VerticalFormProcessor(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -132,11 +131,11 @@ class VerticalFormProcessor: public Processor {
 
             
 //inner= member=true isStatic=
-class TempHorizontalItemIndexDx: public ItemIndexDx {
+public: class TempHorizontalItemIndexDx: public ItemIndexDx {
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: TempHorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
+public: TempHorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -146,11 +145,11 @@ class TempHorizontalItemIndexDx: public ItemIndexDx {
 
             
 //inner= member=true isStatic=
-class HorizontalItemIndexDx: public ItemIndexDx {
+public: class HorizontalItemIndexDx: public ItemIndexDx {
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: HorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
+public: HorizontalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -160,11 +159,11 @@ class HorizontalItemIndexDx: public ItemIndexDx {
 
             
 //inner= member=true isStatic=
-class VerticalItemIndexDx: public ItemIndexDx {
+public: class VerticalItemIndexDx: public ItemIndexDx {
 
     private: ScrollCurrentSelectionForm* scrollCurrentSelectionForm;
 
-: VerticalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
+public: VerticalItemIndexDx(ScrollCurrentSelectionForm* scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
@@ -173,13 +172,13 @@ class VerticalItemIndexDx: public ItemIndexDx {
 };
 
             
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    /*protected*/ public: MyFontProcessor* updateMyFontProcessor;
 
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    /*protected*/ public: MyFontProcessor* myFontProcessor;
 
-    private: Processor* processor = Processor::getInstance();
+    private: Processor* processor;
 
-    private: ItemIndexDx* preItemIndexDx = ItemIndexDx::getInstance();
+    private: ItemIndexDx* preItemIndexDx;
 
     private: int32_t dx= 0;
 
@@ -207,7 +206,7 @@ public: ScrollCurrentSelectionForm(std::string title, std::vector<ABCustomItem*>
 
     private: int32_t getXVerticalForm(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
 
-    protected: int32_t getDiffX(ABCustomItem* item);
+    /*protected*/ public: int32_t getDiffX(ABCustomItem* item);
 
     public: int32_t getDx();
 
@@ -221,3 +220,49 @@ public: ScrollCurrentSelectionForm(std::string title, std::vector<ABCustomItem*>
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/ScrollSelectionForm.h")
+#include "org/allbinary/graphics/form/ScrollSelectionForm.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemIndexDx.h")
+#include "org/allbinary/graphics/form/ItemIndexDx.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/ItemPaintableFactory.h")
+#include "org/allbinary/graphics/form/ItemPaintableFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/FormTypeFactory.h")
+#include "org/allbinary/graphics/form/FormTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/FormType.h")
+#include "org/allbinary/graphics/form/FormType.h"
+#endif
+
+        #endif
+    

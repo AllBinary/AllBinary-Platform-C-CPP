@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SEQUENTIALANIMATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_SEQUENTIALANIMATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/SequentialAnimationInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,8 @@
         #include "org/allbinary/animation/AnimationInterface.h"
 #include "org/allbinary/animation/SequenceInterface.h"
 
-class SequentialAnimationInterface: public AnimationInterface, public SequenceInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getSize() = 0;
 
-    public: virtual void previousFrame() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_SEQUENTIALANIMATIONINTERFACE_CPP

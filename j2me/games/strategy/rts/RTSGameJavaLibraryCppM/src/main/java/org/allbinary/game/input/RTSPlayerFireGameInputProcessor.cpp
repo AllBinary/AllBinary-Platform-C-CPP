@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_RTSPLAYERFIREGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_RTSPLAYERFIREGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/RTSPlayerFireGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/input/RTSPlayerGameInputProcessor.h"
 #include "org/allbinary/game/input/RTSPlayerGameInput.h"
 
-class RTSPlayerFireGameInputProcessor: public RTSPlayerGameInputProcessor {
 
-public: RTSPlayerFireGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput) : RTSPlayerGameInputProcessor(rtsPlayerGameInput){
+RTSPlayerFireGameInputProcessor::RTSPlayerFireGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput) : RTSPlayerGameInputProcessor(rtsPlayerGameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: RTSPlayerFireGameInputProcessor(RTSPlayerGameInput* rtsPlayerGameInput) 
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->rtsPlayerGameInput.addForRemoval(gameKeyEvent);
+    auto RTSPlayerFireGameInputProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->rtsPlayerGameInput->addForRemoval(gameKeyEvent);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_RTSPLAYERFIREGAMEINPUTPROCESSOR_CPP

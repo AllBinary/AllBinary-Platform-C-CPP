@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVEL_CPP
+        #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/resource/ResourceLoadingLevel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ResourceLoadingLevel
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: int32_t level;
-
-: ResourceLoadingLevel(std::string name, int32_t level){
+ResourceLoadingLevel::ResourceLoadingLevel(std::string name, int32_t level){
 this->name= name;
     
 this->level= level;
@@ -61,7 +64,7 @@ this->level= level;
 }
 
 
-    public: int32_t getLevel(){
+    auto ResourceLoadingLevel::getLevel() -> int32_t{
 
 
 
@@ -71,7 +74,7 @@ this->level= level;
 }
 
 
-    public: std::string getName(){
+    auto ResourceLoadingLevel::getName() -> std::string{
 
 
 
@@ -81,7 +84,6 @@ this->level= level;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVEL_CPP

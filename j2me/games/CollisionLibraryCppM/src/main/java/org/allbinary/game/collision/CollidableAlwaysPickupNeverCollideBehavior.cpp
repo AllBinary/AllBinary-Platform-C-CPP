@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollidableAlwaysPickupNeverCollideBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
 #include "org/allbinary/game/collision/CollisionTypeFactory.h"
 #include "org/allbinary/game/collision/CollisionType.h"
 
-class CollidableAlwaysPickupNeverCollideBehavior: public CollidableNeverCollideBehavior {
 
-: CollidableAlwaysPickupNeverCollideBehavior() : CollidableNeverCollideBehavior(true){
+CollidableAlwaysPickupNeverCollideBehavior::CollidableAlwaysPickupNeverCollideBehavior() : CollidableNeverCollideBehavior(true){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,7 @@ class CollidableAlwaysPickupNeverCollideBehavior: public CollidableNeverCollideB
 }
 
 
-    public: CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface){
+    auto CollidableAlwaysPickupNeverCollideBehavior::getCollisionTypeWith(AllBinaryLayer* layerInterface) -> CollisionType*{
 
 
 
@@ -71,7 +80,6 @@ class CollidableAlwaysPickupNeverCollideBehavior: public CollidableNeverCollideB
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEALWAYSPICKUPNEVERCOLLIDEBEHAVIOR_CPP

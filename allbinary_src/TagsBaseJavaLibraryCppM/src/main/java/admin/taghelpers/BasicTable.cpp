@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_BASICTABLE_CPP
+        #define ADMIN_TAGHELPERS_BASICTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/BasicTable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,57 +63,54 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/BasicTableInterface.h"
 
-class BasicTable
-            : public Object
-        , public BasicTableInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
+BasicTable::BasicTable() : commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: std::string drop(){
+    auto BasicTable::drop() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string create(){
+    auto BasicTable::create() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string restore(){
+    auto BasicTable::restore() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string backup(){
+    auto BasicTable::backup() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_BASICTABLE_CPP

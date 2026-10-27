@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,35 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderHistoryEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-    public: virtual void insert(std::string userName, Order* order) = 0;
 
-    public: virtual void setStatus(std::string orderId, std::string status) = 0;
 
-    public: virtual void setPaymentMethod(std::string orderId, std::string status) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getStoreOrders(StoreFrontInterface* storeFrontInterface) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getOrders(std::string userName) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getOrders(std::string status, std::string fromDate, std::string toDate) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual OrderHistory* getOrder(std::string id) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void update(HashMap<Object*, Object*>* whereHashMap, HashMap<Object*, Object*>* orderHashMap) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITYINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_H
         #define ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StringMaker;
+class CommonPhoneStrings;
+class CommonSeps;
 
 
 
@@ -56,25 +55,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/direction/Direction.h"
+        class Direction;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DirectionFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static DirectionFactory* instance() { static std::unique_ptr<DirectionFactory> value(new DirectionFactory()); return value.get(); }
+    private: static DirectionFactory* instance_owner();
+    private: static DirectionFactory* instance;
 
     public: static DirectionFactory* getInstance();
 
     public: const std::string NAME = "DIRECTION";
 
-    public: Direction* LEFT = new Direction(CommonPhoneStrings::getInstance()->LEFT, "WEST", 0, 1);
+    public: Direction* LEFT;
 
-    public: Direction* RIGHT = new Direction(CommonPhoneStrings::getInstance()->RIGHT, "EAST", 1, 0);
+    public: Direction* RIGHT;
 
-    public: Direction* DOWN = new Direction(CommonPhoneStrings::getInstance()->DOWN, "SOUTH", 2, 0);
+    public: Direction* DOWN;
 
-    public: Direction* UP = new Direction(CommonPhoneStrings::getInstance()->UP, "NORTH", 3, 0);
+    public: Direction* UP;
 
     public: Direction* UP_LEFT;
 
@@ -84,15 +88,15 @@ class DirectionFactory
 
     public: Direction* DOWN_RIGHT;
 
-    public: Direction* NOT_BORDERED_WITH = new Direction("NOT_BORDERED_WITH", "NOT_BORDERED_WITH", 8, 0);
+    public: Direction* NOT_BORDERED_WITH;
 
-    public: Direction* NO_DIRECTION = new Direction("NO_DIRECTION", "NO_DIRECTION", 9, 0);
+    public: Direction* NO_DIRECTION;
 
-    public: Direction* TOP = new Direction("TOP", "TOP", 10, 0);
+    public: Direction* TOP;
 
-    public: Direction* BOTTOM = new Direction("BOTTOM", "BOTTOM", 11, 0);
+    public: Direction* BOTTOM;
 
-    public: Direction* ALL_DIRECTION = new Direction("ALL_DIRECTION", "ALL_DIRECTION", 12, 0);
+    public: Direction* ALL_DIRECTION;
 
 private: DirectionFactory();
 
@@ -102,3 +106,22 @@ private: DirectionFactory();
 
 
         #endif //ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/direction/Direction.h")
+#include "org/allbinary/direction/Direction.h"
+#endif
+
+        #endif
+    

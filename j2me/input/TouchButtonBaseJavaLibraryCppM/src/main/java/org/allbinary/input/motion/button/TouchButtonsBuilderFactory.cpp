@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSBUILDERFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSBUILDERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonsBuilderFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +57,13 @@
         #include "org/allbinary/input/motion/button/NoButtonsTouchInputFactory.h"
 #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
-class TouchButtonsBuilderFactory
-            : public Object
-         {
 
-    public: static TouchButtonsBuilderFactory* NO_TOUCH_BUTTON_BUILDER_FACTORY() { static std::unique_ptr<TouchButtonsBuilderFactory> value(new TouchButtonsBuilderFactory()); return value.get(); }
+TouchButtonsBuilderFactory::TouchButtonsBuilderFactory() {
+        }
+        auto TouchButtonsBuilderFactory::NO_TOUCH_BUTTON_BUILDER_FACTORY_owner() -> TouchButtonsBuilderFactory* { static std::unique_ptr<TouchButtonsBuilderFactory> value(new TouchButtonsBuilderFactory()); return value.get(); }
+TouchButtonsBuilderFactory* TouchButtonsBuilderFactory::NO_TOUCH_BUTTON_BUILDER_FACTORY = TouchButtonsBuilderFactory::NO_TOUCH_BUTTON_BUILDER_FACTORY_owner();
 
-    public: BaseTouchInput* getInstance(){
+    auto TouchButtonsBuilderFactory::getInstance() -> BaseTouchInput*{
 
 
 
@@ -63,7 +73,6 @@ class TouchButtonsBuilderFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSBUILDERFACTORY_CPP

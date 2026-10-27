@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/ResolveCompleteMotionGestureListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,13 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 
-class ResolveCompleteMotionGestureListener
-            : public Object
-        , public CompleteMotionGestureListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ResolveCompleteMotionGestureListener(){
+ResolveCompleteMotionGestureListener::ResolveCompleteMotionGestureListener() : logUtil(LogUtil::getInstance()){
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -94,7 +99,7 @@ CompleteMotionGestureInputEventHandler::getInstance()->addListener(new GameKeyFr
 
                 //@Throws(Exception.constructor)
             
-    public: void onMotionGestureCompleted(BasicArrayList* list){
+    auto ResolveCompleteMotionGestureListener::onMotionGestureCompleted(BasicArrayList* list) -> void{
 
     MotionGestureConfiguration* configuration = MotionGestureConfigurationFactory::getInstance();;
     
@@ -134,7 +139,6 @@ break;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_CPP

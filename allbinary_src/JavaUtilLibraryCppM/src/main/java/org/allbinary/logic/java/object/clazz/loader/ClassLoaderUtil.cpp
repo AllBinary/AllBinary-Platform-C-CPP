@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_LOADER_CLASSLOADERUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_LOADER_CLASSLOADERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/anyType/clazz/loader/ClassLoaderUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ClassLoaderUtil
-            : public Object
-         {
+
+ClassLoaderUtil::ClassLoaderUtil(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static std::string getName(Object* anyType){
+    auto ClassLoaderUtil::getName(Object* anyType) -> std::string{
 
     ClassLoader* classLoader = anyType->getClass()getClassLoader();;
     
@@ -69,7 +80,7 @@ class ClassLoaderUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "ClassLoader: " +classLoader->getClass()->getName();
+                        return JavaString::valueOf("ClassLoader: ") +JavaString::valueOf(classLoader->getClass()->getName());
     
 
                                     }
@@ -77,16 +88,11 @@ class ClassLoaderUtil
 
 
 
-                            throw new Exception("Unable to get ClassLoader");
+                            throw Exception("Unable to get ClassLoader");
                     
 }
 
 
-private: ClassLoaderUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_LOADER_CLASSLOADERUTIL_CPP

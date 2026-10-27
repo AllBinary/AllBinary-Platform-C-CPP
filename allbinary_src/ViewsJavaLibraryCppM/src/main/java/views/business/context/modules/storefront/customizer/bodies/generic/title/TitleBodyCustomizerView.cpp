@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_TITLEBODYCUSTOMIZERVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_TITLEBODYCUSTOMIZERVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/bodies/generic/title/TitleBodyCustomizerView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,15 +97,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TitleBodyCustomizerView: public HttpStoreComponentView, public DomNodeInterface {
 
-    private: static inline const std::string NAME = "None";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: TitleBodyValidation* titleBody;
-
-public: TitleBodyCustomizerView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+TitleBodyCustomizerView::TitleBodyCustomizerView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -107,7 +110,7 @@ public: TitleBodyCustomizerView(TransformInfoInterface* transformInfoInterface) 
 
                 //@Throws(Exception.constructor)
             
-    public: void addDomNodeInterfaces(){
+    auto TitleBodyCustomizerView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->titleBody));
     
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
@@ -117,7 +120,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TitleBodyCustomizerView::toXmlNode(Document* document) -> Node*{
 
     std::string pageName = TransformTemplateCustomizerUtil::getInstance()->getPageNameHack(this->getTransformInfoInterface()->getName(), this->getWeblisketSession()->getStoreName());;
     
@@ -141,7 +144,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto TitleBodyCustomizerView::view() -> std::string{
 
         try {
             
@@ -161,10 +164,10 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -179,7 +182,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_TITLE_TITLEBODYCUSTOMIZERVIEW_CPP

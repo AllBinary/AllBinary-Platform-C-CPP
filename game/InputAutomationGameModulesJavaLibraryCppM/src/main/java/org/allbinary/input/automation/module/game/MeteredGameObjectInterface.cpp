@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,15 +57,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MeteredGameObjectInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<double> getRatios() = 0;
 
-    public: virtual bool isGood() = 0;
 
-    public: virtual bool isDropping() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECTINTERFACE_CPP

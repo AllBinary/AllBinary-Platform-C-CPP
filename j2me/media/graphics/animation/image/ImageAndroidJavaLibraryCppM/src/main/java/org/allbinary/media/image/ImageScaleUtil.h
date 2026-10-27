@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,42 +38,18 @@
         
             #include "java/lang/Float.h"
         
-#include <android/graphics/Bitmap.h>
-
-      
-#include <android/graphics/Canvas.h>
-
-      
-#include <android/graphics/Matrix.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/microemu/android/device/AndroidImageInterface.h>
-
-      
+class Bitmap;
+class Canvas;
+class Matrix;
+class Image;
+class NullImage;
+class Anchor;
+class ImageCache;
+class LogUtil;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
+class AndroidImageInterface;
 
 
 
@@ -88,29 +69,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageScaleUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+    private: static ImageScaleUtil* instance_owner();
+    private: static ImageScaleUtil* instance;
 
     public: static ImageScaleUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: ImageScaleUtil();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
-    private: BasicArrayList* imageBasicArrayList = new BasicArrayListD();
+    private: BasicArrayList* imageBasicArrayList;
 
-    private: BasicArrayList* scaledImageBasicArrayList = new BasicArrayListD();
+    private: BasicArrayList* scaledImageBasicArrayList;
 
-    private: BasicArrayList* scaleXBasicArrayList = new BasicArrayListD();
+    private: BasicArrayList* scaleXBasicArrayList;
 
-    private: BasicArrayList* scaleYBasicArrayList = new BasicArrayListD();
+    private: BasicArrayList* scaleYBasicArrayList;
 
                 //@Throws(Exception.constructor)
             
@@ -136,3 +122,46 @@ private: ImageScaleUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H_COMPLETE
+        #if __has_include(<android/graphics/Bitmap.h>)
+#include <android/graphics/Bitmap.h>
+#endif
+#if __has_include(<android/graphics/Canvas.h>)
+#include <android/graphics/Canvas.h>
+#endif
+#if __has_include(<android/graphics/Matrix.h>)
+#include <android/graphics/Matrix.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/microemu/android/device/AndroidImageInterface.h>)
+#include <org/microemu/android/device/AndroidImageInterface.h>
+#endif
+
+        #endif
+    

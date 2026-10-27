@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_GRAPH_E_H
         #define ORG_ALLBINARY_GRAPH_E_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,12 +39,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class E
-            : public Object
+            : public virtual Object
          {
 
-    private: static E* e() { static std::unique_ptr<E> value(new E()); return value.get(); }
+    private: static E* e_owner();
+    private: static E* e;
 
+
+            
+    public: E();
+        
     public: E* newInstance();
 
 };
@@ -48,3 +62,10 @@ class E
 
 
         #endif //ORG_ALLBINARY_GRAPH_E_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPH_E_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPH_E_H_COMPLETE
+        
+        #endif
+    

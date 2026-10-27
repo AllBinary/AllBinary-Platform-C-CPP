@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Class.h"
         
-#include <org/allbinary/logic/system/loader/AbeFactory.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class AbeFactory;
+class AbeClientInformationInterface;
+class LicensingException;
 
 
 
@@ -60,10 +59,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h"
+        class DatabaseConnectionInfoInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InitDbHelperFactory
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
@@ -84,3 +87,22 @@ private: InitDbHelperFactory();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/system/loader/AbeFactory.h>)
+#include <org/allbinary/logic/system/loader/AbeFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include("org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h")
+#include "org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h"
+#endif
+
+        #endif
+    

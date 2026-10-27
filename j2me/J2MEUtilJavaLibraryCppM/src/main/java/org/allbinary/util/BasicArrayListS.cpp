@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLISTS_CPP
+        #define ORG_ALLBINARY_UTIL_BASICARRAYLISTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/BasicArrayListS.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,9 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/util/BasicArrayList.h"
 
-class BasicArrayListS: public BasicArrayList {
 
-public: BasicArrayListS(int32_t size) : BasicArrayList(NullUtil::getInstance()->NULL_OBJECT_ARRAY){
+BasicArrayListS::BasicArrayListS(int32_t size) : BasicArrayList(NullUtil::getInstance()->NULL_OBJECT_ARRAY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,7 +85,7 @@ public: BasicArrayListS(int32_t size) : BasicArrayList(NullUtil::getInstance()->
                                     
 
 
-                            throw new IllegalArgumentException((new StringMaker())->append("Init Size Exception: ")->appendint(size)->toString());
+                            throw IllegalArgumentException((new StringMaker())->append("Init Size Exception: ")->appendint(size)->toString());
                     
 
                                     }
@@ -86,7 +95,6 @@ this->objectArray= std::vector<Object*>(size);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_BASICARRAYLISTS_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWSTRING_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWSTRING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/draw/KeyValueDrawString.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,21 +70,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeyValueDrawString
-            : public Object
-        , public UpdateMyFontInterface {
 
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: std::string LABEL;
-
-    private: int32_t labelX;
-
-    private: int32_t valueX= 0;
-
-    private: std::string value = StringUtil::getInstance()->EMPTY_STRING;
-
-public: KeyValueDrawString(std::string label, int32_t x){
+KeyValueDrawString::KeyValueDrawString(std::string label, int32_t x) : myFontProcessor(new UpdateMyFontProcessor(this)), value(StringUtil::getInstance()->EMPTY_STRING){
 this->LABEL= label;
     
 this->labelX= x;
@@ -82,7 +79,7 @@ this->labelX= x;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto KeyValueDrawString::updateMeasurement(Graphics* graphics) -> void{
 
     int32_t labelWidth = graphics->getFont()->stringWidth(this->LABEL) -LABEL.size();;
     
@@ -93,7 +90,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics, int32_t y){
+    auto KeyValueDrawString::paint(Graphics* graphics, int32_t y) -> void{
 this->myFontProcessor->process(graphics);
     
 graphics->drawString(this->LABEL, this->labelX, y, 0);
@@ -103,7 +100,7 @@ graphics->drawString(this->value, this->valueX, y, 0);
 }
 
 
-    public: void update(std::string value){
+    auto KeyValueDrawString::update(std::string value) -> void{
 
                         if(true)
                         
@@ -116,7 +113,6 @@ graphics->drawString(this->value, this->valueX, y, 0);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DRAW_KEYVALUEDRAWSTRING_CPP

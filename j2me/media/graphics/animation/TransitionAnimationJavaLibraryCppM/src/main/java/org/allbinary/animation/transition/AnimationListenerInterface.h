@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_ANIMATIONLISTENERINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_ANIMATIONLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnimationListenerInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class AnimationListenerInterface
+            : public virtual Object
+         {
 
     public: virtual void onPlatformAnimationStart() = 0;
 
@@ -60,3 +71,10 @@ class AnimationListenerInterface {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_ANIMATIONLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TRANSITION_ANIMATIONLISTENERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_ANIMATIONLISTENERINTERFACE_H_COMPLETE
+        
+        #endif
+    

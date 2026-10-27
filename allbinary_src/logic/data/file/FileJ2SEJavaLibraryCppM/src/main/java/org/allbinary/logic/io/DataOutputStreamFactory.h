@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
+class AbFile;
 
 
 
@@ -52,18 +55,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/AbFileOutputStream.h"
-#include "org/allbinary/logic/io/AbDataOutputStream.h"
-#include "org/allbinary/logic/io/FileStreamFactory.h"
+        class AbFileOutputStream;
+class AbDataOutputStream;
+class FileStreamFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DataOutputStreamFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static DataOutputStreamFactory* instance() { static std::unique_ptr<DataOutputStreamFactory> value(new DataOutputStreamFactory()); return value.get(); }
+    private: static DataOutputStreamFactory* instance_owner();
+    private: static DataOutputStreamFactory* instance;
 
     public: static DataOutputStreamFactory* getInstance();
 
+
+            
+    public: DataOutputStreamFactory();
+        
                 //@Throws(Exception.constructor)
             
     public: AbDataOutputStream* getInstanceForAbFile(AbFile* file);
@@ -78,3 +90,22 @@ class DataOutputStreamFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_DATAOUTPUTSTREAMFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include("org/allbinary/logic/io/AbFileOutputStream.h")
+#include "org/allbinary/logic/io/AbFileOutputStream.h"
+#endif
+#if __has_include("org/allbinary/logic/io/AbDataOutputStream.h")
+#include "org/allbinary/logic/io/AbDataOutputStream.h"
+#endif
+#if __has_include("org/allbinary/logic/io/FileStreamFactory.h")
+#include "org/allbinary/logic/io/FileStreamFactory.h"
+#endif
+
+        #endif
+    

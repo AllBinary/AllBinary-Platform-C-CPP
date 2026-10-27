@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_NULLANDROIDCANVAS_CPP
+        #define ORG_ALLBINARY_ANDROID_NULLANDROIDCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/NullAndroidCanvas.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -53,15 +63,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullAndroidCanvas
-            : public Object
-         {
 
-    public: static Canvas* NULL_CANVAS() { static std::unique_ptr<Canvas> value(new Canvas()); return value.get(); }
+NullAndroidCanvas::NullAndroidCanvas() {
+        }
+        auto NullAndroidCanvas::NULL_CANVAS_owner() -> Canvas* { static std::unique_ptr<Canvas> value(new Canvas()); return value.get(); }
+Canvas* NullAndroidCanvas::NULL_CANVAS = NullAndroidCanvas::NULL_CANVAS_owner();
+auto NullAndroidCanvas::NULL_MEDIA_PLAYER_owner() -> MediaPlayer* { static std::unique_ptr<MediaPlayer> value(new MediaPlayer()); return value.get(); }
+MediaPlayer* NullAndroidCanvas::NULL_MEDIA_PLAYER = NullAndroidCanvas::NULL_MEDIA_PLAYER_owner();
 
-    public: static MediaPlayer* NULL_MEDIA_PLAYER() { static std::unique_ptr<MediaPlayer> value(new MediaPlayer()); return value.get(); }
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_ANDROID_NULLANDROIDCANVAS_CPP

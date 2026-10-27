@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_ARECTANGLEFILLEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_ARECTANGLEFILLEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/ARectangleFilledAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,13 +46,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/vector/RectangleFilledAnimation.h"
 
-class ARectangleFilledAnimation: public RectangleFilledAnimation {
 
-    public: int32_t x= 0;
-
-    public: int32_t y= 0;
-
-public: ARectangleFilledAnimation() : RectangleFilledAnimation(0, 0, BasicColorFactory::getInstance()->BLACK){
+ARectangleFilledAnimation::ARectangleFilledAnimation() : RectangleFilledAnimation(0, 0, BasicColorFactory::getInstance()->BLACK){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -52,17 +57,16 @@ public: ARectangleFilledAnimation() : RectangleFilledAnimation(0, 0, BasicColorF
 }
 
 
-    public: void nextFrame(){
+    auto ARectangleFilledAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t unusedX, int32_t unusedY){
-super.paintXY(graphics, this->x, this->y);
+    auto ARectangleFilledAnimation::paintXY(Graphics* graphics, int32_t unusedX, int32_t unusedY) -> void{
+RectangleFilledAnimation::paintXY(graphics, this->x, this->y);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_ARECTANGLEFILLEDANIMATION_CPP

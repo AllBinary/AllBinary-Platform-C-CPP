@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_THREED_SWTJOGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_THREED_SWTJOGLPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,12 +40,8 @@
         
             #include "java/lang/Runnable.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/midlet/MIDlet.h>
-
-      
+class Font;
+class MIDlet;
 
 
 
@@ -59,21 +60,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/threed/RatioProcessor.h"
-//OpenGLNone
+        class RatioProcessor;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //OpenGLNone
 class SWTJOGLProcessor
-            : public Object
+            : public virtual Object
         , public Runnable {
 
-    private: static SWTJOGLProcessor* instance() { static std::unique_ptr<SWTJOGLProcessor> value(new SWTJOGLProcessor()); return value.get(); }
+    private: static SWTJOGLProcessor* instance_owner();
+    private: static SWTJOGLProcessor* instance;
 
     public: static SWTJOGLProcessor* getInstance();
 
+
+            
+    public: SWTJOGLProcessor();
+        
     public: void init(Object* display, Object* comp);
 
     public: bool isHolderCreated();
 
     public: void setRenderer(Object* renderer);
+    public: void setRenderer(const std::string& renderer) { return setRenderer(JavaString::box(renderer)); }
 
     public: bool isJOGL();
 
@@ -82,6 +93,7 @@ class SWTJOGLProcessor
     public: void onSurfaceCreated();
 
     public: void onSurfaceChangedForEvent(Object* event);
+    public: void onSurfaceChangedForEvent(const std::string& event) { return onSurfaceChangedForEvent(JavaString::box(event)); }
 
     public: void onSurfaceChanged();
 
@@ -115,3 +127,19 @@ class SWTJOGLProcessor
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_THREED_SWTJOGLPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_THREED_SWTJOGLPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_THREED_SWTJOGLPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/midlet/MIDlet.h>)
+#include <javax/microedition/midlet/MIDlet.h>
+#endif
+#if __has_include("org/allbinary/graphics/threed/RatioProcessor.h")
+#include "org/allbinary/graphics/threed/RatioProcessor.h"
+#endif
+
+        #endif
+    

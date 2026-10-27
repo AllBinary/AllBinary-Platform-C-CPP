@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_TESTREMOTELOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_TESTREMOTELOGUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,12 +38,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/globals/Globals.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Globals;
+class CommonStrings;
 
 
 
@@ -57,10 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/LogUtil.h"
+        class LogUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TestRemoteLogUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
@@ -77,3 +82,19 @@ public: TestRemoteLogUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_TESTREMOTELOGUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_TESTREMOTELOGUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_TESTREMOTELOGUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/globals/Globals.h>)
+#include <org/allbinary/globals/Globals.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/log/LogUtil.h")
+#include "org/allbinary/logic/communication/log/LogUtil.h"
+#endif
+
+        #endif
+    

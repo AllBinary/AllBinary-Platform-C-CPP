@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONKEYSFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONKEYSFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,177 +52,186 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeys.h"
+        class PaymentTransactionKeys;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentTransactionKeysFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PaymentTransactionKeysFactory* instance() { static std::unique_ptr<PaymentTransactionKeysFactory> value(new PaymentTransactionKeysFactory()); return value.get(); }
+    private: static PaymentTransactionKeysFactory* instance_owner();
+    private: static PaymentTransactionKeysFactory* instance;
 
     public: static PaymentTransactionKeysFactory* getInstance();
 
-    public: PaymentTransactionKeys* TRXTYPE = new PaymentTransactionKeys("TRXTYPE");
 
-    public: PaymentTransactionKeys* TENDER = new PaymentTransactionKeys("TENDER");
+            
+    public: PaymentTransactionKeysFactory();
+        
+    public: PaymentTransactionKeys* TRXTYPE;
 
-    public: PaymentTransactionKeys* ACCT = new PaymentTransactionKeys("ACCT");
+    public: PaymentTransactionKeys* TENDER;
 
-    public: PaymentTransactionKeys* EXPDATE = new PaymentTransactionKeys("EXPDATE");
+    public: PaymentTransactionKeys* ACCT;
 
-    public: PaymentTransactionKeys* AMT = new PaymentTransactionKeys("AMT");
+    public: PaymentTransactionKeys* EXPDATE;
 
-    public: PaymentTransactionKeys* AUTHCODE = new PaymentTransactionKeys("AUTHCODE");
+    public: PaymentTransactionKeys* AMT;
 
-    public: PaymentTransactionKeys* MICR = new PaymentTransactionKeys("MICR");
+    public: PaymentTransactionKeys* AUTHCODE;
 
-    public: PaymentTransactionKeys* CHECKNUM = new PaymentTransactionKeys("CHECKNUM");
+    public: PaymentTransactionKeys* MICR;
 
-    public: PaymentTransactionKeys* NAME = new PaymentTransactionKeys("NAME");
+    public: PaymentTransactionKeys* CHECKNUM;
 
-    public: PaymentTransactionKeys* STREET = new PaymentTransactionKeys("STREET");
+    public: PaymentTransactionKeys* NAME;
 
-    public: PaymentTransactionKeys* CITY = new PaymentTransactionKeys("CITY");
+    public: PaymentTransactionKeys* STREET;
 
-    public: PaymentTransactionKeys* STATE = new PaymentTransactionKeys("STATE");
+    public: PaymentTransactionKeys* CITY;
 
-    public: PaymentTransactionKeys* ZIP = new PaymentTransactionKeys("ZIP");
+    public: PaymentTransactionKeys* STATE;
 
-    public: PaymentTransactionKeys* DL = new PaymentTransactionKeys("DL");
+    public: PaymentTransactionKeys* ZIP;
 
-    public: PaymentTransactionKeys* EMAIL = new PaymentTransactionKeys("EMAIL");
+    public: PaymentTransactionKeys* DL;
 
-    public: PaymentTransactionKeys* COMMENT1 = new PaymentTransactionKeys("COMMENT1");
+    public: PaymentTransactionKeys* EMAIL;
 
-    public: PaymentTransactionKeys* COMMENT2 = new PaymentTransactionKeys("COMMENT2");
+    public: PaymentTransactionKeys* COMMENT1;
 
-    public: PaymentTransactionKeys* ORIGID = new PaymentTransactionKeys("ORIGID");
+    public: PaymentTransactionKeys* COMMENT2;
 
-    public: PaymentTransactionKeys* PONUM = new PaymentTransactionKeys("PONUM");
+    public: PaymentTransactionKeys* ORIGID;
 
-    public: PaymentTransactionKeys* DESC = new PaymentTransactionKeys("PaymentTransactionDESC");
+    public: PaymentTransactionKeys* PONUM;
 
-    public: PaymentTransactionKeys* DESC1TO4 = new PaymentTransactionKeys("DESC1TO4");
+    public: PaymentTransactionKeys* DESC;
 
-    public: PaymentTransactionKeys* INVNUM = new PaymentTransactionKeys("INVNUM");
+    public: PaymentTransactionKeys* DESC1TO4;
 
-    public: PaymentTransactionKeys* SHIPTOZIP = new PaymentTransactionKeys("SHIPTOZIP");
+    public: PaymentTransactionKeys* INVNUM;
 
-    public: PaymentTransactionKeys* SWIPE = new PaymentTransactionKeys("SWIPE");
+    public: PaymentTransactionKeys* SHIPTOZIP;
 
-    public: PaymentTransactionKeys* TAXAMT = new PaymentTransactionKeys("TAXAMT");
+    public: PaymentTransactionKeys* SWIPE;
 
-    public: PaymentTransactionKeys* COMMCARD = new PaymentTransactionKeys("COMMCARD");
+    public: PaymentTransactionKeys* TAXAMT;
 
-    public: PaymentTransactionKeys* DUTYAMT = new PaymentTransactionKeys("DUTYAMT");
+    public: PaymentTransactionKeys* COMMCARD;
 
-    public: PaymentTransactionKeys* FRIEGHTAMT = new PaymentTransactionKeys("FRIEGHTAMT");
+    public: PaymentTransactionKeys* DUTYAMT;
 
-    public: PaymentTransactionKeys* ORDERDATE = new PaymentTransactionKeys("ORDERDATE");
+    public: PaymentTransactionKeys* FRIEGHTAMT;
 
-    public: PaymentTransactionKeys* TAXEXEMPT = new PaymentTransactionKeys("TAXEXEMPT");
+    public: PaymentTransactionKeys* ORDERDATE;
 
-    public: PaymentTransactionKeys* COUNTRYCODE = new PaymentTransactionKeys("COUNTRYCODE");
+    public: PaymentTransactionKeys* TAXEXEMPT;
 
-    public: PaymentTransactionKeys* CUSTCODE = new PaymentTransactionKeys("CUSTCODE");
+    public: PaymentTransactionKeys* COUNTRYCODE;
 
-    public: PaymentTransactionKeys* CVV2 = new PaymentTransactionKeys("CVV2");
+    public: PaymentTransactionKeys* CUSTCODE;
 
-    public: PaymentTransactionKeys* ABA = new PaymentTransactionKeys("ABA");
+    public: PaymentTransactionKeys* CVV2;
 
-    public: PaymentTransactionKeys* ACCTTYPE = new PaymentTransactionKeys("ACCTTYPE");
+    public: PaymentTransactionKeys* ABA;
 
-    public: PaymentTransactionKeys* DISCOUNT = new PaymentTransactionKeys("DISCOUNT");
+    public: PaymentTransactionKeys* ACCTTYPE;
 
-    public: PaymentTransactionKeys* FIRSTNAME = new PaymentTransactionKeys("FIRSTNAME");
+    public: PaymentTransactionKeys* DISCOUNT;
 
-    public: PaymentTransactionKeys* LASTNAME = new PaymentTransactionKeys("LASNAME");
+    public: PaymentTransactionKeys* FIRSTNAME;
 
-    public: PaymentTransactionKeys* SHIPFROMZIP = new PaymentTransactionKeys("SHIPFROMZIP");
+    public: PaymentTransactionKeys* LASTNAME;
 
-    public: PaymentTransactionKeys* PRENOTE = new PaymentTransactionKeys("PRENOTE");
+    public: PaymentTransactionKeys* SHIPFROMZIP;
 
-    public: PaymentTransactionKeys* CHKTYPE = new PaymentTransactionKeys("CHKTYPE");
+    public: PaymentTransactionKeys* PRENOTE;
 
-    public: PaymentTransactionKeys* DOB = new PaymentTransactionKeys("DOB");
+    public: PaymentTransactionKeys* CHKTYPE;
 
-    public: PaymentTransactionKeys* PHONENUM = new PaymentTransactionKeys("PHONENUM");
+    public: PaymentTransactionKeys* DOB;
 
-    public: PaymentTransactionKeys* SS = new PaymentTransactionKeys("SS");
+    public: PaymentTransactionKeys* PHONENUM;
 
-    public: PaymentTransactionKeys* COMPANYNAME = new PaymentTransactionKeys("COMPANYNAME");
+    public: PaymentTransactionKeys* SS;
 
-    public: PaymentTransactionKeys* COUNTRY = new PaymentTransactionKeys("COUNTRY");
+    public: PaymentTransactionKeys* COMPANYNAME;
 
-    public: PaymentTransactionKeys* FREIGHTAMT = new PaymentTransactionKeys("FREIGHTAMT");
+    public: PaymentTransactionKeys* COUNTRY;
 
-    public: PaymentTransactionKeys* SHIPTOCITY = new PaymentTransactionKeys("SHIPTOCITY");
+    public: PaymentTransactionKeys* FREIGHTAMT;
 
-    public: PaymentTransactionKeys* SHIPTOFIRSTNAME = new PaymentTransactionKeys("SHIPTOFIRSTNAME");
+    public: PaymentTransactionKeys* SHIPTOCITY;
 
-    public: PaymentTransactionKeys* SHIPTOLASTNAME = new PaymentTransactionKeys("SHIPTOLASTNAME");
+    public: PaymentTransactionKeys* SHIPTOFIRSTNAME;
 
-    public: PaymentTransactionKeys* SHIPTOSTATE = new PaymentTransactionKeys("SHIPTOSTATE");
+    public: PaymentTransactionKeys* SHIPTOLASTNAME;
 
-    public: PaymentTransactionKeys* SHIPTOSTREET = new PaymentTransactionKeys("SHIPTOSTREET");
+    public: PaymentTransactionKeys* SHIPTOSTATE;
 
-    public: PaymentTransactionKeys* SPECIAL1 = new PaymentTransactionKeys("SPECIAL1");
+    public: PaymentTransactionKeys* SHIPTOSTREET;
 
-    public: PaymentTransactionKeys* SPECIAL2 = new PaymentTransactionKeys("SPECIAL2");
+    public: PaymentTransactionKeys* SPECIAL1;
 
-    public: PaymentTransactionKeys* SPECIAL3 = new PaymentTransactionKeys("SPECIAL3");
+    public: PaymentTransactionKeys* SPECIAL2;
 
-    public: PaymentTransactionKeys* PARTNER = new PaymentTransactionKeys("PARTNER");
+    public: PaymentTransactionKeys* SPECIAL3;
 
-    public: PaymentTransactionKeys* VENDOR = new PaymentTransactionKeys("VENDOR");
+    public: PaymentTransactionKeys* PARTNER;
 
-    public: PaymentTransactionKeys* USER = new PaymentTransactionKeys("USER");
+    public: PaymentTransactionKeys* VENDOR;
 
-    public: PaymentTransactionKeys* PWD = new PaymentTransactionKeys("PWD");
+    public: PaymentTransactionKeys* USER;
 
-    public: PaymentTransactionKeys* CHKNUM = new PaymentTransactionKeys("CHKNUM");
+    public: PaymentTransactionKeys* PWD;
 
-    public: PaymentTransactionKeys* AVSADDR = new PaymentTransactionKeys("AVSADDR");
+    public: PaymentTransactionKeys* CHKNUM;
 
-    public: PaymentTransactionKeys* AVSZIP = new PaymentTransactionKeys("AVSZIP");
+    public: PaymentTransactionKeys* AVSADDR;
 
-    public: PaymentTransactionKeys* PNREF = new PaymentTransactionKeys("PNREF");
+    public: PaymentTransactionKeys* AVSZIP;
 
-    public: PaymentTransactionKeys* RESPMSG = new PaymentTransactionKeys("RESPMSG");
+    public: PaymentTransactionKeys* PNREF;
 
-    public: PaymentTransactionKeys* RESULT = new PaymentTransactionKeys("RESULT");
+    public: PaymentTransactionKeys* RESPMSG;
 
-    public: PaymentTransactionKeys* ORIGRESULT = new PaymentTransactionKeys("ORIGRESULT");
+    public: PaymentTransactionKeys* RESULT;
 
-    public: PaymentTransactionKeys* STATUS = new PaymentTransactionKeys("STATUS");
+    public: PaymentTransactionKeys* ORIGRESULT;
 
-    public: PaymentTransactionKeys* FRAUDCODE = new PaymentTransactionKeys("FRAUDCODE");
+    public: PaymentTransactionKeys* STATUS;
 
-    public: PaymentTransactionKeys* FRAUDMSG = new PaymentTransactionKeys("FRAUDMSG");
+    public: PaymentTransactionKeys* FRAUDCODE;
 
-    public: PaymentTransactionKeys* ERRCODE = new PaymentTransactionKeys("ERRCODE");
+    public: PaymentTransactionKeys* FRAUDMSG;
 
-    public: PaymentTransactionKeys* SCORE = new PaymentTransactionKeys("SCORE");
+    public: PaymentTransactionKeys* ERRCODE;
 
-    public: PaymentTransactionKeys* REASON1 = new PaymentTransactionKeys("REASON1");
+    public: PaymentTransactionKeys* SCORE;
 
-    public: PaymentTransactionKeys* REASON2 = new PaymentTransactionKeys("REASON2");
+    public: PaymentTransactionKeys* REASON1;
 
-    public: PaymentTransactionKeys* REASON3 = new PaymentTransactionKeys("REASON3");
+    public: PaymentTransactionKeys* REASON2;
 
-    public: PaymentTransactionKeys* EXCEPTION1 = new PaymentTransactionKeys("EXCEPTION1");
+    public: PaymentTransactionKeys* REASON3;
 
-    public: PaymentTransactionKeys* EXCEPTION2 = new PaymentTransactionKeys("EXCEPTION2");
+    public: PaymentTransactionKeys* EXCEPTION1;
 
-    public: PaymentTransactionKeys* EXCEPTION3 = new PaymentTransactionKeys("EXCEPTION3");
+    public: PaymentTransactionKeys* EXCEPTION2;
 
-    public: PaymentTransactionKeys* EXCEPTION4 = new PaymentTransactionKeys("EXCEPTION4");
+    public: PaymentTransactionKeys* EXCEPTION3;
 
-    public: PaymentTransactionKeys* EXCEPTION5 = new PaymentTransactionKeys("EXCEPTION5");
+    public: PaymentTransactionKeys* EXCEPTION4;
 
-    public: PaymentTransactionKeys* EXCEPTION6 = new PaymentTransactionKeys("EXCEPTION6");
+    public: PaymentTransactionKeys* EXCEPTION5;
 
-    public: PaymentTransactionKeys* EXCEPTION7 = new PaymentTransactionKeys("EXCEPTION7");
+    public: PaymentTransactionKeys* EXCEPTION6;
+
+    public: PaymentTransactionKeys* EXCEPTION7;
 
 };
 
@@ -225,3 +239,13 @@ class PaymentTransactionKeysFactory
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONKEYSFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONKEYSFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONKEYSFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeys.h")
+#include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeys.h"
+#endif
+
+        #endif
+    

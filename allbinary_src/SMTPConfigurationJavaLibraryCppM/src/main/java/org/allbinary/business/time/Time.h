@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_TIME_H
         #define ORG_ALLBINARY_BUSINESS_TIME_TIME_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Time
-            : public Object
+            : public virtual Object
          {
 
     private: int64_t timeLong;
@@ -72,3 +81,10 @@ public: Time(int64_t time);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_TIME_TIME_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_TIME_TIME_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_TIME_TIME_H_COMPLETE
+        
+        #endif
+    

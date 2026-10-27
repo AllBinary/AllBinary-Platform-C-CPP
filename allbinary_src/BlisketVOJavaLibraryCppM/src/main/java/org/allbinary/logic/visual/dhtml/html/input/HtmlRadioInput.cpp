@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLRADIOINPUT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLRADIOINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/input/HtmlRadioInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +58,8 @@
         #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
 #include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
 
-class HtmlRadioInput: public HtmlValueInput {
 
-    private: const std::string CHECKED = "checked";
-
-public: HtmlRadioInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance()->RADIO, name, value, after){
+HtmlRadioInput::HtmlRadioInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance()->RADIO, name, value, after){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,13 +69,12 @@ public: HtmlRadioInput(std::string before, std::string name, std::string value, 
 }
 
 
-    public: void setSelected(){
-super.addAttribute(this->CHECKED, BooleanFactory::getInstance()->TRUE_STRING);
+    auto HtmlRadioInput::setSelected() -> void{
+HtmlValueInput::addAttribute(this->CHECKED, BooleanFactory::getInstance()->TRUE_STRING);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLRADIOINPUT_CPP

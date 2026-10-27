@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEUTILBASE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEUTILBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLImageUtilBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,51 +71,50 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLImageUtilBase
-            : public Object
-         {
 
-    public: OpenGLBitmap* paint(OpenGLBitmap* alphaBitmap, OpenGLBitmap* originalBitmap, int32_t index){
+OpenGLImageUtilBase::OpenGLImageUtilBase() {
+        }
+        
+    auto OpenGLImageUtilBase::paint(OpenGLBitmap* alphaBitmap, OpenGLBitmap* originalBitmap, int32_t index) -> OpenGLBitmap*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: OpenGLBitmap* paint(OpenGLBitmap* colorBitmap, OpenGLBitmap* originalBitmap, int32_t alpha, BasicColor* basicColor){
+    auto OpenGLImageUtilBase::paint(OpenGLBitmap* colorBitmap, OpenGLBitmap* originalBitmap, int32_t alpha, BasicColor* basicColor) -> OpenGLBitmap*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public: OpenGLBitmap* createImage(std::string name){
+    auto OpenGLImageUtilBase::createImage(std::string name) -> OpenGLBitmap*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: OpenGLBitmap* createImageFromInputStream(InputStream* inputStream){
+    auto OpenGLImageUtilBase::createImageFromInputStream(InputStream* inputStream) -> OpenGLBitmap*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEUTILBASE_CPP

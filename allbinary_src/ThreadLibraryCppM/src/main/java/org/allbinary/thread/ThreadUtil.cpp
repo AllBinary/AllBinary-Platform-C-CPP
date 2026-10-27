@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_THREADUTIL_CPP
+        #define ORG_ALLBINARY_THREAD_THREADUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ThreadUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,27 +62,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThreadUtil
-            : public Object
-         {
 
-    private: static ThreadUtil* instance() { static std::unique_ptr<ThreadUtil> value(new ThreadUtil()); return value.get(); }
+ThreadUtil::ThreadUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto ThreadUtil::instance_owner() -> ThreadUtil* { static std::unique_ptr<ThreadUtil> value(new ThreadUtil()); return value.get(); }
+ThreadUtil* ThreadUtil::instance = ThreadUtil::instance_owner();
 
-    public: static ThreadUtil* getInstance(){
+    auto ThreadUtil::getInstance() -> ThreadUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadUtil::instance();
+                        return ThreadUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const std::string JOIN = "join";
-
-    public: bool isRunning(Thread* thread){
+    auto ThreadUtil::isRunning(Thread* thread) -> bool{
 
                         if(thread != 
                                     nullptr
@@ -103,7 +109,7 @@ class ThreadUtil
 
                 //@Throws(Exception.constructor)
             
-    public: void join(Thread* thread){
+    auto ThreadUtil::join(Thread* thread) -> void{
 
                         if(ThreadUtil::getInstance()->isRunning(thread))
                         
@@ -118,7 +124,6 @@ thread->join();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_THREADUTIL_CPP

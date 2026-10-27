@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORENOMANIPULATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORENOMANIPULATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStoreNoManipulation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,9 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
 
-class TransformInfoHttpStoreNoManipulation: public TransformInfoHttpStore {
 
-public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttpStore(propertiesHashMap, pageContext){
+TransformInfoHttpStoreNoManipulation::TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttpStore(propertiesHashMap, pageContext){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +78,7 @@ public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*>* properti
 
                 //@Throws(Exception.constructor)
             
-    protected: void setObjectConfigFile(std::string value){
+    auto TransformInfoHttpStoreNoManipulation::setObjectConfigFile(std::string value) -> void{
 this->setObjectConfigFileName(value);
     
 this->setObjectConfigInterface(TransformInfoObjectConfigNoManipulationFactory::getInstance()->getInstance(this, this->getObjectConfigFilePath()));
@@ -79,16 +88,15 @@ this->setObjectConfigInterface(TransformInfoObjectConfigNoManipulationFactory::g
 
                 //@Throws(Exception.constructor)
             
-    protected: void setObjectConfig(std::string value){
+    auto TransformInfoHttpStoreNoManipulation::setObjectConfig(std::string value) -> void{
 
 
 
-                            throw new Exception("Should not set from config");
+                            throw Exception("Should not set from config");
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORENOMANIPULATION_CPP

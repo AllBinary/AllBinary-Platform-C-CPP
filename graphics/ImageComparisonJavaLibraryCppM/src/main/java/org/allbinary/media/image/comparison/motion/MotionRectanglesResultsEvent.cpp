@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSEVENT_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,13 +61,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
 
-class MotionRectanglesResultsEvent: public AllBinaryEventObject {
 
-    private: int64_t frame;
-
-    private: MotionRectangles* motionRectangles;
-
-public: MotionRectanglesResultsEvent(Object* anyType, int64_t frame, MotionRectangles* motionRectangles) : AllBinaryEventObject(anyType){
+MotionRectanglesResultsEvent::MotionRectanglesResultsEvent(Object* anyType, int64_t frame, MotionRectangles* motionRectangles) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,7 +76,7 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: MotionRectangles* getMotionRectangles(){
+    auto MotionRectanglesResultsEvent::getMotionRectangles() -> MotionRectangles*{
 
 
 
@@ -81,13 +86,13 @@ this->setMotionRectangles(motionRectangles);
 }
 
 
-    public: void setMotionRectangles(MotionRectangles* motionRectangles){
+    auto MotionRectanglesResultsEvent::setMotionRectangles(MotionRectangles* motionRectangles) -> void{
 this->motionRectangles= motionRectangles;
     
 }
 
 
-    public: int64_t getFrame(){
+    auto MotionRectanglesResultsEvent::getFrame() -> int64_t{
 
 
 
@@ -97,7 +102,6 @@ this->motionRectangles= motionRectangles;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSEVENT_CPP

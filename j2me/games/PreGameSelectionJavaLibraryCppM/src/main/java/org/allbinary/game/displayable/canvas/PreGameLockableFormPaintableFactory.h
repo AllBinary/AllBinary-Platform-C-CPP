@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEFORMPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEFORMPAINTABLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/form/ItemPaintable.h>
-
-      
+class ItemPaintable;
 #include <org/allbinary/graphics/form/ItemPaintableFactory.h>
-
-      
-#include <org/allbinary/graphics/form/PaintableForm.h>
-
-      
-#include <org/allbinary/graphics/form/ScrollCurrentSelectionForm.h>
-
-      
+class PaintableForm;
+class ScrollCurrentSelectionForm;
 
 
 
@@ -59,8 +56,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/displayable/canvas/PreGameLockablePaintable.h"
+        class PreGameLockablePaintable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PreGameLockableFormPaintableFactory: public ItemPaintableFactory {
 
     private: int32_t lockedIndex;
@@ -77,3 +78,25 @@ public: PreGameLockableFormPaintableFactory(int32_t lockedIndex);
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEFORMPAINTABLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEFORMPAINTABLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMELOCKABLEFORMPAINTABLEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/form/ItemPaintable.h>)
+#include <org/allbinary/graphics/form/ItemPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/ItemPaintableFactory.h>)
+#include <org/allbinary/graphics/form/ItemPaintableFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/PaintableForm.h>)
+#include <org/allbinary/graphics/form/PaintableForm.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/ScrollCurrentSelectionForm.h>)
+#include <org/allbinary/graphics/form/ScrollCurrentSelectionForm.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/PreGameLockablePaintable.h")
+#include "org/allbinary/game/displayable/canvas/PreGameLockablePaintable.h"
+#endif
+
+        #endif
+    

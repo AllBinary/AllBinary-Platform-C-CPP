@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/DemoCanvasBasicStartInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,9 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 
-class DemoCanvasBasicStartInputProcessor: public BasicMenuInputProcessor {
 
-public: DemoCanvasBasicStartInputProcessor(BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas) : BasicMenuInputProcessor(gameKeyEventList,  -1, gameCanvas){
+DemoCanvasBasicStartInputProcessor::DemoCanvasBasicStartInputProcessor(BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas) : BasicMenuInputProcessor(gameKeyEventList,  -1, gameCanvas){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,7 +93,7 @@ public: DemoCanvasBasicStartInputProcessor(BasicArrayList* gameKeyEventList, Run
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processInputList(){
+    auto DemoCanvasBasicStartInputProcessor::processInputList() -> int32_t{
 
     BasicArrayList* list = this->getGameKeyEventList();;
     
@@ -103,7 +112,7 @@ public: DemoCanvasBasicStartInputProcessor(BasicArrayList* gameKeyEventList, Run
         {
 gameKeyEvent= dynamic_cast<GameKeyEvent*>(list->objectArray[index]);
     
-this->logUtil.putF((new StringMaker())->append("Start GameKey: ")->append(StringUtil::getInstance()->toString(gameKeyEvent))->toString(), this, GameInputStrings::getInstance()->PROCESS_INPUT);
+this->logUtil->putF((new StringMaker())->append("Start GameKey: ")->append(StringUtil::getInstance()->toString(gameKeyEvent))->toString(), this, GameInputStrings::getInstance()->PROCESS_INPUT);
     
 }
 
@@ -118,7 +127,6 @@ this->getCanvas()->getCustomCommandListener()->commandAction(GameCommandsFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_CPP

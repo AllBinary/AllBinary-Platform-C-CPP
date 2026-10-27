@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONMAPPING_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,19 +74,14 @@
         #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
 #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
 
-class UserEmailEventConfigurationMapping
-            : public Object
-        , public TableMappingInterface {
 
-    private: UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface;
-
-public: UserEmailEventConfigurationMapping(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
+UserEmailEventConfigurationMapping::UserEmailEventConfigurationMapping(UserEmailEventConfigurationInterface* userEmailEventConfigurationInterface){
 this->userEmailEventConfigurationInterface= userEmailEventConfigurationInterface;
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto UserEmailEventConfigurationMapping::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -95,7 +100,7 @@ hashMap->put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmai
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto UserEmailEventConfigurationMapping::getKey() -> Object*{
 
 
 
@@ -107,7 +112,7 @@ hashMap->put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmai
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto UserEmailEventConfigurationMapping::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -124,7 +129,6 @@ vector->add(this->userEmailEventConfigurationInterface->getEventListenerClassPat
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONMAPPING_CPP

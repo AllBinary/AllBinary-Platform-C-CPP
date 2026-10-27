@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/game/Sprite.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class Image;
+class Sprite;
+class LogUtil;
 
 
 
@@ -58,15 +57,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/SpriteFactoryInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SpriteFactory
-            : public Object
+            : public virtual Object
         , public SpriteFactoryInterface {
 
-    private: static SpriteFactory* instance() { static std::unique_ptr<SpriteFactory> value(new SpriteFactory()); return value.get(); }
+    private: static SpriteFactory* instance_owner();
+    private: static SpriteFactory* instance;
 
     public: static SpriteFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: SpriteFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: Sprite* createSprite(Image* image, int32_t frameWidth, int32_t frameHeight);
 
@@ -76,3 +84,22 @@ class SpriteFactory
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/game/Sprite.h>)
+#include <javax/microedition/lcdui/game/Sprite.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/game/layer/SpriteFactoryInterface.h")
+#include "org/allbinary/game/layer/SpriteFactoryInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_TAXMODULEINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_TAXMODULEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/tax/modules/TaxModuleInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,17 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TaxModuleInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual float getTaxRate(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isValid(StreetAddress* streetAddress, StoreFrontInterface* storeFrontInterface) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_TAXMODULEINTERFACE_CPP

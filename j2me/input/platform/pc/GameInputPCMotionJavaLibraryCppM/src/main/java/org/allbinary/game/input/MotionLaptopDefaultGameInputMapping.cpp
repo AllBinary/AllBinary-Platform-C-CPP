@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPDEFAULTGAMEINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPDEFAULTGAMEINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/MotionLaptopDefaultGameInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,9 +70,8 @@
         #include "org/allbinary/game/input/PCKeyFactory.h"
 #include "org/allbinary/game/input/GameKeyFactory.h"
 
-class MotionLaptopDefaultGameInputMapping: public PersistentInputMapping {
 
-public: MotionLaptopDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID){
+MotionLaptopDefaultGameInputMapping::MotionLaptopDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -207,7 +216,6 @@ inputToGameKeyMapping->add(gameKeyFactory->LEVEL_UP, pcKeyFactory->PERIOD);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MOTIONLAPTOPDEFAULTGAMEINPUTMAPPING_CPP

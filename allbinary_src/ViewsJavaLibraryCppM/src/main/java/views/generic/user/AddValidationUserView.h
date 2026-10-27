@@ -21,6 +21,11 @@
         #ifndef VIEWS_GENERIC_USER_ADDVALIDATIONUSERVIEW_H
         #define VIEWS_GENERIC_USER_ADDVALIDATIONUSERVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,36 +34,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/user/NewUserFactory.h>
-
-      
-#include <org/allbinary/business/user/UserInterface.h>
-
-      
-#include <org/allbinary/data/tables/user/UserEntityFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class NewUserFactory;
+class UserInterface;
+class UserEntityFactory;
+class LogUtil;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class StringMaker;
+class TransformInfoInterface;
+class Document;
+class Node;
 #include <views/business/context/modules/storefront/HttpStoreComponentView.h>
-
-      
 
 
 
@@ -78,11 +63,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AddValidationUserView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: UserInterface* user;
+    /*protected*/ public: UserInterface* user;
 
 public: AddValidationUserView(TransformInfoInterface* transformInfoInterface);
 
@@ -104,3 +93,40 @@ public: AddValidationUserView(TransformInfoInterface* transformInfoInterface);
 
 
         #endif //VIEWS_GENERIC_USER_ADDVALIDATIONUSERVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_GENERIC_USER_ADDVALIDATIONUSERVIEW_H_COMPLETE)
+        #define VIEWS_GENERIC_USER_ADDVALIDATIONUSERVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/NewUserFactory.h>)
+#include <org/allbinary/business/user/NewUserFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserInterface.h>)
+#include <org/allbinary/business/user/UserInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/UserEntityFactory.h>)
+#include <org/allbinary/data/tables/user/UserEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<views/business/context/modules/storefront/HttpStoreComponentView.h>)
+#include <views/business/context/modules/storefront/HttpStoreComponentView.h>
+#endif
+
+        #endif
+    

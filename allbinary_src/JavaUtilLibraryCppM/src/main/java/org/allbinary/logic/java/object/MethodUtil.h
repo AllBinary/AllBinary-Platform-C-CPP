@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,11 +39,7 @@
             #include "java/lang/Class.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -57,10 +58,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/java/anyType/ParamsUtil.h"
+        class ParamsUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MethodUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static std::string viewAll(Class* myClass, std::string lineBreak);
@@ -73,3 +78,19 @@ private: MethodUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/logic/java/anyType/ParamsUtil.h")
+#include "org/allbinary/logic/java/anyType/ParamsUtil.h"
+#endif
+
+        #endif
+    

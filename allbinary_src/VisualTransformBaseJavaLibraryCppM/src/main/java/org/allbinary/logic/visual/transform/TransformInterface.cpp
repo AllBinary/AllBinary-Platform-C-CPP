@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/TransformInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,19 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInterface: public DomDocumentMappingInterface, public CompositeTransformInfoInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getTypeId() = 0;
 
-    public: virtual void setTransformDocumentInterface(TransformDocumentInterface* viewDocumentInterface) = 0;
 
-    public: virtual TransformDocumentInterface* getTransformDocumentInterface() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string view() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMINTERFACE_CPP

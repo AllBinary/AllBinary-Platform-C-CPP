@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,15 +60,8 @@
         #include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/Animation.h"
 
-class AnimationInterfaceFactoryInterface: public BasicAnimationInterfaceFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual Animation* getInstance(int32_t instanceId) = 0;
 
-    public: virtual void setInitialScale(ScaleProperties* scaleProperties) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACEFACTORYINTERFACE_CPP

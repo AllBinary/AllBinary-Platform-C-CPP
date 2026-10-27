@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_PAYMENTHELPER_H
         #define ADMIN_TAGHELPERS_PAYMENTHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,41 +37,17 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/business/installer/Portion.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/PaymentFactory.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/PaymentInterface.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/money/payment/PaymentEntity.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/money/payment/PaymentEntityFactory.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/sql/AbSqlTableUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class HttpServletRequest;
+class PageContext;
+class Portion;
+class PaymentFactory;
+class PaymentInterface;
+class PaymentEntity;
+class PaymentEntityFactory;
+class WeblisketSession;
+class LogUtil;
+class AbSqlTableUtil;
+class LicensingException;
 
 
 
@@ -87,9 +68,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/Table.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentHelper: public Table {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: WeblisketSession* weblisketSession;
 
@@ -127,3 +112,49 @@ public: PaymentHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageConte
 
 
         #endif //ADMIN_TAGHELPERS_PAYMENTHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_PAYMENTHELPER_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_PAYMENTHELPER_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/business/installer/Portion.h>)
+#include <org/allbinary/business/installer/Portion.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/PaymentFactory.h>)
+#include <org/allbinary/business/user/commerce/money/payment/PaymentFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/PaymentInterface.h>)
+#include <org/allbinary/business/user/commerce/money/payment/PaymentInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/money/payment/PaymentEntity.h>)
+#include <org/allbinary/data/tables/user/commerce/money/payment/PaymentEntity.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/money/payment/PaymentEntityFactory.h>)
+#include <org/allbinary/data/tables/user/commerce/money/payment/PaymentEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSession.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/AbSqlTableUtil.h>)
+#include <org/allbinary/logic/communication/sql/AbSqlTableUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include("admin/taghelpers/Table.h")
+#include "admin/taghelpers/Table.h"
+#endif
+
+        #endif
+    

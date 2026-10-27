@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VECTOR_VECTORINTERFACE_CPP
+        #define ORG_ALLBINARY_VECTOR_VECTORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/vector/VectorInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -45,13 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VectorInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<std::vector<int32_t>> getPoints(int32_t frame) = 0;
 
-    public: virtual void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_VECTOR_VECTORINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/character/CharacterSet.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //import java.nio.charset.Charset;
-class CharacterSet
-            : public Object
-         {
 
-public: CharacterSet(){
+CharacterSet::CharacterSet(){
 }
 
 
-    public: std::string toString(){
+    auto CharacterSet::toString() -> std::string{
 
 
 
@@ -63,7 +70,6 @@ public: CharacterSet(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_CPP

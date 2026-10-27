@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_ADVERTISEMENTSENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_ADVERTISEMENTSENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/advertisement/AdvertisementsEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,12 @@
         #include "org/allbinary/data/tables/advertisement/AdvertisementsEntity.h"
 #include "org/allbinary/data/tables/advertisement/AdvertisementsEntityInterface.h"
 
-class AdvertisementsEntityFactory
-            : public Object
-         {
 
-    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
+AdvertisementsEntityFactory::AdvertisementsEntityFactory(){
+}
 
-    public: static AdvertisementsEntityInterface* getInstance(){
+
+    auto AdvertisementsEntityFactory::getInstance() -> AdvertisementsEntityInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -78,7 +87,7 @@ class AdvertisementsEntityFactory
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
@@ -100,11 +109,6 @@ logUtil->put(commonStrings->EXCEPTION, "AdvertisementEntityFactory", commonStrin
 }
 
 
-private: AdvertisementsEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_ADVERTISEMENTSENTITYFACTORY_CPP

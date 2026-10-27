@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,17 +35,9 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <javax/xml/transform/URIResolver.h>
-
-      
-#include <javax/xml/transform/stream/StreamSource.h>
-
-      
+class URIResolver;
+class StreamSource;
 #include <org/allbinary/logic/visual/transform/info/CompositeTransformInfoInterface.h>
-
-      
 
 
 
@@ -59,6 +56,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class BasicTransformerInterface: public CompositeTransformInfoInterface {
 
@@ -82,3 +83,22 @@ class BasicTransformerInterface: public CompositeTransformInfoInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<javax/xml/transform/URIResolver.h>)
+#include <javax/xml/transform/URIResolver.h>
+#endif
+#if __has_include(<javax/xml/transform/stream/StreamSource.h>)
+#include <javax/xml/transform/stream/StreamSource.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/CompositeTransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/CompositeTransformInfoInterface.h>
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DIRECTION_DIRECTION_H
         #define ORG_ALLBINARY_DIRECTION_DIRECTION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -53,11 +56,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Direction
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline std::vector<Direction*> directionArray = std::vector<Direction*>(13);
+    private: static std::vector<Direction*> directionArray;
 
     public: static Direction* getInstance(int32_t direction);
 
@@ -69,7 +76,7 @@ class Direction
 
     private: int32_t frameFactor;
 
-: Direction(std::string name, std::string otherName, int32_t value, int32_t frameFactor);
+public: Direction(std::string name, std::string otherName, int32_t value, int32_t frameFactor);
 
     public: int32_t getValue();
 
@@ -87,3 +94,13 @@ class Direction
 
 
         #endif //ORG_ALLBINARY_DIRECTION_DIRECTION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DIRECTION_DIRECTION_H_COMPLETE)
+        #define ORG_ALLBINARY_DIRECTION_DIRECTION_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

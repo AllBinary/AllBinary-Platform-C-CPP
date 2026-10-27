@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/CategoryView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,21 +89,14 @@
         #include "org/allbinary/business/category/CategoryInterface.h"
 #include "org/allbinary/business/category/CategoryData.h"
 
-class CategoryView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CategoryInterface* categoryInterface;
-
-public: CategoryView(CategoryInterface* categoryInterface){
+CategoryView::CategoryView(CategoryInterface* categoryInterface) : logUtil(LogUtil::getInstance()){
 this->categoryInterface= categoryInterface;
     
 }
 
 
-    public: CategoryInterface* getCategoryInterface(){
+    auto CategoryView::getCategoryInterface() -> CategoryInterface*{
 
 
 
@@ -105,7 +108,7 @@ this->categoryInterface= categoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto CategoryView::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(CategoryData::getInstance()->NAME);;
     
@@ -113,10 +116,10 @@ this->categoryInterface= categoryInterface;
     BasicArrayList* childCategoryVector = this->categoryInterface->getChildNodes();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF("Number Of Children: " +childCategoryVector->size(), this, "toXmlNode");
+                                    this->logUtil->putF(JavaString::valueOf("Number Of Children: ") +JavaString::valueOf(childCategoryVector->size()), this, "toXmlNode");
     
 
                                     }
@@ -167,7 +170,7 @@ categoryPropertiesInterface= categoryInterface->getProperties();
 
 
 
-                            throw new Exception("CategoryView found unknown object.\n" +"Show Testing:" +isImpl);
+                            throw Exception(JavaString::valueOf(JavaString::valueOf("CategoryView found unknown object.\n") +JavaString::valueOf("Show Testing:")) +JavaString::valueOf(isImpl));
                     
 
                         }
@@ -188,7 +191,6 @@ node->appendChild(childCategoryNode);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYVIEW_CPP

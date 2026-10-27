@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP
+        #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/resource/ResourceUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -99,41 +109,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Android
-class ResourceUtil
-            : public Object
-         {
+auto ResourceUtil::instance_owner() -> ResourceUtil* { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
+ResourceUtil* ResourceUtil::instance = ResourceUtil::instance_owner();
 
-    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
-
-    public: static ResourceUtil* getInstance(){
+    auto ResourceUtil::getInstance() -> ResourceUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil::instance();
+                        return ResourceUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Object* context = NullUtil::getInstance()->NULL_OBJECT;
-
-    private: Object* resources = NullUtil::getInstance()->NULL_OBJECT;
-
-    private: ABHashtable<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashtable();
-
-private: ResourceUtil(){
+ResourceUtil::ResourceUtil() : logUtil(LogUtil::getInstance()), context(NullUtil::getInstance()->NULL_OBJECT), resources(NullUtil::getInstance()->NULL_OBJECT), hashMap(StdUtil::getInstance()->createHashtable()){
 }
 
 
-    public: void setLoadingPaths(std::string path, std::string ext){
+    auto ResourceUtil::setLoadingPaths(std::string path, std::string ext) -> void{
 this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoadingPaths");
     
 }
 
 
-    public: Context* getContext(){
+    auto ResourceUtil::getContext() -> Context*{
 
 
 
@@ -143,19 +142,19 @@ this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoa
 }
 
 
-    public: void setContextFromActivity(Activity* activity){
+    auto ResourceUtil::setContextFromActivity(Activity* activity) -> void{
 this->context= activity;
     
 }
 
 
-    public: void setContext(Context* aContext){
+    auto ResourceUtil::setContext(Context* aContext) -> void{
 this->context= aContext;
     
 }
 
 
-    public: int32_t getResourceId(std::string resource){
+    auto ResourceUtil::getResourceId(std::string resource) -> int32_t{
 
     int32_t value = this->hashMap->get(resource);;
     
@@ -177,7 +176,7 @@ this->context= aContext;
 }
 
 
-    public: void addResource(std::string resource, int32_t value){
+    auto ResourceUtil::addResource(std::string resource, int32_t value) -> void{
 
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
@@ -201,7 +200,7 @@ this->hashMap->put(resource, value);
 }
 
 
-    private: bool containsDuplicate(std::string resource, int32_t value){
+    auto ResourceUtil::containsDuplicate(std::string resource, int32_t value) -> bool{
 
     std::vector<Object*> objectArray = HashtableUtil::getInstance()->getKeysAsArray(this->hashMap);;
     
@@ -253,7 +252,7 @@ this->hashMap->put(resource, value);
 }
 
 
-    public: void setResources(Resources* resources){
+    auto ResourceUtil::setResources(Resources* resources) -> void{
 this->logUtil->putF((new StringMaker())->append("Resource Loader: ")->append(resources->getClass()->getName())->toString(), this, "setResources");
     
 this->resources= resources;
@@ -263,7 +262,7 @@ this->resources= resources;
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getResourceAsStream(std::string resource){
+    auto ResourceUtil::getResourceAsStream(std::string resource) -> InputStream*{
 
     int32_t integer = this->hashMap->get(resource);;
     
@@ -300,7 +299,6 @@ this->resources= resources;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP

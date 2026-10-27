@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_FULLSCREENPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_FULLSCREENPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/FullScreenPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,9 +77,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //SwtToJ2ME
-class FullScreenPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public: static FullScreenPaintable* getInstance(){
+    auto FullScreenPaintable::getInstance() -> FullScreenPaintable*{
 
 
 
@@ -79,23 +88,11 @@ class FullScreenPaintable: public Paintable, public UpdateMyFontInterface {
 }
 
 
-    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: const std::string FULLSCREEN_TEXT = "F11 - Toggle Fullscreen";
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: int32_t Y= 0;
-
-    private: int32_t beginWidth= 0;
-
-private: FullScreenPaintable(){
+FullScreenPaintable::FullScreenPaintable() : displayInfo(DisplayInfoSingleton::getInstance()), myFontProcessor(new UpdateMyFontProcessor(this)), anchor(Anchor::TOP_LEFT){
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto FullScreenPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -108,7 +105,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto FullScreenPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -122,7 +119,6 @@ graphics->drawString(this->FULLSCREEN_TEXT, halfWidth -this->beginWidth, height 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_FULLSCREENPAINTABLE_CPP

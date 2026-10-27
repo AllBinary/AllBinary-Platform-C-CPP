@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_PAYMENTTRANSACTIONTAG_CPP
+        #define ADMIN_TAGS_PAYMENTTRANSACTIONTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/PaymentTransactionTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class PaymentTransactionTag: public TableTag {
 
-public: PaymentTransactionTag(){
+PaymentTransactionTag::PaymentTransactionTag(){
 this->setTagHelperFactory(new PaymentTransactionHelperFactory());
     
 this->setTagRequestHelperFactory(new PaymentTransactionHelperFactory());
@@ -57,7 +66,6 @@ this->setTagRequestHelperFactory(new PaymentTransactionHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_PAYMENTTRANSACTIONTAG_CPP

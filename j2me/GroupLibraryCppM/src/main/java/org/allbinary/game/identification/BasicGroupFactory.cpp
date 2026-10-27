@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/identification/BasicGroupFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,13 +61,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/identification/Group.h"
 
-class BasicGroupFactory
-            : public Object
-         {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+BasicGroupFactory::BasicGroupFactory() : GOOD(new Group("Good Guys", 0)), ENEMY(new Group("Bad Guys", 1)), ENEMY_ON_LEVEL(new Group("Bad Guys on Level", 2)), NONE(new Group("Not On A Team", 3)), GOOD_ARRAY(
+                                                        {
+                                                            this->GOOD
+                                                        }), ENEMY_ARRAY(
+                                                        {
+                                                            this->ENEMY
+                                                        }), ENEMY_ON_LEVEL_ARRAY(
+                                                        {
+                                                            this->ENEMY,this->ENEMY_ON_LEVEL
+                                                        }), NONE_ARRAY(
+                                                        {
+                                                            this->NONE
+                                                        }) {
+        }
+        Object* BasicGroupFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static BasicGroupFactory* getInstance(){
+    auto BasicGroupFactory::getInstance() -> BasicGroupFactory*{
 
                         if(BasicGroupFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -76,39 +97,6 @@ class BasicGroupFactory
 }
 
 
-    public: const std::string NAME = "GROUP_NAME";
 
-    public: const std::string NO_SUCH_GROUP = "No Such Group: ";
 
-    public: Group* GOOD = new Group("Good Guys", 0);
-
-    public: Group* ENEMY = new Group("Bad Guys", 1);
-
-    public: Group* ENEMY_ON_LEVEL = new Group("Bad Guys on Level", 2);
-
-    public: Group* NONE = new Group("Not On A Team", 3);
-
-    public: const std::vector<Group*> GOOD_ARRAY = 
-                                                        {
-                                                            this->GOOD
-                                                        };
-
-    public: const std::vector<Group*> ENEMY_ARRAY = 
-                                                        {
-                                                            this->ENEMY
-                                                        };
-
-    public: const std::vector<Group*> ENEMY_ON_LEVEL_ARRAY = 
-                                                        {
-                                                            this->ENEMY,this->ENEMY_ON_LEVEL
-                                                        };
-
-    public: const std::vector<Group*> NONE_ARRAY = 
-                                                        {
-                                                            this->NONE
-                                                        };
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_CPP

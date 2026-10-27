@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_CPP
+        #define ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/AllBinarySensorManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,13 +78,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinarySensorManager
-            : public Object
-         {
+Object* AllBinarySensorManager::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static AllBinarySensorManager* getInstance(){
+    auto AllBinarySensorManager::getInstance() -> AllBinarySensorManager*{
 
                         if(AllBinarySensorManager::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -93,15 +99,7 @@ class AllBinarySensorManager
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: const std::string ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input";
-
-    public: const std::string ORIENTATION_TYPE = "Orientation Type";
-
-private: AllBinarySensorManager(){
+AllBinarySensorManager::AllBinarySensorManager() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), list(new BasicArrayListD()){
 
         try {
             GyroSensorFactory::init();
@@ -119,13 +117,11 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 }
 
 
-    public: void init(){
+    auto AllBinarySensorManager::init() -> void{
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    public: BasicArrayList* getSensorNamesList(){
+    auto AllBinarySensorManager::getSensorNamesList() -> BasicArrayList*{
 
 
 
@@ -135,11 +131,10 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 }
 
 
-    public: void shutdown(){
+    auto AllBinarySensorManager::shutdown() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_CPP

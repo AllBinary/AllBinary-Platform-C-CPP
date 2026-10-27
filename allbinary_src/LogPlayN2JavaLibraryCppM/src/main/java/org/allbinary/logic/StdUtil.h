@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_STDUTIL_H
         #define ORG_ALLBINARY_LOGIC_STDUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
+class JsType;
+class JsProperty;
+class JsMethod;
 #include <org/allbinary/util/ABHashMap.h>
-
-      
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 #include <org/allbinary/util/ABStack.h>
-
-      
 #include <org/allbinary/util/ABVector.h>
-
-      
 
 
 
@@ -68,20 +59,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //ActualPlatform
 /*actual*/ class StdUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static StdUtil* instance() { static std::unique_ptr<StdUtil> value(new StdUtil()); return value.get(); }
+    private: static StdUtil* instance_owner();
+    private: static StdUtil* instance;
 
     /*actual*/ public: static StdUtil* getInstance();
 
-    /*actual*/ public: ABVector<Object*>* EMPTY_VECTOR = this->createVector();
 
-    /*actual*/ public: ABHashtable<Object*, Object*>* NULL_TABLE = this->createHashtable();
+            
+    public: StdUtil();
+        
+    /*actual*/ public: ABVector<Object*>* EMPTY_VECTOR;
 
-    /*actual*/ public: ABHashMap<Object*, Object*>* NULL_MAP = this->createHashMap();
+    /*actual*/ public: ABHashtable<Object*, Object*>* NULL_TABLE;
+
+    /*actual*/ public: ABHashMap<Object*, Object*>* NULL_MAP;
 
     public: ABStack<Object*>* createStack();
 
@@ -97,3 +97,31 @@
 
 
         #endif //ORG_ALLBINARY_LOGIC_STDUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_STDUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_STDUTIL_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashMap.h>)
+#include <org/allbinary/util/ABHashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/ABStack.h>)
+#include <org/allbinary/util/ABStack.h>
+#endif
+#if __has_include(<org/allbinary/util/ABVector.h>)
+#include <org/allbinary/util/ABVector.h>
+#endif
+
+        #endif
+    

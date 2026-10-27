@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_BASEANIMATIONINTERFACEFACTORYINTERFACECOMPOSITE_CPP
+        #define ORG_ALLBINARY_ANIMATION_BASEANIMATIONINTERFACEFACTORYINTERFACECOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/BaseAnimationInterfaceFactoryInterfaceComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,13 +66,8 @@
 #include "org/allbinary/animation/NullAnimationFactory.h"
 #include "org/allbinary/animation/Animation.h"
 
-class BaseAnimationInterfaceFactoryInterfaceComposite
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    private: std::vector<BasicAnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray;
-
-public: BaseAnimationInterfaceFactoryInterfaceComposite(std::vector<BasicAnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray){
+BaseAnimationInterfaceFactoryInterfaceComposite::BaseAnimationInterfaceFactoryInterfaceComposite(std::vector<BasicAnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray){
 this->basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
     
 }
@@ -70,7 +75,7 @@ this->basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFacto
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto BaseAnimationInterfaceFactoryInterfaceComposite::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -80,7 +85,7 @@ this->basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFacto
 }
 
 
-    public: std::vector<BasicAnimationInterfaceFactoryInterface*> getBasicAnimationInterfaceFactoryInterfaceArray(){
+    auto BaseAnimationInterfaceFactoryInterfaceComposite::getBasicAnimationInterfaceFactoryInterfaceArray() -> std::vector<BasicAnimationInterfaceFactoryInterface*>{
 
 
 
@@ -90,17 +95,16 @@ this->basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFacto
 }
 
 
-    public: void setBasicAnimationInterfaceFactoryInterfaceArray(std::vector<BasicAnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray){
+    auto BaseAnimationInterfaceFactoryInterfaceComposite::setBasicAnimationInterfaceFactoryInterfaceArray(std::vector<BasicAnimationInterfaceFactoryInterface*> basicAnimationInterfaceFactoryInterfaceArray) -> void{
 this->basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
     
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto BaseAnimationInterfaceFactoryInterfaceComposite::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_BASEANIMATIONINTERFACEFACTORYINTERFACECOMPOSITE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,57 +75,8 @@
 #include "org/allbinary/graphics/opengles/shader/NullOpenGLTextureProcessor.h"
 #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
 
-class ShaderComposite
-            : public Object
-         {
 
-    public: OpenGLProcessor* disableProgramShaderOpenGLProcessor;
-
-    public: std::string requiresOpenGLVersion;
-
-    public: std::vector<Shader*> shaderArray;
-
-    public: ShaderInitializer* shaderInitializer;
-
-    public: CompositeShaderUpdater* compositeShaderUpdater;
-
-    public: ModelViewProjection* modelViewProjection;
-
-    public: OpenGLProcessor* colorOpenGLProcessor;
-
-    public: OpenGLProcessor* vertexOpenGLProcessor;
-
-    public: OpenGLProcessor* useProgramShaderOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* shaderMatrixOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* colorEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* normalEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* vertexEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* textureEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* colorDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* normalDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* vertexDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLProcessor* textureDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
-
-    public: OpenGLObject3dProcessor* uniformLightPositionOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
-
-    public: OpenGLObject3dProcessor* uniformLightColorOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
-
-    public: OpenGLObject3dProcessor* uniformCameraPositionOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
-
-    public: OpenGLObject3dProcessor* uniformTextureUnitOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
-
-    public: int32_t programHandle= 0;
-
-public: ShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader*> shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor, OpenGLProcessor* disableProgramShaderOpenGLProcessor){
+ShaderComposite::ShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader*> shaderArray, CompositeShaderUpdater* compositeShaderUpdater, ShaderInitializer* shaderInitializer, ModelViewProjection* modelViewProjection, OpenGLProcessor* colorOpenGLProcessor, OpenGLProcessor* vertexOpenGLProcessor, OpenGLProcessor* disableProgramShaderOpenGLProcessor) : useProgramShaderOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), shaderMatrixOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), colorEnableVertexAttribArrayOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), normalEnableVertexAttribArrayOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), vertexEnableVertexAttribArrayOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), textureEnableVertexAttribArrayOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), colorDisableVertexAttribArrayOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), normalDisableVertexAttribArrayOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), vertexDisableVertexAttribArrayOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), textureDisableVertexAttribArrayOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), uniformLightPositionOpenGLProcessor(NullOpenGLTextureProcessor::getInstance()), uniformLightColorOpenGLProcessor(NullOpenGLTextureProcessor::getInstance()), uniformCameraPositionOpenGLProcessor(NullOpenGLTextureProcessor::getInstance()), uniformTextureUnitOpenGLProcessor(NullOpenGLTextureProcessor::getInstance()){
 this->requiresOpenGLVersion= requiresOpenGLVersion;
     
 this->shaderArray= shaderArray;
@@ -135,13 +96,12 @@ this->disableProgramShaderOpenGLProcessor= disableProgramShaderOpenGLProcessor;
 }
 
 
-    public: void init(GL10* gl){
+    auto ShaderComposite::init(GL10* gl) -> void{
 this->programHandle= this->shaderInitializer->init(gl, this->shaderArray, StringUtil::getInstance()->getArrayInstance());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_CPP

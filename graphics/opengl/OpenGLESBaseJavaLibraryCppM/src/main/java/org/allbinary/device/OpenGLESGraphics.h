@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_H
         #define ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -17,27 +22,13 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/khronos/opengles/GL.h>
-
-      
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
-#include <javax/microedition/lcdui/Font.h>
-
-      
+class GL;
+class GL10;
+class Font;
 #include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/font/FontDebugBase.h>
-
-      
+class FontDebugBase;
 #include <org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -57,13 +48,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/device/GraphicsInterface.h"
-#include "org/allbinary/device/NullGL10.h"
+class NullGL10;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLESGraphics: public Graphics, public OpenGLSurfaceChangedInterface, public GraphicsInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: GL10* gl = NullGL10::NULL_GL10;
+    /*protected*/ public: GL10* gl;
 
 public: OpenGLESGraphics();
 
@@ -93,3 +88,37 @@ public: OpenGLESGraphics();
 
 
         #endif //ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_H_COMPLETE)
+        #define ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL.h>)
+#include <javax/microedition/khronos/opengles/GL.h>
+#endif
+#if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/FontDebugBase.h>)
+#include <org/allbinary/graphics/font/FontDebugBase.h>
+#endif
+#if __has_include(<org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h>)
+#include <org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/device/GraphicsInterface.h")
+#include "org/allbinary/device/GraphicsInterface.h"
+#endif
+#if __has_include("org/allbinary/device/NullGL10.h")
+#include "org/allbinary/device/NullGL10.h"
+#endif
+
+        #endif
+    

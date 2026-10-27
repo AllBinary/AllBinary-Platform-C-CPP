@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_LONGARRAYIDENTIFIERINTERFACE_CPP
+        #define ORG_ALLBINARY_THIRDPARTY_STORE_LONGARRAYIDENTIFIERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thirdparty/store/LongArrayIdentifierInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -45,11 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LongArrayIdentifierInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<int64_t> getLongArrayIdentifier() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_THIRDPARTY_STORE_LONGARRAYIDENTIFIERINTERFACE_CPP

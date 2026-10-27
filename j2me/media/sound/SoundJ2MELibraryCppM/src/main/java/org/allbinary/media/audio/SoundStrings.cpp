@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSTRINGS_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/SoundStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SoundStrings
-            : public Object
-         {
 
-    private: static SoundStrings* instance() { static std::unique_ptr<SoundStrings> value(new SoundStrings()); return value.get(); }
+SoundStrings::SoundStrings() {
+        }
+        auto SoundStrings::instance_owner() -> SoundStrings* { static std::unique_ptr<SoundStrings> value(new SoundStrings()); return value.get(); }
+SoundStrings* SoundStrings::instance = SoundStrings::instance_owner();
 
-    public: static SoundStrings* getInstance(){
+    auto SoundStrings::getInstance() -> SoundStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SoundStrings::instance();
+                        return SoundStrings::instance;
     
 }
 
 
-    public: const std::string STOP_ALL = "stopAll";
 
-    public: const std::string CLOSE_ALL = "closeAll";
 
-    public: const std::string SOUND = " Sound: ";
-
-    public: const std::string INIT_SOUND = "Initializing Sound: ";
-
-    public: const std::string STOPPING_SOUND = "Stopping Sound: ";
-
-    public: const std::string CLOSING_SOUND = "Closing Sound: ";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSTRINGS_CPP

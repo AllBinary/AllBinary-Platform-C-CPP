@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/control/validate/ValidationInterface.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class ValidationInterface;
+class Node;
 
 
 
@@ -55,10 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidation.h"
+        class CssElementValidation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CssElementValidationFactory
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -73,3 +78,19 @@ private: CssElementValidationFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/control/validate/ValidationInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/logic/visual/dhtml/style/css/CssElementValidation.h")
+#include "org/allbinary/logic/visual/dhtml/style/css/CssElementValidation.h"
+#endif
+
+        #endif
+    

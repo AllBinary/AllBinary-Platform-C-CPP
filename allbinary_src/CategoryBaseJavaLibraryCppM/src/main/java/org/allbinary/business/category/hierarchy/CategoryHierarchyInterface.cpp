@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CategoryHierarchyInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getLevel() = 0;
 
-    public: virtual std::string getLevelString() = 0;
 
-    public: virtual CategoryInterface* getRoot() = 0;
-
-    public: virtual CategoryInterface* getParent() = 0;
-
-    public: virtual void setLevel(int32_t level) = 0;
-
-    public: virtual void setRoot(CategoryInterface* categoryInterface) = 0;
-
-    public: virtual void setParent(CategoryInterface* categoryInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHYINTERFACE_CPP

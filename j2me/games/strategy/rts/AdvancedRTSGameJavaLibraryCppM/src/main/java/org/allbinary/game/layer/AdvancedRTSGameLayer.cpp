@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSGAMELAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSGAMELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AdvancedRTSGameLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -187,11 +197,10 @@
 #include "org/allbinary/game/layer/RTSPlayerLayerInterface.h"
 #include "org/allbinary/game/layer/RTSLayerUtil.h"
 
-class AdvancedRTSGameLayer: public RTSLayer, public DestroyedEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public: static AdvancedRTSGameLayer* createSimulated(){
+    auto AdvancedRTSGameLayer::createSimulated() -> AdvancedRTSGameLayer*{
 
     AnimationInterfaceFactoryInterface* nullAnimationInterfaceFactoryInterface = NullAnimationFactory::getFactoryInstance();;
     
@@ -207,17 +216,7 @@ class AdvancedRTSGameLayer: public RTSLayer, public DestroyedEventListenerInterf
 }
 
 
-    protected: ShakeAnimationListener* shakeListener;
-
-    protected: AllBinaryVibrationME* vibration;
-
-    protected: int32_t duration;
-
-    private: PathFindingLayerInterface* parentLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-
-    protected: TickableInterface* waypointBehaviorBase = NullTickable::getInstance();
-
-public: AdvancedRTSGameLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, AdvancedRTSProperties* advancedRTSProperties, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y, ViewPositionBase* viewPosition) : RTSLayer(remoteInfo, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition){
+AdvancedRTSGameLayer::AdvancedRTSGameLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, AdvancedRTSProperties* advancedRTSProperties, std::vector<Group*> groupInterface, std::string rootName, std::string name, Health* healthInterface, RTSFormInput* rtsFormInput, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface* verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y, ViewPositionBase* viewPosition) : RTSLayer(remoteInfo, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition), parentLayer(NullPathFindingLayer::NULL_PATH_FINDING_LAYER), waypointBehaviorBase(NullTickable::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -241,15 +240,15 @@ this->setParentLayer(parentLayer);
 
                 //@Throws(Exception.constructor)
             
-    public: void updateWaypointBehavior(BasicGeographicMap* geographicMapInterface){
-super.updateWaypointBehavior(geographicMapInterface);
+    auto AdvancedRTSGameLayer::updateWaypointBehavior(BasicGeographicMap* geographicMapInterface) -> void{
+RTSLayer::updateWaypointBehavior(geographicMapInterface);
     
 this->getWaypointBehavior()->getWaypoint()->setAllBinaryGameLayerManager(this->allBinaryGameLayerManagerP);
     
 }
 
 
-    protected: void initVisibility(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
+    auto AdvancedRTSGameLayer::initVisibility(RTSPlayerLayerInterface* rtsPlayerLayerInterface) -> void{
 
     AdvancedRTSPlayerLayerInterface* advancedRTSPlayerLayerInterface = dynamic_cast<AdvancedRTSPlayerLayerInterface*>(rtsPlayerLayerInterface);;
     
@@ -273,8 +272,8 @@ this->getWaypointBehavior()->getWaypoint()->setAllBinaryGameLayerManager(this->a
 
                 //@Throws(Exception.constructor)
             
-    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
-super.construct(rtsPlayerLayerInterface);
+    auto AdvancedRTSGameLayer::construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface) -> void{
+RTSLayer::construct(rtsPlayerLayerInterface);
     
 this->initVisibility(rtsPlayerLayerInterface);
     
@@ -285,8 +284,8 @@ BuildingEventHandler::getInstance()->addListenerInterface(this->getWaypointBehav
 
                 //@Throws(Exception.constructor)
             
-    public: void setDestroyed(bool destroyed){
-super.setDestroyed(destroyed);
+    auto AdvancedRTSGameLayer::setDestroyed(bool destroyed) -> void{
+RTSLayer::setDestroyed(destroyed);
     
 
                         if(this->isDestroyed())
@@ -306,7 +305,7 @@ RTSLayerUtil::getInstance()->destroyAndClear(this->getWaypointBehavior()->getOwn
 }
 
 
-    public: PathFindingLayerInterface* getParentLayer(){
+    auto AdvancedRTSGameLayer::getParentLayer() -> PathFindingLayerInterface*{
 
 
 
@@ -316,13 +315,13 @@ RTSLayerUtil::getInstance()->destroyAndClear(this->getWaypointBehavior()->getOwn
 }
 
 
-    public: void setParentLayer(PathFindingLayerInterface* parentLayer){
+    auto AdvancedRTSGameLayer::setParentLayer(PathFindingLayerInterface* parentLayer) -> void{
 this->parentLayer= parentLayer;
     
 }
 
 
-    public: WaypointBehaviorBase* getWaypointBehavior(){
+    auto AdvancedRTSGameLayer::getWaypointBehavior() -> WaypointBehaviorBase*{
 
 
 
@@ -332,13 +331,13 @@ this->parentLayer= parentLayer;
 }
 
 
-    protected: void setWaypointBehavior(WaypointBehaviorBase* unitWaypointHelper){
+    auto AdvancedRTSGameLayer::setWaypointBehavior(WaypointBehaviorBase* unitWaypointHelper) -> void{
 this->waypointBehaviorBase= unitWaypointHelper;
     
 }
 
 
-    public: WaypointLogHelper* getWaypointLogHelper(){
+    auto AdvancedRTSGameLayer::getWaypointLogHelper() -> WaypointLogHelper*{
 
 
 
@@ -348,7 +347,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
 }
 
 
-    public: Waypoint2LogHelper* getWaypoint2LogHelper(){
+    auto AdvancedRTSGameLayer::getWaypoint2LogHelper() -> Waypoint2LogHelper*{
 
 
 
@@ -358,7 +357,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
 }
 
 
-    public: WaypointRunnableLogHelper* getWaypointRunnableLogHelper(){
+    auto AdvancedRTSGameLayer::getWaypointRunnableLogHelper() -> WaypointRunnableLogHelper*{
 
 
 
@@ -368,7 +367,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
 }
 
 
-    public: bool shouldAddWaypointFromBuilding(){
+    auto AdvancedRTSGameLayer::shouldAddWaypointFromBuilding() -> bool{
 
                         if(this->parentLayer != NullPathFindingLayer::NULL_PATH_FINDING_LAYER)
                         
@@ -401,7 +400,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
 }
 
 
-    public: bool isWaypointListEmptyOrOnlyTargets(){
+    auto AdvancedRTSGameLayer::isWaypointListEmptyOrOnlyTargets() -> bool{
 
                         if(this->getType() != UnitLayer::getStaticType())
                         
@@ -426,7 +425,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
 
                 //@Throws(Exception.constructor)
             
-    public: bool buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition){
+    auto AdvancedRTSGameLayer::buildingChase(AllBinaryLayer* allbinaryLayer, GeographicMapCellPosition* cellPosition) -> bool{
 
     GeographicMapCellPosition* geographicMapCellPosition = this->getCurrentGeographicMapCellPosition();;
     
@@ -446,13 +445,13 @@ this->waypointBehaviorBase= unitWaypointHelper;
                         if(buildingDirection == DirectionFactory::getInstance()->UP)
                         
                                     {
-                                    this->rtsLayer2LogHelper.buildingAbove(this);
+                                    this->rtsLayer2LogHelper->buildingAbove(this);
     
 
                         if(angle > 180 && angle < 360)
                         
                                     {
-                                    this->rtsLayer2LogHelper.buildingChaseLeft(this, angle);
+                                    this->rtsLayer2LogHelper->buildingChaseLeft(this, angle);
     
 this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
@@ -473,7 +472,7 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
                                     }
                                 
                         else {
-                            this->rtsLayer2LogHelper.buildingChaseRight(this, angle);
+                            this->rtsLayer2LogHelper->buildingChaseRight(this, angle);
     
 this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
@@ -500,13 +499,13 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
                         if(buildingDirection == DirectionFactory::getInstance()->DOWN)
                         
                                     {
-                                    this->rtsLayer2LogHelper.buildingDown(this);
+                                    this->rtsLayer2LogHelper->buildingDown(this);
     
 
                         if(angle > 180 && angle < 360)
                         
                                     {
-                                    this->rtsLayer2LogHelper.buildingChaseLeft(this, angle);
+                                    this->rtsLayer2LogHelper->buildingChaseLeft(this, angle);
     
 this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
@@ -527,7 +526,7 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
                                     }
                                 
                         else {
-                            this->rtsLayer2LogHelper.buildingChaseRight(this, angle);
+                            this->rtsLayer2LogHelper->buildingChaseRight(this, angle);
     
 this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
@@ -554,13 +553,13 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
                         if(buildingDirection == DirectionFactory::getInstance()->LEFT)
                         
                                     {
-                                    this->rtsLayer2LogHelper.buildingLeft();
+                                    this->rtsLayer2LogHelper->buildingLeft();
     
 
                         if(angle > 90 && angle < 270)
                         
                                     {
-                                    this->rtsLayer2LogHelper.buildingChaseDown(this, angle);
+                                    this->rtsLayer2LogHelper->buildingChaseDown(this, angle);
     
 this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
@@ -581,7 +580,7 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
                                     }
                                 
                         else {
-                            this->rtsLayer2LogHelper.buildingChaseUp(this, angle);
+                            this->rtsLayer2LogHelper->buildingChaseUp(this, angle);
     
 this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
@@ -608,13 +607,13 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
                         if(buildingDirection == DirectionFactory::getInstance()->RIGHT)
                         
                                     {
-                                    this->rtsLayer2LogHelper.buildingRight();
+                                    this->rtsLayer2LogHelper->buildingRight();
     
 
                         if(angle > 90 && angle < 270)
                         
                                     {
-                                    this->rtsLayer2LogHelper.buildingChaseDown(this, angle);
+                                    this->rtsLayer2LogHelper->buildingChaseDown(this, angle);
     
 this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::RIGHT));
     
@@ -635,7 +634,7 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
                                     }
                                 
                         else {
-                            this->rtsLayer2LogHelper.buildingChaseUp(this, angle);
+                            this->rtsLayer2LogHelper->buildingChaseUp(this, angle);
     
 this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Canvas::LEFT));
     
@@ -679,26 +678,26 @@ this->getGameKeyEventList()->add(gameKeyEventFactory->getInstanceForKey(this, Ca
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getSurroundingGeographicMapCellPositionList(){
+    auto AdvancedRTSGameLayer::getSurroundingGeographicMapCellPositionList() -> BasicArrayList*{
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(this->allBinaryGameLayerManagerP);;
     
 
     BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-this->geographicMapCellPositionAreaBase.update(geographicMapInterface);
+this->geographicMapCellPositionAreaBase->update(geographicMapInterface);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->geographicMapCellPositionAreaBase.getSurroundingGeographicMapCellPositionList();;
+                        return this->geographicMapCellPositionAreaBase->getSurroundingGeographicMapCellPositionList();;
     
 }
 
 
-    protected: void setSelected(bool selected){
-super.setSelected(selected);
+    auto AdvancedRTSGameLayer::setSelected(bool selected) -> void{
+RTSLayer::setSelected(selected);
     
 
                         if(this->debug)
@@ -733,7 +732,7 @@ this->waypointRunnableLogHelperP= WaypointRunnableLogHelper::getInstance();
 }
 
 
-    public: void onDestroyed(DestroyedEvent* destroyedEvent){
+    auto AdvancedRTSGameLayer::onDestroyed(DestroyedEvent* destroyedEvent) -> void{
 
         try {
             
@@ -757,14 +756,13 @@ waypoint->reset();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "onDestroyed", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "onDestroyed", &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSGAMELAYER_CPP

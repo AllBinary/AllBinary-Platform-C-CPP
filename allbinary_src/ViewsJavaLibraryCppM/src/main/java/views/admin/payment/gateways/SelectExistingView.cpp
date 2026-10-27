@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTEXISTINGVIEW_CPP
+        #define VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTEXISTINGVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/payment/gateways/SelectExistingView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,11 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/payment/gateways/PaymentGatewaysView.h"
 
-class SelectExistingView: public PaymentGatewayViewAbstract {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: SelectExistingView(TransformInfoInterface* transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
+SelectExistingView::SelectExistingView(TransformInfoInterface* transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,7 +90,7 @@ public: SelectExistingView(TransformInfoInterface* transformInfoInterface) : Pay
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto SelectExistingView::view() -> std::string{
 
         try {
             
@@ -103,10 +110,10 @@ public: SelectExistingView(TransformInfoInterface* transformInfoInterface) : Pay
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view", &e);
     
 
                                     }
@@ -121,7 +128,6 @@ public: SelectExistingView(TransformInfoInterface* transformInfoInterface) : Pay
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTEXISTINGVIEW_CPP

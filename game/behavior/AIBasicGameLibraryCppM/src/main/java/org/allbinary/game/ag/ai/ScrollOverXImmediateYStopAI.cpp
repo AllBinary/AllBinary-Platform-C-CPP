@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERXIMMEDIATEYSTOPAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERXIMMEDIATEYSTOPAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/ScrollOverXImmediateYStopAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,9 +70,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScrollOverXImmediateYStopAI: public BasicAI {
 
-public: ScrollOverXImmediateYStopAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+ScrollOverXImmediateYStopAI::ScrollOverXImmediateYStopAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +83,7 @@ public: ScrollOverXImmediateYStopAI(AllBinaryLayer* ownerLayerInterface, GameInp
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto ScrollOverXImmediateYStopAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -138,7 +147,6 @@ public: ScrollOverXImmediateYStopAI(AllBinaryLayer* ownerLayerInterface, GameInp
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLOVERXIMMEDIATEYSTOPAI_CPP

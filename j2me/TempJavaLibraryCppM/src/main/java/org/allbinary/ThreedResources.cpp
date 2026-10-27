@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREEDRESOURCES_CPP
+        #define ORG_ALLBINARY_THREEDRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ThreedResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThreedResources
-            : public Object
-         {
 
-    private: static ThreedResources* threedResources() { static std::unique_ptr<ThreedResources> value(new ThreedResources()); return value.get(); }
+ThreedResources::ThreedResources() {
+        }
+        auto ThreedResources::threedResources_owner() -> ThreedResources* { static std::unique_ptr<ThreedResources> value(new ThreedResources()); return value.get(); }
+ThreedResources* ThreedResources::threedResources = ThreedResources::threedResources_owner();
 
-    public: static ThreedResources* getThreedResources(){
+    auto ThreedResources::getThreedResources() -> ThreedResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreedResources::threedResources();
+                        return ThreedResources::threedResources;
     
 }
 
 
-    public: void add(){
+    auto ThreedResources::add() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREEDRESOURCES_CPP

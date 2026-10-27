@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTLISTENERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/EventListener.h>
-
-      
 
 
 
@@ -50,8 +53,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/smtp/event/EmailEvent.h"
+        class EmailEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserEmailEventListenerInterface: public EventListener {
 
                 //@Throws(Exception.constructor)
@@ -64,3 +71,16 @@ class UserEmailEventListenerInterface: public EventListener {
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTLISTENERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTLISTENERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTLISTENERINTERFACE_H_COMPLETE
+        #if __has_include(<java/util/EventListener.h>)
+#include <java/util/EventListener.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/event/EmailEvent.h")
+#include "org/allbinary/logic/communication/smtp/event/EmailEvent.h"
+#endif
+
+        #endif
+    

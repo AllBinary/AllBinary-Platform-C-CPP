@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_MIRRORIMAGEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_MIRRORIMAGEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/MirrorImageUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,31 +74,24 @@
         #include "org/allbinary/media/image/ImageUtil.h"
 #include "org/allbinary/media/image/Graphics2D.h"
 
-class MirrorImageUtil
-            : public Object
-         {
+auto MirrorImageUtil::instance_owner() -> MirrorImageUtil* { static std::unique_ptr<MirrorImageUtil> value(new MirrorImageUtil()); return value.get(); }
+MirrorImageUtil* MirrorImageUtil::instance = MirrorImageUtil::instance_owner();
 
-    private: static MirrorImageUtil* instance() { static std::unique_ptr<MirrorImageUtil> value(new MirrorImageUtil()); return value.get(); }
-
-    public: static MirrorImageUtil* getInstance(){
+    auto MirrorImageUtil::getInstance() -> MirrorImageUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MirrorImageUtil::instance();
+                        return MirrorImageUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-private: MirrorImageUtil(){
+MirrorImageUtil::MirrorImageUtil() : logUtil(LogUtil::getInstance()), imageUtil(ImageUtil::getInstance()){
 }
 
 
-    public: BufferedImage* getImage(BufferedImage* bufferedImage, bool verticle, bool horizontal){
+    auto MirrorImageUtil::getImage(BufferedImage* bufferedImage, bool verticle, bool horizontal) -> BufferedImage*{
 this->logUtil->putF("Starting", this, "getImage");
     
 
@@ -153,7 +156,7 @@ g->dispose();
 }
 
 
-    public: std::vector<BufferedImage*> getImages(BufferedImage* bufferedImage, bool verticle, bool horizontal){
+    auto MirrorImageUtil::getImages(BufferedImage* bufferedImage, bool verticle, bool horizontal) -> std::vector<BufferedImage*>{
 
     int32_t width = bufferedImage->getWidth();;
     
@@ -180,7 +183,7 @@ g->dispose();
                         if(horizontal)
                         numberOfFrames *= 2;
                                 
-this->logUtil->putF("numberOfFramesPerOrientation: " +numberOfFramesPerOrientation +" numberOfFrames: " +numberOfFrames, this, "getImages");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("numberOfFramesPerOrientation: ") +JavaString::valueOf(numberOfFramesPerOrientation)) +JavaString::valueOf(" numberOfFrames: ")) +JavaString::valueOf(numberOfFrames), this, "getImages");
     
 
     std::vector<BufferedImage*> bufferedImageArray = std::vector<BufferedImage*>(numberOfFrames);;
@@ -222,7 +225,6 @@ bufferedImageArray[index +numberOfFramesPerOrientation]= this->getImage(buffered
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_MIRRORIMAGEUTIL_CPP

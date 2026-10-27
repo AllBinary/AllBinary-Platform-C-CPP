@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_NULLAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_NULLAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/NullAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NullAI: public ArtificialIntelligence {
 
-public: NullAI(){
+NullAI::NullAI(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto NullAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_NULLAI_CPP

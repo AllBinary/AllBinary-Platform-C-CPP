@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_USB_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_USB_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
-
-      
 #include <org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h>
-
-      
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Usb
-            : public Object
+            : public virtual Object
         , public HardwareComponentInterface, public UsbInterface {
 
     private: std::string data;
@@ -72,3 +77,16 @@ public: Usb(std::string data);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_USB_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_USB_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_USB_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h>
+#endif
+
+        #endif
+    

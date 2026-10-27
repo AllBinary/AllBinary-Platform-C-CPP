@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGEANALYSISRESULTSJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_IMAGEANALYSISRESULTSJPANEL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Float.h"
         
-#include <org/allbinary/media/image/analysis/ImageAnalysisResults.h>
-
-      
-#include <org/allbinary/media/image/analysis/ImageColorRangeResults.h>
-
-      
-#include <org/allbinary/media/image/analysis/ImageColorResults.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
+class ImageAnalysisResults;
+class ImageColorRangeResults;
+class ImageColorResults;
+class CommonPhoneStrings;
 
 
 
@@ -64,13 +61,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/gui/JPanel.h"
-#include "org/allbinary/image/gui/JLabel.h"
-#include "org/allbinary/image/gui/JTextField.h"
-#include "org/allbinary/image/gui/JComboBox.h"
-#include "org/allbinary/image/gui/DefaultComboBoxModel.h"
-#include "org/allbinary/image/gui/GroupLayout.h"
-#include "org/allbinary/image/gui/Short.h"
+class JLabel;
+class JTextField;
+class JComboBox;
+class DefaultComboBoxModel;
+class GroupLayout;
+class Short;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageAnalysisResultsJPanel: public javax::swing::JPanel {
 
 public: ImageAnalysisResultsJPanel(std::vector<ImageAnalysisResults*> imageAnalysisResultsArray);
@@ -137,3 +138,43 @@ public: ImageAnalysisResultsJPanel(std::vector<ImageAnalysisResults*> imageAnaly
 
 
         #endif //ORG_ALLBINARY_IMAGE_GUI_IMAGEANALYSISRESULTSJPANEL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_GUI_IMAGEANALYSISRESULTSJPANEL_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_GUI_IMAGEANALYSISRESULTSJPANEL_H_COMPLETE
+        #if __has_include(<org/allbinary/media/image/analysis/ImageAnalysisResults.h>)
+#include <org/allbinary/media/image/analysis/ImageAnalysisResults.h>
+#endif
+#if __has_include(<org/allbinary/media/image/analysis/ImageColorRangeResults.h>)
+#include <org/allbinary/media/image/analysis/ImageColorRangeResults.h>
+#endif
+#if __has_include(<org/allbinary/media/image/analysis/ImageColorResults.h>)
+#include <org/allbinary/media/image/analysis/ImageColorResults.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include("org/allbinary/image/gui/JPanel.h")
+#include "org/allbinary/image/gui/JPanel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JLabel.h")
+#include "org/allbinary/image/gui/JLabel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JTextField.h")
+#include "org/allbinary/image/gui/JTextField.h"
+#endif
+#if __has_include("org/allbinary/image/gui/JComboBox.h")
+#include "org/allbinary/image/gui/JComboBox.h"
+#endif
+#if __has_include("org/allbinary/image/gui/DefaultComboBoxModel.h")
+#include "org/allbinary/image/gui/DefaultComboBoxModel.h"
+#endif
+#if __has_include("org/allbinary/image/gui/GroupLayout.h")
+#include "org/allbinary/image/gui/GroupLayout.h"
+#endif
+#if __has_include("org/allbinary/image/gui/Short.h")
+#include "org/allbinary/image/gui/Short.h"
+#endif
+
+        #endif
+    

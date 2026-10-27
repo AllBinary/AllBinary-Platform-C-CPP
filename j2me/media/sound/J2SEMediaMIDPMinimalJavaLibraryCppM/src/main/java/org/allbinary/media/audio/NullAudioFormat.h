@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/sound/sampled/AudioFormat.h>
-
-      
+class AudioFormat;
 
 
 
@@ -51,15 +54,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullAudioFormat
-            : public Object
+            : public virtual Object
          {
 
-    public: static AudioFormat* NULL_AUDIO_FORMAT() { static std::unique_ptr<AudioFormat> value(new AudioFormat(AudioFormat::Encoding.PCM_UNSIGNED, 0.0, 0, 0, 0, 0.0, false)); return value.get(); }
+    private: static AudioFormat* NULL_AUDIO_FORMAT_owner();
+    public: static AudioFormat* NULL_AUDIO_FORMAT;
 
+
+            
+    public: NullAudioFormat();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H_COMPLETE
+        #if __has_include(<javax/sound/sampled/AudioFormat.h>)
+#include <javax/sound/sampled/AudioFormat.h>
+#endif
+
+        #endif
+    

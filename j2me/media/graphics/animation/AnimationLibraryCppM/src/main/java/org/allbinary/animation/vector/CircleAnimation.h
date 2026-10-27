@@ -21,27 +21,22 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 #include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class BasicColor;
 #include <org/allbinary/graphics/color/ColorCompositeInterface.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
+class AngleFactory;
 
 
 
@@ -61,13 +56,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CircleAnimation: public Animation, public ColorCompositeInterface {
 
-    protected: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);
+    /*protected*/ public: const int32_t TOTAL_ANGLE;
 
-    protected: int32_t width;
+    /*protected*/ public: int32_t width;
 
-    protected: int32_t height;
+    /*protected*/ public: int32_t height;
 
 public: CircleAnimation(int32_t width, int32_t height, BasicColor* basicColor);
 
@@ -81,3 +80,25 @@ public: CircleAnimation(int32_t width, int32_t height, BasicColor* basicColor);
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/ColorCompositeInterface.h>)
+#include <org/allbinary/graphics/color/ColorCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+
+        #endif
+    

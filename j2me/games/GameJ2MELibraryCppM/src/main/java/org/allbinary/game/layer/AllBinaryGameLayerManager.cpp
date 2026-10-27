@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYERMANAGER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -82,11 +92,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryGameLayerManager: public AllBinaryLayerManager {
+Object* AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static AllBinaryGameLayerManager* getNullInstance(){
+    auto AllBinaryGameLayerManager::getNullInstance() -> AllBinaryGameLayerManager*{
 
                         if(AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -104,18 +112,9 @@ class AllBinaryGameLayerManager: public AllBinaryLayerManager {
     
 }
 
+int32_t AllBinaryGameLayerManager::ID = SmallIntegerSingletonFactory::getInstance()->getAt(22);
 
-    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(22);
-
-    private: BasicColor* backgroundBasicColor;
-
-    private: BasicColor* foregroundBasicColor;
-
-    private: GameInfo* gameInfo;
-
-    private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface = NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE;
-
-public: AllBinaryGameLayerManager(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo){
+AllBinaryGameLayerManager::AllBinaryGameLayerManager(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo) : playerGameInputCompositeInterface(NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE){
 this->backgroundBasicColor= backgroundBasicColor;
     
 this->foregroundBasicColor= foregroundBasicColor;
@@ -132,7 +131,7 @@ this->gameInfo= gameInfo;
 }
 
 
-    public: AllBinaryLayerManager* getLayerManager(){
+    auto AllBinaryGameLayerManager::getLayerManager() -> AllBinaryLayerManager*{
 
 
 
@@ -142,11 +141,11 @@ this->gameInfo= gameInfo;
 }
 
 
-    public: void init(){
+    auto AllBinaryGameLayerManager::init() -> void{
 }
 
 
-    public: BasicColor* getBackgroundBasicColor(){
+    auto AllBinaryGameLayerManager::getBackgroundBasicColor() -> BasicColor*{
 
 
 
@@ -156,7 +155,7 @@ this->gameInfo= gameInfo;
 }
 
 
-    public: void setBackgroundBasicColor(BasicColor* backgroundBasicColor){
+    auto AllBinaryGameLayerManager::setBackgroundBasicColor(BasicColor* backgroundBasicColor) -> void{
 this->backgroundBasicColor= backgroundBasicColor;
     
 ItemColorFactory::getInstance()->INVERT_PAINT= this->backgroundBasicColor->intValue();
@@ -164,7 +163,7 @@ ItemColorFactory::getInstance()->INVERT_PAINT= this->backgroundBasicColor->intVa
 }
 
 
-    public: BasicColor* getForegroundBasicColor(){
+    auto AllBinaryGameLayerManager::getForegroundBasicColor() -> BasicColor*{
 
 
 
@@ -174,7 +173,7 @@ ItemColorFactory::getInstance()->INVERT_PAINT= this->backgroundBasicColor->intVa
 }
 
 
-    public: void setForegroundBasicColor(BasicColor* foregroundBasicColor){
+    auto AllBinaryGameLayerManager::setForegroundBasicColor(BasicColor* foregroundBasicColor) -> void{
 this->foregroundBasicColor= foregroundBasicColor;
     
 ItemColorFactory::getInstance()->PAINT= this->foregroundBasicColor->intValue();
@@ -182,7 +181,7 @@ ItemColorFactory::getInstance()->PAINT= this->foregroundBasicColor->intValue();
 }
 
 
-    public: GameInfo* getGameInfo(){
+    auto AllBinaryGameLayerManager::getGameInfo() -> GameInfo*{
 
 
 
@@ -192,13 +191,13 @@ ItemColorFactory::getInstance()->PAINT= this->foregroundBasicColor->intValue();
 }
 
 
-    public: void setGameInfo(GameInfo* gameInfo){
+    auto AllBinaryGameLayerManager::setGameInfo(GameInfo* gameInfo) -> void{
 this->gameInfo= gameInfo;
     
 }
 
 
-    public: void setLayerProcessorList(BasicArrayList* list){
+    auto AllBinaryGameLayerManager::setLayerProcessorList(BasicArrayList* list) -> void{
 
     std::vector<LayerProcessor*> layerProcessorInterfaceArray = std::vector<LayerProcessor*>(list->size());;
     
@@ -221,13 +220,13 @@ this->setLayerProcessorArray(layerProcessorInterfaceArray);
 }
 
 
-    public: void setPlayerGameInputCompositeInterface(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface){
+    auto AllBinaryGameLayerManager::setPlayerGameInputCompositeInterface(PlayerGameInputCompositeInterface* playerGameInputCompositeInterface) -> void{
 this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
     
 }
 
 
-    public: PlayerGameInputCompositeInterface* getPlayerGameInputCompositeInterface(){
+    auto AllBinaryGameLayerManager::getPlayerGameInputCompositeInterface() -> PlayerGameInputCompositeInterface*{
 
 
 
@@ -237,7 +236,6 @@ this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYERMANAGER_CPP

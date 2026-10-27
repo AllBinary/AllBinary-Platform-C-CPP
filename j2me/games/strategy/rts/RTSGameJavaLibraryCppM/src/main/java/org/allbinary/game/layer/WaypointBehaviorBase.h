@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,33 +38,15 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
-
-      
-#include <org/allbinary/game/layer/waypoint/WaypointBase.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class CollidableDestroyableDamageableLayer;
+class WaypointBase;
+class BasicArrayList;
+class BasicArrayListD;
 #include <org/allbinary/game/tick/TickableInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/util/BasicArrayListS.h>
-
-      
+class AllBinaryLayerManager;
+class GeographicMapCellHistory;
+class GeographicMapCellPosition;
+class BasicArrayListS;
 
 
 
@@ -78,17 +65,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+        class PathFindingLayerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointBehaviorBase
-            : public Object
+            : public virtual Object
         , public TickableInterface {
 
     private: BasicArrayList* ownedWaypointList;
 
-    protected: bool waypointOverridesAttacking = true;
+    /*protected*/ public: bool waypointOverridesAttacking = true;
 
-    private: WaypointBase* waypoint = WaypointBase::NULL_WAYPOINT_BASE;
+    private: WaypointBase* waypoint;
 
 public: WaypointBehaviorBase();
 
@@ -150,7 +141,7 @@ public: WaypointBehaviorBase();
             
     public: void updatePathOnTargetMove(std::string reason);
 
-    private: BasicArrayList* steeringVisitorList = new BasicArrayListD();
+    private: BasicArrayList* steeringVisitorList;
 
 };
 
@@ -158,3 +149,40 @@ public: WaypointBehaviorBase();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>)
+#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/waypoint/WaypointBase.h>)
+#include <org/allbinary/game/layer/waypoint/WaypointBase.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/game/tick/TickableInterface.h>)
+#include <org/allbinary/game/tick/TickableInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListS.h>)
+#include <org/allbinary/util/BasicArrayListS.h>
+#endif
+#if __has_include("org/allbinary/game/layer/PathFindingLayerInterface.h")
+#include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+#endif
+
+        #endif
+    

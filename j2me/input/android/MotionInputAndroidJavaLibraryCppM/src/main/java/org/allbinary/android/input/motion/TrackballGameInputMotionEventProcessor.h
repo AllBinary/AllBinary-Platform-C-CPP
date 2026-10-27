@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,30 +34,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <android/view/MotionEvent.h>
-
-      
-#include <org/allbinary/game/input/motion/action/SingleKeyPressGameKeyFromMotionGestureEventListener.h>
-
-      
-#include <org/allbinary/input/motion/trackball/action/DownTrackballInputToGameKeyEventAction.h>
-
-      
-#include <org/allbinary/input/motion/trackball/action/LeftTrackballInputToGameKeyEventAction.h>
-
-      
-#include <org/allbinary/input/motion/trackball/action/RightTrackballInputToGameKeyEventAction.h>
-
-      
-#include <org/allbinary/input/motion/trackball/action/UpTrackballInputToGameKeyEventAction.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class MotionEvent;
+class SingleKeyPressGameKeyFromMotionGestureEventListener;
+class DownTrackballInputToGameKeyEventAction;
+class LeftTrackballInputToGameKeyEventAction;
+class RightTrackballInputToGameKeyEventAction;
+class UpTrackballInputToGameKeyEventAction;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -73,19 +62,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TrackballGameInputMotionEventProcessor: public MotionEventProcessor {
 
-    private: static TrackballGameInputMotionEventProcessor* PROCESSOR() { static std::unique_ptr<TrackballGameInputMotionEventProcessor> value(new TrackballGameInputMotionEventProcessor()); return value.get(); }
+    private: static TrackballGameInputMotionEventProcessor* PROCESSOR_owner();
+    private: static TrackballGameInputMotionEventProcessor* PROCESSOR;
 
     public: static TrackballGameInputMotionEventProcessor* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: SingleKeyPressGameKeyFromMotionGestureEventListener* listener = new SingleKeyPressGameKeyFromMotionGestureEventListener();
+    private: SingleKeyPressGameKeyFromMotionGestureEventListener* listener;
 
 private: TrackballGameInputMotionEventProcessor();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
     public: void process(MotionEvent* motionEvent);
 
@@ -95,3 +89,37 @@ private: TrackballGameInputMotionEventProcessor();
 
 
         #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_TRACKBALLGAMEINPUTMOTIONEVENTPROCESSOR_H_COMPLETE
+        #if __has_include(<android/view/MotionEvent.h>)
+#include <android/view/MotionEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/input/motion/action/SingleKeyPressGameKeyFromMotionGestureEventListener.h>)
+#include <org/allbinary/game/input/motion/action/SingleKeyPressGameKeyFromMotionGestureEventListener.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/trackball/action/DownTrackballInputToGameKeyEventAction.h>)
+#include <org/allbinary/input/motion/trackball/action/DownTrackballInputToGameKeyEventAction.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/trackball/action/LeftTrackballInputToGameKeyEventAction.h>)
+#include <org/allbinary/input/motion/trackball/action/LeftTrackballInputToGameKeyEventAction.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/trackball/action/RightTrackballInputToGameKeyEventAction.h>)
+#include <org/allbinary/input/motion/trackball/action/RightTrackballInputToGameKeyEventAction.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/trackball/action/UpTrackballInputToGameKeyEventAction.h>)
+#include <org/allbinary/input/motion/trackball/action/UpTrackballInputToGameKeyEventAction.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/android/input/motion/MotionEventProcessor.h")
+#include "org/allbinary/android/input/motion/MotionEventProcessor.h"
+#endif
+
+        #endif
+    

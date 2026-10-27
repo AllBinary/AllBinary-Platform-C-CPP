@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLJ2SECONTROL_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NULLJ2SECONTROL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/NullJ2SEControl.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/Type.h"
 
-class NullJ2SEControl: public Control {
 
-: NullJ2SEControl(Type* type) : Control(type){
+NullJ2SEControl::NullJ2SEControl(Type* type) : Control(type){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -59,7 +68,6 @@ class NullJ2SEControl: public Control {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_NULLJ2SECONTROL_CPP

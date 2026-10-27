@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFOUTIL_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFOUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/LicenseInitInfoUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,50 +58,39 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/LicenseInitInfo.h"
 
-class LicenseInitInfoUtil
-            : public Object
-         {
+auto LicenseInitInfoUtil::instance_owner() -> LicenseInitInfoUtil* { static std::unique_ptr<LicenseInitInfoUtil> value(new LicenseInitInfoUtil()); return value.get(); }
+LicenseInitInfoUtil* LicenseInitInfoUtil::instance = LicenseInitInfoUtil::instance_owner();
 
-    private: static LicenseInitInfoUtil* instance() { static std::unique_ptr<LicenseInitInfoUtil> value(new LicenseInitInfoUtil()); return value.get(); }
-
-    public: static LicenseInitInfoUtil* getInstance(){
+    auto LicenseInitInfoUtil::getInstance() -> LicenseInitInfoUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseInitInfoUtil::instance();
+                        return LicenseInitInfoUtil::instance;
     
 }
 
-
-    public: const std::string INITFILENAME = "licenseinitdata.dat";
-
-    public: const std::string ABOUT = "about";
-
-    public: const std::string PRIVACY_POLICY = "privacy_policy";
-
-    private: const std::string OFFICIAL_ALLBINARY_SERVICES_SERVER = "https://services.allbinary.com/LicServ/serverssl.php";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setFilePath(std::string filePath){
+    auto LicenseInitInfoUtil::setFilePath(std::string filePath) -> void{
 }
 
 
-private: LicenseInitInfoUtil(){
-}
-
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public: void write(LicenseInitInfo* initData){
+LicenseInitInfoUtil::LicenseInitInfoUtil(){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo* read(){
+    auto LicenseInitInfoUtil::write(LicenseInitInfo* initData) -> void{
+}
+
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    auto LicenseInitInfoUtil::read() -> LicenseInitInfo*{
 
 
 
@@ -104,7 +103,7 @@ private: LicenseInitInfoUtil(){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: LicenseInitInfo* readAgain(int32_t initializeCounter){
+    auto LicenseInitInfoUtil::readAgain(int32_t initializeCounter) -> LicenseInitInfo*{
 
     LicenseInitInfo* licenseInitInfo = new LicenseInitInfo();;
     
@@ -121,7 +120,6 @@ licenseInitInfo->addServer(this->OFFICIAL_ALLBINARY_SERVICES_SERVER);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFOUTIL_CPP

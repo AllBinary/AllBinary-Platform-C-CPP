@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/identification/Group.h>
-
-      
+class Group;
 
 
 
@@ -52,13 +55,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/capital/event/CapitalEventHandler.h"
+        class CapitalEventHandler;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CapitalEventHandlerFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline const std::vector<CapitalEventHandler*> capitalEventHandlerArray;
+    private: static inline std::vector<CapitalEventHandler*> capitalEventHandlerArray;
 
                     static int32_t initResult;
                 static int32_t init();
@@ -67,9 +74,26 @@ class CapitalEventHandlerFactory
 
     public: static void removeAll();
 
+
+            
+    public: CapitalEventHandlerFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include("org/allbinary/game/layer/capital/event/CapitalEventHandler.h")
+#include "org/allbinary/game/layer/capital/event/CapitalEventHandler.h"
+#endif
+
+        #endif
+    

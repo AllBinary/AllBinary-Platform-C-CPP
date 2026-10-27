@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/MoneyException.h>
-
-      
-#include <org/allbinary/data/tables/TableMappingInterface.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/RequestParams.h>
-
-      
+class HttpServletRequest;
+class MoneyException;
+class TableMappingInterface;
+class RequestParams;
 
 
 
@@ -64,10 +59,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/commerce/inventory/item/Item.h"
+        class Item;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ItemFactoryUnused
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(MoneyException.constructor)
@@ -86,3 +85,28 @@ private: ItemFactoryUnused();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/MoneyException.h>)
+#include <org/allbinary/business/user/commerce/money/MoneyException.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/TableMappingInterface.h>)
+#include <org/allbinary/data/tables/TableMappingInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/RequestParams.h>)
+#include <org/allbinary/logic/communication/http/request/RequestParams.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/item/Item.h")
+#include "org/allbinary/business/user/commerce/inventory/item/Item.h"
+#endif
+
+        #endif
+    

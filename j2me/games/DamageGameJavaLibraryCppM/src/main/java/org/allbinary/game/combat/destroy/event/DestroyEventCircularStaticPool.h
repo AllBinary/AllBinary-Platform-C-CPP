@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTCIRCULARSTATICPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>
-
-      
+class AllBinaryGameCanvas;
+class AllBinaryLayer;
+class AllBinaryEventCircularPool;
 
 
 
@@ -58,18 +57,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/combat/destroy/event/DestroyEventFactory.h"
-#include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
+        class DestroyEventFactory;
+class DestroyedEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DestroyEventCircularStaticPool
-            : public Object
+            : public virtual Object
          {
 
-    private: static DestroyEventCircularStaticPool* instance() { static std::unique_ptr<DestroyEventCircularStaticPool> value(new DestroyEventCircularStaticPool()); return value.get(); }
+    private: static DestroyEventCircularStaticPool* instance_owner();
+    private: static DestroyEventCircularStaticPool* instance;
 
     public: static DestroyEventCircularStaticPool* getInstance();
 
-    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool* EVENT_POOL;
 
 private: DestroyEventCircularStaticPool();
 
@@ -85,3 +89,25 @@ private: DestroyEventCircularStaticPool();
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTCIRCULARSTATICPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTCIRCULARSTATICPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTCIRCULARSTATICPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>)
+#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>
+#endif
+#if __has_include("org/allbinary/game/combat/destroy/event/DestroyEventFactory.h")
+#include "org/allbinary/game/combat/destroy/event/DestroyEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/combat/destroy/event/DestroyedEvent.h")
+#include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_PTSDAMAGEFLOATERS_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_PTSDAMAGEFLOATERS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/damage/PtsDamageFloaters.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -82,28 +92,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/damage/DamageFloaters.h"
 
-class PtsDamageFloaters: public DamageFloaters {
-
-    private: static BasicColorArrayIndexer* basicColorArrayIndexer() { static std::unique_ptr<BasicColorArrayIndexer> value(new BasicColorArrayIndexer(
+auto PtsDamageFloaters::basicColorArrayIndexer_owner() -> BasicColorArrayIndexer* { static std::unique_ptr<BasicColorArrayIndexer> value(new BasicColorArrayIndexer(
                                                 {
                                                     BasicColorFactory::getInstance()->WHITE,BasicColorFactory::getInstance()->RED,BasicColorFactory::getInstance()->YELLOW,BasicColorFactory::getInstance()->BLUE
                                                 })); return value.get(); }
+BasicColorArrayIndexer* PtsDamageFloaters::basicColorArrayIndexer = PtsDamageFloaters::basicColorArrayIndexer_owner();
 
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
-
-    private: AllBinaryLayer* layerInterface;
-
-    private: std::vector<int32_t> lastDamage = std::vector<int32_t>(5);
-
-    private: std::vector<std::vector<char>> lastDamageString = std::vector<std::vector<char>>(5, std::vector<char>(0));
-
-    private: std::vector<int32_t> lastDamageStringSizeArray = std::vector<int32_t>(5);
-
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(5);
-
-    private: PrimitiveLongUtil* primitiveLongUtil;
-
-public: PtsDamageFloaters(AllBinaryLayer* layerInterface){
+PtsDamageFloaters::PtsDamageFloaters(AllBinaryLayer* layerInterface) : basicSetColorUtil(BasicColorSetUtil::getInstance()), lastDamage(std::vector<int32_t>(5)), lastDamageString(std::vector<std::vector<char>>(5, std::vector<char>(0))), lastDamageStringSizeArray(std::vector<int32_t>(5)), circularIndexUtil(CircularIndexUtil::createInstance(5)), myRandomFactory(MyRandomFactory::getInstance()){
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(100000);
     
 this->layerInterface= layerInterface;
@@ -125,7 +120,7 @@ this->lastDamageString[index]= CHAR_ARRAY;
 }
 
 
-    public: void add(int32_t damage){
+    auto PtsDamageFloaters::add(int32_t damage) -> void{
 
     int32_t index = this->circularIndexUtil->getIndex();;
     
@@ -140,9 +135,7 @@ this->circularIndexUtil->next();
 }
 
 
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
-
-    public: void paint(Graphics* graphics){
+    auto PtsDamageFloaters::paint(Graphics* graphics) -> void{
 
     ViewPositionBase* viewPosition = this->layerInterface->getViewPosition();;
     
@@ -166,11 +159,11 @@ this->circularIndexUtil->next();
                                     
     int32_t delta = 10 *(index +2);;
     
-this->basicSetColorUtil->setBasicColorP(graphics, PtsDamageFloaters::basicColorArrayIndexer()->get());
+this->basicSetColorUtil->setBasicColorP(graphics, PtsDamageFloaters::basicColorArrayIndexer->get());
     
 graphics->drawChars(this->lastDamageString[index], 0, this->lastDamageStringSizeArray[index], x -this->myRandomFactory->getNextInt(delta), y -delta, 0);
     
-PtsDamageFloaters::basicColorArrayIndexer()->next();
+PtsDamageFloaters::basicColorArrayIndexer->next();
     
 
                                     }
@@ -182,7 +175,6 @@ this->lastDamage[index]= 0;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_PTSDAMAGEFLOATERS_CPP

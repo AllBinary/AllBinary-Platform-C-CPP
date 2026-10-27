@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GamePerformanceInitUpdatePaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -72,19 +82,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    private: const int32_t halfHeight = DisplayInfoSingleton::getInstance()->getLastHalfHeight();
-
-    private: const std::vector<int32_t> yArray = {this->halfHeight +30,this->halfHeight +30,this->halfHeight +30 +15,this->halfHeight +30 +15,this->halfHeight +30 +30,this->halfHeight +30 +30,this->halfHeight +30 +45,this->halfHeight +30 +45};
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: std::vector<std::vector<char>> baseRefreshHelperCharArray = std::vector<std::vector<char>>(0, std::vector<char>(0));
-
-    private: int32_t defaultStringWidth= 0;
-
-    public: void updateMeasurement(Graphics* graphics){
+GamePerformanceInitUpdatePaintable::GamePerformanceInitUpdatePaintable() : halfHeight(DisplayInfoSingleton::getInstance()->getLastHalfHeight()), yArray({this->halfHeight +30,this->halfHeight +30,this->halfHeight +30 +15,this->halfHeight +30 +15,this->halfHeight +30 +30,this->halfHeight +30 +30,this->halfHeight +30 +45,this->halfHeight +30 +45}), myFontProcessor(new UpdateMyFontProcessor(this)), baseRefreshHelperCharArray(std::vector<std::vector<char>>(0, std::vector<char>(0))), RED(BasicColorFactory::getInstance()->RED.intValue()) {
+        }
+        
+    auto GamePerformanceInitUpdatePaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -95,19 +97,17 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void init(){
+    auto GamePerformanceInitUpdatePaintable::init() -> void{
 }
 
 
-    public: void update(){
+    auto GamePerformanceInitUpdatePaintable::update() -> void{
 this->baseRefreshHelperCharArray= GameStatisticsFactory::getInstance()->to2DCharArray();
     
 }
 
 
-    private: const int32_t RED = BasicColorFactory::getInstance()->RED.intValue();
-
-    public: void paint(Graphics* graphics){
+    auto GamePerformanceInitUpdatePaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 graphics->setColor(this->RED);
@@ -151,7 +151,6 @@ graphics->drawChars(charArray2, 0, size3, size2 *this->defaultStringWidth, this-
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_CPP

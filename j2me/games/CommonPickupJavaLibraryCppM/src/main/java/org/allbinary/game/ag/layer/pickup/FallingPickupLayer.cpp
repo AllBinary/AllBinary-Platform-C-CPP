@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYER_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/FallingPickupLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,11 +82,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FallingPickupLayer: public PickupLayer, public TickableInterface {
 
-    private: static inline const std::string NAME = "FallingPickupLayer";
-
-public: FallingPickupLayer(RemoteInfo* remoteInfo) : PickupLayer(FallingPickupLayer::NAME, remoteInfo, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance()->getInstance(0), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
+FallingPickupLayer::FallingPickupLayer(RemoteInfo* remoteInfo) : PickupLayer(FallingPickupLayer::NAME, remoteInfo, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance()->getInstance(0), new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,13 +93,13 @@ public: FallingPickupLayer(RemoteInfo* remoteInfo) : PickupLayer(FallingPickupLa
 }
 
 
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto FallingPickupLayer::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 this->setPosition(this->x, this->y +1, this->z);
     
 }
 
 
-    public: bool implmentsTickableInterface(){
+    auto FallingPickupLayer::implmentsTickableInterface() -> bool{
 
 
 
@@ -102,7 +109,6 @@ this->setPosition(this->x, this->y +1, this->z);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_FALLINGPICKUPLAYER_CPP

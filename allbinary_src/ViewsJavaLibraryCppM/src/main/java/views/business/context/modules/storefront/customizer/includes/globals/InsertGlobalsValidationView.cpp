@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_INSERTGLOBALSVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_INSERTGLOBALSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/globals/InsertGlobalsValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/includes/globals/GlobalsView.h"
 
-class InsertGlobalsValidationView: public GlobalsView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InsertGlobalsValidationView(TransformInfoInterface* transformInfoInterface) : GlobalsView(transformInfoInterface){
+InsertGlobalsValidationView::InsertGlobalsValidationView(TransformInfoInterface* transformInfoInterface) : GlobalsView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +93,7 @@ public: InsertGlobalsValidationView(TransformInfoInterface* transformInfoInterfa
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto InsertGlobalsValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -96,7 +103,7 @@ public: InsertGlobalsValidationView(TransformInfoInterface* transformInfoInterfa
 }
 
 
-    public: bool isValid(){
+    auto InsertGlobalsValidationView::isValid() -> bool{
 
         try {
             
@@ -115,10 +122,10 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -134,7 +141,7 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 }
 
 
-    public: std::string validationInfo(){
+    auto InsertGlobalsValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -151,7 +158,7 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -170,7 +177,7 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto InsertGlobalsValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -180,7 +187,7 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto InsertGlobalsValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -190,7 +197,6 @@ CustomizerUtil::getInstance()->insert(this->getTransformInfoInterface(), dynamic
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_INSERTGLOBALSVALIDATIONVIEW_CPP

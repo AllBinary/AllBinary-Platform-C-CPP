@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/LayerInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,37 +86,31 @@
 #include "org/allbinary/layer/LayerInterfaceFactoryInterface.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 
-class LayerInterfaceFactory
-            : public Object
-         {
 
-    private: static LayerInterfaceFactory* SINGLETON() { static std::unique_ptr<LayerInterfaceFactory> value(new LayerInterfaceFactory()); return value.get(); }
+LayerInterfaceFactory::LayerInterfaceFactory() : logUtil(LogUtil::getInstance()), list(BasicArrayListUtil::getInstance()->getImmutableInstance()) {
+        }
+        auto LayerInterfaceFactory::SINGLETON_owner() -> LayerInterfaceFactory* { static std::unique_ptr<LayerInterfaceFactory> value(new LayerInterfaceFactory()); return value.get(); }
+LayerInterfaceFactory* LayerInterfaceFactory::SINGLETON = LayerInterfaceFactory::SINGLETON_owner();
 
-    public: static LayerInterfaceFactory* getInstance(){
+    auto LayerInterfaceFactory::getInstance() -> LayerInterfaceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerInterfaceFactory::SINGLETON();
+                        return LayerInterfaceFactory::SINGLETON;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
-
-    public: void init(){
+    auto LayerInterfaceFactory::init() -> void{
 this->list= new BasicArrayListD();
     
 }
 
 
-    private: const std::string HASHTABLE_LABEL = "Hashtable: ";
-
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getNexInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
+    auto LayerInterfaceFactory::getNexInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z) -> AllBinaryLayer*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -127,13 +131,12 @@ this->logUtil->putF((new StringMaker())->append(this->HASHTABLE_LABEL)->append(S
 }
 
 
-    public: void add(LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface){
+    auto LayerInterfaceFactory::add(LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface) -> void{
 this->list->add(layerInterfaceFactoryInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_CPP

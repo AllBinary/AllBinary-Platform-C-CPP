@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_PRIORITYRUNNABLE_CPP
+        #define ORG_ALLBINARY_THREAD_PRIORITYRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/PriorityRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PriorityRunnable: public Runnable {
+//Interface - declared in the header
 
-    public: virtual int32_t getPriority() = 0;
 
-    public: virtual bool isDone() = 0;
 
-    public: virtual void reset() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_THREAD_PRIORITYRUNNABLE_CPP

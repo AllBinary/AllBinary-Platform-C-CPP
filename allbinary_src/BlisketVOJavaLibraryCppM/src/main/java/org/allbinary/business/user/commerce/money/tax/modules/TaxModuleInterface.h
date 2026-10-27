@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_TAXMODULEINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_TAXMODULEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Float.h"
         
-#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
-
-      
-#include <org/allbinary/business/user/address/StreetAddress.h>
-
-      
+class StoreFrontInterface;
+class StreetAddress;
 
 
 
@@ -56,7 +57,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TaxModuleInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class TaxModuleInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -72,3 +79,16 @@ class TaxModuleInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_TAXMODULEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_TAXMODULEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_TAXMODULEINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/address/StreetAddress.h>)
+#include <org/allbinary/business/user/address/StreetAddress.h>
+#endif
+
+        #endif
+    

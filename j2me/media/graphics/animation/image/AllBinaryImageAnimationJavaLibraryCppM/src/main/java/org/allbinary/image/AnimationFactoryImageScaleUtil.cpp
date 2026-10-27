@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_CPP
+        #define ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/AnimationFactoryImageScaleUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,27 +84,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnimationFactoryImageScaleUtil
-            : public Object
-         {
 
-    private: static AnimationFactoryImageScaleUtil* instance() { static std::unique_ptr<AnimationFactoryImageScaleUtil> value(new AnimationFactoryImageScaleUtil()); return value.get(); }
+AnimationFactoryImageScaleUtil::AnimationFactoryImageScaleUtil() : imageScaleUtil(ImageJ2MEScaleUtil::getInstance()) {
+        }
+        auto AnimationFactoryImageScaleUtil::instance_owner() -> AnimationFactoryImageScaleUtil* { static std::unique_ptr<AnimationFactoryImageScaleUtil> value(new AnimationFactoryImageScaleUtil()); return value.get(); }
+AnimationFactoryImageScaleUtil* AnimationFactoryImageScaleUtil::instance = AnimationFactoryImageScaleUtil::instance_owner();
 
-    public: static AnimationFactoryImageScaleUtil* getInstance(){
+    auto AnimationFactoryImageScaleUtil::getInstance() -> AnimationFactoryImageScaleUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationFactoryImageScaleUtil::instance();
+                        return AnimationFactoryImageScaleUtil::instance;
     
 }
 
 
-    private: ImageJ2MEScaleUtil* imageScaleUtil = ImageJ2MEScaleUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage(Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
+    auto AnimationFactoryImageScaleUtil::createImage(Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight) -> Image*{
 
     Image* scaledImage;;
     
@@ -149,7 +157,7 @@ scaledImage= this->imageScaleUtil->scale(image, scaledWidth, scaledHeight);
 
                 //@Throws(Exception.constructor)
             
-    public: void processAdjust(BaseImageAnimationFactory* baseImageAnimationFactory){
+    auto AnimationFactoryImageScaleUtil::processAdjust(BaseImageAnimationFactory* baseImageAnimationFactory) -> void{
 
     ScaleProperties* scaleProperties = baseImageAnimationFactory->getScalePropertiesP();;
     
@@ -191,7 +199,6 @@ animationFactoryInitializationVisitor->dy= static_cast<int32_t>((animationFactor
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_CPP

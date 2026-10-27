@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,17 +37,9 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/category/CategoryData.h>
-
-      
-#include <org/allbinary/business/category/CategoryInterface.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class CategoryData;
+class CategoryInterface;
+class StringUtil;
 
 
 
@@ -63,8 +60,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoryHierarchy
-            : public Object
+            : public virtual Object
         , public CategoryHierarchyInterface {
 
     private: CategoryInterface* rootCategoryInterface;
@@ -99,3 +100,25 @@ public: CategoryHierarchy(CategoryInterface* rootCategoryInterface, CategoryInte
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_HIERARCHY_CATEGORYHIERARCHY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryData.h>)
+#include <org/allbinary/business/category/CategoryData.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryInterface.h>)
+#include <org/allbinary/business/category/CategoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h")
+#include "org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_IMAGE_ADVERTISEMENTIMAGEINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_IMAGE_ADVERTISEMENTIMAGEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/image/AdvertisementImageInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,15 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementImageInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getFileName() = 0;
 
-    public: virtual std::string getUrl() = 0;
 
-    public: virtual TwoDimensionalConstraintInterface* getTwoDimensionalConstraint() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_IMAGE_ADVERTISEMENTIMAGEINTERFACE_CPP

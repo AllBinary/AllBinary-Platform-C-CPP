@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_TIMEUTIL_CPP
+        #define ORG_ALLBINARY_TIME_TIMEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/TimeUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,25 +60,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeUtil
-            : public Object
-         {
 
-    private: static TimeUtil* instance() { static std::unique_ptr<TimeUtil> value(new TimeUtil()); return value.get(); }
+TimeUtil::TimeUtil() {
+        }
+        auto TimeUtil::instance_owner() -> TimeUtil* { static std::unique_ptr<TimeUtil> value(new TimeUtil()); return value.get(); }
+TimeUtil* TimeUtil::instance = TimeUtil::instance_owner();
 
-    public: static TimeUtil* getInstance(){
+    auto TimeUtil::getInstance() -> TimeUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeUtil::instance();
+                        return TimeUtil::instance;
     
 }
 
 
-    private: static inline Calendar* calendar = Calendar::getInstance();
-
-    public: void setCalendar(Calendar* calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString){
+    auto TimeUtil::setCalendar(Calendar* calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString) -> void{
 
     int32_t year = (int32_t(yearString)).intValue();;
     
@@ -86,7 +94,7 @@ calendar->set(year, month, day, hour, 0);
 }
 
 
-    public: void setCalendar(Calendar* calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString){
+    auto TimeUtil::setCalendar(Calendar* calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString) -> void{
 
     int32_t year = (int32_t(yearString)).intValue();;
     
@@ -110,7 +118,7 @@ calendar->set(year, month, day, hour, minute, second);
 }
 
 
-    public: void setExpirationCalendar(Calendar* calendar, std::string yearsString, std::string monthsString, std::string daysString, std::string hoursString, std::string minutesString, std::string secondsString){
+    auto TimeUtil::setExpirationCalendar(Calendar* calendar, std::string yearsString, std::string monthsString, std::string daysString, std::string hoursString, std::string minutesString, std::string secondsString) -> void{
 
     int32_t year = calendar->get(Calendar::YEAR) +(int32_t(yearsString)).intValue();;
     
@@ -133,8 +141,9 @@ calendar->set(year, month, day, hour, minute, second);
     
 }
 
+Calendar* TimeUtil::calendar = Calendar::getInstance();
 
-    public: int64_t getTotalTime(std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString){
+    auto TimeUtil::getTotalTime(std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString) -> int64_t{
 
     int64_t time = TimeUtil::calendar->getTimeInMillis();;
     
@@ -152,7 +161,6 @@ this->setExpirationCalendar(TimeUtil::calendar, yearString, monthString, dayStri
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_TIMEUTIL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,18 +58,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //NoPlatform
-// class ExceptionUtil
-            : public Object
+class ExceptionUtil
+            : public virtual Object
          {
 
-    private: static ExceptionUtil* instance() { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
+    private: static inline ExceptionUtil* instance;
 
     public: static ExceptionUtil* getInstance();
 
 
 
-    public: Exception* PRETEND_EXCEPTION
+    public: Exception* PRETEND_EXCEPTION;
 
     public: std::string getStackTrace(Throwable* e);
 
@@ -74,3 +83,10 @@
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_H_COMPLETE
+        
+        #endif
+    

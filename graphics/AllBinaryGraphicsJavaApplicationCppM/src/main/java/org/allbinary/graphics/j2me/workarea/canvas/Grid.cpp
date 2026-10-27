@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/canvas/Grid.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,57 +58,44 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Grid
-            : public Object
-         {
 
-    public: GPoint* grid;
-
-    public: bool isGridOn = true;
-
-    public: bool isGridPossible = false;
-
-    private: int32_t zoom = 3;
-
-    public: bool isChanged = true;
-
-public: Grid(){
+Grid::Grid(){
 }
 
 
-public: Grid(Grid* grid){
+Grid::Grid(Grid* grid){
 this->grid= grid->grid;
     
-this->showGrid(grid->isGridOn);
+this->showGrid(grid->isGridOn_);
     
-this->isGridPossible= grid->isGridPossible;
+this->isGridPossible_= grid->isGridPossible_;
     
 this->setZoom(grid->getZoom());
     
 }
 
 
-    public: bool isGridOn(){
+    auto Grid::isGridOn() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isGridOn;
+                        return this->isGridOn_;
     
 }
 
 
-    public: bool isGridPossible(){
+    auto Grid::isGridPossible() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isGridPossible;
+                        return this->isGridPossible_;
     
 }
 
 
-    public: GPoint* getGrid(){
+    auto Grid::getGrid() -> GPoint*{
 
 
 
@@ -108,7 +105,7 @@ this->setZoom(grid->getZoom());
 }
 
 
-    public: int32_t getZoom(){
+    auto Grid::getZoom() -> int32_t{
 
 
 
@@ -118,13 +115,13 @@ this->setZoom(grid->getZoom());
 }
 
 
-    public: void showGrid(bool value){
-this->isGridOn= value;
+    auto Grid::showGrid(bool value) -> void{
+this->isGridOn_= value;
     
 }
 
 
-    public: void setZoom(int32_t zoom){
+    auto Grid::setZoom(int32_t zoom) -> void{
 this->zoom= zoom;
     
 
@@ -141,7 +138,6 @@ this->isChanged= true;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_CPP

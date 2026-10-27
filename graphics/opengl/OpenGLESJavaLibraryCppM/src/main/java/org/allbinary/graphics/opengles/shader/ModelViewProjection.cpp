@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_MODELVIEWPROJECTION_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_MODELVIEWPROJECTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/ModelViewProjection.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,23 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ModelViewProjection
-            : public Object
-         {
 
-    private: static ModelViewProjection* instance() { static std::unique_ptr<ModelViewProjection> value(new ModelViewProjection()); return value.get(); }
+ModelViewProjection::ModelViewProjection() {
+        }
+        auto ModelViewProjection::instance_owner() -> ModelViewProjection* { static std::unique_ptr<ModelViewProjection> value(new ModelViewProjection()); return value.get(); }
+ModelViewProjection* ModelViewProjection::instance = ModelViewProjection::instance_owner();
 
-    public: static ModelViewProjection* getInstance(){
+    auto ModelViewProjection::getInstance() -> ModelViewProjection*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModelViewProjection::instance();
+                        return ModelViewProjection::instance;
     
 }
 
 
-    public: std::vector<float> get(){
+    auto ModelViewProjection::get() -> std::vector<float>{
 
 
 
@@ -73,7 +83,6 @@ class ModelViewProjection
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_MODELVIEWPROJECTION_CPP

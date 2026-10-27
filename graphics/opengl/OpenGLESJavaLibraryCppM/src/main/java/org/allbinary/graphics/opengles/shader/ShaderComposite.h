@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
-#include <org/allbinary/graphics/opengles/OpenGLProcessor.h>
-
-      
-#include <org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h>
-
-      
+class GL10;
+class OpenGLProcessor;
+class NullOpenGLProcessorFactory;
 
 
 
@@ -58,15 +57,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/opengles/shader/Shader.h"
-#include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
-#include "org/allbinary/graphics/opengles/shader/CompositeShaderUpdater.h"
-#include "org/allbinary/graphics/opengles/shader/ModelViewProjection.h"
-#include "org/allbinary/graphics/opengles/shader/NullOpenGLTextureProcessor.h"
-#include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
+        class Shader;
+class ShaderInitializer;
+class CompositeShaderUpdater;
+class ModelViewProjection;
+class NullOpenGLTextureProcessor;
+class OpenGLObject3dProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShaderComposite
-            : public Object
+            : public virtual Object
          {
 
     public: OpenGLProcessor* disableProgramShaderOpenGLProcessor;
@@ -85,33 +88,33 @@ class ShaderComposite
 
     public: OpenGLProcessor* vertexOpenGLProcessor;
 
-    public: OpenGLProcessor* useProgramShaderOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* useProgramShaderOpenGLProcessor;
 
-    public: OpenGLProcessor* shaderMatrixOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* shaderMatrixOpenGLProcessor;
 
-    public: OpenGLProcessor* colorEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* colorEnableVertexAttribArrayOpenGLProcessor;
 
-    public: OpenGLProcessor* normalEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* normalEnableVertexAttribArrayOpenGLProcessor;
 
-    public: OpenGLProcessor* vertexEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* vertexEnableVertexAttribArrayOpenGLProcessor;
 
-    public: OpenGLProcessor* textureEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* textureEnableVertexAttribArrayOpenGLProcessor;
 
-    public: OpenGLProcessor* colorDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* colorDisableVertexAttribArrayOpenGLProcessor;
 
-    public: OpenGLProcessor* normalDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* normalDisableVertexAttribArrayOpenGLProcessor;
 
-    public: OpenGLProcessor* vertexDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* vertexDisableVertexAttribArrayOpenGLProcessor;
 
-    public: OpenGLProcessor* textureDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+    public: OpenGLProcessor* textureDisableVertexAttribArrayOpenGLProcessor;
 
-    public: OpenGLObject3dProcessor* uniformLightPositionOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
+    public: OpenGLObject3dProcessor* uniformLightPositionOpenGLProcessor;
 
-    public: OpenGLObject3dProcessor* uniformLightColorOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
+    public: OpenGLObject3dProcessor* uniformLightColorOpenGLProcessor;
 
-    public: OpenGLObject3dProcessor* uniformCameraPositionOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
+    public: OpenGLObject3dProcessor* uniformCameraPositionOpenGLProcessor;
 
-    public: OpenGLObject3dProcessor* uniformTextureUnitOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
+    public: OpenGLObject3dProcessor* uniformTextureUnitOpenGLProcessor;
 
     public: int32_t programHandle= 0;
 
@@ -125,3 +128,37 @@ public: ShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader*> 
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLProcessor.h>)
+#include <org/allbinary/graphics/opengles/OpenGLProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h>)
+#include <org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h>
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/Shader.h")
+#include "org/allbinary/graphics/opengles/shader/Shader.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/ShaderInitializer.h")
+#include "org/allbinary/graphics/opengles/shader/ShaderInitializer.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/CompositeShaderUpdater.h")
+#include "org/allbinary/graphics/opengles/shader/CompositeShaderUpdater.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/ModelViewProjection.h")
+#include "org/allbinary/graphics/opengles/shader/ModelViewProjection.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/NullOpenGLTextureProcessor.h")
+#include "org/allbinary/graphics/opengles/shader/NullOpenGLTextureProcessor.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h")
+#include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
+#endif
+
+        #endif
+    

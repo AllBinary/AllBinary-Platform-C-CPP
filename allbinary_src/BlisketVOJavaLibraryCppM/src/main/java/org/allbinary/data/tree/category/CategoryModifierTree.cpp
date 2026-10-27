@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREE_CPP
+        #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/category/CategoryModifierTree.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,15 +78,8 @@
         #include "org/allbinary/data/tree/category/CategoryPrivateTree.h"
 #include "org/allbinary/data/tree/category/CategoryModifierTreeInterface.h"
 
-class CategoryModifierTree: public CategoryPrivateTree, public CategoryModifierTreeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Directory* directory = Directory::getInstance();
-
-public: CategoryModifierTree(CategoryFactoryInterface* categoryFactoryInterface) : CategoryPrivateTree(categoryFactoryInterface){
+CategoryModifierTree::CategoryModifierTree(CategoryFactoryInterface* categoryFactoryInterface) : CategoryPrivateTree(categoryFactoryInterface), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), directory(Directory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,7 +87,7 @@ public: CategoryModifierTree(CategoryFactoryInterface* categoryFactoryInterface)
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface)");
@@ -96,11 +99,11 @@ public: CategoryModifierTree(CategoryFactoryInterface* categoryFactoryInterface)
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void insert(CategoryInterface* parentCategoryInterface, CategoryInterface* newChildCategoryInterface){
+    auto CategoryModifierTree::insert(CategoryInterface* parentCategoryInterface, CategoryInterface* newChildCategoryInterface) -> void{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF("Inserting", this, "insert()");
@@ -120,7 +123,7 @@ public: CategoryModifierTree(CategoryFactoryInterface* categoryFactoryInterface)
 this->directory->create(directoryToBeCreatedAbPath);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF("Saving", this, "insert()");
@@ -143,7 +146,7 @@ this->save(newChildCategoryInterface);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "insert", &e);
@@ -157,7 +160,7 @@ this->save(newChildCategoryInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void delete_(CategoryInterface* parentCategoryInterface, CategoryInterface* existingChildCategoryInterface){
+    auto CategoryModifierTree::delete_(CategoryInterface* parentCategoryInterface, CategoryInterface* existingChildCategoryInterface) -> void{
 
         try {
             
@@ -169,7 +172,7 @@ this->save(newChildCategoryInterface);
 
     AbPath* directoryToBeDeletedAbPath = new AbPath(existingChildCategoryInterface->getRootFilePath()->toString() +existingChildCategoryInterface->getPath()->toString(), StringUtil::getInstance()->EMPTY_STRING);;
     
-this->delete(existingChildCategoryInterface);
+this->delete_(existingChildCategoryInterface);
     
 parentCategoryInterface->removeChild(existingChildCategoryInterface);
     
@@ -188,7 +191,7 @@ this->directory->remove(directoryToBeDeletedAbPath);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->delete_, &e);
@@ -201,7 +204,6 @@ this->directory->remove(directoryToBeDeletedAbPath);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYMODIFIERTREE_CPP

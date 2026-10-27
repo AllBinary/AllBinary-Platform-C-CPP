@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_ADMIN_DATERANGEORDERHISTORYTAG_CPP
+        #define TAGS_ADMIN_DATERANGEORDERHISTORYTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/admin/DateRangeOrderHistoryTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,13 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DateRangeOrderHistoryTag: public StoreValidationTransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string status;
-
-public: DateRangeOrderHistoryTag() : StoreValidationTransformTag(){
+DateRangeOrderHistoryTag::DateRangeOrderHistoryTag() : StoreValidationTransformTag(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +78,7 @@ public: DateRangeOrderHistoryTag() : StoreValidationTransformTag(){
 }
 
 
-    public: void setStatus(std::string value){
+    auto DateRangeOrderHistoryTag::setStatus(std::string value) -> void{
 this->status= value;
     
 }
@@ -81,11 +86,11 @@ this->status= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto DateRangeOrderHistoryTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Tag Start", this, tagStrings.DO_START_TAG);
@@ -104,7 +109,7 @@ this->setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     
@@ -114,7 +119,7 @@ this->setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -123,7 +128,7 @@ this->setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -131,7 +136,7 @@ this->setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -150,7 +155,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_ADMIN_DATERANGEORDERHISTORYTAG_CPP

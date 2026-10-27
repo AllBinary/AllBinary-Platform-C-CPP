@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/util/cache/CacheableInterface.h>
-
-      
+class CacheableInterface;
 #include <org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>
-
-      
 
 
 
@@ -53,16 +54,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/cache/BufferedImageCacheable.h"
-#include "org/allbinary/media/image/cache/BufferedImageInfo.h"
+        class BufferedImageCacheable;
+class BufferedImageInfo;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BufferedImageCacheableFactory
-            : public Object
+            : public virtual Object
         , public CacheableInterfaceFactoryInterface {
 
 public: BufferedImageCacheableFactory();
 
     public: CacheableInterface* getInstance(Object* key);
+    public: CacheableInterface* getInstance(const std::string& key) { return getInstance(JavaString::box(key)); }
 
 };
 
@@ -70,3 +76,22 @@ public: BufferedImageCacheableFactory();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGECACHEABLEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/cache/CacheableInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>)
+#include <org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h>
+#endif
+#if __has_include("org/allbinary/media/image/cache/BufferedImageCacheable.h")
+#include "org/allbinary/media/image/cache/BufferedImageCacheable.h"
+#endif
+#if __has_include("org/allbinary/media/image/cache/BufferedImageInfo.h")
+#include "org/allbinary/media/image/cache/BufferedImageInfo.h"
+#endif
+
+        #endif
+    

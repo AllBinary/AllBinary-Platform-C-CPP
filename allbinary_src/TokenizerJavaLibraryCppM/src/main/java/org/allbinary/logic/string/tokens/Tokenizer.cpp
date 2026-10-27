@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_CPP
+        #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/string/tokens/Tokenizer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,15 +75,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Tokenizer
-            : public Object
-         {
 
-    private: std::string sep;
-
-    private: std::string endSep = StringUtil::getInstance()->EMPTY_STRING;
-
-public: Tokenizer(std::string sep){
+Tokenizer::Tokenizer(std::string sep) : endSep(StringUtil::getInstance()->EMPTY_STRING){
 
                         if(false || TsUtil::getInstance()->compareTo(sep, StringUtil::getInstance()->EMPTY_STRING) == 0)
                         
@@ -81,7 +84,7 @@ public: Tokenizer(std::string sep){
                                     
 
 
-                            throw new Exception("Sep provided is not valid");
+                            throw Exception("Sep provided is not valid");
                     
 
                                     }
@@ -91,19 +94,19 @@ this->sep= sep;
 }
 
 
-    public: void setSep(std::string sep){
+    auto Tokenizer::setSep(std::string sep) -> void{
 this->sep= sep;
     
 }
 
 
-    public: void setEndSep(std::string endSep){
+    auto Tokenizer::setEndSep(std::string endSep) -> void{
 this->endSep= endSep;
     
 }
 
 
-    public: BasicArrayList* getInsideSep(std::string string){
+    auto Tokenizer::getInsideSep(std::string string) -> BasicArrayList*{
 
     BasicArrayList* tokenList = new BasicArrayListD();;
     
@@ -161,7 +164,7 @@ index= end +endSep.size();
 }
 
 
-    public: BasicArrayList* getTokensFromString(std::string string, BasicArrayList* tokenVector){
+    auto Tokenizer::getTokensFromString(std::string string, BasicArrayList* tokenVector) -> BasicArrayList*{
 
     int32_t index = 0;;
     
@@ -204,7 +207,7 @@ break;
 }
 
 
-    public: ABHashtable<Object*, Object*>* getTokens(BasicArrayList* stringVector){
+    auto Tokenizer::getTokens(BasicArrayList* stringVector) -> ABHashtable<Object*, Object*>*{
 
     ABHashtable<Object*, Object*>* tokenHashtable = StdUtil::getInstance()->createHashtable();;
     
@@ -248,7 +251,6 @@ end= JavaString::indexOf(string, this->sep);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_CPP

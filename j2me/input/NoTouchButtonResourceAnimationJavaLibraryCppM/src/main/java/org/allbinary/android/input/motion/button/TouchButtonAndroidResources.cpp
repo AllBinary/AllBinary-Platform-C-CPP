@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_BUTTON_TOUCHBUTTONANDROIDRESOURCES_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_BUTTON_TOUCHBUTTONANDROIDRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/button/TouchButtonAndroidResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonAndroidResources: public Init {
 
-    public: void init(){
+TouchButtonAndroidResources::TouchButtonAndroidResources() {
+        }
+        
+    auto TouchButtonAndroidResources::init() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_BUTTON_TOUCHBUTTONANDROIDRESOURCES_CPP

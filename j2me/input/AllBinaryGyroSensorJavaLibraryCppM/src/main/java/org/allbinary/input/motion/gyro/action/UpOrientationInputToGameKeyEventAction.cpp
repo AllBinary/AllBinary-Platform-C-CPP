@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_UPORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_UPORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gyro/action/UpOrientationInputToGameKeyEventAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
+Object* UpOrientationInputToGameKeyEventAction::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyCompleteMotionGestureInputEvent* getInstance(){
+    auto UpOrientationInputToGameKeyEventAction::getInstance() -> GameKeyCompleteMotionGestureInputEvent*{
 
                         if(UpOrientationInputToGameKeyEventAction::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -80,7 +88,7 @@ class UpOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestur
 }
 
 
-private: UpOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", OrientationMotionGestureFactory::getInstance()->UP, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
+UpOrientationInputToGameKeyEventAction::UpOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", OrientationMotionGestureFactory::getInstance()->UP, PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +98,6 @@ private: UpOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGesture
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GYRO_ACTION_UPORIENTATIONINPUTTOGAMEKEYEVENTACTION_CPP

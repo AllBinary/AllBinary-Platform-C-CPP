@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,50 +39,20 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/Serializable.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/PaymentData.h>
-
-      
-#include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
-
-      
-#include <org/allbinary/data/tree/dom/ModDomHelper.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class StoreFrontData;
+class StoreFrontInterface;
+class EntryData;
+class BasketInterface;
+class PaymentData;
+class ShippingMethodData;
+class ModDomHelper;
+class StdUtil;
+class StringUtil;
+class StringValidationUtil;
+class Document;
+class Node;
 
 
 
@@ -97,11 +72,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/order/OrderInterface.h"
-#include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h"
-#include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
+class OrderHistoryData;
+class OrderData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Order
-            : public Object
+            : public virtual Object
         , public OrderInterface, public Serializable {
 
     private: BasketInterface* basket;
@@ -190,3 +169,64 @@ public: Order(std::string storeName, BasketInterface* basket, std::string id, st
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_H_COMPLETE
+        #if __has_include(<java/io/Serializable.h>)
+#include <java/io/Serializable.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/PaymentData.h>)
+#include <org/allbinary/business/user/commerce/money/payment/PaymentData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>)
+#include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/ModDomHelper.h>)
+#include <org/allbinary/data/tree/dom/ModDomHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/order/OrderInterface.h")
+#include "org/allbinary/business/user/commerce/inventory/order/OrderInterface.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h")
+#include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/order/OrderData.h")
+#include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
+#endif
+
+        #endif
+    

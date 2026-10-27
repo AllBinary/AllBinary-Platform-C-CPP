@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,37 +57,27 @@
         #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
 #include "org/allbinary/logic/communication/log/config/type/LogConfigTypes.h"
 
-class LogConfigTypeFactory
-            : public Object
-         {
+auto LogConfigTypeFactory::instance_owner() -> LogConfigTypeFactory* { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
+LogConfigTypeFactory* LogConfigTypeFactory::instance = LogConfigTypeFactory::instance_owner();
 
-    private: static LogConfigTypeFactory* instance() { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
-
-    public: static LogConfigTypeFactory* getInstance(){
+    auto LogConfigTypeFactory::getInstance() -> LogConfigTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogConfigTypeFactory::instance();
+                        return LogConfigTypeFactory::instance;
     
 }
 
 
-    private: const std::string NO_DESCRIPTION = "No Description";
-
-    public: LogConfigType* OS = new LogConfigType("Operating System", this->NO_DESCRIPTION);
-
-    public: LogConfigType* FACTORYERROR = new LogConfigType("Factory Error", this->NO_DESCRIPTION);
-
-private: LogConfigTypeFactory(){
-LogConfigTypes::LOGGING.add(OS);
+LogConfigTypeFactory::LogConfigTypeFactory() : OS(new LogConfigType("Operating System", this->NO_DESCRIPTION)), FACTORYERROR(new LogConfigType("Factory Error", this->NO_DESCRIPTION)){
+LogConfigTypes::LOGGING->add(OS);
     
-LogConfigTypes::LOGGING.add(this->FACTORYERROR);
+LogConfigTypes::LOGGING->add(this->FACTORYERROR);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_CPP

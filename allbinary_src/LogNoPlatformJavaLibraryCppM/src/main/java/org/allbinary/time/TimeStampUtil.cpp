@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_TIMESTAMPUTIL_CPP
+        #define ORG_ALLBINARY_TIME_TIMESTAMPUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/TimeStampUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,20 +62,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //NoPlatform
-// class TimeStampUtil
-            : public Object
-         {
-
-    private: static TimeStampUtil* instance() { static std::unique_ptr<TimeStampUtil> value(new TimeStampUtil()); return value.get(); }
-
-    public: static TimeStampUtil* getInstance()
+        
+//NoPlatform - declared in the header, implemented by the platform project
 
 
 
-    public: std::string getAsString()
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_TIME_TIMESTAMPUTIL_CPP

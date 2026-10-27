@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_WAYPOINTRTSFORMINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_WAYPOINTRTSFORMINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/WaypointRTSFormInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -163,27 +173,8 @@
         #include "org/allbinary/game/input/form/RTSFormInput.h"
 #include "org/allbinary/game/input/form/PrimaryWaypointHelper.h"
 
-class WaypointRTSFormInput: public RTSFormInput {
 
-    private: RTSLayerEvent* WAYPOINT_EVENT = new RTSLayerEvent(NullRTSLayer::NULL_RTS_LAYER);
-
-    protected: GameNotificationEvent* dragToSpotGameNotificationEvent;
-
-    protected: GameNotificationEvent* spotTakenGameNotificationEvent;
-
-    protected: GameNotificationEvent* buildingCollisionGameNotificationEvent;
-
-    protected: GameNotificationEvent* roadCollisionGameNotificationEvent;
-
-    protected: GameNotificationEvent* newWaypointGameNotificationEvent;
-
-    protected: GameNotificationEvent* noMoneyGameNotificationEvent;
-
-    private: bool isPrimaryWaypointCreator;
-
-    private: PathFindingLayerInterface* stickyAssociatedRtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
-
-public: WaypointRTSFormInput(std::vector<Group*> groupInterface, bool isPrimaryWaypointCreator) : RTSFormInput(groupInterface){
+WaypointRTSFormInput::WaypointRTSFormInput(std::vector<Group*> groupInterface, bool isPrimaryWaypointCreator) : RTSFormInput(groupInterface), WAYPOINT_EVENT(new RTSLayerEvent(NullRTSLayer::NULL_RTS_LAYER)), stickyAssociatedRtsLayer(NullPathFindingLayer::NULL_PATH_FINDING_LAYER){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -215,8 +206,8 @@ this->noMoneyGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrin
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto WaypointRTSFormInput::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+RTSFormInput::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
     GeographicMapCompositeInterface* geographicMapCompositeInterface = dynamic_cast<GeographicMapCompositeInterface*>(allBinaryGameLayerManager);;
@@ -241,8 +232,8 @@ this->noMoneyGameNotificationEvent->setBasicColorP(geographicMapInterface->getFo
 
                 //@Throws(Exception.constructor)
             
-    public: void processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point){
-super.process(layerManager);
+    auto WaypointRTSFormInput::processAtPoint(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GPoint* point) -> void{
+RTSFormInput::process(layerManager);
     
 
                         if(this->isStickyItemSelected() || associatedRtsLayer == CollidableDestroyableDamageableLayer::getNullInstance())
@@ -309,7 +300,7 @@ this->processCellPosition(rtsPlayerLayerInterface, layerManager, geographicMapCe
 
                 //@Throws(Exception.constructor)
             
-    private: void processCellPosition(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GeographicMapCellPosition* geographicMapCellPosition){
+    auto WaypointRTSFormInput::processCellPosition(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, GeographicMapCellPosition* geographicMapCellPosition) -> void{
 
     int32_t itemIndex = this->getSelectedStickyItemIndex();;
     
@@ -337,7 +328,7 @@ rtsLayer->setPosition(cellPoint->getX(), cellPoint->getY(), rtsLayer->getZP());
 
     BasicGeographicMap* geographicMapInterface = geographicMapCompositeInterface->getGeographicMapInterface()[0];;
     
-rtsLayer->geographicMapCellPositionAreaBase.update(geographicMapInterface);
+rtsLayer->geographicMapCellPositionAreaBase->update(geographicMapInterface);
     
 
                         }
@@ -349,8 +340,8 @@ this->attemptBuild(rtsPlayerLayerInterface, layerManager, dynamic_cast<RTSLayer*
 
                 //@Throws(Exception.constructor)
             
-    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index){
-this->logUtil.putF("Set Sticking Item: " +item, this, "processSticky");
+    auto WaypointRTSFormInput::processStickyGameSpecific(CollidableDestroyableDamageableLayer* associatedRtsLayer, RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, ABCustomItem* item, int32_t index) -> void{
+this->logUtil->putF(JavaString::valueOf("Set Sticking Item: ") +JavaString::valueOf(item), this, "processSticky");
     
 this->setSelectedStickyItem(item);
     
@@ -367,8 +358,8 @@ this->getHashtable()->put(Layer::ID, associatedRtsLayer);
 
                 //@Throws(Exception.constructor)
             
-    protected: bool attemptBuild(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex){
-this->logUtil.putF("Layer: " +layerInterface, this, "attemptBuild");
+    auto WaypointRTSFormInput::attemptBuild(RTSPlayerLayerInterface* rtsPlayerLayerInterface, AllBinaryLayerManager* layerManager, RTSLayer* layerInterface, int32_t itemIndex) -> bool{
+this->logUtil->putF(JavaString::valueOf("Layer: ") +JavaString::valueOf(layerInterface), this, "attemptBuild");
     
 
                         if(layerInterface == 
@@ -376,7 +367,7 @@ this->logUtil.putF("Layer: " +layerInterface, this, "attemptBuild");
                                 )
                         
                                     {
-                                    this->logUtil.put("Layer was null", this, "attemptBuild", new Exception());
+                                    this->logUtil->put("Layer was null", this, "attemptBuild", new Exception());
     
 
 
@@ -485,7 +476,7 @@ stringBuffer->append(" with ");
     
 stringBuffer->appendint(capital->getTotalMoney());
     
-this->logUtil.putF(stringBuffer->toString(), this, "attemptBuild");
+this->logUtil->putF(stringBuffer->toString(), this, "attemptBuild");
     
 
                         if(cost <= capital->getTotalMoney())
@@ -568,7 +559,7 @@ rtsPlayerLayerInterface->add(waypointAvancedRTSGameLayer->getWaypointBehavior()-
 
                 //@Throws(Exception.constructor)
             
-    private: void addWayPoint(WaypointLayer* layerInterface){
+    auto WaypointRTSFormInput::addWayPoint(WaypointLayer* layerInterface) -> void{
 
     AdvancedRTSGameLayer* stickyAssociatedAdvandedRtsLayer = dynamic_cast<AdvancedRTSGameLayer*>(this->stickyAssociatedRtsLayer);;
     
@@ -595,7 +586,6 @@ WaypointEventHandlerFactory::getInstance(layerInterface->getGroupInterface()[0])
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_WAYPOINTRTSFORMINPUT_CPP

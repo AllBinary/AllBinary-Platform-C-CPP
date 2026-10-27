@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameCanvasRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,23 +72,14 @@
         #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class GameCanvasRunnable: public GameRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameTickDisplayInfoSingleton* gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
-
-    private: AllBinaryGameCanvas* allBinaryGameCanvas;
-
-public: GameCanvasRunnable(AllBinaryGameCanvas* allBinaryGameCanvas){
+GameCanvasRunnable::GameCanvasRunnable(AllBinaryGameCanvas* allBinaryGameCanvas) : logUtil(LogUtil::getInstance()), gameTickDisplayInfoSingleton(GameTickDisplayInfoSingleton::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-    public: void run(){
+    auto GameCanvasRunnable::run() -> void{
 
         try {
             this->allBinaryGameCanvas->getLoopTimeHelperP()->setStartTime(this->gameTickTimeDelayHelper->setStartTime());
@@ -103,13 +104,12 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void processLoopSleep(){
+    auto GameCanvasRunnable::processLoopSleep() -> void{
 this->allBinaryGameCanvas->processLoopSleep();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECANVASRUNNABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_VIEW_BASEVIEWWRAPPER_H
         #define ORG_ALLBINARY_ANDROID_VIEW_BASEVIEWWRAPPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,12 +53,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseViewWrapper
-            : public Object
+            : public virtual Object
          {
 
-    public: static BaseViewWrapper* NULL_VIEW_WRAPPER() { static std::unique_ptr<BaseViewWrapper> value(new BaseViewWrapper()); return value.get(); }
+    private: static BaseViewWrapper* NULL_VIEW_WRAPPER_owner();
+    public: static BaseViewWrapper* NULL_VIEW_WRAPPER;
 
+
+            
+    public: BaseViewWrapper();
+        
     public: void invalidate();
 
     public: void postInvalidate();
@@ -64,3 +78,10 @@ class BaseViewWrapper
 
 
         #endif //ORG_ALLBINARY_ANDROID_VIEW_BASEVIEWWRAPPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_VIEW_BASEVIEWWRAPPER_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_VIEW_BASEVIEWWRAPPER_H_COMPLETE
+        
+        #endif
+    

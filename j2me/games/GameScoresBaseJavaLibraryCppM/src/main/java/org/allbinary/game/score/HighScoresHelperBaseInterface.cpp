@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresHelperBaseInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,15 +57,8 @@
         #include "org/allbinary/game/score/HighScoresResultsListener.h"
 #include "org/allbinary/game/score/HighScores.h"
 
-class HighScoresHelperBaseInterface: public HighScoresResultsListener {
+//Interface - declared in the header
 
-    public: virtual void setSelectedHighScores(HighScores* selectedHighScores) = 0;
 
-    public: virtual std::vector<HighScores*> getHighScoresArray() = 0;
 
-    public: virtual HighScores* getSelectedHighScores() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASEINTERFACE_CPP

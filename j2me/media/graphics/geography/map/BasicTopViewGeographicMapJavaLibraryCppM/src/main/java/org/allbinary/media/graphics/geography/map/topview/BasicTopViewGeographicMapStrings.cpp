@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,39 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicTopViewGeographicMapStrings
-            : public Object
-         {
 
-    private: static BasicTopViewGeographicMapStrings* instance() { static std::unique_ptr<BasicTopViewGeographicMapStrings> value(new BasicTopViewGeographicMapStrings()); return value.get(); }
+BasicTopViewGeographicMapStrings::BasicTopViewGeographicMapStrings() {
+        }
+        auto BasicTopViewGeographicMapStrings::instance_owner() -> BasicTopViewGeographicMapStrings* { static std::unique_ptr<BasicTopViewGeographicMapStrings> value(new BasicTopViewGeographicMapStrings()); return value.get(); }
+BasicTopViewGeographicMapStrings* BasicTopViewGeographicMapStrings::instance = BasicTopViewGeographicMapStrings::instance_owner();
 
-    public: static BasicTopViewGeographicMapStrings* getInstance(){
+    auto BasicTopViewGeographicMapStrings::getInstance() -> BasicTopViewGeographicMapStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicTopViewGeographicMapStrings::instance();
+                        return BasicTopViewGeographicMapStrings::instance;
     
 }
 
 
-    public: const std::string DEFAULT = "Default";
 
-    public: const std::string OTHER = "Other";
 
-    public: const std::string WALL = "Wall";
-
-    public: const std::string OFF_MAP = "OffMap";
-
-    public: const std::string FLOOR = "Floor";
-
-    public: const std::string DOOR = "Door";
-
-    public: const std::string STAIRS_UP = "StairsUp";
-
-    public: const std::string STAIRS_DOWN = "StairsDown";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_CPP

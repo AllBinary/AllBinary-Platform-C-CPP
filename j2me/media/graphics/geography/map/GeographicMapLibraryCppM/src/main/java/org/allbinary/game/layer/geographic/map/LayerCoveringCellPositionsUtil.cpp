@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERCOVERINGCELLPOSITIONSUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERCOVERINGCELLPOSITIONSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geographic/map/LayerCoveringCellPositionsUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,27 +72,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerCoveringCellPositionsUtil
-            : public Object
-         {
 
-    private: static LayerCoveringCellPositionsUtil* instance() { static std::unique_ptr<LayerCoveringCellPositionsUtil> value(new LayerCoveringCellPositionsUtil()); return value.get(); }
+LayerCoveringCellPositionsUtil::LayerCoveringCellPositionsUtil() : cellPositionsUtil(CellPositionsUtil::getInstance()) {
+        }
+        auto LayerCoveringCellPositionsUtil::instance_owner() -> LayerCoveringCellPositionsUtil* { static std::unique_ptr<LayerCoveringCellPositionsUtil> value(new LayerCoveringCellPositionsUtil()); return value.get(); }
+LayerCoveringCellPositionsUtil* LayerCoveringCellPositionsUtil::instance = LayerCoveringCellPositionsUtil::instance_owner();
 
-    public: static LayerCoveringCellPositionsUtil* getInstance(){
+    auto LayerCoveringCellPositionsUtil::getInstance() -> LayerCoveringCellPositionsUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerCoveringCellPositionsUtil::instance();
+                        return LayerCoveringCellPositionsUtil::instance;
     
 }
 
 
-    private: CellPositionsUtil* cellPositionsUtil = CellPositionsUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAllXY(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, int32_t x, int32_t y, BasicArrayList* reusableList){
+    auto LayerCoveringCellPositionsUtil::getAllXY(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, int32_t x, int32_t y, BasicArrayList* reusableList) -> BasicArrayList*{
 
     GeographicMapCellPosition* topLeftGeographicMapCellPosition = geographicMapInterface->getCellPositionAtXY(x, y);;
     
@@ -97,7 +105,7 @@ class LayerCoveringCellPositionsUtil
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAll(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* topLeftGeographicMapCellPosition, AllBinaryLayer* layerInterface, BasicArrayList* reusableList){
+    auto LayerCoveringCellPositionsUtil::getAll(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* topLeftGeographicMapCellPosition, AllBinaryLayer* layerInterface, BasicArrayList* reusableList) -> BasicArrayList*{
 reusableList->clear();
     
 
@@ -123,7 +131,6 @@ reusableList->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERCOVERINGCELLPOSITIONSUTIL_CPP

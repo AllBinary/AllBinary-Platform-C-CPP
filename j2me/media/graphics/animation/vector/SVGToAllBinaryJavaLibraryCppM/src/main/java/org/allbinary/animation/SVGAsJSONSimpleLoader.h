@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H
         #define ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -42,38 +47,16 @@
             #include "java/lang/Double.h"
         
 #include <java/util/Enumeration.h>
-
-      
-#include <org/allbinary/graphics/GraphicsStrings.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/math/PositionStrings.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/json/me/JSONArray.h>
-
-      
-#include <org/json/me/JSONException.h>
-
-      
-#include <org/json/me/JSONObject.h>
-
-      
+class GraphicsStrings;
+class PrimitiveIntUtil;
+class StringMaker;
+class PositionStrings;
+class CommonSeps;
+class BasicArrayList;
+class BasicArrayListD;
+class JSONArray;
+class JSONException;
+class JSONObject;
 
 
 
@@ -92,15 +75,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/ShapeTypeFactory.h"
-#include "org/allbinary/animation/ShapeType.h"
-#include "org/allbinary/animation/Number.h"
+        class ShapeTypeFactory;
+class ShapeType;
+class Number;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SVGAsJSONSimpleLoader
-            : public Object
+            : public virtual Object
          {
 
-    private: static SVGAsJSONSimpleLoader* instance() { static std::unique_ptr<SVGAsJSONSimpleLoader> value(new SVGAsJSONSimpleLoader()); return value.get(); }
+    private: static SVGAsJSONSimpleLoader* instance_owner();
+    private: static SVGAsJSONSimpleLoader* instance;
 
     public: static SVGAsJSONSimpleLoader* getInstance();
 
@@ -108,9 +96,13 @@ class SVGAsJSONSimpleLoader
             
     public: static void main(std::vector<std::string> args);
 
-    private: GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();
 
-    private: ShapeTypeFactory* shapeTypeFactory = ShapeTypeFactory::getInstance();
+            
+    public: SVGAsJSONSimpleLoader();
+        
+    private: GraphicsStrings* graphicsStrings;
+
+    private: ShapeTypeFactory* shapeTypeFactory;
 
     private: const std::string KEY_SVG = "svg";
 
@@ -128,9 +120,9 @@ class SVGAsJSONSimpleLoader
 
     private: const std::string KEY_R = "r";
 
-    private: const std::string KEY_X = PositionStrings::getInstance()->X;
+    private: const std::string KEY_X;
 
-    private: const std::string KEY_Y = PositionStrings::getInstance()->Y;
+    private: const std::string KEY_Y;
 
     private: const std::string ERROR_PARSE_SVG_JSON = "Unable to parse SVG JSON";
 
@@ -140,9 +132,9 @@ class SVGAsJSONSimpleLoader
 
     private: const std::string ERROR_EXPECTED_OBJECT_PREFIX = "Expected object for: ";
 
-    private: const std::vector<std::vector<int32_t>> EMPTY_POINTS = PrimitiveIntUtil::getTwoDimensionalArrayInstance();
+    private: std::vector<std::vector<int32_t>> EMPTY_POINTS;
 
-    private: const std::vector<int32_t> SHAPE_SEPARATOR = {1000,1000};
+    private: std::vector<int32_t> SHAPE_SEPARATOR;
 
     private: const int32_t CIRCLE_SEGMENTS = 16;
 
@@ -153,10 +145,12 @@ class SVGAsJSONSimpleLoader
                 //@Throws(Exception.constructor)
             
     private: void addShapes(BasicArrayList* pointVector, Object* value, ShapeType* shapeType);
+    private: void addShapes(BasicArrayList* pointVector, const std::string& value, ShapeType* shapeType) { return addShapes(pointVector, JavaString::box(value), shapeType); }
 
                 //@Throws(Exception.constructor)
             
     private: void addShape(BasicArrayList* pointVector, Object* value, ShapeType* shapeType);
+    private: void addShape(BasicArrayList* pointVector, const std::string& value, ShapeType* shapeType) { return addShape(pointVector, JavaString::box(value), shapeType); }
 
                 //@Throws(Exception.constructor)
             
@@ -182,7 +176,7 @@ class SVGAsJSONSimpleLoader
 
     private: int32_t toInt(Object* value, std::string key);
 
-    private: JSONObject* asObject(Object value, std::string name);
+    private: JSONObject* asObject(Object* value, std::string name);
 
     private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList* pointVector);
 
@@ -192,3 +186,52 @@ class SVGAsJSONSimpleLoader
 
 
         #endif //ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H_COMPLETE
+        #if __has_include(<java/util/Enumeration.h>)
+#include <java/util/Enumeration.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GraphicsStrings.h>)
+#include <org/allbinary/graphics/GraphicsStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/math/PositionStrings.h>)
+#include <org/allbinary/math/PositionStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/json/me/JSONArray.h>)
+#include <org/json/me/JSONArray.h>
+#endif
+#if __has_include(<org/json/me/JSONException.h>)
+#include <org/json/me/JSONException.h>
+#endif
+#if __has_include(<org/json/me/JSONObject.h>)
+#include <org/json/me/JSONObject.h>
+#endif
+#if __has_include("org/allbinary/animation/ShapeTypeFactory.h")
+#include "org/allbinary/animation/ShapeTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/animation/ShapeType.h")
+#include "org/allbinary/animation/ShapeType.h"
+#endif
+#if __has_include("org/allbinary/animation/Number.h")
+#include "org/allbinary/animation/Number.h"
+#endif
+
+        #endif
+    

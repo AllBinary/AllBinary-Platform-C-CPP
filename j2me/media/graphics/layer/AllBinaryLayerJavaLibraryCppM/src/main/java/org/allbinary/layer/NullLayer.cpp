@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_NULLLAYER_CPP
+        #define ORG_ALLBINARY_LAYER_NULLLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/NullLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,21 +57,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/Layer.h"
 
-class NullLayer: public Layer {
+auto NullLayer::instance_owner() -> NullLayer* { static std::unique_ptr<NullLayer> value(new NullLayer()); return value.get(); }
+NullLayer* NullLayer::instance = NullLayer::instance_owner();
 
-    private: static NullLayer* instance() { static std::unique_ptr<NullLayer> value(new NullLayer()); return value.get(); }
-
-    public: static NullLayer* getInstance(){
+    auto NullLayer::getInstance() -> NullLayer*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullLayer::instance();
+                        return NullLayer::instance;
     
 }
 
 
-private: NullLayer() : Layer(0, 0){
+NullLayer::NullLayer() : Layer(0, 0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,11 +80,10 @@ private: NullLayer() : Layer(0, 0){
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto NullLayer::paint(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_NULLLAYER_CPP

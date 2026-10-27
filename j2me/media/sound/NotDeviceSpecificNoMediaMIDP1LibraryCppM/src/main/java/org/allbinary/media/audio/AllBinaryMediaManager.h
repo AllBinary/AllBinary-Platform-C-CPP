@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,26 +39,12 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <javax/microedition/media/Player.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Player;
+class TsUtil;
+class ProgressCanvasFactory;
+class LogUtil;
+class StringUtil;
+class CommonStrings;
 
 
 
@@ -72,12 +63,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/Sounds.h"
-#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
-#include "org/allbinary/media/audio/NoPlayer.h"
-//NotDeviceSpecificNoMediaMIDP1Library
+        class Sounds;
+class SoundsFactoryInterface;
+class NoPlayer;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //NotDeviceSpecificNoMediaMIDP1Library
 class AllBinaryMediaManager
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string THIS = "AllBinaryMediaManagerNoMediaMIDP1";
@@ -115,3 +110,40 @@ private: AllBinaryMediaManager();
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<javax/microedition/media/Player.h>)
+#include <javax/microedition/media/Player.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>)
+#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/audio/Sounds.h")
+#include "org/allbinary/media/audio/Sounds.h"
+#endif
+#if __has_include("org/allbinary/media/audio/SoundsFactoryInterface.h")
+#include "org/allbinary/media/audio/SoundsFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/media/audio/NoPlayer.h")
+#include "org/allbinary/media/audio/NoPlayer.h"
+#endif
+
+        #endif
+    

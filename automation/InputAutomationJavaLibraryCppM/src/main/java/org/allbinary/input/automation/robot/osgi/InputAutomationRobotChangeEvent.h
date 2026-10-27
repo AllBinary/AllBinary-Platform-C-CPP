@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,10 +52,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotInterfaceWrapper.h"
+        class InputAutomationRobotInterfaceWrapper;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationRobotChangeEvent
-            : public Object
+            : public virtual Object
          {
 
     private: InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper;
@@ -67,3 +76,13 @@ public: InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper* in
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_H_COMPLETE
+        #if __has_include("org/allbinary/input/automation/robot/osgi/InputAutomationRobotInterfaceWrapper.h")
+#include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotInterfaceWrapper.h"
+#endif
+
+        #endif
+    

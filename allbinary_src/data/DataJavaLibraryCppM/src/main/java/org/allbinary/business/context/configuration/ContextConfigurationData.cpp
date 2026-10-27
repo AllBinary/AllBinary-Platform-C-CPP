@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/configuration/ContextConfigurationData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,33 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ContextConfigurationData
-            : public Object
-         {
+auto ContextConfigurationData::instance_owner() -> ContextConfigurationData* { static std::unique_ptr<ContextConfigurationData> value(new ContextConfigurationData()); return value.get(); }
+ContextConfigurationData* ContextConfigurationData::instance = ContextConfigurationData::instance_owner();
 
-    private: static ContextConfigurationData* instance() { static std::unique_ptr<ContextConfigurationData> value(new ContextConfigurationData()); return value.get(); }
-
-    public: static ContextConfigurationData* getInstance(){
+    auto ContextConfigurationData::getInstance() -> ContextConfigurationData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ContextConfigurationData::instance();
+                        return ContextConfigurationData::instance;
     
 }
 
 
-private: ContextConfigurationData(){
+ContextConfigurationData::ContextConfigurationData() : UNCRYPTED_EXTENSION(CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION), ENCRYPTED_EXTENSION(CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION){
 }
 
 
-    public: const std::string NAME = "CONTEXT_CONFIGURATION_NAME";
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDATA_CPP

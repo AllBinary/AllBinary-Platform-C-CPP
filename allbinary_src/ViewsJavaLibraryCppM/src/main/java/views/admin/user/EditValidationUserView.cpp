@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_USER_EDITVALIDATIONUSERVIEW_CPP
+        #define VIEWS_ADMIN_USER_EDITVALIDATIONUSERVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/user/EditValidationUserView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,13 +89,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/user/UserView.h"
 
-class EditValidationUserView: public UserView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string userName;
-
-public: EditValidationUserView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface){
+EditValidationUserView::EditValidationUserView(TransformInfoInterface* transformInfoInterface) : UserView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -103,7 +108,7 @@ this->userName= (new UserName(hashMap))->get();
 }
 
 
-    public: bool isValid(){
+    auto EditValidationUserView::isValid() -> bool{
 
         try {
             
@@ -144,17 +149,17 @@ this->userName= (new UserName(hashMap))->get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->user.isValid();;
+                        return this->user->isValid();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -170,7 +175,7 @@ this->userName= (new UserName(hashMap))->get();
 }
 
 
-    public: std::string validationInfo(){
+    auto EditValidationUserView::validationInfo() -> std::string{
 
         try {
             
@@ -181,7 +186,7 @@ this->userName= (new UserName(hashMap))->get();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("User Name is valid", this, "validationInfo()");
@@ -224,11 +229,11 @@ this->user= UserEntityFactory::getInstance()->getUser(this->userName);
                         }
                             
 
-                        if(this->user.isValid() == Boolean::FALSE)
+                        if(this->user->isValid() == Boolean::FALSE)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("User exists but is invalid - Probably manually modified", this, "validationInfo()");
@@ -238,7 +243,7 @@ this->user= UserEntityFactory::getInstance()->getUser(this->userName);
                                 
 stringBuffer->append("User data is not valid - Please call administrator.<br />");
     
-stringBuffer->append(this->user.validationInfo());
+stringBuffer->append(this->user->validationInfo());
     
 
                                     }
@@ -254,7 +259,7 @@ stringBuffer->append(this->user.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -273,7 +278,7 @@ stringBuffer->append(this->user.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditValidationUserView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -283,7 +288,7 @@ stringBuffer->append(this->user.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditValidationUserView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -293,7 +298,6 @@ stringBuffer->append(this->user.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_USER_EDITVALIDATIONUSERVIEW_CPP

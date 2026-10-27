@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_DEVICE_OPENGLESNULLGRAPHICSFACTORY_H
         #define ORG_ALLBINARY_DEVICE_OPENGLESNULLGRAPHICSFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,19 +38,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/device/OpenGLESGraphics.h"
+        class OpenGLESGraphics;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLESNullGraphicsFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLESGraphics* instance() { static std::unique_ptr<OpenGLESGraphics> value(new OpenGLESGraphics()); return value.get(); }
+    private: static OpenGLESGraphics* instance_owner();
+    private: static OpenGLESGraphics* instance;
 
     public: static OpenGLESGraphics* getInstance();
 
+
+            
+    public: OpenGLESNullGraphicsFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_DEVICE_OPENGLESNULLGRAPHICSFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DEVICE_OPENGLESNULLGRAPHICSFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_DEVICE_OPENGLESNULLGRAPHICSFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/device/OpenGLESGraphics.h")
+#include "org/allbinary/device/OpenGLESGraphics.h"
+#endif
+
+        #endif
+    

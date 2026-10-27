@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -103,9 +113,8 @@
 #include "org/allbinary/input/motion/button/TouchButtonStrafeLeftResource.h"
 #include "org/allbinary/input/motion/button/TouchButtonStrafeRightResource.h"
 
-class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseResourceAnimationInterfaceFactoryInterfaceFactory {
 
-    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory* createFactory(){
+    auto TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::createFactory() -> TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory*{
 
 
 
@@ -115,7 +124,7 @@ class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseR
 }
 
 
-public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name) : BaseResourceAnimationInterfaceFactoryInterfaceFactory(name, StdUtil::getInstance()->createHashtable(), StdUtil::getInstance()->createHashtable(), StdUtil::getInstance()->createHashtable()){
+TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name) : BaseResourceAnimationInterfaceFactoryInterfaceFactory(name, StdUtil::getInstance()->createHashtable(), StdUtil::getInstance()->createHashtable(), StdUtil::getInstance()->createHashtable()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -127,7 +136,7 @@ public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t level){
+    auto TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::init(int32_t level) -> void{
 this->initImageCache(ImageCacheFactory::getInstance(), level);
     
 }
@@ -135,7 +144,7 @@ this->initImageCache(ImageCacheFactory::getInstance(), level);
 
                 //@Throws(Exception.constructor)
             
-    protected: void initImageCache(ImageCache* imageCache, int32_t level){
+    auto TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::initImageCache(ImageCache* imageCache, int32_t level) -> void{
 
                         if(this->isInitialized())
                         
@@ -322,17 +331,17 @@ this->add(touchButtonStartResource->HINT, OneRowSpriteIndexedAnimationFactory::c
 
                         }
                             
-super.init(level);
+BaseResourceAnimationInterfaceFactoryInterfaceFactory::init(level);
     
 }
 
 
-    public: bool isLoadingLevel(int32_t level){
+    auto TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::isLoadingLevel(int32_t level) -> bool{
 
     ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(level == resourceLoadingLevelFactory->LOAD_TOUCH.getLevel())
+                        if(level == resourceLoadingLevelFactory->LOAD_TOUCH->getLevel())
                         
                                     {
                                     
@@ -349,7 +358,7 @@ super.init(level);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.isLoadingLevel(level);;
+                        return BaseResourceAnimationInterfaceFactoryInterfaceFactory::isLoadingLevel(level);;
     
 
                         }
@@ -357,7 +366,7 @@ super.init(level);
 }
 
 
-    public: bool isFeature(){
+    auto TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::isFeature() -> bool{
 
                         if(!Features::getInstance()->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
@@ -384,7 +393,6 @@ super.init(level);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP

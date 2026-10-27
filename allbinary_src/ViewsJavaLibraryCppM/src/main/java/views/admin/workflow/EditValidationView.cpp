@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_WORKFLOW_EDITVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_WORKFLOW_EDITVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/workflow/EditValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,13 +83,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/workflow/WorkFlowView.h"
 
-class EditValidationView: public WorkFlowView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string workFlowName;
-
-public: EditValidationView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface){
+EditValidationView::EditValidationView(TransformInfoInterface* transformInfoInterface) : WorkFlowView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,7 +99,7 @@ this->workFlowName= httpTransformInfoInterface->getPageContext()->getRequest()->
 }
 
 
-    public: bool isValid(){
+    auto EditValidationView::isValid() -> bool{
 
         try {
             
@@ -117,10 +122,10 @@ this->workFlowName= httpTransformInfoInterface->getPageContext()->getRequest()->
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("WorkFlow does not exist.", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("WorkFlow does not exist.", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -145,10 +150,10 @@ this->workFlowName= httpTransformInfoInterface->getPageContext()->getRequest()->
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -164,7 +169,7 @@ this->workFlowName= httpTransformInfoInterface->getPageContext()->getRequest()->
 }
 
 
-    public: std::string validationInfo(){
+    auto EditValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -186,7 +191,7 @@ this->workFlowName= httpTransformInfoInterface->getPageContext()->getRequest()->
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("WorkFlow does not exist.", this, "validationInfo()");
@@ -210,7 +215,7 @@ stringBuffer->append("WorkFlow does not exist<br />");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -229,7 +234,7 @@ stringBuffer->append("WorkFlow does not exist<br />");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -239,7 +244,7 @@ stringBuffer->append("WorkFlow does not exist<br />");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -249,7 +254,6 @@ stringBuffer->append("WorkFlow does not exist<br />");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_WORKFLOW_EDITVALIDATIONVIEW_CPP

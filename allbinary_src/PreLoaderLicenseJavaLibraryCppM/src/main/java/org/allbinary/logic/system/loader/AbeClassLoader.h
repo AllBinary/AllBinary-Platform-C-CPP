@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABECLASSLOADER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABECLASSLOADER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,38 +43,16 @@
             #include "java/lang/ClassNotFoundException.h"
         
 #include <java/io/FileInputStream.h>
-
-      
 #include <java/io/IOException.h>
-
-      
 #include <java/util/Map.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogBuffer.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/StreamUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/AbCryptUtil.h>
-
-      
+class StdUtil;
+class LogBuffer;
+class LogFactory;
+class LogUtil;
+class StreamUtil;
+class AbPathData;
+class StringUtil;
+class AbCryptUtil;
 
 
 
@@ -88,27 +71,31 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/loader/NoClassDefFoundError.h"
+        class NoClassDefFoundError;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbeClassLoader: public ClassLoader {
 
-    private: static inline Map* classes = StdUtil::getInstance()->createHashMap();
+    private: static Map* classes;
 
     private: static inline std::string PATH;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: AbCryptUtil* abCryptUtil = AbCryptUtil::getInstance();
+    private: AbCryptUtil* abCryptUtil;
 
     private: const std::string LOAD_CLASS = "loadClass";
 
-    private: const std::string ENCRYPTED_EXTENSION = AbPathData::getInstance()->EXTENSION_SEP +"abc";
+    private: const std::string ENCRYPTED_EXTENSION;
 
     private: std::string key;
 
 public: AbeClassLoader(ClassLoader* parent, std::string key);
 
-    protected: Class* findLoadedClass1(std::string name);
+    /*protected*/ public: Class* findLoadedClass1(std::string name);
 
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -133,3 +120,46 @@ public: AbeClassLoader(ClassLoader* parent, std::string key);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABECLASSLOADER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABECLASSLOADER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABECLASSLOADER_H_COMPLETE
+        #if __has_include(<java/io/FileInputStream.h>)
+#include <java/io/FileInputStream.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/util/Map.h>)
+#include <java/util/Map.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogBuffer.h>)
+#include <org/allbinary/logic/communication/log/LogBuffer.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogFactory.h>)
+#include <org/allbinary/logic/communication/log/LogFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
+#include <org/allbinary/logic/io/StreamUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/AbCryptUtil.h>)
+#include <org/allbinary/logic/system/security/AbCryptUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/system/loader/NoClassDefFoundError.h")
+#include "org/allbinary/logic/system/loader/NoClassDefFoundError.h"
+#endif
+
+        #endif
+    

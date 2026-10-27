@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_MULTILEVELRACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_MULTILEVELRACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,6 +54,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterfaceFactoryInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface: public RaceTrackGeographicMapInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
@@ -65,3 +74,13 @@ class MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface: public RaceTrac
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_MULTILEVELRACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_MULTILEVELRACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_MULTILEVELRACETRACKGEOGRAPHICMAPINTERFACEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterfaceFactoryInterface.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterfaceFactoryInterface.h"
+#endif
+
+        #endif
+    

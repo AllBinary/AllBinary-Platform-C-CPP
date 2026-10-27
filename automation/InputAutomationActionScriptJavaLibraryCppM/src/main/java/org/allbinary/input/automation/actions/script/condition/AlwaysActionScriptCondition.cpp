@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITION_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptCondition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,17 +88,8 @@
 #include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionJPanel.h"
 #include "org/allbinary/input/automation/actions/script/condition/AlwaysActionScriptConditionData.h"
 
-class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition, public AlwaysActionScriptConditionInterface {
 
-    private: static inline const std::string NAME = "Always On/Off";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AlwaysActionScriptConditionJPanel* alwaysActionScriptConditionJPanel;
-
-    private: bool isOn= false;
-
-public: AlwaysActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(AlwaysActionScriptCondition::NAME, node){
+AlwaysActionScriptCondition::AlwaysActionScriptCondition(Node* node) : BasicProfileActionScriptCondition(AlwaysActionScriptCondition::NAME, node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -133,7 +134,7 @@ this->setIsOn(().valueOf());
                             
 
 
-                            throw new Exception("Action Script Condition Unknown Node");
+                            throw Exception("Action Script Condition Unknown Node");
                     
 
                         }
@@ -147,7 +148,7 @@ this->setIsOn(().valueOf());
                             
 
 
-                            throw new Exception("Action Script Condition Node Null");
+                            throw Exception("Action Script Condition Node Null");
                     
 
                         }
@@ -157,7 +158,7 @@ this->init();
 }
 
 
-public: AlwaysActionScriptCondition() : BasicProfileActionScriptCondition(AlwaysActionScriptCondition::NAME){
+AlwaysActionScriptCondition::AlwaysActionScriptCondition() : BasicProfileActionScriptCondition(AlwaysActionScriptCondition::NAME), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -169,13 +170,13 @@ this->init();
 }
 
 
-    private: void init(){
+    auto AlwaysActionScriptCondition::init() -> void{
 this->alwaysActionScriptConditionJPanel= new AlwaysActionScriptConditionJPanel(this);
     
 }
 
 
-    public: bool isIsOn(){
+    auto AlwaysActionScriptCondition::isIsOn() -> bool{
 
 
 
@@ -185,25 +186,25 @@ this->alwaysActionScriptConditionJPanel= new AlwaysActionScriptConditionJPanel(t
 }
 
 
-    public: void setIsOn(bool isOn){
+    auto AlwaysActionScriptCondition::setIsOn(bool isOn) -> void{
 this->isOn= isOn;
     
 }
 
 
-    public: void showDialog(){
+    auto AlwaysActionScriptCondition::showDialog() -> void{
 this->alwaysActionScriptConditionJPanel->getAlwaysActionJDialog()->setVisible(true);
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto AlwaysActionScriptCondition::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 hashMap->put(AlwaysActionScriptConditionData::IS_ON, Boolean::toString(this->isIsOn()));
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -216,9 +217,9 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto AlwaysActionScriptCondition::toXmlNode(Document* document) -> Node*{
 
-    Node* node = super.toXmlNode(document);;
+    Node* node = BasicProfileActionScriptCondition::toXmlNode(document);;
     
 node->appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionScriptConditionData::NAME, this->toHashMap()));
     
@@ -233,7 +234,7 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionS
 
                 //@Throws(Exception.constructor)
             
-    public: bool shouldProcess(int64_t frame){
+    auto AlwaysActionScriptCondition::shouldProcess(int64_t frame) -> bool{
 
                         if(this->isIsOn())
                         
@@ -242,7 +243,7 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionS
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.shouldProcess(frame);;
+                        return BasicProfileActionScriptCondition::shouldProcess(frame);;
     
 
                                     }
@@ -256,13 +257,12 @@ node->appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionS
 }
 
 
-    public: void log(){
-this->logUtil->putF("Is On: " +this->isIsOn(), this, "log");
+    auto AlwaysActionScriptCondition::log() -> void{
+this->logUtil->putF(JavaString::valueOf("Is On: ") +JavaString::valueOf(this->isIsOn()), this, "log");
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_ALWAYSACTIONSCRIPTCONDITION_CPP

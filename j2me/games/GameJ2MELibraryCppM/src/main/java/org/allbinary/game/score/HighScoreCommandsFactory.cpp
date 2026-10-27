@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoreCommandsFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +58,20 @@
         #include "org/allbinary/game/score/HighScoreCommandsBaseFactory.h"
 #include "org/allbinary/game/score/HighScoreCommands.h"
 
-class HighScoreCommandsFactory: public HighScoreCommandsBaseFactory {
+auto HighScoreCommandsFactory::instance_owner() -> HighScoreCommandsFactory* { static std::unique_ptr<HighScoreCommandsFactory> value(new HighScoreCommandsFactory()); return value.get(); }
+HighScoreCommandsFactory* HighScoreCommandsFactory::instance = HighScoreCommandsFactory::instance_owner();
 
-    private: static HighScoreCommandsFactory* instance() { static std::unique_ptr<HighScoreCommandsFactory> value(new HighScoreCommandsFactory()); return value.get(); }
-
-    public: static HighScoreCommandsFactory* getInstance(){
+    auto HighScoreCommandsFactory::getInstance() -> HighScoreCommandsFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoreCommandsFactory::instance();
+                        return HighScoreCommandsFactory::instance;
     
 }
 
 
-private: HighScoreCommandsFactory() : HighScoreCommandsBaseFactory(
+HighScoreCommandsFactory::HighScoreCommandsFactory() : HighScoreCommandsBaseFactory(
                                                 {
                                                     HighScoreCommands::getInstance()->PERSONAL,HighScoreCommands::getInstance()->WORLD
                                                 }){
@@ -75,7 +84,6 @@ private: HighScoreCommandsFactory() : HighScoreCommandsBaseFactory(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSFACTORY_CPP

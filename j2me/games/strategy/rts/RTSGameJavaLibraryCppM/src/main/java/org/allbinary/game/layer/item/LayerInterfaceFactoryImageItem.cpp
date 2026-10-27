@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ITEM_LAYERINTERFACEFACTORYIMAGEITEM_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ITEM_LAYERINTERFACEFACTORYIMAGEITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/item/LayerInterfaceFactoryImageItem.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,13 +75,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerInterfaceFactoryImageItem: public ABCustomImageItem {
 
-    private: std::vector<Animation*> animationArray;
-
-    private: LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface;
-
-public: LayerInterfaceFactoryImageItem(std::string label, Image* img, int32_t layout, std::string altText, BasicColor* basicColor, std::vector<Animation*> animationArray, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface) : ABCustomImageItem(label, img, layout, altText, basicColor, 0){
+LayerInterfaceFactoryImageItem::LayerInterfaceFactoryImageItem(std::string label, Image* img, int32_t layout, std::string altText, BasicColor* basicColor, std::vector<Animation*> animationArray, LayerInterfaceFactoryInterface* layerInterfaceFactoryInterface) : ABCustomImageItem(label, img, layout, altText, basicColor, 0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,7 +90,7 @@ this->layerInterfaceFactoryInterface= layerInterfaceFactoryInterface;
 }
 
 
-    public: LayerInterfaceFactoryInterface* getLayerInterfaceFactoryInterface(){
+    auto LayerInterfaceFactoryImageItem::getLayerInterfaceFactoryInterface() -> LayerInterfaceFactoryInterface*{
 
 
 
@@ -95,8 +100,8 @@ this->layerInterfaceFactoryInterface= layerInterfaceFactoryInterface;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x, y);
+    auto LayerInterfaceFactoryImageItem::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+ABCustomImageItem::paintXY(graphics, x, y);
     
 
 
@@ -105,14 +110,13 @@ super.paintXY(graphics, x, y);
                         for (
     int32_t index = this->animationArray.size();--index >= 0; )
         {
-this->animationArray[index].paintXY(graphics, x, y);
+this->animationArray[index]->paintXY(graphics, x, y);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ITEM_LAYERINTERFACEFACTORYIMAGEITEM_CPP

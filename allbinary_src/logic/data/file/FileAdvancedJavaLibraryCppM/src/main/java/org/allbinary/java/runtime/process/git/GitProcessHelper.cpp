@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_JAVA_RUNTIME_PROCESS_GIT_GITPROCESSHELPER_CPP
+        #define ORG_ALLBINARY_JAVA_RUNTIME_PROCESS_GIT_GITPROCESSHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/java/runtime/process/git/GitProcessHelper.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -88,25 +98,20 @@
         #include "org/allbinary/java/runtime/process/git/ProcessBuilder.h"
 #include "org/allbinary/java/runtime/process/git/Process.h"
 //Do not use this instead just skip target, build, Application paths.
-class GitProcessHelper
-            : public Object
-         {
+auto GitProcessHelper::instance_owner() -> GitProcessHelper* { static std::unique_ptr<GitProcessHelper> value(new GitProcessHelper()); return value.get(); }
+GitProcessHelper* GitProcessHelper::instance = GitProcessHelper::instance_owner();
 
-    private: static GitProcessHelper* instance() { static std::unique_ptr<GitProcessHelper> value(new GitProcessHelper()); return value.get(); }
-
-    public: static GitProcessHelper* getInstance(){
+    auto GitProcessHelper::getInstance() -> GitProcessHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GitProcessHelper::instance();
+                        return GitProcessHelper::instance;
     
 }
 
 
-    private: TrackedStrings* trackedStrings = TrackedStrings::getInstance();
-
-private: GitProcessHelper(){
+GitProcessHelper::GitProcessHelper() : trackedStrings(TrackedStrings::getInstance()){
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -123,7 +128,7 @@ logUtil->putF(THIS_IS_SLOW, this, commonStrings->CONSTRUCTOR);
 
                 //@Throws(IOException.constructor, InterruptedException.constructor)
             
-    public: List<std::string>* trackedFiles(std::string rootAsString, std::string pathspec){
+    auto GitProcessHelper::trackedFiles(std::string rootAsString, std::string pathspec) -> List<std::string>*{
 
 
 
@@ -135,9 +140,9 @@ logUtil->putF(THIS_IS_SLOW, this, commonStrings->CONSTRUCTOR);
 
                 //@Throws(IOException.constructor, InterruptedException.constructor)
             
-    public: List<std::string>* trackedFiles(std::string rootAsString, std::string pathspec, std::string suffix){
+    auto GitProcessHelper::trackedFiles(std::string rootAsString, std::string pathspec, std::string suffix) -> List<std::string>*{
 
-    Process* process = (new ProcessBuilder(this->trackedStrings->GIT_COMMAND, this->trackedStrings->CHANGE_DIRECTORY_OPTION, rootAsString, this->trackedStrings->LIST_FILES_COMMAND, this->trackedStrings->SEP_BY_NULL_CHAR_INSTEAD_OF_NEW_LINE, this->trackedStrings->PATHSPEC_SEPARATOR, pathspec))->redirectError(ProcessBuilder::Redirect.INHERIT)->start();;
+    Process* process = (new ProcessBuilder(this->trackedStrings->GIT_COMMAND, this->trackedStrings->CHANGE_DIRECTORY_OPTION, rootAsString, this->trackedStrings->LIST_FILES_COMMAND, this->trackedStrings->SEP_BY_NULL_CHAR_INSTEAD_OF_NEW_LINE, this->trackedStrings->PATHSPEC_SEPARATOR, pathspec))->redirectError(ProcessBuilder::Redirect->INHERIT)->start();;
     
 
     std::vector<int8_t> output = process->getInputStream()->readAllBytes();;
@@ -152,7 +157,7 @@ logUtil->putF(THIS_IS_SLOW, this, commonStrings->CONSTRUCTOR);
                                     
 
 
-                            throw new IllegalStateException((new StringMaker())->append("git ls-files failed for ")->append(rootAsString)->append(" with exit code ")->appendint(exitCode)->toString());
+                            throw IllegalStateException((new StringMaker())->append("git ls-files failed for ")->append(rootAsString)->append(" with exit code ")->appendint(exitCode)->toString());
                     
 
                                     }
@@ -177,7 +182,7 @@ logUtil->putF(THIS_IS_SLOW, this, commonStrings->CONSTRUCTOR);
                         if(output[index] == 0)
                         
                                     {
-                                    relativePath= String.fromCharCode(...output);
+                                    relativePath= JavaString::fromChars(output, start, index -start, StandardCharsets::UTF_8);
     
 
                         if(JavaString::endsWith(relativePath, suffix))
@@ -204,7 +209,7 @@ start= index +1;
 }
 
 
-    public: bool isTracked(AbFile* file){
+    auto GitProcessHelper::isTracked(AbFile* file) -> bool{
 
         try {
             
@@ -239,7 +244,6 @@ process->getInputStream()->readAllBytes();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_JAVA_RUNTIME_PROCESS_GIT_GITPROCESSHELPER_CPP

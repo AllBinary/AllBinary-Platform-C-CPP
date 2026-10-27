@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/J2SEMath.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class J2SEMath
-            : public Object
-         {
 
-    private: static J2SEMath* instance() { static std::unique_ptr<J2SEMath> value(new J2SEMath()); return value.get(); }
+J2SEMath::J2SEMath() {
+        }
+        auto J2SEMath::instance_owner() -> J2SEMath* { static std::unique_ptr<J2SEMath> value(new J2SEMath()); return value.get(); }
+J2SEMath* J2SEMath::instance = J2SEMath::instance_owner();
 
-    public: static J2SEMath* getInstance(){
+    auto J2SEMath::getInstance() -> J2SEMath*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2SEMath::instance();
+                        return J2SEMath::instance;
     
 }
 
 
-    public: int32_t round(float value){
+    auto J2SEMath::round(float value) -> int32_t{
 
 
 
@@ -73,7 +83,7 @@ class J2SEMath
 }
 
 
-    public: float abs(float value){
+    auto J2SEMath::abs(float value) -> float{
 
 
 
@@ -90,7 +100,7 @@ class J2SEMath
 }
 
 
-    public: double absdouble(double value){
+    auto J2SEMath::absdouble(double value) -> double{
 
 
 
@@ -107,7 +117,6 @@ class J2SEMath
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_CPP

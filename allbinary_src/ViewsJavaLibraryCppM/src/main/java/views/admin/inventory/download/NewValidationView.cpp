@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_NEWVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_NEWVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/download/NewValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,9 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
 
-class NewValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-public: NewValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
+NewValidationView::NewValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,12 +90,12 @@ public: NewValidationView(TransformInfoInterface* transformInfoInterface) : Down
                     
 this->itemInterface= dynamic_cast<ItemInterface*>(new BasicItem());
     
-this->downloadableItem= new DownloadableItem(this->itemInterface.getId());
+this->downloadableItem= new DownloadableItem(this->itemInterface->getId());
     
 }
 
 
-    public: bool isValid(){
+    auto NewValidationView::isValid() -> bool{
 
         try {
             
@@ -110,7 +119,7 @@ this->downloadableItem= new DownloadableItem(this->itemInterface.getId());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto NewValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -120,7 +129,7 @@ this->downloadableItem= new DownloadableItem(this->itemInterface.getId());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto NewValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -130,7 +139,7 @@ this->downloadableItem= new DownloadableItem(this->itemInterface.getId());
 }
 
 
-    public: std::string validationInfo(){
+    auto NewValidationView::validationInfo() -> std::string{
 
 
 
@@ -140,7 +149,6 @@ this->downloadableItem= new DownloadableItem(this->itemInterface.getId());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_DOWNLOAD_NEWVALIDATIONVIEW_CPP

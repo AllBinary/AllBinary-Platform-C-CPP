@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLOPTIONS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLOPTIONS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLOptions.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 
-class OpenGLOptions
-            : public Object
-         {
 
-    public: void init(){
+OpenGLOptions::OpenGLOptions() {
+        }
+        
+    auto OpenGLOptions::init() -> void{
 
     OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
@@ -101,7 +111,6 @@ GameFeatureChoiceGroups::getExclusiveInstance()->add("OpenGL Image Color RGBA", 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLOPTIONS_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/Log.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,21 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Log
-            : public Object
-         {
 
-    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
-
-    private: std::string specialMessage;
-
-    private: Object* anyType;
-
-    private: std::string functionName;
-
-    private: Object* exception;
-
-public: Log(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+Log::Log(std::string specialMessage, Object* anyType, std::string functionName, Object* exception) : logFormatUtil(LogFormatUtil::getInstance()){
 this->specialMessage= specialMessage;
     
 this->anyType= anyType;
@@ -79,7 +76,7 @@ this->exception= exception;
 }
 
 
-    public: std::string getSpecialMessage(){
+    auto Log::getSpecialMessage() -> std::string{
 
 
 
@@ -89,7 +86,7 @@ this->exception= exception;
 }
 
 
-    public: Object* getObject(){
+    auto Log::getObject() -> Object*{
 
 
 
@@ -99,7 +96,7 @@ this->exception= exception;
 }
 
 
-    public: std::string getFunctionName(){
+    auto Log::getFunctionName() -> std::string{
 
 
 
@@ -109,7 +106,7 @@ this->exception= exception;
 }
 
 
-    public: Object* getThrowable(){
+    auto Log::getThrowable() -> Object*{
 
 
 
@@ -119,7 +116,7 @@ this->exception= exception;
 }
 
 
-    public: std::string toString(){
+    auto Log::toString() -> std::string{
 
     std::string className = CommonStrings::getInstance()->EMPTY;;
     
@@ -144,7 +141,6 @@ this->exception= exception;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,11 +63,11 @@
 #include "org/allbinary/animation/VectorAnimation.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class VectorAnimationFactory
-            : public Object
-        , public VectorAnimationFactoryInterface {
 
-    public: VectorAnimation* getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor* basicColor){
+VectorAnimationFactory::VectorAnimationFactory() {
+        }
+        
+    auto VectorAnimationFactory::getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor* basicColor) -> VectorAnimation*{
 
 
 
@@ -67,7 +77,6 @@ class VectorAnimationFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORY_CPP

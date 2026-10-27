@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTION_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,19 +89,8 @@
         #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h"
 
-class GenericProfileAction
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string name;
-
-    private: GenericProfileActionScript* genericProfileActionScript;
-
-    private: GenericProfileActionJPanel* genericProfileActionJPanel;
-
-public: GenericProfileAction(GenericProfileActionJPanel* genericProfileActionJPanel, Node* node){
+GenericProfileAction::GenericProfileAction(GenericProfileActionJPanel* genericProfileActionJPanel, Node* node) : logUtil(LogUtil::getInstance()){
 
     Node* actionNameNode = DomSearchHelper::getNode(GenericProfileActionData::NAME, node->getChildNodes());;
     
@@ -110,7 +109,7 @@ public: GenericProfileAction(GenericProfileActionJPanel* genericProfileActionJPa
                             
 
 
-                            throw new Exception("Profile Action Name Node Null");
+                            throw Exception("Profile Action Name Node Null");
                     
 
                         }
@@ -120,7 +119,7 @@ this->setGenericProfileActionScript(new GenericProfileActionScript(this->generic
 }
 
 
-public: GenericProfileAction(std::string name){
+GenericProfileAction::GenericProfileAction(std::string name) : logUtil(LogUtil::getInstance()){
 this->name= name;
     
 this->setGenericProfileActionScript(new GenericProfileActionScript(this->genericProfileActionJPanel));
@@ -128,7 +127,7 @@ this->setGenericProfileActionScript(new GenericProfileActionScript(this->generic
 }
 
 
-    public: std::string getName(){
+    auto GenericProfileAction::getName() -> std::string{
 
 
 
@@ -138,19 +137,19 @@ this->setGenericProfileActionScript(new GenericProfileActionScript(this->generic
 }
 
 
-    public: void setName(std::string name){
+    auto GenericProfileAction::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto GenericProfileAction::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
 hashMap->put(GenericProfileActionData::NAME, this->name);
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -163,7 +162,7 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GenericProfileAction::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createNodeWithValueNodes(document, GenericProfileActionData::NAME, this->toHashMap());;
     
@@ -178,7 +177,7 @@ node->appendChild(getGenericProfileActionScript()->toXmlNode(document));
 }
 
 
-    public: GenericProfileActionScript* getGenericProfileActionScript(){
+    auto GenericProfileAction::getGenericProfileActionScript() -> GenericProfileActionScript*{
 
 
 
@@ -188,13 +187,12 @@ node->appendChild(getGenericProfileActionScript()->toXmlNode(document));
 }
 
 
-    public: void setGenericProfileActionScript(GenericProfileActionScript* genericProfileActionScript){
+    auto GenericProfileAction::setGenericProfileActionScript(GenericProfileActionScript* genericProfileActionScript) -> void{
 this->genericProfileActionScript= genericProfileActionScript;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTION_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
-
-      
-#include <org/allbinary/image/opengles/OpenGLImageCacheFactory.h>
-
-      
+class Features;
+class OpenGLFeatureFactory;
+class OpenGLImageCacheFactory;
 
 
 
@@ -58,6 +57,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory: public TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory {
 
 public: TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory();
@@ -74,3 +77,22 @@ public: TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>)
+#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/image/opengles/OpenGLImageCacheFactory.h>)
+#include <org/allbinary/image/opengles/OpenGLImageCacheFactory.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h")
+#include "org/allbinary/input/motion/button/TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
+#endif
+
+        #endif
+    

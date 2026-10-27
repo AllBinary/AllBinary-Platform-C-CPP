@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,14 +57,9 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //import org.allbinary.business.user.commerce.money.Money;
-class StoreFrontUsersStatisticsInterface: public TableMappingInterface {
+        
+//Interface - declared in the header
 
-    public: virtual int64_t getNumberOfUsers() = 0;
 
-    public: virtual int64_t getNumberOfUsersByRole(std::string role) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITSQL_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITSQL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/InitSql.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -120,75 +130,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InitSql
-            : public Object
-         {
 
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
-
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    protected: SqlTypeStrings* sqlTypeStrings = SqlTypeStrings::getInstance();
-
-    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
-
-    protected: StdUtil* stdUtil = StdUtil::getInstance();
-
-    protected: const std::string INSERT = "insert";
-
-    protected: const std::string UPDATE = "update";
-
-    private: DbConnectionInfo* databaseConnectionInfoInterface;
-
-    private: std::string userid;
-
-    private: std::string password;
-
-    private: std::string tableName;
-
-    private: Connection* conn;
-
-    private: bool useridAndPassword= false;
-
-    protected: const std::string SUCCESS_SQL_STATEMENT = "Success\nSQL Statement: ";
-
-    protected: const std::string FAILED_SQL_STATEMENT = "Failed\nSQL Statement: ";
-
-    private: const std::string INIT_SQL = "InitSql";
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string EQUAL_QUOTE = "=\"";
-
-    private: const std::string METHOD_GET_ROW = "getRow()";
-
-    private: const std::string METHOD_UPDATE_WHERE = "updateWhere()";
-
-    private: const std::string ROW_VALUE_LABEL = "Row Value: ";
-
-    private: const std::string NO_RESULTS_IN_RESULT_SET = "No Results in ResultSet";
-
-    private: const std::string INSERT_END = "')";
-
-public: InitSql(DbConnectionInfo* databaseConnectionInfoInterface){
+InitSql::InitSql(DbConnectionInfo* databaseConnectionInfoInterface) : stringUtil(StringUtil::getInstance()), commonSeps(CommonSeps::getInstance()), sqlTypeStrings(SqlTypeStrings::getInstance()), sqlStrings(SqlStrings::getInstance()), stdUtil(StdUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->setDatabaseConnectionInfoInterface(databaseConnectionInfoInterface);
     
 }
 
 
-    public: void setTable(std::string tableName){
+    auto InitSql::setTable(std::string tableName) -> void{
 this->tableName= tableName;
     
 }
 
 
-    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo* databaseConnectionInfoInterface){
+    auto InitSql::setDatabaseConnectionInfoInterface(DbConnectionInfo* databaseConnectionInfoInterface) -> void{
 this->databaseConnectionInfoInterface= databaseConnectionInfoInterface;
     
 }
 
 
-    public: bool createTable(std::string tableData){
+    auto InitSql::createTable(std::string tableData) -> bool{
 
         try {
             
@@ -213,7 +174,7 @@ this->executeSQLStatement(tableData);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "createTable()", &e);
@@ -232,7 +193,7 @@ this->executeSQLStatement(tableData);
 }
 
 
-    public: bool dropTable(){
+    auto InitSql::dropTable() -> bool{
 
     std::string sqlStatement = this->sqlStrings->DROP_TABLE +this->tableName;;
     
@@ -251,7 +212,7 @@ this->executeSQLStatement(tableData);
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "dropTables()", &e);
@@ -270,7 +231,7 @@ this->executeSQLStatement(tableData);
 }
 
 
-    public: HashMap<Object*, Object*>* getRow(HashMap<Object*, Object*>* keysAndValues){
+    auto InitSql::getRow(HashMap<Object*, Object*>* keysAndValues) -> HashMap<Object*, Object*>*{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -332,10 +293,10 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     std::string sqlStatement = stringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    PreLogUtil::put(this->sqlStrings->SQL_STATEMENT_LABEL +sqlStatement, this->INIT_SQL, this->METHOD_GET_ROW);
+                                    PreLogUtil::put(JavaString::valueOf(this->sqlStrings->SQL_STATEMENT_LABEL) +JavaString::valueOf(sqlStatement), this->INIT_SQL, this->METHOD_GET_ROW);
     
 
                                     }
@@ -372,7 +333,7 @@ result->put(columnName, field);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     PreLogUtil::put(this->ROW_VALUE_LABEL +result->toString(), this->INIT_SQL, this->METHOD_GET_ROW);
@@ -389,7 +350,7 @@ result->put(columnName, field);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::put(this->NO_RESULTS_IN_RESULT_SET, this->INIT_SQL, this->METHOD_GET_ROW);
@@ -408,7 +369,7 @@ result->put(columnName, field);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer, this->INIT_SQL, this->METHOD_GET_ROW, &e);
@@ -428,7 +389,7 @@ result->put(columnName, field);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*>* updatedKeyValuePairs){
+    auto InitSql::updateWhere(std::string key, std::string value, HashMap<Object*, Object*>* updatedKeyValuePairs) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -454,7 +415,7 @@ stringBuffer->append(this->sqlStrings->SET);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string columnName = columnArray[i].toString();;
+    std::string columnName = columnArray[i]->toString();;
     
 stringBuffer->append(this->commonSeps->SPACE);
     
@@ -509,10 +470,10 @@ stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
 this->executeSQLStatement(sqlStatement);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    PreLogUtil::put(this->SUCCESS_SQL_STATEMENT +sqlStatement, this->INIT_SQL, METHOD_UPDATE_WHERE);
+                                    PreLogUtil::put(JavaString::valueOf(this->SUCCESS_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this->INIT_SQL, METHOD_UPDATE_WHERE);
     
 
                                     }
@@ -522,7 +483,7 @@ this->executeSQLStatement(sqlStatement);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer, this->INIT_SQL, METHOD_UPDATE_WHERE, &e);
@@ -535,7 +496,7 @@ this->executeSQLStatement(sqlStatement);
 }
 
 
-    public: void insert(BasicArrayList* values){
+    auto InitSql::insert(BasicArrayList* values) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -579,10 +540,10 @@ stringBuffer->append(this->INSERT_END);
 this->executeSQLStatement(sqlStatement);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    PreLogUtil::put(this->SUCCESS_SQL_STATEMENT +sqlStatement, this->INIT_SQL, INSERT);
+                                    PreLogUtil::put(JavaString::valueOf(this->SUCCESS_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this->INIT_SQL, INSERT);
     
 
                                     }
@@ -592,7 +553,7 @@ this->executeSQLStatement(sqlStatement);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->FAILED_SQL_STATEMENT +stringBuffer->toString(), this->INIT_SQL, INSERT, &e);
@@ -606,7 +567,7 @@ this->executeSQLStatement(sqlStatement);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: std::string getValue(std::string value){
+    auto InitSql::getValue(std::string value) -> std::string{
 
                         if(StringValidationUtil::getInstance()->isEmpty(value))
                         
@@ -635,7 +596,7 @@ this->executeSQLStatement(sqlStatement);
 
                 //@Throws(Exception.constructor, SQLException.constructor)
             
-    public: ResultSet* executeSQLStatement(std::string statement){
+    auto InitSql::executeSQLStatement(std::string statement) -> ResultSet*{
 
         try {
             
@@ -670,7 +631,7 @@ stmt->close();
 } catch(SQLException& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "executeSQLStatement()", &e);
@@ -689,7 +650,7 @@ stmt->close();
  catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "executeSQLStatement()", &e);
@@ -709,7 +670,7 @@ stmt->close();
 
                 //@Throws(SQLException.constructor)
             
-    private: void createConnection(){
+    auto InitSql::createConnection() -> void{
 
         try {
             
@@ -745,7 +706,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "createConnection()"
 
                 //@Throws(Exception.constructor)
             
-    private: void initialize(){
+    auto InitSql::initialize() -> void{
 
         try {
             
@@ -762,10 +723,10 @@ Class::forName(jdbcDriver)->newInstance();
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    PreLogUtil::putOE("LoadDriver Failed: " +this->databaseConnectionInfoInterface->getJdbcDriver(), this->INIT_SQL, "initialize()", &e);
+                                    PreLogUtil::putOE(JavaString::valueOf("LoadDriver Failed: ") +JavaString::valueOf(this->databaseConnectionInfoInterface->getJdbcDriver()), this->INIT_SQL, "initialize()", &e);
     
 
                                     }
@@ -793,7 +754,7 @@ this->createConnection();
 } catch(Exception& se) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->SQLLOGGINGERROR))
                         
                                     {
                                     PreLogUtil::putOE(this->commonStrings->EXCEPTION, INIT_SQL, "initialize()", &se);
@@ -811,7 +772,7 @@ this->createConnection();
 }
 
 
-    public: DatabaseConnectionInfoInterface* getDatabaseConnectionInfoInterface(){
+    auto InitSql::getDatabaseConnectionInfoInterface() -> DatabaseConnectionInfoInterface*{
 
 
 
@@ -821,7 +782,6 @@ this->createConnection();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_INITSQL_CPP

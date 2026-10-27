@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +52,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/path/AbPath.h"
+        class AbPath;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbPathUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static AbPathUtil* instance() { static std::unique_ptr<AbPathUtil> value(new AbPathUtil()); return value.get(); }
+    private: static AbPathUtil* instance_owner();
+    private: static AbPathUtil* instance;
 
     public: static AbPathUtil* getInstance();
 
-    public: AbPath* NO_ABPATH = AbPath::createAbPath();
+
+            
+    public: AbPathUtil();
+        
+    public: AbPath* NO_ABPATH;
 
 };
 
@@ -65,3 +79,13 @@ class AbPathUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_PATH_ABPATHUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/logic/io/path/AbPath.h")
+#include "org/allbinary/logic/io/path/AbPath.h"
+#endif
+
+        #endif
+    

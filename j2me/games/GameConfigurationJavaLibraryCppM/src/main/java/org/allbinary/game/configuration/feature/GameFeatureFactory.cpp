@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/GameFeatureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,59 +57,23 @@
         #include "org/allbinary/game/configuration/feature/GameFeature.h"
 #include "org/allbinary/game/configuration/feature/Feature.h"
 
-class GameFeatureFactory
-            : public Object
-         {
+auto GameFeatureFactory::instance_owner() -> GameFeatureFactory* { static std::unique_ptr<GameFeatureFactory> value(new GameFeatureFactory()); return value.get(); }
+GameFeatureFactory* GameFeatureFactory::instance = GameFeatureFactory::instance_owner();
 
-    private: static GameFeatureFactory* instance() { static std::unique_ptr<GameFeatureFactory> value(new GameFeatureFactory()); return value.get(); }
-
-    public: static GameFeatureFactory* getInstance(){
+    auto GameFeatureFactory::getInstance() -> GameFeatureFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureFactory::instance();
+                        return GameFeatureFactory::instance;
     
 }
 
 
-private: GameFeatureFactory(){
+GameFeatureFactory::GameFeatureFactory() : SOUND(new GameFeature("Sound")), MUSIC(new GameFeature("Music")), SCREEN_SHAKE(new Feature("Screen Shake")), POST_IMAGE_LOADING_MODIFICATION(new Feature("Post Image Loading Modification (Scaling, Rotation, or Other)")), HEALTH_BARS(new GameFeature("Health Bars")), DAMAGE_FLOATERS(new GameFeature("Damage Floaters")), GAME_INPUT_LAYER_PROCESSOR(new GameFeature("Game Input Layer Processor")), ARTIFICIAL_INTELLEGENCE_PROCESSOR(new GameFeature("Artificial Intelligence Layer Processor")), COLLIDABLE_INTERFACE_LAYER_PROCESSOR(new GameFeature("Collidable Interface Layer Processor")), TICKABLE_LAYER_PROCESSOR(new GameFeature("Tickable Layer Processor")), CHEATING(new GameFeature("Cheating")), DROPPED_ITEMS(new GameFeature("Drops")), DROPPED_ITEMS_FROM_DEATH(new GameFeature("Drops from Dead")), TEST_DESTROYED_LAYER_PROCESSOR(new GameFeature("Destroyed Layer Processor")), COLLISIONS_WITH_SOURCE(new GameFeature("Allow Collisions With Source")), COLLISIONS_FORCED_TWO_DIMENSIONAL(new GameFeature("Collisions Forced Two Dimensional")){
 }
 
 
-    public: GameFeature* SOUND = new GameFeature("Sound");
 
-    public: GameFeature* MUSIC = new GameFeature("Music");
 
-    public: Feature* SCREEN_SHAKE = new Feature("Screen Shake");
-
-    public: Feature* POST_IMAGE_LOADING_MODIFICATION = new Feature("Post Image Loading Modification (Scaling, Rotation, or Other)");
-
-    public: GameFeature* HEALTH_BARS = new GameFeature("Health Bars");
-
-    public: GameFeature* DAMAGE_FLOATERS = new GameFeature("Damage Floaters");
-
-    public: GameFeature* GAME_INPUT_LAYER_PROCESSOR = new GameFeature("Game Input Layer Processor");
-
-    public: GameFeature* ARTIFICIAL_INTELLEGENCE_PROCESSOR = new GameFeature("Artificial Intelligence Layer Processor");
-
-    public: GameFeature* COLLIDABLE_INTERFACE_LAYER_PROCESSOR = new GameFeature("Collidable Interface Layer Processor");
-
-    public: GameFeature* TICKABLE_LAYER_PROCESSOR = new GameFeature("Tickable Layer Processor");
-
-    public: GameFeature* CHEATING = new GameFeature("Cheating");
-
-    public: GameFeature* DROPPED_ITEMS = new GameFeature("Drops");
-
-    public: GameFeature* DROPPED_ITEMS_FROM_DEATH = new GameFeature("Drops from Dead");
-
-    public: GameFeature* TEST_DESTROYED_LAYER_PROCESSOR = new GameFeature("Destroyed Layer Processor");
-
-    public: GameFeature* COLLISIONS_WITH_SOURCE = new GameFeature("Allow Collisions With Source");
-
-    public: GameFeature* COLLISIONS_FORCED_TWO_DIMENSIONAL = new GameFeature("Collisions Forced Two Dimensional");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFACTORY_CPP

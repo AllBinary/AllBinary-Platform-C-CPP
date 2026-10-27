@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASICCRYPT_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASICCRYPT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/BasicCrypt.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,15 +77,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicCrypt
-            : public Object
-        , public CryptInterface {
 
-    private: ByteUtil* byteUtil = ByteUtil::getInstance();
-
-    private: std::vector<int8_t> key;
-
-public: BasicCrypt(std::string keyAsString){
+BasicCrypt::BasicCrypt(std::string keyAsString) : byteUtil(ByteUtil::getInstance()){
 
     std::vector<int8_t> key = NullUtil::getInstance()->NULL_BYTE_ARRAY;;
     
@@ -99,7 +102,7 @@ this->key= key;
 }
 
 
-    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    auto BasicCrypt::encrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
         try {
             
@@ -125,7 +128,7 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
 }
 
 
-    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    auto BasicCrypt::decrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
         try {
             
@@ -151,7 +154,7 @@ PreLogUtil::putOE("decrypt Failed", this, "decrypt", &e);
 }
 
 
-    public: std::vector<int8_t> mutilate(std::vector<int8_t> array){
+    auto BasicCrypt::mutilate(std::vector<int8_t> array) -> std::vector<int8_t>{
 
     int8_t value;;
     
@@ -177,7 +180,6 @@ array= this->byteUtil->xor_(array, value);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASICCRYPT_CPP

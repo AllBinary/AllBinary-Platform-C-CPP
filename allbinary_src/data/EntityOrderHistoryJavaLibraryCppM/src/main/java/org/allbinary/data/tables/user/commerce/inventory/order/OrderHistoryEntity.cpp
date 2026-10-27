@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -172,13 +182,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntityInterface.h"
 
-class OrderHistoryEntity: public AbSqlBean, public OrderHistoryEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: const std::string tableName = "orderhistory";
-
-public: OrderHistoryEntity() : AbSqlBean(new HistoryDbInitInfo()){
+OrderHistoryEntity::OrderHistoryEntity() : AbSqlBean(new HistoryDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -190,7 +195,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(std::string userName, Order* order){
+    auto OrderHistoryEntity::insert(std::string userName, Order* order) -> void{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -407,10 +412,10 @@ vector->add(order->getStoreCancelComments());
 this->insert(vector);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, INSERT);
     
 
                                     }
@@ -420,10 +425,10 @@ this->insert(vector);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put("Command Failed: " +vector, this, INSERT, &e);
+                                    this->logUtil->put(JavaString::valueOf("Command Failed: ") +JavaString::valueOf(vector), this, INSERT, &e);
     
 
                                     }
@@ -433,16 +438,16 @@ this->insert(vector);
 }
 
 
-    public: void insert(BasicArrayList* values){
+    auto OrderHistoryEntity::insert(BasicArrayList* values) -> void{
 
         try {
-            super.insert(values);
+            AbSqlBean::insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, INSERT);
     
 
                                     }
@@ -452,10 +457,10 @@ this->insert(vector);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -465,7 +470,7 @@ this->insert(vector);
 }
 
 
-    public: void setStatus(std::string orderId, std::string status){
+    auto OrderHistoryEntity::setStatus(std::string orderId, std::string status) -> void{
 
         try {
             
@@ -497,17 +502,17 @@ updateHashMap->put(OrderHistoryData::STATUS, status);
 
                                     }
                                 
-super.updateWhere(OrderData::ID, orderId, updateHashMap);
+AbSqlBean::updateWhere(OrderData::ID, orderId, updateHashMap);
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "setStatus", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "setStatus", &e);
     
 
                                     }
@@ -517,7 +522,7 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
 }
 
 
-    public: void setPaymentMethod(std::string orderId, std::string paymentMethod){
+    auto OrderHistoryEntity::setPaymentMethod(std::string orderId, std::string paymentMethod) -> void{
 
         try {
             
@@ -533,17 +538,17 @@ updateHashMap->put(PaymentData::METHOD, paymentMethod);
     
 updateHashMap->put(OrderHistoryData::TRANSDATE, time);
     
-super.updateWhere(OrderData::ID, orderId, updateHashMap);
+AbSqlBean::updateWhere(OrderData::ID, orderId, updateHashMap);
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "setPaymentMethod", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "setPaymentMethod", &e);
     
 
                                     }
@@ -555,7 +560,7 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getStoreOrders(StoreFrontInterface* storeFrontInterface){
+    auto OrderHistoryEntity::getStoreOrders(StoreFrontInterface* storeFrontInterface) -> BasicArrayList*{
 
     BasicArrayList* orderReviewVector = new BasicArrayListD();;
     
@@ -565,7 +570,7 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
 whereHashMap->put(StoreFrontData::getInstance()->NAME, storeFrontInterface->getName());
     
 
-    BasicArrayList* orderHashMapVector = super.getRows(whereHashMap);;
+    BasicArrayList* orderHashMapVector = AbSqlBean::getRows(whereHashMap);;
     
 
     int32_t size = orderHashMapVector->size();;
@@ -598,7 +603,7 @@ orderReviewVector->add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getOrders(std::string userName){
+    auto OrderHistoryEntity::getOrders(std::string userName) -> BasicArrayList*{
 
     BasicArrayList* orderReviewVector = new BasicArrayListD();;
     
@@ -608,7 +613,7 @@ orderReviewVector->add(orderReview);
 whereHashMap->put(UserData::USERNAME, userName);
     
 
-    BasicArrayList* orderHashMapVector = super.getRows(whereHashMap);;
+    BasicArrayList* orderHashMapVector = AbSqlBean::getRows(whereHashMap);;
     
 
     int32_t size = orderHashMapVector->size();;
@@ -641,7 +646,7 @@ orderReviewVector->add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getOrders(std::string status, std::string fromDate, std::string toDate){
+    auto OrderHistoryEntity::getOrders(std::string status, std::string fromDate, std::string toDate) -> BasicArrayList*{
 
     BasicArrayList* orderReviewVector = new BasicArrayListD();;
     
@@ -651,7 +656,7 @@ orderReviewVector->add(orderReview);
 whereHashMap->put(OrderHistoryData::STATUS, status);
     
 
-    BasicArrayList* orderHashMapVector = super.getRowsWhereBetween(whereHashMap, OrderHistoryData::ORDERDATE, fromDate, toDate);;
+    BasicArrayList* orderHashMapVector = AbSqlBean::getRowsWhereBetween(whereHashMap, OrderHistoryData::ORDERDATE, fromDate, toDate);;
     
 
     int32_t size = orderHashMapVector->size();;
@@ -684,12 +689,12 @@ orderReviewVector->add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getOrders(std::string fromDate, std::string toDate){
+    auto OrderHistoryEntity::getOrders(std::string fromDate, std::string toDate) -> BasicArrayList*{
 
     BasicArrayList* orderReviewVector = new BasicArrayListD();;
     
 
-    BasicArrayList* orderHashMapVector = super.getRowsWhereBetween(OrderHistoryData::ORDERDATE, fromDate, toDate);;
+    BasicArrayList* orderHashMapVector = AbSqlBean::getRowsWhereBetween(OrderHistoryData::ORDERDATE, fromDate, toDate);;
     
 
     int32_t size = orderHashMapVector->size();;
@@ -722,14 +727,14 @@ orderReviewVector->add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: OrderHistory* getOrder(std::string id){
+    auto OrderHistoryEntity::getOrder(std::string id) -> OrderHistory*{
 
     HashMap<Object*, Object*>* whereHashMap = StdUtil::getInstance()->createHashMap();;
     
 whereHashMap->put(OrderData::ID, id);
     
 
-    HashMap<Object*, Object*>* orderReviewHashMap = super.getRow(whereHashMap);;
+    HashMap<Object*, Object*>* orderReviewHashMap = AbSqlBean::getRow(whereHashMap);;
     
 
                         if(orderReviewHashMap != 
@@ -762,7 +767,7 @@ whereHashMap->put(OrderData::ID, id);
 }
 
 
-    public: std::string createTableStatement(){
+    auto OrderHistoryEntity::createTableStatement() -> std::string{
 
     EntryData* entryData = EntryData::getInstance();;
     
@@ -777,19 +782,19 @@ stringBuffer->append(" (");
     
 stringBuffer->append(entryData->ID);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(OrderData::ID);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(UserData::USERNAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(StoreFrontData::getInstance()->NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::SHIPPEDDATE);
     
@@ -797,7 +802,7 @@ stringBuffer->append(" BIGINT(19) UNSIGNED ,");
     
 stringBuffer->append(OrderHistoryData::ORDERDATE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::TRANSDATE);
     
@@ -809,11 +814,11 @@ stringBuffer->append(" BIGINT(19) UNSIGNED ,");
     
 stringBuffer->append(OrderHistoryData::STATUS);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(PaymentData::METHOD);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(PaymentData::NAME);
     
@@ -837,71 +842,71 @@ stringBuffer->append(" BIGINT(19) UNSIGNED ,");
     
 stringBuffer->append(BillingAddressData::NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(BillingAddressData::STREET);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(BillingAddressData::CITY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(BillingAddressData::STATE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(BillingAddressData::CODE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(BillingAddressData::COUNTRY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::STREET);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::CITY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::STATE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::CODE);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingAddressData::COUNTRY);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(ShippingMethodData::NAME);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::SUBTOTAL);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::SHIPPINGCOST);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::TAX);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(OrderHistoryData::TOTAL);
     
-stringBuffer->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer->append(entryData->SPECIAL);
     
@@ -909,19 +914,19 @@ stringBuffer->append(" VARCHAR(255) ,");
     
 stringBuffer->append(OrderData::CUSTOMERCOMMENT);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(OrderData::CUSTOMERCANCELCOMMENT);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(OrderData::STORECOMMENT);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append(OrderData::STORECANCELCOMMENT);
     
-stringBuffer->append(this->sqlTypeStrings.BLOB_NOT_NULL);
+stringBuffer->append(this->sqlTypeStrings->BLOB_NOT_NULL);
     
 stringBuffer->append("PRIMARY KEY(");
     
@@ -938,29 +943,29 @@ stringBuffer->append(") )");
 }
 
 
-    public: std::string createTable(){
+    auto OrderHistoryEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-    public: std::string dropTable(){
+    auto OrderHistoryEntity::dropTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void update(HashMap<Object*, Object*>* whereHashMap, HashMap<Object*, Object*>* orderHashMap){
+    auto OrderHistoryEntity::update(HashMap<Object*, Object*>* whereHashMap, HashMap<Object*, Object*>* orderHashMap) -> void{
 
         try {
             updateWhere(whereHashMap, orderHashMap);
@@ -979,7 +984,6 @@ stringBuffer->append(") )");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITY_CPP

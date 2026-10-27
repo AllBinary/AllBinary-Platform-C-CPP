@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,11 +37,7 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/Serializable.h>
-
-      
-#include <org/allbinary/business/user/UserFactoryInterface.h>
-
-      
+class UserFactoryInterface;
 
 
 
@@ -55,17 +56,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/user/role/BasicUserRole.h"
+        class BasicUserRole;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserRole
-            : public Object
+            : public virtual Object
         , public Serializable {
 
     private: BasicUserRole* basicUserRole;
 
     private: UserFactoryInterface* userFactoryInterface;
 
-protected: UserRole(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface);
+/*protected*/ public: UserRole(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface);
 
     public: std::string toString();
 
@@ -85,3 +90,19 @@ protected: UserRole(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFa
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_H_COMPLETE
+        #if __has_include(<java/io/Serializable.h>)
+#include <java/io/Serializable.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserFactoryInterface.h>)
+#include <org/allbinary/business/user/UserFactoryInterface.h>
+#endif
+#if __has_include("org/allbinary/business/user/role/BasicUserRole.h")
+#include "org/allbinary/business/user/role/BasicUserRole.h"
+#endif
+
+        #endif
+    

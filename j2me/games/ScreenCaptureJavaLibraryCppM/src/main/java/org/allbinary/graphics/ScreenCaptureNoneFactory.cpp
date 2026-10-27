@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_SCREENCAPTURENONEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_SCREENCAPTURENONEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/ScreenCaptureNoneFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/ScreenCapture.h"
 
-class ScreenCaptureNoneFactory
-            : public Object
-         {
 
-    private: static ScreenCapture* instance() { static std::unique_ptr<ScreenCapture> value(new ScreenCapture()); return value.get(); }
+ScreenCaptureNoneFactory::ScreenCaptureNoneFactory() {
+        }
+        auto ScreenCaptureNoneFactory::instance_owner() -> ScreenCapture* { static std::unique_ptr<ScreenCapture> value(new ScreenCapture()); return value.get(); }
+ScreenCapture* ScreenCaptureNoneFactory::instance = ScreenCaptureNoneFactory::instance_owner();
 
-    public: static ScreenCapture* getInstance(){
+    auto ScreenCaptureNoneFactory::getInstance() -> ScreenCapture*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenCaptureNoneFactory::instance();
+                        return ScreenCaptureNoneFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_SCREENCAPTURENONEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/ShippingMethods.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,19 +80,8 @@
         #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsInterface.h"
 #include "org/allbinary/business/user/commerce/shipping/ShippingMethodsFactory.h"
 
-class ShippingMethods
-            : public Object
-        , public ShippingMethodsInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* shippingVector;
-
-    private: ShippingInterface* defaultShippingMethodInterface;
-
-public: ShippingMethods(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface){
+ShippingMethods::ShippingMethods(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->defaultShippingMethodInterface= (new ShippingMethodsFactory(abeClientInformation, storeFrontInterface))->getDefaultInstance();
     
 this->shippingVector= (new ShippingMethodsFactory(abeClientInformation, storeFrontInterface))->getInstance();
@@ -90,7 +89,7 @@ this->shippingVector= (new ShippingMethodsFactory(abeClientInformation, storeFro
 }
 
 
-    public: BasicArrayList* get(){
+    auto ShippingMethods::get() -> BasicArrayList*{
 
 
 
@@ -102,7 +101,7 @@ this->shippingVector= (new ShippingMethodsFactory(abeClientInformation, storeFro
 
                 //@Throws(Exception.constructor)
             
-    public: ShippingInterface* getShippingInterface(std::string name){
+    auto ShippingMethods::getShippingInterface(std::string name) -> ShippingInterface*{
 
     ShippingInterface* shipping;;
     
@@ -129,10 +128,10 @@ shipping= dynamic_cast<ShippingInterface*>(this->shippingVector->get(index));
 }
 
 
-    std::string error = "Error Finding Shipping: " +name;;
+    std::string error = JavaString::valueOf("Error Finding Shipping: ") +JavaString::valueOf(name);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SHIPPINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SHIPPINGERROR))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->EXCEPTION, this, "getShippingInterface(String name)");
@@ -143,14 +142,14 @@ shipping= dynamic_cast<ShippingInterface*>(this->shippingVector->get(index));
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ShippingInterface* getDefault(){
+    auto ShippingMethods::getDefault() -> ShippingInterface*{
 
 
 
@@ -160,7 +159,6 @@ shipping= dynamic_cast<ShippingInterface*>(this->shippingVector->get(index));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_SHIPPINGMETHODS_CPP

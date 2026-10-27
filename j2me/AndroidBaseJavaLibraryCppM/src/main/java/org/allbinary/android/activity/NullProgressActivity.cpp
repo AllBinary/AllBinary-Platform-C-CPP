@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_CPP
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/activity/NullProgressActivity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,29 +58,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/activity/ProgressActivityInterface.h"
 
-class NullProgressActivity
-            : public Object
-        , public ProgressActivityInterface {
 
-    public: static NullProgressActivity* NULL_PROGRESS_ACTIVITY() { static std::unique_ptr<NullProgressActivity> value(new NullProgressActivity()); return value.get(); }
+NullProgressActivity::NullProgressActivity() {
+        }
+        auto NullProgressActivity::NULL_PROGRESS_ACTIVITY_owner() -> NullProgressActivity* { static std::unique_ptr<NullProgressActivity> value(new NullProgressActivity()); return value.get(); }
+NullProgressActivity* NullProgressActivity::NULL_PROGRESS_ACTIVITY = NullProgressActivity::NULL_PROGRESS_ACTIVITY_owner();
 
-    public: void runOnUiThread(Runnable* action){
+    auto NullProgressActivity::runOnUiThread(Runnable* action) -> void{
 }
 
 
-    public: void onDismissTitleProgressBar(){
+    auto NullProgressActivity::onDismissTitleProgressBar() -> void{
 }
 
 
-    public: void onShowTitleProgressBar(int32_t value, bool indeterminate){
+    auto NullProgressActivity::onShowTitleProgressBar(int32_t value, bool indeterminate) -> void{
 }
 
 
-    public: void onTitleProgressBarSetProgress(int32_t value){
+    auto NullProgressActivity::onTitleProgressBarSetProgress(int32_t value) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_CPP

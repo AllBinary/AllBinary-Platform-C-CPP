@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/LocalPlayerInputIdFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,37 +66,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LocalPlayerInputIdFactory
-            : public Object
-         {
+auto LocalPlayerInputIdFactory::instance_owner() -> LocalPlayerInputIdFactory* { static std::unique_ptr<LocalPlayerInputIdFactory> value(new LocalPlayerInputIdFactory()); return value.get(); }
+LocalPlayerInputIdFactory* LocalPlayerInputIdFactory::instance = LocalPlayerInputIdFactory::instance_owner();
 
-    private: static LocalPlayerInputIdFactory* instance() { static std::unique_ptr<LocalPlayerInputIdFactory> value(new LocalPlayerInputIdFactory()); return value.get(); }
-
-    public: static LocalPlayerInputIdFactory* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LocalPlayerInputIdFactory::instance();
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const int32_t MAX_NUMBER_OF_PLAYERS = 6;
-
-    private: const int32_t MAX_FAST_DEVICEID = 65;
-
-    private: const std::vector<int32_t> deviceIdToplayerId = std::vector<int32_t>(this->MAX_FAST_DEVICEID);
-
-    private: const std::vector<int32_t> playerIdToDeviceId = std::vector<int32_t>(this->MAX_NUMBER_OF_PLAYERS);
-
-    private: const std::vector<bool> playersInPlay = std::vector<bool>(this->MAX_NUMBER_OF_PLAYERS);
-
-    private: int32_t totalDevicesMapped = 0;
-
-private: LocalPlayerInputIdFactory(){
+LocalPlayerInputIdFactory::LocalPlayerInputIdFactory() : logUtil(LogUtil::getInstance()), deviceIdToplayerId(std::vector<int32_t>(this->MAX_FAST_DEVICEID)), playerIdToDeviceId(std::vector<int32_t>(this->MAX_NUMBER_OF_PLAYERS)), playersInPlay(std::vector<bool>(this->MAX_NUMBER_OF_PLAYERS)){
 
 
 
@@ -101,7 +84,17 @@ this->deviceIdToplayerId[index]=  -1;
 }
 
 
-    public: int32_t getDeviceId(int32_t playerInputId){
+    auto LocalPlayerInputIdFactory::getInstance() -> LocalPlayerInputIdFactory*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return LocalPlayerInputIdFactory::instance;
+    
+}
+
+
+    auto LocalPlayerInputIdFactory::getDeviceId(int32_t playerInputId) -> int32_t{
 
 
 
@@ -111,7 +104,7 @@ this->deviceIdToplayerId[index]=  -1;
 }
 
 
-    public: int32_t getPlayerForDevice(int32_t deviceId){
+    auto LocalPlayerInputIdFactory::getPlayerForDevice(int32_t deviceId) -> int32_t{
 
     int32_t index= 0;;
     
@@ -198,7 +191,7 @@ this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(d
 }
 
 
-    public: int32_t getTotalDevicesInPlay(){
+    auto LocalPlayerInputIdFactory::getTotalDevicesInPlay() -> int32_t{
 
     int32_t total = 0;;
     
@@ -229,7 +222,7 @@ this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(d
 }
 
 
-    public: bool isPlayerInPlay(int32_t playerInputId){
+    auto LocalPlayerInputIdFactory::isPlayerInPlay(int32_t playerInputId) -> bool{
 
 
 
@@ -239,7 +232,7 @@ this->logUtil->putF((new StringMaker())->append("Added DeviceId: ")->appendint(d
 }
 
 
-    public: void setPlayerInPlay(int32_t playerInputId){
+    auto LocalPlayerInputIdFactory::setPlayerInPlay(int32_t playerInputId) -> void{
 this->logUtil->putF((new StringMaker())->append("Setting PlayerInPlay with playerInputId: ")->appendint(playerInputId)->toString(), this, "setPlayerInPlay");
     
 this->playersInPlay[playerInputId]= true;
@@ -247,7 +240,7 @@ this->playersInPlay[playerInputId]= true;
 }
 
 
-    public: void setPlayerOutOfPlay(int32_t playerInputId){
+    auto LocalPlayerInputIdFactory::setPlayerOutOfPlay(int32_t playerInputId) -> void{
 this->logUtil->putF((new StringMaker())->append("Setting PlayerOutOfPlay with playerInputId: ")->appendint(playerInputId)->toString(), this, "setPlayerOutOfPlay");
     
 this->playersInPlay[playerInputId]= false;
@@ -255,7 +248,7 @@ this->playersInPlay[playerInputId]= false;
 }
 
 
-    public: std::vector<bool> getPlayersInPlay(){
+    auto LocalPlayerInputIdFactory::getPlayersInPlay() -> std::vector<bool>{
 
 
 
@@ -265,7 +258,6 @@ this->playersInPlay[playerInputId]= false;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODEVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODEVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoDomNodeView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,19 +73,8 @@
 #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
-class TransformInfoDomNodeView: public TransformInfoDomNode, public DomNodeInterface {
 
-public: TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface, std::string mapping) : TransformInfoDomNode(transformInfoInterface, mapping){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-public: TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface) : TransformInfoDomNode(transformInfoInterface){
+TransformInfoDomNodeView::TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface, std::string mapping) : TransformInfoDomNode(transformInfoInterface, mapping){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,7 +84,7 @@ public: TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface)
 }
 
 
-public: TransformInfoDomNodeView(std::string name, std::string mappedName) : TransformInfoDomNode(name, mappedName){
+TransformInfoDomNodeView::TransformInfoDomNodeView(TransformInfoInterface* transformInfoInterface) : TransformInfoDomNode(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -95,7 +94,17 @@ public: TransformInfoDomNodeView(std::string name, std::string mappedName) : Tra
 }
 
 
-public: TransformInfoDomNodeView(std::string name) : TransformInfoDomNode(name, 
+TransformInfoDomNodeView::TransformInfoDomNodeView(std::string name, std::string mappedName) : TransformInfoDomNode(name, mappedName){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+TransformInfoDomNodeView::TransformInfoDomNodeView(std::string name) : TransformInfoDomNode(name, 
                             nullptr){
 
                         //super/this constructor call is in the constructor initializer list.
@@ -108,7 +117,7 @@ public: TransformInfoDomNodeView(std::string name) : TransformInfoDomNode(name,
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TransformInfoDomNodeView::toXmlNode(Document* document) -> Node*{
 
     TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
@@ -150,7 +159,6 @@ componentNodeAttributes->setNamedItem(mappedNameAttr);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODEVIEW_CPP

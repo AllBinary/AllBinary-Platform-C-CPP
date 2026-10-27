@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Object.h"
         
 #include <java/io/File.h>
-
-      
 
 
 
@@ -50,17 +53,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/file/AbFile.h"
+        class AbFile;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbFileNativeUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static File* get(AbFile* file);
 
+
+            
+    public: AbFileNativeUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILENATIVEUTIL_H_COMPLETE
+        #if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include("org/allbinary/logic/io/file/AbFile.h")
+#include "org/allbinary/logic/io/file/AbFile.h"
+#endif
+
+        #endif
+    

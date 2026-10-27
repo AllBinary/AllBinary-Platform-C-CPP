@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_ANIMATION_ANIMATIONEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/AnimationEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,26 +56,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnimationEventHandler: public BasicEventHandler {
+auto AnimationEventHandler::eventHandler_owner() -> AnimationEventHandler* { static std::unique_ptr<AnimationEventHandler> value(new AnimationEventHandler()); return value.get(); }
+AnimationEventHandler* AnimationEventHandler::eventHandler = AnimationEventHandler::eventHandler_owner();
 
-    private: static AnimationEventHandler* eventHandler() { static std::unique_ptr<AnimationEventHandler> value(new AnimationEventHandler()); return value.get(); }
+AnimationEventHandler::AnimationEventHandler(){
+}
+
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static AnimationEventHandler* getInstance(){
+    auto AnimationEventHandler::getInstance() -> AnimationEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationEventHandler::eventHandler();
+                        return AnimationEventHandler::eventHandler;
     
 }
 
 
-private: AnimationEventHandler(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_ANIMATIONEVENTHANDLER_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_STRING_COMMONSTRINGS_H
         #define ORG_ALLBINARY_STRING_COMMONSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class JsMethod;
+class JsProperty;
 
 
 
@@ -59,14 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommonStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static CommonStrings* instance() { static std::unique_ptr<CommonStrings> value(new CommonStrings()); return value.get(); }
+    private: static CommonStrings* instance_owner();
+    private: static CommonStrings* instance;
 
     public: static CommonStrings* getInstance();
 
+
+            
+    public: CommonStrings();
+        
     public: const std::string EMPTY = "Empty";
 
     public: const std::string CREATE_IMAGE = "createImage";
@@ -103,10 +111,7 @@ class CommonStrings
 
     public: const std::string RIGHT = "right";
 
-    public: const std::vector<std::string> DIRECTION_NAME = 
-                                                        {
-                                                            this->DOWN,this->LEFT,this->RIGHT,this->UP
-                                                        };
+    public: std::vector<std::string> DIRECTION_NAME;
 
     public: const std::string CREATE = "Create";
 
@@ -130,7 +135,7 @@ class CommonStrings
 
     public: const std::string VISIT = "visit";
 
-    public: const std::string START_METHOD_NAME = this->START;
+    public: const std::string START_METHOD_NAME;
 
     public: const std::string END_METHOD_NAME = "end";
 
@@ -180,3 +185,19 @@ class CommonStrings
 
 
         #endif //ORG_ALLBINARY_STRING_COMMONSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_STRING_COMMONSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_STRING_COMMONSTRINGS_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+
+        #endif
+    

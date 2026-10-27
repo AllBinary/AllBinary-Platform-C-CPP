@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONS_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/file/upload/HttpFilePermissions.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,26 +82,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/file/upload/FileUploadData.h"
 
-class HttpFilePermissions
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AbFile* file;
-
-    private: BasicArrayList* userRoles = new BasicArrayListD();
-
-public: HttpFilePermissions(AbPath* fullPath){
+HttpFilePermissions::HttpFilePermissions(AbPath* fullPath) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), userRoles(new BasicArrayListD()){
 this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemString(), FileUploadData::getInstance()->FILE));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->putF("Loading Privileges: " +fullPath->toFileSystemString(), this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Loading Privileges: ") +JavaString::valueOf(fullPath->toFileSystemString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -106,10 +105,10 @@ this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemStri
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->putF("User Roles: " +this->userRoles, this, this->commonStrings->CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("User Roles: ") +JavaString::valueOf(this->userRoles), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -117,7 +116,7 @@ this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemStri
 }
 
 
-    public: bool isFile(){
+    auto HttpFilePermissions::isFile() -> bool{
 
 
 
@@ -127,7 +126,7 @@ this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemStri
 }
 
 
-    public: BasicArrayList* getUserRoles(){
+    auto HttpFilePermissions::getUserRoles() -> BasicArrayList*{
 
 
 
@@ -137,7 +136,6 @@ this->file= AbFile::createAbFileFromAbPath(new AbPath(fullPath->toFileSystemStri
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONS_CPP

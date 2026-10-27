@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
         #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,29 +43,13 @@
             #include "java/lang/Integer.h"
         
 #include <java/io/ByteArrayInputStream.h>
-
-      
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/FileInputStream.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/StreamUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class LogUtil;
+class StreamUtil;
+class StringMaker;
+class StringUtil;
 
 
 
@@ -79,20 +68,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //J2SE - PC
 class ResourceUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
+    private: static ResourceUtil* instance_owner();
+    private: static ResourceUtil* instance;
 
     public: static ResourceUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: std::string path = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string path;
 
-    private: std::string ext = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string ext;
 
 private: ResourceUtil();
 
@@ -116,3 +110,34 @@ private: ResourceUtil();
 
 
         #endif //ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayInputStream.h>)
+#include <java/io/ByteArrayInputStream.h>
+#endif
+#if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/FileInputStream.h>)
+#include <java/io/FileInputStream.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
+#include <org/allbinary/logic/io/StreamUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

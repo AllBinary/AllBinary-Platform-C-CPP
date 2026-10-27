@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESImage.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,25 +89,11 @@
         #include "org/allbinary/image/opengles/OpenGLSurfaceChangedInterface.h"
 #include "org/allbinary/image/opengles/OpenGLESImageProperties.h"
 //OpenGLESNullImageJ2MEJavaLibrary
-class OpenGLESImage
-            : public Object
-        , public OpenGLSurfaceChangedInterface {
+auto OpenGLESImage::NULL_OPENGL_IMAGE_owner() -> OpenGLESImage* { static std::unique_ptr<OpenGLESImage> value(new OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY)); return value.get(); }
+OpenGLESImage* OpenGLESImage::NULL_OPENGL_IMAGE = OpenGLESImage::NULL_OPENGL_IMAGE_owner();
+BasicArrayList* OpenGLESImage::texture2dList = new BasicArrayListD();
 
-    public: static OpenGLESImage* NULL_OPENGL_IMAGE() { static std::unique_ptr<OpenGLESImage> value(new OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY)); return value.get(); }
-
-    public: static inline BasicArrayList* texture2dList = new BasicArrayListD();
-
-    public: static inline const int32_t TYPE = 4;
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: PlatformTextureBaseFactory* textureFactory;
-
-    public: PlatformBitmapBase* openGLBitmap;
-
-    public: OpenGLESImageProperties* openGLESImageProperties = new OpenGLESImageProperties();
-
-public: OpenGLESImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory){
+OpenGLESImage::OpenGLESImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : commonStrings(CommonStrings::getInstance()), openGLESImageProperties(new OpenGLESImageProperties()){
 this->openGLBitmap= bitmapFactory->createBitmap(image);
     
 this->textureFactory= textureFactory;
@@ -107,16 +103,16 @@ this->textureFactory= textureFactory;
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL* gl){
+    auto OpenGLESImage::set(GL* gl) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    protected: bool initTexture(GL10* gl){
+    auto OpenGLESImage::initTexture(GL10* gl) -> bool{
 
 
 
@@ -126,15 +122,15 @@ this->textureFactory= textureFactory;
 }
 
 
-    public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESImage::drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z) -> void{
 }
 
 
-    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESImage::draw(GL10* gl, int32_t x, int32_t y, int32_t z) -> void{
 }
 
 
-    public: int32_t getType(){
+    auto OpenGLESImage::getType() -> int32_t{
 
 
 
@@ -144,7 +140,6 @@ this->textureFactory= textureFactory;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGE_CPP

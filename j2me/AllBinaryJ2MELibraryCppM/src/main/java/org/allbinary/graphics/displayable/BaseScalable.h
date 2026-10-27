@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_BASESCALABLE_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_BASESCALABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,10 +54,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/ScalableListener.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseScalable
-            : public Object
+            : public virtual Object
         , public ScalableListener {
 
+
+            
+    public: BaseScalable();
+        
     public: float getRatio(float ratio);
 
     public: int32_t getLeft(int32_t xOffset);
@@ -67,3 +80,13 @@ class BaseScalable
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_BASESCALABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_BASESCALABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_BASESCALABLE_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/displayable/ScalableListener.h")
+#include "org/allbinary/graphics/displayable/ScalableListener.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_DISPLAYCHANGEEVENT_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_DISPLAYCHANGEEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/event/DisplayChangeEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DisplayChangeEvent: public AllBinaryEventObject {
 
-public: DisplayChangeEvent(Object* anyType) : AllBinaryEventObject(anyType){
+DisplayChangeEvent::DisplayChangeEvent(Object* anyType) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,7 +69,6 @@ public: DisplayChangeEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_DISPLAYCHANGEEVENT_CPP

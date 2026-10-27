@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VisitorInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class VisitorInterface
+            : public virtual Object
+         {
 
     public: virtual Object* visit(Object* anyType) = 0;
+    public: Object* visit(const std::string& anyType) { return visit(JavaString::box(anyType)); }
 
 };
 
@@ -58,3 +70,10 @@ class VisitorInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_H_COMPLETE
+        
+        #endif
+    

@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -21,60 +26,24 @@
         
             #include "java/lang/Thread.h"
         
-#include <org/allbinary/thread/ARunnable.h>
 
-      
-#include <javax/microedition/media/Player.h>
-
-      
+class Player;
 #include <javax/microedition/media/PlayerListener.h>
-
-      
-#include <org/allbinary/AvianUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/media/audio/NoSound.h>
-
-      
-#include <org/allbinary/media/audio/PlayerStateUtil.h>
-
-      
-#include <org/allbinary/media/audio/Sound.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelper.h>
-
-      
-#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class AvianUtil;
+class PreLogUtil;
+class StringMaker;
+class StringUtil;
+class NoSound;
+class PlayerStateUtil;
+class Sound;
+class CommonLabels;
+class CommonSeps;
+class CommonStrings;
+class GameTickTimeDelayHelper;
+class GameTickTimeDelayHelperFactory;
+class TimeDelayHelper;
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -93,41 +62,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //#include "org/allbinary/media/audio/music/MusicManagerPlayerListener.h"
+        //class MusicManagerPlayerListener;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MusicManager
-            : public Object
+            : public virtual Object
          {
+private: class MusicManagerPlayerListener;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps;
 
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
+    private: BasicArrayListUtil* basicArrayListUtil;
 
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
+    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper;
 
-    private: PlayerStateUtil* playerStateUtil = PlayerStateUtil::getInstance();
+    private: PlayerStateUtil* playerStateUtil;
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
+    private: TimeDelayHelper* timeDelayHelper;
 //Handle Media ending for Avian
 //inner= member=true isStatic=
-class MusicManagerPlayerListener
-            : public Object
+private: class MusicManagerPlayerListener
+            : public virtual Object
         , public PlayerListener {
 
+
+            
+    public: MusicManagerPlayerListener();
+        
     public: void playerUpdate(Player* player, std::string event, Object* eventData);
 
 };
 
             
-    private: PlayerListener* playerListener = new MusicManagerPlayerListener();
+    private: PlayerListener* playerListener;
 
     private: const std::string PLAY = "Play ";
 
     private: const std::string SONG = " for: ";
 
-    private: const std::string NEXT_SONG = CommonLabels::getInstance()->NEXT +" Song: ";
+    private: const std::string NEXT_SONG;
 
     private: const std::string STOPPING = "Stopping Current Song: ";
 
@@ -141,11 +119,11 @@ class MusicManagerPlayerListener
 
     private: BasicArrayList* songList;
 
-    private: Sound* currentSongSound = NoSound::getInstance();
+    private: Sound* currentSongSound;
 
-    private: Sound* nextSongSound = NoSound::getInstance();
+    private: Sound* nextSongSound;
 
-    private: bool reset= false;
+    private: bool reset_= false;
 
     private: bool noDuration= false;
 
@@ -175,3 +153,62 @@ public: MusicManager(Class* musicServiceClass, BasicArrayList* songList);
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H_COMPLETE
+        
+#if __has_include(<javax/microedition/media/Player.h>)
+#include <javax/microedition/media/Player.h>
+#endif
+#if __has_include(<javax/microedition/media/PlayerListener.h>)
+#include <javax/microedition/media/PlayerListener.h>
+#endif
+#if __has_include(<org/allbinary/AvianUtil.h>)
+#include <org/allbinary/AvianUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/audio/NoSound.h>)
+#include <org/allbinary/media/audio/NoSound.h>
+#endif
+#if __has_include(<org/allbinary/media/audio/PlayerStateUtil.h>)
+#include <org/allbinary/media/audio/PlayerStateUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/audio/Sound.h>)
+#include <org/allbinary/media/audio/Sound.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelper.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/time/GameTickTimeDelayHelperFactory.h>)
+#include <org/allbinary/time/GameTickTimeDelayHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+
+        #endif
+    

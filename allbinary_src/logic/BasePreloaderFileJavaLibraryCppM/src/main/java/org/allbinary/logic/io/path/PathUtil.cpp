@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/path/PathUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,31 +69,24 @@
 #include "org/allbinary/logic/io/path/AbFilePath.h"
 #include "org/allbinary/logic/io/path/AbPath.h"
 //Used to correct user input for paths
-class PathUtil
-            : public Object
-         {
+auto PathUtil::instance_owner() -> PathUtil* { static std::unique_ptr<PathUtil> value(new PathUtil()); return value.get(); }
+PathUtil* PathUtil::instance = PathUtil::instance_owner();
 
-    private: static PathUtil* instance() { static std::unique_ptr<PathUtil> value(new PathUtil()); return value.get(); }
-
-    public: static PathUtil* getInstance(){
+    auto PathUtil::getInstance() -> PathUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathUtil::instance();
+                        return PathUtil::instance;
     
 }
 
 
-    private: AbPathData* abPathData = AbPathData::getInstance();
-
-    private: FilePathData* filePathData = FilePathData::getInstance();
-
-private: PathUtil(){
+PathUtil::PathUtil() : abPathData(AbPathData::getInstance()), filePathData(FilePathData::getInstance()){
 }
 
 
-    public: std::string getExtensionWithAbFilePath(AbFilePath* abFilePath){
+    auto PathUtil::getExtensionWithAbFilePath(AbFilePath* abFilePath) -> std::string{
 
 
 
@@ -93,7 +96,7 @@ private: PathUtil(){
 }
 
 
-    public: std::string getExtensionWithAbPath(AbPath* abPath){
+    auto PathUtil::getExtensionWithAbPath(AbPath* abPath) -> std::string{
 
 
 
@@ -105,7 +108,7 @@ private: PathUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtensionWithAbFilePath(AbFilePath* abFilePath){
+    auto PathUtil::getWithoutExtensionWithAbFilePath(AbFilePath* abFilePath) -> std::string{
 
 
 
@@ -117,7 +120,7 @@ private: PathUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtensionWithAbPath(AbPath* abPath){
+    auto PathUtil::getWithoutExtensionWithAbPath(AbPath* abPath) -> std::string{
 
 
 
@@ -129,7 +132,7 @@ private: PathUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWithoutExtension(std::string filePath){
+    auto PathUtil::getWithoutExtension(std::string filePath) -> std::string{
 
     int32_t indexOfFileExtensionDelmiter = this->abPathData->getExtensionIndex(filePath);;
     
@@ -154,7 +157,7 @@ private: PathUtil(){
 }
 
 
-    public: bool isValid(std::string path){
+    auto PathUtil::isValid(std::string path) -> bool{
 
                         if(this->isValidStart(path))
                         
@@ -184,7 +187,7 @@ private: PathUtil(){
 }
 
 
-    private: bool isValidStart(std::string path){
+    auto PathUtil::isValidStart(std::string path) -> bool{
 
                         if(path[0] == this->abPathData->SEPARATORCHAR || path[0] == '.')
                         
@@ -211,7 +214,7 @@ private: PathUtil(){
 }
 
 
-    private: bool isValidEnd(std::string path){
+    auto PathUtil::isValidEnd(std::string path) -> bool{
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
@@ -254,12 +257,12 @@ private: PathUtil(){
 }
 
 
-    public: std::string adjustStart(std::string path){
+    auto PathUtil::adjustStart(std::string path) -> std::string{
 
                         if(!this->isValidStart(path))
                         
                                     {
-                                    path= this->abPathData->SEPARATOR +path;
+                                    path= JavaString::valueOf(this->abPathData->SEPARATOR) +JavaString::valueOf(path);
     
 
                                     }
@@ -273,12 +276,12 @@ private: PathUtil(){
 }
 
 
-    public: std::string adjustEnd(std::string path){
+    auto PathUtil::adjustEnd(std::string path) -> std::string{
 
                         if(!this->isValidEnd(path))
                         
                                     {
-                                    path= path +this->abPathData->SEPARATOR;
+                                    path= JavaString::valueOf(path) +JavaString::valueOf(this->abPathData->SEPARATOR);
     
 
                                     }
@@ -292,7 +295,7 @@ private: PathUtil(){
 }
 
 
-    public: std::string adjust(std::string path){
+    auto PathUtil::adjust(std::string path) -> std::string{
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
@@ -329,7 +332,7 @@ private: PathUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* removeNameFromPath(std::string path){
+    auto PathUtil::removeNameFromPath(std::string path) -> AbPath*{
 
     int32_t endIndex = JavaString::lastIndexOf(path, this->abPathData->SEPARATOR);;
     
@@ -384,7 +387,6 @@ private: PathUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_PATH_PATHUTIL_CPP

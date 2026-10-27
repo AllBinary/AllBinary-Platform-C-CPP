@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/TopUBoundBounceAIFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,13 +95,13 @@
         #include "org/allbinary/game/ag/ai/BoundBounceAI.h"
 #include "org/allbinary/game/ag/ai/ReverseVelocityBoundsVisitor.h"
 
-class TopUBoundBounceAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+TopUBoundBounceAIFactory::TopUBoundBounceAIFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto TopUBoundBounceAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
     VelocityInterfaceCompositeInterface* velocityInterfaceCompositeInterface = dynamic_cast<VelocityInterfaceCompositeInterface*>(ownerLayerInterface);;
     
@@ -125,7 +135,6 @@ class TopUBoundBounceAIFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_TOPUBOUNDBOUNCEAIFACTORY_CPP

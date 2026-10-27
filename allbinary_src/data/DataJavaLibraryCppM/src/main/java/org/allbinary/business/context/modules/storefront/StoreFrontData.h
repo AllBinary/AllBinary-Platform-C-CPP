@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTDATA_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreFrontData
-            : public Object
+            : public virtual Object
          {
 
-    private: static StoreFrontData* instance() { static std::unique_ptr<StoreFrontData> value(new StoreFrontData()); return value.get(); }
+    private: static StoreFrontData* instance_owner();
+    private: static StoreFrontData* instance;
 
     public: static StoreFrontData* getInstance();
 
+
+            
+    public: StoreFrontData();
+        
     public: const std::string CANCEL = "Cancel Store Front";
 
     public: const std::string SELECT = "Select Store Front";
@@ -130,3 +144,10 @@ class StoreFrontData
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONTDATA_H_COMPLETE
+        
+        #endif
+    

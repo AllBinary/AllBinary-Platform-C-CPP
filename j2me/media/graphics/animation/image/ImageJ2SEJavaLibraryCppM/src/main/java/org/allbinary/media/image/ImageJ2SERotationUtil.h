@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,14 +39,8 @@
             #include "java/lang/Math.h"
         
 #include <java/awt/Graphics2D.h>
-
-      
 #include <java/awt/Image.h>
-
-      
 #include <java/awt/image/BufferedImage.h>
-
-      
 
 
 
@@ -60,20 +59,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageUtil.h"
-#include "org/allbinary/media/image/ImageJ2SEUtil.h"
+        class ImageUtil;
+class ImageJ2SEUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageJ2SERotationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageJ2SERotationUtil* instance() { static std::unique_ptr<ImageJ2SERotationUtil> value(new ImageJ2SERotationUtil()); return value.get(); }
+    private: static ImageJ2SERotationUtil* instance_owner();
+    private: static ImageJ2SERotationUtil* instance;
 
     public: static ImageJ2SERotationUtil* getInstance();
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
+    private: ImageUtil* imageUtil;
 
-    private: ImageJ2SEUtil* imageJ2SEUtil = ImageJ2SEUtil::getInstance();
+    private: ImageJ2SEUtil* imageJ2SEUtil;
 
 private: ImageJ2SERotationUtil();
 
@@ -83,7 +87,7 @@ private: ImageJ2SERotationUtil();
 
     private: BufferedImage* drawRotatedImageRadians(Image* bufferedImage, BufferedImage* newBufferedImage, Graphics2D* g, double radians);
 
-    private: const double TWO_PIE = 2 *Math::PI;
+    private: const double TWO_PIE;
 
     public: BufferedImage* rotateImage(Image* bufferedImage, BufferedImage* newBufferedImage, int32_t totalAngle);
 
@@ -99,3 +103,25 @@ private: ImageJ2SERotationUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_H_COMPLETE
+        #if __has_include(<java/awt/Graphics2D.h>)
+#include <java/awt/Graphics2D.h>
+#endif
+#if __has_include(<java/awt/Image.h>)
+#include <java/awt/Image.h>
+#endif
+#if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageUtil.h")
+#include "org/allbinary/media/image/ImageUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageJ2SEUtil.h")
+#include "org/allbinary/media/image/ImageJ2SEUtil.h"
+#endif
+
+        #endif
+    

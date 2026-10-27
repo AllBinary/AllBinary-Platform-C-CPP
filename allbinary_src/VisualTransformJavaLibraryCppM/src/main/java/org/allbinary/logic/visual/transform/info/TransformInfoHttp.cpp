@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTP_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttp.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -90,13 +100,8 @@
 #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpInterface.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
-class TransformInfoHttp: public TransformInfo, public TransformInfoHttpInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbContext* abContext;
-
-public: TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext, bool crud) : TransformInfo(){
+TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext, bool crud) : TransformInfo(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,10 +111,10 @@ public: TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMap, PageCont
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, "Constructor(HashMap, PageContext, boolean)");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, PageContext, boolean)");
     
 
                                     }
@@ -119,7 +124,7 @@ this->override(propertiesHashMap);
 }
 
 
-public: TransformInfoHttp(HttpServletRequest* request, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfo(){
+TransformInfoHttp::TransformInfoHttp(HttpServletRequest* request, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfo(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -129,10 +134,10 @@ public: TransformInfoHttp(HttpServletRequest* request, HashMap<Object*, Object*>
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, "Constructor(HttpServletRequest, HashMap, PageContext)");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HttpServletRequest, HashMap, PageContext)");
     
 
                                     }
@@ -144,7 +149,7 @@ this->override(propertiesHashMap);
 }
 
 
-public: TransformInfoHttp(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfo(){
+TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfo(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -154,10 +159,10 @@ public: TransformInfoHttp(HashMap<Object*, Object*>* databaseHashMap, HashMap<Ob
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, "Constructor(HashMap, HashMap, PageContext)");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, HashMap, PageContext)");
     
 
                                     }
@@ -167,7 +172,7 @@ this->set(databaseHashMap);
 }
 
 
-public: TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfo(){
+TransformInfoHttp::TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfo(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -177,10 +182,10 @@ public: TransformInfoHttp(HashMap<Object*, Object*>* propertiesHashMap, PageCont
 this->abContext= new AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, "Constructor(HashMap, PageContext)");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, "Constructor(HashMap, PageContext)");
     
 
                                     }
@@ -190,7 +195,7 @@ this->set(propertiesHashMap);
 }
 
 
-public: TransformInfoHttp(TransformInfoHttp* parentViewOfThisTransformInfoInterface) : TransformInfo(){
+TransformInfoHttp::TransformInfoHttp(TransformInfoHttp* parentViewOfThisTransformInfoInterface) : TransformInfo(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -204,12 +209,12 @@ this->abContext= new AbContext(parentViewOfThisTransformInfoInterface->getProper
 
                 //@Throws(Exception.constructor)
             
-    private: void set(HashMap<Object*, Object*>* hashMap){
+    auto TransformInfoHttp::set(HashMap<Object*, Object*>* hashMap) -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +hashMap->toString(), this, "set()");
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "set()");
     
 
                                     }
@@ -264,7 +269,7 @@ this->setDataFile(hashMap->get(transformInfoData->DATAFILENAME));
 this->setData(hashMap->get(transformInfoData->DATA));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->log(), this, "set()");
@@ -275,7 +280,7 @@ this->setData(hashMap->get(transformInfoData->DATA));
 }
 
 
-    public: WeblisketSessionInterface* getWeblisketSession(){
+    auto TransformInfoHttp::getWeblisketSession() -> WeblisketSessionInterface*{
 
 
 
@@ -285,7 +290,7 @@ this->setData(hashMap->get(transformInfoData->DATA));
 }
 
 
-    public: PageContext* getPageContext(){
+    auto TransformInfoHttp::getPageContext() -> PageContext*{
 
 
 
@@ -295,7 +300,7 @@ this->setData(hashMap->get(transformInfoData->DATA));
 }
 
 
-    public: HashMap<Object*, Object*>* getPropertiesHashMap(){
+    auto TransformInfoHttp::getPropertiesHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -307,7 +312,7 @@ this->setData(hashMap->get(transformInfoData->DATA));
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getTemplateFilePath(){
+    auto TransformInfoHttp::getTemplateFilePath() -> AbPath*{
 
 
 
@@ -319,7 +324,7 @@ this->setData(hashMap->get(transformInfoData->DATA));
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getObjectConfigFilePath(){
+    auto TransformInfoHttp::getObjectConfigFilePath() -> AbPath*{
 
 
 
@@ -331,7 +336,7 @@ this->setData(hashMap->get(transformInfoData->DATA));
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getDataFilePath(){
+    auto TransformInfoHttp::getDataFilePath() -> AbPath*{
 
 
 
@@ -341,7 +346,6 @@ this->setData(hashMap->get(transformInfoData->DATA));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTP_CPP

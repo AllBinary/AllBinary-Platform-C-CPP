@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_CPP
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/activity/MidletActivityBase.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -78,70 +88,71 @@
         #include "org/allbinary/android/activity/SimpleProgressActivityInterface.h"
 #include "org/allbinary/android/activity/KeyInputViewCompositeInterface.h"
 
-class MidletActivityBase: public Activity, public GameFeatureListenerInterface, public GameInitializedListenerInterface, public SimpleProgressActivityInterface, public KeyInputViewCompositeInterface, public GenericMotionEventVerifyInterface {
 
-    public: void onGameFeatureChange(GameFeatureEvent* gameFeatureEvent){
+MidletActivityBase::MidletActivityBase() {
+        }
+        
+    auto MidletActivityBase::onGameFeatureChange(GameFeatureEvent* gameFeatureEvent) -> void{
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto MidletActivityBase::onEvent(AllBinaryEventObject* eventObject) -> void{
 }
 
 
-    public: void onGameInitialized(GameInitializedEvent* gameInitializedEvent){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void onSetProgress(int32_t value, std::string text){
+    auto MidletActivityBase::onGameInitialized(GameInitializedEvent* gameInitializedEvent) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onDismissProgress(std::vector<int32_t> animationSequence){
+    auto MidletActivityBase::onSetProgress(int32_t value, std::string text) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence){
+    auto MidletActivityBase::onDismissProgress(std::vector<int32_t> animationSequence) -> void{
 }
 
 
-    public: View* getRootView(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: View* getView(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: void setKeyInputView(View* keyInputView){
-}
-
-
-    public: bool onGenericMotionEvent(MotionEvent* event){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-};
-
+                //@Throws(Exception.constructor)
             
+    auto MidletActivityBase::onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence) -> void{
+}
 
+
+    auto MidletActivityBase::getRootView() -> View*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto MidletActivityBase::getView() -> View*{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto MidletActivityBase::setKeyInputView(View* keyInputView) -> void{
+}
+
+
+    auto MidletActivityBase::onGenericMotionEvent(MotionEvent* event) -> bool{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_CPP

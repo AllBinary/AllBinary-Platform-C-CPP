@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/music/MusicManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,82 +97,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/music/MusicStrings.h"
 
-class MusicManager
-            : public Object
-         {
 
-    public: static void pause(Activity* activity, Class* musicServiceClass){
-
-    CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();;
-    
-
-    Intent* musicPauseIntent = new Intent(dynamic_cast<Context*>(activity), musicServiceClass);;
-    
-musicPauseIntent->putExtra(commonStateStrings->ON_START_COMMAND, 1);
-    
-activity->startService(musicPauseIntent);
-    
-}
-
-
-    public: static void resume(Activity* activity, Class* musicServiceClass){
-
-                        if(AndroidServicesUtil::getInstance()->isServiceRunning(musicServiceClass->getName()))
-                        
-                                    {
-                                    
-    CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();;
-    
-
-    Intent* musicResumeIntent = new Intent(activity, musicServiceClass);;
-    
-musicResumeIntent->putExtra(commonStateStrings->ON_START_COMMAND, 2);
-    
-activity->startService(musicResumeIntent);
-    
-
-                                    }
-                                
-}
-
-
-    private: const std::string PLAY = "Play ";
-
-    private: const std::string FOR = " for: ";
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: MusicStrings* musicStrings = MusicStrings::getInstance();
-
-    private: CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();
-
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    private: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
-
-    private: AndroidServicesUtil* androidServicesUtil = AndroidServicesUtil::getInstance();
-
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
-
-    private: TimeDelayHelper* timeDelayHelper2 = new TimeDelayHelper(1200);
-
-    private: BasicArrayList* songList;
-
-    private: Sound* currentSongSound = NoSound::getInstance();
-
-    private: Sound* nextSongSound = NoSound::getInstance();
-
-    private: int32_t leftVolume = 100;
-
-    private: int32_t rightVolume = 100;
-
-    private: Class* musicServiceClass;
-
-    private: Intent* currentIntent;
-
-public: MusicManager(Class* musicServiceClass, BasicArrayList* songList){
+MusicManager::MusicManager(Class* musicServiceClass, BasicArrayList* songList) : commonStrings(CommonStrings::getInstance()), musicStrings(MusicStrings::getInstance()), commonStateStrings(CommonStateStrings::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), resourceUtil(ResourceUtil::getInstance()), androidServicesUtil(AndroidServicesUtil::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()), timeDelayHelper(new TimeDelayHelper(0)), timeDelayHelper2(new TimeDelayHelper(1200)), currentSongSound(NoSound::getInstance()), nextSongSound(NoSound::getInstance()){
 PreLogUtil::put(this->commonStateStrings->CONTEXT +this->resourceUtil->getContext(), this, this->commonStrings->CONSTRUCTOR);
     
 this->musicServiceClass= musicServiceClass;
@@ -174,7 +110,7 @@ this->songList= songList;
 }
 
 
-    public: void nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume){
+    auto MusicManager::nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume) -> void{
 
                         if(nextSongSound == 
                                     nullptr
@@ -197,13 +133,13 @@ this->reset();
 }
 
 
-    public: void reset(){
+    auto MusicManager::reset() -> void{
 this->timeDelayHelper->delay= 0;
     
 }
 
 
-    public: void process(){
+    auto MusicManager::process() -> void{
 
                         if(this->songList->size() == 0)
                         
@@ -255,7 +191,7 @@ this->timeDelayHelper->delay= 0;
 }
 
 
-    public: void show(){
+    auto MusicManager::show() -> void{
 
 
 
@@ -276,7 +212,7 @@ PreLogUtil::put((new StringMaker())->append(this->PLAY)->append(sound->getResour
 }
 
 
-    public: void startNewSong(){
+    auto MusicManager::startNewSong() -> void{
 
         try {
             this->resourceUtil->getContext()->stopService(this->currentIntent);
@@ -331,7 +267,7 @@ this->resourceUtil->getContext()->startService(this->currentIntent);
 
                                     }
                                 
-PreLogUtil::putOE(this->commonStrings->EXCEPTION_LABEL +resource, this, this->commonStrings->PROCESS, &e);
+PreLogUtil::putOE(JavaString::valueOf(this->commonStrings->EXCEPTION_LABEL) +JavaString::valueOf(resource), this, this->commonStrings->PROCESS, &e);
     
 }
 
@@ -340,13 +276,47 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION_LABEL +resource, this, this->co
 
                 //@Throws(Exception.constructor)
             
-    public: void stop(){
+    auto MusicManager::stop() -> void{
 this->resourceUtil->getContext()->stopService(this->currentIntent);
     
 }
 
 
-};
+    auto MusicManager::pause(Activity* activity, Class* musicServiceClass) -> void{
 
-            
+    CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();;
+    
 
+    Intent* musicPauseIntent = new Intent(dynamic_cast<Context*>(activity), musicServiceClass);;
+    
+musicPauseIntent->putExtra(commonStateStrings->ON_START_COMMAND, 1);
+    
+activity->startService(musicPauseIntent);
+    
+}
+
+
+    auto MusicManager::resume(Activity* activity, Class* musicServiceClass) -> void{
+
+                        if(AndroidServicesUtil::getInstance()->isServiceRunning(musicServiceClass->getName()))
+                        
+                                    {
+                                    
+    CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();;
+    
+
+    Intent* musicResumeIntent = new Intent(activity, musicServiceClass);;
+    
+musicResumeIntent->putExtra(commonStateStrings->ON_START_COMMAND, 2);
+    
+activity->startService(musicResumeIntent);
+    
+
+                                    }
+                                
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_CPP

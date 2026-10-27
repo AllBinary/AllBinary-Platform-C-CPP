@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDSYSTEMPROPERTIES_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDSYSTEMPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/android/AndroidSystemProperties.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -62,29 +72,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AndroidSystemProperties
-            : public Object
-         {
+auto AndroidSystemProperties::SINGLETON_owner() -> AndroidSystemProperties* { static std::unique_ptr<AndroidSystemProperties> value(new AndroidSystemProperties(ResourceUtil::getInstance()->getContext())); return value.get(); }
+AndroidSystemProperties* AndroidSystemProperties::SINGLETON = AndroidSystemProperties::SINGLETON_owner();
 
-    private: static AndroidSystemProperties* SINGLETON() { static std::unique_ptr<AndroidSystemProperties> value(new AndroidSystemProperties(ResourceUtil::getInstance()->getContext())); return value.get(); }
-
-    public: static AndroidSystemProperties* getInstance(){
+    auto AndroidSystemProperties::getInstance() -> AndroidSystemProperties*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidSystemProperties::SINGLETON();
+                        return AndroidSystemProperties::SINGLETON;
     
 }
 
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: AndroidSystemProperties(Context* context){
+AndroidSystemProperties::AndroidSystemProperties(Context* context) : commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: std::string getDeviceId(){
+    auto AndroidSystemProperties::getDeviceId() -> std::string{
 
 
 
@@ -94,7 +99,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getDeviceSoftwareVersion(){
+    auto AndroidSystemProperties::getDeviceSoftwareVersion() -> std::string{
 
 
 
@@ -104,7 +109,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getLine1Number(){
+    auto AndroidSystemProperties::getLine1Number() -> std::string{
 
 
 
@@ -114,7 +119,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getNetworkCountryIso(){
+    auto AndroidSystemProperties::getNetworkCountryIso() -> std::string{
 
 
 
@@ -124,7 +129,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getNetworkOperator(){
+    auto AndroidSystemProperties::getNetworkOperator() -> std::string{
 
 
 
@@ -134,7 +139,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getNetworkOperatorName(){
+    auto AndroidSystemProperties::getNetworkOperatorName() -> std::string{
 
 
 
@@ -144,7 +149,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getSimCountryIso(){
+    auto AndroidSystemProperties::getSimCountryIso() -> std::string{
 
 
 
@@ -154,7 +159,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getSimOperator(){
+    auto AndroidSystemProperties::getSimOperator() -> std::string{
 
 
 
@@ -164,7 +169,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getSimOperatorName(){
+    auto AndroidSystemProperties::getSimOperatorName() -> std::string{
 
 
 
@@ -174,7 +179,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getSimSerialNumber(){
+    auto AndroidSystemProperties::getSimSerialNumber() -> std::string{
 
 
 
@@ -184,7 +189,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getSubscriberId(){
+    auto AndroidSystemProperties::getSubscriberId() -> std::string{
 
 
 
@@ -194,7 +199,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getVoiceMailAlphaTag(){
+    auto AndroidSystemProperties::getVoiceMailAlphaTag() -> std::string{
 
 
 
@@ -204,7 +209,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getVoiceMailNumber(){
+    auto AndroidSystemProperties::getVoiceMailNumber() -> std::string{
 
 
 
@@ -214,7 +219,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: int32_t getNetworkType(){
+    auto AndroidSystemProperties::getNetworkType() -> int32_t{
 
 
 
@@ -224,7 +229,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: int32_t getPhoneType(){
+    auto AndroidSystemProperties::getPhoneType() -> int32_t{
 
 
 
@@ -234,7 +239,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getBoard(){
+    auto AndroidSystemProperties::getBoard() -> std::string{
 
 
 
@@ -244,7 +249,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getBrand(){
+    auto AndroidSystemProperties::getBrand() -> std::string{
 
 
 
@@ -254,7 +259,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getDevice(){
+    auto AndroidSystemProperties::getDevice() -> std::string{
 
 
 
@@ -264,7 +269,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getFingerprint(){
+    auto AndroidSystemProperties::getFingerprint() -> std::string{
 
 
 
@@ -274,7 +279,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getHost(){
+    auto AndroidSystemProperties::getHost() -> std::string{
 
 
 
@@ -284,7 +289,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getId(){
+    auto AndroidSystemProperties::getId() -> std::string{
 
 
 
@@ -294,7 +299,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getModel(){
+    auto AndroidSystemProperties::getModel() -> std::string{
 
 
 
@@ -304,7 +309,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getProduct(){
+    auto AndroidSystemProperties::getProduct() -> std::string{
 
 
 
@@ -314,7 +319,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getTags(){
+    auto AndroidSystemProperties::getTags() -> std::string{
 
 
 
@@ -324,7 +329,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: int64_t getTime(){
+    auto AndroidSystemProperties::getTime() -> int64_t{
 
 
 
@@ -334,7 +339,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getType(){
+    auto AndroidSystemProperties::getType() -> std::string{
 
 
 
@@ -344,7 +349,7 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-    public: std::string getUser(){
+    auto AndroidSystemProperties::getUser() -> std::string{
 
 
 
@@ -354,7 +359,6 @@ public: AndroidSystemProperties(Context* context){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDSYSTEMPROPERTIES_CPP

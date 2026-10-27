@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class StringMaker;
+class JsMethod;
+class JsConstructor;
+class JsProperty;
 
 
 
@@ -62,10 +57,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/color/BasicColorUtil.h"
+        class BasicColorUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicColor
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
@@ -88,7 +87,7 @@ class BasicColor
 
     public: int16_t alpha;
 
-: BasicColor(int32_t alphaValue, int32_t value, std::string name);
+public: BasicColor(int32_t alphaValue, int32_t value, std::string name);
 
     public: int32_t intValue();
 
@@ -112,3 +111,28 @@ class BasicColor
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsConstructor.h>)
+#include <jsinterop/annotations/JsConstructor.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include("org/allbinary/graphics/color/BasicColorUtil.h")
+#include "org/allbinary/graphics/color/BasicColorUtil.h"
+#endif
+
+        #endif
+    

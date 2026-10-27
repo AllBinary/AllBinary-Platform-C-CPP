@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_VIEW_NULLEMULATORVIEW_H
         #define ORG_ALLBINARY_VIEW_NULLEMULATORVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Displayable.h>
-
-      
-#include <javax/microedition/midlet/MIDlet.h>
-
-      
+class Displayable;
+class MIDlet;
 
 
 
@@ -55,15 +56,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/EmulatorViewInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullEmulatorView
-            : public Object
+            : public virtual Object
         , public EmulatorViewInterface {
 
-    public: static NullEmulatorView* NULL_EMULATOR_VIEW() { static std::unique_ptr<NullEmulatorView> value(new NullEmulatorView()); return value.get(); }
+    private: static NullEmulatorView* NULL_EMULATOR_VIEW_owner();
+    public: static NullEmulatorView* NULL_EMULATOR_VIEW;
 
+
+            
+    public: NullEmulatorView();
+        
     public: void setMidlet(MIDlet* midlet);
 
     public: void onEmulatorInitComplete(Object* midletActivity);
+    public: void onEmulatorInitComplete(const std::string& midletActivity) { return onEmulatorInitComplete(JavaString::box(midletActivity)); }
 
     public: void onSetDisplayable(Displayable* displayable);
 
@@ -73,3 +84,19 @@ class NullEmulatorView
 
 
         #endif //ORG_ALLBINARY_VIEW_NULLEMULATORVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_VIEW_NULLEMULATORVIEW_H_COMPLETE)
+        #define ORG_ALLBINARY_VIEW_NULLEMULATORVIEW_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Displayable.h>)
+#include <javax/microedition/lcdui/Displayable.h>
+#endif
+#if __has_include(<javax/microedition/midlet/MIDlet.h>)
+#include <javax/microedition/midlet/MIDlet.h>
+#endif
+#if __has_include("org/allbinary/view/EmulatorViewInterface.h")
+#include "org/allbinary/view/EmulatorViewInterface.h"
+#endif
+
+        #endif
+    

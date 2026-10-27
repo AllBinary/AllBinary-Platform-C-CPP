@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_CPP
+        #define VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/listings/InventoryViewSearchInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,25 +57,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryViewSearchInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string searchSingleStaticPage() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string searchSingleDynamicPage() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::vector<std::string> search() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string getProduct(std::string product) = 0;
-
-};
-
-            
-
+        #endif //VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_CPP

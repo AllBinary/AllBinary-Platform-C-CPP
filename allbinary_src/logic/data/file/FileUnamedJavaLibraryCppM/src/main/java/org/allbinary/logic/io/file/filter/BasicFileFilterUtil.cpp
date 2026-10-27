@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/filter/BasicFileFilterUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/filter/VisitorFileFilter.h"
 
-class BasicFileFilterUtil
-            : public Object
-         {
 
-    public: static FileFilter* getInstance(std::string extension){
+BasicFileFilterUtil::BasicFileFilterUtil(){
+}
+
+
+    auto BasicFileFilterUtil::getInstance(std::string extension) -> FileFilter*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -80,11 +91,6 @@ vector->add(extension);
 }
 
 
-private: BasicFileFilterUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILTER_BASICFILEFILTERUTIL_CPP

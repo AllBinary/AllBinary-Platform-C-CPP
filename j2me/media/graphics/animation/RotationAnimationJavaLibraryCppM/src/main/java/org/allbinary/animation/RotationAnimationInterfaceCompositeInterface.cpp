@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACECOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACECOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/RotationAnimationInterfaceCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,8 @@
         #include "org/allbinary/animation/IndexedAnimationInterfaceCompositeInterface.h"
 #include "org/allbinary/animation/RotationAnimation.h"
 
-class RotationAnimationInterfaceCompositeInterface: public IndexedAnimationInterfaceCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual RotationAnimation* getRotationAnimationInterface() = 0;
 
-    public: virtual void setFrame(int32_t index) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACECOMPOSITEINTERFACE_CPP

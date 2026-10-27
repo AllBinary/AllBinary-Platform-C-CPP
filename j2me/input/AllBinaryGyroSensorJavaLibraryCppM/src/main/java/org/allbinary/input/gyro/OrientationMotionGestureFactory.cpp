@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONMOTIONGESTUREFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONMOTIONGESTUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/OrientationMotionGestureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrientationMotionGestureFactory
-            : public Object
-         {
+Object* OrientationMotionGestureFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static OrientationMotionGestureFactory* getInstance(){
+    auto OrientationMotionGestureFactory::getInstance() -> OrientationMotionGestureFactory*{
 
                         if(OrientationMotionGestureFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -79,19 +85,7 @@ class OrientationMotionGestureFactory
 }
 
 
-    public: MotionGestureInput* LEFT;
-
-    public: MotionGestureInput* RIGHT;
-
-    public: MotionGestureInput* UP;
-
-    public: MotionGestureInput* DOWN;
-
-    public: MotionGestureInput* ROLL_LEFT;
-
-    public: MotionGestureInput* ROLL_RIGHT;
-
-private: OrientationMotionGestureFactory(){
+OrientationMotionGestureFactory::OrientationMotionGestureFactory(){
 
     int32_t MAX = InputFactory::getInstance()->MAX;;
     
@@ -110,7 +104,6 @@ this->ROLL_RIGHT= new MotionGestureInput(MAX -25, "Roll Right");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONMOTIONGESTUREFACTORY_CPP

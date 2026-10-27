@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class Features;
+class GameFeatureFactory;
+class AllBinaryLayer;
 
 
 
@@ -56,18 +55,48 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/collision/SourceCollisionHelper.h"
-#include "org/allbinary/game/collision/CollisionHelper.h"
+        class SourceCollisionHelper;
+class CollisionHelper;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollidableHelperFactory
-            : public Object
+            : public virtual Object
          {
 
     public: static CollisionHelper* getInstance();
 
+
+            
+    public: CollidableHelperFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEHELPERFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/GameFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/GameFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/collision/SourceCollisionHelper.h")
+#include "org/allbinary/game/collision/SourceCollisionHelper.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollisionHelper.h")
+#include "org/allbinary/game/collision/CollisionHelper.h"
+#endif
+
+        #endif
+    

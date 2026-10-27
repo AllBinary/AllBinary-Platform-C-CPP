@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/BasicTransformerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,23 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicTransformerInterface: public CompositeTransformInfoInterface {
+//Interface - declared in the header
 
-    public: virtual void setInputStream(InputStream* inputStream) = 0;
 
-    public: virtual void setURIResolver(URIResolver* uriResolver) = 0;
 
-    public: virtual StreamSource* getStreamSource() = 0;
-
-    public: virtual InputStream* getInputStream() = 0;
-
-    public: virtual URIResolver* getURIResolver() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string translate(std::string xmlDocumentStr) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMERINTERFACE_CPP

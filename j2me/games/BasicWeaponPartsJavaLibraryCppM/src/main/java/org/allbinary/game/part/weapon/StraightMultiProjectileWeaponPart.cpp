@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_STRAIGHTMULTIPROJECTILEWEAPONPART_CPP
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_STRAIGHTMULTIPROJECTILEWEAPONPART_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/weapon/StraightMultiProjectileWeaponPart.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,9 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
 
-class StraightMultiProjectileWeaponPart: public BasicWeaponPart {
 
-    public: static StraightMultiProjectileWeaponPart* createStraightMultiProjectileWeaponPart(Animation* animationInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool){
+    auto StraightMultiProjectileWeaponPart::createStraightMultiProjectileWeaponPart(Animation* animationInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool) -> StraightMultiProjectileWeaponPart*{
 
 
 
@@ -88,11 +97,7 @@ class StraightMultiProjectileWeaponPart: public BasicWeaponPart {
 }
 
 
-    private: WeaponLayerCircularPool* weaponLayerCircularStaticPool;
-
-    private: int32_t total;
-
-public: StraightMultiProjectileWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool, int32_t total, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) : BasicWeaponPart(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship){
+StraightMultiProjectileWeaponPart::StraightMultiProjectileWeaponPart(Animation* animationInterface, AllBinaryLayer* sourceLayerInterface, WeaponLayerCircularPool* weaponLayerCircularStaticPool, int32_t total, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) : BasicWeaponPart(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship), noDecimalTrigTable(NoDecimalTrigTable::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -106,11 +111,9 @@ this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
 }
 
 
-    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface){
+    auto StraightMultiProjectileWeaponPart::processScore(AllBinaryLayerManager* allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface) -> void{
 
     AllBinaryLayer* sourceLayerInterface = this->getOwnerLayerInterface();;
     
@@ -121,10 +124,10 @@ this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
     int32_t halfWidth = (reducedWidth>>1);;
     
 
-    int32_t x = this->relativeRelationship.getX();;
+    int32_t x = this->relativeRelationship->getX();;
     
 
-    int32_t y = this->relativeRelationship.getY();;
+    int32_t y = this->relativeRelationship->getY();;
     
 
     int64_t sine= 0;;
@@ -173,7 +176,6 @@ next += increment;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_WEAPON_STRAIGHTMULTIPROJECTILEWEAPONPART_CPP

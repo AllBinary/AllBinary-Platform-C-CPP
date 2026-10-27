@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,13 +103,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/money/payment/transaction/TransactionResultEntityInterface.h"
 
-class TransactionResultEntity: public AbSqlBean, public TransactionResultEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string tableName = "vresults";
-
-public: TransactionResultEntity() : AbSqlBean(new UserDbInitInfo()){
+TransactionResultEntity::TransactionResultEntity() : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -111,7 +116,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void remove(std::string userName, std::string orderNumber){
+    auto TransactionResultEntity::remove(std::string userName, std::string orderNumber) -> void{
 
         try {
             
@@ -121,13 +126,13 @@ whereHashMap->put(OrderData::ID, orderNumber);
     
 whereHashMap->put(UserData::USERNAME, userName);
     
-super.deleteWhere(whereHashMap);
+AbSqlBean::deleteWhere(whereHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "remove");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "remove");
     
 
                                     }
@@ -137,10 +142,10 @@ super.deleteWhere(whereHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "remove", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "remove", &e);
     
 
                                     }
@@ -150,7 +155,7 @@ super.deleteWhere(whereHashMap);
 }
 
 
-    public: void add(std::string userName, std::string orderNumber, TransactionResultInterface* transactionResultInterface){
+    auto TransactionResultEntity::add(std::string userName, std::string orderNumber, TransactionResultInterface* transactionResultInterface) -> void{
 
         try {
             
@@ -172,13 +177,13 @@ values->add(time);
     
 values->add(time);
     
-super.insert(values);
+AbSqlBean::insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "add");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "add");
     
 
                                     }
@@ -188,10 +193,10 @@ super.insert(values);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "add", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "add", &e);
     
 
                                     }
@@ -201,7 +206,7 @@ super.insert(values);
 }
 
 
-    public: TransactionResultInterface* getTransactionResultInterface(std::string orderNumber){
+    auto TransactionResultEntity::getTransactionResultInterface(std::string orderNumber) -> TransactionResultInterface*{
 
         try {
             
@@ -212,7 +217,7 @@ super.insert(values);
     
 updateKeyAndValue->put(OrderData::ID, orderNumber);
     
-resultHashMap= super.getRow(updateKeyAndValue);
+resultHashMap= AbSqlBean::getRow(updateKeyAndValue);
     
 
                         if(resultHashMap != 
@@ -224,10 +229,10 @@ resultHashMap= super.getRow(updateKeyAndValue);
     TransactionResult* transactionResult = new TransactionResult(resultHashMap);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "getTransactionResultInterface");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "getTransactionResultInterface");
     
 
                                     }
@@ -256,10 +261,10 @@ resultHashMap= super.getRow(updateKeyAndValue);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "getTransactionResultInterface", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "getTransactionResultInterface", &e);
     
 
                                     }
@@ -275,32 +280,32 @@ resultHashMap= super.getRow(updateKeyAndValue);
 }
 
 
-    public: std::string createTableStatement(){
+    auto TransactionResultEntity::createTableStatement() -> std::string{
 
     PaymentTransactionKeysFactory* paymentTransactionKeysFactory = PaymentTransactionKeysFactory::getInstance();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(OrderData::ID)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(UserData::USERNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(this->sqlStrings->START)->append(OrderData::ID)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(UserData::USERNAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(paymentTransactionKeysFactory->RESULT.toString())->append(this->sqlTypeStrings.MAX_INT_NOT_NULL)->append(paymentTransactionKeysFactory->PNREF.toString())->append(this->sqlTypeStrings.TWELVE_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(paymentTransactionKeysFactory->RESULT->toString())->append(this->sqlTypeStrings->MAX_INT_NOT_NULL)->append(paymentTransactionKeysFactory->PNREF->toString())->append(this->sqlTypeStrings->TWELVE_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(paymentTransactionKeysFactory->RESPMSG.toString())->append(this->sqlTypeStrings.BLOB_NOT_NULL)->append(paymentTransactionKeysFactory->AUTHCODE.toString())->append(this->sqlTypeStrings.SIX_CHAR_COLUMN_NOT_NULL)->append(paymentTransactionKeysFactory->AVSADDR.toString())->append(this->sqlTypeStrings.ONE_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(paymentTransactionKeysFactory->RESPMSG->toString())->append(this->sqlTypeStrings->BLOB_NOT_NULL)->append(paymentTransactionKeysFactory->AUTHCODE->toString())->append(this->sqlTypeStrings->SIX_CHAR_COLUMN_NOT_NULL)->append(paymentTransactionKeysFactory->AVSADDR->toString())->append(this->sqlTypeStrings->ONE_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(paymentTransactionKeysFactory->AVSZIP.toString())->append(this->sqlTypeStrings.ONE_CHAR_COLUMN_NOT_NULL)->append(paymentTransactionKeysFactory->ORIGRESULT.toString())->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(paymentTransactionKeysFactory->STATUS.toString())->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer->append(paymentTransactionKeysFactory->AVSZIP->toString())->append(this->sqlTypeStrings->ONE_CHAR_COLUMN_NOT_NULL)->append(paymentTransactionKeysFactory->ORIGRESULT->toString())->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(paymentTransactionKeysFactory->STATUS->toString())->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer->append(paymentTransactionKeysFactory->FRAUDCODE.toString())->append(this->sqlTypeStrings.TWO_INT_NOT_NULL);
+stringBuffer->append(paymentTransactionKeysFactory->FRAUDCODE->toString())->append(this->sqlTypeStrings->TWO_INT_NOT_NULL);
     
-stringBuffer->append(paymentTransactionKeysFactory->FRAUDMSG.toString())->append(this->sqlTypeStrings.MAX_INT_NOT_NULL);
+stringBuffer->append(paymentTransactionKeysFactory->FRAUDMSG->toString())->append(this->sqlTypeStrings->MAX_INT_NOT_NULL);
     
-stringBuffer->append(paymentTransactionKeysFactory->ERRCODE.toString())->append(this->sqlTypeStrings.MAX_INT_NOT_NULL);
+stringBuffer->append(paymentTransactionKeysFactory->ERRCODE->toString())->append(this->sqlTypeStrings->MAX_INT_NOT_NULL);
     
-stringBuffer->append(paymentTransactionKeysFactory->SCORE.toString())->append(this->sqlTypeStrings.THREE_INT_NOT_NULL);
+stringBuffer->append(paymentTransactionKeysFactory->SCORE->toString())->append(this->sqlTypeStrings->THREE_INT_NOT_NULL);
     
-stringBuffer->append(paymentTransactionKeysFactory->REASON1.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->REASON2.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->REASON3.toString());
+stringBuffer->append(paymentTransactionKeysFactory->REASON1->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->REASON2->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->REASON3->toString());
     
-stringBuffer->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION1.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION2.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION3.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION4.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION5.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION6.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION7.toString())->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(EntryData::getInstance()->LASTMODIFIED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(OrderData::ID)->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION1->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION2->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION3->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION4->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION5->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION6->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(paymentTransactionKeysFactory->EXCEPTION7->toString())->append(this->sqlTypeStrings->FOUR_INT_NOT_NULL)->append(EntryData::getInstance()->LASTMODIFIED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(EntryData::getInstance()->TIMECREATED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(OrderData::ID)->append(this->sqlStrings->END);
     
 
 
@@ -311,27 +316,26 @@ stringBuffer->append(this->sqlTypeStrings.FOUR_INT_NOT_NULL)->append(paymentTran
 }
 
 
-    public: std::string createTable(){
+    auto TransactionResultEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-    public: std::string dropTable(){
+    auto TransactionResultEntity::dropTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_TRANSACTION_TRANSACTIONRESULTENTITY_CPP

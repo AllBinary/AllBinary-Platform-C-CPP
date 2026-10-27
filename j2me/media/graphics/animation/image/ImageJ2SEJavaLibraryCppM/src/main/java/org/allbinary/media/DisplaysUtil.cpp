@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_DISPLAYSUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_DISPLAYSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/DisplaysUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,23 +78,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DisplaysUtil
-            : public Object
-         {
 
-    public: static DisplaysUtil* getInstance(){
+DisplaysUtil::DisplaysUtil() {
+        }
+        
+    auto DisplaysUtil::getInstance() -> DisplaysUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisplaysUtil::instance();
+                        return DisplaysUtil::instance;
     
 }
 
+auto DisplaysUtil::instance_owner() -> DisplaysUtil* { static std::unique_ptr<DisplaysUtil> value(new DisplaysUtil()); return value.get(); }
+DisplaysUtil* DisplaysUtil::instance = DisplaysUtil::instance_owner();
 
-    private: static DisplaysUtil* instance() { static std::unique_ptr<DisplaysUtil> value(new DisplaysUtil()); return value.get(); }
-
-    public: Rectangle* getPrimaryScreenSize(){
+    auto DisplaysUtil::getPrimaryScreenSize() -> Rectangle*{
 
     Dimension* dimension = Toolkit::getDefaultToolkit()->getScreenSize();;
     
@@ -97,7 +107,7 @@ class DisplaysUtil
 }
 
 
-    public: std::vector<Rectangle*> getScreenSizesAsRectangleArray(){
+    auto DisplaysUtil::getScreenSizesAsRectangleArray() -> std::vector<Rectangle*>{
 
     GraphicsEnvironment* graphicsEnvironment = GraphicsEnvironment::getLocalGraphicsEnvironment();;
     
@@ -145,7 +155,6 @@ rectangleArray[index]= rectangle;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_DISPLAYSUTIL_CPP

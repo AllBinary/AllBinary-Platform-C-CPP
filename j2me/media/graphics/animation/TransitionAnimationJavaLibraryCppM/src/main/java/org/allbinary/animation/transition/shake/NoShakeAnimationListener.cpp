@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_NOSHAKEANIMATIONLISTENER_CPP
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_NOSHAKEANIMATIONLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/transition/shake/NoShakeAnimationListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/transition/shake/ShakeAnimationListener.h"
 
-class NoShakeAnimationListener: public ShakeAnimationListener {
 
-    public: static inline ShakeAnimationListener* NO_SHAKE_ANIMATION_LISTENER = new NoShakeAnimationListener();
+NoShakeAnimationListener::NoShakeAnimationListener() {
+        }
+        ShakeAnimationListener* NoShakeAnimationListener::NO_SHAKE_ANIMATION_LISTENER = new NoShakeAnimationListener();
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_NOSHAKEANIMATIONLISTENER_CPP

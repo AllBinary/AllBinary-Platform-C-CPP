@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,51 +38,21 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/eclipse/swt/SWT.h>
-
-      
-#include <org/eclipse/swt/widgets/Canvas.h>
-
-      
-#include <org/eclipse/swt/widgets/Composite.h>
-
-      
-#include <org/eclipse/swt/graphics/GC.h>
-
-      
-#include <org/eclipse/swt/graphics/ImageData.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/eclipse/swt/events/PaintEvent.h>
-
-      
-#include <org/eclipse/swt/events/PaintListener.h>
-
-      
-#include <org/eclipse/swt/graphics/Transform.h>
-
-      
-#include <org/eclipse/swt/widgets/Display.h>
-
-      
-#include <org/microemu/app/BareMain.h>
-
-      
+class SWT;
+class Canvas;
+class Composite;
+class GC;
+class ImageData;
+class LogUtil;
+class CommonSeps;
+class CommonStrings;
+class StringMaker;
+class CommonLabels;
+class PaintEvent;
+class PaintListener;
+class Transform;
+class Display;
+class BareMain;
 
 
 
@@ -96,21 +71,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/Image.h"
+        class Image;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageUtil* instance() { static std::unique_ptr<ImageUtil> value(new ImageUtil()); return value.get(); }
+    private: static ImageUtil* instance_owner();
+    private: static ImageUtil* instance;
 
     public: static ImageUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+    private: CommonSeps* commonSeps;
 
     private: std::string IIOIMAGE_POOL_NAME = "IIOIMAGE_POOL_NAME";
 
@@ -154,3 +134,58 @@ private: ImageUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_H_COMPLETE
+        #if __has_include(<org/eclipse/swt/SWT.h>)
+#include <org/eclipse/swt/SWT.h>
+#endif
+#if __has_include(<org/eclipse/swt/widgets/Canvas.h>)
+#include <org/eclipse/swt/widgets/Canvas.h>
+#endif
+#if __has_include(<org/eclipse/swt/widgets/Composite.h>)
+#include <org/eclipse/swt/widgets/Composite.h>
+#endif
+#if __has_include(<org/eclipse/swt/graphics/GC.h>)
+#include <org/eclipse/swt/graphics/GC.h>
+#endif
+#if __has_include(<org/eclipse/swt/graphics/ImageData.h>)
+#include <org/eclipse/swt/graphics/ImageData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/eclipse/swt/events/PaintEvent.h>)
+#include <org/eclipse/swt/events/PaintEvent.h>
+#endif
+#if __has_include(<org/eclipse/swt/events/PaintListener.h>)
+#include <org/eclipse/swt/events/PaintListener.h>
+#endif
+#if __has_include(<org/eclipse/swt/graphics/Transform.h>)
+#include <org/eclipse/swt/graphics/Transform.h>
+#endif
+#if __has_include(<org/eclipse/swt/widgets/Display.h>)
+#include <org/eclipse/swt/widgets/Display.h>
+#endif
+#if __has_include(<org/microemu/app/BareMain.h>)
+#include <org/microemu/app/BareMain.h>
+#endif
+#if __has_include("org/allbinary/media/image/Image.h")
+#include "org/allbinary/media/image/Image.h"
+#endif
+
+        #endif
+    

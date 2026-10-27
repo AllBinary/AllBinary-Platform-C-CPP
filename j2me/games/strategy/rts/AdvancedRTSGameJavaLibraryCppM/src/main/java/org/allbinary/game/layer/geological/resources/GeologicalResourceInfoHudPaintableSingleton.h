@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintable.h"
+        class GeologicalResourceInfoHudPaintable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeologicalResourceInfoHudPaintableSingleton
-            : public Object
+            : public virtual Object
          {
 
-    private: static GeologicalResourceInfoHudPaintable* instance() { static std::unique_ptr<GeologicalResourceInfoHudPaintable> value(new GeologicalResourceInfoHudPaintable()); return value.get(); }
+    private: static GeologicalResourceInfoHudPaintable* instance_owner();
+    private: static GeologicalResourceInfoHudPaintable* instance;
 
     public: static GeologicalResourceInfoHudPaintable* getInstance();
 
+
+            
+    public: GeologicalResourceInfoHudPaintableSingleton();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLESINGLETON_H_COMPLETE
+        #if __has_include("org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintable.h")
+#include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintable.h"
+#endif
+
+        #endif
+    

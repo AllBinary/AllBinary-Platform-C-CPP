@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/PointsUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,25 +71,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PointsUtil
-            : public Object
-         {
 
-    private: static PointsUtil* instance() { static std::unique_ptr<PointsUtil> value(new PointsUtil()); return value.get(); }
+PointsUtil::PointsUtil() {
+        }
+        auto PointsUtil::instance_owner() -> PointsUtil* { static std::unique_ptr<PointsUtil> value(new PointsUtil()); return value.get(); }
+PointsUtil* PointsUtil::instance = PointsUtil::instance_owner();
 
-    public: static PointsUtil* getInstance(){
+    auto PointsUtil::getInstance() -> PointsUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointsUtil::instance();
+                        return PointsUtil::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* doTransforms(BasicArrayList* pointVector, double angle, GPoint* fulcrumPoint){
+    auto PointsUtil::doTransforms(BasicArrayList* pointVector, double angle, GPoint* fulcrumPoint) -> BasicArrayList*{
 
 
 
@@ -89,7 +99,6 @@ class PointsUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_CPP

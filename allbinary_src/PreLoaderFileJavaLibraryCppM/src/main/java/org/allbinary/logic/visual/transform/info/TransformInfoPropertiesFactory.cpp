@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIESFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoPropertiesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,31 +83,26 @@
         #include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoProperties.h"
 
-class TransformInfoPropertiesFactory
-            : public Object
-         {
+auto TransformInfoPropertiesFactory::instance_owner() -> TransformInfoPropertiesFactory* { static std::unique_ptr<TransformInfoPropertiesFactory> value(new TransformInfoPropertiesFactory()); return value.get(); }
+TransformInfoPropertiesFactory* TransformInfoPropertiesFactory::instance = TransformInfoPropertiesFactory::instance_owner();
 
-    private: static TransformInfoPropertiesFactory* instance() { static std::unique_ptr<TransformInfoPropertiesFactory> value(new TransformInfoPropertiesFactory()); return value.get(); }
-
-    public: static TransformInfoPropertiesFactory* getInstance(){
+    auto TransformInfoPropertiesFactory::getInstance() -> TransformInfoPropertiesFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoPropertiesFactory::instance();
+                        return TransformInfoPropertiesFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransformInfoPropertiesFactory(){
+TransformInfoPropertiesFactory::TransformInfoPropertiesFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoProperties* getInstance(Node* node){
+    auto TransformInfoPropertiesFactory::getInstance(Node* node) -> TransformInfoProperties*{
 
     NodeList* transformInfoChildNodeList = node->getChildNodes();;
     
@@ -114,10 +119,10 @@ private: TransformInfoPropertiesFactory(){
     std::string name = attrNode->getValue();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(CommonLabels::getInstance()->NEXT +" View Name: " +name, this, "toTransformInfoPropertiesHashMap()");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(CommonLabels::getInstance()->NEXT) +JavaString::valueOf(" View Name: ")) +JavaString::valueOf(name), this, "toTransformInfoPropertiesHashMap()");
     
 
                                     }
@@ -173,7 +178,6 @@ private: TransformInfoPropertiesFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIESFACTORY_CPP

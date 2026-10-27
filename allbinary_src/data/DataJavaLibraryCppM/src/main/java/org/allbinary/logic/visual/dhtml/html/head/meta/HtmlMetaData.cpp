@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETADATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETADATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlMetaData
-            : public Object
-         {
+auto HtmlMetaData::instance_owner() -> HtmlMetaData* { static std::unique_ptr<HtmlMetaData> value(new HtmlMetaData()); return value.get(); }
+HtmlMetaData* HtmlMetaData::instance = HtmlMetaData::instance_owner();
 
-    private: static HtmlMetaData* instance() { static std::unique_ptr<HtmlMetaData> value(new HtmlMetaData()); return value.get(); }
+HtmlMetaData::HtmlMetaData(){
+}
 
-    public: static HtmlMetaData* getInstance(){
+
+    auto HtmlMetaData::getInstance() -> HtmlMetaData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlMetaData::instance();
+                        return HtmlMetaData::instance;
     
 }
 
 
-private: HtmlMetaData(){
-}
 
 
-    public: std::string NAME = "HTMLMETA_NAME";
-
-    public: std::string LABEL = "HTMLMETA_LABEL";
-
-    public: std::string VALUE = "meta";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETADATA_CPP

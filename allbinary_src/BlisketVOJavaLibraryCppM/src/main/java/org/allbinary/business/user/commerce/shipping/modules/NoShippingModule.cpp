@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/modules/NoShippingModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,21 +65,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
-class NoShippingModule
-            : public Object
-        , public ShippingInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string name = "No Shipping";
-
-    private: const std::string description = "This shipping method is for items that are not shipped.";
-
-public: NoShippingModule(){
+NoShippingModule::NoShippingModule() : commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: Money* getCost(OrderInterface* order){
+    auto NoShippingModule::getCost(OrderInterface* order) -> Money*{
 
 
 
@@ -79,7 +80,7 @@ public: NoShippingModule(){
 }
 
 
-    public: std::string getDescription(){
+    auto NoShippingModule::getDescription() -> std::string{
 
 
 
@@ -89,7 +90,7 @@ public: NoShippingModule(){
 }
 
 
-    public: std::string getName(){
+    auto NoShippingModule::getName() -> std::string{
 
 
 
@@ -99,7 +100,6 @@ public: NoShippingModule(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_CPP
+        #define TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/transform/info/TransformInfoTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,33 +82,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoTag: public ModifyTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string name;
-
-    private: std::string storeName;
-
-    private: std::string objectFile;
-
-    private: std::string anyType;
-
-    private: std::string objectConfigFile;
-
-    private: std::string objectConfig;
-
-    private: std::string templateFile;
-
-    private: std::string template_;
-
-    private: std::string dataFile;
-
-    private: std::string data;
-
-    private: std::string type;
-
-public: TransformInfoTag() : ModifyTag(new TransformInfoRequestHelperFactory()){
+TransformInfoTag::TransformInfoTag() : ModifyTag(new TransformInfoRequestHelperFactory()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +93,7 @@ public: TransformInfoTag() : ModifyTag(new TransformInfoRequestHelperFactory()){
 }
 
 
-public: TransformInfoTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : ModifyTag(tagHelperFactoryInterface){
+TransformInfoTag::TransformInfoTag(TagHelperFactoryInterface* tagHelperFactoryInterface) : ModifyTag(tagHelperFactoryInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -118,7 +103,7 @@ public: TransformInfoTag(TagHelperFactoryInterface* tagHelperFactoryInterface) :
 }
 
 
-    public: void setName(std::string value){
+    auto TransformInfoTag::setName(std::string value) -> void{
 this->name= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->name);
@@ -126,7 +111,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->NAME, this->
 }
 
 
-    public: void setStoreName(std::string value){
+    auto TransformInfoTag::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->storeName);
@@ -134,7 +119,7 @@ this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->sto
 }
 
 
-    public: void setObjectFile(std::string value){
+    auto TransformInfoTag::setObjectFile(std::string value) -> void{
 this->objectFile= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTFILENAME, this->objectFile);
@@ -142,7 +127,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTFILENA
 }
 
 
-    public: void setObject(std::string value){
+    auto TransformInfoTag::setObject(std::string value) -> void{
 this->anyType= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECT, this->anyType);
@@ -150,7 +135,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECT, this
 }
 
 
-    public: void setTemplateFile(std::string value){
+    auto TransformInfoTag::setTemplateFile(std::string value) -> void{
 this->templateFile= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->TEMPLATEFILENAME, this->templateFile);
@@ -158,7 +143,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->TEMPLATEFILE
 }
 
 
-    public: void setTemplate(std::string value){
+    auto TransformInfoTag::setTemplate(std::string value) -> void{
 this->template_= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->TEMPLATE, this->template_);
@@ -166,7 +151,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->TEMPLATE, th
 }
 
 
-    public: void setDataFile(std::string value){
+    auto TransformInfoTag::setDataFile(std::string value) -> void{
 this->dataFile= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->DATAFILENAME, this->dataFile);
@@ -174,7 +159,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->DATAFILENAME
 }
 
 
-    public: void setData(std::string value){
+    auto TransformInfoTag::setData(std::string value) -> void{
 this->data= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->DATA, this->data);
@@ -182,7 +167,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->DATA, this->
 }
 
 
-    public: void setObjectConfigFile(std::string value){
+    auto TransformInfoTag::setObjectConfigFile(std::string value) -> void{
 this->objectConfigFile= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTCONFIGFILENAME, this->objectConfigFile);
@@ -190,7 +175,7 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTCONFIG
 }
 
 
-    public: void setObjectConfig(std::string value){
+    auto TransformInfoTag::setObjectConfig(std::string value) -> void{
 this->objectConfig= value;
     
 this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTCONFIG, this->objectConfig);
@@ -198,16 +183,16 @@ this->getPropertiesHashMap()->put(TransformInfoData::getInstance()->OBJECTCONFIG
 }
 
 
-    public: void setType(std::string value){
+    auto TransformInfoTag::setType(std::string value) -> void{
 this->type= value;
     
 this->getPropertiesHashMap()->put(OutputTypeData::getInstance()->NAME, this->type);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("TransformInfoTag type set: " +this->type, this, "setType");
+                                    this->logUtil->putF(JavaString::valueOf("TransformInfoTag type set: ") +JavaString::valueOf(this->type), this, "setType");
     
 
                                     }
@@ -215,7 +200,7 @@ this->getPropertiesHashMap()->put(OutputTypeData::getInstance()->NAME, this->typ
 }
 
 
-    public: std::string getName(){
+    auto TransformInfoTag::getName() -> std::string{
 
 
 
@@ -225,7 +210,7 @@ this->getPropertiesHashMap()->put(OutputTypeData::getInstance()->NAME, this->typ
 }
 
 
-    public: std::string getObjectFile(){
+    auto TransformInfoTag::getObjectFile() -> std::string{
 
 
 
@@ -237,14 +222,14 @@ this->getPropertiesHashMap()->put(OutputTypeData::getInstance()->NAME, this->typ
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto TransformInfoTag::doStartTag() -> int32_t{
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return ModifyTag::doStartTag();;
     
 
                 //: 
@@ -263,7 +248,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_CPP

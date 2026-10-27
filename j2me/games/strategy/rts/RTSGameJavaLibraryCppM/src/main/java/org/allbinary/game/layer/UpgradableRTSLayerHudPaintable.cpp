@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/UpgradableRTSLayerHudPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,42 +80,25 @@
 #include "org/allbinary/game/layer/UpgradableWideRTSLayerPaintable.h"
 #include "org/allbinary/game/layer/RTSLayer.h"
 
-class UpgradableRTSLayerHudPaintable: public SelectionHudPaintable {
+auto UpgradableRTSLayerHudPaintable::instance_owner() -> UpgradableRTSLayerHudPaintable* { static std::unique_ptr<UpgradableRTSLayerHudPaintable> value(new UpgradableRTSLayerHudPaintable()); return value.get(); }
+UpgradableRTSLayerHudPaintable* UpgradableRTSLayerHudPaintable::instance = UpgradableRTSLayerHudPaintable::instance_owner();
 
-    private: static UpgradableRTSLayerHudPaintable* instance() { static std::unique_ptr<UpgradableRTSLayerHudPaintable> value(new UpgradableRTSLayerHudPaintable()); return value.get(); }
-
-    public: static UpgradableRTSLayerHudPaintable* getInstance(){
+    auto UpgradableRTSLayerHudPaintable::getInstance() -> UpgradableRTSLayerHudPaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpgradableRTSLayerHudPaintable::instance();
+                        return UpgradableRTSLayerHudPaintable::instance;
     
 }
 
 
-    private: const std::string PERCENT = "%";
-
-    private: CollidableDestroyableDamageableLayer* rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
-
-    protected: int32_t costY= 0;
-
-    protected: int32_t costY1= 0;
-
-    private: int32_t percentCompleteX2= 0;
-
-    private: RTSLayerCompositePaintable* rtsLayerCompositePaintableLateInit;
-
-    private: int32_t charHeight= 0;
-
-    private: int32_t charWidth= 0;
-
-private: UpgradableRTSLayerHudPaintable(){
+UpgradableRTSLayerHudPaintable::UpgradableRTSLayerHudPaintable() : rtsLayer(CollidableDestroyableDamageableLayer::getNullInstance()), percentCompleteArray(CharArrayFactory::getInstance()->getZeroCharArray()){
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
-super.updateMeasurement(graphics);
+    auto UpgradableRTSLayerHudPaintable::updateMeasurement(Graphics* graphics) -> void{
+SelectionHudPaintable::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -117,8 +110,8 @@ this->charWidth= MyFontProcessor::defaultCharWidth(font);
 }
 
 
-    public: void update(){
-super.update();
+    auto UpgradableRTSLayerHudPaintable::update() -> void{
+SelectionHudPaintable::update();
     
 
     CommonButtons* commonButtons = CommonButtons::getInstance();;
@@ -150,7 +143,7 @@ this->percentCompleteX2= this->imageX +commonButtons->STANDARD_BUTTON_SIZE -this
 }
 
 
-    public: void updateSelectionInfo(){
+    auto UpgradableRTSLayerHudPaintable::updateSelectionInfo() -> void{
 
     RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->getRtsLayer());;
     
@@ -163,15 +156,7 @@ this->setName(rtsLayer->getName());
 }
 
 
-    private: int32_t percentComplete= 0;
-
-    private: int32_t percentCompleteX= 0;
-
-    private: std::vector<char> percentCompleteArray = CharArrayFactory::getInstance()->getZeroCharArray();
-
-    private: int32_t currentTotalDigits= 0;
-
-    public: void updateInfo(){
+    auto UpgradableRTSLayerHudPaintable::updateInfo() -> void{
 
     RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->getRtsLayer());;
     
@@ -208,8 +193,8 @@ this->currentTotalDigits= this->getPrimitiveLongUtil()->getCurrentTotalDigits();
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paint(graphics);
+    auto UpgradableRTSLayerHudPaintable::paint(Graphics* graphics) -> void{
+SelectionHudPaintable::paint(graphics);
     
 this->rtsLayerCompositePaintableLateInit->paint(graphics);
     
@@ -222,13 +207,13 @@ this->getAnimationInterface()->paintXY(graphics, this->imageX, this->y);
 }
 
 
-    public: void setRtsLayer(RTSLayer* rtsLayer){
+    auto UpgradableRTSLayerHudPaintable::setRtsLayer(RTSLayer* rtsLayer) -> void{
 this->rtsLayer= rtsLayer;
     
 }
 
 
-    protected: CollidableDestroyableDamageableLayer* getRtsLayer(){
+    auto UpgradableRTSLayerHudPaintable::getRtsLayer() -> CollidableDestroyableDamageableLayer*{
 
 
 
@@ -238,7 +223,6 @@ this->rtsLayer= rtsLayer;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_CPP

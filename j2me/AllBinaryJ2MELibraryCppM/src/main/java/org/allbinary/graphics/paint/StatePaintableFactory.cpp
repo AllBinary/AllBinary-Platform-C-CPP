@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/StatePaintableFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/StatePaintable.h"
 
-class StatePaintableFactory
-            : public Object
-         {
 
-    private: static StatePaintable* instance() { static std::unique_ptr<StatePaintable> value(new StatePaintable()); return value.get(); }
+StatePaintableFactory::StatePaintableFactory() {
+        }
+        auto StatePaintableFactory::instance_owner() -> StatePaintable* { static std::unique_ptr<StatePaintable> value(new StatePaintable()); return value.get(); }
+StatePaintable* StatePaintableFactory::instance = StatePaintableFactory::instance_owner();
 
-    public: static StatePaintable* getInstance(){
+    auto StatePaintableFactory::getInstance() -> StatePaintable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StatePaintableFactory::instance();
+                        return StatePaintableFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLEFACTORY_CPP

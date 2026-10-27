@@ -7,18 +7,19 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class Graphics;
+class BasicColor;
 
 
 
@@ -39,8 +40,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/CustomCustomItem.h"
 #include "org/allbinary/graphics/form/item/ABCustomItemInterface.h"
-#include "org/allbinary/graphics/form/item/ABStringComponent.h"
+class ABStringComponent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ABTextItem: public CustomCustomItem, public ABCustomItemInterface {
 
 public: ABTextItem(std::string label, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
@@ -57,3 +62,25 @@ public: ABTextItem(std::string label, int32_t layout, std::string altText, Basic
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/item/CustomCustomItem.h")
+#include "org/allbinary/graphics/form/item/CustomCustomItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABCustomItemInterface.h")
+#include "org/allbinary/graphics/form/item/ABCustomItemInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/form/item/ABStringComponent.h")
+#include "org/allbinary/graphics/form/item/ABStringComponent.h"
+#endif
+
+        #endif
+    

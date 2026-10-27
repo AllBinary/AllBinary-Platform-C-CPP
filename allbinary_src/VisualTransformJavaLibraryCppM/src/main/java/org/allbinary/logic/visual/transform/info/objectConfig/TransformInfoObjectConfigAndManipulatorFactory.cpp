@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGANDMANIPULATORFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGANDMANIPULATORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigAndManipulatorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,29 +84,26 @@
 #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
 #include "org/allbinary/logic/visual/transform/info/objectConfig/GenericStoreTransformInfoObjectConfig.h"
 
-class TransformInfoObjectConfigAndManipulatorFactory: public TransformInfoObjectConfigAndManipulatorFactoryBase {
+auto TransformInfoObjectConfigAndManipulatorFactory::instance_owner() -> TransformInfoObjectConfigAndManipulatorFactory* { static std::unique_ptr<TransformInfoObjectConfigAndManipulatorFactory> value(new TransformInfoObjectConfigAndManipulatorFactory()); return value.get(); }
+TransformInfoObjectConfigAndManipulatorFactory* TransformInfoObjectConfigAndManipulatorFactory::instance = TransformInfoObjectConfigAndManipulatorFactory::instance_owner();
 
-    private: static TransformInfoObjectConfigAndManipulatorFactory* instance() { static std::unique_ptr<TransformInfoObjectConfigAndManipulatorFactory> value(new TransformInfoObjectConfigAndManipulatorFactory()); return value.get(); }
-
-    public: static TransformInfoObjectConfigAndManipulatorFactory* getInstance(){
+    auto TransformInfoObjectConfigAndManipulatorFactory::getInstance() -> TransformInfoObjectConfigAndManipulatorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfigAndManipulatorFactory::instance();
+                        return TransformInfoObjectConfigAndManipulatorFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: TransformInfoObjectConfigAndManipulatorFactory(){
+TransformInfoObjectConfigAndManipulatorFactory::TransformInfoObjectConfigAndManipulatorFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, AbPath* objectConfigFileAbPath){
+    auto TransformInfoObjectConfigAndManipulatorFactory::getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, AbPath* objectConfigFileAbPath) -> TransformInfoObjectConfigInterface*{
 
         try {
             
@@ -113,10 +120,10 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Could Not Load Object Config", getInstance(), this->commonStrings.GET_INSTANCE, &e);
+                                    this->logUtil->put("Could Not Load Object Config", getInstance(), this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -133,7 +140,7 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface){
+    auto TransformInfoObjectConfigAndManipulatorFactory::getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) -> TransformInfoObjectConfigInterface*{
 
         try {
             
@@ -177,13 +184,13 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface->getName();
+                                    error= JavaString::valueOf(error) +JavaString::valueOf(transformInfoInterface->getName());
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, getInstance(), commonStrings.GET_INSTANCE, &e);
@@ -203,7 +210,7 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoObjectConfigInterface* getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, Document* document){
+    auto TransformInfoObjectConfigAndManipulatorFactory::getInstance(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, Document* document) -> TransformInfoObjectConfigInterface*{
 
         try {
             
@@ -247,13 +254,13 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface->getName();
+                                    error= JavaString::valueOf(error) +JavaString::valueOf(transformInfoInterface->getName());
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, getInstance(), "getInstance(document)", &e);
@@ -271,7 +278,6 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIGANDMANIPULATORFACTORY_CPP

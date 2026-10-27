@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,42 +34,18 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/system/hardware/HardwareInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/SystemHardwareFactory.h>
-
-      
-#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/NoOperatingSystem.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class TsUtil;
+class StringMaker;
+class StringUtil;
+class HardwareInterface;
+class SystemHardwareFactory;
+class GenericOperatingSystem;
+class NoOperatingSystem;
+class CommonSeps;
+class BasicArrayList;
+class BasicArrayListUtil;
+class StdUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -84,15 +65,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
-#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
-// This is the information sent to the license server
+class AbeClientInformationData;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        // This is the information sent to the license server
 class ClientInformation
-            : public Object
+            : public virtual Object
         , public AbeClientInformationInterface {
 
-    private: GenericOperatingSystem* operatingSystemInterface = NoOperatingSystem::NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem* operatingSystemInterface;
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
     private: std::string name;
 
@@ -104,9 +89,9 @@ class ClientInformation
 
     private: bool hardSale = true;
 
-    private: std::string licenseId = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string licenseId;
 
-    private: BasicArrayList* licenseServers = BasicArrayListUtil::getInstance()->getImmutableInstance();
+    private: BasicArrayList* licenseServers;
 
 public: ClientInformation(std::string name, std::string version, std::string specialName, std::string shortName);
 
@@ -134,15 +119,15 @@ public: ClientInformation(std::string name, std::string version, std::string spe
 
     public: bool isLargerOrDifferentServerList(BasicArrayList* list);
 
-    protected: void setHardSale(bool hardSale);
+    /*protected*/ public: void setHardSale(bool hardSale);
 
     public: bool isHardSale();
 
-    protected: void setOperatingSystemInterface(GenericOperatingSystem* operatingSystemInterface);
+    /*protected*/ public: void setOperatingSystemInterface(GenericOperatingSystem* operatingSystemInterface);
 
-    protected: void setLicenseId(std::string licenseId);
+    /*protected*/ public: void setLicenseId(std::string licenseId);
 
-    protected: void setLicenseServers(BasicArrayList* licenseServers);
+    /*protected*/ public: void setLicenseServers(BasicArrayList* licenseServers);
 
     public: std::string toShortString();
 
@@ -152,3 +137,52 @@ public: ClientInformation(std::string name, std::string version, std::string spe
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H_COMPLETE
+        #if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/HardwareInterface.h>)
+#include <org/allbinary/logic/system/hardware/HardwareInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/SystemHardwareFactory.h>)
+#include <org/allbinary/logic/system/hardware/SystemHardwareFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/NoOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/NoOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h")
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/AbeClientInformationData.h")
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
+#endif
+
+        #endif
+    

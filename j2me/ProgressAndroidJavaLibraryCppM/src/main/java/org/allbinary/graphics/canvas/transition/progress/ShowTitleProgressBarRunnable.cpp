@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_SHOWTITLEPROGRESSBARRUNNABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_SHOWTITLEPROGRESSBARRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/ShowTitleProgressBarRunnable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,11 +71,8 @@
         #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
 #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
-class ShowTitleProgressBarRunnable: public ProgressRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ShowTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
+ShowTitleProgressBarRunnable::ShowTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas), logUtil(LogUtil::getInstance()), FADE_IN_HALF({TransistionTypes::getInstance()->FADE_IN_TO_HALF_ALPHA,TransistionTypes::getInstance()->FADE_IN_FROM_HALF_ALPHA}){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,12 +82,10 @@ public: ShowTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* p
 }
 
 
-    private: const std::vector<int32_t> FADE_IN_HALF = {TransistionTypes::getInstance()->FADE_IN_TO_HALF_ALPHA,TransistionTypes::getInstance()->FADE_IN_FROM_HALF_ALPHA};
-
-    public: void run(){
+    auto ShowTitleProgressBarRunnable::run() -> void{
 
         try {
-            this->midletActivity.onShowProgress(false, this->FADE_IN_HALF);
+            this->midletActivity->onShowProgress(false, this->FADE_IN_HALF);
     
 
                 //: 
@@ -96,7 +101,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_SHOWTITLEPROGRESSBARRUNNABLE_CPP

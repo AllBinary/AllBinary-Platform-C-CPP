@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADPOOL_H
         #define ORG_ALLBINARY_THREAD_THREADPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,24 +44,12 @@
         
             #include "java/lang/Runnable.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class LogUtil;
+class StringMaker;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
+class BasicArrayListUtil;
 
 
 
@@ -75,29 +68,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/thread/NullRunnable.h"
-#include "org/allbinary/thread/ThreadPoolStrings.h"
-#include "org/allbinary/thread/ThreadObjectUtil.h"
-#include "org/allbinary/thread/PooledThread.h"
-#include "org/allbinary/thread/PriorityRunnable.h"
+        class NullRunnable;
+class ThreadPoolStrings;
+class ThreadObjectUtil;
+class PooledThread;
+class PriorityRunnable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThreadPool
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const std::string ROOT_NAME = "-PooledThread-";
 
     public: static inline const int32_t NORMAL_PRIORITY = Thread::NORM_PRIORITY;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: NullRunnable* NULL_RUNNABLE = NullRunnable::getInstance();
+    /*protected*/ public: NullRunnable* NULL_RUNNABLE;
 
-    protected: ThreadPoolStrings* threadPoolStrings = ThreadPoolStrings::getInstance();
+    /*protected*/ public: ThreadPoolStrings* threadPoolStrings;
 
-    protected: ThreadObjectUtil* threadObjectUtil = ThreadObjectUtil::getInstance();
+    /*protected*/ public: ThreadObjectUtil* threadObjectUtil;
 
     private: std::string poolName;
 
@@ -105,13 +102,13 @@ class ThreadPool
 
     private: bool isAlive = false;
 
-    private: BasicArrayList* taskQueue = BasicArrayListUtil::getInstance()->getImmutableInstance();
+    private: BasicArrayList* taskQueue;
 
     private: int32_t threadID= 0;
 
     private: int32_t numThreads;
 
-    protected: bool runningTask= false;
+    /*protected*/ public: bool runningTask= false;
 
 public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
@@ -127,7 +124,7 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
                 //@Throws(InterruptedException.constructor)
             
-    protected: Runnable* getTask();
+    /*protected*/ public: Runnable* getTask();
 
     public: void clear();
 
@@ -137,13 +134,13 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
     public: bool isBusy();
 
-    protected: void threadStarted();
+    /*protected*/ public: void threadStarted();
 
-    protected: void threadStopped();
+    /*protected*/ public: void threadStopped();
 
-    protected: void startTask(Runnable* task);
+    /*protected*/ public: void startTask(Runnable* task);
 
-    protected: void completedTask(Runnable* task);
+    /*protected*/ public: void completedTask(Runnable* task);
 
     public: std::string createName();
 
@@ -153,3 +150,43 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
 
         #endif //ORG_ALLBINARY_THREAD_THREADPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_THREADPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_THREADPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/thread/NullRunnable.h")
+#include "org/allbinary/thread/NullRunnable.h"
+#endif
+#if __has_include("org/allbinary/thread/ThreadPoolStrings.h")
+#include "org/allbinary/thread/ThreadPoolStrings.h"
+#endif
+#if __has_include("org/allbinary/thread/ThreadObjectUtil.h")
+#include "org/allbinary/thread/ThreadObjectUtil.h"
+#endif
+#if __has_include("org/allbinary/thread/PooledThread.h")
+#include "org/allbinary/thread/PooledThread.h"
+#endif
+#if __has_include("org/allbinary/thread/PriorityRunnable.h")
+#include "org/allbinary/thread/PriorityRunnable.h"
+#endif
+
+        #endif
+    

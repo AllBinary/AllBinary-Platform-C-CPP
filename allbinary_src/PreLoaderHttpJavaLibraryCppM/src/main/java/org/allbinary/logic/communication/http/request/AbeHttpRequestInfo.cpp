@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/AbeHttpRequestInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,29 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/request/AbeHttpRequestInfoData.h"
 
-class AbeHttpRequestInfo
-            : public Object
-         {
 
-    private: const std::string NAME = "AbeHttpRequestInfo";
-
-    private: AbeHttpRequestInfoData* abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: std::string httpUserAgent;
-
-    private: std::string remoteAddress;
-
-    private: std::string remoteHost;
-
-    private: std::string remoteHostByAddr;
-
-    private: std::string remotePort;
-
-    private: std::string requestedFilePath;
-
-public: AbeHttpRequestInfo(HashMap<Object*, Object*>* hashMap){
+AbeHttpRequestInfo::AbeHttpRequestInfo(HashMap<Object*, Object*>* hashMap) : abeHttpRequestInfoData(AbeHttpRequestInfoData::getInstance()), commonSeps(CommonSeps::getInstance()){
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -116,7 +105,7 @@ this->requestedFilePath= stringUtil->getNonNull(hashMap->get(this->abeHttpReques
 }
 
 
-public: AbeHttpRequestInfo(HttpServletRequest* httpServletRequest){
+AbeHttpRequestInfo::AbeHttpRequestInfo(HttpServletRequest* httpServletRequest) : abeHttpRequestInfoData(AbeHttpRequestInfoData::getInstance()), commonSeps(CommonSeps::getInstance()){
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -136,7 +125,7 @@ this->httpUserAgent= stringUtil->EMPTY_STRING;
     
 
                         if(JavaString::indexOf(key, "user") >= 0)
-                        this->httpUserAgent= "key: " +key +" value: " +value;
+                        this->httpUserAgent= JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("key: ") +JavaString::valueOf(key)) +JavaString::valueOf(" value: ")) +JavaString::valueOf(value);
                                 
 }
 
@@ -153,7 +142,7 @@ this->remotePort= std::to_string(getRemotePort);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto AbeHttpRequestInfo::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -178,7 +167,7 @@ hashMap->put(abeHttpRequestInfoData->REQUEST_FILE_PATH, this->requestedFilePath)
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto AbeHttpRequestInfo::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -203,7 +192,7 @@ vector->add(this->requestedFilePath);
 }
 
 
-    public: std::string toString(){
+    auto AbeHttpRequestInfo::toString() -> std::string{
 
 
 
@@ -213,7 +202,6 @@ vector->add(this->requestedFilePath);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_CPP

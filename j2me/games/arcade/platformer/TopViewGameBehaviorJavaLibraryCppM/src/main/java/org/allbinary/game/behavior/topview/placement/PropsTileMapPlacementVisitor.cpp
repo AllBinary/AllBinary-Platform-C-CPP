@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/placement/PropsTileMapPlacementVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,13 +71,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
 
-class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: MyRandomFactory* randomFactory = MyRandomFactory::getInstance();
-
-    public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData){
+PropsTileMapPlacementVisitor::PropsTileMapPlacementVisitor() : logUtil(LogUtil::getInstance()), randomFactory(MyRandomFactory::getInstance()) {
+        }
+        
+    auto PropsTileMapPlacementVisitor::visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData) -> void{
 
     int32_t layerIndex = 0;;
     
@@ -251,7 +259,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
 }
 
 
-    public: void visit2(std::vector<std::vector<int32_t>> mapArray, std::vector<std::vector<int32_t>> mapData, int32_t index, int32_t index2){
+    auto PropsTileMapPlacementVisitor::visit2(std::vector<std::vector<int32_t>> mapArray, std::vector<std::vector<int32_t>> mapData, int32_t index, int32_t index2) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -359,7 +367,6 @@ countX++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_CPP

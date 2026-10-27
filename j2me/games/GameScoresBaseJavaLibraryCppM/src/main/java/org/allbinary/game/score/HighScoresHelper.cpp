@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresHelper.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,21 +60,19 @@
         #include "org/allbinary/game/score/HighScoresHelperBase.h"
 #include "org/allbinary/game/score/HighScores.h"
 
-class HighScoresHelper: public HighScoresHelperBase {
 
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstanceAt(0, 0);
-
-    public: void setHighScoresArray(std::vector<HighScores*> highScoresArrayP){
-super.setHighScoresArray(highScoresArrayP);
+HighScoresHelper::HighScoresHelper() : circularIndexUtil(CircularIndexUtil::createInstanceAt(0, 0)) {
+        }
+        
+    auto HighScoresHelper::setHighScoresArray(std::vector<HighScores*> highScoresArrayP) -> void{
+HighScoresHelperBase::setHighScoresArray(highScoresArrayP);
     
-this->circularIndexUtil->setSize(this->highScoresArrayP.size());
+this->circularIndexUtil->setSize(this->highScoresArrayP->size());
     
 }
 
 
-    int32_t lastIndex =  -1;
-
-    public: HighScores* getNextHighScores(){
+    auto HighScoresHelper::getNextHighScores() -> HighScores*{
 
     HighScores* highScores = this->highScoresArrayP[this->circularIndexUtil->getIndex()];;
     
@@ -72,7 +80,7 @@ this->circularIndexUtil->setSize(this->highScoresArrayP.size());
     int32_t index = 0;;
     
 
-        while((highScores->getTotal() < 1 || this->lastIndex == this->circularIndexUtil->getIndex()) && index < this->highScoresArrayP.size())
+        while((highScores->getTotal() < 1 || this->lastIndex == this->circularIndexUtil->getIndex()) && index < this->highScoresArrayP->size())
         {
 this->circularIndexUtil->next();
     
@@ -93,9 +101,9 @@ this->lastIndex= this->circularIndexUtil->getIndex();
 }
 
 
-    public: bool isAnyHighScores(){
+    auto HighScoresHelper::isAnyHighScores() -> bool{
 
-                        if(this->highScoresArrayP.size() < 1)
+                        if(this->highScoresArrayP->size() < 1)
                         
                                     {
                                     
@@ -118,7 +126,7 @@ this->lastIndex= this->circularIndexUtil->getIndex();
 
 
                         for (
-    int32_t index = this->highScoresArrayP.size() -1;index >= 0; index--)
+    int32_t index = this->highScoresArrayP->size() -1;index >= 0; index--)
         {
 highScores= this->highScoresArrayP[index];
     
@@ -142,7 +150,6 @@ highScores= this->highScoresArrayP[index];
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LEVELLAYERSFINDER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LEVELLAYERSFINDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LevelLayersFinder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,25 +78,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LevelLayersFinder
-            : public Object
-         {
 
-    private: static LevelLayersFinder* instance() { static std::unique_ptr<LevelLayersFinder> value(new LevelLayersFinder()); return value.get(); }
+LevelLayersFinder::LevelLayersFinder() : enumerationUtil(EnumerationUtil::getInstance()) {
+        }
+        auto LevelLayersFinder::instance_owner() -> LevelLayersFinder* { static std::unique_ptr<LevelLayersFinder> value(new LevelLayersFinder()); return value.get(); }
+LevelLayersFinder* LevelLayersFinder::instance = LevelLayersFinder::instance_owner();
 
-    public: static LevelLayersFinder* getInstance(){
+    auto LevelLayersFinder::getInstance() -> LevelLayersFinder*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LevelLayersFinder::instance();
+                        return LevelLayersFinder::instance;
     
 }
 
 
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
-
-    public: BasicArrayList* get(ABHashtable<Object*, Object*>* hashtable){
+    auto LevelLayersFinder::get(ABHashtable<Object*, Object*>* hashtable) -> BasicArrayList*{
 
     SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
@@ -134,7 +142,6 @@ cachedIntegerCanBeNull= smallIntegerSingletonFactory->getAt(integerCanBeNull.int
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_LEVELLAYERSFINDER_CPP

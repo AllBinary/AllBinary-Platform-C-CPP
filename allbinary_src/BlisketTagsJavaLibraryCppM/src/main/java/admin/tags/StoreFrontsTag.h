@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGS_STOREFRONTSTAG_H
         #define ADMIN_TAGS_STOREFRONTSTAG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,32 +37,14 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
-
-      
-#include <javax/servlet/jsp/JspTagException.h>
-
-      
-#include <javax/servlet/jsp/tagext/TagSupport.h>
-
-      
-#include <admin/taghelpers/StoreFrontsHelperFactory.h>
-
-      
-#include <admin/taghelpers/StoreFrontsRequestHelperFactory.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class JspTagException;
+class TagSupport;
+class StoreFrontsHelperFactory;
+class StoreFrontsRequestHelperFactory;
+class StoreFrontData;
+class AbResponseHandler;
+class LogUtil;
+class LicensingException;
 
 
 
@@ -78,9 +65,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreFrontsTag: public TableTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: StoreFrontsTag();
 
@@ -106,3 +97,40 @@ public: StoreFrontsTag();
 
 
         #endif //ADMIN_TAGS_STOREFRONTSTAG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGS_STOREFRONTSTAG_H_COMPLETE)
+        #define ADMIN_TAGS_STOREFRONTSTAG_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Method.h>)
+#include <java/lang/reflect/Method.h>
+#endif
+#if __has_include(<javax/servlet/jsp/JspTagException.h>)
+#include <javax/servlet/jsp/JspTagException.h>
+#endif
+#if __has_include(<javax/servlet/jsp/tagext/TagSupport.h>)
+#include <javax/servlet/jsp/tagext/TagSupport.h>
+#endif
+#if __has_include(<admin/taghelpers/StoreFrontsHelperFactory.h>)
+#include <admin/taghelpers/StoreFrontsHelperFactory.h>
+#endif
+#if __has_include(<admin/taghelpers/StoreFrontsRequestHelperFactory.h>)
+#include <admin/taghelpers/StoreFrontsRequestHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/AbResponseHandler.h>)
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include("admin/tags/TableTag.h")
+#include "admin/tags/TableTag.h"
+#endif
+
+        #endif
+    

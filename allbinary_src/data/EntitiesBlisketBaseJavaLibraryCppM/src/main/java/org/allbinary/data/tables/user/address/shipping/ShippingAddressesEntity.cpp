@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_SHIPPING_SHIPPINGADDRESSESENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_SHIPPING_SHIPPINGADDRESSESENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/address/shipping/ShippingAddressesEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingAddressesEntity: public StreetAddressesEntity {
 
-    private: const std::string TABLENAME = "shipping";
-
-public: ShippingAddressesEntity(std::string userName) : StreetAddressesEntity(userName){
+ShippingAddressesEntity::ShippingAddressesEntity(std::string userName) : StreetAddressesEntity(userName){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,7 +69,6 @@ setTableName(this->TABLENAME);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_SHIPPING_SHIPPINGADDRESSESENTITY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_PICKUPSHIPPINGMODULE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_PICKUPSHIPPINGMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/modules/PickUpShippingModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,21 +65,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
-class PickUpShippingModule
-            : public Object
-        , public ShippingInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string name = "No Shipping (For Pickup Orders Only)";
-
-    private: const std::string description = "This shipping method is for pickup orders only.";
-
-public: PickUpShippingModule(){
+PickUpShippingModule::PickUpShippingModule() : commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: Money* getCost(OrderInterface* order){
+    auto PickUpShippingModule::getCost(OrderInterface* order) -> Money*{
 
 
 
@@ -79,7 +80,7 @@ public: PickUpShippingModule(){
 }
 
 
-    public: std::string getDescription(){
+    auto PickUpShippingModule::getDescription() -> std::string{
 
 
 
@@ -89,7 +90,7 @@ public: PickUpShippingModule(){
 }
 
 
-    public: std::string getName(){
+    auto PickUpShippingModule::getName() -> std::string{
 
 
 
@@ -99,7 +100,6 @@ public: PickUpShippingModule(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_PICKUPSHIPPINGMODULE_CPP

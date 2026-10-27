@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/ShapeTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,37 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/ShapeType.h"
 
-class ShapeTypeFactory
-            : public Object
-         {
 
-    private: static ShapeTypeFactory* instance() { static std::unique_ptr<ShapeTypeFactory> value(new ShapeTypeFactory()); return value.get(); }
+ShapeTypeFactory::ShapeTypeFactory() : LINE(new ShapeType(KEY_LINE)), CIRCLE(new ShapeType(KEY_CIRCLE)), RECTANGLE(new ShapeType(KEY_RECTANGLE)) {
+        }
+        auto ShapeTypeFactory::instance_owner() -> ShapeTypeFactory* { static std::unique_ptr<ShapeTypeFactory> value(new ShapeTypeFactory()); return value.get(); }
+ShapeTypeFactory* ShapeTypeFactory::instance = ShapeTypeFactory::instance_owner();
 
-    public: static ShapeTypeFactory* getInstance(){
+    auto ShapeTypeFactory::getInstance() -> ShapeTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShapeTypeFactory::instance();
+                        return ShapeTypeFactory::instance;
     
 }
 
 
-    public: const std::string KEY_LINE = "line";
 
-    public: const std::string KEY_CIRCLE = "circle";
 
-    public: const std::string KEY_RECTANGLE = "rectangle";
-
-    public: const std::string KEY_RECT = "rect";
-
-    public: ShapeType* LINE = new ShapeType(KEY_LINE);
-
-    public: ShapeType* CIRCLE = new ShapeType(KEY_CIRCLE);
-
-    public: ShapeType* RECTANGLE = new ShapeType(KEY_RECTANGLE);
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_SHAPETYPEFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERTYPEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -50,35 +53,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
+        class PickedUpLayerType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PickedUpLayerTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PickedUpLayerTypeFactory* instance() { static std::unique_ptr<PickedUpLayerTypeFactory> value(new PickedUpLayerTypeFactory()); return value.get(); }
+    private: static PickedUpLayerTypeFactory* instance_owner();
+    private: static PickedUpLayerTypeFactory* instance;
 
     public: static PickedUpLayerTypeFactory* getInstance();
 
-    public: PickedUpLayerType* NONE = new PickedUpLayerType(StringUtil::getInstance()->NULL_STRING);
 
-    public: PickedUpLayerType* BEAM = new PickedUpLayerType("BEAM");
+            
+    public: PickedUpLayerTypeFactory();
+        
+    public: PickedUpLayerType* NONE;
 
-    public: PickedUpLayerType* MINE = new PickedUpLayerType("MINE");
+    public: PickedUpLayerType* BEAM;
 
-    public: PickedUpLayerType* PROJECTILE = new PickedUpLayerType("PROJECTILE");
+    public: PickedUpLayerType* MINE;
 
-    public: PickedUpLayerType* ENHANCEMENT = new PickedUpLayerType("Enhancement");
+    public: PickedUpLayerType* PROJECTILE;
 
-    public: PickedUpLayerType* MORPH = new PickedUpLayerType("Morph");
+    public: PickedUpLayerType* ENHANCEMENT;
 
-    public: PickedUpLayerType* PART = new PickedUpLayerType("Part");
+    public: PickedUpLayerType* MORPH;
 
-    public: PickedUpLayerType* HEAL = new PickedUpLayerType("Heal");
+    public: PickedUpLayerType* PART;
 
-    public: PickedUpLayerType* LIFE = new PickedUpLayerType("Life");
+    public: PickedUpLayerType* HEAL;
 
-    public: PickedUpLayerType* POINTS = new PickedUpLayerType("Points");
+    public: PickedUpLayerType* LIFE;
+
+    public: PickedUpLayerType* POINTS;
 
 };
 
@@ -86,3 +98,16 @@ class PickedUpLayerTypeFactory
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKEDUPLAYERTYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/game/layer/pickup/PickedUpLayerType.h")
+#include "org/allbinary/game/layer/pickup/PickedUpLayerType.h"
+#endif
+
+        #endif
+    

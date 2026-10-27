@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAIOUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAIOUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/media/MediaIOUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,23 +46,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MediaIOUtil
-            : public Object
-         {
 
-    private: static MediaIOUtil* instance() { static std::unique_ptr<MediaIOUtil> value(new MediaIOUtil()); return value.get(); }
+MediaIOUtil::MediaIOUtil() {
+        }
+        auto MediaIOUtil::instance_owner() -> MediaIOUtil* { static std::unique_ptr<MediaIOUtil> value(new MediaIOUtil()); return value.get(); }
+MediaIOUtil* MediaIOUtil::instance = MediaIOUtil::instance_owner();
 
-    public: static MediaIOUtil* getInstance(){
+    auto MediaIOUtil::getInstance() -> MediaIOUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaIOUtil::instance();
+                        return MediaIOUtil::instance;
     
 }
 
 
-    public: std::vector<std::string> getReaderFormatNames(){
+    auto MediaIOUtil::getReaderFormatNames() -> std::vector<std::string>{
 
 
 
@@ -62,7 +72,7 @@ class MediaIOUtil
 }
 
 
-    public: std::vector<std::string> getWriterFormatNames(){
+    auto MediaIOUtil::getWriterFormatNames() -> std::vector<std::string>{
 
 
 
@@ -72,7 +82,6 @@ class MediaIOUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAIOUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEVICE_LOADTEXTURES_CPP
+        #define ORG_ALLBINARY_DEVICE_LOADTEXTURES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/device/LoadTextures.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,17 +60,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LoadTextures
-            : public Object
-         {
 
+LoadTextures::LoadTextures() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void load(GL10* gl){
+    auto LoadTextures::load(GL10* gl) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEVICE_LOADTEXTURES_CPP

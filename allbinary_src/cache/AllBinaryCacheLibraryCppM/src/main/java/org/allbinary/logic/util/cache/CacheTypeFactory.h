@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -15,9 +20,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -36,23 +39,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/util/cache/CacheType.h"
+        class CacheType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CacheTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static CacheTypeFactory* instance() { static std::unique_ptr<CacheTypeFactory> value(new CacheTypeFactory()); return value.get(); }
+    private: static CacheTypeFactory* instance_owner();
+    private: static CacheTypeFactory* instance;
 
     public: static CacheTypeFactory* getInstance();
 
-    public: CacheType* NO_CACHE = new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING);
 
-    public: CacheType* CACHE = new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING);
+            
+    public: CacheTypeFactory();
+        
+    public: CacheType* NO_CACHE;
 
-    public: CacheType* SET = new CacheType(StringUtil::getInstance()->EMPTY_STRING, "Set");
+    public: CacheType* CACHE;
 
-    public: CacheType* CACHE_VECTOR = new CacheType(StringUtil::getInstance()->EMPTY_STRING, StringUtil::getInstance()->EMPTY_STRING);
+    public: CacheType* SET;
+
+    public: CacheType* CACHE_VECTOR;
 
 };
 
@@ -60,3 +72,16 @@ class CacheTypeFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheType.h")
+#include "org/allbinary/logic/util/cache/CacheType.h"
+#endif
+
+        #endif
+    

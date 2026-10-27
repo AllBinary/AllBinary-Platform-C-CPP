@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONEVENTCIRCULARPOOL_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONEVENTCIRCULARPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/MotionEventCircularPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,11 +71,8 @@
         #include "org/allbinary/input/motion/gesture/observer/MotionEventFactory.h"
 #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
-class MotionEventCircularPool
-            : public Object
-         {
 
-    public: static MotionEventCircularPool* createPool(int32_t id){
+    auto MotionEventCircularPool::createPool(int32_t id) -> MotionEventCircularPool*{
 
 
 
@@ -75,11 +82,7 @@ class MotionEventCircularPool
 }
 
 
-    private: const int32_t MIN = TouchMotionGestureFactory::getInstance()->LAST_MOTION.getId();
-
-    private: AllBinaryEventCircularPool* eventPool = new AllBinaryEventCircularPool((InputFactory::getInstance()->MAX -1) -this->MIN);
-
-private: MotionEventCircularPool(int32_t id){
+MotionEventCircularPool::MotionEventCircularPool(int32_t id) : MIN(TouchMotionGestureFactory::getInstance()->LAST_MOTION->getId()), eventPool(new AllBinaryEventCircularPool((InputFactory::getInstance()->MAX -1) -this->MIN)){
 this->eventPool->initAllBinaryEventCircularPool(new MotionEventFactory(this->eventPool, id));
     
 }
@@ -88,7 +91,7 @@ this->eventPool->initAllBinaryEventCircularPool(new MotionEventFactory(this->eve
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: MotionGestureEvent* getInstance(MotionGestureInput* motionGestureInput){
+    auto MotionEventCircularPool::getInstance(MotionGestureInput* motionGestureInput) -> MotionGestureEvent*{
 
 
 
@@ -98,7 +101,6 @@ this->eventPool->initAllBinaryEventCircularPool(new MotionEventFactory(this->eve
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONEVENTCIRCULARPOOL_CPP

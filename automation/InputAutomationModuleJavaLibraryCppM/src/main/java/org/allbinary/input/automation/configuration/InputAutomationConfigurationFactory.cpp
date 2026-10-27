@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/configuration/InputAutomationConfigurationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,35 +91,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/configuration/InputAutomationConfiguration.h"
 
-class InputAutomationConfigurationFactory
-            : public Object
-         {
+auto InputAutomationConfigurationFactory::instance_owner() -> InputAutomationConfigurationFactory* { static std::unique_ptr<InputAutomationConfigurationFactory> value(new InputAutomationConfigurationFactory()); return value.get(); }
+InputAutomationConfigurationFactory* InputAutomationConfigurationFactory::instance = InputAutomationConfigurationFactory::instance_owner();
 
-    private: static InputAutomationConfigurationFactory* instance() { static std::unique_ptr<InputAutomationConfigurationFactory> value(new InputAutomationConfigurationFactory()); return value.get(); }
-
-    public: static InputAutomationConfigurationFactory* getInstance(){
+    auto InputAutomationConfigurationFactory::getInstance() -> InputAutomationConfigurationFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationConfigurationFactory::instance();
+                        return InputAutomationConfigurationFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: InputAutomationConfiguration* inputAutomationConfiguration = 
-                null
-            ;
-
-private: InputAutomationConfigurationFactory(){
+InputAutomationConfigurationFactory::InputAutomationConfigurationFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface* abeClientInformation){
+    auto InputAutomationConfigurationFactory::init(AbeClientInformationInterface* abeClientInformation) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -129,20 +130,22 @@ private: InputAutomationConfigurationFactory(){
                                     logUtil->putF("LoadingConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings->INIT);
     
 
-    JAXBContext* jaxbContext = JAXBContext::newInstance(InputAutomationConfiguration.constructor);;
+    JAXBContext* jaxbContext = JAXBContext::newInstance(
+                            Class::forType(typeid(InputAutomationConfiguration)));;
     
 
     Unmarshaller* unmarshaller = jaxbContext->createUnmarshaller();;
     
 
-    JAXBElement<InputAutomationConfiguration*>* root = unmarshaller->unmarshal(new StreamSource(new FileInputStream(file)), InputAutomationConfiguration.constructor);;
+    JAXBElement<InputAutomationConfiguration*>* root = unmarshaller->unmarshal(new StreamSource(new FileInputStream(file)), 
+                            Class::forType(typeid(InputAutomationConfiguration)));;
     
 this->inputAutomationConfiguration= dynamic_cast<InputAutomationConfiguration*>(root->getValue());
     
 
     List<InputAutomationModuleConfiguration*>* inputAutomationModuleConfigurationList = this->inputAutomationConfiguration->getInputAutomationModuleConfigurationList();;
     
-logUtil->putF("isInstalled: " +this->inputAutomationConfiguration->isInstalled() +" inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, INPUT_AUTOMATION_CONFIGURATION, commonStrings->INIT);
+logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("isInstalled: ") +JavaString::valueOf(this->inputAutomationConfiguration->isInstalled())) +JavaString::valueOf(" inputAutomationModuleConfigurationList: ")) +JavaString::valueOf(inputAutomationModuleConfigurationList), INPUT_AUTOMATION_CONFIGURATION, commonStrings->INIT);
     
 
                         if(inputAutomationModuleConfigurationList != 
@@ -188,7 +191,6 @@ this->inputAutomationConfiguration= new InputAutomationConfiguration();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATIONFACTORY_CPP

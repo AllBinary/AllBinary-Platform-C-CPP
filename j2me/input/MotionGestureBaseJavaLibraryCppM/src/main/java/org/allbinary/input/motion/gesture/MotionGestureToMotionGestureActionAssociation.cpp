@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURETOMOTIONGESTUREACTIONASSOCIATION_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURETOMOTIONGESTUREACTIONASSOCIATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/MotionGestureToMotionGestureActionAssociation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionGestureToMotionGestureActionAssociation
-            : public Object
-         {
 
-    private: BasicArrayList* list;
-
-    private: CompleteMotionGestureInputEvent* motionGestureAction;
-
-public: MotionGestureToMotionGestureActionAssociation(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction){
+MotionGestureToMotionGestureActionAssociation::MotionGestureToMotionGestureActionAssociation(BasicArrayList* list, CompleteMotionGestureInputEvent* commandAction){
 this->list= list;
     
 this->motionGestureAction= commandAction;
@@ -67,7 +70,7 @@ this->motionGestureAction= commandAction;
 }
 
 
-    public: BasicArrayList* getMotionGesture(){
+    auto MotionGestureToMotionGestureActionAssociation::getMotionGesture() -> BasicArrayList*{
 
 
 
@@ -77,13 +80,13 @@ this->motionGestureAction= commandAction;
 }
 
 
-    public: void setMotionGestures(BasicArrayList* list){
+    auto MotionGestureToMotionGestureActionAssociation::setMotionGestures(BasicArrayList* list) -> void{
 this->list= list;
     
 }
 
 
-    public: CompleteMotionGestureInputEvent* getCommandAction(){
+    auto MotionGestureToMotionGestureActionAssociation::getCommandAction() -> CompleteMotionGestureInputEvent*{
 
 
 
@@ -93,13 +96,13 @@ this->list= list;
 }
 
 
-    public: void setMotionGestureAction(CompleteMotionGestureInputEvent* commandAction){
+    auto MotionGestureToMotionGestureActionAssociation::setMotionGestureAction(CompleteMotionGestureInputEvent* commandAction) -> void{
 this->motionGestureAction= commandAction;
     
 }
 
 
-    public: bool isMotionGestureArrayEquals(BasicArrayList* aList){
+    auto MotionGestureToMotionGestureActionAssociation::isMotionGestureArrayEquals(BasicArrayList* aList) -> bool{
 
     int32_t size = aList->size();;
     
@@ -147,7 +150,6 @@ this->motionGestureAction= commandAction;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURETOMOTIONGESTUREACTIONASSOCIATION_CPP

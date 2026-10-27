@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOPERATINGSYSTEMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOPERATINGSYSTEMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/android/AndroidOperatingSystemFactory.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -71,33 +81,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/os/android/AndroidOS.h"
 
-class AndroidOperatingSystemFactory
-            : public Object
-         {
+auto AndroidOperatingSystemFactory::instance_owner() -> AndroidOperatingSystemFactory* { static std::unique_ptr<AndroidOperatingSystemFactory> value(new AndroidOperatingSystemFactory()); return value.get(); }
+AndroidOperatingSystemFactory* AndroidOperatingSystemFactory::instance = AndroidOperatingSystemFactory::instance_owner();
 
-    private: static AndroidOperatingSystemFactory* instance() { static std::unique_ptr<AndroidOperatingSystemFactory> value(new AndroidOperatingSystemFactory()); return value.get(); }
-
-    public: static AndroidOperatingSystemFactory* getInstance(){
+    auto AndroidOperatingSystemFactory::getInstance() -> AndroidOperatingSystemFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidOperatingSystemFactory::instance();
+                        return AndroidOperatingSystemFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-private: AndroidOperatingSystemFactory(){
+AndroidOperatingSystemFactory::AndroidOperatingSystemFactory() : logUtil(LogUtil::getInstance()), tsUtil(TsUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: GenericOperatingSystem* getOperatingSystemInstance(){
+    auto AndroidOperatingSystemFactory::getOperatingSystemInstance() -> GenericOperatingSystem*{
 
         try {
             
@@ -132,7 +135,7 @@ private: AndroidOperatingSystemFactory(){
                             
 
 
-                            throw new Exception("Specific Android OS Not Supported: " +osName);
+                            throw Exception(JavaString::valueOf("Specific Android OS Not Supported: ") +JavaString::valueOf(osName));
                     
 
                         }
@@ -166,7 +169,6 @@ this->logUtil->put("Failed to get OperatingSystem returning NoOperatingSystem", 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOPERATINGSYSTEMFACTORY_CPP

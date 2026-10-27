@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_H
         #define ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class NullUtil;
 
 
 
@@ -50,22 +53,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/state/GameStateFactory.h"
-#include "org/allbinary/game/state/GameState.h"
+        class GameStateFactory;
+class GameState;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RaceGameStateFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static RaceGameStateFactory* getInstance();
 
-    public: GameState* START_GAME_STATE = GameStateFactory::getInstance()->createGameState("START_GAME_STATE");
 
-    public: GameState* YELLOW_LIGHT_GAME_STATE = GameStateFactory::getInstance()->createGameState("YELLOW_LIGHT_GAME_STATE");
+            
+    public: RaceGameStateFactory();
+        
+    public: GameState* START_GAME_STATE;
 
-    public: GameState* RED_LIGHT_GAME_STATE = GameStateFactory::getInstance()->createGameState("RED_LIGHT_GAME_STATE");
+    public: GameState* YELLOW_LIGHT_GAME_STATE;
+
+    public: GameState* RED_LIGHT_GAME_STATE;
 
 };
 
@@ -73,3 +84,19 @@ class RaceGameStateFactory
 
 
         #endif //ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include("org/allbinary/game/state/GameStateFactory.h")
+#include "org/allbinary/game/state/GameStateFactory.h"
+#endif
+#if __has_include("org/allbinary/game/state/GameState.h")
+#include "org/allbinary/game/state/GameState.h"
+#endif
+
+        #endif
+    

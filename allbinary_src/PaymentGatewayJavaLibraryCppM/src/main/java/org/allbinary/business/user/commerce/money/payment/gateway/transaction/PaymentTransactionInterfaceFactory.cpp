@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,31 +74,26 @@
         #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceFactoryInterface.h"
 #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h"
 
-class PaymentTransactionInterfaceFactory
-            : public Object
-         {
+auto PaymentTransactionInterfaceFactory::instance_owner() -> PaymentTransactionInterfaceFactory* { static std::unique_ptr<PaymentTransactionInterfaceFactory> value(new PaymentTransactionInterfaceFactory()); return value.get(); }
+PaymentTransactionInterfaceFactory* PaymentTransactionInterfaceFactory::instance = PaymentTransactionInterfaceFactory::instance_owner();
 
-    private: static PaymentTransactionInterfaceFactory* instance() { static std::unique_ptr<PaymentTransactionInterfaceFactory> value(new PaymentTransactionInterfaceFactory()); return value.get(); }
-
-    public: static PaymentTransactionInterfaceFactory* getInstance(){
+    auto PaymentTransactionInterfaceFactory::getInstance() -> PaymentTransactionInterfaceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentTransactionInterfaceFactory::instance();
+                        return PaymentTransactionInterfaceFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: PaymentTransactionInterfaceFactory(){
+PaymentTransactionInterfaceFactory::PaymentTransactionInterfaceFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentTransactionInterface* getInstance(OrderHistory* orderReview){
+    auto PaymentTransactionInterfaceFactory::getInstance(OrderHistory* orderReview) -> PaymentTransactionInterface*{
 
         try {
             
@@ -119,14 +124,14 @@ private: PaymentTransactionInterfaceFactory(){
 
 
 
-                            throw new Exception("Failed to create PaymentTransactionInterface: " +"GatewayName is: " +gatewayName);
+                            throw Exception(JavaString::valueOf(JavaString::valueOf("Failed to create PaymentTransactionInterface: ") +JavaString::valueOf("GatewayName is: ")) +JavaString::valueOf(gatewayName));
                     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENTERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENTERROR))
                         
                                     {
                                     
@@ -147,7 +152,6 @@ this->logUtil->put("Failed to generate test data", this, commonStrings->GET_INST
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORY_CPP

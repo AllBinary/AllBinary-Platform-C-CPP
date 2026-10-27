@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEREADER_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEREADER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/crypt/file/CryptFileReader.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,17 +49,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CryptFileReader
-            : public Object
-         {
 
-public: CryptFileReader(std::string decryptedExtension, std::string encryptedExtension){
+CryptFileReader::CryptFileReader(std::string decryptedExtension, std::string encryptedExtension){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string get(AbPath* fileAbPath){
+    auto CryptFileReader::get(AbPath* fileAbPath) -> std::string{
 
 
 
@@ -61,7 +68,7 @@ public: CryptFileReader(std::string decryptedExtension, std::string encryptedExt
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getInputStream(AbPath* fileAbPath){
+    auto CryptFileReader::getInputStream(AbPath* fileAbPath) -> InputStream*{
 
 
 
@@ -71,7 +78,6 @@ public: CryptFileReader(std::string decryptedExtension, std::string encryptedExt
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEREADER_CPP

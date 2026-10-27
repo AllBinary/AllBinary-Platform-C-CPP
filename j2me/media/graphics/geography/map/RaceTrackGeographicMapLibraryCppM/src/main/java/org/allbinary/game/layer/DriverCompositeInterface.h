@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DRIVERCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_DRIVERCOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/layer/Driver.h"
+        class Driver;
 
-class DriverCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class DriverCompositeInterface
+            : public virtual Object
+         {
 
     public: virtual Driver* getDriver() = 0;
 
@@ -57,3 +68,13 @@ class DriverCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_DRIVERCOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_DRIVERCOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_DRIVERCOMPOSITEINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/layer/Driver.h")
+#include "org/allbinary/game/layer/Driver.h"
+#endif
+
+        #endif
+    

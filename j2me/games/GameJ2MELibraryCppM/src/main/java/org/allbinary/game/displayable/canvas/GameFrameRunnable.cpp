@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEFRAMERUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEFRAMERUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameFrameRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,23 +72,14 @@
         #include "org/allbinary/game/displayable/canvas/GameRunnable.h"
 #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class GameFrameRunnable: public GameRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameTickDisplayInfoSingleton* gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
-
-    private: AllBinaryGameCanvas* allBinaryGameCanvas;
-
-public: GameFrameRunnable(AllBinaryGameCanvas* allBinaryGameCanvas){
+GameFrameRunnable::GameFrameRunnable(AllBinaryGameCanvas* allBinaryGameCanvas) : logUtil(LogUtil::getInstance()), gameTickDisplayInfoSingleton(GameTickDisplayInfoSingleton::getInstance()), gameTickTimeDelayHelper(GameTickTimeDelayHelperFactory::getInstance()){
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    private: GameTickTimeDelayHelper* gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
-
-    public: void run(){
+    auto GameFrameRunnable::run() -> void{
 
         try {
             
@@ -113,7 +114,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEFRAMERUNNABLE_CPP

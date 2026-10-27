@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORBASE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,9 +38,7 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicArrayList;
 
 
 
@@ -54,22 +57,33 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //1.4.2
 class PathFinderGraphVisitorBase
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: PathFinderGraphVisitorBase();
+        
                 //@Throws(Exception.constructor)
             
     public: void visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList);
+    public: void visit(const std::string& graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) { return visit(JavaString::box(graph), startPathFindingNodeList, endPathFindingNodeList); }
 
                 //@Throws(Exception.constructor)
             
     public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList);
 
     public: bool isValid(Object* graphPath);
+    public: bool isValid(const std::string& graphPath) { return isValid(JavaString::box(graphPath)); }
 
     public: std::string getInvalidReason(Object* graphPath);
+    public: std::string getInvalidReason(const std::string& graphPath) { return getInvalidReason(JavaString::box(graphPath)); }
 
 };
 
@@ -77,3 +91,13 @@ class PathFinderGraphVisitorBase
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORBASE_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

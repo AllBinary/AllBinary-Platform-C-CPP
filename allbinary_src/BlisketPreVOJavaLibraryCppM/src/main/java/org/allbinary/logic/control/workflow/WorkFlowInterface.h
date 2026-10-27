@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,8 +54,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //extends ValidationComponentInterface, ValidationInterface, ComponentInterface, DomNodeInterface, DataMappingInterface
-class WorkFlowInterface {
+class WorkFlowInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -66,3 +77,10 @@ class WorkFlowInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWINTERFACE_H_COMPLETE
+        
+        #endif
+    

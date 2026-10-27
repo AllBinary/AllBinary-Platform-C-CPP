@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/event/EmailEvent.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/event/UserEmailEventListenerInterface.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/info/EmailInfo.h>
-
-      
+class EmailEvent;
+class UserEmailEventListenerInterface;
+class UserEmailEventNameData;
+class EmailInfo;
 
 
 
@@ -71,8 +62,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserEmailEventHandler
-            : public Object
+            : public virtual Object
          {
 
     private: BasicArrayList* emailVector;
@@ -108,3 +103,29 @@ public: UserEmailEventHandler();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_USEREMAILEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/smtp/event/EmailEvent.h>)
+#include <org/allbinary/logic/communication/smtp/event/EmailEvent.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/event/UserEmailEventListenerInterface.h>)
+#include <org/allbinary/logic/communication/smtp/event/UserEmailEventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h>)
+#include <org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/info/EmailInfo.h>)
+#include <org/allbinary/logic/communication/smtp/info/EmailInfo.h>
+#endif
+
+        #endif
+    

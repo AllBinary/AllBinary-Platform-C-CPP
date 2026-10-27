@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_H
         #define ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,27 +38,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/pipeline/RandomRotationFactory.h>
-
-      
-#include <org/allbinary/graphics/pipeline/RandomTranslation.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/util/BasicArrayListS.h>
-
-      
+class GPoint;
+class PointFactory;
+class RandomRotationFactory;
+class RandomTranslation;
+class BasicArrayList;
+class BasicArrayListD;
+class BasicArrayListS;
 
 
 
@@ -72,22 +63,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/VectorExplosionType.h"
-#include "org/allbinary/animation/VectorAnimationUtil.h"
+        class VectorExplosionType;
+class VectorAnimationUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VectorExplosionGenerator
-            : public Object
+            : public virtual Object
          {
 
-    private: static VectorExplosionGenerator* instance() { static std::unique_ptr<VectorExplosionGenerator> value(new VectorExplosionGenerator()); return value.get(); }
+    private: static VectorExplosionGenerator* instance_owner();
+    private: static VectorExplosionGenerator* instance;
 
     public: static VectorExplosionGenerator* getInstance();
 
-    public: VectorExplosionType* RANDOM = new VectorExplosionType();
+    public: VectorExplosionType* RANDOM;
 
-    public: VectorExplosionType* ROTATION = new VectorExplosionType();
+    public: VectorExplosionType* ROTATION;
 
-    private: VectorAnimationUtil* vectorAnimationUtil = VectorAnimationUtil::getInstance();
+    private: VectorAnimationUtil* vectorAnimationUtil;
 
 private: VectorExplosionGenerator();
 
@@ -103,7 +99,7 @@ private: VectorExplosionGenerator();
             
     public: BasicArrayList* getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType* type, bool startFrame);
 
-    private: RandomRotationFactory* randomRotationFactory = RandomRotationFactory::getInstance();
+    private: RandomRotationFactory* randomRotationFactory;
 
                 //@Throws(Exception.constructor)
             
@@ -119,3 +115,37 @@ private: VectorExplosionGenerator();
 
 
         #endif //ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/pipeline/RandomRotationFactory.h>)
+#include <org/allbinary/graphics/pipeline/RandomRotationFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/pipeline/RandomTranslation.h>)
+#include <org/allbinary/graphics/pipeline/RandomTranslation.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListS.h>)
+#include <org/allbinary/util/BasicArrayListS.h>
+#endif
+#if __has_include("org/allbinary/animation/VectorExplosionType.h")
+#include "org/allbinary/animation/VectorExplosionType.h"
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimationUtil.h")
+#include "org/allbinary/animation/VectorAnimationUtil.h"
+#endif
+
+        #endif
+    

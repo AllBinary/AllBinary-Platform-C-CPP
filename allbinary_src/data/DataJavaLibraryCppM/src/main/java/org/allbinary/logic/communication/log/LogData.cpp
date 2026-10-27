@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,23 +58,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LogData
-            : public Object
-         {
 
-    public: const int64_t MAX = 5000000;
+LogData::LogData() : backupFileExt(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(AbPathData::getInstance()->EXTENSION_SEP) +JavaString::valueOf("bak")) +JavaString::valueOf(AbPathData::getInstance()->EXTENSION_SEP)) +JavaString::valueOf("txt")) {
+        }
+        
 
-    public: const std::string extension = "log";
 
-    public: const std::string backupFileExt = AbPathData::getInstance()->EXTENSION_SEP +"bak" +AbPathData::getInstance()->EXTENSION_SEP +"txt";
-
-    public: const std::string ALLBINARY = "allbinary";
-
-    public: const std::string NAME = "LOG_NAME";
-
-    public: const std::string DESCRIPTION = "LOG_DESCRIPTION";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
-
-      
-#include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraints.h>
-
-      
-#include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>
-
-      
-#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraint.h>
-
-      
-#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class DomSearchHelper;
+class DisplayInBrowserContraints;
+class DisplayInBrowserContraintsInterface;
+class TwoDimensionalConstraint;
+class TwoDimensionalConstraintInterface;
+class Document;
+class Node;
 
 
 
@@ -71,10 +62,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
-#include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
+class AdvertisementAreaData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvertisementAreaConstraints
-            : public Object
+            : public virtual Object
         , public AdvertisementAreaConstraintsInterface {
 
     private: DisplayInBrowserContraintsInterface* displayInBrowserContraintsInterface;
@@ -97,3 +92,37 @@ public: AdvertisementAreaConstraints(Document* document);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREACONSTRAINTS_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tree/dom/DomSearchHelper.h>)
+#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraints.h>)
+#include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraints.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>)
+#include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/contraints/size/TwoDimensionalConstraint.h>)
+#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraint.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>)
+#include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h")
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/area/AdvertisementAreaData.h")
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
+#endif
+
+        #endif
+    

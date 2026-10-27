@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoreCommandsBaseFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -58,21 +68,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScoreCommandsBaseFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: std::vector<Command*> HIGH_SCORE_COMMANDS;
-
-protected: HighScoreCommandsBaseFactory(std::vector<Command*> HIGH_SCORE_COMMANDS){
+HighScoreCommandsBaseFactory::HighScoreCommandsBaseFactory(std::vector<Command*> HIGH_SCORE_COMMANDS) : logUtil(LogUtil::getInstance()){
 this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
     
 }
 
 
-    public: bool isHighScoreCommand(Command* command){
+    auto HighScoreCommandsBaseFactory::isHighScoreCommand(Command* command) -> bool{
 
 
 
@@ -106,7 +109,7 @@ this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getIndex(Command* command){
+    auto HighScoreCommandsBaseFactory::getIndex(Command* command) -> int32_t{
 
 
 
@@ -132,12 +135,11 @@ this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
 
 
 
-                            throw new Exception("No Such Command");
+                            throw Exception("No Such Command");
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_CPP
+        #define ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/InventoryItemViewParentTagHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,25 +78,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryItemViewParentTagHelper
-            : public Object
-         {
 
-    private: static InventoryItemViewParentTagHelper* instance() { static std::unique_ptr<InventoryItemViewParentTagHelper> value(new InventoryItemViewParentTagHelper()); return value.get(); }
+InventoryItemViewParentTagHelper::InventoryItemViewParentTagHelper() {
+        }
+        auto InventoryItemViewParentTagHelper::instance_owner() -> InventoryItemViewParentTagHelper* { static std::unique_ptr<InventoryItemViewParentTagHelper> value(new InventoryItemViewParentTagHelper()); return value.get(); }
+InventoryItemViewParentTagHelper* InventoryItemViewParentTagHelper::instance = InventoryItemViewParentTagHelper::instance_owner();
 
-    public: static InventoryItemViewParentTagHelper* getInstance(){
+    auto InventoryItemViewParentTagHelper::getInstance() -> InventoryItemViewParentTagHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventoryItemViewParentTagHelper::instance();
+                        return InventoryItemViewParentTagHelper::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: InventoryItemView* getInventoryItemView(HelperTag* inventoryTag){
+    auto InventoryItemViewParentTagHelper::getInventoryItemView(HelperTag* inventoryTag) -> InventoryItemView*{
 
                         if(inventoryTag != 
                                     nullptr
@@ -117,7 +127,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 
                                     }
@@ -135,7 +145,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
                             
 
 
-                            throw new Exception("Must have parent tag.");
+                            throw Exception("Must have parent tag.");
                     
 
                         }
@@ -145,7 +155,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: DownloadableInventoryItemView* getDownloadableInventoryItemView(HelperTag* inventoryTag){
+    auto InventoryItemViewParentTagHelper::getDownloadableInventoryItemView(HelperTag* inventoryTag) -> DownloadableInventoryItemView*{
 
                         if(inventoryTag != 
                                     nullptr
@@ -176,7 +186,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 
                                     }
@@ -194,7 +204,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
                             
 
 
-                            throw new Exception("Must have parent tag.");
+                            throw Exception("Must have parent tag.");
                     
 
                         }
@@ -204,7 +214,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: RequestMapInterface* getRequestMapInterface(HelperTag* inventoryTag){
+    auto InventoryItemViewParentTagHelper::getRequestMapInterface(HelperTag* inventoryTag) -> RequestMapInterface*{
 
                         if(inventoryTag != 
                                     nullptr
@@ -235,7 +245,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 
                                     }
@@ -253,7 +263,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
                             
 
 
-                            throw new Exception("Must have parent tag.");
+                            throw Exception("Must have parent tag.");
                     
 
                         }
@@ -263,7 +273,7 @@ stringBuffer->append(inventoryTag->getHelper()->getClass()->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: void checkForValidationViewHelper(Object* helperObject){
+    auto InventoryItemViewParentTagHelper::checkForValidationViewHelper(Object* helperObject) -> void{
 
                         if(!((dynamic_cast<const ValidationViewHelper*>(helperObject) != nullptr)))
                         
@@ -282,7 +292,7 @@ stringBuffer->append(helperObject->getClass()->getName());
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 
                                     }
@@ -290,7 +300,6 @@ stringBuffer->append(helperObject->getClass()->getName());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_CPP

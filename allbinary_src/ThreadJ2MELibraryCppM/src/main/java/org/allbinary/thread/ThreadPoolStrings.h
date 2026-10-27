@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_H
         #define ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThreadPoolStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThreadPoolStrings* instance() { static std::unique_ptr<ThreadPoolStrings> value(new ThreadPoolStrings()); return value.get(); }
+    private: static ThreadPoolStrings* instance_owner();
+    private: static ThreadPoolStrings* instance;
 
     public: static ThreadPoolStrings* getInstance();
 
+
+            
+    public: ThreadPoolStrings();
+        
     public: const std::string ADD_TASK = "addTask";
 
     public: const std::string START_TASK = "Started Task: ";
@@ -68,3 +82,10 @@ class ThreadPoolStrings
 
 
         #endif //ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_THREADPOOLSTRINGS_H_COMPLETE
+        
+        #endif
+    

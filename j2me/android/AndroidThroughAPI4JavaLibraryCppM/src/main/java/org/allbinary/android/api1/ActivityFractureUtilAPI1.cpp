@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_API1_ACTIVITYFRACTUREUTILAPI1_CPP
+        #define ORG_ALLBINARY_ANDROID_API1_ACTIVITYFRACTUREUTILAPI1_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/api1/ActivityFractureUtilAPI1.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,33 +64,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ActivityFractureUtilAPI1: public ActivityFractureUtil {
 
-    private: static ActivityFractureUtilAPI1* instance() { static std::unique_ptr<ActivityFractureUtilAPI1> value(new ActivityFractureUtilAPI1()); return value.get(); }
+ActivityFractureUtilAPI1::ActivityFractureUtilAPI1() {
+        }
+        auto ActivityFractureUtilAPI1::instance_owner() -> ActivityFractureUtilAPI1* { static std::unique_ptr<ActivityFractureUtilAPI1> value(new ActivityFractureUtilAPI1()); return value.get(); }
+ActivityFractureUtilAPI1* ActivityFractureUtilAPI1::instance = ActivityFractureUtilAPI1::instance_owner();
 
-    public: static ActivityFractureUtilAPI1* getInstance(){
+    auto ActivityFractureUtilAPI1::getInstance() -> ActivityFractureUtilAPI1*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI1::instance();
+                        return ActivityFractureUtilAPI1::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(Activity* activity){
+    auto ActivityFractureUtilAPI1::process(Activity* activity) -> void{
 }
 
 
-    public: void setFullScreen(Activity* activity){
-activity->getWindow()->setFlags(WindowManager::LayoutParams.FLAG_FULLSCREEN, WindowManager::LayoutParams.FLAG_FULLSCREEN);
+    auto ActivityFractureUtilAPI1::setFullScreen(Activity* activity) -> void{
+activity->getWindow()->setFlags(WindowManager::LayoutParams->FLAG_FULLSCREEN, WindowManager::LayoutParams->FLAG_FULLSCREEN);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_API1_ACTIVITYFRACTUREUTILAPI1_CPP

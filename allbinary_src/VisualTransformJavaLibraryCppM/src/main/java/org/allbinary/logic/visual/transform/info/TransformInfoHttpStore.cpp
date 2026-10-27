@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,11 +87,8 @@
         #include "org/allbinary/logic/visual/transform/info/TransformInfoHttp.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStoreInterface.h"
 
-class TransformInfoHttpStore: public TransformInfoHttp, public TransformInfoHttpStoreInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TransformInfoHttpStore(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(propertiesHashMap, pageContext, true){
+TransformInfoHttpStore::TransformInfoHttpStore(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(propertiesHashMap, pageContext, true), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -89,10 +96,10 @@ public: TransformInfoHttpStore(HashMap<Object*, Object*>* propertiesHashMap, Pag
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -100,7 +107,7 @@ public: TransformInfoHttpStore(HashMap<Object*, Object*>* propertiesHashMap, Pag
 }
 
 
-public: TransformInfoHttpStore(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(databaseHashMap, propertiesHashMap, pageContext){
+TransformInfoHttpStore::TransformInfoHttpStore(HashMap<Object*, Object*>* databaseHashMap, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(databaseHashMap, propertiesHashMap, pageContext), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +115,7 @@ public: TransformInfoHttpStore(HashMap<Object*, Object*>* databaseHashMap, HashM
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -132,7 +139,7 @@ this->setStoreName(databaseHashMap->get(StoreFrontData::getInstance()->NAME));
 }
 
 
-public: TransformInfoHttpStore(StoreFrontInterface* storeFrontInterface, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(propertiesHashMap, pageContext){
+TransformInfoHttpStore::TransformInfoHttpStore(StoreFrontInterface* storeFrontInterface, HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) : TransformInfoHttp(propertiesHashMap, pageContext), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -140,10 +147,10 @@ public: TransformInfoHttpStore(StoreFrontInterface* storeFrontInterface, HashMap
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Properties HashMap: " +propertiesHashMap->toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("Properties HashMap: ") +JavaString::valueOf(propertiesHashMap->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -155,7 +162,7 @@ this->setStoreName(storeFrontInterface->getName());
 
                 //@Throws(Exception.constructor)
             
-    private: std::string getPath(){
+    auto TransformInfoHttpStore::getPath() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -178,7 +185,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getTemplateFilePath(){
+    auto TransformInfoHttpStore::getTemplateFilePath() -> AbPath*{
 
 
 
@@ -190,7 +197,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getObjectConfigFilePath(){
+    auto TransformInfoHttpStore::getObjectConfigFilePath() -> AbPath*{
 
 
 
@@ -202,7 +209,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getDataFilePath(){
+    auto TransformInfoHttpStore::getDataFilePath() -> AbPath*{
 
 
 
@@ -212,7 +219,6 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORE_CPP

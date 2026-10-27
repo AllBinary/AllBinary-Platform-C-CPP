@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_H
         #define ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PageData
-            : public Object
+            : public virtual Object
          {
 
-    private: static PageData* instance() { static std::unique_ptr<PageData> value(new PageData()); return value.get(); }
+    private: static PageData* instance_owner();
+    private: static PageData* instance;
 
     public: static PageData* getInstance();
 
@@ -66,3 +76,10 @@ private: PageData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_H_COMPLETE
+        
+        #endif
+    

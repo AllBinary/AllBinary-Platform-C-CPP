@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/terrain/TerrainEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,17 +84,15 @@
 #include "org/allbinary/game/terrain/TerrainEvent.h"
 #include "org/allbinary/game/terrain/TerrainEventListenerInterface.h"
 
-class TerrainEventHandler: public BasicEventHandler {
+ABHashtable<Object*, Object*>* TerrainEventHandler::hashtable = StdUtil::getInstance()->NULL_TABLE;
 
-    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->NULL_TABLE;
-
-    public: static void init(){
+    auto TerrainEventHandler::init() -> void{
 TerrainEventHandler::hashtable= StdUtil::getInstance()->createHashtable();
     
 }
 
 
-    public: static TerrainEventHandler* getInstance(Object* anyType){
+    auto TerrainEventHandler::getInstance(Object* anyType) -> TerrainEventHandler*{
 
     Object* eventHandlerCanBeNull = TerrainEventHandler::hashtable->get(anyType);;
     
@@ -110,13 +118,11 @@ TerrainEventHandler::hashtable->put(anyType, eventHandlerCanBeNull);
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: TerrainEventHandler(){
+TerrainEventHandler::TerrainEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(TerrainEventListener* terrainEventListener){
+    auto TerrainEventHandler::addListener(TerrainEventListener* terrainEventListener) -> void{
 
                         if(!this->list->contains(terrainEventListener))
                         
@@ -129,25 +135,25 @@ private: TerrainEventHandler(){
 }
 
 
-    public: void removeAllListeners(){
+    auto TerrainEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto TerrainEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto TerrainEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -166,20 +172,20 @@ terrainEventListener->onTerrainEvent(dynamic_cast<TerrainEvent*>(eventObject));
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto TerrainEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     TerrainEventListenerInterface* terrainEventListenerInterface = dynamic_cast<TerrainEventListenerInterface*>(eventListenerInterface);;
     
@@ -188,7 +194,6 @@ terrainEventListenerInterface->onTerrainEvent(dynamic_cast<TerrainEvent*>(eventO
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_CPP

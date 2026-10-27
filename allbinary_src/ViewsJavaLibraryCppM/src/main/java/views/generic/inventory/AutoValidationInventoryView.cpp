@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_INVENTORY_AUTOVALIDATIONINVENTORYVIEW_CPP
+        #define VIEWS_GENERIC_INVENTORY_AUTOVALIDATIONINVENTORYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/inventory/AutoValidationInventoryView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/inventory/InventoryView.h"
 
-class AutoValidationInventoryView: public InventoryView, public ValidationComponentInterface {
 
-public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterface) : InventoryView(transformInfoInterface){
+AutoValidationInventoryView::AutoValidationInventoryView(TransformInfoInterface* transformInfoInterface) : InventoryView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +79,7 @@ public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterfa
 }
 
 
-    public: bool isValid(){
+    auto AutoValidationInventoryView::isValid() -> bool{
 
 
 
@@ -80,7 +89,7 @@ public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterfa
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto AutoValidationInventoryView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -90,7 +99,7 @@ public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterfa
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto AutoValidationInventoryView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -100,7 +109,7 @@ public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterfa
 }
 
 
-    public: std::string validationInfo(){
+    auto AutoValidationInventoryView::validationInfo() -> std::string{
 
 
 
@@ -110,7 +119,6 @@ public: AutoValidationInventoryView(TransformInfoInterface* transformInfoInterfa
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_INVENTORY_AUTOVALIDATIONINVENTORYVIEW_CPP

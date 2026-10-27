@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +52,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/transition/shake/ShakeEvent.h"
+        class ShakeEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShakeEventFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ShakeEventFactory* instance() { static std::unique_ptr<ShakeEventFactory> value(new ShakeEventFactory()); return value.get(); }
+    private: static ShakeEventFactory* instance_owner();
+    private: static ShakeEventFactory* instance;
 
     public: static ShakeEventFactory* getInstance();
 
-    public: ShakeEvent* MICRO = new ShakeEvent();
 
-    public: ShakeEvent* SMALL = new ShakeEvent();
+            
+    public: ShakeEventFactory();
+        
+    public: ShakeEvent* MICRO;
 
-    public: ShakeEvent* MEDIUM = new ShakeEvent();
+    public: ShakeEvent* SMALL;
 
-    public: ShakeEvent* LARGE = new ShakeEvent();
+    public: ShakeEvent* MEDIUM;
+
+    public: ShakeEvent* LARGE;
 
     public: void init();
 
@@ -73,3 +87,13 @@ class ShakeEventFactory
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENTFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/animation/transition/shake/ShakeEvent.h")
+#include "org/allbinary/animation/transition/shake/ShakeEvent.h"
+#endif
+
+        #endif
+    

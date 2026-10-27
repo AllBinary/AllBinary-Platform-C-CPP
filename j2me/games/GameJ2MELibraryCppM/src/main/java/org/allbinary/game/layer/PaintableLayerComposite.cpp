@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/PaintableLayerComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -57,17 +67,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaintableLayerComposite: public Paintable {
 
-    private: std::vector<Layer*> paintableArray;
-
-public: PaintableLayerComposite(std::vector<Layer*> paintableArray){
+PaintableLayerComposite::PaintableLayerComposite(std::vector<Layer*> paintableArray){
 this->paintableArray= paintableArray;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto PaintableLayerComposite::paint(Graphics* graphics) -> void{
 
 
 
@@ -75,14 +82,14 @@ this->paintableArray= paintableArray;
                         for (
     int32_t index = this->paintableArray.size();--index >= 0; )
         {
-this->paintableArray[index].paint(graphics);
+this->paintableArray[index]->paint(graphics);
     
 }
 
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto PaintableLayerComposite::paintThreed(Graphics* graphics) -> void{
 
     PaintableInterface* paintableInterface;;
     
@@ -102,7 +109,6 @@ paintableInterface->paintThreed(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_CPP

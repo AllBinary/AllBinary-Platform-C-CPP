@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL10IMAGEFACTORY_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL10IMAGEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESGL10ImageFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,9 +64,11 @@
         #include "org/allbinary/image/opengles/OpenGLImageFactory.h"
 #include "org/allbinary/image/opengles/OpenGLESGL10Image.h"
 
-class OpenGLESGL10ImageFactory: public OpenGLImageFactory {
 
-    public: Image* getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory){
+OpenGLESGL10ImageFactory::OpenGLESGL10ImageFactory() {
+        }
+        
+    auto OpenGLESGL10ImageFactory::getInstance(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) -> Image*{
 
 
 
@@ -66,7 +78,6 @@ class OpenGLESGL10ImageFactory: public OpenGLImageFactory {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL10IMAGEFACTORY_CPP

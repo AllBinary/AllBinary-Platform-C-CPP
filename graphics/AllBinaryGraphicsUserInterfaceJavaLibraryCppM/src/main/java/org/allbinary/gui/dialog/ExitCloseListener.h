@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_H
         #define ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,8 +56,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/gui/dialog/CloseJDialogListenerInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ExitCloseListener
-            : public Object
+            : public virtual Object
         , public CloseJDialogListenerInterface {
 
 public: ExitCloseListener();
@@ -65,3 +74,13 @@ public: ExitCloseListener();
 
 
         #endif //ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GUI_DIALOG_EXITCLOSELISTENER_H_COMPLETE
+        #if __has_include("org/allbinary/gui/dialog/CloseJDialogListenerInterface.h")
+#include "org/allbinary/gui/dialog/CloseJDialogListenerInterface.h"
+#endif
+
+        #endif
+    

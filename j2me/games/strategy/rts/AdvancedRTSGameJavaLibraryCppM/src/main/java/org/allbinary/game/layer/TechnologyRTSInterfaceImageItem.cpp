@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_TECHNOLOGYRTSINTERFACEIMAGEITEM_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_TECHNOLOGYRTSINTERFACEIMAGEITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/TechnologyRTSInterfaceImageItem.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -81,39 +91,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/RTSInterface.h"
 
-class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMyFontInterface {
 
-    private: RTSInterface* rtsInterface;
-
-    private: PrimitiveLongUtil* primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
-
-    private: const std::string LEVEL = "Level";
-
-    private: const std::string COST = "Cost";
-
-    private: const std::string DOLLAR = "$";
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: std::vector<char> costString = CharArrayFactory::getInstance()->getZeroCharArray();
-
-    private: int32_t costLength= 0;
-
-    private: std::vector<char> levelString = CharArrayFactory::getInstance()->getZeroCharArray();
-
-    private: int32_t levelLength= 0;
-
-    private: int32_t adjustedCostLabelY= 0;
-
-    private: int32_t adjustedCostX= 0;
-
-    private: int32_t adjustedCostY= 0;
-
-    private: int32_t adjustedLevelX= 0;
-
-    private: int32_t adjustedLevelY= 0;
-
-public: TechnologyRTSInterfaceImageItem(std::string label, Image* img, int32_t layout, std::string altText, BasicColor* basicColor, RTSInterface* rtsInterface) : ABCustomImageItem(label, img, layout, altText, basicColor, 0){
+TechnologyRTSInterfaceImageItem::TechnologyRTSInterfaceImageItem(std::string label, Image* img, int32_t layout, std::string altText, BasicColor* basicColor, RTSInterface* rtsInterface) : ABCustomImageItem(label, img, layout, altText, basicColor, 0), primitiveLongUtil(PrimitiveLongUtil::createPowerOfTen(10000)), myFontProcessor(new UpdateMyFontProcessor(this)), costString(CharArrayFactory::getInstance()->getZeroCharArray()), levelString(CharArrayFactory::getInstance()->getZeroCharArray()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -127,7 +106,7 @@ this->update();
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto TechnologyRTSInterfaceImageItem::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -164,7 +143,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: RTSInterface* getRtsInterface(){
+    auto TechnologyRTSInterfaceImageItem::getRtsInterface() -> RTSInterface*{
 
 
 
@@ -174,7 +153,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void update(){
+    auto TechnologyRTSInterfaceImageItem::update() -> void{
 this->costString= this->primitiveLongUtil->getCharArray(this->getRtsInterface()->getUpgradeCost());
     
 this->levelString= this->primitiveLongUtil->getCharArray(this->getRtsInterface()->getLevel());
@@ -182,10 +161,10 @@ this->levelString= this->primitiveLongUtil->getCharArray(this->getRtsInterface()
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto TechnologyRTSInterfaceImageItem::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->myFontProcessor->process(graphics);
     
-super.paintXY(graphics, x, y);
+ABCustomImageItem::paintXY(graphics, x, y);
     
 
     int32_t xa = x +2;;
@@ -203,7 +182,6 @@ graphics->drawChars(this->levelString, 0, this->levelLength, x +this->adjustedLe
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_TECHNOLOGYRTSINTERFACEIMAGEITEM_CPP

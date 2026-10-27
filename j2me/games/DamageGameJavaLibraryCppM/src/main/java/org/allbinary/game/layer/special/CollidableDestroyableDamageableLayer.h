@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLEDESTROYABLEDAMAGEABLELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLEDESTROYABLEDAMAGEABLELAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,78 +40,30 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/collision/CollidableNeverCollideBehaviorFactory.h>
-
-      
+class Graphics;
+class CollidableNeverCollideBehaviorFactory;
 #include <org/allbinary/game/combat/damage/DamageableInterface.h>
-
-      
 #include <org/allbinary/game/combat/destroy/DestroyableInterface.h>
-
-      
-#include <org/allbinary/game/combat/destroy/event/DestroyedEvent.h>
-
-      
-#include <org/allbinary/game/identification/BasicGroupFactory.h>
-
-      
-#include <org/allbinary/game/identification/Group.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
+class DestroyedEvent;
+class BasicGroupFactory;
+class Group;
+class GameKeyEvent;
+class AllBinaryGameLayerManager;
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
-#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/game/layer/pickup/PickupBehavior.h>
-
-      
+class PickedUpLayerInterfaceFactoryInterface;
+class PickupBehavior;
 #include <org/allbinary/game/layer/pickup/PickupCompositeInterface.h>
-
-      
-#include <org/allbinary/game/part/PartInterface.h>
-
-      
-#include <org/allbinary/game/part/PartInterfaceUtil.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/RectangleFactory.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/math/PositionStrings.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/view/ViewPositionBase.h>
-
-      
+class PartInterface;
+class PartInterfaceUtil;
+class Rectangle;
+class RectangleFactory;
+class AllBinaryLayerManager;
+class NullUtil;
+class StringMaker;
+class StringUtil;
+class PositionStrings;
+class CommonSeps;
+class ViewPositionBase;
 
 
 
@@ -127,9 +84,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, public DestroyableInterface, public DamageableInterface, public PickupCompositeInterface, public SpecialGameInputInterface {
 
-    private: static inline Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER;
 
     public: static CollidableDestroyableDamageableLayer* getNullInstance();
 
@@ -149,11 +110,11 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, pub
 
     private: int32_t initZ= 0;
 
-    protected: std::vector<PartInterface*> partInterfaceArrayP = PartInterfaceUtil::getZeroArray();
+    /*protected*/ public: std::vector<PartInterface*> partInterfaceArrayP;
 
     private: PickupBehavior* pickupBehavior;
 
-    public: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
+    public: AllBinaryGameLayerManager* allBinaryGameLayerManagerP;
 
     public: bool isDraggable = false;
 
@@ -195,7 +156,7 @@ public: CollidableDestroyableDamageableLayer(std::vector<Group*> groupInterface,
 
     public: bool isReadyForExplosion();
 
-    protected: void setReadyForExplosion(bool isReadyForExplosion);
+    /*protected*/ public: void setReadyForExplosion(bool isReadyForExplosion);
 
     public: int32_t getInitWidth();
 
@@ -301,3 +262,85 @@ public: CollidableDestroyableDamageableLayer(std::vector<Group*> groupInterface,
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLEDESTROYABLEDAMAGEABLELAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLEDESTROYABLEDAMAGEABLELAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_COLLIDABLEDESTROYABLEDAMAGEABLELAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollidableNeverCollideBehaviorFactory.h>)
+#include <org/allbinary/game/collision/CollidableNeverCollideBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/damage/DamageableInterface.h>)
+#include <org/allbinary/game/combat/damage/DamageableInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/destroy/DestroyableInterface.h>)
+#include <org/allbinary/game/combat/destroy/DestroyableInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/destroy/event/DestroyedEvent.h>)
+#include <org/allbinary/game/combat/destroy/event/DestroyedEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/BasicGroupFactory.h>)
+#include <org/allbinary/game/identification/BasicGroupFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/CollidableCompositeLayer.h>)
+#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>)
+#include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickupBehavior.h>)
+#include <org/allbinary/game/layer/pickup/PickupBehavior.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/PickupCompositeInterface.h>)
+#include <org/allbinary/game/layer/pickup/PickupCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/part/PartInterface.h>)
+#include <org/allbinary/game/part/PartInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/part/PartInterfaceUtil.h>)
+#include <org/allbinary/game/part/PartInterfaceUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/RectangleFactory.h>)
+#include <org/allbinary/graphics/RectangleFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/PositionStrings.h>)
+#include <org/allbinary/math/PositionStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPositionBase.h>)
+#include <org/allbinary/view/ViewPositionBase.h>
+#endif
+#if __has_include("org/allbinary/game/layer/special/SpecialGameInputInterface.h")
+#include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
+#endif
+
+        #endif
+    

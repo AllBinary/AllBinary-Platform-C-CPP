@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP
+        #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/content/NotificationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,29 +90,20 @@
 #include "org/allbinary/content/NotificationBuilderAPI23.h"
 #include "org/allbinary/content/CommandUriAction.h"
 
-class NotificationUtil
-            : public Object
-         {
+auto NotificationUtil::SINGLETON_owner() -> NotificationUtil* { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
+NotificationUtil* NotificationUtil::SINGLETON = NotificationUtil::SINGLETON_owner();
 
-    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
-
-    public: static NotificationUtil* getInstance(){
+    auto NotificationUtil::getInstance() -> NotificationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil::SINGLETON();
+                        return NotificationUtil::SINGLETON;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: NotificationManager* notificationManager = dynamic_cast<NotificationManager*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::NOTIFICATION_SERVICE));
-
-    private: NotificationBuilder* notificationBuilder;
-
-private: NotificationUtil(){
+NotificationUtil::NotificationUtil() : logUtil(LogUtil::getInstance()), notificationManager(dynamic_cast<NotificationManager*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::NOTIFICATION_SERVICE))){
 
     int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
@@ -124,7 +125,7 @@ private: NotificationUtil(){
 }
 
 
-    public: void notify(Command* command, std::string resource, std::string message){
+    auto NotificationUtil::notify(Command* command, std::string resource, std::string message) -> void{
 
     Context* context = ResourceUtil::getInstance()->getContext();;
     
@@ -175,7 +176,6 @@ this->notificationBuilder->build(context, command, message, integer, pendingInte
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP

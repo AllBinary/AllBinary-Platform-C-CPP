@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_LAZYPROGRESSCANVAS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_LAZYPROGRESSCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/LazyProgressCanvas.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
-class LazyProgressCanvas: public ProgressCanvas {
 
-public: LazyProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
+LazyProgressCanvas::LazyProgressCanvas(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,18 +79,18 @@ public: LazyProgressCanvas(std::string title, BasicColor* backgroundBasicColor, 
 }
 
 
-    public: void start(){
-super.start();
+    auto LazyProgressCanvas::start() -> void{
+ProgressCanvas::start();
     
 this->hasPainted= false;
     
 }
 
 
-    public: void end(){
+    auto LazyProgressCanvas::end() -> void{
 
         try {
-            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.END_METHOD_NAME);
+            this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->END_METHOD_NAME);
     
 this->endActual();
     
@@ -95,28 +104,28 @@ ImageCacheFactory::getInstance()->progressEnded();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.putF(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME);
+this->logUtil->putF(this->commonStrings->EXCEPTION, this, this->commonStrings->END_METHOD_NAME);
     
 }
 
 }
 
 
-    public: void inGame(){
+    auto LazyProgressCanvas::inGame() -> void{
 this->inGameProcessor= Processor::getInstance();
     
 }
 
 
-    public: void endFromInitialLazyLoadingComplete(){
-super.endFromInitialLazyLoadingComplete();
+    auto LazyProgressCanvas::endFromInitialLazyLoadingComplete() -> void{
+ProgressCanvas::endFromInitialLazyLoadingComplete();
     
 this->paintable= NullPaintable::getInstance();
     
 }
 
 
-    public: void endIfPaintedSinceStart(){
+    auto LazyProgressCanvas::endIfPaintedSinceStart() -> void{
 
                         if(this->paintable == this->GAUGE_PAINTABLE && this->hasPainted)
                         
@@ -129,7 +138,6 @@ this->paintable= NullPaintable::getInstance();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_LAZYPROGRESSCANVAS_CPP

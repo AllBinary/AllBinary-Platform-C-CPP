@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_NOOPERATINGSYSTEM_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_NOOPERATINGSYSTEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/NoOperatingSystem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,15 +54,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/os/GenericOperatingSystem.h"
 
-class NoOperatingSystem: public GenericOperatingSystem {
+auto NoOperatingSystem::NO_OPERATING_SYSTEM_owner() -> GenericOperatingSystem* { static std::unique_ptr<GenericOperatingSystem> value(new GenericOperatingSystem()); return value.get(); }
+GenericOperatingSystem* NoOperatingSystem::NO_OPERATING_SYSTEM = NoOperatingSystem::NO_OPERATING_SYSTEM_owner();
 
-    public: static GenericOperatingSystem* NO_OPERATING_SYSTEM() { static std::unique_ptr<GenericOperatingSystem> value(new GenericOperatingSystem()); return value.get(); }
-
-public: NoOperatingSystem(){
+NoOperatingSystem::NoOperatingSystem(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_NOOPERATINGSYSTEM_CPP

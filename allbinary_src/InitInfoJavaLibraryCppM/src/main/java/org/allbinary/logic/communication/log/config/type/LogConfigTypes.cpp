@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigTypes.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,26 +81,23 @@
 #include "org/allbinary/logic/communication/log/config/type/LogConfigTypeData.h"
 #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
 
-class LogConfigTypes
-            : public Object
-         {
-
-    public: static inline const std::string JSP_ERROR_NO_FUNCTION = "in JSP Not In Function";
-
-    public: static inline BasicArrayList* LOGGING = new BasicArrayListD();
-
-                    static int32_t initResult = LogConfigTypes::init();
-                static int32_t init() { 
+BasicArrayList* LogConfigTypes::LOGGING = new BasicArrayListD();
+int32_t LogConfigTypes::initResult = LogConfigTypes::init();
+        auto LogConfigTypes::init() -> int32_t {
                     
 LogConfigTypes::init();
     
 
 
                     return 0;
-                }
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+        }
+                
+LogConfigTypes::LogConfigTypes(){
+}
 
-    public: static void init(){
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    auto LogConfigTypes::init() -> void{
 
         try {
             PreLogUtil::put("Initialize LogconfigTypes", "LogConfigTypes", "init()");
@@ -103,9 +110,9 @@ LogConfigTypeFactory::getInstance();
 
     BasicArrayList* logConfigTypeVector = loggingInitInfo->getTypeList();;
     
-PreLogUtil::put("Number Of Log Configs: " +loggingInitInfo->getNumberOfLogConfigs(), "LogConfigTypes", "init()");
+PreLogUtil::put(JavaString::valueOf("Number Of Log Configs: ") +JavaString::valueOf(loggingInitInfo->getNumberOfLogConfigs()), "LogConfigTypes", "init()");
     
-PreLogUtil::put("Number Of Log Config Type Names: " +logConfigTypeVector->size(), "LogConfigTypes", "init()");
+PreLogUtil::put(JavaString::valueOf("Number Of Log Config Type Names: ") +JavaString::valueOf(logConfigTypeVector->size()), "LogConfigTypes", "init()");
     
 LogConfigTypes::LOGGING->addAllList(logConfigTypeVector);
     
@@ -124,7 +131,7 @@ PreLogUtil::putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init
 
                 //@Throws(Exception.constructor)
             
-    public: static LogConfigType* getInstance(Node* node){
+    auto LogConfigTypes::getInstance(Node* node) -> LogConfigType*{
 
     Node* nameValueNode = DomSearchHelper::getNode(LogConfigTypeData::getInstance()->NAME, node->getChildNodes());;
     
@@ -182,16 +189,11 @@ logConfigType= dynamic_cast<LogConfigType*>(availableLogConfigTypes->get(index))
 
 
 
-                            throw new Exception("No Such LogConfigType: " +name);
+                            throw Exception(JavaString::valueOf("No Such LogConfigType: ") +JavaString::valueOf(name));
                     
 }
 
 
-private: LogConfigTypes(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_CPP

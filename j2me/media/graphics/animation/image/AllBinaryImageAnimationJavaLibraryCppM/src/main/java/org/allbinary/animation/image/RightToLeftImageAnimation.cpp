@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_RIGHTTOLEFTIMAGEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_RIGHTTOLEFTIMAGEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/RightToLeftImageAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageSegmentAnimation.h"
 
-class RightToLeftImageAnimation: public ImageSegmentAnimation {
 
-    private: int32_t startWidth= 0;
-
-    private: int32_t currentWidth= 0;
-
-public: RightToLeftImageAnimation(Image* image, AnimationBehavior* animationBehavior) : ImageSegmentAnimation(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior){
+RightToLeftImageAnimation::RightToLeftImageAnimation(Image* image, AnimationBehavior* animationBehavior) : ImageSegmentAnimation(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,31 +87,31 @@ this->setFrame(this->getSize() -1);
 }
 
 
-    public: void nextFrame(){
-super.previousFrame();
+    auto RightToLeftImageAnimation::nextFrame() -> void{
+ImageSegmentAnimation::previousFrame();
     
 this->update();
     
 }
 
 
-    public: void previousFrame(){
-super.nextFrame();
+    auto RightToLeftImageAnimation::previousFrame() -> void{
+ImageSegmentAnimation::nextFrame();
     
 this->update();
     
 }
 
 
-    public: void setFrame(int32_t index){
-super.setFrame(index);
+    auto RightToLeftImageAnimation::setFrame(int32_t index) -> void{
+ImageSegmentAnimation::setFrame(index);
     
 this->update();
     
 }
 
 
-    private: void update(){
+    auto RightToLeftImageAnimation::update() -> void{
 this->startWidth= this->getDrawWidth() *this->getFrame() /this->getSize();
     
 this->currentWidth= this->getDrawWidth() -this->startWidth;
@@ -114,15 +119,12 @@ this->currentWidth= this->getDrawWidth() -this->startWidth;
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto RightToLeftImageAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawRegion(this->getImage(), this->startWidth, this->getStartY(), this->currentWidth, this->getDrawHeight(), Sprite::TRANS_NONE, x +this->startWidth, y, this->anchor);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_RIGHTTOLEFTIMAGEANIMATION_CPP

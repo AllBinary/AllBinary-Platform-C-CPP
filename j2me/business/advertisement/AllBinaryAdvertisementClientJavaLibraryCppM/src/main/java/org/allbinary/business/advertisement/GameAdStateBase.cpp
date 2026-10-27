@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEBASE_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/GameAdStateBase.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,37 +76,28 @@
         #include "org/allbinary/business/advertisement/AdConfiguration.h"
 #include "org/allbinary/business/advertisement/Advertisements.h"
 
-class GameAdStateBase
-            : public Object
-         {
 
-    protected: AdConfiguration* adConfigurationP;
-
-    protected: Advertisements* advertisementsP = new Advertisements();
-
-    protected: bool okayToShowAdsP= false;
-
-public: GameAdStateBase(AdConfiguration* adConfiguration){
+GameAdStateBase::GameAdStateBase(AdConfiguration* adConfiguration) : advertisementsP(new Advertisements()){
 this->adConfigurationP= adConfiguration;
     
 }
 
 
-    public: void initViewArray(std::vector<Object*> viewArray){
+    auto GameAdStateBase::initViewArray(std::vector<Object*> viewArray) -> void{
 }
 
 
-    public: void onStart(Object* anyType){
+    auto GameAdStateBase::onStart(Object* anyType) -> void{
 this->init();
     
 }
 
 
-    public: void init(){
+    auto GameAdStateBase::init() -> void{
 }
 
 
-    public: bool isShowingAtLocation(int32_t location){
+    auto GameAdStateBase::isShowingAtLocation(int32_t location) -> bool{
 
 
 
@@ -106,7 +107,7 @@ this->init();
 }
 
 
-    public: bool isShowingAt(){
+    auto GameAdStateBase::isShowingAt() -> bool{
 
 
 
@@ -116,51 +117,51 @@ this->init();
 }
 
 
-    public: void show(){
+    auto GameAdStateBase::show() -> void{
 }
 
 
-    public: void hide(){
+    auto GameAdStateBase::hide() -> void{
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto GameAdStateBase::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public: void processAdState(GameState* gameState, GameType* gameType){
+    auto GameAdStateBase::processAdState(GameState* gameState, GameType* gameType) -> void{
 }
 
 
-    public: void processPageAdState(){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void playingAdState(){
+    auto GameAdStateBase::processPageAdState() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void playingAdStateWH(int32_t width, int32_t height){
+    auto GameAdStateBase::playingAdState() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void notPlayingAdState(){
+    auto GameAdStateBase::playingAdStateWH(int32_t width, int32_t height) -> void{
 }
 
 
-    public: void setGameIsReady(bool gameIsReady){
+                //@Throws(Exception.constructor)
+            
+    auto GameAdStateBase::notPlayingAdState() -> void{
 }
 
 
-    public: bool isGameIsReady(){
+    auto GameAdStateBase::setGameIsReady(bool gameIsReady) -> void{
+}
+
+
+    auto GameAdStateBase::isGameIsReady() -> bool{
 
 
 
@@ -170,7 +171,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 }
 
 
-    public: Advertisements* getAdvertisements(){
+    auto GameAdStateBase::getAdvertisements() -> Advertisements*{
 
 
 
@@ -180,7 +181,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 }
 
 
-    public: AdConfiguration* getAdConfiguration(){
+    auto GameAdStateBase::getAdConfiguration() -> AdConfiguration*{
 
 
 
@@ -190,7 +191,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 }
 
 
-    public: bool isOkayToShowPageAd(){
+    auto GameAdStateBase::isOkayToShowPageAd() -> bool{
 
 
 
@@ -200,13 +201,13 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 }
 
 
-    public: void setOkayToShowAds(bool okayToShowAds){
+    auto GameAdStateBase::setOkayToShowAds(bool okayToShowAds) -> void{
 this->okayToShowAdsP= okayToShowAds;
     
 }
 
 
-    public: bool isOkayToShowAds(){
+    auto GameAdStateBase::isOkayToShowAds() -> bool{
 
 
 
@@ -216,7 +217,7 @@ this->okayToShowAdsP= okayToShowAds;
 }
 
 
-    public: bool isEnabled(){
+    auto GameAdStateBase::isEnabled() -> bool{
 
 
 
@@ -226,7 +227,6 @@ this->okayToShowAdsP= okayToShowAds;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEBASE_CPP

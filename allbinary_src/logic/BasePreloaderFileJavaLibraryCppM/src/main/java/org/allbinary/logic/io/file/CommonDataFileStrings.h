@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_COMMONDATAFILESTRINGS_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_COMMONDATAFILESTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommonDataFileStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static CommonDataFileStrings* instance() { static std::unique_ptr<CommonDataFileStrings> value(new CommonDataFileStrings()); return value.get(); }
+    private: static CommonDataFileStrings* instance_owner();
+    private: static CommonDataFileStrings* instance;
 
     public: static CommonDataFileStrings* getInstance();
 
+
+            
+    public: CommonDataFileStrings();
+        
     public: const std::string XML = "xml";
 
     public: const std::string _XML = ".xml";
@@ -292,7 +306,7 @@ class CommonDataFileStrings
 
     public: const std::string EX_SHORT_NAME = "Ex";
 
-    public: const std::string UNCRYPTED_EXTENSION = this->XML;
+    public: const std::string UNCRYPTED_EXTENSION;
 
     public: const std::string ENCRYPTED_EXTENSION = "abd";
 
@@ -302,3 +316,10 @@ class CommonDataFileStrings
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_COMMONDATAFILESTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_COMMONDATAFILESTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_COMMONDATAFILESTRINGS_H_COMPLETE
+        
+        #endif
+    

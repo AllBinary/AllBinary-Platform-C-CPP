@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_DISPLAYPOINTSCALAR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_DISPLAYPOINTSCALAR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/DisplayPointScalar.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,27 +67,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DisplayPointScalar
-            : public Object
-         {
+auto DisplayPointScalar::instance_owner() -> DisplayPointScalar* { static std::unique_ptr<DisplayPointScalar> value(new DisplayPointScalar()); return value.get(); }
+DisplayPointScalar* DisplayPointScalar::instance = DisplayPointScalar::instance_owner();
 
-    private: static DisplayPointScalar* instance() { static std::unique_ptr<DisplayPointScalar> value(new DisplayPointScalar()); return value.get(); }
-
-    public: static DisplayPointScalar* getInstance(){
+    auto DisplayPointScalar::getInstance() -> DisplayPointScalar*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisplayPointScalar::instance();
+                        return DisplayPointScalar::instance;
     
 }
 
 
-public: DisplayPointScalar(){
+DisplayPointScalar::DisplayPointScalar(){
 }
 
 
-    public: int32_t processX(int32_t value){
+    auto DisplayPointScalar::processX(int32_t value) -> int32_t{
 
 
 
@@ -87,7 +94,7 @@ public: DisplayPointScalar(){
 }
 
 
-    public: int32_t processY(int32_t value){
+    auto DisplayPointScalar::processY(int32_t value) -> int32_t{
 
 
 
@@ -97,7 +104,7 @@ public: DisplayPointScalar(){
 }
 
 
-    public: GPoint* process(GPoint* point){
+    auto DisplayPointScalar::process(GPoint* point) -> GPoint*{
 
 
 
@@ -107,7 +114,6 @@ public: DisplayPointScalar(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_DISPLAYPOINTSCALAR_CPP

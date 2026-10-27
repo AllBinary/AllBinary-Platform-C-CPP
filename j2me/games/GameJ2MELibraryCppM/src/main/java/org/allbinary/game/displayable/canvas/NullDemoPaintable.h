@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,12 +54,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/DemoPaintableInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullDemoPaintable
-            : public Object
+            : public virtual Object
         , public DemoPaintableInterface {
 
-    public: static NullDemoPaintable* NULL_DEMO_PAINTABLE() { static std::unique_ptr<NullDemoPaintable> value(new NullDemoPaintable()); return value.get(); }
+    private: static NullDemoPaintable* NULL_DEMO_PAINTABLE_owner();
+    public: static NullDemoPaintable* NULL_DEMO_PAINTABLE;
 
+
+            
+    public: NullDemoPaintable();
+        
     public: void showGamePaintable();
 
 };
@@ -63,3 +77,13 @@ class NullDemoPaintable
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H_COMPLETE
+        #if __has_include("org/allbinary/game/displayable/canvas/DemoPaintableInterface.h")
+#include "org/allbinary/game/displayable/canvas/DemoPaintableInterface.h"
+#endif
+
+        #endif
+    

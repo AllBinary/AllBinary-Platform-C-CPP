@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/AppRendererShaderUpdaterFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,27 +60,23 @@
 #include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
 #include "org/allbinary/graphics/opengles/shader/ShaderOpenGLProcessor.h"
 
-class AppRendererShaderUpdaterFactory: public ShaderUpdater {
 
-    private: static AppRendererShaderUpdaterFactory* instanceC() { static std::unique_ptr<AppRendererShaderUpdaterFactory> value(new AppRendererShaderUpdaterFactory()); return value.get(); }
+AppRendererShaderUpdaterFactory::AppRendererShaderUpdaterFactory() : NULL_SHADER_COMPOSITE_ARRAY({}), shaderCompositeArray(this->NULL_SHADER_COMPOSITE_ARRAY), shaderOpenGLProcessorArray({}) {
+        }
+        auto AppRendererShaderUpdaterFactory::instanceC_owner() -> AppRendererShaderUpdaterFactory* { static std::unique_ptr<AppRendererShaderUpdaterFactory> value(new AppRendererShaderUpdaterFactory()); return value.get(); }
+AppRendererShaderUpdaterFactory* AppRendererShaderUpdaterFactory::instanceC = AppRendererShaderUpdaterFactory::instanceC_owner();
 
-    public: static AppRendererShaderUpdaterFactory* getInstance(){
+    auto AppRendererShaderUpdaterFactory::getInstance() -> AppRendererShaderUpdaterFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AppRendererShaderUpdaterFactory::instanceC();
+                        return AppRendererShaderUpdaterFactory::instanceC;
     
 }
 
 
-    private: const std::vector<ShaderComposite*> NULL_SHADER_COMPOSITE_ARRAY = {};
-
-    public: const std::vector<ShaderComposite*> shaderCompositeArray = this->NULL_SHADER_COMPOSITE_ARRAY;
-
-    private: const std::vector<ShaderOpenGLProcessor*> shaderOpenGLProcessorArray = {};
-
-    public: std::vector<ShaderOpenGLProcessor*> getTestShaders(){
+    auto AppRendererShaderUpdaterFactory::getTestShaders() -> std::vector<ShaderOpenGLProcessor*>{
 
 
 
@@ -80,11 +86,10 @@ class AppRendererShaderUpdaterFactory: public ShaderUpdater {
 }
 
 
-    public: void setShaderComposite(Object* object3d){
+    auto AppRendererShaderUpdaterFactory::setShaderComposite(Object* object3d) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,29 +39,13 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
-
-      
 #include <java/io/FileFilter.h>
-
-      
 #include <java/io/FilenameFilter.h>
-
-      
 #include <java/io/IOException.h>
-
-      
 #include <java/net/URI.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class TsUtil;
+class AbPath;
+class StringUtil;
 
 
 
@@ -77,11 +66,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/AbFileInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbFile
-            : public Object
+            : public virtual Object
         , public AbFileInterface {
 
-    public: static inline AbFile* NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInstance()->EMPTY_STRING);
+    public: static AbFile* NULL_FILE;
 
                 //@Throws(Exception.constructor)
             
@@ -101,9 +94,9 @@ class AbFile
 
     private: File* file;
 
-protected: AbFile(File* file);
+/*protected*/ public: AbFile(File* file);
 
-    protected: File* getFile();
+    /*protected*/ public: File* getFile();
 
     public: std::string getName();
 
@@ -178,6 +171,7 @@ protected: AbFile(File* file);
     public: int32_t compareTo(File* pathname);
 
     public: bool equals(Object* obj);
+    public: bool equals(const std::string& obj) { return equals(JavaString::box(obj)); }
 
     public: int32_t hashCode();
 
@@ -189,3 +183,37 @@ protected: AbFile(File* file);
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_H_COMPLETE
+        #if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/io/FileFilter.h>)
+#include <java/io/FileFilter.h>
+#endif
+#if __has_include(<java/io/FilenameFilter.h>)
+#include <java/io/FilenameFilter.h>
+#endif
+#if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<java/net/URI.h>)
+#include <java/net/URI.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/io/file/AbFileInterface.h")
+#include "org/allbinary/logic/io/file/AbFileInterface.h"
+#endif
+
+        #endif
+    

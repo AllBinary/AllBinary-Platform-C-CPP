@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,14 +39,8 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class Document;
+class Node;
 
 
 
@@ -60,11 +59,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/category/CategoryInterface.h"
-#include "org/allbinary/business/category/CategoryView.h"
+        class CategoryInterface;
+class CategoryView;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoriesView
-            : public Object
+            : public virtual Object
         , public DomNodeInterface {
 
     private: CategoryInterface* categoryInterface;
@@ -81,3 +84,25 @@ public: CategoriesView(CategoryInterface* categoryInterface);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/category/CategoryInterface.h")
+#include "org/allbinary/business/category/CategoryInterface.h"
+#endif
+#if __has_include("org/allbinary/business/category/CategoryView.h")
+#include "org/allbinary/business/category/CategoryView.h"
+#endif
+
+        #endif
+    

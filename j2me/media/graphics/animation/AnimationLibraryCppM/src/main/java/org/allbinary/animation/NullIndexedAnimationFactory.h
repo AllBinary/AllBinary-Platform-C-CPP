@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,12 +38,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
+class Graphics;
+class ScaleProperties;
 
 
 
@@ -59,35 +60,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
-#include "org/allbinary/animation/IndexedAnimation.h"
+class IndexedAnimation;
 #include "org/allbinary/animation/NullIndexedAnimation.h"
-#include "org/allbinary/animation/IndexedAnimationBehavior.h"
-//#include "org/allbinary/animation/NullIndexedAnimationInner.h"
-#include "org/allbinary/animation/Animation.h"
+class IndexedAnimationBehavior;
+//class NullIndexedAnimationInner;
+class Animation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullIndexedAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+public: class NullIndexedAnimationInner;
 
-    public: static inline const std::vector<IndexedAnimation*> NULL_INDEXED_ANIMATION_ARRAY = {};
+    public: static std::vector<IndexedAnimation*> NULL_INDEXED_ANIMATION_ARRAY;
 
-    private: static NullIndexedAnimationFactory* NULL_INDEXED_ANIMATION_FACTORY() { static std::unique_ptr<NullIndexedAnimationFactory> value(new NullIndexedAnimationFactory()); return value.get(); }
+    private: static NullIndexedAnimationFactory* NULL_INDEXED_ANIMATION_FACTORY_owner();
+    private: static NullIndexedAnimationFactory* NULL_INDEXED_ANIMATION_FACTORY;
 
     public: static NullIndexedAnimationFactory* getFactoryInstance();
 
 //inner= member=true isStatic=
-class NullIndexedAnimationInner: public NullIndexedAnimation {
+public: class NullIndexedAnimationInner: public NullIndexedAnimation {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-: NullIndexedAnimationInner();
+public: NullIndexedAnimationInner();
 
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
 };
 
             
-    private: Animation* NULL_ANIMATION = new NullIndexedAnimationInner();
+    private: Animation* NULL_ANIMATION;
 
 private: NullIndexedAnimationFactory();
 
@@ -107,3 +114,34 @@ private: NullIndexedAnimationFactory();
 
 
         #endif //ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include("org/allbinary/animation/AnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/AnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/NullIndexedAnimation.h")
+#include "org/allbinary/animation/NullIndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimationBehavior.h")
+#include "org/allbinary/animation/IndexedAnimationBehavior.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+
+        #endif
+    

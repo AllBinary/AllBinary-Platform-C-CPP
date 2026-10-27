@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PATHDATA_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PATHDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PathData
-            : public Object
+            : public virtual Object
          {
 
-    private: static PathData* instance() { static std::unique_ptr<PathData> value(new PathData()); return value.get(); }
+    private: static PathData* instance_owner();
+    private: static PathData* instance;
 
     public: static PathData* getInstance();
 
+
+            
+    public: PathData();
+        
     public: const int32_t OFFSET = 400;
 
 };
@@ -64,3 +78,10 @@ class PathData
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PATHDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PATHDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PATHDATA_H_COMPLETE
+        
+        #endif
+    

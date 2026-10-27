@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,45 +78,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //ActualPlatform
-/*actual*/ class LogFormatUtil
-            : public Object
-         {
+auto LogFormatUtil::instance_owner() -> LogFormatUtil* { static std::unique_ptr<LogFormatUtil> value(new LogFormatUtil()); return value.get(); }
+LogFormatUtil* LogFormatUtil::instance = LogFormatUtil::instance_owner();
 
-    private: static LogFormatUtil* instance() { static std::unique_ptr<LogFormatUtil> value(new LogFormatUtil()); return value.get(); }
-
-    /*actual*/ public: static LogFormatUtil* getInstance(){
+    /*actual*/ auto LogFormatUtil::getInstance() -> LogFormatUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogFormatUtil::instance();
+                        return LogFormatUtil::instance;
     
 }
 
 
-    private: TimeStampUtil* timeStampUtil = TimeStampUtil::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: const std::string LOG_ERROR = "\nLog-Error: ";
-
-    private: const std::string EMPTY = "Empty";
-
-    private: const std::string STACK_TRACE = "\nStack Trace: ";
-
-    private: const std::string TIME = "Time: ";
-
-    private: const std::string CLASS_NAME = this->commonSeps->SPACE;
-
-    private: const std::string FUNCTION_CALL = CommonLabels::getInstance()->COLON_SEP;
-
-    private: const std::string SPECIAL_MESSAGE = "> ";
-
-private: LogFormatUtil(){
+LogFormatUtil::LogFormatUtil() : timeStampUtil(TimeStampUtil::getInstance()), commonSeps(CommonSeps::getInstance()), CLASS_NAME(this->commonSeps->SPACE), FUNCTION_CALL(CommonLabels::getInstance()->COLON_SEP), stringUtil(StringUtil::getInstance()), exceptionUtil(ExceptionUtil::getInstance()), nullUtil(NullUtil::getInstance()){
 }
 
 
-    /*actual*/ public: std::string get(std::string className, std::string functionName, std::string specialMessage, Object* exception){
+    /*actual*/ auto LogFormatUtil::get(std::string className, std::string functionName, std::string specialMessage, Object* exception) -> std::string{
 
     StringMaker* stringBuffer = this->getF(className, functionName);;
     
@@ -127,7 +116,7 @@ stringBuffer->append(this->commonSeps->NEW_LINE);
 }
 
 
-    /*actual*/ public: std::string getS(std::string className, std::string functionName, std::string specialMessage){
+    /*actual*/ auto LogFormatUtil::getS(std::string className, std::string functionName, std::string specialMessage) -> std::string{
 
     StringMaker* stringBuffer = this->getF(className, functionName);;
     
@@ -146,7 +135,7 @@ stringBuffer->append(this->commonSeps->NEW_LINE);
 }
 
 
-    private: StringMaker* getF(std::string className, std::string functionName){
+    auto LogFormatUtil::getF(std::string className, std::string functionName) -> StringMaker*{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -171,13 +160,7 @@ stringBuffer->append(functionName);
 }
 
 
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    private: ExceptionUtil* exceptionUtil = ExceptionUtil::getInstance();
-
-    private: NullUtil* nullUtil = NullUtil::getInstance();
-
-    /*actual*/ public: std::string getO(Object* exception){
+    /*actual*/ auto LogFormatUtil::getO(Object* exception) -> std::string{
 
                         if(exception != this->nullUtil->NULL_OBJECT)
                         
@@ -244,7 +227,6 @@ stringBuffer->append(this->STACK_TRACE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFORMATUTIL_CPP

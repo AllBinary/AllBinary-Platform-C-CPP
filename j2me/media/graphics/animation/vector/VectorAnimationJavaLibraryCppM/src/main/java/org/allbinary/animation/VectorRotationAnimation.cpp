@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorRotationAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -64,56 +74,54 @@
         #include "org/allbinary/animation/VectorBaseRotationAnimation.h"
 #include "org/allbinary/animation/AnimationBehavior.h"
 
-class VectorRotationAnimation: public VectorBaseRotationAnimation {
 
-public: VectorRotationAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : VectorBaseRotationAnimation(AngleInfo::getInstance((AngleFactory::getInstance()->TOTAL_ANGLE /currentPoints.size())), currentPoints, basicColor, animationBehavior){
+VectorRotationAnimation::VectorRotationAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor* basicColor, AnimationBehavior* animationBehavior) : VectorBaseRotationAnimation(AngleInfo::getInstance((AngleFactory::getInstance()->TOTAL_ANGLE /currentPoints.size())), currentPoints, basicColor, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->angleInfo.adjustAngle(this->getFrame());
+this->angleInfo->adjustAngle(this->getFrame());
     
 }
 
 
-    public: void setFrameByDirection(Direction* direction){
+    auto VectorRotationAnimation::setFrameByDirection(Direction* direction) -> void{
 
-    Angle* angle = this->directionUtil.getFrameAngle(direction);;
+    Angle* angle = this->directionUtil->getFrameAngle(direction);;
     
 this->adjustFrameToAngle(angle);
     
 }
 
 
-    public: void setFrameToAngle(Angle* angle){
+    auto VectorRotationAnimation::setFrameToAngle(Angle* angle) -> void{
 this->adjustFrameToAngle(angle);
     
 }
 
 
-    public: void setFrame(int32_t index){
-super.setFrame(index);
+    auto VectorRotationAnimation::setFrame(int32_t index) -> void{
+VectorBaseRotationAnimation::setFrame(index);
     
-this->angleInfo.adjustAngle(this->getFrame());
-    
-}
-
-
-    public: void adjustFrame(int16_t newAngle){
-this->setFrame(this->frameUtil.getFrameForAngle(newAngle, static_cast<int32_t>(this->angleInfo.getAngleIncrementInfo()->getAngleIncrement())));
+this->angleInfo->adjustAngle(this->getFrame());
     
 }
 
 
-    public: void adjustFrameToAngle(Angle* newAngle){
+    auto VectorRotationAnimation::adjustFrame(int16_t newAngle) -> void{
+this->setFrame(this->frameUtil->getFrameForAngle(newAngle, static_cast<int32_t>(this->angleInfo->getAngleIncrementInfo()->getAngleIncrement())));
+    
+}
+
+
+    auto VectorRotationAnimation::adjustFrameToAngle(Angle* newAngle) -> void{
 this->adjustFrame(newAngle->getValue());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATION_CPP

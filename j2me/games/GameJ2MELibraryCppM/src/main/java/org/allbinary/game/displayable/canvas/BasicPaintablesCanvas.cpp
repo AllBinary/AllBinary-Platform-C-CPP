@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/BasicPaintablesCanvas.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,13 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
 
-class BasicPaintablesCanvas: public GameCommandCanvas {
 
-    private: std::vector<Paintable*> paintableArray;
-
-    private: ColorFillBasePaintable* colorFillPaintable;
-
-public: BasicPaintablesCanvas(CommandListener* cmdListener, std::string name, AllBinaryGameLayerManager* allBinaryGameLayerManager, std::vector<Paintable*> paintableArray) : GameCommandCanvas(cmdListener, name, allBinaryGameLayerManager->getBackgroundBasicColor(), allBinaryGameLayerManager->getForegroundBasicColor()){
+BasicPaintablesCanvas::BasicPaintablesCanvas(CommandListener* cmdListener, std::string name, AllBinaryGameLayerManager* allBinaryGameLayerManager, std::vector<Paintable*> paintableArray) : GameCommandCanvas(cmdListener, name, allBinaryGameLayerManager->getBackgroundBasicColor(), allBinaryGameLayerManager->getForegroundBasicColor()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +91,7 @@ this->colorFillPaintable= ColorFillPaintableFactory::getInstance()->getInstance(
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto BasicPaintablesCanvas::paint(Graphics* graphics) -> void{
 this->colorFillPaintable->paint(graphics);
     
 graphics->setColor(this->foregroundColor);
@@ -98,16 +103,15 @@ graphics->setColor(this->foregroundColor);
                         for (
     int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this->paintableArray[index].paint(graphics);
+this->paintableArray[index]->paint(graphics);
     
 }
 
-super.paint(graphics);
+GameCommandCanvas::paint(graphics);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_CPP

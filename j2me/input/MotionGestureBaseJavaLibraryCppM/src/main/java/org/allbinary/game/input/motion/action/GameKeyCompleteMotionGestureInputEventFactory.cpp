@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENTFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEventFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,33 +71,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
 
-class GameKeyCompleteMotionGestureInputEventFactory
-            : public Object
-         {
 
-    private: static GameKeyCompleteMotionGestureInputEventFactory* SINGLETON() { static std::unique_ptr<GameKeyCompleteMotionGestureInputEventFactory> value(new GameKeyCompleteMotionGestureInputEventFactory()); return value.get(); }
+GameKeyCompleteMotionGestureInputEventFactory::GameKeyCompleteMotionGestureInputEventFactory() : logUtil(LogUtil::getInstance()), eventList(new BasicArrayListD()) {
+        }
+        auto GameKeyCompleteMotionGestureInputEventFactory::SINGLETON_owner() -> GameKeyCompleteMotionGestureInputEventFactory* { static std::unique_ptr<GameKeyCompleteMotionGestureInputEventFactory> value(new GameKeyCompleteMotionGestureInputEventFactory()); return value.get(); }
+GameKeyCompleteMotionGestureInputEventFactory* GameKeyCompleteMotionGestureInputEventFactory::SINGLETON = GameKeyCompleteMotionGestureInputEventFactory::SINGLETON_owner();
 
-    public: static GameKeyCompleteMotionGestureInputEventFactory* getInstance(){
+    auto GameKeyCompleteMotionGestureInputEventFactory::getInstance() -> GameKeyCompleteMotionGestureInputEventFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyCompleteMotionGestureInputEventFactory::SINGLETON();
+                        return GameKeyCompleteMotionGestureInputEventFactory::SINGLETON;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* eventList = new BasicArrayListD();
-
-    public: void add(GameKeyCompleteMotionGestureInputEvent* gameKeyCompleteMotionGestureInputEvent){
+    auto GameKeyCompleteMotionGestureInputEventFactory::add(GameKeyCompleteMotionGestureInputEvent* gameKeyCompleteMotionGestureInputEvent) -> void{
 this->eventList->add(gameKeyCompleteMotionGestureInputEvent);
     
 }
 
 
-    public: void updateAll(){
+    auto GameKeyCompleteMotionGestureInputEventFactory::updateAll() -> void{
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->appendint(this->eventList->size())->toString(), this, "updateAll");
     
 
@@ -107,7 +113,6 @@ gameKeyCompleteMotionGestureInputEvent->update();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENTFACTORY_CPP

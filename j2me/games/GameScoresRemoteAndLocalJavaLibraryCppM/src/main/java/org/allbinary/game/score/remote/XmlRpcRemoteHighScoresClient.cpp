@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_XMLRPCREMOTEHIGHSCORESCLIENT_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_XMLRPCREMOTEHIGHSCORESCLIENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/remote/XmlRpcRemoteHighScoresClient.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,13 +93,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class XmlRpcRemoteHighScoresClient: public XmlRpcAbeClient {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string page;
-
-public: XmlRpcRemoteHighScoresClient(AbeClientInformationInterface* clientInfo, std::string page, std::string remoteMethod) : XmlRpcAbeClient(clientInfo, remoteMethod){
+XmlRpcRemoteHighScoresClient::XmlRpcRemoteHighScoresClient(AbeClientInformationInterface* clientInfo, std::string page, std::string remoteMethod) : XmlRpcAbeClient(clientInfo, remoteMethod), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -105,7 +110,7 @@ this->setServer(0);
 
                 //@Throws(Exception.constructor)
             
-    public: Object* get(Object* anyType, CryptInterface* cryptInterface){
+    auto XmlRpcRemoteHighScoresClient::get(Object* anyType, CryptInterface* cryptInterface) -> Object*{
 
         try {
             
@@ -130,7 +135,7 @@ stringBuffer->append(SEP);
     
 stringBuffer->append(serverUrl);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.GET);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->GET);
     
 
     XmlRpcClient* xmlRpcClient = new XmlRpcClient(serverUrl);;
@@ -144,14 +149,14 @@ xmlRpcClient->setBasicAuthentication(
 
     ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
     
-this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonStrings.GET);
+this->logUtil->putF(CLIENT_INFO +hashtable->toString(), this, this->commonStrings->GET);
     
 param->add(hashtable);
     
 
     Object* result = xmlRpcClient->execute(this->getRemoteMethod(), param, cryptInterface);;
     
-this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings.GET);
+this->logUtil->putF(RESULT +result->toString(), this, this->commonStrings->GET);
     
 isOnline= true;
     
@@ -165,7 +170,7 @@ isOnline= true;
                 //: 
 } catch(IOException& e) 
             {
-this->logUtil->put(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->commonStrings.GET, &e);
+this->logUtil->put(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStackTrace(&e), this, this->commonStrings->GET, &e);
     
 
                         if(!e.getMessage().startsWith(HOST_NOT_RESOLVED))
@@ -184,7 +189,7 @@ this->logUtil->put(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStackT
                             
 
 
-                            throw new Exception(HOST_NOT_RESOLVED_MSG);
+                            throw Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -194,7 +199,7 @@ this->logUtil->put(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance()->getStackT
                 //: 
  catch(XmlRpcException& e) 
             {
-this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, &e);
+this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings->GET, &e);
     
 
 
@@ -207,7 +212,7 @@ this->logUtil->put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, &e);
                 //: 
  catch(Exception& e) 
             {
-this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings.GET, &e);
+this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings->GET, &e);
     
 
 
@@ -220,7 +225,6 @@ this->logUtil->put(UNKNOWN_ERROR, this, this->commonStrings.GET, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_XMLRPCREMOTEHIGHSCORESCLIENT_CPP

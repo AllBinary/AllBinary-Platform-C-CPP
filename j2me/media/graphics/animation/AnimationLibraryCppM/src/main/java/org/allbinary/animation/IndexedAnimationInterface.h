@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,6 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/SequentialAnimationInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class IndexedAnimationInterface: public SequentialAnimationInterface {
 
     public: virtual void reset() = 0;
@@ -61,3 +70,13 @@ class IndexedAnimationInterface: public SequentialAnimationInterface {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/animation/SequentialAnimationInterface.h")
+#include "org/allbinary/animation/SequentialAnimationInterface.h"
+#endif
+
+        #endif
+    

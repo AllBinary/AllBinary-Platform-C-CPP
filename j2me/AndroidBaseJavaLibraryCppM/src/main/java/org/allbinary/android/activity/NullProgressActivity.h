@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,12 +56,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/activity/ProgressActivityInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullProgressActivity
-            : public Object
+            : public virtual Object
         , public ProgressActivityInterface {
 
-    public: static NullProgressActivity* NULL_PROGRESS_ACTIVITY() { static std::unique_ptr<NullProgressActivity> value(new NullProgressActivity()); return value.get(); }
+    private: static NullProgressActivity* NULL_PROGRESS_ACTIVITY_owner();
+    public: static NullProgressActivity* NULL_PROGRESS_ACTIVITY;
 
+
+            
+    public: NullProgressActivity();
+        
     public: void runOnUiThread(Runnable* action);
 
     public: void onDismissTitleProgressBar();
@@ -71,3 +85,13 @@ class NullProgressActivity
 
 
         #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_NULLPROGRESSACTIVITY_H_COMPLETE
+        #if __has_include("org/allbinary/android/activity/ProgressActivityInterface.h")
+#include "org/allbinary/android/activity/ProgressActivityInterface.h"
+#endif
+
+        #endif
+    

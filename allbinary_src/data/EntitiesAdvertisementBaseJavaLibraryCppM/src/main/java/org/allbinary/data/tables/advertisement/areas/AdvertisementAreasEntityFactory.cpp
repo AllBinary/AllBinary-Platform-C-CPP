@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,12 @@
         #include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntity.h"
 #include "org/allbinary/data/tables/advertisement/areas/AdvertisementAreasEntityInterface.h"
 
-class AdvertisementAreasEntityFactory
-            : public Object
-         {
 
-    private: static inline const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
+AdvertisementAreasEntityFactory::AdvertisementAreasEntityFactory(){
+}
 
-    public: static AdvertisementAreasEntityInterface* getInstance(){
+
+    auto AdvertisementAreasEntityFactory::getInstance() -> AdvertisementAreasEntityInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -78,7 +87,7 @@ class AdvertisementAreasEntityFactory
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     
@@ -100,11 +109,6 @@ logUtil->put(commonStrings->EXCEPTION, "AdvertisementAreasEntityFactory", common
 }
 
 
-private: AdvertisementAreasEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYFACTORY_CPP

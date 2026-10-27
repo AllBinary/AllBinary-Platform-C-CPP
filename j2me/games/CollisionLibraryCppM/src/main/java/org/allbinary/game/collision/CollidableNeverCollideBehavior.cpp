@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollidableNeverCollideBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         #include "org/allbinary/game/collision/CollidableBaseBehavior.h"
 #include "org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h"
 
-class CollidableNeverCollideBehavior: public CollidableBaseBehavior {
 
-: CollidableNeverCollideBehavior(bool isCollidable) : CollidableBaseBehavior(isCollidable){
+CollidableNeverCollideBehavior::CollidableNeverCollideBehavior(bool isCollidable) : CollidableBaseBehavior(isCollidable){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,7 +71,7 @@ class CollidableNeverCollideBehavior: public CollidableBaseBehavior {
 }
 
 
-    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer){
+    auto CollidableNeverCollideBehavior::isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer) -> bool{
 
 
 
@@ -74,15 +83,15 @@ class CollidableNeverCollideBehavior: public CollidableBaseBehavior {
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer){
+    auto CollidableNeverCollideBehavior::collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer) -> void{
 }
 
 
-    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
+    auto CollidableNeverCollideBehavior::collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> void{
 }
 
 
-    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
+    auto CollidableNeverCollideBehavior::isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> bool{
 
 
 
@@ -92,7 +101,6 @@ class CollidableNeverCollideBehavior: public CollidableBaseBehavior {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIOR_CPP

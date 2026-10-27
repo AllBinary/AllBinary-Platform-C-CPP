@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,21 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEvent.h"
 
-class MyGraphicItemEventListener {
+//Interface - declared in the header
 
-    public: virtual void delete_(MyGraphicItemEvent* evt) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void duplicate(MyGraphicItemEvent* evt) = 0;
 
-    public: virtual void rotate(MyGraphicItemEvent* evt) = 0;
-
-    public: virtual void highlight(MyGraphicItemEvent* evt) = 0;
-
-    public: virtual void deselect(MyGraphicItemEvent* evt) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTLISTENER_CPP

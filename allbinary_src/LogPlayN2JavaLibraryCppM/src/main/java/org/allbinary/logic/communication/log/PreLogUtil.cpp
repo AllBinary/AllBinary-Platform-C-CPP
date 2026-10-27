@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/PreLogUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,11 +76,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
 //ActualPlatform
-/*actual*/ class PreLogUtil
-            : public Object
-         {
 
-    /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName){
+PreLogUtil::PreLogUtil(){
+}
+
+
+    /*actual*/ auto PreLogUtil::put(std::string specialMessage, Object* anyType, std::string functionName) -> void{
 
     std::string className = PreLogUtil::getClassName(anyType);;
     
@@ -88,14 +99,12 @@ className= (new StringMaker())->append(className)->append(CommonSeps::getInstanc
 
     std::string message = LogFormatUtil::getInstance()->getS(className, functionName, specialMessage);;
     
-PlayN::getInstance()->log()->debug(PreLogUtil::LOG_SUCCESS +message);
+PlayN::getInstance()->log()->debug(JavaString::valueOf(PreLogUtil::LOG_SUCCESS) +JavaString::valueOf(message));
     
 }
 
 
-    private: static inline const std::string LOG_SUCCESS = "org.allbinary: ";
-
-    /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+    /*actual*/ auto PreLogUtil::putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception) -> void{
 
     std::string className = PreLogUtil::getClassName(anyType);;
     
@@ -113,45 +122,31 @@ className= (new StringMaker())->append(className)->append(CommonSeps::getInstanc
 
     std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-PlayN::getInstance()->log()->error(PreLogUtil::LOG_SUCCESS +message, dynamic_cast<Throwable*>(exception));
+PlayN::getInstance()->log()->error(JavaString::valueOf(PreLogUtil::LOG_SUCCESS) +JavaString::valueOf(message), dynamic_cast<Throwable*>(exception));
     
 }
 
 
-    /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName){
+    /*actual*/ auto PreLogUtil::putS(std::string specialMessage, std::string className, std::string functionName) -> void{
 
     std::string message = LogFormatUtil::getInstance()->getS(className, functionName, specialMessage);;
     
-PlayN::getInstance()->log()->debug(PreLogUtil::LOG_SUCCESS +message);
+PlayN::getInstance()->log()->debug(JavaString::valueOf(PreLogUtil::LOG_SUCCESS) +JavaString::valueOf(message));
     
 }
 
 
-    /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception){
+    /*actual*/ auto PreLogUtil::putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception) -> void{
 
     std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-PlayN::getInstance()->log()->error(PreLogUtil::LOG_SUCCESS +message, dynamic_cast<Throwable*>(exception));
+PlayN::getInstance()->log()->error(JavaString::valueOf(PreLogUtil::LOG_SUCCESS) +JavaString::valueOf(message), dynamic_cast<Throwable*>(exception));
     
 }
 
 
-    /*actual*/ public: static std::string getClassName(Object* anyType)
-                //native - START
-                {
-                    
-                }
+    /*actual*/ 
 
 
 
-                //native - END
-                
-
-public: PreLogUtil(){
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP

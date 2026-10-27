@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,71 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
-class OpenGLFeatureFactory
-            : public Object
-         {
+auto OpenGLFeatureFactory::instance_owner() -> OpenGLFeatureFactory* { static std::unique_ptr<OpenGLFeatureFactory> value(new OpenGLFeatureFactory()); return value.get(); }
+OpenGLFeatureFactory* OpenGLFeatureFactory::instance = OpenGLFeatureFactory::instance_owner();
 
-    private: static OpenGLFeatureFactory* instance() { static std::unique_ptr<OpenGLFeatureFactory> value(new OpenGLFeatureFactory()); return value.get(); }
-
-    public: static OpenGLFeatureFactory* getInstance(){
+    auto OpenGLFeatureFactory::getInstance() -> OpenGLFeatureFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureFactory::instance();
+                        return OpenGLFeatureFactory::instance;
     
 }
 
 
-private: OpenGLFeatureFactory(){
+OpenGLFeatureFactory::OpenGLFeatureFactory() : OPENGL_OPTIONS(new OpenGLFeature("OpenGL Options")), OPENGL(new OpenGLFeature("OpenGL")), OPENGL_SURFACE_VIEW(new OpenGLFeature("GLSurfaceView")), OPENGL_2D(new OpenGLFeature("OpenGL 2D")), OPENGL_3D(new OpenGLFeature("OpenGL 3D")), OPENGL_2D_AND_3D(new OpenGLFeature("OpenGL 2D/3D")), OPENGL_AUTO_SELECT(new OpenGLFeature("Auto Select")), OPENGL_MINIMUM(new OpenGLFeature("Minimum")), OPENGL_AS_GAME_THREAD(new OpenGLFeature("As game thread")), OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS(new OpenGLFeature("As different threads")), IMAGE_COLOR_DEPTH_4444(new OpenGLFeature("4444")), IMAGE_COLOR_DEPTH_8888(new OpenGLFeature("8888")), IMAGE_COLOR_DEPTH_565(new OpenGLFeature("565")), OPENGL_COLOR_DEPTH_4444(new OpenGLFeature("4444")), OPENGL_COLOR_DEPTH_8888(new OpenGLFeature("8888")), OPENGL_COLOR_DEPTH_565(new OpenGLFeature("565")), OPENGL_DRAW_TEXTURE(new OpenGLFeature("GL_OES_draw_texture")), OPENGL_VERTEX_BUFFER_OBJECT(new OpenGLFeature("vertex_buffer_object")), OPENGL_SIMPLE_OBJECT3D_PROCESSOR(new OpenGLFeature("Simple Object3d Processor")), OPENGL_COMPLEX_OBJECT3D_PROCESSOR(new OpenGLFeature("Complex Object3d Processor")), OPENGL_SIMPLE_TEXTURE_PROCESSOR(new OpenGLFeature("Simple Texture Processor")), OPENGL_COMPLEX_TEXTURE_PROCESSOR(new OpenGLFeature("Complex Texture Processor")){
 }
 
 
-    public: OpenGLFeature* OPENGL_OPTIONS = new OpenGLFeature("OpenGL Options");
 
-    public: OpenGLFeature* OPENGL = new OpenGLFeature("OpenGL");
 
-    public: OpenGLFeature* OPENGL_SURFACE_VIEW = new OpenGLFeature("GLSurfaceView");
-
-    public: OpenGLFeature* OPENGL_2D = new OpenGLFeature("OpenGL 2D");
-
-    public: OpenGLFeature* OPENGL_3D = new OpenGLFeature("OpenGL 3D");
-
-    public: OpenGLFeature* OPENGL_2D_AND_3D = new OpenGLFeature("OpenGL 2D/3D");
-
-    public: OpenGLFeature* OPENGL_AUTO_SELECT = new OpenGLFeature("Auto Select");
-
-    public: OpenGLFeature* OPENGL_MINIMUM = new OpenGLFeature("Minimum");
-
-    public: OpenGLFeature* OPENGL_AS_GAME_THREAD = new OpenGLFeature("As game thread");
-
-    public: OpenGLFeature* OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS = new OpenGLFeature("As different threads");
-
-    public: OpenGLFeature* IMAGE_COLOR_DEPTH_4444 = new OpenGLFeature("4444");
-
-    public: OpenGLFeature* IMAGE_COLOR_DEPTH_8888 = new OpenGLFeature("8888");
-
-    public: OpenGLFeature* IMAGE_COLOR_DEPTH_565 = new OpenGLFeature("565");
-
-    public: OpenGLFeature* OPENGL_COLOR_DEPTH_4444 = new OpenGLFeature("4444");
-
-    public: OpenGLFeature* OPENGL_COLOR_DEPTH_8888 = new OpenGLFeature("8888");
-
-    public: OpenGLFeature* OPENGL_COLOR_DEPTH_565 = new OpenGLFeature("565");
-
-    public: OpenGLFeature* OPENGL_DRAW_TEXTURE = new OpenGLFeature("GL_OES_draw_texture");
-
-    public: OpenGLFeature* OPENGL_VERTEX_BUFFER_OBJECT = new OpenGLFeature("vertex_buffer_object");
-
-    public: OpenGLFeature* OPENGL_SIMPLE_OBJECT3D_PROCESSOR = new OpenGLFeature("Simple Object3d Processor");
-
-    public: OpenGLFeature* OPENGL_COMPLEX_OBJECT3D_PROCESSOR = new OpenGLFeature("Complex Object3d Processor");
-
-    public: OpenGLFeature* OPENGL_SIMPLE_TEXTURE_PROCESSOR = new OpenGLFeature("Simple Texture Processor");
-
-    public: OpenGLFeature* OPENGL_COMPLEX_TEXTURE_PROCESSOR = new OpenGLFeature("Complex Texture Processor");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREFACTORY_CPP

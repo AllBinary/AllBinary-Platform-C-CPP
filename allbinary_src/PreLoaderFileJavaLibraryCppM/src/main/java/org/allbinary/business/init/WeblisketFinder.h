@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_H
         #define ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,33 +40,15 @@
         
             #include "java/lang/System.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
+class LogUtil;
+class LogConfigTypeFactory;
+class LogConfigTypes;
+class AbFile;
+class SubDirectory;
+class StringUtil;
+class CommonStrings;
+class BasicArrayList;
 
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/directory/SubDirectory.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 
 
 
@@ -81,11 +68,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WeblisketFinder
-            : public Object
+            : public virtual Object
          {
 
-    private: static WeblisketFinder* instance() { static std::unique_ptr<WeblisketFinder> value(new WeblisketFinder()); return value.get(); }
+    private: static WeblisketFinder* instance_owner();
+    private: static WeblisketFinder* instance;
 
     public: static WeblisketFinder* getInstance();
 
@@ -95,11 +87,11 @@ class WeblisketFinder
             
     public: static void main(std::vector<std::string> args);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: SubDirectory* subDirectory = SubDirectory::getInstance();
+    private: SubDirectory* subDirectory;
 
 private: WeblisketFinder();
 
@@ -113,3 +105,35 @@ private: WeblisketFinder();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/directory/SubDirectory.h>)
+#include <org/allbinary/logic/io/file/directory/SubDirectory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ANIMATIONFACTORYINITIALIZATIONVISITOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ANIMATIONFACTORYINITIALIZATIONVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AnimationFactoryInitializationVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,27 +67,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnimationFactoryInitializationVisitor
-            : public Object
-         {
 
-    public: int32_t width= 0;
-
-    public: int32_t height= 0;
-
-    public: int32_t dx= 0;
-
-    public: int32_t dy= 0;
-
-    public: int32_t originalDx= 0;
-
-    public: int32_t originalDy= 0;
-
-    public: void visit(){
+AnimationFactoryInitializationVisitor::AnimationFactoryInitializationVisitor() {
+        }
+        
+    auto AnimationFactoryInitializationVisitor::visit() -> void{
 }
 
 
-    public: std::string toString(){
+    auto AnimationFactoryInitializationVisitor::toString() -> std::string{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -110,7 +108,6 @@ stringBuffer->appendint(this->height);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ANIMATIONFACTORYINITIALIZATIONVISITOR_CPP

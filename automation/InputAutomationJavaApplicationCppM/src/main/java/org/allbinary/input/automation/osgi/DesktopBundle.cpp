@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_DESKTOPBUNDLE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_DESKTOPBUNDLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/osgi/DesktopBundle.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,15 +75,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/osgi/JDialog.h"
 
-class DesktopBundle
-            : public Object
-         {
 
-    private: static inline const std::string DESKTOP_SYMBOLIC_NAME = "org.knopflerfish.bundle.desktop";
-
-    private: Bundle* bundle;
-
-public: DesktopBundle(){
+DesktopBundle::DesktopBundle(){
 
     BundleContext* bundleContext = InputAutomationBundleActivator::getBundleContext();;
     
@@ -127,13 +130,12 @@ textJDialog->setVisible(true);
 
                 //@Throws(Exception.constructor)
             
-    public: void start(){
+    auto DesktopBundle::start() -> void{
 this->bundle->start();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_DESKTOPBUNDLE_CPP

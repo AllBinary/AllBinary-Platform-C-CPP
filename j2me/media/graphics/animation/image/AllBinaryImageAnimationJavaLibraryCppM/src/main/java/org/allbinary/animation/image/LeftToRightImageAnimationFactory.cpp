@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_LEFTTORIGHTIMAGEANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_LEFTTORIGHTIMAGEANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/LeftToRightImageAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,9 +69,8 @@
 #include "org/allbinary/animation/image/LeftToRightImageAnimation.h"
 #include "org/allbinary/animation/image/AdjustedLeftToRightImageAnimation.h"
 
-class LeftToRightImageAnimationFactory: public BaseImageAnimationFactory {
 
-public: LeftToRightImageAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, image->getWidth(), image->getHeight(), dx, dy, animationBehaviorFactory){
+LeftToRightImageAnimationFactory::LeftToRightImageAnimationFactory(Image* image, std::vector<int32_t> sequenceArray, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, image->getWidth(), image->getHeight(), dx, dy, animationBehaviorFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,21 +82,21 @@ public: LeftToRightImageAnimationFactory(Image* image, std::vector<int32_t> sequ
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto LeftToRightImageAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
-    Image* scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
+    Image* scaledImage = this->animationFactoryImageScaleUtil->createImage(this->getImage(), this->animationFactoryInitializationVisitor->width, this->animationFactoryInitializationVisitor->height, this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);;
     
 
-                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
+                        if(this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0)
                         
                                     {
-                                    this->animationFactoryImageScaleUtil.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil->processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdjustedLeftToRightImageAnimation(scaledImage, this->getSequenceArray(), this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AdjustedLeftToRightImageAnimation(scaledImage, this->getSequenceArray(), this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                                     }
@@ -97,7 +106,7 @@ public: LeftToRightImageAnimationFactory(Image* image, std::vector<int32_t> sequ
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LeftToRightImageAnimation(scaledImage, this->getSequenceArray(), this->animationBehaviorFactory.getOrCreateInstance());
+                        return new LeftToRightImageAnimation(scaledImage, this->getSequenceArray(), this->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
@@ -105,7 +114,6 @@ public: LeftToRightImageAnimationFactory(Image* image, std::vector<int32_t> sequ
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_LEFTTORIGHTIMAGEANIMATIONFACTORY_CPP

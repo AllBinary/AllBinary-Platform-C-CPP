@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
+class GPoint;
 
 
 
@@ -51,15 +54,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Grid
-            : public Object
+            : public virtual Object
          {
 
     public: GPoint* grid;
 
-    public: bool isGridOn = true;
+    public: bool isGridOn_ = true;
 
-    public: bool isGridPossible = false;
+    public: bool isGridPossible_ = false;
 
     private: int32_t zoom = 3;
 
@@ -87,3 +94,13 @@ public: Grid(Grid* grid);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_GRID_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+
+        #endif
+    

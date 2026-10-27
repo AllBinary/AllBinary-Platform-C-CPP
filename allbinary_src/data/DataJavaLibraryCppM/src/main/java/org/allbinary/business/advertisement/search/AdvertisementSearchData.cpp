@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/search/AdvertisementSearchData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementSearchData
-            : public Object
-         {
+auto AdvertisementSearchData::instance_owner() -> AdvertisementSearchData* { static std::unique_ptr<AdvertisementSearchData> value(new AdvertisementSearchData()); return value.get(); }
+AdvertisementSearchData* AdvertisementSearchData::instance = AdvertisementSearchData::instance_owner();
 
-    private: static AdvertisementSearchData* instance() { static std::unique_ptr<AdvertisementSearchData> value(new AdvertisementSearchData()); return value.get(); }
-
-    public: static AdvertisementSearchData* getInstance(){
+    auto AdvertisementSearchData::getInstance() -> AdvertisementSearchData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementSearchData::instance();
+                        return AdvertisementSearchData::instance;
     
 }
 
 
-private: AdvertisementSearchData(){
+AdvertisementSearchData::AdvertisementSearchData(){
 }
 
 
-    public: const std::string TITLE = "AFFILIATE_TITLE";
 
-    public: const std::string PRICE = "AFFILIATE_PRICE";
 
-    public: const std::string RELEVANCY = "AFFILIATE_RELEVANCY";
-
-    public: const std::string POPULARITY = "AFFILIATE_POPULARITY";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_ADVERTISEMENTSEARCHDATA_CPP

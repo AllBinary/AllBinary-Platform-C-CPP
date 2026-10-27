@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/help/HelpPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -78,29 +88,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HelpPaintable: public Paintable, public UpdateMyFontInterface {
 
-    protected: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
-
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    protected: int32_t anchor = Anchor::TOP_LEFT;
-
-    protected: std::string title;
-
-    protected: std::vector<std::string> inputInfo = StringUtil::getInstance()->getArrayInstance();
-
-    protected: BasicColor* basicColor;
-
-    protected: int32_t titleBeginWidth= 0;
-
-    private: std::vector<int32_t> beginWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY;
-
-    private: int32_t charHeight= 0;
-
-public: HelpPaintable(std::string title, BasicColor* backgroundBasicColor, BasicColor* basicColor){
+HelpPaintable::HelpPaintable(std::string title, BasicColor* backgroundBasicColor, BasicColor* basicColor) : displayInfo(DisplayInfoSingleton::getInstance()), updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), anchor(Anchor::TOP_LEFT), inputInfo(StringUtil::getInstance()->getArrayInstance()), beginWidthArray(NullUtil::getInstance()->NULL_INT_ARRAY){
 this->title= title;
     
 this->basicColor= basicColor;
@@ -108,7 +97,7 @@ this->basicColor= basicColor;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto HelpPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -135,7 +124,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void setInputInfoP(std::vector<std::string> inputInfo){
+    auto HelpPaintable::setInputInfoP(std::vector<std::string> inputInfo) -> void{
 this->inputInfo= inputInfo;
     
 this->beginWidthArray= std::vector<int32_t>(this->inputInfo.length);
@@ -145,7 +134,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto HelpPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -172,7 +161,6 @@ graphics->drawString(this->inputInfo[index], halfWidth -this->beginWidthArray[in
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_CPP

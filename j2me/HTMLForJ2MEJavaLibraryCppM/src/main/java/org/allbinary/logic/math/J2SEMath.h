@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_H
         #define ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,14 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class J2SEMath
-            : public Object
+            : public virtual Object
          {
 
-    private: static J2SEMath* instance() { static std::unique_ptr<J2SEMath> value(new J2SEMath()); return value.get(); }
+    private: static J2SEMath* instance_owner();
+    private: static J2SEMath* instance;
 
     public: static J2SEMath* getInstance();
 
+
+            
+    public: J2SEMath();
+        
     public: int32_t round(float value);
 
     public: float abs(float value);
@@ -70,3 +84,10 @@ class J2SEMath
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_H_COMPLETE
+        
+        #endif
+    

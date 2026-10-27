@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/HighScoresPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,25 +98,12 @@
 #include "org/allbinary/game/score/HighScores.h"
 #include "org/allbinary/game/score/HighScore.h"
 
-class HighScoresPaintable: public Paintable, public ColorChangeListener, public UpdateMyFontInterface {
 
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-    private: HighScores* highScores = NullHighScoresSingletonFactory::getInstance();
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    private: int32_t charHeight= 0;
-
-public: HighScoresPaintable(){
+HighScoresPaintable::HighScoresPaintable() : displayInfoSingleton(DisplayInfoSingleton::getInstance()), myFontProcessor(new UpdateMyFontProcessor(this)), basicColor(BasicColorFactory::getInstance()->WHITE), highScores(NullHighScoresSingletonFactory::getInstance()), anchor(Anchor::TOP_LEFT){
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto HighScoresPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -117,7 +114,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto HighScoresPaintable::onEvent(AllBinaryEventObject* eventObject) -> void{
 
     ColorChangeEvent* colorChangeEvent = dynamic_cast<ColorChangeEvent*>(eventObject);;
     
@@ -126,7 +123,7 @@ this->basicColor= colorChangeEvent->getBasicColorP();
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto HighScoresPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -217,13 +214,13 @@ vectorIndex++;
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto HighScoresPaintable::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto HighScoresPaintable::getBasicColorP() -> BasicColor*{
 
 
 
@@ -233,13 +230,12 @@ this->basicColor= basicColor;
 }
 
 
-    public: void setHighScores(HighScores* highScores){
+    auto HighScoresPaintable::setHighScores(HighScores* highScores) -> void{
 this->highScores= highScores;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_HIGHSCORESPAINTABLE_CPP

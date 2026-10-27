@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/ScreenRepaintUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScreenRepaintUtil
-            : public Object
-         {
 
-    public: static void repaint(Displayable* displayable){
+ScreenRepaintUtil::ScreenRepaintUtil() {
+        }
+        
+    auto ScreenRepaintUtil::repaint(Displayable* displayable) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTUTIL_CPP

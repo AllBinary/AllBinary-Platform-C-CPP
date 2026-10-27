@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11VBOIMAGE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11VBOIMAGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESGL11VBOImage.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,13 +89,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLESImage.h"
 //This is not actually VBO impl
-class OpenGLESGL11VBOImage: public OpenGLESImage {
 
-    private: GLUtil* glUtil = GLUtil::getInstance();
+OpenGLESGL11VBOImage::OpenGLESGL11VBOImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory), glUtil(GLUtil::getInstance()), textureVertexFloatBuffer(ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer()), regionRectangleFloatArray({
+                                //Otherwise - values - DoubleLiteralExpr
 
-    private: FloatBuffer* textureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer();
+                                //Otherwise - values - DoubleLiteralExpr
 
-public: OpenGLESGL11VBOImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory){
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+}), regionRectangleVertexFloatBuffer(ByteBuffer::allocateDirect(4 *4 *3)->order(ByteOrder::nativeOrder())->asFloatBuffer()), regionTextureRectangleFloatArray(std::vector<float>(8)), regionTextureVertexFloatBuffer(ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,7 +130,7 @@ this->regionTextureVertexFloatBuffer->put(FloatBuffer::wrap(this->regionTextureR
 }
 
 
-    protected: void initVertices(){
+    auto OpenGLESGL11VBOImage::initVertices() -> void{
 this->textureVertexFloatBuffer->put(0);
     
 this->textureVertexFloatBuffer->put(1);
@@ -123,15 +152,15 @@ this->textureVertexFloatBuffer->rewind();
 }
 
 
-    public: void set(GL* gl){
+    auto OpenGLESGL11VBOImage::set(GL* gl) -> void{
 
     GL10* gl10 = dynamic_cast<GL10*>(gl);;
     
 
-                        if(super.initTexture(gl10))
+                        if(OpenGLESImage::initTexture(gl10))
                         
                                     {
-                                    this->textureFactory.load(gl10, GL10::GL_TEXTURE_2D, 0, this, 0, true);
+                                    this->textureFactory->load(gl10, GL10::GL_TEXTURE_2D, 0, this, 0, true);
     
 gl10->glDisable(GL10::GL_TEXTURE_2D);
     
@@ -143,39 +172,7 @@ OpenGLLogUtil::getInstance()->logError(gl10, this);
 }
 
 
-    protected: const std::vector<float> regionRectangleFloatArray = {
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-
-                                //Otherwise - values - DoubleLiteralExpr
-};
-
-    protected: FloatBuffer* regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3)->order(ByteOrder::nativeOrder())->asFloatBuffer();
-
-    private: const std::vector<float> regionTextureRectangleFloatArray = std::vector<float>(8);
-
-    private: FloatBuffer* regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2)->order(ByteOrder::nativeOrder())->asFloatBuffer();
-
-    public: void drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESGL11VBOImage::drawRegion(GL10* gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z) -> void{
 this->regionRectangleFloatArray[0]= x;
     
 this->regionRectangleFloatArray[7]= viewHeight -y;
@@ -216,7 +213,7 @@ gl->glEnableClientState(GL10::GL_VERTEX_ARRAY);
     
 gl->glEnable(GL10::GL_TEXTURE_2D);
     
-gl->glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
+gl->glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties->textureID);
     
 gl->glEnableClientState(GL10::GL_TEXTURE_COORD_ARRAY);
     
@@ -235,7 +232,7 @@ gl->glDisable(GL10::GL_TEXTURE_2D);
 }
 
 
-    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESGL11VBOImage::draw(GL10* gl, int32_t x, int32_t y, int32_t z) -> void{
 this->regionRectangleFloatArray[0]= x;
     
 this->regionRectangleFloatArray[7]= (DisplayInfoSingleton::getInstance()->getLastHeight() -y);
@@ -260,7 +257,7 @@ gl->glEnableClientState(GL10::GL_VERTEX_ARRAY);
     
 gl->glEnable(GL10::GL_TEXTURE_2D);
     
-gl->glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
+gl->glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties->textureID);
     
 gl->glEnableClientState(GL10::GL_TEXTURE_COORD_ARRAY);
     
@@ -279,7 +276,6 @@ gl->glDisable(GL10::GL_TEXTURE_2D);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11VBOIMAGE_CPP

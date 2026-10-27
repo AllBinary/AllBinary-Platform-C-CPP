@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,33 +38,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/Animation.h>
-
-      
-#include <org/allbinary/animation/AnimationBehaviorFactory.h>
-
-      
+class Image;
+class Animation;
+class AnimationBehaviorFactory;
 #include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
-#include <org/allbinary/media/image/ImageToRotationImageArrayUtil.h>
-
-      
+class GameConfigurationCentral;
+class NullUtil;
+class AngleFactory;
+class ScaleProperties;
+class ImageToRotationImageArrayUtil;
 
 
 
@@ -78,11 +65,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
-#include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
-//TWB - Adjustments should be done in the resource creation and not at the animation level
+        class ImageArrayRotationAnimationInfo;
+class AdjustedImageArrayRotationAnimation;
+
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        //TWB - Adjustments should be done in the resource creation and not at the animation level
 class PooledImageArrayRotationAnimationFactory
-            : public Object
+            : public virtual Object
         , public AnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
@@ -93,7 +84,7 @@ class PooledImageArrayRotationAnimationFactory
             
     public: static PooledImageArrayRotationAnimationFactory* createDXY(Image* image, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory);
 
-    private: Object* allBinaryImageRotationAnimationInfo = NullUtil::getInstance()->NULL_OBJECT;
+    private: Object* allBinaryImageRotationAnimationInfo;
 
     private: AnimationBehaviorFactory* animationBehaviorFactory;
 
@@ -111,3 +102,43 @@ public: PooledImageArrayRotationAnimationFactory(Image* image, int32_t width, in
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/Animation.h>)
+#include <org/allbinary/animation/Animation.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehaviorFactory.h>)
+#include <org/allbinary/animation/AnimationBehaviorFactory.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationInterfaceFactoryInterface.h>)
+#include <org/allbinary/animation/AnimationInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/GameConfigurationCentral.h>)
+#include <org/allbinary/game/configuration/GameConfigurationCentral.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageToRotationImageArrayUtil.h>)
+#include <org/allbinary/media/image/ImageToRotationImageArrayUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h")
+#include "org/allbinary/animation/image/ImageArrayRotationAnimationInfo.h"
+#endif
+#if __has_include("org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h")
+#include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
+#endif
+
+        #endif
+    

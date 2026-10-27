@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIESFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/properties/root/store/RootStoreCategoryPropertiesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,39 +82,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/properties/root/store/RootStoreCategoryProperties.h"
 
-class RootStoreCategoryPropertiesFactory
-            : public Object
-        , public CategoryPropertiesFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CategoryPropertiesInterface* categoryPropertiesInterface;
-
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface){
+RootStoreCategoryPropertiesFactory::RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreCategoryProperties(transformInfoInterface));
     
 }
 
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, AbPath* abPath){
+RootStoreCategoryPropertiesFactory::RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, AbPath* abPath) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreCategoryProperties(transformInfoInterface, abPath));
     
 }
 
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, Node* node){
+RootStoreCategoryPropertiesFactory::RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, Node* node) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreCategoryProperties(transformInfoInterface, node));
     
 }
 
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
+RootStoreCategoryPropertiesFactory::RootStoreCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap));
     
 }
 
 
-    public: CategoryPropertiesInterface* getInstance(){
+    auto RootStoreCategoryPropertiesFactory::getInstance() -> CategoryPropertiesInterface*{
 
         try {
             
@@ -121,7 +124,7 @@ this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(ne
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -140,7 +143,6 @@ this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(ne
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIESFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,29 +37,13 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/java/bool/BooleanUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StdUtil;
+class PreLogUtil;
+class LogConfigTypeFactory;
+class LogConfigTypes;
+class AbPath;
+class BooleanUtil;
+class StringUtil;
 
 
 
@@ -73,13 +62,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/business/init/InitInfoEntity.h"
+        class InitInfoEntity;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InitInfo
-            : public Object
+            : public virtual Object
          {
 
-    private: static InitInfo* instance() { static std::unique_ptr<InitInfo> value(new InitInfo()); return value.get(); }
+    private: static InitInfo* instance_owner();
+    private: static InitInfo* instance;
 
     public: static InitInfo* getInstance();
 
@@ -152,3 +146,37 @@ private: InitInfo();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/bool/BooleanUtil.h>)
+#include <org/allbinary/logic/java/bool/BooleanUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/business/init/InitInfoEntity.h")
+#include "org/allbinary/business/init/InitInfoEntity.h"
+#endif
+
+        #endif
+    

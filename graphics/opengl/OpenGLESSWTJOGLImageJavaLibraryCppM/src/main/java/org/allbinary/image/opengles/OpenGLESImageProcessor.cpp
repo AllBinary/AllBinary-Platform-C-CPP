@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROCESSOR_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,45 +58,44 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLESImageProcessor
-            : public Object
-         {
 
-    private: static OpenGLESImageProcessor* instance() { static std::unique_ptr<OpenGLESImageProcessor> value(new OpenGLESImageProcessor()); return value.get(); }
+OpenGLESImageProcessor::OpenGLESImageProcessor() {
+        }
+        auto OpenGLESImageProcessor::instance_owner() -> OpenGLESImageProcessor* { static std::unique_ptr<OpenGLESImageProcessor> value(new OpenGLESImageProcessor()); return value.get(); }
+OpenGLESImageProcessor* OpenGLESImageProcessor::instance = OpenGLESImageProcessor::instance_owner();
 
-    public: static OpenGLESImageProcessor* getInstance(){
+    auto OpenGLESImageProcessor::getInstance() -> OpenGLESImageProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageProcessor::instance();
+                        return OpenGLESImageProcessor::instance;
     
 }
 
 
-    public: void translate(GL10* gl, float translateX, float translateY){
+    auto OpenGLESImageProcessor::translate(GL10* gl, float translateX, float translateY) -> void{
 gl->glTranslatef(translateX, translateY, 0);
     
 }
 
 
-    public: void rotate(GL10* gl, float angle){
+    auto OpenGLESImageProcessor::rotate(GL10* gl, float angle) -> void{
 gl->glRotatef( -angle, 0, 0, 1);
     
 }
 
 
-    public: void scale(GL10* gl, float scaleX, float scaleY){
+    auto OpenGLESImageProcessor::scale(GL10* gl, float scaleX, float scaleY) -> void{
 gl->glScalef(scaleX, scaleY, 1);
     
 }
 
 
-    public: void colorMask(GL10* gl, float red, float green, float blue, float alpha){
+    auto OpenGLESImageProcessor::colorMask(GL10* gl, float red, float green, float blue, float alpha) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROCESSOR_CPP

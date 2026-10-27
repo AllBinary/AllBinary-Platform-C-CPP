@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_H
         #define ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/system/Memory.h>
-
-      
+class Features;
+class OpenGLFeatureFactory;
+class StringMaker;
+class CommonSeps;
+class Memory;
 
 
 
@@ -62,16 +57,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/canvas/GameStatisticsFactory.h"
+        class GameStatisticsFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SpecialMessageUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static SpecialMessageUtil* SINGLETON() { static std::unique_ptr<SpecialMessageUtil> value(new SpecialMessageUtil()); return value.get(); }
+    private: static SpecialMessageUtil* SINGLETON_owner();
+    private: static SpecialMessageUtil* SINGLETON;
 
     public: static SpecialMessageUtil* getInstance();
 
+
+            
+    public: SpecialMessageUtil();
+        
     public: std::string get();
 
 };
@@ -80,3 +84,28 @@ class SpecialMessageUtil
 
 
         #endif //ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_CANVAS_SPECIALMESSAGEUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>)
+#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/system/Memory.h>)
+#include <org/allbinary/system/Memory.h>
+#endif
+#if __has_include("org/allbinary/canvas/GameStatisticsFactory.h")
+#include "org/allbinary/canvas/GameStatisticsFactory.h"
+#endif
+
+        #endif
+    

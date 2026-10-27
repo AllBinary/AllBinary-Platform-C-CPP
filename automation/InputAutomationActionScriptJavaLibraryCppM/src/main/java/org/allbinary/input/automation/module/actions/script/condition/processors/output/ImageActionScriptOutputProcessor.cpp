@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,20 +82,21 @@
         #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageTypes.h"
 #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputInterface.h"
 
-class ImageActionScriptOutputProcessor
-            : public Object
-         {
+
+ImageActionScriptOutputProcessor::ImageActionScriptOutputProcessor() : logUtil(LogUtil::getInstance()){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static void process(ImageActionScriptOutputInterface* imageActionScriptOutputInterface, int64_t frame){
+    auto ImageActionScriptOutputProcessor::process(ImageActionScriptOutputInterface* imageActionScriptOutputInterface, int64_t frame) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-logUtil->putF("Start - Processing at: " +imageActionScriptOutputInterface->toString(), "ImageActionScriptOutputProcessor", commonStrings->PROCESS);
+logUtil->putF(JavaString::valueOf("Start - Processing at: ") +JavaString::valueOf(imageActionScriptOutputInterface->toString()), "ImageActionScriptOutputProcessor", commonStrings->PROCESS);
     
 
     ImageTypes* imageTypes = imageActionScriptOutputInterface->getImageTypes();;
@@ -116,13 +127,6 @@ imageIOInterface->save(frame);
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ImageActionScriptOutputProcessor(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTPROCESSOR_CPP

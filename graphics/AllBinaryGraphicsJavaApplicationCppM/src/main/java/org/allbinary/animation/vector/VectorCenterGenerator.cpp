@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_VECTORCENTERGENERATOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_VECTORCENTERGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/VectorCenterGenerator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -84,56 +94,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VectorCenterGenerator
-            : public Object
-         {
 
-                //@Throws(Exception.constructor)
-            
-    public: static BasicArrayList* translate(BasicArrayList* list, int32_t x, int32_t y){
-
-    BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(list);;
-    
-graphicsPipe->createMatrix();
-    
-graphicsPipe->translate(x, y);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe->getMatrix();;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    int32_t minX = Integer.MAX_VALUE;
-
-    int32_t minY = Integer.MAX_VALUE;
-
-    int32_t maxX = Integer.MIN_VALUE;
-
-    int32_t maxY = Integer.MIN_VALUE;
-
-    private: int32_t dx = 0;
-
-    private: int32_t dy = 0;
-
-    private: int32_t width= 0;
-
-    private: int32_t height= 0;
-
-public: VectorCenterGenerator(){
+VectorCenterGenerator::VectorCenterGenerator() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), minX(Integer.MAX_VALUE), minY(Integer.MAX_VALUE), maxX(Integer.MIN_VALUE), maxY(Integer.MIN_VALUE){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void calculate(HashMap<Object*, Object*>* hashMap){
+    auto VectorCenterGenerator::calculate(HashMap<Object*, Object*>* hashMap) -> void{
 
     std::vector<Object*> graphicItemArray = hashMap->keys().();;
     
@@ -161,7 +129,7 @@ public: VectorCenterGenerator(){
                                 
 }
 
-this->logUtil->putF("minX: " +this->minX +" minY: " +this->minY +" maxX: " +this->maxX +" maxY: " +this->maxY, this, this->commonStrings->GET_INSTANCE);
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("minX: ") +JavaString::valueOf(this->minX)) +JavaString::valueOf(" minY: ")) +JavaString::valueOf(this->minY)) +JavaString::valueOf(" maxX: ")) +JavaString::valueOf(this->maxX)) +JavaString::valueOf(" maxY: ")) +JavaString::valueOf(this->maxY), this, this->commonStrings->GET_INSTANCE);
     
 this->setWidth(this->maxX -this->minX);
     
@@ -205,7 +173,7 @@ this->dy= middle -currentMiddleY;
 
                 //@Throws(Exception.constructor)
             
-    public: void transform(HashMap<Object*, Object*>* hashMap){
+    auto VectorCenterGenerator::transform(HashMap<Object*, Object*>* hashMap) -> void{
 this->calculate(hashMap);
     
 this->logUtil->putF((new StringMaker())->append(" dx: ")->appendint(this->dx)->append(" dy: ")->appendint(this->dy)->toString(), this, this->commonStrings->GET_INSTANCE);
@@ -243,7 +211,7 @@ item->setPointsInterface(newPoints);
 
                 //@Throws(Exception.constructor)
             
-    private: void getInstance(BasicArrayList* pointVector){
+    auto VectorCenterGenerator::getInstance(BasicArrayList* pointVector) -> void{
 
         try {
             
@@ -313,7 +281,26 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GE
 }
 
 
-    public: int32_t getWidth(){
+                //@Throws(Exception.constructor)
+            
+    auto VectorCenterGenerator::translate(BasicArrayList* list, int32_t x, int32_t y) -> BasicArrayList*{
+
+    BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(list);;
+    
+graphicsPipe->createMatrix();
+    
+graphicsPipe->translate(x, y);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return graphicsPipe->getMatrix();;
+    
+}
+
+
+    auto VectorCenterGenerator::getWidth() -> int32_t{
 
 
 
@@ -323,13 +310,13 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GE
 }
 
 
-    public: void setWidth(int32_t width){
+    auto VectorCenterGenerator::setWidth(int32_t width) -> void{
 this->width= width;
     
 }
 
 
-    public: int32_t getHeight(){
+    auto VectorCenterGenerator::getHeight() -> int32_t{
 
 
 
@@ -339,13 +326,12 @@ this->width= width;
 }
 
 
-    public: void setHeight(int32_t height){
+    auto VectorCenterGenerator::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_VECTORCENTERGENERATOR_CPP

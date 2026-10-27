@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/configuration/ContextConfigurationInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ContextConfigurationInterface {
+//Interface - declared in the header
 
-    public: virtual EmailServerConfigurationInterface* getEmailServerConfigurationInterface() = 0;
 
-    public: virtual void setEmailServerConfigurationInterface(EmailServerConfigurationInterface* emailServerConfigurationInterface) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONINTERFACE_CPP

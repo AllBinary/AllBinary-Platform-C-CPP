@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYBOOLEANFILEVISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYBOOLEANFILEVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/directory/DirectoryBooleanFileVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DirectoryBooleanFileVisitor
-            : public Object
-        , public VisitorInterface {
 
-public: DirectoryBooleanFileVisitor(){
+DirectoryBooleanFileVisitor::DirectoryBooleanFileVisitor(){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto DirectoryBooleanFileVisitor::visit(Object* anyType) -> Object*{
 
 
 
@@ -69,7 +76,7 @@ public: DirectoryBooleanFileVisitor(){
 }
 
 
-    public: bool visit(AbFile* file){
+    auto DirectoryBooleanFileVisitor::visit(AbFile* file) -> bool{
 
                         if(file->isDirectory())
                         
@@ -92,7 +99,6 @@ public: DirectoryBooleanFileVisitor(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYBOOLEANFILEVISITOR_CPP

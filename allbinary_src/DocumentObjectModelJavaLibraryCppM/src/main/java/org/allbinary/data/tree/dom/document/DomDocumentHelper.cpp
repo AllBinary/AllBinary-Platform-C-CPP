@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/document/DomDocumentHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,11 +74,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DomDocumentHelper
-            : public Object
-         {
 
-    public: static void init(){
+DomDocumentHelper::DomDocumentHelper(){
+}
+
+
+    auto DomDocumentHelper::init() -> void{
 System.setProperty("jdk.xml.maxElementDepth", "0");
     
 System.setProperty("jdk.xml.xpathExprOpLimit", "0");
@@ -85,7 +96,7 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
 }
 
 
-    public: static Document* create(){
+    auto DomDocumentHelper::create() -> Document*{
 
         try {
             
@@ -120,7 +131,7 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
 
                 //@Throws(Exception.constructor)
             
-    public: static Document* create(InputStream* inputStream){
+    auto DomDocumentHelper::create(InputStream* inputStream) -> Document*{
 
         try {
             
@@ -154,7 +165,7 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
 
                 //@Throws(Exception.constructor)
             
-    public: static Document* create(std::string xmlString){
+    auto DomDocumentHelper::create(std::string xmlString) -> Document*{
 
         try {
             
@@ -186,11 +197,6 @@ System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
 }
 
 
-private: DomDocumentHelper(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTHELPER_CPP

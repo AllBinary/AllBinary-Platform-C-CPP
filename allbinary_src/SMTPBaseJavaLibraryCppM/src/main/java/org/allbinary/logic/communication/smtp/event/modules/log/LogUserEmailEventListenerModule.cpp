@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/event/modules/log/LogUserEmailEventListenerModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,25 +66,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LogUserEmailEventListenerModule
-            : public Object
-        , public UserEmailEventListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: LogUserEmailEventListenerModule(){
+LogUserEmailEventListenerModule::LogUserEmailEventListenerModule() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void onEmailSendRequest(EmailEvent* userEmailInfoEvent){
+    auto LogUserEmailEventListenerModule::onEmailSendRequest(EmailEvent* userEmailInfoEvent) -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
-    std::string message = "Logging EmailEvent - Temporary Listener for debugging.\n\n" +userEmailInfoEvent->toString();;
+    std::string message = JavaString::valueOf("Logging EmailEvent - Temporary Listener for debugging.\n\n") +JavaString::valueOf(userEmailInfoEvent->toString());;
     
 this->logUtil->putF(message, this, "onEmailSendRequest");
     
@@ -84,7 +89,6 @@ this->logUtil->putF(message, this, "onEmailSendRequest");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_CPP

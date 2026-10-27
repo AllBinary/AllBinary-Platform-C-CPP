@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/ShaderOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -35,33 +45,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShaderOpenGLProcessor: public OpenGLProcessor {
 
-public: ShaderOpenGLProcessor(){
+ShaderOpenGLProcessor::ShaderOpenGLProcessor(){
 }
 
 
-    public: void process0(GL10* gl){
+    auto ShaderOpenGLProcessor::process0(GL10* gl) -> void{
 }
 
 
-    public: void process1(GL10* gl){
+    auto ShaderOpenGLProcessor::process1(GL10* gl) -> void{
 }
 
 
-    public: void process(GL10* gl){
+    auto ShaderOpenGLProcessor::process(GL10* gl) -> void{
 }
 
 
-    public: void process2(GL10* gl){
+    auto ShaderOpenGLProcessor::process2(GL10* gl) -> void{
 }
 
 
-    public: void process3(GL10* gl){
+    auto ShaderOpenGLProcessor::process3(GL10* gl) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADEROPENGLPROCESSOR_CPP

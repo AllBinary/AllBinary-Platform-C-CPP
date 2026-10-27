@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,89 +39,33 @@
             #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/user/UserData.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class HttpServletRequest;
+class StoreFrontData;
+class EntryData;
+class UserData;
 #include <org/allbinary/business/user/UserInterface.h>
-
-      
-#include <org/allbinary/business/user/modules/configuration/UserConfigurationDomDocumentMapping.h>
-
-      
-#include <org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h>
-
-      
-#include <org/allbinary/business/user/modules/configuration/UserConfigurationInterfaceFactory.h>
-
-      
-#include <org/allbinary/business/user/password/Password.h>
-
-      
-#include <org/allbinary/business/user/role/UserRole.h>
-
-      
-#include <org/allbinary/business/user/role/UserRoleB.h>
-
-      
-#include <org/allbinary/business/user/role/UserRoleData.h>
-
-      
-#include <org/allbinary/business/user/username/UserName.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/RequestParams.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class UserConfigurationDomDocumentMapping;
+class UserConfigurationInterface;
+class UserConfigurationInterfaceFactory;
+class Password;
+class UserRole;
+class UserRoleB;
+class UserRoleData;
+class UserName;
+class StdUtil;
+class RequestParams;
+class WeblisketSessionData;
+class WeblisketSessionInterface;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class StringValidationUtil;
+class CommonStrings;
+class Document;
+class Node;
 
 
 
@@ -136,11 +85,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class User
-            : public Object
+            : public virtual Object
         , public UserInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string userName;
 
@@ -182,7 +135,7 @@ class User
 
     private: Password* password;
 
-    private: std::string enable;
+    private: std::string enable_;
 
     private: std::string permissions;
 
@@ -248,7 +201,7 @@ public: User(HashMap<Object*, Object*>* userHashMap);
 
     public: void disable();
 
-    public: void setEnable(std::string enable);
+    public: void setEnable(std::string enable_);
 
     public: std::string getUserName();
 
@@ -326,3 +279,94 @@ public: User(HashMap<Object*, Object*>* userHashMap);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H_COMPLETE
+        #if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserData.h>)
+#include <org/allbinary/business/user/UserData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserInterface.h>)
+#include <org/allbinary/business/user/UserInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/configuration/UserConfigurationDomDocumentMapping.h>)
+#include <org/allbinary/business/user/modules/configuration/UserConfigurationDomDocumentMapping.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h>)
+#include <org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/configuration/UserConfigurationInterfaceFactory.h>)
+#include <org/allbinary/business/user/modules/configuration/UserConfigurationInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/password/Password.h>)
+#include <org/allbinary/business/user/password/Password.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRole.h>)
+#include <org/allbinary/business/user/role/UserRole.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRoleB.h>)
+#include <org/allbinary/business/user/role/UserRoleB.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRoleData.h>)
+#include <org/allbinary/business/user/role/UserRoleData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/username/UserName.h>)
+#include <org/allbinary/business/user/username/UserName.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/RequestParams.h>)
+#include <org/allbinary/logic/communication/http/request/RequestParams.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+
+        #endif
+    

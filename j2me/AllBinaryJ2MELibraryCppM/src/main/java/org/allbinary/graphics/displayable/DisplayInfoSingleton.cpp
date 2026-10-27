@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -105,67 +115,20 @@
         #include "org/allbinary/graphics/displayable/BaseScalable.h"
 #include "org/allbinary/graphics/displayable/ScalableListener.h"
 
-class DisplayInfoSingleton
-            : public Object
-         {
+auto DisplayInfoSingleton::SINGLETON_owner() -> DisplayInfoSingleton* { static std::unique_ptr<DisplayInfoSingleton> value(new DisplayInfoSingleton()); return value.get(); }
+DisplayInfoSingleton* DisplayInfoSingleton::SINGLETON = DisplayInfoSingleton::SINGLETON_owner();
 
-    private: static DisplayInfoSingleton* SINGLETON() { static std::unique_ptr<DisplayInfoSingleton> value(new DisplayInfoSingleton()); return value.get(); }
-
-    public: static DisplayInfoSingleton* getInstance(){
+    auto DisplayInfoSingleton::getInstance() -> DisplayInfoSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisplayInfoSingleton::SINGLETON();
+                        return DisplayInfoSingleton::SINGLETON;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonLabels* commonLabels = CommonLabels::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: const std::string ORIENTATION = "ORIENTATION";
-
-    public: const std::string ADJUSTING_FOR_SCALING_IN_PORTRAIT = "Adjusting for Scaling in portrait display ratio: ";
-
-    public: const std::string ADJUSTING_FOR_SCALING_IN_LANDSCAPE = "Adjusting for Scaling in landscape display ratio: ";
-
-    private: std::vector<int32_t> last = std::vector<int32_t>(4);
-
-    private: std::vector<int32_t> lastHalf = std::vector<int32_t>(4);
-
-    private: std::vector<int32_t> full = std::vector<int32_t>(4);
-
-    private: int32_t top= 0;
-
-    private: int32_t left= 0;
-
-    private: int32_t xOffset= 0;
-
-    private: int32_t yOffset= 0;
-
-    private: float scaleLargestTo= 0.0;
-
-    public: const int32_t WIDTH = 0;
-
-    public: const int32_t HEIGHT = 1;
-
-    public: const int32_t CUSTOM_WIDTH = 2;
-
-    public: const int32_t CUSTOM_HEIGHT = 3;
-
-    private: BaseScalable* scalableListener = new BaseScalable();
-
-    private: float displayRatio= 0.0;
-
-    private: float ratio = 1.0;
-
-private: DisplayInfoSingleton(){
+DisplayInfoSingleton::DisplayInfoSingleton() : logUtil(LogUtil::getInstance()), commonLabels(CommonLabels::getInstance()), commonSeps(CommonSeps::getInstance()), commonStrings(CommonStrings::getInstance()), last(std::vector<int32_t>(4)), lastHalf(std::vector<int32_t>(4)), full(std::vector<int32_t>(4)), scalableListener(new BaseScalable()), displayChangeEvent(new DisplayChangeEvent(this)), list(new BasicArrayListD()){
 
     int32_t size = this->last.size();;
     
@@ -202,7 +165,7 @@ this->full[index]= 0;
 }
 
 
-    public: std::vector<int32_t> getLastHalf(){
+    auto DisplayInfoSingleton::getLastHalf() -> std::vector<int32_t>{
 
 
 
@@ -212,7 +175,7 @@ this->full[index]= 0;
 }
 
 
-    public: std::vector<int32_t> getLast(){
+    auto DisplayInfoSingleton::getLast() -> std::vector<int32_t>{
 
 
 
@@ -222,7 +185,7 @@ this->full[index]= 0;
 }
 
 
-    public: std::vector<int32_t> getFull(){
+    auto DisplayInfoSingleton::getFull() -> std::vector<int32_t>{
 
 
 
@@ -232,7 +195,7 @@ this->full[index]= 0;
 }
 
 
-    public: float getScaleLargestTo(){
+    auto DisplayInfoSingleton::getScaleLargestTo() -> float{
 
 
 
@@ -242,27 +205,13 @@ this->full[index]= 0;
 }
 
 
-    public: void setScaleLargestTo(int32_t scaleLargestTo){
+    auto DisplayInfoSingleton::setScaleLargestTo(int32_t scaleLargestTo) -> void{
 this->scaleLargestTo= scaleLargestTo;
     
 }
 
 
-    private: const std::string SET_LAST_SIZE_METHOD_NAME = "setLastSize";
-
-    private: const std::string FULL_WIDTH = " FullWidth: ";
-
-    private: const std::string FULL_HEIGHT = " FullHeight: ";
-
-    private: const std::string LAST_WIDTH = "LastWidth: ";
-
-    private: const std::string LAST_HEIGHT = " LastHeight: ";
-
-    private: const std::string PORTRAIT = "Portrait";
-
-    private: const std::string LANDSCAPE = "Landscape";
-
-    public: void setLastSize(int32_t aLastWidth, int32_t aLastHeight, std::string reason){
+    auto DisplayInfoSingleton::setLastSize(int32_t aLastWidth, int32_t aLastHeight, std::string reason) -> void{
 
                         if(this->full[this->WIDTH] != aLastWidth || this->full[this->HEIGHT] != aLastHeight)
                         
@@ -275,7 +224,7 @@ this->scaleLargestTo= scaleLargestTo;
 }
 
 
-    private: void setLastSizeForce(int32_t aLastWidth, int32_t aLastHeight, std::string reason){
+    auto DisplayInfoSingleton::setLastSizeForce(int32_t aLastWidth, int32_t aLastHeight, std::string reason) -> void{
 
     StringMaker* stringMaker = new StringMaker();;
     
@@ -287,7 +236,7 @@ this->logUtil->putF(stringMaker->append(CommonLabels::getInstance()->START_LABEL
 
     int32_t aFullHeight = aLastHeight;;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(this->FULL_WIDTH)->appendint(aFullWidth)->append(this->FULL_HEIGHT)->appendint(aFullHeight)->append(this->toString())->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
     
@@ -321,7 +270,7 @@ aLastHeight= aLastHeight *operatingSystemInterface->getOverScanYPercent() /100;
     
 this->ratio= aLastHeight /this->scaleLargestTo;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_PORTRAIT)->appendfloat(this->displayRatio)->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
     
@@ -354,7 +303,7 @@ this->scalableListener->scale(this->ratio);
     
 this->ratio= aLastWidth /this->scaleLargestTo;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE)->appendfloat(this->displayRatio)->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
     
@@ -381,7 +330,7 @@ this->scalableListener->scale(this->ratio);
 
                                     }
                                 
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(this->LAST_WIDTH)->appendint(aLastWidth)->append(this->LAST_HEIGHT)->appendint(aLastHeight)->toString(), this, this->SET_LAST_SIZE_METHOD_NAME);
     
@@ -412,7 +361,7 @@ this->add(this->SET_LAST_SIZE_METHOD_NAME);
 }
 
 
-    public: bool isPortraitWH(int32_t lastWidth, int32_t lastHeight){
+    auto DisplayInfoSingleton::isPortraitWH(int32_t lastWidth, int32_t lastHeight) -> bool{
 
                         if(lastHeight > lastWidth)
                         
@@ -439,7 +388,7 @@ this->add(this->SET_LAST_SIZE_METHOD_NAME);
 }
 
 
-    public: bool isPortrait(){
+    auto DisplayInfoSingleton::isPortrait() -> bool{
 
 
 
@@ -449,23 +398,13 @@ this->add(this->SET_LAST_SIZE_METHOD_NAME);
 }
 
 
-    public: DisplayChangeEvent* displayChangeEvent = new DisplayChangeEvent(this);
-
-    private: const std::string FIRE_METHOD_NAME = "fire";
-
-    private: const std::string REASON = "reason: ";
-
-    private: const std::string UPDATE_FROM_ORIENTATION_CHANGE = "Updating from Orientation Change ";
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    public: void add(std::string reason){
+    auto DisplayInfoSingleton::add(std::string reason) -> void{
 
     StringMaker* stringMaker = new StringMaker();;
     
 this->logUtil->putF(stringMaker->append(this->REASON)->append(reason)->toString(), this, this->FIRE_METHOD_NAME);
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(this->toStringAppend(stringMaker), this, this->FIRE_METHOD_NAME);
     
@@ -474,7 +413,7 @@ this->list->add(reason);
 }
 
 
-    public: void process(){
+    auto DisplayInfoSingleton::process() -> void{
 
         try {
             
@@ -499,7 +438,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->FIRE_METHOD_NAME, 
 }
 
 
-    public: void processForced(){
+    auto DisplayInfoSingleton::processForced() -> void{
 
         try {
             
@@ -524,7 +463,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->FIRE_METHOD_NAME, 
 }
 
 
-    public: void update(Displayable* displayable, std::string reason){
+    auto DisplayInfoSingleton::update(Displayable* displayable, std::string reason) -> void{
 
     int32_t aLastWidth = displayable->getWidth();;
     
@@ -556,7 +495,7 @@ this->logUtil->putF(stringMaker->append(CommonLabels::getInstance()->START_LABEL
                         if(!features->isDefault(openGLFeatureFactory->OPENGL) || this->last[this->WIDTH] != aLastWidth || this->last[this->HEIGHT] != aLastHeight)
                         
                                     {
-                                    stringMaker->delete(0, stringMaker->length());
+                                    stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(this->UPDATE_FROM_ORIENTATION_CHANGE)->toString(), this, this->commonStrings->UPDATE);
     
@@ -590,7 +529,7 @@ aLastHeight= aLastHeight *operatingSystemInterface->getOverScanYPercent() /100;
     
 this->ratio= aLastHeight /this->scaleLargestTo;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_PORTRAIT)->appendfloat(this->displayRatio)->toString(), this, this->commonStrings->UPDATE);
     
@@ -623,7 +562,7 @@ this->scalableListener->scale(this->ratio);
     
 this->ratio= aLastWidth /this->scaleLargestTo;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(this->ADJUSTING_FOR_SCALING_IN_LANDSCAPE)->appendfloat(this->displayRatio)->toString(), this, this->commonStrings->UPDATE);
     
@@ -650,7 +589,7 @@ this->scalableListener->scale(this->ratio);
 
                                     }
                                 
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 this->logUtil->putF(stringMaker->append(this->UPDATE_FROM_ORIENTATION_CHANGE)->append(this->LAST_WIDTH)->appendint(aLastWidth)->append(this->LAST_HEIGHT)->appendint(aLastHeight)->toString(), this, this->commonStrings->UPDATE);
     
@@ -687,15 +626,7 @@ this->add(this->commonStrings->UPDATE);
 }
 
 
-    private: const std::string DISPLAY_INFO = "Display Info: ";
-
-    private: const std::string FULL = "full";
-
-    private: const std::string LAST = "last";
-
-    private: const std::string LAST_HALF = "lastHalf";
-
-    public: std::string toString(){
+    auto DisplayInfoSingleton::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -708,7 +639,7 @@ this->add(this->commonStrings->UPDATE);
 }
 
 
-    public: std::string toStringAppend(StringMaker* stringBuffer){
+    auto DisplayInfoSingleton::toStringAppend(StringMaker* stringBuffer) -> std::string{
 stringBuffer->append(this->DISPLAY_INFO);
     
 stringBuffer->append(this->FULL);
@@ -777,7 +708,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getTop(){
+    auto DisplayInfoSingleton::getTop() -> int32_t{
 
 
 
@@ -787,7 +718,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getLeft(){
+    auto DisplayInfoSingleton::getLeft() -> int32_t{
 
 
 
@@ -797,7 +728,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getLastWidth(){
+    auto DisplayInfoSingleton::getLastWidth() -> int32_t{
 
 
 
@@ -807,7 +738,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getLastHeight(){
+    auto DisplayInfoSingleton::getLastHeight() -> int32_t{
 
 
 
@@ -817,7 +748,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getLastHalfWidth(){
+    auto DisplayInfoSingleton::getLastHalfWidth() -> int32_t{
 
 
 
@@ -827,7 +758,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getLastHalfHeight(){
+    auto DisplayInfoSingleton::getLastHalfHeight() -> int32_t{
 
 
 
@@ -837,7 +768,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getCustomLastWidth(){
+    auto DisplayInfoSingleton::getCustomLastWidth() -> int32_t{
 
 
 
@@ -847,7 +778,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getCustomLastHeight(){
+    auto DisplayInfoSingleton::getCustomLastHeight() -> int32_t{
 
 
 
@@ -857,7 +788,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getRawLastWidth(){
+    auto DisplayInfoSingleton::getRawLastWidth() -> int32_t{
 
 
 
@@ -867,7 +798,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: int32_t getRawLastHeight(){
+    auto DisplayInfoSingleton::getRawLastHeight() -> int32_t{
 
 
 
@@ -877,7 +808,7 @@ stringBuffer->append(this->isPortrait()
 }
 
 
-    public: void setCustom(int32_t width, int32_t height){
+    auto DisplayInfoSingleton::setCustom(int32_t width, int32_t height) -> void{
 this->last[this->CUSTOM_WIDTH]= width;
     
 this->lastHalf[this->CUSTOM_WIDTH]= (this->last[this->CUSTOM_WIDTH]>>1);
@@ -889,13 +820,13 @@ this->lastHalf[this->CUSTOM_HEIGHT]= (this->last[this->CUSTOM_HEIGHT]>>1);
 }
 
 
-    public: void setScalableListener(BaseScalable* scalableListener){
+    auto DisplayInfoSingleton::setScalableListener(BaseScalable* scalableListener) -> void{
 this->scalableListener= scalableListener;
     
 }
 
 
-    public: ScalableListener* getScalableListener(){
+    auto DisplayInfoSingleton::getScalableListener() -> ScalableListener*{
 
 
 
@@ -905,7 +836,7 @@ this->scalableListener= scalableListener;
 }
 
 
-    public: float getRatio(){
+    auto DisplayInfoSingleton::getRatio() -> float{
 
 
 
@@ -915,7 +846,7 @@ this->scalableListener= scalableListener;
 }
 
 
-    public: float getDisplayRatio(){
+    auto DisplayInfoSingleton::getDisplayRatio() -> float{
 
 
 
@@ -925,13 +856,13 @@ this->scalableListener= scalableListener;
 }
 
 
-    public: void setOffset(int32_t left, int32_t top){
+    auto DisplayInfoSingleton::setOffset(int32_t left, int32_t top) -> void{
 this->left= left;
     
 }
 
 
-    public: int32_t getxOffset(){
+    auto DisplayInfoSingleton::getxOffset() -> int32_t{
 
 
 
@@ -941,7 +872,7 @@ this->left= left;
 }
 
 
-    public: int32_t getyOffset(){
+    auto DisplayInfoSingleton::getyOffset() -> int32_t{
 
 
 
@@ -951,7 +882,6 @@ this->left= left;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_CPP

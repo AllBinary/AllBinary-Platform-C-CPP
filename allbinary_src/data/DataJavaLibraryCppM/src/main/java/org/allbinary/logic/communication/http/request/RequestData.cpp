@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/RequestData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,23 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RequestData
-            : public Object
-         {
 
-    public: static inline const std::string REQUEST = "REQUESTDATA_REQUEST";
-
-    public: static inline const std::string PARAMETER = "REQUESTDATA_PARAMETER";
-
-    public: static inline const std::string VIEWS = "REQUESTDATA_VIEWS";
-
-    public: static inline const std::string VISITORS = "REQUESTDATA_VISITORS";
-
-public: RequestData(){
+RequestData::RequestData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTDATA_CPP

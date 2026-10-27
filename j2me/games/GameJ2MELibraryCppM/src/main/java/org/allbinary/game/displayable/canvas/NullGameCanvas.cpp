@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/NullGameCanvas.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,9 +87,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class NullGameCanvas: public AllBinaryGameCanvas {
 
-    private: static NullGameCanvas* createNull(){
+    auto NullGameCanvas::createNull() -> NullGameCanvas*{
 
         try {
             
@@ -97,16 +106,15 @@ LogUtil::getInstance()->put(CommonStrings::getInstance()->EXCEPTION, "NullGameCa
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
+Object* NullGameCanvas::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static NullGameCanvas* getInstance(){
+    auto NullGameCanvas::getInstance() -> NullGameCanvas*{
 
                         if(NullGameCanvas::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -127,7 +135,7 @@ LogUtil::getInstance()->put(CommonStrings::getInstance()->EXCEPTION, "NullGameCa
 
                 //@Throws(Exception.constructor)
             
-    public: static NullGameCanvas* createCanvas(AllBinaryGameLayerManager* gameLayerManager){
+    auto NullGameCanvas::createCanvas(AllBinaryGameLayerManager* gameLayerManager) -> NullGameCanvas*{
 
     NullGameCanvas* nullGameCanvas = new NullGameCanvas(gameLayerManager);;
     
@@ -144,24 +152,20 @@ nullGameCanvas->setTitle(NullGameCanvas::NO_GAME);
 }
 
 
-    public: static inline const std::string NO_GAME = "No Background Game";
-
-    public: static inline const int32_t TYPE = 1;
-
-protected: NullGameCanvas(AllBinaryGameLayerManager* gameLayerManager) : AllBinaryGameCanvas(NullCommandListener::NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory::getInstance(), BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false){
+NullGameCanvas::NullGameCanvas(AllBinaryGameLayerManager* gameLayerManager) : AllBinaryGameCanvas(NullCommandListener::NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory::getInstance(), BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-super.setWait(1200);
+AllBinaryGameCanvas::setWait(1200);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isGameOver(){
+    auto NullGameCanvas::isGameOver() -> bool{
 
 
 
@@ -171,16 +175,14 @@ super.setWait(1200);
 }
 
 
-    private: bool runningNull = true;
-
-    public: void setRunning(bool running){
+    auto NullGameCanvas::setRunning(bool running) -> void{
 this->runningNull= running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto NullGameCanvas::isRunning() -> bool{
 
 
 
@@ -191,20 +193,20 @@ this->runningNull= running;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void pause(){
+    auto NullGameCanvas::pause() -> void{
 this->setPaused(true);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void unPause(){
+    auto NullGameCanvas::unPause() -> void{
 this->setPaused(false);
     
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto NullGameCanvas::initCommands(CommandListener* cmdListener) -> void{
 this->removeAllCommands();
     
 this->setCommandListener(cmdListener);
@@ -214,33 +216,33 @@ this->setCommandListener(cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public: void buildGameInit(bool isProgress){
+    auto NullGameCanvas::buildGameInit(bool isProgress) -> void{
 }
 
 
-    public: void draw(Graphics* graphics){
+    auto NullGameCanvas::draw(Graphics* graphics) -> void{
 }
 
 
-    public: void run(){
+    auto NullGameCanvas::run() -> void{
 
         try {
-            this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
+            this->logUtil->putF(this->commonStrings->START_RUNNABLE, this, this->commonStrings->RUN);
     
-this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
+this->logUtil->putF(this->commonStrings->END_RUNNABLE, this, this->commonStrings->RUN);
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RUN, &e);
     
 }
 
 }
 
 
-    public: int32_t getType(){
+    auto NullGameCanvas::getType() -> int32_t{
 
 
 
@@ -250,7 +252,6 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_CPP

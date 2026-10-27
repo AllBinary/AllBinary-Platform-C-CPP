@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_SELECT_HTMLSELECT_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_SELECT_HTMLSELECT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/select/HtmlSelect.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,41 +77,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlSelect: public HtmlTag {
 
-    private: const std::string END = ">";
-
-    private: const std::string STARTSELECT = "<SELECT ";
-
-    private: const std::string ENDSELECT = "</SELECT>";
-
-    private: const std::string SIZE = "SIZE=\"";
-
-    private: const std::string NAME = "NAME=\"";
-
-    private: const std::string STARTOPTION = "<OPTION";
-
-    private: const std::string SELETED = "SELECTED";
-
-    private: const std::string ENDOPTION = "</OPTION>";
-
-    private: std::string before;
-
-    private: std::string name;
-
-    private: std::string after;
-
-    private: std::string size;
-
-    private: std::string selected;
-
-    private: BasicArrayList* options;
-
-    private: std::string multiple = "multiple";
-
-    private: bool isMultipleSelect = false;
-
-public: HtmlSelect(std::string before, std::string size, std::string name, std::string after){
+HtmlSelect::HtmlSelect(std::string before, std::string size, std::string name, std::string after){
 this->before= before;
     
 this->size= size;
@@ -115,13 +92,13 @@ this->options= new BasicArrayListD();
 }
 
 
-    public: void addOption(std::string key){
+    auto HtmlSelect::addOption(std::string key) -> void{
 this->options->add(key);
     
 }
 
 
-    public: void addOptions(std::string fileName){
+    auto HtmlSelect::addOptions(std::string fileName) -> void{
 
         try {
             
@@ -148,13 +125,13 @@ this->addOption("Error");
 }
 
 
-    public: void setSelected(std::string selected){
+    auto HtmlSelect::setSelected(std::string selected) -> void{
 this->selected= selected;
     
 }
 
 
-    public: bool isMultiple(){
+    auto HtmlSelect::isMultiple() -> bool{
 
 
 
@@ -164,13 +141,13 @@ this->selected= selected;
 }
 
 
-    public: void setMultiple(bool value){
+    auto HtmlSelect::setMultiple(bool value) -> void{
 this->isMultipleSelect= value;
     
 }
 
 
-    private: std::string getOptions(){
+    auto HtmlSelect::getOptions() -> std::string{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -219,7 +196,7 @@ result += this->ENDOPTION;
 }
 
 
-    public: std::string toString(){
+    auto HtmlSelect::toString() -> std::string{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -227,7 +204,7 @@ result += this->ENDOPTION;
     std::string result = stringUtil->EMPTY_STRING;;
     
 
-    std::vector<Object*> attributeKeys = this->otherAttributes.keySet()->();;
+    std::vector<Object*> attributeKeys = this->otherAttributes->keySet()->();;
     
 
     int32_t attributeSize = attributeKeys.size();;
@@ -280,7 +257,7 @@ result += "\" ";
 
 
                         if(this->isMultiple())
-                        result += " " +this->multiple +" ";
+                        result += JavaString::valueOf(JavaString::valueOf(" ") +JavaString::valueOf(this->multiple)) +JavaString::valueOf(" ");
                                 
 result += this->END;
     
@@ -299,7 +276,6 @@ result += this->after;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_SELECT_HTMLSELECT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATE_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/DemoGameMidletState.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DemoGameMidletState
-            : public Object
-         {
 
-public: DemoGameMidletState(){
+DemoGameMidletState::DemoGameMidletState(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATE_CPP

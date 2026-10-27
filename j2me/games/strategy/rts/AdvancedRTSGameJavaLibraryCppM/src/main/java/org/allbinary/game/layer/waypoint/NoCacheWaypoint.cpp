@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_NOCACHEWAYPOINT_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_NOCACHEWAYPOINT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/NoCacheWaypoint.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -111,11 +121,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/WaypointBase.h"
 
-class NoCacheWaypoint: public WaypointBase, public BuildingEventListenerInterface {
 
-    protected: PathFindingLayerInterface* ownerLayer;
-
-public: NoCacheWaypoint(PathFindingLayerInterface* ownerLayer, Sound* sound) : WaypointBase(sound){
+NoCacheWaypoint::NoCacheWaypoint(PathFindingLayerInterface* ownerLayer, Sound* sound) : WaypointBase(sound){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -129,19 +136,19 @@ this->ownerLayer= ownerLayer;
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
-super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+    auto NoCacheWaypoint::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
+WaypointBase::setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 }
 
 
-    public: void releaseCachedPaths(){
+    auto NoCacheWaypoint::releaseCachedPaths() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition){
+    auto NoCacheWaypoint::getPathsListFromCacheOnly(GeographicMapCellPosition* geographicMapCellPosition) -> BasicArrayList*{
 
 
 
@@ -153,7 +160,7 @@ super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition){
+    auto NoCacheWaypoint::getPathsListRunnable(GeographicMapCellPosition* geographicMapCellPosition) -> BasicArrayList*{
 
 
 
@@ -165,7 +172,7 @@ super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    protected: GeographicMapCellPosition* getEndGeographicMapCellPosition(GeographicMapCellPosition* startGeographicMapCellPosition){
+    auto NoCacheWaypoint::getEndGeographicMapCellPosition(GeographicMapCellPosition* startGeographicMapCellPosition) -> GeographicMapCellPosition*{
 
     BasicArrayList* endList = this->ownerLayer->getEndGeographicMapCellPositionList();;
     
@@ -211,7 +218,7 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(endList->
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* createPaths(GeographicMapCellPosition* startGeographicMapCellPosition){
+    auto NoCacheWaypoint::createPaths(GeographicMapCellPosition* startGeographicMapCellPosition) -> BasicArrayList*{
 
     GeographicMapCellPosition* endGeographicMapCellPosition = this->getEndGeographicMapCellPosition(startGeographicMapCellPosition);;
     
@@ -251,7 +258,7 @@ endGeographicMapCellPosition= dynamic_cast<GeographicMapCellPosition*>(endList->
                             
 
 
-                            throw new Exception("Start should not be End: " +endGeographicMapCellPosition);
+                            throw Exception(JavaString::valueOf("Start should not be End: ") +JavaString::valueOf(endGeographicMapCellPosition));
                     
 
                         }
@@ -296,7 +303,7 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
                                     
 
 
-                            throw new Exception("Path may have been cleared by clearing caching");
+                            throw Exception("Path may have been cleared by clearing caching");
                     
 
                                     }
@@ -310,7 +317,7 @@ customMapArray[endGeographicMapCellPosition->getRow()][endGeographicMapCellPosit
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto NoCacheWaypoint::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -318,11 +325,11 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    public: void onBuildingEvent(RTSLayerEvent* event){
+    auto NoCacheWaypoint::onBuildingEvent(RTSLayerEvent* event) -> void{
 }
 
 
-    public: void reset(){
+    auto NoCacheWaypoint::reset() -> void{
 this->getConnectedWaypointList()->clear();
     
 }
@@ -330,7 +337,7 @@ this->getConnectedWaypointList()->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(PathFindingLayerInterface* unitLayer){
+    auto NoCacheWaypoint::visit(PathFindingLayerInterface* unitLayer) -> void{
 
                         if(unitLayer->getGroupInterface()[0] != this->ownerLayer->getGroupInterface()[0])
                         
@@ -388,7 +395,6 @@ break;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_NOCACHEWAYPOINT_CPP

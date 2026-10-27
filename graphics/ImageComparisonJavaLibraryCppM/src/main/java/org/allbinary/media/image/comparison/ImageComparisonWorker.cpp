@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONWORKER_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/ImageComparisonWorker.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,23 +101,8 @@
 #include "org/allbinary/media/image/comparison/ImageComparisonResultCacheSingleton.h"
 #include "org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h"
 
-class ImageComparisonWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* bufferedImageVector = new BasicArrayListD();
-
-    private: ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface;
-
-    private: ImageComparator* imageComparator;
-
-    private: bool running= false;
-
-    private: int32_t index2= 0;
-
-public: ImageComparisonWorker(ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface){
+ImageComparisonWorker::ImageComparisonWorker(ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), bufferedImageVector(new BasicArrayListD()){
 this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
     
 this->imageComparator= new ImageComparator(imageComparatorConstraintsInterface);
@@ -116,7 +111,7 @@ this->imageComparator= new ImageComparator(imageComparatorConstraintsInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto ImageComparisonWorker::isRunning() -> bool{
 
 
 
@@ -127,14 +122,14 @@ this->imageComparator= new ImageComparator(imageComparatorConstraintsInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto ImageComparisonWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedImageWorkerResultsEvent){
+    auto ImageComparisonWorker::onCaptureEvent(CapturedImageWorkerResultsEvent* capturedImageWorkerResultsEvent) -> void{
 this->bufferedImageVector->add(capturedImageWorkerResultsEvent);
     
 
@@ -150,13 +145,13 @@ this->bufferedImageVector->add(capturedImageWorkerResultsEvent);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+    auto ImageComparisonWorker::onEvent(AllBinaryEventObject* allBinaryEventObject) -> void{
 this->onCaptureEvent(dynamic_cast<CapturedImageWorkerResultsEvent*>(allBinaryEventObject));
     
 }
 
 
-    public: void run(){
+    auto ImageComparisonWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -180,14 +175,14 @@ capturedImageWorkerResultsEvent[0]= dynamic_cast<CapturedImageWorkerResultsEvent
 capturedImageWorkerResultsEvent[1]= dynamic_cast<CapturedImageWorkerResultsEvent*>(this->bufferedImageVector->get(1));
     
 
-                        if(this->imageComparatorConstraintsInterface->isImageValid(capturedImageWorkerResultsEvent[0].getBufferedImage()) && this->imageComparatorConstraintsInterface->isImageValid(capturedImageWorkerResultsEvent[1].getBufferedImage()))
+                        if(this->imageComparatorConstraintsInterface->isImageValid(capturedImageWorkerResultsEvent[0]->getBufferedImage()) && this->imageComparatorConstraintsInterface->isImageValid(capturedImageWorkerResultsEvent[1]->getBufferedImage()))
                         
                                     {
                                     
-    ImageComparisonResult* imageComparisonResult = this->imageComparator->compare(capturedImageWorkerResultsEvent[0].getBufferedImage(), capturedImageWorkerResultsEvent[1].getBufferedImage(), capturedImageWorkerResultsEvent[0].getFrame(), capturedImageWorkerResultsEvent[1].getFrame(), 0);;
+    ImageComparisonResult* imageComparisonResult = this->imageComparator->compare(capturedImageWorkerResultsEvent[0]->getBufferedImage(), capturedImageWorkerResultsEvent[1]->getBufferedImage(), capturedImageWorkerResultsEvent[0]->getFrame(), capturedImageWorkerResultsEvent[1]->getFrame(), 0);;
     
 
-    int64_t frame = capturedImageWorkerResultsEvent[1].getFrame();;
+    int64_t frame = capturedImageWorkerResultsEvent[1]->getFrame();;
     
 
     ImageComparisonResultFrameCacheable* imageComparisonResultFrameCacheable = new ImageComparisonResultFrameCacheable(imageComparisonResult, frame);;
@@ -234,7 +229,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONWORKER_CPP

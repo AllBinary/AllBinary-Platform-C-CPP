@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,9 +38,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
+class Image;
 
 
 
@@ -54,13 +57,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageRotationUtil.h"
+        class ImageRotationUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageToRotationImageArrayUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageToRotationImageArrayUtil* instance() { static std::unique_ptr<ImageToRotationImageArrayUtil> value(new ImageToRotationImageArrayUtil()); return value.get(); }
+    private: static ImageToRotationImageArrayUtil* instance_owner();
+    private: static ImageToRotationImageArrayUtil* instance;
 
     public: static ImageToRotationImageArrayUtil* getInstance();
 
@@ -76,3 +84,16 @@ private: ImageToRotationImageArrayUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageRotationUtil.h")
+#include "org/allbinary/media/image/ImageRotationUtil.h"
+#endif
+
+        #endif
+    

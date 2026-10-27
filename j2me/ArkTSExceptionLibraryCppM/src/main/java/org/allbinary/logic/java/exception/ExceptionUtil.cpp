@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/exception/ExceptionUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,31 +59,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //ActualPlatform
-/*actual*/ class ExceptionUtil
-            : public Object
-         {
+auto ExceptionUtil::instance_owner() -> ExceptionUtil* { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
+ExceptionUtil* ExceptionUtil::instance = ExceptionUtil::instance_owner();
 
-    private: static ExceptionUtil* instance() { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
-
-    /*actual*/ public: static ExceptionUtil* getInstance(){
+    /*actual*/ auto ExceptionUtil::getInstance() -> ExceptionUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ExceptionUtil::instance();
+                        return ExceptionUtil::instance;
     
 }
 
 
-private: ExceptionUtil(){
+ExceptionUtil::ExceptionUtil() : PRETEND_EXCEPTION(new Exception("Not Really An Exception")){
 }
 
 
-    /*actual*/ public: Exception* PRETEND_EXCEPTION = new Exception("Not Really An Exception");
-
-    private: const std::string NONE = "No Stack Trace";
-
-    /*actual*/ public: std::string getStackTrace(Throwable* e){
+    /*actual*/ auto ExceptionUtil::getStackTrace(Throwable* e) -> std::string{
 
                         if(true)
                         
@@ -111,7 +114,6 @@ private: ExceptionUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP

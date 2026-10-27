@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETJS_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETJS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>
-
-      
+class GameCanvasRunnableInterface;
 
 
 
@@ -51,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DemoGameMidletJs {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class DemoGameMidletJs
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -63,3 +72,13 @@ class DemoGameMidletJs {
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETJS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETJS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETJS_H_COMPLETE
+        #if __has_include(<org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>)
+#include <org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>
+#endif
+
+        #endif
+    

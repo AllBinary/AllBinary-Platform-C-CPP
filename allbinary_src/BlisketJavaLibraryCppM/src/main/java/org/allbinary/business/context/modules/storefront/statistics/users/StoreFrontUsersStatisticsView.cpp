@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,13 +74,8 @@
         #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsInterface.h"
 #include "org/allbinary/business/context/modules/storefront/statistics/users/StoreFrontUsersStatisticsData.h"
 
-class StoreFrontUsersStatisticsView
-            : public Object
-        , public DomNodeInterface {
 
-    private: StoreFrontUsersStatisticsInterface* storeFrontUsersStatisticsInterface;
-
-public: StoreFrontUsersStatisticsView(StoreFrontUsersStatisticsInterface* storeFrontUsersStatisticsInterface){
+StoreFrontUsersStatisticsView::StoreFrontUsersStatisticsView(StoreFrontUsersStatisticsInterface* storeFrontUsersStatisticsInterface){
 this->storeFrontUsersStatisticsInterface= storeFrontUsersStatisticsInterface;
     
 }
@@ -78,7 +83,7 @@ this->storeFrontUsersStatisticsInterface= storeFrontUsersStatisticsInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto StoreFrontUsersStatisticsView::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->storeFrontUsersStatisticsInterface->toHashMap();;
     
@@ -94,7 +99,6 @@ this->storeFrontUsersStatisticsInterface= storeFrontUsersStatisticsInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICSVIEW_CPP

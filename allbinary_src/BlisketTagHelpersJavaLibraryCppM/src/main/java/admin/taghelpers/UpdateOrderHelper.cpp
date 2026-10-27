@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_UPDATEORDERHELPER_CPP
+        #define ADMIN_TAGHELPERS_UPDATEORDERHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/UpdateOrderHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -91,87 +101,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class UpdateOrderHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HttpServletRequest* request;
-
-    private: std::string entryId;
-
-    private: std::string orderId;
-
-    private: std::string userName;
-
-    private: std::string storeName;
-
-    private: std::string shipDate;
-
-    private: std::string orderDate;
-
-    private: std::string transDate;
-
-    private: std::string cancelDate;
-
-    private: std::string status;
-
-    private: std::string paymentMethod;
-
-    private: std::string name;
-
-    private: std::string type;
-
-    private: std::string expiration;
-
-    private: std::string number;
-
-    private: std::string encryption;
-
-    private: std::string billingName;
-
-    private: std::string billingStreet;
-
-    private: std::string billingCity;
-
-    private: std::string billingState;
-
-    private: std::string billingCode;
-
-    private: std::string billingCountry;
-
-    private: std::string shippingName;
-
-    private: std::string shippingStreet;
-
-    private: std::string shippingCity;
-
-    private: std::string shippingState;
-
-    private: std::string shippingCode;
-
-    private: std::string shippingCountry;
-
-    private: std::string shippingMethodName;
-
-    private: std::string subTotal;
-
-    private: std::string shippingCost;
-
-    private: std::string tax;
-
-    private: std::string total;
-
-    private: std::string special;
-
-    private: std::string userComment;
-
-    private: std::string userCancelComment;
-
-    private: std::string storeComment;
-
-    private: std::string storeCancelComment;
-
-public: UpdateOrderHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+UpdateOrderHelper::UpdateOrderHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->getFormData();
@@ -179,7 +110,7 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto UpdateOrderHelper::getFormData() -> void{
 this->entryId= this->request->getParameter(EntryData::getInstance()->ID);
     
 this->orderId= this->request->getParameter(OrderData::ID);
@@ -257,7 +188,7 @@ this->storeCancelComment= this->request->getParameter(OrderData::STORECANCELCOMM
 }
 
 
-    public: std::string update(){
+    auto UpdateOrderHelper::update() -> std::string{
 
         try {
             
@@ -344,7 +275,7 @@ whereHashMap->put(OrderData::ID, orderId);
 OrderHistoryEntityFactory::getInstance()->update(whereHashMap, orderHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -366,10 +297,10 @@ OrderHistoryEntityFactory::getInstance()->update(whereHashMap, orderHashMap);
     std::string error = "Failed to update order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -385,7 +316,6 @@ OrderHistoryEntityFactory::getInstance()->update(whereHashMap, orderHashMap);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_UPDATEORDERHELPER_CPP

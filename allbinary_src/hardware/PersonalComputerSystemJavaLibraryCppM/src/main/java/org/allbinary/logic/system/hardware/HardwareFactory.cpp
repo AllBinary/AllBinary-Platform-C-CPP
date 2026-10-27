@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/HardwareFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,25 +70,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 
-class HardwareFactory
-            : public Object
-         {
+auto HardwareFactory::instance_owner() -> HardwareFactory* { static std::unique_ptr<HardwareFactory> value(new HardwareFactory()); return value.get(); }
+HardwareFactory* HardwareFactory::instance = HardwareFactory::instance_owner();
 
-    private: static HardwareFactory* instance() { static std::unique_ptr<HardwareFactory> value(new HardwareFactory()); return value.get(); }
-
-    public: static HardwareFactory* getInstance(){
+    auto HardwareFactory::getInstance() -> HardwareFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HardwareFactory::instance();
+                        return HardwareFactory::instance;
     
+}
+
+
+HardwareFactory::HardwareFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static HardwareInterface* getInstance(GenericOperatingSystem* os){
+    auto HardwareFactory::getInstance(GenericOperatingSystem* os) -> HardwareInterface*{
 
         try {
             
@@ -113,7 +124,7 @@ class HardwareFactory
 
 
 
-                            throw new Exception("No Hardware Imp for: " +os->getName());
+                            throw Exception(JavaString::valueOf("No Hardware Imp for: ") +JavaString::valueOf(os->getName()));
                     
 
                 //: 
@@ -129,11 +140,6 @@ class HardwareFactory
 }
 
 
-private: HardwareFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREFACTORY_CPP

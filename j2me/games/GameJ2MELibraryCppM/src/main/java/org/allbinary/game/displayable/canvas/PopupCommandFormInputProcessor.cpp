@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPCOMMANDFORMINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPCOMMANDFORMINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/PopupCommandFormInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,9 +69,8 @@
         #include "org/allbinary/game/displayable/canvas/CommandFormInputProcessor.h"
 #include "org/allbinary/game/displayable/canvas/PopupMenuInputProcessor.h"
 
-class PopupCommandFormInputProcessor: public CommandFormInputProcessor {
 
-public: PopupCommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form, PopupMenuInputProcessor* popupMenuInputProcessor) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCanvas, form){
+PopupCommandFormInputProcessor::PopupCommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t playerInputId, MyCanvas* gameCanvas, ScrollSelectionForm* form, PopupMenuInputProcessor* popupMenuInputProcessor) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCanvas, form){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,25 +82,24 @@ public: PopupCommandFormInputProcessor(BasicArrayList* gameKeyEventList, int32_t
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processInput(int32_t key){
+    auto PopupCommandFormInputProcessor::processInput(int32_t key) -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.processInput(key);;
+                        return CommandFormInputProcessor::processInput(key);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void processMotionInput(MotionGestureEvent* motionGestureEvent){
-super.processMotionInput(motionGestureEvent);
+    auto PopupCommandFormInputProcessor::processMotionInput(MotionGestureEvent* motionGestureEvent) -> void{
+CommandFormInputProcessor::processMotionInput(motionGestureEvent);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_POPUPCOMMANDFORMINPUTPROCESSOR_CPP

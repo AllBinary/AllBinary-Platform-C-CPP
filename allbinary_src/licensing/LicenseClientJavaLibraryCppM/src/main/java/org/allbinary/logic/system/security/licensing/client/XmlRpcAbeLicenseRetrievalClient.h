@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_XMLRPCABELICENSERETRIEVALCLIENT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_XMLRPCABELICENSERETRIEVALCLIENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,50 +37,20 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class CryptInterface;
+class LogUtil;
 #include <org/allbinary/logic/communication/xmlrpc/XmlRpcAbeClient.h>
-
-      
-#include <org/allbinary/logic/java/exception/ExceptionUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientLicense.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
+class ExceptionUtil;
+class StringMaker;
+class AbeClientInformationInterface;
+class AbeClientLicense;
+class AbeLicenseInterface;
+class CommonLabels;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/apache/xmlrpc/XmlRpcClient.h>
-
-      
-#include <org/apache/xmlrpc/XmlRpcException.h>
-
-      
+class XmlRpcClient;
+class XmlRpcException;
 
 
 
@@ -95,15 +70,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class XmlRpcAbeLicenseRetrievalClient: public XmlRpcAbeClient {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface* clientInfo);
 
                 //@Throws(Exception.constructor)
             
     public: Object* get(Object* anyType, CryptInterface* cryptInterface);
+    public: Object* get(const std::string& anyType, CryptInterface* cryptInterface) { return get(JavaString::box(anyType), cryptInterface); }
 
 };
 
@@ -111,3 +91,55 @@ public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface* clientInf
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_XMLRPCABELICENSERETRIEVALCLIENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_XMLRPCABELICENSERETRIEVALCLIENT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_XMLRPCABELICENSERETRIEVALCLIENT_H_COMPLETE
+        #if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/init/crypt/jcehelper/CryptInterface.h>)
+#include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/xmlrpc/XmlRpcAbeClient.h>)
+#include <org/allbinary/logic/communication/xmlrpc/XmlRpcAbeClient.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/exception/ExceptionUtil.h>)
+#include <org/allbinary/logic/java/exception/ExceptionUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientLicense.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientLicense.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/apache/xmlrpc/XmlRpcClient.h>)
+#include <org/apache/xmlrpc/XmlRpcClient.h>
+#endif
+#if __has_include(<org/apache/xmlrpc/XmlRpcException.h>)
+#include <org/apache/xmlrpc/XmlRpcException.h>
+#endif
+
+        #endif
+    

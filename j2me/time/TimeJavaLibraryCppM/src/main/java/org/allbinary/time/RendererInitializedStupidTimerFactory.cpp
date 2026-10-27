@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_RENDERERINITIALIZEDSTUPIDTIMERFACTORY_CPP
+        #define ORG_ALLBINARY_TIME_RENDERERINITIALIZEDSTUPIDTIMERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/RendererInitializedStupidTimerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/time/StupidTimer.h"
 
-class RendererInitializedStupidTimerFactory
-            : public Object
-         {
 
-    private: static StupidTimer* instance() { static std::unique_ptr<StupidTimer> value(new StupidTimer()); return value.get(); }
+RendererInitializedStupidTimerFactory::RendererInitializedStupidTimerFactory() {
+        }
+        auto RendererInitializedStupidTimerFactory::instance_owner() -> StupidTimer* { static std::unique_ptr<StupidTimer> value(new StupidTimer()); return value.get(); }
+StupidTimer* RendererInitializedStupidTimerFactory::instance = RendererInitializedStupidTimerFactory::instance_owner();
 
-    public: static StupidTimer* getInstance(){
+    auto RendererInitializedStupidTimerFactory::getInstance() -> StupidTimer*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RendererInitializedStupidTimerFactory::instance();
+                        return RendererInitializedStupidTimerFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_RENDERERINITIALIZEDSTUPIDTIMERFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/DelayedConstantVelocityMovement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,11 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
-class DelayedConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(60);
-
-public: DelayedConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties) : BasicConstantVelocityMovement(basicDecimal, velocityProperties){
+DelayedConstantVelocityMovement::DelayedConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties) : BasicConstantVelocityMovement(basicDecimal, velocityProperties), timeDelayHelper(new TimeDelayHelper(60)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,18 +82,18 @@ public: DelayedConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocit
 }
 
 
-    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle){
+    auto DelayedConstantVelocityMovement::init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
+    auto DelayedConstantVelocityMovement::process(AllBinaryGameLayer* layer) -> void{
 
                         if(this->timeDelayHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
                                     {
-                                    super.process(layer);
+                                    BasicConstantVelocityMovement::process(layer);
     
 
                                     }
@@ -94,7 +101,6 @@ public: DelayedConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocit
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_DELAYEDCONSTANTVELOCITYMOVEMENT_CPP

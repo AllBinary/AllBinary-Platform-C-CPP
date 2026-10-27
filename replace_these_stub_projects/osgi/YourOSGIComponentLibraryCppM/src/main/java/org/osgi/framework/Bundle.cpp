@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_OSGI_FRAMEWORK_BUNDLE_CPP
+        #define ORG_OSGI_FRAMEWORK_BUNDLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/osgi/framework/Bundle.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,19 +39,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Bundle {
+//Interface - declared in the header
 
-    public: virtual std::string getSymbolicName() = 0;
 
-                //@Throws(BundleException.constructor)
-            
-    public: virtual void start() = 0;
 
-                //@Throws(BundleException.constructor)
-            
-    public: virtual void start(int32_t options) = 0;
-
-};
-
-            
-
+        #endif //ORG_OSGI_FRAMEWORK_BUNDLE_CPP

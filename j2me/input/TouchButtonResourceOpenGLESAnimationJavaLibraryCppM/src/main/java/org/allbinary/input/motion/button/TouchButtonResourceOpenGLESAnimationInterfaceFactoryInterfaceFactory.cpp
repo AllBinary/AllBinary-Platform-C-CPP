@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,9 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
 
-class TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory: public TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory {
 
-public: TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory() : TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("OpenGL TouchButton Animations"){
+TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory::TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory() : TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("OpenGL TouchButton Animations"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,13 +78,13 @@ public: TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory() :
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t level){
-super.initImageCache(OpenGLImageCacheFactory::getInstance(), level);
+    auto TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory::init(int32_t level) -> void{
+TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory::initImageCache(OpenGLImageCacheFactory::getInstance(), level);
     
 }
 
 
-    public: bool isFeature(){
+    auto TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory::isFeature() -> bool{
 
                         if(Features::getInstance()->isDefault(OpenGLFeatureFactory::getInstance()->OPENGL))
                         
@@ -102,7 +111,6 @@ super.initImageCache(OpenGLImageCacheFactory::getInstance(), level);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP

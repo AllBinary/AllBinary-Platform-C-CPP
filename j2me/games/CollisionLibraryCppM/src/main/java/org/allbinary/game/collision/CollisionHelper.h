@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class CollidableCompositeLayer;
+class AllBinaryLayer;
 
 
 
@@ -54,11 +55,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollisionHelper
-            : public Object
+            : public virtual Object
          {
 
-    protected: AllBinaryLayer* sourceLayerInterface;
+    /*protected*/ public: AllBinaryLayer* sourceLayerInterface;
 
 public: CollisionHelper(AllBinaryLayer* sourceLayerInterface);
 
@@ -74,3 +79,16 @@ public: CollisionHelper(AllBinaryLayer* sourceLayerInterface);
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/CollidableCompositeLayer.h>)
+#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+
+        #endif
+    

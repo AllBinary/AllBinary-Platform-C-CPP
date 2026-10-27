@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,36 +38,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/microemu/device/playn/PlaynImmutableImage.h>
-
-      
-#include <org/microemu/device/playn/PlaynMutableImage.h>
-
-      
-#include <playn/core/Canvas.h>
-
-      
-#include <playn/core/CoreImage.h>
-
-      
-#include <playn/core/ImageImpl.h>
-
-      
-#include <playn/core/PlayN.h>
-
-      
-#include <playn/html/HtmlGraphics.h>
-
-      
-#include <playn/html/HtmlImage.h>
-
-      
+class Image;
+class LogUtil;
+class PlaynImmutableImage;
+class PlaynMutableImage;
+class Canvas;
+class CoreImage;
+class ImageImpl;
+class PlayN;
+class HtmlGraphics;
+class HtmlImage;
 
 
 
@@ -82,15 +67,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageJ2MEScaleUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageJ2MEScaleUtil* instance() { static std::unique_ptr<ImageJ2MEScaleUtil> value(new ImageJ2MEScaleUtil()); return value.get(); }
+    private: static ImageJ2MEScaleUtil* instance_owner();
+    private: static ImageJ2MEScaleUtil* instance;
 
     public: static ImageJ2MEScaleUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: ImageJ2MEScaleUtil();
 
@@ -108,3 +98,40 @@ private: ImageJ2MEScaleUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/microemu/device/playn/PlaynImmutableImage.h>)
+#include <org/microemu/device/playn/PlaynImmutableImage.h>
+#endif
+#if __has_include(<org/microemu/device/playn/PlaynMutableImage.h>)
+#include <org/microemu/device/playn/PlaynMutableImage.h>
+#endif
+#if __has_include(<playn/core/Canvas.h>)
+#include <playn/core/Canvas.h>
+#endif
+#if __has_include(<playn/core/CoreImage.h>)
+#include <playn/core/CoreImage.h>
+#endif
+#if __has_include(<playn/core/ImageImpl.h>)
+#include <playn/core/ImageImpl.h>
+#endif
+#if __has_include(<playn/core/PlayN.h>)
+#include <playn/core/PlayN.h>
+#endif
+#if __has_include(<playn/html/HtmlGraphics.h>)
+#include <playn/html/HtmlGraphics.h>
+#endif
+#if __has_include(<playn/html/HtmlImage.h>)
+#include <playn/html/HtmlImage.h>
+#endif
+
+        #endif
+    

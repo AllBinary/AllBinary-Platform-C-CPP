@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
-
-      
+class InputAutomationModuleFactoryInterface;
 #include <org/allbinary/input/automation/module/osgi/InputAutomationModuleServiceFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class LogUtil;
 
 
 
@@ -58,15 +57,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/generic/GenericModuleFactory.h"
+        class GenericModuleFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationGenericModuleServiceFactory: public InputAutomationModuleServiceFactory {
 
-    private: static InputAutomationGenericModuleServiceFactory* inputAutomationGenericModuleServiceFactory() { static std::unique_ptr<InputAutomationGenericModuleServiceFactory> value(new InputAutomationGenericModuleServiceFactory()); return value.get(); }
+    private: static InputAutomationGenericModuleServiceFactory* inputAutomationGenericModuleServiceFactory_owner();
+    private: static InputAutomationGenericModuleServiceFactory* inputAutomationGenericModuleServiceFactory;
 
     public: static InputAutomationGenericModuleServiceFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: InputAutomationGenericModuleServiceFactory();
 
@@ -76,3 +80,22 @@ public: InputAutomationGenericModuleServiceFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>)
+#include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/osgi/InputAutomationModuleServiceFactory.h>)
+#include <org/allbinary/input/automation/module/osgi/InputAutomationModuleServiceFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/GenericModuleFactory.h")
+#include "org/allbinary/input/automation/module/generic/GenericModuleFactory.h"
+#endif
+
+        #endif
+    

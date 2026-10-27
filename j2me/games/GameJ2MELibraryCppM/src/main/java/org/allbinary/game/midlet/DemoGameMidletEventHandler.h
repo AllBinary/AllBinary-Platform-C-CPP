@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
+class AllBinaryEventObject;
+class EventListenerInterface;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -56,12 +55,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/midlet/DemoGameMidletEventListener.h"
-#include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
+        class DemoGameMidletEventListener;
+class DemoGameMidletEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DemoGameMidletEventHandler: public BasicEventHandler {
 
-    private: static DemoGameMidletEventHandler* gameKeyEventHandler() { static std::unique_ptr<DemoGameMidletEventHandler> value(new DemoGameMidletEventHandler()); return value.get(); }
+    private: static DemoGameMidletEventHandler* gameKeyEventHandler_owner();
+    private: static DemoGameMidletEventHandler* gameKeyEventHandler;
 
     public: static DemoGameMidletEventHandler* getInstance();
 
@@ -69,7 +73,7 @@ private: DemoGameMidletEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface);
 
 };
 
@@ -77,3 +81,25 @@ private: DemoGameMidletEventHandler();
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include("org/allbinary/game/midlet/DemoGameMidletEventListener.h")
+#include "org/allbinary/game/midlet/DemoGameMidletEventListener.h"
+#endif
+#if __has_include("org/allbinary/game/midlet/DemoGameMidletEvent.h")
+#include "org/allbinary/game/midlet/DemoGameMidletEvent.h"
+#endif
+
+        #endif
+    

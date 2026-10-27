@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/analysis/ColorRange.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,23 +66,8 @@
         #include "org/allbinary/media/image/analysis/ColorRangeInterface.h"
 #include "org/allbinary/media/image/analysis/Color.h"
 
-class ColorRange
-            : public Object
-        , public ColorRangeInterface {
 
-    private: int32_t minRed;
-
-    private: int32_t maxRed;
-
-    private: int32_t minGreen;
-
-    private: int32_t maxGreen;
-
-    private: int32_t minBlue;
-
-    private: int32_t maxBlue;
-
-public: ColorRange(){
+ColorRange::ColorRange(){
 this->minRed= 0;
     
 this->maxRed= 0;
@@ -88,7 +83,7 @@ this->maxBlue= 0;
 }
 
 
-    public: int32_t getMinRed(){
+    auto ColorRange::getMinRed() -> int32_t{
 
 
 
@@ -98,13 +93,13 @@ this->maxBlue= 0;
 }
 
 
-    public: void setMinRed(int32_t minRed){
+    auto ColorRange::setMinRed(int32_t minRed) -> void{
 this->minRed= minRed;
     
 }
 
 
-    public: int32_t getMaxRed(){
+    auto ColorRange::getMaxRed() -> int32_t{
 
 
 
@@ -114,13 +109,13 @@ this->minRed= minRed;
 }
 
 
-    public: void setMaxRed(int32_t maxRed){
+    auto ColorRange::setMaxRed(int32_t maxRed) -> void{
 this->maxRed= maxRed;
     
 }
 
 
-    public: int32_t getMinGreen(){
+    auto ColorRange::getMinGreen() -> int32_t{
 
 
 
@@ -130,13 +125,13 @@ this->maxRed= maxRed;
 }
 
 
-    public: void setMinGreen(int32_t minGreen){
+    auto ColorRange::setMinGreen(int32_t minGreen) -> void{
 this->minGreen= minGreen;
     
 }
 
 
-    public: int32_t getMaxGreen(){
+    auto ColorRange::getMaxGreen() -> int32_t{
 
 
 
@@ -146,13 +141,13 @@ this->minGreen= minGreen;
 }
 
 
-    public: void setMaxGreen(int32_t maxGreen){
+    auto ColorRange::setMaxGreen(int32_t maxGreen) -> void{
 this->maxGreen= maxGreen;
     
 }
 
 
-    public: int32_t getMinBlue(){
+    auto ColorRange::getMinBlue() -> int32_t{
 
 
 
@@ -162,13 +157,13 @@ this->maxGreen= maxGreen;
 }
 
 
-    public: void setMinBlue(int32_t minBlue){
+    auto ColorRange::setMinBlue(int32_t minBlue) -> void{
 this->minBlue= minBlue;
     
 }
 
 
-    public: int32_t getMaxBlue(){
+    auto ColorRange::getMaxBlue() -> int32_t{
 
 
 
@@ -178,13 +173,13 @@ this->minBlue= minBlue;
 }
 
 
-    public: void setMaxBlue(int32_t maxBlue){
+    auto ColorRange::setMaxBlue(int32_t maxBlue) -> void{
 this->maxBlue= maxBlue;
     
 }
 
 
-    public: bool isInRange(Color* color){
+    auto ColorRange::isInRange(Color* color) -> bool{
 
                         if(color->getRed() >= this->getMinRed() && color->getRed() <= this->getMaxRed() && color->getGreen() >= this->getMinGreen() && color->getGreen() <= this->getMaxGreen() && color->getBlue() >= this->getMinBlue() && color->getBlue() <= this->getMaxBlue())
                         
@@ -211,7 +206,7 @@ this->maxBlue= maxBlue;
 }
 
 
-    public: std::string toString(){
+    auto ColorRange::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -258,7 +253,6 @@ stringBuffer->appendint(this->getMaxBlue());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,29 +43,13 @@
             #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Constructor.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/java/anyType/ConstructorUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/system/security/AbKeys.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class LogUtil;
+class ConstructorUtil;
+class StringMaker;
+class AbKeys;
+class AbeClientInformationInterface;
+class LicensingException;
+class CommonSeps;
 
 
 
@@ -79,18 +68,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/loader/WebappClassLoaderInfo.h"
-#include "org/allbinary/logic/system/loader/AbeClassLoader.h"
+        class WebappClassLoaderInfo;
+class AbeClassLoader;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AbeFactory* instance() { static std::unique_ptr<AbeFactory> value(new AbeFactory()); return value.get(); }
+    private: static AbeFactory* instance_owner();
+    private: static AbeFactory* instance;
 
     public: static AbeFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: bool useCustomLoader = false;
 
@@ -117,3 +111,40 @@ private: AbeFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_H_COMPLETE
+        #if __has_include(<java/lang/reflect/Constructor.h>)
+#include <java/lang/reflect/Constructor.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/anyType/ConstructorUtil.h>)
+#include <org/allbinary/logic/java/anyType/ConstructorUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/AbKeys.h>)
+#include <org/allbinary/logic/system/security/AbKeys.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/logic/system/loader/WebappClassLoaderInfo.h")
+#include "org/allbinary/logic/system/loader/WebappClassLoaderInfo.h"
+#endif
+#if __has_include("org/allbinary/logic/system/loader/AbeClassLoader.h")
+#include "org/allbinary/logic/system/loader/AbeClassLoader.h"
+#endif
+
+        #endif
+    

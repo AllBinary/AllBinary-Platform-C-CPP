@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/util/visitor/Visitor.h>
-
-      
+class Visitor;
 
 
 
@@ -48,9 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+        class SelectedRTSLayersPlayerGameInput;
 
-class SelectRTSLayerVisitorFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class SelectRTSLayerVisitorFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual Visitor* create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) = 0;
 
@@ -60,3 +69,16 @@ class SelectRTSLayerVisitorFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/visitor/Visitor.h>)
+#include <org/allbinary/logic/util/visitor/Visitor.h>
+#endif
+#if __has_include("org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h")
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+#endif
+
+        #endif
+    

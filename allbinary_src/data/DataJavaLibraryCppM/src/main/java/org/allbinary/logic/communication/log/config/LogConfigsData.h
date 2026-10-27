@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIGSDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIGSDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogConfigsData
-            : public Object
+            : public virtual Object
          {
 
-    private: static LogConfigsData* instance() { static std::unique_ptr<LogConfigsData> value(new LogConfigsData()); return value.get(); }
+    private: static LogConfigsData* instance_owner();
+    private: static LogConfigsData* instance;
 
     public: static LogConfigsData* getInstance();
 
+
+            
+    public: LogConfigsData();
+        
     public: const std::string NAME = "LOG_CONFIGS_NAME";
 
 };
@@ -64,3 +78,10 @@ class LogConfigsData
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIGSDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIGSDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGCONFIGSDATA_H_COMPLETE
+        
+        #endif
+    

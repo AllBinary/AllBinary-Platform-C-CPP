@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_COMPLETEMOTIONGESTUREINPUTTOGAMEMOTIONGESTUREINPUT_H
         #define ORG_ALLBINARY_INPUT_MOTION_COMPLETEMOTIONGESTUREINPUTTOGAMEMOTIONGESTUREINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class PreLogUtil;
+class CommonStrings;
 
 
 
@@ -54,15 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompleteMotionGestureInputToGameMotionGestureInput
-            : public Object
+            : public virtual Object
          {
 
-    private: static CompleteMotionGestureInputToGameMotionGestureInput* instance() { static std::unique_ptr<CompleteMotionGestureInputToGameMotionGestureInput> value(new CompleteMotionGestureInputToGameMotionGestureInput()); return value.get(); }
+    private: static CompleteMotionGestureInputToGameMotionGestureInput* instance_owner();
+    private: static CompleteMotionGestureInputToGameMotionGestureInput* instance;
 
     public: static CompleteMotionGestureInputToGameMotionGestureInput* getInstance();
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+
+            
+    public: CompleteMotionGestureInputToGameMotionGestureInput();
+        
+    /*protected*/ public: CommonStrings* commonStrings;
 
     public: void init();
 
@@ -72,3 +82,16 @@ class CompleteMotionGestureInputToGameMotionGestureInput
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_COMPLETEMOTIONGESTUREINPUTTOGAMEMOTIONGESTUREINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_COMPLETEMOTIONGESTUREINPUTTOGAMEMOTIONGESTUREINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_COMPLETEMOTIONGESTUREINPUTTOGAMEMOTIONGESTUREINPUT_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

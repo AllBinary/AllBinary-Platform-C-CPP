@@ -23,7 +23,7 @@
         
     <properties>
         <cygwin.home>G:/cygwin64</cygwin.home>
-        <native.include.path>G:/mnt/bc/mydev/working/replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibraryM/src/main/java</native.include.path>
+        <native.include.path>G:/mnt/bc/mydev/workcpp/j2me/J2SEForCppLibraryCppM/src/main/java</native.include.path>
         <native.c.standard>c17</native.c.standard>
         <native.cpp.standard>c++17</native.cpp.standard>
         <native.compiler.flags>-O2 -Wall -Wextra</native.compiler.flags>
@@ -54,9 +54,8 @@
                         </goals>
                         <configuration>
                             <classifier>sources</classifier>
-                            <includeGroupIds>org.allbinary</includeGroupIds>
                             <includeScope>compile</includeScope>
-                            <includes>**/*.h</includes>
+                            <includes>**/*.h,**/*.cpp</includes>
                             <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
                             <outputDirectory>${project.build.directory}/native/dependency-include</outputDirectory>
                         </configuration>

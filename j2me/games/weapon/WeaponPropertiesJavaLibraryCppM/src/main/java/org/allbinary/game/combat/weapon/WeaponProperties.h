@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_H
         #define ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,21 +34,11 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class PreLogUtil;
+class BasicDecimal;
+class StringMaker;
+class CommonSeps;
+class CommonStrings;
 
 
 
@@ -64,9 +59,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/weapon/SimpleWeaponProperties.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WeaponProperties: public SimpleWeaponProperties {
 
-    public: static WeaponProperties* NULL_WEAPON_PROPERTIES() { static std::unique_ptr<WeaponProperties> value(new WeaponProperties(0, 0, 0, 0, 0)); return value.get(); }
+    private: static WeaponProperties* NULL_WEAPON_PROPERTIES_owner();
+    public: static WeaponProperties* NULL_WEAPON_PROPERTIES;
 
     private: static inline bool messageSent = false;
 
@@ -80,7 +80,7 @@ class WeaponProperties: public SimpleWeaponProperties {
 
     private: int64_t targetingTime= 0;
 
-    private: BasicDecimal* speed = BasicDecimal::ZERO_BIGDECIMAL;
+    private: BasicDecimal* speed;
 
     private: const int64_t MAX = 10240;
 
@@ -112,3 +112,28 @@ public: WeaponProperties(int64_t reloadTime, int64_t targetingTime, int64_t spee
 
 
         #endif //ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/BasicDecimal.h>)
+#include <org/allbinary/logic/math/BasicDecimal.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/combat/weapon/SimpleWeaponProperties.h")
+#include "org/allbinary/game/combat/weapon/SimpleWeaponProperties.h"
+#endif
+
+        #endif
+    

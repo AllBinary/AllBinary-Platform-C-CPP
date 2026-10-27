@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/order/OrderInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,45 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderInterface {
+//Interface - declared in the header
 
-    public: virtual void setShippingMethod(std::string shippingType) = 0;
 
-    public: virtual void setPaymentMethod(std::string value) = 0;
 
-    public: virtual void setSpecial(std::string special) = 0;
-
-    public: virtual void setStoreName(std::string value) = 0;
-
-    public: virtual void setUserComments(std::string value) = 0;
-
-    public: virtual void setUserCancelComments(std::string value) = 0;
-
-    public: virtual void setStoreComments(std::string value) = 0;
-
-    public: virtual void setStoreCancelComments(std::string value) = 0;
-
-    public: virtual BasketInterface* getBasket() = 0;
-
-    public: virtual std::string getShippingMethod() = 0;
-
-    public: virtual std::string getPaymentMethod() = 0;
-
-    public: virtual std::string getSpecial() = 0;
-
-    public: virtual std::string getId() = 0;
-
-    public: virtual std::string getStoreName() = 0;
-
-    public: virtual std::string getUserComments() = 0;
-
-    public: virtual std::string getUserCancelComments() = 0;
-
-    public: virtual std::string getStoreComments() = 0;
-
-    public: virtual std::string getStoreCancelComments() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERINTERFACE_CPP

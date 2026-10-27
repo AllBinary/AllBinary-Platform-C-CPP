@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
-
-      
+class DomDocumentHelper;
 #include <org/allbinary/logic/visual/transform/TransformInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
+class TransformDocumentInterface;
+class TransformInfoInterface;
+class Document;
 
 
 
@@ -63,8 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/CategoryView.h"
-#include "org/allbinary/business/category/CategoryInterface.h"
+class CategoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoryComponent: public CategoryView, public TransformInterface {
 
 public: CategoryComponent(CategoryInterface* categoryInterface);
@@ -95,3 +94,31 @@ public: CategoryComponent(CategoryInterface* categoryInterface);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tree/dom/document/DomDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/TransformInterface.h>)
+#include <org/allbinary/logic/visual/transform/TransformInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h>)
+#include <org/allbinary/logic/visual/transform/data/TransformDocumentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include("org/allbinary/business/category/CategoryView.h")
+#include "org/allbinary/business/category/CategoryView.h"
+#endif
+#if __has_include("org/allbinary/business/category/CategoryInterface.h")
+#include "org/allbinary/business/category/CategoryInterface.h"
+#endif
+
+        #endif
+    

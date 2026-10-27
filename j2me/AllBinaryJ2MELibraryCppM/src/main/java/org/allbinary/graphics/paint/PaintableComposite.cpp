@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLECOMPOSITE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLECOMPOSITE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/PaintableComposite.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,17 +60,14 @@
         #include "org/allbinary/graphics/paint/Paintable.h"
 #include "org/allbinary/graphics/paint/PaintableInterface.h"
 
-class PaintableComposite: public Paintable {
 
-    private: std::vector<PaintableInterface*> paintableArray;
-
-public: PaintableComposite(std::vector<PaintableInterface*> paintableArray){
+PaintableComposite::PaintableComposite(std::vector<PaintableInterface*> paintableArray){
 this->paintableArray= paintableArray;
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto PaintableComposite::paint(Graphics* graphics) -> void{
 
 
 
@@ -68,14 +75,14 @@ this->paintableArray= paintableArray;
                         for (
     int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this->paintableArray[index].paint(graphics);
+this->paintableArray[index]->paint(graphics);
     
 }
 
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto PaintableComposite::paintThreed(Graphics* graphics) -> void{
 
 
 
@@ -83,14 +90,13 @@ this->paintableArray[index].paint(graphics);
                         for (
     int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this->paintableArray[index].paintThreed(graphics);
+this->paintableArray[index]->paintThreed(graphics);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLECOMPOSITE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCE_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeologicalResource
-            : public Object
+            : public virtual Object
          {
 
     private: int32_t total= 0;
@@ -68,7 +77,7 @@ public: GeologicalResource(int32_t initTotal);
 
     public: int32_t getTotal();
 
-    protected: void setTotal(int32_t total);
+    /*protected*/ public: void setTotal(int32_t total);
 
 };
 
@@ -76,3 +85,10 @@ public: GeologicalResource(int32_t initTotal);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCE_H_COMPLETE
+        
+        #endif
+    

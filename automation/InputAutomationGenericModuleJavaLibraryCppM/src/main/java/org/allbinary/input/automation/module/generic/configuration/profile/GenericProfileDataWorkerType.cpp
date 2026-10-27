@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,36 +81,16 @@
 #include "org/allbinary/input/automation/module/generic/configuration/profile/SavedCaptureGenericProfileDataWorkerType.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileDataWorkerData.h"
 
-class GenericProfileDataWorkerType
-            : public Object
-        , public GenericProfileDataWorkerTypeInterface {
+HashMap<Object*, Object*>* GenericProfileDataWorkerType::hashMap = StdUtil::getInstance()->createHashMap();
+GenericProfileDataWorkerType* GenericProfileDataWorkerType::SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE;
+auto GenericProfileDataWorkerType::SCREEN_CAPTURE_owner() -> GenericProfileDataWorkerType* { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType(JavaString::valueOf("Screen ") +JavaString::valueOf(InputImageType::CAPTURE->getName()))); return value.get(); }
+GenericProfileDataWorkerType* GenericProfileDataWorkerType::SCREEN_CAPTURE = GenericProfileDataWorkerType::SCREEN_CAPTURE_owner();
+auto GenericProfileDataWorkerType::COMPARISON_owner() -> GenericProfileDataWorkerType* { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType(InputImageType::COMPARISON->getName())); return value.get(); }
+GenericProfileDataWorkerType* GenericProfileDataWorkerType::COMPARISON = GenericProfileDataWorkerType::COMPARISON_owner();
+auto GenericProfileDataWorkerType::MOTION_owner() -> GenericProfileDataWorkerType* { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType(InputImageType::MOTION->getName())); return value.get(); }
+GenericProfileDataWorkerType* GenericProfileDataWorkerType::MOTION = GenericProfileDataWorkerType::MOTION_owner();
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
-
-    public: static inline GenericProfileDataWorkerType* SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE;
-
-    public: static GenericProfileDataWorkerType* SCREEN_CAPTURE() { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType("Screen " +InputImageType::CAPTURE.getName())); return value.get(); }
-
-    public: static GenericProfileDataWorkerType* COMPARISON() { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType(InputImageType::COMPARISON()->getName())); return value.get(); }
-
-    public: static GenericProfileDataWorkerType* MOTION() { static std::unique_ptr<GenericProfileDataWorkerType> value(new GenericProfileDataWorkerType(InputImageType::MOTION()->getName())); return value.get(); }
-
-    public: static GenericProfileDataWorkerType* getInstance(Node* node){
-
-    std::string name = DomNodeHelper::getTextNodeValue(node);;
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return dynamic_cast<GenericProfileDataWorkerType*>(GenericProfileDataWorkerType::hashMap->get(name));
-    
-}
-
-
-    private: std::string name;
-
-public: GenericProfileDataWorkerType(std::string name){
+GenericProfileDataWorkerType::GenericProfileDataWorkerType(std::string name){
 this->setName(name);
     
 GenericProfileDataWorkerType::hashMap->put(this->getName(), this);
@@ -108,7 +98,7 @@ GenericProfileDataWorkerType::hashMap->put(this->getName(), this);
 }
 
 
-    public: std::string getName(){
+    auto GenericProfileDataWorkerType::getName() -> std::string{
 
 
 
@@ -118,7 +108,7 @@ GenericProfileDataWorkerType::hashMap->put(this->getName(), this);
 }
 
 
-    public: void setName(std::string name){
+    auto GenericProfileDataWorkerType::setName(std::string name) -> void{
 this->name= name;
     
 }
@@ -126,7 +116,7 @@ this->name= name;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GenericProfileDataWorkerType::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createTextNode(document, GenericProfileDataWorkerData::NAME, this->name);;
     
@@ -139,17 +129,29 @@ this->name= name;
 }
 
 
-    public: std::string toString(){
+    auto GenericProfileDataWorkerType::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "GenericProfileDataWorkerType: " +this->getName();
+                        return JavaString::valueOf("GenericProfileDataWorkerType: ") +JavaString::valueOf(this->getName());
     
 }
 
 
-};
+    auto GenericProfileDataWorkerType::getInstance(Node* node) -> GenericProfileDataWorkerType*{
 
-            
+    std::string name = DomNodeHelper::getTextNodeValue(node);;
+    
 
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return dynamic_cast<GenericProfileDataWorkerType*>(GenericProfileDataWorkerType::hashMap->get(name));
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILEDATAWORKERTYPE_CPP

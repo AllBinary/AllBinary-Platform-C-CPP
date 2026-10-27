@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABHASHTABLE_CPP
+        #define ORG_ALLBINARY_UTIL_ABHASHTABLE_CPP
+
+        #include "org/allbinary/util/ABHashtable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,10 +52,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+
 template<typename K, typename V>
-class ABHashtable: public Hashtable<K, V> {
-
-public: ABHashtable(int32_t initialCapacity) : Hashtable<K, V>(initialCapacity){
+ABHashtable<K, V>::ABHashtable(int32_t initialCapacity) : Hashtable<K, V>(initialCapacity){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -59,7 +64,8 @@ public: ABHashtable(int32_t initialCapacity) : Hashtable<K, V>(initialCapacity){
 }
 
 
-public: ABHashtable() : Hashtable<K, V>(){
+template<typename K, typename V>
+ABHashtable<K, V>::ABHashtable() : Hashtable<K, V>(){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +75,6 @@ public: ABHashtable() : Hashtable<K, V>(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_ABHASHTABLE_CPP

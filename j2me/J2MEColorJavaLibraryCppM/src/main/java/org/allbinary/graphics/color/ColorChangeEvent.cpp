@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorChangeEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,8 @@
         #include "org/allbinary/graphics/color/BasicColorFactory.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 
-class ColorChangeEvent: public AllBinaryEventObject {
 
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->WHITE;
-
-public: ColorChangeEvent(Object* anyType) : AllBinaryEventObject(anyType){
+ColorChangeEvent::ColorChangeEvent(Object* anyType) : AllBinaryEventObject(anyType), basicColor(BasicColorFactory::getInstance()->WHITE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,13 +71,13 @@ public: ColorChangeEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto ColorChangeEvent::setBasicColorP(BasicColor* basicColor) -> void{
 this->basicColor= basicColor;
     
 }
 
 
-    public: BasicColor* getBasicColorP(){
+    auto ColorChangeEvent::getBasicColorP() -> BasicColor*{
 
 
 
@@ -80,7 +87,6 @@ this->basicColor= basicColor;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCHANGEEVENT_CPP

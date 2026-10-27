@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_DYNAMICOBJECTDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_DYNAMICOBJECTDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/DynamicObjectData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DynamicObjectData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "DYNAMICCOMPONENT_NAME";
-
-private: DynamicObjectData(){
+DynamicObjectData::DynamicObjectData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_DYNAMICOBJECTDATA_CPP

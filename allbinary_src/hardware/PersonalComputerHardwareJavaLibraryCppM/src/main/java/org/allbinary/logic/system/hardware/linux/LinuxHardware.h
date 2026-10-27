@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,92 +37,34 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/FileReader.h>
-
-      
 #include <java/io/LineNumberReader.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/FilePathData.h>
-
-      
-#include <org/allbinary/logic/io/file/directory/SubDirectory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class BasicArrayListD;
+class StdUtil;
+class LogUtil;
+class LogConfigTypeFactory;
+class LogConfigTypes;
+class AbFile;
+class FilePathData;
+class SubDirectory;
+class StringMaker;
 #include <org/allbinary/logic/system/hardware/HardwareInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/BridgeInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/CpuInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/EthernetInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/FireWireInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/HardDriveControllerInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/HardDriveInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/MachineAccessControlAddressInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/MediaInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/MonitorInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/interfaces/VideoInterface.h>
-
-      
-#include <org/allbinary/logic/system/hardware/components/linux/Cpu.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class BridgeInterface;
+class CpuInterface;
+class EthernetInterface;
+class FireWireInterface;
+class HardDriveControllerInterface;
+class HardDriveInterface;
+class HardwareComponentInterface;
+class MachineAccessControlAddressInterface;
+class MediaInterface;
+class MonitorInterface;
+class UsbInterface;
+class VideoInterface;
+class Cpu;
+class CommonSeps;
+class CommonStrings;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicArrayList;
 
 
 
@@ -136,17 +83,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/hardware/linux/PCComponentFactory.h"
+        class PCComponentFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LinuxHardware
-            : public Object
+            : public virtual Object
         , public HardwareInterface {
 
     private: static inline const std::string PCIFILE = "/proc/pci";
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: BasicArrayList* componentInterfaceVector;
 
@@ -226,3 +177,100 @@ public: LinuxHardware();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_H_COMPLETE
+        #if __has_include(<java/io/FileReader.h>)
+#include <java/io/FileReader.h>
+#endif
+#if __has_include(<java/io/LineNumberReader.h>)
+#include <java/io/LineNumberReader.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>)
+#include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FilePathData.h>)
+#include <org/allbinary/logic/io/file/FilePathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/directory/SubDirectory.h>)
+#include <org/allbinary/logic/io/file/directory/SubDirectory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/HardwareInterface.h>)
+#include <org/allbinary/logic/system/hardware/HardwareInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/BridgeInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/BridgeInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/CpuInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/CpuInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/EthernetInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/EthernetInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/FireWireInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/FireWireInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardDriveControllerInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardDriveControllerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardDriveInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardDriveInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/MachineAccessControlAddressInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/MachineAccessControlAddressInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/MediaInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/MediaInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/MonitorInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/MonitorInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/UsbInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/interfaces/VideoInterface.h>)
+#include <org/allbinary/logic/system/hardware/components/interfaces/VideoInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/hardware/components/linux/Cpu.h>)
+#include <org/allbinary/logic/system/hardware/components/linux/Cpu.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/linux/PCComponentFactory.h")
+#include "org/allbinary/logic/system/hardware/linux/PCComponentFactory.h"
+#endif
+
+        #endif
+    

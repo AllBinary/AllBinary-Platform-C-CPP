@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_PERMISSIONITEMSTAG_CPP
+        #define ADMIN_TAGS_PERMISSIONITEMSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/PermissionItemsTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/tags/TableTag.h"
 
-class PermissionItemsTag: public TableTag {
 
-public: PermissionItemsTag(){
+PermissionItemsTag::PermissionItemsTag(){
 this->setTagHelperFactory(new PermissionItemsHelperFactory());
     
 this->setTagRequestHelperFactory(new PermissionItemsRequestHelperFactory());
@@ -60,7 +69,6 @@ this->setTagRequestHelperFactory(new PermissionItemsRequestHelperFactory());
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_PERMISSIONITEMSTAG_CPP

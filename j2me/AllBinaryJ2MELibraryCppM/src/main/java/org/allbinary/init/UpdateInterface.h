@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INIT_UPDATEINTERFACE_H
         #define ORG_ALLBINARY_INIT_UPDATEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,7 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UpdateInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class UpdateInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -60,3 +71,10 @@ class UpdateInterface {
 
 
         #endif //ORG_ALLBINARY_INIT_UPDATEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INIT_UPDATEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INIT_UPDATEINTERFACE_H_COMPLETE
+        
+        #endif
+    

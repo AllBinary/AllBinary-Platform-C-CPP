@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_GENERATORTRANSFORMINFODATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_GENERATORTRANSFORMINFODATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/GeneratorTransformInfoData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GeneratorTransformInfoData
-            : public Object
-         {
 
-    public: static inline const std::string NAME = "GENERATOR_TRANSFORM_INFO_NAME";
-
-private: GeneratorTransformInfoData(){
+GeneratorTransformInfoData::GeneratorTransformInfoData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_GENERATORTRANSFORMINFODATA_CPP

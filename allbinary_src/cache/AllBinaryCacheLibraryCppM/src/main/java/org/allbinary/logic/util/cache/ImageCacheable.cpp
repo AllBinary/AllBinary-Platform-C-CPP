@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_IMAGECACHEABLE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_IMAGECACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/ImageCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageCacheable
-            : public Object
-         {
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-public: ImageCacheable(std::string name, Object* anyType){
+ImageCacheable::ImageCacheable(std::string name, Object* anyType) : name(StringUtil::getInstance()->EMPTY_STRING){
 }
 
 
-    public: Object* getKey(){
+    auto ImageCacheable::getKey() -> Object*{
 
 
 
@@ -68,7 +73,7 @@ public: ImageCacheable(std::string name, Object* anyType){
 }
 
 
-    public: std::string toString(){
+    auto ImageCacheable::toString() -> std::string{
 
 
 
@@ -78,7 +83,6 @@ public: ImageCacheable(std::string name, Object* anyType){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_IMAGECACHEABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INIT_DEFAULTGAMEINITIALIZATIONLISTENER_H
         #define ORG_ALLBINARY_GAME_INIT_DEFAULTGAMEINITIALIZATIONLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,36 +38,16 @@
         
             #include "java/lang/Thread.h"
         
-#include <org/allbinary/game/configuration/event/GameInitializedEvent.h>
-
-      
-#include <org/allbinary/game/configuration/event/GameInitializedEventHandler.h>
-
-      
+class GameInitializedEvent;
+class GameInitializedEventHandler;
 #include <org/allbinary/game/configuration/event/GameInitializedListenerInterface.h>
-
-      
-#include <org/allbinary/game/resource/FeatureResourceInitializationUtil.h>
-
-      
-#include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class FeatureResourceInitializationUtil;
+class SWTJOGLProcessor;
+class ForcedLogUtil;
+class LogUtil;
+class AllBinaryEventObject;
+class EventStrings;
+class CommonStrings;
 
 
 
@@ -82,19 +67,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DefaultGameInitializationListener
-            : public Object
+            : public virtual Object
         , public GameInitializedListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: SWTJOGLProcessor* swtJOGLProcessor = SWTJOGLProcessor::getInstance();
+    private: SWTJOGLProcessor* swtJOGLProcessor;
 
 public: DefaultGameInitializationListener();
 
     public: void onEvent(AllBinaryEventObject* eventObject);
 
-    bool firstTime = true;
+    public: bool firstTime = true;
 
     public: void onGameInitialized(GameInitializedEvent* gameInitializedEvent);
 
@@ -104,3 +93,40 @@ public: DefaultGameInitializationListener();
 
 
         #endif //ORG_ALLBINARY_GAME_INIT_DEFAULTGAMEINITIALIZATIONLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INIT_DEFAULTGAMEINITIALIZATIONLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INIT_DEFAULTGAMEINITIALIZATIONLISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/event/GameInitializedEvent.h>)
+#include <org/allbinary/game/configuration/event/GameInitializedEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/event/GameInitializedEventHandler.h>)
+#include <org/allbinary/game/configuration/event/GameInitializedEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/event/GameInitializedListenerInterface.h>)
+#include <org/allbinary/game/configuration/event/GameInitializedListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/resource/FeatureResourceInitializationUtil.h>)
+#include <org/allbinary/game/resource/FeatureResourceInitializationUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/threed/SWTJOGLProcessor.h>)
+#include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

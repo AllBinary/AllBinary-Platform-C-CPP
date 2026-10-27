@@ -18,6 +18,16 @@
 
 
 
+        #ifndef MIN3D_CORE_RENDERER_CPP
+        #define MIN3D_CORE_RENDERER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "min3d/core/Renderer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,15 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Renderer {
+//Interface - declared in the header
 
-    public: virtual void onSurfaceCreated(GL10* gl, EGLConfig* config) = 0;
 
-    public: virtual void onSurfaceChanged(GL10* gl, int32_t width, int32_t height) = 0;
 
-    public: virtual void onDrawFrame(GL10* gl) = 0;
-
-};
-
-            
-
+        #endif //MIN3D_CORE_RENDERER_CPP

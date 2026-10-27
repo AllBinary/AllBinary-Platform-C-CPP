@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/input/motion/gesture/MotionGestureToMotionGestureActionAssociation.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class CompleteMotionGestureInputEvent;
+class BasicColor;
+class BasicColorFactory;
+class MotionGestureToMotionGestureActionAssociation;
+class StringUtil;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -69,8 +60,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MotionGestureConfiguration
-            : public Object
+            : public virtual Object
          {
 
     private: bool diagonalMotionGestureAllowed = true;
@@ -79,15 +74,15 @@ class MotionGestureConfiguration
 
     private: int32_t minimumMotionGesture = 9;
 
-    private: std::string button = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string button;
 
-    private: BasicColor* color = BasicColorFactory::getInstance()->BLUE;
+    private: BasicColor* color;
 
     private: bool executingActions = true;
 
     private: int32_t mouseButtonMask = 0;
 
-    private: BasicArrayList* activeCommands = new BasicArrayListD();
+    private: BasicArrayList* activeCommands;
 
 public: MotionGestureConfiguration();
 
@@ -131,3 +126,31 @@ public: MotionGestureConfiguration();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATION_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/CompleteMotionGestureInputEvent.h>)
+#include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/MotionGestureToMotionGestureActionAssociation.h>)
+#include <org/allbinary/input/motion/gesture/MotionGestureToMotionGestureActionAssociation.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

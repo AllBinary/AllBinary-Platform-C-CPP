@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_ABEMAIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_ABEMAIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,17 +37,9 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/mail/internet/MimeMessage.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class MimeMessage;
+class Document;
+class Node;
 
 
 
@@ -62,10 +59,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/EmailInterface.h"
-#include "org/allbinary/logic/communication/smtp/Email.h"
+class Email;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbEmail
-            : public Object
+            : public virtual Object
         , public EmailInterface {
 
     private: Email* email;
@@ -100,3 +101,28 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_ABEMAIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_ABEMAIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_ABEMAIL_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/mail/internet/MimeMessage.h>)
+#include <javax/mail/internet/MimeMessage.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/EmailInterface.h")
+#include "org/allbinary/logic/communication/smtp/EmailInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/Email.h")
+#include "org/allbinary/logic/communication/smtp/Email.h"
+#endif
+
+        #endif
+    

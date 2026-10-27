@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_TOUCHMOTIONGESTUREFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_TOUCHMOTIONGESTUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/gesture/MotionGestureInput.h"
 
-class TouchMotionGestureFactory
-            : public Object
-         {
+Object* TouchMotionGestureFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static TouchMotionGestureFactory* getInstance(){
+    auto TouchMotionGestureFactory::getInstance() -> TouchMotionGestureFactory*{
 
                         if(TouchMotionGestureFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -77,35 +83,7 @@ class TouchMotionGestureFactory
 }
 
 
-    public: MotionGestureInput* LEFT;
-
-    public: MotionGestureInput* RIGHT;
-
-    public: MotionGestureInput* UP;
-
-    public: MotionGestureInput* DOWN;
-
-    public: MotionGestureInput* PRESSED;
-
-    public: MotionGestureInput* RELEASED;
-
-    public: MotionGestureInput* DIAGONAL_DOWN_RIGHT;
-
-    public: MotionGestureInput* DIAGONAL_DOWN_LEFT;
-
-    public: MotionGestureInput* DIAGONAL_UP_RIGHT;
-
-    public: MotionGestureInput* DIAGONAL_UP_LEFT;
-
-    public: MotionGestureInput* SCROLL_UP;
-
-    public: MotionGestureInput* SCROLL_DOWN;
-
-    public: MotionGestureInput* NO_MOTION;
-
-    public: MotionGestureInput* LAST_MOTION;
-
-private: TouchMotionGestureFactory(){
+TouchMotionGestureFactory::TouchMotionGestureFactory(){
 
     int32_t MAX = InputFactory::getInstance()->MAX;;
     
@@ -140,7 +118,6 @@ this->LAST_MOTION= new MotionGestureInput(MAX -19, "Last Motion");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_TOUCHMOTIONGESTUREFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATIONME_H
         #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATIONME_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,10 +53,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryVibrationME
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: AllBinaryVibrationME();
+        
     public: void vibrate(int32_t duration, int32_t type, int32_t volume);
 
 };
@@ -60,3 +73,10 @@ class AllBinaryVibrationME
 
 
         #endif //ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATIONME_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATIONME_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATIONME_H_COMPLETE
+        
+        #endif
+    

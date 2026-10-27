@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Exception.h"
         
 #include <java/awt.h>
-
-      
 #include <org/allbinary/input/automation/module/InputAutomationActionInterface.h>
-
-      
 
 
 
@@ -53,8 +54,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/game/Rectangle.h"
+        class Rectangle;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicGameInputAutomationActionInterface: public InputAutomationActionInterface {
 
                 //@Throws(Exception.constructor)
@@ -71,3 +76,19 @@ class BasicGameInputAutomationActionInterface: public InputAutomationActionInter
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/InputAutomationActionInterface.h>)
+#include <org/allbinary/input/automation/module/InputAutomationActionInterface.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/Rectangle.h")
+#include "org/allbinary/input/automation/module/game/Rectangle.h"
+#endif
+
+        #endif
+    

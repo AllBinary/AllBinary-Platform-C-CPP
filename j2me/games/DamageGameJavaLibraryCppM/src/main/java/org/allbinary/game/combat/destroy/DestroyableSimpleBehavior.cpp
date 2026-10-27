@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLESIMPLEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLESIMPLEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/destroy/DestroyableSimpleBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,19 +58,14 @@
         #include "org/allbinary/game/combat/destroy/DestroyableBaseBehavior.h"
 #include "org/allbinary/game/combat/destroy/DestroyedLayerProcessor.h"
 
-class DestroyableSimpleBehavior: public DestroyableBaseBehavior {
 
-    protected: CollidableCompositeLayer* ownerLayer;
-
-    private: bool destroyed = false;
-
-public: DestroyableSimpleBehavior(CollidableCompositeLayer* ownerLayer){
+DestroyableSimpleBehavior::DestroyableSimpleBehavior(CollidableCompositeLayer* ownerLayer){
 this->ownerLayer= ownerLayer;
     
 }
 
 
-    public: bool isDestroyed(){
+    auto DestroyableSimpleBehavior::isDestroyed() -> bool{
 
 
 
@@ -70,7 +75,7 @@ this->ownerLayer= ownerLayer;
 }
 
 
-    public: void setDestroyed(bool destroyed){
+    auto DestroyableSimpleBehavior::setDestroyed(bool destroyed) -> void{
 this->destroyed= destroyed;
     
 
@@ -85,7 +90,6 @@ this->destroyed= destroyed;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLESIMPLEBEHAVIOR_CPP

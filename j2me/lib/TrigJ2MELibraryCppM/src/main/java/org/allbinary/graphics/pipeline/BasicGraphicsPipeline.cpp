@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,31 +75,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicGraphicsPipeline
-            : public Object
-         {
 
-    protected: BasicArrayList* pointBasicArrayList;
-
-public: BasicGraphicsPipeline(BasicArrayList* points){
+BasicGraphicsPipeline::BasicGraphicsPipeline(BasicArrayList* points) : noDecimalTrigTable(NoDecimalTrigTable::getInstance()){
 this->pointBasicArrayList= points;
     
 }
 
 
-    public: void setInitMatrix(BasicArrayList* points){
+    auto BasicGraphicsPipeline::setInitMatrix(BasicArrayList* points) -> void{
 this->pointBasicArrayList= points;
     
 }
 
 
-    public: void createMatrix(){
+    auto BasicGraphicsPipeline::createMatrix() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void translate(int32_t x, int32_t y){
+    auto BasicGraphicsPipeline::translate(int32_t x, int32_t y) -> void{
 
     BasicArrayList* newBasicArrayList = new BasicArrayListD();;
     
@@ -135,17 +140,15 @@ this->pointBasicArrayList= newBasicArrayList;
 
                 //@Throws(Exception.constructor)
             
-    public: void rotateToAngle(Angle* angle){
+    auto BasicGraphicsPipeline::rotateToAngle(Angle* angle) -> void{
 this->rotate(static_cast<int32_t>(angle->getValue()));
     
 }
 
 
-    private: NoDecimalTrigTable* noDecimalTrigTable = NoDecimalTrigTable::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    private: void rotate(int32_t angle){
+    auto BasicGraphicsPipeline::rotate(int32_t angle) -> void{
 
     BasicArrayList* newBasicArrayList = new BasicArrayListD();;
     
@@ -221,7 +224,7 @@ this->pointBasicArrayList= newBasicArrayList;
 
                 //@Throws(Exception.constructor)
             
-    public: void mirror(int32_t width){
+    auto BasicGraphicsPipeline::mirror(int32_t width) -> void{
 
     PointFactory* pointFactory = PointFactory::getInstance();;
     
@@ -293,7 +296,7 @@ this->pointBasicArrayList= newBasicArrayList;
 }
 
 
-    public: BasicArrayList* getMatrix(){
+    auto BasicGraphicsPipeline::getMatrix() -> BasicArrayList*{
 
 
 
@@ -303,7 +306,6 @@ this->pointBasicArrayList= newBasicArrayList;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PIPELINE_BASICGRAPHICSPIPELINE_CPP

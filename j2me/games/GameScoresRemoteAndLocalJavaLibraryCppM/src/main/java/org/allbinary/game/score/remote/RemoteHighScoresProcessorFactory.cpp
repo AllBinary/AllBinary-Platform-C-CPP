@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/remote/RemoteHighScoresProcessorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +57,12 @@
         #include "org/allbinary/game/score/remote/RemoteHighScoresProcessor.h"
 #include "org/allbinary/game/score/remote/RemoteHighScoresProcessorInterface.h"
 
-class RemoteHighScoresProcessorFactory
-            : public Object
-         {
 
-    private: static inline RemoteHighScoresProcessorInterface* SINGLETON = new RemoteHighScoresProcessor();
+RemoteHighScoresProcessorFactory::RemoteHighScoresProcessorFactory() {
+        }
+        RemoteHighScoresProcessorInterface* RemoteHighScoresProcessorFactory::SINGLETON = new RemoteHighScoresProcessor();
 
-    public: static RemoteHighScoresProcessorInterface* getInstance(){
+    auto RemoteHighScoresProcessorFactory::getInstance() -> RemoteHighScoresProcessorInterface*{
 
 
 
@@ -63,7 +72,6 @@ class RemoteHighScoresProcessorFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSORFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_CREATEUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_CREATEUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/CreateUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/UserInterface.h"
 
-class CreateUserFactory
-            : public Object
-         {
+
+CreateUserFactory::CreateUserFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto CreateUserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
                         if(hashMap != 
                                     nullptr
@@ -77,7 +88,7 @@ class CreateUserFactory
                         
                                     {
                                     
-    std::string roleString = hashMap->get(UserRoleData::NAME.toString());;
+    std::string roleString = hashMap->get(UserRoleData::NAME->toString());;
     
 
                         if(!StringValidationUtil::getInstance()->isEmpty(roleString))
@@ -99,7 +110,7 @@ class CreateUserFactory
                             
 
 
-                            throw new Exception("No Role Specified");
+                            throw Exception("No Role Specified");
                     
 
                         }
@@ -111,7 +122,7 @@ class CreateUserFactory
                             
 
 
-                            throw new Exception("Null HashMap");
+                            throw Exception("Null HashMap");
                     
 
                         }
@@ -119,11 +130,6 @@ class CreateUserFactory
 }
 
 
-private: CreateUserFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_CREATEUSERFACTORY_CPP

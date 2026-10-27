@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/role/BasicUserRole.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,21 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/role/BasicUserRoles.h"
 
-class BasicUserRole
-            : public Object
-        , public Serializable {
 
-    private: int32_t m_int_RoleId;
-
-    private: std::string role;
-
-    private: std::string displayValue;
-
-    private: int64_t sessionTimeout;
-
-    private: int64_t sessionInactivityTimeout;
-
-: BasicUserRole(std::string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout) : BasicUserRole(aRole, aRole, a_int_RoleId, aSessionTimeout, aSessionInactivityTimeout){
+BasicUserRole::BasicUserRole(std::string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout) : BasicUserRole(aRole, aRole, a_int_RoleId, aSessionTimeout, aSessionInactivityTimeout){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +70,7 @@ class BasicUserRole
 }
 
 
-: BasicUserRole(std::string aRole, std::string aDisplayValue, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout){
+BasicUserRole::BasicUserRole(std::string aRole, std::string aDisplayValue, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout){
 this->m_int_RoleId= a_int_RoleId;
     
 this->role= aRole;
@@ -84,12 +81,12 @@ this->sessionTimeout= aSessionTimeout;
     
 this->sessionInactivityTimeout= aSessionInactivityTimeout;
     
-BasicUserRoles::getInstance()->roleVector.add(this);
+BasicUserRoles::getInstance()->roleVector->add(this);
     
 }
 
 
-    private: int32_t getRoleId(){
+    auto BasicUserRole::getRoleId() -> int32_t{
 
 
 
@@ -99,7 +96,7 @@ BasicUserRoles::getInstance()->roleVector.add(this);
 }
 
 
-    public: std::string getRole(){
+    auto BasicUserRole::getRole() -> std::string{
 
 
 
@@ -109,7 +106,7 @@ BasicUserRoles::getInstance()->roleVector.add(this);
 }
 
 
-    public: int64_t getSessionTimeout(){
+    auto BasicUserRole::getSessionTimeout() -> int64_t{
 
 
 
@@ -119,7 +116,7 @@ BasicUserRoles::getInstance()->roleVector.add(this);
 }
 
 
-    public: int64_t getSessionInactivityTimeout(){
+    auto BasicUserRole::getSessionInactivityTimeout() -> int64_t{
 
 
 
@@ -129,7 +126,7 @@ BasicUserRoles::getInstance()->roleVector.add(this);
 }
 
 
-    public: bool equals(BasicUserRole* basicUserRole){
+    auto BasicUserRole::equals(BasicUserRole* basicUserRole) -> bool{
 
                         if(this->getRoleId() == basicUserRole->getRoleId())
                         
@@ -152,7 +149,7 @@ BasicUserRoles::getInstance()->roleVector.add(this);
 }
 
 
-    public: std::string toString(){
+    auto BasicUserRole::toString() -> std::string{
 
 
 
@@ -162,7 +159,6 @@ BasicUserRoles::getInstance()->roleVector.add(this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_CPP

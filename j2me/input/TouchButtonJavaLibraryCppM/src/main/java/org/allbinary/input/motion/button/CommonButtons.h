@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
+class PointFactory;
+class Rectangle;
+class DisplayInfoSingleton;
 
 
 
@@ -57,11 +56,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommonButtons
-            : public Object
+            : public virtual Object
          {
 
-    private: static CommonButtons* instance() { static std::unique_ptr<CommonButtons> value(new CommonButtons()); return value.get(); }
+    private: static CommonButtons* instance_owner();
+    private: static CommonButtons* instance;
 
     public: static CommonButtons* getInstance();
 
@@ -79,3 +83,19 @@ private: CommonButtons();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_COMMONBUTTONS_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+
+        #endif
+    

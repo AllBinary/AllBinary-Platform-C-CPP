@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_H
         #define ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringMaker;
+class CommonStrings;
 
 
 
@@ -57,17 +56,42 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PropertyInitUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static PropertyInitUtil* instance() { static std::unique_ptr<PropertyInitUtil> value(new PropertyInitUtil()); return value.get(); }
+    private: static PropertyInitUtil* instance_owner();
+    private: static PropertyInitUtil* instance;
 
     public: static PropertyInitUtil* getInstance(int32_t value);
 
+
+            
+    public: PropertyInitUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_PROPERTYINITUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

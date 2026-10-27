@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/input/MouseActionScriptInputInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,19 +58,8 @@
         #include "org/allbinary/input/automation/actions/script/condition/processors/input/ProfileActionScriptInputInterface.h"
 #include "org/allbinary/input/automation/actions/script/condition/processors/input/Point.h"
 
-class MouseActionScriptInputInterface: public ProfileActionScriptInputInterface {
+//Interface - declared in the header
 
-    public: virtual void setPoint(Point* point) = 0;
 
-    public: virtual Point* getPoint() = 0;
 
-    public: virtual int32_t getButtonClicks() = 0;
-
-    public: virtual void setButtonClicks(int32_t buttons) = 0;
-
-    public: virtual void log() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTINTERFACE_CPP

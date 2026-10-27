@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_CPP
+        #define ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -86,29 +96,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/PartInterface.h"
 
-class CountedLayerInterfaceFactoryPart
-            : public Object
-        , public PartInterface, public UpdateMyFontInterface {
+auto CountedLayerInterfaceFactoryPart::NULL_COUNTED_LAYER_INTERFACE_FACTORY_owner() -> CountedLayerInterfaceFactoryPart* { static std::unique_ptr<CountedLayerInterfaceFactoryPart> value(new CountedLayerInterfaceFactoryPart(0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY)); return value.get(); }
+CountedLayerInterfaceFactoryPart* CountedLayerInterfaceFactoryPart::NULL_COUNTED_LAYER_INTERFACE_FACTORY = CountedLayerInterfaceFactoryPart::NULL_COUNTED_LAYER_INTERFACE_FACTORY_owner();
 
-    public: static CountedLayerInterfaceFactoryPart* NULL_COUNTED_LAYER_INTERFACE_FACTORY() { static std::unique_ptr<CountedLayerInterfaceFactoryPart> value(new CountedLayerInterfaceFactoryPart(0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY)); return value.get(); }
-
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
-
-    private: Animation* animationInterface = NullAnimationFactory::getFactoryInstance()->getInstance(0);
-
-    private: int32_t total= 0;
-
-    private: std::vector<char> totalString = NullUtil::getInstance()->NULL_CHAR_ARRAY;
-
-    private: int32_t xOffset= 0;
-
-    private: CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
-
-    private: PrimitiveLongUtil* primitiveLongUtil;
-
-public: CountedLayerInterfaceFactoryPart(int32_t total, CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory){
+CountedLayerInterfaceFactoryPart::CountedLayerInterfaceFactoryPart(int32_t total, CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory) : updateMyFontProcessor(new UpdateMyFontProcessor(this)), myFontProcessor(this->updateMyFontProcessor), animationInterface(NullAnimationFactory::getFactoryInstance()->getInstance(0)), totalString(NullUtil::getInstance()->NULL_CHAR_ARRAY), countedPickedUpLayerInterfaceFactory(CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY){
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(1000);
     
 this->init(total, countedPickedUpLayerInterfaceFactory);
@@ -116,7 +107,7 @@ this->init(total, countedPickedUpLayerInterfaceFactory);
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto CountedLayerInterfaceFactoryPart::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -127,7 +118,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    private: void init(int32_t total, CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory){
+    auto CountedLayerInterfaceFactoryPart::init(int32_t total, CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory) -> void{
 this->setCountedPickedUpLayerInterfaceFactory(countedPickedUpLayerInterfaceFactory);
     
 this->total= total;
@@ -137,7 +128,7 @@ this->total= total;
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z){
+    auto CountedLayerInterfaceFactoryPart::getInstance(ABHashtable<Object*, Object*>* hashtable, int32_t x, int32_t y, int32_t z) -> AllBinaryLayer*{
 
                         if(this->total > 0)
                         
@@ -157,7 +148,7 @@ this->total= total;
                             
 
 
-                            throw new Exception("No more left. Could use a listener to automatically remove");
+                            throw Exception("No more left. Could use a listener to automatically remove");
                     
 
                         }
@@ -165,7 +156,7 @@ this->total= total;
 }
 
 
-    public: int32_t getTotal(){
+    auto CountedLayerInterfaceFactoryPart::getTotal() -> int32_t{
 
 
 
@@ -175,7 +166,7 @@ this->total= total;
 }
 
 
-    public: void setTotal(int32_t total){
+    auto CountedLayerInterfaceFactoryPart::setTotal(int32_t total) -> void{
 this->total= total;
     
 this->totalString= this->primitiveLongUtil->getCharArray(total);
@@ -185,17 +176,17 @@ this->myFontProcessor= this->updateMyFontProcessor;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto CountedLayerInterfaceFactoryPart::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto CountedLayerInterfaceFactoryPart::paintThreed(Graphics* graphics) -> void{
 }
 
 
-    public: Animation* getAnimationInterface(){
+    auto CountedLayerInterfaceFactoryPart::getAnimationInterface() -> Animation*{
 
 
 
@@ -205,13 +196,13 @@ this->myFontProcessor->process(graphics);
 }
 
 
-    public: void setAnimationInterface(Animation* animationInterface){
+    auto CountedLayerInterfaceFactoryPart::setAnimationInterface(Animation* animationInterface) -> void{
 this->animationInterface= animationInterface;
     
 }
 
 
-    public: int32_t getXOffset(){
+    auto CountedLayerInterfaceFactoryPart::getXOffset() -> int32_t{
 
 
 
@@ -221,13 +212,13 @@ this->animationInterface= animationInterface;
 }
 
 
-    private: void setXOffset(int32_t totalStringWidth){
+    auto CountedLayerInterfaceFactoryPart::setXOffset(int32_t totalStringWidth) -> void{
 this->xOffset= totalStringWidth;
     
 }
 
 
-    public: std::vector<char> getTotalString(){
+    auto CountedLayerInterfaceFactoryPart::getTotalString() -> std::vector<char>{
 
 
 
@@ -237,7 +228,7 @@ this->xOffset= totalStringWidth;
 }
 
 
-    public: CountedPickedUpLayerInterfaceFactory* getCountedPickedUpLayerInterfaceFactory(){
+    auto CountedLayerInterfaceFactoryPart::getCountedPickedUpLayerInterfaceFactory() -> CountedPickedUpLayerInterfaceFactory*{
 
 
 
@@ -247,13 +238,12 @@ this->xOffset= totalStringWidth;
 }
 
 
-    public: void setCountedPickedUpLayerInterfaceFactory(CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory){
+    auto CountedLayerInterfaceFactoryPart::setCountedPickedUpLayerInterfaceFactory(CountedPickedUpLayerInterfaceFactory* countedPickedUpLayerInterfaceFactory) -> void{
 this->countedPickedUpLayerInterfaceFactory= countedPickedUpLayerInterfaceFactory;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_CPP

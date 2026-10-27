@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_BASICLAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_LAYER_BASICLAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/BasicLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,21 +71,14 @@
         #include "org/allbinary/layer/AllBinaryLayer.h"
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 
-class BasicLayerProcessor
-            : public Object
-         {
+auto BasicLayerProcessor::NULL_LAYER_PROCESSOR_owner() -> BasicLayerProcessor* { static std::unique_ptr<BasicLayerProcessor> value(new BasicLayerProcessor()); return value.get(); }
+BasicLayerProcessor* BasicLayerProcessor::NULL_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR_owner();
 
-    public: static BasicLayerProcessor* NULL_LAYER_PROCESSOR() { static std::unique_ptr<BasicLayerProcessor> value(new BasicLayerProcessor()); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-protected: BasicLayerProcessor(){
+BasicLayerProcessor::BasicLayerProcessor() : logUtil(LogUtil::getInstance()), list(new BasicArrayListD()){
 }
 
 
-    public: void add(AllBinaryLayer* layerInterface){
+    auto BasicLayerProcessor::add(AllBinaryLayer* layerInterface) -> void{
 
                         if(!this->list->contains(layerInterface))
                         
@@ -90,16 +93,16 @@ protected: BasicLayerProcessor(){
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
+    auto BasicLayerProcessor::process(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
 
 
-                            throw new Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance()->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: BasicArrayList* getList(){
+    auto BasicLayerProcessor::getList() -> BasicArrayList*{
 
 
 
@@ -109,7 +112,6 @@ protected: BasicLayerProcessor(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_BASICLAYERPROCESSOR_CPP

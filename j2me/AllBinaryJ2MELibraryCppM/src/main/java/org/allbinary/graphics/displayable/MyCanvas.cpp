@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/MyCanvas.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -95,29 +105,8 @@
 #include "org/allbinary/graphics/displayable/CanvasStrings.h"
 #include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
 
-class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
-
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
-
-    protected: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
-
-    private: std::string name;
-
-    private: BasicArrayList* childNameList;
-
-    private: ABStack<Object*>* commandStack;
-
-    private: CommandListener* commandListener = NullCommandListener::NULL_COMMAND_LISTENER;
-
-    private: bool paused= false;
-
-public: MyCanvas(std::string name, BasicArrayList* childNameList){
+MyCanvas::MyCanvas(std::string name, BasicArrayList* childNameList) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), canvasStrings(CanvasStrings::getInstance()), stringUtil(StringUtil::getInstance()), displayInfo(DisplayInfoSingleton::getInstance()), commandListener(NullCommandListener::NULL_COMMAND_LISTENER), touchME(new TouchJ2ME()){
 this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
     
 this->displayInfo->update(this, this->canvasStrings->CONSTRUCTOR);
@@ -131,21 +120,21 @@ this->commandStack= StdUtil::getInstance()->createStack();
 }
 
 
-    public: void setFullScreenMode(bool mode){
-super.setFullScreenMode(mode);
+    auto MyCanvas::setFullScreenMode(bool mode) -> void{
+Canvas::setFullScreenMode(mode);
     
 this->displayInfo->update(this, this->canvasStrings->SET_FULL_SCREEN_MODE);
     
 }
 
 
-    protected: void sizeChanged(int32_t w, int32_t h){
+    auto MyCanvas::sizeChanged(int32_t w, int32_t h) -> void{
 this->displayInfo->update(this, this->canvasStrings->SIZE_CHANGED);
     
 }
 
 
-    public: ABStack<Object*>* getCommandStack(){
+    auto MyCanvas::getCommandStack() -> ABStack<Object*>*{
 
 
 
@@ -156,7 +145,7 @@ this->displayInfo->update(this, this->canvasStrings->SIZE_CHANGED);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isCommand(Command* command){
+    auto MyCanvas::isCommand(Command* command) -> bool{
 
 
 
@@ -167,14 +156,14 @@ this->displayInfo->update(this, this->canvasStrings->SIZE_CHANGED);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addCommand(Command* command){
+    auto MyCanvas::addCommand(Command* command) -> void{
 
                         if(!this->commandStack->contains(command))
                         
                                     {
                                     this->commandStack->push(command);
     
-super.addCommand(command);
+Canvas::addCommand(command);
     
 
                                     }
@@ -183,16 +172,16 @@ super.addCommand(command);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeCommand(Command* command){
+    auto MyCanvas::removeCommand(Command* command) -> void{
 this->commandStack->removeElement(command);
     
-super.removeCommand(command);
+Canvas::removeCommand(command);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeAllCommands(){
+    auto MyCanvas::removeAllCommands() -> void{
 
     int32_t size = this->commandStack->size();;
     
@@ -203,22 +192,22 @@ super.removeCommand(command);
                         for (
     int32_t index = 0;index < size; index++)
         {
-super.removeCommand(dynamic_cast<Command*>(this->commandStack->pop()));
+Canvas::removeCommand(dynamic_cast<Command*>(this->commandStack->pop()));
     
 }
 
 }
 
 
-    public: void setCommandListener(CommandListener* l){
-super.setCommandListener(l);
+    auto MyCanvas::setCommandListener(CommandListener* l) -> void{
+Canvas::setCommandListener(l);
     
 this->commandListener= l;
     
 }
 
 
-    public: CommandListener* getCustomCommandListener(){
+    auto MyCanvas::getCustomCommandListener() -> CommandListener*{
 
 
 
@@ -229,7 +218,7 @@ this->commandListener= l;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isPaused(){
+    auto MyCanvas::isPaused() -> bool{
 
 
 
@@ -239,14 +228,14 @@ this->commandListener= l;
 }
 
 
-    public: void removePauseCommand(){
+    auto MyCanvas::removePauseCommand() -> void{
 this->removeCommand(MyCommandsFactory::getInstance()->PAUSE_COMMAND);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void pause(){
+    auto MyCanvas::pause() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->canvasStrings->PAUSE);
     
 this->removePauseCommand();
@@ -259,7 +248,7 @@ this->setPaused(true);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void unPause(){
+    auto MyCanvas::unPause() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->canvasStrings->UN_PAUSE);
     
 this->removeCommand(MyCommandsFactory::getInstance()->RESUME_COMMAND);
@@ -273,21 +262,21 @@ this->setPaused(false);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(){
+    auto MyCanvas::process() -> void{
 this->displayInfo->process();
     
 }
 
 
-    protected: void paint(Graphics* graphics){
+    auto MyCanvas::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void draw(Graphics* graphics){
+    auto MyCanvas::draw(Graphics* graphics) -> void{
 }
 
 
-    public: bool hasChild(MyCanvas* displayable){
+    auto MyCanvas::hasChild(MyCanvas* displayable) -> bool{
 
 
 
@@ -297,55 +286,52 @@ this->displayInfo->process();
 }
 
 
-    public: void destroy(){
+    auto MyCanvas::destroy() -> void{
 this->logUtil->putF("Destroyed MyCanvas", this, "destroy");
     
 }
 
 
-    protected: void setPaused(bool isPaused){
+    auto MyCanvas::setPaused(bool isPaused) -> void{
 this->paused= isPaused;
     
 }
 
 
-    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+    auto MyCanvas::keyPressedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 }
 
 
-    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId){
+    auto MyCanvas::keyRepeatedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 }
 
 
-    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
+    auto MyCanvas::keyReleasedByDevice(int32_t keyCode, int32_t deviceId) -> void{
 }
 
 
-    private: TouchJ2ME* touchME = new TouchJ2ME();
-
-    protected: void pointerDragged(int32_t x, int32_t y){
+    auto MyCanvas::pointerDragged(int32_t x, int32_t y) -> void{
 this->touchME->pointerDragged(x, y);
     
 }
 
 
-    protected: void pointerPressed(int32_t x, int32_t y){
+    auto MyCanvas::pointerPressed(int32_t x, int32_t y) -> void{
 this->touchME->pointerPressed(x, y);
     
 }
 
 
-    protected: void pointerReleased(int32_t x, int32_t y){
+    auto MyCanvas::pointerReleased(int32_t x, int32_t y) -> void{
 this->touchME->pointerReleased(x, y);
     
 }
 
 
-    public: void nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume){
+    auto MyCanvas::nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_CPP

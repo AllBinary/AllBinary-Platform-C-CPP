@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/BuildMenuCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,15 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BuildMenuCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual ScrollSelectionForm* getCurrentScrollSelectionForm() = 0;
 
-    public: virtual void setCurrentScrollSelectionForm(ScrollSelectionForm* currentScrollSelectionForm) = 0;
 
-    public: virtual ScrollSelectionForm* getBuildingScrollSelectionForm() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_BUILDMENUCOMPOSITEINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellType.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -58,19 +68,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h"
 
-class GeographicMapCellType
-            : public Object
-         {
+std::vector<GeographicMapCellType*> GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = {};
+auto GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_owner() -> GeographicMapCellType* { static std::unique_ptr<GeographicMapCellType> value(new GeographicMapCellType(Integer.MIN_VALUE, 0)); return value.get(); }
+GeographicMapCellType* GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_owner();
 
-    public: static inline const std::vector<GeographicMapCellType*> NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = {};
-
-    public: static GeographicMapCellType* NULL_GEOGRAPHIC_MAP_CELL_TYPE() { static std::unique_ptr<GeographicMapCellType> value(new GeographicMapCellType(Integer.MIN_VALUE, 0)); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: int32_t type;
-
-public: GeographicMapCellType(int32_t type, int32_t reset){
+GeographicMapCellType::GeographicMapCellType(int32_t type, int32_t reset) : logUtil(LogUtil::getInstance()){
 this->type= type;
     
 
@@ -102,7 +104,7 @@ this->type= type;
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -116,7 +118,7 @@ this->type= type;
 }
 
 
-    public: int32_t getType(){
+    auto GeographicMapCellType::getType() -> int32_t{
 
 
 
@@ -126,7 +128,7 @@ this->type= type;
 }
 
 
-    public: std::string toString(){
+    auto GeographicMapCellType::toString() -> std::string{
 
 
 
@@ -136,7 +138,6 @@ this->type= type;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPE_CPP

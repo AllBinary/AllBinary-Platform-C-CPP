@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/AbFileInputStream.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,19 +68,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileInputStream: public FileInputStream {
 
-public: AbFileInputStream(std::string name) : FileInputStream(name){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-public: AbFileInputStream(AbFile* file) : FileInputStream(AbFileNativeUtil::get(file)){
+AbFileInputStream::AbFileInputStream(std::string name) : FileInputStream(name){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +79,7 @@ public: AbFileInputStream(AbFile* file) : FileInputStream(AbFileNativeUtil::get(
 }
 
 
-protected: AbFileInputStream(File* file) : FileInputStream(file){
+AbFileInputStream::AbFileInputStream(AbFile* file) : FileInputStream(AbFileNativeUtil::get(file)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,7 +89,16 @@ protected: AbFileInputStream(File* file) : FileInputStream(file){
 }
 
 
-};
+AbFileInputStream::AbFileInputStream(File* file) : FileInputStream(file){
 
-            
+                        //super/this constructor call is in the constructor initializer list.
+                    
 
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_CPP

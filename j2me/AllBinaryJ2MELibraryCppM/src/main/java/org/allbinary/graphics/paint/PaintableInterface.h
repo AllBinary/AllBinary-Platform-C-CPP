@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaintableInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class PaintableInterface
+            : public virtual Object
+         {
 
     public: virtual void paint(Graphics* graphics) = 0;
 
@@ -61,3 +70,13 @@ class PaintableInterface {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLEINTERFACE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+
+        #endif
+    

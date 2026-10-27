@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_EDITVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_EDITVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/download/EditValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -102,11 +112,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
 
-class EditValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-    private: std::string downloadItemId;
-
-public: EditValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
+EditValidationView::EditValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -120,7 +127,7 @@ this->getFormData();
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(){
+    auto EditValidationView::getFormData() -> void{
 
     HashMap<Object*, Object*>* hashMap = (new RequestParams(request))->toHashMap();;
     
@@ -133,7 +140,7 @@ this->getFormData();
                                     
 
 
-                            throw new Exception("No Request Params Found");
+                            throw Exception("No Request Params Found");
                     
 
                                     }
@@ -147,7 +154,7 @@ this->downloadItemId= hashMap->get(DownloadItemData::ID);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto EditValidationView::isValid() -> bool{
 
                         if(id == 
                                     nullptr
@@ -181,7 +188,7 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
                                     }
                                 
 
-    int32_t downloadable = Integer.parseInt(this->itemInterface.getDownloads());;
+    int32_t downloadable = Integer.parseInt(this->itemInterface->getDownloads());;
     
 
                         if(downloadable != 0)
@@ -230,7 +237,7 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -240,7 +247,7 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -252,7 +259,7 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 
                 //@Throws(MoneyException.constructor)
             
-    public: std::string validationInfo(){
+    auto EditValidationView::validationInfo() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -279,7 +286,7 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
                                     }
                                 
 
-    int32_t downloadable = Integer.parseInt(this->itemInterface.getDownloads());;
+    int32_t downloadable = Integer.parseInt(this->itemInterface->getDownloads());;
     
 
                         if(downloadable != 0)
@@ -314,7 +321,6 @@ this->downloadableItem= dynamic_cast<DownloadableItem*>(vector->get(0));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_DOWNLOAD_EDITVALIDATIONVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectAdvancedRTSLayerVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,17 +83,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
-class SelectAdvancedRTSLayerVisitor: public Visitor {
 
-    private: SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput;
-
-public: SelectAdvancedRTSLayerVisitor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
+SelectAdvancedRTSLayerVisitor::SelectAdvancedRTSLayerVisitor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
 this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
     
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto SelectAdvancedRTSLayerVisitor::visit(Object* anyType) -> Object*{
 
     CollidableDestroyableDamageableLayer* selectedLayer = dynamic_cast<CollidableDestroyableDamageableLayer*>(anyType);;
     
@@ -142,7 +149,6 @@ assignWaypointsUtil->set(unitLayer, rtsGameLayer);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTADVANCEDRTSLAYERVISITOR_CPP

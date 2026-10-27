@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_PREGAMESCROLLSELECTIONTOUCHBUTTONSBUILDER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_PREGAMESCROLLSELECTIONTOUCHBUTTONSBUILDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class BasicArrayListUtil;
+class LogUtil;
 
 
 
@@ -60,18 +57,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/BaseTouchInput.h"
-#include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
-#include "org/allbinary/input/motion/button/CommonButtons.h"
-#include "org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h"
-#include "org/allbinary/input/motion/button/TouchButton.h"
-#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
-#include "org/allbinary/input/motion/button/TouchButtonStrafeLeftResource.h"
-#include "org/allbinary/input/motion/button/TouchButtonStrafeRightResource.h"
-#include "org/allbinary/input/motion/button/TouchButtonStartResource.h"
+class TouchButtonLocationHelper;
+class CommonButtons;
+class BasicTouchButtonCellPositionFactory;
+class TouchButton;
+class BasicTouchInputFactory;
+class TouchButtonStrafeLeftResource;
+class TouchButtonStrafeRightResource;
+class TouchButtonStartResource;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PreGameScrollSelectionTouchButtonsBuilder: public BaseTouchInput {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: PreGameScrollSelectionTouchButtonsBuilder();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: BasicArrayList* getList();
 
@@ -81,3 +86,49 @@ class PreGameScrollSelectionTouchButtonsBuilder: public BaseTouchInput {
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_PREGAMESCROLLSELECTIONTOUCHBUTTONSBUILDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_PREGAMESCROLLSELECTIONTOUCHBUTTONSBUILDER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_PREGAMESCROLLSELECTIONTOUCHBUTTONSBUILDER_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/BaseTouchInput.h")
+#include "org/allbinary/input/motion/button/BaseTouchInput.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonLocationHelper.h")
+#include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/CommonButtons.h")
+#include "org/allbinary/input/motion/button/CommonButtons.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h")
+#include "org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButton.h")
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/BasicTouchInputFactory.h")
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonStrafeLeftResource.h")
+#include "org/allbinary/input/motion/button/TouchButtonStrafeLeftResource.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonStrafeRightResource.h")
+#include "org/allbinary/input/motion/button/TouchButtonStrafeRightResource.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonStartResource.h")
+#include "org/allbinary/input/motion/button/TouchButtonStartResource.h"
+#endif
+
+        #endif
+    

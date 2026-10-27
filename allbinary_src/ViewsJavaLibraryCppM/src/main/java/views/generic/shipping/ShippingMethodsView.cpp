@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_SHIPPING_SHIPPINGMETHODSVIEW_CPP
+        #define VIEWS_GENERIC_SHIPPING_SHIPPINGMETHODSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/shipping/ShippingMethodsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -113,15 +123,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingMethodsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ShippingMethods* shippingMethods;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-public: ShippingMethodsView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+ShippingMethodsView::ShippingMethodsView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -137,7 +140,7 @@ this->shippingMethods= new ShippingMethods(this->abeClientInformation, this->sto
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ShippingMethodsView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -231,10 +234,10 @@ shippingMethodsNode->appendChild(shippingMethodNode);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -249,13 +252,13 @@ shippingMethodsNode->appendChild(shippingMethodNode);
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto ShippingMethodsView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
 
 
-    public: std::string view(){
+    auto ShippingMethodsView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -264,7 +267,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
@@ -274,10 +277,10 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     std::string error = "Failed to view ShippingMethods";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -293,7 +296,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_SHIPPING_SHIPPINGMETHODSVIEW_CPP

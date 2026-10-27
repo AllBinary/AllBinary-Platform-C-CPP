@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlNameMathData
-            : public Object
+            : public virtual Object
          {
 
-    private: static HtmlNameMathData* instance() { static std::unique_ptr<HtmlNameMathData> value(new HtmlNameMathData()); return value.get(); }
+    private: static HtmlNameMathData* instance_owner();
+    private: static HtmlNameMathData* instance;
 
     public: static HtmlNameMathData* getInstance();
 
@@ -74,3 +84,10 @@ private: HtmlNameMathData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_NAME_HTMLNAMEMATHDATA_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_PREVIEWGENERATORSTOREFRONTCONTEXTVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_PREVIEWGENERATORSTOREFRONTCONTEXTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/generator/PreviewGeneratorStoreFrontContextView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,11 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/generator/GeneratorStoreFrontContextView.h"
 
-class PreviewGeneratorStoreFrontContextView: public GeneratorStoreFrontContextView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface* transformInfoInterface) : GeneratorStoreFrontContextView(transformInfoInterface){
+PreviewGeneratorStoreFrontContextView::PreviewGeneratorStoreFrontContextView(TransformInfoInterface* transformInfoInterface) : GeneratorStoreFrontContextView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +87,7 @@ public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface* transformI
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto PreviewGeneratorStoreFrontContextView::view() -> std::string{
 
         try {
             
@@ -99,10 +106,10 @@ httpTransformInfoInterface->getPropertiesHashMap()->put(TransformInfoData::getIn
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -117,7 +124,6 @@ httpTransformInfoInterface->getPropertiesHashMap()->put(TransformInfoData::getIn
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_PREVIEWGENERATORSTOREFRONTCONTEXTVIEW_CPP

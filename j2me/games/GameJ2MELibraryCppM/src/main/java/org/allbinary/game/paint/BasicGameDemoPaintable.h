@@ -21,24 +21,21 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
-#include <org/allbinary/graphics/paint/Paintable.h>
-
-      
+class Graphics;
+class NullPaintable;
+class Paintable;
 #include <org/allbinary/graphics/paint/StatePaintable.h>
-
-      
 
 
 
@@ -58,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicGameDemoPaintable: public StatePaintable {
 
     private: Paintable* mainDemoStatePaintable;
@@ -66,7 +67,7 @@ class BasicGameDemoPaintable: public StatePaintable {
 
     private: Paintable* helpPaintableInterface;
 
-    private: Paintable* currentStatePaintable = NullPaintable::getInstance();
+    private: Paintable* currentStatePaintable;
 
 public: BasicGameDemoPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface);
 
@@ -76,11 +77,11 @@ public: BasicGameDemoPaintable(Paintable* mainDemoStatePaintable, Paintable* own
 
     public: Paintable* getHelpPaintableInterface();
 
-    protected: void setCurrentStatePaintable(Paintable* currentStatePaintable);
+    /*protected*/ public: void setCurrentStatePaintable(Paintable* currentStatePaintable);
 
-    protected: Paintable* getCurrentStatePaintable();
+    /*protected*/ public: Paintable* getCurrentStatePaintable();
 
-    protected: Paintable* getMainDemoStatePaintable();
+    /*protected*/ public: Paintable* getMainDemoStatePaintable();
 
 };
 
@@ -88,3 +89,22 @@ public: BasicGameDemoPaintable(Paintable* mainDemoStatePaintable, Paintable* own
 
 
         #endif //ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/StatePaintable.h>)
+#include <org/allbinary/graphics/paint/StatePaintable.h>
+#endif
+
+        #endif
+    

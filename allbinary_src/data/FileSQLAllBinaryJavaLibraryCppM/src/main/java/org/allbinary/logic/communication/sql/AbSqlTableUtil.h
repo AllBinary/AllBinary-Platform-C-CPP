@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,63 +40,25 @@
         
             #include "java/lang/Long.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 #include <java/sql/ResultSet.h>
-
-      
 #include <java/sql/ResultSetMetaData.h>
-
-      
 #include <java/util/Calendar.h>
-
-      
-#include <org/allbinary/business/installer/Portion.h>
-
-      
-#include <org/allbinary/logic/io/AbFileOutputStream.h>
-
-      
-#include <org/allbinary/logic/io/BufferedLineReader.h>
-
-      
-#include <org/allbinary/logic/io/StreamUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/FileUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/directory/Directory.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/globals/PATH_GLOBALS.h>
-
-      
+class Portion;
+class AbFileOutputStream;
+class BufferedLineReader;
+class StreamUtil;
+class AbFile;
+class FileUtil;
+class Directory;
+class AbPath;
+class AbPathData;
+class LogUtil;
+class PATH_GLOBALS;
 #include <java/io/OutputStream.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class CommonSeps;
+class CommonStrings;
+class StringUtil;
 
 
 
@@ -110,19 +77,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/sql/SqlStrings.h"
-#include "org/allbinary/logic/communication/sql/StringBuilder.h"
-#include "org/allbinary/logic/communication/sql/AbSqlTable.h"
+        class SqlStrings;
+class StringBuilder;
+class AbSqlTable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbSqlTableUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static AbSqlTableUtil* instance() { static std::unique_ptr<AbSqlTableUtil> value(new AbSqlTableUtil()); return value.get(); }
+    private: static AbSqlTableUtil* instance_owner();
+    private: static AbSqlTableUtil* instance;
 
     public: static AbSqlTableUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: AbSqlTableUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string EXTENSION = ".adb";
 
@@ -162,17 +138,17 @@ class AbSqlTableUtil
 
     private: const std::string PORTION_RESTORED = " Portion Restored";
 
-    private: const std::vector<char> specialCharArray = ['\n','\f','\r'];
+    private: std::vector<char> specialCharArray;
 
     private: const std::string NEW_LINE = "\\n";
 
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
+    /*protected*/ public: StringUtil* stringUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
+    /*protected*/ public: CommonSeps* commonSeps;
 
-    protected: SqlStrings* sqlStrings = SqlStrings::getInstance();
+    /*protected*/ public: SqlStrings* sqlStrings;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     private: OutputStream* getOutputStream(std::string backupPath, std::string tableName);
@@ -194,3 +170,76 @@ class AbSqlTableUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<java/sql/ResultSet.h>)
+#include <java/sql/ResultSet.h>
+#endif
+#if __has_include(<java/sql/ResultSetMetaData.h>)
+#include <java/sql/ResultSetMetaData.h>
+#endif
+#if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+#if __has_include(<org/allbinary/business/installer/Portion.h>)
+#include <org/allbinary/business/installer/Portion.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/AbFileOutputStream.h>)
+#include <org/allbinary/logic/io/AbFileOutputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/BufferedLineReader.h>)
+#include <org/allbinary/logic/io/BufferedLineReader.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
+#include <org/allbinary/logic/io/StreamUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/FileUtil.h>)
+#include <org/allbinary/logic/io/file/FileUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/directory/Directory.h>)
+#include <org/allbinary/logic/io/file/directory/Directory.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/globals/PATH_GLOBALS.h>)
+#include <org/allbinary/globals/PATH_GLOBALS.h>
+#endif
+#if __has_include(<java/io/OutputStream.h>)
+#include <java/io/OutputStream.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/sql/SqlStrings.h")
+#include "org/allbinary/logic/communication/sql/SqlStrings.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/sql/StringBuilder.h")
+#include "org/allbinary/logic/communication/sql/StringBuilder.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/sql/AbSqlTable.h")
+#include "org/allbinary/logic/communication/sql/AbSqlTable.h"
+#endif
+
+        #endif
+    

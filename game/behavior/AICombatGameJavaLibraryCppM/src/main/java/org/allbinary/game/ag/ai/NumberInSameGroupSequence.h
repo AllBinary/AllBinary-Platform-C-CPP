@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_H
         #define ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,9 +38,7 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
+class SmallIntegerSingletonFactory;
 
 
 
@@ -55,8 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NumberInSameGroupSequence
-            : public Object
+            : public virtual Object
          {
 
     public: static NumberInSameGroupSequence* getInstance();
@@ -91,3 +98,13 @@ private: NumberInSameGroupSequence();
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+
+        #endif
+    

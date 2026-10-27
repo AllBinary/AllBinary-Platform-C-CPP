@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/properties/CategoryPropertiesView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/properties/CategoryPropertiesInterface.h"
 
-class CategoryPropertiesView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: CategoryPropertiesInterface* categoryPropertiesInterface;
-
-public: CategoryPropertiesView(CategoryPropertiesInterface* categoryPropertiesInterface){
+CategoryPropertiesView::CategoryPropertiesView(CategoryPropertiesInterface* categoryPropertiesInterface){
 this->categoryPropertiesInterface= categoryPropertiesInterface;
     
 }
@@ -77,7 +82,7 @@ this->categoryPropertiesInterface= categoryPropertiesInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto CategoryPropertiesView::toXmlNode(Document* document) -> Node*{
 
     Node* categoryNode = document->createElement(CategoryData::getInstance()->NAME);;
     
@@ -95,7 +100,6 @@ newCategoryNode->setAttribute(CategoryData::getInstance()->LABEL, this->category
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESVIEW_CPP

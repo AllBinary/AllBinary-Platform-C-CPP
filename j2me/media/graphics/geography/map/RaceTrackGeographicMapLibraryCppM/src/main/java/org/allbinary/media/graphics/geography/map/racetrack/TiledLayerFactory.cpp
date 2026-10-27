@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_TILEDLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_TILEDLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/TiledLayerFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,11 +61,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
-class TiledLayerFactory
-            : public Object
-         {
 
-    public: TiledLayer* getInstance(RaceTrackData* raceTrackData){
+TiledLayerFactory::TiledLayerFactory() {
+        }
+        
+    auto TiledLayerFactory::getInstance(RaceTrackData* raceTrackData) -> TiledLayer*{
 
     std::vector<std::vector<int32_t>> mapArray = raceTrackData->getMapArray();;
     
@@ -68,7 +78,7 @@ class TiledLayerFactory
 }
 
 
-    public: TiledLayer* getMiniInstance(RaceTrackData* raceTrackData){
+    auto TiledLayerFactory::getMiniInstance(RaceTrackData* raceTrackData) -> TiledLayer*{
 
     std::vector<std::vector<int32_t>> mapArray = raceTrackData->getMapArray();;
     
@@ -81,7 +91,6 @@ class TiledLayerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_TILEDLAYERFACTORY_CPP

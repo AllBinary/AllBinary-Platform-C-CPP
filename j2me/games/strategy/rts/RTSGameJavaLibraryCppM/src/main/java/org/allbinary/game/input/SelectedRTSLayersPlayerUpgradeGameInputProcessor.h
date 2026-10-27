@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class GameKeyEvent;
+class AllBinaryLayerManager;
 
 
 
@@ -54,8 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInputProcessor.h"
-#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+class SelectedRTSLayersPlayerGameInput;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SelectedRTSLayersPlayerUpgradeGameInputProcessor: public SelectedRTSLayersPlayerGameInputProcessor {
 
 public: SelectedRTSLayersPlayerUpgradeGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput);
@@ -70,3 +75,22 @@ public: SelectedRTSLayersPlayerUpgradeGameInputProcessor(SelectedRTSLayersPlayer
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include("org/allbinary/game/input/SelectedRTSLayersPlayerGameInputProcessor.h")
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h")
+#include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
+#endif
+
+        #endif
+    

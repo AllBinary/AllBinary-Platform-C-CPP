@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H
         #define ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,23 +35,11 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/math/MathData.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StdUtil;
+class AbPathData;
+class MathData;
+class CommonPhoneStrings;
+class CommonSeps;
 
 
 
@@ -65,17 +58,53 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/string/StringUtil.h"
+        class StringUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SpecialCharacterUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static HashMap<Object*, Object*>* getHashMap();
 
+
+            
+    public: SpecialCharacterUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/MathData.h>)
+#include <org/allbinary/logic/math/MathData.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/logic/string/StringUtil.h")
+#include "org/allbinary/logic/string/StringUtil.h"
+#endif
+
+        #endif
+    

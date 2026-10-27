@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_FLAGGAMERESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_FLAGGAMERESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/FlagGameResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,86 +64,67 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FlagGameResources: public BasicGameResources {
 
-    private: static inline const std::string ICON = "_icon";
-
-    private: static inline const std::string BUILD = "_build";
-
-    private: static inline const std::string DESTROY = "_destroy";
-
-    private: static inline const std::string ICON_BUILD = "_icon" +FlagGameResources::BUILD;
-
-    public: std::string NAME = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: std::string RESOURCE_ICON_ANIMATION = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: std::string RESOURCE_ICON_BUILD = StringUtil::getInstance()->EMPTY_STRING;
-
-    public: std::string RESOURCE_ICON = StringUtil::getInstance()->EMPTY_STRING;
-
-protected: FlagGameResources(){
+FlagGameResources::FlagGameResources() : NAME(StringUtil::getInstance()->EMPTY_STRING), RESOURCE_ICON_ANIMATION(StringUtil::getInstance()->EMPTY_STRING), RESOURCE_ICON_BUILD(StringUtil::getInstance()->EMPTY_STRING), RESOURCE_ICON(StringUtil::getInstance()->EMPTY_STRING){
 }
 
-
-    private: const std::string ICON_SIZE = "_64_by_64.png";
+const std::string FlagGameResources::ICON_BUILD = JavaString::valueOf("_icon") +JavaString::valueOf(FlagGameResources::BUILD);
 
                 //@Throws(Exception.constructor)
             
-    protected: void append(std::string ROOT, std::string sizeString){
-super.append(ROOT, sizeString);
+    auto FlagGameResources::append(std::string ROOT, std::string sizeString) -> void{
+BasicGameResources::append(ROOT, sizeString);
     
 
     std::string string = GameGraphicsResourceUtil::getInstance()->getName();;
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-BasicGameResources::stringBuffer.append(FlagGameResources::DESTROY);
+BasicGameResources::stringBuffer->append(FlagGameResources::DESTROY);
     
-BasicGameResources::stringBuffer.append(string);
+BasicGameResources::stringBuffer->append(string);
     
-BasicGameResources::stringBuffer.append(sizeString);
+BasicGameResources::stringBuffer->append(sizeString);
     
-this->RESOURCE_DESTROY= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_DESTROY= BasicGameResources::stringBuffer->toString();
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer.append(FlagGameResources::ICON);
+BasicGameResources::stringBuffer->append(FlagGameResources::ICON);
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-this->RESOURCE_ICON_ANIMATION= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_ICON_ANIMATION= BasicGameResources::stringBuffer->toString();
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-BasicGameResources::stringBuffer.append(FlagGameResources::ICON);
+BasicGameResources::stringBuffer->append(FlagGameResources::ICON);
     
-BasicGameResources::stringBuffer.append(string);
+BasicGameResources::stringBuffer->append(string);
     
-BasicGameResources::stringBuffer.append(this->ICON_SIZE);
+BasicGameResources::stringBuffer->append(this->ICON_SIZE);
     
-this->RESOURCE_ICON= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_ICON= BasicGameResources::stringBuffer->toString();
     
-BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+BasicGameResources::stringBuffer->delete_(0, BasicGameResources::stringBuffer->length());
     
-BasicGameResources::stringBuffer.append(ROOT);
+BasicGameResources::stringBuffer->append(ROOT);
     
-BasicGameResources::stringBuffer.append(FlagGameResources::ICON_BUILD);
+BasicGameResources::stringBuffer->append(FlagGameResources::ICON_BUILD);
     
-BasicGameResources::stringBuffer.append(string);
+BasicGameResources::stringBuffer->append(string);
     
-BasicGameResources::stringBuffer.append(this->ICON_SIZE);
+BasicGameResources::stringBuffer->append(this->ICON_SIZE);
     
-this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer.toString();
+this->RESOURCE_ICON_BUILD= BasicGameResources::stringBuffer->toString();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_FLAGGAMERESOURCES_CPP

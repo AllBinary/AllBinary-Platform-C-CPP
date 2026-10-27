@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_VISUALWAYPOINTLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_VISUALWAYPOINTLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/VisualWaypointLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,9 +80,8 @@
 #include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintableSingleton.h"
 #include "org/allbinary/game/layer/waypoint/WaypointInfoHudPaintable.h"
 
-class VisualWaypointLayer: public WaypointLayer {
 
-public: VisualWaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : WaypointLayer(remoteInfo, parentLayer, groupInterface, rootName, name, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y){
+VisualWaypointLayer::VisualWaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : WaypointLayer(remoteInfo, parentLayer, groupInterface, rootName, name, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,11 +91,11 @@ public: VisualWaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* p
 }
 
 
-    public: SelectionHudPaintable* createHudPaintable(){
+    auto VisualWaypointLayer::createHudPaintable() -> SelectionHudPaintable*{
 
     WaypointInfoHudPaintable* rtsLayerHudPaintable = WaypointInfoHudPaintableSingleton::getInstance();;
     
-rtsLayerHudPaintable->setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
+rtsLayerHudPaintable->setBasicColorP(this->allBinaryGameLayerManagerP->getForegroundBasicColor());
     
 rtsLayerHudPaintable->setRtsLayer(this);
     
@@ -99,7 +108,7 @@ rtsLayerHudPaintable->setRtsLayer(this);
 }
 
 
-    public: SelectionHudPaintable* getHudPaintable(){
+    auto VisualWaypointLayer::getHudPaintable() -> SelectionHudPaintable*{
 
     WaypointInfoHudPaintable* rtsLayerHudPaintable = WaypointInfoHudPaintableSingleton::getInstance();;
     
@@ -112,7 +121,6 @@ rtsLayerHudPaintable->setRtsLayer(this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_VISUALWAYPOINTLAYER_CPP

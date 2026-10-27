@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,20 +39,10 @@
             #include "java/lang/Integer.h"
         
 #include <java/awt.h>
-
-      
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <org/allbinary/graphics/color/ColorCacheFactory.h>
-
-      
-#include <org/allbinary/graphics/color/ColorCacheable.h>
-
-      
-#include <org/allbinary/logic/util/cache/AutomaticCacheInterface.h>
-
-      
+class ColorCacheFactory;
+class ColorCacheable;
+class AutomaticCacheInterface;
 
 
 
@@ -66,10 +61,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/game/Color.h"
+        class Color;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GraphicsAnalysisUtil
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const int32_t MAX = 122;
@@ -86,3 +85,28 @@ private: GraphicsAnalysisUtil();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_GRAPHICSANALYSISUTIL_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/ColorCacheFactory.h>)
+#include <org/allbinary/graphics/color/ColorCacheFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/ColorCacheable.h>)
+#include <org/allbinary/graphics/color/ColorCacheable.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/cache/AutomaticCacheInterface.h>)
+#include <org/allbinary/logic/util/cache/AutomaticCacheInterface.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/Color.h")
+#include "org/allbinary/input/automation/module/game/Color.h"
+#endif
+
+        #endif
+    

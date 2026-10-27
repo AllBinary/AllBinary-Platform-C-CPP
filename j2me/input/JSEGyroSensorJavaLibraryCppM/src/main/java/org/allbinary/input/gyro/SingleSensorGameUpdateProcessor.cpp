@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/SingleSensorGameUpdateProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,15 +63,13 @@
 #include "org/allbinary/input/gyro/AccelerometerSensorUpdateProcessor.h"
 #include "org/allbinary/input/gyro/GyroSensorUpdateProcessor.h"
 
-class SingleSensorGameUpdateProcessor: public SensorGameUpdateProcessor {
 
-    private: Processor* accelerometerSensorUpdateProcessor = new AccelerometerSensorUpdateProcessor();
-
-    private: Processor* gyroSensorUpdateProcessor = new GyroSensorUpdateProcessor();
-
+SingleSensorGameUpdateProcessor::SingleSensorGameUpdateProcessor() : accelerometerSensorUpdateProcessor(new AccelerometerSensorUpdateProcessor()), gyroSensorUpdateProcessor(new GyroSensorUpdateProcessor()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void process(Object* anyType){
+    auto SingleSensorGameUpdateProcessor::process(Object* anyType) -> void{
 this->setNoSensors();
     
 }
@@ -69,11 +77,10 @@ this->setNoSensors();
 
                 //@Throws(Exception.constructor)
             
-    public: void sendNotifications(Object* anyType){
+    auto SingleSensorGameUpdateProcessor::sendNotifications(Object* anyType) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_CPP

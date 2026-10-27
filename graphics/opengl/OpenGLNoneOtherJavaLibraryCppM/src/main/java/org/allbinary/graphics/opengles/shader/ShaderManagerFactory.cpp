@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGERFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/ShaderManagerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/ShaderManager.h"
 
-class ShaderManagerFactory
-            : public Object
-         {
 
-    private: static ShaderManagerFactory* instance() { static std::unique_ptr<ShaderManagerFactory> value(new ShaderManagerFactory()); return value.get(); }
+ShaderManagerFactory::ShaderManagerFactory() {
+        }
+        auto ShaderManagerFactory::instance_owner() -> ShaderManagerFactory* { static std::unique_ptr<ShaderManagerFactory> value(new ShaderManagerFactory()); return value.get(); }
+ShaderManagerFactory* ShaderManagerFactory::instance = ShaderManagerFactory::instance_owner();
 
-    public: static ShaderManagerFactory* getInstance(){
+    auto ShaderManagerFactory::getInstance() -> ShaderManagerFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderManagerFactory::instance();
+                        return ShaderManagerFactory::instance;
     
 }
 
 
-    public: ShaderManager* create(){
+    auto ShaderManagerFactory::create() -> ShaderManager*{
 
 
 
@@ -72,7 +82,6 @@ class ShaderManagerFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGERFACTORY_CPP

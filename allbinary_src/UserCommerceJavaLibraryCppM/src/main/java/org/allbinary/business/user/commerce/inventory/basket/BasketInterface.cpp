@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/basket/BasketInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,29 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasketInterface {
+//Interface - declared in the header
 
-    public: virtual void addItem(std::string id, std::string num) = 0;
 
-    public: virtual void removeItem(std::string id) = 0;
 
-    public: virtual void adjustItem(std::string id, std::string num) = 0;
-
-    public: virtual std::string getTotalWeight() = 0;
-
-    public: virtual int32_t getNumberOfItems() = 0;
-
-    public: virtual Set* getIds() = 0;
-
-    public: virtual HashMap<Object*, Object*>* getItems() = 0;
-
-    public: virtual int32_t getNumberOf(std::string product) = 0;
-
-                //@Throws(MoneyException.constructor)
-            
-    public: virtual Money* getSubTotal() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_CPP

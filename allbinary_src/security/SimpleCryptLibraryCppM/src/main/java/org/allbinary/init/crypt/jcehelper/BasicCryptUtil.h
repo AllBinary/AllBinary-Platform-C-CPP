@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_H
         #define ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,20 +39,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
-
-      
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/InputStream.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class TsUtil;
+class LogUtil;
 
 
 
@@ -66,19 +61,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/init/crypt/jcehelper/CryptInterface.h"
+        class CryptInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicCryptUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicCryptUtil* instance() { static std::unique_ptr<BasicCryptUtil> value(new BasicCryptUtil()); return value.get(); }
+    private: static BasicCryptUtil* instance_owner();
+    private: static BasicCryptUtil* instance;
 
     public: static BasicCryptUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+            
+    public: BasicCryptUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: TsUtil* tsUtil;
 
     private: const std::string XML_START = "<?xml";
 
@@ -92,3 +96,28 @@ class BasicCryptUtil
 
 
         #endif //ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayInputStream.h>)
+#include <java/io/ByteArrayInputStream.h>
+#endif
+#if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("org/allbinary/init/crypt/jcehelper/CryptInterface.h")
+#include "org/allbinary/init/crypt/jcehelper/CryptInterface.h"
+#endif
+
+        #endif
+    

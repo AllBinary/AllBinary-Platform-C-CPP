@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_LINE_H
         #define ORG_ALLBINARY_GRAPHICS_LINE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/GPoint.h"
-#include "org/allbinary/graphics/PointFactory.h"
+        class GPoint;
+class PointFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Line
-            : public Object
+            : public virtual Object
          {
 
     private: GPoint* p1;
@@ -86,3 +95,16 @@ public: Line(GPoint* p1, GPoint* p2);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_LINE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_LINE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_LINE_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+
+        #endif
+    

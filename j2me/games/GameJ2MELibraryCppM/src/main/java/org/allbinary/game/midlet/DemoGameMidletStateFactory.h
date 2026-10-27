@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATEFACTORY_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +52,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/midlet/DemoGameMidletState.h"
+        class DemoGameMidletState;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DemoGameMidletStateFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static DemoGameMidletStateFactory* STATE() { static std::unique_ptr<DemoGameMidletStateFactory> value(new DemoGameMidletStateFactory()); return value.get(); }
+    private: static DemoGameMidletStateFactory* STATE_owner();
+    private: static DemoGameMidletStateFactory* STATE;
 
     public: static DemoGameMidletStateFactory* getInstance();
 
-    public: DemoGameMidletState* NONE = new DemoGameMidletState();
+    public: DemoGameMidletState* NONE;
 
-    public: DemoGameMidletState* START_DEMO = new DemoGameMidletState();
+    public: DemoGameMidletState* START_DEMO;
 
-    public: DemoGameMidletState* START_GAME = new DemoGameMidletState();
+    public: DemoGameMidletState* START_GAME;
 
-    public: DemoGameMidletState* START_INPUT_MAPPING = new DemoGameMidletState();
+    public: DemoGameMidletState* START_INPUT_MAPPING;
 
 private: DemoGameMidletStateFactory();
 
@@ -73,3 +83,13 @@ private: DemoGameMidletStateFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLETSTATEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/midlet/DemoGameMidletState.h")
+#include "org/allbinary/game/midlet/DemoGameMidletState.h"
+#endif
+
+        #endif
+    

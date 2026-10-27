@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_RENDERERSTATEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_RENDERERSTATEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/RendererStateFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RendererStateFactory
-            : public Object
-         {
 
-    private: static RendererStateFactory* instance() { static std::unique_ptr<RendererStateFactory> value(new RendererStateFactory()); return value.get(); }
+RendererStateFactory::RendererStateFactory() {
+        }
+        auto RendererStateFactory::instance_owner() -> RendererStateFactory* { static std::unique_ptr<RendererStateFactory> value(new RendererStateFactory()); return value.get(); }
+RendererStateFactory* RendererStateFactory::instance = RendererStateFactory::instance_owner();
 
-    public: static RendererStateFactory* getInstance(){
+    auto RendererStateFactory::getInstance() -> RendererStateFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RendererStateFactory::instance();
+                        return RendererStateFactory::instance;
     
 }
 
 
-    private: bool loaded = false;
-
-    private: bool surfaceChanged = false;
-
-    public: void setLoaded(bool loaded){
+    auto RendererStateFactory::setLoaded(bool loaded) -> void{
 this->loaded= loaded;
     
 }
 
 
-    public: bool isLoaded(){
+    auto RendererStateFactory::isLoaded() -> bool{
 
 
 
@@ -81,13 +87,13 @@ this->loaded= loaded;
 }
 
 
-    public: void setSurfaceChanged(bool initialized){
+    auto RendererStateFactory::setSurfaceChanged(bool initialized) -> void{
 this->surfaceChanged= initialized;
     
 }
 
 
-    public: bool isSurfaceChanged(){
+    auto RendererStateFactory::isSurfaceChanged() -> bool{
 
 
 
@@ -97,7 +103,6 @@ this->surfaceChanged= initialized;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_RENDERERSTATEFACTORY_CPP

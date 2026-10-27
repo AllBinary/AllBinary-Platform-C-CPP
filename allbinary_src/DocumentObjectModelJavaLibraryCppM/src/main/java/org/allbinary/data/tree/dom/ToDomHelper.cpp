@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/ToDomHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +58,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ToDomHelper
-            : public Object
-         {
 
-    public: static std::string convertNull(std::string value){
+ToDomHelper::ToDomHelper(){
+}
+
+
+    auto ToDomHelper::convertNull(std::string value) -> std::string{
 
                         if(false)
                         
@@ -71,11 +82,6 @@ class ToDomHelper
 }
 
 
-private: ToDomHelper(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_TODOMHELPER_CPP

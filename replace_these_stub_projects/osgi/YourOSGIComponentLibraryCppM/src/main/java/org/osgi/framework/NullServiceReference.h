@@ -21,6 +21,11 @@
         #ifndef ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_H
         #define ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,12 +38,8 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class NullUtil;
+class StringUtil;
 
 
 
@@ -58,15 +59,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullServiceReference
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: NullServiceReference();
+        
     public: Object* getProperty(std::string key);
 
     public: std::vector<std::string> getPropertyKeys();
 
     public: int32_t compareTo(Object* o);
+    public: int32_t compareTo(const std::string& o) { return compareTo(JavaString::box(o)); }
 
 };
 
@@ -74,3 +84,16 @@ class NullServiceReference
 
 
         #endif //ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_H_COMPLETE)
+        #define ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

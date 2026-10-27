@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_PROPERTIES_PROPERTIESJPANEL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_PROPERTIES_PROPERTIESJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/properties/PropertiesJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,14 @@
 #include "org/allbinary/graphics/j2me/workarea/properties/GridLayout.h"
 #include "org/allbinary/graphics/j2me/workarea/properties/Font.h"
 
-class PropertiesJPanel: public javax::swing::JPanel {
 
-public: PropertiesJPanel(){
+PropertiesJPanel::PropertiesJPanel(){
 this->initComponents();
     
 }
 
 
-    public: void set(JPanel* panel){
+    auto PropertiesJPanel::set(JPanel* panel) -> void{
 this->workAreaPropertiesJPanel->add(panel);
     
 this->repaint();
@@ -67,7 +76,7 @@ this->repaint();
 }
 
 
-    private: void initComponents(){
+    auto PropertiesJPanel::initComponents() -> void{
 this->workAreaPropertiesJPanel= new javax::swing::JPanel();
     
 this->modifierJPanel= new javax::swing::JPanel();
@@ -165,33 +174,6 @@ add(this->modifierJPanel);
 }
 
 
-    private: javax::swing::JButton* rotateJButton;
 
-    private: javax::swing::JButton* copyVerticalJButton;
 
-    private: javax::swing::JButton* leftJButton;
-
-    private: javax::swing::JPanel* rotateJPanel;
-
-    private: javax::swing::JTextField* angleJTextField;
-
-    private: javax::swing::JPanel* workAreaPropertiesJPanel;
-
-    private: javax::swing::JPanel* modifierJPanel;
-
-    private: javax::swing::JButton* upJButton;
-
-    private: javax::swing::JPanel* jPanel8;
-
-    private: javax::swing::JButton* downJButton;
-
-    private: javax::swing::JPanel* jPanel7;
-
-    private: javax::swing::JButton* rightJButton;
-
-    private: javax::swing::JButton* copyHorizontalJButton;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_PROPERTIES_PROPERTIESJPANEL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_THREED_RATIOPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_THREED_RATIOPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,10 +53,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RatioProcessor
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: RatioProcessor();
+        
     public: void setCustom(int32_t width, int32_t height, float ratio);
 
 };
@@ -60,3 +73,10 @@ class RatioProcessor
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_THREED_RATIOPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_THREED_RATIOPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_THREED_RATIOPROCESSOR_H_COMPLETE
+        
+        #endif
+    

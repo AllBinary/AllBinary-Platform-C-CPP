@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_BOUNCYCASTLE_JCE_PROVIDER_BOUNCYCASTLEPROVIDER_CPP
+        #define ORG_BOUNCYCASTLE_JCE_PROVIDER_BOUNCYCASTLEPROVIDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/bouncycastle/jce/provider/BouncyCastleProvider.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,13 +44,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BouncyCastleProvider: public Provider {
 
-    private: static inline std::string info = "BouncyCastle Security Provider v1.41";
-
-    public: static inline std::string PROVIDER_NAME = "BC";
-
-public: BouncyCastleProvider() : Provider(BouncyCastleProvider::PROVIDER_NAME, 1.41, BouncyCastleProvider::info){
+BouncyCastleProvider::BouncyCastleProvider() : Provider(BouncyCastleProvider::PROVIDER_NAME, 1.41, BouncyCastleProvider::info){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -50,11 +55,10 @@ public: BouncyCastleProvider() : Provider(BouncyCastleProvider::PROVIDER_NAME, 1
 }
 
 
-    public: void setParameter(std::string parameterName, Object* parameter){
+    auto BouncyCastleProvider::setParameter(std::string parameterName, Object* parameter) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_BOUNCYCASTLE_JCE_PROVIDER_BOUNCYCASTLEPROVIDER_CPP

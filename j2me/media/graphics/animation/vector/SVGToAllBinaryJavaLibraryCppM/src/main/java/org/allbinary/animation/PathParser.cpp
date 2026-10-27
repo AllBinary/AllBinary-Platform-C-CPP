@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_PATHPARSER_CPP
+        #define ORG_ALLBINARY_ANIMATION_PATHPARSER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/PathParser.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,11 +57,11 @@
 #include "org/allbinary/animation/FixedPoint.h"
 #include "org/allbinary/animation/PGUtil.h"
 
-class PathParser
-            : public Object
-         {
 
-    private: static std::vector<std::string> tokenize(std::string d){
+PathParser::PathParser() {
+        }
+        
+    auto PathParser::tokenize(std::string d) -> std::vector<std::string>{
 
     BasicArrayList* tokens = new BasicArrayListD();;
     
@@ -132,7 +142,7 @@ tokens->toArrayType(res);
 }
 
 
-    public: static int32_t parsePath(std::string d, std::vector<int32_t> outX, std::vector<int32_t> outY, int32_t maxPoints){
+    auto PathParser::parsePath(std::string d, std::vector<int32_t> outX, std::vector<int32_t> outY, int32_t maxPoints) -> int32_t{
 
     std::vector<std::string> tokens = tokenize(d);;
     
@@ -403,7 +413,7 @@ count[0]++;
 }
 
 
-    private: static bool isCommand(std::string tok){
+    auto PathParser::isCommand(std::string tok) -> bool{
 
     char c = tok[0];;
     
@@ -416,7 +426,6 @@ count[0]++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_PATHPARSER_CPP

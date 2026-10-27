@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHGENERATOR_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathGenerator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,35 +72,32 @@
 #include "org/allbinary/media/graphics/geography/pathfinding/GeographicPathFinderBase.h"
 #include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
 
-class PathGenerator
-            : public Object
-        , public PathGeneratorInterface {
+auto PathGenerator::SINGLETON_owner() -> PathGenerator* { static std::unique_ptr<PathGenerator> value(new PathGenerator()); return value.get(); }
+PathGenerator* PathGenerator::SINGLETON = PathGenerator::SINGLETON_owner();
 
-    private: static PathGenerator* SINGLETON() { static std::unique_ptr<PathGenerator> value(new PathGenerator()); return value.get(); }
-
-    public: static PathGenerator* getInstance(){
+    auto PathGenerator::getInstance() -> PathGenerator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathGenerator::SINGLETON();
+                        return PathGenerator::SINGLETON;
     
 }
 
 
-private: PathGenerator(){
+PathGenerator::PathGenerator(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Object* geographicMapInterface, int32_t totalPaths){
+    auto PathGenerator::init(Object* geographicMapInterface, int32_t totalPaths) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getInstanceNoCache(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t totalPaths){
+    auto PathGenerator::getInstanceNoCache(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t totalPaths) -> BasicArrayList*{
 
     BasicArrayList* geographicMapCellPositionBasicArrayList = this->create(geographicMapInterface, pathFindingInfo, totalPaths);;
     
@@ -105,18 +112,18 @@ private: PathGenerator(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* createList(BasicGeographicMap* geographicMapInterface, GeographicMapCellHistory* geographicMapCellHistory, PathFindingInfo* pathFindingInfo, int32_t totalPaths){
+    auto PathGenerator::createList(BasicGeographicMap* geographicMapInterface, GeographicMapCellHistory* geographicMapCellHistory, PathFindingInfo* pathFindingInfo, int32_t totalPaths) -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* create(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t totalPaths){
+    auto PathGenerator::create(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t totalPaths) -> BasicArrayList*{
 
     BasicArrayList* startPathFindingNodeList = pathFindingInfo->getStartPathFindingNodeList();;
     
@@ -140,7 +147,7 @@ private: PathGenerator(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* createN(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t totalPaths, MultipassState* multipassState){
+    auto PathGenerator::createN(BasicGeographicMap* geographicMapInterface, PathFindingInfo* pathFindingInfo, int32_t totalPaths, MultipassState* multipassState) -> BasicArrayList*{
 
     BasicArrayList* startPathFindingNodeList = pathFindingInfo->getStartPathFindingNodeList();;
     
@@ -164,16 +171,15 @@ private: PathGenerator(){
 
                 //@Throws(Exception.constructor)
             
-    private: bool isValid(BasicArrayList* pathList, GeographicMapCellHistory* geographicMapCellHistory){
+    auto PathGenerator::isValid(BasicArrayList* pathList, GeographicMapCellHistory* geographicMapCellHistory) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHGENERATOR_CPP

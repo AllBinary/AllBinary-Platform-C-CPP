@@ -21,27 +21,22 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <android/view/MotionEvent.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/GameMotionGestureListener.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/MotionGestureReceiveInterfaceFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class MotionEvent;
+class BasicMotionGesturesHandler;
+class GameMotionGestureListener;
+class MotionGestureReceiveInterfaceFactory;
+class CommonStrings;
 
 
 
@@ -62,13 +57,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/MotionEventProcessor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseGameInputMotionEventProcessor: public MotionEventProcessor {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: GameMotionGestureListener* gameMotionGestureListener;
 
-protected: BaseGameInputMotionEventProcessor();
+/*protected*/ public: BaseGameInputMotionEventProcessor();
 
     public: void process(MotionEvent* motionEvent);
 
@@ -80,3 +79,28 @@ protected: BaseGameInputMotionEventProcessor();
 
 
         #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_BASEGAMEINPUTMOTIONEVENTPROCESSOR_H_COMPLETE
+        #if __has_include(<android/view/MotionEvent.h>)
+#include <android/view/MotionEvent.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>)
+#include <org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/GameMotionGestureListener.h>)
+#include <org/allbinary/input/motion/gesture/observer/GameMotionGestureListener.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/MotionGestureReceiveInterfaceFactory.h>)
+#include <org/allbinary/input/motion/gesture/observer/MotionGestureReceiveInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/android/input/motion/MotionEventProcessor.h")
+#include "org/allbinary/android/input/motion/MotionEventProcessor.h"
+#endif
+
+        #endif
+    

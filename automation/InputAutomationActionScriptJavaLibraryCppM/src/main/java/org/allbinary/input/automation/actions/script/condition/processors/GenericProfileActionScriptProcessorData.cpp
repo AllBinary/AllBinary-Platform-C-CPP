@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_GENERICPROFILEACTIONSCRIPTPROCESSORDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_GENERICPROFILEACTIONSCRIPTPROCESSORDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/GenericProfileActionScriptProcessorData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericProfileActionScriptProcessorData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_PROCESSOR_NAME";
-
-private: GenericProfileActionScriptProcessorData(){
+GenericProfileActionScriptProcessorData::GenericProfileActionScriptProcessorData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_GENERICPROFILEACTIONSCRIPTPROCESSORDATA_CPP

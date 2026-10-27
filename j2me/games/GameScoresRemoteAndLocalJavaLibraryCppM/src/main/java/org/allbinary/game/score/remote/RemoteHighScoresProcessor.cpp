@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/remote/RemoteHighScoresProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,24 +97,15 @@
 #include "org/allbinary/game/score/remote/XmlRpcRemoteHighScoresClient.h"
 #include "org/allbinary/game/score/remote/RemoteHighScores.h"
 
-class RemoteHighScoresProcessor
-            : public Object
-        , public RemoteHighScoresProcessorInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: NoCrypt* noCrypt = new NoCrypt();
-
-public: RemoteHighScoresProcessor(){
+RemoteHighScoresProcessor::RemoteHighScoresProcessor() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), noCrypt(new NoCrypt()){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void process(RemoteHighScores* remoteHighScores, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo){
+    auto RemoteHighScoresProcessor::process(RemoteHighScores* remoteHighScores, AbeClientInformationInterface* abeClientInformation, GameInfo* gameInfo) -> void{
 this->logUtil->putF("Begin Remote HighScores Retrieval", this, this->commonStrings->PROCESS);
     
 
@@ -141,7 +142,6 @@ remoteHighScores->update(resultHashtable);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORESPROCESSOR_CPP

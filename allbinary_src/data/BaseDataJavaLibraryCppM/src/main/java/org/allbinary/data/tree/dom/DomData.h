@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMDATA_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOMDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DomData
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string ID = "id";
@@ -70,3 +79,10 @@ private: DomData();
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOMDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_DOM_DOMDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOMDATA_H_COMPLETE
+        
+        #endif
+    

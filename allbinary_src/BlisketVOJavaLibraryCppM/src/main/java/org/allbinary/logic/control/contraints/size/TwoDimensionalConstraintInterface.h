@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINTINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +50,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/control/contraints/size/SizeConstraintInterface.h"
+        class SizeConstraintInterface;
 
-class TwoDimensionalConstraintInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class TwoDimensionalConstraintInterface
+            : public virtual Object
+         {
 
     public: virtual SizeConstraintInterface* getHeight() = 0;
 
@@ -63,3 +74,13 @@ class TwoDimensionalConstraintInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_SIZE_TWODIMENSIONALCONSTRAINTINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/logic/control/contraints/size/SizeConstraintInterface.h")
+#include "org/allbinary/logic/control/contraints/size/SizeConstraintInterface.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMLIGHTCOLOROPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMLIGHTCOLOROPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/UniformLightColorOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,17 +60,15 @@
         #include "org/allbinary/graphics/opengles/shader/OpenGLObject3dProcessor.h"
 #include "org/allbinary/graphics/opengles/shader/ShaderComposite.h"
 
-class UniformLightColorOpenGLProcessor: public OpenGLObject3dProcessor {
 
-public: UniformLightColorOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex){
+UniformLightColorOpenGLProcessor::UniformLightColorOpenGLProcessor(ShaderComposite* shaderComposite, int32_t handleIndex){
 }
 
 
-    public: void process(GL10* gl, Object* unused){
+    auto UniformLightColorOpenGLProcessor::process(GL10* gl, Object* unused) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_UNIFORMLIGHTCOLOROPENGLPROCESSOR_CPP

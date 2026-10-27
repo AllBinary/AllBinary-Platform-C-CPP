@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_COMPONENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_COMPONENTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Class.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -52,41 +55,50 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/hardware/components/Component.h"
+        class Component;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ComponentFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ComponentFactory* instance() { static std::unique_ptr<ComponentFactory> value(new ComponentFactory()); return value.get(); }
+    private: static ComponentFactory* instance_owner();
+    private: static ComponentFactory* instance;
 
     public: static ComponentFactory* getInstance();
 
-    public: Component* VGA = new Component("VGA");
 
-    public: Component* IDE = new Component("IDE");
+            
+    public: ComponentFactory();
+        
+    public: Component* VGA;
 
-    public: Component* SCSI = new Component("SCSI");
+    public: Component* IDE;
 
-    public: Component* BRIDGE = new Component("bridge");
+    public: Component* SCSI;
 
-    public: Component* ETHERNET = new Component("Ethernet");
+    public: Component* BRIDGE;
 
-    public: Component* USB = new Component("USB");
+    public: Component* ETHERNET;
 
-    public: Component* MULTIMEDIA = new Component("Multimedia");
+    public: Component* USB;
 
-    public: Component* PCI = new Component("PCI");
+    public: Component* MULTIMEDIA;
 
-    public: Component* RAID = new Component("RAID");
+    public: Component* PCI;
 
-    public: Component* SMBUS = new Component("SMBus");
+    public: Component* RAID;
 
-    public: Component* PIC = new Component("PIC");
+    public: Component* SMBUS;
 
-    public: Component* Class = new Component("Class");
+    public: Component* PIC;
 
-    public: Component* UNKNOWN = new Component(CommonStrings::getInstance()->UNKNOWN);
+    public: Component* Class;
+
+    public: Component* UNKNOWN;
 
 };
 
@@ -94,3 +106,16 @@ class ComponentFactory
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_COMPONENTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_COMPONENTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_COMPONENTFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/Component.h")
+#include "org/allbinary/logic/system/hardware/components/Component.h"
+#endif
+
+        #endif
+    

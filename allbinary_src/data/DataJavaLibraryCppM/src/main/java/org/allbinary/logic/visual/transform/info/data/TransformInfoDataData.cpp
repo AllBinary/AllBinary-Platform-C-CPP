@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/data/TransformInfoDataData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,31 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoDataData
-            : public Object
-         {
+auto TransformInfoDataData::instance_owner() -> TransformInfoDataData* { static std::unique_ptr<TransformInfoDataData> value(new TransformInfoDataData()); return value.get(); }
+TransformInfoDataData* TransformInfoDataData::instance = TransformInfoDataData::instance_owner();
 
-    private: static TransformInfoDataData* instance() { static std::unique_ptr<TransformInfoDataData> value(new TransformInfoDataData()); return value.get(); }
-
-    public: static TransformInfoDataData* getInstance(){
+    auto TransformInfoDataData::getInstance() -> TransformInfoDataData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoDataData::instance();
+                        return TransformInfoDataData::instance;
     
 }
 
 
-private: TransformInfoDataData(){
+TransformInfoDataData::TransformInfoDataData() : UNCRYPTED_EXTENSION(CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION), ENCRYPTED_EXTENSION(CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION){
 }
 
 
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
 
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_CPP

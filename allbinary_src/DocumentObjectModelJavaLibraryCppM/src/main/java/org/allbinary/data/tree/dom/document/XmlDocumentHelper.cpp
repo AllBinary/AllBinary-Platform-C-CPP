@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_XMLDOCUMENTHELPER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_XMLDOCUMENTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/document/XmlDocumentHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -95,77 +105,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class XmlDocumentHelper
-            : public Object
-         {
+auto XmlDocumentHelper::instance_owner() -> XmlDocumentHelper* { static std::unique_ptr<XmlDocumentHelper> value(new XmlDocumentHelper()); return value.get(); }
+XmlDocumentHelper* XmlDocumentHelper::instance = XmlDocumentHelper::instance_owner();
 
-    private: static XmlDocumentHelper* instance() { static std::unique_ptr<XmlDocumentHelper> value(new XmlDocumentHelper()); return value.get(); }
-
-    public: static XmlDocumentHelper* getInstance(){
+    auto XmlDocumentHelper::getInstance() -> XmlDocumentHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XmlDocumentHelper::instance();
+                        return XmlDocumentHelper::instance;
     
 }
 
 
-                //@Throws(Exception.constructor)
-            
-    public: static std::string toString(Document* document){
-
-        try {
-            
-    DOMSource* domSource = new DOMSource(document);;
-    
-
-    ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
-    
-
-    StreamResult* streamResult = new StreamResult(byteArrayOutputStream);;
-    
-
-    TransformerFactory* copyTransformerFactory = TransformerFactory::newInstance();;
-    
-
-    Transformer* copyTransformer = copyTransformerFactory->newTransformer();;
-    
-copyTransformer->transform(domSource, streamResult);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream->toString();;
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-
-
-
-                            throw e;
-                    
-}
-
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string INDENT_NUMBER = "indent-number";
-
-    private: Transformer* transformer;
-
-private: XmlDocumentHelper(){
+XmlDocumentHelper::XmlDocumentHelper() : logUtil(LogUtil::getInstance()){
 this->init(4, true);
     
 }
 
 
-    public: void init(int32_t indent, bool ignoreDeclaration){
+    auto XmlDocumentHelper::init(int32_t indent, bool ignoreDeclaration) -> void{
 
         try {
             
@@ -207,7 +166,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->INIT, &e);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string format(std::string xmlString){
+    auto XmlDocumentHelper::format(std::string xmlString) -> std::string{
 
     InputSource* src = new InputSource(new StringReader(xmlString));;
     
@@ -228,7 +187,48 @@ this->transformer->transform(new DOMSource(document), new StreamResult(out));
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto XmlDocumentHelper::toString(Document* document) -> std::string{
 
+        try {
+            
+    DOMSource* domSource = new DOMSource(document);;
+    
+
+    ByteArrayOutputStream* byteArrayOutputStream = new ByteArrayOutputStream();;
+    
+
+    StreamResult* streamResult = new StreamResult(byteArrayOutputStream);;
+    
+
+    TransformerFactory* copyTransformerFactory = TransformerFactory::newInstance();;
+    
+
+    Transformer* copyTransformer = copyTransformerFactory->newTransformer();;
+    
+copyTransformer->transform(domSource, streamResult);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return byteArrayOutputStream->toString();;
+    
+
+                //: 
+} catch(Exception& e) 
+            {
+
+
+
+                            throw e;
+                    
+}
+
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_XMLDOCUMENTHELPER_CPP

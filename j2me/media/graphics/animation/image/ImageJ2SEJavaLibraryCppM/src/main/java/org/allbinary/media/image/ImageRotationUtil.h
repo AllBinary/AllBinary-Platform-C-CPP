@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/microemu/device/j2se/J2SEImmutableImage.h>
-
-      
-#include <org/microemu/device/j2se/J2SEMutableImage.h>
-
-      
+class Image;
+class PreLogUtil;
+class J2SEImmutableImage;
+class J2SEMutableImage;
 
 
 
@@ -64,18 +59,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageJ2SERotationUtil.h"
-#include "org/allbinary/media/image/ImageCreationUtil.h"
+        class ImageJ2SERotationUtil;
+class ImageCreationUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageRotationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
+    private: static ImageRotationUtil* instance_owner();
+    private: static ImageRotationUtil* instance;
 
     public: static ImageRotationUtil* getInstance();
 
-    private: ImageJ2SERotationUtil* imageJ2SERotationUtil = ImageJ2SERotationUtil::getInstance();
+    private: ImageJ2SERotationUtil* imageJ2SERotationUtil;
 
 private: ImageRotationUtil();
 
@@ -91,3 +91,31 @@ private: ImageRotationUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/microemu/device/j2se/J2SEImmutableImage.h>)
+#include <org/microemu/device/j2se/J2SEImmutableImage.h>
+#endif
+#if __has_include(<org/microemu/device/j2se/J2SEMutableImage.h>)
+#include <org/microemu/device/j2se/J2SEMutableImage.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageJ2SERotationUtil.h")
+#include "org/allbinary/media/image/ImageJ2SERotationUtil.h"
+#endif
+#if __has_include("org/allbinary/media/image/ImageCreationUtil.h")
+#include "org/allbinary/media/image/ImageCreationUtil.h"
+#endif
+
+        #endif
+    

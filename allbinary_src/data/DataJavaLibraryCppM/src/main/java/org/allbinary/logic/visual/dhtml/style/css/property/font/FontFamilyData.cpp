@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/font/FontFamilyData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FontFamilyData
-            : public Object
-         {
+auto FontFamilyData::instance_owner() -> FontFamilyData* { static std::unique_ptr<FontFamilyData> value(new FontFamilyData()); return value.get(); }
+FontFamilyData* FontFamilyData::instance = FontFamilyData::instance_owner();
 
-    private: static FontFamilyData* instance() { static std::unique_ptr<FontFamilyData> value(new FontFamilyData()); return value.get(); }
-
-    public: static FontFamilyData* getInstance(){
+    auto FontFamilyData::getInstance() -> FontFamilyData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FontFamilyData::instance();
+                        return FontFamilyData::instance;
     
 }
 
 
-private: FontFamilyData(){
+FontFamilyData::FontFamilyData(){
 }
 
 
-    public: const std::string NAME = "FONT_FAMILY_NAME";
 
-    public: const std::string VALUE = "font-family";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYDATA_CPP

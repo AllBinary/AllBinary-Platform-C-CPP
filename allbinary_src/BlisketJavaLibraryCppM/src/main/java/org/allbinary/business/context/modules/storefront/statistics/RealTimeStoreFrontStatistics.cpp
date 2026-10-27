@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICS_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefront/statistics/RealTimeStoreFrontStatistics.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,19 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/context/modules/storefront/statistics/StoreFrontStatisticsInterface.h"
 
-class RealTimeStoreFrontStatistics
-            : public Object
-        , public StoreFrontStatisticsInterface {
 
-    private: StoreFrontAdvertisementsStatisticsInterface* storeFrontAdvertisementsStatisticsInterface;
-
-    private: StoreFrontUsersStatisticsInterface* storeFrontUsersStatisticsInterface;
-
-    private: StoreFrontInventoryStatisticsInterface* storeFrontInventoryStatisticsInterface;
-
-    private: StoreFrontOrdersHistoryStatisticsInterface* storeFrontOrderHistoryStatisticsInterface;
-
-public: RealTimeStoreFrontStatistics(StoreFrontInterface* storeFrontInterface){
+RealTimeStoreFrontStatistics::RealTimeStoreFrontStatistics(StoreFrontInterface* storeFrontInterface){
 this->storeFrontAdvertisementsStatisticsInterface= dynamic_cast<StoreFrontAdvertisementsStatisticsInterface*>(new StoreFrontAdvertisementsStatistics(storeFrontInterface));
     
 this->storeFrontUsersStatisticsInterface= dynamic_cast<StoreFrontUsersStatisticsInterface*>(new StoreFrontUsersStatistics(storeFrontInterface));
@@ -99,7 +98,7 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 }
 
 
-    public: StoreFrontAdvertisementsStatisticsInterface* getAdvertisements(){
+    auto RealTimeStoreFrontStatistics::getAdvertisements() -> StoreFrontAdvertisementsStatisticsInterface*{
 
 
 
@@ -109,7 +108,7 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 }
 
 
-    public: StoreFrontUsersStatisticsInterface* getUsers(){
+    auto RealTimeStoreFrontStatistics::getUsers() -> StoreFrontUsersStatisticsInterface*{
 
 
 
@@ -119,7 +118,7 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 }
 
 
-    public: StoreFrontInventoryStatisticsInterface* getInventory(){
+    auto RealTimeStoreFrontStatistics::getInventory() -> StoreFrontInventoryStatisticsInterface*{
 
 
 
@@ -129,7 +128,7 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 }
 
 
-    public: StoreFrontOrdersHistoryStatisticsInterface* getOrders(){
+    auto RealTimeStoreFrontStatistics::getOrders() -> StoreFrontOrdersHistoryStatisticsInterface*{
 
 
 
@@ -139,7 +138,6 @@ this->storeFrontOrderHistoryStatisticsInterface= dynamic_cast<StoreFrontOrdersHi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_REALTIMESTOREFRONTSTATISTICS_CPP

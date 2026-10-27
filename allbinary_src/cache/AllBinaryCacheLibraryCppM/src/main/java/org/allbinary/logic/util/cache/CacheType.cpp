@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/CacheType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CacheType
-            : public Object
-         {
 
-    private: std::string vendor;
-
-    private: std::string type;
-
-public: CacheType(std::string vendor, std::string type){
+CacheType::CacheType(std::string vendor, std::string type){
 this->vendor= vendor;
     
 this->type= type;
@@ -64,7 +67,7 @@ this->type= type;
 }
 
 
-    public: std::string getVendor(){
+    auto CacheType::getVendor() -> std::string{
 
 
 
@@ -74,7 +77,7 @@ this->type= type;
 }
 
 
-    public: std::string getType(){
+    auto CacheType::getType() -> std::string{
 
 
 
@@ -84,7 +87,7 @@ this->type= type;
 }
 
 
-    public: std::string toString(){
+    auto CacheType::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -105,7 +108,6 @@ stringBuffer->append(this->getType());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHETYPE_CPP

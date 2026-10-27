@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -126,57 +136,8 @@
 #include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
 #include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
 
-class LinesGraphicItem
-            : public Object
-        , public GraphicItemInterface {
 
-    private: static inline const std::string RECT = "rect";
-
-    private: static inline const std::string ARC = "arc";
-
-    private: static inline const std::string STRING = "string";
-
-    private: static inline const std::string CHAR = "char";
-
-    private: static inline const std::string IMAGE = "image";
-
-    private: static inline int32_t item = 0;
-
-    private: static inline const std::string NAME = "Line Tool";
-
-    public: static std::string getStaticName(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinesGraphicItem::NAME;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
-
-    private: DefaultMutableTreeNode* treeNode;
-
-    private: BasicArrayList* pointTreeNodeVector;
-
-    private: GPoint* currentMousePoint;
-
-    private: GPoint* fulcrumPoint;
-
-    private: bool active = false;
-
-    private: double theta = 0;
-
-    private: Color* color = new Color(BasicColorFactory::getInstance()->WHITE.intValue());
-
-    private: Points* points;
-
-public: LinesGraphicItem(){
+LinesGraphicItem::LinesGraphicItem() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), gameInputStrings(GameInputStrings::getInstance()), color(new Color(BasicColorFactory::getInstance()->WHITE->intValue())){
 this->points= new Points();
     
 
@@ -196,7 +157,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 }
 
 
-public: LinesGraphicItem(Node* linesNode){
+LinesGraphicItem::LinesGraphicItem(Node* linesNode) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), gameInputStrings(GameInputStrings::getInstance()), color(new Color(BasicColorFactory::getInstance()->WHITE->intValue())){
 this->points= new Points();
     
 this->init();
@@ -248,7 +209,7 @@ this->addPoint(pointTwoNode->getChildNodes());
                                     
 
 
-                            throw new Exception("Lines node does not contain a line");
+                            throw Exception("Lines node does not contain a line");
                     
 
                                     }
@@ -258,7 +219,7 @@ this->addPoint(pointTwoNode->getChildNodes());
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto LinesGraphicItem::init() -> void{
 this->treeNode= new DefaultMutableTreeNode(PointsDomUtil::getInstance()->LINES +LinesGraphicItem::item);
     
 LinesGraphicItem::item++;
@@ -274,8 +235,8 @@ this->fulcrumPoint= PointFactory::getInstance()->createXY(0, 0);
 
                 //@Throws(Exception.constructor)
             
-    public: void translate(int32_t x, int32_t y){
-StatusFactory::getInstance()->setStatus("Translating: " +this->points->getPoints());
+    auto LinesGraphicItem::translate(int32_t x, int32_t y) -> void{
+StatusFactory::getInstance()->setStatus(JavaString::valueOf("Translating: ") +JavaString::valueOf(this->points->getPoints()));
     
 
     BasicGraphicsPipeline* basicGraphicsPipeline = new BasicGraphicsPipeline(this->points->getPoints());;
@@ -289,7 +250,7 @@ this->points->addPoints(basicGraphicsPipeline->getMatrix());
 }
 
 
-    public: void setRotate(double theta){
+    auto LinesGraphicItem::setRotate(double theta) -> void{
 
         while(theta > 2 *Math::PI)
         {
@@ -309,25 +270,25 @@ this->theta= theta;
 }
 
 
-    public: void addRotate(double theta){
+    auto LinesGraphicItem::addRotate(double theta) -> void{
 this->setRotate(this->theta +theta);
     
 }
 
 
-    public: void setAngle(double angle){
+    auto LinesGraphicItem::setAngle(double angle) -> void{
 this->setRotate(Math::toRadians(angle));
     
 }
 
 
-    public: void addAngle(double angle){
+    auto LinesGraphicItem::addAngle(double angle) -> void{
 this->setRotate(this->theta +Math::toRadians(angle));
     
 }
 
 
-    public: MutableTreeNode* getTreeNode(){
+    auto LinesGraphicItem::getTreeNode() -> MutableTreeNode*{
 
 
 
@@ -337,7 +298,17 @@ this->setRotate(this->theta +Math::toRadians(angle));
 }
 
 
-    public: std::string getName(){
+    auto LinesGraphicItem::getName() -> std::string{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return LinesGraphicItem::NAME;
+    
+}
+
+
+    auto LinesGraphicItem::getStaticName() -> std::string{
 
 
 
@@ -350,7 +321,7 @@ this->setRotate(this->theta +Math::toRadians(angle));
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void addPoint(NodeList* pointNodes){
+    auto LinesGraphicItem::addPoint(NodeList* pointNodes) -> void{
 
     BasicArrayList* list = DomHelper::getInstance()->getWithoutTextNodes(pointNodes);;
     
@@ -381,7 +352,7 @@ this->addPoint(point);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPoint(GPoint* point){
+    auto LinesGraphicItem::addPoint(GPoint* point) -> void{
 this->points->getPoints()->add(point);
     
 this->logUtil->putF(point->toString(), this, "addPoint");
@@ -394,7 +365,7 @@ this->treeNode->add(dynamic_cast<DefaultMutableTreeNode*>(this->pointTreeNodeVec
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: GPoint* removePoint(){
+    auto LinesGraphicItem::removePoint() -> GPoint*{
 
     GPoint* point = 
                 null
@@ -435,7 +406,7 @@ this->pointTreeNodeVector->remove(index);
 }
 
 
-    public: bool isActive(){
+    auto LinesGraphicItem::isActive() -> bool{
 
 
 
@@ -445,13 +416,13 @@ this->pointTreeNodeVector->remove(index);
 }
 
 
-    public: void deactivate(){
+    auto LinesGraphicItem::deactivate() -> void{
 this->active= false;
     
 }
 
 
-    public: void activate(){
+    auto LinesGraphicItem::activate() -> void{
 this->active= true;
     
 }
@@ -459,7 +430,7 @@ this->active= true;
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicatePoints(BasicArrayList* list){
+    auto LinesGraphicItem::duplicatePoints(BasicArrayList* list) -> void{
 
     int32_t size = list->size();;
     
@@ -495,7 +466,7 @@ this->treeNode->add(dynamic_cast<DefaultMutableTreeNode*>(this->pointTreeNodeVec
 
                 //@Throws(Exception.constructor)
             
-    public: GraphicItemInterface* duplicate(){
+    auto LinesGraphicItem::duplicate() -> GraphicItemInterface*{
 
     LinesGraphicItem* linesGraphicItem = new LinesGraphicItem();;
     
@@ -512,7 +483,7 @@ linesGraphicItem->deactivate();
 }
 
 
-    public: double getAngle(){
+    auto LinesGraphicItem::getAngle() -> double{
 
 
 
@@ -522,13 +493,13 @@ linesGraphicItem->deactivate();
 }
 
 
-    public: void setFulcrumPoint(GPoint* point){
+    auto LinesGraphicItem::setFulcrumPoint(GPoint* point) -> void{
 this->fulcrumPoint= point;
     
 }
 
 
-    public: void paint(Graphics* g, double canvasAngle, IntegerDimension* dimension, int32_t x, int32_t y){
+    auto LinesGraphicItem::paint(Graphics* g, double canvasAngle, IntegerDimension* dimension, int32_t x, int32_t y) -> void{
 
         try {
             
@@ -609,7 +580,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toDom(CanvasDom* canvasDom){
+    auto LinesGraphicItem::toDom(CanvasDom* canvasDom) -> Node*{
 
 
 
@@ -619,7 +590,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 }
 
 
-    public: bool isValid(){
+    auto LinesGraphicItem::isValid() -> bool{
 
 
 
@@ -629,7 +600,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 }
 
 
-    public: Points* getPointsInterface(){
+    auto LinesGraphicItem::getPointsInterface() -> Points*{
 
 
 
@@ -639,13 +610,13 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 }
 
 
-    public: void setPointsInterface(Points* points){
+    auto LinesGraphicItem::setPointsInterface(Points* points) -> void{
 this->points= points;
     
 }
 
 
-    public: Color* getColor(){
+    auto LinesGraphicItem::getColor() -> Color*{
 
 
 
@@ -655,13 +626,13 @@ this->points= points;
 }
 
 
-    public: void setColor(Color* color){
+    auto LinesGraphicItem::setColor(Color* color) -> void{
 this->color= color;
     
 }
 
 
-    public: void mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t x, int32_t y){
+    auto LinesGraphicItem::mouseClicked(java::awt::event::MouseEvent* mouseEvent, int32_t x, int32_t y) -> void{
 
         try {
             
@@ -674,7 +645,7 @@ this->color= color;
                                     
     GPoint* point = PointFactory::getInstance()->createXY(mousePoint->getX() /x, mousePoint->getY() /y);;
     
-StatusFactory::getInstance()->setStatus("Line Point Added: " +point->toString());
+StatusFactory::getInstance()->setStatus(JavaString::valueOf("Line Point Added: ") +JavaString::valueOf(point->toString()));
     
 this->addPoint(point);
     
@@ -705,27 +676,27 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 }
 
 
-    public: void mouseEntered(java::awt::event::MouseEvent* mouseEvent){
+    auto LinesGraphicItem::mouseEntered(java::awt::event::MouseEvent* mouseEvent) -> void{
 }
 
 
-    public: void mouseExited(java::awt::event::MouseEvent* mouseEvent){
+    auto LinesGraphicItem::mouseExited(java::awt::event::MouseEvent* mouseEvent) -> void{
 }
 
 
-    public: void mousePressed(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    auto LinesGraphicItem::mousePressed(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) -> void{
 }
 
 
-    public: void mouseReleased(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    auto LinesGraphicItem::mouseReleased(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) -> void{
 }
 
 
-    public: void mouseDragged(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    auto LinesGraphicItem::mouseDragged(java::awt::event::MouseEvent* mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell) -> void{
 }
 
 
-    public: void mouseMoved(java::awt::event::MouseEvent* mouseEvent, int32_t x, int32_t y){
+    auto LinesGraphicItem::mouseMoved(java::awt::event::MouseEvent* mouseEvent, int32_t x, int32_t y) -> void{
 
         try {
             
@@ -747,7 +718,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "mouseMoved", &e);
 }
 
 
-    public: void keyPressed(java::awt::event::KeyEvent* keyEvent){
+    auto LinesGraphicItem::keyPressed(java::awt::event::KeyEvent* keyEvent) -> void{
 
         try {
             
@@ -811,15 +782,14 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, gameInputStrings->KEY_P
 }
 
 
-    public: void keyReleased(java::awt::event::KeyEvent* keyEvent){
+    auto LinesGraphicItem::keyReleased(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
-    public: void keyTyped(java::awt::event::KeyEvent* keyEvent){
+    auto LinesGraphicItem::keyTyped(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_CPP

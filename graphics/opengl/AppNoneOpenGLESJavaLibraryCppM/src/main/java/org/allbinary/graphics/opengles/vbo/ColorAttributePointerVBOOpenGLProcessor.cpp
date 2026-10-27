@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_COLORATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_COLORATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/vbo/ColorAttributePointerVBOOpenGLProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,34 +63,32 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
+auto ColorAttributePointerVBOOpenGLProcessor::instance_owner() -> ColorAttributePointerVBOOpenGLProcessor* { static std::unique_ptr<ColorAttributePointerVBOOpenGLProcessor> value(new ColorAttributePointerVBOOpenGLProcessor()); return value.get(); }
+ColorAttributePointerVBOOpenGLProcessor* ColorAttributePointerVBOOpenGLProcessor::instance = ColorAttributePointerVBOOpenGLProcessor::instance_owner();
 
-    private: static ColorAttributePointerVBOOpenGLProcessor* instance() { static std::unique_ptr<ColorAttributePointerVBOOpenGLProcessor> value(new ColorAttributePointerVBOOpenGLProcessor()); return value.get(); }
-
-    public: static ColorAttributePointerVBOOpenGLProcessor* getInstance(){
+    auto ColorAttributePointerVBOOpenGLProcessor::getInstance() -> ColorAttributePointerVBOOpenGLProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorAttributePointerVBOOpenGLProcessor::instance();
+                        return ColorAttributePointerVBOOpenGLProcessor::instance;
     
 }
 
 
-public: ColorAttributePointerVBOOpenGLProcessor(){
+ColorAttributePointerVBOOpenGLProcessor::ColorAttributePointerVBOOpenGLProcessor(){
 }
 
 
-    public: void process(GL10* gl, Object* anyType){
+    auto ColorAttributePointerVBOOpenGLProcessor::process(GL10* gl, Object* anyType) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_COLORATTRIBUTEPOINTERVBOOPENGLPROCESSOR_CPP

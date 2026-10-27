@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PHYSICS_FRICTION_FRICTIONDATA_CPP
+        #define ORG_ALLBINARY_GAME_PHYSICS_FRICTION_FRICTIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/physics/friction/FrictionData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,13 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FrictionData
-            : public Object
-         {
 
-    private: static inline const int32_t FRICTION_DENOMINATOR = 100;
+FrictionData::FrictionData(){
+}
 
-    public: static int32_t getFrictionDenominator(){
+
+    auto FrictionData::getFrictionDenominator() -> int32_t{
 
 
 
@@ -61,11 +70,6 @@ class FrictionData
 }
 
 
-private: FrictionData(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_PHYSICS_FRICTION_FRICTIONDATA_CPP

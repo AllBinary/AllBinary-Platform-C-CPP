@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/System.h"
         
-#include <org/allbinary/logic/io/file/FilePathData.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class FilePathData;
+class StringMaker;
 
 
 
@@ -56,11 +57,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageOutputData
-            : public Object
+            : public virtual Object
          {
 
-    public: static inline const std::string SAVE_PATH = (new StringMaker())->append(System.getProperty("user.dir"))->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->append("saves")->appendchar(FilePathData::getInstance()->SEPARATORCHAR)->toString();
+    public: static const std::string SAVE_PATH;
 
 private: ImageOutputData();
 
@@ -70,3 +75,16 @@ private: ImageOutputData();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/FilePathData.h>)
+#include <org/allbinary/logic/io/file/FilePathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

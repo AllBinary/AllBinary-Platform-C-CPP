@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/characters/CharacterSetData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,39 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CharacterSetData
-            : public Object
-         {
+auto CharacterSetData::instance_owner() -> CharacterSetData* { static std::unique_ptr<CharacterSetData> value(new CharacterSetData()); return value.get(); }
+CharacterSetData* CharacterSetData::instance = CharacterSetData::instance_owner();
 
-    private: static CharacterSetData* instance() { static std::unique_ptr<CharacterSetData> value(new CharacterSetData()); return value.get(); }
-
-    public: static CharacterSetData* getInstance(){
+    auto CharacterSetData::getInstance() -> CharacterSetData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CharacterSetData::instance();
+                        return CharacterSetData::instance;
     
 }
 
 
-private: CharacterSetData(){
+CharacterSetData::CharacterSetData(){
 }
 
 
-    public: const std::string US_ASCII = "US-ASCII";
 
-    public: const std::string ISO_8859_1 = "ISO-8859-1";
 
-    public: const std::string UTF_8 = "UTF-8";
-
-    public: const std::string UTF_16 = "UTF-16";
-
-    public: const std::string UTF_16BE = "UTF-16BE";
-
-    public: const std::string UTF_16LE = "UTF-16LE";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_CPP

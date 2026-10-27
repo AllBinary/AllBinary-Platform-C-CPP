@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTS20KPICKEDUPLAYERINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTS20KPICKEDUPLAYERINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/points/Points20kPickedUpLayerInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,31 +85,17 @@
 #include "org/allbinary/game/ag/layer/pickup/points/PointsLayerFactory.h"
 #include "org/allbinary/game/ag/layer/pickup/points/PointsResources.h"
 
-class Points20kPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
-
-    private: static inline PickedUpLayerInterfaceFactoryInterface* pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
+PickedUpLayerInterfaceFactoryInterface* Points20kPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(){
+    auto Points20kPickedUpLayerInterfaceFactory::init() -> void{
 Points20kPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= new Points20kPickedUpLayerInterfaceFactory();
     
 }
 
 
-    public: static PickedUpLayerInterfaceFactoryInterface* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Points20kPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
-    
-}
-
-
-    private: PointsLayerCircularStaticPool* pool = new PointsLayerCircularStaticPool(new PointsLayerFactory(GameConfigurationUtil::getInstance()->getCompetitionValue() *20000), 1);
-
-private: Points20kPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->POINTS, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(PointsResources::getInstance()->RESOURCE_2)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(PointsResources::getInstance()->RESOURCE_2)->getInstance(0)){
+Points20kPickedUpLayerInterfaceFactory::Points20kPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance()->POINTS, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(PointsResources::getInstance()->RESOURCE_2)->getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance()->get(PointsResources::getInstance()->RESOURCE_2)->getInstance(0)), pool(new PointsLayerCircularStaticPool(new PointsLayerFactory(GameConfigurationUtil::getInstance()->getCompetitionValue() *20000), 1)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -109,7 +105,7 @@ private: Points20kPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactor
 }
 
 
-    public: int32_t getTotal(){
+    auto Points20kPickedUpLayerInterfaceFactory::getTotal() -> int32_t{
 
 
 
@@ -119,15 +115,24 @@ private: Points20kPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactor
 }
 
 
+    auto Points20kPickedUpLayerInterfaceFactory::getInstance() -> PickedUpLayerInterfaceFactoryInterface*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Points20kPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
+    
+}
+
+
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayer* sourceLayerInterface){
+    auto Points20kPickedUpLayerInterfaceFactory::process(AllBinaryLayer* sourceLayerInterface) -> void{
 this->pool->visit(sourceLayerInterface);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTS20KPICKEDUPLAYERINTERFACEFACTORY_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,30 +36,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
+class Image;
+class Features;
+class OpenGLFeatureFactory;
+class OpenGLESImage;
+class PreLogUtil;
+class GC;
 
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
-
-      
-#include <org/allbinary/image/opengles/OpenGLESImage.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/eclipse/swt/graphics/GC.h>
-
-      
-#include <org/microemu/device/swt/SwtImmutableImage.h>
-
-      
-#include <org/microemu/device/swt/SwtMutableImage.h>
-
-      
+class SwtMutableImage;
 
 
 
@@ -73,21 +62,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/ImageSwtRotationUtil.h"
+        class ImageSwtRotationUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageRotationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
+    private: static ImageRotationUtil* instance_owner();
+    private: static ImageRotationUtil* instance;
 
     public: static ImageRotationUtil* getInstance();
 
-    private: ImageSwtRotationUtil* imageSwtRotationUtil = ImageSwtRotationUtil::getInstance();
+    private: ImageSwtRotationUtil* imageSwtRotationUtil;
 
 private: ImageRotationUtil();
 
-    private: Features* features = Features::getInstance();
+    private: Features* features;
 
     public: void rotateImage(Image* originalImage, Image* image, int32_t totalAngle);
 
@@ -101,3 +95,35 @@ private: ImageRotationUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>)
+#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/image/opengles/OpenGLESImage.h>)
+#include <org/allbinary/image/opengles/OpenGLESImage.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/eclipse/swt/graphics/GC.h>)
+#include <org/eclipse/swt/graphics/GC.h>
+#endif
+
+#if __has_include(<org/microemu/device/swt/SwtMutableImage.h>)
+#include <org/microemu/device/swt/SwtMutableImage.h>
+#endif
+#if __has_include("org/allbinary/media/image/ImageSwtRotationUtil.h")
+#include "org/allbinary/media/image/ImageSwtRotationUtil.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,23 +55,8 @@
         #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ProfileActionScriptOutputInterface.h"
 #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageTypes.h"
 
-class ImageActionScriptOutputInterface: public ProfileActionScriptOutputInterface {
+//Interface - declared in the header
 
-    public: virtual ImageTypes* getImageTypes() = 0;
 
-    public: virtual void setImageTypes(ImageTypes* imageTypes) = 0;
 
-    public: virtual bool isSaved() = 0;
-
-    public: virtual void setSaved(bool saved) = 0;
-
-    public: virtual bool isDisplay() = 0;
-
-    public: virtual void setDisplay(bool display) = 0;
-
-    public: virtual void log() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTINTERFACE_CPP

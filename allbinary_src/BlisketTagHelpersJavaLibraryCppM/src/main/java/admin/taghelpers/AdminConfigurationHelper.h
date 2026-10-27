@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_ADMINCONFIGURATIONHELPER_H
         #define ADMIN_TAGHELPERS_ADMINCONFIGURATIONHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,14 +35,8 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class PageContext;
+class LogUtil;
 
 
 
@@ -58,9 +57,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/BasicTable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdminConfigurationHelper: public BasicTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: AdminConfigurationHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext);
 
@@ -78,3 +81,22 @@ public: AdminConfigurationHelper(HashMap<Object*, Object*>* hashMap, PageContext
 
 
         #endif //ADMIN_TAGHELPERS_ADMINCONFIGURATIONHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_ADMINCONFIGURATIONHELPER_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_ADMINCONFIGURATIONHELPER_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include("admin/taghelpers/BasicTable.h")
+#include "admin/taghelpers/BasicTable.h"
+#endif
+
+        #endif
+    

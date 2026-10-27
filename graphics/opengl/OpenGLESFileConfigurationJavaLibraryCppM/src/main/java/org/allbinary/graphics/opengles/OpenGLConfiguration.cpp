@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCONFIGURATION_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -109,13 +119,9 @@
         #include "org/allbinary/graphics/opengles/OpenGLFeatureFactory.h"
 #include "org/allbinary/graphics/opengles/OpenGLFeature.h"
 
-class OpenGLConfiguration
-            : public Object
-         {
+Object* OpenGLConfiguration::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static OpenGLConfiguration* getInstance(){
+    auto OpenGLConfiguration::getInstance() -> OpenGLConfiguration*{
 
                         if(OpenGLConfiguration::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -134,25 +140,7 @@ class OpenGLConfiguration
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string FILE = "OpenGLConfiguration.dat";
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: bool opengl = false;
-
-    private: OpenGLFeature* type = OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD;
-
-    private: OpenGLFeature* imageColor = OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444;
-
-    private: OpenGLFeature* color = OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444;
-
-    private: OpenGLFeature* versionSelector = OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT;
-
-private: OpenGLConfiguration(){
+OpenGLConfiguration::OpenGLConfiguration() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), tsUtil(TsUtil::getInstance()), type(OpenGLFeatureFactory::getInstance()->OPENGL_AS_GAME_THREAD), imageColor(OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444), color(OpenGLFeatureFactory::getInstance()->IMAGE_COLOR_DEPTH_4444), versionSelector(OpenGLFeatureFactory::getInstance()->OPENGL_AUTO_SELECT){
 
         try {
             
@@ -183,7 +171,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 
                 //@Throws(Exception.constructor)
             
-    private: void read(){
+    auto OpenGLConfiguration::read() -> void{
 
     OpenGLFeatureFactory* openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
@@ -221,7 +209,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                             
 
 
-                            throw new Exception("Invalid OpenGL Setting");
+                            throw Exception("Invalid OpenGL Setting");
                     
 
                         }
@@ -230,7 +218,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
     std::string version = dataInputStream->readUTF();;
     
 
-                        if(this->tsUtil->compareTo(version, openGLFeatureFactory->OPENGL_AUTO_SELECT.getName()) == 0)
+                        if(this->tsUtil->compareTo(version, openGLFeatureFactory->OPENGL_AUTO_SELECT->getName()) == 0)
                         
                                     {
                                     this->setVersionSelector(openGLFeatureFactory->OPENGL_AUTO_SELECT);
@@ -239,7 +227,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                                     }
                                 
                              else 
-                        if(this->tsUtil->compareTo(version, openGLFeatureFactory->OPENGL_MINIMUM.getName()) == 0)
+                        if(this->tsUtil->compareTo(version, openGLFeatureFactory->OPENGL_MINIMUM->getName()) == 0)
                         
                                     {
                                     this->setVersionSelector(openGLFeatureFactory->OPENGL_MINIMUM);
@@ -251,7 +239,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                             
 
 
-                            throw new Exception("OpenGLConfiguration: Error reading version selector: " +version);
+                            throw Exception(JavaString::valueOf("OpenGLConfiguration: Error reading version selector: ") +JavaString::valueOf(version));
                     
 
                         }
@@ -260,7 +248,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
     std::string type = dataInputStream->readUTF();;
     
 
-                        if(this->tsUtil->compareTo(type, openGLFeatureFactory->OPENGL_AS_GAME_THREAD.getName()) == 0)
+                        if(this->tsUtil->compareTo(type, openGLFeatureFactory->OPENGL_AS_GAME_THREAD->getName()) == 0)
                         
                                     {
                                     this->setType(openGLFeatureFactory->OPENGL_AS_GAME_THREAD);
@@ -269,7 +257,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                                     }
                                 
                              else 
-                        if(this->tsUtil->compareTo(type, openGLFeatureFactory->OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName()) == 0)
+                        if(this->tsUtil->compareTo(type, openGLFeatureFactory->OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS->getName()) == 0)
                         
                                     {
                                     this->setType(openGLFeatureFactory->OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS);
@@ -281,7 +269,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                             
 
 
-                            throw new Exception("OpenGLConfiguration: Error reading image color");
+                            throw Exception("OpenGLConfiguration: Error reading image color");
                     
 
                         }
@@ -290,7 +278,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
     std::string imageColor = dataInputStream->readUTF();;
     
 
-                        if(this->tsUtil->compareTo(imageColor, openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444.getName()) == 0)
+                        if(this->tsUtil->compareTo(imageColor, openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444->getName()) == 0)
                         
                                     {
                                     this->setImageColor(openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444);
@@ -299,7 +287,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                                     }
                                 
                              else 
-                        if(this->tsUtil->compareTo(imageColor, openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444.getName()) == 0)
+                        if(this->tsUtil->compareTo(imageColor, openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444->getName()) == 0)
                         
                                     {
                                     this->setImageColor(openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444);
@@ -308,7 +296,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                                     }
                                 
                              else 
-                        if(this->tsUtil->compareTo(imageColor, openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444.getName()) == 0)
+                        if(this->tsUtil->compareTo(imageColor, openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444->getName()) == 0)
                         
                                     {
                                     this->setImageColor(openGLFeatureFactory->IMAGE_COLOR_DEPTH_4444);
@@ -320,7 +308,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                             
 
 
-                            throw new Exception("OpenGLConfiguration: Error reading image color: " +imageColor);
+                            throw Exception(JavaString::valueOf("OpenGLConfiguration: Error reading image color: ") +JavaString::valueOf(imageColor));
                     
 
                         }
@@ -329,7 +317,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
     std::string color = dataInputStream->readUTF();;
     
 
-                        if(this->tsUtil->compareTo(color, openGLFeatureFactory->OPENGL_COLOR_DEPTH_4444.getName()) == 0)
+                        if(this->tsUtil->compareTo(color, openGLFeatureFactory->OPENGL_COLOR_DEPTH_4444->getName()) == 0)
                         
                                     {
                                     this->setColor(openGLFeatureFactory->OPENGL_COLOR_DEPTH_4444);
@@ -338,7 +326,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                                     }
                                 
                              else 
-                        if(this->tsUtil->compareTo(color, openGLFeatureFactory->OPENGL_COLOR_DEPTH_565.getName()) == 0)
+                        if(this->tsUtil->compareTo(color, openGLFeatureFactory->OPENGL_COLOR_DEPTH_565->getName()) == 0)
                         
                                     {
                                     this->setColor(openGLFeatureFactory->OPENGL_COLOR_DEPTH_565);
@@ -347,7 +335,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                                     }
                                 
                              else 
-                        if(this->tsUtil->compareTo(color, openGLFeatureFactory->OPENGL_COLOR_DEPTH_8888.getName()) == 0)
+                        if(this->tsUtil->compareTo(color, openGLFeatureFactory->OPENGL_COLOR_DEPTH_8888->getName()) == 0)
                         
                                     {
                                     this->setColor(openGLFeatureFactory->OPENGL_COLOR_DEPTH_8888);
@@ -359,25 +347,25 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
                             
 
 
-                            throw new Exception("OpenGLConfiguration: Error reading color: " +color);
+                            throw Exception(JavaString::valueOf("OpenGLConfiguration: Error reading color: ") +JavaString::valueOf(color));
                     
 
                         }
                             
-PreLogUtil::put("Read Configuration: " +this->toString(), this, "read");
+PreLogUtil::put(JavaString::valueOf("Read Configuration: ") +JavaString::valueOf(this->toString()), this, "read");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void write(){
+    auto OpenGLConfiguration::write() -> void{
 
     Closeable* closeable = NullCloseable::NULL_CLOSEABLE;;
     
 
         try {
-            PreLogUtil::put("Write Configuration: " +this->toString(), this, "write");
+            PreLogUtil::put(JavaString::valueOf("Write Configuration: ") +JavaString::valueOf(this->toString()), this, "write");
     
 
     FileStreamFactory* fileInputStreamFactory = FileStreamFactory::getInstance();;
@@ -437,7 +425,7 @@ dataOutputStream->flush();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto OpenGLConfiguration::init() -> void{
 
     Features* features = Features::getInstance();;
     
@@ -464,19 +452,19 @@ dataOutputStream->flush();
     
 features->addDefault(OpenGLFeatureFactory::getInstance()->OPENGL);
     
-this->logUtil->putF("Using OpenGL Type Feature: " +this->getType(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Using OpenGL Type Feature: ") +JavaString::valueOf(this->getType()), this, this->commonStrings->INIT);
     
 features->addDefault(this->getType());
     
-this->logUtil->putF("Using OpenGL ImageColor Feature: " +this->getImageColor(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Using OpenGL ImageColor Feature: ") +JavaString::valueOf(this->getImageColor()), this, this->commonStrings->INIT);
     
 features->addDefault(this->getImageColor());
     
-this->logUtil->putF("Using OpenGL Color Feature: " +this->getColor(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Using OpenGL Color Feature: ") +JavaString::valueOf(this->getColor()), this, this->commonStrings->INIT);
     
 features->addDefault(this->getColor());
     
-this->logUtil->putF("Using OpenGL Version Selector Feature: " +this->getVersionSelector(), this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Using OpenGL Version Selector Feature: ") +JavaString::valueOf(this->getVersionSelector()), this, this->commonStrings->INIT);
     
 features->addDefault(this->getVersionSelector());
     
@@ -524,7 +512,7 @@ PreLogUtil::put(this->toString(), this, this->commonStrings->INIT);
 
                 //@Throws(Exception.constructor)
             
-    public: void update(Feature* gameFeature, bool colorLocked){
+    auto OpenGLConfiguration::update(Feature* gameFeature, bool colorLocked) -> void{
 
     Features* features = Features::getInstance();;
     
@@ -713,13 +701,13 @@ modified= true;
 }
 
 
-    public: void setOpenGL(bool opengl){
+    auto OpenGLConfiguration::setOpenGL(bool opengl) -> void{
 this->opengl= opengl;
     
 }
 
 
-    public: bool isOpenGL(){
+    auto OpenGLConfiguration::isOpenGL() -> bool{
 
 
 
@@ -729,13 +717,13 @@ this->opengl= opengl;
 }
 
 
-    public: void setImageColor(OpenGLFeature* imageColor){
+    auto OpenGLConfiguration::setImageColor(OpenGLFeature* imageColor) -> void{
 this->imageColor= imageColor;
     
 }
 
 
-    public: OpenGLFeature* getImageColor(){
+    auto OpenGLConfiguration::getImageColor() -> OpenGLFeature*{
 
 
 
@@ -745,13 +733,13 @@ this->imageColor= imageColor;
 }
 
 
-    public: void setColor(OpenGLFeature* color){
+    auto OpenGLConfiguration::setColor(OpenGLFeature* color) -> void{
 this->color= color;
     
 }
 
 
-    public: OpenGLFeature* getColor(){
+    auto OpenGLConfiguration::getColor() -> OpenGLFeature*{
 
 
 
@@ -761,13 +749,13 @@ this->color= color;
 }
 
 
-    public: void setVersionSelector(OpenGLFeature* versionSelector){
+    auto OpenGLConfiguration::setVersionSelector(OpenGLFeature* versionSelector) -> void{
 this->versionSelector= versionSelector;
     
 }
 
 
-    public: OpenGLFeature* getVersionSelector(){
+    auto OpenGLConfiguration::getVersionSelector() -> OpenGLFeature*{
 
 
 
@@ -777,13 +765,13 @@ this->versionSelector= versionSelector;
 }
 
 
-    public: void setType(OpenGLFeature* type){
+    auto OpenGLConfiguration::setType(OpenGLFeature* type) -> void{
 this->type= type;
     
 }
 
 
-    public: OpenGLFeature* getType(){
+    auto OpenGLConfiguration::getType() -> OpenGLFeature*{
 
 
 
@@ -793,7 +781,7 @@ this->type= type;
 }
 
 
-    public: std::string toString(){
+    auto OpenGLConfiguration::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -829,7 +817,6 @@ stringBuffer->append(stringUtil->toString(this->getColor()));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCONFIGURATION_CPP

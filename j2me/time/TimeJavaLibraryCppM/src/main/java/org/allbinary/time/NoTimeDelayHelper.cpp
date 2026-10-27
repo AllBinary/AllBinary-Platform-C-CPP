@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_CPP
+        #define ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/NoTimeDelayHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/time/TimeDelayHelper.h"
 
-class NoTimeDelayHelper: public TimeDelayHelper {
+auto NoTimeDelayHelper::SINGLETON_owner() -> NoTimeDelayHelper* { static std::unique_ptr<NoTimeDelayHelper> value(new NoTimeDelayHelper()); return value.get(); }
+NoTimeDelayHelper* NoTimeDelayHelper::SINGLETON = NoTimeDelayHelper::SINGLETON_owner();
 
-    public: static NoTimeDelayHelper* SINGLETON() { static std::unique_ptr<NoTimeDelayHelper> value(new NoTimeDelayHelper()); return value.get(); }
-
-public: NoTimeDelayHelper() : TimeDelayHelper(0){
+NoTimeDelayHelper::NoTimeDelayHelper() : TimeDelayHelper(0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +67,7 @@ public: NoTimeDelayHelper() : TimeDelayHelper(0){
 }
 
 
-    public: bool isTimeTNT(){
+    auto NoTimeDelayHelper::isTimeTNT() -> bool{
 
 
 
@@ -68,7 +77,7 @@ public: NoTimeDelayHelper() : TimeDelayHelper(0){
 }
 
 
-    public: bool isTimeSinceTNT(int32_t delay){
+    auto NoTimeDelayHelper::isTimeSinceTNT(int32_t delay) -> bool{
 
 
 
@@ -78,7 +87,7 @@ public: NoTimeDelayHelper() : TimeDelayHelper(0){
 }
 
 
-    public: bool isTime(int64_t currentTime){
+    auto NoTimeDelayHelper::isTime(int64_t currentTime) -> bool{
 
 
 
@@ -88,7 +97,7 @@ public: NoTimeDelayHelper() : TimeDelayHelper(0){
 }
 
 
-    public: bool isTimeSince(int32_t delay, int64_t currentTime){
+    auto NoTimeDelayHelper::isTimeSince(int32_t delay, int64_t currentTime) -> bool{
 
 
 
@@ -98,7 +107,6 @@ public: NoTimeDelayHelper() : TimeDelayHelper(0){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_CPP

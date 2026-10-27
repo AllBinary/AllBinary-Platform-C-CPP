@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_TRANSFORMTEMPLATECUSTOMIZERSDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_TRANSFORMTEMPLATECUSTOMIZERSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/TransformTemplateCustomizersData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformTemplateCustomizersData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "TEMPLATE_CUSTOMIZERS_NAME";
-
-public: TransformTemplateCustomizersData(){
+TransformTemplateCustomizersData::TransformTemplateCustomizersData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_TRANSFORMTEMPLATECUSTOMIZERSDATA_CPP

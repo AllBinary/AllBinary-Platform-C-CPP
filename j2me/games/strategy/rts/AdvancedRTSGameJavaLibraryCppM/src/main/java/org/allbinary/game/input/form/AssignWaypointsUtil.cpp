@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_ASSIGNWAYPOINTSUTIL_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_ASSIGNWAYPOINTSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/AssignWaypointsUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,27 +88,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/form/PrimaryWaypointHelper.h"
 
-class AssignWaypointsUtil
-            : public Object
-         {
 
-    private: static AssignWaypointsUtil* instance() { static std::unique_ptr<AssignWaypointsUtil> value(new AssignWaypointsUtil()); return value.get(); }
+AssignWaypointsUtil::AssignWaypointsUtil() : logUtil(LogUtil::getInstance()), WAYPOINT_EVENT(new RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER)) {
+        }
+        auto AssignWaypointsUtil::instance_owner() -> AssignWaypointsUtil* { static std::unique_ptr<AssignWaypointsUtil> value(new AssignWaypointsUtil()); return value.get(); }
+AssignWaypointsUtil* AssignWaypointsUtil::instance = AssignWaypointsUtil::instance_owner();
 
-    public: static AssignWaypointsUtil* getInstance(){
+    auto AssignWaypointsUtil::getInstance() -> AssignWaypointsUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AssignWaypointsUtil::instance();
+                        return AssignWaypointsUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: RTSLayerEvent* WAYPOINT_EVENT = new RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
-
-    public: void set(UnitLayer* unitLayer, AdvancedRTSGameLayer* ownerAdvancedRTSGameLayer){
+    auto AssignWaypointsUtil::set(UnitLayer* unitLayer, AdvancedRTSGameLayer* ownerAdvancedRTSGameLayer) -> void{
 
         try {
             
@@ -151,7 +157,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "set", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_ASSIGNWAYPOINTSUTIL_CPP

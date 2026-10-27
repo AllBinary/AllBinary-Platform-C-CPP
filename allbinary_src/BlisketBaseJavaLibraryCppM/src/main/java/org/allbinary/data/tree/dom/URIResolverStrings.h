@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class URIResolverStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static URIResolverStrings* instance() { static std::unique_ptr<URIResolverStrings> value(new URIResolverStrings()); return value.get(); }
+    private: static URIResolverStrings* instance_owner();
+    private: static URIResolverStrings* instance;
 
     public: static URIResolverStrings* getInstance();
 
+
+            
+    public: URIResolverStrings();
+        
     public: const std::string IMPORT_URL = "/{import url}";
 
     public: const std::string ATTEMPT = "attempt to use xsl:import: href=";
@@ -78,3 +92,10 @@ class URIResolverStrings
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_H_COMPLETE
+        
+        #endif
+    

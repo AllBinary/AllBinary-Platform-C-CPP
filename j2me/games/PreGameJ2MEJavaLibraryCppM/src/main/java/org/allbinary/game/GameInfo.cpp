@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GAMEINFO_CPP
+        #define ORG_ALLBINARY_GAME_GAMEINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/GameInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,29 +84,10 @@
 #include "org/allbinary/game/GameType.h"
 #include "org/allbinary/game/PlayerType.h"
 
-class GameInfo
-            : public Object
-         {
+auto GameInfo::NONE_owner() -> GameInfo* { static std::unique_ptr<GameInfo> value(new GameInfo(GameTypeFactory::getInstance()->NONE, GameMode::NONE, PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE,  -1,  -1)); return value.get(); }
+GameInfo* GameInfo::NONE = GameInfo::NONE_owner();
 
-    public: static GameInfo* NONE() { static std::unique_ptr<GameInfo> value(new GameInfo(GameTypeFactory::getInstance()->NONE(), GameMode::NONE(), PlayerTypesFactory::getInstance()->PLAYER_TYPE_ONE,  -1,  -1)); return value.get(); }
-
-    public: static inline const std::string LEVEL_NAME = "LEVEL";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GameInfoData* gameInfoData = GameInfoData::getInstance();
-
-    private: GameType* gameType;
-
-    private: GameMode* gameMode;
-
-    private: PlayerType* playerType;
-
-    private: int32_t highestLevel= 0;
-
-    private: int32_t currentLevel;
-
-public: GameInfo(GameType* gameType, GameMode* gameMode, PlayerType* playerType, int32_t highestLevel, int32_t currentLevel){
+GameInfo::GameInfo(GameType* gameType, GameMode* gameMode, PlayerType* playerType, int32_t highestLevel, int32_t currentLevel) : logUtil(LogUtil::getInstance()), gameInfoData(GameInfoData::getInstance()){
 this->gameType= gameType;
     
 this->gameMode= gameMode;
@@ -110,7 +101,7 @@ this->playerType= playerType;
 }
 
 
-    public: GameType* getGameType(){
+    auto GameInfo::getGameType() -> GameType*{
 
 
 
@@ -120,7 +111,7 @@ this->playerType= playerType;
 }
 
 
-    public: GameMode* getGameMode(){
+    auto GameInfo::getGameMode() -> GameMode*{
 
 
 
@@ -130,7 +121,7 @@ this->playerType= playerType;
 }
 
 
-    public: PlayerType* getPlayerType(){
+    auto GameInfo::getPlayerType() -> PlayerType*{
 
 
 
@@ -140,7 +131,7 @@ this->playerType= playerType;
 }
 
 
-    public: int32_t getHighestLevel(){
+    auto GameInfo::getHighestLevel() -> int32_t{
 
 
 
@@ -150,13 +141,13 @@ this->playerType= playerType;
 }
 
 
-    public: void setHighestLevel(int32_t highestLevel){
+    auto GameInfo::setHighestLevel(int32_t highestLevel) -> void{
 this->highestLevel= highestLevel;
     
 }
 
 
-    public: int32_t getCurrentLevel(){
+    auto GameInfo::getCurrentLevel() -> int32_t{
 
 
 
@@ -166,11 +157,7 @@ this->highestLevel= highestLevel;
 }
 
 
-    private: const std::string NEW_LEVEL = "New Level: ";
-
-    private: const std::string SET_CURRENT_LEVEL = "setCurrentLevel";
-
-    public: void setCurrentLevel(int32_t currentLevel){
+    auto GameInfo::setCurrentLevel(int32_t currentLevel) -> void{
 this->currentLevel= currentLevel;
     
 this->logUtil->putF((new StringMaker())->append(this->NEW_LEVEL)->appendint(this->getCurrentLevel())->toString(), this, this->SET_CURRENT_LEVEL);
@@ -178,9 +165,7 @@ this->logUtil->putF((new StringMaker())->append(this->NEW_LEVEL)->appendint(this
 }
 
 
-    private: const std::string NEXT_GAME_LEVEL = "nextGameLevel";
-
-    public: void nextGameLevel(){
+    auto GameInfo::nextGameLevel() -> void{
 
                         if(this->getCurrentLevel() < this->getHighestLevel())
                         
@@ -195,7 +180,7 @@ this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->NEX
 }
 
 
-    public: void previousGameLevel(){
+    auto GameInfo::previousGameLevel() -> void{
 
                         if(this->getCurrentLevel() > 1)
                         this->currentLevel--;
@@ -203,7 +188,7 @@ this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->NEX
 }
 
 
-    public: bool isLastLevel(){
+    auto GameInfo::isLastLevel() -> bool{
 
                         if(this->getCurrentLevel() >= this->getHighestLevel())
                         
@@ -230,7 +215,7 @@ this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->NEX
 }
 
 
-    public: ABHashtable<Object*, Object*>* toHashtable(){
+    auto GameInfo::toHashtable() -> ABHashtable<Object*, Object*>*{
 
     ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
     
@@ -253,7 +238,7 @@ hashtable->put(this->gameInfoData->CURRENT_LEVEL, std::to_string(currentLevel));
 }
 
 
-    public: std::string toString(){
+    auto GameInfo::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -307,7 +292,6 @@ stringBuffer->appendint(this->currentLevel);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_GAMEINFO_CPP

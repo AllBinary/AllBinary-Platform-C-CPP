@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEFLOATERS_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEFLOATERS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/damage/DamageFloaters.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,25 +56,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DamageFloaters: public Paintable {
 
-    private: static DamageFloaters* SINGLETON() { static std::unique_ptr<DamageFloaters> value(new DamageFloaters()); return value.get(); }
+DamageFloaters::DamageFloaters() {
+        }
+        auto DamageFloaters::SINGLETON_owner() -> DamageFloaters* { static std::unique_ptr<DamageFloaters> value(new DamageFloaters()); return value.get(); }
+DamageFloaters* DamageFloaters::SINGLETON = DamageFloaters::SINGLETON_owner();
 
-    public: static DamageFloaters* getInstance(){
+    auto DamageFloaters::getInstance() -> DamageFloaters*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageFloaters::SINGLETON();
+                        return DamageFloaters::SINGLETON;
     
 }
 
 
-    public: void add(int32_t damage){
+    auto DamageFloaters::add(int32_t damage) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEFLOATERS_CPP

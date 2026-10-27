@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/AutomaticCacheInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,26 +61,22 @@
 #include "org/allbinary/logic/util/cache/CacheType.h"
 #include "org/allbinary/logic/util/cache/CachePolicy.h"
 
-class AutomaticCacheInterfaceFactory
-            : public Object
-         {
+
+AutomaticCacheInterfaceFactory::AutomaticCacheInterfaceFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static AutomaticCacheInterface* getInstance(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface, CacheType* cacheType, CachePolicy* cachePolicy){
+    auto AutomaticCacheInterfaceFactory::getInstance(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface, CacheType* cacheType, CachePolicy* cachePolicy) -> AutomaticCacheInterface*{
 
 
 
-                            throw new Exception("No such " +cacheType->toString());
+                            throw Exception(JavaString::valueOf("No such ") +JavaString::valueOf(cacheType->toString()));
                     
 }
 
 
-private: AutomaticCacheInterfaceFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_AUTOMATICCACHEINTERFACEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/RTSGameLayerPositionFinder.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,27 +65,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/LayerPositionFinderInterface.h"
 
-class RTSGameLayerPositionFinder
-            : public Object
-        , public LayerPositionFinderInterface {
+auto RTSGameLayerPositionFinder::instance_owner() -> RTSGameLayerPositionFinder* { static std::unique_ptr<RTSGameLayerPositionFinder> value(new RTSGameLayerPositionFinder()); return value.get(); }
+RTSGameLayerPositionFinder* RTSGameLayerPositionFinder::instance = RTSGameLayerPositionFinder::instance_owner();
 
-    private: static RTSGameLayerPositionFinder* instance() { static std::unique_ptr<RTSGameLayerPositionFinder> value(new RTSGameLayerPositionFinder()); return value.get(); }
-
-    public: static RTSGameLayerPositionFinder* getInstance(){
+    auto RTSGameLayerPositionFinder::getInstance() -> RTSGameLayerPositionFinder*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSGameLayerPositionFinder::instance();
+                        return RTSGameLayerPositionFinder::instance;
     
 }
 
 
-private: RTSGameLayerPositionFinder(){
+RTSGameLayerPositionFinder::RTSGameLayerPositionFinder(){
 }
 
 
-    public: AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition){
+    auto RTSGameLayerPositionFinder::getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition) -> AllBinaryLayer*{
 
 
 
@@ -85,7 +92,6 @@ private: RTSGameLayerPositionFinder(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_CPP

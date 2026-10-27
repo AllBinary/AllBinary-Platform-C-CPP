@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEINFO_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/EndGameInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,21 +64,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EndGameInfo
-            : public Object
-         {
 
-    protected: const std::string NORMAL_GAME_OVER_WIN = "You Won";
-
-    private: const std::string TEASER_DEMO_GAME_END_LAST_LEVEL = "End of Demo.";
-
-    private: const std::string TEASER_DEMO_GAME_END = "Demo Game Over.";
-
-    private: std::string gameOverStr = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: std::string winStr = this->gameOverStr;
-
-    public: void update(GameInfo* gameInfo, MyCanvas* myCanvas){
+EndGameInfo::EndGameInfo() : gameOverStr(StringUtil::getInstance()->EMPTY_STRING), winStr(this->gameOverStr) {
+        }
+        
+    auto EndGameInfo::update(GameInfo* gameInfo, MyCanvas* myCanvas) -> void{
 
                         if(gameInfo->isLastLevel())
                         
@@ -91,7 +91,7 @@ this->setGameOverStr(this->TEASER_DEMO_GAME_END);
 }
 
 
-    public: std::string getGameOverStr(){
+    auto EndGameInfo::getGameOverStr() -> std::string{
 
 
 
@@ -101,13 +101,13 @@ this->setGameOverStr(this->TEASER_DEMO_GAME_END);
 }
 
 
-    public: void setGameOverStr(std::string gameOverStr){
+    auto EndGameInfo::setGameOverStr(std::string gameOverStr) -> void{
 this->gameOverStr= gameOverStr;
     
 }
 
 
-    public: std::string getWinStr(){
+    auto EndGameInfo::getWinStr() -> std::string{
 
 
 
@@ -117,13 +117,12 @@ this->gameOverStr= gameOverStr;
 }
 
 
-    public: void setWinStr(std::string winStr){
+    auto EndGameInfo::setWinStr(std::string winStr) -> void{
 this->winStr= winStr;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEINFO_CPP

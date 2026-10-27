@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
-#include <org/w3c/dom/NodeList.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class Node;
+class NodeList;
 
 
 
@@ -62,8 +59,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DomSearchHelper
-            : public Object
+            : public virtual Object
          {
 
     public: static Node* getNodeNoThrow(std::string nodeName, NodeList* nodeList);
@@ -90,3 +91,22 @@ private: DomSearchHelper();
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOMSEARCHHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<org/w3c/dom/NodeList.h>)
+#include <org/w3c/dom/NodeList.h>
+#endif
+
+        #endif
+    

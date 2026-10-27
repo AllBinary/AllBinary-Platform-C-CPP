@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_ORIENTATION_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_ORIENTATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/Orientation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,37 +59,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/math/BasicDecimal.h"
 
-class Orientation
-            : public Object
-         {
+auto Orientation::NONE_owner() -> Orientation* { static std::unique_ptr<Orientation> value(new Orientation(0, 0, 0)); return value.get(); }
+Orientation* Orientation::NONE = Orientation::NONE_owner();
+auto Orientation::SINGLETON_owner() -> Orientation* { static std::unique_ptr<Orientation> value(new Orientation(0, 0, 0)); return value.get(); }
+Orientation* Orientation::SINGLETON = Orientation::SINGLETON_owner();
 
-    public: static Orientation* NONE() { static std::unique_ptr<Orientation> value(new Orientation(0, 0, 0)); return value.get(); }
-
-    private: static Orientation* SINGLETON() { static std::unique_ptr<Orientation> value(new Orientation(0, 0, 0)); return value.get(); }
-
-    public: static Orientation* getInstance(int32_t yaw, int32_t pitch, int32_t roll){
-Orientation::SINGLETON()->yaw->setint(yaw);
+    auto Orientation::getInstance(int32_t yaw, int32_t pitch, int32_t roll) -> Orientation*{
+Orientation::SINGLETON->yaw->setint(yaw);
     
-Orientation::SINGLETON()->pitch->setint(pitch);
+Orientation::SINGLETON->pitch->setint(pitch);
     
-Orientation::SINGLETON()->roll->setint(roll);
+Orientation::SINGLETON->roll->setint(roll);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Orientation::SINGLETON();
+                        return Orientation::SINGLETON;
     
 }
 
 
-    public: BasicDecimal* yaw = new BasicDecimal(0);
-
-    public: BasicDecimal* pitch = new BasicDecimal(0);
-
-    public: BasicDecimal* roll = new BasicDecimal(0);
-
-private: Orientation(int32_t yaw, int32_t pitch, int32_t roll){
+Orientation::Orientation(int32_t yaw, int32_t pitch, int32_t roll) : yaw(new BasicDecimal(0)), pitch(new BasicDecimal(0)), roll(new BasicDecimal(0)){
 this->yaw->setint(yaw);
     
 this->pitch->setint(pitch);
@@ -89,7 +90,7 @@ this->roll->setint(roll);
 }
 
 
-    public: std::string toString(){
+    auto Orientation::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -114,7 +115,6 @@ stringBuffer->append(std::to_string(roll));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_ORIENTATION_CPP

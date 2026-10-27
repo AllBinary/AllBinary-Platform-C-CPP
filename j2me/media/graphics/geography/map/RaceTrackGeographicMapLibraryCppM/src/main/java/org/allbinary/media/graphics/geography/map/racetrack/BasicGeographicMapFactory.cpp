@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASICGEOGRAPHICMAPFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASICGEOGRAPHICMAPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/BasicGeographicMapFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,13 +78,13 @@
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/AllBinaryTiledLayerFactoryInterface.h"
 
-class BasicGeographicMapFactory
-            : public Object
-         {
 
+BasicGeographicMapFactory::BasicGeographicMapFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: BasicGeographicMap* getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData, AllBinaryTiledLayerFactoryInterface* tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellTypeFactory* geographicMapCellTypeFactory){
+    auto BasicGeographicMapFactory::getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData, AllBinaryTiledLayerFactoryInterface* tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellTypeFactory* geographicMapCellTypeFactory) -> BasicGeographicMap*{
 
 
 
@@ -84,7 +94,6 @@ class BasicGeographicMapFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASICGEOGRAPHICMAPFACTORY_CPP

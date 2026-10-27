@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/Money.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,27 +74,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Money
-            : public Object
-         {
 
-    private: int64_t units;
-
-    private: const std::string DEFAULT_CURRENCY = "USD";
-
-public: Money(Money* money){
+Money::Money(Money* money){
 this->units= int64_t(money->getUnits());
     
 }
 
 
-public: Money(){
+Money::Money(){
 this->units= int64_t(0);
     
 }
 
 
-public: Money(std::string usDollarStr){
+Money::Money(std::string usDollarStr){
 
                         if(true && StringValidationUtil::getInstance()->isNumber(usDollarStr))
                         
@@ -97,13 +100,13 @@ public: Money(std::string usDollarStr){
 }
 
 
-public: Money(int64_t units){
+Money::Money(int64_t units){
 this->units= int64_t(units);
     
 }
 
 
-    public: bool isValid(){
+    auto Money::isValid() -> bool{
 
                         if(this->units != 
                                     nullptr
@@ -132,37 +135,37 @@ this->units= int64_t(units);
 }
 
 
-    public: void add(Money* moreMoney){
+    auto Money::add(Money* moreMoney) -> void{
 this->add(moreMoney->toString());
     
 }
 
 
-    public: void add(std::string usDollarStr){
+    auto Money::add(std::string usDollarStr) -> void{
 this->units= int64_t(this->units.longValue() +convertUsdToUnits(usDollarStr));
     
 }
 
 
-    public: void subtract(std::string usDollarStr){
+    auto Money::subtract(std::string usDollarStr) -> void{
 this->units= int64_t(this->units.longValue() -convertUsdToUnits(usDollarStr));
     
 }
 
 
-    public: void multiply(float multiplier){
+    auto Money::multiply(float multiplier) -> void{
 this->units= int64_t((float(this->units.longValue() *multiplier)).longValue());
     
 }
 
 
-    public: void multiply(int32_t multiplier){
+    auto Money::multiply(int32_t multiplier) -> void{
 this->units= int64_t(this->units.longValue() *multiplier);
     
 }
 
 
-    private: std::string convertUnitsTo(std::string currency){
+    auto Money::convertUnitsTo(std::string currency) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -203,7 +206,7 @@ stringBuffer->append((int64_t(cents)).toString());
 }
 
 
-    private: int64_t convertUsdToUnits(std::string usDollarStr){
+    auto Money::convertUsdToUnits(std::string usDollarStr) -> int64_t{
 
     int64_t localUnit = 0;;
     
@@ -251,7 +254,7 @@ localUnit += (int64_t(centsStr)).longValue();
 }
 
 
-    public: int64_t getUnits(){
+    auto Money::getUnits() -> int64_t{
 
 
 
@@ -261,7 +264,7 @@ localUnit += (int64_t(centsStr)).longValue();
 }
 
 
-    public: int64_t getUnitsLong(){
+    auto Money::getUnitsLong() -> int64_t{
 
 
 
@@ -271,7 +274,7 @@ localUnit += (int64_t(centsStr)).longValue();
 }
 
 
-    public: std::string toString(){
+    auto Money::toString() -> std::string{
 
 
 
@@ -281,7 +284,6 @@ localUnit += (int64_t(centsStr)).longValue();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/role/UserRole.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,15 +64,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/role/BasicUserRole.h"
 
-class UserRole
-            : public Object
-        , public Serializable {
 
-    private: BasicUserRole* basicUserRole;
-
-    private: UserFactoryInterface* userFactoryInterface;
-
-protected: UserRole(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface){
+UserRole::UserRole(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface){
 this->basicUserRole= aBasicUserRole;
     
 this->userFactoryInterface= aUserFactoryInterface;
@@ -70,7 +73,7 @@ this->userFactoryInterface= aUserFactoryInterface;
 }
 
 
-    public: std::string toString(){
+    auto UserRole::toString() -> std::string{
 
 
 
@@ -80,7 +83,7 @@ this->userFactoryInterface= aUserFactoryInterface;
 }
 
 
-    public: BasicUserRole* getBasicUserRole(){
+    auto UserRole::getBasicUserRole() -> BasicUserRole*{
 
 
 
@@ -92,7 +95,7 @@ this->userFactoryInterface= aUserFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: UserFactoryInterface* getUserFactory(){
+    auto UserRole::getUserFactory() -> UserFactoryInterface*{
 
 
 
@@ -102,7 +105,7 @@ this->userFactoryInterface= aUserFactoryInterface;
 }
 
 
-    public: int64_t getSessionTimeout(){
+    auto UserRole::getSessionTimeout() -> int64_t{
 
 
 
@@ -112,7 +115,7 @@ this->userFactoryInterface= aUserFactoryInterface;
 }
 
 
-    public: int64_t getSessionInactivityTimeout(){
+    auto UserRole::getSessionInactivityTimeout() -> int64_t{
 
 
 
@@ -122,7 +125,6 @@ this->userFactoryInterface= aUserFactoryInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLE_CPP

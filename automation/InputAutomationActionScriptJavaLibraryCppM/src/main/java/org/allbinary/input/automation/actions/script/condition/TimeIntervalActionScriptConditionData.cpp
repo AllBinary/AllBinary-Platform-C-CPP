@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptConditionData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeIntervalActionScriptConditionData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "TIME_INTERVAL_ACTION_CONDITION_NAME";
-
-    public: static inline std::string TIME = "TIME_INTERVAL_ACTION_CONDITION_TIME";
-
-private: TimeIntervalActionScriptConditionData(){
+TimeIntervalActionScriptConditionData::TimeIntervalActionScriptConditionData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_TIMEINTERVALACTIONSCRIPTCONDITIONDATA_CPP

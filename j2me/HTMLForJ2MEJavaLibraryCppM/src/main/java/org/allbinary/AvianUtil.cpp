@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AVIANUTIL_CPP
+        #define ORG_ALLBINARY_AVIANUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/AvianUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AvianUtil
-            : public Object
-         {
 
-    public: static bool isAvian(){
+AvianUtil::AvianUtil() {
+        }
+        
+    auto AvianUtil::isAvian() -> bool{
 
 
 
@@ -59,7 +69,6 @@ class AvianUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AVIANUTIL_CPP

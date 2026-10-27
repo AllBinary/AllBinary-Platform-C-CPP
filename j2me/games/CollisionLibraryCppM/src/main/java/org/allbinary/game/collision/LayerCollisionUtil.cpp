@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/LayerCollisionUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,25 +70,20 @@
 #include "org/allbinary/game/collision/Collision2DProcessor.h"
 #include "org/allbinary/game/collision/CollisionThreedProcessor.h"
 
-class LayerCollisionUtil
-            : public Object
-         {
+auto LayerCollisionUtil::instance_owner() -> LayerCollisionUtil* { static std::unique_ptr<LayerCollisionUtil> value(new LayerCollisionUtil()); return value.get(); }
+LayerCollisionUtil* LayerCollisionUtil::instance = LayerCollisionUtil::instance_owner();
 
-    private: static LayerCollisionUtil* instance() { static std::unique_ptr<LayerCollisionUtil> value(new LayerCollisionUtil()); return value.get(); }
-
-    public: static LayerCollisionUtil* getInstance(){
+    auto LayerCollisionUtil::getInstance() -> LayerCollisionUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerCollisionUtil::instance();
+                        return LayerCollisionUtil::instance;
     
 }
 
 
-    private: CollisionProcessor* collisionProcessor;
-
-private: LayerCollisionUtil(){
+LayerCollisionUtil::LayerCollisionUtil(){
 
     Features* features = Features::getInstance();;
     
@@ -103,7 +108,7 @@ private: LayerCollisionUtil(){
 }
 
 
-    public: bool isCollision(AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2){
+    auto LayerCollisionUtil::isCollision(AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2) -> bool{
 
 
 
@@ -113,7 +118,6 @@ private: LayerCollisionUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_CPP

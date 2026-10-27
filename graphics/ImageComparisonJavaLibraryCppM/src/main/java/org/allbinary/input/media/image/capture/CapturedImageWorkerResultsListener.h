@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSLISTENER_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/util/event/BasicEventListenerInterface.h>
-
-      
 
 
 
@@ -48,8 +51,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
+        class CapturedImageWorkerResultsEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CapturedImageWorkerResultsListener: public BasicEventListenerInterface {
 
     public: virtual void onCaptureEvent(CapturedImageWorkerResultsEvent* capturedimageworkerresultsevent) = 0;
@@ -60,3 +67,16 @@ class CapturedImageWorkerResultsListener: public BasicEventListenerInterface {
 
 
         #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSLISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/BasicEventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/BasicEventListenerInterface.h>
+#endif
+#if __has_include("org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h")
+#include "org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h"
+#endif
+
+        #endif
+    

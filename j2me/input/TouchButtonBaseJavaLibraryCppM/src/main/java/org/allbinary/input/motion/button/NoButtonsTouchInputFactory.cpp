@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/NoButtonsTouchInputFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/BaseTouchInput.h"
 
-class NoButtonsTouchInputFactory
-            : public Object
-         {
 
-    private: static BaseTouchInput* instance() { static std::unique_ptr<BaseTouchInput> value(new BaseTouchInput()); return value.get(); }
+NoButtonsTouchInputFactory::NoButtonsTouchInputFactory() {
+        }
+        auto NoButtonsTouchInputFactory::instance_owner() -> BaseTouchInput* { static std::unique_ptr<BaseTouchInput> value(new BaseTouchInput()); return value.get(); }
+BaseTouchInput* NoButtonsTouchInputFactory::instance = NoButtonsTouchInputFactory::instance_owner();
 
-    public: static BaseTouchInput* getInstance(){
+    auto NoButtonsTouchInputFactory::getInstance() -> BaseTouchInput*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoButtonsTouchInputFactory::instance();
+                        return NoButtonsTouchInputFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_CPP

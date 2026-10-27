@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,18 +38,10 @@
         
             #include "java/lang/Double.h"
         
-#include <org/allbinary/animation/VectorRotationGenerator.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class VectorRotationGenerator;
+class GPoint;
+class AngleFactory;
+class BasicArrayList;
 
 
 
@@ -64,14 +61,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PointsUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static PointsUtil* instance() { static std::unique_ptr<PointsUtil> value(new PointsUtil()); return value.get(); }
+    private: static PointsUtil* instance_owner();
+    private: static PointsUtil* instance;
 
     public: static PointsUtil* getInstance();
 
+
+            
+    public: PointsUtil();
+        
                 //@Throws(Exception.constructor)
             
     public: BasicArrayList* doTransforms(BasicArrayList* pointVector, double angle, GPoint* fulcrumPoint);
@@ -82,3 +88,22 @@ class PointsUtil
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/VectorRotationGenerator.h>)
+#include <org/allbinary/animation/VectorRotationGenerator.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

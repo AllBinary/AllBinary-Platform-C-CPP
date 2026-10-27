@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_STATESVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_STATESVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/StatesView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,26 +87,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StatesView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: StatesView(){
+StatesView::StatesView() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto StatesView::toXmlNode(Document* document) -> Node*{
 
         try {
             
     Node* node = document->createElement(StreetAddressData::STATES);;
     
 
-    std::string statesFile = URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->LINEDATAPATH +"states.txt";;
+    std::string statesFile = JavaString::valueOf(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->LINEDATAPATH) +JavaString::valueOf("states.txt");;
     
 
     LineReader* lineReader = new LineReader(statesFile);;
@@ -122,7 +125,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
@@ -141,7 +144,6 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_STATESVIEW_CPP

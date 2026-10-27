@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DEBUG_DEBUGINTERFACE_H
         #define ORG_ALLBINARY_DEBUG_DEBUGINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DebugInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class DebugInterface
+            : public virtual Object
+         {
 
     public: virtual void start() = 0;
 
@@ -64,3 +75,10 @@ class DebugInterface {
 
 
         #endif //ORG_ALLBINARY_DEBUG_DEBUGINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DEBUG_DEBUGINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DEBUG_DEBUGINTERFACE_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_BASKET_MINI_MINIBASKETVIEW_CPP
+        #define VIEWS_GENERIC_BASKET_MINI_MINIBASKETVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/basket/mini/MiniBasketView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,11 +82,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MiniBasketView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: MiniBasketView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+MiniBasketView::MiniBasketView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +95,7 @@ public: MiniBasketView(TransformInfoInterface* transformInfoInterface) : HttpSto
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto MiniBasketView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -138,10 +145,10 @@ basketNode->appendChild(subTotalNode);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -156,7 +163,7 @@ basketNode->appendChild(subTotalNode);
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto MiniBasketView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
@@ -164,7 +171,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto MiniBasketView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -173,17 +180,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -198,7 +205,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_BASKET_MINI_MINIBASKETVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,27 +73,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GeographicMapEventHandler: public BasicEventHandler {
+auto GeographicMapEventHandler::instance_owner() -> GeographicMapEventHandler* { static std::unique_ptr<GeographicMapEventHandler> value(new GeographicMapEventHandler()); return value.get(); }
+GeographicMapEventHandler* GeographicMapEventHandler::instance = GeographicMapEventHandler::instance_owner();
 
-    private: static GeographicMapEventHandler* instance() { static std::unique_ptr<GeographicMapEventHandler> value(new GeographicMapEventHandler()); return value.get(); }
-
-    public: static GeographicMapEventHandler* getInstance(){
+    auto GeographicMapEventHandler::getInstance() -> GeographicMapEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapEventHandler::instance();
+                        return GeographicMapEventHandler::instance;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: GeographicMapEventHandler(){
+GeographicMapEventHandler::GeographicMapEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(AllBinaryGameLayer* gameLayer){
+    auto GeographicMapEventHandler::addListener(AllBinaryGameLayer* gameLayer) -> void{
 
                         if(!this->list->contains(gameLayer))
                         
@@ -96,23 +103,23 @@ private: GeographicMapEventHandler(){
 }
 
 
-    public: void removeAllListeners(){
+    auto GeographicMapEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto GeographicMapEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
-    public: void fireEvent(){
+    auto GeographicMapEventHandler::fireEvent() -> void{
 
 
 
@@ -131,7 +138,7 @@ gameLayer->move();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -140,7 +147,6 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPEVENTHANDLER_CPP

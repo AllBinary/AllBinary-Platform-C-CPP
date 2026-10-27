@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,73 +53,108 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentGatewayData
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const int32_t CRYPTNUM = 5;
 
-    public: static PaymentGatewayData* ID() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PAYMENTGATEWAY_ID")); return value.get(); }
+    private: static PaymentGatewayData* ID_owner();
+    public: static PaymentGatewayData* ID;
 
-    public: static PaymentGatewayData* NAME() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PAYMENTGATEWAY_NAME")); return value.get(); }
+    private: static PaymentGatewayData* NAME_owner();
+    public: static PaymentGatewayData* NAME;
 
-    public: static PaymentGatewayData* VALUE() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PAYMENTGATEWAY_VALUE")); return value.get(); }
+    private: static PaymentGatewayData* VALUE_owner();
+    public: static PaymentGatewayData* VALUE;
 
-    public: static PaymentGatewayData* PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PAYMENTGATEWAY_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE")); return value.get(); }
+    private: static PaymentGatewayData* PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_owner();
+    public: static PaymentGatewayData* PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE;
 
-    public: static PaymentGatewayData* PAYMENTPROCESSORINTERFACEFACTORYINTERFACE() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PAYMENTGATEWAY_PAYMENTPROCESSORINTERFACEFACTORYINTERFACE")); return value.get(); }
+    private: static PaymentGatewayData* PAYMENTPROCESSORINTERFACEFACTORYINTERFACE_owner();
+    public: static PaymentGatewayData* PAYMENTPROCESSORINTERFACEFACTORYINTERFACE;
 
-    public: static PaymentGatewayData* MODE() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("MODE")); return value.get(); }
+    private: static PaymentGatewayData* MODE_owner();
+    public: static PaymentGatewayData* MODE;
 
-    public: static PaymentGatewayData* SERVERPROTOCOL() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SERVERPROTOCOL")); return value.get(); }
+    private: static PaymentGatewayData* SERVERPROTOCOL_owner();
+    public: static PaymentGatewayData* SERVERPROTOCOL;
 
-    public: static PaymentGatewayData* SERVER() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SERVER")); return value.get(); }
+    private: static PaymentGatewayData* SERVER_owner();
+    public: static PaymentGatewayData* SERVER;
 
-    public: static PaymentGatewayData* SERVERPORT() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SERVERPORT")); return value.get(); }
+    private: static PaymentGatewayData* SERVERPORT_owner();
+    public: static PaymentGatewayData* SERVERPORT;
 
-    public: static PaymentGatewayData* SERVERPATH() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SERVERPATH")); return value.get(); }
+    private: static PaymentGatewayData* SERVERPATH_owner();
+    public: static PaymentGatewayData* SERVERPATH;
 
-    public: static PaymentGatewayData* TESTPROTOCOL() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("TESTSERVERPROTOCOL")); return value.get(); }
+    private: static PaymentGatewayData* TESTPROTOCOL_owner();
+    public: static PaymentGatewayData* TESTPROTOCOL;
 
-    public: static PaymentGatewayData* TESTSERVER() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("TESTSERVER")); return value.get(); }
+    private: static PaymentGatewayData* TESTSERVER_owner();
+    public: static PaymentGatewayData* TESTSERVER;
 
-    public: static PaymentGatewayData* TESTPORT() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("TESTPORT")); return value.get(); }
+    private: static PaymentGatewayData* TESTPORT_owner();
+    public: static PaymentGatewayData* TESTPORT;
 
-    public: static PaymentGatewayData* TESTPATH() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("TESTSERVERPATH")); return value.get(); }
+    private: static PaymentGatewayData* TESTPATH_owner();
+    public: static PaymentGatewayData* TESTPATH;
 
-    public: static PaymentGatewayData* TIMEOUT() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("TIMEOUT")); return value.get(); }
+    private: static PaymentGatewayData* TIMEOUT_owner();
+    public: static PaymentGatewayData* TIMEOUT;
 
-    public: static PaymentGatewayData* PROXYPROTOCOL() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PROXYPROTOCOL")); return value.get(); }
+    private: static PaymentGatewayData* PROXYPROTOCOL_owner();
+    public: static PaymentGatewayData* PROXYPROTOCOL;
 
-    public: static PaymentGatewayData* PROXYSERVER() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PROXYSERVER")); return value.get(); }
+    private: static PaymentGatewayData* PROXYSERVER_owner();
+    public: static PaymentGatewayData* PROXYSERVER;
 
-    public: static PaymentGatewayData* PROXYPATH() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PROXYPATH")); return value.get(); }
+    private: static PaymentGatewayData* PROXYPATH_owner();
+    public: static PaymentGatewayData* PROXYPATH;
 
-    public: static PaymentGatewayData* PROXYUSERNAME() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PROXYUSERNAME")); return value.get(); }
+    private: static PaymentGatewayData* PROXYUSERNAME_owner();
+    public: static PaymentGatewayData* PROXYUSERNAME;
 
-    public: static PaymentGatewayData* PROXYPASSWORD() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PROXYPASSWORD")); return value.get(); }
+    private: static PaymentGatewayData* PROXYPASSWORD_owner();
+    public: static PaymentGatewayData* PROXYPASSWORD;
 
-    public: static PaymentGatewayData* PROXYPORT() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PROXYPORT")); return value.get(); }
+    private: static PaymentGatewayData* PROXYPORT_owner();
+    public: static PaymentGatewayData* PROXYPORT;
 
-    public: static PaymentGatewayData* PROXYTIMEOUT() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("PROXYTIMEOUT")); return value.get(); }
+    private: static PaymentGatewayData* PROXYTIMEOUT_owner();
+    public: static PaymentGatewayData* PROXYTIMEOUT;
 
-    public: static PaymentGatewayData* SPECIAL1() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL1")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL1_owner();
+    public: static PaymentGatewayData* SPECIAL1;
 
-    public: static PaymentGatewayData* SPECIAL2() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL2")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL2_owner();
+    public: static PaymentGatewayData* SPECIAL2;
 
-    public: static PaymentGatewayData* SPECIAL3() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL3")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL3_owner();
+    public: static PaymentGatewayData* SPECIAL3;
 
-    public: static PaymentGatewayData* SPECIAL4() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL4")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL4_owner();
+    public: static PaymentGatewayData* SPECIAL4;
 
-    public: static PaymentGatewayData* SPECIAL5() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL5")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL5_owner();
+    public: static PaymentGatewayData* SPECIAL5;
 
-    public: static PaymentGatewayData* SPECIAL6() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL6")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL6_owner();
+    public: static PaymentGatewayData* SPECIAL6;
 
-    public: static PaymentGatewayData* SPECIAL7() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL7")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL7_owner();
+    public: static PaymentGatewayData* SPECIAL7;
 
-    public: static PaymentGatewayData* SPECIAL8() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL8")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL8_owner();
+    public: static PaymentGatewayData* SPECIAL8;
 
-    public: static PaymentGatewayData* SPECIAL9() { static std::unique_ptr<PaymentGatewayData> value(new PaymentGatewayData("SPECIAL9")); return value.get(); }
+    private: static PaymentGatewayData* SPECIAL9_owner();
+    public: static PaymentGatewayData* SPECIAL9;
 
     private: std::string key;
 
@@ -128,3 +168,10 @@ private: PaymentGatewayData(std::string value);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYDATA_H_COMPLETE
+        
+        #endif
+    

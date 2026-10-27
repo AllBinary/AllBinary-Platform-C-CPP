@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_OVERSCANCOLORFILLPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_OVERSCANCOLORFILLPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class Graphics;
+class BasicColor;
 
 
 
@@ -53,6 +54,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/paint/ColorFillPaintable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OverScanColorFillPaintable: public ColorFillPaintable {
 
 public: OverScanColorFillPaintable(BasicColor* basicColor);
@@ -65,3 +70,19 @@ public: OverScanColorFillPaintable(BasicColor* basicColor);
 
 
         #endif //ORG_ALLBINARY_GAME_PAINT_OVERSCANCOLORFILLPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PAINT_OVERSCANCOLORFILLPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PAINT_OVERSCANCOLORFILLPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include("org/allbinary/game/paint/ColorFillPaintable.h")
+#include "org/allbinary/game/paint/ColorFillPaintable.h"
+#endif
+
+        #endif
+    

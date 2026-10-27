@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_SINGLETONANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_SINGLETONANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/SingletonAnimationInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,13 +63,8 @@
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/Animation.h"
 
-class SingletonAnimationInterfaceFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: Animation* animationInterface;
-
-public: SingletonAnimationInterfaceFactory(Animation* animationInterface){
+SingletonAnimationInterfaceFactory::SingletonAnimationInterfaceFactory(Animation* animationInterface){
 this->animationInterface= animationInterface;
     
 }
@@ -67,7 +72,7 @@ this->animationInterface= animationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto SingletonAnimationInterfaceFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -79,7 +84,7 @@ this->animationInterface= animationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto SingletonAnimationInterfaceFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -89,11 +94,10 @@ this->animationInterface= animationInterface;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto SingletonAnimationInterfaceFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_SINGLETONANIMATIONINTERFACEFACTORY_CPP

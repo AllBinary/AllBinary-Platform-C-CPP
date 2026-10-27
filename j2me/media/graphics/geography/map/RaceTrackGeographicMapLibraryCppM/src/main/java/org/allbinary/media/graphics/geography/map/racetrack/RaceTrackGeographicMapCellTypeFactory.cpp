@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,43 +61,20 @@
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypes.h"
 
-class RaceTrackGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
+auto RaceTrackGeographicMapCellTypeFactory::instanceC_owner() -> RaceTrackGeographicMapCellTypeFactory* { static std::unique_ptr<RaceTrackGeographicMapCellTypeFactory> value(new RaceTrackGeographicMapCellTypeFactory()); return value.get(); }
+RaceTrackGeographicMapCellTypeFactory* RaceTrackGeographicMapCellTypeFactory::instanceC = RaceTrackGeographicMapCellTypeFactory::instanceC_owner();
 
-    private: static RaceTrackGeographicMapCellTypeFactory* instanceC() { static std::unique_ptr<RaceTrackGeographicMapCellTypeFactory> value(new RaceTrackGeographicMapCellTypeFactory()); return value.get(); }
-
-    public: static RaceTrackGeographicMapCellTypeFactory* getInstance(){
+    auto RaceTrackGeographicMapCellTypeFactory::getInstance() -> RaceTrackGeographicMapCellTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackGeographicMapCellTypeFactory::instanceC();
+                        return RaceTrackGeographicMapCellTypeFactory::instanceC;
     
 }
 
 
-    public: GeographicMapCellType* EMPTY_CELL_TYPE = new GeographicMapCellType(0,  -1);
-
-    public: GeographicMapCellType* EASY_CELL_TYPE = this->EMPTY_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* BOTTOM_LEFT_TURN_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* TOP_LEFT_TURN_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* TOP_RIGHT_TURN_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* VERTICAL_STRAIGHT_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* START_LINE_ROAD_CELL_TYPE;
-
-    public: RaceTrackGeographicMapCellType* DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
-
-    public: GeographicMapCellType* FINISH_LINE_ROAD_CELL_TYPE = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;
-
-public: RaceTrackGeographicMapCellTypeFactory(){
+RaceTrackGeographicMapCellTypeFactory::RaceTrackGeographicMapCellTypeFactory() : EMPTY_CELL_TYPE(new GeographicMapCellType(0,  -1)), EASY_CELL_TYPE(this->EMPTY_CELL_TYPE), FINISH_LINE_ROAD_CELL_TYPE(GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE){
 
     RaceTrackGeographicMapCellTypes* raceTrackGeographicMapCellTypes = RaceTrackGeographicMapCellTypes::getInstance();;
     
@@ -110,7 +97,7 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 }
 
 
-    public: int32_t getStartType(){
+    auto RaceTrackGeographicMapCellTypeFactory::getStartType() -> int32_t{
 
 
 
@@ -120,7 +107,7 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 }
 
 
-    public: int32_t getEndType(){
+    auto RaceTrackGeographicMapCellTypeFactory::getEndType() -> int32_t{
 
 
 
@@ -130,7 +117,7 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 }
 
 
-    public: int32_t getEmptyType(){
+    auto RaceTrackGeographicMapCellTypeFactory::getEmptyType() -> int32_t{
 
 
 
@@ -140,7 +127,7 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 }
 
 
-    public: bool isPath(GeographicMapCellType* cellType){
+    auto RaceTrackGeographicMapCellTypeFactory::isPath(GeographicMapCellType* cellType) -> bool{
 
                         if(cellType != this->EMPTY_CELL_TYPE && cellType != this->EASY_CELL_TYPE)
                         
@@ -163,7 +150,6 @@ this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE= raceTrackGeographicMapCellTypes->DEFAU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_CPP

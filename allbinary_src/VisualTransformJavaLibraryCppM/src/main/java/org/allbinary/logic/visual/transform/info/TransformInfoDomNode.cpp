@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoDomNode.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,22 +84,13 @@
 #include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
 
-class TransformInfoDomNode
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+TransformInfoDomNode::TransformInfoDomNode(Node* node) : logUtil(LogUtil::getInstance()){
 
-    private: TransformInfoInterface* transformInfoInterface;
-
-    private: std::string mappedName;
-
-public: TransformInfoDomNode(Node* node){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Constructing TransformInfo From TransformInfoDomNode: " +node->getNodeName(), this, "TransformInfoDomNode(Node node)");
+                                    this->logUtil->putF(JavaString::valueOf("Constructing TransformInfo From TransformInfoDomNode: ") +JavaString::valueOf(node->getNodeName()), this, "TransformInfoDomNode(Node node)");
     
 
                                     }
@@ -114,7 +115,7 @@ public: TransformInfoDomNode(Node* node){
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -166,7 +167,7 @@ this->transformInfoInterface= dynamic_cast<TransformInfoInterface*>(new Transfor
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -215,7 +216,7 @@ this->transformInfoInterface= dynamic_cast<TransformInfoInterface*>(new Transfor
 }
 
 
-public: TransformInfoDomNode(TransformInfoInterface* transformInfoInterface){
+TransformInfoDomNode::TransformInfoDomNode(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()){
 this->transformInfoInterface= transformInfoInterface;
     
 this->mappedName= transformInfoInterface->getName();
@@ -223,7 +224,7 @@ this->mappedName= transformInfoInterface->getName();
 }
 
 
-public: TransformInfoDomNode(TransformInfoInterface* transformInfoInterface, std::string mappedName){
+TransformInfoDomNode::TransformInfoDomNode(TransformInfoInterface* transformInfoInterface, std::string mappedName) : logUtil(LogUtil::getInstance()){
 this->transformInfoInterface= transformInfoInterface;
     
 this->mappedName= mappedName;
@@ -231,7 +232,7 @@ this->mappedName= mappedName;
 }
 
 
-public: TransformInfoDomNode(std::string name, std::string mappedName){
+TransformInfoDomNode::TransformInfoDomNode(std::string name, std::string mappedName) : logUtil(LogUtil::getInstance()){
 this->transformInfoInterface= new TransformInfo(name);
     
 this->mappedName= mappedName;
@@ -239,7 +240,7 @@ this->mappedName= mappedName;
 }
 
 
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto TransformInfoDomNode::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -249,7 +250,7 @@ this->mappedName= mappedName;
 }
 
 
-    public: std::string getMappedName(){
+    auto TransformInfoDomNode::getMappedName() -> std::string{
 
 
 
@@ -259,7 +260,7 @@ this->mappedName= mappedName;
 }
 
 
-    public: std::string getReplaceKey(){
+    auto TransformInfoDomNode::getReplaceKey() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -273,10 +274,10 @@ stringBuffer->append("\"/>");
     std::string key = stringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Component Key: " +key, this, "getReplaceKey()");
+                                    this->logUtil->putF(JavaString::valueOf("Component Key: ") +JavaString::valueOf(key), this, "getReplaceKey()");
     
 
                                     }
@@ -290,7 +291,6 @@ stringBuffer->append("\"/>");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFODOMNODE_CPP

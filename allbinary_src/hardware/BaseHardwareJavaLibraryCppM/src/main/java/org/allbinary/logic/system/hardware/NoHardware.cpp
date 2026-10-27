@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/NoHardware.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/hardware/HardwareInterface.h"
 
-class NoHardware
-            : public Object
-        , public HardwareInterface {
 
-    private: static inline HardwareInterface* instance = new NoHardware();
+NoHardware::NoHardware() {
+        }
+        HardwareInterface* NoHardware::instance = new NoHardware();
 
-    public: static HardwareInterface* getInstance(){
+    auto NoHardware::getInstance() -> HardwareInterface*{
 
 
 
@@ -74,7 +83,7 @@ class NoHardware
 }
 
 
-    public: HardwareComponentInterface* getComponent(int32_t index){
+    auto NoHardware::getComponent(int32_t index) -> HardwareComponentInterface*{
 
 
 
@@ -84,7 +93,7 @@ class NoHardware
 }
 
 
-    public: std::string toString(){
+    auto NoHardware::toString() -> std::string{
 
 
 
@@ -94,7 +103,7 @@ class NoHardware
 }
 
 
-    public: bool compareTo(HardwareInterface* hardwareInterface){
+    auto NoHardware::compareTo(HardwareInterface* hardwareInterface) -> bool{
 
 
 
@@ -104,7 +113,7 @@ class NoHardware
 }
 
 
-    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
+    auto NoHardware::difference(HardwareInterface* hardwareInterface) -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -114,7 +123,6 @@ class NoHardware
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_CPP

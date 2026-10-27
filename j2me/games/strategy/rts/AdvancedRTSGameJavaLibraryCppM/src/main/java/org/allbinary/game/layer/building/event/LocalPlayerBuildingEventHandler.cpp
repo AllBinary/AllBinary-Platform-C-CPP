@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_LOCALPLAYERBUILDINGEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_LOCALPLAYERBUILDINGEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/building/event/LocalPlayerBuildingEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,27 +67,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/building/event/BuildingEventListenerInterface.h"
 
-class LocalPlayerBuildingEventHandler: public BasicEventHandler {
+auto LocalPlayerBuildingEventHandler::eventHandler_owner() -> LocalPlayerBuildingEventHandler* { static std::unique_ptr<LocalPlayerBuildingEventHandler> value(new LocalPlayerBuildingEventHandler()); return value.get(); }
+LocalPlayerBuildingEventHandler* LocalPlayerBuildingEventHandler::eventHandler = LocalPlayerBuildingEventHandler::eventHandler_owner();
 
-    private: static LocalPlayerBuildingEventHandler* eventHandler() { static std::unique_ptr<LocalPlayerBuildingEventHandler> value(new LocalPlayerBuildingEventHandler()); return value.get(); }
+LocalPlayerBuildingEventHandler::LocalPlayerBuildingEventHandler(){
+}
 
-    public: static LocalPlayerBuildingEventHandler* getInstance(){
+
+    auto LocalPlayerBuildingEventHandler::getInstance() -> LocalPlayerBuildingEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LocalPlayerBuildingEventHandler::eventHandler();
+                        return LocalPlayerBuildingEventHandler::eventHandler;
     
-}
-
-
-private: LocalPlayerBuildingEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto LocalPlayerBuildingEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     BuildingEventListenerInterface* buildingEventListenerInterface = (dynamic_cast<BuildingEventListenerInterface*>(eventListenerInterface));;
     
@@ -86,7 +95,6 @@ buildingEventListenerInterface->onBuildingEvent(dynamic_cast<RTSLayerEvent*>(eve
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_LOCALPLAYERBUILDINGEVENTHANDLER_CPP

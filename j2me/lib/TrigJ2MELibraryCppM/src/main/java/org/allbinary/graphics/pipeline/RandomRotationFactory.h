@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMROTATIONFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMROTATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/rand/MyRandomFactory.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class MyRandomFactory;
+class AngleFactory;
+class BasicArrayList;
 
 
 
@@ -58,19 +57,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
+        class BasicGraphicsPipeline;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RandomRotationFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static RandomRotationFactory* instance() { static std::unique_ptr<RandomRotationFactory> value(new RandomRotationFactory()); return value.get(); }
+    private: static RandomRotationFactory* instance_owner();
+    private: static RandomRotationFactory* instance;
 
     public: static RandomRotationFactory* getInstance();
 
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
 
-    private: AngleFactory* angleFactory = AngleFactory::getInstance();
+            
+    public: RandomRotationFactory();
+        
+    private: MyRandomFactory* myRandomFactory;
+
+    private: AngleFactory* angleFactory;
 
                 //@Throws(Exception.constructor)
             
@@ -84,3 +92,22 @@ class RandomRotationFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMROTATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMROTATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMROTATIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/rand/MyRandomFactory.h>)
+#include <org/allbinary/game/rand/MyRandomFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h")
+#include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
+#endif
+
+        #endif
+    

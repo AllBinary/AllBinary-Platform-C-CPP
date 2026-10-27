@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_H
         #define ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,30 +38,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/osgi/framework/BundleContext.h>
-
-      
-#include <org/osgi/framework/ServiceReference.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/osgi/OSGIServiceInterface.h>
-
-      
-#include <org/allbinary/osgi/OSGIServiceVisitorInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class BundleContext;
+class ServiceReference;
+class LogUtil;
+class OSGIServiceInterface;
+class OSGIServiceVisitorInterface;
+class CommonStrings;
 
 
 
@@ -75,17 +64,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/osgi/service/OSGIServiceUtil.h"
+        class OSGIServiceUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationServiceConsumer
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: OSGIServiceUtil* osgiServiceUtil = OSGIServiceUtil::getInstance();
+    /*protected*/ public: OSGIServiceUtil* osgiServiceUtil;
 
     private: std::string registryName;
 
@@ -121,3 +114,35 @@ public: InputAutomationServiceConsumer(std::string registryName, BundleContext* 
 
 
         #endif //ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_H_COMPLETE)
+        #define ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/osgi/framework/BundleContext.h>)
+#include <org/osgi/framework/BundleContext.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceReference.h>)
+#include <org/osgi/framework/ServiceReference.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/osgi/OSGIServiceInterface.h>)
+#include <org/allbinary/osgi/OSGIServiceInterface.h>
+#endif
+#if __has_include(<org/allbinary/osgi/OSGIServiceVisitorInterface.h>)
+#include <org/allbinary/osgi/OSGIServiceVisitorInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/osgi/service/OSGIServiceUtil.h")
+#include "org/allbinary/osgi/service/OSGIServiceUtil.h"
+#endif
+
+        #endif
+    

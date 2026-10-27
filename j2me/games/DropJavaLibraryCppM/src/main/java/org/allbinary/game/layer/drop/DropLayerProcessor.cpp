@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/drop/DropLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/drop/DropLayerInterface.h"
 
-class DropLayerProcessor: public BasicLayerProcessor {
+BasicLayerProcessor* DropLayerProcessor::LAYER_PROCESSOR = new DropLayerProcessor();
 
-    private: static inline BasicLayerProcessor* LAYER_PROCESSOR = new DropLayerProcessor();
+DropLayerProcessor::DropLayerProcessor(){
+}
 
-    public: static BasicLayerProcessor* getInstance(){
+
+    auto DropLayerProcessor::getInstance() -> BasicLayerProcessor*{
 
 
 
@@ -72,13 +84,9 @@ class DropLayerProcessor: public BasicLayerProcessor {
 }
 
 
-private: DropLayerProcessor(){
-}
-
-
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryLayerManager* allBinaryLayerManager){
+    auto DropLayerProcessor::process(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     BasicArrayList* list = this->getList();;
     
@@ -113,7 +121,6 @@ list->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERPROCESSOR_CPP

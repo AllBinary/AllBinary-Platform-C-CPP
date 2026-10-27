@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/resources/OnDemandResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,33 +66,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OnDemandResources
-            : public Object
-         {
+auto OnDemandResources::NULL_ON_DEMAND_RESOURCES_owner() -> OnDemandResources* { static std::unique_ptr<OnDemandResources> value(new OnDemandResources()); return value.get(); }
+OnDemandResources* OnDemandResources::NULL_ON_DEMAND_RESOURCES = OnDemandResources::NULL_ON_DEMAND_RESOURCES_owner();
 
-    public: static OnDemandResources* NULL_ON_DEMAND_RESOURCES() { static std::unique_ptr<OnDemandResources> value(new OnDemandResources()); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-protected: OnDemandResources(){
+OnDemandResources::OnDemandResources() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void waitFor(){
+    auto OnDemandResources::waitFor() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void init(){
+    auto OnDemandResources::init() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t initAt(ImageCache* imageCache, BaseResourceAnimationInterfaceFactoryInterfaceFactory* resourceAnimationInterfaceFactoryInterfaceFactory, int32_t portion, std::string loadingString, int32_t index){
+    auto OnDemandResources::initAt(ImageCache* imageCache, BaseResourceAnimationInterfaceFactoryInterfaceFactory* resourceAnimationInterfaceFactoryInterfaceFactory, int32_t portion, std::string loadingString, int32_t index) -> int32_t{
 
 
 
@@ -92,7 +97,6 @@ protected: OnDemandResources(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCES_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Object.h"
         
-#include <android/graphics/Paint.h>
-
-      
-#include <android/graphics/PorterDuff.h>
-
-      
-#include <android/graphics/PorterDuffColorFilter.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class Paint;
+class PorterDuff;
+class PorterDuffColorFilter;
+class Image;
+class BasicColor;
 
 
 
@@ -65,13 +60,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageModifierUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static ImageModifierUtil* getInstanceOrCreate();
 
-    public: Paint* paint = new Paint(Paint::ANTI_ALIAS_FLAG);
+
+            
+    public: ImageModifierUtil();
+        
+    public: Paint* paint;
 
     public: void setColor(Image* unusedOriginalImage, Image* image, int32_t imageIndex, BasicColor* basicColor);
 
@@ -91,3 +94,25 @@ class ImageModifierUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H_COMPLETE
+        #if __has_include(<android/graphics/Paint.h>)
+#include <android/graphics/Paint.h>
+#endif
+#if __has_include(<android/graphics/PorterDuff.h>)
+#include <android/graphics/PorterDuff.h>
+#endif
+#if __has_include(<android/graphics/PorterDuffColorFilter.h>)
+#include <android/graphics/PorterDuffColorFilter.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+
+        #endif
+    

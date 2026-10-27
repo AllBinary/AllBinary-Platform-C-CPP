@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,50 +37,20 @@
             #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/NullCommandListener.h>
-
-      
+class Command;
+class CommandListener;
+class Graphics;
+class NullCommandListener;
 #include <org/allbinary/graphics/displayable/command/MyCommandInterface.h>
-
-      
-#include <org/allbinary/graphics/displayable/command/MyCommandsFactory.h>
-
-      
-#include <org/allbinary/input/TouchJ2ME.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/media/audio/Sound.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
+class MyCommandsFactory;
+class TouchJ2ME;
+class LogUtil;
+class StringUtil;
+class Sound;
+class CommonStrings;
+class BasicArrayList;
+class StdUtil;
 #include <org/allbinary/util/ABStack.h>
-
-      
 
 
 
@@ -95,20 +70,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/DisplayableInterface.h"
-#include "org/allbinary/graphics/displayable/CanvasStrings.h"
-#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+class CanvasStrings;
+class DisplayInfoSingleton;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: CanvasStrings* canvasStrings = CanvasStrings::getInstance();
+    /*protected*/ public: CanvasStrings* canvasStrings;
 
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
+    /*protected*/ public: StringUtil* stringUtil;
 
-    protected: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
+    /*protected*/ public: DisplayInfoSingleton* displayInfo;
 
     private: std::string name;
 
@@ -116,7 +95,7 @@ class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInte
 
     private: ABStack<Object*>* commandStack;
 
-    private: CommandListener* commandListener = NullCommandListener::NULL_COMMAND_LISTENER;
+    private: CommandListener* commandListener;
 
     private: bool paused= false;
 
@@ -124,7 +103,7 @@ public: MyCanvas(std::string name, BasicArrayList* childNameList);
 
     public: void setFullScreenMode(bool mode);
 
-    protected: void sizeChanged(int32_t w, int32_t h);
+    /*protected*/ public: void sizeChanged(int32_t w, int32_t h);
 
     public: ABStack<Object*>* getCommandStack();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -157,9 +136,9 @@ public: MyCanvas(std::string name, BasicArrayList* childNameList);
 
                 //@Throws(Exception.constructor)
             
-    protected: void process();
+    /*protected*/ public: void process();
 
-    protected: void paint(Graphics* graphics);
+    /*protected*/ public: void paint(Graphics* graphics);
 
     public: void draw(Graphics* graphics);
 
@@ -167,7 +146,7 @@ public: MyCanvas(std::string name, BasicArrayList* childNameList);
 
     public: void destroy();
 
-    protected: void setPaused(bool isPaused);
+    /*protected*/ public: void setPaused(bool isPaused);
 
     public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
@@ -175,13 +154,13 @@ public: MyCanvas(std::string name, BasicArrayList* childNameList);
 
     public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
-    private: TouchJ2ME* touchME = new TouchJ2ME();
+    private: TouchJ2ME* touchME;
 
-    protected: void pointerDragged(int32_t x, int32_t y);
+    /*protected*/ public: void pointerDragged(int32_t x, int32_t y);
 
-    protected: void pointerPressed(int32_t x, int32_t y);
+    /*protected*/ public: void pointerPressed(int32_t x, int32_t y);
 
-    protected: void pointerReleased(int32_t x, int32_t y);
+    /*protected*/ public: void pointerReleased(int32_t x, int32_t y);
 
     public: void nextSong(Sound* nextSongSound, int32_t leftVolume, int32_t rightVolume);
 
@@ -191,3 +170,64 @@ public: MyCanvas(std::string name, BasicArrayList* childNameList);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullCommandListener.h>)
+#include <javax/microedition/lcdui/NullCommandListener.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/command/MyCommandInterface.h>)
+#include <org/allbinary/graphics/displayable/command/MyCommandInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/command/MyCommandsFactory.h>)
+#include <org/allbinary/graphics/displayable/command/MyCommandsFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/TouchJ2ME.h>)
+#include <org/allbinary/input/TouchJ2ME.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/audio/Sound.h>)
+#include <org/allbinary/media/audio/Sound.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABStack.h>)
+#include <org/allbinary/util/ABStack.h>
+#endif
+#if __has_include("org/allbinary/graphics/displayable/DisplayableInterface.h")
+#include "org/allbinary/graphics/displayable/DisplayableInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/CanvasStrings.h")
+#include "org/allbinary/graphics/displayable/CanvasStrings.h"
+#endif
+#if __has_include("org/allbinary/graphics/displayable/DisplayInfoSingleton.h")
+#include "org/allbinary/graphics/displayable/DisplayInfoSingleton.h"
+#endif
+
+        #endif
+    

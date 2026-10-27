@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/NoMenuInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,21 +66,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 
-class NoMenuInputProcessor: public BasicMenuInputProcessor {
+auto NoMenuInputProcessor::SINGLETON_owner() -> NoMenuInputProcessor* { static std::unique_ptr<NoMenuInputProcessor> value(new NoMenuInputProcessor()); return value.get(); }
+NoMenuInputProcessor* NoMenuInputProcessor::SINGLETON = NoMenuInputProcessor::SINGLETON_owner();
 
-    private: static NoMenuInputProcessor* SINGLETON() { static std::unique_ptr<NoMenuInputProcessor> value(new NoMenuInputProcessor()); return value.get(); }
-
-    public: static NoMenuInputProcessor* getInstance(){
+    auto NoMenuInputProcessor::getInstance() -> NoMenuInputProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoMenuInputProcessor::SINGLETON();
+                        return NoMenuInputProcessor::SINGLETON;
     
 }
 
 
-private: NoMenuInputProcessor() : BasicMenuInputProcessor(BasicArrayListUtil::getInstance()->getImmutableInstance(),  -1, NullCanvas::NULL_CANVAS){
+NoMenuInputProcessor::NoMenuInputProcessor() : BasicMenuInputProcessor(BasicArrayListUtil::getInstance()->getImmutableInstance(),  -1, NullCanvas::NULL_CANVAS){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,20 +90,19 @@ private: NoMenuInputProcessor() : BasicMenuInputProcessor(BasicArrayListUtil::ge
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onDownGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto NoMenuInputProcessor::onDownGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void onUpGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto NoMenuInputProcessor::onUpGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+    auto NoMenuInputProcessor::onMotionGestureEvent(MotionGestureEvent* motionGestureEvent) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_CPP

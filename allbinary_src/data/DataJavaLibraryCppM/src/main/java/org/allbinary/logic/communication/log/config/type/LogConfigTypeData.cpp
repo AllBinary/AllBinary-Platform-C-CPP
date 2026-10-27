@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigTypeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LogConfigTypeData
-            : public Object
-         {
+auto LogConfigTypeData::instance_owner() -> LogConfigTypeData* { static std::unique_ptr<LogConfigTypeData> value(new LogConfigTypeData()); return value.get(); }
+LogConfigTypeData* LogConfigTypeData::instance = LogConfigTypeData::instance_owner();
 
-    private: static LogConfigTypeData* instance() { static std::unique_ptr<LogConfigTypeData> value(new LogConfigTypeData()); return value.get(); }
-
-    public: static LogConfigTypeData* getInstance(){
+    auto LogConfigTypeData::getInstance() -> LogConfigTypeData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogConfigTypeData::instance();
+                        return LogConfigTypeData::instance;
     
 }
 
 
-private: LogConfigTypeData(){
+LogConfigTypeData::LogConfigTypeData(){
 }
 
 
-    public: const std::string NAME = "LOG_CONFIG_TYPE_NAME";
 
-    public: const std::string DESCRIPTION = "LOG_CONFIG_TYPE_DESCRIPTION";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYER_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/life/LifeLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,9 +79,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LifeLayer: public AllBinaryLayer, public LifeVisitorInterface {
 
-public: LifeLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
+LifeLayer::LifeLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,17 +90,16 @@ public: LifeLayer() : AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, ne
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto LifeLayer::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void visit(Life* lifeInterface){
+    auto LifeLayer::visit(Life* lifeInterface) -> void{
 lifeInterface->add(1);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYER_CPP

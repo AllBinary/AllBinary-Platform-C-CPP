@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PCKEYFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_PCKEYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/math/PositionStrings.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class PositionStrings;
+class CommonPhoneStrings;
+class CommonSeps;
 
 
 
@@ -56,179 +55,188 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/ABKeyEventWrapper.h"
-#include "org/allbinary/game/input/PCGameKey.h"
-#include "org/allbinary/game/input/Input.h"
+        class ABKeyEventWrapper;
+class PCGameKey;
+class Input;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PCKeyFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PCKeyFactory* SINGLETON() { static std::unique_ptr<PCKeyFactory> value(new PCKeyFactory()); return value.get(); }
+    private: static PCKeyFactory* SINGLETON_owner();
+    private: static PCKeyFactory* SINGLETON;
 
     public: static PCKeyFactory* getInstance();
 
-    private: ABKeyEventWrapper* keyEventWrapper = ABKeyEventWrapper::getInstance();
 
-    public: PCGameKey* UNKNOWN = new PCGameKey(this->keyEventWrapper->VK_UNDEFINED, "UNKNOWN");
+            
+    public: PCKeyFactory();
+        
+    private: ABKeyEventWrapper* keyEventWrapper;
 
-    public: PCGameKey* ENTER = new PCGameKey(5, "Enter");
+    public: PCGameKey* UNKNOWN;
 
-    public: PCGameKey* _A = new PCGameKey(this->keyEventWrapper->VK_A, "A");
+    public: PCGameKey* ENTER;
 
-    public: PCGameKey* _B = new PCGameKey(this->keyEventWrapper->VK_B, "B");
+    public: PCGameKey* _A;
 
-    public: PCGameKey* _C = new PCGameKey(this->keyEventWrapper->VK_C, "C");
+    public: PCGameKey* _B;
 
-    public: PCGameKey* _D = new PCGameKey(this->keyEventWrapper->VK_D, "D");
+    public: PCGameKey* _C;
 
-    public: PCGameKey* _E = new PCGameKey(this->keyEventWrapper->VK_E, "E");
+    public: PCGameKey* _D;
 
-    public: PCGameKey* _F = new PCGameKey(this->keyEventWrapper->VK_F, "F");
+    public: PCGameKey* _E;
 
-    public: PCGameKey* _G = new PCGameKey(this->keyEventWrapper->VK_G, "G");
+    public: PCGameKey* _F;
 
-    public: PCGameKey* _H = new PCGameKey(this->keyEventWrapper->VK_H, "H");
+    public: PCGameKey* _G;
 
-    public: PCGameKey* _I = new PCGameKey(this->keyEventWrapper->VK_I, "I");
+    public: PCGameKey* _H;
 
-    public: PCGameKey* _J = new PCGameKey(this->keyEventWrapper->VK_J, "J");
+    public: PCGameKey* _I;
 
-    public: PCGameKey* _K = new PCGameKey(this->keyEventWrapper->VK_K, "K");
+    public: PCGameKey* _J;
 
-    public: PCGameKey* _L = new PCGameKey(this->keyEventWrapper->VK_L, "L");
+    public: PCGameKey* _K;
 
-    public: PCGameKey* _M = new PCGameKey(this->keyEventWrapper->VK_M, "M");
+    public: PCGameKey* _L;
 
-    public: PCGameKey* _N = new PCGameKey(this->keyEventWrapper->VK_N, "N");
+    public: PCGameKey* _M;
 
-    public: PCGameKey* _O = new PCGameKey(this->keyEventWrapper->VK_O, "O");
+    public: PCGameKey* _N;
 
-    public: PCGameKey* _P = new PCGameKey(this->keyEventWrapper->VK_P, "P");
+    public: PCGameKey* _O;
 
-    public: PCGameKey* _Q = new PCGameKey(this->keyEventWrapper->VK_Q, "Q");
+    public: PCGameKey* _P;
 
-    public: PCGameKey* _R = new PCGameKey(this->keyEventWrapper->VK_R, "R");
+    public: PCGameKey* _Q;
 
-    public: PCGameKey* _S = new PCGameKey(this->keyEventWrapper->VK_S, "S");
+    public: PCGameKey* _R;
 
-    public: PCGameKey* _T = new PCGameKey(this->keyEventWrapper->VK_T, "T");
+    public: PCGameKey* _S;
 
-    public: PCGameKey* _U = new PCGameKey(this->keyEventWrapper->VK_U, "U");
+    public: PCGameKey* _T;
 
-    public: PCGameKey* _V = new PCGameKey(this->keyEventWrapper->VK_V, "V");
+    public: PCGameKey* _U;
 
-    public: PCGameKey* _W = new PCGameKey(this->keyEventWrapper->VK_W, "W");
+    public: PCGameKey* _V;
 
-    public: PCGameKey* _X = new PCGameKey(this->keyEventWrapper->VK_X, "X");
+    public: PCGameKey* _W;
 
-    public: PCGameKey* _Y = new PCGameKey(this->keyEventWrapper->VK_Y, "Y");
+    public: PCGameKey* _X;
 
-    public: PCGameKey* _Z = new PCGameKey(this->keyEventWrapper->VK_Z, "Z");
+    public: PCGameKey* _Y;
 
-    public: PCGameKey* a = new PCGameKey(97, "a");
+    public: PCGameKey* _Z;
 
-    public: PCGameKey* b = new PCGameKey(98, "b");
+    public: PCGameKey* a;
 
-    public: PCGameKey* c = new PCGameKey(99, "c");
+    public: PCGameKey* b;
 
-    public: PCGameKey* d = new PCGameKey(100, "d");
+    public: PCGameKey* c;
 
-    public: PCGameKey* e = new PCGameKey(101, "e");
+    public: PCGameKey* d;
 
-    public: PCGameKey* f = new PCGameKey(102, "f");
+    public: PCGameKey* e;
 
-    public: PCGameKey* g = new PCGameKey(103, "g");
+    public: PCGameKey* f;
 
-    public: PCGameKey* h = new PCGameKey(104, "h");
+    public: PCGameKey* g;
 
-    public: PCGameKey* i = new PCGameKey(105, "i");
+    public: PCGameKey* h;
 
-    public: PCGameKey* j = new PCGameKey(106, "j");
+    public: PCGameKey* i;
 
-    public: PCGameKey* k = new PCGameKey(107, "k");
+    public: PCGameKey* j;
 
-    public: PCGameKey* l = new PCGameKey(108, "l");
+    public: PCGameKey* k;
 
-    public: PCGameKey* m = new PCGameKey(109, "m");
+    public: PCGameKey* l;
 
-    public: PCGameKey* n = new PCGameKey(110, "n");
+    public: PCGameKey* m;
 
-    public: PCGameKey* o = new PCGameKey(111, "o");
+    public: PCGameKey* n;
 
-    public: PCGameKey* p = new PCGameKey(112, "p");
+    public: PCGameKey* o;
 
-    public: PCGameKey* q = new PCGameKey(113, "q");
+    public: PCGameKey* p;
 
-    public: PCGameKey* r = new PCGameKey(114, "r");
+    public: PCGameKey* q;
 
-    public: PCGameKey* s = new PCGameKey(115, "s");
+    public: PCGameKey* r;
 
-    public: PCGameKey* t = new PCGameKey(116, "t");
+    public: PCGameKey* s;
 
-    public: PCGameKey* u = new PCGameKey(117, "u");
+    public: PCGameKey* t;
 
-    public: PCGameKey* v = new PCGameKey(118, "v");
+    public: PCGameKey* u;
 
-    public: PCGameKey* w = new PCGameKey(119, "w");
+    public: PCGameKey* v;
 
-    public: PCGameKey* x = new PCGameKey(120, PositionStrings::getInstance()->X);
+    public: PCGameKey* w;
 
-    public: PCGameKey* y = new PCGameKey(121, PositionStrings::getInstance()->Y);
+    public: PCGameKey* x;
 
-    public: PCGameKey* z = new PCGameKey(122, "z");
+    public: PCGameKey* y;
 
-    public: PCGameKey* ZERO = new PCGameKey(this->keyEventWrapper->VK_0, CommonPhoneStrings::getInstance()->ZERO);
+    public: PCGameKey* z;
 
-    public: PCGameKey* ONE = new PCGameKey(this->keyEventWrapper->VK_1, CommonPhoneStrings::getInstance()->ONE);
+    public: PCGameKey* ZERO;
 
-    public: PCGameKey* TWO = new PCGameKey(this->keyEventWrapper->VK_2, CommonPhoneStrings::getInstance()->TWO);
+    public: PCGameKey* ONE;
 
-    public: PCGameKey* THREE = new PCGameKey(this->keyEventWrapper->VK_3, CommonPhoneStrings::getInstance()->THREE);
+    public: PCGameKey* TWO;
 
-    public: PCGameKey* FOUR = new PCGameKey(this->keyEventWrapper->VK_4, CommonPhoneStrings::getInstance()->FOUR);
+    public: PCGameKey* THREE;
 
-    public: PCGameKey* FIVE = new PCGameKey(this->keyEventWrapper->VK_5, CommonPhoneStrings::getInstance()->FIVE);
+    public: PCGameKey* FOUR;
 
-    public: PCGameKey* SIX = new PCGameKey(this->keyEventWrapper->VK_6, CommonPhoneStrings::getInstance()->SIX);
+    public: PCGameKey* FIVE;
 
-    public: PCGameKey* SEVEN = new PCGameKey(this->keyEventWrapper->VK_7, CommonPhoneStrings::getInstance()->SEVEN);
+    public: PCGameKey* SIX;
 
-    public: PCGameKey* EIGHT = new PCGameKey(this->keyEventWrapper->VK_8, CommonPhoneStrings::getInstance()->EIGHT);
+    public: PCGameKey* SEVEN;
 
-    public: PCGameKey* NINE = new PCGameKey(this->keyEventWrapper->VK_9, CommonPhoneStrings::getInstance()->NINE);
+    public: PCGameKey* EIGHT;
 
-    public: PCGameKey* DPAD_UP = new PCGameKey(this->keyEventWrapper->VK_UP, CommonPhoneStrings::getInstance()->UP);
+    public: PCGameKey* NINE;
 
-    public: PCGameKey* DPAD_DOWN = new PCGameKey(this->keyEventWrapper->VK_DOWN, CommonPhoneStrings::getInstance()->DOWN);
+    public: PCGameKey* DPAD_UP;
 
-    public: PCGameKey* DPAD_LEFT = new PCGameKey(this->keyEventWrapper->VK_LEFT, CommonPhoneStrings::getInstance()->LEFT);
+    public: PCGameKey* DPAD_DOWN;
 
-    public: PCGameKey* DPAD_RIGHT = new PCGameKey(this->keyEventWrapper->VK_RIGHT, CommonPhoneStrings::getInstance()->RIGHT);
+    public: PCGameKey* DPAD_LEFT;
 
-    public: PCGameKey* DPAD_UP2 = this->DPAD_UP;
+    public: PCGameKey* DPAD_RIGHT;
 
-    public: PCGameKey* DPAD_DOWN2 = this->DPAD_DOWN;
+    public: PCGameKey* DPAD_UP2;
 
-    public: PCGameKey* DPAD_LEFT2 = this->DPAD_LEFT;
+    public: PCGameKey* DPAD_DOWN2;
 
-    public: PCGameKey* DPAD_RIGHT2 = this->DPAD_RIGHT;
+    public: PCGameKey* DPAD_LEFT2;
 
-    public: PCGameKey* COMMA = new PCGameKey(this->keyEventWrapper->VK_COMMA, "COMMA");
+    public: PCGameKey* DPAD_RIGHT2;
 
-    public: PCGameKey* SPACE = new PCGameKey(this->keyEventWrapper->VK_SPACE, "SPACE");
+    public: PCGameKey* COMMA;
 
-    public: PCGameKey* DEL = new PCGameKey(this->keyEventWrapper->VK_DELETE, "DEL");
+    public: PCGameKey* SPACE;
 
-    public: PCGameKey* STAR = new PCGameKey(42, CommonPhoneStrings::getInstance()->STAR);
+    public: PCGameKey* DEL;
 
-    public: PCGameKey* QUESTION = new PCGameKey(47, "?");
+    public: PCGameKey* STAR;
 
-    public: PCGameKey* PERIOD = new PCGameKey(this->keyEventWrapper->VK_PERIOD, CommonSeps::getInstance()->PERIOD);
+    public: PCGameKey* QUESTION;
 
-    public: PCGameKey* ESCAPE = new PCGameKey(this->keyEventWrapper->VK_ESCAPE, "Esc");
+    public: PCGameKey* PERIOD;
 
-    public: PCGameKey* BACK_SPACE = new PCGameKey(this->keyEventWrapper->VK_BACK_SPACE, "Backspace");
+    public: PCGameKey* ESCAPE;
+
+    public: PCGameKey* BACK_SPACE;
 
     public: bool isSubmission(Input* input);
 
@@ -252,3 +260,28 @@ class PCKeyFactory
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_PCKEYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_PCKEYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_PCKEYFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/math/PositionStrings.h>)
+#include <org/allbinary/math/PositionStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/game/input/ABKeyEventWrapper.h")
+#include "org/allbinary/game/input/ABKeyEventWrapper.h"
+#endif
+#if __has_include("org/allbinary/game/input/PCGameKey.h")
+#include "org/allbinary/game/input/PCGameKey.h"
+#endif
+#if __has_include("org/allbinary/game/input/Input.h")
+#include "org/allbinary/game/input/Input.h"
+#endif
+
+        #endif
+    

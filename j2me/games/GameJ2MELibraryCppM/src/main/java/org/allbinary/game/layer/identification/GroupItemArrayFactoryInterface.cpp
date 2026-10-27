@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPITEMARRAYFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPITEMARRAYFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/identification/GroupItemArrayFactoryInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,13 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GroupItemArrayFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::vector<ABCustomItem*> getInstance(Group* groupInterface) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPITEMARRAYFACTORYINTERFACE_CPP

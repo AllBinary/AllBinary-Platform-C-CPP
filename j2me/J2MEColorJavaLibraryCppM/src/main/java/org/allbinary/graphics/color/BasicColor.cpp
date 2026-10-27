@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/BasicColor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,31 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/color/BasicColorUtil.h"
 
-class BasicColor
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: int32_t value;
-
-    private: float redComponent;
-
-    private: float greenComponent;
-
-    private: float blueComponent;
-
-    private: float alphaComponent;
-
-    public: int16_t red;
-
-    public: int16_t green;
-
-    public: int16_t blue;
-
-    public: int16_t alpha;
-
-: BasicColor(int32_t alphaValue, int32_t value, std::string name){
+BasicColor::BasicColor(int32_t alphaValue, int32_t value, std::string name){
 this->name= name;
     
 
@@ -155,7 +142,7 @@ this->value= tempValue;
 }
 
 
-    public: int32_t intValue(){
+    auto BasicColor::intValue() -> int32_t{
 
 
 
@@ -165,7 +152,7 @@ this->value= tempValue;
 }
 
 
-    public: int32_t toInt(){
+    auto BasicColor::toInt() -> int32_t{
 
 
 
@@ -175,7 +162,7 @@ this->value= tempValue;
 }
 
 
-    public: std::string toString(){
+    auto BasicColor::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -210,7 +197,7 @@ stringBuffer->appendint(this->value);
 }
 
 
-    public: std::string getName(){
+    auto BasicColor::getName() -> std::string{
 
 
 
@@ -220,7 +207,7 @@ stringBuffer->appendint(this->value);
 }
 
 
-    public: float getRedComponent(){
+    auto BasicColor::getRedComponent() -> float{
 
 
 
@@ -230,7 +217,7 @@ stringBuffer->appendint(this->value);
 }
 
 
-    public: float getGreenComponent(){
+    auto BasicColor::getGreenComponent() -> float{
 
 
 
@@ -240,7 +227,7 @@ stringBuffer->appendint(this->value);
 }
 
 
-    public: float getBlueComponent(){
+    auto BasicColor::getBlueComponent() -> float{
 
 
 
@@ -250,7 +237,7 @@ stringBuffer->appendint(this->value);
 }
 
 
-    public: float getAlphaComponent(){
+    auto BasicColor::getAlphaComponent() -> float{
 
 
 
@@ -260,7 +247,6 @@ stringBuffer->appendint(this->value);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLOR_CPP

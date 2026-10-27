@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 
 
 
@@ -51,10 +54,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ItemPaintable
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: ItemPaintable();
+        
     public: void paint(Graphics* graphics, int32_t currentIndex, int32_t x, int32_t y);
 
 };
@@ -63,3 +74,13 @@ class ItemPaintable
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+
+        #endif
+    

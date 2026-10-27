@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_CPP
+        #define ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tick/TickableLayerManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TickableLayerManager: public LayerManager {
 
-public: TickableLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+TickableLayerManager::TickableLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,6 @@ public: TickableLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TICK_TICKABLELAYERMANAGER_CPP

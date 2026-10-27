@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITION_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/geological/resources/GeologicalResource.h"
 
-class GeologicalGeographicMapCellPosition: public GeographicMapCellPosition {
 
-    private: GeologicalResource* geologicalResource;
-
-public: GeologicalGeographicMapCellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows, int32_t width, int32_t height, GeologicalResource* geologicalResource) : GeographicMapCellPosition(column, row, columns, rows, width, height){
+GeologicalGeographicMapCellPosition::GeologicalGeographicMapCellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows, int32_t width, int32_t height, GeologicalResource* geologicalResource) : GeographicMapCellPosition(column, row, columns, rows, width, height){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +72,7 @@ this->geologicalResource= geologicalResource;
 }
 
 
-    public: GeologicalResource* getGeologicalResource(){
+    auto GeologicalGeographicMapCellPosition::getGeologicalResource() -> GeologicalResource*{
 
 
 
@@ -75,7 +82,6 @@ this->geologicalResource= geologicalResource;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITION_CPP

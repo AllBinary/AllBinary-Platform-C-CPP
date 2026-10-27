@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_CAPITAL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_CAPITAL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/capital/Capital.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Capital
-            : public Object
-         {
 
-    private: int32_t value= 0;
-
-public: Capital(){
+Capital::Capital(){
 }
 
 
-    public: int32_t getTotalMoney(){
+    auto Capital::getTotalMoney() -> int32_t{
 
 
 
@@ -65,19 +70,18 @@ public: Capital(){
 }
 
 
-    public: void removeMoney(int32_t points){
+    auto Capital::removeMoney(int32_t points) -> void{
 this->value -= points;
     
 }
 
 
-    public: void addMoney(int32_t points){
+    auto Capital::addMoney(int32_t points) -> void{
 this->value += points;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_CAPITAL_CAPITAL_CPP

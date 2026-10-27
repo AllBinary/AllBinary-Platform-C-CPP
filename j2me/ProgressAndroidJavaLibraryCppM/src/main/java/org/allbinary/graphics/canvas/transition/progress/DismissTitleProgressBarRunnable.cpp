@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_DISMISSTITLEPROGRESSBARRUNNABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_DISMISSTITLEPROGRESSBARRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/DismissTitleProgressBarRunnable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,11 +71,8 @@
         #include "org/allbinary/graphics/canvas/transition/progress/ProgressRunnable.h"
 #include "org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h"
 
-class DismissTitleProgressBarRunnable: public ProgressRunnable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: DismissTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
+DismissTitleProgressBarRunnable::DismissTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas* progressCanvas) : ProgressRunnable(midletActivity, progressCanvas), logUtil(LogUtil::getInstance()), ZOOM_OUT_AND_IN({TransistionTypes::getInstance()->ZOOM_OUT,TransistionTypes::getInstance()->ZOOM_IN}){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,12 +82,10 @@ public: DismissTitleProgressBarRunnable(Activity* midletActivity, ProgressCanvas
 }
 
 
-    private: const std::vector<int32_t> ZOOM_OUT_AND_IN = {TransistionTypes::getInstance()->ZOOM_OUT,TransistionTypes::getInstance()->ZOOM_IN};
-
-    public: void run(){
+    auto DismissTitleProgressBarRunnable::run() -> void{
 
         try {
-            this->midletActivity.onDismissProgress(this->ZOOM_OUT_AND_IN);
+            this->midletActivity->onDismissProgress(this->ZOOM_OUT_AND_IN);
     
 
                 //: 
@@ -96,7 +101,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_DISMISSTITLEPROGRESSBARRUNNABLE_CPP

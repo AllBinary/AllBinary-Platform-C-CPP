@@ -10,6 +10,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPERSISTANCEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPERSISTANCEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImagePersistanceUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,29 +94,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImagePersistanceUtil
-            : public Object
-         {
 
-    private: static ImagePersistanceUtil* instance() { static std::unique_ptr<ImagePersistanceUtil> value(new ImagePersistanceUtil()); return value.get(); }
+ImagePersistanceUtil::ImagePersistanceUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        auto ImagePersistanceUtil::instance_owner() -> ImagePersistanceUtil* { static std::unique_ptr<ImagePersistanceUtil> value(new ImagePersistanceUtil()); return value.get(); }
+ImagePersistanceUtil* ImagePersistanceUtil::instance = ImagePersistanceUtil::instance_owner();
 
-    public: static ImagePersistanceUtil* getInstance(){
+    auto ImagePersistanceUtil::getInstance() -> ImagePersistanceUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImagePersistanceUtil::instance();
+                        return ImagePersistanceUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void saveWithBatik(AbFile* file, BufferedImage* bufferedImage){
+    auto ImagePersistanceUtil::saveWithBatik(AbFile* file, BufferedImage* bufferedImage) -> void{
 
     PNGImageWriter* batikPNGImageWriter = new PNGImageWriter();;
     
@@ -126,18 +132,18 @@ StreamUtil::getInstance()->close(fileOutputStream);
 
          }
         
-this->logUtil->putF("Wrote Image: " +file->getAbsolutePath(), this, this->commonStrings->SAVE);
+this->logUtil->putF(JavaString::valueOf("Wrote Image: ") +JavaString::valueOf(file->getAbsolutePath()), this, this->commonStrings->SAVE);
     
 }
 
 
-    public: void saveWithImageIO(std::string filePath, BufferedImage* bufferedImage){
+    auto ImagePersistanceUtil::saveWithImageIO(std::string filePath, BufferedImage* bufferedImage) -> void{
 this->saveWithImageIO(new File(filePath), bufferedImage);
     
 }
 
 
-    public: void saveWithImageIO(File* file, BufferedImage* bufferedImage){
+    auto ImagePersistanceUtil::saveWithImageIO(File* file, BufferedImage* bufferedImage) -> void{
 
     ImageWriter* writer = 
                 null
@@ -186,7 +192,7 @@ writer->write(
                             nullptr, 
                             nullptr), iwp);
     
-this->logUtil->putF("Wrote Image: " +file->getAbsolutePath(), this, this->commonStrings->SAVE);
+this->logUtil->putF(JavaString::valueOf("Wrote Image: ") +JavaString::valueOf(file->getAbsolutePath()), this, this->commonStrings->SAVE);
     
 
                 //: 
@@ -258,7 +264,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->SA
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPERSISTANCEUTIL_CPP

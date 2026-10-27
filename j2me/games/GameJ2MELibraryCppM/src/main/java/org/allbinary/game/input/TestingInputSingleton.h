@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_H
         #define ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,39 +36,17 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
+class Canvas;
+class Graphics;
+class GameKeyEvent;
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
-
-      
-#include <org/allbinary/graphics/RectangleFactory.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
-#include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/view/ViewPosition.h>
-
-      
+class RectangleFactory;
+class NullPaintable;
+class PaintableInterface;
+class AllBinaryLayerManager;
+class StringUtil;
+class BasicArrayList;
+class ViewPosition;
 
 
 
@@ -83,22 +66,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/GameInputInterface.h"
-#include "org/allbinary/game/input/InputFactory.h"
-#include "org/allbinary/game/input/GameInputProcessor.h"
-#include "org/allbinary/game/input/GameInputProcessorUtil.h"
-#include "org/allbinary/game/input/TestInputInterface.h"
+class InputFactory;
+class GameInputProcessor;
+class GameInputProcessorUtil;
+class TestInputInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterface {
 
-    private: static TestingInputSingleton* instance() { static std::unique_ptr<TestingInputSingleton> value(new TestingInputSingleton()); return value.get(); }
+    private: static TestingInputSingleton* instance_owner();
+    private: static TestingInputSingleton* instance;
 
     public: static TestingInputSingleton* getInstance();
 
-    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
+    /*protected*/ public: std::vector<GameInputProcessor*> inputProcessorArray;
 
 private: TestingInputSingleton();
 
-    private: PaintableInterface* paintable = NullPaintable::getInstance();
+    private: PaintableInterface* paintable;
 
     public: void initInputProcessors();
 
@@ -124,3 +112,58 @@ private: TestingInputSingleton();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayer.h>
+#endif
+#if __has_include(<org/allbinary/graphics/RectangleFactory.h>)
+#include <org/allbinary/graphics/RectangleFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/view/ViewPosition.h>)
+#include <org/allbinary/view/ViewPosition.h>
+#endif
+#if __has_include("org/allbinary/game/input/GameInputInterface.h")
+#include "org/allbinary/game/input/GameInputInterface.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputProcessorUtil.h")
+#include "org/allbinary/game/input/GameInputProcessorUtil.h"
+#endif
+#if __has_include("org/allbinary/game/input/TestInputInterface.h")
+#include "org/allbinary/game/input/TestInputInterface.h"
+#endif
+
+        #endif
+    

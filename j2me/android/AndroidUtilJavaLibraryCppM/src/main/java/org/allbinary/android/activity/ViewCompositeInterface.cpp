@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_VIEWCOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_VIEWCOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/activity/ViewCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ViewCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual View* getRootView() = 0;
 
-    public: virtual View* getView() = 0;
 
-    public: virtual void runOnUiThread(Runnable* action) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_VIEWCOMPOSITEINTERFACE_CPP

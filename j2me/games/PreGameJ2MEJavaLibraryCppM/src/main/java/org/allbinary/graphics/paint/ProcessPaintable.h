@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,8 +52,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/Paintable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ProcessPaintable: public Paintable {
 
+
+            
+    public: ProcessPaintable();
+        
     public: void process();
 
 };
@@ -57,3 +70,13 @@ class ProcessPaintable: public Paintable {
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/paint/Paintable.h")
+#include "org/allbinary/graphics/paint/Paintable.h"
+#endif
+
+        #endif
+    

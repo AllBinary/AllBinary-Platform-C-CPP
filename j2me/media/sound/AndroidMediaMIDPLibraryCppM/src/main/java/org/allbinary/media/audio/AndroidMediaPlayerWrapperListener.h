@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPERLISTENER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPERLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -17,24 +22,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/media/PlayerListener.h>
-
-      
-#include <android/media/MediaPlayer.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class PlayerListener;
+class MediaPlayer;
+class LogUtil;
+class StringMaker;
+class CommonLabels;
+class CommonStrings;
 
 
 
@@ -53,74 +46,102 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/AndroidMediaPlayerWrapper.h"
+        class AndroidMediaPlayerWrapper;
 #include "org/allbinary/media/audio/OnBufferingUpdateListener.h"
 #include "org/allbinary/media/audio/OnPreparedListener.h"
 #include "org/allbinary/media/audio/OnErrorListener.h"
 #include "org/allbinary/media/audio/OnCompletionListener.h"
 //#include "org/allbinary/media/audio/MediaPlayerOnBufferingUpdateListener.h"
-//#include "org/allbinary/media/audio/AndroidMediaPlayerOnBufferingUpdateListener.h"
+//class AndroidMediaPlayerOnBufferingUpdateListener;
 //#include "org/allbinary/media/audio/MediaPlayerOnPreparedListener.h"
-//#include "org/allbinary/media/audio/AndroidMediaPlayerOnPreparedListener.h"
+//class AndroidMediaPlayerOnPreparedListener;
 //#include "org/allbinary/media/audio/MediaPlayerOnErrorListener.h"
-//#include "org/allbinary/media/audio/AndroidMediaPlayerOnErrorListener.h"
+//class AndroidMediaPlayerOnErrorListener;
 //#include "org/allbinary/media/audio/MediaPlayerOnCompletionListener.h"
-//#include "org/allbinary/media/audio/AndroidMediaPlayerOnCompletionListener.h"
+//class AndroidMediaPlayerOnCompletionListener;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidMediaPlayerWrapperListener
-            : public Object
+            : public virtual Object
          {
+private: class MediaPlayerOnBufferingUpdateListener;
+private: class MediaPlayerOnPreparedListener;
+private: class MediaPlayerOnErrorListener;
+private: class MediaPlayerOnCompletionListener;
+private: class AndroidMediaPlayerOnBufferingUpdateListener;
+private: class AndroidMediaPlayerOnPreparedListener;
+private: class AndroidMediaPlayerOnErrorListener;
+private: class AndroidMediaPlayerOnCompletionListener;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: AndroidMediaPlayerWrapper* androidMediaPlayerWrapper = AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER;
+    private: AndroidMediaPlayerWrapper* androidMediaPlayerWrapper;
 
 public: AndroidMediaPlayerWrapperListener(AndroidMediaPlayerWrapper* androidMediaPlayerWrapper);
 
 //inner= member=true isStatic=
-class MediaPlayerOnBufferingUpdateListener
-            : public Object
+private: class MediaPlayerOnBufferingUpdateListener
+            : public virtual Object
         , public MediaPlayer::OnBufferingUpdateListener {
 
+
+            
+    public: MediaPlayerOnBufferingUpdateListener();
+        
     public: void onBufferingUpdate(MediaPlayer* mediaPlayer, int32_t i);
 
 };
 
             
 //inner= member=true isStatic=
-class MediaPlayerOnPreparedListener
-            : public Object
+private: class MediaPlayerOnPreparedListener
+            : public virtual Object
         , public MediaPlayer::OnPreparedListener {
 
+
+            
+    public: MediaPlayerOnPreparedListener();
+        
     public: void onPrepared(MediaPlayer* mp);
 
 };
 
             
 //inner= member=true isStatic=
-class MediaPlayerOnErrorListener
-            : public Object
+private: class MediaPlayerOnErrorListener
+            : public virtual Object
         , public MediaPlayer::OnErrorListener {
 
+
+            
+    public: MediaPlayerOnErrorListener();
+        
     public: bool onError(MediaPlayer* mp, int32_t what, int32_t extra);
 
 };
 
             
 //inner= member=true isStatic=
-class MediaPlayerOnCompletionListener
-            : public Object
+private: class MediaPlayerOnCompletionListener
+            : public virtual Object
         , public MediaPlayer::OnCompletionListener {
 
+
+            
+    public: MediaPlayerOnCompletionListener();
+        
     public: void onCompletion(MediaPlayer* mp);
 
 };
 
             
 //inner= member=true isStatic=
-class AndroidMediaPlayerOnBufferingUpdateListener: public MediaPlayerOnBufferingUpdateListener {
+private: class AndroidMediaPlayerOnBufferingUpdateListener: public MediaPlayerOnBufferingUpdateListener {
 
     private: const std::string ON_BUFFERING_UPDATE = "onBufferingUpdate()";
 
@@ -133,10 +154,10 @@ public: AndroidMediaPlayerOnBufferingUpdateListener(AndroidMediaPlayerWrapperLis
 };
 
             
-    private: MediaPlayer::OnBufferingUpdateListener* mOnBufferingUpdateListener = new AndroidMediaPlayerOnBufferingUpdateListener(this);
+    private: MediaPlayer::OnBufferingUpdateListener* mOnBufferingUpdateListener;
 
 //inner= member=true isStatic=
-class AndroidMediaPlayerOnPreparedListener: public MediaPlayerOnPreparedListener {
+private: class AndroidMediaPlayerOnPreparedListener: public MediaPlayerOnPreparedListener {
 
     private: const std::string ON_PREPARE = "onPrepare()";
 
@@ -149,10 +170,10 @@ public: AndroidMediaPlayerOnPreparedListener(AndroidMediaPlayerWrapperListener* 
 };
 
             
-    private: MediaPlayer::OnPreparedListener* mOnPreparedListener = new AndroidMediaPlayerOnPreparedListener(this);
+    private: MediaPlayer::OnPreparedListener* mOnPreparedListener;
 
 //inner= member=true isStatic=
-class AndroidMediaPlayerOnErrorListener: public MediaPlayerOnErrorListener {
+private: class AndroidMediaPlayerOnErrorListener: public MediaPlayerOnErrorListener {
 
     private: const std::string ON_ERROR = "onError()";
 
@@ -165,10 +186,10 @@ public: AndroidMediaPlayerOnErrorListener(AndroidMediaPlayerWrapperListener* and
 };
 
             
-    private: MediaPlayer::OnErrorListener* mOnErrorListener = new AndroidMediaPlayerOnErrorListener(this);
+    private: MediaPlayer::OnErrorListener* mOnErrorListener;
 
 //inner= member=true isStatic=
-class AndroidMediaPlayerOnCompletionListener: public MediaPlayerOnCompletionListener {
+private: class AndroidMediaPlayerOnCompletionListener: public MediaPlayerOnCompletionListener {
 
     private: const std::string ON_COMPLETE = "onComplete()";
 
@@ -181,7 +202,7 @@ public: AndroidMediaPlayerOnCompletionListener(AndroidMediaPlayerWrapperListener
 };
 
             
-    private: MediaPlayer::OnCompletionListener* mOnCompletionListener = new AndroidMediaPlayerOnCompletionListener(this);
+    private: MediaPlayer::OnCompletionListener* mOnCompletionListener;
 
 };
 
@@ -189,3 +210,43 @@ public: AndroidMediaPlayerOnCompletionListener(AndroidMediaPlayerWrapperListener
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPERLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPERLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPERLISTENER_H_COMPLETE
+        #if __has_include(<javax/microedition/media/PlayerListener.h>)
+#include <javax/microedition/media/PlayerListener.h>
+#endif
+#if __has_include(<android/media/MediaPlayer.h>)
+#include <android/media/MediaPlayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/media/audio/AndroidMediaPlayerWrapper.h")
+#include "org/allbinary/media/audio/AndroidMediaPlayerWrapper.h"
+#endif
+#if __has_include("org/allbinary/media/audio/OnBufferingUpdateListener.h")
+#include "org/allbinary/media/audio/OnBufferingUpdateListener.h"
+#endif
+#if __has_include("org/allbinary/media/audio/OnPreparedListener.h")
+#include "org/allbinary/media/audio/OnPreparedListener.h"
+#endif
+#if __has_include("org/allbinary/media/audio/OnErrorListener.h")
+#include "org/allbinary/media/audio/OnErrorListener.h"
+#endif
+#if __has_include("org/allbinary/media/audio/OnCompletionListener.h")
+#include "org/allbinary/media/audio/OnCompletionListener.h"
+#endif
+
+        #endif
+    

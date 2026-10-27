@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHE_CPP
+        #define ORG_ALLBINARY_IMAGE_IMAGECACHE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/ImageCache.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -140,62 +150,22 @@
 //#include "org/allbinary/image/HTMLEndProcessor.h"
 #include "org/allbinary/image/ImageFactory.h"
 
-class ImageCache: public ImageCacheBase {
+auto ImageCache::NULL_IMAGE_CACHE_owner() -> ImageCache* { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
+ImageCache* ImageCache::NULL_IMAGE_CACHE = ImageCache::NULL_IMAGE_CACHE_owner();
 
-    public: static ImageCache* NULL_IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: BaseImageLoadingProcessor* concurrentImageLoadingProcessor = new ConcurrentImageLoadingProcessor(this);
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    protected: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
-
-    private: GameGlobalsFactory* gameGlobalsFactory = GameGlobalsFactory::getInstance();
-
-    private: GDResources* gdResources = GDResources::getInstance();
-
-    public: BasicArrayList* loadNowList = new BasicArrayListD();
-
-    public: BasicArrayList* loadSoonList = new BasicArrayListD();
-
-    public: BasicArrayList* loadList = new BasicArrayListD();
-
-    public: BasicArrayList* loadAfterList = new BasicArrayListD();
-
-    private: SynchObject* lock = new SynchObject();
-
-    private: bool firstTime = true;
-
-    private: int32_t totalLoaded = 0;
-
-    public: bool progressEnded = false;
-
-    public: bool hasAnyLazyAnimationFactories = false;
-
-//inner= member=true isStatic=
-class NotHTMLProcessor: public Processor {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    public: void process(){
+ImageCache::NotHTMLProcessor::NotHTMLProcessor() {
+        }
+        
+    auto ImageCache::NotHTMLProcessor::process() -> void{
 concurrentImageLoadingProcessor->runTask();
     
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class NotHTMLEndProcessor: public Processor {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    public: void process(){
+ImageCache::NotHTMLEndProcessor::NotHTMLEndProcessor() {
+        }
+        
+    auto ImageCache::NotHTMLEndProcessor::process() -> void{
 
     ProgressCanvas* progressCanvas = ProgressCanvasFactory::getInstance();;
     
@@ -204,15 +174,10 @@ progressCanvas->endIfPaintedSinceStart();
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class HTMLEndProcessor: public Processor {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    public: void process(){
+ImageCache::HTMLEndProcessor::HTMLEndProcessor() {
+        }
+        
+    auto ImageCache::HTMLEndProcessor::process() -> void{
 
     int32_t size = gdResources->currentLayoutRequiredTotal;;
     
@@ -248,32 +213,20 @@ endProcessor= new NotHTMLEndProcessor();
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class FirstProcessor: public Processor {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    public: void process(){
+ImageCache::FirstProcessor::FirstProcessor() {
+        }
+        
+    auto ImageCache::FirstProcessor::process() -> void{
 this->firstProcess();
     
 }
 
 
-};
-
-            
-    private: Processor* processor = new FirstProcessor();
-
-    private: Processor* endProcessor = Processor::getInstance();
-
-public: ImageCache(){
+ImageCache::ImageCache() : tsUtil(TsUtil::getInstance()), concurrentImageLoadingProcessor(new ConcurrentImageLoadingProcessor(this)), commonStrings(CommonStrings::getInstance()), commonSeps(CommonSeps::getInstance()), resourceUtil(ResourceUtil::getInstance()), gameGlobalsFactory(GameGlobalsFactory::getInstance()), gdResources(GDResources::getInstance()), loadNowList(new BasicArrayListD()), loadSoonList(new BasicArrayListD()), loadList(new BasicArrayListD()), loadAfterList(new BasicArrayListD()), lock(new SynchObject()), processor(new FirstProcessor()), endProcessor(Processor::getInstance()){
 }
 
 
-    public: void firstProcess(){
+    auto ImageCache::firstProcess() -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -314,13 +267,13 @@ logUtil->putF(this->commonStrings->EXCEPTION, this, this->commonStrings->END_MET
 }
 
 
-    public: void addListener(Object* renderer){
+    auto ImageCache::addListener(Object* renderer) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void waitForLoadNow(){
+    auto ImageCache::waitForLoadNow() -> void{
 
                         if(this->firstTime)
                         
@@ -332,7 +285,7 @@ logUtil->putF(this->commonStrings->EXCEPTION, this, this->commonStrings->END_MET
     AllBinaryGameCanvas* abCanvas = dynamic_cast<AllBinaryGameCanvas*>(abToGBUtil->abCanvas);;
     
 
-        while(this->loadNowList->isEmpty() && (!abCanvas->isInitialized() || (abCanvas->isInitialized() && this->hasAnyLazyAnimationFactories)) && !this->progressEnded)
+        while(this->loadNowList->isEmpty() && (!abCanvas->isInitialized() || (abCanvas->isInitialized() && this->hasAnyLazyAnimationFactories)) && !this->progressEnded_)
         {
 Thread::sleep(120);
     
@@ -346,11 +299,9 @@ this->firstTime= false;
 }
 
 
-    private: const std::string LOAD_IMAGE_FOR_ANIMATION = "Load Image Animation";
-
                 //@Throws(Exception.constructor)
             
-    public: void loadImageForAnimation(){
+    auto ImageCache::loadImageForAnimation() -> void{
 
     LazyImageRotationAnimation* lazyImageRotationAnimation = 
                 null
@@ -534,7 +485,7 @@ this->loadNowList->remove(lazyImageRotationAnimation);
 
                 //@Throws(Exception.constructor)
             
-    public: void loadImages(){
+    auto ImageCache::loadImages() -> void{
 
         while(!this->loadList->isEmpty() || !this->loadNowList->isEmpty())
         {
@@ -549,7 +500,7 @@ this->loadNextImage();
 
                 //@Throws(Exception.constructor)
             
-    public: void loadImageForAnimations(){
+    auto ImageCache::loadImageForAnimations() -> void{
 
         while(!this->loadNowList->isEmpty())
         {
@@ -562,7 +513,7 @@ this->loadImageForAnimation();
 
                 //@Throws(Exception.constructor)
             
-    public: void loadRemainingAnimations(){
+    auto ImageCache::loadRemainingAnimations() -> void{
 
         while(!this->loadAfterList->isEmpty() || !this->loadNowList->isEmpty())
         {
@@ -609,9 +560,9 @@ this->loadImageForAnimation();
 
                 //@Throws(Exception.constructor)
             
-    private: bool loadImageForLazyAnimation(LazyImageRotationAnimation* lazyImageRotationAnimation){
+    auto ImageCache::loadImageForLazyAnimation(LazyImageRotationAnimation* lazyImageRotationAnimation) -> bool{
 
-    Image* image = lazyImageRotationAnimation->animationInterfaceFactoryInterface.getImage();;
+    Image* image = lazyImageRotationAnimation->animationInterfaceFactoryInterface->getImage();;
     
 
                         if(this->loadImage(image))
@@ -639,7 +590,7 @@ this->loadImageForAnimation();
 
                 //@Throws(Exception.constructor)
             
-    private: void loadNextImage(){
+    auto ImageCache::loadNextImage() -> void{
 
     Image* image = 
                 null
@@ -676,7 +627,7 @@ this->loadImage(image);
 
                 //@Throws(Exception.constructor)
             
-    private: bool loadImage(Image* image){
+    auto ImageCache::loadImage(Image* image) -> bool{
 
                         if(image->isReady())
                         
@@ -767,7 +718,7 @@ this->loadImage(image);
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(Image* image, Image* image2){
+    auto ImageCache::init(Image* image, Image* image2) -> void{
 image->init(image2->getImage());
     
 }
@@ -775,7 +726,7 @@ image->init(image2->getImage());
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* creatImage(std::string key){
+    auto ImageCache::creatImage(std::string key) -> Image*{
 
     InputStream* inputStream = this->resourceUtil->getResourceAsStream(key);;
     
@@ -795,7 +746,7 @@ image->setName(key);
 
                 //@Throws(Exception.constructor)
             
-    public: Image* get(std::string caller, int32_t width, int32_t height){
+    auto ImageCache::get(std::string caller, int32_t width, int32_t height) -> Image*{
 
     int32_t foundIndex = this->getIndexWH(width, height);;
     
@@ -822,7 +773,7 @@ this->volume= 0;
 image= this->createImage(caller, width, height);
     
 
-                        if(this->nextIndex > this->widths.length -1)
+                        if(this->nextIndex > this->widths->length -1)
                         
                                     {
                                     
@@ -859,7 +810,7 @@ this->listOfList[foundIndex].add(image);
 
                 //@Throws(Exception.constructor)
             
-    public: Image* getWithKey(Object* key){
+    auto ImageCache::getWithKey(Object* key) -> Image*{
 
     Image* image = this->getImage(key);;
     
@@ -896,7 +847,7 @@ image= this->createImageFromInputStream(key, inputStream);
     
 }
 
-this->hashtable.put(key, image);
+this->hashtable->put(key, image);
     
 
                                     }
@@ -910,7 +861,7 @@ this->hashtable.put(key, image);
 }
 
 
-    public: int32_t getIndex(Object* key){
+    auto ImageCache::getIndex(Object* key) -> int32_t{
 
     GDResources* gdResources = GDResources::getInstance();;
     
@@ -947,14 +898,14 @@ this->logUtil->putF((new StringMaker())->append("unable to find key: ")->append(
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImageFromInputStream(Object* key, InputStream* inputStream){
+    auto ImageCache::createImageFromInputStream(Object* key, InputStream* inputStream) -> Image*{
 
     GDLazyResources* gdLazyResources = GDLazyResources::getInstance();;
     
@@ -1022,7 +973,7 @@ this->loadList->add(image);
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImageLater(std::string key, int32_t width, int32_t height){
+    auto ImageCache::createImageLater(std::string key, int32_t width, int32_t height) -> Image*{
 
 
 
@@ -1032,7 +983,7 @@ this->loadList->add(image);
 }
 
 
-    public: BasicArrayList* getAssociated(LazyImageRotationAnimation* lazyImageRotationAnimation){
+    auto ImageCache::getAssociated(LazyImageRotationAnimation* lazyImageRotationAnimation) -> BasicArrayList*{
 
     BasicArrayList* list = new BasicArrayListD();;
     
@@ -1096,7 +1047,7 @@ this->loadAfterList->remove(list->get(index));
 }
 
 
-    public: void add(LazyImageRotationAnimation* lazyImageRotationAnimation){
+    auto ImageCache::add(LazyImageRotationAnimation* lazyImageRotationAnimation) -> void{
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -1113,7 +1064,7 @@ this->loadAfterList->add(lazyImageRotationAnimation);
 
                 //@Throws(Exception.constructor)
             
-    public: void insertFirst(LazyImageRotationAnimation* lazyImageRotationAnimation){
+    auto ImageCache::insertFirst(LazyImageRotationAnimation* lazyImageRotationAnimation) -> void{
 
                         if(this->loadNowList->contains(lazyImageRotationAnimation))
                         
@@ -1143,21 +1094,21 @@ this->runTask();
 }
 
 
-    public: void progressEnded(){
-this->progressEnded= true;
+    auto ImageCache::progressEnded() -> void{
+this->progressEnded_= true;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void runTask(){
+    auto ImageCache::runTask() -> void{
 this->processor->process();
     
 }
 
 
-    public: void initProgress(){
+    auto ImageCache::initProgress() -> void{
 
                         if(this->firstTime)
                         
@@ -1170,7 +1121,7 @@ this->processor->process();
 }
 
 
-    public: bool isLazy(){
+    auto ImageCache::isLazy() -> bool{
 
 
 
@@ -1180,7 +1131,6 @@ this->processor->process();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_IMAGECACHE_CPP

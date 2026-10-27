@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -34,56 +39,22 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <javax/servlet/http/HttpSession.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
-
-      
-#include <org/allbinary/business/user/UserData.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/basket/Basket.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/order/Order.h>
-
-      
-#include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
-
-      
-#include <org/allbinary/business/user/role/UserRole.h>
-
-      
-#include <org/allbinary/business/user/role/UserRoleB.h>
-
-      
-#include <org/allbinary/business/user/role/UserRoleData.h>
-
-      
-#include <org/allbinary/logic/java/bool/BooleanFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
+class HttpServletRequest;
+class HttpSession;
+class PageContext;
+class StoreFrontData;
+class StoreFrontFactory;
+class StoreFrontInterface;
+class UserData;
+class Basket;
+class Order;
+class OrderInterface;
+class PaymentGatewayData;
+class UserRole;
+class UserRoleB;
+class UserRoleData;
+class BooleanFactory;
+class StringValidationUtil;
 
 
 
@@ -103,10 +74,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h"
-#include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
+class WeblisketSessionData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WeblisketSession
-            : public Object
+            : public virtual Object
         , public WeblisketSessionInterface {
 
     private: HttpSession* session;
@@ -173,3 +148,67 @@ public: WeblisketSession(HashMap<Object*, Object*>* hashMap, HttpServletRequest*
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpSession.h>)
+#include <javax/servlet/http/HttpSession.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/UserData.h>)
+#include <org/allbinary/business/user/UserData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/basket/Basket.h>)
+#include <org/allbinary/business/user/commerce/inventory/basket/Basket.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/order/Order.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/Order.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>)
+#include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRole.h>)
+#include <org/allbinary/business/user/role/UserRole.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRoleB.h>)
+#include <org/allbinary/business/user/role/UserRoleB.h>
+#endif
+#if __has_include(<org/allbinary/business/user/role/UserRoleData.h>)
+#include <org/allbinary/business/user/role/UserRoleData.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/bool/BooleanFactory.h>)
+#include <org/allbinary/logic/java/bool/BooleanFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h")
+#include "org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h")
+#include "org/allbinary/logic/communication/http/request/session/WeblisketSessionData.h"
+#endif
+
+        #endif
+    

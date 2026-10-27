@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTHANDLERBASE_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTHANDLERBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/game/input/PlayerGameInput.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
+class PlayerGameInput;
+class StringMaker;
+class EventListenerInterface;
+class EventStrings;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -70,17 +61,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/event/UpKeyEventListenerInterface.h"
+        class UpKeyEventListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UpKeyEventHandlerBase: public BasicEventHandler {
 
     private: static inline const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
 
     private: static inline const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
-: UpKeyEventHandlerBase();
+public: UpKeyEventHandlerBase();
 
     public: void addListener(PlayerGameInput* playerGameInput);
 
@@ -97,7 +92,7 @@ class UpKeyEventHandlerBase: public BasicEventHandler {
 
                 //@Throws(Exception.constructor)
             
-    protected: void processForInteger(int32_t eventObject, EventListenerInterface* eventListenerInterface);
+    /*protected*/ public: void processForInteger(int32_t eventObject, EventListenerInterface* eventListenerInterface);
 
     public: std::string toString();
 
@@ -107,3 +102,34 @@ class UpKeyEventHandlerBase: public BasicEventHandler {
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTHANDLERBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTHANDLERBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTHANDLERBASE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/PlayerGameInput.h>)
+#include <org/allbinary/game/input/PlayerGameInput.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventListenerInterface.h>)
+#include <org/allbinary/logic/util/event/EventListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/input/event/UpKeyEventListenerInterface.h")
+#include "org/allbinary/game/input/event/UpKeyEventListenerInterface.h"
+#endif
+
+        #endif
+    

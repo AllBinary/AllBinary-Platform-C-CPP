@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICPATHFINDERBASE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICPATHFINDERBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,12 +38,8 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class CommonStrings;
+class BasicArrayList;
 
 
 
@@ -57,15 +58,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
+        class MultipassState;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GeographicPathFinderBase
-            : public Object
+            : public virtual Object
          {
 
-    public: static GeographicPathFinderBase* NULL_GEOGRAPHIC_PATH_FINDER_BASE() { static std::unique_ptr<GeographicPathFinderBase> value(new GeographicPathFinderBase()); return value.get(); }
+    private: static GeographicPathFinderBase* NULL_GEOGRAPHIC_PATH_FINDER_BASE_owner();
+    public: static GeographicPathFinderBase* NULL_GEOGRAPHIC_PATH_FINDER_BASE;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+
+            
+    public: GeographicPathFinderBase();
+        
+    /*protected*/ public: CommonStrings* commonStrings;
 
                 //@Throws(Exception.constructor)
             
@@ -81,3 +91,19 @@ class GeographicPathFinderBase
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICPATHFINDERBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICPATHFINDERBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICPATHFINDERBASE_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/MultipassState.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
+#endif
+
+        #endif
+    

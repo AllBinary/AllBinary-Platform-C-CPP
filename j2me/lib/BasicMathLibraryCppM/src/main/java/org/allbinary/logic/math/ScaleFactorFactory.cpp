@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_SCALEFACTORFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_SCALEFACTORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/ScaleFactorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScaleFactorFactory
-            : public Object
-         {
 
-    private: static ScaleFactorFactory* instance() { static std::unique_ptr<ScaleFactorFactory> value(new ScaleFactorFactory()); return value.get(); }
+ScaleFactorFactory::ScaleFactorFactory() {
+        }
+        auto ScaleFactorFactory::instance_owner() -> ScaleFactorFactory* { static std::unique_ptr<ScaleFactorFactory> value(new ScaleFactorFactory()); return value.get(); }
+ScaleFactorFactory* ScaleFactorFactory::instance = ScaleFactorFactory::instance_owner();
 
-    public: static ScaleFactorFactory* getInstance(){
+    auto ScaleFactorFactory::getInstance() -> ScaleFactorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScaleFactorFactory::instance();
+                        return ScaleFactorFactory::instance;
     
 }
 
 
-    public: int32_t DEFAULT_SCALE_FACTOR = 10;
 
-    public: int32_t DEFAULT_SCALE_VALUE = 1024;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_MATH_SCALEFACTORFACTORY_CPP

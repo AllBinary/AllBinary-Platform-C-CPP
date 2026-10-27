@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_BASICTEXTEMAILHELPER_CPP
+        #define ADMIN_TAGHELPERS_BASICTEXTEMAILHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/BasicTextEmailHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,15 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class BasicTextEmailHelper: public TagHelper {
 
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: HashMap<Object*, Object*>* hashMap;
-
-    private: PageContext* pageContext;
-
-public: BasicTextEmailHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+BasicTextEmailHelper::BasicTextEmailHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 this->pageContext= pageContext;
     
 this->hashMap= hashMap;
@@ -94,7 +97,7 @@ this->hashMap= hashMap;
 
                 //@Throws(Exception.constructor)
             
-    public: void send(){
+    auto BasicTextEmailHelper::send() -> void{
 
     std::string adminEmailSubject = this->hashMap->get("Subject");;
     
@@ -115,7 +118,6 @@ adminUserEmailEventHandler->receiveEmailInfo(UserEmailEventNameData::INSTALLER, 
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_BASICTEXTEMAILHELPER_CPP

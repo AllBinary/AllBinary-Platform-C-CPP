@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_GAMELEVELDISPLAYCHANGEEVENTLISTENERSFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_GAMELEVELDISPLAYCHANGEEVENTLISTENERSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/GameLevelDisplayChangeEventListenersFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,25 +70,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameLevelDisplayChangeEventListenersFactory
-            : public Object
-         {
 
-    private: static GameLevelDisplayChangeEventListenersFactory* instance() { static std::unique_ptr<GameLevelDisplayChangeEventListenersFactory> value(new GameLevelDisplayChangeEventListenersFactory()); return value.get(); }
+GameLevelDisplayChangeEventListenersFactory::GameLevelDisplayChangeEventListenersFactory() : list(new BasicArrayListD()) {
+        }
+        auto GameLevelDisplayChangeEventListenersFactory::instance_owner() -> GameLevelDisplayChangeEventListenersFactory* { static std::unique_ptr<GameLevelDisplayChangeEventListenersFactory> value(new GameLevelDisplayChangeEventListenersFactory()); return value.get(); }
+GameLevelDisplayChangeEventListenersFactory* GameLevelDisplayChangeEventListenersFactory::instance = GameLevelDisplayChangeEventListenersFactory::instance_owner();
 
-    public: static GameLevelDisplayChangeEventListenersFactory* getInstance(){
+    auto GameLevelDisplayChangeEventListenersFactory::getInstance() -> GameLevelDisplayChangeEventListenersFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameLevelDisplayChangeEventListenersFactory::instance();
+                        return GameLevelDisplayChangeEventListenersFactory::instance;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    public: void add(DisplayChangeEventListener* displayChangeEventListener){
+    auto GameLevelDisplayChangeEventListenersFactory::add(DisplayChangeEventListener* displayChangeEventListener) -> void{
 this->list->add(displayChangeEventListener);
     
 DisplayChangeEventHandler::getInstance()->addListenerInterface(displayChangeEventListener);
@@ -86,7 +94,7 @@ DisplayChangeEventHandler::getInstance()->addListenerInterface(displayChangeEven
 }
 
 
-    public: void clear(){
+    auto GameLevelDisplayChangeEventListenersFactory::clear() -> void{
 
     BasicEventHandler* displayChangeEventHandler = DisplayChangeEventHandler::getInstance();;
     
@@ -111,7 +119,6 @@ this->list->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_GAMELEVELDISPLAYCHANGEEVENTLISTENERSFACTORY_CPP

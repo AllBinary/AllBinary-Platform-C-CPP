@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ARRAYUTIL_CPP
+        #define ORG_ALLBINARY_UTIL_ARRAYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/ArrayUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,35 +65,33 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ArrayUtil
-            : public Object
-         {
 
-    private: static ArrayUtil* instance() { static std::unique_ptr<ArrayUtil> value(new ArrayUtil()); return value.get(); }
+ArrayUtil::ArrayUtil() : mathUtil(MathUtil::getInstance()) {
+        }
+        auto ArrayUtil::instance_owner() -> ArrayUtil* { static std::unique_ptr<ArrayUtil> value(new ArrayUtil()); return value.get(); }
+ArrayUtil* ArrayUtil::instance = ArrayUtil::instance_owner();
 
-    public: static ArrayUtil* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArrayUtil::instance();
-    
-}
-
-
-    private: MathUtil* mathUtil = MathUtil::getInstance();
-
-    public: std::vector<Object*> copyOf(std::vector<Object*> original, int32_t newLength){
+    auto ArrayUtil::getInstance() -> ArrayUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->copyOfType(original, newLength, original.getClass());;
+                        return ArrayUtil::instance;
     
 }
 
 
-    public: std::vector<Object*> copyOfType(std::vector<Object*> original, int32_t newLength, Class* newType){
+    auto ArrayUtil::copyOf(std::vector<Object*> original, int32_t newLength) -> std::vector<Object*>{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->copyOfType(original, newLength, Class::forType(typeid(original)));;
+    
+}
+
+
+    auto ArrayUtil::copyOfType(std::vector<Object*> original, int32_t newLength, Class* newType) -> std::vector<Object*>{
 
     std::vector<Object*> copy = std::vector<Object*>(newLength);;
     
@@ -98,7 +106,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: std::vector<int8_t> copyOfbyte(std::vector<int8_t> original, int32_t newLength){
+    auto ArrayUtil::copyOfbyte(std::vector<int8_t> original, int32_t newLength) -> std::vector<int8_t>{
 
     std::vector<int8_t> copy = std::vector<int8_t>(newLength);;
     
@@ -113,7 +121,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: std::vector<int16_t> copyOfshort(std::vector<int16_t> original, int32_t newLength){
+    auto ArrayUtil::copyOfshort(std::vector<int16_t> original, int32_t newLength) -> std::vector<int16_t>{
 
     std::vector<int16_t> copy = std::vector<int16_t>(newLength);;
     
@@ -128,7 +136,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: std::vector<int32_t> copyOfint(std::vector<int32_t> original, int32_t newLength){
+    auto ArrayUtil::copyOfint(std::vector<int32_t> original, int32_t newLength) -> std::vector<int32_t>{
 
     std::vector<int32_t> copy = std::vector<int32_t>(newLength);;
     
@@ -143,7 +151,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: std::vector<int64_t> copyOflong(std::vector<int64_t> original, int32_t newLength){
+    auto ArrayUtil::copyOflong(std::vector<int64_t> original, int32_t newLength) -> std::vector<int64_t>{
 
     std::vector<int64_t> copy = std::vector<int64_t>(newLength);;
     
@@ -158,7 +166,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: std::vector<char> copyOfchar(std::vector<char> original, int32_t newLength){
+    auto ArrayUtil::copyOfchar(std::vector<char> original, int32_t newLength) -> std::vector<char>{
 
     std::vector<char> copy = std::vector<char>(newLength);;
     
@@ -173,7 +181,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: std::vector<float> copyOffloat(std::vector<float> original, int32_t newLength){
+    auto ArrayUtil::copyOffloat(std::vector<float> original, int32_t newLength) -> std::vector<float>{
 
     std::vector<float> copy = std::vector<float>(newLength);;
     
@@ -188,7 +196,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: std::vector<double> copyOfdouble(std::vector<double> original, int32_t newLength){
+    auto ArrayUtil::copyOfdouble(std::vector<double> original, int32_t newLength) -> std::vector<double>{
 
     std::vector<double> copy = std::vector<double>(newLength);;
     
@@ -203,7 +211,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: std::vector<bool> copyOfboolean(std::vector<bool> original, int32_t newLength){
+    auto ArrayUtil::copyOfboolean(std::vector<bool> original, int32_t newLength) -> std::vector<bool>{
 
     std::vector<bool> copy = std::vector<bool>(newLength);;
     
@@ -218,7 +226,7 @@ System.arraycopy(original, 0, copy, 0, this->mathUtil->min(original.size(), newL
 }
 
 
-    public: void reverse(std::vector<int32_t> intArray){
+    auto ArrayUtil::reverse(std::vector<int32_t> intArray) -> void{
 
     int32_t length = intArray.size() -1;;
     
@@ -246,7 +254,7 @@ intArray[length -index]= temp;
 }
 
 
-    public: void flip(std::vector<int32_t> intArray, int32_t width, int32_t height){
+    auto ArrayUtil::flip(std::vector<int32_t> intArray, int32_t width, int32_t height) -> void{
 
     int32_t length = height -1;;
     
@@ -290,7 +298,7 @@ intArray[rowIndex +x]= temp;
 }
 
 
-    public: std::string toStringFromTwoDimensionaArray(std::vector<std::vector<int32_t>> twoDimensionalIntArray){
+    auto ArrayUtil::toStringFromTwoDimensionaArray(std::vector<std::vector<int32_t>> twoDimensionalIntArray) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -340,7 +348,7 @@ stringBuffer->append(commonSeps->NEW_LINE);
 }
 
 
-    public: std::string toStringFromObjectArray(std::vector<Object*> objectArray){
+    auto ArrayUtil::toStringFromObjectArray(std::vector<Object*> objectArray) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -369,7 +377,7 @@ stringBuffer->append(commonSeps->COMMA_SEP);
 }
 
 
-    public: std::string toStringFromByteArray(std::vector<int8_t> byteArray){
+    auto ArrayUtil::toStringFromByteArray(std::vector<int8_t> byteArray) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -398,7 +406,6 @@ stringBuffer->append(commonSeps->COMMA_SEP);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_ARRAYUTIL_CPP

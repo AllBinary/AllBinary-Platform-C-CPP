@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_OSGI_FRAMEWORK_BUNDLECONTEXT_CPP
+        #define ORG_OSGI_FRAMEWORK_BUNDLECONTEXT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/osgi/framework/BundleContext.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -39,25 +49,8 @@
 #include "org/osgi/framework/ServiceRegistration.h"
 #include "org/osgi/framework/ServiceReference.h"
 
-class BundleContext {
+//Interface - declared in the header
 
-    public: virtual std::vector<Bundle*> getBundles() = 0;
 
-                //@Throws(BundleException.constructor)
-            
-    public: virtual Bundle* installBundle(std::string location) = 0;
 
-    public: virtual ServiceRegistration* registerService(std::string clazz, Object* service, Dictionary* properties) = 0;
-
-    public: virtual Object* getService(ServiceReference* reference) = 0;
-
-                //@Throws(InvalidSyntaxException.constructor)
-            
-    public: virtual std::vector<ServiceReference*> getServiceReferences(std::string clazz, std::string filter) = 0;
-
-    public: virtual ServiceReference* getServiceReference(std::string clazz) = 0;
-
-};
-
-            
-
+        #endif //ORG_OSGI_FRAMEWORK_BUNDLECONTEXT_CPP

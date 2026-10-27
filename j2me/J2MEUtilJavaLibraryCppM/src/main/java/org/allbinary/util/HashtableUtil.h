@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_UTIL_HASHTABLEUTIL_H
         #define ORG_ALLBINARY_UTIL_HASHTABLEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,11 +37,7 @@
             #include "java/lang/Object.h"
         
 #include <java/util/Enumeration.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
+class JsType;
 
 
 
@@ -55,20 +56,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/util/EnumerationUtil.h"
+        class EnumerationUtil;
 #include "org/allbinary/util/ABHashtable.h"
-#include "org/allbinary/util/BasicArrayListS.h"
-#include "org/allbinary/util/BasicArrayList.h"
+class BasicArrayListS;
+class BasicArrayList;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HashtableUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static HashtableUtil* instance() { static std::unique_ptr<HashtableUtil> value(new HashtableUtil()); return value.get(); }
+    private: static HashtableUtil* instance_owner();
+    private: static HashtableUtil* instance;
 
     public: static HashtableUtil* getInstance();
 
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
+
+            
+    public: HashtableUtil();
+        
+    private: EnumerationUtil* enumerationUtil;
 
     public: void putAll(ABHashtable<Object*, Object*>* fromHashtable, ABHashtable<Object*, Object*>* hashtable);
 
@@ -82,3 +92,28 @@ class HashtableUtil
 
 
         #endif //ORG_ALLBINARY_UTIL_HASHTABLEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_HASHTABLEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_UTIL_HASHTABLEUTIL_H_COMPLETE
+        #if __has_include(<java/util/Enumeration.h>)
+#include <java/util/Enumeration.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include("org/allbinary/util/EnumerationUtil.h")
+#include "org/allbinary/util/EnumerationUtil.h"
+#endif
+#if __has_include("org/allbinary/util/ABHashtable.h")
+#include "org/allbinary/util/ABHashtable.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayListS.h")
+#include "org/allbinary/util/BasicArrayListS.h"
+#endif
+#if __has_include("org/allbinary/util/BasicArrayList.h")
+#include "org/allbinary/util/BasicArrayList.h"
+#endif
+
+        #endif
+    

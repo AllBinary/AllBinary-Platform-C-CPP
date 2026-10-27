@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonsMappingPaintable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,17 +80,8 @@
 #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
 #include "org/allbinary/input/motion/button/TouchButtonBlankResource.h"
 
-class TouchButtonsMappingPaintable: public Paintable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: int32_t foregroundColor;
-
-    private: std::vector<std::vector<Paintable*>> paintableTable = std::vector<std::vector<Paintable*>>(0, std::vector<Paintable*>(0));
-
-    private: TouchButtonLocationHelper* touchButtonLocationHelper = new TouchButtonLocationHelper();
-
-public: TouchButtonsMappingPaintable(BasicColor* basicColor){
+TouchButtonsMappingPaintable::TouchButtonsMappingPaintable(BasicColor* basicColor) : logUtil(LogUtil::getInstance()), paintableTable(std::vector<std::vector<Paintable*>>(0, std::vector<Paintable*>(0))), touchButtonLocationHelper(new TouchButtonLocationHelper()){
 this->foregroundColor= basicColor->intValue();
     
 this->init();
@@ -88,7 +89,7 @@ this->init();
 }
 
 
-    private: void init(){
+    auto TouchButtonsMappingPaintable::init() -> void{
 
         try {
             this->paintableTable= this->createPaintableTable();
@@ -109,7 +110,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "updateRectangle", &e);
 
                 //@Throws(Exception.constructor)
             
-    private: std::vector<std::vector<Paintable*>> createPaintableTable(){
+    auto TouchButtonsMappingPaintable::createPaintableTable() -> std::vector<std::vector<Paintable*>>{
 
     int32_t totalColumns = this->touchButtonLocationHelper->getTotalColumns();;
     
@@ -154,7 +155,7 @@ this->paintableTable[index][rowIndex]= TouchButton::createButton(BasicTouchInput
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto TouchButtonsMappingPaintable::paint(Graphics* graphics) -> void{
 
     int32_t totalColumns = this->touchButtonLocationHelper->getTotalColumns();;
     
@@ -184,7 +185,6 @@ this->paintableTable[index][rowIndex].paint(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_CPP

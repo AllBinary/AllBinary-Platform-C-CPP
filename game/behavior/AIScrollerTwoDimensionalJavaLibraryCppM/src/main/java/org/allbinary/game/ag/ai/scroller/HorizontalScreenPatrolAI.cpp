@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_HORIZONTALSCREENPATROLAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_HORIZONTALSCREENPATROLAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/HorizontalScreenPatrolAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -91,27 +101,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HorizontalScreenPatrolAI: public BasicAI {
+int32_t HorizontalScreenPatrolAI::SOUND = SmallIntegerSingletonFactory::getInstance()->getAt(433);
 
-    public: static inline int32_t SOUND = SmallIntegerSingletonFactory::getInstance()->getAt(433);
-
-    protected: int32_t keyDirection = Canvas::LEFT;
-
-    private: DisplayInfoSingleton* displayInfoSingleton = DisplayInfoSingleton::getInstance();
-
-    private: int32_t firingX = this->displayInfoSingleton->getLastHalfWidth();
-
-    private: int32_t firedIndex = 0;
-
-    private: const int32_t MAX_FIRE = 28;
-
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(240);
-
-    private: PlayerQueue* secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
-
-    private: Sound* sound;
-
-public: HorizontalScreenPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+HorizontalScreenPatrolAI::HorizontalScreenPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput), keyDirection(Canvas::LEFT), displayInfoSingleton(DisplayInfoSingleton::getInstance()), firingX(this->displayInfoSingleton->getLastHalfWidth()), timeDelayHelper(new TimeDelayHelper(240)), secondaryPlayerQueue(SecondaryPlayerQueueFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -129,7 +121,7 @@ this->sound= dynamic_cast<Sound*>(hashtable->get(HorizontalScreenPatrolAI::SOUND
                                     
 
 
-                            throw new Exception("No Sound Provided!!");
+                            throw Exception("No Sound Provided!!");
                     
 
                                     }
@@ -139,8 +131,8 @@ this->sound= dynamic_cast<Sound*>(hashtable->get(HorizontalScreenPatrolAI::SOUND
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
-super.processKeyAI(this->keyDirection);
+    auto HorizontalScreenPatrolAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
+BasicAI::processKeyAI(this->keyDirection);
     
 
                         if(this->timeDelayHelper->isTimeTNT())
@@ -174,7 +166,7 @@ this->secondaryPlayerQueue->add(this->sound);
                         if(currentOwnerLayerX < this->firingX && currentOwnerLayerX >  -layerInterface->getWidth())
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_NUM1);
+                                    BasicAI::processKeyAI(Canvas::KEY_NUM1);
     
 
     AllBinaryGameLayerManager* gameLayerManager = dynamic_cast<AllBinaryGameLayerManager*>(allBinaryLayerManager);;
@@ -213,11 +205,10 @@ this->firedIndex++;
 }
 
 
-    protected: void nextDirection(){
+    auto HorizontalScreenPatrolAI::nextDirection() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_HORIZONTALSCREENPATROLAI_CPP

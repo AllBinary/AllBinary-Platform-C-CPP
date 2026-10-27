@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_H
         #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/category/CategoryComponent.h>
-
-      
-#include <org/allbinary/business/category/CategoryData.h>
-
-      
-#include <org/allbinary/business/category/CategoryFactoryInterface.h>
-
-      
-#include <org/allbinary/business/category/CategoryInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/control/crypt/file/CryptFileWriter.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
+class CategoryComponent;
+class CategoryData;
+class CategoryFactoryInterface;
+class CategoryInterface;
+class LogUtil;
+class CryptFileWriter;
+class AbFile;
+class CommonStrings;
+class Document;
 
 
 
@@ -77,25 +64,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CategoryPrivateTree
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CategoryFactoryInterface* categoryFactoryInterface;
+    /*protected*/ public: CategoryFactoryInterface* categoryFactoryInterface;
 
 public: CategoryPrivateTree(CategoryFactoryInterface* categoryFactoryInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void save(CategoryInterface* categoryInterface);
+    /*protected*/ public: void save(CategoryInterface* categoryInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void delete_(CategoryInterface* categoryInterface);
+    /*protected*/ public: void delete_(CategoryInterface* categoryInterface);
 
 };
 
@@ -103,3 +94,37 @@ public: CategoryPrivateTree(CategoryFactoryInterface* categoryFactoryInterface);
 
 
         #endif //ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYPRIVATETREE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/category/CategoryComponent.h>)
+#include <org/allbinary/business/category/CategoryComponent.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryData.h>)
+#include <org/allbinary/business/category/CategoryData.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryFactoryInterface.h>)
+#include <org/allbinary/business/category/CategoryFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/category/CategoryInterface.h>)
+#include <org/allbinary/business/category/CategoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/crypt/file/CryptFileWriter.h>)
+#include <org/allbinary/logic/control/crypt/file/CryptFileWriter.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+
+        #endif
+    

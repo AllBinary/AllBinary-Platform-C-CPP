@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_H
         #define ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/time/TimeDelayHelper.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoTimeDelayHelper: public TimeDelayHelper {
 
-    public: static NoTimeDelayHelper* SINGLETON() { static std::unique_ptr<NoTimeDelayHelper> value(new NoTimeDelayHelper()); return value.get(); }
+    private: static NoTimeDelayHelper* SINGLETON_owner();
+    public: static NoTimeDelayHelper* SINGLETON;
 
 public: NoTimeDelayHelper();
 
@@ -67,3 +77,13 @@ public: NoTimeDelayHelper();
 
 
         #endif //ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_NOTIMEDELAYHELPER_H_COMPLETE
+        #if __has_include("org/allbinary/time/TimeDelayHelper.h")
+#include "org/allbinary/time/TimeDelayHelper.h"
+#endif
+
+        #endif
+    

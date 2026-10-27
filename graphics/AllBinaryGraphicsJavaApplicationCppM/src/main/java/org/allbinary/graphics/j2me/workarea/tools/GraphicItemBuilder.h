@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMBUILDER_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMBUILDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/w3c/dom/Node.h>
-
-      
+class Node;
 
 
 
@@ -52,12 +55,16 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+        class PointsDomUtil;
+class LinesGraphicItem;
+class GraphicItemInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GraphicItemBuilder
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
@@ -72,3 +79,22 @@ private: GraphicItemBuilder();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMBUILDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMBUILDER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMBUILDER_H_COMPLETE
+        #if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+#endif
+
+        #endif
+    

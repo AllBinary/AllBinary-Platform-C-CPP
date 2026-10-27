@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,38 +39,16 @@
             #include "java/lang/Exception.h"
         
 #include <java/security/Security.h>
-
-      
 #include <java/security/spec/KeySpec.h>
-
-      
-#include <javax/crypto/Cipher.h>
-
-      
-#include <javax/crypto/SecretKey.h>
-
-      
-#include <javax/crypto/SecretKeyFactory.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
+class Cipher;
+class SecretKey;
+class SecretKeyFactory;
+class TsUtil;
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/bouncycastle/jce/provider/BouncyCastleProvider.h>
-
-      
+class NullUtil;
+class PreLogUtil;
+class CommonStrings;
+class BouncyCastleProvider;
 
 
 
@@ -84,17 +67,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
-#include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
-#include "org/allbinary/logic/system/security/crypt/jcehelper/SecretComposite.h"
+        class BaseSecretComposite;
+class KeySpecFactory;
+class SecretComposite;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbCrypt
-            : public Object
+            : public virtual Object
         , public CryptInterface {
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
-    private: BaseSecretComposite* secretComposite = BaseSecretComposite::NULL_SECRET_COMPOSITE;
+    private: BaseSecretComposite* secretComposite;
 
     private: std::string algorithm;
 
@@ -112,3 +99,52 @@ public: AbCrypt(std::string algorithm);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_H_COMPLETE
+        #if __has_include(<java/security/Security.h>)
+#include <java/security/Security.h>
+#endif
+#if __has_include(<java/security/spec/KeySpec.h>)
+#include <java/security/spec/KeySpec.h>
+#endif
+#if __has_include(<javax/crypto/Cipher.h>)
+#include <javax/crypto/Cipher.h>
+#endif
+#if __has_include(<javax/crypto/SecretKey.h>)
+#include <javax/crypto/SecretKey.h>
+#endif
+#if __has_include(<javax/crypto/SecretKeyFactory.h>)
+#include <javax/crypto/SecretKeyFactory.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/init/crypt/jcehelper/CryptInterface.h>)
+#include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/bouncycastle/jce/provider/BouncyCastleProvider.h>)
+#include <org/bouncycastle/jce/provider/BouncyCastleProvider.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h")
+#include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h")
+#include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/crypt/jcehelper/SecretComposite.h")
+#include "org/allbinary/logic/system/security/crypt/jcehelper/SecretComposite.h"
+#endif
+
+        #endif
+    

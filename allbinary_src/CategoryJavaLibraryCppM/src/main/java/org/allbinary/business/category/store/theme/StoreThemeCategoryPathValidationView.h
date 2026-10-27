@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVALIDATIONVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,14 +35,8 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class Document;
+class Node;
 
 
 
@@ -57,8 +56,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/store/theme/StoreThemeCategoryPathView.h"
-#include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
+class StoreThemeCategoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreThemeCategoryPathValidationView: public StoreThemeCategoryPathView, public ValidationInterface {
 
 public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface* categoryInterface);
@@ -85,3 +88,25 @@ public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface* catego
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVALIDATIONVIEW_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/control/validate/ValidationInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationInterface.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/business/category/store/theme/StoreThemeCategoryPathView.h")
+#include "org/allbinary/business/category/store/theme/StoreThemeCategoryPathView.h"
+#endif
+#if __has_include("org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h")
+#include "org/allbinary/business/category/store/theme/StoreThemeCategoryInterface.h"
+#endif
+
+        #endif
+    

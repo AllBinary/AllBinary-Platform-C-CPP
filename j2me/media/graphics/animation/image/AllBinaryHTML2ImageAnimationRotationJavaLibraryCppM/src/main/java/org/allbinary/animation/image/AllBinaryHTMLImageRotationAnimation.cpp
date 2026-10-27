@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYHTMLIMAGEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYHTMLIMAGEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryHTMLImageRotationAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -92,25 +102,8 @@
 #include "org/allbinary/animation/image/AlphaBaseProcessor.h"
 #include "org/allbinary/animation/image/AlphaProcessor.h"
 
-class AllBinaryHTMLImageRotationAnimation: public ImageBaseRotationAnimation {
 
-    private: ImageRotationUtil* imageRotationUtil = ImageRotationUtil::getInstance();
-
-    private: ImageModifierUtil* imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
-
-    private: Image* originalImage;
-
-    private: const std::vector<Image*> twoImages = std::vector<Image*>(2);
-
-    private: const std::vector<Canvas*> canvasSurfaceArray = std::vector<Canvas*>(2);
-
-    private: Image* imageToShow;
-
-    private: int32_t bufferedImageIndex= 0;
-
-    private: AlphaBaseProcessor* alphaProcessor = AlphaBaseProcessor::getInstance();
-
-protected: AllBinaryHTMLImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+AllBinaryHTMLImageRotationAnimation::AllBinaryHTMLImageRotationAnimation(Image* originalImage, Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior), imageRotationUtil(ImageRotationUtil::getInstance()), imageModifierUtil(ImageModifierUtil::getInstanceOrCreate()), twoImages(std::vector<Image*>(2)), canvasSurfaceArray(std::vector<Canvas*>(2)), alphaProcessor(AlphaBaseProcessor::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -132,7 +125,7 @@ this->canvasSurfaceArray[1]= this->getCanvasSurface(this->twoImages[1]);
 }
 
 
-    public: Canvas* getCanvasSurface(Image* image){
+    auto AllBinaryHTMLImageRotationAnimation::getCanvasSurface(Image* image) -> Canvas*{
 
     PlaynMutableImage* htmlImage = dynamic_cast<PlaynMutableImage*>(image);;
     
@@ -156,7 +149,7 @@ canvas->translate(this->originalImage->getWidth() /2, this->originalImage->getHe
 }
 
 
-    public: void setBasicColorP(BasicColor* basicColor){
+    auto AllBinaryHTMLImageRotationAnimation::setBasicColorP(BasicColor* basicColor) -> void{
 
     bool changed = false;;
     
@@ -171,7 +164,7 @@ canvas->translate(this->originalImage->getWidth() /2, this->originalImage->getHe
 
                                     }
                                 
-super.setBasicColorP(basicColor);
+ImageBaseRotationAnimation::setBasicColorP(basicColor);
     
 
                         if(changed)
@@ -185,7 +178,7 @@ super.setBasicColorP(basicColor);
 }
 
 
-    public: void setAlpha(int32_t alpha){
+    auto AllBinaryHTMLImageRotationAnimation::setAlpha(int32_t alpha) -> void{
 
     bool changed = false;;
     
@@ -198,7 +191,7 @@ super.setBasicColorP(basicColor);
 
                                     }
                                 
-super.setAlpha(alpha);
+ImageBaseRotationAnimation::setAlpha(alpha);
     
 
                         if(changed)
@@ -214,29 +207,29 @@ this->updateImage();
 }
 
 
-    public: void nextRotation(){
-super.nextRotation();
+    auto AllBinaryHTMLImageRotationAnimation::nextRotation() -> void{
+ImageBaseRotationAnimation::nextRotation();
     
 this->updateImage();
     
 }
 
 
-    public: void previousRotation(){
-super.previousRotation();
+    auto AllBinaryHTMLImageRotationAnimation::previousRotation() -> void{
+ImageBaseRotationAnimation::previousRotation();
     
 this->updateImage();
     
 }
 
 
-    private: void updateImage(){
+    auto AllBinaryHTMLImageRotationAnimation::updateImage() -> void{
 
     Canvas* canvasSurface = this->canvasSurfaceArray[this->bufferedImageIndex];;
     
 canvasSurface->save();
     
-this->imageRotationUtil->rotateImageCanvasSurfaceClear(this->originalImage, this->twoImages[this->bufferedImageIndex], canvasSurface, this->angleInfo.getAngle() +90);
+this->imageRotationUtil->rotateImageCanvasSurfaceClear(this->originalImage, this->twoImages[this->bufferedImageIndex], canvasSurface, this->angleInfo->getAngle() +90);
     
 this->alphaProcessor->setAlpha(this->imageModifierUtil, this->originalImage, this->twoImages[this->bufferedImageIndex], this->alphaP);
     
@@ -249,15 +242,15 @@ this->swap();
 }
 
 
-    public: void setFrame(int32_t index){
-super.setFrame(index);
+    auto AllBinaryHTMLImageRotationAnimation::setFrame(int32_t index) -> void{
+ImageBaseRotationAnimation::setFrame(index);
     
 this->updateImage();
     
 }
 
 
-    public: void swap(){
+    auto AllBinaryHTMLImageRotationAnimation::swap() -> void{
 this->imageToShow= this->twoImages[this->bufferedImageIndex];
     
 
@@ -278,13 +271,12 @@ this->imageToShow= this->twoImages[this->bufferedImageIndex];
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto AllBinaryHTMLImageRotationAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawImage(this->imageToShow, x, y, this->anchor);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYHTMLIMAGEROTATIONANIMATION_CPP

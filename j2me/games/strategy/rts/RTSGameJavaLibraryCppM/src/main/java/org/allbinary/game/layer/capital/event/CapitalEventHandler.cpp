@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/capital/event/CapitalEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,15 +65,14 @@
         #include "org/allbinary/game/layer/capital/event/CapitalEventListenerInterface.h"
 #include "org/allbinary/game/layer/capital/event/CapitalEvent.h"
 
-class CapitalEventHandler: public BasicEventHandler {
 
-public: CapitalEventHandler(){
+CapitalEventHandler::CapitalEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto CapitalEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     CapitalEventListenerInterface* capitalEventListenerInterface = (dynamic_cast<CapitalEventListenerInterface*>(eventListenerInterface));;
     
@@ -72,7 +81,6 @@ capitalEventListenerInterface->onCapitalChangeEvent(dynamic_cast<CapitalEvent*>(
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLER_CPP

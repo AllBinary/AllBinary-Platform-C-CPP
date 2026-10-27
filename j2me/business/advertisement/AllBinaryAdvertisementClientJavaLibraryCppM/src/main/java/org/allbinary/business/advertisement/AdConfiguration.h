@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/direction/Direction.h>
-
-      
-#include <org/allbinary/game/state/GameState.h>
-
-      
+class Direction;
+class GameState;
 
 
 
@@ -56,8 +57,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdConfiguration
-            : public Object
+            : public virtual Object
          {
 
     public: std::string INNERACTIVE;
@@ -86,3 +91,16 @@ public: AdConfiguration(std::vector<Object*> advertIdArray);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_H_COMPLETE
+        #if __has_include(<org/allbinary/direction/Direction.h>)
+#include <org/allbinary/direction/Direction.h>
+#endif
+#if __has_include(<org/allbinary/game/state/GameState.h>)
+#include <org/allbinary/game/state/GameState.h>
+#endif
+
+        #endif
+    

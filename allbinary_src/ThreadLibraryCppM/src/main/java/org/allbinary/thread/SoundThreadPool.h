@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/thread/ThreadPool.h"
+        class ThreadPool;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SoundThreadPool
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThreadPool* instance() { static std::unique_ptr<ThreadPool> value(new ThreadPool("Sound", 1, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
+    private: static ThreadPool* instance_owner();
+    private: static ThreadPool* instance;
 
     public: static ThreadPool* getInstance();
 
+
+            
+    public: SoundThreadPool();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_H_COMPLETE
+        #if __has_include("org/allbinary/thread/ThreadPool.h")
+#include "org/allbinary/thread/ThreadPool.h"
+#endif
+
+        #endif
+    

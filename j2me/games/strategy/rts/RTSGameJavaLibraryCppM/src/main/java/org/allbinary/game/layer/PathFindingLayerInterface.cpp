@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PATHFINDINGLAYERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PATHFINDINGLAYERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,31 +73,8 @@
 #include "org/allbinary/game/layer/SelectionHudPaintable.h"
 #include "org/allbinary/game/layer/RTSLayer2LogHelper.h"
 
-class PathFindingLayerInterface: public WaypointLayerInterface, public GameKeyEventSourceInterface, public GroupInterfaceCompositeInterface, public DestroyableInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getEndGeographicMapCellPositionList() = 0;
 
-    public: virtual bool shouldHandleStartSameAsEnd() = 0;
 
-    public: virtual GeographicMapCellPositionAreaBase* getGeographicMapCellPositionArea() = 0;
-
-    public: virtual SelectionHudPaintable* getHudPaintable() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void handleCost(PathFindingLayerInterface* ownerLayer) = 0;
-
-    public: virtual PathFindingLayerInterface* getParentLayer() = 0;
-
-    public: virtual RTSLayer2LogHelper* getRTSLayer2LogHelper() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void setTarget(PathFindingLayerInterface* targetGameLayer) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_PATHFINDINGLAYERINTERFACE_CPP

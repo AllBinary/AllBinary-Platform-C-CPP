@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_STATISTICALMATCHCONSTRAINTS_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_STATISTICALMATCHCONSTRAINTS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StatisticalMatchConstraints
-            : public Object
+            : public virtual Object
          {
 
 public: StatisticalMatchConstraints();
@@ -60,3 +69,10 @@ public: StatisticalMatchConstraints();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_STATISTICALMATCHCONSTRAINTS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_STATISTICALMATCHCONSTRAINTS_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_STATISTICALMATCHCONSTRAINTS_H_COMPLETE
+        
+        #endif
+    

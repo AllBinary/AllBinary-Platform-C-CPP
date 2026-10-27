@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_UPSSHIPPINGMODULE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_UPSSHIPPINGMODULE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/modules/UpsShippingModule.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,19 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h"
 
-class UpsShippingModule
-            : public Object
-        , public ShippingInterface {
 
-    private: const std::string name = "UPS";
-
-    private: const std::string description = "Brown Mail";
-
-public: UpsShippingModule(){
+UpsShippingModule::UpsShippingModule(){
 }
 
 
-    public: Money* getCost(OrderInterface* order){
+    auto UpsShippingModule::getCost(OrderInterface* order) -> Money*{
 
 
 
@@ -74,7 +77,7 @@ public: UpsShippingModule(){
 }
 
 
-    public: std::string getDescription(){
+    auto UpsShippingModule::getDescription() -> std::string{
 
 
 
@@ -84,7 +87,7 @@ public: UpsShippingModule(){
 }
 
 
-    public: std::string getName(){
+    auto UpsShippingModule::getName() -> std::string{
 
 
 
@@ -94,7 +97,6 @@ public: UpsShippingModule(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_UPSSHIPPINGMODULE_CPP

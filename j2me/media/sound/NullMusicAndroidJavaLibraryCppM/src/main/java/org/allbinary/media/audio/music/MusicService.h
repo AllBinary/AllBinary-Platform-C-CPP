@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSERVICE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSERVICE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/media/audio/music/BaseMusicService.h>
-
-      
 
 
 
@@ -49,11 +52,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MusicService: public BaseMusicService {
 
+
+            
+    public: MusicService();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSERVICE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSERVICE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSERVICE_H_COMPLETE
+        #if __has_include(<org/allbinary/media/audio/music/BaseMusicService.h>)
+#include <org/allbinary/media/audio/music/BaseMusicService.h>
+#endif
+
+        #endif
+    

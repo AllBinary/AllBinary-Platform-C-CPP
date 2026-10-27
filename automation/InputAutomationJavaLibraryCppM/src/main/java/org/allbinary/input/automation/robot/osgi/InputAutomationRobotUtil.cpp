@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTUTIL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,13 +62,14 @@
         #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotInterfaceWrapper.h"
 #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h"
 
-class InputAutomationRobotUtil
-            : public Object
-         {
+
+InputAutomationRobotUtil::InputAutomationRobotUtil(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static InputAutomationRobotChangeEvent* getChangeEvent(InputRobotInterface* inputRobotInterface){
+    auto InputAutomationRobotUtil::getChangeEvent(InputRobotInterface* inputRobotInterface) -> InputAutomationRobotChangeEvent*{
 
     InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper = new InputAutomationRobotInterfaceWrapper(inputRobotInterface);;
     
@@ -74,11 +85,6 @@ class InputAutomationRobotUtil
 }
 
 
-private: InputAutomationRobotUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTUTIL_CPP

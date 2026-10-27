@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_TABLEINTERFACE_CPP
+        #define ADMIN_TAGHELPERS_TABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/TableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,9 +55,8 @@
         #include "admin/taghelpers/BasicTableInterface.h"
 #include "admin/taghelpers/ModifyTableInterface.h"
 
-class TableInterface: public BasicTableInterface, public ModifyTableInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_TABLEINTERFACE_CPP

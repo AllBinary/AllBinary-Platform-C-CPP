@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/category/CategoryLoader.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -89,11 +99,8 @@
         #include "org/allbinary/data/tree/category/CategoryModifierTree.h"
 #include "org/allbinary/data/tree/category/CategoryLoaderInterface.h"
 
-class CategoryLoader: public CategoryModifierTree, public CategoryLoaderInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: CategoryLoader(CategoryFactoryInterface* categoryFactoryInterface) : CategoryModifierTree(categoryFactoryInterface){
+CategoryLoader::CategoryLoader(CategoryFactoryInterface* categoryFactoryInterface) : CategoryModifierTree(categoryFactoryInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,10 +108,10 @@ public: CategoryLoader(CategoryFactoryInterface* categoryFactoryInterface) : Cat
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, "CategoryLoader(CategoryFactoryInterface categoryFactoryInterface)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "CategoryLoader(CategoryFactoryInterface categoryFactoryInterface)");
     
 
                                     }
@@ -113,7 +120,7 @@ public: CategoryLoader(CategoryFactoryInterface* categoryFactoryInterface) : Cat
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Document* getDoc(CategoryInterface* categoryInterface){
+    auto CategoryLoader::getDoc(CategoryInterface* categoryInterface) -> Document*{
 
         try {
             
@@ -142,7 +149,7 @@ public: CategoryLoader(CategoryFactoryInterface* categoryFactoryInterface) : Cat
                                     
 
 
-                            throw new Exception("Could Not Create Directory");
+                            throw Exception("Could Not Create Directory");
                     
 
                                     }
@@ -177,7 +184,7 @@ this->save(categoryInterface);
                             
 
 
-                            throw new Exception("Null Category");
+                            throw Exception("Null Category");
                     
 
                         }
@@ -187,7 +194,7 @@ this->save(categoryInterface);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     
@@ -202,7 +209,7 @@ this->logUtil->put("Could Not Log Category", this, "getDoc", e);
     
 }
 
-this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
+this->logUtil->put(this->commonStrings->FAILURE, this, "getDoc", &e);
     
 
                                     }
@@ -219,7 +226,7 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: CategoryInterface* get(CategoryInterface* categoryInterface){
+    auto CategoryLoader::get(CategoryInterface* categoryInterface) -> CategoryInterface*{
 
         try {
             
@@ -239,10 +246,10 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -259,14 +266,14 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: CategoryInterface* get(Document* document){
+    auto CategoryLoader::get(Document* document) -> CategoryInterface*{
 
         try {
             
     Node* categoryNode = DomSearchHelper::getNode(CategoryData::getInstance()->NAME, document->getChildNodes());;
     
 
-    CategoryInterface* loadedCategoryInterface = this->categoryFactoryInterface.getRootInstanceFromNode(categoryNode);;
+    CategoryInterface* loadedCategoryInterface = this->categoryFactoryInterface->getRootInstanceFromNode(categoryNode);;
     
 
 
@@ -279,10 +286,10 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -299,7 +306,7 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: CategoryInterface* getAll(CategoryInterface* categoryInterface){
+    auto CategoryLoader::getAll(CategoryInterface* categoryInterface) -> CategoryInterface*{
 
         try {
             
@@ -316,10 +323,10 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -336,14 +343,14 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: CategoryInterface* getAll(Document* document){
+    auto CategoryLoader::getAll(Document* document) -> CategoryInterface*{
 
         try {
             
     Node* categoryNode = DomSearchHelper::getNode(CategoryData::getInstance()->NAME, document->getChildNodes());;
     
 
-    CategoryInterface* loadedCategoryInterface = this->categoryFactoryInterface.getRootInstanceFromNode(categoryNode);;
+    CategoryInterface* loadedCategoryInterface = this->categoryFactoryInterface->getRootInstanceFromNode(categoryNode);;
     
 
 
@@ -356,10 +363,10 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -376,7 +383,7 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: CategoryInterface* getAll(CategoryInterface* parentCategoryInterface, NodeList* categoryNodeList){
+    auto CategoryLoader::getAll(CategoryInterface* parentCategoryInterface, NodeList* categoryNodeList) -> CategoryInterface*{
 
         try {
             
@@ -402,7 +409,7 @@ this->logUtil->put(this->commonStrings.FAILURE, this, "getDoc", &e);
                         
                                     {
                                     
-    CategoryInterface* categoryInterface = dynamic_cast<CategoryInterface*>(this->categoryFactoryInterface.getInstance(parentCategoryInterface->getHierarchy()->getRoot(), parentCategoryInterface, categoryNode));;
+    CategoryInterface* categoryInterface = dynamic_cast<CategoryInterface*>(this->categoryFactoryInterface->getInstance(parentCategoryInterface->getHierarchy()->getRoot(), parentCategoryInterface, categoryNode));;
     
 parentCategoryInterface->addChild(categoryInterface);
     
@@ -425,10 +432,10 @@ parentCategoryInterface->addChild(categoryInterface);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -445,7 +452,7 @@ parentCategoryInterface->addChild(categoryInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: CategoryInterface* addProperties(CategoryInterface* loadedCategoryInterface, NodeList* categoryNodeList){
+    auto CategoryLoader::addProperties(CategoryInterface* loadedCategoryInterface, NodeList* categoryNodeList) -> CategoryInterface*{
 
         try {
             
@@ -494,10 +501,10 @@ loadedCategoryInterface->addChildProperty(categoryPropertiesInterface);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.GET, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->GET, &e);
     
 
                                     }
@@ -513,7 +520,6 @@ loadedCategoryInterface->addChildProperty(categoryPropertiesInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADER_CPP

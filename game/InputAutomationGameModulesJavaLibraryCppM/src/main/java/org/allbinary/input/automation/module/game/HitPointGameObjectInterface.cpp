@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/HitPointGameObjectInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,15 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/game/MeteredGameObjectInterface.h"
 
-class HitPointGameObjectInterface: public MeteredGameObjectInterface {
+//Interface - declared in the header
 
-    public: virtual bool isMoreThan(float aFloat) = 0;
 
-    public: virtual bool isCloseDeath() = 0;
 
-    public: virtual bool isDamaged() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECTINTERFACE_CPP

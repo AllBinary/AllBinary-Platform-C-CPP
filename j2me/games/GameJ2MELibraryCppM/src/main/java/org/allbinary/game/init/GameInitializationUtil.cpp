@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INIT_GAMEINITIALIZATIONUTIL_CPP
+        #define ORG_ALLBINARY_GAME_INIT_GAMEINITIALIZATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/init/GameInitializationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,27 +83,15 @@
         #include "org/allbinary/game/init/GameInitializationInterface.h"
 #include "org/allbinary/game/init/BasicBuildGameInitializerFactory.h"
 
-class GameInitializationUtil
-            : public Object
-         {
 
-    private: static GameInitializationUtil* instance() { static std::unique_ptr<GameInitializationUtil> value(new GameInitializationUtil()); return value.get(); }
-
-    public: static GameInitializationUtil* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInitializationUtil::instance();
-    
-}
-
-
-    public: GameInitializedEvent* EVENT = new GameInitializedEvent(this);
+GameInitializationUtil::GameInitializationUtil() : EVENT(new GameInitializedEvent(this)) {
+        }
+        auto GameInitializationUtil::instance_owner() -> GameInitializationUtil* { static std::unique_ptr<GameInitializationUtil> value(new GameInitializationUtil()); return value.get(); }
+GameInitializationUtil* GameInitializationUtil::instance = GameInitializationUtil::instance_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: void initDemo(AbeClientInformationInterface* abeClientInformation, MyCanvas* canvas, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface){
+    auto GameInitializationUtil::initDemo(AbeClientInformationInterface* abeClientInformation, MyCanvas* canvas, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface) -> void{
 
     MainFeatureFactory* mainFeatureFactory = MainFeatureFactory::getInstance();;
     
@@ -123,7 +121,7 @@ class GameInitializationUtil
                                     
     ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-gameInitializationInterface->init(abeClientInformation, canvas->getCustomCommandListener(), resourceLoadingLevelFactory->LOAD_EARLY.getLevel());
+gameInitializationInterface->init(abeClientInformation, canvas->getCustomCommandListener(), resourceLoadingLevelFactory->LOAD_EARLY->getLevel());
     
 this->EVENT->setResourceLoadingLevel(resourceLoadingLevelFactory->LOAD_EARLY);
     
@@ -134,7 +132,7 @@ this->EVENT->setResourceLoadingLevel(resourceLoadingLevelFactory->LOAD_EARLY);
                             
 
 
-                            throw new Exception("No Loading Feature Available");
+                            throw Exception("No Loading Feature Available");
                     
 
                         }
@@ -149,7 +147,7 @@ GameInitializedEventHandler::getInstance()->fireEvent(this->EVENT);
 
                 //@Throws(Exception.constructor)
             
-    public: void initGame(AbeClientInformationInterface* abeClientInformation, MyCanvas* canvas, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface){
+    auto GameInitializationUtil::initGame(AbeClientInformationInterface* abeClientInformation, MyCanvas* canvas, BasicBuildGameInitializerFactory* gameInitializationInterfaceFactoryInterface) -> void{
 
                         if(ChangedGameFeatureListener::getInstance()->isChangedFeature(MainFeatureFactory::getInstance()->STATIC))
                         
@@ -160,7 +158,7 @@ GameInitializedEventHandler::getInstance()->fireEvent(this->EVENT);
 
     ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-gameInitializationInterface->init(abeClientInformation, canvas->getCustomCommandListener(), resourceLoadingLevelFactory->LOAD_ALL.getLevel());
+gameInitializationInterface->init(abeClientInformation, canvas->getCustomCommandListener(), resourceLoadingLevelFactory->LOAD_ALL->getLevel());
     
 this->EVENT->setResourceLoadingLevel(resourceLoadingLevelFactory->LOAD_ALL);
     
@@ -174,7 +172,16 @@ ChangedGameFeatureListener::getInstance()->remove(MainFeatureFactory::getInstanc
 }
 
 
-};
+    auto GameInitializationUtil::getInstance() -> GameInitializationUtil*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GameInitializationUtil::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_INIT_GAMEINITIALIZATIONUTIL_CPP

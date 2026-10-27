@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_ALLBINARYTILEDLAYERFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_ALLBINARYTILEDLAYERFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/AllBinaryTiledLayerFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,17 +46,8 @@
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
-class AllBinaryTiledLayerFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual AllBinaryTiledLayer* getInstance(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual AllBinaryTiledLayer* getMiniInstance(RaceTrackData* raceTrackData) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_ALLBINARYTILEDLAYERFACTORYINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/canvas/transition/progress/AndroidTitleProgressBar.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,22 +80,14 @@
 //#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarPortionSetProgressRunnable.h"
 //#include "org/allbinary/graphics/canvas/transition/progress/TitleProgressBarSetProgressRunnable.h"
 
-class AndroidTitleProgressBar: public ProgressCanvas {
 
-//inner= member=true isStatic=
-class TitleProgressBarSetProgressRunnable
-            : public Object
-        , public Runnable {
-
-    private: AndroidTitleProgressBar* androidTitleProgressBar;
-
-: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar){
+AndroidTitleProgressBar::TitleProgressBarSetProgressRunnable::TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar){
 this->androidTitleProgressBar= androidTitleProgressBar;
     
 }
 
 
-    public: void run(){
+    auto AndroidTitleProgressBar::TitleProgressBarSetProgressRunnable::run() -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -110,23 +112,13 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class TitleProgressBarPortionSetProgressRunnable
-            : public Object
-        , public Runnable {
-
-    private: AndroidTitleProgressBar* androidTitleProgressBar;
-
-: TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar){
+AndroidTitleProgressBar::TitleProgressBarPortionSetProgressRunnable::TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar* androidTitleProgressBar){
 this->androidTitleProgressBar= androidTitleProgressBar;
     
 }
 
 
-    public: void run(){
+    auto AndroidTitleProgressBar::TitleProgressBarPortionSetProgressRunnable::run() -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -151,23 +143,13 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class ShowTitleProgressBarRunnable
-            : public Object
-        , public Runnable {
-
-    private: AndroidTitleProgressBar* androidTitleProgressBar;
-
-: ShowTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar){
+AndroidTitleProgressBar::ShowTitleProgressBarRunnable::ShowTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar){
 this->androidTitleProgressBar= androidTitleProgressBar;
     
 }
 
 
-    public: void run(){
+    auto AndroidTitleProgressBar::ShowTitleProgressBarRunnable::run() -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -192,23 +174,13 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class DismissTitleProgressBarRunnable
-            : public Object
-        , public Runnable {
-
-    private: AndroidTitleProgressBar* androidTitleProgressBar;
-
-: DismissTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar){
+AndroidTitleProgressBar::DismissTitleProgressBarRunnable::DismissTitleProgressBarRunnable(AndroidTitleProgressBar* androidTitleProgressBar){
 this->androidTitleProgressBar= androidTitleProgressBar;
     
 }
 
 
-    public: void run(){
+    auto AndroidTitleProgressBar::DismissTitleProgressBarRunnable::run() -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -230,22 +202,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-};
-
-            
-    private: showTitleProgressBarRunnable = new ShowTitleProgressBarRunnable(this);
-
-    private: dismissTitleProgressBarRunnable = new DismissTitleProgressBarRunnable(this);
-
-    private: progressDialogPortionSetProgressRunnable = new TitleProgressBarPortionSetProgressRunnable(this);
-
-    private: progressDialogSetProgressRunnable = new TitleProgressBarSetProgressRunnable(this);
-
-    private: ProgressActivityInterface* progressActivity = NullProgressActivity::NULL_PROGRESS_ACTIVITY;
-
-    private: int32_t portion = 0;
-
-protected: AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
+AndroidTitleProgressBar::AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor), showTitleProgressBarRunnable(new ShowTitleProgressBarRunnable(this)), dismissTitleProgressBarRunnable(new DismissTitleProgressBarRunnable(this)), progressDialogPortionSetProgressRunnable(new TitleProgressBarPortionSetProgressRunnable(this)), progressDialogSetProgressRunnable(new TitleProgressBarSetProgressRunnable(this)), progressActivity(NullProgressActivity::NULL_PROGRESS_ACTIVITY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -255,13 +212,13 @@ protected: AndroidTitleProgressBar(std::string title, BasicColor* backgroundBasi
 }
 
 
-    public: void init(ProgressActivityInterface* activity){
+    auto AndroidTitleProgressBar::init(ProgressActivityInterface* activity) -> void{
 this->progressActivity= activity;
     
 }
 
 
-    public: bool isInitialized(){
+    auto AndroidTitleProgressBar::isInitialized() -> bool{
 
                         if(this->progressActivity != NullProgressActivity::NULL_PROGRESS_ACTIVITY)
                         
@@ -288,12 +245,12 @@ this->progressActivity= activity;
 }
 
 
-    public: void start(){
+    auto AndroidTitleProgressBar::start() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->START_METHOD_NAME);
     
-super.start();
+ProgressCanvas::start();
     
 this->progressActivity->runOnUiThread(this->showTitleProgressBarRunnable);
     
@@ -308,14 +265,14 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->ST
 }
 
 
-    public: void end(){
+    auto AndroidTitleProgressBar::end() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->END_METHOD_NAME);
     
 this->progressActivity->runOnUiThread(this->dismissTitleProgressBarRunnable);
     
-super.end();
+ProgressCanvas::end();
     
 
                 //: 
@@ -328,10 +285,10 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->EN
 }
 
 
-    public: void addPortion(int32_t value, std::string text, int32_t index){
+    auto AndroidTitleProgressBar::addPortion(int32_t value, std::string text, int32_t index) -> void{
 
         try {
-            super.addPortion(value, text, index);
+            ProgressCanvas::addPortion(value, text, index);
     
 this->portion= value;
     
@@ -348,10 +305,10 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->ADD_PORTION, &e);
 }
 
 
-    public: void addNormalPortion(int32_t value, std::string text){
+    auto AndroidTitleProgressBar::addNormalPortion(int32_t value, std::string text) -> void{
 
         try {
-            super.addNormalPortion(value, text);
+            ProgressCanvas::addNormalPortion(value, text);
     
 this->portion= value;
     
@@ -368,10 +325,10 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->ADD_PORTION, &e);
 }
 
 
-    protected: void setValue(int32_t value){
+    auto AndroidTitleProgressBar::setValue(int32_t value) -> void{
 
         try {
-            super.setValue(value);
+            ProgressCanvas::setValue(value);
     
 this->progressActivity->runOnUiThread(this->progressDialogSetProgressRunnable);
     
@@ -386,15 +343,14 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "setValue", &e);
 }
 
 
-    public: void waitUntilDisplayed(){
+    auto AndroidTitleProgressBar::waitUntilDisplayed() -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto AndroidTitleProgressBar::paint(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDTITLEPROGRESSBAR_CPP

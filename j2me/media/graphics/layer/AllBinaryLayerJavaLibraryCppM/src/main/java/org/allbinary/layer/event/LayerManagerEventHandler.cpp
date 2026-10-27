@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTHANDLER_CPP
+        #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/event/LayerManagerEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,27 +76,24 @@
 #include "org/allbinary/layer/event/LayerManagerEvent.h"
 #include "org/allbinary/layer/event/LayerManagerEventListenerInterface.h"
 
-class LayerManagerEventHandler: public BasicEventHandler {
+auto LayerManagerEventHandler::instance_owner() -> LayerManagerEventHandler* { static std::unique_ptr<LayerManagerEventHandler> value(new LayerManagerEventHandler()); return value.get(); }
+LayerManagerEventHandler* LayerManagerEventHandler::instance = LayerManagerEventHandler::instance_owner();
 
-    private: static LayerManagerEventHandler* instance() { static std::unique_ptr<LayerManagerEventHandler> value(new LayerManagerEventHandler()); return value.get(); }
-
-    public: static LayerManagerEventHandler* getInstance(){
+    auto LayerManagerEventHandler::getInstance() -> LayerManagerEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerManagerEventHandler::instance();
+                        return LayerManagerEventHandler::instance;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: LayerManagerEventHandler(){
+LayerManagerEventHandler::LayerManagerEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(LayerManagerEventListener* layerManagerEventListener){
+    auto LayerManagerEventHandler::addListener(LayerManagerEventListener* layerManagerEventListener) -> void{
 
                         if(!this->list->contains(layerManagerEventListener))
                         
@@ -99,25 +106,25 @@ private: LayerManagerEventHandler(){
 }
 
 
-    public: void removeAllListeners(){
+    auto LayerManagerEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto LayerManagerEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto LayerManagerEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -136,25 +143,21 @@ layerManagerEventListener->onCreateLayerManagerEvent(dynamic_cast<LayerManagerEv
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
-
-    public: const std::string CREATE = "Create";
-
-    public: const std::string DELETE = "Delete";
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void fireDeleteEvent(AllBinaryEventObject* eventObject){
+    auto LayerManagerEventHandler::fireDeleteEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -173,7 +176,7 @@ layerManagerEventListener->onDeleteLayerManagerEvent(dynamic_cast<LayerManagerEv
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -206,7 +209,7 @@ layerManagerEventListenerInterface->onDeleteLayerManagerEvent(dynamic_cast<Layer
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -219,7 +222,7 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto LayerManagerEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     LayerManagerEventListenerInterface* layerManagerEventListenerInterface = (dynamic_cast<LayerManagerEventListenerInterface*>(eventListenerInterface));;
     
@@ -228,7 +231,6 @@ layerManagerEventListenerInterface->onCreateLayerManagerEvent(dynamic_cast<Layer
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTHANDLER_CPP

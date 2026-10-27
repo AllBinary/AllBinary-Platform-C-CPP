@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/CellPositionFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class Graphics;
+class CellPositionFactory;
+class BasicColor;
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -67,21 +60,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
-#include "org/allbinary/input/motion/button/CommonButtons.h"
-#include "org/allbinary/input/motion/button/TouchButton.h"
-#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
-#include "org/allbinary/input/motion/button/TouchButtonBlankResource.h"
+        class TouchButtonLocationHelper;
+class CommonButtons;
+class TouchButton;
+class BasicTouchInputFactory;
+class TouchButtonBlankResource;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonsMappingPaintable: public Paintable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: int32_t foregroundColor;
+    /*protected*/ public: int32_t foregroundColor;
 
-    private: std::vector<std::vector<Paintable*>> paintableTable = std::vector<std::vector<Paintable*>>(0, std::vector<Paintable*>(0));
+    private: std::vector<std::vector<Paintable*>> paintableTable;
 
-    private: TouchButtonLocationHelper* touchButtonLocationHelper = new TouchButtonLocationHelper();
+    private: TouchButtonLocationHelper* touchButtonLocationHelper;
 
 public: TouchButtonsMappingPaintable(BasicColor* basicColor);
 
@@ -99,3 +96,43 @@ public: TouchButtonsMappingPaintable(BasicColor* basicColor);
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/CellPositionFactory.h>)
+#include <org/allbinary/graphics/CellPositionFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonLocationHelper.h")
+#include "org/allbinary/input/motion/button/TouchButtonLocationHelper.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/CommonButtons.h")
+#include "org/allbinary/input/motion/button/CommonButtons.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButton.h")
+#include "org/allbinary/input/motion/button/TouchButton.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/BasicTouchInputFactory.h")
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonBlankResource.h")
+#include "org/allbinary/input/motion/button/TouchButtonBlankResource.h"
+#endif
+
+        #endif
+    

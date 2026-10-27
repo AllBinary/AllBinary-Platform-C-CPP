@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/BufferedGameCanvasPaintHelper.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,34 +85,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class BufferedGameCanvasPaintHelper: public ProcessPaintable {
 
-    private: static inline const int32_t MAX_IMAGES = 4;
-
-    private: Canvas* gameCanvas = NullCanvas::NULL_CANVAS;
-
-    private: const std::vector<Image*> offScreenImage = std::vector<Image*>(BufferedGameCanvasPaintHelper::MAX_IMAGES);
-
-    private: Image* previousImage = NullImage::NULL_IMAGE;
-
-    private: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::createInstance(BufferedGameCanvasPaintHelper::MAX_IMAGES);
-
-    private: CircularIndexUtil* drawCircularIndexUtil = CircularIndexUtil::createInstanceAt(BufferedGameCanvasPaintHelper::MAX_IMAGES -1, BufferedGameCanvasPaintHelper::MAX_IMAGES);
-
-public: BufferedGameCanvasPaintHelper(AllBinaryGameCanvas* gameCanvas){
+BufferedGameCanvasPaintHelper::BufferedGameCanvasPaintHelper(AllBinaryGameCanvas* gameCanvas) : gameCanvas(NullCanvas::NULL_CANVAS), offScreenImage(std::vector<Image*>(BufferedGameCanvasPaintHelper::MAX_IMAGES)), previousImage(NullImage::NULL_IMAGE), circularIndexUtil(CircularIndexUtil::createInstance(BufferedGameCanvasPaintHelper::MAX_IMAGES)), drawCircularIndexUtil(CircularIndexUtil::createInstanceAt(BufferedGameCanvasPaintHelper::MAX_IMAGES -1, BufferedGameCanvasPaintHelper::MAX_IMAGES)), anchor(Anchor::TOP_LEFT){
 
 
 
-                            throw new Exception("No Longer Used");
+                            throw Exception("No Longer Used");
                     
 }
 
 
-    public: void process(){
+    auto BufferedGameCanvasPaintHelper::process() -> void{
 
     MyCanvas* myCanvas = (dynamic_cast<MyCanvas*>(this->gameCanvas));;
     
-myCanvas->draw(this->offScreenImage[this->circularIndexUtil->getIndex()].getGraphics());
+myCanvas->draw(this->offScreenImage[this->circularIndexUtil->getIndex()]->getGraphics());
     
 this->circularIndexUtil->next();
     
@@ -111,9 +108,7 @@ this->drawCircularIndexUtil->next();
 }
 
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paint(Graphics* graphics){
+    auto BufferedGameCanvasPaintHelper::paint(Graphics* graphics) -> void{
 this->previousImage= this->offScreenImage[this->drawCircularIndexUtil->getIndex()];
     
 graphics->drawImage(this->previousImage, 0, 0, this->anchor);
@@ -121,7 +116,6 @@ graphics->drawImage(this->previousImage, 0, 0, this->anchor);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_CPP

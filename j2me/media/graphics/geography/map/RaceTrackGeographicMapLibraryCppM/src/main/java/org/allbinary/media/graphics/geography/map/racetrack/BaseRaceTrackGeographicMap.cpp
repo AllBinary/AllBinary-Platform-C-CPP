@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASERACETRACKGEOGRAPHICMAP_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASERACETRACKGEOGRAPHICMAP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/BaseRaceTrackGeographicMap.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,17 +82,8 @@
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
-class BaseRaceTrackGeographicMap: public BasicGeographicMap, public RaceTrackGeographicMapInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: RaceTrackInfo* raceTrackInfo;
-
-    private: RaceTrackData* raceTrackData;
-
-    private: BasicGeographicMap* miniGeographicMap;
-
-public: BaseRaceTrackGeographicMap(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData, AllBinaryTiledLayer* tiledLayer, BasicGeographicMap* miniGeographicMap, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory* geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory* geographicMapCellTypeFactory) : BasicGeographicMap(raceTrackInfo->getId(), raceTrackInfo->getName(), raceTrackData->getCellTypeIdToGeographicMapCellTypeArray(), tiledLayer, raceTrackInfo->getForegroundBasicColor(), raceTrackInfo->getBackgroundBasicColor(), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory){
+BaseRaceTrackGeographicMap::BaseRaceTrackGeographicMap(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData, AllBinaryTiledLayer* tiledLayer, BasicGeographicMap* miniGeographicMap, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory* geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory* geographicMapCellTypeFactory) : BasicGeographicMap(raceTrackInfo->getId(), raceTrackInfo->getName(), raceTrackData->getCellTypeIdToGeographicMapCellTypeArray(), tiledLayer, raceTrackInfo->getForegroundBasicColor(), raceTrackInfo->getBackgroundBasicColor(), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -113,7 +114,7 @@ this->logUtil->putF(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR);
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 
                                     }
@@ -133,7 +134,7 @@ this->logUtil->putF(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR);
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 
                                     }
@@ -141,7 +142,7 @@ this->logUtil->putF(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR);
 }
 
 
-    public: RaceTrackInfo* getRaceTrackInfo(){
+    auto BaseRaceTrackGeographicMap::getRaceTrackInfo() -> RaceTrackInfo*{
 
 
 
@@ -151,19 +152,19 @@ this->logUtil->putF(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR);
 }
 
 
-    public: void setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo){
+    auto BaseRaceTrackGeographicMap::setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo) -> void{
 this->raceTrackInfo= aRaceTrackInfo;
     
 }
 
 
-    public: void setMiniBasicGeographicMap(BasicGeographicMap* miniBasicGeographicMap){
+    auto BaseRaceTrackGeographicMap::setMiniBasicGeographicMap(BasicGeographicMap* miniBasicGeographicMap) -> void{
 this->miniGeographicMap= miniBasicGeographicMap;
     
 }
 
 
-    public: BasicGeographicMap* getMiniBasicGeographicMap(){
+    auto BaseRaceTrackGeographicMap::getMiniBasicGeographicMap() -> BasicGeographicMap*{
 
 
 
@@ -173,7 +174,7 @@ this->miniGeographicMap= miniBasicGeographicMap;
 }
 
 
-    public: RaceTrackData* getRaceTrackData(){
+    auto BaseRaceTrackGeographicMap::getRaceTrackData() -> RaceTrackData*{
 
 
 
@@ -183,13 +184,12 @@ this->miniGeographicMap= miniBasicGeographicMap;
 }
 
 
-    public: void setRaceTrackData(RaceTrackData* raceTrackData){
+    auto BaseRaceTrackGeographicMap::setRaceTrackData(RaceTrackData* raceTrackData) -> void{
 this->raceTrackData= raceTrackData;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASERACETRACKGEOGRAPHICMAP_CPP

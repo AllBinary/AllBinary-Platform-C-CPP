@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONEVENTHANDLER_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATIONEVENTHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
 
 
 
@@ -49,9 +52,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AnimationEventHandler: public BasicEventHandler {
 
-    private: static AnimationEventHandler* eventHandler() { static std::unique_ptr<AnimationEventHandler> value(new AnimationEventHandler()); return value.get(); }
+    private: static AnimationEventHandler* eventHandler_owner();
+    private: static AnimationEventHandler* eventHandler;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static AnimationEventHandler* getInstance();
@@ -64,3 +72,13 @@ private: AnimationEventHandler();
 
 
         #endif //ORG_ALLBINARY_ANIMATION_ANIMATIONEVENTHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_ANIMATIONEVENTHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_ANIMATIONEVENTHANDLER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+
+        #endif
+    

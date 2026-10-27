@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TRACKING_GENERICTRACKINGLAYERCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_TRACKING_GENERICTRACKINGLAYERCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tracking/GenericTrackingLayerCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,25 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericTrackingLayerCircularStaticPool: public AllBinaryLayerCircularPool {
+auto GenericTrackingLayerCircularStaticPool::SINGLETON_owner() -> GenericTrackingLayerCircularStaticPool* { static std::unique_ptr<GenericTrackingLayerCircularStaticPool> value(new GenericTrackingLayerCircularStaticPool()); return value.get(); }
+GenericTrackingLayerCircularStaticPool* GenericTrackingLayerCircularStaticPool::SINGLETON = GenericTrackingLayerCircularStaticPool::SINGLETON_owner();
 
-    private: static GenericTrackingLayerCircularStaticPool* SINGLETON() { static std::unique_ptr<GenericTrackingLayerCircularStaticPool> value(new GenericTrackingLayerCircularStaticPool()); return value.get(); }
+GenericTrackingLayerCircularStaticPool::GenericTrackingLayerCircularStaticPool(){
+}
 
-    public: static GenericTrackingLayerCircularStaticPool* getInstance(){
+
+    auto GenericTrackingLayerCircularStaticPool::getInstance() -> GenericTrackingLayerCircularStaticPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericTrackingLayerCircularStaticPool::SINGLETON();
+                        return GenericTrackingLayerCircularStaticPool::SINGLETON;
     
 }
 
 
-private: GenericTrackingLayerCircularStaticPool(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_TRACKING_GENERICTRACKINGLAYERCIRCULARSTATICPOOL_CPP

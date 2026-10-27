@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWDATA_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WorkFlowData
-            : public Object
+            : public virtual Object
          {
 
-    private: static WorkFlowData* instance() { static std::unique_ptr<WorkFlowData> value(new WorkFlowData()); return value.get(); }
+    private: static WorkFlowData* instance_owner();
+    private: static WorkFlowData* instance;
 
     public: static WorkFlowData* getInstance();
 
@@ -72,3 +82,10 @@ private: WorkFlowData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_WORKFLOWDATA_H_COMPLETE
+        
+        #endif
+    

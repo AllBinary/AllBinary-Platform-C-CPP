@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_STORECATEGORYFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_STORECATEGORYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/store/StoreCategoryFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,18 +91,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreCategoryFactory: public CategoryAbstractFactory, public CategoryFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+StoreCategoryFactory::StoreCategoryFactory(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()){
 
-    private: TransformInfoInterface* transformInfoInterface;
-
-public: StoreCategoryFactory(TransformInfoInterface* transformInfoInterface){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, "StoreCategoryFactory(TransformInfoInterface transformInfoInterface)");
+                                    this->logUtil->putF(this->commonStrings->START, this, "StoreCategoryFactory(TransformInfoInterface transformInfoInterface)");
     
 
                                     }
@@ -102,7 +107,7 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface* getRootInstance(){
+    auto StoreCategoryFactory::getRootInstance() -> CategoryInterface*{
 
         try {
             
@@ -119,10 +124,10 @@ this->transformInfoInterface= transformInfoInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "getInstance(String, int)", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(String, int)", &e);
     
 
                                     }
@@ -138,7 +143,7 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface* getRootInstance(AbPath* categoryPath){
+    auto StoreCategoryFactory::getRootInstance(AbPath* categoryPath) -> CategoryInterface*{
 
         try {
             
@@ -158,7 +163,7 @@ this->transformInfoInterface= transformInfoInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, this, "getInstance(String, int)", &e);
@@ -177,7 +182,7 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface* getRootInstanceFromNode(Node* node){
+    auto StoreCategoryFactory::getRootInstanceFromNode(Node* node) -> CategoryInterface*{
 
         try {
             
@@ -200,10 +205,10 @@ this->transformInfoInterface= transformInfoInterface;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "getInstance(String, int)", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "getInstance(String, int)", &e);
     
 
                                     }
@@ -219,7 +224,6 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_STORECATEGORYFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERSELECTEDLOGHELPER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERSELECTEDLOGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSLayerSelectedLogHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,29 +88,23 @@
         #include "org/allbinary/game/layer/RTSLayerLogHelper.h"
 #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
-class RTSLayerSelectedLogHelper: public RTSLayerLogHelper {
 
-    private: static RTSLayerSelectedLogHelper* instanceC() { static std::unique_ptr<RTSLayerSelectedLogHelper> value(new RTSLayerSelectedLogHelper()); return value.get(); }
+RTSLayerSelectedLogHelper::RTSLayerSelectedLogHelper() : logUtil(LogUtil::getInstance()), commonSeps(CommonSeps::getInstance()), positionStrings(PositionStrings::getInstance()) {
+        }
+        auto RTSLayerSelectedLogHelper::instanceC_owner() -> RTSLayerSelectedLogHelper* { static std::unique_ptr<RTSLayerSelectedLogHelper> value(new RTSLayerSelectedLogHelper()); return value.get(); }
+RTSLayerSelectedLogHelper* RTSLayerSelectedLogHelper::instanceC = RTSLayerSelectedLogHelper::instanceC_owner();
 
-    public: static RTSLayerSelectedLogHelper* getInstance(){
+    auto RTSLayerSelectedLogHelper::getInstance() -> RTSLayerSelectedLogHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSLayerSelectedLogHelper::instanceC();
+                        return RTSLayerSelectedLogHelper::instanceC;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: PositionStrings* positionStrings = PositionStrings::getInstance();
-
-    private: const std::string TRACKTO_TURNTO = "trackTo:turnTo";
-
-    public: void setClosestGeographicMapCellHistory(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, BasicArrayList* pathsList){
+    auto RTSLayerSelectedLogHelper::setClosestGeographicMapCellHistory(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, BasicArrayList* pathsList) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -121,7 +125,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: setClosestGeograp
 }
 
 
-    public: void trackTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition, int32_t dx, int32_t dy, std::string reason){
+    auto RTSLayerSelectedLogHelper::trackTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* nextUnvisitedPathGeographicMapCellPosition, int32_t dx, int32_t dy, std::string reason) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -150,7 +154,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: trackTo");
 }
 
 
-    public: void turnTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy, AngleInfo* angleInfo, int32_t angle, NamedAngle* movementAngle, bool evading, int32_t targetAngle){
+    auto RTSLayerSelectedLogHelper::turnTo(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy, AngleInfo* angleInfo, int32_t angle, NamedAngle* movementAngle, bool evading, int32_t targetAngle) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -205,79 +209,79 @@ this->logUtil->putF(stringBuffer->toString(), this, this->TRACKTO_TURNTO);
 }
 
 
-    public: void doneMoving(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::doneMoving(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - done moving 0,0")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void closeEnough(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::closeEnough(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - close enough")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void movingLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::movingLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingLeft")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void movingRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::movingRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingRight")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void movingUp(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::movingUp(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingUp")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void movingDown(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::movingDown(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - allow movingDown")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void currentMoveEnded(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::currentMoveEnded(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - correct angle, but movement not needed for current deltas so reseting movement angle")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void evade(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::evade(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - evade")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void rotateLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::rotateLeft(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - rotating left")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void rotateRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::rotateRight(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - rotating right")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void handle(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, NamedAngle* movementAngle){
+    auto RTSLayerSelectedLogHelper::handle(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, NamedAngle* movementAngle) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - movementAngle: ")->append(movementAngle->name)->append(this->commonSeps->FORWARD_SLASH)->appendshort(movementAngle->getValue())->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void noRotation(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto RTSLayerSelectedLogHelper::noRotation(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" steering - Do not rotate")->toString(), this, this->TRACKTO_TURNTO);
     
 }
 
 
-    public: void notOnPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellHistory* geographicMapCellHistory, GeographicMapCellPosition* currentGeographicMapCellPosition, BasicArrayList* pathList){
+    auto RTSLayerSelectedLogHelper::notOnPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellHistory* geographicMapCellHistory, GeographicMapCellPosition* currentGeographicMapCellPosition, BasicArrayList* pathList) -> void{
 
     StringUtil* stringUtil = StringUtil::getInstance();;
     
@@ -286,7 +290,6 @@ this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYERSELECTEDLOGHELPER_CPP

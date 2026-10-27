@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVIEW_CPP
+        #define VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/payment/gateway/GatewayView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,11 +78,8 @@
         #include "views/admin/payment/gateway/PaymentGatewayViewAbstract.h"
 #include "views/admin/payment/gateway/PaymentGatewayComponent.h"
 
-class GatewayView: public PaymentGatewayViewAbstract {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: GatewayView(TransformInfoInterface* transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
+GatewayView::GatewayView(TransformInfoInterface* transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,8 +89,8 @@ public: GatewayView(TransformInfoInterface* transformInfoInterface) : PaymentGat
 }
 
 
-    public: void getFormData(HttpServletRequest* request){
-super.getFormData(request);
+    auto GatewayView::getFormData(HttpServletRequest* request) -> void{
+PaymentGatewayViewAbstract::getFormData(request);
     
 
                         if(StringValidationUtil::getInstance()->isEmpty(this->getPaymentGatewayPrimaryKey()->getName()))
@@ -99,7 +106,7 @@ super.getFormData(request);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto GatewayView::view() -> std::string{
 
         try {
             
@@ -116,10 +123,10 @@ super.getFormData(request);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "edit()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "edit()", &e);
     
 
                                     }
@@ -134,7 +141,6 @@ super.getFormData(request);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_PAYMENT_GATEWAY_GATEWAYVIEW_CPP

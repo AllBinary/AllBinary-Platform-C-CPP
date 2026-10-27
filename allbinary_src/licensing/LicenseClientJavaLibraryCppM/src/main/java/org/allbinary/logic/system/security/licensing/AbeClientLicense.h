@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,27 +34,13 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
+class StdUtil;
+class StringMaker;
+class StringUtil;
+class StringValidationUtil;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -69,12 +60,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
-#include "org/allbinary/logic/system/security/licensing/LicenseType.h"
-#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
-#include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
+class LicenseType;
+class AbeClientInformationData;
+class LicenseTypeFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AbeClientLicense
-            : public Object
+            : public virtual Object
         , public AbeLicenseInterface {
 
     public: static bool hasRequiredKeys(ABHashtable<Object*, Object*>* resultHashtable);
@@ -115,3 +110,43 @@ public: AbeClientLicense(ABHashtable<Object*, Object*>* hashtable);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h")
+#include "org/allbinary/logic/system/security/licensing/AbeLicenseInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/LicenseType.h")
+#include "org/allbinary/logic/system/security/licensing/LicenseType.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/AbeClientInformationData.h")
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
+#endif
+#if __has_include("org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h")
+#include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
+#endif
+
+        #endif
+    

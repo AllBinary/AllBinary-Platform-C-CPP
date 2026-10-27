@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_TABLETAG_CPP
+        #define ADMIN_TAGS_TABLETAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/TableTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,28 +97,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TableTag: public PropertiesTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+TableTag::TableTag() : logUtil(LogUtil::getInstance()){
 
-    private: std::string enabled;
-
-    private: TagHelperFactoryInterface* tagHelperFactoryInterface;
-
-    private: TagHelperFactoryInterface* tagRequestHelperFactoryInterface;
-
-    private: Object* requestObject;
-
-    private: int32_t current;
-
-    private: int32_t total;
-
-public: TableTag(){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -116,7 +111,7 @@ public: TableTag(){
 }
 
 
-    public: void setIsSelected(std::string enabled){
+    auto TableTag::setIsSelected(std::string enabled) -> void{
 this->enabled= enabled;
     
 }
@@ -124,7 +119,7 @@ this->enabled= enabled;
 
                 //@Throws(Exception.constructor)
             
-    public: bool isEnabled(){
+    auto TableTag::isEnabled() -> bool{
 
                         if(!StringValidationUtil::getInstance()->isEmpty(this->enabled))
                         
@@ -154,13 +149,13 @@ this->enabled= enabled;
 }
 
 
-    protected: void setTagHelperFactory(TagHelperFactoryInterface* tagHelperFactoryInterface){
+    auto TableTag::setTagHelperFactory(TagHelperFactoryInterface* tagHelperFactoryInterface) -> void{
 this->tagHelperFactoryInterface= tagHelperFactoryInterface;
     
 }
 
 
-    protected: TagHelperFactoryInterface* getTagHelperFactoryInterface(){
+    auto TableTag::getTagHelperFactoryInterface() -> TagHelperFactoryInterface*{
 
 
 
@@ -170,13 +165,13 @@ this->tagHelperFactoryInterface= tagHelperFactoryInterface;
 }
 
 
-    protected: void setTagRequestHelperFactory(TagHelperFactoryInterface* tagHelperFactoryInterface){
+    auto TableTag::setTagRequestHelperFactory(TagHelperFactoryInterface* tagHelperFactoryInterface) -> void{
 this->tagRequestHelperFactoryInterface= tagHelperFactoryInterface;
     
 }
 
 
-    protected: TagHelperFactoryInterface* getTagRequestHelperFactoryInterface(){
+    auto TableTag::getTagRequestHelperFactoryInterface() -> TagHelperFactoryInterface*{
 
 
 
@@ -186,13 +181,13 @@ this->tagRequestHelperFactoryInterface= tagHelperFactoryInterface;
 }
 
 
-    public: void setCurrent(int32_t current){
+    auto TableTag::setCurrent(int32_t current) -> void{
 this->current= current;
     
 }
 
 
-    public: int32_t getCurrent(){
+    auto TableTag::getCurrent() -> int32_t{
 
 
 
@@ -202,13 +197,13 @@ this->current= current;
 }
 
 
-    public: void setTotal(int32_t total){
+    auto TableTag::setTotal(int32_t total) -> void{
 this->total= total;
     
 }
 
 
-    public: int32_t getTotal(){
+    auto TableTag::getTotal() -> int32_t{
 
 
 
@@ -220,7 +215,7 @@ this->total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string drop(){
+    auto TableTag::drop() -> std::string{
 
         try {
             
@@ -251,10 +246,10 @@ this->total= total;
     std::string error = "Failed to drop table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
     
 
                                     }
@@ -272,7 +267,7 @@ this->total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string create(){
+    auto TableTag::create() -> std::string{
 
         try {
             
@@ -303,10 +298,10 @@ this->total= total;
     std::string error = "Failed to create table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -324,7 +319,7 @@ this->total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string restore(){
+    auto TableTag::restore() -> std::string{
 
         try {
             
@@ -355,10 +350,10 @@ this->total= total;
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -376,7 +371,7 @@ this->total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string backup(){
+    auto TableTag::backup() -> std::string{
 
         try {
             
@@ -407,10 +402,10 @@ this->total= total;
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -428,7 +423,7 @@ this->total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string insert(){
+    auto TableTag::insert() -> std::string{
 
         try {
             
@@ -456,10 +451,10 @@ this->total= total;
     std::string error = "Failed to insert";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "insert()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "insert()", &e);
     
 
                                     }
@@ -477,7 +472,7 @@ this->total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string delete_(){
+    auto TableTag::delete_() -> std::string{
 
         try {
             
@@ -505,10 +500,10 @@ this->total= total;
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -526,7 +521,7 @@ this->total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string update(){
+    auto TableTag::update() -> std::string{
 
         try {
             
@@ -554,10 +549,10 @@ this->total= total;
     std::string error = "Failed to update";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -575,15 +570,15 @@ this->total= total;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto TableTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
-    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext.getRequest());;
+    HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(this->pageContext->getRequest());;
     
 
     StringMaker* stringBuffer = new StringMaker();;
@@ -596,7 +591,7 @@ stringBuffer->append(" Request URI: ");
     
 stringBuffer->append(request->getRequestURI());
     
-this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TAG);
+this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -608,10 +603,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TA
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("TableTag RequestHelper: " +this->getTagRequestHelperFactoryInterface()->getClass()->getName(), this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(JavaString::valueOf("TableTag RequestHelper: ") +JavaString::valueOf(this->getTagRequestHelperFactoryInterface()->getClass()->getName()), this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -621,10 +616,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TA
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("TableTag RequestHelper: null", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("TableTag RequestHelper: null", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -633,10 +628,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TA
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("TableTag this.getCommand(): " +this->getCommand(), this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(JavaString::valueOf("TableTag this.getCommand(): ") +JavaString::valueOf(this->getCommand()), this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -652,7 +647,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TA
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0 || this->getCommand()->compareTo(SqlStrings::getInstance()->INSERT_INTO) == 0 || this->getCommand()->compareTo(commonStrings.DELETE) == 0 || this->getCommand()->compareTo(commonStrings.UPDATE) == 0 || this->getCommand()->compareTo(SqlStrings::getInstance()->UPDATE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->INSERT) == 0 || this->getCommand()->compareTo(SqlStrings::getInstance()->INSERT_INTO) == 0 || this->getCommand()->compareTo(commonStrings.DELETE) == 0 || this->getCommand()->compareTo(commonStrings.UPDATE) == 0 || this->getCommand()->compareTo(SqlStrings::getInstance()->UPDATE) == 0)
                         
                                     {
                                     this->requestObject= this->getTagRequestHelperFactoryInterface()->getInstance(this->getPropertiesHashMap(), pageContext);
@@ -661,7 +656,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TA
                                     }
                                 
 
-                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0 || this->getCommand()->compareTo(SqlStrings::getInstance()->INSERT_INTO) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->INSERT) == 0 || this->getCommand()->compareTo(SqlStrings::getInstance()->INSERT_INTO) == 0)
                         
                                     {
                                     this->insert();
@@ -673,7 +668,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TA
                         if(this->getCommand()->compareTo(commonStrings.DELETE) == 0)
                         
                                     {
-                                    this->delete();
+                                    this->delete_();
     
 
                                     }
@@ -688,17 +683,17 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TA
                                     }
                                 
 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.BACKUP) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->BACKUP) == 0)
                         
                                     {
                                     
     std::string output = this->backup();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -713,7 +708,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TA
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.RESTORE) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->RESTORE) == 0)
                         
                                     {
                                     this->getPropertiesHashMap()->put("current", this->getCurrent());
@@ -724,10 +719,10 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->restore();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -749,10 +744,10 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->drop();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -774,10 +769,10 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->create();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -799,10 +794,10 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->insert();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -818,10 +813,10 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->delete_();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -837,10 +832,10 @@ this->getPropertiesHashMap()->put("total", this->getTotal());
     std::string output = this->update();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this->pageContext.getOut()->print(output +"<br />");
+                                    this->pageContext->getOut()->print(JavaString::valueOf(output) +JavaString::valueOf("<br />"));
     
 
                                     }
@@ -890,7 +885,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_TABLETAG_CPP

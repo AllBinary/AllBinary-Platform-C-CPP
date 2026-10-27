@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATOR_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/ImageComparator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,13 +93,8 @@
 #include "org/allbinary/media/image/comparison/Color.h"
 #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
-class ImageComparator
-            : public Object
-         {
 
-    private: ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface;
-
-public: ImageComparator(ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface){
+ImageComparator::ImageComparator(ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface){
 this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
     
 }
@@ -97,7 +102,7 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
 
                 //@Throws(Exception.constructor)
             
-    private: void process(ImageComparisonResult* imageComparisonInfo, GPoint* point){
+    auto ImageComparator::process(ImageComparisonResult* imageComparisonInfo, GPoint* point) -> void{
 
     bool isCollsionWithAvoidRectangles = this->imageComparatorConstraintsInterface->isCollisionWithAvoidRectangles(point);;
     
@@ -168,7 +173,7 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: ImageComparisonResult* compare(BufferedImage* bufferedImage1, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance){
+    auto ImageComparator::compare(BufferedImage* bufferedImage1, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance) -> ImageComparisonResult*{
 
 
 
@@ -180,7 +185,7 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: ImageComparisonResult* compare(BufferedImage* bufferedImage1, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance, std::string name){
+    auto ImageComparator::compare(BufferedImage* bufferedImage1, BufferedImage* bufferedImage2, int64_t frameOne, int64_t frameTwo, int32_t tolerance, std::string name) -> ImageComparisonResult*{
 
                         if(bufferedImage1 == 
                                     nullptr
@@ -192,7 +197,7 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
                                     
 
 
-                            throw new Exception("Input images must not be null.");
+                            throw Exception("Input images must not be null.");
                     
 
                                     }
@@ -239,7 +244,6 @@ this->process(imageComparisonInfo, PointFactory::getInstance()->createXY(indexX,
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATOR_CPP

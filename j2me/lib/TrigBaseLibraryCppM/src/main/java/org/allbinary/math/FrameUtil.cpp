@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_FRAMEUTIL_CPP
+        #define ORG_ALLBINARY_MATH_FRAMEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/FrameUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,27 +65,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/math/AngleFactory.h"
 
-class FrameUtil
-            : public Object
-         {
+auto FrameUtil::instance_owner() -> FrameUtil* { static std::unique_ptr<FrameUtil> value(new FrameUtil()); return value.get(); }
+FrameUtil* FrameUtil::instance = FrameUtil::instance_owner();
 
-    private: static FrameUtil* instance() { static std::unique_ptr<FrameUtil> value(new FrameUtil()); return value.get(); }
-
-    public: static FrameUtil* getInstance(){
+    auto FrameUtil::getInstance() -> FrameUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FrameUtil::instance();
+                        return FrameUtil::instance;
     
 }
 
 
-private: FrameUtil(){
+FrameUtil::FrameUtil(){
 }
 
 
-    public: int32_t getFrameForAngle(int16_t angle, int32_t angleIncrement){
+    auto FrameUtil::getFrameForAngle(int16_t angle, int32_t angleIncrement) -> int32_t{
 
 
 
@@ -85,7 +92,7 @@ private: FrameUtil(){
 }
 
 
-    public: int32_t getFrameAngle(int32_t frame, int32_t angleIncrement){
+    auto FrameUtil::getFrameAngle(int32_t frame, int32_t angleIncrement) -> int32_t{
 
     int32_t frameAngle = angleIncrement *frame -90;;
     
@@ -98,7 +105,7 @@ private: FrameUtil(){
 }
 
 
-    public: int32_t adjustAngleToFrameAngle(int32_t currentAngle){
+    auto FrameUtil::adjustAngleToFrameAngle(int32_t currentAngle) -> int32_t{
 
     AngleFactory* angleFactory = AngleFactory::getInstance();;
     
@@ -143,7 +150,6 @@ currentAngle= (currentAngle +angleFactory->TOTAL_ANGLE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_FRAMEUTIL_CPP

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ORDERITEMINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ORDERITEMINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/user/address/StreetAddress.h>
-
-      
+class StreetAddress;
 
 
 
@@ -50,6 +53,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OrderItemInterface: public ItemInterface {
 
     public: virtual void setGroup(std::string value) = 0;
@@ -82,3 +89,16 @@ class OrderItemInterface: public ItemInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ORDERITEMINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ORDERITEMINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ORDERITEMINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/user/address/StreetAddress.h>)
+#include <org/allbinary/business/user/address/StreetAddress.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/item/ItemInterface.h")
+#include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
+#endif
+
+        #endif
+    

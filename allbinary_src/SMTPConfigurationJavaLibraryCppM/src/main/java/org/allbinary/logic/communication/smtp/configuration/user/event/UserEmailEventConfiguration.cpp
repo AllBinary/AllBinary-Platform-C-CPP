@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,23 +66,14 @@
         #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationInterface.h"
 #include "org/allbinary/logic/communication/smtp/configuration/user/event/UserEmailEventConfigurationData.h"
 
-class UserEmailEventConfiguration
-            : public Object
-        , public UserEmailEventConfigurationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string name;
-
-    private: std::string eventListenerClassPath;
-
-public: UserEmailEventConfiguration(){
+UserEmailEventConfiguration::UserEmailEventConfiguration() : logUtil(LogUtil::getInstance()){
 this->setName(StringUtil::getInstance()->EMPTY_STRING);
     
 this->setEventListenerClassPath(StringUtil::getInstance()->EMPTY_STRING);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF("New", this, " Constructor");
@@ -83,16 +84,16 @@ this->setEventListenerClassPath(StringUtil::getInstance()->EMPTY_STRING);
 }
 
 
-public: UserEmailEventConfiguration(HashMap<Object*, Object*>* hashMap){
+UserEmailEventConfiguration::UserEmailEventConfiguration(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 this->setName(hashMap->get(UserEmailEventConfigurationData::NAME));
     
 this->setEventListenerClassPath(hashMap->get(UserEmailEventConfigurationData::LISTENER_CLASSPATH));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Log: " +this->log(), this, " Constructor");
+                                    this->logUtil->putF(JavaString::valueOf("Log: ") +JavaString::valueOf(this->log()), this, " Constructor");
     
 
                                     }
@@ -100,7 +101,7 @@ this->setEventListenerClassPath(hashMap->get(UserEmailEventConfigurationData::LI
 }
 
 
-    public: std::string getName(){
+    auto UserEmailEventConfiguration::getName() -> std::string{
 
 
 
@@ -110,13 +111,13 @@ this->setEventListenerClassPath(hashMap->get(UserEmailEventConfigurationData::LI
 }
 
 
-    public: void setName(std::string name){
+    auto UserEmailEventConfiguration::setName(std::string name) -> void{
 this->name= name;
     
 }
 
 
-    public: std::string getEventListenerClassPath(){
+    auto UserEmailEventConfiguration::getEventListenerClassPath() -> std::string{
 
 
 
@@ -126,23 +127,22 @@ this->name= name;
 }
 
 
-    public: void setEventListenerClassPath(std::string eventListenerClassPath){
+    auto UserEmailEventConfiguration::setEventListenerClassPath(std::string eventListenerClassPath) -> void{
 this->eventListenerClassPath= eventListenerClassPath;
     
 }
 
 
-    public: std::string log(){
+    auto UserEmailEventConfiguration::log() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "\nUser Email Event Log Info:" +"\nName: " +this->getName() +"\nEventListenerClassPath: " +this->getEventListenerClassPath();
+                        return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("\nUser Email Event Log Info:") +JavaString::valueOf("\nName: ")) +JavaString::valueOf(this->getName())) +JavaString::valueOf("\nEventListenerClassPath: ")) +JavaString::valueOf(this->getEventListenerClassPath());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_CPP

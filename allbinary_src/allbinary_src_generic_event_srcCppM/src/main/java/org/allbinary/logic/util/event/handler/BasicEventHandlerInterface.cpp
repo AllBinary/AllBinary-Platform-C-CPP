@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLERINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicEventHandlerInterface {
+//Interface - declared in the header
 
-    public: virtual void addListenerInterface(EventListenerInterface* eventListenerInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void fireEvent(AllBinaryEventObject* eventObject) = 0;
 
-    public: virtual void removeAllListeners() = 0;
-
-    public: virtual void removeListener(EventListenerInterface* eventListenerInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLERINTERFACE_CPP

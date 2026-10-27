@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_GAMEMOTIONGESTURELISTENER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_GAMEMOTIONGESTURELISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/GameMotionGestureListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,21 +90,8 @@
 #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
-class GameMotionGestureListener
-            : public Object
-        , public MotionGestureEventListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* motionGestureCollection = new BasicArrayListD();
-
-    private: BasicArrayList* touchGestureCollection = new BasicArrayListD();
-
-    private: CompleteMotionGestureListenerInterface* signed_;
-
-public: GameMotionGestureListener(CompleteMotionGestureListenerInterface* signed_){
+GameMotionGestureListener::GameMotionGestureListener(CompleteMotionGestureListenerInterface* signed_) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), motionGestureCollection(new BasicArrayListD()), touchGestureCollection(new BasicArrayListD()){
 this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->signed_= signed_;
@@ -102,67 +99,67 @@ this->signed_= signed_;
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto GameMotionGestureListener::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(this->commonStrings->NOT_IMPLEMENTED, this);
     
 }
 
 
-    public: void onUpMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onUpMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDownMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onDownMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onLeftMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onLeftMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onRightMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onRightMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onDiagonalDownRightMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onDiagonalUpRightMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->onMotionGestureEvent(ev);
     
 }
 
 
-    public: void onPressedMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onPressedMotionGestureEvent(MotionGestureEvent* ev) -> void{
 this->touchGestureCollection->add(ev->getMotionGesture());
     
 }
 
 
-    public: void released(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::released(MotionGestureEvent* ev) -> void{
 
         try {
             this->touchGestureCollection->add(ev->getMotionGesture());
@@ -189,11 +186,11 @@ this->logUtil->put(stringBuffer->toString(), this, "release", &e);
 }
 
 
-    public: void onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent){
+    auto GameMotionGestureListener::onScrolledMotionGestureEvent(MotionGestureEvent* motionGestureEvent) -> void{
 }
 
 
-    public: void onMotionGestureEvent(MotionGestureEvent* ev){
+    auto GameMotionGestureListener::onMotionGestureEvent(MotionGestureEvent* ev) -> void{
 
         try {
             
@@ -247,7 +244,6 @@ this->logUtil->put(stringBuffer->toString(), this, "onMotionGestureEvent", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_GAMEMOTIONGESTURELISTENER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11EXTIMAGE_CPP
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11EXTIMAGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/opengles/OpenGLESGL11ExtImage.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -81,15 +91,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLESImage.h"
 //Many devices don't support this even though it is supposed to
-class OpenGLESGL11ExtImage: public OpenGLESImage {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: int32_t a= 0;
-
-    private: std::vector<int32_t> rectangle;
-
-public: OpenGLESGL11ExtImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory){
+OpenGLESGL11ExtImage::OpenGLESGL11ExtImage(Image* image, PlatformBitmapBaseFactory* bitmapFactory, PlatformTextureBaseFactory* textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -103,10 +106,10 @@ this->rectangle= {0,this->getHeight(), this->getWidth(),  -this->getHeight();};
 }
 
 
-    public: void onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent){
+    auto OpenGLESGL11ExtImage::onDisplayChangeEvent(DisplayChangeEvent* displayChangeEvent) -> void{
 
         try {
-            this->logUtil->putF(this->commonStrings.START, this, "onResize");
+            this->logUtil->putF(this->commonStrings->START, this, "onResize");
     
 this->a= DisplayInfoSingleton::getInstance()->getLastHeight() -this->getHeight();
     
@@ -114,24 +117,24 @@ this->a= DisplayInfoSingleton::getInstance()->getLastHeight() -this->getHeight()
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, "onResize", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "onResize", &e);
     
 }
 
 }
 
 
-    public: void set(GL* gl){
+    auto OpenGLESGL11ExtImage::set(GL* gl) -> void{
 this->onDisplayChangeEvent(DisplayInfoSingleton::getInstance()->displayChangeEvent);
     
 
     GL11* gl11 = dynamic_cast<GL11*>(gl);;
     
 
-                        if(super.initTexture(gl11))
+                        if(OpenGLESImage::initTexture(gl11))
                         
                                     {
-                                    this->textureFactory.load(gl11, GL10::GL_TEXTURE_2D, 0, this, 0, true);
+                                    this->textureFactory->load(gl11, GL10::GL_TEXTURE_2D, 0, this, 0, true);
     
 gl11->glTexParameteriv(GL10::GL_TEXTURE_2D, GL11Ext::GL_TEXTURE_CROP_RECT_OES, this->rectangle, 0);
     
@@ -145,10 +148,10 @@ OpenGLLogUtil::getInstance()->logError(gl11, this);
 }
 
 
-    public: void draw(GL10* gl, int32_t x, int32_t y, int32_t z){
+    auto OpenGLESGL11ExtImage::draw(GL10* gl, int32_t x, int32_t y, int32_t z) -> void{
 gl->glEnable(GL10::GL_TEXTURE_2D);
     
-gl->glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
+gl->glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties->textureID);
     
 
     GL11Ext* gl11Ext = dynamic_cast<GL11Ext*>(gl);;
@@ -160,7 +163,6 @@ gl->glDisable(GL10::GL_TEXTURE_2D);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11EXTIMAGE_CPP

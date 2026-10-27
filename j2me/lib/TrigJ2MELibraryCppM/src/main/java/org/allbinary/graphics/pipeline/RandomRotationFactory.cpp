@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMROTATIONFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMROTATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/pipeline/RandomRotationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,29 +67,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 
-class RandomRotationFactory
-            : public Object
-         {
 
-    private: static RandomRotationFactory* instance() { static std::unique_ptr<RandomRotationFactory> value(new RandomRotationFactory()); return value.get(); }
+RandomRotationFactory::RandomRotationFactory() : myRandomFactory(MyRandomFactory::getInstance()), angleFactory(AngleFactory::getInstance()) {
+        }
+        auto RandomRotationFactory::instance_owner() -> RandomRotationFactory* { static std::unique_ptr<RandomRotationFactory> value(new RandomRotationFactory()); return value.get(); }
+RandomRotationFactory* RandomRotationFactory::instance = RandomRotationFactory::instance_owner();
 
-    public: static RandomRotationFactory* getInstance(){
+    auto RandomRotationFactory::getInstance() -> RandomRotationFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RandomRotationFactory::instance();
+                        return RandomRotationFactory::instance;
     
 }
 
 
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
-
-    private: AngleFactory* angleFactory = AngleFactory::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getInstanceList(BasicArrayList* vector, int32_t howMuch){
+    auto RandomRotationFactory::getInstanceList(BasicArrayList* vector, int32_t howMuch) -> BasicArrayList*{
 
     BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(vector);;
     
@@ -96,7 +102,7 @@ graphicsPipe->rotateToAngle(this->angleFactory->getAt(this->getNextRandomAngle(h
 }
 
 
-    public: int32_t getNextRandomAngle(int32_t howMuch){
+    auto RandomRotationFactory::getNextRandomAngle(int32_t howMuch) -> int32_t{
 
 
 
@@ -106,7 +112,6 @@ graphicsPipe->rotateToAngle(this->angleFactory->getAt(this->getNextRandomAngle(h
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMROTATIONFACTORY_CPP

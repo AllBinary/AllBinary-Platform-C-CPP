@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/CategoryData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,47 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CategoryData
-            : public Object
-         {
+auto CategoryData::instance_owner() -> CategoryData* { static std::unique_ptr<CategoryData> value(new CategoryData()); return value.get(); }
+CategoryData* CategoryData::instance = CategoryData::instance_owner();
 
-    private: static CategoryData* instance() { static std::unique_ptr<CategoryData> value(new CategoryData()); return value.get(); }
-
-    public: static CategoryData* getInstance(){
+    auto CategoryData::getInstance() -> CategoryData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CategoryData::instance();
+                        return CategoryData::instance;
     
 }
 
 
-private: CategoryData(){
+CategoryData::CategoryData() : UNCRYPTED_EXTENSION(CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION), ENCRYPTED_EXTENSION(CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION){
 }
 
 
-    public: const std::string PARENT = "CATEGORY_PARENT";
 
-    public: const std::string NAME = "CATEGORY_NAME";
 
-    public: const std::string PATH = "CATEGORY_PATH";
-
-    public: const std::string LABEL = "CATEGORY_LABEL";
-
-    public: const std::string VIEW = "CATEGORY_VIEW_CATEGORY";
-
-    public: const std::string LEVEL = "CATEGORY_LEVEL";
-
-    public: const std::string REQUEST = "request";
-
-    public: const std::string ROOTCATEGORY = "Category";
-
-    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
-
-    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYDATA_CPP

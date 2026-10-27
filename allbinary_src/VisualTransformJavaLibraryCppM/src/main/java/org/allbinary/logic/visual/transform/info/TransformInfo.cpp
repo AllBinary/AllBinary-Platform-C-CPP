@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -147,49 +157,18 @@
         #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
-class TransformInfo
-            : public Object
-        , public TransformInfoInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: bool isChild = false;
-
-    private: std::string name;
-
-    private: std::string storeName;
-
-    private: std::string objectFileName;
-
-    private: Object* anyType;
-
-    private: std::string objectConfigFileName;
-
-    private: TransformInfoObjectConfigInterface* objectConfigInterface;
-
-    private: std::string template_;
-
-    private: std::string templateFileName;
-
-    private: std::string dataFileName;
-
-    private: std::string data = StringUtil::getInstance()->EMPTY_STRING;
-
-public: TransformInfo(){
+TransformInfo::TransformInfo() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()), data(StringUtil::getInstance()->EMPTY_STRING){
 }
 
 
-public: TransformInfo(std::string name){
+TransformInfo::TransformInfo(std::string name) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()), data(StringUtil::getInstance()->EMPTY_STRING){
 this->setName(name);
     
 }
 
 
-public: TransformInfo(std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName){
+TransformInfo::TransformInfo(std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()), data(StringUtil::getInstance()->EMPTY_STRING){
 this->setName(name);
     
 this->setObjectFile(objectFileName);
@@ -205,7 +184,7 @@ this->setDataFile(dataFileName);
 
                 //@Throws(Exception.constructor)
             
-    public: void override(HashMap<Object*, Object*>* hashMap){
+    auto TransformInfo::override(HashMap<Object*, Object*>* hashMap) -> void{
 
     TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
@@ -225,7 +204,7 @@ this->setDataFile(dataFileName);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -290,10 +269,10 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TransformInfo override view Object for: " +this->getName(), this, "override(HashMap hashMap)");
+                                    this->logUtil->putF(JavaString::valueOf("TransformInfo override view Object for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
     
 
                                     }
@@ -318,10 +297,10 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TransformInfo override ObjectConfig for: " +this->getName(), this, "override(HashMap hashMap)");
+                                    this->logUtil->putF(JavaString::valueOf("TransformInfo override ObjectConfig for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
     
 
                                     }
@@ -339,10 +318,10 @@ this->setObjectConfig(hashMap->get(transformInfoData->OBJECTCONFIG));
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TransformInfo override ObjectConfig File for: " +this->getName(), this, "override(HashMap hashMap)");
+                                    this->logUtil->putF(JavaString::valueOf("TransformInfo override ObjectConfig File for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
     
 
                                     }
@@ -395,10 +374,10 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TransformInfo override Template for: " +this->getName(), this, "override(HashMap hashMap)");
+                                    this->logUtil->putF(JavaString::valueOf("TransformInfo override Template for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
     
 
                                     }
@@ -438,10 +417,10 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TransformInfo override Data for: " +this->getName(), this, "override(HashMap hashMap)");
+                                    this->logUtil->putF(JavaString::valueOf("TransformInfo override Data for: ") +JavaString::valueOf(this->getName()), this, "override(HashMap hashMap)");
     
 
                                     }
@@ -462,7 +441,7 @@ this->getObjectConfigInterface()->setOutputTypeName(type);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     stringBuffer= new StringMaker();
@@ -503,7 +482,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "TransformInfoInterface(Hash
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORY))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->TAGHELPERFACTORY))
                         
                                     {
                                     this->logUtil->putF(this->log(), this, "override");
@@ -514,7 +493,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "TransformInfoInterface(Hash
 }
 
 
-    public: std::string log(){
+    auto TransformInfo::log() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -559,19 +538,19 @@ stringBuffer->append("TransformInfoInterface(HashMap)");
 }
 
 
-    public: void setName(std::string value){
+    auto TransformInfo::setName(std::string value) -> void{
 this->name= value;
     
 }
 
 
-    public: void setStoreName(std::string value){
+    auto TransformInfo::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 }
 
 
-    public: std::string getStoreName(){
+    auto TransformInfo::getStoreName() -> std::string{
 
 
 
@@ -581,25 +560,25 @@ this->storeName= value;
 }
 
 
-    public: void setObject(Object anyType){
+    auto TransformInfo::setObject(Object* anyType) -> void{
 this->anyType= anyType;
     
 }
 
 
-    public: void setObjectFile(std::string value){
+    auto TransformInfo::setObjectFile(std::string value) -> void{
 this->objectFileName= value;
     
 }
 
 
-    public: void setTemplate(std::string value){
+    auto TransformInfo::setTemplate(std::string value) -> void{
 this->template_= value;
     
 }
 
 
-    public: void setTemplateFile(std::string value){
+    auto TransformInfo::setTemplateFile(std::string value) -> void{
 this->templateFileName= value;
     
 }
@@ -607,7 +586,7 @@ this->templateFileName= value;
 
                 //@Throws(Exception.constructor)
             
-    protected: void setObjectConfigFileName(std::string value){
+    auto TransformInfo::setObjectConfigFileName(std::string value) -> void{
 this->objectConfigFileName= value;
     
 }
@@ -615,7 +594,7 @@ this->objectConfigFileName= value;
 
                 //@Throws(Exception.constructor)
             
-    protected: void setObjectConfigFile(std::string value){
+    auto TransformInfo::setObjectConfigFile(std::string value) -> void{
 this->objectConfigFileName= value;
     
 this->setObjectConfigInterface(TransformInfoObjectConfigAndManipulatorFactory::getInstance()->getInstance(this->abeClientInformation, this, this->getObjectConfigFilePath()));
@@ -625,7 +604,7 @@ this->setObjectConfigInterface(TransformInfoObjectConfigAndManipulatorFactory::g
 
                 //@Throws(Exception.constructor)
             
-    protected: void setObjectConfig(std::string value){
+    auto TransformInfo::setObjectConfig(std::string value) -> void{
 
     Document* document = DomDocumentHelper::create(value);;
     
@@ -634,19 +613,19 @@ this->setObjectConfigInterface(TransformInfoObjectConfigAndManipulatorFactory::g
 }
 
 
-    public: void setDataFile(std::string value){
+    auto TransformInfo::setDataFile(std::string value) -> void{
 this->dataFileName= value;
     
 }
 
 
-    public: void setData(std::string value){
+    auto TransformInfo::setData(std::string value) -> void{
 this->data= value;
     
 }
 
 
-    public: std::string getName(){
+    auto TransformInfo::getName() -> std::string{
 
 
 
@@ -656,7 +635,7 @@ this->data= value;
 }
 
 
-    public: Object* getObject(){
+    auto TransformInfo::getObject() -> Object*{
 
 
 
@@ -666,7 +645,7 @@ this->data= value;
 }
 
 
-    public: std::string getObjectFile(){
+    auto TransformInfo::getObjectFile() -> std::string{
 
 
 
@@ -676,7 +655,7 @@ this->data= value;
 }
 
 
-    public: std::string getTemplate(){
+    auto TransformInfo::getTemplate() -> std::string{
 
 
 
@@ -686,7 +665,7 @@ this->data= value;
 }
 
 
-    public: std::string getTemplateFile(){
+    auto TransformInfo::getTemplateFile() -> std::string{
 
 
 
@@ -698,7 +677,7 @@ this->data= value;
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getTemplateFilePath(){
+    auto TransformInfo::getTemplateFilePath() -> AbPath*{
 
 
 
@@ -710,7 +689,7 @@ this->data= value;
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getObjectConfigFilePath(){
+    auto TransformInfo::getObjectConfigFilePath() -> AbPath*{
 
 
 
@@ -722,7 +701,7 @@ this->data= value;
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getDataFilePath(){
+    auto TransformInfo::getDataFilePath() -> AbPath*{
 
 
 
@@ -732,7 +711,7 @@ this->data= value;
 }
 
 
-    public: std::string getObjectConfigFile(){
+    auto TransformInfo::getObjectConfigFile() -> std::string{
 
 
 
@@ -742,7 +721,7 @@ this->data= value;
 }
 
 
-    private: std::string getData(){
+    auto TransformInfo::getData() -> std::string{
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
@@ -763,10 +742,10 @@ this->data= value;
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Data File overriding existing data: " +this->getDataFilePath(), this, "getData()");
+                                    this->logUtil->putF(JavaString::valueOf("Data File overriding existing data: ") +JavaString::valueOf(this->getDataFilePath()), this, "getData()");
     
 
                                     }
@@ -781,10 +760,10 @@ this->data= fileData;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Could Not Load Data from: " +this->getDataFile(), this, "getData()", &e);
+                                    this->logUtil->put(JavaString::valueOf("Could Not Load Data from: ") +JavaString::valueOf(this->getDataFile()), this, "getData()", &e);
     
 
                                     }
@@ -801,10 +780,10 @@ this->data= fileData;
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->putF("Data: " +XmlDocumentHelper::toString(DomDocumentHelper::create(data)), this, "getData()");
+                                    this->logUtil->putF(JavaString::valueOf("Data: ") +JavaString::valueOf(XmlDocumentHelper::toString(DomDocumentHelper::create(data))), this, "getData()");
     
 
                                     }
@@ -814,7 +793,7 @@ this->data= fileData;
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     
@@ -833,7 +812,7 @@ stringBuffer->append("\nPath: ");
 stringBuffer->append(this->getDataFilePath()->toFileSystemString());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF(stringBuffer->toString(), this, "getData()");
@@ -852,10 +831,10 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Could Not Preview Data: " +this->data, this, "getData()", &e);
+                                    this->logUtil->put(JavaString::valueOf("Could Not Preview Data: ") +JavaString::valueOf(this->data), this, "getData()", &e);
     
 
                                     }
@@ -873,7 +852,7 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 
                 //@Throws(Exception.constructor)
             
-    public: Document* getDataDocument(){
+    auto TransformInfo::getDataDocument() -> Document*{
 
     std::string localData = this->getData();;
     
@@ -885,7 +864,7 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type.LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type.LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->putF("No Data So Creating New Document", this, "getDataDocument()");
@@ -918,7 +897,7 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 }
 
 
-    public: std::string getDataFile(){
+    auto TransformInfo::getDataFile() -> std::string{
 
 
 
@@ -928,7 +907,7 @@ stringBuffer->append(this->getDataFilePath()->toFileSystemString());
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto TransformInfo::toHashMap() -> HashMap<Object*, Object*>*{
 
     TransformInfoData* transformInfoData = TransformInfoData::getInstance();;
     
@@ -972,7 +951,7 @@ hashMap->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto TransformInfo::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -1015,7 +994,7 @@ vector->add(time);
 }
 
 
-    public: Object* getKey(){
+    auto TransformInfo::getKey() -> Object*{
 
 
 
@@ -1025,23 +1004,23 @@ vector->add(time);
 }
 
 
-    public: void setChild(){
-this->isChild= true;
+    auto TransformInfo::setChild() -> void{
+this->isChild_= true;
     
 }
 
 
-    public: bool isChild(){
+    auto TransformInfo::isChild() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isChild;
+                        return this->isChild_;
     
 }
 
 
-    public: TransformInfoObjectConfigInterface* getObjectConfigInterface(){
+    auto TransformInfo::getObjectConfigInterface() -> TransformInfoObjectConfigInterface*{
 
 
 
@@ -1051,13 +1030,12 @@ this->isChild= true;
 }
 
 
-    public: void setObjectConfigInterface(Object* objectConfigInterface){
+    auto TransformInfo::setObjectConfigInterface(TransformInfoObjectConfigInterface* objectConfigInterface) -> void{
 this->objectConfigInterface= objectConfigInterface;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFO_CPP

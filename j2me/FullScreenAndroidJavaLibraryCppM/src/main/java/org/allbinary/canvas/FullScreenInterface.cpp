@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_FULLSCREENINTERFACE_CPP
+        #define ORG_ALLBINARY_CANVAS_FULLSCREENINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/FullScreenInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,21 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FullScreenInterface {
+//Interface - declared in the header
 
-    public: virtual bool isFullScreenMode() = 0;
 
-    public: virtual void setFullScreenMode(bool mode) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void stopWaiting() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void waitOnNotify(int32_t wait) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_CANVAS_FULLSCREENINTERFACE_CPP

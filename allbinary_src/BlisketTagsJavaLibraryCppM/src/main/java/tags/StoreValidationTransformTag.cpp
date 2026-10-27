@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_STOREVALIDATIONTRANSFORMTAG_CPP
+        #define TAGS_STOREVALIDATIONTRANSFORMTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/StoreValidationTransformTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,13 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/ValidationTransformTag.h"
 
-class StoreValidationTransformTag: public ValidationTransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string storeName;
-
-public: StoreValidationTransformTag() : ValidationTransformTag(){
+StoreValidationTransformTag::StoreValidationTransformTag() : ValidationTransformTag(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +79,7 @@ public: StoreValidationTransformTag() : ValidationTransformTag(){
 }
 
 
-    public: void setStoreName(std::string value){
+    auto StoreValidationTransformTag::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->storeName);
@@ -84,11 +89,11 @@ this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->sto
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto StoreValidationTransformTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     this->logUtil->putF("Tag Start", this, tagStrings.DO_START_TAG);
@@ -100,7 +105,7 @@ this->getPropertiesHashMap()->put(StoreFrontData::getInstance()->NAME, this->sto
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return ValidationTransformTag::doStartTag();;
     
 
                 //: 
@@ -119,7 +124,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_STOREVALIDATIONTRANSFORMTAG_CPP

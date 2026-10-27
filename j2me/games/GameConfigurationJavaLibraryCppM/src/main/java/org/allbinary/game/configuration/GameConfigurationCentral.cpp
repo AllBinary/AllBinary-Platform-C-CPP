@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONCENTRAL_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONCENTRAL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameConfigurationCentral.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,13 +93,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/GameConfiguration.h"
 
-class GameConfigurationCentral
-            : public Object
-         {
+Object* GameConfigurationCentral::SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameConfigurationCentral* getInstance(){
+    auto GameConfigurationCentral::getInstance() -> GameConfigurationCentral*{
 
                         if(GameConfigurationCentral::SINGLETON == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -108,41 +114,7 @@ class GameConfigurationCentral
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: GameConfiguration* SCALE;
-
-    public: GameConfiguration* ORIENTATION;
-
-    public: GameConfiguration* SENSOR_UPDATE_RATE;
-
-    public: GameConfiguration* VIBRATION;
-
-    public: GameConfiguration* CHALLENGE_LEVEL;
-
-    public: GameConfiguration* COLLIDE_DAMAGE;
-
-    public: GameConfiguration* DURABILITY_CHALLENGE_LEVEL;
-
-    public: GameConfiguration* SPEED_CHALLENGE_LEVEL;
-
-    public: GameConfiguration* ATTACK_CHALLENGE_LEVEL;
-
-    public: GameConfiguration* CONTROL_LEVEL;
-
-    public: GameConfiguration* PLAYER_INPUT_WAIT;
-
-    public: GameConfiguration* SPEED;
-
-    public: GameConfiguration* SOUND_VOLUME;
-
-    public: GameConfiguration* MAX_GAME_OBJECTS;
-
-    public: GameConfiguration* MAX_LAYERS;
-
-    private: int32_t gameControlFidelity = 36;
-
-private: GameConfigurationCentral(){
+GameConfigurationCentral::GameConfigurationCentral() : logUtil(LogUtil::getInstance()){
 
     SmallIntegerSingletonFactory* smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
@@ -179,7 +151,7 @@ this->MAX_LAYERS= new GameConfiguration("Max Layers", smallIntegerSingletonFacto
 }
 
 
-    public: void load(AbeClientInformationInterface* abeClientInformation){
+    auto GameConfigurationCentral::load(AbeClientInformationInterface* abeClientInformation) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -233,13 +205,13 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->LOAD, &e);
 }
 
 
-    public: void setGameControlFidelity(int32_t gameControlFidelity){
+    auto GameConfigurationCentral::setGameControlFidelity(int32_t gameControlFidelity) -> void{
 this->gameControlFidelity= gameControlFidelity;
     
 }
 
 
-    public: int32_t getGameControlFidelity(){
+    auto GameConfigurationCentral::getGameControlFidelity() -> int32_t{
 
 
 
@@ -249,7 +221,7 @@ this->gameControlFidelity= gameControlFidelity;
 }
 
 
-    public: std::string toString(){
+    auto GameConfigurationCentral::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -369,7 +341,6 @@ stringBuffer->appendint(this->MAX_LAYERS->getValue()->intValue());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONCENTRAL_CPP

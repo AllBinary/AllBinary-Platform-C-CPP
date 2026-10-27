@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_BRIDGE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_BRIDGE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/components/linux/Bridge.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,19 +61,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Bridge
-            : public Object
-        , public HardwareComponentInterface, public BridgeInterface {
 
-    private: std::string data;
-
-public: Bridge(std::string data){
+Bridge::Bridge(std::string data){
 this->data= data;
     
 }
 
 
-    public: bool compareTo(HardwareComponentInterface* componentInterface){
+    auto Bridge::compareTo(HardwareComponentInterface* componentInterface) -> bool{
 
 
 
@@ -73,7 +78,7 @@ this->data= data;
 }
 
 
-    public: std::string toString(){
+    auto Bridge::toString() -> std::string{
 
 
 
@@ -83,7 +88,6 @@ this->data= data;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_BRIDGE_CPP

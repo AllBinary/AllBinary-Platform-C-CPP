@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_AI_OPTIMIZEDARTIFICIALINTELLIGENCELAYERPROCESSORFORCOLLIDABLELAYER_CPP
+        #define ORG_ALLBINARY_AI_OPTIMIZEDARTIFICIALINTELLIGENCELAYERPROCESSORFORCOLLIDABLELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/ai/OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/ai/OptimizedArtificialIntelligenceLayerManager.h"
 
-class OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer: public LayerProcessor {
 
-public: OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer() : LayerProcessor(new OptimizedArtificialIntelligenceLayerManager()){
+OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer::OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer() : LayerProcessor(new OptimizedArtificialIntelligenceLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +81,7 @@ public: OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer() : Laye
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
+    auto OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) -> void{
 
     CollidableCompositeLayer* artificialIntelligenceCompositeInterface = dynamic_cast<CollidableCompositeLayer*>(layerInterface);;
     
@@ -83,7 +92,7 @@ artificialIntelligenceCompositeInterface->getArtificialIntelligenceInterface()->
 
                 //@Throws(Exception.constructor)
             
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
                         if(layerInterface->implmentsArtificialIntelligenceCompositeInterface())
                         
@@ -110,7 +119,6 @@ artificialIntelligenceCompositeInterface->getArtificialIntelligenceInterface()->
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_AI_OPTIMIZEDARTIFICIALINTELLIGENCELAYERPROCESSORFORCOLLIDABLELAYER_CPP

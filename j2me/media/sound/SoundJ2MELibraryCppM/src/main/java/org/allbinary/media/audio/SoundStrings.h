@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSTRINGS_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SoundStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static SoundStrings* instance() { static std::unique_ptr<SoundStrings> value(new SoundStrings()); return value.get(); }
+    private: static SoundStrings* instance_owner();
+    private: static SoundStrings* instance;
 
     public: static SoundStrings* getInstance();
 
+
+            
+    public: SoundStrings();
+        
     public: const std::string STOP_ALL = "stopAll";
 
     public: const std::string CLOSE_ALL = "closeAll";
@@ -74,3 +88,10 @@ class SoundStrings
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDSTRINGS_H_COMPLETE
+        
+        #endif
+    

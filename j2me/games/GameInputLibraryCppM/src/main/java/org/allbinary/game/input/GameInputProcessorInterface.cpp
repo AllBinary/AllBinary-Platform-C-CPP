@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameInputProcessorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInputProcessorInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onInput(BasicArrayList* list) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORINTERFACE_CPP

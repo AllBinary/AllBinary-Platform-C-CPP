@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/RepaintBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,31 +83,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RepaintBehavior
-            : public Object
-         {
 
-    private: static RepaintBehavior* instance() { static std::unique_ptr<RepaintBehavior> value(new RepaintBehavior()); return value.get(); }
+RepaintBehavior::RepaintBehavior() : logUtil(LogUtil::getInstance()) {
+        }
+        auto RepaintBehavior::instance_owner() -> RepaintBehavior* { static std::unique_ptr<RepaintBehavior> value(new RepaintBehavior()); return value.get(); }
+RepaintBehavior* RepaintBehavior::instance = RepaintBehavior::instance_owner();
 
-    public: static RepaintBehavior* getInstance(){
+    auto RepaintBehavior::getInstance() -> RepaintBehavior*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RepaintBehavior::instance();
+                        return RepaintBehavior::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: void repaint(Canvas* canvas){
+    auto RepaintBehavior::repaint(Canvas* canvas) -> void{
 }
 
 
-    private: const std::string NAME = "RepaintBehavior";
-
-    public: void onChangeRepaint(Canvas* canvas){
+    auto RepaintBehavior::onChangeRepaint(Canvas* canvas) -> void{
 
     Features* features = Features::getInstance();;
     
@@ -152,7 +158,6 @@ thread->start();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_CPP

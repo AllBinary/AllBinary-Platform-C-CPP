@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
-
-      
+class Image;
+class GameFeatureImageCacheFactory;
 
 
 
@@ -56,11 +57,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageCreationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageCreationUtil* instance() { static std::unique_ptr<ImageCreationUtil> value(new ImageCreationUtil()); return value.get(); }
+    private: static ImageCreationUtil* instance_owner();
+    private: static ImageCreationUtil* instance;
 
     public: static ImageCreationUtil* getInstance();
 
@@ -80,3 +86,16 @@ private: ImageCreationUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECREATIONUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/image/GameFeatureImageCacheFactory.h>)
+#include <org/allbinary/image/GameFeatureImageCacheFactory.h>
+#endif
+
+        #endif
+    

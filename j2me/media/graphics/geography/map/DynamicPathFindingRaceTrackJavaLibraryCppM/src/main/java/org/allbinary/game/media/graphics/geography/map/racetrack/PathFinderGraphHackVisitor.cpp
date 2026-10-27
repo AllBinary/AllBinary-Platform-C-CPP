@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDERGRAPHHACKVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDERGRAPHHACKVISITOR_CPP
+
+        #include "org/allbinary/game/media/graphics/geography/map/racetrack/PathFinderGraphHackVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -88,12 +94,9 @@
         #include "org/allbinary/game/media/graphics/geography/map/racetrack/BasePathFinderGraphVisitor.h"
 #include "org/allbinary/game/media/graphics/geography/map/racetrack/CellPositionArray.h"
 
+
 template<typename V, typename E>
-class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor<V, E> {
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: PathFinderGraphHackVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight) : BasePathFinderGraphVisitor<V, E>(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight){
+PathFinderGraphHackVisitor<V, E>::PathFinderGraphHackVisitor(BasicGeographicMap* geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight) : BasePathFinderGraphVisitor<V, E>(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -105,7 +108,8 @@ public: PathFinderGraphHackVisitor(BasicGeographicMap* geographicMapInterface, i
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(SimpleWeightedGraph* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
+    template<typename V, typename E>
+auto PathFinderGraphHackVisitor<V, E>::visit(SimpleWeightedGraph* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) -> void{
 this->fixStart(graph, startPathFindingNodeList);
     
 this->fixEnd(graph, endPathFindingNodeList);
@@ -117,12 +121,13 @@ this->fixOverPassEdges(graph);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixStart(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph, BasicArrayList* startPathFindingNodeList){
+    template<typename V, typename E>
+auto PathFinderGraphHackVisitor<V, E>::fixStart(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph, BasicArrayList* startPathFindingNodeList) -> void{
 
-    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->geographicMapInterface.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    AllBinaryTiledLayer* tiledLayer = this->geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
 
 
@@ -165,12 +170,13 @@ graph->removeEdge(geographicMapCellPosition, geographicMapCellPositionNeighbor);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixEnd(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph, BasicArrayList* endPathFindingNodeList){
+    template<typename V, typename E>
+auto PathFinderGraphHackVisitor<V, E>::fixEnd(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph, BasicArrayList* endPathFindingNodeList) -> void{
 
-    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->geographicMapInterface.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    AllBinaryTiledLayer* tiledLayer = this->geographicMapInterface.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer* tiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
 
 
@@ -215,9 +221,10 @@ graph->addEdge(geographicMapCellPosition, geographicMapCellPositionNeighbor);
 
                 //@Throws(Exception.constructor)
             
-    private: void fixOverPassEdges(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph){
+    template<typename V, typename E>
+auto PathFinderGraphHackVisitor<V, E>::fixOverPassEdges(SimpleWeightedGraph<CellPosition*, DefaultWeightedEdge*>* graph) -> void{
 
-    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->geographicMapInterface.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
     RaceTrackGeographicMap* raceTrackGeographicMap = dynamic_cast<RaceTrackGeographicMap*>(this->geographicMapInterface);;
@@ -235,7 +242,7 @@ graph->addEdge(geographicMapCellPosition, geographicMapCellPositionNeighbor);
 
     CellPosition* overPassGeographicMapCellPosition = CellPositionArray[index];;
     
-this->logUtil->putF("Fixing Over Pass: " +overPassGeographicMapCellPosition->getColumn() +", " +overPassGeographicMapCellPosition->getRow(), this, "fixOverPassEdges");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Fixing Over Pass: ") +JavaString::valueOf(overPassGeographicMapCellPosition->getColumn())) +JavaString::valueOf(", ")) +JavaString::valueOf(overPassGeographicMapCellPosition->getRow()), this, "fixOverPassEdges");
     
 
     GeographicMapCellPosition* underPassGeographicMapCellPosition = geographicMapCellPositionFactory->getAt(overPassGeographicMapCellPosition->getColumn(), overPassGeographicMapCellPosition->getRow());;
@@ -263,7 +270,8 @@ graph->addEdge(overPassGeographicMapCellPosition, leftUnderPassGeographicMapCell
 
                 //@Throws(Exception.constructor)
             
-    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList){
+    template<typename V, typename E>
+auto PathFinderGraphHackVisitor<V, E>::fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList) -> void{
 
 
 
@@ -304,9 +312,10 @@ this->removeOverPassEdges(pathList);
 
                 //@Throws(Exception.constructor)
             
-    private: void removeOverPassEdges(BasicArrayList* pathList){
+    template<typename V, typename E>
+auto PathFinderGraphHackVisitor<V, E>::removeOverPassEdges(BasicArrayList* pathList) -> void{
 
-    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->geographicMapInterface.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory* geographicMapCellPositionFactory = this->geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
     RaceTrackGeographicMap* raceTrackGeographicMap = dynamic_cast<RaceTrackGeographicMap*>(this->geographicMapInterface);;
@@ -344,7 +353,8 @@ this->removeOverPassEdges(pathList);
 }
 
 
-    public: bool isValid(GraphPath* graphPath){
+    template<typename V, typename E>
+auto PathFinderGraphHackVisitor<V, E>::isValid(GraphPath* graphPath) -> bool{
 
                         if(graphPath->getEdgeList()->size() > edgeMinimum && graphPath->getWeight() < maxPathWeight && graphPath->getWeight() > minPathWeight)
                         
@@ -371,7 +381,6 @@ this->removeOverPassEdges(pathList);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDERGRAPHHACKVISITOR_CPP

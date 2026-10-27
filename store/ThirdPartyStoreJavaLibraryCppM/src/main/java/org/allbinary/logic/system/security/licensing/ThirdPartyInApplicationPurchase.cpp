@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/ThirdPartyInApplicationPurchase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,11 @@
         #include "org/allbinary/logic/system/security/licensing/ThirdPartyInApplicationPurchaseInterface.h"
 #include "org/allbinary/logic/system/security/licensing/LockableFeature.h"
 
-class ThirdPartyInApplicationPurchase
-            : public Object
-        , public ThirdPartyInApplicationPurchaseInterface {
 
-    public: bool isPurchased(LockableFeature* lockableFeature){
+ThirdPartyInApplicationPurchase::ThirdPartyInApplicationPurchase() {
+        }
+        
+    auto ThirdPartyInApplicationPurchase::isPurchased(LockableFeature* lockableFeature) -> bool{
 
 
 
@@ -64,43 +74,43 @@ class ThirdPartyInApplicationPurchase
 }
 
 
-    public: void onCreate(Object* anyType, Object* stateObject){
+    auto ThirdPartyInApplicationPurchase::onCreate(Object* anyType, Object* stateObject) -> void{
 }
 
 
-    public: void onDestroy(){
+    auto ThirdPartyInApplicationPurchase::onDestroy() -> void{
 }
 
 
-    public: void onStart(){
+    auto ThirdPartyInApplicationPurchase::onStart() -> void{
 }
 
 
-    public: void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject){
+    auto ThirdPartyInApplicationPurchase::onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject) -> void{
 }
 
 
-    public: void onSaveInstanceState(Object* anyType){
+    auto ThirdPartyInApplicationPurchase::onSaveInstanceState(Object* anyType) -> void{
 }
 
 
-    public: void onStop(){
+    auto ThirdPartyInApplicationPurchase::onStop() -> void{
 }
 
 
-    public: void requestPurchase(LockableFeature* lockableFeature){
+    auto ThirdPartyInApplicationPurchase::requestPurchase(LockableFeature* lockableFeature) -> void{
 }
 
 
-    public: void requestReceipts(){
+    auto ThirdPartyInApplicationPurchase::requestReceipts() -> void{
 }
 
 
-    public: void add(LockableFeature* lockableFeature){
+    auto ThirdPartyInApplicationPurchase::add(LockableFeature* lockableFeature) -> void{
 }
 
 
-    public: std::string getUserName(){
+    auto ThirdPartyInApplicationPurchase::getUserName() -> std::string{
 
 
 
@@ -110,7 +120,7 @@ class ThirdPartyInApplicationPurchase
 }
 
 
-    public: bool isEnabled(){
+    auto ThirdPartyInApplicationPurchase::isEnabled() -> bool{
 
 
 
@@ -120,11 +130,10 @@ class ThirdPartyInApplicationPurchase
 }
 
 
-    protected: void requestProducts(){
+    auto ThirdPartyInApplicationPurchase::requestProducts() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_THIRDPARTYINAPPLICATIONPURCHASE_CPP

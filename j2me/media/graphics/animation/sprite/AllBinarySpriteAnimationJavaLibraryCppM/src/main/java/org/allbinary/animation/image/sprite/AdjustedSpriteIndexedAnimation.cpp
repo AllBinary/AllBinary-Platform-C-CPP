@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ADJUSTEDSPRITEINDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ADJUSTEDSPRITEINDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/AdjustedSpriteIndexedAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,13 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/sprite/SpriteIndexedAnimation.h"
 
-class AdjustedSpriteIndexedAnimation: public SpriteIndexedAnimation {
 
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-public: AdjustedSpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicColor*> basicColorArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : SpriteIndexedAnimation(sprite, image, basicColorArray, animationBehavior){
+AdjustedSpriteIndexedAnimation::AdjustedSpriteIndexedAnimation(Sprite* sprite, Image* image, std::vector<BasicColor*> basicColorArray, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : SpriteIndexedAnimation(sprite, image, basicColorArray, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,33 +91,32 @@ this->dy= dy;
 }
 
 
-    public: void paintFrame(Graphics* graphics, int32_t frame, int32_t x, int32_t y){
+    auto AdjustedSpriteIndexedAnimation::paintFrame(Graphics* graphics, int32_t frame, int32_t x, int32_t y) -> void{
 this->setFrame(frame);
     
-this->sprite.setPosition(x +this->dx, y +this->dy);
+this->sprite->setPosition(x +this->dx, y +this->dy);
     
-super.paint(graphics);
-    
-}
-
-
-    public: void paintXY(Graphics* g, int32_t x, int32_t y){
-this->sprite.setPosition(x +this->dx, y +this->dy);
-    
-super.paint(g);
+SpriteIndexedAnimation::paint(graphics);
     
 }
 
 
-    public: void paint(Graphics* g){
-this->sprite.setPosition(this->dx, this->dy);
+    auto AdjustedSpriteIndexedAnimation::paintXY(Graphics* g, int32_t x, int32_t y) -> void{
+this->sprite->setPosition(x +this->dx, y +this->dy);
     
-super.paint(g);
+SpriteIndexedAnimation::paint(g);
     
 }
 
 
-};
+    auto AdjustedSpriteIndexedAnimation::paint(Graphics* g) -> void{
+this->sprite->setPosition(this->dx, this->dy);
+    
+SpriteIndexedAnimation::paint(g);
+    
+}
 
-            
 
+
+
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ADJUSTEDSPRITEINDEXEDANIMATION_CPP

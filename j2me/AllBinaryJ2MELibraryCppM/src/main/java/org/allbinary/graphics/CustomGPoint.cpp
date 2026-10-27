@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_CUSTOMGPOINT_CPP
+        #define ORG_ALLBINARY_GRAPHICS_CUSTOMGPOINT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/CustomGPoint.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/GPoint.h"
 
-class CustomGPoint: public GPoint {
+auto CustomGPoint::NULL_CUSTOM_POINT_owner() -> CustomGPoint* { static std::unique_ptr<CustomGPoint> value(new CustomGPoint(0, 0, 0)); return value.get(); }
+CustomGPoint* CustomGPoint::NULL_CUSTOM_POINT = CustomGPoint::NULL_CUSTOM_POINT_owner();
 
-    public: static CustomGPoint* NULL_CUSTOM_POINT() { static std::unique_ptr<CustomGPoint> value(new CustomGPoint(0, 0, 0)); return value.get(); }
-
-    public: static CustomGPoint* getInstance(GPoint* point){
+    auto CustomGPoint::getInstance(GPoint* point) -> CustomGPoint*{
 
 
 
@@ -58,7 +67,7 @@ class CustomGPoint: public GPoint {
 }
 
 
-    public: static CustomGPoint* getInstance3(int32_t x, int32_t y){
+    auto CustomGPoint::getInstance3(int32_t x, int32_t y) -> CustomGPoint*{
 
 
 
@@ -68,13 +77,7 @@ class CustomGPoint: public GPoint {
 }
 
 
-    private: int32_t cx= 0;
-
-    private: int32_t cy= 0;
-
-    private: int32_t cz= 0;
-
-public: CustomGPoint(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
+CustomGPoint::CustomGPoint(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,13 +87,13 @@ public: CustomGPoint(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
 }
 
 
-    public: void setX(int32_t x){
+    auto CustomGPoint::setX(int32_t x) -> void{
 this->cx= x;
     
 }
 
 
-    public: int32_t getX(){
+    auto CustomGPoint::getX() -> int32_t{
 
 
 
@@ -100,13 +103,13 @@ this->cx= x;
 }
 
 
-    public: void setY(int32_t y){
+    auto CustomGPoint::setY(int32_t y) -> void{
 this->cy= y;
     
 }
 
 
-    public: int32_t getY(){
+    auto CustomGPoint::getY() -> int32_t{
 
 
 
@@ -116,13 +119,13 @@ this->cy= y;
 }
 
 
-    public: void setZ(int32_t z){
+    auto CustomGPoint::setZ(int32_t z) -> void{
 this->cz= z;
     
 }
 
 
-    public: int32_t getZ(){
+    auto CustomGPoint::getZ() -> int32_t{
 
 
 
@@ -132,7 +135,6 @@ this->cz= z;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_CUSTOMGPOINT_CPP

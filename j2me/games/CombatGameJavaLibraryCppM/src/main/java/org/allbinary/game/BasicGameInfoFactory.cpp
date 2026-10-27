@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BASICGAMEINFOFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_BASICGAMEINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/BasicGameInfoFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,33 +41,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicGameInfoFactory
-            : public Object
-         {
+auto BasicGameInfoFactory::SINGLETON_owner() -> BasicGameInfoFactory* { static std::unique_ptr<BasicGameInfoFactory> value(new BasicGameInfoFactory()); return value.get(); }
+BasicGameInfoFactory* BasicGameInfoFactory::SINGLETON = BasicGameInfoFactory::SINGLETON_owner();
 
-    private: static BasicGameInfoFactory* SINGLETON() { static std::unique_ptr<BasicGameInfoFactory> value(new BasicGameInfoFactory()); return value.get(); }
-
-    public: static BasicGameInfoFactory* getInstance(){
+    auto BasicGameInfoFactory::getInstance() -> BasicGameInfoFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGameInfoFactory::SINGLETON();
+                        return BasicGameInfoFactory::SINGLETON;
     
 }
 
 
-    public: int32_t currentReleaseIndex= 0;
-
-    public: int32_t currentDestroyIndex= 0;
-
-    public: int32_t total= 0;
-
-private: BasicGameInfoFactory(){
+BasicGameInfoFactory::BasicGameInfoFactory(){
 }
 
 
-    public: void init(int32_t total){
+    auto BasicGameInfoFactory::init(int32_t total) -> void{
 this->currentReleaseIndex= 0;
     
 this->currentDestroyIndex= 0;
@@ -67,7 +68,7 @@ this->total= total;
 }
 
 
-    public: bool isPeaked(){
+    auto BasicGameInfoFactory::isPeaked() -> bool{
 
                         if(this->currentDestroyIndex >= this->total)
                         
@@ -94,7 +95,7 @@ this->total= total;
 }
 
 
-    public: int32_t howManyLeft(){
+    auto BasicGameInfoFactory::howManyLeft() -> int32_t{
 
 
 
@@ -104,7 +105,6 @@ this->total= total;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BASICGAMEINFOFACTORY_CPP

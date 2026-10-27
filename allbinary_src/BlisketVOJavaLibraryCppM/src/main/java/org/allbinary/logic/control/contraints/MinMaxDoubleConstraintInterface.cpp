@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/contraints/MinMaxDoubleConstraintInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,17 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MinMaxDoubleConstraintInterface {
+//Interface - declared in the header
 
-    public: virtual double getMax() = 0;
 
-    public: virtual double getMin() = 0;
 
-    public: virtual void setMax(double max) = 0;
-
-    public: virtual void setMin(double min) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_MINMAXDOUBLECONSTRAINTINTERFACE_CPP

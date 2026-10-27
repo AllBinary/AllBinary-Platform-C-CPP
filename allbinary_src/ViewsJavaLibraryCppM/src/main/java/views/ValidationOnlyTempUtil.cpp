@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_VALIDATIONONLYTEMPUTIL_CPP
+        #define VIEWS_VALIDATIONONLYTEMPUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/ValidationOnlyTempUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,41 +69,36 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Replace when validation node is added
-class ValidationOnlyTempUtil
-            : public Object
-         {
+auto ValidationOnlyTempUtil::instance_owner() -> ValidationOnlyTempUtil* { static std::unique_ptr<ValidationOnlyTempUtil> value(new ValidationOnlyTempUtil()); return value.get(); }
+ValidationOnlyTempUtil* ValidationOnlyTempUtil::instance = ValidationOnlyTempUtil::instance_owner();
 
-    private: static ValidationOnlyTempUtil* instance() { static std::unique_ptr<ValidationOnlyTempUtil> value(new ValidationOnlyTempUtil()); return value.get(); }
-
-    public: static ValidationOnlyTempUtil* getInstance(){
+    auto ValidationOnlyTempUtil::getInstance() -> ValidationOnlyTempUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ValidationOnlyTempUtil::instance();
+                        return ValidationOnlyTempUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ValidationOnlyTempUtil(){
+ValidationOnlyTempUtil::ValidationOnlyTempUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(ValidationComponentInterface* validationComponentInterface){
+    auto ValidationOnlyTempUtil::view(ValidationComponentInterface* validationComponentInterface) -> std::string{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +validationComponentInterface->getTransformInfoInterface()->getName(), this, "view()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(validationComponentInterface->getTransformInfoInterface()->getName()), this, "view()");
     
 
                                     }
@@ -109,7 +114,7 @@ private: ValidationOnlyTempUtil(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "view()", &e);
@@ -127,7 +132,6 @@ private: ValidationOnlyTempUtil(){
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_VALIDATIONONLYTEMPUTIL_CPP

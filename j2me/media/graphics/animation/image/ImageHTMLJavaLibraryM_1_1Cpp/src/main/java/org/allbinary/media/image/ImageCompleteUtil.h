@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <org/microemu/device/playn/PlaynImage.h>
-
-      
+class Image;
+class PreLogUtil;
+class CommonStrings;
+class TimeDelayHelper;
+class PlaynImage;
 
 
 
@@ -65,15 +60,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageCompleteUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ImageCompleteUtil* instance() { static std::unique_ptr<ImageCompleteUtil> value(new ImageCompleteUtil()); return value.get(); }
+    private: static ImageCompleteUtil* instance_owner();
+    private: static ImageCompleteUtil* instance;
 
     public: static ImageCompleteUtil* getInstance();
 
-    protected: const std::string ISREADY = "isReady";
+
+            
+    public: ImageCompleteUtil();
+        
+    /*protected*/ public: const std::string ISREADY = "isReady";
 
                 //@Throws(Exception.constructor)
             
@@ -99,3 +103,25 @@ class ImageCompleteUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include(<org/microemu/device/playn/PlaynImage.h>)
+#include <org/microemu/device/playn/PlaynImage.h>
+#endif
+
+        #endif
+    

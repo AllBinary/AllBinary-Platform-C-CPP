@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOS_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/android/AndroidInfoFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class AndroidInfoFactory;
+class StringMaker;
 #include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class CommonSeps;
 
 
 
@@ -61,11 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/os/android/AndroidSystemProperties.h"
+        class AndroidSystemProperties;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidOS: public GenericOperatingSystem {
 
-    private: StringMaker* stringBuffer = new StringMaker();
+    private: StringMaker* stringBuffer;
 
     private: const std::string DEVICE_ID = "DeviceId";
 
@@ -91,3 +92,25 @@ public: AndroidOS();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOS_H_COMPLETE
+        #if __has_include(<org/allbinary/android/AndroidInfoFactory.h>)
+#include <org/allbinary/android/AndroidInfoFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/logic/system/os/android/AndroidSystemProperties.h")
+#include "org/allbinary/logic/system/os/android/AndroidSystemProperties.h"
+#endif
+
+        #endif
+    

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEMINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEMINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/ABCustomItemInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,19 +42,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ABCustomItemInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getMinimumWidth() = 0;
 
-    public: virtual int32_t getMinimumHeight() = 0;
 
-    public: virtual std::string getLabel() = 0;
-
-    public: virtual void paintXY(Graphics* graphics, int32_t x, int32_t y) = 0;
-
-    public: virtual void paintUnselected(Graphics* graphics, int32_t x, int32_t y) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEMINTERFACE_CPP

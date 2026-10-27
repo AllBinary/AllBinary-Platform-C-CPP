@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,14 +39,8 @@
             #include "java/lang/System.h"
         
 #include <java/util/Arrays.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/util/visitor/Visitor.h>
-
-      
+class TsUtil;
+class Visitor;
 
 
 
@@ -60,14 +59,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/math/permutations/ComparableObject.h"
-#include "org/allbinary/logic/math/permutations/ObjectPermutationVisitor.h"
+        class ComparableObject;
+class ObjectPermutationVisitor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OrderedObjectArrayPermutationUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static OrderedObjectArrayPermutationUtil* instance() { static std::unique_ptr<OrderedObjectArrayPermutationUtil> value(new OrderedObjectArrayPermutationUtil()); return value.get(); }
+    private: static OrderedObjectArrayPermutationUtil* instance_owner();
+    private: static OrderedObjectArrayPermutationUtil* instance;
 
     public: static OrderedObjectArrayPermutationUtil* getInstance();
 
@@ -93,3 +97,25 @@ private: OrderedObjectArrayPermutationUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_H_COMPLETE
+        #if __has_include(<java/util/Arrays.h>)
+#include <java/util/Arrays.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/visitor/Visitor.h>)
+#include <org/allbinary/logic/util/visitor/Visitor.h>
+#endif
+#if __has_include("org/allbinary/logic/math/permutations/ComparableObject.h")
+#include "org/allbinary/logic/math/permutations/ComparableObject.h"
+#endif
+#if __has_include("org/allbinary/logic/math/permutations/ObjectPermutationVisitor.h")
+#include "org/allbinary/logic/math/permutations/ObjectPermutationVisitor.h"
+#endif
+
+        #endif
+    

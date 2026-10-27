@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECHOICEGROUPS_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECHOICEGROUPS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/GameFeatureChoiceGroups.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,41 +64,36 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameFeatureChoiceGroups
-            : public Object
-         {
+auto GameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive_owner() -> GameFeatureChoiceGroups* { static std::unique_ptr<GameFeatureChoiceGroups> value(new GameFeatureChoiceGroups()); return value.get(); }
+GameFeatureChoiceGroups* GameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive = GameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive_owner();
+auto GameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple_owner() -> GameFeatureChoiceGroups* { static std::unique_ptr<GameFeatureChoiceGroups> value(new GameFeatureChoiceGroups()); return value.get(); }
+GameFeatureChoiceGroups* GameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple = GameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple_owner();
 
-    private: static GameFeatureChoiceGroups* gameFeatureChoiceGroupsExclusive() { static std::unique_ptr<GameFeatureChoiceGroups> value(new GameFeatureChoiceGroups()); return value.get(); }
+GameFeatureChoiceGroups::GameFeatureChoiceGroups() : hashtable(StdUtil::getInstance()->createHashtable()){
+}
 
-    private: static GameFeatureChoiceGroups* gameFeatureChoiceGroupsMultiple() { static std::unique_ptr<GameFeatureChoiceGroups> value(new GameFeatureChoiceGroups()); return value.get(); }
 
-    public: static GameFeatureChoiceGroups* getExclusiveInstance(){
+    auto GameFeatureChoiceGroups::getExclusiveInstance() -> GameFeatureChoiceGroups*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive();
+                        return GameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive;
     
 }
 
 
-    public: static GameFeatureChoiceGroups* getMultipleInstance(){
+    auto GameFeatureChoiceGroups::getMultipleInstance() -> GameFeatureChoiceGroups*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple();
+                        return GameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple;
     
 }
 
 
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-private: GameFeatureChoiceGroups(){
-}
-
-
-    public: ABHashtable<Object*, Object*>* get(){
+    auto GameFeatureChoiceGroups::get() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -98,13 +103,12 @@ private: GameFeatureChoiceGroups(){
 }
 
 
-    public: void add(std::string name, BasicArrayList* list){
+    auto GameFeatureChoiceGroups::add(std::string name, BasicArrayList* list) -> void{
 this->hashtable->put(name, list);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURECHOICEGROUPS_CPP

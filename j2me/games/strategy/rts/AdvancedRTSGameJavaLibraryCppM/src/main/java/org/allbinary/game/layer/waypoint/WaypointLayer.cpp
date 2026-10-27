@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/WaypointLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -95,19 +105,8 @@
 #include "org/allbinary/game/layer/waypoint/Waypoint.h"
 #include "org/allbinary/game/layer/waypoint/WaypointCellPositionHistory.h"
 
-class WaypointLayer: public AdvancedRTSGameLayer {
 
-    public: static int32_t getStaticType(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 4;
-    
-}
-
-
-protected: WaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : AdvancedRTSGameLayer(remoteInfo, parentLayer, AdvancedRTSProperties::createProperties(), groupInterface, rootName, name, new Health(1000), NullRTSFormInputFactory::getInstance(), animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, new TileLayerPositionIntoViewPosition()){
+WaypointLayer::WaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : AdvancedRTSGameLayer(remoteInfo, parentLayer, AdvancedRTSProperties::createProperties(), groupInterface, rootName, name, new Health(1000), NullRTSFormInputFactory::getInstance(), animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, new TileLayerPositionIntoViewPosition()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -123,7 +122,7 @@ this->setAnimationInterface(this->indexedButShouldBeRotationAnimationInterface);
 }
 
 
-    public: void construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface){
+    auto WaypointLayer::construct(RTSPlayerLayerInterface* rtsPlayerLayerInterface) -> void{
 this->percentCompleteP= 100;
     
 this->initVisibility(rtsPlayerLayerInterface);
@@ -131,12 +130,12 @@ this->initVisibility(rtsPlayerLayerInterface);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto WaypointLayer::paint(Graphics* graphics) -> void{
 
                         if(this->isVisible())
                         
                                     {
-                                    super.paint(graphics);
+                                    AdvancedRTSGameLayer::paint(graphics);
     
 
                                     }
@@ -144,29 +143,29 @@ this->initVisibility(rtsPlayerLayerInterface);
 }
 
 
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto WaypointLayer::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
         try {
-            this->indexedButShouldBeRotationAnimationInterface.nextFrame();
+            this->indexedButShouldBeRotationAnimationInterface->nextFrame();
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "processTick", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "processTick", &e);
     
 }
 
 }
 
 
-    public: void damage(int32_t damage, int32_t damageType){
+    auto WaypointLayer::damage(int32_t damage, int32_t damageType) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDamage(int32_t damageType){
+    auto WaypointLayer::getDamage(int32_t damageType) -> int32_t{
 
 
 
@@ -178,8 +177,8 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "processTick", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: void setDestroyed(bool destroyed){
-super.setDestroyed(destroyed);
+    auto WaypointLayer::setDestroyed(bool destroyed) -> void{
+AdvancedRTSGameLayer::setDestroyed(destroyed);
     
 
                         if(this->isDestroyed())
@@ -193,7 +192,7 @@ super.setDestroyed(destroyed);
 }
 
 
-    public: int32_t getType(){
+    auto WaypointLayer::getType() -> int32_t{
 
 
 
@@ -203,7 +202,17 @@ super.setDestroyed(destroyed);
 }
 
 
-    public: bool isSelfUpgradeable(){
+    auto WaypointLayer::getStaticType() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 4;
+    
+}
+
+
+    auto WaypointLayer::isSelfUpgradeable() -> bool{
 
 
 
@@ -213,7 +222,6 @@ super.setDestroyed(destroyed);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYER_CPP

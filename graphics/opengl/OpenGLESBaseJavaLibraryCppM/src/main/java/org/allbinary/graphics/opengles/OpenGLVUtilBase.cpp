@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTILBASE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTILBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLVUtilBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,23 +58,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLVUtilBase
-            : public Object
-         {
 
-    public: void glTexEnvix(GL10* gl, int32_t target, int32_t pname, int32_t param){
+OpenGLVUtilBase::OpenGLVUtilBase() {
+        }
+        
+    auto OpenGLVUtilBase::glTexEnvix(GL10* gl, int32_t target, int32_t pname, int32_t param) -> void{
 }
 
 
-    public: void glTexParameterix(GL10* gl, int32_t target, int32_t pname, int32_t param){
+    auto OpenGLVUtilBase::glTexParameterix(GL10* gl, int32_t target, int32_t pname, int32_t param) -> void{
 }
 
 
-    public: void glGenerateMipmap(GL10* gl, int32_t textureId, int32_t target, bool generateMipMap){
+    auto OpenGLVUtilBase::glGenerateMipmap(GL10* gl, int32_t textureId, int32_t target, bool generateMipMap) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVUTILBASE_CPP

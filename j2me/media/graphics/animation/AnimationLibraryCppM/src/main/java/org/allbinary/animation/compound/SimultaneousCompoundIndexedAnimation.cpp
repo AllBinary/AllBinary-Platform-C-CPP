@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXEDANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXEDANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/compound/SimultaneousCompoundIndexedAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,11 +72,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SimultaneousCompoundIndexedAnimation: public IndexedAnimation {
 
-    private: std::vector<Animation*> animationInterfaceArray;
-
-public: SimultaneousCompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
+SimultaneousCompoundIndexedAnimation::SimultaneousCompoundIndexedAnimation(std::vector<Animation*> animationInterfaceArray, AnimationBehavior* animationBehavior) : IndexedAnimation(animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +85,7 @@ this->animationInterfaceArray= animationInterfaceArray;
 }
 
 
-    public: void setFrame(int32_t frameIndex){
+    auto SimultaneousCompoundIndexedAnimation::setFrame(int32_t frameIndex) -> void{
 
     IndexedAnimation* indexedAnimation;;
     
@@ -98,7 +105,7 @@ indexedAnimation->setFrame(frameIndex);
 }
 
 
-    public: int32_t getFrame(){
+    auto SimultaneousCompoundIndexedAnimation::getFrame() -> int32_t{
 
     IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[0]);;
     
@@ -111,7 +118,7 @@ indexedAnimation->setFrame(frameIndex);
 }
 
 
-    public: int32_t getSize(){
+    auto SimultaneousCompoundIndexedAnimation::getSize() -> int32_t{
 
     IndexedAnimation* indexedAnimation = dynamic_cast<IndexedAnimation*>(this->animationInterfaceArray[0]);;
     
@@ -124,7 +131,7 @@ indexedAnimation->setFrame(frameIndex);
 }
 
 
-    public: void previousFrame(){
+    auto SimultaneousCompoundIndexedAnimation::previousFrame() -> void{
 
     IndexedAnimation* indexedAnimation;;
     
@@ -144,11 +151,11 @@ indexedAnimation->previousFrame();
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto SimultaneousCompoundIndexedAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto SimultaneousCompoundIndexedAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -160,7 +167,7 @@ indexedAnimation->previousFrame();
 
                 //@Throws(Exception.constructor)
             
-    public: void nextFrame(){
+    auto SimultaneousCompoundIndexedAnimation::nextFrame() -> void{
 
 
 
@@ -168,14 +175,14 @@ indexedAnimation->previousFrame();
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index].nextFrame();
+this->animationInterfaceArray[index]->nextFrame();
     
 }
 
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto SimultaneousCompoundIndexedAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 
     int32_t size = this->animationInterfaceArray.size();;
     
@@ -186,14 +193,14 @@ this->animationInterfaceArray[index].nextFrame();
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->animationInterfaceArray[index].paintXY(graphics, x, y);
+this->animationInterfaceArray[index]->paintXY(graphics, x, y);
     
 }
 
 }
 
 
-    public: void paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z){
+    auto SimultaneousCompoundIndexedAnimation::paintThreedXYZ(Graphics* graphics, int32_t x, int32_t y, int32_t z) -> void{
 
     int32_t size = this->animationInterfaceArray.size();;
     
@@ -204,14 +211,14 @@ this->animationInterfaceArray[index].paintXY(graphics, x, y);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->animationInterfaceArray[index].paintThreedXYZ(graphics, x, y, z);
+this->animationInterfaceArray[index]->paintThreedXYZ(graphics, x, y, z);
     
 }
 
 }
 
 
-    public: std::vector<Animation*> getAnimationInterfaceArray(){
+    auto SimultaneousCompoundIndexedAnimation::getAnimationInterfaceArray() -> std::vector<Animation*>{
 
 
 
@@ -221,13 +228,12 @@ this->animationInterfaceArray[index].paintThreedXYZ(graphics, x, y, z);
 }
 
 
-    public: void setAnimationInterfaceArray(std::vector<Animation*> animationInterfaceArray){
+    auto SimultaneousCompoundIndexedAnimation::setAnimationInterfaceArray(std::vector<Animation*> animationInterfaceArray) -> void{
 this->animationInterfaceArray= animationInterfaceArray;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXEDANIMATION_CPP

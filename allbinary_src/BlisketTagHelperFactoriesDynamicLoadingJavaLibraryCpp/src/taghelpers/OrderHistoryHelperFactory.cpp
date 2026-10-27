@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_ORDERHISTORYHELPERFACTORY_CPP
+        #define TAGHELPERS_ORDERHISTORYHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/OrderHistoryHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderHistoryHelperFactory
-            : public Object
-         {
 
-    private: static inline const std::string CLASSNAME = "taghelpers.OrderHistoryHelper";
+OrderHistoryHelperFactory::OrderHistoryHelperFactory(){
+}
 
-    private: static inline const std::string FACTORYNAME = "taghelpers.OrderHistoryHelperFactory";
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto OrderHistoryHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -77,11 +84,6 @@ class OrderHistoryHelperFactory
 }
 
 
-private: OrderHistoryHelperFactory(){
-}
 
 
-};
-
-            
-
+        #endif //TAGHELPERS_ORDERHISTORYHELPERFACTORY_CPP

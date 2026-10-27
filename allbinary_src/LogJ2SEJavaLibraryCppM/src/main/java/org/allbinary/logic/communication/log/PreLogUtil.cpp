@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/PreLogUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,19 +64,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/LogFormatUtil.h"
 //ActualPlatform
-/*actual*/ class PreLogUtil
-            : public Object
-         {
 
-    /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName){
+PreLogUtil::PreLogUtil(){
+}
+
+
+    /*actual*/ auto PreLogUtil::put(std::string specialMessage, Object* anyType, std::string functionName) -> void{
 PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
 
-    private: static inline const std::string LOG_SUCCESS = "org.allbinary: ";
-
-    /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+    /*actual*/ auto PreLogUtil::putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception) -> void{
 
     std::string className = CommonStrings::getInstance()->EMPTY;;
     
@@ -89,13 +98,13 @@ System.out.println(message);
 }
 
 
-    /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName){
+    /*actual*/ auto PreLogUtil::putS(std::string specialMessage, std::string className, std::string functionName) -> void{
 PreLogUtil::putSE(specialMessage, className, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
 
-    /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception){
+    /*actual*/ auto PreLogUtil::putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception) -> void{
 
     std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
@@ -106,11 +115,6 @@ System.out.println(message);
 }
 
 
-public: PreLogUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP

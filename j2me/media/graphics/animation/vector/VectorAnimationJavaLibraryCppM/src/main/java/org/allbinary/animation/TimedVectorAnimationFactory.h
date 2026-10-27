@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class BasicColor;
 
 
 
@@ -53,14 +56,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/VectorAnimationFactoryInterface.h"
-#include "org/allbinary/animation/TimedVectorAnimation.h"
-#include "org/allbinary/animation/AnimationBehavior.h"
-#include "org/allbinary/animation/VectorAnimation.h"
+class TimedVectorAnimation;
+class AnimationBehavior;
+class VectorAnimation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TimedVectorAnimationFactory
-            : public Object
+            : public virtual Object
         , public VectorAnimationFactoryInterface {
 
+
+            
+    public: TimedVectorAnimationFactory();
+        
     public: VectorAnimation* getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor* basicColor);
 
 };
@@ -69,3 +80,25 @@ class TimedVectorAnimationFactory
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimationFactoryInterface.h")
+#include "org/allbinary/animation/VectorAnimationFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/TimedVectorAnimation.h")
+#include "org/allbinary/animation/TimedVectorAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimation.h")
+#include "org/allbinary/animation/VectorAnimation.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERCOMPOSITEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERCOMPOSITEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSLayerCompositePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,25 +67,14 @@
         #include "org/allbinary/game/layer/UpgradableRTSLayerHudPaintable.h"
 #include "org/allbinary/game/layer/RTSLayer.h"
 
-class RTSLayerCompositePaintable: public Paintable {
 
-    private: std::string upgradeCost = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: std::string downGradeCost = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: const std::string UPGRADE = "Up: $";
-
-    private: const std::string DOWNGRADE = "Down: $-";
-
-    protected: UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable;
-
-public: RTSLayerCompositePaintable(UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable){
+RTSLayerCompositePaintable::RTSLayerCompositePaintable(UpgradableRTSLayerHudPaintable* upgradableRTSLayerHudPaintable) : upgradeCost(StringUtil::getInstance()->EMPTY_STRING), downGradeCost(StringUtil::getInstance()->EMPTY_STRING){
 this->upgradableRTSLayerHudPaintable= upgradableRTSLayerHudPaintable;
     
 }
 
 
-    public: void update(RTSLayer* rtsLayer){
+    auto RTSLayerCompositePaintable::update(RTSLayer* rtsLayer) -> void{
 
                         if(rtsLayer->isUpgradeable())
                         
@@ -109,7 +108,7 @@ this->upgradableRTSLayerHudPaintable= upgradableRTSLayerHudPaintable;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto RTSLayerCompositePaintable::paint(Graphics* graphics) -> void{
 graphics->drawString(this->getDownGradeCost(), this->upgradableRTSLayerHudPaintable->textX, this->upgradableRTSLayerHudPaintable->costY1, 0);
     
 graphics->drawString(this->getUpgradeCost(), this->upgradableRTSLayerHudPaintable->textX, this->upgradableRTSLayerHudPaintable->costY, 0);
@@ -117,13 +116,13 @@ graphics->drawString(this->getUpgradeCost(), this->upgradableRTSLayerHudPaintabl
 }
 
 
-    protected: void setUpgradeCost(std::string upgradeCost){
+    auto RTSLayerCompositePaintable::setUpgradeCost(std::string upgradeCost) -> void{
 this->upgradeCost= upgradeCost;
     
 }
 
 
-    protected: std::string getUpgradeCost(){
+    auto RTSLayerCompositePaintable::getUpgradeCost() -> std::string{
 
 
 
@@ -133,13 +132,13 @@ this->upgradeCost= upgradeCost;
 }
 
 
-    protected: void setDownGradeCost(std::string downGradeCost){
+    auto RTSLayerCompositePaintable::setDownGradeCost(std::string downGradeCost) -> void{
 this->downGradeCost= downGradeCost;
     
 }
 
 
-    protected: std::string getDownGradeCost(){
+    auto RTSLayerCompositePaintable::getDownGradeCost() -> std::string{
 
 
 
@@ -149,7 +148,6 @@ this->downGradeCost= downGradeCost;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYERCOMPOSITEPAINTABLE_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_TEMPEXPLOSIONWEAPONLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_TEMPEXPLOSIONWEAPONLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/weapon/TempExplosionWeaponLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,13 +69,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/weapon/SimpleWeaponLayer.h"
 
-class TempExplosionWeaponLayer: public SimpleWeaponLayer {
 
-    public: WeaponProperties* weaponProperties = new WeaponProperties( -1,  -1, 0, 1000, 0);
-
-    private: TimeDelayHelper* timeDelayHelper = new TimeDelayHelper(0);
-
-public: TempExplosionWeaponLayer(std::string name, Movement* movement, Animation* animationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition, int32_t timeDelay) : SimpleWeaponLayer(name, RemoteInfo::REMOTE_INFO,  -1, movement, animationInterface, SimpleWeaponLayer::createDestroyed(), rectangle, viewPosition){
+TempExplosionWeaponLayer::TempExplosionWeaponLayer(std::string name, Movement* movement, Animation* animationInterface, Rectangle* rectangle, ViewPositionBase* viewPosition, int32_t timeDelay) : SimpleWeaponLayer(name, RemoteInfo::REMOTE_INFO,  -1, movement, animationInterface, SimpleWeaponLayer::createDestroyed(), rectangle, viewPosition), weaponProperties(new WeaponProperties( -1,  -1, 0, 1000, 0)), timeDelayHelper(new TimeDelayHelper(0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -79,7 +84,7 @@ this->timeDelayHelper->delay= timeDelay;
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto TempExplosionWeaponLayer::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->timeDelayHelper->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
@@ -91,12 +96,11 @@ this->totalDamage= this->getInitDamage() +1;
 
                                     }
                                 
-super.processTick(allBinaryLayerManager);
+SimpleWeaponLayer::processTick(allBinaryLayerManager);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_TEMPEXPLOSIONWEAPONLAYER_CPP

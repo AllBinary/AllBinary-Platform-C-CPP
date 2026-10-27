@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/RectangleAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleAnimation: public Animation, public ColorCompositeInterface {
 
-    private: int32_t width;
-
-    private: int32_t height;
-
-public: RectangleAnimation(int32_t width, int32_t height, BasicColor* basicColor){
+RectangleAnimation::RectangleAnimation(int32_t width, int32_t height, BasicColor* basicColor){
 this->width= width;
     
 this->height= height;
@@ -71,31 +76,30 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void nextFrame(){
+    auto RectangleAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    auto RectangleAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 graphics->drawRect(x, y, this->width, this->height);
     
 }
 
 
-    public: void setWidth(int32_t width){
+    auto RectangleAnimation::setWidth(int32_t width) -> void{
 this->width= width;
     
 }
 
 
-    public: void setHeight(int32_t height){
+    auto RectangleAnimation::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEANIMATION_CPP

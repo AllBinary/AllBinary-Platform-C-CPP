@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_H
         #define ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,18 +54,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/math/AngleFactory.h"
-#include "org/allbinary/math/AngleIncrementInfo.h"
+        class AngleFactory;
+class AngleIncrementInfo;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AngleIncrementInfoFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AngleIncrementInfoFactory* instance() { static std::unique_ptr<AngleIncrementInfoFactory> value(new AngleIncrementInfoFactory()); return value.get(); }
+    private: static AngleIncrementInfoFactory* instance_owner();
+    private: static AngleIncrementInfoFactory* instance;
 
     public: static AngleIncrementInfoFactory* getInstance();
 
-    private: const std::vector<AngleIncrementInfo*> angleIncrementInfo = std::vector<AngleIncrementInfo*>(static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE));
+
+            
+    public: AngleIncrementInfoFactory();
+        
+    private: std::vector<AngleIncrementInfo*> angleIncrementInfo;
 
     public: AngleIncrementInfo* getAt(int16_t angleIncrement);
 
@@ -70,3 +84,16 @@ class AngleIncrementInfoFactory
 
 
         #endif //ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/math/AngleFactory.h")
+#include "org/allbinary/math/AngleFactory.h"
+#endif
+#if __has_include("org/allbinary/math/AngleIncrementInfo.h")
+#include "org/allbinary/math/AngleIncrementInfo.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_MAPPING_DOMDOCUMENTMAPPINGINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_MAPPING_DOMDOCUMENTMAPPINGINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DomDocumentMappingInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual Document* toXmlDoc() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_MAPPING_DOMDOCUMENTMAPPINGINTERFACE_CPP

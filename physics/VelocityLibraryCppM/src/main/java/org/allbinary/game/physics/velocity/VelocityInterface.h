@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,6 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/physics/velocity/BasicVelocityInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class VelocityInterface: public BasicVelocityInterface {
 
     public: virtual int32_t getMaxForwardVelocity() = 0;
@@ -71,3 +80,13 @@ class VelocityInterface: public BasicVelocityInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACE_H_COMPLETE
+        #if __has_include("org/allbinary/game/physics/velocity/BasicVelocityInterface.h")
+#include "org/allbinary/game/physics/velocity/BasicVelocityInterface.h"
+#endif
+
+        #endif
+    

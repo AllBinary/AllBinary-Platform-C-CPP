@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/WorkAreaJPanel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -125,37 +135,8 @@
 #include "org/allbinary/graphics/j2me/workarea/KeyAdapter.h"
 #include "org/allbinary/graphics/j2me/workarea/KeyEvent.h"
 
-class WorkAreaJPanel: public JPanel, public WorkAreaJPanelInterface, public MyCanvasEventListener, public EventListener, public Runnable {
 
-    private: static inline org::w3c::dom::Document* document;
-
-    public: static Document* getDocument(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkAreaJPanel::document;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: LinkedList* canvasJPanelList;
-
-    private: JPanel* canvasHolderJPanel;
-
-    private: std::string name;
-
-    private: int32_t selectedFrame= 0;
-
-    private: PropertiesJPanel* propertiesJPanel;
-
-    private: WorkAreaJTreeJPanel* workAreaJTreeJPanel;
-
-    private: bool isPlaying = false;
-
-public: WorkAreaJPanel(std::string name, Dimension* dimension, int32_t x, int32_t y){
+WorkAreaJPanel::WorkAreaJPanel(std::string name, Dimension* dimension, int32_t x, int32_t y) : logUtil(LogUtil::getInstance()){
 
         try {
             this->initComponents();
@@ -191,7 +172,7 @@ this->canvasHolderJPanel->add(dynamic_cast<Component*>(canvasJPanel));
 }
 
 
-public: WorkAreaJPanel(WorkAreaDom* workAreaDom, Dimension* dimension){
+WorkAreaJPanel::WorkAreaJPanel(WorkAreaDom* workAreaDom, Dimension* dimension) : logUtil(LogUtil::getInstance()){
 
         try {
             this->initComponents();
@@ -252,7 +233,7 @@ this->propertiesJPanel->set(this->workAreaJTreeJPanel);
 }
 
 
-    private: void initMyComponents(Dimension* dimension){
+    auto WorkAreaJPanel::initMyComponents(Dimension* dimension) -> void{
 this->workAreaJTreeJPanel= new WorkAreaJTreeJPanel(this->name);
     
 this->canvasHolderJPanel= new JPanel();
@@ -279,7 +260,7 @@ gridBagConstraints->gridy= 0;
     
 gridBagConstraints->gridwidth= 1;
     
-gridBagConstraints->fill= java.awt.GridBagConstraints.BOTH;
+gridBagConstraints->fill= java.awt->GridBagConstraints->BOTH;
     
 gridBagConstraints->weightx= .05;
     
@@ -300,7 +281,7 @@ gridBagConstraints->gridy= 0;
     
 gridBagConstraints->gridwidth= 6;
     
-gridBagConstraints->fill= java.awt.GridBagConstraints.BOTH;
+gridBagConstraints->fill= java.awt->GridBagConstraints->BOTH;
     
 gridBagConstraints->weightx= 1;
     
@@ -316,9 +297,9 @@ gridBagConstraints->gridx= 8;
     
 gridBagConstraints->gridy= 0;
     
-gridBagConstraints->gridwidth= java.awt.GridBagConstraints.REMAINDER;
+gridBagConstraints->gridwidth= java.awt->GridBagConstraints->REMAINDER;
     
-gridBagConstraints->fill= java.awt.GridBagConstraints.BOTH;
+gridBagConstraints->fill= java.awt->GridBagConstraints->BOTH;
     
 gridBagConstraints->weightx= .1;
     
@@ -335,7 +316,7 @@ MyCanvasEventService::addListener(dynamic_cast<MyCanvasEventListener*>(this));
 }
 
 
-    private: HashMap<Object*, Object*>* getCanvasHashMap(){
+    auto WorkAreaJPanel::getCanvasHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* canvasJPanelHashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -366,31 +347,31 @@ canvasJPanelHashMap->put(canvasJPanel->getTreeNode(), int32_t(index));
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void play(){
-this->isPlaying= true;
+    auto WorkAreaJPanel::play() -> void{
+this->isPlaying_= true;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void stop(){
-this->isPlaying= false;
+    auto WorkAreaJPanel::stop() -> void{
+this->isPlaying_= false;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isPlaying(){
+    auto WorkAreaJPanel::isPlaying() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isPlaying;
+                        return this->isPlaying_;
     
 }
 
 
-    public: std::string getName(){
+    auto WorkAreaJPanel::getName() -> std::string{
 
 
 
@@ -400,32 +381,32 @@ this->isPlaying= false;
 }
 
 
-    public: void setName(std::string value){
+    auto WorkAreaJPanel::setName(std::string value) -> void{
 this->name= value;
     
 }
 
 
-    public: void disableCanvas(){
+    auto WorkAreaJPanel::disableCanvas() -> void{
 this->canvasHolderJPanel->removeAll();
     
 }
 
 
-    public: void enableCanvas(){
+    auto WorkAreaJPanel::enableCanvas() -> void{
 this->canvasHolderJPanel->add(dynamic_cast<Component*>(this->getCurrentFrame()));
     
 }
 
 
-    public: void deselect(){
-super.setVisible(false);
+    auto WorkAreaJPanel::deselect() -> void{
+JPanel::setVisible(false);
     
 }
 
 
-    public: void select(){
-super.setVisible(true);
+    auto WorkAreaJPanel::select() -> void{
+JPanel::setVisible(true);
     
 
                         if(this->canvasHolderJPanel->getComponentCount() == 1)
@@ -451,7 +432,7 @@ super.setVisible(true);
 }
 
 
-    public: void changeZoom(int32_t factor){
+    auto WorkAreaJPanel::changeZoom(int32_t factor) -> void{
 
     int32_t size = this->canvasJPanelList->size();;
     
@@ -472,7 +453,7 @@ canvasJPanel->getGrid()->setZoom(canvasJPanel->getGrid()->getZoom() +factor);
 }
 
 
-    public: CanvasJPanel* getCurrentFrame(){
+    auto WorkAreaJPanel::getCurrentFrame() -> CanvasJPanel*{
 
 
 
@@ -482,7 +463,7 @@ canvasJPanel->getGrid()->setZoom(canvasJPanel->getGrid()->getZoom() +factor);
 }
 
 
-    private: void initDuplicate(CanvasJPanel* newCanvasJPanel){
+    auto WorkAreaJPanel::initDuplicate(CanvasJPanel* newCanvasJPanel) -> void{
 
                         if(newCanvasJPanel != 
                                     nullptr
@@ -501,7 +482,7 @@ this->select(this->canvasJPanelList->size() -1);
 
                 //@Throws(Exception.constructor)
             
-    private: void duplicate(MutableTreeNode* treeNode){
+    auto WorkAreaJPanel::duplicate(MutableTreeNode* treeNode) -> void{
 
     HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
@@ -525,7 +506,7 @@ this->initDuplicate(canvasJPanel->duplicate());
 
                 //@Throws(Exception.constructor)
             
-    public: void autoRotate(int32_t increments, int32_t totalAngle){
+    auto WorkAreaJPanel::autoRotate(int32_t increments, int32_t totalAngle) -> void{
 
     int32_t incrementAngle = static_cast<int32_t>((totalAngle /increments));;
     
@@ -551,7 +532,7 @@ this->initDuplicate(newCanvasJPanel);
 }
 
 
-    public: void explodeAll(){
+    auto WorkAreaJPanel::explodeAll() -> void{
 
     CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->getCurrentFrame());;
     
@@ -562,7 +543,7 @@ canvasJPanel->explodeAll();
 
                 //@Throws(Exception.constructor)
             
-    public: void autoExplode(int32_t numberOfFrames, int32_t explodeType){
+    auto WorkAreaJPanel::autoExplode(int32_t numberOfFrames, int32_t explodeType) -> void{
 
 
 
@@ -587,7 +568,7 @@ this->initDuplicate(newCanvasJPanel);
 
                 //@Throws(Exception.constructor)
             
-    public: void autoMirror(){
+    auto WorkAreaJPanel::autoMirror() -> void{
 
     CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->getCurrentFrame());;
     
@@ -602,7 +583,7 @@ this->initDuplicate(newCanvasJPanel);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: void select(int32_t index){
+    auto WorkAreaJPanel::select(int32_t index) -> void{
 
                         if(index < this->canvasJPanelList->size())
                         
@@ -637,7 +618,7 @@ canvasJPanel->repaint();
 }
 
 
-    private: void select(MutableTreeNode* treeNode){
+    auto WorkAreaJPanel::select(MutableTreeNode* treeNode) -> void{
 
     HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
@@ -645,9 +626,7 @@ canvasJPanel->repaint();
     int32_t frameInteger = canvasJPanelHashMap->get(treeNode);;
     
 
-                        if(frameInteger != 
-                                    nullptr
-                                )
+                        if(true)
                         
                                     {
                                     this->select(frameInteger.intValue());
@@ -658,9 +637,19 @@ canvasJPanel->repaint();
 }
 
 
+    auto WorkAreaJPanel::getDocument() -> Document*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return WorkAreaJPanel::document;
+    
+}
+
+
                 //@Throws(Exception.constructor)
             
-    public: Document* toDocument(){
+    auto WorkAreaJPanel::toDocument() -> Document*{
 WorkAreaJPanel::document= DomHelper::getInstance()->createDocument();
     
 
@@ -709,7 +698,7 @@ WorkAreaJPanel::document->appendChild(workAreaNode);
 }
 
 
-    private: void initComponents(){
+    auto WorkAreaJPanel::initComponents() -> void{
 this->innerJPanel= new javax::swing::JPanel();
     
 setLayout(new java::awt::GridLayout(1, 1));
@@ -740,39 +729,39 @@ add(this->innerJPanel);
 }
 
 
-    private: void innerJPanelKeyReleased(java::awt::event::KeyEvent* evt){
+    auto WorkAreaJPanel::innerJPanelKeyReleased(java::awt::event::KeyEvent* evt) -> void{
 StatusFactory::getInstance()->setStatus("Key Pressed1");
     
 }
 
 
-    private: void innerJPanelKeyPressed(java::awt::event::KeyEvent* evt){
+    auto WorkAreaJPanel::innerJPanelKeyPressed(java::awt::event::KeyEvent* evt) -> void{
 StatusFactory::getInstance()->setStatus("Key Pressed2");
     
 }
 
 
-    private: void innerJPanelKeyTyped(java::awt::event::KeyEvent* evt){
+    auto WorkAreaJPanel::innerJPanelKeyTyped(java::awt::event::KeyEvent* evt) -> void{
 StatusFactory::getInstance()->setStatus("Key Pressed3");
     
 }
 
 
-    public: void keyPressed(java::awt::event::KeyEvent* keyEvent){
+    auto WorkAreaJPanel::keyPressed(java::awt::event::KeyEvent* keyEvent) -> void{
 this->getCurrentFrame()->keyPressed(keyEvent);
     
 }
 
 
-    public: void keyReleased(java::awt::event::KeyEvent* keyEvent){
+    auto WorkAreaJPanel::keyReleased(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
-    public: void keyTyped(java::awt::event::KeyEvent* keyEvent){
+    auto WorkAreaJPanel::keyTyped(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
-    public: void delete_(MyCanvasEvent* evt){
+    auto WorkAreaJPanel::delete_(MyCanvasEvent* evt) -> void{
 
     HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
@@ -797,13 +786,13 @@ this->select(frameInt.intValue());
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicate(MyCanvasEvent* evt){
+    auto WorkAreaJPanel::duplicate(MyCanvasEvent* evt) -> void{
 this->duplicate(evt->getTreeNode());
     
 }
 
 
-    public: void select(MyCanvasEvent* evt){
+    auto WorkAreaJPanel::select(MyCanvasEvent* evt) -> void{
 this->select(evt->getTreeNode());
     
 StatusFactory::getInstance()->setStatus("Frame Selected");
@@ -811,7 +800,7 @@ StatusFactory::getInstance()->setStatus("Frame Selected");
 }
 
 
-    public: void rotate(MyCanvasEvent* evt){
+    auto WorkAreaJPanel::rotate(MyCanvasEvent* evt) -> void{
 
     HashMap<Object*, Object*>* canvasJPanelHashMap = this->getCanvasHashMap();;
     
@@ -842,7 +831,7 @@ StatusFactory::getInstance()->setStatus("Canvas Rotated");
 }
 
 
-    public: void explode(MyCanvasEvent* evt){
+    auto WorkAreaJPanel::explode(MyCanvasEvent* evt) -> void{
 this->explodeAll();
     
 }
@@ -850,7 +839,7 @@ this->explodeAll();
 
                 //@Throws(Exception.constructor)
             
-    public: void autoExplode(MyCanvasEvent* evt){
+    auto WorkAreaJPanel::autoExplode(MyCanvasEvent* evt) -> void{
 this->autoExplode(10, 0);
     
 }
@@ -858,7 +847,7 @@ this->autoExplode(10, 0);
 
                 //@Throws(Exception.constructor)
             
-    public: void center(){
+    auto WorkAreaJPanel::center() -> void{
 
     CanvasJPanel* canvasJPanel = dynamic_cast<CanvasJPanel*>(this->getCurrentFrame());;
     
@@ -869,13 +858,13 @@ canvasJPanel->center();
 
                 //@Throws(Exception.constructor)
             
-    public: void center(MyCanvasEvent* evt){
+    auto WorkAreaJPanel::center(MyCanvasEvent* evt) -> void{
 this->center();
     
 }
 
 
-    public: void run(){
+    auto WorkAreaJPanel::run() -> void{
 
         try {
             
@@ -933,9 +922,6 @@ Thread::sleep(250);
 }
 
 
-    private: javax::swing::JPanel* innerJPanel;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_CPP

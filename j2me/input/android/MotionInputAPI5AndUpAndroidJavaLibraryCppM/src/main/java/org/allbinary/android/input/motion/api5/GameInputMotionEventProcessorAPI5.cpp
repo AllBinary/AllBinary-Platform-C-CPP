@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_API5_GAMEINPUTMOTIONEVENTPROCESSORAPI5_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API5_GAMEINPUTMOTIONEVENTPROCESSORAPI5_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/api5/GameInputMotionEventProcessorAPI5.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -77,11 +87,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/api5/GameInputMotionInfoAPI5.h"
 
-class GameInputMotionEventProcessorAPI5: public BaseGameInputMotionEventProcessor {
+Object* GameInputMotionEventProcessorAPI5::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameInputMotionEventProcessorAPI5* getInstance(){
+    auto GameInputMotionEventProcessorAPI5::getInstance() -> GameInputMotionEventProcessorAPI5*{
 
                         if(GameInputMotionEventProcessorAPI5::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -100,15 +108,7 @@ class GameInputMotionEventProcessorAPI5: public BaseGameInputMotionEventProcesso
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();
-
-    private: std::vector<MotionRecognizer*> motionRecognizerArray;
-
-    private: int32_t TOTAL_MINUS_ONE;
-
-private: GameInputMotionEventProcessorAPI5(){
+GameInputMotionEventProcessorAPI5::GameInputMotionEventProcessorAPI5() : logUtil(LogUtil::getInstance()), displayInfo(DisplayInfoSingleton::getInstance()){
 
     int32_t size = GameInputMotionInfoAPI5::getInstance()->MAX_POINTERS;;
     
@@ -130,7 +130,7 @@ this->motionRecognizerArray[index]= new AllMotionRecognizer();
 }
 
 
-    private: bool isValid(int32_t pointerId){
+    auto GameInputMotionEventProcessorAPI5::isValid(int32_t pointerId) -> bool{
 
                         if(pointerId > this->TOTAL_MINUS_ONE)
                         
@@ -138,7 +138,7 @@ this->motionRecognizerArray[index]= new AllMotionRecognizer();
                                     
     std::string message = "Log that the pointer Ids are not what would be expected or Android has more than what I set my stuff to support pointerId: ";;
     
-ForcedLogUtil::log(message +pointerId, this);
+ForcedLogUtil::log(JavaString::valueOf(message) +JavaString::valueOf(pointerId), this);
     
 
 
@@ -162,7 +162,7 @@ ForcedLogUtil::log(message +pointerId, this);
 }
 
 
-    public: void process(MotionEvent* motionEvent){
+    auto GameInputMotionEventProcessorAPI5::process(MotionEvent* motionEvent) -> void{
 
         try {
             
@@ -184,7 +184,7 @@ ForcedLogUtil::log(message +pointerId, this);
                             
     std::string message = "Log that Android has more pointers than I have expected so increase it motionEvent.getPointerCount(): ";;
     
-ForcedLogUtil::log(message +motionEvent->getPointerCount(), this);
+ForcedLogUtil::log(JavaString::valueOf(message) +JavaString::valueOf(motionEvent->getPointerCount()), this);
     
 
                         }
@@ -219,7 +219,7 @@ ForcedLogUtil::log(message +motionEvent->getPointerCount(), this);
 
     int32_t y = static_cast<int32_t>(((motionEvent->getY(pointerIndex) -this->displayInfo->getTop()) /scalableListener->getRatio(this->displayInfo->getRatio())));;
     
-this->motionRecognizerArray[pointerId].processStartMotionEvent(x, y, motionEvent->getDeviceId(), 0);
+this->motionRecognizerArray[pointerId]->processStartMotionEvent(x, y, motionEvent->getDeviceId(), 0);
     
 
                                     }
@@ -256,7 +256,7 @@ this->motionRecognizerArray[pointerId].processStartMotionEvent(x, y, motionEvent
 
     int32_t y = static_cast<int32_t>(((motionEvent->getY(pointerIndex) -this->displayInfo->getTop()) /scalableListener->getRatio(this->displayInfo->getRatio())));;
     
-this->motionRecognizerArray[pointerId].processEndMotionEvent(x, y, motionEvent->getDeviceId(), 0);
+this->motionRecognizerArray[pointerId]->processEndMotionEvent(x, y, motionEvent->getDeviceId(), 0);
     
 
                                     }
@@ -293,7 +293,7 @@ this->motionRecognizerArray[pointerId].processEndMotionEvent(x, y, motionEvent->
 
     int32_t y = static_cast<int32_t>(((motionEvent->getY(pointerIndex) -this->displayInfo->getTop()) /scalableListener->getRatio(this->displayInfo->getRatio())));;
     
-this->motionRecognizerArray[pointerId].processDraggedMotionEvent(x, y, motionEvent->getDeviceId(), 0);
+this->motionRecognizerArray[pointerId]->processDraggedMotionEvent(x, y, motionEvent->getDeviceId(), 0);
     
 
                                     }
@@ -307,14 +307,13 @@ this->motionRecognizerArray[pointerId].processDraggedMotionEvent(x, y, motionEve
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_API5_GAMEINPUTMOTIONEVENTPROCESSORAPI5_CPP

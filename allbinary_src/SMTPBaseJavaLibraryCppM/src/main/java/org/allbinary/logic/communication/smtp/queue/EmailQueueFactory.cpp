@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/queue/EmailQueueFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +57,13 @@
         #include "org/allbinary/logic/communication/smtp/queue/BasicEmailQueue.h"
 #include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
 
-class EmailQueueFactory
-            : public Object
-         {
+EmailQueueInterface* EmailQueueFactory::emailQueueInterface = dynamic_cast<EmailQueueInterface*>(BasicEmailQueue::getInstance());
 
-    private: static inline EmailQueueInterface* emailQueueInterface = dynamic_cast<EmailQueueInterface*>(BasicEmailQueue::getInstance());
+EmailQueueFactory::EmailQueueFactory(){
+}
 
-    public: static EmailQueueInterface* getInstance(){
+
+    auto EmailQueueFactory::getInstance() -> EmailQueueInterface*{
 
 
 
@@ -63,11 +73,6 @@ class EmailQueueFactory
 }
 
 
-private: EmailQueueFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEFACTORY_CPP

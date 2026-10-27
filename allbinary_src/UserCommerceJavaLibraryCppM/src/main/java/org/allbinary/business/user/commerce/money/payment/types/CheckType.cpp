@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/CheckType.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -47,20 +57,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CheckType
-            : public Object
-         {
 
-    private: const std::vector<std::string> types = 
+CheckType::CheckType() : types(
                                                         {
                                                             "Check","Money Order","Cashiers Check"
-                                                        };
-
-public: CheckType(){
+                                                        }){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_CPP

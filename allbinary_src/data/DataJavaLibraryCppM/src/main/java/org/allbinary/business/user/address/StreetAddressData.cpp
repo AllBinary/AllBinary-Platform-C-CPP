@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESSDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESSDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/address/StreetAddressData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,43 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StreetAddressData
-            : public Object
-         {
 
-    public: static inline const int32_t MAX = 255;
-
-    public: static inline const int32_t MIN = 0;
-
-    public: static inline const std::string FORM = "FORM";
-
-    public: static inline const std::string STATES = "STATES";
-
-    public: static inline const std::string NUMBEROFADDRESSES = "STREETADDRESS_NUMBEROFADDRESSES";
-
-    public: static inline const std::string ID = "STREETADDRESS_ID";
-
-    public: static inline const std::string DEFAULT = "STREETADDRESS_DEFAULT_ADDRESS";
-
-    public: static inline const std::string ADDRESS = "STREETADDRESS_ADDRESS";
-
-    public: static inline const std::string NAME = "STREETADDRESS_NAME";
-
-    public: static inline const std::string STREET = "STREETADDRESS_STREET";
-
-    public: static inline const std::string CITY = "STREETADDRESS_CITY";
-
-    public: static inline const std::string STATE = "STREETADDRESS_STATE";
-
-    public: static inline const std::string CODE = "STREETADDRESS_CODE";
-
-    public: static inline const std::string COUNTRY = "STREETADDRESS_COUNTRY";
-
-private: StreetAddressData(){
+StreetAddressData::StreetAddressData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESSDATA_CPP

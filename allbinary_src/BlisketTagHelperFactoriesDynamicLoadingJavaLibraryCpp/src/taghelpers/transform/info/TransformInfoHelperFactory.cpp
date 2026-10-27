@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPERFACTORY_CPP
+        #define TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/transform/info/TransformInfoHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,21 +70,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TransformInfoHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    private: static inline const std::string CLASSNAME = "taghelpers.transform.info.TransformInfoHelper";
-
-    private: static inline const std::string FACTORYNAME = "TransformInfoHelperFactory";
-
-public: TransformInfoHelperFactory(){
+TransformInfoHelperFactory::TransformInfoHelperFactory(){
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto TransformInfoHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
@@ -84,7 +87,6 @@ public: TransformInfoHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPERFACTORY_CPP

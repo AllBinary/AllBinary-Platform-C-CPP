@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/cache/CacheableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CacheableInterface {
+//Interface - declared in the header
 
-    public: virtual Object* getKey() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEABLEINTERFACE_CPP

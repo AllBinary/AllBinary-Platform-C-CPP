@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectedRTSLayersPlayerUpgradeGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInputProcessor.h"
 #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
-class SelectedRTSLayersPlayerUpgradeGameInputProcessor: public SelectedRTSLayersPlayerGameInputProcessor {
 
-public: SelectedRTSLayersPlayerUpgradeGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) : SelectedRTSLayersPlayerGameInputProcessor(selectedRTSLayersPlayerGameInput){
+SelectedRTSLayersPlayerUpgradeGameInputProcessor::SelectedRTSLayersPlayerUpgradeGameInputProcessor(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) : SelectedRTSLayersPlayerGameInputProcessor(selectedRTSLayersPlayerGameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -67,13 +76,12 @@ public: SelectedRTSLayersPlayerUpgradeGameInputProcessor(SelectedRTSLayersPlayer
 
                 //@Throws(Exception.constructor)
             
-    public: void processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent){
-this->selectedRTSLayersPlayerGameInput.upgrade();
+    auto SelectedRTSLayersPlayerUpgradeGameInputProcessor::processEvent(AllBinaryLayerManager* allbinaryLayerManager, GameKeyEvent* gameKeyEvent) -> void{
+this->selectedRTSLayersPlayerGameInput->upgrade();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_CPP

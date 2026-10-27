@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_TOUCHFEATUREFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_TOUCHFEATUREFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,25 +52,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/feature/TouchFeature.h"
+        class TouchFeature;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchFeatureFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static TouchFeatureFactory* instance() { static std::unique_ptr<TouchFeatureFactory> value(new TouchFeatureFactory()); return value.get(); }
+    private: static TouchFeatureFactory* instance_owner();
+    private: static TouchFeatureFactory* instance;
 
     public: static TouchFeatureFactory* getInstance();
 
 private: TouchFeatureFactory();
 
-    public: TouchFeature* TOUCH_ENABLED = new TouchFeature("Touch Enabled");
+    public: TouchFeature* TOUCH_ENABLED;
 
-    public: TouchFeature* SHOW_SCREEN_BUTTONS = new TouchFeature("Show");
+    public: TouchFeature* SHOW_SCREEN_BUTTONS;
 
-    public: TouchFeature* AUTO_HIDE_SHOW_SCREEN_BUTTONS = new TouchFeature("Auto Hide (One Level)");
+    public: TouchFeature* AUTO_HIDE_SHOW_SCREEN_BUTTONS;
 
-    public: TouchFeature* HIDE_SCREEN_BUTTONS = new TouchFeature("Hide");
+    public: TouchFeature* HIDE_SCREEN_BUTTONS;
 
 };
 
@@ -73,3 +83,13 @@ private: TouchFeatureFactory();
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_TOUCHFEATUREFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_TOUCHFEATUREFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_TOUCHFEATUREFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/configuration/feature/TouchFeature.h")
+#include "org/allbinary/game/configuration/feature/TouchFeature.h"
+#endif
+
+        #endif
+    

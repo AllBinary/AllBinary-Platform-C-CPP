@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -83,25 +93,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h"
 
-class BaseResourceAnimationInterfaceFactoryInterfaceFactory
-            : public Object
-        , public FeatureResourceAnimationInterfaceFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ABHashtable<Object*, Object*>* hashtable;
-
-    private: ABHashtable<Object*, Object*>* rectangleHashtable;
-
-    private: ABHashtable<Object*, Object*>* rectangleArrayOfArraysHashtable;
-
-    private: std::string name;
-
-    private: bool initialized= false;
-
-public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, ABHashtable<Object*, Object*>* hashtable, ABHashtable<Object*, Object*>* rectangleHashtable, ABHashtable<Object*, Object*>* rectangleArrayHashtable){
+BaseResourceAnimationInterfaceFactoryInterfaceFactory::BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, ABHashtable<Object*, Object*>* hashtable, ABHashtable<Object*, Object*>* rectangleHashtable, ABHashtable<Object*, Object*>* rectangleArrayHashtable) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->hashtable= hashtable;
     
 this->rectangleHashtable= rectangleHashtable;
@@ -113,7 +106,7 @@ this->name= name;
 }
 
 
-    public: std::string getName(){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getName() -> std::string{
 
 
 
@@ -125,7 +118,7 @@ this->name= name;
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t level){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::init(int32_t level) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -138,13 +131,13 @@ this->setInitialized(true);
 
                 //@Throws(Exception.constructor)
             
-    protected: void initImageCache(ImageCache* imageCache, int32_t level){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::initImageCache(ImageCache* imageCache, int32_t level) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void add(std::string resource, BasicAnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::add(std::string resource, BasicAnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface) -> void{
 
                         if(this->hashtable->containsKey(resource))
                         
@@ -152,7 +145,7 @@ this->setInitialized(true);
                                     
 
 
-                            throw new Exception((new StringMaker())->append("Resource Already Created: ")->append(resource)->toString());
+                            throw Exception((new StringMaker())->append("Resource Already Created: ")->append(resource)->toString());
                     
 
                                     }
@@ -164,7 +157,7 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicAnimationInterfaceFactoryInterface* getBasicAnimationInterfaceFactoryInstance(std::string resource){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getBasicAnimationInterfaceFactoryInstance(std::string resource) -> BasicAnimationInterfaceFactoryInterface*{
 
     Object* basicAnimationInterfaceFactoryInterfaceCanBeNull = this->hashtable->get(resource);;
     
@@ -194,7 +187,7 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Rectangle* getRectangle(std::string resource){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getRectangle(std::string resource) -> Rectangle*{
 
     Object* rectangleCanBeNull = this->rectangleHashtable->get(resource);;
     
@@ -224,7 +217,7 @@ this->hashtable->put(resource, animationInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void addRectangle(std::string resource, Rectangle* rectangle){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::addRectangle(std::string resource, Rectangle* rectangle) -> void{
 this->rectangleHashtable->put(resource, rectangle);
     
 }
@@ -232,7 +225,7 @@ this->rectangleHashtable->put(resource, rectangle);
 
                 //@Throws(Exception.constructor)
             
-    public: std::vector<std::vector<Rectangle*>> getRectangleArrayOfArrays(std::string resource){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getRectangleArrayOfArrays(std::string resource) -> std::vector<std::vector<Rectangle*>>{
 
     Object* valueCanBeNull = this->rectangleArrayOfArraysHashtable->get(resource);;
     
@@ -269,13 +262,13 @@ this->rectangleHashtable->put(resource, rectangle);
 
                 //@Throws(Exception.constructor)
             
-    public: void addRectangleArrayOfArrays(std::string resource, std::vector<std::vector<Rectangle*>> rectangleArrayOfArrays){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::addRectangleArrayOfArrays(std::string resource, std::vector<std::vector<Rectangle*>> rectangleArrayOfArrays) -> void{
 this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
     
 }
 
 
-    public: bool isFeature(){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::isFeature() -> bool{
 
 
 
@@ -285,12 +278,12 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 }
 
 
-    public: bool isLoadingLevel(int32_t level){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::isLoadingLevel(int32_t level) -> bool{
 
     ResourceLoadingLevelFactory* resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(level == resourceLoadingLevelFactory->LOAD_ALL.getLevel())
+                        if(level == resourceLoadingLevelFactory->LOAD_ALL->getLevel())
                         
                                     {
                                     
@@ -315,7 +308,7 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 }
 
 
-    public: std::string toString(){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::toString() -> std::string{
 
 
 
@@ -325,7 +318,7 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 }
 
 
-    public: ABHashtable<Object*, Object*>* getHashtable(){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -335,7 +328,7 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 }
 
 
-    public: ABHashtable<Object*, Object*>* getRectangleHashtable(){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getRectangleHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -345,7 +338,7 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 }
 
 
-    public: ABHashtable<Object*, Object*>* getRectangleArrayOfArraysHashtable(){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::getRectangleArrayOfArraysHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -355,13 +348,13 @@ this->rectangleArrayOfArraysHashtable->put(resource, rectangleArrayOfArrays);
 }
 
 
-    protected: void setInitialized(bool initialized){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::setInitialized(bool initialized) -> void{
 this->initialized= initialized;
     
 }
 
 
-    public: bool isInitialized(){
+    auto BaseResourceAnimationInterfaceFactoryInterfaceFactory::isInitialized() -> bool{
 
 
 
@@ -371,7 +364,6 @@ this->initialized= initialized;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_CPP

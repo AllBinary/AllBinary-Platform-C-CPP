@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLPROPERTYINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLPROPERTYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/skill/GameSkillPropertyInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,13 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameSkillPropertyInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual std::string getValue() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLPROPERTYINTERFACE_CPP

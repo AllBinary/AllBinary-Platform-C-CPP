@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_CPP
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/installer/Initializer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,91 +101,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/installer/InitializerData.h"
 
-class Initializer
-            : public Object
-         {
 
-    private: static inline const int32_t MAXDB = 30;
-
-    private: static inline const int32_t MAX = 16;
-
-    private: static inline const int32_t MIN = 4;
-
-    private: static inline const int32_t MINPASSWORD = 0;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string userJdbcDriver;
-
-    private: std::string userName;
-
-    private: std::string userUserName;
-
-    private: std::string userPassword;
-
-    private: std::string userSchema;
-
-    private: std::string userServer;
-
-    private: std::string userPort;
-
-    private: std::string historyJdbcDriver;
-
-    private: std::string historyName;
-
-    private: std::string historyUserName;
-
-    private: std::string historyPassword;
-
-    private: std::string historySchema;
-
-    private: std::string historyServer;
-
-    private: std::string historyPort;
-
-    private: std::string logJdbcDriver;
-
-    private: std::string logName;
-
-    private: std::string logUserName;
-
-    private: std::string logPassword;
-
-    private: std::string logSchema;
-
-    private: std::string logServer;
-
-    private: std::string logPort;
-
-    private: std::string inventoryJdbcDriver;
-
-    private: std::string inventoryName;
-
-    private: std::string inventoryUserName;
-
-    private: std::string inventoryPassword;
-
-    private: std::string inventorySchema;
-
-    private: std::string inventoryServer;
-
-    private: std::string inventoryPort;
-
-    private: std::string staticPagesJdbcDriver;
-
-    private: std::string staticPagesName;
-
-    private: std::string staticPagesUserName;
-
-    private: std::string staticPagesPassword;
-
-    private: std::string staticPagesSchema;
-
-    private: std::string staticPagesServer;
-
-    private: std::string staticPagesPort;
-
-public: Initializer(Map* map){
+Initializer::Initializer(Map* map) : logUtil(LogUtil::getInstance()){
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -206,7 +133,7 @@ public: Initializer(Map* map){
     
 hashMap->put(std::string(key), .toCharArray());
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("key: ");
     
@@ -225,13 +152,13 @@ this->getFormData(hashMap);
 }
 
 
-public: Initializer(HashMap<Object*, Object*>* initHashMap){
+Initializer::Initializer(HashMap<Object*, Object*>* initHashMap) : logUtil(LogUtil::getInstance()){
 this->getFormData(initHashMap);
     
 }
 
 
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto Initializer::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 
         try {
             
@@ -318,7 +245,7 @@ this->logUtil->put("Unable to get form data", this, "getFormData()", &e);
 }
 
 
-    private: bool isJdbcDriverValid(std::string jdbcDriverClassPathString){
+    auto Initializer::isJdbcDriverValid(std::string jdbcDriverClassPathString) -> bool{
 
         try {
             Class::forName(jdbcDriverClassPathString)->newInstance();
@@ -334,7 +261,7 @@ this->logUtil->put("Unable to get form data", this, "getFormData()", &e);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRELOADERERROR))
                         
                                     {
                                     
@@ -356,7 +283,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->IS_VALID, &e);
 }
 
 
-    public: bool isValid(){
+    auto Initializer::isValid() -> bool{
 
     bool isValid = true;;
     
@@ -552,7 +479,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->IS_VALID, &e);
 }
 
 
-    private: std::string getJdbcDriverValidationInfo(std::string jdbcDriver){
+    auto Initializer::getJdbcDriverValidationInfo(std::string jdbcDriver) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -571,7 +498,7 @@ stringBuffer->append(") you have provided is not valid.<br/>");
 }
 
 
-    private: std::string getJdbcDriverSolutionInfo(){
+    auto Initializer::getJdbcDriverSolutionInfo() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -602,7 +529,7 @@ stringBuffer->append("Solution: Use a valid JDBC driver.<p/>");
 }
 
 
-    public: std::string getInvalidInfo(){
+    auto Initializer::getInvalidInfo() -> std::string{
 
     bool isJdbcDriversValid = true;;
     
@@ -627,7 +554,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->userJdbcDriver));
                         if(!stringValidationUtil->isValidRequired(this->userName, Initializer::MIN, Initializer::MAXDB))
                         
                                     {
-                                    stringBuffer->append("User db name should be < " +Initializer::MAXDB +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("User db name should be < ") +JavaString::valueOf(Initializer::MAXDB)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -636,7 +563,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->userJdbcDriver));
                         if(!stringValidationUtil->isValidRequired(this->userUserName, Initializer::MIN, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("User db username should be < " +Initializer::MAX +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("User db username should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -645,7 +572,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->userJdbcDriver));
                         if(!stringValidationUtil->isValidNotRequired(this->userPassword, Initializer::MINPASSWORD, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("User DB password should be < " +Initializer::MAX +" and > " +Initializer::MINPASSWORD +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("User DB password should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MINPASSWORD)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -665,7 +592,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->historyJdbcDriver))
                         if(!stringValidationUtil->isValidRequired(this->historyName, Initializer::MIN, Initializer::MAXDB))
                         
                                     {
-                                    stringBuffer->append("History db should be < " +Initializer::MAXDB +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("History db should be < ") +JavaString::valueOf(Initializer::MAXDB)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -674,7 +601,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->historyJdbcDriver))
                         if(!stringValidationUtil->isValidRequired(this->historyUserName, Initializer::MIN, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("History db username should be < " +Initializer::MAX +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("History db username should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -683,7 +610,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->historyJdbcDriver))
                         if(!stringValidationUtil->isValidNotRequired(this->historyPassword, Initializer::MINPASSWORD, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("History db password should be < " +Initializer::MAX +" and > " +Initializer::MINPASSWORD +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("History db password should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MINPASSWORD)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -703,7 +630,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->logJdbcDriver));
                         if(!stringValidationUtil->isValidRequired(this->logName, Initializer::MIN, Initializer::MAXDB))
                         
                                     {
-                                    stringBuffer->append("Log db should be < " +Initializer::MAXDB +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Log db should be < ") +JavaString::valueOf(Initializer::MAXDB)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -712,7 +639,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->logJdbcDriver));
                         if(!stringValidationUtil->isValidRequired(this->logUserName, Initializer::MIN, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("Log db username should be < " +Initializer::MAX +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Log db username should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -721,7 +648,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->logJdbcDriver));
                         if(!stringValidationUtil->isValidNotRequired(this->logPassword, Initializer::MINPASSWORD, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("Log db password should be < " +Initializer::MAX +" and > " +Initializer::MINPASSWORD +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Log db password should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MINPASSWORD)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -741,7 +668,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->inventoryJdbcDriver
                         if(!stringValidationUtil->isValidRequired(this->inventoryName, Initializer::MIN, Initializer::MAXDB))
                         
                                     {
-                                    stringBuffer->append("Inventory db should be < " +Initializer::MAXDB +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Inventory db should be < ") +JavaString::valueOf(Initializer::MAXDB)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -750,7 +677,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->inventoryJdbcDriver
                         if(!stringValidationUtil->isValidRequired(this->inventoryUserName, Initializer::MIN, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("Inventory db username should be < " +Initializer::MAX +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Inventory db username should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -759,7 +686,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->inventoryJdbcDriver
                         if(!stringValidationUtil->isValidNotRequired(this->inventoryPassword, Initializer::MINPASSWORD, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("Inventory DB password should be < " +Initializer::MAX +" and > " +Initializer::MINPASSWORD +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Inventory DB password should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MINPASSWORD)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -779,7 +706,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->staticPagesJdbcDriv
                         if(!stringValidationUtil->isValidRequired(this->staticPagesName, Initializer::MIN, Initializer::MAXDB))
                         
                                     {
-                                    stringBuffer->append("Static Pages db should be < " +Initializer::MAXDB +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Static Pages db should be < ") +JavaString::valueOf(Initializer::MAXDB)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -788,7 +715,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->staticPagesJdbcDriv
                         if(!stringValidationUtil->isValidRequired(this->staticPagesUserName, Initializer::MIN, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("Static Pages db username should be < " +Initializer::MAX +" and > " +Initializer::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Static Pages db username should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -797,7 +724,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->staticPagesJdbcDriv
                         if(!stringValidationUtil->isValidNotRequired(this->staticPagesPassword, Initializer::MINPASSWORD, Initializer::MAX))
                         
                                     {
-                                    stringBuffer->append("Static Pages DB password should be < " +Initializer::MAX +" and > " +Initializer::MINPASSWORD +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Static Pages DB password should be < ") +JavaString::valueOf(Initializer::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(Initializer::MINPASSWORD)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -822,7 +749,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->staticPagesJdbcDriv
 
                 //@Throws(Exception.constructor)
             
-    public: void set(){
+    auto Initializer::set() -> void{
 this->logUtil->putF("Creating DB connection files", this, "set()");
     
 
@@ -935,7 +862,6 @@ this->logUtil->putF("Created DB connection files", this, "set()");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_CPP

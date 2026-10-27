@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/TopViewCharacterInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -56,27 +66,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TopViewCharacterInterface {
+//Interface - declared in the header
 
-    public: virtual void terrainMove(std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, int32_t x, int32_t y) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void terrainEvent(int32_t x, int32_t y, std::vector<BasicGeographicMap*> geographicMapInterfaceArray, std::vector<GeographicMapCellType*> geographicMapCellTypeArray, GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
-    public: virtual void move() = 0;
-
-    public: virtual void upp() = 0;
-
-    public: virtual void leftp() = 0;
-
-    public: virtual void rightp() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void reset() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_TOPVIEWCHARACTERINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEWFACTORY_CPP
+        #define ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEWFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/globals/UrlGlobalsViewFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/globals/UrlGlobalsView.h"
 
-class UrlGlobalsViewFactory
-            : public Object
-         {
 
-    public: static DomNodeInterface* getInstance(){
+UrlGlobalsViewFactory::UrlGlobalsViewFactory(){
+}
+
+
+    auto UrlGlobalsViewFactory::getInstance() -> DomNodeInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -81,7 +92,7 @@ class UrlGlobalsViewFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "GlobalsViewFactory", commonStrings->GET_INSTANCE, &e);
@@ -100,11 +111,6 @@ class UrlGlobalsViewFactory
 }
 
 
-private: UrlGlobalsViewFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GLOBALS_URLGLOBALSVIEWFACTORY_CPP

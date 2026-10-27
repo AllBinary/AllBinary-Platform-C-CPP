@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKING_H
         #define ORG_ALLBINARY_GAME_TRACKING_TRACKING_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Graphics;
 
 
 
@@ -51,8 +54,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Tracking
-            : public Object
+            : public virtual Object
          {
 
 public: Tracking();
@@ -65,3 +72,13 @@ public: Tracking();
 
 
         #endif //ORG_ALLBINARY_GAME_TRACKING_TRACKING_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TRACKING_TRACKING_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TRACKING_TRACKING_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+
+        #endif
+    

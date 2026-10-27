@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/linux/LinuxHardware.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,123 +107,120 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LinuxHardware
-            : public Object
-        , public HardwareInterface {
 
-public: LinuxHardware(){
+LinuxHardware::LinuxHardware(){
 }
 
 
-    public: MediaInterface* getMultimedia(int32_t index){
+    auto LinuxHardware::getMultimedia(int32_t index) -> MediaInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BridgeInterface* getBridge(int32_t index){
+    auto LinuxHardware::getBridge(int32_t index) -> BridgeInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: CpuInterface* getCpu(int32_t index){
+    auto LinuxHardware::getCpu(int32_t index) -> CpuInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: EthernetInterface* getEthernet(int32_t index){
+    auto LinuxHardware::getEthernet(int32_t index) -> EthernetInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: FireWireInterface* getFireWire(int32_t index){
+    auto LinuxHardware::getFireWire(int32_t index) -> FireWireInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: HardDriveControllerInterface* getHardDriveController(int32_t index){
+    auto LinuxHardware::getHardDriveController(int32_t index) -> HardDriveControllerInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: HardDriveInterface* getHardDrive(int32_t index){
+    auto LinuxHardware::getHardDrive(int32_t index) -> HardDriveInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: MachineAccessControlAddressInterface* getMachineAccessControlAddress(int32_t index){
+    auto LinuxHardware::getMachineAccessControlAddress(int32_t index) -> MachineAccessControlAddressInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: MonitorInterface* getMonitor(int32_t index){
+    auto LinuxHardware::getMonitor(int32_t index) -> MonitorInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: UsbInterface* getUsb(int32_t index){
+    auto LinuxHardware::getUsb(int32_t index) -> UsbInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: VideoInterface* getVideo(int32_t index){
+    auto LinuxHardware::getVideo(int32_t index) -> VideoInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: HardwareComponentInterface* getComponent(int32_t index){
+    auto LinuxHardware::getComponent(int32_t index) -> HardwareComponentInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::string toString(){
+    auto LinuxHardware::toString() -> std::string{
 
 
 
@@ -223,7 +230,7 @@ public: LinuxHardware(){
 }
 
 
-    public: bool compareTo(HardwareInterface* hardwareInterface){
+    auto LinuxHardware::compareTo(HardwareInterface* hardwareInterface) -> bool{
 
 
 
@@ -233,7 +240,7 @@ public: LinuxHardware(){
 }
 
 
-    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
+    auto LinuxHardware::difference(HardwareInterface* hardwareInterface) -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -243,7 +250,7 @@ public: LinuxHardware(){
 }
 
 
-    public: bool isNextHardware(std::string nextLine){
+    auto LinuxHardware::isNextHardware(std::string nextLine) -> bool{
 
 
 
@@ -253,7 +260,6 @@ public: LinuxHardware(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LayerPlacementTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,33 +61,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/LayerPlacementType.h"
 
-class LayerPlacementTypeFactory
-            : public Object
-         {
 
-    private: static LayerPlacementTypeFactory* instance() { static std::unique_ptr<LayerPlacementTypeFactory> value(new LayerPlacementTypeFactory()); return value.get(); }
+LayerPlacementTypeFactory::LayerPlacementTypeFactory() : MAP(new LayerPlacementType(Integer.MAX_VALUE)), LEFT(new LayerPlacementType(DirectionFactory::getInstance()->LEFT->getValue())), DOWN(new LayerPlacementType(DirectionFactory::getInstance()->DOWN->getValue())), UP(new LayerPlacementType(DirectionFactory::getInstance()->UP->getValue())), RIGHT(new LayerPlacementType(DirectionFactory::getInstance()->RIGHT->getValue())) {
+        }
+        auto LayerPlacementTypeFactory::instance_owner() -> LayerPlacementTypeFactory* { static std::unique_ptr<LayerPlacementTypeFactory> value(new LayerPlacementTypeFactory()); return value.get(); }
+LayerPlacementTypeFactory* LayerPlacementTypeFactory::instance = LayerPlacementTypeFactory::instance_owner();
 
-    public: static LayerPlacementTypeFactory* getInstance(){
+    auto LayerPlacementTypeFactory::getInstance() -> LayerPlacementTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerPlacementTypeFactory::instance();
+                        return LayerPlacementTypeFactory::instance;
     
 }
 
 
-    public: LayerPlacementType* MAP = new LayerPlacementType(Integer.MAX_VALUE);
 
-    public: LayerPlacementType* LEFT = new LayerPlacementType(DirectionFactory::getInstance()->LEFT->getValue());
 
-    public: LayerPlacementType* DOWN = new LayerPlacementType(DirectionFactory::getInstance()->DOWN->getValue());
-
-    public: LayerPlacementType* UP = new LayerPlacementType(DirectionFactory::getInstance()->UP->getValue());
-
-    public: LayerPlacementType* RIGHT = new LayerPlacementType(DirectionFactory::getInstance()->RIGHT->getValue());
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTTYPEFACTORY_CPP

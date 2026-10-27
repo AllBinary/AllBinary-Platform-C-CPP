@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_CPP
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/identification/Group.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,17 +63,8 @@
         #include "org/allbinary/game/identification/GroupInterface.h"
 #include "org/allbinary/game/identification/GroupCommonFactory.h"
 
-class Group
-            : public Object
-        , public GroupInterface {
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: int16_t teamId;
-
-    private: std::string string = StringUtil::getInstance()->EMPTY_STRING;
-
-public: Group(std::string teamName, int16_t teamId){
+Group::Group(std::string teamName, int16_t teamId) : name(StringUtil::getInstance()->EMPTY_STRING), string(StringUtil::getInstance()->EMPTY_STRING){
 this->teamId= teamId;
     
 this->setName(teamName);
@@ -71,7 +72,7 @@ this->setName(teamName);
 }
 
 
-    public: std::string getGroupName(){
+    auto Group::getGroupName() -> std::string{
 
 
 
@@ -81,7 +82,7 @@ this->setName(teamName);
 }
 
 
-    public: void setName(std::string name){
+    auto Group::setName(std::string name) -> void{
 this->name= name;
     
 
@@ -103,7 +104,7 @@ this->string= stringBuffer->toString();
 }
 
 
-    public: int16_t getGroupId(){
+    auto Group::getGroupId() -> int16_t{
 
 
 
@@ -113,7 +114,7 @@ this->string= stringBuffer->toString();
 }
 
 
-    public: std::string toString(){
+    auto Group::toString() -> std::string{
 
 
 
@@ -123,7 +124,6 @@ this->string= stringBuffer->toString();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_GROUP_CPP

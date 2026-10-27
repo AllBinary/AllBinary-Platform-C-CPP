@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
+class Image;
 
 
 
@@ -53,14 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScaleBaseProcessor
-            : public Object
+            : public virtual Object
          {
 
-    private: static ScaleBaseProcessor* instance() { static std::unique_ptr<ScaleBaseProcessor> value(new ScaleBaseProcessor()); return value.get(); }
+    private: static ScaleBaseProcessor* instance_owner();
+    private: static ScaleBaseProcessor* instance;
 
     public: static ScaleBaseProcessor* getInstance();
 
+
+            
+    public: ScaleBaseProcessor();
+        
     public: void update(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
 
 };
@@ -69,3 +81,13 @@ class ScaleBaseProcessor
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+
+        #endif
+    

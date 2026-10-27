@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,25 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EmailServerConfigurationInterface {
+//Interface - declared in the header
 
-    public: virtual void setSmtpServer(std::string value) = 0;
 
-    public: virtual std::string getSmtpServer() = 0;
 
-    public: virtual std::string getAccountName() = 0;
-
-    public: virtual void setAccountName(std::string accountName) = 0;
-
-    public: virtual std::string getPassword() = 0;
-
-    public: virtual void setPassword(std::string password) = 0;
-
-    public: virtual void log() = 0;
-
-    public: virtual std::string toString() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATIONINTERFACE_CPP

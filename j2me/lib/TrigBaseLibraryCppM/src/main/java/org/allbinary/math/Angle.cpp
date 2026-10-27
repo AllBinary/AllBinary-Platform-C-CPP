@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_ANGLE_CPP
+        #define ORG_ALLBINARY_MATH_ANGLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/Angle.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,19 +64,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Angle
-            : public Object
-         {
 
-    private: int16_t value;
-
-public: Angle(int16_t angle){
+Angle::Angle(int16_t angle){
 this->value= angle;
     
 }
 
 
-    public: int16_t getValue(){
+    auto Angle::getValue() -> int16_t{
 
 
 
@@ -76,7 +81,6 @@ this->value= angle;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_ANGLE_CPP

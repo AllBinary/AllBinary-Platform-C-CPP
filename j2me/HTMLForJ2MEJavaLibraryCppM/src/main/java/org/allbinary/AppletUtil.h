@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_APPLETUTIL_H
         #define ORG_ALLBINARY_APPLETUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AppletUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static bool isAppletLoader(Object* anyType);
+    public: static bool isAppletLoader(const std::string& anyType) { return isAppletLoader(JavaString::box(anyType)); }
 
 private: AppletUtil();
 
@@ -62,3 +72,10 @@ private: AppletUtil();
 
 
         #endif //ORG_ALLBINARY_APPLETUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_APPLETUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_APPLETUTIL_H_COMPLETE
+        
+        #endif
+    

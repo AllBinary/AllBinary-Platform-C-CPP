@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_CPP
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/activity/ProgressActivityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,17 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ProgressActivityInterface {
+//Interface - declared in the header
 
-    public: virtual void runOnUiThread(Runnable* action) = 0;
 
-    public: virtual void onDismissTitleProgressBar() = 0;
 
-    public: virtual void onShowTitleProgressBar(int32_t value, bool indeterminate) = 0;
-
-    public: virtual void onTitleProgressBarSetProgress(int32_t value) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_CPP

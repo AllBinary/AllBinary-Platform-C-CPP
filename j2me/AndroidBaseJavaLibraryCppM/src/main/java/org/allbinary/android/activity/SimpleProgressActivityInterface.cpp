@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_SIMPLEPROGRESSACTIVITYINTERFACE_CPP
+        #define ORG_ALLBINARY_ANDROID_ACTIVITY_SIMPLEPROGRESSACTIVITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/activity/SimpleProgressActivityInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,23 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SimpleProgressActivityInterface {
+//Interface - declared in the header
 
-    public: virtual void runOnUiThread(Runnable* action) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onSetProgress(int32_t value, std::string text) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onDismissProgress(std::vector<int32_t> animationSequence) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANDROID_ACTIVITY_SIMPLEPROGRESSACTIVITYINTERFACE_CPP

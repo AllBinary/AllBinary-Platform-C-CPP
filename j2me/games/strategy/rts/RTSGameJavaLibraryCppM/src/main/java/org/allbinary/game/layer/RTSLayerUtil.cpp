@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/RTSLayerUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -96,27 +106,23 @@
 #include "org/allbinary/game/layer/FakeLayerManager.h"
 #include "org/allbinary/game/layer/AllBinaryGameLayerManager.h"
 
-class RTSLayerUtil
-            : public Object
-         {
 
-    private: static RTSLayerUtil* instance() { static std::unique_ptr<RTSLayerUtil> value(new RTSLayerUtil()); return value.get(); }
+RTSLayerUtil::RTSLayerUtil() : logUtil(LogUtil::getInstance()), groupCommonFactory(GroupCommonFactory::getInstance()), MAX_RELOAD_TIME(Integer.MAX_VALUE /100000) {
+        }
+        auto RTSLayerUtil::instance_owner() -> RTSLayerUtil* { static std::unique_ptr<RTSLayerUtil> value(new RTSLayerUtil()); return value.get(); }
+RTSLayerUtil* RTSLayerUtil::instance = RTSLayerUtil::instance_owner();
 
-    public: static RTSLayerUtil* getInstance(){
+    auto RTSLayerUtil::getInstance() -> RTSLayerUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSLayerUtil::instance();
+                        return RTSLayerUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
-
-    private: WeaponProperties* createWeaponProperties(WeaponProperties* weaponProperties, int32_t currentLevel, int32_t lastLevel){
+    auto RTSLayerUtil::createWeaponProperties(WeaponProperties* weaponProperties, int32_t currentLevel, int32_t lastLevel) -> WeaponProperties*{
 
     int64_t reloadTime = weaponProperties->getReloadTime();;
     
@@ -150,7 +156,7 @@ class RTSLayerUtil
 }
 
 
-    public: void downgrade(RTSLayer* rtsLayer){
+    auto RTSLayerUtil::downgrade(RTSLayer* rtsLayer) -> void{
 rtsLayer->setLevel(rtsLayer->getLevel() -1);
     
 
@@ -180,7 +186,7 @@ rtsLayer->select();
 }
 
 
-    public: void upgrade(RTSLayer* rtsLayer){
+    auto RTSLayerUtil::upgrade(RTSLayer* rtsLayer) -> void{
 rtsLayer->setLevel(rtsLayer->getLevel() +1);
     
 
@@ -210,9 +216,7 @@ rtsLayer->select();
 }
 
 
-    private: const int64_t MAX_RELOAD_TIME = Integer.MAX_VALUE /100000;
-
-    public: int64_t getCostExponential(int64_t cost){
+    auto RTSLayerUtil::getCostExponential(int64_t cost) -> int64_t{
 
 
 
@@ -222,7 +226,7 @@ rtsLayer->select();
 }
 
 
-    private: int32_t getWeaponPropertiesCost(WeaponProperties* weaponProperties){
+    auto RTSLayerUtil::getWeaponPropertiesCost(WeaponProperties* weaponProperties) -> int32_t{
 
     int64_t cost = (weaponProperties->getDamage() +weaponProperties->getRange() +((this->MAX_RELOAD_TIME /weaponProperties->getReloadTime())>>1));;
     
@@ -237,7 +241,7 @@ cost= this->getCostExponential(cost);
 }
 
 
-    public: int32_t getCost(RTSLayer* rtsLayer){
+    auto RTSLayerUtil::getCost(RTSLayer* rtsLayer) -> int32_t{
 
     int32_t total = 0;;
     
@@ -277,7 +281,7 @@ total += this->getWeaponPropertiesCost(weaponProperties);
 }
 
 
-    public: int32_t getDowngradeCost(RTSLayer* rtsLayer){
+    auto RTSLayerUtil::getDowngradeCost(RTSLayer* rtsLayer) -> int32_t{
 
     std::vector<PartInterface*> partInterfaceArray = rtsLayer->getPartInterfaceArray();;
     
@@ -331,7 +335,7 @@ this->logUtil->putF((new StringMaker())->append("Total Cost: ")->appendint(downg
 }
 
 
-    public: int32_t getUpgradeCost(RTSLayer* rtsLayer){
+    auto RTSLayerUtil::getUpgradeCost(RTSLayer* rtsLayer) -> int32_t{
 
     int32_t upgradeCost = 0;;
     
@@ -385,7 +389,7 @@ this->logUtil->putF((new StringMaker())->append("Total Cost: ")->appendint(upgra
 
                 //@Throws(Exception.constructor)
             
-    public: void destroyAndClear(BasicArrayList* list){
+    auto RTSLayerUtil::destroyAndClear(BasicArrayList* list) -> void{
 
     RTSLayer* rtsLayer;;
     
@@ -407,7 +411,7 @@ list->clear();
 }
 
 
-    public: ABHashtable<Object*, Object*>* createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap* baseRaceTrackGeographicMap){
+    auto RTSLayerUtil::createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap* baseRaceTrackGeographicMap) -> ABHashtable<Object*, Object*>*{
 
     ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
     
@@ -434,7 +438,6 @@ hashtable->put(this->groupCommonFactory->ID, BasicGroupFactory::getInstance()->N
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_RTSLAYERUTIL_CPP

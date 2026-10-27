@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEFRAMECACHEABLE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEFRAMECACHEABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/cache/BufferedImageFrameCacheable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,15 +66,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BufferedImageFrameCacheable
-            : public Object
-        , public CacheableInterface {
 
-    private: int64_t frame;
-
-    private: BufferedImage* bufferedImage;
-
-public: BufferedImageFrameCacheable(BufferedImage* bufferedImage, int64_t frame){
+BufferedImageFrameCacheable::BufferedImageFrameCacheable(BufferedImage* bufferedImage, int64_t frame){
 this->frame= frame;
     
 this->setBufferedImage(bufferedImage);
@@ -72,7 +75,7 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    public: Object* getKey(){
+    auto BufferedImageFrameCacheable::getKey() -> Object*{
 
 
 
@@ -82,7 +85,7 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    public: BufferedImage* getBufferedImage(){
+    auto BufferedImageFrameCacheable::getBufferedImage() -> BufferedImage*{
 
 
 
@@ -92,13 +95,13 @@ this->setBufferedImage(bufferedImage);
 }
 
 
-    private: void setBufferedImage(BufferedImage* bufferedImage){
+    auto BufferedImageFrameCacheable::setBufferedImage(BufferedImage* bufferedImage) -> void{
 this->bufferedImage= bufferedImage;
     
 }
 
 
-    public: int64_t getFrame(){
+    auto BufferedImageFrameCacheable::getFrame() -> int64_t{
 
 
 
@@ -108,13 +111,13 @@ this->bufferedImage= bufferedImage;
 }
 
 
-    public: void setFrame(int64_t frame){
+    auto BufferedImageFrameCacheable::setFrame(int64_t frame) -> void{
 this->frame= frame;
     
 }
 
 
-    public: std::string toString(){
+    auto BufferedImageFrameCacheable::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -133,7 +136,6 @@ stringBuffer->appendlong(this->getFrame());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEFRAMECACHEABLE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_LINEREADER_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_LINEREADER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/LineReader.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,25 +72,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/AbFileInputStream.h"
 
-class LineReader
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string fileName;
-
-    private: std::string string;
-
-    private: int32_t index = 0;
-
-    private: AbFileInputStream* idFile;
-
-    private: DataInputStream* idData;
-
-public: LineReader(std::string fileName){
+LineReader::LineReader(std::string fileName) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
         try {
             
@@ -92,13 +85,13 @@ this->idFile= new AbFileInputStream(fileName);
     
 this->idFile->read(bytes);
     
-this->string= String.fromCharCode(...bytes);
+this->string= JavaString::fromChars(bytes);
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put("File: " +fileName, this, "LineReader", &e);
+this->logUtil->put(JavaString::valueOf("File: ") +JavaString::valueOf(fileName), this, "LineReader", &e);
     
 
 
@@ -111,7 +104,7 @@ this->logUtil->put("File: " +fileName, this, "LineReader", &e);
 }
 
 
-    public: bool hasNext(){
+    auto LineReader::hasNext() -> bool{
 
         try {
             
@@ -161,7 +154,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "hasNext", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string next(){
+    auto LineReader::next() -> std::string{
 
         try {
             
@@ -174,7 +167,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "hasNext", &e);
                                     
 
 
-                            throw new Exception("next() should have been called first");
+                            throw Exception("next() should have been called first");
                     
 
                                     }
@@ -212,7 +205,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "next", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_LINEREADER_CPP

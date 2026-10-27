@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/CustomItemUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,25 +58,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/ABCustomItem.h"
 
-class CustomItemUtil
-            : public Object
-         {
 
-    private: static CustomItemUtil* instance() { static std::unique_ptr<CustomItemUtil> value(new CustomItemUtil()); return value.get(); }
+CustomItemUtil::CustomItemUtil() : CUSTOM_ITEM_ARRAY({}) {
+        }
+        auto CustomItemUtil::instance_owner() -> CustomItemUtil* { static std::unique_ptr<CustomItemUtil> value(new CustomItemUtil()); return value.get(); }
+CustomItemUtil* CustomItemUtil::instance = CustomItemUtil::instance_owner();
 
-    public: static CustomItemUtil* getInstance(){
+    auto CustomItemUtil::getInstance() -> CustomItemUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomItemUtil::instance();
+                        return CustomItemUtil::instance;
     
 }
 
 
-    public: const std::vector<ABCustomItem*> CUSTOM_ITEM_ARRAY = {};
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/event/LayerManagerEventListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,17 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/event/LayerManagerEvent.h"
 
-class LayerManagerEventListenerInterface: public EventListenerInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onCreateLayerManagerEvent(LayerManagerEvent* layerManagerEvent) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void onDeleteLayerManagerEvent(LayerManagerEvent* layerManagerEvent) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENERINTERFACE_CPP

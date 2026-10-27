@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONTOGAMEKEYEVENT_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONTOGAMEKEYEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/OrientationToGameKeyEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,15 +68,8 @@
         #include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
 #include "org/allbinary/input/gyro/NoGyroSensor.h"
 
-class OrientationToGameKeyEvent
-            : public Object
-         {
 
-    private: AllBinaryOrientationSensor* allBinaryGyroSensor;
-
-    private: const int32_t MIN = 15;
-
-public: OrientationToGameKeyEvent(){
+OrientationToGameKeyEvent::OrientationToGameKeyEvent(){
 
                         if(Features::getInstance()->isFeature(SensorFeatureFactory::getInstance()->NO_ORIENTATION))
                         
@@ -80,7 +83,7 @@ public: OrientationToGameKeyEvent(){
                             
 
 
-                            throw new Exception("Not Such Feature");
+                            throw Exception("Not Such Feature");
                     
 
                         }
@@ -88,13 +91,13 @@ public: OrientationToGameKeyEvent(){
 }
 
 
-    public: void setAllBinaryGyroSensor(AllBinaryOrientationSensor* allBinaryGyroSensor){
+    auto OrientationToGameKeyEvent::setAllBinaryGyroSensor(AllBinaryOrientationSensor* allBinaryGyroSensor) -> void{
 this->allBinaryGyroSensor= allBinaryGyroSensor;
     
 }
 
 
-    public: AllBinaryOrientationSensor* getAllBinaryGyroSensor(){
+    auto OrientationToGameKeyEvent::getAllBinaryGyroSensor() -> AllBinaryOrientationSensor*{
 
 
 
@@ -106,17 +109,16 @@ this->allBinaryGyroSensor= allBinaryGyroSensor;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto OrientationToGameKeyEvent::process() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: void updateGameKeyEvents(Orientation* orientation, int32_t yaw, int32_t pitch, int32_t roll){
+    auto OrientationToGameKeyEvent::updateGameKeyEvents(Orientation* orientation, int32_t yaw, int32_t pitch, int32_t roll) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONTOGAMEKEYEVENT_CPP

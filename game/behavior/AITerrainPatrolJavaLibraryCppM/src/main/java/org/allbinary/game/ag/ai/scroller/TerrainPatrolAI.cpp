@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/TerrainPatrolAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,15 +91,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/scroller/PacePatrolAI.h"
 
-class TerrainPatrolAI: public PacePatrolAI {
 
-    private: TerrainEventListener* terrainEventListener = new TerrainEventListener();
-
-    private: Angle* DOWN = AngleFactory::getInstance()->DOWN;
-
-    private: BasicTerrainInfo* CLIFF = new BasicTerrainInfo(this->DOWN);
-
-public: TerrainPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : PacePatrolAI(hashtable, ownerLayerInterface, gameInput){
+TerrainPatrolAI::TerrainPatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : PacePatrolAI(hashtable, ownerLayerInterface, gameInput), terrainEventListener(new TerrainEventListener()), DOWN(AngleFactory::getInstance()->DOWN), CLIFF(new BasicTerrainInfo(this->DOWN)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -103,15 +106,15 @@ this->terrainEventListener->onTerrainEvent(TerrainEventCircularStaticPool::getIn
 }
 
 
-    protected: void update(){
-super.update();
+    auto TerrainPatrolAI::update() -> void{
+PacePatrolAI::update();
     
 this->changeDirectionIfCliffReached();
     
 }
 
 
-    private: void changeDirectionIfCliffReached(){
+    auto TerrainPatrolAI::changeDirectionIfCliffReached() -> void{
 
     BasicArrayList* list = this->terrainEventListener->getList();;
     
@@ -144,7 +147,7 @@ this->changeDirectionIfCliffReached();
                         if(!this->isFollowLimitedByTerrain)
                         
                                     {
-                                    this->logUtil.putF("Following Limited", this, "onTerrainEvent");
+                                    this->logUtil->putF("Following Limited", this, "onTerrainEvent");
     
 this->isFollowLimitedByTerrain= true;
     
@@ -159,7 +162,6 @@ this->isFollowLimitedByTerrain= true;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAI_CPP

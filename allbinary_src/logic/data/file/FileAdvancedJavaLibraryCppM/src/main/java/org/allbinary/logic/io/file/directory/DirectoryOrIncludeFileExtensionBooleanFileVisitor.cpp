@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONBOOLEANFILEVISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONBOOLEANFILEVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/directory/DirectoryOrIncludeFileExtensionBooleanFileVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DirectoryOrIncludeFileExtensionBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
 
-    private: std::string includesString;
-
-public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+DirectoryOrIncludeFileExtensionBooleanFileVisitor::DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +77,7 @@ this->includesString=
 }
 
 
-public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+DirectoryOrIncludeFileExtensionBooleanFileVisitor::DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,7 +89,7 @@ this->includesString= includesString;
 }
 
 
-    public: bool visit(AbFile* file){
+    auto DirectoryOrIncludeFileExtensionBooleanFileVisitor::visit(AbFile* file) -> bool{
 
                         if(file->isDirectory())
                         
@@ -104,7 +111,7 @@ this->includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.visit(file);;
+                        return IncludeFileExtensionsBooleanFileVisitor::visit(file);;
     
 
                                     }
@@ -122,7 +129,6 @@ this->includesString= includesString;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONBOOLEANFILEVISITOR_CPP

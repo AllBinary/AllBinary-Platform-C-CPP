@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEDEFAULTGAMEINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEDEFAULTGAMEINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/NormalJ2MEDefaultGameInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/GameKeyFactory.h"
 
-class NormalJ2MEDefaultGameInputMapping: public PersistentInputMapping {
 
-public: NormalJ2MEDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID){
+NormalJ2MEDefaultGameInputMapping::NormalJ2MEDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -117,7 +126,6 @@ inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM1, gameKeyFactory->FIRE);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEDEFAULTGAMEINPUTMAPPING_CPP

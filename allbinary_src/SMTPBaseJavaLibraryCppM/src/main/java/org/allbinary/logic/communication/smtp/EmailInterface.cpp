@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/EmailInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,17 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class EmailInterface: public DomNodeInterface, public DomDocumentMappingInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getDebugInfo() = 0;
 
-    public: virtual MimeMessage* getMimeMessage() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual std::string log() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILINTERFACE_CPP

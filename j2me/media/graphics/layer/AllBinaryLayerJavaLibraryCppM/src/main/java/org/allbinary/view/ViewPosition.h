@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITION_H
         #define ORG_ALLBINARY_VIEW_VIEWPOSITION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 
 
 
@@ -52,13 +55,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/view/ViewPositionBase.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ViewPosition: public ViewPositionBase {
 
     public: static ViewPosition* getInstanceD();
 
-    private: AllBinaryLayer* allbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* allbinaryLayer;
 
-protected: ViewPosition(int32_t x, int32_t y, int32_t z);
+/*protected*/ public: ViewPosition(int32_t x, int32_t y, int32_t z);
 
     public: int32_t getX();
 
@@ -73,6 +80,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z);
     public: int32_t getZ2();
 
     public: void setAllbinaryLayer(Object* allbinaryLayer);
+    public: void setAllbinaryLayer(const std::string& allbinaryLayer) { return setAllbinaryLayer(JavaString::box(allbinaryLayer)); }
 
 };
 
@@ -80,3 +88,16 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z);
 
 
         #endif //ORG_ALLBINARY_VIEW_VIEWPOSITION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_VIEW_VIEWPOSITION_H_COMPLETE)
+        #define ORG_ALLBINARY_VIEW_VIEWPOSITION_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/view/ViewPositionBase.h")
+#include "org/allbinary/view/ViewPositionBase.h"
+#endif
+
+        #endif
+    

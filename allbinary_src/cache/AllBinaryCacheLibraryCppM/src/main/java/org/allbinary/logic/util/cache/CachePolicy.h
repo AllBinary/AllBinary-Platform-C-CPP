@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CachePolicy
-            : public Object
+            : public virtual Object
          {
 
     private: std::string name;
@@ -76,3 +85,10 @@ public: CachePolicy(std::string name, int64_t maxTime, int64_t maxSize);
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEPOLICY_H_COMPLETE
+        
+        #endif
+    

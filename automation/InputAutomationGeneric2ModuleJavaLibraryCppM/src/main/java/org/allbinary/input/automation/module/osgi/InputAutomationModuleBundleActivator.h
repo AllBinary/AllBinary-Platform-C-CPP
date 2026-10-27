@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,41 +41,17 @@
             #include "java/lang/RuntimeException.h"
         
 #include <org/osgi/framework/BundleActivator.h>
-
-      
-#include <org/osgi/framework/BundleContext.h>
-
-      
-#include <org/osgi/framework/ServiceFactory.h>
-
-      
-#include <org/osgi/framework/ServiceReference.h>
-
-      
-#include <bundle/input/automation/module/InputAutomationModuleServiceInterface.h>
-
-      
-#include <bundle/input/automation/module/configuration/InputAutomationConfigurationModuleChangeListener.h>
-
-      
-#include <org/allbinary/input/automation/configuration/InputAutomationConfigurationModuleChangeEvent.h>
-
-      
-#include <org/allbinary/input/automation/configuration/InputAutomationConfigurationUtil.h>
-
-      
-#include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/osgi/OSGIActivatorUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class BundleContext;
+class ServiceFactory;
+class ServiceReference;
+class InputAutomationModuleServiceInterface;
+class InputAutomationConfigurationModuleChangeListener;
+class InputAutomationConfigurationModuleChangeEvent;
+class InputAutomationConfigurationUtil;
+class InputAutomationModuleFactoryInterface;
+class LogUtil;
+class OSGIActivatorUtil;
+class CommonStrings;
 
 
 
@@ -90,13 +71,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationModuleBundleActivator
-            : public Object
+            : public virtual Object
         , public BundleActivator {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface;
 
@@ -128,13 +113,13 @@ public: InputAutomationModuleBundleActivator();
             
     public: void stop(BundleContext* context);
 
-    protected: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterface();
+    /*protected*/ public: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterface();
 
-    protected: void setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface);
+    /*protected*/ public: void setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterface);
 
-    protected: Object* getServiceFactory();
+    /*protected*/ public: Object* getServiceFactory();
 
-    protected: void setServiceFactory(ServiceFactory* serviceObject);
+    /*protected*/ public: void setServiceFactory(ServiceFactory* serviceObject);
 
 };
 
@@ -142,3 +127,46 @@ public: InputAutomationModuleBundleActivator();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_H_COMPLETE
+        #if __has_include(<org/osgi/framework/BundleActivator.h>)
+#include <org/osgi/framework/BundleActivator.h>
+#endif
+#if __has_include(<org/osgi/framework/BundleContext.h>)
+#include <org/osgi/framework/BundleContext.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceFactory.h>)
+#include <org/osgi/framework/ServiceFactory.h>
+#endif
+#if __has_include(<org/osgi/framework/ServiceReference.h>)
+#include <org/osgi/framework/ServiceReference.h>
+#endif
+#if __has_include(<bundle/input/automation/module/InputAutomationModuleServiceInterface.h>)
+#include <bundle/input/automation/module/InputAutomationModuleServiceInterface.h>
+#endif
+#if __has_include(<bundle/input/automation/module/configuration/InputAutomationConfigurationModuleChangeListener.h>)
+#include <bundle/input/automation/module/configuration/InputAutomationConfigurationModuleChangeListener.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/configuration/InputAutomationConfigurationModuleChangeEvent.h>)
+#include <org/allbinary/input/automation/configuration/InputAutomationConfigurationModuleChangeEvent.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/configuration/InputAutomationConfigurationUtil.h>)
+#include <org/allbinary/input/automation/configuration/InputAutomationConfigurationUtil.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>)
+#include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/osgi/OSGIActivatorUtil.h>)
+#include <org/allbinary/osgi/OSGIActivatorUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

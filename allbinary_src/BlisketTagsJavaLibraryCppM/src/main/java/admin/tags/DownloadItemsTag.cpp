@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_DOWNLOADITEMSTAG_CPP
+        #define ADMIN_TAGS_DOWNLOADITEMSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/DownloadItemsTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,9 +73,8 @@
 #include "admin/tags/ParentInventoryTagHelper.h"
 #include "admin/tags/AbTagData.h"
 
-class DownloadItemsTag: public TableTag {
 
-public: DownloadItemsTag(){
+DownloadItemsTag::DownloadItemsTag(){
 this->setTagHelperFactory(new DownloadItemsHelperFactory());
     
 this->setTagRequestHelperFactory(new DownloadItemsRequestHelperFactory());
@@ -75,7 +84,7 @@ this->setTagRequestHelperFactory(new DownloadItemsRequestHelperFactory());
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto DownloadItemsTag::doStartTag() -> int32_t{
 
         try {
             
@@ -89,7 +98,7 @@ this->setTagRequestHelperFactory(new DownloadItemsRequestHelperFactory());
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.BACKUP) != 0 && this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.RESTORE) != 0 && this->getCommand()->compareTo(this->commonStrings.CREATE) != 0 && this->getCommand()->compareTo(this->commonStrings.DROP) != 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->BACKUP) != 0 && this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->RESTORE) != 0 && this->getCommand()->compareTo(this->commonStrings->CREATE) != 0 && this->getCommand()->compareTo(this->commonStrings->DROP) != 0)
                         
                                     {
                                     
@@ -106,7 +115,7 @@ this->getPropertiesHashMap()->put(AbTagData::PARENT, parentTag);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return TableTag::doStartTag();;
     
 
                                     }
@@ -137,7 +146,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_DOWNLOADITEMSTAG_CPP

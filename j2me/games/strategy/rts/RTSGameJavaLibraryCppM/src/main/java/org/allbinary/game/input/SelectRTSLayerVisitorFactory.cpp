@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectRTSLayerVisitorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,27 +61,24 @@
 #include "org/allbinary/game/input/SelectRTSLayerVisitor.h"
 #include "org/allbinary/game/input/SelectedRTSLayersPlayerGameInput.h"
 
-class SelectRTSLayerVisitorFactory
-            : public Object
-        , public SelectRTSLayerVisitorFactoryInterface {
+auto SelectRTSLayerVisitorFactory::instance_owner() -> SelectRTSLayerVisitorFactory* { static std::unique_ptr<SelectRTSLayerVisitorFactory> value(new SelectRTSLayerVisitorFactory()); return value.get(); }
+SelectRTSLayerVisitorFactory* SelectRTSLayerVisitorFactory::instance = SelectRTSLayerVisitorFactory::instance_owner();
 
-    private: static SelectRTSLayerVisitorFactory* instance() { static std::unique_ptr<SelectRTSLayerVisitorFactory> value(new SelectRTSLayerVisitorFactory()); return value.get(); }
-
-    public: static SelectRTSLayerVisitorFactory* getInstance(){
+    auto SelectRTSLayerVisitorFactory::getInstance() -> SelectRTSLayerVisitorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectRTSLayerVisitorFactory::instance();
+                        return SelectRTSLayerVisitorFactory::instance;
     
 }
 
 
-private: SelectRTSLayerVisitorFactory(){
+SelectRTSLayerVisitorFactory::SelectRTSLayerVisitorFactory(){
 }
 
 
-    public: Visitor* create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput){
+    auto SelectRTSLayerVisitorFactory::create(SelectedRTSLayersPlayerGameInput* selectedRTSLayersPlayerGameInput) -> Visitor*{
 
 
 
@@ -81,7 +88,6 @@ private: SelectRTSLayerVisitorFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORY_CPP

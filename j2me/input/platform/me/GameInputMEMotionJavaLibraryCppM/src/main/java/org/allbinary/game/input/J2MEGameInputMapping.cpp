@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_J2MEGAMEINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_J2MEGAMEINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/J2MEGameInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,9 +67,8 @@
 #include "org/allbinary/game/input/GameKeyFactory.h"
 #include "org/allbinary/game/input/Input.h"
 
-class J2MEGameInputMapping: public PersistentInputMapping {
 
-public: J2MEGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID){
+J2MEGameInputMapping::J2MEGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->SAVED_INPUT_CONFIGURATION_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -71,12 +80,12 @@ public: J2MEGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::
 
                 //@Throws(Exception.constructor)
             
-    public: void init(AbeClientInformationInterface* abeClientInformation){
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
+    auto J2MEGameInputMapping::init(AbeClientInformationInterface* abeClientInformation) -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->INIT);
     
 J2MEKeyFactory::getInstance()->init();
     
-super.init(abeClientInformation);
+PersistentInputMapping::init(abeClientInformation);
     
 
                         if(this->getTotalMapped() == 0 || this->isDefaultNew())
@@ -92,7 +101,7 @@ this->save(abeClientInformation);
 }
 
 
-    public: bool isDelete(Input* input){
+    auto J2MEGameInputMapping::isDelete(Input* input) -> bool{
 
                         if(input == GameKeyFactory::getInstance()->GAME_D)
                         
@@ -119,7 +128,7 @@ this->save(abeClientInformation);
 }
 
 
-    public: bool isSystemInput(Input* input){
+    auto J2MEGameInputMapping::isSystemInput(Input* input) -> bool{
 
 
 
@@ -129,7 +138,6 @@ this->save(abeClientInformation);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_J2MEGAMEINPUTMAPPING_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,15 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/Movement.h"
 
-class BasicConstantVelocityMovement: public Movement, public VelocityInterfaceCompositeInterface {
 
-    private: BasicVelocityProperties* velocityProperties;
-
-    private: BasicDecimal* speedBasicDecimal = BasicDecimal::ZERO_BIGDECIMAL;
-
-    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
-
-public: BasicConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties){
+BasicConstantVelocityMovement::BasicConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties) : speedBasicDecimal(BasicDecimal::ZERO_BIGDECIMAL), axisMathVectorUtil(AxisMathVectorUtil::getInstance()){
 this->setSpeedBasicDecimal(basicDecimal);
     
 this->velocityProperties= velocityProperties;
@@ -83,7 +86,7 @@ this->velocityProperties= velocityProperties;
 }
 
 
-    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle){
+    auto BasicConstantVelocityMovement::init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) -> void{
 this->speedBasicDecimal= speedBasicDecimal;
     
 
@@ -94,7 +97,7 @@ this->velocityProperties->setVelocityWithBigDecimal(speedBasicDecimal, angleFact
 }
 
 
-    public: void moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle){
+    auto BasicConstantVelocityMovement::moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle) -> void{
 
     int32_t scaleFactorValue = this->speedBasicDecimal->getScaledFactorValue();;
     
@@ -114,13 +117,13 @@ layer->moveDXYZ(xVector, yVector, zVector);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
+    auto BasicConstantVelocityMovement::process(AllBinaryGameLayer* layer) -> void{
 layer->moveDXYZ(this->velocityProperties->getVelocityXBasicDecimalP()->getScaled(), this->velocityProperties->getVelocityYBasicDecimalP()->getScaled(), this->velocityProperties->getVelocityZBasicDecimalP()->getScaled());
     
 }
 
 
-    public: std::string toString(){
+    auto BasicConstantVelocityMovement::toString() -> std::string{
 
 
 
@@ -130,13 +133,13 @@ layer->moveDXYZ(this->velocityProperties->getVelocityXBasicDecimalP()->getScaled
 }
 
 
-    public: void stop(){
+    auto BasicConstantVelocityMovement::stop() -> void{
 this->velocityProperties->zero();
     
 }
 
 
-    public: BasicVelocityProperties* getVelocityProperties(){
+    auto BasicConstantVelocityMovement::getVelocityProperties() -> BasicVelocityProperties*{
 
 
 
@@ -146,19 +149,19 @@ this->velocityProperties->zero();
 }
 
 
-    public: void setVelocityProperties(BasicVelocityProperties* velocityProperties){
+    auto BasicConstantVelocityMovement::setVelocityProperties(BasicVelocityProperties* velocityProperties) -> void{
 this->velocityProperties= velocityProperties;
     
 }
 
 
-    protected: void setSpeedBasicDecimal(BasicDecimal* speedBasicDecimal){
+    auto BasicConstantVelocityMovement::setSpeedBasicDecimal(BasicDecimal* speedBasicDecimal) -> void{
 this->speedBasicDecimal= speedBasicDecimal;
     
 }
 
 
-    protected: BasicDecimal* getSpeedBasicDecimal(){
+    auto BasicConstantVelocityMovement::getSpeedBasicDecimal() -> BasicDecimal*{
 
 
 
@@ -168,7 +171,6 @@ this->speedBasicDecimal= speedBasicDecimal;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_CPP

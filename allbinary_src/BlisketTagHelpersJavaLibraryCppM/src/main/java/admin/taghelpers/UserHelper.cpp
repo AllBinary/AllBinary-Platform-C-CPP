@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_USERHELPER_CPP
+        #define ADMIN_TAGHELPERS_USERHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/UserHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -103,21 +113,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/Table.h"
 
-class UserHelper: public Table {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HashMap<Object*, Object*>* hashMap;
-
-    private: PageContext* pageContext;
-
-    private: HttpServletRequest* request;
-
-    private: std::string path;
-
-    private: Portion* portion;
-
-public: UserHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+UserHelper::UserHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->hashMap= hashMap;
     
 this->pageContext= pageContext;
@@ -131,7 +128,7 @@ this->portion= new Portion(hashMap);
 }
 
 
-    public: std::string delete_(){
+    auto UserHelper::delete_() -> std::string{
 
         try {
             
@@ -159,7 +156,7 @@ stringBuffer->append(" from to the user table");
     std::string success = stringBuffer->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -178,13 +175,13 @@ stringBuffer->append(" from to the user table");
 } catch(Exception& e) 
             {
 
-    std::string error = "Failed to remove user with " +UserData::USERNAME +" from User table";;
+    std::string error = JavaString::valueOf(JavaString::valueOf("Failed to remove user with ") +JavaString::valueOf(UserData::USERNAME)) +JavaString::valueOf(" from User table");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -202,7 +199,7 @@ stringBuffer->append(" from to the user table");
 
                 //@Throws(Exception.constructor)
             
-    public: std::string insert(){
+    auto UserHelper::insert() -> std::string{
 
         try {
             
@@ -229,7 +226,7 @@ UserEntityFactory::getInstance()->insert(values);
     std::string success = "New User Successfully added to the Users Table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "add()");
@@ -251,10 +248,10 @@ UserEntityFactory::getInstance()->insert(values);
     std::string error = "Failed to add User";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "add()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "add()", &e);
     
 
                                     }
@@ -270,7 +267,7 @@ UserEntityFactory::getInstance()->insert(values);
 }
 
 
-    public: std::string update(){
+    auto UserHelper::update() -> std::string{
 
         try {
             
@@ -285,7 +282,7 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
     std::string success = "New User Successfully added to the Users Table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -307,10 +304,10 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
     std::string error = "Failed to add User";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -326,17 +323,17 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 }
 
 
-    public: std::string drop(){
+    auto UserHelper::drop() -> std::string{
 
         try {
             
     std::string success = UserEntityFactory::getInstance()->dropTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
-                                    this->logUtil->putF(success, this, this->commonStrings.DROP);
+                                    this->logUtil->putF(success, this, this->commonStrings->DROP);
     
 
                                     }
@@ -355,10 +352,10 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
     std::string error = "Failed to drop user table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
     
 
                                     }
@@ -374,14 +371,14 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 }
 
 
-    public: std::string create(){
+    auto UserHelper::create() -> std::string{
 
         try {
             
     std::string success = UserEntityFactory::getInstance()->createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -403,10 +400,10 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
     std::string error = "Failed to create user table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -422,7 +419,7 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 }
 
 
-    public: std::string restore(){
+    auto UserHelper::restore() -> std::string{
 
         try {
             
@@ -432,7 +429,7 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(UserEntityFactory::getInstance(), this->portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -454,10 +451,10 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -473,7 +470,7 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 }
 
 
-    public: std::string backup(){
+    auto UserHelper::backup() -> std::string{
 
         try {
             
@@ -483,7 +480,7 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
     std::string result = AbSqlTableUtil::getInstance()->backupTable(UserEntityFactory::getInstance());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPER))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPER))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -505,10 +502,10 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -524,7 +521,6 @@ UserEntityFactory::getInstance()->update(user->getUserName(), values);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_USERHELPER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_DEMOLOCKEDWITHCOSTLAYERINTERFACEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_DEMOLOCKEDWITHCOSTLAYERINTERFACEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/DemoLockedWithCostLayerInterfaceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,11 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/CostLayerInterfaceFactoryInterface.h"
 
-class DemoLockedWithCostLayerInterfaceFactoryInterface: public CostLayerInterfaceFactoryInterface {
+//Interface - declared in the header
 
-    public: virtual bool isDemoLocked() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_DEMOLOCKEDWITHCOSTLAYERINTERFACEFACTORYINTERFACE_CPP

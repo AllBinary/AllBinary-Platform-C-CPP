@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_ORTHOGONALLIGHTINGOPENGLPROCESSORFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_ORTHOGONALLIGHTINGOPENGLPROCESSORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,20 +52,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h"
-#include "org/allbinary/graphics/opengles/OpenGLProcessor.h"
+        class NullOpenGLProcessorFactory;
+class OpenGLProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OrthogonalLightingOpenGLProcessorFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static OrthogonalLightingOpenGLProcessorFactory* instance() { static std::unique_ptr<OrthogonalLightingOpenGLProcessorFactory> value(new OrthogonalLightingOpenGLProcessorFactory()); return value.get(); }
+    private: static OrthogonalLightingOpenGLProcessorFactory* instance_owner();
+    private: static OrthogonalLightingOpenGLProcessorFactory* instance;
 
     public: static OrthogonalLightingOpenGLProcessorFactory* getInstance();
 
-    public: OpenGLProcessor* sceneLightingOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public: OpenGLProcessor* sceneLightsOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
+            
+    public: OrthogonalLightingOpenGLProcessorFactory();
+        
+    public: OpenGLProcessor* sceneLightingOrthogonalModeOpenGLProcessor;
+
+    public: OpenGLProcessor* sceneLightsOrthogonalModeOpenGLProcessor;
 
 };
 
@@ -68,3 +82,16 @@ class OrthogonalLightingOpenGLProcessorFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_ORTHOGONALLIGHTINGOPENGLPROCESSORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_ORTHOGONALLIGHTINGOPENGLPROCESSORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_ORTHOGONALLIGHTINGOPENGLPROCESSORFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h")
+#include "org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/OpenGLProcessor.h")
+#include "org/allbinary/graphics/opengles/OpenGLProcessor.h"
+#endif
+
+        #endif
+    

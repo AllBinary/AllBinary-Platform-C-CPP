@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_TIMETYPEUTIL_CPP
+        #define ORG_ALLBINARY_TIME_TIMETYPEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/TimeTypeUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -37,27 +47,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeTypeUtil
-            : public Object
-         {
 
-    private: static TimeTypeUtil* instance() { static std::unique_ptr<TimeTypeUtil> value(new TimeTypeUtil()); return value.get(); }
+TimeTypeUtil::TimeTypeUtil() {
+        }
+        auto TimeTypeUtil::instance_owner() -> TimeTypeUtil* { static std::unique_ptr<TimeTypeUtil> value(new TimeTypeUtil()); return value.get(); }
+TimeTypeUtil* TimeTypeUtil::instance = TimeTypeUtil::instance_owner();
 
-    public: static TimeTypeUtil* getInstance(){
+    auto TimeTypeUtil::getInstance() -> TimeTypeUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeTypeUtil::instance();
+                        return TimeTypeUtil::instance;
     
 }
 
 
-    public: const std::string NIGHT = "Night";
-
-    public: const std::string DAY = "Day";
-
-    public: bool isNight(){
+    auto TimeTypeUtil::isNight() -> bool{
 
     int32_t hoursOfDay = this->getHourOfDay();;
     
@@ -70,7 +76,7 @@ class TimeTypeUtil
 }
 
 
-    public: int32_t getHourOfDay(){
+    auto TimeTypeUtil::getHourOfDay() -> int32_t{
 
     Calendar* calendar = Calendar::getInstance();;
     
@@ -83,7 +89,7 @@ class TimeTypeUtil
 }
 
 
-    public: std::string getNightOrDay(){
+    auto TimeTypeUtil::getNightOrDay() -> std::string{
 
 
 
@@ -100,7 +106,7 @@ class TimeTypeUtil
 }
 
 
-    public: int32_t getHourOfDay(int64_t timeInMillis){
+    auto TimeTypeUtil::getHourOfDay(int64_t timeInMillis) -> int32_t{
 
     Calendar* calendar = Calendar::getInstance();;
     
@@ -115,7 +121,7 @@ calendar->setTimeInMillis(timeInMillis);
 }
 
 
-    public: bool isNight(int64_t timeInMillis){
+    auto TimeTypeUtil::isNight(int64_t timeInMillis) -> bool{
 
     int32_t hoursOfDay = this->getHourOfDay(timeInMillis);;
     
@@ -128,7 +134,7 @@ calendar->setTimeInMillis(timeInMillis);
 }
 
 
-    public: std::string getNightOrDay(int64_t timeInMillis){
+    auto TimeTypeUtil::getNightOrDay(int64_t timeInMillis) -> std::string{
 
 
 
@@ -145,7 +151,6 @@ calendar->setTimeInMillis(timeInMillis);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_TIMETYPEUTIL_CPP

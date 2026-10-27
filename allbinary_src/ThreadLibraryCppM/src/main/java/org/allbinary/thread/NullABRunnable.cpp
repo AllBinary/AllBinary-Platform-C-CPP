@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_NULLABRUNNABLE_CPP
+        #define ORG_ALLBINARY_THREAD_NULLABRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/NullABRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,22 +54,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ABRunnable.h"
 
-class NullABRunnable: public ABRunnable {
 
-    private: static NullABRunnable* instance() { static std::unique_ptr<NullABRunnable> value(new NullABRunnable()); return value.get(); }
+NullABRunnable::NullABRunnable() {
+        }
+        auto NullABRunnable::instance_owner() -> NullABRunnable* { static std::unique_ptr<NullABRunnable> value(new NullABRunnable()); return value.get(); }
+NullABRunnable* NullABRunnable::instance = NullABRunnable::instance_owner();
 
-    public: static NullABRunnable* getInstance(){
+    auto NullABRunnable::getInstance() -> NullABRunnable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullABRunnable::instance();
+                        return NullABRunnable::instance;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto NullABRunnable::isRunning() -> bool{
 
 
 
@@ -69,7 +81,6 @@ class NullABRunnable: public ABRunnable {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_NULLABRUNNABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLELOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLELOGHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/layer/PathFindingLayerInterface.h>
-
-      
+class PathFindingLayerInterface;
 
 
 
@@ -51,14 +54,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointRunnableLogHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static WaypointRunnableLogHelper* instance() { static std::unique_ptr<WaypointRunnableLogHelper> value(new WaypointRunnableLogHelper()); return value.get(); }
+    private: static WaypointRunnableLogHelper* instance_owner();
+    private: static WaypointRunnableLogHelper* instance;
 
     public: static WaypointRunnableLogHelper* getInstance();
 
+
+            
+    public: WaypointRunnableLogHelper();
+        
     public: void start(PathFindingLayerInterface* pathFindingLayerInterface);
 
     public: void end(PathFindingLayerInterface* pathFindingLayerInterface);
@@ -69,3 +81,13 @@ class WaypointRunnableLogHelper
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLELOGHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLELOGHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTRUNNABLELOGHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/PathFindingLayerInterface.h>)
+#include <org/allbinary/game/layer/PathFindingLayerInterface.h>
+#endif
+
+        #endif
+    

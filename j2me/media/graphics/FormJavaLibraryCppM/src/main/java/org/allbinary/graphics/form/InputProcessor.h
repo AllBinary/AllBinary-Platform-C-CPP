@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
-
-      
-#include <org/allbinary/game/input/PlayerGameInputCompositeInterface.h>
-
-      
+class PlayerGameInputCompositeInterface;
 
 
 
@@ -54,6 +55,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputProcessor: public Processor {
 
     private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface;
@@ -70,3 +75,16 @@ public: InputProcessor(PlayerGameInputCompositeInterface* playerGameInputComposi
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_INPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlayerGameInputCompositeInterface.h>)
+#include <org/allbinary/game/input/PlayerGameInputCompositeInterface.h>
+#endif
+
+        #endif
+    

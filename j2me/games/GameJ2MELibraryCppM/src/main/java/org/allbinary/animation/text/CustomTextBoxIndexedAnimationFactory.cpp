@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/text/CustomTextBoxIndexedAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,17 +92,8 @@
         #include "org/allbinary/animation/text/CustomTextBox2.h"
 #include "org/allbinary/animation/text/CustomTextBoxIndexedAnimation.h"
 
-class CustomTextBoxIndexedAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: ScaleProperties* scaleProperties;
-
-    private: int32_t maxLength;
-
-public: CustomTextBoxIndexedAnimationFactory(int32_t fontSize, int32_t maxLength){
+CustomTextBoxIndexedAnimationFactory::CustomTextBoxIndexedAnimationFactory(int32_t fontSize, int32_t maxLength) : logUtil(LogUtil::getInstance()){
 this->scaleProperties= new ScaleProperties();
     
 this->scaleProperties->scaleHeight= fontSize;
@@ -104,7 +105,7 @@ this->maxLength= maxLength;
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto CustomTextBoxIndexedAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
     ABToGBUtil* abToGBUtil = ABToGBUtil::getInstance();;
     
@@ -126,7 +127,7 @@ this->maxLength= maxLength;
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto CustomTextBoxIndexedAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 
     int32_t fontSize = this->scaleProperties->scaleHeight;;
     
@@ -144,7 +145,6 @@ this->scaleProperties= scaleProperties;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOXINDEXEDANIMATIONFACTORY_CPP

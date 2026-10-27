@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATION_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/configuration/InputAutomationConfiguration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -101,13 +111,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //name="inputAutomationConfiguration", 
-class InputAutomationConfiguration
-            : public Object
-         {
 
-    private: static inline const std::string FILENAME = "InputAutomationConfig.xml";
+InputAutomationConfiguration::InputAutomationConfiguration() : logUtil(LogUtil::getInstance()){
+}
 
-    public: static File* getFile(){
+
+    auto InputAutomationConfiguration::getFile() -> File*{
 
 
 
@@ -117,17 +126,7 @@ class InputAutomationConfiguration
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool installed= false;
-
-    private: List<InputAutomationModuleConfiguration*>* inputAutomationModuleConfigurationList;
-
-public: InputAutomationConfiguration(){
-}
-
-
-    public: bool isInstalled(){
+    auto InputAutomationConfiguration::isInstalled() -> bool{
 
 
 
@@ -137,15 +136,15 @@ public: InputAutomationConfiguration(){
 }
 
 
-    public: void setInstalled(bool installed){
+    auto InputAutomationConfiguration::setInstalled(bool installed) -> void{
 this->installed= installed;
     
-this->logUtil->putF("Installed: " +installed, this, "setIntalled");
+this->logUtil->putF(JavaString::valueOf("Installed: ") +JavaString::valueOf(installed), this, "setIntalled");
     
 }
 
 
-    public: List<InputAutomationModuleConfiguration*>* getInputAutomationModuleConfigurationList(){
+    auto InputAutomationConfiguration::getInputAutomationModuleConfigurationList() -> List<InputAutomationModuleConfiguration*>*{
 
 
 
@@ -157,7 +156,7 @@ this->logUtil->putF("Installed: " +installed, this, "setIntalled");
 
                 //@Throws(Exception.constructor)
             
-    public: void save(){
+    auto InputAutomationConfiguration::save() -> void{
 
     Document* document = DomDocumentHelper::create();;
     
@@ -167,10 +166,11 @@ this->logUtil->putF("Installed: " +installed, this, "setIntalled");
 
     File* file = new File(FILENAME);;
     
-FileUtil::getInstance()->copy(new AbPath(file->getAbsolutePath(), StringUtil::getInstance()->EMPTY_STRING), new AbPath(file->getAbsolutePath() +".bak.xml", StringUtil::getInstance()->EMPTY_STRING));
+FileUtil::getInstance()->copy(new AbPath(file->getAbsolutePath(), StringUtil::getInstance()->EMPTY_STRING), new AbPath(JavaString::valueOf(file->getAbsolutePath()) +JavaString::valueOf(".bak.xml"), StringUtil::getInstance()->EMPTY_STRING));
     
 
-    JAXBContext* jaxbContext = JAXBContext::newInstance(InputAutomationConfiguration.constructor);;
+    JAXBContext* jaxbContext = JAXBContext::newInstance(
+                            Class::forType(typeid(InputAutomationConfiguration)));;
     
 
     Marshaller* marshaller = jaxbContext->createMarshaller();;
@@ -184,7 +184,6 @@ DomDocumentFileHelper::save(FileWrapperUtil::wrapFile(file), document);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_CONFIGURATION_INPUTAUTOMATIONCONFIGURATION_CPP

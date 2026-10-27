@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHE_H
         #define ORG_ALLBINARY_IMAGE_IMAGECACHE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,86 +43,32 @@
             #include "java/lang/Thread.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <org/allbinary/J2MEUtil.h>
-
-      
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/animation/image/LazyImageRotationAnimation.h>
-
-      
-#include <org/allbinary/canvas/GameGlobalsFactory.h>
-
-      
+class Image;
+class NullImage;
+class J2MEUtil;
+class TsUtil;
+class LazyImageRotationAnimation;
+class GameGlobalsFactory;
 #include <org/allbinary/canvas/Processor.h>
+class LogUtil;
+class CommonStrings;
+class StringMaker;
+class ResourceUtil;
+class ABToGBUtil;
+class AllBinaryGameCanvas;
+class GDLazyResources;
+class GDResources;
+class ProgressCanvas;
+class ProgressCanvasFactory;
+class CommonSeps;
+class StringUtil;
+class Memory;
+class BaseImageLoadingProcessor;
+class ConcurrentImageLoadingProcessor;
+class SynchObject;
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/game/canvas/ABToGBUtil.h>
-
-      
-#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
-
-      
-#include <org/allbinary/game/gd/resource/GDLazyResources.h>
-
-      
-#include <org/allbinary/game/gd/resource/GDResources.h>
-
-      
-#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
-
-      
-#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/system/Memory.h>
-
-      
-#include <org/allbinary/thread/BaseImageLoadingProcessor.h>
-
-      
-#include <org/allbinary/thread/ConcurrentImageLoadingProcessor.h>
-
-      
-#include <org/allbinary/thread/SynchObject.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/ABSystemWrapper.h>
-
-      
 
 
 
@@ -137,97 +88,123 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/ImageCacheBase.h"
-//#include "org/allbinary/image/NotHTMLEndProcessor.h"
-//#include "org/allbinary/image/FirstProcessor.h"
-//#include "org/allbinary/image/NotHTMLProcessor.h"
-//#include "org/allbinary/image/HTMLEndProcessor.h"
-#include "org/allbinary/image/ImageFactory.h"
+//class NotHTMLEndProcessor;
+//class FirstProcessor;
+//class NotHTMLProcessor;
+//class HTMLEndProcessor;
+class ImageFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ImageCache: public ImageCacheBase {
+private: class NotHTMLProcessor;
+private: class NotHTMLEndProcessor;
+private: class HTMLEndProcessor;
+private: class FirstProcessor;
 
-    public: static ImageCache* NULL_IMAGE_CACHE() { static std::unique_ptr<ImageCache> value(new ImageCache()); return value.get(); }
+    private: static ImageCache* NULL_IMAGE_CACHE_owner();
+    public: static ImageCache* NULL_IMAGE_CACHE;
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
-    private: BaseImageLoadingProcessor* concurrentImageLoadingProcessor = new ConcurrentImageLoadingProcessor(this);
+    private: BaseImageLoadingProcessor* concurrentImageLoadingProcessor;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
+    /*protected*/ public: CommonSeps* commonSeps;
 
-    protected: ResourceUtil* resourceUtil = ResourceUtil::getInstance();
+    /*protected*/ public: ResourceUtil* resourceUtil;
 
-    private: GameGlobalsFactory* gameGlobalsFactory = GameGlobalsFactory::getInstance();
+    private: GameGlobalsFactory* gameGlobalsFactory;
 
-    private: GDResources* gdResources = GDResources::getInstance();
+    private: GDResources* gdResources;
 
-    public: BasicArrayList* loadNowList = new BasicArrayListD();
+    public: BasicArrayList* loadNowList;
 
-    public: BasicArrayList* loadSoonList = new BasicArrayListD();
+    public: BasicArrayList* loadSoonList;
 
-    public: BasicArrayList* loadList = new BasicArrayListD();
+    public: BasicArrayList* loadList;
 
-    public: BasicArrayList* loadAfterList = new BasicArrayListD();
+    public: BasicArrayList* loadAfterList;
 
-    private: SynchObject* lock = new SynchObject();
+    private: SynchObject* lock;
 
     private: bool firstTime = true;
 
     private: int32_t totalLoaded = 0;
 
-    public: bool progressEnded = false;
+    public: bool progressEnded_ = false;
 
     public: bool hasAnyLazyAnimationFactories = false;
 
 //inner= member=true isStatic=
-class NotHTMLProcessor: public Processor {
+private: class NotHTMLProcessor: public Processor {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
+
+            
+    public: NotHTMLProcessor();
+        
     public: void process();
 
 };
 
             
 //inner= member=true isStatic=
-class NotHTMLEndProcessor: public Processor {
+private: class NotHTMLEndProcessor: public Processor {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
+
+            
+    public: NotHTMLEndProcessor();
+        
     public: void process();
 
 };
 
             
 //inner= member=true isStatic=
-class HTMLEndProcessor: public Processor {
+private: class HTMLEndProcessor: public Processor {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
+
+            
+    public: HTMLEndProcessor();
+        
     public: void process();
 
 };
 
             
 //inner= member=true isStatic=
-class FirstProcessor: public Processor {
+private: class FirstProcessor: public Processor {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
+
+            
+    public: FirstProcessor();
+        
     public: void process();
 
 };
 
             
-    private: Processor* processor = new FirstProcessor();
+    private: Processor* processor;
 
-    private: Processor* endProcessor = Processor::getInstance();
+    private: Processor* endProcessor;
 
 public: ImageCache();
 
     public: void firstProcess();
 
     public: void addListener(Object* renderer);
+    public: void addListener(const std::string& renderer) { return addListener(JavaString::box(renderer)); }
 
                 //@Throws(Exception.constructor)
             
@@ -265,11 +242,11 @@ public: ImageCache();
 
                 //@Throws(Exception.constructor)
             
-    protected: void init(Image* image, Image* image2);
+    /*protected*/ public: void init(Image* image, Image* image2);
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* creatImage(std::string key);
+    /*protected*/ public: Image* creatImage(std::string key);
 
                 //@Throws(Exception.constructor)
             
@@ -278,16 +255,19 @@ public: ImageCache();
                 //@Throws(Exception.constructor)
             
     public: Image* getWithKey(Object* key);
+    public: Image* getWithKey(const std::string& key) { return getWithKey(JavaString::box(key)); }
 
     public: int32_t getIndex(Object* key);
+    public: int32_t getIndex(const std::string& key) { return getIndex(JavaString::box(key)); }
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
+    /*protected*/ public: Image* createImageFromInputStream(Object* key, InputStream* inputStream);
+    /*protected*/ public: Image* createImageFromInputStream(const std::string& key, InputStream* inputStream) { return createImageFromInputStream(JavaString::box(key), inputStream); }
 
                 //@Throws(Exception.constructor)
             
-    protected: Image* createImageLater(std::string key, int32_t width, int32_t height);
+    /*protected*/ public: Image* createImageLater(std::string key, int32_t width, int32_t height);
 
     public: BasicArrayList* getAssociated(LazyImageRotationAnimation* lazyImageRotationAnimation);
 
@@ -313,3 +293,95 @@ public: ImageCache();
 
 
         #endif //ORG_ALLBINARY_IMAGE_IMAGECACHE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_IMAGECACHE_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_IMAGECACHE_H_COMPLETE
+        #if __has_include(<java/io/InputStream.h>)
+#include <java/io/InputStream.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullImage.h>)
+#include <javax/microedition/lcdui/NullImage.h>
+#endif
+#if __has_include(<org/allbinary/J2MEUtil.h>)
+#include <org/allbinary/J2MEUtil.h>
+#endif
+#if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/animation/image/LazyImageRotationAnimation.h>)
+#include <org/allbinary/animation/image/LazyImageRotationAnimation.h>
+#endif
+#if __has_include(<org/allbinary/canvas/GameGlobalsFactory.h>)
+#include <org/allbinary/canvas/GameGlobalsFactory.h>
+#endif
+#if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/canvas/ABToGBUtil.h>)
+#include <org/allbinary/game/canvas/ABToGBUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>)
+#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
+#endif
+#if __has_include(<org/allbinary/game/gd/resource/GDLazyResources.h>)
+#include <org/allbinary/game/gd/resource/GDLazyResources.h>
+#endif
+#if __has_include(<org/allbinary/game/gd/resource/GDResources.h>)
+#include <org/allbinary/game/gd/resource/GDResources.h>
+#endif
+#if __has_include(<org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>)
+#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
+#endif
+#if __has_include(<org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>)
+#include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/system/Memory.h>)
+#include <org/allbinary/system/Memory.h>
+#endif
+#if __has_include(<org/allbinary/thread/BaseImageLoadingProcessor.h>)
+#include <org/allbinary/thread/BaseImageLoadingProcessor.h>
+#endif
+#if __has_include(<org/allbinary/thread/ConcurrentImageLoadingProcessor.h>)
+#include <org/allbinary/thread/ConcurrentImageLoadingProcessor.h>
+#endif
+#if __has_include(<org/allbinary/thread/SynchObject.h>)
+#include <org/allbinary/thread/SynchObject.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include("org/allbinary/image/ImageCacheBase.h")
+#include "org/allbinary/image/ImageCacheBase.h"
+#endif
+#if __has_include("org/allbinary/image/ImageFactory.h")
+#include "org/allbinary/image/ImageFactory.h"
+#endif
+
+        #endif
+    

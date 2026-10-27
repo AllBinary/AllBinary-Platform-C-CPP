@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_BASICWEIGHTSHIPPINGMODULEVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_BASICWEIGHTSHIPPINGMODULEVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/modules/BasicWeightShippingModuleView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,15 +77,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/shipping/modules/BasicWeightShippingModule.h"
 
-class BasicWeightShippingModuleView: public BasicWeightShippingModule, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: BasicWeightShippingModuleView(){
+BasicWeightShippingModuleView::BasicWeightShippingModuleView() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: bool isValid(){
+    auto BasicWeightShippingModuleView::isValid() -> bool{
 
 
 
@@ -85,7 +92,7 @@ public: BasicWeightShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Document* toValidationInfoDoc(){
+    auto BasicWeightShippingModuleView::toValidationInfoDoc() -> org::w3c::dom::Document*{
 
 
 
@@ -95,7 +102,7 @@ public: BasicWeightShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document){
+    auto BasicWeightShippingModuleView::toValidationInfoNode(org::w3c::dom::Document* document) -> org::w3c::dom::Node*{
 
 
 
@@ -105,7 +112,7 @@ public: BasicWeightShippingModuleView(){
 }
 
 
-    public: std::string validationInfo(){
+    auto BasicWeightShippingModuleView::validationInfo() -> std::string{
 
 
 
@@ -115,7 +122,7 @@ public: BasicWeightShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Node* toXmlNode(org::w3c::dom::Document* document){
+    auto BasicWeightShippingModuleView::toXmlNode(org::w3c::dom::Document* document) -> org::w3c::dom::Node*{
 
         try {
             
@@ -136,10 +143,10 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode", &e);
     
 
                                     }
@@ -155,7 +162,7 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 }
 
 
-    public: org::w3c::dom::Document* toXmlDoc(){
+    auto BasicWeightShippingModuleView::toXmlDoc() -> org::w3c::dom::Document*{
 
         try {
             
@@ -172,10 +179,10 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlDoc", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlDoc", &e);
     
 
                                     }
@@ -191,7 +198,7 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 }
 
 
-    public: std::string view(){
+    auto BasicWeightShippingModuleView::view() -> std::string{
 
         try {
             
@@ -205,10 +212,10 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view", &e);
     
 
                                     }
@@ -224,7 +231,6 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_BASICWEIGHTSHIPPINGMODULEVIEW_CPP

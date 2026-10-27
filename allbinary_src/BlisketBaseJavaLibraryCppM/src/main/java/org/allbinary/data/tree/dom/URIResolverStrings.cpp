@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/URIResolverStrings.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,39 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class URIResolverStrings
-            : public Object
-         {
 
-    private: static URIResolverStrings* instance() { static std::unique_ptr<URIResolverStrings> value(new URIResolverStrings()); return value.get(); }
+URIResolverStrings::URIResolverStrings() {
+        }
+        auto URIResolverStrings::instance_owner() -> URIResolverStrings* { static std::unique_ptr<URIResolverStrings> value(new URIResolverStrings()); return value.get(); }
+URIResolverStrings* URIResolverStrings::instance = URIResolverStrings::instance_owner();
 
-    public: static URIResolverStrings* getInstance(){
+    auto URIResolverStrings::getInstance() -> URIResolverStrings*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URIResolverStrings::instance();
+                        return URIResolverStrings::instance;
     
 }
 
 
-    public: const std::string IMPORT_URL = "/{import url}";
 
-    public: const std::string ATTEMPT = "attempt to use xsl:import: href=";
 
-    public: const std::string BASE = "\nBase= ";
-
-    public: const std::string NEW_PATH = "\nNew path= ";
-
-    public: const std::string NOTE = "\nNote: ";
-
-    public: const std::string URL_GLOBAL = " is a urlglobal";
-
-    public: const std::string REQUIRED_EXTENSION = "\nRequired Extension: ";
-
-    public: const std::string RESOLVE = "resolve";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_URIRESOLVERSTRINGS_CPP

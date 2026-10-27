@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_H
         #define ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +52,18 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/time/GameTickTimeDelayHelper.h"
+        class GameTickTimeDelayHelper;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameTickTimeDelayHelperFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameTickTimeDelayHelper* instance() { static std::unique_ptr<GameTickTimeDelayHelper> value(new GameTickTimeDelayHelper( -1)); return value.get(); }
+    private: static GameTickTimeDelayHelper* instance_owner();
+    private: static GameTickTimeDelayHelper* instance;
 
     public: static GameTickTimeDelayHelper* getInstance();
 
@@ -65,3 +75,13 @@ private: GameTickTimeDelayHelperFactory();
 
 
         #endif //ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_GAMETICKTIMEDELAYHELPERFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/time/GameTickTimeDelayHelper.h")
+#include "org/allbinary/time/GameTickTimeDelayHelper.h"
+#endif
+
+        #endif
+    

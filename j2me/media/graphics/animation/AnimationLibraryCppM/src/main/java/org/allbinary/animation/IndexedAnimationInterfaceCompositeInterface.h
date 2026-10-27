@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACECOMPOSITEINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IndexedAnimationInterfaceCompositeInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class IndexedAnimationInterfaceCompositeInterface
+            : public virtual Object
+         {
 
 };
 
@@ -54,3 +65,10 @@ class IndexedAnimationInterfaceCompositeInterface {
 
 
         #endif //ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACECOMPOSITEINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACECOMPOSITEINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONINTERFACECOMPOSITEINTERFACE_H_COMPLETE
+        
+        #endif
+    

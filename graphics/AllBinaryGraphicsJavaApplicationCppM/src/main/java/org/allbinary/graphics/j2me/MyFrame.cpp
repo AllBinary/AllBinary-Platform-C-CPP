@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_MYFRAME_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_MYFRAME_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/MyFrame.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -153,63 +163,10 @@
 #include "org/allbinary/graphics/j2me/ChangeEvent.h"
 #include "org/allbinary/graphics/j2me/KeyEvent.h"
 
-class MyFrame: public javax::swing::JFrame, public FileJDialogListenerInterface, public HashMapJDialogListenerInterface, public java::awt::event::KeyListener {
+const std::string MyFrame::SAVE_PATH = JavaString::valueOf(MyFrame::PATH) +JavaString::valueOf("/save");
+const std::string MyFrame::TEMPLATE_EXPORT_PATH = JavaString::valueOf(MyFrame::PATH) +JavaString::valueOf("/templates/export");
 
-    private: static inline const int32_t MAXWORKAREAS = 10;
-
-    private: static inline int32_t numberOfWorkAreas = 0;
-
-    private: static inline const std::string PATH = "G:/mnt/bc/mydev/work/graphics/AllBinaryGraphicsJavaApplication";
-
-    private: static inline const std::string SAVE_PATH = MyFrame::PATH +"/save";
-
-    private: static inline const std::string TEMPLATE_EXPORT_PATH = MyFrame::PATH +"/templates/export";
-
-    public: static void main(std::vector<std::string> args){
-
-        try {
-            AngleFactory::getInstance();
-    
-SmallIntegerSingletonFactory::getInstance()->init();
-    
-(new MyFrame())->show();
-    
-
-                //: 
-} catch(Exception& e) 
-            {
-
-    LogUtil* logUtil = LogUtil::getInstance();;
-    
-logUtil->put(CommonStrings::getInstance()->EXCEPTION, 
-                            nullptr, "main", &e);
-    
-}
-
-}
-
-
-    protected: static inline javax::swing::JLabel* statusJLabel;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GuiLog* guiLog = GuiLog::getInstance();
-
-    private: XslHelper* xslHelper = XslHelper::getInstance();
-
-    private: const std::string JAVA_TEMPLATE = "svgExport.xsl";
-
-    private: const std::string SAVEEXTENSION = ".gxml";
-
-    private: const std::string JAVAEXTENSION = ".javax";
-
-    private: FileJDialog* fileJDialog;
-
-    private: RotateJDialog* rotateJDialog;
-
-public: MyFrame(){
+MyFrame::MyFrame() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), guiLog(GuiLog::getInstance()), xslHelper(XslHelper::getInstance()){
 this->initComponents();
     
 this->setSize(new Dimension(550, 400));
@@ -227,7 +184,7 @@ this->rotateJDialog= new RotateJDialog(this, false);
 }
 
 
-    private: void initComponents(){
+    auto MyFrame::initComponents() -> void{
 jToolBar1= new javax::swing::JToolBar();
     
 this->jButton2= new javax::swing::JButton();
@@ -443,7 +400,7 @@ stopJjButtonMousePressed(evt);
     
 this->jToolBar1->add(this->stopJjButton);
     
-getContentPane()->add(this->jToolBar1, java.awt.BorderLayout.NORTH);
+getContentPane()->add(this->jToolBar1, java.awt->BorderLayout->NORTH);
     
 this->jPanel1->setLayout(new java::awt::GridLayout(1, 0));
     
@@ -466,7 +423,7 @@ this->mainJPanel->add(this->jTabbedPane);
     
 this->jPanel1->add(this->mainJPanel);
     
-getContentPane()->add(this->jPanel1, java.awt.BorderLayout.CENTER);
+getContentPane()->add(this->jPanel1, java.awt->BorderLayout->CENTER);
     
 this->statusJPanel->setLayout(new java::awt::GridLayout(1, 0));
     
@@ -474,7 +431,7 @@ MyFrame::statusJLabel->setText("Status Bar");
     
 this->statusJPanel->add(MyFrame::statusJLabel);
     
-getContentPane()->add(this->statusJPanel, java.awt.BorderLayout.SOUTH);
+getContentPane()->add(this->statusJPanel, java.awt->BorderLayout->SOUTH);
     
 this->fileJMenu->setText("File");
     
@@ -753,7 +710,7 @@ pack();
 }
 
 
-    private: void explodeAllJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
+    auto MyFrame::explodeAllJMenuItemMousePressed(java::awt::event::MouseEvent* evt) -> void{
 
         try {
             MyCanvasEventService::fire(new MyCanvasEvent(new MyCanvasEventSource(MyCanvasEventService::EXPLODE, 
@@ -770,7 +727,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "explodeAllJMenuItemMou
 }
 
 
-    private: void autoExplodeJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
+    auto MyFrame::autoExplodeJMenuItemMousePressed(java::awt::event::MouseEvent* evt) -> void{
 
         try {
             MyCanvasEventService::fire(new MyCanvasEvent(new MyCanvasEventSource(MyCanvasEventService::AUTOEXPLODE, 
@@ -787,99 +744,99 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "autoExplodeJMenuItemMo
 }
 
 
-    private: void stopJjButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto MyFrame::stopJjButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 this->getSelectedWorkArea()->stop();
     
 }
 
 
-    private: void playJButtonMousePressed(java::awt::event::MouseEvent* evt){
+    auto MyFrame::playJButtonMousePressed(java::awt::event::MouseEvent* evt) -> void{
 this->getSelectedWorkArea()->play();
     
 }
 
 
-    private: void autoRotateGenerationJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
+    auto MyFrame::autoRotateGenerationJMenuItemMousePressed(java::awt::event::MouseEvent* evt) -> void{
 this->rotateJDialog->setVisible(true);
     
 }
 
 
-    private: void zoomOutJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
+    auto MyFrame::zoomOutJMenuItemMousePressed(java::awt::event::MouseEvent* evt) -> void{
 this->getSelectedWorkArea()->changeZoom( -1);
     
 }
 
 
-    private: void zoomInJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
+    auto MyFrame::zoomInJMenuItemMousePressed(java::awt::event::MouseEvent* evt) -> void{
 this->getSelectedWorkArea()->changeZoom(1);
     
 }
 
 
-    private: void openJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::openJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->openGraphics();
     
 }
 
 
-    private: void exportJMenuItem1ActionPerformed(java::awt::event::ActionEvent* evt){
-this->export();
+    auto MyFrame::exportJMenuItem1ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
+this->export_();
     
 }
 
 
-    private: void saveJMenuItemMousePressed(java::awt::event::MouseEvent* evt){
+    auto MyFrame::saveJMenuItemMousePressed(java::awt::event::MouseEvent* evt) -> void{
 this->save();
     
 }
 
 
-    private: void jTabbedPaneStateChanged(javax::swing::event::ChangeEvent* evt){
+    auto MyFrame::jTabbedPaneStateChanged(javax::swing::event::ChangeEvent* evt) -> void{
 this->updateSelectedWorkArea();
     
 }
 
 
-    private: void frameJMenuActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::frameJMenuActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void exitJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::exitJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 System.exit(0);
     
 }
 
 
-    private: void newJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::newJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->newGraphics();
     
 }
 
 
-    private: void fileJMenuActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::fileJMenuActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: void exitForm(java::awt::event::WindowEvent* evt){
+    auto MyFrame::exitForm(java::awt::event::WindowEvent* evt) -> void{
 System.exit(0);
     
 }
 
 
-    private: void openJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::openJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->openGraphics();
     
 }
 
 
-    private: void jButton2ActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::jButton2ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->newGraphics();
     
 }
 
 
-    private: void centerJMenuItemActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::centerJMenuItemActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             MyCanvasEventService::fire(new MyCanvasEvent(new MyCanvasEventSource(MyCanvasEventService::CENTER, 
@@ -896,19 +853,19 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "centerJMenuItemActionP
 }
 
 
-    private: void saveJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::saveJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->save();
     
 }
 
 
-    private: void jButton1ActionPerformed(java::awt::event::ActionEvent* evt){
-this->export();
+    auto MyFrame::jButton1ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
+this->export_();
     
 }
 
 
-    private: void jMenuItem1ActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MyFrame::jMenuItem1ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->getSelectedWorkArea()->autoMirror();
@@ -924,10 +881,10 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "centerJMenuItemActionP
 }
 
 
-    public: void onFiles(std::vector<File*> files){
+    auto MyFrame::onFiles(std::vector<File*> files) -> void{
 
         try {
-            this->logUtil->putF("Reading: " +files, this, "onFiles");
+            this->logUtil->putF(JavaString::valueOf("Reading: ") +JavaString::valueOf(files), this, "onFiles");
     
 
 
@@ -961,11 +918,11 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "onFiles", &e);
 }
 
 
-    private: void newGraphics(){
+    auto MyFrame::newGraphics() -> void{
 
         try {
             
-    std::string newName = "graphic" +MyFrame::numberOfWorkAreas;;
+    std::string newName = JavaString::valueOf("graphic") +JavaString::valueOf(MyFrame::numberOfWorkAreas);;
     
 
     Dimension* dim = this->getSize();;
@@ -991,7 +948,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "onFiles", &e);
 }
 
 
-    private: void openGraphics(){
+    auto MyFrame::openGraphics() -> void{
 
         try {
             this->logUtil->putF("Starting", this, "openImageJMenuItemActionPerformed");
@@ -1016,21 +973,21 @@ this->fileJDialog->setVisible(true);
 }
 
 
-    private: void export_(){
+    auto MyFrame::export_() -> void{
 
         try {
             
     WorkAreaJPanelInterface* workAreaJPanel = dynamic_cast<WorkAreaJPanelInterface*>(this->jTabbedPane->getSelectedComponent());;
     
 
-    File* file = new File(this->SAVE_PATH +"/" +workAreaJPanel->getName() +this->JAVAEXTENSION);;
+    File* file = new File(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(this->SAVE_PATH) +JavaString::valueOf("/")) +JavaString::valueOf(workAreaJPanel->getName())) +JavaString::valueOf(this->JAVAEXTENSION));;
     
 
     Document* document = workAreaJPanel->toDocument();;
     
-this->logUtil->putF("Export: " +DomHelper::getInstance()->toString(document), this, "exportJMenuItem1ActionPerformed");
+this->logUtil->putF(JavaString::valueOf("Export: ") +JavaString::valueOf(DomHelper::getInstance()->toString(document)), this, "exportJMenuItem1ActionPerformed");
     
-this->xslHelper->export(file, MyFrame::TEMPLATE_EXPORT_PATH +"/" +this->JAVA_TEMPLATE, document);
+this->xslHelper->export_(file, JavaString::valueOf(JavaString::valueOf(MyFrame::TEMPLATE_EXPORT_PATH) +JavaString::valueOf("/")) +JavaString::valueOf(this->JAVA_TEMPLATE), document);
     
 
                 //: 
@@ -1050,13 +1007,13 @@ this->xslHelper->export(file, MyFrame::TEMPLATE_EXPORT_PATH +"/" +this->JAVA_TEM
 }
 
 
-    private: void save(){
+    auto MyFrame::save() -> void{
 
         try {
             
     WorkAreaJPanelInterface* workAreaJPanel = dynamic_cast<WorkAreaJPanelInterface*>(this->jTabbedPane->getSelectedComponent());;
     
-DomHelper::getInstance()->save(new File(this->SAVE_PATH +"/" +workAreaJPanel->getName() +this->SAVEEXTENSION), workAreaJPanel->toDocument());
+DomHelper::getInstance()->save(new File(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(this->SAVE_PATH) +JavaString::valueOf("/")) +JavaString::valueOf(workAreaJPanel->getName())) +JavaString::valueOf(this->SAVEEXTENSION)), workAreaJPanel->toDocument());
     
 
                 //: 
@@ -1078,7 +1035,7 @@ DomHelper::getInstance()->save(new File(this->SAVE_PATH +"/" +workAreaJPanel->ge
 
                 //@Throws(Exception.constructor)
             
-    public: void onHashMap(HashMap<Object*, Object*>* hashMap){
+    auto MyFrame::onHashMap(HashMap<Object*, Object*>* hashMap) -> void{
 
     int32_t angleIncrementInteger = hashMap->get(Integer.valueOf(0));;
     
@@ -1090,7 +1047,7 @@ this->getSelectedWorkArea()->autoRotate(angleIncrementInteger.intValue(), totalR
 }
 
 
-    private: WorkAreaJPanelInterface* getSelectedWorkArea(){
+    auto MyFrame::getSelectedWorkArea() -> WorkAreaJPanelInterface*{
 
 
 
@@ -1100,7 +1057,7 @@ this->getSelectedWorkArea()->autoRotate(angleIncrementInteger.intValue(), totalR
 }
 
 
-    public: void updateSelectedWorkArea(){
+    auto MyFrame::updateSelectedWorkArea() -> void{
 
     int32_t numberOfTabs = this->jTabbedPane->getTabCount();;
     
@@ -1137,7 +1094,7 @@ workAreaJPanel->deselect();
 
                 //@Throws(Exception.constructor)
             
-    public: void add(WorkAreaJPanelInterface* newCanvasInterface){
+    auto MyFrame::add(WorkAreaJPanelInterface* newCanvasInterface) -> void{
 
         try {
             this->numberOfWorkAreas++;
@@ -1149,7 +1106,7 @@ workAreaJPanel->deselect();
                                     
 
 
-                            throw new Exception();
+                            throw Exception();
                     
 
                                     }
@@ -1183,113 +1140,44 @@ this->updateSelectedWorkArea();
 }
 
 
-    public: void keyPressed(java::awt::event::KeyEvent* keyEvent){
+    auto MyFrame::keyPressed(java::awt::event::KeyEvent* keyEvent) -> void{
 this->getSelectedWorkArea()->keyPressed(keyEvent);
     
 }
 
 
-    public: void keyReleased(java::awt::event::KeyEvent* keyEvent){
+    auto MyFrame::keyReleased(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
-    public: void keyTyped(java::awt::event::KeyEvent* keyEvent){
+    auto MyFrame::keyTyped(java::awt::event::KeyEvent* keyEvent) -> void{
 }
 
 
-    private: javax::swing::JButton* animateJButton;
+    auto MyFrame::main(std::vector<std::string> args) -> void{
 
-    private: javax::swing::JMenuItem* autoDamageJMenuItem;
+        try {
+            AngleFactory::getInstance();
+    
+SmallIntegerSingletonFactory::getInstance()->init();
+    
+(new MyFrame())->show();
+    
 
-    private: javax::swing::JMenuItem* autoExplodeJMenuItem;
+                //: 
+} catch(Exception& e) 
+            {
 
-    private: javax::swing::JMenuItem* autoGrowJMenuItem;
+    LogUtil* logUtil = LogUtil::getInstance();;
+    
+logUtil->put(CommonStrings::getInstance()->EXCEPTION, 
+                            nullptr, "main", &e);
+    
+}
 
-    private: javax::swing::JMenuItem* autoRotateGenerationJMenuItem;
+}
 
-    private: javax::swing::JMenuItem* autoSheildMenuItem;
 
-    private: javax::swing::JMenuItem* autoShrinkJMenuItem;
 
-    private: javax::swing::JMenuItem* centerJMenuItem;
 
-    private: javax::swing::JMenuItem* copyJMenuItem1;
-
-    private: javax::swing::JMenuItem* exitJMenuItem;
-
-    private: javax::swing::JMenuItem* explodeAllJMenuItem;
-
-    private: javax::swing::JMenuItem* exportJMenuItem1;
-
-    private: javax::swing::JMenu* fileJMenu;
-
-    private: javax::swing::JMenu* frameJMenu;
-
-    private: javax::swing::JMenu* generateJMenu;
-
-    private: javax::swing::JMenuItem* insertAfterJMenuItem;
-
-    private: javax::swing::JMenuItem* insertBeforeJMenuItem;
-
-    private: javax::swing::JButton* jButton1;
-
-    private: javax::swing::JButton* jButton2;
-
-    private: javax::swing::JButton* jButton3;
-
-    private: javax::swing::JButton* jButton4;
-
-    private: javax::swing::JButton* jButton41;
-
-    private: javax::swing::JButton* jButton5;
-
-    private: javax::swing::JMenu* jMenu1;
-
-    private: javax::swing::JMenuItem* jMenuItem1;
-
-    private: javax::swing::JPanel* jPanel1;
-
-    private: javax::swing::JTabbedPane* jTabbedPane;
-
-    private: javax::swing::JToolBar* jToolBar1;
-
-    private: javax::swing::JPanel* mainJPanel;
-
-    private: javax::swing::JMenuBar* menuJMenuBar;
-
-    private: javax::swing::JMenuItem* newJMenuItem;
-
-    private: javax::swing::JMenuItem* nextFrameJMenuItem;
-
-    private: javax::swing::JMenu* objectJMenu;
-
-    private: javax::swing::JButton* openJButton;
-
-    private: javax::swing::JMenuItem* openJMenuItem;
-
-    private: javax::swing::JButton* playJButton;
-
-    private: javax::swing::JMenuItem* previousFrameJMenuItem;
-
-    private: javax::swing::JMenuItem* removeJMenuItem;
-
-    private: javax::swing::JMenuItem* saveAsJMenuItem;
-
-    private: javax::swing::JButton* saveJButton;
-
-    private: javax::swing::JMenuItem* saveJMenuItem;
-
-    private: javax::swing::JPanel* statusJPanel;
-
-    private: javax::swing::JButton* stopJjButton;
-
-    private: javax::swing::JMenu* viewJMenu;
-
-    private: javax::swing::JMenuItem* zoomInJMenuItem;
-
-    private: javax::swing::JMenuItem* zoomOutJMenuItem;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_MYFRAME_CPP

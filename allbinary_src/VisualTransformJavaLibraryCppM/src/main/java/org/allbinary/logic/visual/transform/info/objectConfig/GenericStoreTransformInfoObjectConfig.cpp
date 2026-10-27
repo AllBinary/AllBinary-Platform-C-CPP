@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERICSTORETRANSFORMINFOOBJECTCONFIG_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERICSTORETRANSFORMINFOOBJECTCONFIG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/objectConfig/GenericStoreTransformInfoObjectConfig.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -104,13 +114,8 @@
         #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfig.h"
 #include "org/allbinary/logic/visual/transform/info/objectConfig/TransformInfoObjectConfigData.h"
 
-class GenericStoreTransformInfoObjectConfig: public TransformInfoObjectConfig {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: AbeClientInformationInterface* abeClientInformation;
-
-public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface){
+GenericStoreTransformInfoObjectConfig::GenericStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -122,7 +127,7 @@ this->abeClientInformation= abeClientInformation;
 }
 
 
-public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, Object* document) : TransformInfoObjectConfig(transformInfoInterface, document){
+GenericStoreTransformInfoObjectConfig::GenericStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, Document* document) : TransformInfoObjectConfig(transformInfoInterface, document), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -136,7 +141,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: GenericStoreTransformInfoObjectConfig(Object* abeClientInformation, Object* transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type){
+GenericStoreTransformInfoObjectConfig::GenericStoreTransformInfoObjectConfig(AbeClientInformationInterface* abeClientInformation, TransformInfoInterface* transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -152,9 +157,9 @@ this->setDocument(this->generate(this->toXmlDoc()));
 
                 //@Throws(Exception.constructor)
             
-    protected: Document* generate(Document* objectConfigDocument){
+    auto GenericStoreTransformInfoObjectConfig::generate(Document* objectConfigDocument) -> Document*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -204,7 +209,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "generate()");
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*>* createReplaceHashMap(TransformInfoHttp* transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
+    auto GenericStoreTransformInfoObjectConfig::createReplaceHashMap(TransformInfoHttp* transformInfoHttpStoreInterface, std::string objectConfigDocumentString) -> HashMap<Object*, Object*>*{
 
     std::string storeName = transformInfoHttpStoreInterface->getStoreName();;
     
@@ -232,7 +237,7 @@ hashMap->put(transformInfoObjectConfigData->VARKEY +TransformInfoData::getInstan
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*>* createHashMap(TransformInfoHttp* transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
+    auto GenericStoreTransformInfoObjectConfig::createHashMap(TransformInfoHttp* transformInfoHttpStoreInterface, std::string objectConfigDocumentString) -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -246,10 +251,10 @@ hashMap->put(transformInfoObjectConfigData->VARKEY +TransformInfoData::getInstan
     std::string templateNameOverride = StringUtil::getInstance()->getNonNull(propertiesHashMap->get(TransformInfoData::getInstance()->PARTIAL));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TemplateNameOverride: " +templateNameOverride, this, "generate()");
+                                    this->logUtil->putF(JavaString::valueOf("TemplateNameOverride: ") +JavaString::valueOf(templateNameOverride), this, "generate()");
     
 
                                     }
@@ -294,7 +299,7 @@ hashMap->put(templateNameKey, selectedTemplate);
 
                 //@Throws(Exception.constructor)
             
-    private: Document* generate(std::string objectConfigDocumentString, HashMap<Object*, Object*>* hashMap){
+    auto GenericStoreTransformInfoObjectConfig::generate(std::string objectConfigDocumentString, HashMap<Object*, Object*>* hashMap) -> Document*{
 
     Replace* replace = new Replace(hashMap);;
     
@@ -302,10 +307,10 @@ hashMap->put(templateNameKey, selectedTemplate);
     Document* newObjectConfigDocument = DomDocumentHelper::create(replace->all(objectConfigDocumentString));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Final ObjectConfig: " +XmlDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
+                                    this->logUtil->putF(JavaString::valueOf("Final ObjectConfig: ") +JavaString::valueOf(XmlDocumentHelper::toString(newObjectConfigDocument)), this, "generate()");
     
 
                                     }
@@ -319,7 +324,6 @@ hashMap->put(templateNameKey, selectedTemplate);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERICSTORETRANSFORMINFOOBJECTCONFIG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_KEYVALUEPERSISTANCE_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_KEYVALUEPERSISTANCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/persistance/KeyValuePersistance.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -98,11 +108,8 @@
 #include "org/allbinary/game/configuration/persistance/NullRecordFilter.h"
 #include "org/allbinary/game/configuration/persistance/NullRecordComparator.h"
 
-class KeyValuePersistance: public BasicPersitance {
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-protected: KeyValuePersistance(std::string recordId) : BasicPersitance(recordId){
+KeyValuePersistance::KeyValuePersistance(std::string recordId) : BasicPersitance(recordId), tsUtil(TsUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -114,7 +121,7 @@ protected: KeyValuePersistance(std::string recordId) : BasicPersitance(recordId)
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAll(AbeClientInformationInterface* abeClientInformation){
+    auto KeyValuePersistance::loadAll(AbeClientInformationInterface* abeClientInformation) -> void{
 this->loadAllSize(abeClientInformation, 1);
     
 }
@@ -122,7 +129,7 @@ this->loadAllSize(abeClientInformation, 1);
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAllSize(AbeClientInformationInterface* abeClientInformation, int32_t size){
+    auto KeyValuePersistance::loadAllSize(AbeClientInformationInterface* abeClientInformation, int32_t size) -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -163,16 +170,14 @@ this->loadAllSize(abeClientInformation, 1);
 
     int32_t id = recordEnum->nextRecordId();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
-this->logUtil.putF(stringBuffer->append(this->persistanceStrings.LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings.LOAD_ALL);
+this->logUtil->putF(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings->LOAD_ALL);
     
 recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
 
-                        if(recordAsBytes != 
-                                    nullptr
-                                )
+                        if(!recordAsBytes.empty())
                         
                                     {
                                     byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
@@ -198,9 +203,9 @@ hashtable->put(name, value);
     
 }
 
-this->valueList.add(hashtable);
+this->valueList->add(hashtable);
     
-this->idList.add(smallIntegerSingletonFactory->getAt(id));
+this->idList->add(smallIntegerSingletonFactory->getAt(id));
     
 
                                     }
@@ -225,7 +230,7 @@ this->idList.add(smallIntegerSingletonFactory->getAt(id));
                                 )
                         
                                     {
-                                    PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->persistanceStrings.LOAD_ALL);
+                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->persistanceStrings->LOAD_ALL);
     
 recordStore->closeRecordStore();
     
@@ -240,13 +245,13 @@ recordStore->closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable){
+    auto KeyValuePersistance::save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable) -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            this->logUtil.putF((new StringMaker())->append(this->persistanceStrings.SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings.SAVE);
+            this->logUtil->putF((new StringMaker())->append(this->persistanceStrings->SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings->SAVE);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
@@ -316,7 +321,7 @@ recordStore->addRecord(savedGameBytes, 0, savedGameBytes.size());
                                 )
                         
                                     {
-                                    PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->commonStrings.SAVE);
+                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->commonStrings->SAVE);
     
 recordStore->closeRecordStore();
     
@@ -329,9 +334,9 @@ recordStore->closeRecordStore();
 }
 
 
-    public: ABHashtable<Object*, Object*>* get(int32_t index){
+    auto KeyValuePersistance::get(int32_t index) -> ABHashtable<Object*, Object*>*{
 
-    ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(this->valueList.objectArray[index]);;
+    ABHashtable<Object*, Object*>* hashtable = dynamic_cast<ABHashtable<Object*, Object*>*>(this->valueList->objectArray[index]);;
     
 
 
@@ -342,7 +347,6 @@ recordStore->closeRecordStore();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_KEYVALUEPERSISTANCE_CPP

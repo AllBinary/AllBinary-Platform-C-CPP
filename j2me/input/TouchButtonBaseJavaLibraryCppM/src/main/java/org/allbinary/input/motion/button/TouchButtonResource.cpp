@@ -10,6 +10,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButtonResource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -37,15 +47,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonResource
-            : public Object
-         {
 
-    public: std::string RESOURCE;
-
-    public: std::string HINT;
-
-protected: TouchButtonResource(std::string resource, std::string hint){
+TouchButtonResource::TouchButtonResource(std::string resource, std::string hint){
 this->RESOURCE= resource;
     
 this->HINT= hint;
@@ -53,7 +56,6 @@ this->HINT= hint;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCE_CPP

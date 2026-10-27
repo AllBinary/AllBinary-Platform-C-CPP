@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEBASEBEHAVIOR_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEBASEBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,29 +83,18 @@
 #include "org/allbinary/game/collision/CollisionTypeFactory.h"
 #include "org/allbinary/game/collision/CollisionType.h"
 
-class CollidableBaseBehavior
-            : public Object
-        , public CollidableInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: LayerCollisionUtil* layerCollisionUtil = LayerCollisionUtil::getInstance();
-
-    private: bool collidable = true;
-
-public: CollidableBaseBehavior(bool collidable){
+CollidableBaseBehavior::CollidableBaseBehavior(bool collidable) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), layerCollisionUtil(LayerCollisionUtil::getInstance()){
 this->collidable= collidable;
     
 }
 
 
-    public: void update(){
+    auto CollidableBaseBehavior::update() -> void{
 }
 
 
-    public: std::string getName(){
+    auto CollidableBaseBehavior::getName() -> std::string{
 
 
 
@@ -105,13 +104,13 @@ this->collidable= collidable;
 }
 
 
-    public: void setCollidable(bool collidable){
+    auto CollidableBaseBehavior::setCollidable(bool collidable) -> void{
 this->collidable= collidable;
     
 }
 
 
-    public: bool isCollidable(CollidableCompositeLayer* ownerLayer){
+    auto CollidableBaseBehavior::isCollidable(CollidableCompositeLayer* ownerLayer) -> bool{
 
 
 
@@ -123,16 +122,16 @@ this->collidable= collidable;
 
                 //@Throws(Exception.constructor)
             
-    public: void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer){
+    auto CollidableBaseBehavior::collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* allbinaryCollidableLayer) -> void{
 
 
 
-                            throw new Exception((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(CommonLabels::getInstance()->COLON_SEP)->append(this->getClass()->getName())->toString());
+                            throw Exception((new StringMaker())->append(this->commonStrings->NOT_IMPLEMENTED)->append(CommonLabels::getInstance()->COLON_SEP)->append(this->getClass()->getName())->toString());
                     
 }
 
 
-    public: bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer){
+    auto CollidableBaseBehavior::isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collisionLayer) -> bool{
 
 
 
@@ -142,7 +141,7 @@ this->collidable= collidable;
 }
 
 
-    public: bool isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
+    auto CollidableBaseBehavior::isCollisionInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> bool{
 
 
 
@@ -154,20 +153,20 @@ this->collidable= collidable;
 
                 //@Throws(Exception.constructor)
             
-    public: void collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface){
+    auto CollidableBaseBehavior::collideInterface(CollidableCompositeLayer* ownerLayer, CollidableInterfaceCompositeInterface* collidableInterfaceCompositeInterface) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void paint(CollidableCompositeLayer* ownerLayer, Graphics* graphics){
+    auto CollidableBaseBehavior::paint(CollidableCompositeLayer* ownerLayer, Graphics* graphics) -> void{
 }
 
 
-    public: CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface){
+    auto CollidableBaseBehavior::getCollisionTypeWith(AllBinaryLayer* layerInterface) -> CollisionType*{
 
 
 
@@ -177,7 +176,6 @@ this->collidable= collidable;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEBASEBEHAVIOR_CPP

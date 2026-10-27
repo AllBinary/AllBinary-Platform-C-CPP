@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERMANAGER_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/event/LayerManagerEvent.h>
-
-      
-#include <org/allbinary/layer/event/LayerManagerEventHandler.h>
-
-      
+class LayerManagerEvent;
+class LayerManagerEventHandler;
 
 
 
@@ -56,23 +57,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/LayerManager.h"
-#include "org/allbinary/layer/LayerProcessor.h"
-#include "org/allbinary/layer/LayerManagerNoDebug.h"
-#include "org/allbinary/layer/AllBinaryLayer.h"
+class LayerProcessor;
+class LayerManagerNoDebug;
+class AllBinaryLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryLayerManager: public LayerManager {
 
-    private: LayerManagerEventHandler* layerManagerEventHandler = LayerManagerEventHandler::getInstance();
+    private: LayerManagerEventHandler* layerManagerEventHandler;
 
-    private: LayerManagerEvent* createLayerManagerEvent = new LayerManagerEvent(this, this->layerManagerEventHandler->CREATE);
+    private: LayerManagerEvent* createLayerManagerEvent;
 
-    private: LayerManagerEvent* deleteLayerManagerEvent = new LayerManagerEvent(this, this->layerManagerEventHandler->DELETE);
+    private: LayerManagerEvent* deleteLayerManagerEvent;
 
-    private: std::vector<LayerProcessor*> basicLayerProcessorArray = {};
+    private: std::vector<LayerProcessor*> basicLayerProcessorArray;
 
-protected: AllBinaryLayerManager();
+/*protected*/ public: AllBinaryLayerManager();
 
-    protected: std::vector<LayerProcessor*> getLayerProcessorArray();
+    /*protected*/ public: std::vector<LayerProcessor*> getLayerProcessorArray();
 
     public: void setLayerProcessorArray(std::vector<LayerProcessor*> layerProcessorArray);
 
@@ -109,3 +114,28 @@ protected: AllBinaryLayerManager();
 
 
         #endif //ORG_ALLBINARY_LAYER_ALLBINARYLAYERMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_ALLBINARYLAYERMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERMANAGER_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/event/LayerManagerEvent.h>)
+#include <org/allbinary/layer/event/LayerManagerEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/event/LayerManagerEventHandler.h>)
+#include <org/allbinary/layer/event/LayerManagerEventHandler.h>
+#endif
+#if __has_include("org/allbinary/layer/LayerManager.h")
+#include "org/allbinary/layer/LayerManager.h"
+#endif
+#if __has_include("org/allbinary/layer/LayerProcessor.h")
+#include "org/allbinary/layer/LayerProcessor.h"
+#endif
+#if __has_include("org/allbinary/layer/LayerManagerNoDebug.h")
+#include "org/allbinary/layer/LayerManagerNoDebug.h"
+#endif
+#if __has_include("org/allbinary/layer/AllBinaryLayer.h")
+#include "org/allbinary/layer/AllBinaryLayer.h"
+#endif
+
+        #endif
+    

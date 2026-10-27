@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_MAINFEATUREFACTORY_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_MAINFEATUREFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,25 +52,34 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/configuration/feature/Feature.h"
+        class Feature;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MainFeatureFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static MainFeatureFactory* instance() { static std::unique_ptr<MainFeatureFactory> value(new MainFeatureFactory()); return value.get(); }
+    private: static MainFeatureFactory* instance_owner();
+    private: static MainFeatureFactory* instance;
 
     public: static MainFeatureFactory* getInstance();
 
-    public: Feature* FULL_SCREEN = new Feature("Full Screen");
 
-    public: Feature* TITLE_BAR = new Feature("Title Bar");
+            
+    public: MainFeatureFactory();
+        
+    public: Feature* FULL_SCREEN;
 
-    public: Feature* STATIC = new Feature("Static Dependent Feature");
+    public: Feature* TITLE_BAR;
 
-    public: Feature* LOAD_ONDEMAND = new Feature("Load OnDemand");
+    public: Feature* STATIC;
 
-    public: Feature* LOAD_ALL = new Feature("Load All");
+    public: Feature* LOAD_ONDEMAND;
+
+    public: Feature* LOAD_ALL;
 
 };
 
@@ -73,3 +87,13 @@ class MainFeatureFactory
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_MAINFEATUREFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_MAINFEATUREFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_MAINFEATUREFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/configuration/feature/Feature.h")
+#include "org/allbinary/game/configuration/feature/Feature.h"
+#endif
+
+        #endif
+    

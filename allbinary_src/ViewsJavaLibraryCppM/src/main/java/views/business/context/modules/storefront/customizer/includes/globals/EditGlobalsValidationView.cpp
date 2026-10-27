@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_EDITGLOBALSVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_EDITGLOBALSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/globals/EditGlobalsValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,11 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/includes/globals/GlobalsView.h"
 
-class EditGlobalsValidationView: public GlobalsView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface) : GlobalsView(transformInfoInterface){
+EditGlobalsValidationView::EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface) : GlobalsView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +85,7 @@ public: EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-    public: bool isValid(){
+    auto EditGlobalsValidationView::isValid() -> bool{
 
         try {
             
@@ -95,10 +102,10 @@ public: EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -114,7 +121,7 @@ public: EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-    public: std::string validationInfo(){
+    auto EditGlobalsValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -131,7 +138,7 @@ public: EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -150,7 +157,7 @@ public: EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditGlobalsValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -160,7 +167,7 @@ public: EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditGlobalsValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -170,7 +177,6 @@ public: EditGlobalsValidationView(TransformInfoInterface* transformInfoInterface
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_EDITGLOBALSVALIDATIONVIEW_CPP

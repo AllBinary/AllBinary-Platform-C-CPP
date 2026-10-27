@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_VEHICLEFRICTIONPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_VEHICLEFRICTIONPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/VehicleFrictionProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,17 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VehicleFrictionProperties: public FrictionProperties {
 
-    private: int32_t TIRE_FRICTION_NOMINATOR;
-
-    private: int32_t BRAKE_FRICTION_NOMINATOR;
-
-    private: int32_t AIR_FRICTION_NOMINATOR;
-
-    private: int32_t CRASH_FRICTION_NOMINATOR;
-
-public: VehicleFrictionProperties(int32_t tireFriction, int32_t brakeFriction, int32_t airFriction, int32_t crashFriction){
+VehicleFrictionProperties::VehicleFrictionProperties(int32_t tireFriction, int32_t brakeFriction, int32_t airFriction, int32_t crashFriction){
 this->TIRE_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -tireFriction;
     
 this->BRAKE_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -brakeFriction;
@@ -71,7 +72,7 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 }
 
 
-    public: int32_t getTireFrictionNominator(){
+    auto VehicleFrictionProperties::getTireFrictionNominator() -> int32_t{
 
 
 
@@ -81,7 +82,7 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 }
 
 
-    public: int32_t getBrakeFrictionNominator(){
+    auto VehicleFrictionProperties::getBrakeFrictionNominator() -> int32_t{
 
 
 
@@ -91,7 +92,7 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 }
 
 
-    public: int32_t getAirFrictionNominator(){
+    auto VehicleFrictionProperties::getAirFrictionNominator() -> int32_t{
 
 
 
@@ -101,7 +102,7 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 }
 
 
-    public: int32_t getCrashFrictionNominator(){
+    auto VehicleFrictionProperties::getCrashFrictionNominator() -> int32_t{
 
 
 
@@ -111,7 +112,6 @@ this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFri
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_VEHICLEFRICTIONPROPERTIES_CPP

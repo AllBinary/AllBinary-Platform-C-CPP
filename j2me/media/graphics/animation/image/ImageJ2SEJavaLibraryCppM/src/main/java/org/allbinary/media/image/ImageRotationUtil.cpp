@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageRotationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,29 +74,24 @@
         #include "org/allbinary/media/image/ImageJ2SERotationUtil.h"
 #include "org/allbinary/media/image/ImageCreationUtil.h"
 
-class ImageRotationUtil
-            : public Object
-         {
+auto ImageRotationUtil::instance_owner() -> ImageRotationUtil* { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
+ImageRotationUtil* ImageRotationUtil::instance = ImageRotationUtil::instance_owner();
 
-    private: static ImageRotationUtil* instance() { static std::unique_ptr<ImageRotationUtil> value(new ImageRotationUtil()); return value.get(); }
-
-    public: static ImageRotationUtil* getInstance(){
+    auto ImageRotationUtil::getInstance() -> ImageRotationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil::instance();
+                        return ImageRotationUtil::instance;
     
 }
 
 
-    private: ImageJ2SERotationUtil* imageJ2SERotationUtil = ImageJ2SERotationUtil::getInstance();
-
-private: ImageRotationUtil(){
+ImageRotationUtil::ImageRotationUtil() : imageJ2SERotationUtil(ImageJ2SERotationUtil::getInstance()){
 }
 
 
-    public: void rotateImage(Image* originalImage, Image* image, int32_t totalAngle){
+    auto ImageRotationUtil::rotateImage(Image* originalImage, Image* image, int32_t totalAngle) -> void{
 
                         if(image->isMutable())
                         
@@ -139,7 +144,7 @@ this->imageJ2SERotationUtil->rotateImage(originalAwtImage, newBufferedImage, tot
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createRotatedImage(Image* originalImage, int32_t rotationInDegrees){
+    auto ImageRotationUtil::createRotatedImage(Image* originalImage, int32_t rotationInDegrees) -> Image*{
 
     Image* image = ImageCreationUtil::getInstance()->createImageWH(originalImage->getWidth(), originalImage->getHeight());;
     
@@ -195,7 +200,7 @@ originalAwtImage= dynamic_cast<java::awt::Image*>(originalJ2SEImage->getImage())
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -203,7 +208,6 @@ originalAwtImage= dynamic_cast<java::awt::Image*>(originalJ2SEImage->getImage())
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_CPP

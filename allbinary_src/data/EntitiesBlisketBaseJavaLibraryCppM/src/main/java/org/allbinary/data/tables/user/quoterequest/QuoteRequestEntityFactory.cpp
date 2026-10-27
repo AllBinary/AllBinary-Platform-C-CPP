@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/quoterequest/QuoteRequestEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/quoterequest/QuoteRequestEntity.h"
 
-class QuoteRequestEntityFactory
-            : public Object
-         {
+auto QuoteRequestEntityFactory::instance_owner() -> QuoteRequestEntityFactory* { static std::unique_ptr<QuoteRequestEntityFactory> value(new QuoteRequestEntityFactory()); return value.get(); }
+QuoteRequestEntityFactory* QuoteRequestEntityFactory::instance = QuoteRequestEntityFactory::instance_owner();
 
-    private: static QuoteRequestEntityFactory* instance() { static std::unique_ptr<QuoteRequestEntityFactory> value(new QuoteRequestEntityFactory()); return value.get(); }
-
-    public: static QuoteRequestEntityFactory* getInstance(){
+    auto QuoteRequestEntityFactory::getInstance() -> QuoteRequestEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return QuoteRequestEntityFactory::instance();
+                        return QuoteRequestEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: QuoteRequestEntityFactory(){
+QuoteRequestEntityFactory::QuoteRequestEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: QuoteRequestEntity* getQuoteRequestEntityInstance(){
+    auto QuoteRequestEntityFactory::getQuoteRequestEntityInstance() -> QuoteRequestEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: QuoteRequestEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: QuoteRequestEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITYFACTORY_CPP

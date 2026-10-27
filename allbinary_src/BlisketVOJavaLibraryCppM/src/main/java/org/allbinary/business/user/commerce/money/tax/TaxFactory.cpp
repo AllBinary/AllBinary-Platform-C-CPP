@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_TAXFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_TAXFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/tax/TaxFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -113,35 +123,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TaxFactory
-            : public Object
-         {
+auto TaxFactory::instance_owner() -> TaxFactory* { static std::unique_ptr<TaxFactory> value(new TaxFactory()); return value.get(); }
+TaxFactory* TaxFactory::instance = TaxFactory::instance_owner();
 
-    private: static TaxFactory* instance() { static std::unique_ptr<TaxFactory> value(new TaxFactory()); return value.get(); }
-
-    public: static TaxFactory* getInstance(){
+    auto TaxFactory::getInstance() -> TaxFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TaxFactory::instance();
+                        return TaxFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string TAXATIONFILENAME = "taxationMethod.xml";
-
-private: TaxFactory(){
+TaxFactory::TaxFactory() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TaxModuleInterface* getInstance(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface){
+    auto TaxFactory::getInstance(AbeClientInformationInterface* abeClientInformation, StoreFrontInterface* storeFrontInterface) -> TaxModuleInterface*{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -218,7 +219,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAX))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF("Class Node Null", this, this->commonStrings->GET_INSTANCE);
@@ -234,7 +235,7 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAX))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAX))
                         
                                     {
                                     this->logUtil->putF("Tax Name Node Node Children", this, this->commonStrings->GET_INSTANCE);
@@ -256,7 +257,6 @@ stringBuffer->append(AbPathData::getInstance()->SEPARATOR);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_TAXFACTORY_CPP

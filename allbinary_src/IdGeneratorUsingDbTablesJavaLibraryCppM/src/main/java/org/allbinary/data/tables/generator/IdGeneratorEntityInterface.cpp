@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/generator/IdGeneratorEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,19 +69,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IdGeneratorEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual int64_t get(std::string name) = 0;
 
-    public: virtual void deleteWhere(std::string key, std::string value) = 0;
 
-    public: virtual void insert(BasicArrayList* values) = 0;
-
-    public: virtual void update(HashMap<Object*, Object*>* updatedValues) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYINTERFACE_CPP

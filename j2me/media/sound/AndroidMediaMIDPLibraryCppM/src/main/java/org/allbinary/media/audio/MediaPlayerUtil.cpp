@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/MediaPlayerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,27 +65,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MediaPlayerUtil
-            : public Object
-         {
 
-    private: static MediaPlayerUtil* instance() { static std::unique_ptr<MediaPlayerUtil> value(new MediaPlayerUtil()); return value.get(); }
+MediaPlayerUtil::MediaPlayerUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto MediaPlayerUtil::instance_owner() -> MediaPlayerUtil* { static std::unique_ptr<MediaPlayerUtil> value(new MediaPlayerUtil()); return value.get(); }
+MediaPlayerUtil* MediaPlayerUtil::instance = MediaPlayerUtil::instance_owner();
 
-    public: static MediaPlayerUtil* getInstance(){
+    auto MediaPlayerUtil::getInstance() -> MediaPlayerUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaPlayerUtil::instance();
+                        return MediaPlayerUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void waitForMediaPlayer(MediaPlayer* mediaPlayer){
+    auto MediaPlayerUtil::waitForMediaPlayer(MediaPlayer* mediaPlayer) -> void{
 
     std::string MESSAGE = "Not Stopped Waiting";;
     
@@ -99,7 +107,6 @@ index++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_CPP

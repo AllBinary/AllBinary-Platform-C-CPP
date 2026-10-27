@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicTopViewGeographicMapStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static BasicTopViewGeographicMapStrings* instance() { static std::unique_ptr<BasicTopViewGeographicMapStrings> value(new BasicTopViewGeographicMapStrings()); return value.get(); }
+    private: static BasicTopViewGeographicMapStrings* instance_owner();
+    private: static BasicTopViewGeographicMapStrings* instance;
 
     public: static BasicTopViewGeographicMapStrings* getInstance();
 
+
+            
+    public: BasicTopViewGeographicMapStrings();
+        
     public: const std::string DEFAULT = "Default";
 
     public: const std::string OTHER = "Other";
@@ -78,3 +92,10 @@ class BasicTopViewGeographicMapStrings
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPSTRINGS_H_COMPLETE
+        
+        #endif
+    

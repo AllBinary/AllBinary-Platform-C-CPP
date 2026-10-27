@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_GUI_MIRRORIMAGEJPANEL_CPP
+        #define ORG_ALLBINARY_IMAGE_GUI_MIRRORIMAGEJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/gui/MirrorImageJPanel.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -94,19 +104,8 @@
 #include "org/allbinary/image/gui/ActionListener.h"
 #include "org/allbinary/image/gui/ActionEvent.h"
 
-class MirrorImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: ImageStrings* imageStrings = ImageStrings::getInstance();
-
-    private: ImageProcessorInput* imageProcessorInput;
-
-    private: BufferedImage* result;
-
-public: MirrorImageJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(){
+MirrorImageJPanel::MirrorImageJPanel(ImageProcessorInput* imageProcessorInput) : javax::swing::JPanel(), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), imageStrings(ImageStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -122,7 +121,7 @@ this->imageProcessorInput= imageProcessorInput;
 }
 
 
-    public: void process(){
+    auto MirrorImageJPanel::process() -> void{
 (class extends Thread
                                 {
                                 
@@ -167,9 +166,9 @@ this->result= MirrorImageUtil::getInstance()->getImage(bufferedImageArray[index]
 
     int32_t extensionIndex = JavaString::indexOf(filePath, imageStrings->PNG_EXTENSION);;
     
-filePath= JavaString::substring(filePath, 0, extensionIndex) +"_mirror" +imageStrings->PNG_EXTENSION;
+filePath= JavaString::valueOf(JavaString::valueOf(JavaString::substring(filePath, 0, extensionIndex)) +JavaString::valueOf("_mirror")) +JavaString::valueOf(imageStrings->PNG_EXTENSION);
     
-logUtil->putF("Renamed File: " +filePath, this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf("Renamed File: ") +JavaString::valueOf(filePath), this, commonStrings->RUN);
     
 file= new File(filePath);
     
@@ -179,7 +178,7 @@ file= new File(filePath);
 
     bool isWritten = ImageIO::write(dynamic_cast<RenderedImage*>(this->result), imageStrings->PNG, file);;
     
-logUtil->putF("File: " +file +" Wrote: " +isWritten, this, commonStrings->RUN);
+logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file)) +JavaString::valueOf(" Wrote: ")) +JavaString::valueOf(isWritten), this, commonStrings->RUN);
     
 this->getParent()->repaint();
     
@@ -201,7 +200,7 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->RUN, &e);
 }
 
 
-    private: void initComponents(){
+    auto MirrorImageJPanel::initComponents() -> void{
 jLayeredPane1= new javax::swing::JLayeredPane();
     
 this->buttonGroup= new javax::swing::ButtonGroup();
@@ -250,9 +249,9 @@ this->jLabel2= new javax::swing::JLabel();
     
 this->jPanel1->setLayout(jPanel1Layout);
     
-jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(0, 522, Short::MAX_VALUE));
+jPanel1Layout->setHorizontalGroup(jPanel1Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(0, 522, Short::MAX_VALUE));
     
-jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(0, 230, Short::MAX_VALUE));
+jPanel1Layout->setVerticalGroup(jPanel1Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(0, 230, Short::MAX_VALUE));
     
 this->horizontalJCheckBox->setSelected(true);
     
@@ -297,9 +296,9 @@ this->writeOverOriginalJRadioButton->setText("Write Over Original");
     
 this->jPanel2->setLayout(jPanel2Layout);
     
-jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(jPanel2Layout->createSequentialGroup()->addContainerGap(org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->add(verticleJCheckBox)->addPreferredGap(org.jdesktop.layout->LayoutStyle.UNRELATED)->add(horizontalJCheckBox)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(writeOverOriginalJRadioButton)->addPreferredGap(org.jdesktop.layout->LayoutStyle.UNRELATED)->add(renameJRadioButton)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(generateJButton)->add(37, 37, 37)));
+jPanel2Layout->setHorizontalGroup(jPanel2Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(jPanel2Layout->createSequentialGroup()->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(verticleJCheckBox)->addPreferredGap(org.jdesktop->layout->LayoutStyle->UNRELATED)->add(horizontalJCheckBox)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(writeOverOriginalJRadioButton)->addPreferredGap(org.jdesktop->layout->LayoutStyle->UNRELATED)->add(renameJRadioButton)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(generateJButton)->add(37, 37, 37)));
     
-jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(jPanel2Layout->createSequentialGroup()->add(jPanel2Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.BASELINE)->add(horizontalJCheckBox)->add(verticleJCheckBox)->add(writeOverOriginalJRadioButton)->add(renameJRadioButton)->add(generateJButton))->addContainerGap()));
+jPanel2Layout->setVerticalGroup(jPanel2Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(jPanel2Layout->createSequentialGroup()->add(jPanel2Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->BASELINE)->add(horizontalJCheckBox)->add(verticleJCheckBox)->add(writeOverOriginalJRadioButton)->add(renameJRadioButton)->add(generateJButton))->addContainerGap()));
     
 this->jLabel2->setText("Results:");
     
@@ -308,55 +307,33 @@ this->jLabel2->setText("Results:");
     
 this->jPanel3->setLayout(jPanel3Layout);
     
-jPanel3Layout->setHorizontalGroup(jPanel3Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(jPanel3Layout->createSequentialGroup()->add(jLabel2)->addContainerGap(433, Short::MAX_VALUE)));
+jPanel3Layout->setHorizontalGroup(jPanel3Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(jPanel3Layout->createSequentialGroup()->add(jLabel2)->addContainerGap(433, Short::MAX_VALUE)));
     
-jPanel3Layout->setVerticalGroup(jPanel3Layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(jLabel2));
+jPanel3Layout->setVerticalGroup(jPanel3Layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(jLabel2));
     
 
     org::jdesktop::layout::GroupLayout* layout = new org::jdesktop::layout::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(org.jdesktop.layout->GroupLayout.TRAILING, layout->createSequentialGroup()->addContainerGap()->add(jPanel3, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap())->add(jPanel1, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->add(layout->createSequentialGroup()->add(jPanel2, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap(org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(org.jdesktop->layout->GroupLayout->TRAILING, layout->createSequentialGroup()->addContainerGap()->add(jPanel3, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap())->add(jPanel1, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->add(layout->createSequentialGroup()->add(jPanel2, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)->addContainerGap(org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(org.jdesktop.layout->GroupLayout.LEADING)->add(layout->createSequentialGroup()->add(jPanel2, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(jPanel3, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.PREFERRED_SIZE)->addPreferredGap(org.jdesktop.layout->LayoutStyle.RELATED)->add(jPanel1, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, org.jdesktop.layout->GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setVerticalGroup(layout->createParallelGroup(org.jdesktop->layout->GroupLayout->LEADING)->add(layout->createSequentialGroup()->add(jPanel2, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, 25, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(jPanel3, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->PREFERRED_SIZE)->addPreferredGap(org.jdesktop->layout->LayoutStyle->RELATED)->add(jPanel1, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, org.jdesktop->layout->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
 }
 
 
-    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MirrorImageJPanel::generateJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->process();
     
 }
 
 
-    private: void renameJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto MirrorImageJPanel::renameJRadioButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 }
 
 
-    private: javax::swing::ButtonGroup* buttonGroup;
-
-    private: javax::swing::JButton* generateJButton;
-
-    private: javax::swing::JCheckBox* horizontalJCheckBox;
-
-    private: javax::swing::JLabel* jLabel2;
-
-    private: javax::swing::JLayeredPane* jLayeredPane1;
-
-    private: javax::swing::JPanel* jPanel1;
-
-    private: javax::swing::JPanel* jPanel2;
-
-    private: javax::swing::JPanel* jPanel3;
-
-    private: javax::swing::JRadioButton* renameJRadioButton;
-
-    private: javax::swing::JCheckBox* verticleJCheckBox;
-
-    private: javax::swing::JRadioButton* writeOverOriginalJRadioButton;
-
-    public: ImageProcessorInput* getImageProcessorInput(){
+    auto MirrorImageJPanel::getImageProcessorInput() -> ImageProcessorInput*{
 
 
 
@@ -366,13 +343,12 @@ this->process();
 }
 
 
-    public: void setImageProcessorInput(ImageProcessorInput* imageProcessorInput){
+    auto MirrorImageJPanel::setImageProcessorInput(ImageProcessorInput* imageProcessorInput) -> void{
 this->imageProcessorInput= imageProcessorInput;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_GUI_MIRRORIMAGEJPANEL_CPP

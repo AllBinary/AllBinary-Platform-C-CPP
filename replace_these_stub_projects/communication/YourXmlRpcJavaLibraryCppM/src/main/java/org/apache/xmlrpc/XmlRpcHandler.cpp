@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_APACHE_XMLRPC_XMLRPCHANDLER_CPP
+        #define ORG_APACHE_XMLRPC_XMLRPCHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/apache/xmlrpc/XmlRpcHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,13 +49,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class XmlRpcHandler {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual Object* execute(std::string method, BasicArrayList* params) = 0;
 
-};
 
-            
-
+        #endif //ORG_APACHE_XMLRPC_XMLRPCHANDLER_CPP

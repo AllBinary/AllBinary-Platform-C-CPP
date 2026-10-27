@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/properties/root/RootCategoryPropertiesAbstract.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,19 +90,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/properties/root/RootCategoryPropertiesInterface.h"
 
-class RootCategoryPropertiesAbstract
-            : public Object
-        , public RootCategoryPropertiesInterface {
 
-    private: const std::string category = CategoryData::getInstance()->ROOTCATEGORY;
-
-    private: const std::string fileName = this->category +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION;
-
-public: RootCategoryPropertiesAbstract(){
+RootCategoryPropertiesAbstract::RootCategoryPropertiesAbstract() : category(CategoryData::getInstance()->ROOTCATEGORY), fileName(this->category +AbPathData::getInstance()->EXTENSION_SEP +CategoryData::getInstance()->UNCRYPTED_EXTENSION){
 }
 
 
-    public: Object* getKey(){
+    auto RootCategoryPropertiesAbstract::getKey() -> Object*{
 
 
 
@@ -102,7 +105,7 @@ public: RootCategoryPropertiesAbstract(){
 }
 
 
-    public: std::string getValue(){
+    auto RootCategoryPropertiesAbstract::getValue() -> std::string{
 
 
 
@@ -114,82 +117,82 @@ public: RootCategoryPropertiesAbstract(){
 
                 //@Throws(Exception.constructor)
             
-    public: void setValue(std::string value){
+    auto RootCategoryPropertiesAbstract::setValue(std::string value) -> void{
 
 
 
-                            throw new Exception("No Value Allowed");
+                            throw Exception("No Value Allowed");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setRootFilePath(AbPath* value){
+    auto RootCategoryPropertiesAbstract::setRootFilePath(AbPath* value) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setRootFilePath(std::string value){
+    auto RootCategoryPropertiesAbstract::setRootFilePath(std::string value) -> void{
 
 
 
-                            throw new Exception("No Value Allowed");
+                            throw Exception("No Value Allowed");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getRootFilePath(){
+    auto RootCategoryPropertiesAbstract::getRootFilePath() -> AbPath*{
 
 
 
-                            throw new Exception("No Value Allowed");
+                            throw Exception("No Value Allowed");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isRealRoot(){
+    auto RootCategoryPropertiesAbstract::isRealRoot() -> bool{
 
 
 
-                            throw new Exception("No A Real Root");
+                            throw Exception("No A Real Root");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: bool isRoot(){
+    auto RootCategoryPropertiesAbstract::isRoot() -> bool{
 
 
 
-                            throw new Exception("Root but not implemented");
+                            throw Exception("Root but not implemented");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string getWebAppPath(CategoryHierarchyInterface* categoryHierarchyInterface){
+    auto RootCategoryPropertiesAbstract::getWebAppPath(CategoryHierarchyInterface* categoryHierarchyInterface) -> std::string{
 
 
 
-                            throw new Exception("Not Root");
+                            throw Exception("Not Root");
                     
 }
 
 
-    public: AbPath* getPath(CategoryHierarchyInterface* categoryHierarchyInterface){
+    auto RootCategoryPropertiesAbstract::getPath(CategoryHierarchyInterface* categoryHierarchyInterface) -> AbPath*{
 
 
 
@@ -199,7 +202,7 @@ public: RootCategoryPropertiesAbstract(){
 }
 
 
-    public: std::string getFileName(){
+    auto RootCategoryPropertiesAbstract::getFileName() -> std::string{
 
 
 
@@ -209,7 +212,7 @@ public: RootCategoryPropertiesAbstract(){
 }
 
 
-    public: bool isValid(){
+    auto RootCategoryPropertiesAbstract::isValid() -> bool{
 
 
 
@@ -219,7 +222,7 @@ public: RootCategoryPropertiesAbstract(){
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto RootCategoryPropertiesAbstract::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* categoryHashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -234,7 +237,7 @@ categoryHashMap->put(CategoryData::getInstance()->NAME, this->category);
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto RootCategoryPropertiesAbstract::toVector() -> BasicArrayList*{
 
     BasicArrayList* categoryVector = new BasicArrayListD();;
     
@@ -251,7 +254,7 @@ categoryVector->add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toValidationInfoDoc(){
+    auto RootCategoryPropertiesAbstract::toValidationInfoDoc() -> Document*{
 
 
 
@@ -263,7 +266,7 @@ categoryVector->add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toValidationInfoNode(Document* document){
+    auto RootCategoryPropertiesAbstract::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -275,7 +278,7 @@ categoryVector->add(this->category);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto RootCategoryPropertiesAbstract::validationInfo() -> std::string{
 
 
 
@@ -285,7 +288,6 @@ categoryVector->add(this->category);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_ROOTCATEGORYPROPERTIESABSTRACT_CPP

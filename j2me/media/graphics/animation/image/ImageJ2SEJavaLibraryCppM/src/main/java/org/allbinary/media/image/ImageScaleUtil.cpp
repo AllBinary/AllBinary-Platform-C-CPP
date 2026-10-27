@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageScaleUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -67,35 +77,26 @@
 #include "org/allbinary/media/image/ImageJ2SEUtil.h"
 #include "org/allbinary/media/image/ImageCreationUtil.h"
 
-class ImageScaleUtil
-            : public Object
-         {
+auto ImageScaleUtil::instance_owner() -> ImageScaleUtil* { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
+ImageScaleUtil* ImageScaleUtil::instance = ImageScaleUtil::instance_owner();
 
-    private: static ImageScaleUtil* instance() { static std::unique_ptr<ImageScaleUtil> value(new ImageScaleUtil()); return value.get(); }
-
-    public: static ImageScaleUtil* getInstance(){
+    auto ImageScaleUtil::getInstance() -> ImageScaleUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil::instance();
+                        return ImageScaleUtil::instance;
     
 }
 
 
-    private: ImageUtil* imageUtil = ImageUtil::getInstance();
-
-    private: ImageJ2SEUtil* imageJ2SEUtil = ImageJ2SEUtil::getInstance();
-
-    private: ImageCreationUtil* imageCreationUtil = ImageCreationUtil::getInstance();
-
-private: ImageScaleUtil(){
+ImageScaleUtil::ImageScaleUtil() : imageUtil(ImageUtil::getInstance()), imageJ2SEUtil(ImageJ2SEUtil::getInstance()), imageCreationUtil(ImageCreationUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
+    auto ImageScaleUtil::createImage2(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached) -> Image*{
 
 
 
@@ -107,7 +108,7 @@ private: ImageScaleUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Image* createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_){
+    auto ImageScaleUtil::createImage3(ImageCache* imageCache, Image* originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable_) -> Image*{
 
     int32_t width = originalImage->getWidth();;
     
@@ -151,9 +152,9 @@ this->scale(originalImage, image, scaleX, scaleY, true);
 
                 //@Throws(Exception.constructor)
             
-    public: void scale2(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    auto ImageScaleUtil::scale2(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY) -> void{
 
-                        if(maxScaleX *originalImage->getWidth() > originalImageArray[0].getWidth() || maxScaleY *originalImage->getHeight() > originalImageArray[0].getHeight())
+                        if(maxScaleX *originalImage->getWidth() > originalImageArray[0]->getWidth() || maxScaleY *originalImage->getHeight() > originalImageArray[0]->getHeight())
                         
                                     {
                                     originalImageArray[0]= this->imageCreationUtil->createImage(originalImage->getWidth(), originalImage->getHeight(), maxScaleX, maxScaleY);
@@ -166,7 +167,7 @@ this->scale(originalImage, originalImageArray[0], scaleX, scaleY, false);
 }
 
 
-    public: void scale(Image* originalImage, Image* newMaxSizeImage, float scaleX, float scaleY, bool clear){
+    auto ImageScaleUtil::scale(Image* originalImage, Image* newMaxSizeImage, float scaleX, float scaleY, bool clear) -> void{
 
     BufferedImage* bufferedImage = this->imageUtil->getBufferedImage(originalImage);;
     
@@ -197,7 +198,6 @@ g->dispose();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_CPP

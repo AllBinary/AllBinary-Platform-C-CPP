@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/bool/BooleanFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BooleanFactory
-            : public Object
-         {
 
-    private: static BooleanFactory* instance() { static std::unique_ptr<BooleanFactory> value(new BooleanFactory()); return value.get(); }
+BooleanFactory::BooleanFactory() : TRUE(true), FALSE(false), TRUE_STRING(this->TRUE.toString()), FALSE_STRING(this->FALSE.toString()) {
+        }
+        auto BooleanFactory::instance_owner() -> BooleanFactory* { static std::unique_ptr<BooleanFactory> value(new BooleanFactory()); return value.get(); }
+BooleanFactory* BooleanFactory::instance = BooleanFactory::instance_owner();
 
-    public: static BooleanFactory* getInstance(){
+    auto BooleanFactory::getInstance() -> BooleanFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory::instance();
+                        return BooleanFactory::instance;
     
 }
 
 
-    public: bool TRUE = true;
-
-    public: bool FALSE = false;
-
-    public: const std::string TRUE_STRING = this->TRUE.toString();
-
-    public: const std::string FALSE_STRING = this->FALSE.toString();
-
-    public: const std::string YES = "yes";
-
-    public: const std::string NO = "no";
-
-    public: std::string toStringb(bool bool_){
+    auto BooleanFactory::toStringb(bool bool_) -> std::string{
 
                         if(bool_)
                         
@@ -100,7 +98,6 @@ class BooleanFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_CPP

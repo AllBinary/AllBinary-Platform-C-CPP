@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENT_CPP
+        #define ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/view/event/ViewPositionEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ViewPositionEvent: public AllBinaryEventObject {
 
-public: ViewPositionEvent(Object* anyType) : AllBinaryEventObject(anyType){
+ViewPositionEvent::ViewPositionEvent(Object* anyType) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,7 +69,6 @@ public: ViewPositionEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENT_CPP

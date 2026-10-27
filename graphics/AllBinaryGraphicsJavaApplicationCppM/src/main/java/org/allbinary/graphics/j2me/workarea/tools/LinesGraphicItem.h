@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -38,68 +43,26 @@
             #include "java/lang/Double.h"
         
 #include <java/awt.h>
+class BasicArrayList;
+class BasicArrayListD;
+class DefaultMutableTreeNode;
+class MutableTreeNode;
+class DomHelper;
+class GameInputStrings;
+class GPoint;
+class PointFactory;
+class BasicColorFactory;
+class StatusFactory;
+class CanvasDom;
+class IntegerDimension;
+class BasicGraphicsPipeline;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <javax/swing/tree/DefaultMutableTreeNode.h>
-
-      
-#include <javax/swing/tree/MutableTreeNode.h>
-
-      
-#include <org/allbinary/dom/DomHelper.h>
-
-      
-#include <org/allbinary/game/input/GameInputStrings.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/j2me/StatusFactory.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>
-
-      
-#include <org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/math/PositionStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
-#include <org/w3c/dom/NodeList.h>
-
-      
+class LogUtil;
+class PositionStrings;
+class CommonStrings;
+class BasicArrayList;
+class Node;
+class NodeList;
 
 
 
@@ -119,18 +82,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Graphics2D.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/BasicStroke.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/PointsUtil.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
-#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
+class Color;
+class Points;
+class PointsDomUtil;
+class Graphics2D;
+class BasicStroke;
+class PointsUtil;
+class Graphics;
+class MouseEvent;
+class KeyEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LinesGraphicItem
-            : public Object
+            : public virtual Object
         , public GraphicItemInterface {
 
     private: static inline const std::string RECT = "rect";
@@ -149,11 +116,11 @@ class LinesGraphicItem
 
     public: static std::string getStaticName();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
+    private: GameInputStrings* gameInputStrings;
 
     private: DefaultMutableTreeNode* treeNode;
 
@@ -167,7 +134,7 @@ class LinesGraphicItem
 
     private: double theta = 0;
 
-    private: Color* color = new Color(BasicColorFactory::getInstance()->WHITE.intValue());
+    private: Color* color;
 
     private: Points* points;
 
@@ -266,3 +233,101 @@ public: LinesGraphicItem(Node* linesNode);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_LINESGRAPHICITEM_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<javax/swing/tree/DefaultMutableTreeNode.h>)
+#include <javax/swing/tree/DefaultMutableTreeNode.h>
+#endif
+#if __has_include(<javax/swing/tree/MutableTreeNode.h>)
+#include <javax/swing/tree/MutableTreeNode.h>
+#endif
+#if __has_include(<org/allbinary/dom/DomHelper.h>)
+#include <org/allbinary/dom/DomHelper.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInputStrings.h>)
+#include <org/allbinary/game/input/GameInputStrings.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/StatusFactory.h>)
+#include <org/allbinary/graphics/j2me/StatusFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/CanvasDom.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h>
+#endif
+#if __has_include(<org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h>)
+#include <org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/math/PositionStrings.h>)
+#include <org/allbinary/math/PositionStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<org/w3c/dom/NodeList.h>)
+#include <org/w3c/dom/NodeList.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Color.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Color.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Points.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Points.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/PointsDomUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Graphics2D.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Graphics2D.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/BasicStroke.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/BasicStroke.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/PointsUtil.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/PointsUtil.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/Graphics.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/Graphics.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/MouseEvent.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/tools/KeyEvent.h"
+#endif
+
+        #endif
+    

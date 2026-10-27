@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORMFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/CommandCurrentSelectionFormFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,13 +78,13 @@
 #include "org/allbinary/graphics/form/ScrollSelectionForm.h"
 #include "org/allbinary/graphics/form/FormType.h"
 
-class CommandCurrentSelectionFormFactory
-            : public Object
-         {
 
+CommandCurrentSelectionFormFactory::CommandCurrentSelectionFormFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: static ScrollSelectionForm* getInstance(std::string title, std::vector<ABCustomItem*> items, Rectangle* rectangle, FormType* formType, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
+    auto CommandCurrentSelectionFormFactory::getInstance(std::string title, std::vector<ABCustomItem*> items, Rectangle* rectangle, FormType* formType, int32_t border, bool moveForSmallScreen, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) -> ScrollSelectionForm*{
 
                         if(Features::getInstance()->isFeature(TouchFeatureFactory::getInstance()->TOUCH_ENABLED))
                         
@@ -106,7 +116,6 @@ scrollSelectionForm->init(rectangle, formType);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORMFACTORY_CPP

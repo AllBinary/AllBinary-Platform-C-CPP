@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESWORKER_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESWORKER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,42 +34,18 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
+class LogUtil;
+class AllBinaryEventObject;
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
-#include <org/allbinary/media/image/comparison/ImageComparisonResult.h>
-
-      
-#include <org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h>
-
-      
+class ImageComparisonResult;
+class ImageComparisonResultsEvent;
 #include <org/allbinary/media/image/comparison/ImageComparisonResultsListener.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class CommonLabels;
+class CommonStrings;
+class TimeDelayHelper;
 
 
 
@@ -83,24 +64,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/comparison/motion/MotionRectangleConstraintsInterface.h"
-#include "org/allbinary/media/image/comparison/motion/AllMotionRectangles.h"
-#include "org/allbinary/media/image/comparison/motion/AllMotionRectanglesResultsCacheSingleton.h"
-#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsFrameCacheable.h"
-#include "org/allbinary/media/image/comparison/motion/ConsolidateMotionRectangles.h"
-#include "org/allbinary/media/image/comparison/motion/ConsolidatedMotionRectanglesResultsCacheSingleton.h"
-#include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectangles.h"
-#include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectanglesResultsCacheSingleton.h"
-#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
-#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+        class MotionRectangleConstraintsInterface;
+class AllMotionRectangles;
+class AllMotionRectanglesResultsCacheSingleton;
+class MotionRectanglesResultsFrameCacheable;
+class ConsolidateMotionRectangles;
+class ConsolidatedMotionRectanglesResultsCacheSingleton;
+class ConstrainedMotionRectangles;
+class ConstrainedMotionRectanglesResultsCacheSingleton;
+class MotionRectanglesResultsEvent;
+class MotionRectangles;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MotionRectanglesWorker: public BasicEventHandler, public ImageComparisonResultsListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: BasicArrayList* imageComparisonInfoVector = new BasicArrayListD();
+    private: BasicArrayList* imageComparisonInfoVector;
 
     private: MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface;
 
@@ -128,3 +113,74 @@ public: MotionRectanglesWorker(MotionRectangleConstraintsInterface* motionRectan
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESWORKER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESWORKER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESWORKER_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/handler/BasicEventHandler.h>)
+#include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/ImageComparisonResult.h>)
+#include <org/allbinary/media/image/comparison/ImageComparisonResult.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h>)
+#include <org/allbinary/media/image/comparison/ImageComparisonResultsEvent.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/ImageComparisonResultsListener.h>)
+#include <org/allbinary/media/image/comparison/ImageComparisonResultsListener.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/MotionRectangleConstraintsInterface.h")
+#include "org/allbinary/media/image/comparison/motion/MotionRectangleConstraintsInterface.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/AllMotionRectangles.h")
+#include "org/allbinary/media/image/comparison/motion/AllMotionRectangles.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/AllMotionRectanglesResultsCacheSingleton.h")
+#include "org/allbinary/media/image/comparison/motion/AllMotionRectanglesResultsCacheSingleton.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/MotionRectanglesResultsFrameCacheable.h")
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsFrameCacheable.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/ConsolidateMotionRectangles.h")
+#include "org/allbinary/media/image/comparison/motion/ConsolidateMotionRectangles.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/ConsolidatedMotionRectanglesResultsCacheSingleton.h")
+#include "org/allbinary/media/image/comparison/motion/ConsolidatedMotionRectanglesResultsCacheSingleton.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/ConstrainedMotionRectangles.h")
+#include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectangles.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/ConstrainedMotionRectanglesResultsCacheSingleton.h")
+#include "org/allbinary/media/image/comparison/motion/ConstrainedMotionRectanglesResultsCacheSingleton.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h")
+#include "org/allbinary/media/image/comparison/motion/MotionRectanglesResultsEvent.h"
+#endif
+#if __has_include("org/allbinary/media/image/comparison/motion/MotionRectangles.h")
+#include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+#endif
+
+        #endif
+    

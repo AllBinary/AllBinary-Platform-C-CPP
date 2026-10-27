@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONSINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/GameConfigurationSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,27 +68,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/GameConfiguration.h"
 
-class GameConfigurationSingleton
-            : public Object
-         {
+auto GameConfigurationSingleton::SINGLETON_owner() -> GameConfigurationSingleton* { static std::unique_ptr<GameConfigurationSingleton> value(new GameConfigurationSingleton()); return value.get(); }
+GameConfigurationSingleton* GameConfigurationSingleton::SINGLETON = GameConfigurationSingleton::SINGLETON_owner();
 
-    private: static GameConfigurationSingleton* SINGLETON() { static std::unique_ptr<GameConfigurationSingleton> value(new GameConfigurationSingleton()); return value.get(); }
-
-    public: static GameConfigurationSingleton* getInstance(){
+    auto GameConfigurationSingleton::getInstance() -> GameConfigurationSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationSingleton::SINGLETON();
+                        return GameConfigurationSingleton::SINGLETON;
     
 }
 
 
-    private: BasicArrayList* list;
-
-    private: ABHashtable<Object*, Object*>* hashtable;
-
-private: GameConfigurationSingleton(){
+GameConfigurationSingleton::GameConfigurationSingleton(){
 this->list= new BasicArrayListD();
     
 this->hashtable= StdUtil::getInstance()->createHashtable();
@@ -86,7 +89,7 @@ this->hashtable= StdUtil::getInstance()->createHashtable();
 }
 
 
-    public: GameConfiguration* getInstanceByName(std::string name){
+    auto GameConfigurationSingleton::getInstanceByName(std::string name) -> GameConfiguration*{
 
 
 
@@ -96,7 +99,7 @@ this->hashtable= StdUtil::getInstance()->createHashtable();
 }
 
 
-    public: BasicArrayList* getOptionsBasicArrayList(){
+    auto GameConfigurationSingleton::getOptionsBasicArrayList() -> BasicArrayList*{
 
 
 
@@ -106,13 +109,13 @@ this->hashtable= StdUtil::getInstance()->createHashtable();
 }
 
 
-    public: void add(GameConfiguration* gameConfiguration){
+    auto GameConfigurationSingleton::add(GameConfiguration* gameConfiguration) -> void{
 this->list->add(gameConfiguration);
     
 }
 
 
-    public: ABHashtable<Object*, Object*>* getHashtable(){
+    auto GameConfigurationSingleton::getHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -122,7 +125,6 @@ this->list->add(gameConfiguration);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONSINGLETON_CPP

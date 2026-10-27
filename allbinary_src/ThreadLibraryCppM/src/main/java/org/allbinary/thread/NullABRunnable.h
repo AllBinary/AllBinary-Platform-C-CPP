@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_NULLABRUNNABLE_H
         #define ORG_ALLBINARY_THREAD_NULLABRUNNABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,12 +52,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ABRunnable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullABRunnable: public ABRunnable {
 
-    private: static NullABRunnable* instance() { static std::unique_ptr<NullABRunnable> value(new NullABRunnable()); return value.get(); }
+    private: static NullABRunnable* instance_owner();
+    private: static NullABRunnable* instance;
 
     public: static NullABRunnable* getInstance();
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+
+            
+    public: NullABRunnable();
+        //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isRunning();
 
@@ -62,3 +76,13 @@ class NullABRunnable: public ABRunnable {
 
 
         #endif //ORG_ALLBINARY_THREAD_NULLABRUNNABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_NULLABRUNNABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_NULLABRUNNABLE_H_COMPLETE
+        #if __has_include("org/allbinary/thread/ABRunnable.h")
+#include "org/allbinary/thread/ABRunnable.h"
+#endif
+
+        #endif
+    

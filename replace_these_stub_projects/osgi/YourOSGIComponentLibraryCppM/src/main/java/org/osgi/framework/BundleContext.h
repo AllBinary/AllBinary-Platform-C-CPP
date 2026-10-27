@@ -7,6 +7,11 @@
         #ifndef ORG_OSGI_FRAMEWORK_BUNDLECONTEXT_H
         #define ORG_OSGI_FRAMEWORK_BUNDLECONTEXT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -18,8 +23,6 @@
             #include "java/lang/Object.h"
         
 #include <java/util/Dictionary.h>
-
-      
 
 
 
@@ -38,11 +41,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/osgi/framework/Bundle.h"
-#include "org/osgi/framework/ServiceRegistration.h"
-#include "org/osgi/framework/ServiceReference.h"
+        class Bundle;
+class ServiceRegistration;
+class ServiceReference;
 
-class BundleContext {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class BundleContext
+            : public virtual Object
+         {
 
     public: virtual std::vector<Bundle*> getBundles() = 0;
 
@@ -66,3 +75,22 @@ class BundleContext {
 
 
         #endif //ORG_OSGI_FRAMEWORK_BUNDLECONTEXT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_OSGI_FRAMEWORK_BUNDLECONTEXT_H_COMPLETE)
+        #define ORG_OSGI_FRAMEWORK_BUNDLECONTEXT_H_COMPLETE
+        #if __has_include(<java/util/Dictionary.h>)
+#include <java/util/Dictionary.h>
+#endif
+#if __has_include("org/osgi/framework/Bundle.h")
+#include "org/osgi/framework/Bundle.h"
+#endif
+#if __has_include("org/osgi/framework/ServiceRegistration.h")
+#include "org/osgi/framework/ServiceRegistration.h"
+#endif
+#if __has_include("org/osgi/framework/ServiceReference.h")
+#include "org/osgi/framework/ServiceReference.h"
+#endif
+
+        #endif
+    

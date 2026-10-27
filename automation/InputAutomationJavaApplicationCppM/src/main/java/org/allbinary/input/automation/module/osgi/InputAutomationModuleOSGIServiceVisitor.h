@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,30 +38,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <bundle/input/automation/module/InputAutomationModuleService.h>
-
-      
-#include <org/allbinary/input/automation/InputAutomationJFrame.h>
-
-      
-#include <org/allbinary/input/automation/configuration/InputAutomationConfigurationUtil.h>
-
-      
-#include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/osgi/OSGIServiceInterface.h>
-
-      
+class InputAutomationModuleService;
+class InputAutomationJFrame;
+class InputAutomationConfigurationUtil;
+class InputAutomationModuleFactoryInterface;
+class LogUtil;
+class OSGIServiceInterface;
 #include <org/allbinary/osgi/OSGIServiceVisitorInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -76,17 +65,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationModuleOSGIServiceVisitor
-            : public Object
+            : public virtual Object
         , public OSGIServiceVisitorInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
 public: InputAutomationModuleOSGIServiceVisitor();
 
     public: Object* visit(Object* anyType);
+    public: Object* visit(const std::string& anyType) { return visit(JavaString::box(anyType)); }
 
     public: bool visit(OSGIServiceInterface* osgiServiceInterface);
 
@@ -96,3 +90,34 @@ public: InputAutomationModuleOSGIServiceVisitor();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_H_COMPLETE
+        #if __has_include(<bundle/input/automation/module/InputAutomationModuleService.h>)
+#include <bundle/input/automation/module/InputAutomationModuleService.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/InputAutomationJFrame.h>)
+#include <org/allbinary/input/automation/InputAutomationJFrame.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/configuration/InputAutomationConfigurationUtil.h>)
+#include <org/allbinary/input/automation/configuration/InputAutomationConfigurationUtil.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>)
+#include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/osgi/OSGIServiceInterface.h>)
+#include <org/allbinary/osgi/OSGIServiceInterface.h>
+#endif
+#if __has_include(<org/allbinary/osgi/OSGIServiceVisitorInterface.h>)
+#include <org/allbinary/osgi/OSGIServiceVisitorInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

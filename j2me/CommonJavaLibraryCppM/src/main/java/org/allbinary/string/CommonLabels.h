@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_STRING_COMMONLABELS_H
         #define ORG_ALLBINARY_STRING_COMMONLABELS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class JsMethod;
+class JsProperty;
 
 
 
@@ -57,14 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommonLabels
-            : public Object
+            : public virtual Object
          {
 
-    private: static CommonLabels* instance() { static std::unique_ptr<CommonLabels> value(new CommonLabels()); return value.get(); }
+    private: static CommonLabels* instance_owner();
+    private: static CommonLabels* instance;
 
     public: static CommonLabels* getInstance();
 
+
+            
+    public: CommonLabels();
+        
     public: const std::string WIDTH_LABEL = " Width: ";
 
     public: const std::string HEIGHT_LABEL = " Height: ";
@@ -81,7 +89,7 @@ class CommonLabels
 
     public: const std::string NAME_LABEL = "Name: ";
 
-    public: const std::string START = this->START_LABEL;
+    public: const std::string START;
 
     public: const std::string ELAPSED = " Elapsed: ";
 
@@ -101,3 +109,19 @@ class CommonLabels
 
 
         #endif //ORG_ALLBINARY_STRING_COMMONLABELS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_STRING_COMMONLABELS_H_COMPLETE)
+        #define ORG_ALLBINARY_STRING_COMMONLABELS_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+
+        #endif
+    

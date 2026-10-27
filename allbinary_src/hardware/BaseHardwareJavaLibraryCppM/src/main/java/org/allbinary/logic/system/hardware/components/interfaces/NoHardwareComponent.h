@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -52,14 +55,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoHardwareComponent
-            : public Object
+            : public virtual Object
         , public HardwareComponentInterface {
 
-    private: static NoHardwareComponent* instance() { static std::unique_ptr<NoHardwareComponent> value(new NoHardwareComponent()); return value.get(); }
+    private: static NoHardwareComponent* instance_owner();
+    private: static NoHardwareComponent* instance;
 
     public: static NoHardwareComponent* getInstance();
 
+
+            
+    public: NoHardwareComponent();
+        
     public: bool compareTo(HardwareComponentInterface* componentInterface);
 
     public: std::string toString();
@@ -70,3 +82,16 @@ class NoHardwareComponent
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_INTERFACES_NOHARDWARECOMPONENT_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h")
+#include "org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h"
+#endif
+
+        #endif
+    

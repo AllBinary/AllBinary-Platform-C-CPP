@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
-
-      
+class CommonDataFileStrings;
 
 
 
@@ -51,15 +54,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UserConfigurationData
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string NAME = "USER_CONFIGURATION_NAME";
 
-    public: static inline const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->UNCRYPTED_EXTENSION;
+    public: static const std::string UNCRYPTED_EXTENSION;
 
-    public: static inline const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance()->ENCRYPTED_EXTENSION;
+    public: static const std::string ENCRYPTED_EXTENSION;
 
 private: UserConfigurationData();
 
@@ -69,3 +76,13 @@ private: UserConfigurationData();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONDATA_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/CommonDataFileStrings.h>)
+#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
+#endif
+
+        #endif
+    

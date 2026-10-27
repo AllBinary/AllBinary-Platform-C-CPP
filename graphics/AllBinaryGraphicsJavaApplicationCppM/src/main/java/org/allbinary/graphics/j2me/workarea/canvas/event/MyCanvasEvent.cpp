@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENT_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         #include "org/allbinary/graphics/j2me/workarea/canvas/event/EventObject.h"
 #include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventSource.h"
 
-class MyCanvasEvent: public java::util::EventObject {
 
-public: MyCanvasEvent(Object* source) : java::util::EventObject(source){
+MyCanvasEvent::MyCanvasEvent(Object* source) : java::util::EventObject(source){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,27 +71,27 @@ public: MyCanvasEvent(Object* source) : java::util::EventObject(source){
 }
 
 
-    public: Object* getSource(){
+    auto MyCanvasEvent::getSource() -> Object*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getSource();;
+                        return java::util::EventObject::getSource();;
     
 }
 
 
-    public: std::string toString(){
+    auto MyCanvasEvent::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.toString();;
+                        return java::util::EventObject::toString();;
     
 }
 
 
-    public: std::string getCommand(){
+    auto MyCanvasEvent::getCommand() -> std::string{
 
     MyCanvasEventSource* myEventSource = dynamic_cast<MyCanvasEventSource*>(this->getSource());;
     
@@ -95,7 +104,7 @@ public: MyCanvasEvent(Object* source) : java::util::EventObject(source){
 }
 
 
-    public: MutableTreeNode* getTreeNode(){
+    auto MyCanvasEvent::getTreeNode() -> MutableTreeNode*{
 
     MyCanvasEventSource* myEventSource = dynamic_cast<MyCanvasEventSource*>(this->getSource());;
     
@@ -108,7 +117,7 @@ public: MyCanvasEvent(Object* source) : java::util::EventObject(source){
 }
 
 
-    public: double getAngle(){
+    auto MyCanvasEvent::getAngle() -> double{
 
     MyCanvasEventSource* myEventSource = dynamic_cast<MyCanvasEventSource*>(this->getSource());;
     
@@ -121,7 +130,6 @@ public: MyCanvasEvent(Object* source) : java::util::EventObject(source){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENT_CPP

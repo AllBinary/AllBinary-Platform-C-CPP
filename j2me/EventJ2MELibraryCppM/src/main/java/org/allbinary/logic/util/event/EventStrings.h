@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_H
         #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EventStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static EventStrings* instance() { static std::unique_ptr<EventStrings> value(new EventStrings()); return value.get(); }
+    private: static EventStrings* instance_owner();
+    private: static EventStrings* instance;
 
     public: static EventStrings* getInstance();
 
+
+            
+    public: EventStrings();
+        
     public: const std::string PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
 
     public: const std::string TOTAL_LISTENERS = "Total Listeners: ";
@@ -70,3 +84,10 @@ class EventStrings
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_EVENTSTRINGS_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/event/GameInitializedEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,27 +66,26 @@
         #include "org/allbinary/game/configuration/event/GameInitializedListenerInterface.h"
 #include "org/allbinary/game/configuration/event/GameInitializedEvent.h"
 
-class GameInitializedEventHandler: public BasicEventHandler {
+auto GameInitializedEventHandler::gameKeyEventHandler_owner() -> GameInitializedEventHandler* { static std::unique_ptr<GameInitializedEventHandler> value(new GameInitializedEventHandler()); return value.get(); }
+GameInitializedEventHandler* GameInitializedEventHandler::gameKeyEventHandler = GameInitializedEventHandler::gameKeyEventHandler_owner();
 
-    private: static GameInitializedEventHandler* gameKeyEventHandler() { static std::unique_ptr<GameInitializedEventHandler> value(new GameInitializedEventHandler()); return value.get(); }
+GameInitializedEventHandler::GameInitializedEventHandler(){
+}
 
-    public: static GameInitializedEventHandler* getInstance(){
+
+    auto GameInitializedEventHandler::getInstance() -> GameInitializedEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInitializedEventHandler::gameKeyEventHandler();
+                        return GameInitializedEventHandler::gameKeyEventHandler;
     
-}
-
-
-private: GameInitializedEventHandler(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto GameInitializedEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     GameInitializedListenerInterface* gameInitializedListenerInterface = (dynamic_cast<GameInitializedListenerInterface*>(eventListenerInterface));;
     
@@ -85,7 +94,6 @@ gameInitializedListenerInterface->onGameInitialized(dynamic_cast<GameInitialized
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENTHANDLER_CPP

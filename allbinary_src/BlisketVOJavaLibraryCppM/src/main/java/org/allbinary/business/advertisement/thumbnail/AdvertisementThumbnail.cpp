@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_THUMBNAIL_ADVERTISEMENTTHUMBNAIL_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_THUMBNAIL_ADVERTISEMENTTHUMBNAIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/thumbnail/AdvertisementThumbnail.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,21 +59,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/thumbnail/AdvertisementThumbnailInterface.h"
 
-class AdvertisementThumbnail
-            : public Object
-        , public AdvertisementThumbnailInterface {
 
-    private: std::string imageFileName;
-
-    private: std::string imageUrl;
-
-    private: TwoDimensionalConstraintInterface* constraint;
-
-public: AdvertisementThumbnail(){
+AdvertisementThumbnail::AdvertisementThumbnail(){
 }
 
 
-    public: std::string getFileName(){
+    auto AdvertisementThumbnail::getFileName() -> std::string{
 
 
 
@@ -73,7 +74,7 @@ public: AdvertisementThumbnail(){
 }
 
 
-    public: std::string getUrl(){
+    auto AdvertisementThumbnail::getUrl() -> std::string{
 
 
 
@@ -83,7 +84,7 @@ public: AdvertisementThumbnail(){
 }
 
 
-    public: TwoDimensionalConstraintInterface* getTwoDimensionalConstraint(){
+    auto AdvertisementThumbnail::getTwoDimensionalConstraint() -> TwoDimensionalConstraintInterface*{
 
 
 
@@ -93,7 +94,6 @@ public: AdvertisementThumbnail(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_THUMBNAIL_ADVERTISEMENTTHUMBNAIL_CPP

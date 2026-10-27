@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/hud/basic/PositionWidget.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,9 +72,46 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //super.paint(graphics, positionString, currentPostString, offset2, offset);
-class PositionWidget: public BasicHud {
 
-    public: static std::string toString(int32_t position){
+PositionWidget::PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor* basicColor) : BasicHud(location, direction, 2, basicColor), positionString(StringUtil::getInstance()->EMPTY_STRING){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this->updateMaxHeight= 10;
+    
+this->updateMaxWidth= 40;
+    
+}
+
+
+    auto PositionWidget::get() -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->position;
+    
+}
+
+
+    auto PositionWidget::set(int32_t position) -> void{
+this->position= position;
+    
+this->positionString= PositionWidget::toString(this->get());
+    
+}
+
+
+    auto PositionWidget::paint(Graphics* graphics) -> void{
+BasicHud::paintString(graphics, this->positionString);
+    
+}
+
+
+    auto PositionWidget::toString(int32_t position) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -112,49 +159,6 @@ stringBuffer->append(std::to_string(position));
 }
 
 
-    private: int32_t position= 0;
-
-    private: std::string positionString = StringUtil::getInstance()->EMPTY_STRING;
-
-public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor* basicColor) : BasicHud(location, direction, 2, basicColor){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-this->updateMaxHeight= 10;
-    
-this->updateMaxWidth= 40;
-    
-}
 
 
-    public: int32_t get(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->position;
-    
-}
-
-
-    public: void set(int32_t position){
-this->position= position;
-    
-this->positionString= PositionWidget::toString(this->get());
-    
-}
-
-
-    public: void paint(Graphics* graphics){
-super.paintString(graphics, this->positionString);
-    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_CPP

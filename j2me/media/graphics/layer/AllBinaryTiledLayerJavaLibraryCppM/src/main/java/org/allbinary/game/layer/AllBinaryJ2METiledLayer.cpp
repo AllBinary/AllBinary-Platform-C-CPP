@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AllBinaryJ2METiledLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,13 +73,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
-class AllBinaryJ2METiledLayer: public AllBinaryTiledLayer {
 
-    protected: TiledLayer* tiledLayerP;
-
-    protected: int32_t debugColor;
-
-public: AllBinaryJ2METiledLayer(int32_t dataId, TiledLayer* tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor) : AllBinaryTiledLayer(dataId, tiledLayer->getWidth(), tiledLayer->getHeight(), tiledLayer->getCellWidth(), tiledLayer->getCellHeight()){
+AllBinaryJ2METiledLayer::AllBinaryJ2METiledLayer(int32_t dataId, TiledLayer* tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor) : AllBinaryTiledLayer(dataId, tiledLayer->getWidth(), tiledLayer->getHeight(), tiledLayer->getCellWidth(), tiledLayer->getCellHeight()), font2(Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, 4)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,15 +90,13 @@ this->setCells(mapTwoDArray);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto AllBinaryJ2METiledLayer::paint(Graphics* graphics) -> void{
 this->tiledLayerP->paint(graphics);
     
 }
 
 
-    Font* font2 = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, 4);
-
-    public: void paintDebug(Graphics* graphics){
+    auto AllBinaryJ2METiledLayer::paintDebug(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -170,14 +173,14 @@ tile= this->tiledLayerP->getCell(columnIndex, rowIndex);
                                     {
                                     
 
-                        continue
+                        continue;
                     
 
                                     }
                                 
 tile--;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 graphics->drawString(stringMaker->appendint(columnIndex)->append(commonSeps->COMMA)->appendint(rowIndex)->append(commonSeps->COLON)->appendint(tile)->toString(), x +5, y +10, 0);
     
@@ -190,23 +193,23 @@ graphics->setFont(font);
 }
 
 
-    public: void moveDXY(int32_t dx, int32_t dy){
+    auto AllBinaryJ2METiledLayer::moveDXY(int32_t dx, int32_t dy) -> void{
 this->tiledLayerP->move(dx, dy);
     
-super.moveDXY( -dx,  -dy);
+AllBinaryTiledLayer::moveDXY( -dx,  -dy);
     
 }
 
 
-    public: void setPosition(int32_t x, int32_t y, int32_t z){
+    auto AllBinaryJ2METiledLayer::setPosition(int32_t x, int32_t y, int32_t z) -> void{
 this->tiledLayerP->setPosition(x, y);
     
-super.setPosition( -x,  -y, z);
+AllBinaryTiledLayer::setPosition( -x,  -y, z);
     
 }
 
 
-    public: TiledLayer* getTiledLayer(){
+    auto AllBinaryJ2METiledLayer::getTiledLayer() -> TiledLayer*{
 
 
 
@@ -216,7 +219,7 @@ super.setPosition( -x,  -y, z);
 }
 
 
-    public: int32_t getCellWidth(){
+    auto AllBinaryJ2METiledLayer::getCellWidth() -> int32_t{
 
 
 
@@ -226,7 +229,7 @@ super.setPosition( -x,  -y, z);
 }
 
 
-    public: int32_t getCellHeight(){
+    auto AllBinaryJ2METiledLayer::getCellHeight() -> int32_t{
 
 
 
@@ -236,7 +239,7 @@ super.setPosition( -x,  -y, z);
 }
 
 
-    public: int32_t getCell(int32_t col, int32_t row){
+    auto AllBinaryJ2METiledLayer::getCell(int32_t col, int32_t row) -> int32_t{
 
 
 
@@ -246,7 +249,7 @@ super.setPosition( -x,  -y, z);
 }
 
 
-    public: int32_t getColumns(){
+    auto AllBinaryJ2METiledLayer::getColumns() -> int32_t{
 
 
 
@@ -256,7 +259,7 @@ super.setPosition( -x,  -y, z);
 }
 
 
-    public: int32_t getRows(){
+    auto AllBinaryJ2METiledLayer::getRows() -> int32_t{
 
 
 
@@ -266,13 +269,13 @@ super.setPosition( -x,  -y, z);
 }
 
 
-    public: void setCell(int32_t col, int32_t row, int32_t index){
+    auto AllBinaryJ2METiledLayer::setCell(int32_t col, int32_t row, int32_t index) -> void{
 this->tiledLayerP->setCell(col, row, index);
     
 }
 
 
-    public: int32_t getAnimatedTile(int32_t animationTileIndex){
+    auto AllBinaryJ2METiledLayer::getAnimatedTile(int32_t animationTileIndex) -> int32_t{
 
 
 
@@ -282,7 +285,6 @@ this->tiledLayerP->setCell(col, row, index);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_CPP

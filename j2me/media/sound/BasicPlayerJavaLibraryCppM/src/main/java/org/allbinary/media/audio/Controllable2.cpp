@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/Controllable2.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,11 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Controllable2 {
+//Interface - declared in the header
 
-    public: virtual void setVolume(int32_t leftVolume, int32_t rightVolume) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_CPP

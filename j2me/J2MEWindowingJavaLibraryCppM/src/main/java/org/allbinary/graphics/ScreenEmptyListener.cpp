@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_SCREENEMPTYLISTENER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_SCREENEMPTYLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/ScreenEmptyListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,19 +56,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/ScreenListenerInterface.h"
 
-class ScreenEmptyListener
-            : public Object
-        , public ScreenListenerInterface {
 
-    public: void onFullScreen(bool isFullScreen){
+ScreenEmptyListener::ScreenEmptyListener() {
+        }
+        
+    auto ScreenEmptyListener::onFullScreen(bool isFullScreen) -> void{
 }
 
 
-    public: void onFullScreenDisplay(){
+    auto ScreenEmptyListener::onFullScreenDisplay() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_SCREENEMPTYLISTENER_CPP

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
-
-      
+class ABTextFieldItem;
 
 
 
@@ -50,6 +53,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PasswordValidator: public TextFieldItemValidator {
 
 public: PasswordValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
@@ -60,3 +67,16 @@ public: PasswordValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t m
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/form/item/ABTextFieldItem.h>)
+#include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
+#endif
+#if __has_include("org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h")
+#include "org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h"
+#endif
+
+        #endif
+    

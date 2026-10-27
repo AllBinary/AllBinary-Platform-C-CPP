@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,29 +41,13 @@
             #include "java/lang/Long.h"
         
 #include <java/io/File.h>
-
-      
 #include <java/io/FileOutputStream.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/input/automation/ImageOutputData.h>
-
-      
-#include <org/allbinary/logic/java/number/LongUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class ImageOutputData;
+class LongUtil;
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -78,21 +67,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FrameLog
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline std::vector<int8_t> frameBytes = ("Frame: ").getBytes();
+    private: static std::vector<int8_t> frameBytes;
 
-    private: static inline std::vector<int8_t> info = ("Info: \n").getBytes();
+    private: static std::vector<int8_t> info;
 
-    private: static inline std::vector<int8_t> actions = ("Actions: \n").getBytes();
+    private: static std::vector<int8_t> actions;
 
     private: int64_t frame;
 
-    private: StringMaker* infoStringBuffer = new StringMaker();
+    private: StringMaker* infoStringBuffer;
 
-    private: StringMaker* actionsStringBuffer = new StringMaker();
+    private: StringMaker* actionsStringBuffer;
 
 public: FrameLog(int64_t frame);
 
@@ -114,3 +107,32 @@ public: FrameLog(int64_t frame);
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_H_COMPLETE
+        #if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/io/FileOutputStream.h>)
+#include <java/io/FileOutputStream.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/input/automation/ImageOutputData.h>)
+#include <org/allbinary/input/automation/ImageOutputData.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/number/LongUtil.h>)
+#include <org/allbinary/logic/java/number/LongUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

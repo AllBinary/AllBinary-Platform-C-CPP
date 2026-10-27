@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2SELECTEDLOGHELPER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2SELECTEDLOGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/waypoint/Waypoint2SelectedLogHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,45 +84,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/Waypoint2LogHelper.h"
 
-class Waypoint2SelectedLogHelper: public Waypoint2LogHelper {
 
-    private: static Waypoint2SelectedLogHelper* instanceC() { static std::unique_ptr<Waypoint2SelectedLogHelper> value(new Waypoint2SelectedLogHelper()); return value.get(); }
+Waypoint2SelectedLogHelper::Waypoint2SelectedLogHelper() : logUtil(LogUtil::getInstance()), commonSeps(CommonSeps::getInstance()), positionStrings(PositionStrings::getInstance()), stringUtil(StringUtil::getInstance()) {
+        }
+        auto Waypoint2SelectedLogHelper::instanceC_owner() -> Waypoint2SelectedLogHelper* { static std::unique_ptr<Waypoint2SelectedLogHelper> value(new Waypoint2SelectedLogHelper()); return value.get(); }
+Waypoint2SelectedLogHelper* Waypoint2SelectedLogHelper::instanceC = Waypoint2SelectedLogHelper::instanceC_owner();
 
-    public: static Waypoint2LogHelper* getInstance(){
+    auto Waypoint2SelectedLogHelper::getInstance() -> Waypoint2LogHelper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Waypoint2SelectedLogHelper::instanceC();
+                        return Waypoint2SelectedLogHelper::instanceC;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    private: PositionStrings* positionStrings = PositionStrings::getInstance();
-
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    private: const std::string ENEMY_POSSIBLE_TARGET = " Enemy Possible Target: ";
-
-    private: const std::string CLOSE_RANGE = "closeRange: ";
-
-    private: const std::string SENSOR_RANGE = " sensorRange: ";
-
-    private: const std::string ONLY_TARGETS = " Only Targets: ";
-
-    private: const std::string SHORTER_THAN_CURRENT_TARGET_DISTANCE = " isShorterThanCurrentTargetDistance: ";
-
-    private: const std::string CURRENT_TARGET_DESTROYED = " isCurrentTargetDestroyed: ";
-
-    private: const std::string CURRENT_TARGET_NOT_AVAILABLE = " isCurrentTargetNotAvailable: ";
-
-    private: const std::string PROCESS_POSSIBLE_TARGET = "selected: processPossibleTarget1";
-
-    public: void initRange(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t closeRange, int32_t sensorRange){
+    auto Waypoint2SelectedLogHelper::initRange(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t closeRange, int32_t sensorRange) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -131,7 +119,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: initRange");
 }
 
 
-    public: void processPossibleTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance, bool isShorterThanCurrentTargetDistance, bool isCurrentTargetDestroyed){
+    auto Waypoint2SelectedLogHelper::processPossibleTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance, bool isShorterThanCurrentTargetDistance, bool isCurrentTargetDestroyed) -> void{
 
                         if(waypointBehaviorBase->isWaypointListEmptyOrOnlyTargets() && waypointBehaviorBase->isInSensorRange(dynamic_cast<CollidableDestroyableDamageableLayer*>(layerInterface), anotherTargetDistance))
                         
@@ -167,7 +155,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->PROCESS_POSSIBLE_TARGE
 }
 
 
-    public: void processSetTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance){
+    auto Waypoint2SelectedLogHelper::processSetTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -190,7 +178,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: processPossibleTa
 }
 
 
-    public: void processPossibleTargetCloser(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance){
+    auto Waypoint2SelectedLogHelper::processPossibleTargetCloser(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -213,7 +201,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: processPossibleTa
 }
 
 
-    public: void setTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance){
+    auto Waypoint2SelectedLogHelper::setTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -240,13 +228,13 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: setTarget");
 }
 
 
-    public: void setTargetPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2SelectedLogHelper::setTargetPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF("Target Destroyed", this, "selected: setTargetPath");
     
 }
 
 
-    public: void setTargetPathIgnoreNewPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase){
+    auto Waypoint2SelectedLogHelper::setTargetPathIgnoreNewPath(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -265,7 +253,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: setTargetPath");
 }
 
 
-    public: void processWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* targetLayer, int32_t size){
+    auto Waypoint2SelectedLogHelper::processWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase, PathFindingLayerInterface* targetLayer, int32_t size) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -296,7 +284,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: processWaypoint")
 }
 
 
-    public: void processWaypointTracked(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase){
+    auto Waypoint2SelectedLogHelper::processWaypointTracked(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* waypointBehaviorBase) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -319,7 +307,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: processWaypoint")
 }
 
 
-    public: void processWaypointTrackedVisit(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* geographicMapCellPosition){
+    auto Waypoint2SelectedLogHelper::processWaypointTrackedVisit(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, GeographicMapCellPosition* geographicMapCellPosition) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -334,25 +322,25 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: processWaypoint")
 }
 
 
-    public: void processWaypointTrackedWithoutProgress(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, std::string reason){
+    auto Waypoint2SelectedLogHelper::processWaypointTrackedWithoutProgress(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, std::string reason) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(reason)->toString(), this, "turnTo");
     
 }
 
 
-    public: void wander(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2SelectedLogHelper::wander(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF(associatedAdvancedRTSGameLayer->getName(), this, "wander");
     
 }
 
 
-    public: void targetDestroyed(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2SelectedLogHelper::targetDestroyed(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Target Destroyed")->toString(), this, "selected: processTargeting");
     
 }
 
 
-    public: void processTargeting(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy){
+    auto Waypoint2SelectedLogHelper::processTargeting(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -375,7 +363,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: processTargeting"
 }
 
 
-    public: void processTargetingNonWayPoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy){
+    auto Waypoint2SelectedLogHelper::processTargetingNonWayPoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -398,7 +386,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: processTargeting"
 }
 
 
-    public: void removeWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* waypointLayer, std::string reason){
+    auto Waypoint2SelectedLogHelper::removeWaypoint(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, PathFindingLayerInterface* waypointLayer, std::string reason) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -421,7 +409,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: removeWaypoint");
 }
 
 
-    public: void removeWaypointList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, BasicArrayList* list){
+    auto Waypoint2SelectedLogHelper::removeWaypointList(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, WaypointBehaviorBase* unitWaypointBehavior2, BasicArrayList* list) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -440,19 +428,19 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: removeWaypoint");
 }
 
 
-    public: void removeWaypointClear(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2SelectedLogHelper::removeWaypointClear(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Clearing removed waypoint")->toString(), this, "selected: removeWaypoint");
     
 }
 
 
-    public: void clearTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2SelectedLogHelper::clearTarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" Cleared Target")->toString(), this, "selected: clearTarget");
     
 }
 
 
-    public: void addWaypointFromUser(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer){
+    auto Waypoint2SelectedLogHelper::addWaypointFromUser(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -480,13 +468,12 @@ this->logUtil->putF(stringBuffer->toString(), this, "selected: onWaypointEvent")
 }
 
 
-    public: void targetMovedSoRetarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer){
+    auto Waypoint2SelectedLogHelper::targetMovedSoRetarget(PathFindingLayerInterface* associatedAdvancedRTSGameLayer) -> void{
 this->logUtil->putF((new StringMaker())->append(associatedAdvancedRTSGameLayer->getName())->append(" - target moved so retargeting")->toString(), this, "turnTo");
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2SELECTEDLOGHELPER_CPP

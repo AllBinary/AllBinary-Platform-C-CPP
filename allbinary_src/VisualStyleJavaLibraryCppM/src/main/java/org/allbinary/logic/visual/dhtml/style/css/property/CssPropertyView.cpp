@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,27 +70,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/style/css/property/CssProperty.h"
 
-class CssPropertyView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CssProperty* cssProperty;
-
-public: CssPropertyView(std::string name){
+CssPropertyView::CssPropertyView(std::string name) : commonStrings(CommonStrings::getInstance()){
 this->cssProperty= new CssProperty(name);
     
 }
 
 
-public: CssPropertyView(Node* node){
+CssPropertyView::CssPropertyView(Node* node) : commonStrings(CommonStrings::getInstance()){
 this->cssProperty= new CssProperty(node);
     
 }
 
 
-    public: CssProperty* getProperty(){
+    auto CssPropertyView::getProperty() -> CssProperty*{
 
 
 
@@ -92,7 +95,7 @@ this->cssProperty= new CssProperty(node);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto CssPropertyView::toXmlNode(Document* document) -> Node*{
 
 
 
@@ -102,7 +105,6 @@ this->cssProperty= new CssProperty(node);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTYVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORFACTORYBASE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORFACTORYBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorFactoryBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,20 +61,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h"
 
-class PathFinderGraphVisitorFactoryBase
-            : public Object
-         {
 
-    public: PathFinderGraphVisitorBase* getInstance(BasicGeographicMap* geographicMapInterface){
+PathFinderGraphVisitorFactoryBase::PathFinderGraphVisitorFactoryBase() {
+        }
+        
+    auto PathFinderGraphVisitorFactoryBase::getInstance(BasicGeographicMap* geographicMapInterface) -> PathFinderGraphVisitorBase*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORFACTORYBASE_CPP

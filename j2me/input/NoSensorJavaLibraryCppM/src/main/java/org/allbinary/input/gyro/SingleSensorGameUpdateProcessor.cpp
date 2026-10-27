@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/SingleSensorGameUpdateProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,21 +58,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/gyro/SensorGameUpdateProcessor.h"
 
-class SingleSensorGameUpdateProcessor: public SensorGameUpdateProcessor {
 
+SingleSensorGameUpdateProcessor::SingleSensorGameUpdateProcessor() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void process(Object* anyType){
+    auto SingleSensorGameUpdateProcessor::process(Object* anyType) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void sendNotifications(Object* anyType){
+    auto SingleSensorGameUpdateProcessor::sendNotifications(Object* anyType) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_SINGLESENSORGAMEUPDATEPROCESSOR_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORFACTORYBASE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORFACTORYBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
+class BasicGeographicMap;
 
 
 
@@ -52,12 +55,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h"
+        class PathFinderGraphVisitorBase;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PathFinderGraphVisitorFactoryBase
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: PathFinderGraphVisitorFactoryBase();
+        
     public: PathFinderGraphVisitorBase* getInstance(BasicGeographicMap* geographicMapInterface);
 
 };
@@ -66,3 +77,16 @@ class PathFinderGraphVisitorFactoryBase
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORFACTORYBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORFACTORYBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORFACTORYBASE_H_COMPLETE
+        #if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h")
+#include "org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h"
+#endif
+
+        #endif
+    

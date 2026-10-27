@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_ACCELEROMETER_NOACCELEROMETERSENSOR_CPP
+        #define ORG_ALLBINARY_INPUT_ACCELEROMETER_NOACCELEROMETERSENSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/accelerometer/NoAccelerometerSensor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NoAccelerometerSensor: public AllBinaryOrientationSensor {
 
-public: NoAccelerometerSensor(){
+NoAccelerometerSensor::NoAccelerometerSensor(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Orientation* getOrientation(){
+    auto NoAccelerometerSensor::getOrientation() -> Orientation*{
 
 
 
@@ -69,11 +78,10 @@ public: NoAccelerometerSensor(){
 }
 
 
-    public: void onSensorChange(){
+    auto NoAccelerometerSensor::onSensorChange() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_ACCELEROMETER_NOACCELEROMETERSENSOR_CPP

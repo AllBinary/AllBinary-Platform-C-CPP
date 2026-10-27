@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAP_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMap.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -69,11 +79,8 @@
 #include "org/allbinary/media/graphics/geography/map/racetrack/AllBinaryTiledLayerFactoryInterface.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/CustomMapGeneratorBaseFactory.h"
 
-class RaceTrackGeographicMap: public BaseRaceTrackGeographicMap {
 
-    private: CustomMapGeneratorBase* customMapGenerator;
-
-public: RaceTrackGeographicMap(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData, AllBinaryTiledLayerFactoryInterface* tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory* geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory* geographicMapCellTypeFactory, CustomMapGeneratorBaseFactory* customMapGeneratorBaseFactory) : BaseRaceTrackGeographicMap(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface->getInstance(raceTrackInfo, raceTrackData), (new BasicGeographicMapFactory())->getInstance(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface, geographicMapCellPositionFactoryInterface, geographicMapCellTypeFactory), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory){
+RaceTrackGeographicMap::RaceTrackGeographicMap(RaceTrackInfo* raceTrackInfo, RaceTrackData* raceTrackData, AllBinaryTiledLayerFactoryInterface* tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface* geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory* geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory* geographicMapCellTypeFactory, CustomMapGeneratorBaseFactory* customMapGeneratorBaseFactory) : BaseRaceTrackGeographicMap(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface->getInstance(raceTrackInfo, raceTrackData), (new BasicGeographicMapFactory())->getInstance(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface, geographicMapCellPositionFactoryInterface, geographicMapCellTypeFactory), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,7 +92,7 @@ this->customMapGenerator= customMapGeneratorBaseFactory->create(this);
 }
 
 
-    public: CustomMapGeneratorBase* getCustomMapGenerator(){
+    auto RaceTrackGeographicMap::getCustomMapGenerator() -> CustomMapGeneratorBase*{
 
 
 
@@ -97,7 +104,7 @@ this->customMapGenerator= customMapGeneratorBaseFactory->create(this);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(GeographicMapCellPosition* geographicMapCellPosition){
+    auto RaceTrackGeographicMap::isValid(GeographicMapCellPosition* geographicMapCellPosition) -> bool{
 
     std::vector<std::vector<int32_t>> customMapArray = this->customMapGenerator->getCustomMapArray();;
     
@@ -116,7 +123,7 @@ stringBuffer->append(" not in: ");
     
 stringBuffer->appendint(customMapArray[0].size());
     
-this->logUtil.putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                         if(geographicMapCellPosition->getColumn() == customMapArray[0].size())
@@ -159,7 +166,7 @@ stringBuffer->append(" not in: ");
     
 stringBuffer->appendint(customMapArray.size());
     
-this->logUtil.putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                         if(geographicMapCellPosition->getRow() == customMapArray.size())
@@ -196,7 +203,6 @@ this->logUtil.putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID)
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAP_CPP

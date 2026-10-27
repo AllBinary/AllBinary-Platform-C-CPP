@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_H
         #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OrientationData
-            : public Object
+            : public virtual Object
          {
 
-    private: static OrientationData* SINGLETON() { static std::unique_ptr<OrientationData> value(new OrientationData()); return value.get(); }
+    private: static OrientationData* SINGLETON_owner();
+    private: static OrientationData* SINGLETON;
 
     public: static OrientationData* getInstance();
 
@@ -68,3 +78,10 @@ private: OrientationData();
 
 
         #endif //ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONDATA_H_COMPLETE
+        
+        #endif
+    

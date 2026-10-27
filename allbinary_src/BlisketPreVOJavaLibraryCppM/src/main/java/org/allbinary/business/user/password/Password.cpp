@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_PASSWORD_PASSWORD_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_PASSWORD_PASSWORD_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/password/Password.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,27 +95,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Password
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string password;
-
-public: Password(std::string password){
+Password::Password(std::string password) : logUtil(LogUtil::getInstance()){
 this->password= password;
     
 }
 
 
-    public: void set(std::string value){
+    auto Password::set(std::string value) -> void{
 this->password= value;
     
 }
 
 
-    public: std::string get(){
+    auto Password::get() -> std::string{
 
 
 
@@ -115,7 +118,7 @@ this->password= value;
 }
 
 
-    public: bool isValid(){
+    auto Password::isValid() -> bool{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -125,10 +128,10 @@ this->password= value;
     bool valid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
                         
                                     {
-                                    this->logUtil->putF("Password: " +this->password, this, commonStrings->IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("Password: ") +JavaString::valueOf(this->password), this, commonStrings->IS_VALID);
     
 
                                     }
@@ -138,7 +141,7 @@ this->password= value;
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATION))
                         
                                     {
                                     this->logUtil->putF("Password is invalid", this, commonStrings->IS_VALID);
@@ -162,7 +165,7 @@ valid= Boolean::FALSE;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VALIDATIONERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VALIDATIONERROR))
                         
                                     {
                                     this->logUtil->put("Failed to validate form", "Password", commonStrings->IS_VALID, &e);
@@ -181,7 +184,7 @@ valid= Boolean::FALSE;
 }
 
 
-    public: std::string getValidationInfo(){
+    auto Password::getValidationInfo() -> std::string{
 
                         if(!StringValidationUtil::getInstance()->isValidRequired(this->password, 6, UserData::MAXLEN))
                         
@@ -207,7 +210,7 @@ valid= Boolean::FALSE;
 }
 
 
-    public: BasicArrayList* toVector(std::string secret){
+    auto Password::toVector(std::string secret) -> BasicArrayList*{
 this->password= StringUtil::getInstance()->getNonNull(this->password);
     
 
@@ -231,7 +234,7 @@ vector->add((new SuperCrypt(random))->encrypt(this->password));
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(std::string secret){
+    auto Password::toHashMap(std::string secret) -> HashMap<Object*, Object*>*{
 this->password= StringUtil::getInstance()->getNonNull(this->password);
     
 
@@ -255,7 +258,6 @@ values->put(UserData::PASSWORD, (new SuperCrypt(random))->encrypt(this->password
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_PASSWORD_PASSWORD_CPP

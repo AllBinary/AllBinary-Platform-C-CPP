@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/layer/NullPathFindingLayer.h>
-
-      
-#include <org/allbinary/game/layer/PathFindingLayerInterface.h>
-
-      
-#include <org/allbinary/game/layer/waypoint/WaypointLayer.h>
-
-      
+class NullPathFindingLayer;
+class PathFindingLayerInterface;
+class WaypointLayer;
 
 
 
@@ -57,15 +56,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PrimaryWaypointHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static PrimaryWaypointHelper* instance() { static std::unique_ptr<PrimaryWaypointHelper> value(new PrimaryWaypointHelper()); return value.get(); }
+    private: static PrimaryWaypointHelper* instance_owner();
+    private: static PrimaryWaypointHelper* instance;
 
     public: static PrimaryWaypointHelper* getInstance();
 
-    private: PathFindingLayerInterface* waypointLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface* waypointLayer;
 
 private: PrimaryWaypointHelper();
 
@@ -79,3 +83,19 @@ private: PrimaryWaypointHelper();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/NullPathFindingLayer.h>)
+#include <org/allbinary/game/layer/NullPathFindingLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/PathFindingLayerInterface.h>)
+#include <org/allbinary/game/layer/PathFindingLayerInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/waypoint/WaypointLayer.h>)
+#include <org/allbinary/game/layer/waypoint/WaypointLayer.h>
+#endif
+
+        #endif
+    

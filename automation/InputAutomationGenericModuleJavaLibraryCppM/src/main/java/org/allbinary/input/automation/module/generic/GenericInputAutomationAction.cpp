@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONACTION_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/GenericInputAutomationAction.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,21 +65,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericInputAutomationAction
-            : public Object
-        , public InputAutomationActionInterface {
 
-public: GenericInputAutomationAction(){
+GenericInputAutomationAction::GenericInputAutomationAction(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void test(){
+    auto GenericInputAutomationAction::test() -> void{
 }
 
 
-    public: std::vector<InputRobotInterface*> getInputRobotInterfaceArray(){
+    auto GenericInputAutomationAction::getInputRobotInterfaceArray() -> std::vector<InputRobotInterface*>{
 
 
 
@@ -79,7 +86,6 @@ public: GenericInputAutomationAction(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONACTION_CPP

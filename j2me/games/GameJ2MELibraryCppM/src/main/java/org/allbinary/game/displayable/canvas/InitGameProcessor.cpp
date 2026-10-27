@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INITGAMEPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INITGAMEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/InitGameProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class InitGameProcessor: public Processor {
 
-    private: AllBinaryGameCanvas* gameCanvas;
-
-public: InitGameProcessor(AllBinaryGameCanvas* gameCanvas){
+InitGameProcessor::InitGameProcessor(AllBinaryGameCanvas* gameCanvas){
 this->gameCanvas= gameCanvas;
     
 }
@@ -70,7 +77,7 @@ this->gameCanvas= gameCanvas;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto InitGameProcessor::process() -> void{
 
                         if(ProgressCanvasFactory::getInstance()->isInGame())
                         
@@ -83,7 +90,6 @@ this->gameCanvas= gameCanvas;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_INITGAMEPROCESSOR_CPP

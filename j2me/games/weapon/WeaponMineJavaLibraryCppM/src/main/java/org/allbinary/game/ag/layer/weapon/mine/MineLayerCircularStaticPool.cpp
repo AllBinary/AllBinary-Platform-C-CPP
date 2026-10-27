@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERCIRCULARSTATICPOOL_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERCIRCULARSTATICPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/weapon/mine/MineLayerCircularStaticPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,33 +65,32 @@
         #include "org/allbinary/game/ag/layer/weapon/mine/MineCountedPickedUpLayerInterfaceFactory.h"
 #include "org/allbinary/game/ag/layer/weapon/mine/MineLayerFactory.h"
 
-class MineLayerCircularStaticPool
-            : public Object
-         {
 
-    private: static WeaponLayerCircularPool* WEAPON_LAYER_CIRCULAR_STATIC_POOL() { static std::unique_ptr<WeaponLayerCircularPool> value(new WeaponLayerCircularPool()); return value.get(); }
+MineLayerCircularStaticPool::MineLayerCircularStaticPool() {
+        }
+        auto MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL_owner() -> WeaponLayerCircularPool* { static std::unique_ptr<WeaponLayerCircularPool> value(new WeaponLayerCircularPool()); return value.get(); }
+WeaponLayerCircularPool* MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL = MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: static void init(ViewPositionFactoryInterface* viewPositionFactoryInterface){
+    auto MineLayerCircularStaticPool::init(ViewPositionFactoryInterface* viewPositionFactoryInterface) -> void{
 MineCountedPickedUpLayerInterfaceFactory::init();
     
-MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL()->initAllBinaryLayerCircularPool(new MineLayerFactory(viewPositionFactoryInterface), 20);
+MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL->initAllBinaryLayerCircularPool(new MineLayerFactory(viewPositionFactoryInterface), 20);
     
 }
 
 
-    public: static WeaponLayerCircularPool* getInstance(){
+    auto MineLayerCircularStaticPool::getInstance() -> WeaponLayerCircularPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL();
+                        return MineLayerCircularStaticPool::WEAPON_LAYER_CIRCULAR_STATIC_POOL;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYERCIRCULARSTATICPOOL_CPP

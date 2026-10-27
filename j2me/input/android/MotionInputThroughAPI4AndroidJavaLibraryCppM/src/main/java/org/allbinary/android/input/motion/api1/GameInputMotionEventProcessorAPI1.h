@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <android/view/MotionEvent.h>
-
-      
+class MotionEvent;
 #include <org/allbinary/android/input/motion/BaseGameInputMotionEventProcessor.h>
-
-      
-#include <org/allbinary/input/motion/AllMotionRecognizer.h>
-
-      
-#include <org/allbinary/input/motion/MotionRecognizer.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class AllMotionRecognizer;
+class MotionRecognizer;
+class NullUtil;
+class LogUtil;
 
 
 
@@ -68,15 +61,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcessor {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static GameInputMotionEventProcessorAPI1* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: MotionRecognizer* motionRecognizer = new AllMotionRecognizer();
+    private: MotionRecognizer* motionRecognizer;
 
 private: GameInputMotionEventProcessorAPI1();
 
@@ -88,3 +85,28 @@ private: GameInputMotionEventProcessorAPI1();
 
 
         #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H_COMPLETE
+        #if __has_include(<android/view/MotionEvent.h>)
+#include <android/view/MotionEvent.h>
+#endif
+#if __has_include(<org/allbinary/android/input/motion/BaseGameInputMotionEventProcessor.h>)
+#include <org/allbinary/android/input/motion/BaseGameInputMotionEventProcessor.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/AllMotionRecognizer.h>)
+#include <org/allbinary/input/motion/AllMotionRecognizer.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/MotionRecognizer.h>)
+#include <org/allbinary/input/motion/MotionRecognizer.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+        #endif
+    

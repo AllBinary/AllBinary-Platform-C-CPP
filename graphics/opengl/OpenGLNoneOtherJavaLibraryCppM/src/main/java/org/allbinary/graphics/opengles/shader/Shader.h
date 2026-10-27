@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class StringUtil;
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -57,15 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Shader
-            : public Object
+            : public virtual Object
          {
 
-    public: std::string shaderName = StringUtil::getInstance()->EMPTY_STRING;
 
-    public: BasicArrayList* shaderStringList = BasicArrayListUtil::getInstance()->getImmutableInstance();
+            
+    public: Shader();
+        
+    public: std::string shaderName;
 
-    public: std::string shaderAsString = StringUtil::getInstance()->EMPTY_STRING;
+    public: BasicArrayList* shaderStringList;
+
+    public: std::string shaderAsString;
 
     public: int32_t shaderHandle= 0;
 
@@ -75,3 +82,19 @@ class Shader
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+
+        #endif
+    

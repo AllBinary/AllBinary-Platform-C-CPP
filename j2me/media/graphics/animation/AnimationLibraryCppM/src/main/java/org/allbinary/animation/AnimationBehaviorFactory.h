@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIORFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,16 +52,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/AnimationBehavior.h"
+        class AnimationBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AnimationBehaviorFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AnimationBehaviorFactory* instance() { static std::unique_ptr<AnimationBehaviorFactory> value(new AnimationBehaviorFactory()); return value.get(); }
+    private: static AnimationBehaviorFactory* instance_owner();
+    private: static AnimationBehaviorFactory* instance;
 
     public: static AnimationBehaviorFactory* getInstance();
 
+
+            
+    public: AnimationBehaviorFactory();
+        
     public: AnimationBehavior* getOrCreateInstance();
 
 };
@@ -65,3 +79,13 @@ class AnimationBehaviorFactory
 
 
         #endif //ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_ANIMATIONBEHAVIORFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+
+        #endif
+    

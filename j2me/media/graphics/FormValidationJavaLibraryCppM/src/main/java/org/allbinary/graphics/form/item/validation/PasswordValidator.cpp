@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/validation/PasswordValidator.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/item/validation/TextFieldItemValidator.h"
 
-class PasswordValidator: public TextFieldItemValidator {
 
-public: PasswordValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) : TextFieldItemValidator(textFieldItem, min, max, allowOnEmpty){
+PasswordValidator::PasswordValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) : TextFieldItemValidator(textFieldItem, min, max, allowOnEmpty){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -59,7 +68,6 @@ public: PasswordValidator(ABTextFieldItem* textFieldItem, int32_t min, int32_t m
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_PASSWORDVALIDATOR_CPP

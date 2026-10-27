@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/vector/VectorInfo.h>
-
-      
+class BasicColor;
+class NullUtil;
+class VectorInfo;
 
 
 
@@ -61,17 +60,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
-#include "org/allbinary/animation/VectorAnimationFactoryInterface.h"
-#include "org/allbinary/animation/VectorRotationGenerator.h"
-#include "org/allbinary/animation/VectorExplosionGenerator.h"
-#include "org/allbinary/animation/IndexedAnimation.h"
-#include "org/allbinary/animation/Animation.h"
+class VectorAnimationFactoryInterface;
+class VectorRotationGenerator;
+class VectorExplosionGenerator;
+class IndexedAnimation;
+class Animation;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class IndependentVectorExplosionRotationAnimationFactory
-            : public Object
+            : public virtual Object
         , public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: std::vector<std::vector<std::vector<int32_t>>> framePoints = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> framePoints;
 
     private: VectorInfo* vectorInfo;
 
@@ -83,9 +86,9 @@ public: IndependentVectorExplosionRotationAnimationFactory(VectorInfo* vectorInf
 
                 //@Throws(Exception.constructor)
             
-    protected: void init();
+    /*protected*/ public: void init();
 
-    private: VectorExplosionGenerator* vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
+    private: VectorExplosionGenerator* vectorExplosionGenerator;
 
                 //@Throws(Exception.constructor)
             
@@ -97,3 +100,37 @@ public: IndependentVectorExplosionRotationAnimationFactory(VectorInfo* vectorInf
 
 
         #endif //ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/vector/VectorInfo.h>)
+#include <org/allbinary/vector/VectorInfo.h>
+#endif
+#if __has_include("org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/VectorAnimationFactoryInterface.h")
+#include "org/allbinary/animation/VectorAnimationFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/VectorRotationGenerator.h")
+#include "org/allbinary/animation/VectorRotationGenerator.h"
+#endif
+#if __has_include("org/allbinary/animation/VectorExplosionGenerator.h")
+#include "org/allbinary/animation/VectorExplosionGenerator.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+
+        #endif
+    

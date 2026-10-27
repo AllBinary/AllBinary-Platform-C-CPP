@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PRIMARYPLAYERQUEUEFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_PRIMARYPLAYERQUEUEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/PrimaryPlayerQueueFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/PlayerQueue.h"
 
-class PrimaryPlayerQueueFactory
-            : public Object
-         {
 
-    private: static PlayerQueue* SINGLETON() { static std::unique_ptr<PlayerQueue> value(new PlayerQueue(4)); return value.get(); }
+PrimaryPlayerQueueFactory::PrimaryPlayerQueueFactory() {
+        }
+        auto PrimaryPlayerQueueFactory::SINGLETON_owner() -> PlayerQueue* { static std::unique_ptr<PlayerQueue> value(new PlayerQueue(4)); return value.get(); }
+PlayerQueue* PrimaryPlayerQueueFactory::SINGLETON = PrimaryPlayerQueueFactory::SINGLETON_owner();
 
-    public: static PlayerQueue* getInstance(){
+    auto PrimaryPlayerQueueFactory::getInstance() -> PlayerQueue*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimaryPlayerQueueFactory::SINGLETON();
+                        return PrimaryPlayerQueueFactory::SINGLETON;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_PRIMARYPLAYERQUEUEFACTORY_CPP

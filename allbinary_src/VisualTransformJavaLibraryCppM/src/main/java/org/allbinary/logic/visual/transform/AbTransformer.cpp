@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/AbTransformer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,27 +88,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/BasicTransformerInterface.h"
 
-class AbTransformer
-            : public Object
-        , public BasicTransformerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: TransformInfoInterface* transformInfoInterface;
-
-    private: InputStream* inputStream;
-
-    private: URIResolver* uriResolver;
-
-public: AbTransformer(TransformInfoInterface* transformInfoInterface){
+AbTransformer::AbTransformer(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->transformInfoInterface= transformInfoInterface;
     
 }
 
 
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto AbTransformer::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -108,19 +105,19 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: void setInputStream(InputStream* inputStream){
+    auto AbTransformer::setInputStream(InputStream* inputStream) -> void{
 this->inputStream= inputStream;
     
 }
 
 
-    public: void setURIResolver(URIResolver* uriResolver){
+    auto AbTransformer::setURIResolver(URIResolver* uriResolver) -> void{
 this->uriResolver= uriResolver;
     
 }
 
 
-    public: InputStream* getInputStream(){
+    auto AbTransformer::getInputStream() -> InputStream*{
 
 
 
@@ -130,7 +127,7 @@ this->uriResolver= uriResolver;
 }
 
 
-    public: URIResolver* getURIResolver(){
+    auto AbTransformer::getURIResolver() -> URIResolver*{
 
 
 
@@ -140,7 +137,7 @@ this->uriResolver= uriResolver;
 }
 
 
-    public: StreamSource* getStreamSource(){
+    auto AbTransformer::getStreamSource() -> StreamSource*{
 
 
 
@@ -152,14 +149,14 @@ this->uriResolver= uriResolver;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string translate(std::string xmlDocumentStr){
+    auto AbTransformer::translate(std::string xmlDocumentStr) -> std::string{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XMLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XMLLOGGING))
                         
                                     {
-                                    this->logUtil->putF("xml: \n" +xmlDocumentStr, this, "translate(String xmlDocumentStr)");
+                                    this->logUtil->putF(JavaString::valueOf("xml: \n") +JavaString::valueOf(xmlDocumentStr), this, "translate(String xmlDocumentStr)");
     
 
                                     }
@@ -173,7 +170,7 @@ this->uriResolver= uriResolver;
                                     
 
 
-                            throw new Exception("No URIResolver");
+                            throw Exception("No URIResolver");
                     
 
                                     }
@@ -182,10 +179,10 @@ this->uriResolver= uriResolver;
     std::string result = XslHelper::getInstance()->translate(this->getURIResolver(), new StreamSource(this->getInputStream()), new StreamSource(new StringBufferInputStream(xmlDocumentStr)));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGING))
                         
                                     {
-                                    this->logUtil->putF("translated xml: " +result, this, "translate(String xmlDocumentStr)");
+                                    this->logUtil->putF(JavaString::valueOf("translated xml: ") +JavaString::valueOf(result), this, "translate(String xmlDocumentStr)");
     
 
                                     }
@@ -204,7 +201,7 @@ this->uriResolver= uriResolver;
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(this->transformInfoInterface->log(), this, "translate(document)", &e);
@@ -222,7 +219,6 @@ this->uriResolver= uriResolver;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_ABTRANSFORMER_CPP

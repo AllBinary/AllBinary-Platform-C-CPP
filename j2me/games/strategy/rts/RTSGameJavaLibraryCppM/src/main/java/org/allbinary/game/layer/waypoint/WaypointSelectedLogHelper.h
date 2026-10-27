@@ -21,42 +21,27 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTSELECTEDLOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTSELECTEDLOGHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/layer/PathFindingLayerInterface.h>
-
-      
-#include <org/allbinary/game/layer/WaypointBehaviorBase.h>
-
-      
-#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class PathFindingLayerInterface;
+class WaypointBehaviorBase;
+class CollidableDestroyableDamageableLayer;
+class LogUtil;
+class CommonLabels;
+class CommonSeps;
+class StringMaker;
+class StringUtil;
+class GeographicMapCellPosition;
+class BasicArrayList;
 
 
 
@@ -77,17 +62,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/waypoint/WaypointLogHelper.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class WaypointSelectedLogHelper: public WaypointLogHelper {
 
-    private: static WaypointSelectedLogHelper* instanceC() { static std::unique_ptr<WaypointSelectedLogHelper> value(new WaypointSelectedLogHelper()); return value.get(); }
+    private: static WaypointSelectedLogHelper* instanceC_owner();
+    private: static WaypointSelectedLogHelper* instanceC;
 
     public: static WaypointSelectedLogHelper* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
+            
+    public: WaypointSelectedLogHelper();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: StringUtil* stringUtil = StringUtil::getInstance();
+    private: CommonSeps* commonSeps;
+
+    private: StringUtil* stringUtil;
 
     public: void onWaypointEvent(PathFindingLayerInterface* associatedAdvancedRTSGameLayer, PathFindingLayerInterface* advancedRTSGameLayer);
 
@@ -117,3 +111,43 @@ class WaypointSelectedLogHelper: public WaypointLogHelper {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTSELECTEDLOGHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTSELECTEDLOGHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTSELECTEDLOGHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/PathFindingLayerInterface.h>)
+#include <org/allbinary/game/layer/PathFindingLayerInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/WaypointBehaviorBase.h>)
+#include <org/allbinary/game/layer/WaypointBehaviorBase.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>)
+#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/layer/waypoint/WaypointLogHelper.h")
+#include "org/allbinary/game/layer/waypoint/WaypointLogHelper.h"
+#endif
+
+        #endif
+    

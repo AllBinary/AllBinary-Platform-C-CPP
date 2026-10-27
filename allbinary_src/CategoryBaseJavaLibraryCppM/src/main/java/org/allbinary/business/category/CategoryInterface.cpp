@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/CategoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,49 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CategoryInterface: public TableMappingInterface, public ValidationInterface {
+//Interface - declared in the header
 
-    public: virtual BasicArrayList* getChildNodes() = 0;
 
-    public: virtual bool addChildProperty(CategoryPropertiesInterface* categoryPropertiesInterface) = 0;
 
-    public: virtual bool addChild(CategoryInterface* categoryInterface) = 0;
-
-    public: virtual bool removeChild(CategoryInterface* categoryInterface) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isLeaf() = 0;
-
-    public: virtual CategoryPropertiesInterface* getProperties() = 0;
-
-    public: virtual void setProperties(CategoryPropertiesInterface* categoryPropertiesInterface) = 0;
-
-    public: virtual CategoryHierarchyInterface* getHierarchy() = 0;
-
-    public: virtual void setHierarchy(CategoryHierarchyInterface* categoryHierarchyInterface) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual AbPath* getPath() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual AbPath* getFilePath() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual AbPath* getWebAppPath() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual AbPath* getRootFilePath() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void log() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYINTERFACE_CPP

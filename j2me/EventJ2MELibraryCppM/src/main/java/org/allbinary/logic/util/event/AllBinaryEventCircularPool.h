@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTCIRCULARPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTCIRCULARPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/cache/BaseCircularPool.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class CircularIndexUtil;
 
 
 
@@ -53,8 +54,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/util/event/AllBinaryEventObjectFactoryInterface.h"
+        class AllBinaryEventObjectFactoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryEventCircularPool: public BaseCircularPool {
 
 public: AllBinaryEventCircularPool(int32_t max);
@@ -67,3 +72,19 @@ public: AllBinaryEventCircularPool(int32_t max);
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTCIRCULARPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTCIRCULARPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_ALLBINARYEVENTCIRCULARPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/cache/BaseCircularPool.h>)
+#include <org/allbinary/logic/util/cache/BaseCircularPool.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/util/event/AllBinaryEventObjectFactoryInterface.h")
+#include "org/allbinary/logic/util/event/AllBinaryEventObjectFactoryInterface.h"
+#endif
+
+        #endif
+    

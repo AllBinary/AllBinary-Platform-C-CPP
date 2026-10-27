@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOIMAGEFILEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOIMAGEFILEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/logo/LogoImageFileUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,17 +75,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LogoImageFileUtil
-            : public Object
-         {
 
-    private: Directory* directory = Directory::getInstance();
-
-    private: std::string fileName;
-
-    private: AbPath* imageFileAbPath;
-
-public: LogoImageFileUtil(AbPath* imageAbPath, std::string imageFile){
+LogoImageFileUtil::LogoImageFileUtil(AbPath* imageAbPath, std::string imageFile) : directory(Directory::getInstance()){
 this->fileName= imageFile;
     
 this->imageFileAbPath= imageAbPath;
@@ -85,7 +86,7 @@ this->imageFileAbPath= imageAbPath;
 
                 //@Throws(Exception.constructor)
             
-    public: void saveFiles(FileItem* fileItem){
+    auto LogoImageFileUtil::saveFiles(FileItem* fileItem) -> void{
 
                         if(false)
                         
@@ -93,7 +94,7 @@ this->imageFileAbPath= imageAbPath;
                                     
 
 
-                            throw new Exception("Image File Name Was Null");
+                            throw Exception("Image File Name Was Null");
                     
 
                                     }
@@ -105,7 +106,7 @@ this->imageFileAbPath= imageAbPath;
                                     
 
 
-                            throw new Exception("Unable to save file to non creatable directory");
+                            throw Exception("Unable to save file to non creatable directory");
                     
 
                                     }
@@ -120,7 +121,6 @@ FileUtil::getInstance()->write(new ByteArrayInputStream(fileItem->get()), origin
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOIMAGEFILEUTIL_CPP

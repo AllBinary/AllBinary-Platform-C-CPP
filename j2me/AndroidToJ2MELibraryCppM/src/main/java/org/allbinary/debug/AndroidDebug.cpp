@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_CPP
+        #define ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/debug/AndroidDebug.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,17 +63,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/debug/DebugInterface.h"
 
-class AndroidDebug
-            : public Object
-        , public DebugInterface {
 
-    private: int64_t startTime = Long.MAX_VALUE;
-
-    private: bool running = false;
-
-    private: int32_t bufferSize = 32 *1024 *1024;
-
-    public: void start(){
+AndroidDebug::AndroidDebug() : startTime(Long.MAX_VALUE), bufferSize(32 *1024 *1024) {
+        }
+        
+    auto AndroidDebug::start() -> void{
 this->setStartTime(System.currentTimeMillis());
     
 Debug::startMethodTracing("trace", this->bufferSize);
@@ -73,7 +77,7 @@ this->setRunning(true);
 }
 
 
-    public: void stop(){
+    auto AndroidDebug::stop() -> void{
 this->startTime= Long.MAX_VALUE;
     
 Debug::stopMethodTracing();
@@ -83,7 +87,7 @@ this->setRunning(false);
 }
 
 
-    public: int64_t getMaxTime(){
+    auto AndroidDebug::getMaxTime() -> int64_t{
 
 
 
@@ -93,13 +97,13 @@ this->setRunning(false);
 }
 
 
-    private: void setStartTime(int64_t startTime){
+    auto AndroidDebug::setStartTime(int64_t startTime) -> void{
 this->startTime= startTime;
     
 }
 
 
-    public: int64_t getStartTime(){
+    auto AndroidDebug::getStartTime() -> int64_t{
 
 
 
@@ -109,13 +113,13 @@ this->startTime= startTime;
 }
 
 
-    private: void setRunning(bool running){
+    auto AndroidDebug::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 
-    public: bool isRunning(){
+    auto AndroidDebug::isRunning() -> bool{
 
 
 
@@ -125,7 +129,6 @@ this->running= running;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_CPP

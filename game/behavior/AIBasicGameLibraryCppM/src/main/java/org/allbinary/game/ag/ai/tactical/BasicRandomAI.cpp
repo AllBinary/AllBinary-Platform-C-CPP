@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_TACTICAL_BASICRANDOMAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_TACTICAL_BASICRANDOMAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/tactical/BasicRandomAI.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,17 +86,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicRandomAI: public BasicAI {
 
-    private: int32_t i_random = 0;
-
-    private: InputProbability* inputProbability;
-
-    private: Visitor* visitor;
-
-    private: const std::vector<int32_t> keyArray = {Canvas::UP,Canvas::DOWN,Canvas::LEFT,Canvas::RIGHT,Canvas::KEY_NUM1,Canvas::KEY_NUM7,Canvas::KEY_NUM9};
-
-public: BasicRandomAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, InputProbability* inputProbability, Visitor* visitor) : BasicAI(ownerLayerInterface, gameInput){
+BasicRandomAI::BasicRandomAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput, InputProbability* inputProbability, Visitor* visitor) : BasicAI(ownerLayerInterface, gameInput), keyArray({Canvas::UP,Canvas::DOWN,Canvas::LEFT,Canvas::RIGHT,Canvas::KEY_NUM1,Canvas::KEY_NUM7,Canvas::KEY_NUM9}), myRandomFactory(MyRandomFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -100,11 +101,9 @@ this->visitor= visitor;
 }
 
 
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto BasicRandomAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
                         if(this->inputProbability->getTimeDelayHelper()->isTime(GameTickTimeDelayHelperFactory::getInstance()->startTime))
                         
@@ -154,9 +153,7 @@ this->i_random= this->myRandomFactory->getAbsoluteNextInt(this->inputProbability
 likelyhoodIntegerKeyArray= likelyhoodIntegerArray[key];
     
 
-                        if(likelyhoodIntegerArray.size() >= key && likelyhoodIntegerKeyArray[0] != 
-                                    nullptr
-                                )
+                        if(likelyhoodIntegerArray.size() >= key && true)
                         
                                     {
                                     
@@ -187,7 +184,6 @@ this->visitor->visit(this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_TACTICAL_BASICRANDOMAI_CPP

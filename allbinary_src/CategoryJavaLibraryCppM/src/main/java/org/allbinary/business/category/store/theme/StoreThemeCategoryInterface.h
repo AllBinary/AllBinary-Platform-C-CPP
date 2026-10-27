@@ -21,33 +21,24 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/util/BasicArrayList.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <org/allbinary/business/category/CategoryInterface.h>
-
-      
 #include <org/allbinary/data/tables/TableMappingInterface.h>
-
-      
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
-
-      
-#include <org/allbinary/logic/visual/theme/ThemeValidation.h>
-
-      
+class ThemeValidation;
 #include <org/allbinary/logic/visual/transform/info/CompositeTransformInfoInterface.h>
-
-      
 
 
 
@@ -67,6 +58,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreThemeCategoryInterface: public CategoryInterface, public TableMappingInterface, public ValidationInterface, public CompositeTransformInfoInterface {
 
     public: virtual void addTheme(ThemeValidation* themeValidation) = 0;
@@ -79,3 +74,29 @@ class StoreThemeCategoryInterface: public CategoryInterface, public TableMapping
 
 
         #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/category/CategoryInterface.h>)
+#include <org/allbinary/business/category/CategoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/TableMappingInterface.h>)
+#include <org/allbinary/data/tables/TableMappingInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/theme/ThemeValidation.h>)
+#include <org/allbinary/logic/visual/theme/ThemeValidation.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/CompositeTransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/CompositeTransformInfoInterface.h>
+#endif
+
+        #endif
+    

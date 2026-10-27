@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORMIRRORGENERATOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORMIRRORGENERATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorMirrorGenerator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -71,31 +81,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/VectorAnimationUtil.h"
 
-class VectorMirrorGenerator
-            : public Object
-         {
+auto VectorMirrorGenerator::instance_owner() -> VectorMirrorGenerator* { static std::unique_ptr<VectorMirrorGenerator> value(new VectorMirrorGenerator()); return value.get(); }
+VectorMirrorGenerator* VectorMirrorGenerator::instance = VectorMirrorGenerator::instance_owner();
 
-    private: static VectorMirrorGenerator* instance() { static std::unique_ptr<VectorMirrorGenerator> value(new VectorMirrorGenerator()); return value.get(); }
-
-    public: static VectorMirrorGenerator* getInstance(){
+    auto VectorMirrorGenerator::getInstance() -> VectorMirrorGenerator*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorMirrorGenerator::instance();
+                        return VectorMirrorGenerator::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: VectorAnimationUtil* vectorAnimationUtil = VectorAnimationUtil::getInstance();
-
-private: VectorMirrorGenerator(){
+VectorMirrorGenerator::VectorMirrorGenerator() : logUtil(LogUtil::getInstance()), vectorAnimationUtil(VectorAnimationUtil::getInstance()){
 }
 
 
-    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<std::vector<int32_t>>> points, int32_t width){
+    auto VectorMirrorGenerator::getInstance(std::vector<std::vector<std::vector<int32_t>>> points, int32_t width) -> std::vector<std::vector<std::vector<int32_t>>>{
 
         try {
             
@@ -186,7 +189,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getInstance(BasicArrayList* pointBasicArrayList, int32_t width){
+    auto VectorMirrorGenerator::getInstance(BasicArrayList* pointBasicArrayList, int32_t width) -> BasicArrayList*{
 
     BasicGraphicsPipeline* graphicsPipe = new BasicGraphicsPipeline(pointBasicArrayList);;
     
@@ -203,7 +206,6 @@ graphicsPipe->mirror(width);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORMIRRORGENERATOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/Advertisements.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,15 +68,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/AdvertisementProcessorInterface.h"
 
-class Advertisements
-            : public Object
-         {
 
-    private: BasicArrayList* bannerList = new BasicArrayListD();
-
-    private: BasicArrayList* pageList = new BasicArrayListD();
-
-    public: void addPage(AdvertisementProcessorInterface* advertisementProcessorInterface){
+Advertisements::Advertisements() : bannerList(new BasicArrayListD()), pageList(new BasicArrayListD()), myRandomFactory(MyRandomFactory::getInstance()) {
+        }
+        
+    auto Advertisements::addPage(AdvertisementProcessorInterface* advertisementProcessorInterface) -> void{
 
                         if(!this->pageList->contains(advertisementProcessorInterface))
                         
@@ -79,7 +85,7 @@ class Advertisements
 }
 
 
-    public: void startRandomPage(){
+    auto Advertisements::startRandomPage() -> void{
 
     int32_t size = this->pageList->size();;
     
@@ -101,9 +107,7 @@ advertisementProcessorInterface->start();
 }
 
 
-    private: MyRandomFactory* myRandomFactory = MyRandomFactory::getInstance();
-
-    public: void processRandomPage(){
+    auto Advertisements::processRandomPage() -> void{
 
                         if(LockedUtil::getInstance()->isLocked())
                         
@@ -132,7 +136,7 @@ advertisementProcessorInterface->process();
 }
 
 
-    public: void stopAllPage(){
+    auto Advertisements::stopAllPage() -> void{
 
 
 
@@ -150,7 +154,7 @@ advertisementProcessorInterface->stop();
 }
 
 
-    public: void addBanner(AdvertisementProcessorInterface* advertisementProcessorInterface){
+    auto Advertisements::addBanner(AdvertisementProcessorInterface* advertisementProcessorInterface) -> void{
 
                         if(!this->bannerList->contains(advertisementProcessorInterface))
                         
@@ -163,7 +167,7 @@ advertisementProcessorInterface->stop();
 }
 
 
-    public: void startAll(){
+    auto Advertisements::startAll() -> void{
 
 
 
@@ -181,7 +185,7 @@ advertisementProcessorInterface->start();
 }
 
 
-    public: void stopAllBanner(){
+    auto Advertisements::stopAllBanner() -> void{
 
 
 
@@ -199,7 +203,7 @@ advertisementProcessorInterface->stop();
 }
 
 
-    public: AdvertisementProcessorInterface* getBanner(int32_t index){
+    auto Advertisements::getBanner(int32_t index) -> AdvertisementProcessorInterface*{
 
     AdvertisementProcessorInterface* advertisementProcessorInterface = dynamic_cast<AdvertisementProcessorInterface*>(this->bannerList->objectArray[index]);;
     
@@ -212,7 +216,7 @@ advertisementProcessorInterface->stop();
 }
 
 
-    public: void stopAll(){
+    auto Advertisements::stopAll() -> void{
 this->stopAllBanner();
     
 this->stopAllPage();
@@ -220,7 +224,6 @@ this->stopAllPage();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_CPP

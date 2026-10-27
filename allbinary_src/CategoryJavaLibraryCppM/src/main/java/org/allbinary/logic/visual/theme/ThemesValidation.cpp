@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMESVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMESVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/theme/ThemesValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,25 +80,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/theme/ThemesData.h"
 
-class ThemesValidation: public Validation, public DomNodeInterface {
 
-    private: BasicArrayList* themeVector;
-
-public: ThemesValidation(){
+ThemesValidation::ThemesValidation(){
 this->themeVector= new BasicArrayListD();
     
 }
 
 
-public: ThemesValidation(Node* node){
+ThemesValidation::ThemesValidation(Node* node){
 }
 
 
-public: ThemesValidation(HashMap<Object*, Object*>* hashMap){
+ThemesValidation::ThemesValidation(HashMap<Object*, Object*>* hashMap){
 }
 
 
-    public: bool isValid(){
+    auto ThemesValidation::isValid() -> bool{
 
 
 
@@ -98,7 +105,7 @@ public: ThemesValidation(HashMap<Object*, Object*>* hashMap){
 }
 
 
-    public: std::string validationInfo(){
+    auto ThemesValidation::validationInfo() -> std::string{
 
 
 
@@ -108,7 +115,7 @@ public: ThemesValidation(HashMap<Object*, Object*>* hashMap){
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto ThemesValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -118,7 +125,7 @@ public: ThemesValidation(HashMap<Object*, Object*>* hashMap){
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto ThemesValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -130,7 +137,7 @@ public: ThemesValidation(HashMap<Object*, Object*>* hashMap){
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ThemesValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(ThemesData::getInstance()->NAME);;
     
@@ -160,7 +167,6 @@ node->appendChild(themeDomNodeInterface->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMESVALIDATION_CPP

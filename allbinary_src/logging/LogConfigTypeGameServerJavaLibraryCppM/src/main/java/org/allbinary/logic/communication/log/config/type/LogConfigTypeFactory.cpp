@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,41 +62,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
 
-class LogConfigTypeFactory
-            : public Object
-         {
+auto LogConfigTypeFactory::instance_owner() -> LogConfigTypeFactory* { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
+LogConfigTypeFactory* LogConfigTypeFactory::instance = LogConfigTypeFactory::instance_owner();
 
-    private: static LogConfigTypeFactory* instance() { static std::unique_ptr<LogConfigTypeFactory> value(new LogConfigTypeFactory()); return value.get(); }
-
-    public: static LogConfigTypeFactory* getInstance(){
+    auto LogConfigTypeFactory::getInstance() -> LogConfigTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogConfigTypeFactory::instance();
+                        return LogConfigTypeFactory::instance;
     
 }
 
 
-    private: const std::string NO_DESCRIPTION = "No Description";
-
-    public: LogConfigType* INIT_SERVER = new LogConfigType("Init Server", this->NO_DESCRIPTION);
-
-    public: LogConfigType* LOBBY_SERVER = new LogConfigType("Lobby Server", this->NO_DESCRIPTION);
-
-    public: LogConfigType* GAME_SERVER = new LogConfigType("Game Server", this->NO_DESCRIPTION);
-
-    public: LogConfigType* GAME_SIMULATOR = new LogConfigType("Game Simulator", this->NO_DESCRIPTION);
-
-    public: LogConfigType* CUSTOM_TYPES = new LogConfigType("Custom Types", this->NO_DESCRIPTION);
-
-private: LogConfigTypeFactory(){
-LogConfigTypes::LOGGING.add(this->INIT_SERVER);
+LogConfigTypeFactory::LogConfigTypeFactory() : INIT_SERVER(new LogConfigType("Init Server", this->NO_DESCRIPTION)), LOBBY_SERVER(new LogConfigType("Lobby Server", this->NO_DESCRIPTION)), GAME_SERVER(new LogConfigType("Game Server", this->NO_DESCRIPTION)), GAME_SIMULATOR(new LogConfigType("Game Simulator", this->NO_DESCRIPTION)), CUSTOM_TYPES(new LogConfigType("Custom Types", this->NO_DESCRIPTION)){
+LogConfigTypes::LOGGING->add(this->INIT_SERVER);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPEFACTORY_CPP

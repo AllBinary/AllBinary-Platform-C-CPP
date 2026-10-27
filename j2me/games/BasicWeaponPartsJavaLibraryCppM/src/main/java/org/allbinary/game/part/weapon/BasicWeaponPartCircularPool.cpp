@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_CPP
+        #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/weapon/BasicWeaponPartCircularPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,17 +71,15 @@
         #include "org/allbinary/game/part/weapon/BasicWeaponPart.h"
 #include "org/allbinary/game/part/weapon/BasicWeaponPartFactoryInterface.h"
 
-class BasicWeaponPartCircularPool
-            : public Object
-         {
 
-    public: static BasicWeaponPartCircularPool* NULL_BASIC_WEAPON_PART_CIRCULAR_POOL() { static std::unique_ptr<BasicWeaponPartCircularPool> value(new BasicWeaponPartCircularPool()); return value.get(); }
-
-    private: BasicWeaponPart* basicWeaponPart = BasicWeaponPart::NULL_BASIC_WEAPON_PART;
+BasicWeaponPartCircularPool::BasicWeaponPartCircularPool() : basicWeaponPart(BasicWeaponPart::NULL_BASIC_WEAPON_PART) {
+        }
+        auto BasicWeaponPartCircularPool::NULL_BASIC_WEAPON_PART_CIRCULAR_POOL_owner() -> BasicWeaponPartCircularPool* { static std::unique_ptr<BasicWeaponPartCircularPool> value(new BasicWeaponPartCircularPool()); return value.get(); }
+BasicWeaponPartCircularPool* BasicWeaponPartCircularPool::NULL_BASIC_WEAPON_PART_CIRCULAR_POOL = BasicWeaponPartCircularPool::NULL_BASIC_WEAPON_PART_CIRCULAR_POOL_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(BasicWeaponPartFactoryInterface* basicWeaponPartFactoryInterface){
+    auto BasicWeaponPartCircularPool::init(BasicWeaponPartFactoryInterface* basicWeaponPartFactoryInterface) -> void{
 this->basicWeaponPart= basicWeaponPartFactoryInterface->getInstance();
     
 }
@@ -80,7 +88,7 @@ this->basicWeaponPart= basicWeaponPartFactoryInterface->getInstance();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: BasicWeaponPart* getInstance(AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship){
+    auto BasicWeaponPartCircularPool::getInstance(AllBinaryLayer* sourceLayerInterface, WeaponProperties* weaponProperties, ScoreableInterface* scoreableInterface, RelativeRelationship* relativeRelationship) -> BasicWeaponPart*{
 this->basicWeaponPart->init(sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
     
 
@@ -92,7 +100,6 @@ this->basicWeaponPart->init(sourceLayerInterface, weaponProperties, scoreableInt
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTCIRCULARPOOL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP
+        #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/emulator/device/TrueTypeFontUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,23 +70,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 
-class TrueTypeFontUtil: public TrueTypeFontUtilBase {
+auto TrueTypeFontUtil::instance_owner() -> TrueTypeFontUtil* { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
+TrueTypeFontUtil* TrueTypeFontUtil::instance = TrueTypeFontUtil::instance_owner();
 
-    private: static TrueTypeFontUtil* instance() { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
-
-    public: static TrueTypeFontUtil* getInstance(){
+    auto TrueTypeFontUtil::getInstance() -> TrueTypeFontUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrueTypeFontUtil::instance();
+                        return TrueTypeFontUtil::instance;
     
 }
 
 
-    public: OpenGLESImage* fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
-
-private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
+TrueTypeFontUtil::TrueTypeFontUtil() : TrueTypeFontUtilBase(1), fontImage(OpenGLESImage::NULL_OPENGL_IMAGE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,56 +93,55 @@ private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
 }
 
 
-    public: int32_t getAsTextureSize(int32_t textureSize){
+    auto TrueTypeFontUtil::getAsTextureSize(int32_t textureSize) -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t getCellSize(int32_t cellSize){
+    auto TrueTypeFontUtil::getCellSize(int32_t cellSize) -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: Image* getFontBitmap(std::string filename, int32_t fontSize, int32_t cellSize, BasicColor* basicColor){
+    auto TrueTypeFontUtil::getFontBitmap(std::string filename, int32_t fontSize, int32_t cellSize, BasicColor* basicColor) -> Image*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void saveFontAtlasAsFile(){
+    auto TrueTypeFontUtil::saveFontAtlasAsFile() -> void{
 }
 
 
-    public: Image* getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor){
+    auto TrueTypeFontUtil::getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor) -> Image*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::vector<int32_t> getFontWidths(std::string filename, int32_t fontSize){
+    auto TrueTypeFontUtil::getFontWidths(std::string filename, int32_t fontSize) -> std::vector<int32_t>{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP

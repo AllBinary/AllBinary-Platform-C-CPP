@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H
         #define ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>
-
-      
-#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h>
-
-      
+class TileLayerPositionIntoViewPosition;
+class AllBinaryGameCanvas;
+class AllBinaryTiledLayer;
+class BasicGeographicMap;
+class GeographicMapCompositeInterface;
 
 
 
@@ -63,15 +58,45 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TileLayerPositionIntoViewPositionUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static void init(AllBinaryGameCanvas* gameCanvasInterface, TileLayerPositionIntoViewPosition* viewPosition);
 
+
+            
+    public: TileLayerPositionIntoViewPositionUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>)
+#include <org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>
+#endif
+#if __has_include(<org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>)
+#include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryTiledLayer.h>)
+#include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>)
+#include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h>
+#endif
+
+        #endif
+    

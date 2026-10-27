@@ -17,6 +17,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENT_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/capital/event/CapitalEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CapitalEvent: public AllBinaryEventObject {
 
-    private: int32_t value= 0;
-
-public: CapitalEvent(Object* anyType) : AllBinaryEventObject(anyType){
+CapitalEvent::CapitalEvent(Object* anyType) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,7 +71,7 @@ public: CapitalEvent(Object* anyType) : AllBinaryEventObject(anyType){
 }
 
 
-    public: std::string toString(){
+    auto CapitalEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -81,7 +88,7 @@ stringBuffer->appendint(this->getValue());
 }
 
 
-    public: int32_t getValue(){
+    auto CapitalEvent::getValue() -> int32_t{
 
 
 
@@ -91,13 +98,12 @@ stringBuffer->appendint(this->getValue());
 }
 
 
-    public: void setValue(int32_t value){
+    auto CapitalEvent::setValue(int32_t value) -> void{
 this->value= value;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENT_CPP

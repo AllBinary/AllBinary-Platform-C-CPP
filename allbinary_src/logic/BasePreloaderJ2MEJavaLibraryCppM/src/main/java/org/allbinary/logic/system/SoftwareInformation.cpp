@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SOFTWAREINFORMATION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SOFTWAREINFORMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/SoftwareInformation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,17 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SoftwareInformation
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: std::string shortName;
-
-    private: std::string version;
-
-public: SoftwareInformation(std::string name, std::string version, std::string shortName){
+SoftwareInformation::SoftwareInformation(std::string name, std::string version, std::string shortName){
 this->name= name;
     
 this->version= version;
@@ -74,7 +75,7 @@ this->shortName= (new StringMaker())->append(shortName)->append(KotlinUtil::getS
 }
 
 
-    public: std::string getName(){
+    auto SoftwareInformation::getName() -> std::string{
 
 
 
@@ -84,7 +85,7 @@ this->shortName= (new StringMaker())->append(shortName)->append(KotlinUtil::getS
 }
 
 
-    public: std::string getVersion(){
+    auto SoftwareInformation::getVersion() -> std::string{
 
 
 
@@ -94,7 +95,7 @@ this->shortName= (new StringMaker())->append(shortName)->append(KotlinUtil::getS
 }
 
 
-    public: std::string toShortString(){
+    auto SoftwareInformation::toShortString() -> std::string{
 
 
 
@@ -104,7 +105,7 @@ this->shortName= (new StringMaker())->append(shortName)->append(KotlinUtil::getS
 }
 
 
-    public: std::string toString(){
+    auto SoftwareInformation::toString() -> std::string{
 
     std::string NAME = "Name: ";;
     
@@ -133,7 +134,6 @@ stringBuffer->append(this->getVersion());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SOFTWAREINFORMATION_CPP

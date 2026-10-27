@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSOURCE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSOURCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/tools/event/MyGraphicItemEventSource.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MyGraphicItemEventSource
-            : public Object
-         {
 
-    private: std::string command;
-
-    private: MutableTreeNode* treeNode;
-
-    private: double angle = 0;
-
-public: MyGraphicItemEventSource(std::string command, MutableTreeNode* treeNode){
+MyGraphicItemEventSource::MyGraphicItemEventSource(std::string command, MutableTreeNode* treeNode){
 this->command= command;
     
 this->treeNode= treeNode;
@@ -66,7 +67,7 @@ this->treeNode= treeNode;
 }
 
 
-public: MyGraphicItemEventSource(std::string command, double angle, MutableTreeNode* treeNode){
+MyGraphicItemEventSource::MyGraphicItemEventSource(std::string command, double angle, MutableTreeNode* treeNode){
 this->command= command;
     
 this->treeNode= treeNode;
@@ -76,7 +77,7 @@ this->setAngle(angle);
 }
 
 
-    public: std::string getCommand(){
+    auto MyGraphicItemEventSource::getCommand() -> std::string{
 
 
 
@@ -86,7 +87,7 @@ this->setAngle(angle);
 }
 
 
-    public: MutableTreeNode* getTreeNode(){
+    auto MyGraphicItemEventSource::getTreeNode() -> MutableTreeNode*{
 
 
 
@@ -96,7 +97,7 @@ this->setAngle(angle);
 }
 
 
-    public: double getAngle(){
+    auto MyGraphicItemEventSource::getAngle() -> double{
 
 
 
@@ -106,13 +107,12 @@ this->setAngle(angle);
 }
 
 
-    public: void setAngle(double angle){
+    auto MyGraphicItemEventSource::setAngle(double angle) -> void{
 this->angle= angle;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSOURCE_CPP

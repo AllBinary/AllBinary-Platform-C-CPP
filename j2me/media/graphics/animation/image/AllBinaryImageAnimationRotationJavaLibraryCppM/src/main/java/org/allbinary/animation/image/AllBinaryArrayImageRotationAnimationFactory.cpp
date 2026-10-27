@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AllBinaryArrayImageRotationAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -77,11 +87,10 @@
 #include "org/allbinary/animation/image/ImageArrayRotationAnimation.h"
 #include "org/allbinary/animation/image/AdjustedImageArrayRotationAnimation.h"
 
-class AllBinaryArrayImageRotationAnimationFactory: public BaseImageAnimationFactory {
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryArrayImageRotationAnimationFactory* createFactory(Image* image, int32_t dx, int32_t dy){
+    auto AllBinaryArrayImageRotationAnimationFactory::createFactory(Image* image, int32_t dx, int32_t dy) -> AllBinaryArrayImageRotationAnimationFactory*{
 
     AllBinaryArrayImageRotationAnimationFactory* arrayImageRotationAnimationFactory = new AllBinaryArrayImageRotationAnimationFactory(image, image->getWidth(), image->getHeight(), AngleFactory::getInstance()->TOTAL_ANGLE /GameConfigurationCentral::getInstance()->getGameControlFidelity(), AnimationBehaviorFactory::getInstance());;
     
@@ -98,7 +107,7 @@ arrayImageRotationAnimationFactory->initDXY(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: static AllBinaryArrayImageRotationAnimationFactory* createFactoryA(Image* image, int32_t dx, int32_t dy, int32_t angleIncrement){
+    auto AllBinaryArrayImageRotationAnimationFactory::createFactoryA(Image* image, int32_t dx, int32_t dy, int32_t angleIncrement) -> AllBinaryArrayImageRotationAnimationFactory*{
 
     AllBinaryArrayImageRotationAnimationFactory* arrayImageRotationAnimationFactory = new AllBinaryArrayImageRotationAnimationFactory(image, image->getWidth(), image->getHeight(), angleIncrement, AnimationBehaviorFactory::getInstance());;
     
@@ -113,11 +122,7 @@ arrayImageRotationAnimationFactory->initDXY(dx, dy);
 }
 
 
-    private: std::vector<Image*> imageArray = NullImage::NULL_IMAGE_ARRAY;
-
-    private: int32_t angleIncrement;
-
-public: AllBinaryArrayImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
+AllBinaryArrayImageRotationAnimationFactory::AllBinaryArrayImageRotationAnimationFactory(Image* image, int32_t width, int32_t height, int32_t angleIncrement, AnimationBehaviorFactory* animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory), imageArray(NullImage::NULL_IMAGE_ARRAY){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -133,27 +138,27 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    private: void init(){
+    auto AllBinaryArrayImageRotationAnimationFactory::init() -> void{
 this->setImageArray(ImageToRotationImageArrayUtil::getInstance()->generate(this->getImage(), this->getAngleIncrement(), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE)));
     
 }
 
 
-    private: void initDXY(int32_t dx, int32_t dy){
-this->animationFactoryInitializationVisitor.dx= dx;
+    auto AllBinaryArrayImageRotationAnimationFactory::initDXY(int32_t dx, int32_t dy) -> void{
+this->animationFactoryInitializationVisitor->dx= dx;
     
-this->animationFactoryInitializationVisitor.dy= dy;
+this->animationFactoryInitializationVisitor->dy= dy;
     
-this->animationFactoryInitializationVisitor.originalDx= dx;
+this->animationFactoryInitializationVisitor->originalDx= dx;
     
-this->animationFactoryInitializationVisitor.originalDy= dy;
+this->animationFactoryInitializationVisitor->originalDy= dy;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto AllBinaryArrayImageRotationAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
     std::vector<Image*> scaledImageArray = std::vector<Image*>(this->imageArray.length);;
     
@@ -170,21 +175,21 @@ this->animationFactoryInitializationVisitor.originalDy= dy;
                         for (
     int32_t index = 0;index < size; index++)
         {
-scaledImageArray[index]= this->animationFactoryImageScaleUtil.createImage(image, image->getWidth(), image->getHeight(), this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);
+scaledImageArray[index]= this->animationFactoryImageScaleUtil->createImage(image, image->getWidth(), image->getHeight(), this->scaleProperties->scaleWidth, this->scaleProperties->scaleHeight);
     
 }
 
 
-                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
+                        if(this->animationFactoryInitializationVisitor->dx != 0 || this->animationFactoryInitializationVisitor->dy != 0)
                         
                                     {
-                                    this->animationFactoryImageScaleUtil.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil->processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdjustedImageArrayRotationAnimation(scaledImageArray, AngleInfo::getInstance(this->getAngleIncrement()), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE), this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
+                        return new AdjustedImageArrayRotationAnimation(scaledImageArray, AngleInfo::getInstance(this->getAngleIncrement()), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE), this->animationFactoryInitializationVisitor->dx, this->animationFactoryInitializationVisitor->dy, this->animationBehaviorFactory->getOrCreateInstance());
     
 
                                     }
@@ -194,7 +199,7 @@ scaledImageArray[index]= this->animationFactoryImageScaleUtil.createImage(image,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ImageArrayRotationAnimation(scaledImageArray, AngleInfo::getInstance(this->getAngleIncrement()), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE), this->animationBehaviorFactory.getOrCreateInstance());
+                        return new ImageArrayRotationAnimation(scaledImageArray, AngleInfo::getInstance(this->getAngleIncrement()), static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE), this->animationBehaviorFactory->getOrCreateInstance());
     
 
                         }
@@ -202,13 +207,13 @@ scaledImageArray[index]= this->animationFactoryImageScaleUtil.createImage(image,
 }
 
 
-    protected: void setImageArray(std::vector<Image*> imageArray){
+    auto AllBinaryArrayImageRotationAnimationFactory::setImageArray(std::vector<Image*> imageArray) -> void{
 this->imageArray= imageArray;
     
 }
 
 
-    protected: int32_t getAngleIncrement(){
+    auto AllBinaryArrayImageRotationAnimationFactory::getAngleIncrement() -> int32_t{
 
 
 
@@ -218,7 +223,6 @@ this->imageArray= imageArray;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_CPP

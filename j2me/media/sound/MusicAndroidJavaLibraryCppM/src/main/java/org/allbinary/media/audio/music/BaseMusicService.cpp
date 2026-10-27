@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/music/BaseMusicService.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,27 +80,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/music/MusicStrings.h"
 
-class BaseMusicService: public Service {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CommonStateStrings* commonStateStrings = CommonStateStrings::getInstance();
-
-    private: const std::string ALREADY_PLAYING = "This is one song per music service";
-
-    private: const std::string WAITING_FOR_MUSIC_TO_END = "Waiting for music to end";
-
-    private: MediaPlayer* player = NullAndroidCanvas::NULL_MEDIA_PLAYER;
-
-    private: int32_t songId =  -1;
-
-    private: int32_t leftVolume =  -1;
-
-    private: int32_t rightVolume =  -1;
-
-    public: IBinder* onBind(Intent* intent){
+BaseMusicService::BaseMusicService() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), commonStateStrings(CommonStateStrings::getInstance()), player(NullAndroidCanvas::NULL_MEDIA_PLAYER) {
+        }
+        
+    auto BaseMusicService::onBind(Intent* intent) -> IBinder*{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->BIND);
     
 
@@ -102,13 +96,13 @@ this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->
 }
 
 
-    public: void onCreate(){
+    auto BaseMusicService::onCreate() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->CREATE);
     
 }
 
 
-    public: void onDestroy(){
+    auto BaseMusicService::onDestroy() -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->DESTROY);
     
 
@@ -129,7 +123,7 @@ this->player->release();
 }
 
 
-    public: void pause(){
+    auto BaseMusicService::pause() -> void{
 
                         if(this->player != NullAndroidCanvas::NULL_MEDIA_PLAYER)
                         
@@ -144,7 +138,7 @@ this->player->pause();
 }
 
 
-    public: void resume(){
+    auto BaseMusicService::resume() -> void{
 
                         if(this->player != NullAndroidCanvas::NULL_MEDIA_PLAYER && !this->player->isPlaying())
                         
@@ -159,7 +153,7 @@ this->player->start();
 }
 
 
-    public: void start(){
+    auto BaseMusicService::start() -> void{
 this->player= MediaPlayer::create(this, this->songId);
     
 this->player->setVolume((this->leftVolume) /100.0, (this->rightVolume) /100.0);
@@ -171,7 +165,7 @@ this->player->start();
 }
 
 
-    public: void onStart(Intent* intent, int32_t startid){
+    auto BaseMusicService::onStart(Intent* intent, int32_t startid) -> void{
 this->onStartCommandIntent(intent);
     
 this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->START);
@@ -179,7 +173,7 @@ this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->
 }
 
 
-    public: int32_t onStartCommand(Intent* intent, int32_t flags, int32_t startId){
+    auto BaseMusicService::onStartCommand(Intent* intent, int32_t flags, int32_t startId) -> int32_t{
 this->onStartCommandIntent(intent);
     
 
@@ -191,7 +185,7 @@ this->onStartCommandIntent(intent);
 }
 
 
-    public: void onStartCommandIntent(Intent* intent){
+    auto BaseMusicService::onStartCommandIntent(Intent* intent) -> void{
 this->logUtil->putF(this->commonStrings->START, this, this->commonStateStrings->ON_START_COMMAND);
     
 
@@ -255,7 +249,7 @@ this->rightVolume= intent->getIntExtra(musicStrings->RIGHT_VOLUME,  -1);
                             
 
 
-                            throw new RuntimeException("Started service without intent");
+                            throw RuntimeException("Started service without intent");
                     
 
                         }
@@ -352,7 +346,6 @@ this->start();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_BASEMUSICSERVICE_CPP

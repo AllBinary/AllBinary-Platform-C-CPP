@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/HealthBar.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,15 +68,8 @@
 #include "org/allbinary/game/health/HealthInterface.h"
 #include "org/allbinary/game/health/Health.h"
 
-class HealthBar: public Paintable, public HealthListenerInterface {
 
-    private: HealthBarAnimation* animationInterface;
-
-    private: HealthInterface* healthInterface;
-
-    protected: AllBinaryLayer* allbinaryLayer;
-
-public: HealthBar(AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction){
+HealthBar::HealthBar(AllBinaryLayer* layerInterface, Health* healthInterface, HealthBarAnimation* animationInterface, int32_t direction){
 this->allbinaryLayer= layerInterface;
     
 this->animationInterface= animationInterface;
@@ -80,25 +83,24 @@ this->onHealthChange();
 }
 
 
-    public: void onHealthChange(){
+    auto HealthBar::onHealthChange() -> void{
 this->animationInterface->onHealthChange(this->healthInterface->getHealth() *this->allbinaryLayer->getWidth() /this->healthInterface->getMaxHealth());
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto HealthBar::paint(Graphics* graphics) -> void{
 this->animationInterface->paintXY(graphics, 0, 0);
     
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto HealthBar::paintThreed(Graphics* graphics) -> void{
 this->animationInterface->paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBAR_CPP

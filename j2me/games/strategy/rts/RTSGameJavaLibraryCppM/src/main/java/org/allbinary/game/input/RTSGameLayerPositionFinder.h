@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_H
         #define ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/drop/DropCellPositionHistory.h>
-
-      
+class AllBinaryLayer;
+class GeographicMapCellPosition;
+class DropCellPositionHistory;
 
 
 
@@ -58,11 +57,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/LayerPositionFinderInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSGameLayerPositionFinder
-            : public Object
+            : public virtual Object
         , public LayerPositionFinderInterface {
 
-    private: static RTSGameLayerPositionFinder* instance() { static std::unique_ptr<RTSGameLayerPositionFinder> value(new RTSGameLayerPositionFinder()); return value.get(); }
+    private: static RTSGameLayerPositionFinder* instance_owner();
+    private: static RTSGameLayerPositionFinder* instance;
 
     public: static RTSGameLayerPositionFinder* getInstance();
 
@@ -76,3 +80,22 @@ private: RTSGameLayerPositionFinder();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_RTSGAMELAYERPOSITIONFINDER_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/drop/DropCellPositionHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/drop/DropCellPositionHistory.h>
+#endif
+#if __has_include("org/allbinary/game/input/LayerPositionFinderInterface.h")
+#include "org/allbinary/game/input/LayerPositionFinderInterface.h"
+#endif
+
+        #endif
+    

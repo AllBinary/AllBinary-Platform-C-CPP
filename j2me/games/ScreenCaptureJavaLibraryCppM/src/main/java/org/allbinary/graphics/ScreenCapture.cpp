@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_SCREENCAPTURE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_SCREENCAPTURE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/ScreenCapture.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,23 +55,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScreenCapture
-            : public Object
-         {
 
-    public: void saveFrame(){
+ScreenCapture::ScreenCapture() {
+        }
+        
+    auto ScreenCapture::saveFrame() -> void{
 }
 
 
-    public: void startRecording(){
+    auto ScreenCapture::startRecording() -> void{
 }
 
 
-    public: void endRecording(){
+    auto ScreenCapture::endRecording() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_SCREENCAPTURE_CPP

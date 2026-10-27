@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +52,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/LocationPaintable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullLocationPaintable: public LocationPaintable {
 
-    private: static NullLocationPaintable* instanceC() { static std::unique_ptr<NullLocationPaintable> value(new NullLocationPaintable()); return value.get(); }
+    private: static NullLocationPaintable* instanceC_owner();
+    private: static NullLocationPaintable* instanceC;
 
     public: static NullLocationPaintable* getInstance();
 
+
+            
+    public: NullLocationPaintable();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_NULLLOCATIONPAINTABLE_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/paint/LocationPaintable.h")
+#include "org/allbinary/graphics/paint/LocationPaintable.h"
+#endif
+
+        #endif
+    

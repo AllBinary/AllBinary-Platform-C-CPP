@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_HTTPCOMPONENTVIEW_CPP
+        #define VIEWS_HTTPCOMPONENTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/HttpComponentView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,17 +103,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HttpComponentView: public TransformInfoHttpComposite, public TransformInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-    private: BasicArrayList* domNodeInterfaceVector;
-
-    private: TransformDocumentInterface* transformDocumentInterface;
-
-public: HttpComponentView(TransformInfoInterface* transformInfoInterface) : TransformInfoHttpComposite(transformInfoInterface){
+HttpComponentView::HttpComponentView(TransformInfoInterface* transformInfoInterface) : TransformInfoHttpComposite(transformInfoInterface), logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -111,10 +112,10 @@ public: HttpComponentView(TransformInfoInterface* transformInfoInterface) : Tran
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -126,9 +127,7 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
 }
 
 
-    public: int32_t NO_TYPE = 0;
-
-    public: int32_t getTypeId(){
+    auto HttpComponentView::getTypeId() -> int32_t{
 
 
 
@@ -138,7 +137,7 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
 }
 
 
-    public: TransformDocumentInterface* getTransformDocumentInterface(){
+    auto HttpComponentView::getTransformDocumentInterface() -> TransformDocumentInterface*{
 
 
 
@@ -148,13 +147,13 @@ this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInst
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface){
+    auto HttpComponentView::setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface) -> void{
 this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public: void addDomNodeInterface(DomNodeInterface* domNodeInterface){
+    auto HttpComponentView::addDomNodeInterface(DomNodeInterface* domNodeInterface) -> void{
 this->domNodeInterfaceVector->add(domNodeInterface);
     
 }
@@ -162,7 +161,7 @@ this->domNodeInterfaceVector->add(domNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto HttpComponentView::toXmlDoc() -> Document*{
 
         try {
             
@@ -193,10 +192,10 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlDoc()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlDoc()", &e);
     
 
                                     }
@@ -213,7 +212,7 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 
                 //@Throws(Exception.constructor)
             
-    public: Document* getDoc(){
+    auto HttpComponentView::getDoc() -> Document*{
 
     Document* document = this->getTransformInfoInterface()->getDataDocument();;
     
@@ -254,7 +253,7 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto HttpComponentView::view() -> std::string{
 
         try {
             this->toXmlDoc();
@@ -276,10 +275,10 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -294,7 +293,6 @@ this->transformDocumentInterface->getBaseNode()->appendChild(domNodeInterface->t
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_HTTPCOMPONENTVIEW_CPP

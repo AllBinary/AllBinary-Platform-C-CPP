@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -35,27 +40,13 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/RotationAnimation.h>
-
-      
-#include <org/allbinary/game/identification/Group.h>
-
-      
-#include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPositionTracking.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class Graphics;
+class RotationAnimation;
+class Group;
+class BasicDecimal;
+class GeographicMapCellHistory;
+class GeographicMapCellPositionTracking;
+class BasicArrayList;
 
 
 
@@ -75,14 +66,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/VehicleLayerInterface.h"
-#include "org/allbinary/game/layer/VehicleProperties.h"
+class VehicleProperties;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullVehicleLayer
-            : public Object
+            : public virtual Object
         , public VehicleLayerInterface {
 
-    public: static NullVehicleLayer* NULL_VEHICLE_LAYER() { static std::unique_ptr<NullVehicleLayer> value(new NullVehicleLayer()); return value.get(); }
+    private: static NullVehicleLayer* NULL_VEHICLE_LAYER_owner();
+    public: static NullVehicleLayer* NULL_VEHICLE_LAYER;
 
+
+            
+    public: NullVehicleLayer();
+        
     public: std::string getName();
 
     public: std::vector<Group*> getGroupInterface();
@@ -163,3 +163,37 @@ class NullVehicleLayer
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/RotationAnimation.h>)
+#include <org/allbinary/animation/RotationAnimation.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/BasicDecimal.h>)
+#include <org/allbinary/logic/math/BasicDecimal.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPositionTracking.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPositionTracking.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/layer/VehicleLayerInterface.h")
+#include "org/allbinary/game/layer/VehicleLayerInterface.h"
+#endif
+#if __has_include("org/allbinary/game/layer/VehicleProperties.h")
+#include "org/allbinary/game/layer/VehicleProperties.h"
+#endif
+
+        #endif
+    

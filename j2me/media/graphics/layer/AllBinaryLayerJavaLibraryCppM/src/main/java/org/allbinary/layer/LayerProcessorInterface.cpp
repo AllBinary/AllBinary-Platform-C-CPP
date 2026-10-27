@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_LAYERPROCESSORINTERFACE_CPP
+        #define ORG_ALLBINARY_LAYER_LAYERPROCESSORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/LayerProcessorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,19 +59,8 @@
 #include "org/allbinary/layer/AllBinaryLayerManager.h"
 #include "org/allbinary/layer/AllBinaryLayer.h"
 
-class LayerProcessorInterface: public BasicLayerProcessorInterface {
+//Interface - declared in the header
 
-    public: virtual LayerManager* getLayerManager() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isProcessorLayer(AllBinaryLayer* layerInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LAYER_LAYERPROCESSORINTERFACE_CPP

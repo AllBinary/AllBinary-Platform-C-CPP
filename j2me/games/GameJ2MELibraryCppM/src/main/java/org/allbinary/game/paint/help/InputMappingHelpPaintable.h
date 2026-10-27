@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_HELP_INPUTMAPPINGHELPPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_HELP_INPUTMAPPINGHELPPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,63 +34,25 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/input/GameKey.h>
-
-      
-#include <org/allbinary/game/input/GameKeyFactory.h>
-
-      
-#include <org/allbinary/game/input/Input.h>
-
-      
-#include <org/allbinary/game/input/PlatformInputMappingFactory.h>
-
-      
-#include <org/allbinary/game/input/mapping/GameInputMapping.h>
-
-      
-#include <org/allbinary/game/input/mapping/PersistentInputMapping.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorUtil.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class Font;
+class Graphics;
+class GameKey;
+class GameKeyFactory;
+class Input;
+class PlatformInputMappingFactory;
+class GameInputMapping;
+class PersistentInputMapping;
+class BasicColor;
+class BasicColorFactory;
+class BasicColorUtil;
+class NullUtil;
+class LogUtil;
+class StringMaker;
+class StringUtil;
+class CommonLabels;
+class CommonSeps;
+class CommonStrings;
+class BasicArrayList;
 
 
 
@@ -105,9 +72,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/paint/help/HelpPaintable.h"
-//#include "org/allbinary/game/paint/help/UpdateMyFontProperties.h"
+//class UpdateMyFontProperties;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputMappingHelpPaintable: public HelpPaintable {
+private: class UpdateMyFontProperties;
 
     private: static inline const std::string AND = " and ";
 
@@ -115,57 +87,61 @@ class InputMappingHelpPaintable: public HelpPaintable {
 
     private: static inline const std::string MORE_THAN_TWO_IN_LIST_AND = ", and ";
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
+    /*protected*/ public: CommonSeps* commonSeps;
 
-    protected: StringUtil* stringUtil = StringUtil::getInstance();
+    /*protected*/ public: StringUtil* stringUtil;
 
-    private: BasicColorFactory* basicColorFactory = BasicColorFactory::getInstance();
+    private: BasicColorFactory* basicColorFactory;
 
-    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
+    private: GameKey* NONE;
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
+    private: const std::string EMPTY_STRING;
 
     private: std::vector<GameInputMapping*> gameInputMappingArray;
 
-    private: std::vector<BasicArrayList*> keyMappingArray = {};
+    private: std::vector<BasicArrayList*> keyMappingArray;
 
-    private: std::vector<BasicColor*> actionBasicColor = BasicColorUtil::getInstance()->ZERO_ARRAY;
+    private: std::vector<BasicColor*> actionBasicColor;
 
-    private: std::vector<std::vector<BasicColor*>> inputBasicColorArray = std::vector<std::vector<BasicColor*>>(0, std::vector<BasicColor*>(0));
+    private: std::vector<std::vector<BasicColor*>> inputBasicColorArray;
 
     private: BasicColor* selectedBasicColor;
 
 //inner= member=true isStatic=
-class UpdateMyFontProperties
-            : public Object
+private: class UpdateMyFontProperties
+            : public virtual Object
          {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    std::vector<std::string> actionStringArray = StringUtil::getInstance()->getArrayInstance();
 
-    std::vector<int32_t> keymappingBeginWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY;
+            
+    public: UpdateMyFontProperties();
+        
+    public: std::vector<std::string> actionStringArray;
 
-    std::vector<int32_t> actionStringDeltaXArray = NullUtil::getInstance()->NULL_INT_ARRAY;
+    public: std::vector<int32_t> keymappingBeginWidthArray;
 
-    std::vector<std::vector<int32_t>> inputDeltaXArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
+    public: std::vector<int32_t> actionStringDeltaXArray;
 
-    std::vector<std::vector<std::string>> sepArray = std::vector<std::vector<std::string>>(0, std::vector<std::string>(0));
+    public: std::vector<std::vector<int32_t>> inputDeltaXArray;
 
-    std::vector<std::vector<int32_t>> sepWidthArray = NullUtil::getInstance()->NULL_INT_ARRAY_ARRAY;
+    public: std::vector<std::vector<std::string>> sepArray;
 
-    int32_t charHeight= 0;
+    public: std::vector<std::vector<int32_t>> sepWidthArray;
+
+    public: int32_t charHeight= 0;
 
 };
 
             
-    private: updateMyFontProperties = new UpdateMyFontProperties();
+    private: UpdateMyFontProperties* updateMyFontProperties;
 
-protected: InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* backgroundBasicColor, BasicColor* basicColor);
+/*protected*/ public: InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* backgroundBasicColor, BasicColor* basicColor);
 
     public: void updateMeasurement(Graphics* graphics);
 
@@ -181,3 +157,70 @@ protected: InputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMap
 
 
         #endif //ORG_ALLBINARY_GAME_PAINT_HELP_INPUTMAPPINGHELPPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PAINT_HELP_INPUTMAPPINGHELPPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PAINT_HELP_INPUTMAPPINGHELPPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKey.h>)
+#include <org/allbinary/game/input/GameKey.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKeyFactory.h>)
+#include <org/allbinary/game/input/GameKeyFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/Input.h>)
+#include <org/allbinary/game/input/Input.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlatformInputMappingFactory.h>)
+#include <org/allbinary/game/input/PlatformInputMappingFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/GameInputMapping.h>)
+#include <org/allbinary/game/input/mapping/GameInputMapping.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/PersistentInputMapping.h>)
+#include <org/allbinary/game/input/mapping/PersistentInputMapping.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorUtil.h>)
+#include <org/allbinary/graphics/color/BasicColorUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/paint/help/HelpPaintable.h")
+#include "org/allbinary/game/paint/help/HelpPaintable.h"
+#endif
+
+        #endif
+    

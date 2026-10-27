@@ -6,6 +6,11 @@
         #ifndef _BOOLEANTEST_H
         #define _BOOLEANTEST_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -14,15 +19,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/junit/jupiter/api/Assertions.h>
 
-      
-#include <org/junit/jupiter/api/DisplayName.h>
 
-      
-#include <org/junit/jupiter/api/Test.h>
 
-      
 
 
 
@@ -42,13 +41,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BooleanTest
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: BooleanTest();
+        
 };
 
             
 
 
         #endif //_BOOLEANTEST_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(_BOOLEANTEST_H_COMPLETE)
+        #define _BOOLEANTEST_H_COMPLETE
+        
+
+
+
+        #endif
+    

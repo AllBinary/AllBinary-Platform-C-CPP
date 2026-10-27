@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_TIME_TIMEUTIL_H
         #define ORG_ALLBINARY_TIME_TIMEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,8 +37,6 @@
             #include "java/lang/Integer.h"
         
 #include <java/util/Calendar.h>
-
-      
 
 
 
@@ -53,16 +56,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TimeUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static TimeUtil* instance() { static std::unique_ptr<TimeUtil> value(new TimeUtil()); return value.get(); }
+    private: static TimeUtil* instance_owner();
+    private: static TimeUtil* instance;
 
     public: static TimeUtil* getInstance();
 
-    private: static inline Calendar* calendar = Calendar::getInstance();
+    private: static Calendar* calendar;
 
+
+            
+    public: TimeUtil();
+        
     public: void setCalendar(Calendar* calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString);
 
     public: void setCalendar(Calendar* calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString);
@@ -77,3 +89,13 @@ class TimeUtil
 
 
         #endif //ORG_ALLBINARY_TIME_TIMEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_TIME_TIMEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_TIME_TIMEUTIL_H_COMPLETE
+        #if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+
+        #endif
+    

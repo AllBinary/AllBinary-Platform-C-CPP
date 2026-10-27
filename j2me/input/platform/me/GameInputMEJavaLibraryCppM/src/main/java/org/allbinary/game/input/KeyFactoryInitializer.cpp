@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/KeyFactoryInitializer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,17 +59,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class KeyFactoryInitializer: public Init {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: void init(){
-this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.INIT);
+KeyFactoryInitializer::KeyFactoryInitializer() : logUtil(LogUtil::getInstance()) {
+        }
+        
+    auto KeyFactoryInitializer::init() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->INIT);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_KEYFACTORYINITIALIZER_CPP

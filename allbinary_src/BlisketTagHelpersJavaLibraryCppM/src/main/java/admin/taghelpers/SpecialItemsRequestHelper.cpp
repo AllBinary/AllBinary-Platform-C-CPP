@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_SPECIALITEMSREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_SPECIALITEMSREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/SpecialItemsRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -90,31 +100,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/ModifyTable.h"
 
-class SpecialItemsRequestHelper: public ModifyTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
-
-    private: HttpServletRequest* request;
-
-    private: std::string id;
-
-    private: std::string enabled;
-
-    private: std::string number;
-
-    private: std::string startTime;
-
-    private: std::string endTime;
-
-    private: std::string price;
-
-    private: std::string timeEntered;
-
-    private: std::string lastModified;
-
-public: SpecialItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+SpecialItemsRequestHelper::SpecialItemsRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()), basicItemData(BasicItemData::getInstance()){
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->getFormData();
@@ -122,7 +109,7 @@ this->getFormData();
 }
 
 
-    public: void getFormData(){
+    auto SpecialItemsRequestHelper::getFormData() -> void{
 this->id= this->request->getParameter(basicItemData->ID);
     
 this->number= this->request->getParameter(basicItemData->NUMBER);
@@ -142,7 +129,7 @@ this->lastModified= this->request->getParameter(EntryData::getInstance()->LASTMO
 }
 
 
-    private: HashMap<Object*, Object*>* getHashMap(){
+    auto SpecialItemsRequestHelper::getHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* values = StdUtil::getInstance()->createHashMap();;
     
@@ -175,7 +162,7 @@ values->put(EntryData::getInstance()->LASTMODIFIED, time);
 }
 
 
-    public: std::string insert(){
+    auto SpecialItemsRequestHelper::insert() -> std::string{
 
         try {
             
@@ -206,10 +193,10 @@ values->add(time);
 SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->insert(values);
     
 
-    std::string success = "Successfully inserted " +this->id +" into items table";;
+    std::string success = JavaString::valueOf(JavaString::valueOf("Successfully inserted ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" into items table");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "insert()");
@@ -228,13 +215,13 @@ SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->inser
 } catch(Exception& e) 
             {
 
-    std::string error = "Failed to insert " +this->id +" into items table";;
+    std::string error = JavaString::valueOf(JavaString::valueOf("Failed to insert ") +JavaString::valueOf(this->id)) +JavaString::valueOf(" into items table");;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "inserts()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "inserts()", &e);
     
 
                                     }
@@ -250,16 +237,16 @@ SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->inser
 }
 
 
-    public: std::string delete_(){
+    auto SpecialItemsRequestHelper::delete_() -> std::string{
 
         try {
-            SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->delete(this->id);
+            SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->delete_(this->id);
     
 
     std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "delete()");
@@ -281,10 +268,10 @@ SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->inser
     std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "delete()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "delete()", &e);
     
 
                                     }
@@ -300,7 +287,7 @@ SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->inser
 }
 
 
-    public: std::string update(){
+    auto SpecialItemsRequestHelper::update() -> std::string{
 
         try {
             
@@ -312,7 +299,7 @@ SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->inser
 SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append(this->id)->append(CommonSeps::getInstance()->SPACE)->append(success)->toString(), this, "update()");
@@ -331,13 +318,13 @@ SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->updat
 } catch(Exception& e) 
             {
 
-    std::string error = "Failed to update: " +this->id;;
+    std::string error = JavaString::valueOf("Failed to update: ") +JavaString::valueOf(this->id);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -353,7 +340,6 @@ SpecialItemsEntityFactory::getInstance()->getSpecialItemsEntityInstance()->updat
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_SPECIALITEMSREQUESTHELPER_CPP

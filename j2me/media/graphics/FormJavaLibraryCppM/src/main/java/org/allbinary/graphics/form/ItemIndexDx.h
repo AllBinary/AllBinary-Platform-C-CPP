@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXDX_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXDX_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
+class ABCustomItem;
 
 
 
@@ -53,14 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ItemIndexDx
-            : public Object
+            : public virtual Object
          {
 
-    private: static ItemIndexDx* instance() { static std::unique_ptr<ItemIndexDx> value(new ItemIndexDx()); return value.get(); }
+    private: static ItemIndexDx* instance_owner();
+    private: static ItemIndexDx* instance;
 
     public: static ItemIndexDx* getInstance();
 
+
+            
+    public: ItemIndexDx();
+        
                 //@Throws(Exception.constructor)
             
     public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy);
@@ -71,3 +83,13 @@ class ItemIndexDx
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXDX_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXDX_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXDX_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+
+        #endif
+    

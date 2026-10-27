@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLTYPESTRINGS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLTYPESTRINGS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -15,12 +20,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class StringMaker;
+class CommonSeps;
 
 
 
@@ -40,14 +41,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SqlTypeStrings
-            : public Object
+            : public virtual Object
          {
 
-    private: static SqlTypeStrings* instance() { static std::unique_ptr<SqlTypeStrings> value(new SqlTypeStrings()); return value.get(); }
+    private: static SqlTypeStrings* instance_owner();
+    private: static SqlTypeStrings* instance;
 
     public: static SqlTypeStrings* getInstance();
 
+
+            
+    public: SqlTypeStrings();
+        
     public: const std::string CHAR_COLUMN = "VARCHAR";
 
     public: const std::string INT_COLUMN = "VARCHAR";
@@ -70,19 +80,19 @@ class SqlTypeStrings
 
     public: const std::string TWELVE_SIZE = "(12)";
 
-    public: const std::string ONE_KB_CHAR_COLUMN = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append("(1024)")->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
+    public: const std::string ONE_KB_CHAR_COLUMN;
 
-    public: const std::string MAX_CHAR_COLUMN = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(MAX_SIZE)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
+    public: const std::string MAX_CHAR_COLUMN;
 
-    public: const std::string MAX_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(MAX_SIZE)->append(CommonSeps::getInstance()->SPACE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
+    public: const std::string MAX_CHAR_COLUMN_NOT_NULL;
 
-    public: const std::string SIXTY_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(SIXTY_SIZE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
+    public: const std::string SIXTY_CHAR_COLUMN_NOT_NULL;
 
-    public: const std::string ONE_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(ONE_SIZE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
+    public: const std::string ONE_CHAR_COLUMN_NOT_NULL;
 
-    public: const std::string SIX_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(SIX_SIZE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
+    public: const std::string SIX_CHAR_COLUMN_NOT_NULL;
 
-    public: const std::string TWELVE_CHAR_COLUMN_NOT_NULL = (new StringMaker())->append(CommonSeps::getInstance()->SPACE)->append(CHAR_COLUMN)->append(this->TWELVE_SIZE)->append(NOT_NULL)->append(CommonSeps::getInstance()->COMMA_SEP)->toString();
+    public: const std::string TWELVE_CHAR_COLUMN_NOT_NULL;
 
     public: const std::string TWO_INT_NOT_NULL = " INT(2) NOT NULL, ";
 
@@ -116,3 +126,16 @@ class SqlTypeStrings
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLTYPESTRINGS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLTYPESTRINGS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLTYPESTRINGS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

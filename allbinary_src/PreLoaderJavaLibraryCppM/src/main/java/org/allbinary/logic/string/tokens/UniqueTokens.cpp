@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_CPP
+        #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/string/tokens/UniqueTokens.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,13 +83,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/string/tokens/Tokenizer.h"
 
-class UniqueTokens
-            : public Object
-         {
 
-    private: BasicArrayList* specialCharacters = new BasicArrayListD();
-
-public: UniqueTokens(){
+UniqueTokens::UniqueTokens() : specialCharacters(new BasicArrayListD()){
 this->specialCharacters->add("!");
     
 this->specialCharacters->add("@");
@@ -133,7 +138,7 @@ this->specialCharacters->add("`");
 
                 //@Throws(Exception.constructor)
             
-    public: HashSet* getWhithoutDashesAndSkipNumberOnlyTokens(BasicArrayList* stringVector){
+    auto UniqueTokens::getWhithoutDashesAndSkipNumberOnlyTokens(BasicArrayList* stringVector) -> HashSet*{
 
         try {
             
@@ -235,7 +240,7 @@ index++;
 }
 
 
-    private: bool numberOnly(std::string subCleaningString){
+    auto UniqueTokens::numberOnly(std::string subCleaningString) -> bool{
 
         try {
             Integer.parseInt(subCleaningString);
@@ -261,7 +266,7 @@ index++;
 }
 
 
-    private: bool isSpecialCharacter(std::string subCleaningString){
+    auto UniqueTokens::isSpecialCharacter(std::string subCleaningString) -> bool{
 
 
 
@@ -288,7 +293,6 @@ index++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_CPP

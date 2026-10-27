@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULEVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULEVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/shipping/modules/NoShippingModuleView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,15 +72,12 @@
         #include "org/allbinary/business/user/commerce/shipping/modules/NoShippingModule.h"
 #include "org/allbinary/business/user/commerce/shipping/modules/Document.h"
 
-class NoShippingModuleView: public NoShippingModule, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NoShippingModuleView(){
+NoShippingModuleView::NoShippingModuleView() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: bool isValid(){
+    auto NoShippingModuleView::isValid() -> bool{
 
 
 
@@ -80,7 +87,7 @@ public: NoShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Document* toValidationInfoDoc(){
+    auto NoShippingModuleView::toValidationInfoDoc() -> org::w3c::dom::Document*{
 
 
 
@@ -90,7 +97,7 @@ public: NoShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Node* toValidationInfoNode(org::w3c::dom::Document* document){
+    auto NoShippingModuleView::toValidationInfoNode(org::w3c::dom::Document* document) -> org::w3c::dom::Node*{
 
 
 
@@ -100,7 +107,7 @@ public: NoShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Document* toXmlDoc(){
+    auto NoShippingModuleView::toXmlDoc() -> org::w3c::dom::Document*{
 
 
 
@@ -110,7 +117,7 @@ public: NoShippingModuleView(){
 }
 
 
-    public: org::w3c::dom::Node* toXmlNode(org::w3c::dom::Document* document){
+    auto NoShippingModuleView::toXmlNode(org::w3c::dom::Document* document) -> org::w3c::dom::Node*{
 
         try {
             
@@ -131,10 +138,10 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "toXmlNode", &e);
     
 
                                     }
@@ -150,7 +157,7 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 }
 
 
-    public: std::string validationInfo(){
+    auto NoShippingModuleView::validationInfo() -> std::string{
 
 
 
@@ -160,7 +167,7 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 }
 
 
-    public: std::string view(){
+    auto NoShippingModuleView::view() -> std::string{
 
 
 
@@ -170,7 +177,6 @@ shippingMethodNode->appendChild(ModDomHelper::createNameValueNodes(document, Shi
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_NOSHIPPINGMODULEVIEW_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_H
         #define ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,51 +36,21 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/identification/Group.h>
-
-      
-#include <org/allbinary/game/identification/GroupInterfaceCompositeInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/event/LayerManagerEvent.h>
-
-      
-#include <org/allbinary/layer/event/LayerManagerEventHandler.h>
-
-      
+class Group;
+class GroupInterfaceCompositeInterface;
+class AllBinaryLayer;
+class LayerManagerEvent;
+class LayerManagerEventHandler;
 #include <org/allbinary/layer/event/LayerManagerEventListener.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class ForcedLogUtil;
+class LogUtil;
+class StringMaker;
+class AllBinaryEventObject;
+class EventStrings;
+class CommonLabels;
+class CommonSeps;
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -95,15 +70,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GroupLayerManagerListener: public LayerManagerEventListener {
 
-    private: static GroupLayerManagerListener* SINGLETON() { static std::unique_ptr<GroupLayerManagerListener> value(new GroupLayerManagerListener()); return value.get(); }
+    private: static GroupLayerManagerListener* SINGLETON_owner();
+    private: static GroupLayerManagerListener* SINGLETON;
 
     public: static GroupLayerManagerListener* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: BasicArrayList* list = new BasicArrayListD();
+    private: BasicArrayList* list;
 
 private: GroupLayerManagerListener();
 
@@ -145,3 +125,55 @@ private: GroupLayerManagerListener();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/GroupInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/identification/GroupInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/event/LayerManagerEvent.h>)
+#include <org/allbinary/layer/event/LayerManagerEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/event/LayerManagerEventHandler.h>)
+#include <org/allbinary/layer/event/LayerManagerEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/layer/event/LayerManagerEventListener.h>)
+#include <org/allbinary/layer/event/LayerManagerEventListener.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

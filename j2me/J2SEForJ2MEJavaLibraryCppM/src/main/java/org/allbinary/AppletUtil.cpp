@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_APPLETUTIL_CPP
+        #define ORG_ALLBINARY_APPLETUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/AppletUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //import org.allbinary.logic.communication.log.PreLogUtil;
-class AppletUtil
-            : public Object
-         {
 
-    private: static inline bool applet = false;
+AppletUtil::AppletUtil(){
+}
 
-    public: static void setApplet(){
+
+    auto AppletUtil::setApplet() -> void{
 AppletUtil::applet= true;
     
 }
 
 
-    public: static bool isAppletLoader(Object* anyType){
+    auto AppletUtil::isAppletLoader(Object* anyType) -> bool{
 
 
 
@@ -67,11 +76,6 @@ AppletUtil::applet= true;
 }
 
 
-private: AppletUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_APPLETUTIL_CPP

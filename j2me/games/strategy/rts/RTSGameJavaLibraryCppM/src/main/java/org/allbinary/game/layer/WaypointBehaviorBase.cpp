@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/WaypointBehaviorBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,23 +87,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/PathFindingLayerInterface.h"
 
-class WaypointBehaviorBase
-            : public Object
-        , public TickableInterface {
 
-    private: BasicArrayList* ownedWaypointList;
-
-    protected: bool waypointOverridesAttacking = true;
-
-    private: WaypointBase* waypoint = WaypointBase::NULL_WAYPOINT_BASE;
-
-public: WaypointBehaviorBase(){
+WaypointBehaviorBase::WaypointBehaviorBase() : waypoint(WaypointBase::NULL_WAYPOINT_BASE), steeringVisitorList(new BasicArrayListD()){
 this->ownedWaypointList= new BasicArrayListS(1);
     
 }
 
 
-    public: std::string getName(){
+    auto WaypointBehaviorBase::getName() -> std::string{
 
 
 
@@ -103,7 +104,7 @@ this->ownedWaypointList= new BasicArrayListS(1);
 }
 
 
-    public: bool isRunning(){
+    auto WaypointBehaviorBase::isRunning() -> bool{
 
 
 
@@ -115,11 +116,11 @@ this->ownedWaypointList= new BasicArrayListS(1);
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto WaypointBehaviorBase::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 }
 
 
-    public: BasicArrayList* getOwnedWaypointList(){
+    auto WaypointBehaviorBase::getOwnedWaypointList() -> BasicArrayList*{
 
 
 
@@ -129,7 +130,7 @@ this->ownedWaypointList= new BasicArrayListS(1);
 }
 
 
-    public: WaypointBase* getWaypoint(){
+    auto WaypointBehaviorBase::getWaypoint() -> WaypointBase*{
 
 
 
@@ -139,13 +140,13 @@ this->ownedWaypointList= new BasicArrayListS(1);
 }
 
 
-    public: void setWaypoint(WaypointBase* waypoint){
+    auto WaypointBehaviorBase::setWaypoint(WaypointBase* waypoint) -> void{
 this->waypoint= waypoint;
     
 }
 
 
-    public: BasicArrayList* getSteeringVisitorList(){
+    auto WaypointBehaviorBase::getSteeringVisitorList() -> BasicArrayList*{
 
 
 
@@ -155,79 +156,79 @@ this->waypoint= waypoint;
 }
 
 
-    public: std::string getMovementLogicAsString(){
+    auto WaypointBehaviorBase::getMovementLogicAsString() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isWaypointListEmptyOrOnlyTargets(){
+    auto WaypointBehaviorBase::isWaypointListEmptyOrOnlyTargets() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isInSensorRange(CollidableDestroyableDamageableLayer* layerInterface, int32_t targetDistance){
+    auto WaypointBehaviorBase::isInSensorRange(CollidableDestroyableDamageableLayer* layerInterface, int32_t targetDistance) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: CollidableDestroyableDamageableLayer* getCurrentTargetLayerInterface(){
+    auto WaypointBehaviorBase::getCurrentTargetLayerInterface() -> CollidableDestroyableDamageableLayer*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::string getCurrentTargetingStateString(){
+    auto WaypointBehaviorBase::getCurrentTargetingStateString() -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isTrackingWaypoint(){
+    auto WaypointBehaviorBase::isTrackingWaypoint() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: GeographicMapCellPosition* getCurrentPathGeographicMapCellPosition(){
+    auto WaypointBehaviorBase::getCurrentPathGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: GeographicMapCellHistory* getCurrentGeographicMapCellHistory(){
+    auto WaypointBehaviorBase::getCurrentGeographicMapCellHistory() -> GeographicMapCellHistory*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isWaypointOverridesAttacking(){
+    auto WaypointBehaviorBase::isWaypointOverridesAttacking() -> bool{
 
 
 
@@ -237,84 +238,81 @@ this->waypoint= waypoint;
 }
 
 
-    public: GeographicMapCellPosition* getNextUnvisitedPathGeographicMapCellPosition(){
+    auto WaypointBehaviorBase::getNextUnvisitedPathGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool needToMove(){
+    auto WaypointBehaviorBase::needToMove() -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void setWaypointPathsList(BasicArrayList* waypointPathsList){
+    auto WaypointBehaviorBase::setWaypointPathsList(BasicArrayList* waypointPathsList) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BasicArrayList* getWaypointPathsList(){
+    auto WaypointBehaviorBase::getWaypointPathsList() -> BasicArrayList*{
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: void setTarget(PathFindingLayerInterface* layerInterface){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void setTargetWithDistance(PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance){
+    auto WaypointBehaviorBase::setTarget(PathFindingLayerInterface* layerInterface) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void clearTarget(){
+    auto WaypointBehaviorBase::setTargetWithDistance(PathFindingLayerInterface* layerInterface, int32_t anotherTargetDistance) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void updatePathOnTargetMove(std::string reason){
+    auto WaypointBehaviorBase::clearTarget() -> void{
+
+
+
+                            throw RuntimeException();
+                    
 }
 
 
-    private: BasicArrayList* steeringVisitorList = new BasicArrayListD();
-
-};
-
+                //@Throws(Exception.constructor)
             
+    auto WaypointBehaviorBase::updatePathOnTargetMove(std::string reason) -> void{
+}
 
+
+
+
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONGENERATORINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONGENERATORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/drop/DropCellPositionGeneratorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,23 +67,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DropCellPositionGeneratorInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void update(AllBinaryGameLayerManager* allBinaryGameLayerManager, BasicGeographicMap* geographicMapInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void processTick(AllBinaryLayerManager* allBinaryLayerManager) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isDropAllowedAt(GeographicMapCellPosition* geographicMapCellPosition) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_DROP_DROPCELLPOSITIONGENERATORINTERFACE_CPP

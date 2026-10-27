@@ -7,15 +7,18 @@
         #ifndef ORG_OSGI_FRAMEWORK_CONSTANTS_H
         #define ORG_OSGI_FRAMEWORK_CONSTANTS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class StringUtil;
 
 
 
@@ -41,9 +44,15 @@
     public: static inline const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance()->EMPTY_STRING;
             };
         
-class Constants {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
 
-    //Interfaces do not have static fields - public: static inline const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance()->EMPTY_STRING;
+        
+class Constants
+            : public virtual Object
+         {
+
+    public: static inline const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance()->EMPTY_STRING;
 
 };
 
@@ -51,3 +60,13 @@ class Constants {
 
 
         #endif //ORG_OSGI_FRAMEWORK_CONSTANTS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_OSGI_FRAMEWORK_CONSTANTS_H_COMPLETE)
+        #define ORG_OSGI_FRAMEWORK_CONSTANTS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+
+        #endif
+    

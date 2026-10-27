@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_GYROSENSORUPDATEPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_GYROSENSORUPDATEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/GyroSensorUpdateProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +58,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GyroSensorUpdateProcessor: public Processor {
 
+GyroSensorUpdateProcessor::GyroSensorUpdateProcessor() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto GyroSensorUpdateProcessor::process() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_GYROSENSORUPDATEPROCESSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/AbFileInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -54,63 +64,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbFileInterface {
+//Interface - declared in the header
 
-    public: virtual bool canRead() = 0;
 
-    public: virtual bool canWrite() = 0;
 
-                //@Throws(IOException.constructor)
-            
-    public: virtual bool createNewFile() = 0;
-
-                //@Throws(IOException.constructor)
-            
-    public: virtual bool delete_() = 0;
-
-    public: virtual void deleteOnExit() = 0;
-
-    public: virtual bool exists() = 0;
-
-    public: virtual std::string getAbsolutePath() = 0;
-
-                //@Throws(IOException.constructor)
-            
-    public: virtual std::string getCanonicalPath() = 0;
-
-    public: virtual std::string getParent() = 0;
-
-    public: virtual std::string getPath() = 0;
-
-    public: virtual bool isAbsolute() = 0;
-
-    public: virtual bool isDirectory() = 0;
-
-    public: virtual bool isFile() = 0;
-
-    public: virtual bool isHidden() = 0;
-
-    public: virtual int64_t lastModified() = 0;
-
-    public: virtual int64_t length() = 0;
-
-    public: virtual std::vector<std::string> list() = 0;
-
-    public: virtual std::vector<std::string> listWithFilter(FilenameFilter* filter) = 0;
-
-    public: virtual bool mkdir() = 0;
-
-    public: virtual bool mkdirs() = 0;
-
-    public: virtual bool setLastModified(int64_t time) = 0;
-
-    public: virtual bool setReadOnly() = 0;
-
-    public: virtual std::string toString() = 0;
-
-    public: virtual URI* toURI() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ABFILEINTERFACE_CPP

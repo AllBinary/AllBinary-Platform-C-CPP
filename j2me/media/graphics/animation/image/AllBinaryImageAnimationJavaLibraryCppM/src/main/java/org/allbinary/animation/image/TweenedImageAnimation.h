@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,30 +38,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/DisposalUtil.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
+class Graphics;
+class Image;
+class DisposalUtil;
+class AnimationBehavior;
 #include <org/allbinary/animation/IndexedAnimation.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
+class Anchor;
+class PrimitiveIntUtil;
+class CircularIndexUtil;
 
 
 
@@ -76,6 +65,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TweenedImageAnimation: public IndexedAnimation {
 
     private: Image* image;
@@ -86,7 +79,7 @@ class TweenedImageAnimation: public IndexedAnimation {
 
     private: int32_t totalFrames;
 
-    protected: CircularIndexUtil* circularIndexUtil;
+    /*protected*/ public: CircularIndexUtil* circularIndexUtil;
 
 public: TweenedImageAnimation(Image* image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior* animationBehavior);
 
@@ -108,7 +101,7 @@ public: TweenedImageAnimation(Image* image, int32_t dx, int32_t dy, int32_t tota
 
     public: std::vector<int32_t> getSequence();
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
     public: void paintXY(Graphics* graphics, int32_t x, int32_t y);
 
@@ -116,7 +109,7 @@ public: TweenedImageAnimation(Image* image, int32_t dx, int32_t dy, int32_t tota
 
                 //@Throws(Throwable.constructor)
             
-    protected: void finalize();
+    /*protected*/ public: void finalize();
 
 };
 
@@ -124,3 +117,34 @@ public: TweenedImageAnimation(Image* image, int32_t dx, int32_t dy, int32_t tota
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/DisposalUtil.h>)
+#include <org/allbinary/DisposalUtil.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+
+        #endif
+    

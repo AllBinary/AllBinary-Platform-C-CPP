@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCH_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCH_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/search/ImageComparisonSearch.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -71,35 +81,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageComparisonSearch
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: bool isSameHeight= false;
-
-    public: bool isSameWidth= false;
-
-    public: int32_t pixelsThatMatch= 0;
-
-    public: int32_t pixelsIgnored= 0;
-
-    public: int32_t imageHeight;
-
-    public: int32_t imageWidth;
-
-    private: int32_t tolerance= 0;
-
-    private: BasicArrayList* nonMatchingPixelVector;
-
-    private: std::vector<BufferedImage*> bufferedImages;
-
-    private: float matchingPercent =  -1;
-
-public: ImageComparisonSearch(BufferedImage* bufferedImage, BufferedImage* bufferedImage2, int32_t tolerance){
+ImageComparisonSearch::ImageComparisonSearch(BufferedImage* bufferedImage, BufferedImage* bufferedImage2, int32_t tolerance) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->nonMatchingPixelVector= new BasicArrayListD();
     
 this->setBufferedImages(std::vector<BufferedImage*>(2));
@@ -169,9 +152,9 @@ this->imageWidth= bufferedImage->getWidth();
     
 this->logUtil->putF("Images were not the same size? Most likely a resolution change.", this, this->commonStrings->CONSTRUCTOR);
     
-this->logUtil->putF("1: " +imageUtil->toString(bufferedImage), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("1: ") +JavaString::valueOf(imageUtil->toString(bufferedImage)), this, this->commonStrings->CONSTRUCTOR);
     
-this->logUtil->putF("2: " +imageUtil->toString(bufferedImage2), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("2: ") +JavaString::valueOf(imageUtil->toString(bufferedImage2)), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -179,7 +162,7 @@ this->logUtil->putF("2: " +imageUtil->toString(bufferedImage2), this, this->comm
 }
 
 
-    private: float getMatchingPercent(){
+    auto ImageComparisonSearch::getMatchingPercent() -> float{
 
                         if(this->matchingPercent ==  -1)
                         
@@ -198,13 +181,13 @@ this->logUtil->putF("2: " +imageUtil->toString(bufferedImage2), this, this->comm
 }
 
 
-    public: void add(PixelDelta* pixel){
+    auto ImageComparisonSearch::add(PixelDelta* pixel) -> void{
 this->nonMatchingPixelVector->add(pixel);
     
 }
 
 
-    public: BasicArrayList* getNonMatchingPixelVector(){
+    auto ImageComparisonSearch::getNonMatchingPixelVector() -> BasicArrayList*{
 
 
 
@@ -214,17 +197,17 @@ this->nonMatchingPixelVector->add(pixel);
 }
 
 
-    public: std::string toString(){
+    auto ImageComparisonSearch::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "ImageComparisonInfo: " +" Number Of Matching Pixels: " +this->pixelsThatMatch +"\nNumber Of Non-Matching Pixels: " +this->getNonMatchingPixelVector()->size() +"\nNumber Of Pixels Ignored: " +this->pixelsIgnored +"\nMatching Percentage: " +this->getMatchingPercent();
+                        return JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("ImageComparisonInfo: ") +JavaString::valueOf(" Number Of Matching Pixels: ")) +JavaString::valueOf(this->pixelsThatMatch)) +JavaString::valueOf("\nNumber Of Non-Matching Pixels: ")) +JavaString::valueOf(this->getNonMatchingPixelVector()->size())) +JavaString::valueOf("\nNumber Of Pixels Ignored: ")) +JavaString::valueOf(this->pixelsIgnored)) +JavaString::valueOf("\nMatching Percentage: ")) +JavaString::valueOf(this->getMatchingPercent());
     
 }
 
 
-    public: std::vector<BufferedImage*> getBufferedImages(){
+    auto ImageComparisonSearch::getBufferedImages() -> std::vector<BufferedImage*>{
 
 
 
@@ -234,13 +217,13 @@ this->nonMatchingPixelVector->add(pixel);
 }
 
 
-    private: void setBufferedImages(std::vector<BufferedImage*> bufferedImages){
+    auto ImageComparisonSearch::setBufferedImages(std::vector<BufferedImage*> bufferedImages) -> void{
 this->bufferedImages= bufferedImages;
     
 }
 
 
-    public: int32_t getTolerance(){
+    auto ImageComparisonSearch::getTolerance() -> int32_t{
 
 
 
@@ -250,13 +233,12 @@ this->bufferedImages= bufferedImages;
 }
 
 
-    public: void setTolerance(int32_t tolerance){
+    auto ImageComparisonSearch::setTolerance(int32_t tolerance) -> void{
 this->tolerance= tolerance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCH_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_STOREFRONT_UPDATEVALIDATIONSTOREFRONTVIEW_CPP
+        #define VIEWS_ADMIN_STOREFRONT_UPDATEVALIDATIONSTOREFRONTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/storefront/UpdateValidationStoreFrontView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,11 +77,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/storefront/StoreFrontComponent.h"
 
-class UpdateValidationStoreFrontView: public StoreFrontComponent, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInterface) : StoreFrontComponent(transformInfoInterface){
+UpdateValidationStoreFrontView::UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInterface) : StoreFrontComponent(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,14 +88,14 @@ public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 }
 
 
-    public: bool isValid(){
+    auto UpdateValidationStoreFrontView::isValid() -> bool{
 
         try {
             
     bool valid = Boolean::TRUE;;
     
 
-                        if(this->newStoreFrontInterface.isValid() == Boolean::FALSE)
+                        if(this->newStoreFrontInterface->isValid() == Boolean::FALSE)
                         
                                     {
                                     valid= Boolean::FALSE;
@@ -118,10 +125,10 @@ public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -137,23 +144,23 @@ public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 }
 
 
-    public: std::string validationInfo(){
+    auto UpdateValidationStoreFrontView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(this->newStoreFrontInterface.isValid() == Boolean::FALSE)
+                        if(this->newStoreFrontInterface->isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer->append(this->newStoreFrontInterface.validationInfo());
+                                    stringBuffer->append(this->newStoreFrontInterface->validationInfo());
     
 
                                     }
                                 
 
-                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName()) == 
+                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface->getName()) == 
                                     nullptr
                                 )
                         
@@ -174,7 +181,7 @@ public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -193,7 +200,7 @@ public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto UpdateValidationStoreFrontView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -203,7 +210,7 @@ public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto UpdateValidationStoreFrontView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -213,7 +220,6 @@ public: UpdateValidationStoreFrontView(TransformInfoInterface* transformInfoInte
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_STOREFRONT_UPDATEVALIDATIONSTOREFRONTVIEW_CPP

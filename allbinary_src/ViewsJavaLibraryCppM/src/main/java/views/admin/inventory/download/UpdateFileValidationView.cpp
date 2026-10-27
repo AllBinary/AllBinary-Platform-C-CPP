@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_UPDATEFILEVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_UPDATEFILEVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/download/UpdateFileValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -128,13 +138,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/download/DownloadableInventoryItemView.h"
 
-class UpdateFileValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface){
+UpdateFileValidationView::UpdateFileValidationView(TransformInfoInterface* transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -144,7 +149,7 @@ public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface)
 }
 
 
-    public: bool isValid(){
+    auto UpdateFileValidationView::isValid() -> bool{
 
         try {
             
@@ -155,10 +160,10 @@ public: UpdateFileValidationView(TransformInfoInterface* transformInfoInterface)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Invalid AdminCommand=" +command, this, this->commonStrings->IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("Invalid AdminCommand=") +JavaString::valueOf(command), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -184,7 +189,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
 } catch(MoneyException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->put("Existing Item With MoneyException", this, this->commonStrings->IS_VALID, &e);
@@ -201,7 +206,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Item Does Not Exist", this, this->commonStrings->IS_VALID);
@@ -223,7 +228,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("BasicItem is not valid", this, this->commonStrings->IS_VALID);
@@ -244,7 +249,7 @@ this->itemInterface= inventoryEntity->getItem(this->id);
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface.getCategory())->toString();;
+    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface->getCategory())->toString();;
     
 
     AbFile* categoryFile = AbFile::createAbFile(fullCategory);;
@@ -254,10 +259,10 @@ this->itemInterface= inventoryEntity->getItem(this->id);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Category Does Not Exist: " +fullCategory, this, this->commonStrings->IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("Category Does Not Exist: ") +JavaString::valueOf(fullCategory), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -404,7 +409,7 @@ this->unzip(fileItem);
 
     HashMap<Object*, Object*>* hashMap = this->getRequestHashMap();;
     
-hashMap->put(basicItemData.ID, this->itemInterface.getId());
+hashMap->put(basicItemData.ID, this->itemInterface->getId());
     
 
     Object* licenseObject = hashMap->get(DownloadItemData::LICENSE_FILE);;
@@ -456,7 +461,7 @@ this->downloadableItem= new DownloadableItem(hashMap);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("DownloadableItem is not valid", this, this->commonStrings->IS_VALID);
@@ -484,7 +489,7 @@ this->downloadableItem= new DownloadableItem(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Exception in validation", this, this->commonStrings->IS_VALID, &e);
@@ -503,7 +508,7 @@ this->downloadableItem= new DownloadableItem(hashMap);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto UpdateFileValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -513,7 +518,7 @@ this->downloadableItem= new DownloadableItem(hashMap);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto UpdateFileValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -523,7 +528,7 @@ this->downloadableItem= new DownloadableItem(hashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto UpdateFileValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -555,7 +560,7 @@ this->downloadableItem= new DownloadableItem(hashMap);
     std::string ITEM_NOT_FOUND = "Item Does Not Exist";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(ITEM_NOT_FOUND, this, "validationInfo()");
@@ -590,13 +595,13 @@ stringBuffer->append("<br/>");
     StoreFrontInterface* storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession()->getStoreName());;
     
 
-    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface.getCategory())->toString();;
+    std::string fullCategory = (new StringMaker())->append(URLGLOBALS::getWebappPath())->append(storeFrontInterface->getCurrentHostNamePath())->append(this->itemInterface->getCategory())->toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Category: " +fullCategory, this, "validationInfo()");
+                                    this->logUtil->putF(JavaString::valueOf("Category: ") +JavaString::valueOf(fullCategory), this, "validationInfo()");
     
 
                                     }
@@ -610,7 +615,7 @@ stringBuffer->append("<br/>");
                                     {
                                     stringBuffer->append("Category ");
     
-stringBuffer->append(this->itemInterface.getCategory());
+stringBuffer->append(this->itemInterface->getCategory());
     
 stringBuffer->append(" does not exist.");
     
@@ -715,7 +720,7 @@ this->validationInfo(stringBuffer, fileName, size);
     std::string log = downloadableItemValidation->validationInfo();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF(log, this, this->commonStrings->IS_VALID);
@@ -744,7 +749,7 @@ stringBuffer->append("<br/>");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -765,7 +770,7 @@ stringBuffer->append("<br/>");
 
                 //@Throws(Exception.constructor)
             
-    private: bool isValid(std::string fileName, int64_t size){
+    auto UpdateFileValidationView::isValid(std::string fileName, int64_t size) -> bool{
 
     FileData* fileData = FileData::getInstance();;
     
@@ -782,7 +787,7 @@ stringBuffer->append("<br/>");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -815,7 +820,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -848,7 +853,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log.config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log.config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -885,7 +890,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALI
 }
 
 
-    private: void validationInfo(StringMaker* stringBuffer, std::string fileName, int64_t size){
+    auto UpdateFileValidationView::validationInfo(StringMaker* stringBuffer, std::string fileName, int64_t size) -> void{
 
     FileData* fileData = FileData::getInstance();;
     
@@ -945,7 +950,6 @@ stringBuffer->append("<br/>");
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_DOWNLOAD_UPDATEFILEVALIDATIONVIEW_CPP

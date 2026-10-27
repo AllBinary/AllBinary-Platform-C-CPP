@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFO_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/GameInputMotionInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInputMotionInfo
-            : public Object
-         {
 
-    public: int32_t MAX_API;
-
-    public: int32_t MAX_POINTERS;
-
-protected: GameInputMotionInfo(int32_t maxApi, int32_t maxPointers){
+GameInputMotionInfo::GameInputMotionInfo(int32_t maxApi, int32_t maxPointers){
 this->MAX_API= maxApi;
     
 this->MAX_POINTERS= maxPointers;
@@ -61,7 +64,6 @@ this->MAX_POINTERS= maxPointers;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFO_CPP

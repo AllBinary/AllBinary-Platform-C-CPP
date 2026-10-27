@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONANDTRACKEDBOOLEANFILEVISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONANDTRACKEDBOOLEANFILEVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/directory/DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,35 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/io/file/directory/TrackedStrings.h"
 
-class DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
 
-    public: static void main(std::vector<std::string> args){
-
-    CommonDataFileStrings* commonFileStrings = CommonDataFileStrings::getInstance();;
-    
-
-    BasicArrayList* list = new BasicArrayListD();;
-    
-list->add(commonFileStrings->JAVA);
-    
-
-    std::string filePath = "G:\\mnt\\bc\\mydev\\games\\ZeptoRacer\\platform\\j2se\\ZeptoRacerStaticPathsJ2SEM\\target\\dependency\\org\\allbinary\\logic\\system\\security\\licensing\\ZeptoRacerPCClientInformation.java";;
-    
-
-    bool result = (new DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(list))->visit(AbFile::createAbFileFromRawPath(filePath));;
-    
-System.out.println(filePath +" is Tracked: " +result);
-    
-}
-
-
-    private: TrackedStrings* trackedStrings = TrackedStrings::getInstance();
-
-    private: GitProcessHelper* gitProcessHelper = GitProcessHelper::getInstance();
-
-    private: std::string includesString;
-
-public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor::DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList), trackedStrings(TrackedStrings::getInstance()), gitProcessHelper(GitProcessHelper::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +91,7 @@ this->includesString=
 }
 
 
-public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor::DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList* filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList), trackedStrings(TrackedStrings::getInstance()), gitProcessHelper(GitProcessHelper::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -120,7 +103,7 @@ this->includesString= includesString;
 }
 
 
-    public: bool visit(AbFile* file){
+    auto DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor::visit(AbFile* file) -> bool{
 
                         if(file->isDirectory())
                         
@@ -142,7 +125,7 @@ this->includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.visit(file);;
+                        return IncludeFileExtensionsBooleanFileVisitor::visit(file);;
     
 
                                     }
@@ -160,12 +143,12 @@ this->includesString= includesString;
 }
 
 
-    public: bool visit(AbFile* file, std::string fileNameString){
+    auto DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor::visit(AbFile* file, std::string fileNameString) -> bool{
 
     std::string filePath = file->getPath();;
     
 
-                        if(super.visit(file, fileNameString))
+                        if(IncludeFileExtensionsBooleanFileVisitor::visit(file, fileNameString))
                         
                                     {
                                     
@@ -219,7 +202,26 @@ this->includesString= includesString;
 }
 
 
-};
+    auto DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor::main(std::vector<std::string> args) -> void{
 
-            
+    CommonDataFileStrings* commonFileStrings = CommonDataFileStrings::getInstance();;
+    
 
+    BasicArrayList* list = new BasicArrayListD();;
+    
+list->add(commonFileStrings->JAVA);
+    
+
+    std::string filePath = "G:\\mnt\\bc\\mydev\\games\\ZeptoRacer\\platform\\j2se\\ZeptoRacerStaticPathsJ2SEM\\target\\dependency\\org\\allbinary\\logic\\system\\security\\licensing\\ZeptoRacerPCClientInformation.java";;
+    
+
+    bool result = (new DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(list))->visit(AbFile::createAbFileFromRawPath(filePath));;
+    
+System.out.println(JavaString::valueOf(JavaString::valueOf(filePath) +JavaString::valueOf(" is Tracked: ")) +JavaString::valueOf(result));
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONANDTRACKEDBOOLEANFILEVISITOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_STRINGLOCATIONPAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_STRINGLOCATIONPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/StringLocationPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +57,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/LocationPaintable.h"
 
-class StringLocationPaintable: public LocationPaintable {
 
-    private: std::string value;
-
-public: StringLocationPaintable(std::string value){
+StringLocationPaintable::StringLocationPaintable(std::string value){
 this->value= value;
     
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto StringLocationPaintable::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawString(this->value, x, y, 0);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_STRINGLOCATIONPAINTABLE_CPP

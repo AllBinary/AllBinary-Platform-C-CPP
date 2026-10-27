@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_SUBSCRIBER_SUBSCRIBERUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_SUBSCRIBER_SUBSCRIBERUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/modules/customer/subscriber/SubscriberUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/modules/customer/subscriber/SubscriberUser.h"
 
-class SubscriberUserFactory
-            : public Object
-        , public UserFactoryInterface {
 
-public: SubscriberUserFactory(){
+SubscriberUserFactory::SubscriberUserFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(){
+    auto SubscriberUserFactory::getInstance() -> UserInterface*{
 
 
 
@@ -79,7 +86,7 @@ public: SubscriberUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto SubscriberUserFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> UserInterface*{
 
 
 
@@ -89,7 +96,6 @@ public: SubscriberUserFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_SUBSCRIBER_SUBSCRIBERUSERFACTORY_CPP

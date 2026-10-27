@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ModifierBaseProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,31 +64,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ModifierBaseProcessor
-            : public Object
-         {
 
-    private: static ModifierBaseProcessor* instance() { static std::unique_ptr<ModifierBaseProcessor> value(new ModifierBaseProcessor()); return value.get(); }
+ModifierBaseProcessor::ModifierBaseProcessor() {
+        }
+        auto ModifierBaseProcessor::instance_owner() -> ModifierBaseProcessor* { static std::unique_ptr<ModifierBaseProcessor> value(new ModifierBaseProcessor()); return value.get(); }
+ModifierBaseProcessor* ModifierBaseProcessor::instance = ModifierBaseProcessor::instance_owner();
 
-    public: static ModifierBaseProcessor* getInstance(){
+    auto ModifierBaseProcessor::getInstance() -> ModifierBaseProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModifierBaseProcessor::instance();
+                        return ModifierBaseProcessor::instance;
     
 }
 
 
-    public: void updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor){
+    auto ModifierBaseProcessor::updateColor(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, BasicColor* basicColor) -> void{
 }
 
 
-    public: void updateAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, int32_t alpha){
+    auto ModifierBaseProcessor::updateAlpha(ImageModifierUtil* imageModifierUtil, Image* originalImage, Image* imageToShow, int32_t index, int32_t alpha) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_MODIFIERBASEPROCESSOR_CPP

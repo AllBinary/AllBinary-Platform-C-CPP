@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_EXPLOSIONRESOURCES_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_EXPLOSIONRESOURCES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/damage/ExplosionResources.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,35 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ExplosionResources
-            : public Object
-         {
+auto ExplosionResources::instance_owner() -> ExplosionResources* { static std::unique_ptr<ExplosionResources> value(new ExplosionResources()); return value.get(); }
+ExplosionResources* ExplosionResources::instance = ExplosionResources::instance_owner();
 
-    private: static ExplosionResources* instance() { static std::unique_ptr<ExplosionResources> value(new ExplosionResources()); return value.get(); }
-
-    public: static ExplosionResources* getInstance(){
+    auto ExplosionResources::getInstance() -> ExplosionResources*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ExplosionResources::instance();
+                        return ExplosionResources::instance;
     
 }
 
 
-private: ExplosionResources(){
+ExplosionResources::ExplosionResources(){
 }
 
 
-    public: const std::string EXPLOSION_90_RESOURCE = "/explosion_sprite_90_by_90.png";
 
-    public: const std::string EXPLOSION_60_RESOURCE = "/explosion_sprite_60_by_60.png";
 
-    public: const std::string HALF_EXPLOSION_RESOURCE = "/explosion_sprite_30_by_30.png";
-
-    public: const std::string THIRD_EXPLOSION_RESOURCE = "/explosion_sprite_15_by_15.png";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_EXPLOSIONRESOURCES_CPP

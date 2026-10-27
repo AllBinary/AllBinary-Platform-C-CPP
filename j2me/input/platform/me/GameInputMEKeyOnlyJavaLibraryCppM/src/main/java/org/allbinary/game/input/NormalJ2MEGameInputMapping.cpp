@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEGAMEINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEGAMEINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/NormalJ2MEGameInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,11 @@
         #include "org/allbinary/game/input/J2MEGameInputMapping.h"
 #include "org/allbinary/game/input/NormalJ2MEDefaultGameInputMapping.h"
 
-class NormalJ2MEGameInputMapping: public J2MEGameInputMapping {
 
-    protected: InputToGameKeyMapping* getDefault(){
+NormalJ2MEGameInputMapping::NormalJ2MEGameInputMapping() {
+        }
+        
+    auto NormalJ2MEGameInputMapping::getDefault() -> InputToGameKeyMapping*{
 
 
 
@@ -60,7 +72,6 @@ class NormalJ2MEGameInputMapping: public J2MEGameInputMapping {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_NORMALJ2MEGAMEINPUTMAPPING_CPP

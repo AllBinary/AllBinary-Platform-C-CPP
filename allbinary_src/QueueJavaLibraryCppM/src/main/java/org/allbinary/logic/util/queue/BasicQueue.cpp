@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/queue/BasicQueue.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,20 +63,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicQueue
-            : public Object
-         {
 
-    protected: BasicArrayList* queueVector = new BasicArrayListD();
-
-protected: BasicQueue(){
+BasicQueue::BasicQueue() : queueVector(new BasicArrayListD()){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: bool offer(Object* anyType){
+    auto BasicQueue::offer(Object* anyType) -> bool{
 this->queueVector->add(anyType);
     
 
@@ -79,14 +84,14 @@ this->queueVector->add(anyType);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void remove(Object* anyType){
+    auto BasicQueue::remove(Object* anyType) -> void{
 this->queueVector->remove(anyType);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: Object* removeLast(){
+    auto BasicQueue::removeLast() -> Object*{
 
     Object* anyType = this->queueVector->get(this->queueVector->size() -1);;
     
@@ -101,7 +106,6 @@ this->queueVector->remove(anyType);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_CPP

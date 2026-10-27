@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -38,44 +43,18 @@
             #include "java/lang/Double.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/animation/vector/VectorCenterGenerator.h>
-
-      
-#include <org/allbinary/dom/DomHelper.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/GraphicsStrings.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/WorkAreaJPanel.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class VectorCenterGenerator;
+class DomHelper;
+class GPoint;
+class GraphicsStrings;
+class PointFactory;
+class WorkAreaJPanel;
+class GraphicItemFactory;
+class GraphicItemInterface;
+class LinesGraphicItem;
+class StdUtil;
+class BasicArrayList;
+class Node;
 
 
 
@@ -94,13 +73,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h"
-#include "org/allbinary/graphics/j2me/workarea/canvas/Grid.h"
-#include "org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h"
-#include "org/allbinary/graphics/j2me/workarea/canvas/Document.h"
+        class IntegerDimension;
+class Grid;
+class CanvasJPanel;
+class Document;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CanvasDom
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string FRAME = "frame";
@@ -125,7 +108,7 @@ class CanvasDom
 
     public: static inline const std::string REAL_SIZE = "realSize";
 
-    private: GraphicsStrings* graphicsStrings = GraphicsStrings::getInstance();
+    private: GraphicsStrings* graphicsStrings;
 
     private: HashMap<Object*, Object*>* graphicItemHashMap;
 
@@ -171,3 +154,61 @@ public: CanvasDom(CanvasJPanel* canvasJPanel);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/animation/vector/VectorCenterGenerator.h>)
+#include <org/allbinary/animation/vector/VectorCenterGenerator.h>
+#endif
+#if __has_include(<org/allbinary/dom/DomHelper.h>)
+#include <org/allbinary/dom/DomHelper.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GraphicsStrings.h>)
+#include <org/allbinary/graphics/GraphicsStrings.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/WorkAreaJPanel.h>)
+#include <org/allbinary/graphics/j2me/workarea/WorkAreaJPanel.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h>)
+#include <org/allbinary/graphics/j2me/workarea/tools/GraphicItemFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h>)
+#include <org/allbinary/graphics/j2me/workarea/tools/GraphicItemInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h>)
+#include <org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/canvas/Grid.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/Grid.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/CanvasJPanel.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/canvas/Document.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/Document.h"
+#endif
+
+        #endif
+    

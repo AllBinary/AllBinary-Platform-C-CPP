@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_STATISTICALMATCHCONSTRAINTS_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_STATISTICALMATCHCONSTRAINTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/search/StatisticalMatchConstraints.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StatisticalMatchConstraints
-            : public Object
-         {
 
-public: StatisticalMatchConstraints(){
+StatisticalMatchConstraints::StatisticalMatchConstraints(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_STATISTICALMATCHCONSTRAINTS_CPP

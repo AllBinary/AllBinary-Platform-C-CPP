@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/ScreenListenerHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,43 +57,40 @@
         #include "org/allbinary/graphics/ScreenEmptyListener.h"
 #include "org/allbinary/graphics/ScreenListenerInterface.h"
 
-class ScreenListenerHandler
-            : public Object
-         {
 
-    private: static ScreenListenerHandler* instance() { static std::unique_ptr<ScreenListenerHandler> value(new ScreenListenerHandler()); return value.get(); }
+ScreenListenerHandler::ScreenListenerHandler() : screenListenerInterface(new ScreenEmptyListener()) {
+        }
+        auto ScreenListenerHandler::instance_owner() -> ScreenListenerHandler* { static std::unique_ptr<ScreenListenerHandler> value(new ScreenListenerHandler()); return value.get(); }
+ScreenListenerHandler* ScreenListenerHandler::instance = ScreenListenerHandler::instance_owner();
 
-    public: static ScreenListenerHandler* getInstance(){
+    auto ScreenListenerHandler::getInstance() -> ScreenListenerHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenListenerHandler::instance();
+                        return ScreenListenerHandler::instance;
     
 }
 
 
-    private: ScreenListenerInterface* screenListenerInterface = new ScreenEmptyListener();
-
-    public: void setListener(ScreenListenerInterface* screenListenerInterface){
+    auto ScreenListenerHandler::setListener(ScreenListenerInterface* screenListenerInterface) -> void{
 this->screenListenerInterface= screenListenerInterface;
     
 }
 
 
-    public: void fireWithState(bool isFullScreen){
+    auto ScreenListenerHandler::fireWithState(bool isFullScreen) -> void{
 this->screenListenerInterface->onFullScreen(isFullScreen);
     
 }
 
 
-    public: void fire(){
+    auto ScreenListenerHandler::fire() -> void{
 this->screenListenerInterface->onFullScreenDisplay();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_SCREENLISTENERHANDLER_CPP

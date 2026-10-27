@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_RESTGAMEOBJECTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_RESTGAMEOBJECTINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RestGameObjectInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class RestGameObjectInterface
+            : public virtual Object
+         {
 
     public: virtual bool isRestNeeded() = 0;
 
@@ -58,3 +69,10 @@ class RestGameObjectInterface {
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_RESTGAMEOBJECTINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_RESTGAMEOBJECTINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_RESTGAMEOBJECTINTERFACE_H_COMPLETE
+        
+        #endif
+    

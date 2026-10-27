@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_H
         #define ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -21,9 +26,7 @@
         
             #include "java/lang/Runnable.h"
         
-#include <org/allbinary/TsUtil.h>
-
-      
+class TsUtil;
 
 
 
@@ -42,28 +45,40 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/thread/NullPriorityRunnable.h"
-#include "org/allbinary/thread/PriorityRunnable.h"
+        class NullPriorityRunnable;
+class PriorityRunnable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThreadObjectUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThreadObjectUtil* instance() { static std::unique_ptr<ThreadObjectUtil> value(new ThreadObjectUtil()); return value.get(); }
+    private: static ThreadObjectUtil* instance_owner();
+    private: static ThreadObjectUtil* instance;
 
     public: static ThreadObjectUtil* getInstance();
 
-    public: PriorityRunnable* NULL_PRIORITY_RUNNABLE = new NullPriorityRunnable();
 
-    public: void notifyObject(Object anyType);
+            
+    public: ThreadObjectUtil();
+        
+    public: PriorityRunnable* NULL_PRIORITY_RUNNABLE;
+
+    public: void notifyObject(Object* anyType);
+    public: void notifyObject(const std::string& anyType) { return notifyObject(JavaString::box(anyType)); }
 
                 //@Throws(Exception.constructor)
             
-    public: void waitObject(Object anyType);
+    public: void waitObject(Object* anyType);
+    public: void waitObject(const std::string& anyType) { return waitObject(JavaString::box(anyType)); }
 
                 //@Throws(Exception.constructor)
             
-    public: void waitObjectFor(Object anyType, int64_t delay);
+    public: void waitObjectFor(Object* anyType, int64_t delay);
+    public: void waitObjectFor(const std::string& anyType, int64_t delay) { return waitObjectFor(JavaString::box(anyType), delay); }
 
     public: void processThread(Runnable* runnable);
 
@@ -73,3 +88,19 @@ class ThreadObjectUtil
 
 
         #endif //ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include("org/allbinary/thread/NullPriorityRunnable.h")
+#include "org/allbinary/thread/NullPriorityRunnable.h"
+#endif
+#if __has_include("org/allbinary/thread/PriorityRunnable.h")
+#include "org/allbinary/thread/PriorityRunnable.h"
+#endif
+
+        #endif
+    

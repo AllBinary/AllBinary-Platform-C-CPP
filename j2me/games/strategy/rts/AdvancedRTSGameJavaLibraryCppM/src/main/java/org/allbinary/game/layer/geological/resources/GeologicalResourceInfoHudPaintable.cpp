@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,22 +72,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/geological/resources/GeologicalGeographicMapCellPosition.h"
 
-class GeologicalResourceInfoHudPaintable: public WaypointInfoHudPaintable {
 
-    private: static inline const std::string RESOURCES = "Resources: ";
-
-    private: KeyValueDrawCharArray* keyvalueDrawString;
-
-    private: int32_t fontHeight = 0;
-
-public: GeologicalResourceInfoHudPaintable(){
+GeologicalResourceInfoHudPaintable::GeologicalResourceInfoHudPaintable(){
 this->keyvalueDrawString= new KeyValueDrawCharArray(GeologicalResourceInfoHudPaintable::RESOURCES, this->textX);
     
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
-super.updateMeasurement(graphics);
+    auto GeologicalResourceInfoHudPaintable::updateMeasurement(Graphics* graphics) -> void{
+WaypointInfoHudPaintable::updateMeasurement(graphics);
     
 
     Font* font = graphics->getFont();;
@@ -87,14 +90,14 @@ this->fontHeight= (2 *font->getHeight());
 }
 
 
-    public: void updateSelectionInfo(){
-super.updateSelectionInfo();
+    auto GeologicalResourceInfoHudPaintable::updateSelectionInfo() -> void{
+WaypointInfoHudPaintable::updateSelectionInfo();
     
 
     RTSLayer* rtsLayer = dynamic_cast<RTSLayer*>(this->rtsLayerP);;
     
 
-    BasicArrayList* list = rtsLayer->geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
+    BasicArrayList* list = rtsLayer->geographicMapCellPositionAreaBase->getOccupyingGeographicMapCellPositionList();;
     
 
     int32_t total = 0;;
@@ -118,15 +121,14 @@ this->keyvalueDrawString->update(this->getPrimitiveLongUtil()->getCharArray(tota
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paint(graphics);
+    auto GeologicalResourceInfoHudPaintable::paint(Graphics* graphics) -> void{
+WaypointInfoHudPaintable::paint(graphics);
     
 this->keyvalueDrawString->paint(graphics, (this->y +this->fontHeight));
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALRESOURCEINFOHUDPAINTABLE_CPP

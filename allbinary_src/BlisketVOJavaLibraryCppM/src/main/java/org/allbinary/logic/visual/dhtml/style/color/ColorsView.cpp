@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORSVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/color/ColorsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,25 +79,14 @@
         #include "org/allbinary/logic/visual/dhtml/style/color/ColorData.h"
 #include "org/allbinary/logic/visual/dhtml/style/color/ColorsData.h"
 
-class ColorsView
-            : public Object
-        , public DomNodeInterface {
 
-    private: CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();
-
-    private: const int32_t HEXRADIX = 16;
-
-    private: const int32_t MAX = 255;
-
-    const int32_t delta = 20;
-
-public: ColorsView(){
+ColorsView::ColorsView() : commonPhoneStrings(CommonPhoneStrings::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Node* getColorNode(Document* document, int32_t redIndex, int32_t greenIndex, int32_t blueIndex){
+    auto ColorsView::getColorNode(Document* document, int32_t redIndex, int32_t greenIndex, int32_t blueIndex) -> Node*{
 
     StringMaker* hexColorStringBuffer = new StringMaker();;
     
@@ -138,7 +137,7 @@ hexColorStringBuffer->append(std::to_string(blueIndex));
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ColorsView::toXmlNode(Document* document) -> Node*{
 
     Node* node = ModDomHelper::createNameValueNodes(document, ColorsData::getInstance()->NAME, "RGB Colors In Hex");;
     
@@ -327,7 +326,6 @@ node->appendChild(this->getColorNode(document, redIndex, greenIndex, blueIndex))
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORSVIEW_CPP

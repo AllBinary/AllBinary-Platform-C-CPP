@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/constraints/NoImageComparatorConstraints.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/generic/constraints/Color.h"
 
-class NoImageComparatorConstraints: public ImageComparatorConstraints {
 
-public: NoImageComparatorConstraints() : ImageComparatorConstraints(1){
+NoImageComparatorConstraints::NoImageComparatorConstraints() : ImageComparatorConstraints(1){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +81,7 @@ this->setMaxNonMatchingPixelDeltas(.MAX_VALUE());
 }
 
 
-    public: bool isColorAllowed(int32_t frame, GPoint* point, Color* color){
+    auto NoImageComparatorConstraints::isColorAllowed(int32_t frame, GPoint* point, Color* color) -> bool{
 
 
 
@@ -82,7 +91,7 @@ this->setMaxNonMatchingPixelDeltas(.MAX_VALUE());
 }
 
 
-    public: bool isImageValid(BufferedImage* bufferedImage){
+    auto NoImageComparatorConstraints::isImageValid(BufferedImage* bufferedImage) -> bool{
 
 
 
@@ -92,7 +101,6 @@ this->setMaxNonMatchingPixelDeltas(.MAX_VALUE());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOIMAGECOMPARATORCONSTRAINTS_CPP

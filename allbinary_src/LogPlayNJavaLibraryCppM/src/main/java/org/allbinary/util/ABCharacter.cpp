@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABCHARACTER_CPP
+        #define ORG_ALLBINARY_UTIL_ABCHARACTER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/ABCharacter.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ABCharacter
-            : public Object
-         {
 
-    public: static std::string toString(char ch){
+ABCharacter::ABCharacter() {
+        }
+        
+    auto ABCharacter::toString(char ch) -> std::string{
 
 
 
@@ -61,7 +71,6 @@ class ABCharacter
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_ABCHARACTER_CPP

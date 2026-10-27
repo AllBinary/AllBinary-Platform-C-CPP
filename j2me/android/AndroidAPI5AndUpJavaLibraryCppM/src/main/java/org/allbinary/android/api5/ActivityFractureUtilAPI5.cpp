@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_API5_ACTIVITYFRACTUREUTILAPI5_CPP
+        #define ORG_ALLBINARY_ANDROID_API5_ACTIVITYFRACTUREUTILAPI5_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/api5/ActivityFractureUtilAPI5.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,27 +71,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ActivityFractureUtilAPI5: public ActivityFractureUtilAPI1 {
 
-    private: static ActivityFractureUtilAPI5* instance5() { static std::unique_ptr<ActivityFractureUtilAPI5> value(new ActivityFractureUtilAPI5()); return value.get(); }
+ActivityFractureUtilAPI5::ActivityFractureUtilAPI5() {
+        }
+        auto ActivityFractureUtilAPI5::instance5_owner() -> ActivityFractureUtilAPI5* { static std::unique_ptr<ActivityFractureUtilAPI5> value(new ActivityFractureUtilAPI5()); return value.get(); }
+ActivityFractureUtilAPI5* ActivityFractureUtilAPI5::instance5 = ActivityFractureUtilAPI5::instance5_owner();
 
-    public: static ActivityFractureUtilAPI5* getInstance(){
+    auto ActivityFractureUtilAPI5::getInstance() -> ActivityFractureUtilAPI5*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI5::instance5();
+                        return ActivityFractureUtilAPI5::instance5;
     
 }
 
 
-    private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH = "android.hardware.touchscreen.multitouch";
-
-    private: const std::string FEATURE_TOUCHSCREEN = "android.hardware.touchscreen";
-
-    private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT = "android.hardware.touchscreen.multitouch.distinct";
-
-    public: void process(Activity* activity){
+    auto ActivityFractureUtilAPI5::process(Activity* activity) -> void{
 
     TouchScreenFactory* touchScreenFactory = TouchScreenFactory::getInstance();;
     
@@ -104,7 +110,7 @@ PreLogUtil::put(touchScreenFactory->toString(), this, commonStrings->PROCESS);
 }
 
 
-    private: bool isTouch(Activity* activity){
+    auto ActivityFractureUtilAPI5::isTouch(Activity* activity) -> bool{
 
 
 
@@ -114,7 +120,7 @@ PreLogUtil::put(touchScreenFactory->toString(), this, commonStrings->PROCESS);
 }
 
 
-    private: bool isMultiTouch(Activity* activity){
+    auto ActivityFractureUtilAPI5::isMultiTouch(Activity* activity) -> bool{
 
 
 
@@ -124,7 +130,7 @@ PreLogUtil::put(touchScreenFactory->toString(), this, commonStrings->PROCESS);
 }
 
 
-    private: bool isMultiTouchDistinct(Activity* activity){
+    auto ActivityFractureUtilAPI5::isMultiTouchDistinct(Activity* activity) -> bool{
 
 
 
@@ -134,7 +140,7 @@ PreLogUtil::put(touchScreenFactory->toString(), this, commonStrings->PROCESS);
 }
 
 
-    private: bool isFeature(Activity* activity, std::string property){
+    auto ActivityFractureUtilAPI5::isFeature(Activity* activity, std::string property) -> bool{
 
 
 
@@ -144,7 +150,6 @@ PreLogUtil::put(touchScreenFactory->toString(), this, commonStrings->PROCESS);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_API5_ACTIVITYFRACTUREUTILAPI5_CPP

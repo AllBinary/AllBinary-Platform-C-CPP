@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_SIMPLETRANSFORM_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_SIMPLETRANSFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/SimpleTransform.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,15 +82,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tree/dom/XslHelper.h"
 
-class SimpleTransform
-            : public Object
-         {
 
-    private: AbPath* xsltFilePath;
-
-    private: AbPath* dataFilePath;
-
-public: SimpleTransform(AbPath* xsltFilePath, AbPath* dataFilePath){
+SimpleTransform::SimpleTransform(AbPath* xsltFilePath, AbPath* dataFilePath){
 this->xsltFilePath= xsltFilePath;
     
 this->dataFilePath= dataFilePath;
@@ -90,7 +93,7 @@ this->dataFilePath= dataFilePath;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string transform(){
+    auto SimpleTransform::transform() -> std::string{
 
     AbFileLocalInputStream* inputStream = new AbFileLocalInputStream(AbFile::createAbFileFromAbPath(this->xsltFilePath));;
     
@@ -109,7 +112,6 @@ this->dataFilePath= dataFilePath;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_SIMPLETRANSFORM_CPP

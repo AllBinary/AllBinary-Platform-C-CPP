@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GLOBALS_GLOBALS2_H
         #define ORG_ALLBINARY_GLOBALS_GLOBALS2_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GLOBALS2
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string GETCURRENTLOCATION = "Get Current Location";
@@ -182,9 +191,20 @@ class GLOBALS2
 
     public: static inline const std::string SEARCH = "Search";
 
+
+            
+    public: GLOBALS2();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GLOBALS_GLOBALS2_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GLOBALS_GLOBALS2_H_COMPLETE)
+        #define ORG_ALLBINARY_GLOBALS_GLOBALS2_H_COMPLETE
+        
+        #endif
+    

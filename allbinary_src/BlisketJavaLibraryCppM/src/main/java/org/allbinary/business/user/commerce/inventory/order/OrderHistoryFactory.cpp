@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/order/OrderHistory.h"
 //Retrieves a single order for a user
-class OrderHistoryFactory
-            : public Object
-         {
 
-    public: static OrderHistory* getInstance(std::string id){
+OrderHistoryFactory::OrderHistoryFactory() : logUtil(LogUtil::getInstance()){
+}
+
+
+    auto OrderHistoryFactory::getInstance(std::string id) -> OrderHistory*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -84,7 +95,7 @@ class OrderHistoryFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "OrderHistoryFactory", commonStrings->GET_INSTANCE, &e);
@@ -103,13 +114,6 @@ class OrderHistoryFactory
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: OrderHistoryFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYFACTORY_CPP

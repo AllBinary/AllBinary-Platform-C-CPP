@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_SPRITE_ANIMATIONFACTORYSPRITESCALEUTIL_CPP
+        #define ORG_ALLBINARY_IMAGE_SPRITE_ANIMATIONFACTORYSPRITESCALEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/sprite/AnimationFactorySpriteScaleUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,35 +96,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnimationFactorySpriteScaleUtil
-            : public Object
-         {
 
-    private: static AnimationFactorySpriteScaleUtil* instance() { static std::unique_ptr<AnimationFactorySpriteScaleUtil> value(new AnimationFactorySpriteScaleUtil()); return value.get(); }
+AnimationFactorySpriteScaleUtil::AnimationFactorySpriteScaleUtil() : imageCache(ImageCacheFactory::getInstance()), imageScaleUtil(ImageScaleUtil::getInstance()), openGLUtil(OpenGLUtil::getInstance()), j2seMath(J2SEMath::getInstance()), openGLESImageExclusionUtil(OpenGLESImageExclusionUtil::getInstance()) {
+        }
+        auto AnimationFactorySpriteScaleUtil::instance_owner() -> AnimationFactorySpriteScaleUtil* { static std::unique_ptr<AnimationFactorySpriteScaleUtil> value(new AnimationFactorySpriteScaleUtil()); return value.get(); }
+AnimationFactorySpriteScaleUtil* AnimationFactorySpriteScaleUtil::instance = AnimationFactorySpriteScaleUtil::instance_owner();
 
-    public: static AnimationFactorySpriteScaleUtil* getInstance(){
+    auto AnimationFactorySpriteScaleUtil::getInstance() -> AnimationFactorySpriteScaleUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationFactorySpriteScaleUtil::instance();
+                        return AnimationFactorySpriteScaleUtil::instance;
     
 }
 
 
-    private: ImageCache* imageCache = ImageCacheFactory::getInstance();
-
-    private: ImageScaleUtil* imageScaleUtil = ImageScaleUtil::getInstance();
-
-    private: OpenGLUtil* openGLUtil = OpenGLUtil::getInstance();
-
-    private: J2SEMath* j2seMath = J2SEMath::getInstance();
-
-    private: OpenGLESImageExclusionUtil* openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: Sprite* createImage(Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
+    auto AnimationFactorySpriteScaleUtil::createImage(Image* image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight) -> Sprite*{
 
     SpriteFactory* spriteFactory = SpriteFactory::getInstance();;
     
@@ -220,7 +220,6 @@ sprite= spriteFactory->createSprite(scaledImage, width, height);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_SPRITE_ANIMATIONFACTORYSPRITESCALEUTIL_CPP

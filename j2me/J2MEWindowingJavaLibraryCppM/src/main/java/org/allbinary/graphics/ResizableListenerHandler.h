@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RESIZABLELISTENERHANDLER_H
         #define ORG_ALLBINARY_GRAPHICS_RESIZABLELISTENERHANDLER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,16 +54,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/ResizableListenerInterface.h"
+        class ResizableListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ResizableListenerHandler
-            : public Object
+            : public virtual Object
          {
 
-    private: static ResizableListenerHandler* instance() { static std::unique_ptr<ResizableListenerHandler> value(new ResizableListenerHandler()); return value.get(); }
+    private: static ResizableListenerHandler* instance_owner();
+    private: static ResizableListenerHandler* instance;
 
     public: static ResizableListenerHandler* getInstance();
 
+
+            
+    public: ResizableListenerHandler();
+        
     public: void setListener(ResizableListenerInterface* resizableListenerInterface);
 
     public: void fire(bool isFullScreen);
@@ -74,3 +88,13 @@ class ResizableListenerHandler
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_RESIZABLELISTENERHANDLER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_RESIZABLELISTENERHANDLER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_RESIZABLELISTENERHANDLER_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/ResizableListenerInterface.h")
+#include "org/allbinary/graphics/ResizableListenerInterface.h"
+#endif
+
+        #endif
+    

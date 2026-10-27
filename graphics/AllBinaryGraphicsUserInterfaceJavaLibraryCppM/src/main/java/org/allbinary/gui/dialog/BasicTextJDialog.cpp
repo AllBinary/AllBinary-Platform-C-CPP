@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GUI_DIALOG_BASICTEXTJDIALOG_CPP
+        #define ORG_ALLBINARY_GUI_DIALOG_BASICTEXTJDIALOG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/gui/dialog/BasicTextJDialog.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -59,26 +69,8 @@
 #include "org/allbinary/gui/dialog/EventQueue.h"
 #include "org/allbinary/gui/dialog/JFrame.h"
 
-class BasicTextJDialog: public javax::swing::JDialog {
 
-    public: static void main(std::vector<std::string> args){
-java.awt.EventQueue.invokeLater(class extends ARunnable
-                                {
-                                
-    public: void run(){
-(new BasicTextJDialog(new javax::swing::JFrame(), true, "Test"))->setVisible(true);
-    
-}
-
-                                }
-                            );
-    
-}
-
-
-    private: CloseJDialogListenerInterface* closeListenerInterface;
-
-public: BasicTextJDialog(java::awt::Frame* parent, bool modal, std::string text) : javax::swing::JDialog(parent, modal){
+BasicTextJDialog::BasicTextJDialog(java::awt::Frame* parent, bool modal, std::string text) : javax::swing::JDialog(parent, modal){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,19 +84,19 @@ this->setText(text);
 }
 
 
-    public: void setText(std::string text){
+    auto BasicTextJDialog::setText(std::string text) -> void{
 this->textJLabel->setText(text);
     
 }
 
 
-    public: void addCloseListener(CloseJDialogListenerInterface* closeListenerInterface){
+    auto BasicTextJDialog::addCloseListener(CloseJDialogListenerInterface* closeListenerInterface) -> void{
 this->closeListenerInterface= closeListenerInterface;
     
 }
 
 
-public: BasicTextJDialog(std::string text){
+BasicTextJDialog::BasicTextJDialog(std::string text){
 this->initComponents();
     
 this->textJLabel->setText(text);
@@ -112,12 +104,12 @@ this->textJLabel->setText(text);
 }
 
 
-    private: void initComponents(){
+    auto BasicTextJDialog::initComponents() -> void{
 this->jButton1= new javax::swing::JButton();
     
 this->textJLabel= new javax::swing::JLabel();
     
-setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+setDefaultCloseOperation(javax.swing->WindowConstants->DISPOSE_ON_CLOSE);
     
 this->jButton1->setText("OK");
     
@@ -139,16 +131,16 @@ this->textJLabel->setText("No Text Set");
     
 getContentPane()->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addGap(80, 80, 80)->addComponent(jButton1))->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(textJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short::MAX_VALUE)))->addContainerGap()));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGap(80, 80, 80)->addComponent(jButton1))->addGroup(layout->createSequentialGroup()->addContainerGap()->addComponent(textJLabel, javax.swing->GroupLayout->DEFAULT_SIZE, 184, Short::MAX_VALUE)))->addContainerGap()));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addGap(20, 20, 20)->addComponent(textJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)->addGap(30, 30, 30)->addComponent(jButton1)));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addGap(20, 20, 20)->addComponent(textJLabel, javax.swing->GroupLayout->PREFERRED_SIZE, 20, javax.swing->GroupLayout->PREFERRED_SIZE)->addGap(30, 30, 30)->addComponent(jButton1)));
     
 pack();
     
 }
 
 
-    private: void jButton1ActionPerformed(java::awt::event::ActionEvent* evt){
+    auto BasicTextJDialog::jButton1ActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->setVisible(false);
     
 
@@ -165,11 +157,21 @@ this->setVisible(false);
 }
 
 
-    private: javax::swing::JButton* jButton1;
+    auto BasicTextJDialog::main(std::vector<std::string> args) -> void{
+java.awt->EventQueue->invokeLater(class extends ARunnable
+                                {
+                                
+    public: void run(){
+(new BasicTextJDialog(new javax::swing::JFrame(), true, "Test"))->setVisible(true);
+    
+}
 
-    private: javax::swing::JLabel* textJLabel;
+                                }
+                            );
+    
+}
 
-};
 
-            
 
+
+        #endif //ORG_ALLBINARY_GUI_DIALOG_BASICTEXTJDIALOG_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKING_CPP
+        #define ORG_ALLBINARY_GAME_TRACKING_TRACKING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/tracking/Tracking.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,19 +58,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Tracking
-            : public Object
-         {
 
-public: Tracking(){
+Tracking::Tracking(){
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto Tracking::paint(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_TRACKING_TRACKING_CPP

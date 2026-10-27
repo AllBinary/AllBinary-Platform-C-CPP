@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,9 +34,7 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicArrayList;
 
 
 
@@ -51,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerPlacementInterfaceBasicArrayListFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class LayerPlacementInterfaceBasicArrayListFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual BasicArrayList* getInstance() = 0;
 
@@ -63,3 +72,13 @@ class LayerPlacementInterfaceBasicArrayListFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACEBASICARRAYLISTFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/BasicGameDemoPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,17 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicGameDemoPaintable: public StatePaintable {
 
-    private: Paintable* mainDemoStatePaintable;
-
-    private: Paintable* ownershipPaintable;
-
-    private: Paintable* helpPaintableInterface;
-
-    private: Paintable* currentStatePaintable = NullPaintable::getInstance();
-
-public: BasicGameDemoPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface){
+BasicGameDemoPaintable::BasicGameDemoPaintable(Paintable* mainDemoStatePaintable, Paintable* ownershipPaintable, Paintable* helpPaintableInterface) : currentStatePaintable(NullPaintable::getInstance()){
 this->mainDemoStatePaintable= mainDemoStatePaintable;
     
 this->setCurrentStatePaintable(NullPaintable::getInstance());
@@ -77,7 +78,7 @@ this->helpPaintableInterface= helpPaintableInterface;
 }
 
 
-    public: void setState(int32_t state){
+    auto BasicGameDemoPaintable::setState(int32_t state) -> void{
 
                         if(state == 0)
                         
@@ -105,13 +106,13 @@ this->helpPaintableInterface= helpPaintableInterface;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto BasicGameDemoPaintable::paint(Graphics* graphics) -> void{
 this->getCurrentStatePaintable()->paint(graphics);
     
 }
 
 
-    public: Paintable* getHelpPaintableInterface(){
+    auto BasicGameDemoPaintable::getHelpPaintableInterface() -> Paintable*{
 
 
 
@@ -121,13 +122,13 @@ this->getCurrentStatePaintable()->paint(graphics);
 }
 
 
-    protected: void setCurrentStatePaintable(Paintable* currentStatePaintable){
+    auto BasicGameDemoPaintable::setCurrentStatePaintable(Paintable* currentStatePaintable) -> void{
 this->currentStatePaintable= currentStatePaintable;
     
 }
 
 
-    protected: Paintable* getCurrentStatePaintable(){
+    auto BasicGameDemoPaintable::getCurrentStatePaintable() -> Paintable*{
 
 
 
@@ -137,7 +138,7 @@ this->currentStatePaintable= currentStatePaintable;
 }
 
 
-    protected: Paintable* getMainDemoStatePaintable(){
+    auto BasicGameDemoPaintable::getMainDemoStatePaintable() -> Paintable*{
 
 
 
@@ -147,7 +148,6 @@ this->currentStatePaintable= currentStatePaintable;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_BASICGAMEDEMOPAINTABLE_CPP

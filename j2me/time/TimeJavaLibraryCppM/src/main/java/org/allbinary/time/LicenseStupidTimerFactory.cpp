@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_CPP
+        #define ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/time/LicenseStupidTimerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/time/StupidTimer.h"
 
-class LicenseStupidTimerFactory
-            : public Object
-         {
 
-    private: static StupidTimer* instance() { static std::unique_ptr<StupidTimer> value(new StupidTimer()); return value.get(); }
+LicenseStupidTimerFactory::LicenseStupidTimerFactory() {
+        }
+        auto LicenseStupidTimerFactory::instance_owner() -> StupidTimer* { static std::unique_ptr<StupidTimer> value(new StupidTimer()); return value.get(); }
+StupidTimer* LicenseStupidTimerFactory::instance = LicenseStupidTimerFactory::instance_owner();
 
-    public: static StupidTimer* getInstance(){
+    auto LicenseStupidTimerFactory::getInstance() -> StupidTimer*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseStupidTimerFactory::instance();
+                        return LicenseStupidTimerFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_CPP

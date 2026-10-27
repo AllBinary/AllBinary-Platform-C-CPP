@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_H
         #define ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,21 +52,30 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/PlayerType.h"
+        class PlayerType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PlayerTypesFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static PlayerTypesFactory* SINGLETON() { static std::unique_ptr<PlayerTypesFactory> value(new PlayerTypesFactory()); return value.get(); }
+    private: static PlayerTypesFactory* SINGLETON_owner();
+    private: static PlayerTypesFactory* SINGLETON;
 
     public: static PlayerTypesFactory* getInstance();
 
-    public: PlayerType* PLAYER_TYPE_ONE = new PlayerType("Player Type One", 0);
 
-    public: PlayerType* PLAYER_TYPE_TWO = new PlayerType("Player Type Two", 1);
+            
+    public: PlayerTypesFactory();
+        
+    public: PlayerType* PLAYER_TYPE_ONE;
 
-    public: PlayerType* PLAYER_TYPE_THREE = new PlayerType("Player Type Three", 2);
+    public: PlayerType* PLAYER_TYPE_TWO;
+
+    public: PlayerType* PLAYER_TYPE_THREE;
 
 };
 
@@ -69,3 +83,13 @@ class PlayerTypesFactory
 
 
         #endif //ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PLAYERTYPESFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/PlayerType.h")
+#include "org/allbinary/game/PlayerType.h"
+#endif
+
+        #endif
+    

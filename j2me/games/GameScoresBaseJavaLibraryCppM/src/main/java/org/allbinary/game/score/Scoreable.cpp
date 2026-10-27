@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_SCOREABLE_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_SCOREABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/Scoreable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,39 +61,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/score/ScoreableInterface.h"
 
-class Scoreable
-            : public Object
-        , public ScoreableInterface {
+int32_t Scoreable::ID = SmallIntegerSingletonFactory::getInstance()->getAt(3);
 
-    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(3);
-
-    private: int32_t points;
-
-public: Scoreable(int32_t points){
+Scoreable::Scoreable(int32_t points){
 this->points= points;
     
 }
 
 
-    public: void addPoints(int32_t points){
+    auto Scoreable::addPoints(int32_t points) -> void{
 this->points += points;
     
 }
 
 
-    public: void removePoints(int32_t points){
+    auto Scoreable::removePoints(int32_t points) -> void{
 this->points -= points;
     
 }
 
 
-    protected: void setPoints(int32_t points){
+    auto Scoreable::setPoints(int32_t points) -> void{
 this->points= points;
     
 }
 
 
-    public: int32_t getPoints(){
+    auto Scoreable::getPoints() -> int32_t{
 
 
 
@@ -93,7 +97,6 @@ this->points= points;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_SCOREABLE_CPP

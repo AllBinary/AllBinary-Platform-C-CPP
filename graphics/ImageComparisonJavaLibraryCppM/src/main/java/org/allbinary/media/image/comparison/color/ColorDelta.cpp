@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTA_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/color/ColorDelta.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,27 +69,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorDelta
-            : public Object
-        , public CacheableInterface {
 
-    public: static Object* getKey(int32_t rgb1, int32_t rgb2){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return (new StringMaker())->append(std::to_string(rgb1))->append(CommonSeps::getInstance()->UNDERSCORE)->append(std::to_string(rgb2))->toString();;
-    
-}
-
-
-    private: int32_t rgb1= 0;
-
-    private: int32_t rgb2= 0;
-
-    private: Object* key;
-
-public: ColorDelta(int32_t rgb1, int32_t rgb2){
+ColorDelta::ColorDelta(int32_t rgb1, int32_t rgb2){
 this->setRgb1(rgb1);
     
 this->setRgb2(rgb2);
@@ -89,7 +80,7 @@ this->key= ColorDelta::getKey(rgb1, rgb2);
 }
 
 
-    public: Object* getKey(){
+    auto ColorDelta::getKey() -> Object*{
 
 
 
@@ -99,7 +90,17 @@ this->key= ColorDelta::getKey(rgb1, rgb2);
 }
 
 
-    public: int32_t getRgb1(){
+    auto ColorDelta::getKey(int32_t rgb1, int32_t rgb2) -> Object*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return (new StringMaker())->append(std::to_string(rgb1))->append(CommonSeps::getInstance()->UNDERSCORE)->append(std::to_string(rgb2))->toString();;
+    
+}
+
+
+    auto ColorDelta::getRgb1() -> int32_t{
 
 
 
@@ -109,13 +110,13 @@ this->key= ColorDelta::getKey(rgb1, rgb2);
 }
 
 
-    protected: void setRgb1(int32_t rgb1){
+    auto ColorDelta::setRgb1(int32_t rgb1) -> void{
 this->rgb1= rgb1;
     
 }
 
 
-    public: int32_t getRgb2(){
+    auto ColorDelta::getRgb2() -> int32_t{
 
 
 
@@ -125,13 +126,13 @@ this->rgb1= rgb1;
 }
 
 
-    protected: void setRgb2(int32_t rgb2){
+    auto ColorDelta::setRgb2(int32_t rgb2) -> void{
 this->rgb2= rgb2;
     
 }
 
 
-    public: std::string toString(){
+    auto ColorDelta::toString() -> std::string{
 
 
 
@@ -141,7 +142,6 @@ this->rgb2= rgb2;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COLOR_COLORDELTA_CPP

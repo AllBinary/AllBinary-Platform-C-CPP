@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGPROPERTIESFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGPROPERTIESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/building/BuildingPropertiesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,23 +97,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/building/BuildingLayer.h"
 
-class BuildingPropertiesFactory
-            : public Object
-         {
 
-    private: static BuildingPropertiesFactory* instance() { static std::unique_ptr<BuildingPropertiesFactory> value(new BuildingPropertiesFactory()); return value.get(); }
+BuildingPropertiesFactory::BuildingPropertiesFactory() : damageFloatersPaintableInterface(NullPaintable::getInstance()) {
+        }
+        auto BuildingPropertiesFactory::instance_owner() -> BuildingPropertiesFactory* { static std::unique_ptr<BuildingPropertiesFactory> value(new BuildingPropertiesFactory()); return value.get(); }
+BuildingPropertiesFactory* BuildingPropertiesFactory::instance = BuildingPropertiesFactory::instance_owner();
 
-    public: static BuildingPropertiesFactory* getInstance(){
+    auto BuildingPropertiesFactory::getInstance() -> BuildingPropertiesFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BuildingPropertiesFactory::instance();
+                        return BuildingPropertiesFactory::instance;
     
 }
 
 
-    public: int32_t getEfficiencyPerLevel(BuildingLayer* buildingLayer){
+    auto BuildingPropertiesFactory::getEfficiencyPerLevel(BuildingLayer* buildingLayer) -> int32_t{
 
 
 
@@ -113,9 +123,7 @@ class BuildingPropertiesFactory
 }
 
 
-    public: Paintable* damageFloatersPaintableInterface = NullPaintable::getInstance();
-
-    public: DamageFloaters* getDamageFloaters(BuildingLayer* buildingLayer){
+    auto BuildingPropertiesFactory::getDamageFloaters(BuildingLayer* buildingLayer) -> DamageFloaters*{
 
     DamageFloaters* damageFloaters = DamageFloaters::getInstance();;
     
@@ -147,7 +155,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
                 //@Throws(Exception.constructor)
             
-    public: Paintable* getHealthBar(BuildingLayer* buildingLayer){
+    auto BuildingPropertiesFactory::getHealthBar(BuildingLayer* buildingLayer) -> Paintable*{
 
     Paintable* healthBar = NullPaintable::getInstance();;
     
@@ -169,7 +177,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public: ABHashtable<Object*, Object*>* getHashtable(){
+    auto BuildingPropertiesFactory::getHashtable() -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -179,7 +187,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public: TrackingEvent* getTrackingEvent(BuildingLayer* buildingLayer){
+    auto BuildingPropertiesFactory::getTrackingEvent(BuildingLayer* buildingLayer) -> TrackingEvent*{
 
 
 
@@ -189,7 +197,6 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGPROPERTIESFACTORY_CPP

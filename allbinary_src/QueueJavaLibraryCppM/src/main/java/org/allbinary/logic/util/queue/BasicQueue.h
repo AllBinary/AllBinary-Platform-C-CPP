@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 
 
 
@@ -56,24 +57,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicQueue
-            : public Object
+            : public virtual Object
          {
 
-    protected: BasicArrayList* queueVector = new BasicArrayListD();
+    /*protected*/ public: BasicArrayList* queueVector;
 
-protected: BasicQueue();
+/*protected*/ public: BasicQueue();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: bool offer(Object* anyType);
+    /*protected*/ public: bool offer(Object* anyType);
+    /*protected*/ public: bool offer(const std::string& anyType) { return offer(JavaString::box(anyType)); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void remove(Object* anyType);
+    /*protected*/ public: void remove(Object* anyType);
+    /*protected*/ public: void remove(const std::string& anyType) { return remove(JavaString::box(anyType)); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: Object* removeLast();
+    /*protected*/ public: Object* removeLast();
 
 };
 
@@ -81,3 +88,16 @@ protected: BasicQueue();
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_BASICQUEUE_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+        #endif
+    

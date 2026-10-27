@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -83,28 +93,15 @@
 #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputData.h"
 #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ImageActionScriptOutputProcessor.h"
 
-class ImageActionScriptOutput: public BasicProfileActionScriptOutput, public ImageActionScriptOutputInterface {
 
-    private: static inline const std::string NAME = "Captures";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool saved = false;
-
-    private: bool display = false;
-
-    private: ImageTypes* imageTypes;
-
-    private: ImageActionScriptOutputJPanel* actionScriptOutputJPanel;
-
-public: ImageActionScriptOutput(Node* node) : BasicProfileActionScriptOutput(NAME, node){
+ImageActionScriptOutput::ImageActionScriptOutput(Node* node) : BasicProfileActionScriptOutput(NAME, node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 
     Node* actionNode = DomSearchHelper::getNode(ImageActionScriptOutputData::NAME, node->getChildNodes());;
@@ -165,7 +162,7 @@ this->setSaved(().valueOf());
                             
 
 
-                            throw new Exception("Action Script Output Unknown Node");
+                            throw Exception("Action Script Output Unknown Node");
                     
 
                         }
@@ -179,7 +176,7 @@ this->setSaved(().valueOf());
                             
 
 
-                            throw new Exception("Action Script Output Node Null");
+                            throw Exception("Action Script Output Node Null");
                     
 
                         }
@@ -191,7 +188,7 @@ this->actionScriptOutputJPanel= new ImageActionScriptOutputJPanel(this);
 }
 
 
-public: ImageActionScriptOutput() : BasicProfileActionScriptOutput(NAME){
+ImageActionScriptOutput::ImageActionScriptOutput() : BasicProfileActionScriptOutput(NAME), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -207,7 +204,7 @@ this->actionScriptOutputJPanel= new ImageActionScriptOutputJPanel(this);
 }
 
 
-    public: ImageActionScriptOutputJPanel* getActionScriptOutputJPanel(){
+    auto ImageActionScriptOutput::getActionScriptOutputJPanel() -> ImageActionScriptOutputJPanel*{
 
 
 
@@ -217,7 +214,7 @@ this->actionScriptOutputJPanel= new ImageActionScriptOutputJPanel(this);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto ImageActionScriptOutput::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -225,7 +222,7 @@ hashMap->put(ImageActionScriptOutputData::DISPLAY, Boolean::toString(this->isDis
     
 hashMap->put(ImageActionScriptOutputData::SAVE, Boolean::toString(this->isSaved()));
     
-this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
+this->logUtil->putF(JavaString::valueOf("HashMap: ") +JavaString::valueOf(hashMap->toString()), this, "toHashMap()");
     
 
 
@@ -238,9 +235,9 @@ this->logUtil->putF("HashMap: " +hashMap->toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ImageActionScriptOutput::toXmlNode(Document* document) -> Node*{
 
-    Node* node = super.toXmlNode(document);;
+    Node* node = BasicProfileActionScriptOutput::toXmlNode(document);;
     
 
     Node* newNode = ModDomHelper::createNodeWithValueNodes(document, ImageActionScriptOutputData::NAME, this->toHashMap());;
@@ -260,19 +257,19 @@ node->appendChild(newNode);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(int64_t frame){
+    auto ImageActionScriptOutput::process(int64_t frame) -> void{
 ImageActionScriptOutputProcessor::process(this, frame);
     
 }
 
 
-    public: void showDialog(){
+    auto ImageActionScriptOutput::showDialog() -> void{
 this->actionScriptOutputJPanel->getCapturedImageActionJDialog()->setVisible(true);
     
 }
 
 
-    public: bool isSaved(){
+    auto ImageActionScriptOutput::isSaved() -> bool{
 
 
 
@@ -282,13 +279,13 @@ this->actionScriptOutputJPanel->getCapturedImageActionJDialog()->setVisible(true
 }
 
 
-    public: void setSaved(bool saved){
+    auto ImageActionScriptOutput::setSaved(bool saved) -> void{
 this->saved= saved;
     
 }
 
 
-    public: bool isDisplay(){
+    auto ImageActionScriptOutput::isDisplay() -> bool{
 
 
 
@@ -298,13 +295,13 @@ this->saved= saved;
 }
 
 
-    public: void setDisplay(bool display){
+    auto ImageActionScriptOutput::setDisplay(bool display) -> void{
 this->display= display;
     
 }
 
 
-    public: std::string future_toString(){
+    auto ImageActionScriptOutput::future_toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -329,13 +326,13 @@ stringBuffer->append(this->getImageTypes()->toString());
 }
 
 
-    public: void log(){
+    auto ImageActionScriptOutput::log() -> void{
 this->logUtil->putF(this->future_toString(), this, "log");
     
 }
 
 
-    public: ImageTypes* getImageTypes(){
+    auto ImageActionScriptOutput::getImageTypes() -> ImageTypes*{
 
 
 
@@ -345,13 +342,12 @@ this->logUtil->putF(this->future_toString(), this, "log");
 }
 
 
-    public: void setImageTypes(ImageTypes* imageTypes){
+    auto ImageActionScriptOutput::setImageTypes(ImageTypes* imageTypes) -> void{
 this->imageTypes= imageTypes;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUT_CPP

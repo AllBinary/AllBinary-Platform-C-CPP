@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,11 +65,8 @@
         #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactoryBase.h"
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfo.h"
 
-class PathFindingNodeCostInfoFactory: public PathFindingNodeCostInfoFactoryBase {
 
-    private: std::vector<std::vector<PathFindingNodeCostInfo*>> pathFindingNodeCostInfoAdjacencyList;
-
-public: PathFindingNodeCostInfoFactory(int32_t max){
+PathFindingNodeCostInfoFactory::PathFindingNodeCostInfoFactory(int32_t max){
 this->pathFindingNodeCostInfoAdjacencyList= std::vector<std::vector<PathFindingNodeCostInfo*>>(max, std::vector<PathFindingNodeCostInfo*>(max));
     
 }
@@ -67,7 +74,7 @@ this->pathFindingNodeCostInfoAdjacencyList= std::vector<std::vector<PathFindingN
 
                 //@Throws(Exception.constructor)
             
-    public: void create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+    auto PathFindingNodeCostInfoFactory::create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd) -> void{
 this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition, costFromStart, costToEnd);
     
 }
@@ -75,7 +82,7 @@ this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition, c
 
                 //@Throws(Exception.constructor)
             
-    public: PathFindingNodeCostInfo* getInstance(GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+    auto PathFindingNodeCostInfoFactory::getInstance(GeographicMapCellPosition* goingToGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd) -> PathFindingNodeCostInfo*{
 
     PathFindingNodeCostInfo* pathFindingNodeCostInfo = this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition);;
     
@@ -113,7 +120,7 @@ pathFindingNodeCostInfo->setCalculatedTotalCost();
 }
 
 
-    public: PathFindingNodeCostInfo* getInstance(GeographicMapCellPosition* goingToFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition){
+    auto PathFindingNodeCostInfoFactory::getInstance(GeographicMapCellPosition* goingToFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition) -> PathFindingNodeCostInfo*{
 
 
 
@@ -123,7 +130,7 @@ pathFindingNodeCostInfo->setCalculatedTotalCost();
 }
 
 
-    public: int64_t getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition){
+    auto PathFindingNodeCostInfoFactory::getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition) -> int64_t{
 
 
 
@@ -133,7 +140,6 @@ pathFindingNodeCostInfo->setCalculatedTotalCost();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORY_CPP

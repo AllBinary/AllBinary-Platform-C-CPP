@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/StoreAppClientInformation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,11 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
 
-class StoreAppClientInformation: public AbeClientInformation, public LongArrayIdentifierInterface {
 
-    private: std::vector<int64_t> longArrayIdentifier;
-
-public: StoreAppClientInformation(std::string name, std::string version, std::string specialName, std::string shortName, std::vector<int64_t> longArrayIdentifier) : AbeClientInformation(name, version, specialName, shortName){
+StoreAppClientInformation::StoreAppClientInformation(std::string name, std::string version, std::string specialName, std::string shortName, std::vector<int64_t> longArrayIdentifier) : AbeClientInformation(name, version, specialName, shortName){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +72,7 @@ this->longArrayIdentifier= longArrayIdentifier;
 }
 
 
-    public: std::vector<int64_t> getLongArrayIdentifier(){
+    auto StoreAppClientInformation::getLongArrayIdentifier() -> std::vector<int64_t>{
 
 
 
@@ -75,7 +82,6 @@ this->longArrayIdentifier= longArrayIdentifier;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LicenseUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,28 +58,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LicenseUtil
-            : public Object
-         {
 
-    private: static LicenseUtil* instance() { static std::unique_ptr<LicenseUtil> value(new LicenseUtil()); return value.get(); }
+LicenseUtil::LicenseUtil() {
+        }
+        auto LicenseUtil::instance_owner() -> LicenseUtil* { static std::unique_ptr<LicenseUtil> value(new LicenseUtil()); return value.get(); }
+LicenseUtil* LicenseUtil::instance = LicenseUtil::instance_owner();
 
-    public: static LicenseUtil* getInstance(){
+    auto LicenseUtil::getInstance() -> LicenseUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseUtil::instance();
+                        return LicenseUtil::instance;
     
 }
 
 
-    public: void init(){
+    auto LicenseUtil::init() -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto LicenseUtil::isRunning() -> bool{
 
 
 
@@ -80,11 +90,11 @@ class LicenseUtil
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto LicenseUtil::setRunning(bool running) -> void{
 }
 
 
-    public: bool shouldWait(CommandListener* commandListener){
+    auto LicenseUtil::shouldWait(CommandListener* commandListener) -> bool{
 
 
 
@@ -94,7 +104,6 @@ class LicenseUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSEUTIL_CPP

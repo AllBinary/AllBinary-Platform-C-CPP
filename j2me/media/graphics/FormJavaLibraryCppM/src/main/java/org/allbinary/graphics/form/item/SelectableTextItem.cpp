@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_SELECTABLETEXTITEM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_SELECTABLETEXTITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/SelectableTextItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,9 +61,8 @@
         #include "org/allbinary/graphics/form/item/ABTextItem.h"
 #include "org/allbinary/graphics/form/item/ABStringComponent.h"
 
-class SelectableTextItem: public ABTextItem {
 
-public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
+SelectableTextItem::SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -63,7 +72,7 @@ public: SelectableTextItem(std::string label, int32_t layout, std::string altTex
 }
 
 
-    public: bool isFocusable(){
+    auto SelectableTextItem::isFocusable() -> bool{
 
 
 
@@ -73,8 +82,8 @@ public: SelectableTextItem(std::string label, int32_t layout, std::string altTex
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->myFontProcessor.process(graphics);
+    auto SelectableTextItem::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->myFontProcessor->process(graphics);
     
 
     ABStringComponent* stringComponent = this->getLabelStringComponent();;
@@ -95,7 +104,6 @@ graphics->drawString(this->getLabel(), x +2, y, 0);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_SELECTABLETEXTITEM_CPP

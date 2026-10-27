@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_CIRCULARINDEXUTIL_CPP
+        #define ORG_ALLBINARY_UTIL_CIRCULARINDEXUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/CircularIndexUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,39 +73,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CircularIndexUtil
-            : public Object
-         {
+auto CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL_owner() -> CircularIndexUtil* { static std::unique_ptr<CircularIndexUtil> value(new CircularIndexUtil(0, 0)); return value.get(); }
+CircularIndexUtil* CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL_owner();
 
-    public: static CircularIndexUtil* NULL_CIRCULAR_INDEX_UTIL() { static std::unique_ptr<CircularIndexUtil> value(new CircularIndexUtil(0, 0)); return value.get(); }
-
-    public: static CircularIndexUtil* createInstance(int32_t max){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CircularIndexUtil(0, max);
-    
-}
-
-
-    public: static CircularIndexUtil* createInstanceAt(int32_t index, int32_t max){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CircularIndexUtil(index, max);
-    
-}
-
-
-    private: int32_t index = 0;
-
-    private: int32_t lastIndex = 0;
-
-    private: int32_t size = 0;
-
-private: CircularIndexUtil(int32_t index, int32_t size){
+CircularIndexUtil::CircularIndexUtil(int32_t index, int32_t size){
 this->setSize(size);
     
 this->setIndex(index);
@@ -103,7 +84,7 @@ this->setIndex(index);
 }
 
 
-    public: int32_t next(){
+    auto CircularIndexUtil::next() -> int32_t{
 
                         if(this->index >= this->lastIndex)
                         
@@ -128,7 +109,7 @@ this->setIndex(index);
 }
 
 
-    public: int32_t previous(){
+    auto CircularIndexUtil::previous() -> int32_t{
 
                         if(this->index < 1)
                         
@@ -153,7 +134,7 @@ this->setIndex(index);
 }
 
 
-    public: void setIndex(int32_t index){
+    auto CircularIndexUtil::setIndex(int32_t index) -> void{
 
                         if(index > this->lastIndex)
                         
@@ -172,7 +153,7 @@ this->index= index;
 }
 
 
-    public: int32_t getIndex(){
+    auto CircularIndexUtil::getIndex() -> int32_t{
 
 
 
@@ -182,7 +163,27 @@ this->index= index;
 }
 
 
-    public: void setSize(int32_t size){
+    auto CircularIndexUtil::createInstance(int32_t max) -> CircularIndexUtil*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return new CircularIndexUtil(0, max);
+    
+}
+
+
+    auto CircularIndexUtil::createInstanceAt(int32_t index, int32_t max) -> CircularIndexUtil*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return new CircularIndexUtil(index, max);
+    
+}
+
+
+    auto CircularIndexUtil::setSize(int32_t size) -> void{
 this->size= size;
     
 this->lastIndex= size -1;
@@ -192,7 +193,7 @@ this->index= 0;
 }
 
 
-    public: int32_t getSize(){
+    auto CircularIndexUtil::getSize() -> int32_t{
 
 
 
@@ -202,7 +203,7 @@ this->index= 0;
 }
 
 
-    public: std::string toString(){
+    auto CircularIndexUtil::toString() -> std::string{
 
 
 
@@ -212,7 +213,6 @@ this->index= 0;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_CIRCULARINDEXUTIL_CPP

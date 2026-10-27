@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,19 +52,38 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/ai/ThrustAIVisitor.h"
+        class ThrustAIVisitor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThrustAIVisitorFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThrustAIVisitor* instance() { static std::unique_ptr<ThrustAIVisitor> value(new ThrustAIVisitor()); return value.get(); }
+    private: static ThrustAIVisitor* instance_owner();
+    private: static ThrustAIVisitor* instance;
 
     public: static ThrustAIVisitor* getInstance();
 
+
+            
+    public: ThrustAIVisitorFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/ag/ai/ThrustAIVisitor.h")
+#include "org/allbinary/game/ag/ai/ThrustAIVisitor.h"
+#endif
+
+        #endif
+    

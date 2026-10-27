@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_RECTANGLECOLLISIONPOINTUTIL_CPP
+        #define ORG_ALLBINARY_MATH_RECTANGLECOLLISIONPOINTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/RectangleCollisionPointUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/math/RectangleCollisionUtil.h"
 
-class RectangleCollisionPointUtil
-            : public Object
-         {
 
-    public: static bool allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list){
+RectangleCollisionPointUtil::RectangleCollisionPointUtil(){
+}
+
+
+    auto RectangleCollisionPointUtil::allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list) -> bool{
 
     RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();;
     
@@ -96,7 +107,7 @@ point= dynamic_cast<GPoint*>(list->objectArray[index]);
 }
 
 
-    public: static bool allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list, int32_t xCellSize, int32_t yCellSize){
+    auto RectangleCollisionPointUtil::allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList* list, int32_t xCellSize, int32_t yCellSize) -> bool{
 
     RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();;
     
@@ -136,11 +147,6 @@ point= dynamic_cast<GPoint*>(list->objectArray[index]);
 }
 
 
-private: RectangleCollisionPointUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MATH_RECTANGLECOLLISIONPOINTUTIL_CPP

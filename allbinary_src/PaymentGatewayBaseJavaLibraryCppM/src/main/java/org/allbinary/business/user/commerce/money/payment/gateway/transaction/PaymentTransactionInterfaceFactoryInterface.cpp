@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,37 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterface.h"
 
-class PaymentTransactionInterfaceFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual PaymentTransactionInterface* getInstance(OrderHistory* orderHistory) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual PaymentTransactionInterface* getSaleTransaction(TenderType* tenderType) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual PaymentTransactionInterface* getCreditTransaction(TenderType* tenderType) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual PaymentTransactionInterface* getAuthorizationTransaction(TenderType* tenderType) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual PaymentTransactionInterface* getCaptureDelayedTransaction(TenderType* tenderType) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual PaymentTransactionInterface* getVoidTransaction(TenderType* tenderType) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual PaymentTransactionInterface* getInquiryTransaction(TenderType* tenderType) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE_CPP

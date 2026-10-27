@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_CPP
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/transition/shake/ShakeAnimationListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,27 +56,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/transition/shake/ShakeEvent.h"
 
-class ShakeAnimationListener
-            : public Object
-         {
 
-    public: void onSmallShakeEvent(){
+ShakeAnimationListener::ShakeAnimationListener() {
+        }
+        
+    auto ShakeAnimationListener::onSmallShakeEvent() -> void{
 }
 
 
-    public: void onMediumShakeEvent(){
+    auto ShakeAnimationListener::onMediumShakeEvent() -> void{
 }
 
 
-    public: void onLargeShakeEvent(){
+    auto ShakeAnimationListener::onLargeShakeEvent() -> void{
 }
 
 
-    public: void onShakeEvent(ShakeEvent* shakeEvent){
+    auto ShakeAnimationListener::onShakeEvent(ShakeEvent* shakeEvent) -> void{
 }
 
 
-    public: int32_t getType(){
+    auto ShakeAnimationListener::getType() -> int32_t{
 
 
 
@@ -76,7 +86,6 @@ class ShakeAnimationListener
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_RESOURCE_FEATURERESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_RESOURCE_FEATURERESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,14 +35,8 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/GameFeatureControlledInterface.h>
-
-      
 #include <org/allbinary/game/resource/RectangleResourceFactoryInterface.h>
-
-      
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -58,6 +57,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/resource/ResourceAnimationInterfaceFactoryInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FeatureResourceAnimationInterfaceFactoryInterface: public ResourceAnimationInterfaceFactoryInterface, public RectangleResourceFactoryInterface, public GameFeatureControlledInterface {
 
     public: virtual ABHashtable<Object*, Object*>* getHashtable() = 0;
@@ -68,3 +71,22 @@ class FeatureResourceAnimationInterfaceFactoryInterface: public ResourceAnimatio
 
 
         #endif //ORG_ALLBINARY_ANIMATION_RESOURCE_FEATURERESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_RESOURCE_FEATURERESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_RESOURCE_FEATURERESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/configuration/feature/GameFeatureControlledInterface.h>)
+#include <org/allbinary/game/configuration/feature/GameFeatureControlledInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/resource/RectangleResourceFactoryInterface.h>)
+#include <org/allbinary/game/resource/RectangleResourceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/animation/resource/ResourceAnimationInterfaceFactoryInterface.h")
+#include "org/allbinary/animation/resource/ResourceAnimationInterfaceFactoryInterface.h"
+#endif
+
+        #endif
+    

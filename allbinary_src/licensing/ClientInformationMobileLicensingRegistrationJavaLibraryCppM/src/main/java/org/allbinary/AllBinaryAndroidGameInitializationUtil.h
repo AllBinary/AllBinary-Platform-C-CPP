@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H
         #define ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/business/init/LicenseInitInfoUtil.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/PartnerIdentifierFileUtil.h>
-
-      
+class LicenseInitInfoUtil;
+class ResourceUtil;
+class PartnerIdentifierFileUtil;
 
 
 
@@ -58,17 +57,44 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/AndroidResources.h"
+        class AndroidResources;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryAndroidGameInitializationUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static void init();
 
+
+            
+    public: AllBinaryAndroidGameInitializationUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/business/init/LicenseInitInfoUtil.h>)
+#include <org/allbinary/business/init/LicenseInitInfoUtil.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/PartnerIdentifierFileUtil.h>)
+#include <org/allbinary/logic/system/security/licensing/PartnerIdentifierFileUtil.h>
+#endif
+#if __has_include("org/allbinary/AndroidResources.h")
+#include "org/allbinary/AndroidResources.h"
+#endif
+
+        #endif
+    

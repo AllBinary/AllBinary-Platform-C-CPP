@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/PlatformAssetManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,25 +63,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PlatformAssetManager
-            : public Object
-         {
 
-    private: static PlatformAssetManager* instance() { static std::unique_ptr<PlatformAssetManager> value(new PlatformAssetManager()); return value.get(); }
+PlatformAssetManager::PlatformAssetManager() {
+        }
+        auto PlatformAssetManager::instance_owner() -> PlatformAssetManager* { static std::unique_ptr<PlatformAssetManager> value(new PlatformAssetManager()); return value.get(); }
+PlatformAssetManager* PlatformAssetManager::instance = PlatformAssetManager::instance_owner();
 
-    public: static PlatformAssetManager* getInstance(){
+    auto PlatformAssetManager::getInstance() -> PlatformAssetManager*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformAssetManager::instance();
+                        return PlatformAssetManager::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getResourceAsStream(std::string resource){
+    auto PlatformAssetManager::getResourceAsStream(std::string resource) -> InputStream*{
 
     ResourceUtil* resourceUtil = ResourceUtil::getInstance();;
     
@@ -87,7 +97,6 @@ class PlatformAssetManager
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_PLATFORMASSETMANAGER_CPP

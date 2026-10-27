@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENT_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/event/AnalogControllerConfigurationEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnalogControllerConfigurationEvent: public AllBinaryEventObject {
 
-public: AnalogControllerConfigurationEvent(Object* anyType) : AllBinaryEventObject(anyType){
+AnalogControllerConfigurationEvent::AnalogControllerConfigurationEvent(Object* anyType) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -60,7 +69,6 @@ public: AnalogControllerConfigurationEvent(Object* anyType) : AllBinaryEventObje
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_EVENT_ANALOGCONTROLLERCONFIGURATIONEVENT_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_SPEEDTECHNOLOGY_CPP
+        #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_SPEEDTECHNOLOGY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/rts/technology/SpeedTechnology.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,21 +59,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/rts/technology/UnitTechnologySingletonFactory.h"
 
-class SpeedTechnology
-            : public Object
-        , public RTSInterface {
 
-    private: int32_t level= 0;
-
-    private: int32_t maxLevel;
-
-public: SpeedTechnology(int32_t maxLevel){
+SpeedTechnology::SpeedTechnology(int32_t maxLevel){
 this->maxLevel= maxLevel;
     
 }
 
 
-    public: bool isCompleted(){
+    auto SpeedTechnology::isCompleted() -> bool{
 
 
 
@@ -73,7 +76,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getPercentComplete(){
+    auto SpeedTechnology::getPercentComplete() -> int32_t{
 
 
 
@@ -83,7 +86,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getLevel(){
+    auto SpeedTechnology::getLevel() -> int32_t{
 
 
 
@@ -93,7 +96,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getMaxLevel(){
+    auto SpeedTechnology::getMaxLevel() -> int32_t{
 
 
 
@@ -103,7 +106,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getCost(){
+    auto SpeedTechnology::getCost() -> int32_t{
 
 
 
@@ -113,11 +116,11 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: void downgrade(){
+    auto SpeedTechnology::downgrade() -> void{
 }
 
 
-    public: int32_t getDowngradeCost(){
+    auto SpeedTechnology::getDowngradeCost() -> int32_t{
 
 
 
@@ -127,7 +130,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: bool isDowngradeable(){
+    auto SpeedTechnology::isDowngradeable() -> bool{
 
 
 
@@ -137,7 +140,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: int32_t getUpgradeCost(){
+    auto SpeedTechnology::getUpgradeCost() -> int32_t{
 
 
 
@@ -147,7 +150,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: bool isUpgradeable(){
+    auto SpeedTechnology::isUpgradeable() -> bool{
 
                         if(this->getLevel() < this->getMaxLevel())
                         
@@ -174,7 +177,7 @@ this->maxLevel= maxLevel;
 }
 
 
-    public: void upgrade(){
+    auto SpeedTechnology::upgrade() -> void{
 this->level++;
     
 
@@ -185,7 +188,7 @@ unitTechnologySingletonFactory->setSpeed(unitTechnologySingletonFactory->getSpee
 }
 
 
-    public: bool isSelfUpgradeable(){
+    auto SpeedTechnology::isSelfUpgradeable() -> bool{
 
 
 
@@ -195,7 +198,6 @@ unitTechnologySingletonFactory->setSpeed(unitTechnologySingletonFactory->getSpee
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_SPEEDTECHNOLOGY_CPP

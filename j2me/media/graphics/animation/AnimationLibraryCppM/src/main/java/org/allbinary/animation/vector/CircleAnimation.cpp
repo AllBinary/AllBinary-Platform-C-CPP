@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/CircleAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,15 +68,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CircleAnimation: public Animation, public ColorCompositeInterface {
 
-    protected: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);
-
-    protected: int32_t width;
-
-    protected: int32_t height;
-
-public: CircleAnimation(int32_t width, int32_t height, BasicColor* basicColor){
+CircleAnimation::CircleAnimation(int32_t width, int32_t height, BasicColor* basicColor) : TOTAL_ANGLE(static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE)){
 this->width= width;
     
 this->height= height;
@@ -76,19 +79,18 @@ this->setBasicColorP(basicColor);
 }
 
 
-    public: void nextFrame(){
+    auto CircleAnimation::nextFrame() -> void{
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    auto CircleAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 graphics->drawArc(x, y, this->width, this->height, 0, this->TOTAL_ANGLE);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_CPP

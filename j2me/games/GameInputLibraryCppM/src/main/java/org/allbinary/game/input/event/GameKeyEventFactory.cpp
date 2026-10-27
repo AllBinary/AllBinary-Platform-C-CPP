@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/GameKeyEventFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -65,13 +75,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/event/GameKeyEvent.h"
 
-class GameKeyEventFactory
-            : public Object
-         {
+Object* GameKeyEventFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static GameKeyEventFactory* getInstance(){
+    auto GameKeyEventFactory::getInstance() -> GameKeyEventFactory*{
 
                         if(GameKeyEventFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -90,21 +96,11 @@ class GameKeyEventFactory
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const int32_t TOUCH_BUTTON_SOURCE_ID = 2;
-
-    public: const int32_t MOTION_GESTURE_SOURCE_ID = 3;
-
-    private: const int32_t MAX_SOURCES = 4;
-
-    private: std::vector<std::vector<GameKeyEvent*>> ARRAY = std::vector<std::vector<GameKeyEvent*>>(this->MAX_SOURCES, std::vector<GameKeyEvent*>(InputFactory::getInstance()->MAX));
-
-private: GameKeyEventFactory(){
+GameKeyEventFactory::GameKeyEventFactory() : logUtil(LogUtil::getInstance()), ARRAY(std::vector<std::vector<GameKeyEvent*>>(this->MAX_SOURCES, std::vector<GameKeyEvent*>(InputFactory::getInstance()->MAX))){
 }
 
 
-    public: void init(){
+    auto GameKeyEventFactory::init() -> void{
 
     NullUtil* nullUtil = NullUtil::getInstance();;
     
@@ -136,7 +132,7 @@ this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil->NULL_OBJECT, ind
 
                 //@Throws(Exception.constructor)
             
-    public: GameKeyEvent* getInstanceForKey(GameKeyEventSourceInterface* anyType, int32_t key){
+    auto GameKeyEventFactory::getInstanceForKey(GameKeyEventSourceInterface* anyType, int32_t key) -> GameKeyEvent*{
 
     GameKeyEvent* gameKeyEvent = this->ARRAY[anyType->getSourceId()][key];;
     
@@ -151,7 +147,7 @@ this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil->NULL_OBJECT, ind
 
                 //@Throws(Exception.constructor)
             
-    public: GameKeyEvent* getInstanceForInput(GameKeyEventSourceInterface* anyType, Input* input){
+    auto GameKeyEventFactory::getInstanceForInput(GameKeyEventSourceInterface* anyType, Input* input) -> GameKeyEvent*{
 
     GameKeyEvent* gameKeyEvent = this->ARRAY[anyType->getSourceId()][input->getId()];;
     
@@ -164,7 +160,6 @@ this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil->NULL_OBJECT, ind
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTFACTORY_CPP

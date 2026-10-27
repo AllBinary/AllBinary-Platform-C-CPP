@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_BASICPROFILEACTIONSCRIPTOUTPUT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_BASICPROFILEACTIONSCRIPTOUTPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/BasicProfileActionScriptOutput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,9 +66,8 @@
         #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/ProfileActionScriptOutputInterface.h"
 #include "org/allbinary/input/automation/module/actions/script/condition/processors/output/GenericProfileActionScriptOutputData.h"
 
-class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor, public ProfileActionScriptOutputInterface {
 
-public: BasicProfileActionScriptOutput(std::string label, Node* node) : BasicProfileActionScriptProcessor(label, node){
+BasicProfileActionScriptOutput::BasicProfileActionScriptOutput(std::string label, Node* node) : BasicProfileActionScriptProcessor(label, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +77,7 @@ public: BasicProfileActionScriptOutput(std::string label, Node* node) : BasicPro
 }
 
 
-public: BasicProfileActionScriptOutput(std::string label) : BasicProfileActionScriptProcessor(label){
+BasicProfileActionScriptOutput::BasicProfileActionScriptOutput(std::string label) : BasicProfileActionScriptProcessor(label){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +89,7 @@ public: BasicProfileActionScriptOutput(std::string label) : BasicProfileActionSc
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto BasicProfileActionScriptOutput::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(GenericProfileActionScriptOutputData::NAME);;
     
@@ -93,7 +102,6 @@ public: BasicProfileActionScriptOutput(std::string label) : BasicProfileActionSc
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_BASICPROFILEACTIONSCRIPTOUTPUT_CPP

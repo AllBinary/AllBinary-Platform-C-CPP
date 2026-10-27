@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_YAXISMATHVECTOR_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_YAXISMATHVECTOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/vector/YAxisMathVector.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,8 @@
         #include "org/allbinary/logic/math/vector/MathVector.h"
 #include "org/allbinary/logic/math/vector/YAxisMathVectorUtil.h"
 
-class YAxisMathVector: public MathVector {
 
-public: YAxisMathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction) : MathVector(magnitudeBasicDecimal, direction){
+YAxisMathVector::YAxisMathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction) : MathVector(magnitudeBasicDecimal, direction){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,7 +71,7 @@ this->calculate();
 }
 
 
-    public: BasicDecimal* getResult(){
+    auto YAxisMathVector::getResult() -> BasicDecimal*{
 
 
 
@@ -72,7 +81,7 @@ this->calculate();
 }
 
 
-    private: void calculate(){
+    auto YAxisMathVector::calculate() -> void{
 
     int64_t result = YAxisMathVectorUtil::calculate(this->getMagnitude()->getUnscaled(), this->getDirection());;
     
@@ -81,7 +90,6 @@ this->resultBasicDecimal= new BasicDecimal(result);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_VECTOR_YAXISMATHVECTOR_CPP

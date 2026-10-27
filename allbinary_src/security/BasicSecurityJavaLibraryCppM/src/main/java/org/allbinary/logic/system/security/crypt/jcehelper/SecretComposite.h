@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/crypto/Cipher.h>
-
-      
-#include <javax/crypto/SecretKey.h>
-
-      
-#include <org/allbinary/logic/java/byteutil/ByteUtil.h>
-
-      
+class Cipher;
+class SecretKey;
+class ByteUtil;
 
 
 
@@ -60,9 +59,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SecretComposite: public BaseSecretComposite {
 
-    private: ByteUtil* byteUtil = ByteUtil::getInstance();
+    private: ByteUtil* byteUtil;
 
     private: Cipher* cipher;
 
@@ -88,3 +91,22 @@ public: SecretComposite(SecretKey* secretKey, Cipher* cipher, std::vector<int8_t
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_H_COMPLETE
+        #if __has_include(<javax/crypto/Cipher.h>)
+#include <javax/crypto/Cipher.h>
+#endif
+#if __has_include(<javax/crypto/SecretKey.h>)
+#include <javax/crypto/SecretKey.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/byteutil/ByteUtil.h>)
+#include <org/allbinary/logic/java/byteutil/ByteUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h")
+#include "org/allbinary/logic/system/security/crypt/jcehelper/BaseSecretComposite.h"
+#endif
+
+        #endif
+    

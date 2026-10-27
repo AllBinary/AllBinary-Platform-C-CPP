@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTPERSISTANCE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_INPUTPERSISTANCE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/InputPersistance.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -117,13 +127,8 @@
 #include "org/allbinary/game/input/GameKeyMappingFactory.h"
 #include "org/allbinary/game/input/InputFactory.h"
 //GameInputPersistanceLibrary
-class InputPersistance: public BasicPersitance {
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: HashtableUtil* hashtableUtil = HashtableUtil::getInstance();
-
-public: InputPersistance(std::string name) : BasicPersitance(name){
+InputPersistance::InputPersistance(std::string name) : BasicPersitance(name), tsUtil(TsUtil::getInstance()), hashtableUtil(HashtableUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -135,7 +140,7 @@ public: InputPersistance(std::string name) : BasicPersitance(name){
 
                 //@Throws(Exception.constructor)
             
-    public: void loadAll(AbeClientInformationInterface* abeClientInformation){
+    auto InputPersistance::loadAll(AbeClientInformationInterface* abeClientInformation) -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -191,16 +196,14 @@ public: InputPersistance(std::string name) : BasicPersitance(name){
 
     int32_t id = recordEnum->nextRecordId();;
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
-this->logUtil.putF(stringBuffer->append(this->persistanceStrings.LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings.LOAD_ALL);
+this->logUtil->putF(stringBuffer->append(this->persistanceStrings->LOADING_ID)->appendint(id)->toString(), this, this->persistanceStrings->LOAD_ALL);
     
 recordAsBytes= this->tsUtil->getRecord(recordStore, id);
     
 
-                        if(recordAsBytes != 
-                                    nullptr
-                                )
+                        if(!recordAsBytes.empty())
                         
                                     {
                                     byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
@@ -238,21 +241,21 @@ input= inputFactory->getInstanceById(static_cast<int32_t>(inputId));
                                 )
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 
                         if(input == inputFactory->NO_INPUT)
                         
                                     {
-                                    stringBuffer->append(this->persistanceStrings.ERROR_LOADING_ID);
+                                    stringBuffer->append(this->persistanceStrings->ERROR_LOADING_ID);
     
 stringBuffer->appendlong(inputId);
     
-stringBuffer->append(this->persistanceStrings.GAME_ACTION_INPUT);
+stringBuffer->append(this->persistanceStrings->GAME_ACTION_INPUT);
     
 stringBuffer->appendlong(gameActionInputId);
     
-PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings.LOAD_ALL);
+PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings->LOAD_ALL);
     
 
                                     }
@@ -263,17 +266,17 @@ PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings.LOAD_AL
                                 )
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
-stringBuffer->append(this->persistanceStrings.ERROR_LOADING);
+stringBuffer->append(this->persistanceStrings->ERROR_LOADING);
     
 stringBuffer->appendlong(gameActionInputId);
     
-stringBuffer->append(this->persistanceStrings.ID);
+stringBuffer->append(this->persistanceStrings->ID);
     
 stringBuffer->appendlong(inputId);
     
-PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings.LOAD_ALL);
+PreLogUtil::put(stringBuffer->toString(), this, this->persistanceStrings->LOAD_ALL);
     
 
                                     }
@@ -289,9 +292,9 @@ hashtable->put(input, gameActionInput);
     
 }
 
-this->valueList.add(hashtable);
+this->valueList->add(hashtable);
     
-this->idList.add(smallIntegerSingletonFactory->getAt(id));
+this->idList->add(smallIntegerSingletonFactory->getAt(id));
     
 
                                     }
@@ -320,7 +323,7 @@ this->idList.add(smallIntegerSingletonFactory->getAt(id));
                                 )
                         
                                     {
-                                    PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->persistanceStrings.LOAD_ALL);
+                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->persistanceStrings->LOAD_ALL);
     
 recordStore->closeRecordStore();
     
@@ -335,7 +338,7 @@ recordStore->closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable){
+    auto InputPersistance::save(AbeClientInformationInterface* abeClientInformation, ABHashtable<Object*, Object*>* hashtable) -> void{
 
     RecordStore* recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -344,7 +347,7 @@ recordStore->closeRecordStore();
             
     StringMaker* stringBuffer = new StringMaker();;
     
-PreLogUtil::put(stringBuffer->append(this->persistanceStrings.SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings.SAVE);
+PreLogUtil::put(stringBuffer->append(this->persistanceStrings->SAVING)->append(StringUtil::getInstance()->toString(hashtable))->toString(), this, this->commonStrings->SAVE);
     
 recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
@@ -436,7 +439,7 @@ recordStore->addRecord(savedGameBytes, 0, savedGameBytes.size());
                                 )
                         
                                     {
-                                    PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->commonStrings.SAVE);
+                                    PreLogUtil::put(this->persistanceStrings->CLOSING_RECORDSTORE, this, this->commonStrings->SAVE);
     
 recordStore->closeRecordStore();
     
@@ -449,7 +452,6 @@ recordStore->closeRecordStore();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_INPUTPERSISTANCE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_CPP
+        #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/event/LayerManagerEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerManagerEvent: public AllBinaryEventObject {
 
-    private: AllBinaryLayer* layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-    private: std::string crud;
-
-public: LayerManagerEvent(LayerManager* layerManager, std::string crud) : AllBinaryEventObject(layerManager){
+LayerManagerEvent::LayerManagerEvent(LayerManager* layerManager, std::string crud) : AllBinaryEventObject(layerManager), layerInterface(AllBinaryLayer::NULL_ALLBINARY_LAYER){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +78,7 @@ this->crud= crud;
 }
 
 
-    public: AllBinaryLayer* getLayerInterface(){
+    auto LayerManagerEvent::getLayerInterface() -> AllBinaryLayer*{
 
 
 
@@ -83,13 +88,13 @@ this->crud= crud;
 }
 
 
-    public: void setLayerInterface(AllBinaryLayer* layerInterface){
+    auto LayerManagerEvent::setLayerInterface(AllBinaryLayer* layerInterface) -> void{
 this->layerInterface= layerInterface;
     
 }
 
 
-    public: std::string toString(){
+    auto LayerManagerEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -112,7 +117,6 @@ stringBuffer->append(this->crud.toString());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_CPP

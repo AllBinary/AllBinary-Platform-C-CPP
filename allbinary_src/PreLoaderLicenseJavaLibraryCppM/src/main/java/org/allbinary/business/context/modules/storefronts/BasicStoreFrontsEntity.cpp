@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTSENTITY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTSENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontsEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,13 +75,8 @@
         #include "org/allbinary/business/context/modules/storefronts/BasicStoreFront.h"
 #include "org/allbinary/business/context/modules/storefronts/BasicStoreFrontInterface.h"
 
-class BasicStoreFrontsEntity: public InitSql {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: const std::string tableName = "storefronts";
-
-public: BasicStoreFrontsEntity() : InitSql(new UserDbInitInfo()){
+BasicStoreFrontsEntity::BasicStoreFrontsEntity() : InitSql(new UserDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,27 +90,27 @@ this->setTable(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicStoreFrontInterface* getStoreFrontInterface(std::string name){
+    auto BasicStoreFrontsEntity::getStoreFrontInterface(std::string name) -> BasicStoreFrontInterface*{
 
     HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
 keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
     
 
-    HashMap<Object*, Object*>* storeHashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* storeHashMap = InitSql::getRow(keysAndValues);;
     
 
                         if(storeHashMap == 
                                     nullptr
                                 )
                         
-                                    throw new Exception("No Such Store: " +name);
+                                    throw Exception(JavaString::valueOf("No Such Store: ") +JavaString::valueOf(name));
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->FACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->FACTORYERROR))
                         
                                     {
-                                    this->logUtil->putF("StoreFront: " +storeHashMap->toString(), this, "getStore()");
+                                    this->logUtil->putF(JavaString::valueOf("StoreFront: ") +JavaString::valueOf(storeHashMap->toString()), this, "getStore()");
     
 
                                     }
@@ -119,7 +124,6 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, name);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONTSENTITY_CPP

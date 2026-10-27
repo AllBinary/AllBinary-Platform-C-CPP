@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,27 +36,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
-
-      
-#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
-
-      
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/config/LoggingInitInfo.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class DomNodeHelper;
+class DomSearchHelper;
+class PreLogUtil;
+class LoggingInitInfo;
+class BasicArrayList;
+class BasicArrayListD;
+class Node;
 
 
 
@@ -70,17 +61,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
-#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeData.h"
-#include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
+        class LogConfigTypeFactory;
+class LogConfigTypeData;
+class LogConfigType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogConfigTypes
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string JSP_ERROR_NO_FUNCTION = "in JSP Not In Function";
 
-    public: static inline BasicArrayList* LOGGING = new BasicArrayListD();
+    public: static BasicArrayList* LOGGING;
 
                     static int32_t initResult;
                 static int32_t init();
@@ -100,3 +95,40 @@ private: LogConfigTypes();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_TYPE_LOGCONFIGTYPES_H_COMPLETE
+        #if __has_include(<org/allbinary/data/tree/dom/DomNodeHelper.h>)
+#include <org/allbinary/data/tree/dom/DomNodeHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomSearchHelper.h>)
+#include <org/allbinary/data/tree/dom/DomSearchHelper.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/PreLogUtil.h>)
+#include <org/allbinary/logic/communication/log/PreLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/config/LoggingInitInfo.h>)
+#include <org/allbinary/logic/communication/log/config/LoggingInitInfo.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigTypeData.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigTypeData.h"
+#endif
+#if __has_include("org/allbinary/logic/communication/log/config/type/LogConfigType.h")
+#include "org/allbinary/logic/communication/log/config/type/LogConfigType.h"
+#endif
+
+        #endif
+    

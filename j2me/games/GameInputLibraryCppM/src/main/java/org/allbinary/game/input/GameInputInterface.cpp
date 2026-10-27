@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameInputInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,15 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInputInterface: public NamedInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void processInput(AllBinaryLayerManager* layerManager) = 0;
 
-    public: virtual void initInputProcessors() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTINTERFACE_CPP

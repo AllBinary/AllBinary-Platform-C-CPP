@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPE_H
         #define ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseLoadingType
-            : public Object
+            : public virtual Object
          {
 
-: LicenseLoadingType(std::string name);
+public: LicenseLoadingType(std::string name);
 
 };
 
@@ -60,3 +69,10 @@ class LicenseLoadingType
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPE_H_COMPLETE
+        
+        #endif
+    

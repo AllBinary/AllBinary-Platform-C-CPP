@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/CollidableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,23 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/collision/CollisionType.h"
 
-class CollidableInterface: public NamedInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isCollidable(CollidableCompositeLayer* ownerLayer) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isCollision(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void collide(CollidableCompositeLayer* ownerLayer, CollidableCompositeLayer* collidableInterfaceCompositeInterface) = 0;
-
-    public: virtual CollisionType* getCollisionTypeWith(AllBinaryLayer* layerInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_CPP

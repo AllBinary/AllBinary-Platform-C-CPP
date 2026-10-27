@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGERFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,16 +52,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/opengles/shader/ShaderManager.h"
+        class ShaderManager;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShaderManagerFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ShaderManagerFactory* instance() { static std::unique_ptr<ShaderManagerFactory> value(new ShaderManagerFactory()); return value.get(); }
+    private: static ShaderManagerFactory* instance_owner();
+    private: static ShaderManagerFactory* instance;
 
     public: static ShaderManagerFactory* getInstance();
 
+
+            
+    public: ShaderManagerFactory();
+        
     public: ShaderManager* create();
 
 };
@@ -65,3 +79,13 @@ class ShaderManagerFactory
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGERFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/opengles/shader/ShaderManager.h")
+#include "org/allbinary/graphics/opengles/shader/ShaderManager.h"
+#endif
+
+        #endif
+    

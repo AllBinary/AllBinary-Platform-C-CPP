@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICE_CPP
+        #define BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/robot/InputAutomationRobotService.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,19 +61,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "bundle/input/automation/robot/InputAutomationRobotServiceInterface.h"
 
-class InputAutomationRobotService
-            : public Object
-        , public InputAutomationRobotServiceInterface {
 
-    private: std::vector<InputRobotInterface*> inputRobotInterfaceArray;
-
-public: InputAutomationRobotService(std::vector<InputRobotInterface*> inputRobotInterfaceArray){
+InputAutomationRobotService::InputAutomationRobotService(std::vector<InputRobotInterface*> inputRobotInterfaceArray){
 this->setInputRobotInterfaceArray(inputRobotInterfaceArray);
     
 }
 
 
-    public: std::vector<InputRobotInterface*> getInputRobotInterfaceArray(){
+    auto InputAutomationRobotService::getInputRobotInterfaceArray() -> std::vector<InputRobotInterface*>{
 
 
 
@@ -73,13 +78,12 @@ this->setInputRobotInterfaceArray(inputRobotInterfaceArray);
 }
 
 
-    public: void setInputRobotInterfaceArray(std::vector<InputRobotInterface*> inputRobotInterfaceArray){
+    auto InputAutomationRobotService::setInputRobotInterfaceArray(std::vector<InputRobotInterface*> inputRobotInterfaceArray) -> void{
 this->inputRobotInterfaceArray= inputRobotInterfaceArray;
     
 }
 
 
-};
 
-            
 
+        #endif //BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICE_CPP

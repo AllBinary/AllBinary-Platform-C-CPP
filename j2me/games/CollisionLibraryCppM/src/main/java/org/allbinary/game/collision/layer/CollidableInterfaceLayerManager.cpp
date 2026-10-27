@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYER_COLLIDABLEINTERFACELAYERMANAGER_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_LAYER_COLLIDABLEINTERFACELAYERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/layer/CollidableInterfaceLayerManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,9 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CollidableInterfaceLayerManager: public LayerManager {
 
-public: CollidableInterfaceLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+CollidableInterfaceLayerManager::CollidableInterfaceLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -61,7 +70,6 @@ public: CollidableInterfaceLayerManager() : LayerManager(LayerManagerNoDebug::ge
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_LAYER_COLLIDABLEINTERFACELAYERMANAGER_CPP

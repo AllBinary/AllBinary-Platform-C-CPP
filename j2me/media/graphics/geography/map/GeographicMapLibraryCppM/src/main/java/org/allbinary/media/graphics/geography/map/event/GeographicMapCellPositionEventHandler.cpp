@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,27 +78,24 @@
         #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEvent.h"
 #include "org/allbinary/media/graphics/geography/map/event/GeographicMapCellPositionEventListenerInterface.h"
 
-class GeographicMapCellPositionEventHandler: public BasicEventHandler {
+auto GeographicMapCellPositionEventHandler::instance_owner() -> GeographicMapCellPositionEventHandler* { static std::unique_ptr<GeographicMapCellPositionEventHandler> value(new GeographicMapCellPositionEventHandler()); return value.get(); }
+GeographicMapCellPositionEventHandler* GeographicMapCellPositionEventHandler::instance = GeographicMapCellPositionEventHandler::instance_owner();
 
-    private: static GeographicMapCellPositionEventHandler* instance() { static std::unique_ptr<GeographicMapCellPositionEventHandler> value(new GeographicMapCellPositionEventHandler()); return value.get(); }
-
-    public: static GeographicMapCellPositionEventHandler* getInstance(){
+    auto GeographicMapCellPositionEventHandler::getInstance() -> GeographicMapCellPositionEventHandler*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapCellPositionEventHandler::instance();
+                        return GeographicMapCellPositionEventHandler::instance;
     
 }
 
 
-    private: BasicArrayList* list = new BasicArrayListD();
-
-private: GeographicMapCellPositionEventHandler(){
+GeographicMapCellPositionEventHandler::GeographicMapCellPositionEventHandler() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(MiniMapLayer* miniMapLayer){
+    auto GeographicMapCellPositionEventHandler::addListener(MiniMapLayer* miniMapLayer) -> void{
 
                         if(!this->list->contains(miniMapLayer))
                         
@@ -101,25 +108,25 @@ private: GeographicMapCellPositionEventHandler(){
 }
 
 
-    public: void removeAllListeners(){
+    auto GeographicMapCellPositionEventHandler::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto GeographicMapCellPositionEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto GeographicMapCellPositionEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -138,13 +145,13 @@ miniMapLayer->onGeographicMapCellPositionEvent(dynamic_cast<GeographicMapCellPos
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
@@ -152,7 +159,7 @@ super.fireEvent(eventObject);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void fireRemoveEvent(AllBinaryEventObject* eventObject){
+    auto GeographicMapCellPositionEventHandler::fireRemoveEvent(AllBinaryEventObject* eventObject) -> void{
 
     BasicArrayList* list = this->eventListenerInterfaceList;;
     
@@ -174,7 +181,7 @@ miniMapLayer->onRemoveGeographicMapCellPositionEvent(dynamic_cast<GeographicMapC
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -208,7 +215,7 @@ geographicMapCellPositionEventListenerInterface->onRemoveGeographicMapCellPositi
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
@@ -219,7 +226,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto GeographicMapCellPositionEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     GeographicMapCellPositionEventListenerInterface* geographicMapCellPositionEventListenerInterface = (dynamic_cast<GeographicMapCellPositionEventListenerInterface*>(eventListenerInterface));;
     
@@ -228,7 +235,6 @@ geographicMapCellPositionEventListenerInterface->onGeographicMapCellPositionEven
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_EVENT_GEOGRAPHICMAPCELLPOSITIONEVENTHANDLER_CPP

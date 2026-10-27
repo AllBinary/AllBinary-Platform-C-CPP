@@ -21,21 +21,20 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/business/time/created/TimeCreated.h>
-
-      
-#include <org/allbinary/business/time/modified/TimeLastModified.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h>
-
-      
+class TimeCreated;
+class TimeLastModified;
+class UserEmailConfigurationInterface;
 
 
 
@@ -55,7 +54,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserConfigurationInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class UserConfigurationInterface
+            : public virtual Object
+         {
 
     public: virtual UserEmailConfigurationInterface* getUserEmailConfigurationInterface() = 0;
 
@@ -75,3 +80,19 @@ class UserConfigurationInterface {
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATIONINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/business/time/created/TimeCreated.h>)
+#include <org/allbinary/business/time/created/TimeCreated.h>
+#endif
+#if __has_include(<org/allbinary/business/time/modified/TimeLastModified.h>)
+#include <org/allbinary/business/time/modified/TimeLastModified.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h>)
+#include <org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationInterface.h>
+#endif
+
+        #endif
+    

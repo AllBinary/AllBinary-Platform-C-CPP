@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,32 +35,14 @@
             #include "java/lang/Object.h"
         
 #include <java/sql/Connection.h>
-
-      
 #include <java/sql/DriverManager.h>
-
-      
 #include <java/sql/SQLException.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class StdUtil;
+class LogUtil;
+class StringMaker;
 
 
 
@@ -75,17 +62,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class SqlConnectionPool
-            : public Object
+            : public virtual Object
          {
 
-    private: static SqlConnectionPool* instance() { static std::unique_ptr<SqlConnectionPool> value(new SqlConnectionPool()); return value.get(); }
+    private: static SqlConnectionPool* instance_owner();
+    private: static SqlConnectionPool* instance;
 
     public: static SqlConnectionPool* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: StdUtil* stdUtil = StdUtil::getInstance();
+    /*protected*/ public: StdUtil* stdUtil;
 
     private: HashMap<Object*, Object*>* connectionHashMap = 
                 nullptr
@@ -129,3 +121,37 @@ private: SqlConnectionPool();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H_COMPLETE
+        #if __has_include(<java/sql/Connection.h>)
+#include <java/sql/Connection.h>
+#endif
+#if __has_include(<java/sql/DriverManager.h>)
+#include <java/sql/DriverManager.h>
+#endif
+#if __has_include(<java/sql/SQLException.h>)
+#include <java/sql/SQLException.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

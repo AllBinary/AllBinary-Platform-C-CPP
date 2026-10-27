@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_ALLBINARYRENDERERBASE3_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_ALLBINARYRENDERERBASE3_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/renderer/AllBinaryRendererBase3.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,15 +72,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryRendererBase3
-            : public Object
-         {
 
-    public: BasicArrayList* list = new BasicArrayListD();
-
+AllBinaryRendererBase3::AllBinaryRendererBase3() : list(new BasicArrayListD()) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    protected: void update(GL10* gl){
+    auto AllBinaryRendererBase3::update(GL10* gl) -> void{
 
         while(this->list->size() > 0)
         {
@@ -93,13 +101,12 @@ class AllBinaryRendererBase3
 }
 
 
-    public: void add(Image* image){
+    auto AllBinaryRendererBase3::add(Image* image) -> void{
 this->list->add(image);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_ALLBINARYRENDERERBASE3_CPP

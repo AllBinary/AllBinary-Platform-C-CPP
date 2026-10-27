@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_USERENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_USERENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/UserEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -111,27 +121,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/UserEntityInterface.h"
 
-class UserEntity: public AbSqlBean, public UserEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string tableName = "user";
-
-    private: const std::string COMMAND_SUCCESS_FOR_USER = "Command Success for user: ";
-
-    private: const std::string PASSWORD_LABEL = " Password: ";
-
-    private: const std::string EQUALS = "==";
-
-    private: const std::string COMMAND_SUCCESS_BUT_LOGIN_FAILED = "Command Success but login failed for user: ";
-
-    private: const std::string INVALID_PASSWORD_LABEL = " Password: \n\"";
-
-    private: const std::string NOT_EQUAL = "\"!=\"";
-
-    private: const std::string END_QUOTES = CommonSeps::getInstance()->QUOTE;
-
-public: UserEntity() : AbSqlBean(new UserDbInitInfo()){
+UserEntity::UserEntity() : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()), END_QUOTES(CommonSeps::getInstance()->QUOTE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -143,16 +134,16 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(BasicArrayList* values){
+    auto UserEntity::insert(BasicArrayList* values) -> void{
 
         try {
-            super.insert(values);
+            AbSqlBean::insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, INSERT);
     
 
                                     }
@@ -162,10 +153,10 @@ this->setTableName(this->tableName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, INSERT, &e);
     
 
                                     }
@@ -177,7 +168,7 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAdministrators(){
+    auto UserEntity::getAdministrators() -> BasicArrayList*{
 
 
 
@@ -189,19 +180,19 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getStoreManagers(StoreFrontInterface* storeFrontInterface){
+    auto UserEntity::getStoreManagers(StoreFrontInterface* storeFrontInterface) -> BasicArrayList*{
 
     HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
 
     BasicArrayList* usersVector = new BasicArrayListD();;
     
-keysAndValues->put(UserRoleData::NAME.toString(), UserRoleFactory::getInstance()->STOREMANAGER.toString());
+keysAndValues->put(UserRoleData::NAME->toString(), UserRoleFactory::getInstance()->STOREMANAGER->toString());
     
 keysAndValues->put(UserData::PERMISSIONS, storeFrontInterface->getName());
     
 
-    BasicArrayList* usersHashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList* usersHashMapVector = AbSqlBean::getRows(keysAndValues);;
     
 
     int32_t size = usersHashMapVector->size();;
@@ -235,7 +226,7 @@ keysAndValues->put(UserData::PERMISSIONS, storeFrontInterface->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getCustomers(){
+    auto UserEntity::getCustomers() -> BasicArrayList*{
 
 
 
@@ -247,17 +238,17 @@ keysAndValues->put(UserData::PERMISSIONS, storeFrontInterface->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getUsersWithRole(UserRole* userRole){
+    auto UserEntity::getUsersWithRole(UserRole* userRole) -> BasicArrayList*{
 
     HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
 
     BasicArrayList* usersVector = new BasicArrayListD();;
     
-keysAndValues->put(UserRoleData::NAME.toString(), userRole->toString());
+keysAndValues->put(UserRoleData::NAME->toString(), userRole->toString());
     
 
-    BasicArrayList* usersHashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList* usersHashMapVector = AbSqlBean::getRows(keysAndValues);;
     
 
     int32_t size = usersHashMapVector->size();;
@@ -291,7 +282,7 @@ keysAndValues->put(UserRoleData::NAME.toString(), userRole->toString());
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getUsers(StoreFrontInterface* storeFrontInterface){
+    auto UserEntity::getUsers(StoreFrontInterface* storeFrontInterface) -> BasicArrayList*{
 
     HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
@@ -301,7 +292,7 @@ keysAndValues->put(UserRoleData::NAME.toString(), userRole->toString());
 keysAndValues->put(StoreFrontData::getInstance()->NAME, storeFrontInterface->getName());
     
 
-    BasicArrayList* usersHashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList* usersHashMapVector = AbSqlBean::getRows(keysAndValues);;
     
 
     int32_t size = usersHashMapVector->size();;
@@ -335,14 +326,14 @@ keysAndValues->put(StoreFrontData::getInstance()->NAME, storeFrontInterface->get
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface* getUser(std::string userName){
+    auto UserEntity::getUser(std::string userName) -> UserInterface*{
 
     HashMap<Object*, Object*>* row = StdUtil::getInstance()->createHashMap();;
     
 row->put(UserData::USERNAME, userName);
     
 
-    HashMap<Object*, Object*>* userHashMap = super.getRow(row);;
+    HashMap<Object*, Object*>* userHashMap = AbSqlBean::getRow(row);;
     
 
                         if(userHashMap != 
@@ -372,16 +363,16 @@ row->put(UserData::USERNAME, userName);
 }
 
 
-    public: void deleteWhere(std::string key, std::string value){
+    auto UserEntity::deleteWhere(std::string key, std::string value) -> void{
 
         try {
-            super.deleteWhere(key, value);
+            AbSqlBean::deleteWhere(key, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.SUCCESS, this, "deleteWhere");
+                                    this->logUtil->putF(this->commonStrings->SUCCESS, this, "deleteWhere");
     
 
                                     }
@@ -391,10 +382,10 @@ row->put(UserData::USERNAME, userName);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "deleteWhere", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "deleteWhere", &e);
     
 
                                     }
@@ -404,28 +395,28 @@ row->put(UserData::USERNAME, userName);
 }
 
 
-    public: std::string login(std::string userName, std::string password){
+    auto UserEntity::login(std::string userName, std::string password) -> std::string{
 
         try {
             
     int32_t isUserNameAndPasswordCorrect = 0;;
     
 
-    std::string result = super.getField(UserData::USERNAME, userName, UserData::PASSWORD);;
+    std::string result = AbSqlBean::getField(UserData::USERNAME, userName, UserData::PASSWORD);;
     
 
-    std::string encryption = super.getField(UserData::USERNAME, userName, EntryData::getInstance()->ENCRYPTION);;
+    std::string encryption = AbSqlBean::getField(UserData::USERNAME, userName, EntryData::getInstance()->ENCRYPTION);;
     
 
-                        if(true && encryption.compare(this->stringUtil.EMPTY_STRING) != 0)
+                        if(true && encryption.compare(this->stringUtil->EMPTY_STRING) != 0)
                         isUserNameAndPasswordCorrect= result.compare((new SuperCrypt((int32_t(encryption)).intValue()))->encrypt(password));
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->putF("Command Success but login failed for user: " +userName +" because user did not exist", this, "login");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Command Success but login failed for user: ") +JavaString::valueOf(userName)) +JavaString::valueOf(" because user did not exist"), this, "login");
     
 
                                     }
@@ -444,7 +435,7 @@ row->put(UserData::USERNAME, userName);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     
@@ -478,7 +469,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "login");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
                                     
@@ -517,10 +508,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "login");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "login", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "login", &e);
     
 
                                     }
@@ -536,30 +527,30 @@ this->logUtil->putF(stringBuffer->toString(), this, "login");
 }
 
 
-    public: void update(std::string userName, HashMap<Object*, Object*>* updatedValues){
-super.updateWhere(UserData::USERNAME, userName, updatedValues);
+    auto UserEntity::update(std::string userName, HashMap<Object*, Object*>* updatedValues) -> void{
+AbSqlBean::updateWhere(UserData::USERNAME, userName, updatedValues);
     
 }
 
 
-    public: std::string dropTables(){
+    auto UserEntity::dropTables() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-    public: std::string createTableStatement(){
+    auto UserEntity::createTableStatement() -> std::string{
 
     EntryData* entryData = EntryData::getInstance();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(UserData::USERNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(UserData::PREFIXNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::FIRSTNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::LASTNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::MIDDLENAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::SUFFIXNAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::COMPANY)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::POSITIONATCOMPANY)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::MAINEMAIL)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(UserData::SECONDARYEMAIL)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::HOMEPHONE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::CELLPHONE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::WORKPHONE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::OTHERCONTACT)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::ELECTRONICDEVICE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::FAX)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserRoleData::NAME.toString())->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(UserData::CONFIGURATION)->append(this->sqlTypeStrings.BLOB_NOT_NULL)->append(UserData::PERMISSIONS)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(entryData->ENCRYPTION)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(UserData::SECRET)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(UserData::PASSWORD)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(entryData->ENABLE)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN)->append(entryData->TIMECREATED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(entryData->LASTMODIFIED)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(UserData::USERNAME)->append(this->sqlStrings.END);
+stringBuffer->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(this->sqlStrings->START)->append(UserData::USERNAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(UserData::PREFIXNAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::FIRSTNAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::LASTNAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::MIDDLENAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::SUFFIXNAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::COMPANY)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::POSITIONATCOMPANY)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::MAINEMAIL)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(UserData::SECONDARYEMAIL)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::HOMEPHONE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::CELLPHONE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::WORKPHONE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::OTHERCONTACT)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::ELECTRONICDEVICE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::FAX)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserRoleData::NAME->toString())->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(UserData::CONFIGURATION)->append(this->sqlTypeStrings->BLOB_NOT_NULL)->append(UserData::PERMISSIONS)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(entryData->ENCRYPTION)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(UserData::SECRET)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(UserData::PASSWORD)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(entryData->ENABLE)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN)->append(entryData->TIMECREATED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(entryData->LASTMODIFIED)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(UserData::USERNAME)->append(this->sqlStrings->END);
     
 
 
@@ -570,17 +561,16 @@ stringBuffer->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(t
 }
 
 
-    public: std::string createTable(){
+    auto UserEntity::createTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this->createTableStatement());;
+                        return AbSqlBean::createTable(this->createTableStatement());;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_USERENTITY_CPP

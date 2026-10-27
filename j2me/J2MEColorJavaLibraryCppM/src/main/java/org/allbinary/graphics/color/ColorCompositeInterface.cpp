@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/ColorCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,11 +61,8 @@
         #include "org/allbinary/graphics/color/BasicColorCompositeSetterInterface.h"
 #include "org/allbinary/graphics/color/BasicColor.h"
 
-class ColorCompositeInterface: public BasicColorCompositeSetterInterface {
+//Interface - declared in the header
 
-    public: virtual BasicColor* getBasicColorP() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_COLORCOMPOSITEINTERFACE_CPP

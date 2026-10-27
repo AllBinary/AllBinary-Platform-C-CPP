@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_NULLAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_NULLAIFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
-
-      
+class ArtificialIntelligenceInterface;
 #include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class GameInput;
+class AllBinaryLayer;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -62,16 +57,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/ai/NullAI.h"
+        class NullAI;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullAIFactory
-            : public Object
+            : public virtual Object
         , public ArtificialIntelligenceInterfaceFactoryInterface {
 
-    private: static NullAI* NULL_AI() { static std::unique_ptr<NullAI> value(new NullAI()); return value.get(); }
+    private: static NullAI* NULL_AI_owner();
+    private: static NullAI* NULL_AI;
 
     public: static ArtificialIntelligenceInterface* getInstance();
 
+
+            
+    public: NullAIFactory();
+        
     public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
 };
@@ -80,3 +84,28 @@ class NullAIFactory
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_NULLAIFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_NULLAIFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_NULLAIFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/ai/ArtificialIntelligenceInterface.h>)
+#include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>)
+#include <org/allbinary/game/ai/ArtificialIntelligenceInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+#if __has_include("org/allbinary/game/ag/ai/NullAI.h")
+#include "org/allbinary/game/ag/ai/NullAI.h"
+#endif
+
+        #endif
+    

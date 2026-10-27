@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_UTIL_ARRAYUTIL_H
         #define ORG_ALLBINARY_UTIL_ARRAYUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -21,24 +26,12 @@
         
             #include "java/lang/System.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/logic/math/MathUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
+class JsType;
+class MathUtil;
+class StringMaker;
+class StringUtil;
+class CommonSeps;
+class JsMethod;
 
 
 
@@ -58,15 +51,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ArrayUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ArrayUtil* instance() { static std::unique_ptr<ArrayUtil> value(new ArrayUtil()); return value.get(); }
+    private: static ArrayUtil* instance_owner();
+    private: static ArrayUtil* instance;
 
     public: static ArrayUtil* getInstance();
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
+
+            
+    public: ArrayUtil();
+        
+    private: MathUtil* mathUtil;
 
     public: std::vector<Object*> copyOf(std::vector<Object*> original, int32_t newLength);
 
@@ -104,3 +106,28 @@ class ArrayUtil
 
 
         #endif //ORG_ALLBINARY_UTIL_ARRAYUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_ARRAYUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_UTIL_ARRAYUTIL_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/MathUtil.h>)
+#include <org/allbinary/logic/math/MathUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+
+        #endif
+    

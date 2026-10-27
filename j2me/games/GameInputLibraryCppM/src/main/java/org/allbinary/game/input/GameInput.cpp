@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameInput.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,21 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInput
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* gameKeyEventList;
-
-    private: BasicArrayList* removalGameKeyEventList;
-
-    protected: bool isRemoveDuplicateKeyPresses;
-
-public: GameInput(BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList){
+GameInput::GameInput(BasicArrayList* gameKeyEventList, BasicArrayList* removalGameKeyEventList) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->gameKeyEventList= gameKeyEventList;
     
 this->removalGameKeyEventList= removalGameKeyEventList;
@@ -88,7 +85,7 @@ this->isRemoveDuplicateKeyPresses= Features::getInstance()->isFeature(InputFeatu
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void add(GameKeyEvent* gameKeyEvent){
+    auto GameInput::add(GameKeyEvent* gameKeyEvent) -> void{
 
                         if(this->isRemoveDuplicateKeyPresses && this->gameKeyEventList->contains(gameKeyEvent))
                         
@@ -123,14 +120,14 @@ this->isRemoveDuplicateKeyPresses= Features::getInstance()->isFeature(InputFeatu
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addForRemoval(GameKeyEvent* gameKeyEvent){
+    auto GameInput::addForRemoval(GameKeyEvent* gameKeyEvent) -> void{
 this->removalGameKeyEventList->add(gameKeyEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isForRemoval(GameKeyEvent* gameKeyEvent){
+    auto GameInput::isForRemoval(GameKeyEvent* gameKeyEvent) -> bool{
 
 
 
@@ -141,14 +138,14 @@ this->removalGameKeyEventList->add(gameKeyEvent);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void clear(){
+    auto GameInput::clear() -> void{
 this->gameKeyEventList->clear();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeNonAIInputGameKeyEvents(){
+    auto GameInput::removeNonAIInputGameKeyEvents() -> void{
 
     BasicArrayList* list = this->gameKeyEventList;;
     
@@ -179,7 +176,7 @@ gameKeyEvent= dynamic_cast<GameKeyEvent*>(list->objectArray[index]);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void update(){
+    auto GameInput::update() -> void{
 
     BasicArrayList* removeList = this->removalGameKeyEventList;;
     
@@ -224,7 +221,7 @@ removeList->clear();
 }
 
 
-    protected: BasicArrayList* getRemovalGameKeyEventList(){
+    auto GameInput::getRemovalGameKeyEventList() -> BasicArrayList*{
 
 
 
@@ -234,7 +231,7 @@ removeList->clear();
 }
 
 
-    protected: BasicArrayList* getGameKeyEventList(){
+    auto GameInput::getGameKeyEventList() -> BasicArrayList*{
 
 
 
@@ -244,7 +241,6 @@ removeList->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUT_CPP

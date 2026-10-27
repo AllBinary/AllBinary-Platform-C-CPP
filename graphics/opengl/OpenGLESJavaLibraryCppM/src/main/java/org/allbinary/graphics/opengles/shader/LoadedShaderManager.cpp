@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_LOADEDSHADERMANAGER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_LOADEDSHADERMANAGER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/LoadedShaderManager.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/ShaderManager.h"
 
-class LoadedShaderManager
-            : public Object
-         {
 
-    private: static ShaderManager* instance() { static std::unique_ptr<ShaderManager> value(new ShaderManager( -1,  -1)); return value.get(); }
+LoadedShaderManager::LoadedShaderManager() {
+        }
+        auto LoadedShaderManager::instance_owner() -> ShaderManager* { static std::unique_ptr<ShaderManager> value(new ShaderManager( -1,  -1)); return value.get(); }
+ShaderManager* LoadedShaderManager::instance = LoadedShaderManager::instance_owner();
 
-    public: static ShaderManager* getInstance(){
+    auto LoadedShaderManager::getInstance() -> ShaderManager*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LoadedShaderManager::instance();
+                        return LoadedShaderManager::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_LOADEDSHADERMANAGER_CPP

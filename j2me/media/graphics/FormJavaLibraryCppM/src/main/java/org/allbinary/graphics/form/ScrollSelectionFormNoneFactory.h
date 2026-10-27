@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORMNONEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORMNONEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +52,35 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/form/ScrollSelectionForm.h"
+        class ScrollSelectionForm;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ScrollSelectionFormNoneFactory
-            : public Object
+            : public virtual Object
          {
 
     public: static ScrollSelectionForm* getInstance();
 
+
+            
+    public: ScrollSelectionFormNoneFactory();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORMNONEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORMNONEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORMNONEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/form/ScrollSelectionForm.h")
+#include "org/allbinary/graphics/form/ScrollSelectionForm.h"
+#endif
+
+        #endif
+    

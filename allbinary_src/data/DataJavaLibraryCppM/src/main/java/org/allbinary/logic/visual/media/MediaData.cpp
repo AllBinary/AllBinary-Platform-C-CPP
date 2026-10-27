@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/media/MediaData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,75 +65,12 @@
         #include "org/allbinary/logic/visual/media/MediaTypeData.h"
 #include "org/allbinary/logic/visual/media/MediaDataFactory.h"
 
-class MediaData
-            : public Object
-         {
+HashMap<Object*, Object*>* MediaData::hashMap = StdUtil::getInstance()->createHashMap();
 
-    private: static inline HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public: static MediaData* get(std::string a_Name){
-
-    MediaData* mediaData = dynamic_cast<MediaData*>(MediaData::hashMap->get(a_Name));;
-    
-
-                        if(mediaData != 
-                                    nullptr
-                                )
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return mediaData;
-    
-
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw new Exception("No Such MediaData");
-                    
-
-                        }
-                            
-}
-
-
-    public: static MediaData* getDefault(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaDataFactory::getInstance()->JPG;
-    
-}
-
-
-    public: static HashMap<Object*, Object*>* toHashMap(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaData::hashMap;
-    
-}
-
-
-    private: std::string name;
-
-    private: std::string type;
-
-    private: std::string extension;
-
-protected: MediaData(std::string a_Name){
+MediaData::MediaData(std::string a_Name){
 this->name= a_Name;
     
-this->extension= "." +this->name;
+this->extension= JavaString::valueOf(".") +JavaString::valueOf(this->name);
     
 this->type= MediaTypeData::getInstance()->NOT_RESIZABLE_MEDIA;
     
@@ -132,7 +79,7 @@ MediaData::hashMap->put(a_Name, this);
 }
 
 
-    public: std::string getName(){
+    auto MediaData::getName() -> std::string{
 
 
 
@@ -142,7 +89,7 @@ MediaData::hashMap->put(a_Name, this);
 }
 
 
-    public: std::string getType(){
+    auto MediaData::getType() -> std::string{
 
 
 
@@ -152,7 +99,7 @@ MediaData::hashMap->put(a_Name, this);
 }
 
 
-    public: std::string getExtension(){
+    auto MediaData::getExtension() -> std::string{
 
 
 
@@ -162,7 +109,7 @@ MediaData::hashMap->put(a_Name, this);
 }
 
 
-    public: bool isConvertableTo(MediaData* mediaData){
+    auto MediaData::isConvertableTo(MediaData* mediaData) -> bool{
 
                         if(this == MediaDataFactory::getInstance()->GIF && mediaData == MediaDataFactory::getInstance()->JPG)
                         
@@ -185,7 +132,7 @@ MediaData::hashMap->put(a_Name, this);
 }
 
 
-    public: std::string toString(){
+    auto MediaData::toString() -> std::string{
 
 
 
@@ -195,7 +142,59 @@ MediaData::hashMap->put(a_Name, this);
 }
 
 
-};
-
+                //@Throws(Exception.constructor)
             
+    auto MediaData::get(std::string a_Name) -> MediaData*{
 
+    MediaData* mediaData = dynamic_cast<MediaData*>(MediaData::hashMap->get(a_Name));;
+    
+
+                        if(mediaData != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return mediaData;
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                            throw Exception("No Such MediaData");
+                    
+
+                        }
+                            
+}
+
+
+    auto MediaData::getDefault() -> MediaData*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return MediaDataFactory::getInstance()->JPG;
+    
+}
+
+
+    auto MediaData::toHashMap() -> HashMap<Object*, Object*>*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return MediaData::hashMap;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_CPP

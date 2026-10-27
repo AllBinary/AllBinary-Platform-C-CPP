@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,25 +88,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h"
 
-class BasicPaymentType
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: std::string value;
-
-    private: PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface;
-
-    private: PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface;
-
-protected: BasicPaymentType(std::string paymentMethod){
+BasicPaymentType::BasicPaymentType(std::string paymentMethod){
 this->init(paymentMethod);
     
 }
 
 
-protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface){
+BasicPaymentType::BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface* paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface* paymentGatewayDomNodeFactoryInterface){
 this->init(paymentMethod);
     
 this->paymentGatewayInterfaceFactoryInterface= paymentGatewayInterfaceFactoryInterface;
@@ -106,7 +105,7 @@ this->paymentGatewayDomNodeFactoryInterface= paymentGatewayDomNodeFactoryInterfa
 }
 
 
-    private: void init(std::string paymentMethod){
+    auto BasicPaymentType::init(std::string paymentMethod) -> void{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -131,7 +130,7 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 }
 
 
-    public: std::string getName(){
+    auto BasicPaymentType::getName() -> std::string{
 
 
 
@@ -141,7 +140,7 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 }
 
 
-    public: std::string getValue(){
+    auto BasicPaymentType::getValue() -> std::string{
 
 
 
@@ -153,7 +152,7 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterfaceFactoryInterface* getPaymentGatewayInterfaceFactoryInterface(){
+    auto BasicPaymentType::getPaymentGatewayInterfaceFactoryInterface() -> PaymentGatewayInterfaceFactoryInterface*{
 
                         if(this->paymentGatewayInterfaceFactoryInterface == 
                                     nullptr
@@ -163,7 +162,7 @@ BasicPaymentTypeUtil::getInstance()->add(this);
                                     
 
 
-                            throw new Exception("PaymentGatewayInterfaceFactoryInterface is Null");
+                            throw Exception("PaymentGatewayInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -179,7 +178,7 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayDomNodeFactoryInterface* getPaymentGatewayDomNodeFactoryInterface(){
+    auto BasicPaymentType::getPaymentGatewayDomNodeFactoryInterface() -> PaymentGatewayDomNodeFactoryInterface*{
 
                         if(this->paymentGatewayDomNodeFactoryInterface == 
                                     nullptr
@@ -189,7 +188,7 @@ BasicPaymentTypeUtil::getInstance()->add(this);
                                     
 
 
-                            throw new Exception("PaymentGatewayDomNodeFactoryInterface is Null");
+                            throw Exception("PaymentGatewayDomNodeFactoryInterface is Null");
                     
 
                                     }
@@ -203,7 +202,7 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 }
 
 
-    public: Object* getKey(){
+    auto BasicPaymentType::getKey() -> Object*{
 
 
 
@@ -213,7 +212,7 @@ BasicPaymentTypeUtil::getInstance()->add(this);
 }
 
 
-    public: BasicArrayList* toVector(){
+    auto BasicPaymentType::toVector() -> BasicArrayList*{
 
     BasicArrayList* vector = new BasicArrayListD();;
     
@@ -230,13 +229,13 @@ vector->add(this->value);
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto BasicPaymentType::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
-hashMap->put(PaymentGatewayData::NAME.toString(), this->name);
+hashMap->put(PaymentGatewayData::NAME->toString(), this->name);
     
-hashMap->put(PaymentGatewayData::VALUE.toString(), this->value);
+hashMap->put(PaymentGatewayData::VALUE->toString(), this->value);
     
 
 
@@ -247,7 +246,7 @@ hashMap->put(PaymentGatewayData::VALUE.toString(), this->value);
 }
 
 
-    public: std::string toString(){
+    auto BasicPaymentType::toString() -> std::string{
 
 
 
@@ -257,7 +256,6 @@ hashMap->put(PaymentGatewayData::VALUE.toString(), this->value);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_BASICPAYMENTTYPE_CPP

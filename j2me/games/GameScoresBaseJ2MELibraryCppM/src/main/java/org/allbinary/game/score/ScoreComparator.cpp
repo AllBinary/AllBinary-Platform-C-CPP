@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_SCORECOMPARATOR_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_SCORECOMPARATOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/ScoreComparator.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -72,21 +82,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScoreComparator
-            : public Object
-        , public RecordComparator {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool isHighestBest;
-
-public: ScoreComparator(bool isHighestBest){
+ScoreComparator::ScoreComparator(bool isHighestBest) : logUtil(LogUtil::getInstance()){
 this->isHighestBest= isHighestBest;
     
 }
 
 
-    public: int64_t getBestScore(){
+    auto ScoreComparator::getBestScore() -> int64_t{
 
 
 
@@ -103,7 +106,7 @@ this->isHighestBest= isHighestBest;
 }
 
 
-    public: int32_t compare(std::vector<int8_t> recordOne, std::vector<int8_t> recordTwo){
+    auto ScoreComparator::compare(std::vector<int8_t> recordOne, std::vector<int8_t> recordTwo) -> int32_t{
 
     ByteArrayInputStream* byteArrayInputStreamOne = new ByteArrayInputStream(recordOne);;
     
@@ -189,7 +192,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "compare", &e);
 }
 
 
-    public: int32_t getHighTooLow(int64_t scoreOne, int64_t scoreTwo){
+    auto ScoreComparator::getHighTooLow(int64_t scoreOne, int64_t scoreTwo) -> int32_t{
 
                         if(scoreOne > scoreTwo)
                         
@@ -229,7 +232,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "compare", &e);
 }
 
 
-    public: int32_t getLowTooHigh(int64_t scoreOne, int64_t scoreTwo){
+    auto ScoreComparator::getLowTooHigh(int64_t scoreOne, int64_t scoreTwo) -> int32_t{
 
                         if(scoreOne < scoreTwo)
                         
@@ -269,7 +272,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "compare", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_SCORE_SCORECOMPARATOR_CPP

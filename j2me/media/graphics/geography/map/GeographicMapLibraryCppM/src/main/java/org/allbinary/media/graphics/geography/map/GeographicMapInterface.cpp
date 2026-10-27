@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -62,47 +72,8 @@
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
 #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactoryInterface.h"
 
-class GeographicMapInterface {
+//Interface - declared in the header
 
-    public: virtual int32_t getId() = 0;
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual void reset() = 0;
-
-    public: virtual AllBinaryTiledLayer* getAllBinaryTiledLayer() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool getCellPositionsAt(Layer* layer, std::vector<std::vector<GeographicMapCellPosition*>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition*>> cellPositionArray) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual GeographicMapCellPosition* getCellPositionAtXY(int32_t x, int32_t y) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual GeographicMapCellPosition* getCellPositionAtXYNoThrow(int32_t x, int32_t y) = 0;
-
-    public: virtual int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual GeographicMapCellType* getCellTypeAtXY(int32_t x, int32_t y) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual GeographicMapCellType* getCellTypeAt(GeographicMapCellPosition* geographicMapCellPosition) = 0;
-
-    public: virtual BasicGeographicMapCellPositionFactory* getGeographicMapCellPositionFactory() = 0;
-
-    public: virtual GeographicMapCellPositionFactoryInterface* getGeographicMapCellPositionFactoryInterface() = 0;
-
-    public: virtual BasicColor* getForegroundBasicColor() = 0;
-
-    public: virtual BasicColor* getBackgroundBasicColor() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_CPP

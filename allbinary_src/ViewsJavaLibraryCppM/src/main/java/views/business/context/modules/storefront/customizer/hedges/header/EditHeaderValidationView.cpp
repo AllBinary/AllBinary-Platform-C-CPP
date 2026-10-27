@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_EDITHEADERVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_EDITHEADERVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/hedges/header/EditHeaderValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/hedges/header/TopBarView.h"
 
-class EditHeaderValidationView: public TopBarView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: EditHeaderValidationView(TransformInfoInterface* transformInfoInterface) : TopBarView(transformInfoInterface){
+EditHeaderValidationView::EditHeaderValidationView(TransformInfoInterface* transformInfoInterface) : TopBarView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,13 +91,13 @@ public: EditHeaderValidationView(TransformInfoInterface* transformInfoInterface)
 }
 
 
-    public: bool isValid(){
+    auto EditHeaderValidationView::isValid() -> bool{
 
         try {
             this->heading= new HeadingValidation(CustomizerUtil::getInstance()->getViewDataForComponentsInObjectConfig(this->getTransformInfoInterface()));
     
 
-    bool isValid = this->heading.isValid();;
+    bool isValid = this->heading->isValid();;
     
 
 
@@ -103,10 +110,10 @@ public: EditHeaderValidationView(TransformInfoInterface* transformInfoInterface)
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -122,13 +129,13 @@ public: EditHeaderValidationView(TransformInfoInterface* transformInfoInterface)
 }
 
 
-    public: std::string validationInfo(){
+    auto EditHeaderValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->heading.validationInfo());
+stringBuffer->append(this->heading->validationInfo());
     
 
 
@@ -141,7 +148,7 @@ stringBuffer->append(this->heading.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -160,7 +167,7 @@ stringBuffer->append(this->heading.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditHeaderValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -170,7 +177,7 @@ stringBuffer->append(this->heading.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditHeaderValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -180,7 +187,6 @@ stringBuffer->append(this->heading.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_EDITHEADERVALIDATIONVIEW_CPP

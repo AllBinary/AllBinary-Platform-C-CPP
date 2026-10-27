@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_NULLAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_NULLAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/NullAIFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,33 +71,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/NullAI.h"
 
-class NullAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
-    private: static NullAI* NULL_AI() { static std::unique_ptr<NullAI> value(new NullAI()); return value.get(); }
+NullAIFactory::NullAIFactory() {
+        }
+        auto NullAIFactory::NULL_AI_owner() -> NullAI* { static std::unique_ptr<NullAI> value(new NullAI()); return value.get(); }
+NullAI* NullAIFactory::NULL_AI = NullAIFactory::NULL_AI_owner();
 
-    public: static ArtificialIntelligenceInterface* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAIFactory::NULL_AI();
-    
-}
-
-
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto NullAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAIFactory::NULL_AI();
+                        return NullAIFactory::NULL_AI;
     
 }
 
 
-};
+    auto NullAIFactory::getInstance() -> ArtificialIntelligenceInterface*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullAIFactory::NULL_AI;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_AG_AI_NULLAIFACTORY_CPP

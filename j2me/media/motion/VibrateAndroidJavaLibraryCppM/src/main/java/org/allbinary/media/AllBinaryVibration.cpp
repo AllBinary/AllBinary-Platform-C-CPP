@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_CPP
+        #define ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/AllBinaryVibration.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,11 +67,13 @@
         #include "org/allbinary/media/AllBinaryVibrationME.h"
 #include "org/allbinary/media/AllBinaryNoVibration.h"
 
-class AllBinaryVibration: public AllBinaryVibrationME {
+AllBinaryVibrationME* AllBinaryVibration::VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
 
-    private: static inline AllBinaryVibrationME* VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
+AllBinaryVibration::AllBinaryVibration() : vibrator(dynamic_cast<Vibrator*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::VIBRATOR_SERVICE) as unknown)){
+}
 
-    public: static AllBinaryVibrationME* getInstance(){
+
+    auto AllBinaryVibration::getInstance() -> AllBinaryVibrationME*{
 
 
 
@@ -71,7 +83,7 @@ class AllBinaryVibration: public AllBinaryVibrationME {
 }
 
 
-    public: static void init(){
+    auto AllBinaryVibration::init() -> void{
 
                         if(GameConfigurationCentral::getInstance()->VIBRATION->getValue()->intValue() == 0)
                         
@@ -90,19 +102,12 @@ class AllBinaryVibration: public AllBinaryVibrationME {
 }
 
 
-    private: Vibrator* vibrator = dynamic_cast<Vibrator*>(ResourceUtil::getInstance()->getContext()->getSystemService(Context::VIBRATOR_SERVICE) as unknown);
-
-protected: AllBinaryVibration(){
-}
-
-
-    public: void vibrate(int32_t duration, int32_t type, int32_t volume){
+    auto AllBinaryVibration::vibrate(int32_t duration, int32_t type, int32_t volume) -> void{
 this->vibrator->vibrate(duration);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_ALLBINARYVIBRATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/SmallBasicColorCacheFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,35 +62,24 @@
         #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 
-class SmallBasicColorCacheFactory
-            : public Object
-         {
+auto SmallBasicColorCacheFactory::instance_owner() -> SmallBasicColorCacheFactory* { static std::unique_ptr<SmallBasicColorCacheFactory> value(new SmallBasicColorCacheFactory()); return value.get(); }
+SmallBasicColorCacheFactory* SmallBasicColorCacheFactory::instance = SmallBasicColorCacheFactory::instance_owner();
 
-    private: static SmallBasicColorCacheFactory* instance() { static std::unique_ptr<SmallBasicColorCacheFactory> value(new SmallBasicColorCacheFactory()); return value.get(); }
-
-    public: static SmallBasicColorCacheFactory* getInstance(){
+    auto SmallBasicColorCacheFactory::getInstance() -> SmallBasicColorCacheFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SmallBasicColorCacheFactory::instance();
+                        return SmallBasicColorCacheFactory::instance;
     
 }
 
 
-    private: const int32_t SIZE = 255;
-
-    private: const std::vector<int32_t> INDEX_TO_COLOR = std::vector<int32_t>(this->SIZE);
-
-    private: const std::vector<BasicColor*> BASIC_COLOR_ARRAY = std::vector<BasicColor*>(this->SIZE);
-
-    private: int32_t colorIndex = 0;
-
-private: SmallBasicColorCacheFactory(){
+SmallBasicColorCacheFactory::SmallBasicColorCacheFactory() : INDEX_TO_COLOR(std::vector<int32_t>(this->SIZE)), BASIC_COLOR_ARRAY(std::vector<BasicColor*>(this->SIZE)){
 }
 
 
-    public: void add(BasicColor* basicDefaultColor){
+    auto SmallBasicColorCacheFactory::add(BasicColor* basicDefaultColor) -> void{
 this->BASIC_COLOR_ARRAY[this->colorIndex]= basicDefaultColor;
     
 this->INDEX_TO_COLOR[this->colorIndex]= basicDefaultColor->intValue();
@@ -90,7 +89,7 @@ this->colorIndex++;
 }
 
 
-    public: BasicColor* getAndOrCreate(int32_t colorAsInt){
+    auto SmallBasicColorCacheFactory::getAndOrCreate(int32_t colorAsInt) -> BasicColor*{
 
     BasicColor* basicColor;;
     
@@ -132,7 +131,6 @@ this->add(basicColor);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_BASICTEXTEMAILTAG_CPP
+        #define ADMIN_TAGS_BASICTEXTEMAILTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/BasicTextEmailTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,31 +81,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicTextEmailTag: public CustomTagSupport {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string subject;
-
-    private: std::string body;
-
-public: BasicTextEmailTag(){
+BasicTextEmailTag::BasicTextEmailTag() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setSubject(std::string value){
+    auto BasicTextEmailTag::setSubject(std::string value) -> void{
 this->subject= value;
     
 }
 
 
-    public: void setBody(std::string value){
+    auto BasicTextEmailTag::setBody(std::string value) -> void{
 this->body= value;
     
 }
 
 
-    public: std::string send(){
+    auto BasicTextEmailTag::send() -> std::string{
 
         try {
             
@@ -129,10 +132,10 @@ method->invoke(anyType,
     std::string error = "Failed to Send Email.";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "send()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "send()", &e);
     
 
                                     }
@@ -150,10 +153,10 @@ method->invoke(anyType,
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto BasicTextEmailTag::doStartTag() -> int32_t{
 
         try {
-            this->pageContext.getOut()->print(this->send());
+            this->pageContext->getOut()->print(this->send());
     
 
 
@@ -178,7 +181,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_BASICTEXTEMAILTAG_CPP

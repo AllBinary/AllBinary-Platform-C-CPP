@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTINTERFACEPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTINTERFACEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/special/SpecialGameInputInterfaceProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +57,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/special/SpecialGameInputInterface.h"
 
-class SpecialGameInputInterfaceProcessor: public GameInputProcessor {
 
-    protected: SpecialGameInputInterface* specialGameInputInterface;
-
-public: SpecialGameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer){
+SpecialGameInputInterfaceProcessor::SpecialGameInputInterfaceProcessor(SpecialGameInputInterface* collidableDestroyableDamageableLayer){
 this->specialGameInputInterface= collidableDestroyableDamageableLayer;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTINTERFACEPROCESSOR_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLJ2SECONTROL_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NULLJ2SECONTROL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <javax/sound/sampled/Control.h>
-
-      
 
 
 
@@ -48,11 +51,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/Type.h"
+        class Type;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullJ2SEControl: public Control {
 
-: NullJ2SEControl(Type* type);
+public: NullJ2SEControl(Type* type);
 
 };
 
@@ -60,3 +67,16 @@ class NullJ2SEControl: public Control {
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_NULLJ2SECONTROL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_NULLJ2SECONTROL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NULLJ2SECONTROL_H_COMPLETE
+        #if __has_include(<javax/sound/sampled/Control.h>)
+#include <javax/sound/sampled/Control.h>
+#endif
+#if __has_include("org/allbinary/media/audio/Type.h")
+#include "org/allbinary/media/audio/Type.h"
+#endif
+
+        #endif
+    

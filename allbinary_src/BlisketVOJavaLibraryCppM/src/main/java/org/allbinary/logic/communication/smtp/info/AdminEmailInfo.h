@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_ADMINEMAILINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_ADMINEMAILINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,24 +34,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/configuration/AdminConfiguration.h>
-
-      
-#include <org/allbinary/business/user/modules/admin/configuration/AdminConfigurationInterface.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class ContextConfigurationInterface;
+class AdminConfiguration;
+class AdminConfigurationInterface;
+class LogUtil;
+class EmailServerConfigurationInterface;
+class CommonStrings;
 
 
 
@@ -67,15 +60,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdminEmailInfo: public BasicEmailInfo {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: AdminEmailInfo(std::string subject, std::string textBody);
 
                 //@Throws(Exception.constructor)
             
-    protected: void init();
+    /*protected*/ public: void init();
 
 };
 
@@ -83,3 +80,31 @@ public: AdminEmailInfo(std::string subject, std::string textBody);
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_ADMINEMAILINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_ADMINEMAILINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_ADMINEMAILINFO_H_COMPLETE
+        #if __has_include(<org/allbinary/business/context/configuration/ContextConfigurationInterface.h>)
+#include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/configuration/AdminConfiguration.h>)
+#include <org/allbinary/business/user/modules/admin/configuration/AdminConfiguration.h>
+#endif
+#if __has_include(<org/allbinary/business/user/modules/admin/configuration/AdminConfigurationInterface.h>)
+#include <org/allbinary/business/user/modules/admin/configuration/AdminConfigurationInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h>)
+#include <org/allbinary/logic/communication/smtp/configuration/server/EmailServerConfigurationInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h")
+#include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
+#endif
+
+        #endif
+    

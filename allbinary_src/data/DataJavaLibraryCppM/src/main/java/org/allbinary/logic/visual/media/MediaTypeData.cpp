@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/media/MediaTypeData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,31 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MediaTypeData
-            : public Object
-         {
+auto MediaTypeData::instance_owner() -> MediaTypeData* { static std::unique_ptr<MediaTypeData> value(new MediaTypeData()); return value.get(); }
+MediaTypeData* MediaTypeData::instance = MediaTypeData::instance_owner();
 
-    private: static MediaTypeData* instance() { static std::unique_ptr<MediaTypeData> value(new MediaTypeData()); return value.get(); }
-
-    public: static MediaTypeData* getInstance(){
+    auto MediaTypeData::getInstance() -> MediaTypeData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaTypeData::instance();
+                        return MediaTypeData::instance;
     
 }
 
 
-private: MediaTypeData(){
+MediaTypeData::MediaTypeData(){
 }
 
 
-    public: const std::string RESIZABLE_MEDIA = "RESIZABLE_MEDIA";
 
-    public: const std::string NOT_RESIZABLE_MEDIA = "NOT_RESIZABLE_MEDIA";
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIATYPEDATA_CPP

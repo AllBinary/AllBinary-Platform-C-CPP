@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_MIDLETCOMPOSITEINTERFACE_CPP
+        #define ORG_ALLBINARY_MIDLET_MIDLETCOMPOSITEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/MidletCompositeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,15 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/midlet/AllBinaryMidlet.h"
 
-class MidletCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual void setMidlet(MIDlet* midlet) = 0;
 
-    public: virtual AllBinaryMidlet* getMidlet() = 0;
 
-    public: virtual Displayable* getDisplayable() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MIDLET_MIDLETCOMPOSITEINTERFACE_CPP

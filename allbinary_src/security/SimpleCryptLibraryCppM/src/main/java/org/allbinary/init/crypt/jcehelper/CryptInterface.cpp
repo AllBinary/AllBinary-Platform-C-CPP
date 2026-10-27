@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_CRYPTINTERFACE_CPP
+        #define ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_CRYPTINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/init/crypt/jcehelper/CryptInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -45,13 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CryptInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<int8_t> encrypt(std::vector<int8_t> array) = 0;
 
-    public: virtual std::vector<int8_t> decrypt(std::vector<int8_t> array) = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_CRYPTINTERFACE_CPP

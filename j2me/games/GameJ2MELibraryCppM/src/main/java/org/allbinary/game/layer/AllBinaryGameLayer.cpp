@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -107,15 +117,8 @@
         #include "org/allbinary/game/layer/SWTUtil.h"
 #include "org/allbinary/game/layer/GameLayerUtil.h"
 
-class AllBinaryGameLayer: public AllBinaryLayer, public ViewPositionEventListenerInterface, public OpenGLSurfaceChangedInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
-
-    protected: BasicColor* RED = BasicColorFactory::getInstance()->RED;
-
-    private: Paintable* paintable = SWTUtil::isSWT
+AllBinaryGameLayer::AllBinaryGameLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition) : AllBinaryLayer(name, layerInfo, viewPosition), commonStrings(CommonStrings::getInstance()), basicSetColorUtil(BasicColorSetUtil::getInstance()), RED(BasicColorFactory::getInstance()->RED), paintable(SWTUtil::isSWT
                         ?       
                                 class extends Paintable
                                 {
@@ -133,11 +136,7 @@ this->basicSetColorUtil->setBasicColorP(graphics, this->BLACK);
 
                             NullPaintable::getInstance();
 
-    ;
-
-    private: BasicArrayList* gameKeyEventList = new BasicArrayListD();
-
-public: AllBinaryGameLayer(std::string name, Rectangle* layerInfo, ViewPositionBase* viewPosition) : AllBinaryLayer(name, layerInfo, viewPosition){
+    ), gameKeyEventList(new BasicArrayListD()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -149,20 +148,20 @@ public: AllBinaryGameLayer(std::string name, Rectangle* layerInfo, ViewPositionB
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL* gl){
+    auto AllBinaryGameLayer::set(GL* gl) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void move(){
+    auto AllBinaryGameLayer::move() -> void{
 }
 
 
-    public: BasicArrayList* getGameKeyEventList(){
+    auto AllBinaryGameLayer::getGameKeyEventList() -> BasicArrayList*{
 
 
 
@@ -174,27 +173,27 @@ public: AllBinaryGameLayer(std::string name, Rectangle* layerInfo, ViewPositionB
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager* allBinaryLayerManager){
+    auto AllBinaryGameLayer::processInput(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processTick(AllBinaryLayerManager* allBinaryLayerManager){
+    auto AllBinaryGameLayer::processTick(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
 
 
-                            throw new Exception(this->commonStrings->NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto AllBinaryGameLayer::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -202,7 +201,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    public: void onViewPositionChangeEvent(){
+    auto AllBinaryGameLayer::onViewPositionChangeEvent() -> void{
 this->onChangeEvent(this->viewPositionEvent);
     
 }
@@ -210,7 +209,7 @@ this->onChangeEvent(this->viewPositionEvent);
 
                 //@Throws(Exception.constructor)
             
-    public: void onChangeEvent(ViewPositionEvent* layerManagerEvent){
+    auto AllBinaryGameLayer::onChangeEvent(ViewPositionEvent* layerManagerEvent) -> void{
 
                         if(GameLayerUtil::isOnScreen(this))
                         
@@ -229,13 +228,13 @@ this->onChangeEvent(this->viewPositionEvent);
 }
 
 
-    public: void paintFirst(Graphics* graphics){
+    auto AllBinaryGameLayer::paintFirst(Graphics* graphics) -> void{
 this->paintable->paint(graphics);
     
 }
 
 
-    public: void paintDebug(Graphics* graphics){
+    auto AllBinaryGameLayer::paintDebug(Graphics* graphics) -> void{
 
     ViewPositionBase* viewPosition = this->getViewPosition();;
     
@@ -252,23 +251,22 @@ graphics->drawRect(viewX, viewY, this->getWidth(), this->getHeight());
 }
 
 
-    public: void setWidth(int32_t width){
-super.setLayerWidth(width);
+    auto AllBinaryGameLayer::setWidth(int32_t width) -> void{
+AllBinaryLayer::setLayerWidth(width);
     
 this->setHalfWidth(width>>1);
     
 }
 
 
-    public: void setHeight(int32_t height){
-super.setLayerHeight(height);
+    auto AllBinaryGameLayer::setHeight(int32_t height) -> void{
+AllBinaryLayer::setLayerHeight(height);
     
 this->setHalfHeight(height>>1);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYER_CPP

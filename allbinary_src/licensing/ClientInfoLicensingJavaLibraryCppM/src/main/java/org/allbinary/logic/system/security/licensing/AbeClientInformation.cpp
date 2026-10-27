@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/ClientInformation.h"
 // This is the information sent to the license server
-class AbeClientInformation: public ClientInformation {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: AbeClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : ClientInformation(name, version, specialName, shortName){
+AbeClientInformation::AbeClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : ClientInformation(name, version, specialName, shortName), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,7 +91,7 @@ public: AbeClientInformation(std::string name, std::string version, std::string 
 }
 
 
-    public: void init(){
+    auto AbeClientInformation::init() -> void{
 
         try {
             this->setOperatingSystemInterface(OperatingSystemFactory::getInstance()->getOperatingSystemInstance());
@@ -133,7 +140,6 @@ logUtil->put(commonStrings->EXCEPTION, this, commonStrings->CONSTRUCTOR, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_CPP
+        #define ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/util/ImmutableBasicArrayList.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/util/BasicArrayListS.h"
 
-class ImmutableBasicArrayList: public BasicArrayListS {
 
-    private: std::string name;
-
-public: ImmutableBasicArrayList(std::string name, int32_t size) : BasicArrayListS(size){
+ImmutableBasicArrayList::ImmutableBasicArrayList(std::string name, int32_t size) : BasicArrayListS(size){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +72,7 @@ this->name= name;
 }
 
 
-    public: bool add(Object* e){
+    auto ImmutableBasicArrayList::add(Object* e) -> bool{
 ForcedLogUtil::log(this->name, this);
     
 
@@ -77,13 +84,13 @@ ForcedLogUtil::log(this->name, this);
 }
 
 
-    public: void addAt(int32_t index, Object* element){
+    auto ImmutableBasicArrayList::addAt(int32_t index, Object* element) -> void{
 ForcedLogUtil::log(this->name, this);
     
 }
 
 
-    public: std::string toString(){
+    auto ImmutableBasicArrayList::toString() -> std::string{
 
 
 
@@ -93,7 +100,6 @@ ForcedLogUtil::log(this->name, this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_UTIL_IMMUTABLEBASICARRAYLIST_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/text/CustomTextAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,11 +83,8 @@
         #include "org/allbinary/animation/text/CustomTextAnimation.h"
 #include "org/allbinary/animation/text/AdjustCustomTextAnimation.h"
 
-class CustomTextAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface {
 
-    public: static CustomTextAnimationFactory* createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory){
+    auto CustomTextAnimationFactory::createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory* animationBehaviorFactory) -> CustomTextAnimationFactory*{
 
     CustomTextAnimationFactory* customTextAnimationFactory = new CustomTextAnimationFactory(text, fontSize, animationBehaviorFactory);;
     
@@ -94,25 +101,7 @@ customTextAnimationFactory->dy= dy;
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AnimationBehaviorFactory* animationBehaviorFactory;
-
-    public: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
-
-    private: std::string text;
-
-    private: int32_t initScaleHeight;
-
-    protected: int32_t dx = 0;
-
-    protected: int32_t dy = 0;
-
-    protected: Font* font;
-
-    public: ScaleProperties* scaleProperties;
-
-public: CustomTextAnimationFactory(std::string text, int32_t fontSize, AnimationBehaviorFactory* animationBehaviorFactory){
+CustomTextAnimationFactory::CustomTextAnimationFactory(std::string text, int32_t fontSize, AnimationBehaviorFactory* animationBehaviorFactory) : logUtil(LogUtil::getInstance()), basicColor(BasicColorFactory::getInstance()->BLACK){
 this->scaleProperties= new ScaleProperties();
     
 this->text= text;
@@ -130,7 +119,7 @@ this->font= Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, this->initScaleH
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto CustomTextAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
     CustomTextAnimation* customTextAnimation;;
     
@@ -160,11 +149,11 @@ customTextAnimation->setBasicColorP(this->basicColor);
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto CustomTextAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-    public: int32_t getWidth(){
+    auto CustomTextAnimationFactory::getWidth() -> int32_t{
 
 
 
@@ -174,7 +163,7 @@ customTextAnimation->setBasicColorP(this->basicColor);
 }
 
 
-    public: int32_t getHeight(){
+    auto CustomTextAnimationFactory::getHeight() -> int32_t{
 
 
 
@@ -184,7 +173,6 @@ customTextAnimation->setBasicColorP(this->basicColor);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATIONFACTORY_CPP

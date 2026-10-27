@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotChangeEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,19 +56,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/robot/osgi/InputAutomationRobotInterfaceWrapper.h"
 
-class InputAutomationRobotChangeEvent
-            : public Object
-         {
 
-    private: InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper;
-
-public: InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper){
+InputAutomationRobotChangeEvent::InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper){
 this->setInputAutomationRobotInterfaceWrapper(inputAutomationRobotInterfaceWrapper);
     
 }
 
 
-    public: InputAutomationRobotInterfaceWrapper* getInputAutomationRobotInterfaceWrapper(){
+    auto InputAutomationRobotChangeEvent::getInputAutomationRobotInterfaceWrapper() -> InputAutomationRobotInterfaceWrapper*{
 
 
 
@@ -68,13 +73,12 @@ this->setInputAutomationRobotInterfaceWrapper(inputAutomationRobotInterfaceWrapp
 }
 
 
-    public: void setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper){
+    auto InputAutomationRobotChangeEvent::setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper* inputAutomationRobotInterfaceWrapper) -> void{
 this->inputAutomationRobotInterfaceWrapper= inputAutomationRobotInterfaceWrapper;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTCHANGEEVENT_CPP

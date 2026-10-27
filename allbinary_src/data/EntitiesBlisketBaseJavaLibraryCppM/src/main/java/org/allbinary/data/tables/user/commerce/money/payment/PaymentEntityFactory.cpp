@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/money/payment/PaymentEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/money/payment/PaymentEntity.h"
 
-class PaymentEntityFactory
-            : public Object
-         {
+auto PaymentEntityFactory::instance_owner() -> PaymentEntityFactory* { static std::unique_ptr<PaymentEntityFactory> value(new PaymentEntityFactory()); return value.get(); }
+PaymentEntityFactory* PaymentEntityFactory::instance = PaymentEntityFactory::instance_owner();
 
-    private: static PaymentEntityFactory* instance() { static std::unique_ptr<PaymentEntityFactory> value(new PaymentEntityFactory()); return value.get(); }
-
-    public: static PaymentEntityFactory* getInstance(){
+    auto PaymentEntityFactory::getInstance() -> PaymentEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentEntityFactory::instance();
+                        return PaymentEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: PaymentEntityFactory(){
+PaymentEntityFactory::PaymentEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: PaymentEntity* getPaymentEntityInstance(){
+    auto PaymentEntityFactory::getPaymentEntityInstance() -> PaymentEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: PaymentEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -112,7 +117,6 @@ private: PaymentEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITYFACTORY_CPP

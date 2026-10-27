@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OperatingSystems
-            : public Object
+            : public virtual Object
          {
 
-    private: static OperatingSystems* instance() { static std::unique_ptr<OperatingSystems> value(new OperatingSystems()); return value.get(); }
+    private: static OperatingSystems* instance_owner();
+    private: static OperatingSystems* instance;
 
     public: static OperatingSystems* getInstance();
 
@@ -74,7 +84,7 @@ class OperatingSystems
 
     public: const std::string WINDOWS_XP = "Windows XP";
 
-    public: const std::string ANDROID = this->LINUX;
+    public: const std::string ANDROID;
 
     public: const std::string HARMONY = "HarmonyOS";
 
@@ -92,3 +102,10 @@ private: OperatingSystems();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMS_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPositionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,25 +78,14 @@
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMapCellPositionFactory.h"
 #include "org/allbinary/media/graphics/geography/map/BasicGeographicMap.h"
 
-class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
 
-    private: static inline ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    public: static ABHashtable<Object*, Object*>* getHashtable(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapCellPositionFactory::hashtable;
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+GeographicMapCellPositionFactory::GeographicMapCellPositionFactory() : logUtil(LogUtil::getInstance()) {
+        }
+        ABHashtable<Object*, Object*>* GeographicMapCellPositionFactory::hashtable = StdUtil::getInstance()->createHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicGeographicMapCellPositionFactory* getInstance(BasicGeographicMap* geographicMapInterface){
+    auto GeographicMapCellPositionFactory::getInstance(BasicGeographicMap* geographicMapInterface) -> BasicGeographicMapCellPositionFactory*{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -132,7 +131,16 @@ GeographicMapCellPositionFactory::hashtable->put(allBinaryTiledLayer->getDataId(
 }
 
 
-};
+    auto GeographicMapCellPositionFactory::getHashtable() -> ABHashtable<Object*, Object*>*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GeographicMapCellPositionFactory::hashtable;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_CPP

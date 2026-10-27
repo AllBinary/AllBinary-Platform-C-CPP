@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_H
         #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,24 +34,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
-
-      
-#include <org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class MotionGestureInput;
+class TouchMotionGestureFactory;
+class LogUtil;
+class StringUtil;
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class CommonStrings;
 
 
 
@@ -67,17 +60,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/CompleteMotionGestureInputInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompleteMotionGestureInputEvent: public AllBinaryEventObject, public CompleteMotionGestureInputInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: std::string name = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string name;
 
-    private: MotionGestureInput* motionGestureInput = TouchMotionGestureFactory::getInstance()->NO_MOTION;
+    private: MotionGestureInput* motionGestureInput;
 
 public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput* motionGestureInput);
 
-    protected: void setName(std::string name);
+    /*protected*/ public: void setName(std::string name);
 
     public: std::string getName();
 
@@ -91,3 +88,31 @@ public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput* mo
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTEVENT_H_COMPLETE
+        #if __has_include(<org/allbinary/input/motion/gesture/MotionGestureInput.h>)
+#include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h>)
+#include <org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/game/input/CompleteMotionGestureInputInterface.h")
+#include "org/allbinary/game/input/CompleteMotionGestureInputInterface.h"
+#endif
+
+        #endif
+    

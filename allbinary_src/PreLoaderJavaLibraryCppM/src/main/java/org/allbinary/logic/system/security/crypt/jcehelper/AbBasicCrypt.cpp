@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/AbBasicCrypt.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -78,19 +88,8 @@
         #include "org/allbinary/logic/system/security/crypt/jcehelper/SunJCE.h"
 #include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
 
-class AbBasicCrypt
-            : public Object
-        , public CryptInterface {
 
-    private: Cipher* cipher;
-
-    private: SecretKey* secretKey;
-
-    private: std::string algorithm;
-
-    private: std::vector<int8_t> key;
-
-public: AbBasicCrypt(std::string algorithm, std::string key){
+AbBasicCrypt::AbBasicCrypt(std::string algorithm, std::string key){
 
         try {
             this->algorithm= algorithm;
@@ -113,7 +112,7 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, "AbCrypt(alg,key)", &e);
 }
 
 
-    private: void init(){
+    auto AbBasicCrypt::init() -> void{
 
         try {
             
@@ -145,7 +144,7 @@ PreLogUtil::putOE("init Failed", this, commonStrings->INIT, &e);
 }
 
 
-    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    auto AbBasicCrypt::encrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
         try {
             this->cipher->init(Cipher::ENCRYPT_MODE, secretKey);
@@ -159,7 +158,7 @@ PreLogUtil::putOE("init Failed", this, commonStrings->INIT, &e);
 
     std::vector<int8_t> result = std::vector<int8_t>(ivArray.size() +encrypted.size());;
     
-PreLogUtil::put("ivArray Length: " +ivArray.size(), this, "encrypt");
+PreLogUtil::put(JavaString::valueOf("ivArray Length: ") +JavaString::valueOf(ivArray.size()), this, "encrypt");
     
 
 
@@ -206,7 +205,7 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
 }
 
 
-    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    auto AbBasicCrypt::decrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
         try {
             this->cipher->init(Cipher::DECRYPT_MODE, secretKey);
@@ -225,7 +224,7 @@ ivArray[index]= array[index];
     
 }
 
-PreLogUtil::put("ivArray Length: " +ivArray.size(), this, "encrypt");
+PreLogUtil::put(JavaString::valueOf("ivArray Length: ") +JavaString::valueOf(ivArray.size()), this, "encrypt");
     
 
     std::vector<int8_t> result = std::vector<int8_t>(array.size() -ivArray.size());;
@@ -267,7 +266,6 @@ PreLogUtil::putOE("decrypt Failed", this, "decrypt", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_CPP

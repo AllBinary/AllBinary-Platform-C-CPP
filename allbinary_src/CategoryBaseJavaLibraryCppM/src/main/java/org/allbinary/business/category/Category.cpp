@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/Category.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -98,31 +108,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/CategoryInterface.h"
 
-class Category
-            : public Object
-        , public CategoryInterface {
 
-    private: static inline const std::string NOT_ROOT = "This is not the root so it has no file path.";
+Category::Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), childCategoryVector(new BasicArrayListD()), typeVector(new BasicArrayListD()), PROPERTIES(int32_t(1)), CATEGORY(int32_t(0)){
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: CategoryHierarchyInterface* categoryHierarchyInterface;
-
-    private: CategoryPropertiesInterface* categoryPropertiesInterface;
-
-    private: BasicArrayList* childCategoryVector = new BasicArrayListD();
-
-    private: BasicArrayList* typeVector = new BasicArrayListD();
-
-    private: int32_t PROPERTIES = int32_t(1);
-
-    private: int32_t CATEGORY = int32_t(0);
-
-public: Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, "Category(CategoryPropertiesFactoryInterface)");
@@ -139,7 +128,7 @@ this->log();
 }
 
 
-public: Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level){
+Category::Category(CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface, int32_t level) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), childCategoryVector(new BasicArrayListD()), typeVector(new BasicArrayListD()), PROPERTIES(int32_t(1)), CATEGORY(int32_t(0)){
 this->categoryPropertiesInterface= categoryPropertiesFactoryInterface->getInstance();
     
 this->categoryHierarchyInterface= dynamic_cast<CategoryHierarchyInterface*>(new CategoryHierarchy(this, this, level));
@@ -149,7 +138,7 @@ this->log();
 }
 
 
-public: Category(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface){
+Category::Category(CategoryInterface* rootCategoryInterface, CategoryInterface* parentCategoryInterface, CategoryPropertiesFactoryInterface* categoryPropertiesFactoryInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), childCategoryVector(new BasicArrayListD()), typeVector(new BasicArrayListD()), PROPERTIES(int32_t(1)), CATEGORY(int32_t(0)){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(categoryPropertiesFactoryInterface->getInstance());
     
 this->categoryHierarchyInterface= dynamic_cast<CategoryHierarchyInterface*>(new CategoryHierarchy(rootCategoryInterface, parentCategoryInterface));
@@ -161,7 +150,7 @@ this->log();
 
                 //@Throws(Exception.constructor)
             
-    public: Object* getKey(){
+    auto Category::getKey() -> Object*{
 
 
 
@@ -173,7 +162,7 @@ this->log();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getRootFilePath(){
+    auto Category::getRootFilePath() -> AbPath*{
 
     AbPath* rootAbPath = new AbPath(NOT_ROOT, StringUtil::getInstance()->EMPTY_STRING);;
     
@@ -203,7 +192,7 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getFilePath(){
+    auto Category::getFilePath() -> AbPath*{
 
 
 
@@ -215,7 +204,7 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getWebAppPath(){
+    auto Category::getWebAppPath() -> AbPath*{
 
     CategoryInterface* categoryInterface = this->categoryHierarchyInterface->getRoot();;
     
@@ -230,7 +219,7 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public: AbPath* getPath(){
+    auto Category::getPath() -> AbPath*{
 
 
 
@@ -241,7 +230,7 @@ rootAbPath= rootCategoryPropertiesInterface->getRootFilePath();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool addChildProperty(CategoryPropertiesInterface* categoryPropertiesInterface){
+    auto Category::addChildProperty(CategoryPropertiesInterface* categoryPropertiesInterface) -> bool{
 this->typeVector->add(this->PROPERTIES);
     
 
@@ -254,11 +243,11 @@ this->typeVector->add(this->PROPERTIES);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool addChild(CategoryInterface* categoryInterface){
+    auto Category::addChild(CategoryInterface* categoryInterface) -> bool{
 this->removeDuplicateChild(categoryInterface);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     this->logUtil->putF("adding", this, "addChild");
@@ -286,7 +275,7 @@ this->typeVector->add(this->CATEGORY);
 }
 
 
-    public: BasicArrayList* getChildNodes(){
+    auto Category::getChildNodes() -> BasicArrayList*{
 
 
 
@@ -297,7 +286,7 @@ this->typeVector->add(this->CATEGORY);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool removeChild(CategoryInterface* categoryInterface){
+    auto Category::removeChild(CategoryInterface* categoryInterface) -> bool{
 
     BasicArrayList* removalVector = new BasicArrayListD();;
     
@@ -351,7 +340,7 @@ this->removal(removalVector);
 }
 
 
-    private: void removal(BasicArrayList* removalVector){
+    auto Category::removal(BasicArrayList* removalVector) -> void{
 
     int32_t removalSize = removalVector->size();;
     
@@ -378,7 +367,7 @@ this->childCategoryVector->remove(objectIndex);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: bool removeDuplicateChild(CategoryInterface* categoryInterface){
+    auto Category::removeDuplicateChild(CategoryInterface* categoryInterface) -> bool{
 
     BasicArrayList* removalVector = new BasicArrayListD();;
     
@@ -464,7 +453,7 @@ this->removal(removalVector);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isLeaf(){
+    auto Category::isLeaf() -> bool{
 
                         if(this->childCategoryVector == 
                                     nullptr
@@ -474,7 +463,7 @@ this->removal(removalVector);
                                     
 
 
-                            throw new Exception("Category Error");
+                            throw Exception("Category Error");
                     
 
                                     }
@@ -505,7 +494,7 @@ this->removal(removalVector);
 }
 
 
-    public: CategoryPropertiesInterface* getProperties(){
+    auto Category::getProperties() -> CategoryPropertiesInterface*{
 
 
 
@@ -515,13 +504,13 @@ this->removal(removalVector);
 }
 
 
-    public: void setProperties(CategoryPropertiesInterface* categoryPropertiesInterface){
+    auto Category::setProperties(CategoryPropertiesInterface* categoryPropertiesInterface) -> void{
 this->categoryPropertiesInterface= categoryPropertiesInterface;
     
 }
 
 
-    public: CategoryHierarchyInterface* getHierarchy(){
+    auto Category::getHierarchy() -> CategoryHierarchyInterface*{
 
 
 
@@ -531,7 +520,7 @@ this->categoryPropertiesInterface= categoryPropertiesInterface;
 }
 
 
-    public: void setHierarchy(CategoryHierarchyInterface* categoryHierarchyInterface){
+    auto Category::setHierarchy(CategoryHierarchyInterface* categoryHierarchyInterface) -> void{
 this->categoryHierarchyInterface= categoryHierarchyInterface;
     
 }
@@ -540,7 +529,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isValid(){
+    auto Category::isValid() -> bool{
 
                         if(!this->categoryPropertiesInterface->isValid().valueOf())
                         
@@ -626,7 +615,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toValidationInfoDoc(){
+    auto Category::toValidationInfoDoc() -> Document*{
 
 
 
@@ -638,7 +627,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toValidationInfoNode(Document* document){
+    auto Category::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -650,7 +639,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto Category::validationInfo() -> std::string{
 
 
 
@@ -662,7 +651,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto Category::toHashMap() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* categoryHashMap = this->categoryPropertiesInterface->toHashMap();;
     
@@ -677,7 +666,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* toVector(){
+    auto Category::toVector() -> BasicArrayList*{
 
     BasicArrayList* categoryVector = this->categoryPropertiesInterface->toVector();;
     
@@ -694,9 +683,9 @@ categoryVector->add(this->childCategoryVector);
 
                 //@Throws(Exception.constructor)
             
-    public: void log(){
+    auto Category::log() -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->CATEGORY))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->CATEGORY))
                         
                                     {
                                     
@@ -722,7 +711,6 @@ this->logUtil->putF(stringBuffer->toString(), this, "log()");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORY_CPP

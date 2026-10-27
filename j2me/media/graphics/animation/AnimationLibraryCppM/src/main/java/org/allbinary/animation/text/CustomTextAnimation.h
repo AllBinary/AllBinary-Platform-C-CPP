@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
-#include <org/allbinary/graphics/font/FontDebugFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class Font;
+class Graphics;
+class AnimationBehavior;
+class FontDebugFactory;
+class StringUtil;
 
 
 
@@ -65,17 +60,21 @@
         #include "org/allbinary/animation/text/TextAnimation.h"
 #include "org/allbinary/animation/text/TextInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CustomTextAnimation: public TextAnimation, public TextInterface {
 
-    protected: FontDebugFactory* fontDebugFactory = FontDebugFactory::getInstance();
+    /*protected*/ public: FontDebugFactory* fontDebugFactory;
 
-    protected: int32_t fontSize;
+    /*protected*/ public: int32_t fontSize;
 
-    protected: Font* font;
+    /*protected*/ public: Font* font;
 
-    private: std::string lastText = StringUtil::getInstance()->INIT_STRING;
+    private: std::string lastText;
 
-    protected: bool hasChanged = true;
+    /*protected*/ public: bool hasChanged = true;
 
 public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior* animationBehavior);
 
@@ -99,3 +98,31 @@ public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavio
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/FontDebugFactory.h>)
+#include <org/allbinary/graphics/font/FontDebugFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/animation/text/TextAnimation.h")
+#include "org/allbinary/animation/text/TextAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/text/TextInterface.h")
+#include "org/allbinary/animation/text/TextInterface.h"
+#endif
+
+        #endif
+    

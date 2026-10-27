@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_ORTHOGONALLIGHTINGOPENGLPROCESSORFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_ORTHOGONALLIGHTINGOPENGLPROCESSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OrthogonalLightingOpenGLProcessorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,27 +57,22 @@
         #include "org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h"
 #include "org/allbinary/graphics/opengles/OpenGLProcessor.h"
 
-class OrthogonalLightingOpenGLProcessorFactory
-            : public Object
-         {
 
-    private: static OrthogonalLightingOpenGLProcessorFactory* instance() { static std::unique_ptr<OrthogonalLightingOpenGLProcessorFactory> value(new OrthogonalLightingOpenGLProcessorFactory()); return value.get(); }
+OrthogonalLightingOpenGLProcessorFactory::OrthogonalLightingOpenGLProcessorFactory() : sceneLightingOrthogonalModeOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()), sceneLightsOrthogonalModeOpenGLProcessor(NullOpenGLProcessorFactory::getInstance()) {
+        }
+        auto OrthogonalLightingOpenGLProcessorFactory::instance_owner() -> OrthogonalLightingOpenGLProcessorFactory* { static std::unique_ptr<OrthogonalLightingOpenGLProcessorFactory> value(new OrthogonalLightingOpenGLProcessorFactory()); return value.get(); }
+OrthogonalLightingOpenGLProcessorFactory* OrthogonalLightingOpenGLProcessorFactory::instance = OrthogonalLightingOpenGLProcessorFactory::instance_owner();
 
-    public: static OrthogonalLightingOpenGLProcessorFactory* getInstance(){
+    auto OrthogonalLightingOpenGLProcessorFactory::getInstance() -> OrthogonalLightingOpenGLProcessorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrthogonalLightingOpenGLProcessorFactory::instance();
+                        return OrthogonalLightingOpenGLProcessorFactory::instance;
     
 }
 
 
-    public: OpenGLProcessor* sceneLightingOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public: OpenGLProcessor* sceneLightsOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_ORTHOGONALLIGHTINGOPENGLPROCESSORFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/damage/AnimationDamageFloaters.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,21 +85,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/damage/DamageFloaters.h"
 
-class AnimationDamageFloaters: public DamageFloaters {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AllBinaryLayer* layerInterface;
-
-    private: std::vector<IndexedAnimation*> animationInterfaceArray;
-
-    private: CircularIndexUtil* circularIndexUtil;
-
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-public: AnimationDamageFloaters(AllBinaryLayer* layerInterface, std::vector<IndexedAnimation*> animationInterfaceArray, int32_t dx, int32_t dy){
+AnimationDamageFloaters::AnimationDamageFloaters(AllBinaryLayer* layerInterface, std::vector<IndexedAnimation*> animationInterfaceArray, int32_t dx, int32_t dy) : logUtil(LogUtil::getInstance()){
 this->animationInterfaceArray= animationInterfaceArray;
     
 
@@ -99,7 +96,7 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size() -1;index >= 0; index--)
         {
-this->animationInterfaceArray[index].setFrame(this->animationInterfaceArray[index].getSize() -1);
+this->animationInterfaceArray[index]->setFrame(this->animationInterfaceArray[index]->getSize() -1);
     
 }
 
@@ -114,18 +111,18 @@ this->dy= dy;
 }
 
 
-    public: void add(int32_t damage){
+    auto AnimationDamageFloaters::add(int32_t damage) -> void{
 
     int32_t i = this->circularIndexUtil->getIndex();;
     
-this->animationInterfaceArray[i].setFrame(0);
+this->animationInterfaceArray[i]->setFrame(0);
     
 this->circularIndexUtil->next();
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto AnimationDamageFloaters::paint(Graphics* graphics) -> void{
 
         try {
             
@@ -180,7 +177,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, canvasStrings->PAINT, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_CPP

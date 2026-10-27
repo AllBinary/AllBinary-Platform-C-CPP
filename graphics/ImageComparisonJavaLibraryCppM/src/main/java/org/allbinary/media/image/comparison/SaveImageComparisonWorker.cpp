@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_SAVEIMAGECOMPARISONWORKER_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_SAVEIMAGECOMPARISONWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/SaveImageComparisonWorker.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,23 +85,12 @@
 #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 #include "org/allbinary/media/image/comparison/ComparisonImageInputOutput.h"
 
-class SaveImageComparisonWorker
-            : public Object
-        , public ImageComparisonResultsListener {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: bool running= false;
-
-    private: BasicArrayList* imageComparisonInfoVector = new BasicArrayListD();
-
-public: SaveImageComparisonWorker(){
+SaveImageComparisonWorker::SaveImageComparisonWorker() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), imageComparisonInfoVector(new BasicArrayListD()){
 }
 
 
-    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent){
+    auto SaveImageComparisonWorker::onImageComparisonResultsEvent(ImageComparisonResultsEvent* imageComparisonResultsEvent) -> void{
 this->imageComparisonInfoVector->add(imageComparisonResultsEvent);
     
 this->run();
@@ -99,14 +98,14 @@ this->run();
 }
 
 
-    public: void onEvent(AllBinaryEventObject* allBinaryEventObject){
+    auto SaveImageComparisonWorker::onEvent(AllBinaryEventObject* allBinaryEventObject) -> void{
 this->onImageComparisonResultsEvent(dynamic_cast<ImageComparisonResultsEvent*>(allBinaryEventObject));
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto SaveImageComparisonWorker::isRunning() -> bool{
 
 
 
@@ -117,13 +116,13 @@ this->onImageComparisonResultsEvent(dynamic_cast<ImageComparisonResultsEvent*>(a
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto SaveImageComparisonWorker::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 
-    public: void run(){
+    auto SaveImageComparisonWorker::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -162,7 +161,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_SAVEIMAGECOMPARISONWORKER_CPP

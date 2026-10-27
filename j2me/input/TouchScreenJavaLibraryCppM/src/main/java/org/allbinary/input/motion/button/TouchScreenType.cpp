@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPE_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchScreenType.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchScreenType
-            : public Object
-         {
 
-    private: std::string name;
-
-: TouchScreenType(std::string name){
+TouchScreenType::TouchScreenType(std::string name){
 this->name= name;
     
 }
 
 
-    public: std::string getName(){
+    auto TouchScreenType::getName() -> std::string{
 
 
 
@@ -67,7 +72,7 @@ this->name= name;
 }
 
 
-    public: std::string toString(){
+    auto TouchScreenType::toString() -> std::string{
 
 
 
@@ -77,7 +82,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENTYPE_CPP

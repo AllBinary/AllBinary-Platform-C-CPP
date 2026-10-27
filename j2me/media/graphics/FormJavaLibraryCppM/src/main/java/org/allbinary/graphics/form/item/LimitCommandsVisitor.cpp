@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_LIMITCOMMANDSVISITOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_LIMITCOMMANDSVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/LimitCommandsVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LimitCommandsVisitor: public Visitor {
 
-    private: bool isNotSmallDisplay;
-
-public: LimitCommandsVisitor(){
+LimitCommandsVisitor::LimitCommandsVisitor(){
 
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
@@ -76,7 +83,7 @@ this->isNotSmallDisplay= (displayInfo->isPortrait() && displayInfo->getLastHeigh
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto LimitCommandsVisitor::visit(Object* anyType) -> Object*{
 
     Command* command = dynamic_cast<Command*>(anyType);;
     
@@ -109,7 +116,6 @@ this->isNotSmallDisplay= (displayInfo->isPortrait() && displayInfo->getLastHeigh
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_LIMITCOMMANDSVISITOR_CPP

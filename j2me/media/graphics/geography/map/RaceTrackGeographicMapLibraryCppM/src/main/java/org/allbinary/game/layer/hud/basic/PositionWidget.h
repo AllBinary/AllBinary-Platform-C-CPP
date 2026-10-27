@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class Graphics;
+class StringMaker;
+class StringUtil;
 #include <org/allbinary/game/graphics/hud/BasicHud.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class BasicColor;
 
 
 
@@ -64,6 +59,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //super.paint(graphics, positionString, currentPostString, offset2, offset);
 class PositionWidget: public BasicHud {
 
@@ -71,7 +70,7 @@ class PositionWidget: public BasicHud {
 
     private: int32_t position= 0;
 
-    private: std::string positionString = StringUtil::getInstance()->EMPTY_STRING;
+    private: std::string positionString;
 
 public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor* basicColor);
 
@@ -87,3 +86,25 @@ public: PositionWidget(int32_t position, int32_t location, int32_t direction, Ba
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/graphics/hud/BasicHud.h>)
+#include <org/allbinary/game/graphics/hud/BasicHud.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+
+        #endif
+    

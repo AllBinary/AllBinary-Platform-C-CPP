@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_PAYMENTHELPER_CPP
+        #define ADMIN_TAGHELPERS_PAYMENTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/PaymentHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,19 +94,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/Table.h"
 
-class PaymentHelper: public Table {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: HttpServletRequest* request;
-
-    private: std::string value;
-
-    private: Portion* portion;
-
-public: PaymentHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+PaymentHelper::PaymentHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
     
 this->weblisketSession= new WeblisketSession(hashMap, pageContext);
@@ -108,13 +107,13 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto PaymentHelper::getFormData() -> void{
 this->value= this->request->getParameter("VALUE");
     
 }
 
 
-    public: std::string insert(){
+    auto PaymentHelper::insert() -> std::string{
 
         try {
             
@@ -131,7 +130,7 @@ paymentEntity->add(this->weblisketSession->getUserName(), paymentInterface);
 paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(paymentEntity->getLastId(this->weblisketSession->getUserName())));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "addPayment()");
@@ -153,10 +152,10 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(payment
     std::string error = "Failed to add Payment";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "addPayment()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "addPayment()", &e);
     
 
                                     }
@@ -172,7 +171,7 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(payment
 }
 
 
-    public: std::string select(){
+    auto PaymentHelper::select() -> std::string{
 
         try {
             
@@ -184,7 +183,7 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(payment
 paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(this->value));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "selectPayment()");
@@ -206,10 +205,10 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(this->v
     std::string error = "Failed to select Payment";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "selectPayment()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "selectPayment()", &e);
     
 
                                     }
@@ -225,7 +224,7 @@ paymentEntity->setDefault(this->weblisketSession->getUserName(), int32_t(this->v
 }
 
 
-    public: std::string delete_(){
+    auto PaymentHelper::delete_() -> std::string{
 
         try {
             
@@ -251,7 +250,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "removePayment()");
@@ -273,10 +272,10 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to remove Payment";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "removePayment()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "removePayment()", &e);
     
 
                                     }
@@ -292,7 +291,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 }
 
 
-    public: std::string drop(){
+    auto PaymentHelper::drop() -> std::string{
 
         try {
             
@@ -302,10 +301,10 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string success = paymentEntity->dropTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
-                                    this->logUtil->putF(success, this, this->commonStrings.DROP);
+                                    this->logUtil->putF(success, this, this->commonStrings->DROP);
     
 
                                     }
@@ -324,10 +323,10 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to drop Admin table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->DROP, &e);
     
 
                                     }
@@ -343,7 +342,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 }
 
 
-    public: std::string create(){
+    auto PaymentHelper::create() -> std::string{
 
         try {
             
@@ -353,7 +352,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string success = paymentEntity->createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "create()");
@@ -375,10 +374,10 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to create user table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "create()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "create()", &e);
     
 
                                     }
@@ -394,7 +393,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 }
 
 
-    public: std::string restore(){
+    auto PaymentHelper::restore() -> std::string{
 
         try {
             
@@ -404,7 +403,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string result = AbSqlTableUtil::getInstance()->restoreTable(PaymentEntityFactory::getInstance()->getPaymentEntityInstance(), portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "restore()");
@@ -426,10 +425,10 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "restore()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "restore()", &e);
     
 
                                     }
@@ -445,7 +444,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 }
 
 
-    public: std::string backup(){
+    auto PaymentHelper::backup() -> std::string{
 
         try {
             
@@ -455,7 +454,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string result = AbSqlTableUtil::getInstance()->backupTable(PaymentEntityFactory::getInstance()->getPaymentEntityInstance());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "backup()");
@@ -477,10 +476,10 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
     std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "backup()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "backup()", &e);
     
 
                                     }
@@ -498,7 +497,7 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 
                 //@Throws(LicensingException.constructor)
             
-    public: std::string update(){
+    auto PaymentHelper::update() -> std::string{
 
 
 
@@ -508,7 +507,6 @@ paymentEntity->remove(this->weblisketSession->getUserName(), int32_t(this->value
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_PAYMENTHELPER_CPP

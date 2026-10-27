@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREHUDWIDGET_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREHUDWIDGET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/score/ScoreHudWidget.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,11 +70,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScoreHudWidget: public NumberStringHud {
 
                 //@Throws(Exception.constructor)
             
-    public: static ScoreHudWidget* getInstance(int32_t maxscore, int32_t location, int32_t direction){
+    auto ScoreHudWidget::getInstance(int32_t maxscore, int32_t location, int32_t direction) -> ScoreHudWidget*{
 
 
 
@@ -74,7 +83,7 @@ class ScoreHudWidget: public NumberStringHud {
 }
 
 
-public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : NumberStringHud("Pts ", maxscore, location, direction, bufferZone, basicColor){
+ScoreHudWidget::ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor* basicColor) : NumberStringHud("Pts ", maxscore, location, direction, bufferZone, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,18 +95,17 @@ this->updateMaxHeight= 14;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto ScoreHudWidget::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
 this->updateMaxWidth= font->getSize() *5;
     
-super.updateMeasurement(graphics);
+NumberStringHud::updateMeasurement(graphics);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_SCORE_SCOREHUDWIDGET_CPP

@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_CUSTOMDISPLAYABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_CUSTOMDISPLAYABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/CustomDisplayable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +41,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomDisplayable
-            : public Object
-         {
 
-    public: void setTitle(std::string title){
+CustomDisplayable::CustomDisplayable() {
+        }
+        
+    auto CustomDisplayable::setTitle(std::string title) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_CUSTOMDISPLAYABLE_CPP

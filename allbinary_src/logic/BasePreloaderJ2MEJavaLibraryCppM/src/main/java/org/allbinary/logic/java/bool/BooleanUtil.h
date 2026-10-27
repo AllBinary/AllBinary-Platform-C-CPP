@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,15 +38,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
+class TsUtil;
+class StringMaker;
+class StringValidationUtil;
 
 
 
@@ -60,17 +59,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/java/bool/BooleanFactory.h"
+        class BooleanFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BooleanUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static BooleanUtil* instance() { static std::unique_ptr<BooleanUtil> value(new BooleanUtil()); return value.get(); }
+    private: static BooleanUtil* instance_owner();
+    private: static BooleanUtil* instance;
 
     public: static BooleanUtil* getInstance();
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
 private: BooleanUtil();
 
@@ -90,3 +94,22 @@ private: BooleanUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/java/bool/BooleanFactory.h")
+#include "org/allbinary/logic/java/bool/BooleanFactory.h"
+#endif
+
+        #endif
+    

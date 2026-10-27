@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_COMPOUND_COMPOUNDCOMPONENTVIEW_CPP
+        #define VIEWS_COMPOUND_COMPOUNDCOMPONENTVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/compound/CompoundComponentView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,11 +68,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/compound/CompoundTransform.h"
 
-class CompoundComponentView: public HttpStoreComponentView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: CompoundComponentView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+CompoundComponentView::CompoundComponentView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,7 +81,7 @@ public: CompoundComponentView(TransformInfoInterface* transformInfoInterface) : 
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto CompoundComponentView::view() -> std::string{
 
         try {
             
@@ -94,10 +101,10 @@ public: CompoundComponentView(TransformInfoInterface* transformInfoInterface) : 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -112,7 +119,6 @@ public: CompoundComponentView(TransformInfoInterface* transformInfoInterface) : 
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_COMPOUND_COMPOUNDCOMPONENTVIEW_CPP

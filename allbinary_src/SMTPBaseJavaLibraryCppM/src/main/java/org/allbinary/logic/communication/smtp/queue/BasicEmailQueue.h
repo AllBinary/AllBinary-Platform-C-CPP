@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/mail/Transport.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/EmailInterface.h>
-
-      
+class Transport;
+class LogUtil;
+class EmailInterface;
 #include <org/allbinary/logic/util/queue/BasicQueue.h>
-
-      
 
 
 
@@ -63,16 +60,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicEmailQueue: public BasicQueue, public EmailQueueInterface {
 
-    private: static BasicEmailQueue* instance() { static std::unique_ptr<BasicEmailQueue> value(new BasicEmailQueue()); return value.get(); }
+    private: static BasicEmailQueue* instance_owner();
+    private: static BasicEmailQueue* instance;
 
     private: static inline BasicEmailQueue* basicEmailQueue;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static BasicEmailQueue* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: BasicEmailQueue();
 
@@ -95,7 +97,7 @@ private: BasicEmailQueue();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    protected: void processAllUnsent();
+    /*protected*/ public: void processAllUnsent();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     private: bool send(EmailInterface* emailInterface);
@@ -106,3 +108,25 @@ private: BasicEmailQueue();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H_COMPLETE
+        #if __has_include(<javax/mail/Transport.h>)
+#include <javax/mail/Transport.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/EmailInterface.h>)
+#include <org/allbinary/logic/communication/smtp/EmailInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/queue/BasicQueue.h>)
+#include <org/allbinary/logic/util/queue/BasicQueue.h>
+#endif
+#if __has_include("org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h")
+#include "org/allbinary/logic/communication/smtp/queue/EmailQueueInterface.h"
+#endif
+
+        #endif
+    

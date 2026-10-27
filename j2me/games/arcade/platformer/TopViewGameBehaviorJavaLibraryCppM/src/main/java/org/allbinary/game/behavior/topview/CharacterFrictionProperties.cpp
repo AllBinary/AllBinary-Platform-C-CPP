@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_CHARACTERFRICTIONPROPERTIES_CPP
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_CHARACTERFRICTIONPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/behavior/topview/CharacterFrictionProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,15 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CharacterFrictionProperties: public FrictionProperties {
 
-    private: int32_t WATER_FRICTION_NOMINATOR;
-
-    private: int32_t AIR_FRICTION_NOMINATOR;
-
-    private: int32_t COLLISION_FRICTION_NOMINATOR;
-
-public: CharacterFrictionProperties(int32_t airFriction, int32_t waterFriction, int32_t collisionFriction){
+CharacterFrictionProperties::CharacterFrictionProperties(int32_t airFriction, int32_t waterFriction, int32_t collisionFriction){
 this->AIR_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -airFriction;
     
 this->COLLISION_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -collisionFriction;
@@ -67,7 +70,7 @@ this->WATER_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -waterFri
 }
 
 
-    public: int32_t getWATER_FRICTION_NOMINATOR(){
+    auto CharacterFrictionProperties::getWATER_FRICTION_NOMINATOR() -> int32_t{
 
 
 
@@ -77,7 +80,7 @@ this->WATER_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -waterFri
 }
 
 
-    public: int32_t getAIR_FRICTION_NOMINATOR(){
+    auto CharacterFrictionProperties::getAIR_FRICTION_NOMINATOR() -> int32_t{
 
 
 
@@ -87,7 +90,7 @@ this->WATER_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -waterFri
 }
 
 
-    public: int32_t getCOLLISION_FRICTION_NOMINATOR(){
+    auto CharacterFrictionProperties::getCOLLISION_FRICTION_NOMINATOR() -> int32_t{
 
 
 
@@ -97,7 +100,6 @@ this->WATER_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -waterFri
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_CHARACTERFRICTIONPROPERTIES_CPP

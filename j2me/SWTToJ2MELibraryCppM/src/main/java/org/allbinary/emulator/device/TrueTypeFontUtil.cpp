@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP
+        #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/emulator/device/TrueTypeFontUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -110,29 +120,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/emulator/device/TrueTypeFontUtilBase.h"
 //TTF
-class TrueTypeFontUtil: public TrueTypeFontUtilBase {
+auto TrueTypeFontUtil::instance_owner() -> TrueTypeFontUtil* { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
+TrueTypeFontUtil* TrueTypeFontUtil::instance = TrueTypeFontUtil::instance_owner();
 
-    private: static TrueTypeFontUtil* instance() { static std::unique_ptr<TrueTypeFontUtil> value(new TrueTypeFontUtil()); return value.get(); }
-
-    public: static TrueTypeFontUtil* getInstance(){
+    auto TrueTypeFontUtil::getInstance() -> TrueTypeFontUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrueTypeFontUtil::instance();
+                        return TrueTypeFontUtil::instance;
     
 }
 
 
-    private: PreResourceImageUtil* preResourceImageUtil = PreResourceImageUtil::getInstance();
-
-    private: const std::vector<float> widthFloatArray;
-
-    public: OpenGLESImage* fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
-
-    private: float widthScale;
-
-private: TrueTypeFontUtil() : TrueTypeFontUtilBase(2){
+TrueTypeFontUtil::TrueTypeFontUtil() : TrueTypeFontUtilBase(2), preResourceImageUtil(PreResourceImageUtil::getInstance()), fontImage(OpenGLESImage::NULL_OPENGL_IMAGE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -590,7 +591,7 @@ this->widthScale= (this->scale == 2)
 }
 
 
-    public: Image* getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor){
+    auto TrueTypeFontUtil::getFontBitmapGL(GL10* gl, std::string filename, int32_t cellSize, BasicColor* basicColor) -> Image*{
 
         try {
             
@@ -682,14 +683,14 @@ PreLogUtil::putOE(commonStrings->EXCEPTION, this, commonStrings->EXCEPTION, &e);
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    public: void saveFontAtlasAsFile(){
+    auto TrueTypeFontUtil::saveFontAtlasAsFile() -> void{
 
     Image* image = this->getFontBitmap(
                             nullptr, cellSize, BasicColorFactory::getInstance()->WHITE);;
@@ -714,7 +715,7 @@ imageLoader->save(CommonSeps::getInstance()->PERIOD +CanvasStrings::getInstance(
 }
 
 
-    public: Image* getFontBitmap(std::string filename, int32_t cellSize, BasicColor* basicColor){
+    auto TrueTypeFontUtil::getFontBitmap(std::string filename, int32_t cellSize, BasicColor* basicColor) -> Image*{
 
     int32_t cellsPerRow2 = this->CELLS_PER_ROW *2;;
     
@@ -821,7 +822,7 @@ graphics->drawChar(this->characterArray[0], x, y, 0);
 }
 
 
-    public: std::vector<int32_t> getFontWidths(std::string filename, int32_t fontSize){
+    auto TrueTypeFontUtil::getFontWidths(std::string filename, int32_t fontSize) -> std::vector<int32_t>{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -845,7 +846,7 @@ this->characterArray[0]= pattern[index];
                                 
                         else {
                             
-    int32_t shortPatternIndex = this->shortPattern.indexOf(this->characterArray[0]);;
+    int32_t shortPatternIndex = this->shortPattern->indexOf(this->characterArray[0]);;
     
 
     int32_t w = static_cast<int32_t>((this->widthFloatArray[shortPatternIndex] /75)) +19;;
@@ -892,7 +893,6 @@ _characterWidth[index] *= this->widthScale;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_CPP

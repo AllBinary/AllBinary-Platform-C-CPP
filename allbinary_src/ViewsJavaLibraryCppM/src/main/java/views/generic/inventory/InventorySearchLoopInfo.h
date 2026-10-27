@@ -21,6 +21,11 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class StringMaker;
 
 
 
@@ -51,10 +54,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InventorySearchLoopInfo
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: InventorySearchLoopInfo();
+        
     public: int32_t lastPage =  -1;
 
     public: int32_t currentPage =  -1;
@@ -77,3 +88,13 @@ class InventorySearchLoopInfo
 
 
         #endif //VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_H_COMPLETE)
+        #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

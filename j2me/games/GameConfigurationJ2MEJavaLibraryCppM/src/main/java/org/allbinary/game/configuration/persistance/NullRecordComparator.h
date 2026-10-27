@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,8 +37,6 @@
             #include "java/lang/Object.h"
         
 #include <javax/microedition/rms/RecordComparator.h>
-
-      
 
 
 
@@ -53,12 +56,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullRecordComparator
-            : public Object
+            : public virtual Object
         , public RecordComparator {
 
-    public: static NullRecordComparator* NULL_RECORD_COMPARATOR() { static std::unique_ptr<NullRecordComparator> value(new NullRecordComparator()); return value.get(); }
+    private: static NullRecordComparator* NULL_RECORD_COMPARATOR_owner();
+    public: static NullRecordComparator* NULL_RECORD_COMPARATOR;
 
+
+            
+    public: NullRecordComparator();
+        
     public: int32_t compare(std::vector<int8_t> rec1, std::vector<int8_t> rec2);
 
 };
@@ -67,3 +79,13 @@ class NullRecordComparator
 
 
         #endif //ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_H_COMPLETE
+        #if __has_include(<javax/microedition/rms/RecordComparator.h>)
+#include <javax/microedition/rms/RecordComparator.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/SensorFeatureFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,43 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/configuration/feature/SensorFeature.h"
 
-class SensorFeatureFactory
-            : public Object
-         {
+auto SensorFeatureFactory::instance_owner() -> SensorFeatureFactory* { static std::unique_ptr<SensorFeatureFactory> value(new SensorFeatureFactory()); return value.get(); }
+SensorFeatureFactory* SensorFeatureFactory::instance = SensorFeatureFactory::instance_owner();
 
-    private: static SensorFeatureFactory* instance() { static std::unique_ptr<SensorFeatureFactory> value(new SensorFeatureFactory()); return value.get(); }
-
-    public: static SensorFeatureFactory* getInstance(){
+    auto SensorFeatureFactory::getInstance() -> SensorFeatureFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SensorFeatureFactory::instance();
+                        return SensorFeatureFactory::instance;
     
 }
 
 
-private: SensorFeatureFactory(){
+SensorFeatureFactory::SensorFeatureFactory() : NO_ORIENTATION(new SensorFeature("No Orientation")), ORIENTATION_SENSORS(new SensorFeature("Orientation Sensors")), SIMULATED_ORIENTATION_SENSORS(new SensorFeature("Simulated Orientation Sensors")), YAW(new SensorFeature("Yaw")), YAW_MINUS_RIGHT_PLUS_LEFT(new SensorFeature("Yaw -Right +Left")), YAW_MINUS_LEFT_PLUS_RIGHT(new SensorFeature("Yaw -Left +Right ")), PITCH(new SensorFeature("Pitch")), ROLL(new SensorFeature("Roll")){
 }
 
 
-    public: SensorFeature* NO_ORIENTATION = new SensorFeature("No Orientation");
 
-    public: SensorFeature* ORIENTATION_SENSORS = new SensorFeature("Orientation Sensors");
 
-    public: SensorFeature* SIMULATED_ORIENTATION_SENSORS = new SensorFeature("Simulated Orientation Sensors");
-
-    public: SensorFeature* YAW = new SensorFeature("Yaw");
-
-    public: SensorFeature* YAW_MINUS_RIGHT_PLUS_LEFT = new SensorFeature("Yaw -Right +Left");
-
-    public: SensorFeature* YAW_MINUS_LEFT_PLUS_RIGHT = new SensorFeature("Yaw -Left +Right ");
-
-    public: SensorFeature* PITCH = new SensorFeature("Pitch");
-
-    public: SensorFeature* ROLL = new SensorFeature("Roll");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATUREFACTORY_CPP

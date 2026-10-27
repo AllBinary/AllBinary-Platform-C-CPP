@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,66 +38,26 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/identification/GroupCommonFactory.h>
-
-      
-#include <org/allbinary/game/layer/RTSLayer.h>
-
-      
-#include <org/allbinary/game/layer/RTSPlayerLayerInterface.h>
-
-      
-#include <org/allbinary/game/layer/item/LayerInterfaceFactoryImageItem.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/direction/DirectionFactory.h>
-
-      
-#include <org/allbinary/game/identification/Group.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
-#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
-
-      
-#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
-
-      
+class GroupCommonFactory;
+class RTSLayer;
+class RTSPlayerLayerInterface;
+class LayerInterfaceFactoryImageItem;
+class ABCustomItem;
+class LogUtil;
+class DirectionFactory;
+class Group;
+class AllBinaryGameLayerManager;
+class CollidableDestroyableDamageableLayer;
+class GPoint;
+class ScrollSelectionForm;
+class AllBinaryLayerManager;
+class LayerInterfaceFactoryInterface;
+class StdUtil;
+class StringMaker;
+class StringUtil;
+class GeographicMapCellPosition;
+class SimpleGeographicMapCellPositionFactory;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -112,27 +77,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RTSFormInput
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: GroupCommonFactory* groupCommonFactory = GroupCommonFactory::getInstance();
+    private: GroupCommonFactory* groupCommonFactory;
 
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
+    private: ABHashtable<Object*, Object*>* hashtable;
 
-    protected: const std::vector<CollidableDestroyableDamageableLayer*> newUnconstructedRTSLayerInterfaceArray = std::vector<CollidableDestroyableDamageableLayer*>(7);
+    /*protected*/ public: std::vector<CollidableDestroyableDamageableLayer*> newUnconstructedRTSLayerInterfaceArray;
 
-    protected: std::vector<Group*> groupInterfaceArray;
+    /*protected*/ public: std::vector<Group*> groupInterfaceArray;
 
-    private: GeographicMapCellPosition* selectedGeographicCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition* selectedGeographicCellPosition;
 
     private: bool stickyItemSelected= false;
 
     private: int32_t selectedStickyItemIndex= 0;
 
-    private: ABCustomItem* selectedStickyItem = ABCustomItem::getNullInstance();
+    private: ABCustomItem* selectedStickyItem;
 
 public: RTSFormInput(std::vector<Group*> groupInterfaceArray);
 
@@ -162,15 +131,15 @@ public: RTSFormInput(std::vector<Group*> groupInterfaceArray);
 
                 //@Throws(Exception.constructor)
             
-    protected: ABCustomItem* getItemAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point);
+    /*protected*/ public: ABCustomItem* getItemAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point);
 
                 //@Throws(Exception.constructor)
             
-    protected: int32_t getIndexAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point);
+    /*protected*/ public: int32_t getIndexAt(RTSPlayerLayerInterface* rtsPlayerLayerInterface, GPoint* point);
 
                 //@Throws(Exception.constructor)
             
-    protected: CollidableDestroyableDamageableLayer* getInstance(AllBinaryLayerManager* layerManager, ABCustomItem* aItem, GeographicMapCellPosition* geographicMapCellPosition);
+    /*protected*/ public: CollidableDestroyableDamageableLayer* getInstance(AllBinaryLayerManager* layerManager, ABCustomItem* aItem, GeographicMapCellPosition* geographicMapCellPosition);
 
     public: GeographicMapCellPosition* getSelectedGeographicCellPosition();
 
@@ -196,3 +165,70 @@ public: RTSFormInput(std::vector<Group*> groupInterfaceArray);
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_H_COMPLETE
+        #if __has_include(<org/allbinary/game/identification/GroupCommonFactory.h>)
+#include <org/allbinary/game/identification/GroupCommonFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/RTSLayer.h>)
+#include <org/allbinary/game/layer/RTSLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/RTSPlayerLayerInterface.h>)
+#include <org/allbinary/game/layer/RTSPlayerLayerInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/item/LayerInterfaceFactoryImageItem.h>)
+#include <org/allbinary/game/layer/item/LayerInterfaceFactoryImageItem.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/direction/DirectionFactory.h>)
+#include <org/allbinary/direction/DirectionFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/identification/Group.h>)
+#include <org/allbinary/game/identification/Group.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>)
+#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/ScrollSelectionForm.h>)
+#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerInterfaceFactoryInterface.h>)
+#include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>)
+#include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>)
+#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

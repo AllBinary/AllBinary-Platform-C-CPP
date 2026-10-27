@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/FormTypeFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,33 +62,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/FormType.h"
 
-class FormTypeFactory
-            : public Object
-         {
 
-    private: static FormTypeFactory* instance() { static std::unique_ptr<FormTypeFactory> value(new FormTypeFactory()); return value.get(); }
+FormTypeFactory::FormTypeFactory() : NULL_FORM_TYPE(new FormType(StringUtil::getInstance()->NULL_STRING)), TEMP_HORIZONTAL_FORM(new FormType("TempHorizontal")), HORIZONTAL_FORM(new FormType("Horizontal")), VERTICAL_CENTER_FORM(new FormType("Vertical")) {
+        }
+        auto FormTypeFactory::instance_owner() -> FormTypeFactory* { static std::unique_ptr<FormTypeFactory> value(new FormTypeFactory()); return value.get(); }
+FormTypeFactory* FormTypeFactory::instance = FormTypeFactory::instance_owner();
 
-    public: static FormTypeFactory* getInstance(){
+    auto FormTypeFactory::getInstance() -> FormTypeFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FormTypeFactory::instance();
+                        return FormTypeFactory::instance;
     
 }
 
 
-    public: const std::string UNK = "Unknown FormType";
-
-    public: FormType* NULL_FORM_TYPE = new FormType(StringUtil::getInstance()->NULL_STRING);
-
-    public: FormType* TEMP_HORIZONTAL_FORM = new FormType("TempHorizontal");
-
-    public: FormType* HORIZONTAL_FORM = new FormType("Horizontal");
-
-    public: FormType* VERTICAL_CENTER_FORM = new FormType("Vertical");
-
-    public: FormType* getFormType(){
+    auto FormTypeFactory::getFormType() -> FormType*{
 
     DisplayInfoSingleton* displayInfo = DisplayInfoSingleton::getInstance();;
     
@@ -109,7 +109,6 @@ class FormTypeFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPEFACTORY_CPP

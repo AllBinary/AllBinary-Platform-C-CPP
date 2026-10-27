@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_INTEGERDIMENSION_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_INTEGERDIMENSION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/workarea/canvas/IntegerDimension.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IntegerDimension
-            : public Object
-         {
 
-    private: int32_t width= 0;
-
-    private: int32_t height= 0;
-
-public: IntegerDimension(int32_t width, int32_t height){
+IntegerDimension::IntegerDimension(int32_t width, int32_t height){
 this->setWidth(width);
     
 this->setHeight(height);
@@ -61,7 +64,7 @@ this->setHeight(height);
 }
 
 
-    public: int32_t getWidth(){
+    auto IntegerDimension::getWidth() -> int32_t{
 
 
 
@@ -71,13 +74,13 @@ this->setHeight(height);
 }
 
 
-    public: void setWidth(int32_t width){
+    auto IntegerDimension::setWidth(int32_t width) -> void{
 this->width= width;
     
 }
 
 
-    public: int32_t getHeight(){
+    auto IntegerDimension::getHeight() -> int32_t{
 
 
 
@@ -87,13 +90,12 @@ this->width= width;
 }
 
 
-    public: void setHeight(int32_t height){
+    auto IntegerDimension::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_INTEGERDIMENSION_CPP

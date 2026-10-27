@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/paint/Paintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,23 +62,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/paint/PaintableInterface.h"
 
-class Paintable
-            : public Object
-        , public PaintableInterface {
 
-    public: void setBasicColorP(BasicColor* basicColor){
+Paintable::Paintable() {
+        }
+        
+    auto Paintable::setBasicColorP(BasicColor* basicColor) -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto Paintable::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto Paintable::paintThreed(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLE_CPP

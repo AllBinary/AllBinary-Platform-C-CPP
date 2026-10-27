@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_QUOTEREQUESTHELPER_CPP
+        #define ADMIN_TAGHELPERS_QUOTEREQUESTHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/QuoteRequestHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -82,17 +92,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/ModifyTable.h"
 //TWB - Am I missing the correct Quote Request? Probably not
-class QuoteRequestHelper: public ModifyTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: QuoteRequest* quoteRequest;
-
-public: QuoteRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+QuoteRequestHelper::QuoteRequestHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 
     HttpServletRequest* request = dynamic_cast<HttpServletRequest*>(pageContext->getRequest());;
     
@@ -115,7 +116,7 @@ this->quoteRequest= new QuoteRequest(this->weblisketSession->getUserName(), requ
 }
 
 
-    public: bool isValid(){
+    auto QuoteRequestHelper::isValid() -> bool{
 
 
 
@@ -125,7 +126,7 @@ this->quoteRequest= new QuoteRequest(this->weblisketSession->getUserName(), requ
 }
 
 
-    public: std::string validationInfo(){
+    auto QuoteRequestHelper::validationInfo() -> std::string{
 
 
 
@@ -135,7 +136,7 @@ this->quoteRequest= new QuoteRequest(this->weblisketSession->getUserName(), requ
 }
 
 
-    public: std::string insert(){
+    auto QuoteRequestHelper::insert() -> std::string{
 
         try {
             
@@ -147,7 +148,7 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->inser
     std::string success = "New QuoteRequest Successfully added to the QuoteRequest Table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "add()");
@@ -169,10 +170,10 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->inser
     std::string error = "Failed to add QuoteRequest";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "add()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "add()", &e);
     
 
                                     }
@@ -188,7 +189,7 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->inser
 }
 
 
-    public: std::string update(){
+    auto QuoteRequestHelper::update() -> std::string{
 
         try {
             
@@ -200,7 +201,7 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
     std::string success = "New QuoteRequest Successfully updated";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "update()");
@@ -222,10 +223,10 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
     std::string error = "Failed to update QuoteRequest";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "update()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "update()", &e);
     
 
                                     }
@@ -241,7 +242,7 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
 }
 
 
-    public: std::string delete_(){
+    auto QuoteRequestHelper::delete_() -> std::string{
 
 
 
@@ -251,7 +252,6 @@ QuoteRequestEntityFactory::getInstance()->getQuoteRequestEntityInstance()->updat
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_QUOTEREQUESTHELPER_CPP

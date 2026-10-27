@@ -7,6 +7,11 @@
         #ifndef ORG_OSGI_FRAMEWORK_SERVICEFACTORY_H
         #define ORG_OSGI_FRAMEWORK_SERVICEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,7 +37,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ServiceFactory {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ServiceFactory
+            : public virtual Object
+         {
 
 };
 
@@ -40,3 +51,10 @@ class ServiceFactory {
 
 
         #endif //ORG_OSGI_FRAMEWORK_SERVICEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_OSGI_FRAMEWORK_SERVICEFACTORY_H_COMPLETE)
+        #define ORG_OSGI_FRAMEWORK_SERVICEFACTORY_H_COMPLETE
+        
+        #endif
+    

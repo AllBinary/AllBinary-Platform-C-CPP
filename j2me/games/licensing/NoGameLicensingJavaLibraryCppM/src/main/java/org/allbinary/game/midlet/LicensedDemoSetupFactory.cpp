@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSEDDEMOSETUPFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSEDDEMOSETUPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/midlet/LicensedDemoSetupFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/midlet/DemoSetup.h"
 
-class LicensedDemoSetupFactory
-            : public Object
-         {
 
-    public: DemoSetup* getInstance(){
+LicensedDemoSetupFactory::LicensedDemoSetupFactory() {
+        }
+        
+    auto LicensedDemoSetupFactory::getInstance() -> DemoSetup*{
 
 
 
@@ -60,7 +70,6 @@ class LicensedDemoSetupFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSEDDEMOSETUPFACTORY_CPP

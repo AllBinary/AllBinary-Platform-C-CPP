@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/AbstractInputAutomationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,8 @@
         #include "org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h"
 #include "org/allbinary/input/automation/module/JPanel.h"
 
-class AbstractInputAutomationFactory: public InputAutomationModuleFactoryInterface {
 
-    private: std::string name;
-
-    private: JPanel* jPanel;
-
-    private: HelpSet* helpSet;
-
-public: AbstractInputAutomationFactory(std::string name, JPanel* jPanel, HelpSet* helpSet){
+AbstractInputAutomationFactory::AbstractInputAutomationFactory(std::string name, JPanel* jPanel, HelpSet* helpSet){
 this->name= name;
     
 this->jPanel= jPanel;
@@ -75,7 +78,7 @@ this->helpSet= helpSet;
 }
 
 
-public: AbstractInputAutomationFactory(std::string name, JPanel* jPanel){
+AbstractInputAutomationFactory::AbstractInputAutomationFactory(std::string name, JPanel* jPanel){
 this->name= name;
     
 this->jPanel= jPanel;
@@ -88,7 +91,7 @@ this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
 }
 
 
-    public: std::string getName(){
+    auto AbstractInputAutomationFactory::getName() -> std::string{
 
 
 
@@ -98,7 +101,7 @@ this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
 }
 
 
-    public: JPanel* getConfigurationJPanel(){
+    auto AbstractInputAutomationFactory::getConfigurationJPanel() -> JPanel*{
 
 
 
@@ -108,7 +111,7 @@ this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
 }
 
 
-    public: HelpSet* getHelpSet(){
+    auto AbstractInputAutomationFactory::getHelpSet() -> HelpSet*{
 
 
 
@@ -118,7 +121,6 @@ this->helpSet= JavaHelpUtil::getInstance()->getHelpSet(url);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONFACTORY_CPP

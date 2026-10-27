@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MIDLET_PROGRESSMIDLET_CPP
+        #define ORG_ALLBINARY_MIDLET_PROGRESSMIDLET_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/midlet/ProgressMidlet.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,11 +84,8 @@
 #include "org/allbinary/midlet/MidletExitProcessorFactory.h"
 #include "org/allbinary/midlet/ExitRunnable.h"
 //AndroidToJ2ME
-class ProgressMidlet: public AllBinaryMidlet {
 
-    public: AbeClientInformationInterface* abeClientInformation;
-
-public: ProgressMidlet(ClientInformationFactory* clientInformationFactory){
+ProgressMidlet::ProgressMidlet(ClientInformationFactory* clientInformationFactory){
 Globals::getInstance()->init(TsUtil::getInstance()->getClassClassLoader(this), StringUtil::getInstance()->EMPTY_STRING);
     
 this->preInit();
@@ -88,11 +95,11 @@ this->abeClientInformation= clientInformationFactory->getInstance();
 }
 
 
-    public: void preInit(){
+    auto ProgressMidlet::preInit() -> void{
 }
 
 
-    protected: void exitProgress(bool isProgress){
+    auto ProgressMidlet::exitProgress(bool isProgress) -> void{
 
     Processor* processor = MidletExitProcessorFactory::getInstance()->getExitInstance(this);;
     
@@ -110,7 +117,7 @@ primaryThreadPool->runTask(runnable);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "exit", &e);
     
 
         try {
@@ -120,7 +127,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", &e);
                 //: 
 } catch(Exception& e2) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, "exit", e);
     
 }
 
@@ -129,7 +136,6 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MIDLET_PROGRESSMIDLET_CPP

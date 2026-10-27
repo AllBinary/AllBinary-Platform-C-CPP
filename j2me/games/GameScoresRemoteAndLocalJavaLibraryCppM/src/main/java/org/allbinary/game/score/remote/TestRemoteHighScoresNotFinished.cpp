@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_TESTREMOTEHIGHSCORESNOTFINISHED_CPP
+        #define ORG_ALLBINARY_GAME_SCORE_REMOTE_TESTREMOTEHIGHSCORESNOTFINISHED_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/score/remote/TestRemoteHighScoresNotFinished.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,25 +59,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TestRemoteHighScoresNotFinished
-            : public Object
-         {
 
-    public: static inline const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
+TestRemoteHighScoresNotFinished::TestRemoteHighScoresNotFinished(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static void main(std::vector<std::string> args){
+    auto TestRemoteHighScoresNotFinished::main(std::vector<std::string> args) -> void{
 new TestRemoteHighScoresNotFinished();
     
 }
 
 
-public: TestRemoteHighScoresNotFinished(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_SCORE_REMOTE_TESTREMOTEHIGHSCORESNOTFINISHED_CPP

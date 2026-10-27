@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,33 +38,15 @@
         
             #include "java/lang/Integer.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
+class Canvas;
 #include <org/allbinary/game/ai/BasicAI.h>
-
-      
-#include <org/allbinary/game/input/GameInput.h>
-
-      
-#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
-
-      
-#include <org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/math/MathUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
+class GameInput;
+class BasicVelocityProperties;
+class VelocityInterfaceCompositeInterface;
+class AllBinaryLayer;
+class MathUtil;
+class SmallIntegerSingletonFactory;
 #include <org/allbinary/util/ABHashtable.h>
-
-      
 
 
 
@@ -79,35 +66,39 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasePatrolAI: public BasicAI {
 
-    public: static inline int32_t MAX_DISTANCE = SmallIntegerSingletonFactory::getInstance()->getAt(2);
+    public: static int32_t MAX_DISTANCE;
 
-    public: static inline int32_t DIRECTION_ARRAY = SmallIntegerSingletonFactory::getInstance()->getAt(3);
+    public: static int32_t DIRECTION_ARRAY;
 
-    public: static inline int32_t FIRING_DISTANCE = SmallIntegerSingletonFactory::getInstance()->getAt(4);
+    public: static int32_t FIRING_DISTANCE;
 
-    public: static inline int32_t SPEED = SmallIntegerSingletonFactory::getInstance()->getAt(5);
+    public: static int32_t SPEED;
 
-    protected: int32_t maxDistance;
+    /*protected*/ public: int32_t maxDistance;
 
-    protected: int32_t currentDistance;
+    /*protected*/ public: int32_t currentDistance;
 
-    protected: int32_t xTotalDistance= 0;
+    /*protected*/ public: int32_t xTotalDistance= 0;
 
-    protected: int32_t lastKeyDirection = Canvas::RIGHT;
+    /*protected*/ public: int32_t lastKeyDirection;
 
-    protected: int32_t keyDirection = Canvas::RIGHT;
+    /*protected*/ public: int32_t keyDirection;
 
 public: BasePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput);
 
-    protected: void update();
+    /*protected*/ public: void update();
 
     private: void updateTotalDistance();
 
     private: void changeDirectionIfReachedPacingAreaMax();
 
-    protected: void nextDirection();
+    /*protected*/ public: void nextDirection();
 
     public: void disable();
 
@@ -117,3 +108,37 @@ public: BasePatrolAI(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* o
 
 
         #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<org/allbinary/game/ai/BasicAI.h>)
+#include <org/allbinary/game/ai/BasicAI.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInput.h>)
+#include <org/allbinary/game/input/GameInput.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/BasicVelocityProperties.h>)
+#include <org/allbinary/game/physics/velocity/BasicVelocityProperties.h>
+#endif
+#if __has_include(<org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/physics/velocity/VelocityInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/MathUtil.h>)
+#include <org/allbinary/logic/math/MathUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/util/ABHashtable.h>)
+#include <org/allbinary/util/ABHashtable.h>
+#endif
+
+        #endif
+    

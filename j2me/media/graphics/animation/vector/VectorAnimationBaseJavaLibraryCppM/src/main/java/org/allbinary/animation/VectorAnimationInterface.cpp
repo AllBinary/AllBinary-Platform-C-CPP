@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/VectorAnimationInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,11 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/IndexedAnimationInterface.h"
 
-class VectorAnimationInterface: public IndexedAnimationInterface, public ColorCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<std::vector<int32_t>> getPoints(int32_t frame) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACE_CPP

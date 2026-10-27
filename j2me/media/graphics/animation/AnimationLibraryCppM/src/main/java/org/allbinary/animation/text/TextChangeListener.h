@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TextChangeListener
-            : public Object
+            : public virtual Object
          {
 
-    private: static TextChangeListener* instance() { static std::unique_ptr<TextChangeListener> value(new TextChangeListener()); return value.get(); }
+    private: static TextChangeListener* instance_owner();
+    private: static TextChangeListener* instance;
 
     public: static TextChangeListener* getInstance();
 
+
+            
+    public: TextChangeListener();
+        
     public: void onMeasure();
 
 };
@@ -64,3 +78,10 @@ class TextChangeListener
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H_COMPLETE
+        
+        #endif
+    

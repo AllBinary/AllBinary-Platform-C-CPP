@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_XMLVALIDATIONTRANSFORMTAG_CPP
+        #define TAGS_XMLVALIDATIONTRANSFORMTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/XmlValidationTransformTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,17 +73,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "tags/TransformTag.h"
 
-class XmlValidationTransformTag: public TransformTag {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: XmlValidationTransformTag(){
+XmlValidationTransformTag::XmlValidationTransformTag() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: bool isValid(){
+    auto XmlValidationTransformTag::isValid() -> bool{
 
         try {
             
@@ -98,10 +105,10 @@ public: XmlValidationTransformTag(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -118,7 +125,7 @@ public: XmlValidationTransformTag(){
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto XmlValidationTransformTag::doStartTag() -> int32_t{
 
         try {
             this->setHelper();
@@ -127,7 +134,7 @@ public: XmlValidationTransformTag(){
                         if(this->isValid())
                         
                                     {
-                                    super.doStartTag();
+                                    TransformTag::doStartTag();
     
 
 
@@ -139,7 +146,7 @@ public: XmlValidationTransformTag(){
                                     }
                                 
                         else {
-                            super.doStartTag();
+                            TransformTag::doStartTag();
     
 
 
@@ -180,7 +187,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_XMLVALIDATIONTRANSFORMTAG_CPP

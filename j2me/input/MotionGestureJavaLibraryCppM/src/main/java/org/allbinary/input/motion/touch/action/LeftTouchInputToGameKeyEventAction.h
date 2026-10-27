@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_LEFTTOUCHINPUTTOGAMEKEYEVENTACTION_H
         #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_LEFTTOUCHINPUTTOGAMEKEYEVENTACTION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,18 +34,10 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/input/PlatformInputMappingFactory.h>
-
-      
+class PlatformInputMappingFactory;
 #include <org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h>
-
-      
-#include <org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class TouchMotionGestureFactory;
+class NullUtil;
 
 
 
@@ -60,9 +57,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static GameKeyCompleteMotionGestureInputEvent* getInstance();
 
@@ -74,3 +75,22 @@ private: LeftTouchInputToGameKeyEventAction();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_LEFTTOUCHINPUTTOGAMEKEYEVENTACTION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_LEFTTOUCHINPUTTOGAMEKEYEVENTACTION_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_LEFTTOUCHINPUTTOGAMEKEYEVENTACTION_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/PlatformInputMappingFactory.h>)
+#include <org/allbinary/game/input/PlatformInputMappingFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h>)
+#include <org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h>)
+#include <org/allbinary/input/motion/gesture/TouchMotionGestureFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+
+        #endif
+    

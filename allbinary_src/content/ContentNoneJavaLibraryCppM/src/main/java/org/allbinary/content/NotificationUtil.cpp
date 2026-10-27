@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP
+        #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/content/NotificationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,27 +58,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NotificationUtil
-            : public Object
-         {
 
-    private: static NotificationUtil* SINGLETON() { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
+NotificationUtil::NotificationUtil() {
+        }
+        auto NotificationUtil::SINGLETON_owner() -> NotificationUtil* { static std::unique_ptr<NotificationUtil> value(new NotificationUtil()); return value.get(); }
+NotificationUtil* NotificationUtil::SINGLETON = NotificationUtil::SINGLETON_owner();
 
-    public: static NotificationUtil* getInstance(){
+    auto NotificationUtil::getInstance() -> NotificationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil::SINGLETON();
+                        return NotificationUtil::SINGLETON;
     
 }
 
 
-    public: void notify(Command* command, std::string resource, std::string message){
+    auto NotificationUtil::notify(Command* command, std::string resource, std::string message) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_CPP

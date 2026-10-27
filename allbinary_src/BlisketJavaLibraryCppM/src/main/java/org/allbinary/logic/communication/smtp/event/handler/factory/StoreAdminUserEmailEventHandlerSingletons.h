@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_STOREADMINUSEREMAILEVENTHANDLERSINGLETONS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_STOREADMINUSEREMAILEVENTHANDLERSINGLETONS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,41 +37,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
-
-      
-#include <org/allbinary/data/tables/user/UserEntityFactory.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/event/handler/EmailEventHandlerUtil.h>
-
-      
-#include <org/allbinary/logic/communication/smtp/event/handler/UserEmailEventHandler.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class StoreFrontInterface;
+class UserEntityFactory;
+class StdUtil;
+class LogUtil;
+class UserEmailEventNameData;
+class EmailEventHandlerUtil;
+class UserEmailEventHandler;
+class AbeClientInformationInterface;
+class CommonStrings;
 
 
 
@@ -86,19 +67,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreAdminUserEmailEventHandlerSingletons
-            : public Object
+            : public virtual Object
          {
 
-    private: static StoreAdminUserEmailEventHandlerSingletons* instance() { static std::unique_ptr<StoreAdminUserEmailEventHandlerSingletons> value(new StoreAdminUserEmailEventHandlerSingletons()); return value.get(); }
+    private: static StoreAdminUserEmailEventHandlerSingletons* instance_owner();
+    private: static StoreAdminUserEmailEventHandlerSingletons* instance;
 
     public: static StoreAdminUserEmailEventHandlerSingletons* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    private: HashMap<Object*, Object*>* userEmailEventHandlerHashMap = StdUtil::getInstance()->createHashMap();
+    private: HashMap<Object*, Object*>* userEmailEventHandlerHashMap;
 
 private: StoreAdminUserEmailEventHandlerSingletons();
 
@@ -112,3 +98,44 @@ private: StoreAdminUserEmailEventHandlerSingletons();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_STOREADMINUSEREMAILEVENTHANDLERSINGLETONS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_STOREADMINUSEREMAILEVENTHANDLERSINGLETONS_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_STOREADMINUSEREMAILEVENTHANDLERSINGLETONS_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/UserEntityFactory.h>)
+#include <org/allbinary/data/tables/user/UserEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h>)
+#include <org/allbinary/logic/communication/smtp/event/UserEmailEventNameData.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/event/handler/EmailEventHandlerUtil.h>)
+#include <org/allbinary/logic/communication/smtp/event/handler/EmailEventHandlerUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/smtp/event/handler/UserEmailEventHandler.h>)
+#include <org/allbinary/logic/communication/smtp/event/handler/UserEmailEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>)
+#include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

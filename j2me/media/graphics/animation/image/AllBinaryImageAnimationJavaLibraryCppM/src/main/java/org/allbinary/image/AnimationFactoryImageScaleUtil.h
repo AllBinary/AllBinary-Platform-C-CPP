@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H
         #define ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
+class Image;
+class AnimationFactoryInitializationVisitor;
+class BaseImageAnimationFactory;
 
-      
-#include <org/allbinary/animation/image/AnimationFactoryInitializationVisitor.h>
 
-      
-#include <org/allbinary/animation/image/BaseImageAnimationFactory.h>
+class ScaleProperties;
+class ImageJ2MEScaleUtil;
 
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
 
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/media/ScaleProperties.h>
-
-      
-#include <org/allbinary/media/image/ImageJ2MEScaleUtil.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
 
 
 
@@ -77,15 +64,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AnimationFactoryImageScaleUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static AnimationFactoryImageScaleUtil* instance() { static std::unique_ptr<AnimationFactoryImageScaleUtil> value(new AnimationFactoryImageScaleUtil()); return value.get(); }
+    private: static AnimationFactoryImageScaleUtil* instance_owner();
+    private: static AnimationFactoryImageScaleUtil* instance;
 
     public: static AnimationFactoryImageScaleUtil* getInstance();
 
-    private: ImageJ2MEScaleUtil* imageScaleUtil = ImageJ2MEScaleUtil::getInstance();
+
+            
+    public: AnimationFactoryImageScaleUtil();
+        
+    private: ImageJ2MEScaleUtil* imageScaleUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -101,3 +97,29 @@ class AnimationFactoryImageScaleUtil
 
 
         #endif //ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/image/AnimationFactoryInitializationVisitor.h>)
+#include <org/allbinary/animation/image/AnimationFactoryInitializationVisitor.h>
+#endif
+#if __has_include(<org/allbinary/animation/image/BaseImageAnimationFactory.h>)
+#include <org/allbinary/animation/image/BaseImageAnimationFactory.h>
+#endif
+
+
+#if __has_include(<org/allbinary/media/ScaleProperties.h>)
+#include <org/allbinary/media/ScaleProperties.h>
+#endif
+#if __has_include(<org/allbinary/media/image/ImageJ2MEScaleUtil.h>)
+#include <org/allbinary/media/image/ImageJ2MEScaleUtil.h>
+#endif
+
+
+
+        #endif
+    

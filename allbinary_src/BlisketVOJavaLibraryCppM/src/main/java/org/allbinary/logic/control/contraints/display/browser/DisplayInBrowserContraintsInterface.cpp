@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,25 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DisplayInBrowserContraintsInterface {
+//Interface - declared in the header
 
-    public: virtual bool isMountable() = 0;
 
-    public: virtual bool isFrameable() = 0;
 
-    public: virtual bool isQuickFrameable() = 0;
-
-    public: virtual void setMountable(bool canBeMounted) = 0;
-
-    public: virtual void setFrameable(bool canBeFramed) = 0;
-
-    public: virtual void setQuickFrameable(bool canBeQuickFramed) = 0;
-
-    public: virtual void setMountedLink(std::string mountedLink) = 0;
-
-    public: virtual std::string getMountedLink() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTSINTERFACE_CPP

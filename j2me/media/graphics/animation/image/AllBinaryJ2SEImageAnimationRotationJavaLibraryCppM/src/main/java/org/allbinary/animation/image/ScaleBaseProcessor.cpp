@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ScaleBaseProcessor.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,27 +60,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScaleBaseProcessor
-            : public Object
-         {
 
-    private: static ScaleBaseProcessor* instance() { static std::unique_ptr<ScaleBaseProcessor> value(new ScaleBaseProcessor()); return value.get(); }
+ScaleBaseProcessor::ScaleBaseProcessor() {
+        }
+        auto ScaleBaseProcessor::instance_owner() -> ScaleBaseProcessor* { static std::unique_ptr<ScaleBaseProcessor> value(new ScaleBaseProcessor()); return value.get(); }
+ScaleBaseProcessor* ScaleBaseProcessor::instance = ScaleBaseProcessor::instance_owner();
 
-    public: static ScaleBaseProcessor* getInstance(){
+    auto ScaleBaseProcessor::getInstance() -> ScaleBaseProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScaleBaseProcessor::instance();
+                        return ScaleBaseProcessor::instance;
     
 }
 
 
-    public: void update(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    auto ScaleBaseProcessor::update(Image* originalImage, std::vector<Image*> originalImageArray, std::vector<Image*> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_CPP

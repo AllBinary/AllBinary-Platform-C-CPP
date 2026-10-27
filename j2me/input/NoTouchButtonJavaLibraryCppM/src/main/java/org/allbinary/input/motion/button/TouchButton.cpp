@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,31 +95,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
-class TouchButton: public Paintable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: TouchButtonInput* touchButtonInput;
-
-    private: Animation* animationInterface;
-
-    protected: Rectangle* rawRectangle;
-
-    protected: int32_t xBorder;
-
-    protected: int32_t yBorder;
-
-    protected: Rectangle* rectangle = RectangleFactory::SINGLETON;
-
-    protected: CellPosition* cellPosition;
-
-    protected: int32_t animationX= 0;
-
-    protected: int32_t animationY= 0;
-
-public: TouchButton(TouchButtonInput* touchButtonInput, AnimationInterface* animationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder){
+TouchButton::TouchButton(TouchButtonInput* touchButtonInput, AnimationInterface* animationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), rectangle(RectangleFactory::SINGLETON){
 this->touchButtonInput= touchButtonInput;
     
 this->animationInterface= dynamic_cast<Animation*>(animationInterface);
@@ -129,13 +116,13 @@ this->logUtil->putF((new StringMaker())->append("Created: ")->append(this->toStr
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto TouchButton::paint(Graphics* graphics) -> void{
 this->animationInterface->paintXY(graphics, animationX, this->animationY);
     
 }
 
 
-    protected: void updateRectangle(){
+    auto TouchButton::updateRectangle() -> void{
 
         try {
             
@@ -167,7 +154,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 }
 
 
-    public: CellPosition* getCellPositionP(){
+    auto TouchButton::getCellPositionP() -> CellPosition*{
 
 
 
@@ -177,7 +164,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 }
 
 
-    public: Rectangle* getRectangleP(){
+    auto TouchButton::getRectangleP() -> Rectangle*{
 
 
 
@@ -187,7 +174,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 }
 
 
-    public: TouchButtonInput* getTouchButtonInput(){
+    auto TouchButton::getTouchButtonInput() -> TouchButtonInput*{
 
 
 
@@ -197,7 +184,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 }
 
 
-    public: std::string toString(){
+    auto TouchButton::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -229,7 +216,6 @@ stringBuffer->appendint(this->yBorder);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_CPP

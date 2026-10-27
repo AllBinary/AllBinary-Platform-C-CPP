@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTIESVALIDATIONFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTIESVALIDATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertiesValidationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,13 +80,14 @@
         #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyData.h"
 #include "org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyValidationFactory.h"
 
-class CssPropertiesValidationFactory
-            : public Object
-         {
+
+CssPropertiesValidationFactory::CssPropertiesValidationFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList* getInstance(NodeList* nodeList){
+    auto CssPropertiesValidationFactory::getInstance(NodeList* nodeList) -> BasicArrayList*{
 
     BasicArrayList* propertiesVector = new BasicArrayListD();;
     
@@ -113,7 +124,7 @@ propertiesVector->add(cssPropertyValidationInterface);
 }
 
 
-    public: static BasicArrayList* getInstance(HashMap<Object*, Object*>* hashMap){
+    auto CssPropertiesValidationFactory::getInstance(HashMap<Object*, Object*>* hashMap) -> BasicArrayList*{
 
     BasicArrayList* styles = new BasicArrayListD();;
     
@@ -126,11 +137,6 @@ propertiesVector->add(cssPropertyValidationInterface);
 }
 
 
-private: CssPropertiesValidationFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTIESVALIDATIONFACTORY_CPP

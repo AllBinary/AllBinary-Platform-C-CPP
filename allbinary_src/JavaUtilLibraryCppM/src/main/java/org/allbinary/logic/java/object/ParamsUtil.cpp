@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_PARAMSUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_PARAMSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/anyType/ParamsUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -52,15 +62,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ParamsUtil
-            : public Object
-         {
 
-    public: static std::string viewParams(std::vector<Class*> params){
+ParamsUtil::ParamsUtil(){
+}
 
-                        if(params != 
-                                    nullptr
-                                )
+
+    auto ParamsUtil::viewParams(std::vector<Class*> params) -> std::string{
+
+                        if(!params.empty())
                         
                                     {
                                     
@@ -75,7 +84,7 @@ class ParamsUtil
         {
 stringBuffer->append(" ");
     
-stringBuffer->append(params[index].getName());
+stringBuffer->append(params[index]->getName());
     
 }
 
@@ -94,11 +103,6 @@ stringBuffer->append(params[index].getName());
 }
 
 
-private: ParamsUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_PARAMSUTIL_CPP

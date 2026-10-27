@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H
         #define ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Integer.h"
         
-#include <android/view/View.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class View;
+class StringMaker;
 
 
 
@@ -57,9 +58,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/AndroidGameStatistics.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ProfilingRefreshHelper: public AndroidGameStatistics {
 
-    private: static ProfilingRefreshHelper* instance() { static std::unique_ptr<ProfilingRefreshHelper> value(new ProfilingRefreshHelper()); return value.get(); }
+    private: static ProfilingRefreshHelper* instance_owner();
+    private: static ProfilingRefreshHelper* instance;
 
     public: static AndroidGameStatistics* getInstance();
 
@@ -85,3 +91,19 @@ private: ProfilingRefreshHelper();
 
 
         #endif //ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H_COMPLETE
+        #if __has_include(<android/view/View.h>)
+#include <android/view/View.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("org/allbinary/canvas/AndroidGameStatistics.h")
+#include "org/allbinary/canvas/AndroidGameStatistics.h"
+#endif
+
+        #endif
+    

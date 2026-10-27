@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONNEWBUNDLERUNNABLE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONNEWBUNDLERUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/osgi/InputAutomationNewBundleRunnable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -122,29 +132,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationNewBundleRunnable
-            : public Object
-        , public RunnableInterface {
 
-    private: static inline const std::string FILE = "file:";
-
-    private: static inline const std::string JAR_DIR_PROP = "org.knopflerfish.gosg.jars";
-
-    private: static inline const std::string INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH = "ia/auto";
-
-    private: static inline const int32_t MODULES_START_LEVEL = 8;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: InputAutomationBundleActivator* inputAutomationBundleActivator;
-
-    private: bool running= false;
-
-    private: BasicArrayList* fileBasicArrayList;
-
-public: InputAutomationNewBundleRunnable(InputAutomationBundleActivator* inputAutomationBundleActivator){
+InputAutomationNewBundleRunnable::InputAutomationNewBundleRunnable(InputAutomationBundleActivator* inputAutomationBundleActivator) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->inputAutomationBundleActivator= inputAutomationBundleActivator;
     
 this->fileBasicArrayList= new BasicArrayListD();
@@ -154,12 +143,12 @@ this->fileBasicArrayList= new BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public: void setThread(Thread* thread){
+    auto InputAutomationNewBundleRunnable::setThread(Thread* thread) -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto InputAutomationNewBundleRunnable::isRunning() -> bool{
 
 
 
@@ -170,7 +159,7 @@ this->fileBasicArrayList= new BasicArrayListD();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto InputAutomationNewBundleRunnable::setRunning(bool running) -> void{
 this->running= running;
     
 }
@@ -178,7 +167,7 @@ this->running= running;
 
                 //@Throws(Exception.constructor)
             
-    private: void updateModules(){
+    auto InputAutomationNewBundleRunnable::updateModules() -> void{
 this->logUtil->putF(this->commonStrings->START, this, "updateModules");
     
 
@@ -217,7 +206,7 @@ bundle= this->install(dynamic_cast<URL*>(list->get(index)));
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<Object*, Object*>* getAllJarSymbolicNameHashMap(){
+    auto InputAutomationNewBundleRunnable::getAllJarSymbolicNameHashMap() -> HashMap<Object*, Object*>*{
 this->logUtil->putF(this->commonStrings->START, this, "getAllJarSymbolicNameHashMap");
     
 
@@ -226,7 +215,7 @@ this->logUtil->putF(this->commonStrings->START, this, "getAllJarSymbolicNameHash
 
     BasicArrayList* jarFileBasicArrayList = this->getJarModuleFileBasicArrayList();;
     
-this->logUtil->putF("Jar Module Files: " +jarFileBasicArrayList, this, "getAllJarSymbolicNameHashMap");
+this->logUtil->putF(JavaString::valueOf("Jar Module Files: ") +JavaString::valueOf(jarFileBasicArrayList), this, "getAllJarSymbolicNameHashMap");
     
 
     int32_t size = jarFileBasicArrayList->size();;
@@ -290,7 +279,7 @@ file= dynamic_cast<File*>(jarFileBasicArrayList->get(index));
 }
 
 
-    private: BasicArrayList* getJarModuleFileBasicArrayList(){
+    auto InputAutomationNewBundleRunnable::getJarModuleFileBasicArrayList() -> BasicArrayList*{
 this->logUtil->putF(this->commonStrings->START, this, "getJarModuleFileBasicArrayList");
     
 
@@ -309,14 +298,14 @@ this->logUtil->putF(this->commonStrings->START, this, "getJarModuleFileBasicArra
     FileFilter* jarFileFilter = BasicFileFilterUtil::getInstance(".jar");;
     
 
-    std::string path = baseJarPath +InputAutomationNewBundleRunnable::INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH;;
+    std::string path = JavaString::valueOf(baseJarPath) +JavaString::valueOf(InputAutomationNewBundleRunnable::INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH);;
     
-this->logUtil->putF("Path: " +path, this, "getJarModuleFileBasicArrayList");
+this->logUtil->putF(JavaString::valueOf("Path: ") +JavaString::valueOf(path), this, "getJarModuleFileBasicArrayList");
     
 
     File* file = new File(path);;
     
-this->logUtil->putF("File: " +file->getAbsolutePath() +" isDirectory: " +file->isDirectory(), this, "getJarModuleFileBasicArrayList");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("File: ") +JavaString::valueOf(file->getAbsolutePath())) +JavaString::valueOf(" isDirectory: ")) +JavaString::valueOf(file->isDirectory()), this, "getJarModuleFileBasicArrayList");
     
 
 
@@ -329,7 +318,7 @@ this->logUtil->putF("File: " +file->getAbsolutePath() +" isDirectory: " +file->i
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* getInstalledJarSymbolicNameBasicArrayList(){
+    auto InputAutomationNewBundleRunnable::getInstalledJarSymbolicNameBasicArrayList() -> BasicArrayList*{
 this->logUtil->putF(this->commonStrings->START, this, "getInstalledJarSymbolicNameBasicArrayList");
     
 
@@ -342,12 +331,10 @@ this->logUtil->putF(this->commonStrings->START, this, "getInstalledJarSymbolicNa
     std::vector<Bundle*> bundleArray = bundleContext->getBundles();;
     
 
-                        if(bundleArray != 
-                                    nullptr
-                                )
+                        if(!bundleArray.empty())
                         
                                     {
-                                    this->logUtil->putF("bundleArray: " +bundleArray.size(), this, "getInputAutomationModuleServices");
+                                    this->logUtil->putF(JavaString::valueOf("bundleArray: ") +JavaString::valueOf(bundleArray.size()), this, "getInputAutomationModuleServices");
     
 
 
@@ -377,8 +364,8 @@ vector->add(bundle->getSymbolicName());
 
                 //@Throws(Exception.constructor)
             
-    private: bool isInstalled(std::string symbolicName){
-this->logUtil->putF(CommonLabels::getInstance()->START +symbolicName, this, "isInstalled");
+    auto InputAutomationNewBundleRunnable::isInstalled(std::string symbolicName) -> bool{
+this->logUtil->putF(JavaString::valueOf(CommonLabels::getInstance()->START) +JavaString::valueOf(symbolicName), this, "isInstalled");
     
 
     BasicArrayList* list = this->getInstalledJarSymbolicNameBasicArrayList();;
@@ -424,7 +411,7 @@ nextSymbolicName= list->get(index);
 
                 //@Throws(Exception.constructor)
             
-    private: BasicArrayList* findNewModules(){
+    auto InputAutomationNewBundleRunnable::findNewModules() -> BasicArrayList*{
 this->logUtil->putF(this->commonStrings->START, this, "findNewModules");
     
 
@@ -433,7 +420,7 @@ this->logUtil->putF(this->commonStrings->START, this, "findNewModules");
 
     HashMap<Object*, Object*>* hashMap = this->getAllJarSymbolicNameHashMap();;
     
-this->logUtil->putF("All: " +hashMap, this, "findNewModules");
+this->logUtil->putF(JavaString::valueOf("All: ") +JavaString::valueOf(hashMap), this, "findNewModules");
     
 
     Set* set = hashMap->keys();;
@@ -476,7 +463,7 @@ this->logUtil->putF("All: " +hashMap, this, "findNewModules");
 
                 //@Throws(Exception.constructor)
             
-    private: Bundle* install(URL* url){
+    auto InputAutomationNewBundleRunnable::install(URL* url) -> Bundle*{
 this->logUtil->putF(CommonLabels::getInstance()->START +url, this, "install");
     
 
@@ -491,7 +478,7 @@ this->logUtil->putF(CommonLabels::getInstance()->START +url, this, "install");
 }
 
 
-    public: void run(){
+    auto InputAutomationNewBundleRunnable::run() -> void{
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->RUN);
@@ -528,7 +515,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->RU
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONNEWBUNDLERUNNABLE_CPP

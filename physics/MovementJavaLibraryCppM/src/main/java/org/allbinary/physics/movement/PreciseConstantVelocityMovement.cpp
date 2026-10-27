@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_PRECISECONSTANTVELOCITYMOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_PRECISECONSTANTVELOCITYMOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/PreciseConstantVelocityMovement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
-class PreciseConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-    private: int32_t accumulatedX= 0;
-
-    private: int32_t accumulatedY= 0;
-
-    private: int32_t accumulatedZ= 0;
-
-public: PreciseConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties) : BasicConstantVelocityMovement(basicDecimal, velocityProperties){
+PreciseConstantVelocityMovement::PreciseConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocityProperties* velocityProperties) : BasicConstantVelocityMovement(basicDecimal, velocityProperties), factorValue(ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,15 +68,13 @@ public: PreciseConstantVelocityMovement(BasicDecimal* basicDecimal, BasicVelocit
 }
 
 
-    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle){
+    auto PreciseConstantVelocityMovement::init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) -> void{
 }
 
 
-    private: const int32_t factorValue = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE;
-
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
+    auto PreciseConstantVelocityMovement::process(AllBinaryGameLayer* layer) -> void{
 
     MathUtil* mathUtil = MathUtil::getInstance();;
     
@@ -118,7 +119,6 @@ layer->moveDXYZ(this->accumulatedX /this->factorValue, this->accumulatedY /this-
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_PRECISECONSTANTVELOCITYMOVEMENT_CPP

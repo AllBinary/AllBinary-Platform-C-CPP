@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_H
         #define ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,30 +38,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>
-
-      
-#include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class CountedPickedUpLayerInterfaceFactory;
+class CountedPickedUpLayerInterfaceFactoryPool;
+class LogUtil;
+class StringMaker;
+class CommonStrings;
+class BasicArrayList;
+class BasicArrayListD;
+class BasicArrayListUtil;
 
 
 
@@ -75,20 +64,29 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
-#include "org/allbinary/game/part/PartInterface.h"
+        class CountedLayerInterfaceFactoryPart;
+class PartInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MakeCountedPartsSingletonArrayFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static MakeCountedPartsSingletonArrayFactory* instance() { static std::unique_ptr<MakeCountedPartsSingletonArrayFactory> value(new MakeCountedPartsSingletonArrayFactory()); return value.get(); }
+    private: static MakeCountedPartsSingletonArrayFactory* instance_owner();
+    private: static MakeCountedPartsSingletonArrayFactory* instance;
 
     public: static MakeCountedPartsSingletonArrayFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: BasicArrayList* list = BasicArrayListUtil::getInstance()->getImmutableInstance();
+            
+    public: MakeCountedPartsSingletonArrayFactory();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: BasicArrayList* list;
 
                 //@Throws(Exception.constructor)
             
@@ -100,3 +98,40 @@ class MakeCountedPartsSingletonArrayFactory
 
 
         #endif //ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>)
+#include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h>)
+#include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactoryPool.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h")
+#include "org/allbinary/game/part/CountedLayerInterfaceFactoryPart.h"
+#endif
+#if __has_include("org/allbinary/game/part/PartInterface.h")
+#include "org/allbinary/game/part/PartInterface.h"
+#endif
+
+        #endif
+    

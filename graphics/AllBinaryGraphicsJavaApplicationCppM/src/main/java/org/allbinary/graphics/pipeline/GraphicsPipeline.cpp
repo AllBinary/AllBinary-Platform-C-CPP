@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_GRAPHICSPIPELINE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_PIPELINE_GRAPHICSPIPELINE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/pipeline/GraphicsPipeline.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,9 +70,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h"
 
-class GraphicsPipeline: public BasicGraphicsPipeline {
 
-public: GraphicsPipeline(BasicArrayList* points) : BasicGraphicsPipeline(points){
+GraphicsPipeline::GraphicsPipeline(BasicArrayList* points) : BasicGraphicsPipeline(points){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -74,12 +83,12 @@ public: GraphicsPipeline(BasicArrayList* points) : BasicGraphicsPipeline(points)
 
                 //@Throws(Exception.constructor)
             
-    public: void rotateTheta(double aTheta){
+    auto GraphicsPipeline::rotateTheta(double aTheta) -> void{
 
     BasicArrayList* newVector = new BasicArrayListD();;
     
 
-    int32_t size = this->pointBasicArrayList.size();;
+    int32_t size = this->pointBasicArrayList->size();;
     
 
 
@@ -109,7 +118,6 @@ this->pointBasicArrayList= newVector;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_PIPELINE_GRAPHICSPIPELINE_CPP

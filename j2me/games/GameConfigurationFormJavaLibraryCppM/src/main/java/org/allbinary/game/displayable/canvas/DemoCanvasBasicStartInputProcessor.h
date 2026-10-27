@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,30 +34,14 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/NullCanvas.h>
-
-      
-#include <org/allbinary/canvas/RunnableCanvas.h>
-
-      
-#include <org/allbinary/game/commands/GameCommandsFactory.h>
-
-      
-#include <org/allbinary/game/input/GameInputStrings.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class NullCanvas;
+class RunnableCanvas;
+class GameCommandsFactory;
+class GameInputStrings;
+class GameKeyEvent;
+class StringMaker;
+class StringUtil;
+class BasicArrayList;
 
 
 
@@ -73,6 +62,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DemoCanvasBasicStartInputProcessor: public BasicMenuInputProcessor {
 
 public: DemoCanvasBasicStartInputProcessor(BasicArrayList* gameKeyEventList, RunnableCanvas* gameCanvas);
@@ -87,3 +80,37 @@ public: DemoCanvasBasicStartInputProcessor(BasicArrayList* gameKeyEventList, Run
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/NullCanvas.h>)
+#include <javax/microedition/lcdui/NullCanvas.h>
+#endif
+#if __has_include(<org/allbinary/canvas/RunnableCanvas.h>)
+#include <org/allbinary/canvas/RunnableCanvas.h>
+#endif
+#if __has_include(<org/allbinary/game/commands/GameCommandsFactory.h>)
+#include <org/allbinary/game/commands/GameCommandsFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInputStrings.h>)
+#include <org/allbinary/game/input/GameInputStrings.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h")
+#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#endif
+
+        #endif
+    

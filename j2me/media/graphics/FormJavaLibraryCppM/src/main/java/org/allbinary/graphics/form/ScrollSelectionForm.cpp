@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORM_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/ScrollSelectionForm.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -107,9 +117,8 @@
 //#include "org/allbinary/graphics/form/ScrollSelectionFormHorizontalDx.h"
 #include "org/allbinary/graphics/form/FormType.h"
 
-class ScrollSelectionForm: public PaintableForm {
 
-    private: static PaintableForm* createForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
+    auto ScrollSelectionForm::createForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) -> PaintableForm*{
 
         try {
             
@@ -165,10 +174,9 @@ logUtil->put(commonStrings->EXCEPTION, logUtil, commonStrings->EXCEPTION, &e);
 
 }
 
+Object* ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* NULL_SCROLL_SELECTION_FORM = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static ScrollSelectionForm* getNullScrollSelectionForm(){
+    auto ScrollSelectionForm::getNullScrollSelectionForm() -> ScrollSelectionForm*{
 
                         if(ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -186,10 +194,9 @@ logUtil->put(commonStrings->EXCEPTION, logUtil, commonStrings->EXCEPTION, &e);
     
 }
 
+Object* ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* NULL_SCROLL_SELECTION_HORIZONTAL_FORM = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static ScrollSelectionForm* getNullScrollSelectionFormHorizontal(){
+    auto ScrollSelectionForm::getNullScrollSelectionFormHorizontal() -> ScrollSelectionForm*{
 
                         if(ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -208,20 +215,7 @@ logUtil->put(commonStrings->EXCEPTION, logUtil, commonStrings->EXCEPTION, &e);
 }
 
 
-    private: static inline const std::string INSIDE_FORM = " inside form";
-
-    private: static inline const std::string IS_IN_FORM = "isInForm";
-
-    private: static inline const std::string GET_SELECTED_INDEX = "getSelectedIndexForPoint";
-
-//inner= member=true isStatic=
-class ScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: ScrollSelectionForm* scrollSelectionForm;
-
-: ScrollSelectionFormHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm){
+ScrollSelectionForm::ScrollSelectionFormHorizontalPaintable::ScrollSelectionFormHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm){
 this->scrollSelectionForm= scrollSelectionForm;
     
 }
@@ -229,7 +223,7 @@ this->scrollSelectionForm= scrollSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::ScrollSelectionFormHorizontalPaintable::paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -239,17 +233,7 @@ this->scrollSelectionForm= scrollSelectionForm;
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class ScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: ScrollSelectionForm* scrollSelectionForm;
-
-: ScrollSelectionFormVerticalPaintable(ScrollSelectionForm* scrollSelectionForm){
+ScrollSelectionForm::ScrollSelectionFormVerticalPaintable::ScrollSelectionFormVerticalPaintable(ScrollSelectionForm* scrollSelectionForm){
 this->scrollSelectionForm= scrollSelectionForm;
     
 }
@@ -257,7 +241,7 @@ this->scrollSelectionForm= scrollSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::ScrollSelectionFormVerticalPaintable::paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -267,17 +251,7 @@ this->scrollSelectionForm= scrollSelectionForm;
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class ScrollSelectionFormTempHorizontalPaintable: public ItemIndexPaintable {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: ScrollSelectionForm* scrollSelectionForm;
-
-: ScrollSelectionFormTempHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm){
+ScrollSelectionForm::ScrollSelectionFormTempHorizontalPaintable::ScrollSelectionFormTempHorizontalPaintable(ScrollSelectionForm* scrollSelectionForm){
 this->scrollSelectionForm= scrollSelectionForm;
     
 }
@@ -285,7 +259,7 @@ this->scrollSelectionForm= scrollSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::ScrollSelectionFormTempHorizontalPaintable::paint(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -295,17 +269,7 @@ this->scrollSelectionForm= scrollSelectionForm;
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class ScrollSelectionFormHorizontalDx: public ItemIndexDx {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: ScrollSelectionForm* scrollSelectionForm;
-
-: ScrollSelectionFormHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm){
+ScrollSelectionForm::ScrollSelectionFormHorizontalDx::ScrollSelectionFormHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm){
 this->scrollSelectionForm= multipleScrollSelectionForm;
     
 }
@@ -313,7 +277,7 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::ScrollSelectionFormHorizontalDx::getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -323,17 +287,7 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class ScrollSelectionFormVericalDx: public ItemIndexDx {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: ScrollSelectionForm* scrollSelectionForm;
-
-: ScrollSelectionFormVericalDx(ScrollSelectionForm* multipleScrollSelectionForm){
+ScrollSelectionForm::ScrollSelectionFormVericalDx::ScrollSelectionFormVericalDx(ScrollSelectionForm* multipleScrollSelectionForm){
 this->scrollSelectionForm= multipleScrollSelectionForm;
     
 }
@@ -341,7 +295,7 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::ScrollSelectionFormVericalDx::getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -351,17 +305,7 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class ScrollSelectionFormTempHorizontalDx: public ItemIndexDx {
-/*Static stuff is not allowed for CPP inner classes*//**/
-
-
-    private: ScrollSelectionForm* scrollSelectionForm;
-
-: ScrollSelectionFormTempHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm){
+ScrollSelectionForm::ScrollSelectionFormTempHorizontalDx::ScrollSelectionFormTempHorizontalDx(ScrollSelectionForm* multipleScrollSelectionForm){
 this->scrollSelectionForm= multipleScrollSelectionForm;
     
 }
@@ -369,7 +313,7 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::ScrollSelectionFormTempHorizontalDx::getDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -379,26 +323,7 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 }
 
 
-};
-
-            
-    private: RectangleCollisionUtil* rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
-
-    protected: int32_t border;
-
-    protected: int32_t halfBorder;
-
-    private: BasicColor* buttonBasicColor;
-
-    protected: ItemIndexPaintable* scrollSelectionFormFormTypeItemIndexPaintable = ItemIndexPaintable::getInstance();
-
-    private: ItemIndexDx* formTypeItemIndexDx = ItemIndexDx::getInstance();
-
-    protected: ItemPaintable* paintable = ItemPaintableFactory::getInstance();
-
-    private: int32_t adjustedExtraBorder;
-
-public: ScrollSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : PaintableForm(title, items, backgroundBasicColor, foregroundBasicColor){
+ScrollSelectionForm::ScrollSelectionForm(std::string title, std::vector<ABCustomItem*> items, ItemPaintableFactory* formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : PaintableForm(title, items, backgroundBasicColor, foregroundBasicColor), rectangleCollisionUtil(RectangleCollisionUtil::getInstance()), scrollSelectionFormFormTypeItemIndexPaintable(ItemIndexPaintable::getInstance()), formTypeItemIndexDx(ItemIndexDx::getInstance()), paintable(ItemPaintableFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -420,8 +345,8 @@ this->paintable= formPaintableFactory->getInstanceItemPaintable(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle* rectangle, FormType* formType){
-super.init(rectangle, formType);
+    auto ScrollSelectionForm::init(Rectangle* rectangle, FormType* formType) -> void{
+PaintableForm::init(rectangle, formType);
     
 
     FormTypeFactory* formTypeFactory = FormTypeFactory::getInstance();;
@@ -470,7 +395,7 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
                             
 
 
-                            throw new Exception(formTypeFactory->UNK);
+                            throw Exception(formTypeFactory->UNK);
                     
 
                         }
@@ -478,7 +403,7 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public: int32_t paintItemHorizontal(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y){
+    auto ScrollSelectionForm::paintItemHorizontal(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) -> int32_t{
 
     int32_t width = item->getMinimumWidth();;
     
@@ -491,7 +416,7 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public: int32_t paintItemVertical(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y){
+    auto ScrollSelectionForm::paintItemVertical(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) -> int32_t{
 
     int32_t height = item->getMinimumHeight();;
     
@@ -504,7 +429,7 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public: int32_t paintItemTempHorizontal(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y){
+    auto ScrollSelectionForm::paintItemTempHorizontal(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) -> int32_t{
 
 
 
@@ -514,7 +439,7 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public: int32_t getSelectedIndexForPointHorizontalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::getSelectedIndexForPointHorizontalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -524,7 +449,7 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public: int32_t getSelectedIndexForPointVerticalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::getSelectedIndexForPointVerticalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -534,7 +459,7 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public: int32_t getSelectedIndexForPointTempHorizontalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy){
+    auto ScrollSelectionForm::getSelectedIndexForPointTempHorizontalDx(int32_t index, ABCustomItem* item, int32_t dx, int32_t dy) -> int32_t{
 
 
 
@@ -544,19 +469,19 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public: int32_t append(ABCustomItem* item){
+    auto ScrollSelectionForm::append(ABCustomItem* item) -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.append(item);;
+                        return PaintableForm::append(item);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: ABCustomItem* getSelectedItem(GPoint* point){
+    auto ScrollSelectionForm::getSelectedItem(GPoint* point) -> ABCustomItem*{
 
     int32_t index = this->getSelectedIndexForPoint(point);;
     
@@ -588,7 +513,7 @@ this->formTypeItemIndexDx= new ScrollSelectionFormTempHorizontalDx(this);
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getItemIndex(ABCustomItem* item){
+    auto ScrollSelectionForm::getItemIndex(ABCustomItem* item) -> int32_t{
 
     ABCustomItem* nextItem;;
     
@@ -628,7 +553,7 @@ nextItem= dynamic_cast<ABCustomItem*>(this->get(index));
 }
 
 
-    public: int32_t getStartIndex(){
+    auto ScrollSelectionForm::getStartIndex() -> int32_t{
 
 
 
@@ -640,7 +565,7 @@ nextItem= dynamic_cast<ABCustomItem*>(this->get(index));
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getSelectedIndexForPoint(GPoint* point){
+    auto ScrollSelectionForm::getSelectedIndexForPoint(GPoint* point) -> int32_t{
 
     int32_t start = this->getStartIndex();;
     
@@ -705,7 +630,7 @@ diffX= this->formTypeItemIndexDx->getDx(index, item, dx, dy);
                         if(this->rectangleCollisionUtil->isInside(diffX, dy -this->halfBorder, diffX +width +this->border, dy +height +this->halfBorder +1, point->getX(), point->getY()))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(commonLabels->ITEM_LABEL);
     
@@ -735,7 +660,7 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
                                     dx= dx +width +this->border;
     
 
-                        if(dx > this->rectangle.getMaxX())
+                        if(dx > this->rectangle->getMaxX())
                         
                                     {
                                     break;
@@ -754,7 +679,7 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
                                     dy= dy +height +this->border;
     
 
-                        if(dy > this->rectangle.getMaxY())
+                        if(dy > this->rectangle->getMaxY())
                         
                                     {
                                     break;
@@ -777,7 +702,7 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
                             
 
 
-                            throw new Exception(formTypeFactory->UNK);
+                            throw Exception(formTypeFactory->UNK);
                     
 
                         }
@@ -795,7 +720,7 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t processInputKey(int32_t gameKeyCode){
+    auto ScrollSelectionForm::processInputKey(int32_t gameKeyCode) -> int32_t{
 
     FormTypeFactory* formTypeFactory = FormTypeFactory::getInstance();;
     
@@ -876,7 +801,7 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
                             
 
 
-                            throw new Exception(formTypeFactory->UNK);
+                            throw Exception(formTypeFactory->UNK);
                     
 
                         }
@@ -917,9 +842,9 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 }
 
 
-    public: bool isInForm(GPoint* point){
+    auto ScrollSelectionForm::isInForm(GPoint* point) -> bool{
 
-                        if(this->rectangleCollisionUtil->isInside(this->x, this->y -this->halfBorder, this->rectangle.getMaxX() +this->border, this->rectangle.getMaxY() +this->border, point->getX(), point->getY()))
+                        if(this->rectangleCollisionUtil->isInside(this->x, this->y -this->halfBorder, this->rectangle->getMaxX() +this->border, this->rectangle->getMaxY() +this->border, point->getX(), point->getY()))
                         
                                     {
                                     this->logUtil->putF((new StringMaker())->append(StringUtil::getInstance()->toString(point)).append(ScrollSelectionForm::INSIDE_FORM).toString(), this, ScrollSelectionForm::IS_IN_FORM);
@@ -944,7 +869,7 @@ this->logUtil->putF(stringBuffer->toString(), this, ScrollSelectionForm::GET_SEL
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paintItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y){
+    auto ScrollSelectionForm::paintItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) -> int32_t{
 item->paintXY(graphics, x, y);
     
 
@@ -971,7 +896,7 @@ graphics->drawRect(x -this->halfBorder -adjustedBorder, y -this->halfBorder -adj
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t paintUnselectedItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y){
+    auto ScrollSelectionForm::paintUnselectedItem(Graphics* graphics, int32_t index, ABCustomItem* item, int32_t x, int32_t y) -> int32_t{
 graphics->setColor(this->getButtonBasicColor()->intValue());
     
 item->paintUnselected(graphics, x, y);
@@ -985,7 +910,7 @@ item->paintUnselected(graphics, x, y);
 }
 
 
-    protected: int32_t getDiffX(ABCustomItem* item){
+    auto ScrollSelectionForm::getDiffX(ABCustomItem* item) -> int32_t{
 
 
 
@@ -995,7 +920,7 @@ item->paintUnselected(graphics, x, y);
 }
 
 
-    public: int32_t getDx(){
+    auto ScrollSelectionForm::getDx() -> int32_t{
 
 
 
@@ -1005,7 +930,7 @@ item->paintUnselected(graphics, x, y);
 }
 
 
-    public: int32_t getDy(){
+    auto ScrollSelectionForm::getDy() -> int32_t{
 
 
 
@@ -1015,13 +940,13 @@ item->paintUnselected(graphics, x, y);
 }
 
 
-    public: void setButtonBasicColor(BasicColor* buttonBasicColor){
+    auto ScrollSelectionForm::setButtonBasicColor(BasicColor* buttonBasicColor) -> void{
 this->buttonBasicColor= buttonBasicColor;
     
 }
 
 
-    private: BasicColor* getButtonBasicColor(){
+    auto ScrollSelectionForm::getButtonBasicColor() -> BasicColor*{
 
 
 
@@ -1031,7 +956,6 @@ this->buttonBasicColor= buttonBasicColor;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORM_CPP

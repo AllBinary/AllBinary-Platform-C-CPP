@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/LicenseServerInitFileUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -80,17 +90,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LicenseServerInitFileUtil
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: OutputStream* NULL_OUTPUT_STREAM = SimpleFileUtil::nullOutputStream();
-
-    public: void init(){
+LicenseServerInitFileUtil::LicenseServerInitFileUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), NULL_OUTPUT_STREAM(SimpleFileUtil::nullOutputStream()) {
+        }
+        
+    auto LicenseServerInitFileUtil::init() -> void{
 
         try {
             
@@ -124,7 +128,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 }
 
 
-    private: void write(){
+    auto LicenseServerInitFileUtil::write() -> void{
 
     OutputStream* fileOutputStream = this->NULL_OUTPUT_STREAM;;
     
@@ -173,7 +177,7 @@ index++;
     
 }
 
-this->logUtil->putF("Wrote Bytes: " +index, this, this->commonStrings->INIT);
+this->logUtil->putF(JavaString::valueOf("Wrote Bytes: ") +JavaString::valueOf(index), this, this->commonStrings->INIT);
     
 fileOutputStream->flush();
     
@@ -194,7 +198,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSESERVERINITFILEUTIL_CPP

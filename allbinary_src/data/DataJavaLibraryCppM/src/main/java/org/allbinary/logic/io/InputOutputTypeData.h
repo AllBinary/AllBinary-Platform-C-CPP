@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_H
         #define ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputOutputTypeData
-            : public Object
+            : public virtual Object
          {
 
-    private: static InputOutputTypeData* instance() { static std::unique_ptr<InputOutputTypeData> value(new InputOutputTypeData()); return value.get(); }
+    private: static InputOutputTypeData* instance_owner();
+    private: static InputOutputTypeData* instance;
 
     public: static InputOutputTypeData* getInstance();
 
@@ -76,9 +86,9 @@ private: InputOutputTypeData();
 
     public: const std::string PL = "pl";
 
-    public: const std::string DEFAULT = this->JSP;
+    public: const std::string DEFAULT;
 
-    public: const std::string DEFAULT_FRAGMENT = this->JSP_FRAGMENT;
+    public: const std::string DEFAULT_FRAGMENT;
 
 };
 
@@ -86,3 +96,10 @@ private: InputOutputTypeData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_INPUTOUTPUTTYPEDATA_H_COMPLETE
+        
+        #endif
+    

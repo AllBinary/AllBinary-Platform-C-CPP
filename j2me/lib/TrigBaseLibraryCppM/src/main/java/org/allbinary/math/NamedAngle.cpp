@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_NAMEDANGLE_CPP
+        #define ORG_ALLBINARY_MATH_NAMEDANGLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/NamedAngle.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,11 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/math/Angle.h"
 
-class NamedAngle: public Angle {
 
-    public: std::string name;
-
-public: NamedAngle(int16_t angle, std::string name) : Angle(angle){
+NamedAngle::NamedAngle(int16_t angle, std::string name) : Angle(angle){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,7 +76,6 @@ this->name= name;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_NAMEDANGLE_CPP

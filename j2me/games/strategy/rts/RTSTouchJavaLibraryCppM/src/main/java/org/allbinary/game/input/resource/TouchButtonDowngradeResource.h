@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONDOWNGRADERESOURCE_H
         #define ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONDOWNGRADERESOURCE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/input/motion/button/TouchButtonBlankResource.h>
 
-      
 #include <org/allbinary/input/motion/button/TouchButtonResource.h>
-
-      
 
 
 
@@ -52,9 +53,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TouchButtonDowngradeResource: public TouchButtonResource {
 
-    private: static inline TouchButtonResource* instance = new TouchButtonDowngradeResource();
+    private: static TouchButtonResource* instance;
 
     public: static TouchButtonResource* getInstance();
 
@@ -66,3 +71,14 @@ private: TouchButtonDowngradeResource();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONDOWNGRADERESOURCE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONDOWNGRADERESOURCE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_RESOURCE_TOUCHBUTTONDOWNGRADERESOURCE_H_COMPLETE
+        
+#if __has_include(<org/allbinary/input/motion/button/TouchButtonResource.h>)
+#include <org/allbinary/input/motion/button/TouchButtonResource.h>
+#endif
+
+        #endif
+    

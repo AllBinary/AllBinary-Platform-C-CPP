@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/loader/SecuredNativeLibraryHelperWrapper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,11 +64,8 @@
         #include "org/allbinary/logic/system/loader/NativeLibraryHelperWrapper.h"
 #include "org/allbinary/logic/system/loader/SecuredNativeLibraryInterface.h"
 
-class SecuredNativeLibraryHelperWrapper: public NativeLibraryHelperWrapper {
 
-    private: SecuredNativeLibraryInterface* securedNativeLibraryInterface;
-
-public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface* securedNativeLibraryInterface) : NativeLibraryHelperWrapper(securedNativeLibraryInterface->getLibraryName()){
+SecuredNativeLibraryHelperWrapper::SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface* securedNativeLibraryInterface) : NativeLibraryHelperWrapper(securedNativeLibraryInterface->getLibraryName()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -72,7 +79,7 @@ this->securedNativeLibraryInterface= securedNativeLibraryInterface;
 
                 //@Throws(LicensingException.constructor)
             
-    public: bool unlock(AbeClientInformationInterface* abeClientInformation){
+    auto SecuredNativeLibraryHelperWrapper::unlock(AbeClientInformationInterface* abeClientInformation) -> bool{
 
 
 
@@ -82,7 +89,6 @@ this->securedNativeLibraryInterface= securedNativeLibraryInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYHELPERWRAPPER_CPP

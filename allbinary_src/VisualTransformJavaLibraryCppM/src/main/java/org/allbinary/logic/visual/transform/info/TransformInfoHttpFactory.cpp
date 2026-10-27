@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,13 +84,14 @@
 #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoHttpStore.h"
 
-class TransformInfoHttpFactory
-            : public Object
-         {
+
+TransformInfoHttpFactory::TransformInfoHttpFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformInfoInterface* getInstance(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext){
+    auto TransformInfoHttpFactory::getInstance(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext) -> TransformInfoInterface*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -115,7 +126,7 @@ class TransformInfoHttpFactory
                             
 
 
-                            throw new Exception("No StoreFront with: " +weblisketSession->getStoreName());
+                            throw Exception(JavaString::valueOf("No StoreFront with: ") +JavaString::valueOf(weblisketSession->getStoreName()));
                     
 
                         }
@@ -138,7 +149,7 @@ class TransformInfoHttpFactory
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
                                     
@@ -159,11 +170,6 @@ logUtil->put(commonStrings->EXCEPTION, "TransformInfoFactory", commonStrings->GE
 }
 
 
-private: TransformInfoHttpFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPFACTORY_CPP

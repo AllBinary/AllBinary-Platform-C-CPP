@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PLATFORM_GRAPHICS_PLATFORMBITMAPBASEFACTORY_CPP
+        #define ORG_ALLBINARY_PLATFORM_GRAPHICS_PLATFORMBITMAPBASEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,22 +61,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/platform/graphics/PlatformBitmapBase.h"
 
-class PlatformBitmapBaseFactory
-            : public Object
-         {
 
-    public: static PlatformBitmapBaseFactory* NULL_PLATFORM_BITMAP_BASE_FACTORY() { static std::unique_ptr<PlatformBitmapBaseFactory> value(new PlatformBitmapBaseFactory()); return value.get(); }
+PlatformBitmapBaseFactory::PlatformBitmapBaseFactory() {
+        }
+        auto PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY_owner() -> PlatformBitmapBaseFactory* { static std::unique_ptr<PlatformBitmapBaseFactory> value(new PlatformBitmapBaseFactory()); return value.get(); }
+PlatformBitmapBaseFactory* PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY = PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY_owner();
 
-    public: PlatformBitmapBase* createBitmap(Image* image){
+    auto PlatformBitmapBaseFactory::createBitmap(Image* image) -> PlatformBitmapBase*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PLATFORM_GRAPHICS_PLATFORMBITMAPBASEFACTORY_CPP

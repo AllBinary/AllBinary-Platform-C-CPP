@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_PORTION_CPP
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_PORTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/installer/Portion.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,15 +60,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Portion
-            : public Object
-         {
 
-    private: int32_t current;
-
-    private: int32_t total;
-
-public: Portion(HashMap<Object*, Object*>* hashMap){
+Portion::Portion(HashMap<Object*, Object*>* hashMap){
 this->current= hashMap->get("current");
     
 this->total= hashMap->get("total");
@@ -66,7 +69,7 @@ this->total= hashMap->get("total");
 }
 
 
-    public: int32_t getCurrent(){
+    auto Portion::getCurrent() -> int32_t{
 
 
 
@@ -76,7 +79,7 @@ this->total= hashMap->get("total");
 }
 
 
-    public: int32_t getTotal(){
+    auto Portion::getTotal() -> int32_t{
 
 
 
@@ -86,7 +89,6 @@ this->total= hashMap->get("total");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_PORTION_CPP

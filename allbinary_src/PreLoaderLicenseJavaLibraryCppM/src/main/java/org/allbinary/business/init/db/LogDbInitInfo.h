@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_LOGDBINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_LOGDBINITINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,6 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DbInitInfo.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LogDbInitInfo: public DbInitInfo {
 
     private: static inline const std::string INITFILE = "logdbinitdata.dat";
@@ -61,3 +70,13 @@ public: LogDbInitInfo(bool read);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_LOGDBINITINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_DB_LOGDBINITINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_LOGDBINITINFO_H_COMPLETE
+        #if __has_include("org/allbinary/business/init/db/DbInitInfo.h")
+#include "org/allbinary/business/init/db/DbInitInfo.h"
+#endif
+
+        #endif
+    

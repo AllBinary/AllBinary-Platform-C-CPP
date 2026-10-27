@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_DECALANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_UNIT_DECALANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/unit/DecalAnimationInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,25 +75,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DecalAnimationInterfaceFactory
-            : public Object
-         {
 
-    private: static DecalAnimationInterfaceFactory* instance() { static std::unique_ptr<DecalAnimationInterfaceFactory> value(new DecalAnimationInterfaceFactory()); return value.get(); }
+DecalAnimationInterfaceFactory::DecalAnimationInterfaceFactory() {
+        }
+        auto DecalAnimationInterfaceFactory::instance_owner() -> DecalAnimationInterfaceFactory* { static std::unique_ptr<DecalAnimationInterfaceFactory> value(new DecalAnimationInterfaceFactory()); return value.get(); }
+DecalAnimationInterfaceFactory* DecalAnimationInterfaceFactory::instance = DecalAnimationInterfaceFactory::instance_owner();
 
-    public: static DecalAnimationInterfaceFactory* getInstance(){
+    auto DecalAnimationInterfaceFactory::getInstance() -> DecalAnimationInterfaceFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DecalAnimationInterfaceFactory::instance();
+                        return DecalAnimationInterfaceFactory::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: AnimationInterfaceFactoryInterface* getAnimationFactory(BasicGameResources* basicGameResources, BasicColor* basicColor){
+    auto DecalAnimationInterfaceFactory::getAnimationFactory(BasicGameResources* basicGameResources, BasicColor* basicColor) -> AnimationInterfaceFactoryInterface*{
 
     AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface;;
     
@@ -111,7 +121,6 @@ class DecalAnimationInterfaceFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_UNIT_DECALANIMATIONINTERFACEFACTORY_CPP

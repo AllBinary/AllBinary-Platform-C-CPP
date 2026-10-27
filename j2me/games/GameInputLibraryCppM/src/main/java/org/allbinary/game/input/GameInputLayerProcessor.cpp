@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/GameInputLayerProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,9 +66,8 @@
         #include "org/allbinary/game/input/GameInputLayerManager.h"
 #include "org/allbinary/game/input/GameInputInterface.h"
 
-class GameInputLayerProcessor: public LayerProcessor {
 
-public: GameInputLayerProcessor() : LayerProcessor(new GameInputLayerManager()){
+GameInputLayerProcessor::GameInputLayerProcessor() : LayerProcessor(new GameInputLayerManager()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +79,7 @@ public: GameInputLayerProcessor() : LayerProcessor(new GameInputLayerManager()){
 
                 //@Throws(Exception.constructor)
             
-    public: void processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index){
+    auto GameInputLayerProcessor::processAt(AllBinaryLayerManager* allBinaryLayerManager, AllBinaryLayer* layerInterface, int32_t index) -> void{
 
     GameInputInterface* gameInputInterface = dynamic_cast<GameInputInterface*>(layerInterface);;
     
@@ -79,7 +88,7 @@ gameInputInterface->processInput(allBinaryLayerManager);
 }
 
 
-    public: bool isProcessorLayer(AllBinaryLayer* layerInterface){
+    auto GameInputLayerProcessor::isProcessorLayer(AllBinaryLayer* layerInterface) -> bool{
 
                         if(layerInterface->implmentsGameInputInterface())
                         
@@ -106,7 +115,6 @@ gameInputInterface->processInput(allBinaryLayerManager);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_CPP

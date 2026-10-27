@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,36 +34,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/input/PlayerGameInput.h>
-
-      
+class Graphics;
+class PlayerGameInput;
 #include <org/allbinary/game/input/PlayerGameInputCompositeInterface.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/displayable/CanvasStrings.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/view/StaticViewPosition.h>
-
-      
+class PointFactory;
+class Rectangle;
+class CanvasStrings;
+class AllBinaryLayerManager;
+class StringUtil;
+class BasicArrayListD;
+class StaticViewPosition;
 
 
 
@@ -79,6 +64,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PlayerGameInputGameLayer: public AllBinaryGameLayer, public PlayerGameInputCompositeInterface {
 
     private: PlayerGameInput* playerGameInput;
@@ -101,3 +90,43 @@ public: PlayerGameInputGameLayer(int32_t playerInputId);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlayerGameInput.h>)
+#include <org/allbinary/game/input/PlayerGameInput.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlayerGameInputCompositeInterface.h>)
+#include <org/allbinary/game/input/PlayerGameInputCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/CanvasStrings.h>)
+#include <org/allbinary/graphics/displayable/CanvasStrings.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/view/StaticViewPosition.h>)
+#include <org/allbinary/view/StaticViewPosition.h>
+#endif
+#if __has_include("org/allbinary/game/layer/AllBinaryGameLayer.h")
+#include "org/allbinary/game/layer/AllBinaryGameLayer.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/inventory/order/Order.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -97,31 +107,8 @@
 #include "org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h"
 #include "org/allbinary/business/user/commerce/inventory/order/OrderData.h"
 
-class Order
-            : public Object
-        , public OrderInterface, public Serializable {
 
-    private: BasketInterface* basket;
-
-    private: std::string paymentMethod;
-
-    private: std::string shippingType;
-
-    private: std::string storeName;
-
-    private: std::string special;
-
-    private: std::string id;
-
-    private: std::string userComment;
-
-    private: std::string userCancelComment;
-
-    private: std::string storeComment;
-
-    private: std::string storeCancelComment;
-
-public: Order(BasketInterface* basket){
+Order::Order(BasketInterface* basket){
 this->basket= basket;
     
 this->id= 
@@ -133,7 +120,7 @@ this->shippingType= StringUtil::getInstance()->EMPTY_STRING;
 }
 
 
-public: Order(std::string storeName, BasketInterface* basket, std::string id, std::string shippingType, std::string special, std::string paymentMethod){
+Order::Order(std::string storeName, BasketInterface* basket, std::string id, std::string shippingType, std::string special, std::string paymentMethod){
 this->storeName= storeName;
     
 this->basket= basket;
@@ -149,7 +136,7 @@ this->paymentMethod= paymentMethod;
 }
 
 
-    public: bool isIdValid(){
+    auto Order::isIdValid() -> bool{
 
                         if(this->getId() == 
                                     nullptr
@@ -174,7 +161,7 @@ this->paymentMethod= paymentMethod;
 }
 
 
-    public: bool isValid(){
+    auto Order::isValid() -> bool{
 
 
 
@@ -184,7 +171,7 @@ this->paymentMethod= paymentMethod;
 }
 
 
-    public: std::string getIdValidationInfo(){
+    auto Order::getIdValidationInfo() -> std::string{
 
     std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;;
     
@@ -198,7 +185,7 @@ this->paymentMethod= paymentMethod;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Please enter a valid order Id < " +OrderHistoryData::MAXIDLEN +" digits in length.<br>";
+                        return JavaString::valueOf(JavaString::valueOf("Please enter a valid order Id < ") +JavaString::valueOf(OrderHistoryData::MAXIDLEN)) +JavaString::valueOf(" digits in length.<br>");
     
 
                                     }
@@ -212,61 +199,61 @@ this->paymentMethod= paymentMethod;
 }
 
 
-    public: void setShippingMethod(std::string shippingType){
+    auto Order::setShippingMethod(std::string shippingType) -> void{
 this->shippingType= shippingType;
     
 }
 
 
-    public: void setPaymentMethod(std::string value){
+    auto Order::setPaymentMethod(std::string value) -> void{
 this->paymentMethod= value;
     
 }
 
 
-    public: void setSpecial(std::string special){
+    auto Order::setSpecial(std::string special) -> void{
 this->special= special;
     
 }
 
 
-    public: void setId(std::string value){
+    auto Order::setId(std::string value) -> void{
 this->id= value;
     
 }
 
 
-    public: void setStoreName(std::string value){
+    auto Order::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 }
 
 
-    public: void setUserComments(std::string value){
+    auto Order::setUserComments(std::string value) -> void{
 this->userComment= value;
     
 }
 
 
-    public: void setUserCancelComments(std::string value){
+    auto Order::setUserCancelComments(std::string value) -> void{
 this->userCancelComment= value;
     
 }
 
 
-    public: void setStoreComments(std::string value){
+    auto Order::setStoreComments(std::string value) -> void{
 this->storeComment= value;
     
 }
 
 
-    public: void setStoreCancelComments(std::string value){
+    auto Order::setStoreCancelComments(std::string value) -> void{
 this->storeCancelComment= value;
     
 }
 
 
-    public: BasketInterface* getBasket(){
+    auto Order::getBasket() -> BasketInterface*{
 
 
 
@@ -276,7 +263,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getShippingMethod(){
+    auto Order::getShippingMethod() -> std::string{
 
 
 
@@ -286,7 +273,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getPaymentMethod(){
+    auto Order::getPaymentMethod() -> std::string{
 
 
 
@@ -296,7 +283,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getSpecial(){
+    auto Order::getSpecial() -> std::string{
 
 
 
@@ -306,7 +293,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getId(){
+    auto Order::getId() -> std::string{
 
 
 
@@ -316,7 +303,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getStoreName(){
+    auto Order::getStoreName() -> std::string{
 
 
 
@@ -326,7 +313,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getUserComments(){
+    auto Order::getUserComments() -> std::string{
 
 
 
@@ -336,7 +323,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getUserCancelComments(){
+    auto Order::getUserCancelComments() -> std::string{
 
 
 
@@ -346,7 +333,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getStoreComments(){
+    auto Order::getStoreComments() -> std::string{
 
 
 
@@ -356,7 +343,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string getStoreCancelComments(){
+    auto Order::getStoreCancelComments() -> std::string{
 
 
 
@@ -366,7 +353,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string reviewOrder(std::string paymentMethod){
+    auto Order::reviewOrder(std::string paymentMethod) -> std::string{
 
 
 
@@ -376,7 +363,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string viewOrder(std::string paymentMethod){
+    auto Order::viewOrder(std::string paymentMethod) -> std::string{
 
 
 
@@ -386,7 +373,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: std::string emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface* storeFrontInterface){
+    auto Order::emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface* storeFrontInterface) -> std::string{
 
 
 
@@ -396,7 +383,7 @@ this->storeCancelComment= value;
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMapOrder(){
+    auto Order::toHashMapOrder() -> HashMap<Object*, Object*>*{
 
     HashMap<Object*, Object*>* hashMap = StdUtil::getInstance()->createHashMap();;
     
@@ -429,7 +416,7 @@ hashMap->put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto Order::toXmlNode(Document* document) -> Node*{
 
     HashMap<Object*, Object*>* hashMap = this->toHashMapOrder();;
     
@@ -473,7 +460,6 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_CPP

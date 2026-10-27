@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EmailData
-            : public Object
+            : public virtual Object
          {
 
     public: static inline const std::string SERVER = "EMAIL_SERVER";
@@ -76,3 +85,10 @@ private: EmailData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAILDATA_H_COMPLETE
+        
+        #endif
+    

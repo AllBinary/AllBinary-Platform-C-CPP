@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MENULISTENER_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MENULISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/MenuListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MenuListener: public GameKeyEventSourceInterface {
+//Interface - declared in the header
 
-    public: virtual void open() = 0;
 
-    public: virtual void close() = 0;
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MENULISTENER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/category/CategoryEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/category/CategoryEntity.h"
 
-class CategoryEntityFactory
-            : public Object
-         {
+auto CategoryEntityFactory::instance_owner() -> CategoryEntityFactory* { static std::unique_ptr<CategoryEntityFactory> value(new CategoryEntityFactory()); return value.get(); }
+CategoryEntityFactory* CategoryEntityFactory::instance = CategoryEntityFactory::instance_owner();
 
-    private: static CategoryEntityFactory* instance() { static std::unique_ptr<CategoryEntityFactory> value(new CategoryEntityFactory()); return value.get(); }
-
-    public: static CategoryEntityFactory* getInstance(){
+    auto CategoryEntityFactory::getInstance() -> CategoryEntityFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CategoryEntityFactory::instance();
+                        return CategoryEntityFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: CategoryEntityFactory(){
+CategoryEntityFactory::CategoryEntityFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: CategoryEntity* getCategoryEntityInstance(){
+    auto CategoryEntityFactory::getCategoryEntityInstance() -> CategoryEntity*{
 
         try {
             
@@ -93,7 +98,7 @@ private: CategoryEntityFactory(){
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, "getCategoryEntityInstance()", &e);
@@ -112,7 +117,6 @@ private: CategoryEntityFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_CATEGORY_CATEGORYENTITYFACTORY_CPP

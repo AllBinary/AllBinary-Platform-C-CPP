@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPERLISTENER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPERLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/AndroidMediaPlayerWrapperListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,17 +74,8 @@
 //#include "org/allbinary/media/audio/MediaPlayerOnCompletionListener.h"
 //#include "org/allbinary/media/audio/AndroidMediaPlayerOnCompletionListener.h"
 
-class AndroidMediaPlayerWrapperListener
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AndroidMediaPlayerWrapper* androidMediaPlayerWrapper = AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER;
-
-public: AndroidMediaPlayerWrapperListener(AndroidMediaPlayerWrapper* androidMediaPlayerWrapper){
+AndroidMediaPlayerWrapperListener::AndroidMediaPlayerWrapperListener(AndroidMediaPlayerWrapper* androidMediaPlayerWrapper) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), androidMediaPlayerWrapper(AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER), mOnBufferingUpdateListener(new AndroidMediaPlayerOnBufferingUpdateListener(this)), mOnPreparedListener(new AndroidMediaPlayerOnPreparedListener(this)), mOnErrorListener(new AndroidMediaPlayerOnErrorListener(this)), mOnCompletionListener(new AndroidMediaPlayerOnCompletionListener(this)){
 
         try {
             this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
@@ -103,36 +104,24 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CO
 }
 
 
-//inner= member=true isStatic=
-class MediaPlayerOnBufferingUpdateListener
-            : public Object
-        , public MediaPlayer::OnBufferingUpdateListener {
-
-    public: void onBufferingUpdate(MediaPlayer* mediaPlayer, int32_t i){
+AndroidMediaPlayerWrapperListener::MediaPlayerOnBufferingUpdateListener::MediaPlayerOnBufferingUpdateListener() {
+        }
+        
+    auto AndroidMediaPlayerWrapperListener::MediaPlayerOnBufferingUpdateListener::onBufferingUpdate(MediaPlayer* mediaPlayer, int32_t i) -> void{
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class MediaPlayerOnPreparedListener
-            : public Object
-        , public MediaPlayer::OnPreparedListener {
-
-    public: void onPrepared(MediaPlayer* mp){
+AndroidMediaPlayerWrapperListener::MediaPlayerOnPreparedListener::MediaPlayerOnPreparedListener() {
+        }
+        
+    auto AndroidMediaPlayerWrapperListener::MediaPlayerOnPreparedListener::onPrepared(MediaPlayer* mp) -> void{
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class MediaPlayerOnErrorListener
-            : public Object
-        , public MediaPlayer::OnErrorListener {
-
-    public: bool onError(MediaPlayer* mp, int32_t what, int32_t extra){
+AndroidMediaPlayerWrapperListener::MediaPlayerOnErrorListener::MediaPlayerOnErrorListener() {
+        }
+        
+    auto AndroidMediaPlayerWrapperListener::MediaPlayerOnErrorListener::onError(MediaPlayer* mp, int32_t what, int32_t extra) -> bool{
 
 
 
@@ -142,35 +131,20 @@ class MediaPlayerOnErrorListener
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class MediaPlayerOnCompletionListener
-            : public Object
-        , public MediaPlayer::OnCompletionListener {
-
-    public: void onCompletion(MediaPlayer* mp){
+AndroidMediaPlayerWrapperListener::MediaPlayerOnCompletionListener::MediaPlayerOnCompletionListener() {
+        }
+        
+    auto AndroidMediaPlayerWrapperListener::MediaPlayerOnCompletionListener::onCompletion(MediaPlayer* mp) -> void{
 }
 
 
-};
-
-            
-//inner= member=true isStatic=
-class AndroidMediaPlayerOnBufferingUpdateListener: public MediaPlayerOnBufferingUpdateListener {
-
-    private: const std::string ON_BUFFERING_UPDATE = "onBufferingUpdate()";
-
-    private: AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener;
-
-public: AndroidMediaPlayerOnBufferingUpdateListener(AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener){
+AndroidMediaPlayerWrapperListener::AndroidMediaPlayerOnBufferingUpdateListener::AndroidMediaPlayerOnBufferingUpdateListener(AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener){
 this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
     
 }
 
 
-    public: void onBufferingUpdate(MediaPlayer* mediaPlayer, int32_t i){
+    auto AndroidMediaPlayerWrapperListener::AndroidMediaPlayerOnBufferingUpdateListener::onBufferingUpdate(MediaPlayer* mediaPlayer, int32_t i) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -181,25 +155,13 @@ this->androidMediaPlayerWrapperListener->androidMediaPlayerWrapper->update(Playe
 }
 
 
-};
-
-            
-    private: MediaPlayer::OnBufferingUpdateListener* mOnBufferingUpdateListener = new AndroidMediaPlayerOnBufferingUpdateListener(this);
-
-//inner= member=true isStatic=
-class AndroidMediaPlayerOnPreparedListener: public MediaPlayerOnPreparedListener {
-
-    private: const std::string ON_PREPARE = "onPrepare()";
-
-    private: AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener;
-
-public: AndroidMediaPlayerOnPreparedListener(AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener){
+AndroidMediaPlayerWrapperListener::AndroidMediaPlayerOnPreparedListener::AndroidMediaPlayerOnPreparedListener(AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener){
 this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
     
 }
 
 
-    public: void onPrepared(MediaPlayer* mp){
+    auto AndroidMediaPlayerWrapperListener::AndroidMediaPlayerOnPreparedListener::onPrepared(MediaPlayer* mp) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -213,25 +175,13 @@ this->androidMediaPlayerWrapperListener->androidMediaPlayerWrapper->update(Playe
 }
 
 
-};
-
-            
-    private: MediaPlayer::OnPreparedListener* mOnPreparedListener = new AndroidMediaPlayerOnPreparedListener(this);
-
-//inner= member=true isStatic=
-class AndroidMediaPlayerOnErrorListener: public MediaPlayerOnErrorListener {
-
-    private: const std::string ON_ERROR = "onError()";
-
-    private: AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener;
-
-public: AndroidMediaPlayerOnErrorListener(AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener){
+AndroidMediaPlayerWrapperListener::AndroidMediaPlayerOnErrorListener::AndroidMediaPlayerOnErrorListener(AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener){
 this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
     
 }
 
 
-    public: bool onError(MediaPlayer* mp, int32_t what, int32_t extra){
+    auto AndroidMediaPlayerWrapperListener::AndroidMediaPlayerOnErrorListener::onError(MediaPlayer* mp, int32_t what, int32_t extra) -> bool{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -248,25 +198,13 @@ this->androidMediaPlayerWrapperListener->androidMediaPlayerWrapper->update(Playe
 }
 
 
-};
-
-            
-    private: MediaPlayer::OnErrorListener* mOnErrorListener = new AndroidMediaPlayerOnErrorListener(this);
-
-//inner= member=true isStatic=
-class AndroidMediaPlayerOnCompletionListener: public MediaPlayerOnCompletionListener {
-
-    private: const std::string ON_COMPLETE = "onComplete()";
-
-    private: AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener;
-
-public: AndroidMediaPlayerOnCompletionListener(AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener){
+AndroidMediaPlayerWrapperListener::AndroidMediaPlayerOnCompletionListener::AndroidMediaPlayerOnCompletionListener(AndroidMediaPlayerWrapperListener* androidMediaPlayerWrapperListener){
 this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
     
 }
 
 
-    public: void onCompletion(MediaPlayer* mp){
+    auto AndroidMediaPlayerWrapperListener::AndroidMediaPlayerOnCompletionListener::onCompletion(MediaPlayer* mp) -> void{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -280,12 +218,6 @@ this->androidMediaPlayerWrapperListener->androidMediaPlayerWrapper->update(Playe
 }
 
 
-};
 
-            
-    private: MediaPlayer::OnCompletionListener* mOnCompletionListener = new AndroidMediaPlayerOnCompletionListener(this);
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPERLISTENER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/InputAutomationClientInformationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/InputAutomationClientInformation.h"
 
-class InputAutomationClientInformationFactory
-            : public Object
-         {
 
-    private: static InputAutomationClientInformation* instance() { static std::unique_ptr<InputAutomationClientInformation> value(new InputAutomationClientInformation()); return value.get(); }
+InputAutomationClientInformationFactory::InputAutomationClientInformationFactory() {
+        }
+        auto InputAutomationClientInformationFactory::instance_owner() -> InputAutomationClientInformation* { static std::unique_ptr<InputAutomationClientInformation> value(new InputAutomationClientInformation()); return value.get(); }
+InputAutomationClientInformation* InputAutomationClientInformationFactory::instance = InputAutomationClientInformationFactory::instance_owner();
 
-    public: static InputAutomationClientInformation* getInstance(){
+    auto InputAutomationClientInformationFactory::getInstance() -> InputAutomationClientInformation*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationClientInformationFactory::instance();
+                        return InputAutomationClientInformationFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATIONFACTORY_CPP

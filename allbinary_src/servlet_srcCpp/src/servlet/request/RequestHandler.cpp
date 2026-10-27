@@ -18,6 +18,16 @@
 
 
 
+        #ifndef SERVLET_REQUEST_REQUESTHANDLER_CPP
+        #define SERVLET_REQUEST_REQUESTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "servlet/request/RequestHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,25 +86,25 @@
 #include "servlet/request/HttpServletRequest.h"
 #include "servlet/request/HttpServletResponse.h"
 
-class RequestHandler: public HttpServlet {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
+RequestHandler::RequestHandler() : logUtil(LogUtil::getInstance()) {
+        }
+        
                 //@Throws(ServletException.constructor)
             
-    public: void init(ServletConfig* config){
-super.init(config);
+    auto RequestHandler::init(ServletConfig* config) -> void{
+HttpServlet::init(config);
     
 }
 
 
-    public: void destroy(){
+    auto RequestHandler::destroy() -> void{
 }
 
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void processRequest(HttpServletRequest* request, HttpServletResponse* response){
+    auto RequestHandler::processRequest(HttpServletRequest* request, HttpServletResponse* response) -> void{
 
         try {
             response->setContentType("text/html");
@@ -125,7 +135,7 @@ out->close();
 } catch(LicensingException& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SERVLETERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SERVLETERROR))
                         
                                     {
                                     this->logUtil->put("Servlet LicensingException", this, "processRequest()", &e);
@@ -133,7 +143,7 @@ out->close();
 
                                     }
                                 
-response->sendRedirect(abcs.globals.URLGLOBALS.LICENSEERRORPAGE);
+response->sendRedirect(abcs.globals->URLGLOBALS->LICENSEERRORPAGE);
     
 }
 
@@ -141,7 +151,7 @@ response->sendRedirect(abcs.globals.URLGLOBALS.LICENSEERRORPAGE);
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SERVLETERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SERVLETERROR))
                         
                                     {
                                     this->logUtil->put("Servlet Exception", this, "processRequest()", &e);
@@ -149,7 +159,7 @@ response->sendRedirect(abcs.globals.URLGLOBALS.LICENSEERRORPAGE);
 
                                     }
                                 
-response->sendRedirect(abcs.globals.URLGLOBALS.ERRORPAGE);
+response->sendRedirect(abcs.globals->URLGLOBALS->ERRORPAGE);
     
 }
 
@@ -158,7 +168,7 @@ response->sendRedirect(abcs.globals.URLGLOBALS.ERRORPAGE);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doGet(HttpServletRequest* request, HttpServletResponse* response){
+    auto RequestHandler::doGet(HttpServletRequest* request, HttpServletResponse* response) -> void{
 this->processRequest(request, response);
     
 }
@@ -166,13 +176,13 @@ this->processRequest(request, response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    protected: void doPost(HttpServletRequest* request, HttpServletResponse* response){
+    auto RequestHandler::doPost(HttpServletRequest* request, HttpServletResponse* response) -> void{
 this->processRequest(request, response);
     
 }
 
 
-    public: std::string getServletInfo(){
+    auto RequestHandler::getServletInfo() -> std::string{
 
 
 
@@ -182,7 +192,6 @@ this->processRequest(request, response);
 }
 
 
-};
 
-            
 
+        #endif //SERVLET_REQUEST_REQUESTHANDLER_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPTIONRESOURCES_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPTIONRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CaptionResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static CaptionResources* instance() { static std::unique_ptr<CaptionResources> value(new CaptionResources()); return value.get(); }
+    private: static CaptionResources* instance_owner();
+    private: static CaptionResources* instance;
 
     public: static CaptionResources* getInstance();
 
@@ -66,3 +76,10 @@ private: CaptionResources();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_CAPTIONRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_CAPTIONRESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_CAPTIONRESOURCES_H_COMPLETE
+        
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,12 +52,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/animation/transition/shake/ShakeEvent.h"
+        class ShakeEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ShakeAnimationListener
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: ShakeAnimationListener();
+        
     public: void onSmallShakeEvent();
 
     public: void onMediumShakeEvent();
@@ -69,3 +82,13 @@ class ShakeAnimationListener
 
 
         #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENER_H_COMPLETE
+        #if __has_include("org/allbinary/animation/transition/shake/ShakeEvent.h")
+#include "org/allbinary/animation/transition/shake/ShakeEvent.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
-      
-#include <org/allbinary/logic/string/StringMaker.h>
 
-      
-#include <org/allbinary/logic/string/StringUtil.h>
 
-      
 
 
 
@@ -57,14 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLImageSpecificFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLImageSpecificFactory* instance() { static std::unique_ptr<OpenGLImageSpecificFactory> value(new OpenGLImageSpecificFactory()); return value.get(); }
+    private: static OpenGLImageSpecificFactory* instance_owner();
+    private: static OpenGLImageSpecificFactory* instance;
 
     public: static OpenGLImageSpecificFactory* getInstance();
 
+
+            
+    public: OpenGLImageSpecificFactory();
+        
     public: bool updating = false;
 
 };
@@ -73,3 +81,13 @@ class OpenGLImageSpecificFactory
 
 
         #endif //ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGESPECIFICFACTORY_H_COMPLETE
+        
+
+
+
+        #endif
+    

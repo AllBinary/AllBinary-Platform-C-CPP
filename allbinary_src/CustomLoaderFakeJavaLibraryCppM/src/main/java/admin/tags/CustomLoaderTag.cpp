@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_CUSTOMLOADERTAG_CPP
+        #define ADMIN_TAGS_CUSTOMLOADERTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/CustomLoaderTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,25 +79,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomLoaderTag: public CustomTagSupport {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string command;
-
-    private: std::string webappPath;
-
-public: CustomLoaderTag(){
+CustomLoaderTag::CustomLoaderTag() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setCommand(std::string command){
+    auto CustomLoaderTag::setCommand(std::string command) -> void{
 this->command= command;
     
 }
 
 
-    public: void setWebappPath(std::string value){
+    auto CustomLoaderTag::setWebappPath(std::string value) -> void{
 this->webappPath= value;
     
 }
@@ -95,7 +98,7 @@ this->webappPath= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: void setCustomLoaderWebappPath(){
+    auto CustomLoaderTag::setCustomLoaderWebappPath() -> void{
 
         try {
             
@@ -110,10 +113,10 @@ URLGLOBALS::init(urlGlobals);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setCustomLoaderWebappPath()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setCustomLoaderWebappPath()", &e);
     
 
                                     }
@@ -125,14 +128,14 @@ URLGLOBALS::init(urlGlobals);
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto CustomLoaderTag::doStartTag() -> int32_t{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
+                                    this->logUtil->putF(this->commonStrings->START, this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -189,7 +192,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_CUSTOMLOADERTAG_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <java/awt.h>
-
-      
-#include <org/allbinary/media/image/analysis/ColorRangeInterface.h>
-
-      
+class ColorRangeInterface;
 
 
 
@@ -51,9 +52,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/actions/script/condition/Point.h"
+        class Point;
 
-class ColorAtActionScriptConditionInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class ColorAtActionScriptConditionInterface
+            : public virtual Object
+         {
 
     public: virtual Point* getPoint() = 0;
 
@@ -71,3 +78,19 @@ class ColorAtActionScriptConditionInterface {
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITIONINTERFACE_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<org/allbinary/media/image/analysis/ColorRangeInterface.h>)
+#include <org/allbinary/media/image/analysis/ColorRangeInterface.h>
+#endif
+#if __has_include("org/allbinary/input/automation/actions/script/condition/Point.h")
+#include "org/allbinary/input/automation/actions/script/condition/Point.h"
+#endif
+
+        #endif
+    

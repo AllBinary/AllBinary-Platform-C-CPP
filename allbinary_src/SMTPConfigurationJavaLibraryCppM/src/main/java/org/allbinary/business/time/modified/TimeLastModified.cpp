@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIED_CPP
+        #define ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIED_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/time/modified/TimeLastModified.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,19 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TimeLastModified: public Time {
 
-public: TimeLastModified(std::string time) : Time(time){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-public: TimeLastModified(int64_t time) : Time(time){
+TimeLastModified::TimeLastModified(std::string time) : Time(time){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -68,7 +67,16 @@ public: TimeLastModified(int64_t time) : Time(time){
 }
 
 
-};
+TimeLastModified::TimeLastModified(int64_t time) : Time(time){
 
-            
+                        //super/this constructor call is in the constructor initializer list.
+                    
 
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIED_CPP

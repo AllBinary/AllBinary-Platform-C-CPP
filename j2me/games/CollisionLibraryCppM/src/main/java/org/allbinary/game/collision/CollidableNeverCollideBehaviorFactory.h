@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIORFACTORY_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIORFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,16 +51,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
-#include "org/allbinary/game/collision/CollidableNeverCollideBehavior.h"
-#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+class CollidableNeverCollideBehavior;
+class CollidableBaseBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollidableNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactory {
 
-    private: static CollidableNeverCollideBehaviorFactory* instanceC() { static std::unique_ptr<CollidableNeverCollideBehaviorFactory> value(new CollidableNeverCollideBehaviorFactory()); return value.get(); }
+    private: static CollidableNeverCollideBehaviorFactory* instanceC_owner();
+    private: static CollidableNeverCollideBehaviorFactory* instanceC;
 
     public: static CollidableNeverCollideBehaviorFactory* getInstance();
 
-    private: CollidableNeverCollideBehavior* instance = new CollidableNeverCollideBehavior(false);
+
+            
+    public: CollidableNeverCollideBehaviorFactory();
+        
+    private: CollidableNeverCollideBehavior* instance;
 
     public: CollidableBaseBehavior* createBehavior();
 
@@ -65,3 +79,19 @@ class CollidableNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactor
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIORFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIORFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLENEVERCOLLIDEBEHAVIORFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/collision/CollidableBaseBehaviorFactory.h")
+#include "org/allbinary/game/collision/CollidableBaseBehaviorFactory.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableNeverCollideBehavior.h")
+#include "org/allbinary/game/collision/CollidableNeverCollideBehavior.h"
+#endif
+#if __has_include("org/allbinary/game/collision/CollidableBaseBehavior.h")
+#include "org/allbinary/game/collision/CollidableBaseBehavior.h"
+#endif
+
+        #endif
+    

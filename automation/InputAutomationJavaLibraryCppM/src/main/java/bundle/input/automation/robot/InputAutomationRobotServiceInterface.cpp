@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICEINTERFACE_CPP
+        #define BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/robot/InputAutomationRobotServiceInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,11 +61,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationRobotServiceInterface: public OSGIServiceInterface {
+//Interface - declared in the header
 
-    public: virtual std::vector<InputRobotInterface*> getInputRobotInterfaceArray() = 0;
 
-};
 
-            
-
+        #endif //BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICEINTERFACE_CPP

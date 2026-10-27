@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/destroy/DestroyableInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,13 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DestroyableInterface: public NamedInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual bool isDestroyed() = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_CPP

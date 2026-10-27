@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORYBASE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORYBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactoryBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,35 +66,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoFactoryBaseInterface.h"
 
-class PathFindingNodeCostInfoFactoryBase
-            : public Object
-        , public PathFindingNodeCostInfoFactoryBaseInterface {
 
-    public: static PathFindingNodeCostInfoFactoryBase* NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE() { static std::unique_ptr<PathFindingNodeCostInfoFactoryBase> value(new PathFindingNodeCostInfoFactoryBase()); return value.get(); }
+PathFindingNodeCostInfoFactoryBase::PathFindingNodeCostInfoFactoryBase() {
+        }
+        auto PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE_owner() -> PathFindingNodeCostInfoFactoryBase* { static std::unique_ptr<PathFindingNodeCostInfoFactoryBase> value(new PathFindingNodeCostInfoFactoryBase()); return value.get(); }
+PathFindingNodeCostInfoFactoryBase* PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE = PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: void create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+    auto PathFindingNodeCostInfoFactoryBase::create(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int64_t getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition){
+    auto PathFindingNodeCostInfoFactoryBase::getTotalCost(BasicGeographicMap* geographicMapInterface, GeographicMapCellPosition* comingFromGeographicMapCellPosition, GeographicMapCellPosition* geographicMapCellPosition) -> int64_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOSTINFOFACTORYBASE_CPP

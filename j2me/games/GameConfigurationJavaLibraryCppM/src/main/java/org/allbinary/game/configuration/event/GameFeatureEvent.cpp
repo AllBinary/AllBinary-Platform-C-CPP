@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENT_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/event/GameFeatureEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,11 +58,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameFeatureEvent: public AllBinaryEventObject {
 
-    private: std::string whatChanged;
-
-public: GameFeatureEvent(Object* anyType, std::string whatChanged) : AllBinaryEventObject(anyType){
+GameFeatureEvent::GameFeatureEvent(Object* anyType, std::string whatChanged) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,7 +71,7 @@ this->whatChanged= whatChanged;
 }
 
 
-    public: std::string getWhatChanged(){
+    auto GameFeatureEvent::getWhatChanged() -> std::string{
 
 
 
@@ -74,7 +81,7 @@ this->whatChanged= whatChanged;
 }
 
 
-    public: Object* getGameOption(){
+    auto GameFeatureEvent::getGameOption() -> Object*{
 
 
 
@@ -84,7 +91,6 @@ this->whatChanged= whatChanged;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENT_CPP

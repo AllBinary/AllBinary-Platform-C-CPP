@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/LastKeyAIVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,17 +72,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LastKeyAIVisitor: public Visitor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: bool TRUE = BooleanFactory::getInstance()->TRUE;
-
-public: LastKeyAIVisitor(){
+LastKeyAIVisitor::LastKeyAIVisitor() : logUtil(LogUtil::getInstance()), TRUE(BooleanFactory::getInstance()->TRUE){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto LastKeyAIVisitor::visit(Object* anyType) -> Object*{
 
         try {
             
@@ -110,7 +115,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_LASTKEYAIVISITOR_CPP

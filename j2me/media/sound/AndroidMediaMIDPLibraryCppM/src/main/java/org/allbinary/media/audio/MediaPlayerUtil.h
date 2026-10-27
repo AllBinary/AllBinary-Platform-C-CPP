@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,12 +38,8 @@
         
             #include "java/lang/Thread.h"
         
-#include <android/media/MediaPlayer.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class MediaPlayer;
+class LogUtil;
 
 
 
@@ -58,15 +59,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MediaPlayerUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static MediaPlayerUtil* instance() { static std::unique_ptr<MediaPlayerUtil> value(new MediaPlayerUtil()); return value.get(); }
+    private: static MediaPlayerUtil* instance_owner();
+    private: static MediaPlayerUtil* instance;
 
     public: static MediaPlayerUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: MediaPlayerUtil();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
                 //@Throws(Exception.constructor)
             
@@ -78,3 +88,16 @@ class MediaPlayerUtil
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H_COMPLETE
+        #if __has_include(<android/media/MediaPlayer.h>)
+#include <android/media/MediaPlayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+        #endif
+    

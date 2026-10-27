@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONACTION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONACTION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,11 +39,7 @@
             #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/InputAutomationActionInterface.h>
-
-      
-#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
-
-      
+class InputRobotInterface;
 
 
 
@@ -58,8 +59,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GenericInputAutomationAction
-            : public Object
+            : public virtual Object
         , public InputAutomationActionInterface {
 
 public: GenericInputAutomationAction();
@@ -76,3 +81,16 @@ public: GenericInputAutomationAction();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONACTION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONACTION_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONACTION_H_COMPLETE
+        #if __has_include(<org/allbinary/input/automation/module/InputAutomationActionInterface.h>)
+#include <org/allbinary/input/automation/module/InputAutomationActionInterface.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/robot/InputRobotInterface.h>)
+#include <org/allbinary/input/automation/robot/InputRobotInterface.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/time/modified/TimeLastModifiedView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,19 +76,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/time/modified/TimeLastModified.h"
 
-class TimeLastModifiedView
-            : public Object
-        , public DomNodeInterface {
 
-    private: TimeLastModified* timeLastModified;
-
-public: TimeLastModifiedView(TimeLastModified* timeLastModified){
+TimeLastModifiedView::TimeLastModifiedView(TimeLastModified* timeLastModified){
 this->setTimeLastModified(timeLastModified);
     
 }
 
 
-public: TimeLastModifiedView(Node* node){
+TimeLastModifiedView::TimeLastModifiedView(Node* node){
 this->setTimeLastModified(new TimeLastModified(DomNodeHelper::getTextNodeValue(node)));
     
 }
@@ -86,7 +91,7 @@ this->setTimeLastModified(new TimeLastModified(DomNodeHelper::getTextNodeValue(n
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TimeLastModifiedView::toXmlNode(Document* document) -> Node*{
 
 
 
@@ -96,7 +101,7 @@ this->setTimeLastModified(new TimeLastModified(DomNodeHelper::getTextNodeValue(n
 }
 
 
-    public: TimeLastModified* getTimeLastModified(){
+    auto TimeLastModifiedView::getTimeLastModified() -> TimeLastModified*{
 
 
 
@@ -106,13 +111,12 @@ this->setTimeLastModified(new TimeLastModified(DomNodeHelper::getTextNodeValue(n
 }
 
 
-    public: void setTimeLastModified(TimeLastModified* timeLastModified){
+    auto TimeLastModifiedView::setTimeLastModified(TimeLastModified* timeLastModified) -> void{
 this->timeLastModified= timeLastModified;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_CPP

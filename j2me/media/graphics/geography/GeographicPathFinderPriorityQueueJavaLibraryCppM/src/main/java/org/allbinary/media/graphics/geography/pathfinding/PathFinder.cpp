@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFinder.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -101,25 +111,13 @@
 #include "org/allbinary/media/graphics/geography/pathfinding/PathFindingNode.h"
 #include "org/allbinary/media/graphics/geography/pathfinding/MultipassState.h"
 
-class PathFinder: public GeographicPathFinderBase {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayListUtil* basicArrayListUtil = BasicArrayListUtil::getInstance();
-
-    private: MathUtil* mathUtil = MathUtil::getInstance();
-
-    private: PriorityQueue<PathFindingNodeCost*>* openPriorityQueue = new PriorityQueue<PathFindingNodeCost*>();
-
-    private: HashSet<PathFindingNodeCost*>* closedSet = new HashSet<PathFindingNodeCost*>();
-
-    private: Object* geographicMapInterface = NullUtil::getInstance()->NULL_OBJECT;
-
-    private: std::vector<std::vector<PathFindingNodeCost*>> costArray = PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
-
+PathFinder::PathFinder() : logUtil(LogUtil::getInstance()), basicArrayListUtil(BasicArrayListUtil::getInstance()), mathUtil(MathUtil::getInstance()), openPriorityQueue(new PriorityQueue<PathFindingNodeCost*>()), closedSet(new HashSet<PathFindingNodeCost*>()), geographicMapInterface(NullUtil::getInstance()->NULL_OBJECT), costArray(PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY) {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void init(BasicGeographicMap* geographicMapInterface){
+    auto PathFinder::init(BasicGeographicMap* geographicMapInterface) -> void{
 this->geographicMapInterface= geographicMapInterface;
     
 
@@ -170,7 +168,7 @@ this->costArray[column][row]= node;
 }
 
 
-    public: BasicArrayList* searchTotalPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, int32_t totalPaths){
+    auto PathFinder::searchTotalPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, int32_t totalPaths) -> BasicArrayList*{
 
         try {
             
@@ -201,7 +199,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "search", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* searchTotalPathN(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, int32_t totalPaths, MultipassState* multipassState){
+    auto PathFinder::searchTotalPathN(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, int32_t totalPaths, MultipassState* multipassState) -> BasicArrayList*{
 
                         if(multipassState->step == 0)
                         
@@ -244,7 +242,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, "search", &e);
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* search(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode){
+    auto PathFinder::search(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode) -> BasicArrayList*{
 
     BasicArrayList* list = this->findPath(startPathFindingNode->geographicMapCellPosition, endPathFindingNode->geographicMapCellPosition);;
     
@@ -264,7 +262,7 @@ pathList->add(list);
 
                 //@Throws(Exception.constructor)
             
-    public: void searchStart(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode, MultipassState* multipassState){
+    auto PathFinder::searchStart(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode, MultipassState* multipassState) -> void{
 this->findPathStart(startPathFindingNode->geographicMapCellPosition, endPathFindingNode->geographicMapCellPosition, multipassState);
     
 }
@@ -272,7 +270,7 @@ this->findPathStart(startPathFindingNode->geographicMapCellPosition, endPathFind
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* searchN(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode, MultipassState* multipassState){
+    auto PathFinder::searchN(PathFindingNode* startPathFindingNode, PathFindingNode* endPathFindingNode, MultipassState* multipassState) -> BasicArrayList*{
 
     BasicArrayList* list = this->findPathEnd(startPathFindingNode->geographicMapCellPosition, endPathFindingNode->geographicMapCellPosition, multipassState);;
     
@@ -311,7 +309,7 @@ multipassState->step= 0;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* findPath(GeographicMapCellPosition* start, GeographicMapCellPosition* target){
+    auto PathFinder::findPath(GeographicMapCellPosition* start, GeographicMapCellPosition* target) -> BasicArrayList*{
 this->openPriorityQueue->clear();
     
 this->closedSet->clear();
@@ -352,9 +350,9 @@ discoveryCalculation= this->mathUtil->abs(column -targetColumn) +this->mathUtil-
     
 node= this->costArray[column][row];
     
-node->pathFindingNodeCostInfoP.totalCostP= 0;
+node->pathFindingNodeCostInfoP->totalCostP= 0;
     
-node->pathFindingNodeCostInfoP.costToEndP= discoveryCalculation;
+node->pathFindingNodeCostInfoP->costToEndP= discoveryCalculation;
     
 }
 
@@ -388,7 +386,7 @@ current= this->openPriorityQueue->poll();
 this->closedSet->add(current);
     
 
-                        if(current === targetNode)
+                        if(current->equals(targetNode))
                         
                                     {
                                     
@@ -414,14 +412,14 @@ this->closedSet->add(current);
 
 
                         for (
-    int32_t column = current->geographicMapCellPosition.getColumn() -1;column < current->geographicMapCellPosition.getColumn() +2; column++)
+    int32_t column = current->geographicMapCellPosition->getColumn() -1;column < current->geographicMapCellPosition->getColumn() +2; column++)
         {
 
 
 
 
                         for (
-    int32_t row = current->geographicMapCellPosition.getRow() -1;row < current->geographicMapCellPosition.getRow() +2; row++)
+    int32_t row = current->geographicMapCellPosition->getRow() -1;row < current->geographicMapCellPosition->getRow() +2; row++)
         {
 
                         if(column > 0 && row > 0 && column < allBinaryTiledLayer->getColumns() && row < allBinaryTiledLayer->getRows() && geographicMapInterface->isOnMap(basicGeographicMapCellPositionFactory->getAt(column, row)))
@@ -435,14 +433,14 @@ this->closedSet->add(current);
                                     {
                                     
 
-                        continue
+                        continue;
                     
 
                                     }
                                 
 neighborInfo= neighbor->pathFindingNodeCostInfoP;
     
-calculatedCost= neighborInfo->costToEndP +neighborInfo->costFromStartP +current->pathFindingNodeCostInfoP.totalCostP;
+calculatedCost= neighborInfo->costToEndP +neighborInfo->costFromStartP +current->pathFindingNodeCostInfoP->totalCostP;
     
 
                         if(calculatedCost < neighborInfo->totalCostP || !this->openPriorityQueue->contains(neighbor))
@@ -480,19 +478,19 @@ neighbor->parent= current;
 
 }
 
-        while(!this->openPriorityQueue->isEmpty())
+        while(!this->openPriorityQueue->isEmpty());
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void findPathStart(GeographicMapCellPosition* start, GeographicMapCellPosition* target, MultipassState* multipassState){
+    auto PathFinder::findPathStart(GeographicMapCellPosition* start, GeographicMapCellPosition* target, MultipassState* multipassState) -> void{
 this->openPriorityQueue->clear();
     
 this->closedSet->clear();
@@ -533,9 +531,9 @@ discoveryCalculation= this->mathUtil->abs(column -targetColumn) +this->mathUtil-
     
 node= this->costArray[column][row];
     
-node->pathFindingNodeCostInfoP.totalCostP= 0;
+node->pathFindingNodeCostInfoP->totalCostP= 0;
     
-node->pathFindingNodeCostInfoP.costToEndP= discoveryCalculation;
+node->pathFindingNodeCostInfoP->costToEndP= discoveryCalculation;
     
 }
 
@@ -553,7 +551,7 @@ multipassState->step++;
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* findPathEnd(GeographicMapCellPosition* start, GeographicMapCellPosition* target, MultipassState* multipassState){
+    auto PathFinder::findPathEnd(GeographicMapCellPosition* start, GeographicMapCellPosition* target, MultipassState* multipassState) -> BasicArrayList*{
 
     BasicGeographicMap* geographicMapInterface = dynamic_cast<BasicGeographicMap*>(this->geographicMapInterface);;
     
@@ -580,7 +578,7 @@ current= this->openPriorityQueue->poll();
 this->closedSet->add(current);
     
 
-                        if(current === targetNode)
+                        if(current->equals(targetNode))
                         
                                     {
                                     
@@ -606,14 +604,14 @@ this->closedSet->add(current);
 
 
                         for (
-    int32_t column = current->geographicMapCellPosition.getColumn() -1;column < current->geographicMapCellPosition.getColumn() +2; column++)
+    int32_t column = current->geographicMapCellPosition->getColumn() -1;column < current->geographicMapCellPosition->getColumn() +2; column++)
         {
 
 
 
 
                         for (
-    int32_t row = current->geographicMapCellPosition.getRow() -1;row < current->geographicMapCellPosition.getRow() +2; row++)
+    int32_t row = current->geographicMapCellPosition->getRow() -1;row < current->geographicMapCellPosition->getRow() +2; row++)
         {
 
                         if(column > 0 && row > 0 && column < allBinaryTiledLayer->getColumns() && row < allBinaryTiledLayer->getRows() && geographicMapInterface->isOnMap(basicGeographicMapCellPositionFactory->getAt(column, row)))
@@ -627,14 +625,14 @@ this->closedSet->add(current);
                                     {
                                     
 
-                        continue
+                        continue;
                     
 
                                     }
                                 
 neighborInfo= neighbor->pathFindingNodeCostInfoP;
     
-calculatedCost= neighborInfo->costToEndP +neighborInfo->costFromStartP +current->pathFindingNodeCostInfoP.totalCostP;
+calculatedCost= neighborInfo->costToEndP +neighborInfo->costFromStartP +current->pathFindingNodeCostInfoP->totalCostP;
     
 
                         if(calculatedCost < neighborInfo->totalCostP || !this->openPriorityQueue->contains(neighbor))
@@ -687,17 +685,17 @@ total++;
                                 
 }
 
-        while(!this->openPriorityQueue->isEmpty())
+        while(!this->openPriorityQueue->isEmpty());
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    private: BasicArrayList* extractPath(GeographicMapCellPosition* start, PathFindingNodeCost* current){
+    auto PathFinder::extractPath(GeographicMapCellPosition* start, PathFindingNodeCost* current) -> BasicArrayList*{
 
     BasicArrayList* path = new BasicArrayListD();;
     
@@ -723,7 +721,6 @@ this->basicArrayListUtil->reverse(path);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_CPP

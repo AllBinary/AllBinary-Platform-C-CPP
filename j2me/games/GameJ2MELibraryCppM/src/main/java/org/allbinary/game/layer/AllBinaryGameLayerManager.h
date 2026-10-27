@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYERMANAGER_H
         #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYERMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,39 +38,17 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/game/GameInfo.h>
-
-      
-#include <org/allbinary/game/input/NullPlayerGameInputComposite.h>
-
-      
-#include <org/allbinary/game/input/PlayerGameInputCompositeInterface.h>
-
-      
-#include <org/allbinary/graphics/ItemColorFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
+class GameInfo;
+class NullPlayerGameInputComposite;
+class PlayerGameInputCompositeInterface;
+class ItemColorFactory;
+class BasicColor;
+class BasicColorFactory;
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <org/allbinary/layer/LayerProcessor.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class LayerProcessor;
+class NullUtil;
+class SmallIntegerSingletonFactory;
+class BasicArrayList;
 
 
 
@@ -85,13 +68,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryGameLayerManager: public AllBinaryLayerManager {
 
-    private: static inline Object* NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* NULL_ALLBINARY_LAYER_MANAGER;
 
     public: static AllBinaryGameLayerManager* getNullInstance();
 
-    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(22);
+    public: static int32_t ID;
 
     private: BasicColor* backgroundBasicColor;
 
@@ -99,7 +86,7 @@ class AllBinaryGameLayerManager: public AllBinaryLayerManager {
 
     private: GameInfo* gameInfo;
 
-    private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface = NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE;
+    private: PlayerGameInputCompositeInterface* playerGameInputCompositeInterface;
 
 public: AllBinaryGameLayerManager(BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor, GameInfo* gameInfo);
 
@@ -131,3 +118,43 @@ public: AllBinaryGameLayerManager(BasicColor* backgroundBasicColor, BasicColor* 
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYERMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYERMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYGAMELAYERMANAGER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/GameInfo.h>)
+#include <org/allbinary/game/GameInfo.h>
+#endif
+#if __has_include(<org/allbinary/game/input/NullPlayerGameInputComposite.h>)
+#include <org/allbinary/game/input/NullPlayerGameInputComposite.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlayerGameInputCompositeInterface.h>)
+#include <org/allbinary/game/input/PlayerGameInputCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/ItemColorFactory.h>)
+#include <org/allbinary/graphics/ItemColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerProcessor.h>)
+#include <org/allbinary/layer/LayerProcessor.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

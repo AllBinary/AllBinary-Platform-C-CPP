@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYER_CPP
+        #define ORG_ALLBINARY_LAYER_ALLBINARYLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/AllBinaryLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -96,23 +106,10 @@
         #include "org/allbinary/layer/Layer.h"
 #include "org/allbinary/layer/LayerInterface.h"
 
-class AllBinaryLayer: public Layer, public LayerInterface {
+auto AllBinaryLayer::NULL_ALLBINARY_LAYER_owner() -> AllBinaryLayer* { static std::unique_ptr<AllBinaryLayer> value(new AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION)); return value.get(); }
+AllBinaryLayer* AllBinaryLayer::NULL_ALLBINARY_LAYER = AllBinaryLayer::NULL_ALLBINARY_LAYER_owner();
 
-    public: static AllBinaryLayer* NULL_ALLBINARY_LAYER() { static std::unique_ptr<AllBinaryLayer> value(new AllBinaryLayer(StringUtil::getInstance()->EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION)); return value.get(); }
-
-    private: static inline const std::string TYPE = "Type: ";
-
-    protected: ViewPositionEvent* viewPositionEvent = new ViewPositionEvent(this);
-
-    private: int32_t halfWidth= 0;
-
-    private: int32_t halfHeight= 0;
-
-    private: std::string name;
-
-    private: ViewPositionBase* viewPosition = ViewPositionBase::NULL_VIEW_POSITION;
-
-public: AllBinaryLayer(std::string name, Rectangle* rectangle, ViewPositionBase* viewPosition) : Layer(rectangle->getWidth(), rectangle->getHeight()){
+AllBinaryLayer::AllBinaryLayer(std::string name, Rectangle* rectangle, ViewPositionBase* viewPosition) : Layer(rectangle->getWidth(), rectangle->getHeight()), viewPositionEvent(new ViewPositionEvent(this)), viewPosition(ViewPositionBase::NULL_VIEW_POSITION){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -157,15 +154,15 @@ this->viewPosition->setAllbinaryLayer(this);
 
                 //@Throws(Exception.constructor)
             
-    public: void onChangeEvent(ViewPositionEvent* layerManagerEvent){
+    auto AllBinaryLayer::onChangeEvent(ViewPositionEvent* layerManagerEvent) -> void{
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto AllBinaryLayer::paintThreed(Graphics* graphics) -> void{
 }
 
 
-    public: int32_t getX2(){
+    auto AllBinaryLayer::getX2() -> int32_t{
 
 
 
@@ -175,7 +172,7 @@ this->viewPosition->setAllbinaryLayer(this);
 }
 
 
-    public: int32_t getY2(){
+    auto AllBinaryLayer::getY2() -> int32_t{
 
 
 
@@ -185,7 +182,7 @@ this->viewPosition->setAllbinaryLayer(this);
 }
 
 
-    public: int32_t getZ2(){
+    auto AllBinaryLayer::getZ2() -> int32_t{
 
 
 
@@ -195,7 +192,7 @@ this->viewPosition->setAllbinaryLayer(this);
 }
 
 
-    public: std::string getName(){
+    auto AllBinaryLayer::getName() -> std::string{
 
 
 
@@ -205,13 +202,13 @@ this->viewPosition->setAllbinaryLayer(this);
 }
 
 
-    protected: void setHalfWidth(int32_t halfWidth){
+    auto AllBinaryLayer::setHalfWidth(int32_t halfWidth) -> void{
 this->halfWidth= halfWidth;
     
 }
 
 
-    public: int32_t getHalfWidth(){
+    auto AllBinaryLayer::getHalfWidth() -> int32_t{
 
 
 
@@ -221,13 +218,13 @@ this->halfWidth= halfWidth;
 }
 
 
-    protected: void setHalfHeight(int32_t halfHeight){
+    auto AllBinaryLayer::setHalfHeight(int32_t halfHeight) -> void{
 this->halfHeight= halfHeight;
     
 }
 
 
-    public: int32_t getHalfHeight(){
+    auto AllBinaryLayer::getHalfHeight() -> int32_t{
 
 
 
@@ -237,7 +234,7 @@ this->halfHeight= halfHeight;
 }
 
 
-    public: int32_t getHalfDepth(){
+    auto AllBinaryLayer::getHalfDepth() -> int32_t{
 
 
 
@@ -247,7 +244,7 @@ this->halfHeight= halfHeight;
 }
 
 
-    public: ViewPositionBase* getViewPosition(){
+    auto AllBinaryLayer::getViewPosition() -> ViewPositionBase*{
 
 
 
@@ -257,13 +254,13 @@ this->halfHeight= halfHeight;
 }
 
 
-    public: void setViewPosition(ViewPositionBase* viewPosition){
+    auto AllBinaryLayer::setViewPosition(ViewPositionBase* viewPosition) -> void{
 this->viewPosition= viewPosition;
     
 }
 
 
-    public: std::vector<Group*> getGroupInterface(){
+    auto AllBinaryLayer::getGroupInterface() -> std::vector<Group*>{
 
 
 
@@ -273,7 +270,7 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: bool implmentsTickableInterface(){
+    auto AllBinaryLayer::implmentsTickableInterface() -> bool{
 
 
 
@@ -283,7 +280,7 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: bool implmentsGameInputInterface(){
+    auto AllBinaryLayer::implmentsGameInputInterface() -> bool{
 
 
 
@@ -293,7 +290,7 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: bool implmentsArtificialIntelligenceCompositeInterface(){
+    auto AllBinaryLayer::implmentsArtificialIntelligenceCompositeInterface() -> bool{
 
 
 
@@ -303,7 +300,7 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: bool implmentsCollidableInterface(){
+    auto AllBinaryLayer::implmentsCollidableInterface() -> bool{
 
 
 
@@ -313,7 +310,7 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: bool implementsThreedInterface(){
+    auto AllBinaryLayer::implementsThreedInterface() -> bool{
 
 
 
@@ -323,7 +320,7 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: int32_t getType(){
+    auto AllBinaryLayer::getType() -> int32_t{
 
 
 
@@ -333,7 +330,7 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: int32_t getMultiPlayerType(){
+    auto AllBinaryLayer::getMultiPlayerType() -> int32_t{
 
 
 
@@ -343,7 +340,7 @@ this->viewPosition= viewPosition;
 }
 
 
-    public: void toStringAppend(StringMaker* stringBuffer){
+    auto AllBinaryLayer::toStringAppend(StringMaker* stringBuffer) -> void{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -394,7 +391,7 @@ stringBuffer->appendint(this->getHeight());
 }
 
 
-    public: std::string toString(){
+    auto AllBinaryLayer::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -409,7 +406,6 @@ this->toStringAppend(stringBuffer);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_ALLBINARYLAYER_CPP

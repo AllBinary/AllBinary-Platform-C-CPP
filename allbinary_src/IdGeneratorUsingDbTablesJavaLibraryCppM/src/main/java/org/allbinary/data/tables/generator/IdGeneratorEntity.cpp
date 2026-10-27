@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/generator/IdGeneratorEntity.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,42 +82,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/generator/IdGeneratorEntityInterface.h"
 
-class IdGeneratorEntity: public AbSqlBean, public IdGeneratorEntityInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string tableName = "idgenerator";
-
-    private: std::string tableData;
-
-    const std::string NAME = "NAME";
-
-    const std::string VALUE = "VALUE";
-
-public: IdGeneratorEntity() : AbSqlBean(new UserDbInitInfo()){
+IdGeneratorEntity::IdGeneratorEntity() : AbSqlBean(new UserDbInitInfo()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->tableData= (new StringMaker())->append(this->sqlStrings.CREATE_TABLE)->append(tableName)->append(this->sqlStrings.START)->append(NAME)->append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL)->append(VALUE)->append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings.PRIMARY_KEY)->append(NAME)->append(this->sqlStrings.END)->toString();
+this->tableData= (new StringMaker())->append(this->sqlStrings->CREATE_TABLE)->append(tableName)->append(this->sqlStrings->START)->append(NAME)->append(this->sqlTypeStrings->MAX_CHAR_COLUMN_NOT_NULL)->append(VALUE)->append(this->sqlTypeStrings->MAX_BIG_INT_UNSIGNED_NOT_NULL)->append(this->sqlStrings->PRIMARY_KEY)->append(NAME)->append(this->sqlStrings->END)->toString();
     
-super.setTableName(this->tableName);
+AbSqlBean::setTableName(this->tableName);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int64_t get(std::string name){
+    auto IdGeneratorEntity::get(std::string name) -> int64_t{
 
     HashMap<Object*, Object*>* keysAndValues = StdUtil::getInstance()->createHashMap();;
     
 keysAndValues->put(this->NAME, name);
     
 
-    HashMap<Object*, Object*>* hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*>* hashMap = AbSqlBean::getRow(keysAndValues);;
     
 
                         if((get).compareTo(name) != 0)
@@ -116,7 +115,7 @@ keysAndValues->put(this->NAME, name);
                                     
 
 
-                            throw new Exception("results do not match");
+                            throw Exception("results do not match");
                     
 
                                     }
@@ -133,43 +132,43 @@ keysAndValues->put(this->NAME, name);
 }
 
 
-    public: void insert(BasicArrayList* values){
+    auto IdGeneratorEntity::insert(BasicArrayList* values) -> void{
 
         try {
-            super.insert(values);
+            AbSqlBean::insert(values);
     
-this->logUtil->putF(this->commonStrings.SUCCESS, this, INSERT);
+this->logUtil->putF(this->commonStrings->SUCCESS, this, INSERT);
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.FAILURE, this, INSERT, &e);
+this->logUtil->put(this->commonStrings->FAILURE, this, INSERT, &e);
     
 }
 
 }
 
 
-    public: void delete_(std::string value){
+    auto IdGeneratorEntity::delete_(std::string value) -> void{
 
         try {
-            super.deleteWhere(this->NAME, value);
+            AbSqlBean::deleteWhere(this->NAME, value);
     
-this->logUtil->putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
+this->logUtil->putF(this->commonStrings->SUCCESS, this, this->commonStrings->delete_);
     
 
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil->put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, &e);
+this->logUtil->put(this->commonStrings->FAILURE, this, this->commonStrings->delete_, &e);
     
 }
 
 }
 
 
-    public: void update(std::string name, int64_t value){
+    auto IdGeneratorEntity::update(std::string name, int64_t value) -> void{
 
     HashMap<Object*, Object*>* map = StdUtil::getInstance()->createHashMap();;
     
@@ -182,15 +181,15 @@ this->update(map);
 }
 
 
-    public: void update(HashMap<Object*, Object*>* hashMap){
-super.updateWhere(this->NAME, hashMap->get(this->NAME), hashMap);
+    auto IdGeneratorEntity::update(HashMap<Object*, Object*>* hashMap) -> void{
+AbSqlBean::updateWhere(this->NAME, hashMap->get(this->NAME), hashMap);
     
 }
 
 
-    public: std::string createTable(){
+    auto IdGeneratorEntity::createTable() -> std::string{
 
-    std::string returnStr = super.createTable(tableData);;
+    std::string returnStr = AbSqlBean::createTable(tableData);;
     
 
 
@@ -201,17 +200,16 @@ super.updateWhere(this->NAME, hashMap->get(this->NAME), hashMap);
 }
 
 
-    public: std::string dropTable(){
+    auto IdGeneratorEntity::dropTable() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.dropTable();;
+                        return AbSqlBean::dropTable();;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITY_CPP

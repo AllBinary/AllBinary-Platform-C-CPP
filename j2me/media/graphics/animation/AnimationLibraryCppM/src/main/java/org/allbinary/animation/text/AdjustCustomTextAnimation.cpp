@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TEXT_ADJUSTCUSTOMTEXTANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_TEXT_ADJUSTCUSTOMTEXTANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/text/AdjustCustomTextAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,13 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/text/CustomTextAnimation.h"
 
-class AdjustCustomTextAnimation: public CustomTextAnimation {
 
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : CustomTextAnimation(text, fontSize, animationBehavior){
+AdjustCustomTextAnimation::AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : CustomTextAnimation(text, fontSize, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -70,7 +75,7 @@ this->dy= dy;
 }
 
 
-    public: int32_t getDx(){
+    auto AdjustCustomTextAnimation::getDx() -> int32_t{
 
 
 
@@ -80,13 +85,13 @@ this->dy= dy;
 }
 
 
-    public: void setDx(int32_t dx){
+    auto AdjustCustomTextAnimation::setDx(int32_t dx) -> void{
 this->dx= dx;
     
 }
 
 
-    public: int32_t getDy(){
+    auto AdjustCustomTextAnimation::getDy() -> int32_t{
 
 
 
@@ -96,19 +101,18 @@ this->dx= dx;
 }
 
 
-    public: void setDy(int32_t dy){
+    auto AdjustCustomTextAnimation::setDy(int32_t dy) -> void{
 this->dy= dy;
     
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this->dx, y +this->dy);
+    auto AdjustCustomTextAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+CustomTextAnimation::paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TEXT_ADJUSTCUSTOMTEXTANIMATION_CPP

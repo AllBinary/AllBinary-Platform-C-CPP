@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_COMMANDTAG_CPP
+        #define TAGS_COMMANDTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/CommandTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,23 +55,18 @@
         #include "tags/CustomTagSupport.h"
 #include "tags/TagStrings.h"
 
-class CommandTag: public CustomTagSupport {
 
-    protected: TagStrings* tagStrings = TagStrings::getInstance();
-
-    private: std::string command;
-
-public: CommandTag(){
+CommandTag::CommandTag() : tagStrings(TagStrings::getInstance()){
 }
 
 
-    public: void setCommand(std::string command){
+    auto CommandTag::setCommand(std::string command) -> void{
 this->command= command;
     
 }
 
 
-    public: std::string getCommand(){
+    auto CommandTag::getCommand() -> std::string{
 
 
 
@@ -71,7 +76,6 @@ this->command= command;
 }
 
 
-};
 
-            
 
+        #endif //TAGS_COMMANDTAG_CPP

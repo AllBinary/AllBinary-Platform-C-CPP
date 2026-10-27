@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PLATFORM_GRAPHICS_PLATFORMBITMAPBASE_CPP
+        #define ORG_ALLBINARY_PLATFORM_GRAPHICS_PLATFORMBITMAPBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/platform/graphics/PlatformBitmapBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,17 +67,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PlatformBitmapBase
-            : public Object
-         {
 
-    public: static PlatformBitmapBase* NULL_PLATFORM_BITMAP_BASE() { static std::unique_ptr<PlatformBitmapBase> value(new PlatformBitmapBase()); return value.get(); }
+PlatformBitmapBase::PlatformBitmapBase() : basicColor(BasicColorFactory::getInstance()->NULL_COLOR) {
+        }
+        auto PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE_owner() -> PlatformBitmapBase* { static std::unique_ptr<PlatformBitmapBase> value(new PlatformBitmapBase()); return value.get(); }
+PlatformBitmapBase* PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE = PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE_owner();
 
-    public: int32_t alpha = 255;
-
-    public: BasicColor* basicColor = BasicColorFactory::getInstance()->NULL_COLOR;
-
-    public: int32_t getWidth(){
+    auto PlatformBitmapBase::getWidth() -> int32_t{
 
 
 
@@ -77,7 +83,7 @@ class PlatformBitmapBase
 }
 
 
-    public: int32_t getHeight(){
+    auto PlatformBitmapBase::getHeight() -> int32_t{
 
 
 
@@ -87,7 +93,7 @@ class PlatformBitmapBase
 }
 
 
-    public: Image* getImage(){
+    auto PlatformBitmapBase::getImage() -> Image*{
 
 
 
@@ -97,7 +103,6 @@ class PlatformBitmapBase
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PLATFORM_GRAPHICS_PLATFORMBITMAPBASE_CPP

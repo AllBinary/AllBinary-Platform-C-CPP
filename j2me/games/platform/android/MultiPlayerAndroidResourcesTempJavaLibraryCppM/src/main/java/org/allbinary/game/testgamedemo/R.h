@@ -14,6 +14,11 @@
         #ifndef ORG_ALLBINARY_GAME_TESTGAMEDEMO_R_H
         #define ORG_ALLBINARY_GAME_TESTGAMEDEMO_R_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -41,23 +46,37 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class R
-            : public Object
+            : public virtual Object
          {
+public: class attr;
+public: class drawable;
+public: class id;
+public: class layout;
+public: class raw;
+public: class string;
 
 //inner= member=true isStatic=static
-class attr
-            : public Object
+public: class attr
+            : public virtual Object
          {
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
+
+            
+    public: attr();
+        
 };
 
             
 //inner= member=true isStatic=static
-class drawable
-            : public Object
+public: class drawable
+            : public virtual Object
          {
 /*Static stuff is not allowed for CPP inner classes*/
     public: static inline const int32_t testgamedemo_icon = 0x7f020000;
@@ -66,12 +85,16 @@ class drawable
 /**/
 
 
+
+            
+    public: drawable();
+        
 };
 
             
 //inner= member=true isStatic=static
-class id
-            : public Object
+public: class id
+            : public virtual Object
          {
 /*Static stuff is not allowed for CPP inner classes*/
     public: static inline const int32_t ad_area_bottom = 0x7f060002;
@@ -88,12 +111,16 @@ class id
 /**/
 
 
+
+            
+    public: id();
+        
 };
 
             
 //inner= member=true isStatic=static
-class layout
-            : public Object
+public: class layout
+            : public virtual Object
          {
 /*Static stuff is not allowed for CPP inner classes*/
     public: static inline const int32_t testgamedemo_ad_overlay_layout = 0x7f030000;
@@ -104,12 +131,16 @@ class layout
 /**/
 
 
+
+            
+    public: layout();
+        
 };
 
             
 //inner= member=true isStatic=static
-class raw
-            : public Object
+public: class raw
+            : public virtual Object
          {
 /*Static stuff is not allowed for CPP inner classes*/
     public: static inline const int32_t error = 0x7f040000;
@@ -202,12 +233,16 @@ class raw
 /**/
 
 
+
+            
+    public: raw();
+        
 };
 
             
 //inner= member=true isStatic=static
-class string
-            : public Object
+public: class string
+            : public virtual Object
          {
 /*Static stuff is not allowed for CPP inner classes*/
     public: static inline const int32_t progressbar_in_title_string = 0x7f050001;
@@ -216,12 +251,27 @@ class string
 /**/
 
 
+
+            
+    public: string();
+        
 };
 
             
+
+            
+    public: R();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_TESTGAMEDEMO_R_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TESTGAMEDEMO_R_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TESTGAMEDEMO_R_H_COMPLETE
+        
+        #endif
+    

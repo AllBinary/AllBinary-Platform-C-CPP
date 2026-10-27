@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCES_H
         #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>
-
-      
-#include <org/allbinary/image/ImageCache.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class BaseResourceAnimationInterfaceFactoryInterfaceFactory;
+class ImageCache;
+class LogUtil;
 
 
 
@@ -59,15 +58,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OnDemandResources
-            : public Object
+            : public virtual Object
          {
 
-    public: static OnDemandResources* NULL_ON_DEMAND_RESOURCES() { static std::unique_ptr<OnDemandResources> value(new OnDemandResources()); return value.get(); }
+    private: static OnDemandResources* NULL_ON_DEMAND_RESOURCES_owner();
+    public: static OnDemandResources* NULL_ON_DEMAND_RESOURCES;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-protected: OnDemandResources();
+/*protected*/ public: OnDemandResources();
 
                 //@Throws(Exception.constructor)
             
@@ -87,3 +91,19 @@ protected: OnDemandResources();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCES_H_COMPLETE
+        #if __has_include(<org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>)
+#include <org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/image/ImageCache.h>)
+#include <org/allbinary/image/ImageCache.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+        #endif
+    

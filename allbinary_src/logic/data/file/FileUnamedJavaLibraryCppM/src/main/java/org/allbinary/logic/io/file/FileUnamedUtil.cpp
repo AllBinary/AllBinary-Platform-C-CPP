@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/FileUnamedUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,25 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FileUnamedUtil
-            : public Object
-         {
 
-    private: static FileUnamedUtil* instance() { static std::unique_ptr<FileUnamedUtil> value(new FileUnamedUtil()); return value.get(); }
+FileUnamedUtil::FileUnamedUtil() : commonSeps(CommonSeps::getInstance()) {
+        }
+        auto FileUnamedUtil::instance_owner() -> FileUnamedUtil* { static std::unique_ptr<FileUnamedUtil> value(new FileUnamedUtil()); return value.get(); }
+FileUnamedUtil* FileUnamedUtil::instance = FileUnamedUtil::instance_owner();
 
-    public: static FileUnamedUtil* getInstance(){
+    auto FileUnamedUtil::getInstance() -> FileUnamedUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileUnamedUtil::instance();
+                        return FileUnamedUtil::instance;
     
 }
 
 
-    private: CommonSeps* commonSeps = CommonSeps::getInstance();
-
-    public: std::string process(std::string string){
+    auto FileUnamedUtil::process(std::string string) -> std::string{
 
     std::string simplifiedString = JavaString::toLowerCase(string);;
     
@@ -83,7 +91,6 @@ simplifiedString= JavaString::replace(simplifiedString, this->commonSeps->DASH, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILEUNAMEDUTIL_CPP

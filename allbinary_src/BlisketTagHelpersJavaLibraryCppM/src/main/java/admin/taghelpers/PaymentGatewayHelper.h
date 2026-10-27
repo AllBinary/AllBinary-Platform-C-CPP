@@ -21,6 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H
         #define ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,41 +35,17 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/http/HttpServletRequest.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/business/installer/Portion.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterfaceFactory.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h>
-
-      
-#include <org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntityFactory.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/communication/sql/AbSqlTableUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class HttpServletRequest;
+class PageContext;
+class Portion;
+class PaymentGatewayInterface;
+class PaymentGatewayInterfaceFactory;
+class BasicPaymentTypeUtil;
+class PaymentGatewayEntityFactory;
+class WeblisketSession;
+class LogUtil;
+class AbSqlTableUtil;
+class StringMaker;
 
 
 
@@ -85,9 +66,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/BasicTable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PaymentGatewayHelper: public BasicTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: WeblisketSession* weblisketSession;
 
@@ -117,3 +102,49 @@ public: PaymentGatewayHelper(HashMap<Object*, Object*>* hashMap, PageContext* pa
 
 
         #endif //ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H_COMPLETE)
+        #define ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/http/HttpServletRequest.h>)
+#include <javax/servlet/http/HttpServletRequest.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/business/installer/Portion.h>)
+#include <org/allbinary/business/installer/Portion.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterfaceFactory.h>)
+#include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterfaceFactory.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h>)
+#include <org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h>
+#endif
+#if __has_include(<org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntityFactory.h>)
+#include <org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntityFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/session/WeblisketSession.h>)
+#include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/sql/AbSqlTableUtil.h>)
+#include <org/allbinary/logic/communication/sql/AbSqlTableUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include("admin/taghelpers/BasicTable.h")
+#include "admin/taghelpers/BasicTable.h"
+#endif
+
+        #endif
+    

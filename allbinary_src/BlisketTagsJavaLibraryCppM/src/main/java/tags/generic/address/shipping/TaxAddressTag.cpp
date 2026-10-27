@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_GENERIC_ADDRESS_SHIPPING_TAXADDRESSTAG_CPP
+        #define TAGS_GENERIC_ADDRESS_SHIPPING_TAXADDRESSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/generic/address/shipping/TaxAddressTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TaxAddressTag: public StoreValidationTransformTag {
 
-public: TaxAddressTag(){
+TaxAddressTag::TaxAddressTag(){
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto TaxAddressTag::doStartTag() -> int32_t{
 
         try {
             
@@ -75,7 +84,7 @@ public: TaxAddressTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -86,7 +95,7 @@ this->setObjectFile("views.generic.address.shipping.TaxValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->NEW) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -97,7 +106,7 @@ this->setObjectFile("views.generic.address.shipping.NewValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.INSERT) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->INSERT) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -108,7 +117,7 @@ this->setObjectFile("views.generic.address.shipping.AddTaxValidationView");
                                     }
                                 
                              else 
-                        if(this->getCommand()->compareTo(this->commonStrings.UPDATE) == 0)
+                        if(this->getCommand()->compareTo(this->commonStrings->UPDATE) == 0)
                         
                                     {
                                     this->setName("Basic Shipping Address View");
@@ -122,7 +131,7 @@ this->setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -131,7 +140,7 @@ this->setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -139,7 +148,7 @@ this->setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -171,7 +180,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_GENERIC_ADDRESS_SHIPPING_TAXADDRESSTAG_CPP

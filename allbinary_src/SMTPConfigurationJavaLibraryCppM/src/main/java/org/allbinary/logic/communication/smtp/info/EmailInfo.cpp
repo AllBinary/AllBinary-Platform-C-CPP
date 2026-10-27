@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/info/EmailInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,21 +64,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/smtp/info/BasicEmailInfo.h"
 
-class EmailInfo
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+EmailInfo::EmailInfo(BasicEmailInfo* basicEmailInfo) : logUtil(LogUtil::getInstance()){
 
-    private: BasicEmailInfo* basicEmailInfo;
-
-    private: std::string htmlAttachment;
-
-    private: std::string contentBase;
-
-public: EmailInfo(BasicEmailInfo* basicEmailInfo){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -86,9 +85,9 @@ this->init(basicEmailInfo,
 }
 
 
-public: EmailInfo(BasicEmailInfo* basicEmailInfo, std::string htmlAttachment, std::string contentBase){
+EmailInfo::EmailInfo(BasicEmailInfo* basicEmailInfo, std::string htmlAttachment, std::string contentBase) : logUtil(LogUtil::getInstance()){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     
@@ -106,7 +105,7 @@ this->init(basicEmailInfo,
 }
 
 
-    private: void init(BasicEmailInfo* basicEmailInfo, std::string htmlAttachment, std::string contentBase){
+    auto EmailInfo::init(BasicEmailInfo* basicEmailInfo, std::string htmlAttachment, std::string contentBase) -> void{
 this->basicEmailInfo= basicEmailInfo;
     
 this->htmlAttachment= htmlAttachment;
@@ -116,7 +115,7 @@ this->contentBase= contentBase;
 }
 
 
-    public: BasicEmailInfo* getBasicEmailInfo(){
+    auto EmailInfo::getBasicEmailInfo() -> BasicEmailInfo*{
 
 
 
@@ -126,7 +125,7 @@ this->contentBase= contentBase;
 }
 
 
-    public: std::string getHtmlAttachment(){
+    auto EmailInfo::getHtmlAttachment() -> std::string{
 
 
 
@@ -136,7 +135,7 @@ this->contentBase= contentBase;
 }
 
 
-    public: std::string getContentBase(){
+    auto EmailInfo::getContentBase() -> std::string{
 
 
 
@@ -146,17 +145,16 @@ this->contentBase= contentBase;
 }
 
 
-    public: std::string toString(){
+    auto EmailInfo::toString() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Email Info: \n " +this->getBasicEmailInfo()->toString();
+                        return JavaString::valueOf("Email Info: \n ") +JavaString::valueOf(this->getBasicEmailInfo()->toString());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_EMAILINFO_CPP

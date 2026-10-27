@@ -21,18 +21,19 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_EMPTYRACERACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_EMPTYRACERACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h>
-
-      
+class CommonStrings;
+class PathFindingNodeCostInfoData;
 
 
 
@@ -52,11 +53,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h"
-#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
+class RaceTrackGeographicMapCellType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class EmptyRaceRaceTrackGeographicMapCellTypeFactory: public RaceTrackGeographicMapCellTypeFactory {
 
-    private: static EmptyRaceRaceTrackGeographicMapCellTypeFactory* instanceC() { static std::unique_ptr<EmptyRaceRaceTrackGeographicMapCellTypeFactory> value(new EmptyRaceRaceTrackGeographicMapCellTypeFactory()); return value.get(); }
+    private: static EmptyRaceRaceTrackGeographicMapCellTypeFactory* instanceC_owner();
+    private: static EmptyRaceRaceTrackGeographicMapCellTypeFactory* instanceC;
 
     public: static EmptyRaceRaceTrackGeographicMapCellTypeFactory* getInstance();
 
@@ -68,3 +74,22 @@ private: EmptyRaceRaceTrackGeographicMapCellTypeFactory();
 
 
         #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_EMPTYRACERACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_EMPTYRACERACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_EMPTYRACERACETRACKGEOGRAPHICMAPCELLTYPEFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h>)
+#include <org/allbinary/media/graphics/geography/pathfinding/PathFindingNodeCostInfoData.h>
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h"
+#endif
+#if __has_include("org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h")
+#include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h"
+#endif
+
+        #endif
+    

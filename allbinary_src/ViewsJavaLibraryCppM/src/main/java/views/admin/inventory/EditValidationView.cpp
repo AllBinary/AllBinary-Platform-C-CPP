@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_INVENTORY_EDITVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_INVENTORY_EDITVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/inventory/EditValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -90,11 +100,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/inventory/InventoryItemView.h"
 
-class EditValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-    private: std::string id;
-
-public: EditValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
+EditValidationView::EditValidationView(TransformInfoInterface* transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -108,7 +115,7 @@ this->getFormData();
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(){
+    auto EditValidationView::getFormData() -> void{
 
     HashMap<Object*, Object*>* hashMap = (new RequestParams(request))->toHashMap();;
     
@@ -117,7 +124,7 @@ this->getFormData();
                                     nullptr
                                 )
                         
-                                    throw new Exception("No Request Params Found");
+                                    throw Exception("No Request Params Found");
                                 
 this->id= hashMap->get(basicItemData.ID);
     
@@ -126,7 +133,7 @@ this->id= hashMap->get(basicItemData.ID);
 
                 //@Throws(Exception.constructor)
             
-    public: bool isValid(){
+    auto EditValidationView::isValid() -> bool{
 
                         if(false || !StringValidationUtil::getInstance()->isNumber(this->id))
                         
@@ -158,7 +165,7 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
                                     }
                                 
 
-    int32_t downloadable = Integer.parseInt(this->itemInterface.getDownloads());;
+    int32_t downloadable = Integer.parseInt(this->itemInterface->getDownloads());;
     
 
                         if(downloadable != 0)
@@ -167,7 +174,7 @@ this->itemInterface= InventoryEntityFactory::getInstance()->getInventoryEntityIn
                                     
     DownloadItemsEntity* downloadItemsEntity = DownloadItemsEntityFactory::getInstance()->getDownloadItemsEntityInstance();;
     
-this->downloadableItemVector= downloadItemsEntity->getForItem(this->itemInterface.getId());
+this->downloadableItemVector= downloadItemsEntity->getForItem(this->itemInterface->getId());
     
 
                                     }
@@ -181,7 +188,7 @@ this->downloadableItemVector= downloadItemsEntity->getForItem(this->itemInterfac
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -191,7 +198,7 @@ this->downloadableItemVector= downloadItemsEntity->getForItem(this->itemInterfac
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -203,7 +210,7 @@ this->downloadableItemVector= downloadItemsEntity->getForItem(this->itemInterfac
 
                 //@Throws(MoneyException.constructor)
             
-    public: std::string validationInfo(){
+    auto EditValidationView::validationInfo() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -236,7 +243,6 @@ this->downloadableItemVector= downloadItemsEntity->getForItem(this->itemInterfac
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_INVENTORY_EDITVALIDATIONVIEW_CPP

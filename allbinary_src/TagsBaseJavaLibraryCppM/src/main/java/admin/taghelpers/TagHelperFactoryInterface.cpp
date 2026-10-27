@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_TAGHELPERFACTORYINTERFACE_CPP
+        #define ADMIN_TAGHELPERS_TAGHELPERFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/TagHelperFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,13 +66,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TagHelperFactoryInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor, LicensingException.constructor)
-            
-    public: virtual Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) = 0;
 
-};
 
-            
-
+        #endif //ADMIN_TAGHELPERS_TAGHELPERFACTORYINTERFACE_CPP

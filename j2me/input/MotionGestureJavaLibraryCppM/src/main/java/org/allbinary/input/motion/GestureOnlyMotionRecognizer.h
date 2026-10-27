@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTUREONLYMOTIONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTUREONLYMOTIONRECOGNIZER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/graphics/CustomGPoint.h>
-
-      
-#include <org/allbinary/graphics/GPointCircularPool.h>
-
-      
-#include <org/allbinary/input/motion/gesture/MotionGestureRecognizer.h>
-
-      
+class CustomGPoint;
+class GPointCircularPool;
+class MotionGestureRecognizer;
 
 
 
@@ -58,11 +57,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/MotionRecognizer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GestureOnlyMotionRecognizer: public MotionRecognizer {
 
     private: static inline int32_t index = 0;
 
-    private: static GPointCircularPool* pointCircularPool() { static std::unique_ptr<GPointCircularPool> value(new GPointCircularPool(40)); return value.get(); }
+    private: static GPointCircularPool* pointCircularPool_owner();
+    private: static GPointCircularPool* pointCircularPool;
 
     private: MotionGestureRecognizer* motionGestureRecognizer;
 
@@ -88,3 +92,22 @@ public: GestureOnlyMotionRecognizer();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_GESTUREONLYMOTIONRECOGNIZER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_GESTUREONLYMOTIONRECOGNIZER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTUREONLYMOTIONRECOGNIZER_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/CustomGPoint.h>)
+#include <org/allbinary/graphics/CustomGPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPointCircularPool.h>)
+#include <org/allbinary/graphics/GPointCircularPool.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/MotionGestureRecognizer.h>)
+#include <org/allbinary/input/motion/gesture/MotionGestureRecognizer.h>
+#endif
+#if __has_include("org/allbinary/input/motion/MotionRecognizer.h")
+#include "org/allbinary/input/motion/MotionRecognizer.h"
+#endif
+
+        #endif
+    

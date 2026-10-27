@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_ACTIVITYFRACTUREUTIL_CPP
+        #define ORG_ALLBINARY_ANDROID_ACTIVITYFRACTUREUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/ActivityFractureUtil.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -52,21 +62,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ActivityFractureUtil
-            : public Object
-         {
 
+ActivityFractureUtil::ActivityFractureUtil() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: void process(Activity* activity){
+    auto ActivityFractureUtil::process(Activity* activity) -> void{
 }
 
 
-    public: void setFullScreen(Activity* activity){
+    auto ActivityFractureUtil::setFullScreen(Activity* activity) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_ACTIVITYFRACTUREUTIL_CPP

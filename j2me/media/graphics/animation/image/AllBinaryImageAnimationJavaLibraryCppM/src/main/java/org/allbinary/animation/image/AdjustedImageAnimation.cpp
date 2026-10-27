@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/AdjustedImageAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,13 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageAnimation.h"
 
-class AdjustedImageAnimation: public ImageAnimation {
 
-    private: int32_t dx= 0;
-
-    private: int32_t dy= 0;
-
-public: AdjustedImageAnimation(Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : ImageAnimation(image, animationBehavior){
+AdjustedImageAnimation::AdjustedImageAnimation(Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : ImageAnimation(image, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -75,7 +80,7 @@ this->init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t dx, int32_t dy){
+    auto AdjustedImageAnimation::init(int32_t dx, int32_t dy) -> void{
 this->setDx(dx);
     
 this->setDy(dy);
@@ -83,19 +88,19 @@ this->setDy(dy);
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this->dx, y +this->dy);
+    auto AdjustedImageAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+ImageAnimation::paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 
 
-    public: void setDx(int32_t dx){
+    auto AdjustedImageAnimation::setDx(int32_t dx) -> void{
 this->dx= dx;
     
 }
 
 
-    public: int32_t getDx(){
+    auto AdjustedImageAnimation::getDx() -> int32_t{
 
 
 
@@ -105,13 +110,13 @@ this->dx= dx;
 }
 
 
-    public: void setDy(int32_t dy){
+    auto AdjustedImageAnimation::setDy(int32_t dy) -> void{
 this->dy= dy;
     
 }
 
 
-    public: int32_t getDy(){
+    auto AdjustedImageAnimation::getDy() -> int32_t{
 
 
 
@@ -121,7 +126,6 @@ this->dy= dy;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEANIMATION_CPP

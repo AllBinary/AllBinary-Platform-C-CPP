@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -53,16 +58,21 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/j2me/workarea/canvas/event/EventListenerList.h"
-#include "org/allbinary/graphics/j2me/workarea/canvas/event/EventListener.h"
-#include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventListener.h"
-#include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h"
+        class EventListenerList;
+class EventListener;
+class MyCanvasEventListener;
+class MyCanvasEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MyCanvasEventService
-            : public Object
+            : public virtual Object
          {
 
-    private: static javax::swing::event::EventListenerList* listenerList() { static std::unique_ptr<javax::swing::event::EventListenerList> value(new javax::swing::event::EventListenerList()); return value.get(); }
+    private: static javax::swing::event::EventListenerList* listenerList_owner();
+    private: static javax::swing::event::EventListenerList* listenerList;
 
     public: static inline std::string DELETE = "delete";
 
@@ -97,3 +107,22 @@ private: MyCanvasEventService();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_H_COMPLETE
+        #if __has_include("org/allbinary/graphics/j2me/workarea/canvas/event/EventListenerList.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/EventListenerList.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/canvas/event/EventListener.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/EventListener.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventListener.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventListener.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h")
+#include "org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h"
+#endif
+
+        #endif
+    

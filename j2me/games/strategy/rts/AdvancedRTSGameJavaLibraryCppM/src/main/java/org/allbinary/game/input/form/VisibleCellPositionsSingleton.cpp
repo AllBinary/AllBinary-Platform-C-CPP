@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_VISIBLECELLPOSITIONSSINGLETON_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_FORM_VISIBLECELLPOSITIONSSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/form/VisibleCellPositionsSingleton.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,37 +101,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VisibleCellPositionsSingleton
-            : public Object
-        , public BuildingEventListenerInterface, public ScrollMapEventListenerInterface {
+auto VisibleCellPositionsSingleton::instance_owner() -> VisibleCellPositionsSingleton* { static std::unique_ptr<VisibleCellPositionsSingleton> value(new VisibleCellPositionsSingleton()); return value.get(); }
+VisibleCellPositionsSingleton* VisibleCellPositionsSingleton::instance = VisibleCellPositionsSingleton::instance_owner();
 
-    private: static VisibleCellPositionsSingleton* instance() { static std::unique_ptr<VisibleCellPositionsSingleton> value(new VisibleCellPositionsSingleton()); return value.get(); }
-
-    public: static VisibleCellPositionsSingleton* getInstance(){
+    auto VisibleCellPositionsSingleton::getInstance() -> VisibleCellPositionsSingleton*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VisibleCellPositionsSingleton::instance();
+                        return VisibleCellPositionsSingleton::instance;
     
 }
 
 
-    private: std::vector<std::vector<int16_t>> stationaryVisibleCellPositions = NullUtil::getInstance()->NULL_SHORT_ARRAY_ARRAY;
-
-    private: std::vector<std::vector<int16_t>> visibleCellPositions = NullUtil::getInstance()->NULL_SHORT_ARRAY_ARRAY;
-
-    private: std::vector<std::vector<int16_t>> currentlyVisibleCellPositions = NullUtil::getInstance()->NULL_SHORT_ARRAY_ARRAY;
-
-    public: SimpleTiledLayer* ALL_VISIBLE_TILEDLAYER = new SimpleTiledLayer(0, 0, 0, 0);
-
-    private: SimpleTiledLayer* simpleTiledLayer = this->ALL_VISIBLE_TILEDLAYER;
-
-    private: SimpleTiledLayer* paintSimpleTiledLayer = this->ALL_VISIBLE_TILEDLAYER;
-
-    private: int32_t currentIndex= 0;
-
-private: VisibleCellPositionsSingleton(){
+VisibleCellPositionsSingleton::VisibleCellPositionsSingleton() : stationaryVisibleCellPositions(NullUtil::getInstance()->NULL_SHORT_ARRAY_ARRAY), visibleCellPositions(NullUtil::getInstance()->NULL_SHORT_ARRAY_ARRAY), currentlyVisibleCellPositions(NullUtil::getInstance()->NULL_SHORT_ARRAY_ARRAY), ALL_VISIBLE_TILEDLAYER(new SimpleTiledLayer(0, 0, 0, 0)), simpleTiledLayer(this->ALL_VISIBLE_TILEDLAYER), paintSimpleTiledLayer(this->ALL_VISIBLE_TILEDLAYER){
 LocalPlayerBuildingEventHandler::getInstance()->addListenerInterface(this);
     
 ScrollMapEventHandler::getInstance()->addListenerInterface(this);
@@ -129,7 +122,7 @@ ScrollMapEventHandler::getInstance()->addListenerInterface(this);
 }
 
 
-    public: void init(SimpleTiledLayer* simpleTiledLayer){
+    auto VisibleCellPositionsSingleton::init(SimpleTiledLayer* simpleTiledLayer) -> void{
 this->paintSimpleTiledLayer= this->ALL_VISIBLE_TILEDLAYER;
     
 this->currentIndex= 0;
@@ -151,7 +144,7 @@ this->setSimpleTiledLayer(simpleTiledLayer);
 }
 
 
-    public: void onEvent(AllBinaryEventObject* eventObject){
+    auto VisibleCellPositionsSingleton::onEvent(AllBinaryEventObject* eventObject) -> void{
 ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
     
 }
@@ -159,7 +152,7 @@ ForcedLogUtil::log(EventStrings::getInstance()->PERFORMANCE_MESSAGE, this);
 
                 //@Throws(Exception.constructor)
             
-    public: void onBuildingEvent(RTSLayerEvent* event){
+    auto VisibleCellPositionsSingleton::onBuildingEvent(RTSLayerEvent* event) -> void{
 this->paintSimpleTiledLayer= this->simpleTiledLayer;
     
 }
@@ -167,13 +160,13 @@ this->paintSimpleTiledLayer= this->simpleTiledLayer;
 
                 //@Throws(Exception.constructor)
             
-    public: void onMoveEvent(ScrollMapEvent* scrollMapEvent){
+    auto VisibleCellPositionsSingleton::onMoveEvent(ScrollMapEvent* scrollMapEvent) -> void{
 this->move(scrollMapEvent->getDx(), scrollMapEvent->getDy());
     
 }
 
 
-    public: void addStationaryCellPositions(BasicArrayList* list){
+    auto VisibleCellPositionsSingleton::addStationaryCellPositions(BasicArrayList* list) -> void{
 
 
 
@@ -191,7 +184,7 @@ this->stationaryVisibleCellPositions[cellPosition->getRow()][cellPosition->getCo
 }
 
 
-    public: void removeStationaryCellPositions(BasicArrayList* list){
+    auto VisibleCellPositionsSingleton::removeStationaryCellPositions(BasicArrayList* list) -> void{
 
 
 
@@ -209,7 +202,7 @@ this->stationaryVisibleCellPositions[cellPosition->getRow()][cellPosition->getCo
 }
 
 
-    public: void update(){
+    auto VisibleCellPositionsSingleton::update() -> void{
 
                         if(this->currentIndex == 0)
                         
@@ -258,7 +251,7 @@ this->currentIndex++;
 }
 
 
-    public: bool shouldProcess(){
+    auto VisibleCellPositionsSingleton::shouldProcess() -> bool{
 
                         if(this->currentIndex == 0)
                         
@@ -285,7 +278,7 @@ this->currentIndex++;
 }
 
 
-    public: void addCellPositions(BasicArrayList* list){
+    auto VisibleCellPositionsSingleton::addCellPositions(BasicArrayList* list) -> void{
 
 
 
@@ -303,7 +296,7 @@ this->visibleCellPositions[cellPosition->getRow()][cellPosition->getColumn()]++;
 }
 
 
-    public: bool isVisible(CellPosition* cellPosition){
+    auto VisibleCellPositionsSingleton::isVisible(CellPosition* cellPosition) -> bool{
 
                         if(this->visibleCellPositions[cellPosition->getRow()][cellPosition->getColumn()] > 0)
                         
@@ -330,25 +323,25 @@ this->visibleCellPositions[cellPosition->getRow()][cellPosition->getColumn()]++;
 }
 
 
-    public: void move(int32_t dx, int32_t dy){
+    auto VisibleCellPositionsSingleton::move(int32_t dx, int32_t dy) -> void{
 this->getSimpleTiledLayer()->moveDXY(dx, dy);
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto VisibleCellPositionsSingleton::paint(Graphics* graphics) -> void{
 this->paintSimpleTiledLayer->paint(graphics, this->currentlyVisibleCellPositions);
     
 }
 
 
-    private: void setSimpleTiledLayer(SimpleTiledLayer* simpleTiledLayer){
+    auto VisibleCellPositionsSingleton::setSimpleTiledLayer(SimpleTiledLayer* simpleTiledLayer) -> void{
 this->simpleTiledLayer= simpleTiledLayer;
     
 }
 
 
-    public: SimpleTiledLayer* getSimpleTiledLayer(){
+    auto VisibleCellPositionsSingleton::getSimpleTiledLayer() -> SimpleTiledLayer*{
 
 
 
@@ -358,7 +351,6 @@ this->simpleTiledLayer= simpleTiledLayer;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_FORM_VISIBLECELLPOSITIONSSINGLETON_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_NOTEMPLATETRANSFORMINFOOBJECTCONFIG_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_NOTEMPLATETRANSFORMINFOOBJECTCONFIG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,11 +94,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NoTemplateTransformInfoObjectConfig: public TransformInfoObjectConfig {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface){
+NoTemplateTransformInfoObjectConfig::NoTemplateTransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,7 +105,7 @@ public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface) : Tr
 }
 
 
-public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface, Object* document) : TransformInfoObjectConfig(transformInfoInterface, document){
+NoTemplateTransformInfoObjectConfig::NoTemplateTransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface, Document* document) : TransformInfoObjectConfig(transformInfoInterface, document), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -110,7 +117,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: NoTemplateTransformInfoObjectConfig(Object* transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type){
+NoTemplateTransformInfoObjectConfig::NoTemplateTransformInfoObjectConfig(TransformInfoInterface* transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -124,15 +131,15 @@ this->setDocument(this->generate(this->toXmlDoc()));
 
                 //@Throws(Exception.constructor)
             
-    protected: Document* generate(Document* objectConfigDocument){
+    auto NoTemplateTransformInfoObjectConfig::generate(Document* objectConfigDocument) -> Document*{
 
     std::string docString = XmlDocumentHelper::toString(objectConfigDocument);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Initial ObjectConfig: " +docString, this, "generate()");
+                                    this->logUtil->putF(JavaString::valueOf("Initial ObjectConfig: ") +JavaString::valueOf(docString), this, "generate()");
     
 
                                     }
@@ -149,14 +156,14 @@ this->setDocument(this->generate(this->toXmlDoc()));
 
     std::string VARKEY = TransformInfoObjectConfigData::getInstance()->VARKEY;;
     
-hashMap->put(VARKEY +StoreFrontData::getInstance()->NAME, storeName);
+hashMap->put(JavaString::valueOf(VARKEY) +JavaString::valueOf(StoreFrontData::getInstance()->NAME), storeName);
     
-hashMap->put(VARKEY +TransformInfoData::getInstance()->OWNER, viewName);
+hashMap->put(JavaString::valueOf(VARKEY) +JavaString::valueOf(TransformInfoData::getInstance()->OWNER), viewName);
     
 
     std::string pageName = TransformTemplateCustomizerUtil::getInstance()->getPageNameHack(this->getTransformInfoInterface()->getName(), this->getTransformInfoInterface()->getStoreName());;
     
-hashMap->put(VARKEY +TransformInfoData::getInstance()->PARTIAL, pageName);
+hashMap->put(JavaString::valueOf(VARKEY) +JavaString::valueOf(TransformInfoData::getInstance()->PARTIAL), pageName);
     
 
     Replace* replace = new Replace(hashMap);;
@@ -165,10 +172,10 @@ hashMap->put(VARKEY +TransformInfoData::getInstance()->PARTIAL, pageName);
     Document* newObjectConfigDocument = DomDocumentHelper::create(replace->all(docString));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Final ObjectConfig: " +XmlDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
+                                    this->logUtil->putF(JavaString::valueOf("Final ObjectConfig: ") +JavaString::valueOf(XmlDocumentHelper::toString(newObjectConfigDocument)), this, "generate()");
     
 
                                     }
@@ -182,7 +189,6 @@ hashMap->put(VARKEY +TransformInfoData::getInstance()->PARTIAL, pageName);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_NOTEMPLATETRANSFORMINFOOBJECTCONFIG_CPP

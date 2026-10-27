@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,39 +34,17 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/input/GameKey.h>
-
-      
-#include <org/allbinary/game/input/GameKeyFactory.h>
-
-      
-#include <org/allbinary/game/input/Input.h>
-
-      
-#include <org/allbinary/game/input/PlatformInputMappingFactory.h>
-
-      
-#include <org/allbinary/game/input/mapping/GameInputMapping.h>
-
-      
-#include <org/allbinary/game/input/mapping/PersistentInputMapping.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class GameKey;
+class GameKeyFactory;
+class Input;
+class PlatformInputMappingFactory;
+class GameInputMapping;
+class PersistentInputMapping;
+class BasicColor;
+class BasicColorFactory;
+class StringMaker;
+class CommonSeps;
+class BasicArrayList;
 
 
 
@@ -82,13 +65,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/paint/help/HelpPaintable.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicInputMappingHelpPaintable: public HelpPaintable {
 
     private: std::vector<GameInputMapping*> gameInputMappingArray;
 
-    private: GameKey* NONE = GameKeyFactory::getInstance()->NONE;
+    private: GameKey* NONE;
 
-protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* basicColor);
+/*protected*/ public: BasicInputMappingHelpPaintable(std::vector<GameInputMapping*> gameInputMappingArray, BasicColor* basicColor);
 
     public: void update(GameKey* selectedGameKey, Input* selectedInput);
 
@@ -100,3 +87,46 @@ protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping*> gameInp
 
 
         #endif //ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/GameKey.h>)
+#include <org/allbinary/game/input/GameKey.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKeyFactory.h>)
+#include <org/allbinary/game/input/GameKeyFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/Input.h>)
+#include <org/allbinary/game/input/Input.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlatformInputMappingFactory.h>)
+#include <org/allbinary/game/input/PlatformInputMappingFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/GameInputMapping.h>)
+#include <org/allbinary/game/input/mapping/GameInputMapping.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/PersistentInputMapping.h>)
+#include <org/allbinary/game/input/mapping/PersistentInputMapping.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/game/paint/help/HelpPaintable.h")
+#include "org/allbinary/game/paint/help/HelpPaintable.h"
+#endif
+
+        #endif
+    

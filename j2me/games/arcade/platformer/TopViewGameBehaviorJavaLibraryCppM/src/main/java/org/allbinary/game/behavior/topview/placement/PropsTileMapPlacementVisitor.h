@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,21 +34,11 @@
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/game/rand/MyRandomFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/mapeditor/core/TileLayer.h>
-
-      
-#include <org/mapeditor/core/TiledMap.h>
-
-      
+class MyRandomFactory;
+class LogUtil;
+class CommonStrings;
+class TileLayer;
+class TiledMap;
 
 
 
@@ -64,11 +59,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
 
-    private: MyRandomFactory* randomFactory = MyRandomFactory::getInstance();
+            
+    public: PropsTileMapPlacementVisitor();
+        
+    /*protected*/ public: LogUtil* logUtil;
+
+    private: MyRandomFactory* randomFactory;
 
     public: void visit(TiledMap* lastMap, std::vector<std::vector<int32_t>> mapData);
 
@@ -80,3 +83,28 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
 
 
         #endif //ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/rand/MyRandomFactory.h>)
+#include <org/allbinary/game/rand/MyRandomFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/mapeditor/core/TileLayer.h>)
+#include <org/mapeditor/core/TileLayer.h>
+#endif
+#if __has_include(<org/mapeditor/core/TiledMap.h>)
+#include <org/mapeditor/core/TiledMap.h>
+#endif
+#if __has_include("org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h")
+#include "org/allbinary/game/behavior/topview/placement/TileMapPlacementVisitor.h"
+#endif
+
+        #endif
+    

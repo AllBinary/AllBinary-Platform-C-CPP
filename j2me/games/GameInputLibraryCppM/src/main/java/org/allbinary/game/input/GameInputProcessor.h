@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,12 +38,8 @@
         
             #include "java/lang/Integer.h"
         
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class GameKeyEvent;
+class AllBinaryLayerManager;
 
 
 
@@ -58,15 +59,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputProcessor
-            : public Object
+            : public virtual Object
          {
 
-    private: static GameInputProcessor* instance() { static std::unique_ptr<GameInputProcessor> value(new GameInputProcessor()); return value.get(); }
+    private: static GameInputProcessor* instance_owner();
+    private: static GameInputProcessor* instance;
 
     public: static GameInputProcessor* getInstance();
 
-protected: GameInputProcessor();
+/*protected*/ public: GameInputProcessor();
 
                 //@Throws(Exception.constructor)
             
@@ -94,3 +100,16 @@ protected: GameInputProcessor();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+
+        #endif
+    

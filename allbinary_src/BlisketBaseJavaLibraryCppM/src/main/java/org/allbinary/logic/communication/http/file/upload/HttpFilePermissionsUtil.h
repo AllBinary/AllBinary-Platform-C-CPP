@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONSUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONSUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
+class AbFile;
+class AbPath;
 
 
 
@@ -56,14 +57,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HttpFilePermissionsUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static HttpFilePermissionsUtil* instance() { static std::unique_ptr<HttpFilePermissionsUtil> value(new HttpFilePermissionsUtil()); return value.get(); }
+    private: static HttpFilePermissionsUtil* instance_owner();
+    private: static HttpFilePermissionsUtil* instance;
 
     public: static HttpFilePermissionsUtil* getInstance();
 
+
+            
+    public: HttpFilePermissionsUtil();
+        
                 //@Throws(Exception.constructor)
             
     public: void create(AbPath* path);
@@ -74,3 +84,16 @@ class HttpFilePermissionsUtil
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONSUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONSUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONSUTIL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+
+        #endif
+    

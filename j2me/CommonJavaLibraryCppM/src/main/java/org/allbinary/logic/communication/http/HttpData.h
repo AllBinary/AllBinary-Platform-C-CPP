@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class CommonSeps;
 
 
 
@@ -51,11 +54,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HttpData
-            : public Object
+            : public virtual Object
          {
 
-    private: static HttpData* instance() { static std::unique_ptr<HttpData> value(new HttpData()); return value.get(); }
+    private: static HttpData* instance_owner();
+    private: static HttpData* instance;
 
     public: static HttpData* getInstance();
 
@@ -75,3 +83,13 @@ private: HttpData();
 
 
         #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H_COMPLETE
+        #if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+
+        #endif
+    

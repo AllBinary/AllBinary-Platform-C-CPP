@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class BasicArrayList;
 
 
 
@@ -53,10 +56,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
-#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
-#include "org/allbinary/logic/util/cache/CacheableInterface.h"
-#include "org/allbinary/logic/util/cache/BasicArrayListCacheable.h"
+class CacheableInterfaceFactoryInterface;
+class CacheableInterface;
+class BasicArrayListCacheable;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicArrayListPool: public AbstractArrayListPool {
 
 public: BasicArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfaceFactoryInterface);
@@ -66,6 +73,7 @@ public: BasicArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfac
                 //@Throws(Exception.constructor)
             
     public: CacheableInterface* remove(Object* key);
+    public: CacheableInterface* remove(const std::string& key) { return remove(JavaString::box(key)); }
 
                 //@Throws(Exception.constructor)
             
@@ -81,3 +89,25 @@ public: BasicArrayListPool(CacheableInterfaceFactoryInterface* cacheableInterfac
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASICARRAYLISTPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/logic/util/cache/AbstractArrayListPool.h")
+#include "org/allbinary/logic/util/cache/AbstractArrayListPool.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterfaceFactoryInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/CacheableInterface.h")
+#include "org/allbinary/logic/util/cache/CacheableInterface.h"
+#endif
+#if __has_include("org/allbinary/logic/util/cache/BasicArrayListCacheable.h")
+#include "org/allbinary/logic/util/cache/BasicArrayListCacheable.h"
+#endif
+
+        #endif
+    

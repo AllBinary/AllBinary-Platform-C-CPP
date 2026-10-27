@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_CUSTOMIZERUTIL_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_CUSTOMIZERUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/CustomizerUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,36 +96,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomizerUtil
-            : public Object
-         {
+auto CustomizerUtil::instance_owner() -> CustomizerUtil* { static std::unique_ptr<CustomizerUtil> value(new CustomizerUtil()); return value.get(); }
+CustomizerUtil* CustomizerUtil::instance = CustomizerUtil::instance_owner();
 
-    private: static CustomizerUtil* instance() { static std::unique_ptr<CustomizerUtil> value(new CustomizerUtil()); return value.get(); }
-
-    public: static CustomizerUtil* getInstance(){
+    auto CustomizerUtil::getInstance() -> CustomizerUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomizerUtil::instance();
+                        return CustomizerUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: CustomizerUtil(){
+CustomizerUtil::CustomizerUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface* getTransformInfoInterfaceToCustomize(TransformInfoInterface* customizerTransformInfoInterface, TransformInfoInterface* transformInfoInterface){
+    auto CustomizerUtil::getTransformInfoInterfaceToCustomize(TransformInfoInterface* customizerTransformInfoInterface, TransformInfoInterface* transformInfoInterface) -> TransformInfoInterface*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +customizerTransformInfoInterface->getName(), this, "getTransformInfoInterfaceToCustomize()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(customizerTransformInfoInterface->getName()), this, "getTransformInfoInterfaceToCustomize()");
     
 
                                     }
@@ -143,12 +148,12 @@ private: CustomizerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getTransformInfoObjectConfigComponentNodesToCustomize(Object* customizerTransformInfoInterface, Object* transformInfoInterface){
+    auto CustomizerUtil::getTransformInfoObjectConfigComponentNodesToCustomize(TransformInfoInterface* customizerTransformInfoInterface, TransformInfoInterface* transformInfoInterface) -> BasicArrayList*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +customizerTransformInfoInterface->getName(), this, "getTransformInfoObjectConfigComponentNodesToCustomize()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(customizerTransformInfoInterface->getName()), this, "getTransformInfoObjectConfigComponentNodesToCustomize()");
     
 
                                     }
@@ -176,12 +181,12 @@ private: CustomizerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getTransformInfoObjectConfigComponentNodes(Object* transformInfoInterface){
+    auto CustomizerUtil::getTransformInfoObjectConfigComponentNodes(TransformInfoInterface* transformInfoInterface) -> BasicArrayList*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "getTransformInfoObjectConfigComponentNodes()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "getTransformInfoObjectConfigComponentNodes()");
     
 
                                     }
@@ -200,12 +205,12 @@ private: CustomizerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getTransformInfoObjectConfigGroupComponentNodes(Object* transformInfoInterface){
+    auto CustomizerUtil::getTransformInfoObjectConfigGroupComponentNodes(TransformInfoInterface* transformInfoInterface) -> BasicArrayList*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "getTransformInfoObjectConfigComponentNodes()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "getTransformInfoObjectConfigComponentNodes()");
     
 
                                     }
@@ -224,12 +229,12 @@ private: CustomizerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: void insert(TransformInfoInterface* transformInfoInterface, DomNodeInterface* domNodeInterface){
+    auto CustomizerUtil::insert(TransformInfoInterface* transformInfoInterface, DomNodeInterface* domNodeInterface) -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "insert()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "insert()");
     
 
                                     }
@@ -252,7 +257,7 @@ document->appendChild(domNodeInterface->toXmlNode(document));
     StringMaker* stringBuffer = new StringMaker();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     stringBuffer->append("Total Views For Modification: ");
@@ -287,10 +292,10 @@ transformInfoInterface->setData(documentString);
     std::string viewNameOfViewToBeModified = transformInfo->getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(transformInfoInterface->getName());
     
@@ -316,10 +321,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(transformInfoInterface->getName());
     
@@ -339,19 +344,19 @@ this->logUtil->putF(stringBuffer->toString(), this, "insert()");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(transformInfoInterface->getName() +" is adding data to view: " +viewNameOfViewToBeModified, this, "insert()");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(transformInfoInterface->getName()) +JavaString::valueOf(" is adding data to view: ")) +JavaString::valueOf(viewNameOfViewToBeModified), this, "insert()");
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(viewNameOfViewToBeModified);
     
@@ -380,12 +385,12 @@ this->write(specifiedTransformInfoInterface, documentString);
 
                 //@Throws(Exception.constructor)
             
-    public: void write(TransformInfoInterface* specifiedTransformInfoInterface, std::string documentString){
+    auto CustomizerUtil::write(TransformInfoInterface* specifiedTransformInfoInterface, std::string documentString) -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +specifiedTransformInfoInterface->getName(), this, "write()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(specifiedTransformInfoInterface->getName()), this, "write()");
     
 
                                     }
@@ -402,12 +407,12 @@ transformInfoEntityInterface->update(specifiedTransformInfoInterface->toHashMap(
 
                 //@Throws(Exception.constructor)
             
-    public: Document* getViewDataForComponentsInObjectConfig(Object* transformInfoInterface){
+    auto CustomizerUtil::getViewDataForComponentsInObjectConfig(TransformInfoInterface* transformInfoInterface) -> Document*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("View Name: " +transformInfoInterface->getName(), this, "getViewDataForComponentsInObjectConfig()");
+                                    this->logUtil->putF(JavaString::valueOf("View Name: ") +JavaString::valueOf(transformInfoInterface->getName()), this, "getViewDataForComponentsInObjectConfig()");
     
 
                                     }
@@ -454,12 +459,11 @@ transformInfoEntityInterface->update(specifiedTransformInfoInterface->toHashMap(
 
 
 
-                            throw new Exception("No Components Specified in ObjectConfig");
+                            throw Exception("No Components Specified in ObjectConfig");
                     
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_CUSTOMIZERUTIL_CPP

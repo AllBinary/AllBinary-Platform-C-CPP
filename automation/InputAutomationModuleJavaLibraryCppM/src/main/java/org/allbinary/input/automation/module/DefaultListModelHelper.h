@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
 #include <javax/swing.h>
 
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 
 
 
@@ -61,11 +58,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/DefaultListModel.h"
-#include "org/allbinary/input/automation/module/ListModel.h"
+        class DefaultListModel;
+class ListModel;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DefaultListModelHelper
-            : public Object
+            : public virtual Object
          {
 
     private: DefaultListModel* defaultListModel;
@@ -88,3 +89,26 @@ public: DefaultListModelHelper();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_DEFAULTLISTMODELHELPER_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<javax/swing.h>)
+#include <javax/swing.h>
+#endif
+
+#if __has_include("org/allbinary/input/automation/module/DefaultListModel.h")
+#include "org/allbinary/input/automation/module/DefaultListModel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/ListModel.h")
+#include "org/allbinary/input/automation/module/ListModel.h"
+#endif
+
+        #endif
+    

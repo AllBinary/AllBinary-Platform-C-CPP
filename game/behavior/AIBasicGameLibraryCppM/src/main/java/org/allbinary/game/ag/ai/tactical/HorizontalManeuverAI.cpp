@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_TACTICAL_HORIZONTALMANEUVERAI_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_TACTICAL_HORIZONTALMANEUVERAI_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/tactical/HorizontalManeuverAI.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HorizontalManeuverAI: public BasicAI {
 
-    protected: int32_t currentRelativeAngle = 0;
-
-    private: int32_t currentSpeed;
-
-public: HorizontalManeuverAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
+HorizontalManeuverAI::HorizontalManeuverAI(AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) : BasicAI(ownerLayerInterface, gameInput){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -83,7 +88,7 @@ this->currentSpeed= 5;
 
                 //@Throws(Exception.constructor)
             
-    public: void processAI(AllBinaryLayerManager* allBinaryLayerManager){
+    auto HorizontalManeuverAI::processAI(AllBinaryLayerManager* allBinaryLayerManager) -> void{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -138,7 +143,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
                         if(this->currentRelativeAngle == 0)
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_NUM0);
+                                    BasicAI::processKeyAI(Canvas::KEY_NUM0);
     
 
                                     }
@@ -147,7 +152,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
                         if(this->currentRelativeAngle == 180)
                         
                                     {
-                                    super.processKeyAI(Canvas::KEY_POUND);
+                                    BasicAI::processKeyAI(Canvas::KEY_POUND);
     
 
                                     }
@@ -155,7 +160,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
 }
 
 
-    protected: void reverse(){
+    auto HorizontalManeuverAI::reverse() -> void{
 
                         if(this->currentRelativeAngle == 180)
                         
@@ -177,7 +182,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
 }
 
 
-    private: void accelerate(){
+    auto HorizontalManeuverAI::accelerate() -> void{
 
                         if(this->currentSpeed < 20)
                         
@@ -190,7 +195,7 @@ ownerLayerInterface->setPosition(x, ownerLayerInterface->getYP(), ownerLayerInte
 }
 
 
-    private: void drop(){
+    auto HorizontalManeuverAI::drop() -> void{
 
     AllBinaryLayer* ownerLayerInterface = this->getOwnerLayerInterface();;
     
@@ -217,7 +222,6 @@ ownerLayerInterface->setPosition(ownerLayerInterface->getXP(), y, ownerLayerInte
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_TACTICAL_HORIZONTALMANEUVERAI_CPP

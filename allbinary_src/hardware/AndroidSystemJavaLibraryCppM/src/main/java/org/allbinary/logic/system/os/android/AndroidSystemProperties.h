@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDSYSTEMPROPERTIES_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDSYSTEMPROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -31,21 +36,11 @@
         
             #include "java/lang/Object.h"
         
-#include <android/content/Context.h>
-
-      
-#include <android/os/Build.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class Context;
+class Build;
+class ResourceUtil;
+class StringUtil;
+class CommonStrings;
 
 
 
@@ -65,15 +60,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidSystemProperties
-            : public Object
+            : public virtual Object
          {
 
-    private: static AndroidSystemProperties* SINGLETON() { static std::unique_ptr<AndroidSystemProperties> value(new AndroidSystemProperties(ResourceUtil::getInstance()->getContext())); return value.get(); }
+    private: static AndroidSystemProperties* SINGLETON_owner();
+    private: static AndroidSystemProperties* SINGLETON;
 
     public: static AndroidSystemProperties* getInstance();
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
 public: AndroidSystemProperties(Context* context);
 
@@ -137,3 +137,25 @@ public: AndroidSystemProperties(Context* context);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDSYSTEMPROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDSYSTEMPROPERTIES_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDSYSTEMPROPERTIES_H_COMPLETE
+        #if __has_include(<android/content/Context.h>)
+#include <android/content/Context.h>
+#endif
+#if __has_include(<android/os/Build.h>)
+#include <android/os/Build.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

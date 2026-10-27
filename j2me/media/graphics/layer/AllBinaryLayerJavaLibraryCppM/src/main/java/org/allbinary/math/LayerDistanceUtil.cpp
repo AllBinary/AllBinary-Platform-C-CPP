@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_CPP
+        #define ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/LayerDistanceUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,25 +64,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerDistanceUtil
-            : public Object
-         {
 
-    private: static LayerDistanceUtil* instance() { static std::unique_ptr<LayerDistanceUtil> value(new LayerDistanceUtil()); return value.get(); }
+LayerDistanceUtil::LayerDistanceUtil() : mathUtil(MathUtil::getInstance()) {
+        }
+        auto LayerDistanceUtil::instance_owner() -> LayerDistanceUtil* { static std::unique_ptr<LayerDistanceUtil> value(new LayerDistanceUtil()); return value.get(); }
+LayerDistanceUtil* LayerDistanceUtil::instance = LayerDistanceUtil::instance_owner();
 
-    public: static LayerDistanceUtil* getInstance(){
+    auto LayerDistanceUtil::getInstance() -> LayerDistanceUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerDistanceUtil::instance();
+                        return LayerDistanceUtil::instance;
     
 }
 
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
-
-    public: int32_t getDistance(AllBinaryLayer* layerInterface, AllBinaryLayer* layerInterface2){
+    auto LayerDistanceUtil::getDistance(AllBinaryLayer* layerInterface, AllBinaryLayer* layerInterface2) -> int32_t{
 
     int32_t dx = (layerInterface->getXP() +layerInterface->getHalfWidth()) -(layerInterface2->getXP() +layerInterface2->getHalfWidth());;
     
@@ -88,7 +96,7 @@ class LayerDistanceUtil
 }
 
 
-    public: int32_t getDistance3D(AllBinaryLayer* layerInterface, AllBinaryLayer* layerInterface2){
+    auto LayerDistanceUtil::getDistance3D(AllBinaryLayer* layerInterface, AllBinaryLayer* layerInterface2) -> int32_t{
 
     int32_t dx = (layerInterface->getXP() +layerInterface->getHalfWidth()) -(layerInterface2->getXP() +layerInterface2->getHalfWidth());;
     
@@ -107,7 +115,7 @@ class LayerDistanceUtil
 }
 
 
-    public: int32_t getDistanceAt(AllBinaryLayer* layerInterface, GPoint* point){
+    auto LayerDistanceUtil::getDistanceAt(AllBinaryLayer* layerInterface, GPoint* point) -> int32_t{
 
     int32_t dx = layerInterface->getXP() -point->getX();;
     
@@ -123,7 +131,6 @@ class LayerDistanceUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_LAYERDISTANCEUTIL_CPP

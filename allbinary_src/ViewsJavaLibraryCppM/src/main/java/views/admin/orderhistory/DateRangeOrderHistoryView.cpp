@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_ORDERHISTORY_DATERANGEORDERHISTORYVIEW_CPP
+        #define VIEWS_ADMIN_ORDERHISTORY_DATERANGEORDERHISTORYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/orderhistory/DateRangeOrderHistoryView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -110,61 +120,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DateRangeOrderHistoryView: public HttpStoreComponentView, public ValidationComponentInterface, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string VIEWALLORDERS = "View All";
-
-    private: const std::string VIEWORDERSINLASTHOUR = "Last Hour";
-
-    private: const std::string VIEWORDERSINLASTDAY = "Last Day";
-
-    private: const std::string VIEWORDERSINLASTWEEK = "Last Week";
-
-    private: const std::string VIEWORDERSINLAST30DAYS = "30 Days";
-
-    private: HttpServletRequest* request;
-
-    private: std::string shipped;
-
-    private: std::string partiallyShipped;
-
-    private: std::string processing;
-
-    private: std::string preprocessing;
-
-    private: std::string cancelled;
-
-    private: std::string dateType;
-
-    private: std::string toDate;
-
-    private: std::string fromDate;
-
-    private: std::string fromYear;
-
-    private: std::string fromMonth;
-
-    private: std::string fromDay;
-
-    private: std::string fromHour;
-
-    private: std::string toYear;
-
-    private: std::string toMonth;
-
-    private: std::string toDay;
-
-    private: std::string toHour;
-
-    private: std::string command;
-
-    private: const std::string ON = "on";
-
-    private: int32_t MAXLEN = 15;
-
-public: DateRangeOrderHistoryView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+DateRangeOrderHistoryView::DateRangeOrderHistoryView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -178,7 +135,7 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto DateRangeOrderHistoryView::getFormData() -> void{
 this->dateType= this->request->getParameter(OrderHistoryData::DATETYPE);
     
 this->preprocessing= this->request->getParameter(OrderHistoryData::PREPROCESSINGNAME);
@@ -212,7 +169,7 @@ this->command= this->request->getParameter(GLOBALS2::ADMINCOMMAND);
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto DateRangeOrderHistoryView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
     
 }
@@ -220,7 +177,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto DateRangeOrderHistoryView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -229,17 +186,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -254,11 +211,11 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this));
 }
 
 
-    public: Node* toXmlNode(Document* document){
+    auto DateRangeOrderHistoryView::toXmlNode(Document* document) -> Node*{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -287,7 +244,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "view");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Adding Preprocessing Orders", this, "toXmlNode");
@@ -323,7 +280,7 @@ node->appendChild(orderHistory->toXmlNode(document));
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Adding Shipped Orders", this, "toXmlNode");
@@ -359,7 +316,7 @@ node->appendChild(orderHistory->toXmlNode(document));
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Adding Partially Shipped Orders", this, "toDomNode");
@@ -395,7 +352,7 @@ node->appendChild(orderHistory->toXmlNode(document));
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Adding Processing Orders", this, "toXmlNode");
@@ -431,7 +388,7 @@ node->appendChild(orderHistory->toXmlNode(document));
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     this->logUtil->putF("Adding Cancelled Orders", this, "view");
@@ -485,10 +442,10 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -504,7 +461,7 @@ node->appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAM
 }
 
 
-    public: bool isValid(){
+    auto DateRangeOrderHistoryView::isValid() -> bool{
 
         try {
             
@@ -646,7 +603,7 @@ this->toDate= (int64_t(calendar->getTimeInMillis())).toString();
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -662,7 +619,7 @@ stringBuffer->append(this->toDate);
     
 stringBuffer->append(")");
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -678,10 +635,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->put("Exception in validation", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Exception in validation", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -697,7 +654,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto DateRangeOrderHistoryView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -707,7 +664,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto DateRangeOrderHistoryView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -719,7 +676,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 
                 //@Throws(Exception.constructor)
             
-    public: std::string validationInfo(){
+    auto DateRangeOrderHistoryView::validationInfo() -> std::string{
 
         try {
             
@@ -763,7 +720,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -782,7 +739,6 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_ORDERHISTORY_DATERANGEORDERHISTORYVIEW_CPP

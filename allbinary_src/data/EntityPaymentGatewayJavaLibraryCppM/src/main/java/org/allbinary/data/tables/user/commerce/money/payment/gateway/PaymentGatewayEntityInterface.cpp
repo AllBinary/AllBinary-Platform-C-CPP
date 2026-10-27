@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/money/payment/gateway/PaymentGatewayEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,19 +68,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentGatewayEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-    public: virtual PaymentGatewayInterface* getPaymentGatewayInterface(std::string storeName, BasicPaymentType* paymentType) = 0;
 
-    public: virtual BasicArrayList* findPaymentTypeVectorByStore(std::string storeName) = 0;
 
-    public: virtual void remove(std::string storeName, BasicPaymentType* paymentType) = 0;
-
-    public: virtual void add(PaymentGatewayInterface* paymentGatewayInterface) = 0;
-
-    public: virtual void update(PaymentGatewayInterface* paymentGatewayInterface) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYINTERFACE_CPP

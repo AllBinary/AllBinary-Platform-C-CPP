@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_VEHICLELAYERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_VEHICLELAYERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/VehicleLayerInterface.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,35 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/VehiclePropertiesCompositeInterface.h"
 
-class VehicleLayerInterface: public LayerInterface, public VehiclePropertiesCompositeInterface {
+//Interface - declared in the header
 
-    public: virtual BasicArrayList* getGameKeyEventList() = 0;
 
-    public: virtual BasicDecimal* getSpeedBasicDecimal() = 0;
 
-    public: virtual bool isReadyForExplosion() = 0;
-
-    public: virtual RotationAnimation* getRotationAnimationInterface() = 0;
-
-    public: virtual void setRotationAnimationInterface(RotationAnimation* animationInterface) = 0;
-
-    public: virtual bool isDestroyed() = 0;
-
-    public: virtual bool isFinish() = 0;
-
-    public: virtual int32_t getFinalPosition() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void handleFinish() = 0;
-
-    public: virtual GeographicMapCellPositionTracking* getGeographicMapCellPositionTracking() = 0;
-
-    public: virtual std::vector<GeographicMapCellHistory*> getGeographicMapCellHistoryArray() = 0;
-
-    public: virtual void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory*> geographicMapCellHistory) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_LAYER_VEHICLELAYERINTERFACE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class Graphics;
+class AllBinaryLayer;
 
 
 
@@ -55,6 +56,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/health/HealthBarAnimation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HealthBarTwodAnimation: public HealthBarAnimation {
 
 public: HealthBarTwodAnimation(AllBinaryLayer* layerInterface, int32_t location);
@@ -67,3 +72,19 @@ public: HealthBarTwodAnimation(AllBinaryLayer* layerInterface, int32_t location)
 
 
         #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include("org/allbinary/game/health/HealthBarAnimation.h")
+#include "org/allbinary/game/health/HealthBarAnimation.h"
+#endif
+
+        #endif
+    

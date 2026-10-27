@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/InputProbability.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,21 +71,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputProbability
-            : public Object
-         {
+int32_t InputProbability::INPUT_PROBABILITY = SmallIntegerSingletonFactory::getInstance()->getAt(0);
 
-    public: static inline int32_t INPUT_PROBABILITY = SmallIntegerSingletonFactory::getInstance()->getAt(0);
-
-    private: std::vector<std::vector<int32_t>> likelyhoodIntegerArray;
-
-    private: std::vector<int32_t> repeatLikelyhoodIntegerArray;
-
-    private: int32_t max;
-
-    private: TimeDelayHelper* timeDelayHelper;
-
-public: InputProbability(std::vector<std::vector<int32_t>> likelyhoodIntegerArray, std::vector<int32_t> repeatLikelyhoodIntegerArray, int32_t max, TimeDelayHelper* timeDelayHelper){
+InputProbability::InputProbability(std::vector<std::vector<int32_t>> likelyhoodIntegerArray, std::vector<int32_t> repeatLikelyhoodIntegerArray, int32_t max, TimeDelayHelper* timeDelayHelper){
 this->likelyhoodIntegerArray= likelyhoodIntegerArray;
     
 this->repeatLikelyhoodIntegerArray= repeatLikelyhoodIntegerArray;
@@ -87,7 +85,7 @@ this->timeDelayHelper= timeDelayHelper;
 }
 
 
-    public: std::vector<std::vector<int32_t>> getLikelyhoodIntegerArray(){
+    auto InputProbability::getLikelyhoodIntegerArray() -> std::vector<std::vector<int32_t>>{
 
 
 
@@ -97,7 +95,7 @@ this->timeDelayHelper= timeDelayHelper;
 }
 
 
-    public: std::vector<int32_t> getRepeatLikelyhoodIntegerArray(){
+    auto InputProbability::getRepeatLikelyhoodIntegerArray() -> std::vector<int32_t>{
 
 
 
@@ -107,7 +105,7 @@ this->timeDelayHelper= timeDelayHelper;
 }
 
 
-    public: int32_t getMax(){
+    auto InputProbability::getMax() -> int32_t{
 
 
 
@@ -117,7 +115,7 @@ this->timeDelayHelper= timeDelayHelper;
 }
 
 
-    public: TimeDelayHelper* getTimeDelayHelper(){
+    auto InputProbability::getTimeDelayHelper() -> TimeDelayHelper*{
 
 
 
@@ -127,7 +125,7 @@ this->timeDelayHelper= timeDelayHelper;
 }
 
 
-    public: ABHashtable<Object*, Object*>* toHashtable(){
+    auto InputProbability::toHashtable() -> ABHashtable<Object*, Object*>*{
 
     ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();;
     
@@ -142,7 +140,6 @@ hashtable->put(InputProbability::INPUT_PROBABILITY, this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_CPP

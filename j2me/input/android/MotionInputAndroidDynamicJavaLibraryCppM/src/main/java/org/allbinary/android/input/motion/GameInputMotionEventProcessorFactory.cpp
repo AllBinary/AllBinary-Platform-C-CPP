@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONEVENTPROCESSORFACTORY_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONEVENTPROCESSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/GameInputMotionEventProcessorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/android/input/motion/BaseGameInputMotionEventProcessor.h"
 
-class GameInputMotionEventProcessorFactory
-            : public Object
-         {
 
-    public: static BaseGameInputMotionEventProcessor* getInstance(){
+GameInputMotionEventProcessorFactory::GameInputMotionEventProcessorFactory() {
+        }
+        
+    auto GameInputMotionEventProcessorFactory::getInstance() -> BaseGameInputMotionEventProcessor*{
 
     int32_t SDK_VERSION = AndroidInfoFactory::getInstance()->getVersion();;
     
@@ -89,7 +99,6 @@ class GameInputMotionEventProcessorFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONEVENTPROCESSORFACTORY_CPP

@@ -206,9 +206,8 @@
                         </goals>
                         <configuration>
                             <classifier>sources</classifier>
-                            <includeGroupIds>org.allbinary</includeGroupIds>
                             <includeScope>compile</includeScope>
-                            <includes>**/*.h</includes>
+                            <includes>**/*.h,**/*.cpp</includes>
                             <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
                             <outputDirectory>${project.build.directory}/native/dependency-include</outputDirectory>
                         </configuration>

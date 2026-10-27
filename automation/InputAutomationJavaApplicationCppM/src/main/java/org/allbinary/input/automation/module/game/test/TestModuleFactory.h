@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,20 +35,10 @@
             #include "java/lang/Exception.h"
         
 #include <javax/swing.h>
-
-      
 #include <org/allbinary/input/automation/module/AbstractInputAutomationFactory.h>
-
-      
-#include <org/allbinary/input/automation/module/InputAutomationModuleData.h>
-
-      
-#include <org/allbinary/input/automation/module/configuration/BlankModuleConfigurationJPanel.h>
-
-      
-#include <org/allbinary/thread/RunnableInterface.h>
-
-      
+class InputAutomationModuleData;
+class BlankModuleConfigurationJPanel;
+class RunnableInterface;
 
 
 
@@ -62,11 +57,15 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/game/test/JPanel.h"
+        class JPanel;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TestModuleFactory: public AbstractInputAutomationFactory {
 
-    private: static inline std::string NAME = "Test New Game" +InputAutomationModuleData::MODULE_NAME_END;
+    private: static std::string NAME;
 
     private: BlankModuleConfigurationJPanel* blankModuleConfigurationJPanel;
 
@@ -87,3 +86,28 @@ public: TestModuleFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H_COMPLETE
+        #if __has_include(<javax/swing.h>)
+#include <javax/swing.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/AbstractInputAutomationFactory.h>)
+#include <org/allbinary/input/automation/module/AbstractInputAutomationFactory.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/InputAutomationModuleData.h>)
+#include <org/allbinary/input/automation/module/InputAutomationModuleData.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/configuration/BlankModuleConfigurationJPanel.h>)
+#include <org/allbinary/input/automation/module/configuration/BlankModuleConfigurationJPanel.h>
+#endif
+#if __has_include(<org/allbinary/thread/RunnableInterface.h>)
+#include <org/allbinary/thread/RunnableInterface.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/game/test/JPanel.h")
+#include "org/allbinary/input/automation/module/game/test/JPanel.h"
+#endif
+
+        #endif
+    

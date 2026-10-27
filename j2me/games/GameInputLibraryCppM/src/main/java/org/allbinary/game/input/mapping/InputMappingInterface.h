@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/GameKey.h>
-
-      
-#include <org/allbinary/game/input/Input.h>
-
-      
+class GameKey;
+class Input;
 
 
 
@@ -54,7 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputMappingInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class InputMappingInterface
+            : public virtual Object
+         {
 
                 //@Throws(Exception.constructor)
             
@@ -66,3 +73,16 @@ class InputMappingInterface {
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/GameKey.h>)
+#include <org/allbinary/game/input/GameKey.h>
+#endif
+#if __has_include(<org/allbinary/game/input/Input.h>)
+#include <org/allbinary/game/input/Input.h>
+#endif
+
+        #endif
+    

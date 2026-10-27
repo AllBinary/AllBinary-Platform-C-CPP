@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_ADDRESS_BILLING_VALIDATIONVIEW_CPP
+        #define VIEWS_GENERIC_ADDRESS_BILLING_VALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/address/billing/ValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,9 +71,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/address/billing/BillingAddressesView.h"
 
-class ValidationView: public BillingAddressesView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressesView(transformInfoInterface){
+ValidationView::ValidationView(TransformInfoInterface* transformInfoInterface) : BillingAddressesView(transformInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -73,7 +82,7 @@ public: ValidationView(TransformInfoInterface* transformInfoInterface) : Billing
 }
 
 
-    public: bool isValid(){
+    auto ValidationView::isValid() -> bool{
 
     BillingAddressesEntity* billingAddressesEntity = new BillingAddressesEntity(this->getWeblisketSession()->getUserName());;
     
@@ -95,7 +104,7 @@ this->streetAddresses= billingAddressesEntity->get();
                                     }
                                 
 
-                        if(this->streetAddresses.size() < 1)
+                        if(this->streetAddresses->size() < 1)
                         
                                     {
                                     
@@ -116,7 +125,7 @@ this->streetAddresses= billingAddressesEntity->get();
 }
 
 
-    public: std::string validationInfo(){
+    auto ValidationView::validationInfo() -> std::string{
 
 
 
@@ -126,7 +135,7 @@ this->streetAddresses= billingAddressesEntity->get();
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto ValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -136,7 +145,7 @@ this->streetAddresses= billingAddressesEntity->get();
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto ValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -146,7 +155,6 @@ this->streetAddresses= billingAddressesEntity->get();
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_ADDRESS_BILLING_VALIDATIONVIEW_CPP

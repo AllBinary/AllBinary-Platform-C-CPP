@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLFLOCKINGFIRINGAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLFLOCKINGFIRINGAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/scroller/RandomPatrolFlockingFiringAIFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -69,13 +79,13 @@
         #include "org/allbinary/game/ag/ai/scroller/RandomPatrolAI.h"
 #include "org/allbinary/game/ag/ai/scroller/TimedFireAI.h"
 
-class RandomPatrolFlockingFiringAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
+RandomPatrolFlockingFiringAIFactory::RandomPatrolFlockingFiringAIFactory() {
+        }
+        
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+    auto RandomPatrolFlockingFiringAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
     std::vector<ArtificialIntelligenceInterface*> artificialIntelligenceInterface = std::vector<ArtificialIntelligenceInterface*>(2);;
     
@@ -92,7 +102,6 @@ artificialIntelligenceInterface[1]= new TimedFireAI(1800, ownerLayerInterface, g
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLFLOCKINGFIRINGAIFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACEVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACEVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/TransformInfoInterfaceView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,13 +71,8 @@
         #include "org/allbinary/logic/visual/transform/info/TransformInfoInterface.h"
 #include "org/allbinary/logic/visual/transform/info/TransformInfoData.h"
 
-class TransformInfoInterfaceView
-            : public Object
-        , public DomNodeInterface {
 
-    private: TransformInfoInterface* transformInfoInterface;
-
-public: TransformInfoInterfaceView(TransformInfoInterface* transformInfoInterface){
+TransformInfoInterfaceView::TransformInfoInterfaceView(TransformInfoInterface* transformInfoInterface){
 this->transformInfoInterface= transformInfoInterface;
     
 }
@@ -75,7 +80,7 @@ this->transformInfoInterface= transformInfoInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto TransformInfoInterfaceView::toXmlNode(Document* document) -> Node*{
 
 
 
@@ -85,7 +90,6 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACEVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_RESOURCEWAYPOINTLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_RESOURCEWAYPOINTLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geological/resources/ResourceWaypointLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -73,9 +83,8 @@
         #include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintableSingleton.h"
 #include "org/allbinary/game/layer/geological/resources/GeologicalResourceInfoHudPaintable.h"
 
-class ResourceWaypointLayer: public WaypointLayer {
 
-public: ResourceWaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : WaypointLayer(remoteInfo, parentLayer, groupInterface, rootName, name, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y){
+ResourceWaypointLayer::ResourceWaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface* parentLayer, std::vector<Group*> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface* animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface* proceduralAnimationInterfaceFactoryInterface, Rectangle* rectangle, int32_t x, int32_t y) : WaypointLayer(remoteInfo, parentLayer, groupInterface, rootName, name, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -85,11 +94,11 @@ public: ResourceWaypointLayer(RemoteInfo* remoteInfo, PathFindingLayerInterface*
 }
 
 
-    public: SelectionHudPaintable* createHudPaintable(){
+    auto ResourceWaypointLayer::createHudPaintable() -> SelectionHudPaintable*{
 
     GeologicalResourceInfoHudPaintable* rtsLayerHudPaintable = GeologicalResourceInfoHudPaintableSingleton::getInstance();;
     
-rtsLayerHudPaintable->setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
+rtsLayerHudPaintable->setBasicColorP(this->allBinaryGameLayerManagerP->getForegroundBasicColor());
     
 rtsLayerHudPaintable->setRtsLayer(this);
     
@@ -102,7 +111,7 @@ rtsLayerHudPaintable->setRtsLayer(this);
 }
 
 
-    public: SelectionHudPaintable* getHudPaintable(){
+    auto ResourceWaypointLayer::getHudPaintable() -> SelectionHudPaintable*{
 
     GeologicalResourceInfoHudPaintable* rtsLayerHudPaintable = GeologicalResourceInfoHudPaintableSingleton::getInstance();;
     
@@ -115,7 +124,6 @@ rtsLayerHudPaintable->setRtsLayer(this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_RESOURCEWAYPOINTLAYER_CPP

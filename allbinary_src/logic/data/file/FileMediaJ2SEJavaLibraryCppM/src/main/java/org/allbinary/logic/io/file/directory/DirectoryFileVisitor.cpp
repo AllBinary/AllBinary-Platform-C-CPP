@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYFILEVISITOR_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYFILEVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/directory/DirectoryFileVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,15 +64,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DirectoryFileVisitor
-            : public Object
-        , public VisitorInterface, public FileFilter {
 
-public: DirectoryFileVisitor(){
+DirectoryFileVisitor::DirectoryFileVisitor(){
 }
 
 
-    public: bool accept(java::io::File* arg0){
+    auto DirectoryFileVisitor::accept(java::io::File* arg0) -> bool{
 
 
 
@@ -74,7 +81,7 @@ visit.
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto DirectoryFileVisitor::visit(Object* anyType) -> Object*{
 
     File* file = dynamic_cast<File*>(anyType);;
     
@@ -115,7 +122,6 @@ index++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYFILEVISITOR_CPP

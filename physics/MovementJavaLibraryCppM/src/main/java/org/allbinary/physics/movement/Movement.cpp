@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/Movement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,29 +64,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/MovementInterface.h"
 
-class Movement
-            : public Object
-        , public MovementInterface {
 
-public: Movement(){
+Movement::Movement(){
 }
 
 
-    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle){
+    auto Movement::init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
+    auto Movement::process(AllBinaryGameLayer* layer) -> void{
 }
 
 
-    public: void stop(){
+    auto Movement::stop() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENT_CPP

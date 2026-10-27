@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/platform/BasicPlatormGeographicMapCellType.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -61,11 +71,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicPlatormGeographicMapCellType
-            : public Object
-         {
 
-    public: static BasicPlatormGeographicMapCellType* createType(int32_t type){
+    auto BasicPlatormGeographicMapCellType::createType(int32_t type) -> BasicPlatormGeographicMapCellType*{
 
     BasicArrayList* types = new BasicArrayListS(1);;
     
@@ -83,9 +90,7 @@ types->add(SmallIntegerSingletonFactory::getInstance()->getAt(type));
 }
 
 
-    private: std::vector<int32_t> types;
-
-public: BasicPlatormGeographicMapCellType(BasicArrayList* types){
+BasicPlatormGeographicMapCellType::BasicPlatormGeographicMapCellType(BasicArrayList* types){
 
     int32_t size = types->size();;
     
@@ -120,7 +125,7 @@ this->types= typeArray;
 }
 
 
-    public: bool isType(GeographicMapCellType* type){
+    auto BasicPlatormGeographicMapCellType::isType(GeographicMapCellType* type) -> bool{
 
 
 
@@ -130,7 +135,7 @@ this->types= typeArray;
 }
 
 
-    public: bool hasType(int32_t type){
+    auto BasicPlatormGeographicMapCellType::hasType(int32_t type) -> bool{
 
     int32_t size = types->size();;
     
@@ -165,7 +170,6 @@ this->types= typeArray;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPE_CPP

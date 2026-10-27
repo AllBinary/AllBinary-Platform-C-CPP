@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,30 +38,14 @@
         
             #include "java/lang/Thread.h"
         
-#include <org/allbinary/thread/ARunnable.h>
+class ARunnable;
+class Canvas;
+class Features;
+class DisplayInfoSingleton;
+class OpenGLFeatureFactory;
+class LogUtil;
+class CommonStrings;
 
-      
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/thread/NullRunnable.h>
-
-      
 
 
 
@@ -76,15 +65,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RepaintBehavior
-            : public Object
+            : public virtual Object
          {
 
-    private: static RepaintBehavior* instance() { static std::unique_ptr<RepaintBehavior> value(new RepaintBehavior()); return value.get(); }
+    private: static RepaintBehavior* instance_owner();
+    private: static RepaintBehavior* instance;
 
     public: static RepaintBehavior* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: RepaintBehavior();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: void repaint(Canvas* canvas);
 
@@ -98,3 +96,32 @@ class RepaintBehavior
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_REPAINTBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/thread/ARunnable.h>)
+#include <org/allbinary/thread/ARunnable.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>)
+#include <org/allbinary/graphics/opengles/OpenGLFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+
+        #endif
+    

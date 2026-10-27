@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATION_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/InputAutomationClientInformation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,9 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
 
-class InputAutomationClientInformation: public AbeClientInformation {
 
-public: InputAutomationClientInformation() : AbeClientInformation("InputAutomationTool", "0.0.1", "InputAutomationTool 0.0.1", "IA"){
+InputAutomationClientInformation::InputAutomationClientInformation() : AbeClientInformation("InputAutomationTool", "0.0.1", "InputAutomationTool 0.0.1", "IA"){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -56,7 +65,6 @@ public: InputAutomationClientInformation() : AbeClientInformation("InputAutomati
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATION_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,54 +34,22 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Command.h>
+class Command;
+class CommandListener;
+class Font;
+class Graphics;
+class TextField;
 
-      
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/TextField.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/game/commands/GameCommandsFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
+class StringUtil;
+class LogUtil;
+class GameCommandsFactory;
+class BasicColor;
+class BasicColorFactory;
 #include <org/allbinary/graphics/form/item/CustomTextBox.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
-#include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/graphics/paint/SimpleTextPaintable.h>
-
-      
-#include <org/allbinary/input/event/VirtualKeyboardEventHandler.h>
-
-      
+class NullPaintable;
+class Paintable;
+class SimpleTextPaintable;
+class VirtualKeyboardEventHandler;
 
 
 
@@ -96,17 +69,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseRegistrationTextBox: public CustomTextBox {
 
-    public: static Command* DISPLAY_COMMAND() { static std::unique_ptr<Command> value(new Command("Register", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
+    private: static Command* DISPLAY_COMMAND_owner();
+    public: static Command* DISPLAY_COMMAND;
 
-    public: static Command* SUBMIT_COMMAND() { static std::unique_ptr<Command> value(new Command("Submit", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
+    private: static Command* SUBMIT_COMMAND_owner();
+    public: static Command* SUBMIT_COMMAND;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: Paintable* pleaseWaitPaintable = new SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE);
+    private: Paintable* pleaseWaitPaintable;
 
-    private: Paintable* paintable = NullPaintable::getInstance();
+    private: Paintable* paintable;
 
 public: LicenseRegistrationTextBox(CommandListener* cmdListener, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor);
 
@@ -126,3 +105,56 @@ public: LicenseRegistrationTextBox(CommandListener* cmdListener, BasicColor* bac
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/TextField.h>)
+#include <javax/microedition/lcdui/TextField.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/game/commands/GameCommandsFactory.h>)
+#include <org/allbinary/game/commands/GameCommandsFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/CustomTextBox.h>)
+#include <org/allbinary/graphics/form/item/CustomTextBox.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/SimpleTextPaintable.h>)
+#include <org/allbinary/graphics/paint/SimpleTextPaintable.h>
+#endif
+#if __has_include(<org/allbinary/input/event/VirtualKeyboardEventHandler.h>)
+#include <org/allbinary/input/event/VirtualKeyboardEventHandler.h>
+#endif
+
+        #endif
+    

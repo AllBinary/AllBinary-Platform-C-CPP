@@ -21,24 +21,21 @@
         #ifndef ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_H
         #define ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <org/allbinary/graphics/GPoint.h>
-
-      
+class GPoint;
 #include <org/allbinary/graphics/RelativeRelationship.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class AllBinaryLayer;
+class BasicArrayList;
 
 
 
@@ -58,9 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RelativeLayerRelationship: public RelativeRelationship {
 
-    private: AllBinaryLayer* layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer* layer;
 
 public: RelativeLayerRelationship(AllBinaryLayer* layer, GPoint* point, BasicArrayList* typesAllowedList);
 
@@ -76,3 +77,22 @@ public: RelativeLayerRelationship(AllBinaryLayer* layer, GPoint* point, BasicArr
 
 
         #endif //ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_RELATIONSHIP_RELATIVELAYERRELATIONSHIP_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/graphics/RelativeRelationship.h>)
+#include <org/allbinary/graphics/RelativeRelationship.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+        #endif
+    

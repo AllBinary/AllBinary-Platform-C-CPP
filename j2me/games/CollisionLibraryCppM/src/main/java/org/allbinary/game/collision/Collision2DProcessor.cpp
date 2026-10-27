@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISION2DPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_COLLISION_COLLISION2DPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/collision/Collision2DProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -33,9 +43,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/collision/CollisionProcessor.h"
 
-class Collision2DProcessor: public CollisionProcessor {
 
-    public: bool isCollision(AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2){
+Collision2DProcessor::Collision2DProcessor() {
+        }
+        
+    auto Collision2DProcessor::isCollision(AllBinaryLayer* myLayer, AllBinaryLayer* myLayer2) -> bool{
 
                         if(myLayer2->getXP() >= myLayer->getX2() || myLayer2->getYP() >= myLayer->getY2() || myLayer2->getX2() <= myLayer->getXP() || myLayer2->getY2() <= myLayer->getYP())
                         
@@ -62,7 +74,6 @@ class Collision2DProcessor: public CollisionProcessor {
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COLLISION_COLLISION2DPROCESSOR_CPP

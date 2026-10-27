@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_H
         #define ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,18 +36,10 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/collision/CollidableBaseBehavior.h>
-
-      
-#include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
-
-      
-#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
-#include <org/allbinary/layer/LayerManager.h>
-
-      
+class CollidableBaseBehavior;
+class CollidableInterfaceCompositeInterface;
+class CollidableCompositeLayer;
+class LayerManager;
 
 
 
@@ -62,11 +59,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AllBinaryCollisionManager
-            : public Object
+            : public virtual Object
          {
 
-    private: static AllBinaryCollisionManager* allBinaryCollisionManager() { static std::unique_ptr<AllBinaryCollisionManager> value(new AllBinaryCollisionManager()); return value.get(); }
+    private: static AllBinaryCollisionManager* allBinaryCollisionManager_owner();
+    private: static AllBinaryCollisionManager* allBinaryCollisionManager;
 
     public: static AllBinaryCollisionManager* getInstance();
 
@@ -86,3 +88,22 @@ private: AllBinaryCollisionManager();
 
 
         #endif //ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_COLLISION_LAYER_ALLBINARYCOLLISIONMANAGER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/collision/CollidableBaseBehavior.h>)
+#include <org/allbinary/game/collision/CollidableBaseBehavior.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/CollidableCompositeLayer.h>)
+#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerManager.h>)
+#include <org/allbinary/layer/LayerManager.h>
+#endif
+
+        #endif
+    

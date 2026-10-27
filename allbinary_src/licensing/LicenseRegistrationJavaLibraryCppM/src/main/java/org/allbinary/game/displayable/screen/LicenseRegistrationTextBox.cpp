@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/screen/LicenseRegistrationTextBox.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -93,19 +103,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LicenseRegistrationTextBox: public CustomTextBox {
+auto LicenseRegistrationTextBox::DISPLAY_COMMAND_owner() -> Command* { static std::unique_ptr<Command> value(new Command("Register", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
+Command* LicenseRegistrationTextBox::DISPLAY_COMMAND = LicenseRegistrationTextBox::DISPLAY_COMMAND_owner();
+auto LicenseRegistrationTextBox::SUBMIT_COMMAND_owner() -> Command* { static std::unique_ptr<Command> value(new Command("Submit", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
+Command* LicenseRegistrationTextBox::SUBMIT_COMMAND = LicenseRegistrationTextBox::SUBMIT_COMMAND_owner();
 
-    public: static Command* DISPLAY_COMMAND() { static std::unique_ptr<Command> value(new Command("Register", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
-
-    public: static Command* SUBMIT_COMMAND() { static std::unique_ptr<Command> value(new Command("Submit", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 3)); return value.get(); }
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: Paintable* pleaseWaitPaintable = new SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE);
-
-    private: Paintable* paintable = NullPaintable::getInstance();
-
-public: LicenseRegistrationTextBox(CommandListener* cmdListener, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CustomTextBox(cmdListener, "Enter Registration Code:", StringUtil::getInstance()->EMPTY_STRING, 60, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor){
+LicenseRegistrationTextBox::LicenseRegistrationTextBox(CommandListener* cmdListener, BasicColor* backgrounBasicColor, BasicColor* foregroundBasicColor) : CustomTextBox(cmdListener, "Enter Registration Code:", StringUtil::getInstance()->EMPTY_STRING, 60, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor), logUtil(LogUtil::getInstance()), pleaseWaitPaintable(new SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance()->WHITE)), paintable(NullPaintable::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -115,21 +118,21 @@ public: LicenseRegistrationTextBox(CommandListener* cmdListener, BasicColor* bac
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto LicenseRegistrationTextBox::initCommands(CommandListener* cmdListener) -> void{
 this->removeAllCommands();
     
 this->addCommand(GameCommandsFactory::getInstance()->CLOSE_AND_SHOW_GAME_CANVAS);
     
 this->addCommand(GameCommandsFactory::getInstance()->TOGGLE_KEYBOARD);
     
-this->addCommand(SUBMIT_COMMAND());
+this->addCommand(SUBMIT_COMMAND);
     
 this->setCommandListener(cmdListener);
     
 }
 
 
-    public: void open(){
+    auto LicenseRegistrationTextBox::open() -> void{
 
         try {
             
@@ -145,7 +148,7 @@ this->logUtil->put(commonStrings.EXCEPTION, this, "open", &e);
     
 }
 
-super.open();
+CustomTextBox::open();
     
 this->paintable= NullPaintable::getInstance();
     
@@ -154,7 +157,7 @@ this->repaint();
 }
 
 
-    public: void close(){
+    auto LicenseRegistrationTextBox::close() -> void{
 
         try {
             
@@ -174,29 +177,28 @@ this->paintable= this->pleaseWaitPaintable;
     
 this->repaint();
     
-super.close();
+CustomTextBox::close();
     
 }
 
 
-    public: void paint(Graphics* graphics){
-super.paint(graphics);
+    auto LicenseRegistrationTextBox::paint(Graphics* graphics) -> void{
+CustomTextBox::paint(graphics);
     
 this->paintable->paint(graphics);
     
 }
 
 
-    public: void submit(){
+    auto LicenseRegistrationTextBox::submit() -> void{
 
     CommandListener* commandListener = this->getCustomCommandListener();;
     
-commandListener->commandAction(SUBMIT_COMMAND(), this);
+commandListener->commandAction(SUBMIT_COMMAND, this);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_SCREEN_LICENSEREGISTRATIONTEXTBOX_CPP

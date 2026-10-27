@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULT_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResult.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,19 +86,8 @@
         #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h"
 #include "org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionKeysFactory.h"
 
-class TransactionResult
-            : public Object
-        , public TransactionResultInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: HashMap<Object*, Object*>* keyValuePairs;
-
-    private: std::string result;
-
-public: TransactionResult(std::string result){
+TransactionResult::TransactionResult(std::string result) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
         try {
             this->result= result;
@@ -121,7 +120,7 @@ this->logUtil->putF(exceptionMessage, this, this->commonStrings->CONSTRUCTOR);
 }
 
 
-public: TransactionResult(HashMap<Object*, Object*>* keyValuePairs){
+TransactionResult::TransactionResult(HashMap<Object*, Object*>* keyValuePairs) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 keyValuePairs= keyValuePairs;
     
 this->result= "Needs to have the hashmap converted to string for other constructor";
@@ -129,7 +128,7 @@ this->result= "Needs to have the hashmap converted to string for other construct
 }
 
 
-    public: std::string toString(){
+    auto TransactionResult::toString() -> std::string{
 
 
 
@@ -139,7 +138,7 @@ this->result= "Needs to have the hashmap converted to string for other construct
 }
 
 
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto TransactionResult::toHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -149,56 +148,56 @@ this->result= "Needs to have the hashmap converted to string for other construct
 }
 
 
-    private: BasicArrayList* getAllPossibleKeys(){
+    auto TransactionResult::getAllPossibleKeys() -> BasicArrayList*{
 
     PaymentTransactionKeysFactory* paymentTransactionKeysFactory = PaymentTransactionKeysFactory::getInstance();;
     
 
     BasicArrayList* verisignResponseKeys = new BasicArrayListD();;
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->RESULT.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->RESULT->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->PNREF.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->PNREF->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->RESPMSG.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->RESPMSG->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->AUTHCODE.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->AUTHCODE->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->AVSADDR.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->AVSADDR->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->AVSZIP.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->AVSZIP->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->ORIGRESULT.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->ORIGRESULT->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->STATUS.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->STATUS->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->FRAUDCODE.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->FRAUDCODE->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->FRAUDMSG.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->FRAUDMSG->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->ERRCODE.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->ERRCODE->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->SCORE.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->SCORE->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->REASON1.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->REASON1->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->REASON2.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->REASON2->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->REASON3.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->REASON3->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION1.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION1->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION2.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION2->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION3.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION3->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION4.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION4->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION5.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION5->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION6.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION6->toString());
     
-verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION7.toString());
+verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION7->toString());
     
 
 
@@ -209,7 +208,7 @@ verisignResponseKeys->add(paymentTransactionKeysFactory->EXCEPTION7.toString());
 }
 
 
-    public: BasicArrayList* getValues(){
+    auto TransactionResult::getValues() -> BasicArrayList*{
 
     BasicArrayList* keyVector = this->getAllPossibleKeys();;
     
@@ -258,217 +257,216 @@ valueVector->add(stringUtil->EMPTY_STRING);
 }
 
 
-    public: std::string getPnRef(){
+    auto TransactionResult::getPnRef() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->PNREF.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->PNREF->toString());
     
 }
 
 
-    public: std::string getRespMsg(){
+    auto TransactionResult::getRespMsg() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESPMSG.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESPMSG->toString());
     
 }
 
 
-    public: std::string getResult(){
+    auto TransactionResult::getResult() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESULT.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->RESULT->toString());
     
 }
 
 
-    public: std::string getScore(){
+    auto TransactionResult::getScore() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->SCORE.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->SCORE->toString());
     
 }
 
 
-    public: std::string getStatus(){
+    auto TransactionResult::getStatus() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->STATUS.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->STATUS->toString());
     
 }
 
 
-    public: std::string getFraudCode(){
+    auto TransactionResult::getFraudCode() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDCODE.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDCODE->toString());
     
 }
 
 
-    public: std::string getFraudMsg(){
+    auto TransactionResult::getFraudMsg() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDMSG.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->FRAUDMSG->toString());
     
 }
 
 
-    public: std::string getOrigResult(){
+    auto TransactionResult::getOrigResult() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ORIGRESULT.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ORIGRESULT->toString());
     
 }
 
 
-    public: std::string getAvsAddr(){
+    auto TransactionResult::getAvsAddr() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSADDR.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSADDR->toString());
     
 }
 
 
-    public: std::string getAvsZip(){
+    auto TransactionResult::getAvsZip() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSZIP.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->AVSZIP->toString());
     
 }
 
 
-    public: std::string getErrCode(){
+    auto TransactionResult::getErrCode() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ERRCODE.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->ERRCODE->toString());
     
 }
 
 
-    public: std::string getException1(){
+    auto TransactionResult::getException1() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION1.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION1->toString());
     
 }
 
 
-    public: std::string getException2(){
+    auto TransactionResult::getException2() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION2.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION2->toString());
     
 }
 
 
-    public: std::string getException3(){
+    auto TransactionResult::getException3() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION3.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION3->toString());
     
 }
 
 
-    public: std::string getException4(){
+    auto TransactionResult::getException4() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION4.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION4->toString());
     
 }
 
 
-    public: std::string getException5(){
+    auto TransactionResult::getException5() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION5.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION5->toString());
     
 }
 
 
-    public: std::string getException6(){
+    auto TransactionResult::getException6() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION6.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION6->toString());
     
 }
 
 
-    public: std::string getException7(){
+    auto TransactionResult::getException7() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION7.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->EXCEPTION7->toString());
     
 }
 
 
-    public: std::string getReason1(){
+    auto TransactionResult::getReason1() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON1.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON1->toString());
     
 }
 
 
-    public: std::string getReason2(){
+    auto TransactionResult::getReason2() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON2.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON2->toString());
     
 }
 
 
-    public: std::string getReason3(){
+    auto TransactionResult::getReason3() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON3.toString());
+                        return this->keyValuePairs->get(PaymentTransactionKeysFactory::getInstance()->REASON3->toString());
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULT_CPP

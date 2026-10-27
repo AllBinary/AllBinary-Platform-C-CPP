@@ -21,6 +21,11 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,71 +35,27 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
-
-      
-#include <org/allbinary/logic/communication/http/request/RequestParams.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class TransformInfoEntityBuilder;
+class RequestParams;
+class LogUtil;
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/logic/visual/transform/TransformFactory.h>
-
-      
-#include <org/allbinary/logic/visual/transform/TransformInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/GeneratorTransformInfoData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfo.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
-
-      
-#include <org/allbinary/logic/visual/transform/info/TransformInfosData.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
+class StringMaker;
+class StringValidationUtil;
+class TransformFactory;
+class TransformInterface;
+class GeneratorTransformInfoData;
+class TransformInfo;
+class TransformInfoData;
+class TransformInfoInterface;
+class TransformInfosData;
+class CommonSeps;
+class Document;
+class Node;
 #include <views/business/context/modules/storefront/HttpStoreComponentView.h>
-
-      
-#include <views/business/context/modules/storefront/customizer/template/objectConfig/InsertTemplateCustomizerTransformInfoObjectConfig.h>
-
-      
-#include <views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h>
-
-      
+class InsertTemplateCustomizerTransformInfoObjectConfig;
+class NoTemplateTransformInfoObjectConfig;
 
 
 
@@ -113,10 +74,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         //Sets Template Type
 class InsertCustomizerValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
     private: std::string viewName;
 
@@ -140,3 +105,74 @@ public: InsertCustomizerValidationView(TransformInfoInterface* transformInfoInte
 
 
         #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_H_COMPLETE)
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_INSERTCUSTOMIZERVALIDATIONVIEW_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>)
+#include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/http/request/RequestParams.h>)
+#include <org/allbinary/logic/communication/http/request/RequestParams.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/validate/ValidationComponentInterface.h>)
+#include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/TransformFactory.h>)
+#include <org/allbinary/logic/visual/transform/TransformFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/TransformInterface.h>)
+#include <org/allbinary/logic/visual/transform/TransformInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/GeneratorTransformInfoData.h>)
+#include <org/allbinary/logic/visual/transform/info/GeneratorTransformInfoData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfo.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfo.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoData.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoData.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+#endif
+#if __has_include(<org/allbinary/logic/visual/transform/info/TransformInfosData.h>)
+#include <org/allbinary/logic/visual/transform/info/TransformInfosData.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<views/business/context/modules/storefront/HttpStoreComponentView.h>)
+#include <views/business/context/modules/storefront/HttpStoreComponentView.h>
+#endif
+#if __has_include(<views/business/context/modules/storefront/customizer/template/objectConfig/InsertTemplateCustomizerTransformInfoObjectConfig.h>)
+#include <views/business/context/modules/storefront/customizer/template/objectConfig/InsertTemplateCustomizerTransformInfoObjectConfig.h>
+#endif
+#if __has_include(<views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h>)
+#include <views/business/context/modules/storefront/customizer/template/objectConfig/NoTemplateTransformInfoObjectConfig.h>
+#endif
+
+        #endif
+    

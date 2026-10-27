@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_ARRAY_INTARRAYUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_ARRAY_INTARRAYUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/array/IntArrayUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,11 +60,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IntArrayUtil
-            : public Object
-         {
 
-    public: static std::string toString(std::vector<int32_t> array){
+IntArrayUtil::IntArrayUtil(){
+}
+
+
+    auto IntArrayUtil::toString(std::vector<int32_t> array) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -87,7 +98,7 @@ stringBuffer->appendint(array[index]);
 }
 
 
-    public: static std::string toString(std::vector<std::vector<int32_t>> array){
+    auto IntArrayUtil::toString(std::vector<std::vector<int32_t>> array) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -142,7 +153,7 @@ stringBuffer->append("}");
 }
 
 
-    public: static std::string toString(std::vector<std::vector<std::vector<int32_t>>> array){
+    auto IntArrayUtil::toString(std::vector<std::vector<std::vector<int32_t>>> array) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -219,11 +230,6 @@ stringBuffer->append("}");
 }
 
 
-private: IntArrayUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_ARRAY_INTARRAYUTIL_CPP

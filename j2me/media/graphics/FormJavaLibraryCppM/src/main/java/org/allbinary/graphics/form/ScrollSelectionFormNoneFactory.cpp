@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORMNONEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORMNONEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/ScrollSelectionFormNoneFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,11 +56,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/form/ScrollSelectionForm.h"
 
-class ScrollSelectionFormNoneFactory
-            : public Object
-         {
 
-    public: static ScrollSelectionForm* getInstance(){
+ScrollSelectionFormNoneFactory::ScrollSelectionFormNoneFactory() {
+        }
+        
+    auto ScrollSelectionFormNoneFactory::getInstance() -> ScrollSelectionForm*{
 
 
 
@@ -60,7 +70,6 @@ class ScrollSelectionFormNoneFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_SCROLLSELECTIONFORMNONEFACTORY_CPP

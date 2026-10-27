@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,62 +39,24 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/DataOutputStream.h>
-
-      
 #include <java/io/File.h>
-
-      
 #include <java/io/FileInputStream.h>
-
-      
 #include <java/io/FileOutputStream.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <java/util/Set.h>
-
-      
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
-
-      
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
-
-      
-#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
-
-      
+class DomDocumentHelper;
+class XmlDocumentHelper;
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
-
-      
-#include <org/allbinary/input/automation/module/DefaultListModelHelper.h>
-
-      
-#include <org/allbinary/input/automation/module/generic/configuration/profile/GenericProfiles.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
-#include <org/w3c/dom/NodeList.h>
-
-      
+class DefaultListModelHelper;
+class GenericProfiles;
+class StdUtil;
+class LogUtil;
+class CommonDataFileStrings;
+class AbPath;
+class Document;
+class Node;
+class NodeList;
 
 
 
@@ -108,20 +75,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionsJPanel.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionsData.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h"
-#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h"
+        class GenericProfileActionsJPanel;
+class GenericProfileActionsData;
+class GenericProfileActionData;
+class GenericProfileAction;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GenericProfileActions
-            : public Object
+            : public virtual Object
         , public DomNodeInterface, public DomDocumentMappingInterface {
 
-    public: static inline const std::string DEFAULT_PROFILE_ACTIONS_PATH = GenericProfiles::DEFAULT_PROFILES_PATH +"actions/";
+    public: static const std::string DEFAULT_PROFILE_ACTIONS_PATH;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonDataFileStrings* commonFileStrings = CommonDataFileStrings::getInstance();
+    private: CommonDataFileStrings* commonFileStrings;
 
     private: std::string name;
 
@@ -199,3 +170,79 @@ public: GenericProfileActions(GenericProfileActionsJPanel* genericProfileActions
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_H_COMPLETE
+        #if __has_include(<java/io/DataOutputStream.h>)
+#include <java/io/DataOutputStream.h>
+#endif
+#if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/io/FileInputStream.h>)
+#include <java/io/FileInputStream.h>
+#endif
+#if __has_include(<java/io/FileOutputStream.h>)
+#include <java/io/FileOutputStream.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<java/util/Set.h>)
+#include <java/util/Set.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/DomNodeInterface.h>)
+#include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/DomDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>)
+#include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/DefaultListModelHelper.h>)
+#include <org/allbinary/input/automation/module/DefaultListModelHelper.h>
+#endif
+#if __has_include(<org/allbinary/input/automation/module/generic/configuration/profile/GenericProfiles.h>)
+#include <org/allbinary/input/automation/module/generic/configuration/profile/GenericProfiles.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/CommonDataFileStrings.h>)
+#include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<org/w3c/dom/NodeList.h>)
+#include <org/w3c/dom/NodeList.h>
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionsJPanel.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionsJPanel.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionsData.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionsData.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h"
+#endif
+#if __has_include("org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h")
+#include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h"
+#endif
+
+        #endif
+    

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/business/advertisement/campaign/AdvertisementCampaignData.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
+class AdvertisementCampaignData;
+class StoreFrontData;
+class DomDocumentHelper;
+class Document;
 
 
 
@@ -65,12 +60,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/area/AdvertisementAreaInterface.h"
-#include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
-#include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
-#include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraints.h"
+class AdvertisementAreaConstraintsInterface;
+class AdvertisementAreaData;
+class AdvertisementAreaConstraints;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdvertisementArea
-            : public Object
+            : public virtual Object
         , public AdvertisementAreaInterface {
 
     private: std::string name;
@@ -111,3 +110,37 @@ public: AdvertisementArea(HashMap<Object*, Object*>* hashMap);
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/campaign/AdvertisementCampaignData.h>)
+#include <org/allbinary/business/advertisement/campaign/AdvertisementCampaignData.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/document/DomDocumentHelper.h>)
+#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include("org/allbinary/business/advertisement/area/AdvertisementAreaInterface.h")
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaInterface.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h")
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraintsInterface.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/area/AdvertisementAreaData.h")
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaData.h"
+#endif
+#if __has_include("org/allbinary/business/advertisement/area/AdvertisementAreaConstraints.h")
+#include "org/allbinary/business/advertisement/area/AdvertisementAreaConstraints.h"
+#endif
+
+        #endif
+    

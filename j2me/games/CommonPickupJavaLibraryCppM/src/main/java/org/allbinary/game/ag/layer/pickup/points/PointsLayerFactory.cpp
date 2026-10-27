@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/pickup/points/PointsLayerFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,13 +64,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/layer/pickup/points/PointsLayer.h"
 
-class PointsLayerFactory
-            : public Object
-        , public AllBinaryLayerFactoryInterface {
 
-    private: int32_t points;
-
-public: PointsLayerFactory(int32_t points){
+PointsLayerFactory::PointsLayerFactory(int32_t points){
 this->points= points;
     
 }
@@ -68,7 +73,7 @@ this->points= points;
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer* getInstance(){
+    auto PointsLayerFactory::getInstance() -> AllBinaryLayer*{
 
 
 
@@ -78,7 +83,6 @@ this->points= points;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/theme/ThemeInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,17 +56,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ThemeInterface: public TableMappingInterface {
+//Interface - declared in the header
 
-    public: virtual std::string getName() = 0;
 
-    public: virtual std::string getPath() = 0;
 
-    public: virtual std::string getPreviewImageName() = 0;
-
-    public: virtual std::string getPreviewImagePath() = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEINTERFACE_CPP

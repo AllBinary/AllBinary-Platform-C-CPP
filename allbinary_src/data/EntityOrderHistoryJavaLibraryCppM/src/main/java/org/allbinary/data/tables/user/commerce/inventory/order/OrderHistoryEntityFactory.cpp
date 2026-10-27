@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITYFACTORY_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITYFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntityFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -54,11 +64,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntity.h"
 
-class OrderHistoryEntityFactory
-            : public Object
-         {
 
-    public: static OrderHistoryEntity* getInstance(){
+OrderHistoryEntityFactory::OrderHistoryEntityFactory(){
+}
+
+
+    auto OrderHistoryEntityFactory::getInstance() -> OrderHistoryEntity*{
 
     LogUtil* logUtil = LogUtil::getInstance();;
     
@@ -78,7 +89,7 @@ class OrderHistoryEntityFactory
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     logUtil->put(commonStrings->EXCEPTION, "OrderHistoryEntityFactory", commonStrings->GET_INSTANCE, &e);
@@ -97,11 +108,6 @@ class OrderHistoryEntityFactory
 }
 
 
-private: OrderHistoryEntityFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITYFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_BASICLAYERPROCESSORINTERFACE_CPP
+        #define ORG_ALLBINARY_LAYER_BASICLAYERPROCESSORINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/BasicLayerProcessorInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/layer/AllBinaryLayerManager.h"
 
-class BasicLayerProcessorInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual void process(AllBinaryLayerManager* allBinaryLayerManager) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_LAYER_BASICLAYERPROCESSORINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_DRAWSTRINGUTIL_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DRAW_DRAWSTRINGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/draw/DrawStringUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,27 +89,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DrawStringUtil
-            : public Object
-         {
 
-    private: static DrawStringUtil* instance() { static std::unique_ptr<DrawStringUtil> value(new DrawStringUtil()); return value.get(); }
+DrawStringUtil::DrawStringUtil() : EMPTY_STRING(StringUtil::getInstance()->EMPTY_STRING), anchor(Anchor::TOP_LEFT) {
+        }
+        auto DrawStringUtil::instance_owner() -> DrawStringUtil* { static std::unique_ptr<DrawStringUtil> value(new DrawStringUtil()); return value.get(); }
+DrawStringUtil* DrawStringUtil::instance = DrawStringUtil::instance_owner();
 
-    public: static DrawStringUtil* getInstance(){
+    auto DrawStringUtil::getInstance() -> DrawStringUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DrawStringUtil::instance();
+                        return DrawStringUtil::instance;
     
 }
 
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void drawCenterString(Graphics* graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y){
+    auto DrawStringUtil::drawCenterString(Graphics* graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y) -> void{
 
     int32_t width = (graphics->getFont()->substringWidth(string, offset, length)>>1);;
     
@@ -118,7 +124,7 @@ PreLogUtil::put((new StringMaker())->append("Exception: stringLength: ")->append
 }
 
 
-    public: void drawCenterStrings(Graphics* graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t charHeight, int32_t x, int32_t y){
+    auto DrawStringUtil::drawCenterStrings(Graphics* graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t charHeight, int32_t x, int32_t y) -> void{
 
     int32_t extraLines = 0;;
     
@@ -216,7 +222,6 @@ extraLines--;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DRAW_DRAWSTRINGUTIL_CPP

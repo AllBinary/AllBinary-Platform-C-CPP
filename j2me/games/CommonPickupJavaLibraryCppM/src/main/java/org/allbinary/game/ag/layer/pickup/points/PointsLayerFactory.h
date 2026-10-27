@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 #include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
-
-      
 
 
 
@@ -55,10 +56,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/layer/pickup/points/PointsLayer.h"
+        class PointsLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class PointsLayerFactory
-            : public Object
+            : public virtual Object
         , public AllBinaryLayerFactoryInterface {
 
     private: int32_t points;
@@ -75,3 +80,19 @@ public: PointsLayerFactory(int32_t points);
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerFactoryInterface.h>)
+#include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
+#endif
+#if __has_include("org/allbinary/game/ag/layer/pickup/points/PointsLayer.h")
+#include "org/allbinary/game/ag/layer/pickup/points/PointsLayer.h"
+#endif
+
+        #endif
+    

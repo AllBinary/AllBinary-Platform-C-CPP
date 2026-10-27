@@ -18,6 +18,16 @@
 
 
 
+        #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICE_CPP
+        #define BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "bundle/input/automation/module/InputAutomationModuleService.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -51,19 +61,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "bundle/input/automation/module/InputAutomationModuleServiceInterface.h"
 
-class InputAutomationModuleService
-            : public Object
-        , public InputAutomationModuleServiceInterface {
 
-    private: std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray;
-
-public: InputAutomationModuleService(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray){
+InputAutomationModuleService::InputAutomationModuleService(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray){
 this->setInputAutomationModuleInterfaceArray(inputAutomationModuleInterfaceArray);
     
 }
 
 
-    public: std::vector<InputAutomationModuleFactoryInterface*> getInputAutomationModuleInterfaceArray(){
+    auto InputAutomationModuleService::getInputAutomationModuleInterfaceArray() -> std::vector<InputAutomationModuleFactoryInterface*>{
 
 
 
@@ -73,13 +78,12 @@ this->setInputAutomationModuleInterfaceArray(inputAutomationModuleInterfaceArray
 }
 
 
-    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray){
+    auto InputAutomationModuleService::setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface*> inputAutomationModuleInterfaceArray) -> void{
 this->inputAutomationModuleInterfaceArray= inputAutomationModuleInterfaceArray;
     
 }
 
 
-};
 
-            
 
+        #endif //BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICE_CPP

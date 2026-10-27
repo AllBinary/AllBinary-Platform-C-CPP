@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,42 +38,18 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/globals/PATH_GLOBALS.h>
-
-      
-#include <org/allbinary/globals/URLGLOBALS.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/AbDataInputStream.h>
-
-      
-#include <org/allbinary/logic/io/AbDataOutputStream.h>
-
-      
-#include <org/allbinary/logic/io/AbFileLocalInputStream.h>
-
-      
-#include <org/allbinary/logic/io/DataOutputStreamFactory.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/path/AbPath.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/crypt/DatabaseEncoder.h>
-
-      
-#include <org/allbinary/logic/system/security/crypt/WeakCrypt.h>
-
-      
+class PATH_GLOBALS;
+class URLGLOBALS;
+class LogUtil;
+class AbDataInputStream;
+class AbDataOutputStream;
+class AbFileLocalInputStream;
+class DataOutputStreamFactory;
+class AbFile;
+class AbPath;
+class StringUtil;
+class DatabaseEncoder;
+class WeakCrypt;
 
 
 
@@ -88,26 +69,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InstallerInfo
-            : public Object
+            : public virtual Object
          {
 
-    private: static InstallerInfo* instance() { static std::unique_ptr<InstallerInfo> value(new InstallerInfo()); return value.get(); }
+    private: static InstallerInfo* instance_owner();
+    private: static InstallerInfo* instance;
 
     private: static inline const std::string INITFILENAME = "installerdata.dat";
 
-    private: static inline const std::string PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
+    private: static const std::string PACKAGE;
 
-    private: static inline std::string userName = StringUtil::getInstance()->EMPTY_STRING;
+    private: static std::string userName;
 
-    private: static inline std::string password = StringUtil::getInstance()->EMPTY_STRING;
+    private: static std::string password;
 
     private: static inline bool hasRead = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static void setHasRead(bool value);
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: InstallerInfo();
 
@@ -148,3 +134,46 @@ public: InstallerInfo();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_H_COMPLETE
+        #if __has_include(<org/allbinary/globals/PATH_GLOBALS.h>)
+#include <org/allbinary/globals/PATH_GLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/globals/URLGLOBALS.h>)
+#include <org/allbinary/globals/URLGLOBALS.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/AbDataInputStream.h>)
+#include <org/allbinary/logic/io/AbDataInputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/AbDataOutputStream.h>)
+#include <org/allbinary/logic/io/AbDataOutputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/AbFileLocalInputStream.h>)
+#include <org/allbinary/logic/io/AbFileLocalInputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/DataOutputStreamFactory.h>)
+#include <org/allbinary/logic/io/DataOutputStreamFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/file/AbFile.h>)
+#include <org/allbinary/logic/io/file/AbFile.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/path/AbPath.h>)
+#include <org/allbinary/logic/io/path/AbPath.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/crypt/DatabaseEncoder.h>)
+#include <org/allbinary/logic/system/security/crypt/DatabaseEncoder.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/crypt/WeakCrypt.h>)
+#include <org/allbinary/logic/system/security/crypt/WeakCrypt.h>
+#endif
+
+        #endif
+    

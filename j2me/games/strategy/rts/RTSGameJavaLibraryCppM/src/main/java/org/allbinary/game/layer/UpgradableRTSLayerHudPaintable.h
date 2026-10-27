@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,27 +34,13 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
-
-      
-#include <org/allbinary/logic/java/character/CharArrayFactory.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
-#include <org/allbinary/input/motion/button/CommonButtons.h>
-
-      
+class Font;
+class Graphics;
+class CollidableDestroyableDamageableLayer;
+class CharArrayFactory;
+class DisplayInfoSingleton;
+class MyFontProcessor;
+class CommonButtons;
 
 
 
@@ -69,23 +60,28 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/SelectionHudPaintable.h"
-#include "org/allbinary/game/layer/RTSLayerCompositePaintable.h"
-#include "org/allbinary/game/layer/UpgradableWideRTSLayerPaintable.h"
-#include "org/allbinary/game/layer/RTSLayer.h"
+class RTSLayerCompositePaintable;
+class UpgradableWideRTSLayerPaintable;
+class RTSLayer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class UpgradableRTSLayerHudPaintable: public SelectionHudPaintable {
 
-    private: static UpgradableRTSLayerHudPaintable* instance() { static std::unique_ptr<UpgradableRTSLayerHudPaintable> value(new UpgradableRTSLayerHudPaintable()); return value.get(); }
+    private: static UpgradableRTSLayerHudPaintable* instance_owner();
+    private: static UpgradableRTSLayerHudPaintable* instance;
 
     public: static UpgradableRTSLayerHudPaintable* getInstance();
 
     private: const std::string PERCENT = "%";
 
-    private: CollidableDestroyableDamageableLayer* rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
+    private: CollidableDestroyableDamageableLayer* rtsLayer;
 
-    protected: int32_t costY= 0;
+    /*protected*/ public: int32_t costY= 0;
 
-    protected: int32_t costY1= 0;
+    /*protected*/ public: int32_t costY1= 0;
 
     private: int32_t percentCompleteX2= 0;
 
@@ -107,7 +103,7 @@ private: UpgradableRTSLayerHudPaintable();
 
     private: int32_t percentCompleteX= 0;
 
-    private: std::vector<char> percentCompleteArray = CharArrayFactory::getInstance()->getZeroCharArray();
+    private: std::vector<char> percentCompleteArray;
 
     private: int32_t currentTotalDigits= 0;
 
@@ -117,7 +113,7 @@ private: UpgradableRTSLayerHudPaintable();
 
     public: void setRtsLayer(RTSLayer* rtsLayer);
 
-    protected: CollidableDestroyableDamageableLayer* getRtsLayer();
+    /*protected*/ public: CollidableDestroyableDamageableLayer* getRtsLayer();
 
 };
 
@@ -125,3 +121,43 @@ private: UpgradableRTSLayerHudPaintable();
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>)
+#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/java/character/CharArrayFactory.h>)
+#include <org/allbinary/logic/java/character/CharArrayFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/button/CommonButtons.h>)
+#include <org/allbinary/input/motion/button/CommonButtons.h>
+#endif
+#if __has_include("org/allbinary/game/layer/SelectionHudPaintable.h")
+#include "org/allbinary/game/layer/SelectionHudPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/layer/RTSLayerCompositePaintable.h")
+#include "org/allbinary/game/layer/RTSLayerCompositePaintable.h"
+#endif
+#if __has_include("org/allbinary/game/layer/UpgradableWideRTSLayerPaintable.h")
+#include "org/allbinary/game/layer/UpgradableWideRTSLayerPaintable.h"
+#endif
+#if __has_include("org/allbinary/game/layer/RTSLayer.h")
+#include "org/allbinary/game/layer/RTSLayer.h"
+#endif
+
+        #endif
+    

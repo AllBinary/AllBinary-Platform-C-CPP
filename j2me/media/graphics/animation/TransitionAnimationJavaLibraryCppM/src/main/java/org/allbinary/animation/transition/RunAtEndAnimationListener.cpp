@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_RUNATENDANIMATIONLISTENER_CPP
+        #define ORG_ALLBINARY_ANIMATION_TRANSITION_RUNATENDANIMATIONLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/transition/RunAtEndAnimationListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,31 +58,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/transition/AnimationListenerInterface.h"
 
-class RunAtEndAnimationListener
-            : public Object
-        , public AnimationListenerInterface {
 
-    protected: Runnable* runnable;
-
-protected: RunAtEndAnimationListener(Runnable* runnable){
+RunAtEndAnimationListener::RunAtEndAnimationListener(Runnable* runnable){
 this->runnable= runnable;
     
 }
 
 
-    public: void onPlatformAnimationStart(){
+    auto RunAtEndAnimationListener::onPlatformAnimationStart() -> void{
 }
 
 
-    public: void onPlatformAnimationEnd(){
+    auto RunAtEndAnimationListener::onPlatformAnimationEnd() -> void{
 }
 
 
-    public: void onPlatformAnimationRepeat(){
+    auto RunAtEndAnimationListener::onPlatformAnimationRepeat() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TRANSITION_RUNATENDANIMATIONLISTENER_CPP

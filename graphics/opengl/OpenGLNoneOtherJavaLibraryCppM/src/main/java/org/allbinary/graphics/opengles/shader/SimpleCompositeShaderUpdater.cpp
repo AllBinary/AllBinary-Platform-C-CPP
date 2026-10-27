@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLECOMPOSITESHADERUPDATER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLECOMPOSITESHADERUPDATER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/shader/SimpleCompositeShaderUpdater.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -46,9 +56,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/CompositeShaderUpdater.h"
 
-class SimpleCompositeShaderUpdater: public CompositeShaderUpdater {
 
-public: SimpleCompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray) : CompositeShaderUpdater(uniformBlockArray, uniformArray, attributeArray, attributeHandleArray){
+SimpleCompositeShaderUpdater::SimpleCompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray) : CompositeShaderUpdater(uniformBlockArray, uniformArray, attributeArray, attributeHandleArray){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -58,7 +67,6 @@ public: SimpleCompositeShaderUpdater(std::vector<std::string> uniformBlockArray,
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLECOMPOSITESHADERUPDATER_CPP

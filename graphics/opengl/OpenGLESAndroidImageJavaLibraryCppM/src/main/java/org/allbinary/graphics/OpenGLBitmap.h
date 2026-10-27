@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -17,12 +22,8 @@
         
             #include "java/lang/Object.h"
         
-#include <android/graphics/Bitmap.h>
-
-      
+class Bitmap;
 #include <org/allbinary/platform/graphics/PlatformBitmapBase.h>
-
-      
 
 
 
@@ -41,6 +42,10 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
+        
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
         
 class OpenGLBitmap: public PlatformBitmapBase {
 
@@ -64,3 +69,16 @@ public: OpenGLBitmap(Object* bitmap);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H_COMPLETE
+        #if __has_include(<android/graphics/Bitmap.h>)
+#include <android/graphics/Bitmap.h>
+#endif
+#if __has_include(<org/allbinary/platform/graphics/PlatformBitmapBase.h>)
+#include <org/allbinary/platform/graphics/PlatformBitmapBase.h>
+#endif
+
+        #endif
+    

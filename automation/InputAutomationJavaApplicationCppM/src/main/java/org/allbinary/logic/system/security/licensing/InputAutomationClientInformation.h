@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,6 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InputAutomationClientInformation: public AbeClientInformation {
 
 public: InputAutomationClientInformation();
@@ -57,3 +66,13 @@ public: InputAutomationClientInformation();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_INPUTAUTOMATIONCLIENTINFORMATION_H_COMPLETE
+        #if __has_include("org/allbinary/logic/system/security/licensing/AbeClientInformation.h")
+#include "org/allbinary/logic/system/security/licensing/AbeClientInformation.h"
+#endif
+
+        #endif
+    

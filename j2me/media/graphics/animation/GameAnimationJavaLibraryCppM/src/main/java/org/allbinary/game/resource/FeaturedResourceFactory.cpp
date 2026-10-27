@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/resource/FeaturedResourceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,41 +91,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/resource/ResourceLoadingLevelFactory.h"
 
-class FeaturedResourceFactory
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-public: FeaturedResourceFactory(){
+FeaturedResourceFactory::FeaturedResourceFactory() : logUtil(LogUtil::getInstance()), list(new BasicArrayListD()), commonStrings(CommonStrings::getInstance()){
 }
 
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: const std::string ANIMATION_FEATURES = "Animation Features: Vector: ";
-
-    private: const std::string IMAGE_LABEL = " Image: ";
-
-    private: const std::string IMAGE_GRAPHICS_ARRAY = "Image Array: ";
-
-    private: const std::string IMAGE_GRAPHICS_ROTATION = "Image Rotate: ";
-
-    private: const std::string SPRITE_QUARTER = " Sprite Quarter: ";
-
-    private: const std::string SPRITE_FULL = " Sprite Full: ";
-
-    private: const std::string IS_LOADING_LEVEL_LABEL = " isLoadingLevel ";
-
-    private: const std::string IS_FEATURE = " isFeature: ";
-
-    private: const std::string GAME_FEATURE_CONTROLLED = "GameFeatureControlledInterface: ";
-
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t level){
+    auto FeaturedResourceFactory::init(int32_t level) -> void{
 
     int32_t size = this->list->size();;
     
@@ -171,7 +154,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
                         if(features->isFeature(graphicsFeatureFactory->IMAGE_GRAPHICS))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->IMAGE_GRAPHICS_ARRAY);
     
@@ -197,13 +180,13 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->INIT);
 }
 
 
-    public: void clear(){
+    auto FeaturedResourceFactory::clear() -> void{
 this->list->clear();
     
 }
 
 
-    public: void add(GameFeatureControlledInterface* featureInterface){
+    auto FeaturedResourceFactory::add(GameFeatureControlledInterface* featureInterface) -> void{
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(StringUtil::getInstance()->toString(featureInterface))->toString(), this, this->commonStrings->ADD);
     
 this->list->add(featureInterface);
@@ -211,7 +194,7 @@ this->list->add(featureInterface);
 }
 
 
-    public: BasicArrayList* getList(){
+    auto FeaturedResourceFactory::getList() -> BasicArrayList*{
 
 
 
@@ -221,7 +204,6 @@ this->list->add(featureInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RESOURCE_FEATUREDRESOURCEFACTORY_CPP

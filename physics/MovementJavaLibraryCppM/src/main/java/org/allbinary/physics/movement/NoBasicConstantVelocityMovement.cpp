@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_NOBASICCONSTANTVELOCITYMOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_NOBASICCONSTANTVELOCITYMOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/NoBasicConstantVelocityMovement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,9 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/BasicConstantVelocityMovement.h"
 
-class NoBasicConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-public: NoBasicConstantVelocityMovement() : BasicConstantVelocityMovement(BasicDecimal::ZERO_BIGDECIMAL, new BasicVelocityProperties()){
+NoBasicConstantVelocityMovement::NoBasicConstantVelocityMovement() : BasicConstantVelocityMovement(BasicDecimal::ZERO_BIGDECIMAL, new BasicVelocityProperties()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,11 +78,10 @@ public: NoBasicConstantVelocityMovement() : BasicConstantVelocityMovement(BasicD
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
+    auto NoBasicConstantVelocityMovement::process(AllBinaryGameLayer* layer) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_NOBASICCONSTANTVELOCITYMOVEMENT_CPP

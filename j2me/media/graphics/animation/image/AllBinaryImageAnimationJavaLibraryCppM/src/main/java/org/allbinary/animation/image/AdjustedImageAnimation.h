@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/AnimationBehavior.h>
-
-      
+class Graphics;
+class Image;
+class AnimationBehavior;
 
 
 
@@ -58,6 +57,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/ImageAnimation.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AdjustedImageAnimation: public ImageAnimation {
 
     private: int32_t dx= 0;
@@ -86,3 +89,22 @@ public: AdjustedImageAnimation(Image* image, int32_t dx, int32_t dy, AnimationBe
 
 
         #endif //ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/AnimationBehavior.h>)
+#include <org/allbinary/animation/AnimationBehavior.h>
+#endif
+#if __has_include("org/allbinary/animation/image/ImageAnimation.h")
+#include "org/allbinary/animation/image/ImageAnimation.h"
+#endif
+
+        #endif
+    

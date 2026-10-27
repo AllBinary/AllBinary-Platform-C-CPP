@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/ProfileActionScriptConditionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,13 +70,14 @@
 #include "org/allbinary/input/automation/actions/script/condition/TimeIntervalActionScriptCondition.h"
 #include "org/allbinary/input/automation/actions/script/condition/ColorAtActionScriptCondition.h"
 
-class ProfileActionScriptConditionFactory
-            : public Object
-         {
+
+ProfileActionScriptConditionFactory::ProfileActionScriptConditionFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static ProfileActionScriptConditionInterface* getInstance(Node* node){
+    auto ProfileActionScriptConditionFactory::getInstance(Node* node) -> ProfileActionScriptConditionInterface*{
 
     ProfileActionScriptConditionInterface* profileActionScriptConditionInterface = 
                 null
@@ -114,11 +125,6 @@ class ProfileActionScriptConditionFactory
 }
 
 
-private: ProfileActionScriptConditionFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONFACTORY_CPP

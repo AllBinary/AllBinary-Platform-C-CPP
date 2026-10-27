@@ -21,6 +21,11 @@
         #ifndef TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_H
         #define TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <admin/taghelpers/HelperFactory.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
+class PageContext;
+class HelperFactory;
+class LicensingException;
 #include <admin/taghelpers/TagHelperFactoryInterface.h>
-
-      
 
 
 
@@ -65,8 +60,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StoreTagWorkFlowHelperFactory
-            : public Object
+            : public virtual Object
         , public TagHelperFactoryInterface {
 
     private: static inline const std::string CLASSNAME = "taghelpers.StoreTagWorkFlowHelper";
@@ -85,3 +84,25 @@ public: StoreTagWorkFlowHelperFactory();
 
 
         #endif //TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_H_COMPLETE)
+        #define TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<admin/taghelpers/HelperFactory.h>)
+#include <admin/taghelpers/HelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<admin/taghelpers/TagHelperFactoryInterface.h>)
+#include <admin/taghelpers/TagHelperFactoryInterface.h>
+#endif
+
+        #endif
+    

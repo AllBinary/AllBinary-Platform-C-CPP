@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/TimedVectorAnimationFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -54,11 +64,11 @@
 #include "org/allbinary/animation/AnimationBehavior.h"
 #include "org/allbinary/animation/VectorAnimation.h"
 
-class TimedVectorAnimationFactory
-            : public Object
-        , public VectorAnimationFactoryInterface {
 
-    public: VectorAnimation* getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor* basicColor){
+TimedVectorAnimationFactory::TimedVectorAnimationFactory() {
+        }
+        
+    auto TimedVectorAnimationFactory::getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor* basicColor) -> VectorAnimation*{
 
 
 
@@ -68,7 +78,6 @@ class TimedVectorAnimationFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATIONFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_STOREURIRESOLVER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_STOREURIRESOLVER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/StoreUriResolver.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -94,19 +104,8 @@
         #include "org/allbinary/data/tree/dom/URIResolverStrings.h"
 #include "org/allbinary/data/tree/dom/BasicUriResolver.h"
 
-class StoreUriResolver
-            : public Object
-        , public URIResolver {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: URIResolverStrings* uriResolverStrings = URIResolverStrings::getInstance();
-
-    private: BasicUriResolver* basicURIResolver;
-
-    private: TransformInfoInterface* parentTransformInfoInterface;
-
-public: StoreUriResolver(TransformInfoInterface* parentTransformInfoInterface, BasicUriResolver* basicURIResolver){
+StoreUriResolver::StoreUriResolver(TransformInfoInterface* parentTransformInfoInterface, BasicUriResolver* basicURIResolver) : logUtil(LogUtil::getInstance()), uriResolverStrings(URIResolverStrings::getInstance()){
 this->parentTransformInfoInterface= parentTransformInfoInterface;
     
 this->basicURIResolver= basicURIResolver;
@@ -116,7 +115,7 @@ this->basicURIResolver= basicURIResolver;
 
                 //@Throws(TransformerException.constructor)
             
-    public: Source* resolve(std::string href, std::string base){
+    auto StoreUriResolver::resolve(std::string href, std::string base) -> Source*{
 
         try {
             
@@ -131,10 +130,10 @@ stringBuffer->append(URLGLOBALS::getMainPath())->append(FREEBLISKET_PATH_GLOBALS
     AbPath* fileAbPath = dynamic_cast<AbPath*>(new AbFilePath(stringBuffer->toString()));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XMLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XMLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->uriResolverStrings->ATTEMPT);
     
@@ -186,21 +185,21 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
 
-                            throw new TransformerException(&e);
+                            throw TransformerException(&e);
                     
 }
 
 }
 
 
-    public: std::string toString(){
+    auto StoreUriResolver::toString() -> std::string{
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH +"{Store Name if Any}/{import url}";
+                        return JavaString::valueOf(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance()->XSLPATH) +JavaString::valueOf("{Store Name if Any}/{import url}");
     
 
                 //: 
@@ -217,7 +216,6 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_STOREURIRESOLVER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPOPUPMENUPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPOPUPMENUPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/BasicPopupMenuPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -111,31 +121,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicPopupMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: static inline const std::string NAME = "MENU";
-
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
-
-    private: DrawVerticalStringUtil* drawStringUtil = DrawVerticalStringUtil::getInstance();
-
-    private: std::string label;
-
-    private: BasicColor* foregroundBasicColor;
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: Rectangle* rectangle;
-
-    private: int32_t BORDER= 0;
-
-    private: int32_t heightOffset= 0;
-
-    private: int32_t offset= 0;
-
-    private: Animation* animationInterface;
-
-public: BasicPopupMenuPaintable(Rectangle* rectangle, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor){
+BasicPopupMenuPaintable::BasicPopupMenuPaintable(Rectangle* rectangle, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor) : basicSetColorUtil(BasicColorSetUtil::getInstance()), drawStringUtil(DrawVerticalStringUtil::getInstance()), myFontProcessor(new UpdateMyFontProcessor(this)){
 this->foregroundBasicColor= foregroundBasicColor;
     
 this->label= BasicPopupMenuPaintable::NAME;
@@ -162,7 +149,7 @@ this->init(rectangle);
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto BasicPopupMenuPaintable::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -245,7 +232,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public: void init(Rectangle* rectangle){
+    auto BasicPopupMenuPaintable::init(Rectangle* rectangle) -> void{
 this->rectangle= rectangle;
     
 
@@ -275,7 +262,7 @@ rectangleFilledAnimation->setHeight(height);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto BasicPopupMenuPaintable::paint(Graphics* graphics) -> void{
 this->myFontProcessor->process(graphics);
     
 
@@ -304,7 +291,6 @@ graphics->drawRect(x, y, width, height);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPOPUPMENUPAINTABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -36,32 +41,14 @@
             #include "java/lang/System.h"
         
 #include <java/awt/image/BufferedImage.h>
+class BasicArrayList;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/util/cache/PoolInterface.h>
-
-      
-#include <org/allbinary/media/image/cache/BufferedImageCacheable.h>
-
-      
-#include <org/allbinary/media/image/cache/BufferedImageInfo.h>
-
-      
-#include <org/allbinary/media/image/cache/BufferedImageInfoFactory.h>
-
-      
-#include <org/allbinary/media/image/cache/BufferedImagePoolSingleton.h>
-
-      
-#include <org/allbinary/media/image/comparison/pixel/PixelDelta.h>
-
-      
+class PoolInterface;
+class BufferedImageCacheable;
+class BufferedImageInfo;
+class BufferedImageInfoFactory;
+class BufferedImagePoolSingleton;
+class PixelDelta;
 
 
 
@@ -80,10 +67,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
+        class ImageComparisonResult;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ChangedPixelsUtil
-            : public Object
+            : public virtual Object
          {
 
     private: static inline const int32_t START_X = 0;
@@ -94,7 +85,7 @@ class ChangedPixelsUtil
 
     private: static inline const int32_t SCAN_SIZE = 0;
 
-    private: static inline const std::vector<int32_t> CLEAR_INT_ARRAY = std::vector<int32_t>(1800 *1600);
+    private: static std::vector<int32_t> CLEAR_INT_ARRAY;
 
                 //@Throws(Exception.constructor)
             
@@ -108,3 +99,38 @@ private: ChangedPixelsUtil();
 
 
         #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_H_COMPLETE
+        #if __has_include(<java/awt/image/BufferedImage.h>)
+#include <java/awt/image/BufferedImage.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/util/cache/PoolInterface.h>)
+#include <org/allbinary/logic/util/cache/PoolInterface.h>
+#endif
+#if __has_include(<org/allbinary/media/image/cache/BufferedImageCacheable.h>)
+#include <org/allbinary/media/image/cache/BufferedImageCacheable.h>
+#endif
+#if __has_include(<org/allbinary/media/image/cache/BufferedImageInfo.h>)
+#include <org/allbinary/media/image/cache/BufferedImageInfo.h>
+#endif
+#if __has_include(<org/allbinary/media/image/cache/BufferedImageInfoFactory.h>)
+#include <org/allbinary/media/image/cache/BufferedImageInfoFactory.h>
+#endif
+#if __has_include(<org/allbinary/media/image/cache/BufferedImagePoolSingleton.h>)
+#include <org/allbinary/media/image/cache/BufferedImagePoolSingleton.h>
+#endif
+#if __has_include(<org/allbinary/media/image/comparison/pixel/PixelDelta.h>)
+#include <org/allbinary/media/image/comparison/pixel/PixelDelta.h>
+#endif
+#if __has_include("org/allbinary/media/image/comparison/ImageComparisonResult.h")
+#include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
+#endif
+
+        #endif
+    

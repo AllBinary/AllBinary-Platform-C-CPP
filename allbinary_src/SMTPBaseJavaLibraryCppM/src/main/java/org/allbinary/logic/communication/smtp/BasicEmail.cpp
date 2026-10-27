@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_BASICEMAIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_BASICEMAIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/BasicEmail.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,13 +78,8 @@
 #include "org/allbinary/logic/communication/smtp/AbEmail.h"
 #include "org/allbinary/logic/communication/smtp/Email.h"
 
-class BasicEmail
-            : public Object
-        , public EmailInterface {
 
-    private: AbEmail* email;
-
-public: BasicEmail(EmailInfo* emailInfo, std::string to){
+BasicEmail::BasicEmail(EmailInfo* emailInfo, std::string to){
 
     BasicEmailInfo* basicEmailInfo = emailInfo->getBasicEmailInfo();;
     
@@ -83,7 +88,7 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 }
 
 
-    public: Email* getEmail(){
+    auto BasicEmail::getEmail() -> Email*{
 
 
 
@@ -93,7 +98,7 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 }
 
 
-    public: MimeMessage* getMimeMessage(){
+    auto BasicEmail::getMimeMessage() -> MimeMessage*{
 
 
 
@@ -103,7 +108,7 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 }
 
 
-    public: std::string getDebugInfo(){
+    auto BasicEmail::getDebugInfo() -> std::string{
 
 
 
@@ -115,7 +120,7 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
                 //@Throws(Exception.constructor)
             
-    public: std::string log(){
+    auto BasicEmail::log() -> std::string{
 
 
 
@@ -127,7 +132,7 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<Object*, Object*>* toHashMap(){
+    auto BasicEmail::toHashMap() -> HashMap<Object*, Object*>*{
 
 
 
@@ -139,7 +144,7 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto BasicEmail::toXmlNode(Document* document) -> Node*{
 
 
 
@@ -151,7 +156,7 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto BasicEmail::toXmlDoc() -> Document*{
 
 
 
@@ -161,7 +166,6 @@ this->email= new AbEmail(basicEmailInfo->getEmailServerConfigurationInterface()-
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_BASICEMAIL_CPP

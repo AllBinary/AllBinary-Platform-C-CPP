@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_ALLBINARYOBJECTFACTORYINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_ALLBINARYOBJECTFACTORYINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
+class JsType;
+class JsMethod;
 
 
 
@@ -54,7 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryObjectFactoryInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class AllBinaryObjectFactoryInterface
+            : public virtual Object
+         {
 
     public: virtual Object* getInstance() = 0;
 
@@ -64,3 +71,16 @@ class AllBinaryObjectFactoryInterface {
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_ALLBINARYOBJECTFACTORYINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_ALLBINARYOBJECTFACTORYINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_ALLBINARYOBJECTFACTORYINTERFACE_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+
+        #endif
+    

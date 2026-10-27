@@ -13,6 +13,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,16 +44,25 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/automation/actions/script/JTreeInterface.h"
+        class JTreeInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class JTreeInterfaceFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static JTreeInterfaceFactory* instance() { static std::unique_ptr<JTreeInterfaceFactory> value(new JTreeInterfaceFactory()); return value.get(); }
+    private: static JTreeInterfaceFactory* instance_owner();
+    private: static JTreeInterfaceFactory* instance;
 
     public: static JTreeInterfaceFactory* getInstance();
 
+
+            
+    public: JTreeInterfaceFactory();
+        
     private: JTreeInterface* jTreeInterface;
 
     public: void set(JTreeInterface* jTreeInterface);
@@ -61,3 +75,13 @@ class JTreeInterfaceFactory
 
 
         #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_JTREEINTERFACEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/input/automation/actions/script/JTreeInterface.h")
+#include "org/allbinary/input/automation/actions/script/JTreeInterface.h"
+#endif
+
+        #endif
+    

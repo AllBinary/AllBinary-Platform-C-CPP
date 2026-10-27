@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/CheatGameInputProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -78,15 +88,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class CheatGameInputProcessor: public PlayerGameInput {
+SpecialGameInputInterface* CheatGameInputProcessor::inputProcessor = SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT;
 
-    public: static inline SpecialGameInputInterface* inputProcessor = SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT;
-
-    private: const std::string PROCESS_GAME = "processGame";
-
-    private: AllBinaryGameCanvas* gameCanvas;
-
-public: CheatGameInputProcessor(AllBinaryGameCanvas* gameCanvas) : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1){
+CheatGameInputProcessor::CheatGameInputProcessor(AllBinaryGameCanvas* gameCanvas) : PlayerGameInput(new BasicArrayListD(), new BasicArrayListD(),  -1), gameKeyFactory(GameKeyFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,11 +101,9 @@ this->gameCanvas= gameCanvas;
     
 }
 
-
-    private: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void update(){
+    auto CheatGameInputProcessor::update() -> void{
 
         try {
             
@@ -127,7 +129,7 @@ this->gameCanvas= gameCanvas;
     int32_t key = GameKeyEventUtil::getKey(anyType);;
     
 
-                        if(key == this->gameKeyFactory->LEVEL_DOWN.getId())
+                        if(key == this->gameKeyFactory->LEVEL_DOWN->getId())
                         
                                     {
                                     CheatGameInputProcessor::inputProcessor->strafeLeft();
@@ -139,7 +141,7 @@ break;
                                     }
                                 
                              else 
-                        if(key == this->gameKeyFactory->LEVEL_UP.getId())
+                        if(key == this->gameKeyFactory->LEVEL_UP->getId())
                         
                                     {
                                     CheatGameInputProcessor::inputProcessor->strafeRight();
@@ -151,7 +153,7 @@ break;
                                     }
                                 
 
-                        if(key == this->gameKeyFactory->LEFT.getId())
+                        if(key == this->gameKeyFactory->LEFT->getId())
                         
                                     {
                                     CheatGameInputProcessor::inputProcessor->left();
@@ -163,7 +165,7 @@ break;
                                     }
                                 
                              else 
-                        if(key == this->gameKeyFactory->RIGHT.getId())
+                        if(key == this->gameKeyFactory->RIGHT->getId())
                         
                                     {
                                     CheatGameInputProcessor::inputProcessor->right();
@@ -175,7 +177,7 @@ break;
                                     }
                                 
                              else 
-                        if(key == this->gameKeyFactory->UP.getId())
+                        if(key == this->gameKeyFactory->UP->getId())
                         
                                     {
                                     CheatGameInputProcessor::inputProcessor->up();
@@ -187,7 +189,7 @@ break;
                                     }
                                 
                              else 
-                        if(key == this->gameKeyFactory->DOWN.getId())
+                        if(key == this->gameKeyFactory->DOWN->getId())
                         
                                     {
                                     CheatGameInputProcessor::inputProcessor->down();
@@ -199,7 +201,7 @@ break;
                                     }
                                 
                              else 
-                        if(key == this->gameKeyFactory->KEY_NUM1.getId())
+                        if(key == this->gameKeyFactory->KEY_NUM1->getId())
                         
                                     {
                                     CheatGameInputProcessor::inputProcessor->special1(gameLayerManager, GameKeyEvent::NONE);
@@ -211,7 +213,7 @@ break;
                                     }
                                 
                              else 
-                        if(key == this->gameKeyFactory->KEY_NUM3.getId())
+                        if(key == this->gameKeyFactory->KEY_NUM3->getId())
                         
                                     {
                                     CheatGameInputProcessor::inputProcessor->special2(gameLayerManager, GameKeyEvent::NONE);
@@ -230,14 +232,13 @@ list->clear();
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->UPDATE, &e);
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CHEATGAMEINPUTPROCESSOR_CPP

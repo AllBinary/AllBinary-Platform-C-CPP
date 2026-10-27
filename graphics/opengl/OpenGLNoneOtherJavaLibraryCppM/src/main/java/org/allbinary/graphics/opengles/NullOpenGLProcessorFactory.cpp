@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_NULLOPENGLPROCESSORFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_NULLOPENGLPROCESSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,23 +42,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/OpenGLProcessor.h"
 
-class NullOpenGLProcessorFactory
-            : public Object
-         {
 
-    private: static OpenGLProcessor* instance() { static std::unique_ptr<OpenGLProcessor> value(new OpenGLProcessor()); return value.get(); }
+NullOpenGLProcessorFactory::NullOpenGLProcessorFactory() {
+        }
+        auto NullOpenGLProcessorFactory::instance_owner() -> OpenGLProcessor* { static std::unique_ptr<OpenGLProcessor> value(new OpenGLProcessor()); return value.get(); }
+OpenGLProcessor* NullOpenGLProcessorFactory::instance = NullOpenGLProcessorFactory::instance_owner();
 
-    public: static OpenGLProcessor* getInstance(){
+    auto NullOpenGLProcessorFactory::getInstance() -> OpenGLProcessor*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullOpenGLProcessorFactory::instance();
+                        return NullOpenGLProcessorFactory::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_NULLOPENGLPROCESSORFACTORY_CPP

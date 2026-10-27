@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATABASE_CPP
+        #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATABASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/installer/InitializerDatabase.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -89,35 +99,8 @@
         #include "org/allbinary/business/installer/DynamicInitDb.h"
 #include "org/allbinary/business/installer/InitializerData.h"
 
-class InitializerDatabase
-            : public Object
-         {
 
-    private: static inline const int32_t MAXDB = 30;
-
-    private: static inline const int32_t MAX = 16;
-
-    private: static inline const int32_t MIN = 4;
-
-    private: static inline const int32_t MINPASSWORD = 0;
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string adminDbUserName;
-
-    private: std::string adminDbPassword;
-
-    private: std::string adminJdbcDriver;
-
-    private: std::string adminSchema;
-
-    private: std::string adminServer;
-
-    private: std::string adminPort;
-
-    private: DynamicInitDb* initDb;
-
-public: InitializerDatabase(AbeClientInformationInterface* abeClientInformation, Map* map){
+InitializerDatabase::InitializerDatabase(AbeClientInformationInterface* abeClientInformation, Map* map) : logUtil(LogUtil::getInstance()){
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -148,7 +131,7 @@ public: InitializerDatabase(AbeClientInformationInterface* abeClientInformation,
     
 hashMap->put(std::string(key), .toCharArray());
     
-stringBuffer->delete(0, stringBuffer->length());
+stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append("key: ");
     
@@ -167,13 +150,13 @@ this->getFormData(abeClientInformation, hashMap);
 }
 
 
-public: InitializerDatabase(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* initHashMap){
+InitializerDatabase::InitializerDatabase(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* initHashMap) : logUtil(LogUtil::getInstance()){
 this->getFormData(abeClientInformation, initHashMap);
     
 }
 
 
-    public: void getFormData(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap){
+    auto InitializerDatabase::getFormData(AbeClientInformationInterface* abeClientInformation, HashMap<Object*, Object*>* hashMap) -> void{
 
         try {
             
@@ -224,7 +207,7 @@ this->logUtil->put("Unable to get form data", this, "getFormData()", &e);
 }
 
 
-    private: bool isJdbcDriverValid(std::string jdbcDriverClassPathString){
+    auto InitializerDatabase::isJdbcDriverValid(std::string jdbcDriverClassPathString) -> bool{
 
         try {
             Class::forName(jdbcDriverClassPathString)->newInstance();
@@ -240,7 +223,7 @@ this->logUtil->put("Unable to get form data", this, "getFormData()", &e);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PRELOADERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PRELOADERERROR))
                         
                                     {
                                     
@@ -262,7 +245,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->IS_VALID, &e);
 }
 
 
-    public: bool isValid(){
+    auto InitializerDatabase::isValid() -> bool{
 
     bool isValid = true;;
     
@@ -305,7 +288,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->IS_VALID, &e);
 }
 
 
-    private: std::string getJdbcDriverValidationInfo(std::string jdbcDriver){
+    auto InitializerDatabase::getJdbcDriverValidationInfo(std::string jdbcDriver) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -324,7 +307,7 @@ stringBuffer->append(") you have provided is not valid.<br/>");
 }
 
 
-    public: std::string getInvalidInfo(){
+    auto InitializerDatabase::getInvalidInfo() -> std::string{
 
     bool isValid = true;;
     
@@ -352,7 +335,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->getAdminJdbcDriver(
                         if(!stringValidationUtil->isValidRequired(this->adminDbUserName, InitializerDatabase::MIN, InitializerDatabase::MAX))
                         
                                     {
-                                    stringBuffer->append("Admin username should be < " +InitializerDatabase::MAX +" and > " +InitializerDatabase::MIN +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Admin username should be < ") +JavaString::valueOf(InitializerDatabase::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(InitializerDatabase::MIN)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -361,7 +344,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->getAdminJdbcDriver(
                         if(!stringValidationUtil->isValidNotRequired(this->adminDbPassword, InitializerDatabase::MINPASSWORD, InitializerDatabase::MAX))
                         
                                     {
-                                    stringBuffer->append("Admin password should be < " +InitializerDatabase::MAX +" and > " +InitializerDatabase::MINPASSWORD +" characters in length.<br />");
+                                    stringBuffer->append(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Admin password should be < ") +JavaString::valueOf(InitializerDatabase::MAX)) +JavaString::valueOf(" and > ")) +JavaString::valueOf(InitializerDatabase::MINPASSWORD)) +JavaString::valueOf(" characters in length.<br />"));
     
 
                                     }
@@ -384,7 +367,7 @@ stringBuffer->append(this->getJdbcDriverValidationInfo(this->getAdminJdbcDriver(
 }
 
 
-    public: bool createUsers(){
+    auto InitializerDatabase::createUsers() -> bool{
 
         try {
             this->initDb->addUsers();
@@ -412,7 +395,7 @@ this->logUtil->put("Unable to Create Users", this, "createUsers()", &e);
 }
 
 
-    public: bool createDatabases(){
+    auto InitializerDatabase::createDatabases() -> bool{
 
         try {
             this->initDb->addDatabases();
@@ -440,7 +423,7 @@ this->logUtil->put("Unable to Create Databases", this, "createDatabases()", &e);
 }
 
 
-    public: bool createTables(){
+    auto InitializerDatabase::createTables() -> bool{
 
         try {
             this->initDb->addTables();
@@ -468,7 +451,7 @@ this->logUtil->put("Unable to Create Tables", this, "createTables()", &e);
 }
 
 
-    public: std::string getAdminDbUserName(){
+    auto InitializerDatabase::getAdminDbUserName() -> std::string{
 
 
 
@@ -478,13 +461,13 @@ this->logUtil->put("Unable to Create Tables", this, "createTables()", &e);
 }
 
 
-    public: void setAdminDbUserName(std::string adminDbUserName){
+    auto InitializerDatabase::setAdminDbUserName(std::string adminDbUserName) -> void{
 this->adminDbUserName= adminDbUserName;
     
 }
 
 
-    public: std::string getAdminDbPassword(){
+    auto InitializerDatabase::getAdminDbPassword() -> std::string{
 
 
 
@@ -494,13 +477,13 @@ this->adminDbUserName= adminDbUserName;
 }
 
 
-    public: void setAdminDbPassword(std::string adminDbPassword){
+    auto InitializerDatabase::setAdminDbPassword(std::string adminDbPassword) -> void{
 this->adminDbPassword= adminDbPassword;
     
 }
 
 
-    public: std::string getAdminJdbcDriver(){
+    auto InitializerDatabase::getAdminJdbcDriver() -> std::string{
 
 
 
@@ -510,13 +493,13 @@ this->adminDbPassword= adminDbPassword;
 }
 
 
-    public: void setAdminJdbcDriver(std::string adminJdbcDriver){
+    auto InitializerDatabase::setAdminJdbcDriver(std::string adminJdbcDriver) -> void{
 this->adminJdbcDriver= adminJdbcDriver;
     
 }
 
 
-    public: std::string getAdminSchema(){
+    auto InitializerDatabase::getAdminSchema() -> std::string{
 
 
 
@@ -526,13 +509,13 @@ this->adminJdbcDriver= adminJdbcDriver;
 }
 
 
-    public: void setAdminSchema(std::string adminSchema){
+    auto InitializerDatabase::setAdminSchema(std::string adminSchema) -> void{
 this->adminSchema= adminSchema;
     
 }
 
 
-    public: std::string getAdminServer(){
+    auto InitializerDatabase::getAdminServer() -> std::string{
 
 
 
@@ -542,13 +525,13 @@ this->adminSchema= adminSchema;
 }
 
 
-    public: void setAdminServer(std::string adminServer){
+    auto InitializerDatabase::setAdminServer(std::string adminServer) -> void{
 this->adminServer= adminServer;
     
 }
 
 
-    public: std::string getAdminPort(){
+    auto InitializerDatabase::getAdminPort() -> std::string{
 
 
 
@@ -558,13 +541,12 @@ this->adminServer= adminServer;
 }
 
 
-    public: void setAdminPort(std::string adminPort){
+    auto InitializerDatabase::setAdminPort(std::string adminPort) -> void{
 this->adminPort= adminPort;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATABASE_CPP

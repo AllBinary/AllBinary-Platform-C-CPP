@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_COMPOUND_COMPOUNDTRANSFORM_CPP
+        #define VIEWS_COMPOUND_COMPOUNDTRANSFORM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/compound/CompoundTransform.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,13 +85,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CompoundTransform: public AbTransformer {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: AbeClientInformationInterface* abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
-
-public: CompoundTransform(TransformInfoInterface* transformInfoInterface) : AbTransformer(transformInfoInterface){
+CompoundTransform::CompoundTransform(TransformInfoInterface* transformInfoInterface) : AbTransformer(transformInfoInterface), logUtil(LogUtil::getInstance()), abeClientInformation(ServiceClientInformationInterfaceFactory::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,10 +99,10 @@ this->setURIResolver(dynamic_cast<URIResolver*>(new StoreUriResolver(this->getTr
     CompoundContextTransformInfoObjectConfig* objectConfig = new CompoundContextTransformInfoObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), this->getTransformInfoInterface()->getObjectConfigInterface()->toXmlDoc());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("\nObjectConfig: \n" +objectConfig->toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil->putF(JavaString::valueOf("\nObjectConfig: \n") +JavaString::valueOf(objectConfig->toString()), this, this->commonStrings->CONSTRUCTOR);
     
 
                                     }
@@ -110,7 +115,6 @@ this->setInputStream(templateInputStream);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_COMPOUND_COMPOUNDTRANSFORM_CPP

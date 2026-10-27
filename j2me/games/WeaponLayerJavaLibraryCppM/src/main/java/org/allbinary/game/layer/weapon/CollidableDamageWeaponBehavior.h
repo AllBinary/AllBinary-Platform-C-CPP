@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,33 +34,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/collision/CollidableHelperFactory.h>
-
-      
-#include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
-
-      
-#include <org/allbinary/game/collision/CollisionHelper.h>
-
-      
-#include <org/allbinary/game/collision/CollisionType.h>
-
-      
-#include <org/allbinary/game/collision/CollisionTypeFactory.h>
-
-      
-#include <org/allbinary/game/combat/damage/DamageableInterface.h>
-
-      
-#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
+class CollidableHelperFactory;
+class CollidableInterfaceCompositeInterface;
+class CollisionHelper;
+class CollisionType;
+class CollisionTypeFactory;
+class DamageableInterface;
+class CollidableCompositeLayer;
 #include <org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
+class AllBinaryLayer;
 
 
 
@@ -75,11 +62,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollidableDamageWeaponBehavior: public CollidableDestroyableDamageableBehavior {
 
     private: bool collided= false;
 
-    protected: CollisionHelper* collisionHelper;
+    /*protected*/ public: CollisionHelper* collisionHelper;
 
 public: CollidableDamageWeaponBehavior(bool collidable);
 
@@ -109,3 +100,37 @@ public: CollidableDamageWeaponBehavior(bool collidable);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEDAMAGEWEAPONBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/collision/CollidableHelperFactory.h>)
+#include <org/allbinary/game/collision/CollidableHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollisionHelper.h>)
+#include <org/allbinary/game/collision/CollisionHelper.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollisionType.h>)
+#include <org/allbinary/game/collision/CollisionType.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollisionTypeFactory.h>)
+#include <org/allbinary/game/collision/CollisionTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/damage/DamageableInterface.h>)
+#include <org/allbinary/game/combat/damage/DamageableInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/CollidableCompositeLayer.h>)
+#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h>)
+#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+
+        #endif
+    

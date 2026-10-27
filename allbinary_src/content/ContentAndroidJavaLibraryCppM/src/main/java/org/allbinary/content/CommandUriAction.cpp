@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CONTENT_COMMANDURIACTION_CPP
+        #define ORG_ALLBINARY_CONTENT_COMMANDURIACTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/content/CommandUriAction.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,33 +81,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CommandUriAction
-            : public Object
-         {
 
-    private: static CommandUriAction* instance() { static std::unique_ptr<CommandUriAction> value(new CommandUriAction()); return value.get(); }
+CommandUriAction::CommandUriAction() : logUtil(LogUtil::getInstance()), hashtable(StdUtil::getInstance()->createHashtable()) {
+        }
+        auto CommandUriAction::instance_owner() -> CommandUriAction* { static std::unique_ptr<CommandUriAction> value(new CommandUriAction()); return value.get(); }
+CommandUriAction* CommandUriAction::instance = CommandUriAction::instance_owner();
 
-    public: static CommandUriAction* getInstance(){
+    auto CommandUriAction::getInstance() -> CommandUriAction*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandUriAction::instance();
+                        return CommandUriAction::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-    public: void add(Command* command, std::string url){
+    auto CommandUriAction::add(Command* command, std::string url) -> void{
 this->hashtable->put(command, url);
     
 }
 
 
-    public: void process(Command* command){
+    auto CommandUriAction::process(Command* command) -> void{
 
         try {
             
@@ -119,7 +125,7 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->PROCESS, &e);
 }
 
 
-    public: Intent* getIntent(Command* command){
+    auto CommandUriAction::getIntent(Command* command) -> Intent*{
 
     std::string url = this->hashtable->get(command);;
     
@@ -138,7 +144,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->PROCESS, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_CONTENT_COMMANDURIACTION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/NullDemoPaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,17 +56,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/DemoPaintableInterface.h"
 
-class NullDemoPaintable
-            : public Object
-        , public DemoPaintableInterface {
 
-    public: static NullDemoPaintable* NULL_DEMO_PAINTABLE() { static std::unique_ptr<NullDemoPaintable> value(new NullDemoPaintable()); return value.get(); }
+NullDemoPaintable::NullDemoPaintable() {
+        }
+        auto NullDemoPaintable::NULL_DEMO_PAINTABLE_owner() -> NullDemoPaintable* { static std::unique_ptr<NullDemoPaintable> value(new NullDemoPaintable()); return value.get(); }
+NullDemoPaintable* NullDemoPaintable::NULL_DEMO_PAINTABLE = NullDemoPaintable::NULL_DEMO_PAINTABLE_owner();
 
-    public: void showGamePaintable(){
+    auto NullDemoPaintable::showGamePaintable() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
+class AllBinaryLayer;
+class AllBinaryLayerManager;
 #include <org/allbinary/layer/LayerProcessor.h>
-
-      
 
 
 
@@ -56,9 +55,13 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/GameInputLayerManager.h"
-#include "org/allbinary/game/input/GameInputInterface.h"
+        class GameInputLayerManager;
+class GameInputInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputLayerProcessor: public LayerProcessor {
 
 public: GameInputLayerProcessor();
@@ -75,3 +78,25 @@ public: GameInputLayerProcessor();
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_H_COMPLETE
+        #if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayerManager.h>)
+#include <org/allbinary/layer/AllBinaryLayerManager.h>
+#endif
+#if __has_include(<org/allbinary/layer/LayerProcessor.h>)
+#include <org/allbinary/layer/LayerProcessor.h>
+#endif
+#if __has_include("org/allbinary/game/input/GameInputLayerManager.h")
+#include "org/allbinary/game/input/GameInputLayerManager.h"
+#endif
+#if __has_include("org/allbinary/game/input/GameInputInterface.h")
+#include "org/allbinary/game/input/GameInputInterface.h"
+#endif
+
+        #endif
+    

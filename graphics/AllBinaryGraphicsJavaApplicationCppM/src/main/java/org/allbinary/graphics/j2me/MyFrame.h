@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_MYFRAME_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_MYFRAME_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -42,80 +47,30 @@
             #include "java/lang/Runnable.h"
         
 #include <java/awt.h>
-
-      
 #include <java/io/File.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
 #include <javax/swing.h>
-
-      
-#include <org/allbinary/data/tree/dom/XslHelper.h>
-
-      
-#include <org/allbinary/dom/DomHelper.h>
-
-      
-#include <org/allbinary/graphics/j2me/dialog/NewWorkAreaJDialog.h>
-
-      
-#include <org/allbinary/graphics/j2me/dialog/RotateJDialog.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/WorkAreaDom.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/WorkAreaJPanel.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/WorkAreaJPanelInterface.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventService.h>
-
-      
-#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventSource.h>
-
-      
-#include <org/allbinary/gui/dialog/FileJDialog.h>
-
-      
+class XslHelper;
+class DomHelper;
+class NewWorkAreaJDialog;
+class RotateJDialog;
+class WorkAreaDom;
+class WorkAreaJPanel;
+class WorkAreaJPanelInterface;
+class MyCanvasEvent;
+class MyCanvasEventService;
+class MyCanvasEventSource;
+class FileJDialog;
 #include <org/allbinary/gui/dialog/FileJDialogListenerInterface.h>
-
-      
 #include <org/allbinary/gui/dialog/HashMapJDialogListenerInterface.h>
-
-      
-#include <org/allbinary/log/LOGGING.h>
-
-      
-#include <org/allbinary/logic/communication/log/GuiLog.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
-
-      
-#include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
+class LOGGING;
+class GuiLog;
+class LogUtil;
+class SmallIntegerSingletonFactory;
+class AngleFactory;
+class CommonLabels;
+class CommonStrings;
+class Document;
 
 
 
@@ -136,26 +91,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/JFrame.h"
 #include "org/allbinary/graphics/j2me/KeyListener.h"
-#include "org/allbinary/graphics/j2me/Dimension.h"
-#include "org/allbinary/graphics/j2me/JToolBar.h"
-#include "org/allbinary/graphics/j2me/JButton.h"
-#include "org/allbinary/graphics/j2me/JPanel.h"
-#include "org/allbinary/graphics/j2me/JTabbedPane.h"
-#include "org/allbinary/graphics/j2me/JLabel.h"
-#include "org/allbinary/graphics/j2me/JMenuBar.h"
-#include "org/allbinary/graphics/j2me/JMenu.h"
-#include "org/allbinary/graphics/j2me/JMenuItem.h"
-#include "org/allbinary/graphics/j2me/WindowAdapter.h"
-#include "org/allbinary/graphics/j2me/WindowEvent.h"
-#include "org/allbinary/graphics/j2me/ActionListener.h"
-#include "org/allbinary/graphics/j2me/ActionEvent.h"
-#include "org/allbinary/graphics/j2me/MouseAdapter.h"
-#include "org/allbinary/graphics/j2me/MouseEvent.h"
-#include "org/allbinary/graphics/j2me/GridLayout.h"
-#include "org/allbinary/graphics/j2me/ChangeListener.h"
-#include "org/allbinary/graphics/j2me/ChangeEvent.h"
-#include "org/allbinary/graphics/j2me/KeyEvent.h"
+class Dimension;
+class JToolBar;
+class JButton;
+class JPanel;
+class JTabbedPane;
+class JLabel;
+class JMenuBar;
+class JMenu;
+class JMenuItem;
+class WindowAdapter;
+class WindowEvent;
+class ActionListener;
+class ActionEvent;
+class MouseAdapter;
+class MouseEvent;
+class GridLayout;
+class ChangeListener;
+class ChangeEvent;
+class KeyEvent;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class MyFrame: public javax::swing::JFrame, public FileJDialogListenerInterface, public HashMapJDialogListenerInterface, public java::awt::event::KeyListener {
 
     private: static inline const int32_t MAXWORKAREAS = 10;
@@ -164,21 +123,21 @@ class MyFrame: public javax::swing::JFrame, public FileJDialogListenerInterface,
 
     private: static inline const std::string PATH = "G:/mnt/bc/mydev/work/graphics/AllBinaryGraphicsJavaApplication";
 
-    private: static inline const std::string SAVE_PATH = MyFrame::PATH +"/save";
+    private: static const std::string SAVE_PATH;
 
-    private: static inline const std::string TEMPLATE_EXPORT_PATH = MyFrame::PATH +"/templates/export";
+    private: static const std::string TEMPLATE_EXPORT_PATH;
 
     public: static void main(std::vector<std::string> args);
 
-    protected: static inline javax::swing::JLabel* statusJLabel;
+    /*protected*/ public: static inline javax::swing::JLabel* statusJLabel;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
+    private: CommonStrings* commonStrings;
 
-    private: GuiLog* guiLog = GuiLog::getInstance();
+    private: GuiLog* guiLog;
 
-    private: XslHelper* xslHelper = XslHelper::getInstance();
+    private: XslHelper* xslHelper;
 
     private: const std::string JAVA_TEMPLATE = "svgExport.xsl";
 
@@ -364,3 +323,148 @@ public: MyFrame();
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_J2ME_MYFRAME_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_J2ME_MYFRAME_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_MYFRAME_H_COMPLETE
+        #if __has_include(<java/awt.h>)
+#include <java/awt.h>
+#endif
+#if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/swing.h>)
+#include <javax/swing.h>
+#endif
+#if __has_include(<org/allbinary/data/tree/dom/XslHelper.h>)
+#include <org/allbinary/data/tree/dom/XslHelper.h>
+#endif
+#if __has_include(<org/allbinary/dom/DomHelper.h>)
+#include <org/allbinary/dom/DomHelper.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/dialog/NewWorkAreaJDialog.h>)
+#include <org/allbinary/graphics/j2me/dialog/NewWorkAreaJDialog.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/dialog/RotateJDialog.h>)
+#include <org/allbinary/graphics/j2me/dialog/RotateJDialog.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/WorkAreaDom.h>)
+#include <org/allbinary/graphics/j2me/workarea/WorkAreaDom.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/WorkAreaJPanel.h>)
+#include <org/allbinary/graphics/j2me/workarea/WorkAreaJPanel.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/WorkAreaJPanelInterface.h>)
+#include <org/allbinary/graphics/j2me/workarea/WorkAreaJPanelInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEvent.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventService.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventService.h>
+#endif
+#if __has_include(<org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventSource.h>)
+#include <org/allbinary/graphics/j2me/workarea/canvas/event/MyCanvasEventSource.h>
+#endif
+#if __has_include(<org/allbinary/gui/dialog/FileJDialog.h>)
+#include <org/allbinary/gui/dialog/FileJDialog.h>
+#endif
+#if __has_include(<org/allbinary/gui/dialog/FileJDialogListenerInterface.h>)
+#include <org/allbinary/gui/dialog/FileJDialogListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/gui/dialog/HashMapJDialogListenerInterface.h>)
+#include <org/allbinary/gui/dialog/HashMapJDialogListenerInterface.h>
+#endif
+#if __has_include(<org/allbinary/log/LOGGING.h>)
+#include <org/allbinary/log/LOGGING.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/GuiLog.h>)
+#include <org/allbinary/logic/communication/log/GuiLog.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/SmallIntegerSingletonFactory.h>)
+#include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleFactory.h>)
+#include <org/allbinary/math/AngleFactory.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonLabels.h>)
+#include <org/allbinary/string/CommonLabels.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JFrame.h")
+#include "org/allbinary/graphics/j2me/JFrame.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/KeyListener.h")
+#include "org/allbinary/graphics/j2me/KeyListener.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/Dimension.h")
+#include "org/allbinary/graphics/j2me/Dimension.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JToolBar.h")
+#include "org/allbinary/graphics/j2me/JToolBar.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JButton.h")
+#include "org/allbinary/graphics/j2me/JButton.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JPanel.h")
+#include "org/allbinary/graphics/j2me/JPanel.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JTabbedPane.h")
+#include "org/allbinary/graphics/j2me/JTabbedPane.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JLabel.h")
+#include "org/allbinary/graphics/j2me/JLabel.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JMenuBar.h")
+#include "org/allbinary/graphics/j2me/JMenuBar.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JMenu.h")
+#include "org/allbinary/graphics/j2me/JMenu.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/JMenuItem.h")
+#include "org/allbinary/graphics/j2me/JMenuItem.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/WindowAdapter.h")
+#include "org/allbinary/graphics/j2me/WindowAdapter.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/WindowEvent.h")
+#include "org/allbinary/graphics/j2me/WindowEvent.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/ActionListener.h")
+#include "org/allbinary/graphics/j2me/ActionListener.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/ActionEvent.h")
+#include "org/allbinary/graphics/j2me/ActionEvent.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/MouseAdapter.h")
+#include "org/allbinary/graphics/j2me/MouseAdapter.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/MouseEvent.h")
+#include "org/allbinary/graphics/j2me/MouseEvent.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/GridLayout.h")
+#include "org/allbinary/graphics/j2me/GridLayout.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/ChangeListener.h")
+#include "org/allbinary/graphics/j2me/ChangeListener.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/ChangeEvent.h")
+#include "org/allbinary/graphics/j2me/ChangeEvent.h"
+#endif
+#if __has_include("org/allbinary/graphics/j2me/KeyEvent.h")
+#include "org/allbinary/graphics/j2me/KeyEvent.h"
+#endif
+
+        #endif
+    

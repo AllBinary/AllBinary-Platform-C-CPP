@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,15 +69,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionRectangle
-            : public Object
-        , public Cloneable {
 
-    private: Rectangle* rectangle;
-
-    private: BasicArrayList* pixelDeltaVector;
-
-public: MotionRectangle(Rectangle* rectangle){
+MotionRectangle::MotionRectangle(Rectangle* rectangle){
 this->setRectangle(rectangle);
     
 this->setPixelDeltaVector(new BasicArrayListD());
@@ -75,7 +78,7 @@ this->setPixelDeltaVector(new BasicArrayListD());
 }
 
 
-    public: Rectangle* getRectangle(){
+    auto MotionRectangle::getRectangle() -> Rectangle*{
 
 
 
@@ -85,13 +88,13 @@ this->setPixelDeltaVector(new BasicArrayListD());
 }
 
 
-    public: void setRectangle(Rectangle* rectangle){
+    auto MotionRectangle::setRectangle(Rectangle* rectangle) -> void{
 this->rectangle= rectangle;
     
 }
 
 
-    public: BasicArrayList* getPixelDeltaVector(){
+    auto MotionRectangle::getPixelDeltaVector() -> BasicArrayList*{
 
 
 
@@ -101,13 +104,13 @@ this->rectangle= rectangle;
 }
 
 
-    public: void setPixelDeltaVector(BasicArrayList* pixelDeltaVector){
+    auto MotionRectangle::setPixelDeltaVector(BasicArrayList* pixelDeltaVector) -> void{
 this->pixelDeltaVector= pixelDeltaVector;
     
 }
 
 
-    public: Object* clone(){
+    auto MotionRectangle::clone() -> Object*{
 
     MotionRectangle* motionRectangle = new MotionRectangle(dynamic_cast<Rectangle*>(this->getRectangle()->clone()));;
     
@@ -122,7 +125,6 @@ motionRectangle->setPixelDeltaVector(dynamic_cast<BasicArrayList*>(this->getPixe
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_CPP

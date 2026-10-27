@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_TAGHELPERFACTORY_CPP
+        #define ADMIN_TAGHELPERS_TAGHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/TagHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,24 +72,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelperFactoryInterface.h"
 
-class TagHelperFactory
-            : public Object
-        , public TagHelperFactoryInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
+TagHelperFactory::TagHelperFactory() : commonStrings(CommonStrings::getInstance()) {
+        }
+        
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto TagHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_TAGHELPERFACTORY_CPP

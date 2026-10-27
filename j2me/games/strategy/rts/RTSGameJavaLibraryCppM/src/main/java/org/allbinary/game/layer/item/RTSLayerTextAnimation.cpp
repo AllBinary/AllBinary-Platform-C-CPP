@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERTEXTANIMATION_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERTEXTANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/item/RTSLayerTextAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,17 +74,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSLayerTextAnimation: public Animation, public UpdateMyFontInterface {
 
-    private: Image* image;
-
-    private: std::string text;
-
-    private: MyFontProcessor* myFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: int32_t fontHeight = 0;
-
-public: RTSLayerTextAnimation(std::string text, Image* image){
+RTSLayerTextAnimation::RTSLayerTextAnimation(std::string text, Image* image) : myFontProcessor(new UpdateMyFontProcessor(this)){
 this->text= text;
     
 this->image= image;
@@ -82,7 +83,7 @@ this->image= image;
 }
 
 
-    public: void updateMeasurement(Graphics* graphics){
+    auto RTSLayerTextAnimation::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -93,10 +94,10 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto RTSLayerTextAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 this->myFontProcessor->process(graphics);
     
-super.paintXY(graphics, x, y);
+Animation::paintXY(graphics, x, y);
     
 
     int32_t adjustedCostY = this->image->getHeight() -this->fontHeight;;
@@ -106,7 +107,6 @@ graphics->drawString(this->text, x, y +adjustedCostY, 0);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERTEXTANIMATION_CPP

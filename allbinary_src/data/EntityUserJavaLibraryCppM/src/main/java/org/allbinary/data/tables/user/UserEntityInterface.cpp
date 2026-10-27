@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYINTERFACE_CPP
+        #define ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tables/user/UserEntityInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,41 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserEntityInterface: public BasicDataTableInterface {
+//Interface - declared in the header
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getAdministrators() = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getStoreManagers(StoreFrontInterface* storeFrontInterface) = 0;
 
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getCustomers() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getUsersWithRole(UserRole* userRole) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual BasicArrayList* getUsers(StoreFrontInterface* storeFrontInterface) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual UserInterface* getUser(std::string userName) = 0;
-
-    public: virtual std::string login(std::string userName, std::string password) = 0;
-
-    public: virtual void deleteWhere(std::string key, std::string value) = 0;
-
-    public: virtual void insert(BasicArrayList* values) = 0;
-
-    public: virtual void update(std::string userName, HashMap<Object*, Object*>* updatedValues) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_DATA_TABLES_USER_USERENTITYINTERFACE_CPP

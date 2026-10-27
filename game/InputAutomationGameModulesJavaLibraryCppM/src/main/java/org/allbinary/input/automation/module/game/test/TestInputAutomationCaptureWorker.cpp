@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTINPUTAUTOMATIONCAPTUREWORKER_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTINPUTAUTOMATIONCAPTUREWORKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/game/test/TestInputAutomationCaptureWorker.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -91,28 +101,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TestInputAutomationCaptureWorker: public AbstractInputAutomationWorker {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GenericProfileActions* genericProfileActions;
-
-    private: const std::string MESSAGE = "GenericInputAutomationCaptureWorker";
-
-    private: const std::string PROCESS_DATA_WORKER_RESULTS = "processDataWorkerResults";
-
-    private: const std::string IMAGE_AVAILABLE_SO_PROCESSING = "Image Available so processing";
-
-    private: const std::string IMAGE_NOT_AVAILABLE = "Image Not Available";
-
-public: TestInputAutomationCaptureWorker(InputAutomationActionInterface* inputAutomationActionInterface, GenericProfileActions* genericProfileActions, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+TestInputAutomationCaptureWorker::TestInputAutomationCaptureWorker(InputAutomationActionInterface* inputAutomationActionInterface, GenericProfileActions* genericProfileActions, ImageComparatorConstraintsInterface* imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface* motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil->putF(this->MESSAGE, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->MESSAGE, this, this->commonStrings->CONSTRUCTOR);
     
 this->setGenericProfileActions(genericProfileActions);
     
@@ -121,7 +118,7 @@ this->setGenericProfileActions(genericProfileActions);
 
                 //@Throws(Exception.constructor)
             
-    public: void processDataWorkerResults(){
+    auto TestInputAutomationCaptureWorker::processDataWorkerResults() -> void{
 
     J2SECacheInterface* cacheInterface = dynamic_cast<J2SECacheInterface*>(CapturedBufferedImagesCacheSingleton::getInstance());;
     
@@ -183,8 +180,8 @@ cacheInterface->get(anyType);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
-this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
+    auto TestInputAutomationCaptureWorker::process() -> void{
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->PROCESS);
     
 this->startDataWorkers();
     
@@ -193,7 +190,7 @@ this->processDataWorkerResults();
 }
 
 
-    public: GenericProfileActions* getGenericProfileActions(){
+    auto TestInputAutomationCaptureWorker::getGenericProfileActions() -> GenericProfileActions*{
 
 
 
@@ -203,13 +200,12 @@ this->processDataWorkerResults();
 }
 
 
-    public: void setGenericProfileActions(GenericProfileActions* genericProfileActions){
+    auto TestInputAutomationCaptureWorker::setGenericProfileActions(GenericProfileActions* genericProfileActions) -> void{
 this->genericProfileActions= genericProfileActions;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTINPUTAUTOMATIONCAPTUREWORKER_CPP

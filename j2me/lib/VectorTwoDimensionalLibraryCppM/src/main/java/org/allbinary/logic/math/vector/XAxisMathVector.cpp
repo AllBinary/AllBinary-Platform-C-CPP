@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_XAXISMATHVECTOR_CPP
+        #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_XAXISMATHVECTOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/math/vector/XAxisMathVector.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,9 +58,8 @@
         #include "org/allbinary/logic/math/vector/MathVector.h"
 #include "org/allbinary/logic/math/vector/YAxisMathVectorUtil.h"
 
-class XAxisMathVector: public MathVector {
 
-public: XAxisMathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction) : MathVector(magnitudeBasicDecimal, direction){
+XAxisMathVector::XAxisMathVector(BasicDecimal* magnitudeBasicDecimal, int32_t direction) : MathVector(magnitudeBasicDecimal, direction){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,7 +71,7 @@ this->calculate();
 }
 
 
-    private: void calculate(){
+    auto XAxisMathVector::calculate() -> void{
 
     int64_t result = YAxisMathVectorUtil::calculate(this->getMagnitude()->getUnscaled(), this->getDirection());;
     
@@ -71,7 +80,6 @@ this->resultBasicDecimal= new BasicDecimal(result);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_MATH_VECTOR_XAXISMATHVECTOR_CPP

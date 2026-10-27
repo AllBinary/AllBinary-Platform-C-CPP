@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/ScrollMapPlayerGameInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -97,23 +107,8 @@
 #include "org/allbinary/game/input/ScrollMapLeftGameInputProcessor.h"
 #include "org/allbinary/game/input/GameInputProcessorUtil.h"
 
-class ScrollMapPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor*> inputProcessorArray = std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX);
-
-    private: const int32_t border = 150;
-
-    private: BasicArrayList* inputList;
-
-    protected: const bool isSingleKeyProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS);
-
-    private: BasicGeographicMap* geographicMapInterface;
-
-    private: int32_t maxBottom= 0;
-
-    private: int32_t maxRight= 0;
-
-public: ScrollMapPlayerGameInput(BasicGeographicMap* geographicMapInterface, BasicArrayList* list, int32_t playerInputId) : PlayerGameInput(list, new BasicArrayListD(), playerInputId){
+ScrollMapPlayerGameInput::ScrollMapPlayerGameInput(BasicGeographicMap* geographicMapInterface, BasicArrayList* list, int32_t playerInputId) : PlayerGameInput(list, new BasicArrayListD(), playerInputId), inputProcessorArray(std::vector<GameInputProcessor*>(InputFactory::getInstance()->MAX)), isSingleKeyProcessing(Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS) || Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_PRESS)), scrollMapEvent(new ScrollMapEvent(this)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -131,11 +126,9 @@ this->init();
 }
 
 
-    private: ScrollMapEvent* scrollMapEvent = new ScrollMapEvent(this);
-
                 //@Throws(Exception.constructor)
             
-    private: void move(int32_t dx, int32_t dy){
+    auto ScrollMapPlayerGameInput::move(int32_t dx, int32_t dy) -> void{
 
     AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
@@ -148,7 +141,7 @@ ScrollMapEventHandler::getInstance()->fireEvent(this->scrollMapEvent);
 }
 
 
-    public: void init(){
+    auto ScrollMapPlayerGameInput::init() -> void{
 this->maxBottom= this->getSpecialHeight();
     
 this->maxRight= this->getSpecialWidth();
@@ -158,7 +151,7 @@ this->maxRight= this->getSpecialWidth();
 
                 //@Throws(Exception.constructor)
             
-    public: void scrollMiddleX(){
+    auto ScrollMapPlayerGameInput::scrollMiddleX() -> void{
 
     AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
@@ -193,7 +186,7 @@ this->move(diffX, 0);
 
                 //@Throws(Exception.constructor)
             
-    public: void scrollY(int32_t anchor){
+    auto ScrollMapPlayerGameInput::scrollY(int32_t anchor) -> void{
 
     AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
@@ -204,7 +197,7 @@ this->move(diffX, 0);
                         if(anchor == Graphics::TOP)
                         
                                     {
-                                    this->logUtil.putF("Top", this, "scrollY");
+                                    this->logUtil->putF("Top", this, "scrollY");
     
 
                                     }
@@ -213,7 +206,7 @@ this->move(diffX, 0);
                         if(anchor == Graphics::BOTTOM)
                         
                                     {
-                                    this->logUtil.putF("Bottom", this, "scrollY");
+                                    this->logUtil->putF("Bottom", this, "scrollY");
     
 
     int32_t diffY = (terrainTiledLayer->getHeight() -displayInfo->getLastHeight());;
@@ -227,7 +220,7 @@ this->move(0, diffY);
                         if(anchor == Graphics::VCENTER)
                         
                                     {
-                                    this->logUtil.putF("Center", this, "scrollY");
+                                    this->logUtil->putF("Center", this, "scrollY");
     
 
     int32_t diffY = (terrainTiledLayer->getHeight() -displayInfo->getLastHeight()) /2;;
@@ -241,7 +234,7 @@ this->move(0, diffY);
                             
 
 
-                            throw new Exception("No Such Anchor Supported");
+                            throw Exception("No Such Anchor Supported");
                     
 
                         }
@@ -251,7 +244,7 @@ this->move(0, diffY);
 
                 //@Throws(Exception.constructor)
             
-    protected: void up(){
+    auto ScrollMapPlayerGameInput::up() -> void{
 
     int32_t y = this->geographicMapInterface->getAllBinaryTiledLayer()->getYP() -10;;
     
@@ -269,7 +262,7 @@ this->move(0, diffY);
 
                 //@Throws(Exception.constructor)
             
-    protected: void down(){
+    auto ScrollMapPlayerGameInput::down() -> void{
 
     int32_t y =  -this->geographicMapInterface->getAllBinaryTiledLayer()->getYP() +10;;
     
@@ -287,7 +280,7 @@ this->move(0, diffY);
 
                 //@Throws(Exception.constructor)
             
-    protected: void right(){
+    auto ScrollMapPlayerGameInput::right() -> void{
 
     int32_t x = this->geographicMapInterface->getAllBinaryTiledLayer()->getYP() +10;;
     
@@ -305,7 +298,7 @@ this->move(0, diffY);
 
                 //@Throws(Exception.constructor)
             
-    protected: void left(){
+    auto ScrollMapPlayerGameInput::left() -> void{
 
     int32_t x =  -this->geographicMapInterface->getAllBinaryTiledLayer()->getYP() -10;;
     
@@ -321,7 +314,7 @@ this->move(0, diffY);
 }
 
 
-    public: void initInputProcessors(){
+    auto ScrollMapPlayerGameInput::initInputProcessors() -> void{
 this->inputProcessorArray[Canvas::UP]= new ScrollMapUpGameInputProcessor(this);
     
 this->inputProcessorArray[Canvas::DOWN]= new ScrollMapDownGameInputProcessor(this);
@@ -337,15 +330,15 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
 
                 //@Throws(Exception.constructor)
             
-    public: void processInputKey(int32_t key){
-this->inputProcessorArray[key].processEvent(AllBinaryGameLayerManager::getNullInstance(), GameKeyEvent::NONE);
+    auto ScrollMapPlayerGameInput::processInputKey(int32_t key) -> void{
+this->inputProcessorArray[key]->processEvent(AllBinaryGameLayerManager::getNullInstance(), GameKeyEvent::NONE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager* layerManager){
+    auto ScrollMapPlayerGameInput::processInput(AllBinaryLayerManager* layerManager) -> void{
 
         try {
             
@@ -389,14 +382,14 @@ this->processInputKey(key);
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->gameInputStrings->PROCESS_INPUT, &e);
     
 }
 
 }
 
 
-    private: int32_t getSpecialHeight(){
+    auto ScrollMapPlayerGameInput::getSpecialHeight() -> int32_t{
 
     AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
@@ -429,7 +422,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 }
 
 
-    private: int32_t getSpecialWidth(){
+    auto ScrollMapPlayerGameInput::getSpecialWidth() -> int32_t{
 
     AllBinaryTiledLayer* terrainTiledLayer = this->geographicMapInterface->getAllBinaryTiledLayer();;
     
@@ -462,7 +455,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 }
 
 
-    public: bool keepOnMapMaxY(int32_t newY){
+    auto ScrollMapPlayerGameInput::keepOnMapMaxY(int32_t newY) -> bool{
 
     int32_t y = this->geographicMapInterface->getAllBinaryTiledLayer()->getYP();;
     
@@ -492,7 +485,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 }
 
 
-    public: bool keepOnMapMinY(int32_t newY){
+    auto ScrollMapPlayerGameInput::keepOnMapMinY(int32_t newY) -> bool{
 
     int32_t y = this->geographicMapInterface->getAllBinaryTiledLayer()->getYP();;
     
@@ -522,7 +515,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 }
 
 
-    public: bool keepOnMapMaxX(int32_t newX){
+    auto ScrollMapPlayerGameInput::keepOnMapMaxX(int32_t newX) -> bool{
 
     int32_t x = this->geographicMapInterface->getAllBinaryTiledLayer()->getXP();;
     
@@ -552,7 +545,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 }
 
 
-    public: bool keepOnMapMinX(int32_t newX){
+    auto ScrollMapPlayerGameInput::keepOnMapMinX(int32_t newX) -> bool{
 
     int32_t x = this->geographicMapInterface->getAllBinaryTiledLayer()->getXP();;
     
@@ -582,7 +575,6 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,12 +36,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/game/input/InputFactory.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class InputFactory;
+class NullUtil;
 
 
 
@@ -55,18 +56,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/input/motion/button/TouchButtonInput.h"
-#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+        class TouchButtonInput;
+class BasicTouchInputFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CancelTouchButtonInputFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* instance;
 
     public: static CancelTouchButtonInputFactory* getInstance();
 
-    private: const std::vector<TouchButtonInput*> cancelInputArray = std::vector<TouchButtonInput*>(InputFactory::getInstance()->MAX);
+    private: std::vector<TouchButtonInput*> cancelInputArray;
 
 private: CancelTouchButtonInputFactory();
 
@@ -78,3 +83,22 @@ private: CancelTouchButtonInputFactory();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/InputFactory.h>)
+#include <org/allbinary/game/input/InputFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include("org/allbinary/input/motion/button/TouchButtonInput.h")
+#include "org/allbinary/input/motion/button/TouchButtonInput.h"
+#endif
+#if __has_include("org/allbinary/input/motion/button/BasicTouchInputFactory.h")
+#include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+#endif
+
+        #endif
+    

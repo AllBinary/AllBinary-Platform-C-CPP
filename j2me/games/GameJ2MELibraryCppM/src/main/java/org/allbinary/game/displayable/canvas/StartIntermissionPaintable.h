@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,51 +34,21 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/Anchor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorFactory.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColorSetUtil.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <org/allbinary/graphics/font/FontDebugFactory.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class Font;
+class Graphics;
+class Anchor;
+class BasicColor;
+class BasicColorFactory;
+class BasicColorSetUtil;
+class DisplayInfoSingleton;
+class FontDebugFactory;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
+class UpdateMyFontProcessor;
 #include <org/allbinary/graphics/paint/InitUpdatePaintable.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class NullUtil;
+class StringMaker;
+class StringUtil;
 
 
 
@@ -92,39 +67,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+        class AllBinaryGameCanvas;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class StartIntermissionPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    protected: FontDebugFactory* fontDebugFactory = FontDebugFactory::getInstance();
+    /*protected*/ public: FontDebugFactory* fontDebugFactory;
 
-    protected: BasicColorSetUtil* basicSetColorUtil = BasicColorSetUtil::getInstance();
+    /*protected*/ public: BasicColorSetUtil* basicSetColorUtil;
 
-    protected: AllBinaryGameCanvas* gameCanvas;
+    /*protected*/ public: AllBinaryGameCanvas* gameCanvas;
 
-    protected: std::vector<std::string> stringArray;
+    /*protected*/ public: std::vector<std::string> stringArray;
 
-    protected: int32_t fontSize;
+    /*protected*/ public: int32_t fontSize;
 
-    protected: Font* font;
+    /*protected*/ public: Font* font;
 
     public: std::vector<int32_t> lastWidth;
 
-    private: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor* updateMyFontProcessor;
 
-    private: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    private: MyFontProcessor* myFontProcessor;
 
-    private: BasicColor* basicColor = BasicColorFactory::getInstance()->BLACK;
+    private: BasicColor* basicColor;
 
     private: int32_t color;
 
-    protected: std::vector<int32_t> lineYOffsetArray = NullUtil::getInstance()->NULL_INT_ARRAY;
+    /*protected*/ public: std::vector<int32_t> lineYOffsetArray;
 
     private: bool hasChanged = true;
 
-    private: int32_t anchor = Anchor::TOP_LEFT;
+    private: int32_t anchor;
 
-    protected: int32_t fontHeightP= 0;
+    /*protected*/ public: int32_t fontHeightP= 0;
 
 public: StartIntermissionPaintable(AllBinaryGameCanvas* gameCanvas, std::vector<std::string> stringArray, BasicColor* basicColor, Font* font);
 
@@ -134,7 +113,7 @@ public: StartIntermissionPaintable(AllBinaryGameCanvas* gameCanvas, std::vector<
 
     private: const std::string BEGIN_LEVEL = "Begin Level ";
 
-    private: const std::string EMPTY_STRING = StringUtil::getInstance()->EMPTY_STRING;
+    private: const std::string EMPTY_STRING;
 
     public: void update();
 
@@ -148,3 +127,58 @@ public: StartIntermissionPaintable(AllBinaryGameCanvas* gameCanvas, std::vector<
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Anchor.h>)
+#include <org/allbinary/graphics/Anchor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorFactory.h>)
+#include <org/allbinary/graphics/color/BasicColorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColorSetUtil.h>)
+#include <org/allbinary/graphics/color/BasicColorSetUtil.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/FontDebugFactory.h>)
+#include <org/allbinary/graphics/font/FontDebugFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/InitUpdatePaintable.h>)
+#include <org/allbinary/graphics/paint/InitUpdatePaintable.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h")
+#include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
+#endif
+
+        #endif
+    

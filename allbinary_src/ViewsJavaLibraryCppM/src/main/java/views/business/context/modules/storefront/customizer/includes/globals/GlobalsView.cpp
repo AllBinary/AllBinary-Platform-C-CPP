@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_GLOBALSVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_GLOBALSVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/globals/GlobalsView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,13 +76,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GlobalsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: GlobalsValidation* globalsValidation;
-
-public: GlobalsView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+GlobalsView::GlobalsView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,7 +89,7 @@ this->globalsValidation= new GlobalsValidation(this->getWeblisketSession()->getS
 }
 
 
-    public: void addDomNodeInterfaces(){
+    auto GlobalsView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->globalsValidation));
     
 }
@@ -92,7 +97,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->globalsValidatio
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GlobalsView::toXmlNode(Document* document) -> Node*{
 
         try {
             
@@ -106,10 +111,10 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->globalsValidatio
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XSLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XSLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.FAILURE, this, "toXmlNode", &e);
+                                    this->logUtil->put(this->commonStrings->FAILURE, this, "toXmlNode", &e);
     
 
                                     }
@@ -126,7 +131,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->globalsValidatio
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto GlobalsView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -135,14 +140,14 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->globalsValidatio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings.EXCEPTION, this, "view()", &e);
@@ -160,7 +165,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->globalsValidatio
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_GLOBALSVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOMOTIONRECTANGLECONSTRAINTS_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOMOTIONRECTANGLECONSTRAINTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/constraints/NoMotionRectangleConstraints.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,9 +68,8 @@
         #include "org/allbinary/input/automation/module/generic/constraints/Dimension.h"
 #include "org/allbinary/input/automation/module/generic/constraints/Rectangle.h"
 
-class NoMotionRectangleConstraints: public MotionRectangleConstraints {
 
-public: NoMotionRectangleConstraints(){
+NoMotionRectangleConstraints::NoMotionRectangleConstraints(){
 this->setMinDimension(new Dimension(0, 0));
     
 this->setMinArea(0);
@@ -72,7 +81,7 @@ this->setMaxMotionRectangles(.MAX_VALUE());
 }
 
 
-    public: bool isValid(int64_t frame, BufferedImage* bufferedImage, Rectangle* rectangle){
+    auto NoMotionRectangleConstraints::isValid(int64_t frame, BufferedImage* bufferedImage, Rectangle* rectangle) -> bool{
 
 
 
@@ -82,7 +91,6 @@ this->setMaxMotionRectangles(.MAX_VALUE());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONSTRAINTS_NOMOTIONRECTANGLECONSTRAINTS_CPP

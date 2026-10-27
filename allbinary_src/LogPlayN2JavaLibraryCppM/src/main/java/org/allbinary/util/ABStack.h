@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_UTIL_ABSTACK_H
         #define ORG_ALLBINARY_UTIL_ABSTACK_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,11 +35,7 @@
             #include "java/lang/Object.h"
         
 #include <java/util/Stack.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
+class JsType;
 
 
 
@@ -54,9 +55,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 template<typename E>
 class ABStack: public Stack<E> {
 
+
+            
+    public: ABStack();
+        
     public: E push(E item);
 
     public: E pop();
@@ -66,12 +75,29 @@ class ABStack: public Stack<E> {
     public: bool empty();
 
     public: int32_t search(Object* obj);
+    public: int32_t search(const std::string& obj) { return search(JavaString::box(obj)); }
 
     public: bool removeElement(Object* obj);
+    public: bool removeElement(const std::string& obj) { return removeElement(JavaString::box(obj)); }
 
 };
 
             
 
+        #include "org/allbinary/util/ABStack.cpp"
+        
 
         #endif //ORG_ALLBINARY_UTIL_ABSTACK_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_ABSTACK_H_COMPLETE)
+        #define ORG_ALLBINARY_UTIL_ABSTACK_H_COMPLETE
+        #if __has_include(<java/util/Stack.h>)
+#include <java/util/Stack.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+
+        #endif
+    

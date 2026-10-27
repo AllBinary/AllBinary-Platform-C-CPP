@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSTAG_CPP
+        #define TAGS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "tags/admin/storefront/statistics/StoreFrontStatisticsTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,15 +67,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreFrontStatisticsTag: public StoreValidationTransformTag {
 
-public: StoreFrontStatisticsTag(){
+StoreFrontStatisticsTag::StoreFrontStatisticsTag(){
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto StoreFrontStatisticsTag::doStartTag() -> int32_t{
 
         try {
             
@@ -75,7 +84,7 @@ public: StoreFrontStatisticsTag(){
                         
                                     {
                                     
-                        if(this->getCommand()->compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand()->compareTo(org.allbinary->globals->GLOBALS2->VIEW) == 0)
                         
                                     {
                                     this->setName("Validation StoreFrontStatistics View");
@@ -89,7 +98,7 @@ this->setObjectFile("views.admin.storefront.statistics.ValidationStoreFrontStati
                             
 
 
-                            throw new Exception("No Such View Command: " +this->getCommand());
+                            throw Exception(JavaString::valueOf("No Such View Command: ") +JavaString::valueOf(this->getCommand()));
                     
 
                         }
@@ -98,7 +107,7 @@ this->setObjectFile("views.admin.storefront.statistics.ValidationStoreFrontStati
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.doStartTag();;
+                        return StoreValidationTransformTag::doStartTag();;
     
 
                                     }
@@ -106,7 +115,7 @@ this->setObjectFile("views.admin.storefront.statistics.ValidationStoreFrontStati
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
@@ -138,7 +147,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //TAGS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSTAG_CPP

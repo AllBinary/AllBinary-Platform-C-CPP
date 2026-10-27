@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_CPP
+        #define ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/emulator/InitEmulatorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,29 +55,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InitEmulatorFactory
-            : public Object
-         {
 
-    private: static InitEmulatorFactory* instance() { static std::unique_ptr<InitEmulatorFactory> value(new InitEmulatorFactory()); return value.get(); }
+InitEmulatorFactory::InitEmulatorFactory() {
+        }
+        auto InitEmulatorFactory::instance_owner() -> InitEmulatorFactory* { static std::unique_ptr<InitEmulatorFactory> value(new InitEmulatorFactory()); return value.get(); }
+InitEmulatorFactory* InitEmulatorFactory::instance = InitEmulatorFactory::instance_owner();
 
-    public: static InitEmulatorFactory* getInstance(){
+    auto InitEmulatorFactory::getInstance() -> InitEmulatorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitEmulatorFactory::instance();
+                        return InitEmulatorFactory::instance;
     
 }
 
 
-    public: void setInitEmulator(bool initEmulator){
+    auto InitEmulatorFactory::setInitEmulator(bool initEmulator) -> void{
 this->initEmulator= initEmulator;
     
 }
 
 
-    public: bool isInitEmulator(){
+    auto InitEmulatorFactory::isInitEmulator() -> bool{
 
 
 
@@ -77,9 +87,6 @@ this->initEmulator= initEmulator;
 }
 
 
-    private: bool initEmulator = false;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_CPP

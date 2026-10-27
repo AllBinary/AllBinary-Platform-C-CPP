@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/sql/AbSqlData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,27 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AbSqlData
-            : public Object
-         {
 
-    public: static inline const std::string ANYSINGLECHARACTERMATCH = "_";
-
-    public: static inline const std::string ANYMULTICHARACTERMATCH = "%";
-
-    public: static inline const int32_t MAXNUM = 19;
-
-    public: static inline const int32_t MINSTRING = 1;
-
-    public: static inline const int32_t MAXSTRING = 255;
-
-    public: static inline const int32_t MAXBLOB = 32000;
-
-public: AbSqlData(){
+AbSqlData::AbSqlData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLDATA_CPP

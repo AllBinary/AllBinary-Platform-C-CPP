@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_ORDERTAG_CPP
+        #define ADMIN_TAGS_ORDERTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/OrderTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,27 +95,18 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderTag: public CustomTagSupport {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: std::string command;
-
-    private: std::string storeName;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-public: OrderTag(){
+OrderTag::OrderTag() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setCommand(std::string command){
+    auto OrderTag::setCommand(std::string command) -> void{
 this->command= command;
     
 }
 
 
-    public: void setStoreName(std::string value){
+    auto OrderTag::setStoreName(std::string value) -> void{
 this->storeName= value;
     
 }
@@ -113,7 +114,7 @@ this->storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string process(){
+    auto OrderTag::process() -> std::string{
 
         try {
             
@@ -154,10 +155,10 @@ this->storeName= value;
     std::string error = "Failed to Process Order: ";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->PROCESS, &e);
     
 
                                     }
@@ -175,7 +176,7 @@ this->storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool setPaymentGateway(){
+    auto OrderTag::setPaymentGateway() -> bool{
 
         try {
             
@@ -216,10 +217,10 @@ this->storeName= value;
     std::string error = "Failed to setPaymentGateway for Order";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setPaymentGateway()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setPaymentGateway()", &e);
     
 
                                     }
@@ -237,7 +238,7 @@ this->storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto OrderTag::doStartTag() -> int32_t{
 
         try {
             
@@ -249,7 +250,7 @@ this->storeName= value;
 this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeName);
     
 
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESS) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->PROCESS) == 0)
                         
                                     {
                                     this->process();
@@ -258,7 +259,7 @@ this->propertiesHashMap->put(StoreFrontData::getInstance()->NAME, this->storeNam
                                     }
                                 
                              else 
-                        if(this->command.compare(PaymentGatewayData::NAME.toString()) == 0)
+                        if(this->command.compare(PaymentGatewayData::NAME->toString()) == 0)
                         
                                     {
                                     
@@ -316,7 +317,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_ORDERTAG_CPP

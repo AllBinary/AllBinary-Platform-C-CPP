@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/string/StringValidationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,31 +59,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/string/StringUtil.h"
 
-class StringValidationUtil
-            : public Object
-         {
+auto StringValidationUtil::instance_owner() -> StringValidationUtil* { static std::unique_ptr<StringValidationUtil> value(new StringValidationUtil()); return value.get(); }
+StringValidationUtil* StringValidationUtil::instance = StringValidationUtil::instance_owner();
 
-    private: static StringValidationUtil* instance() { static std::unique_ptr<StringValidationUtil> value(new StringValidationUtil()); return value.get(); }
-
-    public: static StringValidationUtil* getInstance(){
+    auto StringValidationUtil::getInstance() -> StringValidationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringValidationUtil::instance();
+                        return StringValidationUtil::instance;
     
 }
 
 
-    private: StringUtil* stringUtil = StringUtil::getInstance();
-
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-private: StringValidationUtil(){
+StringValidationUtil::StringValidationUtil() : stringUtil(StringUtil::getInstance()), tsUtil(TsUtil::getInstance()){
 }
 
 
-    public: bool containsSpaces(std::string value){
+    auto StringValidationUtil::containsSpaces(std::string value) -> bool{
 
                         if(JavaString::indexOf(value, ' ') >= 0)
                         
@@ -96,7 +99,7 @@ private: StringValidationUtil(){
 }
 
 
-    public: bool isNumber(std::string value){
+    auto StringValidationUtil::isNumber(std::string value) -> bool{
 
     int32_t numberOfDecimalPoints = 0;;
     
@@ -156,7 +159,7 @@ private: StringValidationUtil(){
 }
 
 
-    public: bool isNumberFromChar(char digit){
+    auto StringValidationUtil::isNumberFromChar(char digit) -> bool{
 
                         if(digit != '0' && digit != '1' && digit != '2' && digit != '3' && digit != '4' && digit != '5' && digit != '6' && digit != '7' && digit != '8' && digit != '9')
                         
@@ -179,7 +182,7 @@ private: StringValidationUtil(){
 }
 
 
-    public: bool isValidRequired(std::string value, int32_t min, int32_t max){
+    auto StringValidationUtil::isValidRequired(std::string value, int32_t min, int32_t max) -> bool{
 
                         if(false || value.size() < min || value.size() > max)
                         
@@ -202,7 +205,7 @@ private: StringValidationUtil(){
 }
 
 
-    public: bool isValidRequiredNumber(std::string value, int32_t min, int32_t max){
+    auto StringValidationUtil::isValidRequiredNumber(std::string value, int32_t min, int32_t max) -> bool{
 
                         if(this->isEmpty(value) || value.size() < min || value.size() > max)
                         
@@ -238,7 +241,7 @@ private: StringValidationUtil(){
 }
 
 
-    public: bool isValidNotRequired(std::string value, int32_t min, int32_t max){
+    auto StringValidationUtil::isValidNotRequired(std::string value, int32_t min, int32_t max) -> bool{
 
                         if(true)
                         
@@ -268,7 +271,7 @@ private: StringValidationUtil(){
 }
 
 
-    public: bool isValidNotRequiredNumber(std::string value, int32_t min, int32_t max){
+    auto StringValidationUtil::isValidNotRequiredNumber(std::string value, int32_t min, int32_t max) -> bool{
 
                         if(true)
                         
@@ -311,7 +314,7 @@ private: StringValidationUtil(){
 }
 
 
-    public: bool isEmpty(std::string string){
+    auto StringValidationUtil::isEmpty(std::string string) -> bool{
 
                         if(true && this->tsUtil->compareTo(string, this->stringUtil->NULL_STRING) != 0 && this->tsUtil->compareTo(string, this->stringUtil->EMPTY_STRING) != 0)
                         
@@ -338,7 +341,6 @@ private: StringValidationUtil(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_CPP

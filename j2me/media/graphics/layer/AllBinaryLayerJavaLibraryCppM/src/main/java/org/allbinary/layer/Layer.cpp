@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LAYER_LAYER_CPP
+        #define ORG_ALLBINARY_LAYER_LAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/layer/Layer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -67,27 +77,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Layer
-            : public Object
-         {
+int32_t Layer::ID = SmallIntegerSingletonFactory::getInstance()->getAt(0);
 
-    public: static inline int32_t ID = SmallIntegerSingletonFactory::getInstance()->getAt(0);
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: int32_t x= 0;
-
-    protected: int32_t y= 0;
-
-    protected: int32_t z = 3;
-
-    private: int32_t width= 0;
-
-    private: int32_t height= 0;
-
-    private: bool visible = true;
-
-public: Layer(int32_t width, int32_t height){
+Layer::Layer(int32_t width, int32_t height) : logUtil(LogUtil::getInstance()){
 this->setLayerWidth(width);
     
 this->setLayerHeight(height);
@@ -95,7 +87,7 @@ this->setLayerHeight(height);
 }
 
 
-    public: void setPosition(int32_t x, int32_t y, int32_t z){
+    auto Layer::setPosition(int32_t x, int32_t y, int32_t z) -> void{
 this->x= x;
     
 this->y= y;
@@ -105,7 +97,7 @@ this->z= z;
 }
 
 
-    public: void moveDXY(int32_t dx, int32_t dy){
+    auto Layer::moveDXY(int32_t dx, int32_t dy) -> void{
 this->x += dx;
     
 this->y += dy;
@@ -113,7 +105,7 @@ this->y += dy;
 }
 
 
-    public: void moveDXYZ(int32_t dx, int32_t dy, int32_t dz){
+    auto Layer::moveDXYZ(int32_t dx, int32_t dy, int32_t dz) -> void{
 this->x += dx;
     
 this->y += dy;
@@ -123,7 +115,7 @@ this->z += dz;
 }
 
 
-    public: int32_t getXP(){
+    auto Layer::getXP() -> int32_t{
 
 
 
@@ -133,7 +125,7 @@ this->z += dz;
 }
 
 
-    public: int32_t getYP(){
+    auto Layer::getYP() -> int32_t{
 
 
 
@@ -143,7 +135,7 @@ this->z += dz;
 }
 
 
-    public: int32_t getZP(){
+    auto Layer::getZP() -> int32_t{
 
 
 
@@ -153,7 +145,7 @@ this->z += dz;
 }
 
 
-    public: int32_t getWidth(){
+    auto Layer::getWidth() -> int32_t{
 
 
 
@@ -163,7 +155,7 @@ this->z += dz;
 }
 
 
-    public: int32_t getHeight(){
+    auto Layer::getHeight() -> int32_t{
 
 
 
@@ -173,7 +165,7 @@ this->z += dz;
 }
 
 
-    public: int64_t getDepth(){
+    auto Layer::getDepth() -> int64_t{
 
 
 
@@ -183,13 +175,13 @@ this->z += dz;
 }
 
 
-    public: void setVisible(bool visible){
+    auto Layer::setVisible(bool visible) -> void{
 this->visible= visible;
     
 }
 
 
-    public: bool isVisible(){
+    auto Layer::isVisible() -> bool{
 
 
 
@@ -199,7 +191,7 @@ this->visible= visible;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto Layer::paint(Graphics* graphics) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -211,7 +203,7 @@ this->logUtil->putF(commonStrings->NOT_IMPLEMENTED, this, canvasStrings->PAINT);
 }
 
 
-    protected: void setLayerWidth(int32_t width){
+    auto Layer::setLayerWidth(int32_t width) -> void{
 
                         if(width < 0)
                         
@@ -219,7 +211,7 @@ this->logUtil->putF(commonStrings->NOT_IMPLEMENTED, this, canvasStrings->PAINT);
                                     
 
 
-                            throw new IllegalArgumentException();
+                            throw IllegalArgumentException();
                     
 
                                     }
@@ -229,7 +221,7 @@ this->width= width;
 }
 
 
-    protected: void setLayerHeight(int32_t height){
+    auto Layer::setLayerHeight(int32_t height) -> void{
 
                         if(height < 0)
                         
@@ -237,7 +229,7 @@ this->width= width;
                                     
 
 
-                            throw new IllegalArgumentException();
+                            throw IllegalArgumentException();
                     
 
                                     }
@@ -247,11 +239,10 @@ this->height= height;
 }
 
 
-    public: void toStringAppend(StringMaker* stringBuffer){
+    auto Layer::toStringAppend(StringMaker* stringBuffer) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LAYER_LAYER_CPP

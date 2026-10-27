@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_CPP
+        #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/canvas/GameStatisticsFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,18 +55,9 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/canvas/BaseGameStatistics.h"
-//NoPlatform
-// class GameStatisticsFactory: public BaseGameStatistics {
 
-    private: static GameStatisticsFactory* instance() { static std::unique_ptr<GameStatisticsFactory> value(new GameStatisticsFactory()); return value.get(); }
+//NoPlatform - declared in the header, implemented by the platform project
 
-    public: static GameStatisticsFactory* getInstance()
 
-    public: void add(std::string string)
 
-    public: std::string toString()
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_CPP

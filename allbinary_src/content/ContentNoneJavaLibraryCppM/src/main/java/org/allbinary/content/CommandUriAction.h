@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
         #define ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Command.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
+class Command;
+class LogUtil;
 
 
 
@@ -54,15 +55,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CommandUriAction
-            : public Object
+            : public virtual Object
          {
 
-    private: static CommandUriAction* instance() { static std::unique_ptr<CommandUriAction> value(new CommandUriAction()); return value.get(); }
+    private: static CommandUriAction* instance_owner();
+    private: static CommandUriAction* instance;
 
     public: static CommandUriAction* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+
+            
+    public: CommandUriAction();
+        
+    /*protected*/ public: LogUtil* logUtil;
 
     public: void add(Command* command, std::string url);
 
@@ -74,3 +84,16 @@ class CommandUriAction
 
 
         #endif //ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H_COMPLETE)
+        #define ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Command.h>)
+#include <javax/microedition/lcdui/Command.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+
+        #endif
+    

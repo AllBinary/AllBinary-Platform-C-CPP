@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/number/LongUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,11 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/java/number/LongData.h"
 
-class LongUtil
-            : public Object
-         {
 
-    public: static std::string fillIn(std::string end){
+LongUtil::LongUtil(){
+}
+
+
+    auto LongUtil::fillIn(std::string end) -> std::string{
 
     StringMaker* frameStringBuffer = new StringMaker();;
     
@@ -95,11 +106,6 @@ frameStringBuffer->append(end);
 }
 
 
-private: LongUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGUTIL_CPP

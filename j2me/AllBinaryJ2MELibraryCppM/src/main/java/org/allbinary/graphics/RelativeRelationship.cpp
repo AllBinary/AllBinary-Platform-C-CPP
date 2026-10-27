@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_CPP
+        #define ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/RelativeRelationship.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,21 +63,10 @@
         #include "org/allbinary/graphics/PointFactory.h"
 #include "org/allbinary/graphics/GPoint.h"
 
-class RelativeRelationship
-            : public Object
-         {
+auto RelativeRelationship::NULL_RELATIVE_RELATIONSHIP_owner() -> RelativeRelationship* { static std::unique_ptr<RelativeRelationship> value(new RelativeRelationship(PointFactory::getInstance()->ZERO_ZERO, BasicArrayListUtil::getInstance()->getImmutableInstance())); return value.get(); }
+RelativeRelationship* RelativeRelationship::NULL_RELATIVE_RELATIONSHIP = RelativeRelationship::NULL_RELATIVE_RELATIONSHIP_owner();
 
-    public: static RelativeRelationship* NULL_RELATIVE_RELATIONSHIP() { static std::unique_ptr<RelativeRelationship> value(new RelativeRelationship(PointFactory::getInstance()->ZERO_ZERO, BasicArrayListUtil::getInstance()->getImmutableInstance())); return value.get(); }
-
-    private: BasicArrayList* typesAllowedList;
-
-    private: int32_t x;
-
-    private: int32_t y;
-
-    private: int32_t z;
-
-public: RelativeRelationship(GPoint* point, BasicArrayList* typesAllowedList){
+RelativeRelationship::RelativeRelationship(GPoint* point, BasicArrayList* typesAllowedList){
 this->x= point->getX();
     
 this->y= point->getY();
@@ -79,7 +78,7 @@ this->typesAllowedList= typesAllowedList;
 }
 
 
-    public: int32_t getX(){
+    auto RelativeRelationship::getX() -> int32_t{
 
 
 
@@ -89,7 +88,7 @@ this->typesAllowedList= typesAllowedList;
 }
 
 
-    public: int32_t getY(){
+    auto RelativeRelationship::getY() -> int32_t{
 
 
 
@@ -99,7 +98,7 @@ this->typesAllowedList= typesAllowedList;
 }
 
 
-    public: int32_t getZ(){
+    auto RelativeRelationship::getZ() -> int32_t{
 
 
 
@@ -109,7 +108,7 @@ this->typesAllowedList= typesAllowedList;
 }
 
 
-    public: BasicArrayList* getTypesAllowedList(){
+    auto RelativeRelationship::getTypesAllowedList() -> BasicArrayList*{
 
 
 
@@ -119,13 +118,12 @@ this->typesAllowedList= typesAllowedList;
 }
 
 
-    public: void setTypesAllowedList(BasicArrayList* typesAllowedList){
+    auto RelativeRelationship::setTypesAllowedList(BasicArrayList* typesAllowedList) -> void{
 this->typesAllowedList= typesAllowedList;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_CPP

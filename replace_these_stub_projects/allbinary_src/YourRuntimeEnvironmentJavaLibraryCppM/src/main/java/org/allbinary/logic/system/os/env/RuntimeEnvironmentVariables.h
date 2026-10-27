@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -22,29 +27,13 @@
             #include "java/lang/System.h"
         
 #include <java/io/BufferedReader.h>
-
-      
 #include <java/io/InputStreamReader.h>
-
-      
 #include <java/util/Properties.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
-
-      
-#include <org/allbinary/logic/system/os/OperatingSystems.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class GenericOperatingSystem;
+class OperatingSystemFactory;
+class OperatingSystems;
+class CommonStrings;
 
 
 
@@ -63,15 +52,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/os/env/Process.h"
+        class Process;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RuntimeEnvironmentVariables
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
 public: RuntimeEnvironmentVariables();
 
@@ -103,3 +96,37 @@ public: RuntimeEnvironmentVariables();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_H_COMPLETE
+        #if __has_include(<java/io/BufferedReader.h>)
+#include <java/io/BufferedReader.h>
+#endif
+#if __has_include(<java/io/InputStreamReader.h>)
+#include <java/io/InputStreamReader.h>
+#endif
+#if __has_include(<java/util/Properties.h>)
+#include <java/util/Properties.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/OperatingSystemFactory.h>)
+#include <org/allbinary/logic/system/os/OperatingSystemFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/OperatingSystems.h>)
+#include <org/allbinary/logic/system/os/OperatingSystems.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/system/os/env/Process.h")
+#include "org/allbinary/logic/system/os/env/Process.h"
+#endif
+
+        #endif
+    

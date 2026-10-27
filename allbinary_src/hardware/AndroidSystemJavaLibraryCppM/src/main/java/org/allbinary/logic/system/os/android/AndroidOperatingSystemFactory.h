@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOPERATINGSYSTEMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOPERATINGSYSTEMFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -33,27 +38,13 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/TsUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/NoOperatingSystem.h>
-
-      
-#include <org/allbinary/logic/system/os/OperatingSystems.h>
-
-      
-#include <org/allbinary/logic/system/os/SystemProperties.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class TsUtil;
+class LogUtil;
+class GenericOperatingSystem;
+class NoOperatingSystem;
+class OperatingSystems;
+class SystemProperties;
+class CommonStrings;
 
 
 
@@ -72,19 +63,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/system/os/android/AndroidOS.h"
+        class AndroidOS;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidOperatingSystemFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AndroidOperatingSystemFactory* instance() { static std::unique_ptr<AndroidOperatingSystemFactory> value(new AndroidOperatingSystemFactory()); return value.get(); }
+    private: static AndroidOperatingSystemFactory* instance_owner();
+    private: static AndroidOperatingSystemFactory* instance;
 
     public: static AndroidOperatingSystemFactory* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
+    private: TsUtil* tsUtil;
 
 private: AndroidOperatingSystemFactory();
 
@@ -98,3 +94,34 @@ private: AndroidOperatingSystemFactory();
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOPERATINGSYSTEMFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOPERATINGSYSTEMFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ANDROID_ANDROIDOPERATINGSYSTEMFACTORY_H_COMPLETE
+        #if __has_include(<org/allbinary/TsUtil.h>)
+#include <org/allbinary/TsUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/GenericOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/NoOperatingSystem.h>)
+#include <org/allbinary/logic/system/os/NoOperatingSystem.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/OperatingSystems.h>)
+#include <org/allbinary/logic/system/os/OperatingSystems.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/os/SystemProperties.h>)
+#include <org/allbinary/logic/system/os/SystemProperties.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/logic/system/os/android/AndroidOS.h")
+#include "org/allbinary/logic/system/os/android/AndroidOS.h"
+#endif
+
+        #endif
+    

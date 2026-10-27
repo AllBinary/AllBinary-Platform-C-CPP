@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H
         #define ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,27 +52,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/audio/AudioContentTypeData.h"
+        class AudioContentTypeData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AudioContentTypeDataFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static AudioContentTypeDataFactory* instance() { static std::unique_ptr<AudioContentTypeDataFactory> value(new AudioContentTypeDataFactory()); return value.get(); }
+    private: static AudioContentTypeDataFactory* instance_owner();
+    private: static AudioContentTypeDataFactory* instance;
 
     public: static AudioContentTypeDataFactory* getInstance();
 
-    public: AudioContentTypeData* MIME_AUDIO_TONE = new AudioContentTypeData("audio/x-tone-seq");
+    public: AudioContentTypeData* MIME_AUDIO_TONE;
 
-    public: AudioContentTypeData* MIME_AUDIO_AMR = new AudioContentTypeData("audio/amr");
+    public: AudioContentTypeData* MIME_AUDIO_AMR;
 
-    public: AudioContentTypeData* MIME_AUDIO_AMR_WB = new AudioContentTypeData("audio/amr-wb");
+    public: AudioContentTypeData* MIME_AUDIO_AMR_WB;
 
-    public: AudioContentTypeData* MIME_AUDIO_WAV = new AudioContentTypeData("audio/x-wav");
+    public: AudioContentTypeData* MIME_AUDIO_WAV;
 
-    public: AudioContentTypeData* MIME_AUDIO_MIDI = new AudioContentTypeData("audio/midi");
+    public: AudioContentTypeData* MIME_AUDIO_MIDI;
 
-    public: AudioContentTypeData* MIME_AUDIO_SP_MIDI = new AudioContentTypeData("audio/sp-midi");
+    public: AudioContentTypeData* MIME_AUDIO_SP_MIDI;
 
 private: AudioContentTypeDataFactory();
 
@@ -77,3 +87,13 @@ private: AudioContentTypeDataFactory();
 
 
         #endif //ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/audio/AudioContentTypeData.h")
+#include "org/allbinary/audio/AudioContentTypeData.h"
+#endif
+
+        #endif
+    

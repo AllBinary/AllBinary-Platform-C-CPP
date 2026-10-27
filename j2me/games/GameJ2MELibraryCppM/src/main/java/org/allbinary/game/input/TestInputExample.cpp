@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_TESTINPUTEXAMPLE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_TESTINPUTEXAMPLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/TestInputExample.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,49 +59,46 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/TestInputInterface.h"
 
-class TestInputExample
-            : public Object
-        , public TestInputInterface {
 
-    private: int32_t testValue= 0;
-
-    public: void up(){
+TestInputExample::TestInputExample() {
+        }
+        
+    auto TestInputExample::up() -> void{
 }
 
 
-    public: void down(){
+    auto TestInputExample::down() -> void{
 }
 
 
-    public: void left(){
+    auto TestInputExample::left() -> void{
 this->testValue++;
     
 }
 
 
-    public: void right(){
+    auto TestInputExample::right() -> void{
 this->testValue--;
     
 }
 
 
-    public: void strafeLeft(){
+    auto TestInputExample::strafeLeft() -> void{
 }
 
 
-    public: void strafeRight(){
+    auto TestInputExample::strafeRight() -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto TestInputExample::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto TestInputExample::paintThreed(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_TESTINPUTEXAMPLE_CPP

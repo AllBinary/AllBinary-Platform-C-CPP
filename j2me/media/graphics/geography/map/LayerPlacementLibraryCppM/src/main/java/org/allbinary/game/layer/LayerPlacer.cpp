@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/LayerPlacer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -77,17 +87,8 @@
 #include "org/allbinary/game/layer/LayerPlacementType.h"
 #include "org/allbinary/game/layer/LayerPlacementTypeFactory.h"
 
-class LayerPlacer
-            : public Object
-         {
 
-    private: EnumerationUtil* enumerationUtil = EnumerationUtil::getInstance();
-
-    protected: LayerInterfaceVisitor* layerInterfaceVisitor;
-
-    private: GPoint* dimension;
-
-public: LayerPlacer(LayerInterfaceVisitor* layerInterfaceVisitor, GPoint* dimension){
+LayerPlacer::LayerPlacer(LayerInterfaceVisitor* layerInterfaceVisitor, GPoint* dimension) : enumerationUtil(EnumerationUtil::getInstance()){
 this->layerInterfaceVisitor= layerInterfaceVisitor;
     
 this->dimension= dimension;
@@ -97,7 +98,7 @@ this->dimension= dimension;
 
                 //@Throws(Exception.constructor)
             
-    public: void processList(BasicArrayList* list){
+    auto LayerPlacer::processList(BasicArrayList* list) -> void{
 
     int32_t size = list->size();;
     
@@ -122,7 +123,7 @@ this->process(layerPlacementInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(LayerPlacementInterface* layerPlacementInterface){
+    auto LayerPlacer::process(LayerPlacementInterface* layerPlacementInterface) -> void{
 
     GPoint* relativePoint = this->getPoint(layerPlacementInterface);;
     
@@ -177,7 +178,7 @@ this->layerInterfaceVisitor->visit(layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: GPoint* getPoint(LayerPlacementInterface* layerPlacementInterface){
+    auto LayerPlacer::getPoint(LayerPlacementInterface* layerPlacementInterface) -> GPoint*{
 
     PointFactory* pointFactory = PointFactory::getInstance();;
     
@@ -238,7 +239,7 @@ this->layerInterfaceVisitor->visit(layerInterface);
                             
 
 
-                            throw new Exception("PlacementType Not Recognized");
+                            throw Exception("PlacementType Not Recognized");
                     
 
                         }
@@ -246,7 +247,6 @@ this->layerInterfaceVisitor->visit(layerInterface);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_LAYERPLACER_CPP

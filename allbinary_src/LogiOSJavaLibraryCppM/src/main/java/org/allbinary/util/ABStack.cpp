@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABSTACK_CPP
+        #define ORG_ALLBINARY_UTIL_ABSTACK_CPP
+
+        #include "org/allbinary/util/ABStack.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,10 +52,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+
 template<typename E>
-class ABStack: public Stack<E> {
+ABStack<E>::ABStack() {
+        }
+        
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_UTIL_ABSTACK_CPP

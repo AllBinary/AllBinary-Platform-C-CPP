@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVIEW_CPP
+        #define VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/payment/gateways/SelectNewView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/payment/gateways/PaymentGatewaysView.h"
 
-class SelectNewView: public PaymentGatewayViewAbstract {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: SelectNewView(TransformInfoInterface* transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
+SelectNewView::SelectNewView(TransformInfoInterface* transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +93,7 @@ public: SelectNewView(TransformInfoInterface* transformInfoInterface) : PaymentG
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto SelectNewView::view() -> std::string{
 
         try {
             
@@ -109,10 +116,10 @@ public: SelectNewView(TransformInfoInterface* transformInfoInterface) : PaymentG
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view", &e);
     
 
                                     }
@@ -127,7 +134,6 @@ public: SelectNewView(TransformInfoInterface* transformInfoInterface) : PaymentG
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVIEW_CPP

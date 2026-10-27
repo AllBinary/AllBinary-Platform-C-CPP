@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURES_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/feature/Features.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -89,13 +99,9 @@
 #include "org/allbinary/game/configuration/feature/TouchFeatureFactory.h"
 #include "org/allbinary/game/configuration/feature/MainFeatureFactory.h"
 
-class Features
-            : public Object
-         {
+Object* Features::SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
 
-    private: static inline Object* SINGLETON = NullUtil::getInstance()->NULL_OBJECT;
-
-    public: static Features* getInstance(){
+    auto Features::getInstance() -> Features*{
 
                         if(Features::SINGLETON == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -114,15 +120,7 @@ class Features
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: BasicArrayList* list;
-
-    private: BasicArrayList* defaultList;
-
-private: Features(){
+Features::Features() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->list= new BasicArrayListD();
     
 this->defaultList= new BasicArrayListD();
@@ -134,7 +132,7 @@ this->init();
 
                 //@Throws(Exception.constructor)
             
-    public: void addDefault(Feature* gameFeature){
+    auto Features::addDefault(Feature* gameFeature) -> void{
 this->add(gameFeature);
     
 
@@ -151,7 +149,7 @@ this->add(gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public: void add(Feature* gameFeature){
+    auto Features::add(Feature* gameFeature) -> void{
 
                         if(!this->list->contains(gameFeature))
                         
@@ -170,7 +168,7 @@ GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeatu
 
                 //@Throws(Exception.constructor)
             
-    public: void removeDefault(Feature* gameFeature){
+    auto Features::removeDefault(Feature* gameFeature) -> void{
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START_LABEL)->append(gameFeature->toString())->toString(), this, "removeDefault");
     
 this->remove(gameFeature);
@@ -182,7 +180,7 @@ this->defaultList->remove(gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(Feature* gameFeature){
+    auto Features::remove(Feature* gameFeature) -> void{
 
                         if(this->list->contains(gameFeature))
                         
@@ -199,7 +197,7 @@ GameFeatureEventHandler::getInstance()->fireEvent(new GameFeatureEvent(gameFeatu
 }
 
 
-    private: void init(){
+    auto Features::init() -> void{
 
         try {
             
@@ -269,7 +267,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->commonStrings->INI
 }
 
 
-    public: bool isDefault(Feature* gameFeature){
+    auto Features::isDefault(Feature* gameFeature) -> bool{
 
 
 
@@ -279,7 +277,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->commonStrings->INI
 }
 
 
-    public: bool isFeature(Feature* gameFeature){
+    auto Features::isFeature(Feature* gameFeature) -> bool{
 
 
 
@@ -291,7 +289,7 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->commonStrings->INI
 
                 //@Throws(Exception.constructor)
             
-    public: void toggle(Feature* gameFeature){
+    auto Features::toggle(Feature* gameFeature) -> void{
 
                         if(this->isFeature(gameFeature))
                         
@@ -310,7 +308,6 @@ PreLogUtil::putOE(this->commonStrings->EXCEPTION, this, this->commonStrings->INI
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURES_CPP

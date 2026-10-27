@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_ANGLEFACTORY_CPP
+        #define ORG_ALLBINARY_MATH_ANGLEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/AngleFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,66 +89,20 @@
 #include "org/allbinary/math/NamedAngle.h"
 #include "org/allbinary/math/FrameUtil.h"
 
-class AngleFactory
-            : public Object
-         {
+auto AngleFactory::instance_owner() -> AngleFactory* { static std::unique_ptr<AngleFactory> value(new AngleFactory()); return value.get(); }
+AngleFactory* AngleFactory::instance = AngleFactory::instance_owner();
 
-    private: static AngleFactory* instance() { static std::unique_ptr<AngleFactory> value(new AngleFactory()); return value.get(); }
-
-    public: static AngleFactory* getInstance(){
+    auto AngleFactory::getInstance() -> AngleFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AngleFactory::instance();
+                        return AngleFactory::instance;
     
 }
 
 
-    public: static void main(std::vector<std::string> args){
-
-    StringMaker* stringMaker = new StringMaker();;
-    
-
-    AngleFactory* angleFactory = AngleFactory::getInstance();;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < 360; index++)
-        {
-stringMaker->appendint(index)->append(CommonSeps::getInstance()->FORWARD_SLASH)->appendshort(angleFactory->getClosestDirection(index)->getValue())->append(CommonSeps::getInstance()->NEW_LINE);
-    
-}
-
-LogUtil::getInstance()->putF(stringMaker->toString(), "main", "main");
-    
-}
-
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const int16_t TOTAL_ANGLE = 360;
-
-    public: const int16_t QUARTER_TOTAL_ANGLE = 90;
-
-    private: const std::vector<Angle*> angleArray = std::vector<Angle*>(static_cast<int32_t>(this->TOTAL_ANGLE));
-
-    private: const int16_t NEGATIVE_ONE =  -1;
-
-    public: NamedAngle* NOT_ANGLE = new NamedAngle(this->NEGATIVE_ONE, CommonStrings::getInstance()->EMPTY);
-
-    public: NamedAngle* DOWN;
-
-    public: NamedAngle* UP;
-
-    public: NamedAngle* LEFT;
-
-    public: NamedAngle* RIGHT;
-
-public: AngleFactory(){
+AngleFactory::AngleFactory() : logUtil(LogUtil::getInstance()), angleArray(std::vector<Angle*>(static_cast<int32_t>(this->TOTAL_ANGLE))), NOT_ANGLE(new NamedAngle(this->NEGATIVE_ONE, CommonStrings::getInstance()->EMPTY)), frameUtil(FrameUtil::getInstance()){
 
     CommonPhoneStrings* commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
@@ -208,9 +172,7 @@ this->angleArray[index]= new Angle(index);
 }
 
 
-    private: FrameUtil* frameUtil = FrameUtil::getInstance();
-
-    public: Angle* getAt(int32_t index){
+    auto AngleFactory::getAt(int32_t index) -> Angle*{
 
     int32_t adjustedIndex = static_cast<int32_t>(this->frameUtil->adjustAngleToFrameAngle(index));;
     
@@ -223,7 +185,7 @@ this->angleArray[index]= new Angle(index);
 }
 
 
-    public: Angle* getClosestDirection(int32_t angle){
+    auto AngleFactory::getClosestDirection(int32_t angle) -> Angle*{
 
                         if((angle >= 315 && angle < 360) || (angle >= 0 && angle < 45))
                         
@@ -279,12 +241,12 @@ this->angleArray[index]= new Angle(index);
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: Angle* getGeneralDirection(){
+    auto AngleFactory::getGeneralDirection() -> Angle*{
 
 
 
@@ -294,7 +256,29 @@ this->angleArray[index]= new Angle(index);
 }
 
 
-};
+    auto AngleFactory::main(std::vector<std::string> args) -> void{
 
-            
+    StringMaker* stringMaker = new StringMaker();;
+    
 
+    AngleFactory* angleFactory = AngleFactory::getInstance();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < 360; index++)
+        {
+stringMaker->appendint(index)->append(CommonSeps::getInstance()->FORWARD_SLASH)->appendshort(angleFactory->getClosestDirection(index)->getValue())->append(CommonSeps::getInstance()->NEW_LINE);
+    
+}
+
+LogUtil::getInstance()->putF(stringMaker->toString(), "main", "main");
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_MATH_ANGLEFACTORY_CPP

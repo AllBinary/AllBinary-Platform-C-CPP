@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENT_CPP
+        #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/combat/destroy/event/DestroyedEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,13 +72,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/combat/destroy/event/DestroyedEventHandler.h"
 
-class DestroyedEvent: public AllBinaryEventObject {
 
-    private: AllBinaryGameCanvas* allBinaryGameCanvas = NullGameCanvas::getInstance();
-
-    private: AllBinaryLayer* allBinaryLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-public: DestroyedEvent(AllBinaryGameCanvas* combatGameCanvas) : AllBinaryEventObject(DestroyedEventHandler::getInstance()){
+DestroyedEvent::DestroyedEvent(AllBinaryGameCanvas* combatGameCanvas) : AllBinaryEventObject(DestroyedEventHandler::getInstance()), allBinaryGameCanvas(NullGameCanvas::getInstance()), allBinaryLayerInterface(AllBinaryLayer::NULL_ALLBINARY_LAYER){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,7 +85,7 @@ this->setAllBinaryGameCanvas(combatGameCanvas);
 }
 
 
-    public: AllBinaryGameCanvas* getAllBinaryGameCanvas(){
+    auto DestroyedEvent::getAllBinaryGameCanvas() -> AllBinaryGameCanvas*{
 
 
 
@@ -90,7 +95,7 @@ this->setAllBinaryGameCanvas(combatGameCanvas);
 }
 
 
-    public: AllBinaryLayer* getLayerInterface(){
+    auto DestroyedEvent::getLayerInterface() -> AllBinaryLayer*{
 
 
 
@@ -100,19 +105,19 @@ this->setAllBinaryGameCanvas(combatGameCanvas);
 }
 
 
-    private: void setAllBinaryGameCanvas(AllBinaryGameCanvas* allBinaryGameCanvas){
+    auto DestroyedEvent::setAllBinaryGameCanvas(AllBinaryGameCanvas* allBinaryGameCanvas) -> void{
 this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer* allBinaryLayerInterface){
+    auto DestroyedEvent::setLayerInterfaceForCircularStaticPool(AllBinaryLayer* allBinaryLayerInterface) -> void{
 this->allBinaryLayerInterface= allBinaryLayerInterface;
     
 }
 
 
-    public: std::string toString(){
+    auto DestroyedEvent::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -135,7 +140,6 @@ stringBuffer->append(StringUtil::getInstance()->toString(this->getAllBinaryGameC
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEDEVENT_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEWEAPONBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEWEAPONBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,36 +36,16 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/collision/CollidableHelperFactory.h>
-
-      
-#include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
-
-      
-#include <org/allbinary/game/collision/CollisionHelper.h>
-
-      
-#include <org/allbinary/game/collision/CollisionType.h>
-
-      
-#include <org/allbinary/game/collision/CollisionTypeFactory.h>
-
-      
-#include <org/allbinary/game/combat/damage/DamageableInterface.h>
-
-      
-#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
+class CollidableHelperFactory;
+class CollidableInterfaceCompositeInterface;
+class CollisionHelper;
+class CollisionType;
+class CollisionTypeFactory;
+class DamageableInterface;
+class CollidableCompositeLayer;
 #include <org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h>
-
-      
-#include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
+class AllBinaryLayer;
+class NullUtil;
 
 
 
@@ -80,15 +65,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CollidableWeaponBehavior: public CollidableDestroyableDamageableBehavior {
 
-    private: static inline Object* NULL_COLLIDABLE_WEAPON_BEHAVIOR = NullUtil::getInstance()->NULL_OBJECT;
+    private: static Object* NULL_COLLIDABLE_WEAPON_BEHAVIOR;
 
     public: static CollidableWeaponBehavior* getNullInstance();
 
     private: bool collided= false;
 
-    protected: CollisionHelper* collisionHelper;
+    /*protected*/ public: CollisionHelper* collisionHelper;
 
 public: CollidableWeaponBehavior(bool collidable);
 
@@ -118,3 +107,40 @@ public: CollidableWeaponBehavior(bool collidable);
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEWEAPONBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEWEAPONBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_WEAPON_COLLIDABLEWEAPONBEHAVIOR_H_COMPLETE
+        #if __has_include(<org/allbinary/game/collision/CollidableHelperFactory.h>)
+#include <org/allbinary/game/collision/CollidableHelperFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollisionHelper.h>)
+#include <org/allbinary/game/collision/CollisionHelper.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollisionType.h>)
+#include <org/allbinary/game/collision/CollisionType.h>
+#endif
+#if __has_include(<org/allbinary/game/collision/CollisionTypeFactory.h>)
+#include <org/allbinary/game/collision/CollisionTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/combat/damage/DamageableInterface.h>)
+#include <org/allbinary/game/combat/damage/DamageableInterface.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/CollidableCompositeLayer.h>)
+#include <org/allbinary/game/layer/CollidableCompositeLayer.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h>)
+#include <org/allbinary/game/layer/special/CollidableDestroyableDamageableBehavior.h>
+#endif
+#if __has_include(<org/allbinary/layer/AllBinaryLayer.h>)
+#include <org/allbinary/layer/AllBinaryLayer.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+
+        #endif
+    

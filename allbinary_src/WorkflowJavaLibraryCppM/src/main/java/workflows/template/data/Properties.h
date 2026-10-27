@@ -21,6 +21,11 @@
         #ifndef WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H
         #define WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,20 +35,10 @@
             #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/tagext/TagSupport.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class TagSupport;
+class StdUtil;
+class LogUtil;
+class CommonStrings;
 
 
 
@@ -63,19 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Properties
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
     private: HashMap<Object*, Object*>* propertiesHashMap;
 
 public: Properties();
 
-    protected: HashMap<Object*, Object*>* getPropertiesHashMap();
+    /*protected*/ public: HashMap<Object*, Object*>* getPropertiesHashMap();
 
     public: int32_t doEndTag();
 
@@ -85,3 +84,25 @@ public: Properties();
 
 
         #endif //WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H_COMPLETE)
+        #define WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/tagext/TagSupport.h>)
+#include <javax/servlet/jsp/tagext/TagSupport.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+
+        #endif
+    

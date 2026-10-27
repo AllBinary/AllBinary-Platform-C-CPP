@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_IMAGECOMPARATORCONSTRAINTS_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_IMAGECOMPARATORCONSTRAINTS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/ImageComparatorConstraints.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,19 +86,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageComparatorConstraints
-            : public Object
-        , public ImageComparatorConstraintsInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* avoidVector;
-
-    private: int32_t maxNonMatchingPixelDeltas= 0;
-
-    private: int32_t doImageComparisonEveryNthFrame;
-
-public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame){
+ImageComparatorConstraints::ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame) : logUtil(LogUtil::getInstance()){
 this->doImageComparisonEveryNthFrame= doImageComparisonEveryNthFrame;
     
 this->setAvoidVector(new BasicArrayListD());
@@ -96,7 +95,7 @@ this->setAvoidVector(new BasicArrayListD());
 }
 
 
-    public: BasicArrayList* getAvoidVector(){
+    auto ImageComparatorConstraints::getAvoidVector() -> BasicArrayList*{
 
 
 
@@ -106,16 +105,16 @@ this->setAvoidVector(new BasicArrayListD());
 }
 
 
-    public: bool isColorAllowed(int32_t frame, GPoint* point, Color* color){
+    auto ImageComparatorConstraints::isColorAllowed(int32_t frame, GPoint* point, Color* color) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isCollisionWithAvoidRectangles(Rectangle* rectangle){
+    auto ImageComparatorConstraints::isCollisionWithAvoidRectangles(Rectangle* rectangle) -> bool{
 
     bool isCollsionWithAvoidRectangles = false;;
     
@@ -155,7 +154,7 @@ this->setAvoidVector(new BasicArrayListD());
 }
 
 
-    public: bool isCollisionWithAvoidRectangles(GPoint* point){
+    auto ImageComparatorConstraints::isCollisionWithAvoidRectangles(GPoint* point) -> bool{
 
     bool isCollsionWithAvoidRectangles = false;;
     
@@ -198,13 +197,13 @@ break;
 }
 
 
-    public: void setAvoidVector(BasicArrayList* avoidVector){
+    auto ImageComparatorConstraints::setAvoidVector(BasicArrayList* avoidVector) -> void{
 this->avoidVector= avoidVector;
     
 }
 
 
-    public: int32_t getMaxNonMatchingPixelDeltas(){
+    auto ImageComparatorConstraints::getMaxNonMatchingPixelDeltas() -> int32_t{
 
 
 
@@ -214,17 +213,17 @@ this->avoidVector= avoidVector;
 }
 
 
-    public: void setMaxNonMatchingPixelDeltas(int32_t maxNonMatchingPixelDeltas){
+    auto ImageComparatorConstraints::setMaxNonMatchingPixelDeltas(int32_t maxNonMatchingPixelDeltas) -> void{
 this->maxNonMatchingPixelDeltas= maxNonMatchingPixelDeltas;
     
 }
 
 
-    public: bool isFrameAllowed(int32_t frame){
+    auto ImageComparatorConstraints::isFrameAllowed(int32_t frame) -> bool{
 
     int32_t remainder = ((frame +1) % this->doImageComparisonEveryNthFrame);;
     
-this->logUtil->putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageComparisonEveryNthFrame: " +this->doImageComparisonEveryNthFrame, this, "isCollisionWithAvoidRectangles");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf(" Frame: ") +JavaString::valueOf(frame)) +JavaString::valueOf(" remainder: ")) +JavaString::valueOf(remainder)) +JavaString::valueOf(" this.doImageComparisonEveryNthFrame: ")) +JavaString::valueOf(this->doImageComparisonEveryNthFrame), this, "isCollisionWithAvoidRectangles");
     
 
                         if(remainder == 0)
@@ -254,16 +253,16 @@ this->logUtil->putF(" Frame: " +frame +" remainder: " +remainder +" this.doImage
 
                 //@Throws(Exception.constructor)
             
-    public: bool isImageValid(BufferedImage* bufferedImage){
+    auto ImageComparatorConstraints::isImageValid(BufferedImage* bufferedImage) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void log(){
+    auto ImageComparatorConstraints::log() -> void{
 
     BasicArrayList* avoidVector = this->getAvoidVector();;
     
@@ -280,14 +279,13 @@ this->logUtil->putF(" Frame: " +frame +" remainder: " +remainder +" this.doImage
 
     Rectangle* avoidRectangle = dynamic_cast<Rectangle*>(avoidVector->get(index));;
     
-this->logUtil->putF("Avoid Rectangle: " +avoidRectangle, this, "log");
+this->logUtil->putF(JavaString::valueOf("Avoid Rectangle: ") +JavaString::valueOf(avoidRectangle), this, "log");
     
 }
 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_IMAGECOMPARATORCONSTRAINTS_CPP

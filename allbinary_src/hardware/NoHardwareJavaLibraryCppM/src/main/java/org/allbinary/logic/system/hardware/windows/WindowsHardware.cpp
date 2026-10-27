@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/hardware/windows/WindowsHardware.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -97,123 +107,120 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WindowsHardware
-            : public Object
-        , public HardwareInterface {
 
-public: WindowsHardware(){
+WindowsHardware::WindowsHardware(){
 }
 
 
-    public: MediaInterface* getMultimedia(int32_t index){
+    auto WindowsHardware::getMultimedia(int32_t index) -> MediaInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: BridgeInterface* getBridge(int32_t index){
+    auto WindowsHardware::getBridge(int32_t index) -> BridgeInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: CpuInterface* getCpu(int32_t index){
+    auto WindowsHardware::getCpu(int32_t index) -> CpuInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: EthernetInterface* getEthernet(int32_t index){
+    auto WindowsHardware::getEthernet(int32_t index) -> EthernetInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: FireWireInterface* getFireWire(int32_t index){
+    auto WindowsHardware::getFireWire(int32_t index) -> FireWireInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: HardDriveControllerInterface* getHardDriveController(int32_t index){
+    auto WindowsHardware::getHardDriveController(int32_t index) -> HardDriveControllerInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: HardDriveInterface* getHardDrive(int32_t index){
+    auto WindowsHardware::getHardDrive(int32_t index) -> HardDriveInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: MachineAccessControlAddressInterface* getMachineAccessControlAddress(int32_t index){
+    auto WindowsHardware::getMachineAccessControlAddress(int32_t index) -> MachineAccessControlAddressInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: MonitorInterface* getMonitor(int32_t index){
+    auto WindowsHardware::getMonitor(int32_t index) -> MonitorInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: UsbInterface* getUsb(int32_t index){
+    auto WindowsHardware::getUsb(int32_t index) -> UsbInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: VideoInterface* getVideo(int32_t index){
+    auto WindowsHardware::getVideo(int32_t index) -> VideoInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: HardwareComponentInterface* getComponent(int32_t index){
+    auto WindowsHardware::getComponent(int32_t index) -> HardwareComponentInterface*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::string toString(){
+    auto WindowsHardware::toString() -> std::string{
 
 
 
@@ -223,7 +230,7 @@ public: WindowsHardware(){
 }
 
 
-    public: bool compareTo(HardwareInterface* hardwareInterface){
+    auto WindowsHardware::compareTo(HardwareInterface* hardwareInterface) -> bool{
 
 
 
@@ -233,7 +240,7 @@ public: WindowsHardware(){
 }
 
 
-    public: ABHashtable<Object*, Object*>* difference(HardwareInterface* hardwareInterface){
+    auto WindowsHardware::difference(HardwareInterface* hardwareInterface) -> ABHashtable<Object*, Object*>*{
 
 
 
@@ -243,7 +250,6 @@ public: WindowsHardware(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_CPP

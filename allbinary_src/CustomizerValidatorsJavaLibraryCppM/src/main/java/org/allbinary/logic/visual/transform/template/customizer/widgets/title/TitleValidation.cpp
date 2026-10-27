@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLEVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLEVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,11 +78,8 @@
         #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleView.h"
 #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h"
 
-class TitleValidation: public TitleView, public ValidationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TitleValidation() : TitleView(){
+TitleValidation::TitleValidation() : TitleView(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,7 +89,7 @@ public: TitleValidation() : TitleView(){
 }
 
 
-public: TitleValidation(Node* node) : TitleView(node){
+TitleValidation::TitleValidation(Node* node) : TitleView(node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,7 +99,7 @@ public: TitleValidation(Node* node) : TitleView(node){
 }
 
 
-public: TitleValidation(HashMap<Object*, Object*>* hashMap) : TitleView(hashMap){
+TitleValidation::TitleValidation(HashMap<Object*, Object*>* hashMap) : TitleView(hashMap), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,14 +109,14 @@ public: TitleValidation(HashMap<Object*, Object*>* hashMap) : TitleView(hashMap)
 }
 
 
-    public: bool isValid(){
+    auto TitleValidation::isValid() -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TitleValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("TitleValidation", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -127,10 +134,10 @@ public: TitleValidation(HashMap<Object*, Object*>* hashMap) : TitleView(hashMap)
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("TitleValidation: " +valid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("TitleValidation: ") +JavaString::valueOf(valid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -146,10 +153,10 @@ public: TitleValidation(HashMap<Object*, Object*>* hashMap) : TitleView(hashMap)
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -165,7 +172,7 @@ public: TitleValidation(HashMap<Object*, Object*>* hashMap) : TitleView(hashMap)
 }
 
 
-    public: std::string validationInfo(){
+    auto TitleValidation::validationInfo() -> std::string{
 
         try {
             
@@ -184,7 +191,7 @@ stringBuffer->append("Title is not valid.");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -203,7 +210,7 @@ stringBuffer->append("Title is not valid.");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto TitleValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -213,7 +220,7 @@ stringBuffer->append("Title is not valid.");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto TitleValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -223,7 +230,6 @@ stringBuffer->append("Title is not valid.");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLEVALIDATION_CPP

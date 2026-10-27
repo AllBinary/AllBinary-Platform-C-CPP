@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSOLIDATEMOTIONRECTANGLES_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSOLIDATEMOTIONRECTANGLES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/ConsolidateMotionRectangles.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,13 +73,8 @@
 #include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
 #include "org/allbinary/media/image/comparison/motion/Rectangle.h"
 
-class ConsolidateMotionRectangles: public MotionRectangles {
 
-    private: static inline const std::string NAME = "consolidatedMotionRectangles_";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: ConsolidateMotionRectangles(MotionRectangles* motionRectangles) : MotionRectangles(NAME, motionRectangles->getImageComparisonResult()){
+ConsolidateMotionRectangles::ConsolidateMotionRectangles(MotionRectangles* motionRectangles) : MotionRectangles(NAME, motionRectangles->getImageComparisonResult()), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -101,11 +106,11 @@ this->consolidateMotionRectangles();
 }
 
 
-    private: void consolidateMotionRectangles(){
+    auto ConsolidateMotionRectangles::consolidateMotionRectangles() -> void{
 
     BasicArrayList* vector = this->getVector();;
     
-this->logUtil->putF("Start - Size Before: " +vector->size(), this, "consolidateMotionRectangleConstraints");
+this->logUtil->putF(JavaString::valueOf("Start - Size Before: ") +JavaString::valueOf(vector->size()), this, "consolidateMotionRectangleConstraints");
     
 
     BasicArrayList* removeVector = new BasicArrayListD();;
@@ -169,7 +174,7 @@ this->remove(removeVector);
 }
 
 
-    private: void remove(BasicArrayList* removeVector){
+    auto ConsolidateMotionRectangles::remove(BasicArrayList* removeVector) -> void{
 
     BasicArrayList* vector = this->getVector();;
     
@@ -190,7 +195,6 @@ vector->remove(removeVector->get(index));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSOLIDATEMOTIONRECTANGLES_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_GENERIC_INVENTORY_AUTOSEARCHVALIDATIONINVENTORYVIEW_CPP
+        #define VIEWS_GENERIC_INVENTORY_AUTOSEARCHVALIDATIONINVENTORYVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/generic/inventory/AutoSearchValidationInventoryView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/generic/inventory/InventorySearch.h"
 
-class AutoSearchValidationInventoryView: public InventorySearch {
 
-public: AutoSearchValidationInventoryView(SearchRequest* searchRequest) : InventorySearch(searchRequest){
+AutoSearchValidationInventoryView::AutoSearchValidationInventoryView(SearchRequest* searchRequest) : InventorySearch(searchRequest){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +74,7 @@ public: AutoSearchValidationInventoryView(SearchRequest* searchRequest) : Invent
 }
 
 
-    public: bool isValid(){
+    auto AutoSearchValidationInventoryView::isValid() -> bool{
 
 
 
@@ -75,7 +84,7 @@ public: AutoSearchValidationInventoryView(SearchRequest* searchRequest) : Invent
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto AutoSearchValidationInventoryView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -85,7 +94,7 @@ public: AutoSearchValidationInventoryView(SearchRequest* searchRequest) : Invent
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto AutoSearchValidationInventoryView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -95,7 +104,7 @@ public: AutoSearchValidationInventoryView(SearchRequest* searchRequest) : Invent
 }
 
 
-    public: std::string validationInfo(){
+    auto AutoSearchValidationInventoryView::validationInfo() -> std::string{
 
 
 
@@ -105,7 +114,6 @@ public: AutoSearchValidationInventoryView(SearchRequest* searchRequest) : Invent
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_GENERIC_INVENTORY_AUTOSEARCHVALIDATIONINVENTORYVIEW_CPP

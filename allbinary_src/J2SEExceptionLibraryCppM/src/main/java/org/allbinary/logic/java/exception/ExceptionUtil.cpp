@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/java/exception/ExceptionUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,31 +65,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //ActualPlatform
-/*actual*/ class ExceptionUtil
-            : public Object
-         {
+auto ExceptionUtil::instance_owner() -> ExceptionUtil* { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
+ExceptionUtil* ExceptionUtil::instance = ExceptionUtil::instance_owner();
 
-    private: static ExceptionUtil* instance() { static std::unique_ptr<ExceptionUtil> value(new ExceptionUtil()); return value.get(); }
-
-    /*actual*/ public: static ExceptionUtil* getInstance(){
+    /*actual*/ auto ExceptionUtil::getInstance() -> ExceptionUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ExceptionUtil::instance();
+                        return ExceptionUtil::instance;
     
 }
 
 
-    /*actual*/ public: static Exception* PRETEND_EXCEPTION() { static std::unique_ptr<Exception> value(new Exception("Not Really An Exception")); return value.get(); }
-
-private: ExceptionUtil(){
+ExceptionUtil::ExceptionUtil(){
 }
 
+auto ExceptionUtil::PRETEND_EXCEPTION_owner() -> Exception* { static std::unique_ptr<Exception> value(new Exception("Not Really An Exception")); return value.get(); }
+Exception* ExceptionUtil::PRETEND_EXCEPTION = ExceptionUtil::PRETEND_EXCEPTION_owner();
 
-    private: const std::string NONE = "No Stack Trace";
-
-    /*actual*/ public: std::string getStackTrace(Throwable* e){
+    /*actual*/ auto ExceptionUtil::getStackTrace(Throwable* e) -> std::string{
 
                         if(e != 
                                     nullptr
@@ -122,7 +127,6 @@ e->printStackTrace(printStream);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_JAVA_EXCEPTION_EXCEPTIONUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_CONSTANTVELOCITYNOTIFYVIEWCHANGEMOVEMENT_CPP
+        #define ORG_ALLBINARY_PHYSICS_MOVEMENT_CONSTANTVELOCITYNOTIFYVIEWCHANGEMOVEMENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/physics/movement/ConstantVelocityNotifyViewChangeMovement.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,15 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/physics/movement/Movement.h"
 
-class ConstantVelocityNotifyViewChangeMovement: public Movement {
 
-    protected: BasicVelocityProperties* basicVelocityProperties;
-
-    private: BasicDecimal* speedBasicDecimal;
-
-    private: AxisMathVectorUtil* axisMathVectorUtil = AxisMathVectorUtil::getInstance();
-
-public: ConstantVelocityNotifyViewChangeMovement(){
+ConstantVelocityNotifyViewChangeMovement::ConstantVelocityNotifyViewChangeMovement() : axisMathVectorUtil(AxisMathVectorUtil::getInstance()){
 this->speedBasicDecimal= BasicDecimal::ZERO_BIGDECIMAL;
     
 this->basicVelocityProperties= new BasicVelocityProperties();
@@ -80,7 +83,7 @@ this->basicVelocityProperties= new BasicVelocityProperties();
 }
 
 
-    public: void init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle){
+    auto ConstantVelocityNotifyViewChangeMovement::init(BasicDecimal* speedBasicDecimal, int32_t angle, int32_t otherAngle) -> void{
 this->speedBasicDecimal= speedBasicDecimal;
     
 
@@ -91,7 +94,7 @@ this->basicVelocityProperties->setVelocityWithBigDecimal(speedBasicDecimal, angl
 }
 
 
-    public: void moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle){
+    auto ConstantVelocityNotifyViewChangeMovement::moveOutsideRadius(AllBinaryLayer* layer, int64_t radius, int32_t angle, int32_t otherAngle) -> void{
 
     int32_t scaleFactorValue = this->speedBasicDecimal->getScaledFactorValue();;
     
@@ -111,7 +114,7 @@ layer->moveDXYZ(xVector, yVector, zVector);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(AllBinaryGameLayer* layer){
+    auto ConstantVelocityNotifyViewChangeMovement::process(AllBinaryGameLayer* layer) -> void{
 
     int32_t x = this->basicVelocityProperties->getVelocityXBasicDecimalP()->getScaled();;
     
@@ -135,13 +138,12 @@ layer->moveDXYZ(x, y, z);
 }
 
 
-    public: void stop(){
+    auto ConstantVelocityNotifyViewChangeMovement::stop() -> void{
 this->basicVelocityProperties->zero();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_PHYSICS_MOVEMENT_CONSTANTVELOCITYNOTIFYVIEWCHANGEMOVEMENT_CPP

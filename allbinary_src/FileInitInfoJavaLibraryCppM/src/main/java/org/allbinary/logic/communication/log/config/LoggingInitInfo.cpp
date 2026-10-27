@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/config/LoggingInitInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -89,24 +99,16 @@
 #include "org/allbinary/logic/communication/log/config/LogConfigData.h"
 #include "org/allbinary/logic/communication/log/config/LogConfig.h"
 
-class LoggingInitInfo
-            : public Object
-         {
+const std::string LoggingInitInfo::PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
 
-    private: static inline const std::string INITFILENAME = "logConfig.xml";
+LoggingInitInfo::LoggingInitInfo(){
+}
 
-    private: static inline const std::string PACKAGE = PATH_GLOBALS::getInstance()->INIT_PATH;
-
-    private: static inline BasicArrayList* logConfigInfoList = 
-                null
-            ;
-
-    private: static inline bool hasRead = false;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static Document* getDoc(){
+    auto LoggingInitInfo::getDoc() -> Document*{
 
     std::string path = URLGLOBALS::getWebappPath() +LoggingInitInfo::PACKAGE;;
     
@@ -131,7 +133,7 @@ class LoggingInitInfo
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void write(){
+    auto LoggingInitInfo::write() -> void{
 
         try {
             LoggingInitInfo::hasRead= false;
@@ -153,7 +155,7 @@ class LoggingInitInfo
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: static void read(){
+    auto LoggingInitInfo::read() -> void{
 
         try {
             
@@ -205,7 +207,7 @@ LoggingInitInfo::logConfigInfoList->add(logConfigInfo);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void setHasRead(bool value){
+    auto LoggingInitInfo::setHasRead(bool value) -> void{
 LoggingInitInfo::hasRead= value;
     
 }
@@ -214,7 +216,7 @@ LoggingInitInfo::hasRead= value;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    private: static void updateIfNeeded(){
+    auto LoggingInitInfo::updateIfNeeded() -> void{
 
                         if(!LoggingInitInfo::hasRead)
                         
@@ -232,7 +234,7 @@ LoggingInitInfo::hasRead= true;
                                     
 
 
-                            throw new Exception("Read Failed");
+                            throw Exception("Read Failed");
                     
 
                                     }
@@ -242,121 +244,8 @@ LoggingInitInfo::hasRead= true;
                                 
 }
 
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static void set(BasicArrayList* logConfigInfoVector){
-LoggingInitInfo::logConfigInfoList= logConfigInfoVector;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: static BasicArrayList* get(){
-LoggingInitInfo::updateIfNeeded();
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LoggingInitInfo::logConfigInfoList;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: static BasicArrayList* getTypeNameList(){
-LoggingInitInfo::updateIfNeeded();
-    
-
-    BasicArrayList* allLogTypeVector = new BasicArrayListD();;
-    
-
-    int32_t size = LoggingInitInfo::logConfigInfoList->size();;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < size; index++)
-        {
-
-    LogConfig* logConfigInfo = dynamic_cast<LogConfig*>(LoggingInitInfo::logConfigInfoList->objectArray[index]);;
-    
-
-    BasicArrayList* logTypeVector = logConfigInfo->getTypeVector();;
-    
-
-                        if(logConfigInfo->isEnabled())
-                        
-                                    {
-                                    allLogTypeVector->addAllList(logTypeVector);
-    
-
-                                    }
-                                
-}
-
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return allLogTypeVector;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: static BasicArrayList* getTypeList(){
-LoggingInitInfo::updateIfNeeded();
-    
-
-    BasicArrayList* allLogTypeVector = new BasicArrayListD();;
-    
-
-    int32_t size = LoggingInitInfo::logConfigInfoList->size();;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < size; index++)
-        {
-
-    LogConfig* logConfigInfo = dynamic_cast<LogConfig*>(LoggingInitInfo::logConfigInfoList->objectArray[index]);;
-    
-
-    BasicArrayList* logTypeVector = logConfigInfo->getTypeVector();;
-    
-
-                        if(logConfigInfo->isEnabled())
-                        
-                                    {
-                                    allLogTypeVector->addAllList(logTypeVector);
-    
-
-                                    }
-                                
-}
-
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return allLogTypeVector;
-    
-}
-
-
-public: LoggingInitInfo(){
-}
-
-
-    public: bool isValid(){
+    auto LoggingInitInfo::isValid() -> bool{
 
         try {
             
@@ -379,10 +268,119 @@ public: LoggingInitInfo(){
 
 }
 
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    auto LoggingInitInfo::set(BasicArrayList* logConfigInfoVector) -> void{
+LoggingInitInfo::logConfigInfoList= logConfigInfoVector;
+    
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getNumberOfLogConfigs(){
+    auto LoggingInitInfo::get() -> BasicArrayList*{
+LoggingInitInfo::updateIfNeeded();
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return LoggingInitInfo::logConfigInfoList;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto LoggingInitInfo::getTypeNameList() -> BasicArrayList*{
+LoggingInitInfo::updateIfNeeded();
+    
+
+    BasicArrayList* allLogTypeVector = new BasicArrayListD();;
+    
+
+    int32_t size = LoggingInitInfo::logConfigInfoList->size();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
+        {
+
+    LogConfig* logConfigInfo = dynamic_cast<LogConfig*>(LoggingInitInfo::logConfigInfoList->objectArray[index]);;
+    
+
+    BasicArrayList* logTypeVector = logConfigInfo->getTypeVector();;
+    
+
+                        if(logConfigInfo->isEnabled())
+                        
+                                    {
+                                    allLogTypeVector->addAllList(logTypeVector);
+    
+
+                                    }
+                                
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return allLogTypeVector;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto LoggingInitInfo::getTypeList() -> BasicArrayList*{
+LoggingInitInfo::updateIfNeeded();
+    
+
+    BasicArrayList* allLogTypeVector = new BasicArrayListD();;
+    
+
+    int32_t size = LoggingInitInfo::logConfigInfoList->size();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
+        {
+
+    LogConfig* logConfigInfo = dynamic_cast<LogConfig*>(LoggingInitInfo::logConfigInfoList->objectArray[index]);;
+    
+
+    BasicArrayList* logTypeVector = logConfigInfo->getTypeVector();;
+    
+
+                        if(logConfigInfo->isEnabled())
+                        
+                                    {
+                                    allLogTypeVector->addAllList(logTypeVector);
+    
+
+                                    }
+                                
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return allLogTypeVector;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    auto LoggingInitInfo::getNumberOfLogConfigs() -> int32_t{
 
 
 
@@ -392,7 +390,7 @@ public: LoggingInitInfo(){
 }
 
 
-    public: std::string toString(){
+    auto LoggingInitInfo::toString() -> std::string{
 
         try {
             
@@ -419,7 +417,6 @@ public: LoggingInitInfo(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_CONFIG_LOGGINGINITINFO_CPP

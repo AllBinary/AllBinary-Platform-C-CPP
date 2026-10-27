@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTPROCESSORFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTPROCESSORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,27 +65,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/displayable/screen/ScreenRepaintProcessor.h"
 
-class ScreenRepaintProcessorFactory
-            : public Object
-         {
+auto ScreenRepaintProcessorFactory::instance_owner() -> ScreenRepaintProcessorFactory* { static std::unique_ptr<ScreenRepaintProcessorFactory> value(new ScreenRepaintProcessorFactory()); return value.get(); }
+ScreenRepaintProcessorFactory* ScreenRepaintProcessorFactory::instance = ScreenRepaintProcessorFactory::instance_owner();
 
-    private: static ScreenRepaintProcessorFactory* instance() { static std::unique_ptr<ScreenRepaintProcessorFactory> value(new ScreenRepaintProcessorFactory()); return value.get(); }
-
-    public: static ScreenRepaintProcessorFactory* getInstance(){
+    auto ScreenRepaintProcessorFactory::getInstance() -> ScreenRepaintProcessorFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenRepaintProcessorFactory::instance();
+                        return ScreenRepaintProcessorFactory::instance;
     
 }
 
 
-private: ScreenRepaintProcessorFactory(){
+ScreenRepaintProcessorFactory::ScreenRepaintProcessorFactory(){
 }
 
 
-    public: Processor* create(Displayable* displayable){
+    auto ScreenRepaintProcessorFactory::create(Displayable* displayable) -> Processor*{
 
                         if(!J2MEUtil::isJ2ME())
                         
@@ -102,7 +109,6 @@ private: ScreenRepaintProcessorFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_SCREENREPAINTPROCESSORFACTORY_CPP

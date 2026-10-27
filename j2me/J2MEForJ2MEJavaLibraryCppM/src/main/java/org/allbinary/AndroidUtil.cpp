@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROIDUTIL_CPP
+        #define ORG_ALLBINARY_ANDROIDUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/AndroidUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,11 +55,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AndroidUtil
-            : public Object
-         {
 
-    public: static bool isMemoryRestrictive(){
+AndroidUtil::AndroidUtil(){
+}
+
+
+    auto AndroidUtil::isMemoryRestrictive() -> bool{
 
 
 
@@ -59,7 +70,7 @@ class AndroidUtil
 }
 
 
-    public: static bool isAndroid(){
+    auto AndroidUtil::isAndroid() -> bool{
 
 
 
@@ -69,11 +80,6 @@ class AndroidUtil
 }
 
 
-private: AndroidUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_ANDROIDUTIL_CPP

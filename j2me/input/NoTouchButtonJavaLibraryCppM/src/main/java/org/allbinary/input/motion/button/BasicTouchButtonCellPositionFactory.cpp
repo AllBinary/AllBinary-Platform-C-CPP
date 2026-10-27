@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONCELLPOSITIONFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONCELLPOSITIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/BasicTouchButtonCellPositionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicTouchButtonCellPositionFactory
-            : public Object
-         {
 
-    public: static void init(){
+BasicTouchButtonCellPositionFactory::BasicTouchButtonCellPositionFactory(){
 }
 
 
-private: BasicTouchButtonCellPositionFactory(){
+    auto BasicTouchButtonCellPositionFactory::init() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHBUTTONCELLPOSITIONFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_IMAGE_GAMEFEATUREIMAGECACHEFACTORY_CPP
+        #define ORG_ALLBINARY_IMAGE_GAMEFEATUREIMAGECACHEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/image/GameFeatureImageCacheFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,11 +57,11 @@
         #include "org/allbinary/image/ImageCacheFactory.h"
 #include "org/allbinary/image/ImageCache.h"
 
-class GameFeatureImageCacheFactory
-            : public Object
-         {
 
-    public: static ImageCache* getInstance(){
+GameFeatureImageCacheFactory::GameFeatureImageCacheFactory() {
+        }
+        
+    auto GameFeatureImageCacheFactory::getInstance() -> ImageCache*{
 
 
 
@@ -61,19 +71,18 @@ class GameFeatureImageCacheFactory
 }
 
 
-    public: static void init(){
+    auto GameFeatureImageCacheFactory::init() -> void{
 ImageCacheFactory::init();
     
 }
 
 
-    public: static void releaseAll(){
+    auto GameFeatureImageCacheFactory::releaseAll() -> void{
 ImageCacheFactory::getInstance()->releaseAll();
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_IMAGE_GAMEFEATUREIMAGECACHEFACTORY_CPP

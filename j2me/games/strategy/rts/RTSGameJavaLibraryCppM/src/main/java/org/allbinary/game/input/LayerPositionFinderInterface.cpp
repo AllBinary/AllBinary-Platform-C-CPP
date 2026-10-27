@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_LAYERPOSITIONFINDERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_LAYERPOSITIONFINDERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/LayerPositionFinderInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerPositionFinderInterface {
+//Interface - declared in the header
 
-    public: virtual AllBinaryLayer* getLayerInterface(GeographicMapCellPosition* geographicMapCellPosition) = 0;
 
-};
 
-            
-
+        #endif //ORG_ALLBINARY_GAME_INPUT_LAYERPOSITIONFINDERINTERFACE_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/ChangedPixelsUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -79,23 +89,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/comparison/ImageComparisonResult.h"
 
-class ChangedPixelsUtil
-            : public Object
-         {
+std::vector<int32_t> ChangedPixelsUtil::CLEAR_INT_ARRAY = std::vector<int32_t>(1800 *1600);
 
-    private: static inline const int32_t START_X = 0;
+ChangedPixelsUtil::ChangedPixelsUtil(){
+}
 
-    private: static inline const int32_t START_Y = 0;
-
-    private: static inline const int32_t OFFSET = 0;
-
-    private: static inline const int32_t SCAN_SIZE = 0;
-
-    private: static inline const std::vector<int32_t> CLEAR_INT_ARRAY = std::vector<int32_t>(1800 *1600);
 
                 //@Throws(Exception.constructor)
             
-    public: static std::vector<BufferedImageCacheable*> generateBufferedImageChacheables(ImageComparisonResult* imageComparisonInfo){
+    auto ChangedPixelsUtil::generateBufferedImageChacheables(ImageComparisonResult* imageComparisonInfo) -> std::vector<BufferedImageCacheable*>{
 
     std::vector<BufferedImageCacheable*> bufferedImageCacheables;;
     
@@ -122,7 +124,7 @@ bufferedImageCacheables= std::vector<BufferedImageCacheable*>(2);
     
 bufferedImageCacheables[index]= bufferedImageCacheable;
     
-bufferedImageCacheables[index].getBufferedImage()->setRGB(ChangedPixelsUtil::START_X, ChangedPixelsUtil::START_Y, bufferedImageInfo->getWidth(), bufferedImageInfo->getHeight(), ChangedPixelsUtil::CLEAR_INT_ARRAY, ChangedPixelsUtil::OFFSET, ChangedPixelsUtil::SCAN_SIZE);
+bufferedImageCacheables[index]->getBufferedImage()->setRGB(ChangedPixelsUtil::START_X, ChangedPixelsUtil::START_Y, bufferedImageInfo->getWidth(), bufferedImageInfo->getHeight(), ChangedPixelsUtil::CLEAR_INT_ARRAY, ChangedPixelsUtil::OFFSET, ChangedPixelsUtil::SCAN_SIZE);
     
 }
 
@@ -155,9 +157,9 @@ System.exit(0);
 
                                     }
                                 
-bufferedImageCacheables[0].getBufferedImage()->setRGB(pixelDelta->getPoint()->getX(), pixelDelta->getPoint()->getY(), pixelDelta->getColorDelta()->getRgb1());
+bufferedImageCacheables[0]->getBufferedImage()->setRGB(pixelDelta->getPoint()->getX(), pixelDelta->getPoint()->getY(), pixelDelta->getColorDelta()->getRgb1());
     
-bufferedImageCacheables[1].getBufferedImage()->setRGB(pixelDelta->getPoint()->getX(), pixelDelta->getPoint()->getY(), pixelDelta->getColorDelta()->getRgb2());
+bufferedImageCacheables[1]->getBufferedImage()->setRGB(pixelDelta->getPoint()->getX(), pixelDelta->getPoint()->getY(), pixelDelta->getColorDelta()->getRgb2());
     
 }
 
@@ -170,11 +172,6 @@ bufferedImageCacheables[1].getBufferedImage()->setRGB(pixelDelta->getPoint()->ge
 }
 
 
-private: ChangedPixelsUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_CPP

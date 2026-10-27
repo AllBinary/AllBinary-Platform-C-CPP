@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_NEWUSERFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_NEWUSERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/NewUserFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,13 +80,14 @@
         #include "org/allbinary/business/user/UserInterface.h"
 #include "org/allbinary/business/user/CreateUserFactory.h"
 
-class NewUserFactory
-            : public Object
-         {
+
+NewUserFactory::NewUserFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface* getInstance(){
+    auto NewUserFactory::getInstance() -> UserInterface*{
 
 
 
@@ -88,7 +99,7 @@ class NewUserFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface* getInstance(TransformInfoInterface* transformInfoInterface){
+    auto NewUserFactory::getInstance(TransformInfoInterface* transformInfoInterface) -> UserInterface*{
 
     TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(transformInfoInterface);;
     
@@ -99,9 +110,9 @@ class NewUserFactory
     HashMap<Object*, Object*>* hashMap = (new RequestParams(httpServletRequest))->toHashMap();;
     
 
-    std::string role = httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME.toString());;
+    std::string role = httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME->toString());;
     
-hashMap->put(UserRoleData::NAME.toString(), role);
+hashMap->put(UserRoleData::NAME->toString(), role);
     
 
 
@@ -114,7 +125,7 @@ hashMap->put(UserRoleData::NAME.toString(), role);
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface* getInstance(HttpServletRequest* httpServletRequest, HashMap<Object*, Object*>* propertiesHashMap){
+    auto NewUserFactory::getInstance(HttpServletRequest* httpServletRequest, HashMap<Object*, Object*>* propertiesHashMap) -> UserInterface*{
 
                         if(propertiesHashMap != 
                                     nullptr
@@ -125,9 +136,9 @@ hashMap->put(UserRoleData::NAME.toString(), role);
     HashMap<Object*, Object*>* requestHashMap = (new RequestParams(httpServletRequest))->toHashMap();;
     
 
-    std::string roleString = propertiesHashMap->get(UserRoleData::NAME.toString());;
+    std::string roleString = propertiesHashMap->get(UserRoleData::NAME->toString());;
     
-requestHashMap->put(UserRoleData::NAME.toString(), roleString);
+requestHashMap->put(UserRoleData::NAME->toString(), roleString);
     
 
 
@@ -142,7 +153,7 @@ requestHashMap->put(UserRoleData::NAME.toString(), roleString);
                             
 
 
-                            throw new Exception("Null HashMap");
+                            throw Exception("Null HashMap");
                     
 
                         }
@@ -150,11 +161,6 @@ requestHashMap->put(UserRoleData::NAME.toString(), roleString);
 }
 
 
-private: NewUserFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_NEWUSERFACTORY_CPP

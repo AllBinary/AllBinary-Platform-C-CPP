@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFO_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,15 +53,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputMotionInfo
-            : public Object
+            : public virtual Object
          {
 
     public: int32_t MAX_API;
 
     public: int32_t MAX_POINTERS;
 
-protected: GameInputMotionInfo(int32_t maxApi, int32_t maxPointers);
+/*protected*/ public: GameInputMotionInfo(int32_t maxApi, int32_t maxPointers);
 
 };
 
@@ -64,3 +73,10 @@ protected: GameInputMotionInfo(int32_t maxApi, int32_t maxPointers);
 
 
         #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFO_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_CPP
+        #define ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/SoundThreadPool.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,23 +56,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/ThreadPool.h"
 
-class SoundThreadPool
-            : public Object
-         {
 
-    private: static ThreadPool* instance() { static std::unique_ptr<ThreadPool> value(new ThreadPool("Sound", 1, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
+SoundThreadPool::SoundThreadPool() {
+        }
+        auto SoundThreadPool::instance_owner() -> ThreadPool* { static std::unique_ptr<ThreadPool> value(new ThreadPool("Sound", 1, ThreadPool::NORMAL_PRIORITY)); return value.get(); }
+ThreadPool* SoundThreadPool::instance = SoundThreadPool::instance_owner();
 
-    public: static ThreadPool* getInstance(){
+    auto SoundThreadPool::getInstance() -> ThreadPool*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SoundThreadPool::instance();
+                        return SoundThreadPool::instance;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/MotionRectangles.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,19 +66,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MotionRectangles
-            : public Object
-         {
 
-    private: std::string name;
-
-    private: BasicArrayList* rectangleVector;
-
-    private: ImageComparisonResult* imageComparisonResult;
-
-    protected: const int32_t MAX_PIXEL_DISTANCE_THRESHOLD = 2;
-
-public: MotionRectangles(std::string name, ImageComparisonResult* imageComparisonResult){
+MotionRectangles::MotionRectangles(std::string name, ImageComparisonResult* imageComparisonResult){
 this->name= name;
     
 this->setImageComparisonResult(imageComparisonResult);
@@ -78,7 +77,7 @@ this->setVector(new BasicArrayListD());
 }
 
 
-    public: BasicArrayList* getVector(){
+    auto MotionRectangles::getVector() -> BasicArrayList*{
 
 
 
@@ -88,13 +87,13 @@ this->setVector(new BasicArrayListD());
 }
 
 
-    public: void setVector(BasicArrayList* rectangleVector){
+    auto MotionRectangles::setVector(BasicArrayList* rectangleVector) -> void{
 this->rectangleVector= rectangleVector;
     
 }
 
 
-    public: std::string getName(){
+    auto MotionRectangles::getName() -> std::string{
 
 
 
@@ -104,7 +103,7 @@ this->rectangleVector= rectangleVector;
 }
 
 
-    public: ImageComparisonResult* getImageComparisonResult(){
+    auto MotionRectangles::getImageComparisonResult() -> ImageComparisonResult*{
 
 
 
@@ -114,13 +113,12 @@ this->rectangleVector= rectangleVector;
 }
 
 
-    public: void setImageComparisonResult(ImageComparisonResult* imageComparisonResult){
+    auto MotionRectangles::setImageComparisonResult(ImageComparisonResult* imageComparisonResult) -> void{
 this->imageComparisonResult= imageComparisonResult;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLES_CPP

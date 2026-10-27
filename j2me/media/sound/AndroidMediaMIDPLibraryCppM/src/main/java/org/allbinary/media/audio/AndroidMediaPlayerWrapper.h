@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,36 +36,16 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/media/MediaException.h>
-
-      
-#include <javax/microedition/media/Player.h>
-
-      
-#include <javax/microedition/media/PlayerListener.h>
-
-      
-#include <android/media/MediaPlayer.h>
-
-      
-#include <org/allbinary/android/NullAndroidCanvas.h>
-
-      
-#include <org/allbinary/data/resource/ResourceUtil.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
+class MediaException;
+class Player;
+class PlayerListener;
+class MediaPlayer;
+class NullAndroidCanvas;
+class ResourceUtil;
+class NullUtil;
+class LogUtil;
+class StringMaker;
+class StringUtil;
 
 
 
@@ -81,15 +66,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/audio/BasicPlayer.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class AndroidMediaPlayerWrapper: public BasicPlayer {
 
     public: static AndroidMediaPlayerWrapper* createPlayerWrapper();
 
-    public: static inline AndroidMediaPlayerWrapper* NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
+    public: static AndroidMediaPlayerWrapper* NULL_ANDROID_MEDIA_PLAYER_WRAPPER;
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    private: MediaPlayer* mediaPlayer = NullAndroidCanvas::NULL_MEDIA_PLAYER;
+    private: MediaPlayer* mediaPlayer;
 
 public: AndroidMediaPlayerWrapper(std::string resource);
 
@@ -130,3 +119,43 @@ public: AndroidMediaPlayerWrapper(std::string resource);
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_ANDROIDMEDIAPLAYERWRAPPER_H_COMPLETE
+        #if __has_include(<javax/microedition/media/MediaException.h>)
+#include <javax/microedition/media/MediaException.h>
+#endif
+#if __has_include(<javax/microedition/media/Player.h>)
+#include <javax/microedition/media/Player.h>
+#endif
+#if __has_include(<javax/microedition/media/PlayerListener.h>)
+#include <javax/microedition/media/PlayerListener.h>
+#endif
+#if __has_include(<android/media/MediaPlayer.h>)
+#include <android/media/MediaPlayer.h>
+#endif
+#if __has_include(<org/allbinary/android/NullAndroidCanvas.h>)
+#include <org/allbinary/android/NullAndroidCanvas.h>
+#endif
+#if __has_include(<org/allbinary/data/resource/ResourceUtil.h>)
+#include <org/allbinary/data/resource/ResourceUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include("org/allbinary/media/audio/BasicPlayer.h")
+#include "org/allbinary/media/audio/BasicPlayer.h"
+#endif
+
+        #endif
+    

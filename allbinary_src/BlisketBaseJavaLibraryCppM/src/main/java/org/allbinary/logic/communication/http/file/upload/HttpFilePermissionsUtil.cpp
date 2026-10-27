@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONSUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/file/upload/HttpFilePermissionsUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,25 +63,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HttpFilePermissionsUtil
-            : public Object
-         {
 
-    private: static HttpFilePermissionsUtil* instance() { static std::unique_ptr<HttpFilePermissionsUtil> value(new HttpFilePermissionsUtil()); return value.get(); }
+HttpFilePermissionsUtil::HttpFilePermissionsUtil() {
+        }
+        auto HttpFilePermissionsUtil::instance_owner() -> HttpFilePermissionsUtil* { static std::unique_ptr<HttpFilePermissionsUtil> value(new HttpFilePermissionsUtil()); return value.get(); }
+HttpFilePermissionsUtil* HttpFilePermissionsUtil::instance = HttpFilePermissionsUtil::instance_owner();
 
-    public: static HttpFilePermissionsUtil* getInstance(){
+    auto HttpFilePermissionsUtil::getInstance() -> HttpFilePermissionsUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HttpFilePermissionsUtil::instance();
+                        return HttpFilePermissionsUtil::instance;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void create(AbPath* path){
+    auto HttpFilePermissionsUtil::create(AbPath* path) -> void{
 
     AbFile* file = AbFile::createAbFileFromAbPath(path);;
     
@@ -87,7 +97,6 @@ class HttpFilePermissionsUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_HTTPFILEPERMISSIONSUTIL_CPP

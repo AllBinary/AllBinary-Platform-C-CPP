@@ -18,6 +18,16 @@
 
 
 
+        #ifndef TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_CPP
+        #define TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "taghelpers/StoreTagWorkFlowHelperFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,17 +73,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "taghelpers/StoreTagWorkFlowHelper.h"
 
-class StoreTagWorkFlowHelperFactory: public TagHelperFactory {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: StoreTagWorkFlowHelperFactory(){
+StoreTagWorkFlowHelperFactory::StoreTagWorkFlowHelperFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+    auto StoreTagWorkFlowHelperFactory::getInstance(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) -> Object*{
 
         try {
             
@@ -87,10 +94,10 @@ public: StoreTagWorkFlowHelperFactory(){
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->GET_INSTANCE, &e);
     
 
                                     }
@@ -106,7 +113,6 @@ public: StoreTagWorkFlowHelperFactory(){
 }
 
 
-};
 
-            
 
+        #endif //TAGHELPERS_STORETAGWORKFLOWHELPERFACTORY_CPP

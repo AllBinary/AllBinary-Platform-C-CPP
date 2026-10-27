@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/crypt/jcehelper/AbCrypt.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -85,23 +95,14 @@
 #include "org/allbinary/logic/system/security/crypt/jcehelper/KeySpecFactory.h"
 #include "org/allbinary/logic/system/security/crypt/jcehelper/SecretComposite.h"
 
-class AbCrypt
-            : public Object
-        , public CryptInterface {
 
-    private: TsUtil* tsUtil = TsUtil::getInstance();
-
-    private: BaseSecretComposite* secretComposite = BaseSecretComposite::NULL_SECRET_COMPOSITE;
-
-    private: std::string algorithm;
-
-public: AbCrypt(std::string algorithm){
+AbCrypt::AbCrypt(std::string algorithm) : tsUtil(TsUtil::getInstance()), secretComposite(BaseSecretComposite::NULL_SECRET_COMPOSITE){
 this->algorithm= algorithm;
     
 }
 
 
-    public: void init(std::string keyAsString){
+    auto AbCrypt::init(std::string keyAsString) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -147,7 +148,7 @@ PreLogUtil::putOE("init Failed", this, commonStrings->INIT, &e);
 }
 
 
-    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    auto AbCrypt::encrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
         try {
             
@@ -173,7 +174,7 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", &e);
 }
 
 
-    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    auto AbCrypt::decrypt(std::vector<int8_t> array) -> std::vector<int8_t>{
 
         try {
             
@@ -199,7 +200,6 @@ PreLogUtil::putOE("decrypt Failed", this, "decrypt", &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_CPP

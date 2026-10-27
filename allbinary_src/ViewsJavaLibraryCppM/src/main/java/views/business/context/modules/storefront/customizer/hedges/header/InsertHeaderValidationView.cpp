@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_INSERTHEADERVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_INSERTHEADERVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/hedges/header/InsertHeaderValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -91,13 +101,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/hedges/header/TopBarView.h"
 
-class InsertHeaderValidationView: public TopBarView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string LOGOPATH = "logo/";
-
-public: InsertHeaderValidationView(TransformInfoInterface* transformInfoInterface) : TopBarView(transformInfoInterface){
+InsertHeaderValidationView::InsertHeaderValidationView(TransformInfoInterface* transformInfoInterface) : TopBarView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -122,7 +127,7 @@ this->heading= new HeadingValidation(multipartRequestHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto InsertHeaderValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -132,20 +137,20 @@ this->heading= new HeadingValidation(multipartRequestHashMap);
 }
 
 
-    public: bool isValid(){
+    auto InsertHeaderValidationView::isValid() -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("topbarValidation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("topbarValidation", this, this->commonStrings->IS_VALID);
     
 
                                     }
                                 
 
-    bool isValid = this->heading.isValid();;
+    bool isValid = this->heading->isValid();;
     
 
                         if(isValid == Boolean::TRUE)
@@ -167,10 +172,10 @@ this->heading= new HeadingValidation(multipartRequestHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -186,13 +191,13 @@ this->heading= new HeadingValidation(multipartRequestHashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto InsertHeaderValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->heading.validationInfo());
+stringBuffer->append(this->heading->validationInfo());
     
 
 
@@ -205,7 +210,7 @@ stringBuffer->append(this->heading.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -224,7 +229,7 @@ stringBuffer->append(this->heading.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto InsertHeaderValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -234,7 +239,7 @@ stringBuffer->append(this->heading.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto InsertHeaderValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -244,7 +249,6 @@ stringBuffer->append(this->heading.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_HEDGES_HEADER_INSERTHEADERVALIDATIONVIEW_CPP

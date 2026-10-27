@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONDATA_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/InputAutomationData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,19 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InputAutomationData
-            : public Object
-         {
 
-    public: static inline std::string NAME = "INPUT_AUTOMATION";
-
-    public: static inline std::string INSTALLATION = "INPUT_AUTOMATION_INSTALLATION";
-
-private: InputAutomationData(){
+InputAutomationData::InputAutomationData(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONDATA_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,9 +36,7 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>
-
-      
+class AllBinaryEventCircularPool;
 
 
 
@@ -52,19 +55,28 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/terrain/TerrainEventFactory.h"
-#include "org/allbinary/game/terrain/TerrainEvent.h"
-#include "org/allbinary/game/terrain/BasicTerrainInfo.h"
+        class TerrainEventFactory;
+class TerrainEvent;
+class BasicTerrainInfo;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TerrainEventCircularStaticPool
-            : public Object
+            : public virtual Object
          {
 
-    private: static TerrainEventCircularStaticPool* instance() { static std::unique_ptr<TerrainEventCircularStaticPool> value(new TerrainEventCircularStaticPool()); return value.get(); }
+    private: static TerrainEventCircularStaticPool* instance_owner();
+    private: static TerrainEventCircularStaticPool* instance;
 
     public: static TerrainEventCircularStaticPool* getInstance();
 
-    private: AllBinaryEventCircularPool* EVENT_POOL = new AllBinaryEventCircularPool(20);
+
+            
+    public: TerrainEventCircularStaticPool();
+        
+    private: AllBinaryEventCircularPool* EVENT_POOL;
 
     public: void init();
 
@@ -79,3 +91,22 @@ class TerrainEventCircularStaticPool
 
 
         #endif //ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTCIRCULARSTATICPOOL_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>
+#endif
+#if __has_include("org/allbinary/game/terrain/TerrainEventFactory.h")
+#include "org/allbinary/game/terrain/TerrainEventFactory.h"
+#endif
+#if __has_include("org/allbinary/game/terrain/TerrainEvent.h")
+#include "org/allbinary/game/terrain/TerrainEvent.h"
+#endif
+#if __has_include("org/allbinary/game/terrain/BasicTerrainInfo.h")
+#include "org/allbinary/game/terrain/BasicTerrainInfo.h"
+#endif
+
+        #endif
+    

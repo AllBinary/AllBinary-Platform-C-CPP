@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_H
         #define ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <org/allbinary/layer/Layer.h>
-
-      
+class Graphics;
+class GPoint;
+class Layer;
 
 
 
@@ -57,14 +56,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LinePathAnimation
-            : public Object
+            : public virtual Object
          {
 
-    private: static LinePathAnimation* instance() { static std::unique_ptr<LinePathAnimation> value(new LinePathAnimation()); return value.get(); }
+    private: static LinePathAnimation* instance_owner();
+    private: static LinePathAnimation* instance;
 
     public: static LinePathAnimation* getInstance();
 
+
+            
+    public: LinePathAnimation();
+        
     public: void paint(Graphics* graphics, GPoint* point, GPoint* nextPoint, Layer* tiledLayer);
 
 };
@@ -73,3 +81,19 @@ class LinePathAnimation
 
 
         #endif //ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+#if __has_include(<org/allbinary/layer/Layer.h>)
+#include <org/allbinary/layer/Layer.h>
+#endif
+
+        #endif
+    

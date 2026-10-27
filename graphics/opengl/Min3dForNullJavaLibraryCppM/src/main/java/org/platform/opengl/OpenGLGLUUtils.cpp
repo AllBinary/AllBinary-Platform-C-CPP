@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_PLATFORM_OPENGL_OPENGLGLUUTILS_CPP
+        #define ORG_PLATFORM_OPENGL_OPENGLGLUUTILS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/platform/opengl/OpenGLGLUUtils.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,50 +55,49 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLGLUUtils
-            : public Object
-         {
 
-    private: static OpenGLGLUUtils* instance() { static std::unique_ptr<OpenGLGLUUtils> value(new OpenGLGLUUtils()); return value.get(); }
+OpenGLGLUUtils::OpenGLGLUUtils() {
+        }
+        auto OpenGLGLUUtils::instance_owner() -> OpenGLGLUUtils* { static std::unique_ptr<OpenGLGLUUtils> value(new OpenGLGLUUtils()); return value.get(); }
+OpenGLGLUUtils* OpenGLGLUUtils::instance = OpenGLGLUUtils::instance_owner();
 
-    public: static OpenGLGLUUtils* getInstance(){
+    auto OpenGLGLUUtils::getInstance() -> OpenGLGLUUtils*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLGLUUtils::instance();
+                        return OpenGLGLUUtils::instance;
     
 }
 
 
-    public: ByteBuffer* makeByteBuffer(OpenGLBitmap* bmp, bool flip){
+    auto OpenGLGLUUtils::makeByteBuffer(OpenGLBitmap* bmp, bool flip) -> ByteBuffer*{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void texImage2D(GL10* gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLESImage* openGLESImage, int32_t border, bool flip){
+    auto OpenGLGLUUtils::texImage2D(GL10* gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLESImage* openGLESImage, int32_t border, bool flip) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void texImage2D(GL10* gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLBitmap* bitmap, int32_t border, bool flip){
+    auto OpenGLGLUUtils::texImage2D(GL10* gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLBitmap* bitmap, int32_t border, bool flip) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_PLATFORM_OPENGL_OPENGLGLUUTILS_CPP

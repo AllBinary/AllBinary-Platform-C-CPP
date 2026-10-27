@@ -4,6 +4,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGMAKER_CPP
+        #define ORG_ALLBINARY_LOGIC_STRING_STRINGMAKER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/string/StringMaker.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -50,21 +60,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StringMaker
-            : public Object
-         {
 
-    private: std::vector<char> charArray;
-
-    private: int32_t currentLength= 0;
-
-public: StringMaker(){
+StringMaker::StringMaker(){
 this->charArray= std::vector<char>(20);
     
 }
 
 
-    public: StringMaker* append(std::string string){
+    auto StringMaker::append(std::string string) -> StringMaker*{
 
     int32_t stringLength = string.size();;
     
@@ -90,7 +93,7 @@ this->currentLength += stringLength;
 }
 
 
-    public: StringMaker* appendchar(char c){
+    auto StringMaker::appendchar(char c) -> StringMaker*{
 this->ensureCapacity(this->currentLength +1);
     
 this->charArray[this->currentLength++]= c;
@@ -104,7 +107,7 @@ this->charArray[this->currentLength++]= c;
 }
 
 
-    public: StringMaker* appendCharArray(std::vector<char> charArray, int32_t start, int32_t end){
+    auto StringMaker::appendCharArray(std::vector<char> charArray, int32_t start, int32_t end) -> StringMaker*{
 this->ensureCapacity(this->currentLength +(end -start));
     
 
@@ -127,7 +130,7 @@ this->charArray[this->currentLength++]= charArray[index];
 }
 
 
-    public: StringMaker* appendbyte(int8_t b){
+    auto StringMaker::appendbyte(int8_t b) -> StringMaker*{
 this->append(std::to_string(b));
     
 
@@ -139,7 +142,7 @@ this->append(std::to_string(b));
 }
 
 
-    public: StringMaker* appendshort(int16_t b){
+    auto StringMaker::appendshort(int16_t b) -> StringMaker*{
 this->append(std::to_string(b));
     
 
@@ -151,7 +154,7 @@ this->append(std::to_string(b));
 }
 
 
-    public: StringMaker* appendint(int32_t i){
+    auto StringMaker::appendint(int32_t i) -> StringMaker*{
 this->append(std::to_string(i));
     
 
@@ -163,7 +166,7 @@ this->append(std::to_string(i));
 }
 
 
-    public: StringMaker* appendlong(int64_t l){
+    auto StringMaker::appendlong(int64_t l) -> StringMaker*{
 this->append(std::to_string(l));
     
 
@@ -175,7 +178,7 @@ this->append(std::to_string(l));
 }
 
 
-    public: StringMaker* appendfloat(float f){
+    auto StringMaker::appendfloat(float f) -> StringMaker*{
 this->append(std::to_string(f));
     
 
@@ -187,7 +190,7 @@ this->append(std::to_string(f));
 }
 
 
-    public: StringMaker* appendboolean(bool bool_){
+    auto StringMaker::appendboolean(bool bool_) -> StringMaker*{
 
                         if(bool_)
                         
@@ -230,7 +233,7 @@ this->charArray[this->currentLength++]= 'e';
 }
 
 
-    public: void ensureCapacity(int32_t minSize){
+    auto StringMaker::ensureCapacity(int32_t minSize) -> void{
 
     int32_t oldCapacity = this->charArray.size();;
     
@@ -261,7 +264,7 @@ this->charArray= copy;
 }
 
 
-    public: int32_t min(int32_t value, int32_t value2){
+    auto StringMaker::min(int32_t value, int32_t value2) -> int32_t{
 
 
 
@@ -278,7 +281,7 @@ this->charArray= copy;
 }
 
 
-    public: StringMaker* delete_(int32_t start, int32_t end){
+    auto StringMaker::delete_(int32_t start, int32_t end) -> StringMaker*{
 this->currentLength -= (end -start);
     
 
@@ -290,7 +293,7 @@ this->currentLength -= (end -start);
 }
 
 
-    public: int32_t length(){
+    auto StringMaker::length() -> int32_t{
 
 
 
@@ -300,7 +303,7 @@ this->currentLength -= (end -start);
 }
 
 
-    public: std::string toString(){
+    auto StringMaker::toString() -> std::string{
 
 
 
@@ -310,7 +313,6 @@ this->currentLength -= (end -start);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_STRING_STRINGMAKER_CPP

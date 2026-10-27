@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENT_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,19 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEventFactory.h"
 
-class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public GameKeyEventSourceInterface {
 
-    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
-
-    private: const int32_t SOURCE_ID = this->gameKeyEventFactory->MOTION_GESTURE_SOURCE_ID;
-
-    private: GameKey* gameKey = GameKey::NULL_GAME_KEY;
-
-    private: GameKeyEvent* gameKeyEvent = GameKeyEvent::NONE;
-
-    private: InputToGameKeyMapping* inputToGameKeyMapping;
-
-public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput* motionGestureInput, InputToGameKeyMapping* inputToGameKeyMapping) : CompleteMotionGestureInputEvent(name, motionGestureInput){
+GameKeyCompleteMotionGestureInputEvent::GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput* motionGestureInput, InputToGameKeyMapping* inputToGameKeyMapping) : CompleteMotionGestureInputEvent(name, motionGestureInput), gameKeyEventFactory(GameKeyEventFactory::getInstance()), SOURCE_ID(this->gameKeyEventFactory->MOTION_GESTURE_SOURCE_ID), gameKey(GameKey::NULL_GAME_KEY), gameKeyEvent(GameKeyEvent::NONE){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -98,7 +97,7 @@ this->update();
 }
 
 
-    public: int32_t getSourceId(){
+    auto GameKeyCompleteMotionGestureInputEvent::getSourceId() -> int32_t{
 
 
 
@@ -108,7 +107,7 @@ this->update();
 }
 
 
-    public: void update(){
+    auto GameKeyCompleteMotionGestureInputEvent::update() -> void{
 
         try {
             this->setGameKey(this->inputToGameKeyMapping->getInstance(this->getMotionGestureInput()->getId()));
@@ -122,20 +121,20 @@ this->setGameKeyEvent(this->gameKeyEventFactory->getInstanceForInput(this, this-
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
+this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->UPDATE, &e);
     
 }
 
 }
 
 
-    protected: void setGameKeyEvent(GameKeyEvent* gameKeyEvent){
+    auto GameKeyCompleteMotionGestureInputEvent::setGameKeyEvent(GameKeyEvent* gameKeyEvent) -> void{
 this->gameKeyEvent= gameKeyEvent;
     
 }
 
 
-    public: GameKeyEvent* getGameKeyEvent(){
+    auto GameKeyCompleteMotionGestureInputEvent::getGameKeyEvent() -> GameKeyEvent*{
 
 
 
@@ -145,13 +144,13 @@ this->gameKeyEvent= gameKeyEvent;
 }
 
 
-    protected: void setGameKey(GameKey* gameKey){
+    auto GameKeyCompleteMotionGestureInputEvent::setGameKey(GameKey* gameKey) -> void{
 this->gameKey= gameKey;
     
 }
 
 
-    public: GameKey* getGameKey(){
+    auto GameKeyCompleteMotionGestureInputEvent::getGameKey() -> GameKey*{
 
 
 
@@ -161,7 +160,6 @@ this->gameKey= gameKey;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MOTION_ACTION_GAMEKEYCOMPLETEMOTIONGESTUREINPUTEVENT_CPP

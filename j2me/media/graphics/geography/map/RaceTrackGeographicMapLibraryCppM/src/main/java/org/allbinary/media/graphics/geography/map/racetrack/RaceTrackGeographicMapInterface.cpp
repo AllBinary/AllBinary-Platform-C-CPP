@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,17 +58,8 @@
         #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackInfo.h"
 #include "org/allbinary/media/graphics/geography/map/racetrack/RaceTrackData.h"
 
-class RaceTrackGeographicMapInterface: public GeographicMapInterface {
+//Interface - declared in the header
 
-    public: virtual RaceTrackInfo* getRaceTrackInfo() = 0;
 
-    public: virtual void setRaceTrackInfo(RaceTrackInfo* aRaceTrackInfo) = 0;
 
-    public: virtual RaceTrackData* getRaceTrackData() = 0;
-
-    public: virtual void setRaceTrackData(RaceTrackData* raceTrackData) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAPINTERFACE_CPP

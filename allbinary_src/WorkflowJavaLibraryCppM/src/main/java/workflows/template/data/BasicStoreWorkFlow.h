@@ -21,6 +21,11 @@
         #ifndef WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H
         #define WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,17 +35,9 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
-
-      
+class PageContext;
+class StoreFrontData;
 #include <org/allbinary/logic/control/workflow/StoreWorkFlowInterface.h>
-
-      
 
 
 
@@ -61,6 +58,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "workflows/template/data/BasicWorkFlow.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
 
 public: BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageContext* pageContext);
@@ -75,3 +76,25 @@ public: BasicStoreWorkFlow(HashMap<Object*, Object*>* propertiesHashMap, PageCon
 
 
         #endif //WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H_COMPLETE)
+        #define WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/business/context/modules/storefront/StoreFrontData.h>)
+#include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/workflow/StoreWorkFlowInterface.h>)
+#include <org/allbinary/logic/control/workflow/StoreWorkFlowInterface.h>
+#endif
+#if __has_include("workflows/template/data/BasicWorkFlow.h")
+#include "workflows/template/data/BasicWorkFlow.h"
+#endif
+
+        #endif
+    

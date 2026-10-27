@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DOM_DOMHELPER_H
         #define ORG_ALLBINARY_DOM_DOMHELPER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,47 +37,19 @@
             #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
-
-      
 #include <java/io/File.h>
-
-      
-#include <javax/xml/parsers/DocumentBuilder.h>
-
-      
-#include <javax/xml/parsers/DocumentBuilderFactory.h>
-
-      
-#include <javax/xml/transform/Transformer.h>
-
-      
-#include <javax/xml/transform/TransformerFactory.h>
-
-      
-#include <javax/xml/transform/dom/DOMSource.h>
-
-      
-#include <javax/xml/transform/stream/StreamResult.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/w3c/dom/Document.h>
-
-      
-#include <org/w3c/dom/Node.h>
-
-      
-#include <org/w3c/dom/NodeList.h>
-
-      
+class DocumentBuilder;
+class DocumentBuilderFactory;
+class Transformer;
+class TransformerFactory;
+class DOMSource;
+class StreamResult;
+class LogUtil;
+class BasicArrayList;
+class BasicArrayListD;
+class Document;
+class Node;
+class NodeList;
 
 
 
@@ -92,15 +69,20 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DomHelper
-            : public Object
+            : public virtual Object
          {
 
-    private: static DomHelper* instance() { static std::unique_ptr<DomHelper> value(new DomHelper()); return value.get(); }
+    private: static DomHelper* instance_owner();
+    private: static DomHelper* instance;
 
     public: static DomHelper* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: DomHelper();
 
@@ -144,3 +126,52 @@ private: DomHelper();
 
 
         #endif //ORG_ALLBINARY_DOM_DOMHELPER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DOM_DOMHELPER_H_COMPLETE)
+        #define ORG_ALLBINARY_DOM_DOMHELPER_H_COMPLETE
+        #if __has_include(<java/io/ByteArrayOutputStream.h>)
+#include <java/io/ByteArrayOutputStream.h>
+#endif
+#if __has_include(<java/io/File.h>)
+#include <java/io/File.h>
+#endif
+#if __has_include(<javax/xml/parsers/DocumentBuilder.h>)
+#include <javax/xml/parsers/DocumentBuilder.h>
+#endif
+#if __has_include(<javax/xml/parsers/DocumentBuilderFactory.h>)
+#include <javax/xml/parsers/DocumentBuilderFactory.h>
+#endif
+#if __has_include(<javax/xml/transform/Transformer.h>)
+#include <javax/xml/transform/Transformer.h>
+#endif
+#if __has_include(<javax/xml/transform/TransformerFactory.h>)
+#include <javax/xml/transform/TransformerFactory.h>
+#endif
+#if __has_include(<javax/xml/transform/dom/DOMSource.h>)
+#include <javax/xml/transform/dom/DOMSource.h>
+#endif
+#if __has_include(<javax/xml/transform/stream/StreamResult.h>)
+#include <javax/xml/transform/stream/StreamResult.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/w3c/dom/Document.h>)
+#include <org/w3c/dom/Document.h>
+#endif
+#if __has_include(<org/w3c/dom/Node.h>)
+#include <org/w3c/dom/Node.h>
+#endif
+#if __has_include(<org/w3c/dom/NodeList.h>)
+#include <org/w3c/dom/NodeList.h>
+#endif
+
+        #endif
+    

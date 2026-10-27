@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/NullSpecialAnimationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,29 +66,26 @@
 #include "org/allbinary/animation/ProceduralAnimationInterfaceFactoryInterface.h"
 #include "org/allbinary/animation/Animation.h"
 
-class NullSpecialAnimationFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
+auto NullSpecialAnimationFactory::NULL_SPECIAL_ANIMATION_FACTORY_owner() -> NullSpecialAnimationFactory* { static std::unique_ptr<NullSpecialAnimationFactory> value(new NullSpecialAnimationFactory()); return value.get(); }
+NullSpecialAnimationFactory* NullSpecialAnimationFactory::NULL_SPECIAL_ANIMATION_FACTORY = NullSpecialAnimationFactory::NULL_SPECIAL_ANIMATION_FACTORY_owner();
 
-    private: static NullSpecialAnimationFactory* NULL_SPECIAL_ANIMATION_FACTORY() { static std::unique_ptr<NullSpecialAnimationFactory> value(new NullSpecialAnimationFactory()); return value.get(); }
+NullSpecialAnimationFactory::NullSpecialAnimationFactory(){
+}
 
-    public: static NullSpecialAnimationFactory* getFactoryInstance(){
+
+    auto NullSpecialAnimationFactory::getFactoryInstance() -> NullSpecialAnimationFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullSpecialAnimationFactory::NULL_SPECIAL_ANIMATION_FACTORY();
+                        return NullSpecialAnimationFactory::NULL_SPECIAL_ANIMATION_FACTORY;
     
-}
-
-
-private: NullSpecialAnimationFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto NullSpecialAnimationFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -90,7 +97,7 @@ private: NullSpecialAnimationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto NullSpecialAnimationFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -100,11 +107,10 @@ private: NullSpecialAnimationFactory(){
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto NullSpecialAnimationFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_CPP

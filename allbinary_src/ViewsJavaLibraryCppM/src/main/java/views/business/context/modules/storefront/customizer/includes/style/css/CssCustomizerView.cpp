@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_CSSCUSTOMIZERVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_CSSCUSTOMIZERVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/style/css/CssCustomizerView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,13 +70,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CssCustomizerView: public HttpStoreComponentView {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: ValidationInterface* styleValidationInterface;
-
-public: CssCustomizerView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+CssCustomizerView::CssCustomizerView(TransformInfoInterface* transformInfoInterface) : HttpStoreComponentView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -78,7 +83,7 @@ public: CssCustomizerView(TransformInfoInterface* transformInfoInterface) : Http
 
                 //@Throws(Exception.constructor)
             
-    public: void addDomNodeInterfaces(){
+    auto CssCustomizerView::addDomNodeInterfaces() -> void{
 this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->styleValidationInterface));
     
 }
@@ -86,7 +91,7 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->styleValidationI
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto CssCustomizerView::view() -> std::string{
 
         try {
             this->addDomNodeInterfaces();
@@ -95,17 +100,17 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->styleValidationI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.view();;
+                        return HttpStoreComponentView::view();;
     
 
                 //: 
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -120,7 +125,6 @@ this->addDomNodeInterface(dynamic_cast<DomNodeInterface*>(this->styleValidationI
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_CSSCUSTOMIZERVIEW_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,12 +52,20 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/midlet/GameMidlet.h"
+        class GameMidlet;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class DemoSetup
-            : public Object
+            : public virtual Object
          {
 
+
+            
+    public: DemoSetup();
+        
     public: void init(GameMidlet* gameMidlet);
 
 };
@@ -61,3 +74,13 @@ class DemoSetup
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_DEMOSETUP_H_COMPLETE
+        #if __has_include("org/allbinary/game/midlet/GameMidlet.h")
+#include "org/allbinary/game/midlet/GameMidlet.h"
+#endif
+
+        #endif
+    

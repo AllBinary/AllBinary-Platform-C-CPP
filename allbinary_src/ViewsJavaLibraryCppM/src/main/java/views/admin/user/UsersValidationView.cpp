@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_ADMIN_USER_USERSVALIDATIONVIEW_CPP
+        #define VIEWS_ADMIN_USER_USERSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/admin/user/UsersValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,11 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/admin/user/UsersView.h"
 
-class UsersValidationView: public UsersView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: UsersValidationView(TransformInfoInterface* transformInfoInterface) : UsersView(transformInfoInterface){
+UsersValidationView::UsersValidationView(TransformInfoInterface* transformInfoInterface) : UsersView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -91,7 +98,7 @@ public: UsersValidationView(TransformInfoInterface* transformInfoInterface) : Us
     TransformInfoHttpInterface* httpTransformInfoInterface = dynamic_cast<TransformInfoHttpInterface*>(this->getTransformInfoInterface());;
     
 
-    std::string role = httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME.toString());;
+    std::string role = httpTransformInfoInterface->getPropertiesHashMap()->get(UserRoleData::NAME->toString());;
     
 
     UserRole* userRole = UserRoleB::getRole(role);;
@@ -101,11 +108,11 @@ this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
 }
 
 
-    public: bool isValid(){
+    auto UsersValidationView::isValid() -> bool{
 
         try {
             
-                        if(this->userVector.size() > 0)
+                        if(this->userVector->size() > 0)
                         
                                     {
                                     
@@ -132,10 +139,10 @@ this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -151,7 +158,7 @@ this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
 }
 
 
-    public: std::string validationInfo(){
+    auto UsersValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -165,7 +172,7 @@ this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -184,7 +191,7 @@ this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto UsersValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -194,7 +201,7 @@ this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto UsersValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -204,7 +211,6 @@ this->userVector= UserEntityFactory::getInstance()->getUsersWithRole(userRole);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_ADMIN_USER_USERSVALIDATIONVIEW_CPP

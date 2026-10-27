@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGS_FILEAUTHENTICATIONTAG_CPP
+        #define ADMIN_TAGS_FILEAUTHENTICATIONTAG_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/tags/FileAuthenticationTag.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -104,69 +114,42 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FileAuthenticationTag: public CustomTagSupport {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: int32_t attemptsInteger;
-
-    private: BasicWeblisketSession* weblisketSession;
-
-    private: HttpServletRequest* request;
-
-    private: std::string command;
-
-    private: std::string userName;
-
-    private: std::string password;
-
-    private: std::string newPassword;
-
-    private: std::string authenticated;
-
-    private: std::string sessionUserName;
-
-    private: BasicUserRole* role;
-
-    private: std::string timeout;
-
-    private: BasicArrayList* roles;
-
-public: FileAuthenticationTag(){
+FileAuthenticationTag::FileAuthenticationTag() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setCommand(std::string command){
+    auto FileAuthenticationTag::setCommand(std::string command) -> void{
 this->command= command;
     
 }
 
 
-    public: void setUserName(std::string userName){
+    auto FileAuthenticationTag::setUserName(std::string userName) -> void{
 this->userName= userName;
     
 }
 
 
-    public: void setPassword(std::string value){
+    auto FileAuthenticationTag::setPassword(std::string value) -> void{
 this->password= value;
     
 }
 
 
-    public: void setNewPassword(std::string value){
+    auto FileAuthenticationTag::setNewPassword(std::string value) -> void{
 this->newPassword= value;
     
 }
 
 
-    public: void setRoles(BasicArrayList* values){
+    auto FileAuthenticationTag::setRoles(BasicArrayList* values) -> void{
 this->roles= values;
     
 }
 
 
-    private: void makeSessionValid(BasicUserRole* storedRole, std::string userName){
+    auto FileAuthenticationTag::makeSessionValid(BasicUserRole* storedRole, std::string userName) -> void{
 this->weblisketSession->setAuthenticated();
     
 this->weblisketSession->setRole(storedRole);
@@ -180,7 +163,7 @@ this->request->removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
 }
 
 
-    private: void getFormData(){
+    auto FileAuthenticationTag::getFormData() -> void{
 this->authenticated= this->weblisketSession->getAuthentication();
     
 this->sessionUserName= this->weblisketSession->getUserName();
@@ -194,7 +177,7 @@ this->timeout= this->weblisketSession->getTimeout();
 }
 
 
-    public: void nextAttempt(){
+    auto FileAuthenticationTag::nextAttempt() -> void{
 
                         if(this->attemptsInteger != 
                                     nullptr
@@ -217,7 +200,7 @@ this->timeout= this->weblisketSession->getTimeout();
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool changePassword(){
+    auto FileAuthenticationTag::changePassword() -> bool{
 
         try {
             
@@ -290,10 +273,10 @@ this->weblisketSession->setPassword(newPassword);
  catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "invalidateSession()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidateSession()", &e);
     
 
                                     }
@@ -309,7 +292,7 @@ this->weblisketSession->setPassword(newPassword);
 }
 
 
-    private: int32_t invalidateSession(){
+    auto FileAuthenticationTag::invalidateSession() -> int32_t{
 
         try {
             this->weblisketSession->clear();
@@ -325,10 +308,10 @@ this->weblisketSession->setPassword(newPassword);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "invalidateSession()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidateSession()", &e);
     
 
                                     }
@@ -346,7 +329,7 @@ this->weblisketSession->setPassword(newPassword);
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool isSessionOld(){
+    auto FileAuthenticationTag::isSessionOld() -> bool{
 
         try {
             
@@ -372,7 +355,7 @@ this->weblisketSession->setPassword(newPassword);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     
@@ -409,7 +392,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isSessionOld()");
@@ -431,10 +414,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isSessionOld()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "isSessionOld()", &e);
     
 
                                     }
@@ -450,7 +433,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
 }
 
 
-    private: bool isRarelyUsedSession(){
+    auto FileAuthenticationTag::isRarelyUsedSession() -> bool{
 
                         if(this->role != 
                                     nullptr
@@ -473,7 +456,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isSessionOld()");
     int64_t timeFirst = calendar->getTimeInMillis() -lastAccess;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     
@@ -501,7 +484,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->AUTHENTICATION))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->AUTHENTICATION))
                         
                                     {
                                     this->logUtil->putF("Role Is Not In Session", this, "isRarelyUsedSession()");
@@ -523,7 +506,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool isRoleValid(){
+    auto FileAuthenticationTag::isRoleValid() -> bool{
 
         try {
             this->makeSessionValid(BasicUserRoleFactory::getInstance()->INSTALLER, userName);
@@ -539,10 +522,10 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isRoleValid()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "isRoleValid()", &e);
     
 
                                     }
@@ -560,7 +543,7 @@ this->logUtil->putF(stringBuffer->toString(), this, "isRarelyUsedSession()");
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string validRole(){
+    auto FileAuthenticationTag::validRole() -> std::string{
 
         try {
             
@@ -582,10 +565,10 @@ stringBuffer->append("Trying New login<p>");
     std::string error = "Failed to set valid role";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "validRole()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "validRole()", &e);
     
 
                                     }
@@ -603,7 +586,7 @@ stringBuffer->append("Trying New login<p>");
 
                 //@Throws(LicensingException.constructor)
             
-    private: std::string invalidRole(){
+    auto FileAuthenticationTag::invalidRole() -> std::string{
 
         try {
             this->weblisketSession->setAuthenticated(false);
@@ -629,10 +612,10 @@ stringBuffer->append("Trying New login<p>");
     std::string error = "Failed to set role invalid";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "invalidRole()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "invalidRole()", &e);
     
 
                                     }
@@ -650,7 +633,7 @@ stringBuffer->append("Trying New login<p>");
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool isAuthenticationSessionValid(){
+    auto FileAuthenticationTag::isAuthenticationSessionValid() -> bool{
 
         try {
             
@@ -671,7 +654,7 @@ stringBuffer->append("Trying New login<p>");
     BasicUserRole* mustBeOfRole = dynamic_cast<BasicUserRole*>(this->roles->get(index));;
     
 
-                        if(true && this->role-> === mustBeOfRole)
+                        if(true && this->role->->equals(mustBeOfRole))
                         
                                     {
                                     
@@ -705,10 +688,10 @@ stringBuffer->append("Trying New login<p>");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isAuthenticationSessionValid()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "isAuthenticationSessionValid()", &e);
     
 
                                     }
@@ -726,14 +709,14 @@ stringBuffer->append("Trying New login<p>");
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool processIfNewLogin(){
+    auto FileAuthenticationTag::processIfNewLogin() -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->putF("Starting for User: " +this->userName +" Attempt: " +this->weblisketSession->getAttempts(), this, "processIfNewLogin()");
+                                    this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("Starting for User: ") +JavaString::valueOf(this->userName)) +JavaString::valueOf(" Attempt: ")) +JavaString::valueOf(this->weblisketSession->getAttempts()), this, "processIfNewLogin()");
     
 
                                     }
@@ -752,19 +735,19 @@ stringBuffer->append("Trying New login<p>");
                         if(installerInfo->isValid(this->userName, this->password))
                         
                                     {
-                                    login= org.allbinary.globals.GLOBALS2.LOGINSUCCESS;
+                                    login= org.allbinary->globals->GLOBALS2->LOGINSUCCESS;
     
 
                                     }
                                 
                         else {
-                            login= org.allbinary.globals.GLOBALS2.LOGINFAILED;
+                            login= org.allbinary->globals->GLOBALS2->LOGINFAILED;
     
 
                         }
                             
 
-                        if(login.compare(org.allbinary.globals.GLOBALS2.LOGINSUCCESS) == 0)
+                        if(login.compare(org.allbinary->globals->GLOBALS2->LOGINSUCCESS) == 0)
                         
                                     {
                                     this->weblisketSession->setAttempts(int32_t(0));
@@ -802,10 +785,10 @@ this->nextAttempt();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "processIfNewLogin()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "processIfNewLogin()", &e);
     
 
                                     }
@@ -823,7 +806,7 @@ this->nextAttempt();
 
                 //@Throws(LicensingException.constructor)
             
-    private: bool processInvalidation(){
+    auto FileAuthenticationTag::processInvalidation() -> bool{
 
         try {
             
@@ -860,10 +843,10 @@ this->nextAttempt();
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAGERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "isSetToInvalidate()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "isSetToInvalidate()", &e);
     
 
                                     }
@@ -881,7 +864,7 @@ this->nextAttempt();
 
                 //@Throws(JspTagException.constructor)
             
-    public: int32_t doStartTag(){
+    auto FileAuthenticationTag::doStartTag() -> int32_t{
 
         try {
             
@@ -894,10 +877,10 @@ this->weblisketSession= new BasicWeblisketSession(pageContext);
 this->getFormData();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Started", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Started", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -907,14 +890,14 @@ this->getFormData();
                         
                                     {
                                     
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.CHANGEPASSWORD) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->CHANGEPASSWORD) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Change Password", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Change Password", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -954,10 +937,10 @@ this->getFormData();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("INVALIDATESESSION", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("INVALIDATESESSION", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -981,10 +964,10 @@ this->getFormData();
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Processing Invalidation", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Processing Invalidation", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -992,7 +975,7 @@ this->getFormData();
 pageContext.getOut()->print("Please login again.<p>");
     
 
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1019,16 +1002,16 @@ pageContext.getOut()->print("Please login again.<p>");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Preparing session for invalidation", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Preparing session for invalidation", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1063,16 +1046,16 @@ pageContext.getOut()->print("Please login again.<p>");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Authenticated session is valid", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Authenticated session is valid", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1102,10 +1085,10 @@ pageContext.getOut()->print("Please login again.<p>");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Processing new login.", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Processing new login.", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -1115,10 +1098,10 @@ pageContext.getOut()->print("Please login again.<p>");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Role is valid - Processing new login", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Role is valid - Processing new login", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -1126,7 +1109,7 @@ pageContext.getOut()->print("Please login again.<p>");
 pageContext.getOut()->print(validRole());
     
 
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1153,10 +1136,10 @@ pageContext.getOut()->print(validRole());
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Role is not valid - Processing new login", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Role is not valid - Processing new login", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -1164,7 +1147,7 @@ pageContext.getOut()->print(validRole());
 pageContext.getOut()->print(invalidRole());
     
 
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1194,10 +1177,10 @@ pageContext.getOut()->print(invalidRole());
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
-                                    this->logUtil->putF("Invalid Login", this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil->putF("Invalid Login", this, this->tagStrings->DO_START_TAG);
     
 
                                     }
@@ -1215,7 +1198,7 @@ pageContext.getOut()->print(invalidRole());
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->JSPTAG))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->JSPTAG))
                         
                                     {
                                     
@@ -1233,13 +1216,13 @@ stringBuffer->append(" Command: ");
     
 stringBuffer->append(this->command);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings.DO_START_TAG);
+this->logUtil->putF(stringBuffer->toString(), this, this->tagStrings->DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary->globals->GLOBALS2->PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1303,7 +1286,6 @@ AbResponseHandler::sendJspTagRedirect(this->pageContext, &e);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGS_FILEAUTHENTICATIONTAG_CPP

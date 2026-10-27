@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_MOTIONJ2MEDEFAULTGAMEINPUTMAPPING_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_MOTIONJ2MEDEFAULTGAMEINPUTMAPPING_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/MotionJ2MEDefaultGameInputMapping.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,9 +69,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/input/GameKeyFactory.h"
 
-class MotionJ2MEDefaultGameInputMapping: public PersistentInputMapping {
 
-public: MotionJ2MEDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID){
+MotionJ2MEDefaultGameInputMapping::MotionJ2MEDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance()->DEFAULT_INPUT_MAPPING_RECORD_ID){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -154,7 +163,6 @@ inputToGameKeyMapping->add(gameKeyFactory->KEY_NUM2, basicTouchInputFactory->SPE
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_MOTIONJ2MEDEFAULTGAMEINPUTMAPPING_CPP

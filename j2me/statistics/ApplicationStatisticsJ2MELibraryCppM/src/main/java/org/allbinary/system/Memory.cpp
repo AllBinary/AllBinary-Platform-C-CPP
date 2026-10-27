@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_SYSTEM_MEMORY_CPP
+        #define ORG_ALLBINARY_SYSTEM_MEMORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/system/Memory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,11 +60,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //ActualPlatform
-/*actual*/ class Memory
-            : public Object
-         {
 
-    /*actual*/ public: static std::string getInfo(){
+Memory::Memory() {
+        }
+        
+    /*actual*/ auto Memory::getInfo() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -75,7 +85,6 @@ stringBuffer->appendlong(Runtime::getRuntime()->totalMemory());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_SYSTEM_MEMORY_CPP

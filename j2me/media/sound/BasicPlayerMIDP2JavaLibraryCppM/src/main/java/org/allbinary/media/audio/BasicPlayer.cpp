@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_AUDIO_BASICPLAYER_CPP
+        #define ORG_ALLBINARY_MEDIA_AUDIO_BASICPLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/audio/BasicPlayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -74,21 +84,8 @@
 #include "org/allbinary/media/audio/Controllable2.h"
 #include "org/allbinary/media/audio/NullControl.h"
 //BasicPlayerMIDP2JavaLibrary
-class BasicPlayer
-            : public Object
-        , public Player, public TimeBaseInterface, public Controllable2 {
 
-    public: static inline std::string CONTROL_TYPE = "ToneControl";
-
-    protected: BasicArrayList* listenersList = new BasicArrayListD();
-
-    private: TimeBase* timeBase;
-
-    protected: int32_t stateP= 0;
-
-    protected: int32_t loopCountP= 0;
-
-public: BasicPlayer(){
+BasicPlayer::BasicPlayer() : listenersList(new BasicArrayListD()){
 this->setLoopCount(0);
     
 this->setState(Player::UNREALIZED);
@@ -96,7 +93,7 @@ this->setState(Player::UNREALIZED);
 }
 
 
-    public: std::string getContentType(){
+    auto BasicPlayer::getContentType() -> std::string{
 
 
 
@@ -106,7 +103,7 @@ this->setState(Player::UNREALIZED);
 }
 
 
-    public: Control* getControl(std::string controlType){
+    auto BasicPlayer::getControl(std::string controlType) -> Control*{
 
 
 
@@ -116,7 +113,7 @@ this->setState(Player::UNREALIZED);
 }
 
 
-    public: std::vector<Control*> getControls(){
+    auto BasicPlayer::getControls() -> std::vector<Control*>{
 
 
 
@@ -126,12 +123,12 @@ this->setState(Player::UNREALIZED);
 }
 
 
-    public: void close(){
+    auto BasicPlayer::close() -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addPlayerListener(PlayerListener* playerListener){
+    auto BasicPlayer::addPlayerListener(PlayerListener* playerListener) -> void{
 
                         if(!this->listenersList->contains(playerListener))
                         
@@ -144,13 +141,13 @@ this->setState(Player::UNREALIZED);
 }
 
 
-    public: void removePlayerListener(PlayerListener* playerListener){
+    auto BasicPlayer::removePlayerListener(PlayerListener* playerListener) -> void{
 this->listenersList->remove(playerListener);
     
 }
 
 
-    public: int32_t getState(){
+    auto BasicPlayer::getState() -> int32_t{
 
 
 
@@ -161,13 +158,13 @@ this->listenersList->remove(playerListener);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setState(int32_t state){
+    auto BasicPlayer::setState(int32_t state) -> void{
 this->stateP= state;
     
 }
 
 
-    public: int64_t getDuration(){
+    auto BasicPlayer::getDuration() -> int64_t{
 
 
 
@@ -177,7 +174,7 @@ this->stateP= state;
 }
 
 
-    public: int64_t getMediaTime(){
+    auto BasicPlayer::getMediaTime() -> int64_t{
 
 
 
@@ -187,7 +184,7 @@ this->stateP= state;
 }
 
 
-    public: TimeBase* getTimeBase(){
+    auto BasicPlayer::getTimeBase() -> TimeBase*{
 
 
 
@@ -198,36 +195,36 @@ this->stateP= state;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setTimeBase(TimeBase* timeBase){
+    auto BasicPlayer::setTimeBase(TimeBase* timeBase) -> void{
 this->timeBase= timeBase;
     
 }
 
 
-    public: void deallocate(){
+    auto BasicPlayer::deallocate() -> void{
 }
 
 
                 //@Throws(MediaException.constructor)
             
-    public: void prefetch(){
+    auto BasicPlayer::prefetch() -> void{
 }
 
 
                 //@Throws(MediaException.constructor)
             
-    public: void realize(){
+    auto BasicPlayer::realize() -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setLoopCount(int32_t count){
+    auto BasicPlayer::setLoopCount(int32_t count) -> void{
 this->loopCountP= count;
     
 }
 
 
-    protected: int32_t getLoopCount(){
+    auto BasicPlayer::getLoopCount() -> int32_t{
 
 
 
@@ -240,7 +237,7 @@ this->loopCountP= count;
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: int64_t setMediaTime(int64_t now){
+    auto BasicPlayer::setMediaTime(int64_t now) -> int64_t{
 
 
 
@@ -253,7 +250,7 @@ this->loopCountP= count;
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void start(){
+    auto BasicPlayer::start() -> void{
 this->setState(Player::STARTED);
     
 }
@@ -262,17 +259,16 @@ this->setState(Player::STARTED);
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void stop(){
+    auto BasicPlayer::stop() -> void{
 this->setState(Player::PREFETCHED);
     
 }
 
 
-    public: void setVolume(int32_t leftVolume, int32_t rightVolume){
+    auto BasicPlayer::setVolume(int32_t leftVolume, int32_t rightVolume) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_AUDIO_BASICPLAYER_CPP

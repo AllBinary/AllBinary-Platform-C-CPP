@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_INSERTCSSVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_INSERTCSSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/style/css/template/retail/InsertCssValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -84,11 +94,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InsertCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: InsertCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface){
+InsertCssValidationView::InsertCssValidationView(TransformInfoInterface* transformInfoInterface) : CssCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -105,7 +112,7 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto InsertCssValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -115,17 +122,17 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 }
 
 
-    public: bool isValid(){
+    auto InsertCssValidationView::isValid() -> bool{
 
         try {
             
     bool isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("Started Validation", this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF("Started Validation", this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -150,10 +157,10 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -169,7 +176,7 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto InsertCssValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -186,7 +193,7 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -205,7 +212,7 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto InsertCssValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -215,7 +222,7 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto InsertCssValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -227,7 +234,7 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto InsertCssValidationView::view() -> std::string{
 
         try {
             
@@ -241,10 +248,10 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->TAGHELPERERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->TAGHELPERERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "view()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "view()", &e);
     
 
                                     }
@@ -259,7 +266,6 @@ this->styleValidationInterface= new CssStyleValidation(requestHashMap);
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_INSERTCSSVALIDATIONVIEW_CPP

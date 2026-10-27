@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MYFORMUTIL_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MYFORMUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/MyFormUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -81,29 +91,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MyFormUtil
-            : public Object
-         {
 
-    private: static MyFormUtil* instance() { static std::unique_ptr<MyFormUtil> value(new MyFormUtil()); return value.get(); }
+MyFormUtil::MyFormUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), popupMenuRectangle(RectangleFactory::SINGLETON) {
+        }
+        auto MyFormUtil::instance_owner() -> MyFormUtil* { static std::unique_ptr<MyFormUtil> value(new MyFormUtil()); return value.get(); }
+MyFormUtil* MyFormUtil::instance = MyFormUtil::instance_owner();
 
-    public: static MyFormUtil* getInstance(){
+    auto MyFormUtil::getInstance() -> MyFormUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyFormUtil::instance();
+                        return MyFormUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: Rectangle* popupMenuRectangle = RectangleFactory::SINGLETON;
-
-    public: void updateMeasurement(Graphics* graphics){
+    auto MyFormUtil::updateMeasurement(Graphics* graphics) -> void{
 
     Font* font = graphics->getFont();;
     
@@ -150,7 +154,7 @@ class MyFormUtil
 }
 
 
-    public: Rectangle* getPopupMenuRectangle(){
+    auto MyFormUtil::getPopupMenuRectangle() -> Rectangle*{
 
 
 
@@ -160,7 +164,6 @@ class MyFormUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MYFORMUTIL_CPP

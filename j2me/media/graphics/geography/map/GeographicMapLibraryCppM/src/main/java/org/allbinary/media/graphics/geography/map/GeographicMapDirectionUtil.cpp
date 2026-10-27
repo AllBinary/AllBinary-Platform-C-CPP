@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/map/GeographicMapDirectionUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,31 +70,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h"
 
-class GeographicMapDirectionUtil
-            : public Object
-         {
+auto GeographicMapDirectionUtil::instance_owner() -> GeographicMapDirectionUtil* { static std::unique_ptr<GeographicMapDirectionUtil> value(new GeographicMapDirectionUtil()); return value.get(); }
+GeographicMapDirectionUtil* GeographicMapDirectionUtil::instance = GeographicMapDirectionUtil::instance_owner();
 
-    private: static GeographicMapDirectionUtil* instance() { static std::unique_ptr<GeographicMapDirectionUtil> value(new GeographicMapDirectionUtil()); return value.get(); }
-
-    public: static GeographicMapDirectionUtil* getInstance(){
+    auto GeographicMapDirectionUtil::getInstance() -> GeographicMapDirectionUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapDirectionUtil::instance();
+                        return GeographicMapDirectionUtil::instance;
     
 }
 
 
-private: GeographicMapDirectionUtil(){
+GeographicMapDirectionUtil::GeographicMapDirectionUtil(){
 }
 
 
-    private: const std::string MESSAGE = "Cell Position should have been cached!!!";
-
                 //@Throws(Exception.constructor)
             
-    public: Direction* getDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition){
+    auto GeographicMapDirectionUtil::getDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition) -> Direction*{
 
     int32_t fromColumn = fromGeographicMapCellPosition->getColumn();;
     
@@ -172,7 +177,7 @@ private: GeographicMapDirectionUtil(){
                                     
 
 
-                            throw new Exception(this->MESSAGE);
+                            throw Exception(this->MESSAGE);
                     
 
                                     }
@@ -188,7 +193,7 @@ private: GeographicMapDirectionUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Direction* getEightDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition){
+    auto GeographicMapDirectionUtil::getEightDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition) -> Direction*{
 
     int32_t fromColumn = fromGeographicMapCellPosition->getColumn();;
     
@@ -349,7 +354,7 @@ private: GeographicMapDirectionUtil(){
                                     
 
 
-                            throw new Exception(this->MESSAGE);
+                            throw Exception(this->MESSAGE);
                     
 
                                     }
@@ -365,7 +370,7 @@ private: GeographicMapDirectionUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Direction* getDirectionFromCellPositionToCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition){
+    auto GeographicMapDirectionUtil::getDirectionFromCellPositionToCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition) -> Direction*{
 
     int32_t fromColumn = fromGeographicMapCellPosition->getColumn();;
     
@@ -439,23 +444,19 @@ private: GeographicMapDirectionUtil(){
 
     std::string string = stringMaker->append(CellPosition::toStringCellPosition(fromGeographicMapCellPosition))->append(" == ")->append(CellPosition::toStringCellPosition(toGeographicMapCellPosition))->toString();;
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 
 
 
-                            throw new Exception(stringMaker->append("Error: ")->append(string)->toString());
+                            throw Exception(stringMaker->append("Error: ")->append(string)->toString());
                     
 }
 
 
-    private: const std::string ERROR = "Error: ";
-
-    private: const std::string EQUAL = " == ";
-
                 //@Throws(Exception.constructor)
             
-    public: Direction* getEightDirectionFromCellPositionToCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition){
+    auto GeographicMapDirectionUtil::getEightDirectionFromCellPositionToCellPosition(GeographicMapCellPosition* fromGeographicMapCellPosition, GeographicMapCellPosition* toGeographicMapCellPosition) -> Direction*{
 
     int32_t fromColumn = fromGeographicMapCellPosition->getColumn();;
     
@@ -623,12 +624,11 @@ stringBuffer->append(CellPosition::toStringCellPosition(toGeographicMapCellPosit
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPDIRECTIONUTIL_CPP

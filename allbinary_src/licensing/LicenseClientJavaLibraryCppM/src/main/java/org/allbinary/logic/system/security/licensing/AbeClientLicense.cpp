@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/security/licensing/AbeClientLicense.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,51 +80,8 @@
 #include "org/allbinary/logic/system/security/licensing/AbeClientInformationData.h"
 #include "org/allbinary/logic/system/security/licensing/LicenseTypeFactory.h"
 
-class AbeClientLicense
-            : public Object
-        , public AbeLicenseInterface {
 
-    public: static bool hasRequiredKeys(ABHashtable<Object*, Object*>* resultHashtable){
-
-    AbeClientInformationData* abeClientInformationData = AbeClientInformationData::getInstance();;
-    
-
-                        if(resultHashtable->containsKey(abeClientInformationData->LICENSEID) && resultHashtable->containsKey(abeClientInformationData->LICENSESERVERS) && resultHashtable->containsKey(abeClientInformationData->KEY) && resultHashtable->containsKey(abeClientInformationData->LICENSE_TYPE))
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-
-                                    }
-                                
-                        else {
-                            
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-
-                        }
-                            
-}
-
-
-    private: ABHashtable<Object*, Object*>* hashtable;
-
-    private: std::string id;
-
-    private: BasicArrayList* servers;
-
-    private: std::string special;
-
-    private: LicenseType* licenseType;
-
-public: AbeClientLicense(ABHashtable<Object*, Object*>* hashtable){
+AbeClientLicense::AbeClientLicense(ABHashtable<Object*, Object*>* hashtable){
 this->hashtable= StdUtil::getInstance()->createHashtable();
     
 
@@ -177,7 +144,37 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 }
 
 
-    public: bool hasKey(){
+    auto AbeClientLicense::hasRequiredKeys(ABHashtable<Object*, Object*>* resultHashtable) -> bool{
+
+    AbeClientInformationData* abeClientInformationData = AbeClientInformationData::getInstance();;
+    
+
+                        if(resultHashtable->containsKey(abeClientInformationData->LICENSEID) && resultHashtable->containsKey(abeClientInformationData->LICENSESERVERS) && resultHashtable->containsKey(abeClientInformationData->KEY) && resultHashtable->containsKey(abeClientInformationData->LICENSE_TYPE))
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+
+                        }
+                            
+}
+
+
+    auto AbeClientLicense::hasKey() -> bool{
 
 
 
@@ -187,7 +184,7 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 }
 
 
-    public: std::string getKey(std::string keyName){
+    auto AbeClientLicense::getKey(std::string keyName) -> std::string{
 
 
 
@@ -197,7 +194,7 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 }
 
 
-    public: std::string getLicenseId(){
+    auto AbeClientLicense::getLicenseId() -> std::string{
 
 
 
@@ -207,7 +204,7 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 }
 
 
-    public: BasicArrayList* getServers(){
+    auto AbeClientLicense::getServers() -> BasicArrayList*{
 
 
 
@@ -217,7 +214,7 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 }
 
 
-    public: bool isValid(){
+    auto AbeClientLicense::isValid() -> bool{
 
     StringValidationUtil* stringValidationUtil = StringValidationUtil::getInstance();;
     
@@ -243,7 +240,7 @@ this->licenseType= LicenseTypeFactory::getInstance()->getInstance(licenseTypeStr
 }
 
 
-    public: std::string toString(){
+    auto AbeClientLicense::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -301,13 +298,13 @@ stringBuffer->append(BREAK);
 }
 
 
-    private: void setSpecial(std::string special){
+    auto AbeClientLicense::setSpecial(std::string special) -> void{
 this->special= special;
     
 }
 
 
-    public: std::string getSpecial(){
+    auto AbeClientLicense::getSpecial() -> std::string{
 
 
 
@@ -317,7 +314,7 @@ this->special= special;
 }
 
 
-    public: LicenseType* getLicenseType(){
+    auto AbeClientLicense::getLicenseType() -> LicenseType*{
 
 
 
@@ -327,7 +324,6 @@ this->special= special;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_CPP

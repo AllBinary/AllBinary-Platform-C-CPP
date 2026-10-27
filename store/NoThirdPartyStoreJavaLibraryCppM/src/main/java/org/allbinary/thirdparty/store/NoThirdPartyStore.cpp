@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_NOTHIRDPARTYSTORE_CPP
+        #define ORG_ALLBINARY_THIRDPARTY_STORE_NOTHIRDPARTYSTORE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thirdparty/store/NoThirdPartyStore.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
 
-class NoThirdPartyStore: public ThirdPartyStore {
 
-: NoThirdPartyStore() : ThirdPartyStore(StringUtil::getInstance()->EMPTY_STRING){
+NoThirdPartyStore::NoThirdPartyStore() : ThirdPartyStore(StringUtil::getInstance()->EMPTY_STRING){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -62,13 +71,12 @@ class NoThirdPartyStore: public ThirdPartyStore {
 }
 
 
-    public: void authorize(AbeClientInformationInterface* clientInformationInterface){
+    auto NoThirdPartyStore::authorize(AbeClientInformationInterface* clientInformationInterface) -> void{
 this->setAuthorized(true);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THIRDPARTY_STORE_NOTHIRDPARTYSTORE_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,21 +38,11 @@
         
             #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
+class JsType;
+class NullUtil;
+class CircularIndexUtil;
+class JsMethod;
+class JsProperty;
 
 
 
@@ -66,15 +61,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/util/cache/AllBinaryObjectFactoryInterface.h"
+        class AllBinaryObjectFactoryInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BaseCircularPool
-            : public Object
+            : public virtual Object
          {
 
-    protected: CircularIndexUtil* circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
 
-    protected: std::vector<Object*> OBJECT_ARRAY = NullUtil::getInstance()->NULL_OBJECT_ARRAY;
+            
+    public: BaseCircularPool();
+        
+    /*protected*/ public: CircularIndexUtil* circularIndexUtil;
+
+    /*protected*/ public: std::vector<Object*> OBJECT_ARRAY;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -93,3 +96,28 @@ class BaseCircularPool
 
 
         #endif //ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_H_COMPLETE
+        #if __has_include(<jsinterop/annotations/JsType.h>)
+#include <jsinterop/annotations/JsType.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/util/CircularIndexUtil.h>)
+#include <org/allbinary/util/CircularIndexUtil.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsMethod.h>)
+#include <jsinterop/annotations/JsMethod.h>
+#endif
+#if __has_include(<jsinterop/annotations/JsProperty.h>)
+#include <jsinterop/annotations/JsProperty.h>
+#endif
+#if __has_include("org/allbinary/logic/util/cache/AllBinaryObjectFactoryInterface.h")
+#include "org/allbinary/logic/util/cache/AllBinaryObjectFactoryInterface.h"
+#endif
+
+        #endif
+    

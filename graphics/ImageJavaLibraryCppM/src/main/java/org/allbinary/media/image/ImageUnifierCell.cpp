@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERCELL_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERCELL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageUnifierCell.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,15 +57,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageUnifierCell
-            : public Object
-         {
 
-    private: int32_t width;
-
-    private: int32_t height;
-
-public: ImageUnifierCell(int32_t width, int32_t height){
+ImageUnifierCell::ImageUnifierCell(int32_t width, int32_t height){
 this->setWidth(width);
     
 this->setHeight(height);
@@ -63,7 +66,7 @@ this->setHeight(height);
 }
 
 
-    public: int32_t getWidth(){
+    auto ImageUnifierCell::getWidth() -> int32_t{
 
 
 
@@ -73,13 +76,13 @@ this->setHeight(height);
 }
 
 
-    public: void setWidth(int32_t width){
+    auto ImageUnifierCell::setWidth(int32_t width) -> void{
 this->width= width;
     
 }
 
 
-    public: int32_t getHeight(){
+    auto ImageUnifierCell::getHeight() -> int32_t{
 
 
 
@@ -89,13 +92,12 @@ this->width= width;
 }
 
 
-    public: void setHeight(int32_t height){
+    auto ImageUnifierCell::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERCELL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERINTOPOSITIONVIEWPOSITION_CPP
+        #define ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERINTOPOSITIONVIEWPOSITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/view/StaticTileLayerIntoPositionViewPosition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,19 +68,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StaticTileLayerIntoPositionViewPosition: public ViewPosition {
+Layer* StaticTileLayerIntoPositionViewPosition::tiledLayer = NullLayer::getInstance();
+AllBinaryLayer* StaticTileLayerIntoPositionViewPosition::layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: static inline Layer* tiledLayer = NullLayer::getInstance();
-
-    public: static inline AllBinaryLayer* layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
-
-    public: static void setTiledLayer(AllBinaryTiledLayer* tiledLayer){
-StaticTileLayerIntoPositionViewPosition::tiledLayer= tiledLayer;
-    
-}
-
-
-public: StaticTileLayerIntoPositionViewPosition() : ViewPosition(0, 0, 0){
+StaticTileLayerIntoPositionViewPosition::StaticTileLayerIntoPositionViewPosition() : ViewPosition(0, 0, 0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -80,37 +81,42 @@ public: StaticTileLayerIntoPositionViewPosition() : ViewPosition(0, 0, 0){
 }
 
 
-    public: int32_t getX(){
+    auto StaticTileLayerIntoPositionViewPosition::getX() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getX() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getXP();
+                        return ViewPosition::getX() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getXP();
     
 }
 
 
-    public: int32_t getY(){
+    auto StaticTileLayerIntoPositionViewPosition::getY() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getY() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getYP();
+                        return ViewPosition::getY() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getYP();
     
 }
 
 
-    public: int32_t getZ(){
+    auto StaticTileLayerIntoPositionViewPosition::getZ() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getZ() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getZP();
+                        return ViewPosition::getZ() -StaticTileLayerIntoPositionViewPosition::tiledLayer->getZP();
     
 }
 
 
-};
+    auto StaticTileLayerIntoPositionViewPosition::setTiledLayer(AllBinaryTiledLayer* tiledLayer) -> void{
+StaticTileLayerIntoPositionViewPosition::tiledLayer= tiledLayer;
+    
+}
 
-            
 
+
+
+        #endif //ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERINTOPOSITIONVIEWPOSITION_CPP

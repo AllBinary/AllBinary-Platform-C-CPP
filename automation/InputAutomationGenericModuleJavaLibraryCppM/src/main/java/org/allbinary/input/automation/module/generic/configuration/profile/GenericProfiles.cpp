@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILES_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfiles.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -106,25 +116,10 @@
 #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfileData.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/GenericProfile.h"
 
-class GenericProfiles
-            : public Object
-        , public DomNodeInterface, public DomDocumentMappingInterface {
+const std::string GenericProfiles::DEFAULT_PROFILE_ACTIONS_PATH = JavaString::valueOf(GenericProfiles::DEFAULT_PROFILES_PATH) +JavaString::valueOf("actions/");
+const std::string GenericProfiles::DEFAULT_FILE = JavaString::valueOf(GenericProfiles::DEFAULT_PROFILES_PATH) +JavaString::valueOf("profiles.xml");
 
-    public: static inline const std::string DEFAULT_PROFILES_PATH = "./modules/configs/profiles/";
-
-    public: static inline const std::string DEFAULT_PROFILE_ACTIONS_PATH = GenericProfiles::DEFAULT_PROFILES_PATH +"actions/";
-
-    public: static inline const std::string DEFAULT_FILE = GenericProfiles::DEFAULT_PROFILES_PATH +"profiles.xml";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: HashMap<Object*, Object*>* hashMap;
-
-    private: DefaultListModelHelper* profilesDefaultListModelHelper;
-
-    private: std::string fileName;
-
-public: GenericProfiles(std::string fileName){
+GenericProfiles::GenericProfiles(std::string fileName) : logUtil(LogUtil::getInstance()){
 this->fileName= fileName;
     
 this->profilesDefaultListModelHelper= new DefaultListModelHelper();
@@ -145,7 +140,7 @@ this->hashMap= StdUtil::getInstance()->createHashMap();
     int32_t length = idFile->read(bytes);;
     
 
-    std::string data = String.fromCharCode(...bytes);;
+    std::string data = JavaString::fromChars(bytes);;
     
 
     int32_t endIndex = JavaString::lastIndexOf(data, '>');;
@@ -156,7 +151,7 @@ this->hashMap= StdUtil::getInstance()->createHashMap();
 
     NodeList* nodeList = document->getElementsByTagName(GenericProfilesData::NAME);;
     
-this->logUtil->putF("Number Of Profiles Specified: " +nodeList->getLength(), this, "Contructor");
+this->logUtil->putF(JavaString::valueOf("Number Of Profiles Specified: ") +JavaString::valueOf(nodeList->getLength()), this, "Contructor");
     
 
                         if(nodeList != 
@@ -173,18 +168,18 @@ this->logUtil->putF("Number Of Profiles Specified: " +nodeList->getLength(), thi
                             
 
 
-                            throw new Exception(GenericProfileActionData::NAME +" Name Node Node Children");
+                            throw Exception(JavaString::valueOf(GenericProfileActionData::NAME) +JavaString::valueOf(" Name Node Node Children"));
                     
 
                         }
                             
-this->logUtil->putF("Loaded: " +this->hashMap->size() +" Configuration Profile Actions", this, "Contructor");
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf("Loaded: ") +JavaString::valueOf(this->hashMap->size())) +JavaString::valueOf(" Configuration Profile Actions"), this, "Contructor");
     
 
                                     }
                                 
                         else {
-                            this->logUtil->putF("No Generic Profile: " +fileName, this, "Contructor");
+                            this->logUtil->putF(JavaString::valueOf("No Generic Profile: ") +JavaString::valueOf(fileName), this, "Contructor");
     
 
                         }
@@ -196,7 +191,7 @@ this->getDefaultListModelHelper()->initDefaultModelList();
 
                 //@Throws(Exception.constructor)
             
-    private: void initProfiles(Node* node){
+    auto GenericProfiles::initProfiles(Node* node) -> void{
 
     NodeList* nodeList = node->getChildNodes();;
     
@@ -229,7 +224,7 @@ this->getDefaultListModelHelper()->add(genericProfile->getName());
 }
 
 
-    public: DefaultListModelHelper* getDefaultListModelHelper(){
+    auto GenericProfiles::getDefaultListModelHelper() -> DefaultListModelHelper*{
 
 
 
@@ -241,7 +236,7 @@ this->getDefaultListModelHelper()->add(genericProfile->getName());
 
                 //@Throws(Exception.constructor)
             
-    public: GenericProfile* get(std::string name){
+    auto GenericProfiles::get(std::string name) -> GenericProfile*{
 
     GenericProfile* genericProfile = dynamic_cast<GenericProfile*>(this->hashMap->get(name));;
     
@@ -254,7 +249,7 @@ this->getDefaultListModelHelper()->add(genericProfile->getName());
                                     
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
-this->logUtil->putF("No Generic Profile Named: " +name +" availability was: " +this->hashMap, this, commonStrings->GET);
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("No Generic Profile Named: ") +JavaString::valueOf(name)) +JavaString::valueOf(" availability was: ")) +JavaString::valueOf(this->hashMap), this, commonStrings->GET);
     
 
                                     }
@@ -270,7 +265,7 @@ this->logUtil->putF("No Generic Profile Named: " +name +" availability was: " +t
 
                 //@Throws(Exception.constructor)
             
-    public: void add(std::string name){
+    auto GenericProfiles::add(std::string name) -> void{
 this->hashMap->put(name, new GenericProfile(name));
     
 this->getDefaultListModelHelper()->add(name);
@@ -284,7 +279,7 @@ this->save();
 
                 //@Throws(Exception.constructor)
             
-    public: void remove(std::string name){
+    auto GenericProfiles::remove(std::string name) -> void{
 this->hashMap->remove(name);
     
 this->getDefaultListModelHelper()->remove(name);
@@ -298,7 +293,7 @@ this->save();
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto GenericProfiles::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(GenericProfilesData::NAME);;
     
@@ -336,7 +331,7 @@ node->appendChild(genericProfile->toXmlNode(document));
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto GenericProfiles::toXmlDoc() -> Document*{
 
     Document* document = DomDocumentHelper::create();;
     
@@ -356,7 +351,7 @@ document->appendChild(node);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(){
+    auto GenericProfiles::save() -> void{
 
     FileOutputStream* idFile = new FileOutputStream(this->fileName);;
     
@@ -371,7 +366,6 @@ idOutData->writeBytes(documentString);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILES_CPP

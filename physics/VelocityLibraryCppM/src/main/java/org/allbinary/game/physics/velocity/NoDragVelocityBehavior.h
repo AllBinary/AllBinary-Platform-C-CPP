@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_NODRAGVELOCITYBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_NODRAGVELOCITYBEHAVIOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,13 +52,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoDragVelocityBehavior: public VelocityBehaviorBase {
 
-    public: static NoDragVelocityBehavior* instance() { static std::unique_ptr<NoDragVelocityBehavior> value(new NoDragVelocityBehavior()); return value.get(); }
+    private: static NoDragVelocityBehavior* instance_owner();
+    public: static NoDragVelocityBehavior* instance;
 
+
+            
+    public: NoDragVelocityBehavior();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_NODRAGVELOCITYBEHAVIOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_NODRAGVELOCITYBEHAVIOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_NODRAGVELOCITYBEHAVIOR_H_COMPLETE
+        #if __has_include("org/allbinary/game/physics/velocity/VelocityBehaviorBase.h")
+#include "org/allbinary/game/physics/velocity/VelocityBehaviorBase.h"
+#endif
+
+        #endif
+    

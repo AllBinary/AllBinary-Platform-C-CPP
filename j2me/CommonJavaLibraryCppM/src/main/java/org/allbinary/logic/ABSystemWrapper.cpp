@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_ABSYSTEMWRAPPER_CPP
+        #define ORG_ALLBINARY_LOGIC_ABSYSTEMWRAPPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/ABSystemWrapper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,28 +60,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ABSystemWrapper
-            : public Object
-         {
 
-    private: static ABSystemWrapper* instance() { static std::unique_ptr<ABSystemWrapper> value(new ABSystemWrapper()); return value.get(); }
+ABSystemWrapper::ABSystemWrapper() {
+        }
+        auto ABSystemWrapper::instance_owner() -> ABSystemWrapper* { static std::unique_ptr<ABSystemWrapper> value(new ABSystemWrapper()); return value.get(); }
+ABSystemWrapper* ABSystemWrapper::instance = ABSystemWrapper::instance_owner();
 
-    public: static ABSystemWrapper* getInstance(){
+    auto ABSystemWrapper::getInstance() -> ABSystemWrapper*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABSystemWrapper::instance();
+                        return ABSystemWrapper::instance;
     
 }
 
 
-    public: template<typename Value> void arraycopy(const std::vector<Value>& src, int32_t srcPos, std::vector<Value>& dest, int32_t destPos, int32_t length) {
-        System.arraycopy(src, srcPos, dest, destPos, length);
-    }
+    
 
-
-    public: int64_t currentTimeMillis(){
+    auto ABSystemWrapper::currentTimeMillis() -> int64_t{
 
 
 
@@ -81,7 +88,6 @@ class ABSystemWrapper
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_ABSYSTEMWRAPPER_CPP

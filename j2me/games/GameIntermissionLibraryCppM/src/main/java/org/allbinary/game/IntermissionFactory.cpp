@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/IntermissionFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,31 +61,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IntermissionFactory
-            : public Object
-         {
 
-    private: static IntermissionFactory* instance() { static std::unique_ptr<IntermissionFactory> value(new IntermissionFactory()); return value.get(); }
+IntermissionFactory::IntermissionFactory() : START_LEVEL_INTERMISSION_GAME_STATE(GameStateFactory::getInstance()->createGameState("START_LEVEL_INTERMISSION_GAME_STATE")), WAIT_LEVEL_INTERMISSION_GAME_STATE(GameStateFactory::getInstance()->createGameState("WAIT_LEVEL_INTERMISSION_GAME_STATE")), SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE(GameStateFactory::getInstance()->createGameState("SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE")), SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE(GameStateFactory::getInstance()->createGameState("SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE")) {
+        }
+        auto IntermissionFactory::instance_owner() -> IntermissionFactory* { static std::unique_ptr<IntermissionFactory> value(new IntermissionFactory()); return value.get(); }
+IntermissionFactory* IntermissionFactory::instance = IntermissionFactory::instance_owner();
 
-    public: static IntermissionFactory* getInstance(){
+    auto IntermissionFactory::getInstance() -> IntermissionFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return IntermissionFactory::instance();
+                        return IntermissionFactory::instance;
     
 }
 
 
-    public: GameState* START_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("START_LEVEL_INTERMISSION_GAME_STATE");
 
-    public: GameState* WAIT_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("WAIT_LEVEL_INTERMISSION_GAME_STATE");
 
-    public: GameState* SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE");
-
-    public: GameState* SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance()->createGameState("SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE");
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_INTERMISSIONFACTORY_CPP

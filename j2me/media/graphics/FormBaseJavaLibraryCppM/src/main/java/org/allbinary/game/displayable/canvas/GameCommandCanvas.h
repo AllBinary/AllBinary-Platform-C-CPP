@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,159 +38,57 @@
         
             #include "java/lang/RuntimeException.h"
         
-#include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <javax/microedition/lcdui/NullCommandListener.h>
-
-      
-#include <org/allbinary/canvas/Processor.h>
-
-      
-#include <org/allbinary/game/commands/GameCommandsFactory.h>
-
-      
-#include <org/allbinary/game/configuration/feature/Features.h>
-
-      
-#include <org/allbinary/game/configuration/feature/InputFeatureFactory.h>
-
-      
-#include <org/allbinary/game/displayable/RepaintBehavior.h>
-
-      
-#include <org/allbinary/game/input/GameInputStrings.h>
-
-      
-#include <org/allbinary/game/input/GameKey.h>
-
-      
-#include <org/allbinary/game/input/GameKeyFactory.h>
-
-      
-#include <org/allbinary/game/input/PlatformInputMappingFactory.h>
-
-      
-#include <org/allbinary/game/input/event/DownGameKeyEventHandler.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEventFactory.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEventHandler.h>
-
-      
-#include <org/allbinary/game/input/event/UpGameKeyEventHandler.h>
-
-      
-#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
-
-      
-#include <org/allbinary/graphics/PointFactory.h>
-
-      
-#include <org/allbinary/graphics/Rectangle.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/displayable/CanvasStrings.h>
-
-      
-#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
+class CommandListener;
+class Font;
+class Graphics;
+class NullCommandListener;
+class Processor;
+class GameCommandsFactory;
+class Features;
+class InputFeatureFactory;
+class RepaintBehavior;
+class GameInputStrings;
+class GameKey;
+class GameKeyFactory;
+class PlatformInputMappingFactory;
+class DownGameKeyEventHandler;
+class GameKeyEvent;
+class GameKeyEventFactory;
+class GameKeyEventHandler;
+class UpGameKeyEventHandler;
+class InputToGameKeyMapping;
+class PointFactory;
+class Rectangle;
+class BasicColor;
+class CanvasStrings;
+class DisplayInfoSingleton;
 #include <org/allbinary/graphics/displayable/MyCanvas.h>
-
-      
-#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
-
-      
-#include <org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>
-
-      
+class DisplayChangeEvent;
+class DisplayChangeEventHandler;
 #include <org/allbinary/graphics/displayable/event/DisplayChangeEventListener.h>
-
-      
-#include <org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
+class ScreenRepaintProcessorFactory;
+class MyFontProcessor;
 #include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
-
-      
-#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
-
-      
-#include <org/allbinary/graphics/form/CommandCurrentSelectionFormFactory.h>
-
-      
-#include <org/allbinary/graphics/form/FormPaintable.h>
-
-      
-#include <org/allbinary/graphics/form/FormTypeFactory.h>
-
-      
-#include <org/allbinary/graphics/form/PaintableForm.h>
-
-      
-#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
-
-      
-#include <org/allbinary/graphics/form/ScrollSelectionFormNoneFactory.h>
-
-      
-#include <org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>
-
-      
-#include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
-#include <org/allbinary/graphics/form/item/validation/AllCommandsVisitor.h>
-
-      
-#include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
-#include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>
-
-      
-#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <org/allbinary/logic/util/event/EventStrings.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
+class UpdateMyFontProcessor;
+class CommandCurrentSelectionFormFactory;
+class FormPaintable;
+class FormTypeFactory;
+class PaintableForm;
+class ScrollSelectionForm;
+class ScrollSelectionFormNoneFactory;
+class CommandTextItemArrayFactory;
+class ABCustomItem;
+class AllCommandsVisitor;
+class NullPaintable;
+class Paintable;
+class BasicMotionGesturesHandler;
+class ForcedLogUtil;
+class StringMaker;
+class StringUtil;
+class AllBinaryEventObject;
+class EventStrings;
+class CommonSeps;
+class BasicArrayListD;
 
 
 
@@ -205,51 +108,55 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/MenuListener.h"
-#include "org/allbinary/game/displayable/canvas/NoMenuInputProcessor.h"
-#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
-#include "org/allbinary/game/displayable/canvas/ImmediateCommandFormInputProcessor.h"
+class NoMenuInputProcessor;
+class BasicMenuInputProcessor;
+class ImmediateCommandFormInputProcessor;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameCommandCanvas: public MyCanvas, public MenuListener, public DisplayChangeEventListener, public UpdateMyFontInterface {
 
     private: static inline const int32_t id = 0;
 
-    private: Processor* repaintProcessor = ScreenRepaintProcessorFactory::getInstance()->create(this);
+    private: Processor* repaintProcessor;
 
-    protected: GameInputStrings* gameInputStrings = GameInputStrings::getInstance();
+    /*protected*/ public: GameInputStrings* gameInputStrings;
 
-    protected: BasicColor* foregroundBasicColor;
+    /*protected*/ public: BasicColor* foregroundBasicColor;
 
-    protected: BasicColor* backgroundBasicColor;
+    /*protected*/ public: BasicColor* backgroundBasicColor;
 
-    protected: InputToGameKeyMapping* inputToGameKeyMapping = PlatformInputMappingFactory::getInstance()->getPersistentInputMappingInstance()->getInputMapping();
+    /*protected*/ public: InputToGameKeyMapping* inputToGameKeyMapping;
 
-    protected: GameKeyFactory* gameKeyFactory = GameKeyFactory::getInstance();
+    /*protected*/ public: GameKeyFactory* gameKeyFactory;
 
-    private: GameKeyEventFactory* gameKeyEventFactory = GameKeyEventFactory::getInstance();
+    private: GameKeyEventFactory* gameKeyEventFactory;
 
-    private: DownGameKeyEventHandler* downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
+    private: DownGameKeyEventHandler* downGameKeyEventHandler;
 
-    private: UpGameKeyEventHandler* upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
+    private: UpGameKeyEventHandler* upGameKeyEventHandler;
 
     public: RepaintBehavior* repaintBehavior;
 
-    protected: MyFontProcessor* updateMyFontProcessor = new UpdateMyFontProcessor(this);
+    /*protected*/ public: MyFontProcessor* updateMyFontProcessor;
 
-    protected: MyFontProcessor* myFontProcessor = this->updateMyFontProcessor;
+    /*protected*/ public: MyFontProcessor* myFontProcessor;
 
-    protected: int32_t foregroundColor;
+    /*protected*/ public: int32_t foregroundColor;
 
-    protected: int32_t backgroundColor;
+    /*protected*/ public: int32_t backgroundColor;
 
-    private: BasicMenuInputProcessor* menuInputProcessor = NoMenuInputProcessor::getInstance();
+    private: BasicMenuInputProcessor* menuInputProcessor;
 
-    private: Paintable* menuPaintable = NullPaintable::getInstance();
+    private: Paintable* menuPaintable;
 
-    private: PaintableForm* menuForm = PaintableForm::getNullPaintableForm();
+    private: PaintableForm* menuForm;
 
-    private: bool isSingleKeyRepeatableProcessing = Features::getInstance()->isFeature(InputFeatureFactory::getInstance()->SINGLE_KEY_REPEAT_PRESS);
+    private: bool isSingleKeyRepeatableProcessing;
 
-    protected: int32_t fontHeight = 0;
+    /*protected*/ public: int32_t fontHeight = 0;
 
 public: GameCommandCanvas(CommandListener* cmdListener, std::string name, BasicColor* backgroundBasicColor, BasicColor* foregroundBasicColor);
 
@@ -263,7 +170,7 @@ public: GameCommandCanvas(CommandListener* cmdListener, std::string name, BasicC
 
                 //@Throws(Exception.constructor)
             
-    protected: void initMenu();
+    /*protected*/ public: void initMenu();
 
                 //@Throws(Exception.constructor)
             
@@ -301,7 +208,7 @@ public: GameCommandCanvas(CommandListener* cmdListener, std::string name, BasicC
 
     private: void setMenuInputProcessor(BasicMenuInputProcessor* menuInputProcessor);
 
-    protected: BasicMenuInputProcessor* getMenuInputProcessor();
+    /*protected*/ public: BasicMenuInputProcessor* getMenuInputProcessor();
 
 };
 
@@ -309,3 +216,175 @@ public: GameCommandCanvas(CommandListener* cmdListener, std::string name, BasicC
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/CommandListener.h>)
+#include <javax/microedition/lcdui/CommandListener.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullCommandListener.h>)
+#include <javax/microedition/lcdui/NullCommandListener.h>
+#endif
+#if __has_include(<org/allbinary/canvas/Processor.h>)
+#include <org/allbinary/canvas/Processor.h>
+#endif
+#if __has_include(<org/allbinary/game/commands/GameCommandsFactory.h>)
+#include <org/allbinary/game/commands/GameCommandsFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/Features.h>)
+#include <org/allbinary/game/configuration/feature/Features.h>
+#endif
+#if __has_include(<org/allbinary/game/configuration/feature/InputFeatureFactory.h>)
+#include <org/allbinary/game/configuration/feature/InputFeatureFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/displayable/RepaintBehavior.h>)
+#include <org/allbinary/game/displayable/RepaintBehavior.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameInputStrings.h>)
+#include <org/allbinary/game/input/GameInputStrings.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKey.h>)
+#include <org/allbinary/game/input/GameKey.h>
+#endif
+#if __has_include(<org/allbinary/game/input/GameKeyFactory.h>)
+#include <org/allbinary/game/input/GameKeyFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/PlatformInputMappingFactory.h>)
+#include <org/allbinary/game/input/PlatformInputMappingFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/DownGameKeyEventHandler.h>)
+#include <org/allbinary/game/input/event/DownGameKeyEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEventFactory.h>)
+#include <org/allbinary/game/input/event/GameKeyEventFactory.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEventHandler.h>)
+#include <org/allbinary/game/input/event/GameKeyEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/UpGameKeyEventHandler.h>)
+#include <org/allbinary/game/input/event/UpGameKeyEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/game/input/mapping/InputToGameKeyMapping.h>)
+#include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
+#endif
+#if __has_include(<org/allbinary/graphics/PointFactory.h>)
+#include <org/allbinary/graphics/PointFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/Rectangle.h>)
+#include <org/allbinary/graphics/Rectangle.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/CanvasStrings.h>)
+#include <org/allbinary/graphics/displayable/CanvasStrings.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/DisplayInfoSingleton.h>)
+#include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/MyCanvas.h>)
+#include <org/allbinary/graphics/displayable/MyCanvas.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>)
+#include <org/allbinary/graphics/displayable/event/DisplayChangeEvent.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>)
+#include <org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/event/DisplayChangeEventListener.h>)
+#include <org/allbinary/graphics/displayable/event/DisplayChangeEventListener.h>
+#endif
+#if __has_include(<org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h>)
+#include <org/allbinary/graphics/displayable/screen/ScreenRepaintProcessorFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontInterface.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/UpdateMyFontProcessor.h>)
+#include <org/allbinary/graphics/font/UpdateMyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/CommandCurrentSelectionFormFactory.h>)
+#include <org/allbinary/graphics/form/CommandCurrentSelectionFormFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/FormPaintable.h>)
+#include <org/allbinary/graphics/form/FormPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/FormTypeFactory.h>)
+#include <org/allbinary/graphics/form/FormTypeFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/PaintableForm.h>)
+#include <org/allbinary/graphics/form/PaintableForm.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/ScrollSelectionForm.h>)
+#include <org/allbinary/graphics/form/ScrollSelectionForm.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/ScrollSelectionFormNoneFactory.h>)
+#include <org/allbinary/graphics/form/ScrollSelectionFormNoneFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>)
+#include <org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/ABCustomItem.h>)
+#include <org/allbinary/graphics/form/item/ABCustomItem.h>
+#endif
+#if __has_include(<org/allbinary/graphics/form/item/validation/AllCommandsVisitor.h>)
+#include <org/allbinary/graphics/form/item/validation/AllCommandsVisitor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/NullPaintable.h>)
+#include <org/allbinary/graphics/paint/NullPaintable.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/Paintable.h>)
+#include <org/allbinary/graphics/paint/Paintable.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>)
+#include <org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/ForcedLogUtil.h>)
+#include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/AllBinaryEventObject.h>)
+#include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
+#endif
+#if __has_include(<org/allbinary/logic/util/event/EventStrings.h>)
+#include <org/allbinary/logic/util/event/EventStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/MenuListener.h")
+#include "org/allbinary/game/displayable/canvas/MenuListener.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/NoMenuInputProcessor.h")
+#include "org/allbinary/game/displayable/canvas/NoMenuInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h")
+#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/ImmediateCommandFormInputProcessor.h")
+#include "org/allbinary/game/displayable/canvas/ImmediateCommandFormInputProcessor.h"
+#endif
+
+        #endif
+    

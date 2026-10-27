@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_NULLHEALTHLISTENER_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_NULLHEALTHLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/NullHealthListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,17 +56,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/health/HealthListenerInterface.h"
 
-class NullHealthListener
-            : public Object
-        , public HealthListenerInterface {
 
-    public: static NullHealthListener* NULL_HEALTH_LISTENER() { static std::unique_ptr<NullHealthListener> value(new NullHealthListener()); return value.get(); }
+NullHealthListener::NullHealthListener() {
+        }
+        auto NullHealthListener::NULL_HEALTH_LISTENER_owner() -> NullHealthListener* { static std::unique_ptr<NullHealthListener> value(new NullHealthListener()); return value.get(); }
+NullHealthListener* NullHealthListener::NULL_HEALTH_LISTENER = NullHealthListener::NULL_HEALTH_LISTENER_owner();
 
-    public: void onHealthChange(){
+    auto NullHealthListener::onHealthChange() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_HEALTH_NULLHEALTHLISTENER_CPP

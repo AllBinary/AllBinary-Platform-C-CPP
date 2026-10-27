@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_AI_HORIZONTALROTATIONMANEUVERAIFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_AG_AI_HORIZONTALROTATIONMANEUVERAIFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/ai/HorizontalRotationManeuverAIFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -61,11 +71,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/ag/ai/HorizontaRotationManeuverAI.h"
 
-class HorizontalRotationManeuverAIFactory
-            : public Object
-        , public ArtificialIntelligenceInterfaceFactoryInterface {
 
-    public: ArtificialIntelligenceInterface* getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput){
+HorizontalRotationManeuverAIFactory::HorizontalRotationManeuverAIFactory() {
+        }
+        
+    auto HorizontalRotationManeuverAIFactory::getInstance(ABHashtable<Object*, Object*>* hashtable, AllBinaryLayer* ownerLayerInterface, GameInput* gameInput) -> ArtificialIntelligenceInterface*{
 
 
 
@@ -75,7 +85,6 @@ class HorizontalRotationManeuverAIFactory
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_AI_HORIZONTALROTATIONMANEUVERAIFACTORY_CPP

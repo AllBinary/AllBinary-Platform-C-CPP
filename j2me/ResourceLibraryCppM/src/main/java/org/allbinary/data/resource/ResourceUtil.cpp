@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP
+        #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/resource/ResourceUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,37 +81,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2SE - J2ME
-class ResourceUtil
-            : public Object
-         {
+Object* ResourceUtil::classLoader = NullUtil::getInstance()->NULL_OBJECT;
+auto ResourceUtil::instance_owner() -> ResourceUtil* { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
+ResourceUtil* ResourceUtil::instance = ResourceUtil::instance_owner();
 
-    private: static inline Object* classLoader = NullUtil::getInstance()->NULL_OBJECT;
-
-    private: static ResourceUtil* instance() { static std::unique_ptr<ResourceUtil> value(new ResourceUtil()); return value.get(); }
-
-    public: static ResourceUtil* getInstance(){
+    auto ResourceUtil::getInstance() -> ResourceUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil::instance();
+                        return ResourceUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: ResourceUtil(){
+ResourceUtil::ResourceUtil() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void setLoadingPaths(std::string path, std::string ext){
+    auto ResourceUtil::setLoadingPaths(std::string path, std::string ext) -> void{
 this->logUtil->putF(CommonStrings::getInstance()->NOT_IMPLEMENTED, this, "setLoadingPaths");
     
 }
 
 
-    public: void setClassLoader(ClassLoader* classLoader){
+    auto ResourceUtil::setClassLoader(ClassLoader* classLoader) -> void{
 this->logUtil->putF((new StringMaker())->append("Resource Loader: ")->append(classLoader->getClass()->getName())->toString(), this, "setClassLoader");
     
 ResourceUtil::classLoader= classLoader;
@@ -111,7 +115,7 @@ ResourceUtil::classLoader= classLoader;
 
                 //@Throws(Exception.constructor)
             
-    public: InputStream* getResourceAsStream(std::string resource){
+    auto ResourceUtil::getResourceAsStream(std::string resource) -> InputStream*{
 
     InputStream* inputStream = this->getResourceAsStreamAtStart(resource, 2);;
     
@@ -132,7 +136,7 @@ ResourceUtil::classLoader= classLoader;
                                     
 
 
-                            throw new Exception((new StringMaker())->append("Unable to obtain: ")->append(resource)->toString());
+                            throw Exception((new StringMaker())->append("Unable to obtain: ")->append(resource)->toString());
                     
 
                                     }
@@ -151,7 +155,7 @@ ResourceUtil::classLoader= classLoader;
 
                 //@Throws(Exception.constructor)
             
-    private: InputStream* getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
+    auto ResourceUtil::getResourceAsStreamAtStart(std::string resource, int32_t startIndex) -> InputStream*{
 
     CommonSeps* commonSeps = CommonSeps::getInstance();;
     
@@ -225,11 +229,10 @@ inputStream= Thread::currentThread()->getContextClassLoader()->getResourceAsStre
 }
 
 
-    public: void addResource(std::string resource, int32_t value){
+    auto ResourceUtil::addResource(std::string resource, int32_t value) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_CPP

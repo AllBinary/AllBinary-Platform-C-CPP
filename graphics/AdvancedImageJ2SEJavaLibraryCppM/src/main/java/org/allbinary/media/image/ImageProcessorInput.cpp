@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/ImageProcessorInput.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,15 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageProcessorInput
-            : public Object
-         {
 
-    private: std::vector<BufferedImage*> bufferedImageArray;
-
-    private: std::vector<File*> files;
-
-public: ImageProcessorInput(std::vector<File*> files, std::vector<BufferedImage*> bufferedImageArray){
+ImageProcessorInput::ImageProcessorInput(std::vector<File*> files, std::vector<BufferedImage*> bufferedImageArray){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -77,7 +80,7 @@ this->files= files;
 }
 
 
-    public: std::vector<BufferedImage*> getBufferedImageArray(){
+    auto ImageProcessorInput::getBufferedImageArray() -> std::vector<BufferedImage*>{
 
 
 
@@ -87,7 +90,7 @@ this->files= files;
 }
 
 
-    public: std::vector<File*> getFiles(){
+    auto ImageProcessorInput::getFiles() -> std::vector<File*>{
 
 
 
@@ -97,7 +100,6 @@ this->files= files;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_CPP

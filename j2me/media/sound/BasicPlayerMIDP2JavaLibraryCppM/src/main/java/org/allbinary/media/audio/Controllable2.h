@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,7 +51,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class Controllable2 {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class Controllable2
+            : public virtual Object
+         {
 
     public: virtual void setVolume(int32_t leftVolume, int32_t rightVolume) = 0;
 
@@ -56,3 +67,10 @@ class Controllable2 {
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_CONTROLLABLE2_H_COMPLETE
+        
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHRESULTSEVENT_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHRESULTSEVENT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/search/ImageComparisonSearchResultsEvent.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,11 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/search/ImageComparisonSearch.h"
 
-class ImageComparisonSearchResultsEvent: public AllBinaryEventObject {
 
-    private: ImageComparisonSearch* imageComparisonSearch;
-
-public: ImageComparisonSearchResultsEvent(Object* anyType, ImageComparisonSearch* imageComparisonSearch) : AllBinaryEventObject(anyType){
+ImageComparisonSearchResultsEvent::ImageComparisonSearchResultsEvent(Object* anyType, ImageComparisonSearch* imageComparisonSearch) : AllBinaryEventObject(anyType){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -65,7 +72,7 @@ this->setImageComparisonSearch(imageComparisonSearch);
 }
 
 
-    public: ImageComparisonSearch* getImageComparisonSearch(){
+    auto ImageComparisonSearchResultsEvent::getImageComparisonSearch() -> ImageComparisonSearch*{
 
 
 
@@ -75,13 +82,12 @@ this->setImageComparisonSearch(imageComparisonSearch);
 }
 
 
-    private: void setImageComparisonSearch(ImageComparisonSearch* imageComparisonSearch){
+    auto ImageComparisonSearchResultsEvent::setImageComparisonSearch(ImageComparisonSearch* imageComparisonSearch) -> void{
 this->imageComparisonSearch= imageComparisonSearch;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCHRESULTSEVENT_CPP

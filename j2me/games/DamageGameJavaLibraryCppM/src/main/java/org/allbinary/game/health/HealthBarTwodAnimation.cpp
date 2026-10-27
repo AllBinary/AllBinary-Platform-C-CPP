@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/HealthBarTwodAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,9 +62,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/health/HealthBarAnimation.h"
 
-class HealthBarTwodAnimation: public HealthBarAnimation {
 
-public: HealthBarTwodAnimation(AllBinaryLayer* layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
+HealthBarTwodAnimation::HealthBarTwodAnimation(AllBinaryLayer* layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -64,18 +73,17 @@ public: HealthBarTwodAnimation(AllBinaryLayer* layerInterface, int32_t location)
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto HealthBarTwodAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 
-    int32_t ax = this->allbinaryLayer.getViewPosition()->getX();;
+    int32_t ax = this->allbinaryLayer->getViewPosition()->getX();;
     
-this->basicSetColorUtil.setBasicColorP3(graphics, this->basicColor, this->colorP);
+this->basicSetColorUtil->setBasicColorP3(graphics, this->basicColor, this->colorP);
     
 graphics->fillRect(ax, this->getY() -1, this->x2, this->thickness);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTWODANIMATION_CPP

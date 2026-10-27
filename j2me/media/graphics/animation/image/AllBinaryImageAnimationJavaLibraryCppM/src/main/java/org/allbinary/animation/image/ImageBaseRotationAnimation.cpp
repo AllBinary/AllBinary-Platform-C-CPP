@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEBASEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEBASEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/ImageBaseRotationAnimation.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -76,11 +86,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ImageBaseRotationAnimation: public RotationAnimation {
 
-    private: Image* image;
-
-public: ImageBaseRotationAnimation(Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior){
+ImageBaseRotationAnimation::ImageBaseRotationAnimation(Image* image, AngleInfo* angleInfo, int16_t totalAngle, AnimationBehavior* animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo->getAngleIncrementInfo()->getAngleIncrement()), animationBehavior), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -94,7 +101,7 @@ this->image= image;
 
                 //@Throws(Exception.constructor)
             
-    public: int32_t getAnimationSize(){
+    auto ImageBaseRotationAnimation::getAnimationSize() -> int32_t{
 
 
 
@@ -104,11 +111,11 @@ this->image= image;
 }
 
 
-    public: void setSequence(std::vector<int32_t> sequence){
+    auto ImageBaseRotationAnimation::setSequence(std::vector<int32_t> sequence) -> void{
 }
 
 
-    public: std::vector<int32_t> getSequence(){
+    auto ImageBaseRotationAnimation::getSequence() -> std::vector<int32_t>{
 
 
 
@@ -118,15 +125,13 @@ this->image= image;
 }
 
 
-    protected: int32_t anchor = Anchor::TOP_LEFT;
-
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto ImageBaseRotationAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 graphics->drawImage(this->image, x, y, this->anchor);
     
 }
 
 
-    protected: Image* getImage(){
+    auto ImageBaseRotationAnimation::getImage() -> Image*{
 
 
 
@@ -136,7 +141,7 @@ graphics->drawImage(this->image, x, y, this->anchor);
 }
 
 
-    public: int32_t getWidth(){
+    auto ImageBaseRotationAnimation::getWidth() -> int32_t{
 
 
 
@@ -146,7 +151,7 @@ graphics->drawImage(this->image, x, y, this->anchor);
 }
 
 
-    public: int32_t getHeight(){
+    auto ImageBaseRotationAnimation::getHeight() -> int32_t{
 
 
 
@@ -156,7 +161,7 @@ graphics->drawImage(this->image, x, y, this->anchor);
 }
 
 
-    public: void close(){
+    auto ImageBaseRotationAnimation::close() -> void{
 DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
@@ -164,13 +169,12 @@ DisposalUtil::getInstance()->disposeImage(this->image);
 
                 //@Throws(Throwable.constructor)
             
-    protected: void finalize(){
+    auto ImageBaseRotationAnimation::finalize() -> void{
 DisposalUtil::getInstance()->disposeImage(this->image);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEBASEROTATIONANIMATION_CPP

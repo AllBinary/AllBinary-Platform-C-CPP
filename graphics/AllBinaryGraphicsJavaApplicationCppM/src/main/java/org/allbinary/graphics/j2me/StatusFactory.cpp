@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_STATUSFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_STATUSFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/StatusFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,43 +59,36 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/j2me/MyFrame.h"
 
-class StatusFactory
-            : public Object
-         {
 
-    private: static StatusFactory* instance() { static std::unique_ptr<StatusFactory> value(new StatusFactory()); return value.get(); }
+StatusFactory::StatusFactory() : logUtil(LogUtil::getInstance()) {
+        }
+        auto StatusFactory::instance_owner() -> StatusFactory* { static std::unique_ptr<StatusFactory> value(new StatusFactory()); return value.get(); }
+StatusFactory* StatusFactory::instance = StatusFactory::instance_owner();
 
-    public: static StatusFactory* getInstance(){
+    auto StatusFactory::getInstance() -> StatusFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StatusFactory::instance();
+                        return StatusFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string SETSTATUS = "setStatus";
-
-    private: const std::string STATUS_LABEL = "Status: ";
-
-    public: void setStatusNoLog(std::string status){
-MyFrame::statusJLabel.setText(status);
+    auto StatusFactory::setStatusNoLog(std::string status) -> void{
+MyFrame::statusJLabel->setText(status);
     
 }
 
 
-    public: void setStatus(std::string status){
+    auto StatusFactory::setStatus(std::string status) -> void{
 this->setStatusNoLog(status);
     
-this->logUtil->putF(this->STATUS_LABEL +status, this, this->SETSTATUS);
+this->logUtil->putF(JavaString::valueOf(this->STATUS_LABEL) +JavaString::valueOf(status), this, this->SETSTATUS);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_STATUSFACTORY_CPP

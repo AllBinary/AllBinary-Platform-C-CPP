@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/observer/MotionGestureEventListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,31 +57,8 @@
         #include "org/allbinary/input/motion/gesture/observer/BaseMotionGestureEventListener.h"
 #include "org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h"
 
-class MotionGestureEventListener: public BaseMotionGestureEventListener {
+//Interface - declared in the header
 
-    public: virtual void onPressedMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    public: virtual void onUpMotionGestureEvent(MotionGestureEvent* ev) = 0;
 
-    public: virtual void onDownMotionGestureEvent(MotionGestureEvent* ev) = 0;
-
-    public: virtual void onLeftMotionGestureEvent(MotionGestureEvent* ev) = 0;
-
-    public: virtual void onRightMotionGestureEvent(MotionGestureEvent* ev) = 0;
-
-    public: virtual void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent* ev) = 0;
-
-    public: virtual void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent* ev) = 0;
-
-    public: virtual void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent* ev) = 0;
-
-    public: virtual void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent* ev) = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual void released(MotionGestureEvent* ev) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENTLISTENER_CPP

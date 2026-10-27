@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPEUTIL_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/commerce/money/payment/types/PaymentTypeUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -111,45 +121,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/money/payment/types/PaymentType.h"
 
-class PaymentTypeUtil
-            : public Object
-         {
-
-    private: static PaymentTypeUtil* instance() { static std::unique_ptr<PaymentTypeUtil> value(new PaymentTypeUtil()); return value.get(); }
-
-                    static int32_t initResult = PaymentTypeUtil::init();
-                static int32_t init() { 
+auto PaymentTypeUtil::instance_owner() -> PaymentTypeUtil* { static std::unique_ptr<PaymentTypeUtil> value(new PaymentTypeUtil()); return value.get(); }
+PaymentTypeUtil* PaymentTypeUtil::instance = PaymentTypeUtil::instance_owner();
+int32_t PaymentTypeUtil::initResult = PaymentTypeUtil::init();
+        auto PaymentTypeUtil::init() -> int32_t {
                     
 
 
                     return 0;
-                }
-            
-    public: static PaymentTypeUtil* getInstance(){
+        }
+                
+    auto PaymentTypeUtil::getInstance() -> PaymentTypeUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentTypeUtil::instance();
+                        return PaymentTypeUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: std::string PAYMENTGATEWAYFILEPATHSTRING;
-
-    private: const std::string SHIPPINGMETHODSFILENAME = "paymentGatewayTypes.xml";
-
-    private: std::string defaultName = 
-                null
-            ;
-
-    private: BasicArrayList* paymentTypeVector = new BasicArrayListD();
-
-private: PaymentTypeUtil(){
+PaymentTypeUtil::PaymentTypeUtil() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), paymentTypeVector(new BasicArrayListD()){
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -187,7 +179,7 @@ this->PAYMENTGATEWAYFILEPATHSTRING= stringBuffer->toString();
 }
 
 
-    public: void add(PaymentType* paymentType){
+    auto PaymentTypeUtil::add(PaymentType* paymentType) -> void{
 this->paymentTypeVector->add(paymentType);
     
 }
@@ -195,7 +187,7 @@ this->paymentTypeVector->add(paymentType);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentType* get(std::string paymentTypeString){
+    auto PaymentTypeUtil::get(std::string paymentTypeString) -> PaymentType*{
 
     int32_t size = this->paymentTypeVector->size();;
     
@@ -227,19 +219,19 @@ this->paymentTypeVector->add(paymentType);
 
 
 
-                            throw new Exception("Unknown PaymentType: " +paymentTypeString);
+                            throw Exception(JavaString::valueOf("Unknown PaymentType: ") +JavaString::valueOf(paymentTypeString));
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void initDefault(std::string storeName){
+    auto PaymentTypeUtil::initDefault(std::string storeName) -> void{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
-                                    this->logUtil->putF("initDefault Payment: " +this->defaultName, this, "initDefault");
+                                    this->logUtil->putF(JavaString::valueOf("initDefault Payment: ") +JavaString::valueOf(this->defaultName), this, "initDefault");
     
 
                                     }
@@ -290,10 +282,10 @@ stringBuffer->append(this->PAYMENTGATEWAYFILEPATHSTRING);
     std::string defaultPaymentGatewayNodeValue = DomNodeHelper::getTextNodeValue(defaultPaymentGatewayNode);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
-                                    this->logUtil->putF("DefaultPaymentGatewayNodeValue: " +defaultPaymentGatewayNodeValue, this, "initDefault");
+                                    this->logUtil->putF(JavaString::valueOf("DefaultPaymentGatewayNodeValue: ") +JavaString::valueOf(defaultPaymentGatewayNodeValue), this, "initDefault");
     
 
                                     }
@@ -317,9 +309,9 @@ stringBuffer->append(this->PAYMENTGATEWAYFILEPATHSTRING);
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentType* getDefault(std::string storeName){
+    auto PaymentTypeUtil::getDefault(std::string storeName) -> PaymentType*{
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->PAYMENT))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->PAYMENT))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->START, this, "getDefault");
@@ -345,12 +337,12 @@ this->initDefault(storeName);
 
 
 
-                            throw new Exception("No Default: " +this->defaultName);
+                            throw Exception(JavaString::valueOf("No Default: ") +JavaString::valueOf(this->defaultName));
                     
 }
 
 
-    public: bool isContain(PaymentType* paymentType){
+    auto PaymentTypeUtil::isContain(PaymentType* paymentType) -> bool{
 
 
 
@@ -360,7 +352,7 @@ this->initDefault(storeName);
 }
 
 
-    public: BasicArrayList* difference(BasicArrayList* a_PaymentTypeVector){
+    auto PaymentTypeUtil::difference(BasicArrayList* a_PaymentTypeVector) -> BasicArrayList*{
 
     BasicArrayList* diff = new BasicArrayListD();;
     
@@ -392,7 +384,6 @@ this->initDefault(storeName);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_PAYMENTTYPEUTIL_CPP

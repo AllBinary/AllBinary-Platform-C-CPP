@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITION_CPP
+        #define ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/view/TileLayerPositionIntoViewPosition.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,11 +65,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TileLayerPositionIntoViewPosition: public ViewPosition {
 
-    private: Layer* tiledLayer = NullLayer::getInstance();
-
-public: TileLayerPositionIntoViewPosition() : ViewPosition(0, 0, 0){
+TileLayerPositionIntoViewPosition::TileLayerPositionIntoViewPosition() : ViewPosition(0, 0, 0), tiledLayer(NullLayer::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -69,43 +76,42 @@ public: TileLayerPositionIntoViewPosition() : ViewPosition(0, 0, 0){
 }
 
 
-    public: int32_t getX(){
+    auto TileLayerPositionIntoViewPosition::getX() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getX() -this->tiledLayer->getXP();
+                        return ViewPosition::getX() -this->tiledLayer->getXP();
     
 }
 
 
-    public: int32_t getY(){
+    auto TileLayerPositionIntoViewPosition::getY() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getY() -this->tiledLayer->getYP();
+                        return ViewPosition::getY() -this->tiledLayer->getYP();
     
 }
 
 
-    public: int32_t getZ(){
+    auto TileLayerPositionIntoViewPosition::getZ() -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getZ() -this->tiledLayer->getZP();
+                        return ViewPosition::getZ() -this->tiledLayer->getZP();
     
 }
 
 
-    public: void setTiledLayer(AllBinaryTiledLayer* tiledLayer){
+    auto TileLayerPositionIntoViewPosition::setTiledLayer(AllBinaryTiledLayer* tiledLayer) -> void{
 this->tiledLayer= tiledLayer;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITION_CPP

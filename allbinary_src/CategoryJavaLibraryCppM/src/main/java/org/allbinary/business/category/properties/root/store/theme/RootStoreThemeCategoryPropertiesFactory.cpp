@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIESFACTORY_CPP
+        #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIESFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/category/properties/root/store/theme/RootStoreThemeCategoryPropertiesFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,39 +82,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/category/properties/root/store/theme/RootStoreThemeCategoryProperties.h"
 
-class RootStoreThemeCategoryPropertiesFactory
-            : public Object
-        , public CategoryPropertiesFactoryInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CategoryPropertiesInterface* categoryPropertiesInterface;
-
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface){
+RootStoreThemeCategoryPropertiesFactory::RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreThemeCategoryProperties(transformInfoInterface));
     
 }
 
 
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, AbPath* abPath){
+RootStoreThemeCategoryPropertiesFactory::RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, AbPath* abPath) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreThemeCategoryProperties(transformInfoInterface, abPath));
     
 }
 
 
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, Node* node){
+RootStoreThemeCategoryPropertiesFactory::RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, Node* node) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreThemeCategoryProperties(transformInfoInterface, node));
     
 }
 
 
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap){
+RootStoreThemeCategoryPropertiesFactory::RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface* transformInfoInterface, HashMap<Object*, Object*>* categoryPropertiesHashMap) : logUtil(LogUtil::getInstance()){
 this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(new RootStoreThemeCategoryProperties(transformInfoInterface, categoryPropertiesHashMap));
     
 }
 
 
-    public: CategoryPropertiesInterface* getInstance(){
+    auto RootStoreThemeCategoryPropertiesFactory::getInstance() -> CategoryPropertiesInterface*{
 
         try {
             
@@ -121,7 +124,7 @@ this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(ne
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->ENTITYFACTORYERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->ENTITYFACTORYERROR))
                         
                                     {
                                     this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, &e);
@@ -140,7 +143,6 @@ this->categoryPropertiesInterface= dynamic_cast<CategoryPropertiesInterface*>(ne
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIESFACTORY_CPP

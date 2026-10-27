@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPUINFO_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPUINFO_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,45 +53,67 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CpuInfo
-            : public Object
+            : public virtual Object
          {
 
-    public: static CpuInfo* PROCESSOR() { static std::unique_ptr<CpuInfo> value(new CpuInfo("processor")); return value.get(); }
+    private: static CpuInfo* PROCESSOR_owner();
+    public: static CpuInfo* PROCESSOR;
 
-    public: static CpuInfo* VENDORID() { static std::unique_ptr<CpuInfo> value(new CpuInfo("vendor_id")); return value.get(); }
+    private: static CpuInfo* VENDORID_owner();
+    public: static CpuInfo* VENDORID;
 
-    public: static CpuInfo* CPUFAMILY() { static std::unique_ptr<CpuInfo> value(new CpuInfo("cpu family")); return value.get(); }
+    private: static CpuInfo* CPUFAMILY_owner();
+    public: static CpuInfo* CPUFAMILY;
 
-    public: static CpuInfo* MODEL() { static std::unique_ptr<CpuInfo> value(new CpuInfo("model")); return value.get(); }
+    private: static CpuInfo* MODEL_owner();
+    public: static CpuInfo* MODEL;
 
-    public: static CpuInfo* MODELNAME() { static std::unique_ptr<CpuInfo> value(new CpuInfo("model name")); return value.get(); }
+    private: static CpuInfo* MODELNAME_owner();
+    public: static CpuInfo* MODELNAME;
 
-    public: static CpuInfo* STEPPING() { static std::unique_ptr<CpuInfo> value(new CpuInfo("stepping")); return value.get(); }
+    private: static CpuInfo* STEPPING_owner();
+    public: static CpuInfo* STEPPING;
 
-    public: static CpuInfo* CPUMHZ() { static std::unique_ptr<CpuInfo> value(new CpuInfo("cpu MHz")); return value.get(); }
+    private: static CpuInfo* CPUMHZ_owner();
+    public: static CpuInfo* CPUMHZ;
 
-    public: static CpuInfo* CACHESIZE() { static std::unique_ptr<CpuInfo> value(new CpuInfo("cache size")); return value.get(); }
+    private: static CpuInfo* CACHESIZE_owner();
+    public: static CpuInfo* CACHESIZE;
 
-    public: static CpuInfo* FDIVBUG() { static std::unique_ptr<CpuInfo> value(new CpuInfo("fdiv_bug")); return value.get(); }
+    private: static CpuInfo* FDIVBUG_owner();
+    public: static CpuInfo* FDIVBUG;
 
-    public: static CpuInfo* HLTBUG() { static std::unique_ptr<CpuInfo> value(new CpuInfo("hlt_bug")); return value.get(); }
+    private: static CpuInfo* HLTBUG_owner();
+    public: static CpuInfo* HLTBUG;
 
-    public: static CpuInfo* F00FBUG() { static std::unique_ptr<CpuInfo> value(new CpuInfo("f00f_bug")); return value.get(); }
+    private: static CpuInfo* F00FBUG_owner();
+    public: static CpuInfo* F00FBUG;
 
-    public: static CpuInfo* COMABUG() { static std::unique_ptr<CpuInfo> value(new CpuInfo("coma_bug")); return value.get(); }
+    private: static CpuInfo* COMABUG_owner();
+    public: static CpuInfo* COMABUG;
 
-    public: static CpuInfo* FPU() { static std::unique_ptr<CpuInfo> value(new CpuInfo("fpu")); return value.get(); }
+    private: static CpuInfo* FPU_owner();
+    public: static CpuInfo* FPU;
 
-    public: static CpuInfo* FPUEXCEPTION() { static std::unique_ptr<CpuInfo> value(new CpuInfo("fpu_exception")); return value.get(); }
+    private: static CpuInfo* FPUEXCEPTION_owner();
+    public: static CpuInfo* FPUEXCEPTION;
 
-    public: static CpuInfo* CPUIDLEVEL() { static std::unique_ptr<CpuInfo> value(new CpuInfo("cache size")); return value.get(); }
+    private: static CpuInfo* CPUIDLEVEL_owner();
+    public: static CpuInfo* CPUIDLEVEL;
 
-    public: static CpuInfo* WP() { static std::unique_ptr<CpuInfo> value(new CpuInfo("yes")); return value.get(); }
+    private: static CpuInfo* WP_owner();
+    public: static CpuInfo* WP;
 
-    public: static CpuInfo* FLAGS() { static std::unique_ptr<CpuInfo> value(new CpuInfo("flags")); return value.get(); }
+    private: static CpuInfo* FLAGS_owner();
+    public: static CpuInfo* FLAGS;
 
-    public: static CpuInfo* BOGOMIPS() { static std::unique_ptr<CpuInfo> value(new CpuInfo("bogomips")); return value.get(); }
+    private: static CpuInfo* BOGOMIPS_owner();
+    public: static CpuInfo* BOGOMIPS;
 
     private: std::string name;
 
@@ -100,3 +127,10 @@ private: CpuInfo(std::string name);
 
 
         #endif //ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPUINFO_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPUINFO_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPUINFO_H_COMPLETE
+        
+        #endif
+    

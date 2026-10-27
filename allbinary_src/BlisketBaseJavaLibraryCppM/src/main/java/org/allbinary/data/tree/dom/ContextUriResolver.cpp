@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_CONTEXTURIRESOLVER_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_CONTEXTURIRESOLVER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/ContextUriResolver.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -88,17 +98,8 @@
         #include "org/allbinary/data/tree/dom/URIResolverStrings.h"
 #include "org/allbinary/data/tree/dom/BasicUriResolver.h"
 
-class ContextUriResolver
-            : public Object
-        , public URIResolver {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: URIResolverStrings* uriResolverStrings = URIResolverStrings::getInstance();
-
-    private: BasicUriResolver* basicURIResolver;
-
-public: ContextUriResolver(BasicUriResolver* basicURIResolver){
+ContextUriResolver::ContextUriResolver(BasicUriResolver* basicURIResolver) : logUtil(LogUtil::getInstance()), uriResolverStrings(URIResolverStrings::getInstance()){
 this->basicURIResolver= basicURIResolver;
     
 }
@@ -106,7 +107,7 @@ this->basicURIResolver= basicURIResolver;
 
                 //@Throws(TransformerException.constructor)
             
-    public: Source* resolve(std::string href, std::string base){
+    auto ContextUriResolver::resolve(std::string href, std::string base) -> Source*{
 
         try {
             
@@ -126,10 +127,10 @@ stringBuffer->append(href);
     AbPath* fileAbPath = new AbFilePath(stringBuffer->toString());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->XMLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->XMLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
 stringBuffer->append(this->uriResolverStrings->ATTEMPT);
     
@@ -181,14 +182,14 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 
 
 
-                            throw new TransformerException(&e);
+                            throw TransformerException(&e);
                     
 }
 
 }
 
 
-    public: std::string toString(){
+    auto ContextUriResolver::toString() -> std::string{
 
         try {
             
@@ -212,7 +213,6 @@ this->logUtil->putF(stringBuffer->toString(), this, this->uriResolverStrings->RE
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_CONTEXTURIRESOLVER_CPP

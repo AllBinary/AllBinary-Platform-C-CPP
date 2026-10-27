@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_CPP
+        #define ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/bundle/logic/system/loader/CryptService.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -94,25 +104,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CryptService
-            : public Object
-         {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: AbCryptUtil* abCryptUtil = AbCryptUtil::getInstance();
-
-public: CryptService(){
+CryptService::CryptService() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), abCryptUtil(AbCryptUtil::getInstance()){
 Globals::getInstance()->init(this->getClass()getClassLoader(), "./");
     
-this->logUtil->putF("Set Globals: " +URLGLOBALS::getWebappPath(), this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("Set Globals: ") +JavaString::valueOf(URLGLOBALS::getWebappPath()), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-    public: InputStream* getDecryptedInputStream(AbeClientInformationInterface* abeClientInformation, std::string name, InputStream* inputStream){
+    auto CryptService::getDecryptedInputStream(AbeClientInformationInterface* abeClientInformation, std::string name, InputStream* inputStream) -> InputStream*{
 
         try {
             
@@ -151,7 +152,7 @@ this->showLicenseDialog(abeClientInformation, &e);
 }
 
 
-    private: void showLicenseDialog(AbeClientInformationInterface* abeClientInformation, Exception* e){
+    auto CryptService::showLicenseDialog(AbeClientInformationInterface* abeClientInformation, Exception* e) -> void{
 
         try {
             this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->INIT, e);
@@ -203,7 +204,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->IN
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_CPP

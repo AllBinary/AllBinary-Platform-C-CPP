@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOPERATINGSYSTEMFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOPERATINGSYSTEMFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/system/os/linux/LinuxOperatingSystemFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,29 +82,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/system/os/linux/LinuxOS.h"
 
-class LinuxOperatingSystemFactory
-            : public Object
-         {
+auto LinuxOperatingSystemFactory::instance_owner() -> LinuxOperatingSystemFactory* { static std::unique_ptr<LinuxOperatingSystemFactory> value(new LinuxOperatingSystemFactory()); return value.get(); }
+LinuxOperatingSystemFactory* LinuxOperatingSystemFactory::instance = LinuxOperatingSystemFactory::instance_owner();
 
-    private: static LinuxOperatingSystemFactory* instance() { static std::unique_ptr<LinuxOperatingSystemFactory> value(new LinuxOperatingSystemFactory()); return value.get(); }
-
-    public: static LinuxOperatingSystemFactory* getInstance(){
+    auto LinuxOperatingSystemFactory::getInstance() -> LinuxOperatingSystemFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinuxOperatingSystemFactory::instance();
+                        return LinuxOperatingSystemFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-private: LinuxOperatingSystemFactory(){
+LinuxOperatingSystemFactory::LinuxOperatingSystemFactory() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: GenericOperatingSystem* getOperatingSystemInstance(){
+    auto LinuxOperatingSystemFactory::getOperatingSystemInstance() -> GenericOperatingSystem*{
 
         try {
             
@@ -129,7 +134,7 @@ private: LinuxOperatingSystemFactory(){
                             
 
 
-                            throw new Exception("Specific Linux OS Not Supported: " +osName);
+                            throw Exception(JavaString::valueOf("Specific Linux OS Not Supported: ") +JavaString::valueOf(osName));
                     
 
                         }
@@ -148,7 +153,7 @@ private: LinuxOperatingSystemFactory(){
 } catch(Exception& e) 
             {
 
-                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
+                        if(LogConfigTypes::LOGGING->contains(LogConfigTypeFactory::getInstance()->FACTORYERROR))
                         
                                     {
                                     
@@ -170,7 +175,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->GET_INSTANCE, 
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_SYSTEM_OS_LINUX_LINUXOPERATINGSYSTEMFACTORY_CPP

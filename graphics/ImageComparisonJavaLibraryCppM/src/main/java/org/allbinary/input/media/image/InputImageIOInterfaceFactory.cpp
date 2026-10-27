@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGEIOINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGEIOINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/media/image/InputImageIOInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -60,13 +70,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/media/image/InputImageType.h"
 
-class InputImageIOInterfaceFactory
-            : public Object
-         {
+
+InputImageIOInterfaceFactory::InputImageIOInterfaceFactory(){
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: static ImageIOInterface* getInstance(InputImageType* imageType){
+    auto InputImageIOInterfaceFactory::getInstance(InputImageType* imageType) -> ImageIOInterface*{
 
                         if(imageType == InputImageType::CAPTURE)
                         
@@ -110,7 +121,7 @@ class InputImageIOInterfaceFactory
                             
 
 
-                            throw new Exception("No ImageIOInterface for: " +imageType->toString());
+                            throw Exception(JavaString::valueOf("No ImageIOInterface for: ") +JavaString::valueOf(imageType->toString()));
                     
 
                         }
@@ -118,11 +129,6 @@ class InputImageIOInterfaceFactory
 }
 
 
-private: InputImageIOInterfaceFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGEIOINTERFACEFACTORY_CPP

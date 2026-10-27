@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_HEDGES_HEADING_HEADINGVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_HEDGES_HEADING_HEADINGVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/hedges/heading/HeadingValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -85,15 +95,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/transform/template/customizer/hedges/heading/HeadingData.h"
 
-class HeadingValidation: public Validation, public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: TitleValidation* title;
-
-    private: LogoValidation* logo;
-
-public: HeadingValidation(){
+HeadingValidation::HeadingValidation() : logUtil(LogUtil::getInstance()){
 this->title= new TitleValidation();
     
 this->logo= new LogoValidation();
@@ -101,7 +104,7 @@ this->logo= new LogoValidation();
 }
 
 
-public: HeadingValidation(Document* document){
+HeadingValidation::HeadingValidation(Document* document) : logUtil(LogUtil::getInstance()){
 
     NodeList* headingNodeList = document->getElementsByTagName(HeadingData::NAME);;
     
@@ -118,7 +121,7 @@ this->logo= new LogoValidation(logoNode);
 }
 
 
-public: HeadingValidation(HashMap<Object*, Object*>* hashMap){
+HeadingValidation::HeadingValidation(HashMap<Object*, Object*>* hashMap) : logUtil(LogUtil::getInstance()){
 this->getFormData(hashMap);
     
 }
@@ -126,7 +129,7 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<Object*, Object*>* hashMap){
+    auto HeadingValidation::getFormData(HashMap<Object*, Object*>* hashMap) -> void{
 this->title= new TitleValidation(hashMap);
     
 this->logo= new LogoValidation(hashMap);
@@ -134,7 +137,7 @@ this->logo= new LogoValidation(hashMap);
 }
 
 
-    public: bool isValid(){
+    auto HeadingValidation::isValid() -> bool{
 
         try {
             
@@ -147,10 +150,10 @@ this->logo= new LogoValidation(hashMap);
     bool logoValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -189,10 +192,10 @@ this->logo= new LogoValidation(hashMap);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF("HeadingValidation: " +valid, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(JavaString::valueOf("HeadingValidation: ") +JavaString::valueOf(valid), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -208,10 +211,10 @@ this->logo= new LogoValidation(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -227,7 +230,7 @@ this->logo= new LogoValidation(hashMap);
 }
 
 
-    public: std::string validationInfo(){
+    auto HeadingValidation::validationInfo() -> std::string{
 
         try {
             
@@ -289,7 +292,7 @@ this->logo= new LogoValidation(hashMap);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -308,7 +311,7 @@ this->logo= new LogoValidation(hashMap);
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto HeadingValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -318,7 +321,7 @@ this->logo= new LogoValidation(hashMap);
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto HeadingValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -330,7 +333,7 @@ this->logo= new LogoValidation(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto HeadingValidation::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(HeadingData::NAME);;
     
@@ -347,7 +350,6 @@ node->appendChild(this->title->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_HEDGES_HEADING_HEADINGVALIDATION_CPP

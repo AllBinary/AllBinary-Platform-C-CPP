@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATION_CPP
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/ag/layer/hud/basic/notification/GameNotification.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,19 +81,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameNotification
-            : public Object
-         {
 
-    public: static GameNotificationEvent* NULL_GAME_NOTIFICATION_EVENT() { static std::unique_ptr<GameNotificationEvent> value(new GameNotificationEvent(NullUtil::getInstance()->NULL_OBJECT, StringUtil::getInstance()->EMPTY_STRING, int32_t(0), BasicColorFactory::getInstance()->RED, BooleanFactory::getInstance()->FALSE)); return value.get(); }
+GameNotification::GameNotification() : stringList(new BasicArrayListD()), timeList(new BasicArrayListD()), colorList(new BasicArrayListD()) {
+        }
+        auto GameNotification::NULL_GAME_NOTIFICATION_EVENT_owner() -> GameNotificationEvent* { static std::unique_ptr<GameNotificationEvent> value(new GameNotificationEvent(NullUtil::getInstance()->NULL_OBJECT, StringUtil::getInstance()->EMPTY_STRING, int32_t(0), BasicColorFactory::getInstance()->RED, BooleanFactory::getInstance()->FALSE)); return value.get(); }
+GameNotificationEvent* GameNotification::NULL_GAME_NOTIFICATION_EVENT = GameNotification::NULL_GAME_NOTIFICATION_EVENT_owner();
 
-    public: BasicArrayList* stringList = new BasicArrayListD();
-
-    public: BasicArrayList* timeList = new BasicArrayListD();
-
-    public: BasicArrayList* colorList = new BasicArrayListD();
-
-    public: void add(std::string string, int32_t seconds, BasicColor* basicColor){
+    auto GameNotification::add(std::string string, int32_t seconds, BasicColor* basicColor) -> void{
 
                         if(!this->stringList->contains(string))
                         
@@ -100,7 +104,7 @@ this->colorList->add(basicColor);
 }
 
 
-    public: void clear(){
+    auto GameNotification::clear() -> void{
 this->stringList->clear();
     
 this->timeList->clear();
@@ -110,7 +114,7 @@ this->colorList->clear();
 }
 
 
-    public: int32_t getSize(){
+    auto GameNotification::getSize() -> int32_t{
 
 
 
@@ -120,7 +124,6 @@ this->colorList->clear();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NOTIFICATION_GAMENOTIFICATION_CPP

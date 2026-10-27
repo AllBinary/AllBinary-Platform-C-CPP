@@ -18,6 +18,12 @@
 
 
 
+        #ifndef ORG_ALLBINARY_UTIL_ABSTACK_CPP
+        #define ORG_ALLBINARY_UTIL_ABSTACK_CPP
+
+        #include "org/allbinary/util/ABStack.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,70 +57,77 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+
 template<typename E>
-class ABStack: public Stack<E> {
-
-    public: E push(E item){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.push(item);;
-    
-}
-
-
-    public: E pop(){
+ABStack<E>::ABStack() {
+        }
+        
+    template<typename E>
+auto ABStack<E>::push(E item) -> E{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.pop();;
+                        return Stack<E>::push(item);;
     
 }
 
 
-    public: E peek(){
+    template<typename E>
+auto ABStack<E>::pop() -> E{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.peek();;
+                        return Stack<E>::pop();;
     
 }
 
 
-    public: bool empty(){
+    template<typename E>
+auto ABStack<E>::peek() -> E{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.empty();;
+                        return Stack<E>::peek();;
     
 }
 
 
-    public: int32_t search(Object* obj){
+    template<typename E>
+auto ABStack<E>::empty() -> bool{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.search(obj);;
+                        return Stack<E>::empty();;
     
 }
 
 
-    public: bool removeElement(Object* obj){
+    template<typename E>
+auto ABStack<E>::search(Object* obj) -> int32_t{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.removeElement(obj);;
+                        return Stack<E>::search(obj);;
     
 }
 
 
-};
+    template<typename E>
+auto ABStack<E>::removeElement(Object* obj) -> bool{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Stack<E>::removeElement(obj);;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_UTIL_ABSTACK_CPP

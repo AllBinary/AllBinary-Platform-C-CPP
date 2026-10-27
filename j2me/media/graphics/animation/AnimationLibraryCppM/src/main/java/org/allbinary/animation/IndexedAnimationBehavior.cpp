@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_CPP
+        #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/IndexedAnimationBehavior.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -44,17 +54,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/AnimationBehavior.h"
 
-class IndexedAnimationBehavior: public AnimationBehavior {
 
-    public: int64_t frameDelayTime;
-
-    public: int32_t loopTotal;
-
-    public: int64_t elapsedTime= 0;
-
-    public: int32_t loopIndex= 0;
-
-public: IndexedAnimationBehavior(int32_t loopTotal, int64_t frameDelayTime){
+IndexedAnimationBehavior::IndexedAnimationBehavior(int32_t loopTotal, int64_t frameDelayTime){
 this->loopTotal= loopTotal;
     
 this->frameDelayTime= frameDelayTime;
@@ -62,13 +63,12 @@ this->frameDelayTime= frameDelayTime;
 }
 
 
-    public: void reset(){
+    auto IndexedAnimationBehavior::reset() -> void{
 this->loopIndex= 0;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_INDEXEDANIMATIONBEHAVIOR_CPP

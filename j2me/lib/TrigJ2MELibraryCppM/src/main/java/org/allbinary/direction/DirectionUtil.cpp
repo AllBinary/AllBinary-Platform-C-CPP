@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_CPP
+        #define ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/direction/DirectionUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -55,53 +65,46 @@
         #include "org/allbinary/direction/DirectionFactory.h"
 #include "org/allbinary/direction/Direction.h"
 
-class DirectionUtil
-            : public Object
-         {
+auto DirectionUtil::instance_owner() -> DirectionUtil* { static std::unique_ptr<DirectionUtil> value(new DirectionUtil()); return value.get(); }
+DirectionUtil* DirectionUtil::instance = DirectionUtil::instance_owner();
 
-    private: static DirectionUtil* instance() { static std::unique_ptr<DirectionUtil> value(new DirectionUtil()); return value.get(); }
-
-    public: static DirectionUtil* getInstance(){
+    auto DirectionUtil::getInstance() -> DirectionUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DirectionUtil::instance();
+                        return DirectionUtil::instance;
     
 }
 
 
-    private: std::vector<Angle*> directionArray = std::vector<Angle*>(10);
-
-    private: std::vector<Angle*> directionArray2 = std::vector<Angle*>(10);
-
-private: DirectionUtil(){
+DirectionUtil::DirectionUtil() : directionArray(std::vector<Angle*>(10)), directionArray2(std::vector<Angle*>(10)){
 
     AngleFactory* angleFactory = AngleFactory::getInstance();;
     
 
     DirectionFactory* directionFactory = DirectionFactory::getInstance();;
     
-this->directionArray[directionFactory->LEFT.getValue()]= angleFactory->LEFT;
+this->directionArray[directionFactory->LEFT->getValue()]= angleFactory->LEFT;
     
-this->directionArray[directionFactory->RIGHT.getValue()]= angleFactory->RIGHT;
+this->directionArray[directionFactory->RIGHT->getValue()]= angleFactory->RIGHT;
     
-this->directionArray[directionFactory->UP.getValue()]= angleFactory->UP;
+this->directionArray[directionFactory->UP->getValue()]= angleFactory->UP;
     
-this->directionArray[directionFactory->DOWN.getValue()]= angleFactory->DOWN;
+this->directionArray[directionFactory->DOWN->getValue()]= angleFactory->DOWN;
     
-this->directionArray2[directionFactory->LEFT.getValue()]= angleFactory->LEFT;
+this->directionArray2[directionFactory->LEFT->getValue()]= angleFactory->LEFT;
     
-this->directionArray2[directionFactory->RIGHT.getValue()]= angleFactory->RIGHT;
+this->directionArray2[directionFactory->RIGHT->getValue()]= angleFactory->RIGHT;
     
-this->directionArray2[directionFactory->UP.getValue()]= angleFactory->UP;
+this->directionArray2[directionFactory->UP->getValue()]= angleFactory->UP;
     
-this->directionArray2[directionFactory->DOWN.getValue()]= angleFactory->DOWN;
+this->directionArray2[directionFactory->DOWN->getValue()]= angleFactory->DOWN;
     
 }
 
 
-    public: Angle* getAngle(Direction* direction){
+    auto DirectionUtil::getAngle(Direction* direction) -> Angle*{
 
 
 
@@ -111,7 +114,7 @@ this->directionArray2[directionFactory->DOWN.getValue()]= angleFactory->DOWN;
 }
 
 
-    public: Angle* getFrameAngle(Direction* direction){
+    auto DirectionUtil::getFrameAngle(Direction* direction) -> Angle*{
 
 
 
@@ -121,7 +124,6 @@ this->directionArray2[directionFactory->DOWN.getValue()]= angleFactory->DOWN;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_CPP

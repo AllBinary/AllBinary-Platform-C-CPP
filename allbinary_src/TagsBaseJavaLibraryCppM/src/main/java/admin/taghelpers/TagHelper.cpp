@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_TAGHELPER_CPP
+        #define ADMIN_TAGHELPERS_TAGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/TagHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelperInterface.h"
 
-class TagHelper
-            : public Object
-        , public TagHelperInterface {
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+TagHelper::TagHelper() : commonStrings(CommonStrings::getInstance()) {
+        }
+        
 
-};
 
-            
-
+        #endif //ADMIN_TAGHELPERS_TAGHELPER_CPP

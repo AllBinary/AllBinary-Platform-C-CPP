@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,29 +37,13 @@
             #include "java/lang/Exception.h"
         
 #include <java/nio/channels/FileChannel.h>
-
-      
 #include <java/nio/channels/FileLock.h>
+class BasicArrayList;
+class BasicArrayListD;
 
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/io/AbFileOutputStream.h>
-
-      
-#include <org/allbinary/logic/io/StreamUtil.h>
-
-      
+class LogUtil;
+class AbFileOutputStream;
+class StreamUtil;
 
 
 
@@ -73,17 +62,22 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/logic/io/file/AbFile.h"
+        class AbFile;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FileLockUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static FileLockUtil* instance() { static std::unique_ptr<FileLockUtil> value(new FileLockUtil()); return value.get(); }
+    private: static FileLockUtil* instance_owner();
+    private: static FileLockUtil* instance;
 
     public: static FileLockUtil* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: FileLockUtil();
 
@@ -117,3 +111,35 @@ private: FileLockUtil();
 
 
         #endif //ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H_COMPLETE
+        #if __has_include(<java/nio/channels/FileChannel.h>)
+#include <java/nio/channels/FileChannel.h>
+#endif
+#if __has_include(<java/nio/channels/FileLock.h>)
+#include <java/nio/channels/FileLock.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/AbFileOutputStream.h>)
+#include <org/allbinary/logic/io/AbFileOutputStream.h>
+#endif
+#if __has_include(<org/allbinary/logic/io/StreamUtil.h>)
+#include <org/allbinary/logic/io/StreamUtil.h>
+#endif
+#if __has_include("org/allbinary/logic/io/file/AbFile.h")
+#include "org/allbinary/logic/io/file/AbFile.h"
+#endif
+
+        #endif
+    

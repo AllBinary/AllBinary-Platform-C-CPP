@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_CPP
+        #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/util/event/handler/BasicEventHandler.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -75,23 +85,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/util/event/handler/BasicEventHandlerInterface.h"
 
-class BasicEventHandler
-            : public Object
-        , public BasicEventHandlerInterface {
 
-    public: static inline const std::string PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: BasicArrayList* eventListenerInterfaceList;
-
-public: BasicEventHandler(){
+BasicEventHandler::BasicEventHandler() : logUtil(LogUtil::getInstance()){
 this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
-    public: std::string toString(){
+    auto BasicEventHandler::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -144,13 +145,13 @@ index++;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeAllListeners(){
+    auto BasicEventHandler::removeAllListeners() -> void{
 this->eventListenerInterfaceList= new BasicArrayListD();
     
 }
 
 
-    public: void addListenerSingleThreaded(EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::addListenerSingleThreaded(EventListenerInterface* eventListenerInterface) -> void{
 
                         if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
@@ -164,7 +165,7 @@ this->eventListenerInterfaceList= new BasicArrayListD();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addListenerInterface(EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::addListenerInterface(EventListenerInterface* eventListenerInterface) -> void{
 
                         if(!this->eventListenerInterfaceList->contains(eventListenerInterface))
                         
@@ -177,14 +178,14 @@ this->eventListenerInterfaceList= new BasicArrayListD();
 }
 
 
-    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface) -> void{
 this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->eventListenerInterfaceList->remove(eventListenerInterface);
     
 }
@@ -193,7 +194,7 @@ this->eventListenerInterfaceList->remove(eventListenerInterface);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto BasicEventHandler::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
     int32_t index = 0;;
     
@@ -229,13 +230,13 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto BasicEventHandler::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 eventListenerInterface->onEvent(eventObject);
     
 }
 
 
-    public: BasicArrayList* getEventListenerInterfaceListP(){
+    auto BasicEventHandler::getEventListenerInterfaceListP() -> BasicArrayList*{
 
 
 
@@ -245,7 +246,6 @@ eventListenerInterface->onEvent(eventObject);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_UTIL_EVENT_HANDLER_BASICEVENTHANDLER_CPP

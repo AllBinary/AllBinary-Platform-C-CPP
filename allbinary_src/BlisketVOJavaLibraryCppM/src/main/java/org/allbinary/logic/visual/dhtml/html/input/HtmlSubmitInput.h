@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLSUBMITINPUT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLSUBMITINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,8 +51,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
-#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
+class HtmlInputData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlSubmitInput: public HtmlValueInput {
 
 public: HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after);
@@ -58,3 +67,16 @@ public: HtmlSubmitInput(std::string before, std::string name, std::string value,
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLSUBMITINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLSUBMITINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLSUBMITINPUT_H_COMPLETE
+        #if __has_include("org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h")
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlValueInput.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h")
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
+#endif
+
+        #endif
+    

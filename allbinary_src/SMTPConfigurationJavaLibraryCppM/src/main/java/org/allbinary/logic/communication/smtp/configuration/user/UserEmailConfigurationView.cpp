@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONVIEW_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -87,19 +97,10 @@
 #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationMapping.h"
 #include "org/allbinary/logic/communication/smtp/configuration/user/UserEmailConfigurationData.h"
 
-class UserEmailConfigurationView
-            : public Object
-        , public DomNodeInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+UserEmailConfigurationView::UserEmailConfigurationView(Node* node) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: UserEmailConfigurationInterface* userEmailConfigurationInterface;
-
-public: UserEmailConfigurationView(Node* node){
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->EMAILLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->EMAILLOGGING))
                         
                                     {
                                     this->logUtil->putF(this->commonStrings->CONSTRUCTOR, this, this->commonStrings->CONSTRUCTOR);
@@ -123,13 +124,13 @@ this->userEmailConfigurationInterface->setUserEmailEventsConfigurationInterface(
 }
 
 
-public: UserEmailConfigurationView(UserEmailConfigurationInterface* userEmailConfigurationInterface){
+UserEmailConfigurationView::UserEmailConfigurationView(UserEmailConfigurationInterface* userEmailConfigurationInterface) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     
 }
 
 
-    public: UserEmailConfigurationInterface* getEmailConfigurationInterface(){
+    auto UserEmailConfigurationView::getEmailConfigurationInterface() -> UserEmailConfigurationInterface*{
 
 
 
@@ -141,7 +142,7 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto UserEmailConfigurationView::toXmlNode(Document* document) -> Node*{
 
     UserEmailConfigurationMapping* emailConfigurationMapping = new UserEmailConfigurationMapping(this->userEmailConfigurationInterface);;
     
@@ -171,7 +172,6 @@ node->appendChild(userEmailEventsConfigurationView->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATIONVIEW_CPP

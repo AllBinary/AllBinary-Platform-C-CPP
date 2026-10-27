@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -68,23 +78,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryTiledLayer: public Layer, public NamedInterface, public PaintableInterface {
 
-    private: int32_t cellWidth;
-
-    private: int32_t cellHeight;
-
-    private: int32_t halfWidth;
-
-    private: int32_t halfHeight;
-
-    private: int32_t halfCellWidth;
-
-    private: int32_t halfCellHeight;
-
-    private: int32_t dataId;
-
-public: AllBinaryTiledLayer(int32_t dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight) : Layer(0, 0){
+AllBinaryTiledLayer::AllBinaryTiledLayer(int32_t dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight) : Layer(0, 0){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -97,7 +92,7 @@ this->setLayerWidth(width);
     
 this->setLayerHeight(height);
     
-super.setPosition(0, 0, 0);
+Layer::setPosition(0, 0, 0);
     
 this->cellWidth= cellWidth;
     
@@ -114,7 +109,7 @@ this->halfCellHeight= (cellHeight>>1);
 }
 
 
-    public: void setCells(std::vector<std::vector<int32_t>> mapTwoDArray){
+    auto AllBinaryTiledLayer::setCells(std::vector<std::vector<int32_t>> mapTwoDArray) -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -134,7 +129,7 @@ stringBuffer->append(" columns: ");
     
 stringBuffer->appendint(this->getColumns());
     
-this->logUtil.putF(stringBuffer->toString(), this, "setCells");
+this->logUtil->putF(stringBuffer->toString(), this, "setCells");
     
 
     int32_t rows = this->getRows();;
@@ -165,7 +160,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: void updateCells(std::vector<std::vector<int32_t>> mapTwoDArray, int32_t fromTileId, int32_t toTileId){
+    auto AllBinaryTiledLayer::updateCells(std::vector<std::vector<int32_t>> mapTwoDArray, int32_t fromTileId, int32_t toTileId) -> void{
 
     int32_t rows = this->getRows();;
     
@@ -204,7 +199,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: std::string getName(){
+    auto AllBinaryTiledLayer::getName() -> std::string{
 
 
 
@@ -214,15 +209,15 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto AllBinaryTiledLayer::paint(Graphics* graphics) -> void{
 }
 
 
-    public: void paintThreed(Graphics* graphics){
+    auto AllBinaryTiledLayer::paintThreed(Graphics* graphics) -> void{
 }
 
 
-    public: int32_t getX2(){
+    auto AllBinaryTiledLayer::getX2() -> int32_t{
 
 
 
@@ -232,7 +227,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getY2(){
+    auto AllBinaryTiledLayer::getY2() -> int32_t{
 
 
 
@@ -242,7 +237,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getZ2(){
+    auto AllBinaryTiledLayer::getZ2() -> int32_t{
 
 
 
@@ -252,7 +247,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getCellWidth(){
+    auto AllBinaryTiledLayer::getCellWidth() -> int32_t{
 
 
 
@@ -262,7 +257,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getCellHeight(){
+    auto AllBinaryTiledLayer::getCellHeight() -> int32_t{
 
 
 
@@ -272,7 +267,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getCell(int32_t col, int32_t row){
+    auto AllBinaryTiledLayer::getCell(int32_t col, int32_t row) -> int32_t{
 
 
 
@@ -282,7 +277,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getColumns(){
+    auto AllBinaryTiledLayer::getColumns() -> int32_t{
 
 
 
@@ -292,7 +287,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getRows(){
+    auto AllBinaryTiledLayer::getRows() -> int32_t{
 
 
 
@@ -302,11 +297,11 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: void setCell(int32_t col, int32_t row, int32_t tileIndex){
+    auto AllBinaryTiledLayer::setCell(int32_t col, int32_t row, int32_t tileIndex) -> void{
 }
 
 
-    public: int32_t getHalfWidth(){
+    auto AllBinaryTiledLayer::getHalfWidth() -> int32_t{
 
 
 
@@ -316,7 +311,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getHalfHeight(){
+    auto AllBinaryTiledLayer::getHalfHeight() -> int32_t{
 
 
 
@@ -326,7 +321,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getDataId(){
+    auto AllBinaryTiledLayer::getDataId() -> int32_t{
 
 
 
@@ -336,7 +331,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getHalfCellWidth(){
+    auto AllBinaryTiledLayer::getHalfCellWidth() -> int32_t{
 
 
 
@@ -346,7 +341,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getHalfCellHeight(){
+    auto AllBinaryTiledLayer::getHalfCellHeight() -> int32_t{
 
 
 
@@ -356,7 +351,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: bool isOnTileLayer(int32_t column, int32_t row){
+    auto AllBinaryTiledLayer::isOnTileLayer(int32_t column, int32_t row) -> bool{
 
                         if(this->getColumns() > column && this->getRows() > row && row >= 0 && column >= 0)
                         
@@ -383,7 +378,7 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-    public: int32_t getAnimatedTile(int32_t animationTileIndex){
+    auto AllBinaryTiledLayer::getAnimatedTile(int32_t animationTileIndex) -> int32_t{
 
 
 
@@ -393,7 +388,6 @@ this->setCell(col, row, mapTwoDArray[row][col]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_CPP

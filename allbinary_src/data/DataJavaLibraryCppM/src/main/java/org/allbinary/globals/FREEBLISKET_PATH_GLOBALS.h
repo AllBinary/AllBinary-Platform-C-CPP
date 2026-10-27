@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
+class AbPathData;
+class StringMaker;
 
 
 
@@ -54,11 +55,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FREEBLISKET_PATH_GLOBALS
-            : public Object
+            : public virtual Object
          {
 
-    private: static FREEBLISKET_PATH_GLOBALS* instance() { static std::unique_ptr<FREEBLISKET_PATH_GLOBALS> value(new FREEBLISKET_PATH_GLOBALS()); return value.get(); }
+    private: static FREEBLISKET_PATH_GLOBALS* instance_owner();
+    private: static FREEBLISKET_PATH_GLOBALS* instance;
 
     public: static FREEBLISKET_PATH_GLOBALS* getInstance();
 
@@ -66,15 +72,15 @@ class FREEBLISKET_PATH_GLOBALS
 
     public: std::string XSLPATH;
 
-    public: const std::string TEMPLATEPATH = "template" +AbPathData::getInstance()->SEPARATOR;
+    public: const std::string TEMPLATEPATH;
 
-    public: const std::string STYLEPATH = this->TEMPLATEPATH +"style" +AbPathData::getInstance()->SEPARATOR;
+    public: const std::string STYLEPATH;
 
-    public: const std::string THEMEPATH = this->STYLEPATH +"theme" +AbPathData::getInstance()->SEPARATOR;
+    public: const std::string THEMEPATH;
 
-    public: const std::string DBINITPATH = PATH_GLOBALS::getInstance()->INIT_PATH +"db" +AbPathData::getInstance()->SEPARATOR;
+    public: const std::string DBINITPATH;
 
-    public: const std::string LINEDATAPATH = PATH_GLOBALS::getInstance()->INIT_PATH +"lineData" +AbPathData::getInstance()->SEPARATOR;
+    public: const std::string LINEDATAPATH;
 
     public: std::string CONFIGURATIONPATH;
 
@@ -94,3 +100,16 @@ private: FREEBLISKET_PATH_GLOBALS();
 
 
         #endif //ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_H_COMPLETE)
+        #define ORG_ALLBINARY_GLOBALS_FREEBLISKET_PATH_GLOBALS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/io/path/AbPathData.h>)
+#include <org/allbinary/logic/io/path/AbPathData.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEFEATURES_CPP
+        #define ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEFEATURES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/configuration/InGameFeatures.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -72,9 +82,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InGameFeatures: public Init {
 
-    public: void init(){
+InGameFeatures::InGameFeatures() {
+        }
+        
+    auto InGameFeatures::init() -> void{
 
     std::string LABEL = "Screen Buttons";;
     
@@ -153,7 +165,7 @@ inGameFeatureChoiceGroups->add(LABEL, exclusiveScreenButtonsVector);
 }
 
 
-    private: void addToInGameMenu(){
+    auto InGameFeatures::addToInGameMenu() -> void{
 
     OrientationData* orientationData = OrientationData::getInstance();;
     
@@ -169,7 +181,7 @@ InGameFeatureChoiceGroups::getExclusiveInstance()->add(orientationData->ORIENTAT
 }
 
 
-    public: bool isAny(){
+    auto InGameFeatures::isAny() -> bool{
 
     Features* features = Features::getInstance();;
     
@@ -216,7 +228,6 @@ InGameFeatureChoiceGroups::getExclusiveInstance()->add(orientationData->ORIENTAT
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEFEATURES_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/LogUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,31 +75,24 @@
 #include "org/allbinary/logic/communication/log/Log.h"
 #include "org/allbinary/logic/communication/log/PreLogUtil.h"
 //ActualPlatform
-/*actual*/ class LogUtil
-            : public Object
-         {
+auto LogUtil::instance_owner() -> LogUtil* { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
+LogUtil* LogUtil::instance = LogUtil::instance_owner();
 
-    private: static LogUtil* instance() { static std::unique_ptr<LogUtil> value(new LogUtil()); return value.get(); }
-
-    /*actual*/ public: static LogUtil* getInstance(){
+    /*actual*/ auto LogUtil::getInstance() -> LogUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil::instance();
+                        return LogUtil::instance;
     
 }
 
 
-    private: LogFormatUtil* logFormatUtil = LogFormatUtil::getInstance();
-
-    private: const std::string LOG_SUCCESS = "org.allbinary: ";
-
-private: LogUtil(){
+LogUtil::LogUtil() : logFormatUtil(LogFormatUtil::getInstance()){
 }
 
 
-    /*actual*/ public: void putL(Log* log){
+    /*actual*/ auto LogUtil::putL(Log* log) -> void{
 
                         if(log == 
                                     nullptr
@@ -122,7 +125,7 @@ this->put(specialMessage, anyType, functionName, exception);
 }
 
 
-    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
+    /*actual*/ auto LogUtil::putF(std::string specialMessage, Object* anyType, std::string functionName) -> void{
 
     std::string className = PreLogUtil::getClassName(anyType);;
     
@@ -141,24 +144,24 @@ this->put(specialMessage, anyType, functionName, exception);
 
     PlayN* playN = PlayN::getInstance();;
     
-playN->log()->debug(this->LOG_SUCCESS +message);
+playN->log()->debug(JavaString::valueOf(this->LOG_SUCCESS) +JavaString::valueOf(message));
     
 }
 
 
-    /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
+    /*actual*/ auto LogUtil::putFS(std::string specialMessage, std::string className, std::string functionName) -> void{
 
     std::string message = this->logFormatUtil->getS(className, functionName, specialMessage);;
     
 
     PlayN* playN = PlayN::getInstance();;
     
-playN->log()->debug(this->LOG_SUCCESS +message);
+playN->log()->debug(JavaString::valueOf(this->LOG_SUCCESS) +JavaString::valueOf(message));
     
 }
 
 
-    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+    /*actual*/ auto LogUtil::put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception) -> void{
 
     std::string className = PreLogUtil::getClassName(anyType);;
     
@@ -183,13 +186,13 @@ playN->log()->debug(this->LOG_SUCCESS +message);
                                 )
                         
                                     {
-                                    playN->log()->error(this->LOG_SUCCESS +message, dynamic_cast<Throwable*>(exception));
+                                    playN->log()->error(JavaString::valueOf(this->LOG_SUCCESS) +JavaString::valueOf(message), dynamic_cast<Throwable*>(exception));
     
 
                                     }
                                 
                         else {
-                            playN->log()->debug(this->LOG_SUCCESS +message);
+                            playN->log()->debug(JavaString::valueOf(this->LOG_SUCCESS) +JavaString::valueOf(message));
     
 
                         }
@@ -197,7 +200,6 @@ playN->log()->debug(this->LOG_SUCCESS +message);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_DBCONNECTIONINFO_CPP
+        #define ORG_ALLBINARY_BUSINESS_INIT_DB_DBCONNECTIONINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/init/db/DbConnectionInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,39 +65,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h"
 
-class DbConnectionInfo
-            : public Object
-        , public DatabaseConnectionInfoInterface {
 
-    private: std::string jdbcDriver;
-
-    private: std::string name;
-
-    private: std::string userName;
-
-    private: std::string password;
-
-    private: std::string schema;
-
-    private: std::string server;
-
-    private: std::string port;
-
-    private: std::string url;
-
-    private: std::string host;
-
-    private: const std::string SCHEMA_SEP = "://";
-
-    private: const std::string USER_NAME_KEY = "?user=";
-
-    private: const std::string PASSWORD_KEY = "&password=";
-
-public: DbConnectionInfo(){
+DbConnectionInfo::DbConnectionInfo(){
 }
 
 
-    private: void updateUrl(){
+    auto DbConnectionInfo::updateUrl() -> void{
 this->updateHost();
     
 
@@ -110,7 +93,7 @@ this->url= stringBuffer->toString();
 }
 
 
-    public: std::string getUrl(){
+    auto DbConnectionInfo::getUrl() -> std::string{
 
 
 
@@ -120,7 +103,7 @@ this->url= stringBuffer->toString();
 }
 
 
-    public: std::string getJdbcDriver(){
+    auto DbConnectionInfo::getJdbcDriver() -> std::string{
 
 
 
@@ -130,7 +113,7 @@ this->url= stringBuffer->toString();
 }
 
 
-    public: std::string getName(){
+    auto DbConnectionInfo::getName() -> std::string{
 
 
 
@@ -140,7 +123,7 @@ this->url= stringBuffer->toString();
 }
 
 
-    public: std::string getUserName(){
+    auto DbConnectionInfo::getUserName() -> std::string{
 
 
 
@@ -150,7 +133,7 @@ this->url= stringBuffer->toString();
 }
 
 
-    public: std::string getPassword(){
+    auto DbConnectionInfo::getPassword() -> std::string{
 
 
 
@@ -160,7 +143,7 @@ this->url= stringBuffer->toString();
 }
 
 
-    private: void updateHost(){
+    auto DbConnectionInfo::updateHost() -> void{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -190,7 +173,7 @@ this->host= stringBuffer->toString();
 }
 
 
-    public: std::string getHost(){
+    auto DbConnectionInfo::getHost() -> std::string{
 
 
 
@@ -200,7 +183,7 @@ this->host= stringBuffer->toString();
 }
 
 
-    public: std::string getSchema(){
+    auto DbConnectionInfo::getSchema() -> std::string{
 
 
 
@@ -210,7 +193,7 @@ this->host= stringBuffer->toString();
 }
 
 
-    public: std::string getServer(){
+    auto DbConnectionInfo::getServer() -> std::string{
 
 
 
@@ -220,7 +203,7 @@ this->host= stringBuffer->toString();
 }
 
 
-    public: std::string getPort(){
+    auto DbConnectionInfo::getPort() -> std::string{
 
 
 
@@ -230,13 +213,13 @@ this->host= stringBuffer->toString();
 }
 
 
-    public: void setJdbcDriver(std::string value){
+    auto DbConnectionInfo::setJdbcDriver(std::string value) -> void{
 this->jdbcDriver= value;
     
 }
 
 
-    public: void setName(std::string value){
+    auto DbConnectionInfo::setName(std::string value) -> void{
 this->name= value;
     
 this->updateUrl();
@@ -244,7 +227,7 @@ this->updateUrl();
 }
 
 
-    public: void setUserName(std::string value){
+    auto DbConnectionInfo::setUserName(std::string value) -> void{
 this->userName= value;
     
 this->updateUrl();
@@ -252,7 +235,7 @@ this->updateUrl();
 }
 
 
-    public: void setPassword(std::string value){
+    auto DbConnectionInfo::setPassword(std::string value) -> void{
 this->password= value;
     
 this->updateUrl();
@@ -260,7 +243,7 @@ this->updateUrl();
 }
 
 
-    public: void setSchema(std::string value){
+    auto DbConnectionInfo::setSchema(std::string value) -> void{
 this->schema= value;
     
 this->updateUrl();
@@ -268,7 +251,7 @@ this->updateUrl();
 }
 
 
-    public: void setServer(std::string value){
+    auto DbConnectionInfo::setServer(std::string value) -> void{
 this->server= value;
     
 this->updateUrl();
@@ -276,7 +259,7 @@ this->updateUrl();
 }
 
 
-    public: void setPort(std::string value){
+    auto DbConnectionInfo::setPort(std::string value) -> void{
 this->port= value;
     
 this->updateUrl();
@@ -284,7 +267,7 @@ this->updateUrl();
 }
 
 
-    public: std::string getUserNameKey(){
+    auto DbConnectionInfo::getUserNameKey() -> std::string{
 
 
 
@@ -294,7 +277,7 @@ this->updateUrl();
 }
 
 
-    public: std::string getPasswordKey(){
+    auto DbConnectionInfo::getPasswordKey() -> std::string{
 
 
 
@@ -304,7 +287,6 @@ this->updateUrl();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_INIT_DB_DBCONNECTIONINFO_CPP

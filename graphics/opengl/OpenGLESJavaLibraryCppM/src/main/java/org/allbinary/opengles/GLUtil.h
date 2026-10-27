@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_OPENGLES_GLUTIL_H
         #define ORG_ALLBINARY_OPENGLES_GLUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -34,17 +39,9 @@
             #include "java/lang/Math.h"
         
 #include <java/nio/Buffer.h>
-
-      
 #include <java/nio/ByteBuffer.h>
-
-      
 #include <java/nio/ByteOrder.h>
-
-      
 #include <java/nio/FloatBuffer.h>
-
-      
 
 
 
@@ -64,17 +61,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GLUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static GLUtil* instance() { static std::unique_ptr<GLUtil> value(new GLUtil()); return value.get(); }
+    private: static GLUtil* instance_owner();
+    private: static GLUtil* instance;
 
     public: static GLUtil* getInstance();
 
+
+            
+    public: GLUtil();
+        
     private: const int32_t BYTES_PER_FLOAT = 4;
 
-    public: FloatBuffer* NULL_FLOAT_BUFFER = ByteBuffer::allocateDirect(0)->asFloatBuffer();
+    public: FloatBuffer* NULL_FLOAT_BUFFER;
 
     public: FloatBuffer* makeFloatBuffer3(float p_a, float p_b, float p_c);
 
@@ -92,3 +98,22 @@ class GLUtil
 
 
         #endif //ORG_ALLBINARY_OPENGLES_GLUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_OPENGLES_GLUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_OPENGLES_GLUTIL_H_COMPLETE
+        #if __has_include(<java/nio/Buffer.h>)
+#include <java/nio/Buffer.h>
+#endif
+#if __has_include(<java/nio/ByteBuffer.h>)
+#include <java/nio/ByteBuffer.h>
+#endif
+#if __has_include(<java/nio/ByteOrder.h>)
+#include <java/nio/ByteOrder.h>
+#endif
+#if __has_include(<java/nio/FloatBuffer.h>)
+#include <java/nio/FloatBuffer.h>
+#endif
+
+        #endif
+    

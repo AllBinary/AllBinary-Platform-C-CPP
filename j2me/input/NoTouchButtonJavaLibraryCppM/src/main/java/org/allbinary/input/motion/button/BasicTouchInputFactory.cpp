@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/BasicTouchInputFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,13 +80,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 
-class BasicTouchInputFactory
-            : public Object
-         {
 
-    private: static inline Object* instance = NullUtil::getInstance()->NULL_OBJECT;
+BasicTouchInputFactory::BasicTouchInputFactory() : logUtil(LogUtil::getInstance()), SPECIAL_BUTTON_SIX(new TouchButtonInput(InputFactory::getInstance()->MAX -30, "Button 6")), SPECIAL_BUTTON_FIVE(new TouchButtonInput(InputFactory::getInstance()->MAX -31, "Button 5")), SPECIAL_BUTTON_FOUR(new TouchButtonInput(InputFactory::getInstance()->MAX -32, "Button 4")), SPECIAL_BUTTON_THREE(new TouchButtonInput(InputFactory::getInstance()->MAX -33, "Button 3")), SPECIAL_BUTTON_TWO(new TouchButtonInput(InputFactory::getInstance()->MAX -34, "Button 2")), SPECIAL_BUTTON_ONE(new TouchButtonInput(InputFactory::getInstance()->MAX -35, "Button 1")), UP(new TouchButtonInput(InputFactory::getInstance()->MAX -36, "Up Button")), LEFT(new TouchButtonInput(InputFactory::getInstance()->MAX -37, "Left Button")), RIGHT(new TouchButtonInput(InputFactory::getInstance()->MAX -38, "Right Button")), DOWN(new TouchButtonInput(InputFactory::getInstance()->MAX -39, "Down Button")), NONE(new TouchButtonInput(InputFactory::getInstance()->MAX -40, "No Button")), list(new BasicArrayListD()) {
+        }
+        Object* BasicTouchInputFactory::instance = NullUtil::getInstance()->NULL_OBJECT;
 
-    public: static BasicTouchInputFactory* getInstance(){
+    auto BasicTouchInputFactory::getInstance() -> BasicTouchInputFactory*{
 
                         if(BasicTouchInputFactory::instance == NullUtil::getInstance()->NULL_OBJECT)
                         
@@ -94,37 +103,9 @@ class BasicTouchInputFactory
     
 }
 
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: TouchButtonInput* SPECIAL_BUTTON_SIX = new TouchButtonInput(InputFactory::getInstance()->MAX -30, "Button 6");
-
-    public: TouchButtonInput* SPECIAL_BUTTON_FIVE = new TouchButtonInput(InputFactory::getInstance()->MAX -31, "Button 5");
-
-    public: TouchButtonInput* SPECIAL_BUTTON_FOUR = new TouchButtonInput(InputFactory::getInstance()->MAX -32, "Button 4");
-
-    public: TouchButtonInput* SPECIAL_BUTTON_THREE = new TouchButtonInput(InputFactory::getInstance()->MAX -33, "Button 3");
-
-    public: TouchButtonInput* SPECIAL_BUTTON_TWO = new TouchButtonInput(InputFactory::getInstance()->MAX -34, "Button 2");
-
-    public: TouchButtonInput* SPECIAL_BUTTON_ONE = new TouchButtonInput(InputFactory::getInstance()->MAX -35, "Button 1");
-
-    public: TouchButtonInput* UP = new TouchButtonInput(InputFactory::getInstance()->MAX -36, "Up Button");
-
-    public: TouchButtonInput* LEFT = new TouchButtonInput(InputFactory::getInstance()->MAX -37, "Left Button");
-
-    public: TouchButtonInput* RIGHT = new TouchButtonInput(InputFactory::getInstance()->MAX -38, "Right Button");
-
-    public: TouchButtonInput* DOWN = new TouchButtonInput(InputFactory::getInstance()->MAX -39, "Down Button");
-
-    public: TouchButtonInput* NONE = new TouchButtonInput(InputFactory::getInstance()->MAX -40, "No Button");
-
-    private: bool initialized = false;
-
-    private: BasicArrayList* list = new BasicArrayListD();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void init(InputToGameKeyMapping* inputToGameKeyMapping){
+    auto BasicTouchInputFactory::init(InputToGameKeyMapping* inputToGameKeyMapping) -> void{
 
                         if(!this->initialized)
                         
@@ -159,13 +140,13 @@ this->updateAllList(this->list, inputToGameKeyMapping);
 }
 
 
-    public: void updateAll(InputToGameKeyMapping* inputToGameKeyMapping){
+    auto BasicTouchInputFactory::updateAll(InputToGameKeyMapping* inputToGameKeyMapping) -> void{
 this->updateAllList(this->getList(), inputToGameKeyMapping);
     
 }
 
 
-    public: void updateAllList(BasicArrayList* list, InputToGameKeyMapping* inputToGameKeyMapping){
+    auto BasicTouchInputFactory::updateAllList(BasicArrayList* list, InputToGameKeyMapping* inputToGameKeyMapping) -> void{
 this->logUtil->putF((new StringMaker())->append(CommonLabels::getInstance()->START)->appendint(list->size())->toString(), this, "updateAll");
     
 
@@ -185,7 +166,7 @@ touchButtonInput->update(inputToGameKeyMapping);
 }
 
 
-    public: BasicArrayList* getList(){
+    auto BasicTouchInputFactory::getList() -> BasicArrayList*{
 
 
 
@@ -195,7 +176,6 @@ touchButtonInput->update(inputToGameKeyMapping);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASICTOUCHINPUTFACTORY_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERPARTIALCELLPOSITIONSUTIL_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERPARTIALCELLPOSITIONSUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/geographic/map/LayerPartialCellPositionsUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -62,25 +72,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LayerPartialCellPositionsUtil
-            : public Object
-         {
 
-    private: static LayerPartialCellPositionsUtil* instance() { static std::unique_ptr<LayerPartialCellPositionsUtil> value(new LayerPartialCellPositionsUtil()); return value.get(); }
-
-    public: static LayerPartialCellPositionsUtil* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerPartialCellPositionsUtil::instance();
-    
-}
-
+LayerPartialCellPositionsUtil::LayerPartialCellPositionsUtil() {
+        }
+        auto LayerPartialCellPositionsUtil::instance_owner() -> LayerPartialCellPositionsUtil* { static std::unique_ptr<LayerPartialCellPositionsUtil> value(new LayerPartialCellPositionsUtil()); return value.get(); }
+LayerPartialCellPositionsUtil* LayerPartialCellPositionsUtil::instance = LayerPartialCellPositionsUtil::instance_owner();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAll(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, BasicArrayList* reusableList){
+    auto LayerPartialCellPositionsUtil::getAll(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, BasicArrayList* reusableList) -> BasicArrayList*{
 reusableList->clear();
     
 
@@ -142,7 +142,7 @@ reusableList->clear();
 
                 //@Throws(Exception.constructor)
             
-    public: BasicArrayList* getAllDXY(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, int32_t dx, int32_t dy, BasicArrayList* reusableList){
+    auto LayerPartialCellPositionsUtil::getAllDXY(BasicGeographicMap* geographicMapInterface, AllBinaryLayer* layerInterface, int32_t dx, int32_t dy, BasicArrayList* reusableList) -> BasicArrayList*{
 reusableList->clear();
     
 
@@ -202,7 +202,16 @@ reusableList->clear();
 }
 
 
-};
+    auto LayerPartialCellPositionsUtil::getInstance() -> LayerPartialCellPositionsUtil*{
 
-            
 
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return LayerPartialCellPositionsUtil::instance;
+    
+}
+
+
+
+
+        #endif //ORG_ALLBINARY_GAME_LAYER_GEOGRAPHIC_MAP_LAYERPARTIALCELLPOSITIONSUTIL_CPP

@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_GENERATOR_IDGENERATORINTERFACE_H
         #define ORG_ALLBINARY_DATA_GENERATOR_IDGENERATORINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,8 +33,6 @@
 
         
 #include <java/io/IOException.h>
-
-      
 
 
 
@@ -49,7 +52,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class IdGeneratorInterface {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class IdGeneratorInterface
+            : public virtual Object
+         {
 
                 //@Throws(IOException.constructor)
             
@@ -61,3 +70,13 @@ class IdGeneratorInterface {
 
 
         #endif //ORG_ALLBINARY_DATA_GENERATOR_IDGENERATORINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DATA_GENERATOR_IDGENERATORINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_DATA_GENERATOR_IDGENERATORINTERFACE_H_COMPLETE
+        #if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+
+        #endif
+    

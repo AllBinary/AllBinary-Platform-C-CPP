@@ -7,6 +7,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_FILLANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_FILLANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -15,12 +20,8 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
+class Graphics;
+class BasicColor;
 
 
 
@@ -40,8 +41,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/IndexedAnimation.h"
-#include "org/allbinary/animation/AnimationBehavior.h"
+class AnimationBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class FillAnimation: public IndexedAnimation {
 
     private: std::vector<int32_t> pixelBuffer;
@@ -64,7 +69,7 @@ public: FillAnimation(std::vector<int32_t> pixelBuffer, int32_t width, int32_t h
 
     private: void updateModifiers();
 
-    protected: void paint(Graphics* g);
+    /*protected*/ public: void paint(Graphics* g);
 
 };
 
@@ -72,3 +77,22 @@ public: FillAnimation(std::vector<int32_t> pixelBuffer, int32_t width, int32_t h
 
 
         #endif //ORG_ALLBINARY_ANIMATION_FILLANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_FILLANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_FILLANIMATION_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimation.h")
+#include "org/allbinary/animation/IndexedAnimation.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+
+        #endif
+    

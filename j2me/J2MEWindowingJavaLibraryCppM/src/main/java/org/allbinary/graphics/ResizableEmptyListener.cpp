@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_RESIZABLEEMPTYLISTENER_CPP
+        #define ORG_ALLBINARY_GRAPHICS_RESIZABLEEMPTYLISTENER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/ResizableEmptyListener.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,15 +56,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/ResizableListenerInterface.h"
 
-class ResizableEmptyListener
-            : public Object
-        , public ResizableListenerInterface {
 
-    public: void onResizable(bool isResizable){
+ResizableEmptyListener::ResizableEmptyListener() {
+        }
+        
+    auto ResizableEmptyListener::onResizable(bool isResizable) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_RESIZABLEEMPTYLISTENER_CPP

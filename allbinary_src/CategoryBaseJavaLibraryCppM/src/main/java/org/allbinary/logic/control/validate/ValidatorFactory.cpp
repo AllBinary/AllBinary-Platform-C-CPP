@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORFACTORY_CPP
+        #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/control/validate/ValidatorFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ValidatorFactory
-            : public Object
-         {
 
-private: ValidatorFactory(){
+ValidatorFactory::ValidatorFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORFACTORY_CPP

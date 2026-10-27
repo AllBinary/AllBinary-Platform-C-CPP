@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/button/TouchButton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -86,11 +96,10 @@
         #include "org/allbinary/input/motion/button/TouchButtonInput.h"
 #include "org/allbinary/input/motion/button/TouchButtonResource.h"
 
-class TouchButton: public Paintable {
 
                 //@Throws(Exception.constructor)
             
-    public: static TouchButton* createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder){
+    auto TouchButton::createButton(TouchButtonInput* touchButtonInput, TouchButtonResource* touchButtonResource, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) -> TouchButton*{
 
 
 
@@ -100,33 +109,7 @@ class TouchButton: public Paintable {
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: TouchButtonInput* touchButtonInput;
-
-    private: Animation* animationInterface;
-
-    private: Animation* hintAnimationInterface;
-
-    protected: Rectangle* rawRectangle;
-
-    protected: int32_t xBorder;
-
-    protected: int32_t yBorder;
-
-    protected: Rectangle* rectangleP = RectangleFactory::SINGLETON;
-
-    protected: CellPosition* cellPositionP;
-
-    protected: int32_t animationX= 0;
-
-    protected: int32_t animationY= 0;
-
-    protected: int32_t hintAnimationY= 0;
-
-public: TouchButton(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder){
+TouchButton::TouchButton(TouchButtonInput* touchButtonInput, Animation* animationInterface, Animation* hintAnimationInterface, Rectangle* rawRectangle, CellPosition* cellPosition, int32_t xBorder, int32_t yBorder) : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()), rectangleP(RectangleFactory::SINGLETON){
 this->touchButtonInput= touchButtonInput;
     
 this->animationInterface= animationInterface;
@@ -148,19 +131,19 @@ this->logUtil->putF((new StringMaker())->append("Created: ")->append(this->toStr
 }
 
 
-    public: void paintHint(Graphics* graphics){
+    auto TouchButton::paintHint(Graphics* graphics) -> void{
 this->hintAnimationInterface->paintXY(graphics, this->animationX, this->hintAnimationY);
     
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto TouchButton::paint(Graphics* graphics) -> void{
 this->animationInterface->paintXY(graphics, this->animationX, this->animationY);
     
 }
 
 
-    protected: void updateRectangle(){
+    auto TouchButton::updateRectangle() -> void{
 
         try {
             
@@ -194,7 +177,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 }
 
 
-    public: CellPosition* getCellPosition(){
+    auto TouchButton::getCellPosition() -> CellPosition*{
 
 
 
@@ -204,7 +187,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 }
 
 
-    public: Rectangle* getRectangle(){
+    auto TouchButton::getRectangle() -> Rectangle*{
 
 
 
@@ -214,7 +197,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 }
 
 
-    public: TouchButtonInput* getTouchButtonInput(){
+    auto TouchButton::getTouchButtonInput() -> TouchButtonInput*{
 
 
 
@@ -224,7 +207,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "updateRectangle", &e);
 }
 
 
-    public: std::string toString(){
+    auto TouchButton::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -256,7 +239,6 @@ stringBuffer->appendint(this->yBorder);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTON_CPP

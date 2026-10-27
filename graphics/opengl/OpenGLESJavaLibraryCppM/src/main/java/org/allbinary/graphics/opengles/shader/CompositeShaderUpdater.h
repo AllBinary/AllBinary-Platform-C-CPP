@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -29,21 +34,11 @@
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/khronos/egl/EGLConfig.h>
-
-      
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
-#include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
+class EGLConfig;
+class GL10;
+class NullUtil;
+class StringUtil;
+class CommonSeps;
 
 
 
@@ -63,17 +58,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/opengles/shader/ShaderUpdater.h"
-#include "org/allbinary/graphics/opengles/shader/ShaderStrings.h"
+class ShaderStrings;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class CompositeShaderUpdater: public ShaderUpdater {
 
-    private: static CompositeShaderUpdater* instanceC() { static std::unique_ptr<CompositeShaderUpdater> value(new CompositeShaderUpdater(StringUtil::getInstance()->getArrayInstance(), StringUtil::getInstance()->getArrayInstance(), StringUtil::getInstance()->getArrayInstance(), NullUtil::getInstance()->NULL_INT_ARRAY)); return value.get(); }
+    private: static CompositeShaderUpdater* instanceC_owner();
+    private: static CompositeShaderUpdater* instanceC;
 
     public: static CompositeShaderUpdater* getInstance();
 
-    protected: CommonSeps* commonSeps = CommonSeps::getInstance();
+    /*protected*/ public: CommonSeps* commonSeps;
 
-    protected: ShaderStrings* shaderStrings = ShaderStrings::getInstance();
+    /*protected*/ public: ShaderStrings* shaderStrings;
 
     public: std::vector<int32_t> uniformBlockHandleArray;
 
@@ -99,3 +99,31 @@ public: CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/egl/EGLConfig.h>)
+#include <javax/microedition/khronos/egl/EGLConfig.h>
+#endif
+#if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include(<org/allbinary/logic/NullUtil.h>)
+#include <org/allbinary/logic/NullUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/ShaderUpdater.h")
+#include "org/allbinary/graphics/opengles/shader/ShaderUpdater.h"
+#endif
+#if __has_include("org/allbinary/graphics/opengles/shader/ShaderStrings.h")
+#include "org/allbinary/graphics/opengles/shader/ShaderStrings.h"
+#endif
+
+        #endif
+    

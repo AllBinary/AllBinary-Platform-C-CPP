@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTLISTENERINTERFACE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTLISTENERINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/GameKeyEventListenerInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,9 +56,8 @@
 #include "org/allbinary/game/input/event/UpGameKeyEventListenerInterface.h"
 #include "org/allbinary/game/input/event/PressGameKeyEventListenerInterface.h"
 
-class GameKeyEventListenerInterface: public DownGameKeyEventListenerInterface, public UpGameKeyEventListenerInterface, public PressGameKeyEventListenerInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENTLISTENERINTERFACE_CPP

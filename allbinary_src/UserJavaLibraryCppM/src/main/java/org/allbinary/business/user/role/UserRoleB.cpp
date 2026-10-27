@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEB_CPP
+        #define ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEB_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/user/role/UserRoleB.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,14 +73,24 @@
 #include "org/allbinary/business/user/role/BasicUserRole.h"
 #include "org/allbinary/business/user/role/UserRoleFactory.h"
 
-class UserRoleB: public UserRole {
+BasicArrayList* UserRoleB::roleVector = new BasicArrayListD();
 
-    public: static inline BasicArrayList* roleVector = new BasicArrayListD();
+UserRoleB::UserRoleB(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface) : UserRole(aBasicUserRole, aUserFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+UserRoleB::roleVector->add(this);
+    
+}
+
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: static UserRole* getRole(std::string role){
+    auto UserRoleB::getRole(std::string role) -> UserRole*{
 UserRoleFactory::getInstance();
     
 
@@ -114,12 +134,12 @@ UserRoleFactory::getInstance();
 
 
 
-                            throw new Exception("Unable to get role - Unknown Role = " +role);
+                            throw Exception(JavaString::valueOf("Unable to get role - Unknown Role = ") +JavaString::valueOf(role));
                     
 }
 
 
-    public: static BasicArrayList* getAll(){
+    auto UserRoleB::getAll() -> BasicArrayList*{
 UserRoleFactory::getInstance();
     
 
@@ -131,19 +151,6 @@ UserRoleFactory::getInstance();
 }
 
 
-protected: UserRoleB(BasicUserRole* aBasicUserRole, UserFactoryInterface* aUserFactoryInterface) : UserRole(aBasicUserRole, aUserFactoryInterface){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-UserRoleB::roleVector->add(this);
-    
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_USER_ROLE_USERROLEB_CPP

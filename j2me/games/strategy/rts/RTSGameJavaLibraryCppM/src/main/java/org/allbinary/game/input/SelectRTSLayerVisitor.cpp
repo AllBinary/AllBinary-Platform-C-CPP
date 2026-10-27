@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/SelectRTSLayerVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,13 +56,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SelectRTSLayerVisitor: public Visitor {
 
-public: SelectRTSLayerVisitor(){
+SelectRTSLayerVisitor::SelectRTSLayerVisitor(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITOR_CPP

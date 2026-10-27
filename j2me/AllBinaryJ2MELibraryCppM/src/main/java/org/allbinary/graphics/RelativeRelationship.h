@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_H
         #define ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,12 +34,8 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class BasicArrayList;
+class BasicArrayListUtil;
 
 
 
@@ -53,14 +54,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/graphics/PointFactory.h"
-#include "org/allbinary/graphics/GPoint.h"
+        class PointFactory;
+class GPoint;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RelativeRelationship
-            : public Object
+            : public virtual Object
          {
 
-    public: static RelativeRelationship* NULL_RELATIVE_RELATIONSHIP() { static std::unique_ptr<RelativeRelationship> value(new RelativeRelationship(PointFactory::getInstance()->ZERO_ZERO, BasicArrayListUtil::getInstance()->getImmutableInstance())); return value.get(); }
+    private: static RelativeRelationship* NULL_RELATIVE_RELATIONSHIP_owner();
+    public: static RelativeRelationship* NULL_RELATIVE_RELATIONSHIP;
 
     private: BasicArrayList* typesAllowedList;
 
@@ -88,3 +94,22 @@ public: RelativeRelationship(GPoint* point, BasicArrayList* typesAllowedList);
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_RELATIVERELATIONSHIP_H_COMPLETE
+        #if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/graphics/PointFactory.h")
+#include "org/allbinary/graphics/PointFactory.h"
+#endif
+#if __has_include("org/allbinary/graphics/GPoint.h")
+#include "org/allbinary/graphics/GPoint.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_BASICANIMATIONINTERFACEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_ANIMATION_BASICANIMATIONINTERFACEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -43,9 +53,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicAnimationInterfaceFactoryInterface {
+//Interface - declared in the header
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_BASICANIMATIONINTERFACEFACTORYINTERFACE_CPP

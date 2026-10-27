@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORCACHEFACTORY_CPP
+        #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORCACHEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/color/BasicColorCacheFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,36 +65,31 @@
         #include "org/allbinary/graphics/color/BasicColor.h"
 #include "org/allbinary/graphics/color/BasicColorFactory.h"
 
-class BasicColorCacheFactory
-            : public Object
-         {
+auto BasicColorCacheFactory::instance_owner() -> BasicColorCacheFactory* { static std::unique_ptr<BasicColorCacheFactory> value(new BasicColorCacheFactory()); return value.get(); }
+BasicColorCacheFactory* BasicColorCacheFactory::instance = BasicColorCacheFactory::instance_owner();
 
-    private: static BasicColorCacheFactory* instance() { static std::unique_ptr<BasicColorCacheFactory> value(new BasicColorCacheFactory()); return value.get(); }
-
-    public: static BasicColorCacheFactory* getInstance(){
+    auto BasicColorCacheFactory::getInstance() -> BasicColorCacheFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorCacheFactory::instance();
+                        return BasicColorCacheFactory::instance;
     
 }
 
 
-    private: ABHashtable<Object*, Object*>* hashtable = StdUtil::getInstance()->createHashtable();
-
-private: BasicColorCacheFactory(){
+BasicColorCacheFactory::BasicColorCacheFactory() : hashtable(StdUtil::getInstance()->createHashtable()){
 }
 
 
-    public: void add(BasicColor* basicDefaultColor){
+    auto BasicColorCacheFactory::add(BasicColor* basicDefaultColor) -> void{
 this->hashtable->put(int32_t(basicDefaultColor->intValue()), basicDefaultColor);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: BasicColor* getAndOrCreate(int32_t integer){
+    auto BasicColorCacheFactory::getAndOrCreate(int32_t integer) -> BasicColor*{
 
     BasicColor* basicColor = dynamic_cast<BasicColor*>(this->hashtable->get(integer));;
     
@@ -110,7 +115,6 @@ this->hashtable->put(integer, basicColor);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORCACHEFACTORY_CPP

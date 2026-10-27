@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/PlayerGameInputGameLayer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,11 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/AllBinaryGameLayer.h"
 
-class PlayerGameInputGameLayer: public AllBinaryGameLayer, public PlayerGameInputCompositeInterface {
 
-    private: PlayerGameInput* playerGameInput;
-
-public: PlayerGameInputGameLayer(int32_t playerInputId) : AllBinaryGameLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), new StaticViewPosition(0, 0, 0)){
+PlayerGameInputGameLayer::PlayerGameInputGameLayer(int32_t playerInputId) : AllBinaryGameLayer(StringUtil::getInstance()->EMPTY_STRING, new Rectangle(PointFactory::getInstance()->ZERO_ZERO, 0, 0), new StaticViewPosition(0, 0, 0)){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,12 +99,12 @@ this->playerGameInput= new PlayerGameInput(this->getGameKeyEventList(), new Basi
 
     CanvasStrings* canvasStrings = CanvasStrings::getInstance();;
     
-this->logUtil.putF("Danger Danger Danger: Should Not Be Called Except For Testing Input", this, canvasStrings->PAINT);
+this->logUtil->putF("Danger Danger Danger: Should Not Be Called Except For Testing Input", this, canvasStrings->PAINT);
     
 }
 
 
-    public: PlayerGameInput* getPlayerGameInput(){
+    auto PlayerGameInputGameLayer::getPlayerGameInput() -> PlayerGameInput*{
 
 
 
@@ -107,21 +114,20 @@ this->logUtil.putF("Danger Danger Danger: Should Not Be Called Except For Testin
 }
 
 
-    public: void initInputProcessors(){
+    auto PlayerGameInputGameLayer::initInputProcessors() -> void{
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void processInput(AllBinaryLayerManager* myManager){
+    auto PlayerGameInputGameLayer::processInput(AllBinaryLayerManager* myManager) -> void{
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto PlayerGameInputGameLayer::paint(Graphics* graphics) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PLAYERGAMEINPUTGAMELAYER_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/http/request/session/WeblisketSessionInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,61 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WeblisketSessionInterface {
+//Interface - declared in the header
 
-    public: virtual void clear() = 0;
 
-    public: virtual int32_t getAttempts() = 0;
 
-    public: virtual std::string getAuthentication() = 0;
-
-    public: virtual int64_t getCreationTime() = 0;
-
-    public: virtual std::string getId() = 0;
-
-    public: virtual int64_t getLastAccessedTime() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual OrderInterface* getOrder() = 0;
-
-    public: virtual std::string getPassword() = 0;
-
-    public: virtual std::string getPaymentMethod() = 0;
-
-                //@Throws(Exception.constructor)
-            
-    public: virtual UserRole* getRole() = 0;
-
-    public: virtual std::string getStoreName() = 0;
-
-    public: virtual std::string getTimeout() = 0;
-
-    public: virtual std::string getUserName() = 0;
-
-    public: virtual std::string getWebAppPath() = 0;
-
-    public: virtual void removeBasket() = 0;
-
-    public: virtual void setAttempts(int32_t value) = 0;
-
-    public: virtual void setAuthenticated() = 0;
-
-    public: virtual void setAuthenticated(bool value) = 0;
-
-    public: virtual void setPassword(std::string password) = 0;
-
-    public: virtual void setPaymentMethod(std::string value) = 0;
-
-    public: virtual void setRole(UserRole* aRole) = 0;
-
-    public: virtual void setStoreName(std::string value) = 0;
-
-    public: virtual void setTimeout(std::string value) = 0;
-
-    public: virtual void setUserName(std::string userName) = 0;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSIONINTERFACE_CPP

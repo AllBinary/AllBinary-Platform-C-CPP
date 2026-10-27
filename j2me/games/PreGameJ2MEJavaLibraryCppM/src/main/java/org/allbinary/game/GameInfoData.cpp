@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_GAMEINFODATA_CPP
+        #define ORG_ALLBINARY_GAME_GAMEINFODATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/GameInfoData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,39 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameInfoData
-            : public Object
-         {
+auto GameInfoData::instance_owner() -> GameInfoData* { static std::unique_ptr<GameInfoData> value(new GameInfoData()); return value.get(); }
+GameInfoData* GameInfoData::instance = GameInfoData::instance_owner();
 
-    private: static GameInfoData* instance() { static std::unique_ptr<GameInfoData> value(new GameInfoData()); return value.get(); }
-
-    public: static GameInfoData* getInstance(){
+    auto GameInfoData::getInstance() -> GameInfoData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInfoData::instance();
+                        return GameInfoData::instance;
     
 }
 
 
-private: GameInfoData(){
+GameInfoData::GameInfoData(){
 }
 
 
-    public: const std::string GAME_TYPE = "GAME_TYPE";
 
-    public: const std::string GAME_MODE = "GAME_MODE";
 
-    public: const std::string PLAYER_TYPE = "PLAYER_TYPE";
-
-    public: const std::string HIGHEST_LEVEL = "HIGHEST_LEVEL";
-
-    public: const std::string CURRENT_LEVEL = "CURRENT_LEVEL";
-
-    public: const std::string SOFTWARE_INFORMATION = "SOFTWARE_INFORMATION";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GAME_GAMEINFODATA_CPP

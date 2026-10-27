@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_CPP
+        #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thirdparty/store/ThirdPartyStoreFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,27 +57,23 @@
         #include "org/allbinary/thirdparty/store/NoThirdPartyStore.h"
 #include "org/allbinary/thirdparty/store/ThirdPartyStore.h"
 
-class ThirdPartyStoreFactory
-            : public Object
-         {
+auto ThirdPartyStoreFactory::instance_owner() -> NoThirdPartyStore* { static std::unique_ptr<NoThirdPartyStore> value(new NoThirdPartyStore()); return value.get(); }
+NoThirdPartyStore* ThirdPartyStoreFactory::instance = ThirdPartyStoreFactory::instance_owner();
 
-    private: static NoThirdPartyStore* instance() { static std::unique_ptr<NoThirdPartyStore> value(new NoThirdPartyStore()); return value.get(); }
-
-    public: static ThirdPartyStore* getInstance(){
+    auto ThirdPartyStoreFactory::getInstance() -> ThirdPartyStore*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThirdPartyStoreFactory::instance();
+                        return ThirdPartyStoreFactory::instance;
     
 }
 
 
-private: ThirdPartyStoreFactory(){
+ThirdPartyStoreFactory::ThirdPartyStoreFactory(){
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_CPP

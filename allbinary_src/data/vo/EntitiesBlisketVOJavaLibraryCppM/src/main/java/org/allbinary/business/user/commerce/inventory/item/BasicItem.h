@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -36,47 +41,19 @@
             #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
-
-      
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/business/entry/EntryData.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/Money.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/MoneyException.h>
-
-      
-#include <org/allbinary/data/generator/ProductIdGenerator.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class BasicArrayList;
+class BasicArrayListD;
+class EntryData;
+class Money;
+class MoneyException;
+class ProductIdGenerator;
+class StdUtil;
+class LogUtil;
+class StringUtil;
+class StringValidationUtil;
+class CommonPhoneStrings;
+class CommonStrings;
 
 
 
@@ -96,77 +73,81 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
-#include "org/allbinary/business/user/commerce/inventory/item/BasicItemData.h"
+class BasicItemData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class BasicItem
-            : public Object
+            : public virtual Object
         , public ItemInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: BasicItemData* basicItemData = BasicItemData::getInstance();
+    /*protected*/ public: BasicItemData* basicItemData;
 
-    protected: std::string itemId;
+    /*protected*/ public: std::string itemId;
 
-    protected: std::string number;
+    /*protected*/ public: std::string number;
 
-    protected: std::string inBaskets;
+    /*protected*/ public: std::string inBaskets;
 
-    protected: std::string weight;
+    /*protected*/ public: std::string weight;
 
-    protected: std::string enabled;
+    /*protected*/ public: std::string enabled;
 
-    protected: std::string newOrUsed;
+    /*protected*/ public: std::string newOrUsed;
 
-    protected: std::string summary;
+    /*protected*/ public: std::string summary;
 
-    protected: std::string distributor;
+    /*protected*/ public: std::string distributor;
 
-    protected: std::string idUsedByDistributor;
+    /*protected*/ public: std::string idUsedByDistributor;
 
-    protected: std::string producedBy;
+    /*protected*/ public: std::string producedBy;
 
-    protected: std::string productionDate;
+    /*protected*/ public: std::string productionDate;
 
-    protected: std::string startProductionDate;
+    /*protected*/ public: std::string startProductionDate;
 
-    protected: std::string description;
+    /*protected*/ public: std::string description;
 
-    protected: std::string keywords;
+    /*protected*/ public: std::string keywords;
 
-    protected: std::string category;
+    /*protected*/ public: std::string category;
 
-    protected: std::string type;
+    /*protected*/ public: std::string type;
 
-    protected: std::string smallImage;
+    /*protected*/ public: std::string smallImage;
 
-    protected: std::string mediumImage;
+    /*protected*/ public: std::string mediumImage;
 
-    protected: std::string largeImage;
+    /*protected*/ public: std::string largeImage;
 
-    protected: Money* price;
+    /*protected*/ public: Money* price;
 
-    protected: std::string comment;
+    /*protected*/ public: std::string comment;
 
-    protected: std::string customs;
+    /*protected*/ public: std::string customs;
 
     private: std::string downloads;
 
-    protected: std::string groups;
+    /*protected*/ public: std::string groups;
 
-    protected: std::string options;
+    /*protected*/ public: std::string options;
 
-    protected: std::string permissions;
+    /*protected*/ public: std::string permissions;
 
-    protected: std::string specials;
+    /*protected*/ public: std::string specials;
 
     private: bool downloadable= false;
 
-    protected: std::string timeEntered;
+    /*protected*/ public: std::string timeEntered;
 
-    protected: std::string lastModified;
+    /*protected*/ public: std::string lastModified;
 
 public: BasicItem(HashMap<Object*, Object*>* itemHashMap);
 
@@ -308,3 +289,58 @@ public: BasicItem();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEM_H_COMPLETE
+        #if __has_include(<java/util/Calendar.h>)
+#include <java/util/Calendar.h>
+#endif
+#if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListD.h>)
+#include <org/allbinary/util/BasicArrayListD.h>
+#endif
+#if __has_include(<org/allbinary/business/entry/EntryData.h>)
+#include <org/allbinary/business/entry/EntryData.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/Money.h>)
+#include <org/allbinary/business/user/commerce/money/Money.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/MoneyException.h>)
+#include <org/allbinary/business/user/commerce/money/MoneyException.h>
+#endif
+#if __has_include(<org/allbinary/data/generator/ProductIdGenerator.h>)
+#include <org/allbinary/data/generator/ProductIdGenerator.h>
+#endif
+#if __has_include(<org/allbinary/logic/StdUtil.h>)
+#include <org/allbinary/logic/StdUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringUtil.h>)
+#include <org/allbinary/logic/string/StringUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonPhoneStrings.h>)
+#include <org/allbinary/string/CommonPhoneStrings.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/item/ItemInterface.h")
+#include "org/allbinary/business/user/commerce/inventory/item/ItemInterface.h"
+#endif
+#if __has_include("org/allbinary/business/user/commerce/inventory/item/BasicItemData.h")
+#include "org/allbinary/business/user/commerce/inventory/item/BasicItemData.h"
+#endif
+
+        #endif
+    

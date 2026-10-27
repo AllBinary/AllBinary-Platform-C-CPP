@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYINTERFACE_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYINTERFACE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,21 +67,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/automation/module/JPanel.h"
 
-class InputAutomationModuleFactoryInterface
-            : public Object
-         {
 
-    public: std::string getName(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public: JPanel* getConfigurationJPanel(){
+InputAutomationModuleFactoryInterface::InputAutomationModuleFactoryInterface() {
+        }
+        
+    auto InputAutomationModuleFactoryInterface::getName() -> std::string{
 
 
 
@@ -81,7 +81,17 @@ class InputAutomationModuleFactoryInterface
 }
 
 
-    public: HelpSet* getHelpSet(){
+    auto InputAutomationModuleFactoryInterface::getConfigurationJPanel() -> JPanel*{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+    auto InputAutomationModuleFactoryInterface::getHelpSet() -> HelpSet*{
 
 
 
@@ -93,7 +103,7 @@ class InputAutomationModuleFactoryInterface
 
                 //@Throws(Exception.constructor)
             
-    public: RunnableInterface* getInstance(){
+    auto InputAutomationModuleFactoryInterface::getInstance() -> RunnableInterface*{
 
 
 
@@ -103,7 +113,6 @@ class InputAutomationModuleFactoryInterface
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULEFACTORYINTERFACE_CPP

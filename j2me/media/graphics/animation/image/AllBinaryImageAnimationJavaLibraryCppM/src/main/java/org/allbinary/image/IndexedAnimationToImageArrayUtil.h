@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_H
         #define ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -33,12 +38,8 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Image.h>
-
-      
-#include <org/allbinary/animation/IndexedAnimation.h>
-
-      
+class Image;
+class IndexedAnimation;
 
 
 
@@ -57,19 +58,43 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/image/AnimationFrameToImageUtil.h"
+        class AnimationFrameToImageUtil;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class IndexedAnimationToImageArrayUtil
-            : public Object
+            : public virtual Object
          {
 
                 //@Throws(Exception.constructor)
             
     public: static std::vector<Image*> getInstance(int32_t width, int32_t height, IndexedAnimation* sequentialAnimationInterface);
 
+
+            
+    public: IndexedAnimationToImageArrayUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Image.h>)
+#include <javax/microedition/lcdui/Image.h>
+#endif
+#if __has_include(<org/allbinary/animation/IndexedAnimation.h>)
+#include <org/allbinary/animation/IndexedAnimation.h>
+#endif
+#if __has_include("org/allbinary/image/AnimationFrameToImageUtil.h")
+#include "org/allbinary/image/AnimationFrameToImageUtil.h"
+#endif
+
+        #endif
+    

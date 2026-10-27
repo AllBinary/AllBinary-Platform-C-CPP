@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,15 +36,9 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class PrimitiveIntUtil;
+class CommonStrings;
 
 
 
@@ -60,17 +59,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/Animation.h"
 #include "org/allbinary/animation/IndexedAnimationInterface.h"
-#include "org/allbinary/animation/AnimationBehavior.h"
+class AnimationBehavior;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class IndexedAnimation: public Animation, public IndexedAnimationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
+    /*protected*/ public: CommonStrings* commonStrings;
 
-    protected: AnimationBehavior* animationBehaviorP;
+    /*protected*/ public: AnimationBehavior* animationBehaviorP;
 
-protected: IndexedAnimation(AnimationBehavior* animationBehavior);
+/*protected*/ public: IndexedAnimation(AnimationBehavior* animationBehavior);
 
     public: AnimationBehavior* getAnimationBehavior();
 
@@ -106,3 +109,28 @@ protected: IndexedAnimation(AnimationBehavior* animationBehavior);
 
 
         #endif //ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveIntUtil.h>)
+#include <org/allbinary/logic/math/PrimitiveIntUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/animation/Animation.h")
+#include "org/allbinary/animation/Animation.h"
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimationInterface.h")
+#include "org/allbinary/animation/IndexedAnimationInterface.h"
+#endif
+#if __has_include("org/allbinary/animation/AnimationBehavior.h")
+#include "org/allbinary/animation/AnimationBehavior.h"
+#endif
+
+        #endif
+    

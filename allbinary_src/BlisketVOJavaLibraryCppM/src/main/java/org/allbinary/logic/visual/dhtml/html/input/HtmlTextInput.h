@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLTEXTINPUT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLTEXTINPUT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,8 +53,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/visual/dhtml/html/input/HtmlLengthInput.h"
-#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
+class HtmlInputData;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class HtmlTextInput: public HtmlLengthInput {
 
 public: HtmlTextInput(std::string before, std::string name, std::string value, std::string after);
@@ -60,3 +69,16 @@ public: HtmlTextInput(std::string before, std::string name, std::string value, s
 
 
         #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLTEXTINPUT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLTEXTINPUT_H_COMPLETE)
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLTEXTINPUT_H_COMPLETE
+        #if __has_include("org/allbinary/logic/visual/dhtml/html/input/HtmlLengthInput.h")
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlLengthInput.h"
+#endif
+#if __has_include("org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h")
+#include "org/allbinary/logic/visual/dhtml/html/input/HtmlInputData.h"
+#endif
+
+        #endif
+    

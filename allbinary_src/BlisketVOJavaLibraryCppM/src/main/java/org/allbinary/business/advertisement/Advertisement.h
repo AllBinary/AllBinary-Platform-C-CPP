@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,21 +34,11 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/business/advertisement/image/AdvertisementImageInterface.h>
-
-      
-#include <org/allbinary/business/advertisement/product/AdvertisementProductInterface.h>
-
-      
-#include <org/allbinary/business/advertisement/thumbnail/AdvertisementThumbnailInterface.h>
-
-      
-#include <org/allbinary/business/user/commerce/money/Money.h>
-
-      
-#include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>
-
-      
+class AdvertisementImageInterface;
+class AdvertisementProductInterface;
+class AdvertisementThumbnailInterface;
+class Money;
+class DisplayInBrowserContraintsInterface;
 
 
 
@@ -64,8 +59,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/business/advertisement/AdvertisementInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Advertisement
-            : public Object
+            : public virtual Object
         , public AdvertisementInterface {
 
     private: std::string artist;
@@ -152,3 +151,28 @@ public: Advertisement();
 
 
         #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H_COMPLETE)
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H_COMPLETE
+        #if __has_include(<org/allbinary/business/advertisement/image/AdvertisementImageInterface.h>)
+#include <org/allbinary/business/advertisement/image/AdvertisementImageInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/product/AdvertisementProductInterface.h>)
+#include <org/allbinary/business/advertisement/product/AdvertisementProductInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/advertisement/thumbnail/AdvertisementThumbnailInterface.h>)
+#include <org/allbinary/business/advertisement/thumbnail/AdvertisementThumbnailInterface.h>
+#endif
+#if __has_include(<org/allbinary/business/user/commerce/money/Money.h>)
+#include <org/allbinary/business/user/commerce/money/Money.h>
+#endif
+#if __has_include(<org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>)
+#include <org/allbinary/logic/control/contraints/display/browser/DisplayInBrowserContraintsInterface.h>
+#endif
+#if __has_include("org/allbinary/business/advertisement/AdvertisementInterface.h")
+#include "org/allbinary/business/advertisement/AdvertisementInterface.h"
+#endif
+
+        #endif
+    

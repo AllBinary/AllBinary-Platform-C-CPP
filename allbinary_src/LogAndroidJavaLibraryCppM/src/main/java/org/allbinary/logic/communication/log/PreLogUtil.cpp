@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/log/PreLogUtil.h"
+        
+
             #include <hilog/log.h>
         
             #include <cstdint>
@@ -54,22 +64,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/log/Log.h"
 //ActualPlatform
-/*actual*/ class PreLogUtil
-            : public Object
-         {
 
-            static const char* PUBLIC = "%{public}s";
-            
+PreLogUtil::PreLogUtil(){
+}
 
-    /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName){
+
+    /*actual*/ auto PreLogUtil::put(std::string specialMessage, Object* anyType, std::string functionName) -> void{
 PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
 
-    private: static inline const std::string LABEL = "org.allbinary";
-
-    /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+    /*actual*/ auto PreLogUtil::putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception) -> void{
 
     std::string className = PreLogUtil::LABEL;;
     
@@ -88,31 +94,26 @@ PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance()
 
     std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-android.util.Log.i(PreLogUtil::LABEL, message);
+android.util->Log->i(PreLogUtil::LABEL, message);
     
 }
 
 
-    /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName){
+    /*actual*/ auto PreLogUtil::putS(std::string specialMessage, std::string className, std::string functionName) -> void{
 PreLogUtil::putSE(specialMessage, className, functionName, NullUtil::getInstance()->NULL_OBJECT);
     
 }
 
 
-    /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception){
+    /*actual*/ auto PreLogUtil::putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception) -> void{
 
     std::string message = LogFormatUtil::getInstance()->get(className, functionName, specialMessage, exception);;
     
-hilog.info(0x0000, className, PreLogUtil.PUBLIC, message);
+android.util->Log->i(className, message);
     
 }
 
 
-public: PreLogUtil(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_CPP

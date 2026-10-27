@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGN_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGN_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaign.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -59,19 +69,14 @@
         #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignInterface.h"
 #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignData.h"
 
-class AdvertisementCampaign
-            : public Object
-        , public AdvertisementCampaignInterface {
 
-    private: HashMap<Object*, Object*>* hashMap;
-
-public: AdvertisementCampaign(HashMap<Object*, Object*>* hashMap){
+AdvertisementCampaign::AdvertisementCampaign(HashMap<Object*, Object*>* hashMap){
 this->hashMap= hashMap;
     
 }
 
 
-    public: Object* getComponent(){
+    auto AdvertisementCampaign::getComponent() -> Object*{
 
 
 
@@ -81,7 +86,7 @@ this->hashMap= hashMap;
 }
 
 
-    public: std::string getName(){
+    auto AdvertisementCampaign::getName() -> std::string{
 
 
 
@@ -91,19 +96,19 @@ this->hashMap= hashMap;
 }
 
 
-    public: void setComponentName(std::string name){
+    auto AdvertisementCampaign::setComponentName(std::string name) -> void{
 this->hashMap->put(DynamicObjectData::NAME, name);
     
 }
 
 
-    public: void setName(std::string name){
+    auto AdvertisementCampaign::setName(std::string name) -> void{
 this->hashMap->put(AdvertisementCampaignData::getInstance()->NAME, name);
     
 }
 
 
-    public: AdvertisementsInterface* search(AdvertisementSearchInterface* advertisementSearchInterface){
+    auto AdvertisementCampaign::search(AdvertisementSearchInterface* advertisementSearchInterface) -> AdvertisementsInterface*{
 
 
 
@@ -113,7 +118,6 @@ this->hashMap->put(AdvertisementCampaignData::getInstance()->NAME, name);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGN_CPP

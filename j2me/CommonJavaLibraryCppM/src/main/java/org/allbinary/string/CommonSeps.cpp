@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_STRING_COMMONSEPS_CPP
+        #define ORG_ALLBINARY_STRING_COMMONSEPS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/string/CommonSeps.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,75 +67,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CommonSeps
-            : public Object
-         {
 
-    private: static CommonSeps* instance() { static std::unique_ptr<CommonSeps> value(new CommonSeps()); return value.get(); }
+CommonSeps::CommonSeps() : COLON_SEP((new StringMaker())->append(this->COLON)->append(this->SPACE)->toString()), COMMA_SEP((new StringMaker())->append(this->COMMA)->append(this->SPACE)->toString()) {
+        }
+        auto CommonSeps::instance_owner() -> CommonSeps* { static std::unique_ptr<CommonSeps> value(new CommonSeps()); return value.get(); }
+CommonSeps* CommonSeps::instance = CommonSeps::instance_owner();
 
-    public: static CommonSeps* getInstance(){
+    auto CommonSeps::getInstance() -> CommonSeps*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonSeps::instance();
+                        return CommonSeps::instance;
     
 }
 
 
-    public: const std::string NEW_LINE = "\n";
 
-    public: const std::string SEMICOLON = ";";
 
-    public: const std::string EQUALS = "=";
-
-    public: const std::string SPACE = " ";
-
-    public: const std::string COMMA = ",";
-
-    public: const std::string COLON = ":";
-
-    public: const std::string PERIOD = ".";
-
-    public: const std::string UNDERSCORE = "_";
-
-    public: const std::string COLON_SEP = (new StringMaker())->append(this->COLON)->append(this->SPACE)->toString();
-
-    public: const std::string COMMA_SEP = (new StringMaker())->append(this->COMMA)->append(this->SPACE)->toString();
-
-    public: const std::string PARENTHESIS_OPEN = "(";
-
-    public: const std::string PARENTHESIS_CLOSE = ")";
-
-    public: const std::string BRACE_OPEN = "{";
-
-    public: const std::string BRACE_CLOSE = "}";
-
-    public: const std::string BRACKET_OPEN = "[";
-
-    public: const std::string BRACKET_CLOSE = "]";
-
-    public: const std::string DASH = "-";
-
-    public: const std::string PERCENT = "%";
-
-    public: const std::string AMPERSAND = "&";
-
-    public: const std::string FORWARD_SLASH = "/";
-
-    public: const std::string BACK_SLASH = "\\";
-
-    public: const std::string QUESTION = "?";
-
-    public: const std::string QUOTE = "\"";
-
-    public: const std::string QUOTE_END = "\",";
-
-    public: const std::string COMMENT = "//";
-
-    public: const std::string INDENT = "    ";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_STRING_COMMONSEPS_CPP

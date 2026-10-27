@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PAINT_MAINGAMEDEMOSTATEPAINTABLE_CPP
+        #define ORG_ALLBINARY_GAME_PAINT_MAINGAMEDEMOSTATEPAINTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/paint/MainGameDemoStatePaintable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -49,13 +59,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MainGameDemoStatePaintable: public Paintable {
 
-    private: Paintable* ownershipPaintableInterface;
-
-    private: Paintable* menuPaintableInterface;
-
-public: MainGameDemoStatePaintable(Paintable* ownershipPaintableInterface, Paintable* menuPaintableInterface){
+MainGameDemoStatePaintable::MainGameDemoStatePaintable(Paintable* ownershipPaintableInterface, Paintable* menuPaintableInterface){
 this->ownershipPaintableInterface= ownershipPaintableInterface;
     
 this->menuPaintableInterface= menuPaintableInterface;
@@ -63,7 +68,7 @@ this->menuPaintableInterface= menuPaintableInterface;
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto MainGameDemoStatePaintable::paint(Graphics* graphics) -> void{
 this->menuPaintableInterface->paint(graphics);
     
 this->ownershipPaintableInterface->paint(graphics);
@@ -71,7 +76,7 @@ this->ownershipPaintableInterface->paint(graphics);
 }
 
 
-    public: Paintable* getOwnershipPaintableInterface(){
+    auto MainGameDemoStatePaintable::getOwnershipPaintableInterface() -> Paintable*{
 
 
 
@@ -81,7 +86,7 @@ this->ownershipPaintableInterface->paint(graphics);
 }
 
 
-    public: Paintable* getMenuPaintableInterface(){
+    auto MainGameDemoStatePaintable::getMenuPaintableInterface() -> Paintable*{
 
 
 
@@ -91,7 +96,6 @@ this->ownershipPaintableInterface->paint(graphics);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PAINT_MAINGAMEDEMOSTATEPAINTABLE_CPP

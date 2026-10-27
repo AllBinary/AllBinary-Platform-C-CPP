@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLE_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/WaypointPathRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,24 +68,21 @@
         #include "org/allbinary/game/layer/WaypointPathRunnableBase.h"
 #include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 
-class WaypointPathRunnable: public WaypointPathRunnableBase {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: WaypointPathRunnable(){
+WaypointPathRunnable::WaypointPathRunnable() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: void run(){
+    auto WaypointPathRunnable::run() -> void{
 
         try {
-            this->pathFindingLayer.getWaypointRunnableLogHelper()->start(this->pathFindingLayer);
+            this->pathFindingLayer->getWaypointRunnableLogHelper()->start(this->pathFindingLayer);
     
 
-    WaypointBehaviorBase* waypointBehavior = this->pathFindingLayer.getWaypointBehavior();;
+    WaypointBehaviorBase* waypointBehavior = this->pathFindingLayer->getWaypointBehavior();;
     
 
-    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
+    GeographicMapCellPosition* geographicMapCellPosition = this->pathFindingLayer->getCurrentGeographicMapCellPosition();;
     
 
                         if(geographicMapCellPosition == 
@@ -86,14 +93,14 @@ public: WaypointPathRunnable(){
                                     
 
 
-                            throw new Exception("Should never be running here");
+                            throw Exception("Should never be running here");
                     
 
                                     }
                                 
-waypointBehavior->setWaypointPathsList(this->targetPathFindingLayer.getWaypointBehavior()->getWaypoint()->getPathsListRunnable(geographicMapCellPosition));
+waypointBehavior->setWaypointPathsList(this->targetPathFindingLayer->getWaypointBehavior()->getWaypoint()->getPathsListRunnable(geographicMapCellPosition));
     
-this->pathFindingLayer.getWaypointRunnableLogHelper()->end(this->pathFindingLayer);
+this->pathFindingLayer->getWaypointRunnableLogHelper()->end(this->pathFindingLayer);
     
 Thread::sleep(15 +(this->priorityP *2));
     
@@ -113,7 +120,7 @@ this->setRunning(false);
 }
 
 
-    public: bool isDone(){
+    auto WaypointPathRunnable::isDone() -> bool{
 
 
 
@@ -123,7 +130,6 @@ this->setRunning(false);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLE_CPP

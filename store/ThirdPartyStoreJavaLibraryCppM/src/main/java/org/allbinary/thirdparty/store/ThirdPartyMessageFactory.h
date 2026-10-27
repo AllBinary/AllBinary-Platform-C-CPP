@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_H
         #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThirdPartyMessageFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThirdPartyMessageFactory* instance() { static std::unique_ptr<ThirdPartyMessageFactory> value(new ThirdPartyMessageFactory()); return value.get(); }
+    private: static ThirdPartyMessageFactory* instance_owner();
+    private: static ThirdPartyMessageFactory* instance;
 
     public: static ThirdPartyMessageFactory* getInstance();
 
+
+            
+    public: ThirdPartyMessageFactory();
+        
     public: const std::string AUTHORIZED = "Authorized";
 
     public: const std::string NOT_AUTHORIZED = "Not Authorized";
@@ -68,3 +82,10 @@ class ThirdPartyMessageFactory
 
 
         #endif //ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYMESSAGEFACTORY_H_COMPLETE
+        
+        #endif
+    

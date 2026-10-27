@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_CPP
+        #define ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/j2me/GraphicsException.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,13 +63,8 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GraphicsException: public java::lang::Exception {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: GuiLog* guiLog = GuiLog::getInstance();
-
-public: GraphicsException(std::string msg, Object* obj, std::string method) : java::lang::Exception(msg){
+GraphicsException::GraphicsException(std::string msg, Object* obj, std::string method) : java::lang::Exception(msg), logUtil(LogUtil::getInstance()), guiLog(GuiLog::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,7 +86,7 @@ this->logUtil->put(msg, obj, method, this);
 }
 
 
-public: GraphicsException(std::string msg, std::string className, std::string method) : java::lang::Exception(msg){
+GraphicsException::GraphicsException(std::string msg, std::string className, std::string method) : java::lang::Exception(msg), logUtil(LogUtil::getInstance()), guiLog(GuiLog::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -103,7 +108,6 @@ this->logUtil->put(msg, className, method, this);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_CPP

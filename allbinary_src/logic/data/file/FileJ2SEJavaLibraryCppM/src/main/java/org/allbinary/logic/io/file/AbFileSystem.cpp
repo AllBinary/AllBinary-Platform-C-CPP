@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_CPP
+        #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/io/file/AbFileSystem.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -70,27 +80,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //FileJ2SE should be the same as J2SEForJ2ME
-class AbFileSystem
-            : public Object
-         {
 
-    private: static AbFileSystem* instance() { static std::unique_ptr<AbFileSystem> value(new AbFileSystem()); return value.get(); }
+AbFileSystem::AbFileSystem() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()) {
+        }
+        auto AbFileSystem::instance_owner() -> AbFileSystem* { static std::unique_ptr<AbFileSystem> value(new AbFileSystem()); return value.get(); }
+AbFileSystem* AbFileSystem::instance = AbFileSystem::instance_owner();
 
-    public: static AbFileSystem* getInstance(){
+    auto AbFileSystem::getInstance() -> AbFileSystem*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileSystem::instance();
+                        return AbFileSystem::instance;
     
 }
 
 
-    private: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    public: bool isDirectoryOrFile(std::string path){
+    auto AbFileSystem::isDirectoryOrFile(std::string path) -> bool{
 
     File* file = new File(path);;
     
@@ -103,7 +109,7 @@ class AbFileSystem
 }
 
 
-    public: bool isDirectory(std::string path){
+    auto AbFileSystem::isDirectory(std::string path) -> bool{
 
 
 
@@ -113,7 +119,7 @@ class AbFileSystem
 }
 
 
-    public: std::vector<std::string> getFilesAsStringArrayForPath(std::string currentDirPath){
+    auto AbFileSystem::getFilesAsStringArrayForPath(std::string currentDirPath) -> std::vector<std::string>{
 
     File* file = new File(currentDirPath);;
     
@@ -143,7 +149,7 @@ class AbFileSystem
 }
 
 
-    public: std::string readAsString(std::string fileName){
+    auto AbFileSystem::readAsString(std::string fileName) -> std::string{
 
     std::vector<int8_t> bytes = std::vector<int8_t>(1000000);;
     
@@ -156,7 +162,7 @@ class AbFileSystem
 }
 
 
-    public: std::string readAsString(std::string fileName, std::vector<int8_t> bytes){
+    auto AbFileSystem::readAsString(std::string fileName, std::vector<int8_t> bytes) -> std::string{
 
     Object* closeable = NullUtil::getInstance()->NULL_OBJECT;;
     
@@ -178,7 +184,7 @@ closeable= idFile;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return String.fromCharCode(...bytes);
+                        return JavaString::fromChars(bytes, 0, size);
     
 
                                     }
@@ -206,7 +212,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "readAsString", &e);
 }
 
 
-    public: bool close(Object* closeable){
+    auto AbFileSystem::close(Object* closeable) -> bool{
 
         try {
             
@@ -246,7 +252,6 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->CL
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_CPP

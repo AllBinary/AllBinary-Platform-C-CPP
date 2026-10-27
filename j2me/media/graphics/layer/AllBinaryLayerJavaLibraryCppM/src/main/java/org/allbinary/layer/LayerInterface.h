@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERINTERFACE_H
         #define ORG_ALLBINARY_LAYER_LAYERINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <org/allbinary/game/identification/GroupInterfaceCompositeInterface.h>
-
-      
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
 
 
 
@@ -54,6 +55,10 @@
         #include "org/allbinary/layer/NamedInterface.h"
 #include "org/allbinary/layer/PositionInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LayerInterface: public NamedInterface, public PaintableInterface, public GroupInterfaceCompositeInterface, public PositionInterface {
 
     public: virtual int32_t getHeight() = 0;
@@ -98,3 +103,22 @@ class LayerInterface: public NamedInterface, public PaintableInterface, public G
 
 
         #endif //ORG_ALLBINARY_LAYER_LAYERINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_LAYER_LAYERINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_LAYER_LAYERINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/game/identification/GroupInterfaceCompositeInterface.h>)
+#include <org/allbinary/game/identification/GroupInterfaceCompositeInterface.h>
+#endif
+#if __has_include(<org/allbinary/graphics/paint/PaintableInterface.h>)
+#include <org/allbinary/graphics/paint/PaintableInterface.h>
+#endif
+#if __has_include("org/allbinary/layer/NamedInterface.h")
+#include "org/allbinary/layer/NamedInterface.h"
+#endif
+#if __has_include("org/allbinary/layer/PositionInterface.h")
+#include "org/allbinary/layer/PositionInterface.h"
+#endif
+
+        #endif
+    

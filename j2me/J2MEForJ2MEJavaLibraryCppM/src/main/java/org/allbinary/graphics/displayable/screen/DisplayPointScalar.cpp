@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_DISPLAYPOINTSCALAR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_DISPLAYPOINTSCALAR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/displayable/screen/DisplayPointScalar.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,33 +58,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DisplayPointScalar
-            : public Object
-         {
 
-    private: static DisplayPointScalar* instance() { static std::unique_ptr<DisplayPointScalar> value(new DisplayPointScalar()); return value.get(); }
+DisplayPointScalar::DisplayPointScalar() {
+        }
+        auto DisplayPointScalar::instance_owner() -> DisplayPointScalar* { static std::unique_ptr<DisplayPointScalar> value(new DisplayPointScalar()); return value.get(); }
+DisplayPointScalar* DisplayPointScalar::instance = DisplayPointScalar::instance_owner();
 
-    public: static DisplayPointScalar* getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisplayPointScalar::instance();
-    
-}
-
-
-    public: int32_t processX(int32_t value){
+    auto DisplayPointScalar::getInstance() -> DisplayPointScalar*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return value;
+                        return DisplayPointScalar::instance;
     
 }
 
 
-    public: int32_t processY(int32_t value){
+    auto DisplayPointScalar::processX(int32_t value) -> int32_t{
 
 
 
@@ -84,7 +84,17 @@ class DisplayPointScalar
 }
 
 
-    public: GPoint* process(GPoint* point){
+    auto DisplayPointScalar::processY(int32_t value) -> int32_t{
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return value;
+    
+}
+
+
+    auto DisplayPointScalar::process(GPoint* point) -> GPoint*{
 
 
 
@@ -94,7 +104,6 @@ class DisplayPointScalar
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_DISPLAYPOINTSCALAR_CPP

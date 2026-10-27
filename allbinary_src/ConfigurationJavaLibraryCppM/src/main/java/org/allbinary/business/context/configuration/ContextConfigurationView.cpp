@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONVIEW_CPP
+        #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/context/configuration/ContextConfigurationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -74,13 +84,8 @@
 #include "org/allbinary/business/context/configuration/ContextConfiguration.h"
 #include "org/allbinary/business/context/configuration/ContextConfigurationData.h"
 
-class ContextConfigurationView
-            : public Object
-        , public DomNodeInterface {
 
-    private: ContextConfigurationInterface* contextConfigurationInterface;
-
-public: ContextConfigurationView(Node* node){
+ContextConfigurationView::ContextConfigurationView(Node* node){
 
     NodeList* childNodeList = node->getChildNodes();;
     
@@ -97,13 +102,13 @@ this->contextConfigurationInterface->setEmailServerConfigurationInterface(dynami
 }
 
 
-public: ContextConfigurationView(ContextConfigurationInterface* contextConfigurationInterface){
+ContextConfigurationView::ContextConfigurationView(ContextConfigurationInterface* contextConfigurationInterface){
 this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
-    public: ContextConfigurationInterface* getContextConfigurationInterface(){
+    auto ContextConfigurationView::getContextConfigurationInterface() -> ContextConfigurationInterface*{
 
 
 
@@ -115,7 +120,7 @@ this->contextConfigurationInterface= contextConfigurationInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto ContextConfigurationView::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(ContextConfigurationData::getInstance()->NAME);;
     
@@ -133,7 +138,6 @@ node->appendChild(emailServerConfigurationView->toXmlNode(document));
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONVIEW_CPP

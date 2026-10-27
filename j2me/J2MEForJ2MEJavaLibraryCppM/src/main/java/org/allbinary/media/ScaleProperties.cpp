@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_CPP
+        #define ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/ScaleProperties.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,23 +61,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ScaleProperties
-            : public Object
-         {
 
-    public: static ScaleProperties* instance() { static std::unique_ptr<ScaleProperties> value(new ScaleProperties()); return value.get(); }
+ScaleProperties::ScaleProperties() {
+        }
+        auto ScaleProperties::instance_owner() -> ScaleProperties* { static std::unique_ptr<ScaleProperties> value(new ScaleProperties()); return value.get(); }
+ScaleProperties* ScaleProperties::instance = ScaleProperties::instance_owner();
 
-    public: float scaleX = 1.0;
-
-    public: float scaleY = 1.0;
-
-    public: int32_t scaleWidth= 0;
-
-    public: int32_t scaleHeight= 0;
-
-    public: bool shouldScale= false;
-
-    public: std::string toString(){
+    auto ScaleProperties::toString() -> std::string{
 
 
 
@@ -77,7 +77,6 @@ class ScaleProperties
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_CPP

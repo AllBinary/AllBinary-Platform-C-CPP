@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITIONBASE_H
         #define ORG_ALLBINARY_VIEW_VIEWPOSITIONBASE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -30,8 +35,6 @@
             #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
-
-      
 
 
 
@@ -51,11 +54,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ViewPositionBase: public GPoint {
 
-    public: static ViewPositionBase* NULL_VIEW_POSITION() { static std::unique_ptr<ViewPositionBase> value(new ViewPositionBase(0, 0, 0)); return value.get(); }
+    private: static ViewPositionBase* NULL_VIEW_POSITION_owner();
+    public: static ViewPositionBase* NULL_VIEW_POSITION;
 
-protected: ViewPositionBase(int32_t x, int32_t y, int32_t z);
+/*protected*/ public: ViewPositionBase(int32_t x, int32_t y, int32_t z);
 
     public: int32_t getX2();
 
@@ -64,6 +72,7 @@ protected: ViewPositionBase(int32_t x, int32_t y, int32_t z);
     public: int32_t getZ2();
 
     public: void setAllbinaryLayer(Object* allbinaryLayer);
+    public: void setAllbinaryLayer(const std::string& allbinaryLayer) { return setAllbinaryLayer(JavaString::box(allbinaryLayer)); }
 
 };
 
@@ -71,3 +80,13 @@ protected: ViewPositionBase(int32_t x, int32_t y, int32_t z);
 
 
         #endif //ORG_ALLBINARY_VIEW_VIEWPOSITIONBASE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_VIEW_VIEWPOSITIONBASE_H_COMPLETE)
+        #define ORG_ALLBINARY_VIEW_VIEWPOSITIONBASE_H_COMPLETE
+        #if __has_include(<org/allbinary/graphics/GPoint.h>)
+#include <org/allbinary/graphics/GPoint.h>
+#endif
+
+        #endif
+    

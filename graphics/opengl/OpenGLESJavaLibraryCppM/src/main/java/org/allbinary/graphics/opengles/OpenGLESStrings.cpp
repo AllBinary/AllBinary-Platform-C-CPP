@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLESSTRINGS_CPP
+        #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLESSTRINGS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/opengles/OpenGLESStrings.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -60,114 +70,113 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OpenGLESStrings
-            : public Object
-         {
+
+OpenGLESStrings::OpenGLESStrings() {
+        }
+        
+                //@Throws(Exception.constructor)
+            
+    auto OpenGLESStrings::set(GL10* gl) -> void{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    auto OpenGLESStrings::initFont(GL10* gl, int32_t width, int32_t height) -> void{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: void set(GL10* gl){
+    auto OpenGLESStrings::update(GL10* gl, int32_t width, int32_t height) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void initFont(GL10* gl, int32_t width, int32_t height){
+    auto OpenGLESStrings::drawChar(GL10* gl, Graphics* graphics, char character, int32_t x, int32_t y, int32_t anchor) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-                //@Throws(Exception.constructor)
-            
-    public: void update(GL10* gl, int32_t width, int32_t height){
+    auto OpenGLESStrings::drawChars(GL10* gl, Graphics* graphics, std::vector<char> data, int32_t offset, int32_t length, int32_t x, int32_t y, int32_t anchor) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void drawChar(GL10* gl, Graphics* graphics, char character, int32_t x, int32_t y, int32_t anchor){
+    auto OpenGLESStrings::drawString(GL10* gl, Graphics* graphics, std::string string, int32_t x, int32_t y, int32_t anchor) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void drawChars(GL10* gl, Graphics* graphics, std::vector<char> data, int32_t offset, int32_t length, int32_t x, int32_t y, int32_t anchor){
+    auto OpenGLESStrings::drawSubstring(GL10* gl, Graphics* graphics, std::string string, int32_t offset, int32_t len, int32_t x, int32_t y, int32_t anchor) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void drawString(GL10* gl, Graphics* graphics, std::string string, int32_t x, int32_t y, int32_t anchor){
+    auto OpenGLESStrings::charWidth(char ch) -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void drawSubstring(GL10* gl, Graphics* graphics, std::string string, int32_t offset, int32_t len, int32_t x, int32_t y, int32_t anchor){
+    auto OpenGLESStrings::charsWidth(std::vector<char> ch, int32_t offset, int32_t length) -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t charWidth(char ch){
+    auto OpenGLESStrings::stringWidth(std::string string) -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t charsWidth(std::vector<char> ch, int32_t offset, int32_t length){
+    auto OpenGLESStrings::stringWidth(std::string string, int32_t offset, int32_t len) -> int32_t{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: int32_t stringWidth(std::string string){
 
 
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public: int32_t stringWidth(std::string string, int32_t offset, int32_t len){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLESSTRINGS_CPP

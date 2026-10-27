@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GLOBALS_GLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_GLOBALS_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,24 +36,12 @@
         
             #include "java/lang/ClassLoader.h"
         
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <org/allbinary/logic/string/StringValidationUtil.h>
-
-      
-#include <org/allbinary/logic/system/loader/WebappClassLoaderInfo.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class LogUtil;
+class StringMaker;
+class StringValidationUtil;
+class WebappClassLoaderInfo;
+class CommonSeps;
+class CommonStrings;
 
 
 
@@ -67,18 +60,23 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/globals/AppUrlGlobals.h"
-#include "org/allbinary/globals/URLGLOBALS.h"
+        class AppUrlGlobals;
+class URLGLOBALS;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Globals
-            : public Object
+            : public virtual Object
          {
 
-    private: static Globals* instance() { static std::unique_ptr<Globals> value(new Globals()); return value.get(); }
+    private: static Globals* instance_owner();
+    private: static Globals* instance;
 
     public: static Globals* getInstance();
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 private: Globals();
 
@@ -90,3 +88,34 @@ private: Globals();
 
 
         #endif //ORG_ALLBINARY_GLOBALS_GLOBALS_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GLOBALS_GLOBALS_H_COMPLETE)
+        #define ORG_ALLBINARY_GLOBALS_GLOBALS_H_COMPLETE
+        #if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringMaker.h>)
+#include <org/allbinary/logic/string/StringMaker.h>
+#endif
+#if __has_include(<org/allbinary/logic/string/StringValidationUtil.h>)
+#include <org/allbinary/logic/string/StringValidationUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/loader/WebappClassLoaderInfo.h>)
+#include <org/allbinary/logic/system/loader/WebappClassLoaderInfo.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonSeps.h>)
+#include <org/allbinary/string/CommonSeps.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("org/allbinary/globals/AppUrlGlobals.h")
+#include "org/allbinary/globals/AppUrlGlobals.h"
+#endif
+#if __has_include("org/allbinary/globals/URLGLOBALS.h")
+#include "org/allbinary/globals/URLGLOBALS.h"
+#endif
+
+        #endif
+    

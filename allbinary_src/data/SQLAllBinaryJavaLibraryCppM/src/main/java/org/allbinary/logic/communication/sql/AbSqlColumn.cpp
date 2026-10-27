@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLCOLUMN_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLCOLUMN_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/sql/AbSqlColumn.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,21 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/sql/AbSqlTable.h"
 
-class AbSqlColumn: public AbSqlTable {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: const std::string LARGEST_INT_VALUE_IN_COLUMN = "\nLargest Int Value in column: ";
-
-    private: const std::string METHOD_GET_LARGETS_INTEGER_IN_COLUMN = "getLargestIntegerInColumn";
-
-    private: const std::string METHOD_GET_COLUMN = "getColumn";
-
-    private: const std::string METHOD_GET_COLUMN_WHERE = "getColumnWhere";
-
-    private: const std::string INVALID_RESULT = "-1";
-
-public: AbSqlColumn(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlTable(databaseConnectionInfoInterface){
+AbSqlColumn::AbSqlColumn(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlTable(databaseConnectionInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -90,27 +87,27 @@ public: AbSqlColumn(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlTa
 }
 
 
-    public: std::string getLargestIntegerInColumnWhere(std::string columnName, std::string key, std::string value){
+    auto AbSqlColumn::getLargestIntegerInColumnWhere(std::string columnName, std::string key, std::string value) -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.SELECT);
+stringBuffer->append(this->sqlStrings->SELECT);
     
 stringBuffer->append(columnName);
     
-stringBuffer->append(this->sqlStrings.FROM);
+stringBuffer->append(this->sqlStrings->FROM);
     
 stringBuffer->append(this->getTableName());
     
-stringBuffer->append(this->sqlStrings.WHERE);
+stringBuffer->append(this->sqlStrings->WHERE);
     
 stringBuffer->append(key);
     
-stringBuffer->append(this->sqlStrings.EQUAL_QUOTE);
+stringBuffer->append(this->sqlStrings->EQUAL_QUOTE);
     
 stringBuffer->append(value);
     
-stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
+stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
     std::string sqlStatement = stringBuffer->toString();;
@@ -144,12 +141,12 @@ stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
     std::string largestAsString = (int32_t(largest)).toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
-stringBuffer->append(this->sqlStrings.SQL_STATEMENT_LABEL);
+stringBuffer->append(this->sqlStrings->SQL_STATEMENT_LABEL);
     
 stringBuffer->append(sqlStatement);
     
@@ -173,10 +170,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_LARGETS_INT
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_GET_LARGETS_INTEGER_IN_COLUMN, &e);
+                                    this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_GET_LARGETS_INTEGER_IN_COLUMN, &e);
     
 
                                     }
@@ -192,18 +189,18 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_LARGETS_INT
 }
 
 
-    public: BasicArrayList* getColumn(std::string columnName){
+    auto AbSqlColumn::getColumn(std::string columnName) -> BasicArrayList*{
 
     BasicArrayList* column = new BasicArrayListD();;
     
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.SELECT);
+stringBuffer->append(this->sqlStrings->SELECT);
     
 stringBuffer->append(columnName);
     
-stringBuffer->append(this->sqlStrings.FROM);
+stringBuffer->append(this->sqlStrings->FROM);
     
 stringBuffer->append(this->getTableName());
     
@@ -226,16 +223,16 @@ column->add(field);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
-stringBuffer->append(this->sqlStrings.SQL_STATEMENT_LABEL);
+stringBuffer->append(this->sqlStrings->SQL_STATEMENT_LABEL);
     
 stringBuffer->append(sqlStatement);
     
-stringBuffer->append(this->sqlStrings.COLUMN_VALUE);
+stringBuffer->append(this->sqlStrings->COLUMN_VALUE);
     
 stringBuffer->append(column->toString());
     
@@ -255,10 +252,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_GET_COLUMN, &e);
+                                    this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, METHOD_GET_COLUMN, &e);
     
 
                                     }
@@ -274,27 +271,27 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN);
 }
 
 
-    public: BasicArrayList* getColumnWhere(std::string columnName, std::string key, std::string value){
+    auto AbSqlColumn::getColumnWhere(std::string columnName, std::string key, std::string value) -> BasicArrayList*{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->sqlStrings.SELECT);
+stringBuffer->append(this->sqlStrings->SELECT);
     
 stringBuffer->append(columnName);
     
-stringBuffer->append(this->sqlStrings.FROM);
+stringBuffer->append(this->sqlStrings->FROM);
     
 stringBuffer->append(this->getTableName());
     
-stringBuffer->append(this->sqlStrings.WHERE);
+stringBuffer->append(this->sqlStrings->WHERE);
     
 stringBuffer->append(key);
     
-stringBuffer->append(this->sqlStrings.EQUAL_QUOTE);
+stringBuffer->append(this->sqlStrings->EQUAL_QUOTE);
     
 stringBuffer->append(value);
     
-stringBuffer->append(this->sqlStrings.CLOSE_QUOTE);
+stringBuffer->append(this->sqlStrings->CLOSE_QUOTE);
     
 
     std::string sqlStatement = stringBuffer->toString();;
@@ -322,16 +319,16 @@ column->add(field);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGING))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGING))
                         
                                     {
-                                    stringBuffer->delete(0, stringBuffer->length());
+                                    stringBuffer->delete_(0, stringBuffer->length());
     
-stringBuffer->append(this->sqlStrings.SQL_STATEMENT_LABEL);
+stringBuffer->append(this->sqlStrings->SQL_STATEMENT_LABEL);
     
 stringBuffer->append(sqlStatement);
     
-stringBuffer->append(this->sqlStrings.COLUMN_VALUE);
+stringBuffer->append(this->sqlStrings->COLUMN_VALUE);
     
 stringBuffer->append(column->toString());
     
@@ -351,10 +348,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN_WHER
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLLOGGINGERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLLOGGINGERROR))
                         
                                     {
-                                    this->logUtil->put(this->FAILED_SQL_STATEMENT +sqlStatement, this, this->METHOD_GET_COLUMN_WHERE, &e);
+                                    this->logUtil->put(JavaString::valueOf(this->FAILED_SQL_STATEMENT) +JavaString::valueOf(sqlStatement), this, this->METHOD_GET_COLUMN_WHERE, &e);
     
 
                                     }
@@ -370,7 +367,6 @@ this->logUtil->putF(stringBuffer->toString(), this, this->METHOD_GET_COLUMN_WHER
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLCOLUMN_CPP

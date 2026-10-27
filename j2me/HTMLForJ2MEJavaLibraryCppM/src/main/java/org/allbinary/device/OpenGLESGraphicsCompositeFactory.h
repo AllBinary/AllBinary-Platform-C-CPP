@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSCOMPOSITEFACTORY_H
         #define ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSCOMPOSITEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +52,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/device/OpenGLESGraphicsFactory.h"
+        class OpenGLESGraphicsFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class OpenGLESGraphicsCompositeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static OpenGLESGraphicsCompositeFactory* instance() { static std::unique_ptr<OpenGLESGraphicsCompositeFactory> value(new OpenGLESGraphicsCompositeFactory()); return value.get(); }
+    private: static OpenGLESGraphicsCompositeFactory* instance_owner();
+    private: static OpenGLESGraphicsCompositeFactory* instance;
 
     public: static OpenGLESGraphicsCompositeFactory* getInstance();
 
-    private: OpenGLESGraphicsFactory* openGLESGraphicsFactory = new OpenGLESGraphicsFactory();
+
+            
+    public: OpenGLESGraphicsCompositeFactory();
+        
+    private: OpenGLESGraphicsFactory* openGLESGraphicsFactory;
 
     public: void set(OpenGLESGraphicsFactory* openGLESGraphicsFactory);
 
@@ -69,3 +83,13 @@ class OpenGLESGraphicsCompositeFactory
 
 
         #endif //ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSCOMPOSITEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSCOMPOSITEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICSCOMPOSITEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/device/OpenGLESGraphicsFactory.h")
+#include "org/allbinary/device/OpenGLESGraphicsFactory.h"
+#endif
+
+        #endif
+    

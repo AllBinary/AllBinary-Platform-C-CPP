@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -49,18 +54,39 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/input/GameInputProcessor.h"
-#include "org/allbinary/game/input/InputFactory.h"
+        class GameInputProcessor;
+class InputFactory;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class GameInputProcessorUtil
-            : public Object
+            : public virtual Object
          {
 
     public: static void init(std::vector<GameInputProcessor*> inputProcessorArray);
 
+
+            
+    public: GameInputProcessorUtil();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_H_COMPLETE
+        #if __has_include("org/allbinary/game/input/GameInputProcessor.h")
+#include "org/allbinary/game/input/GameInputProcessor.h"
+#endif
+#if __has_include("org/allbinary/game/input/InputFactory.h")
+#include "org/allbinary/game/input/InputFactory.h"
+#endif
+
+        #endif
+    

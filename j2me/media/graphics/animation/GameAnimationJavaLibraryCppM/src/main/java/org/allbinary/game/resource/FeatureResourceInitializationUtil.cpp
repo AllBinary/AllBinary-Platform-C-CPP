@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_RESOURCE_FEATURERESOURCEINITIALIZATIONUTIL_CPP
+        #define ORG_ALLBINARY_GAME_RESOURCE_FEATURERESOURCEINITIALIZATIONUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/resource/FeatureResourceInitializationUtil.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -58,27 +68,25 @@
         #include "org/allbinary/game/resource/FeaturedResourceFactory.h"
 #include "org/allbinary/game/resource/FeaturedResourceRelativeRelationshipFactory.h"
 
-class FeatureResourceInitializationUtil
-            : public Object
-         {
 
-    private: static FeatureResourceInitializationUtil* instance() { static std::unique_ptr<FeatureResourceInitializationUtil> value(new FeatureResourceInitializationUtil()); return value.get(); }
+FeatureResourceInitializationUtil::FeatureResourceInitializationUtil() : logUtil(LogUtil::getInstance()) {
+        }
+        auto FeatureResourceInitializationUtil::instance_owner() -> FeatureResourceInitializationUtil* { static std::unique_ptr<FeatureResourceInitializationUtil> value(new FeatureResourceInitializationUtil()); return value.get(); }
+FeatureResourceInitializationUtil* FeatureResourceInitializationUtil::instance = FeatureResourceInitializationUtil::instance_owner();
 
-    public: static FeatureResourceInitializationUtil* getInstance(){
+    auto FeatureResourceInitializationUtil::getInstance() -> FeatureResourceInitializationUtil*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeatureResourceInitializationUtil::instance();
+                        return FeatureResourceInitializationUtil::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
                 //@Throws(Exception.constructor)
             
-    public: void init(int32_t level){
+    auto FeatureResourceInitializationUtil::init(int32_t level) -> void{
 
     CommonStrings* commonStrings = CommonStrings::getInstance();;
     
@@ -94,7 +102,6 @@ FeaturedResourceRelativeRelationshipFactory::getInstance()->init(level);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_RESOURCE_FEATURERESOURCEINITIALIZATIONUTIL_CPP

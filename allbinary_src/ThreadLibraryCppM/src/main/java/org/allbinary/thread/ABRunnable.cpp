@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_THREAD_ABRUNNABLE_CPP
+        #define ORG_ALLBINARY_THREAD_ABRUNNABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/thread/ABRunnable.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,18 +58,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/thread/RunnableInterface.h"
 
-class ABRunnable
-            : public Object
-        , public RunnableInterface {
 
-    private: bool running = false;
-
-    public: void setThread(Thread* thread){
+ABRunnable::ABRunnable() {
+        }
+        
+    auto ABRunnable::setThread(Thread* thread) -> void{
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: bool isRunning(){
+    auto ABRunnable::isRunning() -> bool{
 
 
 
@@ -70,17 +78,17 @@ class ABRunnable
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void setRunning(bool running){
+    auto ABRunnable::setRunning(bool running) -> void{
 this->running= running;
     
 }
 
 
-    public: void run(){
+    auto ABRunnable::run() -> void{
 }
 
 
-    public: int32_t getType(){
+    auto ABRunnable::getType() -> int32_t{
 
 
 
@@ -90,7 +98,6 @@ this->running= running;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_THREAD_ABRUNNABLE_CPP

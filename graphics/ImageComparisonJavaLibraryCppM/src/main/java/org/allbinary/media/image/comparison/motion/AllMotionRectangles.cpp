@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_ALLMOTIONRECTANGLES_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_ALLMOTIONRECTANGLES_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/comparison/motion/AllMotionRectangles.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -63,11 +73,8 @@
 #include "org/allbinary/media/image/comparison/motion/MotionRectangle.h"
 #include "org/allbinary/media/image/comparison/motion/Rectangle.h"
 
-class AllMotionRectangles: public MotionRectangles {
 
-    private: static inline const std::string NAME = "allMotionRectangles_";
-
-public: AllMotionRectangles(ImageComparisonResult* imageComparisonResult) : MotionRectangles(NAME, imageComparisonResult){
+AllMotionRectangles::AllMotionRectangles(ImageComparisonResult* imageComparisonResult) : MotionRectangles(NAME, imageComparisonResult){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -81,7 +88,7 @@ this->createMotionRectangles(imageComparisonResult);
 
                 //@Throws(Exception.constructor)
             
-    private: void createMotionRectangles(ImageComparisonResult* imageComparisonInfo){
+    auto AllMotionRectangles::createMotionRectangles(ImageComparisonResult* imageComparisonInfo) -> void{
 
     BasicArrayList* vector = imageComparisonInfo->getNonMatchingPixelVector();;
     
@@ -107,7 +114,7 @@ this->addPixelDeltaToAMotionRectangle(pixelDelta);
 
                 //@Throws(Exception.constructor)
             
-    private: bool addPixelDeltaToExistingMotionRectangle(PixelDelta* pixelDelta){
+    auto AllMotionRectangles::addPixelDeltaToExistingMotionRectangle(PixelDelta* pixelDelta) -> bool{
 
     BasicArrayList* vector = this->getVector();;
     
@@ -176,7 +183,7 @@ motionRectangle->getRectangle()->setSize(newWidth, newHeight);
 
                 //@Throws(Exception.constructor)
             
-    private: void addPixelDeltaToAMotionRectangle(PixelDelta* pixelDelta){
+    auto AllMotionRectangles::addPixelDeltaToAMotionRectangle(PixelDelta* pixelDelta) -> void{
 
                         if(!addPixelDeltaToExistingMotionRectangle(pixelDelta))
                         
@@ -199,7 +206,7 @@ this->getVector()->add(motionRectangle);
 
                 //@Throws(Exception.constructor)
             
-    private: bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle* motionRectangle, PixelDelta* pixelDelta){
+    auto AllMotionRectangles::shouldPixelDeltaPartOfMotionRectangle(MotionRectangle* motionRectangle, PixelDelta* pixelDelta) -> bool{
 
     bool isPixelLeftOfTheRectangle = false;;
     
@@ -210,7 +217,7 @@ this->getVector()->add(motionRectangle);
                                     
 
 
-                            throw new Exception("PixelAboveTheRectangle");
+                            throw Exception("PixelAboveTheRectangle");
                     
 
                                     }
@@ -248,7 +255,7 @@ this->getVector()->add(motionRectangle);
 
                 //@Throws(Exception.constructor)
             
-    private: bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle* motionRectangle, PixelDelta* pixelDelta){
+    auto AllMotionRectangles::isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle* motionRectangle, PixelDelta* pixelDelta) -> bool{
 
     int32_t maxX = motionRectangle->getRectangle()->x +motionRectangle->getRectangle()->width;;
     
@@ -283,7 +290,6 @@ this->getVector()->add(motionRectangle);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_ALLMOTIONRECTANGLES_CPP

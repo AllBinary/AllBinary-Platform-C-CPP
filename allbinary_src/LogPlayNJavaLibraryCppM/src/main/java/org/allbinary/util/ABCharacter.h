@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_UTIL_ABCHARACTER_H
         #define ORG_ALLBINARY_UTIL_ABCHARACTER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -50,15 +55,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ABCharacter
-            : public Object
+            : public virtual Object
          {
 
     public: static std::string toString(char ch);
 
+
+            
+    public: ABCharacter();
+        
 };
 
             
 
 
         #endif //ORG_ALLBINARY_UTIL_ABCHARACTER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_UTIL_ABCHARACTER_H_COMPLETE)
+        #define ORG_ALLBINARY_UTIL_ABCHARACTER_H_COMPLETE
+        
+        #endif
+    

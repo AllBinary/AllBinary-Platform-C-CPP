@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_ADJUSTEDCIRCLEANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_VECTOR_ADJUSTEDCIRCLEANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/vector/AdjustedCircleAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -53,9 +63,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/vector/CircleAnimation.h"
 
-class AdjustedCircleAnimation: public CircleAnimation {
 
-    public: static AdjustedCircleAnimation* createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor* basicColor){
+    auto AdjustedCircleAnimation::createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor* basicColor) -> AdjustedCircleAnimation*{
 
     AdjustedCircleAnimation* adjustedCircleAnimation = new AdjustedCircleAnimation(width, height, basicColor);;
     
@@ -70,7 +79,7 @@ adjustedCircleAnimation->initXY(xAdjustment, yAdjustment);
 }
 
 
-    public: static AdjustedCircleAnimation* createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor* basicColor){
+    auto AdjustedCircleAnimation::createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor* basicColor) -> AdjustedCircleAnimation*{
 
     AdjustedCircleAnimation* adjustedCircleAnimation = new AdjustedCircleAnimation(width, height, basicColor);;
     
@@ -85,11 +94,7 @@ adjustedCircleAnimation->init(innerWidth);
 }
 
 
-    private: int32_t xAdjustment= 0;
-
-    private: int32_t yAdjustment= 0;
-
-public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor* basicColor) : CircleAnimation(width, height, basicColor){
+AdjustedCircleAnimation::AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor* basicColor) : CircleAnimation(width, height, basicColor){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -99,7 +104,7 @@ public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor* basic
 }
 
 
-    private: void initXY(int32_t xAdjustment, int32_t yAdjustment){
+    auto AdjustedCircleAnimation::initXY(int32_t xAdjustment, int32_t yAdjustment) -> void{
 this->xAdjustment= xAdjustment;
     
 this->yAdjustment= yAdjustment;
@@ -107,7 +112,7 @@ this->yAdjustment= yAdjustment;
 }
 
 
-    private: void init(int32_t innerWidth){
+    auto AdjustedCircleAnimation::init(int32_t innerWidth) -> void{
 
                         if(AndroidUtil::isAndroid())
                         
@@ -133,15 +138,14 @@ this->yAdjustment= this->xAdjustment;
 }
 
 
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    auto AdjustedCircleAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 graphics->drawArc(x +this->xAdjustment, y +this->yAdjustment, this->width, this->height, 0, this->TOTAL_ANGLE);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_VECTOR_ADJUSTEDCIRCLEANIMATION_CPP

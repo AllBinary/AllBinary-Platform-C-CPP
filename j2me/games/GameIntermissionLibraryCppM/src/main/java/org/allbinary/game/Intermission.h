@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INTERMISSION_H
         #define ORG_ALLBINARY_GAME_INTERMISSION_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,9 +34,7 @@
         
             #include "java/lang/Object.h"
         
-#include <org/allbinary/time/TimeDelayHelper.h>
-
-      
+class TimeDelayHelper;
 
 
 
@@ -51,18 +54,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/IntermissionInterface.h"
-#include "org/allbinary/game/NullIntermissionEnableListener.h"
-#include "org/allbinary/game/IntermissionEnableListenerInterface.h"
+class NullIntermissionEnableListener;
+class IntermissionEnableListenerInterface;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class Intermission
-            : public Object
+            : public virtual Object
         , public IntermissionInterface {
 
     private: bool enabled= false;
 
-    private: TimeDelayHelper* timeElapsedHelper = new TimeDelayHelper(0);
+    private: TimeDelayHelper* timeElapsedHelper;
 
-    private: IntermissionEnableListenerInterface* intermissionEnableListener = NullIntermissionEnableListener::getInstance();
+    private: IntermissionEnableListenerInterface* intermissionEnableListener;
 
 public: Intermission();
 
@@ -80,3 +87,22 @@ public: Intermission();
 
 
         #endif //ORG_ALLBINARY_GAME_INTERMISSION_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_INTERMISSION_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_INTERMISSION_H_COMPLETE
+        #if __has_include(<org/allbinary/time/TimeDelayHelper.h>)
+#include <org/allbinary/time/TimeDelayHelper.h>
+#endif
+#if __has_include("org/allbinary/game/IntermissionInterface.h")
+#include "org/allbinary/game/IntermissionInterface.h"
+#endif
+#if __has_include("org/allbinary/game/NullIntermissionEnableListener.h")
+#include "org/allbinary/game/NullIntermissionEnableListener.h"
+#endif
+#if __has_include("org/allbinary/game/IntermissionEnableListenerInterface.h")
+#include "org/allbinary/game/IntermissionEnableListenerInterface.h"
+#endif
+
+        #endif
+    

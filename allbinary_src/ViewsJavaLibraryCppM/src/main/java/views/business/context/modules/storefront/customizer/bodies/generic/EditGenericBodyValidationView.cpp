@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_EDITGENERICBODYVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_EDITGENERICBODYVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/bodies/generic/EditGenericBodyValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/bodies/generic/GenericBodyCustomizerView.h"
 
-class EditGenericBodyValidationView: public GenericBodyCustomizerView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: EditGenericBodyValidationView(TransformInfoInterface* transformInfoInterface) : GenericBodyCustomizerView(transformInfoInterface){
+EditGenericBodyValidationView::EditGenericBodyValidationView(TransformInfoInterface* transformInfoInterface) : GenericBodyCustomizerView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -84,7 +91,7 @@ public: EditGenericBodyValidationView(TransformInfoInterface* transformInfoInter
 }
 
 
-    public: bool isValid(){
+    auto EditGenericBodyValidationView::isValid() -> bool{
 
         try {
             
@@ -93,7 +100,7 @@ public: EditGenericBodyValidationView(TransformInfoInterface* transformInfoInter
 this->body= new GenericBodyValidation(document);
     
 
-    bool isValid = this->body.isValid();;
+    bool isValid = this->body->isValid();;
     
 
 
@@ -106,10 +113,10 @@ this->body= new GenericBodyValidation(document);
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -125,13 +132,13 @@ this->body= new GenericBodyValidation(document);
 }
 
 
-    public: std::string validationInfo(){
+    auto EditGenericBodyValidationView::validationInfo() -> std::string{
 
         try {
             
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(this->body.validationInfo());
+stringBuffer->append(this->body->validationInfo());
     
 
 
@@ -144,7 +151,7 @@ stringBuffer->append(this->body.validationInfo());
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -163,7 +170,7 @@ stringBuffer->append(this->body.validationInfo());
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto EditGenericBodyValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -173,7 +180,7 @@ stringBuffer->append(this->body.validationInfo());
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto EditGenericBodyValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -183,7 +190,6 @@ stringBuffer->append(this->body.validationInfo());
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_BODIES_GENERIC_EDITGENERICBODYVALIDATIONVIEW_CPP

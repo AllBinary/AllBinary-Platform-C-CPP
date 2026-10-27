@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -31,33 +36,15 @@
         
             #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h>
-
-      
-#include <org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h>
-
-      
-#include <org/allbinary/game/input/motion/action/GameKeyFromMotionGestureEventListener.h>
-
-      
-#include <org/allbinary/input/motion/gesture/MotionGestureToMotionGestureActionAssociation.h>
-
-      
-#include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h>
-
-      
-#include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfigurationFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
+class CompleteMotionGestureInputEventHandler;
+class GameKeyCompleteMotionGestureInputEvent;
+class GameKeyFromMotionGestureEventListener;
+class MotionGestureToMotionGestureActionAssociation;
+class MotionGestureConfiguration;
+class MotionGestureConfigurationFactory;
+class LogUtil;
+class CommonStrings;
+class BasicArrayList;
 
 
 
@@ -78,11 +65,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ResolveCompleteMotionGestureListener
-            : public Object
+            : public virtual Object
         , public CompleteMotionGestureListenerInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: ResolveCompleteMotionGestureListener();
 
@@ -96,3 +87,40 @@ public: ResolveCompleteMotionGestureListener();
 
 
         #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_H_COMPLETE
+        #if __has_include(<org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h>)
+#include <org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h>
+#endif
+#if __has_include(<org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h>)
+#include <org/allbinary/game/input/motion/action/GameKeyCompleteMotionGestureInputEvent.h>
+#endif
+#if __has_include(<org/allbinary/game/input/motion/action/GameKeyFromMotionGestureEventListener.h>)
+#include <org/allbinary/game/input/motion/action/GameKeyFromMotionGestureEventListener.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/MotionGestureToMotionGestureActionAssociation.h>)
+#include <org/allbinary/input/motion/gesture/MotionGestureToMotionGestureActionAssociation.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h>)
+#include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/configuration/MotionGestureConfigurationFactory.h>)
+#include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfigurationFactory.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayList.h>)
+#include <org/allbinary/util/BasicArrayList.h>
+#endif
+#if __has_include("org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h")
+#include "org/allbinary/input/motion/gesture/observer/CompleteMotionGestureListenerInterface.h"
+#endif
+
+        #endif
+    

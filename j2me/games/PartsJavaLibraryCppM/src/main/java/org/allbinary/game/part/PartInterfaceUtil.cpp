@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_PART_PARTINTERFACEUTIL_CPP
+        #define ORG_ALLBINARY_GAME_PART_PARTINTERFACEUTIL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/part/PartInterfaceUtil.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -48,13 +58,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/part/PartInterface.h"
 
-class PartInterfaceUtil
-            : public Object
-         {
 
-    private: static inline const std::vector<PartInterface*> SINGLETON = {};
+PartInterfaceUtil::PartInterfaceUtil() {
+        }
+        std::vector<PartInterface*> PartInterfaceUtil::SINGLETON = {};
 
-    public: static std::vector<PartInterface*> getZeroArray(){
+    auto PartInterfaceUtil::getZeroArray() -> std::vector<PartInterface*>{
 
 
 
@@ -64,7 +73,6 @@ class PartInterfaceUtil
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_PART_PARTINTERFACEUTIL_CPP

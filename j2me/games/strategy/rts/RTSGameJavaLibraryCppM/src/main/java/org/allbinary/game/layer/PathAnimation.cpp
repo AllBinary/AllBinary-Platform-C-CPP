@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_PATHANIMATION_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_PATHANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/PathAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -89,17 +99,8 @@
 #include "org/allbinary/game/layer/WaypointBehaviorBase.h"
 #include "org/allbinary/game/layer/AllBinaryTiledLayer.h"
 
-class PathAnimation: public Animation {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: LinePathAnimation* linePathAnimation;
-
-    private: PathFindingLayerInterface* pathFindingLayer;
-
-    protected: AllBinaryGameLayerManager* allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
-
-public: PathAnimation(PathFindingLayerInterface* pathFindingLayer, LinePathAnimation* linePathAnimation){
+PathAnimation::PathAnimation(PathFindingLayerInterface* pathFindingLayer, LinePathAnimation* linePathAnimation) : logUtil(LogUtil::getInstance()), allBinaryGameLayerManagerP(AllBinaryGameLayerManager::getNullInstance()), startColor(BasicColorFactory::getInstance()->RED), middleColor(BasicColorFactory::getInstance()->BLUE), endColor(BasicColorFactory::getInstance()->GREEN){
 this->pathFindingLayer= pathFindingLayer;
     
 this->linePathAnimation= linePathAnimation;
@@ -109,7 +110,7 @@ this->linePathAnimation= linePathAnimation;
 
                 //@Throws(Exception.constructor)
             
-    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager){
+    auto PathAnimation::setAllBinaryGameLayerManager(AllBinaryGameLayerManager* allBinaryGameLayerManager) -> void{
 this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
     
 }
@@ -117,17 +118,11 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
 
                 //@Throws(Exception.constructor)
             
-    public: void nextFrame(){
+    auto PathAnimation::nextFrame() -> void{
 }
 
 
-    private: BasicColor* startColor = BasicColorFactory::getInstance()->RED;
-
-    private: BasicColor* middleColor = BasicColorFactory::getInstance()->BLUE;
-
-    private: BasicColor* endColor = BasicColorFactory::getInstance()->GREEN;
-
-    public: void paintXY(Graphics* graphics, int32_t x, int32_t y){
+    auto PathAnimation::paintXY(Graphics* graphics, int32_t x, int32_t y) -> void{
 
         try {
             
@@ -186,7 +181,7 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
                                     {
                                     this->setBasicColorP(this->startColor);
     
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
                                     }
@@ -197,7 +192,7 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
                                     {
                                     this->setBasicColorP(this->endColor);
     
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
                                     }
@@ -205,7 +200,7 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
                         else {
                             this->setBasicColorP(this->middleColor);
     
-this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+this->basicSetColorUtil->setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
                         }
@@ -239,7 +234,6 @@ this->logUtil->putF("Cleared Target", this, CanvasStrings::getInstance()->PAINT)
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_PATHANIMATION_CPP

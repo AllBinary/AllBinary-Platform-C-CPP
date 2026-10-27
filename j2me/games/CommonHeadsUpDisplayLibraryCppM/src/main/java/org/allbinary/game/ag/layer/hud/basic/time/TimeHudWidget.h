@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMEHUDWIDGET_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMEHUDWIDGET_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -31,24 +36,12 @@
         
             #include "java/lang/Exception.h"
         
-#include <javax/microedition/lcdui/Font.h>
-
-      
-#include <javax/microedition/lcdui/Graphics.h>
-
-      
+class Font;
+class Graphics;
 #include <org/allbinary/game/graphics/hud/BasicHud.h>
-
-      
-#include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <org/allbinary/graphics/font/MyFontProcessor.h>
-
-      
-#include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
-
-      
+class BasicColor;
+class MyFontProcessor;
+class PrimitiveLongSingleton;
 
 
 
@@ -67,8 +60,12 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/ag/layer/hud/basic/time/Timer.h"
+        class Timer;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class TimeHudWidget: public BasicHud {
 
                 //@Throws(Exception.constructor)
@@ -77,11 +74,11 @@ class TimeHudWidget: public BasicHud {
 
     private: const std::string TIME_STRING = "Time ";
 
-    private: const std::vector<char> TIME_CHAR_ARRAY = ['T','i','m','e',' '];
+    private: std::vector<char> TIME_CHAR_ARRAY;
 
     private: int32_t offset= 0;
 
-    private: std::vector<char> string = PrimitiveLongSingleton::getInstance()->ZERO;
+    private: std::vector<char> string;
 
     private: int32_t totalDigits = 1;
 
@@ -105,3 +102,31 @@ public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, B
 
 
         #endif //ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMEHUDWIDGET_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMEHUDWIDGET_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMEHUDWIDGET_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Font.h>)
+#include <javax/microedition/lcdui/Font.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/Graphics.h>)
+#include <javax/microedition/lcdui/Graphics.h>
+#endif
+#if __has_include(<org/allbinary/game/graphics/hud/BasicHud.h>)
+#include <org/allbinary/game/graphics/hud/BasicHud.h>
+#endif
+#if __has_include(<org/allbinary/graphics/color/BasicColor.h>)
+#include <org/allbinary/graphics/color/BasicColor.h>
+#endif
+#if __has_include(<org/allbinary/graphics/font/MyFontProcessor.h>)
+#include <org/allbinary/graphics/font/MyFontProcessor.h>
+#endif
+#if __has_include(<org/allbinary/logic/math/PrimitiveLongSingleton.h>)
+#include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
+#endif
+#if __has_include("org/allbinary/game/ag/layer/hud/basic/time/Timer.h")
+#include "org/allbinary/game/ag/layer/hud/basic/time/Timer.h"
+#endif
+
+        #endif
+    

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEVALUESDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEVALUESDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/dhtml/html/head/meta/HtmlMetaAttributeValuesData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HtmlMetaAttributeValuesData
-            : public Object
-         {
+auto HtmlMetaAttributeValuesData::instance_owner() -> HtmlMetaAttributeValuesData* { static std::unique_ptr<HtmlMetaAttributeValuesData> value(new HtmlMetaAttributeValuesData()); return value.get(); }
+HtmlMetaAttributeValuesData* HtmlMetaAttributeValuesData::instance = HtmlMetaAttributeValuesData::instance_owner();
 
-    private: static HtmlMetaAttributeValuesData* instance() { static std::unique_ptr<HtmlMetaAttributeValuesData> value(new HtmlMetaAttributeValuesData()); return value.get(); }
-
-    public: static HtmlMetaAttributeValuesData* getInstance(){
+    auto HtmlMetaAttributeValuesData::getInstance() -> HtmlMetaAttributeValuesData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlMetaAttributeValuesData::instance();
+                        return HtmlMetaAttributeValuesData::instance;
     
 }
 
 
-private: HtmlMetaAttributeValuesData(){
+HtmlMetaAttributeValuesData::HtmlMetaAttributeValuesData(){
 }
 
 
-    public: std::string ABSTRACT = "abstract";
 
-    public: std::string DESCRIPTION = "description";
 
-    public: std::string KEYWORDS = "keywords";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HEAD_META_HTMLMETAATTRIBUTEVALUESDATA_CPP

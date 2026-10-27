@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMNUMBERVISITOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMNUMBERVISITOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/form/item/validation/TextItemNumberVisitor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,15 +75,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TextItemNumberVisitor: public Visitor {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TextItemNumberVisitor(){
+TextItemNumberVisitor::TextItemNumberVisitor() : logUtil(LogUtil::getInstance()){
 }
 
 
-    public: Object* visit(Object* anyType){
+    auto TextItemNumberVisitor::visit(Object* anyType) -> Object*{
 
     std::string value = anyType;;
     
@@ -138,7 +145,6 @@ this->logUtil->put(commonStrings->EXCEPTION, this, commonStrings->VISIT, &e);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMNUMBERVISITOR_CPP

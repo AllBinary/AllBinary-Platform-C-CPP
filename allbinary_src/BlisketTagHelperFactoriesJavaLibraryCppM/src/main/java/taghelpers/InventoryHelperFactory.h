@@ -21,6 +21,11 @@
         #ifndef TAGHELPERS_INVENTORYHELPERFACTORY_H
         #define TAGHELPERS_INVENTORYHELPERFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,20 +37,10 @@
             #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <javax/servlet/jsp/PageContext.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
-
-      
+class PageContext;
+class LogUtil;
+class LicensingException;
+class CommonStrings;
 
 
 
@@ -64,13 +59,17 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "taghelpers/InventoryHelper.h"
+        class InventoryHelper;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class InventoryHelperFactory
-            : public Object
+            : public virtual Object
          {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
+    /*protected*/ public: LogUtil* logUtil;
 
 public: InventoryHelperFactory();
 
@@ -84,3 +83,28 @@ public: InventoryHelperFactory();
 
 
         #endif //TAGHELPERS_INVENTORYHELPERFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(TAGHELPERS_INVENTORYHELPERFACTORY_H_COMPLETE)
+        #define TAGHELPERS_INVENTORYHELPERFACTORY_H_COMPLETE
+        #if __has_include(<java/util/HashMap.h>)
+#include <java/util/HashMap.h>
+#endif
+#if __has_include(<javax/servlet/jsp/PageContext.h>)
+#include <javax/servlet/jsp/PageContext.h>
+#endif
+#if __has_include(<org/allbinary/logic/communication/log/LogUtil.h>)
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+#endif
+#if __has_include(<org/allbinary/logic/system/security/licensing/LicensingException.h>)
+#include <org/allbinary/logic/system/security/licensing/LicensingException.h>
+#endif
+#if __has_include(<org/allbinary/string/CommonStrings.h>)
+#include <org/allbinary/string/CommonStrings.h>
+#endif
+#if __has_include("taghelpers/InventoryHelper.h")
+#include "taghelpers/InventoryHelper.h"
+#endif
+
+        #endif
+    

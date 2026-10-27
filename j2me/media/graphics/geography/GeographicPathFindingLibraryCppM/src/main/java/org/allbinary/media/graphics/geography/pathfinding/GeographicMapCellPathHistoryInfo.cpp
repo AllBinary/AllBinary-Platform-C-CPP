@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/GeographicMapCellPathHistoryInfo.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -51,21 +61,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GeographicMapCellPathHistoryInfo
-            : public Object
-         {
 
-    private: GeographicMapCellPosition* previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    private: GeographicMapCellPosition* previousOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    private: GeographicMapCellPosition* nextUnvisitedOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    private: GeographicMapCellPosition* nextOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    private: GeographicMapCellPosition* nextChosenOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
-
-    public: GeographicMapCellPosition* getPreviousGeographicMapCellPosition(){
+GeographicMapCellPathHistoryInfo::GeographicMapCellPathHistoryInfo() : previousGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), previousOnPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), nextUnvisitedOnPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), nextOnPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION), nextChosenOnPathGeographicMapCellPosition(SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION) {
+        }
+        
+    auto GeographicMapCellPathHistoryInfo::getPreviousGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -75,13 +75,13 @@ class GeographicMapCellPathHistoryInfo
 }
 
 
-    public: void setPreviousGeographicMapCellPosition(GeographicMapCellPosition* previousGeographicMapCellPosition){
+    auto GeographicMapCellPathHistoryInfo::setPreviousGeographicMapCellPosition(GeographicMapCellPosition* previousGeographicMapCellPosition) -> void{
 this->previousGeographicMapCellPosition= previousGeographicMapCellPosition;
     
 }
 
 
-    public: GeographicMapCellPosition* getPreviousOnPathGeographicMapCellPosition(){
+    auto GeographicMapCellPathHistoryInfo::getPreviousOnPathGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -91,13 +91,13 @@ this->previousGeographicMapCellPosition= previousGeographicMapCellPosition;
 }
 
 
-    public: void setPreviousOnPathGeographicMapCellPosition(GeographicMapCellPosition* previousOnPathGeographicMapCellPosition){
+    auto GeographicMapCellPathHistoryInfo::setPreviousOnPathGeographicMapCellPosition(GeographicMapCellPosition* previousOnPathGeographicMapCellPosition) -> void{
 this->previousOnPathGeographicMapCellPosition= previousOnPathGeographicMapCellPosition;
     
 }
 
 
-    public: GeographicMapCellPosition* getNextUnvisitedOnPathGeographicMapCellPosition(){
+    auto GeographicMapCellPathHistoryInfo::getNextUnvisitedOnPathGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -107,13 +107,13 @@ this->previousOnPathGeographicMapCellPosition= previousOnPathGeographicMapCellPo
 }
 
 
-    public: void setNextUnvisitedOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextUnvisitedOnPathGeographicMapCellPosition){
+    auto GeographicMapCellPathHistoryInfo::setNextUnvisitedOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextUnvisitedOnPathGeographicMapCellPosition) -> void{
 this->nextUnvisitedOnPathGeographicMapCellPosition= nextUnvisitedOnPathGeographicMapCellPosition;
     
 }
 
 
-    public: GeographicMapCellPosition* getNextOnPathGeographicMapCellPosition(){
+    auto GeographicMapCellPathHistoryInfo::getNextOnPathGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -123,13 +123,13 @@ this->nextUnvisitedOnPathGeographicMapCellPosition= nextUnvisitedOnPathGeographi
 }
 
 
-    public: void setNextOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextOnPathGeographicMapCellPosition){
+    auto GeographicMapCellPathHistoryInfo::setNextOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextOnPathGeographicMapCellPosition) -> void{
 this->nextOnPathGeographicMapCellPosition= nextOnPathGeographicMapCellPosition;
     
 }
 
 
-    public: GeographicMapCellPosition* getNextChosenOnPathGeographicMapCellPosition(){
+    auto GeographicMapCellPathHistoryInfo::getNextChosenOnPathGeographicMapCellPosition() -> GeographicMapCellPosition*{
 
 
 
@@ -139,13 +139,12 @@ this->nextOnPathGeographicMapCellPosition= nextOnPathGeographicMapCellPosition;
 }
 
 
-    public: void setNextChosenOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextChosenOnPathGeographicMapCellPosition){
+    auto GeographicMapCellPathHistoryInfo::setNextChosenOnPathGeographicMapCellPosition(GeographicMapCellPosition* nextChosenOnPathGeographicMapCellPosition) -> void{
 this->nextChosenOnPathGeographicMapCellPosition= nextChosenOnPathGeographicMapCellPosition;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_GEOGRAPHICMAPCELLPATHHISTORYINFO_CPP

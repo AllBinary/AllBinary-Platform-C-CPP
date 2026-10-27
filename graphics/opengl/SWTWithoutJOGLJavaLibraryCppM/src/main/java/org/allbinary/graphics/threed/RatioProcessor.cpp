@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_THREED_RATIOPROCESSOR_CPP
+        #define ORG_ALLBINARY_GRAPHICS_THREED_RATIOPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/threed/RatioProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,15 +55,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RatioProcessor
-            : public Object
-         {
 
-    public: void setCustom(int32_t width, int32_t height, float ratio){
+RatioProcessor::RatioProcessor() {
+        }
+        
+    auto RatioProcessor::setCustom(int32_t width, int32_t height, float ratio) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_THREED_RATIOPROCESSOR_CPP

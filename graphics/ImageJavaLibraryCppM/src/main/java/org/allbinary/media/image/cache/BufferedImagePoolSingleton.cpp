@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEPOOLSINGLETON_CPP
+        #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEPOOLSINGLETON_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/image/cache/BufferedImagePoolSingleton.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -66,16 +76,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/media/image/cache/BufferedImageCacheableFactory.h"
 
-class BufferedImagePoolSingleton
-            : public Object
-         {
-
-    private: static inline PoolInterface* poolInterface = 
-                null
-            ;
-
-                    static int32_t initResult = BufferedImagePoolSingleton::init();
-                static int32_t init() { 
+int32_t BufferedImagePoolSingleton::initResult = BufferedImagePoolSingleton::init();
+        auto BufferedImagePoolSingleton::init() -> int32_t {
                     
 
     LogUtil* logUtil = LogUtil::getInstance();;
@@ -108,9 +110,13 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 
 
                     return 0;
-                }
-            
-    public: static PoolInterface* getInstance(){
+        }
+                
+BufferedImagePoolSingleton::BufferedImagePoolSingleton(){
+}
+
+
+    auto BufferedImagePoolSingleton::getInstance() -> PoolInterface*{
 
 
 
@@ -120,11 +126,6 @@ logUtil->put(commonStrings->EXCEPTION, instance, STATIC_BLOCK, &e);
 }
 
 
-private: BufferedImagePoolSingleton(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEPOOLSINGLETON_CPP

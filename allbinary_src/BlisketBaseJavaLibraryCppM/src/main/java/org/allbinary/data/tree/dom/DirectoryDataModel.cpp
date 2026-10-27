@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DIRECTORYDATAMODEL_CPP
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DIRECTORYDATAMODEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/data/tree/dom/DirectoryDataModel.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -79,15 +89,8 @@
         #include "org/allbinary/data/tree/dom/DomNodeInterface.h"
 #include "org/allbinary/data/tree/dom/FileDomDataModel.h"
 
-class DirectoryDataModel
-            : public Object
-        , public DomNodeInterface, public TransformInterface {
 
-    private: BasicArrayList* fileBasicArrayList;
-
-    private: TransformDocumentInterface* transformDocumentInterface;
-
-public: DirectoryDataModel(AbFile* file){
+DirectoryDataModel::DirectoryDataModel(AbFile* file){
 this->fileBasicArrayList= Directory::getInstance()->search(file);
     
 this->transformDocumentInterface= dynamic_cast<TransformDocumentInterface*>(TransformDocumentFactory::getInstance());
@@ -95,9 +98,7 @@ this->transformDocumentInterface= dynamic_cast<TransformDocumentInterface*>(Tran
 }
 
 
-    public: int32_t NO_TYPE = 0;
-
-    public: int32_t getTypeId(){
+    auto DirectoryDataModel::getTypeId() -> int32_t{
 
 
 
@@ -109,7 +110,7 @@ this->transformDocumentInterface= dynamic_cast<TransformDocumentInterface*>(Tran
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface* getTransformInfoInterface(){
+    auto DirectoryDataModel::getTransformInfoInterface() -> TransformInfoInterface*{
 
 
 
@@ -119,13 +120,13 @@ this->transformDocumentInterface= dynamic_cast<TransformDocumentInterface*>(Tran
 }
 
 
-    public: void setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface){
+    auto DirectoryDataModel::setTransformDocumentInterface(TransformDocumentInterface* transformDocumentInterface) -> void{
 this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public: TransformDocumentInterface* getTransformDocumentInterface(){
+    auto DirectoryDataModel::getTransformDocumentInterface() -> TransformDocumentInterface*{
 
 
 
@@ -137,7 +138,7 @@ this->transformDocumentInterface= transformDocumentInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto DirectoryDataModel::toXmlNode(Document* document) -> Node*{
 
     Node* dirNode = document->createElement("dir");;
     
@@ -176,7 +177,7 @@ dirNode->appendChild(fileNode);
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto DirectoryDataModel::toXmlDoc() -> Document*{
 
 
 
@@ -188,7 +189,7 @@ dirNode->appendChild(fileNode);
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto DirectoryDataModel::view() -> std::string{
 
     Node* node = this->toXmlNode(this->getTransformDocumentInterface()->getDoc());;
     
@@ -203,7 +204,6 @@ this->getTransformDocumentInterface()->getBaseNode()->appendChild(node);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DIRECTORYDATAMODEL_CPP

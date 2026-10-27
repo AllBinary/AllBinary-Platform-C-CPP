@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/health/HealthBarAnimationInterfaceFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,17 +74,14 @@
         #include "org/allbinary/game/health/HealthBarThreedAnimation.h"
 #include "org/allbinary/game/health/HealthBarAnimation.h"
 
-class HealthBarAnimationInterfaceFactory
-            : public Object
-        , public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-public: HealthBarAnimationInterfaceFactory(){
+HealthBarAnimationInterfaceFactory::HealthBarAnimationInterfaceFactory(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: HealthBarAnimation* getInstanceByLocation(AllBinaryLayer* layerInterface, int32_t location){
+    auto HealthBarAnimationInterfaceFactory::getInstanceByLocation(AllBinaryLayer* layerInterface, int32_t location) -> HealthBarAnimation*{
 
 
 
@@ -86,7 +93,7 @@ public: HealthBarAnimationInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstance(int32_t instanceId){
+    auto HealthBarAnimationInterfaceFactory::getInstance(int32_t instanceId) -> Animation*{
 
 
 
@@ -98,7 +105,7 @@ public: HealthBarAnimationInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Animation* getInstanceAnimation(Animation* animationInterface){
+    auto HealthBarAnimationInterfaceFactory::getInstanceAnimation(Animation* animationInterface) -> Animation*{
 
 
 
@@ -108,11 +115,10 @@ public: HealthBarAnimationInterfaceFactory(){
 }
 
 
-    public: void setInitialScale(ScaleProperties* scaleProperties){
+    auto HealthBarAnimationInterfaceFactory::setInitialScale(ScaleProperties* scaleProperties) -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_HEALTH_HEALTHBARANIMATIONINTERFACEFACTORY_CPP

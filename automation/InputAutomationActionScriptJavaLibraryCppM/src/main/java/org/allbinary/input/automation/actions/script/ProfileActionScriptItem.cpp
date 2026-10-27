@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_PROFILEACTIONSCRIPTITEM_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_PROFILEACTIONSCRIPTITEM_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/ProfileActionScriptItem.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -73,39 +83,8 @@
 #include "org/allbinary/input/automation/actions/script/JPopupMenu.h"
 #include "org/allbinary/input/automation/actions/script/JMenuItem.h"
 
-class ProfileActionScriptItem: public DefaultMutableTreeNode, public ProfileActionScriptItemInterface, public ActionListener {
 
-    private: static inline const std::string EDIT = "Edit";
-
-    protected: static inline const std::string DELETE = "Delete";
-
-    protected: static inline const std::string NEW_CONDITION = "New Condition";
-
-    protected: static inline const std::string NEW_INPUT = "New Input";
-
-    protected: static inline const std::string NEW_OUTPUT = "New Output";
-
-    protected: static inline const std::string NEW_COLOR_AT = "Color At";
-
-    protected: static inline const std::string NEW_TIME_INTERVAL = "Time Interval";
-
-    protected: static inline const std::string NEW_ALWAYS = "Always On/Off";
-
-    protected: static inline const std::string NEW_KEY_INPUT = "Key";
-
-    protected: static inline const std::string NEW_MOUSE_INPUT = "Mouse";
-
-    protected: static inline const std::string NEW_JOYSTICK_INPUT = "Joystick";
-
-    protected: static inline const std::string NEW_IMAGE_OUTPUT = "Image";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    protected: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: JPopupMenu* jPopupMenu;
-
-public: ProfileActionScriptItem(std::string label, Node* node) : DefaultMutableTreeNode(label){
+ProfileActionScriptItem::ProfileActionScriptItem(std::string label, Node* node) : DefaultMutableTreeNode(label), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -114,12 +93,12 @@ public: ProfileActionScriptItem(std::string label, Node* node) : DefaultMutableT
                     
 this->init();
     
-this->logUtil->putF("Label: " +label, this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("Label: ") +JavaString::valueOf(label), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-public: ProfileActionScriptItem(std::string label) : DefaultMutableTreeNode(label){
+ProfileActionScriptItem::ProfileActionScriptItem(std::string label) : DefaultMutableTreeNode(label), logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -128,12 +107,12 @@ public: ProfileActionScriptItem(std::string label) : DefaultMutableTreeNode(labe
                     
 this->init();
     
-this->logUtil->putF("Label: " +label, this, this->commonStrings->CONSTRUCTOR);
+this->logUtil->putF(JavaString::valueOf("Label: ") +JavaString::valueOf(label), this, this->commonStrings->CONSTRUCTOR);
     
 }
 
 
-    private: void init(){
+    auto ProfileActionScriptItem::init() -> void{
 this->setJPopupMenu(new JPopupMenu());
     
 
@@ -155,16 +134,16 @@ this->getJPopupMenu()->add(jMenuItemDelete);
 
                 //@Throws(Exception.constructor)
             
-    public: void process(int64_t frame){
+    auto ProfileActionScriptItem::process(int64_t frame) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: JPopupMenu* getJPopupMenu(){
+    auto ProfileActionScriptItem::getJPopupMenu() -> JPopupMenu*{
 
 
 
@@ -174,16 +153,16 @@ this->getJPopupMenu()->add(jMenuItemDelete);
 }
 
 
-    public: void showDialog(){
+    auto ProfileActionScriptItem::showDialog() -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: void actionPerformed(ActionEvent* actionEvent){
+    auto ProfileActionScriptItem::actionPerformed(ActionEvent* actionEvent) -> void{
 
                         if(actionEvent->getActionCommand()->compareTo(ProfileActionScriptItem::EDIT) == 0)
                         
@@ -196,13 +175,12 @@ this->getJPopupMenu()->add(jMenuItemDelete);
 }
 
 
-    public: void setJPopupMenu(JPopupMenu* jPopupMenu){
+    auto ProfileActionScriptItem::setJPopupMenu(JPopupMenu* jPopupMenu) -> void{
 this->jPopupMenu= jPopupMenu;
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_PROFILEACTIONSCRIPTITEM_CPP

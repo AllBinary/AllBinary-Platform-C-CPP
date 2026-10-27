@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSENDLISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSENDLISTENER_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,12 +53,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ProgressEndListener
-            : public Object
+            : public virtual Object
          {
 
-    public: static ProgressEndListener* instance() { static std::unique_ptr<ProgressEndListener> value(new ProgressEndListener()); return value.get(); }
+    private: static ProgressEndListener* instance_owner();
+    public: static ProgressEndListener* instance;
 
+
+            
+    public: ProgressEndListener();
+        
     public: void onEndEvent();
 
 };
@@ -62,3 +76,10 @@ class ProgressEndListener
 
 
         #endif //ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSENDLISTENER_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSENDLISTENER_H_COMPLETE)
+        #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSENDLISTENER_H_COMPLETE
+        
+        #endif
+    

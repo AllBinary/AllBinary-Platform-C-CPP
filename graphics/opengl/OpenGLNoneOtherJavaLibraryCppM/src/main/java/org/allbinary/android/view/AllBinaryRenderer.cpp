@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_VIEW_ALLBINARYRENDERER_CPP
+        #define ORG_ALLBINARY_ANDROID_VIEW_ALLBINARYRENDERER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/view/AllBinaryRenderer.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,31 +57,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryRenderer
-            : public Object
-         {
 
-    private: static AllBinaryRenderer* instance() { static std::unique_ptr<AllBinaryRenderer> value(new AllBinaryRenderer()); return value.get(); }
+AllBinaryRenderer::AllBinaryRenderer() {
+        }
+        auto AllBinaryRenderer::instance_owner() -> AllBinaryRenderer* { static std::unique_ptr<AllBinaryRenderer> value(new AllBinaryRenderer()); return value.get(); }
+AllBinaryRenderer* AllBinaryRenderer::instance = AllBinaryRenderer::instance_owner();
 
-    public: static AllBinaryRenderer* getInstance(){
+    auto AllBinaryRenderer::getInstance() -> AllBinaryRenderer*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryRenderer::instance();
+                        return AllBinaryRenderer::instance;
     
 }
 
 
-    public: void setRunnable(Runnable* runnable){
+    auto AllBinaryRenderer::setRunnable(Runnable* runnable) -> void{
 }
 
 
-    public: void clearRunnable(){
+    auto AllBinaryRenderer::clearRunnable() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_VIEW_ALLBINARYRENDERER_CPP

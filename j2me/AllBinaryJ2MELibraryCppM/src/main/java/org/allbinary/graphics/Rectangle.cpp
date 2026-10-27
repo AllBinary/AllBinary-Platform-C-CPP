@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GRAPHICS_RECTANGLE_CPP
+        #define ORG_ALLBINARY_GRAPHICS_RECTANGLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/graphics/Rectangle.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -55,17 +65,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/graphics/GPoint.h"
 
-class Rectangle
-            : public Object
-         {
 
-    private: GPoint* point;
-
-    private: int32_t width;
-
-    private: int32_t height;
-
-public: Rectangle(GPoint* point, int32_t width, int32_t height){
+Rectangle::Rectangle(GPoint* point, int32_t width, int32_t height){
 this->point= point;
     
 this->width= width;
@@ -75,7 +76,7 @@ this->height= height;
 }
 
 
-    public: GPoint* getPoint(){
+    auto Rectangle::getPoint() -> GPoint*{
 
 
 
@@ -85,13 +86,13 @@ this->height= height;
 }
 
 
-    public: void setPoint(GPoint* point){
+    auto Rectangle::setPoint(GPoint* point) -> void{
 this->point= point;
     
 }
 
 
-    public: int32_t getMaxX(){
+    auto Rectangle::getMaxX() -> int32_t{
 
 
 
@@ -101,7 +102,7 @@ this->point= point;
 }
 
 
-    public: int32_t getMaxY(){
+    auto Rectangle::getMaxY() -> int32_t{
 
 
 
@@ -111,7 +112,7 @@ this->point= point;
 }
 
 
-    public: int32_t getWidth(){
+    auto Rectangle::getWidth() -> int32_t{
 
 
 
@@ -121,13 +122,13 @@ this->point= point;
 }
 
 
-    public: void setWidth(int32_t width){
+    auto Rectangle::setWidth(int32_t width) -> void{
 this->width= width;
     
 }
 
 
-    public: int32_t getHeight(){
+    auto Rectangle::getHeight() -> int32_t{
 
 
 
@@ -137,13 +138,13 @@ this->width= width;
 }
 
 
-    public: void setHeight(int32_t height){
+    auto Rectangle::setHeight(int32_t height) -> void{
 this->height= height;
     
 }
 
 
-    public: std::string toString(){
+    auto Rectangle::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
@@ -178,7 +179,6 @@ stringBuffer->appendint(this->getMaxY());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GRAPHICS_RECTANGLE_CPP

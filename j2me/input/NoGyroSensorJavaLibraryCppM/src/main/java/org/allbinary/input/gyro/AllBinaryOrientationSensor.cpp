@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_CPP
+        #define ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/gyro/AllBinaryOrientationSensor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -57,34 +67,30 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryOrientationSensor: public AllBinarySensor {
+auto AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR_owner() -> AllBinaryOrientationSensor* { static std::unique_ptr<AllBinaryOrientationSensor> value(new AllBinaryOrientationSensor()); return value.get(); }
+AllBinaryOrientationSensor* AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR = AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR_owner();
 
-    public: static AllBinaryOrientationSensor* NULL_ALLBINARY_ORIENTATION_SENSOR() { static std::unique_ptr<AllBinaryOrientationSensor> value(new AllBinaryOrientationSensor()); return value.get(); }
-
-    private: CompleteMotionGestureInputEventListenerInterface* listener = NoCompleteMotionGestureInputEventListener::getInstance();
-
-    public: void setListener(CompleteMotionGestureInputEventListenerInterface* completeMotionGestureInputEventListenerInterface){
+    auto AllBinaryOrientationSensor::setListener(CompleteMotionGestureInputEventListenerInterface* completeMotionGestureInputEventListenerInterface) -> void{
 this->listener= completeMotionGestureInputEventListenerInterface;
     
 }
 
 
-public: AllBinaryOrientationSensor(){
+AllBinaryOrientationSensor::AllBinaryOrientationSensor() : listener(NoCompleteMotionGestureInputEventListener::getInstance()){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: Orientation* getOrientation(){
+    auto AllBinaryOrientationSensor::getOrientation() -> Orientation*{
 
 
 
-                            throw new Exception(this->commonStrings.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings->NOT_IMPLEMENTED);
                     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_CPP

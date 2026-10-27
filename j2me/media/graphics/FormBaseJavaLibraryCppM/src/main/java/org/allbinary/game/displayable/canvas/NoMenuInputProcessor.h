@@ -21,24 +21,21 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/lcdui/NullCanvas.h>
-
-      
-#include <org/allbinary/game/input/event/GameKeyEvent.h>
-
-      
-#include <org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>
-
-      
-#include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
+class NullCanvas;
+class GameKeyEvent;
+class MotionGestureEvent;
+class BasicArrayListUtil;
 
 
 
@@ -59,9 +56,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NoMenuInputProcessor: public BasicMenuInputProcessor {
 
-    private: static NoMenuInputProcessor* SINGLETON() { static std::unique_ptr<NoMenuInputProcessor> value(new NoMenuInputProcessor()); return value.get(); }
+    private: static NoMenuInputProcessor* SINGLETON_owner();
+    private: static NoMenuInputProcessor* SINGLETON;
 
     public: static NoMenuInputProcessor* getInstance();
 
@@ -81,3 +83,25 @@ private: NoMenuInputProcessor();
 
 
         #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NOMENUINPUTPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/NullCanvas.h>)
+#include <javax/microedition/lcdui/NullCanvas.h>
+#endif
+#if __has_include(<org/allbinary/game/input/event/GameKeyEvent.h>)
+#include <org/allbinary/game/input/event/GameKeyEvent.h>
+#endif
+#if __has_include(<org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>)
+#include <org/allbinary/input/motion/gesture/observer/MotionGestureEvent.h>
+#endif
+#if __has_include(<org/allbinary/util/BasicArrayListUtil.h>)
+#include <org/allbinary/util/BasicArrayListUtil.h>
+#endif
+#if __has_include("org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h")
+#include "org/allbinary/game/displayable/canvas/BasicMenuInputProcessor.h"
+#endif
+
+        #endif
+    

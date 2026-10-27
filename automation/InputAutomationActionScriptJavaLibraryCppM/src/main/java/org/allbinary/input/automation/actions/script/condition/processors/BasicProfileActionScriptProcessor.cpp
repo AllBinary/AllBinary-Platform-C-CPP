@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_BASICPROFILEACTIONSCRIPTPROCESSOR_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_BASICPROFILEACTIONSCRIPTPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/actions/script/condition/processors/BasicProfileActionScriptProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -65,19 +75,8 @@
         #include "org/allbinary/input/automation/actions/script/condition/processors/ProfileActionScriptProcessorInterface.h"
 #include "org/allbinary/input/automation/actions/script/condition/processors/GenericProfileActionScriptProcessorData.h"
 
-class BasicProfileActionScriptProcessor: public ProfileActionScriptItem, public ProfileActionScriptProcessorInterface {
 
-public: BasicProfileActionScriptProcessor(std::string label, Node* node) : ProfileActionScriptItem(label, node){
-
-                        //super/this constructor call is in the constructor initializer list.
-                    
-
-                            //For kotlin this is before the body of the constructor.
-                    
-}
-
-
-public: BasicProfileActionScriptProcessor(std::string label) : ProfileActionScriptItem(label){
+BasicProfileActionScriptProcessor::BasicProfileActionScriptProcessor(std::string label, Node* node) : ProfileActionScriptItem(label, node){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -87,8 +86,18 @@ public: BasicProfileActionScriptProcessor(std::string label) : ProfileActionScri
 }
 
 
-    public: void actionPerformed(ActionEvent* actionEvent){
-super.actionPerformed(actionEvent);
+BasicProfileActionScriptProcessor::BasicProfileActionScriptProcessor(std::string label) : ProfileActionScriptItem(label){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+}
+
+
+    auto BasicProfileActionScriptProcessor::actionPerformed(ActionEvent* actionEvent) -> void{
+ProfileActionScriptItem::actionPerformed(actionEvent);
     
 
                         if(actionEvent->getActionCommand()->compareTo(DELETE) == 0)
@@ -118,7 +127,7 @@ JTreeInterfaceFactory::getInstance()->getJTreeInterface()->updateJTree();
 
                 //@Throws(Exception.constructor)
             
-    public: Node* toXmlNode(Document* document){
+    auto BasicProfileActionScriptProcessor::toXmlNode(Document* document) -> Node*{
 
     Node* node = document->createElement(GenericProfileActionScriptProcessorData::NAME);;
     
@@ -131,7 +140,6 @@ JTreeInterfaceFactory::getInstance()->getJTreeInterface()->updateJTree();
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_BASICPROFILEACTIONSCRIPTPROCESSOR_CPP

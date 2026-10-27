@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYADJUSTEDSPRITEROTATIONANIMATION_CPP
+        #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYADJUSTEDSPRITEROTATIONANIMATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/animation/image/sprite/AllBinaryAdjustedSpriteRotationAnimation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,13 +66,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/image/sprite/AllBinarySpriteRotationAnimation.h"
 
-class AllBinaryAdjustedSpriteRotationAnimation: public AllBinarySpriteRotationAnimation {
 
-    private: int32_t dx;
-
-    private: int32_t dy;
-
-public: AllBinaryAdjustedSpriteRotationAnimation(Sprite* sprite, Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : AllBinarySpriteRotationAnimation(sprite, image, animationBehavior){
+AllBinaryAdjustedSpriteRotationAnimation::AllBinaryAdjustedSpriteRotationAnimation(Sprite* sprite, Image* image, int32_t dx, int32_t dy, AnimationBehavior* animationBehavior) : AllBinarySpriteRotationAnimation(sprite, image, animationBehavior){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -76,15 +81,14 @@ this->dy= dy;
 }
 
 
-    public: void paintXY(Graphics* g, int32_t x, int32_t y){
-this->sprite.setPosition(x +this->dx, y +this->dy);
+    auto AllBinaryAdjustedSpriteRotationAnimation::paintXY(Graphics* g, int32_t x, int32_t y) -> void{
+this->sprite->setPosition(x +this->dx, y +this->dy);
     
 this->paint(g);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYADJUSTEDSPRITEROTATIONANIMATION_CPP

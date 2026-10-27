@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ADMIN_TAGHELPERS_SHIPPINGHELPER_CPP
+        #define ADMIN_TAGHELPERS_SHIPPINGHELPER_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "admin/taghelpers/ShippingHelper.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -76,23 +86,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "admin/taghelpers/TagHelper.h"
 
-class ShippingHelper: public TagHelper {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: WeblisketSession* weblisketSession;
-
-    private: StoreFrontInterface* storeFrontInterface;
-
-    private: HashMap<Object*, Object*>* propertiesHashMap;
-
-    private: PageContext* pageContext;
-
-    private: HttpServletRequest* request;
-
-    private: std::string shippingType;
-
-public: ShippingHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext){
+ShippingHelper::ShippingHelper(HashMap<Object*, Object*>* hashMap, PageContext* pageContext) : logUtil(LogUtil::getInstance()){
 this->pageContext= pageContext;
     
 this->request= dynamic_cast<HttpServletRequest*>(pageContext->getRequest());
@@ -116,13 +111,13 @@ this->getFormData();
 }
 
 
-    private: void getFormData(){
+    auto ShippingHelper::getFormData() -> void{
 this->shippingType= this->request->getParameter(ShippingMethodData::NAME);
     
 }
 
 
-    public: std::string setShippingType(){
+    auto ShippingHelper::setShippingType() -> std::string{
 
         try {
             
@@ -134,7 +129,7 @@ this->shippingType= this->request->getParameter(ShippingMethodData::NAME);
 order->setShippingMethod(this->shippingType);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGS))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGS))
                         
                                     {
                                     this->logUtil->putF(success, this, "setShippingType()");
@@ -156,10 +151,10 @@ order->setShippingMethod(this->shippingType);
     std::string error = "Failed to view Shipping Type";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->SQLTAGSERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->SQLTAGSERROR))
                         
                                     {
-                                    this->logUtil->put(this->commonStrings.EXCEPTION, this, "setShippingType()", &e);
+                                    this->logUtil->put(this->commonStrings->EXCEPTION, this, "setShippingType()", &e);
     
 
                                     }
@@ -175,7 +170,6 @@ order->setShippingMethod(this->shippingType);
 }
 
 
-};
 
-            
 
+        #endif //ADMIN_TAGHELPERS_SHIPPINGHELPER_CPP

@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
             #include "java/lang/String.h"
 
         
-#include <javax/microedition/khronos/opengles/GL10.h>
-
-      
+class GL10;
 
 
 
@@ -50,12 +53,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ModifierOpenGLESImageProcessor: public OpenGLESImageProcessor {
 
-    private: static ModifierOpenGLESImageProcessor* instanceC() { static std::unique_ptr<ModifierOpenGLESImageProcessor> value(new ModifierOpenGLESImageProcessor()); return value.get(); }
+    private: static ModifierOpenGLESImageProcessor* instanceC_owner();
+    private: static ModifierOpenGLESImageProcessor* instanceC;
 
     public: static ModifierOpenGLESImageProcessor* getInstance();
 
+
+            
+    public: ModifierOpenGLESImageProcessor();
+        
     public: void colorMask(GL10* gl, float red, float green, float blue, float alpha);
 
 };
@@ -64,3 +76,16 @@ class ModifierOpenGLESImageProcessor: public OpenGLESImageProcessor {
 
 
         #endif //ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_H_COMPLETE)
+        #define ORG_ALLBINARY_IMAGE_OPENGLES_MODIFIEROPENGLESIMAGEPROCESSOR_H_COMPLETE
+        #if __has_include(<javax/microedition/khronos/opengles/GL10.h>)
+#include <javax/microedition/khronos/opengles/GL10.h>
+#endif
+#if __has_include("org/allbinary/image/opengles/OpenGLESImageProcessor.h")
+#include "org/allbinary/image/opengles/OpenGLESImageProcessor.h"
+#endif
+
+        #endif
+    

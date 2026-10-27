@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERCONFIGURATIONFACTORY_CPP
+        #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERCONFIGURATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/android/input/motion/AnalogControllerConfigurationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -56,35 +66,24 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AnalogControllerConfigurationFactory
-            : public Object
-         {
+auto AnalogControllerConfigurationFactory::instance_owner() -> AnalogControllerConfigurationFactory* { static std::unique_ptr<AnalogControllerConfigurationFactory> value(new AnalogControllerConfigurationFactory()); return value.get(); }
+AnalogControllerConfigurationFactory* AnalogControllerConfigurationFactory::instance = AnalogControllerConfigurationFactory::instance_owner();
 
-    private: static AnalogControllerConfigurationFactory* instance() { static std::unique_ptr<AnalogControllerConfigurationFactory> value(new AnalogControllerConfigurationFactory()); return value.get(); }
-
-    public: static AnalogControllerConfigurationFactory* getInstance(){
+    auto AnalogControllerConfigurationFactory::getInstance() -> AnalogControllerConfigurationFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnalogControllerConfigurationFactory::instance();
+                        return AnalogControllerConfigurationFactory::instance;
     
 }
 
 
-    public: const int32_t SCALE_FACTOR = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR;
-
-    public: const int32_t SCALE_VALUE = ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE;
-
-    private: bool available= false;
-
-    private: AnalogControllerConfigurationEvent* analogControllerConfigurationEvent = new AnalogControllerConfigurationEvent(this);
-
-private: AnalogControllerConfigurationFactory(){
+AnalogControllerConfigurationFactory::AnalogControllerConfigurationFactory() : SCALE_FACTOR(ScaleFactorFactory::getInstance()->DEFAULT_SCALE_FACTOR), SCALE_VALUE(ScaleFactorFactory::getInstance()->DEFAULT_SCALE_VALUE), analogControllerConfigurationEvent(new AnalogControllerConfigurationEvent(this)){
 }
 
 
-    public: bool isAvailable(){
+    auto AnalogControllerConfigurationFactory::isAvailable() -> bool{
 
 
 
@@ -96,7 +95,7 @@ private: AnalogControllerConfigurationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: void setAvailable(bool available){
+    auto AnalogControllerConfigurationFactory::setAvailable(bool available) -> void{
 this->available= available;
     
 AnalogControllerConfigurationEventHandler::getInstance()->fireEvent(this->analogControllerConfigurationEvent);
@@ -104,7 +103,6 @@ AnalogControllerConfigurationEventHandler::getInstance()->fireEvent(this->analog
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERCONFIGURATIONFACTORY_CPP

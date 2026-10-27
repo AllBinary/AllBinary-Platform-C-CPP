@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATIONFACTORY_CPP
+        #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATIONFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfigurationFactory.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -46,27 +56,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h"
 
-class MotionGestureConfigurationFactory
-            : public Object
-         {
+auto MotionGestureConfigurationFactory::config_owner() -> MotionGestureConfiguration* { static std::unique_ptr<MotionGestureConfiguration> value(new MotionGestureConfiguration()); return value.get(); }
+MotionGestureConfiguration* MotionGestureConfigurationFactory::config = MotionGestureConfigurationFactory::config_owner();
 
-    private: static MotionGestureConfiguration* config() { static std::unique_ptr<MotionGestureConfiguration> value(new MotionGestureConfiguration()); return value.get(); }
+MotionGestureConfigurationFactory::MotionGestureConfigurationFactory(){
+}
 
-    public: static MotionGestureConfiguration* getInstance(){
+
+    auto MotionGestureConfigurationFactory::getInstance() -> MotionGestureConfiguration*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionGestureConfigurationFactory::config();
+                        return MotionGestureConfigurationFactory::config;
     
 }
 
 
-public: MotionGestureConfigurationFactory(){
-}
 
 
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_MOTION_GESTURE_CONFIGURATION_MOTIONGESTURECONFIGURATIONFACTORY_CPP

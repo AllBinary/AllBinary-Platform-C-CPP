@@ -7,6 +7,11 @@
         #ifndef JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL_H
         #define JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -32,7 +37,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GL {
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
+class GL
+            : public virtual Object
+         {
 
 };
 
@@ -40,3 +51,10 @@ class GL {
 
 
         #endif //JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL_H_COMPLETE)
+        #define JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL_H_COMPLETE
+        
+        #endif
+    

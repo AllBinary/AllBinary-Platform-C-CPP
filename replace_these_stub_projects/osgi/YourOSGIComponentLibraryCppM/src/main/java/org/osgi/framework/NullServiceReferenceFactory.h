@@ -21,6 +21,11 @@
         #ifndef ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_H
         #define ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,17 +52,26 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/osgi/framework/NullServiceReference.h"
+        class NullServiceReference;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullServiceReferenceFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static NullServiceReferenceFactory* instance() { static std::unique_ptr<NullServiceReferenceFactory> value(new NullServiceReferenceFactory()); return value.get(); }
+    private: static NullServiceReferenceFactory* instance_owner();
+    private: static NullServiceReferenceFactory* instance;
 
     public: static NullServiceReferenceFactory* getInstance();
 
-    public: NullServiceReference* NULL_SERVICE_REFERENCE = new NullServiceReference();
+
+            
+    public: NullServiceReferenceFactory();
+        
+    public: NullServiceReference* NULL_SERVICE_REFERENCE;
 
 };
 
@@ -65,3 +79,13 @@ class NullServiceReferenceFactory
 
 
         #endif //ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_H_COMPLETE)
+        #define ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_H_COMPLETE
+        #if __has_include("org/osgi/framework/NullServiceReference.h")
+#include "org/osgi/framework/NullServiceReference.h"
+#endif
+
+        #endif
+    

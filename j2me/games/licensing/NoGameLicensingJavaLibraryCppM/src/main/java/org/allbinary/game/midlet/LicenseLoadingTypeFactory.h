@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPEFACTORY_H
         #define ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPEFACTORY_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,23 +52,32 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/game/midlet/LicenseLoadingType.h"
+        class LicenseLoadingType;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class LicenseLoadingTypeFactory
-            : public Object
+            : public virtual Object
          {
 
-    private: static LicenseLoadingTypeFactory* instance() { static std::unique_ptr<LicenseLoadingTypeFactory> value(new LicenseLoadingTypeFactory()); return value.get(); }
+    private: static LicenseLoadingTypeFactory* instance_owner();
+    private: static LicenseLoadingTypeFactory* instance;
 
     public: static LicenseLoadingTypeFactory* getIntance();
 
-    public: LicenseLoadingType* INITIAL_LOADING = new LicenseLoadingType("Initial Loading");
 
-    public: LicenseLoadingType* GAME_START = new LicenseLoadingType("Game Start");
+            
+    public: LicenseLoadingTypeFactory();
+        
+    public: LicenseLoadingType* INITIAL_LOADING;
 
-    public: LicenseLoadingType* LOGIN = new LicenseLoadingType("Login");
+    public: LicenseLoadingType* GAME_START;
 
-    public: LicenseLoadingType* OTHER = new LicenseLoadingType("Other/Usually The First Non Demo Level");
+    public: LicenseLoadingType* LOGIN;
+
+    public: LicenseLoadingType* OTHER;
 
 };
 
@@ -71,3 +85,13 @@ class LicenseLoadingTypeFactory
 
 
         #endif //ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPEFACTORY_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPEFACTORY_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_MIDLET_LICENSELOADINGTYPEFACTORY_H_COMPLETE
+        #if __has_include("org/allbinary/game/midlet/LicenseLoadingType.h")
+#include "org/allbinary/game/midlet/LicenseLoadingType.h"
+#endif
+
+        #endif
+    

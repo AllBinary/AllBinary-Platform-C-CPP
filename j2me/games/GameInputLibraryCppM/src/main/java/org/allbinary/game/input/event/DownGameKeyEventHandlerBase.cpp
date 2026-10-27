@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNGAMEKEYEVENTHANDLERBASE_CPP
+        #define ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNGAMEKEYEVENTHANDLERBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/input/event/DownGameKeyEventHandlerBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -71,19 +81,12 @@
         #include "org/allbinary/game/input/event/GameKeyEvent.h"
 #include "org/allbinary/game/input/event/DownGameKeyEventListenerInterface.h"
 
-class DownGameKeyEventHandlerBase: public BasicEventHandler {
 
-    private: static inline const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
-
-    private: static inline const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-: DownGameKeyEventHandlerBase(){
+DownGameKeyEventHandlerBase::DownGameKeyEventHandlerBase() : list(new BasicArrayListD()){
 }
 
 
-    public: void addListener(PlayerGameInput* playerGameInput){
+    auto DownGameKeyEventHandlerBase::addListener(PlayerGameInput* playerGameInput) -> void{
 
                         if(!this->list->contains(playerGameInput))
                         
@@ -96,34 +99,34 @@ class DownGameKeyEventHandlerBase: public BasicEventHandler {
 }
 
 
-    public: void removeAllListeners(){
+    auto DownGameKeyEventHandlerBase::removeAllListeners() -> void{
 this->list->clear();
     
-super.removeAllListeners();
+BasicEventHandler::removeAllListeners();
     
 }
 
 
-    public: void removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface){
+    auto DownGameKeyEventHandlerBase::removeListenerSingleThreaded(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListenerSingleThreaded(eventListenerInterface);
+BasicEventHandler::removeListenerSingleThreaded(eventListenerInterface);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void removeListener(EventListenerInterface* eventListenerInterface){
+    auto DownGameKeyEventHandlerBase::removeListener(EventListenerInterface* eventListenerInterface) -> void{
 this->list->remove(eventListenerInterface);
     
-super.removeListener(eventListenerInterface);
+BasicEventHandler::removeListener(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: void fireEvent(AllBinaryEventObject* eventObject){
+    auto DownGameKeyEventHandlerBase::fireEvent(AllBinaryEventObject* eventObject) -> void{
 
 
 
@@ -142,20 +145,20 @@ playerGameInput->onDownGameKeyEvent(dynamic_cast<GameKeyEvent*>(eventObject));
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, EventStrings::getInstance()->FIRE_EVENT, &e);
     
 }
 
 }
 
-super.fireEvent(eventObject);
+BasicEventHandler::fireEvent(eventObject);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    protected: void process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface){
+    auto DownGameKeyEventHandlerBase::process(AllBinaryEventObject* eventObject, EventListenerInterface* eventListenerInterface) -> void{
 
     DownGameKeyEventListenerInterface* downGameKeyEventListenerInterface = dynamic_cast<DownGameKeyEventListenerInterface*>(eventListenerInterface);;
     
@@ -164,11 +167,11 @@ downGameKeyEventListenerInterface->onDownGameKeyEvent(dynamic_cast<GameKeyEvent*
 }
 
 
-    public: std::string toString(){
+    auto DownGameKeyEventHandlerBase::toString() -> std::string{
 
     StringMaker* stringBuffer = new StringMaker();;
     
-stringBuffer->append(super.toString());
+stringBuffer->append(BasicEventHandler::toString());
     
 stringBuffer->append(DownGameKeyEventHandlerBase::TOTAL_LISTENERS);
     
@@ -198,7 +201,7 @@ stringBuffer->append(eventListenerInterface->toString());
                 //: 
 } catch(Exception& e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.TOSTRING, &e);
+this->logUtil->put(this->commonStrings->EXCEPTION, this, this->commonStrings->TOSTRING, &e);
     
 }
 
@@ -215,7 +218,6 @@ index++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNGAMEKEYEVENTHANDLERBASE_CPP

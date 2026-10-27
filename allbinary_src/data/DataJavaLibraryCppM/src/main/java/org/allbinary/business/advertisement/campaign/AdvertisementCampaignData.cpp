@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_CPP
+        #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/business/advertisement/campaign/AdvertisementCampaignData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,33 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AdvertisementCampaignData
-            : public Object
-         {
+auto AdvertisementCampaignData::instance_owner() -> AdvertisementCampaignData* { static std::unique_ptr<AdvertisementCampaignData> value(new AdvertisementCampaignData()); return value.get(); }
+AdvertisementCampaignData* AdvertisementCampaignData::instance = AdvertisementCampaignData::instance_owner();
 
-    private: static AdvertisementCampaignData* instance() { static std::unique_ptr<AdvertisementCampaignData> value(new AdvertisementCampaignData()); return value.get(); }
-
-    public: static AdvertisementCampaignData* getInstance(){
+    auto AdvertisementCampaignData::getInstance() -> AdvertisementCampaignData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementCampaignData::instance();
+                        return AdvertisementCampaignData::instance;
     
 }
 
 
-private: AdvertisementCampaignData(){
+AdvertisementCampaignData::AdvertisementCampaignData(){
 }
 
 
-    public: const std::string NAME = "ADVERTISEMENTCAMPAIGN_NAME";
 
-    public: const std::string DESCRIPTION = "ADVERTISEMENTCAMPAIGN_DESCRIPTION";
 
-    public: const std::string CONFIG = "ADVERTISEMENTCAMPAIGN_CONFIG";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGNDATA_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionsJPanel.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,23 +85,14 @@
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/ListSelectionEvent.h"
 #include "org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileAction.h"
 
-class GenericProfileActionsJPanel: public javax::swing::JPanel {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    private: CommonStrings* commonStrings = CommonStrings::getInstance();
-
-    private: GenericProfileActions* genericProfileActions;
-
-    private: GenericProfileActionJPanel* genericProfileActionJPanel;
-
-public: GenericProfileActionsJPanel(){
+GenericProfileActionsJPanel::GenericProfileActionsJPanel() : logUtil(LogUtil::getInstance()), commonStrings(CommonStrings::getInstance()){
 this->initComponents();
     
 }
 
 
-    private: void initComponents(){
+    auto GenericProfileActionsJPanel::initComponents() -> void{
 this->newProfileActionJDialog= new javax::swing::JDialog();
     
 this->newProfileActionJLabel= new javax::swing::JLabel();
@@ -138,9 +139,9 @@ okNewProfileActionJButtonActionPerformed(evt);
     
 this->newProfileActionJDialog->getContentPane()->setLayout(newProfileActionJDialogLayout);
     
-newProfileActionJDialogLayout->setHorizontalGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(93, 93, 93)->addComponent(okNewProfileActionJButton))->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(75, 75, 75)->addComponent(newProfileActionJLabel))->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(29, 29, 29)->addComponent(newProfileActionJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))->addContainerGap(34, Short::MAX_VALUE)));
+newProfileActionJDialogLayout->setHorizontalGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(93, 93, 93)->addComponent(okNewProfileActionJButton))->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(75, 75, 75)->addComponent(newProfileActionJLabel))->addGroup(newProfileActionJDialogLayout->createSequentialGroup()->addGap(29, 29, 29)->addComponent(newProfileActionJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, 178, javax.swing->GroupLayout->PREFERRED_SIZE)))->addContainerGap(34, Short::MAX_VALUE)));
     
-newProfileActionJDialogLayout->setVerticalGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newProfileActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(newProfileActionJLabel)->addGap(21, 21, 21)->addComponent(newProfileActionJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short::MAX_VALUE)->addComponent(okNewProfileActionJButton)->addContainerGap()));
+newProfileActionJDialogLayout->setVerticalGroup(newProfileActionJDialogLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(javax.swing->GroupLayout->Alignment->TRAILING, newProfileActionJDialogLayout->createSequentialGroup()->addContainerGap()->addComponent(newProfileActionJLabel)->addGap(21, 21, 21)->addComponent(newProfileActionJTextField, javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED, 20, Short::MAX_VALUE)->addComponent(okNewProfileActionJButton)->addContainerGap()));
     
 this->genericProfileActionsJPanel->setPreferredSize(new java::awt::Dimension(10000, 10000));
     
@@ -203,32 +204,32 @@ this->blankGenericProfileActionJPanel->setMinimumSize(new java::awt::Dimension(5
     
 this->blankGenericProfileActionJPanel->setLayout(blankGenericProfileActionJPanelLayout);
     
-blankGenericProfileActionJPanelLayout->setHorizontalGroup(blankGenericProfileActionJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 500, Short::MAX_VALUE));
+blankGenericProfileActionJPanelLayout->setHorizontalGroup(blankGenericProfileActionJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 500, Short::MAX_VALUE));
     
-blankGenericProfileActionJPanelLayout->setVerticalGroup(blankGenericProfileActionJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 296, Short::MAX_VALUE));
+blankGenericProfileActionJPanelLayout->setVerticalGroup(blankGenericProfileActionJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 296, Short::MAX_VALUE));
     
 
     javax::swing::GroupLayout* genericProfileActionsJPanelLayout = new javax::swing::GroupLayout(this->genericProfileActionsJPanel);;
     
 this->genericProfileActionsJPanel->setLayout(genericProfileActionsJPanelLayout);
     
-genericProfileActionsJPanelLayout->setHorizontalGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addComponent(genericProfileActionsJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(blankGenericProfileActionJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addComponent(newActionJButton)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(deleteActionJButton)->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addComponent(saveJButton)->addContainerGap()));
+genericProfileActionsJPanelLayout->setHorizontalGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addComponent(genericProfileActionsJScrollPane, javax.swing->GroupLayout->PREFERRED_SIZE, 95, javax.swing->GroupLayout->PREFERRED_SIZE)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(blankGenericProfileActionJPanel, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE))->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addComponent(newActionJButton)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(deleteActionJButton)->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addComponent(saveJButton)->addContainerGap()));
     
-genericProfileActionsJPanelLayout->setVerticalGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)->addComponent(newActionJButton)->addComponent(deleteActionJButton)->addComponent(saveJButton))->addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)->addGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)->addComponent(blankGenericProfileActionJPanel, 0, 296, Short::MAX_VALUE)->addComponent(genericProfileActionsJScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short::MAX_VALUE))->addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+genericProfileActionsJPanelLayout->setVerticalGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(genericProfileActionsJPanelLayout->createSequentialGroup()->addGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->BASELINE)->addComponent(newActionJButton)->addComponent(deleteActionJButton)->addComponent(saveJButton))->addPreferredGap(javax.swing->LayoutStyle->ComponentPlacement->RELATED)->addGroup(genericProfileActionsJPanelLayout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING, false)->addComponent(blankGenericProfileActionJPanel, 0, 296, Short::MAX_VALUE)->addComponent(genericProfileActionsJScrollPane, javax.swing->GroupLayout->DEFAULT_SIZE, 296, Short::MAX_VALUE))->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
 
     javax::swing::GroupLayout* layout = new javax::swing::GroupLayout(this);;
     
 this->setLayout(layout);
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGroup(layout->createSequentialGroup()->addComponent(genericProfileActionsJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)->addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGroup(layout->createSequentialGroup()->addComponent(genericProfileActionsJPanel, javax.swing->GroupLayout->PREFERRED_SIZE, 596, javax.swing->GroupLayout->PREFERRED_SIZE)->addContainerGap(javax.swing->GroupLayout->DEFAULT_SIZE, Short::MAX_VALUE)));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addComponent(genericProfileActionsJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addComponent(genericProfileActionsJPanel, javax.swing->GroupLayout->PREFERRED_SIZE, 336, javax.swing->GroupLayout->PREFERRED_SIZE));
     
 }
 
 
-    public: void setModel(){
+    auto GenericProfileActionsJPanel::setModel() -> void{
 
     DefaultListModelHelper* defaultListModelHelper = this->getGenericProfileActions()->getDefaultListModelHelper();;
     
@@ -244,7 +245,7 @@ layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Ali
 }
 
 
-    private: void saveJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto GenericProfileActionsJPanel::saveJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             this->getGenericProfileActions()->save();
@@ -260,7 +261,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "saveJButtonActionPerfo
 }
 
 
-    private: void updateProfileActionUI(std::string profileActionNameString){
+    auto GenericProfileActionsJPanel::updateProfileActionUI(std::string profileActionNameString) -> void{
 this->blankGenericProfileActionJPanel->removeAll();
     
 
@@ -279,9 +280,9 @@ this->getGenericProfileActionJPanel()->updateProfileActionUI();
 
     javax::swing::GroupLayout* layout = dynamic_cast<javax::swing::GroupLayout*>(this->blankGenericProfileActionJPanel->getLayout());;
     
-layout->setHorizontalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout->setHorizontalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 395, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionJPanel(), javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE));
     
-layout->setVerticalGroup(layout->createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout->setVerticalGroup(layout->createParallelGroup(javax.swing->GroupLayout->Alignment->LEADING)->addGap(0, 256, Short::MAX_VALUE)->addComponent(this->getGenericProfileActionJPanel(), javax.swing->GroupLayout->PREFERRED_SIZE, javax.swing->GroupLayout->DEFAULT_SIZE, javax.swing->GroupLayout->PREFERRED_SIZE));
     
 this->logUtil->putF("Setting Configuration Profile Actions JPanel", this, "genericProfileActionsJListValueChanged");
     
@@ -291,7 +292,7 @@ this->logUtil->putF("Setting Configuration Profile Actions JPanel", this, "gener
 }
 
 
-    private: void genericProfileActionsJListValueChanged(javax::swing::event::ListSelectionEvent* evt){
+    auto GenericProfileActionsJPanel::genericProfileActionsJListValueChanged(javax::swing::event::ListSelectionEvent* evt) -> void{
 
         try {
             
@@ -310,7 +311,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "genericProfileActionsJ
 }
 
 
-    private: void okNewProfileActionJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto GenericProfileActionsJPanel::okNewProfileActionJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             
@@ -337,7 +338,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "okNewProfileActionJBut
 }
 
 
-    private: void deleteActionJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto GenericProfileActionsJPanel::deleteActionJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 
         try {
             
@@ -372,7 +373,7 @@ this->logUtil->put(this->commonStrings->EXCEPTION, this, "deleteActionJButtonAct
 
                 //@Throws(Exception.constructor)
             
-    public: void selectFirstElement(){
+    auto GenericProfileActionsJPanel::selectFirstElement() -> void{
 this->setModel();
     
 
@@ -397,7 +398,7 @@ this->blankGenericProfileActionJPanel->repaint();
 }
 
 
-    public: GenericProfileActionJPanel* getGenericProfileActionJPanel(){
+    auto GenericProfileActionsJPanel::getGenericProfileActionJPanel() -> GenericProfileActionJPanel*{
 
 
 
@@ -407,13 +408,13 @@ this->blankGenericProfileActionJPanel->repaint();
 }
 
 
-    public: void setGenericProfileActionJPanel(GenericProfileActionJPanel* genericProfileActionJPanel){
+    auto GenericProfileActionsJPanel::setGenericProfileActionJPanel(GenericProfileActionJPanel* genericProfileActionJPanel) -> void{
 this->genericProfileActionJPanel= genericProfileActionJPanel;
     
 }
 
 
-    public: GenericProfileActions* getGenericProfileActions(){
+    auto GenericProfileActionsJPanel::getGenericProfileActions() -> GenericProfileActions*{
 
 
 
@@ -423,41 +424,18 @@ this->genericProfileActionJPanel= genericProfileActionJPanel;
 }
 
 
-    public: void setGenericProfileActions(GenericProfileActions* genericProfileActions){
+    auto GenericProfileActionsJPanel::setGenericProfileActions(GenericProfileActions* genericProfileActions) -> void{
 this->genericProfileActions= genericProfileActions;
     
 }
 
 
-    private: void newActionJButtonActionPerformed(java::awt::event::ActionEvent* evt){
+    auto GenericProfileActionsJPanel::newActionJButtonActionPerformed(java::awt::event::ActionEvent* evt) -> void{
 this->newProfileActionJDialog->setVisible(true);
     
 }
 
 
-    private: javax::swing::JPanel* blankGenericProfileActionJPanel;
 
-    private: javax::swing::JButton* deleteActionJButton;
 
-    private: javax::swing::JList* genericProfileActionsJList;
-
-    private: javax::swing::JPanel* genericProfileActionsJPanel;
-
-    private: javax::swing::JScrollPane* genericProfileActionsJScrollPane;
-
-    private: javax::swing::JButton* newActionJButton;
-
-    private: javax::swing::JDialog* newProfileActionJDialog;
-
-    private: javax::swing::JLabel* newProfileActionJLabel;
-
-    private: javax::swing::JTextField* newProfileActionJTextField;
-
-    private: javax::swing::JButton* okNewProfileActionJButton;
-
-    private: javax::swing::JButton* saveJButton;
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_CPP

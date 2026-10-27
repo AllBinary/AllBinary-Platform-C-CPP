@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/info/BasicViewData.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -45,111 +55,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicViewData
-            : public Object
-         {
+auto BasicViewData::instance_owner() -> BasicViewData* { static std::unique_ptr<BasicViewData> value(new BasicViewData()); return value.get(); }
+BasicViewData* BasicViewData::instance = BasicViewData::instance_owner();
 
-    private: static BasicViewData* instance() { static std::unique_ptr<BasicViewData> value(new BasicViewData()); return value.get(); }
-
-    public: static BasicViewData* getInstance(){
+    auto BasicViewData::getInstance() -> BasicViewData*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicViewData::instance();
+                        return BasicViewData::instance;
     
 }
 
 
-private: BasicViewData(){
+BasicViewData::BasicViewData() : USERDIR(JavaString::valueOf(this->GENERICDIR) +JavaString::valueOf("user/")), ADDRESSDIR(JavaString::valueOf(this->USERDIR) +JavaString::valueOf("address/")), BILLINGADDRESSDIR(JavaString::valueOf(this->ADDRESSDIR) +JavaString::valueOf("billing/")), SHIPPINGADDRESSDIR(JavaString::valueOf(this->ADDRESSDIR) +JavaString::valueOf("shipping/")), COMMERCEDIR(JavaString::valueOf(this->USERDIR) +JavaString::valueOf("commerce/")), INVENTORYDIR(JavaString::valueOf(this->COMMERCEDIR) +JavaString::valueOf("inventory/")), BASKETDIR(JavaString::valueOf(this->INVENTORYDIR) +JavaString::valueOf("basket/")), ITEMDIR(JavaString::valueOf(this->INVENTORYDIR) +JavaString::valueOf("item/")), MONEYDIR(JavaString::valueOf(this->COMMERCEDIR) +JavaString::valueOf("money/")), SHIPPINGDIR(JavaString::valueOf(this->COMMERCEDIR) +JavaString::valueOf("shipping/")), ORDERDIR(JavaString::valueOf(this->INVENTORYDIR) +JavaString::valueOf("order/")), ORDEREMAILDIR(JavaString::valueOf(this->ORDERDIR) +JavaString::valueOf("email/")), ORDERHISTORYDIR(JavaString::valueOf(this->ORDERDIR) +JavaString::valueOf("history/")), ORDERREVIEWDIR(JavaString::valueOf(this->ORDERDIR) +JavaString::valueOf("review/")), PAYMENTDIR(JavaString::valueOf(this->MONEYDIR) +JavaString::valueOf("payment/")), GENERATIONDIR(JavaString::valueOf(this->GENERICDIR) +JavaString::valueOf("generation/")), PRODUCTSDIR(JavaString::valueOf(this->GENERICDIR) +JavaString::valueOf("products/")), IGNOREXMLXSL(JavaString::valueOf(this->GENERICDIR) +JavaString::valueOf("ignoreXmlView.xsl")), REVIEWORDERVIEWXSL(JavaString::valueOf(this->ORDERREVIEWDIR) +JavaString::valueOf("reviewOrderView.xsl")), ORDERVIEWXSL(this->REVIEWORDERVIEWXSL), INVENTORYXSL(JavaString::valueOf(this->INVENTORYDIR) +JavaString::valueOf("inventory.xsl")), BASKETXSL(JavaString::valueOf(this->BASKETDIR) +JavaString::valueOf("basket.xsl")), CHECKOUTBASKETXSL(JavaString::valueOf(this->BASKETDIR) +JavaString::valueOf("staticBasket.xsl")), MINIBASKETXSL(JavaString::valueOf(this->BASKETDIR) +JavaString::valueOf("miniBasket.xsl")), BILLINGADDRESSCHANGEFORMXSL(JavaString::valueOf(this->BILLINGADDRESSDIR) +JavaString::valueOf("billingAddressChangeForm.xsl")), BILLINGADDRESSINPUTFORMXSL(JavaString::valueOf(this->BILLINGADDRESSDIR) +JavaString::valueOf("billingAddressInputForm.xsl")), BILLINGADDRESSVIEWXSL(JavaString::valueOf(this->BILLINGADDRESSDIR) +JavaString::valueOf("billingAddressView.xsl")), SHIPPINGADDRESSCHANGEFORMXSL(JavaString::valueOf(this->SHIPPINGADDRESSDIR) +JavaString::valueOf("shippingAddressChangeForm.xsl")), SHIPPINGADDRESSINPUTFORMXSL(JavaString::valueOf(this->SHIPPINGADDRESSDIR) +JavaString::valueOf("shippingAddressInputForm.xsl")), SHIPPINGADDRESSVIEWXSL(JavaString::valueOf(this->SHIPPINGADDRESSDIR) +JavaString::valueOf("shippingAddressView.xsl")), NEWTAXADDRESSXSL(JavaString::valueOf(this->SHIPPINGADDRESSDIR) +JavaString::valueOf("newTaxAddressView.xsl")), EDITTAXADDRESSXSL(JavaString::valueOf(this->SHIPPINGADDRESSDIR) +JavaString::valueOf("editTaxAddressView.xsl")), SHIPPINGMETHODSXSL(JavaString::valueOf(this->SHIPPINGDIR) +JavaString::valueOf("shippingMethods.xsl")), ORDERCUSTOMEREMAILVIEWXSL(JavaString::valueOf(this->ORDEREMAILDIR) +JavaString::valueOf("orderCustomerEmailView.xsl")), ORDERMANAGEREMAILVIEWXSL(JavaString::valueOf(this->ORDEREMAILDIR) +JavaString::valueOf("orderManagerEmailView.xsl")), EDITCUSTOMERXSL(JavaString::valueOf(this->USERDIR) +JavaString::valueOf("editCustomerInputForm.xsl")), ORDERHISTORYXSL(JavaString::valueOf(this->ORDERHISTORYDIR) +JavaString::valueOf("orderHistory.xsl")), PAYMENTVIEWXSL(JavaString::valueOf(this->PAYMENTDIR) +JavaString::valueOf("paymentView.xsl")), SUMMARYXSL(JavaString::valueOf(this->ITEMDIR) +JavaString::valueOf("summary/summary.xsl")), PAYMENTGATEWAYOPTIONSXSL(JavaString::valueOf(this->PAYMENTDIR) +JavaString::valueOf("paymentGatewayOptions.xsl")), MAKEPAYMENTVIEWXSL(JavaString::valueOf(JavaString::valueOf(this->PAYMENTDIR) +JavaString::valueOf("invoice/")) +JavaString::valueOf("makePayment.xsl")){
 }
 
 
-    const std::string GENERICDIR = "generic/";
 
-    const std::string USERDIR = this->GENERICDIR +"user/";
 
-    const std::string ADDRESSDIR = this->USERDIR +"address/";
-
-    const std::string BILLINGADDRESSDIR = this->ADDRESSDIR +"billing/";
-
-    const std::string SHIPPINGADDRESSDIR = this->ADDRESSDIR +"shipping/";
-
-    const std::string COMMERCEDIR = this->USERDIR +"commerce/";
-
-    const std::string INVENTORYDIR = this->COMMERCEDIR +"inventory/";
-
-    const std::string BASKETDIR = this->INVENTORYDIR +"basket/";
-
-    const std::string ITEMDIR = this->INVENTORYDIR +"item/";
-
-    const std::string MONEYDIR = this->COMMERCEDIR +"money/";
-
-    const std::string SHIPPINGDIR = this->COMMERCEDIR +"shipping/";
-
-    const std::string ORDERDIR = this->INVENTORYDIR +"order/";
-
-    const std::string ORDEREMAILDIR = this->ORDERDIR +"email/";
-
-    const std::string ORDERHISTORYDIR = this->ORDERDIR +"history/";
-
-    const std::string ORDERREVIEWDIR = this->ORDERDIR +"review/";
-
-    public: const std::string PAYMENTDIR = this->MONEYDIR +"payment/";
-
-    const std::string GENERATIONDIR = this->GENERICDIR +"generation/";
-
-    const std::string PRODUCTSDIR = this->GENERICDIR +"products/";
-
-    public: const std::string IGNOREXMLXSL = this->GENERICDIR +"ignoreXmlView.xsl";
-
-    public: const std::string REVIEWORDERVIEWXSL = this->ORDERREVIEWDIR +"reviewOrderView.xsl";
-
-    public: const std::string ORDERVIEWXSL = this->REVIEWORDERVIEWXSL;
-
-    public: const std::string INVENTORYXSL = this->INVENTORYDIR +"inventory.xsl";
-
-    public: const std::string BASKETXSL = this->BASKETDIR +"basket.xsl";
-
-    public: const std::string CHECKOUTBASKETXSL = this->BASKETDIR +"staticBasket.xsl";
-
-    public: const std::string MINIBASKETXSL = this->BASKETDIR +"miniBasket.xsl";
-
-    public: const std::string BILLINGADDRESSCHANGEFORMXSL = this->BILLINGADDRESSDIR +"billingAddressChangeForm.xsl";
-
-    public: const std::string BILLINGADDRESSINPUTFORMXSL = this->BILLINGADDRESSDIR +"billingAddressInputForm.xsl";
-
-    public: const std::string BILLINGADDRESSVIEWXSL = this->BILLINGADDRESSDIR +"billingAddressView.xsl";
-
-    public: const std::string SHIPPINGADDRESSCHANGEFORMXSL = this->SHIPPINGADDRESSDIR +"shippingAddressChangeForm.xsl";
-
-    public: const std::string SHIPPINGADDRESSINPUTFORMXSL = this->SHIPPINGADDRESSDIR +"shippingAddressInputForm.xsl";
-
-    public: const std::string SHIPPINGADDRESSVIEWXSL = this->SHIPPINGADDRESSDIR +"shippingAddressView.xsl";
-
-    public: const std::string NEWTAXADDRESSXSL = this->SHIPPINGADDRESSDIR +"newTaxAddressView.xsl";
-
-    public: const std::string EDITTAXADDRESSXSL = this->SHIPPINGADDRESSDIR +"editTaxAddressView.xsl";
-
-    public: const std::string SHIPPINGMETHODSXSL = this->SHIPPINGDIR +"shippingMethods.xsl";
-
-    public: const std::string ORDERCUSTOMEREMAILVIEWXSL = this->ORDEREMAILDIR +"orderCustomerEmailView.xsl";
-
-    public: const std::string ORDERMANAGEREMAILVIEWXSL = this->ORDEREMAILDIR +"orderManagerEmailView.xsl";
-
-    public: const std::string EDITCUSTOMERXSL = this->USERDIR +"editCustomerInputForm.xsl";
-
-    public: const std::string ORDERHISTORYXSL = this->ORDERHISTORYDIR +"orderHistory.xsl";
-
-    public: const std::string PAYMENTVIEWXSL = this->PAYMENTDIR +"paymentView.xsl";
-
-    public: const std::string SUMMARYXSL = this->ITEMDIR +"summary/summary.xsl";
-
-    public: const std::string PAYMENTGATEWAYOPTIONSXSL = this->PAYMENTDIR +"paymentGatewayOptions.xsl";
-
-    public: const std::string MAKEPAYMENTVIEWXSL = this->PAYMENTDIR +"invoice/" +"makePayment.xsl";
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_BASICVIEWDATA_CPP

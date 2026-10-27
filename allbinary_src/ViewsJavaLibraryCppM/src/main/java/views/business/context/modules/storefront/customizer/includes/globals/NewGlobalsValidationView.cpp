@@ -18,6 +18,16 @@
 
 
 
+        #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_NEWGLOBALSVALIDATIONVIEW_CPP
+        #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_NEWGLOBALSVALIDATIONVIEW_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "views/business/context/modules/storefront/customizer/includes/globals/NewGlobalsValidationView.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -70,11 +80,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "views/business/context/modules/storefront/customizer/includes/globals/GlobalsView.h"
 
-class NewGlobalsValidationView: public GlobalsView, public ValidationComponentInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface) : GlobalsView(transformInfoInterface){
+NewGlobalsValidationView::NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface) : GlobalsView(transformInfoInterface), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -86,7 +93,7 @@ public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface)
 
                 //@Throws(Exception.constructor)
             
-    public: Document* toXmlDoc(){
+    auto NewGlobalsValidationView::toXmlDoc() -> Document*{
 
 
 
@@ -96,7 +103,7 @@ public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface)
 }
 
 
-    public: bool isValid(){
+    auto NewGlobalsValidationView::isValid() -> bool{
 
         try {
             
@@ -118,10 +125,10 @@ public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface)
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -137,7 +144,7 @@ public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface)
 }
 
 
-    public: std::string validationInfo(){
+    auto NewGlobalsValidationView::validationInfo() -> std::string{
 
         try {
             
@@ -154,7 +161,7 @@ public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface)
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -173,7 +180,7 @@ public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface)
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto NewGlobalsValidationView::toValidationInfoDoc() -> Document*{
 
 
 
@@ -183,7 +190,7 @@ public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface)
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto NewGlobalsValidationView::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -195,17 +202,16 @@ public: NewGlobalsValidationView(TransformInfoInterface* transformInfoInterface)
 
                 //@Throws(Exception.constructor)
             
-    public: std::string view(){
+    auto NewGlobalsValidationView::view() -> std::string{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()->view(this);;
+                        return views.ValidationOnlyTempUtil->getInstance()->view(this);;
     
 }
 
 
-};
 
-            
 
+        #endif //VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_GLOBALS_NEWGLOBALSVALIDATIONVIEW_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_NULLINPUTROBOT_CPP
+        #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_NULLINPUTROBOT_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/input/automation/robot/NullInputRobot.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -69,16 +79,9 @@
 #include "org/allbinary/input/automation/robot/Rectangle.h"
 #include "org/allbinary/input/automation/robot/Color.h"
 
-class NullInputRobot: public AbstractInputRobot, public InputRobotInterface {
 
-    public: static inline const std::string LIBRARY_NAME = "null";
-
-    public: static inline const std::string NAME = "NULL";
-
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: NullInputRobot() : AbstractInputRobot(
-                            nullptr){
+NullInputRobot::NullInputRobot() : AbstractInputRobot(
+                            nullptr), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -88,7 +91,7 @@ public: NullInputRobot() : AbstractInputRobot(
 }
 
 
-    public: std::string getName(){
+    auto NullInputRobot::getName() -> std::string{
 
 
 
@@ -98,7 +101,7 @@ public: NullInputRobot() : AbstractInputRobot(
 }
 
 
-    public: HelpSet* getHelpSet(){
+    auto NullInputRobot::getHelpSet() -> HelpSet*{
 
 
 
@@ -108,7 +111,7 @@ public: NullInputRobot() : AbstractInputRobot(
 }
 
 
-    public: Point* getMousePoint(){
+    auto NullInputRobot::getMousePoint() -> Point*{
 
 
 
@@ -118,37 +121,37 @@ public: NullInputRobot() : AbstractInputRobot(
 }
 
 
-    public: void keyPress(int32_t keycode){
-this->logUtil->putF("KeyCode: " +keycode, this, "keyPress");
+    auto NullInputRobot::keyPress(int32_t keycode) -> void{
+this->logUtil->putF(JavaString::valueOf("KeyCode: ") +JavaString::valueOf(keycode), this, "keyPress");
     
 }
 
 
-    public: void keyRelease(int32_t keycode){
-this->logUtil->putF("KeyCode: " +keycode, this, "keyRelease");
+    auto NullInputRobot::keyRelease(int32_t keycode) -> void{
+this->logUtil->putF(JavaString::valueOf("KeyCode: ") +JavaString::valueOf(keycode), this, "keyRelease");
     
 }
 
 
-    public: void mouseMove(int32_t x, int32_t y){
-this->logUtil->putF("X: " +x +" Y: " +y, this, "mouseMove");
+    auto NullInputRobot::mouseMove(int32_t x, int32_t y) -> void{
+this->logUtil->putF(JavaString::valueOf(JavaString::valueOf(JavaString::valueOf("X: ") +JavaString::valueOf(x)) +JavaString::valueOf(" Y: ")) +JavaString::valueOf(y), this, "mouseMove");
     
 }
 
 
-    public: void mousePress(int32_t buttons){
-this->logUtil->putF("Buttons: " +buttons, this, "mousePress");
+    auto NullInputRobot::mousePress(int32_t buttons) -> void{
+this->logUtil->putF(JavaString::valueOf("Buttons: ") +JavaString::valueOf(buttons), this, "mousePress");
     
 }
 
 
-    public: void mouseRelease(int32_t buttons){
-this->logUtil->putF("Buttons: " +buttons, this, "mouseRelease");
+    auto NullInputRobot::mouseRelease(int32_t buttons) -> void{
+this->logUtil->putF(JavaString::valueOf("Buttons: ") +JavaString::valueOf(buttons), this, "mouseRelease");
     
 }
 
 
-    public: BufferedImage* createScreenCapture(Rectangle* screenRect){
+    auto NullInputRobot::createScreenCapture(Rectangle* screenRect) -> BufferedImage*{
 
 
 
@@ -158,11 +161,11 @@ this->logUtil->putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public: void delay(int32_t ms){
+    auto NullInputRobot::delay(int32_t ms) -> void{
 }
 
 
-    public: int32_t getAutoDelay(){
+    auto NullInputRobot::getAutoDelay() -> int32_t{
 
 
 
@@ -172,7 +175,7 @@ this->logUtil->putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public: Color* getPixelColor(int32_t x, int32_t y){
+    auto NullInputRobot::getPixelColor(int32_t x, int32_t y) -> Color*{
 
 
 
@@ -182,7 +185,7 @@ this->logUtil->putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public: bool isAutoWaitForIdle(){
+    auto NullInputRobot::isAutoWaitForIdle() -> bool{
 
 
 
@@ -192,19 +195,19 @@ this->logUtil->putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public: void mouseWheel(int32_t wheelAmt){
+    auto NullInputRobot::mouseWheel(int32_t wheelAmt) -> void{
 }
 
 
-    public: void setAutoDelay(int32_t ms){
+    auto NullInputRobot::setAutoDelay(int32_t ms) -> void{
 }
 
 
-    public: void setAutoWaitForIdle(bool isOn){
+    auto NullInputRobot::setAutoWaitForIdle(bool isOn) -> void{
 }
 
 
-    public: std::string toString(){
+    auto NullInputRobot::toString() -> std::string{
 
 
 
@@ -214,11 +217,10 @@ this->logUtil->putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public: void waitForIdle(){
+    auto NullInputRobot::waitForIdle() -> void{
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_NULLINPUTROBOT_CPP

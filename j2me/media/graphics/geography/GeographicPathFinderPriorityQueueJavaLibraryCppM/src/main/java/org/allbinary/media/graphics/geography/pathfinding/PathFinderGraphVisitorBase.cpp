@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORBASE_CPP
+        #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORBASE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/media/graphics/geography/pathfinding/PathFinderGraphVisitorBase.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -52,51 +62,50 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //1.4.2
-class PathFinderGraphVisitorBase
-            : public Object
-         {
+
+PathFinderGraphVisitorBase::PathFinderGraphVisitorBase() {
+        }
+        
+                //@Throws(Exception.constructor)
+            
+    auto PathFinderGraphVisitorBase::visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList) -> void{
+
+
+
+                            throw RuntimeException();
+                    
+}
+
 
                 //@Throws(Exception.constructor)
             
-    public: void visit(Object* graph, BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList){
+    auto PathFinderGraphVisitorBase::fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList) -> void{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-                //@Throws(Exception.constructor)
-            
-    public: void fixPath(BasicArrayList* startPathFindingNodeList, BasicArrayList* endPathFindingNodeList, BasicArrayList* pathList){
+    auto PathFinderGraphVisitorBase::isValid(Object* graphPath) -> bool{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: bool isValid(Object* graphPath){
+    auto PathFinderGraphVisitorBase::getInvalidReason(Object* graphPath) -> std::string{
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public: std::string getInvalidReason(Object* graphPath){
 
 
-
-                            throw new RuntimeException();
-                    
-}
-
-
-};
-
-            
-
+        #endif //ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDERGRAPHVISITORBASE_CPP

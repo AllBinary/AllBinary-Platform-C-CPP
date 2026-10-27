@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGINSTRUCTIONSCANVAS_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGINSTRUCTIONSCANVAS_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/GameInputMappingInstructionsCanvas.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -75,58 +85,45 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/GameCommandCanvas.h"
 
-class GameInputMappingInstructionsCanvas: public GameCommandCanvas {
+auto GameInputMappingInstructionsCanvas::DISPLAY_owner() -> Command* { static std::unique_ptr<Command> value(new Command("Help", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
+Command* GameInputMappingInstructionsCanvas::DISPLAY = GameInputMappingInstructionsCanvas::DISPLAY_owner();
+auto GameInputMappingInstructionsCanvas::CLOSE_owner() -> Command* { static std::unique_ptr<Command> value(new Command("Close", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
+Command* GameInputMappingInstructionsCanvas::CLOSE = GameInputMappingInstructionsCanvas::CLOSE_owner();
 
-    public: static Command* DISPLAY() { static std::unique_ptr<Command> value(new Command("Help", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
-
-    public: static Command* CLOSE() { static std::unique_ptr<Command> value(new Command("Close", StringUtil::getInstance()->EMPTY_STRING, Command::SCREEN, 1)); return value.get(); }
-
-    public: static inline const std::string NAME = "GameInputMappingInstructionsCanvas";
-
-    private: DrawStringUtil* drawStringUtil = DrawStringUtil::getInstance();
-
-    protected: const std::string TITLE = "Input Instructions";
-
-    private: const std::vector<std::string> instructions = 
+GameInputMappingInstructionsCanvas::GameInputMappingInstructionsCanvas(CommandListener* commandListener, AllBinaryGameLayerManager* allBinaryGameLayerManager) : GameCommandCanvas(commandListener, GameInputMappingInstructionsCanvas::NAME, allBinaryGameLayerManager->getBackgroundBasicColor(), allBinaryGameLayerManager->getForegroundBasicColor()), drawStringUtil(DrawStringUtil::getInstance()), instructions(
                                                         {
                                                             "Add Input Mapping:","1. Select the desired action by generating a currently defined input for a given action.","(Example: Press the '1' key to select the Fire action)","2. Make the newly desired input for the selected action.","(Example: Press 'f' to add it to the selected action)","Note: If the input is already mapped to another action then it will not be added. You","will need to deleted from the other action before adding it to another.","Warning: Not all keys map for a given platform and show as Unknown.",StringUtil::getInstance()->EMPTY_STRING,"Remove Input Mapping:","1. Select the desired action by generating a currently defined input for a given action.","(Example: Press the key '1' to select the Fire action)","2. Select a mapped input for the selected action.","(Example: Press the key '1' to select the '1' key input for the selected Fire action)","3. Press the Delete Key."
-                                                        };
-
-    private: ColorFillBasePaintable* colorFillPaintable;
-
-    private: int32_t anchor = Anchor::TOP_LEFT;
-
-public: GameInputMappingInstructionsCanvas(CommandListener* commandListener, AllBinaryGameLayerManager* allBinaryGameLayerManager) : GameCommandCanvas(commandListener, GameInputMappingInstructionsCanvas::NAME, allBinaryGameLayerManager->getBackgroundBasicColor(), allBinaryGameLayerManager->getForegroundBasicColor()){
+                                                        }), anchor(Anchor::TOP_LEFT){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
+this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->CONSTRUCTOR);
     
 this->colorFillPaintable= ColorFillPaintableFactory::getInstance()->getInstance(allBinaryGameLayerManager->getBackgroundBasicColor(), false);
     
 }
 
 
-    public: void initCommands(CommandListener* cmdListener){
+    auto GameInputMappingInstructionsCanvas::initCommands(CommandListener* cmdListener) -> void{
 this->removeAllCommands();
     
-this->addCommand(GameInputMappingInstructionsCanvas::CLOSE());
+this->addCommand(GameInputMappingInstructionsCanvas::CLOSE);
     
 this->setCommandListener(cmdListener);
     
 }
 
 
-    public: void paint(Graphics* graphics){
-this->myFontProcessor.process(graphics);
+    auto GameInputMappingInstructionsCanvas::paint(Graphics* graphics) -> void{
+this->myFontProcessor->process(graphics);
     
 this->colorFillPaintable->paint(graphics);
     
 
-    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
+    int32_t halfWidth = this->displayInfo->getLastHalfWidth();;
     
 
     int32_t beginWidth = (graphics->getFont()->stringWidth(this->TITLE)>>1);;
@@ -135,14 +132,13 @@ graphics->setColor(this->foregroundColor);
     
 graphics->drawString(this->TITLE, halfWidth -beginWidth, this->fontHeight, this->anchor);
     
-this->drawStringUtil->drawCenterStrings(graphics, this->instructions, this->displayInfo.getLastWidth(), this->fontHeight, halfWidth, 3 *this->fontHeight);
+this->drawStringUtil->drawCenterStrings(graphics, this->instructions, this->displayInfo->getLastWidth(), this->fontHeight, halfWidth, 3 *this->fontHeight);
     
-super.paint(graphics);
+GameCommandCanvas::paint(graphics);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEINPUTMAPPINGINSTRUCTIONSCANVAS_CPP

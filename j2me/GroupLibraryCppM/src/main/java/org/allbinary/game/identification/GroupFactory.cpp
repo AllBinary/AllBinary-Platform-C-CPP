@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_CPP
+        #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/identification/GroupFactory.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -63,31 +73,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/identification/Group.h"
 
-class GroupFactory
-            : public Object
-         {
 
-    private: static GroupFactory* instance() { static std::unique_ptr<GroupFactory> value(new GroupFactory()); return value.get(); }
+GroupFactory::GroupFactory() : logUtil(LogUtil::getInstance()), NULL_GROUP_ARRAY({}), list(new BasicArrayListD()) {
+        }
+        auto GroupFactory::instance_owner() -> GroupFactory* { static std::unique_ptr<GroupFactory> value(new GroupFactory()); return value.get(); }
+GroupFactory* GroupFactory::instance = GroupFactory::instance_owner();
 
-    public: static GroupFactory* getInstance(){
+    auto GroupFactory::getInstance() -> GroupFactory*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GroupFactory::instance();
+                        return GroupFactory::instance;
     
 }
 
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-    public: const std::vector<Group*> NULL_GROUP_ARRAY = {};
-
-    private: BasicArrayList* list = new BasicArrayListD();
-
-    private: int32_t index = 0;
-
-    public: Group* getNextGroup(){
+    auto GroupFactory::getNextGroup() -> Group*{
 
     Group* group = dynamic_cast<Group*>(this->list->objectArray[this->index]);;
     
@@ -102,7 +104,7 @@ this->index++;
 }
 
 
-    public: Group* getNextGroupByName(std::string name){
+    auto GroupFactory::getNextGroupByName(std::string name) -> Group*{
 
     Group* group = this->getNextGroup();;
     
@@ -117,7 +119,7 @@ group->setName(name);
 }
 
 
-    public: void init(int16_t groups, std::vector<std::string> nameArray){
+    auto GroupFactory::init(int16_t groups, std::vector<std::string> nameArray) -> void{
 
     StringMaker* stringMaker = new StringMaker();;
     
@@ -150,7 +152,7 @@ this->index= 0;
                                     }
                                 
                         else {
-                            stringMaker->delete(0, stringMaker->length());
+                            stringMaker->delete_(0, stringMaker->length());
     
 name= stringMaker->append(TEAM)->appendint(size)->toString();
     
@@ -166,7 +168,6 @@ size++;
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_CPP

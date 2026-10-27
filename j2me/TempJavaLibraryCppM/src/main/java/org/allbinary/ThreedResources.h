@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_THREEDRESOURCES_H
         #define ORG_ALLBINARY_THREEDRESOURCES_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -48,14 +53,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ThreedResources
-            : public Object
+            : public virtual Object
          {
 
-    private: static ThreedResources* threedResources() { static std::unique_ptr<ThreedResources> value(new ThreedResources()); return value.get(); }
+    private: static ThreedResources* threedResources_owner();
+    private: static ThreedResources* threedResources;
 
     public: static ThreedResources* getThreedResources();
 
+
+            
+    public: ThreedResources();
+        
     public: void add();
 
 };
@@ -64,3 +78,10 @@ class ThreedResources
 
 
         #endif //ORG_ALLBINARY_THREEDRESOURCES_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_THREEDRESOURCES_H_COMPLETE)
+        #define ORG_ALLBINARY_THREEDRESOURCES_H_COMPLETE
+        
+        #endif
+    

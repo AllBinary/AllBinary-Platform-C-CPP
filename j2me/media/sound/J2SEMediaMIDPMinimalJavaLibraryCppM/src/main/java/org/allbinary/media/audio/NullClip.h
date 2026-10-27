@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -32,35 +37,15 @@
             #include "java/lang/Object.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <javax/sound/sampled/AudioFormat.h>
-
-      
-#include <javax/sound/sampled/AudioInputStream.h>
-
-      
-#include <javax/sound/sampled/BooleanControl.h>
-
-      
+class AudioFormat;
+class AudioInputStream;
+class BooleanControl;
 #include <javax/sound/sampled/Clip.h>
-
-      
-#include <javax/sound/sampled/Control.h>
-
-      
-#include <javax/sound/sampled/Control/Type.h>
-
-      
-#include <javax/sound/sampled/Line/Info.h>
-
-      
-#include <javax/sound/sampled/LineListener.h>
-
-      
-#include <javax/sound/sampled/LineUnavailableException.h>
-
-      
+class Control;
+class Type;
+class Info;
+class LineListener;
+class LineUnavailableException;
 
 
 
@@ -79,15 +64,24 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "org/allbinary/media/audio/NullJ2SEControl.h"
-#include "org/allbinary/media/audio/NullAudioFormat.h"
+        class NullJ2SEControl;
+class NullAudioFormat;
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class NullClip
-            : public Object
+            : public virtual Object
         , public Clip {
 
-    public: static NullJ2SEControl* NULL_CONTROL() { static std::unique_ptr<NullJ2SEControl> value(new NullJ2SEControl(BooleanControl::Type.MUTE)); return value.get(); }
+    private: static NullJ2SEControl* NULL_CONTROL_owner();
+    public: static NullJ2SEControl* NULL_CONTROL;
 
+
+            
+    public: NullClip();
+        
                 //@Throws(LineUnavailableException.constructor)
             
     public: void open(AudioFormat* format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize);
@@ -160,3 +154,46 @@ class NullClip
 
 
         #endif //ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_H_COMPLETE)
+        #define ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_H_COMPLETE
+        #if __has_include(<java/io/IOException.h>)
+#include <java/io/IOException.h>
+#endif
+#if __has_include(<javax/sound/sampled/AudioFormat.h>)
+#include <javax/sound/sampled/AudioFormat.h>
+#endif
+#if __has_include(<javax/sound/sampled/AudioInputStream.h>)
+#include <javax/sound/sampled/AudioInputStream.h>
+#endif
+#if __has_include(<javax/sound/sampled/BooleanControl.h>)
+#include <javax/sound/sampled/BooleanControl.h>
+#endif
+#if __has_include(<javax/sound/sampled/Clip.h>)
+#include <javax/sound/sampled/Clip.h>
+#endif
+#if __has_include(<javax/sound/sampled/Control.h>)
+#include <javax/sound/sampled/Control.h>
+#endif
+#if __has_include(<javax/sound/sampled/Control/Type.h>)
+#include <javax/sound/sampled/Control/Type.h>
+#endif
+#if __has_include(<javax/sound/sampled/Line/Info.h>)
+#include <javax/sound/sampled/Line/Info.h>
+#endif
+#if __has_include(<javax/sound/sampled/LineListener.h>)
+#include <javax/sound/sampled/LineListener.h>
+#endif
+#if __has_include(<javax/sound/sampled/LineUnavailableException.h>)
+#include <javax/sound/sampled/LineUnavailableException.h>
+#endif
+#if __has_include("org/allbinary/media/audio/NullJ2SEControl.h")
+#include "org/allbinary/media/audio/NullJ2SEControl.h"
+#endif
+#if __has_include("org/allbinary/media/audio/NullAudioFormat.h")
+#include "org/allbinary/media/audio/NullAudioFormat.h"
+#endif
+
+        #endif
+    

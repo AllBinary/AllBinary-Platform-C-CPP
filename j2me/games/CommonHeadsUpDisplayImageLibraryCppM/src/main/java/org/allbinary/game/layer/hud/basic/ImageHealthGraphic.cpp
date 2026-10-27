@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_IMAGEHEALTHGRAPHIC_CPP
+        #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_IMAGEHEALTHGRAPHIC_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/layer/hud/basic/ImageHealthGraphic.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -66,18 +76,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/layer/hud/basic/HealthGraphic.h"
 
-class ImageHealthGraphic: public HealthGraphic {
 
-    private: std::vector<Image*> image;
-
-public: ImageHealthGraphic(AnimationInterface* animationInterface, HealthInterface* healthInterface, int32_t location, int32_t direction) : HealthGraphic(animationInterface, healthInterface, location, direction){
+ImageHealthGraphic::ImageHealthGraphic(AnimationInterface* animationInterface, HealthInterface* healthInterface, int32_t location, int32_t direction) : HealthGraphic(animationInterface, healthInterface, location, direction){
 
                         //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->image= std::vector<Image*>(this->healthInterface.getMaxHealth());
+this->image= std::vector<Image*>(this->healthInterface->getMaxHealth());
     
 
     ImageCacheFactory* imageCacheFactory = ImageCacheFactory::getInstance();;
@@ -107,7 +114,7 @@ this->image[numOfHealth]= imageCacheFactory->get(this, numOfHealth +1 *10, 10);
                         for (
     int32_t index = 0;index < numOfHealth; index++)
         {
-this->animationInterface.paint(this->image[numOfHealth].getGraphics(), numOfHealth *10, 0);
+this->animationInterface->paint(this->image[numOfHealth]->getGraphics(), numOfHealth *10, 0);
     
 }
 
@@ -116,13 +123,12 @@ this->animationInterface.paint(this->image[numOfHealth].getGraphics(), numOfHeal
 }
 
 
-    public: void paint(Graphics* graphics){
+    auto ImageHealthGraphic::paint(Graphics* graphics) -> void{
 graphics->drawImage(this->image[max], x, y, Anchor::TOP_LEFT);
     
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_IMAGEHEALTHGRAPHIC_CPP

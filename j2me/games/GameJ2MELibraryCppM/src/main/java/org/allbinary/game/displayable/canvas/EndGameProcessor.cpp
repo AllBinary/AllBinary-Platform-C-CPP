@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEPROCESSOR_CPP
+        #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEPROCESSOR_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/game/displayable/canvas/EndGameProcessor.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -64,15 +74,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h"
 
-class EndGameProcessor: public Processor {
 
-    protected: GameStateFactory* gameStateFactory = GameStateFactory::getInstance();
-
-    private: AllBinaryGameCanvas* gameCanvas;
-
-    private: const int64_t WAIT = 5000;
-
-public: EndGameProcessor(AllBinaryGameCanvas* gameCanvas){
+EndGameProcessor::EndGameProcessor(AllBinaryGameCanvas* gameCanvas) : gameStateFactory(GameStateFactory::getInstance()){
 this->gameCanvas= gameCanvas;
     
 }
@@ -80,7 +83,7 @@ this->gameCanvas= gameCanvas;
 
                 //@Throws(Exception.constructor)
             
-    public: void process(){
+    auto EndGameProcessor::process() -> void{
 
                         if(this->gameCanvas->isHighScoreSubmitted())
                         
@@ -137,7 +140,6 @@ this->gameCanvas->setHighScoresPaintable(NullPaintable::getInstance());
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDGAMEPROCESSOR_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_CPP
+        #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/communication/sql/AbSqlTablePresentation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -47,9 +57,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/logic/communication/sql/AbSqlBasic.h"
 
-class AbSqlTablePresentation: public AbSqlBasic {
 
-public: AbSqlTablePresentation(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
+AbSqlTablePresentation::AbSqlTablePresentation(DbConnectionInfo* databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -59,7 +68,6 @@ public: AbSqlTablePresentation(DbConnectionInfo* databaseConnectionInfoInterface
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEPRESENTATION_CPP

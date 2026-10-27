@@ -3,6 +3,16 @@
         
 
 
+        #ifndef _BOOLEANTEST_CPP
+        #define _BOOLEANTEST_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "BooleanTest.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -39,11 +49,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BooleanTest
-            : public Object
-         {
 
-};
+BooleanTest::BooleanTest() {
+        }
+        
 
-            
 
+        #endif //_BOOLEANTEST_CPP

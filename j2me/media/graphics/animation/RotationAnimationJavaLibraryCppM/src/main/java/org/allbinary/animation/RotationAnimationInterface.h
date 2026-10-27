@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACE_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -28,11 +33,7 @@
 
         
 #include <org/allbinary/direction/DirectionalInterface.h>
-
-      
-#include <org/allbinary/math/AngleInfo.h>
-
-      
+class AngleInfo;
 
 
 
@@ -53,6 +54,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "org/allbinary/animation/IndexedAnimationInterface.h"
 
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class RotationAnimationInterface: public IndexedAnimationInterface, public DirectionalInterface {
 
     public: virtual AngleInfo* getAngleInfoP() = 0;
@@ -67,3 +72,19 @@ class RotationAnimationInterface: public IndexedAnimationInterface, public Direc
 
 
         #endif //ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACE_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACE_H_COMPLETE)
+        #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACE_H_COMPLETE
+        #if __has_include(<org/allbinary/direction/DirectionalInterface.h>)
+#include <org/allbinary/direction/DirectionalInterface.h>
+#endif
+#if __has_include(<org/allbinary/math/AngleInfo.h>)
+#include <org/allbinary/math/AngleInfo.h>
+#endif
+#if __has_include("org/allbinary/animation/IndexedAnimationInterface.h")
+#include "org/allbinary/animation/IndexedAnimationInterface.h"
+#endif
+
+        #endif
+    

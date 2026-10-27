@@ -21,6 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_CANVAS_ABTOGBUTIL_H
         #define ORG_ALLBINARY_GAME_CANVAS_ABTOGBUTIL_H
 
+        
+        #pragma push_macro("JAVA_COMPLETE_TYPES")
+        #undef JAVA_COMPLETE_TYPES
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -29,15 +34,9 @@
         
             #include "java/lang/Object.h"
         
-#include <javax/microedition/lcdui/Canvas.h>
-
-      
-#include <javax/microedition/lcdui/NullCanvas.h>
-
-      
-#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
-
-      
+class Canvas;
+class NullCanvas;
+class AllBinaryGameLayerManager;
 
 
 
@@ -57,17 +56,26 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+                                
+        #pragma pop_macro("JAVA_COMPLETE_TYPES")
+
+        
 class ABToGBUtil
-            : public Object
+            : public virtual Object
          {
 
-    private: static ABToGBUtil* instance() { static std::unique_ptr<ABToGBUtil> value(new ABToGBUtil()); return value.get(); }
+    private: static ABToGBUtil* instance_owner();
+    private: static ABToGBUtil* instance;
 
     public: static ABToGBUtil* getInstance();
 
-    public: Canvas* abCanvas = NullCanvas::NULL_CANVAS;
 
-    public: AllBinaryGameLayerManager* allBinaryGameLayerManager = AllBinaryGameLayerManager::getNullInstance();
+            
+    public: ABToGBUtil();
+        
+    public: Canvas* abCanvas;
+
+    public: AllBinaryGameLayerManager* allBinaryGameLayerManager;
 
 };
 
@@ -75,3 +83,19 @@ class ABToGBUtil
 
 
         #endif //ORG_ALLBINARY_GAME_CANVAS_ABTOGBUTIL_H
+
+        
+        #if defined(JAVA_COMPLETE_TYPES) && !defined(ORG_ALLBINARY_GAME_CANVAS_ABTOGBUTIL_H_COMPLETE)
+        #define ORG_ALLBINARY_GAME_CANVAS_ABTOGBUTIL_H_COMPLETE
+        #if __has_include(<javax/microedition/lcdui/Canvas.h>)
+#include <javax/microedition/lcdui/Canvas.h>
+#endif
+#if __has_include(<javax/microedition/lcdui/NullCanvas.h>)
+#include <javax/microedition/lcdui/NullCanvas.h>
+#endif
+#if __has_include(<org/allbinary/game/layer/AllBinaryGameLayerManager.h>)
+#include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
+#endif
+
+        #endif
+    

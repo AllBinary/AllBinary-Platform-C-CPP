@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLENOTREQUIREDVALIDATION_CPP
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLENOTREQUIREDVALIDATION_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleNotRequiredValidation.h"
+        
+
             #include <cstdint>
             #include <memory>
             #include <string>
@@ -68,11 +78,8 @@
         #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleView.h"
 #include "org/allbinary/logic/visual/transform/template/customizer/widgets/title/TitleData.h"
 
-class TitleNotRequiredValidation: public TitleView, public ValidationInterface {
 
-    protected: LogUtil* logUtil = LogUtil::getInstance();
-
-public: TitleNotRequiredValidation() : TitleView(){
+TitleNotRequiredValidation::TitleNotRequiredValidation() : TitleView(), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -82,7 +89,7 @@ public: TitleNotRequiredValidation() : TitleView(){
 }
 
 
-public: TitleNotRequiredValidation(Node* node) : TitleView(node){
+TitleNotRequiredValidation::TitleNotRequiredValidation(Node* node) : TitleView(node), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -92,7 +99,7 @@ public: TitleNotRequiredValidation(Node* node) : TitleView(node){
 }
 
 
-public: TitleNotRequiredValidation(HashMap<Object*, Object*>* hashMap) : TitleView(hashMap){
+TitleNotRequiredValidation::TitleNotRequiredValidation(HashMap<Object*, Object*>* hashMap) : TitleView(hashMap), logUtil(LogUtil::getInstance()){
 
                         //super/this constructor call is in the constructor initializer list.
                     
@@ -102,14 +109,14 @@ public: TitleNotRequiredValidation(HashMap<Object*, Object*>* hashMap) : TitleVi
 }
 
 
-    public: bool isValid(){
+    auto TitleNotRequiredValidation::isValid() -> bool{
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
-                                    this->logUtil->putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
+                                    this->logUtil->putF(this->commonStrings->START, this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -127,7 +134,7 @@ public: TitleNotRequiredValidation(HashMap<Object*, Object*>* hashMap) : TitleVi
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEW))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEW))
                         
                                     {
                                     
@@ -141,7 +148,7 @@ stringBuffer->append("End: ");
     
 stringBuffer->appendboolean(valid);
     
-this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID);
+this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings->IS_VALID);
     
 
                                     }
@@ -157,10 +164,10 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
-                                    this->logUtil->put("Failed to validate form", this, this->commonStrings.IS_VALID, &e);
+                                    this->logUtil->put("Failed to validate form", this, this->commonStrings->IS_VALID, &e);
     
 
                                     }
@@ -176,7 +183,7 @@ this->logUtil->putF(stringBuffer->toString(), this, this->commonStrings.IS_VALID
 }
 
 
-    public: std::string validationInfo(){
+    auto TitleNotRequiredValidation::validationInfo() -> std::string{
 
         try {
             
@@ -195,7 +202,7 @@ stringBuffer->append("Title is not valid.");
 } catch(Exception& e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()->VIEWERROR))
+                        if(org.allbinary->logic->communication->log->config->type->LogConfigTypes->LOGGING->contains(org.allbinary->logic->communication->log->config->type->LogConfigTypeFactory->getInstance()->VIEWERROR))
                         
                                     {
                                     this->logUtil->put("Failed to generate validation error info", this, "validationInfo()", &e);
@@ -214,7 +221,7 @@ stringBuffer->append("Title is not valid.");
 }
 
 
-    public: Document* toValidationInfoDoc(){
+    auto TitleNotRequiredValidation::toValidationInfoDoc() -> Document*{
 
 
 
@@ -224,7 +231,7 @@ stringBuffer->append("Title is not valid.");
 }
 
 
-    public: Node* toValidationInfoNode(Document* document){
+    auto TitleNotRequiredValidation::toValidationInfoNode(Document* document) -> Node*{
 
 
 
@@ -234,7 +241,6 @@ stringBuffer->append("Title is not valid.");
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLENOTREQUIREDVALIDATION_CPP

@@ -18,6 +18,16 @@
 
 
 
+        #ifndef ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_CPP
+        #define ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_CPP
+
+        #ifndef JAVA_COMPLETE_TYPES
+        #define JAVA_COMPLETE_TYPES
+        #endif
+        
+        #include "org/allbinary/math/NoDecimalTrigTable.h"
+        
+
             #include <vector>
         
             #include <cstdint>
@@ -81,31 +91,20 @@
 #include "org/allbinary/math/PositionStrings.h"
 #include "org/allbinary/math/Angle.h"
 
-class NoDecimalTrigTable
-            : public Object
-         {
+auto NoDecimalTrigTable::instance_owner() -> NoDecimalTrigTable* { static std::unique_ptr<NoDecimalTrigTable> value(new NoDecimalTrigTable()); return value.get(); }
+NoDecimalTrigTable* NoDecimalTrigTable::instance = NoDecimalTrigTable::instance_owner();
 
-    private: static NoDecimalTrigTable* instance() { static std::unique_ptr<NoDecimalTrigTable> value(new NoDecimalTrigTable()); return value.get(); }
-
-    public: static NoDecimalTrigTable* getInstance(){
+    auto NoDecimalTrigTable::getInstance() -> NoDecimalTrigTable*{
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoDecimalTrigTable::instance();
+                        return NoDecimalTrigTable::instance;
     
 }
 
 
-    private: MathUtil* mathUtil = MathUtil::getInstance();
-
-    private: std::vector<int64_t> noDecimalSin;
-
-    private: std::vector<int64_t> noDecimalCos;
-
-    private: std::vector<int64_t> noDecimalTan;
-
-private: NoDecimalTrigTable(){
+NoDecimalTrigTable::NoDecimalTrigTable() : mathUtil(MathUtil::getInstance()){
 
     int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance()->TOTAL_ANGLE);;
     
@@ -2283,7 +2282,7 @@ this->noDecimalTan[0]=  -174;
 }
 
 
-    public: int64_t sin(int32_t angle){
+    auto NoDecimalTrigTable::sin(int32_t angle) -> int64_t{
 
 
 
@@ -2293,7 +2292,7 @@ this->noDecimalTan[0]=  -174;
 }
 
 
-    public: int64_t cos(int32_t angle){
+    auto NoDecimalTrigTable::cos(int32_t angle) -> int64_t{
 
 
 
@@ -2303,7 +2302,7 @@ this->noDecimalTan[0]=  -174;
 }
 
 
-    public: int64_t tan(int32_t angle){
+    auto NoDecimalTrigTable::tan(int32_t angle) -> int64_t{
 
 
 
@@ -2313,11 +2312,9 @@ this->noDecimalTan[0]=  -174;
 }
 
 
-    public: int32_t SCALE = 10000;
-
                 //@Throws(Exception.constructor)
             
-    public: int16_t antiTan(int32_t dx, int32_t dy){
+    auto NoDecimalTrigTable::antiTan(int32_t dx, int32_t dy) -> int16_t{
 
     int64_t MAX_VALUE = (Integer.MAX_VALUE);;
     
@@ -2526,14 +2523,14 @@ stringBuffer->appendint(dy);
 
 
 
-                            throw new Exception(stringBuffer->toString());
+                            throw Exception(stringBuffer->toString());
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: int16_t antiTanDebug(int32_t screenX, int32_t screenY, int32_t targetX, int32_t targetY){
+    auto NoDecimalTrigTable::antiTanDebug(int32_t screenX, int32_t screenY, int32_t targetX, int32_t targetY) -> int16_t{
 
     std::string METHOD_NAME = "antiTanDebug";;
     
@@ -2606,7 +2603,7 @@ angleOfTarget= this->antiTan(dx[index], dy[index2]);
     
 angle= angleFactory->getAt(static_cast<int32_t>(angleOfTarget));
     
-stringMaker->delete(0, stringMaker->length());
+stringMaker->delete_(0, stringMaker->length());
     
 PreLogUtil::put(stringMaker->append(CommonLabels::getInstance()->INDEX_LABEL)->appendint(index)->append(" index2: ")->appendint(index2)->append(PositionStrings::getInstance()->DX_LABEL)->appendint(dx[index])->append(PositionStrings::getInstance()->DY_LABEL)->appendint(dy[index2])->append(TARGET_ANGLE)->appendshort(angleOfTarget)->append(CommonSeps::getInstance()->EQUALS)->appendshort(angle->getValue())->toString(), this, METHOD_NAME);
     
@@ -2625,7 +2622,6 @@ angleOfTarget= this->antiTan(dx[0], dy[0]);
 }
 
 
-};
 
-            
 
+        #endif //ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_CPP
